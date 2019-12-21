@@ -1,3 +1,14 @@
 {
-  "block.undegarden.depthrock" : "Depthrock"
+  "block.undergarden.depthrock" : "Depthrock",
+  "block.undergarden.deepsoil" : "Deepsoil",
+  "block.undergarden.deepturf" : "Deepturf",
+  "block.undergarden.smogstem_log" : "Smogstem Log",
+  "block.undergarden.smogstem_planks" : "Smogstem Planks",
+  "block.undergarden.cloggrum_ore" : "Cloggrum Ore",
+
+  "item.undergarden.smogstem_sword" : "Smogstem Sword",
+
+  "itemGroup.undergarden_blocks" : "Undergarden Blocks",
+  "itemGroup.undergarden_items" : "Undergarden Items"
+
 }

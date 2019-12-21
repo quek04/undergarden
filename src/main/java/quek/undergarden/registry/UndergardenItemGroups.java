@@ -18,4 +18,12 @@ public class UndergardenItemGroups {
             return new ItemStack(ItemRegistry.smogstem_stick.get());
         }
     };
+
+    public static final ItemGroup UNDERGARDEN_GEAR = new ItemGroup("undergarden_gear") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(ItemRegistry.smogstem_sword.get());
+
+        }
+    };
 }
