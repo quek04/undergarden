@@ -22,7 +22,7 @@ public class UndergardenItemGroups {
     public static final ItemGroup UNDERGARDEN_GEAR = new ItemGroup("undergarden_gear") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ItemRegistry.smogstem_sword.get());
+            return new ItemStack(ItemRegistry.cloggrum_sword.get());
 
         }
     };
