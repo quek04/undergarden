@@ -1,6 +1,9 @@
 package quek.undergarden.registry;
 
 import net.minecraft.item.Item;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -8,11 +11,13 @@ import quek.undergarden.item.*;
 import quek.undergarden.item.tool.*;
 
 import static quek.undergarden.Undergarden.MODID;
-import static quek.undergarden.registry.EntityRegistry.*;
+import static quek.undergarden.registry.UndergardenEntities.*;
 import static quek.undergarden.registry.UndergardenToolMaterials.*;
 
 @SuppressWarnings("unused")
-public class ItemRegistry {
+public class UndergardenItems {
+
+    public static final Tag<Item> SMOGSTEM_PLANKS = new ItemTags.Wrapper(new ResourceLocation(MODID, "smogstem_planks"));
 
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, MODID);
 

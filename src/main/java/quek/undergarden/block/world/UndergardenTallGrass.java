@@ -9,6 +9,7 @@ public class UndergardenTallGrass extends TallGrassBlock {
         super(Properties.create(Material.TALL_PLANTS)
                 .hardnessAndResistance(0f)
                 .sound(SoundType.PLANT)
+                .doesNotBlockMovement()
         );
     }
 }

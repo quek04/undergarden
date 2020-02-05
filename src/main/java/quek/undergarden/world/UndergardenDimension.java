@@ -8,8 +8,10 @@ import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
 import javax.annotation.Nullable;
+
 //ill do this later
 public class UndergardenDimension extends Dimension {
+
     public UndergardenDimension(World worldIn, DimensionType typeIn) {
         super(worldIn, typeIn);
     }

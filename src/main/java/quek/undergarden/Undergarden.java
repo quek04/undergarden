@@ -1,6 +1,8 @@
 package quek.undergarden;
 
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -19,9 +21,9 @@ public class Undergarden {
 	public Undergarden() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		BlockRegistry.BLOCKS.register(bus);
-		ItemRegistry.ITEMS.register(bus);
-		EntityRegistry.ENTITIES.register(bus);
+		UndergardenBlocks.BLOCKS.register(bus);
+		UndergardenItems.ITEMS.register(bus);
+		UndergardenEntities.ENTITIES.register(bus);
 
 	}
 
@@ -29,8 +31,8 @@ public class Undergarden {
 
 	}
 
-	public void clientSetup(FMLClientSetupEvent event) {
-		//EntityRegistry.entityRender();
+	public void clientSetup(final FMLClientSetupEvent event) {
+		DistExecutor.runWhenOn(Dist.CLIENT, () -> UndergardenEntities::entityRender);
 	}
 
 }

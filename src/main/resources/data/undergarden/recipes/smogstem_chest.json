@@ -1,0 +1,16 @@
+{
+  "type" : "minecraft:crafting_shaped",
+  "pattern" : [
+    "PPP",
+    "P P",
+    "PPP"
+  ],
+  "key" : {
+    "P" : {
+      "item" : "undergarden:smogstem_planks"
+    }
+  },
+  "result" : {
+    "item" : "undergarden:smogstem_pickaxe"
+  }
+}

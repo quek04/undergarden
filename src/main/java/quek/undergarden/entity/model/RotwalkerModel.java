@@ -1,4 +1,4 @@
-package quek.undergarden.model;
+package quek.undergarden.entity.model;
 
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
