@@ -12,17 +12,19 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 
 public class RotwalkerEntity extends MonsterEntity {
+
     public RotwalkerEntity(EntityType<? extends MonsterEntity> type, World world) {
         super(type, world);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new LookAtGoal(this, PlayerEntity.class, 16f));
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1, false));
-        this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this,1));
-        this.goalSelector.addGoal(0, new RandomWalkingGoal(this, 1, 120));
-        this.goalSelector.addGoal(1, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(0, new SwimGoal(this));
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 
     }
 
@@ -33,6 +35,7 @@ public class RotwalkerEntity extends MonsterEntity {
         this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(5);
         this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5);
         this.getAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(2);
+        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30);
     }
 
     @Override

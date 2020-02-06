@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.ModelBox;
 import quek.undergarden.entity.RotwalkerEntity;
+
 //Made with Blockbench
 public class RotwalkerModel extends EntityModel<RotwalkerEntity> {
 	private final RendererModel rotwalker;
@@ -83,9 +84,13 @@ public class RotwalkerModel extends EntityModel<RotwalkerEntity> {
 	}
 
 	@Override
-	public void render(RotwalkerEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		rotwalker.render(f5);
+	public void render(RotwalkerEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+		setRotationAngles(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+		rotwalker.render(scale);
+		head.render(headPitch);
+
 	}
+
 	public void setRotationAngle(RendererModel RendererModel, float x, float y, float z) {
 		RendererModel.rotateAngleX = x;
 		RendererModel.rotateAngleY = y;
