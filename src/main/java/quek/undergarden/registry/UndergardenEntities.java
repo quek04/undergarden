@@ -22,11 +22,13 @@ public class UndergardenEntities {
     public static final EntityType<RotwalkerEntity> rotwalker = EntityType.Builder.create(RotwalkerEntity::new, EntityClassification.MONSTER)
             .size(0.6f,2.5f).build("rotwalker");
 
-    public static final RegistryObject<EntityType<RotwalkerEntity>> ROTWALKER = ENTITIES.register("rotwalker", () -> rotwalker);
+    public static final RegistryObject<EntityType<RotwalkerEntity>> ROTWALKER = ENTITIES.register("rotwalker", () -> rotwalker); //TODO: fix model animations
 
+    /*
     @OnlyIn(Dist.CLIENT)
     public void entityRender(final FMLClientSetupEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(RotwalkerEntity.class, RotwalkerRender::new);
 
     }
+    */
 }

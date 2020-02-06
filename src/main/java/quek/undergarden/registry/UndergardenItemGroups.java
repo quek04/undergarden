@@ -26,4 +26,11 @@ public class UndergardenItemGroups {
 
         }
     };
+
+    public static final ItemGroup UNDERGARDEN_FOODS = new ItemGroup("undergarden_foods") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(UndergardenItems.underbeans.get());
+        }
+    };
 }

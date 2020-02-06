@@ -12,6 +12,7 @@ import quek.undergarden.item.tool.*;
 
 import static quek.undergarden.Undergarden.MODID;
 import static quek.undergarden.registry.UndergardenEntities.*;
+import static quek.undergarden.registry.UndergardenFoods.*;
 import static quek.undergarden.registry.UndergardenToolMaterials.*;
 
 @SuppressWarnings("unused")
@@ -35,11 +36,16 @@ public class UndergardenItems {
     public static final RegistryObject<Item> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UndergardenPickaxe(CLOGGRUM));
     public static final RegistryObject<Item> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UndergardenAxe(CLOGGRUM));
     public static final RegistryObject<Item> cloggrum_shovel = ITEMS.register("cloggrum_shovel", () -> new UndergardenShovel(CLOGGRUM));
-
+    //TODO: texture utheric tools
     public static final RegistryObject<Item> utheric_sword = ITEMS.register("utheric_sword", () -> new UndergardenSword(UTHERIC));
     public static final RegistryObject<Item> utheric_pickaxe = ITEMS.register("utheric_pickaxe", () -> new UndergardenPickaxe(UTHERIC));
     public static final RegistryObject<Item> utheric_axe = ITEMS.register("utheric_axe", () -> new UndergardenAxe(UTHERIC));
     public static final RegistryObject<Item> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UndergardenShovel(UTHERIC));
+
+    //foods
+    public static final RegistryObject<Item> underbeans = ITEMS.register("underbeans", () -> new UndergardenItem(UNDERBEANS)); //TODO: create place functionality
+    public static final RegistryObject<Item> raw_dweller_meat = ITEMS.register("raw_dweller_meat", () -> new UndergardenItem(RAW_DWELLER));
+    public static final RegistryObject<Item> dweller_steak = ITEMS.register("dweller_steak", () -> new UndergardenItem(COOKED_DWELLER));
 
     //spawn eggs
     public static final RegistryObject<Item> rotwalker_spawn_egg = ITEMS.register("rotwalker_spawn_egg", () -> new UndergardenSpawnEgg(rotwalker, 1, 1));

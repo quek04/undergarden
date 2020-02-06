@@ -26,21 +26,23 @@ public class UndergardenBlocks {
     //basic shit
     public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", () -> new UndergardenBlock(
             Material.EARTH, 0.6f, 3f, SoundType.GROUND, 0, ToolType.SHOVEL));
-    public static final RegistryObject<Block> deepturf = registerBlock("deepturf", UndergardenGrass::new);
+    public static final RegistryObject<Block> deepturf = registerBlock("deepturf", DeepturfBlock::new);
     public static final RegistryObject<Block> depthrock = registerBlock("depthrock", () -> new UndergardenBlock(
             Material.ROCK,1.5f,35f, SoundType.STONE,1, ToolType.PICKAXE));
+    public static final RegistryObject<Block> cobbled_depthrock = registerBlock("cobbled_depthrock", () -> new UndergardenBlock(
+            Material.ROCK,1.5f,35f, SoundType.STONE,1, ToolType.PICKAXE)); //TODO: texture & find block values on wiki
     public static final RegistryObject<Block> cloggrum_ore = registerBlock("cloggrum_ore", () -> new UndergardenOre(3));
     public static final RegistryObject<Block> smogstem_planks = registerBlock("smogstem_planks", () -> new UndergardenBlock(
             Material.WOOD,1.5f,10f, SoundType.WOOD, 0, ToolType.AXE));
 
     //nature
+    public static final RegistryObject<Block> underbean_bush = registerBlock("underbean_bush", BeanBushBlock::new); //TODO: texture
     public static final RegistryObject<Block> smogstem_log = registerBlock("smogstem_log", UndergardenLog::new);
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UndergardenTallGrass::new);
 
     //tiles
     public static final RegistryObject<Block> smogstem_chest = registerBlock("smogstem_chest", () -> new UndergardenChestBlock(
-            Material.WOOD,1.5f,10f, SoundType.WOOD, 0, ToolType.AXE));
-
+            Material.WOOD,1.5f,10f, SoundType.WOOD, 0, ToolType.AXE)); //TODO: texture
 
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);
