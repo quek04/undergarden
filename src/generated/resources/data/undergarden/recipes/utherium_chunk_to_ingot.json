@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "undergarden:utherium_chunk"
+    }
+  },
+  "result": {
+    "item": "undergarden:utherium_ingot"
+  }
+}

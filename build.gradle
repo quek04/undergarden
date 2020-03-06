@@ -17,19 +17,17 @@ version = '1.0'
 group = 'quek.undergarden.modid'
 archivesBaseName = 'modid'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20191220-1.14.3'
+    mappings channel: 'snapshot', version: '20200225-1.15.1'
 
     runs {
         client {
             workingDirectory project.file('run')
 
-            // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -60,7 +58,9 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'undergarden', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'undergarden', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing', file('src/generated/resources/')
+
+            environment 'target', 'fmluserdevdata'
 
             mods {
                 undergarden {
@@ -70,14 +70,16 @@ minecraft {
         }
     }
 }
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.14.4-28.2.0'
+    minecraft 'net.minecraftforge:forge:1.15.2-31.1.15'
 
 }
 
-// Example for how to get properties into the manifest for reading by the runtime..
 jar {
     manifest {
         attributes([

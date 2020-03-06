@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "undergarden:utheric_shard"
+    }
+  },
+  "result": {
+    "item": "undergarden:utherium_ingot"
+  }
+}

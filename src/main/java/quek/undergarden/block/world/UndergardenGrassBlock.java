@@ -1,20 +1,14 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
-import net.minecraft.world.gen.feature.FlowersFeature;
 import net.minecraft.world.lighting.LightEngine;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UndergardenBlocks;
 
-import java.util.List;
 import java.util.Random;
 
 public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock {
@@ -40,24 +34,22 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock {
     }
 
     @Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-        if (!worldIn.isRemote) {
-            if (!worldIn.isAreaLoaded(pos, 3)) return;
-            if (!func_220257_b(state, worldIn, pos)) {
-                worldIn.setBlockState(pos, UndergardenBlocks.deepsoil.get().getDefaultState());
-            } else {
-                if (worldIn.getLight(pos.up()) >= 9) {
-                    BlockState blockstate = this.getDefaultState();
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+        if (!func_220257_b(state, worldIn, pos)) {
+            if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
+            worldIn.setBlockState(pos, UndergardenBlocks.deepturf.get().getDefaultState());
+        } else {
+            if (worldIn.getLight(pos.up()) >= 9) {
+                BlockState blockstate = this.getDefaultState();
 
-                    for(int i = 0; i < 4; ++i) {
-                        BlockPos blockpos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                        if (worldIn.getBlockState(blockpos).getBlock() == UndergardenBlocks.deepsoil.get() && func_220256_c(blockstate, worldIn, blockpos)) {
-                            worldIn.setBlockState(blockpos, blockstate.with(SNOWY, Boolean.valueOf(worldIn.getBlockState(blockpos.up()).getBlock() == Blocks.SNOW)));
-                        }
+                for(int i = 0; i < 4; ++i) {
+                    BlockPos blockpos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+                    if (worldIn.getBlockState(blockpos).getBlock() == Blocks.DIRT && func_220256_c(blockstate, worldIn, blockpos)) {
+                        worldIn.setBlockState(blockpos, blockstate.with(SNOWY, Boolean.valueOf(worldIn.getBlockState(blockpos.up()).getBlock() == Blocks.SNOW)));
                     }
                 }
-
             }
+
         }
     }
 }

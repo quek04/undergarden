@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
 import net.minecraft.world.gen.feature.FlowersFeature;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ToolType;
 import quek.undergarden.registry.UndergardenBlocks;
 
@@ -40,51 +41,46 @@ public class DeepturfBlock extends UndergardenGrassBlock implements IGrowable {
     }
 
     @Override
-    public void grow(World worldIn, Random rand, BlockPos pos, BlockState state) {
-        BlockPos blockpos = pos.up();
-        BlockState blockstate = UndergardenBlocks.deepturf.get().getDefaultState();
+    public void grow(ServerWorld serverWorld, Random random, BlockPos blockPos, BlockState blockState) {
+        BlockPos blockPosUp = blockPos.up();
+        BlockState BlockStateIn = UndergardenBlocks.deepturf.get().getDefaultState();
 
-        for(int i = 0; i < 128; ++i) {
-            BlockPos blockpos1 = blockpos;
-            int j = 0;
+        label48:
+        for(int lvt_7_1_ = 0; lvt_7_1_ < 128; ++lvt_7_1_) {
+            BlockPos lvt_8_1_ = blockPosUp;
 
-            while(true) {
-                if (j >= i / 16) {
-                    BlockState blockstate2 = worldIn.getBlockState(blockpos1);
-                    if (blockstate2.getBlock() == blockstate.getBlock() && rand.nextInt(10) == 0) {
-                        ((IGrowable)blockstate.getBlock()).grow(worldIn, rand, blockpos1, blockstate2);
+            for(int lvt_9_1_ = 0; lvt_9_1_ < lvt_7_1_ / 16; ++lvt_9_1_) {
+                lvt_8_1_ = lvt_8_1_.add(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
+                if (serverWorld.getBlockState(lvt_8_1_.down()).getBlock() != this || serverWorld.getBlockState(lvt_8_1_).isCollisionShapeOpaque(serverWorld, lvt_8_1_)) {
+                    continue label48;
+                }
+            }
+
+            BlockState lvt_9_2_ = serverWorld.getBlockState(lvt_8_1_);
+            if (lvt_9_2_.getBlock() == BlockStateIn.getBlock() && random.nextInt(10) == 0) {
+                ((IGrowable)BlockStateIn.getBlock()).grow(serverWorld, random, lvt_8_1_, lvt_9_2_);
+            }
+
+            if (lvt_9_2_.isAir()) {
+                BlockState lvt_10_2_;
+                if (random.nextInt(8) == 0) {
+                    List<ConfiguredFeature<?, ?>> lvt_11_1_ = serverWorld.getBiome(lvt_8_1_).getFlowers();
+                    if (lvt_11_1_.isEmpty()) {
+                        continue;
                     }
 
-                    if (!blockstate2.isAir()) {
-                        break;
-                    }
-
-                    BlockState blockstate1;
-                    if (rand.nextInt(8) == 0) {
-                        List<ConfiguredFeature<?>> list = worldIn.getBiome(blockpos1).getFlowers();
-                        if (list.isEmpty()) {
-                            break;
-                        }
-
-                        blockstate1 = ((FlowersFeature)((DecoratedFeatureConfig)(list.get(0)).config).feature.feature).getRandomFlower(rand, blockpos1);
-                    } else {
-                        blockstate1 = blockstate;
-                    }
-
-                    if (blockstate1.isValidPosition(worldIn, blockpos1)) {
-                        worldIn.setBlockState(blockpos1, blockstate1, 3);
-                    }
-                    break;
+                    ConfiguredFeature<?, ?> lvt_12_1_ = ((DecoratedFeatureConfig)((ConfiguredFeature)lvt_11_1_.get(0)).config).feature;
+                    lvt_10_2_ = ((FlowersFeature)lvt_12_1_.feature).getFlowerToPlace(random, lvt_8_1_, lvt_12_1_.config);
+                } else {
+                    lvt_10_2_ = BlockStateIn;
                 }
 
-                blockpos1 = blockpos1.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
-                if (worldIn.getBlockState(blockpos1.down()).getBlock() != this || worldIn.getBlockState(blockpos1).func_224756_o(worldIn, blockpos1)) {
-                    break;
+                if (lvt_10_2_.isValidPosition(serverWorld, lvt_8_1_)) {
+                    serverWorld.setBlockState(lvt_8_1_, lvt_10_2_, 3);
                 }
-
-                ++j;
             }
         }
 
     }
+
 }

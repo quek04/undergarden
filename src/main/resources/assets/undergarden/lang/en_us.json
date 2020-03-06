@@ -5,6 +5,8 @@
   "block.undergarden.tall_deepturf" : "Tall Deepturf",
   "block.undergarden.smogstem_log" : "Smogstem Log",
   "block.undergarden.smogstem_planks" : "Smogstem Planks",
+  "block.undergarden.wigglewood_log" : "Wigglewood Log",
+  "block.undergarden.wigglewood_planks" : "Wigglewood Planks",
   "block.undergarden.cloggrum_ore" : "Cloggrum Ore",
 
   "item.undergarden.smogstem_stick" : "Smogstem Stick",
@@ -27,6 +29,7 @@
   "itemGroup.undergarden_blocks" : "Undergarden Blocks",
   "itemGroup.undergarden_items" : "Undergarden Items",
 
-  "entity.undergarden.rotwalker" : "Rotwalker"
+  "entity.undergarden.rotwalker" : "Rotwalker",
+  "entity.undergarden.rotbeast" : "Rotbeast"
 
 }

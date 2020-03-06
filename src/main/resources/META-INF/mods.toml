@@ -1,38 +1,26 @@
 modLoader="javafml"
-# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[28,)" #mandatory (28 is current forge version)
+loaderVersion="[28,)"
 issueTrackerURL="https://github.com/quek04/The-Undergarden/issues"
 [[mods]]
 modId="undergarden"
-# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="${file.jarVersion}" #mandatory
- # A display name for the mod
+version="${file.jarVersion}"
 displayName="The Undergarden"
-# A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL="http://example.com/" #optional
-# A file name (in the root of the mod JAR) containing a logo for display
+displayURL="http://example.com/"
 logoFile="examplemod.png"
 credits=""
 authors="quek"
 description='''
 ill do this later
 '''
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.undergarden]] #optional
-    # the modid of the dependency
-    modId="forge" #mandatory
-    # Does this dependency have to exist - if not, ordering below must be specified
-    mandatory=true #mandatory
-    # The version range of the dependency
-    versionRange="[28,)" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+[[dependencies.undergarden]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28,)"
     ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-# Here's another dependency
 [[dependencies.undergarden]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14.4]"
+    versionRange="[1.15.2]"
     ordering="NONE"
     side="BOTH"

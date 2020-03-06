@@ -1,8 +1,0 @@
-{
-  "parent" : "block/cube_bottom_top",
-  "textures" : {
-    "top" : "undergarden:block/deepturf_top",
-    "side" : "undergarden:block/deepturf_side",
-    "bottom" : "undergarden:block/deepsoil"
-  }
-}

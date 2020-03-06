@@ -7,7 +7,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.entity.RotwalkerEntity;
 import quek.undergarden.entity.model.RotwalkerModel;
 
-public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel> {
+public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel<RotwalkerEntity>> {
 
     private static final ResourceLocation texture = new ResourceLocation(Undergarden.MODID, "textures/entities/rotwalker.png");
 
@@ -16,7 +16,7 @@ public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(RotwalkerEntity entity) {
+    public ResourceLocation getEntityTexture(RotwalkerEntity entity) {
         return texture;
     }
 }

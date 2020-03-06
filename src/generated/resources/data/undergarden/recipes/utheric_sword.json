@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "/"
+  ],
+  "key": {
+    "#": {
+      "item": "undergarden:utherium_ingot"
+    },
+    "/": {
+      "item": "undergarden:smogstem_stick"
+    }
+  },
+  "result": {
+    "item": "undergarden:utheric_sword"
+  }
+}

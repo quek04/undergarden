@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "undergarden:cloggrum_nugget"
+    }
+  },
+  "result": {
+    "item": "undergarden:cloggrum_ingot"
+  }
+}
