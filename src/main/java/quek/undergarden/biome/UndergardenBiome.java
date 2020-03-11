@@ -16,5 +16,4 @@ public abstract class UndergardenBiome extends Biome {
                 .temperature(temp)
         );
     }
-
 }

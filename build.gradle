@@ -72,13 +72,14 @@ minecraft {
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 }
+
 sourceSets.main.resources {
     srcDir 'src/generated/resources'
 }
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.15.2-31.1.15'
+    minecraft 'net.minecraftforge:forge:1.15.2-31.1.18'
 
 }
 

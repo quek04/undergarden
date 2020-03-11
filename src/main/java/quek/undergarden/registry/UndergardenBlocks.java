@@ -67,4 +67,8 @@ public class UndergardenBlocks {
         return () -> new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().group(UndergardenItemGroups.UNDERGARDEN_BLOCKS));
     }
 
+    public static void load() {
+
+    }
+
 }

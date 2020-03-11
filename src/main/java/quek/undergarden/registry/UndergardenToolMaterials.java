@@ -5,7 +5,7 @@ import net.minecraft.item.crafting.Ingredient;
 
 public enum UndergardenToolMaterials implements IItemTier {
     SMOGSTEM(127,2,2,1, 15, Ingredient.fromTag(UndergardenTags.Items.SMOGSTEM_PLANKS)),
-    CLOGGRUM(286,3,5,2, 14, Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get())),
+    CLOGGRUM(286,3,5,2, 10, Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get())),
     FROSTSTEEL(575, 3, 3, 3, 12, Ingredient.fromItems(UndergardenItems.froststeel_ingot.get())),
     UTHERIC(1279,4,4,3,13, Ingredient.fromItems(UndergardenItems.utheric_shard.get()))
     ;
