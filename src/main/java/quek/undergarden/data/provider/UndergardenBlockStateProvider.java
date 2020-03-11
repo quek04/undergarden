@@ -55,13 +55,13 @@ public abstract class UndergardenBlockStateProvider extends BlockStateProvider {
     }
 
     public void grassBlock(Supplier<? extends Block> block, String bottom) {
-        ModelFile modelFile = models().grassModel(
+        String baseName = undergardenBlockName(block);
+        ModelFile model = models().sideBottomTop(
                 block.get(),
-                undergardenTexture(undergardenBlockName(block) + "_top"),
-                undergardenTexture(undergardenBlockName(block) + "_side"),
-                undergardenTexture(bottom)
-        );
-        grassBlock(block, modelFile);
+                undergardenTexture(baseName + "_side"),
+                undergardenTexture(bottom),
+                undergardenTexture(baseName + "_top"));
+        grassBlock(block, model);
     }
 
     private void grassBlock(Supplier<? extends Block> block, ModelFile model) {

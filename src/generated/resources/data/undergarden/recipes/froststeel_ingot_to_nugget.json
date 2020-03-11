@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:froststeel_ingot"
+    }
+  ],
+  "result": {
+    "item": "undergarden:froststeel_nugget",
+    "count": 9
+  }
+}

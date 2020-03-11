@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock {
 
-    protected UndergardenGrassBlock(Properties builder) {
+    public UndergardenGrassBlock(Properties builder) {
         super(builder);
     }
 
@@ -44,7 +44,7 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock {
 
                 for(int i = 0; i < 4; ++i) {
                     BlockPos blockpos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                    if (worldIn.getBlockState(blockpos).getBlock() == Blocks.DIRT && func_220256_c(blockstate, worldIn, blockpos)) {
+                    if (worldIn.getBlockState(blockpos).getBlock() == UndergardenBlocks.deepsoil.get() && func_220256_c(blockstate, worldIn, blockpos)) {
                         worldIn.setBlockState(blockpos, blockstate.with(SNOWY, Boolean.valueOf(worldIn.getBlockState(blockpos.up()).getBlock() == Blocks.SNOW)));
                     }
                 }

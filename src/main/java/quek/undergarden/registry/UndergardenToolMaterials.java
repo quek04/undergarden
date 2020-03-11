@@ -1,14 +1,13 @@
 package quek.undergarden.registry;
 
 import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum UndergardenToolMaterials implements IItemTier {
-    //TODO: REBALANCE THIS SHIT
-    SMOGSTEM(127,2,3,3, 15, Ingredient.fromTag(UndergardenTags.Items.SMOGSTEM_PLANKS)),
-    CLOGGRUM(575,3,4,4, 14, Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get())),
-    UTHERIC(1279,4,5,5,13, Ingredient.fromItems(UndergardenItems.utheric_shard.get()))
+    SMOGSTEM(127,2,2,1, 15, Ingredient.fromTag(UndergardenTags.Items.SMOGSTEM_PLANKS)),
+    CLOGGRUM(286,3,5,2, 14, Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get())),
+    FROSTSTEEL(575, 3, 3, 3, 12, Ingredient.fromItems(UndergardenItems.froststeel_ingot.get())),
+    UTHERIC(1279,4,4,3,13, Ingredient.fromItems(UndergardenItems.utheric_shard.get()))
     ;
 
     int maxUses;

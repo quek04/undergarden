@@ -1,0 +1,8 @@
+{
+  "parent": "undergarden:block/grass_block",
+  "textures": {
+    "side": "undergarden:block/deepturf_side",
+    "bottom": "undergarden:block/deepsoil",
+    "top": "undergarden:block/deepturf_top"
+  }
+}

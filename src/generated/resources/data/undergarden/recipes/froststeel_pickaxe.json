@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " / ",
+    " / "
+  ],
+  "key": {
+    "#": {
+      "item": "undergarden:froststeel_ingot"
+    },
+    "/": {
+      "item": "undergarden:smogstem_stick"
+    }
+  },
+  "result": {
+    "item": "undergarden:froststeel_pickaxe"
+  }
+}

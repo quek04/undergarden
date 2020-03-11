@@ -1,10 +1,10 @@
 package quek.undergarden.registry;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import quek.undergarden.Undergarden;
 import quek.undergarden.item.*;
 import quek.undergarden.item.tool.*;
 
@@ -21,6 +21,8 @@ public class UndergardenItems {
     public static final RegistryObject<Item> smogstem_stick = ITEMS.register("smogstem_stick", UndergardenItem::new);
     public static final RegistryObject<Item> cloggrum_ingot = ITEMS.register("cloggrum_ingot", UndergardenItem::new);
     public static final RegistryObject<Item> cloggrum_nugget = ITEMS.register("cloggrum_nugget", UndergardenItem::new);
+    public static final RegistryObject<Item> froststeel_ingot = ITEMS.register("froststeel_ingot", UndergardenItem::new);
+    public static final RegistryObject<Item> froststeel_nugget = ITEMS.register("froststeel_nugget", UndergardenItem::new);
     public static final RegistryObject<Item> utheric_shard = ITEMS.register("utheric_shard", UndergardenItem::new);
     public static final RegistryObject<Item> utherium_ingot = ITEMS.register("utherium_ingot", UndergardenItem::new);
     public static final RegistryObject<Item> utherium_chunk = ITEMS.register("utherium_chunk", UndergardenItem::new);
@@ -35,6 +37,11 @@ public class UndergardenItems {
     public static final RegistryObject<PickaxeItem> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UndergardenPickaxe(CLOGGRUM));
     public static final RegistryObject<AxeItem> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UndergardenAxe(CLOGGRUM));
     public static final RegistryObject<ShovelItem> cloggrum_shovel = ITEMS.register("cloggrum_shovel", () -> new UndergardenShovel(CLOGGRUM));
+
+    public static final RegistryObject<SwordItem> froststeel_sword = ITEMS.register("froststeel_sword", () -> new UndergardenSword(FROSTSTEEL));
+    public static final RegistryObject<PickaxeItem> froststeel_pickaxe = ITEMS.register("froststeel_pickaxe", () -> new UndergardenPickaxe(FROSTSTEEL));
+    public static final RegistryObject<AxeItem> froststeel_axe = ITEMS.register("froststeel_axe", () -> new UndergardenAxe(FROSTSTEEL));
+    public static final RegistryObject<ShovelItem> froststeel_shovel = ITEMS.register("froststeel_shovel", () -> new UndergardenShovel(FROSTSTEEL));
 
     public static final RegistryObject<SwordItem> utheric_sword = ITEMS.register("utheric_sword", () -> new UndergardenSword(UTHERIC));
     public static final RegistryObject<PickaxeItem> utheric_pickaxe = ITEMS.register("utheric_pickaxe", () -> new UndergardenPickaxe(UTHERIC));

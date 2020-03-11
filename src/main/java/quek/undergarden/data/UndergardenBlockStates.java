@@ -21,9 +21,10 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.depthrock);
         normalBlock(UndergardenBlocks.cobbled_depthrock);
         normalBlock(UndergardenBlocks.deepsoil);
-        //grassBlock(UndergardenBlocks.deepturf, "deepsoil");
+        grassBlock(UndergardenBlocks.deepturf, "deepsoil");
         normalBlock(UndergardenBlocks.coal_ore);
         normalBlock(UndergardenBlocks.cloggrum_ore);
+        normalBlock(UndergardenBlocks.froststeel_ore);
         normalBlock(UndergardenBlocks.utherium_ore);
         woodBlock(UndergardenBlocks.smogstem_log, "smogstem_log");
         woodBlock(UndergardenBlocks.wigglewood_log, "wigglewood_log");

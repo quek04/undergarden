@@ -14,11 +14,11 @@ public abstract class UndergardenBlockModelProvider extends BlockModelProvider {
         super(generator, Undergarden.MODID, fileHelper);
     }
 
-    public BlockModelBuilder grassModel(Block block, ResourceLocation top, ResourceLocation bottom, ResourceLocation side) {
-        return withExistingParent(block.getRegistryName().getPath(), modLoc("block/"))
-                .texture("top", top)
+    public BlockModelBuilder sideBottomTop(Block block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        return withExistingParent(block.getRegistryName().getPath(), modLoc("block/grass_block"))
+                .texture("side", side)
                 .texture("bottom", bottom)
-                .texture("side", side);
+                .texture("top", top);
     }
 
 }

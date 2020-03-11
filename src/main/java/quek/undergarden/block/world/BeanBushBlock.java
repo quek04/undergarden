@@ -66,20 +66,6 @@ public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
 
     }
 
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (entityIn instanceof LivingEntity) {
-            entityIn.setMotionMultiplier(state, new Vec3d((double)0.8F, 0.75D, (double)0.8F));
-            if (!worldIn.isRemote && state.get(AGE) > 0 && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
-                double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
-                double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);
-                if (d0 >= (double)0.003F || d1 >= (double)0.003F) {
-                    entityIn.attackEntityFrom(DamageSource.SWEET_BERRY_BUSH, 1.0F);
-                }
-            }
-
-        }
-    }
-
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult p_225533_6_) {
         int i = state.get(AGE);

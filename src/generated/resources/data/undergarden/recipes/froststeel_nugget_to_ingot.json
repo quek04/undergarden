@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "undergarden:froststeel_nugget"
+    }
+  },
+  "result": {
+    "item": "undergarden:froststeel_ingot"
+  }
+}

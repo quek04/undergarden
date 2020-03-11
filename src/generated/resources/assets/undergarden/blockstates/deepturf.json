@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "undergarden:block/deepturf"
+      },
+      {
+        "model": "undergarden:block/deepturf",
+        "y": 90
+      },
+      {
+        "model": "undergarden:block/deepturf",
+        "y": 180
+      },
+      {
+        "model": "undergarden:block/deepturf",
+        "y": 270
+      }
+    ],
+    "snowy=true": [
+      {
+        "model": "undergarden:block/deepturf"
+      },
+      {
+        "model": "undergarden:block/deepturf",
+        "y": 90
+      },
+      {
+        "model": "undergarden:block/deepturf",
+        "y": 180
+      },
+      {
+        "model": "undergarden:block/deepturf",
+        "y": 270
+      }
+    ]
+  }
+}
