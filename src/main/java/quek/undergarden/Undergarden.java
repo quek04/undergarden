@@ -29,15 +29,14 @@ public class Undergarden {
 	public static final Logger LOGGER = LogManager.getLogger(Undergarden.class);
 
 	public Undergarden() {
-		UndergardenBlocks.load();
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		bus.addListener(this::setup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
 
-		UndergardenBiomes.BIOMES.register(bus);
 		UndergardenSurfaceBuilders.SURFACE_BUILDERS.register(bus);
+		UndergardenBiomes.BIOMES.register(bus);
 		UndergardenBlocks.BLOCKS.register(bus);
 		UndergardenDimensions.MOD_DIMENSIONS.register(bus);
 		UndergardenDimensions.BIOME_PROVIDER_TYPES.register(bus);

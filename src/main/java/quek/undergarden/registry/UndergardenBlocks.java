@@ -66,9 +66,4 @@ public class UndergardenBlocks {
     private static <T extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<T> block) {
         return () -> new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().group(UndergardenItemGroups.UNDERGARDEN_BLOCKS));
     }
-
-    public static void load() {
-
-    }
-
 }
