@@ -3,18 +3,17 @@ package quek.undergarden.data.provider;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
-import quek.undergarden.Undergarden;
+import quek.undergarden.UndergardenMod;
 
 import java.util.function.Supplier;
 
 public abstract class UndergardenItemModelProvider extends ItemModelProvider {
 
     public UndergardenItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Undergarden.MODID, fileHelper);
+        super(generator, UndergardenMod.MODID, fileHelper);
     }
 
     public String blockName(Supplier<? extends Block> block) {

@@ -3,7 +3,7 @@ package quek.undergarden.data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.util.ResourceLocation;
-import quek.undergarden.Undergarden;
+import quek.undergarden.UndergardenMod;
 import quek.undergarden.data.provider.UndergardenRecipeProvider;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenItems;
@@ -56,6 +56,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
     }
 
     private ResourceLocation name(String name) {
-        return new ResourceLocation(Undergarden.MODID, name);
+        return new ResourceLocation(UndergardenMod.MODID, name);
     }
 }

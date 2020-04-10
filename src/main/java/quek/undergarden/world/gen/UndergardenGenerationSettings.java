@@ -1,4 +1,4 @@
-package quek.undergarden.world;
+package quek.undergarden.world.gen;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.GenerationSettings;
@@ -11,14 +11,11 @@ public class UndergardenGenerationSettings extends GenerationSettings {
         setDefaultFluid(Blocks.WATER.getDefaultState());
     }
 
-    public static int sea_level = 32;
-
-    public int getBedrockRoofHeight() {
-        return 256;
-    }
-
     public int getBedrockFloorHeight() {
         return 0;
     }
 
+    public int getBedrockRoofHeight() {
+        return 127;
+    }
 }

@@ -2,14 +2,13 @@ package quek.undergarden.data.provider;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.LogBlock;
-import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ModelFile;
-import quek.undergarden.Undergarden;
+import quek.undergarden.UndergardenMod;
 
 import java.util.function.Supplier;
 
@@ -18,7 +17,7 @@ public abstract class UndergardenBlockStateProvider extends BlockStateProvider {
     private static UndergardenBlockModelProvider provider;
 
     public UndergardenBlockStateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Undergarden.MODID, fileHelper);
+        super(generator, UndergardenMod.MODID, fileHelper);
 
         provider = new UndergardenBlockModelProvider(generator, fileHelper) {
             @Override
@@ -38,11 +37,11 @@ public abstract class UndergardenBlockStateProvider extends BlockStateProvider {
         return provider;
     }
 
-    protected ResourceLocation undergardenTexture(String name) {
+    protected ResourceLocation texture(String name) {
         return modLoc("block/" + name);
     }
 
-    protected String undergardenBlockName(Supplier<? extends Block> block) {
+    protected String blockName(Supplier<? extends Block> block) {
         return block.get().getRegistryName().getPath();
     }
 
@@ -51,21 +50,32 @@ public abstract class UndergardenBlockStateProvider extends BlockStateProvider {
     }
 
     public void woodBlock(Supplier<? extends LogBlock> block, String name) {
-        axisBlock(block.get(), undergardenTexture(name));
+        axisBlock(block.get(), texture(name));
+    }
+
+    private void crossBlock(Supplier<? extends Block> block, ModelFile model) {
+        getVariantBuilder(block.get()).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(model)
+                        .build());
     }
 
     public void grassBlock(Supplier<? extends Block> block, String bottom) {
-        String baseName = undergardenBlockName(block);
+        String baseName = blockName(block);
         ModelFile model = models().sideBottomTop(
                 block.get(),
-                undergardenTexture(baseName + "_side"),
-                undergardenTexture(bottom),
-                undergardenTexture(baseName + "_top"));
+                texture(baseName + "_side"),
+                texture(bottom),
+                texture(baseName + "_top"));
         grassBlock(block, model);
     }
 
     private void grassBlock(Supplier<? extends Block> block, ModelFile model) {
         getVariantBuilder(block.get()).forAllStates(state -> ConfiguredModel.allYRotations(model, 0, false));
+    }
+
+    public void crossBlock(Supplier<? extends Block> block) {
+        crossBlock(block, models().cross(blockName(block), texture(blockName(block))));
     }
 
 

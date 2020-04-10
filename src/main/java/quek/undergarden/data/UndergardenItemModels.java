@@ -25,13 +25,17 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.cloggrum_ore);
         itemBlock(UndergardenBlocks.froststeel_ore);
         itemBlock(UndergardenBlocks.utherium_ore);
-        itemBlock(UndergardenBlocks.deepturf);
+        itemBlock(UndergardenBlocks.deepturf_block);
         itemBlock(UndergardenBlocks.deepsoil);
+        itemBlockFlat(UndergardenBlocks.smogstem_sapling);
         itemBlock(UndergardenBlocks.smogstem_log);
+        itemBlock(UndergardenBlocks.smogstem_leaves);
         itemBlock(UndergardenBlocks.wigglewood_log);
+        itemBlock(UndergardenBlocks.wigglewood_leaves);
         itemBlock(UndergardenBlocks.smogstem_planks);
         itemBlock(UndergardenBlocks.wigglewood_planks);
         itemBlockFlat(UndergardenBlocks.tall_deepturf);
+        itemBlockFlat(UndergardenBlocks.shimmerweed);
 
         normalItem(UndergardenItems.smogstem_stick);
         normalItem(UndergardenItems.cloggrum_ingot);

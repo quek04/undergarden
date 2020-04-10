@@ -4,28 +4,34 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.provider.BiomeProviderType;
+import net.minecraft.world.biome.provider.SingleBiomeProviderSettings;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.ChunkGeneratorType;
+
 import quek.undergarden.registry.UndergardenBiomes;
-import quek.undergarden.registry.UndergardenDimensions;
+import quek.undergarden.world.gen.UndergardenChunkGenerator;
+import quek.undergarden.world.gen.UndergardenGenerationSettings;
+import quek.undergarden.world.layer.UndergardenSingleBiomeProvider;
 
 import javax.annotation.Nullable;
 
 public class UndergardenDimension extends Dimension {
 
-    public UndergardenDimension(World world, DimensionType type) {
-        super(world, type, 0);
+    public UndergardenDimension(World world, DimensionType dimensionType) {
+        super(world, dimensionType, 0);
     }
 
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
-        ChunkGeneratorType<UndergardenGenerationSettings, UndergardenChunkGenerator> undergardenChunkGen = UndergardenDimensions.UNDERGARDEN_GEN.get();
-        UndergardenGenerationSettings genSettings = undergardenChunkGen.createSettings();
-        BiomeProviderType<UndergardenBiomeProviderSettings, UndergardenBiomeProvider> undergardenBiomeProv = UndergardenDimensions.UNDERGARDEN_BIOMES.get();
-        return undergardenChunkGen.create(this.world, undergardenBiomeProv.create(undergardenBiomeProv.func_226840_a_(this.world.getWorldInfo())), genSettings);
+        UndergardenGenerationSettings generationSettings = new UndergardenGenerationSettings();
+        SingleBiomeProviderSettings settings = new SingleBiomeProviderSettings(this.world.getWorldInfo());
+
+        settings.setBiome(UndergardenBiomes.FORGOTTEN_ABYSS.get());
+
+        UndergardenSingleBiomeProvider provider = new UndergardenSingleBiomeProvider(settings);
+
+        return new UndergardenChunkGenerator(world, provider, generationSettings);
     }
 
     @Nullable
@@ -42,7 +48,7 @@ public class UndergardenDimension extends Dimension {
 
     @Override
     public float calculateCelestialAngle(long worldTime, float partialTicks) {
-        return 0;
+        return 0.5F;
     }
 
     @Override
@@ -52,7 +58,7 @@ public class UndergardenDimension extends Dimension {
 
     @Override
     public Vec3d getFogColor(float celestialAngle, float partialTicks) {
-        return null;
+        return new Vec3d(.101, .105, .094);
     }
 
     @Override

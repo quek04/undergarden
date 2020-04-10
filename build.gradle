@@ -20,7 +20,7 @@ archivesBaseName = 'modid'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200225-1.15.1'
+    mappings channel: 'snapshot', version: '20200409-1.15.1'
 
     runs {
         client {
@@ -79,7 +79,7 @@ sourceSets.main.resources {
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.15.2-31.1.18'
+    minecraft 'net.minecraftforge:forge:1.15.2-31.1.41'
 
 }
 
@@ -116,5 +116,18 @@ publishing {
         maven {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
+    }
+}
+
+repositories {
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.k-4u.nl"
     }
 }

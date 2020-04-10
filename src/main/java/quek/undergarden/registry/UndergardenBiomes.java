@@ -1,18 +1,31 @@
 package quek.undergarden.registry;
 
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.biome.ForgottenFieldBiome;
-import quek.undergarden.biome.UndergardenBiome;
-
-import static quek.undergarden.Undergarden.MODID;
+import quek.undergarden.UndergardenMod;
+import quek.undergarden.biome.ForgottenAbyssBiome;
 
 public class UndergardenBiomes {
 
-    public static final DeferredRegister<Biome> BIOMES = new DeferredRegister<>(ForgeRegistries.BIOMES, MODID);
+    public static final DeferredRegister<Biome> BIOMES = new DeferredRegister<>(ForgeRegistries.BIOMES, UndergardenMod.MODID);
 
-    public static final RegistryObject<UndergardenBiome> forgotten_field = BIOMES.register("forgotten_field", ForgottenFieldBiome::new);
+    public static final RegistryObject<Biome> FORGOTTEN_ABYSS = BIOMES.register("forgotten_abyss", ForgottenAbyssBiome::new);
+
+    public static void addBiomeTypes()
+    {
+        BiomeDictionary.addTypes(FORGOTTEN_ABYSS.get(), BiomeDictionary.Type.WET);
+    }
+
+
+    public static void addBiomeFeatures() {
+        for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
+            if (biome instanceof ForgottenAbyssBiome) {
+                ((ForgottenAbyssBiome)biome).addFeatures();
+            }
+        }
+    }
 
 }

@@ -9,29 +9,24 @@ import net.minecraftforge.common.ModDimension;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.world.*;
+import quek.undergarden.UndergardenMod;
+import quek.undergarden.world.UndergardenDimension;
+import quek.undergarden.world.gen.UndergardenChunkGenerator;
+import quek.undergarden.world.gen.UndergardenGenerationSettings;
 
 import java.util.function.BiFunction;
 
-import static quek.undergarden.Undergarden.MODID;
-
 public class UndergardenDimensions {
 
-    public static final DeferredRegister<BiomeProviderType<?,?>> BIOME_PROVIDER_TYPES = new DeferredRegister<>(ForgeRegistries.BIOME_PROVIDER_TYPES, MODID);
-    public static final DeferredRegister<ChunkGeneratorType<?,?>> CHUNK_GENERATOR_TYPES = new DeferredRegister<>(ForgeRegistries.CHUNK_GENERATOR_TYPES, MODID);
-    public static final DeferredRegister<ModDimension> MOD_DIMENSIONS = new DeferredRegister<>(ForgeRegistries.MOD_DIMENSIONS, MODID);
+    public static final DeferredRegister<BiomeProviderType<?,?>> BIOME_PROVIDER_TYPES = new DeferredRegister<>(ForgeRegistries.BIOME_PROVIDER_TYPES, UndergardenMod.MODID);
+    public static final DeferredRegister<ChunkGeneratorType<?,?>> CHUNK_GENERATOR_TYPES = new DeferredRegister<>(ForgeRegistries.CHUNK_GENERATOR_TYPES, UndergardenMod.MODID);
+    public static final DeferredRegister<ModDimension> MOD_DIMENSIONS = new DeferredRegister<>(ForgeRegistries.MOD_DIMENSIONS, UndergardenMod.MODID);
 
-    public static final RegistryObject<BiomeProviderType<UndergardenBiomeProviderSettings, UndergardenBiomeProvider>> UNDERGARDEN_BIOMES = BIOME_PROVIDER_TYPES.register(
-            "undergarden_biomes", () -> new BiomeProviderType<>(UndergardenBiomeProvider::new, UndergardenBiomeProviderSettings::new));
-
-    public static final RegistryObject<ChunkGeneratorType<UndergardenGenerationSettings, UndergardenChunkGenerator>> UNDERGARDEN_GEN = CHUNK_GENERATOR_TYPES.register(
-            "undergarden_gen", () -> new ChunkGeneratorType<>(UndergardenChunkGenerator::new, true, UndergardenGenerationSettings::new));
-
-    public static final RegistryObject<ModDimension> UNDERGARDEN_DIMENSION = MOD_DIMENSIONS.register("undergarden_dimension", () -> new ModDimension() {
+    public static final RegistryObject<ModDimension> UNDERGARDEN = MOD_DIMENSIONS.register("undergarden", () -> new ModDimension() {
         @Override
         public BiFunction<World, DimensionType, ? extends Dimension> getFactory() {
             return UndergardenDimension::new;
         }
-            }
-    );
+    });
+
 }

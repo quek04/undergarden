@@ -1,12 +1,16 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.lighting.LightEngine;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.PlantType;
 import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
@@ -34,10 +38,20 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock {
     }
 
     @Override
+    public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
+        boolean hasWater = world.getBlockState(pos.east()).getMaterial() == Material.WATER ||
+                world.getBlockState(pos.west()).getMaterial() == Material.WATER ||
+                world.getBlockState(pos.north()).getMaterial() == Material.WATER ||
+                world.getBlockState(pos.south()).getMaterial() == Material.WATER;
+        return plantable.getPlantType(world, pos.offset(facing)) == PlantType.Plains ||
+                plantable.getPlantType(world, pos.offset(facing)) == PlantType.Beach && hasWater;
+    }
+
+    @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!func_220257_b(state, worldIn, pos)) {
             if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
-            worldIn.setBlockState(pos, UndergardenBlocks.deepturf.get().getDefaultState());
+            worldIn.setBlockState(pos, UndergardenBlocks.deepsoil.get().getDefaultState());
         } else {
             if (worldIn.getLight(pos.up()) >= 9) {
                 BlockState blockstate = this.getDefaultState();
@@ -52,4 +66,5 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock {
 
         }
     }
+
 }

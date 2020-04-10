@@ -21,15 +21,20 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.depthrock);
         normalBlock(UndergardenBlocks.cobbled_depthrock);
         normalBlock(UndergardenBlocks.deepsoil);
-        grassBlock(UndergardenBlocks.deepturf, "deepsoil");
+        grassBlock(UndergardenBlocks.deepturf_block, "deepsoil");
+        crossBlock(UndergardenBlocks.tall_deepturf);
+        crossBlock(UndergardenBlocks.shimmerweed);
         normalBlock(UndergardenBlocks.coal_ore);
         normalBlock(UndergardenBlocks.cloggrum_ore);
         normalBlock(UndergardenBlocks.froststeel_ore);
         normalBlock(UndergardenBlocks.utherium_ore);
         woodBlock(UndergardenBlocks.smogstem_log, "smogstem_log");
+        crossBlock(UndergardenBlocks.smogstem_sapling);
         woodBlock(UndergardenBlocks.wigglewood_log, "wigglewood_log");
         normalBlock(UndergardenBlocks.smogstem_planks);
         normalBlock(UndergardenBlocks.wigglewood_planks);
+        normalBlock(UndergardenBlocks.smogstem_leaves);
+        normalBlock(UndergardenBlocks.wigglewood_leaves);
 
     }
 }

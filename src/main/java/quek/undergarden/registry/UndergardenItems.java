@@ -4,11 +4,10 @@ import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.Undergarden;
 import quek.undergarden.item.*;
 import quek.undergarden.item.tool.*;
 
-import static quek.undergarden.Undergarden.MODID;
+import static quek.undergarden.UndergardenMod.MODID;
 import static quek.undergarden.registry.UndergardenEntities.*;
 import static quek.undergarden.registry.UndergardenFoods.*;
 import static quek.undergarden.registry.UndergardenToolMaterials.*;
