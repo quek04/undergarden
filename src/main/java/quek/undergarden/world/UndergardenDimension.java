@@ -1,5 +1,6 @@
 package quek.undergarden.world;
 
+import net.minecraft.client.audio.MusicTicker;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
@@ -9,7 +10,11 @@ import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
 
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBiomes;
+import quek.undergarden.registry.UndergardenDimensions;
+import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.world.gen.UndergardenChunkGenerator;
 import quek.undergarden.world.gen.UndergardenGenerationSettings;
 import quek.undergarden.world.layer.UndergardenSingleBiomeProvider;
@@ -20,6 +25,11 @@ public class UndergardenDimension extends Dimension {
 
     public UndergardenDimension(World world, DimensionType dimensionType) {
         super(world, dimensionType, 0);
+    }
+
+    public static boolean isTheUndergarden(@Nullable World world) {
+        if (world == null) return false;
+        return world.dimension.getType().getModType() == UndergardenDimensions.UNDERGARDEN.get();
     }
 
     @Override
@@ -33,6 +43,15 @@ public class UndergardenDimension extends Dimension {
 
         return new UndergardenChunkGenerator(world, provider, generationSettings);
     }
+
+    /*
+    @Nullable
+    @OnlyIn(Dist.CLIENT)
+    public MusicTicker.MusicType getMusicType()
+    {
+        return ;
+    }
+    */
 
     @Nullable
     @Override
@@ -69,5 +88,10 @@ public class UndergardenDimension extends Dimension {
     @Override
     public boolean doesXZShowFog(int x, int z) {
         return false;
+    }
+
+    @Override
+    public boolean shouldMapSpin(String entity, double x, double z, double rotation) {
+        return true;
     }
 }

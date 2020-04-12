@@ -11,10 +11,8 @@ public class UndergardenTags {
 
     public static class Items {
 
-        public static final Tag<Item> SMOGSTEM_LOG = tag("smogstem_log");
         public static final Tag<Item> SMOGSTEM_PLANKS = tag("smogstem_planks");
         public static final Tag<Item> SMOGSTEM_STICK = tag("smogstem_stick");
-        public static final Tag<Item> WIGGLEWOOD_LOG = tag("wigglewood_log");
         public static final Tag<Item> WIGGLEWOOD_PLANKS = tag("wigglewood_planks");
 
         private static Tag<Item> tag(String name)

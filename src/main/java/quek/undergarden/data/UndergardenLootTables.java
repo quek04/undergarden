@@ -73,8 +73,13 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.froststeel_ore);
             dropWithFortune(UndergardenBlocks.utherium_ore, UndergardenItems.utherium_chunk);
             dropSelf(UndergardenBlocks.smogstem_sapling);
-            dropAsSilk(UndergardenBlocks.smogstem_leaves);
-            dropAsSilk(UndergardenBlocks.wigglewood_leaves);
+            dropChanceAdditional(UndergardenBlocks.smogstem_leaves, UndergardenBlocks.smogstem_sapling, UndergardenItems.smogstem_stick, 0.05F);
+            dropSelf(UndergardenBlocks.wigglewood_sapling);
+            dropChance(UndergardenBlocks.wigglewood_leaves, UndergardenBlocks.wigglewood_sapling, 0.05F);
+            dropSelf(UndergardenBlocks.indigo_mushroom);
+            dropSelf(UndergardenBlocks.veil_mushroom);
+            dropSelf(UndergardenBlocks.ink_mushroom);
+            dropSelf(UndergardenBlocks.blood_mushroom);
         }
 
         @Override
@@ -89,6 +94,7 @@ public class UndergardenLootTables extends LootTableProvider {
         protected void addTables() {
             this.registerLootTable(UndergardenEntities.rotwalker, LootTable.builder());
             this.registerLootTable(UndergardenEntities.rotbeast, LootTable.builder());
+            this.registerLootTable(UndergardenEntities.dweller, LootTable.builder());
         }
 
         @Override

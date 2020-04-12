@@ -19,8 +19,8 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-        makePlanks(UndergardenBlocks.smogstem_planks, UndergardenTags.Items.SMOGSTEM_LOG).build(consumer, name("smogstem_planks"));
-        makePlanks(UndergardenBlocks.wigglewood_planks, UndergardenTags.Items.WIGGLEWOOD_LOG).build(consumer, name("wigglewood_planks"));
+        makePlanks(UndergardenBlocks.smogstem_planks, UndergardenBlocks.smogstem_log).build(consumer, name("smogstem_planks"));
+        makePlanks(UndergardenBlocks.wigglewood_planks, UndergardenBlocks.wigglewood_log).build(consumer, name("wigglewood_planks"));
 
         makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
 
@@ -53,6 +53,18 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeShovel(UndergardenItems.cloggrum_shovel, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_shovel"));
         makeShovel(UndergardenItems.froststeel_shovel, UndergardenItems.froststeel_ingot).build(consumer, name("froststeel_shovel"));
         makeShovel(UndergardenItems.utheric_shovel, UndergardenItems.utherium_ingot).build(consumer, name("utheric_shovel"));
+
+        makeHelmet(UndergardenItems.cloggrum_helmet, UndergardenItems.cloggrum_ingot).build(consumer);
+        makeChestplate(UndergardenItems.cloggrum_chestplate, UndergardenItems.cloggrum_ingot).build(consumer);
+        makeLeggings(UndergardenItems.cloggrum_leggings, UndergardenItems.cloggrum_ingot).build(consumer);
+        makeBoots(UndergardenItems.cloggrum_boots, UndergardenItems.cloggrum_ingot).build(consumer);
+
+        smeltingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
+        blastingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("blast_cloggrum_ore"));
+        smeltingRecipe(UndergardenItems.froststeel_ingot.get(), UndergardenBlocks.froststeel_ore.get(), .7F).build(consumer, name("smelt_froststeel_ore"));
+        blastingRecipe(UndergardenItems.froststeel_ingot.get(), UndergardenBlocks.froststeel_ore.get(), .7F).build(consumer, name("blast_froststeel_ore"));
+
+        smeltingRecipe(UndergardenItems.dweller_steak.get(), UndergardenItems.raw_dweller_meat.get(), .35F).build(consumer);
     }
 
     private ResourceLocation name(String name) {

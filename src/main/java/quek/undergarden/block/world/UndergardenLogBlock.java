@@ -9,9 +9,8 @@ import net.minecraftforge.common.ToolType;
 public class UndergardenLogBlock extends LogBlock {
     public UndergardenLogBlock() {
         super(MaterialColor.WOOD, Properties.create(Material.WOOD)
-                .hardnessAndResistance(1.5f, 10f)
+                .hardnessAndResistance(1.5F, 10F)
                 .sound(SoundType.WOOD)
-                .harvestLevel(0)
                 .harvestTool(ToolType.AXE)
         );
     }

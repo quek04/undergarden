@@ -1,6 +1,9 @@
 {
   "variants": {
-    "": {
+    "stage=0": {
+      "model": "undergarden:block/smogstem_sapling"
+    },
+    "stage=1": {
       "model": "undergarden:block/smogstem_sapling"
     }
   }

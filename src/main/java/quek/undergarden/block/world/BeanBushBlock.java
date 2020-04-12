@@ -33,7 +33,7 @@ public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
 
     public BeanBushBlock() {
         super(Properties.create(Material.PLANTS)
-                .hardnessAndResistance(0f,0f)
+                .hardnessAndResistance(0F)
                 .sound(SoundType.PLANT)
                 .tickRandomly()
                 .doesNotBlockMovement()

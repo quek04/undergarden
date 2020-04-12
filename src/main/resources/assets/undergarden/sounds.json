@@ -1,0 +1,10 @@
+{
+  "music.undergarden_music": {
+    "category": "music",
+    "sounds": [ {
+      "name": "undergarden:music/monument", "stream": true
+    }
+
+    ]
+  }
+}

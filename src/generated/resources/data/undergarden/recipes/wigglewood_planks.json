@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "undergarden:wigglewood_log"
+      "item": "undergarden:wigglewood_log"
     }
   ],
   "result": {

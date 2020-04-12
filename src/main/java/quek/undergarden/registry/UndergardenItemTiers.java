@@ -3,10 +3,10 @@ package quek.undergarden.registry;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 
-public enum UndergardenToolMaterials implements IItemTier {
+public enum UndergardenItemTiers implements IItemTier {
     SMOGSTEM(127,2,2,1, 15, Ingredient.fromTag(UndergardenTags.Items.SMOGSTEM_PLANKS)),
     CLOGGRUM(286,3,5,2, 10, Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get())),
-    FROSTSTEEL(575, 3, 3, 3, 12, Ingredient.fromItems(UndergardenItems.froststeel_ingot.get())),
+    FROSTSTEEL(575, 3, 3, 3, 15, Ingredient.fromItems(UndergardenItems.froststeel_ingot.get())),
     UTHERIC(1279,4,4,3,13, Ingredient.fromItems(UndergardenItems.utheric_shard.get()))
     ;
 
@@ -17,7 +17,7 @@ public enum UndergardenToolMaterials implements IItemTier {
     int enchantability;
     Ingredient repairMaterial;
 
-    UndergardenToolMaterials(int uses, float efficiency, float damage, int harvest, int enchant, Ingredient material) {
+    UndergardenItemTiers(int uses, float efficiency, float damage, int harvest, int enchant, Ingredient material) {
         maxUses = uses;
         toolEfficiency = efficiency;
         attackDamage = damage;

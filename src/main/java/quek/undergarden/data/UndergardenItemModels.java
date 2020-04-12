@@ -30,12 +30,17 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.smogstem_sapling);
         itemBlock(UndergardenBlocks.smogstem_log);
         itemBlock(UndergardenBlocks.smogstem_leaves);
+        itemBlockFlat(UndergardenBlocks.wigglewood_sapling);
         itemBlock(UndergardenBlocks.wigglewood_log);
         itemBlock(UndergardenBlocks.wigglewood_leaves);
         itemBlock(UndergardenBlocks.smogstem_planks);
         itemBlock(UndergardenBlocks.wigglewood_planks);
         itemBlockFlat(UndergardenBlocks.tall_deepturf);
         itemBlockFlat(UndergardenBlocks.shimmerweed);
+        itemBlockFlat(UndergardenBlocks.indigo_mushroom);
+        itemBlockFlat(UndergardenBlocks.veil_mushroom);
+        itemBlockFlat(UndergardenBlocks.ink_mushroom);
+        itemBlockFlat(UndergardenBlocks.blood_mushroom);
 
         normalItem(UndergardenItems.smogstem_stick);
         normalItem(UndergardenItems.cloggrum_ingot);
@@ -67,8 +72,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         toolItem(UndergardenItems.utheric_shovel);
 
         normalItem(UndergardenItems.underbeans);
-        //normalItem(UndergardenItems.raw_dweller_meat);
-        //normalItem(UndergardenItems.dweller_steak);
+        normalItem(UndergardenItems.raw_dweller_meat);
+        normalItem(UndergardenItems.dweller_steak);
     }
 
 

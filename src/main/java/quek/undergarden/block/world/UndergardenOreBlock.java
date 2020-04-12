@@ -18,7 +18,7 @@ import java.util.Random;
 public class UndergardenOreBlock extends OreBlock {
     public UndergardenOreBlock(int harvestlvl) {
         super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(3f,35f)
+                .hardnessAndResistance(3F,35F)
                 .sound(SoundType.STONE)
                 .harvestLevel(harvestlvl)
                 .harvestTool(ToolType.PICKAXE)

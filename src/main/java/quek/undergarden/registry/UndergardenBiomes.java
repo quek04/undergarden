@@ -19,7 +19,6 @@ public class UndergardenBiomes {
         BiomeDictionary.addTypes(FORGOTTEN_ABYSS.get(), BiomeDictionary.Type.WET);
     }
 
-
     public static void addBiomeFeatures() {
         for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
             if (biome instanceof ForgottenAbyssBiome) {

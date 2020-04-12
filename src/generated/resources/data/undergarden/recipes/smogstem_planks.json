@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "undergarden:smogstem_log"
+      "item": "undergarden:smogstem_log"
     }
   ],
   "result": {

@@ -31,10 +31,15 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         woodBlock(UndergardenBlocks.smogstem_log, "smogstem_log");
         crossBlock(UndergardenBlocks.smogstem_sapling);
         woodBlock(UndergardenBlocks.wigglewood_log, "wigglewood_log");
+        crossBlock(UndergardenBlocks.wigglewood_sapling);
         normalBlock(UndergardenBlocks.smogstem_planks);
         normalBlock(UndergardenBlocks.wigglewood_planks);
         normalBlock(UndergardenBlocks.smogstem_leaves);
         normalBlock(UndergardenBlocks.wigglewood_leaves);
+        crossBlock(UndergardenBlocks.indigo_mushroom);
+        crossBlock(UndergardenBlocks.veil_mushroom);
+        crossBlock(UndergardenBlocks.ink_mushroom);
+        crossBlock(UndergardenBlocks.blood_mushroom);
 
     }
 }
