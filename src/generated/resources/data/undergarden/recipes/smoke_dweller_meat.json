@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "undergarden:raw_dweller_meat"
+  },
+  "result": "undergarden:dweller_steak",
+  "experience": 0.35,
+  "cookingtime": 100
+}

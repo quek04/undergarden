@@ -6,8 +6,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UndergardenMod;
-import quek.undergarden.world.gen.feature.SmogstemFeature;
-import quek.undergarden.world.gen.feature.WigglewoodFeature;
+import quek.undergarden.world.gen.feature.*;
 
 public class UndergardenFeatures {
 

@@ -24,7 +24,7 @@ public class DeepturfBlock extends UndergardenGrassBlock implements IGrowable {
 
     public DeepturfBlock() {
         super(Properties.create(Material.ORGANIC)
-                .hardnessAndResistance(0.6F, 3F)
+                .hardnessAndResistance(0.6F, 0.6F)
                 .sound(SoundType.PLANT)
                 .harvestLevel(0)
                 .harvestTool(ToolType.SHOVEL)

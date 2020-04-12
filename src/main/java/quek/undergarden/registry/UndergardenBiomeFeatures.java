@@ -14,7 +14,6 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.placement.*;
-import quek.undergarden.world.gen.config.UndergardenTreeFeatureConfig;
 
 public class UndergardenBiomeFeatures {
 

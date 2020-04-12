@@ -15,7 +15,7 @@ public class DeepsoilBlock extends Block {
 
     public DeepsoilBlock() {
         super(Properties.create(Material.EARTH)
-                .hardnessAndResistance(0.6F, 3F)
+                .hardnessAndResistance(0.5F, 0.5F)
                 .sound(SoundType.GROUND)
                 .harvestTool(ToolType.SHOVEL)
         );

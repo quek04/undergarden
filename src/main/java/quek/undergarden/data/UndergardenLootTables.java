@@ -80,6 +80,10 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.veil_mushroom);
             dropSelf(UndergardenBlocks.ink_mushroom);
             dropSelf(UndergardenBlocks.blood_mushroom);
+            dropSelf(UndergardenBlocks.depthrock_bricks);
+            dropSelf(UndergardenBlocks.cracked_depthrock_bricks);
+            dropOther(UndergardenBlocks.smogstem_torch, UndergardenItems.smogstem_torch.get());
+            dropOther(UndergardenBlocks.smogstem_wall_torch, UndergardenItems.smogstem_torch.get());
         }
 
         @Override
@@ -95,6 +99,7 @@ public class UndergardenLootTables extends LootTableProvider {
             this.registerLootTable(UndergardenEntities.rotwalker, LootTable.builder());
             this.registerLootTable(UndergardenEntities.rotbeast, LootTable.builder());
             this.registerLootTable(UndergardenEntities.dweller, LootTable.builder());
+            this.registerLootTable(UndergardenEntities.gwibling, LootTable.builder());
         }
 
         @Override

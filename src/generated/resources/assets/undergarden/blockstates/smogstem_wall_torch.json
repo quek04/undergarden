@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "undergarden:block/smogstem_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "undergarden:block/smogstem_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "undergarden:block/smogstem_wall_torch",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "undergarden:block/smogstem_wall_torch"
+    }
+  }
+}

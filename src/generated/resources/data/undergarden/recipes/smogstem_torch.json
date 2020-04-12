@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "S"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:coal"
+    },
+    "S": {
+      "item": "undergarden:smogstem_stick"
+    }
+  },
+  "result": {
+    "item": "undergarden:smogstem_torch",
+    "count": 4
+  }
+}

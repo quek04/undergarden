@@ -9,7 +9,7 @@ import net.minecraft.util.SoundEvents;
 import java.util.function.Supplier;
 
 public enum UndergardenArmorMaterials implements IArmorMaterial {
-    CLOGGRUM("cloggrum", 22, new int[]{4, 7, 8, 4}, 10, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1, () -> Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get()))
+    CLOGGRUM("cloggrum", 10, new int[]{3, 6, 6, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1, () -> Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get()))
     ;
 
     private static final int[] durability_arr = new int[]{13, 15, 16, 11};

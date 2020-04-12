@@ -35,6 +35,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.wigglewood_leaves);
         itemBlock(UndergardenBlocks.smogstem_planks);
         itemBlock(UndergardenBlocks.wigglewood_planks);
+        itemBlock(UndergardenBlocks.depthrock_bricks);
+        itemBlock(UndergardenBlocks.cracked_depthrock_bricks);
         itemBlockFlat(UndergardenBlocks.tall_deepturf);
         itemBlockFlat(UndergardenBlocks.shimmerweed);
         itemBlockFlat(UndergardenBlocks.indigo_mushroom);
@@ -50,6 +52,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.utheric_shard);
         normalItem(UndergardenItems.utherium_ingot);
         normalItem(UndergardenItems.utherium_chunk);
+        normalItem(UndergardenItems.smogstem_torch);
 
         toolItem(UndergardenItems.smogstem_sword);
         toolItem(UndergardenItems.smogstem_pickaxe);
@@ -60,6 +63,11 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         toolItem(UndergardenItems.cloggrum_pickaxe);
         toolItem(UndergardenItems.cloggrum_axe);
         toolItem(UndergardenItems.cloggrum_shovel);
+
+        normalItem(UndergardenItems.cloggrum_helmet);
+        normalItem(UndergardenItems.cloggrum_chestplate);
+        normalItem(UndergardenItems.cloggrum_leggings);
+        normalItem(UndergardenItems.cloggrum_boots);
 
         toolItem(UndergardenItems.froststeel_sword);
         toolItem(UndergardenItems.froststeel_pickaxe);

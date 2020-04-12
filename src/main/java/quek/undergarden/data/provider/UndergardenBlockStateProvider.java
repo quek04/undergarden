@@ -3,6 +3,7 @@ package quek.undergarden.data.provider;
 import net.minecraft.block.Block;
 import net.minecraft.block.LogBlock;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -57,6 +58,17 @@ public abstract class UndergardenBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(block.get()).forAllStates(state ->
                 ConfiguredModel.builder()
                         .modelFile(model)
+                        .build());
+    }
+
+    public void torchBlock(Supplier<? extends Block> block, Supplier<? extends Block> wall) {
+        ModelFile torch = models().torch(blockName(block), texture(blockName(block)));
+        ModelFile torchwall = models().torchWall(blockName(wall), texture(blockName(block)));
+        simpleBlock(block.get(), torch);
+        getVariantBuilder(wall.get()).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(torchwall)
+                        .rotationY(((int) state.get(BlockStateProperties.HORIZONTAL_FACING).getHorizontalAngle() + 90) % 360)
                         .build());
     }
 

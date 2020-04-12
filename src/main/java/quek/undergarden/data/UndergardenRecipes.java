@@ -2,6 +2,8 @@ package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
+import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.data.provider.UndergardenRecipeProvider;
@@ -22,7 +24,17 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makePlanks(UndergardenBlocks.smogstem_planks, UndergardenBlocks.smogstem_log).build(consumer, name("smogstem_planks"));
         makePlanks(UndergardenBlocks.wigglewood_planks, UndergardenBlocks.wigglewood_log).build(consumer, name("wigglewood_planks"));
 
+        makeBricks(UndergardenBlocks.depthrock_bricks, UndergardenBlocks.depthrock).build(consumer);
+
         makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_torch.get(), 4)
+                .patternLine("C")
+                .patternLine("S")
+                .key('C', Items.COAL)
+                .key('S', UndergardenItems.smogstem_stick.get())
+                .addCriterion("has_" + UndergardenItems.smogstem_stick.get().getRegistryName().getPath(), hasItem(UndergardenItems.smogstem_stick.get()))
+                .build(consumer);
 
         makeShardToIngot().build(consumer, name("shard_to_ingot"));
 
@@ -64,7 +76,8 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         smeltingRecipe(UndergardenItems.froststeel_ingot.get(), UndergardenBlocks.froststeel_ore.get(), .7F).build(consumer, name("smelt_froststeel_ore"));
         blastingRecipe(UndergardenItems.froststeel_ingot.get(), UndergardenBlocks.froststeel_ore.get(), .7F).build(consumer, name("blast_froststeel_ore"));
 
-        smeltingRecipe(UndergardenItems.dweller_steak.get(), UndergardenItems.raw_dweller_meat.get(), .35F).build(consumer);
+        smeltingRecipe(UndergardenItems.dweller_steak.get(), UndergardenItems.raw_dweller_meat.get(), .35F).build(consumer, name("smelt_dweller_meat"));
+        smokingRecipe(UndergardenItems.dweller_steak.get(), UndergardenItems.raw_dweller_meat.get(), .35F).build(consumer, name("smoke_dweller_meat"));
     }
 
     private ResourceLocation name(String name) {

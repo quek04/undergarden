@@ -18,6 +18,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        torchBlock(UndergardenBlocks.smogstem_torch, UndergardenBlocks.smogstem_wall_torch);
         normalBlock(UndergardenBlocks.depthrock);
         normalBlock(UndergardenBlocks.cobbled_depthrock);
         normalBlock(UndergardenBlocks.deepsoil);
@@ -40,6 +41,8 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         crossBlock(UndergardenBlocks.veil_mushroom);
         crossBlock(UndergardenBlocks.ink_mushroom);
         crossBlock(UndergardenBlocks.blood_mushroom);
+        normalBlock(UndergardenBlocks.depthrock_bricks);
+        normalBlock(UndergardenBlocks.cracked_depthrock_bricks);
 
     }
 }

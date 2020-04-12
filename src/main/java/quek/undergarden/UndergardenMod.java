@@ -42,6 +42,7 @@ public class UndergardenMod {
 		UndergardenDimensions.MOD_DIMENSIONS.register(bus);
 		UndergardenBiomes.BIOMES.register(bus);
 		UndergardenFeatures.FEATURES.register(bus);
+		UndergardenWorldCarvers.CARVERS.register(bus);
 	}
 
 	public void setup(FMLCommonSetupEvent event) {

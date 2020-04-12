@@ -50,6 +50,8 @@ public class ClientStuff {
         render(UndergardenBlocks.ink_mushroom, cutout);
         render(UndergardenBlocks.blood_mushroom, cutout);
         render(UndergardenBlocks.underbean_bush, cutout);
+        render(UndergardenBlocks.smogstem_torch, cutout);
+        render(UndergardenBlocks.smogstem_wall_torch, cutout);
 
     }
 

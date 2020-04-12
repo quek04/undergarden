@@ -31,6 +31,14 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + logIn.get().getRegistryName().getPath(), hasItem(logIn.get()));
     }
 
+    public ShapedRecipeBuilder makeBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> materialIn) {
+        return ShapedRecipeBuilder.shapedRecipe(bricksOut.get(), 4)
+                .patternLine("MM")
+                .patternLine("MM")
+                .key('M', materialIn.get())
+                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+    }
+
     public ShapedRecipeBuilder makeSticks(Supplier<? extends Item> stickOut, Tag<Item> planksIn) {
         return ShapedRecipeBuilder.shapedRecipe(stickOut.get(), 4)
                 .patternLine("#")

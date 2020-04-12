@@ -23,6 +23,8 @@ public class UndergardenItems {
     public static final RegistryObject<Item> utheric_shard = ITEMS.register("utheric_shard", UndergardenItem::new);
     public static final RegistryObject<Item> utherium_ingot = ITEMS.register("utherium_ingot", UndergardenItem::new);
     public static final RegistryObject<Item> utherium_chunk = ITEMS.register("utherium_chunk", UndergardenItem::new);
+    public static final RegistryObject<Item> smogstem_torch = ITEMS.register("smogstem_torch", () -> new WallOrFloorItem(
+            UndergardenBlocks.smogstem_torch.get(), UndergardenBlocks.smogstem_wall_torch.get(), new Item.Properties().group(UndergardenItemGroups.UNDERGARDEN_BLOCKS)));
 
     //tools
     public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UndergardenSword(UndergardenItemTiers.SMOGSTEM));
