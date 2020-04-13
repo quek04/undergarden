@@ -1,11 +1,11 @@
-package quek.undergarden.entity.render;
+package quek.undergarden.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.entity.RotwalkerEntity;
-import quek.undergarden.entity.model.RotwalkerModel;
+import quek.undergarden.client.model.RotwalkerModel;
 
 public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel<RotwalkerEntity>> {
 

@@ -1,4 +1,4 @@
-package quek.undergarden.entity.render;
+package quek.undergarden.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.entity.DwellerEntity;
-import quek.undergarden.entity.model.DwellerModel;
+import quek.undergarden.client.model.DwellerModel;
 
 @OnlyIn(Dist.CLIENT)
 public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<DwellerEntity>> {

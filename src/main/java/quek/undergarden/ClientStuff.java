@@ -9,14 +9,12 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.world.UndergardenDimension;
 

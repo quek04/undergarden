@@ -1,4 +1,4 @@
-package quek.undergarden.entity.model;
+package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;

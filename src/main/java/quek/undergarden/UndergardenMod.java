@@ -5,7 +5,9 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,7 +21,7 @@ import quek.undergarden.data.UndergardenBlockStates;
 import quek.undergarden.data.UndergardenItemModels;
 import quek.undergarden.data.UndergardenLootTables;
 import quek.undergarden.data.UndergardenRecipes;
-import quek.undergarden.entity.render.*;
+import quek.undergarden.client.render.*;
 import quek.undergarden.registry.*;
 
 @Mod(UndergardenMod.MODID)
@@ -79,6 +81,11 @@ public class UndergardenMod {
 			} else {
 				undergarden_dimension = DimensionType.byName(undergarden);
 			}
+		}
+
+		@SubscribeEvent
+		public static void registerWorldCarver(final RegistryEvent.Register<WorldCarver<?>> event) {
+			UndergardenBiomes.addCarvers();
 		}
 	}
 }

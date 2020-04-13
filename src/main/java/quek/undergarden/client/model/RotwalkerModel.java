@@ -1,8 +1,6 @@
-package quek.undergarden.entity.model;
+package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import quek.undergarden.entity.RotwalkerEntity;

@@ -1,9 +1,31 @@
 {
+  "ambient.undergarden_ambience": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "undergarden:ambient/undergarden_ambience", "stream": false
+      }
+    ]
+  },
   "music.undergarden_music": {
     "category": "music",
-    "sounds": [ {
+    "sounds": [
+      {
       "name": "undergarden:music/monument", "stream": true
-    }
+      },
+      {
+        "name": "undergarden:music/smog", "stream": true
+      },
+      {
+        "name": "undergarden:music/brotherhood", "stream": true
+      }
+    ]
+  },
+  "entity.dweller_living": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.dweller_living",
+    "sounds": [
+        "undergarden:entity/dweller_living_1"
 
     ]
   }

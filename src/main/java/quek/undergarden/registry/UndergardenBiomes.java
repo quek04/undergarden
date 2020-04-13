@@ -29,4 +29,9 @@ public class UndergardenBiomes {
         }
     }
 
+    public static void addCarvers() {
+        ForgottenAbyssBiome biome = (ForgottenAbyssBiome) FORGOTTEN_ABYSS.get();
+        biome.addWorldCarver();
+    }
+
 }

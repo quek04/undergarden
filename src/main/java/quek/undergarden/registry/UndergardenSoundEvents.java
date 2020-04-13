@@ -11,11 +11,13 @@ import quek.undergarden.UndergardenMod;
 @Mod.EventBusSubscriber(modid = UndergardenMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UndergardenSoundEvents {
 
+    public static final SoundEvent UNDERGARDEN_AMBIENCE = makeSoundEvent("ambient.undergarden_ambience");
+
     public static final SoundEvent UNDERGARDEN_MUSIC = makeSoundEvent("music.undergarden_music");
 
-    public static final SoundEvent DWELLER_LIVING = makeSoundEvent("dweller_living");
-    public static final SoundEvent DWELLER_HURT = makeSoundEvent("dweller_hurt");
-    public static final SoundEvent DWELLER_DEATH = makeSoundEvent("dweller_death");
+    public static final SoundEvent DWELLER_LIVING = makeSoundEvent("entity.dweller_living");
+    public static final SoundEvent DWELLER_HURT = makeSoundEvent("entity.dweller_hurt");
+    public static final SoundEvent DWELLER_DEATH = makeSoundEvent("entity.dweller_death");
 
     private static SoundEvent makeSoundEvent(String name) {
         SoundEvent sound = new SoundEvent(new ResourceLocation(UndergardenMod.MODID, name));
@@ -26,6 +28,7 @@ public class UndergardenSoundEvents {
     @SubscribeEvent
     public static void registerSounds(RegistryEvent.Register<SoundEvent> event) {
         event.getRegistry().registerAll(
+                UNDERGARDEN_AMBIENCE,
                 UNDERGARDEN_MUSIC,
                 DWELLER_LIVING,
                 DWELLER_HURT,

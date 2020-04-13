@@ -11,9 +11,8 @@ import java.util.Random;
 
 public class SmogstemTree extends Tree {
 
-    @Nullable
     @Override
-    protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean p_225546_2_) {
+    public ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean p_225546_2_) {
         return UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG);
         //return Feature.NORMAL_TREE.withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG);
     }
