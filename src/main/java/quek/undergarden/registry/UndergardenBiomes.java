@@ -16,9 +16,8 @@ public class UndergardenBiomes {
 
     public static final RegistryObject<Biome> FORGOTTEN_ABYSS = BIOMES.register("forgotten_abyss", ForgottenAbyssBiome::new);
 
-    public static void addBiomeTypes()
-    {
-        BiomeDictionary.addTypes(FORGOTTEN_ABYSS.get(), BiomeDictionary.Type.WET);
+    public static void addBiomeTypes() {
+        BiomeDictionary.addTypes(FORGOTTEN_ABYSS.get(), BiomeDictionary.Type.PLAINS);
     }
 
     public static void addBiomeFeatures() {
@@ -27,11 +26,6 @@ public class UndergardenBiomes {
                 ((ForgottenAbyssBiome)biome).addFeatures();
             }
         }
-    }
-
-    public static void addCarvers() {
-        ForgottenAbyssBiome biome = (ForgottenAbyssBiome) FORGOTTEN_ABYSS.get();
-        biome.addWorldCarver();
     }
 
 }

@@ -6,6 +6,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.carver.WorldCarver;
+import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
@@ -17,12 +18,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.data.UndergardenBlockStates;
-import quek.undergarden.data.UndergardenItemModels;
-import quek.undergarden.data.UndergardenLootTables;
-import quek.undergarden.data.UndergardenRecipes;
+import net.minecraftforge.registries.ObjectHolder;
+
+import quek.undergarden.data.*;
 import quek.undergarden.client.render.*;
 import quek.undergarden.registry.*;
+import quek.undergarden.world.gen.carver.UndergardenCaveWorldCarver;
 
 @Mod(UndergardenMod.MODID)
 public class UndergardenMod {
@@ -52,7 +53,7 @@ public class UndergardenMod {
 		UndergardenBiomes.addBiomeFeatures();
 	}
 
-	public void clientSetup(final FMLClientSetupEvent event) {
+	public void clientSetup(FMLClientSetupEvent event) {
 		ClientStuff.registerBlockRenderers();
 		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotwalker, RotwalkerRender::new);
 		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotbeast, RotbeastRender::new);
@@ -85,7 +86,10 @@ public class UndergardenMod {
 
 		@SubscribeEvent
 		public static void registerWorldCarver(final RegistryEvent.Register<WorldCarver<?>> event) {
-			UndergardenBiomes.addCarvers();
+			event.getRegistry().register(new UndergardenCaveWorldCarver(ProbabilityConfig::deserialize));
 		}
+
+		@ObjectHolder("undergarden:undergarden_cave")
+		public static UndergardenCaveWorldCarver UNDERGARDEN_CAVE;
 	}
 }

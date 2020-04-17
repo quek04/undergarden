@@ -32,18 +32,6 @@ public class UndergardenLeavesBlock extends LeavesBlock {
         );
     }
 
-    /*
-    @Override
-    public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        if (!state.get(PERSISTENT) && state.get(DISTANCE) == 7) {
-            spawnDrops(state, worldIn, pos);
-            worldIn.removeBlock(pos, false);
-        }
-
-    }
-   
-     */
-
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (stateIn == UndergardenBlocks.smogstem_leaves.get().getDefaultState()) {

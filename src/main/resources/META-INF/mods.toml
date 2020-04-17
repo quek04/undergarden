@@ -5,13 +5,10 @@ issueTrackerURL="https://github.com/quek04/The-Undergarden/issues"
 modId="undergarden"
 version="${file.jarVersion}"
 displayName="The Undergarden"
-displayURL="http://example.com/"
-logoFile="examplemod.png"
-credits=""
+logoFile="logo.png"
+credits="Screem: music and some textures"
 authors="quek"
-description='''
-ill do this later
-'''
+description='''Deep underground, a forgotten land awaits.'''
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
