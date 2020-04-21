@@ -19,6 +19,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
 
     @Override
     protected void registerModels() {
+        itemBlock(UndergardenBlocks.undergarden_portal_frame);
         itemBlock(UndergardenBlocks.depthrock);
         itemBlock(UndergardenBlocks.cobbled_depthrock);
         itemBlock(UndergardenBlocks.coal_ore);
@@ -44,6 +45,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.ink_mushroom);
         itemBlockFlat(UndergardenBlocks.blood_mushroom);
 
+        normalItem(UndergardenItems.undergarden_portal_catalyst);
         normalItem(UndergardenItems.smogstem_stick);
         normalItem(UndergardenItems.cloggrum_ingot);
         normalItem(UndergardenItems.cloggrum_nugget);

@@ -6,6 +6,7 @@ modId="undergarden"
 version="${file.jarVersion}"
 displayName="The Undergarden"
 logoFile="logo.png"
+logoBlur=false
 credits="Screem: music and some textures"
 authors="quek"
 description='''Deep underground, a forgotten land awaits.'''

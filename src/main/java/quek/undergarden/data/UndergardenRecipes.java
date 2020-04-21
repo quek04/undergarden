@@ -36,6 +36,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addCriterion("has_" + UndergardenItems.smogstem_stick.get().getRegistryName().getPath(), hasItem(UndergardenItems.smogstem_stick.get()))
                 .build(consumer);
 
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.undergarden_portal_catalyst.get())
+                .patternLine("GIG")
+                .patternLine("IGI")
+                .patternLine("GIG")
+                .key('G', Items.GOLD_INGOT)
+                .key('I', Items.IRON_INGOT)
+                .addCriterion("has_gold", hasItem(Items.GOLD_INGOT))
+                .addCriterion("has_iron", hasItem(Items.IRON_INGOT))
+                .build(consumer);
+
         makeShardToIngot().build(consumer, name("shard_to_ingot"));
 
         makeIngotToNugget(UndergardenItems.cloggrum_nugget, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_ingot_to_nugget"));
@@ -70,6 +80,8 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeChestplate(UndergardenItems.cloggrum_chestplate, UndergardenItems.cloggrum_ingot).build(consumer);
         makeLeggings(UndergardenItems.cloggrum_leggings, UndergardenItems.cloggrum_ingot).build(consumer);
         makeBoots(UndergardenItems.cloggrum_boots, UndergardenItems.cloggrum_ingot).build(consumer);
+
+        smeltingRecipe(Items.IRON_INGOT, UndergardenItems.undergarden_portal_catalyst.get(), .90F).build(consumer, "smelt_catalyst");
 
         smeltingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
         blastingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("blast_cloggrum_ore"));

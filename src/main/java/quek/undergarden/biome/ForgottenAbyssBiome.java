@@ -29,7 +29,7 @@ public class ForgottenAbyssBiome extends Biome {
         UndergardenBiomeFeatures.addShrooms(this);
         UndergardenBiomeFeatures.addLakes(this);
         UndergardenBiomeFeatures.addTrees(this);
-        this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
+        this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(0.14285715F)));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.ENCLOSED_WATER_SPRING).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(16, 10, 20, 120))));
     }
 

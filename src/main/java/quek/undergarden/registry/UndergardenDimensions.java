@@ -18,8 +18,6 @@ import java.util.function.BiFunction;
 
 public class UndergardenDimensions {
 
-    public static final DeferredRegister<BiomeProviderType<?,?>> BIOME_PROVIDER_TYPES = new DeferredRegister<>(ForgeRegistries.BIOME_PROVIDER_TYPES, UndergardenMod.MODID);
-    public static final DeferredRegister<ChunkGeneratorType<?,?>> CHUNK_GENERATOR_TYPES = new DeferredRegister<>(ForgeRegistries.CHUNK_GENERATOR_TYPES, UndergardenMod.MODID);
     public static final DeferredRegister<ModDimension> MOD_DIMENSIONS = new DeferredRegister<>(ForgeRegistries.MOD_DIMENSIONS, UndergardenMod.MODID);
 
     public static final RegistryObject<ModDimension> UNDERGARDEN = MOD_DIMENSIONS.register("undergarden", () -> new ModDimension() {

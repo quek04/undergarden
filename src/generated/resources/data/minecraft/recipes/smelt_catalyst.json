@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "undergarden:undergarden_portal_catalyst"
+  },
+  "result": "minecraft:iron_ingot",
+  "experience": 0.9,
+  "cookingtime": 200
+}

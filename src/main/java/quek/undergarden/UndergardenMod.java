@@ -64,6 +64,7 @@ public class UndergardenMod {
 
 	public void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
+		generator.addProvider(new UndergardenLang(generator));
 		generator.addProvider(new UndergardenRecipes(generator));
 		generator.addProvider(new UndergardenLootTables(generator));
 		generator.addProvider(new UndergardenBlockStates(generator, event.getExistingFileHelper()));

@@ -15,6 +15,7 @@ public class UndergardenItems {
 
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, UndergardenMod.MODID);
 
+    public static final RegistryObject<Item> undergarden_portal_catalyst = ITEMS.register("undergarden_portal_catalyst", UndergardenPortalCatalystItem::new);
     public static final RegistryObject<Item> smogstem_stick = ITEMS.register("smogstem_stick", UndergardenItem::new);
     public static final RegistryObject<Item> cloggrum_ingot = ITEMS.register("cloggrum_ingot", UndergardenItem::new);
     public static final RegistryObject<Item> cloggrum_nugget = ITEMS.register("cloggrum_nugget", UndergardenItem::new);
@@ -59,7 +60,7 @@ public class UndergardenItems {
     public static final RegistryObject<Item> dweller_steak = ITEMS.register("dweller_steak", () -> new UndergardenItem(UndergardenFoods.COOKED_DWELLER));
 
     //spawn eggs
-    public static final RegistryObject<Item> rotwalker_spawn_egg = ITEMS.register("rotwalker_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotwalker, 1, 1));
-    public static final RegistryObject<Item> rotbeast_spawn_egg = ITEMS.register("rotbeast_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotbeast, 1,1));
+    //public static final RegistryObject<Item> rotwalker_spawn_egg = ITEMS.register("rotwalker_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotwalker, 1, 1));
+    //public static final RegistryObject<Item> rotbeast_spawn_egg = ITEMS.register("rotbeast_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotbeast, 1,1));
 
 }

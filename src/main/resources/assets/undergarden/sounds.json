@@ -1,10 +1,17 @@
 {
-  "ambient.undergarden_ambience": {
+  "ambient.undergarden_ambiance": {
     "category": "ambient",
     "sounds": [
       {
-        "name": "undergarden:ambient/undergarden_ambience", "stream": false
+        "name": "undergarden:ambient/undergarden_ambiance", "stream": false
       }
+    ]
+  },
+  "ambient.undergarden_portal_ambient": {
+    "category": "blocks",
+    "subtitle": "subtitles.ambient.undergarden_portal_ambient",
+    "sounds": [
+      "undergarden:ambient/undergarden_portal_ambient"
     ]
   },
   "music.undergarden_music": {
@@ -26,8 +33,7 @@
     "subtitle": "subtitles.entity.dweller_living",
     "sounds": [
       "undergarden:entity/dweller_living_1",
-      "undergarden:entity/dweller_living_2",
-      "undergarden:entity/dweller_living_3"
+      "undergarden:entity/dweller_living_2"
     ]
   },
   "entity.dweller_hurt": {

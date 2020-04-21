@@ -43,6 +43,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         crossBlock(UndergardenBlocks.blood_mushroom);
         normalBlock(UndergardenBlocks.depthrock_bricks);
         normalBlock(UndergardenBlocks.cracked_depthrock_bricks);
+        normalBlock(UndergardenBlocks.undergarden_portal);
 
     }
 }
