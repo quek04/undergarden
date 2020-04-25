@@ -55,6 +55,9 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", UndergardenMushroomBlock::new);
     public static final RegistryObject<Block> ink_mushroom = registerBlock("ink_mushroom", UndergardenMushroomBlock::new);
     public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", UndergardenMushroomBlock::new);
+    public static final RegistryObject<StemGrownBlock> gloomgourd = registerBlock("gloomgourd", GloomgourdBlock::new);
+    public static final RegistryObject<Block> carved_gloomgourd = registerBlock("carved_gloomgourd", CarvedGloomgourdBlock::new);
+    public static final RegistryObject<Block> gloomgourd_stem = BLOCKS.register("gloomgourd_stem", () -> new UndergardenStemBlock(gloomgourd.get()));
 
     //ores
     public static final RegistryObject<Block> coal_ore = registerBlock("coal_ore", () -> new UndergardenOreBlock(0));
@@ -65,6 +68,7 @@ public class UndergardenBlocks {
     //manufactured
     public static final RegistryObject<Block> smogstem_torch = BLOCKS.register("smogstem_torch", UndergardenTorchBlock::new);
     public static final RegistryObject<Block> smogstem_wall_torch = BLOCKS.register("smogstem_wall_torch", UndergardenWallTorchBlock::new);
+    public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(15));
 
     //tiles
 

@@ -13,16 +13,10 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
     private final double[] field_222573_h = this.func_222572_j();
 
     public UndergardenChunkGenerator(World world, BiomeProvider provider, UndergardenGenerationSettings generationSettings) {
-        super(world, provider, 8, 4, 128, generationSettings, true);
+        super(world, provider, 8, 4, 128, generationSettings, false);
     }
 
     protected void fillNoiseColumn(double[] noiseColumn, int noiseX, int noiseZ) {
-        double d0 = 684.412D;
-        double d1 = 2053.236D;
-        double d2 = 8.555150000000001D;
-        double d3 = 34.2206D;
-        int i = -10;
-        int j = 3;
         this.calcNoiseColumn(noiseColumn, noiseX, noiseZ, 684.412D, 2053.236D, 8.555150000000001D, 34.2206D, 3, -10);
     }
 

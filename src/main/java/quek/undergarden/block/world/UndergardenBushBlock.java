@@ -1,24 +1,20 @@
 package quek.undergarden.block.world;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.BushBlock;
+import net.minecraft.block.*;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
-import net.minecraftforge.common.IShearable;
+import net.minecraftforge.common.IPlantable;
 import quek.undergarden.registry.UndergardenBlocks;
 
-public class UndergardenBushBlock extends BushBlock implements IShearable {
+public class UndergardenBushBlock extends Block implements IPlantable {
     protected UndergardenBushBlock(Properties properties) {
         super(properties);
     }
 
-    @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
         return block == UndergardenBlocks.deepturf_block.get() || block == UndergardenBlocks.deepsoil.get();
@@ -44,7 +40,7 @@ public class UndergardenBushBlock extends BushBlock implements IShearable {
 
     @Override
     public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
-        return type == PathType.AIR && !this.blocksMovement ? true : super.allowsMovement(state, worldIn, pos, type);
+        return type == PathType.AIR && !this.blocksMovement || super.allowsMovement(state, worldIn, pos, type);
     }
 
     @Override

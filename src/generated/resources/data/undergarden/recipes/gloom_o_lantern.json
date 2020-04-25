@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G",
+    "T"
+  ],
+  "key": {
+    "G": {
+      "item": "undergarden:carved_gloomgourd"
+    },
+    "T": {
+      "item": "undergarden:smogstem_torch"
+    }
+  },
+  "result": {
+    "item": "undergarden:gloom_o_lantern"
+  }
+}

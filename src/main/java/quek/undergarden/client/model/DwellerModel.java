@@ -37,7 +37,7 @@ public class DwellerModel<T extends DwellerEntity> extends SegmentedModel<T> {
 		this.trunk = new ModelRenderer(this, 65, 0);
 		this.trunk.setRotationPoint(0.0F, 6.8567F, -2.4037F);
 		this.setRotationAngle(trunk, 2.5307F, 0.0F, 0.0F);
-		//this.head.addChild(trunk);
+		this.head.addChild(trunk);
 		this.trunk.addBox(-2.0F, -2.2003F, -8.9196F, 4, 3, 9);
 
 		//trunk.cubeList.add(new ModelBox(trunk, 65, 0, -2.0F, -2.2003F, -8.9196F, 4, 3, 9, 0.0F, false));
@@ -45,7 +45,7 @@ public class DwellerModel<T extends DwellerEntity> extends SegmentedModel<T> {
 		this.trunk2 = new ModelRenderer(this, 82, 0);
 		this.trunk2.setRotationPoint(0.0F, -0.8126F, -7.8452F);
 		this.setRotationAngle(trunk2, 0.1745F, 0.0F, 0.0F);
-		//this.trunk.addChild(trunk2);
+		this.trunk.addChild(trunk2);
 		this.trunk2.addBox(-1.0F, -0.475F, -6.917F, 2, 2, 6);
 
 		//trunk2.cubeList.add(new ModelBox(trunk2, 82, 0, -1.0F, -0.475F, -6.917F, 2, 2, 6, 0.0F, false));
@@ -53,7 +53,7 @@ public class DwellerModel<T extends DwellerEntity> extends SegmentedModel<T> {
 		this.trunk3 = new ModelRenderer(this, 92, 0);
 		this.trunk3.setRotationPoint(0.0F, 1.0F, -6.0F);
 		this.setRotationAngle(trunk3, 0.2618F, 0.0F, 0.0F);
-		//this.trunk2.addChild(trunk3);
+		this.trunk2.addChild(trunk3);
 		this.trunk3.addBox(-1.0F, -0.7934F, -4.8723F, 2, 1, 4);
 
 		//trunk3.cubeList.add(new ModelBox(trunk3, 92, 0, -1.0F, -0.7934F, -4.8723F, 2, 1, 4, 0.0F, false));
@@ -85,7 +85,7 @@ public class DwellerModel<T extends DwellerEntity> extends SegmentedModel<T> {
 		this.leftfoot = new ModelRenderer(this, 0, 53);
 		this.leftfoot.setRotationPoint(2.0F, 9.4586F, 8.8562F);
 		this.setRotationAngle(leftfoot, -0.8727F, 0.0F, 0.0F);
-		//this.leftleg.addChild(leftfoot);
+		this.leftleg.addChild(leftfoot);
 		this.leftfoot.addBox(-2.0F, -1.5F, -0.5F, 4, 2, 7);
 
 		//leftfoot.cubeList.add(new ModelBox(leftfoot, 0, 53, -2.0F, -1.5F, -0.5F, 4, 2, 7, 0.0F, false));
@@ -104,7 +104,7 @@ public class DwellerModel<T extends DwellerEntity> extends SegmentedModel<T> {
 		this.leftfoot.mirror = true;
 		this.rightfoot.setRotationPoint(-2.0F, 9.4586F, 8.8562F);
 		this.setRotationAngle(rightfoot, -0.8727F, 0.0F, 0.0F);
-		//this.rightleg.addChild(rightfoot);
+		this.rightleg.addChild(rightfoot);
 		this.rightfoot.addBox(-2.0F, -1.5F, -0.5F, 4, 2, 7);
 
 		//rightfoot.cubeList.add(new ModelBox(rightfoot, 0, 53, -2.0F, -1.5F, -0.5F, 4, 2, 7, 0.0F, false));
@@ -112,7 +112,7 @@ public class DwellerModel<T extends DwellerEntity> extends SegmentedModel<T> {
 		this.tail = new ModelRenderer(this, 43, 0);
 		this.tail.setRotationPoint(0.0F, 2.0F, 11.5F);
 		this.setRotationAngle(tail, 0.1745F, 0.0F, 0.0F);
-		//this.torso.addChild(tail);
+		this.torso.addChild(tail);
 		this.tail.addBox(-4.0F, -0.0608F, -2.1946F, 8, 8, 3);
 
 		//tail.cubeList.add(new ModelBox(tail, 43, 0, -4.0F, -0.0608F, -2.1946F, 8, 8, 3, 0.0F, false));
@@ -120,7 +120,7 @@ public class DwellerModel<T extends DwellerEntity> extends SegmentedModel<T> {
 		this.tail2 = new ModelRenderer(this, 0, 0);
 		this.tail2.setRotationPoint(0.0F, 7.8827F, -0.4454F);
 		this.setRotationAngle(tail2, -0.2618F, 0.0F, 0.0F);
-		//this.tail.addChild(tail2);
+		this.tail.addChild(tail2);
 		this.tail2.addBox(-3.0F, -0.5F, -0.2508F, 6, 8, 1);
 
 		//tail2.cubeList.add(new ModelBox(tail2, 0, 0, -3.0F, -0.5F, -0.2508F, 6, 8, 1, 0.0F, false));

@@ -84,6 +84,9 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.cracked_depthrock_bricks);
             dropOther(UndergardenBlocks.smogstem_torch, UndergardenItems.smogstem_torch.get());
             dropOther(UndergardenBlocks.smogstem_wall_torch, UndergardenItems.smogstem_torch.get());
+            dropSelf(UndergardenBlocks.gloomgourd);
+            dropSelf(UndergardenBlocks.carved_gloomgourd);
+            dropSelf(UndergardenBlocks.gloom_o_lantern);
         }
 
         @Override

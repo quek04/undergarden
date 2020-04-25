@@ -28,6 +28,23 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
 
+        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.gloom_o_lantern.get())
+                .patternLine("G")
+                .patternLine("T")
+                .key('G', UndergardenBlocks.carved_gloomgourd.get())
+                .key('T', UndergardenItems.smogstem_torch.get())
+                .addCriterion("has_" + UndergardenBlocks.carved_gloomgourd.get().getRegistryName().getPath(), hasItem(UndergardenBlocks.carved_gloomgourd.get()))
+                .addCriterion("has_" + UndergardenItems.smogstem_torch.get().getRegistryName().getPath(), hasItem(UndergardenItems.smogstem_torch.get()))
+                .build(consumer);
+
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.cloggrum_shears.get())
+                .patternLine("C ")
+                .patternLine(" C")
+                .key('C', UndergardenItems.cloggrum_ingot.get())
+                .addCriterion("has_" + UndergardenItems.cloggrum_ingot.get().getRegistryName().getPath(), hasItem(UndergardenItems.cloggrum_ingot.get()))
+                .build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_torch.get(), 4)
                 .patternLine("C")
                 .patternLine("S")

@@ -1,5 +1,6 @@
 package quek.undergarden.client.render;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -21,6 +22,11 @@ public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<Dwell
     @Override
     public ResourceLocation getEntityTexture(DwellerEntity entity) {
         return TEXTURE;
+    }
+
+    @Override
+    protected void applyRotations(DwellerEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
+        super.applyRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
     }
 
 }

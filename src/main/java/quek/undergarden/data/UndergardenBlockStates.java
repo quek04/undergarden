@@ -44,6 +44,5 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.depthrock_bricks);
         normalBlock(UndergardenBlocks.cracked_depthrock_bricks);
         normalBlock(UndergardenBlocks.undergarden_portal);
-
     }
 }

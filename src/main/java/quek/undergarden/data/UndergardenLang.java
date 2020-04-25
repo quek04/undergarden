@@ -42,6 +42,9 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.veil_mushroom, "Veiled Mushroom");
         addBlock(UndergardenBlocks.ink_mushroom, "Ink Mushroom");
         addBlock(UndergardenBlocks.blood_mushroom, "Blood Mushroom");
+        addBlock(UndergardenBlocks.gloomgourd, "Gloomgourd");
+        addBlock(UndergardenBlocks.carved_gloomgourd, "Carved Gloomgourd");
+        addBlock(UndergardenBlocks.gloom_o_lantern, "Gloom o'Lantern");
 
         addBlock(UndergardenBlocks.coal_ore, "Coal Ore");
         addBlock(UndergardenBlocks.cloggrum_ore, "Cloggrum Ore");
@@ -81,6 +84,8 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utheric_pickaxe, "Utherium Pickaxe");
         addItem(UndergardenItems.utheric_axe, "Utherium Axe");
         addItem(UndergardenItems.utheric_shovel, "Utherium_Shovel");
+
+        addItem(UndergardenItems.cloggrum_shears, "Cloggrum Shears");
 
         addItem(UndergardenItems.cloggrum_helmet, "Cloggrum Helmet");
         addItem(UndergardenItems.cloggrum_chestplate, "Cloggrum Chestplate");

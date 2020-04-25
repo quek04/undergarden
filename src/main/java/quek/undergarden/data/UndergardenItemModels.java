@@ -44,6 +44,9 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.veil_mushroom);
         itemBlockFlat(UndergardenBlocks.ink_mushroom);
         itemBlockFlat(UndergardenBlocks.blood_mushroom);
+        itemBlock(UndergardenBlocks.gloomgourd);
+        itemBlock(UndergardenBlocks.carved_gloomgourd);
+        itemBlock(UndergardenBlocks.gloom_o_lantern);
 
         normalItem(UndergardenItems.undergarden_portal_catalyst);
         normalItem(UndergardenItems.smogstem_stick);

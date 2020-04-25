@@ -2,11 +2,13 @@ package quek.undergarden;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
@@ -23,7 +25,9 @@ import net.minecraftforge.registries.ObjectHolder;
 import quek.undergarden.data.*;
 import quek.undergarden.client.render.*;
 import quek.undergarden.registry.*;
-import quek.undergarden.world.gen.carver.UndergardenCaveWorldCarver;
+import quek.undergarden.world.gen.carver.*;
+
+import java.util.UUID;
 
 @Mod(UndergardenMod.MODID)
 public class UndergardenMod {
@@ -73,6 +77,17 @@ public class UndergardenMod {
 
 	@Mod.EventBusSubscriber(modid = MODID)
 	public static class ForgeEventBus {
+
+		@SubscribeEvent
+		public static void renderPlayerEvent(RenderPlayerEvent event) {
+			if(event.getEntity() instanceof PlayerEntity && UUID.fromString("353a859b-ba16-4e6a-8f63-9a8c79ab0071").equals(event.getEntity().getUniqueID())) {
+				event.getMatrixStack().scale(.5F, .5F, .5F);
+			}
+			if(event.getEntity() instanceof PlayerEntity && UUID.fromString("925e5f40-b7d2-4614-8491-c1bc13d8223d").equals(event.getEntity().getUniqueID())) {
+				event.getMatrixStack().scale(1.5F, 1F, 1F);
+			}
+		}
+
 		@SubscribeEvent
 		public static void registerModDimension(final RegisterDimensionsEvent event) {
 			ResourceLocation undergarden = new ResourceLocation(UndergardenMod.MODID, "undergarden");
