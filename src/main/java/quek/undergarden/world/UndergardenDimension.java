@@ -1,5 +1,7 @@
 package quek.undergarden.world;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
@@ -9,6 +11,9 @@ import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
 
+import net.minecraft.world.storage.WorldInfo;
+import quek.undergarden.biome.provider.UndergardenBiomeProvider;
+import quek.undergarden.biome.provider.UndergardenBiomeProviderSettings;
 import quek.undergarden.registry.UndergardenBiomes;
 import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.world.gen.UndergardenChunkGenerator;
@@ -30,14 +35,12 @@ public class UndergardenDimension extends Dimension {
 
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
-        UndergardenGenerationSettings generationSettings = new UndergardenGenerationSettings();
-        SingleBiomeProviderSettings settings = new SingleBiomeProviderSettings(this.world.getWorldInfo());
-
-        settings.setBiome(UndergardenBiomes.FORGOTTEN_ABYSS.get());
-
-        UndergardenSingleBiomeProvider provider = new UndergardenSingleBiomeProvider(settings);
-
-        return new UndergardenChunkGenerator(world, provider, generationSettings);
+        UndergardenGenerationSettings undergardenGenerationSettings = new UndergardenGenerationSettings();
+        UndergardenBiomeProviderSettings settings = new UndergardenBiomeProviderSettings();
+        WorldInfo worldInfo = this.world.getWorldInfo();
+        settings.setWorldInfo(worldInfo);
+        UndergardenBiomeProvider provider = new UndergardenBiomeProvider(settings);
+        return new UndergardenChunkGenerator(world, provider, undergardenGenerationSettings);
     }
 
     @Nullable
