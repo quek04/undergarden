@@ -11,11 +11,12 @@ import net.minecraftforge.common.IPlantable;
 import quek.undergarden.registry.UndergardenBlocks;
 
 public class UndergardenBushBlock extends Block implements IPlantable {
-    protected UndergardenBushBlock(Properties properties) {
+
+    public UndergardenBushBlock(Properties properties) {
         super(properties);
     }
 
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
         return block == UndergardenBlocks.deepturf_block.get() || block == UndergardenBlocks.deepsoil.get();
     }
@@ -35,7 +36,7 @@ public class UndergardenBushBlock extends Block implements IPlantable {
 
     @Override
     public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
-        return true;
+        return false;
     }
 
     @Override

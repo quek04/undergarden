@@ -78,7 +78,7 @@ public class UndergardenMushroomBlock extends UndergardenBushBlock implements IG
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.isOpaqueCube(worldIn, pos);
     }
 

@@ -9,6 +9,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
+import quek.undergarden.client.render.layer.GwiblingEyesLayer;
 import quek.undergarden.entity.GwiblingEntity;
 import quek.undergarden.client.model.GwiblingModel;
 
@@ -19,6 +20,7 @@ public class GwiblingRender extends MobRenderer<GwiblingEntity, GwiblingModel<Gw
 
     public GwiblingRender(EntityRendererManager rendererManager) {
         super(rendererManager, new GwiblingModel<>(), .3F);
+        this.addLayer(new GwiblingEyesLayer<>(this));
     }
 
     @Override
@@ -32,7 +34,7 @@ public class GwiblingRender extends MobRenderer<GwiblingEntity, GwiblingModel<Gw
         float f = 4.3F * MathHelper.sin(0.6F * ageInTicks);
         matrixStackIn.rotate(Vector3f.YP.rotationDegrees(f));
         if (!entityLiving.isInWater()) {
-            matrixStackIn.translate((double)0.1F, (double)0.1F, (double)-0.1F);
+            matrixStackIn.translate(0.1F, 0.1F, -0.1F);
             matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(90.0F));
         }
 

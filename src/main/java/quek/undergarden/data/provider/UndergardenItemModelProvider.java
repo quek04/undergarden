@@ -42,4 +42,8 @@ public abstract class UndergardenItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/" + item.get().getRegistryName().getPath()));
     }
+
+    public ItemModelBuilder egg(Supplier<? extends Item> item) {
+        return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));
+    }
 }

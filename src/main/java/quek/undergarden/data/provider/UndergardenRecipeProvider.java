@@ -48,7 +48,7 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
     }
 
     public ShapedRecipeBuilder makeShardToIngot() {
-        return ShapedRecipeBuilder.shapedRecipe(UndergardenItems.utherium_ingot.get(), 1)
+        return ShapedRecipeBuilder.shapedRecipe(UndergardenItems.utherium_chunk.get(), 1)
                 .patternLine("SS")
                 .patternLine("SS")
                 .key('S', UndergardenItems.utheric_shard.get())

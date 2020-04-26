@@ -52,7 +52,7 @@ public class UndergardenStemBlock extends UndergardenBushBlock implements IGrowa
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.getBlock() == Blocks.FARMLAND;
     }
 

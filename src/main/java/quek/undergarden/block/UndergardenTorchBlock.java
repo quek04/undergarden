@@ -14,5 +14,4 @@ public class UndergardenTorchBlock extends TorchBlock {
                 .sound(SoundType.WOOD)
         );
     }
-
 }

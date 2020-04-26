@@ -40,6 +40,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.cracked_depthrock_bricks);
         itemBlockFlat(UndergardenBlocks.tall_deepturf);
         itemBlockFlat(UndergardenBlocks.shimmerweed);
+        itemBlockFlat(UndergardenBlocks.ditchbulb_plant);
         itemBlockFlat(UndergardenBlocks.indigo_mushroom);
         itemBlockFlat(UndergardenBlocks.veil_mushroom);
         itemBlockFlat(UndergardenBlocks.ink_mushroom);
@@ -58,6 +59,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.utherium_ingot);
         normalItem(UndergardenItems.utherium_chunk);
         normalItem(UndergardenItems.smogstem_torch);
+        normalItem(UndergardenItems.ditchbulb);
 
         toolItem(UndergardenItems.smogstem_sword);
         toolItem(UndergardenItems.smogstem_pickaxe);
@@ -85,8 +87,15 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         toolItem(UndergardenItems.utheric_shovel);
 
         normalItem(UndergardenItems.underbeans);
+        normalItem(UndergardenItems.gloomgourd_pie);
         normalItem(UndergardenItems.raw_dweller_meat);
         normalItem(UndergardenItems.dweller_steak);
+
+        egg(UndergardenItems.dweller_spawn_egg);
+        egg(UndergardenItems.gwibling_spawn_egg);
+        egg(UndergardenItems.rotdweller_spawn_egg);
+        egg(UndergardenItems.rotwalker_spawn_egg);
+        egg(UndergardenItems.rotbeast_spawn_egg);
     }
 
 

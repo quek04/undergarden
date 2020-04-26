@@ -33,9 +33,9 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
 
         for(int i = 0; i < this.noiseSizeY(); ++i) {
             adouble[i] = Math.cos((double)i * Math.PI * 6.0D / (double)this.noiseSizeY()) * 2.0D;
-            double d0 = (double)i;
+            double d0 = i;
             if (i > this.noiseSizeY() / 2) {
-                d0 = (double)(this.noiseSizeY() - 1 - i);
+                d0 = this.noiseSizeY() - 1 - i;
             }
 
             if (d0 < 4.0D) { //4

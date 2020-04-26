@@ -38,6 +38,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.wigglewood_leaves, "Wigglewood Leaves");
         addBlock(UndergardenBlocks.tall_deepturf, "Deepturf");
         addBlock(UndergardenBlocks.shimmerweed, "Shimmerweed");
+        addBlock(UndergardenBlocks.ditchbulb_plant, "Ditchbulb Plant");
         addBlock(UndergardenBlocks.indigo_mushroom, "Indigo Mushroom");
         addBlock(UndergardenBlocks.veil_mushroom, "Veiled Mushroom");
         addBlock(UndergardenBlocks.ink_mushroom, "Ink Mushroom");
@@ -51,9 +52,6 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.froststeel_ore, "Froststeel Ore");
         addBlock(UndergardenBlocks.utherium_ore, "Utherium Ore");
 
-        //addBlock(UndergardenBlocks.smogstem_torch, "Smogstem Torch");
-        //addBlock(UndergardenBlocks.smogstem_wall_torch, "Smogstem Torch");
-
         addItem(UndergardenItems.undergarden_portal_catalyst, "Undergarden Portal Catalyst");
         addItem(UndergardenItems.smogstem_stick, "Smogstem Stick");
         addItem(UndergardenItems.cloggrum_ingot, "Cloggrum Ingot");
@@ -64,6 +62,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utherium_ingot, "Utherium Ingot");
         addItem(UndergardenItems.utherium_chunk, "Utherium Chunk");
         addItem(UndergardenItems.smogstem_torch, "Smogstem Torch");
+        addItem(UndergardenItems.ditchbulb, "Ditchbulb");
 
         addItem(UndergardenItems.smogstem_sword, "Smogstem Sword");
         addItem(UndergardenItems.smogstem_pickaxe, "Smogstem Pickaxe");
@@ -93,12 +92,20 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.cloggrum_boots, "Cloggrum Boots");
 
         addItem(UndergardenItems.underbeans, "Underbeans");
+        addItem(UndergardenItems.gloomgourd_pie, "Gloomgourd Pie");
         addItem(UndergardenItems.raw_dweller_meat, "Raw Dweller Meat");
         addItem(UndergardenItems.dweller_steak, "Dweller Steak");
+
+        addItem(UndergardenItems.dweller_spawn_egg, "Dweller Spawn Egg");
+        addItem(UndergardenItems.gwibling_spawn_egg, "Gwibling Spawn Egg");
+        addItem(UndergardenItems.rotdweller_spawn_egg, "Rotdweller Spawn Egg");
+        addItem(UndergardenItems.rotwalker_spawn_egg, "Rotwalker Spawn Egg");
+        addItem(UndergardenItems.rotbeast_spawn_egg, "Rotbeast Spawn Egg");
 
         addBiome(UndergardenBiomes.FORGOTTEN_ABYSS, "Forgotten Abyss");
 
         addEntityType(UndergardenEntities.DWELLER, "Dweller");
+        addEntityType(UndergardenEntities.ROTDWELLER, "Rotdweller");
         addEntityType(UndergardenEntities.GWIBLING, "Gwibling");
         addEntityType(UndergardenEntities.ROTWALKER, "Rotwalker");
         addEntityType(UndergardenEntities.ROTBEAST, "Rotbeast");

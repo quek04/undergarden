@@ -15,8 +15,11 @@ import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.BlockStateProperty;
+import net.minecraft.world.storage.loot.conditions.EntityHasProperty;
 import net.minecraft.world.storage.loot.functions.ApplyBonus;
+import net.minecraft.world.storage.loot.functions.LootingEnchantBonus;
 import net.minecraft.world.storage.loot.functions.SetCount;
+import net.minecraft.world.storage.loot.functions.Smelt;
 import quek.undergarden.block.world.BeanBushBlock;
 import quek.undergarden.data.provider.UndergardenBlockLootTableProvider;
 import quek.undergarden.registry.UndergardenBlocks;
@@ -87,6 +90,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.gloomgourd);
             dropSelf(UndergardenBlocks.carved_gloomgourd);
             dropSelf(UndergardenBlocks.gloom_o_lantern);
+            dropWithSilk(UndergardenBlocks.ditchbulb_plant, UndergardenItems.ditchbulb);
         }
 
         @Override
@@ -99,9 +103,10 @@ public class UndergardenLootTables extends LootTableProvider {
 
         @Override
         protected void addTables() {
-            this.registerLootTable(UndergardenEntities.rotwalker, LootTable.builder());
-            this.registerLootTable(UndergardenEntities.rotbeast, LootTable.builder());
-            this.registerLootTable(UndergardenEntities.dweller, LootTable.builder());
+            this.registerLootTable(UndergardenEntities.rotwalker, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.utheric_shard.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 1.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
+            this.registerLootTable(UndergardenEntities.rotbeast, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.utheric_shard.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))))));
+            this.registerLootTable(UndergardenEntities.dweller, LootTable.builder()/*.addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F)))))*/.addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.raw_dweller_meat.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 3.0F))).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
+            this.registerLootTable(UndergardenEntities.rotdweller, LootTable.builder()/*.addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F)))))*/.addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.raw_dweller_meat.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 3.0F))).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
             this.registerLootTable(UndergardenEntities.gwibling, LootTable.builder());
         }
 
@@ -111,8 +116,5 @@ public class UndergardenLootTables extends LootTableProvider {
         }
 
     }
-
-
-
 }
 

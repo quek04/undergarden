@@ -38,7 +38,7 @@ public class UndergardenPortalFrameBlock extends Block {
                 .hardnessAndResistance(-1F)
                 .noDrops()
         );
-        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(CATALYST, Boolean.valueOf(false)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(CATALYST, Boolean.FALSE));
     }
 
     @Override
@@ -53,7 +53,7 @@ public class UndergardenPortalFrameBlock extends Block {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite()).with(CATALYST, Boolean.valueOf(false));
+        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite()).with(CATALYST, Boolean.FALSE);
     }
 
     @Override

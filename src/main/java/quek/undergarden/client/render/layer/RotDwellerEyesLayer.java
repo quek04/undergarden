@@ -1,0 +1,23 @@
+package quek.undergarden.client.render.layer;
+
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.IEntityRenderer;
+import net.minecraft.client.renderer.entity.layers.AbstractEyesLayer;
+import net.minecraft.util.ResourceLocation;
+import quek.undergarden.UndergardenMod;
+import quek.undergarden.client.model.RotDwellerModel;
+import quek.undergarden.entity.RotDwellerEntity;
+
+public class RotDwellerEyesLayer<T extends RotDwellerEntity, M extends RotDwellerModel<T>> extends AbstractEyesLayer<T, M> {
+
+    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UndergardenMod.MODID, "textures/entities/rotdweller_eyes.png"));
+
+    public RotDwellerEyesLayer(IEntityRenderer<T, M> p_i226039_1_) {
+        super(p_i226039_1_);
+    }
+
+    @Override
+    public RenderType getRenderType() {
+        return TEXTURE;
+    }
+}

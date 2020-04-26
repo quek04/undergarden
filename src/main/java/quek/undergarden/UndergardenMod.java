@@ -55,6 +55,7 @@ public class UndergardenMod {
 	public void setup(FMLCommonSetupEvent event) {
 		UndergardenBiomes.addBiomeTypes();
 		UndergardenBiomes.addBiomeFeatures();
+		UndergardenEntities.spawnPlacements();
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
@@ -62,7 +63,9 @@ public class UndergardenMod {
 		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotwalker, RotwalkerRender::new);
 		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotbeast, RotbeastRender::new);
 		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.dweller, DwellerRender::new);
+		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotdweller, RotDwellerRender::new);
 		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.gwibling, GwiblingRender::new);
+		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.skiz_swarmer, SkizSwarmerRender::new);
 	}
 
 

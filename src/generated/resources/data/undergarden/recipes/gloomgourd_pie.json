@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "undergarden:mushrooms"
+    },
+    {
+      "item": "undergarden:gloomgourd"
+    },
+    {
+      "item": "undergarden:ditchbulb"
+    }
+  ],
+  "result": {
+    "item": "undergarden:gloomgourd_pie"
+  }
+}

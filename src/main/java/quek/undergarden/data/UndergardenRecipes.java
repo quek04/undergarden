@@ -3,6 +3,7 @@ package quek.undergarden.data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import quek.undergarden.UndergardenMod;
@@ -61,6 +62,15 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .key('I', Items.IRON_INGOT)
                 .addCriterion("has_gold", hasItem(Items.GOLD_INGOT))
                 .addCriterion("has_iron", hasItem(Items.IRON_INGOT))
+                .build(consumer);
+
+        ShapelessRecipeBuilder.shapelessRecipe(UndergardenItems.gloomgourd_pie.get())
+                .addIngredient(UndergardenTags.Items.MUSHROOMS)
+                .addIngredient(UndergardenBlocks.gloomgourd.get())
+                .addIngredient(UndergardenItems.ditchbulb.get())
+                .addCriterion("has_mushroom", hasItem(UndergardenTags.Items.MUSHROOMS))
+                .addCriterion("has_" + UndergardenBlocks.gloomgourd.get().getRegistryName().getPath(), hasItem(UndergardenBlocks.gloomgourd.get()))
+                .addCriterion("has_" + UndergardenItems.ditchbulb.get().getRegistryName().getPath(), hasItem(UndergardenItems.ditchbulb.get()))
                 .build(consumer);
 
         makeShardToIngot().build(consumer, name("shard_to_ingot"));
