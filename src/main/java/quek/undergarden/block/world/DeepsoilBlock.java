@@ -23,11 +23,6 @@ public class DeepsoilBlock extends Block {
 
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
-        boolean hasWater = world.getBlockState(pos.east()).getMaterial() == Material.WATER ||
-                world.getBlockState(pos.west()).getMaterial() == Material.WATER ||
-                world.getBlockState(pos.north()).getMaterial() == Material.WATER ||
-                world.getBlockState(pos.south()).getMaterial() == Material.WATER;
-        return plantable.getPlantType(world, pos.offset(facing)) == PlantType.Plains ||
-                plantable.getPlantType(world, pos.offset(facing)) == PlantType.Beach && hasWater;
+        return true;
     }
 }

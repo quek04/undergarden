@@ -102,7 +102,8 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.rotwalker_spawn_egg, "Rotwalker Spawn Egg");
         addItem(UndergardenItems.rotbeast_spawn_egg, "Rotbeast Spawn Egg");
 
-        addBiome(UndergardenBiomes.FORGOTTEN_ABYSS, "Forgotten Abyss");
+        addBiome(UndergardenBiomes.FORGOTTEN_FIELD, "Forgotten Field");
+        addBiome(UndergardenBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
 
         addEntityType(UndergardenEntities.DWELLER, "Dweller");
         addEntityType(UndergardenEntities.ROTDWELLER, "Rotdweller");

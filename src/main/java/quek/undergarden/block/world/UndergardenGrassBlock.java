@@ -39,12 +39,7 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock {
 
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
-        boolean hasWater = world.getBlockState(pos.east()).getMaterial() == Material.WATER ||
-                world.getBlockState(pos.west()).getMaterial() == Material.WATER ||
-                world.getBlockState(pos.north()).getMaterial() == Material.WATER ||
-                world.getBlockState(pos.south()).getMaterial() == Material.WATER;
-        return plantable.getPlantType(world, pos.offset(facing)) == PlantType.Plains ||
-                plantable.getPlantType(world, pos.offset(facing)) == PlantType.Beach && hasWater;
+        return true;
     }
 
     @Override
@@ -53,7 +48,7 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock {
             if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             worldIn.setBlockState(pos, UndergardenBlocks.deepsoil.get().getDefaultState());
         } else {
-            if (worldIn.getLight(pos.up()) >= 9) {
+            if (worldIn.getLight(pos.up()) >= 0) {
                 BlockState blockstate = this.getDefaultState();
 
                 for(int i = 0; i < 4; ++i) {

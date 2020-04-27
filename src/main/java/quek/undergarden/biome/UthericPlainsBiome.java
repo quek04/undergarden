@@ -2,13 +2,12 @@ package quek.undergarden.biome;
 
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
+import net.minecraft.world.gen.placement.FrequencyConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.DefaultSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
@@ -18,18 +17,17 @@ import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenBiomeFeatures;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenFeatures;
 
 import java.awt.*;
 
-public class ForgottenAbyssBiome extends Biome {
+public class UthericPlainsBiome extends Biome {
 
-    public ForgottenAbyssBiome() {
+    public UthericPlainsBiome() {
         super((new Biome.Builder()).surfaceBuilder(new DefaultSurfaceBuilder(
-                SurfaceBuilderConfig::deserialize),
+                        SurfaceBuilderConfig::deserialize),
                 new SurfaceBuilderConfig(
-                        UndergardenBlocks.deepturf_block.get().getDefaultState(),
-                        UndergardenBlocks.deepsoil.get().getDefaultState(),
+                        UndergardenBlocks.depthrock.get().getDefaultState(),
+                        UndergardenBlocks.depthrock.get().getDefaultState(),
                         UndergardenBlocks.depthrock.get().getDefaultState()))
                 .precipitation(RainType.NONE)
                 .category(Category.PLAINS)
@@ -43,23 +41,19 @@ public class ForgottenAbyssBiome extends Biome {
     }
 
     public void addFeatures() {
-        //this.addStructure(UndergardenFeatures.DEPTHROCK_RUIN.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)); TODO:FIX
         this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
         UndergardenBiomeFeatures.addOres(this);
-        UndergardenBiomeFeatures.addPlants(this);
-        UndergardenBiomeFeatures.addShrooms(this);
-        //UndergardenBiomeFeatures.addLakes(this);
-        UndergardenBiomeFeatures.addTrees(this);
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));
-        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 100, 4, 8));
-        this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(UndergardenEntities.GWIBLING.get(), 20, 5, 10));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTWALKER.get(), 10, 2, 4));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTBEAST.get(), 5, 1, 2));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UTHERIC_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 256))));
+        this.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(UndergardenBiomeFeatures.DEPTHROCK, UndergardenBlocks.utherium_ore.get().getDefaultState(), 2)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 128))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(UndergardenBiomeFeatures.DITCHBULB_PLANT_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(10))));
+        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTWALKER.get(), 50, 4, 8));
+        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTBEAST.get(), 25, 2, 4));
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public int getSkyColor() {
-        return new Color(35, 37, 30).getRGB();
+        return new Color(37, 20, 21).getRGB();
     }
+
 }

@@ -79,9 +79,6 @@ public class UndergardenPortalBlock extends Block {
         double d0 = (double)pos.getX() + (double)rand.nextFloat();
         double d1 = (double)pos.getY() + 0.8D;
         double d2 = (double)pos.getZ() + (double)rand.nextFloat();
-        double d3 = 0.0D;
-        double d4 = 0.0D;
-        double d5 = 0.0D;
         worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
     }
 

@@ -31,7 +31,7 @@ public class DwellerEntity extends AnimalEntity {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(2, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotwalkerEntity.class, 12.0F, 1.0D, 1.5D));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotwalkerEntity.class, 12.0F, 2.0D, 2.5D));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotbeastEntity.class, 24.0F, 2.0D, 2.5D));
         this.goalSelector.addGoal(1, new TemptGoal(this, 1.25D, Ingredient.fromItems(UndergardenBlocks.gloomgourd.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
@@ -42,7 +42,7 @@ public class DwellerEntity extends AnimalEntity {
     }
 
     public static boolean canDwellerSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get() && worldIn.getLightValue(pos) >= 0;
+        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get() && worldIn.getLightValue(pos.up()) >= 0;
     }
 
     @Nullable

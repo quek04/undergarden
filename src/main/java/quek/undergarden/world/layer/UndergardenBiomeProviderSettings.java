@@ -1,4 +1,4 @@
-package quek.undergarden.biome.provider;
+package quek.undergarden.world.layer;
 
 import net.minecraft.world.storage.WorldInfo;
 

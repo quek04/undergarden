@@ -4,9 +4,12 @@ import com.mojang.datafixers.Dynamic;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.IWorldGenerationReader;
 import net.minecraft.world.gen.feature.AbstractSmallTreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Optional;
 import java.util.Random;
@@ -29,7 +32,7 @@ public class WigglewoodFeature extends AbstractSmallTreeFeature<TreeFeatureConfi
             return false;
         } else {
             BlockPos blockpos = optional.get();
-            this.setDirtAt(p_225557_1_, blockpos.down(), blockpos);
+            //this.setDirtAt(p_225557_1_, blockpos.down(), blockpos);
             Direction direction = Direction.Plane.HORIZONTAL.random(p_225557_2_);
             int l = i - p_225557_2_.nextInt(4) - 1;
             int i1 = 3 - p_225557_2_.nextInt(3);
@@ -82,5 +85,58 @@ public class WigglewoodFeature extends AbstractSmallTreeFeature<TreeFeatureConfi
 
             return true;
         }
+    }
+
+    protected void setDirt(IWorldGenerationReader generationReader, BlockPos pos) {
+        if (!isDirt(generationReader, pos)) {
+            this.setBlockState(generationReader, pos, UndergardenBlocks.deepsoil.get().getDefaultState());
+        }
+    }
+
+    protected void setDirtAt(IWorldGenerationReader reader, BlockPos pos, BlockPos origin) {
+        if (!(reader instanceof IWorld)) {
+            setDirt(reader, pos);
+            return;
+        }
+        ((IWorld)reader).getBlockState(pos).onPlantGrow((IWorld)reader, pos, origin);
+    }
+
+    @Override
+    public Optional<BlockPos> func_227212_a_(IWorldGenerationReader generationReader, int baseHeight, int trunkHeight, int foliagePlacer, BlockPos pos, TreeFeatureConfig treeFeatureConfigIn) {
+        BlockPos blockpos = pos;
+
+        return isSoilOrFarm(generationReader, blockpos.down(), treeFeatureConfigIn.getSapling()) && blockpos.getY() < generationReader.getMaxHeight() - baseHeight - 1 ? Optional.of(blockpos) : Optional.empty();
+
+        /*
+        if (blockpos.getY() >= 1 && blockpos.getY() + baseHeight + 1 <= generationReader.getMaxHeight()) {
+            for(int i1 = 0; i1 <= baseHeight + 1; ++i1) {
+                int j1 = treeFeatureConfigIn.foliagePlacer.func_225570_a_(trunkHeight, baseHeight, foliagePlacer, i1);
+                BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+
+                for(int k = -j1; k <= j1; ++k) {
+                    int l = -j1;
+
+                    while(l <= j1) {
+                        if (i1 + blockpos.getY() >= 0 && i1 + blockpos.getY() < generationReader.getMaxHeight()) {
+                            blockpos$mutable.setPos(k + blockpos.getX(), i1 + blockpos.getY(), l + blockpos.getZ());
+                            if (func_214587_a(generationReader, blockpos$mutable) && (treeFeatureConfigIn.ignoreVines || !func_227222_d_(generationReader, blockpos$mutable))) {
+                                ++l;
+                                continue;
+                            }
+
+                            return Optional.empty();
+                        }
+
+                        return Optional.empty();
+                    }
+                }
+            }
+
+            return isSoilOrFarm(generationReader, blockpos.down(), treeFeatureConfigIn.getSapling()) && blockpos.getY() < generationReader.getMaxHeight() - baseHeight - 1 ? Optional.of(blockpos) : Optional.empty();
+        } else {
+            return Optional.empty();
+        }
+
+         */
     }
 }

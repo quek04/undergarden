@@ -1,5 +1,6 @@
 package quek.undergarden.entity;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.SpawnReason;
@@ -78,5 +79,10 @@ public class RotbeastEntity extends MonsterEntity {
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_ZOMBIE_DEATH;
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState blockIn) {
+        this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
     }
 }

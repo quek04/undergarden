@@ -1,24 +1,19 @@
 package quek.undergarden.world;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.provider.SingleBiomeProviderSettings;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
 
 import net.minecraft.world.storage.WorldInfo;
-import quek.undergarden.biome.provider.UndergardenBiomeProvider;
-import quek.undergarden.biome.provider.UndergardenBiomeProviderSettings;
-import quek.undergarden.registry.UndergardenBiomes;
+import quek.undergarden.world.layer.UndergardenBiomeProvider;
+import quek.undergarden.world.layer.UndergardenBiomeProviderSettings;
 import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.world.gen.UndergardenChunkGenerator;
 import quek.undergarden.world.gen.UndergardenGenerationSettings;
-import quek.undergarden.world.layer.UndergardenSingleBiomeProvider;
 
 import javax.annotation.Nullable;
 

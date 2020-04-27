@@ -1,5 +1,6 @@
 package quek.undergarden.entity;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -109,6 +110,11 @@ public class RotwalkerEntity extends MonsterEntity {
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_ZOMBIE_DEATH;
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState blockIn) {
+        this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 1F);
     }
 
 }
