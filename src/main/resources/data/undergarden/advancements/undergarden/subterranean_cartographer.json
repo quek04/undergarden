@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:cloggrum_boots"
+    },
+    "title": {
+      "translate": "advancement.subterranean_cartographer.title"
+    },
+    "description": {
+      "translate": "advancement.subterranean_cartographer.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "goal"
+  },
+  "parent": "undergarden:undergarden/root",
+  "criteria": {
+    "smogstem_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:smogstem_forest"
+      }
+    },
+    "forgotten_field": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:forgotten_field"
+      }
+    },
+    "barren_abyss": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:barren_abyss"
+      }
+    }
+  }
+
+}

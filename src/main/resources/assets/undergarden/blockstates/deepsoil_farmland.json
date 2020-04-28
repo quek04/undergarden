@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "moisture=0": { "model": "undergarden:block/deepsoil_farmland" },
+        "moisture=1": { "model": "undergarden:block/deepsoil_farmland" },
+        "moisture=2": { "model": "undergarden:block/deepsoil_farmland" },
+        "moisture=3": { "model": "undergarden:block/deepsoil_farmland" },
+        "moisture=4": { "model": "undergarden:block/deepsoil_farmland" },
+        "moisture=5": { "model": "undergarden:block/deepsoil_farmland" },
+        "moisture=6": { "model": "undergarden:block/deepsoil_farmland" },
+        "moisture=7": { "model": "undergarden:block/deepsoil_farmland_moist" }
+    }
+}

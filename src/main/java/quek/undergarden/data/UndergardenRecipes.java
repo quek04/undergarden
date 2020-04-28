@@ -7,6 +7,7 @@ import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import quek.undergarden.UndergardenMod;
+import quek.undergarden.block.UndergardenBlock;
 import quek.undergarden.data.provider.UndergardenRecipeProvider;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenItems;
@@ -51,8 +52,18 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .patternLine("S")
                 .key('C', Items.COAL)
                 .key('S', UndergardenItems.smogstem_stick.get())
+                .addCriterion("has_coal", hasItem(Items.COAL))
                 .addCriterion("has_" + UndergardenItems.smogstem_stick.get().getRegistryName().getPath(), hasItem(UndergardenItems.smogstem_stick.get()))
                 .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_torch.get(), 2)
+                .patternLine("D")
+                .patternLine("S")
+                .key('D', UndergardenItems.ditchbulb.get())
+                .key('S', UndergardenItems.smogstem_stick.get())
+                .addCriterion("has_" + UndergardenItems.ditchbulb.get().getRegistryName().getPath(), hasItem(UndergardenItems.ditchbulb.get()))
+                .addCriterion("has_" + UndergardenItems.smogstem_stick.get().getRegistryName().getPath(), hasItem(UndergardenItems.smogstem_stick.get()))
+                .build(consumer, name("smogstem_torch_ditchbulb"));
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.undergarden_portal_catalyst.get())
                 .patternLine("GIG")
@@ -74,6 +85,14 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .build(consumer);
 
         makeShardToIngot().build(consumer, name("shard_to_ingot"));
+
+        makeIngotToBlock(UndergardenBlocks.cloggrum_block, UndergardenItems.cloggrum_ingot).build(consumer);
+        makeIngotToBlock(UndergardenBlocks.froststeel_block, UndergardenItems.froststeel_ingot).build(consumer);
+        makeIngotToBlock(UndergardenBlocks.utherium_block, UndergardenItems.utherium_ingot).build(consumer);
+
+        makeBlockToIngot(UndergardenItems.cloggrum_ingot, UndergardenBlocks.cloggrum_block).build(consumer, name("cloggrum_block_to_ingot"));
+        makeBlockToIngot(UndergardenItems.froststeel_ingot, UndergardenBlocks.froststeel_block).build(consumer, name("froststeel_block_to_ingot"));
+        makeBlockToIngot(UndergardenItems.utherium_ingot, UndergardenBlocks.utherium_block).build(consumer, name("utherium_block_to_ingot"));
 
         makeIngotToNugget(UndergardenItems.cloggrum_nugget, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_ingot_to_nugget"));
         makeIngotToNugget(UndergardenItems.froststeel_nugget, UndergardenItems.froststeel_ingot).build(consumer, name("froststeel_ingot_to_nugget"));
@@ -108,12 +127,42 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeLeggings(UndergardenItems.cloggrum_leggings, UndergardenItems.cloggrum_ingot).build(consumer);
         makeBoots(UndergardenItems.cloggrum_boots, UndergardenItems.cloggrum_ingot).build(consumer);
 
+        makeStairs(UndergardenBlocks.depthrock_stairs, UndergardenBlocks.depthrock).build(consumer);
+        makeStairs(UndergardenBlocks.cobbled_depthrock_stairs, UndergardenBlocks.cobbled_depthrock).build(consumer);
+        makeStairs(UndergardenBlocks.depthrock_brick_stairs, UndergardenBlocks.depthrock_bricks).build(consumer);
+        makeStairs(UndergardenBlocks.smogstem_stairs, UndergardenBlocks.smogstem_planks).build(consumer);
+        makeStairs(UndergardenBlocks.wigglewood_stairs, UndergardenBlocks.wigglewood_planks).build(consumer);
+
+        makeSlab(UndergardenBlocks.depthrock_slab, UndergardenBlocks.depthrock).build(consumer);
+        makeSlab(UndergardenBlocks.cobbled_depthrock_slab, UndergardenBlocks.cobbled_depthrock).build(consumer);
+        makeSlab(UndergardenBlocks.depthrock_brick_slab, UndergardenBlocks.depthrock_bricks).build(consumer);
+        makeSlab(UndergardenBlocks.smogstem_slab, UndergardenBlocks.smogstem_planks).build(consumer);
+        makeSlab(UndergardenBlocks.wigglewood_slab, UndergardenBlocks.wigglewood_planks).build(consumer);
+
+        makeWall(UndergardenBlocks.cobbled_depthrock_wall, UndergardenBlocks.cobbled_depthrock).build(consumer);
+        makeWall(UndergardenBlocks.depthrock_brick_wall, UndergardenBlocks.depthrock_bricks).build(consumer);
+
+        makeFence(UndergardenBlocks.smogstem_fence, UndergardenBlocks.smogstem_planks).build(consumer);
+        makeFence(UndergardenBlocks.wigglewood_fence, UndergardenBlocks.wigglewood_planks).build(consumer);
+
         smeltingRecipe(Items.IRON_INGOT, UndergardenItems.undergarden_portal_catalyst.get(), .90F).build(consumer, "smelt_catalyst");
 
         smeltingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
         blastingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("blast_cloggrum_ore"));
         smeltingRecipe(UndergardenItems.froststeel_ingot.get(), UndergardenBlocks.froststeel_ore.get(), .7F).build(consumer, name("smelt_froststeel_ore"));
         blastingRecipe(UndergardenItems.froststeel_ingot.get(), UndergardenBlocks.froststeel_ore.get(), .7F).build(consumer, name("blast_froststeel_ore"));
+        smeltingRecipe(UndergardenItems.utherium_chunk.get(), UndergardenBlocks.utherium_ore.get(), .9F).build(consumer, name("smelt_utherium_ore"));
+        blastingRecipe(UndergardenItems.utherium_chunk.get(), UndergardenBlocks.utherium_ore.get(), .9F).build(consumer, name("blast_utherium_ore"));
+
+        smeltingRecipeTag(UndergardenItems.cloggrum_nugget.get(), UndergardenTags.Items.CLOGGRUM_ITEMS, .1F).build(consumer, name("smelt_cloggrum_item"));
+        blastingRecipeTag(UndergardenItems.cloggrum_nugget.get(), UndergardenTags.Items.CLOGGRUM_ITEMS, .1F).build(consumer, name("blast_cloggrum_item"));
+
+        smeltingRecipeTag(UndergardenItems.froststeel_nugget.get(), UndergardenTags.Items.FROSTSTEEL_ITEMS, .1F).build(consumer, name("smelt_froststeel_item"));
+        blastingRecipeTag(UndergardenItems.froststeel_nugget.get(), UndergardenTags.Items.FROSTSTEEL_ITEMS, .1F).build(consumer, name("blast_froststeel_item"));
+
+        smeltingRecipeTag(UndergardenItems.utheric_shard.get(), UndergardenTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("smelt_utherium_item"));
+        blastingRecipeTag(UndergardenItems.utheric_shard.get(), UndergardenTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("blast_utherium_item"));
+
 
         smeltingRecipe(UndergardenItems.dweller_steak.get(), UndergardenItems.raw_dweller_meat.get(), .35F).build(consumer, name("smelt_dweller_meat"));
         smokingRecipe(UndergardenItems.dweller_steak.get(), UndergardenItems.raw_dweller_meat.get(), .35F).build(consumer, name("smoke_dweller_meat"));

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M/M",
+    "M/M"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:wigglewood_planks"
+    },
+    "/": {
+      "item": "undergarden:smogstem_stick"
+    }
+  },
+  "result": {
+    "item": "undergarden:wigglewood_fence",
+    "count": 6
+  }
+}

@@ -27,6 +27,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.froststeel_ore);
         itemBlock(UndergardenBlocks.utherium_ore);
         itemBlock(UndergardenBlocks.deepturf_block);
+        itemBlock(UndergardenBlocks.deepsoil_farmland);
         itemBlock(UndergardenBlocks.deepsoil);
         itemBlockFlat(UndergardenBlocks.smogstem_sapling);
         itemBlock(UndergardenBlocks.smogstem_log);
@@ -48,6 +49,23 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.gloomgourd);
         itemBlock(UndergardenBlocks.carved_gloomgourd);
         itemBlock(UndergardenBlocks.gloom_o_lantern);
+        itemBlock(UndergardenBlocks.cloggrum_block);
+        itemBlock(UndergardenBlocks.froststeel_block);
+        itemBlock(UndergardenBlocks.utherium_block);
+        itemBlock(UndergardenBlocks.depthrock_stairs);
+        itemBlock(UndergardenBlocks.cobbled_depthrock_stairs);
+        itemBlock(UndergardenBlocks.depthrock_brick_stairs);
+        itemBlock(UndergardenBlocks.smogstem_stairs);
+        itemBlock(UndergardenBlocks.wigglewood_stairs);
+        itemBlock(UndergardenBlocks.depthrock_slab);
+        itemBlock(UndergardenBlocks.cobbled_depthrock_slab);
+        itemBlock(UndergardenBlocks.depthrock_brick_slab);
+        itemBlock(UndergardenBlocks.smogstem_slab);
+        itemBlock(UndergardenBlocks.wigglewood_slab);
+        itemWall(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
+        itemWall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
+        itemFence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
+        itemFence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
 
         normalItem(UndergardenItems.undergarden_portal_catalyst);
         normalItem(UndergardenItems.smogstem_stick);
@@ -60,6 +78,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.utherium_chunk);
         normalItem(UndergardenItems.smogstem_torch);
         normalItem(UndergardenItems.ditchbulb);
+        normalItem(UndergardenItems.gloomgourd_seeds);
 
         toolItem(UndergardenItems.smogstem_sword);
         toolItem(UndergardenItems.smogstem_pickaxe);

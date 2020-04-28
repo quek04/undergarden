@@ -7,8 +7,11 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.SkizSwarmerEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class SkizSwarmerModel<T extends SkizSwarmerEntity> extends AgeableModel<T> {
 	private final ModelRenderer skiz;
 	private final ModelRenderer head;

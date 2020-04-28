@@ -45,7 +45,7 @@ public class RotbeastEntity extends MonsterEntity {
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80D);
         this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3D);
         this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.115D);
+        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.22D);
         this.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1D);
     }
 

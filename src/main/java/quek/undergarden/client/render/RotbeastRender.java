@@ -5,11 +5,14 @@ import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.render.layer.RotbeastEyesLayer;
 import quek.undergarden.entity.RotbeastEntity;
 import quek.undergarden.client.model.RotbeastModel;
 
+@OnlyIn(Dist.CLIENT)
 public class RotbeastRender extends MobRenderer<RotbeastEntity, RotbeastModel<RotbeastEntity>> {
 
     private static final ResourceLocation texture = new ResourceLocation(UndergardenMod.MODID, "textures/entities/rotbeast.png");

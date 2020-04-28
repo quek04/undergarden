@@ -1,7 +1,6 @@
 package quek.undergarden.data.provider;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.LogBlock;
+import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ResourceLocation;
@@ -90,5 +89,34 @@ public abstract class UndergardenBlockStateProvider extends BlockStateProvider {
         crossBlock(block, models().cross(blockName(block), texture(blockName(block))));
     }
 
+    public void stairs(Supplier<? extends StairsBlock> block, String name) {
+        stairsBlock(block.get(), texture(name));
+    }
+
+    public void slab(Supplier<? extends SlabBlock> block, Supplier<? extends Block> fullBlock) {
+        slabBlock(block.get(), texture(blockName(fullBlock)), texture(blockName(fullBlock)));
+    }
+
+    public void wall(Supplier<? extends WallBlock> block, String name) {
+        wallBlock(block.get(), texture(name));
+    }
+
+    public void fence(Supplier<? extends FenceBlock> block, String name) {
+        fenceBlock(block.get(), texture(name));
+    }
+
+    public void fenceColumn(Supplier<? extends FenceBlock> block, String side) {
+        String baseName = block.get().getRegistryName().toString();
+        fourWayBlock(block.get(),
+                models().fencePost(baseName + "_post", texture(side)),
+                models().fenceSide(baseName + "_side", texture(side)));
+    }
+
+    public void wallColumn(Supplier<? extends WallBlock> block, String side) {
+        String baseName = block.get().getRegistryName().toString();
+        fourWayBlock(block.get(),
+                models().wallPost(baseName + "_post", texture(side)),
+                models().wallSide(baseName + "_side", texture(side)));
+    }
 
 }

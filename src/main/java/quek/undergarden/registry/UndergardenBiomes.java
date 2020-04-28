@@ -14,23 +14,18 @@ public class UndergardenBiomes {
 
     public static final RegistryObject<Biome> FORGOTTEN_FIELD = BIOMES.register("forgotten_field", ForgottenFieldBiome::new);
     public static final RegistryObject<Biome> SMOGSTEM_FOREST = BIOMES.register("smogstem_forest", SmogstemForestBiome::new);
-    public static final RegistryObject<Biome> UTHERIC_PLAINS = BIOMES.register("utheric_plains", UthericPlainsBiome::new);
+    public static final RegistryObject<Biome> BARREN_ABYSS = BIOMES.register("barren_abyss", BarrenAbyssBiome::new);
 
     public static void addBiomeTypes() {
         BiomeDictionary.addTypes(FORGOTTEN_FIELD.get(), BiomeDictionary.Type.PLAINS);
         BiomeDictionary.addTypes(SMOGSTEM_FOREST.get(), BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(BARREN_ABYSS.get(), BiomeDictionary.Type.DEAD);
     }
 
     public static void addBiomeFeatures() {
         for(Biome biome : ForgeRegistries.BIOMES.getValues()) {
-            if (biome instanceof ForgottenFieldBiome) {
-                ((ForgottenFieldBiome)biome).addFeatures();
-            }
-            if (biome instanceof SmogstemForestBiome) {
-                ((SmogstemForestBiome)biome).addFeatures();
-            }
-            if (biome instanceof UthericPlainsBiome) {
-                ((UthericPlainsBiome)biome).addFeatures();
+            if (biome instanceof UndergardenBiome) {
+                ((UndergardenBiome)biome).addFeatures();
             }
         }
     }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:depthrock_bricks"
+    }
+  },
+  "result": {
+    "item": "undergarden:depthrock_brick_wall",
+    "count": 6
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:utherium_block"
+    }
+  ],
+  "result": {
+    "item": "undergarden:utherium_ingot",
+    "count": 9
+  }
+}

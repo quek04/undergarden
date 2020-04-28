@@ -7,8 +7,11 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.RotwalkerEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class RotwalkerModel<T extends RotwalkerEntity> extends BipedModel<T> {
 	private final ModelRenderer rotwalker;
 	private final ModelRenderer head;

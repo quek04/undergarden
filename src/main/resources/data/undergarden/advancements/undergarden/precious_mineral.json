@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:utherium_ingot"
+    },
+    "title": {
+      "translate": "advancement.precious_mineral.title"
+    },
+    "description": {
+      "translate": "advancement.precious_mineral.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "goal"
+  },
+  "parent": "undergarden:undergarden/deep_extraction",
+  "criteria": {
+    "has_gourds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:utherium_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

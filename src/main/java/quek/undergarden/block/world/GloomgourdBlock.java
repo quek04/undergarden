@@ -25,7 +25,7 @@ public class GloomgourdBlock extends StemGrownBlock {
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         ItemStack itemstack = player.getHeldItem(handIn);
-        if (itemstack.getItem() == Items.SHEARS) {
+        if (itemstack.getItem() == Items.SHEARS || itemstack.getItem() == UndergardenItems.cloggrum_shears.get()) {
             if (!worldIn.isRemote) {
                 Direction direction = hit.getFace();
                 Direction direction1 = direction.getAxis() == Direction.Axis.Y ? player.getHorizontalFacing().getOpposite() : direction;
@@ -47,7 +47,7 @@ public class GloomgourdBlock extends StemGrownBlock {
 
     @Override
     public StemBlock getStem() {
-        return null;
+        return UndergardenBlocks.gloomgourd_stem.get();
     }
 
     @Override

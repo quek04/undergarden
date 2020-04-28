@@ -33,7 +33,7 @@ public class UndergardenBiomeProvider extends BiomeProvider {
     private static final Set<Biome> biomes = ImmutableSet.of(
             UndergardenBiomes.FORGOTTEN_FIELD.get(),
             UndergardenBiomes.SMOGSTEM_FOREST.get(),
-            UndergardenBiomes.UTHERIC_PLAINS.get()
+            UndergardenBiomes.BARREN_ABYSS.get()
     );
 
     public UndergardenBiomeProvider(UndergardenBiomeProviderSettings settings) {

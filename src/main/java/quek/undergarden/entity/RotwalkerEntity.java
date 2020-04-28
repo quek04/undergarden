@@ -114,7 +114,7 @@ public class RotwalkerEntity extends MonsterEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 1F);
+        this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
     }
 
 }

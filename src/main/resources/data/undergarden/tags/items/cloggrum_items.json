@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:cloggrum_sword",
+    "undergarden:cloggrum_pickaxe",
+    "undergarden:cloggrum_axe",
+    "undergarden:cloggrum_shovel",
+    "undergarden:cloggrum_helmet",
+    "undergarden:cloggrum_chestplate",
+    "undergarden:cloggrum_leggings",
+    "undergarden:cloggrum_boots"
+  ]
+}

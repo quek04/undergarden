@@ -19,6 +19,8 @@ public class UndergardenFeatures {
 
     public static final RegistryObject<Feature<TreeFeatureConfig>> SMOGSTEM_TREE = FEATURES.register(
             "smogstem_tree", () -> new SmogstemFeature(TreeFeatureConfig::func_227338_a_));
+    public static final RegistryObject<Feature<TreeFeatureConfig>> FANCY_SMOGSTEM_TREE = FEATURES.register(
+            "fancy_smogstem", () -> new FancySmogstemFeature(TreeFeatureConfig::func_227338_a_));
     public static final RegistryObject<Feature<TreeFeatureConfig>> WIGGLEWOOD_TREE = FEATURES.register(
             "wigglewood_tree", () -> new WigglewoodFeature(TreeFeatureConfig::func_227338_a_));
 

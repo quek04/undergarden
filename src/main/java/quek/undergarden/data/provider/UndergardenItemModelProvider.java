@@ -3,6 +3,7 @@ package quek.undergarden.data.provider;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -18,6 +19,20 @@ public abstract class UndergardenItemModelProvider extends ItemModelProvider {
 
     public String blockName(Supplier<? extends Block> block) {
         return block.get().getRegistryName().getPath();
+    }
+
+    protected ResourceLocation texture(String name) {
+        return modLoc("block/" + name);
+    }
+
+    public ItemModelBuilder itemFence(Supplier<? extends Block> block, String name) {
+        return withExistingParent(blockName(block), mcLoc("block/fence_inventory"))
+                .texture("texture", ("block/" + name));
+    }
+
+    public ItemModelBuilder itemWall(Supplier<? extends Block> block, String name) {
+        return withExistingParent(blockName(block), mcLoc("block/wall_inventory"))
+                .texture("texture", ("block/" + name));
     }
 
     public ItemModelBuilder itemBlock(Supplier<? extends Block> block) {

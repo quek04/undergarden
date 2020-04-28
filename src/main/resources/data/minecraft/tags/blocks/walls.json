@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:cobbled_depthrock_wall",
+    "undergarden:depthrock_brick_wall"
+  ]
+}

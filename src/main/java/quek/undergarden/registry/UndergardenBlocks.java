@@ -27,6 +27,7 @@ public class UndergardenBlocks {
 
     //basic shit
     public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", DeepsoilBlock::new);
+    public static final RegistryObject<Block> deepsoil_farmland = registerBlock("deepsoil_farmland", DeepsoilFarmlandBlock::new);
     public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", DeepturfBlock::new);
     public static final RegistryObject<Block> depthrock = registerBlock("depthrock", () -> new UndergardenBlock(
             Material.ROCK,1.5F,6F, SoundType.STONE,1, ToolType.PICKAXE));
@@ -58,7 +59,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", UndergardenMushroomBlock::new);
     public static final RegistryObject<StemGrownBlock> gloomgourd = registerBlock("gloomgourd", GloomgourdBlock::new);
     public static final RegistryObject<Block> carved_gloomgourd = registerBlock("carved_gloomgourd", CarvedGloomgourdBlock::new);
-    public static final RegistryObject<Block> gloomgourd_stem = BLOCKS.register("gloomgourd_stem", () -> new UndergardenStemBlock(gloomgourd.get()));
+    public static final RegistryObject<StemBlock> gloomgourd_stem = BLOCKS.register("gloomgourd_stem", () -> new UndergardenStemBlock(gloomgourd.get()));
 
     //ores
     public static final RegistryObject<Block> coal_ore = registerBlock("coal_ore", () -> new UndergardenOreBlock(0));
@@ -67,9 +68,42 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> utherium_ore = registerBlock("utherium_ore", () -> new UndergardenOreBlock(3));
 
     //manufactured
+    public static final RegistryObject<Block> cloggrum_block = registerBlock("cloggrum_block", () -> new UndergardenBlock(
+            Material.IRON, 5.0F, 6.0F, SoundType.METAL, 2, ToolType.PICKAXE));
+    public static final RegistryObject<Block> froststeel_block = registerBlock("froststeel_block", () -> new UndergardenBlock(
+            Material.IRON, 5.0F, 6.0F, SoundType.METAL, 3, ToolType.PICKAXE));
+    public static final RegistryObject<Block> utherium_block = registerBlock("utherium_block", () -> new UndergardenBlock(
+            Material.IRON, 5.0F, 6.0F, SoundType.METAL, 3, ToolType.PICKAXE));
     public static final RegistryObject<Block> smogstem_torch = BLOCKS.register("smogstem_torch", UndergardenTorchBlock::new);
     public static final RegistryObject<Block> smogstem_wall_torch = BLOCKS.register("smogstem_wall_torch", UndergardenWallTorchBlock::new);
     public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(15));
+
+    public static final RegistryObject<StairsBlock> depthrock_stairs = registerBlock("depthrock_stairs", () -> new UndergardenStairsBlock(depthrock));
+    public static final RegistryObject<StairsBlock> cobbled_depthrock_stairs = registerBlock("cobbled_depthrock_stairs", () -> new UndergardenStairsBlock(cobbled_depthrock));
+    public static final RegistryObject<StairsBlock> depthrock_brick_stairs = registerBlock("depthrock_brick_stairs", () -> new UndergardenStairsBlock(depthrock_bricks));
+    public static final RegistryObject<StairsBlock> smogstem_stairs = registerBlock("smogstem_stairs", () -> new UndergardenStairsBlock(smogstem_planks));
+    public static final RegistryObject<StairsBlock> wigglewood_stairs = registerBlock("wigglewood_stairs", () -> new UndergardenStairsBlock(wigglewood_planks));
+
+    public static final RegistryObject<SlabBlock> depthrock_slab = registerBlock("depthrock_slab", () -> new UndergardenSlabBlock(
+            Material.ROCK,1.5F,6F, SoundType.STONE,1, ToolType.PICKAXE));
+    public static final RegistryObject<SlabBlock> cobbled_depthrock_slab = registerBlock("cobbled_depthrock_slab", () -> new UndergardenSlabBlock(
+            Material.ROCK,2F,6F, SoundType.STONE,1, ToolType.PICKAXE));
+    public static final RegistryObject<SlabBlock> depthrock_brick_slab = registerBlock("depthrock_brick_slab", () -> new UndergardenSlabBlock(
+            Material.ROCK, 1.5F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
+    public static final RegistryObject<SlabBlock> smogstem_slab = registerBlock("smogstem_slab", () -> new UndergardenSlabBlock(
+            Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
+    public static final RegistryObject<SlabBlock> wigglewood_slab = registerBlock("wigglewood_slab", () -> new UndergardenSlabBlock(
+            Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
+
+    public static final RegistryObject<WallBlock> cobbled_depthrock_wall = registerBlock("cobbled_depthrock_wall", () -> new UndergardenWallBlock(
+            Material.ROCK, 2F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
+    public static final RegistryObject<WallBlock> depthrock_brick_wall = registerBlock("depthrock_brick_wall", () -> new UndergardenWallBlock(
+            Material.ROCK, 1.5F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
+
+    public static final RegistryObject<FenceBlock> smogstem_fence = registerBlock("smogstem_fence", () -> new UndergardenFenceBlock(
+            Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
+    public static final RegistryObject<FenceBlock> wigglewood_fence = registerBlock("wigglewood_fence", () -> new UndergardenFenceBlock(
+            Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
 
     //tiles
 

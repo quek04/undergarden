@@ -13,7 +13,7 @@ public class SmogstemTree extends Tree {
 
     @Override
     public ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean p_225546_2_) {
-        return UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG);
-        //return Feature.NORMAL_TREE.withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG);
+        //return UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG);
+        return randomIn.nextInt(10) == 0 ? UndergardenFeatures.FANCY_SMOGSTEM_TREE.get().withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG) : UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG);
     }
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "side": "undergarden:block/wigglewood_planks",
+    "bottom": "undergarden:block/wigglewood_planks",
+    "top": "undergarden:block/wigglewood_planks"
+  }
+}

@@ -44,6 +44,33 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         crossBlock(UndergardenBlocks.blood_mushroom);
         normalBlock(UndergardenBlocks.depthrock_bricks);
         normalBlock(UndergardenBlocks.cracked_depthrock_bricks);
-        normalBlock(UndergardenBlocks.undergarden_portal);
+
+        normalBlock(UndergardenBlocks.cloggrum_block);
+        normalBlock(UndergardenBlocks.froststeel_block);
+        normalBlock(UndergardenBlocks.utherium_block);
+
+        stairs(UndergardenBlocks.depthrock_stairs, "depthrock");
+        stairs(UndergardenBlocks.cobbled_depthrock_stairs, "cobbled_depthrock");
+        stairs(UndergardenBlocks.depthrock_brick_stairs, "depthrock_bricks");
+        stairs(UndergardenBlocks.smogstem_stairs, "smogstem_planks");
+        stairs(UndergardenBlocks.wigglewood_stairs, "wigglewood_planks");
+
+        slab(UndergardenBlocks.depthrock_slab, UndergardenBlocks.depthrock);
+        slab(UndergardenBlocks.cobbled_depthrock_slab, UndergardenBlocks.cobbled_depthrock);
+        slab(UndergardenBlocks.depthrock_brick_slab, UndergardenBlocks.depthrock_bricks);
+        slab(UndergardenBlocks.smogstem_slab, UndergardenBlocks.smogstem_planks);
+        slab(UndergardenBlocks.wigglewood_slab, UndergardenBlocks.wigglewood_planks);
+
+        wall(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
+        wallColumn(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
+        wall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
+        wallColumn(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
+
+        fence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
+        fenceColumn(UndergardenBlocks.smogstem_fence, "smogstem_planks");
+        fence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
+        fenceColumn(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
+
+
     }
 }

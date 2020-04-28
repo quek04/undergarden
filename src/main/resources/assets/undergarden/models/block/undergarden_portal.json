@@ -1,0 +1,8 @@
+{
+    "parent": "undergarden:block/template_portal",
+    "textures": {
+        "particle": "undergarden:block/undergarden_portal",
+        "dirt": "undergarden:block/undergarden_portal",
+        "top": "undergarden:block/undergarden_portal"
+    }
+}

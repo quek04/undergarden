@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:undergarden_portal_catalyst"
+    },
+    "title": {
+      "translate": "advancement.catalyst.title"
+    },
+    "description": {
+      "translate": "advancement.catalyst.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "goal"
+  },
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "has_catalyst": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:undergarden_portal_catalyst",
+            "count": {
+              "min": 12
+            }
+          }
+        ]
+      }
+    }
+  }
+}

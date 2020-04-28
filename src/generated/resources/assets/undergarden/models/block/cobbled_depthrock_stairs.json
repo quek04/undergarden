@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "side": "undergarden:block/cobbled_depthrock",
+    "bottom": "undergarden:block/cobbled_depthrock",
+    "top": "undergarden:block/cobbled_depthrock"
+  }
+}

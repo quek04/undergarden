@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "undergarden:utherium_ore"
+  },
+  "result": "undergarden:utherium_chunk",
+  "experience": 0.9,
+  "cookingtime": 100
+}

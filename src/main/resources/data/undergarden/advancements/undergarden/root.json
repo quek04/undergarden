@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:undergarden_portal_frame"
+    },
+    "title": {
+      "translate": "advancement.undergarden.title"
+    },
+    "description": {
+      "translate": "advancement.undergarden.desc"
+    },
+    "background": "undergarden:textures/block/depthrock.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "criteria": {
+    "enter_undergarden": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "undergarden:undergarden"
+      }
+    }
+  }
+}

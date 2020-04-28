@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:cloggrum_ore"
+    },
+    "title": {
+      "translate": "advancement.deep_extraction.title"
+    },
+    "description": {
+      "translate": "advancement.deep_extraction.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "parent": "undergarden:undergarden/root",
+  "criteria": {
+    "has_gourds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:cloggrum_ingot",
+            "count": {
+              "min": 1
+            }
+          }
+        ],
+        "slots": {
+          "occupied": 1
+        }
+      }
+    }
+  }
+}

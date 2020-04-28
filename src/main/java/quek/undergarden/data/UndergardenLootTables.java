@@ -62,6 +62,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropWithSilk(UndergardenBlocks.depthrock, UndergardenBlocks.cobbled_depthrock);
             dropSelf(UndergardenBlocks.cobbled_depthrock);
             dropSelf(UndergardenBlocks.deepsoil);
+            dropOther(UndergardenBlocks.deepsoil_farmland, UndergardenBlocks.deepsoil.get());
             this.registerLootTable(UndergardenBlocks.underbean_bush.get(),
                     LootTable.builder().addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BeanBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UndergardenItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 3.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))).addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BeanBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UndergardenItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
             dropWithSilk(UndergardenBlocks.deepturf_block, UndergardenBlocks.deepsoil);
@@ -91,6 +92,23 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.carved_gloomgourd);
             dropSelf(UndergardenBlocks.gloom_o_lantern);
             dropWithSilk(UndergardenBlocks.ditchbulb_plant, UndergardenItems.ditchbulb);
+            dropSelf(UndergardenBlocks.depthrock_stairs);
+            dropSelf(UndergardenBlocks.cobbled_depthrock_stairs);
+            dropSelf(UndergardenBlocks.depthrock_brick_stairs);
+            dropSelf(UndergardenBlocks.smogstem_stairs);
+            dropSelf(UndergardenBlocks.wigglewood_stairs);
+            dropSelf(UndergardenBlocks.depthrock_slab);
+            dropSelf(UndergardenBlocks.cobbled_depthrock_slab);
+            dropSelf(UndergardenBlocks.depthrock_brick_slab);
+            dropSelf(UndergardenBlocks.smogstem_slab);
+            dropSelf(UndergardenBlocks.wigglewood_slab);
+            dropSelf(UndergardenBlocks.cobbled_depthrock_wall);
+            dropSelf(UndergardenBlocks.depthrock_brick_wall);
+            dropSelf(UndergardenBlocks.smogstem_fence);
+            dropSelf(UndergardenBlocks.wigglewood_fence);
+            dropSelf(UndergardenBlocks.cloggrum_block);
+            dropSelf(UndergardenBlocks.froststeel_block);
+            dropSelf(UndergardenBlocks.utherium_block);
         }
 
         @Override

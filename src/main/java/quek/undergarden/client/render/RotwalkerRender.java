@@ -5,11 +5,14 @@ import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.render.layer.RotwalkerEyesLayer;
 import quek.undergarden.entity.RotwalkerEntity;
 import quek.undergarden.client.model.RotwalkerModel;
 
+@OnlyIn(Dist.CLIENT)
 public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel<RotwalkerEntity>> {
 
     private static final ResourceLocation texture = new ResourceLocation(UndergardenMod.MODID, "textures/entities/rotwalker.png");

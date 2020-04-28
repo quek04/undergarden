@@ -4,8 +4,11 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.RotDwellerEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class RotDwellerModel<T extends RotDwellerEntity> extends AgeableModel<T> {
 
     private final ModelRenderer dweller;

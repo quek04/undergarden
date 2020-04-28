@@ -1,0 +1,8 @@
+{
+    "parent": "block/template_farmland",
+    "textures": {
+        "particle": "undergarden:block/deepsoil",
+        "dirt": "undergarden:block/deepsoil",
+        "top": "undergarden:block/deepsoil_farmland"
+    }
+}

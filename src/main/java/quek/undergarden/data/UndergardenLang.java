@@ -21,6 +21,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.undergarden_portal_frame, "Undergarden Portal Frame");
         addBlock(UndergardenBlocks.undergarden_portal, "Undergarden Portal");
         addBlock(UndergardenBlocks.deepsoil, "Deepsoil");
+        addBlock(UndergardenBlocks.deepsoil_farmland, "Deepsoil Farmland");
         addBlock(UndergardenBlocks.deepturf_block, "Deepturf Block");
         addBlock(UndergardenBlocks.depthrock, "Depthrock");
         addBlock(UndergardenBlocks.cobbled_depthrock, "Cobbled Depthrock");
@@ -45,12 +46,35 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.blood_mushroom, "Blood Mushroom");
         addBlock(UndergardenBlocks.gloomgourd, "Gloomgourd");
         addBlock(UndergardenBlocks.carved_gloomgourd, "Carved Gloomgourd");
+        addBlock(UndergardenBlocks.gloomgourd_stem, "Gloomgourd Stem");
         addBlock(UndergardenBlocks.gloom_o_lantern, "Gloom o'Lantern");
 
         addBlock(UndergardenBlocks.coal_ore, "Coal Ore");
         addBlock(UndergardenBlocks.cloggrum_ore, "Cloggrum Ore");
         addBlock(UndergardenBlocks.froststeel_ore, "Froststeel Ore");
         addBlock(UndergardenBlocks.utherium_ore, "Utherium Ore");
+
+        addBlock(UndergardenBlocks.cloggrum_block, "Cloggrum Block");
+        addBlock(UndergardenBlocks.froststeel_block, "Froststeel Block");
+        addBlock(UndergardenBlocks.utherium_block, "Utherium Block");
+
+        addBlock(UndergardenBlocks.depthrock_stairs, "Depthrock Stairs");
+        addBlock(UndergardenBlocks.cobbled_depthrock_stairs, "Cobbled Depthrock Stairs");
+        addBlock(UndergardenBlocks.depthrock_brick_stairs, "Depthrock Brick Stairs");
+        addBlock(UndergardenBlocks.smogstem_stairs, "Smogstem Stairs");
+        addBlock(UndergardenBlocks.wigglewood_stairs, "Wigglewood Stairs");
+
+        addBlock(UndergardenBlocks.depthrock_slab, "Depthrock Slab");
+        addBlock(UndergardenBlocks.cobbled_depthrock_slab, "Cobbled Depthrock Slab");
+        addBlock(UndergardenBlocks.depthrock_brick_slab, "Depthrock Brick Slab");
+        addBlock(UndergardenBlocks.smogstem_slab, "Smogstem Slab");
+        addBlock(UndergardenBlocks.wigglewood_slab, "Wigglewood Slab");
+
+        addBlock(UndergardenBlocks.cobbled_depthrock_wall, "Cobbled Depthrock Wall");
+        addBlock(UndergardenBlocks.depthrock_brick_wall, "Depthrock Brick Wall");
+
+        addBlock(UndergardenBlocks.smogstem_fence, "Smogstem Fence");
+        addBlock(UndergardenBlocks.wigglewood_fence, "Wigglewood Fence");
 
         addItem(UndergardenItems.undergarden_portal_catalyst, "Undergarden Portal Catalyst");
         addItem(UndergardenItems.smogstem_stick, "Smogstem Stick");
@@ -62,6 +86,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utherium_ingot, "Utherium Ingot");
         addItem(UndergardenItems.utherium_chunk, "Utherium Chunk");
         addItem(UndergardenItems.smogstem_torch, "Smogstem Torch");
+        addItem(UndergardenItems.gloomgourd_seeds, "Gloomgourd Seeds");
         addItem(UndergardenItems.ditchbulb, "Ditchbulb");
 
         addItem(UndergardenItems.smogstem_sword, "Smogstem Sword");
@@ -104,18 +129,48 @@ public class UndergardenLang extends LanguageProvider {
 
         addBiome(UndergardenBiomes.FORGOTTEN_FIELD, "Forgotten Field");
         addBiome(UndergardenBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
+        addBiome(UndergardenBiomes.BARREN_ABYSS, "Barren Abyss");
 
         addEntityType(UndergardenEntities.DWELLER, "Dweller");
         addEntityType(UndergardenEntities.ROTDWELLER, "Rotdweller");
         addEntityType(UndergardenEntities.GWIBLING, "Gwibling");
         addEntityType(UndergardenEntities.ROTWALKER, "Rotwalker");
         addEntityType(UndergardenEntities.ROTBEAST, "Rotbeast");
+        addEntityType(UndergardenEntities.SKIZ_SWARMER, "Skiz Swarmer");
 
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_BLOCKS, "Undergarden Blocks");
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_FOODS, "Undergarden Foodstuffs");
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_GEAR, "Undergarden Gear");
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_ITEMS, "Undergarden Items");
 
+        add("advancement.undergarden.title", "The Undergarden");
+        add("advancement.undergarden.desc", "The forgotten land.");
 
+        add("advancement.gourd_lord.title", "Gourd Lord");
+        add("advancement.gourd_lord.desc", "You've done it. You've acquired a stack of Gloomgourds.");
+
+        add("advancement.slay_rotwalker.title", "Slay Rotwalker");
+        add("advancement.slay_rotwalker.desc", "Slay the weakest of the Rotspawn, the Rotwalker.");
+
+        add("advancement.rotbane.title", "Rotbane");
+        add("advancement.rotbane.desc", "Slay all kinds of Rotspawn.");
+
+        add("advancement.subterranean_cartographer.title", "Subterranean Cartographer");
+        add("advancement.subterranean_cartographer.desc", "Discover every Undergarden biome.");
+
+        add("advancement.deep_extraction.title", "Deep Extraction");
+        add("advancement.deep_extraction.desc", "Acquire a Cloggrum Ingot.");
+
+        add("advancement.precious_mineral.title", "Precious Mineral");
+        add("advancement.precious_mineral.desc", "Acquire enough Utherium Chunks to craft a full ingot.");
+
+        add("advancement.the_whole_collection.title", "The Whole Collection");
+        add("advancement.the_whole_collection.desc", "Acquire one of each native Undergarden mineral.");
+
+        add("advancement.catalyst.title", "Create the Catalysts");
+        add("advancement.catalyst.desc", "Craft 12 Catalysts using Iron and Gold to activate the Undergarden portal found underground.");
+
+        add("advancement.glorious_beans.title", "Glorious Beans!");
+        add("advancement.glorious_beans.desc", "Find and pick an Underbean bush.");
     }
 }

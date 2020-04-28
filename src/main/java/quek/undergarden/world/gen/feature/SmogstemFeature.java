@@ -31,34 +31,16 @@ public class SmogstemFeature extends AbstractSmallTreeFeature<TreeFeatureConfig>
             return false;
         } else {
             BlockPos blockpos = optional.get();
-            //setDirtAt(generationReader, blockpos.down(), blockpos);
             config.foliagePlacer.func_225571_a_(generationReader, rand, config, i, j, k, blockpos, leaves);
             this.func_227213_a_(generationReader, rand, i, blockpos, config.trunkTopOffset + rand.nextInt(config.trunkTopOffsetRandom + 1), trunk, boundingBox, config);
             return true;
         }
     }
 
-    protected void setDirt(IWorldGenerationReader generationReader, BlockPos pos) {
-        if (!isDirt(generationReader, pos)) {
-            this.setBlockState(generationReader, pos, UndergardenBlocks.deepsoil.get().getDefaultState());
-        }
-    }
-
-    protected void setDirtAt(IWorldGenerationReader reader, BlockPos pos, BlockPos origin) {
-        if (!(reader instanceof IWorld)) {
-            setDirt(reader, pos);
-            return;
-        }
-        ((IWorld)reader).getBlockState(pos).onPlantGrow((IWorld)reader, pos, origin);
-    }
-
     @Override
     public Optional<BlockPos> func_227212_a_(IWorldGenerationReader generationReader, int baseHeight, int trunkHeight, int foliagePlacer, BlockPos pos, TreeFeatureConfig treeFeatureConfigIn) {
         BlockPos blockpos = pos;
 
-        return isSoilOrFarm(generationReader, blockpos.down(), treeFeatureConfigIn.getSapling()) && blockpos.getY() < generationReader.getMaxHeight() - baseHeight - 1 ? Optional.of(blockpos) : Optional.empty();
-
-        /*
         if (blockpos.getY() >= 1 && blockpos.getY() + baseHeight + 1 <= generationReader.getMaxHeight()) {
             for(int i1 = 0; i1 <= baseHeight + 1; ++i1) {
                 int j1 = treeFeatureConfigIn.foliagePlacer.func_225570_a_(trunkHeight, baseHeight, foliagePlacer, i1);
@@ -87,7 +69,5 @@ public class SmogstemFeature extends AbstractSmallTreeFeature<TreeFeatureConfig>
         } else {
             return Optional.empty();
         }
-
-         */
     }
 }

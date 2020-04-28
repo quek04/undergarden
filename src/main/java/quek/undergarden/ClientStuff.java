@@ -9,6 +9,7 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
@@ -21,10 +22,8 @@ import quek.undergarden.world.UndergardenDimension;
 import java.util.Arrays;
 import java.util.function.Supplier;
 
-import static net.minecraftforge.api.distmarker.Dist.CLIENT;
-
-@OnlyIn(CLIENT)
-@Mod.EventBusSubscriber(modid = UndergardenMod.MODID, value = CLIENT)
+@OnlyIn(Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = UndergardenMod.MODID, value = Dist.CLIENT)
 public class ClientStuff {
 
     private static final Minecraft CLIENT = Minecraft.getInstance();
@@ -51,7 +50,7 @@ public class ClientStuff {
         render(UndergardenBlocks.smogstem_torch, cutout);
         render(UndergardenBlocks.smogstem_wall_torch, cutout);
         render(UndergardenBlocks.ditchbulb_plant, cutout);
-        render(UndergardenBlocks.undergarden_portal, translucent);
+        //render(UndergardenBlocks.undergarden_portal, translucent);
 
     }
 

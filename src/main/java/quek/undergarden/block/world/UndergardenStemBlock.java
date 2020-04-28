@@ -23,14 +23,14 @@ import quek.undergarden.registry.UndergardenItems;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class UndergardenStemBlock extends UndergardenBushBlock implements IGrowable {
+public class UndergardenStemBlock extends StemBlock implements IGrowable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
     protected static final VoxelShape[] SHAPES = new VoxelShape[]{Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 4.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 6.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 8.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 10.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 12.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 14.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 16.0D, 9.0D)};
     private final StemGrownBlock crop;
 
     public UndergardenStemBlock(StemGrownBlock crop) {
-        super(Properties.create(Material.PLANTS)
+        super(crop, Properties.create(Material.PLANTS)
                 .doesNotBlockMovement()
                 .tickRandomly()
                 .hardnessAndResistance(0F)
@@ -53,16 +53,16 @@ public class UndergardenStemBlock extends UndergardenBushBlock implements IGrowa
 
     @Override
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() == Blocks.FARMLAND;
+        return state.getBlock() == Blocks.FARMLAND || state.getBlock() == UndergardenBlocks.deepsoil_farmland.get();
     }
 
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-        super.tick(state, worldIn, pos, rand);
+        //tick(state, worldIn, pos, rand);
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
         if (worldIn.getLightSubtracted(pos, 0) >= 0) {
-            //float f = CropsBlock.getGrowthChance(this, worldIn, pos);
-           // if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt((int)(25.0F / f) + 1) == 0)) {
+            float f = UndergardenCropsBlock.getGrowthChance(this, worldIn, pos);
+            if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt((int)(25.0F / f) + 1) == 0)) {
                 int i = state.get(AGE);
                 if (i < 7) {
                     worldIn.setBlockState(pos, state.with(AGE, i + 1), 2);
@@ -71,13 +71,13 @@ public class UndergardenStemBlock extends UndergardenBushBlock implements IGrowa
                     BlockPos blockpos = pos.offset(direction);
                     BlockState soil = worldIn.getBlockState(blockpos.down());
                     Block block = soil.getBlock();
-                    if (worldIn.isAirBlock(blockpos) && (soil.canSustainPlant(worldIn, blockpos.down(), Direction.UP, this) || block == Blocks.FARMLAND || block == UndergardenBlocks.deepsoil.get() || block == UndergardenBlocks.deepturf_block.get())) {
+                    if (worldIn.isAirBlock(blockpos) && (soil.canSustainPlant(worldIn, blockpos.down(), Direction.UP, this) || block == Blocks.FARMLAND || block == UndergardenBlocks.deepsoil_farmland.get())) {
                         worldIn.setBlockState(blockpos, this.crop.getDefaultState());
-                        worldIn.setBlockState(pos, this.crop.getAttachedStem().getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, direction));
+                        //worldIn.setBlockState(pos, this.crop.getAttachedStem().getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, direction));
                     }
                 }
                 net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
-           // }
+            }
 
         }
     }

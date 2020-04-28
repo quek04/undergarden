@@ -11,24 +11,14 @@ public class UndergardenBiomeLayer implements IAreaTransformer0
 	private static final int UNCOMMON_BIOME_CHANCE = 8;
 	private static final int RARE_BIOME_CHANCE = 16;
 	protected LazyInt[] commonBiomes = new LazyInt[] {
-			UndergardenLayerUtil.lazyId(UndergardenBiomes.SMOGSTEM_FOREST),
 			UndergardenLayerUtil.lazyId(UndergardenBiomes.FORGOTTEN_FIELD)
-
 	};
 	protected LazyInt[] uncommonBiomes = (new LazyInt[] {
-			// add uncommon biomes here
-
-			// for quek: there has to be something in both uncommon and are biomes or else it crashes
-
-			UndergardenLayerUtil.lazyId(UndergardenBiomes.FORGOTTEN_FIELD),
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.SMOGSTEM_FOREST)
 
 	});
 	protected LazyInt[] rareBiomes = (new LazyInt[] {
-			// add rare biomes here
-
-			// for quek: there has to be something in both uncommon and are biomes or else it crashes
-			UndergardenLayerUtil.lazyId(UndergardenBiomes.UTHERIC_PLAINS)
-
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.BARREN_ABYSS)
 	});
 
 	public UndergardenBiomeLayer() {

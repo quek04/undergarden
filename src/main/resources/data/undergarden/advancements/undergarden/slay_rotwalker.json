@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:utheric_shard"
+    },
+    "title": {
+      "translate": "advancement.slay_rotwalker.title"
+    },
+    "description": {
+      "translate": "advancement.slay_rotwalker.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "parent": "undergarden:undergarden/root",
+  "criteria": {
+    "slay_rotwalker": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "undergarden:rotwalker"
+        }
+      }
+    }
+  }
+}

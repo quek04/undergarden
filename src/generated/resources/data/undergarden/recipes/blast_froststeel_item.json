@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "tag": "undergarden:froststeel_items"
+  },
+  "result": "undergarden:froststeel_nugget",
+  "experience": 0.1,
+  "cookingtime": 100
+}

@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:froststeel_pickaxe"
+    },
+    "title": {
+      "translate": "advancement.the_whole_collection.title"
+    },
+    "description": {
+      "translate": "advancement.the_whole_collection.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "challenge"
+  },
+  "parent": "undergarden:undergarden/deep_extraction",
+  "criteria": {
+    "has_gourds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:utherium_ingot"
+          },
+          {
+            "item": "undergarden:froststeel_ingot"
+          },
+          {
+            "item": "undergarden:utherium_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

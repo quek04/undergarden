@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:gloomgourd"
+    },
+    "title": {
+      "translate": "advancement.gourd_lord.title"
+    },
+    "description": {
+      "translate": "advancement.gourd_lord.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "goal",
+    "hidden": true
+  },
+  "parent": "undergarden:undergarden/root",
+  "criteria": {
+    "has_gourds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:gloomgourd",
+            "count": {
+              "min": 64
+            }
+          }
+        ]
+      }
+    }
+  }
+}
