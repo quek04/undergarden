@@ -1,25 +1,20 @@
-package quek.undergarden.world.gen.feature.structure;
+package quek.undergarden.world.gen.structure;
 
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeManager;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.IglooPieces;
 import net.minecraft.world.gen.feature.structure.ScatteredStructure;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenFeatures;
-import quek.undergarden.world.gen.feature.structure.piece.DepthrockRuinPieces;
+import quek.undergarden.world.gen.structure.piece.DepthrockRuinPieces;
 
-import java.util.Random;
 import java.util.function.Function;
 
 public class DepthrockRuinStructure extends ScatteredStructure<NoFeatureConfig> {

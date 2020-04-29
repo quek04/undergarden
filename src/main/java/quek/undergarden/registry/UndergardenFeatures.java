@@ -10,8 +10,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.world.gen.feature.*;
-import quek.undergarden.world.gen.feature.structure.*;
-import quek.undergarden.world.gen.feature.structure.piece.*;
+import quek.undergarden.world.gen.structure.*;
+import quek.undergarden.world.gen.structure.piece.*;
 
 public class UndergardenFeatures {
 
@@ -25,8 +25,11 @@ public class UndergardenFeatures {
             "wigglewood_tree", () -> new WigglewoodFeature(TreeFeatureConfig::func_227338_a_));
 
     public static IStructurePieceType DEPTHROCK_RUIN_TYPE = DepthrockRuinPieces.Piece::new;
+    public static IStructurePieceType OVERWORLD_PORTAL_RUIN_TYPE = OverworldPortalRuinPieces.Piece::new;
 
     public static final RegistryObject<Structure<NoFeatureConfig>> DEPTHROCK_RUIN = FEATURES.register(
             "depthrock_ruin", () -> new DepthrockRuinStructure(NoFeatureConfig::deserialize));
+    public static final RegistryObject<Structure<NoFeatureConfig>> OVERWORLD_PORTAL_RUIN = FEATURES.register(
+            "overworld_portal_ruin", OverworldPortalRuinStructure::new);
 
 }

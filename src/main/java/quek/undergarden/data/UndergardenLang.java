@@ -144,7 +144,7 @@ public class UndergardenLang extends LanguageProvider {
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_ITEMS, "Undergarden Items");
 
         add("advancement.undergarden.title", "The Undergarden");
-        add("advancement.undergarden.desc", "The forgotten land.");
+        add("advancement.undergarden.desc", "Enter the Undergarden. The forgotten land awaits...");
 
         add("advancement.gourd_lord.title", "Gourd Lord");
         add("advancement.gourd_lord.desc", "You've done it. You've acquired a stack of Gloomgourds.");
@@ -168,7 +168,7 @@ public class UndergardenLang extends LanguageProvider {
         add("advancement.the_whole_collection.desc", "Acquire one of each native Undergarden mineral.");
 
         add("advancement.catalyst.title", "Create the Catalysts");
-        add("advancement.catalyst.desc", "Craft 12 Catalysts using Iron and Gold to activate the Undergarden portal found underground.");
+        add("advancement.catalyst.desc", "Craft 12 Catalysts using Iron and Gold to activate the Undergarden portal found in mountain biomes.");
 
         add("advancement.glorious_beans.title", "Glorious Beans!");
         add("advancement.glorious_beans.desc", "Find and pick an Underbean bush.");

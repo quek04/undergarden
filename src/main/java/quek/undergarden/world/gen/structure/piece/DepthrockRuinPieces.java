@@ -1,10 +1,6 @@
-package quek.undergarden.world.gen.feature.structure.piece;
+package quek.undergarden.world.gen.structure.piece;
 
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ChestTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -22,7 +18,6 @@ import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenFeatures;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class DepthrockRuinPieces {

@@ -7,7 +7,7 @@ public enum UndergardenItemTiers implements IItemTier {
     SMOGSTEM(127,2,1,1, 15, Ingredient.fromTag(UndergardenTags.Items.SMOGSTEM_PLANKS)),
     CLOGGRUM(286,3,4,2, 10, Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get())),
     FROSTSTEEL(575, 3, 3, 3, 15, Ingredient.fromItems(UndergardenItems.froststeel_ingot.get())),
-    UTHERIC(1279,4,3.5F,3,13, Ingredient.fromItems(UndergardenItems.utheric_shard.get()))
+    UTHERIC(1279,4,3.5F,3,13, Ingredient.fromItems(UndergardenItems.utherium_ingot.get()))
     ;
 
     int maxUses;

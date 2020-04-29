@@ -1,5 +1,5 @@
 {
-  "advancement.catalyst.desc": "Craft 12 Catalysts using Iron and Gold to activate the Undergarden portal found underground.",
+  "advancement.catalyst.desc": "Craft 12 Catalysts using Iron and Gold to activate the Undergarden portal found in mountain biomes.",
   "advancement.catalyst.title": "Create the Catalysts",
   "advancement.deep_extraction.desc": "Acquire a Cloggrum Ingot.",
   "advancement.deep_extraction.title": "Deep Extraction",
@@ -17,7 +17,7 @@
   "advancement.subterranean_cartographer.title": "Subterranean Cartographer",
   "advancement.the_whole_collection.desc": "Acquire one of each native Undergarden mineral.",
   "advancement.the_whole_collection.title": "The Whole Collection",
-  "advancement.undergarden.desc": "The forgotten land.",
+  "advancement.undergarden.desc": "Enter the Undergarden. The forgotten land awaits...",
   "advancement.undergarden.title": "The Undergarden",
   "biome.undergarden.barren_abyss": "Barren Abyss",
   "biome.undergarden.forgotten_field": "Forgotten Field",
