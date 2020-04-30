@@ -1,10 +1,7 @@
 package quek.undergarden.entity;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -58,6 +55,11 @@ public class RotwalkerEntity extends MonsterEntity {
     }
 
     @Override
+    public CreatureAttribute getCreatureAttribute() {
+        return CreatureAttribute.UNDEAD;
+    }
+
+    @Override
     public void livingTick() {
         super.livingTick();
         if (this.attackTimer > 0) {
@@ -97,7 +99,7 @@ public class RotwalkerEntity extends MonsterEntity {
         }
     }
 
-        @Override
+    @Override
     protected SoundEvent getAmbientSound() {
         return SoundEvents.ENTITY_ZOMBIE_AMBIENT;
     }
