@@ -51,7 +51,9 @@ public class UndergardenBlocks {
     public static final RegistryObject<LogBlock> wigglewood_log = registerBlock("wigglewood_log", UndergardenLogBlock::new);
     public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", UndergardenLeavesBlock::new);
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UndergardenTallGrassBlock::new);
-    public static final RegistryObject<Block> shimmerweed = registerBlock("shimmerweed", () -> new LightbearingPlantBlock(12));
+    public static final RegistryObject<Block> double_deepturf = registerBlock("double_deepturf", UndergardenDoublePlantBlock::new);
+    public static final RegistryObject<Block> shimmerweed = registerBlock("shimmerweed", () -> new UndergardenTallGrassBlock(12));
+    public static final RegistryObject<Block> double_shimmerweed = registerBlock("double_shimmerweed", () -> new UndergardenDoublePlantBlock(14));
     public static final RegistryObject<Block> ditchbulb_plant = registerBlock("ditchbulb_plant", DitchbulbBlock::new);
     public static final RegistryObject<Block> indigo_mushroom = registerBlock("indigo_mushroom", () -> new UndergardenMushroomBlock(2));
     public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", UndergardenMushroomBlock::new);

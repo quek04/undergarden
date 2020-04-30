@@ -29,6 +29,7 @@ public class SmogstemForestBiome extends UndergardenBiome {
         this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
         UndergardenBiomeFeatures.addOres(this);
         UndergardenBiomeFeatures.addPlants(this);
+        UndergardenBiomeFeatures.addDoubleDeepturf(this);
         UndergardenBiomeFeatures.addForestSmogstemTrees(this);
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 200, 10, 20));

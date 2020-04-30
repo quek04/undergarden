@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.SweetBerryBushBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
+import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.data.loot.EntityLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
@@ -66,8 +67,10 @@ public class UndergardenLootTables extends LootTableProvider {
             this.registerLootTable(UndergardenBlocks.underbean_bush.get(),
                     LootTable.builder().addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BeanBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UndergardenItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 3.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))).addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BeanBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UndergardenItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
             dropWithSilk(UndergardenBlocks.deepturf_block, UndergardenBlocks.deepsoil);
-            dropAsSilk(UndergardenBlocks.tall_deepturf);
+            this.registerLootTable(UndergardenBlocks.tall_deepturf.get(), BlockLootTables::onlyWithShears);
+            this.registerLootTable(UndergardenBlocks.double_deepturf.get(), BlockLootTables::onlyWithShears);
             dropSelf(UndergardenBlocks.shimmerweed);
+            dropSelf(UndergardenBlocks.double_shimmerweed);
             dropSelf(UndergardenBlocks.smogstem_planks);
             dropSelf(UndergardenBlocks.wigglewood_planks);
             dropSelf(UndergardenBlocks.smogstem_log);
@@ -91,7 +94,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.gloomgourd);
             dropSelf(UndergardenBlocks.carved_gloomgourd);
             dropSelf(UndergardenBlocks.gloom_o_lantern);
-            dropWithSilk(UndergardenBlocks.ditchbulb_plant, UndergardenItems.ditchbulb);
+            this.registerLootTable(UndergardenBlocks.ditchbulb_plant.get(), (p_218525_0_) -> droppingWithShears(p_218525_0_, withExplosionDecay(p_218525_0_, ItemLootEntry.builder(UndergardenItems.ditchbulb.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))))));
             dropSelf(UndergardenBlocks.depthrock_stairs);
             dropSelf(UndergardenBlocks.cobbled_depthrock_stairs);
             dropSelf(UndergardenBlocks.depthrock_brick_stairs);

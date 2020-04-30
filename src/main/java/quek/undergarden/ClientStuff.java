@@ -50,6 +50,8 @@ public class ClientStuff {
         render(UndergardenBlocks.smogstem_torch, cutout);
         render(UndergardenBlocks.smogstem_wall_torch, cutout);
         render(UndergardenBlocks.ditchbulb_plant, cutout);
+        render(UndergardenBlocks.double_deepturf, cutout);
+        render(UndergardenBlocks.double_shimmerweed, cutout);
         //render(UndergardenBlocks.undergarden_portal, translucent);
 
     }

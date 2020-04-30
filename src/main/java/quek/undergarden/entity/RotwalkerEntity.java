@@ -54,7 +54,7 @@ public class RotwalkerEntity extends MonsterEntity {
     }
 
     public static boolean canRotwalkerSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL && worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get() && worldIn.getLightValue(pos) >= 12;
+        return worldIn.getDifficulty() != Difficulty.PEACEFUL && worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get() && worldIn.getLightValue(pos) <= 3;
     }
 
     @Override

@@ -6,15 +6,12 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "undergarden:tall_deepturf"
+          "name": "undergarden:double_shimmerweed"
         }
       ],
       "conditions": [
         {
-          "condition": "minecraft:match_tool",
-          "predicate": {
-            "item": "minecraft:shears"
-          }
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

@@ -29,6 +29,7 @@ public class ForgottenFieldBiome extends UndergardenBiome {
         this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
         UndergardenBiomeFeatures.addOres(this);
         UndergardenBiomeFeatures.addPlants(this);
+        UndergardenBiomeFeatures.addDoubleShimmerweed(this);
         UndergardenBiomeFeatures.addShrooms(this);
         UndergardenBiomeFeatures.addTrees(this);
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));

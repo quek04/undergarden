@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "undergarden:tall_deepturf"
+          "name": "undergarden:double_deepturf"
         }
       ],
       "conditions": [

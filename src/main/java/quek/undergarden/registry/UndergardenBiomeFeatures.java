@@ -7,6 +7,7 @@ import net.minecraft.block.pattern.BlockMatcher;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
@@ -23,7 +24,9 @@ public class UndergardenBiomeFeatures {
     private static final BlockState WIGGLEWOOD_LOG = UndergardenBlocks.wigglewood_log.get().getDefaultState();
     private static final BlockState WIGGLEWOOD_LEAVES = UndergardenBlocks.wigglewood_leaves.get().getDefaultState();
     private static final BlockState TALL_DEEPTURF = UndergardenBlocks.tall_deepturf.get().getDefaultState();
+    private static final BlockState DOUBLE_DEEPTURF = UndergardenBlocks.double_deepturf.get().getDefaultState();
     private static final BlockState SHIMMERWEED = UndergardenBlocks.shimmerweed.get().getDefaultState();
+    private static final BlockState DOUBLE_SHIMMERWEED = UndergardenBlocks.double_shimmerweed.get().getDefaultState();
     private static final BlockState DITCHBULB_PLANT = UndergardenBlocks.ditchbulb_plant.get().getDefaultState();
     private static final BlockState BEAN_BUSH = UndergardenBlocks.underbean_bush.get().getDefaultState();
     private static final BlockState INDIGO_SHROOM = UndergardenBlocks.indigo_mushroom.get().getDefaultState();
@@ -43,7 +46,9 @@ public class UndergardenBiomeFeatures {
     public static final BlockClusterFeatureConfig INK_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(INK_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig BLOOD_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BLOOD_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig TALL_DEEPTURF_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(TALL_DEEPTURF), new SimpleBlockPlacer())).tries(256).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
+    public static final BlockClusterFeatureConfig DOUBLE_DEEPTURF_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_DEEPTURF), new DoublePlantBlockPlacer()).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
     public static final BlockClusterFeatureConfig SHIMMERWEED_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(SHIMMERWEED), new SimpleBlockPlacer()).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
+    public static final BlockClusterFeatureConfig DOUBLE_SHIMMERWEED_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_SHIMMERWEED), new DoublePlantBlockPlacer()).tries(64).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
     public static final BlockClusterFeatureConfig DITCHBULB_PLANT_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DITCHBULB_PLANT), new SimpleBlockPlacer()).tries(32).whitelist(ImmutableSet.of(UndergardenBlocks.depthrock.get())).func_227317_b_().build());
     public static final BlockClusterFeatureConfig BEAN_BUSH_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BEAN_BUSH), new SimpleBlockPlacer())).tries(64).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
     public static final BlockClusterFeatureConfig GLOOMGOURD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(GLOOMGOURD), new SimpleBlockPlacer())).tries(64).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
@@ -57,6 +62,14 @@ public class UndergardenBiomeFeatures {
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(BEAN_BUSH_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1))));
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(GLOOMGOURD_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceConfig(32))));
         biome.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DITCHBULB_PLANT_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(10))));
+    }
+
+    public static void addDoubleDeepturf(Biome biome) {
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DOUBLE_DEEPTURF_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(20))));
+    }
+
+    public static void addDoubleShimmerweed(Biome biome) {
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DOUBLE_SHIMMERWEED_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(20))));
     }
 
     public static void addShrooms(Biome biome) {

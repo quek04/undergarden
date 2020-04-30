@@ -38,7 +38,9 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.wigglewood_log, "Wigglewood Log");
         addBlock(UndergardenBlocks.wigglewood_leaves, "Wigglewood Leaves");
         addBlock(UndergardenBlocks.tall_deepturf, "Deepturf");
+        addBlock(UndergardenBlocks.double_deepturf, "Tall Deepturf");
         addBlock(UndergardenBlocks.shimmerweed, "Shimmerweed");
+        addBlock(UndergardenBlocks.double_shimmerweed, "Tall Shimmerweed");
         addBlock(UndergardenBlocks.ditchbulb_plant, "Ditchbulb Plant");
         addBlock(UndergardenBlocks.indigo_mushroom, "Indigo Mushroom");
         addBlock(UndergardenBlocks.veil_mushroom, "Veiled Mushroom");
