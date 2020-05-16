@@ -142,5 +142,10 @@
   "itemGroup.undergarden_blocks": "Undergarden Blocks",
   "itemGroup.undergarden_foods": "Undergarden Foodstuffs",
   "itemGroup.undergarden_gear": "Undergarden Tools & Combat",
-  "itemGroup.undergarden_items": "Undergarden Items"
+  "itemGroup.undergarden_items": "Undergarden Items",
+  "tooltip.cloggrum_sword": "High damage, low durability.",
+  "tooltip.froststeel_sword": "Slows targets.",
+  "tooltip.slingshot": "Uses Depthrock Pebbles as ammo.",
+  "tooltip.utheric_axe": "Bonus damage to passive animals.",
+  "tooltip.utheric_sword": "Deals 10 damage to Rotspawn."
 }

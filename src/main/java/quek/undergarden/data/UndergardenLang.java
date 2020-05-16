@@ -194,5 +194,11 @@ public class UndergardenLang extends LanguageProvider {
 
         add("advancement.masticated_armory.title", "Masticated Armory");
         add("advancement.masticated_armory.desc", "Craft both the Masticated Chestplate and Shield.");
+
+        add("tooltip.cloggrum_sword", "High damage, low durability.");
+        add("tooltip.froststeel_sword", "Slows targets.");
+        add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");
+        add("tooltip.utheric_axe", "Bonus damage to passive animals.");
+        add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
     }
 }
