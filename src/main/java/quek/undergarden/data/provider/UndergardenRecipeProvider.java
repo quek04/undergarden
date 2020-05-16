@@ -80,6 +80,14 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + planksIn.getId().getPath(), hasItem(planksIn));
     }
 
+    public ShapedRecipeBuilder makeSticks(Supplier<? extends Item> stickOut, Supplier<? extends Block> planksIn) {
+        return ShapedRecipeBuilder.shapedRecipe(stickOut.get(), 4)
+                .patternLine("#")
+                .patternLine("#")
+                .key('#', planksIn.get())
+                .addCriterion("has_" + planksIn.get().getRegistryName().getPath(), hasItem(planksIn.get()));
+    }
+
     public ShapedRecipeBuilder makeShardToIngot() {
         return ShapedRecipeBuilder.shapedRecipe(UndergardenItems.utherium_chunk.get(), 1)
                 .patternLine("SS")
@@ -170,9 +178,9 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
 
     public ShapedRecipeBuilder makeTagAxe(Supplier<? extends Item> axeOut, Tag<Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(axeOut.get())
-                .patternLine("###")
-                .patternLine(" / ")
-                .patternLine(" / ")
+                .patternLine("##")
+                .patternLine("#/")
+                .patternLine(" /")
                 .key('#', materialIn)
                 .key('/', UndergardenItems.smogstem_stick.get())
                 .addCriterion("has_" + materialIn.getId().getPath(), hasItem(materialIn));

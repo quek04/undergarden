@@ -6,8 +6,7 @@ import quek.undergarden.registry.UndergardenBiomes;
 import quek.undergarden.utils.UndergardenLayerUtil;
 import quek.undergarden.utils.misc.LazyInt;
 
-public class UndergardenBiomeLayer implements IAreaTransformer0
-{
+public class UndergardenBiomeLayer implements IAreaTransformer0 {
 	private static final int UNCOMMON_BIOME_CHANCE = 8;
 	private static final int RARE_BIOME_CHANCE = 16;
 	protected LazyInt[] commonBiomes = new LazyInt[] {

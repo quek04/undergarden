@@ -25,6 +25,9 @@
       },
       {
         "name": "undergarden:music/brotherhood", "stream": true
+      },
+      {
+        "name": "undergarden:music/pit_of_shivers", "stream": true
       }
     ]
   },
@@ -49,6 +52,88 @@
     "subtitle": "subtitles.entity.dweller_death",
     "sounds": [
       "undergarden:entity/dweller_death_1"
+    ]
+  },
+  "entity.rotwalker_living": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotwalker_living",
+    "sounds": [
+      "undergarden:entity/rotwalker_living_1",
+      "undergarden:entity/rotwalker_living_2",
+      "undergarden:entity/rotwalker_living_3"
+    ]
+  },
+  "entity.rotwalker_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotwalker_hurt",
+    "sounds": [
+      "undergarden:entity/rotwalker_hurt_1",
+      "undergarden:entity/rotwalker_hurt_2",
+      "undergarden:entity/rotwalker_hurt_3"
+    ]
+  },
+  "entity.rotwalker_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotwalker_death",
+    "sounds": [
+      "undergarden:entity/rotwalker_death"
+    ]
+  },
+  "entity.rotbeast_living": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotbeast_living",
+    "sounds": [
+      "undergarden:entity/rotbeast_living_1",
+      "undergarden:entity/rotbeast_living_2",
+      "undergarden:entity/rotbeast_living_3"
+    ]
+  },
+  "entity.rotbeast_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotbeast_hurt",
+    "sounds": [
+      "undergarden:entity/rotbeast_hurt_1",
+      "undergarden:entity/rotbeast_hurt_2",
+      "undergarden:entity/rotbeast_hurt_3"
+    ]
+  },
+  "entity.rotbeast_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotbeast_death",
+    "sounds": [
+      "undergarden:entity/rotbeast_death"
+    ]
+  },
+  "entity.brute_living": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.brute_living",
+    "sounds": [
+      "undergarden:entity/brute_living_1",
+      "undergarden:entity/brute_living_2",
+      "undergarden:entity/brute_living_3",
+      "undergarden:entity/brute_living_4"
+    ]
+  },
+  "entity.brute_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.brute_hurt",
+    "sounds": [
+      "undergarden:entity/brute_hurt_1",
+      "undergarden:entity/brute_hurt_2"
+    ]
+  },
+  "entity.brute_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.brute_death",
+    "sounds": [
+      "undergarden:entity/brute_death"
+    ]
+  },
+  "entity.brute_angry": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.brute_angry",
+    "sounds": [
+      "undergarden:entity/brute_aggro"
     ]
   }
 }

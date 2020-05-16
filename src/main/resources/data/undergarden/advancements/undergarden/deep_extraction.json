@@ -15,20 +15,14 @@
   },
   "parent": "undergarden:undergarden/root",
   "criteria": {
-    "has_gourds": {
+    "has_cloggrum": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "undergarden:cloggrum_ingot",
-            "count": {
-              "min": 1
-            }
+            "item": "undergarden:cloggrum_ingot"
           }
-        ],
-        "slots": {
-          "occupied": 1
-        }
+        ]
       }
     }
   }

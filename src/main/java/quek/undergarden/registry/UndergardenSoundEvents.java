@@ -21,6 +21,19 @@ public class UndergardenSoundEvents {
     public static final SoundEvent DWELLER_HURT = register("entity.dweller_hurt");
     public static final SoundEvent DWELLER_DEATH = register("entity.dweller_death");
 
+    public static final SoundEvent ROTWALKER_LIVING = register("entity.rotwalker_living");
+    public static final SoundEvent ROTWALKER_HURT = register("entity.rotwalker_hurt");
+    public static final SoundEvent ROTWALKER_DEATH = register("entity.rotwalker_death");
+
+    public static final SoundEvent ROTBEAST_LIVING = register("entity.rotbeast_living");
+    public static final SoundEvent ROTBEAST_HURT = register("entity.rotbeast_hurt");
+    public static final SoundEvent ROTBEAST_DEATH = register("entity.rotbeast_death");
+
+    public static final SoundEvent BRUTE_LIVING = register("entity.brute_living");
+    public static final SoundEvent BRUTE_HURT = register("entity.brute_hurt");
+    public static final SoundEvent BRUTE_DEATH = register("entity.brute_death");
+    public static final SoundEvent BRUTE_ANGRY = register("entity.brute_angry");
+
     private static SoundEvent register(String name) {
         SoundEvent sound = new SoundEvent(new ResourceLocation(UndergardenMod.MODID, name));
         sound.setRegistryName(new ResourceLocation(UndergardenMod.MODID, name));
@@ -35,7 +48,17 @@ public class UndergardenSoundEvents {
                 UNDERGARDEN_PORTAL_AMBIENT,
                 DWELLER_LIVING,
                 DWELLER_HURT,
-                DWELLER_DEATH
+                DWELLER_DEATH,
+                ROTWALKER_LIVING,
+                ROTWALKER_HURT,
+                ROTWALKER_DEATH,
+                ROTBEAST_LIVING,
+                ROTBEAST_HURT,
+                ROTBEAST_DEATH,
+                BRUTE_LIVING,
+                BRUTE_HURT,
+                BRUTE_DEATH,
+                BRUTE_ANGRY
         );
     }
 

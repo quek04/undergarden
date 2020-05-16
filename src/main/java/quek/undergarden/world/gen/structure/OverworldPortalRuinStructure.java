@@ -82,23 +82,14 @@ public class OverworldPortalRuinStructure extends Structure<NoFeatureConfig> {
 
         @Override
         public void init(ChunkGenerator<?> generator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn) {
-            //Check out vanilla's WoodlandMansionStructure for how they offset the x and z
-            //so that they get the y value of the land at the mansion's entrance, no matter
-            //which direction the mansion is rotated.
-            //
-            //However, for most purposes, getting the y value of land with the default x and z is good enough.
             Rotation rotation = Rotation.values()[this.rand.nextInt(Rotation.values().length)];
 
-            //Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
             int x = (chunkX << 4) + 7;
             int z = (chunkZ << 4) + 7;
 
-            //Finds the y value of the terrain at location.
             int surfaceY = generator.func_222531_c(x, z, Heightmap.Type.WORLD_SURFACE_WG);
             BlockPos blockpos = new BlockPos(x, surfaceY+1, z);
 
-            //Now adds the structure pieces to this.components with all details such as where each part goes
-            //so that the structure can be added to the world by worldgen.
             OverworldPortalRuinPieces.start(templateManagerIn, blockpos, rotation, this.components, this.rand);
 
             this.recalculateStructureSize();

@@ -4,8 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SweetBerryBushBlock;
+import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;
@@ -13,10 +12,13 @@ import net.minecraft.data.loot.EntityLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Items;
+import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.BlockStateProperty;
 import net.minecraft.world.storage.loot.conditions.EntityHasProperty;
+import net.minecraft.world.storage.loot.conditions.KilledByPlayer;
+import net.minecraft.world.storage.loot.conditions.RandomChance;
 import net.minecraft.world.storage.loot.functions.ApplyBonus;
 import net.minecraft.world.storage.loot.functions.LootingEnchantBonus;
 import net.minecraft.world.storage.loot.functions.SetCount;
@@ -58,6 +60,8 @@ public class UndergardenLootTables extends LootTableProvider {
 
     public static class Blocks extends UndergardenBlockLootTableProvider {
 
+        private static final float[] DEFAULT_SAPLING_DROP_RATES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
+
         @Override
         protected void addTables() {
             dropWithSilk(UndergardenBlocks.depthrock, UndergardenBlocks.cobbled_depthrock);
@@ -67,10 +71,13 @@ public class UndergardenLootTables extends LootTableProvider {
             this.registerLootTable(UndergardenBlocks.underbean_bush.get(),
                     LootTable.builder().addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BeanBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UndergardenItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 3.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))).addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BeanBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UndergardenItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
             dropWithSilk(UndergardenBlocks.deepturf_block, UndergardenBlocks.deepsoil);
+            this.registerLootTable(UndergardenBlocks.double_deepturf.get(), (p_218572_0_)
+                    -> droppingWithShears(UndergardenBlocks.tall_deepturf.get(), withSurvivesExplosion(p_218572_0_, ItemLootEntry.builder(Items.WHEAT_SEEDS)).acceptCondition(BlockStateProperty.builder(p_218572_0_).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).acceptCondition(RandomChance.builder(0.125F))));
+            this.registerLootTable(UndergardenBlocks.double_shimmerweed.get(), (p_218572_0_)
+                    -> dropping(UndergardenBlocks.shimmerweed.get()));
             this.registerLootTable(UndergardenBlocks.tall_deepturf.get(), BlockLootTables::onlyWithShears);
-            this.registerLootTable(UndergardenBlocks.double_deepturf.get(), BlockLootTables::onlyWithShears);
+            this.registerLootTable(UndergardenBlocks.glowing_sea_grass.get(), BlockLootTables::onlyWithShears);
             dropSelf(UndergardenBlocks.shimmerweed);
-            dropSelf(UndergardenBlocks.double_shimmerweed);
             dropSelf(UndergardenBlocks.smogstem_planks);
             dropSelf(UndergardenBlocks.wigglewood_planks);
             dropSelf(UndergardenBlocks.smogstem_log);
@@ -80,9 +87,9 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.froststeel_ore);
             dropWithFortune(UndergardenBlocks.utherium_ore, UndergardenItems.utherium_chunk);
             dropSelf(UndergardenBlocks.smogstem_sapling);
-            dropChanceAdditional(UndergardenBlocks.smogstem_leaves, UndergardenBlocks.smogstem_sapling, UndergardenItems.smogstem_stick, 0.05F);
+            dropChanceAdditional(UndergardenBlocks.smogstem_leaves, UndergardenBlocks.smogstem_sapling, UndergardenItems.smogstem_stick, DEFAULT_SAPLING_DROP_RATES);
             dropSelf(UndergardenBlocks.wigglewood_sapling);
-            dropChance(UndergardenBlocks.wigglewood_leaves, UndergardenBlocks.wigglewood_sapling, 0.05F);
+            dropChanceAdditional(UndergardenBlocks.wigglewood_leaves, UndergardenBlocks.wigglewood_sapling, UndergardenItems.twistytwig, DEFAULT_SAPLING_DROP_RATES);
             dropSelf(UndergardenBlocks.indigo_mushroom);
             dropSelf(UndergardenBlocks.veil_mushroom);
             dropSelf(UndergardenBlocks.ink_mushroom);
@@ -93,8 +100,9 @@ public class UndergardenLootTables extends LootTableProvider {
             dropOther(UndergardenBlocks.smogstem_wall_torch, UndergardenItems.smogstem_torch.get());
             dropSelf(UndergardenBlocks.gloomgourd);
             dropSelf(UndergardenBlocks.carved_gloomgourd);
+            this.registerLootTable(UndergardenBlocks.depthrock_pebbles.get(), (p_218534_0_) -> droppingWithSilkTouchOrRandomly(p_218534_0_, UndergardenItems.depthrock_pebble.get(), RandomValueRange.of(1.0F, 3.0F)));
             dropSelf(UndergardenBlocks.gloom_o_lantern);
-            this.registerLootTable(UndergardenBlocks.ditchbulb_plant.get(), (p_218525_0_) -> droppingWithShears(p_218525_0_, withExplosionDecay(p_218525_0_, ItemLootEntry.builder(UndergardenItems.ditchbulb.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))))));
+            this.registerLootTable(UndergardenBlocks.ditchbulb_plant.get(), (p_218525_0_) -> droppingWithShears(p_218525_0_, withExplosionDecay(p_218525_0_, ItemLootEntry.builder(UndergardenItems.ditchbulb.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))));
             dropSelf(UndergardenBlocks.depthrock_stairs);
             dropSelf(UndergardenBlocks.cobbled_depthrock_stairs);
             dropSelf(UndergardenBlocks.depthrock_brick_stairs);
@@ -112,6 +120,10 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.cloggrum_block);
             dropSelf(UndergardenBlocks.froststeel_block);
             dropSelf(UndergardenBlocks.utherium_block);
+            dropSelf(UndergardenBlocks.cloggrum_bars);
+            dropOther(UndergardenBlocks.glowing_kelp, UndergardenItems.glowing_kelp.get());
+            dropOther(UndergardenBlocks.glowing_kelp_plant, UndergardenItems.glowing_kelp.get());
+            dropSelf(UndergardenBlocks.shiverstone);
         }
 
         @Override
@@ -126,10 +138,12 @@ public class UndergardenLootTables extends LootTableProvider {
         protected void addTables() {
             this.registerLootTable(UndergardenEntities.rotwalker, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.utheric_shard.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 1.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
             this.registerLootTable(UndergardenEntities.rotbeast, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.utheric_shard.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))))));
-            this.registerLootTable(UndergardenEntities.dweller, LootTable.builder()/*.addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F)))))*/.addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.raw_dweller_meat.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 3.0F))).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
-            this.registerLootTable(UndergardenEntities.rotdweller, LootTable.builder()/*.addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F)))))*/.addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.raw_dweller_meat.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 3.0F))).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
+            this.registerLootTable(UndergardenEntities.dweller, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.raw_dweller_meat.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 3.0F))).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
+            this.registerLootTable(UndergardenEntities.rotdweller, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
             this.registerLootTable(UndergardenEntities.gwibling, LootTable.builder());
             this.registerLootTable(UndergardenEntities.skiz_swarmer, LootTable.builder());
+            this.registerLootTable(UndergardenEntities.brute, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.brute_tusk.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
+            this.registerLootTable(UndergardenEntities.masticator, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.masticator_scales.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(4.0F, 8.0F))))));
         }
 
         @Override

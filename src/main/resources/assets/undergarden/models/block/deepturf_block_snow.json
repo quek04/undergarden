@@ -1,0 +1,9 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "particle": "undergarden:block/deepsoil",
+        "bottom": "undergarden:block/deepsoil",
+        "top": "undergarden:block/deepturf_block_top",
+        "side": "undergarden:block/deepturf_block_snow"
+    }
+}

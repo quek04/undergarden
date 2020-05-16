@@ -25,6 +25,7 @@ public class UndergardenOreBlock extends OreBlock {
         );
     }
 
+    @Override
     protected int getExperience(Random rando) {
         if (this == UndergardenBlocks.coal_ore.get()) {
             return MathHelper.nextInt(rando, 0, 2);
@@ -33,6 +34,7 @@ public class UndergardenOreBlock extends OreBlock {
         }
     }
 
+    @Override
     public void spawnAdditionalDrops(BlockState state, World worldIn, BlockPos pos, ItemStack stack) {
         super.spawnAdditionalDrops(state, worldIn, pos, stack);
     }

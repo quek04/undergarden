@@ -69,11 +69,6 @@ public class DwellerEntity extends AnimalEntity {
     }
 
     @Override
-    protected float getSoundVolume() {
-        return 0.40F;
-    }
-
-    @Override
     protected SoundEvent getAmbientSound() {
         return UndergardenSoundEvents.DWELLER_LIVING;
     }

@@ -1,5 +1,6 @@
 package quek.undergarden.world.gen.structure.piece;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
@@ -9,16 +10,20 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.IWorldGenerationBaseReader;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.TemplateStructurePiece;
 import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import quek.undergarden.UndergardenMod;
+import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenFeatures;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 
 public class DepthrockRuinPieces {
 
@@ -29,18 +34,15 @@ public class DepthrockRuinPieces {
         int x = pos.getX();
         int z = pos.getZ();
 
-        //This is how we factor in rotation for multi-piece structures.
-        //
-        //I would recommend using the OFFSET map above to have each piece at correct height relative of each other
-        //and keep the X and Z equal to 0. And then in rotations, have the centermost piece have a rotation
-        //of 0, 0, 0 and then have all other pieces' rotation be based off of the bottommost left corner of
-        //that piece (the corner that is smallest in X and Z).
-        //
-        //Lots of trial and error may be needed to get this right for your structure.
         BlockPos rotationOffSet = new BlockPos(0, 0, 0).rotate(rotation);
         BlockPos blockpos = rotationOffSet.add(x, pos.getY(), z);
-        pieceList.add(new DepthrockRuinPieces.Piece(templateManager, RUIN1, blockpos, rotation));
-        //pieceList.add(new DepthrockRuinPieces.Piece(templateManager, RUIN2, blockpos, rotation));
+        int o = random.nextInt(2);
+        if(o == 1) {
+            pieceList.add(new DepthrockRuinPieces.Piece(templateManager, RUIN1, blockpos, rotation));
+        }
+        else {
+            pieceList.add(new DepthrockRuinPieces.Piece(templateManager, RUIN2, blockpos, rotation));
+        }
     }
 
     public static class Piece extends TemplateStructurePiece {
@@ -71,10 +73,6 @@ public class DepthrockRuinPieces {
             this.setup(template, this.templatePosition, placementsettings);
         }
 
-
-        /**
-         * (abstract) Helper method to read subclass data from NBT
-         */
         @Override
         protected void readAdditional(CompoundNBT tagCompound) {
             super.readAdditional(tagCompound);
@@ -82,17 +80,6 @@ public class DepthrockRuinPieces {
             tagCompound.putString("Rot", this.rotation.name());
         }
 
-
-        /*
-         * If you added any data marker structure blocks to your structure, you can access and modify them here. In this case,
-         * our structure has a data maker with the string "chest" put into it. So we check to see if the incoming function is
-         * "chest" and if it is, we now have that exact position.
-         *
-         * So what is done here is we replace the structure block with a chest and we can then set the loottable for it.
-         *
-         * You can set other data markers to do other behaviors such as spawn a random mob in a certain spot, randomize what
-         * rare block spawns under the floor, or what item an Item Frame will have.
-         */
         @Override
         protected void handleDataMarker(String function, BlockPos pos, IWorld worldIn, Random rand, MutableBoundingBox sbb) {
             /*

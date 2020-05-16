@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "snowy=false":	{ "model": "undergarden:block/deepturf_block" },
+       
+        "snowy=true":  { "model": "undergarden:block/deepturf_block_snow" }
+    }
+}

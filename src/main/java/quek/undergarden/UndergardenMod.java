@@ -13,7 +13,6 @@ import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
-import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.api.distmarker.Dist;
@@ -24,7 +23,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
@@ -35,7 +33,6 @@ import net.minecraftforge.registries.ObjectHolder;
 
 import quek.undergarden.biome.UndergardenBiome;
 import quek.undergarden.data.*;
-import quek.undergarden.client.render.*;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.gen.carver.*;
 
@@ -79,12 +76,7 @@ public class UndergardenMod {
 
 	public void clientSetup(FMLClientSetupEvent event) {
 		ClientStuff.registerBlockRenderers();
-		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotwalker, RotwalkerRender::new);
-		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotbeast, RotbeastRender::new);
-		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.dweller, DwellerRender::new);
-		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotdweller, RotDwellerRender::new);
-		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.gwibling, GwiblingRender::new);
-		RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.skiz_swarmer, SkizSwarmerRender::new);
+		ClientStuff.registerEntityRenderers();
 	}
 
 
@@ -134,6 +126,7 @@ public class UndergardenMod {
 		@SubscribeEvent
 		public static void registerFeatures(final RegistryEvent.Register<Feature<?>> event) {
 
+			Registry.register(Registry.STRUCTURE_PIECE, "depthrock_ruin_piece", UndergardenFeatures.DEPTHROCK_RUIN_TYPE);
 			Registry.register(Registry.STRUCTURE_PIECE, "overworld_portal_ruin_piece", UndergardenFeatures.OVERWORLD_PORTAL_RUIN_TYPE);
 		}
 	}

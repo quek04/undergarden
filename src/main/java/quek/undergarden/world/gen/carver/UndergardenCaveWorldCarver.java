@@ -27,8 +27,7 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
                 UndergardenBlocks.coal_ore.get(),
                 UndergardenBlocks.cloggrum_ore.get(),
                 UndergardenBlocks.froststeel_ore.get(),
-                UndergardenBlocks.utherium_ore.get(),
-                Blocks.WATER
+                UndergardenBlocks.utherium_ore.get()
         );
         this.carvableFluids = ImmutableSet.of(
                 Fluids.WATER
@@ -92,7 +91,7 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
 
     @Override
     protected int generateCaveStartY(Random p_222726_1_) {
-        return p_222726_1_.nextInt(p_222726_1_.nextInt(120) + 8);
+        return p_222726_1_.nextInt(p_222726_1_.nextInt(128) + 8);
     }
 
     @Override

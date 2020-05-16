@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "undergarden:double_shimmerweed"
+          "name": "undergarden:shimmerweed"
         }
       ],
       "conditions": [

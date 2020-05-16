@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "STS",
+    "SSS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "undergarden:smogstem_stick"
+    },
+    "T": {
+      "item": "undergarden:twistytwig"
+    }
+  },
+  "result": {
+    "item": "undergarden:slingshot"
+  }
+}

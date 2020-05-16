@@ -29,6 +29,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.wigglewood_planks, "Wigglewood Planks");
         addBlock(UndergardenBlocks.depthrock_bricks, "Depthrock Bricks");
         addBlock(UndergardenBlocks.cracked_depthrock_bricks, "Cracked Depthrock Bricks");
+        addBlock(UndergardenBlocks.shiverstone, "Shiverstone");
 
         addBlock(UndergardenBlocks.underbean_bush, "Underbean Bush");
         addBlock(UndergardenBlocks.smogstem_sapling, "Smogstem Sapling");
@@ -49,7 +50,10 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.gloomgourd, "Gloomgourd");
         addBlock(UndergardenBlocks.carved_gloomgourd, "Carved Gloomgourd");
         addBlock(UndergardenBlocks.gloomgourd_stem, "Gloomgourd Stem");
-        addBlock(UndergardenBlocks.gloom_o_lantern, "Gloom o'Lantern");
+        addBlock(UndergardenBlocks.depthrock_pebbles, "Depthrock Pebbles");
+        addBlock(UndergardenBlocks.glowing_kelp, "Glitterkelp");
+        addBlock(UndergardenBlocks.glowing_kelp_plant, "Glitterkelp");
+        addBlock(UndergardenBlocks.glowing_sea_grass, "Glowing Seagrass");
 
         addBlock(UndergardenBlocks.coal_ore, "Coal Ore");
         addBlock(UndergardenBlocks.cloggrum_ore, "Cloggrum Ore");
@@ -59,6 +63,8 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.cloggrum_block, "Cloggrum Block");
         addBlock(UndergardenBlocks.froststeel_block, "Froststeel Block");
         addBlock(UndergardenBlocks.utherium_block, "Utherium Block");
+        addBlock(UndergardenBlocks.gloom_o_lantern, "Gloom o'Lantern");
+        addBlock(UndergardenBlocks.cloggrum_bars, "Cloggrum Bars");
 
         addBlock(UndergardenBlocks.depthrock_stairs, "Depthrock Stairs");
         addBlock(UndergardenBlocks.cobbled_depthrock_stairs, "Cobbled Depthrock Stairs");
@@ -79,7 +85,9 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.wigglewood_fence, "Wigglewood Fence");
 
         addItem(UndergardenItems.undergarden_portal_catalyst, "Undergarden Portal Catalyst");
+        addItem(UndergardenItems.depthrock_pebble, "Depthrock Pebble");
         addItem(UndergardenItems.smogstem_stick, "Smogstem Stick");
+        addItem(UndergardenItems.twistytwig, "Twistytwig");
         addItem(UndergardenItems.cloggrum_ingot, "Cloggrum Ingot");
         addItem(UndergardenItems.cloggrum_nugget, "Cloggrum Nugget");
         addItem(UndergardenItems.froststeel_ingot, "Froststeel Ingot");
@@ -90,6 +98,11 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.smogstem_torch, "Smogstem Torch");
         addItem(UndergardenItems.gloomgourd_seeds, "Gloomgourd Seeds");
         addItem(UndergardenItems.ditchbulb, "Ditchbulb");
+        addItem(UndergardenItems.brute_tusk, "Brute Tusk");
+
+        addItem(UndergardenItems.masticator_scales, "Masticator Scales");
+        addItem(UndergardenItems.masticated_shield, "Masticated Shield");
+        addItem(UndergardenItems.masticated_chestplate, "Masticated Chestplate");
 
         addItem(UndergardenItems.smogstem_sword, "Smogstem Sword");
         addItem(UndergardenItems.smogstem_pickaxe, "Smogstem Pickaxe");
@@ -111,6 +124,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utheric_axe, "Utherium Axe");
         addItem(UndergardenItems.utheric_shovel, "Utherium_Shovel");
 
+        addItem(UndergardenItems.slingshot, "Slingshot");
         addItem(UndergardenItems.cloggrum_shears, "Cloggrum Shears");
 
         addItem(UndergardenItems.cloggrum_helmet, "Cloggrum Helmet");
@@ -128,6 +142,9 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.rotdweller_spawn_egg, "Rotdweller Spawn Egg");
         addItem(UndergardenItems.rotwalker_spawn_egg, "Rotwalker Spawn Egg");
         addItem(UndergardenItems.rotbeast_spawn_egg, "Rotbeast Spawn Egg");
+        addItem(UndergardenItems.brute_spawn_egg, "Brute Spawn Egg");
+
+        addItem(UndergardenItems.masticator_spawn_egg, "Masticator Spawn Egg");
 
         addBiome(UndergardenBiomes.FORGOTTEN_FIELD, "Forgotten Field");
         addBiome(UndergardenBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
@@ -139,10 +156,13 @@ public class UndergardenLang extends LanguageProvider {
         addEntityType(UndergardenEntities.ROTWALKER, "Rotwalker");
         addEntityType(UndergardenEntities.ROTBEAST, "Rotbeast");
         addEntityType(UndergardenEntities.SKIZ_SWARMER, "Skiz Swarmer");
+        addEntityType(UndergardenEntities.BRUTE, "Brute");
+
+        addEntityType(UndergardenEntities.MASTICATOR, "Masticator");
 
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_BLOCKS, "Undergarden Blocks");
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_FOODS, "Undergarden Foodstuffs");
-        addItemGroup(UndergardenItemGroups.UNDERGARDEN_GEAR, "Undergarden Gear");
+        addItemGroup(UndergardenItemGroups.UNDERGARDEN_GEAR, "Undergarden Tools & Combat");
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_ITEMS, "Undergarden Items");
 
         add("advancement.undergarden.title", "The Undergarden");
@@ -163,16 +183,16 @@ public class UndergardenLang extends LanguageProvider {
         add("advancement.deep_extraction.title", "Deep Extraction");
         add("advancement.deep_extraction.desc", "Acquire a Cloggrum Ingot.");
 
-        add("advancement.precious_mineral.title", "Precious Mineral");
-        add("advancement.precious_mineral.desc", "Acquire enough Utherium Chunks to craft a full ingot.");
-
-        add("advancement.the_whole_collection.title", "The Whole Collection");
-        add("advancement.the_whole_collection.desc", "Acquire one of each native Undergarden mineral.");
-
         add("advancement.catalyst.title", "Create the Catalysts");
         add("advancement.catalyst.desc", "Craft 12 Catalysts using Iron and Gold to activate the Undergarden portal found in mountain biomes.");
 
         add("advancement.glorious_beans.title", "Glorious Beans!");
         add("advancement.glorious_beans.desc", "Find and pick an Underbean bush.");
+
+        add("advancement.slay_masticator.title", "Sprankton");
+        add("advancement.slay_masticator.desc", "Slay the Masticator.");
+
+        add("advancement.masticated_armory.title", "Masticated Armory");
+        add("advancement.masticated_armory.desc", "Craft both the Masticated Chestplate and Shield.");
     }
 }

@@ -48,6 +48,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.blood_mushroom);
         itemBlock(UndergardenBlocks.gloomgourd);
         itemBlock(UndergardenBlocks.carved_gloomgourd);
+        itemBlock(UndergardenBlocks.depthrock_pebbles);
         itemBlock(UndergardenBlocks.gloom_o_lantern);
         itemBlock(UndergardenBlocks.cloggrum_block);
         itemBlock(UndergardenBlocks.froststeel_block);
@@ -66,9 +67,14 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemWall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
         itemFence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         itemFence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
+        itemBlockFlat(UndergardenBlocks.cloggrum_bars);
+        itemBlockFlat(UndergardenBlocks.glowing_sea_grass);
+        itemBlock(UndergardenBlocks.shiverstone);
 
         normalItem(UndergardenItems.undergarden_portal_catalyst);
+        normalItem(UndergardenItems.depthrock_pebble);
         normalItem(UndergardenItems.smogstem_stick);
+        normalItem(UndergardenItems.twistytwig);
         normalItem(UndergardenItems.cloggrum_ingot);
         normalItem(UndergardenItems.cloggrum_nugget);
         normalItem(UndergardenItems.froststeel_ingot);
@@ -79,6 +85,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.smogstem_torch);
         normalItem(UndergardenItems.ditchbulb);
         normalItem(UndergardenItems.gloomgourd_seeds);
+        normalItem(UndergardenItems.brute_tusk);
+        normalItem(UndergardenItems.glowing_kelp);
 
         toolItem(UndergardenItems.smogstem_sword);
         toolItem(UndergardenItems.smogstem_pickaxe);
@@ -89,6 +97,9 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         toolItem(UndergardenItems.cloggrum_pickaxe);
         toolItem(UndergardenItems.cloggrum_axe);
         toolItem(UndergardenItems.cloggrum_shovel);
+
+        normalItem(UndergardenItems.masticator_scales);
+        normalItem(UndergardenItems.masticated_chestplate);
 
         normalItem(UndergardenItems.cloggrum_helmet);
         normalItem(UndergardenItems.cloggrum_chestplate);
@@ -115,6 +126,9 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         egg(UndergardenItems.rotdweller_spawn_egg);
         egg(UndergardenItems.rotwalker_spawn_egg);
         egg(UndergardenItems.rotbeast_spawn_egg);
+        egg(UndergardenItems.brute_spawn_egg);
+
+        egg(UndergardenItems.masticator_spawn_egg);
     }
 
 

@@ -75,5 +75,4 @@ public class UndergardenBlockLootTableProvider extends BlockLootTables {
                                 .acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))
                                 .acceptCondition(TableBonus.builder(Enchantments.FORTUNE, 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F))));
     }
-
 }

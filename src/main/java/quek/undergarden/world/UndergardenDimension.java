@@ -52,7 +52,7 @@ public class UndergardenDimension extends Dimension {
 
     @Override
     public float calculateCelestialAngle(long worldTime, float partialTicks) {
-        return 0.5F;
+        return 0;
     }
 
     @Override

@@ -2,9 +2,11 @@ package quek.undergarden.client.model;
 // Made with Blockbench 3.5.0
 // Exported for Minecraft version 1.15
 
+import com.google.common.collect.ImmutableSet;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.BipedModel;
+import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
@@ -12,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.RotbeastEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class RotbeastModel<T extends RotbeastEntity> extends BipedModel<T> {
+public class RotbeastModel<T extends RotbeastEntity> extends SegmentedModel<T> {
 	private final ModelRenderer rotbeast;
 	private final ModelRenderer head;
 	private final ModelRenderer jaw;
@@ -28,7 +30,7 @@ public class RotbeastModel<T extends RotbeastEntity> extends BipedModel<T> {
 	private final ModelRenderer lowerleg2;
 
 	public RotbeastModel() {
-		super(0F, -14F, 128, 128);
+		super();
 		textureWidth = 128;
 		textureHeight = 128;
 
@@ -124,11 +126,11 @@ public class RotbeastModel<T extends RotbeastEntity> extends BipedModel<T> {
 	public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
 		int i = entityIn.getAttackTimer();
 		if (i > 0) {
-			this.rightarm.rotateAngleX = 0.2618F + -2.0F + 1.5F * this.triangleWave((float)i - partialTick, 10.0F);
-			this.leftarm.rotateAngleX = 0.2618F + -2.0F + 1.5F * this.triangleWave((float)i - partialTick, 10.0F);
+			this.rightarm.rotateAngleX = -2.0F + 1.5F * this.triangleWave((float)i - partialTick, 10.0F);
+			this.leftarm.rotateAngleX = -2.0F + 1.5F * this.triangleWave((float)i - partialTick, 10.0F);
 		} else {
-			this.rightarm.rotateAngleX = (0.2618F + -0.2F + 1.5F * this.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
-			this.leftarm.rotateAngleX = (0.2618F + -0.2F - 1.5F * this.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
+			this.rightarm.rotateAngleX = (-0.2F + 1.5F * this.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
+			this.leftarm.rotateAngleX = (-0.2F - 1.5F * this.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
 		}
 	}
 
@@ -137,8 +139,8 @@ public class RotbeastModel<T extends RotbeastEntity> extends BipedModel<T> {
 	}
 
 	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		rotbeast.render(matrixStack, buffer, packedLight, packedOverlay);
+	public Iterable<ModelRenderer> getParts() {
+		return ImmutableSet.of(rotbeast);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {

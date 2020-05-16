@@ -5,17 +5,31 @@ import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import quek.undergarden.client.model.RotDwellerModel;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
+import java.util.UUID;
+
 public class RotDwellerEntity extends MonsterEntity {
+
+    private static final DataParameter<Boolean> IS_CHILD = EntityDataManager.createKey(RotDwellerEntity.class, DataSerializers.BOOLEAN);
+    private static final UUID BABY_SPEED_BOOST_ID = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
+    private static final AttributeModifier BABY_SPEED_BOOST = new AttributeModifier(BABY_SPEED_BOOST_ID, "Baby speed boost", 0.5D, AttributeModifier.Operation.MULTIPLY_BASE);
 
     public RotDwellerEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
@@ -39,13 +53,46 @@ public class RotDwellerEntity extends MonsterEntity {
     }
 
     @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return CreatureAttribute.UNDEAD;
+    protected void registerData() {
+        super.registerData();
+        this.getDataManager().register(IS_CHILD, false);
+    }
+
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        if (compound.getBoolean("IsBaby")) {
+            this.setChild(true);
+        }
+    }
+
+    public boolean isChild() {
+        return this.getDataManager().get(IS_CHILD);
+    }
+
+    public void setChild(boolean childZombie) {
+        this.getDataManager().set(IS_CHILD, childZombie);
+        if (this.world != null && !this.world.isRemote) {
+            IAttributeInstance iattributeinstance = this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED);
+            iattributeinstance.removeModifier(BABY_SPEED_BOOST);
+            if (childZombie) {
+                iattributeinstance.applyModifier(BABY_SPEED_BOOST);
+            }
+        }
+
     }
 
     @Override
-    protected float getSoundVolume() {
-        return 0.40F;
+    public void notifyDataManagerChange(DataParameter<?> key) {
+        if (IS_CHILD.equals(key)) {
+            this.recalculateSize();
+        }
+
+        super.notifyDataManagerChange(key);
+    }
+
+    @Override
+    public CreatureAttribute getCreatureAttribute() {
+        return CreatureAttribute.UNDEAD;
     }
 
     @Override

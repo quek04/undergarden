@@ -11,10 +11,10 @@
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "goal",
+    "frame": "task",
     "hidden": true
   },
-  "parent": "undergarden:undergarden/root",
+  "parent": "undergarden:undergarden/glorious_beans",
   "criteria": {
     "has_gourds": {
       "trigger": "minecraft:inventory_changed",

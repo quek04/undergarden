@@ -1,0 +1,82 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=1": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=2": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=3": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=4": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=5": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=6": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=7": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=8": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=9": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=10": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=11": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=12": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=13": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=14": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=15": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=16": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=17": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=18": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=19": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=20": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=21": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=22": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=23": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=24": {
+      "model": "undergarden:block/glowing_kelp"
+    },
+    "age=25": {
+      "model": "undergarden:block/glowing_kelp"
+    }
+  }
+}

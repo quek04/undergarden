@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:masticator_scales"
+    },
+    "title": {
+      "translate": "advancement.slay_masticator.title"
+    },
+    "description": {
+      "translate": "advancement.slay_masticator.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "goal"
+  },
+  "parent": "undergarden:undergarden/root",
+  "criteria": {
+    "slay_masticator": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "undergarden:masticator"
+        }
+      }
+    }
+  }
+}

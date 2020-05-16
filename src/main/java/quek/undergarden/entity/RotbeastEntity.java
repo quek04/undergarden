@@ -17,6 +17,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UndergardenSoundEvents;
 
 import java.util.Random;
 
@@ -67,6 +68,26 @@ public class RotbeastEntity extends MonsterEntity {
     }
 
     @Override
+    public boolean attackEntityAsMob(Entity entityIn) {
+        this.attackTimer = 10;
+        this.world.setEntityState(this, (byte)4);
+        float f = this.func_226511_et_();
+        float f1 = f > 0.0F ? f / 2.0F + (float)this.rand.nextInt((int)f) : 0.0F;
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f1);
+        if (flag) {
+            entityIn.setMotion(entityIn.getMotion().add(0.0D, (double)0.4F, 0.0D));
+            this.applyEnchantments(this, entityIn);
+        }
+
+        this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 0.5F);
+        return flag;
+    }
+
+    private float func_226511_et_() {
+        return (float)this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue();
+    }
+
+    @Override
     public void onKillEntity(LivingEntity entityLivingIn) {
         super.onKillEntity(entityLivingIn);
         if ((this.world.getDifficulty() == Difficulty.NORMAL || this.world.getDifficulty() == Difficulty.HARD) && entityLivingIn instanceof DwellerEntity) {
@@ -100,17 +121,17 @@ public class RotbeastEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_ZOMBIE_AMBIENT;
+        return UndergardenSoundEvents.ROTBEAST_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return SoundEvents.ENTITY_ZOMBIE_HURT;
+        return UndergardenSoundEvents.ROTBEAST_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_ZOMBIE_DEATH;
+        return UndergardenSoundEvents.ROTBEAST_DEATH;
     }
 
     @Override

@@ -22,6 +22,7 @@ public class UndergardenTallGrassBlock extends UndergardenBushBlock implements I
                 .hardnessAndResistance(0F)
                 .sound(SoundType.PLANT)
                 .doesNotBlockMovement()
+                .notSolid()
         );
     }
 
@@ -30,7 +31,9 @@ public class UndergardenTallGrassBlock extends UndergardenBushBlock implements I
                 .hardnessAndResistance(0F)
                 .sound(SoundType.PLANT)
                 .doesNotBlockMovement()
+                .notSolid()
                 .lightValue(light)
+
         );
     }
 

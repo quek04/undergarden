@@ -22,7 +22,6 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.depthrock);
         normalBlock(UndergardenBlocks.cobbled_depthrock);
         normalBlock(UndergardenBlocks.deepsoil);
-        grassBlock(UndergardenBlocks.deepturf_block, "deepsoil");
         crossBlock(UndergardenBlocks.tall_deepturf);
         crossBlock(UndergardenBlocks.shimmerweed);
         crossBlock(UndergardenBlocks.ditchbulb_plant);
@@ -44,6 +43,9 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         crossBlock(UndergardenBlocks.blood_mushroom);
         normalBlock(UndergardenBlocks.depthrock_bricks);
         normalBlock(UndergardenBlocks.cracked_depthrock_bricks);
+        crossBlock(UndergardenBlocks.glowing_kelp);
+        crossBlock(UndergardenBlocks.glowing_kelp_plant);
+        normalBlock(UndergardenBlocks.shiverstone);
 
         normalBlock(UndergardenBlocks.cloggrum_block);
         normalBlock(UndergardenBlocks.froststeel_block);

@@ -7,7 +7,6 @@ import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import quek.undergarden.UndergardenMod;
-import quek.undergarden.block.UndergardenBlock;
 import quek.undergarden.data.provider.UndergardenRecipeProvider;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenItems;
@@ -29,14 +28,22 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeBricks(UndergardenBlocks.depthrock_bricks, UndergardenBlocks.depthrock).build(consumer);
 
         makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
+        makeSticks(UndergardenItems.twistytwig, UndergardenBlocks.wigglewood_planks).build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.gloom_o_lantern.get())
                 .patternLine("G")
                 .patternLine("T")
                 .key('G', UndergardenBlocks.carved_gloomgourd.get())
                 .key('T', UndergardenItems.smogstem_torch.get())
-                .addCriterion("has_" + UndergardenBlocks.carved_gloomgourd.get().getRegistryName().getPath(), hasItem(UndergardenBlocks.carved_gloomgourd.get()))
-                .addCriterion("has_" + UndergardenItems.smogstem_torch.get().getRegistryName().getPath(), hasItem(UndergardenItems.smogstem_torch.get()))
+                .addCriterion("has_carved_gourd", hasItem(UndergardenBlocks.carved_gloomgourd.get()))
+                .addCriterion("has_torch", hasItem(UndergardenItems.smogstem_torch.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.cloggrum_bars.get(), 16)
+                .patternLine("CCC")
+                .patternLine("CCC")
+                .key('C', UndergardenItems.cloggrum_ingot.get())
+                .addCriterion("has_cloggrum_ingot", hasItem(UndergardenItems.cloggrum_ingot.get()))
                 .build(consumer);
 
 
@@ -44,7 +51,27 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .patternLine("C ")
                 .patternLine(" C")
                 .key('C', UndergardenItems.cloggrum_ingot.get())
-                .addCriterion("has_" + UndergardenItems.cloggrum_ingot.get().getRegistryName().getPath(), hasItem(UndergardenItems.cloggrum_ingot.get()))
+                .addCriterion("has_cloggrum_ingot", hasItem(UndergardenItems.cloggrum_ingot.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.slingshot.get())
+                .patternLine("STS")
+                .patternLine("SSS")
+                .patternLine(" S ")
+                .key('S', UndergardenItems.smogstem_stick.get())
+                .key('T', UndergardenItems.twistytwig.get())
+                .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
+                .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.masticated_shield.get())
+                .patternLine("MCM")
+                .patternLine("TMT")
+                .patternLine("MTM")
+                .key('M', UndergardenItems.masticator_scales.get())
+                .key('T', UndergardenItems.brute_tusk.get())
+                .key('C', UndergardenItems.cloggrum_ingot.get())
+                .addCriterion("has_scales", hasItem(UndergardenItems.masticator_scales.get()))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_torch.get(), 4)
@@ -53,7 +80,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .key('C', Items.COAL)
                 .key('S', UndergardenItems.smogstem_stick.get())
                 .addCriterion("has_coal", hasItem(Items.COAL))
-                .addCriterion("has_" + UndergardenItems.smogstem_stick.get().getRegistryName().getPath(), hasItem(UndergardenItems.smogstem_stick.get()))
+                .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_torch.get(), 2)
@@ -61,8 +88,8 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .patternLine("S")
                 .key('D', UndergardenItems.ditchbulb.get())
                 .key('S', UndergardenItems.smogstem_stick.get())
-                .addCriterion("has_" + UndergardenItems.ditchbulb.get().getRegistryName().getPath(), hasItem(UndergardenItems.ditchbulb.get()))
-                .addCriterion("has_" + UndergardenItems.smogstem_stick.get().getRegistryName().getPath(), hasItem(UndergardenItems.smogstem_stick.get()))
+                .addCriterion("has_ditchbulb", hasItem(UndergardenItems.ditchbulb.get()))
+                .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
                 .build(consumer, name("smogstem_torch_ditchbulb"));
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.undergarden_portal_catalyst.get())
@@ -80,8 +107,8 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addIngredient(UndergardenBlocks.gloomgourd.get())
                 .addIngredient(UndergardenItems.ditchbulb.get())
                 .addCriterion("has_mushroom", hasItem(UndergardenTags.Items.MUSHROOMS))
-                .addCriterion("has_" + UndergardenBlocks.gloomgourd.get().getRegistryName().getPath(), hasItem(UndergardenBlocks.gloomgourd.get()))
-                .addCriterion("has_" + UndergardenItems.ditchbulb.get().getRegistryName().getPath(), hasItem(UndergardenItems.ditchbulb.get()))
+                .addCriterion("has_gloomgourd", hasItem(UndergardenBlocks.gloomgourd.get()))
+                .addCriterion("has_ditchbulb", hasItem(UndergardenItems.ditchbulb.get()))
                 .build(consumer);
 
         makeShardToIngot().build(consumer, name("shard_to_ingot"));
@@ -89,10 +116,12 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeIngotToBlock(UndergardenBlocks.cloggrum_block, UndergardenItems.cloggrum_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.froststeel_block, UndergardenItems.froststeel_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.utherium_block, UndergardenItems.utherium_ingot).build(consumer);
+        makeIngotToBlock(UndergardenBlocks.cobbled_depthrock, UndergardenItems.depthrock_pebble).build(consumer);
 
         makeBlockToIngot(UndergardenItems.cloggrum_ingot, UndergardenBlocks.cloggrum_block).build(consumer, name("cloggrum_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.froststeel_ingot, UndergardenBlocks.froststeel_block).build(consumer, name("froststeel_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.utherium_ingot, UndergardenBlocks.utherium_block).build(consumer, name("utherium_block_to_ingot"));
+        makeBlockToIngot(UndergardenItems.depthrock_pebble, UndergardenBlocks.cobbled_depthrock).build(consumer);
 
         makeIngotToNugget(UndergardenItems.cloggrum_nugget, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_ingot_to_nugget"));
         makeIngotToNugget(UndergardenItems.froststeel_nugget, UndergardenItems.froststeel_ingot).build(consumer, name("froststeel_ingot_to_nugget"));
@@ -121,6 +150,8 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeShovel(UndergardenItems.cloggrum_shovel, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_shovel"));
         makeShovel(UndergardenItems.froststeel_shovel, UndergardenItems.froststeel_ingot).build(consumer, name("froststeel_shovel"));
         makeShovel(UndergardenItems.utheric_shovel, UndergardenItems.utherium_ingot).build(consumer, name("utheric_shovel"));
+
+        makeChestplate(UndergardenItems.masticated_chestplate, UndergardenItems.masticator_scales).build(consumer);
 
         makeHelmet(UndergardenItems.cloggrum_helmet, UndergardenItems.cloggrum_ingot).build(consumer);
         makeChestplate(UndergardenItems.cloggrum_chestplate, UndergardenItems.cloggrum_ingot).build(consumer);

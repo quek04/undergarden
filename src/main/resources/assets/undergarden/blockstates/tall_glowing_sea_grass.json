@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=lower": { "model": "undergarden:block/tall_glowing_sea_grass_bottom" },
+        "half=upper":    { "model": "undergarden:block/tall_glowing_sea_grass_top" }
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:cobbled_depthrock"
+    }
+  ],
+  "result": {
+    "item": "undergarden:depthrock_pebble",
+    "count": 9
+  }
+}

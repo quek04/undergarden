@@ -24,6 +24,7 @@ public class OverworldPortalRuinPieces {
 
     private static final ResourceLocation RUIN = new ResourceLocation(UndergardenMod.MODID + ":overworld_portal_ruin");
 
+
     public static void start(TemplateManager templateManager, BlockPos pos, Rotation rotation, List<StructurePiece> pieceList, Random random) {
         int x = pos.getX();
         int z = pos.getZ();

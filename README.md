@@ -7,7 +7,7 @@ The Undergarden is a dark, subterranean world located deep below the bedrock of 
 
 ## Features
 - A whole new dimension to explore, build, and survive in
-- 3 music tracks created by my friend **Screem** that only play in the Undergarden
+- 4 music tracks created by my friend **Screem** that only play in the Undergarden
 - Unique ores, each with their own benefits and weaknesses
 - A handful of new advancements, with more to come
 

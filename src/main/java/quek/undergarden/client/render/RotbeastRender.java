@@ -28,7 +28,7 @@ public class RotbeastRender extends MobRenderer<RotbeastEntity, RotbeastModel<Ro
     }
 
     @Override
-    public void applyRotations(RotbeastEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
+    protected void applyRotations(RotbeastEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
         super.applyRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
         if (!((double)entityLiving.limbSwingAmount < 0.01D)) {
             float f = 13.0F;
@@ -37,5 +37,4 @@ public class RotbeastRender extends MobRenderer<RotbeastEntity, RotbeastModel<Ro
             matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(6.5F * f2));
         }
     }
-
 }

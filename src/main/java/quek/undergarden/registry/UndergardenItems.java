@@ -7,16 +7,18 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.item.*;
-import quek.undergarden.item.armor.UndergardenArmorItem;
+import quek.undergarden.item.armor.*;
 import quek.undergarden.item.tool.*;
 
-@SuppressWarnings("unused")
 public class UndergardenItems {
 
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, UndergardenMod.MODID);
 
+    //normal stuff
     public static final RegistryObject<Item> undergarden_portal_catalyst = ITEMS.register("undergarden_portal_catalyst", UndergardenPortalCatalystItem::new);
+    public static final RegistryObject<Item> depthrock_pebble = ITEMS.register("depthrock_pebble", DepthrockPebbleItem::new);
     public static final RegistryObject<Item> smogstem_stick = ITEMS.register("smogstem_stick", UndergardenItem::new);
+    public static final RegistryObject<Item> twistytwig = ITEMS.register("twistytwig", UndergardenItem::new);
     public static final RegistryObject<Item> cloggrum_ingot = ITEMS.register("cloggrum_ingot", UndergardenItem::new);
     public static final RegistryObject<Item> cloggrum_nugget = ITEMS.register("cloggrum_nugget", UndergardenItem::new);
     public static final RegistryObject<Item> froststeel_ingot = ITEMS.register("froststeel_ingot", UndergardenItem::new);
@@ -28,7 +30,14 @@ public class UndergardenItems {
             UndergardenBlocks.smogstem_torch.get(), UndergardenBlocks.smogstem_wall_torch.get(), new Item.Properties().group(UndergardenItemGroups.UNDERGARDEN_BLOCKS)));
     public static final RegistryObject<Item> gloomgourd_seeds = ITEMS.register("gloomgourd_seeds", () -> new BlockNamedItem(
             UndergardenBlocks.gloomgourd_stem.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_ITEMS)));
-    public static final RegistryObject<Item> ditchbulb = ITEMS.register("ditchbulb", UndergardenItem::new); //TODO: throw function w/ DitchbulbItem class
+    public static final RegistryObject<Item> ditchbulb = ITEMS.register("ditchbulb", UndergardenItem::new);
+    public static final RegistryObject<Item> brute_tusk = ITEMS.register("brute_tusk", UndergardenItem::new);
+    public static final RegistryObject<Item> glowing_kelp = ITEMS.register("glowing_kelp", () -> new BlockItem(UndergardenBlocks.glowing_kelp.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_BLOCKS)));
+
+    //boss loot
+    public static final RegistryObject<Item> masticator_scales = ITEMS.register("masticator_scales", () -> new UndergardenItem(Rarity.UNCOMMON));
+    public static final RegistryObject<ShieldItem> masticated_shield = ITEMS.register("masticated_shield", () -> new UndergardenShieldItem(UndergardenShieldTiers.MASTICATED, Rarity.EPIC));
+    public static final RegistryObject<Item> masticated_chestplate = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UndergardenArmorMaterials.MASTICATED));
 
     //tools
     public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UndergardenSword(UndergardenItemTiers.SMOGSTEM));
@@ -51,6 +60,7 @@ public class UndergardenItems {
     public static final RegistryObject<AxeItem> utheric_axe = ITEMS.register("utheric_axe", () -> new UndergardenAxe(UndergardenItemTiers.UTHERIC));
     public static final RegistryObject<ShovelItem> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UndergardenShovel(UndergardenItemTiers.UTHERIC));
 
+    public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
     public static final RegistryObject<ShearsItem> cloggrum_shears = ITEMS.register("cloggrum_shears", CloggrumShearsItem::new);
 
     //armors
@@ -72,5 +82,7 @@ public class UndergardenItems {
     public static final RegistryObject<Item> rotdweller_spawn_egg = ITEMS.register("rotdweller_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotdweller, 72451, 10963256));
     public static final RegistryObject<Item> rotwalker_spawn_egg = ITEMS.register("rotwalker_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotwalker, 5988164, 10963256));
     public static final RegistryObject<Item> rotbeast_spawn_egg = ITEMS.register("rotbeast_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotbeast, 3751199,7153174));
+    public static final RegistryObject<Item> brute_spawn_egg = ITEMS.register("brute_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.brute, 7035982, 4012083));
 
+    public static final RegistryObject<Item> masticator_spawn_egg = ITEMS.register("masticator_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.masticator, 2366466, 15881511));
 }

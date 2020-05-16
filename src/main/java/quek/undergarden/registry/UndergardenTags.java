@@ -13,12 +13,12 @@ public class UndergardenTags {
 
         public static final Tag<Item> SMOGSTEM_PLANKS = tag("smogstem_planks");
         public static final Tag<Item> MUSHROOMS = tag("mushrooms");
+
         public static final Tag<Item> CLOGGRUM_ITEMS = tag("cloggrum_items");
         public static final Tag<Item> FROSTSTEEL_ITEMS = tag("froststeel_items");
         public static final Tag<Item> UTHERIUM_ITEMS = tag("utherium_items");
 
-        private static Tag<Item> tag(String name)
-        {
+        private static Tag<Item> tag(String name) {
             return new ItemTags.Wrapper(new ResourceLocation("undergarden", name));
         }
 
@@ -28,8 +28,7 @@ public class UndergardenTags {
 
 
 
-        private static Tag<Block> tag(String name)
-        {
+        private static Tag<Block> tag(String name) {
             return new BlockTags.Wrapper(new ResourceLocation("undergarden", name));
         }
 

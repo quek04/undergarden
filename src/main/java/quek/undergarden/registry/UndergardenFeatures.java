@@ -23,12 +23,14 @@ public class UndergardenFeatures {
             "fancy_smogstem", () -> new FancySmogstemFeature(TreeFeatureConfig::func_227338_a_));
     public static final RegistryObject<Feature<TreeFeatureConfig>> WIGGLEWOOD_TREE = FEATURES.register(
             "wigglewood_tree", () -> new WigglewoodFeature(TreeFeatureConfig::func_227338_a_));
+    public static final RegistryObject<Feature<NoFeatureConfig>> GLOWING_KELP = FEATURES.register(
+            "glowing_kelp", () -> new GlowingKelpFeature(NoFeatureConfig::deserialize));
 
     public static IStructurePieceType DEPTHROCK_RUIN_TYPE = DepthrockRuinPieces.Piece::new;
     public static IStructurePieceType OVERWORLD_PORTAL_RUIN_TYPE = OverworldPortalRuinPieces.Piece::new;
 
     public static final RegistryObject<Structure<NoFeatureConfig>> DEPTHROCK_RUIN = FEATURES.register(
-            "depthrock_ruin", () -> new DepthrockRuinStructure(NoFeatureConfig::deserialize));
+            "depthrock_ruin", DepthrockRuinStructure::new);
     public static final RegistryObject<Structure<NoFeatureConfig>> OVERWORLD_PORTAL_RUIN = FEATURES.register(
             "overworld_portal_ruin", OverworldPortalRuinStructure::new);
 
