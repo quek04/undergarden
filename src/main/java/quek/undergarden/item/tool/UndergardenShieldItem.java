@@ -31,6 +31,17 @@ public class UndergardenShieldItem extends ShieldItem {
         DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
     }
 
+    public UndergardenShieldItem(UndergardenShieldTiers tier) {
+        super(new Properties()
+                .maxStackSize(1)
+                .maxDamage(tier.getMaxUses())
+                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+        );
+        this.shieldTiers = tier;
+        this.addPropertyOverride(new ResourceLocation("blocking"), (p_210314_0_, p_210314_1_, p_210314_2_) -> p_210314_2_ != null && p_210314_2_.isHandActive() && p_210314_2_.getActiveItemStack() == p_210314_0_ ? 1.0F : 0.0F);
+        DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
+    }
+
     @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BLOCK;

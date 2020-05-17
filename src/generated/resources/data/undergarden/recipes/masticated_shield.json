@@ -2,15 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "MCM",
-    "TMT",
-    "MTM"
+    "MMM",
+    " M "
   ],
   "key": {
     "M": {
       "item": "undergarden:masticator_scales"
-    },
-    "T": {
-      "item": "undergarden:brute_tusk"
     },
     "C": {
       "item": "undergarden:cloggrum_ingot"

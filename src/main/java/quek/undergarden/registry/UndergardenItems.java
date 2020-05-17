@@ -49,6 +49,7 @@ public class UndergardenItems {
     public static final RegistryObject<PickaxeItem> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UndergardenPickaxe(UndergardenItemTiers.CLOGGRUM));
     public static final RegistryObject<AxeItem> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UndergardenAxe(UndergardenItemTiers.CLOGGRUM));
     public static final RegistryObject<ShovelItem> cloggrum_shovel = ITEMS.register("cloggrum_shovel", () -> new UndergardenShovel(UndergardenItemTiers.CLOGGRUM));
+    public static final RegistryObject<ShieldItem> cloggrum_shield = ITEMS.register("cloggrum_shield", () -> new UndergardenShieldItem(UndergardenShieldTiers.CLOGGRUM));
 
     public static final RegistryObject<SwordItem> froststeel_sword = ITEMS.register("froststeel_sword", () -> new UndergardenSword(UndergardenItemTiers.FROSTSTEEL));
     public static final RegistryObject<PickaxeItem> froststeel_pickaxe = ITEMS.register("froststeel_pickaxe", () -> new UndergardenPickaxe(UndergardenItemTiers.FROSTSTEEL));

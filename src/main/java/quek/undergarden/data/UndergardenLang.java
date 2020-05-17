@@ -113,6 +113,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.cloggrum_pickaxe, "Cloggrum Pickaxe");
         addItem(UndergardenItems.cloggrum_axe, "Cloggrum Axe");
         addItem(UndergardenItems.cloggrum_shovel, "Cloggrum Shovel");
+        addItem(UndergardenItems.cloggrum_shield, "Cloggrum Shield");
 
         addItem(UndergardenItems.froststeel_sword, "Froststeel Sword");
         addItem(UndergardenItems.froststeel_pickaxe, "Froststeel Pickaxe");

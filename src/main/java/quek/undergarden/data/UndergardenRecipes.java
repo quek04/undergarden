@@ -66,12 +66,20 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.masticated_shield.get())
                 .patternLine("MCM")
-                .patternLine("TMT")
-                .patternLine("MTM")
+                .patternLine("MMM")
+                .patternLine(" M ")
                 .key('M', UndergardenItems.masticator_scales.get())
-                .key('T', UndergardenItems.brute_tusk.get())
                 .key('C', UndergardenItems.cloggrum_ingot.get())
                 .addCriterion("has_scales", hasItem(UndergardenItems.masticator_scales.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.cloggrum_shield.get())
+                .patternLine("CSC")
+                .patternLine("CCC")
+                .patternLine(" C ")
+                .key('S', UndergardenBlocks.smogstem_planks.get())
+                .key('C', UndergardenItems.cloggrum_ingot.get())
+                .addCriterion("has_scales", hasItem(UndergardenItems.cloggrum_ingot.get()))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_torch.get(), 4)
