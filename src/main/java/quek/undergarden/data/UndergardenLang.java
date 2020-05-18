@@ -133,6 +133,16 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.cloggrum_leggings, "Cloggrum Leggings");
         addItem(UndergardenItems.cloggrum_boots, "Cloggrum Boots");
 
+        addItem(UndergardenItems.froststeel_helmet, "Froststeel Helmet");
+        addItem(UndergardenItems.froststeel_chestplate, "Froststeel Chestplate");
+        addItem(UndergardenItems.froststeel_leggings, "Froststeel Leggings");
+        addItem(UndergardenItems.froststeel_boots, "Froststeel Boots");
+
+        addItem(UndergardenItems.utheric_helmet, "Utherium Helmet");
+        addItem(UndergardenItems.utheric_chestplate, "Utherium Chestplate");
+        addItem(UndergardenItems.utheric_leggings, "Utherium Leggings");
+        addItem(UndergardenItems.utheric_boots, "Utherium Boots");
+
         addItem(UndergardenItems.underbeans, "Underbeans");
         addItem(UndergardenItems.gloomgourd_pie, "Gloomgourd Pie");
         addItem(UndergardenItems.raw_dweller_meat, "Raw Dweller Meat");
@@ -162,7 +172,6 @@ public class UndergardenLang extends LanguageProvider {
         addEntityType(UndergardenEntities.MASTICATOR, "Masticator");
 
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_BLOCKS, "Undergarden Blocks");
-        addItemGroup(UndergardenItemGroups.UNDERGARDEN_FOODS, "Undergarden Foodstuffs");
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_GEAR, "Undergarden Tools & Combat");
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_ITEMS, "Undergarden Items");
 

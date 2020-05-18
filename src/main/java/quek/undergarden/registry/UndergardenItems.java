@@ -38,6 +38,7 @@ public class UndergardenItems {
     public static final RegistryObject<Item> masticator_scales = ITEMS.register("masticator_scales", () -> new UndergardenItem(Rarity.UNCOMMON));
     public static final RegistryObject<ShieldItem> masticated_shield = ITEMS.register("masticated_shield", () -> new UndergardenShieldItem(UndergardenShieldTiers.MASTICATED, Rarity.EPIC));
     public static final RegistryObject<Item> masticated_chestplate = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UndergardenArmorMaterials.MASTICATED));
+    public static final RegistryObject<Item> cloggrum_battleaxe = ITEMS.register("cloggrum_battleaxe", CloggrumBattleaxeItem::new);
 
     //tools
     public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UndergardenSword(UndergardenItemTiers.SMOGSTEM));
@@ -70,9 +71,19 @@ public class UndergardenItems {
     public static final RegistryObject<Item> cloggrum_leggings = ITEMS.register("cloggrum_leggings", () -> new UndergardenArmorItem(UndergardenArmorMaterials.CLOGGRUM, EquipmentSlotType.LEGS));
     public static final RegistryObject<Item> cloggrum_boots = ITEMS.register("cloggrum_boots", () -> new UndergardenArmorItem(UndergardenArmorMaterials.CLOGGRUM, EquipmentSlotType.FEET));
 
+    public static final RegistryObject<Item> froststeel_helmet = ITEMS.register("froststeel_helmet", () -> new UndergardenArmorItem(UndergardenArmorMaterials.FROSTSTEEL, EquipmentSlotType.HEAD));
+    public static final RegistryObject<Item> froststeel_chestplate = ITEMS.register("froststeel_chestplate", () -> new UndergardenArmorItem(UndergardenArmorMaterials.FROSTSTEEL, EquipmentSlotType.CHEST));
+    public static final RegistryObject<Item> froststeel_leggings = ITEMS.register("froststeel_leggings", () -> new UndergardenArmorItem(UndergardenArmorMaterials.FROSTSTEEL, EquipmentSlotType.LEGS));
+    public static final RegistryObject<Item> froststeel_boots = ITEMS.register("froststeel_boots", () -> new UndergardenArmorItem(UndergardenArmorMaterials.FROSTSTEEL, EquipmentSlotType.FEET));
+
+    public static final RegistryObject<Item> utheric_helmet = ITEMS.register("utheric_helmet", () -> new UndergardenArmorItem(UndergardenArmorMaterials.UTHERIC, EquipmentSlotType.HEAD));
+    public static final RegistryObject<Item> utheric_chestplate = ITEMS.register("utheric_chestplate", () -> new UndergardenArmorItem(UndergardenArmorMaterials.UTHERIC, EquipmentSlotType.CHEST));
+    public static final RegistryObject<Item> utheric_leggings = ITEMS.register("utheric_leggings", () -> new UndergardenArmorItem(UndergardenArmorMaterials.UTHERIC, EquipmentSlotType.LEGS));
+    public static final RegistryObject<Item> utheric_boots = ITEMS.register("utheric_boots", () -> new UndergardenArmorItem(UndergardenArmorMaterials.UTHERIC, EquipmentSlotType.FEET));
+
     //foods
     public static final RegistryObject<Item> underbeans = ITEMS.register("underbeans", () -> new BlockNamedItem(
-            UndergardenBlocks.underbean_bush.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_FOODS).food(UndergardenFoods.UNDERBEANS)));
+            UndergardenBlocks.underbean_bush.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_ITEMS).food(UndergardenFoods.UNDERBEANS)));
     public static final RegistryObject<Item> gloomgourd_pie = ITEMS.register("gloomgourd_pie", () -> new UndergardenItem(UndergardenFoods.GLOOMGOURD_PIE));
     public static final RegistryObject<Item> raw_dweller_meat = ITEMS.register("raw_dweller_meat", () -> new UndergardenItem(UndergardenFoods.RAW_DWELLER));
     public static final RegistryObject<Item> dweller_steak = ITEMS.register("dweller_steak", () -> new UndergardenItem(UndergardenFoods.COOKED_DWELLER));

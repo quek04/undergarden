@@ -62,7 +62,7 @@ public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiqui
 
     @Override
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return true;
+        return false;
     }
 
     @Override

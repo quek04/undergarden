@@ -8,7 +8,7 @@ public class UndergardenItemGroups {
     public static final ItemGroup UNDERGARDEN_BLOCKS = new ItemGroup("undergarden_blocks") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(UndergardenBlocks.depthrock.get());
+            return new ItemStack(UndergardenBlocks.deepturf_block.get());
         }
     };
 
@@ -24,13 +24,6 @@ public class UndergardenItemGroups {
         public ItemStack createIcon() {
             return new ItemStack(UndergardenItems.cloggrum_sword.get());
 
-        }
-    };
-
-    public static final ItemGroup UNDERGARDEN_FOODS = new ItemGroup("undergarden_foods") {
-        @Override
-        public ItemStack createIcon() {
-            return new ItemStack(UndergardenItems.underbeans.get());
         }
     };
 }

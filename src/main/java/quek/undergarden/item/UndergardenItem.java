@@ -22,6 +22,6 @@ public class UndergardenItem extends Item {
     public UndergardenItem(Food food) {
         super(new Properties()
                 .food(food)
-                .group(UndergardenItemGroups.UNDERGARDEN_FOODS));
+                .group(UndergardenItemGroups.UNDERGARDEN_ITEMS));
     }
 }
