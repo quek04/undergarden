@@ -21,8 +21,9 @@ public class UndergardenBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, UndergardenMod.MODID);
 
-    public static final RegistryObject<Block> undergarden_portal_frame = registerBlock("undergarden_portal_frame", UndergardenPortalFrameBlock::new);
+    //public static final RegistryObject<Block> undergarden_portal_frame = registerBlock("undergarden_portal_frame", UndergardenPortalFrameBlock::new);
     public static final RegistryObject<Block> undergarden_portal = BLOCKS.register("undergarden_portal", UndergardenPortalBlock::new);
+    public static final RegistryObject<Block> catalyst = registerBlock("catalyst_slot", CatalystSlotBlock::new);
 
     //basic shit
     public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", DeepsoilBlock::new);

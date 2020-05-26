@@ -27,11 +27,8 @@ public class UndergardenFeatures {
             "glowing_kelp", () -> new GlowingKelpFeature(NoFeatureConfig::deserialize));
 
     public static IStructurePieceType DEPTHROCK_RUIN_TYPE = DepthrockRuinPieces.Piece::new;
-    public static IStructurePieceType OVERWORLD_PORTAL_RUIN_TYPE = OverworldPortalRuinPieces.Piece::new;
 
     public static final RegistryObject<Structure<NoFeatureConfig>> DEPTHROCK_RUIN = FEATURES.register(
             "depthrock_ruin", DepthrockRuinStructure::new);
-    public static final RegistryObject<Structure<NoFeatureConfig>> OVERWORLD_PORTAL_RUIN = FEATURES.register(
-            "overworld_portal_ruin", OverworldPortalRuinStructure::new);
 
 }

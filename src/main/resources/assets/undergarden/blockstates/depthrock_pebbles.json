@@ -1,9 +1,9 @@
 {
     "variants": {
         "": [
-            { "model": "undergarden:block/depthrock_pebbles" },
+            { "model": "undergarden:block/depthrock_pebbles_alt" },
             { "model": "undergarden:block/depthrock_pebbles" , "y": 90 },
-            { "model": "undergarden:block/depthrock_pebbles" , "y": 180 },
+            { "model": "undergarden:block/depthrock_pebbles_alt" , "y": 180 },
             { "model": "undergarden:block/depthrock_pebbles" , "y": 270 }
         ]
     }

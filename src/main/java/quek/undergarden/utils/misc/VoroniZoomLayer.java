@@ -34,19 +34,21 @@ public enum VoroniZoomLayer implements IAreaTransformer1
 		double d10 = ((double)l1 - d5) * ((double)l1 - d5) + ((double)k1 - d4) * ((double)k1 - d4);
 		double d11 = ((double)l1 - d7) * ((double)l1 - d7) + ((double)k1 - d6) * ((double)k1 - d6);
 		if (d8 < d9 && d8 < d10 && d8 < d11) {
-			return p_215728_2_.getValue(this.func_215721_a(i1), this.func_215722_b(j1));
+			return p_215728_2_.getValue(this.getOffsetX(i1), this.getOffsetZ(j1));
 		} else if (d9 < d8 && d9 < d10 && d9 < d11) {
-			return p_215728_2_.getValue(this.func_215721_a(i1 + 4), this.func_215722_b(j1)) & 255;
+			return p_215728_2_.getValue(this.getOffsetX(i1 + 4), this.getOffsetZ(j1)) & 255;
 		} else {
-			return d10 < d8 && d10 < d9 && d10 < d11 ? p_215728_2_.getValue(this.func_215721_a(i1), this.func_215722_b(j1 + 4)) : p_215728_2_.getValue(this.func_215721_a(i1 + 4), this.func_215722_b(j1 + 4)) & 255;
+			return d10 < d8 && d10 < d9 && d10 < d11 ? p_215728_2_.getValue(this.getOffsetX(i1), this.getOffsetZ(j1 + 4)) : p_215728_2_.getValue(this.getOffsetX(i1 + 4), this.getOffsetZ(j1 + 4)) & 255;
 		}
 	}
 
-	public int func_215721_a(int p_215721_1_) {
+	@Override
+	public int getOffsetX(int p_215721_1_) {
 		return p_215721_1_ >> 2;
 	}
 
-	public int func_215722_b(int p_215722_1_) {
+	@Override
+	public int getOffsetZ(int p_215722_1_) {
 		return p_215722_1_ >> 2;
 	}
 }

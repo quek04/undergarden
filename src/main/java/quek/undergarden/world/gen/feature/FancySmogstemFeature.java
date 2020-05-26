@@ -79,11 +79,11 @@ public class FancySmogstemFeature extends AbstractTreeFeature<TreeFeatureConfig>
             float f2 = (float)blockpos.getZ() / (float)i;
 
             for(int j = 0; j <= i; ++j) {
-                BlockPos blockpos1 = p_227235_3_.add((double)(0.5F + (float)j * f), (double)(0.5F + (float)j * f1), (double)(0.5F + (float)j * f2));
+                BlockPos blockpos1 = p_227235_3_.add(0.5F + (float)j * f, 0.5F + (float)j * f1, 0.5F + (float)j * f2);
                 if (p_227235_5_) {
                     this.func_227217_a_(p_227235_1_, blockpos1, p_227235_8_.trunkProvider.getBlockState(p_227235_2_, blockpos1).with(LogBlock.AXIS, this.func_227238_a_(p_227235_3_, blockpos1)), p_227235_7_);
                     p_227235_6_.add(blockpos1);
-                } else if (!func_214587_a(p_227235_1_, blockpos1)) {
+                } else if (!canBeReplacedByLogs(p_227235_1_, blockpos1)) {
                     return j;
                 }
             }
@@ -148,13 +148,13 @@ public class FancySmogstemFeature extends AbstractTreeFeature<TreeFeatureConfig>
     }
 
     @Override
-    public boolean func_225557_a_(IWorldGenerationReader p_225557_1_, Random p_225557_2_, BlockPos p_225557_3_, Set<BlockPos> p_225557_4_, Set<BlockPos> p_225557_5_, MutableBoundingBox p_225557_6_, TreeFeatureConfig p_225557_7_) {
+    public boolean place(IWorldGenerationReader p_225557_1_, Random p_225557_2_, BlockPos p_225557_3_, Set<BlockPos> p_225557_4_, Set<BlockPos> p_225557_5_, MutableBoundingBox p_225557_6_, TreeFeatureConfig p_225557_7_) {
         Random random = new Random(p_225557_2_.nextLong());
         int i = this.func_227241_b_(p_225557_1_, p_225557_2_, p_225557_3_, 5 + random.nextInt(12), p_225557_4_, p_225557_6_, p_225557_7_);
         if (i == -1) {
             return false;
         } else {
-            this.func_214584_a(p_225557_1_, p_225557_3_.down());
+            this.setDirt(p_225557_1_, p_225557_3_.down());
             int j = (int)((double)i * 0.618D);
             if (j >= i) {
                 j = i - 1;

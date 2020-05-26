@@ -22,7 +22,7 @@ public class SmogstemFeature extends AbstractSmallTreeFeature<TreeFeatureConfig>
     }
 
     @Override
-    public boolean func_225557_a_(IWorldGenerationReader generationReader, Random rand, BlockPos pos, Set<BlockPos> trunk, Set<BlockPos> leaves, MutableBoundingBox boundingBox, TreeFeatureConfig config) {
+    public boolean place(IWorldGenerationReader generationReader, Random rand, BlockPos pos, Set<BlockPos> trunk, Set<BlockPos> leaves, MutableBoundingBox boundingBox, TreeFeatureConfig config) {
         int i = config.baseHeight + rand.nextInt(config.heightRandA + 1) + rand.nextInt(config.heightRandB + 1);
         int j = config.trunkHeight >= 0 ? config.trunkHeight + rand.nextInt(config.trunkHeightRandom + 1) : i - (config.foliageHeight + rand.nextInt(config.foliageHeightRandom + 1));
         int k = config.foliagePlacer.func_225573_a_(rand, j, i, config);
@@ -52,7 +52,7 @@ public class SmogstemFeature extends AbstractSmallTreeFeature<TreeFeatureConfig>
                     while(l <= j1) {
                         if (i1 + blockpos.getY() >= 0 && i1 + blockpos.getY() < generationReader.getMaxHeight()) {
                             blockpos$mutable.setPos(k + blockpos.getX(), i1 + blockpos.getY(), l + blockpos.getZ());
-                            if (func_214587_a(generationReader, blockpos$mutable) && (treeFeatureConfigIn.ignoreVines || !func_227222_d_(generationReader, blockpos$mutable))) {
+                            if (canBeReplacedByLogs(generationReader, blockpos$mutable) && (treeFeatureConfigIn.ignoreVines || !isVine(generationReader, blockpos$mutable))) {
                                 ++l;
                                 continue;
                             }

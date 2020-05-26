@@ -19,7 +19,6 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
 
     @Override
     protected void registerModels() {
-        itemBlock(UndergardenBlocks.undergarden_portal_frame);
         itemBlock(UndergardenBlocks.depthrock);
         itemBlock(UndergardenBlocks.cobbled_depthrock);
         itemBlock(UndergardenBlocks.coal_ore);
@@ -71,7 +70,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.glowing_sea_grass);
         itemBlock(UndergardenBlocks.shiverstone);
 
-        normalItem(UndergardenItems.undergarden_portal_catalyst);
+        normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);
         normalItem(UndergardenItems.smogstem_stick);
         normalItem(UndergardenItems.twistytwig);

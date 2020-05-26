@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"texture_size": [32, 32],
+	"texture_size": [16, 16],
 	"textures": {
 		"1": "undergarden:block/depthrock",
 		"particle": "undergarden:block/depthrock"

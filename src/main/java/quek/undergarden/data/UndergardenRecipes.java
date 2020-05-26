@@ -1,5 +1,6 @@
 package quek.undergarden.data;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.ShapedRecipeBuilder;
@@ -100,7 +101,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
                 .build(consumer, name("smogstem_torch_ditchbulb"));
 
-        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.undergarden_portal_catalyst.get())
+        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.catalyst.get())
+                .patternLine("BBB")
+                .patternLine("BGB")
+                .patternLine("BBB")
+                .key('B', Blocks.STONE_BRICKS)
+                .key('G', Blocks.GOLD_BLOCK)
+                .addCriterion("has_gold", hasItem(Blocks.GOLD_BLOCK))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.catalyst_item.get())
                 .patternLine("GIG")
                 .patternLine("IGI")
                 .patternLine("GIG")
@@ -184,7 +194,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeFence(UndergardenBlocks.smogstem_fence, UndergardenBlocks.smogstem_planks).build(consumer);
         makeFence(UndergardenBlocks.wigglewood_fence, UndergardenBlocks.wigglewood_planks).build(consumer);
 
-        smeltingRecipe(Items.IRON_INGOT, UndergardenItems.undergarden_portal_catalyst.get(), .90F).build(consumer, "smelt_catalyst");
+        smeltingRecipe(Items.IRON_INGOT, UndergardenItems.catalyst_item.get(), 1F).build(consumer, "smelt_catalyst");
 
         smeltingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
         blastingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("blast_cloggrum_ore"));

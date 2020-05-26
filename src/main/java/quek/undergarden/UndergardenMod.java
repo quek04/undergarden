@@ -65,13 +65,6 @@ public class UndergardenMod {
 		UndergardenBiomes.addBiomeTypes();
 		UndergardenBiomes.addBiomeFeatures();
 		UndergardenEntities.spawnPlacements();
-		for(Biome biome : ForgeRegistries.BIOMES) {
-			if(biome.getCategory() == Biome.Category.EXTREME_HILLS && !(biome instanceof UndergardenBiome)) {
-				biome.addStructure(UndergardenFeatures.OVERWORLD_PORTAL_RUIN.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
-				biome.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, UndergardenFeatures.OVERWORLD_PORTAL_RUIN.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
-						.withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
-			}
-		}
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
@@ -125,9 +118,7 @@ public class UndergardenMod {
 
 		@SubscribeEvent
 		public static void registerFeatures(final RegistryEvent.Register<Feature<?>> event) {
-
 			Registry.register(Registry.STRUCTURE_PIECE, "depthrock_ruin_piece", UndergardenFeatures.DEPTHROCK_RUIN_TYPE);
-			Registry.register(Registry.STRUCTURE_PIECE, "overworld_portal_ruin_piece", UndergardenFeatures.OVERWORLD_PORTAL_RUIN_TYPE);
 		}
 	}
 }

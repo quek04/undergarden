@@ -124,6 +124,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropOther(UndergardenBlocks.glowing_kelp, UndergardenItems.glowing_kelp.get());
             dropOther(UndergardenBlocks.glowing_kelp_plant, UndergardenItems.glowing_kelp.get());
             dropSelf(UndergardenBlocks.shiverstone);
+            dropSelf(UndergardenBlocks.catalyst);
         }
 
         @Override

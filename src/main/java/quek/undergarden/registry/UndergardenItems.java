@@ -15,7 +15,7 @@ public class UndergardenItems {
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, UndergardenMod.MODID);
 
     //normal stuff
-    public static final RegistryObject<Item> undergarden_portal_catalyst = ITEMS.register("undergarden_portal_catalyst", UndergardenPortalCatalystItem::new);
+    public static final RegistryObject<Item> catalyst_item = ITEMS.register("catalyst", CatalystItem::new);
     public static final RegistryObject<Item> depthrock_pebble = ITEMS.register("depthrock_pebble", DepthrockPebbleItem::new);
     public static final RegistryObject<Item> smogstem_stick = ITEMS.register("smogstem_stick", UndergardenItem::new);
     public static final RegistryObject<Item> twistytwig = ITEMS.register("twistytwig", UndergardenItem::new);

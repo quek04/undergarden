@@ -18,8 +18,8 @@ public class UndergardenLang extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        addBlock(UndergardenBlocks.undergarden_portal_frame, "Undergarden Portal Frame");
         addBlock(UndergardenBlocks.undergarden_portal, "Undergarden Portal");
+        addBlock(UndergardenBlocks.catalyst, "Catalyst Slot");
         addBlock(UndergardenBlocks.deepsoil, "Deepsoil");
         addBlock(UndergardenBlocks.deepsoil_farmland, "Deepsoil Farmland");
         addBlock(UndergardenBlocks.deepturf_block, "Deepturf Block");
@@ -84,7 +84,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.smogstem_fence, "Smogstem Fence");
         addBlock(UndergardenBlocks.wigglewood_fence, "Wigglewood Fence");
 
-        addItem(UndergardenItems.undergarden_portal_catalyst, "Undergarden Portal Catalyst");
+        addItem(UndergardenItems.catalyst_item, "Catalyst");
         addItem(UndergardenItems.depthrock_pebble, "Depthrock Pebble");
         addItem(UndergardenItems.smogstem_stick, "Smogstem Stick");
         addItem(UndergardenItems.twistytwig, "Twistytwig");
