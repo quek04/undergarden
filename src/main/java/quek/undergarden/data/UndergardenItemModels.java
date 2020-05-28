@@ -126,6 +126,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         egg(UndergardenItems.rotwalker_spawn_egg);
         egg(UndergardenItems.rotbeast_spawn_egg);
         egg(UndergardenItems.brute_spawn_egg);
+        egg(UndergardenItems.scintling_spawn_egg);
 
         egg(UndergardenItems.masticator_spawn_egg);
     }

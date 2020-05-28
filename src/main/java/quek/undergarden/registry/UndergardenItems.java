@@ -95,6 +95,7 @@ public class UndergardenItems {
     public static final RegistryObject<Item> rotwalker_spawn_egg = ITEMS.register("rotwalker_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotwalker, 5988164, 10963256));
     public static final RegistryObject<Item> rotbeast_spawn_egg = ITEMS.register("rotbeast_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotbeast, 3751199,7153174));
     public static final RegistryObject<Item> brute_spawn_egg = ITEMS.register("brute_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.brute, 7035982, 4012083));
+    public static final RegistryObject<Item> scintling_spawn_egg = ITEMS.register("scintling_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.scintling, 8556655, 6314558));
 
     public static final RegistryObject<Item> masticator_spawn_egg = ITEMS.register("masticator_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.masticator, 2366466, 15881511));
 }

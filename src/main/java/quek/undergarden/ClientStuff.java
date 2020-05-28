@@ -72,6 +72,7 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.gwibling, GwiblingRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.skiz_swarmer, SkizSwarmerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.brute, BruteRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.scintling, ScintlingRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.masticator, MasticatorRender::new);
     }
 

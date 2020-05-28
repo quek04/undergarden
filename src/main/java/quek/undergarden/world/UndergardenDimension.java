@@ -62,7 +62,8 @@ public class UndergardenDimension extends Dimension {
 
     @Override
     public Vec3d getFogColor(float celestialAngle, float partialTicks) {
-        return new Vec3d(.086, .094, .075);
+        //return new Vec3d(.086, .094, .075);
+        return new Vec3d(.030, .040, .020);
     }
 
     @Override

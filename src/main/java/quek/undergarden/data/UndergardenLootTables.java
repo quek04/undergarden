@@ -144,6 +144,8 @@ public class UndergardenLootTables extends LootTableProvider {
             this.registerLootTable(UndergardenEntities.gwibling, LootTable.builder());
             this.registerLootTable(UndergardenEntities.skiz_swarmer, LootTable.builder());
             this.registerLootTable(UndergardenEntities.brute, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.brute_tusk.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
+            this.registerLootTable(UndergardenEntities.scintling, LootTable.builder());
+
             this.registerLootTable(UndergardenEntities.masticator, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.masticator_scales.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(4.0F, 8.0F))))));
         }
 

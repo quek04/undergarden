@@ -30,6 +30,7 @@ public abstract class UndergardenBiome extends Biome {
     @Override
     @OnlyIn(Dist.CLIENT)
     public int getSkyColor() {
-        return new Color(35, 37, 30).getRGB();
+        //return new Color(35, 37, 30).getRGB();
+        return 0;
     }
 }

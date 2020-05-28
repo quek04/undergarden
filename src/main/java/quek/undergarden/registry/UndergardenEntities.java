@@ -36,6 +36,8 @@ public class UndergardenEntities {
             .size(1, 2).build("brute");
     public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
             .size(2.5F, 4).build("masticator");
+    public static final EntityType<ScintlingEntity> scintling = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
+            .size(1, .5F).build("scintling");
 
     public static final RegistryObject<EntityType<SlingshotAmmoEntity>> SLINGSHOT_AMMO = ENTITIES.register("slingshot_ammo", () -> slingshot_ammo);
 
@@ -46,6 +48,7 @@ public class UndergardenEntities {
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> gwibling);
     public static final RegistryObject<EntityType<SkizSwarmerEntity>> SKIZ_SWARMER = ENTITIES.register("skiz_swarmer", () -> skiz_swarmer);
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> brute);
+    public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> scintling);
 
     //bosses
     public static final RegistryObject<EntityType<MasticatorEntity>> MASTICATOR = ENTITIES.register("masticator", () -> masticator);
@@ -56,5 +59,6 @@ public class UndergardenEntities {
         EntitySpawnPlacementRegistry.register(ROTWALKER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, RotwalkerEntity::canRotwalkerSpawn);
         EntitySpawnPlacementRegistry.register(ROTBEAST.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, RotbeastEntity::canRotbeastSpawn);
         EntitySpawnPlacementRegistry.register(BRUTE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BruteEntity::canBruteSpawn);
+        EntitySpawnPlacementRegistry.register(SCINTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
     }
 }
