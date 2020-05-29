@@ -41,26 +41,26 @@ public class UndergardenItems {
     public static final RegistryObject<Item> cloggrum_battleaxe = ITEMS.register("cloggrum_battleaxe", CloggrumBattleaxeItem::new);
 
     //tools
-    public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UndergardenSword(UndergardenItemTiers.SMOGSTEM));
-    public static final RegistryObject<PickaxeItem> smogstem_pickaxe = ITEMS.register("smogstem_pickaxe", () -> new UndergardenPickaxe(UndergardenItemTiers.SMOGSTEM));
-    public static final RegistryObject<AxeItem> smogstem_axe = ITEMS.register("smogstem_axe", () -> new UndergardenAxe(UndergardenItemTiers.SMOGSTEM));
-    public static final RegistryObject<ShovelItem> smogstem_shovel = ITEMS.register("smogstem_shovel", () -> new UndergardenShovel(UndergardenItemTiers.SMOGSTEM));
+    public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.SMOGSTEM));
+    public static final RegistryObject<PickaxeItem> smogstem_pickaxe = ITEMS.register("smogstem_pickaxe", () -> new UndergardenPickaxeItem(UndergardenItemTiers.SMOGSTEM));
+    public static final RegistryObject<AxeItem> smogstem_axe = ITEMS.register("smogstem_axe", () -> new UndergardenAxeItem(UndergardenItemTiers.SMOGSTEM));
+    public static final RegistryObject<ShovelItem> smogstem_shovel = ITEMS.register("smogstem_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.SMOGSTEM));
 
-    public static final RegistryObject<SwordItem> cloggrum_sword = ITEMS.register("cloggrum_sword", () -> new UndergardenSword(UndergardenItemTiers.CLOGGRUM));
-    public static final RegistryObject<PickaxeItem> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UndergardenPickaxe(UndergardenItemTiers.CLOGGRUM));
-    public static final RegistryObject<AxeItem> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UndergardenAxe(UndergardenItemTiers.CLOGGRUM));
-    public static final RegistryObject<ShovelItem> cloggrum_shovel = ITEMS.register("cloggrum_shovel", () -> new UndergardenShovel(UndergardenItemTiers.CLOGGRUM));
+    public static final RegistryObject<SwordItem> cloggrum_sword = ITEMS.register("cloggrum_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.CLOGGRUM));
+    public static final RegistryObject<PickaxeItem> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UndergardenPickaxeItem(UndergardenItemTiers.CLOGGRUM));
+    public static final RegistryObject<AxeItem> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UndergardenAxeItem(UndergardenItemTiers.CLOGGRUM));
+    public static final RegistryObject<ShovelItem> cloggrum_shovel = ITEMS.register("cloggrum_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.CLOGGRUM));
     public static final RegistryObject<ShieldItem> cloggrum_shield = ITEMS.register("cloggrum_shield", () -> new UndergardenShieldItem(UndergardenShieldTiers.CLOGGRUM));
 
-    public static final RegistryObject<SwordItem> froststeel_sword = ITEMS.register("froststeel_sword", () -> new UndergardenSword(UndergardenItemTiers.FROSTSTEEL));
-    public static final RegistryObject<PickaxeItem> froststeel_pickaxe = ITEMS.register("froststeel_pickaxe", () -> new UndergardenPickaxe(UndergardenItemTiers.FROSTSTEEL));
-    public static final RegistryObject<AxeItem> froststeel_axe = ITEMS.register("froststeel_axe", () -> new UndergardenAxe(UndergardenItemTiers.FROSTSTEEL));
-    public static final RegistryObject<ShovelItem> froststeel_shovel = ITEMS.register("froststeel_shovel", () -> new UndergardenShovel(UndergardenItemTiers.FROSTSTEEL));
+    public static final RegistryObject<SwordItem> froststeel_sword = ITEMS.register("froststeel_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.FROSTSTEEL));
+    public static final RegistryObject<PickaxeItem> froststeel_pickaxe = ITEMS.register("froststeel_pickaxe", () -> new UndergardenPickaxeItem(UndergardenItemTiers.FROSTSTEEL));
+    public static final RegistryObject<AxeItem> froststeel_axe = ITEMS.register("froststeel_axe", () -> new UndergardenAxeItem(UndergardenItemTiers.FROSTSTEEL));
+    public static final RegistryObject<ShovelItem> froststeel_shovel = ITEMS.register("froststeel_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.FROSTSTEEL));
 
-    public static final RegistryObject<SwordItem> utheric_sword = ITEMS.register("utheric_sword", () -> new UndergardenSword(UndergardenItemTiers.UTHERIC));
-    public static final RegistryObject<PickaxeItem> utheric_pickaxe = ITEMS.register("utheric_pickaxe", () -> new UndergardenPickaxe(UndergardenItemTiers.UTHERIC));
-    public static final RegistryObject<AxeItem> utheric_axe = ITEMS.register("utheric_axe", () -> new UndergardenAxe(UndergardenItemTiers.UTHERIC));
-    public static final RegistryObject<ShovelItem> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UndergardenShovel(UndergardenItemTiers.UTHERIC));
+    public static final RegistryObject<SwordItem> utheric_sword = ITEMS.register("utheric_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.UTHERIC));
+    public static final RegistryObject<PickaxeItem> utheric_pickaxe = ITEMS.register("utheric_pickaxe", () -> new UndergardenPickaxeItem(UndergardenItemTiers.UTHERIC));
+    public static final RegistryObject<AxeItem> utheric_axe = ITEMS.register("utheric_axe", () -> new UndergardenAxeItem(UndergardenItemTiers.UTHERIC));
+    public static final RegistryObject<ShovelItem> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.UTHERIC));
 
     public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
     public static final RegistryObject<ShearsItem> cloggrum_shears = ITEMS.register("cloggrum_shears", CloggrumShearsItem::new);
@@ -89,13 +89,13 @@ public class UndergardenItems {
     public static final RegistryObject<Item> dweller_steak = ITEMS.register("dweller_steak", () -> new UndergardenItem(UndergardenFoods.COOKED_DWELLER));
 
     //spawn eggs
-    public static final RegistryObject<Item> dweller_spawn_egg = ITEMS.register("dweller_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.dweller, 4804417, 16776960));
-    public static final RegistryObject<Item> gwibling_spawn_egg = ITEMS.register("gwibling_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.gwibling, 10064737, 15845330));
-    public static final RegistryObject<Item> rotdweller_spawn_egg = ITEMS.register("rotdweller_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotdweller, 72451, 10963256));
-    public static final RegistryObject<Item> rotwalker_spawn_egg = ITEMS.register("rotwalker_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotwalker, 5988164, 10963256));
-    public static final RegistryObject<Item> rotbeast_spawn_egg = ITEMS.register("rotbeast_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.rotbeast, 3751199,7153174));
-    public static final RegistryObject<Item> brute_spawn_egg = ITEMS.register("brute_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.brute, 7035982, 4012083));
-    public static final RegistryObject<Item> scintling_spawn_egg = ITEMS.register("scintling_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.scintling, 8556655, 6314558));
+    public static final RegistryObject<Item> dweller_spawn_egg = ITEMS.register("dweller_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.dweller, 4804417, 16776960));
+    public static final RegistryObject<Item> gwibling_spawn_egg = ITEMS.register("gwibling_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.gwibling, 10064737, 15845330));
+    public static final RegistryObject<Item> rotdweller_spawn_egg = ITEMS.register("rotdweller_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotdweller, 72451, 10963256));
+    public static final RegistryObject<Item> rotwalker_spawn_egg = ITEMS.register("rotwalker_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotwalker, 5988164, 10963256));
+    public static final RegistryObject<Item> rotbeast_spawn_egg = ITEMS.register("rotbeast_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotbeast, 3751199,7153174));
+    public static final RegistryObject<Item> brute_spawn_egg = ITEMS.register("brute_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.brute, 7035982, 4012083));
+    public static final RegistryObject<Item> scintling_spawn_egg = ITEMS.register("scintling_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.scintling, 8556655, 6314558));
 
-    public static final RegistryObject<Item> masticator_spawn_egg = ITEMS.register("masticator_spawn_egg", () -> new UndergardenSpawnEgg(UndergardenEntities.masticator, 2366466, 15881511));
+    public static final RegistryObject<Item> masticator_spawn_egg = ITEMS.register("masticator_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.masticator, 2366466, 15881511));
 }

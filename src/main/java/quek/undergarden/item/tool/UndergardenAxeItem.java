@@ -2,10 +2,11 @@ package quek.undergarden.item.tool;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShovelItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
@@ -24,9 +25,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Mod.EventBusSubscriber
-public class UndergardenShovel extends ShovelItem {
-    public UndergardenShovel(IItemTier tier) {
-        super(tier, 1.5f, -3, new Properties()
+public class UndergardenAxeItem extends AxeItem {
+    public UndergardenAxeItem(IItemTier tier) {
+        super(tier, 6, -3.2f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
                 .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
@@ -35,7 +36,10 @@ public class UndergardenShovel extends ShovelItem {
 
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UndergardenItems.froststeel_shovel.get()) {
+        if(stack.getItem() == UndergardenItems.utheric_axe.get()) {
+            tooltip.add(new TranslationTextComponent("tooltip.utheric_axe").applyTextStyle(TextFormatting.GRAY));
+        }
+        else if(stack.getItem() == UndergardenItems.froststeel_axe.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").applyTextStyle(TextFormatting.GRAY));
         }
     }
@@ -47,9 +51,13 @@ public class UndergardenShovel extends ShovelItem {
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
-
-            if(player.getHeldItemMainhand().getItem() == UndergardenItems.froststeel_shovel.get()) {
-                event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 2));
+            if(player.getHeldItemMainhand().getItem() == UndergardenItems.utheric_axe.get()) {
+                if(event.getEntityLiving().getClassification(false) == EntityClassification.CREATURE) {
+                    event.setAmount(damage * event.getEntityLiving().getHealth());
+                }
+            }
+            else if(player.getHeldItemMainhand().getItem() == UndergardenItems.froststeel_axe.get()) {
+                event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 3));
             }
         }
     }
