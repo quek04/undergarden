@@ -13,6 +13,7 @@ import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.PineFoliagePlacer;
 import net.minecraft.world.gen.placement.*;
 
 public class UndergardenBiomeFeatures {
@@ -42,7 +43,8 @@ public class UndergardenBiomeFeatures {
     private static final BlockState GLOWING_SEAGRASS = UndergardenBlocks.glowing_sea_grass.get().getDefaultState();
 
     public static final TreeFeatureConfig SMOGSTEM_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(SMOGSTEM_LOG), new SimpleBlockStateProvider(SMOGSTEM_LEAVES), new BlobFoliagePlacer(2, 0))).baseHeight(9).heightRandA(3).foliageHeight(2).ignoreVines().setSapling(UndergardenBlocks.smogstem_sapling.get()).build();
-    public static final TreeFeatureConfig WIGGLEWOOD_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(WIGGLEWOOD_LOG), new SimpleBlockStateProvider(WIGGLEWOOD_LEAVES), new AcaciaFoliagePlacer(2, 0))).baseHeight(3).heightRandA(1).heightRandB(4).trunkHeight(0).setSapling(UndergardenBlocks.wigglewood_sapling.get()).build();
+    public static final TreeFeatureConfig WIGGLEWOOD_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(WIGGLEWOOD_LOG), new SimpleBlockStateProvider(WIGGLEWOOD_LEAVES), new PineFoliagePlacer(2, 0))).baseHeight(3).heightRandA(0).heightRandB(0).trunkHeight(1).ignoreVines().setSapling(UndergardenBlocks.wigglewood_sapling.get()).build();
+
     public static final BlockClusterFeatureConfig INDIGO_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(INDIGO_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig VEIL_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VEIL_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig INK_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(INK_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();

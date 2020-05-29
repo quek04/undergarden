@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UndergardenBlocks;
@@ -32,6 +33,7 @@ public class ScintlingEntity extends AnimalEntity {
         this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
     }
 
+
     @Override
     protected void registerAttributes() {
         super.registerAttributes();
@@ -40,7 +42,27 @@ public class ScintlingEntity extends AnimalEntity {
     }
 
     public static boolean canScintlingSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get()  && worldIn.getLightValue(pos) == 0;
+        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get()  && worldIn.getLightValue(pos) > 5;
+    }
+
+    public void livingTick() {
+        super.livingTick();
+
+        if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this)) {
+            return;
+        }
+
+        BlockState blockstate = UndergardenBlocks.goo.get().getDefaultState();
+
+        for(int l = 0; l < 4; ++l) {
+            int x = MathHelper.floor(this.getPosX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));
+            int y = MathHelper.floor(this.getPosY());
+            int z = MathHelper.floor(this.getPosZ() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
+            BlockPos blockpos = new BlockPos(x, y, z);
+            if (this.world.isAirBlock(blockpos) && blockstate.isValidPosition(this.world, blockpos)) {
+                this.world.setBlockState(blockpos, blockstate);
+            }
+        }
     }
 
     @Nullable

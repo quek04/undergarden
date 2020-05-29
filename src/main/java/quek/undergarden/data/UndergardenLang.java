@@ -30,6 +30,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.depthrock_bricks, "Depthrock Bricks");
         addBlock(UndergardenBlocks.cracked_depthrock_bricks, "Cracked Depthrock Bricks");
         addBlock(UndergardenBlocks.shiverstone, "Shiverstone");
+        addBlock(UndergardenBlocks.goo, "Scintling Goo");
 
         addBlock(UndergardenBlocks.underbean_bush, "Underbean Bush");
         addBlock(UndergardenBlocks.smogstem_sapling, "Smogstem Sapling");

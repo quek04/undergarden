@@ -43,6 +43,7 @@ public class UndergardenBlocks {
             Material.ROCK, 1.5F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
     public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new UndergardenBlock(
             Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
+    public static final RegistryObject<Block> goo = registerBlock("goo", GooBlock::new);
 
     //nature
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", BeanBushBlock::new);

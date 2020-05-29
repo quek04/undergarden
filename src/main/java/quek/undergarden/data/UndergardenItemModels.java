@@ -69,6 +69,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.cloggrum_bars);
         itemBlockFlat(UndergardenBlocks.glowing_sea_grass);
         itemBlock(UndergardenBlocks.shiverstone);
+        itemBlockFlat(UndergardenBlocks.goo);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);

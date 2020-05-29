@@ -61,6 +61,7 @@ public class ClientStuff {
         render(UndergardenBlocks.glowing_kelp_plant, cutout);
         render(UndergardenBlocks.glowing_sea_grass, cutout);
         render(UndergardenBlocks.undergarden_portal, translucent);
+        render(UndergardenBlocks.goo, translucent);
     }
 
     public static void registerEntityRenderers() {
