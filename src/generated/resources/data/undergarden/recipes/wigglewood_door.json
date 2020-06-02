@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PP",
+    "PP",
+    "PP"
+  ],
+  "key": {
+    "P": {
+      "item": "undergarden:wigglewood_planks"
+    }
+  },
+  "result": {
+    "item": "undergarden:wigglewood_door",
+    "count": 3
+  }
+}

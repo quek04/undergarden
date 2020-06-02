@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom_rh",
+  "textures": {
+    "bottom": "undergarden:block/wigglewood_door_bottom",
+    "top": "undergarden:block/wigglewood_door_top"
+  }
+}

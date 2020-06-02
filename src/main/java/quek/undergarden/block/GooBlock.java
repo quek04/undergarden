@@ -6,6 +6,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -20,6 +23,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.ScintlingEntity;
+import quek.undergarden.registry.UndergardenItems;
 
 import java.util.Random;
 
@@ -31,18 +35,21 @@ public class GooBlock extends Block {
     public GooBlock() {
         super(Properties.create(Material.ORGANIC)
                 .hardnessAndResistance(1F, 0F)
-                .noDrops()
                 .doesNotBlockMovement()
                 .tickRandomly()
                 .sound(SoundType.SLIME)
+                .notSolid()
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(!(entityIn instanceof ScintlingEntity) && entityIn.onGround) {
-            entityIn.setMotionMultiplier(state, new Vec3d(0.25D, 0.25D, 0.25D));
+        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UndergardenItems.cloggrum_boots.get()) {
+
+        }
+        else if(!(entityIn instanceof ScintlingEntity) && entityIn.onGround) {
+            entityIn.setMotionMultiplier(state, new Vec3d(0.45D, 0.45D, 0.45D));
         }
 
     }

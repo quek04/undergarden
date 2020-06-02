@@ -28,7 +28,12 @@ public class UndergardenFenceBlock extends FenceBlock {
     private final VoxelShape[] renderShapes;
 
     public UndergardenFenceBlock(Material material, float hardness, float resistance, SoundType sound, int level, ToolType tool) {
-        super(Properties.create(material).hardnessAndResistance(hardness, resistance).sound(sound).harvestLevel(level).harvestTool(tool));
+        super(Properties.create(material)
+                .hardnessAndResistance(hardness, resistance)
+                .sound(sound)
+                .harvestLevel(level)
+                .harvestTool(tool)
+        );
         this.setDefaultState(this.stateContainer.getBaseState().with(NORTH, Boolean.valueOf(false)).with(EAST, Boolean.valueOf(false)).with(SOUTH, Boolean.valueOf(false)).with(WEST, Boolean.valueOf(false)).with(WATERLOGGED, Boolean.valueOf(false)));
         this.renderShapes = this.makeShapes(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
     }

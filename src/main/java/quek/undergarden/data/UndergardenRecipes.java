@@ -123,11 +123,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         ShapelessRecipeBuilder.shapelessRecipe(UndergardenItems.gloomgourd_pie.get())
                 .addIngredient(UndergardenTags.Items.MUSHROOMS)
                 .addIngredient(UndergardenBlocks.gloomgourd.get())
-                .addIngredient(UndergardenItems.ditchbulb.get())
+                .addIngredient(UndergardenItems.glowing_kelp.get())
                 .addCriterion("has_mushroom", hasItem(UndergardenTags.Items.MUSHROOMS))
                 .addCriterion("has_gloomgourd", hasItem(UndergardenBlocks.gloomgourd.get()))
-                .addCriterion("has_ditchbulb", hasItem(UndergardenItems.ditchbulb.get()))
+                .addCriterion("has_kelp", hasItem(UndergardenItems.glowing_kelp.get()))
                 .build(consumer);
+
+        ShapelessRecipeBuilder.shapelessRecipe(Items.BONE_MEAL, 4)
+                .addIngredient(UndergardenItems.brute_tusk.get())
+                .addCriterion("has_tusk", hasItem(UndergardenItems.brute_tusk.get()))
+                .build(consumer, name("tusk_to_bonemeal"));
 
         makeShardToIngot().build(consumer, name("shard_to_ingot"));
 
@@ -194,6 +199,12 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeFence(UndergardenBlocks.smogstem_fence, UndergardenBlocks.smogstem_planks).build(consumer);
         makeFence(UndergardenBlocks.wigglewood_fence, UndergardenBlocks.wigglewood_planks).build(consumer);
 
+        makeDoor(UndergardenBlocks.smogstem_door, UndergardenBlocks.smogstem_planks).build(consumer);
+        makeDoor(UndergardenBlocks.wigglewood_door, UndergardenBlocks.wigglewood_planks).build(consumer);
+
+        makeTrapdoor(UndergardenBlocks.smogstem_trapdoor, UndergardenBlocks.smogstem_planks).build(consumer);
+        makeTrapdoor(UndergardenBlocks.wigglewood_trapdoor, UndergardenBlocks.wigglewood_planks).build(consumer);
+
         smeltingRecipe(Items.IRON_INGOT, UndergardenItems.catalyst_item.get(), 1F).build(consumer, "smelt_catalyst");
 
         smeltingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
@@ -211,7 +222,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         smeltingRecipeTag(UndergardenItems.utheric_shard.get(), UndergardenTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("smelt_utherium_item"));
         blastingRecipeTag(UndergardenItems.utheric_shard.get(), UndergardenTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("blast_utherium_item"));
-
 
         smeltingRecipe(UndergardenItems.dweller_steak.get(), UndergardenItems.raw_dweller_meat.get(), .35F).build(consumer, name("smelt_dweller_meat"));
         smokingRecipe(UndergardenItems.dweller_steak.get(), UndergardenItems.raw_dweller_meat.get(), .35F).build(consumer, name("smoke_dweller_meat"));

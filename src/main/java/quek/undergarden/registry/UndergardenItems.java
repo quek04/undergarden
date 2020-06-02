@@ -33,6 +33,7 @@ public class UndergardenItems {
     public static final RegistryObject<Item> ditchbulb = ITEMS.register("ditchbulb", UndergardenItem::new);
     public static final RegistryObject<Item> brute_tusk = ITEMS.register("brute_tusk", UndergardenItem::new);
     public static final RegistryObject<Item> glowing_kelp = ITEMS.register("glowing_kelp", () -> new BlockItem(UndergardenBlocks.glowing_kelp.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_BLOCKS)));
+    public static final RegistryObject<Item> goo_ball = ITEMS.register("goo_ball", GooBallItem::new);
 
     //boss loot
     public static final RegistryObject<Item> masticator_scales = ITEMS.register("masticator_scales", () -> new UndergardenItem(Rarity.UNCOMMON));

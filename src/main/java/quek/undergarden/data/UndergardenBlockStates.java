@@ -73,6 +73,10 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         fence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
         fenceColumn(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
 
+        door(UndergardenBlocks.smogstem_door, "smogstem");
+        door(UndergardenBlocks.wigglewood_door, "wigglewood");
 
+        trapdoor(UndergardenBlocks.smogstem_trapdoor, "smogstem");
+        trapdoor(UndergardenBlocks.wigglewood_trapdoor, "wigglewood");
     }
 }

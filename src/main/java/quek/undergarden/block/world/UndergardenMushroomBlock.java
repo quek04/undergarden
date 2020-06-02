@@ -94,24 +94,24 @@ public class UndergardenMushroomBlock extends UndergardenBushBlock implements IG
         }
     }
 
-    public boolean func_226940_a_(ServerWorld p_226940_1_, BlockPos p_226940_2_, BlockState p_226940_3_, Random p_226940_4_) {
-        p_226940_1_.removeBlock(p_226940_2_, false);
+    public boolean bigShroom(ServerWorld world, BlockPos pos, BlockState state, Random rand) {
+        world.removeBlock(pos, false);
         ConfiguredFeature<BigMushroomFeatureConfig, ?> configuredfeature;
         if (this == Blocks.BROWN_MUSHROOM) {
             configuredfeature = Feature.HUGE_BROWN_MUSHROOM.withConfiguration(DefaultBiomeFeatures.BIG_BROWN_MUSHROOM);
         } else {
             if (this != Blocks.RED_MUSHROOM) {
-                p_226940_1_.setBlockState(p_226940_2_, p_226940_3_, 3);
+                world.setBlockState(pos, state, 3);
                 return false;
             }
 
             configuredfeature = Feature.HUGE_RED_MUSHROOM.withConfiguration(DefaultBiomeFeatures.BIG_RED_MUSHROOM);
         }
 
-        if (configuredfeature.place(p_226940_1_, p_226940_1_.getChunkProvider().getChunkGenerator(), p_226940_4_, p_226940_2_)) {
+        if (configuredfeature.place(world, world.getChunkProvider().getChunkGenerator(), rand, pos)) {
             return true;
         } else {
-            p_226940_1_.setBlockState(p_226940_2_, p_226940_3_, 3);
+            world.setBlockState(pos, state, 3);
             return false;
         }
     }
@@ -127,7 +127,7 @@ public class UndergardenMushroomBlock extends UndergardenBushBlock implements IG
     }
 
     @Override
-    public void grow(ServerWorld p_225535_1_, Random rand, BlockPos pos, BlockState p_225535_4_) {
-        this.func_226940_a_(p_225535_1_, pos, p_225535_4_, rand);
+    public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
+        this.bigShroom(world, pos, state, rand);
     }
 }

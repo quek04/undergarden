@@ -31,6 +31,23 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + logIn.get().getRegistryName().getPath(), hasItem(logIn.get()));
     }
 
+    public ShapedRecipeBuilder makeDoor(Supplier<? extends Block> doorOut, Supplier<? extends Block> plankIn) {
+        return ShapedRecipeBuilder.shapedRecipe(doorOut.get(), 3)
+                .patternLine("PP")
+                .patternLine("PP")
+                .patternLine("PP")
+                .key('P', plankIn.get())
+                .addCriterion("has_" + plankIn.get().getRegistryName().getPath(), hasItem(plankIn.get()));
+    }
+
+    public ShapedRecipeBuilder makeTrapdoor(Supplier<? extends Block> trapdoorOut, Supplier<? extends Block> plankIn) {
+        return ShapedRecipeBuilder.shapedRecipe(trapdoorOut.get(), 2)
+                .patternLine("PPP")
+                .patternLine("PPP")
+                .key('P', plankIn.get())
+                .addCriterion("has_" + plankIn.get().getRegistryName().getPath(), hasItem(plankIn.get()));
+    }
+
     public ShapedRecipeBuilder makeStairs(Supplier<? extends Block> stairsOut, Supplier<? extends Block> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(stairsOut.get(), 4)
                 .patternLine("M  ")

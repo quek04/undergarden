@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_top_rh",
+  "textures": {
+    "bottom": "undergarden:block/smogstem_door_bottom",
+    "top": "undergarden:block/smogstem_door_top"
+  }
+}

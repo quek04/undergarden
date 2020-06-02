@@ -26,7 +26,12 @@ public class UndergardenWallBlock extends WallBlock {
     private final VoxelShape[] wallCollisionShapes;
 
     public UndergardenWallBlock(Material material, float hardness, float resistance, SoundType sound, int level, ToolType tool) {
-        super(Properties.create(material).hardnessAndResistance(hardness, resistance).sound(sound).harvestLevel(level).harvestTool(tool));
+        super(Properties.create(material)
+                .hardnessAndResistance(hardness, resistance)
+                .sound(sound)
+                .harvestLevel(level)
+                .harvestTool(tool)
+        );
         this.setDefaultState(this.stateContainer.getBaseState().with(UP, Boolean.valueOf(true)).with(NORTH, Boolean.valueOf(false)).with(EAST, Boolean.valueOf(false)).with(SOUTH, Boolean.valueOf(false)).with(WEST, Boolean.valueOf(false)).with(WATERLOGGED, Boolean.valueOf(false)));
         this.wallShapes = this.makeShapes(4.0F, 3.0F, 16.0F, 0.0F, 14.0F);
         this.wallCollisionShapes = this.makeShapes(4.0F, 3.0F, 24.0F, 0.0F, 24.0F);

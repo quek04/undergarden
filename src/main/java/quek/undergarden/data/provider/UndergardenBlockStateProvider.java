@@ -119,4 +119,12 @@ public abstract class UndergardenBlockStateProvider extends BlockStateProvider {
                 models().wallSide(baseName + "_side", texture(side)));
     }
 
+    public void door(Supplier<? extends DoorBlock> block, String name) {
+        doorBlock(block.get(), texture(name + "_door_bottom"), texture(name + "_door_top"));
+    }
+
+    public void trapdoor(Supplier<? extends TrapDoorBlock> block, String name) {
+        trapdoorBlock(block.get(), texture(name + "_trapdoor"), true);
+    }
+
 }

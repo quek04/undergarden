@@ -14,12 +14,18 @@ public class UndergardenBiomes {
 
     public static final RegistryObject<Biome> FORGOTTEN_FIELD = BIOMES.register("forgotten_field", ForgottenFieldBiome::new);
     public static final RegistryObject<Biome> SMOGSTEM_FOREST = BIOMES.register("smogstem_forest", SmogstemForestBiome::new);
+    public static final RegistryObject<Biome> WIGGLEWOOD_FOREST = BIOMES.register("wigglewood_forest", WigglewoodForestBiome::new);
+    public static final RegistryObject<Biome> DENSE_FOREST = BIOMES.register("dense_forest", DenseForestBiome::new);
     public static final RegistryObject<Biome> BARREN_ABYSS = BIOMES.register("barren_abyss", BarrenAbyssBiome::new);
+    public static final RegistryObject<Biome> SMOG_SPIRES = BIOMES.register("smog_spires", SmogSpiresBiome::new);
 
     public static void addBiomeTypes() {
         BiomeDictionary.addTypes(FORGOTTEN_FIELD.get(), BiomeDictionary.Type.PLAINS);
         BiomeDictionary.addTypes(SMOGSTEM_FOREST.get(), BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(WIGGLEWOOD_FOREST.get(), BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(DENSE_FOREST.get(), BiomeDictionary.Type.FOREST);
         BiomeDictionary.addTypes(BARREN_ABYSS.get(), BiomeDictionary.Type.DEAD);
+        BiomeDictionary.addTypes(SMOG_SPIRES.get(), BiomeDictionary.Type.DEAD);
     }
 
     public static void addBiomeFeatures() {

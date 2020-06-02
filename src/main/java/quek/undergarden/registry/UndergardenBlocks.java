@@ -21,7 +21,6 @@ public class UndergardenBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, UndergardenMod.MODID);
 
-    //public static final RegistryObject<Block> undergarden_portal_frame = registerBlock("undergarden_portal_frame", UndergardenPortalFrameBlock::new);
     public static final RegistryObject<Block> undergarden_portal = BLOCKS.register("undergarden_portal", UndergardenPortalBlock::new);
     public static final RegistryObject<Block> catalyst = registerBlock("catalyst_slot", CatalystSlotBlock::new);
 
@@ -29,6 +28,8 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", DeepsoilBlock::new);
     public static final RegistryObject<Block> deepsoil_farmland = registerBlock("deepsoil_farmland", DeepsoilFarmlandBlock::new);
     public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", DeepturfBlock::new);
+    public static final RegistryObject<Block> sooten_deepsoil = registerBlock("sooten_deepsoil", () -> new UndergardenBlock(
+            Material.EARTH, 0.5F, 0.5F, SoundType.GROUND, 0, ToolType.SHOVEL));
     public static final RegistryObject<Block> depthrock = registerBlock("depthrock", () -> new UndergardenBlock(
             Material.ROCK,1.5F,6F, SoundType.STONE,1, ToolType.PICKAXE));
     public static final RegistryObject<Block> cobbled_depthrock = registerBlock("cobbled_depthrock", () -> new UndergardenBlock(
@@ -44,6 +45,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new UndergardenBlock(
             Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
     public static final RegistryObject<Block> goo = registerBlock("goo", GooBlock::new);
+    public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", SmogVentBlock::new);
 
     //nature
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", BeanBushBlock::new);
@@ -72,8 +74,8 @@ public class UndergardenBlocks {
 
     //ores
     public static final RegistryObject<Block> coal_ore = registerBlock("coal_ore", () -> new UndergardenOreBlock(0));
-    public static final RegistryObject<Block> cloggrum_ore = registerBlock("cloggrum_ore", () -> new UndergardenOreBlock(2));
-    public static final RegistryObject<Block> froststeel_ore = registerBlock("froststeel_ore", () -> new UndergardenOreBlock(3));
+    public static final RegistryObject<Block> cloggrum_ore = registerBlock("cloggrum_ore", () -> new UndergardenOreBlock(1));
+    public static final RegistryObject<Block> froststeel_ore = registerBlock("froststeel_ore", () -> new UndergardenOreBlock(2));
     public static final RegistryObject<Block> utherium_ore = registerBlock("utherium_ore", () -> new UndergardenOreBlock(3));
 
     //manufactured
@@ -114,6 +116,16 @@ public class UndergardenBlocks {
             Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
     public static final RegistryObject<FenceBlock> wigglewood_fence = registerBlock("wigglewood_fence", () -> new UndergardenFenceBlock(
             Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
+
+    public static final RegistryObject<DoorBlock> smogstem_door = registerBlock("smogstem_door", () -> new UndergardenDoorBlock(
+            Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
+    public static final RegistryObject<DoorBlock> wigglewood_door = registerBlock("wigglewood_door", () -> new UndergardenDoorBlock(
+            Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
+
+    public static final RegistryObject<TrapDoorBlock> smogstem_trapdoor = registerBlock("smogstem_trapdoor", () -> new UndergardenTrapDoorBlock(
+            Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
+    public static final RegistryObject<TrapDoorBlock> wigglewood_trapdoor = registerBlock("wigglewood_trapdoor", () -> new UndergardenTrapDoorBlock(
+            Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
 
     //tiles
 

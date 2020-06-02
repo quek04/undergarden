@@ -26,7 +26,7 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
     @Override
     public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
         int i = 0;
-        int ocean_y = worldIn.getSeaLevel();
+        int ocean_y = 32;
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
         if(pos.getY() < ocean_y) {
             if (worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER) {

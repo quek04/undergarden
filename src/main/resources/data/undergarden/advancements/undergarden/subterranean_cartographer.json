@@ -32,6 +32,18 @@
       "conditions": {
         "biome": "undergarden:barren_abyss"
       }
+    },
+    "wigglewood_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:wigglewood_forest"
+      }
+    },
+    "dense_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:dense_forest"
+      }
     }
   }
 

@@ -21,7 +21,8 @@ public class SmogstemForestBiome extends UndergardenBiome {
                 Category.FOREST,
                 0.125F,
                 0.010F,
-                0.8F);
+                0.8F
+        );
     }
 
     @Override
@@ -31,15 +32,14 @@ public class SmogstemForestBiome extends UndergardenBiome {
         UndergardenBiomeFeatures.addPlants(this);
         UndergardenBiomeFeatures.addDoubleDeepturf(this);
         UndergardenBiomeFeatures.addForestSmogstemTrees(this);
-        UndergardenBiomeFeatures.addGlitterkelp(this);
-        UndergardenBiomeFeatures.addGlowingSeaGrass(this);
+        UndergardenBiomeFeatures.addUnderwaterPlants(this);
+        UndergardenBiomeFeatures.addBlockVariants(this);
+        UndergardenBiomeFeatures.addSediment(this);
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));
-        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 100, 10, 20));
-        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.BRUTE.get(), 50, 20, 30));
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 50, 10, 20));
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.BRUTE.get(), 100, 20, 30));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(UndergardenEntities.SCINTLING.get(), 100, 1, 10));
         this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(UndergardenEntities.GWIBLING.get(), 20, 5, 10));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTWALKER.get(), 5, 1, 2));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTBEAST.get(), 3, 1, 1));
     }
 
 }

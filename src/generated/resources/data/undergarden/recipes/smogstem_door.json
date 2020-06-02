@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PP",
+    "PP",
+    "PP"
+  ],
+  "key": {
+    "P": {
+      "item": "undergarden:smogstem_planks"
+    }
+  },
+  "result": {
+    "item": "undergarden:smogstem_door",
+    "count": 3
+  }
+}

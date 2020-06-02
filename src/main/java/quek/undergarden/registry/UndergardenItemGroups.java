@@ -23,7 +23,6 @@ public class UndergardenItemGroups {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(UndergardenItems.cloggrum_sword.get());
-
         }
     };
 }

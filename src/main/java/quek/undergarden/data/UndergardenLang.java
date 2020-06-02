@@ -23,6 +23,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.deepsoil, "Deepsoil");
         addBlock(UndergardenBlocks.deepsoil_farmland, "Deepsoil Farmland");
         addBlock(UndergardenBlocks.deepturf_block, "Deepturf Block");
+        addBlock(UndergardenBlocks.sooten_deepsoil, "Sooten Deepsoil");
         addBlock(UndergardenBlocks.depthrock, "Depthrock");
         addBlock(UndergardenBlocks.cobbled_depthrock, "Cobbled Depthrock");
         addBlock(UndergardenBlocks.smogstem_planks, "Smogstem Planks");
@@ -31,6 +32,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.cracked_depthrock_bricks, "Cracked Depthrock Bricks");
         addBlock(UndergardenBlocks.shiverstone, "Shiverstone");
         addBlock(UndergardenBlocks.goo, "Scintling Goo");
+        addBlock(UndergardenBlocks.smog_vent, "Smog Vent");
 
         addBlock(UndergardenBlocks.underbean_bush, "Underbean Bush");
         addBlock(UndergardenBlocks.smogstem_sapling, "Smogstem Sapling");
@@ -85,6 +87,12 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.smogstem_fence, "Smogstem Fence");
         addBlock(UndergardenBlocks.wigglewood_fence, "Wigglewood Fence");
 
+        addBlock(UndergardenBlocks.smogstem_door, "Smogstem Door");
+        addBlock(UndergardenBlocks.wigglewood_door, "Wigglewood Door");
+
+        addBlock(UndergardenBlocks.smogstem_trapdoor, "Smogstem Trapdoor");
+        addBlock(UndergardenBlocks.wigglewood_trapdoor, "Wigglewood Trapdoor");
+
         addItem(UndergardenItems.catalyst_item, "Catalyst");
         addItem(UndergardenItems.depthrock_pebble, "Depthrock Pebble");
         addItem(UndergardenItems.smogstem_stick, "Smogstem Stick");
@@ -100,6 +108,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.gloomgourd_seeds, "Gloomgourd Seeds");
         addItem(UndergardenItems.ditchbulb, "Ditchbulb");
         addItem(UndergardenItems.brute_tusk, "Brute Tusk");
+        addItem(UndergardenItems.goo_ball, "Scintling Goo Ball");
 
         addItem(UndergardenItems.masticator_scales, "Masticator Scales");
         addItem(UndergardenItems.masticated_shield, "Masticated Shield");
@@ -124,7 +133,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utheric_sword, "Utherium Sword");
         addItem(UndergardenItems.utheric_pickaxe, "Utherium Pickaxe");
         addItem(UndergardenItems.utheric_axe, "Utherium Axe");
-        addItem(UndergardenItems.utheric_shovel, "Utherium_Shovel");
+        addItem(UndergardenItems.utheric_shovel, "Utherium Shovel");
 
         addItem(UndergardenItems.slingshot, "Slingshot");
         addItem(UndergardenItems.cloggrum_shears, "Cloggrum Shears");
@@ -213,5 +222,6 @@ public class UndergardenLang extends LanguageProvider {
         add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");
         add("tooltip.utheric_axe", "Bonus damage to passive animals.");
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
+        add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
     }
 }

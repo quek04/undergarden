@@ -69,8 +69,8 @@ public class ScintlingModel<T extends ScintlingEntity> extends SegmentedModel<T>
 
 		float wiggle = MathHelper.sin((entity.ticksExisted) * 0.3F) * 0.3F;
 
-		this.leftStalk.rotateAngleX = wiggle * 0.5F;
-		this.rightStalk.rotateAngleX = -wiggle * 0.5F;
+		this.leftStalk.rotateAngleX = wiggle;
+		this.rightStalk.rotateAngleX = -wiggle;
 	}
 
 	@Override

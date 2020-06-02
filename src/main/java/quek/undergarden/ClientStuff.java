@@ -62,10 +62,15 @@ public class ClientStuff {
         render(UndergardenBlocks.glowing_sea_grass, cutout);
         render(UndergardenBlocks.undergarden_portal, translucent);
         render(UndergardenBlocks.goo, translucent);
+        render(UndergardenBlocks.smogstem_door, cutout);
+        render(UndergardenBlocks.wigglewood_door, cutout);
+        render(UndergardenBlocks.smogstem_trapdoor, cutout);
+        render(UndergardenBlocks.wigglewood_trapdoor, cutout);
     }
 
     public static void registerEntityRenderers() {
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.slingshot_ammo, entity -> new SpriteRenderer<>(entity, Minecraft.getInstance().getItemRenderer()));
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.goo_ball, entity -> new SpriteRenderer<>(entity, Minecraft.getInstance().getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotwalker, RotwalkerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotbeast, RotbeastRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.dweller, DwellerRender::new);

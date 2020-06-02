@@ -22,7 +22,8 @@ public class ForgottenFieldBiome extends UndergardenBiome {
                 Category.PLAINS,
                 0.125F,
                 0.05F,
-                0.8F);
+                0.8F
+        );
     }
 
     @Override
@@ -35,8 +36,9 @@ public class ForgottenFieldBiome extends UndergardenBiome {
         UndergardenBiomeFeatures.addDoubleShimmerweed(this);
         UndergardenBiomeFeatures.addShrooms(this);
         UndergardenBiomeFeatures.addTrees(this);
-        UndergardenBiomeFeatures.addGlitterkelp(this);
-        UndergardenBiomeFeatures.addGlowingSeaGrass(this);
+        UndergardenBiomeFeatures.addUnderwaterPlants(this);
+        UndergardenBiomeFeatures.addBlockVariants(this);
+        UndergardenBiomeFeatures.addSediment(this);
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 200, 10, 20));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(UndergardenEntities.SCINTLING.get(), 100, 1, 10));

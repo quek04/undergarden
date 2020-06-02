@@ -1,6 +1,7 @@
 package quek.undergarden.item.armor;
 
 import com.google.common.collect.Multimap;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -8,9 +9,18 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenArmorMaterials;
 import quek.undergarden.registry.UndergardenItemGroups;
+import quek.undergarden.registry.UndergardenItems;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.UUID;
 
 public class UndergardenArmorItem extends ArmorItem {
@@ -21,6 +31,13 @@ public class UndergardenArmorItem extends ArmorItem {
         super(materialIn, slot, new Properties()
                 .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
         );
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        if(stack.getItem() == UndergardenItems.cloggrum_boots.get()) {
+            tooltip.add(new TranslationTextComponent("tooltip.cloggrum_boots").applyTextStyle(TextFormatting.GRAY));
+        }
     }
 
     @Override

@@ -9,15 +9,19 @@ import quek.undergarden.utils.misc.LazyInt;
 public class UndergardenBiomeLayer implements IAreaTransformer0 {
 	private static final int UNCOMMON_BIOME_CHANCE = 8;
 	private static final int RARE_BIOME_CHANCE = 16;
+
 	protected LazyInt[] commonBiomes = new LazyInt[] {
-			UndergardenLayerUtil.lazyId(UndergardenBiomes.FORGOTTEN_FIELD)
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.FORGOTTEN_FIELD),
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.SMOG_SPIRES)
 	};
 	protected LazyInt[] uncommonBiomes = (new LazyInt[] {
-			UndergardenLayerUtil.lazyId(UndergardenBiomes.SMOGSTEM_FOREST)
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.SMOGSTEM_FOREST),
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.WIGGLEWOOD_FOREST)
 
 	});
 	protected LazyInt[] rareBiomes = (new LazyInt[] {
-			UndergardenLayerUtil.lazyId(UndergardenBiomes.BARREN_ABYSS)
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.BARREN_ABYSS),
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.DENSE_FOREST)
 	});
 
 	public UndergardenBiomeLayer() {

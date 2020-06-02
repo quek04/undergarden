@@ -69,7 +69,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.cloggrum_bars);
         itemBlockFlat(UndergardenBlocks.glowing_sea_grass);
         itemBlock(UndergardenBlocks.shiverstone);
-        itemBlockFlat(UndergardenBlocks.goo);
+        itemBlock(UndergardenBlocks.goo);
+        itemBlock(UndergardenBlocks.smog_vent);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);
@@ -87,6 +88,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.gloomgourd_seeds);
         normalItem(UndergardenItems.brute_tusk);
         normalItem(UndergardenItems.glowing_kelp);
+        normalItem(UndergardenItems.goo_ball);
 
         toolItem(UndergardenItems.smogstem_sword);
         toolItem(UndergardenItems.smogstem_pickaxe);
