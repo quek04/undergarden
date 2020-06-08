@@ -14,7 +14,7 @@ public class SmogSpiresBiome extends UndergardenBiome {
 
     public SmogSpiresBiome() {
         super(new DefaultSurfaceBuilder(SurfaceBuilderConfig::deserialize),
-                new SurfaceBuilderConfig(UndergardenBlocks.sooten_deepsoil.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
+                new SurfaceBuilderConfig(UndergardenBlocks.ashen_deepturf.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.NONE,
                 0.225F,
                 0.010F,
@@ -24,12 +24,12 @@ public class SmogSpiresBiome extends UndergardenBiome {
 
     @Override
     public void addFeatures() {
-        this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
         UndergardenBiomeFeatures.addSmogVents(this);
         UndergardenBiomeFeatures.addOres(this);
         UndergardenBiomeFeatures.addUnderwaterPlants(this);
         UndergardenBiomeFeatures.addBlockVariants(this);
         UndergardenBiomeFeatures.addSediment(this);
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 100, 15, 30));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(UndergardenEntities.SCINTLING.get(), 50, 1, 10));
         this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(UndergardenEntities.GWIBLING.get(), 20, 5, 10));
     }

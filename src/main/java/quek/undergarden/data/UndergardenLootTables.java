@@ -77,6 +77,7 @@ public class UndergardenLootTables extends LootTableProvider {
             this.registerLootTable(UndergardenBlocks.double_shimmerweed.get(), (p_218572_0_)
                     -> dropping(UndergardenBlocks.shimmerweed.get()));
             this.registerLootTable(UndergardenBlocks.tall_deepturf.get(), BlockLootTables::onlyWithShears);
+            this.registerLootTable(UndergardenBlocks.ashen_tall_deepturf.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UndergardenBlocks.glowing_sea_grass.get(), BlockLootTables::onlyWithShears);
             dropSelf(UndergardenBlocks.shimmerweed);
             dropSelf(UndergardenBlocks.smogstem_planks);
@@ -125,14 +126,14 @@ public class UndergardenLootTables extends LootTableProvider {
             dropOther(UndergardenBlocks.glowing_kelp, UndergardenItems.glowing_kelp.get());
             dropOther(UndergardenBlocks.glowing_kelp_plant, UndergardenItems.glowing_kelp.get());
             dropSelf(UndergardenBlocks.shiverstone);
-            dropSelf(UndergardenBlocks.catalyst);
+            dropSelf(UndergardenBlocks.catalyst_slot);
             this.registerLootTable(UndergardenBlocks.smogstem_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             this.registerLootTable(UndergardenBlocks.wigglewood_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             dropSelf(UndergardenBlocks.smogstem_trapdoor);
             dropSelf(UndergardenBlocks.wigglewood_trapdoor);
             dropWithSilk(UndergardenBlocks.smog_vent, UndergardenBlocks.cobbled_depthrock);
             this.registerLootTable(UndergardenBlocks.goo.get(), (p_218534_0_) -> droppingWithSilkTouchOrRandomly(p_218534_0_, UndergardenItems.goo_ball.get(), RandomValueRange.of(1.0F, 4.0F)));
-            dropWithSilk(UndergardenBlocks.sooten_deepsoil, UndergardenBlocks.deepsoil);
+            dropWithSilk(UndergardenBlocks.ashen_deepturf, UndergardenBlocks.deepsoil);
         }
 
         @Override

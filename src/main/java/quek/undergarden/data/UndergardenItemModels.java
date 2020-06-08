@@ -71,6 +71,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.shiverstone);
         itemBlock(UndergardenBlocks.goo);
         itemBlock(UndergardenBlocks.smog_vent);
+        itemBlockFlat(UndergardenBlocks.ashen_tall_deepturf);
+        itemBlock(UndergardenBlocks.ashen_deepturf);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);

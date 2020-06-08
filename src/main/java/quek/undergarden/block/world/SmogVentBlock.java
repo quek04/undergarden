@@ -21,6 +21,7 @@ public class SmogVentBlock extends Block {
                 .sound(SoundType.STONE)
                 .harvestLevel(1)
                 .harvestTool(ToolType.PICKAXE)
+                .lightValue(15)
         );
     }
 
@@ -29,8 +30,12 @@ public class SmogVentBlock extends Block {
         double x = (double)pos.getX() + 0.5D;
         double y = (double)pos.getY() + 1D;
         double z = (double)pos.getZ() + 0.5D;
-        worldIn.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, true, x, y, z, 0.0D, 0.07D, 0.0D);
-        worldIn.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y, z, 0.0D, 0.05D, 0.0D);
+
+        for(int i = 0; i < 6; i++) {
+            if(worldIn.isAirBlock(pos.up())) {
+                worldIn.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true, x, y, z, 0.0D, 0.05D, 0.0D);
+            }
+        }
     }
 
 }

@@ -27,16 +27,8 @@ public class WigglewoodForestBiome extends UndergardenBiome {
 
     @Override
     public void addFeatures() {
-        this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
-        UndergardenBiomeFeatures.addOres(this);
-        UndergardenBiomeFeatures.addPlants(this);
-        UndergardenBiomeFeatures.addDoubleDeepturf(this);
+        UndergardenBiomeFeatures.addNormalStuff(this);
         UndergardenBiomeFeatures.addForestWigglewoodTrees(this);
-        UndergardenBiomeFeatures.addUnderwaterPlants(this);
-        UndergardenBiomeFeatures.addBlockVariants(this);
-        UndergardenBiomeFeatures.addSediment(this);
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 100, 10, 20));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.BRUTE.get(), 50, 20, 30));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(UndergardenEntities.SCINTLING.get(), 100, 1, 10));

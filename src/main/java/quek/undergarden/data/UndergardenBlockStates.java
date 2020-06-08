@@ -23,6 +23,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.cobbled_depthrock);
         normalBlock(UndergardenBlocks.deepsoil);
         crossBlock(UndergardenBlocks.tall_deepturf);
+        crossBlock(UndergardenBlocks.ashen_tall_deepturf);
         crossBlock(UndergardenBlocks.shimmerweed);
         crossBlock(UndergardenBlocks.ditchbulb_plant);
         normalBlock(UndergardenBlocks.coal_ore);

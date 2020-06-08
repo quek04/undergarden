@@ -66,6 +66,7 @@ public class ClientStuff {
         render(UndergardenBlocks.wigglewood_door, cutout);
         render(UndergardenBlocks.smogstem_trapdoor, cutout);
         render(UndergardenBlocks.wigglewood_trapdoor, cutout);
+        render(UndergardenBlocks.ashen_tall_deepturf, cutout);
     }
 
     public static void registerEntityRenderers() {

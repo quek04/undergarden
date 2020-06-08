@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:depthrock_slab",
+    "undergarden:cobbled_depthrock_slab",
+    "undergarden:depthrock_brick_slab",
+    "undergarden:smogstem_slab",
+    "undergarden:wigglewood_slab"
+  ]
+}

@@ -23,7 +23,7 @@ public class CatalystItem extends Item {
         World world = context.getWorld();
         BlockPos blockpos = context.getPos();
         BlockState blockstate = world.getBlockState(blockpos);
-        if (blockstate.getBlock() == UndergardenBlocks.catalyst.get() && !blockstate.get(CatalystSlotBlock.CATALYST)) {
+        if (blockstate.getBlock() == UndergardenBlocks.catalyst_slot.get() && !blockstate.get(CatalystSlotBlock.CATALYST)) {
             if (!world.isRemote) {
                 BlockState slotActivated = blockstate.with(CatalystSlotBlock.CATALYST, Boolean.TRUE);
                 world.setBlockState(blockpos, slotActivated, 2);

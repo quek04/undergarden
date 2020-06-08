@@ -101,7 +101,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
                 .build(consumer, name("smogstem_torch_ditchbulb"));
 
-        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.catalyst.get())
+        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.catalyst_slot.get())
                 .patternLine("BBB")
                 .patternLine("BGB")
                 .patternLine("BBB")

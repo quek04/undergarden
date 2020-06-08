@@ -44,6 +44,12 @@
       "conditions": {
         "biome": "undergarden:dense_forest"
       }
+    },
+    "smog_spires": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:smog_spires"
+      }
     }
   }
 

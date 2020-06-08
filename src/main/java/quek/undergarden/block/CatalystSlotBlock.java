@@ -33,11 +33,10 @@ public class CatalystSlotBlock extends Block {
     @Override
     public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
         if (oldState.getBlock() != state.getBlock()) {
-            if (worldIn.dimension.getType() == DimensionType.OVERWORLD || worldIn.dimension.getType() == UndergardenMod.undergarden_dimension || ((UndergardenPortalBlock) UndergardenBlocks.undergarden_portal.get()).trySpawnPortal(worldIn, pos)) {
+            if (worldIn.dimension.getType() != DimensionType.OVERWORLD && worldIn.dimension.getType() != UndergardenMod.undergarden_dimension || !((UndergardenPortalBlock)UndergardenBlocks.undergarden_portal.get()).trySpawnPortal(worldIn, pos)) {
                 if (!state.isValidPosition(worldIn, pos)) {
                     worldIn.removeBlock(pos, false);
-                }
-                else {
+                } else {
                     worldIn.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(worldIn) + worldIn.rand.nextInt(10));
                 }
             }

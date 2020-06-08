@@ -62,7 +62,7 @@ public class UndergardenPortalBlock extends Block {
 
     public boolean trySpawnPortal(IWorld worldIn, BlockPos pos) {
         UndergardenPortalBlock.Size portalSize = isPortal(worldIn, pos);
-        if (portalSize != null /*&& canMakePortal(worldIn.getWorld())*/) {
+        if (portalSize != null) {
             portalSize.placePortalBlocks();
             return true;
         } else {

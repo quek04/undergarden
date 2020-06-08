@@ -30,16 +30,9 @@ public class ForgottenFieldBiome extends UndergardenBiome {
     public void addFeatures() {
         //this.addStructure(UndergardenFeatures.DEPTHROCK_RUIN.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         //this.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, UndergardenFeatures.DEPTHROCK_RUIN.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CARVING_MASK.configure(new CaveEdgeConfig(GenerationStage.Carving.AIR, 5))));
-        this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
-        UndergardenBiomeFeatures.addOres(this);
-        UndergardenBiomeFeatures.addPlants(this);
+        UndergardenBiomeFeatures.addNormalStuff(this);
         UndergardenBiomeFeatures.addDoubleShimmerweed(this);
-        UndergardenBiomeFeatures.addShrooms(this);
         UndergardenBiomeFeatures.addTrees(this);
-        UndergardenBiomeFeatures.addUnderwaterPlants(this);
-        UndergardenBiomeFeatures.addBlockVariants(this);
-        UndergardenBiomeFeatures.addSediment(this);
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 200, 10, 20));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(UndergardenEntities.SCINTLING.get(), 100, 1, 10));
         this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(UndergardenEntities.GWIBLING.get(), 20, 5, 10));

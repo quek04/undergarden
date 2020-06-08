@@ -22,7 +22,9 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ToolType;
 import quek.undergarden.entity.ScintlingEntity;
+import quek.undergarden.registry.UndergardenEffects;
 import quek.undergarden.registry.UndergardenItems;
 
 import java.util.Random;
@@ -33,19 +35,20 @@ public class GooBlock extends Block {
     protected static final VoxelShape SHAPE = makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
     public GooBlock() {
-        super(Properties.create(Material.ORGANIC)
+        super(Properties.create(Material.SNOW)
                 .hardnessAndResistance(1F, 0F)
                 .doesNotBlockMovement()
                 .tickRandomly()
                 .sound(SoundType.SLIME)
                 .notSolid()
+                .harvestTool(ToolType.SHOVEL)
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UndergardenItems.cloggrum_boots.get()) {
+        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UndergardenItems.cloggrum_boots.get() && !((PlayerEntity) entityIn).isPotionActive(UndergardenEffects.gooey.get())) {
 
         }
         else if(!(entityIn instanceof ScintlingEntity) && entityIn.onGround) {

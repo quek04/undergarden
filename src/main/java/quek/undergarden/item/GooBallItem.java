@@ -30,7 +30,7 @@ public class GooBallItem extends Item {
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        entityLiving.addPotionEffect(new EffectInstance(UndergardenEffects.gooey.get(), 100, 1, false, true));
+        entityLiving.addPotionEffect(new EffectInstance(UndergardenEffects.gooey.get(), 600, 0, false, true));
         return itemStack;
     }
 
