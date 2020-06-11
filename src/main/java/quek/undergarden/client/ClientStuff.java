@@ -1,15 +1,20 @@
-package quek.undergarden;
+package quek.undergarden.client;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.MusicTicker;
 import net.minecraft.client.audio.SimpleSound;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.item.BlockItem;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
@@ -17,12 +22,15 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
+import quek.undergarden.UndergardenMod;
+import quek.undergarden.client.audio.UndergardenAmbienceSound;
 import quek.undergarden.client.render.*;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.world.UndergardenDimension;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.function.Supplier;
 
@@ -31,7 +39,9 @@ import java.util.function.Supplier;
 public class ClientStuff {
 
     private static final Minecraft CLIENT = Minecraft.getInstance();
+
     private static ISound playingMusic;
+    private static final ISound UNDERGARDEN_AMBIENCE = new UndergardenAmbienceSound();
 
     private static void render(Supplier<? extends Block> block, RenderType render) {
         RenderTypeLookup.setRenderLayer(block.get(), render);
@@ -40,8 +50,10 @@ public class ClientStuff {
     public static void registerBlockRenderers() {
 
         RenderType cutout = RenderType.getCutout();
+        RenderType mipped = RenderType.getCutoutMipped();
         RenderType translucent = RenderType.getTranslucent();
 
+        render(UndergardenBlocks.deepturf_block, mipped);
         render(UndergardenBlocks.tall_deepturf, cutout);
         render(UndergardenBlocks.shimmerweed, cutout);
         render(UndergardenBlocks.smogstem_sapling, cutout);
@@ -67,6 +79,7 @@ public class ClientStuff {
         render(UndergardenBlocks.smogstem_trapdoor, cutout);
         render(UndergardenBlocks.wigglewood_trapdoor, cutout);
         render(UndergardenBlocks.ashen_tall_deepturf, cutout);
+        render(UndergardenBlocks.blisterberry_bush, cutout);
     }
 
     public static void registerEntityRenderers() {
@@ -83,6 +96,68 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.masticator, MasticatorRender::new);
     }
 
+    public static void registerBlockColors() {
+        BlockColors colors = Minecraft.getInstance().getBlockColors();
+
+        colors.register((state, world, pos, tint) ->
+                        world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : new Color(91, 117, 91).getRGB(),
+                UndergardenBlocks.deepturf_block.get(),
+                UndergardenBlocks.tall_deepturf.get(),
+                UndergardenBlocks.shimmerweed.get(),
+                UndergardenBlocks.double_deepturf.get(),
+                UndergardenBlocks.double_shimmerweed.get()
+        );
+    }
+
+    public static void registerItemColors() {
+        BlockColors bColors = Minecraft.getInstance().getBlockColors();
+        ItemColors iColors = Minecraft.getInstance().getItemColors();
+
+        iColors.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), null, null, 0),
+                UndergardenBlocks.deepturf_block.get(),
+                UndergardenBlocks.tall_deepturf.get(),
+                //UndergardenBlocks.shimmerweed.get(),
+                //UndergardenBlocks.double_shimmerweed.get(),
+                UndergardenBlocks.double_deepturf.get()
+        );
+    }
+
+    /* TODO: MAKE COLORS WORK WITH THIS, APPARENTLY WHAT IS ABOVE IS THE INCORRECT WAY. BUT WHAT'S BELOW DOESNT DO JACK SHIT?
+    @SubscribeEvent
+    public static void registerBlockColors(ColorHandlerEvent.Block event) {
+        BlockColors colors = event.getBlockColors();
+        colors.register((state, light, pos, tint) ->
+                light != null && pos != null ? BiomeColors.getGrassColor(light, state.get(ShearableDoublePlantBlock.PLANT_HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1,
+                UndergardenBlocks.double_deepturf.get(),
+                UndergardenBlocks.double_shimmerweed.get()
+        );
+        colors.register((state, light, pos, tint) ->
+                light != null && pos != null ? BiomeColors.getGrassColor(light, pos) : new Color(91, 117, 91).getRGB(),
+                UndergardenBlocks.deepturf_block.get(),
+                UndergardenBlocks.tall_deepturf.get(),
+                UndergardenBlocks.shimmerweed.get()
+        );
+    }
+
+    @SubscribeEvent
+    public static void registerItemColors(ColorHandlerEvent.Item event) {
+        ItemColors itemColors = event.getItemColors();
+        BlockColors blockColors = event.getBlockColors();
+        itemColors.register((stack, tint) -> new Color(91, 117, 91).getRGB(),
+                UndergardenBlocks.double_deepturf.get(),
+                UndergardenBlocks.double_shimmerweed.get()
+        );
+        itemColors.register((stack, tint) -> {
+            BlockState blockstate = ((BlockItem)stack.getItem()).getBlock().getDefaultState();
+            return blockColors.getColor(blockstate, null, null, tint);
+        },
+                UndergardenBlocks.deepturf_block.get(),
+                UndergardenBlocks.tall_deepturf.get(),
+                UndergardenBlocks.shimmerweed.get()
+        );
+    }
+    */
+
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         if (!CLIENT.isGamePaused()) {
@@ -95,6 +170,10 @@ public class ClientStuff {
                 if (playingMusic != null && !CLIENT.getSoundHandler().isPlaying(playingMusic)) {
                     playingMusic = null;
                 }
+            }
+
+            if(UndergardenDimension.isTheUndergarden(player.world) && !(player.getSubmergedHeight() > 2)) {
+                doAmbience(UNDERGARDEN_AMBIENCE);
             }
         }
     }
@@ -123,4 +202,14 @@ public class ClientStuff {
         return Arrays.stream(stackTrace).anyMatch(e -> e.getClassName().equals(MusicTicker.class.getName()));
     }
 
+    private static void doAmbience(ISound sound) {
+        SoundHandler soundHandler = CLIENT.getSoundHandler();
+        if (!soundHandler.isPlaying(sound)) {
+            try {
+                soundHandler.stop(sound);
+                soundHandler.play(sound);
+            } catch (IllegalArgumentException ignored) {
+            }
+        }
+    }
 }

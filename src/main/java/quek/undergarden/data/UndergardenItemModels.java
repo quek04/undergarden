@@ -39,7 +39,6 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.depthrock_bricks);
         itemBlock(UndergardenBlocks.cracked_depthrock_bricks);
         itemBlockFlat(UndergardenBlocks.tall_deepturf);
-        itemBlockFlat(UndergardenBlocks.shimmerweed);
         itemBlockFlat(UndergardenBlocks.ditchbulb_plant);
         itemBlockFlat(UndergardenBlocks.indigo_mushroom);
         itemBlockFlat(UndergardenBlocks.veil_mushroom);
@@ -73,6 +72,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.smog_vent);
         itemBlockFlat(UndergardenBlocks.ashen_tall_deepturf);
         itemBlock(UndergardenBlocks.ashen_deepturf);
+        itemBlock(UndergardenBlocks.regalium_ore);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);
@@ -85,6 +85,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.utheric_shard);
         normalItem(UndergardenItems.utherium_ingot);
         normalItem(UndergardenItems.utherium_chunk);
+        normalItem(UndergardenItems.regalium_ingot);
+        normalItem(UndergardenItems.regalium_nugget);
         normalItem(UndergardenItems.smogstem_torch);
         normalItem(UndergardenItems.ditchbulb);
         normalItem(UndergardenItems.gloomgourd_seeds);
@@ -121,6 +123,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         toolItem(UndergardenItems.utheric_shovel);
 
         normalItem(UndergardenItems.underbeans);
+        normalItem(UndergardenItems.blisterberry);
         normalItem(UndergardenItems.gloomgourd_pie);
         normalItem(UndergardenItems.raw_dweller_meat);
         normalItem(UndergardenItems.dweller_steak);

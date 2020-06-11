@@ -20,6 +20,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.model.RotDwellerModel;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
@@ -50,6 +51,11 @@ public class RotDwellerEntity extends MonsterEntity {
         super.registerAttributes();
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15D);
         this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30D);
+    }
+
+    @Override
+    public CreatureAttribute getCreatureAttribute() {
+        return UndergardenMod.ROTSPAWN;
     }
 
     @Override
@@ -88,11 +94,6 @@ public class RotDwellerEntity extends MonsterEntity {
         }
 
         super.notifyDataManagerChange(key);
-    }
-
-    @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return CreatureAttribute.UNDEAD;
     }
 
     @Override

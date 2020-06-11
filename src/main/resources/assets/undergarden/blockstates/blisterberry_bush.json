@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "undergarden:block/blisterberry_bush_0" },
+        "age=1": { "model": "undergarden:block/blisterberry_bush_1" },
+        "age=2": { "model": "undergarden:block/blisterberry_bush_2" },
+        "age=3": { "model": "undergarden:block/blisterberry_bush_3" }
+    }
+}

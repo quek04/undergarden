@@ -149,10 +149,12 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeIngotToNugget(UndergardenItems.cloggrum_nugget, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_ingot_to_nugget"));
         makeIngotToNugget(UndergardenItems.froststeel_nugget, UndergardenItems.froststeel_ingot).build(consumer, name("froststeel_ingot_to_nugget"));
         makeIngotToNugget(UndergardenItems.utherium_chunk, UndergardenItems.utherium_ingot).build(consumer, name("utherium_ingot_to_nugget"));
+        makeIngotToNugget(UndergardenItems.regalium_nugget, UndergardenItems.regalium_ingot).build(consumer, name("regalium_ingot_to_nugget"));
 
         makeNuggetToIngot(UndergardenItems.cloggrum_ingot, UndergardenItems.cloggrum_nugget).build(consumer, name("cloggrum_nugget_to_ingot"));
         makeNuggetToIngot(UndergardenItems.froststeel_ingot, UndergardenItems.froststeel_nugget).build(consumer, name("froststeel_nugget_to_ingot"));
         makeNuggetToIngot(UndergardenItems.utherium_ingot, UndergardenItems.utherium_chunk).build(consumer, name("utherium_chunk_to_ingot"));
+        makeNuggetToIngot(UndergardenItems.regalium_ingot, UndergardenItems.regalium_nugget).build(consumer, name("regalium_chunk_to_ingot"));
 
         makeTagSword(UndergardenItems.smogstem_sword, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_sword"));
         makeSword(UndergardenItems.cloggrum_sword, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_sword"));
@@ -213,6 +215,8 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         blastingRecipe(UndergardenItems.froststeel_ingot.get(), UndergardenBlocks.froststeel_ore.get(), .7F).build(consumer, name("blast_froststeel_ore"));
         smeltingRecipe(UndergardenItems.utherium_chunk.get(), UndergardenBlocks.utherium_ore.get(), .9F).build(consumer, name("smelt_utherium_ore"));
         blastingRecipe(UndergardenItems.utherium_chunk.get(), UndergardenBlocks.utherium_ore.get(), .9F).build(consumer, name("blast_utherium_ore"));
+        smeltingRecipe(UndergardenItems.regalium_ingot.get(), UndergardenBlocks.regalium_ore.get(), 1F).build(consumer, name("smelt_regalium_ore"));
+        blastingRecipe(UndergardenItems.regalium_ingot.get(), UndergardenBlocks.regalium_ore.get(), 1F).build(consumer, name("blast_regalium_ore"));
 
         smeltingRecipeTag(UndergardenItems.cloggrum_nugget.get(), UndergardenTags.Items.CLOGGRUM_ITEMS, .1F).build(consumer, name("smelt_cloggrum_item"));
         blastingRecipeTag(UndergardenItems.cloggrum_nugget.get(), UndergardenTags.Items.CLOGGRUM_ITEMS, .1F).build(consumer, name("blast_cloggrum_item"));

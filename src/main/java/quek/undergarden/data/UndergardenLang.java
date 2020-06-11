@@ -35,6 +35,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.smog_vent, "Smog Vent");
 
         addBlock(UndergardenBlocks.underbean_bush, "Underbean Bush");
+        addBlock(UndergardenBlocks.blisterberry_bush, "Blisterberry Bush");
         addBlock(UndergardenBlocks.smogstem_sapling, "Smogstem Sapling");
         addBlock(UndergardenBlocks.smogstem_log, "Smogstem Log");
         addBlock(UndergardenBlocks.smogstem_leaves, "Smogstem Leaves");
@@ -63,6 +64,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.cloggrum_ore, "Cloggrum Ore");
         addBlock(UndergardenBlocks.froststeel_ore, "Froststeel Ore");
         addBlock(UndergardenBlocks.utherium_ore, "Utherium Ore");
+        addBlock(UndergardenBlocks.regalium_ore, "Regalium Ore");
 
         addBlock(UndergardenBlocks.cloggrum_block, "Cloggrum Block");
         addBlock(UndergardenBlocks.froststeel_block, "Froststeel Block");
@@ -105,6 +107,8 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utheric_shard, "Utheric Shard");
         addItem(UndergardenItems.utherium_ingot, "Utherium Ingot");
         addItem(UndergardenItems.utherium_chunk, "Utherium Chunk");
+        addItem(UndergardenItems.regalium_ingot, "Regalium Ingot");
+        addItem(UndergardenItems.regalium_nugget, "Regalium Nugget");
         addItem(UndergardenItems.smogstem_torch, "Smogstem Torch");
         addItem(UndergardenItems.gloomgourd_seeds, "Gloomgourd Seeds");
         addItem(UndergardenItems.ditchbulb, "Ditchbulb");
@@ -155,6 +159,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utheric_boots, "Utherium Boots");
 
         addItem(UndergardenItems.underbeans, "Underbeans");
+        addItem(UndergardenItems.blisterberry, "Blisterberry");
         addItem(UndergardenItems.gloomgourd_pie, "Gloomgourd Pie");
         addItem(UndergardenItems.raw_dweller_meat, "Raw Dweller Meat");
         addItem(UndergardenItems.dweller_steak, "Dweller Steak");

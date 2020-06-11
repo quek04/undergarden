@@ -17,6 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenItemGroups;
 import quek.undergarden.registry.UndergardenItems;
@@ -55,7 +56,7 @@ public class UndergardenSwordItem extends SwordItem {
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
             if(player.getHeldItemMainhand().getItem() == UndergardenItems.utheric_sword.get()) {
-                if(event.getEntityLiving().getType() == UndergardenEntities.rotwalker || event.getEntityLiving().getType() == UndergardenEntities.rotbeast || event.getEntityLiving().getType() == UndergardenEntities.rotdweller) {
+                if(event.getEntityLiving().getCreatureAttribute() == UndergardenMod.ROTSPAWN) {
                     event.setAmount(damage * 1.4F);
                 }
                 else event.setAmount(damage * 1F);

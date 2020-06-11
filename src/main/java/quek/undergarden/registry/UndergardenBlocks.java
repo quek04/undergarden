@@ -28,7 +28,8 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", DeepsoilBlock::new);
     public static final RegistryObject<Block> deepsoil_farmland = registerBlock("deepsoil_farmland", DeepsoilFarmlandBlock::new);
     public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", DeepturfBlock::new);
-    public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", DeepsoilBlock::new);
+    public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", () -> new UndergardenBlock(
+            Material.EARTH, 0.5F, 0.5F, SoundType.GROUND, 0, ToolType.SHOVEL));
     public static final RegistryObject<Block> depthrock = registerBlock("depthrock", () -> new UndergardenBlock(
             Material.ROCK,1.5F,6F, SoundType.STONE,1, ToolType.PICKAXE));
     public static final RegistryObject<Block> cobbled_depthrock = registerBlock("cobbled_depthrock", () -> new UndergardenBlock(
@@ -48,6 +49,7 @@ public class UndergardenBlocks {
 
     //nature
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", BeanBushBlock::new);
+    public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", BlisterberryBushBlock::new);
     public static final RegistryObject<SaplingBlock> smogstem_sapling = registerBlock("smogstem_sapling", () -> new UndergardenSaplingBlock(new SmogstemTree()));
     public static final RegistryObject<LogBlock> smogstem_log = registerBlock("smogstem_log", UndergardenLogBlock::new);
     public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", UndergardenLeavesBlock::new);
@@ -55,7 +57,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<LogBlock> wigglewood_log = registerBlock("wigglewood_log", UndergardenLogBlock::new);
     public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", UndergardenLeavesBlock::new);
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UndergardenTallGrassBlock::new);
-    public static final RegistryObject<Block> ashen_tall_deepturf = registerBlock("ashen_tall_deepturf", UndergardenTallGrassBlock::new);
+    public static final RegistryObject<Block> ashen_tall_deepturf = registerBlock("ashen_tall_deepturf", AshenTallDeepturfBlock::new);
     public static final RegistryObject<Block> double_deepturf = registerBlock("double_deepturf", UndergardenDoublePlantBlock::new);
     public static final RegistryObject<Block> shimmerweed = registerBlock("shimmerweed", () -> new UndergardenTallGrassBlock(12));
     public static final RegistryObject<Block> double_shimmerweed = registerBlock("double_shimmerweed", () -> new UndergardenDoublePlantBlock(14));
@@ -77,6 +79,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> cloggrum_ore = registerBlock("cloggrum_ore", () -> new UndergardenOreBlock(1));
     public static final RegistryObject<Block> froststeel_ore = registerBlock("froststeel_ore", () -> new UndergardenOreBlock(2));
     public static final RegistryObject<Block> utherium_ore = registerBlock("utherium_ore", () -> new UndergardenOreBlock(3));
+    public static final RegistryObject<Block> regalium_ore = registerBlock("regalium_ore", () -> new UndergardenOreBlock(4));
 
     //manufactured
     public static final RegistryObject<Block> cloggrum_block = registerBlock("cloggrum_block", () -> new UndergardenBlock(

@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "undergarden:block/blisterberry_bush_0"
+    }
+}

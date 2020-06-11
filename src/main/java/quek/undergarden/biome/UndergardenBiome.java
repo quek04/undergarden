@@ -33,4 +33,11 @@ public abstract class UndergardenBiome extends Biome {
         //return new Color(35, 37, 30).getRGB();
         return 0;
     }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public int getGrassColor(double posX, double posZ) {
+        return new Color(91, 117, 91).getRGB();
+    }
+
 }

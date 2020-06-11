@@ -2,19 +2,15 @@ package quek.undergarden;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -28,10 +24,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
 
-import quek.undergarden.biome.UndergardenBiome;
+import quek.undergarden.client.ClientStuff;
 import quek.undergarden.data.*;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.gen.carver.*;
@@ -44,6 +39,8 @@ public class UndergardenMod {
 	public static final String MODID = "undergarden";
 
 	public static DimensionType undergarden_dimension;
+
+	public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
 
 	public UndergardenMod() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -71,6 +68,8 @@ public class UndergardenMod {
 	public void clientSetup(FMLClientSetupEvent event) {
 		ClientStuff.registerBlockRenderers();
 		ClientStuff.registerEntityRenderers();
+		ClientStuff.registerBlockColors();
+		ClientStuff.registerItemColors();
 	}
 
 
