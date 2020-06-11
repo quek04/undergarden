@@ -33,6 +33,9 @@ public class UndergardenBiomeProvider extends BiomeProvider {
     private static final Set<Biome> biomes = ImmutableSet.of(
             UndergardenBiomes.FORGOTTEN_FIELD.get(),
             UndergardenBiomes.SMOGSTEM_FOREST.get(),
+            UndergardenBiomes.WIGGLEWOOD_FOREST.get(),
+            UndergardenBiomes.DENSE_FOREST.get(),
+            UndergardenBiomes.SMOG_SPIRES.get(),
             UndergardenBiomes.BARREN_ABYSS.get()
     );
 
@@ -61,9 +64,7 @@ public class UndergardenBiomeProvider extends BiomeProvider {
 
     public static Layer[] buildOverworldProcedure(long seed, WorldType typeIn) {
         ImmutableList<IAreaFactory<LazyArea>> immutablelist = buildOverworldProcedure(typeIn, (p_215737_2_) ->
-        {
-            return new LazyAreaLayerContext(25, seed, p_215737_2_);
-        });
+                new LazyAreaLayerContext(25, seed, p_215737_2_));
         Layer genlayer = new Layer(immutablelist.get(0));
         Layer genlayer1 = new Layer(immutablelist.get(1));
         Layer genlayer2 = new Layer(immutablelist.get(2));

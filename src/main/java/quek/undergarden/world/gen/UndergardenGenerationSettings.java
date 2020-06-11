@@ -16,6 +16,6 @@ public class UndergardenGenerationSettings extends GenerationSettings {
     }
 
     public int getBedrockRoofHeight() {
-        return 127;
+        return 255;
     }
 }

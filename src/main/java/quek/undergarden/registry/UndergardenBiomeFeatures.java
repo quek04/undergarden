@@ -57,23 +57,23 @@ public class UndergardenBiomeFeatures {
     public static final BlockClusterFeatureConfig VEIL_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VEIL_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig INK_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(INK_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig BLOOD_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BLOOD_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
-    public static final BlockClusterFeatureConfig TALL_DEEPTURF_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(TALL_DEEPTURF), new SimpleBlockPlacer())).tries(256).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
-    public static final BlockClusterFeatureConfig TALL_ASHEN_DEEPTURF_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(TALL_ASHEN_DEEPTURF), new SimpleBlockPlacer())).tries(256).whitelist(ImmutableSet.of(UndergardenBlocks.ashen_deepturf.get())).func_227317_b_().build();
-    public static final BlockClusterFeatureConfig DOUBLE_DEEPTURF_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_DEEPTURF), new DoublePlantBlockPlacer()).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
-    public static final BlockClusterFeatureConfig SHIMMERWEED_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(SHIMMERWEED), new SimpleBlockPlacer()).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
-    public static final BlockClusterFeatureConfig DOUBLE_SHIMMERWEED_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_SHIMMERWEED), new DoublePlantBlockPlacer()).tries(64).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
-    public static final BlockClusterFeatureConfig DITCHBULB_PLANT_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DITCHBULB_PLANT), new SimpleBlockPlacer()).tries(32).whitelist(ImmutableSet.of(UndergardenBlocks.depthrock.get())).func_227317_b_().build());
-    public static final BlockClusterFeatureConfig PEBBLE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DEPTHROCK_PEBBLES), new SimpleBlockPlacer()).tries(64).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get(), UndergardenBlocks.deepsoil.get(), UndergardenBlocks.ashen_deepturf.get(), UndergardenBlocks.depthrock.get())).func_227317_b_().build());
+    public static final BlockClusterFeatureConfig TALL_DEEPTURF_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(TALL_DEEPTURF), new SimpleBlockPlacer())).tries(512).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
+    public static final BlockClusterFeatureConfig TALL_ASHEN_DEEPTURF_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(TALL_ASHEN_DEEPTURF), new SimpleBlockPlacer())).tries(512).whitelist(ImmutableSet.of(UndergardenBlocks.ashen_deepturf.get())).func_227317_b_().build();
+    public static final BlockClusterFeatureConfig DOUBLE_DEEPTURF_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_DEEPTURF), new DoublePlantBlockPlacer()).tries(256).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
+    public static final BlockClusterFeatureConfig SHIMMERWEED_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(SHIMMERWEED), new SimpleBlockPlacer()).tries(256).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
+    public static final BlockClusterFeatureConfig DOUBLE_SHIMMERWEED_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_SHIMMERWEED), new DoublePlantBlockPlacer()).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build());
+    public static final BlockClusterFeatureConfig DITCHBULB_PLANT_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DITCHBULB_PLANT), new SimpleBlockPlacer()).tries(64).whitelist(ImmutableSet.of(UndergardenBlocks.depthrock.get())).func_227317_b_().build());
+    public static final BlockClusterFeatureConfig PEBBLE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DEPTHROCK_PEBBLES), new SimpleBlockPlacer()).tries(256).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get(), UndergardenBlocks.deepsoil.get(), UndergardenBlocks.ashen_deepturf.get(), UndergardenBlocks.depthrock.get())).func_227317_b_().build());
     public static final BlockClusterFeatureConfig BEAN_BUSH_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BEAN_BUSH), new SimpleBlockPlacer())).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
     public static final BlockClusterFeatureConfig BLISTERBERRY_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(BLISTERBERRY_BUSH), new SimpleBlockPlacer())).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.ashen_deepturf.get())).func_227317_b_().build();
-    public static final BlockClusterFeatureConfig GLOOMGOURD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(GLOOMGOURD), new SimpleBlockPlacer())).tries(64).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
+    public static final BlockClusterFeatureConfig GLOOMGOURD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(GLOOMGOURD), new SimpleBlockPlacer())).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
 
     public static final LiquidsConfig UNDERGARDEN_SPRING_CONFIG = new LiquidsConfig(Fluids.WATER.getDefaultState(), false, 4, 1, ImmutableSet.of(UndergardenBlocks.depthrock.get(), UndergardenBlocks.deepsoil.get()));
     public static final LiquidsConfig UTHERIC_SPRING_CONFIG = new LiquidsConfig(Fluids.LAVA.getDefaultState(), false, 4, 1, ImmutableSet.of(UndergardenBlocks.depthrock.get()));
 
     public static void addNormalStuff(Biome biome) {
         biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 127))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 255))));
         addOres(biome);
         addBlockVariants(biome);
         addSediment(biome);
@@ -101,8 +101,8 @@ public class UndergardenBiomeFeatures {
     }
 
     public static void addUnderwaterPlants(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.GLOWING_KELP.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(100))));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SIMPLE_BLOCK.withConfiguration(new BlockWithContextConfig(GLOWING_SEAGRASS, new BlockState[]{UndergardenBlocks.depthrock.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState()}, new BlockState[]{Blocks.WATER.getDefaultState()}, new BlockState[]{Blocks.WATER.getDefaultState()})).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(500))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.GLOWING_KELP.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SIMPLE_BLOCK.withConfiguration(new BlockWithContextConfig(GLOWING_SEAGRASS, new BlockState[]{UndergardenBlocks.depthrock.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState()}, new BlockState[]{Blocks.WATER.getDefaultState()}, new BlockState[]{Blocks.WATER.getDefaultState()})).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
     }
 
     public static void addDoubleDeepturf(Biome biome) {
@@ -121,17 +121,17 @@ public class UndergardenBiomeFeatures {
     }
 
     public static void addTrees(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(5, 10))));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(10, 5))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(5, 100))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(10, 50))));
     }
 
     public static void addForestSmogstemTrees(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(300, 300))));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.FANCY_SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(5, 50))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(300, 500))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.FANCY_SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(5, 100))));
     }
 
     public static void addForestWigglewoodTrees(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(300, 300))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(300, 500))));
     }
 
     public static void addDenseForestTrees(Biome biome) {
@@ -141,15 +141,15 @@ public class UndergardenBiomeFeatures {
     }
 
     public static void addOres(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, UG_COAL_ORE, 17)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(20, 0, 0, 128))));
-        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, CLOGGRUM_ORE, 5)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(15, 0, 0, 96))));
-        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, FROSTSTEEL_ORE, 4)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(3, 0, 0, 32))));
-        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, UTHERIUM_ORE, 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 64))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, UG_COAL_ORE, 17)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(20, 0, 0, 256))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, CLOGGRUM_ORE, 5)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(15, 0, 0, 128))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, FROSTSTEEL_ORE, 4)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(3, 0, 0, 64))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, UTHERIUM_ORE, 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 32))));
     }
 
     public static void addBlockVariants(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, DEEPSOIL, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 128))));
-        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, SHIVERSTONE, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 64))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, DEEPSOIL, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 256))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, SHIVERSTONE, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 256))));
     }
 
     public static void addSediment(Biome biome) {

@@ -23,8 +23,8 @@ public class SmogstemForestBiome extends UndergardenBiome {
         super(new DefaultSurfaceBuilder(SurfaceBuilderConfig::deserialize),
                 new SurfaceBuilderConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.FOREST,
-                0.125F,
-                0.010F,
+                0.1F,
+                0.2F,
                 0.8F
         );
     }

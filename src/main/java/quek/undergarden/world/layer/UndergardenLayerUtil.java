@@ -1,4 +1,4 @@
-package quek.undergarden.utils;
+package quek.undergarden.world.layer;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.util.registry.Registry;

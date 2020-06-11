@@ -26,12 +26,12 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
     private final OctavesNoiseGenerator depthNoise;
 
     public UndergardenChunkGenerator(World world, BiomeProvider provider, UndergardenGenerationSettings generationSettings) {
-        super(world, provider, 8, 4, 128, generationSettings, false);
+        super(world, provider, 8, 8, 256, generationSettings, false);
         this.depthNoise = new OctavesNoiseGenerator(this.randomSeed, 15, 0);
     }
 
     protected void fillNoiseColumn(double[] noiseColumn, int noiseX, int noiseZ) {
-        this.calcNoiseColumn(noiseColumn, noiseX, noiseZ, 684.412D, 2053.236D, 8.555150000000001D, 34.2206D, 3, -10);
+        this.calcNoiseColumn(noiseColumn, noiseX, noiseZ, 684.412F, 684.412F, 8.555149841308594D, 4.277574920654297D, 3, -10);
     }
 
     protected double[] getBiomeNoiseColumn(int noiseX, int noiseZ) {
@@ -46,16 +46,16 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
         for(int k = -2; k <= 2; ++k) {
             for(int l = -2; l <= 2; ++l) {
                 Biome biome = this.biomeProvider.getNoiseBiome(noiseX + k, j, noiseZ + l);
-                float f4 = biome.getDepth();
-                float f5 = biome.getScale();
+                float depth = biome.getDepth();
+                float scale = biome.getScale();
 
-                float f6 = field_222576_h[k + 2 + (l + 2) * 5] / (f4 + 2.0F);
+                float f6 = field_222576_h[k + 2 + (l + 2) * 5] / (depth + 2.0F);
                 if (biome.getDepth() > f3) {
                     f6 /= 2.0F;
                 }
 
-                f += f5 * f6;
-                f1 += f4 * f6;
+                f += scale * f6;
+                f1 += depth * f6;
                 f2 += f6;
             }
         }
@@ -132,7 +132,7 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
     }
 
     public int getMaxHeight() {
-        return 128;
+        return 256;
     }
 
     public int getSeaLevel() {

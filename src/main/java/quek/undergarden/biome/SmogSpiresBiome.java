@@ -20,8 +20,8 @@ public class SmogSpiresBiome extends UndergardenBiome {
         super(new DefaultSurfaceBuilder(SurfaceBuilderConfig::deserialize),
                 new SurfaceBuilderConfig(UndergardenBlocks.ashen_deepturf.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.NONE,
-                0.225F,
-                0.010F,
+                0.125F,
+                0.05F,
                 2F
         );
     }

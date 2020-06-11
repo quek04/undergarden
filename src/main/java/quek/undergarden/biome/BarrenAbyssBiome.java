@@ -25,8 +25,8 @@ public class BarrenAbyssBiome extends UndergardenBiome {
         super(new DefaultSurfaceBuilder(SurfaceBuilderConfig::deserialize),
                 new SurfaceBuilderConfig(UndergardenBlocks.depthrock.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.PLAINS,
-                0.125F,
-                0.05F,
+                0.3625F,
+                1.225F,
                 0.8F
         );
     }
@@ -38,7 +38,7 @@ public class BarrenAbyssBiome extends UndergardenBiome {
         UndergardenBiomeFeatures.addUnderwaterPlants(this);
         UndergardenBiomeFeatures.addBlockVariants(this);
         UndergardenBiomeFeatures.addSediment(this);
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UTHERIC_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 256))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UTHERIC_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 255))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(UndergardenBiomeFeatures.DITCHBULB_PLANT_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(10))));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTWALKER.get(), 50, 4, 8));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTBEAST.get(), 25, 2, 4));

@@ -19,7 +19,7 @@ import java.util.function.Function;
 public class UndergardenCaveWorldCarver extends CaveWorldCarver {
 
     public UndergardenCaveWorldCarver(Function<Dynamic<?>, ? extends ProbabilityConfig> p_i49929_1_) {
-        super(p_i49929_1_, 128);
+        super(p_i49929_1_, 256);
         this.carvableBlocks = ImmutableSet.of(
                 UndergardenBlocks.depthrock.get(),
                 UndergardenBlocks.deepturf_block.get(),

@@ -3,7 +3,6 @@ package quek.undergarden.world.layer;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer0;
 import quek.undergarden.registry.UndergardenBiomes;
-import quek.undergarden.utils.UndergardenLayerUtil;
 import quek.undergarden.utils.misc.LazyInt;
 
 public class UndergardenBiomeLayer implements IAreaTransformer0 {
@@ -12,16 +11,15 @@ public class UndergardenBiomeLayer implements IAreaTransformer0 {
 
 	protected LazyInt[] commonBiomes = new LazyInt[] {
 			UndergardenLayerUtil.lazyId(UndergardenBiomes.FORGOTTEN_FIELD),
-			UndergardenLayerUtil.lazyId(UndergardenBiomes.SMOG_SPIRES)
-	};
-	protected LazyInt[] uncommonBiomes = (new LazyInt[] {
 			UndergardenLayerUtil.lazyId(UndergardenBiomes.SMOGSTEM_FOREST),
 			UndergardenLayerUtil.lazyId(UndergardenBiomes.WIGGLEWOOD_FOREST)
-
+	};
+	protected LazyInt[] uncommonBiomes = (new LazyInt[] {
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.SMOG_SPIRES),
+			UndergardenLayerUtil.lazyId(UndergardenBiomes.DENSE_FOREST)
 	});
 	protected LazyInt[] rareBiomes = (new LazyInt[] {
 			UndergardenLayerUtil.lazyId(UndergardenBiomes.BARREN_ABYSS),
-			UndergardenLayerUtil.lazyId(UndergardenBiomes.DENSE_FOREST)
 	});
 
 	public UndergardenBiomeLayer() {
