@@ -9,14 +9,14 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
-import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
+import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.registry.UndergardenItemGroups;
 
-public class RottenBlisterberryItem extends Item {
+public class BlisterbombItem extends Item {
 
-    public RottenBlisterberryItem() {
+    public BlisterbombItem() {
         super(new Properties()
-                .maxStackSize(16)
+                .maxStackSize(8)
                 .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
         );
     }
@@ -25,12 +25,12 @@ public class RottenBlisterberryItem extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-        playerIn.getCooldownTracker().setCooldown(this, 30);
+        playerIn.getCooldownTracker().setCooldown(this, 50);
         if (!worldIn.isRemote) {
-            RottenBlisterberryEntity berry = new RottenBlisterberryEntity(worldIn, playerIn);
-            berry.setItem(itemstack);
-            berry.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
-            worldIn.addEntity(berry);
+            BlisterbombEntity blisterbomb = new BlisterbombEntity(worldIn, playerIn);
+            blisterbomb.setItem(itemstack);
+            blisterbomb.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            worldIn.addEntity(blisterbomb);
         }
 
         playerIn.addStat(Stats.ITEM_USED.get(this));

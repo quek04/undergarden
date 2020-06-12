@@ -114,6 +114,8 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.ditchbulb, "Ditchbulb");
         addItem(UndergardenItems.brute_tusk, "Brute Tusk");
         addItem(UndergardenItems.goo_ball, "Scintling Goo Ball");
+        addItem(UndergardenItems.rotten_blisterberry, "Rotten Blisterberry");
+        addItem(UndergardenItems.blisterbomb, "Blisterbomb");
 
         addItem(UndergardenItems.masticator_scales, "Masticator Scales");
         addItem(UndergardenItems.masticated_shield, "Masticated Shield");

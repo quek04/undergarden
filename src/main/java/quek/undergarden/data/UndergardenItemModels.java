@@ -93,6 +93,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.brute_tusk);
         normalItem(UndergardenItems.glowing_kelp);
         normalItem(UndergardenItems.goo_ball);
+        normalItem(UndergardenItems.rotten_blisterberry);
+        normalItem(UndergardenItems.blisterbomb);
 
         toolItem(UndergardenItems.smogstem_sword);
         toolItem(UndergardenItems.smogstem_pickaxe);

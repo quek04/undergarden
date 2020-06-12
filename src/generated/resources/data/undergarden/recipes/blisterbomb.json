@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "T": {
+      "item": "undergarden:twistytwig"
+    },
+    "B": {
+      "item": "undergarden:rotten_blisterberry"
+    }
+  },
+  "result": {
+    "item": "undergarden:blisterbomb"
+  }
+}

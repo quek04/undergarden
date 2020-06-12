@@ -7,6 +7,7 @@ import net.minecraft.client.audio.MusicTicker;
 import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.BlockColors;
@@ -48,7 +49,6 @@ public class ClientStuff {
     }
 
     public static void registerBlockRenderers() {
-
         RenderType cutout = RenderType.getCutout();
         RenderType mipped = RenderType.getCutoutMipped();
         RenderType translucent = RenderType.getTranslucent();
@@ -83,8 +83,12 @@ public class ClientStuff {
     }
 
     public static void registerEntityRenderers() {
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.slingshot_ammo, entity -> new SpriteRenderer<>(entity, Minecraft.getInstance().getItemRenderer()));
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.goo_ball, entity -> new SpriteRenderer<>(entity, Minecraft.getInstance().getItemRenderer()));
+        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.slingshot_ammo, entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.goo_ball, entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotten_blisterberry, entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.blisterbomb, entity -> new SpriteRenderer<>(entity, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotwalker, RotwalkerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotbeast, RotbeastRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.dweller, DwellerRender::new);

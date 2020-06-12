@@ -65,6 +65,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
                 .build(consumer);
 
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.blisterbomb.get())
+                .patternLine(" T ")
+                .patternLine("BBB")
+                .patternLine("BBB")
+                .key('T', UndergardenItems.twistytwig.get())
+                .key('B', UndergardenItems.rotten_blisterberry.get())
+                .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
+                .addCriterion("has_blisterberry", hasItem(UndergardenItems.rotten_blisterberry.get()))
+                .build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.masticated_shield.get())
                 .patternLine("MCM")
                 .patternLine("MMM")

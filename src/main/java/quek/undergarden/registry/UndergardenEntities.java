@@ -22,6 +22,10 @@ public class UndergardenEntities {
             .size(0.25F, 0.25F).build("slingshot_ammo");
     public static final EntityType<GooBallEntity> goo_ball = EntityType.Builder.<GooBallEntity>create(GooBallEntity::new, EntityClassification.MISC)
             .size(0.25F, 0.25F).build("goo_ball");
+    public static final EntityType<RottenBlisterberryEntity> rotten_blisterberry = EntityType.Builder.<RottenBlisterberryEntity>create(RottenBlisterberryEntity::new, EntityClassification.MISC)
+            .size(0.25F, 0.25F).build("rotten_blisterberry");
+    public static final EntityType<BlisterbombEntity> blisterbomb = EntityType.Builder.<BlisterbombEntity>create(BlisterbombEntity::new, EntityClassification.MISC)
+            .size(0.5F, 0.5F).build("blisterbomb");
 
     public static final EntityType<RotwalkerEntity> rotwalker = EntityType.Builder.create(RotwalkerEntity::new, EntityClassification.MONSTER)
             .size(0.8f,2.5f).build("rotwalker");
@@ -44,6 +48,8 @@ public class UndergardenEntities {
 
     public static final RegistryObject<EntityType<SlingshotAmmoEntity>> SLINGSHOT_AMMO = ENTITIES.register("slingshot_ammo", () -> slingshot_ammo);
     public static final RegistryObject<EntityType<GooBallEntity>> GOO_BALL = ENTITIES.register("goo_ball", () -> goo_ball);
+    public static final RegistryObject<EntityType<RottenBlisterberryEntity>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> rotten_blisterberry);
+    public static final RegistryObject<EntityType<BlisterbombEntity>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> blisterbomb);
 
     public static final RegistryObject<EntityType<RotwalkerEntity>> ROTWALKER = ENTITIES.register("rotwalker", () -> rotwalker);
     public static final RegistryObject<EntityType<RotbeastEntity>> ROTBEAST = ENTITIES.register("rotbeast", () -> rotbeast);

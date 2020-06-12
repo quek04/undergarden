@@ -121,13 +121,15 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
 
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult p_225533_6_) {
-        int i = state.get(AGE);
-        boolean flag = i == 3;
+        int age = state.get(AGE);
+        boolean flag = age == 3;
         if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
             return ActionResultType.PASS;
-        } else if (i > 1) {
-            int j = 1 + worldIn.rand.nextInt(2);
-            spawnAsEntity(worldIn, pos, new ItemStack(UndergardenItems.blisterberry.get(), j + (flag ? 1 : 0)));
+        } else if (age > 1) {
+            int random = 1 + worldIn.rand.nextInt(2);
+            int random2 = worldIn.rand.nextInt(2);
+            spawnAsEntity(worldIn, pos, new ItemStack(UndergardenItems.blisterberry.get(), random + (flag ? 1 : 0)));
+            spawnAsEntity(worldIn, pos, new ItemStack(UndergardenItems.rotten_blisterberry.get(), random2 + (flag ? 1 : 0)));
             worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
             worldIn.setBlockState(pos, state.with(AGE, 1), 2);
             return ActionResultType.SUCCESS;
