@@ -23,6 +23,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
+import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenItems;
@@ -106,7 +107,8 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (entityIn instanceof LivingEntity && entityIn.getType() != UndergardenEntities.scintling) {
+        LivingEntity living = (LivingEntity)entityIn;
+        if (living != null && entityIn.getType() != UndergardenEntities.scintling || living.getCreatureAttribute() != UndergardenMod.ROTSPAWN) {
             entityIn.setMotionMultiplier(state, new Vec3d(0.8F, 0.75D, 0.8F));
             if (!worldIn.isRemote && state.get(AGE) > 0 && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
                 double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);

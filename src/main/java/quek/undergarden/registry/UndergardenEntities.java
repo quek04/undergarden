@@ -41,10 +41,13 @@ public class UndergardenEntities {
             .size(.5F, .5F).build("skiz_swarmer");
     public static final EntityType<BruteEntity> brute = EntityType.Builder.create(BruteEntity::new, EntityClassification.CREATURE)
             .size(1, 2).build("brute");
-    public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
-            .size(2.5F, 4).build("masticator");
     public static final EntityType<ScintlingEntity> scintling = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
             .size(1, .5F).build("scintling");
+    public static final EntityType<BlisterbomberEntity> blisterbomber = EntityType.Builder.create(BlisterbomberEntity::new, EntityClassification.MONSTER)
+            .size(1F, 2.5F).build("blisterbomber");
+    public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
+            .size(2.5F, 4).build("masticator");
+
 
     public static final RegistryObject<EntityType<SlingshotAmmoEntity>> SLINGSHOT_AMMO = ENTITIES.register("slingshot_ammo", () -> slingshot_ammo);
     public static final RegistryObject<EntityType<GooBallEntity>> GOO_BALL = ENTITIES.register("goo_ball", () -> goo_ball);
@@ -59,6 +62,7 @@ public class UndergardenEntities {
     public static final RegistryObject<EntityType<SkizSwarmerEntity>> SKIZ_SWARMER = ENTITIES.register("skiz_swarmer", () -> skiz_swarmer);
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> brute);
     public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> scintling);
+    public static final RegistryObject<EntityType<BlisterbomberEntity>> BLISTERBOMBER = ENTITIES.register("blisterbomber", () -> blisterbomber);
 
     //bosses
     public static final RegistryObject<EntityType<MasticatorEntity>> MASTICATOR = ENTITIES.register("masticator", () -> masticator);
@@ -70,5 +74,6 @@ public class UndergardenEntities {
         EntitySpawnPlacementRegistry.register(ROTBEAST.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::canMonsterSpawnInLight);
         EntitySpawnPlacementRegistry.register(BRUTE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BruteEntity::canBruteSpawn);
         EntitySpawnPlacementRegistry.register(SCINTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
+        EntitySpawnPlacementRegistry.register(BLISTERBOMBER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BlisterbomberEntity::canBlisterbomberSpawn);
     }
 }

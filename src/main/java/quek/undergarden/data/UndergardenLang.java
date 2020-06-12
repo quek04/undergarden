@@ -173,12 +173,16 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.rotbeast_spawn_egg, "Rotbeast Spawn Egg");
         addItem(UndergardenItems.brute_spawn_egg, "Brute Spawn Egg");
         addItem(UndergardenItems.scintling_spawn_egg, "Scintling Spawn Egg");
+        addItem(UndergardenItems.blisterbomber_spawn_egg, "Blisterbomber Spawn Egg");
 
         addItem(UndergardenItems.masticator_spawn_egg, "Masticator Spawn Egg");
 
         addBiome(UndergardenBiomes.FORGOTTEN_FIELD, "Forgotten Field");
         addBiome(UndergardenBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
         addBiome(UndergardenBiomes.BARREN_ABYSS, "Barren Abyss");
+        addBiome(UndergardenBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
+        addBiome(UndergardenBiomes.DENSE_FOREST, "Dense Forest");
+        addBiome(UndergardenBiomes.SMOG_SPIRES, "Smog Spires");
 
         addEntityType(UndergardenEntities.DWELLER, "Dweller");
         addEntityType(UndergardenEntities.ROTDWELLER, "Rotdweller");
@@ -188,6 +192,7 @@ public class UndergardenLang extends LanguageProvider {
         addEntityType(UndergardenEntities.SKIZ_SWARMER, "Skiz Swarmer");
         addEntityType(UndergardenEntities.BRUTE, "Brute");
         addEntityType(UndergardenEntities.SCINTLING, "Scintling");
+        addEntityType(UndergardenEntities.BLISTERBOMBER, "Blisterbomber");
 
         addEntityType(UndergardenEntities.MASTICATOR, "Masticator");
 
