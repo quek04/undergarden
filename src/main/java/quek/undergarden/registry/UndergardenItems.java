@@ -38,6 +38,7 @@ public class UndergardenItems {
     public static final RegistryObject<Item> goo_ball = ITEMS.register("goo_ball", GooBallItem::new);
     public static final RegistryObject<Item> rotten_blisterberry = ITEMS.register("rotten_blisterberry", RottenBlisterberryItem::new);
     public static final RegistryObject<Item> blisterbomb = ITEMS.register("blisterbomb", BlisterbombItem::new);
+    public static final RegistryObject<Item> wigglewood_scaffolding = ITEMS.register("wigglewood_scaffolding", WigglewoodScaffoldingItem::new);
 
     //boss loot
     public static final RegistryObject<Item> masticator_scales = ITEMS.register("masticator_scales", () -> new UndergardenItem(Rarity.UNCOMMON));

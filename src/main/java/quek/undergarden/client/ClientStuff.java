@@ -80,6 +80,7 @@ public class ClientStuff {
         render(UndergardenBlocks.wigglewood_trapdoor, cutout);
         render(UndergardenBlocks.ashen_tall_deepturf, cutout);
         render(UndergardenBlocks.blisterberry_bush, cutout);
+        render(UndergardenBlocks.wigglewood_scaffolding, cutout);
     }
 
     public static void registerEntityRenderers() {

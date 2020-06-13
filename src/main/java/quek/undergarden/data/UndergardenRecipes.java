@@ -29,7 +29,24 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeBricks(UndergardenBlocks.depthrock_bricks, UndergardenBlocks.depthrock).build(consumer);
 
         makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
-        makeSticks(UndergardenItems.twistytwig, UndergardenBlocks.wigglewood_planks).build(consumer);
+        //makeSticks(UndergardenItems.twistytwig, UndergardenTags.Items.WIGGLEWOOD_PLANKS).build(consumer, name("twistytwig"));
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.twistytwig.get(), 4)
+                .patternLine("P ")
+                .patternLine(" P")
+                .key('P', UndergardenBlocks.wigglewood_planks.get())
+                .addCriterion("has_wigglewood_planks", hasItem(UndergardenBlocks.wigglewood_planks.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.wigglewood_scaffolding.get(), 6)
+                .patternLine("TST")
+                .patternLine("T T")
+                .patternLine("T T")
+                .key('T', UndergardenItems.twistytwig.get())
+                .key('S', UndergardenItems.smogstem_stick.get())
+                .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
+                .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
+                .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.gloom_o_lantern.get())
                 .patternLine("G")

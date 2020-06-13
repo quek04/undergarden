@@ -71,6 +71,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.utherium_block, "Utherium Block");
         addBlock(UndergardenBlocks.gloom_o_lantern, "Gloom o'Lantern");
         addBlock(UndergardenBlocks.cloggrum_bars, "Cloggrum Bars");
+        addBlock(UndergardenBlocks.wigglewood_scaffolding, "Wigglewood Scaffolding");
 
         addBlock(UndergardenBlocks.depthrock_stairs, "Depthrock Stairs");
         addBlock(UndergardenBlocks.cobbled_depthrock_stairs, "Cobbled Depthrock Stairs");

@@ -92,6 +92,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> smogstem_wall_torch = BLOCKS.register("smogstem_wall_torch", UndergardenWallTorchBlock::new);
     public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(15));
     public static final RegistryObject<Block> cloggrum_bars = registerBlock("cloggrum_bars", CloggrumBarsBlock::new);
+    public static final RegistryObject<Block> wigglewood_scaffolding = BLOCKS.register("wigglewood_scaffolding", WigglewoodScaffoldingBlock::new);
 
     public static final RegistryObject<StairsBlock> depthrock_stairs = registerBlock("depthrock_stairs", () -> new UndergardenStairsBlock(depthrock));
     public static final RegistryObject<StairsBlock> cobbled_depthrock_stairs = registerBlock("cobbled_depthrock_stairs", () -> new UndergardenStairsBlock(cobbled_depthrock));
