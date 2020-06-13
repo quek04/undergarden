@@ -102,4 +102,9 @@ public class RotwalkerEntity extends MonsterEntity {
         this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
     }
 
+    @Override
+    protected float getSoundVolume() {
+        return 0.5f;
+    }
+
 }

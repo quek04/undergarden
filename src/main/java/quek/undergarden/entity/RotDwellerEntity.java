@@ -116,6 +116,11 @@ public class RotDwellerEntity extends MonsterEntity {
         this.playSound(SoundEvents.ENTITY_COW_STEP, 0.15F, 0.5F);
     }
 
+    @Override
+    protected float getSoundVolume() {
+        return 0.5f;
+    }
+
     public static class GroupData implements ILivingEntityData {
         public final boolean isChild;
 
