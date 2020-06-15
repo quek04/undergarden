@@ -37,12 +37,12 @@ public class ScintlingEntity extends AnimalEntity {
     @Override
     protected void registerAttributes() {
         super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(5D);
+        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(2D);
         this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.20D);
     }
 
     public static boolean canScintlingSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.ashen_deepturf.get() && worldIn.getLightSubtracted(pos, 0) > 0;
+        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.ashen_deepturf.get();
     }
 
     public void livingTick() {

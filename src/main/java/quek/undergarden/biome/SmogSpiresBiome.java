@@ -33,7 +33,6 @@ public class SmogSpiresBiome extends UndergardenBiome {
         UndergardenBiomeFeatures.addUnderwaterPlants(this);
         UndergardenBiomeFeatures.addBlockVariants(this);
         UndergardenBiomeFeatures.addSediment(this);
-        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 100, 15, 30));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(UndergardenEntities.SCINTLING.get(), 50, 1, 10));
         this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(UndergardenEntities.GWIBLING.get(), 20, 5, 10));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTWALKER.get(), 10, 2, 4));

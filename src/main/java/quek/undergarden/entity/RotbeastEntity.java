@@ -56,8 +56,8 @@ public class RotbeastEntity extends MonsterEntity {
         return UndergardenMod.ROTSPAWN;
     }
 
-    public static boolean canRotbeastSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL && worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get() && worldIn.getLightValue(pos) <= 3;
+    public static boolean canRotbeastSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
+        return worldIn.getDifficulty() != Difficulty.PEACEFUL && canSpawnOn(type, worldIn, reason, pos, randomIn) && randomIn.nextInt(20) == 0;
     }
 
     @Override

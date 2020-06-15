@@ -107,8 +107,8 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        LivingEntity living = (LivingEntity)entityIn;
-        if (living != null && entityIn.getType() != UndergardenEntities.scintling || living.getCreatureAttribute() != UndergardenMod.ROTSPAWN) {
+        //LivingEntity living = (LivingEntity)entityIn;
+        if (entityIn != null && entityIn.getType() != UndergardenEntities.scintling) {
             entityIn.setMotionMultiplier(state, new Vec3d(0.8F, 0.75D, 0.8F));
             if (!worldIn.isRemote && state.get(AGE) > 0 && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
                 double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
