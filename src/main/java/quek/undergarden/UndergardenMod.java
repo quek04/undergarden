@@ -116,9 +116,5 @@ public class UndergardenMod {
 		@ObjectHolder("undergarden:undergarden_cave")
 		public static UndergardenCaveWorldCarver UNDERGARDEN_CAVE;
 
-		@SubscribeEvent
-		public static void registerFeatures(final RegistryEvent.Register<Feature<?>> event) {
-			Registry.register(Registry.STRUCTURE_PIECE, "depthrock_ruin_piece", UndergardenFeatures.DEPTHROCK_RUIN_TYPE);
-		}
 	}
 }

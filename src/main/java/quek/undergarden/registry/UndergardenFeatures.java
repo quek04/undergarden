@@ -10,8 +10,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.world.gen.feature.*;
-import quek.undergarden.world.gen.structure.*;
-import quek.undergarden.world.gen.structure.piece.*;
 
 public class UndergardenFeatures {
 
@@ -30,11 +28,10 @@ public class UndergardenFeatures {
             "glowing_kelp", () -> new GlowingKelpFeature(NoFeatureConfig::deserialize));
     public static final RegistryObject<Feature<NoFeatureConfig>> SMOG_VENT = FEATURES.register(
             "smog_vent", () -> new SmogVentFeature(NoFeatureConfig::deserialize));
+    public static final RegistryObject<Feature<NoFeatureConfig>> ENIGMATIC_STATUE = FEATURES.register(
+            "enigmatic_statue", () -> new EnigmaticStatueFeature(NoFeatureConfig::deserialize));
 
     //structures
-    public static IStructurePieceType DEPTHROCK_RUIN_TYPE = DepthrockRuinPieces.Piece::new;
 
-    public static final RegistryObject<Structure<NoFeatureConfig>> DEPTHROCK_RUIN = FEATURES.register(
-            "depthrock_ruin", DepthrockRuinStructure::new);
 
 }
