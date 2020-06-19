@@ -81,6 +81,7 @@ public class ClientStuff {
         render(UndergardenBlocks.ashen_tall_deepturf, cutout);
         render(UndergardenBlocks.blisterberry_bush, cutout);
         render(UndergardenBlocks.wigglewood_scaffolding, cutout);
+        render(UndergardenBlocks.droopweed, cutout);
     }
 
     public static void registerEntityRenderers() {

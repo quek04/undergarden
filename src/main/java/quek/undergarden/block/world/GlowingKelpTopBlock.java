@@ -35,7 +35,7 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
                 .sound(SoundType.WET_GRASS)
                 .lightValue(5)
         );
-        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
 
     @Override
@@ -88,14 +88,14 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
     @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (!stateIn.isValidPosition(worldIn, currentPos)) {
-            if (facing == Direction.DOWN) {
+            if (facing == Direction.UP) {
                 return Blocks.AIR.getDefaultState();
             }
 
             worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 1);
         }
 
-        if (facing == Direction.UP && facingState.getBlock() == this) {
+        if (facing == Direction.DOWN && facingState.getBlock() == this) {
             return UndergardenBlocks.glowing_kelp_plant.get().getDefaultState();
         } else {
             worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));

@@ -74,6 +74,7 @@ public class UndergardenBiomeFeatures {
     public static void addNormalStuff(Biome biome) {
         biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 255))));
+        //biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.DROOPWEED.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
         addOres(biome);
         addBlockVariants(biome);
         addSediment(biome);

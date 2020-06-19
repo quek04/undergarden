@@ -2,7 +2,6 @@ package quek.undergarden.world.gen.carver;
 
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.Dynamic;
-import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -45,12 +44,11 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
         int j = p_225555_3_.nextInt(p_225555_3_.nextInt(p_225555_3_.nextInt(this.func_222724_a()) + 1) + 1);
 
         for(int k = 0; k < j; ++k) {
-            double d0 = (double)(p_225555_5_ * 16 + p_225555_3_.nextInt(16));
-            double d1 = (double)this.generateCaveStartY(p_225555_3_);
-            double d2 = (double)(p_225555_6_ * 16 + p_225555_3_.nextInt(16));
+            double d0 = p_225555_5_ * 16 + p_225555_3_.nextInt(16);
+            double d1 = this.generateCaveStartY(p_225555_3_);
+            double d2 = p_225555_6_ * 16 + p_225555_3_.nextInt(16);
             int l = 1;
             if (p_225555_3_.nextInt(4) == 0) {
-                double d3 = 0.5D;
                 float f1 = 1.0F + p_225555_3_.nextFloat() * 6.0F;
                 this.func_227205_a_(p_225555_1_, p_225555_2_, p_225555_3_.nextLong(), p_225555_4_, p_225555_7_, p_225555_8_, d0, d1, d2, f1, 0.5D, p_225555_9_);
                 l += p_225555_3_.nextInt(4);
@@ -61,7 +59,6 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
                 float f3 = (p_225555_3_.nextFloat() - 0.5F) / 4.0F;
                 float f2 = this.generateCaveRadius(p_225555_3_);
                 int i1 = i - p_225555_3_.nextInt(i / 4);
-                int j1 = 0;
                 this.func_227206_a_(p_225555_1_, p_225555_2_, p_225555_3_.nextLong(), p_225555_4_, p_225555_7_, p_225555_8_, d0, d1, d2, f2, f, f3, 0, i1, this.func_222725_b(), p_225555_9_);
             }
         }
@@ -81,7 +78,7 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
             f *= rand.nextFloat() * rand.nextFloat() * 3.0F + 1.0F;
         }
 
-        return f;
+        return f * 3;
     }
 
     @Override
@@ -91,7 +88,7 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
 
     @Override
     protected int generateCaveStartY(Random p_222726_1_) {
-        return p_222726_1_.nextInt(p_222726_1_.nextInt(128) + 8);
+        return p_222726_1_.nextInt(p_222726_1_.nextInt(250) + 6);
     }
 
     @Override
@@ -113,9 +110,9 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
             double d0 = 1.5D + (double)(MathHelper.sin((float)Math.PI * (float)j / (float)p_227206_18_) * p_227206_14_);
             double d1 = d0 * p_227206_19_;
             float f2 = MathHelper.cos(p_227206_16_);
-            p_227206_8_ += (double)(MathHelper.cos(p_227206_15_) * f2);
-            p_227206_10_ += (double)MathHelper.sin(p_227206_16_);
-            p_227206_12_ += (double)(MathHelper.sin(p_227206_15_) * f2);
+            p_227206_8_ += MathHelper.cos(p_227206_15_) * f2;
+            p_227206_10_ += MathHelper.sin(p_227206_16_);
+            p_227206_12_ += MathHelper.sin(p_227206_15_) * f2;
             p_227206_16_ = p_227206_16_ * (flag ? 0.92F : 0.7F);
             p_227206_16_ = p_227206_16_ + f1 * 0.1F;
             p_227206_15_ += f * 0.1F;

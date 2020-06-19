@@ -3,8 +3,6 @@ package quek.undergarden.registry;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import net.minecraft.world.gen.feature.structure.IStructurePieceType;
-import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -30,6 +28,8 @@ public class UndergardenFeatures {
             "smog_vent", () -> new SmogVentFeature(NoFeatureConfig::deserialize));
     public static final RegistryObject<Feature<NoFeatureConfig>> ENIGMATIC_STATUE = FEATURES.register(
             "enigmatic_statue", () -> new EnigmaticStatueFeature(NoFeatureConfig::deserialize));
+    public static final RegistryObject<Feature<NoFeatureConfig>> DROOPWEED = FEATURES.register(
+            "droopweed", () -> new DroopweedFeature(NoFeatureConfig::deserialize));
 
     //structures
 

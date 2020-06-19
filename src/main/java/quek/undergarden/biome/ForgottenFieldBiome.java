@@ -25,15 +25,13 @@ public class ForgottenFieldBiome extends UndergardenBiome {
                 new SurfaceBuilderConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.PLAINS,
                 0.125F,
-                0.05F,
+                 0.05F,
                 0.8F
         );
     }
 
     @Override
     public void addFeatures() {
-        //this.addStructure(UndergardenFeatures.DEPTHROCK_RUIN.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
-        //this.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, UndergardenFeatures.DEPTHROCK_RUIN.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CARVING_MASK.configure(new CaveEdgeConfig(GenerationStage.Carving.AIR, 5))));
         UndergardenBiomeFeatures.addNormalStuff(this);
         UndergardenBiomeFeatures.addDoubleShimmerweed(this);
         UndergardenBiomeFeatures.addTrees(this);

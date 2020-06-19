@@ -59,6 +59,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.glowing_kelp, "Glitterkelp");
         addBlock(UndergardenBlocks.glowing_kelp_plant, "Glitterkelp");
         addBlock(UndergardenBlocks.glowing_sea_grass, "Glowing Seagrass");
+        addBlock(UndergardenBlocks.droopweed, "Droopweed");
 
         addBlock(UndergardenBlocks.coal_ore, "Coal Ore");
         addBlock(UndergardenBlocks.cloggrum_ore, "Cloggrum Ore");
