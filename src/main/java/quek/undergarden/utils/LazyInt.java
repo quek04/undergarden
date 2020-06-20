@@ -1,4 +1,4 @@
-package quek.undergarden.utils.misc;
+package quek.undergarden.utils;
 
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;

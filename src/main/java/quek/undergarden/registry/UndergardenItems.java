@@ -71,6 +71,9 @@ public class UndergardenItems {
     public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
     public static final RegistryObject<ShearsItem> cloggrum_shears = ITEMS.register("cloggrum_shears", CloggrumShearsItem::new);
 
+    public static final RegistryObject<BucketItem> virulent_mix_bucket = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(
+            UndergardenFluids.virulent_mix_source, (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_GEAR).maxStackSize(1)));
+
     //armors
     public static final RegistryObject<Item> cloggrum_helmet = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UndergardenArmorMaterials.CLOGGRUM, EquipmentSlotType.HEAD));
     public static final RegistryObject<Item> cloggrum_chestplate = ITEMS.register("cloggrum_chestplate", () -> new UndergardenArmorItem(UndergardenArmorMaterials.CLOGGRUM, EquipmentSlotType.CHEST));

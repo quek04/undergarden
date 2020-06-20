@@ -132,6 +132,9 @@ public class UndergardenBlocks {
     public static final RegistryObject<TrapDoorBlock> wigglewood_trapdoor = registerBlock("wigglewood_trapdoor", () -> new UndergardenTrapDoorBlock(
             Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
 
+    public static final RegistryObject<FlowingFluidBlock> virulent_mix = BLOCKS.register("virulent_mix", () -> new UndergardenFluidBlock(
+            UndergardenFluids.virulent_mix_source, Block.Properties.create(Material.WATER)));
+
 
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);

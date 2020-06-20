@@ -3,7 +3,7 @@ package quek.undergarden.world.layer;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer0;
 import quek.undergarden.registry.UndergardenBiomes;
-import quek.undergarden.utils.misc.LazyInt;
+import quek.undergarden.utils.LazyInt;
 
 public class UndergardenBiomeLayer implements IAreaTransformer0 {
 	private static final int UNCOMMON_BIOME_CHANCE = 8;

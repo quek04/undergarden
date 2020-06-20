@@ -14,9 +14,8 @@ import net.minecraft.world.gen.layer.ZoomLayer;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.event.lifecycle.FMLModIdMappingEvent;
-import quek.undergarden.utils.misc.LazyInt;
-import quek.undergarden.utils.misc.VoroniZoomLayer;
-import quek.undergarden.world.layer.UndergardenBiomeLayer;
+import quek.undergarden.utils.LazyInt;
+import quek.undergarden.utils.VoroniZoomLayer;
 
 import java.util.ArrayList;
 import java.util.List;

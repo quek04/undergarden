@@ -50,6 +50,9 @@ public class UndergardenBiomeFeatures {
     private static final BlockState UTHERIUM_ORE = UndergardenBlocks.utherium_ore.get().getDefaultState();
     private static final BlockState GLOWING_SEAGRASS = UndergardenBlocks.glowing_sea_grass.get().getDefaultState();
 
+    private static final BlockState WATER = Blocks.WATER.getDefaultState();
+    private static final BlockState VIRULENT = UndergardenBlocks.virulent_mix.get().getDefaultState();
+
     public static final TreeFeatureConfig SMOGSTEM_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(SMOGSTEM_LOG), new SimpleBlockStateProvider(SMOGSTEM_LEAVES), new BlobFoliagePlacer(2, 0))).baseHeight(9).heightRandA(3).foliageHeight(2).ignoreVines().setSapling(UndergardenBlocks.smogstem_sapling.get()).build();
     public static final TreeFeatureConfig WIGGLEWOOD_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(WIGGLEWOOD_LOG), new SimpleBlockStateProvider(WIGGLEWOOD_LEAVES), new PineFoliagePlacer(2, 0))).baseHeight(3).heightRandA(0).heightRandB(0).trunkHeight(1).ignoreVines().setSapling(UndergardenBlocks.wigglewood_sapling.get()).build();
 
@@ -69,11 +72,13 @@ public class UndergardenBiomeFeatures {
     public static final BlockClusterFeatureConfig GLOOMGOURD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(GLOOMGOURD), new SimpleBlockPlacer())).tries(128).whitelist(ImmutableSet.of(UndergardenBlocks.deepturf_block.get())).func_227317_b_().build();
 
     public static final LiquidsConfig UNDERGARDEN_SPRING_CONFIG = new LiquidsConfig(Fluids.WATER.getDefaultState(), false, 4, 1, ImmutableSet.of(UndergardenBlocks.depthrock.get(), UndergardenBlocks.deepsoil.get()));
-    public static final LiquidsConfig UTHERIC_SPRING_CONFIG = new LiquidsConfig(Fluids.LAVA.getDefaultState(), false, 4, 1, ImmutableSet.of(UndergardenBlocks.depthrock.get()));
+    public static final LiquidsConfig VIRULENT_SPRING_CONFIG = new LiquidsConfig(UndergardenFluids.virulent_mix_source.get().getDefaultState(), false, 4, 1, ImmutableSet.of(UndergardenBlocks.depthrock.get()));
 
     public static void addNormalStuff(Biome biome) {
         biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 255))));
+        //biome.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(WATER)).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(20))));
+        //biome.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(VIRULENT)).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(5))));
         //biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.DROOPWEED.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
         addOres(biome);
         addBlockVariants(biome);

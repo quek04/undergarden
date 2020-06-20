@@ -19,7 +19,7 @@ import net.minecraft.world.gen.layer.LayerUtil;
 import net.minecraft.world.gen.layer.ZoomLayer;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer1;
 import quek.undergarden.registry.UndergardenBiomes;
-import quek.undergarden.utils.misc.VoroniZoomLayer;
+import quek.undergarden.utils.VoroniZoomLayer;
 
 import javax.annotation.Nullable;
 import java.util.List;

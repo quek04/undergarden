@@ -1,4 +1,4 @@
-package quek.undergarden.utils.misc;
+package quek.undergarden.utils;
 
 import net.minecraft.world.gen.IExtendedNoiseRandom;
 import net.minecraft.world.gen.area.IArea;
