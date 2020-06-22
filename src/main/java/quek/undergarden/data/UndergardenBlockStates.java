@@ -45,6 +45,8 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         crossBlock(UndergardenBlocks.glowing_kelp);
         crossBlock(UndergardenBlocks.glowing_kelp_plant);
         normalBlock(UndergardenBlocks.shiverstone);
+        normalBlock(UndergardenBlocks.cobbled_shiverstone);
+        normalBlock(UndergardenBlocks.shiverstone_bricks);
         normalBlock(UndergardenBlocks.regalium_ore);
 
         normalBlock(UndergardenBlocks.cloggrum_block);
@@ -56,22 +58,30 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         stairs(UndergardenBlocks.depthrock_brick_stairs, "depthrock_bricks");
         stairs(UndergardenBlocks.smogstem_stairs, "smogstem_planks");
         stairs(UndergardenBlocks.wigglewood_stairs, "wigglewood_planks");
+        stairs(UndergardenBlocks.shiverstone_stairs, "shiverstone");
+        stairs(UndergardenBlocks.cobbled_shiverstone_stairs, "cobbled_shiverstone");
+        stairs(UndergardenBlocks.shiverstone_brick_stairs, "shiverstone_bricks");
 
         slab(UndergardenBlocks.depthrock_slab, UndergardenBlocks.depthrock);
         slab(UndergardenBlocks.cobbled_depthrock_slab, UndergardenBlocks.cobbled_depthrock);
         slab(UndergardenBlocks.depthrock_brick_slab, UndergardenBlocks.depthrock_bricks);
         slab(UndergardenBlocks.smogstem_slab, UndergardenBlocks.smogstem_planks);
         slab(UndergardenBlocks.wigglewood_slab, UndergardenBlocks.wigglewood_planks);
+        slab(UndergardenBlocks.shiverstone_slab, UndergardenBlocks.shiverstone);
+        slab(UndergardenBlocks.cobbled_shiverstone_slab, UndergardenBlocks.cobbled_shiverstone);
+        slab(UndergardenBlocks.shiverstone_brick_slab, UndergardenBlocks.shiverstone_bricks);
 
         wall(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
-        wallColumn(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
+        //wallColumn(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
         wall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
-        wallColumn(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
+        //wallColumn(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
+        wall(UndergardenBlocks.cobbled_shiverstone_wall, "cobbled_shiverstone");
+        wall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
 
         fence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
-        fenceColumn(UndergardenBlocks.smogstem_fence, "smogstem_planks");
+        //fenceColumn(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         fence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
-        fenceColumn(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
+        //fenceColumn(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
 
         door(UndergardenBlocks.smogstem_door, "smogstem");
         door(UndergardenBlocks.wigglewood_door, "wigglewood");

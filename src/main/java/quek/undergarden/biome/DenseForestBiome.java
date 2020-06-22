@@ -36,6 +36,7 @@ public class DenseForestBiome extends UndergardenBiome {
         UndergardenBiomeFeatures.addDoubleShimmerweed(this);
         UndergardenBiomeFeatures.addDenseForestTrees(this);
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 50, 10, 20));
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.GLOOMPER.get(), 50, 10, 20));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(UndergardenEntities.SCINTLING.get(), 50, 1, 10));
         this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(UndergardenEntities.GWIBLING.get(), 20, 5, 10));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTWALKER.get(), 20, 2, 4));

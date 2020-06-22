@@ -31,6 +31,8 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.depthrock_bricks, "Depthrock Bricks");
         addBlock(UndergardenBlocks.cracked_depthrock_bricks, "Cracked Depthrock Bricks");
         addBlock(UndergardenBlocks.shiverstone, "Shiverstone");
+        addBlock(UndergardenBlocks.cobbled_shiverstone, "Cobbled Shiverstone");
+        addBlock(UndergardenBlocks.shiverstone_bricks, "Shiverstone Bricks");
         addBlock(UndergardenBlocks.goo, "Scintling Goo");
         addBlock(UndergardenBlocks.smog_vent, "Smog Vent");
 
@@ -79,15 +81,23 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.depthrock_brick_stairs, "Depthrock Brick Stairs");
         addBlock(UndergardenBlocks.smogstem_stairs, "Smogstem Stairs");
         addBlock(UndergardenBlocks.wigglewood_stairs, "Wigglewood Stairs");
+        addBlock(UndergardenBlocks.shiverstone_stairs, "Shiverstone Stairs");
+        addBlock(UndergardenBlocks.cobbled_shiverstone_stairs, "Cobbled Shiverstone Stairs");
+        addBlock(UndergardenBlocks.shiverstone_brick_stairs, "Shiverstone Brick Stairs");
 
         addBlock(UndergardenBlocks.depthrock_slab, "Depthrock Slab");
         addBlock(UndergardenBlocks.cobbled_depthrock_slab, "Cobbled Depthrock Slab");
         addBlock(UndergardenBlocks.depthrock_brick_slab, "Depthrock Brick Slab");
         addBlock(UndergardenBlocks.smogstem_slab, "Smogstem Slab");
         addBlock(UndergardenBlocks.wigglewood_slab, "Wigglewood Slab");
+        addBlock(UndergardenBlocks.shiverstone_slab, "Shiverstone Slab");
+        addBlock(UndergardenBlocks.cobbled_shiverstone_slab, "Cobbled Shiverstone Slab");
+        addBlock(UndergardenBlocks.shiverstone_brick_slab, "Shiverstone Brick Slab");
 
         addBlock(UndergardenBlocks.cobbled_depthrock_wall, "Cobbled Depthrock Wall");
         addBlock(UndergardenBlocks.depthrock_brick_wall, "Depthrock Brick Wall");
+        addBlock(UndergardenBlocks.cobbled_shiverstone_wall, "Cobbled Shiverstone Wall");
+        addBlock(UndergardenBlocks.shiverstone_brick_wall, "Shiverstone Brick Wall");
 
         addBlock(UndergardenBlocks.smogstem_fence, "Smogstem Fence");
         addBlock(UndergardenBlocks.wigglewood_fence, "Wigglewood Fence");
@@ -176,6 +186,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.brute_spawn_egg, "Brute Spawn Egg");
         addItem(UndergardenItems.scintling_spawn_egg, "Scintling Spawn Egg");
         addItem(UndergardenItems.blisterbomber_spawn_egg, "Blisterbomber Spawn Egg");
+        addItem(UndergardenItems.gloomper_spawn_egg, "Gloomper Spawn Egg");
 
         addItem(UndergardenItems.masticator_spawn_egg, "Masticator Spawn Egg");
 
@@ -195,6 +206,7 @@ public class UndergardenLang extends LanguageProvider {
         addEntityType(UndergardenEntities.BRUTE, "Brute");
         addEntityType(UndergardenEntities.SCINTLING, "Scintling");
         addEntityType(UndergardenEntities.BLISTERBOMBER, "Blisterbomber");
+        addEntityType(UndergardenEntities.GLOOMPER, "Gloomper");
 
         addEntityType(UndergardenEntities.MASTICATOR, "Masticator");
 

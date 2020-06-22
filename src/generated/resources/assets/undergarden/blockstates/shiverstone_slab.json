@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "undergarden:block/shiverstone_slab_top"
+    },
+    "type=bottom": {
+      "model": "undergarden:block/shiverstone_slab"
+    },
+    "type=double": {
+      "model": "undergarden:block/shiverstone"
+    }
+  }
+}

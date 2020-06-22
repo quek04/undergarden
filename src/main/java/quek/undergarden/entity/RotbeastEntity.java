@@ -61,6 +61,11 @@ public class RotbeastEntity extends MonsterEntity {
     }
 
     @Override
+    public int getMaxSpawnedInChunk() {
+        return 20;
+    }
+
+    @Override
     public void livingTick() {
         super.livingTick();
         if (this.attackTimer > 0) {

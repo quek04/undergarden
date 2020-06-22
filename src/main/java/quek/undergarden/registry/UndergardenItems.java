@@ -108,6 +108,7 @@ public class UndergardenItems {
     public static final RegistryObject<Item> brute_spawn_egg = ITEMS.register("brute_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.brute, 7035982, 4012083));
     public static final RegistryObject<Item> scintling_spawn_egg = ITEMS.register("scintling_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.scintling, 8556655, 6314558));
     public static final RegistryObject<Item> blisterbomber_spawn_egg = ITEMS.register("blisterbomber_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.blisterbomber, 3375672, 16034133));
+    public static final RegistryObject<Item> gloomper_spawn_egg = ITEMS.register("gloomper_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.gloomper, 4138045, 6579581));
 
     public static final RegistryObject<Item> masticator_spawn_egg = ITEMS.register("masticator_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.masticator, 2366466, 15881511));
 }

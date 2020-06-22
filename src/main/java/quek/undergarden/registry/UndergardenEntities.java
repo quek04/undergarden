@@ -45,9 +45,10 @@ public class UndergardenEntities {
             .size(1, .5F).build("scintling");
     public static final EntityType<BlisterbomberEntity> blisterbomber = EntityType.Builder.create(BlisterbomberEntity::new, EntityClassification.MONSTER)
             .size(1F, 2.5F).build("blisterbomber");
+    public static final EntityType<GloomperEntity> gloomper = EntityType.Builder.create(GloomperEntity::new, EntityClassification.CREATURE)
+            .size(1F, 1F).build("gloomper");
     public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
             .size(2.5F, 4).build("masticator");
-
 
     public static final RegistryObject<EntityType<SlingshotAmmoEntity>> SLINGSHOT_AMMO = ENTITIES.register("slingshot_ammo", () -> slingshot_ammo);
     public static final RegistryObject<EntityType<GooBallEntity>> GOO_BALL = ENTITIES.register("goo_ball", () -> goo_ball);
@@ -63,6 +64,7 @@ public class UndergardenEntities {
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> brute);
     public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> scintling);
     public static final RegistryObject<EntityType<BlisterbomberEntity>> BLISTERBOMBER = ENTITIES.register("blisterbomber", () -> blisterbomber);
+    public static final RegistryObject<EntityType<GloomperEntity>> GLOOMPER = ENTITIES.register("gloomper", () -> gloomper);
 
     //bosses
     public static final RegistryObject<EntityType<MasticatorEntity>> MASTICATOR = ENTITIES.register("masticator", () -> masticator);
@@ -75,6 +77,7 @@ public class UndergardenEntities {
         EntitySpawnPlacementRegistry.register(BRUTE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BruteEntity::canBruteSpawn);
         EntitySpawnPlacementRegistry.register(SCINTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
         EntitySpawnPlacementRegistry.register(BLISTERBOMBER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BlisterbomberEntity::canBlisterbomberSpawn);
+        EntitySpawnPlacementRegistry.register(GLOOMPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GloomperEntity::canGloomperSpawn);
     }
 
 }

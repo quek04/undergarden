@@ -133,7 +133,6 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.cloggrum_bars);
             dropOther(UndergardenBlocks.glowing_kelp, UndergardenItems.glowing_kelp.get());
             dropOther(UndergardenBlocks.glowing_kelp_plant, UndergardenItems.glowing_kelp.get());
-            dropSelf(UndergardenBlocks.shiverstone);
             dropSelf(UndergardenBlocks.catalyst_slot);
             this.registerLootTable(UndergardenBlocks.smogstem_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             this.registerLootTable(UndergardenBlocks.wigglewood_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
@@ -144,6 +143,17 @@ public class UndergardenLootTables extends LootTableProvider {
             dropWithSilk(UndergardenBlocks.ashen_deepturf, UndergardenBlocks.deepsoil);
             dropSelf(UndergardenBlocks.wigglewood_scaffolding);
             this.registerLootTable(UndergardenBlocks.droopweed.get(), BlockLootTables::onlyWithShears);
+            dropWithSilk(UndergardenBlocks.shiverstone, UndergardenBlocks.cobbled_shiverstone);
+            dropSelf(UndergardenBlocks.cobbled_shiverstone);
+            dropSelf(UndergardenBlocks.shiverstone_bricks);
+            dropSelf(UndergardenBlocks.shiverstone_slab);
+            dropSelf(UndergardenBlocks.cobbled_shiverstone_slab);
+            dropSelf(UndergardenBlocks.shiverstone_brick_slab);
+            dropSelf(UndergardenBlocks.cobbled_shiverstone_wall);
+            dropSelf(UndergardenBlocks.shiverstone_brick_wall);
+            dropSelf(UndergardenBlocks.shiverstone_stairs);
+            dropSelf(UndergardenBlocks.cobbled_shiverstone_stairs);
+            dropSelf(UndergardenBlocks.shiverstone_brick_stairs);
         }
 
         @Override
@@ -165,6 +175,7 @@ public class UndergardenLootTables extends LootTableProvider {
             this.registerLootTable(UndergardenEntities.brute, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.brute_tusk.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
             this.registerLootTable(UndergardenEntities.scintling, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.goo_ball.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 2.0F))))));
             this.registerLootTable(UndergardenEntities.blisterbomber, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.rotten_blisterberry.get()).acceptFunction(SetCount.builder(RandomValueRange.of(3.0F, 5.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(1.0F, 2.0F))))));
+            this.registerLootTable(UndergardenEntities.gloomper, LootTable.builder());
 
             this.registerLootTable(UndergardenEntities.masticator, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UndergardenItems.masticator_scales.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(4.0F, 8.0F))))));
         }

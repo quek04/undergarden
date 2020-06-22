@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "side": "undergarden:block/cobbled_shiverstone",
+    "bottom": "undergarden:block/cobbled_shiverstone",
+    "top": "undergarden:block/cobbled_shiverstone"
+  }
+}

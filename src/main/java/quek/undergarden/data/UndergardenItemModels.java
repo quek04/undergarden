@@ -74,6 +74,16 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.ashen_deepturf);
         itemBlock(UndergardenBlocks.regalium_ore);
         itemBlockFlat(UndergardenBlocks.droopweed);
+        itemBlock(UndergardenBlocks.cobbled_shiverstone);
+        itemBlock(UndergardenBlocks.shiverstone_bricks);
+        itemBlock(UndergardenBlocks.shiverstone_stairs);
+        itemBlock(UndergardenBlocks.cobbled_shiverstone_stairs);
+        itemBlock(UndergardenBlocks.shiverstone_brick_stairs);
+        itemBlock(UndergardenBlocks.shiverstone_slab);
+        itemBlock(UndergardenBlocks.cobbled_shiverstone_slab);
+        itemBlock(UndergardenBlocks.shiverstone_brick_slab);
+        itemWall(UndergardenBlocks.cobbled_shiverstone_wall, "cobbled_shiverstone");
+        itemWall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);
@@ -139,6 +149,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         egg(UndergardenItems.brute_spawn_egg);
         egg(UndergardenItems.scintling_spawn_egg);
         egg(UndergardenItems.blisterbomber_spawn_egg);
+        egg(UndergardenItems.gloomper_spawn_egg);
 
         egg(UndergardenItems.masticator_spawn_egg);
     }

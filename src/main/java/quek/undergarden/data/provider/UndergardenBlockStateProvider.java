@@ -99,20 +99,23 @@ public abstract class UndergardenBlockStateProvider extends BlockStateProvider {
 
     public void wall(Supplier<? extends WallBlock> block, String name) {
         wallBlock(block.get(), texture(name));
+        models().wallInventory(block.get().getRegistryName().toString() + "_inventory", texture(name));
+        wallColumn(block, name);
     }
 
     public void fence(Supplier<? extends FenceBlock> block, String name) {
         fenceBlock(block.get(), texture(name));
+        fenceColumn(block, name);
     }
 
-    public void fenceColumn(Supplier<? extends FenceBlock> block, String side) {
+    private void fenceColumn(Supplier<? extends FenceBlock> block, String side) {
         String baseName = block.get().getRegistryName().toString();
         fourWayBlock(block.get(),
                 models().fencePost(baseName + "_post", texture(side)),
                 models().fenceSide(baseName + "_side", texture(side)));
     }
 
-    public void wallColumn(Supplier<? extends WallBlock> block, String side) {
+    private void wallColumn(Supplier<? extends WallBlock> block, String side) {
         String baseName = block.get().getRegistryName().toString();
         fourWayBlock(block.get(),
                 models().wallPost(baseName + "_post", texture(side)),
