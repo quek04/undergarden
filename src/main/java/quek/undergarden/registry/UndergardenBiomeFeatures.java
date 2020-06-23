@@ -48,6 +48,7 @@ public class UndergardenBiomeFeatures {
     private static final BlockState CLOGGRUM_ORE = UndergardenBlocks.cloggrum_ore.get().getDefaultState();
     private static final BlockState FROSTSTEEL_ORE = UndergardenBlocks.froststeel_ore.get().getDefaultState();
     private static final BlockState UTHERIUM_ORE = UndergardenBlocks.utherium_ore.get().getDefaultState();
+    private static final BlockState REGALIUM_ORE = UndergardenBlocks.regalium_ore.get().getDefaultState();
     private static final BlockState GLOWING_SEAGRASS = UndergardenBlocks.glowing_sea_grass.get().getDefaultState();
 
     private static final BlockState WATER = Blocks.WATER.getDefaultState();
@@ -151,6 +152,7 @@ public class UndergardenBiomeFeatures {
         biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, CLOGGRUM_ORE, 5)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(15, 0, 0, 128))));
         biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, FROSTSTEEL_ORE, 4)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(3, 0, 0, 64))));
         biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, UTHERIUM_ORE, 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 32))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK, REGALIUM_ORE, 4)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(2, 0, 0, 11))));
     }
 
     public static void addBlockVariants(Biome biome) {
