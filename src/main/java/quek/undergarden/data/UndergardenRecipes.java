@@ -167,11 +167,13 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeIngotToBlock(UndergardenBlocks.cloggrum_block, UndergardenItems.cloggrum_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.froststeel_block, UndergardenItems.froststeel_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.utherium_block, UndergardenItems.utherium_ingot).build(consumer);
+        makeIngotToBlock(UndergardenBlocks.regalium_block, UndergardenItems.regalium_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.cobbled_depthrock, UndergardenItems.depthrock_pebble).build(consumer);
 
         makeBlockToIngot(UndergardenItems.cloggrum_ingot, UndergardenBlocks.cloggrum_block).build(consumer, name("cloggrum_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.froststeel_ingot, UndergardenBlocks.froststeel_block).build(consumer, name("froststeel_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.utherium_ingot, UndergardenBlocks.utherium_block).build(consumer, name("utherium_block_to_ingot"));
+        makeBlockToIngot(UndergardenItems.regalium_ingot, UndergardenBlocks.regalium_block).build(consumer, name("regalium_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.depthrock_pebble, UndergardenBlocks.cobbled_depthrock).build(consumer);
 
         makeIngotToNugget(UndergardenItems.cloggrum_nugget, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_ingot_to_nugget"));

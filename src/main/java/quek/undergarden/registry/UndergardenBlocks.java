@@ -93,6 +93,8 @@ public class UndergardenBlocks {
             Material.IRON, 5.0F, 6.0F, SoundType.METAL, 3, ToolType.PICKAXE));
     public static final RegistryObject<Block> utherium_block = registerBlock("utherium_block", () -> new UndergardenBlock(
             Material.IRON, 5.0F, 6.0F, SoundType.METAL, 3, ToolType.PICKAXE));
+    public static final RegistryObject<Block> regalium_block = registerBlock("regalium_block", () -> new UndergardenBlock(
+            Material.IRON, 5.0F, 6.0F, SoundType.METAL, 4, ToolType.PICKAXE));
     public static final RegistryObject<Block> smogstem_torch = BLOCKS.register("smogstem_torch", UndergardenTorchBlock::new);
     public static final RegistryObject<Block> smogstem_wall_torch = BLOCKS.register("smogstem_wall_torch", UndergardenWallTorchBlock::new);
     public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(15));

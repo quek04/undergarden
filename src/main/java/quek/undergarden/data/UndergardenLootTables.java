@@ -154,6 +154,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.shiverstone_stairs);
             dropSelf(UndergardenBlocks.cobbled_shiverstone_stairs);
             dropSelf(UndergardenBlocks.shiverstone_brick_stairs);
+            dropSelf(UndergardenBlocks.regalium_block);
         }
 
         @Override

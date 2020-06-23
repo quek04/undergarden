@@ -84,6 +84,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.shiverstone_brick_slab);
         itemWall(UndergardenBlocks.cobbled_shiverstone_wall, "cobbled_shiverstone");
         itemWall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
+        itemBlock(UndergardenBlocks.regalium_block);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);
@@ -124,6 +125,11 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.cloggrum_chestplate);
         normalItem(UndergardenItems.cloggrum_leggings);
         normalItem(UndergardenItems.cloggrum_boots);
+
+        normalItem(UndergardenItems.froststeel_helmet);
+        normalItem(UndergardenItems.froststeel_chestplate);
+        normalItem(UndergardenItems.froststeel_leggings);
+        normalItem(UndergardenItems.froststeel_boots);
 
         toolItem(UndergardenItems.froststeel_sword);
         toolItem(UndergardenItems.froststeel_pickaxe);

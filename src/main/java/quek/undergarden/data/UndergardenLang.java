@@ -72,6 +72,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.cloggrum_block, "Cloggrum Block");
         addBlock(UndergardenBlocks.froststeel_block, "Froststeel Block");
         addBlock(UndergardenBlocks.utherium_block, "Utherium Block");
+        addBlock(UndergardenBlocks.regalium_block, "Regalium Block");
         addBlock(UndergardenBlocks.gloom_o_lantern, "Gloom o'Lantern");
         addBlock(UndergardenBlocks.cloggrum_bars, "Cloggrum Bars");
         addBlock(UndergardenBlocks.wigglewood_scaffolding, "Wigglewood Scaffolding");
