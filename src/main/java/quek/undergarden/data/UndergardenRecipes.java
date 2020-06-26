@@ -28,6 +28,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         makeBricks(UndergardenBlocks.depthrock_bricks, UndergardenBlocks.depthrock).build(consumer);
         makeBricks(UndergardenBlocks.shiverstone_bricks, UndergardenBlocks.shiverstone).build(consumer);
+        makeBricks(UndergardenBlocks.tremblecrust_bricks, UndergardenBlocks.tremblecrust).build(consumer);
 
         makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
         //makeSticks(UndergardenItems.twistytwig, UndergardenTags.Items.WIGGLEWOOD_PLANKS).build(consumer, name("twistytwig"));

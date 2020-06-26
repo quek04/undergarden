@@ -85,6 +85,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemWall(UndergardenBlocks.cobbled_shiverstone_wall, "cobbled_shiverstone");
         itemWall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
         itemBlock(UndergardenBlocks.regalium_block);
+        itemBlock(UndergardenBlocks.tremblecrust);
+        itemBlock(UndergardenBlocks.tremblecrust_bricks);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);

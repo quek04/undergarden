@@ -51,6 +51,12 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> goo = registerBlock("goo", GooBlock::new);
     public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", SmogVentBlock::new);
 
+    //otherside
+    public static final RegistryObject<Block> tremblecrust = registerBlock("tremblecrust", () -> new UndergardenBlock(
+            Material.ROCK, 6F, 24F, SoundType.STONE, 3, ToolType.PICKAXE));
+    public static final RegistryObject<Block> tremblecrust_bricks = registerBlock("tremblecrust_bricks", () -> new UndergardenBlock(
+            Material.ROCK, 6F, 24F, SoundType.STONE, 3, ToolType.PICKAXE));
+
     //nature
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", BeanBushBlock::new);
     public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", BlisterberryBushBlock::new);

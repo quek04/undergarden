@@ -36,6 +36,9 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.goo, "Scintling Goo");
         addBlock(UndergardenBlocks.smog_vent, "Smog Vent");
 
+        addBlock(UndergardenBlocks.tremblecrust, "Tremblecrust");
+        addBlock(UndergardenBlocks.tremblecrust_bricks, "Tremblecrust Bricks");
+
         addBlock(UndergardenBlocks.underbean_bush, "Underbean Bush");
         addBlock(UndergardenBlocks.blisterberry_bush, "Blisterberry Bush");
         addBlock(UndergardenBlocks.smogstem_sapling, "Smogstem Sapling");

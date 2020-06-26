@@ -13,6 +13,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import quek.undergarden.fluid.VirulentMixFluid;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenFluids;
 
@@ -23,32 +24,6 @@ public class UndergardenFluidBlock extends FlowingFluidBlock {
     public UndergardenFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
         super(supplier, properties.doesNotBlockMovement().hardnessAndResistance(100F).noDrops());
     }
-
-    /*
-    @Override
-    public boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
-        if (this.getFluid() == UndergardenFluids.virulent_mix_source.get() || this.getFluid() == UndergardenFluids.virulent_mix_flowing.get()) {
-            for (Direction direction : Direction.values()) {
-                if (direction != Direction.DOWN) {
-                    IFluidState offset = worldIn.getFluidState(pos.offset(direction));
-
-                    if (offset.getFluid().isIn(FluidTags.LAVA) && offset.getFluid().isIn(FluidTags.WATER)) {
-                        worldIn.setBlockState(pos, UndergardenBlocks.cobbled_depthrock.get().getDefaultState());
-                        this.triggerMixEffects(worldIn, pos);
-                        return false;
-                    }
-                }
-
-            }
-        }
-        return true;
-    }
-
-    private void triggerMixEffects(IWorld worldIn, BlockPos pos) {
-        worldIn.playEvent(1501, pos, 0);
-    }
-
-     */
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
