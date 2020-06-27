@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.NoiseChunkGenerator;
@@ -25,15 +25,17 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
     });
     private final OctavesNoiseGenerator depthNoise;
 
-    public UndergardenChunkGenerator(World world, BiomeProvider provider, UndergardenGenerationSettings generationSettings) {
+    public UndergardenChunkGenerator(IWorld world, BiomeProvider provider, UndergardenGenerationSettings generationSettings) {
         super(world, provider, 8, 8, 256, generationSettings, false);
         this.depthNoise = new OctavesNoiseGenerator(this.randomSeed, 15, 0);
     }
 
+    @Override
     protected void fillNoiseColumn(double[] noiseColumn, int noiseX, int noiseZ) {
         this.calcNoiseColumn(noiseColumn, noiseX, noiseZ, 684.412F, 684.412F, 8.555149841308594D, 4.277574920654297D, 3, -10);
     }
 
+    @Override
     protected double[] getBiomeNoiseColumn(int noiseX, int noiseZ) {
         double[] adouble = new double[2];
         float f = 0.0F;
@@ -89,6 +91,7 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
         return d0;
     }
 
+    @Override
     protected double func_222545_a(double p_222545_1_, double p_222545_3_, int p_222545_5_) {
         return this.field_222573_h[p_222545_5_];
     }
@@ -112,6 +115,7 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
         return adouble;
     }
 
+    @Override
     public List<Biome.SpawnListEntry> getPossibleCreatures(EntityClassification creatureType, BlockPos pos) {
         /*
         if (creatureType == EntityClassification.MONSTER) {
@@ -127,14 +131,17 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
         return super.getPossibleCreatures(creatureType, pos);
     }
 
+    @Override
     public int getGroundHeight() {
-        return this.world.getSeaLevel() + 1;
+        return 33;
     }
 
+    @Override
     public int getMaxHeight() {
         return 256;
     }
 
+    @Override
     public int getSeaLevel() {
         return 32;
     }

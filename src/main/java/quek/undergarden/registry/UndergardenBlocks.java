@@ -90,6 +90,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> cloggrum_ore = registerBlock("cloggrum_ore", () -> new UndergardenOreBlock(1));
     public static final RegistryObject<Block> froststeel_ore = registerBlock("froststeel_ore", () -> new UndergardenOreBlock(2));
     public static final RegistryObject<Block> utherium_ore = registerBlock("utherium_ore", () -> new UndergardenOreBlock(3));
+    public static final RegistryObject<Block> otherside_utherium_ore = registerBlock("otherside_utherium_ore", () -> new UndergardenOreBlock(3));
     public static final RegistryObject<Block> regalium_ore = registerBlock("regalium_ore", () -> new UndergardenOreBlock(4));
 
     //manufactured

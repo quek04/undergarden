@@ -25,7 +25,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.audio.UndergardenAmbienceSound;
-import quek.undergarden.client.render.*;
+import quek.undergarden.client.render.entity.*;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenSoundEvents;

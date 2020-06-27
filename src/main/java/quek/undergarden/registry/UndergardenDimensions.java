@@ -10,6 +10,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UndergardenMod;
+import quek.undergarden.world.OthersideDimension;
 import quek.undergarden.world.UndergardenDimension;
 import quek.undergarden.world.gen.UndergardenChunkGenerator;
 import quek.undergarden.world.gen.UndergardenGenerationSettings;
@@ -24,6 +25,13 @@ public class UndergardenDimensions {
         @Override
         public BiFunction<World, DimensionType, ? extends Dimension> getFactory() {
             return UndergardenDimension::new;
+        }
+    });
+
+    public static final RegistryObject<ModDimension> OTHERSIDE = MOD_DIMENSIONS.register("otherside", () -> new ModDimension() {
+        @Override
+        public BiFunction<World, DimensionType, ? extends Dimension> getFactory() {
+            return OthersideDimension::new;
         }
     });
 

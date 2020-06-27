@@ -19,6 +19,8 @@ public class UndergardenBiomes {
     public static final RegistryObject<Biome> BARREN_ABYSS = BIOMES.register("barren_abyss", BarrenAbyssBiome::new);
     public static final RegistryObject<Biome> SMOG_SPIRES = BIOMES.register("smog_spires", SmogSpiresBiome::new);
 
+    public static final RegistryObject<Biome> OTHERSIDE = BIOMES.register("otherside", OthersideBiome::new);
+
     public static void addBiomeTypes() {
         BiomeDictionary.addTypes(FORGOTTEN_FIELD.get(), BiomeDictionary.Type.PLAINS);
         BiomeDictionary.addTypes(SMOGSTEM_FOREST.get(), BiomeDictionary.Type.FOREST);

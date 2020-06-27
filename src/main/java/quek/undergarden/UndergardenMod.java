@@ -1,6 +1,7 @@
 package quek.undergarden;
 
 import io.netty.buffer.Unpooled;
+import net.minecraft.client.audio.MusicTicker;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.player.PlayerEntity;
@@ -39,6 +40,7 @@ public class UndergardenMod {
 	public static final String MODID = "undergarden";
 
 	public static DimensionType undergarden_dimension;
+	public static DimensionType otherside_dimension;
 
 	public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
 
@@ -100,12 +102,20 @@ public class UndergardenMod {
 		@SubscribeEvent
 		public static void registerModDimension(final RegisterDimensionsEvent event) {
 			ResourceLocation undergarden = new ResourceLocation(UndergardenMod.MODID, "undergarden");
+			ResourceLocation otherside = new ResourceLocation(UndergardenMod.MODID, "otherside");
 
 			if (DimensionType.byName(undergarden) == null) {
 				undergarden_dimension = DimensionManager.registerDimension(undergarden, UndergardenDimensions.UNDERGARDEN.get(), new PacketBuffer(Unpooled.buffer()), false);
 				DimensionManager.keepLoaded(undergarden_dimension, false);
 			} else {
 				undergarden_dimension = DimensionType.byName(undergarden);
+			}
+
+			if (DimensionType.byName(otherside) == null) {
+				otherside_dimension = DimensionManager.registerDimension(otherside, UndergardenDimensions.OTHERSIDE.get(), new PacketBuffer(Unpooled.buffer()), true);
+				DimensionManager.keepLoaded(otherside_dimension, false);
+			} else {
+				otherside_dimension = DimensionType.byName(undergarden);
 			}
 		}
 

@@ -51,6 +51,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.regalium_block);
         normalBlock(UndergardenBlocks.tremblecrust);
         normalBlock(UndergardenBlocks.tremblecrust_bricks);
+        normalBlock(UndergardenBlocks.otherside_utherium_ore);
 
         normalBlock(UndergardenBlocks.cloggrum_block);
         normalBlock(UndergardenBlocks.froststeel_block);

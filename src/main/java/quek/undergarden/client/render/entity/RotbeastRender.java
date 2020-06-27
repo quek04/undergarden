@@ -1,4 +1,4 @@
-package quek.undergarden.client.render;
+package quek.undergarden.client.render.entity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.renderer.Vector3f;

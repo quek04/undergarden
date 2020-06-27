@@ -95,6 +95,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.cloggrum_ore);
             dropSelf(UndergardenBlocks.froststeel_ore);
             dropWithFortune(UndergardenBlocks.utherium_ore, UndergardenItems.utherium_chunk);
+            dropWithFortune(UndergardenBlocks.otherside_utherium_ore, UndergardenItems.utherium_chunk);
             dropSelf(UndergardenBlocks.regalium_ore);
             dropSelf(UndergardenBlocks.smogstem_sapling);
             dropChanceAdditional(UndergardenBlocks.smogstem_leaves, UndergardenBlocks.smogstem_sapling, UndergardenItems.smogstem_stick, DEFAULT_SAPLING_DROP_RATES);

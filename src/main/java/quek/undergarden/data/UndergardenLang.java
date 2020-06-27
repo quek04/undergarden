@@ -70,6 +70,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.cloggrum_ore, "Cloggrum Ore");
         addBlock(UndergardenBlocks.froststeel_ore, "Froststeel Ore");
         addBlock(UndergardenBlocks.utherium_ore, "Utherium Ore");
+        addBlock(UndergardenBlocks.otherside_utherium_ore, "Utherium Ore");
         addBlock(UndergardenBlocks.regalium_ore, "Regalium Ore");
 
         addBlock(UndergardenBlocks.cloggrum_block, "Cloggrum Block");
