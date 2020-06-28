@@ -78,11 +78,17 @@ public class UndergardenMod {
 
 	public void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
-		generator.addProvider(new UndergardenLang(generator));
-		generator.addProvider(new UndergardenRecipes(generator));
-		generator.addProvider(new UndergardenLootTables(generator));
-		generator.addProvider(new UndergardenBlockStates(generator, event.getExistingFileHelper()));
-		generator.addProvider(new UndergardenItemModels(generator, event.getExistingFileHelper()));
+
+		if(event.includeClient()) {
+			generator.addProvider(new UndergardenBlockStates(generator, event.getExistingFileHelper()));
+			generator.addProvider(new UndergardenItemModels(generator, event.getExistingFileHelper()));
+			generator.addProvider(new UndergardenLang(generator));
+		}
+		if(event.includeServer()) {
+			generator.addProvider(new UndergardenRecipes(generator));
+			generator.addProvider(new UndergardenLootTables(generator));
+		}
+
 	}
 
 	@Mod.EventBusSubscriber(modid = MODID)

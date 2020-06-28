@@ -80,16 +80,13 @@ public class SlingshotItem extends ShootableItem {
                     boolean flag1 = playerentity.abilities.isCreativeMode || (itemstack.getItem() instanceof DepthrockPebbleItem && ((DepthrockPebbleItem)itemstack.getItem()).isInfinite(itemstack, stack, playerentity));
                     if (!worldIn.isRemote) {
                         DepthrockPebbleItem pebbleItem = (DepthrockPebbleItem) (itemstack.getItem() instanceof DepthrockPebbleItem ? itemstack.getItem() : UndergardenItems.depthrock_pebble.get());
-                        SlingshotAmmoEntity ammoEntity = pebbleItem.createArrow(worldIn, itemstack, playerentity);
+                        SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(worldIn, entityLiving);
                         ammoEntity = ammo(ammoEntity);
                         ammoEntity.shoot(playerentity, playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
                         stack.damageItem(1, playerentity, (p_220009_1_) -> {
                             p_220009_1_.sendBreakAnimation(playerentity.getActiveHand());
                         });
-                        if (flag1 || playerentity.abilities.isCreativeMode) {
-                            ammoEntity.pickupStatus = SlingshotAmmoEntity.PickupStatus.CREATIVE_ONLY;
-                        }
 
                         worldIn.addEntity(ammoEntity);
                     }

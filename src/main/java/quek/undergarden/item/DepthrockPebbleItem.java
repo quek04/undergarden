@@ -15,9 +15,4 @@ public class DepthrockPebbleItem extends ArrowItem {
         );
     }
 
-    @Override
-    public SlingshotAmmoEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {
-        SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(worldIn, shooter);
-        return ammoEntity;
-    }
 }
