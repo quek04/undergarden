@@ -28,7 +28,7 @@ public class UndergardenFluidBlock extends FlowingFluidBlock {
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         if(this.getFluid() == UndergardenFluids.virulent_mix_source.get() || this.getFluid() == UndergardenFluids.virulent_mix_flowing.get()) {
-            if(entityIn.isLiving()) {
+            if(entityIn.isAlive() && entityIn instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityIn;
                 livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
             }
