@@ -12,6 +12,7 @@ import quek.undergarden.UndergardenMod;
 public class UndergardenSoundEvents {
 
     public static final SoundEvent UNDERGARDEN_AMBIANCE = register("ambient.undergarden_ambiance");
+    public static final SoundEvent OTHERSIDE_AMBIANCE = register("ambient.otherside_ambiance");
 
     public static final SoundEvent UNDERGARDEN_MUSIC = register("music.undergarden_music");
 
@@ -44,6 +45,7 @@ public class UndergardenSoundEvents {
     public static void registerSounds(RegistryEvent.Register<SoundEvent> event) {
         event.getRegistry().registerAll(
                 UNDERGARDEN_AMBIANCE,
+                OTHERSIDE_AMBIANCE,
                 UNDERGARDEN_MUSIC,
                 UNDERGARDEN_PORTAL_AMBIENT,
                 DWELLER_LIVING,

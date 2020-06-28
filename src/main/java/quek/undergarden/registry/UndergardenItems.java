@@ -12,7 +12,7 @@ import quek.undergarden.item.tool.*;
 
 public class UndergardenItems {
 
-    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, UndergardenMod.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, UndergardenMod.MODID);
 
     //normal stuff
     public static final RegistryObject<Item> catalyst_item = ITEMS.register("catalyst", CatalystItem::new);
@@ -38,13 +38,12 @@ public class UndergardenItems {
     public static final RegistryObject<Item> goo_ball = ITEMS.register("goo_ball", GooBallItem::new);
     public static final RegistryObject<Item> rotten_blisterberry = ITEMS.register("rotten_blisterberry", RottenBlisterberryItem::new);
     public static final RegistryObject<Item> blisterbomb = ITEMS.register("blisterbomb", BlisterbombItem::new);
-    public static final RegistryObject<Item> wigglewood_scaffolding = ITEMS.register("wigglewood_scaffolding", WigglewoodScaffoldingItem::new);
 
     //boss loot
     public static final RegistryObject<Item> masticator_scales = ITEMS.register("masticator_scales", () -> new UndergardenItem(Rarity.UNCOMMON));
     public static final RegistryObject<ShieldItem> masticated_shield = ITEMS.register("masticated_shield", () -> new UndergardenShieldItem(UndergardenShieldTiers.MASTICATED, Rarity.EPIC));
     public static final RegistryObject<Item> masticated_chestplate = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UndergardenArmorMaterials.MASTICATED));
-    public static final RegistryObject<Item> cloggrum_battleaxe = ITEMS.register("cloggrum_battleaxe", CloggrumBattleaxeItem::new);
+    //public static final RegistryObject<Item> cloggrum_battleaxe = ITEMS.register("cloggrum_battleaxe", CloggrumBattleaxeItem::new);
 
     //tools
     public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.SMOGSTEM));
@@ -69,7 +68,6 @@ public class UndergardenItems {
     public static final RegistryObject<ShovelItem> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.UTHERIC));
 
     public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
-    public static final RegistryObject<ShearsItem> cloggrum_shears = ITEMS.register("cloggrum_shears", CloggrumShearsItem::new);
 
     public static final RegistryObject<BucketItem> virulent_mix_bucket = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(
             UndergardenFluids.virulent_mix_source, (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_GEAR).maxStackSize(1)));

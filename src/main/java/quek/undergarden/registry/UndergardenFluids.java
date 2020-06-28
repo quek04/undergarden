@@ -10,7 +10,7 @@ import quek.undergarden.UndergardenMod;
 
 public class UndergardenFluids {
 
-    public static final DeferredRegister<Fluid> FLUIDS = new DeferredRegister<>(ForgeRegistries.FLUIDS, UndergardenMod.MODID);
+    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, UndergardenMod.MODID);
 
     public static final FlowingFluid virulent_source = new ForgeFlowingFluid.Source(UndergardenFluidAttributes.virulent_properties);
     public static final FlowingFluid virulent_flowing = new ForgeFlowingFluid.Flowing(UndergardenFluidAttributes.virulent_properties);

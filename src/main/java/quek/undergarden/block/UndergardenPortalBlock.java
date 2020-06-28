@@ -4,6 +4,9 @@ import com.google.common.cache.LoadingCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.pattern.BlockPattern;
 import net.minecraft.entity.Entity;
@@ -49,7 +52,6 @@ public class UndergardenPortalBlock extends Block {
         setDefaultState(stateContainer.getBaseState().with(AXIS, Direction.Axis.X));
     }
 
-    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         switch(state.get(AXIS)) {
             case Z:
@@ -60,41 +62,64 @@ public class UndergardenPortalBlock extends Block {
         }
     }
 
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+
+    }
+
     public boolean trySpawnPortal(IWorld worldIn, BlockPos pos) {
-        UndergardenPortalBlock.Size portalSize = isPortal(worldIn, pos);
-        if (portalSize != null) {
-            portalSize.placePortalBlocks();
+        UndergardenPortalBlock.Size UndergardenPortalBlock$size = this.isPortal(worldIn, pos);
+        if (UndergardenPortalBlock$size != null && !onTrySpawnPortal(worldIn, pos, UndergardenPortalBlock$size)) {
+            UndergardenPortalBlock$size.placePortalBlocks();
             return true;
         } else {
             return false;
         }
     }
 
-    private boolean canMakePortal(World world) {
-        return world.dimension.getType() == DimensionType.OVERWORLD || world.dimension.getType() == UndergardenMod.undergarden_dimension;
+    public static boolean onTrySpawnPortal(IWorld world, BlockPos pos, UndergardenPortalBlock.Size size) {
+        return MinecraftForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
+    }
+
+    @Cancelable
+    public static class PortalSpawnEvent extends BlockEvent {
+        private final UndergardenPortalBlock.Size size;
+
+        public PortalSpawnEvent(IWorld world, BlockPos pos, BlockState state, UndergardenPortalBlock.Size size)
+        {
+            super(world, pos, state);
+            this.size = size;
+        }
+
+        public UndergardenPortalBlock.Size getPortalSize()
+        {
+            return size;
+        }
     }
 
     @Nullable
     public UndergardenPortalBlock.Size isPortal(IWorld worldIn, BlockPos pos) {
-        UndergardenPortalBlock.Size portalSize = new UndergardenPortalBlock.Size(worldIn, pos, Direction.Axis.X);
-        if (portalSize.isValid() && portalSize.portalBlockCount == 0) {
-            return portalSize;
+        UndergardenPortalBlock.Size UndergardenPortalBlock$size = new Size(worldIn, pos, Direction.Axis.X);
+        if (UndergardenPortalBlock$size.isValid() && UndergardenPortalBlock$size.portalBlockCount == 0) {
+            return UndergardenPortalBlock$size;
         } else {
-            UndergardenPortalBlock.Size portalSize1 = new UndergardenPortalBlock.Size(worldIn, pos, Direction.Axis.Z);
-            return portalSize1.isValid() && portalSize1.portalBlockCount == 0 ? portalSize1 : null;
+            UndergardenPortalBlock.Size UndergardenPortalBlock$size1 = new Size(worldIn, pos, Direction.Axis.Z);
+            return UndergardenPortalBlock$size1.isValid() && UndergardenPortalBlock$size1.portalBlockCount == 0 ? UndergardenPortalBlock$size1 : null;
         }
     }
 
-    @Override
+    /**
+     * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
+     * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
+     * returns its solidified counterpart.
+     * Note that this method should ideally consider only the specific face passed in.
+     */
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         Direction.Axis direction$axis = facing.getAxis();
         Direction.Axis direction$axis1 = stateIn.get(AXIS);
         boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-        return !flag && facingState.getBlock() != this && !(new UndergardenPortalBlock.Size(worldIn, currentPos, direction$axis1)).func_208508_f() ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return !flag && facingState.getBlock() != this && !(new Size(worldIn, currentPos, direction$axis1)).func_208508_f() ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    @Override
-    @Deprecated
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entity) {
         if (!entity.isPassenger() && !entity.isBeingRidden() && entity.isNonBoss()) {
             if (entity.timeUntilPortal > 0) {
@@ -121,7 +146,6 @@ public class UndergardenPortalBlock extends Block {
         }
     }
 
-    @Override
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (rand.nextInt(100) == 0) {
@@ -149,12 +173,10 @@ public class UndergardenPortalBlock extends Block {
 
     }
 
-    @Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
         return ItemStack.EMPTY;
     }
 
-    @Override
     public BlockState rotate(BlockState state, Rotation rot) {
         switch(rot) {
             case COUNTERCLOCKWISE_90:
@@ -172,32 +194,31 @@ public class UndergardenPortalBlock extends Block {
         }
     }
 
-    @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AXIS);
     }
 
-    public static BlockPattern.PatternHelper createPatternHelper(IWorld p_181089_0_, BlockPos worldIn) {
+    public static BlockPattern.PatternHelper createPatternHelper(IWorld world, BlockPos pos) {
         Direction.Axis direction$axis = Direction.Axis.Z;
-        UndergardenPortalBlock.Size portalSize = new UndergardenPortalBlock.Size(p_181089_0_, worldIn, Direction.Axis.X);
-        LoadingCache<BlockPos, CachedBlockInfo> loadingcache = BlockPattern.createLoadingCache(p_181089_0_, true);
-        if (!portalSize.isValid()) {
+        UndergardenPortalBlock.Size UndergardenPortalBlock$size = new Size(world, pos, Direction.Axis.X);
+        LoadingCache<BlockPos, CachedBlockInfo> loadingcache = BlockPattern.createLoadingCache(world, true);
+        if (!UndergardenPortalBlock$size.isValid()) {
             direction$axis = Direction.Axis.X;
-            portalSize = new UndergardenPortalBlock.Size(p_181089_0_, worldIn, Direction.Axis.Z);
+            UndergardenPortalBlock$size = new Size(world, pos, Direction.Axis.Z);
         }
 
-        if (!portalSize.isValid()) {
-            return new BlockPattern.PatternHelper(worldIn, Direction.NORTH, Direction.UP, loadingcache, 1, 1, 1);
+        if (!UndergardenPortalBlock$size.isValid()) {
+            return new BlockPattern.PatternHelper(pos, Direction.NORTH, Direction.UP, loadingcache, 1, 1, 1);
         } else {
             int[] aint = new int[Direction.AxisDirection.values().length];
-            Direction direction = portalSize.rightDir.rotateYCCW();
-            BlockPos blockpos = portalSize.bottomLeft.up(portalSize.getHeight() - 1);
+            Direction direction = UndergardenPortalBlock$size.rightDir.rotateYCCW();
+            BlockPos blockpos = UndergardenPortalBlock$size.bottomLeft.up(UndergardenPortalBlock$size.getHeight() - 1);
 
             for(Direction.AxisDirection direction$axisdirection : Direction.AxisDirection.values()) {
-                BlockPattern.PatternHelper blockpattern$patternhelper = new BlockPattern.PatternHelper(direction.getAxisDirection() == direction$axisdirection ? blockpos : blockpos.offset(portalSize.rightDir, portalSize.getWidth() - 1), Direction.getFacingFromAxis(direction$axisdirection, direction$axis), Direction.UP, loadingcache, portalSize.getWidth(), portalSize.getHeight(), 1);
+                BlockPattern.PatternHelper blockpattern$patternhelper = new BlockPattern.PatternHelper(direction.getAxisDirection() == direction$axisdirection ? blockpos : blockpos.offset(UndergardenPortalBlock$size.rightDir, UndergardenPortalBlock$size.getWidth() - 1), Direction.getFacingFromAxis(direction$axisdirection, direction$axis), Direction.UP, loadingcache, UndergardenPortalBlock$size.getWidth(), UndergardenPortalBlock$size.getHeight(), 1);
 
-                for(int i = 0; i < portalSize.getWidth(); ++i) {
-                    for(int j = 0; j < portalSize.getHeight(); ++j) {
+                for(int i = 0; i < UndergardenPortalBlock$size.getWidth(); ++i) {
+                    for(int j = 0; j < UndergardenPortalBlock$size.getHeight(); ++j) {
                         CachedBlockInfo cachedblockinfo = blockpattern$patternhelper.translateOffset(i, j, 1);
                         if (!cachedblockinfo.getBlockState().isAir()) {
                             ++aint[direction$axisdirection.ordinal()];
@@ -214,7 +235,7 @@ public class UndergardenPortalBlock extends Block {
                 }
             }
 
-            return new BlockPattern.PatternHelper(direction.getAxisDirection() == direction$axisdirection1 ? blockpos : blockpos.offset(portalSize.rightDir, portalSize.getWidth() - 1), Direction.getFacingFromAxis(direction$axisdirection1, direction$axis), Direction.UP, loadingcache, portalSize.getWidth(), portalSize.getHeight(), 1);
+            return new BlockPattern.PatternHelper(direction.getAxisDirection() == direction$axisdirection1 ? blockpos : blockpos.offset(UndergardenPortalBlock$size.rightDir, UndergardenPortalBlock$size.getWidth() - 1), Direction.getFacingFromAxis(direction$axisdirection1, direction$axis), Direction.UP, loadingcache, UndergardenPortalBlock$size.getWidth(), UndergardenPortalBlock$size.getHeight(), 1);
         }
     }
 
@@ -230,32 +251,32 @@ public class UndergardenPortalBlock extends Block {
         private int width;
 
         public Size(IWorld worldIn, BlockPos pos, Direction.Axis axisIn) {
-            world = worldIn;
-            axis = axisIn;
+            this.world = worldIn;
+            this.axis = axisIn;
             if (axisIn == Direction.Axis.X) {
-                leftDir = Direction.EAST;
-                rightDir = Direction.WEST;
+                this.leftDir = Direction.EAST;
+                this.rightDir = Direction.WEST;
             } else {
-                leftDir = Direction.NORTH;
-                rightDir = Direction.SOUTH;
+                this.leftDir = Direction.NORTH;
+                this.rightDir = Direction.SOUTH;
             }
 
-            for(BlockPos blockpos = pos; pos.getY() > blockpos.getY() - 3 && pos.getY() > 0 && func_196900_a(worldIn.getBlockState(pos.down())); pos = pos.down()) {
+            for(BlockPos blockpos = pos; pos.getY() > blockpos.getY() - 21 && pos.getY() > 0 && this.func_196900_a(worldIn.getBlockState(pos.down())); pos = pos.down()) {
                 ;
             }
 
-            int i = getDistanceUntilEdge(pos, leftDir) - 1;
+            int i = this.getDistanceUntilEdge(pos, this.leftDir) - 1;
             if (i >= 0) {
-                bottomLeft = pos.offset(leftDir, i);
-                width = getDistanceUntilEdge(bottomLeft, rightDir);
-                if (width != 3) {
-                    bottomLeft = null;
-                    width = 0;
+                this.bottomLeft = pos.offset(this.leftDir, i);
+                this.width = this.getDistanceUntilEdge(this.bottomLeft, this.rightDir);
+                if (this.width < 2 || this.width > 21) {
+                    this.bottomLeft = null;
+                    this.width = 0;
                 }
             }
 
-            if (bottomLeft != null) {
-                height = calculatePortalHeight();
+            if (this.bottomLeft != null) {
+                this.height = this.calculatePortalHeight();
             }
 
         }
@@ -264,66 +285,66 @@ public class UndergardenPortalBlock extends Block {
             int i;
             for(i = 0; i < 22; ++i) {
                 BlockPos blockpos = pos.offset(directionIn, i);
-                if (!func_196900_a(world.getBlockState(blockpos)) || world.getBlockState(blockpos.down()) != Blocks.STONE_BRICKS.getDefaultState()) {
+                if (!this.func_196900_a(this.world.getBlockState(blockpos)) || !(this.world.getBlockState(blockpos.down()).getBlock() == Blocks.STONE_BRICKS)) {
                     break;
                 }
             }
 
-            Block block = world.getBlockState(pos.offset(directionIn, i)).getBlock();
-            return block == Blocks.STONE_BRICKS ? i : 0;
+            BlockPos framePos = pos.offset(directionIn, i);
+            return this.world.getBlockState(framePos).getBlock() == Blocks.STONE_BRICKS ? i : 0;
         }
 
         public int getHeight() {
-            return height;
+            return this.height;
         }
 
         public int getWidth() {
-            return width;
+            return this.width;
         }
 
         protected int calculatePortalHeight() {
             label56:
-            for(height = 0; height < 3; ++height) {
-                for(int i = 0; i < width; ++i) {
-                    BlockPos blockpos = bottomLeft.offset(rightDir, i).up(height);
-                    BlockState blockstate = world.getBlockState(blockpos);
-                    if (!func_196900_a(blockstate)) {
+            for(this.height = 0; this.height < 21; ++this.height) {
+                for(int i = 0; i < this.width; ++i) {
+                    BlockPos blockpos = this.bottomLeft.offset(this.rightDir, i).up(this.height);
+                    BlockState blockstate = this.world.getBlockState(blockpos);
+                    if (!this.func_196900_a(blockstate)) {
                         break label56;
                     }
 
                     Block block = blockstate.getBlock();
                     if (block == UndergardenBlocks.undergarden_portal.get()) {
-                        ++portalBlockCount;
+                        ++this.portalBlockCount;
                     }
 
                     if (i == 0) {
-                        BlockPos framePos = blockpos.offset(leftDir);
-                        if (!world.getBlockState(framePos).isPortalFrame(world, framePos)) {
+                        BlockPos framePos = blockpos.offset(this.leftDir);
+                        if (!(this.world.getBlockState(framePos).getBlock() == Blocks.STONE_BRICKS)) {
                             break label56;
                         }
-                    } else if (i == width - 1) {
-                        BlockPos framePos = blockpos.offset(rightDir);
-                        if (!world.getBlockState(framePos).isPortalFrame(world, framePos)) {
+                    } else if (i == this.width - 1) {
+                        BlockPos framePos = blockpos.offset(this.rightDir);
+                        if (!(this.world.getBlockState(framePos).getBlock() == Blocks.STONE_BRICKS)) {
                             break label56;
                         }
                     }
                 }
             }
 
-            for(int j = 0; j < width; ++j) {
-                BlockPos framePos = bottomLeft.offset(rightDir, j).up(height);
-                if (!world.getBlockState(framePos).isPortalFrame(world, framePos)) {
-                    height = 0;
+            for(int j = 0; j < this.width; ++j) {
+                BlockPos framePos = this.bottomLeft.offset(this.rightDir, j).up(this.height);
+                if (!(this.world.getBlockState(framePos).getBlock() == Blocks.STONE_BRICKS)) {
+                    this.height = 0;
                     break;
                 }
             }
 
-            if (height == 3) {
-                return height;
+            if (this.height <= 21 && this.height >= 3) {
+                return this.height;
             } else {
-                bottomLeft = null;
-                width = 0;
-                height = 0;
+                this.bottomLeft = null;
+                this.width = 0;
+                this.height = 0;
                 return 0;
             }
         }
@@ -334,26 +355,26 @@ public class UndergardenPortalBlock extends Block {
         }
 
         public boolean isValid() {
-            return bottomLeft != null && width == 3 && height == 3;
+            return this.bottomLeft != null && this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21;
         }
 
         public void placePortalBlocks() {
-            for(int i = 0; i < width; ++i) {
-                BlockPos blockpos = bottomLeft.offset(rightDir, i);
+            for(int i = 0; i < this.width; ++i) {
+                BlockPos blockpos = this.bottomLeft.offset(this.rightDir, i);
 
-                for(int j = 0; j < height; ++j) {
-                    world.setBlockState(blockpos.up(j), UndergardenBlocks.undergarden_portal.get().getDefaultState().with(UndergardenPortalBlock.AXIS, axis), 18);
+                for(int j = 0; j < this.height; ++j) {
+                    this.world.setBlockState(blockpos.up(j), UndergardenBlocks.undergarden_portal.get().getDefaultState().with(UndergardenPortalBlock.AXIS, this.axis), 18);
                 }
             }
 
         }
 
         private boolean func_196899_f() {
-            return portalBlockCount >= width * height;
+            return this.portalBlockCount >= this.width * this.height;
         }
 
         public boolean func_208508_f() {
-            return isValid() && func_196899_f();
+            return this.isValid() && this.func_196899_f();
         }
     }
 }

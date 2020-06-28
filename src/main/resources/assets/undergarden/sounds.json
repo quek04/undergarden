@@ -7,6 +7,14 @@
       }
     ]
   },
+  "ambient.otherside_ambiance": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "undergarden:ambient/otherside_ambiance", "stream": false
+      }
+    ]
+  },
   "ambient.undergarden_portal_ambient": {
     "category": "blocks",
     "subtitle": "subtitles.ambient.undergarden_portal_ambient",

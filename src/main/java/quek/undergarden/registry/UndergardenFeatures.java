@@ -11,7 +11,7 @@ import quek.undergarden.world.gen.feature.*;
 
 public class UndergardenFeatures {
 
-    public static final DeferredRegister<Feature<?>> FEATURES = new DeferredRegister<>(ForgeRegistries.FEATURES, UndergardenMod.MODID);
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, UndergardenMod.MODID);
 
     //tree
     public static final RegistryObject<Feature<TreeFeatureConfig>> SMOGSTEM_TREE = FEATURES.register(
@@ -28,8 +28,6 @@ public class UndergardenFeatures {
             "smog_vent", () -> new SmogVentFeature(NoFeatureConfig::deserialize));
     public static final RegistryObject<Feature<NoFeatureConfig>> ENIGMATIC_STATUE = FEATURES.register(
             "enigmatic_statue", () -> new EnigmaticStatueFeature(NoFeatureConfig::deserialize));
-    public static final RegistryObject<Feature<NoFeatureConfig>> DROOPWEED = FEATURES.register(
-            "droopweed", () -> new DroopweedFeature(NoFeatureConfig::deserialize));
 
     //structures
 

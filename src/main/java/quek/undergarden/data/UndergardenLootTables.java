@@ -134,7 +134,6 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.cloggrum_bars);
             dropOther(UndergardenBlocks.glowing_kelp, UndergardenItems.glowing_kelp.get());
             dropOther(UndergardenBlocks.glowing_kelp_plant, UndergardenItems.glowing_kelp.get());
-            dropSelf(UndergardenBlocks.catalyst_slot);
             this.registerLootTable(UndergardenBlocks.smogstem_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             this.registerLootTable(UndergardenBlocks.wigglewood_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             dropSelf(UndergardenBlocks.smogstem_trapdoor);
@@ -142,8 +141,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropWithSilk(UndergardenBlocks.smog_vent, UndergardenBlocks.cobbled_depthrock);
             this.registerLootTable(UndergardenBlocks.goo.get(), (p_218534_0_) -> droppingWithSilkTouchOrRandomly(p_218534_0_, UndergardenItems.goo_ball.get(), RandomValueRange.of(1.0F, 4.0F)));
             dropWithSilk(UndergardenBlocks.ashen_deepturf, UndergardenBlocks.deepsoil);
-            dropSelf(UndergardenBlocks.wigglewood_scaffolding);
-            this.registerLootTable(UndergardenBlocks.droopweed.get(), BlockLootTables::onlyWithShears);
+            //this.registerLootTable(UndergardenBlocks.droopweed.get(), BlockLootTables::onlyWithShears);
             dropWithSilk(UndergardenBlocks.shiverstone, UndergardenBlocks.cobbled_shiverstone);
             dropSelf(UndergardenBlocks.cobbled_shiverstone);
             dropSelf(UndergardenBlocks.shiverstone_bricks);

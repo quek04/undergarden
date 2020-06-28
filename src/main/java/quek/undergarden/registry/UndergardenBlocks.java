@@ -19,10 +19,9 @@ import java.util.function.Supplier;
 
 public class UndergardenBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, UndergardenMod.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, UndergardenMod.MODID);
 
     public static final RegistryObject<Block> undergarden_portal = BLOCKS.register("undergarden_portal", UndergardenPortalBlock::new);
-    public static final RegistryObject<Block> catalyst_slot = registerBlock("catalyst_slot", CatalystSlotBlock::new);
 
     //basic shit
     public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", DeepsoilBlock::new);
@@ -83,7 +82,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<GlowingKelpTopBlock> glowing_kelp = BLOCKS.register("glowing_kelp", GlowingKelpTopBlock::new);
     public static final RegistryObject<Block> glowing_kelp_plant = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(glowing_kelp.get()));
     public static final RegistryObject<Block> glowing_sea_grass = registerBlock("glowing_sea_grass", GlowingSeaGrassBlock::new);
-    public static final RegistryObject<Block> droopweed = registerBlock("droopweed", DroopweedBlock::new);
+    //public static final RegistryObject<Block> droopweed = registerBlock("droopweed", DroopweedBlock::new);
 
     //ores
     public static final RegistryObject<Block> coal_ore = registerBlock("coal_ore", () -> new UndergardenOreBlock(0));
@@ -106,7 +105,6 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> smogstem_wall_torch = BLOCKS.register("smogstem_wall_torch", UndergardenWallTorchBlock::new);
     public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(15));
     public static final RegistryObject<Block> cloggrum_bars = registerBlock("cloggrum_bars", CloggrumBarsBlock::new);
-    public static final RegistryObject<Block> wigglewood_scaffolding = BLOCKS.register("wigglewood_scaffolding", WigglewoodScaffoldingBlock::new);
 
     public static final RegistryObject<StairsBlock> depthrock_stairs = registerBlock("depthrock_stairs", () -> new UndergardenStairsBlock(depthrock));
     public static final RegistryObject<StairsBlock> cobbled_depthrock_stairs = registerBlock("cobbled_depthrock_stairs", () -> new UndergardenStairsBlock(cobbled_depthrock));

@@ -73,7 +73,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.ashen_tall_deepturf);
         itemBlock(UndergardenBlocks.ashen_deepturf);
         itemBlock(UndergardenBlocks.regalium_ore);
-        itemBlockFlat(UndergardenBlocks.droopweed);
+        //itemBlockFlat(UndergardenBlocks.droopweed);
         itemBlock(UndergardenBlocks.cobbled_shiverstone);
         itemBlock(UndergardenBlocks.shiverstone_bricks);
         itemBlock(UndergardenBlocks.shiverstone_stairs);
@@ -134,6 +134,11 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.froststeel_leggings);
         normalItem(UndergardenItems.froststeel_boots);
 
+        normalItem(UndergardenItems.utheric_helmet);
+        normalItem(UndergardenItems.utheric_chestplate);
+        normalItem(UndergardenItems.utheric_leggings);
+        normalItem(UndergardenItems.utheric_boots);
+
         toolItem(UndergardenItems.froststeel_sword);
         toolItem(UndergardenItems.froststeel_pickaxe);
         toolItem(UndergardenItems.froststeel_axe);
@@ -143,6 +148,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         toolItem(UndergardenItems.utheric_pickaxe);
         toolItem(UndergardenItems.utheric_axe);
         toolItem(UndergardenItems.utheric_shovel);
+
+        normalItem(UndergardenItems.virulent_mix_bucket);
 
         normalItem(UndergardenItems.underbeans);
         normalItem(UndergardenItems.blisterberry);

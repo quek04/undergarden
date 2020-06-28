@@ -40,16 +40,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addCriterion("has_wigglewood_planks", hasItem(UndergardenBlocks.wigglewood_planks.get()))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.wigglewood_scaffolding.get(), 6)
-                .patternLine("TST")
-                .patternLine("T T")
-                .patternLine("T T")
-                .key('T', UndergardenItems.twistytwig.get())
-                .key('S', UndergardenItems.smogstem_stick.get())
-                .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
-                .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
-                .build(consumer);
-
         ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.gloom_o_lantern.get())
                 .patternLine("G")
                 .patternLine("T")
@@ -62,14 +52,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.cloggrum_bars.get(), 16)
                 .patternLine("CCC")
                 .patternLine("CCC")
-                .key('C', UndergardenItems.cloggrum_ingot.get())
-                .addCriterion("has_cloggrum_ingot", hasItem(UndergardenItems.cloggrum_ingot.get()))
-                .build(consumer);
-
-
-        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.cloggrum_shears.get())
-                .patternLine("C ")
-                .patternLine(" C")
                 .key('C', UndergardenItems.cloggrum_ingot.get())
                 .addCriterion("has_cloggrum_ingot", hasItem(UndergardenItems.cloggrum_ingot.get()))
                 .build(consumer);
@@ -129,15 +111,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addCriterion("has_ditchbulb", hasItem(UndergardenItems.ditchbulb.get()))
                 .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
                 .build(consumer, name("smogstem_torch_ditchbulb"));
-
-        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.catalyst_slot.get())
-                .patternLine("BBB")
-                .patternLine("BGB")
-                .patternLine("BBB")
-                .key('B', Blocks.STONE_BRICKS)
-                .key('G', Blocks.GOLD_BLOCK)
-                .addCriterion("has_gold", hasItem(Blocks.GOLD_BLOCK))
-                .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.catalyst_item.get())
                 .patternLine("GIG")

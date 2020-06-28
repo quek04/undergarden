@@ -16,7 +16,7 @@ import quek.undergarden.entity.projectile.*;
 
 public class UndergardenEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES = new DeferredRegister<>(ForgeRegistries.ENTITIES, UndergardenMod.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, UndergardenMod.MODID);
 
     public static final EntityType<SlingshotAmmoEntity> slingshot_ammo = EntityType.Builder.<SlingshotAmmoEntity>create(SlingshotAmmoEntity::new, EntityClassification.MISC)
             .size(0.25F, 0.25F).build("slingshot_ammo");

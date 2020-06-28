@@ -10,7 +10,7 @@ import quek.undergarden.biome.*;
 
 public class UndergardenBiomes {
 
-    public static final DeferredRegister<Biome> BIOMES = new DeferredRegister<>(ForgeRegistries.BIOMES, UndergardenMod.MODID);
+    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, UndergardenMod.MODID);
 
     public static final RegistryObject<Biome> FORGOTTEN_FIELD = BIOMES.register("forgotten_field", ForgottenFieldBiome::new);
     public static final RegistryObject<Biome> SMOGSTEM_FOREST = BIOMES.register("smogstem_forest", SmogstemForestBiome::new);

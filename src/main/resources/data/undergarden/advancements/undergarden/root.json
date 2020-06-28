@@ -9,7 +9,7 @@
     "description": {
       "translate": "advancement.undergarden.desc"
     },
-    "background": "undergarden:textures/block/depthrock.png",
+    "background": "undergarden:textures/block/depthrock_bricks.png",
     "show_toast": true,
     "announce_to_chat": true,
     "frame": "task"
@@ -18,7 +18,8 @@
     "enter_undergarden": {
       "trigger": "minecraft:changed_dimension",
       "conditions": {
-        "to": "undergarden:undergarden"
+        "to": "undergarden:undergarden",
+        "from": "minecraft:overworld"
       }
     }
   }

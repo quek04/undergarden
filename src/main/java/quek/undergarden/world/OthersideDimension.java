@@ -16,6 +16,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.render.OthersideSkyRender;
+import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.world.gen.OthersideChunkGenerator;
 import quek.undergarden.world.gen.OthersideGenerationSettings;
 import quek.undergarden.world.layer.OthersideBiomeProvider;
@@ -30,6 +31,11 @@ public class OthersideDimension extends Dimension {
 
     public OthersideDimension(World world, DimensionType dimensionType) {
         super(world, dimensionType, 0);
+    }
+
+    public static boolean isTheOtherside(@Nullable World world) {
+        if (world == null) return false;
+        return world.dimension.getType().getModType() == UndergardenDimensions.OTHERSIDE.get();
     }
 
     @Override
@@ -103,12 +109,12 @@ public class OthersideDimension extends Dimension {
 
     @Override
     public boolean doesXZShowFog(int x, int z) {
-        return false;
+        return true;
     }
 
     @OnlyIn(Dist.CLIENT)
     public float getCloudHeight() {
-        return 256;
+        return 500;
     }
 
 

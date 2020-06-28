@@ -19,7 +19,6 @@ public class UndergardenLang extends LanguageProvider {
     @Override
     protected void addTranslations() {
         addBlock(UndergardenBlocks.undergarden_portal, "Undergarden Portal");
-        addBlock(UndergardenBlocks.catalyst_slot, "Catalyst Slot");
         addBlock(UndergardenBlocks.deepsoil, "Deepsoil");
         addBlock(UndergardenBlocks.deepsoil_farmland, "Deepsoil Farmland");
         addBlock(UndergardenBlocks.deepturf_block, "Deepturf Block");
@@ -64,7 +63,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.glowing_kelp, "Glitterkelp");
         addBlock(UndergardenBlocks.glowing_kelp_plant, "Glitterkelp");
         addBlock(UndergardenBlocks.glowing_sea_grass, "Glowing Seagrass");
-        addBlock(UndergardenBlocks.droopweed, "Droopweed");
+        //addBlock(UndergardenBlocks.droopweed, "Droopweed");
 
         addBlock(UndergardenBlocks.coal_ore, "Coal Ore");
         addBlock(UndergardenBlocks.cloggrum_ore, "Cloggrum Ore");
@@ -79,7 +78,6 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.regalium_block, "Regalium Block");
         addBlock(UndergardenBlocks.gloom_o_lantern, "Gloom o'Lantern");
         addBlock(UndergardenBlocks.cloggrum_bars, "Cloggrum Bars");
-        addBlock(UndergardenBlocks.wigglewood_scaffolding, "Wigglewood Scaffolding");
 
         addBlock(UndergardenBlocks.depthrock_stairs, "Depthrock Stairs");
         addBlock(UndergardenBlocks.cobbled_depthrock_stairs, "Cobbled Depthrock Stairs");
@@ -137,6 +135,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.masticator_scales, "Masticator Scales");
         addItem(UndergardenItems.masticated_shield, "Masticated Shield");
         addItem(UndergardenItems.masticated_chestplate, "Masticated Chestplate");
+        //addItem(UndergardenItems.cloggrum_battleaxe, "Cloggrum Battle Axe");
 
         addItem(UndergardenItems.smogstem_sword, "Smogstem Sword");
         addItem(UndergardenItems.smogstem_pickaxe, "Smogstem Pickaxe");
@@ -160,7 +159,8 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utheric_shovel, "Utherium Shovel");
 
         addItem(UndergardenItems.slingshot, "Slingshot");
-        addItem(UndergardenItems.cloggrum_shears, "Cloggrum Shears");
+
+        addItem(UndergardenItems.virulent_mix_bucket, "Virulent Mix Bucket");
 
         addItem(UndergardenItems.cloggrum_helmet, "Cloggrum Helmet");
         addItem(UndergardenItems.cloggrum_chestplate, "Cloggrum Chestplate");
@@ -201,6 +201,7 @@ public class UndergardenLang extends LanguageProvider {
         addBiome(UndergardenBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
         addBiome(UndergardenBiomes.DENSE_FOREST, "Dense Forest");
         addBiome(UndergardenBiomes.SMOG_SPIRES, "Smog Spires");
+        addBiome(UndergardenBiomes.OTHERSIDE, "The Otherside");
 
         addEntityType(UndergardenEntities.DWELLER, "Dweller");
         addEntityType(UndergardenEntities.ROTDWELLER, "Rotdweller");
@@ -236,9 +237,6 @@ public class UndergardenLang extends LanguageProvider {
 
         add("advancement.deep_extraction.title", "Deep Extraction");
         add("advancement.deep_extraction.desc", "Acquire a Cloggrum Ingot.");
-
-        add("advancement.catalyst.title", "Create the Catalysts");
-        add("advancement.catalyst.desc", "Craft 12 Catalysts using Iron and Gold to activate the Undergarden portal found in mountain biomes.");
 
         add("advancement.glorious_beans.title", "Glorious Beans!");
         add("advancement.glorious_beans.desc", "Find and pick an Underbean bush.");

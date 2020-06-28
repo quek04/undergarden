@@ -19,7 +19,7 @@ import java.util.function.BiFunction;
 
 public class UndergardenDimensions {
 
-    public static final DeferredRegister<ModDimension> MOD_DIMENSIONS = new DeferredRegister<>(ForgeRegistries.MOD_DIMENSIONS, UndergardenMod.MODID);
+    public static final DeferredRegister<ModDimension> MOD_DIMENSIONS = DeferredRegister.create(ForgeRegistries.MOD_DIMENSIONS, UndergardenMod.MODID);
 
     public static final RegistryObject<ModDimension> UNDERGARDEN = MOD_DIMENSIONS.register("undergarden", () -> new ModDimension() {
         @Override

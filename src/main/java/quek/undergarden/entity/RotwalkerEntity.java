@@ -52,12 +52,12 @@ public class RotwalkerEntity extends MonsterEntity {
     }
 
     public static boolean canRotwalkerSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL && canSpawnOn(type, worldIn, reason, pos, randomIn) && randomIn.nextInt(10) == 0;
+        return worldIn.getDifficulty() != Difficulty.PEACEFUL || worldIn.getBlockState(pos).getBlock() == UndergardenBlocks.tremblecrust.get() && canSpawnOn(type, worldIn, reason, pos, randomIn) && randomIn.nextInt(10) == 0;
     }
 
     @Override
     public int getMaxSpawnedInChunk() {
-        return 10;
+        return 1;
     }
 
     @Override
