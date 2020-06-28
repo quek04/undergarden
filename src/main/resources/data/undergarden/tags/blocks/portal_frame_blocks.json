@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stone_bricks",
+    "undergarden:depthrock_bricks",
+    "undergarden:shiverstone_bricks"
+  ]
+}

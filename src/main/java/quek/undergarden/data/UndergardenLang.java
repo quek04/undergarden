@@ -220,11 +220,16 @@ public class UndergardenLang extends LanguageProvider {
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_GEAR, "Undergarden Tools & Combat");
         addItemGroup(UndergardenItemGroups.UNDERGARDEN_ITEMS, "Undergarden Items");
 
+        addEffect(UndergardenEffects.gooey, "Gooey");
+
         add("advancement.undergarden.title", "The Undergarden");
         add("advancement.undergarden.desc", "Enter the Undergarden. The forgotten land awaits...");
 
         add("advancement.gourd_lord.title", "Gourd Lord");
         add("advancement.gourd_lord.desc", "You've done it. You've acquired a stack of Gloomgourds.");
+
+        add("advancement.slingshot.title", "Your New Best Friend");
+        add("advancement.slingshot.desc", "Craft a Slingshot.");
 
         add("advancement.slay_rotwalker.title", "Slay Rotwalker");
         add("advancement.slay_rotwalker.desc", "Slay the weakest of the Rotspawn, the Rotwalker.");

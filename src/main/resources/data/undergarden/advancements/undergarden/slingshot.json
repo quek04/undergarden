@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:slingshot"
+    },
+    "title": {
+      "translate": "advancement.slingshot.title"
+    },
+    "description": {
+      "translate": "advancement.slingshot.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "parent": "undergarden:undergarden/root",
+  "criteria": {
+    "has_slingshot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:slingshot"
+          }
+        ]
+      }
+    }
+  }
+}

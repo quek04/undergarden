@@ -31,6 +31,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenSoundEvents;
+import quek.undergarden.registry.UndergardenTags;
 import quek.undergarden.world.UndergardenTeleporter;
 
 import javax.annotation.Nullable;
@@ -285,13 +286,13 @@ public class UndergardenPortalBlock extends Block {
             int i;
             for(i = 0; i < 22; ++i) {
                 BlockPos blockpos = pos.offset(directionIn, i);
-                if (!this.func_196900_a(this.world.getBlockState(blockpos)) || !(this.world.getBlockState(blockpos.down()).getBlock() == Blocks.STONE_BRICKS)) {
+                if (!this.func_196900_a(this.world.getBlockState(blockpos)) || !(this.world.getBlockState(blockpos.down()).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                     break;
                 }
             }
 
             BlockPos framePos = pos.offset(directionIn, i);
-            return this.world.getBlockState(framePos).getBlock() == Blocks.STONE_BRICKS ? i : 0;
+            return this.world.getBlockState(framePos).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS) ? i : 0;
         }
 
         public int getHeight() {
@@ -319,12 +320,12 @@ public class UndergardenPortalBlock extends Block {
 
                     if (i == 0) {
                         BlockPos framePos = blockpos.offset(this.leftDir);
-                        if (!(this.world.getBlockState(framePos).getBlock() == Blocks.STONE_BRICKS)) {
+                        if (!(this.world.getBlockState(framePos).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                             break label56;
                         }
                     } else if (i == this.width - 1) {
                         BlockPos framePos = blockpos.offset(this.rightDir);
-                        if (!(this.world.getBlockState(framePos).getBlock() == Blocks.STONE_BRICKS)) {
+                        if (!(this.world.getBlockState(framePos).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                             break label56;
                         }
                     }
@@ -333,7 +334,7 @@ public class UndergardenPortalBlock extends Block {
 
             for(int j = 0; j < this.width; ++j) {
                 BlockPos framePos = this.bottomLeft.offset(this.rightDir, j).up(this.height);
-                if (!(this.world.getBlockState(framePos).getBlock() == Blocks.STONE_BRICKS)) {
+                if (!(this.world.getBlockState(framePos).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                     this.height = 0;
                     break;
                 }

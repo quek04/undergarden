@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "frame": "task"
   },
-  "parent": "undergarden:undergarden/root",
+  "parent": "undergarden:undergarden/slingshot",
   "criteria": {
     "slay_rotwalker": {
       "trigger": "minecraft:player_killed_entity",

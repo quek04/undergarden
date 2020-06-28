@@ -6,6 +6,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
+import quek.undergarden.UndergardenMod;
 
 public class UndergardenTags {
 
@@ -20,17 +21,17 @@ public class UndergardenTags {
         public static final Tag<Item> UTHERIUM_ITEMS = tag("utherium_items");
 
         private static Tag<Item> tag(String name) {
-            return new ItemTags.Wrapper(new ResourceLocation("undergarden", name));
+            return new ItemTags.Wrapper(new ResourceLocation(UndergardenMod.MODID, name));
         }
 
     }
 
     public static class Blocks {
 
-
+        public static final Tag<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
 
         private static Tag<Block> tag(String name) {
-            return new BlockTags.Wrapper(new ResourceLocation("undergarden", name));
+            return new BlockTags.Wrapper(new ResourceLocation(UndergardenMod.MODID, name));
         }
 
     }

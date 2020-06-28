@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "undergarden:cobbled_depthrock"
+    "undergarden:cobbled_depthrock",
+    "undergarden:cobbled_shiverstone"
   ]
 }
