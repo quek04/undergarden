@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "bottom=true": { "model": "undergarden:block/wigglewood_scaffolding_unstable" },
-        "bottom=false": { "model": "undergarden:block/wigglewood_scaffolding_stable" }
-    }
-}

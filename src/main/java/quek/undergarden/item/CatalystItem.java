@@ -14,6 +14,7 @@ public class CatalystItem extends Item {
     public CatalystItem() {
         super(new Properties()
                 .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .maxStackSize(1)
         );
     }
 

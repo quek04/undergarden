@@ -73,7 +73,6 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.ashen_tall_deepturf);
         itemBlock(UndergardenBlocks.ashen_deepturf);
         itemBlock(UndergardenBlocks.regalium_ore);
-        //itemBlockFlat(UndergardenBlocks.droopweed);
         itemBlock(UndergardenBlocks.cobbled_shiverstone);
         itemBlock(UndergardenBlocks.shiverstone_bricks);
         itemBlock(UndergardenBlocks.shiverstone_stairs);

@@ -75,12 +75,12 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         slab(UndergardenBlocks.cobbled_shiverstone_slab, UndergardenBlocks.cobbled_shiverstone);
         slab(UndergardenBlocks.shiverstone_brick_slab, UndergardenBlocks.shiverstone_bricks);
 
-        wall(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
+        //wall(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
         //wallColumn(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
-        wall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
+        //wall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
         //wallColumn(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
-        wall(UndergardenBlocks.cobbled_shiverstone_wall, "cobbled_shiverstone");
-        wall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
+        //wall(UndergardenBlocks.cobbled_shiverstone_wall, "cobbled_shiverstone");
+        //wall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
 
         fence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         //fenceColumn(UndergardenBlocks.smogstem_fence, "smogstem_planks");

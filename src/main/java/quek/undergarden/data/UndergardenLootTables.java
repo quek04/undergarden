@@ -141,7 +141,6 @@ public class UndergardenLootTables extends LootTableProvider {
             dropWithSilk(UndergardenBlocks.smog_vent, UndergardenBlocks.cobbled_depthrock);
             this.registerLootTable(UndergardenBlocks.goo.get(), (p_218534_0_) -> droppingWithSilkTouchOrRandomly(p_218534_0_, UndergardenItems.goo_ball.get(), RandomValueRange.of(1.0F, 4.0F)));
             dropWithSilk(UndergardenBlocks.ashen_deepturf, UndergardenBlocks.deepsoil);
-            //this.registerLootTable(UndergardenBlocks.droopweed.get(), BlockLootTables::onlyWithShears);
             dropWithSilk(UndergardenBlocks.shiverstone, UndergardenBlocks.cobbled_shiverstone);
             dropSelf(UndergardenBlocks.cobbled_shiverstone);
             dropSelf(UndergardenBlocks.shiverstone_bricks);
