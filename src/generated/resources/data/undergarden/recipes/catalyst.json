@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "GIG",
-    "IGI",
+    "IDI",
     "GIG"
   ],
   "key": {
@@ -11,6 +11,9 @@
     },
     "I": {
       "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "minecraft:diamond"
     }
   },
   "result": {

@@ -114,12 +114,14 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.catalyst_item.get())
                 .patternLine("GIG")
-                .patternLine("IGI")
+                .patternLine("IDI")
                 .patternLine("GIG")
                 .key('G', Items.GOLD_INGOT)
                 .key('I', Items.IRON_INGOT)
+                .key('D', Items.DIAMOND)
                 .addCriterion("has_gold", hasItem(Items.GOLD_INGOT))
                 .addCriterion("has_iron", hasItem(Items.IRON_INGOT))
+                .addCriterion("has_diamond", hasItem(Items.DIAMOND))
                 .build(consumer);
 
         ShapelessRecipeBuilder.shapelessRecipe(UndergardenItems.gloomgourd_pie.get())
