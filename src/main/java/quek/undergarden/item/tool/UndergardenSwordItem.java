@@ -38,13 +38,13 @@ public class UndergardenSwordItem extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UndergardenItems.cloggrum_sword.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.cloggrum_sword").applyTextStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.cloggrum_sword").func_240701_a_(TextFormatting.GRAY));
         }
         else if(stack.getItem() == UndergardenItems.froststeel_sword.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").applyTextStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").func_240701_a_(TextFormatting.GRAY));
         }
         else if(stack.getItem() == UndergardenItems.utheric_sword.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").applyTextStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").func_240701_a_(TextFormatting.GRAY));
         }
     }
 

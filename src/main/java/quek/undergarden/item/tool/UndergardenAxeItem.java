@@ -37,10 +37,10 @@ public class UndergardenAxeItem extends AxeItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UndergardenItems.utheric_axe.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.utheric_axe").applyTextStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.utheric_axe").func_240701_a_(TextFormatting.GRAY));
         }
         else if(stack.getItem() == UndergardenItems.froststeel_axe.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").applyTextStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").func_240701_a_(TextFormatting.GRAY));
         }
     }
 

@@ -53,7 +53,7 @@ public class DeepturfBlock extends UndergardenGrassBlock implements IGrowable {
 
             for(int lvt_9_1_ = 0; lvt_9_1_ < lvt_7_1_ / 16; ++lvt_9_1_) {
                 posUp = posUp.add(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
-                if (serverWorld.getBlockState(posUp.down()).getBlock() != this || serverWorld.getBlockState(posUp).isCollisionShapeOpaque(serverWorld, posUp)) {
+                if (serverWorld.getBlockState(posUp.down()).getBlock() != this || serverWorld.getBlockState(posUp).func_235785_r_(serverWorld, posUp)) {
                     continue label48;
                 }
             }

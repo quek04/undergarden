@@ -26,7 +26,7 @@ public class CarvedGloomgourdBlock extends HorizontalBlock {
         super(Properties.create(Material.GOURD)
                 .hardnessAndResistance(1.0F)
                 .sound(SoundType.WOOD)
-                .lightValue(light)
+                .func_235838_a_((state) -> light)
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     }

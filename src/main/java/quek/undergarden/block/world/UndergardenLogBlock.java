@@ -1,15 +1,14 @@
 package quek.undergarden.block.world;
 
-import net.minecraft.block.LogBlock;
+import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
 
-public class UndergardenLogBlock extends LogBlock {
+public class UndergardenLogBlock extends RotatedPillarBlock {
     public UndergardenLogBlock() {
-        super(MaterialColor.WOOD, Properties.create(Material.WOOD)
-                .hardnessAndResistance(2F, 2F)
+        super(Properties.create(Material.WOOD)
+                .hardnessAndResistance(2F)
                 .sound(SoundType.WOOD)
                 .harvestTool(ToolType.AXE)
         );

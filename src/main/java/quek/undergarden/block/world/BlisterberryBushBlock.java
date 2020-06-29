@@ -3,7 +3,6 @@ package quek.undergarden.block.world;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -14,16 +13,15 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
-import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenItems;
@@ -42,7 +40,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
                 .sound(SoundType.PLANT)
                 .tickRandomly()
                 .doesNotBlockMovement()
-                .lightValue(6)
+                .func_235838_a_((state) -> 6)
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
@@ -66,11 +64,6 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
     @Override
     public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
         return false;
-    }
-
-    @Override
-    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
-        return type == PathType.AIR && !this.blocksMovement || super.allowsMovement(state, worldIn, pos, type);
     }
 
     @Override
@@ -109,7 +102,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         //LivingEntity living = (LivingEntity)entityIn;
         if (entityIn != null && entityIn.getType() != UndergardenEntities.scintling) {
-            entityIn.setMotionMultiplier(state, new Vec3d(0.8F, 0.75D, 0.8F));
+            entityIn.setMotionMultiplier(state, new Vector3d(0.8F, 0.75D, 0.8F));
             if (!worldIn.isRemote && state.get(AGE) > 0 && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
                 double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
                 double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);

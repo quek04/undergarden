@@ -24,7 +24,7 @@ import java.awt.*;
 public class OthersideBiome extends UndergardenBiome {
 
     public OthersideBiome() {
-        super(new DefaultSurfaceBuilder(SurfaceBuilderConfig::deserialize),
+        super(new DefaultSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_),
                 new SurfaceBuilderConfig(UndergardenBlocks.tremblecrust.get().getDefaultState(), UndergardenBlocks.tremblecrust.get().getDefaultState(), UndergardenBlocks.tremblecrust.get().getDefaultState()),
                 Category.NONE,
                 0.3625F,

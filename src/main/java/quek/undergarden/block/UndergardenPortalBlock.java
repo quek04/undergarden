@@ -4,6 +4,7 @@ import com.google.common.cache.LoadingCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
@@ -47,7 +48,7 @@ public class UndergardenPortalBlock extends Block {
         super(Properties.create(Material.PORTAL)
                 .hardnessAndResistance(-1F)
                 .doesNotBlockMovement()
-                .lightValue(10)
+                .func_235838_a_((state) -> 10)
                 .noDrops()
         );
         setDefaultState(stateContainer.getBaseState().with(AXIS, Direction.Axis.X));
@@ -132,7 +133,7 @@ public class UndergardenPortalBlock extends Block {
                     double axis = helper.getForwards().getAxis() == Direction.Axis.X ? (double)helper.getFrontTopLeft().getZ() : (double)helper.getFrontTopLeft().getX();
                     double x = Math.abs(MathHelper.pct((helper.getForwards().getAxis() == Direction.Axis.X ? entity.getPosZ() : entity.getPosX()) - (double)(helper.getForwards().rotateY().getAxisDirection() == Direction.AxisDirection.NEGATIVE ? 1 : 0), axis, axis - (double)helper.getWidth()));
                     double y = MathHelper.pct(entity.getPosY() - 1.0D, helper.getFrontTopLeft().getY(), helper.getFrontTopLeft().getY() - helper.getHeight());
-                    entity.lastPortalVec = new Vec3d(x, y, 0.0D);
+                    entity.lastPortalVec = new Vector3d(x, y, 0.0D);
                     entity.teleportDirection = helper.getForwards();
                 }
 

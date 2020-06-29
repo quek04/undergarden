@@ -21,13 +21,10 @@ public class UndergardenSaplingBlock extends SaplingBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-        super.tick(state, worldIn, pos, rand);
+    public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+        super.randomTick(state, worldIn, pos, rand);
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        if (worldIn.getLight(pos.up()) >= 0 && rand.nextInt(7) == 0) {
-            this.placeTree(worldIn, pos, state, rand);
-        }
-
+        this.func_226942_a_(worldIn, pos, state, rand);
     }
 
 }

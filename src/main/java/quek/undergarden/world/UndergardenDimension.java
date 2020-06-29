@@ -3,6 +3,8 @@ package quek.undergarden.world;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.Dimension;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
@@ -20,7 +22,7 @@ import javax.annotation.Nullable;
 public class UndergardenDimension extends Dimension {
 
     public UndergardenDimension(World world, DimensionType dimensionType) {
-        super(world, dimensionType, 0);
+        super(world, dimensionType);
     }
 
     public static boolean isTheUndergarden(@Nullable World world) {

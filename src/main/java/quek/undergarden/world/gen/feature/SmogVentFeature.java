@@ -1,28 +1,27 @@
 package quek.undergarden.world.gen.feature;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.structure.StructureManager;
 import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
-import java.util.function.Function;
 
 public class SmogVentFeature extends Feature<NoFeatureConfig> {
 
-    public SmogVentFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactoryIn) {
-        super(configFactoryIn);
+    public SmogVentFeature(Codec<NoFeatureConfig> configCodec) {
+        super(configCodec);
     }
 
     @Override
-    public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean func_230362_a_(ISeedReader worldIn, StructureManager p_230362_2_, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
         while (worldIn.isAirBlock(pos) && pos.getY() > 2) {
             pos = pos.down();
         }
@@ -49,15 +48,15 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
                             Block block = blockstate.getBlock();
                             BlockPos ventPos = new BlockPos(pos.getX(), pos.getY() + 7, pos.getZ()); //
                             if (blockstate.isAir(worldIn, pos.add(i1, k, j1)) || block == UndergardenBlocks.ashen_deepturf.get()) {
-                                this.setBlockState(worldIn, pos.add(i1, k, j1), UndergardenBlocks.depthrock.get().getDefaultState());
+                                this.func_230367_a_(worldIn, pos.add(i1, k, j1), UndergardenBlocks.depthrock.get().getDefaultState());
                             }
-                            this.setBlockState(worldIn, ventPos, UndergardenBlocks.smog_vent.get().getDefaultState());
+                            this.func_230367_a_(worldIn, ventPos, UndergardenBlocks.smog_vent.get().getDefaultState());
 
                             if (k != 0 && l > 1) {
                                 blockstate = worldIn.getBlockState(pos.add(i1, -k, j1));
                                 block = blockstate.getBlock();
                                 if (blockstate.isAir(worldIn, pos.add(i1, -k, j1)) || block == UndergardenBlocks.ashen_deepturf.get()) {
-                                    this.setBlockState(worldIn, pos.add(i1, -k, j1), UndergardenBlocks.depthrock.get().getDefaultState());
+                                    this.func_230367_a_(worldIn, pos.add(i1, -k, j1), UndergardenBlocks.depthrock.get().getDefaultState());
                                 }
                             }
                         }
