@@ -36,7 +36,20 @@
       },
       {
         "name": "undergarden:music/pit_of_shivers", "stream": true
+      },
+      {
+        "name": "undergarden:music/another", "stream": true
+      },
+      {
+        "name": "undergarden:music/wrought", "stream": true
       }
+    ]
+  },
+  "item.blisterbomb": {
+    "category": "neutral",
+    "subtitle": "subtitles.item.blisterbomb",
+    "sounds": [
+      "undergarden:item/blisterbomb"
     ]
   },
   "entity.dweller_living": {

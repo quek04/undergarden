@@ -46,6 +46,7 @@ public class OthersideDimension extends Dimension {
         return new OthersideChunkGenerator(world, provider, othersideGen);
     }
 
+    /* TODO: LOOK INTO THIS NOT WORKING RIGHT
     @SubscribeEvent
     public static void teleportEntityEvent(EntityEvent event) {
         Entity entity = event.getEntity();
@@ -59,6 +60,7 @@ public class OthersideDimension extends Dimension {
 
         }
     }
+    */
 
     /*
     @Nullable

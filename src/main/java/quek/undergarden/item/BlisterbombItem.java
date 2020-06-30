@@ -11,6 +11,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.registry.UndergardenItemGroups;
+import quek.undergarden.registry.UndergardenSoundEvents;
 
 public class BlisterbombItem extends Item {
 
@@ -24,7 +25,7 @@ public class BlisterbombItem extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
-        worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+        worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), UndergardenSoundEvents.BLISTERBOMB_THROW, SoundCategory.NEUTRAL, 0.5F, 1F);
         playerIn.getCooldownTracker().setCooldown(this, 50);
         if (!worldIn.isRemote) {
             BlisterbombEntity blisterbomb = new BlisterbombEntity(worldIn, playerIn);
