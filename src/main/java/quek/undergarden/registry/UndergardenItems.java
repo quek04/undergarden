@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
@@ -72,6 +73,9 @@ public class UndergardenItems {
     public static final RegistryObject<BucketItem> virulent_mix_bucket = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(
             UndergardenFluids.virulent_mix_source, (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_GEAR).maxStackSize(1)));
 
+    public static final RegistryObject<FishBucketItem> gwibling_bucket = ITEMS.register("gwibling_bucket", () -> new FishBucketItem(
+            UndergardenEntities.gwibling, Fluids.WATER, (new Item.Properties()).maxStackSize(1).group(UndergardenItemGroups.UNDERGARDEN_GEAR)));
+
     //armors
     public static final RegistryObject<Item> cloggrum_helmet = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UndergardenArmorMaterials.CLOGGRUM, EquipmentSlotType.HEAD));
     public static final RegistryObject<Item> cloggrum_chestplate = ITEMS.register("cloggrum_chestplate", () -> new UndergardenArmorItem(UndergardenArmorMaterials.CLOGGRUM, EquipmentSlotType.CHEST));
@@ -96,6 +100,8 @@ public class UndergardenItems {
     public static final RegistryObject<Item> gloomgourd_pie = ITEMS.register("gloomgourd_pie", () -> new UndergardenItem(UndergardenFoods.GLOOMGOURD_PIE));
     public static final RegistryObject<Item> raw_dweller_meat = ITEMS.register("raw_dweller_meat", () -> new UndergardenItem(UndergardenFoods.RAW_DWELLER));
     public static final RegistryObject<Item> dweller_steak = ITEMS.register("dweller_steak", () -> new UndergardenItem(UndergardenFoods.COOKED_DWELLER));
+    public static final RegistryObject<Item> raw_gwibling = ITEMS.register("raw_gwibling", () -> new UndergardenItem(UndergardenFoods.RAW_GWIBLING));
+    public static final RegistryObject<Item> cooked_gwibling = ITEMS.register("cooked_gwibling", () -> new UndergardenItem(UndergardenFoods.COOKED_GWIBLING));
 
     //spawn eggs
     public static final RegistryObject<Item> dweller_spawn_egg = ITEMS.register("dweller_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.dweller, 4804417, 16776960));

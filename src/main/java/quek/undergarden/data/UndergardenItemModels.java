@@ -150,11 +150,15 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
 
         normalItem(UndergardenItems.virulent_mix_bucket);
 
+        normalItem(UndergardenItems.gwibling_bucket);
+
         normalItem(UndergardenItems.underbeans);
         normalItem(UndergardenItems.blisterberry);
         normalItem(UndergardenItems.gloomgourd_pie);
         normalItem(UndergardenItems.raw_dweller_meat);
         normalItem(UndergardenItems.dweller_steak);
+        normalItem(UndergardenItems.raw_gwibling);
+        normalItem(UndergardenItems.cooked_gwibling);
 
         egg(UndergardenItems.dweller_spawn_egg);
         egg(UndergardenItems.gwibling_spawn_egg);

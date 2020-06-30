@@ -161,6 +161,8 @@ public class UndergardenLang extends LanguageProvider {
 
         addItem(UndergardenItems.virulent_mix_bucket, "Virulent Mix Bucket");
 
+        addItem(UndergardenItems.gwibling_bucket, "Bucket of Gwibling");
+
         addItem(UndergardenItems.cloggrum_helmet, "Cloggrum Helmet");
         addItem(UndergardenItems.cloggrum_chestplate, "Cloggrum Chestplate");
         addItem(UndergardenItems.cloggrum_leggings, "Cloggrum Leggings");
@@ -181,6 +183,8 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.gloomgourd_pie, "Gloomgourd Pie");
         addItem(UndergardenItems.raw_dweller_meat, "Raw Dweller Meat");
         addItem(UndergardenItems.dweller_steak, "Dweller Steak");
+        addItem(UndergardenItems.raw_gwibling, "Raw Gwibling");
+        addItem(UndergardenItems.cooked_gwibling, "Cooked Gwibling");
 
         addItem(UndergardenItems.dweller_spawn_egg, "Dweller Spawn Egg");
         addItem(UndergardenItems.gwibling_spawn_egg, "Gwibling Spawn Egg");
