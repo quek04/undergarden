@@ -65,9 +65,9 @@ public class UndergardenTeleporter implements ITeleporter {
             } else {
                 double d0 = Double.MAX_VALUE;
 
-                for(int eX = -128; eX <= 128; ++eX) {
+                for(int eX = -250; eX <= 250; ++eX) {
                     BlockPos blockpos2;
-                    for(int eZ = -128; eZ <= 128; ++eZ) {
+                    for(int eZ = -250; eZ <= 250; ++eZ) {
                         for(BlockPos blockpos1 = pos.add(eX, world.getActualHeight() - 1 - pos.getY(), eZ); blockpos1.getY() >= 0; blockpos1 = blockpos2) {
                             blockpos2 = blockpos1.down();
                             if (world.getBlockState(blockpos1).getBlock() == UndergardenBlocks.undergarden_portal.get()) {

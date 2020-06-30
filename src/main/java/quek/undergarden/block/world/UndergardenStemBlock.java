@@ -80,7 +80,7 @@ public class UndergardenStemBlock extends StemBlock implements IGrowable {
                     Block block = soil.getBlock();
                     if (worldIn.isAirBlock(blockpos) && (soil.canSustainPlant(worldIn, blockpos.down(), Direction.UP, this) || block == Blocks.FARMLAND || block == UndergardenBlocks.deepsoil_farmland.get())) {
                         worldIn.setBlockState(blockpos, this.crop.getDefaultState());
-                        //worldIn.setBlockState(pos, this.crop.getAttachedStem().getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, direction));
+                        worldIn.setBlockState(pos, this.crop.getAttachedStem().getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, direction));
                     }
                 }
                 net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);

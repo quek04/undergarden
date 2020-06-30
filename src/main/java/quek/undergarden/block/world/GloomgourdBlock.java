@@ -52,6 +52,6 @@ public class GloomgourdBlock extends StemGrownBlock {
 
     @Override
     public AttachedStemBlock getAttachedStem() {
-        return null;
+        return UndergardenBlocks.gloomgourd_stem_attached.get();
     }
 }
