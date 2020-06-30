@@ -32,16 +32,14 @@ public class UndergardenLeavesBlock extends LeavesBlock {
         );
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        if (stateIn == UndergardenBlocks.smogstem_leaves.get().getDefaultState()) {
-            BlockPos blockpos = pos.down();
-            BlockState blockstate = worldIn.getBlockState(blockpos);
-            double d0 = (double) ((float) pos.getX() + rand.nextFloat());
-            double d1 = (double) pos.getY() - 0.05D;
-            double d2 = (double) ((float) pos.getZ() + rand.nextFloat());
-            worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-        }
+    @Override
+    public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+        return true;
+    }
+
+    @Override
+    public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+        return 300;
     }
 
     @Override
