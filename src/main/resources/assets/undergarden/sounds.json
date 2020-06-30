@@ -156,5 +156,28 @@
     "sounds": [
       "undergarden:entity/brute_aggro"
     ]
+  },
+  "entity.gloomper_living": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.gloomper_living",
+    "sounds": [
+      "undergarden:entity/gloomper_living_1",
+      "undergarden:entity/gloomper_living_2"
+    ]
+  },
+  "entity.gloomper_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.gloomper_hurt",
+    "sounds": [
+      "undergarden:entity/gloomper_hurt_1",
+      "undergarden:entity/gloomper_hurt_2"
+    ]
+  },
+  "entity.gloomper_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.gloomper_death",
+    "sounds": [
+      "undergarden:entity/gloomper_death"
+    ]
   }
 }

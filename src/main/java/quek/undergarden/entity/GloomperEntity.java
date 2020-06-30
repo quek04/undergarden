@@ -67,22 +67,20 @@ public class GloomperEntity extends AnimalEntity {
         return UndergardenEntities.GLOOMPER.get().create(world);
     }
 
-    /*
     @Override
     protected SoundEvent getAmbientSound() {
-        return UndergardenSoundEvents.DWELLER_LIVING;
+        return UndergardenSoundEvents.GLOOMPER_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UndergardenSoundEvents.DWELLER_HURT;
+        return UndergardenSoundEvents.GLOOMPER_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.DWELLER_DEATH;
+        return UndergardenSoundEvents.GLOOMPER_DEATH;
     }
-     */
 
     @Override
     protected float getSoundVolume() {
