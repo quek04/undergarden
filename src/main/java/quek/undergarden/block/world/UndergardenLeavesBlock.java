@@ -48,6 +48,7 @@ public class UndergardenLeavesBlock extends LeavesBlock {
     @Override
     public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
         return 300;
+    }
 
     public VoxelShape func_230335_e_(BlockState p_230335_1_, IBlockReader p_230335_2_, BlockPos p_230335_3_) {
         return VoxelShapes.empty();

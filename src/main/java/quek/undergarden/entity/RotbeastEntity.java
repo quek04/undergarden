@@ -2,6 +2,8 @@ package quek.undergarden.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,7 +32,7 @@ public class RotbeastEntity extends MonsterEntity {
         super(type, world);
     }
 
-    @Override //temporary ai?
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
@@ -41,14 +43,13 @@ public class RotbeastEntity extends MonsterEntity {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, DwellerEntity.class, true));
     }
 
-    @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80D);
-        this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3D);
-        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.22D);
-        this.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1D);
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MonsterEntity.func_233666_p_()
+                .func_233815_a_(Attributes.field_233818_a_, 80.0D) //hp
+                .func_233815_a_(Attributes.field_233826_i_, 3.0D) //armor
+                .func_233815_a_(Attributes.field_233823_f_, 10.0D) //attack damage
+                .func_233815_a_(Attributes.field_233821_d_, 0.22D) //speed
+                .func_233815_a_(Attributes.field_233820_c_, 0.5D); //knockback resist
     }
 
     @Override
@@ -77,7 +78,7 @@ public class RotbeastEntity extends MonsterEntity {
     public boolean attackEntityAsMob(Entity entityIn) {
         this.attackTimer = 10;
         this.world.setEntityState(this, (byte)4);
-        float f = this.func_226511_et_();
+        float f = this.getAttackDamage();
         float f1 = f > 0.0F ? f / 2.0F + (float)this.rand.nextInt((int)f) : 0.0F;
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f1);
         if (flag) {
@@ -89,8 +90,8 @@ public class RotbeastEntity extends MonsterEntity {
         return flag;
     }
 
-    private float func_226511_et_() {
-        return (float)this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue();
+    private float getAttackDamage() {
+        return (float)this.getAttribute(Attributes.field_233823_f_).getValue();
     }
 
     @Override
@@ -106,7 +107,7 @@ public class RotbeastEntity extends MonsterEntity {
 
             rotDweller.copyLocationAndAnglesFrom(dweller);
             dweller.remove();
-            rotDweller.onInitialSpawn(this.world, this.world.getDifficultyForLocation(new BlockPos(rotDweller)), SpawnReason.CONVERSION, new RotDwellerEntity.GroupData(false), (CompoundNBT)null);
+            rotDweller.onInitialSpawn(this.world, this.world.getDifficultyForLocation(new BlockPos(rotDweller.getPositionVec())), SpawnReason.CONVERSION, null, null);
             if (dweller.hasCustomName()) {
                 rotDweller.setCustomName(dweller.getCustomName());
                 rotDweller.setCustomNameVisible(dweller.isCustomNameVisible());

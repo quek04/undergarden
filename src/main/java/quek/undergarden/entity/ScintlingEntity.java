@@ -3,8 +3,9 @@ package quek.undergarden.entity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
@@ -33,13 +34,12 @@ public class ScintlingEntity extends AnimalEntity {
         this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
     }
 
-
-    @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(2D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.20D);
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return AnimalEntity.func_233666_p_()
+                .func_233815_a_(Attributes.field_233818_a_, 2.0D) //hp
+                .func_233815_a_(Attributes.field_233821_d_, 0.20D); //speed
     }
+
 
     public static boolean canScintlingSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
         return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.ashen_deepturf.get();

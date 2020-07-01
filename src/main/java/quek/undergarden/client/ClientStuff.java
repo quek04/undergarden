@@ -100,7 +100,6 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.dweller, DwellerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotdweller, RotDwellerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.gwibling, GwiblingRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.skiz_swarmer, SkizSwarmerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.brute, BruteRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.scintling, ScintlingRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.blisterbomber, BlisterbomberRender::new);

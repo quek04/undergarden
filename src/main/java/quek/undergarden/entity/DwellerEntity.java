@@ -2,6 +2,8 @@ package quek.undergarden.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -41,6 +43,12 @@ public class DwellerEntity extends AnimalEntity {
         this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
     }
 
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return AnimalEntity.func_233666_p_()
+                .func_233815_a_(Attributes.field_233818_a_, 15.0D) //hp
+                .func_233815_a_(Attributes.field_233821_d_, 0.15D); //speed
+    }
+
     public static boolean canDwellerSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
         return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get();
     }
@@ -61,12 +69,7 @@ public class DwellerEntity extends AnimalEntity {
         return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
     }
 
-    @Override
-    public void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.15D);
-    }
+
 
     @Override
     protected SoundEvent getAmbientSound() {

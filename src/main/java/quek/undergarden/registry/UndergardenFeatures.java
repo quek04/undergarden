@@ -1,8 +1,9 @@
 package quek.undergarden.registry;
 
+import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,12 +15,12 @@ public class UndergardenFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, UndergardenMod.MODID);
 
     //tree
-    public static final RegistryObject<Feature<TreeFeatureConfig>> SMOGSTEM_TREE = FEATURES.register(
-            "smogstem_tree", () -> new SmogstemFeature(TreeFeatureConfig::func_227338_a_));
-    public static final RegistryObject<Feature<TreeFeatureConfig>> FANCY_SMOGSTEM_TREE = FEATURES.register(
-            "fancy_smogstem", () -> new FancySmogstemFeature(TreeFeatureConfig::func_227338_a_));
-    public static final RegistryObject<Feature<TreeFeatureConfig>> WIGGLEWOOD_TREE = FEATURES.register(
-            "wigglewood_tree", () -> new WigglewoodFeature(TreeFeatureConfig::func_227338_a_));
+    public static final RegistryObject<Feature<BaseTreeFeatureConfig>> SMOGSTEM_TREE = FEATURES.register(
+            "smogstem_tree", () -> new TreeFeature(BaseTreeFeatureConfig.field_236676_a_));
+    public static final RegistryObject<Feature<BaseTreeFeatureConfig>> FANCY_SMOGSTEM_TREE = FEATURES.register(
+            "fancy_smogstem", () -> new TreeFeature(BaseTreeFeatureConfig.field_236676_a_));
+    public static final RegistryObject<Feature<BaseTreeFeatureConfig>> WIGGLEWOOD_TREE = FEATURES.register(
+            "wigglewood_tree", () -> new TreeFeature(BaseTreeFeatureConfig.field_236676_a_));
 
     //other
     public static final RegistryObject<Feature<NoFeatureConfig>> GLOWING_KELP = FEATURES.register(

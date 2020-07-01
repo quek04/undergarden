@@ -211,7 +211,6 @@ public class UndergardenLang extends LanguageProvider {
         addEntityType(UndergardenEntities.GWIBLING, "Gwibling");
         addEntityType(UndergardenEntities.ROTWALKER, "Rotwalker");
         addEntityType(UndergardenEntities.ROTBEAST, "Rotbeast");
-        addEntityType(UndergardenEntities.SKIZ_SWARMER, "Skiz Swarmer");
         addEntityType(UndergardenEntities.BRUTE, "Brute");
         addEntityType(UndergardenEntities.SCINTLING, "Scintling");
         addEntityType(UndergardenEntities.BLISTERBOMBER, "Blisterbomber");
