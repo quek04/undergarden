@@ -13,5 +13,5 @@ public class UndergardenWorldCarvers {
     public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister.create(ForgeRegistries.WORLD_CARVERS, UndergardenMod.MODID);
 
     public static final RegistryObject<WorldCarver<ProbabilityConfig>> UNDERGARDEN_CAVE = CARVERS.register(
-            "undergarden_cave", () -> new UndergardenCaveWorldCarver(ProbabilityConfig::deserialize));
+            "undergarden_cave", () -> new UndergardenCaveWorldCarver(ProbabilityConfig.field_236576_b_));
 }

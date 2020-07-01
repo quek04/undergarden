@@ -37,26 +37,21 @@ public class SlingshotItem extends ShootableItem {
                 .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
                 .rarity(Rarity.UNCOMMON)
         );
-        this.addPropertyOverride(new ResourceLocation("pull"), (p_210310_0_, p_210310_1_, p_210310_2_) -> {
-            if (p_210310_2_ == null) {
-                return 0.0F;
-            } else {
-                return !(p_210310_2_.getActiveItemStack().getItem() instanceof SlingshotItem) ? 0.0F : (float)(p_210310_0_.getUseDuration() - p_210310_2_.getItemInUseCount()) / 10.0F;
-            }
-        });
-        this.addPropertyOverride(new ResourceLocation("pulling"), (p_210309_0_, p_210309_1_, p_210309_2_) -> {
-            return p_210309_2_ != null && p_210309_2_.isHandActive() && p_210309_2_.getActiveItemStack() == p_210309_0_ ? 1.0F : 0.0F;
-        });
     }
 
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("tooltip.slingshot").applyTextStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("tooltip.slingshot").func_240701_a_(TextFormatting.GRAY));
     }
 
     @Override
     public Predicate<ItemStack> getInventoryAmmoPredicate() {
         return SLINGSHOT_AMMO;
+    }
+
+    @Override
+    public int func_230305_d_() {
+        return 10;
     }
 
     @Override
@@ -82,7 +77,7 @@ public class SlingshotItem extends ShootableItem {
                         DepthrockPebbleItem pebbleItem = (DepthrockPebbleItem) (itemstack.getItem() instanceof DepthrockPebbleItem ? itemstack.getItem() : UndergardenItems.depthrock_pebble.get());
                         SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(worldIn, entityLiving);
                         ammoEntity = ammo(ammoEntity);
-                        ammoEntity.shoot(playerentity, playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);
+                        ammoEntity.shoot(playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
                         stack.damageItem(1, playerentity, (p_220009_1_) -> {
                             p_220009_1_.sendBreakAnimation(playerentity.getActiveHand());

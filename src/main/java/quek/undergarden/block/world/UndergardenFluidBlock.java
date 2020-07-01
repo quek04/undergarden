@@ -5,16 +5,10 @@ import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.fluid.FlowingFluid;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import quek.undergarden.fluid.VirulentMixFluid;
-import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenFluids;
 
 import java.util.function.Supplier;

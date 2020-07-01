@@ -23,11 +23,11 @@ public class UndergardenFeatures {
 
     //other
     public static final RegistryObject<Feature<NoFeatureConfig>> GLOWING_KELP = FEATURES.register(
-            "glowing_kelp", () -> new GlowingKelpFeature(NoFeatureConfig::deserialize));
+            "glowing_kelp", () -> new GlowingKelpFeature(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<Feature<NoFeatureConfig>> SMOG_VENT = FEATURES.register(
-            "smog_vent", () -> new SmogVentFeature(NoFeatureConfig::deserialize));
+            "smog_vent", () -> new SmogVentFeature(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<Feature<NoFeatureConfig>> ENIGMATIC_STATUE = FEATURES.register(
-            "enigmatic_statue", () -> new EnigmaticStatueFeature(NoFeatureConfig::deserialize));
+            "enigmatic_statue", () -> new EnigmaticStatueFeature(NoFeatureConfig.field_236558_a_));
 
     //structures
 

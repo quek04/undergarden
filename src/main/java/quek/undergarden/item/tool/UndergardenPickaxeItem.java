@@ -36,7 +36,7 @@ public class UndergardenPickaxeItem extends PickaxeItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UndergardenItems.froststeel_pickaxe.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").applyTextStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").func_240701_a_(TextFormatting.GRAY));
         }
     }
 

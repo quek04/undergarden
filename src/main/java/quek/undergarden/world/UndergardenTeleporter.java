@@ -1,6 +1,7 @@
 package quek.undergarden.world;
 
 import com.google.common.collect.Maps;
+import net.minecraft.util.math.vector.Vector3d;
 import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
 import net.minecraft.block.BlockState;
@@ -10,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.*;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.server.TicketType;
 import net.minecraftforge.common.util.ITeleporter;
@@ -34,14 +36,14 @@ public class UndergardenTeleporter implements ITeleporter {
     }
 
     public boolean placeInPortal(ServerWorld world, Entity entity, float yaw) {
-        Vec3d vec3d = entity.getLastPortalVec();
+        Vector3d Vector3d = entity.getLastPortalVec();
         Direction direction = entity.getTeleportDirection();
-        BlockPattern.PortalInfo pattern = this.placeInExistingPortal(world, new BlockPos(entity.getPosX(), entity.getPosY(), entity.getPosZ()), entity.getMotion(), direction, vec3d.x, vec3d.y, entity instanceof PlayerEntity);
+        BlockPattern.PortalInfo pattern = this.placeInExistingPortal(world, new BlockPos(entity.getPosX(), entity.getPosY(), entity.getPosZ()), entity.getMotion(), direction, Vector3d.x, Vector3d.y, entity instanceof PlayerEntity);
         if (pattern == null) {
             return false;
         } else {
-            Vec3d position = pattern.pos;
-            Vec3d motion = pattern.motion;
+            Vector3d position = pattern.pos;
+            Vector3d motion = pattern.motion;
             entity.setMotion(motion);
             entity.rotationYaw = yaw + (float) pattern.rotation;
             entity.teleportKeepLoaded(position.x, position.y, position.z);
@@ -50,7 +52,7 @@ public class UndergardenTeleporter implements ITeleporter {
     }
 
     @Nullable
-    public BlockPattern.PortalInfo placeInExistingPortal(ServerWorld world, BlockPos pos, Vec3d motion, Direction direction, double x, double y, boolean isPlayer) {
+    public BlockPattern.PortalInfo placeInExistingPortal(ServerWorld world, BlockPos pos, Vector3d motion, Direction direction, double x, double y, boolean isPlayer) {
         boolean isFrame = true;
         BlockPos blockpos = null;
         ColumnPos columnpos = new ColumnPos(pos);
@@ -122,7 +124,7 @@ public class UndergardenTeleporter implements ITeleporter {
                 double ePosZ = (double) startZ + 0.5D - entity.getPosZ();
 
                 searchpos:
-                for (int startY = world.getActualHeight() - 1; startY >= 0; --startY) {
+                for (int startY = world.getHeight() - 1; startY >= 0; --startY) {
                     if (world.isAirBlock(mutable.setPos(startX, startY, startZ))) {
                         while (startY > 0 && world.isAirBlock(mutable.setPos(startX, startY - 1, startZ))) {
                             --startY;
@@ -173,7 +175,7 @@ public class UndergardenTeleporter implements ITeleporter {
                     double ePosZ2 = (double) startZ2 + 0.5D - entity.getPosZ();
 
                     label214:
-                    for (int startY2 = world.getActualHeight() - 1; startY2 >= 0; --startY2) {
+                    for (int startY2 = world.getHeight() - 1; startY2 >= 0; --startY2) {
                         if (world.isAirBlock(mutable.setPos(startX2, startY2, startZ2))) {
                             while (startY2 > 0 && world.isAirBlock(mutable.setPos(startX2, startY2 - 1, startZ2))) {
                                 --startY2;
@@ -222,7 +224,7 @@ public class UndergardenTeleporter implements ITeleporter {
         }
 
         if (d0 < 0.0D) {
-            yPos = MathHelper.clamp(yPos, 70, world.getActualHeight() - 10);
+            yPos = MathHelper.clamp(yPos, 70, world.getHeight() - 10);
             baseY = yPos;
 
             for (int j7 = -1; j7 <= 1; ++j7) {

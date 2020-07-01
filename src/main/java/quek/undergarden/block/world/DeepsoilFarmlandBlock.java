@@ -125,10 +125,4 @@ public class DeepsoilFarmlandBlock extends FarmlandBlock {
         return false;
     }
 
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public boolean isViewBlocking(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return true;
-    }
-
 }

@@ -20,7 +20,7 @@ archivesBaseName = 'undergarden'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200519-1.15.1'
+    mappings channel: 'snapshot', version: '20200514-1.16'
 
     runs {
         client {
@@ -79,7 +79,7 @@ sourceSets.main.resources {
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.15.2-31.2.27'
+    minecraft 'net.minecraftforge:forge:1.16.1-32.0.25'
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")

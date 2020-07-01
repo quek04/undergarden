@@ -21,7 +21,7 @@ import java.awt.*;
 public class ForgottenFieldBiome extends UndergardenBiome {
 
     public ForgottenFieldBiome() {
-        super(new DefaultSurfaceBuilder(SurfaceBuilderConfig::deserialize),
+        super(new DefaultSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_),
                 new SurfaceBuilderConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.PLAINS,
                 0.125F,

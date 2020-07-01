@@ -1,10 +1,7 @@
 package quek.undergarden.item.tool;
 
-import com.google.common.collect.Multimap;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
@@ -44,16 +41,6 @@ public class CloggrumBattleaxeItem extends SwordItem {
     @Override
     public boolean hasEffect(ItemStack stack) {
         return false;
-    }
-
-    @Override
-    public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-        Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
-        if(equipmentSlot == EquipmentSlotType.MAINHAND) {
-            //multimap.put(SharedMonsterAttributes.ATTACK_KNOCKBACK.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "generic.attackKnockback", 3, AttributeModifier.Operation.ADDITION));
-            multimap.put(PlayerEntity.REACH_DISTANCE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "generic.reachDistance", 3, AttributeModifier.Operation.ADDITION));
-        }
-        return multimap;
     }
 
 }

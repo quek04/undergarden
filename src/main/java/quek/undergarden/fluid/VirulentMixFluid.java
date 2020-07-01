@@ -1,6 +1,6 @@
 package quek.undergarden.fluid;
 
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
@@ -11,12 +11,12 @@ public class VirulentMixFluid extends ForgeFlowingFluid {
     }
 
     @Override
-    public boolean isSource(IFluidState state) {
+    public boolean isSource(FluidState state) {
         return false;
     }
 
     @Override
-    public int getLevel(IFluidState fluidState) {
+    public int getLevel(FluidState fluidState) {
         return 0;
     }
 

@@ -2,36 +2,37 @@ package quek.undergarden.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.*;
 import net.minecraft.util.ResourceLocation;
 import quek.undergarden.UndergardenMod;
 
 public class UndergardenTags {
 
+    private static final TagRegistry<Item> itemCollection = new TagRegistry<>();
+    private static final TagRegistry<Block> blockCollection = new TagRegistry<>();
+
     public static class Items {
 
-        public static final Tag<Item> SMOGSTEM_PLANKS = tag("smogstem_planks");
-        public static final Tag<Item> WIGGLEWOOD_PLANKS = tag("wigglewood_planks");
-        public static final Tag<Item> MUSHROOMS = tag("mushrooms");
+        public static final ITag.INamedTag<Item> SMOGSTEM_PLANKS = makeWrapperTag("smogstem_planks");
+        public static final ITag.INamedTag<Item> WIGGLEWOOD_PLANKS = makeWrapperTag("wigglewood_planks");
+        public static final ITag.INamedTag<Item> MUSHROOMS = makeWrapperTag("mushrooms");
 
-        public static final Tag<Item> CLOGGRUM_ITEMS = tag("cloggrum_items");
-        public static final Tag<Item> FROSTSTEEL_ITEMS = tag("froststeel_items");
-        public static final Tag<Item> UTHERIUM_ITEMS = tag("utherium_items");
+        public static final ITag.INamedTag<Item> CLOGGRUM_ITEMS = makeWrapperTag("cloggrum_items");
+        public static final ITag.INamedTag<Item> FROSTSTEEL_ITEMS = makeWrapperTag("froststeel_items");
+        public static final ITag.INamedTag<Item> UTHERIUM_ITEMS = makeWrapperTag("utherium_items");
 
-        private static Tag<Item> tag(String name) {
-            return new ItemTags.Wrapper(new ResourceLocation(UndergardenMod.MODID, name));
+        private static ITag.INamedTag<Item> makeWrapperTag(String name) {
+            return itemCollection.func_232937_a_(new ResourceLocation(UndergardenMod.MODID, name).toString());
         }
 
     }
 
     public static class Blocks {
 
-        public static final Tag<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
+        public static final ITag.INamedTag<Block> PORTAL_FRAME_BLOCKS = makeWrapperTag("portal_frame_blocks");
 
-        private static Tag<Block> tag(String name) {
-            return new BlockTags.Wrapper(new ResourceLocation(UndergardenMod.MODID, name));
+        private static ITag.INamedTag<Block> makeWrapperTag(String name) {
+            return blockCollection.func_232937_a_(new ResourceLocation(UndergardenMod.MODID, name).toString());
         }
 
     }
