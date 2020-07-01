@@ -22,7 +22,7 @@ public class BlisterbomberModel<T extends Entity> extends SegmentedModel<T> {
 
 		blisterbomber = new ModelRenderer(this);
 		blisterbomber.setRotationPoint(0.0F, 24.0F, 0.0F);
-		
+
 
 		body = new ModelRenderer(this);
 		body.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -33,8 +33,8 @@ public class BlisterbomberModel<T extends Entity> extends SegmentedModel<T> {
 		blade.setRotationPoint(0.0F, -21.0F, 0.0F);
 		body.addChild(blade);
 		blade.setTextureOffset(26, 14).addBox(-3.0F, -1.0F, -3.0F, 6.0F, 2.0F, 6.0F, 0.0F, false);
-		blade.setTextureOffset(0, 54).addBox(-27.0F, 0.0F, -2.0F, 54.0F, 0.0F, 4.0F, 0.0F, false);
-		blade.setTextureOffset(0, 0).addBox(-2.0F, 0.0F, -27.0F, 4.0F, 0.0F, 54.0F, 0.0F, false);
+		blade.setTextureOffset(0, 54).addBox(-27.0F, 0.0F, -7.0F, 54.0F, 0.0F, 14.0F, 0.0F, false);
+		blade.setTextureOffset(0, 0).addBox(-7.0F, 0.0F, -27.0F, 14.0F, 0.0F, 54.0F, 0.0F, false);
 
 		head = new ModelRenderer(this);
 		head.setRotationPoint(0.0F, -31.0F, 0.0F);
@@ -53,9 +53,9 @@ public class BlisterbomberModel<T extends Entity> extends SegmentedModel<T> {
 	@Override
 	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 		this.blade.rotateAngleY = entity.ticksExisted * 0.5F;
-		this.blisterbomber.rotateAngleX = MathHelper.sin((entity.ticksExisted) * 0.3F) * 0.3F;
-		this.blisterbomber.rotateAngleZ = MathHelper.sin((entity.ticksExisted) * 0.3F) * 0.3F;
-		this.blisterbomber.rotateAngleY = MathHelper.sin((entity.ticksExisted) * 0.3F) * 0.3F;
+		this.blisterbomber.rotateAngleX = MathHelper.sin((entity.ticksExisted) * 0.2F) * 0.2F;
+		this.blisterbomber.rotateAngleZ = MathHelper.sin((entity.ticksExisted) * 0.2F) * 0.2F;
+		this.blisterbomber.rotateAngleY = MathHelper.sin((entity.ticksExisted) * 0.2F) * 0.2F;
 	}
 
 	@Override

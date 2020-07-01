@@ -7,11 +7,11 @@ import net.minecraft.util.SoundCategory;
 import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.world.OthersideDimension;
 
-public class OthersideAmbienceSound extends LocatableSound implements ITickableSound {
+public class OthersideAmbianceSound extends LocatableSound implements ITickableSound {
 
     private static final Minecraft CLIENT = Minecraft.getInstance();
 
-    public OthersideAmbienceSound() {
+    public OthersideAmbianceSound() {
         super(UndergardenSoundEvents.OTHERSIDE_AMBIANCE, SoundCategory.AMBIENT);
         this.attenuationType = AttenuationType.NONE;
         this.repeat = true;

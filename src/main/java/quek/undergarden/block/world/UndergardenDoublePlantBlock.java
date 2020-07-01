@@ -47,6 +47,16 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
     }
 
     @Override
+    public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+        return true;
+    }
+
+    @Override
+    public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+        return 300;
+    }
+
+    @Override
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
         return block == UndergardenBlocks.deepturf_block.get() || block == UndergardenBlocks.deepsoil.get();

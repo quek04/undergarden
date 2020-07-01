@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "undergarden:raw_gwibling"
+  },
+  "result": "undergarden:cooked_gwibling",
+  "experience": 0.35,
+  "cookingtime": 200
+}

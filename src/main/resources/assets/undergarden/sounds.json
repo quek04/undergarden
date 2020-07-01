@@ -36,7 +36,20 @@
       },
       {
         "name": "undergarden:music/pit_of_shivers", "stream": true
+      },
+      {
+        "name": "undergarden:music/another", "stream": true
+      },
+      {
+        "name": "undergarden:music/wrought", "stream": true
       }
+    ]
+  },
+  "item.blisterbomb": {
+    "category": "neutral",
+    "subtitle": "subtitles.item.blisterbomb",
+    "sounds": [
+      "undergarden:item/blisterbomb"
     ]
   },
   "entity.dweller_living": {
@@ -142,6 +155,29 @@
     "subtitle": "subtitles.entity.brute_angry",
     "sounds": [
       "undergarden:entity/brute_aggro"
+    ]
+  },
+  "entity.gloomper_living": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.gloomper_living",
+    "sounds": [
+      "undergarden:entity/gloomper_living_1",
+      "undergarden:entity/gloomper_living_2"
+    ]
+  },
+  "entity.gloomper_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.gloomper_hurt",
+    "sounds": [
+      "undergarden:entity/gloomper_hurt_1",
+      "undergarden:entity/gloomper_hurt_2"
+    ]
+  },
+  "entity.gloomper_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.gloomper_death",
+    "sounds": [
+      "undergarden:entity/gloomper_death"
     ]
   }
 }

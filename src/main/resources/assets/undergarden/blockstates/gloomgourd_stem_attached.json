@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=west": { "model": "undergarden:block/gloomgourd_stem_attached" },
+        "facing=east": { "model": "undergarden:block/gloomgourd_stem_attached", "y": 180 },
+        "facing=north": { "model": "undergarden:block/gloomgourd_stem_attached", "y": 90 },
+        "facing=south": { "model": "undergarden:block/gloomgourd_stem_attached", "y": 270 }
+    }
+}

@@ -10,6 +10,8 @@ public class UndergardenFoods {
     public static final Food RAW_DWELLER = buildRawMeat();
     public static final Food COOKED_DWELLER = buildMeat();
     public static final Food GOO_BALL = (new Food.Builder().hunger(0).saturation(0).setAlwaysEdible().build());
+    public static final Food RAW_GWIBLING = (new Food.Builder()).hunger(2).saturation(0.1F).build();
+    public static final Food COOKED_GWIBLING = (new Food.Builder()).hunger(5).saturation(0.6F).build();
 
     public static Food buildRawMeat() {
         return (new Food.Builder().hunger(3).saturation(0.3F).meat().build());

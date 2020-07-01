@@ -24,8 +24,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.UndergardenMod;
-import quek.undergarden.client.audio.OthersideAmbienceSound;
-import quek.undergarden.client.audio.UndergardenAmbienceSound;
+import quek.undergarden.client.audio.OthersideAmbianceSound;
+import quek.undergarden.client.audio.UndergardenAmbianceSound;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
@@ -44,8 +44,8 @@ public class ClientStuff {
     private static final Minecraft CLIENT = Minecraft.getInstance();
 
     private static ISound playingMusic;
-    private static final ISound UNDERGARDEN_AMBIENCE = new UndergardenAmbienceSound();
-    private static final ISound OTHERSIDE_AMBIENCE = new OthersideAmbienceSound();
+    private static final ISound UNDERGARDEN_AMBIENCE = new UndergardenAmbianceSound();
+    private static final ISound OTHERSIDE_AMBIENCE = new OthersideAmbianceSound();
 
     private static void render(Supplier<? extends Block> block, RenderType render) {
         RenderTypeLookup.setRenderLayer(block.get(), render);
@@ -84,6 +84,7 @@ public class ClientStuff {
         render(UndergardenBlocks.ashen_tall_deepturf, cutout);
         render(UndergardenBlocks.blisterberry_bush, cutout);
         render(UndergardenBlocks.gloomgourd_stem, cutout);
+        render(UndergardenBlocks.gloomgourd_stem_attached, cutout);
         //render(UndergardenBlocks.droopweed, cutout);
     }
 
@@ -117,7 +118,8 @@ public class ClientStuff {
                 UndergardenBlocks.shimmerweed.get(),
                 UndergardenBlocks.double_deepturf.get(),
                 UndergardenBlocks.double_shimmerweed.get(),
-                UndergardenBlocks.gloomgourd_stem.get()
+                UndergardenBlocks.gloomgourd_stem.get(),
+                UndergardenBlocks.gloomgourd_stem_attached.get()
         );
     }
 
