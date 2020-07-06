@@ -90,7 +90,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);
-        normalItem(UndergardenItems.smogstem_stick);
+        toolItem(UndergardenItems.smogstem_stick);
         normalItem(UndergardenItems.twistytwig);
         normalItem(UndergardenItems.cloggrum_ingot);
         normalItem(UndergardenItems.cloggrum_nugget);
