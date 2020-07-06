@@ -130,10 +130,22 @@ public class ClientStuff {
         iColors.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), null, null, 0),
                 UndergardenBlocks.deepturf_block.get(),
                 UndergardenBlocks.tall_deepturf.get(),
-                //UndergardenBlocks.shimmerweed.get(),
-                //UndergardenBlocks.double_shimmerweed.get(),
+                UndergardenBlocks.shimmerweed.get(),
+                UndergardenBlocks.double_shimmerweed.get(),
                 UndergardenBlocks.double_deepturf.get()
         );
+
+        iColors.register((stack, tint) -> {
+                    if(tint == 0) {
+                        return new Color(91, 117, 91).getRGB();
+                    }
+                    return -1;
+                },
+
+                UndergardenBlocks.shimmerweed.get(),
+                UndergardenBlocks.double_shimmerweed.get()
+        );
+
     }
 
     /* TODO: MAKE COLORS WORK WITH THIS, APPARENTLY WHAT IS ABOVE IS THE INCORRECT WAY. BUT WHAT'S BELOW DOESNT DO JACK SHIT?
