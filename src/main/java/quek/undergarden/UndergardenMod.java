@@ -106,7 +106,7 @@ public class UndergardenMod {
 		}
 
 		@SubscribeEvent
-		public static void registerModDimension(final RegisterDimensionsEvent event) {
+		public static void registerDimensions(final RegisterDimensionsEvent event) {
 			ResourceLocation undergarden = new ResourceLocation(UndergardenMod.MODID, "undergarden");
 			ResourceLocation otherside = new ResourceLocation(UndergardenMod.MODID, "otherside");
 
@@ -121,7 +121,7 @@ public class UndergardenMod {
 				otherside_dimension = DimensionManager.registerDimension(otherside, UndergardenDimensions.OTHERSIDE.get(), new PacketBuffer(Unpooled.buffer()), true);
 				DimensionManager.keepLoaded(otherside_dimension, false);
 			} else {
-				otherside_dimension = DimensionType.byName(undergarden);
+				otherside_dimension = DimensionType.byName(otherside);
 			}
 		}
 
