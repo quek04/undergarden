@@ -42,9 +42,11 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.blisterberry_bush, "Blisterberry Bush");
         addBlock(UndergardenBlocks.smogstem_sapling, "Smogstem Sapling");
         addBlock(UndergardenBlocks.smogstem_log, "Smogstem Log");
+        addBlock(UndergardenBlocks.smogstem_wood, "Smogstem Wood");
         addBlock(UndergardenBlocks.smogstem_leaves, "Smogstem Leaves");
         addBlock(UndergardenBlocks.wigglewood_sapling, "Wigglewood Sapling");
         addBlock(UndergardenBlocks.wigglewood_log, "Wigglewood Log");
+        addBlock(UndergardenBlocks.wigglewood_wood, "Wigglewood.. Wood");
         addBlock(UndergardenBlocks.wigglewood_leaves, "Wigglewood Leaves");
         addBlock(UndergardenBlocks.tall_deepturf, "Deepturf");
         addBlock(UndergardenBlocks.ashen_tall_deepturf, "Ashen Deepturf");
@@ -132,7 +134,6 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.blisterbomb, "Blisterbomb");
 
         addItem(UndergardenItems.masticator_scales, "Masticator Scales");
-        addItem(UndergardenItems.masticated_shield, "Masticated Shield");
         addItem(UndergardenItems.masticated_chestplate, "Masticated Chestplate");
         //addItem(UndergardenItems.cloggrum_battleaxe, "Cloggrum Battle Axe");
 
@@ -253,7 +254,7 @@ public class UndergardenLang extends LanguageProvider {
         add("advancement.slay_masticator.desc", "Slay the Masticator.");
 
         add("advancement.masticated_armory.title", "Masticated Armory");
-        add("advancement.masticated_armory.desc", "Craft both the Masticated Chestplate and Shield.");
+        add("advancement.masticated_armory.desc", "Craft the Masticated Chestplate.");
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");

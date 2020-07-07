@@ -61,9 +61,11 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", BlisterberryBushBlock::new);
     public static final RegistryObject<SaplingBlock> smogstem_sapling = registerBlock("smogstem_sapling", () -> new UndergardenSaplingBlock(new SmogstemTree()));
     public static final RegistryObject<LogBlock> smogstem_log = registerBlock("smogstem_log", UndergardenLogBlock::new);
+    public static final RegistryObject<Block> smogstem_wood = registerBlock("smogstem_wood", () -> new UndergardenBlock(Block.Properties.from(UndergardenBlocks.smogstem_log.get())));
     public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", UndergardenLeavesBlock::new);
     public static final RegistryObject<SaplingBlock> wigglewood_sapling = registerBlock("wigglewood_sapling", () -> new UndergardenSaplingBlock(new WigglewoodTree()));
     public static final RegistryObject<LogBlock> wigglewood_log = registerBlock("wigglewood_log", UndergardenLogBlock::new);
+    public static final RegistryObject<Block> wigglewood_wood = registerBlock("wigglewood_wood", () -> new UndergardenBlock(Block.Properties.from(UndergardenBlocks.wigglewood_log.get())));
     public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", UndergardenLeavesBlock::new);
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UndergardenTallGrassBlock::new);
     public static final RegistryObject<Block> ashen_tall_deepturf = registerBlock("ashen_tall_deepturf", AshenTallDeepturfBlock::new);

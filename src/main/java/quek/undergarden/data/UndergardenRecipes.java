@@ -1,6 +1,5 @@
 package quek.undergarden.data;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.ShapedRecipeBuilder;
@@ -29,6 +28,9 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeBricks(UndergardenBlocks.depthrock_bricks, UndergardenBlocks.depthrock).build(consumer);
         makeBricks(UndergardenBlocks.shiverstone_bricks, UndergardenBlocks.shiverstone).build(consumer);
         makeBricks(UndergardenBlocks.tremblecrust_bricks, UndergardenBlocks.tremblecrust).build(consumer);
+
+        makeWood(UndergardenBlocks.smogstem_wood, UndergardenBlocks.smogstem_log).build(consumer);
+        makeWood(UndergardenBlocks.wigglewood_wood, UndergardenBlocks.wigglewood_log).build(consumer);
 
         makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
         //makeSticks(UndergardenItems.twistytwig, UndergardenTags.Items.WIGGLEWOOD_PLANKS).build(consumer, name("twistytwig"));
@@ -74,15 +76,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .key('B', UndergardenItems.rotten_blisterberry.get())
                 .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
                 .addCriterion("has_blisterberry", hasItem(UndergardenItems.rotten_blisterberry.get()))
-                .build(consumer);
-
-        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.masticated_shield.get())
-                .patternLine("MCM")
-                .patternLine("MMM")
-                .patternLine(" M ")
-                .key('M', UndergardenItems.masticator_scales.get())
-                .key('C', UndergardenItems.cloggrum_ingot.get())
-                .addCriterion("has_scales", hasItem(UndergardenItems.masticator_scales.get()))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.cloggrum_shield.get())

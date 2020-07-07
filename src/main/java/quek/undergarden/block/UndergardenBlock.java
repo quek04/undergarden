@@ -25,4 +25,8 @@ public class UndergardenBlock extends Block {
                 .lightValue(light)
         );
     }
+
+    public UndergardenBlock(Properties properties) {
+        super(properties);
+    }
 }
