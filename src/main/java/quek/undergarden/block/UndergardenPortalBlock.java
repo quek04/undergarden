@@ -140,7 +140,7 @@ public class UndergardenPortalBlock extends Block {
                     if (entity.world.getServer().getAllowNether() && !entity.isPassenger()) {
                         entity.timeUntilPortal = entity.getPortalCooldown();
                         DimensionType type = worldIn.dimension.getType() == UndergardenMod.undergarden_dimension ? DimensionType.OVERWORLD : UndergardenMod.undergarden_dimension;
-                        entity.changeDimension(type, new UndergardenTeleporter(worldIn.getServer().getWorld(UndergardenMod.undergarden_dimension)));
+                        entity.changeDimension(type, new UndergardenTeleporter());
                     }
                 }
             }
