@@ -78,7 +78,7 @@ public class UndergardenBiomeFeatures {
     public static final LiquidsConfig VIRULENT_SPRING_CONFIG = new LiquidsConfig(UndergardenFluids.virulent_mix_source.get().getDefaultState(), false, 4, 1, ImmutableSet.of(UndergardenBlocks.depthrock.get(), UndergardenBlocks.tremblecrust.get()));
 
     public static void addNormalStuff(Biome biome) {
-        biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
+        biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenWorldCarvers.UNDERGARDEN_CAVE.get(), new ProbabilityConfig(.5F)));
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 255))));
         //biome.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(WATER)).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(20))));
         //biome.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(VIRULENT)).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(5))));

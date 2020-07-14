@@ -17,6 +17,7 @@ import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenBiomeFeatures;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UndergardenWorldCarvers;
 
 import java.awt.*;
 
@@ -35,14 +36,13 @@ public class BarrenAbyssBiome extends UndergardenBiome {
 
     @Override
     public void addFeatures() {
-        this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenMod.ForgeEventBus.UNDERGARDEN_CAVE, new ProbabilityConfig(.5F)));
+        this.addCarver(GenerationStage.Carving.AIR, createCarver(UndergardenWorldCarvers.UNDERGARDEN_CAVE.get(), new ProbabilityConfig(.5F)));
         UndergardenBiomeFeatures.addOres(this);
         UndergardenBiomeFeatures.addUnderwaterPlants(this);
         UndergardenBiomeFeatures.addBlockVariants(this);
         UndergardenBiomeFeatures.addSediment(this);
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.VIRULENT_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 255))));
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(UndergardenBiomeFeatures.DITCHBULB_PLANT_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(10))));
-        this.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(UndergardenBlocks.virulent_mix.get().getDefaultState())).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(50))));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTWALKER.get(), 50, 4, 8));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTBEAST.get(), 25, 2, 4));
     }

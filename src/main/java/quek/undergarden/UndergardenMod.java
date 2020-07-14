@@ -125,13 +125,5 @@ public class UndergardenMod {
 			}
 		}
 
-		@SubscribeEvent
-		public static void registerWorldCarver(final RegistryEvent.Register<WorldCarver<?>> event) {
-			event.getRegistry().register(new UndergardenCaveWorldCarver(ProbabilityConfig::deserialize));
-		}
-
-		@ObjectHolder("undergarden:undergarden_cave")
-		public static UndergardenCaveWorldCarver UNDERGARDEN_CAVE;
-
 	}
 }

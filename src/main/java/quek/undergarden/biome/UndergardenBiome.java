@@ -20,7 +20,7 @@ public abstract class UndergardenBiome extends Biome {
                 .temperature(temp)
                 .downfall(0)
                 .waterColor(342306)
-                .waterFogColor(0)
+                .waterFogColor(342306)
                 .parent((null))
         );
     }
