@@ -37,8 +37,6 @@ public class UndergardenEntities {
             .size(1, 1.8F).build("rotdweller");
     public static final EntityType<GwiblingEntity> gwibling = EntityType.Builder.create(GwiblingEntity::new, EntityClassification.WATER_CREATURE)
             .size(.5F, .5F).build("gwibling");
-    public static final EntityType<SkizSwarmerEntity> skiz_swarmer = EntityType.Builder.create(SkizSwarmerEntity::new, EntityClassification.MONSTER)
-            .size(.5F, .5F).build("skiz_swarmer");
     public static final EntityType<BruteEntity> brute = EntityType.Builder.create(BruteEntity::new, EntityClassification.CREATURE)
             .size(1, 2).build("brute");
     public static final EntityType<ScintlingEntity> scintling = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
@@ -60,7 +58,6 @@ public class UndergardenEntities {
     public static final RegistryObject<EntityType<DwellerEntity>> DWELLER = ENTITIES.register("dweller", () -> dweller);
     public static final RegistryObject<EntityType<RotDwellerEntity>> ROTDWELLER = ENTITIES.register("rotdweller", () -> rotdweller);
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> gwibling);
-    public static final RegistryObject<EntityType<SkizSwarmerEntity>> SKIZ_SWARMER = ENTITIES.register("skiz_swarmer", () -> skiz_swarmer);
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> brute);
     public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> scintling);
     public static final RegistryObject<EntityType<BlisterbomberEntity>> BLISTERBOMBER = ENTITIES.register("blisterbomber", () -> blisterbomber);

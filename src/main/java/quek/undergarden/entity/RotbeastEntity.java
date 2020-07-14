@@ -30,7 +30,7 @@ public class RotbeastEntity extends MonsterEntity {
         super(type, world);
     }
 
-    @Override //temporary ai?
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
@@ -57,7 +57,7 @@ public class RotbeastEntity extends MonsterEntity {
     }
 
     public static boolean canRotbeastSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL || worldIn.getBlockState(pos).getBlock() == UndergardenBlocks.tremblecrust.get() && canSpawnOn(type, worldIn, reason, pos, randomIn) && randomIn.nextInt(20) == 0;
+        return worldIn.getDifficulty() != Difficulty.PEACEFUL || worldIn.getBlockState(pos).getBlock() == UndergardenBlocks.tremblecrust.get() || canSpawnOn(type, worldIn, reason, pos, randomIn) && randomIn.nextInt(20) == 0;
     }
 
     @Override
@@ -145,8 +145,4 @@ public class RotbeastEntity extends MonsterEntity {
         this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
     }
 
-    @Override
-    protected float getSoundVolume() {
-        return 0.5f;
-    }
 }
