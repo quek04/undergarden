@@ -28,6 +28,7 @@ public class UndergardenBiomes {
         BiomeDictionary.addTypes(DENSE_FOREST.get(), BiomeDictionary.Type.FOREST);
         BiomeDictionary.addTypes(BARREN_ABYSS.get(), BiomeDictionary.Type.DEAD);
         BiomeDictionary.addTypes(SMOG_SPIRES.get(), BiomeDictionary.Type.DEAD);
+        BiomeDictionary.addTypes(OTHERSIDE.get(), BiomeDictionary.Type.VOID);
     }
 
     public static void addBiomeFeatures() {
