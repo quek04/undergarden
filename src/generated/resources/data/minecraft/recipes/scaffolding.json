@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "STS",
+    "S S",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "undergarden:smogstem_stick"
+    },
+    "T": {
+      "item": "undergarden:twistytwig"
+    }
+  },
+  "result": {
+    "item": "minecraft:scaffolding",
+    "count": 6
+  }
+}

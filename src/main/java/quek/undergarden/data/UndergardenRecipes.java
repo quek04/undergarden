@@ -1,5 +1,6 @@
 package quek.undergarden.data;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.ShapedRecipeBuilder;
@@ -40,6 +41,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .patternLine(" P")
                 .key('P', UndergardenBlocks.wigglewood_planks.get())
                 .addCriterion("has_wigglewood_planks", hasItem(UndergardenBlocks.wigglewood_planks.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(Blocks.SCAFFOLDING, 6)
+                .patternLine("STS")
+                .patternLine("S S")
+                .patternLine("S S")
+                .key('S', UndergardenItems.smogstem_stick.get())
+                .key('T', UndergardenItems.twistytwig.get())
+                .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
+                .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.gloom_o_lantern.get())
