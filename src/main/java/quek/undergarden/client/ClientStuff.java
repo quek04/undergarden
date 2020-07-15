@@ -23,29 +23,24 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.UndergardenMod;
-import quek.undergarden.client.audio.OthersideAmbianceSound;
-import quek.undergarden.client.audio.UndergardenAmbianceSound;
+import quek.undergarden.client.audio.*;
 import quek.undergarden.client.render.entity.*;
-import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenSoundEvents;
-import quek.undergarden.world.OthersideDimension;
-import quek.undergarden.world.UndergardenDimension;
+import quek.undergarden.registry.*;
+import quek.undergarden.world.*;
 
 import java.awt.*;
 import java.util.Arrays;
 import java.util.function.Supplier;
 
 @OnlyIn(Dist.CLIENT)
-@Mod.EventBusSubscriber(modid = UndergardenMod.MODID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber
 public class ClientStuff {
 
     private static final Minecraft CLIENT = Minecraft.getInstance();
 
     private static ISound playingMusic;
-    private static final ISound UNDERGARDEN_AMBIENCE = new UndergardenAmbianceSound();
-    private static final ISound OTHERSIDE_AMBIENCE = new OthersideAmbianceSound();
+    private static final ISound UNDERGARDEN_AMBIANCE = new UndergardenAmbianceSound();
+    private static final ISound OTHERSIDE_AMBIANCE = new OthersideAmbianceSound();
 
     private static void render(Supplier<? extends Block> block, RenderType render) {
         RenderTypeLookup.setRenderLayer(block.get(), render);
@@ -85,7 +80,6 @@ public class ClientStuff {
         render(UndergardenBlocks.blisterberry_bush, cutout);
         render(UndergardenBlocks.gloomgourd_stem, cutout);
         render(UndergardenBlocks.gloomgourd_stem_attached, cutout);
-        //render(UndergardenBlocks.droopweed, cutout);
     }
 
     public static void registerEntityRenderers() {
@@ -147,42 +141,6 @@ public class ClientStuff {
 
     }
 
-    /* TODO: MAKE COLORS WORK WITH THIS, APPARENTLY WHAT IS ABOVE IS THE INCORRECT WAY. BUT WHAT'S BELOW DOESNT DO JACK SHIT?
-    @SubscribeEvent
-    public static void registerBlockColors(ColorHandlerEvent.Block event) {
-        BlockColors colors = event.getBlockColors();
-        colors.register((state, light, pos, tint) ->
-                light != null && pos != null ? BiomeColors.getGrassColor(light, state.get(ShearableDoublePlantBlock.PLANT_HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1,
-                UndergardenBlocks.double_deepturf.get(),
-                UndergardenBlocks.double_shimmerweed.get()
-        );
-        colors.register((state, light, pos, tint) ->
-                light != null && pos != null ? BiomeColors.getGrassColor(light, pos) : new Color(91, 117, 91).getRGB(),
-                UndergardenBlocks.deepturf_block.get(),
-                UndergardenBlocks.tall_deepturf.get(),
-                UndergardenBlocks.shimmerweed.get()
-        );
-    }
-
-    @SubscribeEvent
-    public static void registerItemColors(ColorHandlerEvent.Item event) {
-        ItemColors itemColors = event.getItemColors();
-        BlockColors blockColors = event.getBlockColors();
-        itemColors.register((stack, tint) -> new Color(91, 117, 91).getRGB(),
-                UndergardenBlocks.double_deepturf.get(),
-                UndergardenBlocks.double_shimmerweed.get()
-        );
-        itemColors.register((stack, tint) -> {
-            BlockState blockstate = ((BlockItem)stack.getItem()).getBlock().getDefaultState();
-            return blockColors.getColor(blockstate, null, null, tint);
-        },
-                UndergardenBlocks.deepturf_block.get(),
-                UndergardenBlocks.tall_deepturf.get(),
-                UndergardenBlocks.shimmerweed.get()
-        );
-    }
-    */
-
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         if (!CLIENT.isGamePaused()) {
@@ -198,10 +156,10 @@ public class ClientStuff {
             }
 
             if(UndergardenDimension.isTheUndergarden(player.world)) {
-                doAmbience(UNDERGARDEN_AMBIENCE);
+                doAmbiance(UNDERGARDEN_AMBIANCE);
             }
             if(OthersideDimension.isTheOtherside(player.world)) {
-                doAmbience(OTHERSIDE_AMBIENCE);
+                doAmbiance(OTHERSIDE_AMBIANCE);
             }
         }
     }
@@ -230,7 +188,7 @@ public class ClientStuff {
         return Arrays.stream(stackTrace).anyMatch(e -> e.getClassName().equals(MusicTicker.class.getName()));
     }
 
-    private static void doAmbience(ISound sound) {
+    private static void doAmbiance(ISound sound) {
         SoundHandler soundHandler = CLIENT.getSoundHandler();
         if (!soundHandler.isPlaying(sound)) {
             try {

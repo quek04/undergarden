@@ -66,7 +66,10 @@ public class UndergardenSoundEvents {
                 BRUTE_LIVING,
                 BRUTE_HURT,
                 BRUTE_DEATH,
-                BRUTE_ANGRY
+                BRUTE_ANGRY,
+                GLOOMPER_LIVING,
+                GLOOMPER_HURT,
+                GLOOMPER_DEATH
         );
     }
 
