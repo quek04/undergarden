@@ -1,9 +1,7 @@
 package quek.undergarden.biome;
 
-import com.google.common.collect.Lists;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.*;
 import net.minecraft.world.gen.surfacebuilders.DefaultSurfaceBuilder;
@@ -13,7 +11,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBiomeFeatures;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenFeatures;
 
 import java.awt.*;
 

@@ -90,6 +90,12 @@ public class MasticatorEntity extends MonsterEntity {
     }
 
     @Override
+    public void onKillEntity(LivingEntity entityLivingIn) {
+        super.onKillEntity(entityLivingIn);
+        this.heal(this.getHealth() / 4);
+    }
+
+    @Override
     public void addTrackingPlayer(ServerPlayerEntity player) {
         super.addTrackingPlayer(player);
         this.bossInfo.addPlayer(player);
