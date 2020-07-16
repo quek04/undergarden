@@ -1,16 +1,24 @@
 package quek.undergarden.world.gen;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
+import net.minecraft.world.chunk.IChunk;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.NoiseChunkGenerator;
 import net.minecraft.world.gen.OctavesNoiseGenerator;
+import net.minecraft.world.gen.WorldGenRegion;
+import quek.undergarden.UndergardenConfig;
 
 import java.util.List;
+import java.util.Random;
 
 public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGenerationSettings> {
     private final double[] field_222573_h = this.func_222572_j();
@@ -144,5 +152,72 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
     @Override
     public int getSeaLevel() {
         return 32;
+    }
+
+    @Override
+    public void generateSurface(WorldGenRegion p_225551_1_, IChunk p_225551_2_) {
+        ChunkPos chunkpos = p_225551_2_.getPos();
+        int i = chunkpos.x;
+        int j = chunkpos.z;
+        SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
+        sharedseedrandom.setBaseChunkSeed(i, j);
+        ChunkPos chunkpos1 = p_225551_2_.getPos();
+        int k = chunkpos1.getXStart();
+        int l = chunkpos1.getZStart();
+        double d0 = 0.0625D;
+        BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+
+        for(int i1 = 0; i1 < 16; ++i1) {
+            for(int j1 = 0; j1 < 16; ++j1) {
+                int k1 = k + i1;
+                int l1 = l + j1;
+                int i2 = p_225551_2_.getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, i1, j1) + 1;
+                double d1 = this.surfaceDepthNoise.noiseAt((double)k1 * 0.0625D, (double)l1 * 0.0625D, 0.0625D, (double)i1 * 0.0625D) * 15.0D;
+                p_225551_1_.getBiome(blockpos$mutable.setPos(k + i1, i2, l + j1)).buildSurface(sharedseedrandom, p_225551_2_, k1, l1, i2, d1, this.getSettings().getDefaultBlock(), this.getSettings().getDefaultFluid(), this.getSeaLevel(), this.world.getSeed());
+            }
+        }
+
+        this.makeBedrock(p_225551_2_, sharedseedrandom);
+    }
+
+    @Override
+    protected void makeBedrock(IChunk chunkIn, Random rand) {
+        BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+        int i = chunkIn.getPos().getXStart();
+        int j = chunkIn.getPos().getZStart();
+        UndergardenGenerationSettings t = this.getSettings();
+        int k = t.getBedrockFloorHeight();
+        int l = t.getBedrockRoofHeight();
+
+        for(BlockPos blockpos : BlockPos.getAllInBoxMutable(i, 0, j, i + 15, 0, j + 15)) {
+            //roof
+            if (l > 0) {
+                for(int i1 = l; i1 >= l - 4; --i1) {
+                    if (i1 >= l - rand.nextInt(5)) {
+                        if(UndergardenConfig.genObsidianRoof.get()) {
+                            chunkIn.setBlockState(blockpos$mutable.setPos(blockpos.getX(), i1, blockpos.getZ()), Blocks.OBSIDIAN.getDefaultState(), false);
+                        }
+                        else if(!UndergardenConfig.genObsidianRoof.get()) {
+                            chunkIn.setBlockState(blockpos$mutable.setPos(blockpos.getX(), i1, blockpos.getZ()), Blocks.BEDROCK.getDefaultState(), false);
+                        }
+                    }
+                }
+            }
+
+            //floor
+            if (k < 256) {
+                for(int j1 = k + 4; j1 >= k; --j1) {
+                    if (j1 <= k + rand.nextInt(5)) {
+                        if(UndergardenConfig.genObsidianFloor.get()) {
+                            chunkIn.setBlockState(blockpos$mutable.setPos(blockpos.getX(), j1, blockpos.getZ()), Blocks.OBSIDIAN.getDefaultState(), false);
+                        }
+                        else if(!UndergardenConfig.genObsidianFloor.get()) {
+                            chunkIn.setBlockState(blockpos$mutable.setPos(blockpos.getX(), j1, blockpos.getZ()), Blocks.BEDROCK.getDefaultState(), false);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

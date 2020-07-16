@@ -11,15 +11,19 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 
+import org.apache.commons.lang3.tuple.Pair;
 import quek.undergarden.client.ClientStuff;
 import quek.undergarden.data.*;
 import quek.undergarden.registry.*;
@@ -52,6 +56,10 @@ public class UndergardenMod {
 		UndergardenWorldCarvers.CARVERS.register(bus);
 		UndergardenEffects.EFFECTS.register(bus);
 		UndergardenFluids.FLUIDS.register(bus);
+
+		final Pair<UndergardenConfig.CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(UndergardenConfig.CommonConfig::new);
+
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, specPairCommon.getRight());
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
