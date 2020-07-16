@@ -38,8 +38,6 @@ public class UndergardenMod {
 	public static DimensionType undergarden_dimension;
 	public static DimensionType otherside_dimension;
 
-	public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
-
 	public UndergardenMod() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 

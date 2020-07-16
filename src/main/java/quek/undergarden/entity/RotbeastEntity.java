@@ -53,7 +53,7 @@ public class RotbeastEntity extends MonsterEntity {
 
     @Override
     public CreatureAttribute getCreatureAttribute() {
-        return UndergardenMod.ROTSPAWN;
+        return UndergardenEntities.ROTSPAWN;
     }
 
     public static boolean canRotbeastSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {

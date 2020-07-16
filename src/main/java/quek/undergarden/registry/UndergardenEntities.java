@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
@@ -17,6 +18,8 @@ import quek.undergarden.entity.projectile.*;
 public class UndergardenEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, UndergardenMod.MODID);
+
+    public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
 
     public static final EntityType<SlingshotAmmoEntity> slingshot_ammo = EntityType.Builder.<SlingshotAmmoEntity>create(SlingshotAmmoEntity::new, EntityClassification.MISC)
             .size(0.25F, 0.25F).build("slingshot_ammo");

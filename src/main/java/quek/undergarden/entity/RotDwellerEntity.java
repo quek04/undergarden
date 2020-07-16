@@ -22,6 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.model.RotDwellerModel;
+import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
 import java.util.UUID;
@@ -55,7 +56,7 @@ public class RotDwellerEntity extends MonsterEntity {
 
     @Override
     public CreatureAttribute getCreatureAttribute() {
-        return UndergardenMod.ROTSPAWN;
+        return UndergardenEntities.ROTSPAWN;
     }
 
     @Override
