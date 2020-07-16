@@ -37,6 +37,7 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
             LivingEntity entity = (LivingEntity) ((EntityRayTraceResult)result).getEntity();
             entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)6);
             this.playSound(SoundEvents.BLOCK_STONE_BREAK, 1, 1);
+            this.remove();
         }
         else if(result.getType() == RayTraceResult.Type.BLOCK) {
             BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) result;
