@@ -18,6 +18,8 @@ public class UndergardenSoundEvents {
 
     public static final SoundEvent UNDERGARDEN_PORTAL_AMBIENT = register("ambient.undergarden_portal_ambient");
 
+    public static final SoundEvent UNDERGARDEN_PORTAL_ACTIVATE = register("block.undergarden_portal_activate");
+
     public static final SoundEvent BLISTERBOMB_THROW = register("item.blisterbomb");
 
     public static final SoundEvent DWELLER_LIVING = register("entity.dweller_living");
@@ -54,6 +56,7 @@ public class UndergardenSoundEvents {
                 OTHERSIDE_AMBIANCE,
                 UNDERGARDEN_MUSIC,
                 UNDERGARDEN_PORTAL_AMBIENT,
+                UNDERGARDEN_PORTAL_ACTIVATE,
                 DWELLER_LIVING,
                 DWELLER_HURT,
                 DWELLER_DEATH,

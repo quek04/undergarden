@@ -22,6 +22,13 @@
       "undergarden:ambient/undergarden_portal_ambient"
     ]
   },
+  "block.undergarden_portal_activate": {
+    "category": "blocks",
+    "subtitle": "subtitles.ambient.undergarden_portal_activate",
+    "sounds": [
+      "undergarden:item/undergarden_portal_activate"
+    ]
+  },
   "music.undergarden_music": {
     "category": "music",
     "sounds": [
