@@ -51,7 +51,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .key('T', UndergardenItems.twistytwig.get())
                 .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
                 .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
-                .build(consumer);
+                .build(consumer, name("undergarden_scaffolding"));
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.gloom_o_lantern.get())
                 .patternLine("G")
