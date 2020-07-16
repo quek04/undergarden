@@ -1,16 +1,11 @@
 package quek.undergarden.biome;
 
+import com.google.common.collect.Lists;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
-import net.minecraft.world.gen.feature.BlockStateProvidingFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.placement.ChanceConfig;
-import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.placement.*;
 import net.minecraft.world.gen.surfacebuilders.DefaultSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,7 +21,7 @@ public class OthersideBiome extends UndergardenBiome {
 
     public OthersideBiome() {
         super(new DefaultSurfaceBuilder(SurfaceBuilderConfig::deserialize),
-                new SurfaceBuilderConfig(UndergardenBlocks.tremblecrust.get().getDefaultState(), UndergardenBlocks.tremblecrust.get().getDefaultState(), UndergardenBlocks.tremblecrust.get().getDefaultState()),
+                new SurfaceBuilderConfig(UndergardenBlocks.loose_tremblecrust.get().getDefaultState(), UndergardenBlocks.tremblecrust.get().getDefaultState(), UndergardenBlocks.tremblecrust.get().getDefaultState()),
                 Category.NONE,
                 0.3625F,
                 1.225F,

@@ -89,6 +89,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.otherside_utherium_ore);
         itemBlock(UndergardenBlocks.smogstem_wood);
         itemBlock(UndergardenBlocks.wigglewood_wood);
+        itemBlock(UndergardenBlocks.loose_tremblecrust);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);

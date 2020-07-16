@@ -24,71 +24,12 @@ public class OthersideSkyRender implements SkyRenderHandler {
 
     private final VertexFormat skyVertexFormat = DefaultVertexFormats.POSITION;
     @Nullable
-    private VertexBuffer starVBO, skyVBO, sky2VBO;
+    private VertexBuffer skyVBO, sky2VBO;
 
 
     public OthersideSkyRender() {
         this.generateSky();
         this.generateSky2();
-        this.generateStars();
-    }
-
-    private void generateStars() {
-        Tessellator tessellator = Tessellator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuffer();
-        if (this.starVBO != null) {
-            this.starVBO.close();
-        }
-
-        this.starVBO = new VertexBuffer(this.skyVertexFormat);
-        this.renderStars(bufferbuilder);
-        bufferbuilder.finishDrawing();
-        this.starVBO.upload(bufferbuilder);
-    }
-
-
-    private void renderStars(BufferBuilder bufferBuilderIn) {
-        Random random = new Random(10842L);
-        bufferBuilderIn.begin(7, DefaultVertexFormats.POSITION);
-
-        for (int i = 0; i < 1500; ++i) {
-            double d0 = random.nextFloat() * 2.0F - 1.0F;
-            double d1 = random.nextFloat() * 2.0F - 1.0F;
-            double d2 = random.nextFloat() * 2.0F - 1.0F;
-            double d3 = 0.15F + random.nextFloat() * 0.1F;
-            double d4 = d0 * d0 + d1 * d1 + d2 * d2;
-            if (d4 < 1.0D && d4 > 0.01D) {
-                d4 = 1.0D / Math.sqrt(d4);
-                d0 = d0 * d4;
-                d1 = d1 * d4;
-                d2 = d2 * d4;
-                double d5 = d0 * 200.0D;
-                double d6 = d1 * 200.0D;
-                double d7 = d2 * 200.0D;
-                double d8 = Math.atan2(d0, d2);
-                double d9 = Math.sin(d8);
-                double d10 = Math.cos(d8);
-                double d11 = Math.atan2(Math.sqrt(d0 * d0 + d2 * d2), d1);
-                double d12 = Math.sin(d11);
-                double d13 = Math.cos(d11);
-                double d14 = random.nextDouble() * Math.PI * 2.0D;
-                double d15 = Math.sin(d14);
-                double d16 = Math.cos(d14);
-
-                for (int j = 0; j < 4; ++j) {
-                    double d18 = ((j & 2) - 1) * d3;
-                    double d19 = ((j + 1 & 2) - 1) * d3;
-                    double d21 = d18 * d16 - d19 * d15;
-                    double d22 = d19 * d16 + d18 * d15;
-                    double d23 = d21 * d12 + 0.0D * d13;
-                    double d24 = 0.0D * d12 - d21 * d13;
-                    double d25 = d24 * d9 - d22 * d10;
-                    double d26 = d22 * d9 + d24 * d10;
-                    bufferBuilderIn.pos(d5 + d25, d6 + d23, d7 + d26).endVertex();
-                }
-            }
-        }
-
     }
 
     private void generateSky() {
@@ -99,7 +40,7 @@ public class OthersideSkyRender implements SkyRenderHandler {
         }
 
         this.skyVBO = new VertexBuffer(this.skyVertexFormat);
-        this.renderSky(bufferbuilder, 16.0F, false);
+        this.renderSky(bufferbuilder, 32.0F, false);
         bufferbuilder.finishDrawing();
         this.skyVBO.upload(bufferbuilder);
     }
@@ -133,7 +74,7 @@ public class OthersideSkyRender implements SkyRenderHandler {
         }
 
         this.sky2VBO = new VertexBuffer(this.skyVertexFormat);
-        this.renderSky(bufferbuilder, -16.0F, true);
+        this.renderSky(bufferbuilder, -32.0F, true);
         bufferbuilder.finishDrawing();
         this.sky2VBO.upload(bufferbuilder);
     }
@@ -177,12 +118,7 @@ public class OthersideSkyRender implements SkyRenderHandler {
         bufferbuilder.pos(matrix4f1, -f12, 100.0F, f12).tex(0.0F, 1.0F).endVertex();
         bufferbuilder.finishDrawing();
         WorldVertexBufferUploader.draw(bufferbuilder);
-        //RenderSystem.disableTexture();
-        RenderSystem.color4f(50, 50, 50, 50);
-        this.starVBO.bindBuffer();
-        this.skyVertexFormat.setupBufferState(0L);
-        this.starVBO.draw(matrixStack.getLast().getMatrix(), 7);
-        VertexBuffer.unbindBuffer();
+        RenderSystem.disableTexture();
         this.skyVertexFormat.clearBufferState();
 
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);

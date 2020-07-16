@@ -22,6 +22,7 @@ public class UndergardenBiomeFeatures {
 
     public static final OreFeatureConfig.FillerBlockType DEPTHROCK = OreFeatureConfig.FillerBlockType.create("DEPTHROCK", "depthrock", new BlockMatcher(UndergardenBlocks.depthrock.get()));
     public static final OreFeatureConfig.FillerBlockType TREMBLECRUST = OreFeatureConfig.FillerBlockType.create("TREMBLECRUST", "tremblecrust", new BlockMatcher(UndergardenBlocks.tremblecrust.get()));
+    public static final OreFeatureConfig.FillerBlockType L_TREMBLECRUST = OreFeatureConfig.FillerBlockType.create("L_TREMBLECRUST", "loose_tremblecrust", new BlockMatcher(UndergardenBlocks.loose_tremblecrust.get()));
 
     private static final BlockState DEPTHROCK_BLOCK = UndergardenBlocks.depthrock.get().getDefaultState();
     private static final BlockState DEEPSOIL = UndergardenBlocks.deepsoil.get().getDefaultState();
@@ -156,6 +157,7 @@ public class UndergardenBiomeFeatures {
 
     public static void addOthersideOres(Biome biome) {
         biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(TREMBLECRUST, OTHERSIDE_UTHERIUM_ORE, 16)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(4, 0, 0, 256))));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(L_TREMBLECRUST, UndergardenBlocks.tremblecrust.get().getDefaultState(), 32)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(8, 0, 0, 256))));
     }
 
     public static void addBlockVariants(Biome biome) {

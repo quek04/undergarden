@@ -53,6 +53,8 @@ public class UndergardenBlocks {
     //otherside
     public static final RegistryObject<Block> tremblecrust = registerBlock("tremblecrust", () -> new UndergardenBlock(
             Material.ROCK, 6F, 24F, SoundType.STONE, 3, ToolType.PICKAXE));
+    public static final RegistryObject<Block> loose_tremblecrust = registerBlock("loose_tremblecrust", () -> new LooseTremblecrustBlock(
+            Block.Properties.from(tremblecrust.get()).noDrops()));
     public static final RegistryObject<Block> tremblecrust_bricks = registerBlock("tremblecrust_bricks", () -> new UndergardenBlock(
             Material.ROCK, 6F, 24F, SoundType.STONE, 3, ToolType.PICKAXE));
 
