@@ -11,11 +11,7 @@ import net.minecraft.client.renderer.vertex.VertexBuffer;
 import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.client.SkyRenderHandler;
 import quek.undergarden.UndergardenMod;
 
@@ -165,7 +161,6 @@ public class OthersideSkyRender implements SkyRenderHandler {
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
 
-
         RenderSystem.enableTexture();
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
         matrixStack.push();
@@ -182,7 +177,7 @@ public class OthersideSkyRender implements SkyRenderHandler {
         bufferbuilder.pos(matrix4f1, -f12, 100.0F, f12).tex(0.0F, 1.0F).endVertex();
         bufferbuilder.finishDrawing();
         WorldVertexBufferUploader.draw(bufferbuilder);
-        RenderSystem.disableTexture();
+        //RenderSystem.disableTexture();
         RenderSystem.color4f(50, 50, 50, 50);
         this.starVBO.bindBuffer();
         this.skyVertexFormat.setupBufferState(0L);
