@@ -18,7 +18,7 @@ public class UndergardenSoundEvents {
 
     public static final SoundEvent UNDERGARDEN_PORTAL_AMBIENT = register("ambient.undergarden_portal_ambient");
 
-    public static final SoundEvent UNDERGARDEN_PORTAL_ACTIVATE = register("block.undergarden_portal_activate");
+    public static final SoundEvent UNDERGARDEN_PORTAL_ACTIVATE = register("item.undergarden_portal_activate");
 
     public static final SoundEvent BLISTERBOMB_THROW = register("item.blisterbomb");
 

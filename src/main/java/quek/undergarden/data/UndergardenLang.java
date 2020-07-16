@@ -16,6 +16,18 @@ public class UndergardenLang extends LanguageProvider {
         add(group.getTranslationKey(), name);
     }
 
+    protected void addAdvTitle(String advancementTitle, String name) {
+        add("advancement." + advancementTitle + ".title", name);
+    }
+
+    protected void addAdvDesc(String advancementTitle, String name) {
+        add("advancement." + advancementTitle + ".desc", name);
+    }
+
+    protected void addSubtitle(String category, String subtitleName, String name) {
+        add("subtitles." + category + "." + subtitleName, name);
+    }
+
     @Override
     protected void addTranslations() {
         addBlock(UndergardenBlocks.undergarden_portal, "Undergarden Portal");
@@ -225,35 +237,35 @@ public class UndergardenLang extends LanguageProvider {
 
         addEffect(UndergardenEffects.gooey, "Gooey");
 
-        add("advancement.undergarden.title", "The Undergarden");
-        add("advancement.undergarden.desc", "Enter the Undergarden. The forgotten land awaits...");
+        addAdvTitle("undergarden", "The Undergarden");
+        addAdvDesc("undergarden", "Enter The Undergarden. The forgotten land awaits...");
 
-        add("advancement.gourd_lord.title", "Gourd Lord");
-        add("advancement.gourd_lord.desc", "You've done it. You've acquired a stack of Gloomgourds.");
+        addAdvTitle("gourd_lord", "Gourd Lord");
+        addAdvDesc("gourd_lord", "Acquire a stack of Gloomgourds.");
 
-        add("advancement.slingshot.title", "Your New Best Friend");
-        add("advancement.slingshot.desc", "Craft a Slingshot.");
+        addAdvTitle("slingshot", "Your New Best Friend");
+        addAdvDesc("slingshot", "Craft a Slingshot.");
 
-        add("advancement.slay_rotwalker.title", "Slay Rotwalker");
-        add("advancement.slay_rotwalker.desc", "Slay the weakest of the Rotspawn, the Rotwalker.");
+        addAdvTitle("slay_rotwalker", "Slay Rotwalker");
+        addAdvDesc("slay_rotwalker", "Slay the weakest of the Rotspawn, the Rotwalker.");
 
-        add("advancement.rotbane.title", "Rotbane");
-        add("advancement.rotbane.desc", "Slay all kinds of Rotspawn.");
+        addAdvTitle("rotbane", "Rotbane");
+        addAdvDesc("rotbane", "Slay all kinds of Rotspawn.");
 
-        add("advancement.subterranean_cartographer.title", "Subterranean Cartographer");
-        add("advancement.subterranean_cartographer.desc", "Discover every Undergarden biome.");
+        addAdvTitle("subterranean_cartographer", "Subterranean Cartographer");
+        addAdvDesc("subterranean_cartographer", "Discover every Undergarden biome.");
 
-        add("advancement.deep_extraction.title", "Deep Extraction");
-        add("advancement.deep_extraction.desc", "Acquire a Cloggrum Ingot.");
+        addAdvTitle("deep_extraction", "Deep Extraction");
+        addAdvDesc("deep_extraction", "Acquire a Cloggrum Ingot.");
 
-        add("advancement.glorious_beans.title", "Glorious Beans!");
-        add("advancement.glorious_beans.desc", "Find and pick an Underbean bush.");
+        addAdvTitle("glorious_beans", "Glorious Beans!");
+        addAdvDesc("glorious_beans", "Find and pick an Underbean Bush.");
 
-        add("advancement.slay_masticator.title", "Sprankton");
-        add("advancement.slay_masticator.desc", "Slay the Masticator.");
+        addAdvTitle("slay_masticator", "Sprankton");
+        addAdvDesc("slay_masticator", "Slay the Masticator.");
 
-        add("advancement.masticated_armory.title", "Masticated Armory");
-        add("advancement.masticated_armory.desc", "Craft the Masticated Chestplate.");
+        addAdvTitle("masticated_armory", "Masticated Armory");
+        addAdvDesc("masticated_armory", "Craft the Masticated Chestplate.");
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
@@ -261,5 +273,29 @@ public class UndergardenLang extends LanguageProvider {
         add("tooltip.utheric_axe", "Bonus damage to passive animals.");
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
+
+        addSubtitle("item", "undergarden_portal_activate", "Undergarden Portal activates");
+        addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
+
+        addSubtitle("entity", "dweller_living", "Dweller grumbles");
+        addSubtitle("entity", "dweller_hurt", "Dweller hurts");
+        addSubtitle("entity", "dweller_death", "Dweller dies");
+
+        addSubtitle("entity", "rotwalker_living", "Rotwalker groans");
+        addSubtitle("entity", "rotwalker_hurt", "Rotwalker hurts");
+        addSubtitle("entity", "rotwalker_death", "Rotwalker dies");
+
+        addSubtitle("entity", "rotbeast_living", "Rotbeast groans");
+        addSubtitle("entity", "rotbeast_hurt", "Rotbeast hurts");
+        addSubtitle("entity", "rotbeast_death", "Rotbeast dies");
+
+        addSubtitle("entity", "brute_living", "Brute exhales");
+        addSubtitle("entity", "brute_hurt", "Brute hurts");
+        addSubtitle("entity", "brute_death", "Brute dies");
+        addSubtitle("entity", "brute_angry", "Brute exhales angrily");
+
+        addSubtitle("entity", "gloomper_living", "Gloomper croaks");
+        addSubtitle("entity", "gloomper_hurt", "Gloomper hurts");
+        addSubtitle("entity", "gloomper_death", "Gloomper dies");
     }
 }
