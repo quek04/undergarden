@@ -42,9 +42,11 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
         else if(result.getType() == RayTraceResult.Type.BLOCK) {
             BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) result;
             BlockState blockstate = this.world.getBlockState(blockraytraceresult.getPos());
-            this.entityDropItem(new ItemStack(UndergardenItems.depthrock_pebble.get()));
-            this.playStepSound(blockraytraceresult.getPos(), blockstate);
-            this.remove();
+            if(blockstate.isSolid()) {
+                this.entityDropItem(new ItemStack(getDefaultItem()));
+                this.playStepSound(blockraytraceresult.getPos(), blockstate);
+                this.remove();
+            }
         }
     }
 
