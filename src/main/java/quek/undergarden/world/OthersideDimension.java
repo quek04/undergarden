@@ -5,24 +5,24 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.provider.SingleBiomeProvider;
+import net.minecraft.world.biome.provider.SingleBiomeProviderSettings;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.IRenderHandler;
-import net.minecraftforge.client.SkyRenderHandler;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.render.OthersideSkyRender;
+import quek.undergarden.registry.UndergardenBiomes;
 import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.world.gen.OthersideChunkGenerator;
 import quek.undergarden.world.gen.OthersideGenerationSettings;
-import quek.undergarden.world.layer.OthersideBiomeProvider;
-import quek.undergarden.world.layer.OthersideBiomeProviderSettings;
 
 import javax.annotation.Nullable;
 
@@ -41,8 +41,8 @@ public class OthersideDimension extends Dimension {
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
         OthersideGenerationSettings othersideGen = new OthersideGenerationSettings();
-        OthersideBiomeProviderSettings providerSettings = new OthersideBiomeProviderSettings();
-        OthersideBiomeProvider provider = new OthersideBiomeProvider(providerSettings);
+        SingleBiomeProviderSettings providerSettings = new SingleBiomeProviderSettings(world.getWorldInfo()).setBiome(UndergardenBiomes.OTHERSIDE.get());
+        SingleBiomeProvider provider = new SingleBiomeProvider(providerSettings);
         return new OthersideChunkGenerator(world, provider, othersideGen);
     }
 
