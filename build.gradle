@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.1.3'
+version = '0.1.4'
 group = 'quek.undergarden.modid'
 archivesBaseName = 'undergarden'
 
