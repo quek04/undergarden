@@ -2,7 +2,6 @@ package quek.undergarden;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
@@ -34,9 +33,6 @@ import java.util.UUID;
 public class UndergardenMod {
 	
 	public static final String MODID = "undergarden";
-
-	public static DimensionType undergarden_dimension;
-	public static DimensionType otherside_dimension;
 
 	public UndergardenMod() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -111,17 +107,17 @@ public class UndergardenMod {
 			ResourceLocation otherside = new ResourceLocation(UndergardenMod.MODID, "otherside");
 
 			if (DimensionType.byName(undergarden) == null) {
-				undergarden_dimension = DimensionManager.registerDimension(undergarden, UndergardenDimensions.UNDERGARDEN.get(), new PacketBuffer(Unpooled.buffer()), false);
-				DimensionManager.keepLoaded(undergarden_dimension, false);
+				UndergardenDimensions.undergarden_dimension = DimensionManager.registerDimension(undergarden, UndergardenDimensions.UNDERGARDEN.get(), new PacketBuffer(Unpooled.buffer()), false);
+				DimensionManager.keepLoaded(UndergardenDimensions.undergarden_dimension, false);
 			} else {
-				undergarden_dimension = DimensionType.byName(undergarden);
+				UndergardenDimensions.undergarden_dimension = DimensionType.byName(undergarden);
 			}
 
 			if (DimensionType.byName(otherside) == null) {
-				otherside_dimension = DimensionManager.registerDimension(otherside, UndergardenDimensions.OTHERSIDE.get(), new PacketBuffer(Unpooled.buffer()), true);
-				DimensionManager.keepLoaded(otherside_dimension, false);
+				UndergardenDimensions.otherside_dimension = DimensionManager.registerDimension(otherside, UndergardenDimensions.OTHERSIDE.get(), new PacketBuffer(Unpooled.buffer()), true);
+				DimensionManager.keepLoaded(UndergardenDimensions.otherside_dimension, false);
 			} else {
-				otherside_dimension = DimensionType.byName(otherside);
+				UndergardenDimensions.otherside_dimension = DimensionType.byName(otherside);
 			}
 		}
 

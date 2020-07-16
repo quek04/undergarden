@@ -28,8 +28,8 @@ import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.registry.UndergardenTags;
 import quek.undergarden.world.UndergardenTeleporter;
@@ -139,7 +139,7 @@ public class UndergardenPortalBlock extends Block {
                 if (entity.world instanceof ServerWorld) {
                     if (entity.world.getServer().getAllowNether() && !entity.isPassenger()) {
                         entity.timeUntilPortal = entity.getPortalCooldown();
-                        DimensionType type = worldIn.dimension.getType() == UndergardenMod.undergarden_dimension ? DimensionType.OVERWORLD : UndergardenMod.undergarden_dimension;
+                        DimensionType type = worldIn.dimension.getType() == UndergardenDimensions.undergarden_dimension ? DimensionType.OVERWORLD : UndergardenDimensions.undergarden_dimension;
                         entity.changeDimension(type, new UndergardenTeleporter());
                     }
                 }

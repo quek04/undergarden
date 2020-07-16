@@ -21,6 +21,9 @@ public class UndergardenDimensions {
 
     public static final DeferredRegister<ModDimension> MOD_DIMENSIONS = DeferredRegister.create(ForgeRegistries.MOD_DIMENSIONS, UndergardenMod.MODID);
 
+    public static DimensionType undergarden_dimension;
+    public static DimensionType otherside_dimension;
+
     public static final RegistryObject<ModDimension> UNDERGARDEN = MOD_DIMENSIONS.register("undergarden", () -> new ModDimension() {
         @Override
         public BiFunction<World, DimensionType, ? extends Dimension> getFactory() {
