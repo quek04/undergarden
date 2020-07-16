@@ -29,4 +29,17 @@ public class UndergardenConfig {
         }
     }
 
+    public static ForgeConfigSpec.BooleanValue toggleAmbiance;
+
+    public static class ClientConfig {
+        public ClientConfig(ForgeConfigSpec.Builder builder) {
+            builder.push("client");
+            toggleAmbiance = builder
+                    .translation(config + "toggle_ambiance")
+                    .comment("If set to false this will disable The Undergarden's ambiance sounds, in case it bothers you or causes problems")
+                    .define("toggleAmbiance", true)
+                    ;
+        }
+    }
+
 }

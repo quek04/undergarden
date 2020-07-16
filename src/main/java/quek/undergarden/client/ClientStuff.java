@@ -23,6 +23,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
+import quek.undergarden.UndergardenConfig;
 import quek.undergarden.client.audio.*;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.registry.*;
@@ -189,13 +190,16 @@ public class ClientStuff {
     }
 
     private static void doAmbiance(ISound sound) {
-        SoundHandler soundHandler = CLIENT.getSoundHandler();
-        if (!soundHandler.isPlaying(sound)) {
-            try {
-                soundHandler.stop(sound);
-                soundHandler.play(sound);
-            } catch (IllegalArgumentException ignored) {
+        if(UndergardenConfig.toggleAmbiance.get()) {
+            SoundHandler soundHandler = CLIENT.getSoundHandler();
+            if (!soundHandler.isPlaying(sound)) {
+                try {
+                    soundHandler.stop(sound);
+                    soundHandler.play(sound);
+                }
+                catch (IllegalArgumentException ignored) { }
             }
         }
+
     }
 }

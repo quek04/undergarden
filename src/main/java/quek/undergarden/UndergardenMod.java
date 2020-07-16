@@ -58,8 +58,10 @@ public class UndergardenMod {
 		UndergardenFluids.FLUIDS.register(bus);
 
 		final Pair<UndergardenConfig.CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(UndergardenConfig.CommonConfig::new);
+		final Pair<UndergardenConfig.ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(UndergardenConfig.ClientConfig::new);
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, specPairCommon.getRight());
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, specPairClient.getRight());
 	}
 
 	public void setup(FMLCommonSetupEvent event) {

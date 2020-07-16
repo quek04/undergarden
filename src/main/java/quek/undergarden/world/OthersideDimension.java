@@ -10,6 +10,7 @@ import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.client.SkyRenderHandler;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,8 +27,6 @@ import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class OthersideDimension extends Dimension {
-
-    private SkyRenderHandler skyRenderer = new OthersideSkyRender();
 
     public OthersideDimension(World world, DimensionType dimensionType) {
         super(world, dimensionType, 0);
@@ -60,12 +59,16 @@ public class OthersideDimension extends Dimension {
         }
     }
 
-    @Nullable
-    @OnlyIn(Dist.CLIENT)
     @Override
-    public net.minecraftforge.client.IRenderHandler getSkyRenderer() {
+    @OnlyIn(Dist.CLIENT)
+    public IRenderHandler getSkyRenderer() {
+        IRenderHandler skyRenderer = super.getSkyRenderer();
+        if (skyRenderer == null) {
+            this.setSkyRenderer(skyRenderer = new OthersideSkyRender());
+        }
         return skyRenderer;
     }
+
 
     @Nullable
     @Override
