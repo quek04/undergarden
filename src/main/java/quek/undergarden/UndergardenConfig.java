@@ -9,6 +9,7 @@ public class UndergardenConfig {
 
     public static ForgeConfigSpec.BooleanValue genObsidianRoof;
     public static ForgeConfigSpec.BooleanValue genObsidianFloor;
+    public static ForgeConfigSpec.BooleanValue disableOthersideTeleport;
 
     public static class CommonConfig {
         public CommonConfig(ForgeConfigSpec.Builder builder) {
@@ -23,9 +24,12 @@ public class UndergardenConfig {
                     .comment("Determines if The Undergarden's floor will generate with obsidian instead of bedrock, for compatibility with Immersive Portals dimension stacking")
                     .define("genObsidianFloor", false)
             ;
-
             builder.pop();
 
+            disableOthersideTeleport = builder
+                    .translation(config + "disable_otherside_teleport")
+                    .comment("Set to true to disable The Otherside's void teleportation when entities are below y 0")
+                    .define("disableOthersideTeleportation", false);
         }
     }
 
@@ -39,6 +43,7 @@ public class UndergardenConfig {
                     .comment("If set to false this will disable The Undergarden's ambiance sounds, in case it bothers you or causes problems")
                     .define("toggleAmbiance", true)
                     ;
+            builder.pop();
         }
     }
 

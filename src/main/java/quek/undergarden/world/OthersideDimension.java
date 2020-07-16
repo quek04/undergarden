@@ -15,6 +15,7 @@ import net.minecraftforge.client.SkyRenderHandler;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import quek.undergarden.UndergardenConfig;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.render.OthersideSkyRender;
 import quek.undergarden.registry.UndergardenDimensions;
@@ -47,16 +48,19 @@ public class OthersideDimension extends Dimension {
 
     @SubscribeEvent
     public static void teleportEntityEvent(EntityEvent event) {
-        Entity entity = event.getEntity();
+        if(!UndergardenConfig.disableOthersideTeleport.get()) {
+            Entity entity = event.getEntity();
 
-        if(entity != null) {
-            if(entity.dimension == UndergardenMod.otherside_dimension) {
-                if(entity.getPosY() < 0) {
-                    entity.setPosition(entity.getPosX(), 256, entity.getPosZ());
+            if(entity != null) {
+                if(entity.dimension == UndergardenMod.otherside_dimension) {
+                    if(entity.getPosY() < 0) {
+                        entity.setPosition(entity.getPosX(), 256, entity.getPosZ());
+                    }
                 }
-            }
 
+            }
         }
+
     }
 
     @Override
