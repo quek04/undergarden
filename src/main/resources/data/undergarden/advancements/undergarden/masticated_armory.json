@@ -15,16 +15,6 @@
   },
   "parent": "undergarden:undergarden/slay_masticator",
   "criteria": {
-    "has_shield": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "undergarden:masticated_shield"
-          }
-        ]
-      }
-    },
     "has_chestplate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {

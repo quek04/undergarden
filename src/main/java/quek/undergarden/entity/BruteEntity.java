@@ -221,11 +221,6 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
         return UndergardenSoundEvents.BRUTE_DEATH;
     }
 
-    @Override
-    protected float getSoundVolume() {
-        return 0.5f;
-    }
-
     static class HurtByAggressorGoal extends HurtByTargetGoal {
         public HurtByAggressorGoal(BruteEntity brute) {
             super(brute);

@@ -63,6 +63,26 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
                     }
                 }
             }
+
+            int k1 = j - 1;
+            if (k1 < 0) {
+                k1 = 0;
+            } else if (k1 > 1) {
+                k1 = 1;
+            }
+
+            for(int l1 = -k1; l1 <= k1; ++l1) {
+                for(int i2 = -k1; i2 <= k1; ++i2) {
+                    BlockPos blockpos = pos.add(l1, -1, i2);
+                    BlockState blockstate1 = worldIn.getBlockState(blockpos);
+                    Block block1 = blockstate1.getBlock();
+                    if (!blockstate1.isAir(worldIn, blockpos) && block1 != UndergardenBlocks.ashen_deepturf.get() && block1 != UndergardenBlocks.deepsoil.get() && block1 != UndergardenBlocks.depthrock.get()) {
+                        break;
+                    }
+
+                    this.setBlockState(worldIn, blockpos, UndergardenBlocks.depthrock.get().getDefaultState());
+                }
+            }
             return true;
         }
         else {

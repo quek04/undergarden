@@ -87,11 +87,6 @@ public class DwellerEntity extends AnimalEntity {
     }
 
     @Override
-    protected float getSoundVolume() {
-        return 0.5f;
-    }
-
-    @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
         this.playSound(SoundEvents.ENTITY_COW_STEP, 0.15F, 0.5F);
     }

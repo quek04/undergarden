@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:utherium_ingot"
+    }
+  },
+  "result": {
+    "item": "undergarden:utheric_chestplate"
+  }
+}

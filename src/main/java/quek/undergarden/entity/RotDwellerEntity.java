@@ -14,6 +14,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import quek.undergarden.UndergardenMod;
+import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
 
@@ -42,7 +43,7 @@ public class RotDwellerEntity extends MonsterEntity {
 
     @Override
     public CreatureAttribute getCreatureAttribute() {
-        return UndergardenMod.ROTSPAWN;
+        return UndergardenEntities.ROTSPAWN;
     }
 
     @Override
@@ -63,11 +64,6 @@ public class RotDwellerEntity extends MonsterEntity {
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
         this.playSound(SoundEvents.ENTITY_COW_STEP, 0.15F, 0.5F);
-    }
-
-    @Override
-    protected float getSoundVolume() {
-        return 0.5f;
     }
 
 }

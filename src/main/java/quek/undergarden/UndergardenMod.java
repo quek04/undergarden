@@ -1,37 +1,31 @@
 package quek.undergarden;
 
 import io.netty.buffer.Unpooled;
-import net.minecraft.client.audio.MusicTicker;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.DimensionType;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.gen.carver.WorldCarver;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ObjectHolder;
 
+import org.apache.commons.lang3.tuple.Pair;
 import quek.undergarden.client.ClientStuff;
 import quek.undergarden.data.*;
 import quek.undergarden.registry.*;
-import quek.undergarden.world.gen.carver.*;
 
 import java.util.UUID;
 
@@ -39,11 +33,6 @@ import java.util.UUID;
 public class UndergardenMod {
 	
 	public static final String MODID = "undergarden";
-
-	public static DimensionType undergarden_dimension;
-	public static DimensionType otherside_dimension;
-
-	public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
 
 	public UndergardenMod() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -61,6 +50,12 @@ public class UndergardenMod {
 		UndergardenWorldCarvers.CARVERS.register(bus);
 		UndergardenEffects.EFFECTS.register(bus);
 		UndergardenFluids.FLUIDS.register(bus);
+
+		final Pair<UndergardenConfig.CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(UndergardenConfig.CommonConfig::new);
+		final Pair<UndergardenConfig.ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(UndergardenConfig.ClientConfig::new);
+
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, specPairCommon.getRight());
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, specPairClient.getRight());
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
@@ -107,32 +102,24 @@ public class UndergardenMod {
 		}
 
 		@SubscribeEvent
-		public static void registerModDimension(final RegisterDimensionsEvent event) {
+		public static void registerDimensions(final RegisterDimensionsEvent event) {
 			ResourceLocation undergarden = new ResourceLocation(UndergardenMod.MODID, "undergarden");
 			ResourceLocation otherside = new ResourceLocation(UndergardenMod.MODID, "otherside");
 
 			if (DimensionType.byName(undergarden) == null) {
-				undergarden_dimension = DimensionManager.registerDimension(undergarden, UndergardenDimensions.UNDERGARDEN.get(), new PacketBuffer(Unpooled.buffer()), false);
-				DimensionManager.keepLoaded(undergarden_dimension, false);
+				UndergardenDimensions.undergarden_dimension = DimensionManager.registerDimension(undergarden, UndergardenDimensions.UNDERGARDEN.get(), new PacketBuffer(Unpooled.buffer()), false);
+				DimensionManager.keepLoaded(UndergardenDimensions.undergarden_dimension, false);
 			} else {
-				undergarden_dimension = DimensionType.byName(undergarden);
+				UndergardenDimensions.undergarden_dimension = DimensionType.byName(undergarden);
 			}
 
 			if (DimensionType.byName(otherside) == null) {
-				otherside_dimension = DimensionManager.registerDimension(otherside, UndergardenDimensions.OTHERSIDE.get(), new PacketBuffer(Unpooled.buffer()), true);
-				DimensionManager.keepLoaded(otherside_dimension, false);
+				UndergardenDimensions.otherside_dimension = DimensionManager.registerDimension(otherside, UndergardenDimensions.OTHERSIDE.get(), new PacketBuffer(Unpooled.buffer()), true);
+				DimensionManager.keepLoaded(UndergardenDimensions.otherside_dimension, false);
 			} else {
-				otherside_dimension = DimensionType.byName(undergarden);
+				UndergardenDimensions.otherside_dimension = DimensionType.byName(otherside);
 			}
 		}
-
-		@SubscribeEvent
-		public static void registerWorldCarver(final RegistryEvent.Register<WorldCarver<?>> event) {
-			event.getRegistry().register(new UndergardenCaveWorldCarver(ProbabilityConfig::deserialize));
-		}
-
-		@ObjectHolder("undergarden:undergarden_cave")
-		public static UndergardenCaveWorldCarver UNDERGARDEN_CAVE;
 
 	}
 }

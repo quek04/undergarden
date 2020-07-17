@@ -84,11 +84,6 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @Override
-    protected float getSoundVolume() {
-        return 0.5f;
-    }
-
-    @Override
     public boolean canBreatheUnderwater() {
         return true;
     }

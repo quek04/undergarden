@@ -30,6 +30,9 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeBricks(UndergardenBlocks.shiverstone_bricks, UndergardenBlocks.shiverstone).build(consumer);
         makeBricks(UndergardenBlocks.tremblecrust_bricks, UndergardenBlocks.tremblecrust).build(consumer);
 
+        makeWood(UndergardenBlocks.smogstem_wood, UndergardenBlocks.smogstem_log).build(consumer);
+        makeWood(UndergardenBlocks.wigglewood_wood, UndergardenBlocks.wigglewood_log).build(consumer);
+
         makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
         //makeSticks(UndergardenItems.twistytwig, UndergardenTags.Items.WIGGLEWOOD_PLANKS).build(consumer, name("twistytwig"));
 
@@ -39,6 +42,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .key('P', UndergardenBlocks.wigglewood_planks.get())
                 .addCriterion("has_wigglewood_planks", hasItem(UndergardenBlocks.wigglewood_planks.get()))
                 .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(Blocks.SCAFFOLDING, 6)
+                .patternLine("STS")
+                .patternLine("S S")
+                .patternLine("S S")
+                .key('S', UndergardenItems.smogstem_stick.get())
+                .key('T', UndergardenItems.twistytwig.get())
+                .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
+                .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
+                .build(consumer, name("undergarden_scaffolding"));
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.gloom_o_lantern.get())
                 .patternLine("G")
@@ -74,15 +87,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .key('B', UndergardenItems.rotten_blisterberry.get())
                 .addCriterion("has_twistytwig", hasItem(UndergardenItems.twistytwig.get()))
                 .addCriterion("has_blisterberry", hasItem(UndergardenItems.rotten_blisterberry.get()))
-                .build(consumer);
-
-        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.masticated_shield.get())
-                .patternLine("MCM")
-                .patternLine("MMM")
-                .patternLine(" M ")
-                .key('M', UndergardenItems.masticator_scales.get())
-                .key('C', UndergardenItems.cloggrum_ingot.get())
-                .addCriterion("has_scales", hasItem(UndergardenItems.masticator_scales.get()))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.cloggrum_shield.get())
@@ -188,6 +192,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeChestplate(UndergardenItems.cloggrum_chestplate, UndergardenItems.cloggrum_ingot).build(consumer);
         makeLeggings(UndergardenItems.cloggrum_leggings, UndergardenItems.cloggrum_ingot).build(consumer);
         makeBoots(UndergardenItems.cloggrum_boots, UndergardenItems.cloggrum_ingot).build(consumer);
+
+        makeHelmet(UndergardenItems.froststeel_helmet, UndergardenItems.froststeel_ingot).build(consumer);
+        makeChestplate(UndergardenItems.froststeel_chestplate, UndergardenItems.froststeel_ingot).build(consumer);
+        makeLeggings(UndergardenItems.froststeel_leggings, UndergardenItems.froststeel_ingot).build(consumer);
+        makeBoots(UndergardenItems.froststeel_boots, UndergardenItems.froststeel_ingot).build(consumer);
+
+        makeHelmet(UndergardenItems.utheric_helmet, UndergardenItems.utherium_ingot).build(consumer);
+        makeChestplate(UndergardenItems.utheric_chestplate, UndergardenItems.utherium_ingot).build(consumer);
+        makeLeggings(UndergardenItems.utheric_leggings, UndergardenItems.utherium_ingot).build(consumer);
+        makeBoots(UndergardenItems.utheric_boots, UndergardenItems.utherium_ingot).build(consumer);
 
         makeStairs(UndergardenBlocks.depthrock_stairs, UndergardenBlocks.depthrock).build(consumer);
         makeStairs(UndergardenBlocks.cobbled_depthrock_stairs, UndergardenBlocks.cobbled_depthrock).build(consumer);

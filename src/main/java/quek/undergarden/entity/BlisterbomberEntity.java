@@ -34,8 +34,8 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new RandomFlyGoal(this));
-        this.goalSelector.addGoal(2, new LookAtGoal(this, PlayerEntity.class, 128.0F));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, (p_213812_1_) -> Math.abs(p_213812_1_.getPosY() - this.getPosY()) <= 4.0D));
+        this.goalSelector.addGoal(0, new LookAtGoal(this, PlayerEntity.class, 128.0F));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 1000, false, false, (entity) -> Math.abs(entity.getPosY() - this.getPosY()) <= 4.0D));
         this.goalSelector.addGoal(2, new ThrowBlisterberryGoal(this));
         this.goalSelector.addGoal(4, new LookAroundGoal(this));
     }
@@ -124,10 +124,10 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
                 this.parentEntity.rotationYaw = -((float)MathHelper.atan2(vec3d.x, vec3d.z)) * (180F / (float)Math.PI);
                 this.parentEntity.renderYawOffset = this.parentEntity.rotationYaw;
             } else {
-                LivingEntity livingentity = this.parentEntity.getAttackTarget();
-                if (livingentity.getDistanceSq(this.parentEntity) < 4096.0D) {
-                    double d1 = livingentity.getPosX() - this.parentEntity.getPosX();
-                    double d2 = livingentity.getPosZ() - this.parentEntity.getPosZ();
+                PlayerEntity playerEntity = (PlayerEntity) this.parentEntity.getAttackTarget();
+                if (playerEntity.getDistanceSq(this.parentEntity) < 4096.0D) {
+                    double d1 = playerEntity.getPosX() - this.parentEntity.getPosX();
+                    double d2 = playerEntity.getPosZ() - this.parentEntity.getPosZ();
                     this.parentEntity.rotationYaw = -((float)MathHelper.atan2(d1, d2)) * (180F / (float)Math.PI);
                     this.parentEntity.renderYawOffset = this.parentEntity.rotationYaw;
                 }
@@ -162,7 +162,7 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
                 World world = this.parentEntity.world;
                 ++this.attackTimer;
 
-                if (this.attackTimer == 1) {
+                if (this.attackTimer == 5) {
                     world.playSound(null, parentEntity.getPosX(), parentEntity.getPosY(), parentEntity.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.rand.nextFloat() * 0.4F + 0.8F));
                     RottenBlisterberryEntity berry = new RottenBlisterberryEntity(world, parentEntity);
                     berry.shoot(parentEntity.rotationPitch, parentEntity.rotationYaw, 0.0F, 1.5F, 1.0F);

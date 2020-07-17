@@ -25,4 +25,8 @@ public class UndergardenBlock extends Block {
                 .func_235838_a_((state) -> light)
         );
     }
+
+    public UndergardenBlock(Properties properties) {
+        super(properties);
+    }
 }

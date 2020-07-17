@@ -53,6 +53,8 @@ public class UndergardenBlocks {
     //otherside
     public static final RegistryObject<Block> tremblecrust = registerBlock("tremblecrust", () -> new UndergardenBlock(
             Material.ROCK, 6F, 24F, SoundType.STONE, 3, ToolType.PICKAXE));
+    public static final RegistryObject<Block> loose_tremblecrust = registerBlock("loose_tremblecrust", () -> new LooseTremblecrustBlock(
+            Block.Properties.from(tremblecrust.get()).noDrops()));
     public static final RegistryObject<Block> tremblecrust_bricks = registerBlock("tremblecrust_bricks", () -> new UndergardenBlock(
             Material.ROCK, 6F, 24F, SoundType.STONE, 3, ToolType.PICKAXE));
 
@@ -60,6 +62,9 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", BeanBushBlock::new);
     public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", BlisterberryBushBlock::new);
     public static final RegistryObject<SaplingBlock> smogstem_sapling = registerBlock("smogstem_sapling", () -> new UndergardenSaplingBlock(new SmogstemTree()));
+    public static final RegistryObject<Block> smogstem_wood = registerBlock("smogstem_wood", () -> new UndergardenBlock(Block.Properties.from(UndergardenBlocks.smogstem_log.get())));
+    public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", UndergardenLeavesBlock::new);
+    public static final RegistryObject<Block> wigglewood_wood = registerBlock("wigglewood_wood", () -> new UndergardenBlock(Block.Properties.from(UndergardenBlocks.wigglewood_log.get())));
     public static final RegistryObject<RotatedPillarBlock> smogstem_log = registerBlock("smogstem_log", UndergardenLogBlock::new);
     public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", UndergardenLeavesBlock::new);
     public static final RegistryObject<SaplingBlock> wigglewood_sapling = registerBlock("wigglewood_sapling", () -> new UndergardenSaplingBlock(new WigglewoodTree()));

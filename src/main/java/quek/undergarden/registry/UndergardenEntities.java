@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
@@ -17,6 +18,8 @@ import quek.undergarden.entity.projectile.*;
 public class UndergardenEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, UndergardenMod.MODID);
+
+    public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
 
     public static final EntityType<SlingshotAmmoEntity> slingshot_ammo = EntityType.Builder.<SlingshotAmmoEntity>create(SlingshotAmmoEntity::new, EntityClassification.MISC)
             .size(0.25F, 0.25F).build("slingshot_ammo");
@@ -37,8 +40,6 @@ public class UndergardenEntities {
             .size(1, 1.8F).build("rotdweller");
     public static final EntityType<GwiblingEntity> gwibling = EntityType.Builder.create(GwiblingEntity::new, EntityClassification.WATER_CREATURE)
             .size(.5F, .5F).build("gwibling");
-    //public static final EntityType<SkizSwarmerEntity> skiz_swarmer = EntityType.Builder.create(SkizSwarmerEntity::new, EntityClassification.MONSTER)
-    //        .size(.5F, .5F).build("skiz_swarmer");
     public static final EntityType<BruteEntity> brute = EntityType.Builder.create(BruteEntity::new, EntityClassification.CREATURE)
             .size(1, 2).build("brute");
     public static final EntityType<ScintlingEntity> scintling = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
@@ -60,7 +61,6 @@ public class UndergardenEntities {
     public static final RegistryObject<EntityType<DwellerEntity>> DWELLER = ENTITIES.register("dweller", () -> dweller);
     public static final RegistryObject<EntityType<RotDwellerEntity>> ROTDWELLER = ENTITIES.register("rotdweller", () -> rotdweller);
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> gwibling);
-    //public static final RegistryObject<EntityType<SkizSwarmerEntity>> SKIZ_SWARMER = ENTITIES.register("skiz_swarmer", () -> skiz_swarmer);
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> brute);
     public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> scintling);
     public static final RegistryObject<EntityType<BlisterbomberEntity>> BLISTERBOMBER = ENTITIES.register("blisterbomber", () -> blisterbomber);

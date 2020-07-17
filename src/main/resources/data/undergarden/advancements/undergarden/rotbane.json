@@ -30,14 +30,6 @@
           "type": "undergarden:rotbeast"
         }
       }
-    },
-    "slay_rotdweller": {
-      "trigger": "minecraft:player_killed_entity",
-      "conditions": {
-        "entity": {
-          "type": "undergarden:rotdweller"
-        }
-      }
     }
   }
 }

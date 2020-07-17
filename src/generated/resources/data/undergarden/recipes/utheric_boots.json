@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:utherium_ingot"
+    }
+  },
+  "result": {
+    "item": "undergarden:utheric_boots"
+  }
+}

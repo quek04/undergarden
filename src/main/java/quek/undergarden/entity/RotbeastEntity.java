@@ -54,11 +54,11 @@ public class RotbeastEntity extends MonsterEntity {
 
     @Override
     public CreatureAttribute getCreatureAttribute() {
-        return UndergardenMod.ROTSPAWN;
+        return UndergardenEntities.ROTSPAWN;
     }
 
     public static boolean canRotbeastSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL || worldIn.getBlockState(pos).getBlock() == UndergardenBlocks.tremblecrust.get() && canSpawnOn(type, worldIn, reason, pos, randomIn) && randomIn.nextInt(20) == 0;
+        return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextInt(20) == 0 && canSpawnOn(type, worldIn, reason, pos, randomIn);
     }
 
     @Override
@@ -146,8 +146,4 @@ public class RotbeastEntity extends MonsterEntity {
         this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
     }
 
-    @Override
-    protected float getSoundVolume() {
-        return 0.5f;
-    }
 }

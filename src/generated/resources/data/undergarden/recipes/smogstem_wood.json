@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MM",
+    "MM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:smogstem_log"
+    }
+  },
+  "result": {
+    "item": "undergarden:smogstem_wood",
+    "count": 3
+  }
+}

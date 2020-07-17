@@ -56,7 +56,7 @@ public class UndergardenSwordItem extends SwordItem {
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
             if(player.getHeldItemMainhand().getItem() == UndergardenItems.utheric_sword.get()) {
-                if(event.getEntityLiving().getCreatureAttribute() == UndergardenMod.ROTSPAWN) {
+                if(event.getEntityLiving().getCreatureAttribute() == UndergardenEntities.ROTSPAWN) {
                     event.setAmount(damage * 1.4F);
                 }
                 else event.setAmount(damage * 1F);

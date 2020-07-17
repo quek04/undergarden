@@ -10,7 +10,7 @@ public class UndergardenFluidAttributes {
     public static final FluidAttributes.Builder virulent = FluidAttributes.builder(new ResourceLocation(UndergardenMod.MODID, "fluid/virulent_mix_still"), new ResourceLocation(UndergardenMod.MODID, "fluid/virulent_mix_flow"))
             .color(0xFF58195F)
             .viscosity(900)
-            .overlay(new ResourceLocation("block/water_overlay"))
+            .overlay(new ResourceLocation(UndergardenMod.MODID,"fluid/virulent_mix_still"))
             ;
     public static final ForgeFlowingFluid.Properties virulent_properties = new ForgeFlowingFluid.Properties(() -> UndergardenFluids.virulent_source, () -> UndergardenFluids.virulent_flowing, virulent)
             .block(UndergardenBlocks.virulent_mix)

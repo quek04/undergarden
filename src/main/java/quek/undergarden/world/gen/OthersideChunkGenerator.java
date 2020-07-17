@@ -21,10 +21,10 @@ public class OthersideChunkGenerator extends NoiseChunkGenerator<OthersideGenera
     }
 
     //height
-    @Override
-    protected double func_222551_g() {
-        return (int)super.func_222551_g() / 1.5D;
-    }
+    //@Override
+    //protected double func_222551_g() {
+    //    return (int)super.func_222551_g() / 1.5D;
+    //}
 
     //spacing
     @Override
