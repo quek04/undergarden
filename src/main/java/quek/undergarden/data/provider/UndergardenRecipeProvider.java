@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapedRecipe;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -97,12 +98,13 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeSticks(Supplier<? extends Item> stickOut, Tag<Item> planksIn) {
+    public ShapedRecipeBuilder makeSticks(Supplier<? extends Item> stickOut, ITag.INamedTag<Item> planksIn) {
+
         return ShapedRecipeBuilder.shapedRecipe(stickOut.get(), 4)
                 .patternLine("#")
                 .patternLine("#")
                 .key('#', planksIn)
-                .addCriterion("has_" + planksIn.getId().getPath(), hasItem(planksIn));
+                .addCriterion("has_" + planksIn.func_230234_a_().getPath(), hasItem(planksIn));
     }
 
     public ShapedRecipeBuilder makeSticks(Supplier<? extends Item> stickOut, Supplier<? extends Block> planksIn) {
@@ -161,14 +163,14 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeTagSword(Supplier<? extends Item> swordOut, Tag<Item> materialIn) {
+    public ShapedRecipeBuilder makeTagSword(Supplier<? extends Item> swordOut, ITag.INamedTag<Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(swordOut.get())
                 .patternLine("#")
                 .patternLine("#")
                 .patternLine("/")
                 .key('#', materialIn)
                 .key('/', UndergardenItems.smogstem_stick.get())
-                .addCriterion("has_" + materialIn.getId().getPath(), hasItem(materialIn));
+                .addCriterion("has_" + materialIn.func_230234_a_().getPath(), hasItem(materialIn));
     }
 
     public ShapedRecipeBuilder makePickaxe(Supplier<? extends Item> pickaxeOut, Supplier<? extends Item> materialIn) {
@@ -181,14 +183,14 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeTagPickaxe(Supplier<? extends Item> pickaxeOut, Tag<Item> materialIn) {
+    public ShapedRecipeBuilder makeTagPickaxe(Supplier<? extends Item> pickaxeOut, ITag.INamedTag<Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(pickaxeOut.get())
                 .patternLine("###")
                 .patternLine(" / ")
                 .patternLine(" / ")
                 .key('#', materialIn)
                 .key('/', UndergardenItems.smogstem_stick.get())
-                .addCriterion("has_" + materialIn.getId().getPath(), hasItem(materialIn));
+                .addCriterion("has_" + materialIn.func_230234_a_().getPath(), hasItem(materialIn));
     }
 
     public ShapedRecipeBuilder makeAxe(Supplier<? extends Item> axeOut, Supplier<? extends Item> materialIn) {
@@ -201,14 +203,14 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeTagAxe(Supplier<? extends Item> axeOut, Tag<Item> materialIn) {
+    public ShapedRecipeBuilder makeTagAxe(Supplier<? extends Item> axeOut, ITag.INamedTag<Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(axeOut.get())
                 .patternLine("##")
                 .patternLine("#/")
                 .patternLine(" /")
                 .key('#', materialIn)
                 .key('/', UndergardenItems.smogstem_stick.get())
-                .addCriterion("has_" + materialIn.getId().getPath(), hasItem(materialIn));
+                .addCriterion("has_" + materialIn.func_230234_a_().getPath(), hasItem(materialIn));
     }
 
     public ShapedRecipeBuilder makeShovel(Supplier<? extends Item> shovelOut, Supplier<? extends Item> materialIn) {
@@ -221,14 +223,14 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeTagShovel(Supplier<? extends Item> shovelOut, Tag<Item> materialIn) {
+    public ShapedRecipeBuilder makeTagShovel(Supplier<? extends Item> shovelOut, ITag.INamedTag<Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(shovelOut.get())
                 .patternLine("#")
                 .patternLine("/")
                 .patternLine("/")
                 .key('#', materialIn)
                 .key('/', UndergardenItems.smogstem_stick.get())
-                .addCriterion("has_" + materialIn.getId().getPath(), hasItem(materialIn));
+                .addCriterion("has_" + materialIn.func_230234_a_().getPath(), hasItem(materialIn));
     }
 
     public ShapedRecipeBuilder makeHelmet(Supplier<? extends Item> helmetOut, Supplier<? extends Item> materialIn) {
@@ -274,11 +276,11 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + ingredient.asItem().getRegistryName(), hasItem(ingredient));
     }
 
-    public CookingRecipeBuilder smeltingRecipeTag(IItemProvider result, Tag<Item> ingredient, float exp) {
+    public CookingRecipeBuilder smeltingRecipeTag(IItemProvider result, ITag.INamedTag<Item> ingredient, float exp) {
         return smeltingRecipeTag(result, ingredient, exp, 1);
     }
 
-    public CookingRecipeBuilder smeltingRecipeTag(IItemProvider result, Tag<Item> ingredient, float exp, int count) {
+    public CookingRecipeBuilder smeltingRecipeTag(IItemProvider result, ITag.INamedTag<Item> ingredient, float exp, int count) {
         return CookingRecipeBuilder.smeltingRecipe(Ingredient.fromTag(ingredient), result, exp, 200)
                 .addCriterion("has_" + ingredient, hasItem(ingredient));
     }
@@ -292,11 +294,11 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + ingredient.asItem().getRegistryName(), hasItem(ingredient));
     }
 
-    public CookingRecipeBuilder blastingRecipeTag(IItemProvider result, Tag<Item> ingredient, float exp) {
+    public CookingRecipeBuilder blastingRecipeTag(IItemProvider result, ITag.INamedTag<Item> ingredient, float exp) {
         return blastingRecipeTag(result, ingredient, exp, 1);
     }
 
-    public CookingRecipeBuilder blastingRecipeTag(IItemProvider result, Tag<Item> ingredient, float exp, int count) {
+    public CookingRecipeBuilder blastingRecipeTag(IItemProvider result, ITag.INamedTag<Item> ingredient, float exp, int count) {
         return CookingRecipeBuilder.blastingRecipe(Ingredient.fromTag(ingredient), result, exp, 100)
                 .addCriterion("has_" + ingredient, hasItem(ingredient));
     }

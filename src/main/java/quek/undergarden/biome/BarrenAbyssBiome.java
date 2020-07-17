@@ -25,7 +25,7 @@ import java.awt.*;
 public class BarrenAbyssBiome extends UndergardenBiome {
 
     public BarrenAbyssBiome() {
-        super(new DefaultSurfaceBuilder(SurfaceBuilderConfig::deserialize),
+        super(new DefaultSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_),
                 new SurfaceBuilderConfig(UndergardenBlocks.depthrock.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.PLAINS,
                 0.3625F,

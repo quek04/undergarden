@@ -2,17 +2,20 @@ package quek.undergarden.entity;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
@@ -20,13 +23,17 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.UUID;
 
-public class BruteEntity extends MonsterEntity {
+public class BruteEntity extends MonsterEntity implements IAngerable {
 
-    private static final UUID ATTACK_SPEED_BOOST_MODIFIER_UUID = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
-    private static final AttributeModifier ATTACK_SPEED_BOOST_MODIFIER = (new AttributeModifier(ATTACK_SPEED_BOOST_MODIFIER_UUID, "Attacking speed boost", 0.10D, AttributeModifier.Operation.ADDITION)).setSaved(false);
+    private static final UUID field_234344_b_ = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
+    private static final AttributeModifier field_234349_c_ = new AttributeModifier(field_234344_b_, "Attacking speed boost", 0.05D, AttributeModifier.Operation.ADDITION);
+    private static final RangedInteger field_234350_d_ = TickRangeConverter.func_233037_a_(0, 1);
     private int angerLevel;
-    private int randomSoundDelay;
-    private UUID angerTargetUUID;
+    private static final RangedInteger field_234346_bv_ = TickRangeConverter.func_233037_a_(20, 39);
+    private int field_234347_bw_;
+    private UUID field_234348_bx_;
+    private static final RangedInteger field_241403_bz_ = TickRangeConverter.func_233037_a_(4, 6);
+    private int field_241401_bA_;
 
     public BruteEntity(EntityType<? extends BruteEntity> type, World worldIn) {
         super(type, worldIn);
@@ -38,10 +45,36 @@ public class BruteEntity extends MonsterEntity {
     }
 
     @Override
+    public int func_230256_F__() {
+        return this.field_234347_bw_;
+    }
+
+    @Override
+    public void func_230260_a__(int p_230260_1_) {
+        this.field_234347_bw_ = p_230260_1_;
+    }
+
+    @Nullable
+    @Override
+    public UUID func_230257_G__() {
+        return this.field_234348_bx_;
+    }
+
+    @Override
+    public void func_230259_a_(@Nullable UUID p_230259_1_) {
+        this.field_234348_bx_ = p_230259_1_;
+    }
+
+    @Override
+    public void func_230258_H__() {
+        this.func_230260_a__(field_234346_bv_.func_233018_a_(this.rand));
+    }
+
+    @Override
     public void setRevengeTarget(@Nullable LivingEntity livingBase) {
         super.setRevengeTarget(livingBase);
         if (livingBase != null) {
-            this.angerTargetUUID = livingBase.getUniqueID();
+            this.field_234348_bx_ = livingBase.getUniqueID();
         }
 
     }
@@ -58,12 +91,11 @@ public class BruteEntity extends MonsterEntity {
         this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
     }
 
-    @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23D);
-        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_()
+                .func_233815_a_(Attributes.field_233818_a_, 20.0D) //hp
+                .func_233815_a_(Attributes.field_233821_d_, 0.23D) //speed
+                .func_233815_a_(Attributes.field_233823_f_, 3.0D); //attack damage
     }
 
     public static boolean canBruteSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
@@ -72,89 +104,96 @@ public class BruteEntity extends MonsterEntity {
 
     @Override
     protected void updateAITasks() {
-        IAttributeInstance iattributeinstance = this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED);
-        LivingEntity livingentity = this.getRevengeTarget();
-        if(world.getDifficulty() != Difficulty.PEACEFUL) {
-            if (this.isAngry()) {
-                if (!this.isChild() && !iattributeinstance.hasModifier(ATTACK_SPEED_BOOST_MODIFIER)) {
-                    iattributeinstance.applyModifier(ATTACK_SPEED_BOOST_MODIFIER);
-                }
-
-                --this.angerLevel;
-                LivingEntity livingentity1 = livingentity != null ? livingentity : this.getAttackTarget();
-                if (!this.isAngry() && livingentity1 != null) {
-                    if (!this.canEntityBeSeen(livingentity1)) {
-                        this.setRevengeTarget(null);
-                        this.setAttackTarget(null);
-                    } else {
-                        this.angerLevel = this.func_223336_ef();
-                    }
-                }
-            } else if (iattributeinstance.hasModifier(ATTACK_SPEED_BOOST_MODIFIER)) {
-                iattributeinstance.removeModifier(ATTACK_SPEED_BOOST_MODIFIER);
+        ModifiableAttributeInstance modifiableattributeinstance = this.getAttribute(Attributes.field_233821_d_);
+        if (this.func_233678_J__()) {
+            if (!this.isChild() && !modifiableattributeinstance.hasModifier(field_234349_c_)) {
+                modifiableattributeinstance.func_233767_b_(field_234349_c_);
             }
 
-            if (this.randomSoundDelay > 0 && --this.randomSoundDelay == 0) {
-                this.playSound(UndergardenSoundEvents.BRUTE_ANGRY, this.getSoundVolume() * 2.0F, 1.0F);
-            }
-
-            if (this.isAngry() && this.angerTargetUUID != null && livingentity == null) {
-                PlayerEntity playerentity = this.world.getPlayerByUuid(this.angerTargetUUID);
-                this.setRevengeTarget(playerentity);
-                this.attackingPlayer = playerentity;
-                this.recentlyHit = this.getRevengeTimer();
-            }
-            super.updateAITasks();
+            this.func_241409_eY_();
+        } else if (modifiableattributeinstance.hasModifier(field_234349_c_)) {
+            modifiableattributeinstance.removeModifier(field_234349_c_);
         }
+
+        this.func_241359_a_((ServerWorld)this.world, true);
+        if (this.getAttackTarget() != null) {
+            this.func_241410_eZ_();
+        }
+
+        if (this.func_233678_J__()) {
+            this.recentlyHit = this.ticksExisted;
+        }
+
         super.updateAITasks();
     }
 
-    @Override
-    public void writeAdditional(CompoundNBT compound) {
-        super.writeAdditional(compound);
-        compound.putShort("Anger", (short)this.angerLevel);
-        if (this.angerTargetUUID != null) {
-            compound.putString("HurtBy", this.angerTargetUUID.toString());
-        } else {
-            compound.putString("HurtBy", "");
+    private void func_241409_eY_() {
+        if (this.angerLevel > 0) {
+            --this.angerLevel;
+            if (this.angerLevel == 0) {
+                this.angrySound();
+            }
         }
 
     }
 
-    @Override
-    public void readAdditional(CompoundNBT compound) {
-        super.readAdditional(compound);
-        this.angerLevel = compound.getShort("Anger");
-        String s = compound.getString("HurtBy");
-        if (!s.isEmpty()) {
-            this.angerTargetUUID = UUID.fromString(s);
-            PlayerEntity playerentity = this.world.getPlayerByUuid(this.angerTargetUUID);
-            this.setRevengeTarget(playerentity);
-            if (playerentity != null) {
-                this.attackingPlayer = playerentity;
-                this.recentlyHit = this.getRevengeTimer();
+    private void angrySound() {
+        this.playSound(UndergardenSoundEvents.BRUTE_ANGRY, this.getSoundVolume() * 2.0F, this.getSoundPitch() * 1.8F);
+    }
+
+    private void func_241410_eZ_() {
+        if (this.field_241401_bA_ > 0) {
+            --this.field_241401_bA_;
+        } else {
+            if (this.getEntitySenses().canSee(this.getAttackTarget())) {
+                this.func_241411_fa_();
             }
+
+            this.field_241401_bA_ = field_241403_bz_.func_233018_a_(this.rand);
+        }
+    }
+
+    private void func_241411_fa_() {
+        double d0 = this.func_233637_b_(Attributes.field_233819_b_);
+        AxisAlignedBB axisalignedbb = AxisAlignedBB.func_241549_a_(this.getPositionVec()).grow(d0, 10.0D, d0);
+        this.world.getLoadedEntitiesWithinAABB(BruteEntity.class, axisalignedbb).stream().filter((p_241408_1_) -> p_241408_1_ != this).filter((p_241407_0_) -> p_241407_0_.getAttackTarget() == null).filter((p_241406_1_) -> !p_241406_1_.isOnSameTeam(this.getAttackTarget())).forEach((p_241405_1_) -> {
+            p_241405_1_.setAttackTarget(this.getAttackTarget());
+        });
+    }
+
+    public void setAttackTarget(@Nullable LivingEntity entitylivingbaseIn) {
+        if (this.getAttackTarget() == null && entitylivingbaseIn != null) {
+            this.angerLevel = field_234350_d_.func_233018_a_(this.rand);
+            this.field_241401_bA_ = field_241403_bz_.func_233018_a_(this.rand);
         }
 
+        if (entitylivingbaseIn instanceof PlayerEntity) {
+            this.func_230246_e_((PlayerEntity)entitylivingbaseIn);
+        }
+
+        super.setAttackTarget(entitylivingbaseIn);
+    }
+
+    public void writeAdditional(CompoundNBT compound) {
+        super.writeAdditional(compound);
+        this.func_233682_c_(compound);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        this.func_241358_a_((ServerWorld)this.world, compound);
     }
 
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount) {
-        if (this.isInvulnerableTo(source)) {
-            return false;
-        } else {
-            Entity entity = source.getTrueSource();
-            if (entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canEntityBeSeen(entity) && world.getDifficulty() != Difficulty.PEACEFUL) {
-                this.func_226547_i_((LivingEntity) entity);
-            }
-
-            return super.attackEntityFrom(source, amount);
-        }
+        return !this.isInvulnerableTo(source) && super.attackEntityFrom(source, amount);
     }
 
     private boolean func_226547_i_(LivingEntity p_226547_1_) {
         this.angerLevel = this.func_223336_ef();
-        this.randomSoundDelay = this.rand.nextInt(40);
         this.setRevengeTarget(p_226547_1_);
         return true;
     }
@@ -185,7 +224,6 @@ public class BruteEntity extends MonsterEntity {
     static class HurtByAggressorGoal extends HurtByTargetGoal {
         public HurtByAggressorGoal(BruteEntity brute) {
             super(brute);
-            this.setCallsForHelp(new Class[]{BruteEntity.class});
         }
 
         protected void setAttackTarget(MobEntity mobIn, LivingEntity targetIn) {

@@ -1,9 +1,8 @@
 package quek.undergarden.world.gen.carver;
 
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -12,17 +11,18 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.carver.CaveWorldCarver;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UndergardenFluids;
 
 import java.util.BitSet;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 
 public class UndergardenCaveWorldCarver extends CaveWorldCarver {
 
-    public UndergardenCaveWorldCarver(Function<Dynamic<?>, ? extends ProbabilityConfig> p_i49929_1_) {
-        super(p_i49929_1_, 256);
+    public UndergardenCaveWorldCarver(Codec<ProbabilityConfig> configCodec) {
+        super(configCodec, 256);
         this.carvableBlocks = ImmutableSet.of(
                 UndergardenBlocks.depthrock.get(),
                 UndergardenBlocks.deepturf_block.get(),
@@ -30,10 +30,12 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
                 UndergardenBlocks.coal_ore.get(),
                 UndergardenBlocks.cloggrum_ore.get(),
                 UndergardenBlocks.froststeel_ore.get(),
-                UndergardenBlocks.utherium_ore.get()
+                UndergardenBlocks.utherium_ore.get(),
+                UndergardenBlocks.regalium_ore.get()
         );
         this.carvableFluids = ImmutableSet.of(
-                Fluids.WATER
+                Fluids.WATER,
+                UndergardenFluids.virulent_source
         );
     }
 
@@ -43,30 +45,27 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected boolean func_225556_a_(IChunk chunk, Function<BlockPos, Biome> biome, BitSet bit, Random rand, BlockPos.Mutable pos1, BlockPos.Mutable pos2, BlockPos.Mutable pos3, int p_225556_8_, int p_225556_9_, int p_225556_10_, int p_225556_11_, int p_225556_12_, int x, int y, int z, AtomicBoolean p_225556_16_) {
-        int i = x | z << 4 | y << 8;
-        if (bit.get(i)) {
+    protected boolean func_230358_a_(IChunk p_230358_1_, Function<BlockPos, Biome> p_230358_2_, BitSet p_230358_3_, Random p_230358_4_, BlockPos.Mutable p_230358_5_, BlockPos.Mutable p_230358_6_, BlockPos.Mutable p_230358_7_, int p_230358_8_, int p_230358_9_, int p_230358_10_, int p_230358_11_, int p_230358_12_, int p_230358_13_, int p_230358_14_, int p_230358_15_, MutableBoolean p_230358_16_) {
+        int i = p_230358_13_ | p_230358_15_ << 4 | p_230358_14_ << 8;
+        if (p_230358_3_.get(i)) {
             return false;
         } else {
-            bit.set(i);
-            pos1.setPos(p_225556_11_, y, p_225556_12_);
-            BlockState blockstate = chunk.getBlockState(pos1);
-            BlockState blockstate1 = chunk.getBlockState(pos2.setPos(pos1).move(Direction.UP));
-            if (blockstate.getBlock() == UndergardenBlocks.deepturf_block.get()) {
-                p_225556_16_.set(true);
-            }
+            p_230358_3_.set(i);
+            p_230358_5_.setPos(p_230358_11_, p_230358_14_, p_230358_12_);
+            BlockState blockstate = p_230358_1_.getBlockState(p_230358_5_);
+            BlockState blockstate1 = p_230358_1_.getBlockState(p_230358_6_.func_239622_a_(p_230358_5_, Direction.UP));
 
             if (!this.canCarveBlock(blockstate, blockstate1)) {
                 return false;
             } else {
-                if (y < 11) {
-                    chunk.setBlockState(pos1, UndergardenBlocks.virulent_mix.get().getDefaultState(), false);
+                if (p_230358_14_ < 11) {
+                    p_230358_1_.setBlockState(p_230358_5_, UndergardenBlocks.virulent_mix.get().getDefaultState(), false);
                 } else {
-                    chunk.setBlockState(pos1, CAVE_AIR, false);
-                    if (p_225556_16_.get()) {
-                        pos3.setPos(pos1).move(Direction.DOWN);
-                        if (chunk.getBlockState(pos3).getBlock() == UndergardenBlocks.deepsoil.get()) {
-                            chunk.setBlockState(pos3, biome.apply(pos1).getSurfaceBuilderConfig().getTop(), false);
+                    p_230358_1_.setBlockState(p_230358_5_, CAVE_AIR, false);
+                    if (p_230358_16_.isTrue()) {
+                        p_230358_7_.func_239622_a_(p_230358_5_, Direction.DOWN);
+                        if (p_230358_1_.getBlockState(p_230358_7_).isIn(UndergardenBlocks.deepsoil.get())) {
+                            p_230358_1_.setBlockState(p_230358_7_, p_230358_2_.apply(p_230358_5_).getSurfaceBuilderConfig().getTop(), false);
                         }
                     }
                 }
@@ -79,11 +78,11 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
     @Override
     public boolean func_225555_a_(IChunk chunk, Function<BlockPos, Biome> biome, Random rand, int p_225555_4_, int p_225555_5_, int p_225555_6_, int p_225555_7_, int p_225555_8_, BitSet p_225555_9_, ProbabilityConfig p_225555_10_) {
         int i = (this.func_222704_c() * 2 - 1) * 16;
-        int j = rand.nextInt(rand.nextInt(rand.nextInt(this.func_222724_a()) + 1) + 1);
+        int j = rand.nextInt(rand.nextInt(rand.nextInt(this.func_230357_a_()) + 1) + 1);
 
         for(int k = 0; k < j; ++k) {
             double d0 = p_225555_5_ * 16 + rand.nextInt(16);
-            double d1 = this.generateCaveStartY(rand);
+            double d1 = this.func_230359_a_(rand);
             double d2 = p_225555_6_ * 16 + rand.nextInt(16);
             int l = 1;
             if (rand.nextInt(4) == 0) {
@@ -95,9 +94,9 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
             for(int k1 = 0; k1 < l; ++k1) {
                 float f = rand.nextFloat() * ((float)Math.PI * 2F);
                 float f3 = (rand.nextFloat() - 0.5F) / 4.0F;
-                float f2 = this.generateCaveRadius(rand);
+                float f2 = this.func_230359_a_(rand);
                 int i1 = i - rand.nextInt(i / 4);
-                this.func_227206_a_(chunk, biome, rand.nextLong(), p_225555_4_, p_225555_7_, p_225555_8_, d0, d1, d2, f2, f, f3, 0, i1, this.func_222725_b(), p_225555_9_);
+                this.func_227206_a_(chunk, biome, rand.nextLong(), p_225555_4_, p_225555_7_, p_225555_8_, d0, d1, d2, f2, f, f3, 0, i1, this.func_230360_b_(), p_225555_9_);
             }
         }
 
@@ -105,12 +104,12 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected int func_222724_a() {
+    protected int func_230357_a_() {
         return 15;
     }
 
     @Override
-    protected float generateCaveRadius(Random rand) {
+    protected float func_230359_a_(Random rand) {
         float f = rand.nextFloat() * 2.0F + rand.nextFloat();
         if (rand.nextInt(10) == 0) {
             f *= rand.nextFloat() * rand.nextFloat() * 3.0F + 1.0F;
@@ -120,12 +119,12 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected double func_222725_b() {
+    protected double func_230360_b_() {
         return 1.0D;
     }
 
     @Override
-    protected int generateCaveStartY(Random rand) {
+    protected int func_230361_b_(Random rand) {
         return rand.nextInt(rand.nextInt(256) + 6);
     }
 

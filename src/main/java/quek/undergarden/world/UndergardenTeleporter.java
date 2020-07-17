@@ -1,6 +1,7 @@
 package quek.undergarden.world;
 
 import com.google.common.collect.Maps;
+import net.minecraft.util.math.vector.Vector3d;
 import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
 import net.minecraft.block.BlockState;
@@ -11,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.*;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.server.TicketType;
 import net.minecraftforge.common.util.ITeleporter;
@@ -27,9 +29,9 @@ public class UndergardenTeleporter implements ITeleporter {
     private final Object2LongMap<ColumnPos> columnMap = new Object2LongOpenHashMap<>();
 
     public boolean placeInPortal(ServerWorld world, Entity entity, float yaw) {
-        Vec3d vec3d = entity.getLastPortalVec();
+        Vector3d Vector3d = entity.getLastPortalVec();
         Direction direction = entity.getTeleportDirection();
-        BlockPattern.PortalInfo pattern = this.placeInExistingPortal(world, new BlockPos(entity.getPosX(), entity.getPosY(), entity.getPosZ()), entity.getMotion(), direction, vec3d.x, vec3d.y, entity instanceof PlayerEntity);
+        BlockPattern.PortalInfo pattern = this.placeInExistingPortal(world, new BlockPos(entity.getPosX(), entity.getPosY(), entity.getPosZ()), entity.getMotion(), direction, Vector3d.x, Vector3d.y, entity instanceof PlayerEntity);
         if (pattern == null) {
             return false;
         }
@@ -44,7 +46,7 @@ public class UndergardenTeleporter implements ITeleporter {
     }
 
     @Nullable
-    public BlockPattern.PortalInfo placeInExistingPortal(ServerWorld world, BlockPos pos, Vec3d motion, Direction direction, double x, double y, boolean isPlayer) {
+    public BlockPattern.PortalInfo placeInExistingPortal(ServerWorld world, BlockPos pos, Vector3d motion, Direction direction, double x, double y, boolean isPlayer) {
         boolean isFrame = true;
         BlockPos blockpos = null;
         ColumnPos columnpos = new ColumnPos(pos);

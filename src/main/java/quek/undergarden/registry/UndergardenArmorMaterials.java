@@ -68,4 +68,9 @@ public enum UndergardenArmorMaterials implements IArmorMaterial {
     public float getToughness() {
         return armorToughness;
     }
+
+    @Override
+    public float func_230304_f_() {
+        return 0;
+    }
 }

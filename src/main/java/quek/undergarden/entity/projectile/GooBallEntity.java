@@ -68,7 +68,7 @@ public class GooBallEntity extends ProjectileItemEntity {
                 entity.heal(2);
             }
             else {
-                entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)0);
+                entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)0);
                 entity.addPotionEffect(new EffectInstance(UndergardenEffects.gooey.get(), 100, 0, false, true));
             }
             this.playSound(SoundEvents.BLOCK_SLIME_BLOCK_BREAK, 1, 1);

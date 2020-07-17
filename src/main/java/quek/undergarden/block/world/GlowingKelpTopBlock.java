@@ -3,8 +3,8 @@ package quek.undergarden.block.world;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -33,7 +33,7 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
                 .doesNotBlockMovement()
                 .hardnessAndResistance(0F)
                 .sound(SoundType.WET_GRASS)
-                .lightValue(5)
+                .func_235838_a_((state) -> 10)
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
@@ -45,8 +45,8 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
 
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        IFluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
-        return ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8 ? this.randomAge(context.getWorld()) : null;
+        FluidState state = context.getWorld().getFluidState(context.getPos());
+        return state.isTagged(FluidTags.WATER) && state.getLevel() == 8 ? this.randomAge(context.getWorld()) : null;
     }
 
     public BlockState randomAge(IWorld world) {
@@ -54,7 +54,7 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
     }
 
     @Override
-    public IFluidState getFluidState(BlockState state) {
+    public FluidState getFluidState(BlockState state) {
         return Fluids.WATER.getStillFluidState(false);
     }
 
@@ -66,7 +66,7 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
             BlockPos blockpos = pos.up();
             BlockState blockstate = worldIn.getBlockState(blockpos);
             if (blockstate.getBlock() == Blocks.WATER && state.get(AGE) < 25 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, blockpos, state, rand.nextDouble() < 0.14D)) {
-                worldIn.setBlockState(blockpos, state.cycle(AGE));
+                worldIn.setBlockState(blockpos, state.func_235896_a_(AGE));
                 net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, blockpos, state);
             }
 
@@ -114,7 +114,7 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
     }
 
     @Override
-    public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+    public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
         return false;
     }
 }

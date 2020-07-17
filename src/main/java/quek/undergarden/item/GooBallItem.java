@@ -51,7 +51,7 @@ public class GooBallItem extends Item {
             if (!worldIn.isRemote) {
                 GooBallEntity gooBall = new GooBallEntity(worldIn, playerIn);
                 gooBall.setItem(itemstack);
-                gooBall.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+                gooBall.shoot(playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
                 worldIn.addEntity(gooBall);
             }
 
