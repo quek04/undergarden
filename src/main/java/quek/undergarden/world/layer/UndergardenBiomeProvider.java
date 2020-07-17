@@ -3,6 +3,7 @@ package quek.undergarden.world.layer;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldType;
@@ -87,6 +88,16 @@ public class UndergardenBiomeProvider extends BiomeProvider {
 
     }
 
+
+    @Override
+    protected Codec<? extends BiomeProvider> func_230319_a_() {
+        return null;
+    }
+
+    @Override
+    public BiomeProvider func_230320_a_(long l) {
+        return null;
+    }
 
     @Override
     public Set<Biome> getBiomes(int centerX, int centerY, int centerZ, int sideLength) {

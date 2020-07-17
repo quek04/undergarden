@@ -36,8 +36,8 @@ public class UndergardenTeleporter implements ITeleporter {
             return false;
         }
         else {
-            Vec3d position = pattern.pos;
-            Vec3d motion = pattern.motion;
+            Vector3d position = pattern.pos;
+            Vector3d motion = pattern.motion;
             entity.setMotion(motion);
             entity.rotationYaw = yaw + pattern.rotation;
             entity.moveForced(position.x, position.y, position.z);
@@ -66,7 +66,7 @@ public class UndergardenTeleporter implements ITeleporter {
                 for (int eX = -128; eX <= 128; ++eX) {
                     BlockPos blockpos2;
                     for (int eZ = -128; eZ <= 128; ++eZ) {
-                        for (BlockPos blockpos1 = pos.add(eX, world.getActualHeight() - 1 - pos.getY(), eZ); blockpos1
+                        for (BlockPos blockpos1 = pos.add(eX, world.getHeight() - 1 - pos.getY(), eZ); blockpos1
                                 .getY() >= 0; blockpos1 = blockpos2) {
                             blockpos2 = blockpos1.down();
                             if (world.getBlockState(blockpos1).getBlock() == UndergardenBlocks.undergarden_portal.get()) {
@@ -123,7 +123,7 @@ public class UndergardenTeleporter implements ITeleporter {
                 double d2 = l2 + 0.5 - entityIn.getPosZ();
 
                 label276:
-                for (int j3 = world.getActualHeight() - 1; j3 >= 0; --j3) {
+                for (int j3 = world.getHeight() - 1; j3 >= 0; --j3) {
                     if (world.isAirBlock(blockpos$mutable.setPos(j2, j3, l2))) {
                         while (j3 > 0 && world.isAirBlock(blockpos$mutable.setPos(j2, j3 - 1, l2))) {
                             --j3;
@@ -175,7 +175,7 @@ public class UndergardenTeleporter implements ITeleporter {
                     double d4 = j6 + 0.5 - entityIn.getPosZ();
 
                     label214:
-                    for (int i7 = world.getActualHeight() - 1; i7 >= 0; --i7) {
+                    for (int i7 = world.getHeight() - 1; i7 >= 0; --i7) {
                         if (world.isAirBlock(blockpos$mutable.setPos(l5, i7, j6))) {
                             while (i7 > 0 && world.isAirBlock(blockpos$mutable.setPos(l5, i7 - 1, j6))) {
                                 --i7;
@@ -225,7 +225,7 @@ public class UndergardenTeleporter implements ITeleporter {
         }
 
         if (d0 < 0.0) {
-            j1 = MathHelper.clamp(j1, 70, world.getActualHeight() - 10);
+            j1 = MathHelper.clamp(j1, 70, world.getHeight() - 10);
             k2 = j1;
 
             for (int j7 = -1; j7 <= 1; ++j7) {
@@ -302,7 +302,7 @@ public class UndergardenTeleporter implements ITeleporter {
             return player;
         }
         else {
-            Vec3d vec3d = entity.getMotion();
+            Vector3d vec3d = entity.getMotion();
             float f;
             BlockPos blockpos;
 
@@ -317,7 +317,7 @@ public class UndergardenTeleporter implements ITeleporter {
             double d6 = Math.min(2.9999872E7D, destWorld.getWorldBorder().maxZ() - 16.0D);
             d0 = MathHelper.clamp(d0, d3, d5);
             d1 = MathHelper.clamp(d1, d4, d6);
-            Vec3d vec3d1 = entity.getLastPortalVec();
+            Vector3d vec3d1 = entity.getLastPortalVec();
             blockpos = new BlockPos(d0, entity.getPosY(), d1);
 
             BlockPattern.PortalInfo blockpattern$portalinfo = this.placeInExistingPortal(destWorld, blockpos, vec3d,
