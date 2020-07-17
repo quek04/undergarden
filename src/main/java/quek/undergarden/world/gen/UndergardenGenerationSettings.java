@@ -1,5 +1,5 @@
 package quek.undergarden.world.gen;
-
+/*
 import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.GenerationSettings;
 import quek.undergarden.registry.UndergardenBlocks;
@@ -19,3 +19,5 @@ public class UndergardenGenerationSettings extends GenerationSettings {
         return 255;
     }
 }
+
+ */

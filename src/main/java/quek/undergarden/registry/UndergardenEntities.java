@@ -4,6 +4,7 @@ import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.world.gen.Heightmap;
@@ -78,6 +79,19 @@ public class UndergardenEntities {
         EntitySpawnPlacementRegistry.register(SCINTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
         EntitySpawnPlacementRegistry.register(BLISTERBOMBER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BlisterbomberEntity::canBlisterbomberSpawn);
         EntitySpawnPlacementRegistry.register(GLOOMPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GloomperEntity::canGloomperSpawn);
+    }
+
+    public static void entityAttributes() {
+        GlobalEntityTypeAttributes.put(ROTWALKER.get(), RotwalkerEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(ROTBEAST.get(), RotbeastEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(DWELLER.get(), DwellerEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(ROTDWELLER.get(), RotDwellerEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(GWIBLING.get(), AbstractFishEntity.func_234176_m_().func_233813_a_());
+        GlobalEntityTypeAttributes.put(BRUTE.get(), BruteEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(SCINTLING.get(), ScintlingEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(BLISTERBOMBER.get(), BlisterbomberEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(GLOOMPER.get(), GloomperEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().func_233813_a_());
     }
 
 }

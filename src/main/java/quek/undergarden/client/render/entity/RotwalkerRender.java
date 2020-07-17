@@ -11,7 +11,7 @@ import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.render.layer.RotwalkerEyesLayer;
 import quek.undergarden.entity.RotwalkerEntity;
 import quek.undergarden.client.model.RotwalkerModel;
-import quek.undergarden.world.OthersideDimension;
+//import quek.undergarden.world.OthersideDimension;
 
 @OnlyIn(Dist.CLIENT)
 public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel<RotwalkerEntity>> {
@@ -26,10 +26,11 @@ public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel
 
     @Override
     public ResourceLocation getEntityTexture(RotwalkerEntity entity) {
-        if(OthersideDimension.isTheOtherside(entity.world)) {
-            return otherside_texture;
-        }
-        else return texture;
+        //if(OthersideDimension.isTheOtherside(entity.world)) {
+        //    return otherside_texture;
+        //}
+        //else
+            return texture;
     }
 
     @Override

@@ -1,5 +1,5 @@
 package quek.undergarden.world.layer;
-
+/*
 import net.minecraft.world.storage.WorldInfo;
 
 public class UndergardenBiomeProviderSettings
@@ -30,3 +30,5 @@ public class UndergardenBiomeProviderSettings
 		return this.worldInfo;
 	}
 }
+
+ */

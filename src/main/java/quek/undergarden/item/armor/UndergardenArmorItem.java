@@ -45,10 +45,10 @@ public class UndergardenArmorItem extends ArmorItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
         if(this.getArmorMaterial() == UndergardenArmorMaterials.FROSTSTEEL && equipmentSlot == this.slot) {
-            multimap.put(Attributes.field_233821_d_, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE));
+            //multimap.put(Attributes.field_233821_d_, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.getArmorMaterial() == UndergardenArmorMaterials.UTHERIC && equipmentSlot == this.slot) {
-            multimap.put(Attributes.field_233820_c_, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "utheric_resistance", .01, AttributeModifier.Operation.MULTIPLY_BASE));
+            //multimap.put(Attributes.field_233820_c_, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "utheric_resistance", .01, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return multimap;
     }

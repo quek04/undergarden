@@ -4,7 +4,7 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum UndergardenItemTiers implements IItemTier {
-    SMOGSTEM(127,2,1,1, 15, Ingredient.fromTag(UndergardenTags.Items.SMOGSTEM_PLANKS)),
+    SMOGSTEM(127,2,1,1, 15, Ingredient.fromItems(UndergardenBlocks.smogstem_planks.get())),
     CLOGGRUM(286,5,4,2, 10, Ingredient.fromItems(UndergardenItems.cloggrum_ingot.get())),
     FROSTSTEEL(575, 6, 3, 3, 15, Ingredient.fromItems(UndergardenItems.froststeel_ingot.get())),
     UTHERIC(1279,8,3.5F,4,13, Ingredient.fromItems(UndergardenItems.utherium_ingot.get()))

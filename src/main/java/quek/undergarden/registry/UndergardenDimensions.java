@@ -1,5 +1,5 @@
 package quek.undergarden.registry;
-
+/*
 import net.minecraft.world.World;
 import net.minecraft.world.biome.provider.BiomeProviderType;
 import net.minecraft.world.dimension.Dimension;
@@ -39,3 +39,5 @@ public class UndergardenDimensions {
     });
 
 }
+
+ */

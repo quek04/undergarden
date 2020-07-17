@@ -1,5 +1,5 @@
 package quek.undergarden.world.gen;
-
+/*
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.util.SharedSeedRandom;
@@ -125,17 +125,6 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
 
     @Override
     public List<Biome.SpawnListEntry> getPossibleCreatures(EntityClassification creatureType, BlockPos pos) {
-        /*
-        if (creatureType == EntityClassification.MONSTER) {
-            if (Feature.NETHER_BRIDGE.isPositionInsideStructure(this.world, pos)) {
-                return Feature.NETHER_BRIDGE.getSpawnList();
-            }
-
-            if (Feature.NETHER_BRIDGE.isPositionInStructure(this.world, pos) && this.world.getBlockState(pos.down()).getBlock() == Blocks.NETHER_BRICKS) {
-                return Feature.NETHER_BRIDGE.getSpawnList();
-            }
-        }
-        */
         return super.getPossibleCreatures(creatureType, pos);
     }
 
@@ -221,3 +210,5 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
 
     }
 }
+
+ */

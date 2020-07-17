@@ -1,10 +1,9 @@
 package quek.undergarden.client;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.MusicTicker;
-import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.renderer.ItemRenderer;
@@ -14,7 +13,6 @@ import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.item.BlockItem;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -24,10 +22,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.UndergardenConfig;
-import quek.undergarden.client.audio.*;
 import quek.undergarden.client.render.entity.*;
-import quek.undergarden.registry.*;
-import quek.undergarden.world.*;
+import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UndergardenEntities;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -40,8 +37,8 @@ public class ClientStuff {
     private static final Minecraft CLIENT = Minecraft.getInstance();
 
     private static ISound playingMusic;
-    private static final ISound UNDERGARDEN_AMBIANCE = new UndergardenAmbianceSound();
-    private static final ISound OTHERSIDE_AMBIANCE = new OthersideAmbianceSound();
+    //private static final ISound UNDERGARDEN_AMBIANCE = new UndergardenAmbianceSound();
+    //private static final ISound OTHERSIDE_AMBIANCE = new OthersideAmbianceSound();
 
     private static void render(Supplier<? extends Block> block, RenderType render) {
         RenderTypeLookup.setRenderLayer(block.get(), render);
@@ -156,12 +153,15 @@ public class ClientStuff {
                 }
             }
 
+            /*
             if(UndergardenDimension.isTheUndergarden(player.world)) {
                 doAmbiance(UNDERGARDEN_AMBIANCE);
             }
             if(OthersideDimension.isTheOtherside(player.world)) {
                 doAmbiance(OTHERSIDE_AMBIANCE);
             }
+
+             */
         }
     }
 
@@ -171,6 +171,7 @@ public class ClientStuff {
             return;
         }
 
+        /*
         if (CLIENT.player != null && UndergardenDimension.isTheUndergarden(CLIENT.player.world)) {
             SoundEvent sound = UndergardenSoundEvents.UNDERGARDEN_MUSIC;
             if (sound == null || playingMusic != null) {
@@ -182,6 +183,8 @@ public class ClientStuff {
 
             event.setResultSound(playingMusic);
         }
+
+         */
     }
 
     private static boolean isMusicSound() {

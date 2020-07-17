@@ -80,7 +80,7 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
                         break;
                     }
 
-                    this.setBlockState(worldIn, blockpos, UndergardenBlocks.depthrock.get().getDefaultState());
+                    worldIn.setBlockState(blockpos, UndergardenBlocks.depthrock.get().getDefaultState(), 1);
                 }
             }
             return true;

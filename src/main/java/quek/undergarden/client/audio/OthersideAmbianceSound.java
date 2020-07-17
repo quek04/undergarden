@@ -1,5 +1,5 @@
 package quek.undergarden.client.audio;
-
+/*
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ITickableSound;
 import net.minecraft.client.audio.LocatableSound;
@@ -27,3 +27,5 @@ public class OthersideAmbianceSound extends LocatableSound implements ITickableS
         this.volume = 0.5F;
     }
 }
+
+ */

@@ -1,5 +1,5 @@
 package quek.undergarden.world.gen;
-
+/*
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.NoiseChunkGenerator;
@@ -47,3 +47,5 @@ public class OthersideChunkGenerator extends NoiseChunkGenerator<OthersideGenera
         return -1;
     }
 }
+
+ */

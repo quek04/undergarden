@@ -1,17 +1,11 @@
 package quek.undergarden;
 
-import io.netty.buffer.Unpooled;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -44,8 +38,8 @@ public class UndergardenMod {
 		UndergardenEntities.ENTITIES.register(bus);
 		UndergardenBlocks.BLOCKS.register(bus);
 		UndergardenItems.ITEMS.register(bus);
-		UndergardenDimensions.MOD_DIMENSIONS.register(bus);
-		UndergardenBiomes.BIOMES.register(bus);
+		//UndergardenDimensions.MOD_DIMENSIONS.register(bus);
+		//UndergardenBiomes.BIOMES.register(bus);
 		UndergardenFeatures.FEATURES.register(bus);
 		UndergardenWorldCarvers.CARVERS.register(bus);
 		UndergardenEffects.EFFECTS.register(bus);
@@ -59,9 +53,10 @@ public class UndergardenMod {
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
-		UndergardenBiomes.addBiomeTypes();
-		UndergardenBiomes.addBiomeFeatures();
+		//UndergardenBiomes.addBiomeTypes();
+		//UndergardenBiomes.addBiomeFeatures();
 		UndergardenEntities.spawnPlacements();
+		UndergardenEntities.entityAttributes();
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
@@ -101,6 +96,7 @@ public class UndergardenMod {
 			}
 		}
 
+		/*
 		@SubscribeEvent
 		public static void registerDimensions(final RegisterDimensionsEvent event) {
 			ResourceLocation undergarden = new ResourceLocation(UndergardenMod.MODID, "undergarden");
@@ -120,6 +116,7 @@ public class UndergardenMod {
 				UndergardenDimensions.otherside_dimension = DimensionType.byName(otherside);
 			}
 		}
+		*/
 
 	}
 }
