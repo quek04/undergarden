@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:froststeel_ingot"
+    }
+  },
+  "result": {
+    "item": "undergarden:froststeel_leggings"
+  }
+}

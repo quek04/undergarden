@@ -193,6 +193,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeLeggings(UndergardenItems.cloggrum_leggings, UndergardenItems.cloggrum_ingot).build(consumer);
         makeBoots(UndergardenItems.cloggrum_boots, UndergardenItems.cloggrum_ingot).build(consumer);
 
+        makeHelmet(UndergardenItems.froststeel_helmet, UndergardenItems.froststeel_ingot).build(consumer);
+        makeChestplate(UndergardenItems.froststeel_chestplate, UndergardenItems.froststeel_ingot).build(consumer);
+        makeLeggings(UndergardenItems.froststeel_leggings, UndergardenItems.froststeel_ingot).build(consumer);
+        makeBoots(UndergardenItems.froststeel_boots, UndergardenItems.froststeel_ingot).build(consumer);
+
+        makeHelmet(UndergardenItems.utheric_helmet, UndergardenItems.utherium_ingot).build(consumer);
+        makeChestplate(UndergardenItems.utheric_chestplate, UndergardenItems.utherium_ingot).build(consumer);
+        makeLeggings(UndergardenItems.utheric_leggings, UndergardenItems.utherium_ingot).build(consumer);
+        makeBoots(UndergardenItems.utheric_boots, UndergardenItems.utherium_ingot).build(consumer);
+
         makeStairs(UndergardenBlocks.depthrock_stairs, UndergardenBlocks.depthrock).build(consumer);
         makeStairs(UndergardenBlocks.cobbled_depthrock_stairs, UndergardenBlocks.cobbled_depthrock).build(consumer);
         makeStairs(UndergardenBlocks.depthrock_brick_stairs, UndergardenBlocks.depthrock_bricks).build(consumer);
