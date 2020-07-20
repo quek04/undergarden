@@ -117,11 +117,13 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         toolItem(UndergardenItems.smogstem_pickaxe);
         toolItem(UndergardenItems.smogstem_axe);
         toolItem(UndergardenItems.smogstem_shovel);
+        toolItem(UndergardenItems.smogstem_hoe);
 
         toolItem(UndergardenItems.cloggrum_sword);
         toolItem(UndergardenItems.cloggrum_pickaxe);
         toolItem(UndergardenItems.cloggrum_axe);
         toolItem(UndergardenItems.cloggrum_shovel);
+        toolItem(UndergardenItems.cloggrum_hoe);
 
         normalItem(UndergardenItems.masticator_scales);
         normalItem(UndergardenItems.masticated_chestplate);
@@ -145,11 +147,13 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         toolItem(UndergardenItems.froststeel_pickaxe);
         toolItem(UndergardenItems.froststeel_axe);
         toolItem(UndergardenItems.froststeel_shovel);
+        toolItem(UndergardenItems.froststeel_hoe);
 
         toolItem(UndergardenItems.utheric_sword);
         toolItem(UndergardenItems.utheric_pickaxe);
         toolItem(UndergardenItems.utheric_axe);
         toolItem(UndergardenItems.utheric_shovel);
+        toolItem(UndergardenItems.utheric_hoe);
 
         normalItem(UndergardenItems.virulent_mix_bucket);
 

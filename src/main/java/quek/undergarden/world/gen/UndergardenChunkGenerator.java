@@ -49,13 +49,12 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
         float f = 0.0F;
         float f1 = 0.0F;
         float f2 = 0.0F;
-        int i = 2;
         int j = this.getSeaLevel();
-        float f3 = this.biomeProvider.getNoiseBiome(noiseX, j, noiseZ).getDepth();
+        float f3 = biomeProvider.getNoiseBiome(noiseX, j, noiseZ).getDepth();
 
         for(int k = -2; k <= 2; ++k) {
             for(int l = -2; l <= 2; ++l) {
-                Biome biome = this.biomeProvider.getNoiseBiome(noiseX + k, j, noiseZ + l);
+                Biome biome = biomeProvider.getNoiseBiome(noiseX + k, j, noiseZ + l);
                 float depth = biome.getDepth();
                 float scale = biome.getScale();
 
@@ -75,12 +74,12 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
         f = f * 0.9F + 0.1F;
         f1 = (f1 * 4.0F - 1.0F) / 8.0F;
         adouble[0] = (double)f1 + this.getNoiseDepthAt(noiseX, noiseZ);
-        adouble[1] = (double)f;
+        adouble[1] = f;
         return adouble;
     }
 
     private double getNoiseDepthAt(int noiseX, int noiseZ) {
-        double d0 = this.depthNoise.getValue((double)(noiseX * 200), 10.0D, (double)(noiseZ * 200), 1.0D, 0.0D, true) * 65535.0D / 8000.0D;
+        double d0 = this.depthNoise.getValue(noiseX * 200, 10.0D, noiseZ * 200, 1.0D, 0.0D, true) * 65535.0D / 8000.0D;
         if (d0 < 0.0D) {
             d0 = -d0 * 0.3D;
         }

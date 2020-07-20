@@ -31,7 +31,7 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 
 @OnlyIn(Dist.CLIENT)
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT)
 public class ClientStuff {
 
     private static final Minecraft CLIENT = Minecraft.getInstance();
