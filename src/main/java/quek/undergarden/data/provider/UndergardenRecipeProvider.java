@@ -231,6 +231,26 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + materialIn.getId().getPath(), hasItem(materialIn));
     }
 
+    public ShapedRecipeBuilder makeHoe(Supplier<? extends Item> hoeOut, Supplier<? extends Item> materialIn) {
+        return ShapedRecipeBuilder.shapedRecipe(hoeOut.get())
+                .patternLine("##")
+                .patternLine(" /")
+                .patternLine(" /")
+                .key('#', materialIn.get())
+                .key('/', UndergardenItems.smogstem_stick.get())
+                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+    }
+
+    public ShapedRecipeBuilder makeTagHoe(Supplier<? extends Item> hoeOut, Tag<Item> materialIn) {
+        return ShapedRecipeBuilder.shapedRecipe(hoeOut.get())
+                .patternLine("##")
+                .patternLine(" /")
+                .patternLine(" /")
+                .key('#', materialIn)
+                .key('/', UndergardenItems.smogstem_stick.get())
+                .addCriterion("has_" + materialIn.getId().getPath(), hasItem(materialIn));
+    }
+
     public ShapedRecipeBuilder makeHelmet(Supplier<? extends Item> helmetOut, Supplier<? extends Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(helmetOut.get())
                 .patternLine("MMM")

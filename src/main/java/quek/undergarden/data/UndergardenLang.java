@@ -154,17 +154,20 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.smogstem_pickaxe, "Smogstem Pickaxe");
         addItem(UndergardenItems.smogstem_axe, "Smogstem Axe");
         addItem(UndergardenItems.smogstem_shovel, "Smogstem Shovel");
+        addItem(UndergardenItems.smogstem_hoe, "Smogstem Hoe");
 
         addItem(UndergardenItems.cloggrum_sword, "Cloggrum Sword");
         addItem(UndergardenItems.cloggrum_pickaxe, "Cloggrum Pickaxe");
         addItem(UndergardenItems.cloggrum_axe, "Cloggrum Axe");
         addItem(UndergardenItems.cloggrum_shovel, "Cloggrum Shovel");
+        addItem(UndergardenItems.cloggrum_hoe, "Cloggrum Hoe");
         addItem(UndergardenItems.cloggrum_shield, "Cloggrum Shield");
 
         addItem(UndergardenItems.froststeel_sword, "Froststeel Sword");
         addItem(UndergardenItems.froststeel_pickaxe, "Froststeel Pickaxe");
         addItem(UndergardenItems.froststeel_axe, "Froststeel Axe");
         addItem(UndergardenItems.froststeel_shovel, "Froststeel Shovel");
+        addItem(UndergardenItems.froststeel_hoe, "Froststeel Hoe");
 
         addItem(UndergardenItems.utheric_sword, "Utherium Sword");
         addItem(UndergardenItems.utheric_pickaxe, "Utherium Pickaxe");

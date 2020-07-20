@@ -186,6 +186,11 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeShovel(UndergardenItems.froststeel_shovel, UndergardenItems.froststeel_ingot).build(consumer, name("froststeel_shovel"));
         makeShovel(UndergardenItems.utheric_shovel, UndergardenItems.utherium_ingot).build(consumer, name("utheric_shovel"));
 
+        makeTagHoe(UndergardenItems.smogstem_hoe, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer);
+        makeHoe(UndergardenItems.cloggrum_hoe, UndergardenItems.cloggrum_ingot).build(consumer);
+        makeHoe(UndergardenItems.froststeel_hoe, UndergardenItems.froststeel_ingot).build(consumer);
+        makeHoe(UndergardenItems.utheric_hoe, UndergardenItems.utherium_ingot).build(consumer);
+
         makeChestplate(UndergardenItems.masticated_chestplate, UndergardenItems.masticator_scales).build(consumer);
 
         makeHelmet(UndergardenItems.cloggrum_helmet, UndergardenItems.cloggrum_ingot).build(consumer);
