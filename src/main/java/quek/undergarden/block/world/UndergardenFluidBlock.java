@@ -9,6 +9,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenFluids;
 
 import java.util.function.Supplier;
@@ -24,7 +25,9 @@ public class UndergardenFluidBlock extends FlowingFluidBlock {
         if(this.getFluid() == UndergardenFluids.virulent_mix_source.get() || this.getFluid() == UndergardenFluids.virulent_mix_flowing.get()) {
             if(entityIn.isAlive() && entityIn instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityIn;
-                livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
+                if(livingEntity.getCreatureAttribute() != UndergardenEntities.ROTSPAWN) {
+                    livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
+                }
             }
 
         }
