@@ -33,7 +33,7 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
                 .doesNotBlockMovement()
                 .hardnessAndResistance(0F)
                 .sound(SoundType.WET_GRASS)
-                .func_235838_a_((state) -> 10)
+                .setLightLevel((state) -> 10)
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }

@@ -10,15 +10,15 @@ public class UndergardenTags {
 
     public static class Items {
 
-        public static final ITag<Item> SMOGSTEM_PLANKS = tag("smogstem_planks");
-        public static final ITag<Item> WIGGLEWOOD_PLANKS = tag("wigglewood_planks");
-        public static final ITag<Item> MUSHROOMS = tag("mushrooms");
+        public static final ITag.INamedTag<Item> SMOGSTEM_PLANKS = tag("smogstem_planks");
+        public static final ITag.INamedTag<Item> WIGGLEWOOD_PLANKS = tag("wigglewood_planks");
+        public static final ITag.INamedTag<Item> MUSHROOMS = tag("mushrooms");
 
-        public static final ITag<Item> CLOGGRUM_ITEMS = tag("cloggrum_items");
-        public static final ITag<Item> FROSTSTEEL_ITEMS = tag("froststeel_items");
-        public static final ITag<Item> UTHERIUM_ITEMS = tag("utherium_items");
+        public static final ITag.INamedTag<Item> CLOGGRUM_ITEMS = tag("cloggrum_items");
+        public static final ITag.INamedTag<Item> FROSTSTEEL_ITEMS = tag("froststeel_items");
+        public static final ITag.INamedTag<Item> UTHERIUM_ITEMS = tag("utherium_items");
 
-        private static ITag<Item> tag(String name) {
+        private static ITag.INamedTag<Item> tag(String name) {
             return ItemTags.makeWrapperTag(new ResourceLocation(UndergardenMod.MODID, name).toString());
         }
 
@@ -26,9 +26,9 @@ public class UndergardenTags {
 
     public static class Blocks {
 
-        public static final ITag<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
+        public static final ITag.INamedTag<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
 
-        private static ITag<Block> tag(String name) {
+        private static ITag.INamedTag<Block> tag(String name) {
             return BlockTags.makeWrapperTag(new ResourceLocation(UndergardenMod.MODID, name).toString());
         }
 

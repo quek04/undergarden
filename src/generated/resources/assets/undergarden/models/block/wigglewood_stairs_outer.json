@@ -1,5 +1,5 @@
 {
-  "parent": "block/outer_stairs",
+  "parent": "minecraft:block/outer_stairs",
   "textures": {
     "side": "undergarden:block/wigglewood_planks",
     "bottom": "undergarden:block/wigglewood_planks",

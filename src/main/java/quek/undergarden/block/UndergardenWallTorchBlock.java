@@ -11,7 +11,7 @@ public class UndergardenWallTorchBlock extends WallTorchBlock {
         super(Properties.create(Material.MISCELLANEOUS)
                 .doesNotBlockMovement()
                 .hardnessAndResistance(0F, 0F)
-                .func_235838_a_((state) -> 14)
+                .setLightLevel((state) -> 14)
                 .sound(SoundType.WOOD),
                 ParticleTypes.FLAME
         );

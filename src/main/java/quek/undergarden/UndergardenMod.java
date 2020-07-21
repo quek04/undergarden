@@ -39,7 +39,7 @@ public class UndergardenMod {
 		UndergardenBlocks.BLOCKS.register(bus);
 		UndergardenItems.ITEMS.register(bus);
 		//UndergardenDimensions.MOD_DIMENSIONS.register(bus);
-		//UndergardenBiomes.BIOMES.register(bus);
+		UndergardenBiomes.BIOMES.register(bus);
 		UndergardenFeatures.FEATURES.register(bus);
 		UndergardenWorldCarvers.CARVERS.register(bus);
 		UndergardenEffects.EFFECTS.register(bus);
@@ -53,8 +53,8 @@ public class UndergardenMod {
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
-		//UndergardenBiomes.addBiomeTypes();
-		//UndergardenBiomes.addBiomeFeatures();
+		UndergardenBiomes.addBiomeTypes();
+		UndergardenBiomes.addBiomeFeatures();
 		UndergardenEntities.spawnPlacements();
 		UndergardenEntities.entityAttributes();
 	}

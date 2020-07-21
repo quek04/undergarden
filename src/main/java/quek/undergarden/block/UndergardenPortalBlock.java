@@ -41,7 +41,7 @@ public class UndergardenPortalBlock extends Block {
         super(Properties.create(Material.PORTAL)
                 .hardnessAndResistance(-1F)
                 .doesNotBlockMovement()
-                .func_235838_a_((state) -> 10)
+                .setLightLevel((state) -> 10)
                 .noDrops()
         );
         setDefaultState(stateContainer.getBaseState().with(AXIS, Direction.Axis.X));

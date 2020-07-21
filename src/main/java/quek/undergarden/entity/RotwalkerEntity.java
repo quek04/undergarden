@@ -41,10 +41,10 @@ public class RotwalkerEntity extends MonsterEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .func_233815_a_(Attributes.field_233818_a_, 40.0D) //hp
-                .func_233815_a_(Attributes.field_233826_i_, 3.0D) //armor
-                .func_233815_a_(Attributes.field_233823_f_, 5.0D) //attack damage
-                .func_233815_a_(Attributes.field_233821_d_, 0.23D); //speed
+                .func_233815_a_(Attributes.MAX_HEALTH, 40.0D) //hp
+                .func_233815_a_(Attributes.ARMOR, 3.0D) //armor
+                .func_233815_a_(Attributes.ATTACK_DAMAGE, 5.0D) //attack damage
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.23D); //speed
     }
 
     @Override

@@ -1,5 +1,5 @@
 {
-  "parent": "block/door_bottom",
+  "parent": "minecraft:block/door_bottom",
   "textures": {
     "bottom": "undergarden:block/smogstem_door_bottom",
     "top": "undergarden:block/smogstem_door_top"

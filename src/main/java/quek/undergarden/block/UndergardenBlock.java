@@ -22,7 +22,7 @@ public class UndergardenBlock extends Block {
                 .sound(sound)
                 .harvestLevel(harvestlvl)
                 .harvestTool(tool)
-                .func_235838_a_((state) -> light)
+                .setLightLevel((state) -> light)
         );
     }
 

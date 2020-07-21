@@ -27,12 +27,12 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
 
     private static final UUID field_234344_b_ = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
     private static final AttributeModifier field_234349_c_ = new AttributeModifier(field_234344_b_, "Attacking speed boost", 0.05D, AttributeModifier.Operation.ADDITION);
-    private static final RangedInteger field_234350_d_ = TickRangeConverter.func_233037_a_(0, 1);
+    private static final RangedInteger field_234350_d_ = TickRangeConverter.convertRange(0, 1);
     private int angerLevel;
-    private static final RangedInteger field_234346_bv_ = TickRangeConverter.func_233037_a_(20, 39);
+    private static final RangedInteger field_234346_bv_ = TickRangeConverter.convertRange(20, 39);
     private int field_234347_bw_;
     private UUID field_234348_bx_;
-    private static final RangedInteger field_241403_bz_ = TickRangeConverter.func_233037_a_(4, 6);
+    private static final RangedInteger field_241403_bz_ = TickRangeConverter.convertRange(4, 6);
     private int field_241401_bA_;
 
     public BruteEntity(EntityType<? extends BruteEntity> type, World worldIn) {
@@ -93,9 +93,9 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.func_233666_p_()
-                .func_233815_a_(Attributes.field_233818_a_, 20.0D) //hp
-                .func_233815_a_(Attributes.field_233821_d_, 0.23D) //speed
-                .func_233815_a_(Attributes.field_233823_f_, 3.0D); //attack damage
+                .func_233815_a_(Attributes.MAX_HEALTH, 20.0D) //hp
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.23D) //speed
+                .func_233815_a_(Attributes.ATTACK_DAMAGE, 3.0D); //attack damage
     }
 
     public static boolean canBruteSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
@@ -104,7 +104,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
 
     @Override
     protected void updateAITasks() {
-        ModifiableAttributeInstance modifiableattributeinstance = this.getAttribute(Attributes.field_233821_d_);
+        ModifiableAttributeInstance modifiableattributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
         if (this.func_233678_J__()) {
             if (!this.isChild() && !modifiableattributeinstance.hasModifier(field_234349_c_)) {
                 modifiableattributeinstance.func_233767_b_(field_234349_c_);
@@ -154,7 +154,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     }
 
     private void func_241411_fa_() {
-        double d0 = this.func_233637_b_(Attributes.field_233819_b_);
+        double d0 = this.func_233637_b_(Attributes.MOVEMENT_SPEED);
         AxisAlignedBB axisalignedbb = AxisAlignedBB.func_241549_a_(this.getPositionVec()).grow(d0, 10.0D, d0);
         this.world.getLoadedEntitiesWithinAABB(BruteEntity.class, axisalignedbb).stream().filter((p_241408_1_) -> p_241408_1_ != this).filter((p_241407_0_) -> p_241407_0_.getAttackTarget() == null).filter((p_241406_1_) -> !p_241406_1_.isOnSameTeam(this.getAttackTarget())).forEach((p_241405_1_) -> {
             p_241405_1_.setAttackTarget(this.getAttackTarget());

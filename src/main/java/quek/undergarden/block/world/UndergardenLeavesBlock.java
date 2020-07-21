@@ -104,7 +104,7 @@ public class UndergardenLeavesBlock extends LeavesBlock {
     }
 
     private static int getDistance(BlockState neighbor) {
-        if (BlockTags.LOGS.func_230235_a_(neighbor.getBlock())) {
+        if (BlockTags.LOGS.contains(neighbor.getBlock())) {
             return 0;
         } else {
             return neighbor.getBlock() instanceof LeavesBlock ? neighbor.get(DISTANCE) : 7;

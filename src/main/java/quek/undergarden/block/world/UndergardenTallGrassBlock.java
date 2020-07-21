@@ -32,7 +32,7 @@ public class UndergardenTallGrassBlock extends UndergardenBushBlock implements I
                 .sound(SoundType.PLANT)
                 .doesNotBlockMovement()
                 .notSolid()
-                .func_235838_a_((state) -> light)
+                .setLightLevel((state) -> light)
 
         );
     }

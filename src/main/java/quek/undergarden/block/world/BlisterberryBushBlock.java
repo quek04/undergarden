@@ -40,7 +40,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
                 .sound(SoundType.PLANT)
                 .tickRandomly()
                 .doesNotBlockMovement()
-                .func_235838_a_((state) -> 6)
+                .setLightLevel((state) -> 6)
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }

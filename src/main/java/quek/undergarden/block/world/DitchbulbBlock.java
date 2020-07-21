@@ -30,7 +30,7 @@ public class DitchbulbBlock extends UndergardenBushBlock {
                 .sound(SoundType.PLANT)
                 .doesNotBlockMovement()
                 .notSolid()
-                .func_235838_a_((state) -> 6)
+                .setLightLevel((state) -> 6)
         );
     }
 

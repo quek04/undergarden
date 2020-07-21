@@ -43,14 +43,14 @@ public class MasticatorEntity extends MonsterEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .func_233815_a_(Attributes.field_233818_a_, 150.0D) //hp
-                .func_233815_a_(Attributes.field_233826_i_, 10.0D) //armor
-                .func_233815_a_(Attributes.field_233827_j_, 5.0D) //armor toughness
-                .func_233815_a_(Attributes.field_233823_f_, 10.0D) //attack damage
-                .func_233815_a_(Attributes.field_233824_g_, 2.0D) //attack knockback
-                .func_233815_a_(Attributes.field_233821_d_, 0.40D) //speed
-                .func_233815_a_(Attributes.field_233820_c_, 1.0D) //knockback resist
-                .func_233815_a_(Attributes.field_233819_b_, 64.0D); //follow range
+                .func_233815_a_(Attributes.MAX_HEALTH, 150.0D) //hp
+                .func_233815_a_(Attributes.ARMOR, 10.0D) //armor
+                .func_233815_a_(Attributes.ARMOR_TOUGHNESS, 5.0D) //armor toughness
+                .func_233815_a_(Attributes.ATTACK_DAMAGE, 10.0D) //attack damage
+                .func_233815_a_(Attributes.ATTACK_KNOCKBACK, 2.0D) //attack knockback
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.40D) //speed
+                .func_233815_a_(Attributes.KNOCKBACK_RESISTANCE, 1.0D) //knockback resist
+                .func_233815_a_(Attributes.FOLLOW_RANGE, 64.0D); //follow range
     }
 
     @Override
@@ -64,8 +64,8 @@ public class MasticatorEntity extends MonsterEntity {
         super.livingTick();
         if (this.isAlive()) {
             double d0 = this.getAttackTarget() != null ? 0.35D : 0.3D;
-            double d1 = this.getAttribute(Attributes.field_233821_d_).getBaseValue();
-            this.getAttribute(Attributes.field_233821_d_).setBaseValue(MathHelper.lerp(0.1D, d1, d0));
+            double d1 = this.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
+            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(MathHelper.lerp(0.1D, d1, d0));
 
             if (this.collidedHorizontally && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this)) {
                 boolean flag = false;

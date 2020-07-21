@@ -30,7 +30,7 @@ public class BlisterbombItem extends Item {
         if (!worldIn.isRemote) {
             BlisterbombEntity blisterbomb = new BlisterbombEntity(worldIn, playerIn);
             blisterbomb.setItem(itemstack);
-            blisterbomb.shoot(playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            blisterbomb.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
             worldIn.addEntity(blisterbomb);
         }
 

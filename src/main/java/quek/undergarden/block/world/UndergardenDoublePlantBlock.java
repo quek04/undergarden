@@ -41,7 +41,7 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
                 .hardnessAndResistance(0F)
                 .sound(SoundType.PLANT)
                 .doesNotBlockMovement()
-                .func_235838_a_((state) -> light)
+                .setLightLevel((state) -> light)
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER));
     }

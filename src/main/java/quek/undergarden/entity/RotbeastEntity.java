@@ -45,11 +45,11 @@ public class RotbeastEntity extends MonsterEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .func_233815_a_(Attributes.field_233818_a_, 80.0D) //hp
-                .func_233815_a_(Attributes.field_233826_i_, 3.0D) //armor
-                .func_233815_a_(Attributes.field_233823_f_, 10.0D) //attack damage
-                .func_233815_a_(Attributes.field_233821_d_, 0.22D) //speed
-                .func_233815_a_(Attributes.field_233820_c_, 0.5D); //knockback resist
+                .func_233815_a_(Attributes.MAX_HEALTH, 80.0D) //hp
+                .func_233815_a_(Attributes.ARMOR, 3.0D) //armor
+                .func_233815_a_(Attributes.ATTACK_DAMAGE, 10.0D) //attack damage
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.22D) //speed
+                .func_233815_a_(Attributes.KNOCKBACK_RESISTANCE, 0.5D); //knockback resist
     }
 
     @Override
@@ -91,7 +91,7 @@ public class RotbeastEntity extends MonsterEntity {
     }
 
     private float getAttackDamage() {
-        return (float)this.getAttribute(Attributes.field_233823_f_).getValue();
+        return (float)this.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
     }
 
     @Override

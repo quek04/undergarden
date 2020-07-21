@@ -36,7 +36,7 @@ public class UndergardenMushroomBlock extends UndergardenBushBlock implements IG
                 .tickRandomly()
                 .hardnessAndResistance(0f)
                 .sound(SoundType.PLANT)
-                .func_235838_a_((state) -> light)
+                .setLightLevel((state) -> light)
         );
     }
 

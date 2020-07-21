@@ -23,13 +23,14 @@ public class UndergardenHoeItem extends HoeItem {
 
     protected static final Map<Block, BlockState> HOE_LOOKUP = Maps.newHashMap(ImmutableMap.of(UndergardenBlocks.deepturf_block.get(), UndergardenBlocks.deepsoil_farmland.get().getDefaultState(), UndergardenBlocks.deepsoil.get(), UndergardenBlocks.deepsoil_farmland.get().getDefaultState()));
 
-    public UndergardenHoeItem(IItemTier tier, float attackSpeedIn) {
-        super(tier, attackSpeedIn, new Properties()
+    public UndergardenHoeItem(IItemTier tier, int idk, float speed) {
+        super(tier, idk, speed, new Properties()
                 .maxStackSize(1)
-                .defaultMaxDamage(tier.getMaxUses())
+                .maxDamage(tier.getMaxUses())
                 .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
         );
     }
+
 
     @Override
     public ActionResultType onItemUse(ItemUseContext context) {

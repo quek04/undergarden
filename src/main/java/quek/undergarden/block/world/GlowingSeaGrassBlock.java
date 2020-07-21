@@ -28,7 +28,7 @@ public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiqui
                 .doesNotBlockMovement()
                 .hardnessAndResistance(0F)
                 .sound(SoundType.WET_GRASS)
-                .func_235838_a_((state) -> 7)
+                .setLightLevel((state) -> 7)
         );
     }
 

@@ -140,14 +140,10 @@ public class UndergardenBlocks {
     public static final RegistryObject<SlabBlock> shiverstone_brick_slab = registerBlock("shiverstone_brick_slab", () -> new UndergardenSlabBlock(
             Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
 
-    public static final RegistryObject<WallBlock> cobbled_depthrock_wall = registerBlock("cobbled_depthrock_wall", () -> new UndergardenWallBlock(
-            Material.ROCK, 2F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
-    public static final RegistryObject<WallBlock> depthrock_brick_wall = registerBlock("depthrock_brick_wall", () -> new UndergardenWallBlock(
-            Material.ROCK, 1.5F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
-    public static final RegistryObject<WallBlock> cobbled_shiverstone_wall = registerBlock("cobbled_shiverstone_wall", () -> new UndergardenWallBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
-    public static final RegistryObject<WallBlock> shiverstone_brick_wall = registerBlock("shiverstone_brick_wall", () -> new UndergardenWallBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
+    public static final RegistryObject<WallBlock> cobbled_depthrock_wall = registerBlock("cobbled_depthrock_wall", () -> new WallBlock(Block.Properties.from(cobbled_depthrock.get())));
+    public static final RegistryObject<WallBlock> depthrock_brick_wall = registerBlock("depthrock_brick_wall", () -> new WallBlock(Block.Properties.from(depthrock_bricks.get())));
+    public static final RegistryObject<WallBlock> cobbled_shiverstone_wall = registerBlock("cobbled_shiverstone_wall", () -> new WallBlock(Block.Properties.from(cobbled_shiverstone.get())));
+    public static final RegistryObject<WallBlock> shiverstone_brick_wall = registerBlock("shiverstone_brick_wall", () -> new WallBlock(Block.Properties.from(shiverstone_bricks.get())));
 
     public static final RegistryObject<FenceBlock> smogstem_fence = registerBlock("smogstem_fence", () -> new UndergardenFenceBlock(
             Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
