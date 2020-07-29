@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import net.minecraft.block.BlockState;
@@ -15,7 +16,10 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.PineFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.SpruceFoliagePlacer;
 import net.minecraft.world.gen.placement.*;
+import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
+import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import quek.undergarden.UndergardenMod;
 
 public class UndergardenBiomeFeatures {
@@ -57,8 +61,8 @@ public class UndergardenBiomeFeatures {
     private static final BlockState WATER = Blocks.WATER.getDefaultState();
     private static final BlockState VIRULENT = UndergardenBlocks.virulent_mix.get().getDefaultState();
 
-    public static final TreeFeatureConfig SMOGSTEM_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(SMOGSTEM_LOG), new SimpleBlockStateProvider(SMOGSTEM_LEAVES), new BlobFoliagePlacer(2, 0))).baseHeight(9).heightRandA(3).foliageHeight(2).ignoreVines().setSapling(UndergardenBlocks.smogstem_sapling.get()).build();
-    public static final TreeFeatureConfig WIGGLEWOOD_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(WIGGLEWOOD_LOG), new SimpleBlockStateProvider(WIGGLEWOOD_LEAVES), new PineFoliagePlacer(2, 0))).baseHeight(3).heightRandA(0).heightRandB(0).trunkHeight(1).ignoreVines().setSapling(UndergardenBlocks.wigglewood_sapling.get()).build();
+    public static final BaseTreeFeatureConfig SMOGSTEM_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(SMOGSTEM_LOG), new SimpleBlockStateProvider(SMOGSTEM_LEAVES), new BlobFoliagePlacer(2, 0, 0, 0, 3), new StraightTrunkPlacer(10, 2, 0), new TwoLayerFeature(1, 0, 1))).func_236700_a_().build();
+    public static final BaseTreeFeatureConfig WIGGLEWOOD_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(WIGGLEWOOD_LOG), new SimpleBlockStateProvider(WIGGLEWOOD_LEAVES), new SpruceFoliagePlacer(2, 1, 0, 2, 1, 1), new ForkyTrunkPlacer(3, 2, 2), new TwoLayerFeature(1, 0, 2))).func_236700_a_().build();
 
     public static final BlockClusterFeatureConfig INDIGO_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(INDIGO_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig VEIL_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VEIL_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
@@ -109,7 +113,7 @@ public class UndergardenBiomeFeatures {
 
     public static void addUnderwaterPlants(Biome biome) {
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.GLOWING_KELP.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SIMPLE_BLOCK.withConfiguration(new BlockWithContextConfig(GLOWING_SEAGRASS, new BlockState[]{UndergardenBlocks.depthrock.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState()}, new BlockState[]{Blocks.WATER.getDefaultState()}, new BlockState[]{Blocks.WATER.getDefaultState()})).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SIMPLE_BLOCK.withConfiguration(new BlockWithContextConfig(GLOWING_SEAGRASS, ImmutableList.of(DEPTHROCK_BLOCK, DEEPSOIL), ImmutableList.of(Blocks.WATER.getDefaultState()), ImmutableList.of(Blocks.WATER.getDefaultState()))).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
     }
 
     public static void addDoubleDeepturf(Biome biome) {

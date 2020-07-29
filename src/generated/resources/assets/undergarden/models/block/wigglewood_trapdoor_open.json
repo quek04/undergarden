@@ -1,5 +1,5 @@
 {
-  "parent": "block/template_orientable_trapdoor_open",
+  "parent": "minecraft:block/template_orientable_trapdoor_open",
   "textures": {
     "texture": "undergarden:block/wigglewood_trapdoor"
   }

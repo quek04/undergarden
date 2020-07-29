@@ -2,6 +2,8 @@ package quek.undergarden.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -37,13 +39,12 @@ public class RotwalkerEntity extends MonsterEntity {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, DwellerEntity.class, true));
     }
 
-    @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40D);
-        this.getAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3D);
-        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23D);
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MonsterEntity.func_233666_p_()
+                .func_233815_a_(Attributes.MAX_HEALTH, 40.0D) //hp
+                .func_233815_a_(Attributes.ARMOR, 3.0D) //armor
+                .func_233815_a_(Attributes.ATTACK_DAMAGE, 5.0D) //attack damage
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.23D); //speed
     }
 
     @Override
@@ -73,7 +74,7 @@ public class RotwalkerEntity extends MonsterEntity {
 
             rotDweller.copyLocationAndAnglesFrom(dweller);
             dweller.remove();
-            rotDweller.onInitialSpawn(this.world, this.world.getDifficultyForLocation(new BlockPos(rotDweller)), SpawnReason.CONVERSION, new RotDwellerEntity.GroupData(false), (CompoundNBT)null);
+            rotDweller.onInitialSpawn(this.world, this.world.getDifficultyForLocation(new BlockPos(rotDweller.getPositionVec())), SpawnReason.CONVERSION, null, (CompoundNBT)null);
             if (dweller.hasCustomName()) {
                 rotDweller.setCustomName(dweller.getCustomName());
                 rotDweller.setCustomNameVisible(dweller.isCustomNameVisible());

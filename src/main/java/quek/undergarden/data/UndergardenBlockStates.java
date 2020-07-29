@@ -1,7 +1,9 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
+import quek.undergarden.UndergardenMod;
 import quek.undergarden.data.provider.UndergardenBlockStateProvider;
 import quek.undergarden.registry.UndergardenBlocks;
 
@@ -76,12 +78,10 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         slab(UndergardenBlocks.cobbled_shiverstone_slab, UndergardenBlocks.cobbled_shiverstone);
         slab(UndergardenBlocks.shiverstone_brick_slab, UndergardenBlocks.shiverstone_bricks);
 
-        //wall(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
-        //wallColumn(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
-        //wall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
-        //wallColumn(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
-        //wall(UndergardenBlocks.cobbled_shiverstone_wall, "cobbled_shiverstone");
-        //wall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
+        wallBlock(UndergardenBlocks.cobbled_depthrock_wall.get(), new ResourceLocation(UndergardenMod.MODID, "block/cobbled_depthrock"));
+        wallBlock(UndergardenBlocks.depthrock_brick_wall.get(), new ResourceLocation(UndergardenMod.MODID, "block/depthrock_bricks"));
+        wallBlock(UndergardenBlocks.cobbled_shiverstone_wall.get(), new ResourceLocation(UndergardenMod.MODID, "block/cobbled_shiverstone"));
+        wallBlock(UndergardenBlocks.shiverstone_brick_wall.get(), new ResourceLocation(UndergardenMod.MODID, "block/shiverstone_bricks"));
 
         fence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         //fenceColumn(UndergardenBlocks.smogstem_fence, "smogstem_planks");

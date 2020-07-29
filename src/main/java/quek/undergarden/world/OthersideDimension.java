@@ -1,5 +1,5 @@
 package quek.undergarden.world;
-
+/*
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -116,3 +116,5 @@ public class OthersideDimension extends Dimension {
     }
 
 }
+
+ */

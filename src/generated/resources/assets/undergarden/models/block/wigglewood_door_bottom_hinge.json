@@ -1,5 +1,5 @@
 {
-  "parent": "block/door_bottom_rh",
+  "parent": "minecraft:block/door_bottom_rh",
   "textures": {
     "bottom": "undergarden:block/wigglewood_door_bottom",
     "top": "undergarden:block/wigglewood_door_top"

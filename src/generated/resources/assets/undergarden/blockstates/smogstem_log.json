@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "undergarden:block/smogstem_log",
+      "model": "undergarden:block/smogstem_log_horizontal",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "undergarden:block/smogstem_log"
     },
     "axis=z": {
-      "model": "undergarden:block/smogstem_log",
+      "model": "undergarden:block/smogstem_log_horizontal",
       "x": 90
     }
   }

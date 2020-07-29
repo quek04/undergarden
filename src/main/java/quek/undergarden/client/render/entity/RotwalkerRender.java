@@ -1,17 +1,17 @@
 package quek.undergarden.client.render.entity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.render.layer.RotwalkerEyesLayer;
 import quek.undergarden.entity.RotwalkerEntity;
 import quek.undergarden.client.model.RotwalkerModel;
-import quek.undergarden.world.OthersideDimension;
+//import quek.undergarden.world.OthersideDimension;
 
 @OnlyIn(Dist.CLIENT)
 public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel<RotwalkerEntity>> {
@@ -26,10 +26,11 @@ public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel
 
     @Override
     public ResourceLocation getEntityTexture(RotwalkerEntity entity) {
-        if(OthersideDimension.isTheOtherside(entity.world)) {
-            return otherside_texture;
-        }
-        else return texture;
+        //if(OthersideDimension.isTheOtherside(entity.world)) {
+        //    return otherside_texture;
+        //}
+        //else
+            return texture;
     }
 
     @Override

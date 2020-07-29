@@ -9,7 +9,6 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.pattern.BlockPattern;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.EnumProperty;
@@ -17,22 +16,17 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.registry.UndergardenTags;
-import quek.undergarden.world.UndergardenTeleporter;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -47,7 +41,7 @@ public class UndergardenPortalBlock extends Block {
         super(Properties.create(Material.PORTAL)
                 .hardnessAndResistance(-1F)
                 .doesNotBlockMovement()
-                .lightValue(10)
+                .setLightLevel((state) -> 10)
                 .noDrops()
         );
         setDefaultState(stateContainer.getBaseState().with(AXIS, Direction.Axis.X));
@@ -121,6 +115,7 @@ public class UndergardenPortalBlock extends Block {
         return !flag && facingState.getBlock() != this && !(new Size(worldIn, currentPos, direction$axis1)).func_208508_f() ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
+    /*
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entity) {
         if (!entity.isPassenger() && !entity.isBeingRidden() && entity.isNonBoss()) {
             if (entity.timeUntilPortal > 0) {
@@ -132,7 +127,7 @@ public class UndergardenPortalBlock extends Block {
                     double axis = helper.getForwards().getAxis() == Direction.Axis.X ? (double)helper.getFrontTopLeft().getZ() : (double)helper.getFrontTopLeft().getX();
                     double x = Math.abs(MathHelper.pct((helper.getForwards().getAxis() == Direction.Axis.X ? entity.getPosZ() : entity.getPosX()) - (double)(helper.getForwards().rotateY().getAxisDirection() == Direction.AxisDirection.NEGATIVE ? 1 : 0), axis, axis - (double)helper.getWidth()));
                     double y = MathHelper.pct(entity.getPosY() - 1.0D, helper.getFrontTopLeft().getY(), helper.getFrontTopLeft().getY() - helper.getHeight());
-                    entity.lastPortalVec = new Vec3d(x, y, 0.0D);
+                    entity.lastPortalVec = new Vector3d(x, y, 0.0D);
                     entity.teleportDirection = helper.getForwards();
                 }
 
@@ -146,6 +141,8 @@ public class UndergardenPortalBlock extends Block {
             }
         }
     }
+
+     */
 
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {

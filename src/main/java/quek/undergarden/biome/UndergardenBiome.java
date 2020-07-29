@@ -1,6 +1,9 @@
 package quek.undergarden.biome;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeAmbience;
+import net.minecraft.world.biome.MoodSoundAmbience;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.api.distmarker.Dist;
@@ -19,8 +22,8 @@ public abstract class UndergardenBiome extends Biome {
                 .scale(scale)
                 .temperature(temp)
                 .downfall(0)
-                .waterColor(342306)
-                .waterFogColor(342306)
+                .func_235097_a_((new BiomeAmbience.Builder()).func_235246_b_(4159204).func_235248_c_(329011).func_235239_a_(12638463).func_235243_a_(MoodSoundAmbience.field_235027_b_).func_235238_a_())
+                .func_235098_a_(ImmutableList.of(new Biome.Attributes(0.0F, 0.0F, 0.0F, 0.0F, 1.0F)))
                 .parent((null))
         );
     }

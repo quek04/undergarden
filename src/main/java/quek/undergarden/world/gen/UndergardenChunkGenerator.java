@@ -1,5 +1,5 @@
 package quek.undergarden.world.gen;
-
+/*
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.util.SharedSeedRandom;
@@ -209,3 +209,5 @@ public class UndergardenChunkGenerator extends NoiseChunkGenerator<UndergardenGe
 
     }
 }
+
+ */

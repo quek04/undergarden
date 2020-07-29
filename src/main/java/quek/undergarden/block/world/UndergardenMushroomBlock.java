@@ -36,7 +36,7 @@ public class UndergardenMushroomBlock extends UndergardenBushBlock implements IG
                 .tickRandomly()
                 .hardnessAndResistance(0f)
                 .sound(SoundType.PLANT)
-                .lightValue(light)
+                .setLightLevel((state) -> light)
         );
     }
 
@@ -95,25 +95,7 @@ public class UndergardenMushroomBlock extends UndergardenBushBlock implements IG
     }
 
     public boolean bigShroom(ServerWorld world, BlockPos pos, BlockState state, Random rand) {
-        world.removeBlock(pos, false);
-        ConfiguredFeature<BigMushroomFeatureConfig, ?> configuredfeature;
-        if (this == Blocks.BROWN_MUSHROOM) {
-            configuredfeature = Feature.HUGE_BROWN_MUSHROOM.withConfiguration(DefaultBiomeFeatures.BIG_BROWN_MUSHROOM);
-        } else {
-            if (this != Blocks.RED_MUSHROOM) {
-                world.setBlockState(pos, state, 3);
-                return false;
-            }
-
-            configuredfeature = Feature.HUGE_RED_MUSHROOM.withConfiguration(DefaultBiomeFeatures.BIG_RED_MUSHROOM);
-        }
-
-        if (configuredfeature.place(world, world.getChunkProvider().getChunkGenerator(), rand, pos)) {
-            return true;
-        } else {
-            world.setBlockState(pos, state, 3);
-            return false;
-        }
+        return false;
     }
 
     @Override

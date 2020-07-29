@@ -1,30 +1,27 @@
 package quek.undergarden.world.gen.feature;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.KelpTopBlock;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationSettings;
-import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.structure.StructureManager;
 import quek.undergarden.block.world.GlowingKelpTopBlock;
 import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
-import java.util.function.Function;
 
 public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
 
-    public GlowingKelpFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactoryIn) {
-        super(configFactoryIn);
+    public GlowingKelpFeature(Codec<NoFeatureConfig> configCodec) {
+        super(configCodec);
     }
 
     @Override
-    public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean func_230362_a_(ISeedReader worldIn, StructureManager p_230362_2_, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
         int i = 0;
         int ocean_y = 32;
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
@@ -57,4 +54,5 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
         }
         return i > 0;
     }
+
 }

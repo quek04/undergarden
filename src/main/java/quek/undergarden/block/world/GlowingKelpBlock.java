@@ -3,8 +3,8 @@ package quek.undergarden.block.world;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -25,13 +25,13 @@ public class GlowingKelpBlock extends Block implements ILiquidContainer {
                 .doesNotBlockMovement()
                 .hardnessAndResistance(0F)
                 .sound(SoundType.WET_GRASS)
-                .lightValue(10)
+                .setLightLevel((state) -> 10)
         );
         this.top = topBlock;
     }
 
     @Override
-    public IFluidState getFluidState(BlockState state) {
+    public FluidState getFluidState(BlockState state) {
         return Fluids.WATER.getStillFluidState(false);
     }
 
@@ -80,7 +80,8 @@ public class GlowingKelpBlock extends Block implements ILiquidContainer {
     }
 
     @Override
-    public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+    public boolean receiveFluid(IWorld iWorld, BlockPos blockPos, BlockState blockState, FluidState fluidState) {
         return false;
     }
+
 }

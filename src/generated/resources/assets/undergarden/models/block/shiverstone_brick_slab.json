@@ -1,5 +1,5 @@
 {
-  "parent": "block/slab",
+  "parent": "minecraft:block/slab",
   "textures": {
     "side": "undergarden:block/shiverstone_bricks",
     "bottom": "undergarden:block/shiverstone_bricks",

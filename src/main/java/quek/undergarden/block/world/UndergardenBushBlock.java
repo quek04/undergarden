@@ -39,10 +39,6 @@ public class UndergardenBushBlock extends Block implements IPlantable {
         return false;
     }
 
-    @Override
-    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
-        return type == PathType.AIR && !this.blocksMovement || super.allowsMovement(state, worldIn, pos, type);
-    }
 
     @Override
     public BlockState getPlant(IBlockReader world, BlockPos pos) {

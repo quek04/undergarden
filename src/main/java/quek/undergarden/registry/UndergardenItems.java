@@ -50,26 +50,26 @@ public class UndergardenItems {
     public static final RegistryObject<PickaxeItem> smogstem_pickaxe = ITEMS.register("smogstem_pickaxe", () -> new UndergardenPickaxeItem(UndergardenItemTiers.SMOGSTEM));
     public static final RegistryObject<AxeItem> smogstem_axe = ITEMS.register("smogstem_axe", () -> new UndergardenAxeItem(UndergardenItemTiers.SMOGSTEM));
     public static final RegistryObject<ShovelItem> smogstem_shovel = ITEMS.register("smogstem_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.SMOGSTEM));
-    public static final RegistryObject<HoeItem> smogstem_hoe = ITEMS.register("smogstem_hoe", () -> new UndergardenHoeItem(UndergardenItemTiers.SMOGSTEM, -3.0F));
+    public static final RegistryObject<HoeItem> smogstem_hoe = ITEMS.register("smogstem_hoe", () -> new UndergardenHoeItem(UndergardenItemTiers.SMOGSTEM, 0, -3.0F));
 
     public static final RegistryObject<SwordItem> cloggrum_sword = ITEMS.register("cloggrum_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.CLOGGRUM));
     public static final RegistryObject<PickaxeItem> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UndergardenPickaxeItem(UndergardenItemTiers.CLOGGRUM));
     public static final RegistryObject<AxeItem> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UndergardenAxeItem(UndergardenItemTiers.CLOGGRUM));
     public static final RegistryObject<ShovelItem> cloggrum_shovel = ITEMS.register("cloggrum_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.CLOGGRUM));
-    public static final RegistryObject<HoeItem> cloggrum_hoe = ITEMS.register("cloggrum_hoe", () -> new UndergardenHoeItem(UndergardenItemTiers.CLOGGRUM, -2.0F));
+    public static final RegistryObject<HoeItem> cloggrum_hoe = ITEMS.register("cloggrum_hoe", () -> new UndergardenHoeItem(UndergardenItemTiers.CLOGGRUM, -2, -2.0F));
     public static final RegistryObject<ShieldItem> cloggrum_shield = ITEMS.register("cloggrum_shield", () -> new UndergardenShieldItem(UndergardenShieldTiers.CLOGGRUM));
 
     public static final RegistryObject<SwordItem> froststeel_sword = ITEMS.register("froststeel_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.FROSTSTEEL));
     public static final RegistryObject<PickaxeItem> froststeel_pickaxe = ITEMS.register("froststeel_pickaxe", () -> new UndergardenPickaxeItem(UndergardenItemTiers.FROSTSTEEL));
     public static final RegistryObject<AxeItem> froststeel_axe = ITEMS.register("froststeel_axe", () -> new UndergardenAxeItem(UndergardenItemTiers.FROSTSTEEL));
     public static final RegistryObject<ShovelItem> froststeel_shovel = ITEMS.register("froststeel_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.FROSTSTEEL));
-    public static final RegistryObject<HoeItem> froststeel_hoe = ITEMS.register("froststeel_hoe", () -> new UndergardenHoeItem(UndergardenItemTiers.FROSTSTEEL, -1.0F));
+    public static final RegistryObject<HoeItem> froststeel_hoe = ITEMS.register("froststeel_hoe", () -> new UndergardenHoeItem(UndergardenItemTiers.FROSTSTEEL, -2, -1.0F));
 
     public static final RegistryObject<SwordItem> utheric_sword = ITEMS.register("utheric_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.UTHERIC));
     public static final RegistryObject<PickaxeItem> utheric_pickaxe = ITEMS.register("utheric_pickaxe", () -> new UndergardenPickaxeItem(UndergardenItemTiers.UTHERIC));
     public static final RegistryObject<AxeItem> utheric_axe = ITEMS.register("utheric_axe", () -> new UndergardenAxeItem(UndergardenItemTiers.UTHERIC));
     public static final RegistryObject<ShovelItem> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UndergardenShovelItem(UndergardenItemTiers.UTHERIC));
-    public static final RegistryObject<HoeItem> utheric_hoe = ITEMS.register("utheric_hoe", () -> new UndergardenHoeItem(UndergardenItemTiers.UTHERIC, 0.0F));
+    public static final RegistryObject<HoeItem> utheric_hoe = ITEMS.register("utheric_hoe", () -> new UndergardenHoeItem(UndergardenItemTiers.UTHERIC, -3, 0.0F));
 
     public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
 

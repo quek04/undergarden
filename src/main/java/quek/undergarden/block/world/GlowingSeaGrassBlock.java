@@ -3,8 +3,8 @@ package quek.undergarden.block.world;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
@@ -15,12 +15,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.IShearable;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiquidContainer, IShearable {
+public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiquidContainer {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
@@ -29,7 +28,7 @@ public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiqui
                 .doesNotBlockMovement()
                 .hardnessAndResistance(0F)
                 .sound(SoundType.WET_GRASS)
-                .lightValue(7)
+                .setLightLevel((state) -> 7)
         );
     }
 
@@ -46,8 +45,8 @@ public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiqui
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        IFluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
-        return ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8 ? super.getStateForPlacement(context) : null;
+        FluidState state = context.getWorld().getFluidState(context.getPos());
+        return state.isTagged(FluidTags.WATER) && state.getLevel() == 8 ? super.getStateForPlacement(context) : null;
     }
 
     @Override
@@ -71,7 +70,7 @@ public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiqui
     }
 
     @Override
-    public IFluidState getFluidState(BlockState state) {
+    public FluidState getFluidState(BlockState state) {
         return Fluids.WATER.getStillFluidState(false);
     }
 
@@ -86,7 +85,8 @@ public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiqui
     }
 
     @Override
-    public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+    public boolean receiveFluid(IWorld iWorld, BlockPos blockPos, BlockState blockState, FluidState fluidState) {
         return false;
     }
+
 }

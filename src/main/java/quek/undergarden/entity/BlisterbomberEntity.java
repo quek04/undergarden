@@ -1,19 +1,20 @@
 package quek.undergarden.entity;
 
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
@@ -39,12 +40,10 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
         this.goalSelector.addGoal(4, new LookAroundGoal(this));
     }
 
-    @Override
-    public void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(25D);
-        this.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(128D);
-        //this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.15D);
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_()
+                .func_233815_a_(Attributes.MAX_HEALTH, 25.0D) //hp
+                .func_233815_a_(Attributes.FOLLOW_RANGE, 128.0D); //follow range
     }
 
     public static boolean canBlisterbomberSpawn(EntityType<? extends BlisterbomberEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
@@ -121,7 +120,7 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
          */
         public void tick() {
             if (this.parentEntity.getAttackTarget() == null) {
-                Vec3d vec3d = this.parentEntity.getMotion();
+                Vector3d vec3d = this.parentEntity.getMotion();
                 this.parentEntity.rotationYaw = -((float)MathHelper.atan2(vec3d.x, vec3d.z)) * (180F / (float)Math.PI);
                 this.parentEntity.renderYawOffset = this.parentEntity.rotationYaw;
             } else {
@@ -166,7 +165,7 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
                 if (this.attackTimer == 5) {
                     world.playSound(null, parentEntity.getPosX(), parentEntity.getPosY(), parentEntity.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.rand.nextFloat() * 0.4F + 0.8F));
                     RottenBlisterberryEntity berry = new RottenBlisterberryEntity(world, parentEntity);
-                    berry.shoot(parentEntity, parentEntity.rotationPitch, parentEntity.rotationYaw, 0.0F, 1.5F, 1.0F);
+                    berry.shoot(parentEntity.rotationPitch, parentEntity.rotationYaw, 0.0F, 1.5F, 1.0F);
                     world.addEntity(berry);
                     this.attackTimer = -40;
                 }
@@ -193,7 +192,7 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
             if (this.action == MovementController.Action.MOVE_TO) {
                 if (this.courseChangeCooldown-- <= 0) {
                     this.courseChangeCooldown += this.parentEntity.getRNG().nextInt(5) + 2;
-                    Vec3d vec3d = new Vec3d(this.posX - this.parentEntity.getPosX(), this.posY - this.parentEntity.getPosY(), this.posZ - this.parentEntity.getPosZ());
+                    Vector3d vec3d = new Vector3d(this.posX - this.parentEntity.getPosX(), this.posY - this.parentEntity.getPosY(), this.posZ - this.parentEntity.getPosZ());
                     double d0 = vec3d.length();
                     vec3d = vec3d.normalize();
                     if (this.func_220673_a(vec3d, MathHelper.ceil(d0))) {
@@ -206,7 +205,7 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
             }
         }
 
-        private boolean func_220673_a(Vec3d p_220673_1_, int p_220673_2_) {
+        private boolean func_220673_a(Vector3d p_220673_1_, int p_220673_2_) {
             AxisAlignedBB axisalignedbb = this.parentEntity.getBoundingBox();
 
             for(int i = 1; i < p_220673_2_; ++i) {

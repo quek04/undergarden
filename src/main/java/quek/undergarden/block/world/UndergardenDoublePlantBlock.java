@@ -41,7 +41,7 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
                 .hardnessAndResistance(0F)
                 .sound(SoundType.PLANT)
                 .doesNotBlockMovement()
-                .lightValue(light)
+                .setLightLevel((state) -> light)
         );
         this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER));
     }
@@ -76,7 +76,7 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         BlockPos blockpos = context.getPos();
-        return blockpos.getY() < context.getWorld().getDimension().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context) ? super.getStateForPlacement(context) : null;
+        return blockpos.getY() < context.getWorld().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context) ? super.getStateForPlacement(context) : null;
     }
 
     @Override

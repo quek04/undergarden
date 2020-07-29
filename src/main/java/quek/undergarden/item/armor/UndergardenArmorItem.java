@@ -3,8 +3,9 @@ package quek.undergarden.item.armor;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
@@ -36,18 +37,18 @@ public class UndergardenArmorItem extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UndergardenItems.cloggrum_boots.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.cloggrum_boots").applyTextStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.cloggrum_boots").func_240701_a_(TextFormatting.GRAY));
         }
     }
 
     @Override
-    public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-        Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
+        Multimap<Attribute, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
         if(this.getArmorMaterial() == UndergardenArmorMaterials.FROSTSTEEL && equipmentSlot == this.slot) {
-            multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE));
+            //multimap.put(Attributes.field_233821_d_, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         if(this.getArmorMaterial() == UndergardenArmorMaterials.UTHERIC && equipmentSlot == this.slot) {
-            multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "utheric_resistance", .01, AttributeModifier.Operation.MULTIPLY_BASE));
+            //multimap.put(Attributes.field_233820_c_, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "utheric_resistance", .01, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return multimap;
     }

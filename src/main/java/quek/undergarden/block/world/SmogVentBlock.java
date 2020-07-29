@@ -21,7 +21,7 @@ public class SmogVentBlock extends Block {
                 .sound(SoundType.STONE)
                 .harvestLevel(1)
                 .harvestTool(ToolType.PICKAXE)
-                .lightValue(15)
+                .setLightLevel((state) -> 15)
         );
     }
 

@@ -1,6 +1,8 @@
 package quek.undergarden.entity;
 
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.JumpController;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.*;
@@ -9,7 +11,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -50,11 +52,10 @@ public class GloomperEntity extends AnimalEntity {
         this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 0.50D));
     }
 
-    @Override
-    public void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3F);
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return AnimalEntity.func_233666_p_()
+                .func_233815_a_(Attributes.MAX_HEALTH, 20.0D) //hp
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.3D); //speed
     }
 
     public static boolean canGloomperSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
@@ -109,7 +110,7 @@ public class GloomperEntity extends AnimalEntity {
         if (!this.collidedHorizontally && (!this.moveController.isUpdating() || !(this.moveController.getY() > this.getPosY() + 0.5D))) {
             Path path = this.navigator.getPath();
             if (path != null && path.getCurrentPathIndex() < path.getCurrentPathLength()) {
-                Vec3d vec3d = path.getPosition(this);
+                Vector3d vec3d = path.getPosition(this);
                 if (vec3d.y > this.getPosY() + 0.5D) {
                     return 0.5F;
                 }
@@ -128,7 +129,7 @@ public class GloomperEntity extends AnimalEntity {
         if (d0 > 0.0D) {
             double d1 = horizontalMag(this.getMotion());
             if (d1 < 0.01D) {
-                this.moveRelative(0.1F, new Vec3d(0.0D, 0.0D, 1.0D));
+                this.moveRelative(0.1F, new Vector3d(0.0D, 0.0D, 1.0D));
             }
         }
 
@@ -159,7 +160,7 @@ public class GloomperEntity extends AnimalEntity {
             if (!jumpControl.getIsJumping()) {
                 if (this.moveController.isUpdating() && this.currentMoveTypeDuration == 0) {
                     Path path = this.navigator.getPath();
-                    Vec3d vec3d = new Vec3d(this.moveController.getX(), this.moveController.getY(), this.moveController.getZ());
+                    Vector3d vec3d = new Vector3d(this.moveController.getX(), this.moveController.getY(), this.moveController.getZ());
                     if (path != null && path.getCurrentPathIndex() < path.getCurrentPathLength()) {
                         vec3d = path.getPosition(this);
                     }

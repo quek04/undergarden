@@ -9,12 +9,11 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.IShearable;
 import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
 
-public class UndergardenTallGrassBlock extends UndergardenBushBlock implements IGrowable, IShearable {
+public class UndergardenTallGrassBlock extends UndergardenBushBlock implements IGrowable {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
@@ -33,7 +32,7 @@ public class UndergardenTallGrassBlock extends UndergardenBushBlock implements I
                 .sound(SoundType.PLANT)
                 .doesNotBlockMovement()
                 .notSolid()
-                .lightValue(light)
+                .setLightLevel((state) -> light)
 
         );
     }

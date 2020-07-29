@@ -61,14 +61,17 @@ public class UndergardenBlocks {
     //nature
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", BeanBushBlock::new);
     public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", BlisterberryBushBlock::new);
+
     public static final RegistryObject<SaplingBlock> smogstem_sapling = registerBlock("smogstem_sapling", () -> new UndergardenSaplingBlock(new SmogstemTree()));
-    public static final RegistryObject<LogBlock> smogstem_log = registerBlock("smogstem_log", UndergardenLogBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> smogstem_log = registerBlock("smogstem_log", UndergardenLogBlock::new);
     public static final RegistryObject<Block> smogstem_wood = registerBlock("smogstem_wood", () -> new UndergardenBlock(Block.Properties.from(UndergardenBlocks.smogstem_log.get())));
     public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", UndergardenLeavesBlock::new);
+
     public static final RegistryObject<SaplingBlock> wigglewood_sapling = registerBlock("wigglewood_sapling", () -> new UndergardenSaplingBlock(new WigglewoodTree()));
-    public static final RegistryObject<LogBlock> wigglewood_log = registerBlock("wigglewood_log", UndergardenLogBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> wigglewood_log = registerBlock("wigglewood_log", UndergardenLogBlock::new);
     public static final RegistryObject<Block> wigglewood_wood = registerBlock("wigglewood_wood", () -> new UndergardenBlock(Block.Properties.from(UndergardenBlocks.wigglewood_log.get())));
     public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", UndergardenLeavesBlock::new);
+
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UndergardenTallGrassBlock::new);
     public static final RegistryObject<Block> ashen_tall_deepturf = registerBlock("ashen_tall_deepturf", AshenTallDeepturfBlock::new);
     public static final RegistryObject<Block> double_deepturf = registerBlock("double_deepturf", UndergardenDoublePlantBlock::new);
@@ -137,14 +140,10 @@ public class UndergardenBlocks {
     public static final RegistryObject<SlabBlock> shiverstone_brick_slab = registerBlock("shiverstone_brick_slab", () -> new UndergardenSlabBlock(
             Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
 
-    public static final RegistryObject<WallBlock> cobbled_depthrock_wall = registerBlock("cobbled_depthrock_wall", () -> new UndergardenWallBlock(
-            Material.ROCK, 2F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
-    public static final RegistryObject<WallBlock> depthrock_brick_wall = registerBlock("depthrock_brick_wall", () -> new UndergardenWallBlock(
-            Material.ROCK, 1.5F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
-    public static final RegistryObject<WallBlock> cobbled_shiverstone_wall = registerBlock("cobbled_shiverstone_wall", () -> new UndergardenWallBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
-    public static final RegistryObject<WallBlock> shiverstone_brick_wall = registerBlock("shiverstone_brick_wall", () -> new UndergardenWallBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
+    public static final RegistryObject<WallBlock> cobbled_depthrock_wall = registerBlock("cobbled_depthrock_wall", () -> new WallBlock(Block.Properties.from(cobbled_depthrock.get())));
+    public static final RegistryObject<WallBlock> depthrock_brick_wall = registerBlock("depthrock_brick_wall", () -> new WallBlock(Block.Properties.from(depthrock_bricks.get())));
+    public static final RegistryObject<WallBlock> cobbled_shiverstone_wall = registerBlock("cobbled_shiverstone_wall", () -> new WallBlock(Block.Properties.from(cobbled_shiverstone.get())));
+    public static final RegistryObject<WallBlock> shiverstone_brick_wall = registerBlock("shiverstone_brick_wall", () -> new WallBlock(Block.Properties.from(shiverstone_bricks.get())));
 
     public static final RegistryObject<FenceBlock> smogstem_fence = registerBlock("smogstem_fence", () -> new UndergardenFenceBlock(
             Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));

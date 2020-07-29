@@ -1,5 +1,5 @@
 {
-  "parent": "block/template_torch",
+  "parent": "minecraft:block/template_torch",
   "textures": {
     "torch": "undergarden:block/smogstem_torch"
   }
