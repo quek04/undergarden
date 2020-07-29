@@ -43,7 +43,7 @@ public class UndergardenItems {
     //boss loot
     public static final RegistryObject<Item> masticator_scales = ITEMS.register("masticator_scales", () -> new UndergardenItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> masticated_chestplate = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UndergardenArmorMaterials.MASTICATED));
-    //public static final RegistryObject<Item> cloggrum_battleaxe = ITEMS.register("cloggrum_battleaxe", CloggrumBattleaxeItem::new);
+    public static final RegistryObject<Item> cloggrum_battleaxe = ITEMS.register("cloggrum_battleaxe", CloggrumBattleaxeItem::new);
 
     //tools
     public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UndergardenSwordItem(UndergardenItemTiers.SMOGSTEM));

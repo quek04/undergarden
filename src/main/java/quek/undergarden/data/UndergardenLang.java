@@ -148,7 +148,7 @@ public class UndergardenLang extends LanguageProvider {
 
         addItem(UndergardenItems.masticator_scales, "Masticator Scales");
         addItem(UndergardenItems.masticated_chestplate, "Masticated Chestplate");
-        //addItem(UndergardenItems.cloggrum_battleaxe, "Cloggrum Battle Axe");
+        addItem(UndergardenItems.cloggrum_battleaxe, "Cloggrum Battle Axe");
 
         addItem(UndergardenItems.smogstem_sword, "Smogstem Sword");
         addItem(UndergardenItems.smogstem_pickaxe, "Smogstem Pickaxe");
