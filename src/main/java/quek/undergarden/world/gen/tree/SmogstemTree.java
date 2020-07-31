@@ -14,6 +14,6 @@ public class SmogstemTree extends Tree {
     @Nullable
     @Override
     public ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean p_225546_2_) {
-        return randomIn.nextInt(10) == 0 ? UndergardenFeatures.FANCY_SMOGSTEM_TREE.get().withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG) : UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(UndergardenBiomeFeatures.SMOGSTEM_TREE_CONFIG);
+        return UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(UndergardenBiomeFeatures.WIGGLEWOOD_TREE_CONFIG);
     }
 }

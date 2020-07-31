@@ -134,23 +134,21 @@ public class UndergardenBiomeFeatures {
     }
 
     public static void addTrees(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(5, 100))));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(10, 50))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(100))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(100))));
     }
 
     public static void addForestSmogstemTrees(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(1000, 1000))));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.FANCY_SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(1000, 1000))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
     }
 
     public static void addForestWigglewoodTrees(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(1000, 1000))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1000))));
     }
 
     public static void addDenseForestTrees(Biome biome) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(3000, 3000))));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.FANCY_SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(5, 500))));
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(3000, 3000))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.SMOGSTEM_TREE.get().withConfiguration(SMOGSTEM_TREE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(3000))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.WIGGLEWOOD_TREE.get().withConfiguration(WIGGLEWOOD_TREE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(3000))));
     }
 
     public static void addOres(Biome biome) {
