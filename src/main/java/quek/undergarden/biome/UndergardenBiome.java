@@ -31,11 +31,11 @@ public abstract class UndergardenBiome extends Biome {
                         .func_235240_a_(new BackgroundMusicSelector(UndergardenSoundEvents.UNDERGARDEN_MUSIC, 12000, 24000, true))//bgm
                         .func_235246_b_(342306)//water?
                         .func_235248_c_(332810)//water fog?
-                        .func_235239_a_(2303262)//sky fog?
+                        .func_235239_a_(new Color(35, 37, 30).getRGB())//sky fog?
                         .func_235241_a_(UndergardenSoundEvents.UNDERGARDEN_AMBIANCE)//ambiance
                         .func_235244_a_(new ParticleEffectAmbience(ParticleTypes.WHITE_ASH, 0.025F))//ambient particle
                         .func_235238_a_())//probably .build()
-                .func_235098_a_(ImmutableList.of(new Biome.Attributes(0.0F, 0.0F, 0.0F, 0.0F, 1.0F)))
+                .func_235098_a_(ImmutableList.of(new Biome.Attributes(0.0F, 0.0F, 0.0F, 0.0F, 0.0F)))
                 .parent((null))
         );
     }

@@ -47,36 +47,20 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
     }
 
     @Override
-    public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-        return true;
-    }
-
-    @Override
-    public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-        return 300;
-    }
-
-    @Override
-    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        Block block = state.getBlock();
-        return block == UndergardenBlocks.deepturf_block.get() || block == UndergardenBlocks.deepsoil.get();
-    }
-
-    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         DoubleBlockHalf doubleblockhalf = stateIn.get(HALF);
-        if (facing.getAxis() != Direction.Axis.Y || doubleblockhalf == DoubleBlockHalf.LOWER != (facing == Direction.UP) || facingState.getBlock() == this && facingState.get(HALF) != doubleblockhalf) {
+        if (facing.getAxis() != Direction.Axis.Y || doubleblockhalf == DoubleBlockHalf.LOWER != (facing == Direction.UP) || facingState.isIn(this) && facingState.get(HALF) != doubleblockhalf) {
             return doubleblockhalf == DoubleBlockHalf.LOWER && facing == Direction.DOWN && !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
         } else {
             return Blocks.AIR.getDefaultState();
         }
     }
 
-    @Nullable
     @Override
+    @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         BlockPos blockpos = context.getPos();
-        return blockpos.getY() < context.getWorld().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context) ? super.getStateForPlacement(context) : null;
+        return blockpos.getY() < 255 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context) ? super.getStateForPlacement(context) : null;
     }
 
     @Override
@@ -91,35 +75,47 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
         } else {
             BlockState blockstate = worldIn.getBlockState(pos.down());
             if (state.getBlock() != this) return super.isValidPosition(state, worldIn, pos); //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-            return blockstate.getBlock() == this && blockstate.get(HALF) == DoubleBlockHalf.LOWER;
+            return blockstate.isIn(this) && blockstate.get(HALF) == DoubleBlockHalf.LOWER;
         }
     }
 
+    @Override
     public void placeAt(IWorld worldIn, BlockPos pos, int flags) {
         worldIn.setBlockState(pos, this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER), flags);
         worldIn.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER), flags);
     }
+
+
+    @Override
+    public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (!worldIn.isRemote) {
+            if (player.isCreative()) {
+                func_241471_b_(worldIn, pos, state, player);
+            } else {
+                spawnDrops(state, worldIn, pos, null, player, player.getHeldItemMainhand());
+            }
+        }
+
+        super.onBlockHarvested(worldIn, pos, state, player);
+    }
+
 
     @Override
     public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
         super.harvestBlock(worldIn, player, pos, Blocks.AIR.getDefaultState(), te, stack);
     }
 
-    @Override
-    public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-        DoubleBlockHalf doubleblockhalf = state.get(HALF);
-        BlockPos blockpos = doubleblockhalf == DoubleBlockHalf.LOWER ? pos.up() : pos.down();
-        BlockState blockstate = worldIn.getBlockState(blockpos);
-        if (blockstate.getBlock() == this && blockstate.get(HALF) != doubleblockhalf) {
-            worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
-            worldIn.playEvent(player, 2001, blockpos, Block.getStateId(blockstate));
-            if (!worldIn.isRemote && !player.isCreative()) {
-                spawnDrops(state, worldIn, pos, (TileEntity)null, player, player.getHeldItemMainhand());
-                spawnDrops(blockstate, worldIn, blockpos, (TileEntity)null, player, player.getHeldItemMainhand());
+    protected static void func_241471_b_(World p_241471_0_, BlockPos p_241471_1_, BlockState p_241471_2_, PlayerEntity p_241471_3_) {
+        DoubleBlockHalf doubleblockhalf = p_241471_2_.get(HALF);
+        if (doubleblockhalf == DoubleBlockHalf.UPPER) {
+            BlockPos blockpos = p_241471_1_.down();
+            BlockState blockstate = p_241471_0_.getBlockState(blockpos);
+            if (blockstate.getBlock() == p_241471_2_.getBlock() && blockstate.get(HALF) == DoubleBlockHalf.LOWER) {
+                p_241471_0_.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
+                p_241471_0_.playEvent(p_241471_3_, 2001, blockpos, Block.getStateId(blockstate));
             }
         }
 
-        super.onBlockHarvested(worldIn, pos, state, player);
     }
 
     @Override
@@ -128,12 +124,12 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
     }
 
     @Override
-    public Block.OffsetType getOffsetType() {
-        return Block.OffsetType.XZ;
+    public AbstractBlock.OffsetType getOffsetType() {
+        return AbstractBlock.OffsetType.XZ;
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
+    @OnlyIn(Dist.CLIENT)
     public long getPositionRandom(BlockState state, BlockPos pos) {
         return MathHelper.getCoordinateRandom(pos.getX(), pos.down(state.get(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
     }

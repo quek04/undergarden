@@ -1,11 +1,18 @@
 package quek.undergarden.data;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.advancements.criterion.*;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
-import net.minecraft.block.DoublePlantBlock;
+import quek.undergarden.block.world.UndergardenDoublePlantBlock;
+import net.minecraft.item.Item;
+import net.minecraft.loot.conditions.*;
+import net.minecraft.util.IItemProvider;
+import net.minecraft.util.math.BlockPos;
+import quek.undergarden.block.world.UndergardenDoublePlantBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;
@@ -14,10 +21,6 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Items;
 import net.minecraft.loot.*;
-import net.minecraft.loot.conditions.BlockStateProperty;
-import net.minecraft.loot.conditions.EntityHasProperty;
-import net.minecraft.loot.conditions.KilledByPlayer;
-import net.minecraft.loot.conditions.RandomChance;
 import net.minecraft.loot.functions.ApplyBonus;
 import net.minecraft.loot.functions.LootingEnchantBonus;
 import net.minecraft.loot.functions.SetCount;
@@ -33,12 +36,23 @@ import quek.undergarden.registry.UndergardenItems;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UndergardenLootTables extends LootTableProvider {
+
+    private static final ILootCondition.IBuilder SILK_TOUCH = MatchTool.builder(ItemPredicate.Builder.create().enchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))));
+    private static final ILootCondition.IBuilder NO_SILK_TOUCH = SILK_TOUCH.inverted();
+    private static final ILootCondition.IBuilder SHEARS = MatchTool.builder(ItemPredicate.Builder.create().item(Items.SHEARS));
+    private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.alternative(SILK_TOUCH);
+    private static final ILootCondition.IBuilder NOT_SILK_TOUCH_OR_SHEARS = SILK_TOUCH_OR_SHEARS.inverted();
+    private static final Set<Item> IMMUNE_TO_EXPLOSIONS = Stream.of(net.minecraft.block.Blocks.DRAGON_EGG, net.minecraft.block.Blocks.BEACON, net.minecraft.block.Blocks.CONDUIT, net.minecraft.block.Blocks.SKELETON_SKULL, net.minecraft.block.Blocks.WITHER_SKELETON_SKULL, net.minecraft.block.Blocks.PLAYER_HEAD, net.minecraft.block.Blocks.ZOMBIE_HEAD, net.minecraft.block.Blocks.CREEPER_HEAD, net.minecraft.block.Blocks.DRAGON_HEAD, net.minecraft.block.Blocks.SHULKER_BOX, net.minecraft.block.Blocks.BLACK_SHULKER_BOX, net.minecraft.block.Blocks.BLUE_SHULKER_BOX, net.minecraft.block.Blocks.BROWN_SHULKER_BOX, net.minecraft.block.Blocks.CYAN_SHULKER_BOX, net.minecraft.block.Blocks.GRAY_SHULKER_BOX, net.minecraft.block.Blocks.GREEN_SHULKER_BOX, net.minecraft.block.Blocks.LIGHT_BLUE_SHULKER_BOX, net.minecraft.block.Blocks.LIGHT_GRAY_SHULKER_BOX, net.minecraft.block.Blocks.LIME_SHULKER_BOX, net.minecraft.block.Blocks.MAGENTA_SHULKER_BOX, net.minecraft.block.Blocks.ORANGE_SHULKER_BOX, net.minecraft.block.Blocks.PINK_SHULKER_BOX, net.minecraft.block.Blocks.PURPLE_SHULKER_BOX, net.minecraft.block.Blocks.RED_SHULKER_BOX, net.minecraft.block.Blocks.WHITE_SHULKER_BOX, net.minecraft.block.Blocks.YELLOW_SHULKER_BOX).map(IItemProvider::asItem).collect(ImmutableSet.toImmutableSet());
+    private static final float[] DEFAULT_SAPLING_DROP_RATES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
+    private static final float[] RARE_SAPLING_DROP_RATES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
 
     public UndergardenLootTables(DataGenerator dataGeneratorIn) {
         super(dataGeneratorIn);
@@ -62,8 +76,6 @@ public class UndergardenLootTables extends LootTableProvider {
 
     public static class Blocks extends UndergardenBlockLootTableProvider {
 
-        private static final float[] DEFAULT_SAPLING_DROP_RATES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
-
         @Override
         protected void addTables() {
             dropWithSilk(UndergardenBlocks.depthrock, UndergardenBlocks.cobbled_depthrock);
@@ -79,14 +91,12 @@ public class UndergardenLootTables extends LootTableProvider {
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.blisterberry_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UndergardenItems.rotten_blisterberry.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.blisterberry_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UndergardenItems.rotten_blisterberry.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 1.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
             dropWithSilk(UndergardenBlocks.deepturf_block, UndergardenBlocks.deepsoil);
-            this.registerLootTable(UndergardenBlocks.double_deepturf.get(), (p_218572_0_)
-                    -> droppingWithShears(UndergardenBlocks.tall_deepturf.get(), withSurvivesExplosion(p_218572_0_, ItemLootEntry.builder(Items.WHEAT_SEEDS)).acceptCondition(BlockStateProperty.builder(p_218572_0_).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).acceptCondition(RandomChance.builder(0.125F))));
-            this.registerLootTable(UndergardenBlocks.double_shimmerweed.get(), (p_218572_0_)
-                    -> dropping(UndergardenBlocks.shimmerweed.get()));
+            this.registerLootTable(UndergardenBlocks.double_deepturf.get(), (block) -> func_241749_b_(block, UndergardenBlocks.tall_deepturf.get()));
+            this.registerLootTable(UndergardenBlocks.double_shimmerweed.get(), (block) -> func_241749_b_(block, UndergardenBlocks.shimmerweed.get()));
             this.registerLootTable(UndergardenBlocks.tall_deepturf.get(), BlockLootTables::onlyWithShears);
+            this.registerLootTable(UndergardenBlocks.shimmerweed.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UndergardenBlocks.ashen_tall_deepturf.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UndergardenBlocks.glowing_sea_grass.get(), BlockLootTables::onlyWithShears);
-            dropSelf(UndergardenBlocks.shimmerweed);
             dropSelf(UndergardenBlocks.smogstem_planks);
             dropSelf(UndergardenBlocks.wigglewood_planks);
             dropSelf(UndergardenBlocks.smogstem_log);
@@ -165,6 +175,15 @@ public class UndergardenLootTables extends LootTableProvider {
         protected Iterable<Block> getKnownBlocks() {
             return UndergardenBlocks.BLOCKS.getEntries().stream().map(Supplier::get).collect(Collectors.toList());
         }
+    }
+
+    private static LootTable.Builder func_241749_b_(Block originalBlock, Block newBlock) {
+        LootEntry.Builder<?> builder = ItemLootEntry.builder(newBlock).acceptFunction(SetCount.builder(ConstantRange.of(1))).acceptCondition(SHEARS).alternatively(withSurvivesExplosion(originalBlock, ItemLootEntry.builder(Items.WHEAT_SEEDS)).acceptCondition(RandomChance.builder(0.125F)));
+        return LootTable.builder().addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.func_226870_a_().func_235312_a_(BlockPredicate.Builder.func_226243_a_().func_233458_a_(originalBlock).func_233459_a_(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).func_226245_b_()), new BlockPos(0, 1, 0)))).addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.func_226870_a_().func_235312_a_(BlockPredicate.Builder.func_226243_a_().func_233458_a_(originalBlock).func_233459_a_(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).func_226245_b_()), new BlockPos(0, -1, 0))));
+    }
+
+    protected static <T> T withSurvivesExplosion(IItemProvider p_218560_0_, ILootConditionConsumer<T> p_218560_1_) {
+        return (T)(!IMMUNE_TO_EXPLOSIONS.contains(p_218560_0_.asItem()) ? p_218560_1_.acceptCondition(SurvivesExplosion.builder()) : p_218560_1_.cast());
     }
 
     public static class Entities extends EntityLootTables {
