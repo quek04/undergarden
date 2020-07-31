@@ -31,6 +31,8 @@ public class UndergardenItems {
     public static final RegistryObject<Item> regalium_nugget = ITEMS.register("regalium_nugget", () -> new UndergardenItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> smogstem_torch = ITEMS.register("smogstem_torch", () -> new WallOrFloorItem(
             UndergardenBlocks.smogstem_torch.get(), UndergardenBlocks.smogstem_wall_torch.get(), new Item.Properties().group(UndergardenItemGroups.GROUP)));
+    public static final RegistryObject<Item> shard_torch = ITEMS.register("shard_torch", () -> new WallOrFloorItem(
+            UndergardenBlocks.shard_torch.get(), UndergardenBlocks.shard_wall_torch.get(), new Item.Properties().group(UndergardenItemGroups.GROUP)));
     public static final RegistryObject<Item> gloomgourd_seeds = ITEMS.register("gloomgourd_seeds", () -> new BlockNamedItem(
             UndergardenBlocks.gloomgourd_stem.get(), (new Item.Properties()).group(UndergardenItemGroups.GROUP)));
     public static final RegistryObject<Item> ditchbulb = ITEMS.register("ditchbulb", UndergardenItem::new);

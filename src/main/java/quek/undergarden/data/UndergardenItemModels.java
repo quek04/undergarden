@@ -104,7 +104,8 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         normalItem(UndergardenItems.utherium_chunk);
         normalItem(UndergardenItems.regalium_ingot);
         normalItem(UndergardenItems.regalium_nugget);
-        normalItem(UndergardenItems.smogstem_torch);
+        torchItem(UndergardenItems.smogstem_torch);
+        torchItem(UndergardenItems.shard_torch);
         normalItem(UndergardenItems.ditchbulb);
         normalItem(UndergardenItems.gloomgourd_seeds);
         normalItem(UndergardenItems.brute_tusk);

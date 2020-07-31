@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "undergarden:block/smogstem_torch"
+    "layer0": "undergarden:block/shard_torch"
   }
 }

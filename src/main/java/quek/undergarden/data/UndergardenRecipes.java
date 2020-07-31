@@ -98,6 +98,15 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addCriterion("has_scales", hasItem(UndergardenItems.cloggrum_ingot.get()))
                 .build(consumer);
 
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.shard_torch.get(), 4)
+                .patternLine("C")
+                .patternLine("S")
+                .key('C', UndergardenItems.utheric_shard.get())
+                .key('S', UndergardenItems.smogstem_stick.get())
+                .addCriterion("has_shard", hasItem(UndergardenItems.utheric_shard.get()))
+                .addCriterion("has_smogstem_stick", hasItem(UndergardenItems.smogstem_stick.get()))
+                .build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_torch.get(), 4)
                 .patternLine("C")
                 .patternLine("S")

@@ -157,6 +157,8 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.tremblecrust_bricks);
             dropSelf(UndergardenBlocks.smogstem_wood);
             dropSelf(UndergardenBlocks.wigglewood_wood);
+            dropOther(UndergardenBlocks.shard_torch, UndergardenItems.shard_torch.get());
+            dropOther(UndergardenBlocks.shard_wall_torch, UndergardenItems.shard_torch.get());
         }
 
         @Override

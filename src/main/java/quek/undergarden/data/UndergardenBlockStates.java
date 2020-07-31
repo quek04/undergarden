@@ -21,6 +21,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         torchBlock(UndergardenBlocks.smogstem_torch, UndergardenBlocks.smogstem_wall_torch);
+        torchBlock(UndergardenBlocks.shard_torch, UndergardenBlocks.shard_wall_torch);
         normalBlock(UndergardenBlocks.depthrock);
         normalBlock(UndergardenBlocks.cobbled_depthrock);
         normalBlock(UndergardenBlocks.deepsoil);

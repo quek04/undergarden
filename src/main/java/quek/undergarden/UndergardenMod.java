@@ -44,6 +44,7 @@ public class UndergardenMod {
 		UndergardenWorldCarvers.CARVERS.register(bus);
 		UndergardenEffects.EFFECTS.register(bus);
 		UndergardenFluids.FLUIDS.register(bus);
+		UndergardenParticles.PARTICLES.register(bus);
 
 		final Pair<UndergardenConfig.CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(UndergardenConfig.CommonConfig::new);
 		final Pair<UndergardenConfig.ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(UndergardenConfig.ClientConfig::new);
@@ -95,28 +96,5 @@ public class UndergardenMod {
 				//event.getMatrixStack().scale(1.5F, 1F, 1F);
 			}
 		}
-
-		/*
-		@SubscribeEvent
-		public static void registerDimensions(final RegisterDimensionsEvent event) {
-			ResourceLocation undergarden = new ResourceLocation(UndergardenMod.MODID, "undergarden");
-			ResourceLocation otherside = new ResourceLocation(UndergardenMod.MODID, "otherside");
-
-			if (DimensionType.byName(undergarden) == null) {
-				UndergardenDimensions.undergarden_dimension = DimensionManager.registerDimension(undergarden, UndergardenDimensions.UNDERGARDEN.get(), new PacketBuffer(Unpooled.buffer()), false);
-				DimensionManager.keepLoaded(UndergardenDimensions.undergarden_dimension, false);
-			} else {
-				UndergardenDimensions.undergarden_dimension = DimensionType.byName(undergarden);
-			}
-
-			if (DimensionType.byName(otherside) == null) {
-				UndergardenDimensions.otherside_dimension = DimensionManager.registerDimension(otherside, UndergardenDimensions.OTHERSIDE.get(), new PacketBuffer(Unpooled.buffer()), true);
-				DimensionManager.keepLoaded(UndergardenDimensions.otherside_dimension, false);
-			} else {
-				UndergardenDimensions.otherside_dimension = DimensionType.byName(otherside);
-			}
-		}
-		*/
-
 	}
 }

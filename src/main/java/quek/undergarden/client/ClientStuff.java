@@ -36,10 +36,6 @@ public class ClientStuff {
 
     private static final Minecraft CLIENT = Minecraft.getInstance();
 
-    private static ISound playingMusic;
-    //private static final ISound UNDERGARDEN_AMBIANCE = new UndergardenAmbianceSound();
-    //private static final ISound OTHERSIDE_AMBIANCE = new OthersideAmbianceSound();
-
     private static void render(Supplier<? extends Block> block, RenderType render) {
         RenderTypeLookup.setRenderLayer(block.get(), render);
     }
@@ -78,6 +74,8 @@ public class ClientStuff {
         render(UndergardenBlocks.blisterberry_bush, cutout);
         render(UndergardenBlocks.gloomgourd_stem, cutout);
         render(UndergardenBlocks.gloomgourd_stem_attached, cutout);
+        render(UndergardenBlocks.shard_torch, cutout);
+        render(UndergardenBlocks.shard_wall_torch, cutout);
     }
 
     public static void registerEntityRenderers() {
@@ -139,70 +137,4 @@ public class ClientStuff {
 
     }
 
-    @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (!CLIENT.isGamePaused()) {
-            ClientPlayerEntity player = CLIENT.player;
-            if (player == null) {
-                return;
-            }
-
-            if (event.phase == TickEvent.Phase.END) {
-                if (playingMusic != null && !CLIENT.getSoundHandler().isPlaying(playingMusic)) {
-                    playingMusic = null;
-                }
-            }
-
-            /*
-            if(UndergardenDimension.isTheUndergarden(player.world)) {
-                doAmbiance(UNDERGARDEN_AMBIANCE);
-            }
-            if(OthersideDimension.isTheOtherside(player.world)) {
-                doAmbiance(OTHERSIDE_AMBIANCE);
-            }
-
-             */
-        }
-    }
-
-    @SubscribeEvent
-    public static void onPlaySound(PlaySoundEvent event) {
-        if (!isMusicSound()) {
-            return;
-        }
-
-        /*
-        if (CLIENT.player != null && UndergardenDimension.isTheUndergarden(CLIENT.player.world)) {
-            SoundEvent sound = UndergardenSoundEvents.UNDERGARDEN_MUSIC;
-            if (sound == null || playingMusic != null) {
-                event.setResultSound(null);
-                return;
-            }
-
-            playingMusic = SimpleSound.music(sound);
-
-            event.setResultSound(playingMusic);
-        }
-
-         */
-    }
-
-    private static boolean isMusicSound() {
-        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        return Arrays.stream(stackTrace).anyMatch(e -> e.getClassName().equals(MusicTicker.class.getName()));
-    }
-
-    private static void doAmbiance(ISound sound) {
-        if(UndergardenConfig.toggleAmbiance.get()) {
-            SoundHandler soundHandler = CLIENT.getSoundHandler();
-            if (!soundHandler.isPlaying(sound)) {
-                try {
-                    soundHandler.stop(sound);
-                    soundHandler.play(sound);
-                }
-                catch (IllegalArgumentException ignored) { }
-            }
-        }
-
-    }
 }

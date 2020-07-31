@@ -139,6 +139,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.regalium_ingot, "Regalium Ingot");
         addItem(UndergardenItems.regalium_nugget, "Regalium Nugget");
         addItem(UndergardenItems.smogstem_torch, "Smogstem Torch");
+        addItem(UndergardenItems.shard_torch, "Shard Torch");
         addItem(UndergardenItems.gloomgourd_seeds, "Gloomgourd Seeds");
         addItem(UndergardenItems.ditchbulb, "Ditchbulb");
         addItem(UndergardenItems.brute_tusk, "Brute Tusk");

@@ -53,6 +53,11 @@ public abstract class UndergardenItemModelProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("item/" + item.get().getRegistryName().getPath()));
     }
 
+    public ItemModelBuilder torchItem(Supplier<? extends Item> item) {
+        return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/" + item.get().getRegistryName().getPath()));
+    }
+
     public ItemModelBuilder toolItem(Supplier<? extends Item> item) {
         return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/" + item.get().getRegistryName().getPath()));
