@@ -165,7 +165,7 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
                 if (this.attackTimer == 5) {
                     world.playSound(null, parentEntity.getPosX(), parentEntity.getPosY(), parentEntity.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.rand.nextFloat() * 0.4F + 0.8F));
                     RottenBlisterberryEntity berry = new RottenBlisterberryEntity(world, parentEntity);
-                    berry.shoot(parentEntity.rotationPitch, parentEntity.rotationYaw, 0.0F, 1.5F, 1.0F);
+                    berry.func_234612_a_(parentEntity, parentEntity.rotationPitch, parentEntity.rotationYaw, 0.0F, 1.5F, 1.0F);
                     world.addEntity(berry);
                     this.attackTimer = -40;
                 }
