@@ -10,6 +10,7 @@ logoBlur=false
 credits="Screem: music, some sounds & art; Gecko: made the old biome provider"
 authors="quek"
 description='''Deep underground, a forgotten land awaits.'''
+license="Mit License"
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
