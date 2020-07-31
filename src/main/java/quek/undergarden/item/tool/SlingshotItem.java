@@ -74,10 +74,9 @@ public class SlingshotItem extends ShootableItem {
                 if (!((double)f < 0.1D)) {
                     boolean flag1 = playerentity.abilities.isCreativeMode || (itemstack.getItem() instanceof DepthrockPebbleItem && ((DepthrockPebbleItem)itemstack.getItem()).isInfinite(itemstack, stack, playerentity));
                     if (!worldIn.isRemote) {
-                        DepthrockPebbleItem pebbleItem = (DepthrockPebbleItem) (itemstack.getItem() instanceof DepthrockPebbleItem ? itemstack.getItem() : UndergardenItems.depthrock_pebble.get());
                         SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(worldIn, entityLiving);
                         ammoEntity = ammo(ammoEntity);
-                        ammoEntity.shoot(playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);
+                        ammoEntity.func_234612_a_(playerentity, playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
                         stack.damageItem(1, playerentity, (p_220009_1_) -> {
                             p_220009_1_.sendBreakAnimation(playerentity.getActiveHand());
