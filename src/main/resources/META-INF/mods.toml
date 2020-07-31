@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[32,)"
 issueTrackerURL="https://github.com/quek04/The-Undergarden/issues"
 [[mods]]
 modId="undergarden"
@@ -7,13 +7,13 @@ version="${file.jarVersion}"
 displayName="The Undergarden"
 logoFile="logo.png"
 logoBlur=false
-credits="Screem: music, some textures & sounds; Gecko: made the biome provider"
+credits="Screem: music, some sounds & art; Gecko: made the old biome provider"
 authors="quek"
 description='''Deep underground, a forgotten land awaits.'''
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[32,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.undergarden]]
