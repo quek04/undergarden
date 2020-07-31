@@ -30,12 +30,12 @@ public class UndergardenItems {
     public static final RegistryObject<Item> regalium_ingot = ITEMS.register("regalium_ingot", () -> new UndergardenItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> regalium_nugget = ITEMS.register("regalium_nugget", () -> new UndergardenItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> smogstem_torch = ITEMS.register("smogstem_torch", () -> new WallOrFloorItem(
-            UndergardenBlocks.smogstem_torch.get(), UndergardenBlocks.smogstem_wall_torch.get(), new Item.Properties().group(UndergardenItemGroups.UNDERGARDEN_BLOCKS)));
+            UndergardenBlocks.smogstem_torch.get(), UndergardenBlocks.smogstem_wall_torch.get(), new Item.Properties().group(UndergardenItemGroups.GROUP)));
     public static final RegistryObject<Item> gloomgourd_seeds = ITEMS.register("gloomgourd_seeds", () -> new BlockNamedItem(
-            UndergardenBlocks.gloomgourd_stem.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_ITEMS)));
+            UndergardenBlocks.gloomgourd_stem.get(), (new Item.Properties()).group(UndergardenItemGroups.GROUP)));
     public static final RegistryObject<Item> ditchbulb = ITEMS.register("ditchbulb", UndergardenItem::new);
     public static final RegistryObject<Item> brute_tusk = ITEMS.register("brute_tusk", UndergardenItem::new);
-    public static final RegistryObject<Item> glowing_kelp = ITEMS.register("glowing_kelp", () -> new BlockItem(UndergardenBlocks.glowing_kelp.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_BLOCKS)));
+    public static final RegistryObject<Item> glowing_kelp = ITEMS.register("glowing_kelp", () -> new BlockItem(UndergardenBlocks.glowing_kelp.get(), (new Item.Properties()).group(UndergardenItemGroups.GROUP)));
     public static final RegistryObject<Item> goo_ball = ITEMS.register("goo_ball", GooBallItem::new);
     public static final RegistryObject<Item> rotten_blisterberry = ITEMS.register("rotten_blisterberry", RottenBlisterberryItem::new);
     public static final RegistryObject<Item> blisterbomb = ITEMS.register("blisterbomb", BlisterbombItem::new);
@@ -74,10 +74,10 @@ public class UndergardenItems {
     public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
 
     public static final RegistryObject<BucketItem> virulent_mix_bucket = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(
-            UndergardenFluids.virulent_mix_source, (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_GEAR).maxStackSize(1)));
+            UndergardenFluids.virulent_mix_source, (new Item.Properties()).group(UndergardenItemGroups.GROUP).maxStackSize(1)));
 
     public static final RegistryObject<FishBucketItem> gwibling_bucket = ITEMS.register("gwibling_bucket", () -> new FishBucketItem(
-            UndergardenEntities.gwibling, Fluids.WATER, (new Item.Properties()).maxStackSize(1).group(UndergardenItemGroups.UNDERGARDEN_GEAR)));
+            UndergardenEntities.gwibling, Fluids.WATER, (new Item.Properties()).maxStackSize(1).group(UndergardenItemGroups.GROUP)));
 
     //armors
     public static final RegistryObject<Item> cloggrum_helmet = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UndergardenArmorMaterials.CLOGGRUM, EquipmentSlotType.HEAD));
@@ -97,9 +97,9 @@ public class UndergardenItems {
 
     //foods
     public static final RegistryObject<Item> underbeans = ITEMS.register("underbeans", () -> new BlockNamedItem(
-            UndergardenBlocks.underbean_bush.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_ITEMS).food(UndergardenFoods.UNDERBEANS)));
+            UndergardenBlocks.underbean_bush.get(), (new Item.Properties()).group(UndergardenItemGroups.GROUP).food(UndergardenFoods.UNDERBEANS)));
     public static final RegistryObject<Item> blisterberry = ITEMS.register("blisterberry", () -> new BlockNamedItem(
-            UndergardenBlocks.blisterberry_bush.get(), (new Item.Properties()).group(UndergardenItemGroups.UNDERGARDEN_ITEMS).food(UndergardenFoods.BLISTERBERRY)));
+            UndergardenBlocks.blisterberry_bush.get(), (new Item.Properties()).group(UndergardenItemGroups.GROUP).food(UndergardenFoods.BLISTERBERRY)));
     public static final RegistryObject<Item> gloomgourd_pie = ITEMS.register("gloomgourd_pie", () -> new UndergardenItem(UndergardenFoods.GLOOMGOURD_PIE));
     public static final RegistryObject<Item> raw_dweller_meat = ITEMS.register("raw_dweller_meat", () -> new UndergardenItem(UndergardenFoods.RAW_DWELLER));
     public static final RegistryObject<Item> dweller_steak = ITEMS.register("dweller_steak", () -> new UndergardenItem(UndergardenFoods.COOKED_DWELLER));

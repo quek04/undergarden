@@ -30,7 +30,7 @@ public class UndergardenAxeItem extends AxeItem {
         super(tier, 6, -3.2f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

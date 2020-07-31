@@ -1,5 +1,4 @@
 package quek.undergarden.world;
-/*
 import com.google.common.collect.Maps;
 import net.minecraft.util.math.vector.Vector3d;
 import it.unimi.dsi.fastutil.objects.Object2LongMap;
@@ -275,9 +274,9 @@ public class UndergardenTeleporter implements ITeleporter {
             float f1 = player.rotationYaw;
             float f2 = f1;
             currentWorld.getProfiler().startSection("moving");
-            double moveFactor = currentWorld.getDimension().getMovementFactor() / destWorld.getDimension().getMovementFactor();
-            d0 *= moveFactor;
-            d2 *= moveFactor;
+            //double moveFactor = currentWorld.getDimension().getMovementFactor() / destWorld.getDimension().getMovementFactor();
+            //d0 *= moveFactor;
+            //d2 *= moveFactor;
 
             player.setLocationAndAngles(d0, d1, d2, f1, f);
             currentWorld.getProfiler().endSection();
@@ -306,10 +305,9 @@ public class UndergardenTeleporter implements ITeleporter {
             float f;
             BlockPos blockpos;
 
-            double movementFactor = currentWorld.getDimension().getMovementFactor()
-                    / destWorld.getDimension().getMovementFactor();
-            double d0 = entity.getPosX() * movementFactor;
-            double d1 = entity.getPosZ() * movementFactor;
+            //double movementFactor = currentWorld.getDimension().getMovementFactor() / destWorld.getDimension().getMovementFactor();
+            double d0 = entity.getPosX()/* * movementFactor*/;
+            double d1 = entity.getPosZ()/* * movementFactor*/;
 
             double d3 = Math.min(-2.9999872E7D, destWorld.getWorldBorder().minX() + 16.0D);
             double d4 = Math.min(-2.9999872E7D, destWorld.getWorldBorder().minZ() + 16.0D);
@@ -378,5 +376,3 @@ public class UndergardenTeleporter implements ITeleporter {
     }
 
 }
-
- */

@@ -34,7 +34,7 @@ public class DeepturfBlock extends UndergardenGrassBlock implements IGrowable {
 
     @Override
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return false;
+        return worldIn.getBlockState(pos.up()).isAir();
     }
 
     @Override

@@ -9,12 +9,12 @@ public class UndergardenItem extends Item {
 
     public UndergardenItem() {
         super(new Properties()
-                .group(UndergardenItemGroups.UNDERGARDEN_ITEMS));
+                .group(UndergardenItemGroups.GROUP));
     }
 
     public UndergardenItem(Rarity rarity) {
         super(new Properties()
-                .group(UndergardenItemGroups.UNDERGARDEN_ITEMS)
+                .group(UndergardenItemGroups.GROUP)
                 .rarity(rarity)
         );
     }
@@ -22,6 +22,6 @@ public class UndergardenItem extends Item {
     public UndergardenItem(Food food) {
         super(new Properties()
                 .food(food)
-                .group(UndergardenItemGroups.UNDERGARDEN_ITEMS));
+                .group(UndergardenItemGroups.GROUP));
     }
 }

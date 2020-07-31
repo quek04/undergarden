@@ -16,7 +16,7 @@ public class CatalystItem extends Item {
 
     public CatalystItem() {
         super(new Properties()
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
                 .maxStackSize(1)
                 .maxDamage(3)
         );

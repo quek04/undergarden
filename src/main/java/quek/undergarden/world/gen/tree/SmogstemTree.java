@@ -3,7 +3,7 @@ package quek.undergarden.world.gen.tree;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import quek.undergarden.registry.UndergardenBiomeFeatures;
+import quek.undergarden.biome.UndergardenBiomeFeatures;
 import quek.undergarden.registry.UndergardenFeatures;
 
 import javax.annotation.Nullable;

@@ -1,4 +1,4 @@
-package quek.undergarden.registry;
+package quek.undergarden.biome;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -13,14 +13,16 @@ import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
-import net.minecraft.world.gen.foliageplacer.PineFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.BushFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.SpruceFoliagePlacer;
 import net.minecraft.world.gen.placement.*;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
-import quek.undergarden.UndergardenMod;
+import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UndergardenFeatures;
+import quek.undergarden.registry.UndergardenFluids;
+import quek.undergarden.registry.UndergardenWorldCarvers;
 
 public class UndergardenBiomeFeatures {
 
@@ -61,8 +63,8 @@ public class UndergardenBiomeFeatures {
     private static final BlockState WATER = Blocks.WATER.getDefaultState();
     private static final BlockState VIRULENT = UndergardenBlocks.virulent_mix.get().getDefaultState();
 
-    public static final BaseTreeFeatureConfig SMOGSTEM_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(SMOGSTEM_LOG), new SimpleBlockStateProvider(SMOGSTEM_LEAVES), new BlobFoliagePlacer(2, 0, 0, 0, 3), new StraightTrunkPlacer(10, 2, 0), new TwoLayerFeature(1, 0, 1))).func_236700_a_().build();
-    public static final BaseTreeFeatureConfig WIGGLEWOOD_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(WIGGLEWOOD_LOG), new SimpleBlockStateProvider(WIGGLEWOOD_LEAVES), new SpruceFoliagePlacer(2, 1, 0, 2, 1, 1), new ForkyTrunkPlacer(3, 2, 2), new TwoLayerFeature(1, 0, 2))).func_236700_a_().build();
+    public static final BaseTreeFeatureConfig SMOGSTEM_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(SMOGSTEM_LOG), new SimpleBlockStateProvider(SMOGSTEM_LEAVES), new BlobFoliagePlacer(2, 0, 0, 0, 2), new StraightTrunkPlacer(10, 2, 0), new TwoLayerFeature(1, 0, 1))).func_236700_a_().build();
+    public static final BaseTreeFeatureConfig WIGGLEWOOD_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(WIGGLEWOOD_LOG), new SimpleBlockStateProvider(WIGGLEWOOD_LEAVES), new BushFoliagePlacer(2, 0, 0, 0, 0), new ForkyTrunkPlacer(3, 0, 0), new TwoLayerFeature(1, 0, 2))).func_236700_a_().build();
 
     public static final BlockClusterFeatureConfig INDIGO_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(INDIGO_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig VEIL_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VEIL_SHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
@@ -83,7 +85,7 @@ public class UndergardenBiomeFeatures {
     public static final LiquidsConfig VIRULENT_SPRING_CONFIG = new LiquidsConfig(UndergardenFluids.virulent_mix_source.get().getDefaultState(), false, 4, 1, ImmutableSet.of(UndergardenBlocks.depthrock.get(), UndergardenBlocks.tremblecrust.get()));
 
     public static void addNormalStuff(Biome biome) {
-        biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenWorldCarvers.UNDERGARDEN_CAVE.get(), new ProbabilityConfig(.5F)));
+        biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenWorldCarvers.UNDERGARDEN_CAVE.get(), new ProbabilityConfig(0.14285715F)));
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 255))));
         addOres(biome);
         addBlockVariants(biome);

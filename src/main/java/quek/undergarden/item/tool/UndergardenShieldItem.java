@@ -22,7 +22,7 @@ public class UndergardenShieldItem extends ShieldItem {
         super(new Properties()
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
                 .rarity(rarity)
         );
         this.shieldTiers = tier;
@@ -33,7 +33,7 @@ public class UndergardenShieldItem extends ShieldItem {
         super(new Properties()
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
         this.shieldTiers = tier;
         DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);

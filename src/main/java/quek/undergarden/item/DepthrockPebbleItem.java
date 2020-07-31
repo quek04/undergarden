@@ -7,7 +7,7 @@ public class DepthrockPebbleItem extends ArrowItem {
 
     public DepthrockPebbleItem() {
         super(new Properties()
-                .group(UndergardenItemGroups.UNDERGARDEN_ITEMS)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

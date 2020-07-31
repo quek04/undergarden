@@ -1,13 +1,13 @@
 package quek.undergarden.world.layer;
-/*
-import net.minecraft.world.storage.WorldInfo;
+
+import net.minecraft.world.storage.DerivedWorldInfo;
 
 public class UndergardenBiomeProviderSettings
 {
 	private long seed;
-	private WorldInfo worldInfo;
+	private DerivedWorldInfo worldInfo;
 
-	public UndergardenBiomeProviderSettings setWorldInfo(WorldInfo info)
+	public UndergardenBiomeProviderSettings setWorldInfo(DerivedWorldInfo info)
 	{
 		this.worldInfo = info;
 		return this;
@@ -25,10 +25,8 @@ public class UndergardenBiomeProviderSettings
 	}
 
 
-	public WorldInfo getWorldInfo()
+	public DerivedWorldInfo getWorldInfo()
 	{
 		return this.worldInfo;
 	}
 }
-
- */

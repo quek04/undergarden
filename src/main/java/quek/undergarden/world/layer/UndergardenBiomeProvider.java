@@ -1,12 +1,9 @@
 package quek.undergarden.world.layer;
-/*
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.IExtendedNoiseRandom;
@@ -30,8 +27,8 @@ import java.util.function.LongFunction;
 
 public class UndergardenBiomeProvider extends BiomeProvider {
     private final Layer genBiomes;
-    private final Layer biomeFactoryLayer;
-    private static final Set<Biome> biomes = ImmutableSet.of(
+    private final long seed;
+    private static final List<Biome> biomes = ImmutableList.of(
             UndergardenBiomes.FORGOTTEN_FIELD.get(),
             UndergardenBiomes.SMOGSTEM_FOREST.get(),
             UndergardenBiomes.WIGGLEWOOD_FOREST.get(),
@@ -40,11 +37,16 @@ public class UndergardenBiomeProvider extends BiomeProvider {
             UndergardenBiomes.BARREN_ABYSS.get()
     );
 
-    public UndergardenBiomeProvider(UndergardenBiomeProviderSettings settings) {
+    public UndergardenBiomeProvider(long seed) {
         super(biomes);
-        Layer[] agenlayer = buildOverworldProcedure(settings.getSeed(), settings.getWorldInfo().getGenerator());
-        this.genBiomes = agenlayer[0];
-        this.biomeFactoryLayer = agenlayer[1];
+        this.seed = seed;
+
+        getBiomesToSpawnIn().clear();
+        getBiomesToSpawnIn().add(UndergardenBiomes.FORGOTTEN_FIELD.get());
+        getBiomesToSpawnIn().add(UndergardenBiomes.SMOGSTEM_FOREST.get());
+        getBiomesToSpawnIn().add(UndergardenBiomes.WIGGLEWOOD_FOREST.get());
+        getBiomesToSpawnIn().add(UndergardenBiomes.DENSE_FOREST.get());
+        this.genBiomes = buildUndergardenProcedure(seed);
     }
 
     @Override
@@ -63,16 +65,13 @@ public class UndergardenBiomeProvider extends BiomeProvider {
     }
 
 
-    public static Layer[] buildOverworldProcedure(long seed, WorldType typeIn) {
-        ImmutableList<IAreaFactory<LazyArea>> immutablelist = buildOverworldProcedure(typeIn, (p_215737_2_) ->
+    public static Layer buildUndergardenProcedure(long seed) {
+        ImmutableList<IAreaFactory<LazyArea>> immutablelist = buildUndergardenProcedure((p_215737_2_) ->
                 new LazyAreaLayerContext(25, seed, p_215737_2_));
-        Layer genlayer = new Layer(immutablelist.get(0));
-        Layer genlayer1 = new Layer(immutablelist.get(1));
-        Layer genlayer2 = new Layer(immutablelist.get(2));
-        return new Layer[]{genlayer, genlayer1, genlayer2};
+        return new Layer(immutablelist.get(0));
     }
 
-    public static <T extends IArea, C extends IExtendedNoiseRandom<T>> ImmutableList<IAreaFactory<T>> buildOverworldProcedure(WorldType worldTypeIn, LongFunction<C> contextFactory) {
+    public static <T extends IArea, C extends IExtendedNoiseRandom<T>> ImmutableList<IAreaFactory<T>> buildUndergardenProcedure(LongFunction<C> contextFactory) {
         IAreaFactory<T> biomes = new UndergardenBiomeLayer().apply(contextFactory.apply(1L));
 
         biomes = ZoomLayer.NORMAL.apply(contextFactory.apply(1000), biomes);
@@ -183,5 +182,3 @@ public class UndergardenBiomeProvider extends BiomeProvider {
         return this.genBiomes.func_215738_a(x, z);
     }
 }
-
- */

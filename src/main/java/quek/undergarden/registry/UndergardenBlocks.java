@@ -114,51 +114,37 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(15));
     public static final RegistryObject<Block> cloggrum_bars = registerBlock("cloggrum_bars", CloggrumBarsBlock::new);
 
-    public static final RegistryObject<StairsBlock> depthrock_stairs = registerBlock("depthrock_stairs", () -> new UndergardenStairsBlock(depthrock));
-    public static final RegistryObject<StairsBlock> cobbled_depthrock_stairs = registerBlock("cobbled_depthrock_stairs", () -> new UndergardenStairsBlock(cobbled_depthrock));
-    public static final RegistryObject<StairsBlock> depthrock_brick_stairs = registerBlock("depthrock_brick_stairs", () -> new UndergardenStairsBlock(depthrock_bricks));
-    public static final RegistryObject<StairsBlock> smogstem_stairs = registerBlock("smogstem_stairs", () -> new UndergardenStairsBlock(smogstem_planks));
-    public static final RegistryObject<StairsBlock> wigglewood_stairs = registerBlock("wigglewood_stairs", () -> new UndergardenStairsBlock(wigglewood_planks));
-    public static final RegistryObject<StairsBlock> shiverstone_stairs = registerBlock("shiverstone_stairs", () -> new UndergardenStairsBlock(shiverstone));
-    public static final RegistryObject<StairsBlock> cobbled_shiverstone_stairs = registerBlock("cobbled_shiverstone_stairs", () -> new UndergardenStairsBlock(cobbled_shiverstone));
-    public static final RegistryObject<StairsBlock> shiverstone_brick_stairs = registerBlock("shiverstone_brick_stairs", () -> new UndergardenStairsBlock(shiverstone_bricks));
+    public static final RegistryObject<StairsBlock> depthrock_stairs = registerBlock("depthrock_stairs", () -> new StairsBlock(UndergardenBlocks.depthrock.get().getDefaultState(), Block.Properties.from(UndergardenBlocks.depthrock.get())));
+    public static final RegistryObject<StairsBlock> cobbled_depthrock_stairs = registerBlock("cobbled_depthrock_stairs", () -> new StairsBlock(UndergardenBlocks.cobbled_depthrock.get().getDefaultState(), Block.Properties.from(UndergardenBlocks.cobbled_depthrock.get())));
+    public static final RegistryObject<StairsBlock> depthrock_brick_stairs = registerBlock("depthrock_brick_stairs", () -> new StairsBlock(UndergardenBlocks.depthrock_bricks.get().getDefaultState(), Block.Properties.from(UndergardenBlocks.depthrock_bricks.get())));
+    public static final RegistryObject<StairsBlock> smogstem_stairs = registerBlock("smogstem_stairs", () -> new StairsBlock(UndergardenBlocks.smogstem_planks.get().getDefaultState(), Block.Properties.from(UndergardenBlocks.smogstem_planks.get())));
+    public static final RegistryObject<StairsBlock> wigglewood_stairs = registerBlock("wigglewood_stairs", () -> new StairsBlock(UndergardenBlocks.smogstem_planks.get().getDefaultState(), Block.Properties.from(UndergardenBlocks.smogstem_planks.get())));
+    public static final RegistryObject<StairsBlock> shiverstone_stairs = registerBlock("shiverstone_stairs", () -> new StairsBlock(UndergardenBlocks.shiverstone.get().getDefaultState(), Block.Properties.from(UndergardenBlocks.shiverstone.get())));
+    public static final RegistryObject<StairsBlock> cobbled_shiverstone_stairs = registerBlock("cobbled_shiverstone_stairs", () -> new StairsBlock(UndergardenBlocks.cobbled_shiverstone.get().getDefaultState(), Block.Properties.from(UndergardenBlocks.cobbled_shiverstone.get())));
+    public static final RegistryObject<StairsBlock> shiverstone_brick_stairs = registerBlock("shiverstone_brick_stairs", () -> new StairsBlock(UndergardenBlocks.shiverstone_bricks.get().getDefaultState(), Block.Properties.from(UndergardenBlocks.shiverstone_bricks.get())));
 
-    public static final RegistryObject<SlabBlock> depthrock_slab = registerBlock("depthrock_slab", () -> new UndergardenSlabBlock(
-            Material.ROCK,1.5F,6F, SoundType.STONE,1, ToolType.PICKAXE));
-    public static final RegistryObject<SlabBlock> cobbled_depthrock_slab = registerBlock("cobbled_depthrock_slab", () -> new UndergardenSlabBlock(
-            Material.ROCK,2F,6F, SoundType.STONE,1, ToolType.PICKAXE));
-    public static final RegistryObject<SlabBlock> depthrock_brick_slab = registerBlock("depthrock_brick_slab", () -> new UndergardenSlabBlock(
-            Material.ROCK, 1.5F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
-    public static final RegistryObject<SlabBlock> smogstem_slab = registerBlock("smogstem_slab", () -> new UndergardenSlabBlock(
-            Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
-    public static final RegistryObject<SlabBlock> wigglewood_slab = registerBlock("wigglewood_slab", () -> new UndergardenSlabBlock(
-            Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
-    public static final RegistryObject<SlabBlock> shiverstone_slab = registerBlock("shiverstone_slab", () -> new UndergardenSlabBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
-    public static final RegistryObject<SlabBlock> cobbled_shiverstone_slab = registerBlock("cobbled_shiverstone_slab", () -> new UndergardenSlabBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
-    public static final RegistryObject<SlabBlock> shiverstone_brick_slab = registerBlock("shiverstone_brick_slab", () -> new UndergardenSlabBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
+    public static final RegistryObject<SlabBlock> depthrock_slab = registerBlock("depthrock_slab", () -> new SlabBlock(Block.Properties.from(UndergardenBlocks.depthrock.get())));
+    public static final RegistryObject<SlabBlock> cobbled_depthrock_slab = registerBlock("cobbled_depthrock_slab", () -> new SlabBlock(Block.Properties.from(UndergardenBlocks.cobbled_depthrock.get())));
+    public static final RegistryObject<SlabBlock> depthrock_brick_slab = registerBlock("depthrock_brick_slab", () -> new SlabBlock(Block.Properties.from(UndergardenBlocks.depthrock_bricks.get())));
+    public static final RegistryObject<SlabBlock> smogstem_slab = registerBlock("smogstem_slab", () -> new SlabBlock(Block.Properties.from(UndergardenBlocks.smogstem_planks.get())));
+    public static final RegistryObject<SlabBlock> wigglewood_slab = registerBlock("wigglewood_slab", () -> new SlabBlock(Block.Properties.from(UndergardenBlocks.wigglewood_planks.get())));
+    public static final RegistryObject<SlabBlock> shiverstone_slab = registerBlock("shiverstone_slab", () -> new SlabBlock(Block.Properties.from(UndergardenBlocks.shiverstone.get())));
+    public static final RegistryObject<SlabBlock> cobbled_shiverstone_slab = registerBlock("cobbled_shiverstone_slab", () -> new SlabBlock(Block.Properties.from(UndergardenBlocks.cobbled_shiverstone.get())));
+    public static final RegistryObject<SlabBlock> shiverstone_brick_slab = registerBlock("shiverstone_brick_slab", () -> new SlabBlock(Block.Properties.from(UndergardenBlocks.shiverstone_bricks.get())));
 
     public static final RegistryObject<WallBlock> cobbled_depthrock_wall = registerBlock("cobbled_depthrock_wall", () -> new WallBlock(Block.Properties.from(cobbled_depthrock.get())));
     public static final RegistryObject<WallBlock> depthrock_brick_wall = registerBlock("depthrock_brick_wall", () -> new WallBlock(Block.Properties.from(depthrock_bricks.get())));
     public static final RegistryObject<WallBlock> cobbled_shiverstone_wall = registerBlock("cobbled_shiverstone_wall", () -> new WallBlock(Block.Properties.from(cobbled_shiverstone.get())));
     public static final RegistryObject<WallBlock> shiverstone_brick_wall = registerBlock("shiverstone_brick_wall", () -> new WallBlock(Block.Properties.from(shiverstone_bricks.get())));
 
-    public static final RegistryObject<FenceBlock> smogstem_fence = registerBlock("smogstem_fence", () -> new UndergardenFenceBlock(
-            Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
-    public static final RegistryObject<FenceBlock> wigglewood_fence = registerBlock("wigglewood_fence", () -> new UndergardenFenceBlock(
-            Material.WOOD,2F,3F, SoundType.WOOD, 0, ToolType.AXE));
+    public static final RegistryObject<FenceBlock> smogstem_fence = registerBlock("smogstem_fence", () -> new FenceBlock(Block.Properties.from(UndergardenBlocks.smogstem_planks.get())));
+    public static final RegistryObject<FenceBlock> wigglewood_fence = registerBlock("wigglewood_fence", () -> new FenceBlock(Block.Properties.from(UndergardenBlocks.wigglewood_planks.get())));
 
-    public static final RegistryObject<DoorBlock> smogstem_door = registerBlock("smogstem_door", () -> new UndergardenDoorBlock(
-            Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
-    public static final RegistryObject<DoorBlock> wigglewood_door = registerBlock("wigglewood_door", () -> new UndergardenDoorBlock(
-            Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
+    public static final RegistryObject<DoorBlock> smogstem_door = registerBlock("smogstem_door", () -> new DoorBlock(Block.Properties.from(UndergardenBlocks.smogstem_planks.get())));
+    public static final RegistryObject<DoorBlock> wigglewood_door = registerBlock("wigglewood_door", () -> new DoorBlock(Block.Properties.from(UndergardenBlocks.wigglewood_planks.get())));
 
-    public static final RegistryObject<TrapDoorBlock> smogstem_trapdoor = registerBlock("smogstem_trapdoor", () -> new UndergardenTrapDoorBlock(
-            Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
-    public static final RegistryObject<TrapDoorBlock> wigglewood_trapdoor = registerBlock("wigglewood_trapdoor", () -> new UndergardenTrapDoorBlock(
-            Material.WOOD, 2F, 3F, SoundType.WOOD, 0, ToolType.AXE));
+    public static final RegistryObject<TrapDoorBlock> smogstem_trapdoor = registerBlock("smogstem_trapdoor", () -> new TrapDoorBlock(Block.Properties.from(UndergardenBlocks.smogstem_planks.get())));
+    public static final RegistryObject<TrapDoorBlock> wigglewood_trapdoor = registerBlock("wigglewood_trapdoor", () -> new TrapDoorBlock(Block.Properties.from(UndergardenBlocks.wigglewood_planks.get())));
 
     //fluids
     public static final RegistryObject<FlowingFluidBlock> virulent_mix = BLOCKS.register("virulent_mix", () -> new UndergardenFluidBlock(
@@ -176,6 +162,6 @@ public class UndergardenBlocks {
     }
 
     private static <T extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<T> block) {
-        return () -> new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().group(UndergardenItemGroups.UNDERGARDEN_BLOCKS));
+        return () -> new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().group(UndergardenItemGroups.GROUP));
     }
 }

@@ -14,7 +14,7 @@ public class MasticatedChestplateItem extends ArmorItem {
     public MasticatedChestplateItem(IArmorMaterial materialIn) {
         super(materialIn, EquipmentSlotType.CHEST, new Properties()
                 .rarity(Rarity.EPIC)
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

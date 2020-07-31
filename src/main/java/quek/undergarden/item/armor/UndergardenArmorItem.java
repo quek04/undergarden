@@ -30,7 +30,7 @@ public class UndergardenArmorItem extends ArmorItem {
 
     public UndergardenArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot) {
         super(materialIn, slot, new Properties()
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

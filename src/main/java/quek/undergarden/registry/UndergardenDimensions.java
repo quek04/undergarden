@@ -1,24 +1,23 @@
 package quek.undergarden.registry;
-/*
-import net.minecraft.world.World;
-import net.minecraft.world.biome.provider.BiomeProviderType;
-import net.minecraft.world.dimension.Dimension;
-import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.gen.ChunkGeneratorType;
-import net.minecraftforge.common.ModDimension;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UndergardenMod;
-import quek.undergarden.world.OthersideDimension;
-import quek.undergarden.world.UndergardenDimension;
-import quek.undergarden.world.gen.UndergardenChunkGenerator;
-import quek.undergarden.world.gen.UndergardenGenerationSettings;
 
-import java.util.function.BiFunction;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.DimensionType;
+import net.minecraft.world.World;
+import quek.undergarden.UndergardenMod;
 
 public class UndergardenDimensions {
 
+    public static DimensionType undergarden_dimType;
+    public static final RegistryKey<DimensionType> undergarden = RegistryKey.func_240903_a_(Registry.DIMENSION_TYPE_KEY, new ResourceLocation(UndergardenMod.MODID, "undergarden"));
+    public static final RegistryKey<World> undergarden_w = RegistryKey.func_240903_a_(Registry.WORLD_KEY, new ResourceLocation(UndergardenMod.MODID, "undergarden"));
+
+    public static DimensionType otherside_dimType;
+    public static final RegistryKey<DimensionType> otherside = RegistryKey.func_240903_a_(Registry.DIMENSION_TYPE_KEY, new ResourceLocation(UndergardenMod.MODID, "otherside"));
+    public static final RegistryKey<World> otherside_w = RegistryKey.func_240903_a_(Registry.WORLD_KEY, new ResourceLocation(UndergardenMod.MODID, "otherside"));
+
+    /* WHAT DO I DO WITH THIS
     public static final DeferredRegister<ModDimension> MOD_DIMENSIONS = DeferredRegister.create(ForgeRegistries.MOD_DIMENSIONS, UndergardenMod.MODID);
 
     public static DimensionType undergarden_dimension;
@@ -37,7 +36,7 @@ public class UndergardenDimensions {
             return OthersideDimension::new;
         }
     });
+    */
 
 }
 
- */

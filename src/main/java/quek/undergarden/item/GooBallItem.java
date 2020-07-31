@@ -2,7 +2,6 @@ package quek.undergarden.item;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.SnowballEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
@@ -23,7 +22,7 @@ public class GooBallItem extends Item {
         super(new Properties()
                 .food(UndergardenFoods.GOO_BALL)
                 .maxStackSize(16)
-                .group(UndergardenItemGroups.UNDERGARDEN_ITEMS)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

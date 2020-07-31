@@ -29,7 +29,7 @@ public class UndergardenShovelItem extends ShovelItem {
         super(tier, 1.5f, -3, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

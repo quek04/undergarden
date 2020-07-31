@@ -27,7 +27,7 @@ public class UndergardenHoeItem extends HoeItem {
         super(tier, idk, speed, new Properties()
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

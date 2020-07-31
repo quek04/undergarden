@@ -17,7 +17,7 @@ public class RottenBlisterberryItem extends Item {
     public RottenBlisterberryItem() {
         super(new Properties()
                 .maxStackSize(16)
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

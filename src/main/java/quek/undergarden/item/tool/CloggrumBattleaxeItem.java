@@ -17,7 +17,7 @@ public class CloggrumBattleaxeItem extends SwordItem {
         super(UndergardenItemTiers.CLOGGRUM, 5, -3.5F, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(UndergardenItemTiers.CLOGGRUM.getMaxUses() * 3)
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
                 .rarity(Rarity.EPIC)
         );
     }

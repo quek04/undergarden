@@ -235,9 +235,7 @@ public class UndergardenLang extends LanguageProvider {
 
         addEntityType(UndergardenEntities.MASTICATOR, "Masticator");
 
-        addItemGroup(UndergardenItemGroups.UNDERGARDEN_BLOCKS, "Undergarden Blocks");
-        addItemGroup(UndergardenItemGroups.UNDERGARDEN_GEAR, "Undergarden Tools & Combat");
-        addItemGroup(UndergardenItemGroups.UNDERGARDEN_ITEMS, "Undergarden Items");
+        addItemGroup(UndergardenItemGroups.GROUP, "The Undergarden");
 
         addEffect(UndergardenEffects.gooey, "Gooey");
 
@@ -301,5 +299,7 @@ public class UndergardenLang extends LanguageProvider {
         addSubtitle("entity", "gloomper_living", "Gloomper croaks");
         addSubtitle("entity", "gloomper_hurt", "Gloomper hurts");
         addSubtitle("entity", "gloomper_death", "Gloomper dies");
+
+        addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
     }
 }

@@ -4,6 +4,10 @@ import com.google.common.cache.LoadingCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
@@ -25,8 +29,10 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.registry.UndergardenTags;
+import quek.undergarden.world.UndergardenTeleporter;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -47,6 +53,7 @@ public class UndergardenPortalBlock extends Block {
         setDefaultState(stateContainer.getBaseState().with(AXIS, Direction.Axis.X));
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         switch(state.get(AXIS)) {
             case Z:
@@ -57,6 +64,7 @@ public class UndergardenPortalBlock extends Block {
         }
     }
 
+    @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
 
     }
@@ -102,12 +110,7 @@ public class UndergardenPortalBlock extends Block {
         }
     }
 
-    /**
-     * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
-     * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
-     * returns its solidified counterpart.
-     * Note that this method should ideally consider only the specific face passed in.
-     */
+    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         Direction.Axis direction$axis = facing.getAxis();
         Direction.Axis direction$axis1 = stateIn.get(AXIS);
@@ -115,7 +118,7 @@ public class UndergardenPortalBlock extends Block {
         return !flag && facingState.getBlock() != this && !(new Size(worldIn, currentPos, direction$axis1)).func_208508_f() ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    /*
+    @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entity) {
         if (!entity.isPassenger() && !entity.isBeingRidden() && entity.isNonBoss()) {
             if (entity.timeUntilPortal > 0) {
@@ -123,28 +126,35 @@ public class UndergardenPortalBlock extends Block {
             } else {
                 if (!entity.world.isRemote && !pos.equals(entity.lastPortalPos)) {
                     entity.lastPortalPos = new BlockPos(pos);
-                    BlockPattern.PatternHelper helper = createPatternHelper(entity.world, entity.lastPortalPos);
-                    double axis = helper.getForwards().getAxis() == Direction.Axis.X ? (double)helper.getFrontTopLeft().getZ() : (double)helper.getFrontTopLeft().getX();
-                    double x = Math.abs(MathHelper.pct((helper.getForwards().getAxis() == Direction.Axis.X ? entity.getPosZ() : entity.getPosX()) - (double)(helper.getForwards().rotateY().getAxisDirection() == Direction.AxisDirection.NEGATIVE ? 1 : 0), axis, axis - (double)helper.getWidth()));
-                    double y = MathHelper.pct(entity.getPosY() - 1.0D, helper.getFrontTopLeft().getY(), helper.getFrontTopLeft().getY() - helper.getHeight());
-                    entity.lastPortalVec = new Vector3d(x, y, 0.0D);
-                    entity.teleportDirection = helper.getForwards();
+                    BlockPattern.PatternHelper pattern = UndergardenPortalBlock.createPatternHelper(entity.world, entity.lastPortalPos);
+                    double d0 = pattern.getForwards().getAxis() == Direction.Axis.X ? (double)pattern.getFrontTopLeft().getZ() : (double)pattern.getFrontTopLeft().getX();
+                    double d1 = MathHelper.clamp(Math.abs(MathHelper.func_233020_c_((pattern.getForwards().getAxis() == Direction.Axis.X ? entity.getPosZ() : entity.getPosX()) - (double)(pattern.getForwards().rotateY().getAxisDirection() == Direction.AxisDirection.NEGATIVE ? 1 : 0), d0, d0 - (double)pattern.getWidth())), 0.0D, 1.0D);
+                    double d2 = MathHelper.clamp(MathHelper.func_233020_c_(entity.getPosY() - 1.0D, pattern.getFrontTopLeft().getY(), pattern.getFrontTopLeft().getY() - pattern.getHeight()), 0.0D, 1.0D);
+                    entity.lastPortalVec = new Vector3d(d1, d2, 0.0D);
+                    entity.teleportDirection = pattern.getForwards();
                 }
-
-                if (entity.world instanceof ServerWorld) {
-                    if (entity.world.getServer().getAllowNether() && !entity.isPassenger()) {
-                        entity.timeUntilPortal = entity.getPortalCooldown();
-                        DimensionType type = worldIn.dimension.getType() == UndergardenDimensions.undergarden_dimension ? DimensionType.OVERWORLD : UndergardenDimensions.undergarden_dimension;
-                        entity.changeDimension(type, new UndergardenTeleporter());
+                int i = entity.getMaxInPortalTime();
+                World serverworld = entity.world;
+                if(serverworld != null) {
+                    MinecraftServer minecraftserver = serverworld.getServer();                                           //overworld
+                    RegistryKey<World> where2go = entity.world.func_234923_W_() == UndergardenDimensions.undergarden_w ? World.field_234918_g_ : UndergardenDimensions.undergarden_w;
+                    if(minecraftserver != null) {
+                        ServerWorld destination = minecraftserver.getWorld(where2go);
+                        if (destination != null && minecraftserver.getAllowNether() && !entity.isPassenger() && entity.portalCounter++ >= i) {
+                            entity.world.getProfiler().startSection("portal");
+                            entity.portalCounter = i;
+                            entity.timeUntilPortal = entity.getPortalCooldown();
+                            entity.changeDimension(destination, new UndergardenTeleporter());
+                            entity.world.getProfiler().endSection();
+                        }
                     }
                 }
             }
         }
     }
 
-     */
-
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (rand.nextInt(100) == 0) {
             worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UndergardenSoundEvents.UNDERGARDEN_PORTAL_AMBIENT, SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
@@ -171,10 +181,12 @@ public class UndergardenPortalBlock extends Block {
 
     }
 
+    @Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
         return ItemStack.EMPTY;
     }
 
+    @Override
     public BlockState rotate(BlockState state, Rotation rot) {
         switch(rot) {
             case COUNTERCLOCKWISE_90:
@@ -192,6 +204,7 @@ public class UndergardenPortalBlock extends Block {
         }
     }
 
+    @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AXIS);
     }
@@ -213,11 +226,11 @@ public class UndergardenPortalBlock extends Block {
             BlockPos blockpos = UndergardenPortalBlock$size.bottomLeft.up(UndergardenPortalBlock$size.getHeight() - 1);
 
             for(Direction.AxisDirection direction$axisdirection : Direction.AxisDirection.values()) {
-                BlockPattern.PatternHelper blockpattern$patternhelper = new BlockPattern.PatternHelper(direction.getAxisDirection() == direction$axisdirection ? blockpos : blockpos.offset(UndergardenPortalBlock$size.rightDir, UndergardenPortalBlock$size.getWidth() - 1), Direction.getFacingFromAxis(direction$axisdirection, direction$axis), Direction.UP, loadingcache, UndergardenPortalBlock$size.getWidth(), UndergardenPortalBlock$size.getHeight(), 1);
+                BlockPattern.PatternHelper pattern = new BlockPattern.PatternHelper(direction.getAxisDirection() == direction$axisdirection ? blockpos : blockpos.offset(UndergardenPortalBlock$size.rightDir, UndergardenPortalBlock$size.getWidth() - 1), Direction.getFacingFromAxis(direction$axisdirection, direction$axis), Direction.UP, loadingcache, UndergardenPortalBlock$size.getWidth(), UndergardenPortalBlock$size.getHeight(), 1);
 
                 for(int i = 0; i < UndergardenPortalBlock$size.getWidth(); ++i) {
                     for(int j = 0; j < UndergardenPortalBlock$size.getHeight(); ++j) {
-                        CachedBlockInfo cachedblockinfo = blockpattern$patternhelper.translateOffset(i, j, 1);
+                        CachedBlockInfo cachedblockinfo = pattern.translateOffset(i, j, 1);
                         if (!cachedblockinfo.getBlockState().isAir()) {
                             ++aint[direction$axisdirection.ordinal()];
                         }

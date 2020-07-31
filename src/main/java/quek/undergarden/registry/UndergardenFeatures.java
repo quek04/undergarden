@@ -16,11 +16,11 @@ public class UndergardenFeatures {
 
     //tree
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> SMOGSTEM_TREE = FEATURES.register(
-            "smogstem_tree", () -> new TreeFeature(BaseTreeFeatureConfig.field_236676_a_));
+            "smogstem_tree", () -> new UndergardenTreeFeature(BaseTreeFeatureConfig.field_236676_a_));
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> FANCY_SMOGSTEM_TREE = FEATURES.register(
-            "fancy_smogstem", () -> new TreeFeature(BaseTreeFeatureConfig.field_236676_a_));
+            "fancy_smogstem", () -> new UndergardenTreeFeature(BaseTreeFeatureConfig.field_236676_a_));
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> WIGGLEWOOD_TREE = FEATURES.register(
-            "wigglewood_tree", () -> new TreeFeature(BaseTreeFeatureConfig.field_236676_a_));
+            "wigglewood_tree", () -> new UndergardenTreeFeature(BaseTreeFeatureConfig.field_236676_a_));
 
     //other
     public static final RegistryObject<Feature<NoFeatureConfig>> GLOWING_KELP = FEATURES.register(

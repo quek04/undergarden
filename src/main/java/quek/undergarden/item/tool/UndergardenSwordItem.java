@@ -31,7 +31,7 @@ public class UndergardenSwordItem extends SwordItem {
         super(tier, 3, -2.4f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

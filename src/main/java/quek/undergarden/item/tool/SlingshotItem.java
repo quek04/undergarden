@@ -34,7 +34,7 @@ public class SlingshotItem extends ShootableItem {
         super(new Properties()
                 .maxStackSize(1)
                 .maxDamage(192)
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
                 .rarity(Rarity.UNCOMMON)
         );
     }

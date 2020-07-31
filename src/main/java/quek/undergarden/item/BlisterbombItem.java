@@ -18,7 +18,7 @@ public class BlisterbombItem extends Item {
     public BlisterbombItem() {
         super(new Properties()
                 .maxStackSize(8)
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 

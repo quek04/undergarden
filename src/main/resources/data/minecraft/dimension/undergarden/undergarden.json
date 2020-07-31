@@ -1,0 +1,124 @@
+{
+  "type": "undergarden:undergarden",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 54246454674,
+    "settings": {
+      "bedrock_roof_position": 0,
+      "bedrock_floor_position": 0,
+      "sea_level": 32,
+      "disable_mob_generation": false,
+      "structures": {
+        "stronghold": {
+          "distance": 0,
+          "count": 0,
+          "spread": 0
+        },
+        "structures": {}
+      },
+      "noise": {
+        "height": 256,
+        "sampling": {
+          "xz_scale": 0.9999999814507745,
+          "xz_factor": 80,
+          "y_scale": 0.9999999814507745,
+          "y_factor": 160
+        },
+        "top_slide": {
+          "target": 120,
+          "size": 3,
+          "offset": 0
+        },
+        "bottom_slide": {
+          "target": 320,
+          "size": 4,
+          "offset": -1
+        },
+        "size_vertical": 2,
+        "size_horizontal": 1,
+        "density_factor": 0,
+        "density_offset": 0.019921875,
+        "simplex_surface_noise": false,
+        "random_density_offset": false,
+        "island_noise_override": false,
+        "amplified": false
+      },
+      "default_block": {
+        "Name": "undergarden:depthrock"
+      },
+      "default_fluid": {
+        "Name": "minecraft:water",
+        "Properties": {
+          "level": "0"
+        }
+      }
+    },
+    "biome_source": {
+      "seed": 13546856215423,
+      "type": "minecraft:multi_noise",
+      "preset": "the_nether",
+      "biomes": [
+        {
+          "biome": "undergarden:forgotten_field",
+          "parameters": {
+            "altitude": 1.0,
+            "weirdness": -2.0,
+            "offset": 1.0,
+            "temperature": 1.0,
+            "humidity": 0.5
+          }
+        },
+        {
+          "biome": "undergarden:smogstem_forest",
+          "parameters": {
+            "altitude": 1.0,
+            "weirdness": -2.0,
+            "offset": 1.0,
+            "temperature": 1.5,
+            "humidity": 0.5
+          }
+        },
+        {
+          "biome": "undergarden:wigglewood_forest",
+          "parameters": {
+            "altitude": 1.0,
+            "weirdness": -2.0,
+            "offset": 1.0,
+            "temperature": 1.5,
+            "humidity": 0.5
+          }
+        },
+        {
+          "biome": "undergarden:dense_forest",
+          "parameters": {
+            "altitude": 1.0,
+            "weirdness": -1.0,
+            "offset": 1.0,
+            "temperature": 2.0,
+            "humidity": 1.0
+          }
+        },
+        {
+          "biome": "undergarden:barren_abyss",
+          "parameters": {
+            "altitude": 2.0,
+            "weirdness": 1.5,
+            "offset": 1.0,
+            "temperature": -2.0,
+            "humidity": -2.0
+          }
+        },
+        {
+          "biome": "undergarden:smog_spires",
+          "parameters": {
+            "altitude": 1.5,
+            "weirdness": 2.0,
+            "offset": 1.0,
+            "temperature": 4.0,
+            "humidity": 2.0
+          }
+        }
+      ]
+    }
+  }
+}

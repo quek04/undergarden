@@ -29,7 +29,7 @@ public class UndergardenPickaxeItem extends PickaxeItem {
         super(tier, 1, -2.8f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.UNDERGARDEN_GEAR)
+                .group(UndergardenItemGroups.GROUP)
         );
     }
 
