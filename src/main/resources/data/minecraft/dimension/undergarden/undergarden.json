@@ -8,6 +8,15 @@
       "bedrock_floor_position": 0,
       "sea_level": 32,
       "disable_mob_generation": false,
+      "default_block": {
+        "Name": "undergarden:depthrock"
+      },
+      "default_fluid": {
+        "Name": "minecraft:water",
+        "Properties": {
+          "level": "0"
+        }
+      },
       "structures": {
         "stronghold": {
           "distance": 0,
@@ -17,13 +26,6 @@
         "structures": {}
       },
       "noise": {
-        "height": 256,
-        "sampling": {
-          "xz_scale": 0.9999999814507745,
-          "xz_factor": 80,
-          "y_scale": 0.9999999814507745,
-          "y_factor": 160
-        },
         "top_slide": {
           "target": 120,
           "size": 3,
@@ -34,23 +36,21 @@
           "size": 4,
           "offset": -1
         },
+        "sampling": {
+          "xz_scale": 0.9999999814507745,
+          "xz_factor": 160,
+          "y_scale": 0.9999999814507745,
+          "y_factor": 160
+        },
         "size_vertical": 2,
         "size_horizontal": 1,
+        "height": 256,
         "density_factor": 0,
         "density_offset": 0.019921875,
-        "simplex_surface_noise": false,
         "random_density_offset": false,
+        "simplex_surface_noise": false,
         "island_noise_override": false,
         "amplified": false
-      },
-      "default_block": {
-        "Name": "undergarden:depthrock"
-      },
-      "default_fluid": {
-        "Name": "minecraft:water",
-        "Properties": {
-          "level": "0"
-        }
       }
     },
     "biome_source": {
