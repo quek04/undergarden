@@ -55,10 +55,10 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
         return world.hasBlockState(pos, (state) -> state.isAir() || state.isIn(BlockTags.LEAVES));
     }
 
-    private static boolean isDeepturfOrSoil(IWorldGenerationBaseReader world, BlockPos pos) {
+    private static boolean isDeepturf(IWorldGenerationBaseReader world, BlockPos pos) {
         return world.hasBlockState(pos, (state) -> {
             Block block = state.getBlock();
-            return block == UndergardenBlocks.deepturf_block.get() || block == UndergardenBlocks.deepsoil.get();
+            return block == UndergardenBlocks.deepturf_block.get();
         });
     }
 
@@ -89,8 +89,8 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
         blockpos = positionIn;
 
-        if (blockpos.getY() >= 32 && blockpos.getY() + trunk + 1 <= 256) { // y >= 32 prevents trees from generating in the ocean
-            if (!isDeepturfOrSoil(generationReader, blockpos.down())) {
+        if (blockpos.getY() >= 1 && blockpos.getY() + trunk + 1 <= 256) {
+            if (!isDeepturf(generationReader, blockpos.down()) || isWater(generationReader, positionIn)) {
                 return false;
             } else {
                 OptionalInt optionalint = configIn.field_236679_h_.func_236710_c_();
