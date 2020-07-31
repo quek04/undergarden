@@ -15,6 +15,8 @@ import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenWorldCarvers;
 
+import java.awt.*;
+
 
 public class BarrenAbyssBiome extends UndergardenBiome {
 
@@ -44,7 +46,7 @@ public class BarrenAbyssBiome extends UndergardenBiome {
     @Override
     @OnlyIn(Dist.CLIENT)
     public int getGrassColor(double posX, double posZ) {
-        return 7568503;
+        return new Color(115, 124, 119).getRGB();
     }
 
 }

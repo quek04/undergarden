@@ -11,6 +11,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.*;
 
+import java.awt.*;
+
 public class ForgottenFieldBiome extends UndergardenBiome {
 
     public ForgottenFieldBiome() {
@@ -40,7 +42,7 @@ public class ForgottenFieldBiome extends UndergardenBiome {
     @Override
     @OnlyIn(Dist.CLIENT)
     public int getGrassColor(double posX, double posZ) {
-        return 5993819;
+        return new Color(91, 117, 91).getRGB();
     }
 
 }

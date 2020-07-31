@@ -8,6 +8,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 
+import java.awt.*;
+
 public class WigglewoodForestBiome extends UndergardenBiome {
 
     public WigglewoodForestBiome() {
@@ -36,6 +38,6 @@ public class WigglewoodForestBiome extends UndergardenBiome {
     @Override
     @OnlyIn(Dist.CLIENT)
     public int getGrassColor(double posX, double posZ) {
-        return 7304538;
+        return new Color(111, 117, 90).getRGB();
     }
 }

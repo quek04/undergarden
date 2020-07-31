@@ -8,6 +8,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 
+import java.awt.*;
+
 public class SmogstemForestBiome extends UndergardenBiome {
 
     public SmogstemForestBiome() {
@@ -36,7 +38,7 @@ public class SmogstemForestBiome extends UndergardenBiome {
     @Override
     @OnlyIn(Dist.CLIENT)
     public int getGrassColor(double posX, double posZ) {
-        return 5928296;
+        return new Color(90, 117, 104).getRGB();
     }
 
 }
