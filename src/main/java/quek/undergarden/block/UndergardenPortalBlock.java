@@ -124,7 +124,7 @@ public class UndergardenPortalBlock extends Block {
             if (entity.timeUntilPortal > 0) {
                 entity.timeUntilPortal = entity.getPortalCooldown();
             } else {
-                if (!entity.world.isRemote && !pos.equals(entity.lastPortalPos)) {
+                if (/*!entity.world.isRemote &&*/ !pos.equals(entity.lastPortalPos)) {
                     entity.lastPortalPos = new BlockPos(pos);
                     BlockPattern.PatternHelper pattern = UndergardenPortalBlock.createPatternHelper(entity.world, entity.lastPortalPos);
                     double d0 = pattern.getForwards().getAxis() == Direction.Axis.X ? (double)pattern.getFrontTopLeft().getZ() : (double)pattern.getFrontTopLeft().getX();
