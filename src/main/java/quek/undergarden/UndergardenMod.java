@@ -1,11 +1,13 @@
 package quek.undergarden;
 
+import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -18,6 +20,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import org.apache.commons.lang3.tuple.Pair;
 import quek.undergarden.client.ClientStuff;
+import quek.undergarden.client.UndergardenDimensionRenderInfo;
 import quek.undergarden.data.*;
 import quek.undergarden.registry.*;
 
@@ -65,8 +68,11 @@ public class UndergardenMod {
 		ClientStuff.registerEntityRenderers();
 		ClientStuff.registerBlockColors();
 		ClientStuff.registerItemColors();
-	}
 
+		UndergardenDimensionRenderInfo dimensionRenderInfo = new UndergardenDimensionRenderInfo();
+
+		DimensionRenderInfo.field_239208_a_.put(UndergardenDimensions.undergarden, dimensionRenderInfo);
+	}
 
 	public void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
@@ -96,5 +102,6 @@ public class UndergardenMod {
 				//event.getMatrixStack().scale(1.5F, 1F, 1F);
 			}
 		}
+
 	}
 }
