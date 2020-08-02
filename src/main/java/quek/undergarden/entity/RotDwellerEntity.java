@@ -13,10 +13,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenSoundEvents;
-
 
 public class RotDwellerEntity extends MonsterEntity {
 
