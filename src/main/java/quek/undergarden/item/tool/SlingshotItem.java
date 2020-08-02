@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -21,6 +22,7 @@ import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.DepthrockPebbleItem;
 import quek.undergarden.registry.UndergardenItemGroups;
 import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UndergardenTags;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -153,5 +155,10 @@ public class SlingshotItem extends ShootableItem {
 
     public SlingshotAmmoEntity ammo(SlingshotAmmoEntity ammoEntity) {
         return ammoEntity;
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return UndergardenTags.Items.SMOGSTEM_PLANKS.contains(repair.getItem()) || super.getIsRepairable(toRepair, repair);
     }
 }
