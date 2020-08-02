@@ -36,13 +36,11 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.deepturf_block, "Deepturf Block");
         addBlock(UndergardenBlocks.ashen_deepturf, "Ashen Deepturf Block");
         addBlock(UndergardenBlocks.depthrock, "Depthrock");
-        addBlock(UndergardenBlocks.cobbled_depthrock, "Cobbled Depthrock");
         addBlock(UndergardenBlocks.smogstem_planks, "Smogstem Planks");
         addBlock(UndergardenBlocks.wigglewood_planks, "Wigglewood Planks");
         addBlock(UndergardenBlocks.depthrock_bricks, "Depthrock Bricks");
         addBlock(UndergardenBlocks.cracked_depthrock_bricks, "Cracked Depthrock Bricks");
         addBlock(UndergardenBlocks.shiverstone, "Shiverstone");
-        addBlock(UndergardenBlocks.cobbled_shiverstone, "Cobbled Shiverstone");
         addBlock(UndergardenBlocks.shiverstone_bricks, "Shiverstone Bricks");
         addBlock(UndergardenBlocks.goo, "Scintling Goo");
         addBlock(UndergardenBlocks.smog_vent, "Smog Vent");
@@ -79,7 +77,10 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.glowing_kelp_plant, "Glitterkelp");
         addBlock(UndergardenBlocks.glowing_sea_grass, "Glowing Seagrass");
 
-        addBlock(UndergardenBlocks.coal_ore, "Coal Ore");
+        addBlock(UndergardenBlocks.coal_ore, "Undergarden Coal Ore");
+        addBlock(UndergardenBlocks.iron_ore, "Undergarden Iron Ore");
+        addBlock(UndergardenBlocks.gold_ore, "Undergarden Gold Ore");
+        addBlock(UndergardenBlocks.diamond_ore, "Undergarden Diamond Ore");
         addBlock(UndergardenBlocks.cloggrum_ore, "Cloggrum Ore");
         addBlock(UndergardenBlocks.froststeel_ore, "Froststeel Ore");
         addBlock(UndergardenBlocks.utherium_ore, "Utherium Ore");
@@ -94,26 +95,20 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.cloggrum_bars, "Cloggrum Bars");
 
         addBlock(UndergardenBlocks.depthrock_stairs, "Depthrock Stairs");
-        addBlock(UndergardenBlocks.cobbled_depthrock_stairs, "Cobbled Depthrock Stairs");
         addBlock(UndergardenBlocks.depthrock_brick_stairs, "Depthrock Brick Stairs");
         addBlock(UndergardenBlocks.smogstem_stairs, "Smogstem Stairs");
         addBlock(UndergardenBlocks.wigglewood_stairs, "Wigglewood Stairs");
         addBlock(UndergardenBlocks.shiverstone_stairs, "Shiverstone Stairs");
-        addBlock(UndergardenBlocks.cobbled_shiverstone_stairs, "Cobbled Shiverstone Stairs");
         addBlock(UndergardenBlocks.shiverstone_brick_stairs, "Shiverstone Brick Stairs");
 
         addBlock(UndergardenBlocks.depthrock_slab, "Depthrock Slab");
-        addBlock(UndergardenBlocks.cobbled_depthrock_slab, "Cobbled Depthrock Slab");
         addBlock(UndergardenBlocks.depthrock_brick_slab, "Depthrock Brick Slab");
         addBlock(UndergardenBlocks.smogstem_slab, "Smogstem Slab");
         addBlock(UndergardenBlocks.wigglewood_slab, "Wigglewood Slab");
         addBlock(UndergardenBlocks.shiverstone_slab, "Shiverstone Slab");
-        addBlock(UndergardenBlocks.cobbled_shiverstone_slab, "Cobbled Shiverstone Slab");
         addBlock(UndergardenBlocks.shiverstone_brick_slab, "Shiverstone Brick Slab");
 
-        addBlock(UndergardenBlocks.cobbled_depthrock_wall, "Cobbled Depthrock Wall");
         addBlock(UndergardenBlocks.depthrock_brick_wall, "Depthrock Brick Wall");
-        addBlock(UndergardenBlocks.cobbled_shiverstone_wall, "Cobbled Shiverstone Wall");
         addBlock(UndergardenBlocks.shiverstone_brick_wall, "Shiverstone Brick Wall");
 
         addBlock(UndergardenBlocks.smogstem_fence, "Smogstem Fence");

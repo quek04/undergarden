@@ -157,13 +157,13 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeIngotToBlock(UndergardenBlocks.froststeel_block, UndergardenItems.froststeel_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.utherium_block, UndergardenItems.utherium_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.regalium_block, UndergardenItems.regalium_ingot).build(consumer);
-        makeIngotToBlock(UndergardenBlocks.cobbled_depthrock, UndergardenItems.depthrock_pebble).build(consumer);
+        makeIngotToBlock(UndergardenBlocks.depthrock, UndergardenItems.depthrock_pebble).build(consumer);
 
         makeBlockToIngot(UndergardenItems.cloggrum_ingot, UndergardenBlocks.cloggrum_block).build(consumer, name("cloggrum_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.froststeel_ingot, UndergardenBlocks.froststeel_block).build(consumer, name("froststeel_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.utherium_ingot, UndergardenBlocks.utherium_block).build(consumer, name("utherium_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.regalium_ingot, UndergardenBlocks.regalium_block).build(consumer, name("regalium_block_to_ingot"));
-        makeBlockToIngot(UndergardenItems.depthrock_pebble, UndergardenBlocks.cobbled_depthrock).build(consumer);
+        makeBlockToIngot(UndergardenItems.depthrock_pebble, UndergardenBlocks.depthrock).build(consumer);
 
         makeIngotToNugget(UndergardenItems.cloggrum_nugget, UndergardenItems.cloggrum_ingot).build(consumer, name("cloggrum_ingot_to_nugget"));
         makeIngotToNugget(UndergardenItems.froststeel_nugget, UndergardenItems.froststeel_ingot).build(consumer, name("froststeel_ingot_to_nugget"));
@@ -218,26 +218,20 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeBoots(UndergardenItems.utheric_boots, UndergardenItems.utherium_ingot).build(consumer);
 
         makeStairs(UndergardenBlocks.depthrock_stairs, UndergardenBlocks.depthrock).build(consumer);
-        makeStairs(UndergardenBlocks.cobbled_depthrock_stairs, UndergardenBlocks.cobbled_depthrock).build(consumer);
         makeStairs(UndergardenBlocks.depthrock_brick_stairs, UndergardenBlocks.depthrock_bricks).build(consumer);
         makeStairs(UndergardenBlocks.smogstem_stairs, UndergardenBlocks.smogstem_planks).build(consumer);
         makeStairs(UndergardenBlocks.wigglewood_stairs, UndergardenBlocks.wigglewood_planks).build(consumer);
         makeStairs(UndergardenBlocks.shiverstone_stairs, UndergardenBlocks.shiverstone).build(consumer);
-        makeStairs(UndergardenBlocks.cobbled_shiverstone_stairs, UndergardenBlocks.cobbled_shiverstone).build(consumer);
         makeStairs(UndergardenBlocks.shiverstone_brick_stairs, UndergardenBlocks.shiverstone_bricks).build(consumer);
 
         makeSlab(UndergardenBlocks.depthrock_slab, UndergardenBlocks.depthrock).build(consumer);
-        makeSlab(UndergardenBlocks.cobbled_depthrock_slab, UndergardenBlocks.cobbled_depthrock).build(consumer);
         makeSlab(UndergardenBlocks.depthrock_brick_slab, UndergardenBlocks.depthrock_bricks).build(consumer);
         makeSlab(UndergardenBlocks.smogstem_slab, UndergardenBlocks.smogstem_planks).build(consumer);
         makeSlab(UndergardenBlocks.wigglewood_slab, UndergardenBlocks.wigglewood_planks).build(consumer);
         makeSlab(UndergardenBlocks.shiverstone_slab, UndergardenBlocks.shiverstone).build(consumer);
-        makeSlab(UndergardenBlocks.cobbled_shiverstone_slab, UndergardenBlocks.cobbled_shiverstone).build(consumer);
         makeSlab(UndergardenBlocks.shiverstone_brick_slab, UndergardenBlocks.shiverstone_bricks).build(consumer);
 
-        makeWall(UndergardenBlocks.cobbled_depthrock_wall, UndergardenBlocks.cobbled_depthrock).build(consumer);
         makeWall(UndergardenBlocks.depthrock_brick_wall, UndergardenBlocks.depthrock_bricks).build(consumer);
-        makeWall(UndergardenBlocks.cobbled_shiverstone_wall, UndergardenBlocks.cobbled_shiverstone).build(consumer);
         makeWall(UndergardenBlocks.shiverstone_brick_wall, UndergardenBlocks.shiverstone_bricks).build(consumer);
 
         makeFence(UndergardenBlocks.smogstem_fence, UndergardenBlocks.smogstem_planks).build(consumer);
@@ -250,9 +244,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeTrapdoor(UndergardenBlocks.wigglewood_trapdoor, UndergardenBlocks.wigglewood_planks).build(consumer);
 
         smeltingRecipe(Items.IRON_INGOT, UndergardenItems.catalyst_item.get(), 1F).build(consumer, "smelt_catalyst");
-
-        smeltingRecipe(UndergardenBlocks.depthrock.get(), UndergardenBlocks.cobbled_depthrock.get(), .1F).build(consumer, name("smelt_depthrock"));
-        smeltingRecipe(UndergardenBlocks.shiverstone.get(), UndergardenBlocks.cobbled_shiverstone.get(), .1F).build(consumer, name("smelt_shiverstone"));
 
         smeltingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
         blastingRecipe(UndergardenItems.cloggrum_ingot.get(), UndergardenBlocks.cloggrum_ore.get(), .7F).build(consumer, name("blast_cloggrum_ore"));

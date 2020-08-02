@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "undergarden:block/cobbled_depthrock"
+    "all": "undergarden:block/diamond_ore"
   }
 }

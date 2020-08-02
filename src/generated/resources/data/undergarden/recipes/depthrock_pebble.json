@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "undergarden:cobbled_depthrock"
+      "item": "undergarden:depthrock"
     }
   ],
   "result": {

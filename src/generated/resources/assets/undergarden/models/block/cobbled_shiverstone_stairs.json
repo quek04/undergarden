@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "side": "undergarden:block/cobbled_shiverstone",
-    "bottom": "undergarden:block/cobbled_shiverstone",
-    "top": "undergarden:block/cobbled_shiverstone"
-  }
-}

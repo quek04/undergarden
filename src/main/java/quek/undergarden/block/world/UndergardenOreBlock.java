@@ -30,7 +30,7 @@ public class UndergardenOreBlock extends OreBlock {
         if (this == UndergardenBlocks.coal_ore.get()) {
             return MathHelper.nextInt(rando, 0, 2);
         } else {
-            return this == UndergardenBlocks.utherium_ore.get() ? MathHelper.nextInt(rando, 4, 8) : 0;
+            return this == UndergardenBlocks.utherium_ore.get() || this == UndergardenBlocks.diamond_ore.get() ? MathHelper.nextInt(rando, 4, 8) : 0;
         }
     }
 

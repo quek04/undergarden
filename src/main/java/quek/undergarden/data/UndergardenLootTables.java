@@ -78,8 +78,7 @@ public class UndergardenLootTables extends LootTableProvider {
 
         @Override
         protected void addTables() {
-            dropWithSilk(UndergardenBlocks.depthrock, UndergardenBlocks.cobbled_depthrock);
-            dropSelf(UndergardenBlocks.cobbled_depthrock);
+            dropSelf(UndergardenBlocks.depthrock);
             dropSelf(UndergardenBlocks.deepsoil);
             dropWithSilk(UndergardenBlocks.deepsoil_farmland, UndergardenBlocks.deepsoil);
             this.registerLootTable(UndergardenBlocks.underbean_bush.get(),
@@ -125,16 +124,13 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.gloom_o_lantern);
             this.registerLootTable(UndergardenBlocks.ditchbulb_plant.get(), (p_218525_0_) -> droppingWithShears(p_218525_0_, withExplosionDecay(p_218525_0_, ItemLootEntry.builder(UndergardenItems.ditchbulb.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))));
             dropSelf(UndergardenBlocks.depthrock_stairs);
-            dropSelf(UndergardenBlocks.cobbled_depthrock_stairs);
             dropSelf(UndergardenBlocks.depthrock_brick_stairs);
             dropSelf(UndergardenBlocks.smogstem_stairs);
             dropSelf(UndergardenBlocks.wigglewood_stairs);
             dropSelf(UndergardenBlocks.depthrock_slab);
-            dropSelf(UndergardenBlocks.cobbled_depthrock_slab);
             dropSelf(UndergardenBlocks.depthrock_brick_slab);
             dropSelf(UndergardenBlocks.smogstem_slab);
             dropSelf(UndergardenBlocks.wigglewood_slab);
-            dropSelf(UndergardenBlocks.cobbled_depthrock_wall);
             dropSelf(UndergardenBlocks.depthrock_brick_wall);
             dropSelf(UndergardenBlocks.smogstem_fence);
             dropSelf(UndergardenBlocks.wigglewood_fence);
@@ -148,19 +144,15 @@ public class UndergardenLootTables extends LootTableProvider {
             this.registerLootTable(UndergardenBlocks.wigglewood_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             dropSelf(UndergardenBlocks.smogstem_trapdoor);
             dropSelf(UndergardenBlocks.wigglewood_trapdoor);
-            dropWithSilk(UndergardenBlocks.smog_vent, UndergardenBlocks.cobbled_depthrock);
+            dropWithSilk(UndergardenBlocks.smog_vent, UndergardenBlocks.depthrock);
             this.registerLootTable(UndergardenBlocks.goo.get(), (p_218534_0_) -> droppingWithSilkTouchOrRandomly(p_218534_0_, UndergardenItems.goo_ball.get(), RandomValueRange.of(1.0F, 4.0F)));
             dropWithSilk(UndergardenBlocks.ashen_deepturf, UndergardenBlocks.deepsoil);
-            dropWithSilk(UndergardenBlocks.shiverstone, UndergardenBlocks.cobbled_shiverstone);
-            dropSelf(UndergardenBlocks.cobbled_shiverstone);
+            dropSelf(UndergardenBlocks.shiverstone);
             dropSelf(UndergardenBlocks.shiverstone_bricks);
             dropSelf(UndergardenBlocks.shiverstone_slab);
-            dropSelf(UndergardenBlocks.cobbled_shiverstone_slab);
             dropSelf(UndergardenBlocks.shiverstone_brick_slab);
-            dropSelf(UndergardenBlocks.cobbled_shiverstone_wall);
             dropSelf(UndergardenBlocks.shiverstone_brick_wall);
             dropSelf(UndergardenBlocks.shiverstone_stairs);
-            dropSelf(UndergardenBlocks.cobbled_shiverstone_stairs);
             dropSelf(UndergardenBlocks.shiverstone_brick_stairs);
             dropSelf(UndergardenBlocks.regalium_block);
             dropSelf(UndergardenBlocks.tremblecrust);
@@ -169,6 +161,9 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.wigglewood_wood);
             dropOther(UndergardenBlocks.shard_torch, UndergardenItems.shard_torch.get());
             dropOther(UndergardenBlocks.shard_wall_torch, UndergardenItems.shard_torch.get());
+            this.registerLootTable(UndergardenBlocks.iron_ore.get(), (block) -> droppingWithSilkTouch(block, withExplosionDecay(block, ItemLootEntry.builder(Items.IRON_NUGGET).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 6.0F))).acceptFunction(ApplyBonus.oreDrops(Enchantments.FORTUNE)))));
+            this.registerLootTable(UndergardenBlocks.gold_ore.get(), (block) -> droppingWithSilkTouch(block, withExplosionDecay(block, ItemLootEntry.builder(Items.GOLD_NUGGET).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 6.0F))).acceptFunction(ApplyBonus.oreDrops(Enchantments.FORTUNE)))));
+            dropWithFortune(UndergardenBlocks.diamond_ore, Items.DIAMOND);
         }
 
         @Override

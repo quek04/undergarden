@@ -20,7 +20,6 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
     @Override
     protected void registerModels() {
         itemBlock(UndergardenBlocks.depthrock);
-        itemBlock(UndergardenBlocks.cobbled_depthrock);
         itemBlock(UndergardenBlocks.coal_ore);
         itemBlock(UndergardenBlocks.cloggrum_ore);
         itemBlock(UndergardenBlocks.froststeel_ore);
@@ -52,16 +51,13 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.froststeel_block);
         itemBlock(UndergardenBlocks.utherium_block);
         itemBlock(UndergardenBlocks.depthrock_stairs);
-        itemBlock(UndergardenBlocks.cobbled_depthrock_stairs);
         itemBlock(UndergardenBlocks.depthrock_brick_stairs);
         itemBlock(UndergardenBlocks.smogstem_stairs);
         itemBlock(UndergardenBlocks.wigglewood_stairs);
         itemBlock(UndergardenBlocks.depthrock_slab);
-        itemBlock(UndergardenBlocks.cobbled_depthrock_slab);
         itemBlock(UndergardenBlocks.depthrock_brick_slab);
         itemBlock(UndergardenBlocks.smogstem_slab);
         itemBlock(UndergardenBlocks.wigglewood_slab);
-        itemWall(UndergardenBlocks.cobbled_depthrock_wall, "cobbled_depthrock");
         itemWall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
         itemFence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         itemFence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
@@ -73,15 +69,11 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlockFlat(UndergardenBlocks.ashen_tall_deepturf);
         itemBlock(UndergardenBlocks.ashen_deepturf);
         itemBlock(UndergardenBlocks.regalium_ore);
-        itemBlock(UndergardenBlocks.cobbled_shiverstone);
         itemBlock(UndergardenBlocks.shiverstone_bricks);
         itemBlock(UndergardenBlocks.shiverstone_stairs);
-        itemBlock(UndergardenBlocks.cobbled_shiverstone_stairs);
         itemBlock(UndergardenBlocks.shiverstone_brick_stairs);
         itemBlock(UndergardenBlocks.shiverstone_slab);
-        itemBlock(UndergardenBlocks.cobbled_shiverstone_slab);
         itemBlock(UndergardenBlocks.shiverstone_brick_slab);
-        itemWall(UndergardenBlocks.cobbled_shiverstone_wall, "cobbled_shiverstone");
         itemWall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
         itemBlock(UndergardenBlocks.regalium_block);
         itemBlock(UndergardenBlocks.tremblecrust);
@@ -90,6 +82,9 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.smogstem_wood);
         itemBlock(UndergardenBlocks.wigglewood_wood);
         itemBlock(UndergardenBlocks.loose_tremblecrust);
+        itemBlock(UndergardenBlocks.iron_ore);
+        itemBlock(UndergardenBlocks.gold_ore);
+        itemBlock(UndergardenBlocks.diamond_ore);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);
