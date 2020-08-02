@@ -42,6 +42,8 @@ public class UndergardenSoundEvents {
     public static final SoundEvent GLOOMPER_HURT = register("entity.gloomper_hurt");
     public static final SoundEvent GLOOMPER_DEATH = register("entity.gloomper_death");
 
+    public static final SoundEvent STONEBORN_STEP = register("entity.stoneborn_step");
+
     private static SoundEvent register(String name) {
         SoundEvent sound = new SoundEvent(new ResourceLocation(UndergardenMod.MODID, name));
         sound.setRegistryName(new ResourceLocation(UndergardenMod.MODID, name));
@@ -71,7 +73,8 @@ public class UndergardenSoundEvents {
                 BRUTE_ANGRY,
                 GLOOMPER_LIVING,
                 GLOOMPER_HURT,
-                GLOOMPER_DEATH
+                GLOOMPER_DEATH,
+                STONEBORN_STEP
         );
     }
 

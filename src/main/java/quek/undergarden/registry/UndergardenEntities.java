@@ -49,6 +49,9 @@ public class UndergardenEntities {
             .size(1F, 2.5F).build("blisterbomber");
     public static final EntityType<GloomperEntity> gloomper = EntityType.Builder.create(GloomperEntity::new, EntityClassification.CREATURE)
             .size(1F, 1F).build("gloomper");
+    public static final EntityType<StonebornEntity> stoneborn = EntityType.Builder.create(StonebornEntity::new, EntityClassification.CREATURE)
+            .size(1F, 2.6F).build("stoneborn");
+
     public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
             .size(2.5F, 4).build("masticator");
 
@@ -66,6 +69,7 @@ public class UndergardenEntities {
     public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> scintling);
     public static final RegistryObject<EntityType<BlisterbomberEntity>> BLISTERBOMBER = ENTITIES.register("blisterbomber", () -> blisterbomber);
     public static final RegistryObject<EntityType<GloomperEntity>> GLOOMPER = ENTITIES.register("gloomper", () -> gloomper);
+    public static final RegistryObject<EntityType<StonebornEntity>> STONEBORN = ENTITIES.register("stoneborn", () -> stoneborn);
 
     //bosses
     public static final RegistryObject<EntityType<MasticatorEntity>> MASTICATOR = ENTITIES.register("masticator", () -> masticator);
@@ -91,6 +95,7 @@ public class UndergardenEntities {
         GlobalEntityTypeAttributes.put(SCINTLING.get(), ScintlingEntity.registerAttributes().func_233813_a_());
         GlobalEntityTypeAttributes.put(BLISTERBOMBER.get(), BlisterbomberEntity.registerAttributes().func_233813_a_());
         GlobalEntityTypeAttributes.put(GLOOMPER.get(), GloomperEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(STONEBORN.get(), StonebornEntity.registerAttributes().func_233813_a_());
         GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().func_233813_a_());
     }
 

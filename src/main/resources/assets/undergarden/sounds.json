@@ -186,5 +186,13 @@
     "sounds": [
       "undergarden:entity/gloomper_death"
     ]
+  },
+  "entity.stoneborn_step": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_step",
+    "sounds": [
+      "undergarden:entity/stoneborn_step_1",
+      "undergarden:entity/stoneborn_step_2"
+    ]
   }
 }

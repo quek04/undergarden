@@ -69,8 +69,6 @@ public class DwellerEntity extends AnimalEntity {
         return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
     }
 
-
-
     @Override
     protected SoundEvent getAmbientSound() {
         return UndergardenSoundEvents.DWELLER_LIVING;

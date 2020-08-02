@@ -213,6 +213,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.scintling_spawn_egg, "Scintling Spawn Egg");
         addItem(UndergardenItems.blisterbomber_spawn_egg, "Blisterbomber Spawn Egg");
         addItem(UndergardenItems.gloomper_spawn_egg, "Gloomper Spawn Egg");
+        addItem(UndergardenItems.stoneborn_spawn_egg, "Stoneborn Spawn Egg");
 
         addItem(UndergardenItems.masticator_spawn_egg, "Masticator Spawn Egg");
 
@@ -233,6 +234,7 @@ public class UndergardenLang extends LanguageProvider {
         addEntityType(UndergardenEntities.SCINTLING, "Scintling");
         addEntityType(UndergardenEntities.BLISTERBOMBER, "Blisterbomber");
         addEntityType(UndergardenEntities.GLOOMPER, "Gloomper");
+        addEntityType(UndergardenEntities.STONEBORN, "Stoneborn");
 
         addEntityType(UndergardenEntities.MASTICATOR, "Masticator");
 
@@ -300,6 +302,8 @@ public class UndergardenLang extends LanguageProvider {
         addSubtitle("entity", "gloomper_living", "Gloomper croaks");
         addSubtitle("entity", "gloomper_hurt", "Gloomper hurts");
         addSubtitle("entity", "gloomper_death", "Gloomper dies");
+
+        addSubtitle("entity", "stoneborn_step", "Stoneborn steps");
 
         addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
     }
