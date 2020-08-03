@@ -1,36 +1,78 @@
 package quek.undergarden.entity.rotspawn;
 
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.brain.Brain;
+import net.minecraft.entity.ai.brain.memory.MemoryModuleType;
+import net.minecraft.entity.ai.brain.sensor.Sensor;
+import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.monster.HoglinEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.DwellerEntity;
 import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UndergardenSensorTypes;
 
 import java.util.Random;
 
 public abstract class AbstractRotspawnEntity extends MonsterEntity {
+
+    protected static final ImmutableList<? extends SensorType<? extends Sensor<? super AbstractRotspawnEntity>>> sensorTypes = ImmutableList.of(
+            UndergardenSensorTypes.rotspawn_sensor,
+            SensorType.NEAREST_LIVING_ENTITIES,
+            SensorType.NEAREST_PLAYERS
+    );
+    protected static final ImmutableList<? extends MemoryModuleType<?>> memoryModuleTypes = ImmutableList.of(
+            MemoryModuleType.MOBS,
+            MemoryModuleType.VISIBLE_MOBS,
+            MemoryModuleType.NEAREST_VISIBLE_PLAYER,
+            MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER,
+            MemoryModuleType.LOOK_TARGET,
+            MemoryModuleType.WALK_TARGET,
+            MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
+            MemoryModuleType.PATH,
+            MemoryModuleType.ATTACK_TARGET,
+            MemoryModuleType.ATTACK_COOLING_DOWN,
+            MemoryModuleType.AVOID_TARGET,
+            MemoryModuleType.NEAREST_REPELLENT,
+            MemoryModuleType.PACIFIED
+    );
 
     protected AbstractRotspawnEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
     }
 
     @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 16.0F));
-        this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, DwellerEntity.class, true));
+    protected Brain.BrainCodec<AbstractRotspawnEntity> getBrainCodec() {
+        return Brain.func_233705_a_(memoryModuleTypes, sensorTypes);
+    }
+
+    @Override
+    protected Brain<?> createBrain(Dynamic<?> dynamic) {
+        return RotspawnTasks.getRotspawnTasks(getBrainCodec().func_233748_a_(dynamic));
+    }
+
+    @Override
+    public Brain<AbstractRotspawnEntity> getBrain() {
+        return (Brain<AbstractRotspawnEntity>)super.getBrain();
+    }
+
+    @Override
+    protected void updateAITasks() {
+        this.world.getProfiler().startSection("rotspawnBrain");
+        this.getBrain().tick((ServerWorld)this.world, this);
+        this.world.getProfiler().endSection();
+        RotspawnTasks.stuff(this);
     }
 
     public static boolean canRotspawnSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {

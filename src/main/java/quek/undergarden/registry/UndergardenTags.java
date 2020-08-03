@@ -27,6 +27,7 @@ public class UndergardenTags {
     public static class Blocks {
 
         public static final ITag.INamedTag<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
+        public static final ITag.INamedTag<Block> ROTSPAWN_REPELLENT = tag("rotspawn_repellent");
 
         private static ITag.INamedTag<Block> tag(String name) {
             return BlockTags.makeWrapperTag(new ResourceLocation(UndergardenMod.MODID, name).toString());
