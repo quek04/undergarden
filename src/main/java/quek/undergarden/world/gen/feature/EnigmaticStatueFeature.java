@@ -52,13 +52,10 @@ public class EnigmaticStatueFeature extends Feature<NoFeatureConfig> {
             int x = random.nextInt(16);
             int z = random.nextInt(16);
             
-            int deepturfY = 0;
+            int deepturfY = 256;
 
             for(int y = 256; y > 0; y--) {
-                if(worldIn.getBlockState(pos).getBlock() != UndergardenBlocks.deepturf_block.get()) {
-                    pos.down(1);
-                }
-                else deepturfY = y - 1;
+                deepturfY = y;
             }
 
             BlockPos blockpos1 = template.getZeroPositionWithTransform(pos.add(x, deepturfY, z), Mirror.NONE, rotation);
