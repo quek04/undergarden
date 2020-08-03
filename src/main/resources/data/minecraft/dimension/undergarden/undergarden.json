@@ -37,13 +37,13 @@
           "offset": -1
         },
         "sampling": {
-          "xz_scale": 0.9999999814507745,
-          "xz_factor": 160,
-          "y_scale": 0.9999999814507745,
-          "y_factor": 160
+          "xz_scale": 1,
+          "xz_factor": 80,
+          "y_scale": 3,
+          "y_factor": 60
         },
         "size_vertical": 2,
-        "size_horizontal": 1,
+        "size_horizontal": 2,
         "height": 256,
         "density_factor": 0,
         "density_offset": 0.019921875,
