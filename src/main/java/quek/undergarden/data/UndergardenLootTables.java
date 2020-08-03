@@ -164,6 +164,8 @@ public class UndergardenLootTables extends LootTableProvider {
             this.registerLootTable(UndergardenBlocks.iron_ore.get(), (block) -> droppingWithSilkTouch(block, withExplosionDecay(block, ItemLootEntry.builder(Items.IRON_NUGGET).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 6.0F))).acceptFunction(ApplyBonus.oreDrops(Enchantments.FORTUNE)))));
             this.registerLootTable(UndergardenBlocks.gold_ore.get(), (block) -> droppingWithSilkTouch(block, withExplosionDecay(block, ItemLootEntry.builder(Items.GOLD_NUGGET).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 6.0F))).acceptFunction(ApplyBonus.oreDrops(Enchantments.FORTUNE)))));
             dropWithFortune(UndergardenBlocks.diamond_ore, Items.DIAMOND);
+            dropOther(UndergardenBlocks.droopvine_top, UndergardenItems.droopvine_item.get());
+            dropOther(UndergardenBlocks.droopvine, UndergardenItems.droopvine_item.get());
         }
 
         @Override

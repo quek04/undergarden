@@ -7,14 +7,11 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.client.render.entity.*;
@@ -70,6 +67,8 @@ public class ClientStuff {
         render(UndergardenBlocks.gloomgourd_stem_attached, cutout);
         render(UndergardenBlocks.shard_torch, cutout);
         render(UndergardenBlocks.shard_wall_torch, cutout);
+        render(UndergardenBlocks.droopvine_top, cutout);
+        render(UndergardenBlocks.droopvine, cutout);
     }
 
     public static void registerEntityRenderers() {

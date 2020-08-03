@@ -57,6 +57,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.iron_ore);
         normalBlock(UndergardenBlocks.gold_ore);
         normalBlock(UndergardenBlocks.diamond_ore);
+        crossBlock(UndergardenBlocks.droopvine_top);
 
         normalBlock(UndergardenBlocks.cloggrum_block);
         normalBlock(UndergardenBlocks.froststeel_block);
@@ -80,9 +81,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         wallBlock(UndergardenBlocks.shiverstone_brick_wall.get(), new ResourceLocation(UndergardenMod.MODID, "block/shiverstone_bricks"));
 
         fence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
-        //fenceColumn(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         fence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
-        //fenceColumn(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
 
         door(UndergardenBlocks.smogstem_door, "smogstem");
         door(UndergardenBlocks.wigglewood_door, "wigglewood");

@@ -1,4 +1,4 @@
-package quek.undergarden.client;
+package quek.undergarden.entity;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -9,7 +9,6 @@ import net.minecraft.entity.ai.brain.memory.MemoryModuleType;
 import net.minecraft.entity.ai.brain.schedule.Activity;
 import net.minecraft.entity.ai.brain.task.*;
 import net.minecraft.item.Item;
-import quek.undergarden.entity.StonebornEntity;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenItems;
 

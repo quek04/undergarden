@@ -17,8 +17,6 @@ public class UndergardenFeatures {
     //tree
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> SMOGSTEM_TREE = FEATURES.register(
             "smogstem_tree", () -> new UndergardenTreeFeature(BaseTreeFeatureConfig.field_236676_a_));
-    public static final RegistryObject<Feature<BaseTreeFeatureConfig>> FANCY_SMOGSTEM_TREE = FEATURES.register(
-            "fancy_smogstem", () -> new UndergardenTreeFeature(BaseTreeFeatureConfig.field_236676_a_));
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> WIGGLEWOOD_TREE = FEATURES.register(
             "wigglewood_tree", () -> new UndergardenTreeFeature(BaseTreeFeatureConfig.field_236676_a_));
 
@@ -29,6 +27,8 @@ public class UndergardenFeatures {
             "smog_vent", () -> new SmogVentFeature(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<Feature<NoFeatureConfig>> ENIGMATIC_STATUE = FEATURES.register(
             "enigmatic_statue", () -> new EnigmaticStatueFeature(NoFeatureConfig.field_236558_a_));
+    public static final RegistryObject<Feature<NoFeatureConfig>> DROOPVINE = FEATURES.register(
+            "droopvine", () -> new DroopvineFeature(NoFeatureConfig.field_236558_a_));
 
     //structures
 

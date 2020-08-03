@@ -97,6 +97,7 @@ public class UndergardenBiomeFeatures {
         addPlants(biome);
         addUnderwaterPlants(biome);
         addShrooms(biome);
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, UndergardenFeatures.DROOPVINE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(100, 0, 0, 255))));
     }
 
     public static void addPlants(Biome biome) {

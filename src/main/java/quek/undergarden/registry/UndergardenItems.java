@@ -41,6 +41,7 @@ public class UndergardenItems {
     public static final RegistryObject<Item> goo_ball = ITEMS.register("goo_ball", GooBallItem::new);
     public static final RegistryObject<Item> rotten_blisterberry = ITEMS.register("rotten_blisterberry", RottenBlisterberryItem::new);
     public static final RegistryObject<Item> blisterbomb = ITEMS.register("blisterbomb", BlisterbombItem::new);
+    public static final RegistryObject<Item> droopvine_item = ITEMS.register("droopvine_item", () -> new BlockItem(UndergardenBlocks.droopvine_top.get(), (new Item.Properties()).group(UndergardenItemGroups.GROUP)));
 
     //boss loot
     public static final RegistryObject<Item> masticator_scales = ITEMS.register("masticator_scales", () -> new UndergardenItem(Rarity.UNCOMMON));

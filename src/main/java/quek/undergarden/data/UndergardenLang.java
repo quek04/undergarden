@@ -76,6 +76,8 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.glowing_kelp, "Glitterkelp");
         addBlock(UndergardenBlocks.glowing_kelp_plant, "Glitterkelp");
         addBlock(UndergardenBlocks.glowing_sea_grass, "Glowing Seagrass");
+        addBlock(UndergardenBlocks.droopvine_top, "Droopvine");
+        //addBlock(UndergardenBlocks.droopvine, "Droopvine");
 
         addBlock(UndergardenBlocks.coal_ore, "Undergarden Coal Ore");
         addBlock(UndergardenBlocks.iron_ore, "Undergarden Iron Ore");
@@ -141,6 +143,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.goo_ball, "Scintling Goo Ball");
         addItem(UndergardenItems.rotten_blisterberry, "Rotten Blisterberry");
         addItem(UndergardenItems.blisterbomb, "Blisterbomb");
+        //addItem(UndergardenItems.droopvine_item, "Droopvine");
 
         addItem(UndergardenItems.masticator_scales, "Masticator Scales");
         addItem(UndergardenItems.masticated_chestplate, "Masticated Chestplate");

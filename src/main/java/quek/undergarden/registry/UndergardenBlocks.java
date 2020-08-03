@@ -48,11 +48,11 @@ public class UndergardenBlocks {
 
     //otherside
     public static final RegistryObject<Block> tremblecrust = registerBlock("tremblecrust", () -> new UndergardenBlock(
-            Material.ROCK, 6F, 24F, SoundType.STONE, 3, ToolType.PICKAXE));
+            Material.ROCK, 6F, 24F, SoundType.field_235589_K_, 3, ToolType.PICKAXE));
     public static final RegistryObject<Block> loose_tremblecrust = registerBlock("loose_tremblecrust", () -> new LooseTremblecrustBlock(
             Block.Properties.from(tremblecrust.get()).noDrops()));
     public static final RegistryObject<Block> tremblecrust_bricks = registerBlock("tremblecrust_bricks", () -> new UndergardenBlock(
-            Material.ROCK, 6F, 24F, SoundType.STONE, 3, ToolType.PICKAXE));
+            Material.ROCK, 6F, 24F, SoundType.field_235589_K_, 3, ToolType.PICKAXE));
 
     //nature
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", BeanBushBlock::new);
@@ -86,7 +86,8 @@ public class UndergardenBlocks {
     public static final RegistryObject<GlowingKelpTopBlock> glowing_kelp = BLOCKS.register("glowing_kelp", GlowingKelpTopBlock::new);
     public static final RegistryObject<Block> glowing_kelp_plant = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(glowing_kelp.get()));
     public static final RegistryObject<Block> glowing_sea_grass = registerBlock("glowing_sea_grass", GlowingSeaGrassBlock::new);
-    //public static final RegistryObject<Block> droopweed = registerBlock("droopweed", DroopweedBlock::new);
+    public static final RegistryObject<Block> droopvine_top = BLOCKS.register("droopvine_top", DroopvineTopBlock::new);
+    public static final RegistryObject<Block> droopvine = BLOCKS.register("droopvine", DroopvineBlock::new);
 
     //ores
     public static final RegistryObject<Block> coal_ore = registerBlock("coal_ore", () -> new UndergardenOreBlock(0));
