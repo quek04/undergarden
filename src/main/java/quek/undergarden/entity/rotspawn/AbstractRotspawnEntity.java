@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.rotspawn;
 
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
@@ -11,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import quek.undergarden.entity.DwellerEntity;
 import quek.undergarden.registry.UndergardenEntities;
 
 import java.util.Random;

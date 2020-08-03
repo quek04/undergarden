@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.model.StonebornModel;
 import quek.undergarden.client.render.layer.StonebornEyesLayer;
-import quek.undergarden.entity.StonebornEntity;
+import quek.undergarden.entity.stoneborn.StonebornEntity;
 
 public class StonebornRender extends MobRenderer<StonebornEntity, StonebornModel<StonebornEntity>> {
 

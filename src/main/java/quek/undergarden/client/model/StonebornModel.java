@@ -3,12 +3,10 @@ package quek.undergarden.client.model;
 // Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableSet;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import quek.undergarden.entity.StonebornEntity;
+import quek.undergarden.entity.stoneborn.StonebornEntity;
 
 public class StonebornModel<T extends StonebornEntity> extends AgeableModel<T> {
 	private final ModelRenderer stoneborn;

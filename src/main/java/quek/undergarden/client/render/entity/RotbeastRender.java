@@ -9,7 +9,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.render.layer.RotbeastEyesLayer;
-import quek.undergarden.entity.RotbeastEntity;
+import quek.undergarden.entity.rotspawn.RotbeastEntity;
 import quek.undergarden.client.model.RotbeastModel;
 //import quek.undergarden.world.OthersideDimension;
 

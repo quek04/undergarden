@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.entity.RotDwellerEntity;
+import quek.undergarden.entity.rotspawn.RotDwellerEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class RotDwellerModel<T extends RotDwellerEntity> extends AgeableModel<T> {

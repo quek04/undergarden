@@ -3,15 +3,12 @@ package quek.undergarden.client.model;
 // Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableSet;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.entity.RotbeastEntity;
+import quek.undergarden.entity.rotspawn.RotbeastEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class RotbeastModel<T extends RotbeastEntity> extends SegmentedModel<T> {

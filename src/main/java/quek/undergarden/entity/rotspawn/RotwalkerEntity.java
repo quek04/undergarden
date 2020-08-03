@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.rotspawn;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -10,6 +10,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
 public class RotwalkerEntity extends AbstractRotspawnEntity {

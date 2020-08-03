@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.model.RotbeastModel;
-import quek.undergarden.entity.RotbeastEntity;
+import quek.undergarden.entity.rotspawn.RotbeastEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class RotbeastEyesLayer<T extends RotbeastEntity, M extends RotbeastModel<T>> extends AbstractEyesLayer<T, M> {

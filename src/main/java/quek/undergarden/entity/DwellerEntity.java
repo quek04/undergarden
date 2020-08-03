@@ -15,6 +15,8 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import quek.undergarden.entity.rotspawn.RotbeastEntity;
+import quek.undergarden.entity.rotspawn.RotwalkerEntity;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenSoundEvents;

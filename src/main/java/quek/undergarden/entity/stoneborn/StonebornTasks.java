@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.stoneborn;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;

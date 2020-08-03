@@ -5,7 +5,6 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
-import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.fml.RegistryObject;
@@ -15,6 +14,11 @@ import quek.undergarden.UndergardenMod;
 import quek.undergarden.entity.*;
 import quek.undergarden.entity.boss.*;
 import quek.undergarden.entity.projectile.*;
+import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
+import quek.undergarden.entity.rotspawn.RotDwellerEntity;
+import quek.undergarden.entity.rotspawn.RotbeastEntity;
+import quek.undergarden.entity.rotspawn.RotwalkerEntity;
+import quek.undergarden.entity.stoneborn.StonebornEntity;
 
 public class UndergardenEntities {
 

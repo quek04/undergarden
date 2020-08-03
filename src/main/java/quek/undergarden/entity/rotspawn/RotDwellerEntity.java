@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.rotspawn;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.CreatureAttribute;

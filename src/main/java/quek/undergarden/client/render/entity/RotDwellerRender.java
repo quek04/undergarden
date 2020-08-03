@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.model.RotDwellerModel;
 import quek.undergarden.client.render.layer.RotDwellerEyesLayer;
-import quek.undergarden.entity.RotDwellerEntity;
+import quek.undergarden.entity.rotspawn.RotDwellerEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class RotDwellerRender extends MobRenderer<RotDwellerEntity, RotDwellerModel<RotDwellerEntity>> {

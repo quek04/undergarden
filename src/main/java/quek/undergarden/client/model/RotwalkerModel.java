@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.entity.RotwalkerEntity;
+import quek.undergarden.entity.rotspawn.RotwalkerEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class RotwalkerModel<T extends RotwalkerEntity> extends BipedModel<T> {

@@ -8,7 +8,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.client.model.ScintlingModel;
 import quek.undergarden.client.render.layer.ScintlingGlowLayer;
-import quek.undergarden.entity.RotwalkerEntity;
 import quek.undergarden.entity.ScintlingEntity;
 
 @OnlyIn(Dist.CLIENT)
