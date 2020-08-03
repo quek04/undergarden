@@ -19,7 +19,6 @@ public class StonebornTasks {
     public static Brain<?> getStonebornTasks(StonebornEntity stoneborn, Brain<StonebornEntity> brain) {
         coreTasks(brain);
         idleTasks(brain);
-        admireTasks(brain);
         brain.setDefaultActivities(ImmutableSet.of(Activity.CORE));
         brain.setFallbackActivity(Activity.IDLE);
         brain.func_233714_e_();
@@ -28,7 +27,6 @@ public class StonebornTasks {
 
     public static void stuff(StonebornEntity stoneborn) {
         Brain<StonebornEntity> brain = stoneborn.getBrain();
-        Activity activity = brain.func_233716_f_().orElse(null);
         brain.func_233706_a_(ImmutableList.of(Activity.CORE, Activity.IDLE));
     }
 
@@ -38,10 +36,6 @@ public class StonebornTasks {
 
     private static void idleTasks(Brain<StonebornEntity> brain) {
         brain.func_233698_a_(Activity.IDLE, 10, ImmutableList.<Task<? super StonebornEntity>>of(new LookAtEntityTask(StonebornTasks::target, 14.0F)));
-    }
-
-    private static void admireTasks(Brain<StonebornEntity> brain) {
-        brain.func_233699_a_(Activity.ADMIRE_ITEM, 10, ImmutableList.<Task<? super StonebornEntity>>of(new PickupWantedItemTask<>(StonebornTasks::isOffhandEmpty, 1.0F, true, 9)), MemoryModuleType.ADMIRING_ITEM);
     }
 
     public static boolean target(LivingEntity entity) {
