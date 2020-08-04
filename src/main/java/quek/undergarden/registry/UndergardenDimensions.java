@@ -9,11 +9,9 @@ import quek.undergarden.UndergardenMod;
 
 public class UndergardenDimensions {
 
-    public static DimensionType undergarden_dimType;
     public static final RegistryKey<DimensionType> undergarden = RegistryKey.func_240903_a_(Registry.DIMENSION_TYPE_KEY, new ResourceLocation(UndergardenMod.MODID, "undergarden"));
     public static final RegistryKey<World> undergarden_w = RegistryKey.func_240903_a_(Registry.WORLD_KEY, new ResourceLocation(UndergardenMod.MODID, "undergarden"));
 
-    public static DimensionType otherside_dimType;
     public static final RegistryKey<DimensionType> otherside = RegistryKey.func_240903_a_(Registry.DIMENSION_TYPE_KEY, new ResourceLocation(UndergardenMod.MODID, "otherside"));
     public static final RegistryKey<World> otherside_w = RegistryKey.func_240903_a_(Registry.WORLD_KEY, new ResourceLocation(UndergardenMod.MODID, "otherside"));
 
