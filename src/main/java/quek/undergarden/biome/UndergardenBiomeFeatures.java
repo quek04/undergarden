@@ -87,7 +87,7 @@ public class UndergardenBiomeFeatures {
     public static final LiquidsConfig VIRULENT_SPRING_CONFIG = new LiquidsConfig(UndergardenFluids.virulent_mix_source.get().getDefaultState(), false, 4, 1, ImmutableSet.of(UndergardenBlocks.depthrock.get(), UndergardenBlocks.tremblecrust.get()));
 
     public static void addNormalStuff(Biome biome) {
-        biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenWorldCarvers.UNDERGARDEN_CAVE.get(), new ProbabilityConfig(0.14285715F)));
+        biome.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(UndergardenWorldCarvers.UNDERGARDEN_CAVE.get(), new ProbabilityConfig(0.5F)));
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SPRING_FEATURE.withConfiguration(UndergardenBiomeFeatures.UNDERGARDEN_SPRING_CONFIG).withPlacement(Placement.COUNT_VERY_BIASED_RANGE.configure(new CountRangeConfig(20, 8, 16, 255))));
         addOres(biome);
         addBlockVariants(biome);
