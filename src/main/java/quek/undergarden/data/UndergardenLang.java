@@ -254,8 +254,8 @@ public class UndergardenLang extends LanguageProvider {
         addAdvTitle("slingshot", "Your New Best Friend");
         addAdvDesc("slingshot", "Craft a Slingshot.");
 
-        addAdvTitle("slay_rotwalker", "Slay Rotwalker");
-        addAdvDesc("slay_rotwalker", "Slay the weakest of the Rotspawn, the Rotwalker.");
+        addAdvTitle("slay_rotling", "Slay Rotling");
+        addAdvDesc("slay_rotling", "Slay the weakest of the Rotspawn, the Rotling.");
 
         addAdvTitle("rotbane", "Rotbane");
         addAdvDesc("rotbane", "Slay all kinds of Rotspawn.");

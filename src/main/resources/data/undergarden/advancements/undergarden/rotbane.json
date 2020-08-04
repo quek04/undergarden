@@ -13,8 +13,16 @@
     "announce_to_chat": true,
     "frame": "challenge"
   },
-  "parent": "undergarden:undergarden/slay_rotwalker",
+  "parent": "undergarden:undergarden/slay_rotling",
   "criteria": {
+    "slay_rotling": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "undergarden:rotling"
+        }
+      }
+    },
     "slay_rotwalker": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
