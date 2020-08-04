@@ -168,6 +168,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropOther(UndergardenBlocks.droopvine, UndergardenItems.droopvine_item.get());
             dropSelf(UndergardenBlocks.smogstem_fence_gate);
             dropSelf(UndergardenBlocks.wigglewood_fence_gate);
+            dropSelf(UndergardenBlocks.coarse_deepsoil);
         }
 
         @Override

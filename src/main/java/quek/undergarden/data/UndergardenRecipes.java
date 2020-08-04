@@ -69,6 +69,20 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
                 .addCriterion("has_cloggrum_ingot", hasItem(UndergardenItems.cloggrum_ingot.get()))
                 .build(consumer);
 
+        ShapedRecipeBuilder.shapedRecipe(UndergardenBlocks.coarse_deepsoil.get(), 4)
+                .patternLine("DP")
+                .patternLine("PD")
+                .key('D', UndergardenBlocks.deepsoil.get())
+                .key('P', UndergardenItems.depthrock_pebble.get())
+                .addCriterion("has_deepsoil", hasItem(UndergardenBlocks.deepsoil.get()))
+                .addCriterion("has_pebble", hasItem(UndergardenItems.depthrock_pebble.get()))
+                .build(consumer);
+
+        ShapelessRecipeBuilder.shapelessRecipe(UndergardenBlocks.deepsoil.get())
+                .addIngredient(UndergardenBlocks.coarse_deepsoil.get())
+                .addCriterion("has_coarse_deepsoil", hasItem(UndergardenBlocks.coarse_deepsoil.get()))
+                .build(consumer, name("coarse_deepsoil_to_normal"));
+
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.slingshot.get())
                 .patternLine("STS")
                 .patternLine("SSS")

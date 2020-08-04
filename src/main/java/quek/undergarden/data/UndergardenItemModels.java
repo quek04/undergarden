@@ -89,6 +89,7 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.wigglewood_fence_gate);
         wallInventory("depthrock_brick_wall", new ResourceLocation(UndergardenMod.MODID, "block/depthrock_bricks"));
         wallInventory("shiverstone_brick_wall", new ResourceLocation(UndergardenMod.MODID, "block/shiverstone_bricks"));
+        itemBlock(UndergardenBlocks.coarse_deepsoil);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);

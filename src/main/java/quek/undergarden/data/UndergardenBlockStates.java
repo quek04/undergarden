@@ -58,6 +58,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.gold_ore);
         normalBlock(UndergardenBlocks.diamond_ore);
         crossBlock(UndergardenBlocks.droopvine_top);
+        normalBlock(UndergardenBlocks.coarse_deepsoil);
 
         normalBlock(UndergardenBlocks.cloggrum_block);
         normalBlock(UndergardenBlocks.froststeel_block);

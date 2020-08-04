@@ -33,6 +33,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.undergarden_portal, "Undergarden Portal");
         addBlock(UndergardenBlocks.deepsoil, "Deepsoil");
         addBlock(UndergardenBlocks.deepsoil_farmland, "Deepsoil Farmland");
+        addBlock(UndergardenBlocks.coarse_deepsoil, "Coarse Deepsoil");
         addBlock(UndergardenBlocks.deepturf_block, "Deepturf Block");
         addBlock(UndergardenBlocks.ashen_deepturf, "Ashen Deepturf Block");
         addBlock(UndergardenBlocks.depthrock, "Depthrock");

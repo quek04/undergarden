@@ -26,6 +26,7 @@ public class UndergardenBlocks {
     //basic shit
     public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", DeepsoilBlock::new);
     public static final RegistryObject<Block> deepsoil_farmland = registerBlock("deepsoil_farmland", DeepsoilFarmlandBlock::new);
+    public static final RegistryObject<Block> coarse_deepsoil = registerBlock("coarse_deepsoil", DeepsoilBlock::new);
     public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", DeepturfBlock::new);
     public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", () -> new UndergardenBlock(
             Material.EARTH, 0.5F, 0.5F, SoundType.GROUND, 0, ToolType.SHOVEL));
@@ -40,9 +41,9 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> cracked_depthrock_bricks = registerBlock("cracked_depthrock_bricks", () -> new UndergardenBlock(
             Material.ROCK, 1.5F, 6F, SoundType.STONE, 1, ToolType.PICKAXE));
     public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new UndergardenBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
+            Material.ROCK, 3.5F, 12F, SoundType.field_235590_L_, 2, ToolType.PICKAXE));
     public static final RegistryObject<Block> shiverstone_bricks = registerBlock("shiverstone_bricks", () -> new UndergardenBlock(
-            Material.ROCK, 3.5F, 12F, SoundType.STONE, 2, ToolType.PICKAXE));
+            Material.ROCK, 3.5F, 12F, SoundType.field_235590_L_, 2, ToolType.PICKAXE));
     public static final RegistryObject<Block> goo = registerBlock("goo", GooBlock::new);
     public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", SmogVentBlock::new);
 
