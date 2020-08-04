@@ -6,7 +6,6 @@ import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.placement.FrequencyConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.DefaultSurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilders.NetherForestsSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -17,8 +16,8 @@ import java.awt.*;
 public class ForgottenFieldBiome extends UndergardenBiome {
 
     public ForgottenFieldBiome() {
-        super(new NetherForestsSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_),
-                new SurfaceBuilderConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.coarse_deepsoil.get().getDefaultState()),
+        super(new DefaultSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_),
+                new SurfaceBuilderConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.PLAINS,
                 0.125F,
                  0.05F,
