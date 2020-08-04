@@ -53,7 +53,7 @@ public class UndergardenAxeItem extends AxeItem {
             PlayerEntity player = (PlayerEntity) source;
             if(player.getHeldItemMainhand().getItem() == UndergardenItems.utheric_axe.get()) {
                 if(event.getEntityLiving().getClassification(false) == EntityClassification.CREATURE) {
-                    event.setAmount(damage * event.getEntityLiving().getHealth());
+                    event.setAmount(damage * 1.5F);
                 }
             }
             else if(player.getHeldItemMainhand().getItem() == UndergardenItems.froststeel_axe.get()) {

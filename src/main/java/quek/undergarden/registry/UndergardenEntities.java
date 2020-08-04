@@ -44,7 +44,7 @@ public class UndergardenEntities {
             .size(1, 1.8F).build("rotdweller");
     public static final EntityType<GwiblingEntity> gwibling = EntityType.Builder.create(GwiblingEntity::new, EntityClassification.WATER_CREATURE)
             .size(.5F, .5F).build("gwibling");
-    public static final EntityType<BruteEntity> brute = EntityType.Builder.create(BruteEntity::new, EntityClassification.CREATURE)
+    public static final EntityType<BruteEntity> brute = EntityType.Builder.create(BruteEntity::new, EntityClassification.MONSTER)
             .size(1, 2).build("brute");
     public static final EntityType<ScintlingEntity> scintling = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
             .size(1, .5F).build("scintling");
@@ -52,7 +52,7 @@ public class UndergardenEntities {
             .size(1F, 2.5F).build("blisterbomber");
     public static final EntityType<GloomperEntity> gloomper = EntityType.Builder.create(GloomperEntity::new, EntityClassification.CREATURE)
             .size(1F, 1F).build("gloomper");
-    public static final EntityType<StonebornEntity> stoneborn = EntityType.Builder.create(StonebornEntity::new, EntityClassification.CREATURE)
+    public static final EntityType<StonebornEntity> stoneborn = EntityType.Builder.create(StonebornEntity::new, EntityClassification.MONSTER)
             .size(1F, 2.6F).build("stoneborn");
 
     public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
