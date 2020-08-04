@@ -14,10 +14,7 @@ import quek.undergarden.UndergardenMod;
 import quek.undergarden.entity.*;
 import quek.undergarden.entity.boss.*;
 import quek.undergarden.entity.projectile.*;
-import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
-import quek.undergarden.entity.rotspawn.RotDwellerEntity;
-import quek.undergarden.entity.rotspawn.RotbeastEntity;
-import quek.undergarden.entity.rotspawn.RotwalkerEntity;
+import quek.undergarden.entity.rotspawn.*;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
 public class UndergardenEntities {
@@ -35,6 +32,8 @@ public class UndergardenEntities {
     public static final EntityType<BlisterbombEntity> blisterbomb = EntityType.Builder.<BlisterbombEntity>create(BlisterbombEntity::new, EntityClassification.MISC)
             .size(0.5F, 0.5F).build("blisterbomb");
 
+    public static final EntityType<RotlingEntity> rotling = EntityType.Builder.create(RotlingEntity::new, EntityClassification.MONSTER)
+            .size(0.6F, 1.0F).build("rotling");
     public static final EntityType<RotwalkerEntity> rotwalker = EntityType.Builder.create(RotwalkerEntity::new, EntityClassification.MONSTER)
             .size(0.8f,2.5f).build("rotwalker");
     public static final EntityType<RotbeastEntity> rotbeast = EntityType.Builder.create(RotbeastEntity::new, EntityClassification.MONSTER)
@@ -64,6 +63,7 @@ public class UndergardenEntities {
     public static final RegistryObject<EntityType<RottenBlisterberryEntity>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> rotten_blisterberry);
     public static final RegistryObject<EntityType<BlisterbombEntity>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> blisterbomb);
 
+    public static final RegistryObject<EntityType<RotlingEntity>> ROTLING = ENTITIES.register("rotling", () -> rotling);
     public static final RegistryObject<EntityType<RotwalkerEntity>> ROTWALKER = ENTITIES.register("rotwalker", () -> rotwalker);
     public static final RegistryObject<EntityType<RotbeastEntity>> ROTBEAST = ENTITIES.register("rotbeast", () -> rotbeast);
     public static final RegistryObject<EntityType<DwellerEntity>> DWELLER = ENTITIES.register("dweller", () -> dweller);
@@ -81,6 +81,7 @@ public class UndergardenEntities {
     public static void spawnPlacements() {
         EntitySpawnPlacementRegistry.register(GWIBLING.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractFishEntity::func_223363_b);
         EntitySpawnPlacementRegistry.register(DWELLER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, DwellerEntity::canDwellerSpawn);
+        EntitySpawnPlacementRegistry.register(ROTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractRotspawnEntity::canRotspawnSpawn);
         EntitySpawnPlacementRegistry.register(ROTWALKER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractRotspawnEntity::canRotspawnSpawn);
         EntitySpawnPlacementRegistry.register(ROTBEAST.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractRotspawnEntity::canRotspawnSpawn);
         EntitySpawnPlacementRegistry.register(BRUTE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BruteEntity::canBruteSpawn);
@@ -90,6 +91,7 @@ public class UndergardenEntities {
     }
 
     public static void entityAttributes() {
+        GlobalEntityTypeAttributes.put(ROTLING.get(), RotlingEntity.registerAttributes().func_233813_a_());
         GlobalEntityTypeAttributes.put(ROTWALKER.get(), RotwalkerEntity.registerAttributes().func_233813_a_());
         GlobalEntityTypeAttributes.put(ROTBEAST.get(), RotbeastEntity.registerAttributes().func_233813_a_());
         GlobalEntityTypeAttributes.put(DWELLER.get(), DwellerEntity.registerAttributes().func_233813_a_());

@@ -74,21 +74,22 @@ public class ClientStuff {
     public static void registerEntityRenderers() {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.slingshot_ammo, entity -> new SpriteRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.goo_ball, entity -> new SpriteRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotten_blisterberry, entity -> new SpriteRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.blisterbomb, entity -> new SpriteRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotwalker, RotwalkerRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotbeast, RotbeastRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.dweller, DwellerRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.rotdweller, RotDwellerRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.gwibling, GwiblingRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.brute, BruteRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.scintling, ScintlingRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.blisterbomber, BlisterbomberRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.gloomper, GloomperRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.stoneborn, StonebornRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.masticator, MasticatorRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.SLINGSHOT_AMMO.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.GOO_BALL.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.ROTTEN_BLISTERBERRY.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.BLISTERBOMB.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.ROTLING.get(), RotlingRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.ROTWALKER.get(), RotwalkerRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.ROTBEAST.get(), RotbeastRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.DWELLER.get(), DwellerRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.ROTDWELLER.get(), RotDwellerRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.GWIBLING.get(), GwiblingRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.BRUTE.get(), BruteRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.SCINTLING.get(), ScintlingRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.BLISTERBOMBER.get(), BlisterbomberRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.GLOOMPER.get(), GloomperRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.STONEBORN.get(), StonebornRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.MASTICATOR.get(), MasticatorRender::new);
     }
 
     public static void registerBlockColors() {

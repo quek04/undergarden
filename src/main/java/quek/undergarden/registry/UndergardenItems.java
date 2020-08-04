@@ -112,9 +112,10 @@ public class UndergardenItems {
     //spawn eggs
     public static final RegistryObject<Item> dweller_spawn_egg = ITEMS.register("dweller_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.dweller, 4804417, 16776960));
     public static final RegistryObject<Item> gwibling_spawn_egg = ITEMS.register("gwibling_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.gwibling, 10064737, 15845330));
-    public static final RegistryObject<Item> rotdweller_spawn_egg = ITEMS.register("rotdweller_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotdweller, 72451, 10963256));
+    public static final RegistryObject<Item> rotdweller_spawn_egg = ITEMS.register("rotdweller_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotdweller, 5988164, 16776960));
+    public static final RegistryObject<Item> rotling_spawn_egg = ITEMS.register("rotling_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotling, 5988164, 10963256));
     public static final RegistryObject<Item> rotwalker_spawn_egg = ITEMS.register("rotwalker_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotwalker, 5988164, 10963256));
-    public static final RegistryObject<Item> rotbeast_spawn_egg = ITEMS.register("rotbeast_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotbeast, 3751199,7153174));
+    public static final RegistryObject<Item> rotbeast_spawn_egg = ITEMS.register("rotbeast_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.rotbeast, 5988164,7153174));
     public static final RegistryObject<Item> brute_spawn_egg = ITEMS.register("brute_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.brute, 7035982, 4012083));
     public static final RegistryObject<Item> scintling_spawn_egg = ITEMS.register("scintling_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.scintling, 8556655, 6314558));
     public static final RegistryObject<Item> blisterbomber_spawn_egg = ITEMS.register("blisterbomber_spawn_egg", () -> new UndergardenSpawnEggItem(UndergardenEntities.blisterbomber, 3375672, 16034133));
