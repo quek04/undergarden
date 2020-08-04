@@ -209,6 +209,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.dweller_spawn_egg, "Dweller Spawn Egg");
         addItem(UndergardenItems.gwibling_spawn_egg, "Gwibling Spawn Egg");
         addItem(UndergardenItems.rotdweller_spawn_egg, "Rotdweller Spawn Egg");
+        addItem(UndergardenItems.rotling_spawn_egg, "Rotling Spawn Egg");
         addItem(UndergardenItems.rotwalker_spawn_egg, "Rotwalker Spawn Egg");
         addItem(UndergardenItems.rotbeast_spawn_egg, "Rotbeast Spawn Egg");
         addItem(UndergardenItems.brute_spawn_egg, "Brute Spawn Egg");
