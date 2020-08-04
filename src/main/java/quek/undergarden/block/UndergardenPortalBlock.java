@@ -124,7 +124,7 @@ public class UndergardenPortalBlock extends Block {
             if (entity.timeUntilPortal > 0) {
                 entity.timeUntilPortal = entity.getPortalCooldown();
             } else {
-                if (/*!entity.world.isRemote &&*/ !pos.equals(entity.lastPortalPos)) {
+                if (!entity.world.isRemote && !pos.equals(entity.lastPortalPos)) {
                     entity.lastPortalPos = new BlockPos(pos);
                     BlockPattern.PatternHelper pattern = UndergardenPortalBlock.createPatternHelper(entity.world, entity.lastPortalPos);
                     double d0 = pattern.getForwards().getAxis() == Direction.Axis.X ? (double)pattern.getFrontTopLeft().getZ() : (double)pattern.getFrontTopLeft().getX();
@@ -133,16 +133,16 @@ public class UndergardenPortalBlock extends Block {
                     entity.lastPortalVec = new Vector3d(d1, d2, 0.0D);
                     entity.teleportDirection = pattern.getForwards();
                 }
-                int i = entity.getMaxInPortalTime();
+                //int i = entity.getMaxInPortalTime();
                 World serverworld = entity.world;
                 if(serverworld != null) {
                     MinecraftServer minecraftserver = serverworld.getServer();                                           //overworld
                     RegistryKey<World> where2go = entity.world.func_234923_W_() == UndergardenDimensions.undergarden_w ? World.field_234918_g_ : UndergardenDimensions.undergarden_w;
                     if(minecraftserver != null) {
                         ServerWorld destination = minecraftserver.getWorld(where2go);
-                        if (destination != null && minecraftserver.getAllowNether() && !entity.isPassenger() && entity.portalCounter++ >= i) {
-                            entity.world.getProfiler().startSection("portal");
-                            entity.portalCounter = i;
+                        if (destination != null && minecraftserver.getAllowNether() && !entity.isPassenger() /*&& entity.portalCounter++ >= i*/) {
+                            entity.world.getProfiler().startSection("undergarden_portal");
+                            //entity.portalCounter = i;
                             entity.timeUntilPortal = entity.getPortalCooldown();
                             entity.changeDimension(destination, new UndergardenTeleporter());
                             entity.world.getProfiler().endSection();
