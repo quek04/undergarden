@@ -166,6 +166,8 @@ public class UndergardenLootTables extends LootTableProvider {
             dropWithFortune(UndergardenBlocks.diamond_ore, Items.DIAMOND);
             dropOther(UndergardenBlocks.droopvine_top, UndergardenItems.droopvine_item.get());
             dropOther(UndergardenBlocks.droopvine, UndergardenItems.droopvine_item.get());
+            dropSelf(UndergardenBlocks.smogstem_fence_gate);
+            dropSelf(UndergardenBlocks.wigglewood_fence_gate);
         }
 
         @Override

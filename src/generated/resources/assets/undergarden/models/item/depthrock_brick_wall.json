@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/wall_inventory",
   "textures": {
-    "texture": "undergarden:block/depthrock_bricks"
+    "wall": "undergarden:block/depthrock_bricks"
   }
 }

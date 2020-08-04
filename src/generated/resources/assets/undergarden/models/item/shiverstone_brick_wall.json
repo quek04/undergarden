@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/wall_inventory",
   "textures": {
-    "texture": "undergarden:block/shiverstone_bricks"
+    "wall": "undergarden:block/shiverstone_bricks"
   }
 }

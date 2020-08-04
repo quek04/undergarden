@@ -1,7 +1,9 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
+import quek.undergarden.UndergardenMod;
 import quek.undergarden.data.provider.UndergardenItemModelProvider;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenItems;
@@ -58,7 +60,6 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.depthrock_brick_slab);
         itemBlock(UndergardenBlocks.smogstem_slab);
         itemBlock(UndergardenBlocks.wigglewood_slab);
-        itemWall(UndergardenBlocks.depthrock_brick_wall, "depthrock_bricks");
         itemFence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         itemFence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
         itemBlockFlat(UndergardenBlocks.cloggrum_bars);
@@ -74,7 +75,6 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.shiverstone_brick_stairs);
         itemBlock(UndergardenBlocks.shiverstone_slab);
         itemBlock(UndergardenBlocks.shiverstone_brick_slab);
-        itemWall(UndergardenBlocks.shiverstone_brick_wall, "shiverstone_bricks");
         itemBlock(UndergardenBlocks.regalium_block);
         itemBlock(UndergardenBlocks.tremblecrust);
         itemBlock(UndergardenBlocks.tremblecrust_bricks);
@@ -85,6 +85,10 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.iron_ore);
         itemBlock(UndergardenBlocks.gold_ore);
         itemBlock(UndergardenBlocks.diamond_ore);
+        itemBlock(UndergardenBlocks.smogstem_fence_gate);
+        itemBlock(UndergardenBlocks.wigglewood_fence_gate);
+        wallInventory("depthrock_brick_wall", new ResourceLocation(UndergardenMod.MODID, "block/depthrock_bricks"));
+        wallInventory("shiverstone_brick_wall", new ResourceLocation(UndergardenMod.MODID, "block/shiverstone_bricks"));
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);

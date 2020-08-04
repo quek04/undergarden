@@ -237,6 +237,9 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeFence(UndergardenBlocks.smogstem_fence, UndergardenBlocks.smogstem_planks).build(consumer);
         makeFence(UndergardenBlocks.wigglewood_fence, UndergardenBlocks.wigglewood_planks).build(consumer);
 
+        makeFenceGate(UndergardenBlocks.smogstem_fence_gate, UndergardenBlocks.smogstem_planks).build(consumer);
+        makeFenceGate(UndergardenBlocks.wigglewood_fence_gate, UndergardenBlocks.wigglewood_planks).build(consumer);
+
         makeDoor(UndergardenBlocks.smogstem_door, UndergardenBlocks.smogstem_planks).build(consumer);
         makeDoor(UndergardenBlocks.wigglewood_door, UndergardenBlocks.wigglewood_planks).build(consumer);
 

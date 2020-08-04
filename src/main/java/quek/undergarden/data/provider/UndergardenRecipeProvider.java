@@ -79,6 +79,15 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
+    public ShapedRecipeBuilder makeFenceGate(Supplier<? extends Block> fenceGateOut, Supplier<? extends Block> materialIn) {
+        return ShapedRecipeBuilder.shapedRecipe(fenceGateOut.get())
+                .patternLine("/M/")
+                .patternLine("/M/")
+                .key('M', materialIn.get())
+                .key('/', UndergardenItems.smogstem_stick.get())
+                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+    }
+
     public ShapedRecipeBuilder makeBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(bricksOut.get(), 4)
                 .patternLine("MM")

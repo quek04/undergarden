@@ -30,10 +30,11 @@ public abstract class UndergardenItemModelProvider extends ItemModelProvider {
                 .texture("texture", ("block/" + name));
     }
 
-    public ItemModelBuilder itemWall(Supplier<? extends Block> block, String name) {
-        return withExistingParent(blockName(block), mcLoc("block/wall_inventory"))
+    public ItemModelBuilder itemFenceGate(Supplier<? extends Block> block, String name) {
+        return withExistingParent(blockName(block), mcLoc("block/fence_gate_inventory"))
                 .texture("texture", ("block/" + name));
     }
+
 
     public ItemModelBuilder itemBlock(Supplier<? extends Block> block) {
         return itemBlock(block, blockName(block));

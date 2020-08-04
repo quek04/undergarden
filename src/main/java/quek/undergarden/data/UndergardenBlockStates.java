@@ -83,6 +83,9 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         fence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         fence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
 
+        fenceGateBlock(UndergardenBlocks.smogstem_fence_gate.get(), new ResourceLocation(UndergardenMod.MODID, "block/smogstem_planks"));
+        fenceGateBlock(UndergardenBlocks.wigglewood_fence_gate.get(), new ResourceLocation(UndergardenMod.MODID, "block/wigglewood_planks"));
+
         door(UndergardenBlocks.smogstem_door, "smogstem");
         door(UndergardenBlocks.wigglewood_door, "wigglewood");
 

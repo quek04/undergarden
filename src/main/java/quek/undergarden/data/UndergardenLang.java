@@ -116,6 +116,9 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.smogstem_fence, "Smogstem Fence");
         addBlock(UndergardenBlocks.wigglewood_fence, "Wigglewood Fence");
 
+        addBlock(UndergardenBlocks.smogstem_fence_gate, "Smogstem Fence Gate");
+        addBlock(UndergardenBlocks.wigglewood_fence_gate, "Wigglewood Fence Gate");
+
         addBlock(UndergardenBlocks.smogstem_door, "Smogstem Door");
         addBlock(UndergardenBlocks.wigglewood_door, "Wigglewood Door");
 
