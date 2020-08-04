@@ -1,5 +1,6 @@
 package quek.undergarden.item.armor;
 
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -42,15 +43,15 @@ public class UndergardenArmorItem extends ArmorItem {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-        Multimap<Attribute, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot);
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
         if(this.getArmorMaterial() == UndergardenArmorMaterials.FROSTSTEEL && equipmentSlot == this.slot) {
-            //multimap.put(Attributes.field_233821_d_, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE));
+            return ImmutableMultimap.of(
+                    Attributes.MOVEMENT_SPEED, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE),
+                    Attributes.ARMOR, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_value", UndergardenArmorMaterials.FROSTSTEEL.getDamageReductionAmount(this.slot), AttributeModifier.Operation.ADDITION),
+                    Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_toughness_value", UndergardenArmorMaterials.FROSTSTEEL.getToughness(), AttributeModifier.Operation.ADDITION)
+            );
         }
-        if(this.getArmorMaterial() == UndergardenArmorMaterials.UTHERIC && equipmentSlot == this.slot) {
-            //multimap.put(Attributes.field_233820_c_, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "utheric_resistance", .01, AttributeModifier.Operation.MULTIPLY_BASE));
-        }
-        return multimap;
+        return super.getAttributeModifiers(equipmentSlot);
     }
 
     @Override
