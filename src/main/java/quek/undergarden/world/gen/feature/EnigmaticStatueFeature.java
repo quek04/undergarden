@@ -33,7 +33,7 @@ public class EnigmaticStatueFeature extends Feature<NoFeatureConfig> {
 
     @Override
     public boolean func_230362_a_(ISeedReader worldIn, StructureManager p_230362_2_, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        if(worldIn.isAirBlock(pos.up()) && worldIn.getBlockState(pos).getBlock() == UndergardenBlocks.deepturf_block.get()) {
+        if(worldIn.getBlockState(pos).getBlock() == UndergardenBlocks.deepturf_block.get()) {
             Random random = worldIn.getRandom();
 
             Rotation[] arotation = Rotation.values();
@@ -46,8 +46,7 @@ public class EnigmaticStatueFeature extends Feature<NoFeatureConfig> {
 
             ChunkPos chunkpos = new ChunkPos(pos);
             MutableBoundingBox mutableboundingbox = new MutableBoundingBox(chunkpos.getXStart(), 0, chunkpos.getZStart(), chunkpos.getXEnd(), 256, chunkpos.getZEnd());
-            PlacementSettings placementsettings = (new PlacementSettings()).setRotation(rotation).setBoundingBox(mutableboundingbox).setRandom(random).addProcessor(BlockIgnoreStructureProcessor.AIR_AND_STRUCTURE_BLOCK);
-            BlockPos size = template.transformedSize(rotation);
+            PlacementSettings placementsettings = (new PlacementSettings()).setRotation(rotation).setBoundingBox(mutableboundingbox).setRandom(random).addProcessor(BlockIgnoreStructureProcessor.AIR);
 
             int x = random.nextInt(16);
             int z = random.nextInt(16);
@@ -59,10 +58,7 @@ public class EnigmaticStatueFeature extends Feature<NoFeatureConfig> {
             }
 
             BlockPos blockpos1 = template.getZeroPositionWithTransform(pos.add(x, deepturfY, z), Mirror.NONE, rotation);
-            IntegrityProcessor integrityprocessor = new IntegrityProcessor(0.9F);
-            placementsettings.clearProcessors().addProcessor(integrityprocessor);
             template.func_237144_a_(worldIn, blockpos1, placementsettings, rand);
-            placementsettings.removeProcessor(integrityprocessor);
             return true;
         }
         else return false;
