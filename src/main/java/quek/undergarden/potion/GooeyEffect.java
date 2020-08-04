@@ -26,7 +26,7 @@ public class GooeyEffect extends Effect {
 
     @Override
     public boolean isReady(int duration, int amplifier) {
-        return true;
+        return duration > 0;
     }
 
 }
