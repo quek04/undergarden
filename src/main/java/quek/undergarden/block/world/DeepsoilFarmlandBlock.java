@@ -24,7 +24,7 @@ import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
 
-public class DeepsoilFarmlandBlock extends FarmlandBlock {
+public class DeepsoilFarmlandBlock extends Block {
 
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE_0_7;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
@@ -71,17 +71,17 @@ public class DeepsoilFarmlandBlock extends FarmlandBlock {
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         if (!state.isValidPosition(worldIn, pos)) {
-            turnToDirt(state, worldIn, pos);
+            turnToDeepsoil(state, worldIn, pos);
         } else {
             int i = state.get(MOISTURE);
             if (!hasWater(worldIn, pos) && !worldIn.isRainingAt(pos.up())) {
                 if (i > 0) {
-                    worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(i - 1)), 2);
+                    worldIn.setBlockState(pos, state.with(MOISTURE, i - 1), 2);
                 } else if (!hasCrops(worldIn, pos)) {
-                    turnToDirt(state, worldIn, pos);
+                    turnToDeepsoil(state, worldIn, pos);
                 }
             } else if (i < 7) {
-                worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(7)), 2);
+                worldIn.setBlockState(pos, state.with(MOISTURE, 7), 2);
             }
 
         }
@@ -90,13 +90,13 @@ public class DeepsoilFarmlandBlock extends FarmlandBlock {
     @Override
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
         if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, UndergardenBlocks.deepsoil.get().getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
-            turnToDirt(worldIn.getBlockState(pos), worldIn, pos);
+            turnToDeepsoil(worldIn.getBlockState(pos), worldIn, pos);
         }
 
-        //onFallenUpon(worldIn, pos, entityIn, fallDistance);
+        super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
     }
 
-    public static void turnToDirt(BlockState state, World worldIn, BlockPos pos) {
+    public static void turnToDeepsoil(BlockState state, World worldIn, BlockPos pos) {
         worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, UndergardenBlocks.deepsoil.get().getDefaultState(), worldIn, pos));
     }
 
