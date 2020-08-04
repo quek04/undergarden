@@ -178,12 +178,8 @@ public class UndergardenLootTables extends LootTableProvider {
     }
 
     private static LootTable.Builder func_241749_b_(Block originalBlock, Block newBlock) {
-        LootEntry.Builder<?> builder = ItemLootEntry.builder(newBlock).acceptFunction(SetCount.builder(ConstantRange.of(1))).acceptCondition(SHEARS).alternatively(withSurvivesExplosion(originalBlock, ItemLootEntry.builder(Items.WHEAT_SEEDS)).acceptCondition(RandomChance.builder(0.125F)));
+        LootEntry.Builder<?> builder = ItemLootEntry.builder(newBlock).acceptFunction(SetCount.builder(ConstantRange.of(1))).acceptCondition(SHEARS);
         return LootTable.builder().addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.func_226870_a_().func_235312_a_(BlockPredicate.Builder.func_226243_a_().func_233458_a_(originalBlock).func_233459_a_(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).func_226245_b_()), new BlockPos(0, 1, 0)))).addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.func_226870_a_().func_235312_a_(BlockPredicate.Builder.func_226243_a_().func_233458_a_(originalBlock).func_233459_a_(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).func_226245_b_()), new BlockPos(0, -1, 0))));
-    }
-
-    protected static <T> T withSurvivesExplosion(IItemProvider p_218560_0_, ILootConditionConsumer<T> p_218560_1_) {
-        return (T)(!IMMUNE_TO_EXPLOSIONS.contains(p_218560_0_.asItem()) ? p_218560_1_.acceptCondition(SurvivesExplosion.builder()) : p_218560_1_.cast());
     }
 
     public static class Entities extends EntityLootTables {
