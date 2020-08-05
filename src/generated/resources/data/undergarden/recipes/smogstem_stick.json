@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#",
-    "#"
+    "P ",
+    " P"
   ],
   "key": {
-    "#": {
-      "tag": "undergarden:smogstem_planks"
+    "P": {
+      "item": "undergarden:smogstem_planks"
     }
   },
   "result": {

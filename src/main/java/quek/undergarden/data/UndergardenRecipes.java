@@ -33,8 +33,12 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeWood(UndergardenBlocks.smogstem_wood, UndergardenBlocks.smogstem_log).build(consumer);
         makeWood(UndergardenBlocks.wigglewood_wood, UndergardenBlocks.wigglewood_log).build(consumer);
 
-        makeSticks(UndergardenItems.smogstem_stick, UndergardenTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_stick"));
-        //makeSticks(UndergardenItems.twistytwig, UndergardenTags.Items.WIGGLEWOOD_PLANKS).build(consumer, name("twistytwig"));
+        ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_stick.get(), 4)
+                .patternLine("P ")
+                .patternLine(" P")
+                .key('P', UndergardenBlocks.smogstem_planks.get())
+                .addCriterion("has_smogstem_planks", hasItem(UndergardenBlocks.smogstem_planks.get()))
+                .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.twistytwig.get(), 4)
                 .patternLine("P ")
