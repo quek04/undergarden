@@ -88,6 +88,7 @@ public class UndergardenEntities {
         EntitySpawnPlacementRegistry.register(SCINTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
         EntitySpawnPlacementRegistry.register(BLISTERBOMBER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BlisterbomberEntity::canBlisterbomberSpawn);
         EntitySpawnPlacementRegistry.register(GLOOMPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GloomperEntity::canGloomperSpawn);
+        EntitySpawnPlacementRegistry.register(STONEBORN.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, StonebornEntity::canStonebornSpawn);
     }
 
     public static void entityAttributes() {

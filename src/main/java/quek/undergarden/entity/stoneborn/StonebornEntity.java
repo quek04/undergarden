@@ -1,5 +1,10 @@
 package quek.undergarden.entity.stoneborn;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -7,24 +12,44 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.item.ExperienceOrbEntity;
+import net.minecraft.entity.merchant.IMerchant;
+import net.minecraft.entity.merchant.villager.VillagerTrades;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.*;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.IItemProvider;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
+import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UndergardenItems;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
 import javax.annotation.Nullable;
+import java.util.EnumSet;
+import java.util.Random;
+import java.util.Set;
 import java.util.UUID;
 
-public class StonebornEntity extends MonsterEntity implements IAngerable {
+public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, IMerchant {
 
     private static final DataParameter<Boolean> isChild = EntityDataManager.createKey(StonebornEntity.class, DataSerializers.BOOLEAN);
     private static final UUID BABY_SPEED_MODIFIER_IDENTIFIER = UUID.fromString("766bfa64-11f3-11ea-8d71-362b9e155667");
@@ -32,6 +57,10 @@ public class StonebornEntity extends MonsterEntity implements IAngerable {
 
     private int timeInOverworld = 0;
     private UUID uuid;
+    @Nullable
+    private PlayerEntity customer;
+    @Nullable
+    protected MerchantOffers offers;
 
     public StonebornEntity(EntityType<? extends StonebornEntity> type, World worldIn) {
         super(type, worldIn);
@@ -40,17 +69,15 @@ public class StonebornEntity extends MonsterEntity implements IAngerable {
 
     @Override
     protected void registerGoals() {
-        if(this.getHealth() > 25.0D) {
-            this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractRotspawnEntity.class, true));
-        }
-        else if(this.getHealth() < 25.0D) {
-            this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 32.0F, 0.3D, 0.3D));
-        }
+        this.goalSelector.addGoal(0, new StonebornEntity.TradeWithPlayerGoal(this));
+        this.goalSelector.addGoal(0, new StonebornEntity.LookAtCustomerGoal(this));
+        this.goalSelector.addGoal(1, new TemptGoal(this, 1.0D, Ingredient.fromItems(UndergardenBlocks.regalium_block.get(), UndergardenItems.regalium_ingot.get(), UndergardenItems.regalium_nugget.get()), false));
         this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 0.3D));
         this.goalSelector.addGoal(2, new LookAtGoal(this, LivingEntity.class, 32.0F));
         this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
         this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0D, true));
-        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
+        this.targetSelector.addGoal(2, (new HurtByTargetGoal(this)).setCallsForHelp());
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractRotspawnEntity.class, true));
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
@@ -61,6 +88,10 @@ public class StonebornEntity extends MonsterEntity implements IAngerable {
                 .func_233815_a_(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
                 .func_233815_a_(Attributes.ATTACK_DAMAGE, 10.0D)
                 ;
+    }
+
+    public static boolean canStonebornSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
+        return worldIn.getDifficulty() != Difficulty.PEACEFUL && canSpawnOn(type, worldIn, reason, pos, randomIn);
     }
 
     @Override
@@ -163,8 +194,8 @@ public class StonebornEntity extends MonsterEntity implements IAngerable {
             this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3, Explosion.Mode.BREAK);
         }
 
-        if(!isAggressive()) {
-            if(world.getGameTime() % 40 == 0) {
+        if (!isAggressive()) {
+            if (world.getGameTime() % 40 == 0) {
                 this.heal(1);
             }
         }
@@ -200,5 +231,285 @@ public class StonebornEntity extends MonsterEntity implements IAngerable {
     @Override
     public void func_230258_H__() {
 
+    }
+
+    @Override
+    public ActionResultType func_230254_b_(PlayerEntity p_230254_1_, Hand p_230254_2_) {
+        ItemStack itemstack = p_230254_1_.getHeldItem(p_230254_2_);
+        if (!this.isAggressive() && itemstack.getItem() != Items.VILLAGER_SPAWN_EGG && this.isAlive() && !this.hasCustomer() && !this.isChild()) {
+            if (p_230254_2_ == Hand.MAIN_HAND) {
+                p_230254_1_.addStat(Stats.TALKED_TO_VILLAGER);
+            }
+
+            if (this.getOffers().isEmpty()) {
+                return ActionResultType.func_233537_a_(this.world.isRemote);
+            } else {
+                if (!this.world.isRemote) {
+                    this.setCustomer(p_230254_1_);
+                    this.openMerchantContainer(p_230254_1_, this.getDisplayName(), 1);
+                }
+
+                return ActionResultType.func_233537_a_(this.world.isRemote);
+            }
+        } else {
+            return super.func_230254_b_(p_230254_1_, p_230254_2_);
+        }
+    }
+
+    public boolean hasCustomer() {
+        return this.customer != null;
+    }
+
+    @Override
+    public void setCustomer(@Nullable PlayerEntity playerEntity) {
+        this.customer = playerEntity;
+    }
+
+    @Nullable
+    @Override
+    public PlayerEntity getCustomer() {
+        return this.customer;
+    }
+
+    @Override
+    public MerchantOffers getOffers() {
+        if (this.offers == null) {
+            this.offers = new MerchantOffers();
+            this.populateTradeData();
+        }
+
+        return this.offers;
+    }
+
+    public static final Int2ObjectMap<VillagerTrades.ITrade[]> stonebornTrades;
+
+    private static Int2ObjectMap<VillagerTrades.ITrade[]> gatAsIntMap(ImmutableMap<Integer, VillagerTrades.ITrade[]> p_221238_0_) {
+        return new Int2ObjectOpenHashMap(p_221238_0_);
+    }
+
+    static {
+        stonebornTrades = gatAsIntMap(ImmutableMap.of(
+                1, new VillagerTrades.ITrade[]{
+                        new ItemsForRegaliumTrade(UndergardenItems.blisterbomb.get(), 5, 1, 3, 1),
+                        new ItemsForRegaliumTrade(UndergardenItems.underbeans.get(), 1, 24, 64, 1),
+                        new ItemsForRegaliumTrade(Items.BUCKET, 20, 1, 1, 5),
+                        new ItemsForRegaliumTrade(Items.SHEARS, 10, 1, 1, 5),
+                        new ItemsForRegaliumTrade(Items.FLINT, 5, 1, 4, 5),
+
+                        new RegaliumForItemsTrade(Items.IRON_INGOT, 4, 1, 24, 3),
+                        new RegaliumForItemsTrade(Items.GOLD_INGOT, 5, 1, 24, 3),
+                        new RegaliumForItemsTrade(Items.DIAMOND, 10, 1, 24, 3),
+                        new RegaliumForItemsTrade(Items.NETHERITE_INGOT, 20, 1, 24, 3),
+                        new RegaliumForItemsTrade(Items.REDSTONE, 16, 1, 24, 3),
+                        new RegaliumForItemsTrade(Items.LAPIS_LAZULI, 3, 3, 24, 3)
+                }
+        ));
+    }
+
+    protected void populateTradeData() {
+        VillagerTrades.ITrade[] trades = stonebornTrades.get(1);
+        if (trades != null) {
+            MerchantOffers merchantoffers = this.getOffers();
+            this.addTrades(merchantoffers, trades, 5);
+            int i = this.rand.nextInt(trades.length);
+            VillagerTrades.ITrade villagertrades$itrade = trades[i];
+            MerchantOffer merchantoffer = villagertrades$itrade.getOffer(this, this.rand);
+            if (merchantoffer != null) {
+                merchantoffers.add(merchantoffer);
+            }
+
+        }
+    }
+
+    protected void addTrades(MerchantOffers givenMerchantOffers, VillagerTrades.ITrade[] newTrades, int maxNumbers) {
+        Set<Integer> set = Sets.newHashSet();
+        if (newTrades.length > maxNumbers) {
+            while (set.size() < maxNumbers) {
+                set.add(this.rand.nextInt(newTrades.length));
+            }
+        } else {
+            for (int i = 0; i < newTrades.length; ++i) {
+                set.add(i);
+            }
+        }
+
+        for (Integer integer : set) {
+            VillagerTrades.ITrade villagertrades$itrade = newTrades[integer];
+            MerchantOffer merchantoffer = villagertrades$itrade.getOffer(this, this.rand);
+            if (merchantoffer != null) {
+                givenMerchantOffers.add(merchantoffer);
+            }
+        }
+
+    }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void setClientSideOffers(MerchantOffers offers) {
+    }
+
+    @Override
+    public void onTrade(MerchantOffer offer) {
+        offer.increaseUses();
+        this.livingSoundTime = -this.getTalkInterval();
+        this.onVillagerTrade(offer);
+        if (this.customer instanceof ServerPlayerEntity) {
+            //CriteriaTriggers.VILLAGER_TRADE.func_215114_a((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
+        }
+
+    }
+
+    protected void onVillagerTrade(MerchantOffer offer) {
+        if (offer.getDoesRewardExp()) {
+            int i = 3 + this.rand.nextInt(4);
+            this.world.addEntity(new ExperienceOrbEntity(this.world, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), i));
+        }
+
+    }
+
+    @Override
+    public void verifySellingItem(ItemStack itemStack) {
+
+    }
+
+    @Override
+    public World getWorld() {
+        return this.world;
+    }
+
+    @Override
+    public int getXp() {
+        return 0;
+    }
+
+    @Override
+    public void setXP(int i) {
+
+    }
+
+    @Override
+    public boolean func_213705_dZ() {
+        return false;
+    }
+
+    @Override
+    public SoundEvent getYesSound() {
+        return null;
+    }
+
+    static class ItemsForRegaliumTrade implements VillagerTrades.ITrade {
+        private final ItemStack tradeItem;
+        private final int regaliumCount;
+        private final int tradeItemCount;
+        private final int maxUses;
+        private final int xpValue;
+        private final float priceMultiplier;
+
+        public ItemsForRegaliumTrade(Block tradeItem, int regalium, int tradeItemCount, int maxUses, int xpValue) {
+            this(new ItemStack(tradeItem), regalium, tradeItemCount, maxUses, xpValue);
+        }
+
+        public ItemsForRegaliumTrade(Item tradeItem, int regalium, int tradeItemCount, int xpValue) {
+            this(new ItemStack(tradeItem), regalium, tradeItemCount, 12, xpValue);
+        }
+
+        public ItemsForRegaliumTrade(Item tradeItem, int regalium, int tradeItemCount, int maxUses, int xpValue) {
+            this(new ItemStack(tradeItem), regalium, tradeItemCount, maxUses, xpValue);
+        }
+
+        public ItemsForRegaliumTrade(ItemStack tradeItem, int regalium, int tradeItemCount, int maxUses, int xpValue) {
+            this(tradeItem, regalium, tradeItemCount, maxUses, xpValue, 0.05F);
+        }
+
+        public ItemsForRegaliumTrade(ItemStack tradeItem, int regalium, int tradeItemCount, int maxUses, int xpValue, float p_i50532_6_) {
+            this.tradeItem = tradeItem;
+            this.regaliumCount = regalium;
+            this.tradeItemCount = tradeItemCount;
+            this.maxUses = maxUses;
+            this.xpValue = xpValue;
+            this.priceMultiplier = p_i50532_6_;
+        }
+
+        public MerchantOffer getOffer(Entity p_221182_1_, Random p_221182_2_) {
+            return new MerchantOffer(new ItemStack(UndergardenItems.regalium_nugget.get(), this.regaliumCount), new ItemStack(this.tradeItem.getItem(), this.tradeItemCount), this.maxUses, this.xpValue, this.priceMultiplier);
+        }
+    }
+
+    static class RegaliumForItemsTrade implements VillagerTrades.ITrade {
+        private final Item tradeItem;
+        private final int regaliumCount;
+        private final int count;
+        private final int maxUses;
+        private final int xpValue;
+        private final float priceMultiplier;
+
+        public RegaliumForItemsTrade(IItemProvider itemProvider, int regalium, int tradeItemCount, int maxUses, int xpValue) {
+            this.tradeItem = itemProvider.asItem();
+            this.regaliumCount = regalium;
+            this.count = tradeItemCount;
+            this.maxUses = maxUses;
+            this.xpValue = xpValue;
+            this.priceMultiplier = 0.05F;
+        }
+
+        public MerchantOffer getOffer(Entity p_221182_1_, Random p_221182_2_) {
+            return new MerchantOffer(new ItemStack(this.tradeItem, this.count), (new ItemStack(UndergardenItems.regalium_nugget.get(), this.regaliumCount)), this.maxUses, this.xpValue, this.priceMultiplier);
+        }
+    }
+
+    public static class TradeWithPlayerGoal extends Goal {
+        private final StonebornEntity stoneborn;
+
+        public TradeWithPlayerGoal(StonebornEntity stonebornEntity) {
+            this.stoneborn = stonebornEntity;
+            this.setMutexFlags(EnumSet.of(Flag.JUMP, Flag.MOVE));
+        }
+
+        public boolean shouldExecute() {
+            if (!this.stoneborn.isAlive()) {
+                return false;
+            } else if (this.stoneborn.isInWater()) {
+                return false;
+            } else if (!this.stoneborn.func_233570_aj_()) {
+                return false;
+            } else if (this.stoneborn.velocityChanged) {
+                return false;
+            } else {
+                PlayerEntity playerEntity = this.stoneborn.getCustomer();
+                if (playerEntity == null) {
+                    return false;
+                } else if (this.stoneborn.getDistanceSq(playerEntity) > 16.0D) {
+                    return false;
+                } else {
+                    return playerEntity.openContainer != null;
+                }
+            }
+        }
+
+        public void startExecuting() {
+            this.stoneborn.getNavigator().clearPath();
+        }
+
+        public void resetTask() {
+            this.stoneborn.setCustomer(null);
+        }
+    }
+
+    public static class LookAtCustomerGoal extends LookAtGoal {
+        private final StonebornEntity stoneborn;
+
+        public LookAtCustomerGoal(StonebornEntity stonebornEntity) {
+            super(stonebornEntity, PlayerEntity.class, 8.0F);
+            this.stoneborn = stonebornEntity;
+        }
+
+        public boolean shouldExecute() {
+            if (this.stoneborn.hasCustomer()) {
+                this.closestEntity = this.stoneborn.getCustomer();
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
