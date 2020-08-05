@@ -5,11 +5,14 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
+import quek.undergarden.registry.UndergardenTEs;
 
 import java.util.Random;
 
@@ -25,17 +28,14 @@ public class SmogVentBlock extends Block {
         );
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        double x = (double)pos.getX() + 0.5D;
-        double y = (double)pos.getY() + 1D;
-        double z = (double)pos.getZ() + 0.5D;
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        return true;
+    }
 
-        for(int i = 0; i < 6; i++) {
-            if(worldIn.isAirBlock(pos.up())) {
-                worldIn.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true, x, y, z, 0.0D, 0.05D, 0.0D);
-            }
-        }
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return UndergardenTEs.smog_vent_te.get().create();
     }
 
 }
