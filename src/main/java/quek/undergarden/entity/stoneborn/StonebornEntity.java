@@ -1,103 +1,66 @@
 package quek.undergarden.entity.stoneborn;
 
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Pose;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
-import net.minecraft.entity.ai.brain.Brain;
-import net.minecraft.entity.ai.brain.memory.MemoryModuleType;
-import net.minecraft.entity.ai.brain.sensor.Sensor;
-import net.minecraft.entity.ai.brain.sensor.SensorType;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.inventory.Inventory;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.pathfinding.GroundPathNavigator;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
+import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class StonebornEntity extends MonsterEntity {
+public class StonebornEntity extends MonsterEntity implements IAngerable {
 
     private static final DataParameter<Boolean> isChild = EntityDataManager.createKey(StonebornEntity.class, DataSerializers.BOOLEAN);
     private static final UUID BABY_SPEED_MODIFIER_IDENTIFIER = UUID.fromString("766bfa64-11f3-11ea-8d71-362b9e155667");
     private static final AttributeModifier BABY_SPEED_MODIFIER = new AttributeModifier(BABY_SPEED_MODIFIER_IDENTIFIER, "Baby speed boost", 0.2F, AttributeModifier.Operation.MULTIPLY_BASE);
 
-    protected static final ImmutableList<SensorType<? extends Sensor<? super StonebornEntity>>> sensorTypes = ImmutableList.of(
-            SensorType.NEAREST_LIVING_ENTITIES,
-            SensorType.NEAREST_PLAYERS,
-            SensorType.field_234129_b_, //nearest item
-            SensorType.HURT_BY,
-            SensorType.INTERACTABLE_DOORS
-    );
-    protected static final ImmutableList<MemoryModuleType<?>> memoryModuleTypes = ImmutableList.of(
-            MemoryModuleType.LOOK_TARGET,
-            MemoryModuleType.INTERACTABLE_DOORS,
-            MemoryModuleType.field_225462_q, //opened doors
-            MemoryModuleType.MOBS,
-            MemoryModuleType.VISIBLE_MOBS,
-            MemoryModuleType.NEAREST_VISIBLE_PLAYER,
-            MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER,
-            MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM,
-            MemoryModuleType.HURT_BY,
-            MemoryModuleType.HURT_BY_ENTITY,
-            MemoryModuleType.WALK_TARGET,
-            MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-            MemoryModuleType.INTERACTION_TARGET,
-            MemoryModuleType.PATH,
-            MemoryModuleType.AVOID_TARGET,
-            MemoryModuleType.ADMIRING_ITEM,
-            MemoryModuleType.ADMIRING_DISABLED,
-            MemoryModuleType.NEAREST_VISIBLE_NEMESIS,
-            MemoryModuleType.ATE_RECENTLY
-    );
-
     private int timeInOverworld = 0;
-    private final Inventory inventory = new Inventory(8);
+    private UUID uuid;
 
     public StonebornEntity(EntityType<? extends StonebornEntity> type, World worldIn) {
         super(type, worldIn);
-        ((GroundPathNavigator)this.getNavigator()).setBreakDoors(true);
-        this.setCanPickUpLoot(true);
         this.stepHeight = 1.0F;
     }
 
     @Override
-    protected Brain.BrainCodec<StonebornEntity> getBrainCodec() {
-        return Brain.func_233705_a_(memoryModuleTypes, sensorTypes);
-    }
-
-    @Override
-    protected Brain<?> createBrain(Dynamic<?> dynamic) {
-        return StonebornTasks.getStonebornTasks(this, getBrainCodec().func_233748_a_(dynamic));
-    }
-
-    @Override
-    public Brain<StonebornEntity> getBrain() {
-        return (Brain<StonebornEntity>)super.getBrain();
+    protected void registerGoals() {
+        if(this.getHealth() > 25.0D) {
+            this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractRotspawnEntity.class, true));
+        }
+        else if(this.getHealth() < 25.0D) {
+            this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 32.0F, 0.3D, 0.3D));
+        }
+        this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 0.3D));
+        this.goalSelector.addGoal(2, new LookAtGoal(this, LivingEntity.class, 32.0F));
+        this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0D, true));
+        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AgeableEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 30.0D)
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.5D)
-                .func_233815_a_(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
+                .func_233815_a_(Attributes.MAX_HEALTH, 50.0D)
+                .func_233815_a_(Attributes.ARMOR, 10.0D)
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.3D)
+                .func_233815_a_(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
+                .func_233815_a_(Attributes.ATTACK_DAMAGE, 10.0D)
+                ;
     }
 
     @Override
@@ -141,7 +104,6 @@ public class StonebornEntity extends MonsterEntity {
         }
 
         compound.putInt("TimeInOverworld", this.timeInOverworld);
-        compound.put("Inventory", this.inventory.write());
     }
 
     @Override
@@ -149,7 +111,6 @@ public class StonebornEntity extends MonsterEntity {
         super.readAdditional(compound);
         this.setChild(compound.getBoolean("IsBaby"));
         this.timeInOverworld = compound.getInt("TimeInOverworld");
-        this.inventory.read(compound.getList("Inventory", 10));
     }
 
     @Override
@@ -190,10 +151,6 @@ public class StonebornEntity extends MonsterEntity {
 
     @Override
     protected void updateAITasks() {
-        this.world.getProfiler().startSection("stonebornBrain");
-        this.getBrain().tick((ServerWorld)this.world, this);
-        this.world.getProfiler().endSection();
-        StonebornTasks.stuff(this);
         if (this.inOverworld()) {
             ++this.timeInOverworld;
             this.addPotionEffect(new EffectInstance(Effects.NAUSEA, 200, 0));
@@ -206,16 +163,42 @@ public class StonebornEntity extends MonsterEntity {
             this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3, Explosion.Mode.BREAK);
         }
 
-    }
+        if(!isAggressive()) {
+            if(world.getGameTime() % 40 == 0) {
+                this.heal(1);
+            }
+        }
 
-    @Override
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
-        this.inventory.func_233543_f_().forEach(this::entityDropItem);
     }
 
     @Override
     public float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
         return this.isChild() ? sizeIn.height * 0.90F : 2.3F;
+    }
+
+    @Override
+    public int func_230256_F__() {
+        return 0;
+    }
+
+    @Override
+    public void func_230260_a__(int i) {
+
+    }
+
+    @Nullable
+    @Override
+    public UUID func_230257_G__() {
+        return this.uuid;
+    }
+
+    @Override
+    public void func_230259_a_(@Nullable UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    @Override
+    public void func_230258_H__() {
+
     }
 }

@@ -53,7 +53,7 @@ public class UndergardenEntities {
     public static final EntityType<GloomperEntity> gloomper = EntityType.Builder.create(GloomperEntity::new, EntityClassification.CREATURE)
             .size(1F, 1F).build("gloomper");
     public static final EntityType<StonebornEntity> stoneborn = EntityType.Builder.create(StonebornEntity::new, EntityClassification.MONSTER)
-            .size(1F, 2.6F).build("stoneborn");
+            .size(0.9F, 2.6F).build("stoneborn");
 
     public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
             .size(2.5F, 4).build("masticator");

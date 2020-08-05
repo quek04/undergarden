@@ -12,6 +12,7 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import quek.undergarden.entity.DwellerEntity;
+import quek.undergarden.entity.stoneborn.StonebornEntity;
 import quek.undergarden.registry.UndergardenEntities;
 
 import java.util.Random;
@@ -30,6 +31,7 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, StonebornEntity.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, DwellerEntity.class, true));
     }
 

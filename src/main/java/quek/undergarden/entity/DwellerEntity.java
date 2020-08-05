@@ -15,6 +15,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.entity.rotspawn.RotbeastEntity;
 import quek.undergarden.entity.rotspawn.RotwalkerEntity;
 import quek.undergarden.registry.UndergardenBlocks;
@@ -35,8 +36,7 @@ public class DwellerEntity extends AnimalEntity {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(2, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotwalkerEntity.class, 12.0F, 2.0D, 2.5D));
-        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotbeastEntity.class, 24.0F, 2.0D, 2.5D));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0D, 2.5D));
         this.goalSelector.addGoal(1, new TemptGoal(this, 1.25D, Ingredient.fromItems(UndergardenBlocks.gloomgourd.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
