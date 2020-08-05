@@ -69,6 +69,7 @@ public class ClientStuff {
         render(UndergardenBlocks.shard_wall_torch, cutout);
         render(UndergardenBlocks.droopvine_top, cutout);
         render(UndergardenBlocks.droopvine, cutout);
+        render(UndergardenBlocks.virulent_mix, translucent);
     }
 
     public static void registerEntityRenderers() {
