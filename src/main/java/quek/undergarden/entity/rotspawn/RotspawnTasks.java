@@ -34,7 +34,7 @@ public class RotspawnTasks {
     }
 
     private static void idleTasks(Brain<AbstractRotspawnEntity> brain) {
-        brain.func_233698_a_(Activity.IDLE, 10, ImmutableList.<Task<? super AbstractRotspawnEntity>>of(new RandomlyStopAttackingTask(MemoryModuleType.NEAREST_REPELLENT, 200), RunAwayTask.func_233963_a_(MemoryModuleType.NEAREST_REPELLENT, 1.0F, 8, true), new ForgetAttackTargetTask<>(RotspawnTasks::attackTarget)));
+        brain.func_233698_a_(Activity.IDLE, 10, ImmutableList.<Task<? super AbstractRotspawnEntity>>of(new LookAtEntityTask(LivingEntity::attackable, 10.0F), new RandomlyStopAttackingTask(MemoryModuleType.NEAREST_REPELLENT, 200), RunAwayTask.func_233963_a_(MemoryModuleType.NEAREST_REPELLENT, 1.0F, 8, true), new ForgetAttackTargetTask<>(RotspawnTasks::attackTarget)));
     }
 
     private static void fightTasks(Brain<AbstractRotspawnEntity> brain) {
@@ -42,6 +42,6 @@ public class RotspawnTasks {
     }
 
     private static Optional<? extends LivingEntity> attackTarget(AbstractRotspawnEntity rotspawn) {
-        return !rotspawn.getBrain().hasMemory(MemoryModuleType.PACIFIED) ? rotspawn.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER) : Optional.empty();
+        return !rotspawn.getBrain().hasMemory(MemoryModuleType.PACIFIED) ? rotspawn.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_PLAYER) : Optional.empty();
     }
 }
