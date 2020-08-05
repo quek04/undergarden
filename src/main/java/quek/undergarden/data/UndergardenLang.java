@@ -259,7 +259,7 @@ public class UndergardenLang extends LanguageProvider {
         addAdvDesc("slay_rotling", "Slay the weakest of the Rotspawn, the Rotling.");
 
         addAdvTitle("shard_torch", "Warding Device");
-        addAdvDesc("shard_torch", "Craft a Shard Torch, a torch that can damage Rotspawn in it's vicinity.");
+        addAdvDesc("shard_torch", "Craft a Shard Torch, a torch that can damage Rotspawn in its vicinity.");
 
         addAdvTitle("rotbane", "Rotbane");
         addAdvDesc("rotbane", "Slay all kinds of Rotspawn.");
