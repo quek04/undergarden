@@ -27,9 +27,9 @@ public class RotlingModel<T extends Entity> extends SegmentedModel<T> {
 		rotling.setTextureOffset(0, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 6.0F, 4.0F, 0.0F, false);
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(0.0F, 9.0F, 0.0F);
+		head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		rotling.addChild(head);
-		head.setTextureOffset(0, 0).addBox(-4.0F, -17.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
+		head.setTextureOffset(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
 
 		leftarm = new ModelRenderer(this);
 		leftarm.setRotationPoint(4.0F, 1.0F, 0.0F);
