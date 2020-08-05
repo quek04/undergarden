@@ -289,6 +289,9 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         smeltingRecipe(UndergardenItems.cooked_gwibling.get(), UndergardenItems.raw_gwibling.get(), .35F).build(consumer, name("smelt_gwibling"));
         smokingRecipe(UndergardenItems.cooked_gwibling.get(), UndergardenItems.raw_gwibling.get(), .35F).build(consumer, name("smoke_gwibling"));
+
+        smeltingRecipe(Items.DRIED_KELP, UndergardenItems.glowing_kelp.get(), 0.1F).build(consumer, name("smelt_glowing_kelp"));
+        smokingRecipe(Items.DRIED_KELP, UndergardenItems.glowing_kelp.get(), 0.1F).build(consumer, name("smoke_glowing_kelp"));
     }
 
     private ResourceLocation name(String name) {
