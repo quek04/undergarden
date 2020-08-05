@@ -3,6 +3,7 @@ package quek.undergarden.block;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -14,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenParticles;
+import quek.undergarden.registry.UndergardenTEs;
 
 import java.util.Random;
 
@@ -53,5 +55,15 @@ public class ShardTorchBlock extends Block {
         double lvt_9_1_ = (double)p_180655_3_.getZ() + 0.5D;
         p_180655_2_.addParticle(ParticleTypes.SMOKE, lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
         p_180655_2_.addParticle(UndergardenParticles.shard.get(), lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
+    }
+
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return UndergardenTEs.shard_torch_te.get().create();
     }
 }

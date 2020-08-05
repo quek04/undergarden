@@ -18,7 +18,6 @@ import java.util.Random;
 
 public abstract class AbstractRotspawnEntity extends MonsterEntity {
 
-
     protected AbstractRotspawnEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
     }

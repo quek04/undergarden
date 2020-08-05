@@ -47,6 +47,7 @@ public class UndergardenMod {
 		UndergardenEffects.EFFECTS.register(bus);
 		UndergardenFluids.FLUIDS.register(bus);
 		UndergardenParticles.PARTICLES.register(bus);
+		UndergardenTEs.TEs.register(bus);
 
 		final Pair<UndergardenConfig.CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(UndergardenConfig.CommonConfig::new);
 		final Pair<UndergardenConfig.ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(UndergardenConfig.ClientConfig::new);
