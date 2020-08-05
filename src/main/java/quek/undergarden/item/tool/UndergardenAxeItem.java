@@ -19,6 +19,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.registry.UndergardenItemGroups;
+import quek.undergarden.registry.UndergardenItemTiers;
 import quek.undergarden.registry.UndergardenItems;
 
 import javax.annotation.Nullable;
@@ -26,8 +27,8 @@ import java.util.List;
 
 @Mod.EventBusSubscriber
 public class UndergardenAxeItem extends AxeItem {
-    public UndergardenAxeItem(IItemTier tier) {
-        super(tier, 6, -3.2f, new Properties()
+    public UndergardenAxeItem(IItemTier tier, float attack) {
+        super(tier, attack, -3.2f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
                 .group(UndergardenItemGroups.GROUP)
