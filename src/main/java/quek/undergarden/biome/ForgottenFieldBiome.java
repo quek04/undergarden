@@ -1,6 +1,8 @@
 package quek.undergarden.biome;
 
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.world.biome.ParticleEffectAmbience;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.placement.FrequencyConfig;
@@ -20,8 +22,11 @@ public class ForgottenFieldBiome extends UndergardenBiome {
                 new SurfaceBuilderConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.deepsoil.get().getDefaultState(), UndergardenBlocks.depthrock.get().getDefaultState()),
                 Category.PLAINS,
                 0.125F,
-                 0.05F,
-                0.8F
+                0.05F,
+                0.8F,
+                new Color(18, 25, 9).getRGB(),
+                UndergardenSoundEvents.UNDERGARDEN_AMBIANCE,
+                new ParticleEffectAmbience(ParticleTypes.WHITE_ASH, 0.025F)
         );
     }
 

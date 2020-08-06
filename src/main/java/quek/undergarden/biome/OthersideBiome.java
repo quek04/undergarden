@@ -1,6 +1,8 @@
 package quek.undergarden.biome;
 
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.world.biome.ParticleEffectAmbience;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.*;
@@ -10,6 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UndergardenSoundEvents;
 
 import java.awt.*;
 
@@ -21,7 +24,10 @@ public class OthersideBiome extends UndergardenBiome {
                 Category.NONE,
                 0.3625F,
                 1.225F,
-                2F
+                2F,
+                new Color(123, 71, 70).getRGB(),
+                UndergardenSoundEvents.OTHERSIDE_AMBIANCE,
+                new ParticleEffectAmbience(ParticleTypes.ASH, 0.118093334F)
         );
 
     }

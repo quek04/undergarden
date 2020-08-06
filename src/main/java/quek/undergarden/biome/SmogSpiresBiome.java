@@ -1,12 +1,15 @@
 package quek.undergarden.biome;
 
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.world.biome.ParticleEffectAmbience;
 import net.minecraft.world.gen.surfacebuilders.DefaultSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UndergardenSoundEvents;
 
 import java.awt.*;
 
@@ -18,7 +21,10 @@ public class SmogSpiresBiome extends UndergardenBiome {
                 Category.NONE,
                 0.125F,
                 0.05F,
-                2F
+                2F,
+                new Color(39, 39, 39).getRGB(),
+                UndergardenSoundEvents.UNDERGARDEN_AMBIANCE,
+                new ParticleEffectAmbience(ParticleTypes.WHITE_ASH, 0.118093334F)
         );
     }
 

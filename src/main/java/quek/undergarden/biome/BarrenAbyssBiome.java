@@ -2,6 +2,8 @@ package quek.undergarden.biome;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.world.biome.ParticleEffectAmbience;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.ProbabilityConfig;
@@ -15,6 +17,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.registry.UndergardenWorldCarvers;
 
 import java.awt.*;
@@ -28,7 +31,10 @@ public class BarrenAbyssBiome extends UndergardenBiome {
                 Category.PLAINS,
                 0.3625F,
                 1.225F,
-                0.8F
+                0.8F,
+                new Color(0, 0, 0).getRGB(),
+                UndergardenSoundEvents.UNDERGARDEN_AMBIANCE,
+                new ParticleEffectAmbience(ParticleTypes.WHITE_ASH, 0.118093334F)
         );
     }
 

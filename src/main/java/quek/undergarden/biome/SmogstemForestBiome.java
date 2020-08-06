@@ -1,12 +1,15 @@
 package quek.undergarden.biome;
 
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.world.biome.ParticleEffectAmbience;
 import net.minecraft.world.gen.surfacebuilders.DefaultSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UndergardenSoundEvents;
 
 import java.awt.*;
 
@@ -18,7 +21,10 @@ public class SmogstemForestBiome extends UndergardenBiome {
                 Category.FOREST,
                 0.1F,
                 0.2F,
-                0.8F
+                0.8F,
+                new Color(9, 21, 25).getRGB(),
+                UndergardenSoundEvents.UNDERGARDEN_AMBIANCE,
+                new ParticleEffectAmbience(ParticleTypes.WARPED_SPORE, 0.025F)
         );
     }
 
