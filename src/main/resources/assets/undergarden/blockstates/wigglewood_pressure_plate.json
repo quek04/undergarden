@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "undergarden:block/wigglewood_pressure_plate"
+    },
+    "powered=true": {
+      "model": "undergarden:block/wigglewood_pressure_plate_down"
+    }
+  }
+}

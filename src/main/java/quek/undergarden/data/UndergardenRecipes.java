@@ -175,7 +175,6 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeIngotToBlock(UndergardenBlocks.froststeel_block, UndergardenItems.froststeel_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.utherium_block, UndergardenItems.utherium_ingot).build(consumer);
         makeIngotToBlock(UndergardenBlocks.regalium_block, UndergardenItems.regalium_ingot).build(consumer);
-        makeIngotToBlock(UndergardenBlocks.depthrock, UndergardenItems.depthrock_pebble).build(consumer);
 
         makeBlockToIngot(UndergardenItems.cloggrum_ingot, UndergardenBlocks.cloggrum_block).build(consumer, name("cloggrum_block_to_ingot"));
         makeBlockToIngot(UndergardenItems.froststeel_ingot, UndergardenBlocks.froststeel_block).build(consumer, name("froststeel_block_to_ingot"));
@@ -263,6 +262,16 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         makeTrapdoor(UndergardenBlocks.smogstem_trapdoor, UndergardenBlocks.smogstem_planks).build(consumer);
         makeTrapdoor(UndergardenBlocks.wigglewood_trapdoor, UndergardenBlocks.wigglewood_planks).build(consumer);
+
+        makeButton(UndergardenBlocks.smogstem_button, UndergardenBlocks.smogstem_planks).build(consumer);
+        makeButton(UndergardenBlocks.wigglewood_button, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makeButton(UndergardenBlocks.depthrock_button, UndergardenBlocks.depthrock).build(consumer);
+        makeButton(UndergardenBlocks.shiverstone_button, UndergardenBlocks.shiverstone).build(consumer);
+
+        makePressurePlate(UndergardenBlocks.smogstem_pressure_plate, UndergardenBlocks.smogstem_planks).build(consumer);
+        makePressurePlate(UndergardenBlocks.wigglewood_pressure_plate, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makePressurePlate(UndergardenBlocks.depthrock_pressure_plate, UndergardenBlocks.depthrock).build(consumer);
+        makePressurePlate(UndergardenBlocks.shiverstone_pressure_plate, UndergardenBlocks.shiverstone).build(consumer);
 
         smeltingRecipe(Items.IRON_INGOT, UndergardenItems.catalyst_item.get(), 1F).build(consumer, "smelt_catalyst");
 

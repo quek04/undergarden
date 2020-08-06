@@ -169,6 +169,14 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.smogstem_fence_gate);
             dropSelf(UndergardenBlocks.wigglewood_fence_gate);
             dropSelf(UndergardenBlocks.coarse_deepsoil);
+            dropSelf(UndergardenBlocks.smogstem_button);
+            dropSelf(UndergardenBlocks.wigglewood_button);
+            dropSelf(UndergardenBlocks.depthrock_button);
+            dropSelf(UndergardenBlocks.shiverstone_button);
+            dropSelf(UndergardenBlocks.smogstem_pressure_plate);
+            dropSelf(UndergardenBlocks.wigglewood_pressure_plate);
+            dropSelf(UndergardenBlocks.depthrock_pressure_plate);
+            dropSelf(UndergardenBlocks.shiverstone_pressure_plate);
         }
 
         @Override

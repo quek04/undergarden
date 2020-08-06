@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB"
+  ],
+  "key": {
+    "B": {
+      "item": "undergarden:depthrock"
+    }
+  },
+  "result": {
+    "item": "undergarden:depthrock_pressure_plate"
+  }
+}

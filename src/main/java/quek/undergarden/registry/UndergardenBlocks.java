@@ -146,6 +146,16 @@ public class UndergardenBlocks {
     public static final RegistryObject<TrapDoorBlock> smogstem_trapdoor = registerBlock("smogstem_trapdoor", () -> new TrapDoorBlock(Block.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid()));
     public static final RegistryObject<TrapDoorBlock> wigglewood_trapdoor = registerBlock("wigglewood_trapdoor", () -> new TrapDoorBlock(Block.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid()));
 
+    public static final RegistryObject<WoodButtonBlock> smogstem_button = registerBlock("smogstem_button", () -> new WoodButtonBlock(Block.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<WoodButtonBlock> wigglewood_button = registerBlock("wigglewood_button", () -> new WoodButtonBlock(Block.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<StoneButtonBlock> depthrock_button = registerBlock("depthrock_button", () -> new StoneButtonBlock(Block.Properties.from(UndergardenBlocks.depthrock.get()).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<StoneButtonBlock> shiverstone_button = registerBlock("shiverstone_button", () -> new StoneButtonBlock(Block.Properties.from(UndergardenBlocks.shiverstone.get()).notSolid().doesNotBlockMovement()));
+
+    public static final RegistryObject<PressurePlateBlock> smogstem_pressure_plate = registerBlock("smogstem_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<PressurePlateBlock> wigglewood_pressure_plate = registerBlock("wigglewood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<PressurePlateBlock> depthrock_pressure_plate = registerBlock("depthrock_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.from(UndergardenBlocks.depthrock.get()).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<PressurePlateBlock> shiverstone_pressure_plate = registerBlock("shiverstone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.from(UndergardenBlocks.shiverstone.get()).notSolid().doesNotBlockMovement()));
+
     //fluids
     public static final RegistryObject<FlowingFluidBlock> virulent_mix = BLOCKS.register("virulent_mix", () -> new UndergardenFluidBlock(
             UndergardenFluids.virulent_mix_source, Block.Properties.create(Material.WATER)));

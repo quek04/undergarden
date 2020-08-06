@@ -46,6 +46,19 @@ public class UndergardenRecipeProvider extends ForgeRecipeProvider implements IC
                 .addCriterion("has_" + plankIn.get().getRegistryName().getPath(), hasItem(plankIn.get()));
     }
 
+    public ShapelessRecipeBuilder makeButton(Supplier<? extends Block> buttonOut, Supplier<? extends Block> blockIn) {
+        return ShapelessRecipeBuilder.shapelessRecipe(buttonOut.get())
+                .addIngredient(blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
+    }
+
+    public ShapedRecipeBuilder makePressurePlate(Supplier<? extends Block> pressurePlateOut, Supplier<? extends Block> blockIn) {
+        return ShapedRecipeBuilder.shapedRecipe(pressurePlateOut.get())
+                .patternLine("BB")
+                .key('B', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
+    }
+
     public ShapedRecipeBuilder makeStairs(Supplier<? extends Block> stairsOut, Supplier<? extends Block> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(stairsOut.get(), 4)
                 .patternLine("M  ")

@@ -126,6 +126,16 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.smogstem_trapdoor, "Smogstem Trapdoor");
         addBlock(UndergardenBlocks.wigglewood_trapdoor, "Wigglewood Trapdoor");
 
+        addBlock(UndergardenBlocks.smogstem_button, "Smogstem Button");
+        addBlock(UndergardenBlocks.wigglewood_button, "Wigglewood Button");
+        addBlock(UndergardenBlocks.depthrock_button, "Depthrock Button");
+        addBlock(UndergardenBlocks.shiverstone_button, "Shiverstone Button");
+
+        addBlock(UndergardenBlocks.smogstem_pressure_plate, "Smogstem Pressure Plate");
+        addBlock(UndergardenBlocks.wigglewood_pressure_plate, "Wigglewood Pressure Plate");
+        addBlock(UndergardenBlocks.depthrock_pressure_plate, "Depthrock Pressure Plate");
+        addBlock(UndergardenBlocks.shiverstone_pressure_plate, "Shiverstone Pressure Plate");
+
         addItem(UndergardenItems.catalyst_item, "Catalyst");
         addItem(UndergardenItems.depthrock_pebble, "Depthrock Pebble");
         addItem(UndergardenItems.smogstem_stick, "Smogstem Stick");
