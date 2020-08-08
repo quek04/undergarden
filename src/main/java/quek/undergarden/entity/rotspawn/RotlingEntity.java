@@ -5,9 +5,12 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import quek.undergarden.registry.UndergardenSoundEvents;
 
 public class RotlingEntity extends AbstractRotspawnEntity {
 
@@ -20,6 +23,21 @@ public class RotlingEntity extends AbstractRotspawnEntity {
                 .func_233815_a_(Attributes.MAX_HEALTH, 10.0D)
                 .func_233815_a_(Attributes.ATTACK_DAMAGE, 3.0D)
                 .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.35D);
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return UndergardenSoundEvents.ROTLING_LIVING;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return UndergardenSoundEvents.ROTLING_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return UndergardenSoundEvents.ROTLING_DEATH;
     }
 
     @Override

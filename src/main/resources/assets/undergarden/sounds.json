@@ -283,5 +283,29 @@
     "sounds": [
       "undergarden:entity/stoneborn_death"
     ]
+  },
+  "entity.rotling_living": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotling_living",
+    "sounds": [
+      "undergarden:entity/rotling_living_1",
+      "undergarden:entity/rotling_living_2",
+      "undergarden:entity/rotling_living_3"
+    ]
+  },
+  "entity.rotling_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotling_hurt",
+    "sounds": [
+      "undergarden:entity/rotling_hurt_1",
+      "undergarden:entity/rotling_hurt_2"
+    ]
+  },
+  "entity.rotling_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rotling_death",
+    "sounds": [
+      "undergarden:entity/rotling_death"
+    ]
   }
 }

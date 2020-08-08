@@ -54,6 +54,10 @@ public class UndergardenSoundEvents {
     public static final SoundEvent STONEBORN_CHANT = register("entity.stoneborn_chant");
     public static final SoundEvent STONEBORN_DEATH = register("entity.stoneborn_death");
 
+    public static final SoundEvent ROTLING_LIVING = register("entity.rotling_living");
+    public static final SoundEvent ROTLING_HURT = register("entity.rotling_hurt");
+    public static final SoundEvent ROTLING_DEATH = register("entity.rotling_death");
+
     private static SoundEvent register(String name) {
         SoundEvent sound = new SoundEvent(new ResourceLocation(UndergardenMod.MODID, name));
         sound.setRegistryName(new ResourceLocation(UndergardenMod.MODID, name));
@@ -94,7 +98,10 @@ public class UndergardenSoundEvents {
                 STONEBORN_GROWL,
                 STONEBORN_CONFUSED,
                 STONEBORN_CHANT,
-                STONEBORN_DEATH
+                STONEBORN_DEATH,
+                ROTLING_LIVING,
+                ROTLING_HURT,
+                ROTLING_DEATH
         );
     }
 
