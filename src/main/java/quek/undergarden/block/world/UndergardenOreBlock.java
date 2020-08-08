@@ -1,11 +1,9 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -18,10 +16,11 @@ import java.util.Random;
 public class UndergardenOreBlock extends OreBlock {
     public UndergardenOreBlock(int harvestlvl) {
         super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(3F,3F)
-                .sound(SoundType.STONE)
+                .hardnessAndResistance(3F,6F)
+                .sound(SoundType.field_235587_I_)
                 .harvestLevel(harvestlvl)
                 .harvestTool(ToolType.PICKAXE)
+                .setRequiresTool()
         );
     }
 
