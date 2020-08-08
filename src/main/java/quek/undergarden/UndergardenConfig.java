@@ -22,10 +22,15 @@ public class UndergardenConfig {
         }
     }
 
+    public static ForgeConfigSpec.BooleanValue enableMemeCode;
+
     public static class ClientConfig {
         public ClientConfig(ForgeConfigSpec.Builder builder) {
             builder.push("client");
-
+            enableMemeCode = builder
+                    .translation(config + "enable_meme_code")
+                    .comment("Set to true to enable silly rendering code related to certain individuals")
+                    .define("enableMemeCode", false);
             builder.pop();
         }
     }
