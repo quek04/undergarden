@@ -32,11 +32,11 @@ public class WigglewoodForestBiome extends UndergardenBiome {
     public void addFeatures() {
         UndergardenBiomeFeatures.addNormalStuff(this);
         UndergardenBiomeFeatures.addForestWigglewoodTrees(this);
+        this.addSpawn(EntityClassification.WATER_AMBIENT, new SpawnListEntry(UndergardenEntities.GWIBLING.get(), 10, 3, 6));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.DWELLER.get(), 200, 5, 10));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.GLOOMPER.get(), 200, 5, 10));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(UndergardenEntities.BRUTE.get(), 50, 20, 30));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(UndergardenEntities.SCINTLING.get(), 100, 1, 10));
-        this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(UndergardenEntities.GWIBLING.get(), 20, 5, 10));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTLING.get(), 20, 4, 8));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTWALKER.get(), 10, 2, 4));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(UndergardenEntities.ROTBEAST.get(), 9, 1, 2));

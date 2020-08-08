@@ -42,7 +42,7 @@ public class UndergardenEntities {
             .size(1,1.8F).build("dweller");
     public static final EntityType<RotDwellerEntity> rotdweller = EntityType.Builder.create(RotDwellerEntity::new, EntityClassification.MONSTER)
             .size(1, 1.8F).build("rotdweller");
-    public static final EntityType<GwiblingEntity> gwibling = EntityType.Builder.create(GwiblingEntity::new, EntityClassification.WATER_CREATURE)
+    public static final EntityType<GwiblingEntity> gwibling = EntityType.Builder.create(GwiblingEntity::new, EntityClassification.WATER_AMBIENT)
             .size(.5F, .5F).build("gwibling");
     public static final EntityType<BruteEntity> brute = EntityType.Builder.create(BruteEntity::new, EntityClassification.MONSTER)
             .size(1, 2).build("brute");
