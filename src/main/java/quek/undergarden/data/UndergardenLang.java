@@ -321,6 +321,20 @@ public class UndergardenLang extends LanguageProvider {
         addSubtitle("entity", "gloomper_death", "Gloomper dies");
 
         addSubtitle("entity", "stoneborn_step", "Stoneborn steps");
+        addSubtitle("entity", "stoneborn_speaking", "Stoneborn speaks");
+        addSubtitle("entity", "stoneborn_pleased", "Stoneborn pleased");
+        addSubtitle("entity", "stoneborn_awe", "Stoneborn awed");
+        addSubtitle("entity", "stoneborn_chuckle", "Stoneborn chuckles");
+        addSubtitle("entity", "stoneborn_hurt", "Stoneborn hurts");
+        addSubtitle("entity", "stoneborn_angry", "Stoneborn angered");
+        addSubtitle("entity", "stoneborn_growl", "Stoneborn growls");
+        addSubtitle("entity", "stoneborn_confused", "Stoneborn confused");
+        addSubtitle("entity", "stoneborn_chant", "Stoneborn chanting");
+        addSubtitle("entity", "stoneborn_death", "Stoneborn dies");
+
+        addSubtitle("entity", "rotling_living", "Rotling groans");
+        addSubtitle("entity", "rotling_hurt", "Rotling hurts");
+        addSubtitle("entity", "rotling_death", "Rotling dies");
 
         addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
     }
