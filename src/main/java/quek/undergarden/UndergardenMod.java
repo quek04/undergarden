@@ -96,6 +96,7 @@ public class UndergardenMod {
 		@OnlyIn(Dist.CLIENT)
 		public static void memeEvent(RenderPlayerEvent event) {
 			if(UndergardenConfig.enableMemeCode.get() == true) {
+				if(event.getEntity().world.func_234922_V_() == UndergardenDimensions.undergarden || event.getEntity().world.func_234922_V_() == UndergardenDimensions.otherside)
 				if(event.getEntity() instanceof PlayerEntity && UUID.fromString("353a859b-ba16-4e6a-8f63-9a8c79ab0071").equals(event.getEntity().getUniqueID())) {
 					event.getMatrixStack().scale(.5F, .5F, .5F);
 				}
