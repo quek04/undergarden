@@ -34,7 +34,7 @@ public class BarrenAbyssBiome extends UndergardenBiome {
                 0.8F,
                 new Color(0, 0, 0).getRGB(),
                 UndergardenSoundEvents.UNDERGARDEN_AMBIANCE,
-                new ParticleEffectAmbience(ParticleTypes.WHITE_ASH, 0.118093334F)
+                new ParticleEffectAmbience(ParticleTypes.ASH, 0.118093334F)
         );
     }
 
