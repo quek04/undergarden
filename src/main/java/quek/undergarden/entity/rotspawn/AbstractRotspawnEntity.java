@@ -45,11 +45,6 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
     }
 
     @Override
-    public int getMaxSpawnedInChunk() {
-        return 1;
-    }
-
-    @Override
     public void onKillEntity(LivingEntity entityLivingIn) {
         super.onKillEntity(entityLivingIn);
         if ((this.world.getDifficulty() == Difficulty.NORMAL || this.world.getDifficulty() == Difficulty.HARD) && entityLivingIn instanceof DwellerEntity) {
