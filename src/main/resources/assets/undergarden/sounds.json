@@ -194,5 +194,94 @@
       "undergarden:entity/stoneborn_step_1",
       "undergarden:entity/stoneborn_step_2"
     ]
+  },
+  "entity.stoneborn_speaking": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_speaking",
+    "sounds": [
+      "undergarden:entity/stoneborn_speaking_1",
+      "undergarden:entity/stoneborn_speaking_2",
+      "undergarden:entity/stoneborn_speaking_3",
+      "undergarden:entity/stoneborn_speaking_4"
+    ]
+  },
+  "entity.stoneborn_pleased": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_pleased",
+    "sounds": [
+      "undergarden:entity/stoneborn_pleased_1",
+      "undergarden:entity/stoneborn_pleased_2",
+      "undergarden:entity/stoneborn_pleased_3",
+      "undergarden:entity/stoneborn_chuckle_1",
+      "undergarden:entity/stoneborn_chuckle_2"
+    ]
+  },
+  "entity.stoneborn_awe": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_awe",
+    "sounds": [
+      "undergarden:entity/stoneborn_awe_1",
+      "undergarden:entity/stoneborn_awe_2",
+      "undergarden:entity/stoneborn_awe_3"
+    ]
+  },
+  "entity.stoneborn_chuckle": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_chuckle",
+    "sounds": [
+      "undergarden:entity/stoneborn_chuckle_1",
+      "undergarden:entity/stoneborn_chuckle_2"
+    ]
+  },
+  "entity.stoneborn_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_hurt",
+    "sounds": [
+      "undergarden:entity/stoneborn_hurt_1",
+      "undergarden:entity/stoneborn_hurt_2"
+    ]
+  },
+  "entity.stoneborn_angry": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_angry",
+    "sounds": [
+      "undergarden:entity/stoneborn_angry_1",
+      "undergarden:entity/stoneborn_angry_2",
+      "undergarden:entity/stoneborn_growl_1",
+      "undergarden:entity/stoneborn_growl_2"
+    ]
+  },
+  "entity.stoneborn_growl": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_growl",
+    "sounds": [
+      "undergarden:entity/stoneborn_growl_1",
+      "undergarden:entity/stoneborn_growl_2"
+    ]
+  },
+  "entity.stoneborn_confused": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_confused",
+    "sounds": [
+      "undergarden:entity/stoneborn_confused_1",
+      "undergarden:entity/stoneborn_confused_2",
+      "undergarden:entity/stoneborn_confused_3",
+      "undergarden:entity/stoneborn_growl_1",
+      "undergarden:entity/stoneborn_growl_2"
+    ]
+  },
+  "entity.stoneborn_chant": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_chant",
+    "sounds": [
+      "undergarden:entity/stoneborn_chant"
+    ]
+  },
+  "entity.stoneborn_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stoneborn_death",
+    "sounds": [
+      "undergarden:entity/stoneborn_death"
+    ]
   }
 }

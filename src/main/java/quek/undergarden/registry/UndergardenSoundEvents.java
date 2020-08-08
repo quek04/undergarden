@@ -43,6 +43,16 @@ public class UndergardenSoundEvents {
     public static final SoundEvent GLOOMPER_DEATH = register("entity.gloomper_death");
 
     public static final SoundEvent STONEBORN_STEP = register("entity.stoneborn_step");
+    public static final SoundEvent STONEBORN_SPEAKING = register("entity.stoneborn_speaking");
+    public static final SoundEvent STONEBORN_PLEASED = register("entity.stoneborn_pleased");
+    public static final SoundEvent STONEBORN_AWE = register("entity.stoneborn_awe");
+    public static final SoundEvent STONEBORN_CHUCKLE = register("entity.stoneborn_chuckle");
+    public static final SoundEvent STONEBORN_HURT = register("entity.stoneborn_hurt");
+    public static final SoundEvent STONEBORN_ANGRY = register("entity.stoneborn_angry");
+    public static final SoundEvent STONEBORN_GROWL = register("entity.stoneborn_growl");
+    public static final SoundEvent STONEBORN_CONFUSED = register("entity.stoneborn_confused");
+    public static final SoundEvent STONEBORN_CHANT = register("entity.stoneborn_chant");
+    public static final SoundEvent STONEBORN_DEATH = register("entity.stoneborn_death");
 
     private static SoundEvent register(String name) {
         SoundEvent sound = new SoundEvent(new ResourceLocation(UndergardenMod.MODID, name));
@@ -74,7 +84,17 @@ public class UndergardenSoundEvents {
                 GLOOMPER_LIVING,
                 GLOOMPER_HURT,
                 GLOOMPER_DEATH,
-                STONEBORN_STEP
+                STONEBORN_STEP,
+                STONEBORN_SPEAKING,
+                STONEBORN_PLEASED,
+                STONEBORN_AWE,
+                STONEBORN_CHUCKLE,
+                STONEBORN_HURT,
+                STONEBORN_ANGRY,
+                STONEBORN_GROWL,
+                STONEBORN_CONFUSED,
+                STONEBORN_CHANT,
+                STONEBORN_DEATH
         );
     }
 

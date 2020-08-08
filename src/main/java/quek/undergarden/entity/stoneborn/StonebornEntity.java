@@ -27,10 +27,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.Explosion;
@@ -40,6 +37,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenItems;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
@@ -95,26 +93,59 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
+    public void onKillEntity(LivingEntity entityLivingIn) {
+        super.onKillEntity(entityLivingIn);
+        if(entityLivingIn.getCreatureAttribute() == UndergardenEntities.ROTSPAWN || entityLivingIn instanceof PlayerEntity) {
+            this.playSound(UndergardenSoundEvents.STONEBORN_CHUCKLE, 1.0F, 1.0F);
+        }
+    }
+
+    @Override
     public boolean canBreatheUnderwater() {
         return true;
     }
 
-    /* TODO: wait for screem to make the stoneborn sounds
+    @Override
+    protected SoundEvent getAmbientSound() {
+        if(isAggressive()) {
+            return UndergardenSoundEvents.STONEBORN_ANGRY;
+        }
+        if(hasCustomer()) {
+            return UndergardenSoundEvents.STONEBORN_SPEAKING;
+        }
+        if(customer != null) {
+            if(customer.getHeldItemMainhand().getItem() == UndergardenItems.regalium_ingot.get() || customer.getHeldItemMainhand().getItem() == UndergardenItems.regalium_nugget.get() || customer.getHeldItemMainhand().getItem() == UndergardenBlocks.regalium_block.get().asItem() || customer.getHeldItemOffhand().getItem() == UndergardenItems.regalium_ingot.get() || customer.getHeldItemOffhand().getItem() == UndergardenItems.regalium_nugget.get() || customer.getHeldItemOffhand().getItem() == UndergardenBlocks.regalium_block.get().asItem()) {
+                return UndergardenSoundEvents.STONEBORN_AWE;
+            }
+        }
+        if(inOverworld()) {
+            return UndergardenSoundEvents.STONEBORN_CONFUSED;
+        }
+        return null;
+    }
+
+    @Override
+    public SoundEvent getYesSound() {
+        return UndergardenSoundEvents.STONEBORN_PLEASED;
+    }
+
+    protected SoundEvent getVillagerYesNoSound(boolean getYesSound) {
+        return getYesSound ? UndergardenSoundEvents.STONEBORN_PLEASED : UndergardenSoundEvents.STONEBORN_CONFUSED;
+    }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UndergardenSoundEvents.;
+        return UndergardenSoundEvents.STONEBORN_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.;
+        return UndergardenSoundEvents.STONEBORN_DEATH;
     }
-    */
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(UndergardenSoundEvents.STONEBORN_STEP, 0.5F, 1.0F);
+        this.playSound(UndergardenSoundEvents.STONEBORN_STEP, 1.0F, 1.0F);
     }
 
     @Override
@@ -191,7 +222,8 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
 
         if (this.timeInOverworld > 300) {
             this.remove(false);
-            this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3, Explosion.Mode.BREAK);
+            Explosion.Mode explosion$mode = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this) ? Explosion.Mode.DESTROY : Explosion.Mode.NONE;
+            this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3, explosion$mode);
         }
 
         if (!isAggressive()) {
@@ -236,7 +268,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     @Override
     public ActionResultType func_230254_b_(PlayerEntity p_230254_1_, Hand p_230254_2_) {
         ItemStack itemstack = p_230254_1_.getHeldItem(p_230254_2_);
-        if (!this.isAggressive() && itemstack.getItem() != Items.VILLAGER_SPAWN_EGG && this.isAlive() && !this.hasCustomer() && !this.isChild()) {
+        if (!this.isAggressive() && itemstack.getItem() != UndergardenItems.stoneborn_spawn_egg.get() && this.isAlive() && !this.hasCustomer() && !this.isChild()) {
             if (p_230254_2_ == Hand.MAIN_HAND) {
                 p_230254_1_.addStat(Stats.TALKED_TO_VILLAGER);
             }
@@ -368,7 +400,11 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public void verifySellingItem(ItemStack itemStack) {
+    public void verifySellingItem(ItemStack stack) {
+        if (!this.world.isRemote && this.livingSoundTime > -this.getTalkInterval() + 20) {
+            this.livingSoundTime = -this.getTalkInterval();
+            this.playSound(this.getVillagerYesNoSound(!stack.isEmpty()), this.getSoundVolume(), this.getSoundPitch());
+        }
 
     }
 
@@ -390,11 +426,6 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     @Override
     public boolean func_213705_dZ() {
         return false;
-    }
-
-    @Override
-    public SoundEvent getYesSound() {
-        return null;
     }
 
     static class ItemsForRegaliumTrade implements VillagerTrades.ITrade {
@@ -470,7 +501,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
                 return false;
             } else if (this.stoneborn.isInWater()) {
                 return false;
-            } else if (!this.stoneborn.func_233570_aj_()) {
+            } else if (!this.stoneborn.func_233570_aj_()) { //not on ground
                 return false;
             } else if (this.stoneborn.velocityChanged) {
                 return false;
