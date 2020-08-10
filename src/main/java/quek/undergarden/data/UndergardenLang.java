@@ -186,6 +186,7 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.utheric_pickaxe, "Utherium Pickaxe");
         addItem(UndergardenItems.utheric_axe, "Utherium Axe");
         addItem(UndergardenItems.utheric_shovel, "Utherium Shovel");
+        addItem(UndergardenItems.utheric_hoe, "Utheric Hoe");
 
         addItem(UndergardenItems.slingshot, "Slingshot");
 
