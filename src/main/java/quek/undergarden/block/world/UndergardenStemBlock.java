@@ -54,7 +54,7 @@ public class UndergardenStemBlock extends StemBlock implements IGrowable {
 
     @Override
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() == Blocks.FARMLAND || state.getBlock() == UndergardenBlocks.deepsoil_farmland.get();
+        return state.getBlock() == UndergardenBlocks.deepsoil_farmland.get();
     }
 
     @Override
@@ -65,7 +65,7 @@ public class UndergardenStemBlock extends StemBlock implements IGrowable {
 
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-        //tick(state, worldIn, pos, rand);
+        tick(state, worldIn, pos, rand);
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
         if (worldIn.getLightSubtracted(pos, 0) >= 0) {
             float f = UndergardenCropsBlock.getGrowthChance(this, worldIn, pos);
