@@ -59,6 +59,13 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         normalBlock(UndergardenBlocks.diamond_ore);
         crossBlock(UndergardenBlocks.droopvine_top);
         normalBlock(UndergardenBlocks.coarse_deepsoil);
+        crossBlock(UndergardenBlocks.gronglet);
+        normalBlock(UndergardenBlocks.grongle_cap);
+        woodBlock(UndergardenBlocks.grongle_stem, "grongle_stem");
+        normalBlock(UndergardenBlocks.grongle_planks);
+        woodBlock(UndergardenBlocks.stripped_smogstem_log, "stripped_smogstem_log");
+        woodBlock(UndergardenBlocks.stripped_wigglewood_log, "stripped_wigglewood_log");
+        woodBlock(UndergardenBlocks.stripped_grongle_stem, "stripped_grongle_stem");
 
         normalBlock(UndergardenBlocks.cloggrum_block);
         normalBlock(UndergardenBlocks.froststeel_block);
@@ -70,6 +77,7 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         stairs(UndergardenBlocks.wigglewood_stairs, "wigglewood_planks");
         stairs(UndergardenBlocks.shiverstone_stairs, "shiverstone");
         stairs(UndergardenBlocks.shiverstone_brick_stairs, "shiverstone_bricks");
+        stairs(UndergardenBlocks.grongle_stairs, "grongle_planks");
 
         slab(UndergardenBlocks.depthrock_slab, UndergardenBlocks.depthrock);
         slab(UndergardenBlocks.depthrock_brick_slab, UndergardenBlocks.depthrock_bricks);
@@ -77,20 +85,25 @@ public class UndergardenBlockStates extends UndergardenBlockStateProvider {
         slab(UndergardenBlocks.wigglewood_slab, UndergardenBlocks.wigglewood_planks);
         slab(UndergardenBlocks.shiverstone_slab, UndergardenBlocks.shiverstone);
         slab(UndergardenBlocks.shiverstone_brick_slab, UndergardenBlocks.shiverstone_bricks);
+        slab(UndergardenBlocks.grongle_slab, UndergardenBlocks.grongle_planks);
 
         wallBlock(UndergardenBlocks.depthrock_brick_wall.get(), new ResourceLocation(UndergardenMod.MODID, "block/depthrock_bricks"));
         wallBlock(UndergardenBlocks.shiverstone_brick_wall.get(), new ResourceLocation(UndergardenMod.MODID, "block/shiverstone_bricks"));
 
         fence(UndergardenBlocks.smogstem_fence, "smogstem_planks");
         fence(UndergardenBlocks.wigglewood_fence, "wigglewood_planks");
+        fence(UndergardenBlocks.grongle_fence, "grongle_planks");
 
         fenceGateBlock(UndergardenBlocks.smogstem_fence_gate.get(), new ResourceLocation(UndergardenMod.MODID, "block/smogstem_planks"));
         fenceGateBlock(UndergardenBlocks.wigglewood_fence_gate.get(), new ResourceLocation(UndergardenMod.MODID, "block/wigglewood_planks"));
+        fenceGateBlock(UndergardenBlocks.grongle_fence_gate.get(), new ResourceLocation(UndergardenMod.MODID, "block/grongle_planks"));
 
         door(UndergardenBlocks.smogstem_door, "smogstem");
         door(UndergardenBlocks.wigglewood_door, "wigglewood");
+        door(UndergardenBlocks.grongle_door, "grongle");
 
         trapdoor(UndergardenBlocks.smogstem_trapdoor, "smogstem");
         trapdoor(UndergardenBlocks.wigglewood_trapdoor, "wigglewood");
+        trapdoor(UndergardenBlocks.grongle_trapdoor, "grongle");
     }
 }

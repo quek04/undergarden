@@ -11,7 +11,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.StructureManager;
 import quek.undergarden.block.world.DroopvineBlock;
 import quek.undergarden.registry.UndergardenBlocks;
 
@@ -26,7 +25,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean func_230362_a_(ISeedReader seedReader, StructureManager structureManager, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean func_241855_a(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
         if (!seedReader.isAirBlock(pos)) {
             return false;
         } else {
@@ -42,7 +41,6 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
     }
 
     private void func_236428_a_(IWorld world, Random rand, BlockPos pos) {
-        //world.setBlockState(pos, UndergardenBlocks.depthrock.get().getDefaultState(), 2);
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
         BlockPos.Mutable blockpos$mutable1 = new BlockPos.Mutable();
 
@@ -61,13 +59,8 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
                         break;
                     }
                 }
-
-                //if (j == 1) {
-                //    world.setBlockState(blockpos$mutable, UndergardenBlocks.depthrock.get().getDefaultState(), 2);
-                //}
             }
         }
-
     }
 
     private void func_236429_b_(IWorld world, Random rand, BlockPos pos) {

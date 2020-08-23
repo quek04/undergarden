@@ -1,0 +1,35 @@
+{
+  "config": {
+    "feature": {
+      "config": {
+        "hat_state": {
+          "Name": "undergarden:grongle_cap"
+        },
+        "decor_state": {
+          "Name": "minecraft:shroomlight"
+        },
+        "planted": false,
+        "valid_base_block": {
+          "Name": "undergarden:deepturf_block",
+		  "Properties": {
+          "snowy": "false"
+        }
+        },
+        "stem_state": {
+          "Properties": {
+            "axis": "y"
+          },
+          "Name": "undergarden:grongle_stem"
+        }
+      },
+      "type": "minecraft:huge_fungus"
+    },
+    "decorator": {
+      "config": {
+        "count": 8
+      },
+      "type": "minecraft:count_multilayer"
+    }
+  },
+  "type": "minecraft:decorated"
+}

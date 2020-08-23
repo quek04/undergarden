@@ -19,6 +19,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerBossInfo;
+import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
 
@@ -89,8 +90,8 @@ public class MasticatorEntity extends MonsterEntity {
     }
 
     @Override
-    public void onKillEntity(LivingEntity entityLivingIn) {
-        super.onKillEntity(entityLivingIn);
+    public void func_241847_a(ServerWorld world, LivingEntity entityLivingIn) { //on kill
+        super.func_241847_a(world, entityLivingIn);
         this.heal(this.getHealth() / 4);
     }
 

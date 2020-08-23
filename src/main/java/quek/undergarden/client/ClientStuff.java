@@ -70,6 +70,9 @@ public class ClientStuff {
         render(UndergardenBlocks.droopvine_top, cutout);
         render(UndergardenBlocks.droopvine, cutout);
         render(UndergardenBlocks.virulent_mix, translucent);
+        render(UndergardenBlocks.gronglet, cutout);
+        render(UndergardenBlocks.grongle_door, cutout);
+        render(UndergardenBlocks.grongle_trapdoor, cutout);
     }
 
     public static void registerEntityRenderers() {

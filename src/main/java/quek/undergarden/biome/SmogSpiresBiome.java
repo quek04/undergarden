@@ -1,5 +1,5 @@
 package quek.undergarden.biome;
-
+/*
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.world.biome.ParticleEffectAmbience;
@@ -49,3 +49,5 @@ public class SmogSpiresBiome extends UndergardenBiome {
         return new Color(115, 124, 119).getRGB();
     }
 }
+
+ */

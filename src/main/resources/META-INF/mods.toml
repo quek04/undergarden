@@ -1,6 +1,7 @@
 modLoader="javafml"
 loaderVersion="[32,)"
 issueTrackerURL="https://github.com/quek04/The-Undergarden/issues"
+license="MIT"
 [[mods]]
 modId="undergarden"
 version="${file.jarVersion}"
@@ -10,7 +11,6 @@ logoBlur=false
 credits="Screem: music, some sounds & art; Gecko: made the old biome provider"
 authors="quek"
 description='''Deep underground, a forgotten land awaits.'''
-license="MIT"
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
@@ -20,6 +20,6 @@ license="MIT"
 [[dependencies.undergarden]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.1]"
+    versionRange="[1.16.2]"
     ordering="NONE"
     side="BOTH"

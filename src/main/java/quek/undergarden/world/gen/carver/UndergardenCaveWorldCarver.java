@@ -27,6 +27,7 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
                 UndergardenBlocks.depthrock.get(),
                 UndergardenBlocks.shiverstone.get(),
                 UndergardenBlocks.deepturf_block.get(),
+                UndergardenBlocks.ashen_deepturf.get(),
                 UndergardenBlocks.deepsoil.get(),
                 UndergardenBlocks.coal_ore.get(),
                 UndergardenBlocks.iron_ore.get(),
@@ -44,27 +45,27 @@ public class UndergardenCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected boolean func_230358_a_(IChunk p_230358_1_, Function<BlockPos, Biome> p_230358_2_, BitSet p_230358_3_, Random p_230358_4_, BlockPos.Mutable p_230358_5_, BlockPos.Mutable p_230358_6_, BlockPos.Mutable p_230358_7_, int p_230358_8_, int p_230358_9_, int p_230358_10_, int p_230358_11_, int p_230358_12_, int p_230358_13_, int p_230358_14_, int p_230358_15_, MutableBoolean p_230358_16_) {
-        int i = p_230358_13_ | p_230358_15_ << 4 | p_230358_14_ << 8;
+    protected boolean func_230358_a_(IChunk chunk, Function<BlockPos, Biome> p_230358_2_, BitSet p_230358_3_, Random rand, BlockPos.Mutable p_230358_5_, BlockPos.Mutable p_230358_6_, BlockPos.Mutable p_230358_7_, int p_230358_8_, int p_230358_9_, int p_230358_10_, int p_230358_11_, int p_230358_12_, int p_230358_13_, int y, int p_230358_15_, MutableBoolean p_230358_16_) {
+        int i = p_230358_13_ | p_230358_15_ << 4 | y << 8;
         if (p_230358_3_.get(i)) {
             return false;
         } else {
             p_230358_3_.set(i);
-            p_230358_5_.setPos(p_230358_11_, p_230358_14_, p_230358_12_);
-            BlockState blockstate = p_230358_1_.getBlockState(p_230358_5_);
-            BlockState blockstate1 = p_230358_1_.getBlockState(p_230358_6_.func_239622_a_(p_230358_5_, Direction.UP));
+            p_230358_5_.setPos(p_230358_11_, y, p_230358_12_);
+            BlockState blockstate = chunk.getBlockState(p_230358_5_);
+            BlockState blockstate1 = chunk.getBlockState(p_230358_6_.func_239622_a_(p_230358_5_, Direction.UP));
 
             if (!this.canCarveBlock(blockstate, blockstate1)) {
                 return false;
             } else {
-                if (p_230358_14_ < 11) {
-                    p_230358_1_.setBlockState(p_230358_5_, UndergardenBlocks.virulent_mix.get().getDefaultState(), false);
+                if (y < 11) {
+                    chunk.setBlockState(p_230358_5_, UndergardenBlocks.virulent_mix.get().getDefaultState(), false);
                 } else {
-                    p_230358_1_.setBlockState(p_230358_5_, CAVE_AIR, false);
+                    chunk.setBlockState(p_230358_5_, CAVE_AIR, false);
                     if (p_230358_16_.isTrue()) {
                         p_230358_7_.func_239622_a_(p_230358_5_, Direction.DOWN);
-                        if (p_230358_1_.getBlockState(p_230358_7_).isIn(UndergardenBlocks.deepsoil.get())) {
-                            p_230358_1_.setBlockState(p_230358_7_, p_230358_2_.apply(p_230358_5_).getSurfaceBuilderConfig().getTop(), false);
+                        if (chunk.getBlockState(p_230358_7_).isIn(UndergardenBlocks.deepsoil.get())) {
+                            chunk.setBlockState(p_230358_7_, p_230358_2_.apply(p_230358_5_).func_242440_e().func_242502_e().getTop(), false);
                         }
                     }
                 }

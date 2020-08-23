@@ -9,7 +9,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class UndergardenDimensionRenderInfo extends DimensionRenderInfo {
 
     public UndergardenDimensionRenderInfo() {
-        super(Float.NaN, true, DimensionRenderInfo.FogType.NONE, false, true);
+        super(Float.NaN, false, FogType.NONE, false, true);
     }
 
     @Override
@@ -17,6 +17,7 @@ public class UndergardenDimensionRenderInfo extends DimensionRenderInfo {
         return vector3d;
     }
 
+    //thick fog
     @Override
     public boolean func_230493_a_(int x, int y) {
         return false;

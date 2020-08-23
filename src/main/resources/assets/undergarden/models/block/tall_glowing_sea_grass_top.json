@@ -1,7 +1,0 @@
-{
-    "parent": "undergarden:block/glowing_sea_grass",
-    "textures": {
-        "seagrass": "undergarden:block/tall_glowing_sea_grass_top",
-        "particle": "undergarden:block/tall_glowing_sea_grass_top"
-    }
-}

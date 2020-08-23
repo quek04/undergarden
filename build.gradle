@@ -79,7 +79,7 @@ sourceSets.main.resources {
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.16.1-32.0.106'
+    minecraft 'net.minecraftforge:forge:1.16.2-33.0.20'
 
 
     // compile against the JEI API but do not include it at runtime

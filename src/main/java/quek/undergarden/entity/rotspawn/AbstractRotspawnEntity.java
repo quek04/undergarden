@@ -11,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.DwellerEntity;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 import quek.undergarden.registry.UndergardenEntities;
@@ -45,8 +46,8 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
     }
 
     @Override
-    public void onKillEntity(LivingEntity entityLivingIn) {
-        super.onKillEntity(entityLivingIn);
+    public void func_241847_a(ServerWorld world, LivingEntity entityLivingIn) { // on kill
+        super.func_241847_a(world, entityLivingIn);
         if ((this.world.getDifficulty() == Difficulty.NORMAL || this.world.getDifficulty() == Difficulty.HARD) && entityLivingIn instanceof DwellerEntity) {
             if (this.world.getDifficulty() != Difficulty.HARD && this.rand.nextBoolean()) {
                 return;
@@ -57,7 +58,7 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
 
             rotDweller.copyLocationAndAnglesFrom(dweller);
             dweller.remove();
-            rotDweller.onInitialSpawn(this.world, this.world.getDifficultyForLocation(new BlockPos(rotDweller.getPositionVec())), SpawnReason.CONVERSION, null, null);
+            rotDweller.onInitialSpawn(world, this.world.getDifficultyForLocation(new BlockPos(rotDweller.getPositionVec())), SpawnReason.CONVERSION, null, null);
             if (dweller.hasCustomName()) {
                 rotDweller.setCustomName(dweller.getCustomName());
                 rotDweller.setCustomNameVisible(dweller.isCustomNameVisible());

@@ -15,6 +15,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.entity.rotspawn.RotbeastEntity;
 import quek.undergarden.entity.rotspawn.RotwalkerEntity;
@@ -52,12 +53,12 @@ public class DwellerEntity extends AnimalEntity {
     }
 
     public static boolean canDwellerSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get();
+        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.ashen_deepturf.get();
     }
 
     @Nullable
     @Override
-    public AgeableEntity createChild(AgeableEntity ageable) {
+    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
         return UndergardenEntities.DWELLER.get().create(world);
     }
 
@@ -90,4 +91,5 @@ public class DwellerEntity extends AnimalEntity {
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
         this.playSound(SoundEvents.ENTITY_COW_STEP, 0.15F, 0.5F);
     }
+
 }

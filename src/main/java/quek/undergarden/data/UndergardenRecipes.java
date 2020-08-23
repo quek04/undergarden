@@ -25,6 +25,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         makePlanks(UndergardenBlocks.smogstem_planks, UndergardenBlocks.smogstem_log).build(consumer);
         makePlanks(UndergardenBlocks.wigglewood_planks, UndergardenBlocks.wigglewood_log).build(consumer);
+        makePlanks(UndergardenBlocks.grongle_planks, UndergardenBlocks.grongle_stem).build(consumer);
 
         makeBricks(UndergardenBlocks.depthrock_bricks, UndergardenBlocks.depthrock).build(consumer);
         makeBricks(UndergardenBlocks.shiverstone_bricks, UndergardenBlocks.shiverstone).build(consumer);
@@ -32,6 +33,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         makeWood(UndergardenBlocks.smogstem_wood, UndergardenBlocks.smogstem_log).build(consumer);
         makeWood(UndergardenBlocks.wigglewood_wood, UndergardenBlocks.wigglewood_log).build(consumer);
+        makeWood(UndergardenBlocks.grongle_hyphae, UndergardenBlocks.grongle_stem).build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UndergardenItems.smogstem_stick.get(), 4)
                 .patternLine("P ")
@@ -238,6 +240,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeStairs(UndergardenBlocks.depthrock_brick_stairs, UndergardenBlocks.depthrock_bricks).build(consumer);
         makeStairs(UndergardenBlocks.smogstem_stairs, UndergardenBlocks.smogstem_planks).build(consumer);
         makeStairs(UndergardenBlocks.wigglewood_stairs, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makeStairs(UndergardenBlocks.grongle_stairs, UndergardenBlocks.grongle_planks).build(consumer);
         makeStairs(UndergardenBlocks.shiverstone_stairs, UndergardenBlocks.shiverstone).build(consumer);
         makeStairs(UndergardenBlocks.shiverstone_brick_stairs, UndergardenBlocks.shiverstone_bricks).build(consumer);
 
@@ -245,6 +248,7 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
         makeSlab(UndergardenBlocks.depthrock_brick_slab, UndergardenBlocks.depthrock_bricks).build(consumer);
         makeSlab(UndergardenBlocks.smogstem_slab, UndergardenBlocks.smogstem_planks).build(consumer);
         makeSlab(UndergardenBlocks.wigglewood_slab, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makeSlab(UndergardenBlocks.grongle_slab, UndergardenBlocks.grongle_planks).build(consumer);
         makeSlab(UndergardenBlocks.shiverstone_slab, UndergardenBlocks.shiverstone).build(consumer);
         makeSlab(UndergardenBlocks.shiverstone_brick_slab, UndergardenBlocks.shiverstone_bricks).build(consumer);
 
@@ -253,23 +257,29 @@ public class UndergardenRecipes extends UndergardenRecipeProvider {
 
         makeFence(UndergardenBlocks.smogstem_fence, UndergardenBlocks.smogstem_planks).build(consumer);
         makeFence(UndergardenBlocks.wigglewood_fence, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makeFence(UndergardenBlocks.grongle_fence, UndergardenBlocks.grongle_planks).build(consumer);
 
         makeFenceGate(UndergardenBlocks.smogstem_fence_gate, UndergardenBlocks.smogstem_planks).build(consumer);
         makeFenceGate(UndergardenBlocks.wigglewood_fence_gate, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makeFenceGate(UndergardenBlocks.grongle_fence_gate, UndergardenBlocks.grongle_planks).build(consumer);
 
         makeDoor(UndergardenBlocks.smogstem_door, UndergardenBlocks.smogstem_planks).build(consumer);
         makeDoor(UndergardenBlocks.wigglewood_door, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makeDoor(UndergardenBlocks.grongle_door, UndergardenBlocks.grongle_planks).build(consumer);
 
         makeTrapdoor(UndergardenBlocks.smogstem_trapdoor, UndergardenBlocks.smogstem_planks).build(consumer);
         makeTrapdoor(UndergardenBlocks.wigglewood_trapdoor, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makeTrapdoor(UndergardenBlocks.grongle_trapdoor, UndergardenBlocks.grongle_planks).build(consumer);
 
         makeButton(UndergardenBlocks.smogstem_button, UndergardenBlocks.smogstem_planks).build(consumer);
         makeButton(UndergardenBlocks.wigglewood_button, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makeButton(UndergardenBlocks.grongle_button, UndergardenBlocks.grongle_planks).build(consumer);
         makeButton(UndergardenBlocks.depthrock_button, UndergardenBlocks.depthrock).build(consumer);
         makeButton(UndergardenBlocks.shiverstone_button, UndergardenBlocks.shiverstone).build(consumer);
 
         makePressurePlate(UndergardenBlocks.smogstem_pressure_plate, UndergardenBlocks.smogstem_planks).build(consumer);
         makePressurePlate(UndergardenBlocks.wigglewood_pressure_plate, UndergardenBlocks.wigglewood_planks).build(consumer);
+        makePressurePlate(UndergardenBlocks.grongle_pressure_plate, UndergardenBlocks.grongle_planks).build(consumer);
         makePressurePlate(UndergardenBlocks.depthrock_pressure_plate, UndergardenBlocks.depthrock).build(consumer);
         makePressurePlate(UndergardenBlocks.shiverstone_pressure_plate, UndergardenBlocks.shiverstone).build(consumer);
 

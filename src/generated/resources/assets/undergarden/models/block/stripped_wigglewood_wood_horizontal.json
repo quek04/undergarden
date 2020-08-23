@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "undergarden:block/stripped_wigglewood_log_side",
+    "end": "undergarden:block/stripped_wigglewood_log_end"
+  }
+}

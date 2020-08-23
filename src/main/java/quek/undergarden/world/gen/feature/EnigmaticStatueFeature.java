@@ -11,7 +11,6 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.feature.template.*;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.UndergardenMod;
@@ -32,7 +31,7 @@ public class EnigmaticStatueFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean func_230362_a_(ISeedReader worldIn, StructureManager p_230362_2_, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
         if(worldIn.getBlockState(pos).getBlock() == UndergardenBlocks.deepturf_block.get()) {
             Random random = worldIn.getRandom();
 
@@ -50,7 +49,7 @@ public class EnigmaticStatueFeature extends Feature<NoFeatureConfig> {
 
             int x = random.nextInt(16);
             int z = random.nextInt(16);
-            
+
             int deepturfY = 256;
 
             for(int y = 256; y > 0; y--) {

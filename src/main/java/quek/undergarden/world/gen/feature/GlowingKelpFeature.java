@@ -3,12 +3,18 @@ package quek.undergarden.world.gen.feature;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.KelpTopBlock;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.ISeedReader;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.StructureManager;
+import quek.undergarden.block.world.GlowingKelpBlock;
 import quek.undergarden.block.world.GlowingKelpTopBlock;
 import quek.undergarden.registry.UndergardenBlocks;
 
@@ -21,7 +27,7 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean func_230362_a_(ISeedReader worldIn, StructureManager p_230362_2_, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
         int i = 0;
         int ocean_y = 32;
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());

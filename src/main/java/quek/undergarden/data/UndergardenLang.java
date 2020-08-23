@@ -13,7 +13,7 @@ public class UndergardenLang extends LanguageProvider {
     }
 
     protected void addItemGroup(ItemGroup group, String name) {
-        add(group.getTranslationKey(), name);
+        add(group.func_242392_c().getString(), name);
     }
 
     protected void addAdvTitle(String advancementTitle, String name) {
@@ -39,6 +39,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.depthrock, "Depthrock");
         addBlock(UndergardenBlocks.smogstem_planks, "Smogstem Planks");
         addBlock(UndergardenBlocks.wigglewood_planks, "Wigglewood Planks");
+        addBlock(UndergardenBlocks.grongle_planks, "Grongle Planks");
         addBlock(UndergardenBlocks.depthrock_bricks, "Depthrock Bricks");
         addBlock(UndergardenBlocks.cracked_depthrock_bricks, "Cracked Depthrock Bricks");
         addBlock(UndergardenBlocks.shiverstone, "Shiverstone");
@@ -54,12 +55,19 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.blisterberry_bush, "Blisterberry Bush");
         addBlock(UndergardenBlocks.smogstem_sapling, "Smogstem Sapling");
         addBlock(UndergardenBlocks.smogstem_log, "Smogstem Log");
+        addBlock(UndergardenBlocks.stripped_smogstem_log, "Stripped Smogstem Log");
         addBlock(UndergardenBlocks.smogstem_wood, "Smogstem Wood");
         addBlock(UndergardenBlocks.smogstem_leaves, "Smogstem Leaves");
         addBlock(UndergardenBlocks.wigglewood_sapling, "Wigglewood Sapling");
         addBlock(UndergardenBlocks.wigglewood_log, "Wigglewood Log");
+        addBlock(UndergardenBlocks.stripped_wigglewood_log, "Stripped Wigglewood Log");
         addBlock(UndergardenBlocks.wigglewood_wood, "Wigglewood.. Wood");
         addBlock(UndergardenBlocks.wigglewood_leaves, "Wigglewood Leaves");
+        addBlock(UndergardenBlocks.gronglet, "Gronglet");
+        addBlock(UndergardenBlocks.grongle_stem, "Grongle Stem");
+        addBlock(UndergardenBlocks.stripped_grongle_stem, "Stripped Grongle Stem");
+        addBlock(UndergardenBlocks.grongle_hyphae, "Grongle Hyphae");
+        addBlock(UndergardenBlocks.grongle_cap, "Grongle Cap");
         addBlock(UndergardenBlocks.tall_deepturf, "Deepturf");
         addBlock(UndergardenBlocks.ashen_tall_deepturf, "Ashen Deepturf");
         addBlock(UndergardenBlocks.double_deepturf, "Tall Deepturf");
@@ -101,6 +109,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.depthrock_brick_stairs, "Depthrock Brick Stairs");
         addBlock(UndergardenBlocks.smogstem_stairs, "Smogstem Stairs");
         addBlock(UndergardenBlocks.wigglewood_stairs, "Wigglewood Stairs");
+        addBlock(UndergardenBlocks.grongle_stairs, "Grongle Stairs");
         addBlock(UndergardenBlocks.shiverstone_stairs, "Shiverstone Stairs");
         addBlock(UndergardenBlocks.shiverstone_brick_stairs, "Shiverstone Brick Stairs");
 
@@ -108,6 +117,7 @@ public class UndergardenLang extends LanguageProvider {
         addBlock(UndergardenBlocks.depthrock_brick_slab, "Depthrock Brick Slab");
         addBlock(UndergardenBlocks.smogstem_slab, "Smogstem Slab");
         addBlock(UndergardenBlocks.wigglewood_slab, "Wigglewood Slab");
+        addBlock(UndergardenBlocks.grongle_slab, "Grongle Slab");
         addBlock(UndergardenBlocks.shiverstone_slab, "Shiverstone Slab");
         addBlock(UndergardenBlocks.shiverstone_brick_slab, "Shiverstone Brick Slab");
 
@@ -116,23 +126,29 @@ public class UndergardenLang extends LanguageProvider {
 
         addBlock(UndergardenBlocks.smogstem_fence, "Smogstem Fence");
         addBlock(UndergardenBlocks.wigglewood_fence, "Wigglewood Fence");
+        addBlock(UndergardenBlocks.grongle_fence, "Grongle Fence");
 
         addBlock(UndergardenBlocks.smogstem_fence_gate, "Smogstem Fence Gate");
         addBlock(UndergardenBlocks.wigglewood_fence_gate, "Wigglewood Fence Gate");
+        addBlock(UndergardenBlocks.grongle_fence_gate, "Grongle Fence Gate");
 
         addBlock(UndergardenBlocks.smogstem_door, "Smogstem Door");
         addBlock(UndergardenBlocks.wigglewood_door, "Wigglewood Door");
+        addBlock(UndergardenBlocks.grongle_door, "Grongle Door");
 
         addBlock(UndergardenBlocks.smogstem_trapdoor, "Smogstem Trapdoor");
         addBlock(UndergardenBlocks.wigglewood_trapdoor, "Wigglewood Trapdoor");
+        addBlock(UndergardenBlocks.grongle_trapdoor, "Grongle Trapdoor");
 
         addBlock(UndergardenBlocks.smogstem_button, "Smogstem Button");
         addBlock(UndergardenBlocks.wigglewood_button, "Wigglewood Button");
+        addBlock(UndergardenBlocks.grongle_button, "Grongle Button");
         addBlock(UndergardenBlocks.depthrock_button, "Depthrock Button");
         addBlock(UndergardenBlocks.shiverstone_button, "Shiverstone Button");
 
         addBlock(UndergardenBlocks.smogstem_pressure_plate, "Smogstem Pressure Plate");
         addBlock(UndergardenBlocks.wigglewood_pressure_plate, "Wigglewood Pressure Plate");
+        addBlock(UndergardenBlocks.grongle_pressure_plate, "Grongle Pressure Plate");
         addBlock(UndergardenBlocks.depthrock_pressure_plate, "Depthrock Pressure Plate");
         addBlock(UndergardenBlocks.shiverstone_pressure_plate, "Shiverstone Pressure Plate");
 
@@ -231,13 +247,13 @@ public class UndergardenLang extends LanguageProvider {
 
         addItem(UndergardenItems.masticator_spawn_egg, "Masticator Spawn Egg");
 
-        addBiome(UndergardenBiomes.FORGOTTEN_FIELD, "Forgotten Field");
-        addBiome(UndergardenBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
-        addBiome(UndergardenBiomes.BARREN_ABYSS, "Barren Abyss");
-        addBiome(UndergardenBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
-        addBiome(UndergardenBiomes.DENSE_FOREST, "Dense Forest");
-        addBiome(UndergardenBiomes.SMOG_SPIRES, "Smog Spires");
-        addBiome(UndergardenBiomes.OTHERSIDE, "The Otherside");
+        //addBiome(UndergardenBiomes.FORGOTTEN_FIELD, "Forgotten Field");
+        //addBiome(UndergardenBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
+        //addBiome(UndergardenBiomes.BARREN_ABYSS, "Barren Abyss");
+        //addBiome(UndergardenBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
+        //addBiome(UndergardenBiomes.DENSE_FOREST, "Dense Forest");
+        //addBiome(UndergardenBiomes.SMOG_SPIRES, "Smog Spires");
+        //addBiome(UndergardenBiomes.OTHERSIDE, "The Otherside");
 
         addEntityType(UndergardenEntities.DWELLER, "Dweller");
         addEntityType(UndergardenEntities.ROTDWELLER, "Rotdweller");

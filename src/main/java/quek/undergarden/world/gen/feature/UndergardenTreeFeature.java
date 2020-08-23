@@ -11,7 +11,6 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.util.math.shapes.BitSetVoxelShapePart;
 import net.minecraft.util.math.shapes.VoxelShapePart;
@@ -20,17 +19,14 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldWriter;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.IWorldGenerationBaseReader;
 import net.minecraft.world.gen.IWorldGenerationReader;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacer;
 import quek.undergarden.registry.UndergardenBlocks;
 
-import javax.annotation.Nullable;
 import java.util.*;
 
 public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
@@ -133,23 +129,25 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
     }
 
     @Override
-    public final boolean func_230362_a_(ISeedReader seed, StructureManager structureManager, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, BaseTreeFeatureConfig treeConfig) {
+    public final boolean func_241855_a(ISeedReader p_241855_1_, ChunkGenerator p_241855_2_, Random p_241855_3_, BlockPos p_241855_4_, BaseTreeFeatureConfig p_241855_5_) {
         Set<BlockPos> set = Sets.newHashSet();
         Set<BlockPos> set1 = Sets.newHashSet();
         Set<BlockPos> set2 = Sets.newHashSet();
         MutableBoundingBox mutableboundingbox = MutableBoundingBox.getNewBoundingBox();
-        boolean flag = place(seed, rand, pos, set, set1, mutableboundingbox, treeConfig);
+        boolean flag = this.place(p_241855_1_, p_241855_3_, p_241855_4_, set, set1, mutableboundingbox, p_241855_5_);
         if (mutableboundingbox.minX <= mutableboundingbox.maxX && flag && !set.isEmpty()) {
-            if (!treeConfig.decorators.isEmpty()) {
+            if (!p_241855_5_.decorators.isEmpty()) {
                 List<BlockPos> list = Lists.newArrayList(set);
                 List<BlockPos> list1 = Lists.newArrayList(set1);
                 list.sort(Comparator.comparingInt(Vector3i::getY));
                 list1.sort(Comparator.comparingInt(Vector3i::getY));
-                treeConfig.decorators.forEach((decorator) -> decorator.func_225576_a_(seed, rand, list, list1, set2, mutableboundingbox));
+                p_241855_5_.decorators.forEach((p_236405_6_) -> {
+                    p_236405_6_.func_225576_a_(p_241855_1_, p_241855_3_, list, list1, set2, mutableboundingbox);
+                });
             }
 
-            VoxelShapePart voxelshapepart = this.func_236403_a_(seed, mutableboundingbox, set, set2);
-            Template.func_222857_a(seed, 3, voxelshapepart, mutableboundingbox.minX, mutableboundingbox.minY, mutableboundingbox.minZ);
+            VoxelShapePart voxelshapepart = this.func_236403_a_(p_241855_1_, mutableboundingbox, set, set2);
+            Template.func_222857_a(p_241855_1_, 3, voxelshapepart, mutableboundingbox.minX, mutableboundingbox.minY, mutableboundingbox.minZ);
             return true;
         } else {
             return false;
@@ -225,4 +223,5 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
         return voxelshapepart;
     }
+
 }

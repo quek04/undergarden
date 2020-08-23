@@ -27,23 +27,30 @@ public class GrongletBlock extends UndergardenBushBlock implements IGrowable {
         return SHAPE;
     }
 
-    /**
-     * Whether this IGrowable can grow
-     */
     @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        Block block = (this.fungusConfig.get()).config.field_236303_f_.getBlock();
-        Block block1 = worldIn.getBlockState(pos.down()).getBlock();
-        return block1 == block;
+    public boolean isValidGround(BlockState state, IBlockReader reader, BlockPos pos) {
+        return state.isIn(Blocks.MYCELIUM) || super.isValidGround(state, reader, pos);
     }
 
     @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean canGrow(IBlockReader reader, BlockPos pos, BlockState state, boolean p_176473_4_) {
+        Block lvt_5_1_ = this.fungusConfig.get().config.field_236303_f_.getBlock();
+        Block lvt_6_1_ = reader.getBlockState(pos.down()).getBlock();
+        return lvt_6_1_ == lvt_5_1_;
+    }
+
+    @Override
+    public boolean canUseBonemeal(World world, Random rand, BlockPos pos, BlockState state) {
         return (double)rand.nextFloat() < 0.4D;
     }
 
     @Override
-    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-        this.fungusConfig.get().func_236265_a_(worldIn, worldIn.func_241112_a_(), worldIn.getChunkProvider().getChunkGenerator(), rand, pos);
+    public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
+        this.fungusConfig.get().func_242765_a(world, world.getChunkProvider().getChunkGenerator(), rand, pos);
+    }
+
+    @Override
+    public Block.OffsetType getOffsetType() {
+        return Block.OffsetType.XZ;
     }
 }

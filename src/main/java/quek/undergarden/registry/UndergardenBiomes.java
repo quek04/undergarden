@@ -1,5 +1,5 @@
 package quek.undergarden.registry;
-
+/*
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.RegistryObject;
@@ -39,3 +39,5 @@ public class UndergardenBiomes {
         }
     }
 }
+
+ */

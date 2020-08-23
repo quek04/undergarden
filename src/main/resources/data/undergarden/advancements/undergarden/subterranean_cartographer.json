@@ -11,7 +11,7 @@
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "goal"
+    "frame": "challenge"
   },
   "parent": "undergarden:undergarden/root",
   "criteria": {
@@ -49,6 +49,12 @@
       "trigger": "minecraft:location",
       "conditions": {
         "biome": "undergarden:smog_spires"
+      }
+    },
+    "gronglegrowth": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:gronglegrowth"
       }
     }
   }

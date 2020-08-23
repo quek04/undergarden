@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ToolType;
 import quek.undergarden.registry.UndergardenBlocks;
 
@@ -34,7 +35,7 @@ public class UndergardenOreBlock extends OreBlock {
     }
 
     @Override
-    public void spawnAdditionalDrops(BlockState state, World worldIn, BlockPos pos, ItemStack stack) {
+    public void spawnAdditionalDrops(BlockState state, ServerWorld worldIn, BlockPos pos, ItemStack stack) {
         super.spawnAdditionalDrops(state, worldIn, pos, stack);
     }
 

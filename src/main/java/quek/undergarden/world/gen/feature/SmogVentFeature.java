@@ -9,7 +9,6 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.StructureManager;
 import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
@@ -20,8 +19,8 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
         super(configCodec);
     }
 
-    @Override
-    public boolean func_230362_a_(ISeedReader worldIn, StructureManager p_230362_2_, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    @Override //this code is a mess
+    public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator p_241855_2_, Random rand, BlockPos pos, NoFeatureConfig p_241855_5_) {
         while (worldIn.isAirBlock(pos) && pos.getY() > 2) {
             pos = pos.down();
         }
@@ -89,4 +88,5 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
             return false;
         }
     }
+
 }

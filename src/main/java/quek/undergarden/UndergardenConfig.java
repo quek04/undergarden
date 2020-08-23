@@ -29,7 +29,7 @@ public class UndergardenConfig {
             builder.push("client");
             enableMemeCode = builder
                     .translation(config + "enable_meme_code")
-                    .comment("Set to true to enable silly rendering code related to certain individuals")
+                    .comment("Set to true to enable silly rendering code related to certain individuals when they're in the Undergarden")
                     .define("enableMemeCode", false);
             builder.pop();
         }

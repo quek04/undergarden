@@ -5,14 +5,12 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.criterion.*;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
 import quek.undergarden.block.world.UndergardenDoublePlantBlock;
 import net.minecraft.item.Item;
 import net.minecraft.loot.conditions.*;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
-import quek.undergarden.block.world.UndergardenDoublePlantBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;
@@ -140,8 +138,8 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.cloggrum_bars);
             dropOther(UndergardenBlocks.glowing_kelp, UndergardenItems.glowing_kelp.get());
             dropOther(UndergardenBlocks.glowing_kelp_plant, UndergardenItems.glowing_kelp.get());
-            this.registerLootTable(UndergardenBlocks.smogstem_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
-            this.registerLootTable(UndergardenBlocks.wigglewood_door.get(), (p_218483_0_) -> droppingWhen(p_218483_0_, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+            this.registerLootTable(UndergardenBlocks.smogstem_door.get(), (block) -> droppingWhen(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+            this.registerLootTable(UndergardenBlocks.wigglewood_door.get(), (block) -> droppingWhen(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             dropSelf(UndergardenBlocks.smogstem_trapdoor);
             dropSelf(UndergardenBlocks.wigglewood_trapdoor);
             dropWithSilk(UndergardenBlocks.smog_vent, UndergardenBlocks.depthrock);
@@ -177,6 +175,22 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.wigglewood_pressure_plate);
             dropSelf(UndergardenBlocks.depthrock_pressure_plate);
             dropSelf(UndergardenBlocks.shiverstone_pressure_plate);
+            dropSelf(UndergardenBlocks.gronglet);
+            dropWithFortune(UndergardenBlocks.grongle_cap, UndergardenBlocks.gronglet.get().asItem());
+            dropSelf(UndergardenBlocks.grongle_stem);
+            dropSelf(UndergardenBlocks.grongle_planks);
+            dropSelf(UndergardenBlocks.grongle_hyphae);
+            dropSelf(UndergardenBlocks.grongle_stairs);
+            dropSelf(UndergardenBlocks.grongle_slab);
+            dropSelf(UndergardenBlocks.grongle_fence);
+            dropSelf(UndergardenBlocks.grongle_fence_gate);
+            this.registerLootTable(UndergardenBlocks.grongle_door.get(), (block) -> droppingWhen(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+            dropSelf(UndergardenBlocks.grongle_trapdoor);
+            dropSelf(UndergardenBlocks.grongle_button);
+            dropSelf(UndergardenBlocks.grongle_pressure_plate);
+            dropSelf(UndergardenBlocks.stripped_smogstem_log);
+            dropSelf(UndergardenBlocks.stripped_wigglewood_log);
+            dropSelf(UndergardenBlocks.stripped_grongle_stem);
         }
 
         @Override

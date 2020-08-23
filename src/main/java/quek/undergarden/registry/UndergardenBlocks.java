@@ -38,6 +38,8 @@ public class UndergardenBlocks {
             AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> wigglewood_planks = registerBlock("wigglewood_planks", () -> new Block(
             AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> grongle_planks = registerBlock("grongle_planks", () -> new Block(
+            AbstractBlock.Properties.from(Blocks.CRIMSON_PLANKS)));
     public static final RegistryObject<Block> depthrock_bricks = registerBlock("depthrock_bricks", () -> new Block(
             AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
     public static final RegistryObject<Block> cracked_depthrock_bricks = registerBlock("cracked_depthrock_bricks", () -> new Block(
@@ -63,15 +65,21 @@ public class UndergardenBlocks {
 
     public static final RegistryObject<SaplingBlock> smogstem_sapling = registerBlock("smogstem_sapling", () -> new UndergardenSaplingBlock(new SmogstemTree()));
     public static final RegistryObject<RotatedPillarBlock> smogstem_log = registerBlock("smogstem_log", UndergardenLogBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> stripped_smogstem_log = registerBlock("stripped_smogstem_wood", UndergardenLogBlock::new);
     public static final RegistryObject<Block> smogstem_wood = registerBlock("smogstem_wood", () -> new Block(AbstractBlock.Properties.from(UndergardenBlocks.smogstem_log.get())));
     public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", UndergardenLeavesBlock::new);
 
     public static final RegistryObject<SaplingBlock> wigglewood_sapling = registerBlock("wigglewood_sapling", () -> new UndergardenSaplingBlock(new WigglewoodTree()));
     public static final RegistryObject<RotatedPillarBlock> wigglewood_log = registerBlock("wigglewood_log", UndergardenLogBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> stripped_wigglewood_log = registerBlock("stripped_wigglewood_wood", UndergardenLogBlock::new);
     public static final RegistryObject<Block> wigglewood_wood = registerBlock("wigglewood_wood", () -> new Block(AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_log.get())));
     public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", UndergardenLeavesBlock::new);
 
-    public static final RegistryObject<Block> gronglet = registerBlock("gronglet", () -> new GrongletBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_FUNGUS), () -> Feature.field_236281_L_.withConfiguration(new HugeFungusConfig(Blocks.CRIMSON_NYLIUM.getDefaultState(), Blocks.CRIMSON_STEM.getDefaultState(), Blocks.NETHER_WART_BLOCK.getDefaultState(), Blocks.SHROOMLIGHT.getDefaultState(), true))));
+    public static final RegistryObject<Block> gronglet = registerBlock("gronglet", () -> new GrongletBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_FUNGUS).sound(SoundType.field_235582_D_), () -> Feature.field_236281_L_.withConfiguration(new HugeFungusConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.grongle_stem.get().getDefaultState(), UndergardenBlocks.grongle_cap.get().getDefaultState(), Blocks.SHROOMLIGHT.getDefaultState(), true))));
+    public static final RegistryObject<RotatedPillarBlock> grongle_stem = registerBlock("grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.field_235582_D_)));
+    public static final RegistryObject<RotatedPillarBlock> stripped_grongle_stem = registerBlock("stripped_grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_CRIMSON_STEM).sound(SoundType.field_235582_D_)));
+    public static final RegistryObject<Block> grongle_hyphae = registerBlock("grongle_hyphae", () -> new Block(AbstractBlock.Properties.from(UndergardenBlocks.grongle_stem.get())));
+    public static final RegistryObject<Block> grongle_cap = registerBlock("grongle_cap", () -> new Block(AbstractBlock.Properties.from(Blocks.WARPED_WART_BLOCK).sound(SoundType.field_235582_D_)));
 
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UndergardenTallGrassBlock::new);
     public static final RegistryObject<Block> ashen_tall_deepturf = registerBlock("ashen_tall_deepturf", AshenTallDeepturfBlock::new);
@@ -125,6 +133,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<StairsBlock> depthrock_brick_stairs = registerBlock("depthrock_brick_stairs", () -> new StairsBlock(UndergardenBlocks.depthrock_bricks.get().getDefaultState(), AbstractBlock.Properties.from(UndergardenBlocks.depthrock_bricks.get()).notSolid()));
     public static final RegistryObject<StairsBlock> smogstem_stairs = registerBlock("smogstem_stairs", () -> new StairsBlock(UndergardenBlocks.smogstem_planks.get().getDefaultState(), AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid()));
     public static final RegistryObject<StairsBlock> wigglewood_stairs = registerBlock("wigglewood_stairs", () -> new StairsBlock(UndergardenBlocks.smogstem_planks.get().getDefaultState(), AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid()));
+    public static final RegistryObject<StairsBlock> grongle_stairs = registerBlock("grongle_stairs", () -> new StairsBlock(UndergardenBlocks.grongle_planks.get().getDefaultState(), AbstractBlock.Properties.from(UndergardenBlocks.grongle_planks.get()).notSolid()));
     public static final RegistryObject<StairsBlock> shiverstone_stairs = registerBlock("shiverstone_stairs", () -> new StairsBlock(UndergardenBlocks.shiverstone.get().getDefaultState(), AbstractBlock.Properties.from(UndergardenBlocks.shiverstone.get()).notSolid()));
     public static final RegistryObject<StairsBlock> shiverstone_brick_stairs = registerBlock("shiverstone_brick_stairs", () -> new StairsBlock(UndergardenBlocks.shiverstone_bricks.get().getDefaultState(), AbstractBlock.Properties.from(UndergardenBlocks.shiverstone_bricks.get()).notSolid()));
 
@@ -132,6 +141,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<SlabBlock> depthrock_brick_slab = registerBlock("depthrock_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UndergardenBlocks.depthrock_bricks.get()).notSolid()));
     public static final RegistryObject<SlabBlock> smogstem_slab = registerBlock("smogstem_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid()));
     public static final RegistryObject<SlabBlock> wigglewood_slab = registerBlock("wigglewood_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid()));
+    public static final RegistryObject<SlabBlock> grongle_slab = registerBlock("grongle_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UndergardenBlocks.grongle_planks.get()).notSolid()));
     public static final RegistryObject<SlabBlock> shiverstone_slab = registerBlock("shiverstone_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UndergardenBlocks.shiverstone.get()).notSolid()));
     public static final RegistryObject<SlabBlock> shiverstone_brick_slab = registerBlock("shiverstone_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UndergardenBlocks.shiverstone_bricks.get()).notSolid()));
 
@@ -140,23 +150,29 @@ public class UndergardenBlocks {
 
     public static final RegistryObject<FenceBlock> smogstem_fence = registerBlock("smogstem_fence", () -> new FenceBlock(AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid()));
     public static final RegistryObject<FenceBlock> wigglewood_fence = registerBlock("wigglewood_fence", () -> new FenceBlock(AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid()));
+    public static final RegistryObject<FenceBlock> grongle_fence = registerBlock("grongle_fence", () -> new FenceBlock(AbstractBlock.Properties.from(UndergardenBlocks.grongle_planks.get()).notSolid()));
 
     public static final RegistryObject<FenceGateBlock> smogstem_fence_gate = registerBlock("smogstem_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid()));
     public static final RegistryObject<FenceGateBlock> wigglewood_fence_gate = registerBlock("wigglewood_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid()));
+    public static final RegistryObject<FenceGateBlock> grongle_fence_gate = registerBlock("grongle_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.from(UndergardenBlocks.grongle_planks.get()).notSolid()));
 
     public static final RegistryObject<DoorBlock> smogstem_door = registerBlock("smogstem_door", () -> new DoorBlock(AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid()));
     public static final RegistryObject<DoorBlock> wigglewood_door = registerBlock("wigglewood_door", () -> new DoorBlock(AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid()));
+    public static final RegistryObject<DoorBlock> grongle_door = registerBlock("grongle_door", () -> new DoorBlock(AbstractBlock.Properties.from(UndergardenBlocks.grongle_planks.get()).notSolid()));
 
     public static final RegistryObject<TrapDoorBlock> smogstem_trapdoor = registerBlock("smogstem_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid()));
     public static final RegistryObject<TrapDoorBlock> wigglewood_trapdoor = registerBlock("wigglewood_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid()));
+    public static final RegistryObject<TrapDoorBlock> grongle_trapdoor = registerBlock("grongle_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.from(UndergardenBlocks.grongle_planks.get()).notSolid()));
 
     public static final RegistryObject<WoodButtonBlock> smogstem_button = registerBlock("smogstem_button", () -> new WoodButtonBlock(AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<WoodButtonBlock> wigglewood_button = registerBlock("wigglewood_button", () -> new WoodButtonBlock(AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<WoodButtonBlock> grongle_button = registerBlock("grongle_button", () -> new WoodButtonBlock(AbstractBlock.Properties.from(UndergardenBlocks.grongle_planks.get()).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<StoneButtonBlock> depthrock_button = registerBlock("depthrock_button", () -> new StoneButtonBlock(AbstractBlock.Properties.from(UndergardenBlocks.depthrock.get()).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<StoneButtonBlock> shiverstone_button = registerBlock("shiverstone_button", () -> new StoneButtonBlock(AbstractBlock.Properties.from(UndergardenBlocks.shiverstone.get()).notSolid().doesNotBlockMovement()));
 
     public static final RegistryObject<PressurePlateBlock> smogstem_pressure_plate = registerBlock("smogstem_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.from(UndergardenBlocks.smogstem_planks.get()).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<PressurePlateBlock> wigglewood_pressure_plate = registerBlock("wigglewood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_planks.get()).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<PressurePlateBlock> grongle_pressure_plate = registerBlock("grongle_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.from(UndergardenBlocks.grongle_planks.get()).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<PressurePlateBlock> depthrock_pressure_plate = registerBlock("depthrock_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.from(UndergardenBlocks.depthrock.get()).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<PressurePlateBlock> shiverstone_pressure_plate = registerBlock("shiverstone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.from(UndergardenBlocks.shiverstone.get()).notSolid().doesNotBlockMovement()));
 

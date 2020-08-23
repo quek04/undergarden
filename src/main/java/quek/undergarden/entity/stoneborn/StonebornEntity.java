@@ -33,6 +33,7 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
@@ -93,8 +94,8 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public void onKillEntity(LivingEntity entityLivingIn) {
-        super.onKillEntity(entityLivingIn);
+    public void func_241847_a(ServerWorld world, LivingEntity entityLivingIn) { //on kill
+        super.func_241847_a(world, entityLivingIn);
         if(entityLivingIn.getCreatureAttribute() == UndergardenEntities.ROTSPAWN || entityLivingIn instanceof PlayerEntity) {
             this.playSound(UndergardenSoundEvents.STONEBORN_CHUCKLE, 1.0F, 1.0F);
         }

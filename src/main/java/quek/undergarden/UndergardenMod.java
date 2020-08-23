@@ -1,8 +1,14 @@
 package quek.undergarden;
 
+import com.google.common.collect.ImmutableMap;
+import net.minecraft.block.Block;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -18,12 +24,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 
 import org.apache.commons.lang3.tuple.Pair;
-import quek.undergarden.client.ClientStuff;
-import quek.undergarden.client.UndergardenDimensionRenderInfo;
+import quek.undergarden.client.*;
 import quek.undergarden.data.*;
 import quek.undergarden.registry.*;
 
+import javax.annotation.Nullable;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 @Mod(UndergardenMod.MODID)
 public class UndergardenMod {
@@ -40,8 +47,6 @@ public class UndergardenMod {
 		UndergardenEntities.ENTITIES.register(bus);
 		UndergardenBlocks.BLOCKS.register(bus);
 		UndergardenItems.ITEMS.register(bus);
-		//UndergardenDimensions.MOD_DIMENSIONS.register(bus);
-		UndergardenBiomes.BIOMES.register(bus);
 		UndergardenFeatures.FEATURES.register(bus);
 		UndergardenWorldCarvers.CARVERS.register(bus);
 		UndergardenEffects.EFFECTS.register(bus);
@@ -57,10 +62,17 @@ public class UndergardenMod {
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
-		UndergardenBiomes.addBiomeTypes();
-		UndergardenBiomes.addBiomeFeatures();
 		UndergardenEntities.spawnPlacements();
 		UndergardenEntities.entityAttributes();
+		UndergardenFeatures.registerConfiguredFeatures();
+		UndergardenWorldCarvers.registerConfiguredCarvers();
+
+		AxeItem.BLOCK_STRIPPING_MAP = ImmutableMap.<Block, Block>builder()
+				.putAll(AxeItem.BLOCK_STRIPPING_MAP)
+				.put(UndergardenBlocks.smogstem_log.get(), UndergardenBlocks.stripped_smogstem_log.get())
+				.put(UndergardenBlocks.wigglewood_log.get(), UndergardenBlocks.stripped_wigglewood_log.get())
+				.put(UndergardenBlocks.grongle_stem.get(), UndergardenBlocks.stripped_grongle_stem.get())
+				.build();
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
@@ -69,9 +81,8 @@ public class UndergardenMod {
 		ClientStuff.registerBlockColors();
 		ClientStuff.registerItemColors();
 
-		UndergardenDimensionRenderInfo dimensionRenderInfo = new UndergardenDimensionRenderInfo();
-
-		DimensionRenderInfo.field_239208_a_.put(UndergardenDimensions.undergarden, dimensionRenderInfo);
+		DimensionRenderInfo.field_239208_a_.put(new ResourceLocation(MODID, "undergarden"), new UndergardenDimensionRenderInfo());
+		//TODO: OthersideDRI
 	}
 
 	public void gatherData(GatherDataEvent event) {
@@ -96,7 +107,7 @@ public class UndergardenMod {
 		@OnlyIn(Dist.CLIENT)
 		public static void memeEvent(RenderPlayerEvent event) {
 			if(UndergardenConfig.enableMemeCode.get() == true) {
-				if(event.getEntity().world.func_234922_V_() == UndergardenDimensions.undergarden || event.getEntity().world.func_234922_V_() == UndergardenDimensions.otherside)
+				if(event.getEntity().world.func_234923_W_() == UndergardenDimensions.undergarden_w || event.getEntity().world.func_234923_W_() == UndergardenDimensions.otherside_w)
 				if(event.getEntity() instanceof PlayerEntity && UUID.fromString("353a859b-ba16-4e6a-8f63-9a8c79ab0071").equals(event.getEntity().getUniqueID())) {
 					event.getMatrixStack().scale(.5F, .5F, .5F);
 				}
@@ -107,7 +118,6 @@ public class UndergardenMod {
 					event.getMatrixStack().scale(1.5F, 1F, 1.5F);
 				}
 			}
-
 		}
 
 	}

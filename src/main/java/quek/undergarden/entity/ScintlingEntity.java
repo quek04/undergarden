@@ -14,7 +14,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UndergardenEntities;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -67,7 +69,7 @@ public class ScintlingEntity extends AnimalEntity {
 
     @Nullable
     @Override
-    public AgeableEntity createChild(AgeableEntity ageable) {
+    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
         return null;
     }
 

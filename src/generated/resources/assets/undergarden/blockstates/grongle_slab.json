@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "undergarden:block/grongle_slab_top"
+    },
+    "type=bottom": {
+      "model": "undergarden:block/grongle_slab"
+    },
+    "type=double": {
+      "model": "undergarden:block/grongle_planks"
+    }
+  }
+}

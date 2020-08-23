@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_rh",
+  "textures": {
+    "bottom": "undergarden:block/grongle_door_bottom",
+    "top": "undergarden:block/grongle_door_top"
+  }
+}

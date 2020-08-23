@@ -1,5 +1,5 @@
 package quek.undergarden.biome;
-
+/*
 import com.google.common.collect.Lists;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.particles.ParticleTypes;
@@ -21,7 +21,6 @@ import quek.undergarden.registry.UndergardenSoundEvents;
 import quek.undergarden.registry.UndergardenWorldCarvers;
 
 import java.awt.*;
-
 
 public class BarrenAbyssBiome extends UndergardenBiome {
 
@@ -61,3 +60,5 @@ public class BarrenAbyssBiome extends UndergardenBiome {
     }
 
 }
+
+ */

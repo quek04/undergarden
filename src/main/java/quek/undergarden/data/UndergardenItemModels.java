@@ -94,6 +94,19 @@ public class UndergardenItemModels extends UndergardenItemModelProvider {
         itemBlock(UndergardenBlocks.wigglewood_pressure_plate);
         itemBlock(UndergardenBlocks.depthrock_pressure_plate);
         itemBlock(UndergardenBlocks.shiverstone_pressure_plate);
+        itemBlockFlat(UndergardenBlocks.gronglet);
+        itemBlock(UndergardenBlocks.grongle_stem);
+        itemBlock(UndergardenBlocks.grongle_cap);
+        itemBlock(UndergardenBlocks.grongle_hyphae);
+        itemBlock(UndergardenBlocks.grongle_slab);
+        itemFence(UndergardenBlocks.grongle_fence, "grongle_planks");
+        itemBlock(UndergardenBlocks.grongle_planks);
+        itemBlock(UndergardenBlocks.grongle_fence_gate);
+        itemBlock(UndergardenBlocks.grongle_stairs);
+        itemBlock(UndergardenBlocks.grongle_pressure_plate);
+        itemBlock(UndergardenBlocks.stripped_smogstem_log);
+        itemBlock(UndergardenBlocks.stripped_wigglewood_log);
+        itemBlock(UndergardenBlocks.stripped_grongle_stem);
 
         normalItem(UndergardenItems.catalyst_item);
         normalItem(UndergardenItems.depthrock_pebble);

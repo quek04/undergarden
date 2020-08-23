@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M/M",
+    "M/M"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:grongle_planks"
+    },
+    "/": {
+      "item": "undergarden:smogstem_stick"
+    }
+  },
+  "result": {
+    "item": "undergarden:grongle_fence",
+    "count": 6
+  }
+}

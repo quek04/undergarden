@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "undergarden:block/stripped_grongle_stem_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "undergarden:block/stripped_grongle_stem"
+    },
+    "axis=z": {
+      "model": "undergarden:block/stripped_grongle_stem_horizontal",
+      "x": 90
+    }
+  }
+}

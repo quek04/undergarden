@@ -35,9 +35,7 @@ public class UndergardenFluidBlock extends FlowingFluidBlock {
                     livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
                 }
             }
-
         }
-
     }
 
     @Override
@@ -45,7 +43,6 @@ public class UndergardenFluidBlock extends FlowingFluidBlock {
         if (this.reactWithNeighbors(worldIn, pos, state)) {
             worldIn.getPendingFluidTicks().scheduleTick(pos, state.getFluidState().getFluid(), this.getFluid().getTickRate(worldIn));
         }
-
     }
 
     private boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
@@ -70,7 +67,6 @@ public class UndergardenFluidBlock extends FlowingFluidBlock {
                 }
             }
         }
-
         return true;
     }
 

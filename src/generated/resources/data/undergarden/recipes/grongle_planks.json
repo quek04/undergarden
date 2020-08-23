@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:grongle_stem"
+    }
+  ],
+  "result": {
+    "item": "undergarden:grongle_planks",
+    "count": 4
+  }
+}

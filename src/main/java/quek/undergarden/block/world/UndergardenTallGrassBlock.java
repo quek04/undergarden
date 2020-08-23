@@ -38,16 +38,6 @@ public class UndergardenTallGrassBlock extends UndergardenBushBlock implements I
     }
 
     @Override
-    public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-        return true;
-    }
-
-    @Override
-    public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-        return 300;
-    }
-
-    @Override
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }

@@ -1,5 +1,5 @@
 package quek.undergarden.biome;
-
+/*
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.world.biome.ParticleEffectAmbience;
@@ -50,3 +50,5 @@ public class SmogstemForestBiome extends UndergardenBiome {
     }
 
 }
+
+ */

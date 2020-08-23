@@ -1,0 +1,168 @@
+{
+  "precipitation": "none",
+  "category": "none",
+  "depth": 0.1,
+  "scale": 0.2,
+  "temperature": 0.8,
+  "temperature_modifier": "none",
+  "downfall": 0,
+  "effects": {
+    "fog_color": 595225,
+    "foliage_color": 5928296,
+    "grass_color": 5928296,
+    "sky_color": 595225,
+    "water_color": 342306,
+    "water_fog_color": 332810,
+    "grass_color_modifier": "none",
+    "particle": {
+      "options": {
+        "type": "warped_spore"
+      },
+      "probability": 0.025
+    },
+    "ambient_sound": "undergarden:ambient.undergarden_ambiance",
+    "music": {
+      "sound": "undergarden:music.undergarden_music",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": true
+    }
+  },
+  "surface_builder": {
+    "type": "default",
+    "config": {
+      "top_material": {
+        "Name": "undergarden:deepturf_block",
+        "Properties": {
+          "snowy": "false"
+        }
+      },
+      "under_material": {
+        "Name": "undergarden:deepsoil"
+      },
+      "underwater_material": {
+        "Name": "undergarden:deepsoil"
+      }
+    }
+  },
+  "carvers": {
+    "air": [
+      {
+        "type": "undergarden:undergarden_cave",
+        "config": {
+          "probability": 0.5
+        }
+      }
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "undergarden:coal_ore",
+      "undergarden:iron_ore",
+      "undergarden:gold_ore",
+      "undergarden:diamond_ore",
+      "undergarden:cloggrum_ore",
+      "undergarden:froststeel_ore",
+      "undergarden:utherium_ore",
+      "undergarden:regalium_ore",
+      "undergarden:shiverstone_patch",
+      "undergarden:deepsoil_patch"
+    ],
+    [
+      "undergarden:ditchbulb_patch",
+      "undergarden:smogstem_tree",
+      "undergarden:droopvine",
+      "undergarden:glowing_kelp",
+      "undergarden:seagrass_patch",
+      "undergarden:deepturf_patch",
+      "undergarden:shimmerweed_patch",
+      "undergarden:pebble_patch",
+      "undergarden:indigo_patch",
+      "undergarden:veil_patch",
+      "undergarden:ink_patch",
+      "undergarden:blood_patch",
+      "undergarden:underbean_patch",
+      "undergarden:spring",
+      "undergarden:gloomgourd_patch"
+    ]
+  ],
+  "starts": [
+
+  ],
+  "spawners": {
+    "monster": [
+      {
+        "type": "undergarden:stoneborn",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "undergarden:rotling",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:rotwalker",
+        "weight": 5,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:rotbeast",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "creature": [
+      {
+        "type": "undergarden:dweller",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:gloomper",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:brute",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "ambient": [
+      {
+        "type": "undergarden:scintling",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 8
+      }
+    ],
+    "water_creature": [],
+    "water_ambient": [
+      {
+        "type": "undergarden:gwibling",
+        "minCount": 3,
+        "maxCount": 6
+      }
+    ],
+    "misc": []
+  },
+  "player_spawn_friendly": false,
+  "spawn_costs": {
+
+  }
+}
