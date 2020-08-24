@@ -4,17 +4,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.particles.ParticleTypes;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
 import quek.undergarden.registry.UndergardenTEs;
-
-import java.util.Random;
 
 public class SmogVentBlock extends Block {
 
@@ -26,6 +24,15 @@ public class SmogVentBlock extends Block {
                 .harvestTool(ToolType.PICKAXE)
                 .setLightLevel((state) -> 15)
         );
+    }
+
+    @Override
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+        if (!entityIn.func_230279_az_() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entityIn)) {
+            entityIn.setFire(3);
+        }
+
+        super.onEntityWalk(worldIn, pos, entityIn);
     }
 
     @Override
