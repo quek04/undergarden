@@ -22,6 +22,10 @@ public class BlisterbombEntity extends ProjectileItemEntity {
         super(UndergardenEntities.blisterbomb, thrower, world);
     }
 
+    public BlisterbombEntity(World worldIn, double x, double y, double z) {
+        super(UndergardenEntities.blisterbomb, x, y, z, worldIn);
+    }
+
     @Override
     protected Item getDefaultItem() {
         return UndergardenItems.blisterbomb.get();

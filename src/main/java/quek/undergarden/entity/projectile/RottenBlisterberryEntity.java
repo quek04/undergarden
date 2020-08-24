@@ -22,6 +22,10 @@ public class RottenBlisterberryEntity extends ProjectileItemEntity {
         super(UndergardenEntities.rotten_blisterberry, thrower, world);
     }
 
+    public RottenBlisterberryEntity(World worldIn, double x, double y, double z) {
+        super(UndergardenEntities.rotten_blisterberry, x, y, z, worldIn);
+    }
+
     @Override
     protected Item getDefaultItem() {
         return UndergardenItems.rotten_blisterberry.get();

@@ -1,14 +1,20 @@
 package quek.undergarden;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.block.Block;
+import net.minecraft.block.*;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.dispenser.*;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.AxeItem;
+import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.*;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.DimensionType;
+import net.minecraft.util.Util;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -26,11 +32,11 @@ import net.minecraftforge.fml.common.Mod;
 import org.apache.commons.lang3.tuple.Pair;
 import quek.undergarden.client.*;
 import quek.undergarden.data.*;
+import quek.undergarden.entity.projectile.*;
+import quek.undergarden.item.UndergardenSpawnEggItem;
 import quek.undergarden.registry.*;
 
-import javax.annotation.Nullable;
 import java.util.UUID;
-import java.util.function.Consumer;
 
 @Mod(UndergardenMod.MODID)
 public class UndergardenMod {
@@ -73,6 +79,72 @@ public class UndergardenMod {
 				.put(UndergardenBlocks.wigglewood_log.get(), UndergardenBlocks.stripped_wigglewood_log.get())
 				.put(UndergardenBlocks.grongle_stem.get(), UndergardenBlocks.stripped_grongle_stem.get())
 				.build();
+
+		IDispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
+			private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
+
+			public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+				BucketItem bucketitem = (BucketItem)stack.getItem();
+				BlockPos blockpos = source.getBlockPos().offset(source.getBlockState().get(DispenserBlock.FACING));
+				World world = source.getWorld();
+				if (bucketitem.tryPlaceContainedLiquid(null, world, blockpos, null)) {
+					bucketitem.onLiquidPlaced(world, stack, blockpos);
+					return new ItemStack(Items.BUCKET);
+				} else {
+					return this.defaultBehavior.dispense(source, stack);
+				}
+			}
+		};
+
+		DefaultDispenseItemBehavior eggBehavior = new DefaultDispenseItemBehavior() {
+			public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+				Direction direction = source.getBlockState().get(DispenserBlock.FACING);
+				EntityType<?> type = ((UndergardenSpawnEggItem)stack.getItem()).getType(stack.getTag());
+				type.spawn(source.getWorld(), stack, null, source.getBlockPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
+				stack.shrink(1);
+				return stack;
+			}
+		};
+
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.virulent_mix_bucket.get(), bucketBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.gwibling_bucket.get(), bucketBehavior);
+
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.dweller_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.gwibling_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.rotdweller_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.rotling_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.rotwalker_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.rotbeast_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.brute_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.scintling_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.blisterbomber_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.gloomper_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.stoneborn_spawn_egg.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.masticator_spawn_egg.get(), eggBehavior);
+
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.depthrock_pebble.get(), new ProjectileDispenseBehavior() {
+			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+				return Util.make(new SlingshotAmmoEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+			}
+		});
+
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.goo_ball.get(), new ProjectileDispenseBehavior() {
+			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+				return Util.make(new GooBallEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+			}
+		});
+
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.rotten_blisterberry.get(), new ProjectileDispenseBehavior() {
+			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+				return Util.make(new RottenBlisterberryEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+			}
+		});
+
+		DispenserBlock.registerDispenseBehavior(UndergardenItems.blisterbomb.get(), new ProjectileDispenseBehavior() {
+			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+				return Util.make(new BlisterbombEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+			}
+		});
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
