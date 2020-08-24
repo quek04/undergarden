@@ -157,6 +157,7 @@
     "water_ambient": [
       {
         "type": "undergarden:gwibling",
+        "weight": 10,
         "minCount": 3,
         "maxCount": 6
       }
