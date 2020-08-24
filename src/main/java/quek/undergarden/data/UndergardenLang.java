@@ -2,6 +2,8 @@ package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.data.LanguageProvider;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.*;
@@ -26,6 +28,10 @@ public class UndergardenLang extends LanguageProvider {
 
     protected void addSubtitle(String category, String subtitleName, String name) {
         add("subtitles." + category + "." + subtitleName, name);
+    }
+
+    protected void addBiome(RegistryKey<Biome> biomeKey, String name) {
+        add("biome.undergarden." + biomeKey.func_240901_a_().getPath(), name);
     }
 
     @Override
@@ -247,13 +253,13 @@ public class UndergardenLang extends LanguageProvider {
 
         addItem(UndergardenItems.masticator_spawn_egg, "Masticator Spawn Egg");
 
-        //addBiome(UndergardenBiomes.FORGOTTEN_FIELD, "Forgotten Field");
-        //addBiome(UndergardenBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
-        //addBiome(UndergardenBiomes.BARREN_ABYSS, "Barren Abyss");
-        //addBiome(UndergardenBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
-        //addBiome(UndergardenBiomes.DENSE_FOREST, "Dense Forest");
-        //addBiome(UndergardenBiomes.SMOG_SPIRES, "Smog Spires");
-        //addBiome(UndergardenBiomes.OTHERSIDE, "The Otherside");
+        addBiome(UndergardenBiomes.barren_abyss, "Barren Abyss");
+        addBiome(UndergardenBiomes.dense_forest, "Dense Forest");
+        addBiome(UndergardenBiomes.forgotten_field, "Forgotten Field");
+        addBiome(UndergardenBiomes.gronglegrowth, "Gronglegrowth");
+        addBiome(UndergardenBiomes.smog_spires, "Smog Spires");
+        addBiome(UndergardenBiomes.smogstem_forest, "Smogstem Forest");
+        addBiome(UndergardenBiomes.wigglewood_forest, "Wigglewood Forest");
 
         addEntityType(UndergardenEntities.DWELLER, "Dweller");
         addEntityType(UndergardenEntities.ROTDWELLER, "Rotdweller");
