@@ -44,8 +44,7 @@ public class GooBallEntity extends ProjectileItemEntity {
 
     @OnlyIn(Dist.CLIENT)
     private IParticleData makeParticle() {
-        ItemStack itemstack = this.func_213882_k();
-        return itemstack.isEmpty() ? ParticleTypes.ITEM_SLIME : new ItemParticleData(ParticleTypes.ITEM, itemstack);
+        return new ItemParticleData(ParticleTypes.ITEM, new ItemStack(getDefaultItem()));
     }
 
     @OnlyIn(Dist.CLIENT)
