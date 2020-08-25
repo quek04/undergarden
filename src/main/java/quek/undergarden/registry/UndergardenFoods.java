@@ -22,6 +22,4 @@ public class UndergardenFoods {
         return (new Food.Builder().hunger(8).saturation(0.8F).meat().build());
     }
 
-
-
 }
