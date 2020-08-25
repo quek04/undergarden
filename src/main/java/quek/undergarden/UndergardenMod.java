@@ -169,28 +169,6 @@ public class UndergardenMod {
 			generator.addProvider(new UndergardenRecipes(generator));
 			generator.addProvider(new UndergardenLootTables(generator));
 		}
-
 	}
 
-	@Mod.EventBusSubscriber(modid = MODID)
-	public static class ForgeEventBus {
-
-		@SubscribeEvent
-		@OnlyIn(Dist.CLIENT)
-		public static void memeEvent(RenderPlayerEvent event) {
-			if(UndergardenConfig.enableMemeCode.get() == true) {
-				if(event.getEntity().world.func_234923_W_() == UndergardenDimensions.undergarden_w || event.getEntity().world.func_234923_W_() == UndergardenDimensions.otherside_w)
-				if(event.getEntity() instanceof PlayerEntity && UUID.fromString("353a859b-ba16-4e6a-8f63-9a8c79ab0071").equals(event.getEntity().getUniqueID())) {
-					event.getMatrixStack().scale(.5F, .5F, .5F);
-				}
-				if(event.getEntity() instanceof PlayerEntity && UUID.fromString("cf1f2cfc-1a85-40a6-aaf4-a17355ac6579").equals(event.getEntity().getUniqueID())) {
-					event.getMatrixStack().scale(1F, .5F, 1F);
-				}
-				if(event.getEntity() instanceof PlayerEntity && UUID.fromString("925e5f40-b7d2-4614-8491-c1bc13d8223d").equals(event.getEntity().getUniqueID())) {
-					event.getMatrixStack().scale(1.5F, 1F, 1.5F);
-				}
-			}
-		}
-
-	}
 }
