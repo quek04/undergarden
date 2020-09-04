@@ -2,7 +2,7 @@ package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.ExistingFileHelper;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.UndergardenMod;
 import quek.undergarden.data.provider.UndergardenItemModelProvider;
 import quek.undergarden.registry.UndergardenBlocks;
