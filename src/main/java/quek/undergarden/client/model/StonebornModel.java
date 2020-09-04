@@ -7,8 +7,11 @@ import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelHelper;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class StonebornModel<T extends StonebornEntity> extends AgeableModel<T> {
 	private final ModelRenderer stoneborn;
 	private final ModelRenderer head;

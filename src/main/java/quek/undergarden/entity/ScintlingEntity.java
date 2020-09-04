@@ -16,7 +16,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenEntities;
 
 import javax.annotation.Nullable;
 import java.util.Random;

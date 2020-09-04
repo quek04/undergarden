@@ -6,8 +6,11 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.GloomperEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class GloomperModel<T extends GloomperEntity> extends AgeableModel<T> {
 	private final ModelRenderer gloomper;
 	private final ModelRenderer body;

@@ -17,8 +17,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
-import quek.undergarden.entity.rotspawn.RotbeastEntity;
-import quek.undergarden.entity.rotspawn.RotwalkerEntity;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenSoundEvents;

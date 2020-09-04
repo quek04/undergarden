@@ -2,7 +2,6 @@ package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;

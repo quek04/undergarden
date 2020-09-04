@@ -7,7 +7,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.dispenser.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.Direction;
@@ -15,12 +14,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -35,8 +30,6 @@ import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.*;
 import quek.undergarden.item.UndergardenSpawnEggItem;
 import quek.undergarden.registry.*;
-
-import java.util.UUID;
 
 @Mod(UndergardenMod.MODID)
 public class UndergardenMod {

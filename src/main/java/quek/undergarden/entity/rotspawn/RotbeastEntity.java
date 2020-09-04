@@ -12,7 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
 public class RotbeastEntity extends AbstractRotspawnEntity {

@@ -1,7 +1,6 @@
 package quek.undergarden;
 
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModList;
 
 public class UndergardenConfig {
 

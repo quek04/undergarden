@@ -19,7 +19,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.registry.UndergardenItemGroups;
-import quek.undergarden.registry.UndergardenItemTiers;
 import quek.undergarden.registry.UndergardenItems;
 
 import javax.annotation.Nullable;

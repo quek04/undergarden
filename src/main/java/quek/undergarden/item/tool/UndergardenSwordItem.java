@@ -17,7 +17,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.UndergardenMod;
 import quek.undergarden.registry.UndergardenEntities;
 import quek.undergarden.registry.UndergardenItemGroups;
 import quek.undergarden.registry.UndergardenItems;
