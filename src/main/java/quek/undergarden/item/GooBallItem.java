@@ -16,6 +16,8 @@ import quek.undergarden.registry.UndergardenEffects;
 import quek.undergarden.registry.UndergardenFoods;
 import quek.undergarden.registry.UndergardenItemGroups;
 
+import net.minecraft.item.Item.Properties;
+
 public class GooBallItem extends Item {
 
     public GooBallItem() {

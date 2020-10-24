@@ -11,6 +11,8 @@ import net.minecraft.world.World;
 import quek.undergarden.registry.UndergardenItemGroups;
 import quek.undergarden.registry.UndergardenItemTiers;
 
+import net.minecraft.item.Item.Properties;
+
 public class CloggrumBattleaxeItem extends SwordItem {
 
     public CloggrumBattleaxeItem() {

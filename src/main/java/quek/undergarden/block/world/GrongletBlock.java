@@ -33,7 +33,7 @@ public class GrongletBlock extends UndergardenBushBlock implements IGrowable {
     }
 
     @Override
-    public boolean canGrow(IBlockReader reader, BlockPos pos, BlockState state, boolean p_176473_4_) {
+    public boolean canGrow(IBlockReader reader, BlockPos pos, BlockState state, boolean isClient) {
         Block lvt_5_1_ = this.fungusConfig.get().config.field_236303_f_.getBlock();
         Block lvt_6_1_ = reader.getBlockState(pos.down()).getBlock();
         return lvt_6_1_ == lvt_5_1_;
@@ -50,7 +50,7 @@ public class GrongletBlock extends UndergardenBushBlock implements IGrowable {
     }
 
     @Override
-    public Block.OffsetType getOffsetType() {
-        return Block.OffsetType.XZ;
+    public AbstractBlock.OffsetType getOffsetType() {
+        return AbstractBlock.OffsetType.XZ;
     }
 }

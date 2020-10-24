@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import quek.undergarden.registry.UndergardenTEs;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class SmogVentBlock extends Block {
 
     public SmogVentBlock() {
@@ -28,7 +30,7 @@ public class SmogVentBlock extends Block {
 
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-        if (!entityIn.func_230279_az_() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entityIn)) {
+        if (!entityIn.isImmuneToFire() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entityIn)) {
             entityIn.setFire(3);
         }
 

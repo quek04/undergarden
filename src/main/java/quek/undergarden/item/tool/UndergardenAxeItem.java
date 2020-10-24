@@ -24,6 +24,8 @@ import quek.undergarden.registry.UndergardenItems;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import net.minecraft.item.Item.Properties;
+
 @Mod.EventBusSubscriber
 public class UndergardenAxeItem extends AxeItem {
     public UndergardenAxeItem(IItemTier tier, float attack) {
@@ -37,10 +39,10 @@ public class UndergardenAxeItem extends AxeItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UndergardenItems.utheric_axe.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.utheric_axe").func_240701_a_(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.utheric_axe").mergeStyle(TextFormatting.GRAY));
         }
         else if(stack.getItem() == UndergardenItems.froststeel_axe.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").func_240701_a_(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
 

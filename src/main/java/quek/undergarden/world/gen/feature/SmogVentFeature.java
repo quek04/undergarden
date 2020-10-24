@@ -47,15 +47,15 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
                             Block block = blockstate.getBlock();
                             BlockPos ventPos = new BlockPos(pos.getX(), pos.getY() + 7, pos.getZ()); //
                             if (blockstate.isAir(worldIn, pos.add(i1, k, j1)) || block == UndergardenBlocks.ashen_deepturf.get()) {
-                                this.func_230367_a_(worldIn, pos.add(i1, k, j1), UndergardenBlocks.depthrock.get().getDefaultState());
+                                this.setBlockState(worldIn, pos.add(i1, k, j1), UndergardenBlocks.depthrock.get().getDefaultState());
                             }
-                            this.func_230367_a_(worldIn, ventPos, UndergardenBlocks.smog_vent.get().getDefaultState());
+                            this.setBlockState(worldIn, ventPos, UndergardenBlocks.smog_vent.get().getDefaultState());
 
                             if (k != 0 && l > 1) {
                                 blockstate = worldIn.getBlockState(pos.add(i1, -k, j1));
                                 block = blockstate.getBlock();
                                 if (blockstate.isAir(worldIn, pos.add(i1, -k, j1)) || block == UndergardenBlocks.ashen_deepturf.get()) {
-                                    this.func_230367_a_(worldIn, pos.add(i1, -k, j1), UndergardenBlocks.depthrock.get().getDefaultState());
+                                    this.setBlockState(worldIn, pos.add(i1, -k, j1), UndergardenBlocks.depthrock.get().getDefaultState());
                                 }
                             }
                         }

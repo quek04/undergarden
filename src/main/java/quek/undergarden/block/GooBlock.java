@@ -27,6 +27,8 @@ import quek.undergarden.registry.UndergardenItems;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GooBlock extends Block {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
@@ -49,7 +51,7 @@ public class GooBlock extends Block {
         if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UndergardenItems.cloggrum_boots.get() && !((PlayerEntity) entityIn).isPotionActive(UndergardenEffects.gooey.get())) {
 
         }
-        else if(!(entityIn instanceof ScintlingEntity) && entityIn.func_233570_aj_()) {
+        else if(!(entityIn instanceof ScintlingEntity) && entityIn.isOnGround()) {
             entityIn.setMotionMultiplier(state, new Vector3d(0.45D, 0.45D, 0.45D));
         }
 

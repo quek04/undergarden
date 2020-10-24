@@ -31,12 +31,12 @@ import java.util.*;
 
 public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
-    public UndergardenTreeFeature(Codec<BaseTreeFeatureConfig> p_i231953_1_) {
-        super(p_i231953_1_);
+    public UndergardenTreeFeature(Codec<BaseTreeFeatureConfig> codec) {
+        super(codec);
     }
 
     public static boolean func_236410_c_(IWorldGenerationBaseReader world, BlockPos pos) {
-        return func_236404_a_(world, pos) || world.hasBlockState(pos, (state) -> state.isIn(BlockTags.LOGS));
+        return isReplaceableAt(world, pos) || world.hasBlockState(pos, (state) -> state.isIn(BlockTags.LOGS));
     }
 
     private static boolean isVine(IWorldGenerationBaseReader world, BlockPos pos) {
@@ -69,7 +69,7 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
         world.setBlockState(pos, state, 19);
     }
 
-    public static boolean func_236404_a_(IWorldGenerationBaseReader world, BlockPos pos) {
+    public static boolean isReplaceableAt(IWorldGenerationBaseReader world, BlockPos pos) {
         return isLeaves(world, pos) || isTallPlant(world, pos) || isWater(world, pos);
     }
 
@@ -113,7 +113,7 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
             for(int k = -j; k <= j; ++k) {
                 for(int l = -j; l <= j; ++l) {
-                    blockpos$mutable.func_239621_a_(p_241521_3_, k, i, l);
+                    blockpos$mutable.setAndOffset(p_241521_3_, k, i, l);
                     if (!func_236410_c_(p_241521_1_, blockpos$mutable) || !p_241521_4_.field_236681_j_ && isVine(p_241521_1_, blockpos$mutable)) {
                         return i - 2;
                     }
@@ -124,8 +124,8 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
         return p_241521_2_;
     }
 
-    protected void func_230367_a_(IWorldWriter p_230367_1_, BlockPos p_230367_2_, BlockState p_230367_3_) {
-        func_236408_b_(p_230367_1_, p_230367_2_, p_230367_3_);
+    protected void setBlockState(IWorldWriter world, BlockPos pos, BlockState state) {
+        func_236408_b_(world, pos, state);
     }
 
     @Override
@@ -177,10 +177,10 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
             }
 
             for(Direction direction : Direction.values()) {
-                blockpos$mutable.func_239622_a_(blockpos1, direction);
+                blockpos$mutable.setAndMove(blockpos1, direction);
                 if (!p_236403_3_.contains(blockpos$mutable)) {
                     BlockState blockstate = p_236403_1_.getBlockState(blockpos$mutable);
-                    if (blockstate.func_235901_b_(BlockStateProperties.DISTANCE_1_7)) {
+                    if (blockstate.hasProperty(BlockStateProperties.DISTANCE_1_7)) {
                         list.get(0).add(blockpos$mutable.toImmutable());
                         func_236408_b_(p_236403_1_, blockpos$mutable, blockstate.with(BlockStateProperties.DISTANCE_1_7, Integer.valueOf(1)));
                         if (p_236403_2_.isVecInside(blockpos$mutable)) {
@@ -201,10 +201,10 @@ public class UndergardenTreeFeature extends Feature<BaseTreeFeatureConfig> {
                 }
 
                 for(Direction direction1 : Direction.values()) {
-                    blockpos$mutable.func_239622_a_(blockpos2, direction1);
+                    blockpos$mutable.setAndMove(blockpos2, direction1);
                     if (!set.contains(blockpos$mutable) && !set1.contains(blockpos$mutable)) {
                         BlockState blockstate1 = p_236403_1_.getBlockState(blockpos$mutable);
-                        if (blockstate1.func_235901_b_(BlockStateProperties.DISTANCE_1_7)) {
+                        if (blockstate1.hasProperty(BlockStateProperties.DISTANCE_1_7)) {
                             int k = blockstate1.get(BlockStateProperties.DISTANCE_1_7);
                             if (k > l + 1) {
                                 BlockState blockstate2 = blockstate1.with(BlockStateProperties.DISTANCE_1_7, Integer.valueOf(l + 1));

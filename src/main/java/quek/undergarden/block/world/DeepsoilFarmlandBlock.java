@@ -22,6 +22,8 @@ import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class DeepsoilFarmlandBlock extends Block {
 
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE_0_7;

@@ -44,14 +44,14 @@ public class MasticatorEntity extends MonsterEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 150.0D) //hp
-                .func_233815_a_(Attributes.ARMOR, 10.0D) //armor
-                .func_233815_a_(Attributes.ARMOR_TOUGHNESS, 5.0D) //armor toughness
-                .func_233815_a_(Attributes.ATTACK_DAMAGE, 10.0D) //attack damage
-                .func_233815_a_(Attributes.ATTACK_KNOCKBACK, 2.0D) //attack knockback
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.40D) //speed
-                .func_233815_a_(Attributes.KNOCKBACK_RESISTANCE, 1.0D) //knockback resist
-                .func_233815_a_(Attributes.FOLLOW_RANGE, 64.0D); //follow range
+                .createMutableAttribute(Attributes.MAX_HEALTH, 150.0D) //hp
+                .createMutableAttribute(Attributes.ARMOR, 10.0D) //armor
+                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 5.0D) //armor toughness
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D) //attack damage
+                .createMutableAttribute(Attributes.ATTACK_KNOCKBACK, 2.0D) //attack knockback
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.40D) //speed
+                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D) //knockback resist
+                .createMutableAttribute(Attributes.FOLLOW_RANGE, 64.0D); //follow range
     }
 
     @Override

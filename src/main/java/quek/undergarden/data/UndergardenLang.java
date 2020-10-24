@@ -15,7 +15,7 @@ public class UndergardenLang extends LanguageProvider {
     }
 
     protected void addItemGroup(ItemGroup group, String name) {
-        add(group.func_242392_c().getString(), name);
+        add(group.getGroupName().getString(), name);
     }
 
     protected void addAdvTitle(String advancementTitle, String name) {
@@ -31,7 +31,7 @@ public class UndergardenLang extends LanguageProvider {
     }
 
     protected void addBiome(RegistryKey<Biome> biomeKey, String name) {
-        add("biome.undergarden." + biomeKey.func_240901_a_().getPath(), name);
+        add("biome.undergarden." + biomeKey.getLocation().getPath(), name);
     }
 
     @Override

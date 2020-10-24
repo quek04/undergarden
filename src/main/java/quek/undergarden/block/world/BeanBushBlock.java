@@ -20,11 +20,13 @@ import quek.undergarden.registry.UndergardenItems;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-    private static final VoxelShape field_220126_b = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-    private static final VoxelShape field_220127_c = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+    private static final VoxelShape BUSHLING_SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
+    private static final VoxelShape GROWING_SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
     public BeanBushBlock() {
         super(Properties.create(Material.PLANTS)
@@ -44,9 +46,9 @@ public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         if (state.get(AGE) == 0) {
-            return field_220126_b;
+            return BUSHLING_SHAPE;
         } else {
-            return state.get(AGE) < 3 ? field_220127_c : super.getShape(state, worldIn, pos, context);
+            return state.get(AGE) < 3 ? GROWING_SHAPE : super.getShape(state, worldIn, pos, context);
         }
     }
 
@@ -62,7 +64,7 @@ public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult p_225533_6_) {
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         int i = state.get(AGE);
         boolean flag = i == 3;
         if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
@@ -74,7 +76,7 @@ public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
             worldIn.setBlockState(pos, state.with(AGE, 1), 2);
             return ActionResultType.SUCCESS;
         } else {
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, p_225533_6_);
+            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
         }
     }
 
@@ -94,8 +96,8 @@ public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
     }
 
     @Override
-    public void grow(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_) {
-        int i = Math.min(3, p_225535_4_.get(AGE) + 1);
-        p_225535_1_.setBlockState(p_225535_3_, p_225535_4_.with(AGE, i), 2);
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+        int i = Math.min(3, state.get(AGE) + 1);
+        worldIn.setBlockState(pos, state.with(AGE, i), 2);
     }
 }

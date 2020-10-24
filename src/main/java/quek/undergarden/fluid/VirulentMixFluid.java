@@ -4,6 +4,8 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
+import net.minecraftforge.fluids.ForgeFlowingFluid.Properties;
+
 public class VirulentMixFluid extends ForgeFlowingFluid {
 
     protected VirulentMixFluid(Properties properties) {

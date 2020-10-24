@@ -19,6 +19,8 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiquidContainer {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
@@ -75,7 +77,7 @@ public class GlowingSeaGrassBlock extends BushBlock implements IGrowable, ILiqui
     }
 
     @Override
-    public void grow(ServerWorld p_225535_1_, Random rand, BlockPos pos, BlockState p_225535_4_) {
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
 
     }
 

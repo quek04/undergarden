@@ -19,6 +19,8 @@ import quek.undergarden.registry.UndergardenItemGroups;
 
 import java.util.Map;
 
+import net.minecraft.item.Item.Properties;
+
 public class UndergardenHoeItem extends HoeItem {
 
     protected static final Map<Block, BlockState> HOE_LOOKUP = Maps.newHashMap(ImmutableMap.of(UndergardenBlocks.deepturf_block.get(), UndergardenBlocks.deepsoil_farmland.get().getDefaultState(), UndergardenBlocks.deepsoil.get(), UndergardenBlocks.deepsoil_farmland.get().getDefaultState()));

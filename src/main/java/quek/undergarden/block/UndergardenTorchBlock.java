@@ -5,6 +5,8 @@ import net.minecraft.block.TorchBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.particles.ParticleTypes;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenTorchBlock extends TorchBlock {
 
     public UndergardenTorchBlock() {

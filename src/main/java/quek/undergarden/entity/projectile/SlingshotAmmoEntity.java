@@ -19,8 +19,8 @@ import quek.undergarden.registry.UndergardenItems;
 
 public class SlingshotAmmoEntity extends ProjectileItemEntity {
 
-    public SlingshotAmmoEntity(EntityType<? extends SlingshotAmmoEntity> p_i50172_1_, World p_i50172_2_) {
-        super(p_i50172_1_, p_i50172_2_);
+    public SlingshotAmmoEntity(EntityType<? extends SlingshotAmmoEntity> type, World worldIn) {
+        super(type, worldIn);
     }
 
     public SlingshotAmmoEntity(World worldIn, double x, double y, double z) {

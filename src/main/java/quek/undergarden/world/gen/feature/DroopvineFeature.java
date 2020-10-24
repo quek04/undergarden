@@ -45,12 +45,12 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
         BlockPos.Mutable blockpos$mutable1 = new BlockPos.Mutable();
 
         for(int i = 0; i < 200; ++i) {
-            blockpos$mutable.func_239621_a_(pos, rand.nextInt(6) - rand.nextInt(6), rand.nextInt(2) - rand.nextInt(5), rand.nextInt(6) - rand.nextInt(6));
+            blockpos$mutable.setAndOffset(pos, rand.nextInt(6) - rand.nextInt(6), rand.nextInt(2) - rand.nextInt(5), rand.nextInt(6) - rand.nextInt(6));
             if (world.isAirBlock(blockpos$mutable)) {
                 int j = 0;
 
                 for(Direction direction : directionArray) {
-                    BlockState blockstate = world.getBlockState(blockpos$mutable1.func_239622_a_(blockpos$mutable, direction));
+                    BlockState blockstate = world.getBlockState(blockpos$mutable1.setAndMove(blockpos$mutable, direction));
                     if (blockstate.isIn(UndergardenBlocks.depthrock.get()) || blockstate.isIn(UndergardenBlocks.shiverstone.get())) {
                         ++j;
                     }
@@ -67,7 +67,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
         for(int i = 0; i < 100; ++i) {
-            blockpos$mutable.func_239621_a_(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
+            blockpos$mutable.setAndOffset(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
             if (world.isAirBlock(blockpos$mutable)) {
                 BlockState blockstate = world.getBlockState(blockpos$mutable.up());
                 if (blockstate.isIn(UndergardenBlocks.depthrock.get()) || blockstate.isIn(UndergardenBlocks.shiverstone.get())) {
@@ -91,7 +91,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
         for(int i = 0; i <= x; ++i) {
             if (world.isAirBlock(posMutable)) {
                 if (i == x || !world.isAirBlock(posMutable.down())) {
-                    world.setBlockState(posMutable, UndergardenBlocks.droopvine_top.get().getDefaultState().with(AbstractTopPlantBlock.field_235502_d_, MathHelper.nextInt(rand, y, z)), 2);
+                    world.setBlockState(posMutable, UndergardenBlocks.droopvine_top.get().getDefaultState().with(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
                     break;
                 }
 

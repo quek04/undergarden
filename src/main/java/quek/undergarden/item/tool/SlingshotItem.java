@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
+import net.minecraft.item.Item.Properties;
+
 public class SlingshotItem extends ShootableItem {
 
     public static final Predicate<ItemStack> SLINGSHOT_AMMO = (stack) -> stack.getItem() == UndergardenItems.depthrock_pebble.get();
@@ -42,7 +44,7 @@ public class SlingshotItem extends ShootableItem {
 
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("tooltip.slingshot").func_240701_a_(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("tooltip.slingshot").mergeStyle(TextFormatting.GRAY));
     }
 
     @Override

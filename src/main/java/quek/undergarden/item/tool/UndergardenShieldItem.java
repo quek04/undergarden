@@ -13,6 +13,8 @@ import quek.undergarden.registry.UndergardenShieldTiers;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.item.Item.Properties;
+
 @Mod.EventBusSubscriber
 public class UndergardenShieldItem extends ShieldItem {
 

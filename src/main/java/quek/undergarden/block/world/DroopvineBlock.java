@@ -15,6 +15,8 @@ import quek.undergarden.registry.UndergardenBlocks;
 import java.util.Random;
 import java.util.function.ToIntFunction;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     public static final BooleanProperty GLOWY = BooleanProperty.create("glowy");
@@ -57,7 +59,7 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
     }
 
     @Override
-    protected AbstractTopPlantBlock func_230331_c_() {
+    protected AbstractTopPlantBlock getTopPlantBlock() {
         return (AbstractTopPlantBlock)UndergardenBlocks.droopvine_top.get();
     }
 

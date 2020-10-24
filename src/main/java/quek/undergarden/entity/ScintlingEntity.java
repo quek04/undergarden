@@ -37,8 +37,8 @@ public class ScintlingEntity extends AnimalEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AnimalEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 2.0D) //hp
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.20D); //speed
+                .createMutableAttribute(Attributes.MAX_HEALTH, 2.0D) //hp
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.20D); //speed
     }
 
 

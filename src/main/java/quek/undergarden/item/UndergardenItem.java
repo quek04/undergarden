@@ -5,6 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
 import quek.undergarden.registry.UndergardenItemGroups;
 
+import net.minecraft.item.Item.Properties;
+
 public class UndergardenItem extends Item {
 
     public UndergardenItem() {

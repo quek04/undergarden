@@ -8,6 +8,8 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenSaplingBlock extends SaplingBlock {
 
     public UndergardenSaplingBlock(Tree tree) {
@@ -24,7 +26,7 @@ public class UndergardenSaplingBlock extends SaplingBlock {
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         super.randomTick(state, worldIn, pos, rand);
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        this.func_226942_a_(worldIn, pos, state, rand);
+        this.placeTree(worldIn, pos, state, rand);
     }
 
 }

@@ -19,6 +19,8 @@ import quek.undergarden.registry.UndergardenTEs;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class ShardTorchBlock extends Block {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
@@ -33,28 +35,28 @@ public class ShardTorchBlock extends Block {
     }
 
     @Override
-    public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState p_196271_1_, Direction p_196271_2_, BlockState p_196271_3_, IWorld p_196271_4_, BlockPos p_196271_5_, BlockPos p_196271_6_) {
-        return p_196271_2_ == Direction.DOWN && !this.isValidPosition(p_196271_1_, p_196271_4_, p_196271_5_) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(p_196271_1_, p_196271_2_, p_196271_3_, p_196271_4_, p_196271_5_, p_196271_6_);
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        return facing == Direction.DOWN && !this.isValidPosition(stateIn, worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override
-    public boolean isValidPosition(BlockState p_196260_1_, IWorldReader p_196260_2_, BlockPos p_196260_3_) {
-        return hasEnoughSolidSide(p_196260_2_, p_196260_3_.down(), Direction.UP);
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        return hasEnoughSolidSide(worldIn, pos.down(), Direction.UP);
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState p_180655_1_, World p_180655_2_, BlockPos p_180655_3_, Random p_180655_4_) {
-        double lvt_5_1_ = (double)p_180655_3_.getX() + 0.5D;
-        double lvt_7_1_ = (double)p_180655_3_.getY() + 0.7D;
-        double lvt_9_1_ = (double)p_180655_3_.getZ() + 0.5D;
-        p_180655_2_.addParticle(ParticleTypes.SMOKE, lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
-        p_180655_2_.addParticle(UndergardenParticles.shard.get(), lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        double lvt_5_1_ = (double)pos.getX() + 0.5D;
+        double lvt_7_1_ = (double)pos.getY() + 0.7D;
+        double lvt_9_1_ = (double)pos.getZ() + 0.5D;
+        worldIn.addParticle(ParticleTypes.SMOKE, lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
+        worldIn.addParticle(UndergardenParticles.shard.get(), lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
     }
 
     @Override

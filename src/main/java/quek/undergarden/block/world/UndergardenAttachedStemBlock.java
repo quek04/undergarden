@@ -21,6 +21,8 @@ import quek.undergarden.registry.UndergardenItems;
 
 import java.util.Map;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenAttachedStemBlock extends AttachedStemBlock {
 
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;

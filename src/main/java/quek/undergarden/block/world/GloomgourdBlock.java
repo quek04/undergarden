@@ -13,6 +13,8 @@ import net.minecraft.world.World;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenItems;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GloomgourdBlock extends StemGrownBlock {
 
     public GloomgourdBlock() {
@@ -34,8 +36,8 @@ public class GloomgourdBlock extends StemGrownBlock {
                 ItemEntity itementity = new ItemEntity(worldIn, (double)pos.getX() + 0.5D + (double)direction1.getXOffset() * 0.65D, (double)pos.getY() + 0.1D, (double)pos.getZ() + 0.5D + (double)direction1.getZOffset() * 0.65D, new ItemStack(UndergardenItems.gloomgourd_seeds.get(), 4));
                 itementity.setMotion(0.05D * (double)direction1.getXOffset() + worldIn.rand.nextDouble() * 0.02D, 0.05D, 0.05D * (double)direction1.getZOffset() + worldIn.rand.nextDouble() * 0.02D);
                 worldIn.addEntity(itementity);
-                itemstack.damageItem(1, player, (p_220282_1_) -> {
-                    p_220282_1_.sendBreakAnimation(handIn);
+                itemstack.damageItem(1, player, (playerIn) -> {
+                    playerIn.sendBreakAnimation(handIn);
                 });
             }
 

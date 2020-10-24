@@ -16,6 +16,8 @@ import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GlowingKelpBlock extends Block implements ILiquidContainer {
 
     private final GlowingKelpTopBlock top;

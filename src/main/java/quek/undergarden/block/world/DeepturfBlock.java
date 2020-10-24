@@ -13,6 +13,8 @@ import net.minecraftforge.common.ToolType;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class DeepturfBlock extends UndergardenGrassBlock implements IGrowable {
 
     public DeepturfBlock() {

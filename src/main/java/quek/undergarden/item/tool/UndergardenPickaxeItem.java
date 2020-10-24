@@ -23,6 +23,8 @@ import quek.undergarden.registry.UndergardenItems;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import net.minecraft.item.Item.Properties;
+
 @Mod.EventBusSubscriber
 public class UndergardenPickaxeItem extends PickaxeItem {
     public UndergardenPickaxeItem(IItemTier tier) {
@@ -36,7 +38,7 @@ public class UndergardenPickaxeItem extends PickaxeItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UndergardenItems.froststeel_pickaxe.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").func_240701_a_(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
 

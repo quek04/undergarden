@@ -13,6 +13,8 @@ import quek.undergarden.registry.UndergardenDimensions;
 import quek.undergarden.registry.UndergardenItemGroups;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
+import net.minecraft.item.Item.Properties;
+
 public class CatalystItem extends Item {
 
     public CatalystItem() {
@@ -26,7 +28,7 @@ public class CatalystItem extends Item {
     @Override
     public ActionResultType onItemUse(ItemUseContext context) {
         if(context.getPlayer() != null) {
-            if(context.getPlayer().world.func_234923_W_() == UndergardenDimensions.undergarden_w || context.getPlayer().world.func_234923_W_() == World.field_234918_g_) {
+            if(context.getPlayer().world.getDimensionKey() == UndergardenDimensions.undergarden_w || context.getPlayer().world.getDimensionKey() == World.OVERWORLD) {
                 for(Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos framePos = context.getPos().offset(direction);
                     if(((UndergardenPortalBlock)UndergardenBlocks.undergarden_portal.get()).trySpawnPortal(context.getWorld(), framePos)) {

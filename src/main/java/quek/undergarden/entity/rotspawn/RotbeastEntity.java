@@ -24,11 +24,11 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 80.0D) //hp
-                .func_233815_a_(Attributes.ARMOR, 3.0D) //armor
-                .func_233815_a_(Attributes.ATTACK_DAMAGE, 10.0D) //attack damage
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.22D) //speed
-                .func_233815_a_(Attributes.KNOCKBACK_RESISTANCE, 0.5D); //knockback resist
+                .createMutableAttribute(Attributes.MAX_HEALTH, 80.0D) //hp
+                .createMutableAttribute(Attributes.ARMOR, 3.0D) //armor
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D) //attack damage
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.22D) //speed
+                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 0.5D); //knockback resist
     }
 
     @Override

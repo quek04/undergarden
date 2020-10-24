@@ -22,6 +22,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenDoublePlantBlock extends DoublePlantBlock {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 
@@ -88,7 +90,7 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!worldIn.isRemote) {
             if (player.isCreative()) {
-                func_241471_b_(worldIn, pos, state, player);
+                removeBottomHalf(worldIn, pos, state, player);
             } else {
                 spawnDrops(state, worldIn, pos, null, player, player.getHeldItemMainhand());
             }
@@ -103,14 +105,14 @@ public class UndergardenDoublePlantBlock extends DoublePlantBlock {
         super.harvestBlock(worldIn, player, pos, Blocks.AIR.getDefaultState(), te, stack);
     }
 
-    protected static void func_241471_b_(World p_241471_0_, BlockPos p_241471_1_, BlockState p_241471_2_, PlayerEntity p_241471_3_) {
-        DoubleBlockHalf doubleblockhalf = p_241471_2_.get(HALF);
+    protected static void removeBottomHalf(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        DoubleBlockHalf doubleblockhalf = state.get(HALF);
         if (doubleblockhalf == DoubleBlockHalf.UPPER) {
-            BlockPos blockpos = p_241471_1_.down();
-            BlockState blockstate = p_241471_0_.getBlockState(blockpos);
-            if (blockstate.getBlock() == p_241471_2_.getBlock() && blockstate.get(HALF) == DoubleBlockHalf.LOWER) {
-                p_241471_0_.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
-                p_241471_0_.playEvent(p_241471_3_, 2001, blockpos, Block.getStateId(blockstate));
+            BlockPos blockpos = pos.down();
+            BlockState blockstate = world.getBlockState(blockpos);
+            if (blockstate.getBlock() == state.getBlock() && blockstate.get(HALF) == DoubleBlockHalf.LOWER) {
+                world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
+                world.playEvent(player, 2001, blockpos, Block.getStateId(blockstate));
             }
         }
 

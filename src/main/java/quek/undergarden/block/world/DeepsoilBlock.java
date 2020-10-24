@@ -10,6 +10,8 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.ToolType;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class DeepsoilBlock extends Block {
 
     public DeepsoilBlock() {

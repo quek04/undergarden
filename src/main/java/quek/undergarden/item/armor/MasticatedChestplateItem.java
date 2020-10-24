@@ -9,6 +9,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UndergardenItemGroups;
 
+import net.minecraft.item.Item.Properties;
+
 public class MasticatedChestplateItem extends ArmorItem {
 
     public MasticatedChestplateItem(IArmorMaterial materialIn) {

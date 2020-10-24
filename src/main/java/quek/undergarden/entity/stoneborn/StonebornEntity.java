@@ -48,6 +48,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
+import net.minecraft.entity.ai.goal.Goal.Flag;
+
 public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, IMerchant {
 
     private static final DataParameter<Boolean> isChild = EntityDataManager.createKey(StonebornEntity.class, DataSerializers.BOOLEAN);
@@ -81,11 +83,11 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AgeableEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 50.0D)
-                .func_233815_a_(Attributes.ARMOR, 10.0D)
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.3D)
-                .func_233815_a_(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
-                .func_233815_a_(Attributes.ATTACK_DAMAGE, 10.0D)
+                .createMutableAttribute(Attributes.MAX_HEALTH, 50.0D)
+                .createMutableAttribute(Attributes.ARMOR, 10.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D)
+                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D)
                 ;
     }
 
@@ -197,7 +199,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
             ModifiableAttributeInstance modifiableattributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
             modifiableattributeinstance.removeModifier(BABY_SPEED_MODIFIER);
             if (childStoneborn) {
-                modifiableattributeinstance.func_233767_b_(BABY_SPEED_MODIFIER);
+                modifiableattributeinstance.applyNonPersistentModifier(BABY_SPEED_MODIFIER);
             }
         }
 
@@ -209,7 +211,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     public boolean inOverworld() {
-        return !this.world.func_230315_m_().func_241509_i_() && !this.isAIDisabled();
+        return !this.world.getDimensionType().isPiglinSafe() && !this.isAIDisabled();
     }
 
     @Override
@@ -241,23 +243,23 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public int func_230256_F__() {
+    public int getAngerTime() {
         return 0;
     }
 
     @Override
-    public void func_230260_a__(int i) {
+    public void setAngerTime(int i) {
 
     }
 
     @Nullable
     @Override
-    public UUID func_230257_G__() {
+    public UUID getAngerTarget() {
         return this.uuid;
     }
 
     @Override
-    public void func_230259_a_(@Nullable UUID uuid) {
+    public void setAngerTarget(@Nullable UUID uuid) {
         this.uuid = uuid;
     }
 
@@ -387,7 +389,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         this.livingSoundTime = -this.getTalkInterval();
         this.onVillagerTrade(offer);
         if (this.customer instanceof ServerPlayerEntity) {
-            //CriteriaTriggers.VILLAGER_TRADE.func_215114_a((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
+            //CriteriaTriggers.VILLAGER_TRADE.test((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
         }
 
     }
@@ -425,7 +427,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public boolean func_213705_dZ() {
+    public boolean hasXPBar() {
         return false;
     }
 
@@ -453,16 +455,16 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
             this(tradeItem, regalium, tradeItemCount, maxUses, xpValue, 0.05F);
         }
 
-        public ItemsForRegaliumTrade(ItemStack tradeItem, int regalium, int tradeItemCount, int maxUses, int xpValue, float p_i50532_6_) {
+        public ItemsForRegaliumTrade(ItemStack tradeItem, int regalium, int tradeItemCount, int maxUses, int xpValue, float priceMultiplier) {
             this.tradeItem = tradeItem;
             this.regaliumCount = regalium;
             this.tradeItemCount = tradeItemCount;
             this.maxUses = maxUses;
             this.xpValue = xpValue;
-            this.priceMultiplier = p_i50532_6_;
+            this.priceMultiplier = priceMultiplier;
         }
 
-        public MerchantOffer getOffer(Entity p_221182_1_, Random p_221182_2_) {
+        public MerchantOffer getOffer(Entity trader, Random rand) {
             return new MerchantOffer(new ItemStack(UndergardenItems.regalium_nugget.get(), this.regaliumCount), new ItemStack(this.tradeItem.getItem(), this.tradeItemCount), this.maxUses, this.xpValue, this.priceMultiplier);
         }
     }
@@ -484,7 +486,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
             this.priceMultiplier = 0.05F;
         }
 
-        public MerchantOffer getOffer(Entity p_221182_1_, Random p_221182_2_) {
+        public MerchantOffer getOffer(Entity trader, Random rand) {
             return new MerchantOffer(new ItemStack(this.tradeItem, this.count), (new ItemStack(UndergardenItems.regalium_nugget.get(), this.regaliumCount)), this.maxUses, this.xpValue, this.priceMultiplier);
         }
     }
@@ -502,7 +504,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
                 return false;
             } else if (this.stoneborn.isInWater()) {
                 return false;
-            } else if (!this.stoneborn.func_233570_aj_()) { //not on ground
+            } else if (!this.stoneborn.isOnGround()) { //not on ground
                 return false;
             } else if (this.stoneborn.velocityChanged) {
                 return false;

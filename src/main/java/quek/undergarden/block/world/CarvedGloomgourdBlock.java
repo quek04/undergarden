@@ -10,6 +10,8 @@ import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class CarvedGloomgourdBlock extends HorizontalBlock {
 
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;

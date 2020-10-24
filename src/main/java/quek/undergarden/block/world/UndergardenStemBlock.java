@@ -24,6 +24,8 @@ import quek.undergarden.registry.UndergardenItems;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenStemBlock extends StemBlock implements IGrowable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
@@ -113,12 +115,12 @@ public class UndergardenStemBlock extends StemBlock implements IGrowable {
     }
 
     @Override
-    public void grow(ServerWorld p_225535_1_, Random rand, BlockPos pos, BlockState p_225535_4_) {
-        int i = Math.min(7, p_225535_4_.get(AGE) + MathHelper.nextInt(p_225535_1_.rand, 2, 5));
-        BlockState blockstate = p_225535_4_.with(AGE, i);
-        p_225535_1_.setBlockState(pos, blockstate, 2);
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+        int i = Math.min(7, state.get(AGE) + MathHelper.nextInt(worldIn.rand, 2, 5));
+        BlockState blockstate = state.with(AGE, i);
+        worldIn.setBlockState(pos, blockstate, 2);
         if (i == 7) {
-            blockstate.tick(p_225535_1_, pos, p_225535_1_.rand);
+            blockstate.tick(worldIn, pos, worldIn.rand);
         }
 
     }

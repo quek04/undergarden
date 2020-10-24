@@ -14,13 +14,15 @@ import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock implements IGrowable {
 
     public UndergardenGrassBlock(Properties builder) {
         super(builder);
     }
 
-    private static boolean func_220257_b(BlockState state, IWorldReader world, BlockPos pos) {
+    private static boolean isSnowyConditions(BlockState state, IWorldReader world, BlockPos pos) {
         BlockPos blockpos = pos.up();
         BlockState blockstate = world.getBlockState(blockpos);
         if (blockstate.getBlock() == Blocks.SNOW && blockstate.get(SnowBlock.LAYERS) == 1) {
@@ -31,9 +33,9 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock implements I
         }
     }
 
-    private static boolean func_220256_c(BlockState state, IWorldReader world, BlockPos pos) {
+    private static boolean isSnowyAndNotUnderwater(BlockState state, IWorldReader world, BlockPos pos) {
         BlockPos blockpos = pos.up();
-        return func_220257_b(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.WATER);
+        return isSnowyConditions(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.WATER);
     }
 
     @Override
@@ -57,7 +59,7 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock implements I
 
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        if (!func_220257_b(state, worldIn, pos)) {
+        if (!isSnowyConditions(state, worldIn, pos)) {
             if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             worldIn.setBlockState(pos, UndergardenBlocks.deepsoil.get().getDefaultState());
         }
@@ -66,7 +68,7 @@ public class UndergardenGrassBlock extends SpreadableSnowyDirtBlock implements I
 
             for (int i = 0; i < 4; ++i) {
                 BlockPos blockpos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                if (worldIn.getBlockState(blockpos).isIn(UndergardenBlocks.deepsoil.get()) && func_220256_c(blockstate, worldIn, blockpos)) {
+                if (worldIn.getBlockState(blockpos).isIn(UndergardenBlocks.deepsoil.get()) && isSnowyAndNotUnderwater(blockstate, worldIn, blockpos)) {
                     worldIn.setBlockState(blockpos, blockstate.with(SNOWY, worldIn.getBlockState(blockpos.up()).isIn(Blocks.SNOW)));
                 }
             }

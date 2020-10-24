@@ -15,7 +15,7 @@ public class WigglewoodTree extends Tree {
 
     @Nullable
     @Override
-    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean p_225546_2_) {
+    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
         return UndergardenFeatures.undergarden_tree.get().withConfiguration(
                 (new BaseTreeFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UndergardenBlocks.wigglewood_log.get().getDefaultState()),
@@ -23,6 +23,6 @@ public class WigglewoodTree extends Tree {
                         new BushFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 0),
                         new ForkyTrunkPlacer(3, 0, 0),
                         new TwoLayerFeature(1, 0, 2)))
-                        .func_236700_a_().build());
+                        .setIgnoreVines().build());
     }
 }

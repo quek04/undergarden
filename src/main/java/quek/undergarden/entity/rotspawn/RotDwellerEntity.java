@@ -34,9 +34,9 @@ public class RotDwellerEntity extends MonsterEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 15.0D) //hp
-                .func_233815_a_(Attributes.ATTACK_DAMAGE, 3.0D) //attack damage
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.30D); //speed
+                .createMutableAttribute(Attributes.MAX_HEALTH, 15.0D) //hp
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D) //attack damage
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.30D); //speed
     }
 
     @Override

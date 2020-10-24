@@ -25,7 +25,7 @@ public class UndergardenWorldCarvers {
     }
 
     private static <WC extends ICarverConfig> ConfiguredCarver<WC> register(String name, ConfiguredCarver<WC> carver) {
-        return Registry.register(WorldGenRegistries.field_243652_d, new ResourceLocation(UndergardenMod.MODID, name), carver);
-        //return WorldGenRegistries.func_243663_a(WorldGenRegistries.field_243652_d, name, carver);
+        return Registry.register(WorldGenRegistries.CONFIGURED_CARVER, new ResourceLocation(UndergardenMod.MODID, name), carver);
+        //return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, name, carver);
     }
 }

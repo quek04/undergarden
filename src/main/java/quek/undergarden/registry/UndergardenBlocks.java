@@ -33,7 +33,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", () -> new Block(
             AbstractBlock.Properties.from(deepturf_block.get())));
     public static final RegistryObject<Block> depthrock = registerBlock("depthrock", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.STONE).sound(SoundType.field_235587_I_).harvestLevel(1).setRequiresTool()));
+            AbstractBlock.Properties.from(Blocks.STONE).sound(SoundType.BASALT).harvestLevel(1).setRequiresTool()));
     public static final RegistryObject<Block> smogstem_planks = registerBlock("smogstem_planks", () -> new Block(
             AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> wigglewood_planks = registerBlock("wigglewood_planks", () -> new Block(
@@ -45,7 +45,7 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> cracked_depthrock_bricks = registerBlock("cracked_depthrock_bricks", () -> new Block(
             AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
     public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new Block(
-            AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.field_235590_L_).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool()));
+            AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool()));
     public static final RegistryObject<Block> shiverstone_bricks = registerBlock("shiverstone_bricks", () -> new Block(
             AbstractBlock.Properties.from(shiverstone.get()).setRequiresTool()));
     public static final RegistryObject<Block> goo = registerBlock("goo", GooBlock::new);
@@ -53,7 +53,7 @@ public class UndergardenBlocks {
 
     //otherside
     public static final RegistryObject<Block> tremblecrust = registerBlock("tremblecrust", () -> new Block(
-            AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(6F, 24F).sound(SoundType.field_235589_K_).harvestTool(ToolType.PICKAXE).harvestLevel(3).setRequiresTool()));
+            AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(6F, 24F).sound(SoundType.NETHERRACK).harvestTool(ToolType.PICKAXE).harvestLevel(3).setRequiresTool()));
     public static final RegistryObject<Block> loose_tremblecrust = registerBlock("loose_tremblecrust", () -> new LooseTremblecrustBlock(
             AbstractBlock.Properties.from(tremblecrust.get()).noDrops()));
     public static final RegistryObject<Block> tremblecrust_bricks = registerBlock("tremblecrust_bricks", () -> new Block(
@@ -75,11 +75,11 @@ public class UndergardenBlocks {
     public static final RegistryObject<Block> wigglewood_wood = registerBlock("wigglewood_wood", () -> new Block(AbstractBlock.Properties.from(UndergardenBlocks.wigglewood_log.get())));
     public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", UndergardenLeavesBlock::new);
 
-    public static final RegistryObject<Block> gronglet = registerBlock("gronglet", () -> new GrongletBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_FUNGUS).sound(SoundType.field_235582_D_), () -> Feature.field_236281_L_.withConfiguration(new HugeFungusConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.grongle_stem.get().getDefaultState(), UndergardenBlocks.grongle_cap.get().getDefaultState(), Blocks.SHROOMLIGHT.getDefaultState(), true))));
-    public static final RegistryObject<RotatedPillarBlock> grongle_stem = registerBlock("grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.field_235582_D_)));
-    public static final RegistryObject<RotatedPillarBlock> stripped_grongle_stem = registerBlock("stripped_grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_CRIMSON_STEM).sound(SoundType.field_235582_D_)));
+    public static final RegistryObject<Block> gronglet = registerBlock("gronglet", () -> new GrongletBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_FUNGUS).sound(SoundType.SHROOMLIGHT), () -> Feature.HUGE_FUNGUS.withConfiguration(new HugeFungusConfig(UndergardenBlocks.deepturf_block.get().getDefaultState(), UndergardenBlocks.grongle_stem.get().getDefaultState(), UndergardenBlocks.grongle_cap.get().getDefaultState(), Blocks.SHROOMLIGHT.getDefaultState(), true))));
+    public static final RegistryObject<RotatedPillarBlock> grongle_stem = registerBlock("grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
+    public static final RegistryObject<RotatedPillarBlock> stripped_grongle_stem = registerBlock("stripped_grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<Block> grongle_hyphae = registerBlock("grongle_hyphae", () -> new Block(AbstractBlock.Properties.from(UndergardenBlocks.grongle_stem.get())));
-    public static final RegistryObject<Block> grongle_cap = registerBlock("grongle_cap", () -> new Block(AbstractBlock.Properties.from(Blocks.WARPED_WART_BLOCK).sound(SoundType.field_235582_D_)));
+    public static final RegistryObject<Block> grongle_cap = registerBlock("grongle_cap", () -> new Block(AbstractBlock.Properties.from(Blocks.WARPED_WART_BLOCK).sound(SoundType.SHROOMLIGHT)));
 
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UndergardenTallGrassBlock::new);
     public static final RegistryObject<Block> ashen_tall_deepturf = registerBlock("ashen_tall_deepturf", AshenTallDeepturfBlock::new);

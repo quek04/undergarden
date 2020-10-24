@@ -27,11 +27,13 @@ import quek.undergarden.registry.UndergardenItems;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BlisterberryBushBlock extends Block implements IGrowable, IPlantable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-    private static final VoxelShape field_220126_b = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-    private static final VoxelShape field_220127_c = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+    private static final VoxelShape BUSHLING_SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
+    private static final VoxelShape GROWING_SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
     public BlisterberryBushBlock() {
         super(Properties.create(Material.PLANTS)
@@ -80,9 +82,9 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         if (state.get(AGE) == 0) {
-            return field_220126_b;
+            return BUSHLING_SHAPE;
         } else {
-            return state.get(AGE) < 3 ? field_220127_c : super.getShape(state, worldIn, pos, context);
+            return state.get(AGE) < 3 ? GROWING_SHAPE : super.getShape(state, worldIn, pos, context);
         }
     }
 
@@ -114,7 +116,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult p_225533_6_) {
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         int age = state.get(AGE);
         boolean flag = age == 3;
         if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
@@ -128,7 +130,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
             worldIn.setBlockState(pos, state.with(AGE, 1), 2);
             return ActionResultType.SUCCESS;
         } else {
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, p_225533_6_);
+            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
         }
     }
 

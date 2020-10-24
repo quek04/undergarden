@@ -45,29 +45,29 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     }
 
     @Override
-    public int func_230256_F__() {
+    public int getAngerTime() {
         return this.field_234347_bw_;
     }
 
     @Override
-    public void func_230260_a__(int p_230260_1_) {
-        this.field_234347_bw_ = p_230260_1_;
+    public void setAngerTime(int time) {
+        this.field_234347_bw_ = time;
     }
 
     @Nullable
     @Override
-    public UUID func_230257_G__() {
+    public UUID getAngerTarget() {
         return this.field_234348_bx_;
     }
 
     @Override
-    public void func_230259_a_(@Nullable UUID p_230259_1_) {
-        this.field_234348_bx_ = p_230259_1_;
+    public void setAngerTarget(@Nullable UUID target) {
+        this.field_234348_bx_ = target;
     }
 
     @Override
     public void func_230258_H__() {
-        this.func_230260_a__(field_234346_bv_.func_233018_a_(this.rand));
+        this.setAngerTime(field_234346_bv_.getRandomWithinRange(this.rand));
     }
 
     @Override
@@ -93,9 +93,9 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 20.0D) //hp
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.23D) //speed
-                .func_233815_a_(Attributes.ATTACK_DAMAGE, 3.0D); //attack damage
+                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D) //hp
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23D) //speed
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D); //attack damage
     }
 
     public static boolean canBruteSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
@@ -107,7 +107,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
         ModifiableAttributeInstance modifiableattributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
         if (this.func_233678_J__()) {
             if (!this.isChild() && !modifiableattributeinstance.hasModifier(field_234349_c_)) {
-                modifiableattributeinstance.func_233767_b_(field_234349_c_);
+                modifiableattributeinstance.applyNonPersistentModifier(field_234349_c_);
             }
 
             this.func_241409_eY_();
@@ -149,13 +149,13 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
                 this.func_241411_fa_();
             }
 
-            this.field_241401_bA_ = field_241403_bz_.func_233018_a_(this.rand);
+            this.field_241401_bA_ = field_241403_bz_.getRandomWithinRange(this.rand);
         }
     }
 
     private void func_241411_fa_() {
-        double d0 = this.func_233637_b_(Attributes.MOVEMENT_SPEED);
-        AxisAlignedBB axisalignedbb = AxisAlignedBB.func_241549_a_(this.getPositionVec()).grow(d0, 10.0D, d0);
+        double d0 = this.getAttributeValue(Attributes.MOVEMENT_SPEED);
+        AxisAlignedBB axisalignedbb = AxisAlignedBB.fromVector(this.getPositionVec()).grow(d0, 10.0D, d0);
         this.world.getLoadedEntitiesWithinAABB(BruteEntity.class, axisalignedbb).stream().filter((p_241408_1_) -> p_241408_1_ != this).filter((p_241407_0_) -> p_241407_0_.getAttackTarget() == null).filter((p_241406_1_) -> !p_241406_1_.isOnSameTeam(this.getAttackTarget())).forEach((p_241405_1_) -> {
             p_241405_1_.setAttackTarget(this.getAttackTarget());
         });
@@ -163,8 +163,8 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
 
     public void setAttackTarget(@Nullable LivingEntity entitylivingbaseIn) {
         if (this.getAttackTarget() == null && entitylivingbaseIn != null) {
-            this.angerLevel = field_234350_d_.func_233018_a_(this.rand);
-            this.field_241401_bA_ = field_241403_bz_.func_233018_a_(this.rand);
+            this.angerLevel = field_234350_d_.getRandomWithinRange(this.rand);
+            this.field_241401_bA_ = field_241403_bz_.getRandomWithinRange(this.rand);
         }
 
         if (entitylivingbaseIn instanceof PlayerEntity) {
@@ -176,7 +176,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
 
     public void writeAdditional(CompoundNBT compound) {
         super.writeAdditional(compound);
-        this.func_233682_c_(compound);
+        this.writeAngerNBT(compound);
     }
 
     /**
@@ -184,7 +184,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
      */
     public void readAdditional(CompoundNBT compound) {
         super.readAdditional(compound);
-        this.func_241358_a_((ServerWorld)this.world, compound);
+        this.readAngerNBT((ServerWorld)this.world, compound);
     }
 
     @Override

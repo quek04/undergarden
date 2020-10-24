@@ -26,7 +26,7 @@ public class UndergardenCropsBlock extends CropsBlock implements IGrowable {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
-    public UndergardenCropsBlock(Block.Properties builder) {
+    public UndergardenCropsBlock(AbstractBlock.Properties builder) {
         super(builder);
         this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), 0));
     }
@@ -170,8 +170,8 @@ public class UndergardenCropsBlock extends CropsBlock implements IGrowable {
     }
 
     @Override
-    public void grow(ServerWorld p_225535_1_, Random rand, BlockPos pos, BlockState p_225535_4_) {
-        this.grow(p_225535_1_, pos, p_225535_4_);
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+        this.grow(worldIn, pos, state);
     }
 
     @Override

@@ -46,8 +46,8 @@ public class DwellerEntity extends AnimalEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AnimalEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 15.0D) //hp
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.15D); //speed
+                .createMutableAttribute(Attributes.MAX_HEALTH, 15.0D) //hp
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.15D); //speed
     }
 
     public static boolean canDwellerSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {

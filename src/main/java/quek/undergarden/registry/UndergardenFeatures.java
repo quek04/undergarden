@@ -29,7 +29,7 @@ public class UndergardenFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, UndergardenMod.MODID);
 
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> undergarden_tree = FEATURES.register(
-            "undergarden_tree", () -> new UndergardenTreeFeature(BaseTreeFeatureConfig.field_236676_a_));
+            "undergarden_tree", () -> new UndergardenTreeFeature(BaseTreeFeatureConfig.CODEC));
 
     public static final RegistryObject<Feature<NoFeatureConfig>> glowing_kelp = FEATURES.register(
             "glowing_kelp", () -> new GlowingKelpFeature(NoFeatureConfig.field_236558_a_));
@@ -88,7 +88,7 @@ public class UndergardenFeatures {
                         new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 2),
                         new StraightTrunkPlacer(10, 2, 2),
                         new TwoLayerFeature(1, 0, 1)))
-                        .func_236700_a_().build()).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(8))));
+                        .setIgnoreVines().build()).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(8))));
         register("wigglewood_tree", undergarden_tree.get().withConfiguration(
                 (new BaseTreeFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UndergardenBlocks.wigglewood_log.get().getDefaultState()),
@@ -96,7 +96,7 @@ public class UndergardenFeatures {
                         new BushFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 0),
                         new ForkyTrunkPlacer(3, 0, 0),
                         new TwoLayerFeature(1, 0, 2)))
-                        .func_236700_a_().build()).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(8))));
+                        .setIgnoreVines().build()).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(8))));
 
         register("glowing_kelp", glowing_kelp.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).func_242733_d(32).func_242728_a().func_242731_b(100));
         register("smog_vent", smog_vent.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(8))));
@@ -105,6 +105,6 @@ public class UndergardenFeatures {
     }
 
     private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> feature) {
-        return Registry.register(WorldGenRegistries.field_243653_e, new ResourceLocation(UndergardenMod.MODID, name), feature);
+        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(UndergardenMod.MODID, name), feature);
     }
 }

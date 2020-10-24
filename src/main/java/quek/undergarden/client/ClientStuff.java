@@ -146,7 +146,7 @@ public class ClientStuff {
     @OnlyIn(Dist.CLIENT)
     public static void memeEvent(RenderPlayerEvent event) {
         if(UndergardenConfig.enableMemeCode.get() == true) {
-            if(event.getEntity().world.func_234923_W_() == UndergardenDimensions.undergarden_w || event.getEntity().world.func_234923_W_() == UndergardenDimensions.otherside_w) {
+            if(event.getEntity().world.getDimensionKey() == UndergardenDimensions.undergarden_w || event.getEntity().world.getDimensionKey() == UndergardenDimensions.otherside_w) {
                 if(event.getEntity() instanceof PlayerEntity && UUID.fromString("353a859b-ba16-4e6a-8f63-9a8c79ab0071").equals(event.getEntity().getUniqueID())) {
                     event.getMatrixStack().scale(.5F, .5F, .5F);
                 }

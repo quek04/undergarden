@@ -25,6 +25,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenLeavesBlock extends LeavesBlock {
 
     public static final IntegerProperty DISTANCE = BlockStateProperties.DISTANCE_1_7;
@@ -38,7 +40,7 @@ public class UndergardenLeavesBlock extends LeavesBlock {
         );
     }
 
-    public VoxelShape func_230335_e_(BlockState p_230335_1_, IBlockReader p_230335_2_, BlockPos p_230335_3_) {
+    public VoxelShape getCollisionShape(BlockState state, IBlockReader reader, BlockPos pos) {
         return VoxelShapes.empty();
     }
 
@@ -81,7 +83,7 @@ public class UndergardenLeavesBlock extends LeavesBlock {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
         for(Direction direction : Direction.values()) {
-            blockpos$mutable.func_239622_a_(pos, direction);
+            blockpos$mutable.setAndMove(pos, direction);
             i = Math.min(i, getDistance(worldIn.getBlockState(blockpos$mutable)) + 1);
             if (i == 1) {
                 break;

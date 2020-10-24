@@ -92,18 +92,18 @@ public class UndergardenEntities {
     }
 
     public static void entityAttributes() {
-        GlobalEntityTypeAttributes.put(ROTLING.get(), RotlingEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(ROTWALKER.get(), RotwalkerEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(ROTBEAST.get(), RotbeastEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(DWELLER.get(), DwellerEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(ROTDWELLER.get(), RotDwellerEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(GWIBLING.get(), AbstractFishEntity.func_234176_m_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(BRUTE.get(), BruteEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(SCINTLING.get(), ScintlingEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(BLISTERBOMBER.get(), BlisterbomberEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(GLOOMPER.get(), GloomperEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(STONEBORN.get(), StonebornEntity.registerAttributes().func_233813_a_());
-        GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(ROTLING.get(), RotlingEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(ROTWALKER.get(), RotwalkerEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(ROTBEAST.get(), RotbeastEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(DWELLER.get(), DwellerEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(ROTDWELLER.get(), RotDwellerEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(GWIBLING.get(), AbstractFishEntity.func_234176_m_().create());
+        GlobalEntityTypeAttributes.put(BRUTE.get(), BruteEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(SCINTLING.get(), ScintlingEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(BLISTERBOMBER.get(), BlisterbomberEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(GLOOMPER.get(), GloomperEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(STONEBORN.get(), StonebornEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().create());
     }
 
 }

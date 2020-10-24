@@ -6,6 +6,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UndergardenBlocks;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class LooseTremblecrustBlock extends Block {
 
     public LooseTremblecrustBlock(Properties properties) {

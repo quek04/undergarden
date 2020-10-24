@@ -42,8 +42,8 @@ public class BlisterbomberEntity extends FlyingEntity implements IMob {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 25.0D) //hp
-                .func_233815_a_(Attributes.FOLLOW_RANGE, 128.0D); //follow range
+                .createMutableAttribute(Attributes.MAX_HEALTH, 25.0D) //hp
+                .createMutableAttribute(Attributes.FOLLOW_RANGE, 128.0D); //follow range
     }
 
     public static boolean canBlisterbomberSpawn(EntityType<? extends BlisterbomberEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {

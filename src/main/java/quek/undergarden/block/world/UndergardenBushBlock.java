@@ -9,6 +9,8 @@ import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.IPlantable;
 import quek.undergarden.registry.UndergardenBlocks;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenBushBlock extends Block implements IPlantable {
 
     public UndergardenBushBlock(Properties properties) {

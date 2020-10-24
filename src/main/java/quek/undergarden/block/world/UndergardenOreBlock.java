@@ -13,11 +13,13 @@ import quek.undergarden.registry.UndergardenBlocks;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenOreBlock extends OreBlock {
     public UndergardenOreBlock(int harvestlvl) {
         super(Properties.create(Material.ROCK)
                 .hardnessAndResistance(3F,6F)
-                .sound(SoundType.field_235587_I_)
+                .sound(SoundType.BASALT)
                 .harvestLevel(harvestlvl)
                 .harvestTool(ToolType.PICKAXE)
                 .setRequiresTool()

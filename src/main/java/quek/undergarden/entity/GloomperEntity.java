@@ -55,8 +55,8 @@ public class GloomperEntity extends AnimalEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AnimalEntity.func_233666_p_()
-                .func_233815_a_(Attributes.MAX_HEALTH, 20.0D) //hp
-                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.3D); //speed
+                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D) //hp
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D); //speed
     }
 
     public static boolean canGloomperSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {

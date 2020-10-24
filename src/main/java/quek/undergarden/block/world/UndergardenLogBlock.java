@@ -5,6 +5,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraftforge.common.ToolType;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenLogBlock extends RotatedPillarBlock {
     public UndergardenLogBlock() {
         super(Properties.create(Material.WOOD)

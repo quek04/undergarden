@@ -88,8 +88,8 @@ public class UndergardenLootTables extends LootTableProvider {
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.blisterberry_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UndergardenItems.rotten_blisterberry.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UndergardenBlocks.blisterberry_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UndergardenItems.rotten_blisterberry.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 1.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
             dropWithSilk(UndergardenBlocks.deepturf_block, UndergardenBlocks.deepsoil);
-            this.registerLootTable(UndergardenBlocks.double_deepturf.get(), (block) -> func_241749_b_(block, UndergardenBlocks.tall_deepturf.get()));
-            this.registerLootTable(UndergardenBlocks.double_shimmerweed.get(), (block) -> func_241749_b_(block, UndergardenBlocks.shimmerweed.get()));
+            this.registerLootTable(UndergardenBlocks.double_deepturf.get(), (block) -> droppingSeedsTall(block, UndergardenBlocks.tall_deepturf.get()));
+            this.registerLootTable(UndergardenBlocks.double_shimmerweed.get(), (block) -> droppingSeedsTall(block, UndergardenBlocks.shimmerweed.get()));
             this.registerLootTable(UndergardenBlocks.tall_deepturf.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UndergardenBlocks.shimmerweed.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UndergardenBlocks.ashen_tall_deepturf.get(), BlockLootTables::onlyWithShears);
@@ -118,9 +118,9 @@ public class UndergardenLootTables extends LootTableProvider {
             dropOther(UndergardenBlocks.smogstem_wall_torch, UndergardenItems.smogstem_torch.get());
             dropSelf(UndergardenBlocks.gloomgourd);
             dropSelf(UndergardenBlocks.carved_gloomgourd);
-            this.registerLootTable(UndergardenBlocks.depthrock_pebbles.get(), (p_218534_0_) -> droppingWithSilkTouchOrRandomly(p_218534_0_, UndergardenItems.depthrock_pebble.get(), RandomValueRange.of(1.0F, 3.0F)));
+            this.registerLootTable(UndergardenBlocks.depthrock_pebbles.get(), (bookshelf) -> droppingWithSilkTouchOrRandomly(bookshelf, UndergardenItems.depthrock_pebble.get(), RandomValueRange.of(1.0F, 3.0F)));
             dropSelf(UndergardenBlocks.gloom_o_lantern);
-            this.registerLootTable(UndergardenBlocks.ditchbulb_plant.get(), (p_218525_0_) -> droppingWithShears(p_218525_0_, withExplosionDecay(p_218525_0_, ItemLootEntry.builder(UndergardenItems.ditchbulb.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))));
+            this.registerLootTable(UndergardenBlocks.ditchbulb_plant.get(), (deadBush) -> droppingWithShears(deadBush, withExplosionDecay(deadBush, ItemLootEntry.builder(UndergardenItems.ditchbulb.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))));
             dropSelf(UndergardenBlocks.depthrock_stairs);
             dropSelf(UndergardenBlocks.depthrock_brick_stairs);
             dropSelf(UndergardenBlocks.smogstem_stairs);
@@ -143,7 +143,7 @@ public class UndergardenLootTables extends LootTableProvider {
             dropSelf(UndergardenBlocks.smogstem_trapdoor);
             dropSelf(UndergardenBlocks.wigglewood_trapdoor);
             dropWithSilk(UndergardenBlocks.smog_vent, UndergardenBlocks.depthrock);
-            this.registerLootTable(UndergardenBlocks.goo.get(), (p_218534_0_) -> droppingWithSilkTouchOrRandomly(p_218534_0_, UndergardenItems.goo_ball.get(), RandomValueRange.of(1.0F, 4.0F)));
+            this.registerLootTable(UndergardenBlocks.goo.get(), (bookshelf) -> droppingWithSilkTouchOrRandomly(bookshelf, UndergardenItems.goo_ball.get(), RandomValueRange.of(1.0F, 4.0F)));
             dropWithSilk(UndergardenBlocks.ashen_deepturf, UndergardenBlocks.deepsoil);
             dropSelf(UndergardenBlocks.shiverstone);
             dropSelf(UndergardenBlocks.shiverstone_bricks);
@@ -199,9 +199,9 @@ public class UndergardenLootTables extends LootTableProvider {
         }
     }
 
-    private static LootTable.Builder func_241749_b_(Block originalBlock, Block newBlock) {
+    private static LootTable.Builder droppingSeedsTall(Block originalBlock, Block newBlock) {
         LootEntry.Builder<?> builder = ItemLootEntry.builder(newBlock).acceptFunction(SetCount.builder(ConstantRange.of(1))).acceptCondition(SHEARS);
-        return LootTable.builder().addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.func_226870_a_().func_235312_a_(BlockPredicate.Builder.func_226243_a_().func_233458_a_(originalBlock).func_233459_a_(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).func_226245_b_()), new BlockPos(0, 1, 0)))).addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.func_226870_a_().func_235312_a_(BlockPredicate.Builder.func_226243_a_().func_233458_a_(originalBlock).func_233459_a_(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).func_226245_b_()), new BlockPos(0, -1, 0))));
+        return LootTable.builder().addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.builder().block(BlockPredicate.Builder.createBuilder().setBlock(originalBlock).setStatePredicate(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.builder().block(BlockPredicate.Builder.createBuilder().setBlock(originalBlock).setStatePredicate(StatePropertiesPredicate.Builder.newBuilder().withProp(UndergardenDoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
     }
 
     public static class Entities extends EntityLootTables {
