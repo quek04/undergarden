@@ -20,7 +20,7 @@
       },
       "probability": 0.050
     },
-    "ambient_sound": "undergarden:ambient.undergarden_ambiance",
+    "ambient_sound": "undergarden:ambient.undergarden_ambience",
     "music": {
       "sound": "undergarden:music.undergarden_music",
       "min_delay": 12000,

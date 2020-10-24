@@ -10,8 +10,9 @@ import quek.undergarden.UndergardenMod;
 @Mod.EventBusSubscriber(modid = UndergardenMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UndergardenSoundEvents {
 
-    public static final SoundEvent UNDERGARDEN_AMBIANCE = register("ambient.undergarden_ambiance");
-    public static final SoundEvent OTHERSIDE_AMBIANCE = register("ambient.otherside_ambiance");
+    public static final SoundEvent UNDERGARDEN_AMBIENCE = register("ambient.undergarden_ambience");
+    public static final SoundEvent OTHERSIDE_AMBIENCE = register("ambient.otherside_ambience");
+    public static final SoundEvent SPIRES_AMBIENCE = register("ambient.spires_ambience");
 
     public static final SoundEvent UNDERGARDEN_MUSIC = register("music.undergarden_music");
 
@@ -67,8 +68,9 @@ public class UndergardenSoundEvents {
     @SubscribeEvent
     public static void registerSounds(RegistryEvent.Register<SoundEvent> event) {
         event.getRegistry().registerAll(
-                UNDERGARDEN_AMBIANCE,
-                OTHERSIDE_AMBIANCE,
+                UNDERGARDEN_AMBIENCE,
+                OTHERSIDE_AMBIENCE,
+                SPIRES_AMBIENCE,
                 UNDERGARDEN_MUSIC,
                 UNDERGARDEN_PORTAL_AMBIENT,
                 UNDERGARDEN_PORTAL_ACTIVATE,
@@ -104,5 +106,4 @@ public class UndergardenSoundEvents {
                 ROTLING_DEATH
         );
     }
-
 }
