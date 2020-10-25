@@ -96,7 +96,6 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.GWIBLING.get(), GwiblingRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.BRUTE.get(), BruteRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.SCINTLING.get(), ScintlingRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.BLISTERBOMBER.get(), BlisterbomberRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.GLOOMPER.get(), GloomperRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.STONEBORN.get(), StonebornRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UndergardenEntities.MASTICATOR.get(), MasticatorRender::new);

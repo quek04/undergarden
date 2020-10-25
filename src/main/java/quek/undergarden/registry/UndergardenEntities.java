@@ -48,8 +48,6 @@ public class UndergardenEntities {
             .size(1, 2).build("brute");
     public static final EntityType<ScintlingEntity> scintling = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
             .size(1, .5F).build("scintling");
-    public static final EntityType<BlisterbomberEntity> blisterbomber = EntityType.Builder.create(BlisterbomberEntity::new, EntityClassification.MONSTER)
-            .size(1F, 2.5F).build("blisterbomber");
     public static final EntityType<GloomperEntity> gloomper = EntityType.Builder.create(GloomperEntity::new, EntityClassification.CREATURE)
             .size(1F, 1F).build("gloomper");
     public static final EntityType<StonebornEntity> stoneborn = EntityType.Builder.create(StonebornEntity::new, EntityClassification.MONSTER)
@@ -71,7 +69,6 @@ public class UndergardenEntities {
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> gwibling);
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> brute);
     public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> scintling);
-    public static final RegistryObject<EntityType<BlisterbomberEntity>> BLISTERBOMBER = ENTITIES.register("blisterbomber", () -> blisterbomber);
     public static final RegistryObject<EntityType<GloomperEntity>> GLOOMPER = ENTITIES.register("gloomper", () -> gloomper);
     public static final RegistryObject<EntityType<StonebornEntity>> STONEBORN = ENTITIES.register("stoneborn", () -> stoneborn);
 
@@ -86,7 +83,6 @@ public class UndergardenEntities {
         EntitySpawnPlacementRegistry.register(ROTBEAST.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractRotspawnEntity::canRotspawnSpawn);
         EntitySpawnPlacementRegistry.register(BRUTE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BruteEntity::canBruteSpawn);
         EntitySpawnPlacementRegistry.register(SCINTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
-        EntitySpawnPlacementRegistry.register(BLISTERBOMBER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BlisterbomberEntity::canBlisterbomberSpawn);
         EntitySpawnPlacementRegistry.register(GLOOMPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GloomperEntity::canGloomperSpawn);
         EntitySpawnPlacementRegistry.register(STONEBORN.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, StonebornEntity::canStonebornSpawn);
     }
@@ -100,7 +96,6 @@ public class UndergardenEntities {
         GlobalEntityTypeAttributes.put(GWIBLING.get(), AbstractFishEntity.func_234176_m_().create());
         GlobalEntityTypeAttributes.put(BRUTE.get(), BruteEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(SCINTLING.get(), ScintlingEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(BLISTERBOMBER.get(), BlisterbomberEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(GLOOMPER.get(), GloomperEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(STONEBORN.get(), StonebornEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().create());

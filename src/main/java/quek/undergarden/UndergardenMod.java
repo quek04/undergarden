@@ -110,7 +110,6 @@ public class UndergardenMod {
 		DispenserBlock.registerDispenseBehavior(UndergardenItems.rotbeast_spawn_egg.get(), eggBehavior);
 		DispenserBlock.registerDispenseBehavior(UndergardenItems.brute_spawn_egg.get(), eggBehavior);
 		DispenserBlock.registerDispenseBehavior(UndergardenItems.scintling_spawn_egg.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UndergardenItems.blisterbomber_spawn_egg.get(), eggBehavior);
 		DispenserBlock.registerDispenseBehavior(UndergardenItems.gloomper_spawn_egg.get(), eggBehavior);
 		DispenserBlock.registerDispenseBehavior(UndergardenItems.stoneborn_spawn_egg.get(), eggBehavior);
 		DispenserBlock.registerDispenseBehavior(UndergardenItems.masticator_spawn_egg.get(), eggBehavior);
