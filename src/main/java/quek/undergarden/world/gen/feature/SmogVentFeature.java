@@ -19,7 +19,7 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
         super(configCodec);
     }
 
-    @Override //this code is a mess
+    @Override
     public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator p_241855_2_, Random rand, BlockPos pos, NoFeatureConfig p_241855_5_) {
         while (worldIn.isAirBlock(pos) && pos.getY() > 2) {
             pos = pos.down();
@@ -29,9 +29,6 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
             pos = pos.up(rand.nextInt(4));
             int ventHeight = 7;
             int j = ventHeight / 4 + rand.nextInt(2);
-            if (j > 1 && rand.nextInt(60) == 0) {
-                pos = pos.up(10 + rand.nextInt(30));
-            }
 
             for (int k = 0; k < ventHeight; ++k) {
                 float f = (1.0F - (float) k / (float) ventHeight) * (float) j;
