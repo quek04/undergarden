@@ -4,7 +4,6 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
-import net.minecraft.client.renderer.model.ModelHelper;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
