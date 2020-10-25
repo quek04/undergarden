@@ -19,6 +19,7 @@ import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UndergardenBlocks;
 import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UndergardenItems;
 import quek.undergarden.registry.UndergardenSoundEvents;
 
 import javax.annotation.Nullable;
@@ -36,7 +37,7 @@ public class DwellerEntity extends AnimalEntity {
         this.goalSelector.addGoal(2, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0D, 2.5D));
-        this.goalSelector.addGoal(1, new TemptGoal(this, 1.25D, Ingredient.fromItems(UndergardenBlocks.gloomgourd.get()), false));
+        this.goalSelector.addGoal(1, new TemptGoal(this, 1.25D, Ingredient.fromItems(UndergardenItems.underbeans.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 3.0F));
@@ -62,7 +63,7 @@ public class DwellerEntity extends AnimalEntity {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return Ingredient.fromItems(UndergardenBlocks.gloomgourd.get()).test(stack);
+        return Ingredient.fromItems(UndergardenItems.underbeans.get()).test(stack);
     }
 
     @Override
