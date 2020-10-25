@@ -201,47 +201,6 @@ public class UndergardenPortalBlock extends Block {
         builder.add(AXIS);
     }
 
-    public static BlockPattern.PatternHelper createPatternHelper(IWorld world, BlockPos pos) {
-        Direction.Axis direction$axis = Direction.Axis.Z;
-        UndergardenPortalBlock.Size UndergardenPortalBlock$size = new Size(world, pos, Direction.Axis.X);
-        LoadingCache<BlockPos, CachedBlockInfo> loadingcache = BlockPattern.createLoadingCache(world, true);
-        if (!UndergardenPortalBlock$size.isValid()) {
-            direction$axis = Direction.Axis.X;
-            UndergardenPortalBlock$size = new Size(world, pos, Direction.Axis.Z);
-        }
-
-        if (!UndergardenPortalBlock$size.isValid()) {
-            return new BlockPattern.PatternHelper(pos, Direction.NORTH, Direction.UP, loadingcache, 1, 1, 1);
-        } else {
-            int[] aint = new int[Direction.AxisDirection.values().length];
-            Direction direction = UndergardenPortalBlock$size.rightDir.rotateYCCW();
-            BlockPos blockpos = UndergardenPortalBlock$size.bottomLeft.up(UndergardenPortalBlock$size.getHeight() - 1);
-
-            for(Direction.AxisDirection direction$axisdirection : Direction.AxisDirection.values()) {
-                BlockPattern.PatternHelper pattern = new BlockPattern.PatternHelper(direction.getAxisDirection() == direction$axisdirection ? blockpos : blockpos.offset(UndergardenPortalBlock$size.rightDir, UndergardenPortalBlock$size.getWidth() - 1), Direction.getFacingFromAxis(direction$axisdirection, direction$axis), Direction.UP, loadingcache, UndergardenPortalBlock$size.getWidth(), UndergardenPortalBlock$size.getHeight(), 1);
-
-                for(int i = 0; i < UndergardenPortalBlock$size.getWidth(); ++i) {
-                    for(int j = 0; j < UndergardenPortalBlock$size.getHeight(); ++j) {
-                        CachedBlockInfo cachedblockinfo = pattern.translateOffset(i, j, 1);
-                        if (!cachedblockinfo.getBlockState().isAir()) {
-                            ++aint[direction$axisdirection.ordinal()];
-                        }
-                    }
-                }
-            }
-
-            Direction.AxisDirection direction$axisdirection1 = Direction.AxisDirection.POSITIVE;
-
-            for(Direction.AxisDirection direction$axisdirection2 : Direction.AxisDirection.values()) {
-                if (aint[direction$axisdirection2.ordinal()] < aint[direction$axisdirection1.ordinal()]) {
-                    direction$axisdirection1 = direction$axisdirection2;
-                }
-            }
-
-            return new BlockPattern.PatternHelper(direction.getAxisDirection() == direction$axisdirection1 ? blockpos : blockpos.offset(UndergardenPortalBlock$size.rightDir, UndergardenPortalBlock$size.getWidth() - 1), Direction.getFacingFromAxis(direction$axisdirection1, direction$axis), Direction.UP, loadingcache, UndergardenPortalBlock$size.getWidth(), UndergardenPortalBlock$size.getHeight(), 1);
-        }
-    }
-
     public static class Size {
         private final IWorld world;
         private final Direction.Axis axis;

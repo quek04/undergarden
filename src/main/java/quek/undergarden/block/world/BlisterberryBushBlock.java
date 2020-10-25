@@ -94,7 +94,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
                 double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
                 double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);
                 if (d0 >= (double)0.003F || d1 >= (double)0.003F) {
-                    entityIn.attackEntityFrom(DamageSource.SWEET_BERRY_BUSH, 2.0F);
+                    entityIn.attackEntityFrom(DamageSource.GENERIC, 2.0F);
                 }
             }
 

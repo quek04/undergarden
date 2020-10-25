@@ -17,6 +17,5 @@ public class LooseTremblecrustBlock extends Block {
         if(worldIn.getBlockState(pos.down()) == UGBlocks.loose_tremblecrust.get().getDefaultState() || worldIn.isAirBlock(pos.down())) {
             worldIn.destroyBlock(pos, false);
         }
-
     }
 }

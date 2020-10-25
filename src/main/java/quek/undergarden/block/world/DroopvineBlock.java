@@ -40,10 +40,7 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
     }
 
     public static boolean randomTorF() {
-        if(new Random().nextInt(5) == 1) {
-            return true;
-        }
-        else return false;
+        return new Random().nextInt(5) == 1;
     }
 
     @Override

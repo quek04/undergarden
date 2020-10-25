@@ -45,7 +45,6 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         if (rand.nextInt(25) == 0) {
             int i = 5;
-            int j = 4;
 
             for(BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-4, -1, -4), pos.add(4, 1, 4))) {
                 if (worldIn.getBlockState(blockpos).getBlock() == this) {
