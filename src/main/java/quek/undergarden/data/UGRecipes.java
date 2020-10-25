@@ -166,6 +166,11 @@ public class UGRecipes extends UGRecipeProvider {
                 .addCriterion("has_kelp", hasItem(UGItems.glowing_kelp.get()))
                 .build(consumer);
 
+        ShapelessRecipeBuilder.shapelessRecipe(UGItems.gloomgourd_seeds.get(), 4)
+                .addIngredient(UGBlocks.gloomgourd.get())
+                .addCriterion("has_gloomgourd", hasItem(UGBlocks.gloomgourd.get()))
+                .build(consumer);
+
         ShapelessRecipeBuilder.shapelessRecipe(Items.BONE_MEAL, 4)
                 .addIngredient(UGItems.brute_tusk.get())
                 .addCriterion("has_tusk", hasItem(UGItems.brute_tusk.get()))

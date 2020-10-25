@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:gloomgourd"
+    }
+  ],
+  "result": {
+    "item": "undergarden:gloomgourd_seeds",
+    "count": 4
+  }
+}
