@@ -59,7 +59,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 0.3D));
         this.goalSelector.addGoal(3, new LookAtGoal(this, LivingEntity.class, 32.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
-        this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0D, true));
 
         this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)).setCallsForHelp());
     }
