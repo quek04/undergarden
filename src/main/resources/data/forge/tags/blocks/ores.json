@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:coal_ore",
+    "undergarden:iron_ore",
+    "undergarden:gold_ore",
+    "undergarden:diamond_ore",
+    "undergarden:cloggrum_ore",
+    "undergarden:froststeel_ore",
+    "undergarden:utherium_ore",
+    "undergarden:regalium_ore"
+  ]
+}
