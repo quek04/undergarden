@@ -54,7 +54,9 @@
   },
   "features": [
     [],
-    [],
+    [
+      "undergarden:lake_virulent"
+    ],
     [],
     [],
     [],

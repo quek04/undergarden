@@ -57,7 +57,10 @@
   },
   "features": [
     [],
-    [],
+    [
+      "minecraft:lake_water",
+      "undergarden:lake_virulent"
+    ],
     [],
     [],
     [],
@@ -87,7 +90,8 @@
       "undergarden:pebble_patch",
       "undergarden:gronglet_patch",
       "undergarden:underbean_patch",
-      "undergarden:spring"
+      "undergarden:spring",
+      "undergarden:virulent_spring"
     ]
   ],
   "starts": [

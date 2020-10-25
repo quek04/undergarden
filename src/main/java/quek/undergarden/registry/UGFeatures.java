@@ -14,6 +14,7 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.feature.template.RuleTest;
 import net.minecraft.world.gen.foliageplacer.*;
+import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraft.world.gen.trunkplacer.*;
@@ -48,6 +49,8 @@ public class UGFeatures {
 
         register("spring", Feature.SPRING_FEATURE.withConfiguration(new LiquidsConfig(Fluids.WATER.getDefaultState(), false, 4, 1, ImmutableSet.of(UGBlocks.depthrock.get(), UGBlocks.deepsoil.get(), UGBlocks.tremblecrust.get()))).withPlacement(Placement.field_242908_m.configure(new TopSolidRangeConfig(8, 8, 256))).func_242728_a().func_242731_b(50));
         register("virulent_spring", Feature.SPRING_FEATURE.withConfiguration(new LiquidsConfig(UGFluids.virulent_mix_source.get().getDefaultState(), false, 4, 1, ImmutableSet.of(UGBlocks.depthrock.get(), UGBlocks.deepsoil.get(), UGBlocks.tremblecrust.get()))).withPlacement(Placement.field_242908_m.configure(new TopSolidRangeConfig(8, 8, 256))).func_242728_a().func_242731_b(50));
+
+        register("lake_virulent", Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(UGBlocks.virulent_mix.get().getDefaultState())).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(8))));
 
         register("lilypads", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.LILY_PAD.getDefaultState()), new SimpleBlockPlacer())).tries(32).requiresWater().func_227317_b_().build()).func_242733_d(32).func_242731_b(5));
         register("deepturf_patch", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(UGBlocks.tall_deepturf.get().getDefaultState()), new SimpleBlockPlacer())).tries(64).whitelist(ImmutableSet.of(UGBlocks.deepturf_block.get())).func_227317_b_().build()).func_242733_d(256).func_242728_a().func_242731_b(100));

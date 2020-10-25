@@ -60,7 +60,9 @@
       "undergarden:enigmatic_statue"
     ],
     [],
-    [],
+    [
+      "minecraft:lake_water"
+    ],
     [],
     [],
     [],
