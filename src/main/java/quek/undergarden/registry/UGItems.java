@@ -50,30 +50,30 @@ public class UGItems {
     public static final RegistryObject<Item> cloggrum_battleaxe = ITEMS.register("cloggrum_battleaxe", CloggrumBattleaxeItem::new);
 
     //tools
-    public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UndergardenSwordItem(UGTools.SMOGSTEM));
-    public static final RegistryObject<PickaxeItem> smogstem_pickaxe = ITEMS.register("smogstem_pickaxe", () -> new UndergardenPickaxeItem(UGTools.SMOGSTEM));
-    public static final RegistryObject<AxeItem> smogstem_axe = ITEMS.register("smogstem_axe", () -> new UndergardenAxeItem(UGTools.SMOGSTEM, 6));
-    public static final RegistryObject<ShovelItem> smogstem_shovel = ITEMS.register("smogstem_shovel", () -> new UndergardenShovelItem(UGTools.SMOGSTEM));
-    public static final RegistryObject<HoeItem> smogstem_hoe = ITEMS.register("smogstem_hoe", () -> new UndergardenHoeItem(UGTools.SMOGSTEM, 0, -3.0F));
+    public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UGSwordItem(UGTools.SMOGSTEM));
+    public static final RegistryObject<PickaxeItem> smogstem_pickaxe = ITEMS.register("smogstem_pickaxe", () -> new UGPickaxeItem(UGTools.SMOGSTEM));
+    public static final RegistryObject<AxeItem> smogstem_axe = ITEMS.register("smogstem_axe", () -> new UGAxeItem(UGTools.SMOGSTEM, 6));
+    public static final RegistryObject<ShovelItem> smogstem_shovel = ITEMS.register("smogstem_shovel", () -> new UGShovelItem(UGTools.SMOGSTEM));
+    public static final RegistryObject<HoeItem> smogstem_hoe = ITEMS.register("smogstem_hoe", () -> new UGHoeItem(UGTools.SMOGSTEM, 0, -3.0F));
 
-    public static final RegistryObject<SwordItem> cloggrum_sword = ITEMS.register("cloggrum_sword", () -> new UndergardenSwordItem(UGTools.CLOGGRUM));
-    public static final RegistryObject<PickaxeItem> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UndergardenPickaxeItem(UGTools.CLOGGRUM));
-    public static final RegistryObject<AxeItem> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UndergardenAxeItem(UGTools.CLOGGRUM, 3));
-    public static final RegistryObject<ShovelItem> cloggrum_shovel = ITEMS.register("cloggrum_shovel", () -> new UndergardenShovelItem(UGTools.CLOGGRUM));
-    public static final RegistryObject<HoeItem> cloggrum_hoe = ITEMS.register("cloggrum_hoe", () -> new UndergardenHoeItem(UGTools.CLOGGRUM, -2, -2.0F));
-    public static final RegistryObject<ShieldItem> cloggrum_shield = ITEMS.register("cloggrum_shield", () -> new UndergardenShieldItem(UGShields.CLOGGRUM));
+    public static final RegistryObject<SwordItem> cloggrum_sword = ITEMS.register("cloggrum_sword", () -> new UGSwordItem(UGTools.CLOGGRUM));
+    public static final RegistryObject<PickaxeItem> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UGPickaxeItem(UGTools.CLOGGRUM));
+    public static final RegistryObject<AxeItem> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UGAxeItem(UGTools.CLOGGRUM, 3));
+    public static final RegistryObject<ShovelItem> cloggrum_shovel = ITEMS.register("cloggrum_shovel", () -> new UGShovelItem(UGTools.CLOGGRUM));
+    public static final RegistryObject<HoeItem> cloggrum_hoe = ITEMS.register("cloggrum_hoe", () -> new UGHoeItem(UGTools.CLOGGRUM, -2, -2.0F));
+    public static final RegistryObject<ShieldItem> cloggrum_shield = ITEMS.register("cloggrum_shield", () -> new UGShieldItem(UGShields.CLOGGRUM));
 
-    public static final RegistryObject<SwordItem> froststeel_sword = ITEMS.register("froststeel_sword", () -> new UndergardenSwordItem(UGTools.FROSTSTEEL));
-    public static final RegistryObject<PickaxeItem> froststeel_pickaxe = ITEMS.register("froststeel_pickaxe", () -> new UndergardenPickaxeItem(UGTools.FROSTSTEEL));
-    public static final RegistryObject<AxeItem> froststeel_axe = ITEMS.register("froststeel_axe", () -> new UndergardenAxeItem(UGTools.FROSTSTEEL, 4));
-    public static final RegistryObject<ShovelItem> froststeel_shovel = ITEMS.register("froststeel_shovel", () -> new UndergardenShovelItem(UGTools.FROSTSTEEL));
-    public static final RegistryObject<HoeItem> froststeel_hoe = ITEMS.register("froststeel_hoe", () -> new UndergardenHoeItem(UGTools.FROSTSTEEL, -2, -1.0F));
+    public static final RegistryObject<SwordItem> froststeel_sword = ITEMS.register("froststeel_sword", () -> new UGSwordItem(UGTools.FROSTSTEEL));
+    public static final RegistryObject<PickaxeItem> froststeel_pickaxe = ITEMS.register("froststeel_pickaxe", () -> new UGPickaxeItem(UGTools.FROSTSTEEL));
+    public static final RegistryObject<AxeItem> froststeel_axe = ITEMS.register("froststeel_axe", () -> new UGAxeItem(UGTools.FROSTSTEEL, 4));
+    public static final RegistryObject<ShovelItem> froststeel_shovel = ITEMS.register("froststeel_shovel", () -> new UGShovelItem(UGTools.FROSTSTEEL));
+    public static final RegistryObject<HoeItem> froststeel_hoe = ITEMS.register("froststeel_hoe", () -> new UGHoeItem(UGTools.FROSTSTEEL, -2, -1.0F));
 
-    public static final RegistryObject<SwordItem> utheric_sword = ITEMS.register("utheric_sword", () -> new UndergardenSwordItem(UGTools.UTHERIC));
-    public static final RegistryObject<PickaxeItem> utheric_pickaxe = ITEMS.register("utheric_pickaxe", () -> new UndergardenPickaxeItem(UGTools.UTHERIC));
-    public static final RegistryObject<AxeItem> utheric_axe = ITEMS.register("utheric_axe", () -> new UndergardenAxeItem(UGTools.UTHERIC, 3.5F));
-    public static final RegistryObject<ShovelItem> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UndergardenShovelItem(UGTools.UTHERIC));
-    public static final RegistryObject<HoeItem> utheric_hoe = ITEMS.register("utheric_hoe", () -> new UndergardenHoeItem(UGTools.UTHERIC, -3, 0.0F));
+    public static final RegistryObject<SwordItem> utheric_sword = ITEMS.register("utheric_sword", () -> new UGSwordItem(UGTools.UTHERIC));
+    public static final RegistryObject<PickaxeItem> utheric_pickaxe = ITEMS.register("utheric_pickaxe", () -> new UGPickaxeItem(UGTools.UTHERIC));
+    public static final RegistryObject<AxeItem> utheric_axe = ITEMS.register("utheric_axe", () -> new UGAxeItem(UGTools.UTHERIC, 3.5F));
+    public static final RegistryObject<ShovelItem> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UGShovelItem(UGTools.UTHERIC));
+    public static final RegistryObject<HoeItem> utheric_hoe = ITEMS.register("utheric_hoe", () -> new UGHoeItem(UGTools.UTHERIC, -3, 0.0F));
 
     public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
 

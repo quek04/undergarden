@@ -8,11 +8,11 @@ import quek.undergarden.registry.UGShields;
 
 import javax.annotation.Nullable;
 
-public class UndergardenShieldItem extends ShieldItem {
+public class UGShieldItem extends ShieldItem {
 
     private final UGShields shieldTiers;
 
-    public UndergardenShieldItem(UGShields tier, Rarity rarity) {
+    public UGShieldItem(UGShields tier, Rarity rarity) {
         super(new Properties()
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())
@@ -23,7 +23,7 @@ public class UndergardenShieldItem extends ShieldItem {
         DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
     }
 
-    public UndergardenShieldItem(UGShields tier) {
+    public UGShieldItem(UGShields tier) {
         super(new Properties()
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())

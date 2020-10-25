@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Mod.EventBusSubscriber
-public class UndergardenShovelItem extends ShovelItem {
-    public UndergardenShovelItem(IItemTier tier) {
+public class UGShovelItem extends ShovelItem {
+    public UGShovelItem(IItemTier tier) {
         super(tier, 1.5f, -3, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
@@ -34,6 +34,7 @@ public class UndergardenShovelItem extends ShovelItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UGItems.froststeel_shovel.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
@@ -43,7 +44,6 @@ public class UndergardenShovelItem extends ShovelItem {
     @SubscribeEvent
     public static void attackEvent(LivingHurtEvent event) {
         Entity source = event.getSource().getTrueSource();
-        float damage = event.getAmount();
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;

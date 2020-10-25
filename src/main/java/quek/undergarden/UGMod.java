@@ -77,6 +77,13 @@ public class UGMod {
 				.put(UGBlocks.grongle_hyphae.get(), UGBlocks.stripped_grongle_hyphae.get())
 				.build();
 
+		HoeItem.HOE_LOOKUP = ImmutableMap.<Block, BlockState>builder()
+				.putAll(HoeItem.HOE_LOOKUP)
+				.put(UGBlocks.deepturf_block.get(), UGBlocks.deepsoil_farmland.get().getDefaultState())
+				.put(UGBlocks.deepsoil.get(), UGBlocks.deepsoil_farmland.get().getDefaultState())
+				.put(UGBlocks.coarse_deepsoil.get(), UGBlocks.deepsoil.get().getDefaultState())
+				.build();
+
 		IDispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 			private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
 

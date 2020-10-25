@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Mod.EventBusSubscriber
-public class UndergardenSwordItem extends SwordItem {
-    public UndergardenSwordItem(IItemTier tier) {
+public class UGSwordItem extends SwordItem {
+    public UGSwordItem(IItemTier tier) {
         super(tier, 3, -2.4f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
@@ -35,6 +35,7 @@ public class UndergardenSwordItem extends SwordItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UGItems.cloggrum_sword.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.cloggrum_sword").mergeStyle(TextFormatting.GRAY));

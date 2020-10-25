@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Mod.EventBusSubscriber
-public class UndergardenAxeItem extends AxeItem {
-    public UndergardenAxeItem(IItemTier tier, float attack) {
+public class UGAxeItem extends AxeItem {
+    public UGAxeItem(IItemTier tier, float attack) {
         super(tier, attack, -3.2f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
@@ -35,6 +35,7 @@ public class UndergardenAxeItem extends AxeItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UGItems.utheric_axe.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.utheric_axe").mergeStyle(TextFormatting.GRAY));

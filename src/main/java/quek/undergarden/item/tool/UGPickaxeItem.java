@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Mod.EventBusSubscriber
-public class UndergardenPickaxeItem extends PickaxeItem {
-    public UndergardenPickaxeItem(IItemTier tier) {
+public class UGPickaxeItem extends PickaxeItem {
+    public UGPickaxeItem(IItemTier tier) {
         super(tier, 1, -2.8f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
@@ -34,6 +34,7 @@ public class UndergardenPickaxeItem extends PickaxeItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UGItems.froststeel_pickaxe.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
@@ -43,7 +44,6 @@ public class UndergardenPickaxeItem extends PickaxeItem {
     @SubscribeEvent
     public static void attackEvent(LivingHurtEvent event) {
         Entity source = event.getSource().getTrueSource();
-        float damage = event.getAmount();
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
