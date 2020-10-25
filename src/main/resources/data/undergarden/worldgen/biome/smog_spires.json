@@ -56,7 +56,9 @@
     ]
   },
   "features": [
-    [],
+    [
+      "undergarden:smog_vent"
+    ],
     [],
     [],
     [],
@@ -81,7 +83,6 @@
       "undergarden:glowing_kelp",
       "undergarden:seagrass_patch",
       "undergarden:ditchbulb_patch",
-      "undergarden:smog_vent",
       "undergarden:pebble_patch",
       "undergarden:indigo_patch",
       "undergarden:veil_patch",

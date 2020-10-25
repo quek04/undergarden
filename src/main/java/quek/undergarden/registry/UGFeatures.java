@@ -38,9 +38,6 @@ public class UGFeatures {
     public static final RegistryObject<Feature<NoFeatureConfig>> smog_vent = FEATURES.register(
             "smog_vent", () -> new SmogVentFeature(NoFeatureConfig.field_236558_a_));
 
-    public static final RegistryObject<Feature<NoFeatureConfig>> enigmatic_statue = FEATURES.register(
-            "enigmatic_statue", () -> new EnigmaticStatueFeature(NoFeatureConfig.field_236558_a_));
-
     public static final RegistryObject<Feature<NoFeatureConfig>> droopvine = FEATURES.register(
             "droopvine", () -> new DroopvineFeature(NoFeatureConfig.field_236558_a_));
 
@@ -104,7 +101,6 @@ public class UGFeatures {
 
         register("glowing_kelp", glowing_kelp.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).func_242733_d(32).func_242728_a().func_242731_b(100));
         register("smog_vent", smog_vent.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(8))));
-        register("enigmatic_statue", enigmatic_statue.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).func_242733_d(256).func_242728_a().func_242731_b(100));
         register("droopvine", droopvine.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).func_242733_d(256).func_242728_a().func_242731_b(100));
     }
 
