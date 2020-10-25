@@ -27,7 +27,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 UGBlocks.depthrock.get(),
                 UGBlocks.shiverstone.get(),
                 UGBlocks.deepturf_block.get(),
-                UGBlocks.ashen_deepturf.get(),
+                UGBlocks.ashen_deepturf_block.get(),
                 UGBlocks.deepsoil.get(),
                 UGBlocks.coal_ore.get(),
                 UGBlocks.iron_ore.get(),

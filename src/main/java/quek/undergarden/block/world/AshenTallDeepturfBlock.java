@@ -30,7 +30,7 @@ public class AshenTallDeepturfBlock extends UGBushBlock implements IGrowable {
 
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == UGBlocks.ashen_deepturf.get();
+        return block == UGBlocks.ashen_deepturf_block.get();
     }
 
     @Override

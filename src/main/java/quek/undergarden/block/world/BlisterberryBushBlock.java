@@ -44,7 +44,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
 
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == UGBlocks.ashen_deepturf.get();
+        return block == UGBlocks.ashen_deepturf_block.get();
     }
 
     @Override

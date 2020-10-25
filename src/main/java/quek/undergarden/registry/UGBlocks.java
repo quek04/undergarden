@@ -30,7 +30,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> deepsoil_farmland = registerBlock("deepsoil_farmland", DeepsoilFarmlandBlock::new);
     public static final RegistryObject<Block> coarse_deepsoil = registerBlock("coarse_deepsoil", DeepsoilBlock::new);
     public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", DeepturfBlock::new);
-    public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", () -> new Block(
+    public static final RegistryObject<Block> ashen_deepturf_block = registerBlock("ashen_deepturf_block", () -> new Block(
             AbstractBlock.Properties.from(deepturf_block.get())));
     public static final RegistryObject<Block> depthrock = registerBlock("depthrock", () -> new Block(
             AbstractBlock.Properties.from(Blocks.STONE).sound(SoundType.BASALT).harvestLevel(1).setRequiresTool()));

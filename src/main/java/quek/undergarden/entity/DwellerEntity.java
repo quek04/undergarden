@@ -52,7 +52,7 @@ public class DwellerEntity extends AnimalEntity {
     }
 
     public static boolean canDwellerSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.ashen_deepturf.get();
+        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.ashen_deepturf_block.get();
     }
 
     @Nullable

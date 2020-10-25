@@ -144,7 +144,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.wigglewood_trapdoor);
             dropWithSilk(UGBlocks.smog_vent, UGBlocks.depthrock);
             this.registerLootTable(UGBlocks.goo.get(), (bookshelf) -> droppingWithSilkTouchOrRandomly(bookshelf, UGItems.goo_ball.get(), RandomValueRange.of(1.0F, 4.0F)));
-            dropWithSilk(UGBlocks.ashen_deepturf, UGBlocks.deepsoil);
+            dropWithSilk(UGBlocks.ashen_deepturf_block, UGBlocks.deepsoil);
             dropSelf(UGBlocks.shiverstone);
             dropSelf(UGBlocks.shiverstone_bricks);
             dropSelf(UGBlocks.shiverstone_slab);

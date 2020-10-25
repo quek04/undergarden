@@ -68,7 +68,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.goo);
         itemBlock(UGBlocks.smog_vent);
         itemBlockFlat(UGBlocks.ashen_tall_deepturf);
-        itemBlock(UGBlocks.ashen_deepturf);
+        itemBlock(UGBlocks.ashen_deepturf_block);
         itemBlock(UGBlocks.regalium_ore);
         itemBlock(UGBlocks.shiverstone_bricks);
         itemBlock(UGBlocks.shiverstone_stairs);

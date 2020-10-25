@@ -25,7 +25,7 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
             pos = pos.down();
         }
 
-        if (worldIn.isAirBlock(pos.up()) && worldIn.getBlockState(pos).getBlock() == UGBlocks.ashen_deepturf.get()) {
+        if (worldIn.isAirBlock(pos.up()) && worldIn.getBlockState(pos).getBlock() == UGBlocks.ashen_deepturf_block.get()) {
             pos = pos.up(rand.nextInt(4));
             int ventHeight = 7;
             int j = ventHeight / 4 + rand.nextInt(2);
@@ -43,7 +43,7 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
                             BlockState blockstate = worldIn.getBlockState(pos.add(i1, k, j1));
                             Block block = blockstate.getBlock();
                             BlockPos ventPos = new BlockPos(pos.getX(), pos.getY() + 7, pos.getZ()); //
-                            if (blockstate.isAir(worldIn, pos.add(i1, k, j1)) || block == UGBlocks.ashen_deepturf.get()) {
+                            if (blockstate.isAir(worldIn, pos.add(i1, k, j1)) || block == UGBlocks.ashen_deepturf_block.get()) {
                                 this.setBlockState(worldIn, pos.add(i1, k, j1), UGBlocks.depthrock.get().getDefaultState());
                             }
                             this.setBlockState(worldIn, ventPos, UGBlocks.smog_vent.get().getDefaultState());
@@ -51,7 +51,7 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
                             if (k != 0 && l > 1) {
                                 blockstate = worldIn.getBlockState(pos.add(i1, -k, j1));
                                 block = blockstate.getBlock();
-                                if (blockstate.isAir(worldIn, pos.add(i1, -k, j1)) || block == UGBlocks.ashen_deepturf.get()) {
+                                if (blockstate.isAir(worldIn, pos.add(i1, -k, j1)) || block == UGBlocks.ashen_deepturf_block.get()) {
                                     this.setBlockState(worldIn, pos.add(i1, -k, j1), UGBlocks.depthrock.get().getDefaultState());
                                 }
                             }
@@ -61,18 +61,13 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
             }
 
             int k1 = j - 1;
-            if (k1 < 0) {
-                k1 = 0;
-            } else if (k1 > 1) {
-                k1 = 1;
-            }
 
             for(int l1 = -k1; l1 <= k1; ++l1) {
                 for(int i2 = -k1; i2 <= k1; ++i2) {
                     BlockPos blockpos = pos.add(l1, -1, i2);
                     BlockState blockstate1 = worldIn.getBlockState(blockpos);
                     Block block1 = blockstate1.getBlock();
-                    if (!blockstate1.isAir(worldIn, blockpos) && block1 != UGBlocks.ashen_deepturf.get() && block1 != UGBlocks.deepsoil.get() && block1 != UGBlocks.depthrock.get()) {
+                    if (!blockstate1.isAir(worldIn, blockpos) && block1 != UGBlocks.ashen_deepturf_block.get() && block1 != UGBlocks.deepsoil.get() && block1 != UGBlocks.depthrock.get()) {
                         break;
                     }
 

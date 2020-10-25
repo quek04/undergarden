@@ -41,7 +41,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.deepsoil_farmland, "Deepsoil Farmland");
         addBlock(UGBlocks.coarse_deepsoil, "Coarse Deepsoil");
         addBlock(UGBlocks.deepturf_block, "Deepturf Block");
-        addBlock(UGBlocks.ashen_deepturf, "Ashen Deepturf Block");
+        addBlock(UGBlocks.ashen_deepturf_block, "Ashen Deepturf Block");
         addBlock(UGBlocks.depthrock, "Depthrock");
         addBlock(UGBlocks.smogstem_planks, "Smogstem Planks");
         addBlock(UGBlocks.wigglewood_planks, "Wigglewood Planks");

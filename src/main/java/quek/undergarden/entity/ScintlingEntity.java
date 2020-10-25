@@ -43,7 +43,7 @@ public class ScintlingEntity extends AnimalEntity {
 
 
     public static boolean canScintlingSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.depthrock.get() || worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.ashen_deepturf.get();
+        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.depthrock.get() || worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.ashen_deepturf_block.get();
     }
 
     public void livingTick() {
