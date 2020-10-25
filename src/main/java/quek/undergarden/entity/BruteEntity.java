@@ -40,6 +40,28 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     }
 
     @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new SwimGoal(this));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0F, false));
+        this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.addGoal(6, new LookAtGoal(this, BruteEntity.class, 6.0F));
+        this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
+    }
+
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_()
+                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+    }
+
+    public static boolean canBruteSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
+        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get();
+    }
+
+    @Override
     protected boolean isDespawnPeaceful() {
         return false;
     }
@@ -77,29 +99,6 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
             this.field_234348_bx_ = livingBase.getUniqueID();
         }
 
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0F, false));
-        this.targetSelector.addGoal(1, new BruteEntity.HurtByAggressorGoal(this));
-        this.targetSelector.addGoal(2, new BruteEntity.TargetAggressorGoal(this));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.addGoal(6, new LookAtGoal(this, BruteEntity.class, 6.0F));
-        this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
-    }
-
-    public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D) //hp
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23D) //speed
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D); //attack damage
-    }
-
-    public static boolean canBruteSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get();
     }
 
     @Override
@@ -156,9 +155,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     private void func_241411_fa_() {
         double d0 = this.getAttributeValue(Attributes.MOVEMENT_SPEED);
         AxisAlignedBB axisalignedbb = AxisAlignedBB.fromVector(this.getPositionVec()).grow(d0, 10.0D, d0);
-        this.world.getLoadedEntitiesWithinAABB(BruteEntity.class, axisalignedbb).stream().filter((p_241408_1_) -> p_241408_1_ != this).filter((p_241407_0_) -> p_241407_0_.getAttackTarget() == null).filter((p_241406_1_) -> !p_241406_1_.isOnSameTeam(this.getAttackTarget())).forEach((p_241405_1_) -> {
-            p_241405_1_.setAttackTarget(this.getAttackTarget());
-        });
+        this.world.getLoadedEntitiesWithinAABB(BruteEntity.class, axisalignedbb).stream().filter((brute) -> brute != this).filter((brute) -> brute.getAttackTarget() == null).filter((brute) -> !brute.isOnSameTeam(this.getAttackTarget())).forEach((brute) -> brute.setAttackTarget(this.getAttackTarget()));
     }
 
     public void setAttackTarget(@Nullable LivingEntity entitylivingbaseIn) {
@@ -188,25 +185,6 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     }
 
     @Override
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        return !this.isInvulnerableTo(source) && super.attackEntityFrom(source, amount);
-    }
-
-    private boolean func_226547_i_(LivingEntity p_226547_1_) {
-        this.angerLevel = this.func_223336_ef();
-        this.setRevengeTarget(p_226547_1_);
-        return true;
-    }
-
-    private int func_223336_ef() {
-        return 400 + this.rand.nextInt(400);
-    }
-
-    private boolean isAngry() {
-        return this.angerLevel > 0;
-    }
-
-    @Override
     protected SoundEvent getAmbientSound() {
         return UGSounds.BRUTE_LIVING;
     }
@@ -219,30 +197,6 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     @Override
     protected SoundEvent getDeathSound() {
         return UGSounds.BRUTE_DEATH;
-    }
-
-    static class HurtByAggressorGoal extends HurtByTargetGoal {
-        public HurtByAggressorGoal(BruteEntity brute) {
-            super(brute);
-        }
-
-        protected void setAttackTarget(MobEntity mobIn, LivingEntity targetIn) {
-            if(targetIn.world.getDifficulty() != Difficulty.PEACEFUL) {
-                if (mobIn instanceof BruteEntity && this.goalOwner.canEntityBeSeen(targetIn) && ((BruteEntity) mobIn).func_226547_i_(targetIn)) {
-                    mobIn.setAttackTarget(targetIn);
-                }
-            }
-        }
-    }
-
-    static class TargetAggressorGoal extends NearestAttackableTargetGoal<PlayerEntity> {
-        public TargetAggressorGoal(BruteEntity brute) {
-            super(brute, PlayerEntity.class, true);
-        }
-
-        public boolean shouldExecute() {
-            return ((BruteEntity)this.goalOwner).isAngry() && super.shouldExecute();
-        }
     }
 }
 
