@@ -2,6 +2,7 @@ package quek.undergarden.item;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
@@ -20,6 +21,7 @@ public class CatalystItem extends Item {
                 .group(UGItemGroups.GROUP)
                 .maxStackSize(1)
                 .maxDamage(3)
+                .rarity(Rarity.RARE)
         );
     }
 

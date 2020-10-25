@@ -106,6 +106,12 @@ public class ClientStuff {
                 UGBlocks.gloomgourd_stem.get(),
                 UGBlocks.gloomgourd_stem_attached.get()
         );
+
+        colors.register((state, world, pos, tint) ->
+                        new Color(54, 45, 66).getRGB(),
+                UGBlocks.gloomgourd_stem.get(),
+                UGBlocks.gloomgourd_stem_attached.get()
+        );
     }
 
     public static void registerItemColors() {
