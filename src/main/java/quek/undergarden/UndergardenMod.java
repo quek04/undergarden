@@ -46,7 +46,6 @@ public class UndergardenMod {
 		UndergardenEntities.ENTITIES.register(bus);
 		UndergardenBlocks.BLOCKS.register(bus);
 		UndergardenItems.ITEMS.register(bus);
-		UndergardenPOI.POI.register(bus);
 		UndergardenFeatures.FEATURES.register(bus);
 		UndergardenWorldCarvers.CARVERS.register(bus);
 		UndergardenEffects.EFFECTS.register(bus);
