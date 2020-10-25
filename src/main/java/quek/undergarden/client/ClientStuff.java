@@ -35,7 +35,7 @@ public class ClientStuff {
         RenderType translucent = RenderType.getTranslucent();
 
         render(UGBlocks.deepturf_block, mipped);
-        render(UGBlocks.tall_deepturf, cutout);
+        render(UGBlocks.deepturf, cutout);
         render(UGBlocks.shimmerweed, cutout);
         render(UGBlocks.smogstem_sapling, cutout);
         render(UGBlocks.wigglewood_sapling, cutout);
@@ -47,8 +47,8 @@ public class ClientStuff {
         render(UGBlocks.smogstem_torch, cutout);
         render(UGBlocks.smogstem_wall_torch, cutout);
         render(UGBlocks.ditchbulb_plant, cutout);
-        render(UGBlocks.double_deepturf, cutout);
-        render(UGBlocks.double_shimmerweed, cutout);
+        render(UGBlocks.tall_deepturf, cutout);
+        render(UGBlocks.tall_shimmerweed, cutout);
         render(UGBlocks.cloggrum_bars, cutout);
         render(UGBlocks.glowing_kelp, cutout);
         render(UGBlocks.glowing_kelp_plant, cutout);
@@ -59,7 +59,7 @@ public class ClientStuff {
         render(UGBlocks.wigglewood_door, cutout);
         render(UGBlocks.smogstem_trapdoor, cutout);
         render(UGBlocks.wigglewood_trapdoor, cutout);
-        render(UGBlocks.ashen_tall_deepturf, cutout);
+        render(UGBlocks.ashen_deepturf, cutout);
         render(UGBlocks.blisterberry_bush, cutout);
         render(UGBlocks.gloomgourd_stem, cutout);
         render(UGBlocks.gloomgourd_stem_attached, cutout);
@@ -99,10 +99,10 @@ public class ClientStuff {
         colors.register((state, world, pos, tint) ->
                         world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : new Color(91, 117, 91).getRGB(),
                 UGBlocks.deepturf_block.get(),
-                UGBlocks.tall_deepturf.get(),
+                UGBlocks.deepturf.get(),
                 UGBlocks.shimmerweed.get(),
-                UGBlocks.double_deepturf.get(),
-                UGBlocks.double_shimmerweed.get(),
+                UGBlocks.tall_deepturf.get(),
+                UGBlocks.tall_shimmerweed.get(),
                 UGBlocks.gloomgourd_stem.get(),
                 UGBlocks.gloomgourd_stem_attached.get()
         );
@@ -120,10 +120,10 @@ public class ClientStuff {
 
         iColors.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), null, null, 0),
                 UGBlocks.deepturf_block.get(),
-                UGBlocks.tall_deepturf.get(),
+                UGBlocks.deepturf.get(),
                 UGBlocks.shimmerweed.get(),
-                UGBlocks.double_shimmerweed.get(),
-                UGBlocks.double_deepturf.get()
+                UGBlocks.tall_shimmerweed.get(),
+                UGBlocks.tall_deepturf.get()
         );
 
         iColors.register((stack, tint) -> {
@@ -134,7 +134,7 @@ public class ClientStuff {
                 },
 
                 UGBlocks.shimmerweed.get(),
-                UGBlocks.double_shimmerweed.get()
+                UGBlocks.tall_shimmerweed.get()
         );
 
     }

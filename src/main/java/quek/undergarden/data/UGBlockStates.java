@@ -24,7 +24,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         torchBlock(UGBlocks.shard_torch, UGBlocks.shard_wall_torch);
         normalBlock(UGBlocks.depthrock);
         normalBlock(UGBlocks.deepsoil);
-        crossBlock(UGBlocks.ashen_tall_deepturf);
+        crossBlock(UGBlocks.ashen_deepturf);
         crossBlock(UGBlocks.ditchbulb_plant);
         normalBlock(UGBlocks.coal_ore);
         normalBlock(UGBlocks.cloggrum_ore);

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=lower": { "model": "undergarden:block/tall_shimmerweed_bottom" },
+        "half=upper":    { "model": "undergarden:block/tall_shimmerweed_top" }
+    }
+}

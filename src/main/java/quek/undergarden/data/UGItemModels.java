@@ -39,7 +39,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.wigglewood_planks);
         itemBlock(UGBlocks.depthrock_bricks);
         itemBlock(UGBlocks.cracked_depthrock_bricks);
-        itemBlockFlat(UGBlocks.tall_deepturf);
+        itemBlockFlat(UGBlocks.deepturf);
         itemBlockFlat(UGBlocks.ditchbulb_plant);
         itemBlockFlat(UGBlocks.indigo_mushroom);
         itemBlockFlat(UGBlocks.veil_mushroom);
@@ -67,7 +67,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.shiverstone);
         itemBlock(UGBlocks.goo);
         itemBlock(UGBlocks.smog_vent);
-        itemBlockFlat(UGBlocks.ashen_tall_deepturf);
+        itemBlockFlat(UGBlocks.ashen_deepturf);
         itemBlock(UGBlocks.ashen_deepturf_block);
         itemBlock(UGBlocks.regalium_ore);
         itemBlock(UGBlocks.shiverstone_bricks);

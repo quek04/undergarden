@@ -88,11 +88,11 @@ public class UGLootTables extends LootTableProvider {
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.blisterberry_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UGItems.rotten_blisterberry.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.blisterberry_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UGItems.rotten_blisterberry.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 1.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
             dropWithSilk(UGBlocks.deepturf_block, UGBlocks.deepsoil);
-            this.registerLootTable(UGBlocks.double_deepturf.get(), (block) -> droppingSeedsTall(block, UGBlocks.tall_deepturf.get()));
-            this.registerLootTable(UGBlocks.double_shimmerweed.get(), (block) -> droppingSeedsTall(block, UGBlocks.shimmerweed.get()));
-            this.registerLootTable(UGBlocks.tall_deepturf.get(), BlockLootTables::onlyWithShears);
+            this.registerLootTable(UGBlocks.tall_deepturf.get(), (block) -> droppingSeedsTall(block, UGBlocks.deepturf.get()));
+            this.registerLootTable(UGBlocks.tall_shimmerweed.get(), (block) -> droppingSeedsTall(block, UGBlocks.shimmerweed.get()));
+            this.registerLootTable(UGBlocks.deepturf.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UGBlocks.shimmerweed.get(), BlockLootTables::onlyWithShears);
-            this.registerLootTable(UGBlocks.ashen_tall_deepturf.get(), BlockLootTables::onlyWithShears);
+            this.registerLootTable(UGBlocks.ashen_deepturf.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UGBlocks.glowing_sea_grass.get(), BlockLootTables::onlyWithShears);
             dropSelf(UGBlocks.smogstem_planks);
             dropSelf(UGBlocks.wigglewood_planks);

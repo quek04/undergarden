@@ -48,7 +48,7 @@ public class UGTallGrassBlock extends UGBushBlock implements IGrowable {
 
     @Override
     public void grow(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) {
-        DoublePlantBlock doubleplantblock = (DoublePlantBlock) (this == UGBlocks.shimmerweed.get() ? UGBlocks.double_shimmerweed.get() : UGBlocks.double_deepturf.get());
+        DoublePlantBlock doubleplantblock = (DoublePlantBlock) (this == UGBlocks.shimmerweed.get() ? UGBlocks.tall_shimmerweed.get() : UGBlocks.tall_deepturf.get());
         if (doubleplantblock.getDefaultState().isValidPosition(serverWorld, pos) && serverWorld.isAirBlock(pos.up())) {
             doubleplantblock.placeAt(serverWorld, pos, 2);
         }

@@ -2,8 +2,8 @@
     "parent": "block/cross",
 	"ambientocclusion": false,
     "textures": {
-        "cross": "undergarden:block/double_shimmerweed_top",
-		"overlay": "undergarden:block/double_shimmerweed_bulb"
+        "cross": "undergarden:block/tall_shimmerweed_top",
+		"overlay": "undergarden:block/tall_shimmerweed_bulb"
     },
 	"elements": [
         {   "from": [ 0.8, 0, 8 ],

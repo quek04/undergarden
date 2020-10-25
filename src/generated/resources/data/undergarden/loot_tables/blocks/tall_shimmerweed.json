@@ -20,13 +20,13 @@
               "count": 1
             }
           ],
-          "name": "undergarden:tall_deepturf"
+          "name": "undergarden:shimmerweed"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "undergarden:double_deepturf",
+          "block": "undergarden:tall_shimmerweed",
           "properties": {
             "half": "lower"
           }
@@ -35,7 +35,7 @@
           "condition": "minecraft:location_check",
           "predicate": {
             "block": {
-              "block": "undergarden:double_deepturf",
+              "block": "undergarden:tall_shimmerweed",
               "state": {
                 "half": "upper"
               }
@@ -64,13 +64,13 @@
               "count": 1
             }
           ],
-          "name": "undergarden:tall_deepturf"
+          "name": "undergarden:shimmerweed"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "undergarden:double_deepturf",
+          "block": "undergarden:tall_shimmerweed",
           "properties": {
             "half": "upper"
           }
@@ -79,7 +79,7 @@
           "condition": "minecraft:location_check",
           "predicate": {
             "block": {
-              "block": "undergarden:double_deepturf",
+              "block": "undergarden:tall_shimmerweed",
               "state": {
                 "half": "lower"
               }

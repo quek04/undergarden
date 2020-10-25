@@ -67,6 +67,6 @@ public class DeepturfBlock extends UGGrassBlock implements IGrowable {
         if(random.nextInt(10) == 0) {
             return UGBlocks.shimmerweed.get().getDefaultState();
         }
-        else return UGBlocks.tall_deepturf.get().getDefaultState();
+        else return UGBlocks.deepturf.get().getDefaultState();
     }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "undergarden:block/ashen_tall_deepturf"
+    "cross": "undergarden:block/ashen_deepturf"
   }
 }

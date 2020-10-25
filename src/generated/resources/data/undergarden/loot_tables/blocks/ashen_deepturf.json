@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "undergarden:ashen_tall_deepturf"
+          "name": "undergarden:ashen_deepturf"
         }
       ],
       "conditions": [

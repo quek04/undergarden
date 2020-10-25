@@ -1,6 +1,6 @@
 {
     "parent": "block/tinted_cross",
     "textures": {
-        "cross": "undergarden:block/tall_deepturf"
+        "cross": "undergarden:block/tall_deepturf_bottom"
     }
 }

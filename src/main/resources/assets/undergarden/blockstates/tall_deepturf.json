@@ -1,5 +1,6 @@
 {
     "variants": {
-        "": { "model": "undergarden:block/tall_deepturf" }
+        "half=lower": { "model": "undergarden:block/tall_deepturf_bottom" },
+        "half=upper":    { "model": "undergarden:block/tall_deepturf_top" }
     }
 }

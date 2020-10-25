@@ -84,11 +84,11 @@ public class UGBlocks {
     public static final RegistryObject<RotatedPillarBlock> stripped_grongle_hyphae = registerBlock("stripped_grongle_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<Block> grongle_cap = registerBlock("grongle_cap", () -> new Block(AbstractBlock.Properties.from(Blocks.WARPED_WART_BLOCK).sound(SoundType.SHROOMLIGHT)));
 
-    public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UGTallGrassBlock::new);
-    public static final RegistryObject<Block> ashen_tall_deepturf = registerBlock("ashen_tall_deepturf", AshenTallDeepturfBlock::new);
-    public static final RegistryObject<Block> double_deepturf = registerBlock("double_deepturf", UGDoublePlantBlock::new);
+    public static final RegistryObject<Block> deepturf = registerBlock("deepturf", UGTallGrassBlock::new);
+    public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", AshenTallDeepturfBlock::new);
+    public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UGDoublePlantBlock::new);
     public static final RegistryObject<Block> shimmerweed = registerBlock("shimmerweed", () -> new UGTallGrassBlock(12));
-    public static final RegistryObject<Block> double_shimmerweed = registerBlock("double_shimmerweed", () -> new UGDoublePlantBlock(14));
+    public static final RegistryObject<Block> tall_shimmerweed = registerBlock("tall_shimmerweed", () -> new UGDoublePlantBlock(14));
     public static final RegistryObject<Block> ditchbulb_plant = registerBlock("ditchbulb_plant", DitchbulbBlock::new);
     public static final RegistryObject<Block> indigo_mushroom = registerBlock("indigo_mushroom", () -> new UGMushroomBlock(2));
     public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", UGMushroomBlock::new);
