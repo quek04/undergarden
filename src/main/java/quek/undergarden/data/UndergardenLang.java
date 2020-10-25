@@ -247,7 +247,6 @@ public class UndergardenLang extends LanguageProvider {
         addItem(UndergardenItems.rotbeast_spawn_egg, "Rotbeast Spawn Egg");
         addItem(UndergardenItems.brute_spawn_egg, "Brute Spawn Egg");
         addItem(UndergardenItems.scintling_spawn_egg, "Scintling Spawn Egg");
-        addItem(UndergardenItems.blisterbomber_spawn_egg, "Blisterbomber Spawn Egg");
         addItem(UndergardenItems.gloomper_spawn_egg, "Gloomper Spawn Egg");
         addItem(UndergardenItems.stoneborn_spawn_egg, "Stoneborn Spawn Egg");
 
@@ -269,7 +268,6 @@ public class UndergardenLang extends LanguageProvider {
         addEntityType(UndergardenEntities.ROTBEAST, "Rotbeast");
         addEntityType(UndergardenEntities.BRUTE, "Brute");
         addEntityType(UndergardenEntities.SCINTLING, "Scintling");
-        addEntityType(UndergardenEntities.BLISTERBOMBER, "Blisterbomber");
         addEntityType(UndergardenEntities.GLOOMPER, "Gloomper");
         addEntityType(UndergardenEntities.STONEBORN, "Stoneborn");
 
