@@ -3,11 +3,14 @@ package quek.undergarden.client.render.entity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UGMod;
 import quek.undergarden.client.model.GloomperModel;
 import quek.undergarden.client.render.layer.GloomperEyesLayer;
 import quek.undergarden.entity.GloomperEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class GloomperRender extends MobRenderer<GloomperEntity, GloomperModel<GloomperEntity>> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/gloomper.png");

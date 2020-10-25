@@ -6,6 +6,7 @@ import net.minecraft.particles.BasicParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class GrongleSporeParticle extends SpriteTexturedParticle {
 
     private GrongleSporeParticle(ClientWorld world, double x, double y, double z) {
