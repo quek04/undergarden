@@ -35,21 +35,21 @@ public class UGEntityTypes {
     public static final EntityType<RotlingEntity> rotling = EntityType.Builder.create(RotlingEntity::new, EntityClassification.MONSTER)
             .size(0.6F, 1.0F).build("rotling");
     public static final EntityType<RotwalkerEntity> rotwalker = EntityType.Builder.create(RotwalkerEntity::new, EntityClassification.MONSTER)
-            .size(0.8f,2.5f).build("rotwalker");
+            .size(0.8F,2.5F).build("rotwalker");
     public static final EntityType<RotbeastEntity> rotbeast = EntityType.Builder.create(RotbeastEntity::new, EntityClassification.MONSTER)
-            .size(1.2F,3).build("rotbeast");
+            .size(0.9F,3).build("rotbeast");
     public static final EntityType<DwellerEntity> dweller = EntityType.Builder.create(DwellerEntity::new, EntityClassification.CREATURE)
-            .size(1,1.8F).build("dweller");
+            .size(0.9F,1.8F).build("dweller");
     public static final EntityType<RotDwellerEntity> rotdweller = EntityType.Builder.create(RotDwellerEntity::new, EntityClassification.MONSTER)
-            .size(1, 1.8F).build("rotdweller");
+            .size(0.9F, 1.8F).build("rotdweller");
     public static final EntityType<GwiblingEntity> gwibling = EntityType.Builder.create(GwiblingEntity::new, EntityClassification.WATER_AMBIENT)
             .size(.5F, .5F).build("gwibling");
     public static final EntityType<BruteEntity> brute = EntityType.Builder.create(BruteEntity::new, EntityClassification.MONSTER)
-            .size(1, 2).build("brute");
+            .size(0.9F, 2).build("brute");
     public static final EntityType<ScintlingEntity> scintling = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
-            .size(1, .5F).build("scintling");
+            .size(0.9F, .5F).build("scintling");
     public static final EntityType<GloomperEntity> gloomper = EntityType.Builder.create(GloomperEntity::new, EntityClassification.CREATURE)
-            .size(1F, 1F).build("gloomper");
+            .size(0.9F, 1F).build("gloomper");
     public static final EntityType<StonebornEntity> stoneborn = EntityType.Builder.create(StonebornEntity::new, EntityClassification.MONSTER)
             .size(0.9F, 2.6F).build("stoneborn");
 
