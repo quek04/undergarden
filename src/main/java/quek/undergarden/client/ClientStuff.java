@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGFluids;
 
 import java.awt.*;
 import java.util.function.Supplier;
@@ -71,6 +72,9 @@ public class ClientStuff {
         render(UGBlocks.grongle_door, cutout);
         render(UGBlocks.grongle_trapdoor, cutout);
         render(UGBlocks.virulent_mix, translucent);
+
+        RenderTypeLookup.setRenderLayer(UGFluids.virulent_mix_source.get(), translucent);
+        RenderTypeLookup.setRenderLayer(UGFluids.virulent_mix_flowing.get(), translucent);
     }
 
     public static void registerEntityRenderers() {
