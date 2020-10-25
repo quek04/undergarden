@@ -13,14 +13,14 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.3.0'
+version = project.undergarden_version
 group = 'quek.undergarden.modid'
 archivesBaseName = 'undergarden'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200916-1.16.2'
+    mappings channel: 'snapshot', version: project.mappings
 
     runs {
         client {
@@ -79,7 +79,7 @@ sourceSets.main.resources {
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.16.3-34.1.25'
+    minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
