@@ -50,7 +50,7 @@ public class UGMod {
 		UGCarvers.CARVERS.register(bus);
 		UGEffects.EFFECTS.register(bus);
 		UGFluids.FLUIDS.register(bus);
-		UGParticles.PARTICLES.register(bus);
+		UGParticleTypes.PARTICLES.register(bus);
 		UGTileEntities.TEs.register(bus);
 
 		final Pair<UGConfig.CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(UGConfig.CommonConfig::new);

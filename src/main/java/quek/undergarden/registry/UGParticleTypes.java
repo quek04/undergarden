@@ -16,7 +16,7 @@ import quek.undergarden.UGMod;
 import quek.undergarden.client.particle.*;
 
 @Mod.EventBusSubscriber(modid = UGMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class UGParticles {
+public class UGParticleTypes {
 
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, UGMod.MODID);
 
@@ -28,7 +28,7 @@ public class UGParticles {
     public static void registerParticleFactories(ParticleFactoryRegisterEvent event) {
         ParticleManager particleManager = Minecraft.getInstance().particles;
 
-        particleManager.registerFactory(UGParticles.shard.get(), ShardParticle.Factory::new);
-        particleManager.registerFactory(UGParticles.grongle_spore.get(), GrongleSporeParticle.Factory::new);
+        particleManager.registerFactory(UGParticleTypes.shard.get(), ShardParticle.Factory::new);
+        particleManager.registerFactory(UGParticleTypes.grongle_spore.get(), GrongleSporeParticle.Factory::new);
     }
 }
