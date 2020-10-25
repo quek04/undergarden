@@ -1,17 +1,17 @@
 {
-  "ambient.undergarden_ambiance": {
+  "ambient.undergarden_ambience": {
     "category": "ambient",
     "sounds": [
       {
-        "name": "undergarden:ambient/undergarden_ambiance", "stream": false
+        "name": "undergarden:ambient/undergarden_ambience", "stream": false
       }
     ]
   },
-  "ambient.otherside_ambiance": {
+  "ambient.otherside_ambience": {
     "category": "ambient",
     "sounds": [
       {
-        "name": "undergarden:ambient/otherside_ambiance", "stream": false
+        "name": "undergarden:ambient/otherside_ambience", "stream": false
       }
     ]
   },
