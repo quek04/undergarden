@@ -26,6 +26,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
 import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
 import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
+import quek.undergarden.registry.UGCriteria;
 import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSounds;
@@ -271,7 +272,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         this.livingSoundTime = -this.getTalkInterval();
         this.onStonebornTrade(offer);
         if (this.customer instanceof ServerPlayerEntity) {
-            //CriteriaTriggers.VILLAGER_TRADE.test((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
+            UGCriteria.stoneborn_trade.test((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
         }
 
     }

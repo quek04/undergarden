@@ -65,6 +65,7 @@ public class UGMod {
 		UGEntityTypes.entityAttributes();
 		UGFeatures.registerConfiguredFeatures();
 		UGCarvers.registerConfiguredCarvers();
+		UGCriteria.register();
 
 		AxeItem.BLOCK_STRIPPING_MAP = ImmutableMap.<Block, Block>builder()
 				.putAll(AxeItem.BLOCK_STRIPPING_MAP)

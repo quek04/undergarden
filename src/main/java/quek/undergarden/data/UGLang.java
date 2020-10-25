@@ -307,6 +307,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("glorious_beans", "Glorious Beans!");
         addAdvDesc("glorious_beans", "Find and pick an Underbean Bush.");
 
+        addAdvTitle("trade_with_stoneborn", "Interdimensional Business");
+        addAdvDesc("trade_with_stoneborn", "Trade with a Stoneborn.");
+
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");

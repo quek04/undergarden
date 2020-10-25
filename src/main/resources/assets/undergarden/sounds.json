@@ -204,8 +204,7 @@
     "sounds": [
       "undergarden:entity/stoneborn_speaking_1",
       "undergarden:entity/stoneborn_speaking_2",
-      "undergarden:entity/stoneborn_speaking_3",
-      "undergarden:entity/stoneborn_speaking_4"
+      "undergarden:entity/stoneborn_speaking_3"
     ]
   },
   "entity.stoneborn_pleased": {
