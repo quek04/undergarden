@@ -4,8 +4,11 @@ import com.google.common.cache.LoadingCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.PortalInfo;
+import net.minecraft.entity.EntitySize;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
@@ -36,6 +39,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 import net.minecraft.block.AbstractBlock.Properties;
+import quek.undergarden.world.UndergardenTeleporter;
 
 public class UndergardenPortalBlock extends Block {
 
@@ -126,12 +130,6 @@ public class UndergardenPortalBlock extends Block {
             } else {
                 if (!entity.world.isRemote && !pos.equals(entity.field_242271_ac)) {
                     entity.field_242271_ac = pos.toImmutable();
-                    //BlockPattern.PatternHelper pattern = UndergardenPortalBlock.createPatternHelper(entity.world, entity.lastPortalPos);
-                    //double d0 = pattern.getForwards().getAxis() == Direction.Axis.X ? (double)pattern.getFrontTopLeft().getZ() : (double)pattern.getFrontTopLeft().getX();
-                    //double d1 = MathHelper.clamp(Math.abs(MathHelper.func_233020_c_((pattern.getForwards().getAxis() == Direction.Axis.X ? entity.getPosZ() : entity.getPosX()) - (double)(pattern.getForwards().rotateY().getAxisDirection() == Direction.AxisDirection.NEGATIVE ? 1 : 0), d0, d0 - (double)pattern.getWidth())), 0.0D, 1.0D);
-                    //double d2 = MathHelper.clamp(MathHelper.func_233020_c_(entity.getPosY() - 1.0D, pattern.getFrontTopLeft().getY(), pattern.getFrontTopLeft().getY() - pattern.getHeight()), 0.0D, 1.0D);
-                    //entity.lastPortalVec = new Vector3d(d1, d2, 0.0D);
-                    //entity.teleportDirection = pattern.getForwards();
                 }
                 World serverworld = entity.world;
                 if(serverworld != null) {
@@ -142,7 +140,7 @@ public class UndergardenPortalBlock extends Block {
                         if (destination != null && minecraftserver.getAllowNether() && !entity.isPassenger()) {
                             entity.world.getProfiler().startSection("undergarden_portal");
                             entity.func_242279_ag();
-                            //entity.changeDimension(destination, new Teleporter(destination));
+                            entity.changeDimension(destination, new UndergardenTeleporter());
                             entity.world.getProfiler().endSection();
                         }
                     }
