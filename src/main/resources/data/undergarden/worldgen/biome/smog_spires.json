@@ -77,6 +77,7 @@
       "undergarden:deepsoil_patch"
     ],
     [
+      "undergarden:lilypads",
       "undergarden:glowing_kelp",
       "undergarden:seagrass_patch",
       "undergarden:ditchbulb_patch",
@@ -113,12 +114,6 @@
         "weight": 5,
         "minCount": 1,
         "maxCount": 2
-      },
-      {
-        "type": "undergarden:blisterbomber",
-        "weight": 10,
-        "minCount": 1,
-        "maxCount": 1
       }
     ],
     "creature": [
