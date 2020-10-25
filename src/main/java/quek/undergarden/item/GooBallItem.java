@@ -1,10 +1,8 @@
 package quek.undergarden.item;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -12,7 +10,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.GooBallEntity;
-import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGFoods;
 import quek.undergarden.registry.UGItemGroups;
 
@@ -24,13 +21,6 @@ public class GooBallItem extends Item {
                 .maxStackSize(16)
                 .group(UGItemGroups.GROUP)
         );
-    }
-
-    @Override
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        entityLiving.addPotionEffect(new EffectInstance(UGEffects.gooey.get(), 600, 0, false, true));
-        return itemStack;
     }
 
     @Override
