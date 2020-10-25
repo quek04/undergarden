@@ -32,7 +32,7 @@
     "type": "default",
     "config": {
       "top_material": {
-        "Name": "undergarden:ashen_deepturf",
+        "Name": "undergarden:ashen_deepturf_block",
         "Properties": {
           "snowy": "false"
         }
