@@ -21,9 +21,9 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSounds;
 
 import javax.annotation.Nullable;
@@ -48,15 +48,17 @@ public class GloomperEntity extends AnimalEntity {
         this.goalSelector.addGoal(1, new SwimGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(UGItems.underbeans.get()), false));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0F, 2.5F));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(UGBlocks.gloomgourd.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 0.50D));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AnimalEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D) //hp
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D); //speed
+                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
     public static boolean canGloomperSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
@@ -91,7 +93,7 @@ public class GloomperEntity extends AnimalEntity {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return Ingredient.fromItems(UGItems.underbeans.get()).test(stack);
+        return Ingredient.fromItems(UGBlocks.gloomgourd.get()).test(stack);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -178,7 +180,7 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     private void calculateRotationYaw(double x, double z) {
-        this.rotationYaw = (float)(MathHelper.atan2(z - this.getPosZ(), x - this.getPosX()) * (double)(180F / (float)Math.PI)) - 90.0F;
+        this.rotationYaw = (float)(MathHelper.atan2(z - this.getPosZ(), x - this.getPosX()) * 57.2957763671875D) - 90.0F;
     }
 
     private void enableJumpControl() {
@@ -203,6 +205,7 @@ public class GloomperEntity extends AnimalEntity {
         this.disableJumpControl();
     }
 
+    @Override
     public void livingTick() {
         super.livingTick();
         if (this.jumpTicks != this.jumpDuration) {
@@ -312,6 +315,4 @@ public class GloomperEntity extends AnimalEntity {
 
         }
     }
-
-
 }
