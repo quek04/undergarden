@@ -118,7 +118,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .addCriterion("has_scales", hasItem(UGItems.cloggrum_ingot.get()))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.shard_torch.get(), 4)
+        ShapedRecipeBuilder.shapedRecipe(UGItems.shard_torch.get(), 1)
                 .patternLine("C")
                 .patternLine("S")
                 .key('C', UGItems.utheric_shard.get())
