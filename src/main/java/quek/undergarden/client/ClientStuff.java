@@ -8,23 +8,17 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.UGConfig;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGEntityTypes;
 
 import java.awt.*;
-import java.util.UUID;
 import java.util.function.Supplier;
 
 @OnlyIn(Dist.CLIENT)
@@ -73,10 +67,10 @@ public class ClientStuff {
         render(UGBlocks.shard_wall_torch, cutout);
         render(UGBlocks.droopvine_top, cutout);
         render(UGBlocks.droopvine, cutout);
-        render(UGBlocks.virulent_mix, translucent);
         render(UGBlocks.gronglet, cutout);
         render(UGBlocks.grongle_door, cutout);
         render(UGBlocks.grongle_trapdoor, cutout);
+        render(UGBlocks.virulent_mix, translucent);
     }
 
     public static void registerEntityRenderers() {
