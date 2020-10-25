@@ -38,7 +38,6 @@ public class UGBushBlock extends Block implements IPlantable {
         return false;
     }
 
-
     @Override
     public BlockState getPlant(IBlockReader world, BlockPos pos) {
         BlockState state = world.getBlockState(pos);

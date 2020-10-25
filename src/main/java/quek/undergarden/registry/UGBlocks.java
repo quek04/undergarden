@@ -127,7 +127,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> shard_torch = BLOCKS.register("shard_torch", ShardTorchBlock::new);
     public static final RegistryObject<Block> shard_wall_torch = BLOCKS.register("shard_wall_torch", ShardWallTorchBlock::new);
     public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(15));
-    public static final RegistryObject<Block> cloggrum_bars = registerBlock("cloggrum_bars", CloggrumBarsBlock::new);
+    public static final RegistryObject<Block> cloggrum_bars = registerBlock("cloggrum_bars", () -> new PaneBlock(AbstractBlock.Properties.from(Blocks.IRON_BARS)));
 
     public static final RegistryObject<StairsBlock> depthrock_stairs = registerBlock("depthrock_stairs", () -> new StairsBlock(UGBlocks.depthrock.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.depthrock.get()).notSolid()));
     public static final RegistryObject<StairsBlock> depthrock_brick_stairs = registerBlock("depthrock_brick_stairs", () -> new StairsBlock(UGBlocks.depthrock_bricks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.depthrock_bricks.get()).notSolid()));
