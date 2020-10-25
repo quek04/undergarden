@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "frame": "challenge"
   },
-  "parent": "undergarden:undergarden/root",
+  "parent": "undergarden:undergarden/enter_undergarden",
   "criteria": {
     "smogstem_forest": {
       "trigger": "minecraft:location",

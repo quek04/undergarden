@@ -277,8 +277,11 @@ public class UGLang extends LanguageProvider {
 
         addEffect(UGEffects.gooey, "Gooey");
 
-        addAdvTitle("undergarden", "The Undergarden");
-        addAdvDesc("undergarden", "Enter The Undergarden. The forgotten land awaits...");
+        addAdvTitle("root", "The Undergarden");
+        addAdvDesc("root", "Create a Catalyst");
+
+        addAdvTitle("undergarden", "Enter the Undergarden");
+        addAdvDesc("undergarden", "The forgotten land awaits...");
 
         addAdvTitle("gourd_lord", "Gourd Lord");
         addAdvDesc("gourd_lord", "Acquire a stack of Gloomgourds.");
@@ -303,12 +306,6 @@ public class UGLang extends LanguageProvider {
 
         addAdvTitle("glorious_beans", "Glorious Beans!");
         addAdvDesc("glorious_beans", "Find and pick an Underbean Bush.");
-
-        addAdvTitle("slay_masticator", "Sprankton");
-        addAdvDesc("slay_masticator", "Slay the Masticator.");
-
-        addAdvTitle("masticated_armory", "Masticated Armory");
-        addAdvDesc("masticated_armory", "Craft the Masticated Chestplate.");
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");

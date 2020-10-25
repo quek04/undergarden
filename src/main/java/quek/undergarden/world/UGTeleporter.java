@@ -84,7 +84,7 @@ public class UGTeleporter implements ITeleporter {
             }
 
             if (blockpos == null) {
-                long factor = world.getGameTime() + 300L;
+                long factor = world.getGameTime();
                 this.columnMap.put(columnpos, factor);
                 return null;
             }
@@ -269,6 +269,10 @@ public class UGTeleporter implements ITeleporter {
         double d3 = Math.min(2.9999872E7D, worldborder.maxZ() - 16.0D);
         double d4 = DimensionType.getCoordinateDifference(entity.world.getDimensionType(), destWorld.getDimensionType());
         BlockPos blockpos1 = new BlockPos(MathHelper.clamp(entity.getPosX() * d4, d0, d2), entity.getPosY(), MathHelper.clamp(entity.getPosZ() * d4, d1, d3));
+        if (!placeInPortal(destWorld, entity, entity.rotationYaw)) {
+            makePortal(destWorld, entity);
+            placeInPortal(destWorld, entity, entity.rotationYaw);
+        }
         return this.placeInExistingPortal(destWorld, entity, blockpos1);
     }
 

@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "undergarden:deepturf_block"
+      "item": "undergarden:catalyst"
     },
     "title": {
-      "translate": "advancement.undergarden.title"
+      "translate": "advancement.root.title"
     },
     "description": {
-      "translate": "advancement.undergarden.desc"
+      "translate": "advancement.root.desc"
     },
     "background": "undergarden:textures/block/depthrock_bricks.png",
     "show_toast": true,
@@ -15,11 +15,14 @@
     "frame": "task"
   },
   "criteria": {
-    "enter_undergarden": {
-      "trigger": "minecraft:changed_dimension",
+    "has_diamond": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "to": "undergarden:undergarden",
-        "from": "minecraft:overworld"
+        "items": [
+          {
+            "item": "undergarden:catalyst"
+          }
+        ]
       }
     }
   }
