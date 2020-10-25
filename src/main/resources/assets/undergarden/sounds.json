@@ -7,6 +7,14 @@
       }
     ]
   },
+  "ambient.spires_ambience": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "undergarden:ambient/spires_ambience", "stream": false
+      }
+    ]
+  },
   "ambient.otherside_ambience": {
     "category": "ambient",
     "sounds": [
