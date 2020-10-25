@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "undergarden:block/stripped_smogstem_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "undergarden:block/stripped_smogstem_log"
+    },
+    "axis=z": {
+      "model": "undergarden:block/stripped_smogstem_log_horizontal",
+      "x": 90
+    }
+  }
+}

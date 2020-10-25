@@ -13,7 +13,7 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class DeepturfBlock extends UGGrassBlock {
+public class DeepturfBlock extends UGGrassBlock implements IGrowable {
 
     public DeepturfBlock() {
         super(Properties.create(Material.ORGANIC)

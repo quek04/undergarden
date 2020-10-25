@@ -1,6 +1,7 @@
 {
-  "parent": "block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "undergarden:block/smogstem_log_side"
+    "end": "undergarden:block/smogstem_log_side",
+    "side": "undergarden:block/smogstem_log_side"
   }
 }

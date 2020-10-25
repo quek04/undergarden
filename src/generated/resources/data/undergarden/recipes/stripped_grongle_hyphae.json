@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MM",
+    "MM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:stripped_grongle_stem"
+    }
+  },
+  "result": {
+    "item": "undergarden:stripped_grongle_hyphae",
+    "count": 3
+  }
+}

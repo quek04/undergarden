@@ -65,20 +65,23 @@ public class UGBlocks {
 
     public static final RegistryObject<SaplingBlock> smogstem_sapling = registerBlock("smogstem_sapling", () -> new UGSaplingBlock(new SmogstemTree()));
     public static final RegistryObject<RotatedPillarBlock> smogstem_log = registerBlock("smogstem_log", UGLogBlock::new);
-    public static final RegistryObject<RotatedPillarBlock> stripped_smogstem_log = registerBlock("stripped_smogstem_wood", UGLogBlock::new);
-    public static final RegistryObject<Block> smogstem_wood = registerBlock("smogstem_wood", () -> new Block(AbstractBlock.Properties.from(UGBlocks.smogstem_log.get())));
+    public static final RegistryObject<RotatedPillarBlock> stripped_smogstem_log = registerBlock("stripped_smogstem_log", UGLogBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> smogstem_wood = registerBlock("smogstem_wood", UGLogBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> stripped_smogstem_wood = registerBlock("stripped_smogstem_wood", UGLogBlock::new);
     public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", UGLeavesBlock::new);
 
     public static final RegistryObject<SaplingBlock> wigglewood_sapling = registerBlock("wigglewood_sapling", () -> new UGSaplingBlock(new WigglewoodTree()));
     public static final RegistryObject<RotatedPillarBlock> wigglewood_log = registerBlock("wigglewood_log", UGLogBlock::new);
-    public static final RegistryObject<RotatedPillarBlock> stripped_wigglewood_log = registerBlock("stripped_wigglewood_wood", UGLogBlock::new);
-    public static final RegistryObject<Block> wigglewood_wood = registerBlock("wigglewood_wood", () -> new Block(AbstractBlock.Properties.from(UGBlocks.wigglewood_log.get())));
+    public static final RegistryObject<RotatedPillarBlock> stripped_wigglewood_log = registerBlock("stripped_wigglewood_log", UGLogBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> wigglewood_wood = registerBlock("wigglewood_wood", UGLogBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> stripped_wigglewood_wood = registerBlock("stripped_wigglewood_wood", UGLogBlock::new);
     public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", UGLeavesBlock::new);
 
     public static final RegistryObject<Block> gronglet = registerBlock("gronglet", () -> new GrongletBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_FUNGUS).sound(SoundType.SHROOMLIGHT), () -> Feature.HUGE_FUNGUS.withConfiguration(new HugeFungusConfig(UGBlocks.deepturf_block.get().getDefaultState(), UGBlocks.grongle_stem.get().getDefaultState(), UGBlocks.grongle_cap.get().getDefaultState(), Blocks.SHROOMLIGHT.getDefaultState(), true))));
     public static final RegistryObject<RotatedPillarBlock> grongle_stem = registerBlock("grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<RotatedPillarBlock> stripped_grongle_stem = registerBlock("stripped_grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
-    public static final RegistryObject<Block> grongle_hyphae = registerBlock("grongle_hyphae", () -> new Block(AbstractBlock.Properties.from(UGBlocks.grongle_stem.get())));
+    public static final RegistryObject<RotatedPillarBlock> grongle_hyphae = registerBlock("grongle_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
+    public static final RegistryObject<RotatedPillarBlock> stripped_grongle_hyphae = registerBlock("stripped_grongle_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<Block> grongle_cap = registerBlock("grongle_cap", () -> new Block(AbstractBlock.Properties.from(Blocks.WARPED_WART_BLOCK).sound(SoundType.SHROOMLIGHT)));
 
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UGTallGrassBlock::new);

@@ -59,21 +59,28 @@ public class UGLang extends LanguageProvider {
 
         addBlock(UGBlocks.underbean_bush, "Underbean Bush");
         addBlock(UGBlocks.blisterberry_bush, "Blisterberry Bush");
+
         addBlock(UGBlocks.smogstem_sapling, "Smogstem Sapling");
         addBlock(UGBlocks.smogstem_log, "Smogstem Log");
         addBlock(UGBlocks.stripped_smogstem_log, "Stripped Smogstem Log");
         addBlock(UGBlocks.smogstem_wood, "Smogstem Wood");
+        addBlock(UGBlocks.stripped_smogstem_wood, "Stripped Smogstem Wood");
         addBlock(UGBlocks.smogstem_leaves, "Smogstem Leaves");
+
         addBlock(UGBlocks.wigglewood_sapling, "Wigglewood Sapling");
         addBlock(UGBlocks.wigglewood_log, "Wigglewood Log");
         addBlock(UGBlocks.stripped_wigglewood_log, "Stripped Wigglewood Log");
         addBlock(UGBlocks.wigglewood_wood, "Wigglewood.. Wood");
+        addBlock(UGBlocks.stripped_wigglewood_wood, "Stripped Wigglewood Wood");
         addBlock(UGBlocks.wigglewood_leaves, "Wigglewood Leaves");
+
         addBlock(UGBlocks.gronglet, "Gronglet");
         addBlock(UGBlocks.grongle_stem, "Grongle Stem");
         addBlock(UGBlocks.stripped_grongle_stem, "Stripped Grongle Stem");
         addBlock(UGBlocks.grongle_hyphae, "Grongle Hyphae");
+        addBlock(UGBlocks.stripped_grongle_hyphae, "Stripped Grongle Hyphae");
         addBlock(UGBlocks.grongle_cap, "Grongle Cap");
+
         addBlock(UGBlocks.tall_deepturf, "Deepturf");
         addBlock(UGBlocks.ashen_tall_deepturf, "Ashen Deepturf");
         addBlock(UGBlocks.double_deepturf, "Tall Deepturf");

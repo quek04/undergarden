@@ -1,5 +1,16 @@
 {
     "variants": {
-        "":	{ "model": "undergarden:block/wigglewood_wood" }
+        "axis=x": {
+            "model": "undergarden:block/wigglewood_wood",
+            "x": 90,
+            "y": 90
+        },
+        "axis=y": {
+            "model": "undergarden:block/wigglewood_wood"
+        },
+        "axis=z": {
+            "model": "undergarden:block/wigglewood_wood",
+            "x": 90
+        }
     }
 }

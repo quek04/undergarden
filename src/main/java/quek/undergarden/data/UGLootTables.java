@@ -191,6 +191,9 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.stripped_smogstem_log);
             dropSelf(UGBlocks.stripped_wigglewood_log);
             dropSelf(UGBlocks.stripped_grongle_stem);
+            dropSelf(UGBlocks.stripped_smogstem_wood);
+            dropSelf(UGBlocks.stripped_wigglewood_wood);
+            dropSelf(UGBlocks.stripped_grongle_hyphae);
         }
 
         @Override

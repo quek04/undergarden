@@ -70,8 +70,11 @@ public class UGMod {
 		AxeItem.BLOCK_STRIPPING_MAP = ImmutableMap.<Block, Block>builder()
 				.putAll(AxeItem.BLOCK_STRIPPING_MAP)
 				.put(UGBlocks.smogstem_log.get(), UGBlocks.stripped_smogstem_log.get())
+				.put(UGBlocks.smogstem_wood.get(), UGBlocks.stripped_smogstem_wood.get())
 				.put(UGBlocks.wigglewood_log.get(), UGBlocks.stripped_wigglewood_log.get())
+				.put(UGBlocks.wigglewood_wood.get(), UGBlocks.stripped_wigglewood_wood.get())
 				.put(UGBlocks.grongle_stem.get(), UGBlocks.stripped_grongle_stem.get())
+				.put(UGBlocks.grongle_hyphae.get(), UGBlocks.stripped_grongle_hyphae.get())
 				.build();
 
 		IDispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {

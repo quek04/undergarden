@@ -1,5 +1,16 @@
 {
     "variants": {
-        "":	{ "model": "undergarden:block/grongle_hyphae" }
+        "axis=x": {
+            "model": "undergarden:block/grongle_hyphae",
+            "x": 90,
+            "y": 90
+        },
+        "axis=y": {
+            "model": "undergarden:block/grongle_hyphae"
+        },
+        "axis=z": {
+            "model": "undergarden:block/grongle_hyphae",
+            "x": 90
+        }
     }
 }

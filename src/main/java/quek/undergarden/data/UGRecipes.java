@@ -32,8 +32,11 @@ public class UGRecipes extends UGRecipeProvider {
         makeBricks(UGBlocks.tremblecrust_bricks, UGBlocks.tremblecrust).build(consumer);
 
         makeWood(UGBlocks.smogstem_wood, UGBlocks.smogstem_log).build(consumer);
+        makeWood(UGBlocks.stripped_smogstem_wood, UGBlocks.stripped_smogstem_log).build(consumer);
         makeWood(UGBlocks.wigglewood_wood, UGBlocks.wigglewood_log).build(consumer);
+        makeWood(UGBlocks.stripped_wigglewood_wood, UGBlocks.stripped_wigglewood_log).build(consumer);
         makeWood(UGBlocks.grongle_hyphae, UGBlocks.grongle_stem).build(consumer);
+        makeWood(UGBlocks.stripped_grongle_hyphae, UGBlocks.stripped_grongle_stem).build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UGItems.smogstem_stick.get(), 4)
                 .patternLine("P ")
