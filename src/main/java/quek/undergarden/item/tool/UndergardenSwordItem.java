@@ -17,14 +17,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenItemGroups;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
-import net.minecraft.item.Item.Properties;
 
 @Mod.EventBusSubscriber
 public class UndergardenSwordItem extends SwordItem {
@@ -32,19 +30,19 @@ public class UndergardenSwordItem extends SwordItem {
         super(tier, 3, -2.4f, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
         );
     }
 
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UndergardenItems.cloggrum_sword.get()) {
+        if(stack.getItem() == UGItems.cloggrum_sword.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.cloggrum_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UndergardenItems.froststeel_sword.get()) {
+        else if(stack.getItem() == UGItems.froststeel_sword.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UndergardenItems.utheric_sword.get()) {
+        else if(stack.getItem() == UGItems.utheric_sword.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
@@ -56,13 +54,13 @@ public class UndergardenSwordItem extends SwordItem {
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
-            if(player.getHeldItemMainhand().getItem() == UndergardenItems.utheric_sword.get()) {
-                if(event.getEntityLiving().getCreatureAttribute() == UndergardenEntities.ROTSPAWN) {
+            if(player.getHeldItemMainhand().getItem() == UGItems.utheric_sword.get()) {
+                if(event.getEntityLiving().getCreatureAttribute() == UGEntityTypes.ROTSPAWN) {
                     event.setAmount(damage * 1.4F);
                 }
                 else event.setAmount(damage * 1F);
             }
-            else if(player.getHeldItemMainhand().getItem() == UndergardenItems.froststeel_sword.get()) {
+            else if(player.getHeldItemMainhand().getItem() == UGItems.froststeel_sword.get()) {
                 event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 4));
             }
         }

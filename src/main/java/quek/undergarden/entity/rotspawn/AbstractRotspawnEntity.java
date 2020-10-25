@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.DwellerEntity;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
-import quek.undergarden.registry.UndergardenEntities;
+import quek.undergarden.registry.UGEntityTypes;
 
 import java.util.Random;
 
@@ -42,7 +42,7 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
 
     @Override
     public CreatureAttribute getCreatureAttribute() {
-        return UndergardenEntities.ROTSPAWN;
+        return UGEntityTypes.ROTSPAWN;
     }
 
     @Override
@@ -54,7 +54,7 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
             }
 
             DwellerEntity dweller = (DwellerEntity)entityLivingIn;
-            RotDwellerEntity rotDweller = UndergardenEntities.ROTDWELLER.get().create(this.world);
+            RotDwellerEntity rotDweller = UGEntityTypes.ROTDWELLER.get().create(this.world);
 
             rotDweller.copyLocationAndAnglesFrom(dweller);
             dweller.remove();

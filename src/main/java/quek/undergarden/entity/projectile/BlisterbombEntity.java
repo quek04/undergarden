@@ -9,8 +9,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
 
 public class BlisterbombEntity extends ProjectileItemEntity {
 
@@ -19,16 +19,16 @@ public class BlisterbombEntity extends ProjectileItemEntity {
     }
 
     public BlisterbombEntity(World world, LivingEntity thrower) {
-        super(UndergardenEntities.blisterbomb, thrower, world);
+        super(UGEntityTypes.blisterbomb, thrower, world);
     }
 
     public BlisterbombEntity(World worldIn, double x, double y, double z) {
-        super(UndergardenEntities.blisterbomb, x, y, z, worldIn);
+        super(UGEntityTypes.blisterbomb, x, y, z, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return UndergardenItems.blisterbomb.get();
+        return UGItems.blisterbomb.get();
     }
 
     @Override

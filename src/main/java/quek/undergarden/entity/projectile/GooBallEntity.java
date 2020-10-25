@@ -19,9 +19,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 import quek.undergarden.entity.ScintlingEntity;
-import quek.undergarden.registry.UndergardenEffects;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGEffects;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
 
 public class GooBallEntity extends ProjectileItemEntity {
 
@@ -30,16 +30,16 @@ public class GooBallEntity extends ProjectileItemEntity {
     }
 
     public GooBallEntity(World worldIn, LivingEntity throwerIn) {
-        super(UndergardenEntities.goo_ball, throwerIn, worldIn);
+        super(UGEntityTypes.goo_ball, throwerIn, worldIn);
     }
 
     public GooBallEntity(World worldIn, double x, double y, double z) {
-        super(UndergardenEntities.goo_ball, x, y, z, worldIn);
+        super(UGEntityTypes.goo_ball, x, y, z, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return UndergardenItems.goo_ball.get();
+        return UGItems.goo_ball.get();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -68,7 +68,7 @@ public class GooBallEntity extends ProjectileItemEntity {
             }
             else {
                 entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)0);
-                entity.addPotionEffect(new EffectInstance(UndergardenEffects.gooey.get(), 100, 0, false, true));
+                entity.addPotionEffect(new EffectInstance(UGEffects.gooey.get(), 100, 0, false, true));
             }
             this.playSound(SoundEvents.BLOCK_SLIME_BLOCK_BREAK, 1, 1);
         }

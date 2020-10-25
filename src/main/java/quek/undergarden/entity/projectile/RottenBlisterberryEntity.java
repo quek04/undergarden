@@ -9,8 +9,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
 
 public class RottenBlisterberryEntity extends ProjectileItemEntity {
 
@@ -19,16 +19,16 @@ public class RottenBlisterberryEntity extends ProjectileItemEntity {
     }
 
     public RottenBlisterberryEntity(World world, LivingEntity thrower) {
-        super(UndergardenEntities.rotten_blisterberry, thrower, world);
+        super(UGEntityTypes.rotten_blisterberry, thrower, world);
     }
 
     public RottenBlisterberryEntity(World worldIn, double x, double y, double z) {
-        super(UndergardenEntities.rotten_blisterberry, x, y, z, worldIn);
+        super(UGEntityTypes.rotten_blisterberry, x, y, z, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return UndergardenItems.rotten_blisterberry.get();
+        return UGItems.rotten_blisterberry.get();
     }
 
     @Override

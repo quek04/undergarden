@@ -21,10 +21,10 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenItems;
-import quek.undergarden.registry.UndergardenSoundEvents;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSounds;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -48,7 +48,7 @@ public class GloomperEntity extends AnimalEntity {
         this.goalSelector.addGoal(1, new SwimGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(UndergardenItems.underbeans.get()), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(UGItems.underbeans.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 0.50D));
     }
@@ -60,28 +60,28 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     public static boolean canGloomperSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get();
+        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get();
     }
 
     @Nullable
     @Override
     public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
-        return UndergardenEntities.GLOOMPER.get().create(world);
+        return UGEntityTypes.GLOOMPER.get().create(world);
     }
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UndergardenSoundEvents.GLOOMPER_LIVING;
+        return UGSounds.GLOOMPER_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UndergardenSoundEvents.GLOOMPER_HURT;
+        return UGSounds.GLOOMPER_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.GLOOMPER_DEATH;
+        return UGSounds.GLOOMPER_DEATH;
     }
 
     @Override
@@ -91,7 +91,7 @@ public class GloomperEntity extends AnimalEntity {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return Ingredient.fromItems(UndergardenItems.underbeans.get()).test(stack);
+        return Ingredient.fromItems(UGItems.underbeans.get()).test(stack);
     }
 
     @OnlyIn(Dist.CLIENT)

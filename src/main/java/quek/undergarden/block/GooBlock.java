@@ -22,12 +22,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ToolType;
 import quek.undergarden.entity.ScintlingEntity;
-import quek.undergarden.registry.UndergardenEffects;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGEffects;
+import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class GooBlock extends Block {
 
@@ -48,7 +46,7 @@ public class GooBlock extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UndergardenItems.cloggrum_boots.get() && !((PlayerEntity) entityIn).isPotionActive(UndergardenEffects.gooey.get())) {
+        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UGItems.cloggrum_boots.get() && !((PlayerEntity) entityIn).isPotionActive(UGEffects.gooey.get())) {
 
         }
         else if(!(entityIn instanceof ScintlingEntity) && entityIn.isOnGround()) {

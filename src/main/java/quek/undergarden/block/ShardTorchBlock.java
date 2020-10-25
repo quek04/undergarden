@@ -14,12 +14,10 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UndergardenParticles;
-import quek.undergarden.registry.UndergardenTEs;
+import quek.undergarden.registry.UGParticles;
+import quek.undergarden.registry.UGTileEntities;
 
 import java.util.Random;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class ShardTorchBlock extends Block {
 
@@ -56,7 +54,7 @@ public class ShardTorchBlock extends Block {
         double lvt_7_1_ = (double)pos.getY() + 0.7D;
         double lvt_9_1_ = (double)pos.getZ() + 0.5D;
         worldIn.addParticle(ParticleTypes.SMOKE, lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
-        worldIn.addParticle(UndergardenParticles.shard.get(), lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
+        worldIn.addParticle(UGParticles.shard.get(), lvt_5_1_, lvt_7_1_, lvt_9_1_, 0.0D, 0.0D, 0.0D);
     }
 
     @Override
@@ -66,6 +64,6 @@ public class ShardTorchBlock extends Block {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return UndergardenTEs.shard_torch_te.get().create();
+        return UGTileEntities.shard_torch_te.get().create();
     }
 }

@@ -13,16 +13,16 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.template.*;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.UndergardenMod;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.UGMod;
+import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
 public class EnigmaticStatueFeature extends Feature<NoFeatureConfig> {
 
-    private static final ResourceLocation statue1 = new ResourceLocation(UndergardenMod.MODID,"enigmatic_statue/enigmatic_statue_1");
-    private static final ResourceLocation statue2 = new ResourceLocation(UndergardenMod.MODID,"enigmatic_statue/enigmatic_statue_2");
-    private static final ResourceLocation statue3 = new ResourceLocation(UndergardenMod.MODID,"enigmatic_statue/enigmatic_statue_3");
+    private static final ResourceLocation statue1 = new ResourceLocation(UGMod.MODID,"enigmatic_statue/enigmatic_statue_1");
+    private static final ResourceLocation statue2 = new ResourceLocation(UGMod.MODID,"enigmatic_statue/enigmatic_statue_2");
+    private static final ResourceLocation statue3 = new ResourceLocation(UGMod.MODID,"enigmatic_statue/enigmatic_statue_3");
 
     private static final ResourceLocation[] statues = new ResourceLocation[]{statue1, statue2, statue3};
 
@@ -32,7 +32,7 @@ public class EnigmaticStatueFeature extends Feature<NoFeatureConfig> {
 
     @Override
     public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        if(worldIn.getBlockState(pos).getBlock() == UndergardenBlocks.deepturf_block.get()) {
+        if(worldIn.getBlockState(pos).getBlock() == UGBlocks.deepturf_block.get()) {
             Random random = worldIn.getRandom();
 
             Rotation[] arotation = Rotation.values();

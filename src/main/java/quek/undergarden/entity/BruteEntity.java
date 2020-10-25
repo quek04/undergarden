@@ -16,8 +16,8 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenSoundEvents;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGSounds;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -99,7 +99,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     }
 
     public static boolean canBruteSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get();
+        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get();
     }
 
     @Override
@@ -138,7 +138,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     }
 
     private void angrySound() {
-        this.playSound(UndergardenSoundEvents.BRUTE_ANGRY, this.getSoundVolume() * 2.0F, this.getSoundPitch() * 1.8F);
+        this.playSound(UGSounds.BRUTE_ANGRY, this.getSoundVolume() * 2.0F, this.getSoundPitch() * 1.8F);
     }
 
     private void func_241410_eZ_() {
@@ -208,17 +208,17 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UndergardenSoundEvents.BRUTE_LIVING;
+        return UGSounds.BRUTE_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return UndergardenSoundEvents.BRUTE_HURT;
+        return UGSounds.BRUTE_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.BRUTE_DEATH;
+        return UGSounds.BRUTE_DEATH;
     }
 
     static class HurtByAggressorGoal extends HurtByTargetGoal {

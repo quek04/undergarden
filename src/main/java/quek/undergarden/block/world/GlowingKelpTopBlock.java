@@ -18,12 +18,10 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 import javax.annotation.Nullable;
 import java.util.Random;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
 
@@ -83,7 +81,7 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
         if (block == Blocks.MAGMA_BLOCK) {
             return false;
         } else {
-            return block == this || block == UndergardenBlocks.glowing_kelp_plant.get() || blockstate.isSolidSide(worldIn, blockpos, Direction.UP);
+            return block == this || block == UGBlocks.glowing_kelp_plant.get() || blockstate.isSolidSide(worldIn, blockpos, Direction.UP);
         }
     }
 
@@ -98,7 +96,7 @@ public class GlowingKelpTopBlock extends Block implements ILiquidContainer {
         }
 
         if (facing == Direction.DOWN && facingState.getBlock() == this) {
-            return UndergardenBlocks.glowing_kelp_plant.get().getDefaultState();
+            return UGBlocks.glowing_kelp_plant.get().getDefaultState();
         } else {
             worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
             return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);

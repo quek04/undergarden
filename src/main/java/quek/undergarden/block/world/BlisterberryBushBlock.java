@@ -21,19 +21,15 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
-import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class BlisterberryBushBlock extends Block implements IGrowable, IPlantable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-    private static final VoxelShape BUSHLING_SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-    private static final VoxelShape GROWING_SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
     public BlisterberryBushBlock() {
         super(Properties.create(Material.PLANTS)
@@ -48,7 +44,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
 
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == UndergardenBlocks.ashen_deepturf.get();
+        return block == UGBlocks.ashen_deepturf.get();
     }
 
     @Override
@@ -76,16 +72,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
 
     @Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-        return new ItemStack(UndergardenItems.blisterberry.get());
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        if (state.get(AGE) == 0) {
-            return BUSHLING_SHAPE;
-        } else {
-            return state.get(AGE) < 3 ? GROWING_SHAPE : super.getShape(state, worldIn, pos, context);
-        }
+        return new ItemStack(UGItems.blisterberry.get());
     }
 
     @Override
@@ -101,8 +88,7 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        //LivingEntity living = (LivingEntity)entityIn;
-        if (entityIn != null && entityIn.getType() != UndergardenEntities.scintling) {
+        if (entityIn.getType() != UGEntityTypes.scintling) {
             entityIn.setMotionMultiplier(state, new Vector3d(0.8F, 0.75D, 0.8F));
             if (!worldIn.isRemote && state.get(AGE) > 0 && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
                 double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
@@ -124,8 +110,8 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
         } else if (age > 1) {
             int random = 1 + worldIn.rand.nextInt(2);
             int random2 = worldIn.rand.nextInt(2);
-            spawnAsEntity(worldIn, pos, new ItemStack(UndergardenItems.blisterberry.get(), random + (flag ? 1 : 0)));
-            spawnAsEntity(worldIn, pos, new ItemStack(UndergardenItems.rotten_blisterberry.get(), random2 + (flag ? 1 : 0)));
+            spawnAsEntity(worldIn, pos, new ItemStack(UGItems.blisterberry.get(), random + (flag ? 1 : 0)));
+            spawnAsEntity(worldIn, pos, new ItemStack(UGItems.rotten_blisterberry.get(), random2 + (flag ? 1 : 0)));
             worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
             worldIn.setBlockState(pos, state.with(AGE, 1), 2);
             return ActionResultType.SUCCESS;

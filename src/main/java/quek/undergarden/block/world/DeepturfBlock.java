@@ -10,12 +10,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ToolType;
 
-import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class DeepturfBlock extends UndergardenGrassBlock implements IGrowable {
+public class DeepturfBlock extends UGGrassBlock implements IGrowable {
 
     public DeepturfBlock() {
         super(Properties.create(Material.ORGANIC)

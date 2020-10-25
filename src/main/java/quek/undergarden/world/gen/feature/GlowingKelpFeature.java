@@ -9,7 +9,7 @@ import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import quek.undergarden.block.world.GlowingKelpTopBlock;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
@@ -26,8 +26,8 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
         if(pos.getY() < ocean_y) {
             if (worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER) {
-                BlockState kelp = UndergardenBlocks.glowing_kelp.get().getDefaultState();
-                BlockState kelp_top = UndergardenBlocks.glowing_kelp_plant.get().getDefaultState();
+                BlockState kelp = UGBlocks.glowing_kelp.get().getDefaultState();
+                BlockState kelp_top = UGBlocks.glowing_kelp_plant.get().getDefaultState();
                 int k = 1 + rand.nextInt(10);
 
                 for(int l = 0; l <= k; ++l) {
@@ -40,7 +40,7 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
                         }
                     } else if (l > 0) {
                         BlockPos blockpos1 = blockpos.down();
-                        if (kelp.isValidPosition(worldIn, blockpos1) && worldIn.getBlockState(blockpos1.down()).getBlock() != UndergardenBlocks.glowing_kelp.get()) {
+                        if (kelp.isValidPosition(worldIn, blockpos1) && worldIn.getBlockState(blockpos1.down()).getBlock() != UGBlocks.glowing_kelp.get()) {
                             worldIn.setBlockState(blockpos1, kelp.with(GlowingKelpTopBlock.AGE, rand.nextInt(4) + 20), 2);
                             ++i;
                         }

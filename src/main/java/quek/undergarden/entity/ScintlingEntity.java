@@ -15,7 +15,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -43,7 +43,7 @@ public class ScintlingEntity extends AnimalEntity {
 
 
     public static boolean canScintlingSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.depthrock.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.ashen_deepturf.get();
+        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.depthrock.get() || worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.ashen_deepturf.get();
     }
 
     public void livingTick() {
@@ -53,7 +53,7 @@ public class ScintlingEntity extends AnimalEntity {
             return;
         }
 
-        BlockState blockstate = UndergardenBlocks.goo.get().getDefaultState();
+        BlockState blockstate = UGBlocks.goo.get().getDefaultState();
 
         for(int l = 0; l < 4; ++l) {
             int x = MathHelper.floor(this.getPosX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));

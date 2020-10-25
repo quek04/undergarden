@@ -19,25 +19,23 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.DepthrockPebbleItem;
-import quek.undergarden.registry.UndergardenItemGroups;
-import quek.undergarden.registry.UndergardenItems;
-import quek.undergarden.registry.UndergardenTags;
+import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGTags;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
-import net.minecraft.item.Item.Properties;
-
 public class SlingshotItem extends ShootableItem {
 
-    public static final Predicate<ItemStack> SLINGSHOT_AMMO = (stack) -> stack.getItem() == UndergardenItems.depthrock_pebble.get();
+    public static final Predicate<ItemStack> SLINGSHOT_AMMO = (stack) -> stack.getItem() == UGItems.depthrock_pebble.get();
 
     public SlingshotItem() {
         super(new Properties()
                 .maxStackSize(1)
                 .maxDamage(192)
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
                 .rarity(Rarity.UNCOMMON)
         );
     }
@@ -70,7 +68,7 @@ public class SlingshotItem extends ShootableItem {
 
             if (!itemstack.isEmpty() || flag) {
                 if (itemstack.isEmpty()) {
-                    itemstack = new ItemStack(UndergardenItems.depthrock_pebble.get());
+                    itemstack = new ItemStack(UGItems.depthrock_pebble.get());
                 }
 
                 float f = getArrowVelocity(i);
@@ -160,6 +158,6 @@ public class SlingshotItem extends ShootableItem {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return UndergardenTags.Items.SMOGSTEM_PLANKS.contains(repair.getItem()) || super.getIsRepairable(toRepair, repair);
+        return UGTags.Items.SMOGSTEM_PLANKS.contains(repair.getItem()) || super.getIsRepairable(toRepair, repair);
     }
 }

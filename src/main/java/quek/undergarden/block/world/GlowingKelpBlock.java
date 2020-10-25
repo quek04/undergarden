@@ -12,11 +12,9 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class GlowingKelpBlock extends Block implements ILiquidContainer {
 
@@ -73,7 +71,7 @@ public class GlowingKelpBlock extends Block implements ILiquidContainer {
 
     @Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-        return new ItemStack(UndergardenBlocks.glowing_kelp.get());
+        return new ItemStack(UGBlocks.glowing_kelp.get());
     }
 
     @Override

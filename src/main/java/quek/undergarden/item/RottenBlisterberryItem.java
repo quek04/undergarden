@@ -10,16 +10,14 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
-import quek.undergarden.registry.UndergardenItemGroups;
-
-import net.minecraft.item.Item.Properties;
+import quek.undergarden.registry.UGItemGroups;
 
 public class RottenBlisterberryItem extends Item {
 
     public RottenBlisterberryItem() {
         super(new Properties()
                 .maxStackSize(16)
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
         );
     }
 

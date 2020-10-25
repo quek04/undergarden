@@ -6,7 +6,7 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.math.BlockPos;
 import quek.undergarden.entity.ScintlingEntity;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 public class GooeyEffect extends Effect {
 
@@ -16,7 +16,7 @@ public class GooeyEffect extends Effect {
 
     @Override
     public void performEffect(LivingEntity entity, int amplifier) {
-        BlockState blockstate = UndergardenBlocks.goo.get().getDefaultState();
+        BlockState blockstate = UGBlocks.goo.get().getDefaultState();
         BlockPos pos = new BlockPos(entity.getPosX(), entity.getPosY(), entity.getPosZ());
 
         if (entity.world.isAirBlock(pos) && blockstate.isValidPosition(entity.world, pos) && !(entity instanceof ScintlingEntity)) {

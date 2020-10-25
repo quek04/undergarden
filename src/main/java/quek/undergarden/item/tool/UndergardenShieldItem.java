@@ -8,34 +8,32 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.registry.UndergardenItemGroups;
-import quek.undergarden.registry.UndergardenShieldTiers;
+import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGShields;
 
 import javax.annotation.Nullable;
-
-import net.minecraft.item.Item.Properties;
 
 @Mod.EventBusSubscriber
 public class UndergardenShieldItem extends ShieldItem {
 
-    private final UndergardenShieldTiers shieldTiers;
+    private final UGShields shieldTiers;
 
-    public UndergardenShieldItem(UndergardenShieldTiers tier, Rarity rarity) {
+    public UndergardenShieldItem(UGShields tier, Rarity rarity) {
         super(new Properties()
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
                 .rarity(rarity)
         );
         this.shieldTiers = tier;
         DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
     }
 
-    public UndergardenShieldItem(UndergardenShieldTiers tier) {
+    public UndergardenShieldItem(UGShields tier) {
         super(new Properties()
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
         );
         this.shieldTiers = tier;
         DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);

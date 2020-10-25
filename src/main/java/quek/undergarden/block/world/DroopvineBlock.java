@@ -10,12 +10,10 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IWorldReader;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 import java.util.function.ToIntFunction;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class DroopvineBlock extends AbstractBodyPlantBlock {
 
@@ -60,7 +58,7 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     @Override
     protected AbstractTopPlantBlock getTopPlantBlock() {
-        return (AbstractTopPlantBlock)UndergardenBlocks.droopvine_top.get();
+        return (AbstractTopPlantBlock) UGBlocks.droopvine_top.get();
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGItems;
 
 public class GwiblingEntity extends AbstractFishEntity {
 
@@ -17,7 +17,7 @@ public class GwiblingEntity extends AbstractFishEntity {
 
     @Override
     protected ItemStack getFishBucket() {
-        return new ItemStack(UndergardenItems.gwibling_bucket.get());
+        return new ItemStack(UGItems.gwibling_bucket.get());
     }
 
     @Override

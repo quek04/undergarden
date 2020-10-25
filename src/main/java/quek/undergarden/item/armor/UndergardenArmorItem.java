@@ -17,15 +17,13 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UndergardenArmorMaterials;
-import quek.undergarden.registry.UndergardenItemGroups;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGArmors;
+import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
-
-import net.minecraft.item.Item.Properties;
 
 public class UndergardenArmorItem extends ArmorItem {
 
@@ -33,24 +31,24 @@ public class UndergardenArmorItem extends ArmorItem {
 
     public UndergardenArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot) {
         super(materialIn, slot, new Properties()
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
         );
     }
 
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UndergardenItems.cloggrum_boots.get()) {
+        if(stack.getItem() == UGItems.cloggrum_boots.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.cloggrum_boots").mergeStyle(TextFormatting.GRAY));
         }
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
-        if(this.getArmorMaterial() == UndergardenArmorMaterials.FROSTSTEEL && equipmentSlot == this.slot) {
+        if(this.getArmorMaterial() == UGArmors.FROSTSTEEL && equipmentSlot == this.slot) {
             return ImmutableMultimap.of(
                     Attributes.MOVEMENT_SPEED, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE),
-                    Attributes.ARMOR, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_value", UndergardenArmorMaterials.FROSTSTEEL.getDamageReductionAmount(this.slot), AttributeModifier.Operation.ADDITION),
-                    Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_toughness_value", UndergardenArmorMaterials.FROSTSTEEL.getToughness(), AttributeModifier.Operation.ADDITION)
+                    Attributes.ARMOR, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_value", UGArmors.FROSTSTEEL.getDamageReductionAmount(this.slot), AttributeModifier.Operation.ADDITION),
+                    Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_toughness_value", UGArmors.FROSTSTEEL.getToughness(), AttributeModifier.Operation.ADDITION)
             );
         }
         return super.getAttributeModifiers(equipmentSlot);

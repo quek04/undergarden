@@ -12,26 +12,24 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.GooBallEntity;
-import quek.undergarden.registry.UndergardenEffects;
-import quek.undergarden.registry.UndergardenFoods;
-import quek.undergarden.registry.UndergardenItemGroups;
-
-import net.minecraft.item.Item.Properties;
+import quek.undergarden.registry.UGEffects;
+import quek.undergarden.registry.UGFoods;
+import quek.undergarden.registry.UGItemGroups;
 
 public class GooBallItem extends Item {
 
     public GooBallItem() {
         super(new Properties()
-                .food(UndergardenFoods.GOO_BALL)
+                .food(UGFoods.GOO_BALL)
                 .maxStackSize(16)
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
         );
     }
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        entityLiving.addPotionEffect(new EffectInstance(UndergardenEffects.gooey.get(), 600, 0, false, true));
+        entityLiving.addPotionEffect(new EffectInstance(UGEffects.gooey.get(), 600, 0, false, true));
         return itemStack;
     }
 

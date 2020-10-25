@@ -20,8 +20,8 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UndergardenParticles;
-import quek.undergarden.registry.UndergardenTEs;
+import quek.undergarden.registry.UGParticles;
+import quek.undergarden.registry.UGTileEntities;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -96,7 +96,7 @@ public class ShardWallTorchBlock extends ShardTorchBlock {
         double lvt_10_1_ = (double)pos.getZ() + 0.5D;
         Direction lvt_16_1_ = lvt_5_1_.getOpposite();
         worldIn.addParticle(ParticleTypes.SMOKE, lvt_6_1_ + 0.27D * (double)lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double)lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
-        worldIn.addParticle(UndergardenParticles.shard.get(), lvt_6_1_ + 0.27D * (double)lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double)lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
+        worldIn.addParticle(UGParticles.shard.get(), lvt_6_1_ + 0.27D * (double)lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double)lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
     }
 
     @Override
@@ -126,6 +126,6 @@ public class ShardWallTorchBlock extends ShardTorchBlock {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return UndergardenTEs.shard_torch_te.get().create();
+        return UGTileEntities.shard_torch_te.get().create();
     }
 }

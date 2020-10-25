@@ -16,13 +16,11 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class DitchbulbBlock extends UndergardenBushBlock {
+public class DitchbulbBlock extends UGBushBlock {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
 
@@ -46,7 +44,7 @@ public class DitchbulbBlock extends UndergardenBushBlock {
         BlockPos blockpos = pos.down();
         BlockState blockstate = worldIn.getBlockState(blockpos);
         Block block = blockstate.getBlock();
-        if (block != UndergardenBlocks.deepturf_block.get() && block != UndergardenBlocks.deepsoil.get() && block != UndergardenBlocks.depthrock.get()) {
+        if (block != UGBlocks.deepturf_block.get() && block != UGBlocks.deepsoil.get() && block != UGBlocks.depthrock.get()) {
             return worldIn.getLightSubtracted(pos, 0) < 0 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.util.Direction.UP, this);
         } else {
             return true;

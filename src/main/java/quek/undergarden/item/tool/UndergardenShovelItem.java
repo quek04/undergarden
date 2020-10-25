@@ -17,13 +17,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.registry.UndergardenItemGroups;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
-import net.minecraft.item.Item.Properties;
 
 @Mod.EventBusSubscriber
 public class UndergardenShovelItem extends ShovelItem {
@@ -31,13 +29,13 @@ public class UndergardenShovelItem extends ShovelItem {
         super(tier, 1.5f, -3, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
         );
     }
 
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UndergardenItems.froststeel_shovel.get()) {
+        if(stack.getItem() == UGItems.froststeel_shovel.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
@@ -50,7 +48,7 @@ public class UndergardenShovelItem extends ShovelItem {
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
 
-            if(player.getHeldItemMainhand().getItem() == UndergardenItems.froststeel_shovel.get()) {
+            if(player.getHeldItemMainhand().getItem() == UGItems.froststeel_shovel.get()) {
                 event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 2));
             }
         }

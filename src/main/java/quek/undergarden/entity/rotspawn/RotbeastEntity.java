@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UndergardenSoundEvents;
+import quek.undergarden.registry.UGSounds;
 
 public class RotbeastEntity extends AbstractRotspawnEntity {
 
@@ -66,17 +66,17 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UndergardenSoundEvents.ROTBEAST_LIVING;
+        return UGSounds.ROTBEAST_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UndergardenSoundEvents.ROTBEAST_HURT;
+        return UGSounds.ROTBEAST_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.ROTBEAST_DEATH;
+        return UGSounds.ROTBEAST_DEATH;
     }
 
     @Override

@@ -16,17 +16,13 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
+public class BeanBushBlock extends UGBushBlock implements IGrowable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-    private static final VoxelShape BUSHLING_SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-    private static final VoxelShape GROWING_SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
     public BeanBushBlock() {
         super(Properties.create(Material.PLANTS)
@@ -40,16 +36,7 @@ public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
 
     @Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-        return new ItemStack(UndergardenItems.underbeans.get());
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        if (state.get(AGE) == 0) {
-            return BUSHLING_SHAPE;
-        } else {
-            return state.get(AGE) < 3 ? GROWING_SHAPE : super.getShape(state, worldIn, pos, context);
-        }
+        return new ItemStack(UGItems.underbeans.get());
     }
 
     @Override
@@ -71,7 +58,7 @@ public class BeanBushBlock extends UndergardenBushBlock implements IGrowable {
             return ActionResultType.PASS;
         } else if (i > 1) {
             int j = 1 + worldIn.rand.nextInt(2);
-            spawnAsEntity(worldIn, pos, new ItemStack(UndergardenItems.underbeans.get(), j + (flag ? 1 : 0)));
+            spawnAsEntity(worldIn, pos, new ItemStack(UGItems.underbeans.get(), j + (flag ? 1 : 0)));
             worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
             worldIn.setBlockState(pos, state.with(AGE, 1), 2);
             return ActionResultType.SUCCESS;

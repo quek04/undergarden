@@ -3,12 +3,12 @@ package quek.undergarden.block.tileentity;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import quek.undergarden.registry.UndergardenTEs;
+import quek.undergarden.registry.UGTileEntities;
 
 public class SmogVentTE extends TileEntity implements ITickableTileEntity {
 
     public SmogVentTE() {
-        super(UndergardenTEs.smog_vent_te.get());
+        super(UGTileEntities.smog_vent_te.get());
     }
 
     @Override

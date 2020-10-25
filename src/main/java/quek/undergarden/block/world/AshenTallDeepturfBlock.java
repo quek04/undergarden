@@ -11,13 +11,11 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class AshenTallDeepturfBlock extends UndergardenBushBlock implements IGrowable {
+public class AshenTallDeepturfBlock extends UGBushBlock implements IGrowable {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
@@ -32,7 +30,7 @@ public class AshenTallDeepturfBlock extends UndergardenBushBlock implements IGro
 
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == UndergardenBlocks.ashen_deepturf.get();
+        return block == UGBlocks.ashen_deepturf.get();
     }
 
     @Override

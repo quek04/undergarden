@@ -14,8 +14,8 @@ import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenItems;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
 
 public class SlingshotAmmoEntity extends ProjectileItemEntity {
 
@@ -24,11 +24,11 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
     }
 
     public SlingshotAmmoEntity(World worldIn, double x, double y, double z) {
-        super(UndergardenEntities.slingshot_ammo, x, y, z, worldIn);
+        super(UGEntityTypes.slingshot_ammo, x, y, z, worldIn);
     }
 
     public SlingshotAmmoEntity(World worldIn, LivingEntity shooter) {
-        super(UndergardenEntities.slingshot_ammo, shooter, worldIn);
+        super(UGEntityTypes.slingshot_ammo, shooter, worldIn);
     }
 
     @Override
@@ -57,6 +57,6 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return UndergardenItems.depthrock_pebble.get();
+        return UGItems.depthrock_pebble.get();
     }
 }

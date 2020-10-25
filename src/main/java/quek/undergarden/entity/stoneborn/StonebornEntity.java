@@ -26,9 +26,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
 import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
 import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
-import quek.undergarden.registry.UndergardenDimensions;
-import quek.undergarden.registry.UndergardenItems;
-import quek.undergarden.registry.UndergardenSoundEvents;
+import quek.undergarden.registry.UGDimensions;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSounds;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -84,40 +84,40 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     @Override
     protected SoundEvent getAmbientSound() {
         if(isAggressive()) {
-            return UndergardenSoundEvents.STONEBORN_ANGRY;
+            return UGSounds.STONEBORN_ANGRY;
         }
         if(hasCustomer()) {
-            return UndergardenSoundEvents.STONEBORN_SPEAKING;
+            return UGSounds.STONEBORN_SPEAKING;
         }
         if(!inUndergarden()) {
-            return UndergardenSoundEvents.STONEBORN_CONFUSED;
+            return UGSounds.STONEBORN_CONFUSED;
         }
         return null;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UndergardenSoundEvents.STONEBORN_HURT;
+        return UGSounds.STONEBORN_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.STONEBORN_DEATH;
+        return UGSounds.STONEBORN_DEATH;
     }
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(UndergardenSoundEvents.STONEBORN_STEP, 1.0F, 1.0F);
+        this.playSound(UGSounds.STONEBORN_STEP, 1.0F, 1.0F);
     }
 
     protected SoundEvent getYesOrNoSound(boolean getYesSound) {
-        return getYesSound ? UndergardenSoundEvents.STONEBORN_PLEASED : UndergardenSoundEvents.STONEBORN_CONFUSED;
+        return getYesSound ? UGSounds.STONEBORN_PLEASED : UGSounds.STONEBORN_CONFUSED;
     }
 
     @Override
     public ActionResultType func_230254_b_(PlayerEntity player, Hand playerHand) {
         ItemStack itemstack = player.getHeldItem(playerHand);
-        if (itemstack.getItem() != UndergardenItems.stoneborn_spawn_egg.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
+        if (itemstack.getItem() != UGItems.stoneborn_spawn_egg.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
             if (playerHand == Hand.MAIN_HAND) {
                 //player.addStat(Stats.TALKED_TO_VILLAGER);
             }
@@ -148,7 +148,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         }
 
         if (this.timeOutOfUG > 300) {
-            this.playSound(UndergardenSoundEvents.STONEBORN_CHANT, 1.0F, 1.0F);
+            this.playSound(UGSounds.STONEBORN_CHANT, 1.0F, 1.0F);
             this.remove();
             Explosion.Mode explosionType = this.world.getGameRules().getBoolean(GameRules.MOB_GRIEFING) ? Explosion.Mode.BREAK : Explosion.Mode.NONE;
             this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3, explosionType);
@@ -163,7 +163,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     public boolean inUndergarden() {
-        return this.world.getDimensionKey() == (UndergardenDimensions.undergarden_w) && !this.isAIDisabled();
+        return this.world.getDimensionKey() == (UGDimensions.undergarden_w) && !this.isAIDisabled();
     }
 
     @Override
@@ -314,6 +314,6 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
 
     @Override
     public SoundEvent getYesSound() {
-        return UndergardenSoundEvents.STONEBORN_PLEASED;
+        return UGSounds.STONEBORN_PLEASED;
     }
 }

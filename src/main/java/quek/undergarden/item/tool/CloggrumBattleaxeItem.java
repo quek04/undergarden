@@ -8,18 +8,16 @@ import net.minecraft.item.Rarity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UndergardenItemGroups;
-import quek.undergarden.registry.UndergardenItemTiers;
-
-import net.minecraft.item.Item.Properties;
+import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGTools;
 
 public class CloggrumBattleaxeItem extends SwordItem {
 
     public CloggrumBattleaxeItem() {
-        super(UndergardenItemTiers.CLOGGRUM, 5, -3.5F, new Properties()
+        super(UGTools.CLOGGRUM, 5, -3.5F, new Properties()
                 .maxStackSize(1)
-                .defaultMaxDamage(UndergardenItemTiers.CLOGGRUM.getMaxUses() * 3)
-                .group(UndergardenItemGroups.GROUP)
+                .defaultMaxDamage(UGTools.CLOGGRUM.getMaxUses() * 3)
+                .group(UGItemGroups.GROUP)
                 .rarity(Rarity.EPIC)
         );
     }

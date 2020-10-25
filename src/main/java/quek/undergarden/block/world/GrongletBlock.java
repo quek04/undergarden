@@ -13,7 +13,7 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class GrongletBlock extends UndergardenBushBlock implements IGrowable {
+public class GrongletBlock extends UGBushBlock implements IGrowable {
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
     private final Supplier<ConfiguredFeature<HugeFungusConfig, ?>> fungusConfig;
 

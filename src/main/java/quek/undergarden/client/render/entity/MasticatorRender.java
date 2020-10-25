@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UndergardenMod;
+import quek.undergarden.UGMod;
 import quek.undergarden.client.model.MasticatorModel;
 import quek.undergarden.client.render.layer.MasticatorEyesLayer;
 import quek.undergarden.entity.boss.MasticatorEntity;
@@ -13,7 +13,7 @@ import quek.undergarden.entity.boss.MasticatorEntity;
 @OnlyIn(Dist.CLIENT)
 public class MasticatorRender extends MobRenderer<MasticatorEntity, MasticatorModel<MasticatorEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(UndergardenMod.MODID, "textures/entities/masticator.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/masticator.png");
 
     public MasticatorRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new MasticatorModel<>(), 2.0F);

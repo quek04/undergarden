@@ -17,10 +17,10 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
-import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenItems;
-import quek.undergarden.registry.UndergardenSoundEvents;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSounds;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -37,7 +37,7 @@ public class DwellerEntity extends AnimalEntity {
         this.goalSelector.addGoal(2, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0D, 2.5D));
-        this.goalSelector.addGoal(1, new TemptGoal(this, 1.25D, Ingredient.fromItems(UndergardenItems.underbeans.get()), false));
+        this.goalSelector.addGoal(1, new TemptGoal(this, 1.25D, Ingredient.fromItems(UGItems.underbeans.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 3.0F));
@@ -52,18 +52,18 @@ public class DwellerEntity extends AnimalEntity {
     }
 
     public static boolean canDwellerSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UndergardenBlocks.ashen_deepturf.get();
+        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.ashen_deepturf.get();
     }
 
     @Nullable
     @Override
     public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
-        return UndergardenEntities.DWELLER.get().create(world);
+        return UGEntityTypes.DWELLER.get().create(world);
     }
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return Ingredient.fromItems(UndergardenItems.underbeans.get()).test(stack);
+        return Ingredient.fromItems(UGItems.underbeans.get()).test(stack);
     }
 
     @Override
@@ -73,17 +73,17 @@ public class DwellerEntity extends AnimalEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UndergardenSoundEvents.DWELLER_LIVING;
+        return UGSounds.DWELLER_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UndergardenSoundEvents.DWELLER_HURT;
+        return UGSounds.DWELLER_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.DWELLER_DEATH;
+        return UGSounds.DWELLER_DEATH;
     }
 
     @Override

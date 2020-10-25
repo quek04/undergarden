@@ -7,14 +7,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenFoods;
-import quek.undergarden.registry.UndergardenItemGroups;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGFoods;
+import quek.undergarden.registry.UGItemGroups;
 
 public class DroopvineItem extends BlockItem {
 
     public DroopvineItem() {
-        super(UndergardenBlocks.droopvine_top.get(), (new Item.Properties()).group(UndergardenItemGroups.GROUP).food(UndergardenFoods.DROOPVINE));
+        super(UGBlocks.droopvine_top.get(), (new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.DROOPVINE));
     }
 
     @Override

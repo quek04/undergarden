@@ -18,11 +18,9 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.registry.UndergardenBlocks;
+import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class DeepsoilFarmlandBlock extends Block {
 
@@ -55,7 +53,7 @@ public class DeepsoilFarmlandBlock extends Block {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? UndergardenBlocks.deepsoil.get().getDefaultState() : super.getStateForPlacement(context);
+        return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? UGBlocks.deepsoil.get().getDefaultState() : super.getStateForPlacement(context);
     }
 
     @Override
@@ -89,7 +87,7 @@ public class DeepsoilFarmlandBlock extends Block {
 
     @Override
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, UndergardenBlocks.deepsoil.get().getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
+        if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, UGBlocks.deepsoil.get().getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
             turnToDeepsoil(worldIn.getBlockState(pos), worldIn, pos);
         }
 
@@ -97,7 +95,7 @@ public class DeepsoilFarmlandBlock extends Block {
     }
 
     public static void turnToDeepsoil(BlockState state, World worldIn, BlockPos pos) {
-        worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, UndergardenBlocks.deepsoil.get().getDefaultState(), worldIn, pos));
+        worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, UGBlocks.deepsoil.get().getDefaultState(), worldIn, pos));
     }
 
     private boolean hasCrops(IBlockReader worldIn, BlockPos pos) {

@@ -7,16 +7,14 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UndergardenItemGroups;
-
-import net.minecraft.item.Item.Properties;
+import quek.undergarden.registry.UGItemGroups;
 
 public class MasticatedChestplateItem extends ArmorItem {
 
     public MasticatedChestplateItem(IArmorMaterial materialIn) {
         super(materialIn, EquipmentSlotType.CHEST, new Properties()
                 .rarity(Rarity.EPIC)
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
         );
     }
 

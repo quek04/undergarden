@@ -12,9 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
-import quek.undergarden.registry.UndergardenTEs;
-
-import net.minecraft.block.AbstractBlock.Properties;
+import quek.undergarden.registry.UGTileEntities;
 
 public class SmogVentBlock extends Block {
 
@@ -44,7 +42,7 @@ public class SmogVentBlock extends Block {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return UndergardenTEs.smog_vent_te.get().create();
+        return UGTileEntities.smog_vent_te.get().create();
     }
 
 }

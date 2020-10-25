@@ -13,8 +13,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UndergardenEntities;
-import quek.undergarden.registry.UndergardenSoundEvents;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGSounds;
 
 public class RotDwellerEntity extends MonsterEntity {
 
@@ -41,22 +41,22 @@ public class RotDwellerEntity extends MonsterEntity {
 
     @Override
     public CreatureAttribute getCreatureAttribute() {
-        return UndergardenEntities.ROTSPAWN;
+        return UGEntityTypes.ROTSPAWN;
     }
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UndergardenSoundEvents.DWELLER_LIVING;
+        return UGSounds.DWELLER_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UndergardenSoundEvents.DWELLER_HURT;
+        return UGSounds.DWELLER_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.DWELLER_DEATH;
+        return UGSounds.DWELLER_DEATH;
     }
 
     @Override

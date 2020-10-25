@@ -4,11 +4,8 @@ import com.google.common.cache.LoadingCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.PortalInfo;
-import net.minecraft.entity.EntitySize;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
@@ -29,17 +26,16 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenDimensions;
-import quek.undergarden.registry.UndergardenSoundEvents;
-import quek.undergarden.registry.UndergardenTags;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGDimensions;
+import quek.undergarden.registry.UGSounds;
+import quek.undergarden.registry.UGTags;
 //import quek.undergarden.world.UndergardenTeleporter;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-import quek.undergarden.world.UndergardenTeleporter;
+import quek.undergarden.world.UGTeleporter;
 
 public class UndergardenPortalBlock extends Block {
 
@@ -134,13 +130,13 @@ public class UndergardenPortalBlock extends Block {
                 World serverworld = entity.world;
                 if(serverworld != null) {
                     MinecraftServer minecraftserver = serverworld.getServer();
-                    RegistryKey<World> where2go = entity.world.getDimensionKey() == UndergardenDimensions.undergarden_w ? World.OVERWORLD : UndergardenDimensions.undergarden_w;
+                    RegistryKey<World> where2go = entity.world.getDimensionKey() == UGDimensions.undergarden_w ? World.OVERWORLD : UGDimensions.undergarden_w;
                     if(minecraftserver != null) {
                         ServerWorld destination = minecraftserver.getWorld(where2go);
                         if (destination != null && minecraftserver.getAllowNether() && !entity.isPassenger()) {
                             entity.world.getProfiler().startSection("undergarden_portal");
                             entity.func_242279_ag();
-                            entity.changeDimension(destination, new UndergardenTeleporter());
+                            entity.changeDimension(destination, new UGTeleporter());
                             entity.world.getProfiler().endSection();
                         }
                     }
@@ -153,7 +149,7 @@ public class UndergardenPortalBlock extends Block {
     @Override
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (rand.nextInt(100) == 0) {
-            worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UndergardenSoundEvents.UNDERGARDEN_PORTAL_AMBIENT, SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
+            worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UGSounds.UNDERGARDEN_PORTAL_AMBIENT, SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
         }
 
         for(int i = 0; i < 4; ++i) {
@@ -292,13 +288,13 @@ public class UndergardenPortalBlock extends Block {
             int i;
             for(i = 0; i < 22; ++i) {
                 BlockPos blockpos = pos.offset(directionIn, i);
-                if (!this.canConnect(this.world.getBlockState(blockpos)) || !(this.world.getBlockState(blockpos.down()).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS))) {
+                if (!this.canConnect(this.world.getBlockState(blockpos)) || !(this.world.getBlockState(blockpos.down()).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                     break;
                 }
             }
 
             BlockPos framePos = pos.offset(directionIn, i);
-            return this.world.getBlockState(framePos).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS) ? i : 0;
+            return this.world.getBlockState(framePos).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS) ? i : 0;
         }
 
         public int getHeight() {
@@ -320,18 +316,18 @@ public class UndergardenPortalBlock extends Block {
                     }
 
                     Block block = blockstate.getBlock();
-                    if (block == UndergardenBlocks.undergarden_portal.get()) {
+                    if (block == UGBlocks.undergarden_portal.get()) {
                         ++this.portalBlockCount;
                     }
 
                     if (i == 0) {
                         BlockPos framePos = blockpos.offset(this.leftDir);
-                        if (!(this.world.getBlockState(framePos).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS))) {
+                        if (!(this.world.getBlockState(framePos).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                             break label56;
                         }
                     } else if (i == this.width - 1) {
                         BlockPos framePos = blockpos.offset(this.rightDir);
-                        if (!(this.world.getBlockState(framePos).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS))) {
+                        if (!(this.world.getBlockState(framePos).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                             break label56;
                         }
                     }
@@ -340,7 +336,7 @@ public class UndergardenPortalBlock extends Block {
 
             for(int j = 0; j < this.width; ++j) {
                 BlockPos framePos = this.bottomLeft.offset(this.rightDir, j).up(this.height);
-                if (!(this.world.getBlockState(framePos).getBlock().isIn(UndergardenTags.Blocks.PORTAL_FRAME_BLOCKS))) {
+                if (!(this.world.getBlockState(framePos).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                     this.height = 0;
                     break;
                 }
@@ -358,7 +354,7 @@ public class UndergardenPortalBlock extends Block {
 
         protected boolean canConnect(BlockState pos) {
             Block block = pos.getBlock();
-            return pos.isAir() || block == UndergardenBlocks.undergarden_portal.get();
+            return pos.isAir() || block == UGBlocks.undergarden_portal.get();
         }
 
         public boolean isValid() {
@@ -370,7 +366,7 @@ public class UndergardenPortalBlock extends Block {
                 BlockPos blockpos = this.bottomLeft.offset(this.rightDir, i);
 
                 for(int j = 0; j < this.height; ++j) {
-                    this.world.setBlockState(blockpos.up(j), UndergardenBlocks.undergarden_portal.get().getDefaultState().with(UndergardenPortalBlock.AXIS, this.axis), 18);
+                    this.world.setBlockState(blockpos.up(j), UGBlocks.undergarden_portal.get().getDefaultState().with(UndergardenPortalBlock.AXIS, this.axis), 18);
                 }
             }
 

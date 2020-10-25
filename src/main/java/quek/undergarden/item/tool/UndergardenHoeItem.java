@@ -14,22 +14,20 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UndergardenBlocks;
-import quek.undergarden.registry.UndergardenItemGroups;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGItemGroups;
 
 import java.util.Map;
 
-import net.minecraft.item.Item.Properties;
-
 public class UndergardenHoeItem extends HoeItem {
 
-    protected static final Map<Block, BlockState> HOE_LOOKUP = Maps.newHashMap(ImmutableMap.of(UndergardenBlocks.deepturf_block.get(), UndergardenBlocks.deepsoil_farmland.get().getDefaultState(), UndergardenBlocks.deepsoil.get(), UndergardenBlocks.deepsoil_farmland.get().getDefaultState()));
+    protected static final Map<Block, BlockState> HOE_LOOKUP = Maps.newHashMap(ImmutableMap.of(UGBlocks.deepturf_block.get(), UGBlocks.deepsoil_farmland.get().getDefaultState(), UGBlocks.deepsoil.get(), UGBlocks.deepsoil_farmland.get().getDefaultState()));
 
     public UndergardenHoeItem(IItemTier tier, int idk, float speed) {
         super(tier, idk, speed, new Properties()
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())
-                .group(UndergardenItemGroups.GROUP)
+                .group(UGItemGroups.GROUP)
         );
     }
 

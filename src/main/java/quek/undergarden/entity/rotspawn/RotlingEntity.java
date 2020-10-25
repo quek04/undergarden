@@ -10,7 +10,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UndergardenSoundEvents;
+import quek.undergarden.registry.UGSounds;
 
 public class RotlingEntity extends AbstractRotspawnEntity {
 
@@ -27,17 +27,17 @@ public class RotlingEntity extends AbstractRotspawnEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UndergardenSoundEvents.ROTLING_LIVING;
+        return UGSounds.ROTLING_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UndergardenSoundEvents.ROTLING_HURT;
+        return UGSounds.ROTLING_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UndergardenSoundEvents.ROTLING_DEATH;
+        return UGSounds.ROTLING_DEATH;
     }
 
     @Override

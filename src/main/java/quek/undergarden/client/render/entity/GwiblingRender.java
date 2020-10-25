@@ -8,7 +8,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UndergardenMod;
+import quek.undergarden.UGMod;
 import quek.undergarden.client.render.layer.GwiblingEyesLayer;
 import quek.undergarden.entity.GwiblingEntity;
 import quek.undergarden.client.model.GwiblingModel;
@@ -16,7 +16,7 @@ import quek.undergarden.client.model.GwiblingModel;
 @OnlyIn(Dist.CLIENT)
 public class GwiblingRender extends MobRenderer<GwiblingEntity, GwiblingModel<GwiblingEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(UndergardenMod.MODID, "textures/entities/gwibling.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/gwibling.png");
 
     public GwiblingRender(EntityRendererManager rendererManager) {
         super(rendererManager, new GwiblingModel<>(), .3F);
