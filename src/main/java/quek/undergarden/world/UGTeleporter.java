@@ -34,16 +34,7 @@ public class UGTeleporter implements ITeleporter {
 
     public boolean placeInPortal(ServerWorld world, Entity entity, float yaw) {
         PortalInfo pattern = this.placeInExistingPortal(world, entity, new BlockPos(entity.getPosition()));
-        if (pattern == null) {
-            return false;
-        } else {
-            Vector3d position = pattern.pos;
-            Vector3d motion = pattern.motion;
-            entity.setMotion(motion);
-            entity.rotationYaw = yaw + pattern.rotationYaw;
-            entity.setPositionAndUpdate(position.x, position.y, position.z);
-            return true;
-        }
+        return pattern != null;
     }
 
     @Nullable
