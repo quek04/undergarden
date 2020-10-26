@@ -97,7 +97,6 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.depthrock_pebbles, "Depthrock Pebbles");
         addBlock(UGBlocks.glowing_kelp, "Glitterkelp");
         addBlock(UGBlocks.glowing_kelp_plant, "Glitterkelp");
-        addBlock(UGBlocks.glowing_sea_grass, "Glowing Seagrass");
         addBlock(UGBlocks.droopvine_top, "Droopvine");
         //addBlock(UndergardenBlocks.droopvine, "Droopvine");
 

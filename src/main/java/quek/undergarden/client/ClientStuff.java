@@ -53,7 +53,6 @@ public class ClientStuff {
         render(UGBlocks.cloggrum_bars, cutout);
         render(UGBlocks.glowing_kelp, cutout);
         render(UGBlocks.glowing_kelp_plant, cutout);
-        render(UGBlocks.glowing_sea_grass, cutout);
         render(UGBlocks.undergarden_portal, translucent);
         render(UGBlocks.goo, translucent);
         render(UGBlocks.smogstem_door, cutout);

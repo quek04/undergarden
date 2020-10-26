@@ -1,7 +1,6 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -15,11 +14,8 @@ import quek.undergarden.registry.UGItems;
 
 public class GloomgourdBlock extends StemGrownBlock {
 
-    public GloomgourdBlock() {
-        super(Properties.create(Material.GOURD)
-                .hardnessAndResistance(1.0F)
-                .sound(SoundType.WOOD)
-        );
+    public GloomgourdBlock(AbstractBlock.Properties properties) {
+        super(properties);
     }
 
     @Override

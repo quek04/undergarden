@@ -1,10 +1,9 @@
 package quek.undergarden.block.world;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -24,14 +23,8 @@ public class DitchbulbBlock extends UGBushBlock {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
 
-    public DitchbulbBlock() {
-        super(Properties.create(Material.TALL_PLANTS)
-                .hardnessAndResistance(0F)
-                .sound(SoundType.PLANT)
-                .doesNotBlockMovement()
-                .notSolid()
-                .setLightLevel((state) -> 6)
-        );
+    public DitchbulbBlock(AbstractBlock.Properties properties) {
+        super(properties);
     }
 
     @Override

@@ -63,7 +63,6 @@ public class UGItemModels extends UGItemModelProvider {
         itemFence(UGBlocks.smogstem_fence, "smogstem_planks");
         itemFence(UGBlocks.wigglewood_fence, "wigglewood_planks");
         itemBlockFlat(UGBlocks.cloggrum_bars);
-        itemBlockFlat(UGBlocks.glowing_sea_grass);
         itemBlock(UGBlocks.shiverstone);
         itemBlock(UGBlocks.goo);
         itemBlock(UGBlocks.smog_vent);

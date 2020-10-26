@@ -1,9 +1,8 @@
 package quek.undergarden.block;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.WallTorchBlock;
-import net.minecraft.block.material.Material;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -19,14 +18,8 @@ import java.util.Random;
 
 public class ShardWallTorchBlock extends WallTorchBlock {
 
-    public ShardWallTorchBlock() {
-        super(Properties.create(Material.MISCELLANEOUS)
-                        .doesNotBlockMovement()
-                        .hardnessAndResistance(0F)
-                        .setLightLevel((state) -> 6)
-                        .sound(SoundType.WOOD),
-                ParticleTypes.FLAME
-        );
+    public ShardWallTorchBlock(AbstractBlock.Properties properties) {
+        super(properties, ParticleTypes.FLAME);
     }
 
     @Override

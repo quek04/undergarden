@@ -1,27 +1,20 @@
 package quek.undergarden.block.world;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.OreBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.ToolType;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
 public class UGOreBlock extends OreBlock {
-    public UGOreBlock(int harvestlvl) {
-        super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(3F,6F)
-                .sound(SoundType.BASALT)
-                .harvestLevel(harvestlvl)
-                .harvestTool(ToolType.PICKAXE)
-                .setRequiresTool()
-        );
+
+    public UGOreBlock(AbstractBlock.Properties properties) {
+        super(properties);
     }
 
     @Override

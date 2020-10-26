@@ -25,7 +25,7 @@ import net.minecraft.loot.functions.SetCount;
 import net.minecraft.loot.functions.Smelt;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.ResourceLocation;
-import quek.undergarden.block.world.BeanBushBlock;
+import quek.undergarden.block.world.UnderbeanBushBlock;
 import quek.undergarden.block.world.BlisterberryBushBlock;
 import quek.undergarden.data.provider.UGBlockLootTableProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -80,7 +80,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.deepsoil);
             dropWithSilk(UGBlocks.deepsoil_farmland, UGBlocks.deepsoil);
             this.registerLootTable(UGBlocks.underbean_bush.get(),
-                    LootTable.builder().addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BeanBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UGItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 3.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))).addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BeanBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UGItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
+                    LootTable.builder().addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(UnderbeanBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UGItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 3.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))).addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.underbean_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(UnderbeanBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UGItems.underbeans.get())).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
             this.registerLootTable(UGBlocks.blisterberry_bush.get(),
                     LootTable.builder()
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.blisterberry_bush.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UGItems.blisterberry.get())).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 3.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
@@ -93,7 +93,6 @@ public class UGLootTables extends LootTableProvider {
             this.registerLootTable(UGBlocks.deepturf.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UGBlocks.shimmerweed.get(), BlockLootTables::onlyWithShears);
             this.registerLootTable(UGBlocks.ashen_deepturf.get(), BlockLootTables::onlyWithShears);
-            this.registerLootTable(UGBlocks.glowing_sea_grass.get(), BlockLootTables::onlyWithShears);
             dropSelf(UGBlocks.smogstem_planks);
             dropSelf(UGBlocks.wigglewood_planks);
             dropSelf(UGBlocks.smogstem_log);

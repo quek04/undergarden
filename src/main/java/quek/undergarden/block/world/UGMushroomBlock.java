@@ -1,7 +1,9 @@
 package quek.undergarden.block.world;
 
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.IGrowable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -17,23 +19,8 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
-    public UGMushroomBlock() {
-        super(Properties.create(Material.PLANTS)
-                .doesNotBlockMovement()
-                .tickRandomly()
-                .hardnessAndResistance(0F)
-                .sound(SoundType.PLANT)
-        );
-    }
-
-    public UGMushroomBlock(int light) {
-        super(Properties.create(Material.PLANTS)
-                .doesNotBlockMovement()
-                .tickRandomly()
-                .hardnessAndResistance(0f)
-                .sound(SoundType.PLANT)
-                .setLightLevel((state) -> light)
-        );
+    public UGMushroomBlock(AbstractBlock.Properties properties) {
+        super(properties);
     }
 
     @Override

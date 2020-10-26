@@ -4,6 +4,8 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.Direction;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.HugeFungusConfig;
 import net.minecraftforge.common.ToolType;
@@ -26,56 +28,41 @@ public class UGBlocks {
     public static final RegistryObject<Block> undergarden_portal = BLOCKS.register("undergarden_portal", UndergardenPortalBlock::new);
 
     //basic shit
-    public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", DeepsoilBlock::new);
-    public static final RegistryObject<Block> deepsoil_farmland = registerBlock("deepsoil_farmland", DeepsoilFarmlandBlock::new);
-    public static final RegistryObject<Block> coarse_deepsoil = registerBlock("coarse_deepsoil", DeepsoilBlock::new);
-    public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", DeepturfBlock::new);
-    public static final RegistryObject<Block> ashen_deepturf_block = registerBlock("ashen_deepturf_block", () -> new Block(
-            AbstractBlock.Properties.from(deepturf_block.get())));
-    public static final RegistryObject<Block> depthrock = registerBlock("depthrock", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.STONE).sound(SoundType.BASALT).harvestLevel(1).setRequiresTool()));
-    public static final RegistryObject<Block> smogstem_planks = registerBlock("smogstem_planks", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
-    public static final RegistryObject<Block> wigglewood_planks = registerBlock("wigglewood_planks", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
-    public static final RegistryObject<Block> grongle_planks = registerBlock("grongle_planks", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.CRIMSON_PLANKS)));
-    public static final RegistryObject<Block> depthrock_bricks = registerBlock("depthrock_bricks", () -> new Block(
-            AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
-    public static final RegistryObject<Block> cracked_depthrock_bricks = registerBlock("cracked_depthrock_bricks", () -> new Block(
-            AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
-    public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new Block(
-            AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool()));
-    public static final RegistryObject<Block> shiverstone_bricks = registerBlock("shiverstone_bricks", () -> new Block(
-            AbstractBlock.Properties.from(shiverstone.get()).setRequiresTool()));
-    public static final RegistryObject<Block> goo = registerBlock("goo", GooBlock::new);
-    public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", SmogVentBlock::new);
+    public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", () -> new DeepsoilBlock(AbstractBlock.Properties.from(Blocks.DIRT)));
+    public static final RegistryObject<Block> deepsoil_farmland = registerBlock("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(AbstractBlock.Properties.from(Blocks.FARMLAND)));
+    public static final RegistryObject<Block> coarse_deepsoil = registerBlock("coarse_deepsoil", () -> new DeepsoilBlock(AbstractBlock.Properties.from(Blocks.COARSE_DIRT)));
+    public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", () -> new DeepturfBlock(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK)));
+    public static final RegistryObject<Block> ashen_deepturf_block = registerBlock("ashen_deepturf_block", () -> new Block(AbstractBlock.Properties.from(deepturf_block.get())));
+    public static final RegistryObject<Block> depthrock = registerBlock("depthrock", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE).sound(SoundType.BASALT).harvestLevel(1).setRequiresTool()));
+    public static final RegistryObject<Block> smogstem_planks = registerBlock("smogstem_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> wigglewood_planks = registerBlock("wigglewood_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> grongle_planks = registerBlock("grongle_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.CRIMSON_PLANKS)));
+    public static final RegistryObject<Block> depthrock_bricks = registerBlock("depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
+    public static final RegistryObject<Block> cracked_depthrock_bricks = registerBlock("cracked_depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
+    public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool()));
+    public static final RegistryObject<Block> shiverstone_bricks = registerBlock("shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(shiverstone.get()).setRequiresTool()));
+    public static final RegistryObject<Block> goo = registerBlock("goo", () -> new GooBlock(AbstractBlock.Properties.from(Blocks.SNOW)));
+    public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", () -> new SmogVentBlock(AbstractBlock.Properties.from(depthrock.get())));
 
     //otherside
-    public static final RegistryObject<Block> tremblecrust = registerBlock("tremblecrust", () -> new Block(
-            AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(6F, 24F).sound(SoundType.NETHERRACK).harvestTool(ToolType.PICKAXE).harvestLevel(3).setRequiresTool()));
-    public static final RegistryObject<Block> loose_tremblecrust = registerBlock("loose_tremblecrust", () -> new LooseTremblecrustBlock(
-            AbstractBlock.Properties.from(tremblecrust.get()).noDrops()));
-    public static final RegistryObject<Block> tremblecrust_bricks = registerBlock("tremblecrust_bricks", () -> new Block(
-            AbstractBlock.Properties.from(tremblecrust.get()).setRequiresTool()));
+    public static final RegistryObject<Block> tremblecrust = registerBlock("tremblecrust", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(6F, 24F).sound(SoundType.NETHERRACK).harvestTool(ToolType.PICKAXE).harvestLevel(3).setRequiresTool()));
+    public static final RegistryObject<Block> loose_tremblecrust = registerBlock("loose_tremblecrust", () -> new LooseTremblecrustBlock(AbstractBlock.Properties.from(tremblecrust.get()).noDrops()));
+    public static final RegistryObject<Block> tremblecrust_bricks = registerBlock("tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.from(tremblecrust.get()).setRequiresTool()));
 
-    //nature
-    public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", BeanBushBlock::new);
-    public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", BlisterberryBushBlock::new);
-
+    //tree/wood
     public static final RegistryObject<SaplingBlock> smogstem_sapling = registerBlock("smogstem_sapling", () -> new UGSaplingBlock(new SmogstemTree()));
-    public static final RegistryObject<RotatedPillarBlock> smogstem_log = registerBlock("smogstem_log", UGLogBlock::new);
-    public static final RegistryObject<RotatedPillarBlock> stripped_smogstem_log = registerBlock("stripped_smogstem_log", UGLogBlock::new);
-    public static final RegistryObject<RotatedPillarBlock> smogstem_wood = registerBlock("smogstem_wood", UGLogBlock::new);
-    public static final RegistryObject<RotatedPillarBlock> stripped_smogstem_wood = registerBlock("stripped_smogstem_wood", UGLogBlock::new);
-    public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", UGLeavesBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> smogstem_log = registerBlock("smogstem_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> stripped_smogstem_log = registerBlock("stripped_smogstem_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> smogstem_wood = registerBlock("smogstem_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> stripped_smogstem_wood = registerBlock("stripped_smogstem_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_OAK_WOOD)));
+    public static final RegistryObject<Block> smogstem_leaves = registerBlock("smogstem_leaves", () -> new LeavesBlock(AbstractBlock.Properties.from(Blocks.OAK_LEAVES)));
 
     public static final RegistryObject<SaplingBlock> wigglewood_sapling = registerBlock("wigglewood_sapling", () -> new UGSaplingBlock(new WigglewoodTree()));
-    public static final RegistryObject<RotatedPillarBlock> wigglewood_log = registerBlock("wigglewood_log", UGLogBlock::new);
-    public static final RegistryObject<RotatedPillarBlock> stripped_wigglewood_log = registerBlock("stripped_wigglewood_log", UGLogBlock::new);
-    public static final RegistryObject<RotatedPillarBlock> wigglewood_wood = registerBlock("wigglewood_wood", UGLogBlock::new);
-    public static final RegistryObject<RotatedPillarBlock> stripped_wigglewood_wood = registerBlock("stripped_wigglewood_wood", UGLogBlock::new);
-    public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", UGLeavesBlock::new);
+    public static final RegistryObject<RotatedPillarBlock> wigglewood_log = registerBlock("wigglewood_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> stripped_wigglewood_log = registerBlock("stripped_wigglewood_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> wigglewood_wood = registerBlock("wigglewood_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> stripped_wigglewood_wood = registerBlock("stripped_wigglewood_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_OAK_WOOD)));
+    public static final RegistryObject<Block> wigglewood_leaves = registerBlock("wigglewood_leaves", () -> new LeavesBlock(AbstractBlock.Properties.from(Blocks.OAK_LEAVES)));
 
     public static final RegistryObject<Block> gronglet = registerBlock("gronglet", () -> new GrongletBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_FUNGUS).sound(SoundType.SHROOMLIGHT), () -> Feature.HUGE_FUNGUS.withConfiguration(new HugeFungusConfig(UGBlocks.deepturf_block.get().getDefaultState(), UGBlocks.grongle_stem.get().getDefaultState(), UGBlocks.grongle_cap.get().getDefaultState(), Blocks.SHROOMLIGHT.getDefaultState(), true))));
     public static final RegistryObject<RotatedPillarBlock> grongle_stem = registerBlock("grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
@@ -84,61 +71,59 @@ public class UGBlocks {
     public static final RegistryObject<RotatedPillarBlock> stripped_grongle_hyphae = registerBlock("stripped_grongle_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<Block> grongle_cap = registerBlock("grongle_cap", () -> new Block(AbstractBlock.Properties.from(Blocks.WARPED_WART_BLOCK).sound(SoundType.SHROOMLIGHT)));
 
-    public static final RegistryObject<Block> deepturf = registerBlock("deepturf", UGTallGrassBlock::new);
-    public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", AshenTallDeepturfBlock::new);
-    public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", UGDoublePlantBlock::new);
-    public static final RegistryObject<Block> shimmerweed = registerBlock("shimmerweed", () -> new UGTallGrassBlock(12));
-    public static final RegistryObject<Block> tall_shimmerweed = registerBlock("tall_shimmerweed", () -> new UGDoublePlantBlock(14));
-    public static final RegistryObject<Block> ditchbulb_plant = registerBlock("ditchbulb_plant", DitchbulbBlock::new);
-    public static final RegistryObject<Block> indigo_mushroom = registerBlock("indigo_mushroom", () -> new UGMushroomBlock(2));
-    public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", UGMushroomBlock::new);
-    public static final RegistryObject<Block> ink_mushroom = registerBlock("ink_mushroom", UGMushroomBlock::new);
-    public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", UGMushroomBlock::new);
-    public static final RegistryObject<StemGrownBlock> gloomgourd = registerBlock("gloomgourd", GloomgourdBlock::new);
-    public static final RegistryObject<Block> carved_gloomgourd = BLOCKS.register("carved_gloomgourd", CarvedGloomgourdBlock::new);
-    public static final RegistryObject<StemBlock> gloomgourd_stem = BLOCKS.register("gloomgourd_stem", () -> new UGStemBlock(gloomgourd.get()));
-    public static final RegistryObject<AttachedStemBlock> gloomgourd_stem_attached = BLOCKS.register("gloomgourd_stem_attached", () -> new UGAttachedStemBlock(gloomgourd.get()));
-    public static final RegistryObject<Block> depthrock_pebbles = registerBlock("depthrock_pebbles", DepthrockPebblesBlock::new);
-    public static final RegistryObject<GlowingKelpTopBlock> glowing_kelp = BLOCKS.register("glowing_kelp", GlowingKelpTopBlock::new);
-    public static final RegistryObject<Block> glowing_kelp_plant = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(glowing_kelp.get()));
-    public static final RegistryObject<Block> glowing_sea_grass = registerBlock("glowing_sea_grass", GlowingSeaGrassBlock::new);
-    public static final RegistryObject<Block> droopvine_top = BLOCKS.register("droopvine_top", DroopvineTopBlock::new);
-    public static final RegistryObject<Block> droopvine = BLOCKS.register("droopvine", DroopvineBlock::new);
+    //plants
+    public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", () -> new UnderbeanBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH)));
+    public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", () -> new UnderbeanBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH).setLightLevel((state) -> 6)));
+    public static final RegistryObject<Block> deepturf = registerBlock("deepturf", () -> new UGTallGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS)));
+    public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", () -> new UGTallGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS)));
+    public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", () -> new UGDoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS)));
+    public static final RegistryObject<Block> shimmerweed = registerBlock("shimmerweed", () -> new UGTallGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS).setLightLevel((state) -> 12)));
+    public static final RegistryObject<Block> tall_shimmerweed = registerBlock("tall_shimmerweed", () -> new UGDoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS).setLightLevel((state) -> 14)));
+    public static final RegistryObject<Block> ditchbulb_plant = registerBlock("ditchbulb_plant", () -> new DitchbulbBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS).setLightLevel((state) -> 6)));
+    public static final RegistryObject<Block> indigo_mushroom = registerBlock("indigo_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM).setLightLevel((state) -> 2)));
+    public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
+    public static final RegistryObject<Block> ink_mushroom = registerBlock("ink_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
+    public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
+    public static final RegistryObject<StemGrownBlock> gloomgourd = registerBlock("gloomgourd", () -> new GloomgourdBlock(AbstractBlock.Properties.from(Blocks.PUMPKIN)));
+    public static final RegistryObject<Block> carved_gloomgourd = BLOCKS.register("carved_gloomgourd", () -> new CarvedGloomgourdBlock(AbstractBlock.Properties.from(Blocks.CARVED_PUMPKIN)));
+    public static final RegistryObject<StemBlock> gloomgourd_stem = BLOCKS.register("gloomgourd_stem", () -> new UGStemBlock(gloomgourd.get(), AbstractBlock.Properties.from(Blocks.PUMPKIN_STEM)));
+    public static final RegistryObject<AttachedStemBlock> gloomgourd_stem_attached = BLOCKS.register("gloomgourd_stem_attached", () -> new UGAttachedStemBlock(gloomgourd.get(), AbstractBlock.Properties.from(Blocks.ATTACHED_PUMPKIN_STEM)));
+    public static final RegistryObject<Block> depthrock_pebbles = registerBlock("depthrock_pebbles", () -> new DepthrockPebblesBlock(AbstractBlock.Properties.from(depthrock.get()).doesNotBlockMovement().hardnessAndResistance(0F)));
+    public static final RegistryObject<GlowingKelpTopBlock> glowing_kelp = BLOCKS.register("glowing_kelp", () -> new GlowingKelpTopBlock(AbstractBlock.Properties.from(Blocks.KELP).setLightLevel((state) -> 10)));
+    public static final RegistryObject<Block> glowing_kelp_plant = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(AbstractBlock.Properties.from(Blocks.KELP_PLANT).setLightLevel((state) -> 10)));
+    public static final RegistryObject<Block> droopvine_top = BLOCKS.register("droopvine_top", () -> new DroopvineTopBlock(AbstractBlock.Properties.from(Blocks.WEEPING_VINES), Direction.DOWN, false, 0.1D));
+    public static final RegistryObject<Block> droopvine = BLOCKS.register("droopvine", () -> new DroopvineBlock(AbstractBlock.Properties.from(Blocks.WEEPING_VINES_PLANT), Direction.DOWN, false));
 
     //ores
-    public static final RegistryObject<Block> coal_ore = registerBlock("coal_ore", () -> new UGOreBlock(0));
-    public static final RegistryObject<Block> iron_ore = registerBlock("iron_ore", () -> new UGOreBlock(1));
-    public static final RegistryObject<Block> gold_ore = registerBlock("gold_ore", () -> new UGOreBlock(2));
-    public static final RegistryObject<Block> diamond_ore = registerBlock("diamond_ore", () -> new UGOreBlock(3));
-    public static final RegistryObject<Block> cloggrum_ore = registerBlock("cloggrum_ore", () -> new UGOreBlock(1));
-    public static final RegistryObject<Block> froststeel_ore = registerBlock("froststeel_ore", () -> new UGOreBlock(2));
-    public static final RegistryObject<Block> utherium_ore = registerBlock("utherium_ore", () -> new UGOreBlock(3));
-    public static final RegistryObject<Block> otherside_utherium_ore = registerBlock("otherside_utherium_ore", () -> new UGOreBlock(3));
-    public static final RegistryObject<Block> regalium_ore = registerBlock("regalium_ore", () -> new UGOreBlock(4));
+    public static final RegistryObject<Block> coal_ore = registerBlock("coal_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(0)));
+    public static final RegistryObject<Block> iron_ore = registerBlock("iron_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(1)));
+    public static final RegistryObject<Block> gold_ore = registerBlock("gold_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(2)));
+    public static final RegistryObject<Block> diamond_ore = registerBlock("diamond_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(3)));
+    public static final RegistryObject<Block> cloggrum_ore = registerBlock("cloggrum_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(1)));
+    public static final RegistryObject<Block> froststeel_ore = registerBlock("froststeel_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(2)));
+    public static final RegistryObject<Block> utherium_ore = registerBlock("utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(3)));
+    public static final RegistryObject<Block> otherside_utherium_ore = registerBlock("otherside_utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(4)));
+    public static final RegistryObject<Block> regalium_ore = registerBlock("regalium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(4)));
 
     //manufactured
-    public static final RegistryObject<Block> cloggrum_block = registerBlock("cloggrum_block", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(2).setRequiresTool()));
-    public static final RegistryObject<Block> froststeel_block = registerBlock("froststeel_block", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(3).setRequiresTool()));
-    public static final RegistryObject<Block> utherium_block = registerBlock("utherium_block", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(3).setRequiresTool()));
-    public static final RegistryObject<Block> regalium_block = registerBlock("regalium_block", () -> new Block(
-            AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(4).setRequiresTool()));
-    public static final RegistryObject<Block> smogstem_torch = BLOCKS.register("smogstem_torch", UGTorchBlock::new);
-    public static final RegistryObject<Block> smogstem_wall_torch = BLOCKS.register("smogstem_wall_torch", UGWallTorchBlock::new);
-    public static final RegistryObject<Block> shard_torch = BLOCKS.register("shard_torch", ShardTorchBlock::new);
-    public static final RegistryObject<Block> shard_wall_torch = BLOCKS.register("shard_wall_torch", ShardWallTorchBlock::new);
-    public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(15));
+    public static final RegistryObject<Block> cloggrum_block = registerBlock("cloggrum_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(2).setRequiresTool()));
+    public static final RegistryObject<Block> froststeel_block = registerBlock("froststeel_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(3).setRequiresTool()));
+    public static final RegistryObject<Block> utherium_block = registerBlock("utherium_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(3).setRequiresTool()));
+    public static final RegistryObject<Block> regalium_block = registerBlock("regalium_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(4).setRequiresTool()));
+    public static final RegistryObject<Block> smogstem_torch = BLOCKS.register("smogstem_torch", () -> new TorchBlock(AbstractBlock.Properties.from(Blocks.TORCH), ParticleTypes.FLAME));
+    public static final RegistryObject<Block> smogstem_wall_torch = BLOCKS.register("smogstem_wall_torch", () -> new WallTorchBlock(AbstractBlock.Properties.from(Blocks.WALL_TORCH), ParticleTypes.FLAME));
+    public static final RegistryObject<Block> shard_torch = BLOCKS.register("shard_torch", () -> new ShardTorchBlock(AbstractBlock.Properties.from(Blocks.TORCH)));
+    public static final RegistryObject<Block> shard_wall_torch = BLOCKS.register("shard_wall_torch", () -> new ShardWallTorchBlock(AbstractBlock.Properties.from(Blocks.WALL_TORCH)));
+    public static final RegistryObject<Block> gloom_o_lantern = registerBlock("gloom_o_lantern", () -> new CarvedGloomgourdBlock(AbstractBlock.Properties.from(Blocks.JACK_O_LANTERN).setLightLevel((state) -> 15)));
     public static final RegistryObject<Block> cloggrum_bars = registerBlock("cloggrum_bars", () -> new PaneBlock(AbstractBlock.Properties.from(Blocks.IRON_BARS)));
 
-    public static final RegistryObject<StairsBlock> depthrock_stairs = registerBlock("depthrock_stairs", () -> new StairsBlock(UGBlocks.depthrock.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.depthrock.get()).notSolid()));
-    public static final RegistryObject<StairsBlock> depthrock_brick_stairs = registerBlock("depthrock_brick_stairs", () -> new StairsBlock(UGBlocks.depthrock_bricks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.depthrock_bricks.get()).notSolid()));
-    public static final RegistryObject<StairsBlock> smogstem_stairs = registerBlock("smogstem_stairs", () -> new StairsBlock(UGBlocks.smogstem_planks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.smogstem_planks.get()).notSolid()));
-    public static final RegistryObject<StairsBlock> wigglewood_stairs = registerBlock("wigglewood_stairs", () -> new StairsBlock(UGBlocks.smogstem_planks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.smogstem_planks.get()).notSolid()));
-    public static final RegistryObject<StairsBlock> grongle_stairs = registerBlock("grongle_stairs", () -> new StairsBlock(UGBlocks.grongle_planks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.grongle_planks.get()).notSolid()));
-    public static final RegistryObject<StairsBlock> shiverstone_stairs = registerBlock("shiverstone_stairs", () -> new StairsBlock(UGBlocks.shiverstone.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.shiverstone.get()).notSolid()));
-    public static final RegistryObject<StairsBlock> shiverstone_brick_stairs = registerBlock("shiverstone_brick_stairs", () -> new StairsBlock(UGBlocks.shiverstone_bricks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.shiverstone_bricks.get()).notSolid()));
+    public static final RegistryObject<StairsBlock> depthrock_stairs = registerBlock("depthrock_stairs", () -> new StairsBlock(() -> UGBlocks.depthrock.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.depthrock.get()).notSolid()));
+    public static final RegistryObject<StairsBlock> depthrock_brick_stairs = registerBlock("depthrock_brick_stairs", () -> new StairsBlock(() -> UGBlocks.depthrock_bricks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.depthrock_bricks.get()).notSolid()));
+    public static final RegistryObject<StairsBlock> smogstem_stairs = registerBlock("smogstem_stairs", () -> new StairsBlock(() -> UGBlocks.smogstem_planks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.smogstem_planks.get()).notSolid()));
+    public static final RegistryObject<StairsBlock> wigglewood_stairs = registerBlock("wigglewood_stairs", () -> new StairsBlock(() -> UGBlocks.smogstem_planks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.smogstem_planks.get()).notSolid()));
+    public static final RegistryObject<StairsBlock> grongle_stairs = registerBlock("grongle_stairs", () -> new StairsBlock(() -> UGBlocks.grongle_planks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.grongle_planks.get()).notSolid()));
+    public static final RegistryObject<StairsBlock> shiverstone_stairs = registerBlock("shiverstone_stairs", () -> new StairsBlock(() -> UGBlocks.shiverstone.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.shiverstone.get()).notSolid()));
+    public static final RegistryObject<StairsBlock> shiverstone_brick_stairs = registerBlock("shiverstone_brick_stairs", () -> new StairsBlock(() -> UGBlocks.shiverstone_bricks.get().getDefaultState(), AbstractBlock.Properties.from(UGBlocks.shiverstone_bricks.get()).notSolid()));
 
     public static final RegistryObject<SlabBlock> depthrock_slab = registerBlock("depthrock_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UGBlocks.depthrock.get()).notSolid()));
     public static final RegistryObject<SlabBlock> depthrock_brick_slab = registerBlock("depthrock_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UGBlocks.depthrock_bricks.get()).notSolid()));
@@ -183,7 +168,6 @@ public class UGBlocks {
     public static final RegistryObject<FlowingFluidBlock> virulent_mix = BLOCKS.register("virulent_mix", () -> new UGFluidBlock(
             UGFluids.virulent_mix_source, AbstractBlock.Properties.create(Material.WATER)));
 
-
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);
         UGItems.ITEMS.register(name, item.apply(register));
@@ -191,7 +175,7 @@ public class UGBlocks {
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<? extends Block> block) {
-        return (RegistryObject<T>) baseRegister(name, block, UGBlocks::registerBlockItem);
+        return (RegistryObject<T>)baseRegister(name, block, UGBlocks::registerBlockItem);
     }
 
     private static <T extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<T> block) {

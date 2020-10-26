@@ -24,14 +24,8 @@ public class UGStemBlock extends StemBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
     private final StemGrownBlock crop;
 
-    public UGStemBlock(StemGrownBlock crop) {
-        super(crop, Properties.create(Material.PLANTS)
-                .doesNotBlockMovement()
-                .tickRandomly()
-                .hardnessAndResistance(0F)
-                .sound(SoundType.STEM)
-                .noDrops()
-        );
+    public UGStemBlock(StemGrownBlock crop, AbstractBlock.Properties properties) {
+        super(crop, properties);
         this.crop = crop;
     }
 

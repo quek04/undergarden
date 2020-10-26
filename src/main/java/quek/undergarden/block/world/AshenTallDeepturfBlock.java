@@ -1,7 +1,6 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -19,13 +18,8 @@ public class AshenTallDeepturfBlock extends UGBushBlock implements IGrowable {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public AshenTallDeepturfBlock() {
-        super(Properties.create(Material.TALL_PLANTS)
-                .hardnessAndResistance(0F)
-                .sound(SoundType.PLANT)
-                .doesNotBlockMovement()
-                .notSolid()
-        );
+    public AshenTallDeepturfBlock(AbstractBlock.Properties properties) {
+        super(properties);
     }
 
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {

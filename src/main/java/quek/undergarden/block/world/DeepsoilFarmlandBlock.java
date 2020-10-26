@@ -1,7 +1,6 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
@@ -27,12 +26,8 @@ public class DeepsoilFarmlandBlock extends Block {
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE_0_7;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
-    public DeepsoilFarmlandBlock() {
-        super(Properties.create(Material.EARTH)
-                .tickRandomly()
-                .hardnessAndResistance(0.6F)
-                .sound(SoundType.GROUND)
-        );
+    public DeepsoilFarmlandBlock(AbstractBlock.Properties properties) {
+        super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(MOISTURE, 0));
     }
 

@@ -1,7 +1,6 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -16,24 +15,8 @@ public class UGTallGrassBlock extends UGBushBlock implements IGrowable {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public UGTallGrassBlock() {
-        super(Properties.create(Material.TALL_PLANTS)
-                .hardnessAndResistance(0F)
-                .sound(SoundType.PLANT)
-                .doesNotBlockMovement()
-                .notSolid()
-        );
-    }
-
-    public UGTallGrassBlock(int light) {
-        super(Properties.create(Material.TALL_PLANTS)
-                .hardnessAndResistance(0F)
-                .sound(SoundType.PLANT)
-                .doesNotBlockMovement()
-                .notSolid()
-                .setLightLevel((state) -> light)
-
-        );
+    public UGTallGrassBlock(AbstractBlock.Properties properties) {
+        super(properties);
     }
 
     @Override

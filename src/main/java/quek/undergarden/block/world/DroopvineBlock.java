@@ -1,7 +1,6 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
@@ -21,21 +20,12 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     public static final VoxelShape SHAPE = Block.makeCuboidShape(1.0D, 1.0D, 1.0D, 16.0D, 16.0D, 16.0D);
 
-    public DroopvineBlock() {
-        super(Properties.create(Material.PLANTS)
-                .doesNotBlockMovement()
-                .tickRandomly()
-                .setLightLevel(glowIfGlowy())
-                .hardnessAndResistance(0.4F)
-                .sound(SoundType.WET_GRASS),
-                Direction.DOWN,
-                SHAPE,
-                false
-        );
+    public DroopvineBlock(AbstractBlock.Properties properties, Direction growthDirection, boolean waterloggable) {
+        super(properties, growthDirection, SHAPE, waterloggable);
         this.setDefaultState(this.stateContainer.getBaseState().with(GLOWY, randomTorF()));
     }
 
-    private static ToIntFunction<BlockState> glowIfGlowy() {
+    public static ToIntFunction<BlockState> glowIfGlowy() {
         return (state) -> state.get(GLOWY) ? 10 : 0;
     }
 

@@ -12,8 +12,6 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
@@ -31,14 +29,8 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
 
-    public BlisterberryBushBlock() {
-        super(Properties.create(Material.PLANTS)
-                .hardnessAndResistance(0F)
-                .sound(SoundType.PLANT)
-                .tickRandomly()
-                .doesNotBlockMovement()
-                .setLightLevel((state) -> 6)
-        );
+    public BlisterberryBushBlock(AbstractBlock.Properties properties) {
+        super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
 

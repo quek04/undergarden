@@ -1,18 +1,21 @@
 package quek.undergarden.block.world;
 
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -20,17 +23,12 @@ import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
 
-public class BeanBushBlock extends UGBushBlock implements IGrowable {
+public class UnderbeanBushBlock extends UGBushBlock implements IGrowable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
 
-    public BeanBushBlock() {
-        super(Properties.create(Material.PLANTS)
-                .hardnessAndResistance(0F)
-                .sound(SoundType.PLANT)
-                .tickRandomly()
-                .doesNotBlockMovement()
-        );
+    public UnderbeanBushBlock(AbstractBlock.Properties properties) {
+        super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
 

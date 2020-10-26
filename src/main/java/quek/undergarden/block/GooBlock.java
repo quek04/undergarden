@@ -1,10 +1,9 @@
 package quek.undergarden.block;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.IntegerProperty;
@@ -20,7 +19,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.ToolType;
 import quek.undergarden.entity.ScintlingEntity;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
@@ -32,27 +30,19 @@ public class GooBlock extends Block {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
     protected static final VoxelShape SHAPE = makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
-    public GooBlock() {
-        super(Properties.create(Material.SNOW)
-                .hardnessAndResistance(1F, 0F)
-                .doesNotBlockMovement()
-                .tickRandomly()
-                .sound(SoundType.SLIME)
-                .notSolid()
-                .harvestTool(ToolType.SHOVEL)
-        );
+    public GooBlock(AbstractBlock.Properties properties) {
+        super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UGItems.cloggrum_boots.get() && !((PlayerEntity) entityIn).isPotionActive(UGEffects.gooey.get())) {
-
+            //do nothing!
         }
         else if(!(entityIn instanceof ScintlingEntity) && entityIn.isOnGround()) {
             entityIn.setMotionMultiplier(state, new Vector3d(0.45D, 0.45D, 0.45D));
         }
-
     }
 
     @Override

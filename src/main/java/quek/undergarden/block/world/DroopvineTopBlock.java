@@ -1,7 +1,6 @@
 package quek.undergarden.block.world;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -15,18 +14,8 @@ public class DroopvineTopBlock extends AbstractTopPlantBlock {
 
     public static final VoxelShape SHAPE = Block.makeCuboidShape(1.0D, 1.0D, 1.0D, 16.0D, 16.0D, 16.0D);
 
-    public DroopvineTopBlock() {
-        super(Properties.create(Material.PLANTS)
-                .doesNotBlockMovement()
-                .tickRandomly()
-                .setLightLevel((state) -> 10)
-                .hardnessAndResistance(0.2F)
-                .sound(SoundType.WET_GRASS),
-                Direction.DOWN,
-                SHAPE,
-                false,
-                0.1D
-        );
+    public DroopvineTopBlock(AbstractBlock.Properties properties, Direction direction, boolean waterloggable, double growthChance) {
+        super(properties, direction, SHAPE, waterloggable, growthChance);
     }
 
     @Override
