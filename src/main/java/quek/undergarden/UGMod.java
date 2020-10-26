@@ -1,7 +1,9 @@
 package quek.undergarden;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.dispenser.*;
@@ -14,20 +16,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-
-import org.apache.commons.lang3.tuple.Pair;
-import quek.undergarden.client.*;
+import quek.undergarden.client.ClientStuff;
+import quek.undergarden.client.UGDimensionRenderInfo;
 import quek.undergarden.data.*;
-import quek.undergarden.entity.projectile.*;
+import quek.undergarden.entity.projectile.BlisterbombEntity;
+import quek.undergarden.entity.projectile.GooBallEntity;
+import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
+import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.UndergardenSpawnEggItem;
 import quek.undergarden.registry.*;
 
@@ -52,12 +53,6 @@ public class UGMod {
 		UGFluids.FLUIDS.register(bus);
 		UGParticleTypes.PARTICLES.register(bus);
 		UGTileEntities.TEs.register(bus);
-
-		final Pair<UGConfig.CommonConfig, ForgeConfigSpec> specPairCommon = new ForgeConfigSpec.Builder().configure(UGConfig.CommonConfig::new);
-		final Pair<UGConfig.ClientConfig, ForgeConfigSpec> specPairClient = new ForgeConfigSpec.Builder().configure(UGConfig.ClientConfig::new);
-
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, specPairCommon.getRight());
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, specPairClient.getRight());
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
