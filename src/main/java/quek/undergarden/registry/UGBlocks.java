@@ -41,7 +41,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> cracked_depthrock_bricks = registerBlock("cracked_depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
     public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool()));
     public static final RegistryObject<Block> shiverstone_bricks = registerBlock("shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(shiverstone.get()).setRequiresTool()));
-    public static final RegistryObject<Block> goo = registerBlock("goo", () -> new GooBlock(AbstractBlock.Properties.from(Blocks.SNOW)));
+    public static final RegistryObject<Block> goo = registerBlock("goo", () -> new GooBlock(AbstractBlock.Properties.from(Blocks.SNOW).sound(SoundType.SLIME).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", () -> new SmogVentBlock(AbstractBlock.Properties.from(depthrock.get())));
 
     //otherside
