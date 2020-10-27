@@ -25,10 +25,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import quek.undergarden.client.ClientStuff;
 import quek.undergarden.client.UGDimensionRenderInfo;
 import quek.undergarden.data.*;
-import quek.undergarden.entity.projectile.BlisterbombEntity;
-import quek.undergarden.entity.projectile.GooBallEntity;
-import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
-import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
+import quek.undergarden.entity.projectile.*;
 import quek.undergarden.item.UndergardenSpawnEggItem;
 import quek.undergarden.registry.*;
 
@@ -168,5 +165,4 @@ public class UGMod {
 			generator.addProvider(new UGLootTables(generator));
 		}
 	}
-
 }
