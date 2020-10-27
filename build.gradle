@@ -15,7 +15,7 @@ apply plugin: 'maven-publish'
 
 version = project.undergarden_version
 group = 'quek.undergarden.modid'
-archivesBaseName = 'undergarden'
+archivesBaseName = 'The_Undergarden-'+project.mc_version
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
