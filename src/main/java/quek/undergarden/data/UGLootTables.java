@@ -5,7 +5,9 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.criterion.*;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
+import net.minecraft.loot.functions.*;
 import quek.undergarden.block.world.UGDoublePlantBlock;
 import net.minecraft.item.Item;
 import net.minecraft.loot.conditions.*;
@@ -19,10 +21,6 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Items;
 import net.minecraft.loot.*;
-import net.minecraft.loot.functions.ApplyBonus;
-import net.minecraft.loot.functions.LootingEnchantBonus;
-import net.minecraft.loot.functions.SetCount;
-import net.minecraft.loot.functions.Smelt;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.ResourceLocation;
 import quek.undergarden.block.world.UnderbeanBushBlock;
@@ -193,6 +191,8 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.stripped_smogstem_wood);
             dropSelf(UGBlocks.stripped_wigglewood_wood);
             dropSelf(UGBlocks.stripped_grongle_hyphae);
+            this.registerLootTable(UGBlocks.gloomgourd_stem.get(), (stem) -> droppingByAge(stem, UGItems.gloomgourd_seeds.get()));
+            this.registerLootTable(UGBlocks.gloomgourd_stem_attached.get(), (stem) -> dropSeedsForStem(stem, UGItems.gloomgourd_seeds.get()));
         }
 
         @Override
@@ -204,6 +204,14 @@ public class UGLootTables extends LootTableProvider {
     private static LootTable.Builder droppingSeedsTall(Block originalBlock, Block newBlock) {
         LootEntry.Builder<?> builder = ItemLootEntry.builder(newBlock).acceptFunction(SetCount.builder(ConstantRange.of(1))).acceptCondition(SHEARS);
         return LootTable.builder().addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UGDoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.builder().block(BlockPredicate.Builder.createBuilder().setBlock(originalBlock).setStatePredicate(StatePropertiesPredicate.Builder.newBuilder().withProp(UGDoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).addLootPool(LootPool.builder().addEntry(builder).acceptCondition(BlockStateProperty.builder(originalBlock).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withProp(UGDoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).acceptCondition(LocationCheck.func_241547_a_(LocationPredicate.Builder.builder().block(BlockPredicate.Builder.createBuilder().setBlock(originalBlock).setStatePredicate(StatePropertiesPredicate.Builder.newBuilder().withProp(UGDoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
+    }
+
+    private static LootTable.Builder dropSeedsForStem(Block stem, Item stemSeed) {
+        return LootTable.builder().addLootPool(withExplosionDecay(stem, LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(stemSeed).acceptFunction(SetCount.builder(BinomialRange.of(3, 0.53333336F))))));
+    }
+
+    protected static <T> T withExplosionDecay(IItemProvider item, ILootFunctionConsumer<T> function) {
+        return (T)(!IMMUNE_TO_EXPLOSIONS.contains(item.asItem()) ? function.acceptFunction(ExplosionDecay.builder()) : function.cast());
     }
 
     public static class Entities extends EntityLootTables {
