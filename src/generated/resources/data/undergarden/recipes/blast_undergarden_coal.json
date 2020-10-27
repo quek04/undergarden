@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "undergarden:coal_ore"
+  },
+  "result": "minecraft:coal",
+  "experience": 0.7,
+  "cookingtime": 100
+}

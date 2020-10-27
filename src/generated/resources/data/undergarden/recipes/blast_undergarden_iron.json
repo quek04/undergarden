@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "undergarden:iron_ore"
+  },
+  "result": "minecraft:iron_ingot",
+  "experience": 0.7,
+  "cookingtime": 100
+}

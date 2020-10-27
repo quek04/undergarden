@@ -293,6 +293,15 @@ public class UGRecipes extends UGRecipeProvider {
 
         smeltingRecipe(Items.IRON_INGOT, UGItems.catalyst_item.get(), 1F).build(consumer, "smelt_catalyst");
 
+        smeltingRecipe(Items.COAL, UGBlocks.coal_ore.get(), .7F).build(consumer, name("smelt_undergarden_coal"));
+        blastingRecipe(Items.COAL, UGBlocks.coal_ore.get(), .7F).build(consumer, name("blast_undergarden_coal"));
+        smeltingRecipe(Items.IRON_INGOT, UGBlocks.iron_ore.get(), .7F).build(consumer, name("smelt_undergarden_iron"));
+        blastingRecipe(Items.IRON_INGOT, UGBlocks.iron_ore.get(), .7F).build(consumer, name("blast_undergarden_iron"));
+        smeltingRecipe(Items.GOLD_INGOT, UGBlocks.gold_ore.get(), .7F).build(consumer, name("smelt_undergarden_gold"));
+        blastingRecipe(Items.GOLD_INGOT, UGBlocks.gold_ore.get(), .7F).build(consumer, name("blast_undergarden_gold"));
+        smeltingRecipe(Items.DIAMOND, UGBlocks.diamond_ore.get(), .7F).build(consumer, name("smelt_undergarden_diamond"));
+        blastingRecipe(Items.DIAMOND, UGBlocks.diamond_ore.get(), .7F).build(consumer, name("blast_undergarden_diamond"));
+
         smeltingRecipe(UGItems.cloggrum_ingot.get(), UGBlocks.cloggrum_ore.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
         blastingRecipe(UGItems.cloggrum_ingot.get(), UGBlocks.cloggrum_ore.get(), .7F).build(consumer, name("blast_cloggrum_ore"));
         smeltingRecipe(UGItems.froststeel_ingot.get(), UGBlocks.froststeel_ore.get(), .7F).build(consumer, name("smelt_froststeel_ore"));
