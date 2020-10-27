@@ -81,7 +81,7 @@ public class UGItems {
             UGFluids.virulent_mix_source, (new Item.Properties()).group(UGItemGroups.GROUP).maxStackSize(1)));
 
     public static final RegistryObject<FishBucketItem> gwibling_bucket = ITEMS.register("gwibling_bucket", () -> new FishBucketItem(
-            UGEntityTypes.gwibling, Fluids.WATER, (new Item.Properties()).maxStackSize(1).group(UGItemGroups.GROUP)));
+            () -> UGEntityTypes.gwibling, () -> Fluids.WATER, (new Item.Properties()).maxStackSize(1).group(UGItemGroups.GROUP)));
 
     //armors
     public static final RegistryObject<Item> cloggrum_helmet = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UGArmors.CLOGGRUM, EquipmentSlotType.HEAD));
