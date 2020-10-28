@@ -6,6 +6,11 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:killed_by_player"
+            }
+          ],
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -13,6 +18,13 @@
                 "min": 0.0,
                 "max": 2.0,
                 "type": "minecraft:uniform"
+              }
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
               }
             }
           ],

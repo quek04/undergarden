@@ -56,10 +56,12 @@ public class RotDwellerEntity extends MonsterEntity {
         this.getDataManager().register(IS_CHILD, false);
     }
 
+    @Override
     public boolean isChild() {
         return this.getDataManager().get(IS_CHILD);
     }
 
+    @Override
     public void setChild(boolean child) {
         this.getDataManager().set(IS_CHILD, child);
         if (this.world != null && !this.world.isRemote) {
