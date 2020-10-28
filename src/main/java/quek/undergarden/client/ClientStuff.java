@@ -139,6 +139,5 @@ public class ClientStuff {
                 UGBlocks.shimmerweed.get(),
                 UGBlocks.tall_shimmerweed.get()
         );
-
     }
 }

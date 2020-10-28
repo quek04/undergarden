@@ -11,7 +11,7 @@
     },
     "background": "undergarden:textures/block/depthrock_bricks.png",
     "show_toast": true,
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "frame": "task"
   },
   "criteria": {

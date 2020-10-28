@@ -27,6 +27,12 @@
         "biome": "undergarden:forgotten_field"
       }
     },
+    "mushroom_bog": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:mushroom_bog"
+      }
+    },
     "barren_abyss": {
       "trigger": "minecraft:location",
       "conditions": {

@@ -69,6 +69,16 @@
           }
         },
         {
+          "biome": "undergarden:mushroom_bog",
+          "parameters": {
+            "altitude": 0.5,
+            "weirdness": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "humidity": 0.0
+          }
+        },
+        {
           "biome": "undergarden:smogstem_forest",
           "parameters": {
             "altitude": 0.4,

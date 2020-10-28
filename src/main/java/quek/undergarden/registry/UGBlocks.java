@@ -71,6 +71,16 @@ public class UGBlocks {
     public static final RegistryObject<RotatedPillarBlock> stripped_grongle_hyphae = registerBlock("stripped_grongle_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
     public static final RegistryObject<Block> grongle_cap = registerBlock("grongle_cap", () -> new Block(AbstractBlock.Properties.from(Blocks.WARPED_WART_BLOCK).sound(SoundType.SHROOMLIGHT)));
 
+    //mushroom
+    public static final RegistryObject<Block> indigo_mushroom = registerBlock("indigo_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM).setLightLevel((state) -> 2)));
+    public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
+    public static final RegistryObject<Block> ink_mushroom = registerBlock("ink_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
+    public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
+
+    public static final RegistryObject<Block> blood_mushroom_cap = registerBlock("blood_mushroom_cap", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final RegistryObject<Block> blood_mushroom_globule = registerBlock("blood_mushroom_globule", () -> new Block(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK).sound(SoundType.SLIME)));
+    public static final RegistryObject<Block> blood_mushroom_stalk = registerBlock("blood_mushroom_stalk", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.MUSHROOM_STEM)));
+
     //plants
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", () -> new UnderbeanBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH)));
     public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", () -> new BlisterberryBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH).setLightLevel((state) -> 6)));
@@ -80,10 +90,6 @@ public class UGBlocks {
     public static final RegistryObject<Block> shimmerweed = registerBlock("shimmerweed", () -> new UGTallGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS).setLightLevel((state) -> 12)));
     public static final RegistryObject<Block> tall_shimmerweed = registerBlock("tall_shimmerweed", () -> new UGDoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS).setLightLevel((state) -> 14)));
     public static final RegistryObject<Block> ditchbulb_plant = registerBlock("ditchbulb_plant", () -> new DitchbulbBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS).setLightLevel((state) -> 6)));
-    public static final RegistryObject<Block> indigo_mushroom = registerBlock("indigo_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM).setLightLevel((state) -> 2)));
-    public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
-    public static final RegistryObject<Block> ink_mushroom = registerBlock("ink_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
-    public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<StemGrownBlock> gloomgourd = registerBlock("gloomgourd", () -> new GloomgourdBlock(AbstractBlock.Properties.from(Blocks.PUMPKIN)));
     public static final RegistryObject<Block> carved_gloomgourd = BLOCKS.register("carved_gloomgourd", () -> new CarvedGloomgourdBlock(AbstractBlock.Properties.from(Blocks.CARVED_PUMPKIN)));
     public static final RegistryObject<StemBlock> gloomgourd_stem = BLOCKS.register("gloomgourd_stem", () -> new UGStemBlock(gloomgourd.get(), AbstractBlock.Properties.from(Blocks.PUMPKIN_STEM)));
@@ -91,8 +97,8 @@ public class UGBlocks {
     public static final RegistryObject<Block> depthrock_pebbles = registerBlock("depthrock_pebbles", () -> new DepthrockPebblesBlock(AbstractBlock.Properties.from(depthrock.get()).doesNotBlockMovement().hardnessAndResistance(0F)));
     public static final RegistryObject<GlowingKelpTopBlock> glowing_kelp = BLOCKS.register("glowing_kelp", () -> new GlowingKelpTopBlock(AbstractBlock.Properties.from(Blocks.KELP).setLightLevel((state) -> 10)));
     public static final RegistryObject<Block> glowing_kelp_plant = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(AbstractBlock.Properties.from(Blocks.KELP_PLANT).setLightLevel((state) -> 10)));
-    public static final RegistryObject<Block> droopvine_top = BLOCKS.register("droopvine_top", () -> new DroopvineTopBlock(AbstractBlock.Properties.from(Blocks.WEEPING_VINES), Direction.DOWN, false, 0.1D));
-    public static final RegistryObject<Block> droopvine = BLOCKS.register("droopvine", () -> new DroopvineBlock(AbstractBlock.Properties.from(Blocks.WEEPING_VINES_PLANT), Direction.DOWN, false));
+    public static final RegistryObject<Block> droopvine_top = BLOCKS.register("droopvine_top", () -> new DroopvineTopBlock(AbstractBlock.Properties.from(Blocks.WEEPING_VINES).setLightLevel((state) -> 10), Direction.DOWN, false, 0.1D));
+    public static final RegistryObject<Block> droopvine = BLOCKS.register("droopvine", () -> new DroopvineBlock(AbstractBlock.Properties.from(Blocks.WEEPING_VINES_PLANT).setLightLevel(DroopvineBlock.glowIfGlowy()), Direction.DOWN, false));
 
     //ores
     public static final RegistryObject<Block> coal_ore = registerBlock("coal_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(depthrock.get()).harvestLevel(0)));

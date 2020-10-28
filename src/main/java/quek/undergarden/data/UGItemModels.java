@@ -112,6 +112,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.stripped_wigglewood_wood);
         itemBlock(UGBlocks.stripped_grongle_hyphae);
         itemBlock(UGBlocks.cracked_shiverstone_bricks);
+        itemBlock(UGBlocks.blood_mushroom_globule);
 
         normalItem(UGItems.catalyst_item);
         normalItem(UGItems.depthrock_pebble);

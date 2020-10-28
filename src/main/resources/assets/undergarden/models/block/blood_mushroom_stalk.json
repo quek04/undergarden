@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "undergarden:block/blood_mushroom_stalk"
+  }
+}

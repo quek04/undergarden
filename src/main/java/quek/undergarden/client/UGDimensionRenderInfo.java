@@ -5,8 +5,6 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import net.minecraft.client.world.DimensionRenderInfo.FogType;
-
 @OnlyIn(Dist.CLIENT)
 public class UGDimensionRenderInfo extends DimensionRenderInfo {
 

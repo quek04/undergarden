@@ -1,17 +1,21 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IGrowable;
+import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.feature.BigMushroomFeatureConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.FeatureSpreadConfig;
+import net.minecraft.world.gen.feature.Features;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGFeatures;
 
 import java.util.Random;
 
@@ -76,22 +80,40 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
         }
     }
 
-    public boolean bigShroom(ServerWorld world, BlockPos pos, BlockState state, Random rand) {
-        return false;
+    public boolean bigMushroom(ServerWorld world, BlockPos pos, BlockState state, Random rand) {
+        world.removeBlock(pos, false);
+        ConfiguredFeature<?, ?> configuredfeature;
+        if (this == UGBlocks.blood_mushroom.get()) {
+            configuredfeature = UGFeatures.blood_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.blood_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.blood_mushroom_stalk.get().getDefaultState()), 3));
+        } else {
+            if (this != Blocks.RED_MUSHROOM) {
+                world.setBlockState(pos, state, 3);
+                return false;
+            }
+
+            configuredfeature = Features.HUGE_RED_MUSHROOM;
+        }
+
+        if (configuredfeature.func_242765_a(world, world.getChunkProvider().getChunkGenerator(), rand, pos)) {
+            return true;
+        } else {
+            world.setBlockState(pos, state, 3);
+            return false;
+        }
     }
 
     @Override
     public boolean canGrow(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, boolean b) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean canUseBonemeal(World world, Random random, BlockPos blockPos, BlockState blockState) {
-        return false;
+        return (double)random.nextFloat() < 0.4D;
     }
 
     @Override
     public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
-        this.bigShroom(world, pos, state, rand);
+        this.bigMushroom(world, pos, state, rand);
     }
 }

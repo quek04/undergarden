@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.criterion.*;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.loot.functions.*;
 import quek.undergarden.block.UGDoublePlantBlock;
@@ -195,6 +196,9 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.cracked_shiverstone_bricks);
             dropSelf(UGBlocks.depthrock_wall);
             dropSelf(UGBlocks.shiverstone_wall);
+            this.registerLootTable(UGBlocks.blood_mushroom_cap.get(), (mushroom) -> droppingItemRarely(mushroom, UGBlocks.blood_mushroom.get()));
+            dropSelf(UGBlocks.blood_mushroom_globule);
+            dropAsSilk(UGBlocks.blood_mushroom_stalk);
         }
 
         @Override

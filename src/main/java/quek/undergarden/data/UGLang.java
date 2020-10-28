@@ -82,6 +82,10 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.stripped_grongle_hyphae, "Stripped Grongle Hyphae");
         addBlock(UGBlocks.grongle_cap, "Grongle Cap");
 
+        addBlock(UGBlocks.blood_mushroom_cap, "Blood Mushroom Cap");
+        addBlock(UGBlocks.blood_mushroom_globule, "Blood Mushroom Globule");
+        addBlock(UGBlocks.blood_mushroom_stalk, "Blood Mushroom Stalk");
+
         addBlock(UGBlocks.deepturf, "Deepturf");
         addBlock(UGBlocks.ashen_deepturf, "Ashen Deepturf");
         addBlock(UGBlocks.tall_deepturf, "Tall Deepturf");
