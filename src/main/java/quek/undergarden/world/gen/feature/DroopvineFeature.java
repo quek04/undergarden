@@ -11,7 +11,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import quek.undergarden.block.world.DroopvineBlock;
+import quek.undergarden.block.DroopvineBlock;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;

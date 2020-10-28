@@ -8,7 +8,7 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import quek.undergarden.block.world.GlowingKelpTopBlock;
+import quek.undergarden.block.GlowingKelpTopBlock;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;

@@ -1,4 +1,4 @@
-package quek.undergarden.block.world;
+package quek.undergarden.block;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowingFluidBlock;
