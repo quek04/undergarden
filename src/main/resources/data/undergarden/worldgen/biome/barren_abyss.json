@@ -94,19 +94,19 @@
     "monster": [
       {
         "type": "undergarden:rotling",
-        "weight": 5,
+        "weight": 100,
         "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "undergarden:rotwalker",
-        "weight": 5,
+        "weight": 100,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "undergarden:rotbeast",
-        "weight": 5,
+        "weight": 100,
         "minCount": 1,
         "maxCount": 2
       }

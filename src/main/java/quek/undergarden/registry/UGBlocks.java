@@ -74,9 +74,9 @@ public class UGBlocks {
 
     //plants
     public static final RegistryObject<Block> underbean_bush = BLOCKS.register("underbean_bush", () -> new UnderbeanBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH)));
-    public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", () -> new UnderbeanBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH).setLightLevel((state) -> 6)));
+    public static final RegistryObject<Block> blisterberry_bush = BLOCKS.register("blisterberry_bush", () -> new BlisterberryBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH).setLightLevel((state) -> 6)));
     public static final RegistryObject<Block> deepturf = registerBlock("deepturf", () -> new UGTallGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS)));
-    public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", () -> new UGTallGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS)));
+    public static final RegistryObject<Block> ashen_deepturf = registerBlock("ashen_deepturf", () -> new AshenTallDeepturfBlock(AbstractBlock.Properties.from(Blocks.GRASS)));
     public static final RegistryObject<Block> tall_deepturf = registerBlock("tall_deepturf", () -> new UGDoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS)));
     public static final RegistryObject<Block> shimmerweed = registerBlock("shimmerweed", () -> new UGTallGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS).setLightLevel((state) -> 12)));
     public static final RegistryObject<Block> tall_shimmerweed = registerBlock("tall_shimmerweed", () -> new UGDoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS).setLightLevel((state) -> 14)));

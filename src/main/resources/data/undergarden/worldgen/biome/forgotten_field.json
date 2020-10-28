@@ -102,25 +102,25 @@
     "monster": [
       {
         "type": "undergarden:stoneborn",
-        "weight": 10,
+        "weight": 100,
         "minCount": 1,
         "maxCount": 3
       },
       {
         "type": "undergarden:rotling",
-        "weight": 5,
+        "weight": 100,
         "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "undergarden:rotwalker",
-        "weight": 5,
+        "weight": 100,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "undergarden:rotbeast",
-        "weight": 5,
+        "weight": 100,
         "minCount": 1,
         "maxCount": 2
       }
@@ -128,19 +128,19 @@
     "creature": [
       {
         "type": "undergarden:dweller",
-        "weight": 100,
+        "weight": 5,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "undergarden:gloomper",
-        "weight": 100,
+        "weight": 5,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "undergarden:brute",
-        "weight": 100,
+        "weight": 5,
         "minCount": 4,
         "maxCount": 4
       }
@@ -148,7 +148,7 @@
     "ambient": [
       {
         "type": "undergarden:scintling",
-        "weight": 10,
+        "weight": 5,
         "minCount": 4,
         "maxCount": 8
       }
@@ -157,7 +157,7 @@
     "water_ambient": [
       {
         "type": "undergarden:gwibling",
-        "weight": 10,
+        "weight": 5,
         "minCount": 3,
         "maxCount": 6
       }
