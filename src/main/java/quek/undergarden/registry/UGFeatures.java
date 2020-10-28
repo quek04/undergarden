@@ -1,6 +1,5 @@
 package quek.undergarden.registry;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
@@ -13,17 +12,23 @@ import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.feature.template.RuleTest;
-import net.minecraft.world.gen.foliageplacer.*;
+import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.BushFoliagePlacer;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
-import net.minecraft.world.gen.trunkplacer.*;
+import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
+import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UGMod;
-import quek.undergarden.block.world.*;
-import quek.undergarden.world.gen.feature.*;
+import quek.undergarden.block.world.BlisterberryBushBlock;
+import quek.undergarden.block.world.UnderbeanBushBlock;
+import quek.undergarden.world.gen.feature.DroopvineFeature;
+import quek.undergarden.world.gen.feature.GlowingKelpFeature;
+import quek.undergarden.world.gen.feature.SmogVentFeature;
+import quek.undergarden.world.gen.feature.UGTreeFeature;
 
 public class UGFeatures {
 

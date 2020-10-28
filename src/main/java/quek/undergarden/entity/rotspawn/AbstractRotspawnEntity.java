@@ -63,9 +63,11 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
                 rotDweller.setCustomName(dweller.getCustomName());
                 rotDweller.setCustomNameVisible(dweller.isCustomNameVisible());
             }
-
             if (this.isNoDespawnRequired()) {
                 rotDweller.enablePersistence();
+            }
+            if(dweller.isChild()) {
+                rotDweller.setChild(true);
             }
             rotDweller.setInvulnerable(this.isInvulnerable());
             this.world.addEntity(rotDweller);
