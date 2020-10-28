@@ -86,8 +86,10 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.diamond_ore);
         itemBlock(UGBlocks.smogstem_fence_gate);
         itemBlock(UGBlocks.wigglewood_fence_gate);
+        wallInventory("depthrock_wall", new ResourceLocation(UGMod.MODID, "block/depthrock"));
         wallInventory("depthrock_brick_wall", new ResourceLocation(UGMod.MODID, "block/depthrock_bricks"));
         wallInventory("shiverstone_brick_wall", new ResourceLocation(UGMod.MODID, "block/shiverstone_bricks"));
+        wallInventory("shiverstone_wall", new ResourceLocation(UGMod.MODID, "block/shiverstone"));
         itemBlock(UGBlocks.coarse_deepsoil);
         itemBlock(UGBlocks.smogstem_pressure_plate);
         itemBlock(UGBlocks.wigglewood_pressure_plate);
@@ -109,6 +111,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.stripped_smogstem_wood);
         itemBlock(UGBlocks.stripped_wigglewood_wood);
         itemBlock(UGBlocks.stripped_grongle_hyphae);
+        itemBlock(UGBlocks.cracked_shiverstone_bricks);
 
         normalItem(UGItems.catalyst_item);
         normalItem(UGItems.depthrock_pebble);

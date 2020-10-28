@@ -193,6 +193,9 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.stripped_grongle_hyphae);
             this.registerLootTable(UGBlocks.gloomgourd_stem.get(), (stem) -> droppingByAge(stem, UGItems.gloomgourd_seeds.get()));
             this.registerLootTable(UGBlocks.gloomgourd_stem_attached.get(), (stem) -> dropSeedsForStem(stem, UGItems.gloomgourd_seeds.get()));
+            dropSelf(UGBlocks.cracked_shiverstone_bricks);
+            dropSelf(UGBlocks.depthrock_wall);
+            dropSelf(UGBlocks.shiverstone_wall);
         }
 
         @Override

@@ -50,6 +50,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.cracked_depthrock_bricks, "Cracked Depthrock Bricks");
         addBlock(UGBlocks.shiverstone, "Shiverstone");
         addBlock(UGBlocks.shiverstone_bricks, "Shiverstone Bricks");
+        addBlock(UGBlocks.cracked_shiverstone_bricks, "Cracked Shiverstone Bricks");
         addBlock(UGBlocks.goo, "Scintling Goo");
         addBlock(UGBlocks.smog_vent, "Smog Vent");
 
@@ -133,7 +134,9 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.shiverstone_slab, "Shiverstone Slab");
         addBlock(UGBlocks.shiverstone_brick_slab, "Shiverstone Brick Slab");
 
+        addBlock(UGBlocks.depthrock_wall, "Depthrock Wall");
         addBlock(UGBlocks.depthrock_brick_wall, "Depthrock Brick Wall");
+        addBlock(UGBlocks.shiverstone_wall, "Shiverstone Wall");
         addBlock(UGBlocks.shiverstone_brick_wall, "Shiverstone Brick Wall");
 
         addBlock(UGBlocks.smogstem_fence, "Smogstem Fence");

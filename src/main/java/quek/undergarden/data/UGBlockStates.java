@@ -66,6 +66,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         woodBlock(UGBlocks.stripped_smogstem_log, "stripped_smogstem_log");
         woodBlock(UGBlocks.stripped_wigglewood_log, "stripped_wigglewood_log");
         woodBlock(UGBlocks.stripped_grongle_stem, "stripped_grongle_stem");
+        normalBlock(UGBlocks.cracked_shiverstone_bricks);
 
         normalBlock(UGBlocks.cloggrum_block);
         normalBlock(UGBlocks.froststeel_block);
@@ -87,7 +88,9 @@ public class UGBlockStates extends UGBlockstateProvider {
         slab(UGBlocks.shiverstone_brick_slab, UGBlocks.shiverstone_bricks);
         slab(UGBlocks.grongle_slab, UGBlocks.grongle_planks);
 
+        wallBlock(UGBlocks.depthrock_wall.get(), new ResourceLocation(UGMod.MODID, "block/depthrock"));
         wallBlock(UGBlocks.depthrock_brick_wall.get(), new ResourceLocation(UGMod.MODID, "block/depthrock_bricks"));
+        wallBlock(UGBlocks.shiverstone_wall.get(), new ResourceLocation(UGMod.MODID, "block/shiverstone"));
         wallBlock(UGBlocks.shiverstone_brick_wall.get(), new ResourceLocation(UGMod.MODID, "block/shiverstone_bricks"));
 
         fence(UGBlocks.smogstem_fence, "smogstem_planks");

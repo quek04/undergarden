@@ -41,6 +41,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> cracked_depthrock_bricks = registerBlock("cracked_depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
     public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool()));
     public static final RegistryObject<Block> shiverstone_bricks = registerBlock("shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(shiverstone.get()).setRequiresTool()));
+    public static final RegistryObject<Block> cracked_shiverstone_bricks = registerBlock("cracked_shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(shiverstone.get())));
     public static final RegistryObject<Block> goo = registerBlock("goo", () -> new GooBlock(AbstractBlock.Properties.from(Blocks.SNOW).sound(SoundType.SLIME).notSolid().doesNotBlockMovement()));
     public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", () -> new SmogVentBlock(AbstractBlock.Properties.from(depthrock.get())));
 
@@ -133,7 +134,9 @@ public class UGBlocks {
     public static final RegistryObject<SlabBlock> shiverstone_slab = registerBlock("shiverstone_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UGBlocks.shiverstone.get()).notSolid()));
     public static final RegistryObject<SlabBlock> shiverstone_brick_slab = registerBlock("shiverstone_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.from(UGBlocks.shiverstone_bricks.get()).notSolid()));
 
+    public static final RegistryObject<WallBlock> depthrock_wall = registerBlock("depthrock_wall", () -> new WallBlock(AbstractBlock.Properties.from(depthrock.get()).notSolid()));
     public static final RegistryObject<WallBlock> depthrock_brick_wall = registerBlock("depthrock_brick_wall", () -> new WallBlock(AbstractBlock.Properties.from(depthrock_bricks.get()).notSolid()));
+    public static final RegistryObject<WallBlock> shiverstone_wall = registerBlock("shiverstone_wall", () -> new WallBlock(AbstractBlock.Properties.from(shiverstone.get()).notSolid()));
     public static final RegistryObject<WallBlock> shiverstone_brick_wall = registerBlock("shiverstone_brick_wall", () -> new WallBlock(AbstractBlock.Properties.from(shiverstone_bricks.get()).notSolid()));
 
     public static final RegistryObject<FenceBlock> smogstem_fence = registerBlock("smogstem_fence", () -> new FenceBlock(AbstractBlock.Properties.from(UGBlocks.smogstem_planks.get()).notSolid()));

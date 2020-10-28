@@ -260,7 +260,9 @@ public class UGRecipes extends UGRecipeProvider {
         makeSlab(UGBlocks.shiverstone_slab, UGBlocks.shiverstone).build(consumer);
         makeSlab(UGBlocks.shiverstone_brick_slab, UGBlocks.shiverstone_bricks).build(consumer);
 
+        makeWall(UGBlocks.depthrock_wall, UGBlocks.depthrock).build(consumer);
         makeWall(UGBlocks.depthrock_brick_wall, UGBlocks.depthrock_bricks).build(consumer);
+        makeWall(UGBlocks.shiverstone_wall, UGBlocks.shiverstone).build(consumer);
         makeWall(UGBlocks.shiverstone_brick_wall, UGBlocks.shiverstone_bricks).build(consumer);
 
         makeFence(UGBlocks.smogstem_fence, UGBlocks.smogstem_planks).build(consumer);
@@ -290,6 +292,9 @@ public class UGRecipes extends UGRecipeProvider {
         makePressurePlate(UGBlocks.grongle_pressure_plate, UGBlocks.grongle_planks).build(consumer);
         makePressurePlate(UGBlocks.depthrock_pressure_plate, UGBlocks.depthrock).build(consumer);
         makePressurePlate(UGBlocks.shiverstone_pressure_plate, UGBlocks.shiverstone).build(consumer);
+
+        smeltingRecipe(UGBlocks.cracked_depthrock_bricks.get(), UGBlocks.depthrock_bricks.get(), .1F).build(consumer, "smelt_depthrock_bricks");
+        smeltingRecipe(UGBlocks.cracked_shiverstone_bricks.get(), UGBlocks.shiverstone_bricks.get(), .1F).build(consumer, "smelt_shiverstone_bricks");
 
         smeltingRecipe(Items.IRON_INGOT, UGItems.catalyst_item.get(), 1F).build(consumer, "smelt_catalyst");
 
