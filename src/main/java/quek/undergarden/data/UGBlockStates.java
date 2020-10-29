@@ -68,6 +68,9 @@ public class UGBlockStates extends UGBlockstateProvider {
         woodBlock(UGBlocks.stripped_grongle_stem, "stripped_grongle_stem");
         normalBlock(UGBlocks.cracked_shiverstone_bricks);
         normalBlock(UGBlocks.blood_mushroom_globule);
+        crossBlock(UGBlocks.seeping_ink);
+        crossBlock(UGBlocks.mushroom_veil);
+        crossBlock(UGBlocks.mushroom_veil_top);
 
         normalBlock(UGBlocks.cloggrum_block);
         normalBlock(UGBlocks.froststeel_block);

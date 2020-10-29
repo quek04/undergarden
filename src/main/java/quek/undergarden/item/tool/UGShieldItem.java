@@ -8,6 +8,8 @@ import quek.undergarden.registry.UGShields;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.item.Item.Properties;
+
 public class UGShieldItem extends ShieldItem {
 
     private final UGShields shieldTiers;

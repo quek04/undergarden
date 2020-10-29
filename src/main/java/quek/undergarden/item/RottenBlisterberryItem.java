@@ -12,6 +12,8 @@ import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
 import quek.undergarden.registry.UGItemGroups;
 
+import net.minecraft.item.Item.Properties;
+
 public class RottenBlisterberryItem extends Item {
 
     public RottenBlisterberryItem() {

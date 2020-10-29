@@ -31,8 +31,8 @@ public class BigBloodMushroomFeature extends UGBigMushroomFeature {
     @Override //cap
     protected void func_225564_a_(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
         for(int i = p_225564_4_ - 3; i <= p_225564_4_; ++i) {
-            int j = i < p_225564_4_ ? config.field_227274_c_ : config.field_227274_c_ - 1;
-            int k = config.field_227274_c_ - 2;
+            int j = i < p_225564_4_ ? config.foliageRadius : config.foliageRadius - 1;
+            int k = config.foliageRadius - 2;
 
             for(int l = -j; l <= j; ++l) {
                 for(int i1 = -j; i1 <= j; ++i1) {
@@ -46,7 +46,7 @@ public class BigBloodMushroomFeature extends UGBigMushroomFeature {
                         posMutable.setAndOffset(pos, l, i, i1);
                         if (world.getBlockState(posMutable).canBeReplacedByLeaves(world, posMutable)) {
                             if(!(random.nextInt(10) == 0)) {
-                                this.setBlockState(world, posMutable, config.field_227272_a_.getBlockState(random, pos).with(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).with(HugeMushroomBlock.WEST, l < -k).with(HugeMushroomBlock.EAST, l > k).with(HugeMushroomBlock.NORTH, i1 < -k).with(HugeMushroomBlock.SOUTH, i1 > k));
+                                this.setBlockState(world, posMutable, config.capProvider.getBlockState(random, pos).with(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).with(HugeMushroomBlock.WEST, l < -k).with(HugeMushroomBlock.EAST, l > k).with(HugeMushroomBlock.NORTH, i1 < -k).with(HugeMushroomBlock.SOUTH, i1 > k));
                             }
                             else this.setBlockState(world, posMutable, UGBlocks.blood_mushroom_globule.get().getDefaultState());
                         }

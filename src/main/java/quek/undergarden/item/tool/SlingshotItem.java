@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
+import net.minecraft.item.Item.Properties;
+
 public class SlingshotItem extends ShootableItem {
 
     public static final Predicate<ItemStack> SLINGSHOT_AMMO = (stack) -> stack.getItem() == UGItems.depthrock_pebble.get();

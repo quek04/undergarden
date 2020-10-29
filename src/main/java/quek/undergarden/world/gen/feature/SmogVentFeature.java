@@ -20,7 +20,7 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator p_241855_2_, Random rand, BlockPos pos, NoFeatureConfig p_241855_5_) {
+    public boolean generate(ISeedReader worldIn, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
         while (worldIn.isAirBlock(pos) && pos.getY() > 2) {
             pos = pos.down();
         }

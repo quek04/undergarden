@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "undergarden:block/mushroom_veil"
+  }
+}

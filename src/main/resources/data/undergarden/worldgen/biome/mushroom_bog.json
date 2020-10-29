@@ -7,18 +7,18 @@
   "temperature_modifier": "none",
   "downfall": 0,
   "effects": {
-    "fog_color": 1186057,
-    "foliage_color": 5993819,
-    "grass_color": 2710308,
-    "sky_color": 1186057,
+    "fog_color": 1640729,
+    "foliage_color": 5908555,
+    "grass_color": 5908555,
+    "sky_color": 1640729,
     "water_color": 342306,
     "water_fog_color": 332810,
     "grass_color_modifier": "none",
     "particle": {
       "options": {
-        "type": "white_ash"
+        "type": "crimson_spore"
       },
-      "probability": 0.025
+      "probability": 0.05
     },
     "ambient_sound": "undergarden:ambient.undergarden_ambience",
     "music": {
@@ -59,8 +59,7 @@
     [],
     [],
     [
-      "minecraft:lake_water",
-      "undergarden:lake_virulent"
+      "undergarden:bog_lake_virulent"
     ],
     [],
     [
@@ -92,10 +91,11 @@
       "undergarden:bog_veil_patch",
       "undergarden:bog_ink_patch",
       "undergarden:bog_blood_patch",
-      "undergarden:spring",
-      "undergarden:virulent_spring",
+      "undergarden:bog_virulent_spring",
       "undergarden:huge_blood_mushroom",
-      "undergarden:huge_indigo_mushroom"
+      "undergarden:huge_indigo_mushroom",
+      "undergarden:huge_ink_mushroom",
+      "undergarden:huge_veil_mushroom"
     ]
   ],
   "starts": [
@@ -103,12 +103,6 @@
   ],
   "spawners": {
     "monster": [
-      {
-        "type": "undergarden:stoneborn",
-        "weight": 100,
-        "minCount": 1,
-        "maxCount": 3
-      },
       {
         "type": "undergarden:rotling",
         "weight": 100,
@@ -130,22 +124,10 @@
     ],
     "creature": [
       {
-        "type": "undergarden:dweller",
-        "weight": 5,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "undergarden:gloomper",
         "weight": 5,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "undergarden:brute",
-        "weight": 5,
-        "minCount": 4,
-        "maxCount": 4
+        "minCount": 8,
+        "maxCount": 8
       }
     ],
     "ambient": [

@@ -16,7 +16,7 @@ public class BigIndigoMushroomFeature extends UGBigMushroomFeature {
 
     @Override
     protected void func_225564_a_(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
-        int i = config.field_227274_c_;
+        int i = config.foliageRadius;
 
         for(int j = -i; j <= i; ++j) {
             for(int k = -i; k <= i; ++k) {
@@ -33,7 +33,7 @@ public class BigIndigoMushroomFeature extends UGBigMushroomFeature {
                         boolean flag7 = flag1 || flag5 && j == i - 1;
                         boolean flag8 = flag2 || flag4 && k == 1 - i;
                         boolean flag9 = flag3 || flag4 && k == i - 1;
-                        this.setBlockState(world, posMutable, config.field_227272_a_.getBlockState(random, pos).with(HugeMushroomBlock.WEST, flag6).with(HugeMushroomBlock.EAST, flag7).with(HugeMushroomBlock.NORTH, flag8).with(HugeMushroomBlock.SOUTH, flag9));
+                        this.setBlockState(world, posMutable, config.capProvider.getBlockState(random, pos).with(HugeMushroomBlock.WEST, flag6).with(HugeMushroomBlock.EAST, flag7).with(HugeMushroomBlock.NORTH, flag8).with(HugeMushroomBlock.SOUTH, flag9));
                      }
                 }
             }

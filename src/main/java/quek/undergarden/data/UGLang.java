@@ -85,6 +85,13 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.indigo_mushroom_cap, "Indigo Mushroom Cap");
         addBlock(UGBlocks.indigo_mushroom_stalk, "Indigo Mushroom Stalk");
 
+        addBlock(UGBlocks.veil_mushroom_cap, "Veil Mushroom Cap");
+        addBlock(UGBlocks.veil_mushroom_stalk, "Veil Mushroom Stalk");
+        addBlock(UGBlocks.mushroom_veil_top, "Mushroom Veil");
+
+        addBlock(UGBlocks.ink_mushroom_cap, "Ink Mushroom Cap");
+        addBlock(UGBlocks.seeping_ink, "Seeping Ink");
+
         addBlock(UGBlocks.blood_mushroom_cap, "Blood Mushroom Cap");
         addBlock(UGBlocks.blood_mushroom_globule, "Blood Mushroom Globule");
         addBlock(UGBlocks.blood_mushroom_stalk, "Blood Mushroom Stalk");
@@ -106,7 +113,6 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.glowing_kelp, "Glitterkelp");
         addBlock(UGBlocks.glowing_kelp_plant, "Glitterkelp");
         addBlock(UGBlocks.droopvine_top, "Droopvine");
-        //addBlock(UndergardenBlocks.droopvine, "Droopvine");
 
         addBlock(UGBlocks.coal_ore, "Undergarden Coal Ore");
         addBlock(UGBlocks.iron_ore, "Undergarden Iron Ore");

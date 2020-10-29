@@ -45,13 +45,13 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected boolean func_230358_a_(IChunk chunk, Function<BlockPos, Biome> p_230358_2_, BitSet p_230358_3_, Random rand, BlockPos.Mutable p_230358_5_, BlockPos.Mutable p_230358_6_, BlockPos.Mutable p_230358_7_, int p_230358_8_, int p_230358_9_, int p_230358_10_, int p_230358_11_, int p_230358_12_, int p_230358_13_, int y, int p_230358_15_, MutableBoolean p_230358_16_) {
+    protected boolean carveBlock(IChunk chunk, Function<BlockPos, Biome> p_230358_2_, BitSet carvingMask, Random rand, BlockPos.Mutable p_230358_5_, BlockPos.Mutable p_230358_6_, BlockPos.Mutable p_230358_7_, int p_230358_8_, int p_230358_9_, int p_230358_10_, int posX, int posZ, int p_230358_13_, int y, int p_230358_15_, MutableBoolean isSurface) {
         int i = p_230358_13_ | p_230358_15_ << 4 | y << 8;
-        if (p_230358_3_.get(i)) {
+        if (carvingMask.get(i)) {
             return false;
         } else {
-            p_230358_3_.set(i);
-            p_230358_5_.setPos(p_230358_11_, y, p_230358_12_);
+            carvingMask.set(i);
+            p_230358_5_.setPos(posX, y, posZ);
             BlockState blockstate = chunk.getBlockState(p_230358_5_);
             BlockState blockstate1 = chunk.getBlockState(p_230358_6_.setAndMove(p_230358_5_, Direction.UP));
 
@@ -62,7 +62,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                     chunk.setBlockState(p_230358_5_, UGBlocks.virulent_mix.get().getDefaultState(), false);
                 } else {
                     chunk.setBlockState(p_230358_5_, CAVE_AIR, false);
-                    if (p_230358_16_.isTrue()) {
+                    if (isSurface.isTrue()) {
                         p_230358_7_.setAndMove(p_230358_5_, Direction.DOWN);
                         if (chunk.getBlockState(p_230358_7_).isIn(UGBlocks.deepsoil.get())) {
                             chunk.setBlockState(p_230358_7_, p_230358_2_.apply(p_230358_5_).getGenerationSettings().getSurfaceBuilderConfig().getTop(), false);

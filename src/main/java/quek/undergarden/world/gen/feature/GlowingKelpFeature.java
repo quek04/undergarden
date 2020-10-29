@@ -20,7 +20,7 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
         int i = 0;
         int ocean_y = 32;
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());

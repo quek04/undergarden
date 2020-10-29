@@ -13,6 +13,8 @@ import quek.undergarden.entity.projectile.GooBallEntity;
 import quek.undergarden.registry.UGFoods;
 import quek.undergarden.registry.UGItemGroups;
 
+import net.minecraft.item.Item.Properties;
+
 public class GooBallItem extends Item {
 
     public GooBallItem() {

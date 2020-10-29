@@ -9,6 +9,8 @@ import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.IPlantable;
 import quek.undergarden.registry.UGBlocks;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UGBushBlock extends Block implements IPlantable {
 
     public UGBushBlock(Properties properties) {

@@ -14,6 +14,8 @@ import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSounds;
 
+import net.minecraft.item.Item.Properties;
+
 public class CatalystItem extends Item {
 
     public CatalystItem() {

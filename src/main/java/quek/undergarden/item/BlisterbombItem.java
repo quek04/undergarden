@@ -12,6 +12,8 @@ import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSounds;
 
+import net.minecraft.item.Item.Properties;
+
 public class BlisterbombItem extends Item {
 
     public BlisterbombItem() {

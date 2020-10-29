@@ -46,7 +46,7 @@ public class GrongletBlock extends UGBushBlock implements IGrowable {
 
     @Override
     public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
-        this.fungusConfig.get().func_242765_a(world, world.getChunkProvider().getChunkGenerator(), rand, pos);
+        this.fungusConfig.get().generate(world, world.getChunkProvider().getChunkGenerator(), rand, pos);
     }
 
     @Override

@@ -77,10 +77,10 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
      * Called when placing the tree feature.
      */
     private boolean place(IWorldGenerationReader generationReader, Random rand, BlockPos positionIn, Set<BlockPos> leaves, Set<BlockPos> logs, MutableBoundingBox boundingBoxIn, BaseTreeFeatureConfig configIn) {
-        int trunk = configIn.field_236678_g_.func_236917_a_(rand);
-        int leaf = configIn.field_236677_f_.func_230374_a_(rand, trunk, configIn);
+        int trunk = configIn.trunkPlacer.func_236917_a_(rand);
+        int leaf = configIn.foliagePlacer.func_230374_a_(rand, trunk, configIn);
         int k = trunk - leaf;
-        int l = configIn.field_236677_f_.func_230376_a_(rand, k);
+        int l = configIn.foliagePlacer.func_230376_a_(rand, k);
         BlockPos blockpos;
 
         blockpos = positionIn;
@@ -89,11 +89,11 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
             if (!isDeepturf(generationReader, blockpos.down()) || isWater(generationReader, positionIn)) {
                 return false;
             } else {
-                OptionalInt optionalint = configIn.field_236679_h_.func_236710_c_();
+                OptionalInt optionalint = configIn.minimumSize.func_236710_c_();
                 int l1 = this.func_241521_a_(generationReader, trunk, blockpos, configIn);
                 if (l1 >= trunk || optionalint.isPresent() && l1 >= optionalint.getAsInt()) {
-                    List<FoliagePlacer.Foliage> list = configIn.field_236678_g_.func_230382_a_(generationReader, rand, l1, blockpos, leaves, boundingBoxIn, configIn);
-                    list.forEach((foliage) -> configIn.field_236677_f_.func_236752_a_(generationReader, rand, configIn, l1, foliage, leaf, l, logs, boundingBoxIn));
+                    List<FoliagePlacer.Foliage> list = configIn.trunkPlacer.func_230382_a_(generationReader, rand, l1, blockpos, leaves, boundingBoxIn, configIn);
+                    list.forEach((foliage) -> configIn.foliagePlacer.func_236752_a_(generationReader, rand, configIn, l1, foliage, leaf, l, logs, boundingBoxIn));
                     return true;
                 } else {
                     return false;
@@ -109,12 +109,12 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
         for(int i = 0; i <= p_241521_2_ + 1; ++i) {
-            int j = p_241521_4_.field_236679_h_.func_230369_a_(p_241521_2_, i);
+            int j = p_241521_4_.minimumSize.func_230369_a_(p_241521_2_, i);
 
             for(int k = -j; k <= j; ++k) {
                 for(int l = -j; l <= j; ++l) {
                     blockpos$mutable.setAndOffset(p_241521_3_, k, i, l);
-                    if (!func_236410_c_(p_241521_1_, blockpos$mutable) || !p_241521_4_.field_236681_j_ && isVine(p_241521_1_, blockpos$mutable)) {
+                    if (!func_236410_c_(p_241521_1_, blockpos$mutable) || !p_241521_4_.ignoreVines && isVine(p_241521_1_, blockpos$mutable)) {
                         return i - 2;
                     }
                 }
@@ -129,25 +129,25 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
     }
 
     @Override
-    public final boolean func_241855_a(ISeedReader p_241855_1_, ChunkGenerator p_241855_2_, Random p_241855_3_, BlockPos p_241855_4_, BaseTreeFeatureConfig p_241855_5_) {
+    public final boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, BaseTreeFeatureConfig config) {
         Set<BlockPos> set = Sets.newHashSet();
         Set<BlockPos> set1 = Sets.newHashSet();
         Set<BlockPos> set2 = Sets.newHashSet();
         MutableBoundingBox mutableboundingbox = MutableBoundingBox.getNewBoundingBox();
-        boolean flag = this.place(p_241855_1_, p_241855_3_, p_241855_4_, set, set1, mutableboundingbox, p_241855_5_);
+        boolean flag = this.place(reader, rand, pos, set, set1, mutableboundingbox, config);
         if (mutableboundingbox.minX <= mutableboundingbox.maxX && flag && !set.isEmpty()) {
-            if (!p_241855_5_.decorators.isEmpty()) {
+            if (!config.decorators.isEmpty()) {
                 List<BlockPos> list = Lists.newArrayList(set);
                 List<BlockPos> list1 = Lists.newArrayList(set1);
                 list.sort(Comparator.comparingInt(Vector3i::getY));
                 list1.sort(Comparator.comparingInt(Vector3i::getY));
-                p_241855_5_.decorators.forEach((p_236405_6_) -> {
-                    p_236405_6_.func_225576_a_(p_241855_1_, p_241855_3_, list, list1, set2, mutableboundingbox);
+                config.decorators.forEach((p_236405_6_) -> {
+                    p_236405_6_.func_225576_a_(reader, rand, list, list1, set2, mutableboundingbox);
                 });
             }
 
-            VoxelShapePart voxelshapepart = this.func_236403_a_(p_241855_1_, mutableboundingbox, set, set2);
-            Template.func_222857_a(p_241855_1_, 3, voxelshapepart, mutableboundingbox.minX, mutableboundingbox.minY, mutableboundingbox.minZ);
+            VoxelShapePart voxelshapepart = this.func_236403_a_(reader, mutableboundingbox, set, set2);
+            Template.func_222857_a(reader, 3, voxelshapepart, mutableboundingbox.minX, mutableboundingbox.minY, mutableboundingbox.minZ);
             return true;
         } else {
             return false;

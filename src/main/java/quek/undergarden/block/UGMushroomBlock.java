@@ -85,7 +85,13 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
             feature = UGFeatures.blood_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.blood_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.blood_mushroom_stalk.get().getDefaultState()), 3));
         }
         else if(this == UGBlocks.indigo_mushroom.get()) {
-            feature = UGFeatures.indigo_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_stalk.get().getDefaultState()), 4));
+            feature = UGFeatures.indigo_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_stalk.get().getDefaultState()), 3));
+        }
+        else if(this == UGBlocks.ink_mushroom.get()) {
+            feature = UGFeatures.ink_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.ink_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()), 5));
+        }
+        else if(this == UGBlocks.veil_mushroom.get()) {
+            feature = UGFeatures.veil_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.veil_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.veil_mushroom_stalk.get().getDefaultState()), 2));
         }
         else {
             if (this != Blocks.RED_MUSHROOM) {
@@ -96,7 +102,7 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
             feature = Features.HUGE_RED_MUSHROOM;
         }
 
-        if (feature.func_242765_a(world, world.getChunkProvider().getChunkGenerator(), rand, pos)) {
+        if (feature.generate(world, world.getChunkProvider().getChunkGenerator(), rand, pos)) {
             return true;
         } else {
             world.setBlockState(pos, state, 3);

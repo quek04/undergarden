@@ -37,7 +37,7 @@ public abstract class UGBigMushroomFeature extends AbstractBigMushroomFeature {
             //}
             //else {
                 for(int j = 0; j <= p_227209_3_; ++j) {
-                    int k = this.func_225563_a_(-1, -1, config.field_227274_c_, j);
+                    int k = this.func_225563_a_(-1, -1, config.foliageRadius, j);
 
                     for(int l = -k; l <= k; ++l) {
                         for(int i1 = -k; i1 <= k; ++i1) {
@@ -57,7 +57,7 @@ public abstract class UGBigMushroomFeature extends AbstractBigMushroomFeature {
     }
 
     @Override
-    public boolean func_241855_a(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random random, BlockPos pos, BigMushroomFeatureConfig config) {
+    public boolean generate(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random random, BlockPos pos, BigMushroomFeatureConfig config) {
         int i = this.func_227211_a_(random);
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
         if (!this.func_227209_a_(seedReader, pos, i, blockpos$mutable, config)) {

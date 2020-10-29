@@ -24,6 +24,8 @@ import quek.undergarden.registry.UGItems;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import net.minecraft.item.Item.Properties;
+
 @Mod.EventBusSubscriber
 public class UGAxeItem extends AxeItem {
     public UGAxeItem(IItemTier tier, float attack) {

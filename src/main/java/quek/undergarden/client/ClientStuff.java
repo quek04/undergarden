@@ -71,6 +71,9 @@ public class ClientStuff {
         render(UGBlocks.grongle_door, cutout);
         render(UGBlocks.grongle_trapdoor, cutout);
         render(UGBlocks.virulent_mix, translucent);
+        render(UGBlocks.seeping_ink, cutout);
+        render(UGBlocks.mushroom_veil, cutout);
+        render(UGBlocks.mushroom_veil_top, cutout);
 
         RenderTypeLookup.setRenderLayer(UGFluids.virulent_mix_source.get(), translucent);
         RenderTypeLookup.setRenderLayer(UGFluids.virulent_mix_flowing.get(), translucent);
