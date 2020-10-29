@@ -1,22 +1,20 @@
 package quek.undergarden.block;
 
-import com.google.common.cache.LoadingCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.entity.Entity;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.pattern.BlockPattern;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.*;
+import net.minecraft.util.Direction;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.Rotation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -26,18 +24,17 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.eventbus.api.Cancelable;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGSounds;
 import quek.undergarden.registry.UGTags;
-//import quek.undergarden.world.UndergardenTeleporter;
+import quek.undergarden.world.UGTeleporter;
 
 import javax.annotation.Nullable;
 import java.util.Random;
-
-import quek.undergarden.world.UGTeleporter;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class UndergardenPortalBlock extends Block {
 
@@ -64,11 +61,6 @@ public class UndergardenPortalBlock extends Block {
             default:
                 return X_AABB;
         }
-    }
-
-    @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-
     }
 
     public boolean trySpawnPortal(IWorld worldIn, BlockPos pos) {
