@@ -75,7 +75,7 @@ public abstract class UGBigMushroomFeature extends AbstractBigMushroomFeature {
     @Override
     protected abstract void func_225564_a_(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config);
 
-    @Override
+    @Override //stalk size
     protected int func_227211_a_(Random random) {
         int i = random.nextInt(6) + 6;
         if (random.nextInt(12) == 0) {

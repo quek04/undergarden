@@ -10,9 +10,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.BigMushroomFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.FeatureSpreadConfig;
 import net.minecraft.world.gen.feature.Features;
-import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGFeatures;
@@ -82,19 +80,23 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
 
     public boolean bigMushroom(ServerWorld world, BlockPos pos, BlockState state, Random rand) {
         world.removeBlock(pos, false);
-        ConfiguredFeature<?, ?> configuredfeature;
+        ConfiguredFeature<?, ?> feature;
         if (this == UGBlocks.blood_mushroom.get()) {
-            configuredfeature = UGFeatures.blood_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.blood_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.blood_mushroom_stalk.get().getDefaultState()), 3));
-        } else {
+            feature = UGFeatures.blood_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.blood_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.blood_mushroom_stalk.get().getDefaultState()), 3));
+        }
+        else if(this == UGBlocks.indigo_mushroom.get()) {
+            feature = UGFeatures.indigo_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_stalk.get().getDefaultState()), 4));
+        }
+        else {
             if (this != Blocks.RED_MUSHROOM) {
                 world.setBlockState(pos, state, 3);
                 return false;
             }
 
-            configuredfeature = Features.HUGE_RED_MUSHROOM;
+            feature = Features.HUGE_RED_MUSHROOM;
         }
 
-        if (configuredfeature.func_242765_a(world, world.getChunkProvider().getChunkGenerator(), rand, pos)) {
+        if (feature.func_242765_a(world, world.getChunkProvider().getChunkGenerator(), rand, pos)) {
             return true;
         } else {
             world.setBlockState(pos, state, 3);

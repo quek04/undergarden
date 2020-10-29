@@ -77,6 +77,9 @@ public class UGBlocks {
     public static final RegistryObject<Block> ink_mushroom = registerBlock("ink_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
 
+    public static final RegistryObject<Block> indigo_mushroom_cap = registerBlock("indigo_mushroom_cap", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final RegistryObject<Block> indigo_mushroom_stalk = registerBlock("indigo_mushroom_stalk", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
+
     public static final RegistryObject<Block> blood_mushroom_cap = registerBlock("blood_mushroom_cap", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> blood_mushroom_globule = registerBlock("blood_mushroom_globule", () -> new Block(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK).sound(SoundType.SLIME)));
     public static final RegistryObject<Block> blood_mushroom_stalk = registerBlock("blood_mushroom_stalk", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.MUSHROOM_STEM)));

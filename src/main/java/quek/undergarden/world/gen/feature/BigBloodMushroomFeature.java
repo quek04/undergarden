@@ -10,9 +10,9 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class BloodMushroomFeature extends UGBigMushroomFeature {
+public class BigBloodMushroomFeature extends UGBigMushroomFeature {
 
-    public BloodMushroomFeature(Codec<BigMushroomFeatureConfig> codec) {
+    public BigBloodMushroomFeature(Codec<BigMushroomFeatureConfig> codec) {
         super(codec);
     }
 
@@ -54,16 +54,5 @@ public class BloodMushroomFeature extends UGBigMushroomFeature {
                 }
             }
         }
-    }
-
-    @Override //stalk
-    protected void func_227210_a_(IWorld world, Random random, BlockPos pos, BigMushroomFeatureConfig config, int p_227210_5_, BlockPos.Mutable posMutable) {
-        for(int i = 0; i < p_227210_5_; ++i) {
-            posMutable.setPos(pos).move(Direction.UP, i);
-            if (world.getBlockState(posMutable).canBeReplacedByLogs(world, posMutable)) {
-                this.setBlockState(world, posMutable, config.field_227273_b_.getBlockState(random, pos));
-            }
-        }
-
     }
 }

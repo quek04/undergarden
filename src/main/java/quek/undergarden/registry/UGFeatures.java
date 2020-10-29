@@ -35,7 +35,9 @@ public class UGFeatures {
             "undergarden_tree", () -> new UGTreeFeature(BaseTreeFeatureConfig.CODEC));
 
     public static final RegistryObject<Feature<BigMushroomFeatureConfig>> blood_mushroom = FEATURES.register(
-            "blood_mushroom", () -> new BloodMushroomFeature(BigMushroomFeatureConfig.field_236528_a_));
+            "blood_mushroom", () -> new BigBloodMushroomFeature(BigMushroomFeatureConfig.field_236528_a_));
+    public static final RegistryObject<Feature<BigMushroomFeatureConfig>> indigo_mushroom = FEATURES.register(
+            "indigo_mushroom", () -> new BigIndigoMushroomFeature(BigMushroomFeatureConfig.field_236528_a_));
 
     public static final RegistryObject<Feature<NoFeatureConfig>> glowing_kelp = FEATURES.register(
             "glowing_kelp", () -> new GlowingKelpFeature(NoFeatureConfig.field_236558_a_));
@@ -112,6 +114,8 @@ public class UGFeatures {
 
         register("huge_blood_mushroom", blood_mushroom.get().withConfiguration(
                 new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.blood_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.blood_mushroom_stalk.get().getDefaultState()), 3)).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(2))));
+        register("huge_indigo_mushroom", indigo_mushroom.get().withConfiguration(
+                new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_stalk.get().getDefaultState()), 4)).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(2))));
 
         register("glowing_kelp", glowing_kelp.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).func_242733_d(32).func_242728_a().func_242731_b(100));
         register("smog_vent", smog_vent.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242897_C.configure(new FeatureSpreadConfig(8))));
