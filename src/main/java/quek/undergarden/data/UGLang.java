@@ -182,7 +182,6 @@ public class UGLang extends LanguageProvider {
 
         addItem(UGItems.catalyst_item, "Catalyst");
         addItem(UGItems.depthrock_pebble, "Depthrock Pebble");
-        addItem(UGItems.smogstem_stick, "Smogstem Stick");
         addItem(UGItems.twistytwig, "Twistytwig");
         addItem(UGItems.cloggrum_ingot, "Cloggrum Ingot");
         addItem(UGItems.cloggrum_nugget, "Cloggrum Nugget");

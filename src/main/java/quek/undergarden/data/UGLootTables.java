@@ -102,7 +102,7 @@ public class UGLootTables extends LootTableProvider {
             dropWithFortune(UGBlocks.otherside_utherium_ore, UGItems.utherium_chunk);
             dropSelf(UGBlocks.regalium_ore);
             dropSelf(UGBlocks.smogstem_sapling);
-            dropChanceAdditional(UGBlocks.smogstem_leaves, UGBlocks.smogstem_sapling, UGItems.smogstem_stick, DEFAULT_SAPLING_DROP_RATES);
+            withChanceAdditional(UGBlocks.smogstem_leaves.get(), UGBlocks.smogstem_sapling.get(), Items.STICK, DEFAULT_SAPLING_DROP_RATES);
             dropSelf(UGBlocks.wigglewood_sapling);
             dropChanceAdditional(UGBlocks.wigglewood_leaves, UGBlocks.wigglewood_sapling, UGItems.twistytwig, DEFAULT_SAPLING_DROP_RATES);
             dropSelf(UGBlocks.indigo_mushroom);

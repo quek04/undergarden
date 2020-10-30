@@ -18,7 +18,6 @@ public class UGItems {
     //normal stuff
     public static final RegistryObject<Item> catalyst_item = ITEMS.register("catalyst", CatalystItem::new);
     public static final RegistryObject<Item> depthrock_pebble = ITEMS.register("depthrock_pebble", DepthrockPebbleItem::new);
-    public static final RegistryObject<Item> smogstem_stick = ITEMS.register("smogstem_stick", UndergardenItem::new);
     public static final RegistryObject<Item> twistytwig = ITEMS.register("twistytwig", UndergardenItem::new);
     public static final RegistryObject<Item> cloggrum_ingot = ITEMS.register("cloggrum_ingot", UndergardenItem::new);
     public static final RegistryObject<Item> cloggrum_nugget = ITEMS.register("cloggrum_nugget", UndergardenItem::new);

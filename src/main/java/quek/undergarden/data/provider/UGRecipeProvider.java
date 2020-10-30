@@ -11,6 +11,7 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.IItemProvider;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.common.data.ForgeRecipeProvider;
 import quek.undergarden.registry.UGItems;
@@ -88,7 +89,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("M/M")
                 .patternLine("M/M")
                 .key('M', materialIn.get())
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
@@ -97,7 +98,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("/M/")
                 .patternLine("/M/")
                 .key('M', materialIn.get())
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
@@ -178,7 +179,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("#")
                 .patternLine("/")
                 .key('#', materialIn.get())
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
@@ -188,7 +189,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("#")
                 .patternLine("/")
                 .key('#', materialIn)
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn, hasItem(materialIn));
     }
 
@@ -198,7 +199,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine(" / ")
                 .patternLine(" / ")
                 .key('#', materialIn.get())
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
@@ -208,7 +209,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine(" / ")
                 .patternLine(" / ")
                 .key('#', materialIn)
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn, hasItem(materialIn));
     }
 
@@ -218,7 +219,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("#/")
                 .patternLine(" /")
                 .key('#', materialIn.get())
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
@@ -228,7 +229,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("#/")
                 .patternLine(" /")
                 .key('#', materialIn)
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn, hasItem(materialIn));
     }
 
@@ -238,7 +239,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("/")
                 .patternLine("/")
                 .key('#', materialIn.get())
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
@@ -248,7 +249,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("/")
                 .patternLine("/")
                 .key('#', materialIn)
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn, hasItem(materialIn));
     }
 
@@ -258,7 +259,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine(" /")
                 .patternLine(" /")
                 .key('#', materialIn.get())
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
@@ -268,7 +269,7 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine(" /")
                 .patternLine(" /")
                 .key('#', materialIn)
-                .key('/', UGItems.smogstem_stick.get())
+                .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn, hasItem(materialIn));
     }
 

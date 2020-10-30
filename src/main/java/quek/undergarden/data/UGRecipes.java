@@ -7,6 +7,7 @@ import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.Tags;
 import quek.undergarden.UGMod;
 import quek.undergarden.data.provider.UGRecipeProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -38,13 +39,6 @@ public class UGRecipes extends UGRecipeProvider {
         makeWood(UGBlocks.grongle_hyphae, UGBlocks.grongle_stem).build(consumer);
         makeWood(UGBlocks.stripped_grongle_hyphae, UGBlocks.stripped_grongle_stem).build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.smogstem_stick.get(), 4)
-                .patternLine("P ")
-                .patternLine(" P")
-                .key('P', UGBlocks.smogstem_planks.get())
-                .addCriterion("has_smogstem_planks", hasItem(UGBlocks.smogstem_planks.get()))
-                .build(consumer);
-
         ShapedRecipeBuilder.shapedRecipe(UGItems.twistytwig.get(), 4)
                 .patternLine("P ")
                 .patternLine(" P")
@@ -56,9 +50,9 @@ public class UGRecipes extends UGRecipeProvider {
                 .patternLine("STS")
                 .patternLine("S S")
                 .patternLine("S S")
-                .key('S', UGItems.smogstem_stick.get())
+                .key('S', Tags.Items.RODS_WOODEN)
                 .key('T', UGItems.twistytwig.get())
-                .addCriterion("has_smogstem_stick", hasItem(UGItems.smogstem_stick.get()))
+                .addCriterion("has_stick", hasItem(Tags.Items.RODS_WOODEN))
                 .addCriterion("has_twistytwig", hasItem(UGItems.twistytwig.get()))
                 .build(consumer, name("undergarden_scaffolding"));
 
@@ -96,9 +90,9 @@ public class UGRecipes extends UGRecipeProvider {
                 .patternLine("STS")
                 .patternLine("SSS")
                 .patternLine(" S ")
-                .key('S', UGItems.smogstem_stick.get())
+                .key('S', Tags.Items.RODS_WOODEN)
                 .key('T', UGItems.twistytwig.get())
-                .addCriterion("has_smogstem_stick", hasItem(UGItems.smogstem_stick.get()))
+                .addCriterion("has_stick", hasItem(Tags.Items.RODS_WOODEN))
                 .addCriterion("has_twistytwig", hasItem(UGItems.twistytwig.get()))
                 .build(consumer);
 
@@ -125,27 +119,18 @@ public class UGRecipes extends UGRecipeProvider {
                 .patternLine("C")
                 .patternLine("S")
                 .key('C', UGItems.utheric_shard.get())
-                .key('S', UGItems.smogstem_stick.get())
+                .key('S', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_shard", hasItem(UGItems.utheric_shard.get()))
-                .addCriterion("has_smogstem_stick", hasItem(UGItems.smogstem_stick.get()))
+                .addCriterion("has_stick", hasItem(Tags.Items.RODS_WOODEN))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.smogstem_torch.get(), 4)
-                .patternLine("C")
-                .patternLine("S")
-                .key('C', Items.COAL)
-                .key('S', UGItems.smogstem_stick.get())
-                .addCriterion("has_coal", hasItem(Items.COAL))
-                .addCriterion("has_smogstem_stick", hasItem(UGItems.smogstem_stick.get()))
-                .build(consumer);
-
-        ShapedRecipeBuilder.shapedRecipe(UGItems.smogstem_torch.get(), 2)
+        ShapedRecipeBuilder.shapedRecipe(Blocks.TORCH, 2)
                 .patternLine("D")
                 .patternLine("S")
                 .key('D', UGItems.ditchbulb.get())
-                .key('S', UGItems.smogstem_stick.get())
+                .key('S', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_ditchbulb", hasItem(UGItems.ditchbulb.get()))
-                .addCriterion("has_smogstem_stick", hasItem(UGItems.smogstem_stick.get()))
+                .addCriterion("has_stick", hasItem(Tags.Items.RODS_WOODEN))
                 .build(consumer, name("smogstem_torch_ditchbulb"));
 
         ShapedRecipeBuilder.shapedRecipe(UGItems.catalyst_item.get())

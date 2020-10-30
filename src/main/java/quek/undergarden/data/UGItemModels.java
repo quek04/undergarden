@@ -116,7 +116,6 @@ public class UGItemModels extends UGItemModelProvider {
 
         normalItem(UGItems.catalyst_item);
         normalItem(UGItems.depthrock_pebble);
-        toolItem(UGItems.smogstem_stick);
         normalItem(UGItems.twistytwig);
         normalItem(UGItems.cloggrum_ingot);
         normalItem(UGItems.cloggrum_nugget);
