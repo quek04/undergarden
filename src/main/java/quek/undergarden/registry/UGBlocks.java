@@ -39,10 +39,10 @@ public class UGBlocks {
     public static final RegistryObject<Block> grongle_planks = registerBlock("grongle_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.CRIMSON_PLANKS)));
     public static final RegistryObject<Block> depthrock_bricks = registerBlock("depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
     public static final RegistryObject<Block> cracked_depthrock_bricks = registerBlock("cracked_depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(depthrock.get()).setRequiresTool()));
-    public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool()));
+    public static final RegistryObject<Block> shiverstone = registerBlock("shiverstone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool().slipperiness(0.98F)));
     public static final RegistryObject<Block> shiverstone_bricks = registerBlock("shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(shiverstone.get()).setRequiresTool()));
     public static final RegistryObject<Block> cracked_shiverstone_bricks = registerBlock("cracked_shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(shiverstone.get())));
-    public static final RegistryObject<Block> goo = registerBlock("goo", () -> new GooBlock(AbstractBlock.Properties.from(Blocks.SNOW).sound(SoundType.SLIME).notSolid().doesNotBlockMovement()));
+    public static final RegistryObject<Block> goo = registerBlock("goo", () -> new GooBlock(AbstractBlock.Properties.from(Blocks.SNOW).sound(SoundType.SLIME).notSolid().doesNotBlockMovement().harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", () -> new SmogVentBlock(AbstractBlock.Properties.from(depthrock.get())));
 
     //otherside
