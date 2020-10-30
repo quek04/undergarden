@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:ink_mushroom"
+    }
+  ],
+  "result": {
+    "item": "minecraft:black_dye"
+  }
+}

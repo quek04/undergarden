@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:blood_mushroom_globule"
+    }
+  ],
+  "result": {
+    "item": "minecraft:red_dye",
+    "count": 9
+  }
+}

@@ -179,6 +179,31 @@ public class UGRecipes extends UGRecipeProvider {
                 .addCriterion("has_tusk", hasItem(UGItems.brute_tusk.get()))
                 .build(consumer, name("tusk_to_bonemeal"));
 
+        ShapelessRecipeBuilder.shapelessRecipe(Items.RED_DYE, 9)
+                .addIngredient(UGBlocks.blood_mushroom_globule.get())
+                .addCriterion("has_globule", hasItem(UGBlocks.blood_mushroom_globule.get()))
+                .build(consumer, name("globule_to_dye"));
+
+        ShapelessRecipeBuilder.shapelessRecipe(Items.RED_DYE)
+                .addIngredient(UGBlocks.blood_mushroom.get())
+                .addCriterion("has_blood_mushroom", hasItem(UGBlocks.blood_mushroom.get()))
+                .build(consumer, name("blood_mushroom_to_dye"));
+
+        ShapelessRecipeBuilder.shapelessRecipe(Items.BLACK_DYE)
+                .addIngredient(UGBlocks.ink_mushroom.get())
+                .addCriterion("has_ink_mushroom", hasItem(UGBlocks.ink_mushroom.get()))
+                .build(consumer, name("ink_mushroom_to_dye"));
+
+        ShapelessRecipeBuilder.shapelessRecipe(Items.BLUE_DYE)
+                .addIngredient(UGBlocks.indigo_mushroom.get())
+                .addCriterion("has_indigo_mushroom", hasItem(UGBlocks.indigo_mushroom.get()))
+                .build(consumer, name("indigo_mushroom_to_dye"));
+
+        ShapelessRecipeBuilder.shapelessRecipe(Items.WHITE_DYE)
+                .addIngredient(UGBlocks.veil_mushroom.get())
+                .addCriterion("has_veil_mushroom", hasItem(UGBlocks.veil_mushroom.get()))
+                .build(consumer, name("veil_mushroom_to_dye"));
+
         makeShardToIngot().build(consumer, name("shard_to_ingot"));
 
         makeIngotToBlock(UGBlocks.cloggrum_block, UGItems.cloggrum_ingot).build(consumer);
