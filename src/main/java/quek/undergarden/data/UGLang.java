@@ -206,12 +206,6 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.masticated_chestplate, "Masticated Chestplate");
         addItem(UGItems.cloggrum_battleaxe, "Cloggrum Battle Axe");
 
-        addItem(UGItems.smogstem_sword, "Smogstem Sword");
-        addItem(UGItems.smogstem_pickaxe, "Smogstem Pickaxe");
-        addItem(UGItems.smogstem_axe, "Smogstem Axe");
-        addItem(UGItems.smogstem_shovel, "Smogstem Shovel");
-        addItem(UGItems.smogstem_hoe, "Smogstem Hoe");
-
         addItem(UGItems.cloggrum_sword, "Cloggrum Sword");
         addItem(UGItems.cloggrum_pickaxe, "Cloggrum Pickaxe");
         addItem(UGItems.cloggrum_axe, "Cloggrum Axe");

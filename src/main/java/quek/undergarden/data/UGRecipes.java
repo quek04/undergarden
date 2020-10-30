@@ -212,27 +212,22 @@ public class UGRecipes extends UGRecipeProvider {
         makeNuggetToIngot(UGItems.utherium_ingot, UGItems.utherium_chunk).build(consumer, name("utherium_chunk_to_ingot"));
         makeNuggetToIngot(UGItems.regalium_ingot, UGItems.regalium_nugget).build(consumer, name("regalium_chunk_to_ingot"));
 
-        makeTagSword(UGItems.smogstem_sword, UGTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_sword"));
-        makeSword(UGItems.cloggrum_sword, UGItems.cloggrum_ingot).build(consumer, name("cloggrum_sword"));
-        makeSword(UGItems.froststeel_sword, UGItems.froststeel_ingot).build(consumer, name("froststeel_sword"));
-        makeSword(UGItems.utheric_sword, UGItems.utherium_ingot).build(consumer, name("utheric_sword"));
+        makeSword(UGItems.cloggrum_sword, UGItems.cloggrum_ingot).build(consumer);
+        makeSword(UGItems.froststeel_sword, UGItems.froststeel_ingot).build(consumer);
+        makeSword(UGItems.utheric_sword, UGItems.utherium_ingot).build(consumer);
 
-        makeTagPickaxe(UGItems.smogstem_pickaxe, UGTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_pickaxe"));
-        makePickaxe(UGItems.cloggrum_pickaxe, UGItems.cloggrum_ingot).build(consumer, name("cloggrum_pickaxe"));
-        makePickaxe(UGItems.froststeel_pickaxe, UGItems.froststeel_ingot).build(consumer, name("froststeel_pickaxe"));
-        makePickaxe(UGItems.utheric_pickaxe, UGItems.utherium_ingot).build(consumer, name("utheric_pickaxe"));
+        makePickaxe(UGItems.cloggrum_pickaxe, UGItems.cloggrum_ingot).build(consumer);
+        makePickaxe(UGItems.froststeel_pickaxe, UGItems.froststeel_ingot).build(consumer);
+        makePickaxe(UGItems.utheric_pickaxe, UGItems.utherium_ingot).build(consumer);
 
-        makeTagAxe(UGItems.smogstem_axe, UGTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_axe"));
-        makeAxe(UGItems.cloggrum_axe, UGItems.cloggrum_ingot).build(consumer, name("cloggrum_axe"));
-        makeAxe(UGItems.froststeel_axe, UGItems.froststeel_ingot).build(consumer, name("froststeel_axe"));
-        makeAxe(UGItems.utheric_axe, UGItems.utherium_ingot).build(consumer, name("utheric_axe"));
+        makeAxe(UGItems.cloggrum_axe, UGItems.cloggrum_ingot).build(consumer);
+        makeAxe(UGItems.froststeel_axe, UGItems.froststeel_ingot).build(consumer);
+        makeAxe(UGItems.utheric_axe, UGItems.utherium_ingot).build(consumer);
 
-        makeTagShovel(UGItems.smogstem_shovel, UGTags.Items.SMOGSTEM_PLANKS).build(consumer, name("smogstem_shovel"));
-        makeShovel(UGItems.cloggrum_shovel, UGItems.cloggrum_ingot).build(consumer, name("cloggrum_shovel"));
-        makeShovel(UGItems.froststeel_shovel, UGItems.froststeel_ingot).build(consumer, name("froststeel_shovel"));
-        makeShovel(UGItems.utheric_shovel, UGItems.utherium_ingot).build(consumer, name("utheric_shovel"));
+        makeShovel(UGItems.cloggrum_shovel, UGItems.cloggrum_ingot).build(consumer);
+        makeShovel(UGItems.froststeel_shovel, UGItems.froststeel_ingot).build(consumer);
+        makeShovel(UGItems.utheric_shovel, UGItems.utherium_ingot).build(consumer);
 
-        makeTagHoe(UGItems.smogstem_hoe, UGTags.Items.SMOGSTEM_PLANKS).build(consumer);
         makeHoe(UGItems.cloggrum_hoe, UGItems.cloggrum_ingot).build(consumer);
         makeHoe(UGItems.froststeel_hoe, UGItems.froststeel_ingot).build(consumer);
         makeHoe(UGItems.utheric_hoe, UGItems.utherium_ingot).build(consumer);

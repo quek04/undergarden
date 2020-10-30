@@ -10,8 +10,6 @@ public class UGTags {
 
     public static class Items {
 
-        public static final ITag.INamedTag<Item> SMOGSTEM_PLANKS = tag("smogstem_planks");
-        public static final ITag.INamedTag<Item> WIGGLEWOOD_PLANKS = tag("wigglewood_planks");
         public static final ITag.INamedTag<Item> MUSHROOMS = tag("mushrooms");
 
         public static final ITag.INamedTag<Item> CLOGGRUM_ITEMS = tag("cloggrum_items");

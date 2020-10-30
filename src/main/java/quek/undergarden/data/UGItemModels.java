@@ -137,12 +137,6 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.blisterbomb);
         normalItem(UGItems.droopvine_item);
 
-        toolItem(UGItems.smogstem_sword);
-        toolItem(UGItems.smogstem_pickaxe);
-        toolItem(UGItems.smogstem_axe);
-        toolItem(UGItems.smogstem_shovel);
-        toolItem(UGItems.smogstem_hoe);
-
         toolItem(UGItems.cloggrum_sword);
         toolItem(UGItems.cloggrum_pickaxe);
         toolItem(UGItems.cloggrum_axe);

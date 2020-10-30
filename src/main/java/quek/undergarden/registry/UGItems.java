@@ -49,12 +49,6 @@ public class UGItems {
     public static final RegistryObject<Item> cloggrum_battleaxe = ITEMS.register("cloggrum_battleaxe", CloggrumBattleaxeItem::new);
 
     //tools
-    public static final RegistryObject<SwordItem> smogstem_sword = ITEMS.register("smogstem_sword", () -> new UGSwordItem(UGTools.SMOGSTEM));
-    public static final RegistryObject<PickaxeItem> smogstem_pickaxe = ITEMS.register("smogstem_pickaxe", () -> new UGPickaxeItem(UGTools.SMOGSTEM));
-    public static final RegistryObject<AxeItem> smogstem_axe = ITEMS.register("smogstem_axe", () -> new UGAxeItem(UGTools.SMOGSTEM, 6));
-    public static final RegistryObject<ShovelItem> smogstem_shovel = ITEMS.register("smogstem_shovel", () -> new UGShovelItem(UGTools.SMOGSTEM));
-    public static final RegistryObject<HoeItem> smogstem_hoe = ITEMS.register("smogstem_hoe", () -> new UGHoeItem(UGTools.SMOGSTEM, 0, -3.0F));
-
     public static final RegistryObject<SwordItem> cloggrum_sword = ITEMS.register("cloggrum_sword", () -> new UGSwordItem(UGTools.CLOGGRUM));
     public static final RegistryObject<PickaxeItem> cloggrum_pickaxe = ITEMS.register("cloggrum_pickaxe", () -> new UGPickaxeItem(UGTools.CLOGGRUM));
     public static final RegistryObject<AxeItem> cloggrum_axe = ITEMS.register("cloggrum_axe", () -> new UGAxeItem(UGTools.CLOGGRUM, 3));

@@ -7,7 +7,6 @@ import net.minecraft.util.LazyValue;
 import java.util.function.Supplier;
 
 public enum UGTools implements IItemTier {
-    SMOGSTEM(127,2,1,1, 15, () -> {return Ingredient.fromTag(UGTags.Items.SMOGSTEM_PLANKS);}),
     CLOGGRUM(286,5,4,2, 10, () -> {return Ingredient.fromItems(UGItems.cloggrum_ingot.get());}),
     FROSTSTEEL(575, 6, 3, 3, 15, () -> {return Ingredient.fromItems(UGItems.froststeel_ingot.get());}),
     UTHERIC(1279,8,3.5F,4,13, () -> {return Ingredient.fromItems(UGItems.utherium_ingot.get());})

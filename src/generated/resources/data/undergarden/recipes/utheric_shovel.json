@@ -10,7 +10,7 @@
       "item": "undergarden:utherium_ingot"
     },
     "/": {
-      "item": "undergarden:smogstem_stick"
+      "tag": "forge:rods/wooden"
     }
   },
   "result": {

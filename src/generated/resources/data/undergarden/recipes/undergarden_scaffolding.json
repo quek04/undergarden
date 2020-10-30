@@ -7,7 +7,7 @@
   ],
   "key": {
     "S": {
-      "item": "undergarden:smogstem_stick"
+      "tag": "forge:rods/wooden"
     },
     "T": {
       "item": "undergarden:twistytwig"
