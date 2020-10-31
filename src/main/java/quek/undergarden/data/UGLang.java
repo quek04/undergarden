@@ -325,6 +325,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("trade_with_stoneborn", "Interdimensional Business");
         addAdvDesc("trade_with_stoneborn", "Trade with a Stoneborn.");
 
+        addAdvTitle("weird_fish", "Weird Fish");
+        addAdvDesc("weird_fish", "Catch a Gwibling with a bucket");
+
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");

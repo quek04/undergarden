@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:gwibling_bucket"
+    },
+    "title": {
+      "translate": "advancement.weird_fish.title"
+    },
+    "description": {
+      "translate": "advancement.weird_fish.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "parent": "undergarden:undergarden/glorious_beans",
+  "criteria": {
+    "has_gourds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:gwibling_bucket"
+          }
+        ]
+      }
+    }
+  }
+}
