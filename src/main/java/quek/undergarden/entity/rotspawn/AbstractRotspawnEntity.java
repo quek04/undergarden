@@ -9,7 +9,7 @@ import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.DwellerEntity;
@@ -36,8 +36,8 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, DwellerEntity.class, true));
     }
 
-    public static boolean canRotspawnSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextInt(10) == 0 && canSpawnOn(type, worldIn, reason, pos, randomIn);
+    public static boolean canRotspawnSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
+        return randomIn.nextInt(10) == 0 && canMonsterSpawnInLight(type, worldIn, reason, pos, randomIn);
     }
 
     @Override
