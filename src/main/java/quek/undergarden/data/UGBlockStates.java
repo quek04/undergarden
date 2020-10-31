@@ -20,7 +20,6 @@ public class UGBlockStates extends UGBlockstateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        torchBlock(UGBlocks.smogstem_torch, UGBlocks.smogstem_wall_torch);
         torchBlock(UGBlocks.shard_torch, UGBlocks.shard_wall_torch);
         normalBlock(UGBlocks.depthrock);
         normalBlock(UGBlocks.deepsoil);

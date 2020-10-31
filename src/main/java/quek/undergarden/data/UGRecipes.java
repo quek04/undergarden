@@ -60,9 +60,9 @@ public class UGRecipes extends UGRecipeProvider {
                 .patternLine("G")
                 .patternLine("T")
                 .key('G', UGBlocks.carved_gloomgourd.get())
-                .key('T', UGItems.smogstem_torch.get())
+                .key('T', Items.TORCH)
                 .addCriterion("has_carved_gourd", hasItem(UGBlocks.carved_gloomgourd.get()))
-                .addCriterion("has_torch", hasItem(UGItems.smogstem_torch.get()))
+                .addCriterion("has_torch", hasItem(Items.TORCH))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(UGBlocks.cloggrum_bars.get(), 16)

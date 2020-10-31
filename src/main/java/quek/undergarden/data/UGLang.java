@@ -192,7 +192,6 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.utherium_chunk, "Utherium Chunk");
         addItem(UGItems.regalium_ingot, "Regalium Ingot");
         addItem(UGItems.regalium_nugget, "Regalium Nugget");
-        addItem(UGItems.smogstem_torch, "Smogstem Torch");
         addItem(UGItems.shard_torch, "Shard Torch");
         addItem(UGItems.gloomgourd_seeds, "Gloomgourd Seeds");
         addItem(UGItems.ditchbulb, "Ditchbulb");

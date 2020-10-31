@@ -126,7 +126,6 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.utherium_chunk);
         normalItem(UGItems.regalium_ingot);
         normalItem(UGItems.regalium_nugget);
-        torchItem(UGItems.smogstem_torch);
         torchItem(UGItems.shard_torch);
         normalItem(UGItems.ditchbulb);
         normalItem(UGItems.gloomgourd_seeds);

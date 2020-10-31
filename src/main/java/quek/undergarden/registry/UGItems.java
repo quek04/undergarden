@@ -28,8 +28,6 @@ public class UGItems {
     public static final RegistryObject<Item> utherium_chunk = ITEMS.register("utherium_chunk", UndergardenItem::new);
     public static final RegistryObject<Item> regalium_ingot = ITEMS.register("regalium_ingot", () -> new UndergardenItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> regalium_nugget = ITEMS.register("regalium_nugget", () -> new UndergardenItem(Rarity.UNCOMMON));
-    public static final RegistryObject<Item> smogstem_torch = ITEMS.register("smogstem_torch", () -> new WallOrFloorItem(
-            UGBlocks.smogstem_torch.get(), UGBlocks.smogstem_wall_torch.get(), new Item.Properties().group(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> shard_torch = ITEMS.register("shard_torch", () -> new WallOrFloorItem(
             UGBlocks.shard_torch.get(), UGBlocks.shard_wall_torch.get(), new Item.Properties().group(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> gloomgourd_seeds = ITEMS.register("gloomgourd_seeds", () -> new BlockNamedItem(

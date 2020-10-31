@@ -110,8 +110,6 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.blood_mushroom);
             dropSelf(UGBlocks.depthrock_bricks);
             dropSelf(UGBlocks.cracked_depthrock_bricks);
-            dropOther(UGBlocks.smogstem_torch, UGItems.smogstem_torch.get());
-            dropOther(UGBlocks.smogstem_wall_torch, UGItems.smogstem_torch.get());
             dropSelf(UGBlocks.gloomgourd);
             dropSelf(UGBlocks.carved_gloomgourd);
             this.registerLootTable(UGBlocks.depthrock_pebbles.get(), (bookshelf) -> droppingWithSilkTouchOrRandomly(bookshelf, UGItems.depthrock_pebble.get(), RandomValueRange.of(1.0F, 3.0F)));

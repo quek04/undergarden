@@ -45,8 +45,6 @@ public class ClientStuff {
         render(UGBlocks.ink_mushroom, cutout);
         render(UGBlocks.blood_mushroom, cutout);
         render(UGBlocks.underbean_bush, cutout);
-        render(UGBlocks.smogstem_torch, cutout);
-        render(UGBlocks.smogstem_wall_torch, cutout);
         render(UGBlocks.ditchbulb_plant, cutout);
         render(UGBlocks.tall_deepturf, cutout);
         render(UGBlocks.tall_shimmerweed, cutout);
