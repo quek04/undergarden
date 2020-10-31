@@ -26,7 +26,7 @@ import quek.undergarden.client.ClientStuff;
 import quek.undergarden.client.UGDimensionRenderInfo;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.*;
-import quek.undergarden.item.UndergardenSpawnEggItem;
+import quek.undergarden.item.UGSpawnEggItem;
 import quek.undergarden.registry.*;
 
 @Mod(UGMod.MODID)
@@ -95,7 +95,7 @@ public class UGMod {
 		DefaultDispenseItemBehavior eggBehavior = new DefaultDispenseItemBehavior() {
 			public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
 				Direction direction = source.getBlockState().get(DispenserBlock.FACING);
-				EntityType<?> type = ((UndergardenSpawnEggItem)stack.getItem()).getType(stack.getTag());
+				EntityType<?> type = ((UGSpawnEggItem)stack.getItem()).getType(stack.getTag());
 				type.spawn(source.getWorld(), stack, null, source.getBlockPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
 				stack.shrink(1);
 				return stack;

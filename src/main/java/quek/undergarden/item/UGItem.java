@@ -7,21 +7,21 @@ import quek.undergarden.registry.UGItemGroups;
 
 import net.minecraft.item.Item.Properties;
 
-public class UndergardenItem extends Item {
+public class UGItem extends Item {
 
-    public UndergardenItem() {
+    public UGItem() {
         super(new Properties()
                 .group(UGItemGroups.GROUP));
     }
 
-    public UndergardenItem(Rarity rarity) {
+    public UGItem(Rarity rarity) {
         super(new Properties()
                 .group(UGItemGroups.GROUP)
                 .rarity(rarity)
         );
     }
 
-    public UndergardenItem(Food food) {
+    public UGItem(Food food) {
         super(new Properties()
                 .food(food)
                 .group(UGItemGroups.GROUP));

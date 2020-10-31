@@ -28,5 +28,4 @@ public class GooeyEffect extends Effect {
     public boolean isReady(int duration, int amplifier) {
         return duration > 0;
     }
-
 }
