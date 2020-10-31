@@ -2,11 +2,14 @@ package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.data.LanguageProvider;
 import quek.undergarden.UGMod;
 import quek.undergarden.registry.*;
+
+import java.util.function.Supplier;
 
 public class UGLang extends LanguageProvider {
 
@@ -14,24 +17,31 @@ public class UGLang extends LanguageProvider {
         super(gen, UGMod.MODID, "en_us");
     }
 
-    protected void addItemGroup(ItemGroup group, String name) {
+    private void addItemGroup(ItemGroup group, String name) {
         add(group.getGroupName().getString(), name);
     }
 
-    protected void addAdvTitle(String advancementTitle, String name) {
+    private void addAdvTitle(String advancementTitle, String name) {
         add("advancement." + advancementTitle + ".title", name);
     }
 
-    protected void addAdvDesc(String advancementTitle, String name) {
+    private void addAdvDesc(String advancementTitle, String name) {
         add("advancement." + advancementTitle + ".desc", name);
     }
 
-    protected void addSubtitle(String category, String subtitleName, String name) {
+    private void addSubtitle(String category, String subtitleName, String name) {
         add("subtitles." + category + "." + subtitleName, name);
     }
 
-    protected void addBiome(RegistryKey<Biome> biomeKey, String name) {
+    private void addBiome(RegistryKey<Biome> biomeKey, String name) {
         add("biome.undergarden." + biomeKey.getLocation().getPath(), name);
+    }
+
+    private void addPotion(Supplier<? extends Potion> potion, String name) {
+        add("item.minecraft.potion.effect." + potion.get().getRegistryName().getPath(), "Potion of " + name);
+        add("item.minecraft.splash_potion.effect." + potion.get().getRegistryName().getPath(), "Splash Potion of " + name);
+        add("item.minecraft.lingering_potion.effect." + potion.get().getRegistryName().getPath(), "Lingering Potion of " + name);
+        add("item.minecraft.tipped_arrow.effect." + potion.get().getRegistryName().getPath(), "Arrow of " + name);
     }
 
     @Override
@@ -297,6 +307,8 @@ public class UGLang extends LanguageProvider {
         addEffect(UGEffects.gooey, "Gooey");
         addEffect(UGEffects.brittleness, "Brittleness");
         addEffect(UGEffects.featherweight, "Featherweight");
+
+        addPotion(UGPotions.brittleness, "Brittleness");
 
         addAdvTitle("root", "The Undergarden");
         addAdvDesc("root", "Create a Catalyst");

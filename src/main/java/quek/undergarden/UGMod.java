@@ -11,11 +11,15 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.*;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.potion.PotionBrewing;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -47,6 +51,7 @@ public class UGMod {
 		UGFeatures.FEATURES.register(bus);
 		UGCarvers.CARVERS.register(bus);
 		UGEffects.EFFECTS.register(bus);
+		UGPotions.POTIONS.register(bus);
 		UGFluids.FLUIDS.register(bus);
 		UGParticleTypes.PARTICLES.register(bus);
 		UGTileEntities.TEs.register(bus);
@@ -140,6 +145,10 @@ public class UGMod {
 				return Util.make(new BlisterbombEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
 			}
 		});
+
+		PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.blood_mushroom_globule.get().asItem(), UGPotions.brittleness.get());
+		PotionBrewing.addMix(UGPotions.brittleness.get(), Items.REDSTONE, UGPotions.long_brittleness.get());
+		PotionBrewing.addMix(UGPotions.brittleness.get(), Items.GLOWSTONE_DUST, UGPotions.strong_brittleness.get());
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
