@@ -1,26 +1,28 @@
 package quek.undergarden.entity;
 
-import net.minecraft.entity.*;
+import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.JumpController;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
@@ -39,14 +41,15 @@ public class GloomperEntity extends AnimalEntity {
     public GloomperEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
         super(type, worldIn);
         this.jumpController = new JumpHelperController(this);
-        this.moveController = new MoveHelperController(this);
+        this.moveController = new GloomperEntity.MoveHelperController(this);
         this.setMovementSpeed(0.0D);
+        this.stepHeight = 1.0F;
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0F, 2.5F));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(UGBlocks.gloomgourd.get()), false));
@@ -96,25 +99,13 @@ public class GloomperEntity extends AnimalEntity {
         return Ingredient.fromItems(UGBlocks.gloomgourd.get()).test(stack);
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public void handleStatusUpdate(byte id) {
-        if (id == 1) {
-            //this.createRunningParticles();
-            this.jumpDuration = 10;
-            this.jumpTicks = 0;
-        } else {
-            super.handleStatusUpdate(id);
-        }
-
-    }
-
     @Override
     protected float getJumpUpwardsMotion() {
         if (!this.collidedHorizontally && (!this.moveController.isUpdating() || !(this.moveController.getY() > this.getPosY() + 0.5D))) {
             Path path = this.navigator.getPath();
-            if (path != null && path.getCurrentPathIndex() < path.getCurrentPathLength()) {
-                Vector3d vec3d = path.getPosition(this);
-                if (vec3d.y > this.getPosY() + 0.5D) {
+            if (path != null && !path.isFinished()) {
+                Vector3d vector3d = path.getPosition(this);
+                if (vector3d.y > this.getPosY() + 0.5D) {
                     return 0.5F;
                 }
             }
@@ -143,8 +134,28 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public float getJumpCompletion(float p_175521_1_) {
-        return this.jumpDuration == 0 ? 0.0F : ((float)this.jumpTicks + p_175521_1_) / (float)this.jumpDuration;
+    public float getJumpCompletion(float delta) {
+        return this.jumpDuration == 0 ? 0.0F : ((float)this.jumpTicks + delta) / (float)this.jumpDuration;
+    }
+
+    public void setMovementSpeed(double newSpeed) {
+        this.getNavigator().setSpeed(newSpeed);
+        this.moveController.setMoveTo(this.moveController.getX(), this.moveController.getY(), this.moveController.getZ(), newSpeed);
+    }
+
+    @Override
+    public void setJumping(boolean jumping) {
+        super.setJumping(jumping);
+        if (jumping) {
+            this.playSound(SoundEvents.ENTITY_COD_FLOP, this.getSoundVolume(), ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 0.8F);
+        }
+
+    }
+
+    public void startJumping() {
+        this.setJumping(true);
+        this.jumpDuration = 10;
+        this.jumpTicks = 0;
     }
 
     @Override
@@ -159,19 +170,19 @@ public class GloomperEntity extends AnimalEntity {
                 this.checkLandingDelay();
             }
 
-            JumpHelperController jumpControl = (JumpHelperController)this.jumpController;
-            if (!jumpControl.getIsJumping()) {
+            GloomperEntity.JumpHelperController jumpController = (GloomperEntity.JumpHelperController)this.jumpController;
+            if (!jumpController.getIsJumping()) {
                 if (this.moveController.isUpdating() && this.currentMoveTypeDuration == 0) {
                     Path path = this.navigator.getPath();
-                    Vector3d vec3d = new Vector3d(this.moveController.getX(), this.moveController.getY(), this.moveController.getZ());
-                    if (path != null && path.getCurrentPathIndex() < path.getCurrentPathLength()) {
-                        vec3d = path.getPosition(this);
+                    Vector3d vector3d = new Vector3d(this.moveController.getX(), this.moveController.getY(), this.moveController.getZ());
+                    if (path != null && !path.isFinished()) {
+                        vector3d = path.getPosition(this);
                     }
 
-                    this.calculateRotationYaw(vec3d.x, vec3d.z);
+                    this.calculateRotationYaw(vector3d.x, vector3d.z);
                     this.startJumping();
                 }
-            } else if (!jumpControl.canJump()) {
+            } else if (!jumpController.canJump()) {
                 this.enableJumpControl();
             }
         }
@@ -179,16 +190,21 @@ public class GloomperEntity extends AnimalEntity {
         this.wasOnGround = this.onGround;
     }
 
+    @Override
+    public boolean shouldSpawnRunningEffects() {
+        return false;
+    }
+
     private void calculateRotationYaw(double x, double z) {
-        this.rotationYaw = (float)(MathHelper.atan2(z - this.getPosZ(), x - this.getPosX()) * 57.2957763671875D) - 90.0F;
+        this.rotationYaw = (float)(MathHelper.atan2(z - this.getPosZ(), x - this.getPosX()) * (double)(180F / (float)Math.PI)) - 90.0F;
     }
 
     private void enableJumpControl() {
-        ((JumpHelperController)this.jumpController).setCanJump(true);
+        ((GloomperEntity.JumpHelperController)this.jumpController).setCanJump(true);
     }
 
     private void disableJumpControl() {
-        ((JumpHelperController)this.jumpController).setCanJump(false);
+        ((GloomperEntity.JumpHelperController)this.jumpController).setCanJump(false);
     }
 
     private void updateMoveTypeDuration() {
@@ -218,43 +234,26 @@ public class GloomperEntity extends AnimalEntity {
 
     }
 
-    public void setMovementSpeed(double newSpeed) {
-        this.getNavigator().setSpeed(newSpeed);
-        this.moveController.setMoveTo(this.moveController.getX(), this.moveController.getY(), this.moveController.getZ(), newSpeed);
-    }
-
-    public void setJumping(boolean jumping) {
-        super.setJumping(jumping);
-        if (jumping) {
-            this.playSound(SoundEvents.ENTITY_COD_FLOP, 0.5F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 0.8F);
-            if(this.isChild()) {
-                this.playSound(SoundEvents.ENTITY_COD_FLOP, 0.3F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 0.8F + 2);
-            }
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void handleStatusUpdate(byte id) {
+        if (id == 1) {
+            this.handleRunningEffect();
+            this.jumpDuration = 10;
+            this.jumpTicks = 0;
+        } else {
+            super.handleStatusUpdate(id);
         }
 
     }
 
-    public void startJumping() {
-        this.setJumping(true);
-        this.jumpDuration = 10;
-        this.jumpTicks = 0;
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public Vector3d func_241205_ce_() {
+        return new Vector3d(0.0D, 0.6F * this.getEyeHeight(), this.getWidth() * 0.4F);
     }
 
-    static class PanicGoal extends net.minecraft.entity.ai.goal.PanicGoal {
-        private final GloomperEntity gloomper;
-
-        public PanicGoal(GloomperEntity gloomper, double speedIn) {
-            super(gloomper, speedIn);
-            this.gloomper = gloomper;
-        }
-
-        public void tick() {
-            super.tick();
-            this.gloomper.setMovementSpeed(this.speed);
-        }
-    }
-
-    static class JumpHelperController extends JumpController {
+    public static class JumpHelperController extends JumpController {
         private final GloomperEntity gloomper;
         private boolean canJump;
 
@@ -275,11 +274,13 @@ public class GloomperEntity extends AnimalEntity {
             this.canJump = canJumpIn;
         }
 
+        @Override
         public void tick() {
-            if(this.isJumping) {
+            if (this.isJumping) {
                 this.gloomper.startJumping();
                 this.isJumping = false;
             }
+
         }
     }
 
@@ -292,17 +293,18 @@ public class GloomperEntity extends AnimalEntity {
             this.gloomper = gloomper;
         }
 
+        @Override
         public void tick() {
-            if(this.gloomper.onGround && !this.gloomper.isJumping && !((JumpHelperController)this.gloomper.jumpController).getIsJumping()) {
+            if (this.gloomper.onGround && !this.gloomper.isJumping && !((GloomperEntity.JumpHelperController)this.gloomper.jumpController).getIsJumping()) {
                 this.gloomper.setMovementSpeed(0.0D);
-            }
-            else if(this.isUpdating()) {
+            } else if (this.isUpdating()) {
                 this.gloomper.setMovementSpeed(this.nextJumpSpeed);
             }
 
             super.tick();
         }
 
+        @Override
         public void setMoveTo(double x, double y, double z, double speedIn) {
             if (this.gloomper.isInWater()) {
                 speedIn = 1.5D;

@@ -51,7 +51,7 @@ public class UGEntityTypes {
     public static final EntityType<ScintlingEntity> scintling = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
             .size(0.9F, .5F).build("scintling");
     public static final EntityType<GloomperEntity> gloomper = EntityType.Builder.create(GloomperEntity::new, EntityClassification.CREATURE)
-            .size(0.9F, 1F).build("gloomper");
+            .size(0.99F, 0.99F).build("gloomper");
     public static final EntityType<StonebornEntity> stoneborn = EntityType.Builder.create(StonebornEntity::new, EntityClassification.MONSTER)
             .size(0.9F, 2.6F).build("stoneborn");
 
