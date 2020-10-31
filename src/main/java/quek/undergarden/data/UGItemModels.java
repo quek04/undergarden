@@ -183,6 +183,10 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.dweller_steak);
         normalItem(UGItems.raw_gwibling);
         normalItem(UGItems.cooked_gwibling);
+        normalItem(UGItems.bloody_stew);
+        normalItem(UGItems.indigo_stew);
+        normalItem(UGItems.inky_stew);
+        normalItem(UGItems.veiled_stew);
 
         egg(UGItems.dweller_spawn_egg);
         egg(UGItems.gwibling_spawn_egg);

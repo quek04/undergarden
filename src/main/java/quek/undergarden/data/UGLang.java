@@ -252,6 +252,10 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.dweller_steak, "Dweller Steak");
         addItem(UGItems.raw_gwibling, "Raw Gwibling");
         addItem(UGItems.cooked_gwibling, "Cooked Gwibling");
+        addItem(UGItems.bloody_stew, "Bloody Stew");
+        addItem(UGItems.indigo_stew, "Indigo Stew");
+        addItem(UGItems.inky_stew, "Inky Stew");
+        addItem(UGItems.veiled_stew, "Veiled Stew");
 
         addItem(UGItems.dweller_spawn_egg, "Dweller Spawn Egg");
         addItem(UGItems.gwibling_spawn_egg, "Gwibling Spawn Egg");
@@ -291,6 +295,8 @@ public class UGLang extends LanguageProvider {
         addItemGroup(UGItemGroups.GROUP, "The Undergarden");
 
         addEffect(UGEffects.gooey, "Gooey");
+        addEffect(UGEffects.brittleness, "Brittleness");
+        addEffect(UGEffects.featherweight, "Featherweight");
 
         addAdvTitle("root", "The Undergarden");
         addAdvDesc("root", "Create a Catalyst");

@@ -100,10 +100,10 @@ public class UGItems {
     public static final RegistryObject<Item> dweller_steak = ITEMS.register("dweller_steak", () -> new UGItem(UGFoods.COOKED_DWELLER));
     public static final RegistryObject<Item> raw_gwibling = ITEMS.register("raw_gwibling", () -> new UGItem(UGFoods.RAW_GWIBLING));
     public static final RegistryObject<Item> cooked_gwibling = ITEMS.register("cooked_gwibling", () -> new UGItem(UGFoods.COOKED_GWIBLING));
-    public static final RegistryObject<Item> bloody_stew = ITEMS.register("bloody_stew", () -> new UGItem(UGFoods.BLOODY));
-    public static final RegistryObject<Item> inky_stew = ITEMS.register("inky_stew", () -> new UGItem(UGFoods.INKY));
-    public static final RegistryObject<Item> indigo_stew = ITEMS.register("indigo_stew", () -> new UGItem(UGFoods.INDIGO));
-    public static final RegistryObject<Item> veiled_stew = ITEMS.register("veiled_stew", () -> new UGItem(UGFoods.VEILED));
+    public static final RegistryObject<Item> bloody_stew = ITEMS.register("bloody_stew", () -> new SoupItem((new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.BLOODY).maxStackSize(1)));
+    public static final RegistryObject<Item> inky_stew = ITEMS.register("inky_stew", () -> new SoupItem((new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.INKY).maxStackSize(1)));
+    public static final RegistryObject<Item> indigo_stew = ITEMS.register("indigo_stew", () -> new SoupItem((new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.INDIGO).maxStackSize(1)));
+    public static final RegistryObject<Item> veiled_stew = ITEMS.register("veiled_stew", () -> new SoupItem((new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.VEILED).maxStackSize(1)));
 
     //spawn eggs
     public static final RegistryObject<Item> dweller_spawn_egg = ITEMS.register("dweller_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.dweller, 4804417, 16776960));

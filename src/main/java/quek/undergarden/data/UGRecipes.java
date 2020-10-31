@@ -298,6 +298,11 @@ public class UGRecipes extends UGRecipeProvider {
         makePressurePlate(UGBlocks.depthrock_pressure_plate, UGBlocks.depthrock).build(consumer);
         makePressurePlate(UGBlocks.shiverstone_pressure_plate, UGBlocks.shiverstone).build(consumer);
 
+        makeStew(UGItems.bloody_stew, UGBlocks.blood_mushroom).build(consumer);
+        makeStew(UGItems.inky_stew, UGBlocks.ink_mushroom).build(consumer);
+        makeStew(UGItems.indigo_stew, UGBlocks.indigo_mushroom).build(consumer);
+        makeStew(UGItems.veiled_stew, UGBlocks.veil_mushroom).build(consumer);
+
         smeltingRecipe(UGBlocks.cracked_depthrock_bricks.get(), UGBlocks.depthrock_bricks.get(), .1F).build(consumer, "smelt_depthrock_bricks");
         smeltingRecipe(UGBlocks.cracked_shiverstone_bricks.get(), UGBlocks.shiverstone_bricks.get(), .1F).build(consumer, "smelt_shiverstone_bricks");
 

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "undergarden:ink_mushroom"
+    },
+    {
+      "item": "undergarden:ink_mushroom"
+    },
+    {
+      "item": "undergarden:ink_mushroom"
+    }
+  ],
+  "result": {
+    "item": "undergarden:inky_stew"
+  }
+}

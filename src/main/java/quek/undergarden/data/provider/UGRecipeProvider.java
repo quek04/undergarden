@@ -7,6 +7,7 @@ import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
@@ -305,6 +306,13 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .patternLine("M M")
                 .key('M', materialIn.get())
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+    }
+
+    public ShapelessRecipeBuilder makeStew(Supplier<? extends Item> stewOut, Supplier<? extends Block> mushroomIn) {
+        return ShapelessRecipeBuilder.shapelessRecipe(stewOut.get())
+                .addIngredient(Items.BOWL)
+                .addIngredient(mushroomIn.get(), 3)
+                .addCriterion("has_" + mushroomIn.get().getRegistryName().getPath(), hasItem(mushroomIn.get()));
     }
 
     public CookingRecipeBuilder smeltingRecipe(IItemProvider result, IItemProvider ingredient, float exp) {
