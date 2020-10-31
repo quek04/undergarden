@@ -80,6 +80,7 @@ public class ClientStuff {
     public static void registerEntityRenderers() {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SLINGSHOT_AMMO.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GOO_BALL.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));

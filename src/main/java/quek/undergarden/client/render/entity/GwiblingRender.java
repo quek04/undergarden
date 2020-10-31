@@ -16,7 +16,7 @@ import quek.undergarden.client.model.GwiblingModel;
 @OnlyIn(Dist.CLIENT)
 public class GwiblingRender extends MobRenderer<GwiblingEntity, GwiblingModel<GwiblingEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/gwibling.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entity/gwibling.png");
 
     public GwiblingRender(EntityRendererManager rendererManager) {
         super(rendererManager, new GwiblingModel<>(), .3F);

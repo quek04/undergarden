@@ -13,7 +13,7 @@ import quek.undergarden.entity.boss.MasticatorEntity;
 @OnlyIn(Dist.CLIENT)
 public class MasticatorRender extends MobRenderer<MasticatorEntity, MasticatorModel<MasticatorEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/masticator.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entity/masticator.png");
 
     public MasticatorRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new MasticatorModel<>(), 2.0F);

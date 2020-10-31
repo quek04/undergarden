@@ -10,7 +10,7 @@ import quek.undergarden.entity.GloomperEntity;
 
 public class GloomperEyesLayer<T extends GloomperEntity, M extends GloomperModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entities/gloomper_eyes.png"));
+    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entity/gloomper_eyes.png"));
 
     public GloomperEyesLayer(IEntityRenderer<T, M> renderer) {
         super(renderer);

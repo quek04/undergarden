@@ -10,7 +10,7 @@ import quek.undergarden.entity.stoneborn.StonebornEntity;
 
 public class StonebornEyesLayer<T extends StonebornEntity, M extends StonebornModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entities/stoneborn_eyes.png"));
+    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entity/stoneborn_eyes.png"));
 
     public StonebornEyesLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);

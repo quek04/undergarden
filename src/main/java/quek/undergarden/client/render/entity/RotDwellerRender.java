@@ -13,7 +13,7 @@ import quek.undergarden.entity.rotspawn.RotDwellerEntity;
 @OnlyIn(Dist.CLIENT)
 public class RotDwellerRender extends MobRenderer<RotDwellerEntity, RotDwellerModel<RotDwellerEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/rotdweller.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entity/rotdweller.png");
 
     public RotDwellerRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new RotDwellerModel<>(), .7F);

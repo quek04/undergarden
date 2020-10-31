@@ -119,23 +119,6 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeSticks(Supplier<? extends Item> stickOut, ITag.INamedTag<Item> planksIn) {
-
-        return ShapedRecipeBuilder.shapedRecipe(stickOut.get(), 4)
-                .patternLine("#")
-                .patternLine("#")
-                .key('#', planksIn)
-                .addCriterion("has_" + planksIn, hasItem(planksIn));
-    }
-
-    public ShapedRecipeBuilder makeSticks(Supplier<? extends Item> stickOut, Supplier<? extends Block> planksIn) {
-        return ShapedRecipeBuilder.shapedRecipe(stickOut.get(), 4)
-                .patternLine("#")
-                .patternLine("#")
-                .key('#', planksIn.get())
-                .addCriterion("has_" + planksIn.get().getRegistryName().getPath(), hasItem(planksIn.get()));
-    }
-
     public ShapedRecipeBuilder makeShardToIngot() {
         return ShapedRecipeBuilder.shapedRecipe(UGItems.utherium_chunk.get(), 1)
                 .patternLine("SS")
@@ -184,16 +167,6 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeTagSword(Supplier<? extends Item> swordOut, ITag.INamedTag<Item> materialIn) {
-        return ShapedRecipeBuilder.shapedRecipe(swordOut.get())
-                .patternLine("#")
-                .patternLine("#")
-                .patternLine("/")
-                .key('#', materialIn)
-                .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn, hasItem(materialIn));
-    }
-
     public ShapedRecipeBuilder makePickaxe(Supplier<? extends Item> pickaxeOut, Supplier<? extends Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(pickaxeOut.get())
                 .patternLine("###")
@@ -224,16 +197,6 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeTagAxe(Supplier<? extends Item> axeOut, ITag.INamedTag<Item> materialIn) {
-        return ShapedRecipeBuilder.shapedRecipe(axeOut.get())
-                .patternLine("##")
-                .patternLine("#/")
-                .patternLine(" /")
-                .key('#', materialIn)
-                .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn, hasItem(materialIn));
-    }
-
     public ShapedRecipeBuilder makeShovel(Supplier<? extends Item> shovelOut, Supplier<? extends Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(shovelOut.get())
                 .patternLine("#")
@@ -244,16 +207,6 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeTagShovel(Supplier<? extends Item> shovelOut, ITag.INamedTag<Item> materialIn) {
-        return ShapedRecipeBuilder.shapedRecipe(shovelOut.get())
-                .patternLine("#")
-                .patternLine("/")
-                .patternLine("/")
-                .key('#', materialIn)
-                .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn, hasItem(materialIn));
-    }
-
     public ShapedRecipeBuilder makeHoe(Supplier<? extends Item> hoeOut, Supplier<? extends Item> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(hoeOut.get())
                 .patternLine("##")
@@ -262,16 +215,6 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .key('#', materialIn.get())
                 .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
-    }
-
-    public ShapedRecipeBuilder makeTagHoe(Supplier<? extends Item> hoeOut, ITag.INamedTag<Item> materialIn) {
-        return ShapedRecipeBuilder.shapedRecipe(hoeOut.get())
-                .patternLine("##")
-                .patternLine(" /")
-                .patternLine(" /")
-                .key('#', materialIn)
-                .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn, hasItem(materialIn));
     }
 
     public ShapedRecipeBuilder makeHelmet(Supplier<? extends Item> helmetOut, Supplier<? extends Item> materialIn) {
@@ -313,6 +256,14 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addIngredient(Items.BOWL)
                 .addIngredient(mushroomIn.get(), 3)
                 .addCriterion("has_" + mushroomIn.get().getRegistryName().getPath(), hasItem(mushroomIn.get()));
+    }
+
+    public ShapedRecipeBuilder makeBoat(Supplier<? extends Item> boatOut, Supplier<? extends Block> planksIn) {
+        return ShapedRecipeBuilder.shapedRecipe(boatOut.get())
+                .patternLine("P P")
+                .patternLine("PPP")
+                .key('P', planksIn.get())
+                .addCriterion("has_" + planksIn.get().getRegistryName().getPath(), hasItem(planksIn.get()));
     }
 
     public CookingRecipeBuilder smeltingRecipe(IItemProvider result, IItemProvider ingredient, float exp) {

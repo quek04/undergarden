@@ -13,7 +13,7 @@ import quek.undergarden.entity.BruteEntity;
 @OnlyIn(Dist.CLIENT)
 public class BruteRender extends MobRenderer<BruteEntity, BruteModel<BruteEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/brute.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entity/brute.png");
 
     public BruteRender(EntityRendererManager rendererManager) {
         super(rendererManager, new BruteModel<>(), .7F);

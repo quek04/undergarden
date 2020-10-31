@@ -16,8 +16,8 @@ import quek.undergarden.client.model.RotwalkerModel;
 @OnlyIn(Dist.CLIENT)
 public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel<RotwalkerEntity>> {
 
-    private static final ResourceLocation texture = new ResourceLocation(UGMod.MODID, "textures/entities/rotwalker.png");
-    private static final ResourceLocation otherside_texture = new ResourceLocation(UGMod.MODID, "textures/entities/rotwalker_otherside.png");
+    private static final ResourceLocation texture = new ResourceLocation(UGMod.MODID, "textures/entity/rotwalker.png");
+    private static final ResourceLocation otherside_texture = new ResourceLocation(UGMod.MODID, "textures/entity/rotwalker_otherside.png");
 
     public RotwalkerRender(EntityRendererManager manager) {
         super(manager, new RotwalkerModel(), 0.6f);

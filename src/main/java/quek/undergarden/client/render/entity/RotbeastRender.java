@@ -16,8 +16,8 @@ import quek.undergarden.client.model.RotbeastModel;
 @OnlyIn(Dist.CLIENT)
 public class RotbeastRender extends MobRenderer<RotbeastEntity, RotbeastModel<RotbeastEntity>> {
 
-    private static final ResourceLocation texture = new ResourceLocation(UGMod.MODID, "textures/entities/rotbeast.png");
-    private static final ResourceLocation otherside_texture = new ResourceLocation(UGMod.MODID, "textures/entities/rotbeast_otherside.png");
+    private static final ResourceLocation texture = new ResourceLocation(UGMod.MODID, "textures/entity/rotbeast.png");
+    private static final ResourceLocation otherside_texture = new ResourceLocation(UGMod.MODID, "textures/entity/rotbeast_otherside.png");
 
 
     public RotbeastRender(EntityRendererManager manager) {

@@ -13,8 +13,8 @@ import quek.undergarden.entity.rotspawn.RotlingEntity;
 @OnlyIn(Dist.CLIENT)
 public class RotlingRender extends MobRenderer<RotlingEntity, RotlingModel<RotlingEntity>> {
 
-    private static final ResourceLocation texture = new ResourceLocation(UGMod.MODID, "textures/entities/rotling.png");
-    private static final ResourceLocation otherside_texture = new ResourceLocation(UGMod.MODID, "textures/entities/rotling_otherside.png");
+    private static final ResourceLocation texture = new ResourceLocation(UGMod.MODID, "textures/entity/rotling.png");
+    private static final ResourceLocation otherside_texture = new ResourceLocation(UGMod.MODID, "textures/entity/rotling_otherside.png");
 
     public RotlingRender(EntityRendererManager manager) {
         super(manager, new RotlingModel<>(), 0.6F);

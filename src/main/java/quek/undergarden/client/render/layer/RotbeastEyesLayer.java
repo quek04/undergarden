@@ -13,7 +13,7 @@ import quek.undergarden.entity.rotspawn.RotbeastEntity;
 @OnlyIn(Dist.CLIENT)
 public class RotbeastEyesLayer<T extends RotbeastEntity, M extends RotbeastModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entities/rotbeast_eyes.png"));
+    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entity/rotbeast_eyes.png"));
 
     public RotbeastEyesLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);

@@ -172,6 +172,10 @@ public class UGItemModels extends UGItemModelProvider {
         toolItem(UGItems.utheric_shovel);
         toolItem(UGItems.utheric_hoe);
 
+        normalItem(UGItems.smogstem_boat);
+        normalItem(UGItems.wigglewood_boat);
+        normalItem(UGItems.grongle_boat);
+
         normalItem(UGItems.virulent_mix_bucket);
 
         normalItem(UGItems.gwibling_bucket);

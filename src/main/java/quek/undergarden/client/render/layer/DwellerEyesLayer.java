@@ -13,7 +13,7 @@ import quek.undergarden.entity.DwellerEntity;
 @OnlyIn(Dist.CLIENT)
 public class DwellerEyesLayer<T extends DwellerEntity, M extends DwellerModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entities/dweller_eyes.png"));
+    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entity/dweller_eyes.png"));
 
     public DwellerEyesLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);

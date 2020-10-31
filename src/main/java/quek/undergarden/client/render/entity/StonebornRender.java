@@ -13,7 +13,7 @@ import quek.undergarden.entity.stoneborn.StonebornEntity;
 @OnlyIn(Dist.CLIENT)
 public class StonebornRender extends MobRenderer<StonebornEntity, StonebornModel<StonebornEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/stoneborn.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entity/stoneborn.png");
 
     public StonebornRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new StonebornModel<>(), 0.6F);

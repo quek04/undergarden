@@ -13,7 +13,7 @@ import quek.undergarden.entity.ScintlingEntity;
 @OnlyIn(Dist.CLIENT)
 public class ScintlingRender extends MobRenderer<ScintlingEntity, ScintlingModel<ScintlingEntity>> {
 
-    private static final ResourceLocation texture = new ResourceLocation(UGMod.MODID, "textures/entities/scintling.png");
+    private static final ResourceLocation texture = new ResourceLocation(UGMod.MODID, "textures/entity/scintling.png");
 
     public ScintlingRender(EntityRendererManager manager) {
         super(manager, new ScintlingModel<>(), 0.5F);

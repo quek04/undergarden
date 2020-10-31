@@ -39,6 +39,10 @@ public class UGRecipes extends UGRecipeProvider {
         makeWood(UGBlocks.grongle_hyphae, UGBlocks.grongle_stem).build(consumer);
         makeWood(UGBlocks.stripped_grongle_hyphae, UGBlocks.stripped_grongle_stem).build(consumer);
 
+        makeBoat(UGItems.smogstem_boat, UGBlocks.smogstem_planks).build(consumer);
+        makeBoat(UGItems.wigglewood_boat, UGBlocks.wigglewood_planks).build(consumer);
+        makeBoat(UGItems.grongle_boat, UGBlocks.grongle_planks).build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(UGItems.twistytwig.get(), 4)
                 .patternLine("P ")
                 .patternLine(" P")

@@ -7,6 +7,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UGMod;
+import quek.undergarden.entity.UGBoatEntity;
 import quek.undergarden.item.*;
 import quek.undergarden.item.armor.*;
 import quek.undergarden.item.tool.*;
@@ -67,6 +68,10 @@ public class UGItems {
     public static final RegistryObject<HoeItem> utheric_hoe = ITEMS.register("utheric_hoe", () -> new UGHoeItem(UGTools.UTHERIC, -3, 0.0F));
 
     public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
+
+    public static final RegistryObject<Item> smogstem_boat = ITEMS.register("smogstem_boat", () -> new UGBoatItem(UGBoatEntity.Type.SMOGSTEM, (new Item.Properties()).group(UGItemGroups.GROUP).maxStackSize(1)));
+    public static final RegistryObject<Item> wigglewood_boat = ITEMS.register("wigglewood_boat", () -> new UGBoatItem(UGBoatEntity.Type.WIGGLEWOOD, (new Item.Properties()).group(UGItemGroups.GROUP).maxStackSize(1)));
+    public static final RegistryObject<Item> grongle_boat = ITEMS.register("grongle_boat", () -> new UGBoatItem(UGBoatEntity.Type.GRONGLE, (new Item.Properties()).group(UGItemGroups.GROUP).maxStackSize(1)));
 
     public static final RegistryObject<BucketItem> virulent_mix_bucket = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(
             UGFluids.virulent_mix_source, (new Item.Properties()).group(UGItemGroups.GROUP).maxStackSize(1)));

@@ -209,7 +209,6 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.goo_ball, "Scintling Goo Ball");
         addItem(UGItems.rotten_blisterberry, "Rotten Blisterberry");
         addItem(UGItems.blisterbomb, "Blisterbomb");
-        //addItem(UndergardenItems.droopvine_item, "Droopvine");
 
         addItem(UGItems.masticator_scales, "Masticator Scales");
         addItem(UGItems.masticated_chestplate, "Masticated Chestplate");
@@ -233,6 +232,10 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.utheric_axe, "Utherium Axe");
         addItem(UGItems.utheric_shovel, "Utherium Shovel");
         addItem(UGItems.utheric_hoe, "Utheric Hoe");
+
+        addItem(UGItems.smogstem_boat, "Smogstem Boat");
+        addItem(UGItems.wigglewood_boat, "Wigglewood Boat");
+        addItem(UGItems.grongle_boat, "Grongle Boat");
 
         addItem(UGItems.slingshot, "Slingshot");
 
@@ -289,6 +292,7 @@ public class UGLang extends LanguageProvider {
         addBiome(UGBiomes.smogstem_forest, "Smogstem Forest");
         addBiome(UGBiomes.wigglewood_forest, "Wigglewood Forest");
 
+        addEntityType(UGEntityTypes.BOAT, "Undergarden Boat");
         addEntityType(UGEntityTypes.DWELLER, "Dweller");
         addEntityType(UGEntityTypes.ROTDWELLER, "Rotdweller");
         addEntityType(UGEntityTypes.GWIBLING, "Gwibling");

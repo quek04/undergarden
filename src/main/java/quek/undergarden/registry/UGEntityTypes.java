@@ -23,6 +23,8 @@ public class UGEntityTypes {
 
     public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
 
+    public static final EntityType<UGBoatEntity> boat = EntityType.Builder.<UGBoatEntity>create(UGBoatEntity::new, EntityClassification.MISC)
+            .size(1.375F, 0.5625F).trackingRange(10).build("boat");
     public static final EntityType<SlingshotAmmoEntity> slingshot_ammo = EntityType.Builder.<SlingshotAmmoEntity>create(SlingshotAmmoEntity::new, EntityClassification.MISC)
             .size(0.25F, 0.25F).build("slingshot_ammo");
     public static final EntityType<GooBallEntity> goo_ball = EntityType.Builder.<GooBallEntity>create(GooBallEntity::new, EntityClassification.MISC)
@@ -56,6 +58,7 @@ public class UGEntityTypes {
     public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
             .size(2.5F, 4).build("masticator");
 
+    public static final RegistryObject<EntityType<UGBoatEntity>> BOAT = ENTITIES.register("boat", () -> boat);
     public static final RegistryObject<EntityType<SlingshotAmmoEntity>> SLINGSHOT_AMMO = ENTITIES.register("slingshot_ammo", () -> slingshot_ammo);
     public static final RegistryObject<EntityType<GooBallEntity>> GOO_BALL = ENTITIES.register("goo_ball", () -> goo_ball);
     public static final RegistryObject<EntityType<RottenBlisterberryEntity>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> rotten_blisterberry);

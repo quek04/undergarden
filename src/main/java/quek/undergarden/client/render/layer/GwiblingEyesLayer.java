@@ -13,7 +13,7 @@ import quek.undergarden.entity.GwiblingEntity;
 @OnlyIn(Dist.CLIENT)
 public class GwiblingEyesLayer<T extends GwiblingEntity, M extends GwiblingModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entities/gwibling_eyes.png"));
+    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entity/gwibling_eyes.png"));
 
     public GwiblingEyesLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);

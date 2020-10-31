@@ -13,7 +13,7 @@ import quek.undergarden.entity.GloomperEntity;
 @OnlyIn(Dist.CLIENT)
 public class GloomperRender extends MobRenderer<GloomperEntity, GloomperModel<GloomperEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entities/gloomper.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(UGMod.MODID, "textures/entity/gloomper.png");
 
     public GloomperRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new GloomperModel<>(), 1F);
