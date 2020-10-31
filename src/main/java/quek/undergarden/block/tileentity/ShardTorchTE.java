@@ -6,10 +6,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGParticleTypes;
 import quek.undergarden.registry.UGTileEntities;
-
-import java.util.Random;
 
 public class ShardTorchTE extends TileEntity implements ITickableTileEntity {
 

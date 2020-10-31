@@ -4,7 +4,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.gen.feature.Feature;
@@ -15,7 +14,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UGMod;
 import quek.undergarden.block.*;
-import quek.undergarden.world.gen.tree.*;
+import quek.undergarden.world.gen.tree.SmogstemTree;
+import quek.undergarden.world.gen.tree.WigglewoodTree;
 
 import java.util.Objects;
 import java.util.function.Function;
