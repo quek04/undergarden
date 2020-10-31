@@ -1,6 +1,7 @@
 package quek.undergarden.entity;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -47,12 +48,12 @@ public class DwellerEntity extends AnimalEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AnimalEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 15.0D) //hp
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.15D); //speed
+                .createMutableAttribute(Attributes.MAX_HEALTH, 15.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.15D);
     }
 
     public static boolean canDwellerSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get() || worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.ashen_deepturf_block.get();
+        return worldIn.getBlockState(pos.down()).isIn(UGBlocks.deepturf_block.get()) || worldIn.getBlockState(pos.down()).isIn(UGBlocks.ashen_deepturf_block.get()) && worldIn.getLightSubtracted(pos, 0) > 8;
     }
 
     @Nullable

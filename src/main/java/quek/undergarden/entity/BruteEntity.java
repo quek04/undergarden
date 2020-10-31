@@ -52,7 +52,7 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     }
 
     public static boolean canBruteSpawn(EntityType<? extends MonsterEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.deepturf_block.get();
+        return worldIn.getBlockState(pos.down()).isIn(UGBlocks.deepturf_block.get()) && worldIn.getLightSubtracted(pos, 0) > 8;
     }
 
     @Override
