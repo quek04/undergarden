@@ -19,6 +19,7 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.DepthrockPebbleItem;
+import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
@@ -160,6 +161,6 @@ public class SlingshotItem extends ShootableItem {
 
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return UGTags.Items.SMOGSTEM_PLANKS.contains(repair.getItem()) || super.getIsRepairable(toRepair, repair);
+        return repair.getItem() == UGBlocks.smogstem_planks.get().asItem();
     }
 }

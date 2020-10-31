@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:smogstem_button",
+    "undergarden:wigglewood_button",
+    "undergarden:grongle_button",
+    "undergarden:depthrock_button",
+    "undergarden:shiverstone_button"
+  ]
+}
