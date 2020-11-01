@@ -3,6 +3,7 @@ package quek.undergarden;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.data.DataGenerator;
@@ -153,6 +154,37 @@ public class UGMod {
 
 		PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.gloomgourd.get().asItem(), UGPotions.virulent_resistance.get());
 		PotionBrewing.addMix(UGPotions.virulent_resistance.get(), Items.REDSTONE, UGPotions.long_virulent_resistance.get());
+
+		ComposterBlock.registerCompostable(0.1F, UGItems.droopvine_item.get());
+		ComposterBlock.registerCompostable(0.1F, UGItems.underbeans.get());
+		ComposterBlock.registerCompostable(0.2F, UGItems.blisterberry.get());
+		ComposterBlock.registerCompostable(0.3F, UGItems.gloomgourd_seeds.get());
+		ComposterBlock.registerCompostable(0.3F, UGItems.glowing_kelp.get());
+		ComposterBlock.registerCompostable(0.3F, UGBlocks.smogstem_leaves.get());
+		ComposterBlock.registerCompostable(0.3F, UGBlocks.wigglewood_leaves.get());
+		ComposterBlock.registerCompostable(0.3F, UGBlocks.smogstem_sapling.get());
+		ComposterBlock.registerCompostable(0.3F, UGBlocks.wigglewood_sapling.get());
+		ComposterBlock.registerCompostable(0.3F, UGBlocks.gronglet.get());
+		ComposterBlock.registerCompostable(0.3F, UGBlocks.deepturf.get());
+		ComposterBlock.registerCompostable(0.3F, UGBlocks.shimmerweed.get());
+		ComposterBlock.registerCompostable(0.5F, UGBlocks.tall_deepturf.get());
+		ComposterBlock.registerCompostable(0.5F, UGBlocks.ditchbulb_plant.get());
+		ComposterBlock.registerCompostable(0.5F, UGItems.ditchbulb.get());
+		ComposterBlock.registerCompostable(0.5F, UGBlocks.tall_shimmerweed.get());
+		ComposterBlock.registerCompostable(0.65F, UGBlocks.indigo_mushroom.get());
+		ComposterBlock.registerCompostable(0.65F, UGBlocks.veil_mushroom.get());
+		ComposterBlock.registerCompostable(0.65F, UGBlocks.ink_mushroom.get());
+		ComposterBlock.registerCompostable(0.65F, UGBlocks.indigo_mushroom.get());
+		ComposterBlock.registerCompostable(0.65F, UGBlocks.gloomgourd.get());
+		ComposterBlock.registerCompostable(0.65F, UGBlocks.carved_gloomgourd.get());
+		ComposterBlock.registerCompostable(0.85F, UGBlocks.indigo_mushroom_cap.get());
+		ComposterBlock.registerCompostable(0.85F, UGBlocks.indigo_mushroom_stalk.get());
+		ComposterBlock.registerCompostable(0.85F, UGBlocks.veil_mushroom_cap.get());
+		ComposterBlock.registerCompostable(0.85F, UGBlocks.veil_mushroom_stalk.get());
+		ComposterBlock.registerCompostable(0.85F, UGBlocks.ink_mushroom_cap.get());
+		ComposterBlock.registerCompostable(0.85F, UGBlocks.blood_mushroom_cap.get());
+		ComposterBlock.registerCompostable(0.85F, UGBlocks.blood_mushroom_globule.get());
+		ComposterBlock.registerCompostable(0.85F, UGBlocks.blood_mushroom_stalk.get());
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
