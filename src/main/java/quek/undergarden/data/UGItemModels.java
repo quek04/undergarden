@@ -202,6 +202,7 @@ public class UGItemModels extends UGItemModelProvider {
         egg(UGItems.scintling_spawn_egg);
         egg(UGItems.gloomper_spawn_egg);
         egg(UGItems.stoneborn_spawn_egg);
+        egg(UGItems.nargoyle_spawn_egg);
 
         egg(UGItems.masticator_spawn_egg);
     }

@@ -280,6 +280,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.scintling_spawn_egg, "Scintling Spawn Egg");
         addItem(UGItems.gloomper_spawn_egg, "Gloomper Spawn Egg");
         addItem(UGItems.stoneborn_spawn_egg, "Stoneborn Spawn Egg");
+        addItem(UGItems.nargoyle_spawn_egg, "Nargoyle Spawn Egg");
 
         addItem(UGItems.masticator_spawn_egg, "Masticator Spawn Egg");
 
@@ -303,6 +304,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.SCINTLING, "Scintling");
         addEntityType(UGEntityTypes.GLOOMPER, "Gloomper");
         addEntityType(UGEntityTypes.STONEBORN, "Stoneborn");
+        addEntityType(UGEntityTypes.NARGOYLE, "Nargoyle");
 
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
 

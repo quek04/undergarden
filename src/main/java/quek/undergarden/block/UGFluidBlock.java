@@ -14,8 +14,6 @@ import quek.undergarden.registry.UGFluids;
 
 import java.util.function.Supplier;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class UGFluidBlock extends FlowingFluidBlock {
 
     public UGFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
@@ -27,7 +25,7 @@ public class UGFluidBlock extends FlowingFluidBlock {
         if(this.getFluid() == UGFluids.virulent_mix_source.get() || this.getFluid() == UGFluids.virulent_mix_flowing.get()) {
             if(entityIn.isAlive() && entityIn instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityIn;
-                if(livingEntity.getCreatureAttribute() != UGEntityTypes.ROTSPAWN) {
+                if(livingEntity.getCreatureAttribute() != UGEntityTypes.ROTSPAWN || livingEntity.getCreatureAttribute() != UGEntityTypes.CAVERN_CREATURE) {
                     livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
                 }
             }

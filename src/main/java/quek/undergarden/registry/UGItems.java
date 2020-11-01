@@ -121,6 +121,7 @@ public class UGItems {
     public static final RegistryObject<Item> scintling_spawn_egg = ITEMS.register("scintling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.scintling, 8556655, 6314558));
     public static final RegistryObject<Item> gloomper_spawn_egg = ITEMS.register("gloomper_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.gloomper, 4138045, 6579581));
     public static final RegistryObject<Item> stoneborn_spawn_egg = ITEMS.register("stoneborn_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.stoneborn, 2437409, 9502615));
+    public static final RegistryObject<Item> nargoyle_spawn_egg = ITEMS.register("nargoyle_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.nargoyle, 3944755, 13407123));
 
     public static final RegistryObject<Item> masticator_spawn_egg = ITEMS.register("masticator_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.masticator, 2366466, 15881511));
 }

@@ -22,6 +22,7 @@ public class UGEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, UGMod.MODID);
 
     public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
+    public static final CreatureAttribute CAVERN_CREATURE = new CreatureAttribute();
 
     public static final EntityType<UGBoatEntity> boat = EntityType.Builder.<UGBoatEntity>create(UGBoatEntity::new, EntityClassification.MISC)
             .size(1.375F, 0.5625F).trackingRange(10).build("boat");
@@ -54,6 +55,8 @@ public class UGEntityTypes {
             .size(0.99F, 0.99F).build("gloomper");
     public static final EntityType<StonebornEntity> stoneborn = EntityType.Builder.create(StonebornEntity::new, EntityClassification.MONSTER)
             .size(0.9F, 2.6F).build("stoneborn");
+    public static final EntityType<NargoyleEntity> nargoyle = EntityType.Builder.create(NargoyleEntity::new, EntityClassification.MONSTER)
+            .size(0.99F, 1.5F).build("nargoyle");
 
     public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
             .size(2.5F, 4).build("masticator");
@@ -74,6 +77,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> scintling);
     public static final RegistryObject<EntityType<GloomperEntity>> GLOOMPER = ENTITIES.register("gloomper", () -> gloomper);
     public static final RegistryObject<EntityType<StonebornEntity>> STONEBORN = ENTITIES.register("stoneborn", () -> stoneborn);
+    public static final RegistryObject<EntityType<NargoyleEntity>> NARGOYLE = ENTITIES.register("nargoyle", () -> nargoyle);
 
     //bosses
     public static final RegistryObject<EntityType<MasticatorEntity>> MASTICATOR = ENTITIES.register("masticator", () -> masticator);
@@ -88,6 +92,7 @@ public class UGEntityTypes {
         EntitySpawnPlacementRegistry.register(SCINTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
         EntitySpawnPlacementRegistry.register(GLOOMPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GloomperEntity::canGloomperSpawn);
         EntitySpawnPlacementRegistry.register(STONEBORN.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, StonebornEntity::canStonebornSpawn);
+        EntitySpawnPlacementRegistry.register(NARGOYLE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, NargoyleEntity::canNargoyleSpawn);
     }
 
     public static void entityAttributes() {
@@ -102,6 +107,6 @@ public class UGEntityTypes {
         GlobalEntityTypeAttributes.put(GLOOMPER.get(), GloomperEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(STONEBORN.get(), StonebornEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(NARGOYLE.get(), NargoyleEntity.registerAttributes().create());
     }
-
 }

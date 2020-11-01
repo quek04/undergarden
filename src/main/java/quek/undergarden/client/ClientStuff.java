@@ -96,6 +96,7 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GLOOMPER.get(), GloomperRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.STONEBORN.get(), StonebornRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.NARGOYLE.get(), NargoyleRender::new);
     }
 
     public static void registerBlockColors() {

@@ -109,6 +109,12 @@
         "weight": 100,
         "minCount": 1,
         "maxCount": 2
+      },
+      {
+        "type": "undergarden:nargoyle",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
       }
     ],
     "creature": [],
