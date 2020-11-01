@@ -38,7 +38,8 @@ public class NargoyleEntity extends MonsterEntity {
         return MonsterEntity.func_233666_p_()
                 .createMutableAttribute(Attributes.MAX_HEALTH, 40.0D)
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 5.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D);
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D)
+                .createMutableAttribute(Attributes.FOLLOW_RANGE, 128.0D);
     }
 
     @Override

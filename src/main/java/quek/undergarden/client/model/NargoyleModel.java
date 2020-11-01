@@ -212,7 +212,7 @@ public class NargoyleModel<T extends NargoyleEntity> extends SegmentedModel<T> {
 		this.legs.rotateAngleX = 0.8727F + -(MathHelper.cos(limbSwing * 0.40F) * 1.4F * limbSwingAmount);
 
 		if(entity.isAggressive()) {
-			this.jaw.rotateAngleX = this.head.rotateAngleX + MathHelper.sin((entity.ticksExisted) * 0.2F) * 0.2F;
+			this.jaw.rotateAngleX = MathHelper.sin((entity.ticksExisted) * 0.2F) * 0.2F;
 		}
 	}
 

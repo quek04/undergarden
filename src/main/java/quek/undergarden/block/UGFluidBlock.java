@@ -25,9 +25,10 @@ public class UGFluidBlock extends FlowingFluidBlock {
         if(this.getFluid() == UGFluids.virulent_mix_source.get() || this.getFluid() == UGFluids.virulent_mix_flowing.get()) {
             if(entityIn.isAlive() && entityIn instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityIn;
-                if(livingEntity.getCreatureAttribute() != UGEntityTypes.ROTSPAWN || livingEntity.getCreatureAttribute() != UGEntityTypes.CAVERN_CREATURE) {
-                    livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
+                if(livingEntity.getCreatureAttribute() == UGEntityTypes.ROTSPAWN || livingEntity.getCreatureAttribute() == UGEntityTypes.CAVERN_CREATURE) {
+
                 }
+                else livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
             }
         }
     }
