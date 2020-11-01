@@ -1,5 +1,6 @@
 package quek.undergarden.entity.projectile;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
@@ -62,14 +63,19 @@ public class GooBallEntity extends ProjectileItemEntity {
     @Override
     protected void onImpact(RayTraceResult result) {
         if (result.getType() == RayTraceResult.Type.ENTITY) {
-            LivingEntity entity = (LivingEntity) ((EntityRayTraceResult)result).getEntity();
-            if(entity instanceof ScintlingEntity) {
-                entity.heal(2);
+            Entity entity = ((EntityRayTraceResult)result).getEntity();
+            
+            if(entity instanceof LivingEntity) {
+                LivingEntity livingEntity = (LivingEntity) entity;
+                if(livingEntity instanceof ScintlingEntity) {
+                    livingEntity.heal(2);
+                }
+                else {
+                    livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)0);
+                    livingEntity.addPotionEffect(new EffectInstance(UGEffects.gooey.get(), 100, 0, false, true));
+                }
             }
-            else {
-                entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)0);
-                entity.addPotionEffect(new EffectInstance(UGEffects.gooey.get(), 100, 0, false, true));
-            }
+
             this.playSound(SoundEvents.BLOCK_SLIME_BLOCK_BREAK, 1, 1);
         }
 
