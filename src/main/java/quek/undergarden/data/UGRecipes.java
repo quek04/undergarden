@@ -25,8 +25,19 @@ public class UGRecipes extends UGRecipeProvider {
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         makePlanks(UGBlocks.smogstem_planks, UGBlocks.smogstem_log).build(consumer);
+        makePlanks(UGBlocks.smogstem_planks, UGBlocks.stripped_smogstem_log).build(consumer, name("smogstem_planks_from_stripped_log"));
+        makePlanks(UGBlocks.smogstem_planks, UGBlocks.smogstem_wood).build(consumer, name("smogstem_planks_from_wood"));
+        makePlanks(UGBlocks.smogstem_planks, UGBlocks.stripped_smogstem_wood).build(consumer, name("smogstem_planks_from_stripped_wood"));
+
         makePlanks(UGBlocks.wigglewood_planks, UGBlocks.wigglewood_log).build(consumer);
+        makePlanks(UGBlocks.wigglewood_planks, UGBlocks.stripped_wigglewood_log).build(consumer, name("wigglewood_planks_from_stripped_log"));
+        makePlanks(UGBlocks.wigglewood_planks, UGBlocks.wigglewood_wood).build(consumer, name("wigglewood_planks_from_wood"));
+        makePlanks(UGBlocks.wigglewood_planks, UGBlocks.stripped_wigglewood_wood).build(consumer, name("wigglewood_planks_from_stripped_wood"));
+
         makePlanks(UGBlocks.grongle_planks, UGBlocks.grongle_stem).build(consumer);
+        makePlanks(UGBlocks.grongle_planks, UGBlocks.stripped_grongle_stem).build(consumer, name("grongle_planks_from_stripped_stem"));
+        makePlanks(UGBlocks.grongle_planks, UGBlocks.grongle_hyphae).build(consumer, name("grongle_planks_from_hyphae"));
+        makePlanks(UGBlocks.grongle_planks, UGBlocks.stripped_grongle_hyphae).build(consumer, name("grongle_planks_from_stripped_hyphae"));
 
         makeBricks(UGBlocks.depthrock_bricks, UGBlocks.depthrock).build(consumer);
         makeBricks(UGBlocks.shiverstone_bricks, UGBlocks.shiverstone).build(consumer);

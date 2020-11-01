@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:stripped_wigglewood_wood"
+    }
+  ],
+  "result": {
+    "item": "undergarden:wigglewood_planks",
+    "count": 4
+  }
+}
