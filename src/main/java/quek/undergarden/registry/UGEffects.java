@@ -14,4 +14,5 @@ public class UGEffects {
     public static final RegistryObject<Effect> gooey = EFFECTS.register("gooey", GooeyEffect::new);
     public static final RegistryObject<Effect> brittleness = EFFECTS.register("brittleness", BrittlenessEffect::new);
     public static final RegistryObject<Effect> featherweight = EFFECTS.register("featherweight", FeatherweightEffect::new);
+    public static final RegistryObject<Effect> virulent_resistance = EFFECTS.register("virulent_resistance", VirulentResistanceEffect::new);
 }

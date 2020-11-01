@@ -149,6 +149,9 @@ public class UGMod {
 		PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.blood_mushroom_globule.get().asItem(), UGPotions.brittleness.get());
 		PotionBrewing.addMix(UGPotions.brittleness.get(), Items.REDSTONE, UGPotions.long_brittleness.get());
 		PotionBrewing.addMix(UGPotions.brittleness.get(), Items.GLOWSTONE_DUST, UGPotions.strong_brittleness.get());
+
+		PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.gloomgourd.get().asItem(), UGPotions.virulent_resistance.get());
+		PotionBrewing.addMix(UGPotions.virulent_resistance.get(), Items.REDSTONE, UGPotions.long_virulent_resistance.get());
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {

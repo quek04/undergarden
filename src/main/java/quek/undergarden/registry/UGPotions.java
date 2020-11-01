@@ -14,4 +14,7 @@ public class UGPotions {
     public static final RegistryObject<Potion> brittleness = POTIONS.register("brittleness", () -> new Potion("brittleness", new EffectInstance(UGEffects.brittleness.get(), 900)));
     public static final RegistryObject<Potion> long_brittleness = POTIONS.register("long_brittleness", () -> new Potion("brittleness", new EffectInstance(UGEffects.brittleness.get(), 1800)));
     public static final RegistryObject<Potion> strong_brittleness = POTIONS.register("strong_brittleness", () -> new Potion("brittleness", new EffectInstance(UGEffects.brittleness.get(), 450, 1)));
+
+    public static final RegistryObject<Potion> virulent_resistance = POTIONS.register("virulent_resistance", () -> new Potion("virulent_resistance", new EffectInstance(UGEffects.virulent_resistance.get(), 3600)));
+    public static final RegistryObject<Potion> long_virulent_resistance = POTIONS.register("long_virulent_resistance", () -> new Potion("virulent_resistance", new EffectInstance(UGEffects.virulent_resistance.get(), 9600)));
 }

@@ -313,8 +313,10 @@ public class UGLang extends LanguageProvider {
         addEffect(UGEffects.gooey, "Gooey");
         addEffect(UGEffects.brittleness, "Brittleness");
         addEffect(UGEffects.featherweight, "Featherweight");
+        addEffect(UGEffects.virulent_resistance, "Virulent Resistance");
 
         addPotion(UGPotions.brittleness, "Brittleness");
+        addPotion(UGPotions.virulent_resistance, "Virulent Resistance");
 
         addAdvTitle("root", "The Undergarden");
         addAdvDesc("root", "Create a Catalyst");

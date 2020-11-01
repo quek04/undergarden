@@ -9,6 +9,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGFluids;
 
@@ -26,6 +27,9 @@ public class UGFluidBlock extends FlowingFluidBlock {
             if(entityIn.isAlive() && entityIn instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityIn;
                 if(livingEntity.getCreatureAttribute() == UGEntityTypes.ROTSPAWN || livingEntity.getCreatureAttribute() == UGEntityTypes.CAVERN_CREATURE) {
+
+                }
+                else if(livingEntity.isPotionActive(UGEffects.virulent_resistance.get())) {
 
                 }
                 else livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
