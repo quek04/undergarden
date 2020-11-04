@@ -319,7 +319,7 @@ public class UGLang extends LanguageProvider {
         addPotion(UGPotions.virulent_resistance, "Virulent Resistance");
 
         addAdvTitle("root", "The Undergarden");
-        addAdvDesc("root", "Create a Catalyst");
+        addAdvDesc("root", "Create a Catalyst.");
 
         addAdvTitle("undergarden", "Enter the Undergarden");
         addAdvDesc("undergarden", "The forgotten land awaits...");
@@ -352,7 +352,13 @@ public class UGLang extends LanguageProvider {
         addAdvDesc("trade_with_stoneborn", "Trade with a Stoneborn.");
 
         addAdvTitle("weird_fish", "Weird Fish");
-        addAdvDesc("weird_fish", "Catch a Gwibling with a bucket");
+        addAdvDesc("weird_fish", "Catch a Gwibling with a bucket.");
+
+        addAdvTitle("ruin", "Remnants of the Past");
+        addAdvDesc("ruin", "Find a Forgotten Ruin.");
+
+        addAdvTitle("castle", "What Once Was");
+        addAdvDesc("castle", "Enter a Forgotten Castle.");
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");

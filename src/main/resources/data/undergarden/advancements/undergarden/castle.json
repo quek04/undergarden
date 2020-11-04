@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:depthrock_brick_stairs"
+    },
+    "title": {
+      "translate": "advancement.castle.title"
+    },
+    "description": {
+      "translate": "advancement.castle.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "goal"
+  },
+  "parent": "undergarden:undergarden/ruin",
+  "criteria": {
+    "enter_castle": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "feature": "undergarden:forgotten_castle"
+        }
+      }
+    }
+  }
+}

@@ -19,6 +19,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.FlatChunkGenerator;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.settings.DimensionStructuresSettings;
+import net.minecraft.world.gen.settings.StructureSeparationSettings;
+import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -35,6 +43,9 @@ import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.UGSpawnEggItem;
 import quek.undergarden.registry.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Mod(UGMod.MODID)
 public class UGMod {
 	
@@ -47,6 +58,9 @@ public class UGMod {
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
 
+		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+		forgeBus.addListener(EventPriority.NORMAL, UGStructures::addDimensionalSpacing);
+
 		UGEntityTypes.ENTITIES.register(bus);
 		UGBlocks.BLOCKS.register(bus);
 		UGItems.ITEMS.register(bus);
@@ -57,6 +71,7 @@ public class UGMod {
 		UGFluids.FLUIDS.register(bus);
 		UGParticleTypes.PARTICLES.register(bus);
 		UGTileEntities.TEs.register(bus);
+		UGStructures.STRUCTURES.register(bus);
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
@@ -64,6 +79,8 @@ public class UGMod {
 		UGEntityTypes.entityAttributes();
 		UGFeatures.registerConfiguredFeatures();
 		UGCarvers.registerConfiguredCarvers();
+		UGStructures.registerStructures();
+		UGStructures.registerConfiguredStructures();
 		UGCriteria.register();
 
 		AxeItem.BLOCK_STRIPPING_MAP = ImmutableMap.<Block, Block>builder()

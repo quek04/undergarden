@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:depthrock_brick_wall"
+    },
+    "title": {
+      "translate": "advancement.ruin.title"
+    },
+    "description": {
+      "translate": "advancement.ruin.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "parent": "undergarden:undergarden/enter_undergarden",
+  "criteria": {
+    "enter_ruin": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "feature": "undergarden:forgotten_ruin"
+        }
+      }
+    }
+  }
+}

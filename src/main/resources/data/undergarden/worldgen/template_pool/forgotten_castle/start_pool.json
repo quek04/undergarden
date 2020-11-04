@@ -1,0 +1,15 @@
+{
+  "name": "undergarden:forgotten_castle/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:forgotten_castle/forgotten_castle",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
