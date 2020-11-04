@@ -1,13 +1,19 @@
 package quek.undergarden.entity;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGItems;
+
+import java.util.Random;
 
 public class GwiblingEntity extends AbstractFishEntity {
 
@@ -38,5 +44,9 @@ public class GwiblingEntity extends AbstractFishEntity {
     @Override
     protected SoundEvent getFlopSound() {
         return SoundEvents.ENTITY_COD_FLOP;
+    }
+
+    public static boolean canGwiblingSpawn(EntityType<? extends AbstractFishEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
+        return worldIn.getBlockState(pos).isIn(Blocks.WATER) && worldIn.getBlockState(pos.up()).isIn(Blocks.WATER) && pos.getY() <= 32;
     }
 }
