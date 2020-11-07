@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "undergarden:catalyst"
+      "item": "undergarden:forgotten_sword"
     },
     "title": {
       "translate": "advancement.root.title"
     },
     "description": {
-      "translate": "advancement.root.desc"
+      "translate": ""
     },
     "background": "undergarden:textures/block/depthrock_bricks.png",
     "show_toast": true,
@@ -15,15 +15,8 @@
     "frame": "task"
   },
   "criteria": {
-    "has_diamond": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "undergarden:catalyst"
-          }
-        ]
-      }
+    "tick": {
+      "trigger": "minecraft:tick"
     }
   }
 }

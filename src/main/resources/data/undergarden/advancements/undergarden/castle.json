@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "frame": "goal"
   },
-  "parent": "undergarden:undergarden/ruin",
+  "parent": "undergarden:undergarden/enter_undergarden",
   "criteria": {
     "enter_castle": {
       "trigger": "minecraft:location",

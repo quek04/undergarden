@@ -17,7 +17,7 @@ public class UGItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, UGMod.MODID);
 
-    private static final Rarity forgotten = Rarity.create("forgotten", TextFormatting.GREEN);
+    public static final Rarity forgotten = Rarity.create("forgotten", TextFormatting.GREEN);
 
     //normal stuff
     public static final RegistryObject<Item> catalyst_item = ITEMS.register("catalyst", CatalystItem::new);

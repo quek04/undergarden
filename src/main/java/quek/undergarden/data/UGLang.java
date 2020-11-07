@@ -323,7 +323,9 @@ public class UGLang extends LanguageProvider {
         addPotion(UGPotions.virulent_resistance, "Virulent Resistance");
 
         addAdvTitle("root", "The Undergarden");
-        addAdvDesc("root", "Create a Catalyst.");
+
+        addAdvTitle("catalyst", "One Ticket Please");
+        addAdvDesc("catalyst", "Create the Catalyst.");
 
         addAdvTitle("undergarden", "Enter the Undergarden");
         addAdvDesc("undergarden", "The forgotten land awaits...");
@@ -370,6 +372,7 @@ public class UGLang extends LanguageProvider {
         add("tooltip.utheric_axe", "Bonus damage to passive animals.");
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
+        add("tooltip.forgotten_sword", "Deals 2x damage to non-boss Undergarden mobs.");
 
         addSubtitle("item", "undergarden_portal_activate", "Undergarden Portal activates");
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
