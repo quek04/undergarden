@@ -14,42 +14,23 @@ import java.util.function.Supplier;
 
 public abstract class UGBlockstateProvider extends BlockStateProvider {
 
-    private static UGBlockModelProvider provider;
-
     public UGBlockstateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
         super(generator, UGMod.MODID, fileHelper);
-
-        provider = new UGBlockModelProvider(generator, fileHelper) {
-            @Override
-            public String getName() {
-                return UGBlockstateProvider.this.getName();
-            }
-
-            @Override
-            protected void registerModels() {
-
-            }
-        };
-    }
-
-    @Override
-    public UGBlockModelProvider models() {
-        return provider;
     }
 
     protected ResourceLocation texture(String name) {
         return modLoc("block/" + name);
     }
 
-    protected String blockName(Supplier<? extends Block> block) {
+    protected String name(Supplier<? extends Block> block) {
         return block.get().getRegistryName().getPath();
     }
 
-    public void normalBlock(Supplier<? extends Block> block) {
+    public void block(Supplier<? extends Block> block) {
         simpleBlock(block.get());
     }
 
-    public void woodBlock(Supplier<? extends RotatedPillarBlock> block, String name) {
+    public void log(Supplier<? extends RotatedPillarBlock> block, String name) {
         axisBlock(block.get(), texture(name));
     }
 
@@ -61,8 +42,8 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     public void torchBlock(Supplier<? extends Block> block, Supplier<? extends Block> wall) {
-        ModelFile torch = models().torch(blockName(block), texture(blockName(block)));
-        ModelFile torchwall = models().torchWall(blockName(wall), texture(blockName(block)));
+        ModelFile torch = models().torch(name(block), texture(name(block)));
+        ModelFile torchwall = models().torchWall(name(wall), texture(name(block)));
         simpleBlock(block.get(), torch);
         getVariantBuilder(wall.get()).forAllStates(state ->
                 ConfiguredModel.builder()
@@ -72,7 +53,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     public void crossBlock(Supplier<? extends Block> block) {
-        crossBlock(block, models().cross(blockName(block), texture(blockName(block))));
+        crossBlock(block, models().cross(name(block), texture(name(block))));
     }
 
     public void stairs(Supplier<? extends StairsBlock> block, String name) {
@@ -80,7 +61,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     public void slab(Supplier<? extends SlabBlock> block, Supplier<? extends Block> fullBlock) {
-        slabBlock(block.get(), texture(blockName(fullBlock)), texture(blockName(fullBlock)));
+        slabBlock(block.get(), texture(name(fullBlock)), texture(name(fullBlock)));
     }
 
     public void fence(Supplier<? extends FenceBlock> block, String name) {
@@ -102,5 +83,4 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     public void trapdoor(Supplier<? extends TrapDoorBlock> block, String name) {
         trapdoorBlock(block.get(), texture(name + "_trapdoor"), true);
     }
-
 }
