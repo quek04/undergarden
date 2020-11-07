@@ -32,7 +32,7 @@ public class UGStructures {
 
     public static void registerStructures() {
         setupStructure(forgotten_ruin.get(), new StructureSeparationSettings(4, 2, 276320041), true);
-        setupStructure(forgotten_castle.get(), new StructureSeparationSettings(8, 4, 276320042), true);
+        setupStructure(forgotten_castle.get(), new StructureSeparationSettings(16, 8, 276320042), true);
     }
 
     public static void registerConfiguredStructures() {
@@ -41,13 +41,12 @@ public class UGStructures {
     }
 
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
-        if(event.getWorld() instanceof ServerWorld){
+        if(event.getWorld() instanceof ServerWorld) {
             ServerWorld serverWorld = (ServerWorld)event.getWorld();
 
             if(serverWorld.getChunkProvider().getChunkGenerator() instanceof FlatChunkGenerator && serverWorld.getDimensionKey().equals(World.OVERWORLD)) {
                 return;
             }
-
             Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkProvider().generator.func_235957_b_().func_236195_a_());
 
             tempMap.put(UGStructures.forgotten_ruin.get(), DimensionStructuresSettings.field_236191_b_.get(UGStructures.forgotten_ruin.get()));
