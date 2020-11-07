@@ -179,6 +179,7 @@ public class UGMod {
 		ComposterBlock.registerCompostable(0.3F, UGItems.glowing_kelp.get());
 		ComposterBlock.registerCompostable(0.3F, UGBlocks.smogstem_leaves.get());
 		ComposterBlock.registerCompostable(0.3F, UGBlocks.wigglewood_leaves.get());
+		ComposterBlock.registerCompostable(0.3F, UGBlocks.grongle_cap.get());
 		ComposterBlock.registerCompostable(0.3F, UGBlocks.smogstem_sapling.get());
 		ComposterBlock.registerCompostable(0.3F, UGBlocks.wigglewood_sapling.get());
 		ComposterBlock.registerCompostable(0.3F, UGBlocks.gronglet.get());
