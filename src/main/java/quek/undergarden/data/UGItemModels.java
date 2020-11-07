@@ -114,6 +114,8 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.cracked_shiverstone_bricks);
         itemBlock(UGBlocks.blood_mushroom_globule);
         itemBlock(UGBlocks.forgotten_block);
+        itemBlock(UGBlocks.chiseled_depthrock_bricks);
+        itemBlock(UGBlocks.chiseled_shiverstone_bricks);
 
         normalItem(UGItems.catalyst_item);
         normalItem(UGItems.depthrock_pebble);

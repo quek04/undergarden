@@ -43,6 +43,9 @@ public class UGRecipes extends UGRecipeProvider {
         makeBricks(UGBlocks.shiverstone_bricks, UGBlocks.shiverstone).build(consumer);
         makeBricks(UGBlocks.tremblecrust_bricks, UGBlocks.tremblecrust).build(consumer);
 
+        makeChiseledBricks(UGBlocks.chiseled_depthrock_bricks, UGBlocks.depthrock_brick_slab).build(consumer);
+        makeChiseledBricks(UGBlocks.chiseled_shiverstone_bricks, UGBlocks.shiverstone_brick_slab).build(consumer);
+
         makeWood(UGBlocks.smogstem_wood, UGBlocks.smogstem_log).build(consumer);
         makeWood(UGBlocks.stripped_smogstem_wood, UGBlocks.stripped_smogstem_log).build(consumer);
         makeWood(UGBlocks.wigglewood_wood, UGBlocks.wigglewood_log).build(consumer);

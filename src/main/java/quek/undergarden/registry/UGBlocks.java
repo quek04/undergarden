@@ -95,21 +95,20 @@ public class UGBlocks {
 
     //mushroom
     public static final RegistryObject<Block> indigo_mushroom = registerBlock("indigo_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM).setLightLevel((state) -> 2)));
-    public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
-    public static final RegistryObject<Block> ink_mushroom = registerBlock("ink_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
-    public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
-
     public static final RegistryObject<Block> indigo_mushroom_cap = registerBlock("indigo_mushroom_cap", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> indigo_mushroom_stalk = registerBlock("indigo_mushroom_stalk", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
 
+    public static final RegistryObject<Block> veil_mushroom = registerBlock("veil_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> veil_mushroom_cap = registerBlock("veil_mushroom_cap", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> veil_mushroom_stalk = registerBlock("veil_mushroom_stalk", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> mushroom_veil = BLOCKS.register("mushroom_veil", () -> new MushroomVeilBlock(AbstractBlock.Properties.from(Blocks.WEEPING_VINES).noDrops(), Direction.DOWN, VoxelShapes.fullCube(), false));
     public static final RegistryObject<AbstractTopPlantBlock> mushroom_veil_top = BLOCKS.register("mushroom_veil_top", () -> new MushroomVeilTopBlock(AbstractBlock.Properties.from(Blocks.WEEPING_VINES_PLANT).noDrops(), Direction.DOWN, VoxelShapes.fullCube(), false, 0.1D));
 
+    public static final RegistryObject<Block> ink_mushroom = registerBlock("ink_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> ink_mushroom_cap = registerBlock("ink_mushroom_cap", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> seeping_ink = BLOCKS.register("seeping_ink", () -> new SeepingInkBlock(AbstractBlock.Properties.create(Material.WOOD).zeroHardnessAndResistance().noDrops().notSolid().doesNotBlockMovement()));
 
+    public static final RegistryObject<Block> blood_mushroom = registerBlock("blood_mushroom", () -> new UGMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> blood_mushroom_cap = registerBlock("blood_mushroom_cap", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> blood_mushroom_globule = registerBlock("blood_mushroom_globule", () -> new Block(AbstractBlock.Properties.from(Blocks.RED_MUSHROOM_BLOCK).sound(SoundType.SLIME)));
     public static final RegistryObject<Block> blood_mushroom_stalk = registerBlock("blood_mushroom_stalk", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.MUSHROOM_STEM)));

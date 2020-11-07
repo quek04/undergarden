@@ -71,10 +71,11 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.mushroom_veil);
         crossBlock(UGBlocks.mushroom_veil_top);
         block(UGBlocks.forgotten_block);
-
         block(UGBlocks.cloggrum_block);
         block(UGBlocks.froststeel_block);
         block(UGBlocks.utherium_block);
+        block(UGBlocks.chiseled_depthrock_bricks);
+        block(UGBlocks.chiseled_shiverstone_bricks);
 
         stairs(UGBlocks.depthrock_stairs, "depthrock");
         stairs(UGBlocks.depthrock_brick_stairs, "depthrock_bricks");

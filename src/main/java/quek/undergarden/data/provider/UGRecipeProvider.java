@@ -111,6 +111,14 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
+    public ShapedRecipeBuilder makeChiseledBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> materialIn) {
+        return ShapedRecipeBuilder.shapedRecipe(bricksOut.get())
+                .patternLine("M")
+                .patternLine("M")
+                .key('M', materialIn.get())
+                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+    }
+
     public ShapedRecipeBuilder makeWood(Supplier<? extends Block> woodOut, Supplier<? extends Block> materialIn) {
         return ShapedRecipeBuilder.shapedRecipe(woodOut.get(), 3)
                 .patternLine("MM")

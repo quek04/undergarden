@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M",
+    "M"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:depthrock_brick_slab"
+    }
+  },
+  "result": {
+    "item": "undergarden:chiseled_depthrock_bricks"
+  }
+}

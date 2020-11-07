@@ -47,82 +47,80 @@ public class UGLang extends LanguageProvider {
     @Override
     protected void addTranslations() {
         addBlock(UGBlocks.undergarden_portal, "Undergarden Portal");
-        addBlock(UGBlocks.deepsoil, "Deepsoil");
-        addBlock(UGBlocks.deepsoil_farmland, "Deepsoil Farmland");
-        addBlock(UGBlocks.coarse_deepsoil, "Coarse Deepsoil");
-        addBlock(UGBlocks.deepturf_block, "Deepturf Block");
-        addBlock(UGBlocks.ashen_deepturf_block, "Ashen Deepturf Block");
+        addBlock(UGBlocks.cloggrum_bars, "Cloggrum Bars");
+
         addBlock(UGBlocks.depthrock, "Depthrock");
-        addBlock(UGBlocks.smogstem_planks, "Smogstem Planks");
-        addBlock(UGBlocks.wigglewood_planks, "Wigglewood Planks");
-        addBlock(UGBlocks.grongle_planks, "Grongle Planks");
         addBlock(UGBlocks.depthrock_bricks, "Depthrock Bricks");
         addBlock(UGBlocks.cracked_depthrock_bricks, "Cracked Depthrock Bricks");
+        addBlock(UGBlocks.chiseled_depthrock_bricks, "Chiseled Depthrock Bricks");
+        addBlock(UGBlocks.depthrock_stairs, "Depthrock Stairs");
+        addBlock(UGBlocks.depthrock_brick_stairs, "Depthrock Brick Stairs");
+        addBlock(UGBlocks.depthrock_slab, "Depthrock Slab");
+        addBlock(UGBlocks.depthrock_brick_slab, "Depthrock Brick Slab");
+        addBlock(UGBlocks.depthrock_wall, "Depthrock Wall");
+        addBlock(UGBlocks.depthrock_brick_wall, "Depthrock Brick Wall");
+        addBlock(UGBlocks.depthrock_button, "Depthrock Button");
+        addBlock(UGBlocks.depthrock_pressure_plate, "Depthrock Pressure Plate");
+
         addBlock(UGBlocks.shiverstone, "Shiverstone");
         addBlock(UGBlocks.shiverstone_bricks, "Shiverstone Bricks");
         addBlock(UGBlocks.cracked_shiverstone_bricks, "Cracked Shiverstone Bricks");
-        addBlock(UGBlocks.goo, "Scintling Goo");
-        addBlock(UGBlocks.smog_vent, "Smog Vent");
+        addBlock(UGBlocks.chiseled_shiverstone_bricks, "Chiseled Shiverstone Bricks");
+        addBlock(UGBlocks.shiverstone_stairs, "Shiverstone Stairs");
+        addBlock(UGBlocks.shiverstone_brick_stairs, "Shiverstone Brick Stairs");
+        addBlock(UGBlocks.shiverstone_slab, "Shiverstone Slab");
+        addBlock(UGBlocks.shiverstone_brick_slab, "Shiverstone Brick Slab");
+        addBlock(UGBlocks.shiverstone_wall, "Shiverstone Wall");
+        addBlock(UGBlocks.shiverstone_brick_wall, "Shiverstone Brick Wall");
+        addBlock(UGBlocks.shiverstone_button, "Shiverstone Button");
+        addBlock(UGBlocks.shiverstone_pressure_plate, "Shiverstone Pressure Plate");
 
         addBlock(UGBlocks.tremblecrust, "Tremblecrust");
         addBlock(UGBlocks.loose_tremblecrust, "Loose Tremblecrust");
         addBlock(UGBlocks.tremblecrust_bricks, "Tremblecrust Bricks");
 
+        addBlock(UGBlocks.deepturf_block, "Deepturf Block");
+        addBlock(UGBlocks.ashen_deepturf_block, "Ashen Deepturf Block");
+        addBlock(UGBlocks.deepsoil, "Deepsoil");
+        addBlock(UGBlocks.coarse_deepsoil, "Coarse Deepsoil");
+        addBlock(UGBlocks.deepsoil_farmland, "Deepsoil Farmland");
+        addBlock(UGBlocks.goo, "Scintling Goo");
+        addBlock(UGBlocks.smog_vent, "Smog Vent");
+
         addBlock(UGBlocks.underbean_bush, "Underbean Bush");
         addBlock(UGBlocks.blisterberry_bush, "Blisterberry Bush");
-
-        addBlock(UGBlocks.smogstem_sapling, "Smogstem Sapling");
-        addBlock(UGBlocks.smogstem_log, "Smogstem Log");
-        addBlock(UGBlocks.stripped_smogstem_log, "Stripped Smogstem Log");
-        addBlock(UGBlocks.smogstem_wood, "Smogstem Wood");
-        addBlock(UGBlocks.stripped_smogstem_wood, "Stripped Smogstem Wood");
-        addBlock(UGBlocks.smogstem_leaves, "Smogstem Leaves");
-
-        addBlock(UGBlocks.wigglewood_sapling, "Wigglewood Sapling");
-        addBlock(UGBlocks.wigglewood_log, "Wigglewood Log");
-        addBlock(UGBlocks.stripped_wigglewood_log, "Stripped Wigglewood Log");
-        addBlock(UGBlocks.wigglewood_wood, "Wigglewood.. Wood");
-        addBlock(UGBlocks.stripped_wigglewood_wood, "Stripped Wigglewood Wood");
-        addBlock(UGBlocks.wigglewood_leaves, "Wigglewood Leaves");
-
-        addBlock(UGBlocks.gronglet, "Gronglet");
-        addBlock(UGBlocks.grongle_stem, "Grongle Stem");
-        addBlock(UGBlocks.stripped_grongle_stem, "Stripped Grongle Stem");
-        addBlock(UGBlocks.grongle_hyphae, "Grongle Hyphae");
-        addBlock(UGBlocks.stripped_grongle_hyphae, "Stripped Grongle Hyphae");
-        addBlock(UGBlocks.grongle_cap, "Grongle Cap");
-
-        addBlock(UGBlocks.indigo_mushroom_cap, "Indigo Mushroom Cap");
-        addBlock(UGBlocks.indigo_mushroom_stalk, "Indigo Mushroom Stalk");
-
-        addBlock(UGBlocks.veil_mushroom_cap, "Veil Mushroom Cap");
-        addBlock(UGBlocks.veil_mushroom_stalk, "Veil Mushroom Stalk");
-        addBlock(UGBlocks.mushroom_veil_top, "Mushroom Veil");
-
-        addBlock(UGBlocks.ink_mushroom_cap, "Ink Mushroom Cap");
-        addBlock(UGBlocks.seeping_ink, "Seeping Ink");
-
-        addBlock(UGBlocks.blood_mushroom_cap, "Blood Mushroom Cap");
-        addBlock(UGBlocks.blood_mushroom_globule, "Blood Mushroom Globule");
-        addBlock(UGBlocks.blood_mushroom_stalk, "Blood Mushroom Stalk");
-
         addBlock(UGBlocks.deepturf, "Deepturf");
         addBlock(UGBlocks.ashen_deepturf, "Ashen Deepturf");
         addBlock(UGBlocks.tall_deepturf, "Tall Deepturf");
         addBlock(UGBlocks.shimmerweed, "Shimmerweed");
         addBlock(UGBlocks.tall_shimmerweed, "Tall Shimmerweed");
         addBlock(UGBlocks.ditchbulb_plant, "Ditchbulb Plant");
-        addBlock(UGBlocks.indigo_mushroom, "Indigo Mushroom");
-        addBlock(UGBlocks.veil_mushroom, "Veiled Mushroom");
-        addBlock(UGBlocks.ink_mushroom, "Ink Mushroom");
-        addBlock(UGBlocks.blood_mushroom, "Blood Mushroom");
         addBlock(UGBlocks.gloomgourd, "Gloomgourd");
         addBlock(UGBlocks.carved_gloomgourd, "Carved Gloomgourd");
+        addBlock(UGBlocks.gloom_o_lantern, "Gloom o'Lantern");
         addBlock(UGBlocks.gloomgourd_stem, "Gloomgourd Stem");
         addBlock(UGBlocks.depthrock_pebbles, "Depthrock Pebbles");
         addBlock(UGBlocks.glowing_kelp, "Glitterkelp");
         addBlock(UGBlocks.glowing_kelp_plant, "Glitterkelp");
         addBlock(UGBlocks.droopvine_top, "Droopvine");
+
+        addBlock(UGBlocks.indigo_mushroom, "Indigo Mushroom");
+        addBlock(UGBlocks.indigo_mushroom_cap, "Indigo Mushroom Cap");
+        addBlock(UGBlocks.indigo_mushroom_stalk, "Indigo Mushroom Stalk");
+
+        addBlock(UGBlocks.veil_mushroom, "Veiled Mushroom");
+        addBlock(UGBlocks.veil_mushroom_cap, "Veil Mushroom Cap");
+        addBlock(UGBlocks.veil_mushroom_stalk, "Veil Mushroom Stalk");
+        addBlock(UGBlocks.mushroom_veil_top, "Mushroom Veil");
+
+        addBlock(UGBlocks.ink_mushroom, "Ink Mushroom");
+        addBlock(UGBlocks.ink_mushroom_cap, "Ink Mushroom Cap");
+        addBlock(UGBlocks.seeping_ink, "Seeping Ink");
+
+        addBlock(UGBlocks.blood_mushroom, "Blood Mushroom");
+        addBlock(UGBlocks.blood_mushroom_cap, "Blood Mushroom Cap");
+        addBlock(UGBlocks.blood_mushroom_globule, "Blood Mushroom Globule");
+        addBlock(UGBlocks.blood_mushroom_stalk, "Blood Mushroom Stalk");
 
         addBlock(UGBlocks.coal_ore, "Undergarden Coal Ore");
         addBlock(UGBlocks.iron_ore, "Undergarden Iron Ore");
@@ -140,57 +138,53 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.regalium_block, "Block of Regalium");
         addBlock(UGBlocks.forgotten_block, "Block of Forgotten Ore");
 
-        addBlock(UGBlocks.gloom_o_lantern, "Gloom o'Lantern");
-        addBlock(UGBlocks.cloggrum_bars, "Cloggrum Bars");
-
-        addBlock(UGBlocks.depthrock_stairs, "Depthrock Stairs");
-        addBlock(UGBlocks.depthrock_brick_stairs, "Depthrock Brick Stairs");
+        addBlock(UGBlocks.smogstem_sapling, "Smogstem Sapling");
+        addBlock(UGBlocks.smogstem_log, "Smogstem Log");
+        addBlock(UGBlocks.stripped_smogstem_log, "Stripped Smogstem Log");
+        addBlock(UGBlocks.smogstem_wood, "Smogstem Wood");
+        addBlock(UGBlocks.stripped_smogstem_wood, "Stripped Smogstem Wood");
+        addBlock(UGBlocks.smogstem_leaves, "Smogstem Leaves");
+        addBlock(UGBlocks.smogstem_planks, "Smogstem Planks");
         addBlock(UGBlocks.smogstem_stairs, "Smogstem Stairs");
-        addBlock(UGBlocks.wigglewood_stairs, "Wigglewood Stairs");
-        addBlock(UGBlocks.grongle_stairs, "Grongle Stairs");
-        addBlock(UGBlocks.shiverstone_stairs, "Shiverstone Stairs");
-        addBlock(UGBlocks.shiverstone_brick_stairs, "Shiverstone Brick Stairs");
-
-        addBlock(UGBlocks.depthrock_slab, "Depthrock Slab");
-        addBlock(UGBlocks.depthrock_brick_slab, "Depthrock Brick Slab");
         addBlock(UGBlocks.smogstem_slab, "Smogstem Slab");
-        addBlock(UGBlocks.wigglewood_slab, "Wigglewood Slab");
-        addBlock(UGBlocks.grongle_slab, "Grongle Slab");
-        addBlock(UGBlocks.shiverstone_slab, "Shiverstone Slab");
-        addBlock(UGBlocks.shiverstone_brick_slab, "Shiverstone Brick Slab");
-
-        addBlock(UGBlocks.depthrock_wall, "Depthrock Wall");
-        addBlock(UGBlocks.depthrock_brick_wall, "Depthrock Brick Wall");
-        addBlock(UGBlocks.shiverstone_wall, "Shiverstone Wall");
-        addBlock(UGBlocks.shiverstone_brick_wall, "Shiverstone Brick Wall");
-
         addBlock(UGBlocks.smogstem_fence, "Smogstem Fence");
-        addBlock(UGBlocks.wigglewood_fence, "Wigglewood Fence");
-        addBlock(UGBlocks.grongle_fence, "Grongle Fence");
-
         addBlock(UGBlocks.smogstem_fence_gate, "Smogstem Fence Gate");
-        addBlock(UGBlocks.wigglewood_fence_gate, "Wigglewood Fence Gate");
-        addBlock(UGBlocks.grongle_fence_gate, "Grongle Fence Gate");
-
         addBlock(UGBlocks.smogstem_door, "Smogstem Door");
-        addBlock(UGBlocks.wigglewood_door, "Wigglewood Door");
-        addBlock(UGBlocks.grongle_door, "Grongle Door");
-
         addBlock(UGBlocks.smogstem_trapdoor, "Smogstem Trapdoor");
-        addBlock(UGBlocks.wigglewood_trapdoor, "Wigglewood Trapdoor");
-        addBlock(UGBlocks.grongle_trapdoor, "Grongle Trapdoor");
-
         addBlock(UGBlocks.smogstem_button, "Smogstem Button");
-        addBlock(UGBlocks.wigglewood_button, "Wigglewood Button");
-        addBlock(UGBlocks.grongle_button, "Grongle Button");
-        addBlock(UGBlocks.depthrock_button, "Depthrock Button");
-        addBlock(UGBlocks.shiverstone_button, "Shiverstone Button");
-
         addBlock(UGBlocks.smogstem_pressure_plate, "Smogstem Pressure Plate");
+
+        addBlock(UGBlocks.wigglewood_sapling, "Wigglewood Sapling");
+        addBlock(UGBlocks.wigglewood_log, "Wigglewood Log");
+        addBlock(UGBlocks.stripped_wigglewood_log, "Stripped Wigglewood Log");
+        addBlock(UGBlocks.wigglewood_wood, "Wigglewood.. Wood");
+        addBlock(UGBlocks.stripped_wigglewood_wood, "Stripped Wigglewood Wood");
+        addBlock(UGBlocks.wigglewood_leaves, "Wigglewood Leaves");
+        addBlock(UGBlocks.wigglewood_planks, "Wigglewood Planks");
+        addBlock(UGBlocks.wigglewood_stairs, "Wigglewood Stairs");
+        addBlock(UGBlocks.wigglewood_slab, "Wigglewood Slab");
+        addBlock(UGBlocks.wigglewood_fence, "Wigglewood Fence");
+        addBlock(UGBlocks.wigglewood_fence_gate, "Wigglewood Fence Gate");
+        addBlock(UGBlocks.wigglewood_door, "Wigglewood Door");
+        addBlock(UGBlocks.wigglewood_trapdoor, "Wigglewood Trapdoor");
+        addBlock(UGBlocks.wigglewood_button, "Wigglewood Button");
         addBlock(UGBlocks.wigglewood_pressure_plate, "Wigglewood Pressure Plate");
+
+        addBlock(UGBlocks.gronglet, "Gronglet");
+        addBlock(UGBlocks.grongle_stem, "Grongle Stem");
+        addBlock(UGBlocks.stripped_grongle_stem, "Stripped Grongle Stem");
+        addBlock(UGBlocks.grongle_hyphae, "Grongle Hyphae");
+        addBlock(UGBlocks.stripped_grongle_hyphae, "Stripped Grongle Hyphae");
+        addBlock(UGBlocks.grongle_cap, "Grongle Cap");
+        addBlock(UGBlocks.grongle_planks, "Grongle Planks");
+        addBlock(UGBlocks.grongle_stairs, "Grongle Stairs");
+        addBlock(UGBlocks.grongle_slab, "Grongle Slab");
+        addBlock(UGBlocks.grongle_fence, "Grongle Fence");
+        addBlock(UGBlocks.grongle_fence_gate, "Grongle Fence Gate");
+        addBlock(UGBlocks.grongle_door, "Grongle Door");
+        addBlock(UGBlocks.grongle_trapdoor, "Grongle Trapdoor");
+        addBlock(UGBlocks.grongle_button, "Grongle Button");
         addBlock(UGBlocks.grongle_pressure_plate, "Grongle Pressure Plate");
-        addBlock(UGBlocks.depthrock_pressure_plate, "Depthrock Pressure Plate");
-        addBlock(UGBlocks.shiverstone_pressure_plate, "Shiverstone Pressure Plate");
 
         addItem(UGItems.catalyst_item, "Catalyst");
         addItem(UGItems.depthrock_pebble, "Depthrock Pebble");
@@ -235,7 +229,13 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.utheric_pickaxe, "Utherium Pickaxe");
         addItem(UGItems.utheric_axe, "Utherium Axe");
         addItem(UGItems.utheric_shovel, "Utherium Shovel");
-        addItem(UGItems.utheric_hoe, "Utheric Hoe");
+        addItem(UGItems.utheric_hoe, "Utherium Hoe");
+
+        addItem(UGItems.forgotten_sword, "Forgotten Sword");
+        addItem(UGItems.forgotten_pickaxe, "Forgotten Pickaxe");
+        addItem(UGItems.forgotten_axe, "Forgotten Axe");
+        addItem(UGItems.forgotten_shovel, "Forgotten Shovel");
+        addItem(UGItems.forgotten_hoe, "Forgotten Hoe");
 
         addItem(UGItems.smogstem_boat, "Smogstem Boat");
         addItem(UGItems.wigglewood_boat, "Wigglewood Boat");

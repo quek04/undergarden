@@ -202,6 +202,8 @@ public class UGLootTables extends LootTableProvider {
             dropAsSilk(UGBlocks.veil_mushroom_stalk);
             this.registerLootTable(UGBlocks.ink_mushroom_cap.get(), (mushroom) -> droppingItemRarely(mushroom, UGBlocks.ink_mushroom.get()));
             dropSelf(UGBlocks.forgotten_block);
+            dropSelf(UGBlocks.chiseled_depthrock_bricks);
+            dropSelf(UGBlocks.chiseled_shiverstone_bricks);
         }
 
         @Override
