@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:forgotten_ingot"
+    }
+  ],
+  "result": {
+    "item": "undergarden:forgotten_nugget",
+    "count": 9
+  }
+}

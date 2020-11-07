@@ -3,6 +3,7 @@ package quek.undergarden.registry;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,19 +17,29 @@ public class UGItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, UGMod.MODID);
 
+    private static final Rarity forgotten = Rarity.create("forgotten", TextFormatting.GREEN);
+
     //normal stuff
     public static final RegistryObject<Item> catalyst_item = ITEMS.register("catalyst", CatalystItem::new);
     public static final RegistryObject<Item> depthrock_pebble = ITEMS.register("depthrock_pebble", DepthrockPebbleItem::new);
     public static final RegistryObject<Item> twistytwig = ITEMS.register("twistytwig", UGItem::new);
+
     public static final RegistryObject<Item> cloggrum_ingot = ITEMS.register("cloggrum_ingot", UGItem::new);
     public static final RegistryObject<Item> cloggrum_nugget = ITEMS.register("cloggrum_nugget", UGItem::new);
+
     public static final RegistryObject<Item> froststeel_ingot = ITEMS.register("froststeel_ingot", UGItem::new);
     public static final RegistryObject<Item> froststeel_nugget = ITEMS.register("froststeel_nugget", UGItem::new);
+
     public static final RegistryObject<Item> utheric_shard = ITEMS.register("utheric_shard", UGItem::new);
     public static final RegistryObject<Item> utherium_ingot = ITEMS.register("utherium_ingot", UGItem::new);
     public static final RegistryObject<Item> utherium_chunk = ITEMS.register("utherium_chunk", UGItem::new);
+
     public static final RegistryObject<Item> regalium_ingot = ITEMS.register("regalium_ingot", () -> new UGItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> regalium_nugget = ITEMS.register("regalium_nugget", () -> new UGItem(Rarity.UNCOMMON));
+
+    public static final RegistryObject<Item> forgotten_ingot = ITEMS.register("forgotten_ingot", () -> new UGItem(forgotten));
+    public static final RegistryObject<Item> forgotten_nugget = ITEMS.register("forgotten_nugget", () -> new UGItem(forgotten));
+
     public static final RegistryObject<Item> shard_torch = ITEMS.register("shard_torch", () -> new WallOrFloorItem(
             UGBlocks.shard_torch.get(), UGBlocks.shard_wall_torch.get(), new Item.Properties().group(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> gloomgourd_seeds = ITEMS.register("gloomgourd_seeds", () -> new BlockNamedItem(
@@ -66,6 +77,12 @@ public class UGItems {
     public static final RegistryObject<AxeItem> utheric_axe = ITEMS.register("utheric_axe", () -> new UGAxeItem(UGTools.UTHERIC, 3.5F));
     public static final RegistryObject<ShovelItem> utheric_shovel = ITEMS.register("utheric_shovel", () -> new UGShovelItem(UGTools.UTHERIC));
     public static final RegistryObject<HoeItem> utheric_hoe = ITEMS.register("utheric_hoe", () -> new UGHoeItem(UGTools.UTHERIC, -3, 0.0F));
+
+    public static final RegistryObject<SwordItem> forgotten_sword = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGTools.FORGOTTEN));
+    public static final RegistryObject<PickaxeItem> forgotten_pickaxe = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGTools.FORGOTTEN));
+    public static final RegistryObject<AxeItem> forgotten_axe = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGTools.FORGOTTEN, 2F));
+    public static final RegistryObject<ShovelItem> forgotten_shovel = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGTools.FORGOTTEN));
+    public static final RegistryObject<HoeItem> forgotten_hoe = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGTools.FORGOTTEN, -3, 0.0F));
 
     public static final RegistryObject<Item> slingshot = ITEMS.register("slingshot", SlingshotItem::new);
 

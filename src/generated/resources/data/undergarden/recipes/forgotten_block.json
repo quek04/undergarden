@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "undergarden:forgotten_ingot"
+    }
+  },
+  "result": {
+    "item": "undergarden:forgotten_block"
+  }
+}

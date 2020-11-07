@@ -210,22 +210,26 @@ public class UGRecipes extends UGRecipeProvider {
         makeIngotToBlock(UGBlocks.froststeel_block, UGItems.froststeel_ingot).build(consumer);
         makeIngotToBlock(UGBlocks.utherium_block, UGItems.utherium_ingot).build(consumer);
         makeIngotToBlock(UGBlocks.regalium_block, UGItems.regalium_ingot).build(consumer);
+        makeIngotToBlock(UGBlocks.forgotten_block, UGItems.forgotten_ingot).build(consumer);
         makeIngotToBlock(UGBlocks.depthrock, UGItems.depthrock_pebble).build(consumer, name("pebbles_to_depthrock"));
 
         makeBlockToIngot(UGItems.cloggrum_ingot, UGBlocks.cloggrum_block).build(consumer, name("cloggrum_block_to_ingot"));
         makeBlockToIngot(UGItems.froststeel_ingot, UGBlocks.froststeel_block).build(consumer, name("froststeel_block_to_ingot"));
         makeBlockToIngot(UGItems.utherium_ingot, UGBlocks.utherium_block).build(consumer, name("utherium_block_to_ingot"));
         makeBlockToIngot(UGItems.regalium_ingot, UGBlocks.regalium_block).build(consumer, name("regalium_block_to_ingot"));
+        makeBlockToIngot(UGItems.forgotten_ingot, UGBlocks.forgotten_block).build(consumer, name("forgotten_block_to_ingot"));
 
         makeIngotToNugget(UGItems.cloggrum_nugget, UGItems.cloggrum_ingot).build(consumer, name("cloggrum_ingot_to_nugget"));
         makeIngotToNugget(UGItems.froststeel_nugget, UGItems.froststeel_ingot).build(consumer, name("froststeel_ingot_to_nugget"));
         makeIngotToNugget(UGItems.utherium_chunk, UGItems.utherium_ingot).build(consumer, name("utherium_ingot_to_nugget"));
         makeIngotToNugget(UGItems.regalium_nugget, UGItems.regalium_ingot).build(consumer, name("regalium_ingot_to_nugget"));
+        makeIngotToNugget(UGItems.forgotten_nugget, UGItems.forgotten_ingot).build(consumer, name("forgotten_ingot_to_nugget"));
 
         makeNuggetToIngot(UGItems.cloggrum_ingot, UGItems.cloggrum_nugget).build(consumer, name("cloggrum_nugget_to_ingot"));
         makeNuggetToIngot(UGItems.froststeel_ingot, UGItems.froststeel_nugget).build(consumer, name("froststeel_nugget_to_ingot"));
         makeNuggetToIngot(UGItems.utherium_ingot, UGItems.utherium_chunk).build(consumer, name("utherium_chunk_to_ingot"));
         makeNuggetToIngot(UGItems.regalium_ingot, UGItems.regalium_nugget).build(consumer, name("regalium_chunk_to_ingot"));
+        makeNuggetToIngot(UGItems.forgotten_ingot, UGItems.forgotten_nugget).build(consumer, name("forgotten_chunk_to_ingot"));
 
         makeSword(UGItems.cloggrum_sword, UGItems.cloggrum_ingot).build(consumer);
         makeSword(UGItems.froststeel_sword, UGItems.froststeel_ingot).build(consumer);

@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "undergarden:utherium_ore",
-    "undergarden:utherium_block"
+    "undergarden:utherium_block",
+    "undergarden:otherside_utherium_ore"
   ]
 }

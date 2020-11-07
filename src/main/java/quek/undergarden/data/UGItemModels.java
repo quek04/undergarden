@@ -113,6 +113,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.stripped_grongle_hyphae);
         itemBlock(UGBlocks.cracked_shiverstone_bricks);
         itemBlock(UGBlocks.blood_mushroom_globule);
+        itemBlock(UGBlocks.forgotten_block);
 
         normalItem(UGItems.catalyst_item);
         normalItem(UGItems.depthrock_pebble);
@@ -126,6 +127,8 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.utherium_chunk);
         normalItem(UGItems.regalium_ingot);
         normalItem(UGItems.regalium_nugget);
+        normalItem(UGItems.forgotten_ingot);
+        normalItem(UGItems.forgotten_nugget);
         torchItem(UGItems.shard_torch);
         normalItem(UGItems.ditchbulb);
         normalItem(UGItems.gloomgourd_seeds);
@@ -171,6 +174,12 @@ public class UGItemModels extends UGItemModelProvider {
         toolItem(UGItems.utheric_axe);
         toolItem(UGItems.utheric_shovel);
         toolItem(UGItems.utheric_hoe);
+
+        toolItem(UGItems.forgotten_sword);
+        toolItem(UGItems.forgotten_pickaxe);
+        toolItem(UGItems.forgotten_axe);
+        toolItem(UGItems.forgotten_shovel);
+        toolItem(UGItems.forgotten_hoe);
 
         normalItem(UGItems.smogstem_boat);
         normalItem(UGItems.wigglewood_boat);

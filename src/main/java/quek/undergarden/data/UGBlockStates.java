@@ -70,6 +70,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.seeping_ink);
         crossBlock(UGBlocks.mushroom_veil);
         crossBlock(UGBlocks.mushroom_veil_top);
+        normalBlock(UGBlocks.forgotten_block);
 
         normalBlock(UGBlocks.cloggrum_block);
         normalBlock(UGBlocks.froststeel_block);

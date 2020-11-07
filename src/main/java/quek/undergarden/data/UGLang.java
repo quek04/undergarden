@@ -134,10 +134,12 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.otherside_utherium_ore, "Utherium Ore");
         addBlock(UGBlocks.regalium_ore, "Regalium Ore");
 
-        addBlock(UGBlocks.cloggrum_block, "Cloggrum Block");
-        addBlock(UGBlocks.froststeel_block, "Froststeel Block");
-        addBlock(UGBlocks.utherium_block, "Utherium Block");
-        addBlock(UGBlocks.regalium_block, "Regalium Block");
+        addBlock(UGBlocks.cloggrum_block, "Block of Cloggrum");
+        addBlock(UGBlocks.froststeel_block, "Block of Froststeel");
+        addBlock(UGBlocks.utherium_block, "Block of Utherium");
+        addBlock(UGBlocks.regalium_block, "Block of Regalium");
+        addBlock(UGBlocks.forgotten_block, "Block of Forgotten Ore");
+
         addBlock(UGBlocks.gloom_o_lantern, "Gloom o'Lantern");
         addBlock(UGBlocks.cloggrum_bars, "Cloggrum Bars");
 
@@ -202,6 +204,8 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.utherium_chunk, "Utherium Chunk");
         addItem(UGItems.regalium_ingot, "Regalium Ingot");
         addItem(UGItems.regalium_nugget, "Regalium Nugget");
+        addItem(UGItems.forgotten_ingot, "Forgotten Ingot");
+        addItem(UGItems.forgotten_nugget, "Forgotten Nugget");
         addItem(UGItems.shard_torch, "Shard Torch");
         addItem(UGItems.gloomgourd_seeds, "Gloomgourd Seeds");
         addItem(UGItems.ditchbulb, "Ditchbulb");
