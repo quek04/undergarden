@@ -8,7 +8,7 @@ version="${file.jarVersion}"
 displayName="The Undergarden"
 logoFile="logo.png"
 logoBlur=false
-credits="Screem: music, some sounds & art; Gecko: made the old biome provider"
+credits="Screem, Julian++, Gecko"
 authors="quek"
 description='''Deep underground, a forgotten land awaits.'''
 [[dependencies.undergarden]]
