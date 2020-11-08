@@ -27,16 +27,13 @@ public class UGStructures {
 
     public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, UGMod.MODID);
 
-    public static final RegistryObject<Structure<NoFeatureConfig>> forgotten_ruin = STRUCTURES.register("forgotten_ruin", () -> new ForgottenRuinsStructure(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<Structure<NoFeatureConfig>> forgotten_castle = STRUCTURES.register("forgotten_castle", () -> new ForgottenCastleStructure(NoFeatureConfig.field_236558_a_));
 
     public static void registerStructures() {
-        setupStructure(forgotten_ruin.get(), new StructureSeparationSettings(4, 2, 276320041), true);
         setupStructure(forgotten_castle.get(), new StructureSeparationSettings(16, 8, 276320042), true);
     }
 
     public static void registerConfiguredStructures() {
-        Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(UGMod.MODID, "forgotten_ruin"), forgotten_ruin.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(UGMod.MODID, "forgotten_castle"), forgotten_castle.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
     }
 
@@ -49,7 +46,6 @@ public class UGStructures {
             }
             Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkProvider().generator.func_235957_b_().func_236195_a_());
 
-            tempMap.put(UGStructures.forgotten_ruin.get(), DimensionStructuresSettings.field_236191_b_.get(UGStructures.forgotten_ruin.get()));
             tempMap.put(UGStructures.forgotten_castle.get(), DimensionStructuresSettings.field_236191_b_.get(UGStructures.forgotten_castle.get()));
 
             serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;

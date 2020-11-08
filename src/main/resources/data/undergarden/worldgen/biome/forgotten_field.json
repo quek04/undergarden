@@ -96,7 +96,6 @@
     ]
   ],
   "starts": [
-    "undergarden:forgotten_ruin",
     "undergarden:forgotten_castle"
   ],
   "spawners": {

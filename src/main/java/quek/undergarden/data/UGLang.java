@@ -360,9 +360,6 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("catch_gwibling", "Weird Fish");
         addAdvDesc("catch_gwibling", "Catch a Gwibling with a bucket.");
 
-        addAdvTitle("ruin", "Remnants of the Past");
-        addAdvDesc("ruin", "Find a Forgotten Ruin.");
-
         addAdvTitle("castle", "What Once Was");
         addAdvDesc("castle", "Enter a Forgotten Castle.");
 
