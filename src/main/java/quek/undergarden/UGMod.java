@@ -15,17 +15,10 @@ import net.minecraft.item.*;
 import net.minecraft.potion.PotionBrewing;
 import net.minecraft.potion.Potions;
 import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.FlatChunkGenerator;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.settings.DimensionStructuresSettings;
-import net.minecraft.world.gen.settings.StructureSeparationSettings;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -42,9 +35,6 @@ import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
 import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.UGSpawnEggItem;
 import quek.undergarden.registry.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Mod(UGMod.MODID)
 public class UGMod {
@@ -211,7 +201,7 @@ public class UGMod {
 		ClientStuff.registerBlockColors();
 		ClientStuff.registerItemColors();
 
-		DimensionRenderInfo.field_239208_a_.put(new ResourceLocation(MODID, "undergarden"), new UGDimensionRenderInfo());
+		DimensionRenderInfo.field_239208_a_.put(UGDimensions.undergarden.getLocation(), new UGDimensionRenderInfo());
 		//TODO: OthersideDRI
 	}
 
