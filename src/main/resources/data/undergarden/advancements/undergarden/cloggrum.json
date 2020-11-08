@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "undergarden:underbeans"
+      "item": "undergarden:cloggrum_ore"
     },
     "title": {
-      "translate": "advancement.glorious_beans.title"
+      "translate": "advancement.cloggrum.title"
     },
     "description": {
-      "translate": "advancement.glorious_beans.desc"
+      "translate": "advancement.cloggrum.desc"
     },
     "show_toast": true,
     "announce_to_chat": true,
@@ -15,12 +15,12 @@
   },
   "parent": "undergarden:undergarden/enter_undergarden",
   "criteria": {
-    "has_bean": {
+    "has_cloggrum": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "undergarden:underbeans"
+            "item": "undergarden:cloggrum_ingot"
           }
         ]
       }

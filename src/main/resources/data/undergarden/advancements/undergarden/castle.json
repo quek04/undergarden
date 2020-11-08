@@ -11,7 +11,7 @@
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "goal"
+    "frame": "task"
   },
   "parent": "undergarden:undergarden/enter_undergarden",
   "criteria": {

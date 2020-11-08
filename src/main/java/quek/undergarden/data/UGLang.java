@@ -330,8 +330,8 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("undergarden", "Enter the Undergarden");
         addAdvDesc("undergarden", "The forgotten land awaits...");
 
-        addAdvTitle("gourd_lord", "Gourd Lord");
-        addAdvDesc("gourd_lord", "Acquire a stack of Gloomgourds.");
+        addAdvTitle("64gloomgourds", "Gourd Lord");
+        addAdvDesc("64gloomgourds", "Acquire a stack of Gloomgourds.");
 
         addAdvTitle("slingshot", "Your New Best Friend");
         addAdvDesc("slingshot", "Craft a Slingshot.");
@@ -342,29 +342,32 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("shard_torch", "Warding Device");
         addAdvDesc("shard_torch", "Craft a Shard Torch, a torch that can damage Rotspawn in its vicinity.");
 
-        addAdvTitle("rotbane", "Rotbane");
-        addAdvDesc("rotbane", "Slay all kinds of Rotspawn.");
+        addAdvTitle("slay_all_rotspawn", "Rotbane");
+        addAdvDesc("slay_all_rotspawn", "Slay all kinds of Rotspawn.");
 
-        addAdvTitle("subterranean_cartographer", "Subterranean Cartographer");
-        addAdvDesc("subterranean_cartographer", "Discover every Undergarden biome.");
+        addAdvTitle("all_undergarden_biomes", "Subterranean Cartographer");
+        addAdvDesc("all_undergarden_biomes", "Discover every Undergarden biome.");
 
-        addAdvTitle("deep_extraction", "Deep Extraction");
-        addAdvDesc("deep_extraction", "Acquire a Cloggrum Ingot.");
+        addAdvTitle("cloggrum", "Deep Extraction");
+        addAdvDesc("cloggrum", "Acquire a Cloggrum Ingot.");
 
-        addAdvTitle("glorious_beans", "Glorious Beans!");
-        addAdvDesc("glorious_beans", "Find and pick an Underbean Bush.");
+        addAdvTitle("underbeans", "Glorious Beans!");
+        addAdvDesc("underbeans", "Find and pick an Underbean Bush.");
 
         addAdvTitle("trade_with_stoneborn", "Interdimensional Business");
         addAdvDesc("trade_with_stoneborn", "Trade with a Stoneborn.");
 
-        addAdvTitle("weird_fish", "Weird Fish");
-        addAdvDesc("weird_fish", "Catch a Gwibling with a bucket.");
+        addAdvTitle("catch_gwibling", "Weird Fish");
+        addAdvDesc("catch_gwibling", "Catch a Gwibling with a bucket.");
 
         addAdvTitle("ruin", "Remnants of the Past");
         addAdvDesc("ruin", "Find a Forgotten Ruin.");
 
         addAdvTitle("castle", "What Once Was");
         addAdvDesc("castle", "Enter a Forgotten Castle.");
+
+        addAdvTitle("plant_gloomgourd", "Purple Pumpkins");
+        addAdvDesc("plant_gloomgourd", "Plant a Gloomgourd seed.");
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");

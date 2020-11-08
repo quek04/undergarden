@@ -4,17 +4,17 @@
       "item": "undergarden:gloomgourd"
     },
     "title": {
-      "translate": "advancement.gourd_lord.title"
+      "translate": "advancement.64gloomgourds.title"
     },
     "description": {
-      "translate": "advancement.gourd_lord.desc"
+      "translate": "advancement.64gloomgourds.desc"
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "task",
+    "frame": "goal",
     "hidden": true
   },
-  "parent": "undergarden:undergarden/glorious_beans",
+  "parent": "undergarden:undergarden/plant_gloomgourd",
   "criteria": {
     "has_gourds": {
       "trigger": "minecraft:inventory_changed",

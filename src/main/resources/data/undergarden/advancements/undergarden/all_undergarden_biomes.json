@@ -4,10 +4,10 @@
       "item": "undergarden:cloggrum_boots"
     },
     "title": {
-      "translate": "advancement.subterranean_cartographer.title"
+      "translate": "advancement.all_undergarden_biomes.title"
     },
     "description": {
-      "translate": "advancement.subterranean_cartographer.desc"
+      "translate": "advancement.all_undergarden_biomes.desc"
     },
     "show_toast": true,
     "announce_to_chat": true,

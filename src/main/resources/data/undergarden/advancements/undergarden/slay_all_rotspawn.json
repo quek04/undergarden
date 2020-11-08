@@ -4,10 +4,10 @@
       "item": "undergarden:utheric_sword"
     },
     "title": {
-      "translate": "advancement.rotbane.title"
+      "translate": "advancement.slay_all_rotspawn.title"
     },
     "description": {
-      "translate": "advancement.rotbane.desc"
+      "translate": "advancement.slay_all_rotspawn.desc"
     },
     "show_toast": true,
     "announce_to_chat": true,

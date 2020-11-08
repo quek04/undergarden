@@ -1,26 +1,26 @@
 {
   "display": {
     "icon": {
-      "item": "undergarden:gwibling_bucket"
+      "item": "undergarden:underbeans"
     },
     "title": {
-      "translate": "advancement.weird_fish.title"
+      "translate": "advancement.underbeans.title"
     },
     "description": {
-      "translate": "advancement.weird_fish.desc"
+      "translate": "advancement.underbeans.desc"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "frame": "task"
   },
-  "parent": "undergarden:undergarden/glorious_beans",
+  "parent": "undergarden:undergarden/enter_undergarden",
   "criteria": {
-    "has_gourds": {
+    "has_bean": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "undergarden:gwibling_bucket"
+            "item": "undergarden:underbeans"
           }
         ]
       }
