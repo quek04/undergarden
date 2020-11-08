@@ -119,10 +119,6 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     public ActionResultType func_230254_b_(PlayerEntity player, Hand playerHand) {
         ItemStack itemstack = player.getHeldItem(playerHand);
         if (itemstack.getItem() != UGItems.stoneborn_spawn_egg.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
-            if (playerHand == Hand.MAIN_HAND) {
-                //player.addStat(Stats.TALKED_TO_VILLAGER);
-            }
-
             if (this.getOffers().isEmpty()) {
                 return ActionResultType.func_233537_a_(this.world.isRemote);
             } else {
@@ -160,11 +156,10 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
                 this.heal(1);
             }
         }
-
     }
 
     public boolean inUndergarden() {
-        return this.world.getDimensionKey() == (UGDimensions.undergarden_w) && !this.isAIDisabled();
+        return this.world.getDimensionKey() == UGDimensions.undergarden_w && !this.isAIDisabled();
     }
 
     @Override
@@ -257,14 +252,11 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
                 givenMerchantOffers.add(merchantoffer);
             }
         }
-
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void setClientSideOffers(@Nullable MerchantOffers offers) {
-
-    }
+    public void setClientSideOffers(@Nullable MerchantOffers offers) { }
 
     @Override
     public void onTrade(MerchantOffer offer) {
@@ -274,7 +266,6 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         if (this.customer instanceof ServerPlayerEntity) {
             UGCriteria.stoneborn_trade.test((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
         }
-
     }
 
     protected void onStonebornTrade(MerchantOffer offer) {
@@ -282,7 +273,6 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
             int i = 3 + this.rand.nextInt(4);
             this.world.addEntity(new ExperienceOrbEntity(this.world, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), i));
         }
-
     }
 
     @Override
@@ -304,9 +294,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public void setXP(int xpIn) {
-
-    }
+    public void setXP(int xpIn) { }
 
     @Override
     public boolean hasXPBar() {
