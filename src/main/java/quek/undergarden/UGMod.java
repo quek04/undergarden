@@ -26,6 +26,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
 import quek.undergarden.client.ClientStuff;
 import quek.undergarden.client.UGDimensionRenderInfo;
 import quek.undergarden.data.*;
@@ -51,17 +52,23 @@ public class UGMod {
 		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 		forgeBus.addListener(EventPriority.NORMAL, UGStructures::addDimensionalSpacing);
 
-		UGEntityTypes.ENTITIES.register(bus);
-		UGBlocks.BLOCKS.register(bus);
-		UGItems.ITEMS.register(bus);
-		UGFeatures.FEATURES.register(bus);
-		UGCarvers.CARVERS.register(bus);
-		UGEffects.EFFECTS.register(bus);
-		UGPotions.POTIONS.register(bus);
-		UGFluids.FLUIDS.register(bus);
-		UGParticleTypes.PARTICLES.register(bus);
-		UGTileEntities.TEs.register(bus);
-		UGStructures.STRUCTURES.register(bus);
+		DeferredRegister<?>[] registers = {
+				UGEntityTypes.ENTITIES,
+				UGBlocks.BLOCKS,
+				UGItems.ITEMS,
+				UGFeatures.FEATURES,
+				UGCarvers.CARVERS,
+				UGEffects.EFFECTS,
+				UGPotions.POTIONS,
+				UGFluids.FLUIDS,
+				UGParticleTypes.PARTICLES,
+				UGTileEntities.TEs,
+				UGStructures.STRUCTURES,
+		};
+
+		for (DeferredRegister<?> register : registers) {
+			register.register(bus);
+		}
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
