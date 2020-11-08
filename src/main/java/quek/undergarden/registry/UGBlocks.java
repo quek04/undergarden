@@ -65,10 +65,10 @@ public class UGBlocks {
     public static final RegistryObject<Block> tremblecrust_bricks = registerBlock("tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.from(tremblecrust.get()).setRequiresTool()));
 
     //terrain
-    public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", () -> new DeepturfBlock(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK)));
+    public static final RegistryObject<Block> deepturf_block = registerBlock("deepturf_block", () -> new DeepturfBlock(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> ashen_deepturf_block = registerBlock("ashen_deepturf_block", () -> new Block(AbstractBlock.Properties.from(deepturf_block.get())));
-    public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", () -> new DeepsoilBlock(AbstractBlock.Properties.from(Blocks.DIRT)));
-    public static final RegistryObject<Block> coarse_deepsoil = registerBlock("coarse_deepsoil", () -> new DeepsoilBlock(AbstractBlock.Properties.from(Blocks.COARSE_DIRT)));
+    public static final RegistryObject<Block> deepsoil = registerBlock("deepsoil", () -> new DeepsoilBlock(AbstractBlock.Properties.from(deepturf_block.get()).sound(SoundType.GROUND)));
+    public static final RegistryObject<Block> coarse_deepsoil = registerBlock("coarse_deepsoil", () -> new DeepsoilBlock(AbstractBlock.Properties.from(deepsoil.get())));
     public static final RegistryObject<Block> deepsoil_farmland = registerBlock("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(AbstractBlock.Properties.from(Blocks.FARMLAND)));
     public static final RegistryObject<Block> goo = registerBlock("goo", () -> new GooBlock(AbstractBlock.Properties.from(Blocks.SNOW).sound(SoundType.SLIME).notSolid().doesNotBlockMovement().harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> smog_vent = registerBlock("smog_vent", () -> new SmogVentBlock(AbstractBlock.Properties.from(depthrock.get())));
