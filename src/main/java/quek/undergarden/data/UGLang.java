@@ -370,6 +370,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("slay_forgotten_guardian", "Decommissioned");
         addAdvDesc("slay_forgotten_guardian", "Slay a Forgotten Guardian.");
 
+        addAdvTitle("forgotten_tools", "Forgotten Arsenal");
+        addAdvDesc("forgotten_tools", "Obtain all 5 Forgotten tools.");
+
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");
