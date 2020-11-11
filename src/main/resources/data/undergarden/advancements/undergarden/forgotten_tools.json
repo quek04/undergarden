@@ -1,0 +1,69 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:forgotten_pickaxe"
+    },
+    "title": {
+      "translate": "advancement.forgotten_tools.title"
+    },
+    "description": {
+      "translate": "advancement.forgotten_tools.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "parent": "undergarden:undergarden/slay_forgotten_guardian",
+  "criteria": {
+    "has_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:forgotten_sword"
+          }
+        ]
+      }
+    },
+    "has_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:forgotten_pickaxe"
+          }
+        ]
+      }
+    },
+    "has_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:forgotten_axe"
+          }
+        ]
+      }
+    },
+    "has_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:forgotten_shovel"
+          }
+        ]
+      }
+    },
+    "has_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:forgotten_hoe"
+          }
+        ]
+      }
+    }
+  }
+}

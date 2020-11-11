@@ -44,20 +44,25 @@ public class MasticatorEntity extends MonsterEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 150.0D) //hp
-                .createMutableAttribute(Attributes.ARMOR, 10.0D) //armor
-                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 5.0D) //armor toughness
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D) //attack damage
-                .createMutableAttribute(Attributes.ATTACK_KNOCKBACK, 2.0D) //attack knockback
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.40D) //speed
-                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D) //knockback resist
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 64.0D); //follow range
+                .createMutableAttribute(Attributes.MAX_HEALTH, 150.0D)
+                .createMutableAttribute(Attributes.ARMOR, 10.0D)
+                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 5.0D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D)
+                .createMutableAttribute(Attributes.ATTACK_KNOCKBACK, 2.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.40D)
+                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
+                .createMutableAttribute(Attributes.FOLLOW_RANGE, 64.0D);
     }
 
     @Override
     public void setCustomName(@Nullable ITextComponent name) {
         super.setCustomName(name);
         this.bossInfo.setName(this.getDisplayName());
+    }
+
+    @Override
+    public boolean isNonBoss() {
+        return false;
     }
 
     @Override

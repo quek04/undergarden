@@ -60,13 +60,17 @@ public class UGEntityTypes {
 
     public static final EntityType<MasticatorEntity> masticator = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
             .size(2.5F, 4).build("masticator");
+    public static final EntityType<ForgottenGuardianEntity> forgotten_guardian = EntityType.Builder.create(ForgottenGuardianEntity::new, EntityClassification.MONSTER)
+            .size(0.9F, 3.5F).build("forgotten_guardian");
 
+    //misc
     public static final RegistryObject<EntityType<UGBoatEntity>> BOAT = ENTITIES.register("boat", () -> boat);
     public static final RegistryObject<EntityType<SlingshotAmmoEntity>> SLINGSHOT_AMMO = ENTITIES.register("slingshot_ammo", () -> slingshot_ammo);
     public static final RegistryObject<EntityType<GooBallEntity>> GOO_BALL = ENTITIES.register("goo_ball", () -> goo_ball);
     public static final RegistryObject<EntityType<RottenBlisterberryEntity>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> rotten_blisterberry);
     public static final RegistryObject<EntityType<BlisterbombEntity>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> blisterbomb);
 
+    //normal
     public static final RegistryObject<EntityType<RotlingEntity>> ROTLING = ENTITIES.register("rotling", () -> rotling);
     public static final RegistryObject<EntityType<RotwalkerEntity>> ROTWALKER = ENTITIES.register("rotwalker", () -> rotwalker);
     public static final RegistryObject<EntityType<RotbeastEntity>> ROTBEAST = ENTITIES.register("rotbeast", () -> rotbeast);
@@ -81,6 +85,7 @@ public class UGEntityTypes {
 
     //bosses
     public static final RegistryObject<EntityType<MasticatorEntity>> MASTICATOR = ENTITIES.register("masticator", () -> masticator);
+    public static final RegistryObject<EntityType<ForgottenGuardianEntity>> GUARDIAN = ENTITIES.register("forgotten_guardian", () -> forgotten_guardian);
 
     public static void spawnPlacements() {
         EntitySpawnPlacementRegistry.register(GWIBLING.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GwiblingEntity::canGwiblingSpawn);
@@ -108,5 +113,6 @@ public class UGEntityTypes {
         GlobalEntityTypeAttributes.put(STONEBORN.get(), StonebornEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(NARGOYLE.get(), NargoyleEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(GUARDIAN.get(), ForgottenGuardianEntity.registerAttributes().create());
     }
 }

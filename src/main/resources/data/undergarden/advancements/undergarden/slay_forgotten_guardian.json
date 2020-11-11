@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:forgotten_ingot"
+    },
+    "title": {
+      "translate": "advancement.slay_forgotten_guardian.title"
+    },
+    "description": {
+      "translate": "advancement.slay_forgotten_guardian.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "goal"
+  },
+  "parent": "undergarden:undergarden/castle",
+  "criteria": {
+    "slay_forgotten_guardian": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "undergarden:forgotten_guardian"
+        }
+      }
+    }
+  }
+}

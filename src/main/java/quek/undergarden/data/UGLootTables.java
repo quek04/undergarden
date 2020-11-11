@@ -242,6 +242,7 @@ public class UGLootTables extends LootTableProvider {
             this.registerLootTable(UGEntityTypes.nargoyle, LootTable.builder());
 
             this.registerLootTable(UGEntityTypes.masticator, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.masticator_scales.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(4.0F, 8.0F))))));
+            this.registerLootTable(UGEntityTypes.forgotten_guardian, LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.forgotten_nugget.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 16.0F))))));
         }
 
         @Override

@@ -311,6 +311,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.NARGOYLE, "Nargoyle");
 
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
+        addEntityType(UGEntityTypes.GUARDIAN, "Forgotten Guardian");
 
         addItemGroup(UGItemGroups.GROUP, "The Undergarden");
 
@@ -365,6 +366,9 @@ public class UGLang extends LanguageProvider {
 
         addAdvTitle("plant_gloomgourd", "Purple Pumpkins");
         addAdvDesc("plant_gloomgourd", "Plant a Gloomgourd seed.");
+
+        addAdvTitle("slay_forgotten_guardian", "Decommissioned");
+        addAdvDesc("slay_forgotten_guardian", "Slay a Forgotten Guardian.");
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
