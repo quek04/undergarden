@@ -28,10 +28,11 @@ import net.minecraft.item.Item.Properties;
 @Mod.EventBusSubscriber
 public class UGPickaxeItem extends PickaxeItem {
     public UGPickaxeItem(IItemTier tier) {
-        super(tier, 1, -2.8f, new Properties()
+        super(tier, 1, -2.8F, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
                 .group(UGItemGroups.GROUP)
+                .rarity(UGSwordItem.isForgotten(tier))
         );
     }
 

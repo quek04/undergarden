@@ -29,10 +29,11 @@ import net.minecraft.item.Item.Properties;
 @Mod.EventBusSubscriber
 public class UGAxeItem extends AxeItem {
     public UGAxeItem(IItemTier tier, float attack) {
-        super(tier, attack, -3.2f, new Properties()
+        super(tier, attack, -3.2F, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
                 .group(UGItemGroups.GROUP)
+                .rarity(UGSwordItem.isForgotten(tier))
         );
     }
 

@@ -44,6 +44,7 @@ public class SlingshotItem extends ShootableItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(new TranslationTextComponent("tooltip.slingshot").mergeStyle(TextFormatting.GRAY));
     }

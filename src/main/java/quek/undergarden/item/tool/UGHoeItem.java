@@ -13,6 +13,7 @@ public class UGHoeItem extends HoeItem {
                 .maxStackSize(1)
                 .maxDamage(tier.getMaxUses())
                 .group(UGItemGroups.GROUP)
+                .rarity(UGSwordItem.isForgotten(tier))
         );
     }
 }

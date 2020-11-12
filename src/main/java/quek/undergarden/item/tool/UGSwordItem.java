@@ -26,7 +26,7 @@ import java.util.List;
 @Mod.EventBusSubscriber
 public class UGSwordItem extends SwordItem {
     public UGSwordItem(IItemTier tier) {
-        super(tier, 3, -2.4f, new Properties()
+        super(tier, 3, -2.4F, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
                 .group(UGItemGroups.GROUP)
@@ -34,7 +34,7 @@ public class UGSwordItem extends SwordItem {
         );
     }
 
-    private static Rarity isForgotten(IItemTier tier) {
+    protected static Rarity isForgotten(IItemTier tier) {
         if(tier.equals(UGTools.FORGOTTEN)) {
             return UGItems.forgotten;
         }

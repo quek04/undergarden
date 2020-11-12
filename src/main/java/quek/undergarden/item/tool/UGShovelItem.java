@@ -28,10 +28,11 @@ import net.minecraft.item.Item.Properties;
 @Mod.EventBusSubscriber
 public class UGShovelItem extends ShovelItem {
     public UGShovelItem(IItemTier tier) {
-        super(tier, 1.5f, -3, new Properties()
+        super(tier, 1.5F, -3, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
                 .group(UGItemGroups.GROUP)
+                .rarity(UGSwordItem.isForgotten(tier))
         );
     }
 
