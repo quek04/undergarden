@@ -40,7 +40,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
         );
         this.carvableFluids = ImmutableSet.of(
                 Fluids.WATER,
-                UGFluids.virulent_source
+                UGFluids.virulent_mix_source.get()
         );
     }
 

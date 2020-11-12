@@ -184,7 +184,7 @@ public class UGBlocks {
 
     //fluids
     public static final RegistryObject<FlowingFluidBlock> virulent_mix = BLOCKS.register("virulent_mix", () -> new UGFluidBlock(
-            UGFluids.virulent_mix_source, AbstractBlock.Properties.create(Material.WATER).noDrops()));
+            UGFluids.virulent_mix_source, AbstractBlock.Properties.create(Material.WATER)));
 
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);
