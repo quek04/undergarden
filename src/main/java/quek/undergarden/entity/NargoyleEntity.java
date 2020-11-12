@@ -1,6 +1,9 @@
 package quek.undergarden.entity;
 
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
@@ -11,7 +14,6 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UGEntityTypes;
 
 import java.util.EnumSet;
 import java.util.Random;
@@ -40,11 +42,6 @@ public class NargoyleEntity extends MonsterEntity {
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 5.0D)
                 .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D)
                 .createMutableAttribute(Attributes.FOLLOW_RANGE, 128.0D);
-    }
-
-    @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return UGEntityTypes.CAVERN_CREATURE;
     }
 
     public static boolean canNargoyleSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {

@@ -1,6 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.tags.*;
 import net.minecraft.util.ResourceLocation;
@@ -19,7 +20,6 @@ public class UGTags {
         private static ITag.INamedTag<Item> tag(String name) {
             return ItemTags.makeWrapperTag(new ResourceLocation(UGMod.MODID, name).toString());
         }
-
     }
 
     public static class Blocks {
@@ -29,7 +29,15 @@ public class UGTags {
         private static ITag.INamedTag<Block> tag(String name) {
             return BlockTags.makeWrapperTag(new ResourceLocation(UGMod.MODID, name).toString());
         }
-
     }
 
+    public static class Entities {
+
+        public static final ITag.INamedTag<EntityType<?>> ROTSPAWN = tag("rotspawn");
+        public static final ITag.INamedTag<EntityType<?>> CAVERN_CREATURE = tag("rotspawn");
+
+        private static ITag.INamedTag<EntityType<?>> tag(String name) {
+            return EntityTypeTags.getTagById(new ResourceLocation(UGMod.MODID, name).toString());
+        }
+    }
 }

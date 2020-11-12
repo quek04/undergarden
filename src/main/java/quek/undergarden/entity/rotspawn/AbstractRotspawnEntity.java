@@ -1,6 +1,5 @@
 package quek.undergarden.entity.rotspawn;
 
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -38,11 +37,6 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
 
     public static boolean canRotspawnSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
         return randomIn.nextInt(10) == 0 && canMonsterSpawnInLight(type, worldIn, reason, pos, randomIn);
-    }
-
-    @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return UGEntityTypes.ROTSPAWN;
     }
 
     @Override

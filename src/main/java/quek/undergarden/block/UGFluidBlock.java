@@ -10,8 +10,8 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGEffects;
-import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGFluids;
+import quek.undergarden.registry.UGTags;
 
 import java.util.function.Supplier;
 
@@ -26,7 +26,7 @@ public class UGFluidBlock extends FlowingFluidBlock {
         if(this.getFluid() == UGFluids.virulent_mix_source.get() || this.getFluid() == UGFluids.virulent_mix_flowing.get()) {
             if(entityIn.isAlive() && entityIn instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityIn;
-                if(livingEntity.getCreatureAttribute() == UGEntityTypes.ROTSPAWN || livingEntity.getCreatureAttribute() == UGEntityTypes.CAVERN_CREATURE) {
+                if(livingEntity.getType().isContained(UGTags.Entities.ROTSPAWN) || livingEntity.getType().isContained(UGTags.Entities.CAVERN_CREATURE)) {
 
                 }
                 else if(livingEntity.isPotionActive(UGEffects.virulent_resistance.get())) {

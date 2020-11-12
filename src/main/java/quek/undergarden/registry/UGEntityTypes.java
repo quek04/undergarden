@@ -1,6 +1,5 @@
 package quek.undergarden.registry;
 
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
@@ -20,9 +19,6 @@ import quek.undergarden.entity.stoneborn.StonebornEntity;
 public class UGEntityTypes {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, UGMod.MODID);
-
-    public static final CreatureAttribute ROTSPAWN = new CreatureAttribute();
-    public static final CreatureAttribute CAVERN_CREATURE = new CreatureAttribute();
 
     public static final EntityType<UGBoatEntity> boat = EntityType.Builder.<UGBoatEntity>create(UGBoatEntity::new, EntityClassification.MISC)
             .size(1.375F, 0.5625F).trackingRange(10).build("boat");

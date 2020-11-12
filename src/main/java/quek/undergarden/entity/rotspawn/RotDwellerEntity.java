@@ -1,7 +1,6 @@
 package quek.undergarden.entity.rotspawn;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -18,7 +17,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGSounds;
 
 import java.util.UUID;
@@ -81,11 +79,6 @@ public class RotDwellerEntity extends MonsterEntity {
         }
 
         super.notifyDataManagerChange(key);
-    }
-
-    @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return UGEntityTypes.ROTSPAWN;
     }
 
     @Override

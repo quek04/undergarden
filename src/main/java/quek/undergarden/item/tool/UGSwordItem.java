@@ -18,10 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItemGroups;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGTools;
+import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -69,7 +66,7 @@ public class UGSwordItem extends SwordItem {
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
             if(player.getHeldItemMainhand().getItem() == UGItems.utheric_sword.get()) {
-                if(event.getEntityLiving().getCreatureAttribute() == UGEntityTypes.ROTSPAWN) {
+                if(event.getEntityLiving().getType().isContained(UGTags.Entities.ROTSPAWN)) {
                     event.setAmount(damage * 1.4F);
                 }
                 else event.setAmount(damage * 1F);
