@@ -370,6 +370,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("slay_forgotten_guardian", "Decommissioned");
         addAdvDesc("slay_forgotten_guardian", "Slay a Forgotten Guardian.");
 
+        addAdvTitle("forgotten_ingot", "What Now Is");
+        addAdvDesc("forgotten_ingot", "Forge a Forgotten Ingot from a Forgotten Guardian's nuggets.");
+
         addAdvTitle("forgotten_tools", "Forgotten Arsenal");
         addAdvDesc("forgotten_tools", "Obtain all 5 Forgotten tools.");
 
