@@ -97,11 +97,24 @@ public class ForgottenGuardianEntity extends MonsterEntity {
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.rand.nextInt((int)damage) : damage;
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f1);
         if (flag) {
+            double x = entityIn.getPosX() - this.getPosX();
+            double z = entityIn.getPosZ() - this.getPosZ();
+            double modifier = Math.max(x * x + z * z, 0.001D);
+            entityIn.setMotion(entityIn.getMotion().add((x / modifier) * 2, 0.2F, (z / modifier) * 2));
             this.applyEnchantments(this, entityIn);
         }
 
         this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 0.5F);
         return flag;
+    }
+
+    @Override
+    protected void constructKnockBackVector(LivingEntity entityIn) {
+        double x = entityIn.getPosX() - this.getPosX();
+        double z = entityIn.getPosZ() - this.getPosZ();
+        double modifier = Math.max(x * x + z * z, 0.001D);
+        entityIn.addVelocity((x / modifier) * 2, 0.2F, (z / modifier) * 2);
+        entityIn.velocityChanged = true;
     }
 
     @Override
