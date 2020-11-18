@@ -122,6 +122,8 @@ public class UGItems {
     public static final RegistryObject<Item> dweller_steak = ITEMS.register("dweller_steak", () -> new UGItem(UGFoods.COOKED_DWELLER));
     public static final RegistryObject<Item> raw_gwibling = ITEMS.register("raw_gwibling", () -> new UGItem(UGFoods.RAW_GWIBLING));
     public static final RegistryObject<Item> cooked_gwibling = ITEMS.register("cooked_gwibling", () -> new UGItem(UGFoods.COOKED_GWIBLING));
+    public static final RegistryObject<Item> raw_gloomper_leg = ITEMS.register("raw_gloomper_leg", () -> new UGItem(UGFoods.RAW_GLOOMPER_LEG));
+    public static final RegistryObject<Item> gloomper_leg = ITEMS.register("gloomper_leg", () -> new UGItem(UGFoods.GLOOMPER_LEG));
     public static final RegistryObject<Item> bloody_stew = ITEMS.register("bloody_stew", () -> new SoupItem((new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.BLOODY).maxStackSize(1)));
     public static final RegistryObject<Item> inky_stew = ITEMS.register("inky_stew", () -> new SoupItem((new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.INKY).maxStackSize(1)));
     public static final RegistryObject<Item> indigo_stew = ITEMS.register("indigo_stew", () -> new SoupItem((new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.INDIGO).maxStackSize(1)));

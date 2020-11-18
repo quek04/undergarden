@@ -269,6 +269,8 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.dweller_steak, "Dweller Steak");
         addItem(UGItems.raw_gwibling, "Raw Gwibling");
         addItem(UGItems.cooked_gwibling, "Cooked Gwibling");
+        addItem(UGItems.raw_gloomper_leg, "Raw Gloomper Leg");
+        addItem(UGItems.gloomper_leg, "Gloomper Leg");
         addItem(UGItems.bloody_stew, "Bloody Stew");
         addItem(UGItems.indigo_stew, "Indigo Stew");
         addItem(UGItems.inky_stew, "Inky Stew");

@@ -198,6 +198,8 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.dweller_steak);
         normalItem(UGItems.raw_gwibling);
         normalItem(UGItems.cooked_gwibling);
+        normalItem(UGItems.raw_gloomper_leg);
+        normalItem(UGItems.gloomper_leg);
         normalItem(UGItems.bloody_stew);
         normalItem(UGItems.indigo_stew);
         normalItem(UGItems.inky_stew);

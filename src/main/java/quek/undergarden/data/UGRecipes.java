@@ -367,6 +367,9 @@ public class UGRecipes extends UGRecipeProvider {
         smeltingRecipe(UGItems.cooked_gwibling.get(), UGItems.raw_gwibling.get(), .35F).build(consumer, name("smelt_gwibling"));
         smokingRecipe(UGItems.cooked_gwibling.get(), UGItems.raw_gwibling.get(), .35F).build(consumer, name("smoke_gwibling"));
 
+        smeltingRecipe(UGItems.gloomper_leg.get(), UGItems.raw_gloomper_leg.get(), .35F).build(consumer, name("smelt_gloomper_leg"));
+        blastingRecipe(UGItems.gloomper_leg.get(), UGItems.raw_gloomper_leg.get(), .35F).build(consumer, name("blast_gloomper_leg"));
+
         smeltingRecipe(Items.DRIED_KELP, UGItems.glowing_kelp.get(), 0.1F).build(consumer, name("smelt_glowing_kelp"));
         smokingRecipe(Items.DRIED_KELP, UGItems.glowing_kelp.get(), 0.1F).build(consumer, name("smoke_glowing_kelp"));
     }
