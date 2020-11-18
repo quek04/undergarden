@@ -10,6 +10,24 @@
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:forgotten_castle/forgotten_castle_room_2",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:forgotten_castle/forgotten_castle_room_3",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
     }
   ]
 }

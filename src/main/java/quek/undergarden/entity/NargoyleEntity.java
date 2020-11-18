@@ -45,7 +45,9 @@ public class NargoyleEntity extends MonsterEntity {
     }
 
     public static boolean canNargoyleSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL && isValidLightLevel(worldIn, pos, randomIn) && canSpawnOn(type, worldIn, reason, pos, randomIn) && pos.getY() < 32;
+        if(reason == SpawnReason.SPAWNER && worldIn.getDifficulty() != Difficulty.PEACEFUL)
+            return true;
+        else return worldIn.getDifficulty() != Difficulty.PEACEFUL && isValidLightLevel(worldIn, pos, randomIn) && canSpawnOn(type, worldIn, reason, pos, randomIn) && pos.getY() < 32;
     }
 
     public static class LeapAtTargetGoal extends Goal {

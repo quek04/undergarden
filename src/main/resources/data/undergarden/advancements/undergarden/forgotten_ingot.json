@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "frame": "task"
   },
-  "parent": "undergarden:undergarden/enter_undergarden",
+  "parent": "undergarden:undergarden/slay_forgotten_guardian",
   "criteria": {
     "has_forgotten_ingot": {
       "trigger": "minecraft:inventory_changed",

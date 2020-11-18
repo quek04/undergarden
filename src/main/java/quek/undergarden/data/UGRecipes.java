@@ -207,7 +207,11 @@ public class UGRecipes extends UGRecipeProvider {
                 .addCriterion("has_veil_mushroom", hasItem(UGBlocks.veil_mushroom.get()))
                 .build(consumer, name("veil_mushroom_to_dye"));
 
-        makeShardToIngot().build(consumer, name("shard_to_ingot"));
+        ShapedRecipeBuilder.shapedRecipe(UGItems.utherium_chunk.get())
+                .patternLine("SS")
+                .patternLine("SS")
+                .key('S', UGItems.utheric_shard.get())
+                .addCriterion("has_shard", hasItem(UGItems.utheric_shard.get()));
 
         makeIngotToBlock(UGBlocks.cloggrum_block, UGItems.cloggrum_ingot).build(consumer);
         makeIngotToBlock(UGBlocks.froststeel_block, UGItems.froststeel_ingot).build(consumer);

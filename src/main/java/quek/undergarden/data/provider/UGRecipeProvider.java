@@ -127,14 +127,6 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
     }
 
-    public ShapedRecipeBuilder makeShardToIngot() {
-        return ShapedRecipeBuilder.shapedRecipe(UGItems.utherium_chunk.get(), 1)
-                .patternLine("SS")
-                .patternLine("SS")
-                .key('S', UGItems.utheric_shard.get())
-                .addCriterion("has_" + UGItems.utheric_shard.get().getRegistryName().getPath(), hasItem(UGItems.utheric_shard.get()));
-    }
-
     public ShapedRecipeBuilder makeIngotToBlock(Supplier<? extends Block> blockOut, Supplier<? extends Item> ingotIn) {
         return ShapedRecipeBuilder.shapedRecipe(blockOut.get())
                 .patternLine("###")

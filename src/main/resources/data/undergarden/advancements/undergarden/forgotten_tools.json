@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "frame": "challenge"
   },
-  "parent": "undergarden:undergarden/slay_forgotten_guardian",
+  "parent": "undergarden:undergarden/forgotten_ingot",
   "criteria": {
     "has_sword": {
       "trigger": "minecraft:inventory_changed",
