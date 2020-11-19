@@ -24,8 +24,7 @@ public class UGCarvers {
         register("undergarden_cave", undergarden_cave.get().func_242761_a(new ProbabilityConfig(0.5F)));
     }
 
-    private static <WC extends ICarverConfig> ConfiguredCarver<WC> register(String name, ConfiguredCarver<WC> carver) {
-        return Registry.register(WorldGenRegistries.CONFIGURED_CARVER, new ResourceLocation(UGMod.MODID, name), carver);
-        //return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, name, carver);
+    private static <WC extends ICarverConfig> void register(String name, ConfiguredCarver<WC> carver) {
+        Registry.register(WorldGenRegistries.CONFIGURED_CARVER, new ResourceLocation(UGMod.MODID, name), carver);
     }
 }
