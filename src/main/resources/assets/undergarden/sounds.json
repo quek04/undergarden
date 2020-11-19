@@ -317,5 +317,54 @@
     "sounds": [
       "undergarden:entity/rotling_death"
     ]
+  },
+  "entity.forgotten_guardian_living": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.forgotten_guardian_living",
+    "sounds": [
+      "undergarden:entity/fguardian_living_1",
+      "undergarden:entity/fguardian_living_2",
+      "undergarden:entity/fguardian_living_3"
+    ]
+  },
+  "entity.forgotten_guardian_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.forgotten_guardian_hurt",
+    "sounds": [
+      "undergarden:entity/fguardian_hurt_1",
+      "undergarden:entity/fguardian_hurt_2",
+      "undergarden:entity/fguardian_hurt_3"
+    ]
+  },
+  "entity.forgotten_guardian_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.forgotten_guardian_death",
+    "sounds": [
+      "undergarden:entity/fguardian_death"
+    ]
+  },
+  "entity.forgotten_guardian_attack": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.forgotten_guardian_attack",
+    "sounds": [
+      "undergarden:entity/fguardian_attack_1",
+      "undergarden:entity/fguardian_attack_2"
+    ]
+  },
+  "entity.forgotten_guardian_deflect": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.forgotten_guardian_deflect",
+    "sounds": [
+      "undergarden:entity/fguardian_deflect"
+    ]
+  },
+  "entity.forgotten_guardian_step": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.forgotten_guardian_step",
+    "sounds": [
+      "undergarden:entity/fguardian_step_1",
+      "undergarden:entity/fguardian_step_2",
+      "undergarden:entity/fguardian_step_3"
+    ]
   }
 }

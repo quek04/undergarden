@@ -59,6 +59,13 @@ public class UGSounds {
     public static final SoundEvent ROTLING_HURT = register("entity.rotling_hurt");
     public static final SoundEvent ROTLING_DEATH = register("entity.rotling_death");
 
+    public static final SoundEvent FORGOTTEN_GUARDIAN_LIVING = register("entity.forgotten_guardian_living");
+    public static final SoundEvent FORGOTTEN_GUARDIAN_HURT = register("entity.forgotten_guardian_hurt");
+    public static final SoundEvent FORGOTTEN_GUARDIAN_DEATH = register("entity.forgotten_guardian_death");
+    public static final SoundEvent FORGOTTEN_GUARDIAN_ATTACK = register("entity.forgotten_guardian_attack");
+    public static final SoundEvent FORGOTTEN_GUARDIAN_DEFLECT = register("entity.forgotten_guardian_deflect");
+    public static final SoundEvent FORGOTTEN_GUARDIAN_STEP = register("entity.forgotten_guardian_step");
+
     private static SoundEvent register(String name) {
         SoundEvent sound = new SoundEvent(new ResourceLocation(UGMod.MODID, name));
         sound.setRegistryName(new ResourceLocation(UGMod.MODID, name));
@@ -103,7 +110,13 @@ public class UGSounds {
                 STONEBORN_DEATH,
                 ROTLING_LIVING,
                 ROTLING_HURT,
-                ROTLING_DEATH
+                ROTLING_DEATH,
+                FORGOTTEN_GUARDIAN_LIVING,
+                FORGOTTEN_GUARDIAN_HURT,
+                FORGOTTEN_GUARDIAN_DEATH,
+                FORGOTTEN_GUARDIAN_ATTACK,
+                FORGOTTEN_GUARDIAN_DEFLECT,
+                FORGOTTEN_GUARDIAN_STEP
         );
     }
 }

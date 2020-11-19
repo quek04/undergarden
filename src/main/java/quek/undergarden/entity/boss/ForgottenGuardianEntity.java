@@ -16,7 +16,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.BossInfo;
@@ -60,8 +60,23 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return UGSounds.FORGOTTEN_GUARDIAN_LIVING;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return UGSounds.FORGOTTEN_GUARDIAN_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return UGSounds.FORGOTTEN_GUARDIAN_DEATH;
+    }
+
+    @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(UGSounds.STONEBORN_STEP, 1.0F, 0.5F);
+        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_STEP, 1.0F, 1.0F);
     }
 
     @Override
@@ -104,7 +119,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
             this.applyEnchantments(this, entityIn);
         }
 
-        this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 0.5F);
+        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_ATTACK, 1.0F, 1.0F);
         return flag;
     }
 
@@ -121,6 +136,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     public boolean attackEntityFrom(DamageSource source, float amount) {
         Entity entity = source.getImmediateSource();
         if (entity instanceof ProjectileEntity) {
+            this.playSound(UGSounds.FORGOTTEN_GUARDIAN_DEFLECT, 1.0F, 1.0F);
             return false;
         }
         else return super.attackEntityFrom(source, amount);
@@ -130,12 +146,11 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     public void handleStatusUpdate(byte id) {
         if (id == 4) {
             this.attackTimer = 10;
-            this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 0.5F);
+            this.playSound(UGSounds.FORGOTTEN_GUARDIAN_ATTACK, 1.0F, 1.0F);
         }
         else {
             super.handleStatusUpdate(id);
         }
-
     }
 
     @OnlyIn(Dist.CLIENT)

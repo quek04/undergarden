@@ -45,5 +45,4 @@ public class RotwalkerEntity extends AbstractRotspawnEntity {
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
         this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
     }
-
 }
