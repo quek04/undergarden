@@ -426,6 +426,13 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "rotling_hurt", "Rotling hurts");
         addSubtitle("entity", "rotling_death", "Rotling dies");
 
+        addSubtitle("entity", "forgotten_guardian_living", "Forgotten Guardian creaks");
+        addSubtitle("entity", "forgotten_guardian_hurt", "Forgotten Guardian hurts");
+        addSubtitle("entity", "forgotten_guardian_death", "Forgotten Guardian dies");
+        addSubtitle("entity", "forgotten_guardian_attack", "Forgotten Guardian attacks");
+        addSubtitle("entity", "forgotten_guardian_deflect", "Forgotten Guardian deflects");
+        addSubtitle("entity", "forgotten_guardian_step", "Forgotten Guardian steps");
+
         addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
     }
 }
