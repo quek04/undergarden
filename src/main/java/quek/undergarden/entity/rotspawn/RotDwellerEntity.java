@@ -49,6 +49,26 @@ public class RotDwellerEntity extends MonsterEntity {
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return UGSounds.DWELLER_LIVING;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return UGSounds.DWELLER_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return UGSounds.DWELLER_DEATH;
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState blockIn) {
+        this.playSound(SoundEvents.ENTITY_COW_STEP, 0.15F, 0.5F);
+    }
+
+    @Override
     protected void registerData() {
         super.registerData();
         this.getDataManager().register(IS_CHILD, false);
@@ -80,25 +100,4 @@ public class RotDwellerEntity extends MonsterEntity {
 
         super.notifyDataManagerChange(key);
     }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return UGSounds.DWELLER_LIVING;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.DWELLER_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return UGSounds.DWELLER_DEATH;
-    }
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ENTITY_COW_STEP, 0.15F, 0.5F);
-    }
-
 }

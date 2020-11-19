@@ -56,22 +56,6 @@ public class DwellerEntity extends AnimalEntity {
         return worldIn.getBlockState(pos.down()).isIn(UGBlocks.deepturf_block.get()) || worldIn.getBlockState(pos.down()).isIn(UGBlocks.ashen_deepturf_block.get()) && worldIn.getLightSubtracted(pos, 0) > 8;
     }
 
-    @Nullable
-    @Override
-    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
-        return UGEntityTypes.DWELLER.get().create(world);
-    }
-
-    @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return Ingredient.fromItems(UGItems.underbeans.get()).test(stack);
-    }
-
-    @Override
-    public float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
-        return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
-    }
-
     @Override
     protected SoundEvent getAmbientSound() {
         return UGSounds.DWELLER_LIVING;
@@ -92,4 +76,19 @@ public class DwellerEntity extends AnimalEntity {
         this.playSound(SoundEvents.ENTITY_COW_STEP, 0.15F, 0.5F);
     }
 
+    @Nullable
+    @Override
+    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
+        return UGEntityTypes.DWELLER.get().create(world);
+    }
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return Ingredient.fromItems(UGItems.underbeans.get()).test(stack);
+    }
+
+    @Override
+    public float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
+        return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
+    }
 }

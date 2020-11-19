@@ -55,6 +55,11 @@ public class MasticatorEntity extends MonsterEntity {
     }
 
     @Override
+    protected void playStepSound(BlockPos pos, BlockState blockIn) {
+        this.playSound(SoundEvents.ENTITY_RAVAGER_STEP, 0.20F, 0.5F);
+    }
+
+    @Override
     public void setCustomName(@Nullable ITextComponent name) {
         super.setCustomName(name);
         this.bossInfo.setName(this.getDisplayName());
@@ -123,10 +128,5 @@ public class MasticatorEntity extends MonsterEntity {
         double d1 = p_213688_1_.getPosZ() - this.getPosZ();
         double d2 = Math.max(d0 * d0 + d1 * d1, 0.001D);
         p_213688_1_.addVelocity(d0 / d2 * 4.0D, 0.2D, d1 / d2 * 4.0D);
-    }
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ENTITY_RAVAGER_STEP, 0.20F, 0.5F);
     }
 }

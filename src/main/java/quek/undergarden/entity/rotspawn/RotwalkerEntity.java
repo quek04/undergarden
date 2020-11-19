@@ -20,10 +20,10 @@ public class RotwalkerEntity extends AbstractRotspawnEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 40.0D) //hp
-                .createMutableAttribute(Attributes.ARMOR, 3.0D) //armor
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 5.0D) //attack damage
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23D); //speed
+                .createMutableAttribute(Attributes.MAX_HEALTH, 40.0D)
+                .createMutableAttribute(Attributes.ARMOR, 3.0D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 5.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23D);
     }
 
     @Override

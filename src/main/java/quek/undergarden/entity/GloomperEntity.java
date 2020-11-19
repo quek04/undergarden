@@ -68,12 +68,6 @@ public class GloomperEntity extends AnimalEntity {
         return worldIn.getBlockState(pos.down()).isIn(UGBlocks.deepturf_block.get()) && worldIn.getLightSubtracted(pos, 0) > 8;
     }
 
-    @Nullable
-    @Override
-    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
-        return UGEntityTypes.GLOOMPER.get().create(world);
-    }
-
     @Override
     protected SoundEvent getAmbientSound() {
         return UGSounds.GLOOMPER_LIVING;
@@ -87,6 +81,12 @@ public class GloomperEntity extends AnimalEntity {
     @Override
     protected SoundEvent getDeathSound() {
         return UGSounds.GLOOMPER_DEATH;
+    }
+
+    @Nullable
+    @Override
+    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
+        return UGEntityTypes.GLOOMPER.get().create(world);
     }
 
     @Override

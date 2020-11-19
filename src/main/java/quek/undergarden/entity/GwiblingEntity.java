@@ -21,6 +21,10 @@ public class GwiblingEntity extends AbstractFishEntity {
         super(type, worldIn);
     }
 
+    public static boolean canGwiblingSpawn(EntityType<? extends AbstractFishEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
+        return worldIn.getBlockState(pos).isIn(Blocks.WATER) && worldIn.getBlockState(pos.up()).isIn(Blocks.WATER) && pos.getY() <= 32;
+    }
+
     @Override
     protected ItemStack getFishBucket() {
         return new ItemStack(UGItems.gwibling_bucket.get());
@@ -44,9 +48,5 @@ public class GwiblingEntity extends AbstractFishEntity {
     @Override
     protected SoundEvent getFlopSound() {
         return SoundEvents.ENTITY_COD_FLOP;
-    }
-
-    public static boolean canGwiblingSpawn(EntityType<? extends AbstractFishEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getBlockState(pos).isIn(Blocks.WATER) && worldIn.getBlockState(pos.up()).isIn(Blocks.WATER) && pos.getY() <= 32;
     }
 }
