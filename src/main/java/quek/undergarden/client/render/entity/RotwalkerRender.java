@@ -37,7 +37,6 @@ public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel
     public void applyRotations(RotwalkerEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
         super.applyRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
         if (!((double)entityLiving.limbSwingAmount < 0.01D)) {
-            float f = 13.0F;
             float f1 = entityLiving.limbSwing - entityLiving.limbSwingAmount * (1.0F - partialTicks) + 6.0F;
             float f2 = (Math.abs(f1 % 13.0F - 6.5F) - 3.25F) / 3.25F;
             matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(6.5F * f2));
