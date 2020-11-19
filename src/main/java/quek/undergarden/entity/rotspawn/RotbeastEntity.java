@@ -24,44 +24,11 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 80.0D) //hp
-                .createMutableAttribute(Attributes.ARMOR, 3.0D) //armor
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D) //attack damage
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.22D) //speed
-                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 0.5D); //knockback resist
-    }
-
-    @Override
-    public void livingTick() {
-        super.livingTick();
-        if (this.attackTimer > 0) {
-            --this.attackTimer;
-        }
-    }
-
-    @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
-        this.attackTimer = 10;
-        this.world.setEntityState(this, (byte)4);
-        float f = this.getAttackDamage();
-        float f1 = f > 0.0F ? f / 2.0F + (float)this.rand.nextInt((int)f) : 0.0F;
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f1);
-        if (flag) {
-            entityIn.setMotion(entityIn.getMotion().add(0.0D, (double)0.4F, 0.0D));
-            this.applyEnchantments(this, entityIn);
-        }
-
-        this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 0.5F);
-        return flag;
-    }
-
-    private float getAttackDamage() {
-        return (float)this.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public int getAttackTimer() {
-        return this.attackTimer;
+                .createMutableAttribute(Attributes.MAX_HEALTH, 80.0D)
+                .createMutableAttribute(Attributes.ARMOR, 3.0D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.22D)
+                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 0.5D);
     }
 
     @Override
@@ -84,4 +51,44 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
         this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
     }
 
+    @Override
+    public void livingTick() {
+        super.livingTick();
+
+        if (this.attackTimer > 0) {
+            --this.attackTimer;
+        }
+    }
+
+    @Override
+    public boolean attackEntityAsMob(Entity entityIn) {
+        this.attackTimer = 10;
+        this.world.setEntityState(this, (byte)4);
+        float f = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float f1 = (int)f > 0 ? f / 2.0F + (float)this.rand.nextInt((int)f) : f;
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f1);
+        if (flag) {
+            entityIn.setMotion(entityIn.getMotion().add(0.0D, 0.4F, 0.0D));
+            this.applyEnchantments(this, entityIn);
+        }
+
+        this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        return flag;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public void handleStatusUpdate(byte id) {
+        if (id == 4) {
+            this.attackTimer = 10;
+            this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        }
+        else {
+            super.handleStatusUpdate(id);
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getAttackTimer() {
+        return this.attackTimer;
+    }
 }

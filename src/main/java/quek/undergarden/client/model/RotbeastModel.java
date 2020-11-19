@@ -15,16 +15,16 @@ public class RotbeastModel<T extends RotbeastEntity> extends SegmentedModel<T> {
 	private final ModelRenderer rotbeast;
 	private final ModelRenderer head;
 	private final ModelRenderer jaw;
-	private final ModelRenderer leftarm;
-	private final ModelRenderer lowerarm;
-	private final ModelRenderer rightarm;
-	private final ModelRenderer lowerarm2;
+	private final ModelRenderer leftArm;
+	private final ModelRenderer leftArm2;
+	private final ModelRenderer rightArm;
+	private final ModelRenderer rightArm2;
 	private final ModelRenderer torso;
-	private final ModelRenderer torsolower;
-	private final ModelRenderer leftleg;
-	private final ModelRenderer lowerleg;
-	private final ModelRenderer rightleg;
-	private final ModelRenderer lowerleg2;
+	private final ModelRenderer torsoLower;
+	private final ModelRenderer leftLeg;
+	private final ModelRenderer leftLeg2;
+	private final ModelRenderer rightLeg;
+	private final ModelRenderer rightLeg2;
 
 	public RotbeastModel() {
 		super();
@@ -48,29 +48,29 @@ public class RotbeastModel<T extends RotbeastEntity> extends SegmentedModel<T> {
 		setRotationAngle(jaw, 0.2618F, 0.0F, 0.0F);
 		jaw.setTextureOffset(22, 66).addBox(-5.0F, -3.0F, -6.0F, 10.0F, 1.0F, 6.0F, 0.0F, false);
 
-		leftarm = new ModelRenderer(this);
-		leftarm.setRotationPoint(10.0F, -32.0F, -4.0F);
-		rotbeast.addChild(leftarm);
-		setRotationAngle(leftarm, 0.2618F, 0.0F, 0.0F);
-		leftarm.setTextureOffset(34, 22).addBox(0.0F, -2.0F, -3.0F, 5.0F, 18.0F, 6.0F, 0.0F, false);
+		leftArm = new ModelRenderer(this);
+		leftArm.setRotationPoint(10.0F, -32.0F, -4.0F);
+		rotbeast.addChild(leftArm);
+		setRotationAngle(leftArm, 0.2618F, 0.0F, 0.0F);
+		leftArm.setTextureOffset(34, 22).addBox(0.0F, -2.0F, -3.0F, 5.0F, 18.0F, 6.0F, 0.0F, false);
 
-		lowerarm = new ModelRenderer(this);
-		lowerarm.setRotationPoint(2.0F, 16.0F, 0.0F);
-		leftarm.addChild(lowerarm);
-		setRotationAngle(lowerarm, -0.3491F, 0.0F, 0.0F);
-		lowerarm.setTextureOffset(0, 46).addBox(-2.0F, -1.0F, -3.0F, 5.0F, 14.0F, 6.0F, 0.0F, false);
+		leftArm2 = new ModelRenderer(this);
+		leftArm2.setRotationPoint(2.0F, 16.0F, 0.0F);
+		leftArm.addChild(leftArm2);
+		setRotationAngle(leftArm2, -0.3491F, 0.0F, 0.0F);
+		leftArm2.setTextureOffset(0, 46).addBox(-2.0F, -1.0F, -3.0F, 5.0F, 14.0F, 6.0F, 0.0F, false);
 
-		rightarm = new ModelRenderer(this);
-		rightarm.setRotationPoint(-10.0F, -32.0F, -4.0F);
-		rotbeast.addChild(rightarm);
-		setRotationAngle(rightarm, 0.2618F, 0.0F, 0.0F);
-		rightarm.setTextureOffset(34, 22).addBox(-5.0F, -2.0F, -3.0F, 5.0F, 18.0F, 6.0F, 0.0F, true);
+		rightArm = new ModelRenderer(this);
+		rightArm.setRotationPoint(-10.0F, -32.0F, -4.0F);
+		rotbeast.addChild(rightArm);
+		setRotationAngle(rightArm, 0.2618F, 0.0F, 0.0F);
+		rightArm.setTextureOffset(34, 22).addBox(-5.0F, -2.0F, -3.0F, 5.0F, 18.0F, 6.0F, 0.0F, true);
 
-		lowerarm2 = new ModelRenderer(this);
-		lowerarm2.setRotationPoint(-2.0F, 16.0F, 0.0F);
-		rightarm.addChild(lowerarm2);
-		setRotationAngle(lowerarm2, -0.3491F, 0.0F, 0.0F);
-		lowerarm2.setTextureOffset(0, 46).addBox(-3.0F, -1.0F, -3.0F, 5.0F, 14.0F, 6.0F, 0.0F, true);
+		rightArm2 = new ModelRenderer(this);
+		rightArm2.setRotationPoint(-2.0F, 16.0F, 0.0F);
+		rightArm.addChild(rightArm2);
+		setRotationAngle(rightArm2, -0.3491F, 0.0F, 0.0F);
+		rightArm2.setTextureOffset(0, 46).addBox(-3.0F, -1.0F, -3.0F, 5.0F, 14.0F, 6.0F, 0.0F, true);
 
 		torso = new ModelRenderer(this);
 		torso.setRotationPoint(0.0F, -30.0F, -3.0F);
@@ -78,35 +78,35 @@ public class RotbeastModel<T extends RotbeastEntity> extends SegmentedModel<T> {
 		setRotationAngle(torso, 0.6109F, 0.0F, 0.0F);
 		torso.setTextureOffset(0, 0).addBox(-10.0F, -7.0F, -5.0F, 20.0F, 12.0F, 10.0F, 0.0F, false);
 
-		torsolower = new ModelRenderer(this);
-		torsolower.setRotationPoint(0.0F, 8.0F, -2.0F);
-		torso.addChild(torsolower);
-		setRotationAngle(torsolower, -0.3491F, 0.0F, 0.0F);
-		torsolower.setTextureOffset(60, 0).addBox(-8.0F, -5.0F, -1.0F, 16.0F, 11.0F, 6.0F, 0.0F, false);
+		torsoLower = new ModelRenderer(this);
+		torsoLower.setRotationPoint(0.0F, 8.0F, -2.0F);
+		torso.addChild(torsoLower);
+		setRotationAngle(torsoLower, -0.3491F, 0.0F, 0.0F);
+		torsoLower.setTextureOffset(60, 0).addBox(-8.0F, -5.0F, -1.0F, 16.0F, 11.0F, 6.0F, 0.0F, false);
 
-		leftleg = new ModelRenderer(this);
-		leftleg.setRotationPoint(4.0F, -17.0F, 3.0F);
-		rotbeast.addChild(leftleg);
-		setRotationAngle(leftleg, -0.3491F, 0.0F, 0.0F);
-		leftleg.setTextureOffset(54, 66).addBox(-2.0F, -1.0F, -3.0F, 5.0F, 8.0F, 6.0F, 0.0F, false);
+		leftLeg = new ModelRenderer(this);
+		leftLeg.setRotationPoint(4.0F, -17.0F, 3.0F);
+		rotbeast.addChild(leftLeg);
+		setRotationAngle(leftLeg, -0.3491F, 0.0F, 0.0F);
+		leftLeg.setTextureOffset(54, 66).addBox(-2.0F, -1.0F, -3.0F, 5.0F, 8.0F, 6.0F, 0.0F, false);
 
-		lowerleg = new ModelRenderer(this);
-		lowerleg.setRotationPoint(0.0F, 7.0F, 1.0F);
-		leftleg.addChild(lowerleg);
-		setRotationAngle(lowerleg, 0.3491F, 0.0F, 0.0F);
-		lowerleg.setTextureOffset(44, 46).addBox(-2.0F, -1.0F, -4.0F, 5.0F, 11.0F, 6.0F, 0.0F, false);
+		leftLeg2 = new ModelRenderer(this);
+		leftLeg2.setRotationPoint(0.0F, 7.0F, 1.0F);
+		leftLeg.addChild(leftLeg2);
+		setRotationAngle(leftLeg2, 0.3491F, 0.0F, 0.0F);
+		leftLeg2.setTextureOffset(44, 46).addBox(-2.0F, -1.0F, -4.0F, 5.0F, 11.0F, 6.0F, 0.0F, false);
 
-		rightleg = new ModelRenderer(this);
-		rightleg.setRotationPoint(-4.0F, -17.0F, 3.0F);
-		rotbeast.addChild(rightleg);
-		setRotationAngle(rightleg, -0.3491F, 0.0F, 0.0F);
-		rightleg.setTextureOffset(54, 66).addBox(-3.0F, -1.0F, -3.0F, 5.0F, 8.0F, 6.0F, 0.0F, true);
+		rightLeg = new ModelRenderer(this);
+		rightLeg.setRotationPoint(-4.0F, -17.0F, 3.0F);
+		rotbeast.addChild(rightLeg);
+		setRotationAngle(rightLeg, -0.3491F, 0.0F, 0.0F);
+		rightLeg.setTextureOffset(54, 66).addBox(-3.0F, -1.0F, -3.0F, 5.0F, 8.0F, 6.0F, 0.0F, true);
 
-		lowerleg2 = new ModelRenderer(this);
-		lowerleg2.setRotationPoint(0.0F, 7.0F, 1.0F);
-		rightleg.addChild(lowerleg2);
-		setRotationAngle(lowerleg2, 0.3491F, 0.0F, 0.0F);
-		lowerleg2.setTextureOffset(44, 46).addBox(-3.0F, -1.0F, -4.0F, 5.0F, 11.0F, 6.0F, 0.0F, true);
+		rightLeg2 = new ModelRenderer(this);
+		rightLeg2.setRotationPoint(0.0F, 7.0F, 1.0F);
+		rightLeg.addChild(rightLeg2);
+		setRotationAngle(rightLeg2, 0.3491F, 0.0F, 0.0F);
+		rightLeg2.setTextureOffset(44, 46).addBox(-3.0F, -1.0F, -4.0F, 5.0F, 11.0F, 6.0F, 0.0F, true);
 	}
 
 	@Override
@@ -114,25 +114,21 @@ public class RotbeastModel<T extends RotbeastEntity> extends SegmentedModel<T> {
 		this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
 		this.head.rotateAngleX = 0.3491F + headPitch * ((float)Math.PI / 180F);
 
-		this.leftleg.rotateAngleX = -0.3491F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-
-		this.rightleg.rotateAngleX = -0.3491F + MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.leftLeg.rotateAngleX = -0.3491F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightLeg.rotateAngleX = -0.3491F + MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override
 	public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
-		int i = entityIn.getAttackTimer();
-		if (i > 0) {
-			this.rightarm.rotateAngleX = -2.0F + 1.5F * this.triangleWave((float)i - partialTick, 10.0F);
-			this.leftarm.rotateAngleX = -2.0F + 1.5F * this.triangleWave((float)i - partialTick, 10.0F);
-		} else {
-			this.rightarm.rotateAngleX = (-0.2F + 1.5F * this.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
-			this.leftarm.rotateAngleX = (-0.2F - 1.5F * this.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
+		int attackTimer = entityIn.getAttackTimer();
+		if (attackTimer > 0) {
+			this.rightArm.rotateAngleX = -2.0F + 1.5F * MathHelper.func_233021_e_((float) attackTimer - partialTick, 10.0F);
+			this.leftArm.rotateAngleX = -2.0F + 1.5F * MathHelper.func_233021_e_((float) attackTimer - partialTick, 10.0F);
 		}
-	}
-
-	private float triangleWave(float p_78172_1_, float p_78172_2_) {
-		return (Math.abs(p_78172_1_ % p_78172_2_ - p_78172_2_ * 0.5F) - p_78172_2_ * 0.25F) / (p_78172_2_ * 0.25F);
+		else {
+			this.rightArm.rotateAngleX = (-0.2F + 1.5F * MathHelper.func_233021_e_(limbSwing, 13.0F)) * limbSwingAmount;
+			this.leftArm.rotateAngleX = (-0.2F - 1.5F * MathHelper.func_233021_e_(limbSwing, 13.0F)) * limbSwingAmount;
+		}
 	}
 
 	@Override
