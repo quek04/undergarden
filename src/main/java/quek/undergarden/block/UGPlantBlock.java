@@ -11,11 +11,11 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class UGTallGrassBlock extends UGBushBlock implements IGrowable {
+public class UGPlantBlock extends UGBushBlock implements IGrowable {
 
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public UGTallGrassBlock(AbstractBlock.Properties properties) {
+    public UGPlantBlock(AbstractBlock.Properties properties) {
         super(properties);
     }
 
@@ -35,7 +35,6 @@ public class UGTallGrassBlock extends UGBushBlock implements IGrowable {
         if (doubleplantblock.getDefaultState().isValidPosition(serverWorld, pos) && serverWorld.isAirBlock(pos.up())) {
             doubleplantblock.placeAt(serverWorld, pos, 2);
         }
-
     }
 
     @Override
@@ -47,10 +46,4 @@ public class UGTallGrassBlock extends UGBushBlock implements IGrowable {
     public AbstractBlock.OffsetType getOffsetType() {
         return AbstractBlock.OffsetType.XZ;
     }
-
-    @Override
-    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
-        return false;
-    }
-
 }

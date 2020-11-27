@@ -1,7 +1,6 @@
 package quek.undergarden.block;
 
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.util.math.BlockPos;
@@ -14,8 +13,8 @@ public class UGDoublePlantBlock extends DoublePlantBlock {
         super(properties);
     }
 
-    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        Block block = state.getBlock();
-        return block == UGBlocks.deepturf_block.get() || block == UGBlocks.deepsoil.get();
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.isIn(UGBlocks.deepturf_block.get()) || state.isIn(UGBlocks.deepsoil.get());
     }
 }

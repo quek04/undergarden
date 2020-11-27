@@ -25,7 +25,7 @@ import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
 
-public class BlisterberryBushBlock extends Block implements IGrowable, IPlantable {
+public class BlisterberryBushBlock extends UGBushBlock implements IGrowable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
 
@@ -34,32 +34,9 @@ public class BlisterberryBushBlock extends Block implements IGrowable, IPlantabl
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
 
-    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        Block block = state.getBlock();
-        return block == UGBlocks.ashen_deepturf_block.get();
-    }
-
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        return !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-    }
-
-    @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockpos = pos.down();
-        return isValidGround(worldIn.getBlockState(blockpos), worldIn, blockpos);
-    }
-
-    @Override
-    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
-        return false;
-    }
-
-    @Override
-    public BlockState getPlant(IBlockReader world, BlockPos pos) {
-        BlockState state = world.getBlockState(pos);
-        if (state.getBlock() != this) return getDefaultState();
-        return state;
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.isIn(UGBlocks.ashen_deepturf_block.get());
     }
 
     @Override

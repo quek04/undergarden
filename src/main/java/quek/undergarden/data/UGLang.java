@@ -325,7 +325,7 @@ public class UGLang extends LanguageProvider {
         addPotion(UGPotions.brittleness, "Brittleness");
         addPotion(UGPotions.virulent_resistance, "Virulent Resistance");
 
-        addAdvTitle("root", "The Undergarden");
+        addAdvTitle("undergarden_root", "The Undergarden");
 
         addAdvTitle("catalyst", "One Ticket Please");
         addAdvDesc("catalyst", "Create the Catalyst.");

@@ -219,6 +219,4 @@ public class UGItemModels extends UGItemModelProvider {
 
         egg(UGItems.masticator_spawn_egg);
     }
-
-
 }
