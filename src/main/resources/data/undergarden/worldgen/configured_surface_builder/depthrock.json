@@ -1,0 +1,14 @@
+{
+  "type": "default",
+  "config": {
+    "top_material": {
+      "Name": "undergarden:depthrock"
+    },
+    "under_material": {
+      "Name": "undergarden:depthrock"
+    },
+    "underwater_material": {
+      "Name": "undergarden:deepsoil"
+    }
+  }
+}

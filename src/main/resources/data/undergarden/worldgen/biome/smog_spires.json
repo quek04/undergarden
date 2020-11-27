@@ -28,23 +28,7 @@
       "replace_current_music": true
     }
   },
-  "surface_builder": {
-    "type": "default",
-    "config": {
-      "top_material": {
-        "Name": "undergarden:ashen_deepturf_block",
-        "Properties": {
-          "snowy": "false"
-        }
-      },
-      "under_material": {
-        "Name": "undergarden:deepsoil"
-      },
-      "underwater_material": {
-        "Name": "undergarden:deepsoil"
-      }
-    }
-  },
+  "surface_builder": "undergarden:ashen_deepturf",
   "carvers": {
     "air": [
       {
