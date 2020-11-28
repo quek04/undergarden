@@ -1,5 +1,6 @@
 package quek.undergarden.entity.boss;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -9,7 +10,7 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -17,7 +18,9 @@ import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.Difficulty;
@@ -43,7 +46,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.5D, false));
-        this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(1, new SwimGoal(this));
         this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
     }
@@ -76,7 +79,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_STEP, 1.0F, 1.0F);
+        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_STEP, 0.5F, 1.0F);
     }
 
     @Override
@@ -99,6 +102,23 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
         if (this.attackTimer > 0) {
             --this.attackTimer;
+        }
+
+        if (this.collidedHorizontally && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this)) {
+            boolean flag = false;
+            AxisAlignedBB axisalignedbb = this.getBoundingBox().grow(0.2D);
+
+            for(BlockPos blockpos : BlockPos.getAllInBoxMutable(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
+                BlockState blockstate = this.world.getBlockState(blockpos);
+                Block block = blockstate.getBlock();
+                //if (block instanceof LeavesBlock) {
+                    flag = this.world.destroyBlock(blockpos, true, this) || flag;
+                //}
+            }
+
+            if (!flag && this.onGround) {
+                this.jump();
+            }
         }
 
         this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
