@@ -31,12 +31,7 @@
   "surface_builder": "undergarden:ashen_deepturf",
   "carvers": {
     "air": [
-      {
-        "type": "undergarden:undergarden_cave",
-        "config": {
-          "probability": 0.5
-        }
-      }
+      "undergarden:undergarden_cave"
     ]
   },
   "features": [
