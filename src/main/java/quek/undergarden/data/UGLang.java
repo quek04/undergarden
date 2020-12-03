@@ -433,6 +433,10 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "forgotten_guardian_deflect", "Forgotten Guardian deflects");
         addSubtitle("entity", "forgotten_guardian_step", "Forgotten Guardian steps");
 
+        addSubtitle("entity", "nargoyle_hurt", "Nargoyle hurts");
+        addSubtitle("entity", "nargoyle_death", "Nargoyle dies");
+        addSubtitle("entity", "nargoyle_attack", "Nargoyle leaps");
+
         addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
     }
 }
