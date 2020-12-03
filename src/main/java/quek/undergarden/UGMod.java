@@ -54,18 +54,18 @@ public class UGMod {
 		forgeBus.addListener(EventPriority.NORMAL, UGStructures::addDimensionalSpacing);
 
 		DeferredRegister<?>[] registers = {
-				UGEntityTypes.ENTITIES,
 				UGBlocks.BLOCKS,
-				UGItems.ITEMS,
-				UGFeatures.FEATURES,
 				UGCarvers.CARVERS,
 				UGEffects.EFFECTS,
-				UGPotions.POTIONS,
+				UGEntityTypes.ENTITIES,
+				UGFeatures.FEATURES,
 				UGFluids.FLUIDS,
+				UGItems.ITEMS,
 				UGParticleTypes.PARTICLES,
-				UGTileEntities.TEs,
+				UGPotions.POTIONS,
 				UGStructures.STRUCTURES,
-				UGSurfaceBuilders.SURFACE_BUILDERS
+				UGSurfaceBuilders.SURFACE_BUILDERS,
+				UGTileEntities.TILE_ENTITIES,
 		};
 
 		for (DeferredRegister<?> register : registers) {
