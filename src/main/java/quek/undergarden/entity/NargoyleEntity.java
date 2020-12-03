@@ -1,19 +1,19 @@
 package quek.undergarden.entity;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
+import quek.undergarden.registry.UGSounds;
 
 import java.util.EnumSet;
 import java.util.Random;
@@ -48,6 +48,22 @@ public class NargoyleEntity extends MonsterEntity {
         if(reason == SpawnReason.SPAWNER && worldIn.getDifficulty() != Difficulty.PEACEFUL)
             return true;
         else return worldIn.getDifficulty() != Difficulty.PEACEFUL && isValidLightLevel(worldIn, pos, randomIn) && canSpawnOn(type, worldIn, reason, pos, randomIn) && pos.getY() < 32;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return UGSounds.NARGOYLE_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return UGSounds.NARGOYLE_ATTACK;
+    }
+
+    @Override
+    public boolean attackEntityAsMob(Entity entityIn) {
+        this.playSound(UGSounds.NARGOYLE_ATTACK, 1.0F, 1.0F);
+        return super.attackEntityAsMob(entityIn);
     }
 
     public static class LeapAtTargetGoal extends Goal {
