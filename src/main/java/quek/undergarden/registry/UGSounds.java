@@ -66,6 +66,10 @@ public class UGSounds {
     public static final SoundEvent FORGOTTEN_GUARDIAN_DEFLECT = register("entity.forgotten_guardian_deflect");
     public static final SoundEvent FORGOTTEN_GUARDIAN_STEP = register("entity.forgotten_guardian_step");
 
+    public static final SoundEvent NARGOYLE_HURT = register("entity.nargoyle_hurt");
+    public static final SoundEvent NARGOYLE_DEATH = register("entity.nargoyle_death");
+    public static final SoundEvent NARGOYLE_ATTACK = register("entity.nargoyle_attack");
+
     private static SoundEvent register(String name) {
         SoundEvent sound = new SoundEvent(new ResourceLocation(UGMod.MODID, name));
         sound.setRegistryName(new ResourceLocation(UGMod.MODID, name));
@@ -116,7 +120,10 @@ public class UGSounds {
                 FORGOTTEN_GUARDIAN_DEATH,
                 FORGOTTEN_GUARDIAN_ATTACK,
                 FORGOTTEN_GUARDIAN_DEFLECT,
-                FORGOTTEN_GUARDIAN_STEP
+                FORGOTTEN_GUARDIAN_STEP,
+                NARGOYLE_HURT,
+                NARGOYLE_DEATH,
+                NARGOYLE_ATTACK
         );
     }
 }

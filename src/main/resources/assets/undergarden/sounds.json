@@ -366,5 +366,30 @@
       "undergarden:entity/fguardian_step_2",
       "undergarden:entity/fguardian_step_3"
     ]
+  },
+  "entity.nargoyle_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.nargoyle_hurt",
+    "sounds": [
+      "undergarden:entity/nargoyle_hurt_1",
+      "undergarden:entity/nargoyle_hurt_2",
+      "undergarden:entity/nargoyle_hurt_3"
+    ]
+  },
+  "entity.nargoyle_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.nargoyle_death",
+    "sounds": [
+      "undergarden:entity/nargoyle_death"
+    ]
+  },
+  "entity.nargoyle_attack": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.nargoyle_attack",
+    "sounds": [
+      "undergarden:entity/nargoyle_attack_1",
+      "undergarden:entity/nargoyle_attack_2",
+      "undergarden:entity/nargoyle_attack_3"
+    ]
   }
 }
