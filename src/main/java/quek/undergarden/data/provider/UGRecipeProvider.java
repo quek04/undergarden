@@ -15,7 +15,6 @@ import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.common.data.ForgeRecipeProvider;
-import quek.undergarden.registry.UGItems;
 
 import java.util.function.Supplier;
 
@@ -25,10 +24,10 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
         super(generatorIn);
     }
 
-    public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, Supplier<? extends Block> logIn) {
+    public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, ITag.INamedTag<Item> logIn) {
         return ShapelessRecipeBuilder.shapelessRecipe(plankOut.get(), 4)
-                .addIngredient(logIn.get())
-                .addCriterion("has_" + logIn.get().getRegistryName().getPath(), hasItem(logIn.get()));
+                .addIngredient(logIn)
+                .addCriterion("has_" + logIn.getName(), hasItem(logIn));
     }
 
     public ShapedRecipeBuilder makeDoor(Supplier<? extends Block> doorOut, Supplier<? extends Block> plankIn) {

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "undergarden:grongle_stem"
+      "tag": "undergarden:grongle_stems"
     }
   ],
   "result": {
