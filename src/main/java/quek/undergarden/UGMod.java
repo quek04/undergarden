@@ -64,6 +64,7 @@ public class UGMod {
 				UGParticleTypes.PARTICLES,
 				UGTileEntities.TEs,
 				UGStructures.STRUCTURES,
+				UGSurfaceBuilders.SURFACE_BUILDERS
 		};
 
 		for (DeferredRegister<?> register : registers) {
