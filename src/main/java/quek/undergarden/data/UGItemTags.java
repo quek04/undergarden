@@ -1,5 +1,6 @@
 package quek.undergarden.data;
 
+import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.data.TagsProvider;
@@ -17,8 +18,8 @@ import javax.annotation.Nullable;
 
 public class UGItemTags extends ItemTagsProvider {
 
-    public UGItemTags(DataGenerator dataGenerator, @Nullable ExistingFileHelper existingFileHelper) {
-        super(dataGenerator, new UGBlockTags(dataGenerator, existingFileHelper), UGMod.MODID, existingFileHelper);
+    public UGItemTags(DataGenerator dataGenerator, BlockTagsProvider blockTagProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(dataGenerator, blockTagProvider, UGMod.MODID, existingFileHelper);
     }
 
     @Override

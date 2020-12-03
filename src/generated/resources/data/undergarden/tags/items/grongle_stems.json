@@ -1,4 +1,9 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "undergarden:grongle_stem",
+    "undergarden:stripped_grongle_stem",
+    "undergarden:grongle_hyphae",
+    "undergarden:stripped_grongle_hyphae"
+  ]
 }

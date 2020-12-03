@@ -226,8 +226,9 @@ public class UGMod {
 		if(event.includeServer()) {
 			generator.addProvider(new UGRecipes(generator));
 			generator.addProvider(new UGLootTables(generator));
-			generator.addProvider(new UGBlockTags(generator, helper));
-			generator.addProvider(new UGItemTags(generator, helper));
+			UGBlockTags blockTags = new UGBlockTags(generator, helper);
+			generator.addProvider(blockTags);
+			generator.addProvider(new UGItemTags(generator, blockTags, helper));
 			generator.addProvider(new UGEntityTags(generator, helper));
 		}
 	}

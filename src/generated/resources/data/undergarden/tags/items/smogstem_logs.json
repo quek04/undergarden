@@ -1,4 +1,9 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "undergarden:smogstem_log",
+    "undergarden:stripped_smogstem_log",
+    "undergarden:smogstem_wood",
+    "undergarden:stripped_smogstem_wood"
+  ]
 }
