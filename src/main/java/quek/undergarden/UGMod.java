@@ -19,6 +19,7 @@ import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -215,15 +216,19 @@ public class UGMod {
 
 	public void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
+		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if(event.includeClient()) {
-			generator.addProvider(new UGBlockStates(generator, event.getExistingFileHelper()));
-			generator.addProvider(new UGItemModels(generator, event.getExistingFileHelper()));
+			generator.addProvider(new UGBlockStates(generator, helper));
+			generator.addProvider(new UGItemModels(generator, helper));
 			generator.addProvider(new UGLang(generator));
 		}
 		if(event.includeServer()) {
 			generator.addProvider(new UGRecipes(generator));
 			generator.addProvider(new UGLootTables(generator));
+			generator.addProvider(new UGBlockTags(generator, helper));
+			generator.addProvider(new UGItemTags(generator, helper));
+			generator.addProvider(new UGEntityTags(generator, helper));
 		}
 	}
 }

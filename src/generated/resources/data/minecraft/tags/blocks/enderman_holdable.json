@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#undergarden:mushrooms",
+    "undergarden:deepturf_block",
+    "undergarden:deepsoil",
+    "undergarden:coarse_deepsoil",
+    "undergarden:gloomgourd",
+    "undergarden:carved_gloomgourd"
+  ]
+}

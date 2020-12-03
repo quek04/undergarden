@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:deepturf_block",
+    "undergarden:deepsoil",
+    "undergarden:coarse_deepsoil"
+  ]
+}
