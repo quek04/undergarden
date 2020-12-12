@@ -15,6 +15,7 @@ import net.minecraft.item.*;
 import net.minecraft.potion.PotionBrewing;
 import net.minecraft.potion.Potions;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -140,6 +141,7 @@ public class UGMod {
 		DispenserBlock.registerDispenseBehavior(UGItems.GLOOMPER_SPAWN_EGG.get(), eggBehavior);
 		DispenserBlock.registerDispenseBehavior(UGItems.STONEBORN_SPAWN_EGG.get(), eggBehavior);
 		DispenserBlock.registerDispenseBehavior(UGItems.MASTICATOR_SPAWN_EGG.get(), eggBehavior);
+		DispenserBlock.registerDispenseBehavior(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG.get(), eggBehavior);
 
 		DispenserBlock.registerDispenseBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new ProjectileDispenseBehavior() {
 			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
@@ -210,6 +212,15 @@ public class UGMod {
 		ClientStuff.registerEntityRenderers();
 		ClientStuff.registerBlockColors();
 		ClientStuff.registerItemColors();
+
+		ItemModelsProperties.registerProperty(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
+			if (entity == null) {
+				return 0.0F;
+			} else {
+				return entity.getActiveItemStack() != stack ? 0.0F : (float)(stack.getUseDuration() - entity.getItemInUseCount()) / 20.0F;
+			}
+		});
+		ItemModelsProperties.registerProperty(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1.0F : 0.0F);
 
 		DimensionRenderInfo.field_239208_a_.put(UGDimensions.UNDERGARDEN_DIMENSION.getLocation(), new UGDimensionRenderInfo());
 		//TODO: OthersideDRI
