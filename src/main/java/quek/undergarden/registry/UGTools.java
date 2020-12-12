@@ -7,10 +7,10 @@ import net.minecraft.util.LazyValue;
 import java.util.function.Supplier;
 
 public enum UGTools implements IItemTier {
-    CLOGGRUM(286,5,4,2, 10, () -> {return Ingredient.fromItems(UGItems.cloggrum_ingot.get());}),
-    FROSTSTEEL(575, 6, 3, 3, 15, () -> {return Ingredient.fromItems(UGItems.froststeel_ingot.get());}),
-    UTHERIC(1279,8,3.5F,4,13, () -> {return Ingredient.fromItems(UGItems.utherium_ingot.get());}),
-    FORGOTTEN(63, 10, 6, 4, 0, () -> {return Ingredient.fromItems(UGItems.forgotten_ingot.get());})
+    CLOGGRUM(286,5,4,2, 10, () -> {return Ingredient.fromItems(UGItems.CLOGGRUM_INGOT.get());}),
+    FROSTSTEEL(575, 6, 3, 3, 15, () -> {return Ingredient.fromItems(UGItems.FROSTSTEEL_INGOT.get());}),
+    UTHERIC(1279,8,3.5F,4,13, () -> {return Ingredient.fromItems(UGItems.UTHERIUM_INGOT.get());}),
+    FORGOTTEN(63, 10, 6, 4, 0, () -> {return Ingredient.fromItems(UGItems.FORGOTTEN_INGOT.get());})
     ;
 
     int maxUses;

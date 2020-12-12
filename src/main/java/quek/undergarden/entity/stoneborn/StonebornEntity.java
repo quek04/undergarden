@@ -118,7 +118,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     @Override
     public ActionResultType func_230254_b_(PlayerEntity player, Hand playerHand) {
         ItemStack itemstack = player.getHeldItem(playerHand);
-        if (itemstack.getItem() != UGItems.stoneborn_spawn_egg.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
+        if (itemstack.getItem() != UGItems.STONEBORN_SPAWN_EGG.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
             if (this.getOffers().isEmpty()) {
                 return ActionResultType.func_233537_a_(this.world.isRemote);
             } else {
@@ -159,7 +159,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     public boolean inUndergarden() {
-        return this.world.getDimensionKey() == UGDimensions.undergarden_w && !this.isAIDisabled();
+        return this.world.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD && !this.isAIDisabled();
     }
 
     @Override
@@ -264,7 +264,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         this.livingSoundTime = -this.getTalkInterval();
         this.onStonebornTrade(offer);
         if (this.customer instanceof ServerPlayerEntity) {
-            UGCriteria.stoneborn_trade.test((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
+            UGCriteria.STONEBORN_TRADE.test((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
         }
     }
 

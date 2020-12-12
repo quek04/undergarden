@@ -13,6 +13,6 @@ public class GlowingKelpBlock extends KelpBlock {
 
     @Override
     protected AbstractTopPlantBlock getTopPlantBlock() {
-        return UGBlocks.glowing_kelp.get();
+        return UGBlocks.GLOWING_KELP.get();
     }
 }

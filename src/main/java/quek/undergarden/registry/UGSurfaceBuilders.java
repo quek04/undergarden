@@ -12,5 +12,5 @@ public class UGSurfaceBuilders {
 
     public static final DeferredRegister<SurfaceBuilder<?>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, UGMod.MODID);
 
-    public static final RegistryObject<SurfaceBuilder<SurfaceBuilderConfig>> eldergarden = SURFACE_BUILDERS.register("eldergarden", () -> new EldergardenSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_));
+    public static final RegistryObject<SurfaceBuilder<SurfaceBuilderConfig>> ELDERGARDEN = SURFACE_BUILDERS.register("eldergarden", () -> new EldergardenSurfaceBuilder(SurfaceBuilderConfig.field_237203_a_));
 }

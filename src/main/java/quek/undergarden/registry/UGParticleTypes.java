@@ -20,15 +20,15 @@ public class UGParticleTypes {
 
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, UGMod.MODID);
 
-    public static final RegistryObject<BasicParticleType> shard = PARTICLES.register("shard", () -> new BasicParticleType(false));
-    public static final RegistryObject<BasicParticleType> grongle_spore = PARTICLES.register("grongle_spore", () -> new BasicParticleType(false));
+    public static final RegistryObject<BasicParticleType> SHARD = PARTICLES.register("shard", () -> new BasicParticleType(false));
+    public static final RegistryObject<BasicParticleType> GRONGLE_SPORE = PARTICLES.register("grongle_spore", () -> new BasicParticleType(false));
 
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void registerParticleFactories(ParticleFactoryRegisterEvent event) {
         ParticleManager particleManager = Minecraft.getInstance().particles;
 
-        particleManager.registerFactory(UGParticleTypes.shard.get(), ShardParticle.Factory::new);
-        particleManager.registerFactory(UGParticleTypes.grongle_spore.get(), GrongleSporeParticle.Factory::new);
+        particleManager.registerFactory(UGParticleTypes.SHARD.get(), ShardParticle.Factory::new);
+        particleManager.registerFactory(UGParticleTypes.GRONGLE_SPORE.get(), GrongleSporeParticle.Factory::new);
     }
 }

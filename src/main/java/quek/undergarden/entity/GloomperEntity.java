@@ -52,7 +52,7 @@ public class GloomperEntity extends AnimalEntity {
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0F, 2.5F));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(UGBlocks.gloomgourd.get()), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(UGBlocks.GLOOMGOURD.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
@@ -65,7 +65,7 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     public static boolean canGloomperSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).isIn(UGBlocks.deepturf_block.get()) && worldIn.getLightSubtracted(pos, 0) > 8;
+        return worldIn.getBlockState(pos.down()).isIn(UGBlocks.DEEPTURF_BLOCK.get()) && worldIn.getLightSubtracted(pos, 0) > 8;
     }
 
     @Override
@@ -96,7 +96,7 @@ public class GloomperEntity extends AnimalEntity {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return Ingredient.fromItems(UGBlocks.gloomgourd.get()).test(stack);
+        return Ingredient.fromItems(UGBlocks.GLOOMGOURD.get()).test(stack);
     }
 
     @Override

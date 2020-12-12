@@ -19,16 +19,16 @@ public class BlisterbombEntity extends ProjectileItemEntity {
     }
 
     public BlisterbombEntity(World world, LivingEntity thrower) {
-        super(UGEntityTypes.blisterbomb, thrower, world);
+        super(UGEntityTypes.BLISTERBOMB.get(), thrower, world);
     }
 
     public BlisterbombEntity(World worldIn, double x, double y, double z) {
-        super(UGEntityTypes.blisterbomb, x, y, z, worldIn);
+        super(UGEntityTypes.BLISTERBOMB.get(), x, y, z, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return UGItems.blisterbomb.get();
+        return UGItems.BLISTERBOMB.get();
     }
 
     @Override

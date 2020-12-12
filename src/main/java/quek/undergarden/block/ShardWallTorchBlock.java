@@ -29,7 +29,7 @@ public class ShardWallTorchBlock extends WallTorchBlock {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return UGTileEntities.shard_torch_te.get().create();
+        return UGTileEntities.SHARD_TORCH.get().create();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -41,6 +41,6 @@ public class ShardWallTorchBlock extends WallTorchBlock {
         double z = (double)pos.getZ() + 0.5D;
         Direction oppositeDirection = direction.getOpposite();
         worldIn.addParticle(ParticleTypes.SMOKE, x + 0.27D * (double)oppositeDirection.getXOffset(), y + 0.22D, z + 0.27D * (double)oppositeDirection.getZOffset(), 0.0D, 0.0D, 0.0D);
-        worldIn.addParticle(UGParticleTypes.shard.get(), x + 0.27D * (double)oppositeDirection.getXOffset(), y + 0.22D, z + 0.27D * (double)oppositeDirection.getZOffset(), 0.0D, 0.0D, 0.0D);
+        worldIn.addParticle(UGParticleTypes.SHARD.get(), x + 0.27D * (double)oppositeDirection.getXOffset(), y + 0.22D, z + 0.27D * (double)oppositeDirection.getZOffset(), 0.0D, 0.0D, 0.0D);
     }
 }

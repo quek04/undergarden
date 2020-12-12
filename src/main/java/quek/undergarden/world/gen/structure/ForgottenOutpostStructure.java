@@ -16,15 +16,15 @@ import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import quek.undergarden.UGMod;
 
-public class ForgottenCastleStructure extends AbstractUndergardenStructure {
+public class ForgottenOutpostStructure extends AbstractUndergardenStructure {
 
-    public ForgottenCastleStructure(Codec<NoFeatureConfig> codec) {
+    public ForgottenOutpostStructure(Codec<NoFeatureConfig> codec) {
         super(codec);
     }
 
     @Override
     public IStartFactory<NoFeatureConfig> getStartFactory() {
-        return ForgottenCastleStructure.Start::new;
+        return ForgottenOutpostStructure.Start::new;
     }
 
     public static class Start extends AbstractUndergardenStructure.Start {

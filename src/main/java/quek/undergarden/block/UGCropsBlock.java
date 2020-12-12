@@ -24,7 +24,7 @@ public class UGCropsBlock extends CropsBlock {
 
     @Override
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() == Blocks.FARMLAND || state.getBlock() == UGBlocks.deepsoil_farmland.get();
+        return state.getBlock() == Blocks.FARMLAND || state.getBlock() == UGBlocks.DEEPSOIL_FARMLAND.get();
     }
 
     @Override

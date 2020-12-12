@@ -2,7 +2,6 @@ package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.HugeMushroomBlock;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.feature.BigMushroomFeatureConfig;
@@ -48,7 +47,7 @@ public class BigBloodMushroomFeature extends UGBigMushroomFeature {
                             if(!(random.nextInt(10) == 0)) {
                                 this.setBlockState(world, posMutable, config.capProvider.getBlockState(random, pos).with(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).with(HugeMushroomBlock.WEST, l < -k).with(HugeMushroomBlock.EAST, l > k).with(HugeMushroomBlock.NORTH, i1 < -k).with(HugeMushroomBlock.SOUTH, i1 > k));
                             }
-                            else this.setBlockState(world, posMutable, UGBlocks.blood_mushroom_globule.get().getDefaultState());
+                            else this.setBlockState(world, posMutable, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().getDefaultState());
                         }
                     }
                 }

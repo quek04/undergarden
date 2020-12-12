@@ -124,7 +124,7 @@ public class UndergardenPortalBlock extends Block {
                 World serverworld = entity.world;
                 if(serverworld != null) {
                     MinecraftServer minecraftserver = serverworld.getServer();
-                    RegistryKey<World> where2go = entity.world.getDimensionKey() == UGDimensions.undergarden_w ? World.OVERWORLD : UGDimensions.undergarden_w;
+                    RegistryKey<World> where2go = entity.world.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD ? World.OVERWORLD : UGDimensions.UNDERGARDEN_WORLD;
                     if(minecraftserver != null) {
                         ServerWorld destination = minecraftserver.getWorld(where2go);
                         if (destination != null && minecraftserver.getAllowNether() && !entity.isPassenger()) {
@@ -269,7 +269,7 @@ public class UndergardenPortalBlock extends Block {
                     }
 
                     Block block = blockstate.getBlock();
-                    if (block == UGBlocks.undergarden_portal.get()) {
+                    if (block == UGBlocks.UNDERGARDEN_PORTAL.get()) {
                         ++this.portalBlockCount;
                     }
 
@@ -307,7 +307,7 @@ public class UndergardenPortalBlock extends Block {
 
         protected boolean canConnect(BlockState pos) {
             Block block = pos.getBlock();
-            return pos.isAir() || block == UGBlocks.undergarden_portal.get();
+            return pos.isAir() || block == UGBlocks.UNDERGARDEN_PORTAL.get();
         }
 
         public boolean isValid() {
@@ -319,7 +319,7 @@ public class UndergardenPortalBlock extends Block {
                 BlockPos blockpos = this.bottomLeft.offset(this.rightDir, i);
 
                 for(int j = 0; j < this.height; ++j) {
-                    this.world.setBlockState(blockpos.up(j), UGBlocks.undergarden_portal.get().getDefaultState().with(UndergardenPortalBlock.AXIS, this.axis), 18);
+                    this.world.setBlockState(blockpos.up(j), UGBlocks.UNDERGARDEN_PORTAL.get().getDefaultState().with(UndergardenPortalBlock.AXIS, this.axis), 18);
                 }
             }
 

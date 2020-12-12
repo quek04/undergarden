@@ -11,7 +11,7 @@ import quek.undergarden.registry.UGTileEntities;
 public class ShardTorchTE extends TileEntity implements ITickableTileEntity {
 
     public ShardTorchTE() {
-        super(UGTileEntities.shard_torch_te.get());
+        super(UGTileEntities.SHARD_TORCH.get());
     }
 
     @Override

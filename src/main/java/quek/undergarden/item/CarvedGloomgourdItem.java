@@ -6,12 +6,10 @@ import net.minecraft.item.ItemStack;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItemGroups;
 
-import net.minecraft.item.Item.Properties;
-
 public class CarvedGloomgourdItem extends BlockItem {
 
     public CarvedGloomgourdItem() {
-        super(UGBlocks.carved_gloomgourd.get(), (new Properties()
+        super(UGBlocks.CARVED_GLOOMGOURD.get(), (new Properties()
                 .group(UGItemGroups.GROUP)
         ));
     }

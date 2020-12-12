@@ -37,7 +37,7 @@ public class DitchbulbBlock extends UGBushBlock {
         BlockPos blockpos = pos.down();
         BlockState blockstate = worldIn.getBlockState(blockpos);
         Block block = blockstate.getBlock();
-        if (block != UGBlocks.deepturf_block.get() && block != UGBlocks.deepsoil.get() && block != UGBlocks.depthrock.get()) {
+        if (block != UGBlocks.DEEPTURF_BLOCK.get() && block != UGBlocks.DEEPSOIL.get() && block != UGBlocks.DEPTHROCK.get()) {
             return worldIn.getLightSubtracted(pos, 0) < 0 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.util.Direction.UP, this);
         } else {
             return true;

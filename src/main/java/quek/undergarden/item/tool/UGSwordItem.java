@@ -36,7 +36,7 @@ public class UGSwordItem extends SwordItem {
 
     protected static Rarity isForgotten(IItemTier tier) {
         if(tier.equals(UGTools.FORGOTTEN)) {
-            return UGItems.forgotten;
+            return UGItems.FORGOTTEN;
         }
         else return Rarity.COMMON;
     }
@@ -44,16 +44,16 @@ public class UGSwordItem extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UGItems.cloggrum_sword.get()) {
+        if(stack.getItem() == UGItems.CLOGGRUM_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.cloggrum_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.froststeel_sword.get()) {
+        else if(stack.getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.utheric_sword.get()) {
+        else if(stack.getItem() == UGItems.UTHERIC_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.forgotten_sword.get()) {
+        else if(stack.getItem() == UGItems.FORGOTTEN_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.forgotten_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
@@ -65,16 +65,16 @@ public class UGSwordItem extends SwordItem {
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
-            if(player.getHeldItemMainhand().getItem() == UGItems.utheric_sword.get()) {
+            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIC_SWORD.get()) {
                 if(event.getEntityLiving().getType().isContained(UGTags.Entities.ROTSPAWN)) {
                     event.setAmount(damage * 1.4F);
                 }
                 else event.setAmount(damage * 1F);
             }
-            else if(player.getHeldItemMainhand().getItem() == UGItems.froststeel_sword.get()) {
+            else if(player.getHeldItemMainhand().getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
                 event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 4));
             }
-            else if(player.getHeldItemMainhand().getItem() == UGItems.forgotten_sword.get()) {
+            else if(player.getHeldItemMainhand().getItem() == UGItems.FORGOTTEN_SWORD.get()) {
                 if(event.getEntityLiving().getType().getRegistryName().getNamespace().equals("undergarden") && event.getEntityLiving().isNonBoss()) {
                     event.setAmount(damage * 2F);
                 }

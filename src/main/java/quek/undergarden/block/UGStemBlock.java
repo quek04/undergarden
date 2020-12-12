@@ -1,7 +1,6 @@
 package quek.undergarden.block;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
@@ -32,7 +31,7 @@ public class UGStemBlock extends StemBlock {
 
     @Override
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() == UGBlocks.deepsoil_farmland.get();
+        return state.getBlock() == UGBlocks.DEEPSOIL_FARMLAND.get();
     }
 
     @Override
@@ -55,7 +54,7 @@ public class UGStemBlock extends StemBlock {
                 BlockPos blockpos = pos.offset(direction);
                 BlockState blockstate = worldIn.getBlockState(blockpos.down());
                 Block block = blockstate.getBlock();
-                if (worldIn.isAirBlock(blockpos) && (blockstate.canSustainPlant(worldIn, blockpos.down(), Direction.UP, this) || block == UGBlocks.deepsoil_farmland.get() || block == UGBlocks.deepsoil.get() || block == UGBlocks.coarse_deepsoil.get() || block == UGBlocks.deepturf_block.get())) {
+                if (worldIn.isAirBlock(blockpos) && (blockstate.canSustainPlant(worldIn, blockpos.down(), Direction.UP, this) || block == UGBlocks.DEEPSOIL_FARMLAND.get() || block == UGBlocks.DEEPSOIL.get() || block == UGBlocks.COARSE_DEEPSOIL.get() || block == UGBlocks.DEEPTURF_BLOCK.get())) {
                     worldIn.setBlockState(blockpos, this.crop.getDefaultState());
                     worldIn.setBlockState(pos, this.crop.getAttachedStem().getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, direction));
                 }
@@ -67,7 +66,7 @@ public class UGStemBlock extends StemBlock {
     @Nullable
     @OnlyIn(Dist.CLIENT)
     protected Item getSeedItem() {
-        return UGItems.gloomgourd_seeds.get();
+        return UGItems.GLOOMGOURD_SEEDS.get();
     }
 
     @Override

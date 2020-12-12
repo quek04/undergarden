@@ -37,7 +37,7 @@ public class BigInkMushroomFeature extends UGBigMushroomFeature {
                         this.setBlockState(world, posMutable, config.capProvider.getBlockState(random, pos).with(HugeMushroomBlock.WEST, flag6).with(HugeMushroomBlock.EAST, flag7).with(HugeMushroomBlock.NORTH, flag8).with(HugeMushroomBlock.SOUTH, flag9));
 
                         if(random.nextInt(10) == 0) {
-                            this.setBlockState(world, posMutable.down(1), UGBlocks.seeping_ink.get().getDefaultState());
+                            this.setBlockState(world, posMutable.down(1), UGBlocks.SEEPING_INK.get().getDefaultState());
                         }
                     }
                 }

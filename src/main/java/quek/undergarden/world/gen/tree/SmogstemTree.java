@@ -19,10 +19,10 @@ public class SmogstemTree extends Tree {
     @Nullable
     @Override
     public ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
-        return UGFeatures.undergarden_tree.get().withConfiguration(
+        return UGFeatures.UNDERGARDEN_TREE.get().withConfiguration(
                 (new BaseTreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.smogstem_log.get().getDefaultState()),
-                        new SimpleBlockStateProvider(UGBlocks.smogstem_leaves.get().getDefaultState()),
+                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LOG.get().getDefaultState()),
+                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().getDefaultState()),
                         new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 2),
                         new StraightTrunkPlacer(10, 2, 2),
                         new TwoLayerFeature(1, 0, 1)))

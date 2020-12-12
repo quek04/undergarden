@@ -24,7 +24,7 @@ public abstract class UGBigMushroomFeature extends AbstractBigMushroomFeature {
     private static boolean isDeepturf(IWorldGenerationBaseReader world, BlockPos pos) {
         return world.hasBlockState(pos, (state) -> {
             Block block = state.getBlock();
-            return block == UGBlocks.deepturf_block.get() || block == UGBlocks.deepsoil.get();
+            return block == UGBlocks.DEEPTURF_BLOCK.get() || block == UGBlocks.DEEPSOIL.get();
         });
     }
 

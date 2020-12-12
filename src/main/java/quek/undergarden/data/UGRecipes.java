@@ -24,33 +24,33 @@ public class UGRecipes extends UGRecipeProvider {
 
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-        makePlanks(UGBlocks.smogstem_planks, UGTags.Items.SMOGSTEM_LOGS).build(consumer);
-        makePlanks(UGBlocks.wigglewood_planks, UGTags.Items.WIGGLEWOOD_LOGS).build(consumer);
-        makePlanks(UGBlocks.grongle_planks, UGTags.Items.GRONGLE_STEMS).build(consumer);
+        makePlanks(UGBlocks.SMOGSTEM_PLANKS, UGTags.Items.SMOGSTEM_LOGS).build(consumer);
+        makePlanks(UGBlocks.WIGGLEWOOD_PLANKS, UGTags.Items.WIGGLEWOOD_LOGS).build(consumer);
+        makePlanks(UGBlocks.GRONGLE_PLANKS, UGTags.Items.GRONGLE_STEMS).build(consumer);
 
-        makeBricks(UGBlocks.depthrock_bricks, UGBlocks.depthrock).build(consumer);
-        makeBricks(UGBlocks.shiverstone_bricks, UGBlocks.shiverstone).build(consumer);
-        makeBricks(UGBlocks.tremblecrust_bricks, UGBlocks.tremblecrust).build(consumer);
+        makeBricks(UGBlocks.DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK).build(consumer);
+        makeBricks(UGBlocks.SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE).build(consumer);
+        makeBricks(UGBlocks.TREMBLECRUST_BRICKS, UGBlocks.TREMBLECRUST).build(consumer);
 
-        makeChiseledBricks(UGBlocks.chiseled_depthrock_bricks, UGBlocks.depthrock_brick_slab).build(consumer);
-        makeChiseledBricks(UGBlocks.chiseled_shiverstone_bricks, UGBlocks.shiverstone_brick_slab).build(consumer);
+        makeChiseledBricks(UGBlocks.CHISELED_DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK_BRICK_SLAB).build(consumer);
+        makeChiseledBricks(UGBlocks.CHISELED_SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE_BRICK_SLAB).build(consumer);
 
-        makeWood(UGBlocks.smogstem_wood, UGBlocks.smogstem_log).build(consumer);
-        makeWood(UGBlocks.stripped_smogstem_wood, UGBlocks.stripped_smogstem_log).build(consumer);
-        makeWood(UGBlocks.wigglewood_wood, UGBlocks.wigglewood_log).build(consumer);
-        makeWood(UGBlocks.stripped_wigglewood_wood, UGBlocks.stripped_wigglewood_log).build(consumer);
-        makeWood(UGBlocks.grongle_hyphae, UGBlocks.grongle_stem).build(consumer);
-        makeWood(UGBlocks.stripped_grongle_hyphae, UGBlocks.stripped_grongle_stem).build(consumer);
+        makeWood(UGBlocks.SMOGSTEM_WOOD, UGBlocks.SMOGSTEM_LOG).build(consumer);
+        makeWood(UGBlocks.STRIPPED_SMOGSTEM_WOOD, UGBlocks.STRIPPED_SMOGSTEM_LOG).build(consumer);
+        makeWood(UGBlocks.WIGGLEWOOD_WOOD, UGBlocks.WIGGLEWOOD_LOG).build(consumer);
+        makeWood(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD, UGBlocks.STRIPPED_WIGGLEWOOD_LOG).build(consumer);
+        makeWood(UGBlocks.GRONGLE_HYPHAE, UGBlocks.GRONGLE_STEM).build(consumer);
+        makeWood(UGBlocks.STRIPPED_GRONGLE_HYPHAE, UGBlocks.STRIPPED_GRONGLE_STEM).build(consumer);
 
-        makeBoat(UGItems.smogstem_boat, UGBlocks.smogstem_planks).build(consumer);
-        makeBoat(UGItems.wigglewood_boat, UGBlocks.wigglewood_planks).build(consumer);
-        makeBoat(UGItems.grongle_boat, UGBlocks.grongle_planks).build(consumer);
+        makeBoat(UGItems.SMOGSTEM_BOAT, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makeBoat(UGItems.WIGGLEWOOD_BOAT, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makeBoat(UGItems.GRONGLE_BOAT, UGBlocks.GRONGLE_PLANKS).build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.twistytwig.get(), 4)
+        ShapedRecipeBuilder.shapedRecipe(UGItems.TWISTYTWIG.get(), 4)
                 .patternLine("P ")
                 .patternLine(" P")
-                .key('P', UGBlocks.wigglewood_planks.get())
-                .addCriterion("has_wigglewood_planks", hasItem(UGBlocks.wigglewood_planks.get()))
+                .key('P', UGBlocks.WIGGLEWOOD_PLANKS.get())
+                .addCriterion("has_wigglewood_planks", hasItem(UGBlocks.WIGGLEWOOD_PLANKS.get()))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(Blocks.SCAFFOLDING, 6)
@@ -58,89 +58,89 @@ public class UGRecipes extends UGRecipeProvider {
                 .patternLine("S S")
                 .patternLine("S S")
                 .key('S', Tags.Items.RODS_WOODEN)
-                .key('T', UGItems.twistytwig.get())
+                .key('T', UGItems.TWISTYTWIG.get())
                 .addCriterion("has_stick", hasItem(Tags.Items.RODS_WOODEN))
-                .addCriterion("has_twistytwig", hasItem(UGItems.twistytwig.get()))
+                .addCriterion("has_twistytwig", hasItem(UGItems.TWISTYTWIG.get()))
                 .build(consumer, name("undergarden_scaffolding"));
 
-        ShapedRecipeBuilder.shapedRecipe(UGBlocks.gloom_o_lantern.get())
+        ShapedRecipeBuilder.shapedRecipe(UGBlocks.GLOOM_O_LANTERN.get())
                 .patternLine("G")
                 .patternLine("T")
-                .key('G', UGBlocks.carved_gloomgourd.get())
+                .key('G', UGBlocks.CARVED_GLOOMGOURD.get())
                 .key('T', Items.TORCH)
-                .addCriterion("has_carved_gourd", hasItem(UGBlocks.carved_gloomgourd.get()))
+                .addCriterion("has_carved_gourd", hasItem(UGBlocks.CARVED_GLOOMGOURD.get()))
                 .addCriterion("has_torch", hasItem(Items.TORCH))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGBlocks.cloggrum_bars.get(), 16)
+        ShapedRecipeBuilder.shapedRecipe(UGBlocks.CLOGGRUM_BARS.get(), 16)
                 .patternLine("CCC")
                 .patternLine("CCC")
-                .key('C', UGItems.cloggrum_ingot.get())
-                .addCriterion("has_cloggrum_ingot", hasItem(UGItems.cloggrum_ingot.get()))
+                .key('C', UGItems.CLOGGRUM_INGOT.get())
+                .addCriterion("has_cloggrum_ingot", hasItem(UGItems.CLOGGRUM_INGOT.get()))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGBlocks.coarse_deepsoil.get(), 4)
+        ShapedRecipeBuilder.shapedRecipe(UGBlocks.COARSE_DEEPSOIL.get(), 4)
                 .patternLine("DP")
                 .patternLine("PD")
-                .key('D', UGBlocks.deepsoil.get())
-                .key('P', UGItems.depthrock_pebble.get())
-                .addCriterion("has_deepsoil", hasItem(UGBlocks.deepsoil.get()))
-                .addCriterion("has_pebble", hasItem(UGItems.depthrock_pebble.get()))
+                .key('D', UGBlocks.DEEPSOIL.get())
+                .key('P', UGItems.DEPTHROCK_PEBBLE.get())
+                .addCriterion("has_deepsoil", hasItem(UGBlocks.DEEPSOIL.get()))
+                .addCriterion("has_pebble", hasItem(UGItems.DEPTHROCK_PEBBLE.get()))
                 .build(consumer);
 
-        ShapelessRecipeBuilder.shapelessRecipe(UGBlocks.deepsoil.get())
-                .addIngredient(UGBlocks.coarse_deepsoil.get())
-                .addCriterion("has_coarse_deepsoil", hasItem(UGBlocks.coarse_deepsoil.get()))
+        ShapelessRecipeBuilder.shapelessRecipe(UGBlocks.DEEPSOIL.get())
+                .addIngredient(UGBlocks.COARSE_DEEPSOIL.get())
+                .addCriterion("has_coarse_deepsoil", hasItem(UGBlocks.COARSE_DEEPSOIL.get()))
                 .build(consumer, name("coarse_deepsoil_to_normal"));
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.slingshot.get())
+        ShapedRecipeBuilder.shapedRecipe(UGItems.SLINGSHOT.get())
                 .patternLine("STS")
                 .patternLine("SSS")
                 .patternLine(" S ")
                 .key('S', Tags.Items.RODS_WOODEN)
-                .key('T', UGItems.twistytwig.get())
+                .key('T', UGItems.TWISTYTWIG.get())
                 .addCriterion("has_stick", hasItem(Tags.Items.RODS_WOODEN))
-                .addCriterion("has_twistytwig", hasItem(UGItems.twistytwig.get()))
+                .addCriterion("has_twistytwig", hasItem(UGItems.TWISTYTWIG.get()))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.blisterbomb.get())
+        ShapedRecipeBuilder.shapedRecipe(UGItems.BLISTERBOMB.get())
                 .patternLine(" T ")
                 .patternLine("BBB")
                 .patternLine("BBB")
-                .key('T', UGItems.twistytwig.get())
-                .key('B', UGItems.rotten_blisterberry.get())
-                .addCriterion("has_twistytwig", hasItem(UGItems.twistytwig.get()))
-                .addCriterion("has_blisterberry", hasItem(UGItems.rotten_blisterberry.get()))
+                .key('T', UGItems.TWISTYTWIG.get())
+                .key('B', UGItems.ROTTEN_BLISTERBERRY.get())
+                .addCriterion("has_twistytwig", hasItem(UGItems.TWISTYTWIG.get()))
+                .addCriterion("has_blisterberry", hasItem(UGItems.ROTTEN_BLISTERBERRY.get()))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.cloggrum_shield.get())
+        ShapedRecipeBuilder.shapedRecipe(UGItems.CLOGGRUM_SHIELD.get())
                 .patternLine("CSC")
                 .patternLine("CCC")
                 .patternLine(" C ")
-                .key('S', UGBlocks.smogstem_planks.get())
-                .key('C', UGItems.cloggrum_ingot.get())
-                .addCriterion("has_scales", hasItem(UGItems.cloggrum_ingot.get()))
+                .key('S', UGBlocks.SMOGSTEM_PLANKS.get())
+                .key('C', UGItems.CLOGGRUM_INGOT.get())
+                .addCriterion("has_scales", hasItem(UGItems.CLOGGRUM_INGOT.get()))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.shard_torch.get(), 1)
+        ShapedRecipeBuilder.shapedRecipe(UGItems.SHARD_TORCH.get(), 1)
                 .patternLine("C")
                 .patternLine("S")
-                .key('C', UGItems.utheric_shard.get())
+                .key('C', UGItems.UTHERIC_SHARD.get())
                 .key('S', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_shard", hasItem(UGItems.utheric_shard.get()))
+                .addCriterion("has_shard", hasItem(UGItems.UTHERIC_SHARD.get()))
                 .addCriterion("has_stick", hasItem(Tags.Items.RODS_WOODEN))
                 .build(consumer);
 
         ShapedRecipeBuilder.shapedRecipe(Blocks.TORCH, 2)
                 .patternLine("D")
                 .patternLine("S")
-                .key('D', UGItems.ditchbulb.get())
+                .key('D', UGItems.DITCHBULB.get())
                 .key('S', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_ditchbulb", hasItem(UGItems.ditchbulb.get()))
+                .addCriterion("has_ditchbulb", hasItem(UGItems.DITCHBULB.get()))
                 .addCriterion("has_stick", hasItem(Tags.Items.RODS_WOODEN))
                 .build(consumer, name("smogstem_torch_ditchbulb"));
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.catalyst_item.get())
+        ShapedRecipeBuilder.shapedRecipe(UGItems.CATALYST.get())
                 .patternLine("GIG")
                 .patternLine("IDI")
                 .patternLine("GIG")
@@ -152,215 +152,215 @@ public class UGRecipes extends UGRecipeProvider {
                 .addCriterion("has_diamond", hasItem(Items.DIAMOND))
                 .build(consumer);
 
-        ShapelessRecipeBuilder.shapelessRecipe(UGItems.gloomgourd_pie.get())
+        ShapelessRecipeBuilder.shapelessRecipe(UGItems.GLOOMGOURD_PIE.get())
                 .addIngredient(UGTags.Items.MUSHROOMS)
-                .addIngredient(UGBlocks.gloomgourd.get())
-                .addIngredient(UGItems.glowing_kelp.get())
+                .addIngredient(UGBlocks.GLOOMGOURD.get())
+                .addIngredient(UGItems.GLOWING_KELP.get())
                 .addCriterion("has_mushroom", hasItem(UGTags.Items.MUSHROOMS))
-                .addCriterion("has_gloomgourd", hasItem(UGBlocks.gloomgourd.get()))
-                .addCriterion("has_kelp", hasItem(UGItems.glowing_kelp.get()))
+                .addCriterion("has_gloomgourd", hasItem(UGBlocks.GLOOMGOURD.get()))
+                .addCriterion("has_kelp", hasItem(UGItems.GLOWING_KELP.get()))
                 .build(consumer);
 
-        ShapelessRecipeBuilder.shapelessRecipe(UGItems.gloomgourd_seeds.get(), 4)
-                .addIngredient(UGBlocks.gloomgourd.get())
-                .addCriterion("has_gloomgourd", hasItem(UGBlocks.gloomgourd.get()))
+        ShapelessRecipeBuilder.shapelessRecipe(UGItems.GLOOMGOURD_SEEDS.get(), 4)
+                .addIngredient(UGBlocks.GLOOMGOURD.get())
+                .addCriterion("has_gloomgourd", hasItem(UGBlocks.GLOOMGOURD.get()))
                 .build(consumer);
 
         ShapelessRecipeBuilder.shapelessRecipe(Items.BONE_MEAL, 4)
-                .addIngredient(UGItems.brute_tusk.get())
-                .addCriterion("has_tusk", hasItem(UGItems.brute_tusk.get()))
+                .addIngredient(UGItems.BRUTE_TUSK.get())
+                .addCriterion("has_tusk", hasItem(UGItems.BRUTE_TUSK.get()))
                 .build(consumer, name("tusk_to_bonemeal"));
 
         ShapelessRecipeBuilder.shapelessRecipe(Items.RED_DYE, 9)
-                .addIngredient(UGBlocks.blood_mushroom_globule.get())
-                .addCriterion("has_globule", hasItem(UGBlocks.blood_mushroom_globule.get()))
+                .addIngredient(UGBlocks.BLOOD_MUSHROOM_GLOBULE.get())
+                .addCriterion("has_globule", hasItem(UGBlocks.BLOOD_MUSHROOM_GLOBULE.get()))
                 .build(consumer, name("globule_to_dye"));
 
         ShapelessRecipeBuilder.shapelessRecipe(Items.RED_DYE)
-                .addIngredient(UGBlocks.blood_mushroom.get())
-                .addCriterion("has_blood_mushroom", hasItem(UGBlocks.blood_mushroom.get()))
+                .addIngredient(UGBlocks.BLOOD_MUSHROOM.get())
+                .addCriterion("has_blood_mushroom", hasItem(UGBlocks.BLOOD_MUSHROOM.get()))
                 .build(consumer, name("blood_mushroom_to_dye"));
 
         ShapelessRecipeBuilder.shapelessRecipe(Items.BLACK_DYE)
-                .addIngredient(UGBlocks.ink_mushroom.get())
-                .addCriterion("has_ink_mushroom", hasItem(UGBlocks.ink_mushroom.get()))
+                .addIngredient(UGBlocks.INK_MUSHROOM.get())
+                .addCriterion("has_ink_mushroom", hasItem(UGBlocks.INK_MUSHROOM.get()))
                 .build(consumer, name("ink_mushroom_to_dye"));
 
         ShapelessRecipeBuilder.shapelessRecipe(Items.BLUE_DYE)
-                .addIngredient(UGBlocks.indigo_mushroom.get())
-                .addCriterion("has_indigo_mushroom", hasItem(UGBlocks.indigo_mushroom.get()))
+                .addIngredient(UGBlocks.INDIGO_MUSHROOM.get())
+                .addCriterion("has_indigo_mushroom", hasItem(UGBlocks.INDIGO_MUSHROOM.get()))
                 .build(consumer, name("indigo_mushroom_to_dye"));
 
         ShapelessRecipeBuilder.shapelessRecipe(Items.WHITE_DYE)
-                .addIngredient(UGBlocks.veil_mushroom.get())
-                .addCriterion("has_veil_mushroom", hasItem(UGBlocks.veil_mushroom.get()))
+                .addIngredient(UGBlocks.VEIL_MUSHROOM.get())
+                .addCriterion("has_veil_mushroom", hasItem(UGBlocks.VEIL_MUSHROOM.get()))
                 .build(consumer, name("veil_mushroom_to_dye"));
 
-        ShapedRecipeBuilder.shapedRecipe(UGItems.utherium_chunk.get())
+        ShapedRecipeBuilder.shapedRecipe(UGItems.UTHERIUM_CHUNK.get())
                 .patternLine("SS")
                 .patternLine("SS")
-                .key('S', UGItems.utheric_shard.get())
-                .addCriterion("has_shard", hasItem(UGItems.utheric_shard.get()));
+                .key('S', UGItems.UTHERIC_SHARD.get())
+                .addCriterion("has_shard", hasItem(UGItems.UTHERIC_SHARD.get()));
 
-        makeIngotToBlock(UGBlocks.cloggrum_block, UGItems.cloggrum_ingot).build(consumer);
-        makeIngotToBlock(UGBlocks.froststeel_block, UGItems.froststeel_ingot).build(consumer);
-        makeIngotToBlock(UGBlocks.utherium_block, UGItems.utherium_ingot).build(consumer);
-        makeIngotToBlock(UGBlocks.regalium_block, UGItems.regalium_ingot).build(consumer);
-        makeIngotToBlock(UGBlocks.forgotten_block, UGItems.forgotten_ingot).build(consumer);
-        makeIngotToBlock(UGBlocks.depthrock, UGItems.depthrock_pebble).build(consumer, name("pebbles_to_depthrock"));
+        makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeIngotToBlock(UGBlocks.REGALIUM_BLOCK, UGItems.REGALIUM_INGOT).build(consumer);
+        makeIngotToBlock(UGBlocks.FORGOTTEN_BLOCK, UGItems.FORGOTTEN_INGOT).build(consumer);
+        makeIngotToBlock(UGBlocks.DEPTHROCK, UGItems.DEPTHROCK_PEBBLE).build(consumer, name("pebbles_to_depthrock"));
 
-        makeBlockToIngot(UGItems.cloggrum_ingot, UGBlocks.cloggrum_block).build(consumer, name("cloggrum_block_to_ingot"));
-        makeBlockToIngot(UGItems.froststeel_ingot, UGBlocks.froststeel_block).build(consumer, name("froststeel_block_to_ingot"));
-        makeBlockToIngot(UGItems.utherium_ingot, UGBlocks.utherium_block).build(consumer, name("utherium_block_to_ingot"));
-        makeBlockToIngot(UGItems.regalium_ingot, UGBlocks.regalium_block).build(consumer, name("regalium_block_to_ingot"));
-        makeBlockToIngot(UGItems.forgotten_ingot, UGBlocks.forgotten_block).build(consumer, name("forgotten_block_to_ingot"));
+        makeBlockToIngot(UGItems.CLOGGRUM_INGOT, UGBlocks.CLOGGRUM_BLOCK).build(consumer, name("cloggrum_block_to_ingot"));
+        makeBlockToIngot(UGItems.FROSTSTEEL_INGOT, UGBlocks.FROSTSTEEL_BLOCK).build(consumer, name("froststeel_block_to_ingot"));
+        makeBlockToIngot(UGItems.UTHERIUM_INGOT, UGBlocks.UTHERIUM_BLOCK).build(consumer, name("utherium_block_to_ingot"));
+        makeBlockToIngot(UGItems.REGALIUM_INGOT, UGBlocks.REGALIUM_BLOCK).build(consumer, name("regalium_block_to_ingot"));
+        makeBlockToIngot(UGItems.FORGOTTEN_INGOT, UGBlocks.FORGOTTEN_BLOCK).build(consumer, name("forgotten_block_to_ingot"));
 
-        makeIngotToNugget(UGItems.cloggrum_nugget, UGItems.cloggrum_ingot).build(consumer, name("cloggrum_ingot_to_nugget"));
-        makeIngotToNugget(UGItems.froststeel_nugget, UGItems.froststeel_ingot).build(consumer, name("froststeel_ingot_to_nugget"));
-        makeIngotToNugget(UGItems.utherium_chunk, UGItems.utherium_ingot).build(consumer, name("utherium_ingot_to_nugget"));
-        makeIngotToNugget(UGItems.regalium_nugget, UGItems.regalium_ingot).build(consumer, name("regalium_ingot_to_nugget"));
-        makeIngotToNugget(UGItems.forgotten_nugget, UGItems.forgotten_ingot).build(consumer, name("forgotten_ingot_to_nugget"));
+        makeIngotToNugget(UGItems.CLOGGRUM_NUGGET, UGItems.CLOGGRUM_INGOT).build(consumer, name("cloggrum_ingot_to_nugget"));
+        makeIngotToNugget(UGItems.FROSTSTEEL_NUGGET, UGItems.FROSTSTEEL_INGOT).build(consumer, name("froststeel_ingot_to_nugget"));
+        makeIngotToNugget(UGItems.UTHERIUM_CHUNK, UGItems.UTHERIUM_INGOT).build(consumer, name("utherium_ingot_to_nugget"));
+        makeIngotToNugget(UGItems.REGALIUM_NUGGET, UGItems.REGALIUM_INGOT).build(consumer, name("regalium_ingot_to_nugget"));
+        makeIngotToNugget(UGItems.FORGOTTEN_NUGGET, UGItems.FORGOTTEN_INGOT).build(consumer, name("forgotten_ingot_to_nugget"));
 
-        makeNuggetToIngot(UGItems.cloggrum_ingot, UGItems.cloggrum_nugget).build(consumer, name("cloggrum_nugget_to_ingot"));
-        makeNuggetToIngot(UGItems.froststeel_ingot, UGItems.froststeel_nugget).build(consumer, name("froststeel_nugget_to_ingot"));
-        makeNuggetToIngot(UGItems.utherium_ingot, UGItems.utherium_chunk).build(consumer, name("utherium_chunk_to_ingot"));
-        makeNuggetToIngot(UGItems.regalium_ingot, UGItems.regalium_nugget).build(consumer, name("regalium_chunk_to_ingot"));
-        makeNuggetToIngot(UGItems.forgotten_ingot, UGItems.forgotten_nugget).build(consumer, name("forgotten_chunk_to_ingot"));
+        makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).build(consumer, name("cloggrum_nugget_to_ingot"));
+        makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).build(consumer, name("froststeel_nugget_to_ingot"));
+        makeNuggetToIngot(UGItems.UTHERIUM_INGOT, UGItems.UTHERIUM_CHUNK).build(consumer, name("utherium_chunk_to_ingot"));
+        makeNuggetToIngot(UGItems.REGALIUM_INGOT, UGItems.REGALIUM_NUGGET).build(consumer, name("regalium_chunk_to_ingot"));
+        makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).build(consumer, name("forgotten_chunk_to_ingot"));
 
-        makeSword(UGItems.cloggrum_sword, UGItems.cloggrum_ingot).build(consumer);
-        makeSword(UGItems.froststeel_sword, UGItems.froststeel_ingot).build(consumer);
-        makeSword(UGItems.utheric_sword, UGItems.utherium_ingot).build(consumer);
+        makeSword(UGItems.CLOGGRUM_SWORD, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makeSword(UGItems.FROSTSTEEL_SWORD, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makeSword(UGItems.UTHERIC_SWORD, UGItems.UTHERIUM_INGOT).build(consumer);
 
-        makePickaxe(UGItems.cloggrum_pickaxe, UGItems.cloggrum_ingot).build(consumer);
-        makePickaxe(UGItems.froststeel_pickaxe, UGItems.froststeel_ingot).build(consumer);
-        makePickaxe(UGItems.utheric_pickaxe, UGItems.utherium_ingot).build(consumer);
+        makePickaxe(UGItems.CLOGGRUM_PICKAXE, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makePickaxe(UGItems.FROSTSTEEL_PICKAXE, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makePickaxe(UGItems.UTHERIC_PICKAXE, UGItems.UTHERIUM_INGOT).build(consumer);
 
-        makeAxe(UGItems.cloggrum_axe, UGItems.cloggrum_ingot).build(consumer);
-        makeAxe(UGItems.froststeel_axe, UGItems.froststeel_ingot).build(consumer);
-        makeAxe(UGItems.utheric_axe, UGItems.utherium_ingot).build(consumer);
+        makeAxe(UGItems.CLOGGRUM_AXE, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makeAxe(UGItems.FROSTSTEEL_AXE, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makeAxe(UGItems.UTHERIC_AXE, UGItems.UTHERIUM_INGOT).build(consumer);
 
-        makeShovel(UGItems.cloggrum_shovel, UGItems.cloggrum_ingot).build(consumer);
-        makeShovel(UGItems.froststeel_shovel, UGItems.froststeel_ingot).build(consumer);
-        makeShovel(UGItems.utheric_shovel, UGItems.utherium_ingot).build(consumer);
+        makeShovel(UGItems.CLOGGRUM_SHOVEL, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makeShovel(UGItems.FROSTSTEEL_SHOVEL, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makeShovel(UGItems.UTHERIC_SHOVEL, UGItems.UTHERIUM_INGOT).build(consumer);
 
-        makeHoe(UGItems.cloggrum_hoe, UGItems.cloggrum_ingot).build(consumer);
-        makeHoe(UGItems.froststeel_hoe, UGItems.froststeel_ingot).build(consumer);
-        makeHoe(UGItems.utheric_hoe, UGItems.utherium_ingot).build(consumer);
+        makeHoe(UGItems.CLOGGRUM_HOE, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makeHoe(UGItems.FROSTSTEEL_HOE, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makeHoe(UGItems.UTHERIC_HOE, UGItems.UTHERIUM_INGOT).build(consumer);
 
-        makeChestplate(UGItems.masticated_chestplate, UGItems.masticator_scales).build(consumer);
+        makeChestplate(UGItems.MASTICATED_CHESTPLATE, UGItems.MASTICATOR_SCALES).build(consumer);
 
-        makeHelmet(UGItems.cloggrum_helmet, UGItems.cloggrum_ingot).build(consumer);
-        makeChestplate(UGItems.cloggrum_chestplate, UGItems.cloggrum_ingot).build(consumer);
-        makeLeggings(UGItems.cloggrum_leggings, UGItems.cloggrum_ingot).build(consumer);
-        makeBoots(UGItems.cloggrum_boots, UGItems.cloggrum_ingot).build(consumer);
+        makeHelmet(UGItems.CLOGGRUM_HELMET, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makeChestplate(UGItems.CLOGGRUM_CHESTPLATE, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makeLeggings(UGItems.CLOGGRUM_LEGGINGS, UGItems.CLOGGRUM_INGOT).build(consumer);
+        makeBoots(UGItems.CLOGGRUM_BOOTS, UGItems.CLOGGRUM_INGOT).build(consumer);
 
-        makeHelmet(UGItems.froststeel_helmet, UGItems.froststeel_ingot).build(consumer);
-        makeChestplate(UGItems.froststeel_chestplate, UGItems.froststeel_ingot).build(consumer);
-        makeLeggings(UGItems.froststeel_leggings, UGItems.froststeel_ingot).build(consumer);
-        makeBoots(UGItems.froststeel_boots, UGItems.froststeel_ingot).build(consumer);
+        makeHelmet(UGItems.FROSTSTEEL_HELMET, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makeChestplate(UGItems.FROSTSTEEL_CHESTPLATE, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makeLeggings(UGItems.FROSTSTEEL_LEGGINGS, UGItems.FROSTSTEEL_INGOT).build(consumer);
+        makeBoots(UGItems.FROSTSTEEL_BOOTS, UGItems.FROSTSTEEL_INGOT).build(consumer);
 
-        makeHelmet(UGItems.utheric_helmet, UGItems.utherium_ingot).build(consumer);
-        makeChestplate(UGItems.utheric_chestplate, UGItems.utherium_ingot).build(consumer);
-        makeLeggings(UGItems.utheric_leggings, UGItems.utherium_ingot).build(consumer);
-        makeBoots(UGItems.utheric_boots, UGItems.utherium_ingot).build(consumer);
+        makeHelmet(UGItems.UTHERIC_HELMET, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeChestplate(UGItems.UTHERIC_CHESTPLATE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeLeggings(UGItems.UTHERIC_LEGGINGS, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeBoots(UGItems.UTHERIC_BOOTS, UGItems.UTHERIUM_INGOT).build(consumer);
 
-        makeStairs(UGBlocks.depthrock_stairs, UGBlocks.depthrock).build(consumer);
-        makeStairs(UGBlocks.depthrock_brick_stairs, UGBlocks.depthrock_bricks).build(consumer);
-        makeStairs(UGBlocks.smogstem_stairs, UGBlocks.smogstem_planks).build(consumer);
-        makeStairs(UGBlocks.wigglewood_stairs, UGBlocks.wigglewood_planks).build(consumer);
-        makeStairs(UGBlocks.grongle_stairs, UGBlocks.grongle_planks).build(consumer);
-        makeStairs(UGBlocks.shiverstone_stairs, UGBlocks.shiverstone).build(consumer);
-        makeStairs(UGBlocks.shiverstone_brick_stairs, UGBlocks.shiverstone_bricks).build(consumer);
+        makeStairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK).build(consumer);
+        makeStairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS).build(consumer);
+        makeStairs(UGBlocks.SMOGSTEM_STAIRS, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makeStairs(UGBlocks.WIGGLEWOOD_STAIRS, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makeStairs(UGBlocks.GRONGLE_STAIRS, UGBlocks.GRONGLE_PLANKS).build(consumer);
+        makeStairs(UGBlocks.SHIVERSTONE_STAIRS, UGBlocks.SHIVERSTONE).build(consumer);
+        makeStairs(UGBlocks.SHIVERSTONE_BRICK_STAIRS, UGBlocks.SHIVERSTONE_BRICKS).build(consumer);
 
-        makeSlab(UGBlocks.depthrock_slab, UGBlocks.depthrock).build(consumer);
-        makeSlab(UGBlocks.depthrock_brick_slab, UGBlocks.depthrock_bricks).build(consumer);
-        makeSlab(UGBlocks.smogstem_slab, UGBlocks.smogstem_planks).build(consumer);
-        makeSlab(UGBlocks.wigglewood_slab, UGBlocks.wigglewood_planks).build(consumer);
-        makeSlab(UGBlocks.grongle_slab, UGBlocks.grongle_planks).build(consumer);
-        makeSlab(UGBlocks.shiverstone_slab, UGBlocks.shiverstone).build(consumer);
-        makeSlab(UGBlocks.shiverstone_brick_slab, UGBlocks.shiverstone_bricks).build(consumer);
+        makeSlab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK).build(consumer);
+        makeSlab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS).build(consumer);
+        makeSlab(UGBlocks.SMOGSTEM_SLAB, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makeSlab(UGBlocks.WIGGLEWOOD_SLAB, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makeSlab(UGBlocks.GRONGLE_SLAB, UGBlocks.GRONGLE_PLANKS).build(consumer);
+        makeSlab(UGBlocks.SHIVERSTONE_SLAB, UGBlocks.SHIVERSTONE).build(consumer);
+        makeSlab(UGBlocks.SHIVERSTONE_BRICK_SLAB, UGBlocks.SHIVERSTONE_BRICKS).build(consumer);
 
-        makeWall(UGBlocks.depthrock_wall, UGBlocks.depthrock).build(consumer);
-        makeWall(UGBlocks.depthrock_brick_wall, UGBlocks.depthrock_bricks).build(consumer);
-        makeWall(UGBlocks.shiverstone_wall, UGBlocks.shiverstone).build(consumer);
-        makeWall(UGBlocks.shiverstone_brick_wall, UGBlocks.shiverstone_bricks).build(consumer);
+        makeWall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK).build(consumer);
+        makeWall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS).build(consumer);
+        makeWall(UGBlocks.SHIVERSTONE_WALL, UGBlocks.SHIVERSTONE).build(consumer);
+        makeWall(UGBlocks.SHIVERSTONE_BRICK_WALL, UGBlocks.SHIVERSTONE_BRICKS).build(consumer);
 
-        makeFence(UGBlocks.smogstem_fence, UGBlocks.smogstem_planks).build(consumer);
-        makeFence(UGBlocks.wigglewood_fence, UGBlocks.wigglewood_planks).build(consumer);
-        makeFence(UGBlocks.grongle_fence, UGBlocks.grongle_planks).build(consumer);
+        makeFence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makeFence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makeFence(UGBlocks.GRONGLE_FENCE, UGBlocks.GRONGLE_PLANKS).build(consumer);
 
-        makeFenceGate(UGBlocks.smogstem_fence_gate, UGBlocks.smogstem_planks).build(consumer);
-        makeFenceGate(UGBlocks.wigglewood_fence_gate, UGBlocks.wigglewood_planks).build(consumer);
-        makeFenceGate(UGBlocks.grongle_fence_gate, UGBlocks.grongle_planks).build(consumer);
+        makeFenceGate(UGBlocks.SMOGSTEM_FENCE_GATE, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makeFenceGate(UGBlocks.WIGGLEWOOD_FENCE_GATE, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makeFenceGate(UGBlocks.GRONGLE_FENCE_GATE, UGBlocks.GRONGLE_PLANKS).build(consumer);
 
-        makeDoor(UGBlocks.smogstem_door, UGBlocks.smogstem_planks).build(consumer);
-        makeDoor(UGBlocks.wigglewood_door, UGBlocks.wigglewood_planks).build(consumer);
-        makeDoor(UGBlocks.grongle_door, UGBlocks.grongle_planks).build(consumer);
+        makeDoor(UGBlocks.SMOGSTEM_DOOR, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makeDoor(UGBlocks.WIGGLEWOOD_DOOR, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makeDoor(UGBlocks.GRONGLE_DOOR, UGBlocks.GRONGLE_PLANKS).build(consumer);
 
-        makeTrapdoor(UGBlocks.smogstem_trapdoor, UGBlocks.smogstem_planks).build(consumer);
-        makeTrapdoor(UGBlocks.wigglewood_trapdoor, UGBlocks.wigglewood_planks).build(consumer);
-        makeTrapdoor(UGBlocks.grongle_trapdoor, UGBlocks.grongle_planks).build(consumer);
+        makeTrapdoor(UGBlocks.SMOGSTEM_TRAPDOOR, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makeTrapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makeTrapdoor(UGBlocks.GRONGLE_TRAPDOOR, UGBlocks.GRONGLE_PLANKS).build(consumer);
 
-        makeButton(UGBlocks.smogstem_button, UGBlocks.smogstem_planks).build(consumer);
-        makeButton(UGBlocks.wigglewood_button, UGBlocks.wigglewood_planks).build(consumer);
-        makeButton(UGBlocks.grongle_button, UGBlocks.grongle_planks).build(consumer);
-        makeButton(UGBlocks.depthrock_button, UGBlocks.depthrock).build(consumer);
-        makeButton(UGBlocks.shiverstone_button, UGBlocks.shiverstone).build(consumer);
+        makeButton(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makeButton(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makeButton(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS).build(consumer);
+        makeButton(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK).build(consumer);
+        makeButton(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE).build(consumer);
 
-        makePressurePlate(UGBlocks.smogstem_pressure_plate, UGBlocks.smogstem_planks).build(consumer);
-        makePressurePlate(UGBlocks.wigglewood_pressure_plate, UGBlocks.wigglewood_planks).build(consumer);
-        makePressurePlate(UGBlocks.grongle_pressure_plate, UGBlocks.grongle_planks).build(consumer);
-        makePressurePlate(UGBlocks.depthrock_pressure_plate, UGBlocks.depthrock).build(consumer);
-        makePressurePlate(UGBlocks.shiverstone_pressure_plate, UGBlocks.shiverstone).build(consumer);
+        makePressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
+        makePressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
+        makePressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS).build(consumer);
+        makePressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK).build(consumer);
+        makePressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE).build(consumer);
 
-        makeStew(UGItems.bloody_stew, UGBlocks.blood_mushroom).build(consumer);
-        makeStew(UGItems.inky_stew, UGBlocks.ink_mushroom).build(consumer);
-        makeStew(UGItems.indigo_stew, UGBlocks.indigo_mushroom).build(consumer);
-        makeStew(UGItems.veiled_stew, UGBlocks.veil_mushroom).build(consumer);
+        makeStew(UGItems.BLOODY_STEW, UGBlocks.BLOOD_MUSHROOM).build(consumer);
+        makeStew(UGItems.INKY_STEW, UGBlocks.INK_MUSHROOM).build(consumer);
+        makeStew(UGItems.INDIGO_STEW, UGBlocks.INDIGO_MUSHROOM).build(consumer);
+        makeStew(UGItems.VEILED_STEW, UGBlocks.VEIL_MUSHROOM).build(consumer);
 
-        smeltingRecipe(UGBlocks.cracked_depthrock_bricks.get(), UGBlocks.depthrock_bricks.get(), .1F).build(consumer, "smelt_depthrock_bricks");
-        smeltingRecipe(UGBlocks.cracked_shiverstone_bricks.get(), UGBlocks.shiverstone_bricks.get(), .1F).build(consumer, "smelt_shiverstone_bricks");
+        smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).build(consumer, "smelt_depthrock_bricks");
+        smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).build(consumer, "smelt_shiverstone_bricks");
 
-        smeltingRecipe(Items.IRON_INGOT, UGItems.catalyst_item.get(), 1F).build(consumer, "smelt_catalyst");
+        smeltingRecipe(Items.IRON_INGOT, UGItems.CATALYST.get(), 1F).build(consumer, "smelt_catalyst");
 
-        smeltingRecipe(Items.COAL, UGBlocks.coal_ore.get(), .7F).build(consumer, name("smelt_undergarden_coal"));
-        blastingRecipe(Items.COAL, UGBlocks.coal_ore.get(), .7F).build(consumer, name("blast_undergarden_coal"));
-        smeltingRecipe(Items.IRON_INGOT, UGBlocks.iron_ore.get(), .7F).build(consumer, name("smelt_undergarden_iron"));
-        blastingRecipe(Items.IRON_INGOT, UGBlocks.iron_ore.get(), .7F).build(consumer, name("blast_undergarden_iron"));
-        smeltingRecipe(Items.GOLD_INGOT, UGBlocks.gold_ore.get(), .7F).build(consumer, name("smelt_undergarden_gold"));
-        blastingRecipe(Items.GOLD_INGOT, UGBlocks.gold_ore.get(), .7F).build(consumer, name("blast_undergarden_gold"));
-        smeltingRecipe(Items.DIAMOND, UGBlocks.diamond_ore.get(), .7F).build(consumer, name("smelt_undergarden_diamond"));
-        blastingRecipe(Items.DIAMOND, UGBlocks.diamond_ore.get(), .7F).build(consumer, name("blast_undergarden_diamond"));
+        smeltingRecipe(Items.COAL, UGBlocks.COAL_ORE.get(), .7F).build(consumer, name("smelt_undergarden_coal"));
+        blastingRecipe(Items.COAL, UGBlocks.COAL_ORE.get(), .7F).build(consumer, name("blast_undergarden_coal"));
+        smeltingRecipe(Items.IRON_INGOT, UGBlocks.IRON_ORE.get(), .7F).build(consumer, name("smelt_undergarden_iron"));
+        blastingRecipe(Items.IRON_INGOT, UGBlocks.IRON_ORE.get(), .7F).build(consumer, name("blast_undergarden_iron"));
+        smeltingRecipe(Items.GOLD_INGOT, UGBlocks.GOLD_ORE.get(), .7F).build(consumer, name("smelt_undergarden_gold"));
+        blastingRecipe(Items.GOLD_INGOT, UGBlocks.GOLD_ORE.get(), .7F).build(consumer, name("blast_undergarden_gold"));
+        smeltingRecipe(Items.DIAMOND, UGBlocks.DIAMOND_ORE.get(), .7F).build(consumer, name("smelt_undergarden_diamond"));
+        blastingRecipe(Items.DIAMOND, UGBlocks.DIAMOND_ORE.get(), .7F).build(consumer, name("blast_undergarden_diamond"));
 
-        smeltingRecipe(UGItems.cloggrum_ingot.get(), UGBlocks.cloggrum_ore.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
-        blastingRecipe(UGItems.cloggrum_ingot.get(), UGBlocks.cloggrum_ore.get(), .7F).build(consumer, name("blast_cloggrum_ore"));
-        smeltingRecipe(UGItems.froststeel_ingot.get(), UGBlocks.froststeel_ore.get(), .7F).build(consumer, name("smelt_froststeel_ore"));
-        blastingRecipe(UGItems.froststeel_ingot.get(), UGBlocks.froststeel_ore.get(), .7F).build(consumer, name("blast_froststeel_ore"));
-        smeltingRecipe(UGItems.utherium_chunk.get(), UGBlocks.utherium_ore.get(), .9F).build(consumer, name("smelt_utherium_ore"));
-        blastingRecipe(UGItems.utherium_chunk.get(), UGBlocks.utherium_ore.get(), .9F).build(consumer, name("blast_utherium_ore"));
-        smeltingRecipe(UGItems.regalium_ingot.get(), UGBlocks.regalium_ore.get(), 1F).build(consumer, name("smelt_regalium_ore"));
-        blastingRecipe(UGItems.regalium_ingot.get(), UGBlocks.regalium_ore.get(), 1F).build(consumer, name("blast_regalium_ore"));
+        smeltingRecipe(UGItems.CLOGGRUM_INGOT.get(), UGBlocks.CLOGGRUM_ORE.get(), .7F).build(consumer, name("smelt_cloggrum_ore"));
+        blastingRecipe(UGItems.CLOGGRUM_INGOT.get(), UGBlocks.CLOGGRUM_ORE.get(), .7F).build(consumer, name("blast_cloggrum_ore"));
+        smeltingRecipe(UGItems.FROSTSTEEL_INGOT.get(), UGBlocks.FROSTSTEEL_ORE.get(), .7F).build(consumer, name("smelt_froststeel_ore"));
+        blastingRecipe(UGItems.FROSTSTEEL_INGOT.get(), UGBlocks.FROSTSTEEL_ORE.get(), .7F).build(consumer, name("blast_froststeel_ore"));
+        smeltingRecipe(UGItems.UTHERIUM_CHUNK.get(), UGBlocks.UTHERIUM_ORE.get(), .9F).build(consumer, name("smelt_utherium_ore"));
+        blastingRecipe(UGItems.UTHERIUM_CHUNK.get(), UGBlocks.UTHERIUM_ORE.get(), .9F).build(consumer, name("blast_utherium_ore"));
+        smeltingRecipe(UGItems.REGALIUM_INGOT.get(), UGBlocks.REGALIUM_ORE.get(), 1F).build(consumer, name("smelt_regalium_ore"));
+        blastingRecipe(UGItems.REGALIUM_INGOT.get(), UGBlocks.REGALIUM_ORE.get(), 1F).build(consumer, name("blast_regalium_ore"));
 
-        smeltingRecipeTag(UGItems.cloggrum_nugget.get(), UGTags.Items.CLOGGRUM_ITEMS, .1F).build(consumer, name("smelt_cloggrum_item"));
-        blastingRecipeTag(UGItems.cloggrum_nugget.get(), UGTags.Items.CLOGGRUM_ITEMS, .1F).build(consumer, name("blast_cloggrum_item"));
+        smeltingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, .1F).build(consumer, name("smelt_cloggrum_item"));
+        blastingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, .1F).build(consumer, name("blast_cloggrum_item"));
 
-        smeltingRecipeTag(UGItems.froststeel_nugget.get(), UGTags.Items.FROSTSTEEL_ITEMS, .1F).build(consumer, name("smelt_froststeel_item"));
-        blastingRecipeTag(UGItems.froststeel_nugget.get(), UGTags.Items.FROSTSTEEL_ITEMS, .1F).build(consumer, name("blast_froststeel_item"));
+        smeltingRecipeTag(UGItems.FROSTSTEEL_NUGGET.get(), UGTags.Items.FROSTSTEEL_ITEMS, .1F).build(consumer, name("smelt_froststeel_item"));
+        blastingRecipeTag(UGItems.FROSTSTEEL_NUGGET.get(), UGTags.Items.FROSTSTEEL_ITEMS, .1F).build(consumer, name("blast_froststeel_item"));
 
-        smeltingRecipeTag(UGItems.utheric_shard.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("smelt_utherium_item"));
-        blastingRecipeTag(UGItems.utheric_shard.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("blast_utherium_item"));
+        smeltingRecipeTag(UGItems.UTHERIC_SHARD.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("smelt_utherium_item"));
+        blastingRecipeTag(UGItems.UTHERIC_SHARD.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("blast_utherium_item"));
 
-        smeltingRecipe(UGItems.dweller_steak.get(), UGItems.raw_dweller_meat.get(), .35F).build(consumer, name("smelt_dweller_meat"));
-        smokingRecipe(UGItems.dweller_steak.get(), UGItems.raw_dweller_meat.get(), .35F).build(consumer, name("smoke_dweller_meat"));
+        smeltingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), .35F).build(consumer, name("smelt_dweller_meat"));
+        smokingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), .35F).build(consumer, name("smoke_dweller_meat"));
 
-        smeltingRecipe(UGItems.cooked_gwibling.get(), UGItems.raw_gwibling.get(), .35F).build(consumer, name("smelt_gwibling"));
-        smokingRecipe(UGItems.cooked_gwibling.get(), UGItems.raw_gwibling.get(), .35F).build(consumer, name("smoke_gwibling"));
+        smeltingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), .35F).build(consumer, name("smelt_gwibling"));
+        smokingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), .35F).build(consumer, name("smoke_gwibling"));
 
-        smeltingRecipe(UGItems.gloomper_leg.get(), UGItems.raw_gloomper_leg.get(), .35F).build(consumer, name("smelt_gloomper_leg"));
-        blastingRecipe(UGItems.gloomper_leg.get(), UGItems.raw_gloomper_leg.get(), .35F).build(consumer, name("blast_gloomper_leg"));
+        smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).build(consumer, name("smelt_gloomper_leg"));
+        blastingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).build(consumer, name("blast_gloomper_leg"));
 
-        smeltingRecipe(Items.DRIED_KELP, UGItems.glowing_kelp.get(), 0.1F).build(consumer, name("smelt_glowing_kelp"));
-        smokingRecipe(Items.DRIED_KELP, UGItems.glowing_kelp.get(), 0.1F).build(consumer, name("smoke_glowing_kelp"));
+        smeltingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).build(consumer, name("smelt_glowing_kelp"));
+        smokingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).build(consumer, name("smoke_glowing_kelp"));
     }
 
     private ResourceLocation name(String name) {

@@ -17,11 +17,11 @@ public class UGCarvers {
 
     public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister.create(ForgeRegistries.WORLD_CARVERS, UGMod.MODID);
 
-    public static final RegistryObject<WorldCarver<ProbabilityConfig>> undergarden_cave = CARVERS.register(
+    public static final RegistryObject<WorldCarver<ProbabilityConfig>> UNDERGARDEN_CAVE = CARVERS.register(
             "undergarden_cave", () -> new UGCaveWorldCarver(ProbabilityConfig.CODEC));
 
     public static void registerConfiguredCarvers() {
-        register("undergarden_cave", undergarden_cave.get().func_242761_a(new ProbabilityConfig(0.5F)));
+        register("undergarden_cave", UNDERGARDEN_CAVE.get().func_242761_a(new ProbabilityConfig(0.5F)));
     }
 
     private static <WC extends ICarverConfig> void register(String name, ConfiguredCarver<WC> carver) {

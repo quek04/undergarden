@@ -54,7 +54,7 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
     private static boolean isDeepturf(IWorldGenerationBaseReader world, BlockPos pos) {
         return world.hasBlockState(pos, (state) -> {
             Block block = state.getBlock();
-            return block == UGBlocks.deepturf_block.get();
+            return block == UGBlocks.DEEPTURF_BLOCK.get();
         });
     }
 

@@ -30,7 +30,7 @@ public class DroopvineTopBlock extends AbstractTopPlantBlock {
 
     @Override
     protected Block getBodyPlantBlock() {
-        return UGBlocks.droopvine.get().getDefaultState().with(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()).getBlock();
+        return UGBlocks.DROOPVINE.get().getDefaultState().with(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()).getBlock();
     }
 
     @Override

@@ -9,14 +9,13 @@ import quek.undergarden.UGMod;
 
 public class UGDimensions {
 
-    public static final RegistryKey<DimensionType> undergarden = RegistryKey.getOrCreateKey(Registry.DIMENSION_TYPE_KEY, name("undergarden"));
-    public static final RegistryKey<World> undergarden_w = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("undergarden"));
+    public static final RegistryKey<DimensionType> UNDERGARDEN_DIMENSION = RegistryKey.getOrCreateKey(Registry.DIMENSION_TYPE_KEY, name("undergarden"));
+    public static final RegistryKey<World> UNDERGARDEN_WORLD = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("undergarden"));
 
-    public static final RegistryKey<DimensionType> otherside = RegistryKey.getOrCreateKey(Registry.DIMENSION_TYPE_KEY, name("otherside"));
-    public static final RegistryKey<World> otherside_w = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("otherside"));
+    public static final RegistryKey<DimensionType> OTHERSIDE_DIMENSION = RegistryKey.getOrCreateKey(Registry.DIMENSION_TYPE_KEY, name("otherside"));
+    public static final RegistryKey<World> OTHERSIDE_WORLD = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("otherside"));
 
     private static ResourceLocation name(String name) {
         return new ResourceLocation(UGMod.MODID, name);
     }
 }
-

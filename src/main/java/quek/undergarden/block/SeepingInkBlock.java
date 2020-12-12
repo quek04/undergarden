@@ -26,7 +26,7 @@ public class SeepingInkBlock extends Block {
         BlockState blockstate = worldIn.getBlockState(blockpos);
         Block block = blockstate.getBlock();
 
-        return block == UGBlocks.ink_mushroom_cap.get();
+        return block == UGBlocks.INK_MUSHROOM_CAP.get();
     }
 
 }

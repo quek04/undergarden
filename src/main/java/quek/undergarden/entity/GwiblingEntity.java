@@ -27,7 +27,7 @@ public class GwiblingEntity extends AbstractFishEntity {
 
     @Override
     protected ItemStack getFishBucket() {
-        return new ItemStack(UGItems.gwibling_bucket.get());
+        return new ItemStack(UGItems.GWIBLING_BUCKET.get());
     }
 
     @Override

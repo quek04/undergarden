@@ -71,7 +71,7 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
         BlockPos blockpos = pos.down();
         BlockState blockstate = worldIn.getBlockState(blockpos);
         Block block = blockstate.getBlock();
-        if (block != UGBlocks.deepturf_block.get() && block != UGBlocks.deepsoil.get()) {
+        if (block != UGBlocks.DEEPTURF_BLOCK.get() && block != UGBlocks.DEEPSOIL.get()) {
             return worldIn.getLightSubtracted(pos, 0) < 13 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.util.Direction.UP, this);
         } else {
             return true;
@@ -81,17 +81,17 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
     public boolean bigMushroom(ServerWorld world, BlockPos pos, BlockState state, Random rand) {
         world.removeBlock(pos, false);
         ConfiguredFeature<?, ?> feature;
-        if (this == UGBlocks.blood_mushroom.get()) {
-            feature = UGFeatures.blood_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.blood_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.blood_mushroom_stalk.get().getDefaultState()), 3));
+        if (this == UGBlocks.BLOOD_MUSHROOM.get()) {
+            feature = UGFeatures.BLOOD_MUSHROOM.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.BLOOD_MUSHROOM_CAP.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.BLOOD_MUSHROOM_STALK.get().getDefaultState()), 3));
         }
-        else if(this == UGBlocks.indigo_mushroom.get()) {
-            feature = UGFeatures.indigo_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.indigo_mushroom_stalk.get().getDefaultState()), 3));
+        else if(this == UGBlocks.INDIGO_MUSHROOM.get()) {
+            feature = UGFeatures.INDIGO_MUSHROOM.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.INDIGO_MUSHROOM_CAP.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.INDIGO_MUSHROOM_STALK.get().getDefaultState()), 3));
         }
-        else if(this == UGBlocks.ink_mushroom.get()) {
-            feature = UGFeatures.ink_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.ink_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()), 5));
+        else if(this == UGBlocks.INK_MUSHROOM.get()) {
+            feature = UGFeatures.INK_MUSHROOM.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.INK_MUSHROOM_CAP.get().getDefaultState()), new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()), 5));
         }
-        else if(this == UGBlocks.veil_mushroom.get()) {
-            feature = UGFeatures.veil_mushroom.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.veil_mushroom_cap.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.veil_mushroom_stalk.get().getDefaultState()), 2));
+        else if(this == UGBlocks.VEIL_MUSHROOM.get()) {
+            feature = UGFeatures.VEIL_MUSHROOM.get().withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.VEIL_MUSHROOM_CAP.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.VEIL_MUSHROOM_STALK.get().getDefaultState()), 2));
         }
         else {
             if (this != Blocks.RED_MUSHROOM) {

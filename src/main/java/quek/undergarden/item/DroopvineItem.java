@@ -9,6 +9,6 @@ import quek.undergarden.registry.UGItemGroups;
 public class DroopvineItem extends BlockItem {
 
     public DroopvineItem() {
-        super(UGBlocks.droopvine_top.get(), (new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.DROOPVINE));
+        super(UGBlocks.DROOPVINE_TOP.get(), (new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.DROOPVINE));
     }
 }

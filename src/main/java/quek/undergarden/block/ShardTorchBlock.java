@@ -29,7 +29,7 @@ public class ShardTorchBlock extends TorchBlock {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return UGTileEntities.shard_torch_te.get().create();
+        return UGTileEntities.SHARD_TORCH.get().create();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -39,6 +39,6 @@ public class ShardTorchBlock extends TorchBlock {
         double y = (double)pos.getY() + 0.7D;
         double z = (double)pos.getZ() + 0.5D;
         worldIn.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
-        worldIn.addParticle(UGParticleTypes.shard.get(), x, y, z, 0.0D, 0.0D, 0.0D);
+        worldIn.addParticle(UGParticleTypes.SHARD.get(), x, y, z, 0.0D, 0.0D, 0.0D);
     }
 }

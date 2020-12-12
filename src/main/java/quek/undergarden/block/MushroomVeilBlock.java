@@ -14,6 +14,6 @@ public class MushroomVeilBlock extends AbstractBodyPlantBlock {
 
     @Override
     protected AbstractTopPlantBlock getTopPlantBlock() {
-        return UGBlocks.mushroom_veil_top.get();
+        return UGBlocks.MUSHROOM_VEIL_TOP.get();
     }
 }

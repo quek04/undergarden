@@ -16,7 +16,7 @@ public class UGAttachedStemBlock extends AttachedStemBlock {
 
     @Override
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() == UGBlocks.deepsoil_farmland.get();
+        return state.getBlock() == UGBlocks.DEEPSOIL_FARMLAND.get();
     }
 
     @Override
@@ -27,6 +27,6 @@ public class UGAttachedStemBlock extends AttachedStemBlock {
 
     @Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-        return new ItemStack(UGItems.gloomgourd_seeds.get());
+        return new ItemStack(UGItems.GLOOMGOURD_SEEDS.get());
     }
 }

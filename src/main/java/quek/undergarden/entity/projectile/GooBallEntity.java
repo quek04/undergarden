@@ -31,16 +31,16 @@ public class GooBallEntity extends ProjectileItemEntity {
     }
 
     public GooBallEntity(World worldIn, LivingEntity throwerIn) {
-        super(UGEntityTypes.goo_ball, throwerIn, worldIn);
+        super(UGEntityTypes.GOO_BALL.get(), throwerIn, worldIn);
     }
 
     public GooBallEntity(World worldIn, double x, double y, double z) {
-        super(UGEntityTypes.goo_ball, x, y, z, worldIn);
+        super(UGEntityTypes.GOO_BALL.get(), x, y, z, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return UGItems.goo_ball.get();
+        return UGItems.GOO_BALL.get();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -72,7 +72,7 @@ public class GooBallEntity extends ProjectileItemEntity {
                 }
                 else {
                     livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)0);
-                    livingEntity.addPotionEffect(new EffectInstance(UGEffects.gooey.get(), 100, 0, false, true));
+                    livingEntity.addPotionEffect(new EffectInstance(UGEffects.GOOEY.get(), 100, 0, false, true));
                 }
             }
 

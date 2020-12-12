@@ -24,11 +24,11 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
     }
 
     public SlingshotAmmoEntity(World worldIn, double x, double y, double z) {
-        super(UGEntityTypes.slingshot_ammo, x, y, z, worldIn);
+        super(UGEntityTypes.SLINGSHOT_AMMO.get(), x, y, z, worldIn);
     }
 
     public SlingshotAmmoEntity(World worldIn, LivingEntity shooter) {
-        super(UGEntityTypes.slingshot_ammo, shooter, worldIn);
+        super(UGEntityTypes.SLINGSHOT_AMMO.get(), shooter, worldIn);
     }
 
     @Override
@@ -57,6 +57,6 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return UGItems.depthrock_pebble.get();
+        return UGItems.DEPTHROCK_PEBBLE.get();
     }
 }

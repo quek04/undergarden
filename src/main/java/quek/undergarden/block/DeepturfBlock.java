@@ -57,8 +57,8 @@ public class DeepturfBlock extends UGGrassBlock implements IGrowable {
 
     private static BlockState deepturfOrShimmerweed(Random random) {
         if(random.nextInt(10) == 0) {
-            return UGBlocks.shimmerweed.get().getDefaultState();
+            return UGBlocks.SHIMMERWEED.get().getDefaultState();
         }
-        else return UGBlocks.deepturf.get().getDefaultState();
+        else return UGBlocks.DEEPTURF.get().getDefaultState();
     }
 }

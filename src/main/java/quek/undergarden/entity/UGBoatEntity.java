@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
@@ -27,7 +26,7 @@ public class UGBoatEntity extends BoatEntity {
     }
 
     public UGBoatEntity(World worldIn, double x, double y, double z) {
-        this(UGEntityTypes.boat, worldIn);
+        this(UGEntityTypes.BOAT.get(), worldIn);
         this.setPosition(x, y, z);
         this.setMotion(Vector3d.ZERO);
         this.prevPosX = x;
@@ -44,11 +43,11 @@ public class UGBoatEntity extends BoatEntity {
         switch(this.getUGBoatType()) {
             case SMOGSTEM:
             default:
-                return UGItems.smogstem_boat.get();
+                return UGItems.SMOGSTEM_BOAT.get();
             case WIGGLEWOOD:
-                return UGItems.wigglewood_boat.get();
+                return UGItems.WIGGLEWOOD_BOAT.get();
             case GRONGLE:
-                return UGItems.grongle_boat.get();
+                return UGItems.GRONGLE_BOAT.get();
         }
     }
 
@@ -80,9 +79,9 @@ public class UGBoatEntity extends BoatEntity {
     }
 
     public enum Type {
-        SMOGSTEM(UGBlocks.smogstem_planks.get(), "smogstem"),
-        WIGGLEWOOD(UGBlocks.wigglewood_planks.get(), "wigglewood"),
-        GRONGLE(UGBlocks.grongle_planks.get(), "grongle")
+        SMOGSTEM(UGBlocks.SMOGSTEM_PLANKS.get(), "smogstem"),
+        WIGGLEWOOD(UGBlocks.WIGGLEWOOD_PLANKS.get(), "wigglewood"),
+        GRONGLE(UGBlocks.GRONGLE_PLANKS.get(), "grongle")
         ;
 
         private final String name;

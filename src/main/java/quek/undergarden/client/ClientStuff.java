@@ -35,46 +35,46 @@ public class ClientStuff {
         RenderType mipped = RenderType.getCutoutMipped();
         RenderType translucent = RenderType.getTranslucent();
 
-        render(UGBlocks.deepturf_block, mipped);
-        render(UGBlocks.deepturf, cutout);
-        render(UGBlocks.shimmerweed, cutout);
-        render(UGBlocks.smogstem_sapling, cutout);
-        render(UGBlocks.wigglewood_sapling, cutout);
-        render(UGBlocks.indigo_mushroom, cutout);
-        render(UGBlocks.veil_mushroom, cutout);
-        render(UGBlocks.ink_mushroom, cutout);
-        render(UGBlocks.blood_mushroom, cutout);
-        render(UGBlocks.underbean_bush, cutout);
-        render(UGBlocks.ditchbulb_plant, cutout);
-        render(UGBlocks.tall_deepturf, cutout);
-        render(UGBlocks.tall_shimmerweed, cutout);
-        render(UGBlocks.cloggrum_bars, cutout);
-        render(UGBlocks.glowing_kelp, cutout);
-        render(UGBlocks.glowing_kelp_plant, cutout);
-        render(UGBlocks.undergarden_portal, translucent);
-        render(UGBlocks.goo, translucent);
-        render(UGBlocks.smogstem_door, cutout);
-        render(UGBlocks.wigglewood_door, cutout);
-        render(UGBlocks.smogstem_trapdoor, cutout);
-        render(UGBlocks.wigglewood_trapdoor, cutout);
-        render(UGBlocks.ashen_deepturf, cutout);
-        render(UGBlocks.blisterberry_bush, cutout);
-        render(UGBlocks.gloomgourd_stem, cutout);
-        render(UGBlocks.gloomgourd_stem_attached, cutout);
-        render(UGBlocks.shard_torch, cutout);
-        render(UGBlocks.shard_wall_torch, cutout);
-        render(UGBlocks.droopvine_top, cutout);
-        render(UGBlocks.droopvine, cutout);
-        render(UGBlocks.gronglet, cutout);
-        render(UGBlocks.grongle_door, cutout);
-        render(UGBlocks.grongle_trapdoor, cutout);
-        render(UGBlocks.virulent_mix, translucent);
-        render(UGBlocks.seeping_ink, cutout);
-        render(UGBlocks.mushroom_veil, cutout);
-        render(UGBlocks.mushroom_veil_top, cutout);
+        render(UGBlocks.DEEPTURF_BLOCK, mipped);
+        render(UGBlocks.DEEPTURF, cutout);
+        render(UGBlocks.SHIMMERWEED, cutout);
+        render(UGBlocks.SMOGSTEM_SAPLING, cutout);
+        render(UGBlocks.WIGGLEWOOD_SAPLING, cutout);
+        render(UGBlocks.INDIGO_MUSHROOM, cutout);
+        render(UGBlocks.VEIL_MUSHROOM, cutout);
+        render(UGBlocks.INK_MUSHROOM, cutout);
+        render(UGBlocks.BLOOD_MUSHROOM, cutout);
+        render(UGBlocks.UNDERBEAN_BUSH, cutout);
+        render(UGBlocks.DITCHBULB_PLANT, cutout);
+        render(UGBlocks.TALL_DEEPTURF, cutout);
+        render(UGBlocks.TALL_SHIMMERWEED, cutout);
+        render(UGBlocks.CLOGGRUM_BARS, cutout);
+        render(UGBlocks.GLOWING_KELP, cutout);
+        render(UGBlocks.GLOWING_KELP_PLANT, cutout);
+        render(UGBlocks.UNDERGARDEN_PORTAL, translucent);
+        render(UGBlocks.GOO, translucent);
+        render(UGBlocks.SMOGSTEM_DOOR, cutout);
+        render(UGBlocks.WIGGLEWOOD_DOOR, cutout);
+        render(UGBlocks.SMOGSTEM_TRAPDOOR, cutout);
+        render(UGBlocks.WIGGLEWOOD_TRAPDOOR, cutout);
+        render(UGBlocks.ASHEN_DEEPTURF, cutout);
+        render(UGBlocks.BLISTERBERRY_BUSH, cutout);
+        render(UGBlocks.GLOOMGOURD_STEM, cutout);
+        render(UGBlocks.GLOOMGOURD_STEM_ATTACHED, cutout);
+        render(UGBlocks.SHARD_TORCH, cutout);
+        render(UGBlocks.SHARD_WALL_TORCH, cutout);
+        render(UGBlocks.DROOPVINE_TOP, cutout);
+        render(UGBlocks.DROOPVINE, cutout);
+        render(UGBlocks.GRONGLET, cutout);
+        render(UGBlocks.GRONGLE_DOOR, cutout);
+        render(UGBlocks.GRONGLE_TRAPDOOR, cutout);
+        render(UGBlocks.VIRULENT_MIX, translucent);
+        render(UGBlocks.SEEPING_INK, cutout);
+        render(UGBlocks.MUSHROOM_VEIL, cutout);
+        render(UGBlocks.MUSHROOM_VEIL_TOP, cutout);
 
-        RenderTypeLookup.setRenderLayer(UGFluids.virulent_mix_source.get(), translucent);
-        RenderTypeLookup.setRenderLayer(UGFluids.virulent_mix_flowing.get(), translucent);
+        RenderTypeLookup.setRenderLayer(UGFluids.VIRULENT_MIX_SOURCE.get(), translucent);
+        RenderTypeLookup.setRenderLayer(UGFluids.VIRULENT_MIX_FLOWING.get(), translucent);
     }
 
     public static void registerEntityRenderers() {
@@ -98,7 +98,7 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.STONEBORN.get(), StonebornRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.NARGOYLE.get(), NargoyleRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GUARDIAN.get(), ForgottenGuardianRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
     }
 
     public static void registerBlockColors() {
@@ -106,19 +106,19 @@ public class ClientStuff {
 
         colors.register((state, world, pos, tint) ->
                         world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : new Color(91, 117, 91).getRGB(),
-                UGBlocks.deepturf_block.get(),
-                UGBlocks.deepturf.get(),
-                UGBlocks.shimmerweed.get(),
-                UGBlocks.tall_deepturf.get(),
-                UGBlocks.tall_shimmerweed.get(),
-                UGBlocks.gloomgourd_stem.get(),
-                UGBlocks.gloomgourd_stem_attached.get()
+                UGBlocks.DEEPTURF_BLOCK.get(),
+                UGBlocks.DEEPTURF.get(),
+                UGBlocks.SHIMMERWEED.get(),
+                UGBlocks.TALL_DEEPTURF.get(),
+                UGBlocks.TALL_SHIMMERWEED.get(),
+                UGBlocks.GLOOMGOURD_STEM.get(),
+                UGBlocks.GLOOMGOURD_STEM_ATTACHED.get()
         );
 
         colors.register((state, world, pos, tint) ->
                         new Color(54, 45, 66).getRGB(),
-                UGBlocks.gloomgourd_stem.get(),
-                UGBlocks.gloomgourd_stem_attached.get()
+                UGBlocks.GLOOMGOURD_STEM.get(),
+                UGBlocks.GLOOMGOURD_STEM_ATTACHED.get()
         );
     }
 
@@ -127,11 +127,11 @@ public class ClientStuff {
         ItemColors iColors = Minecraft.getInstance().getItemColors();
 
         iColors.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), null, null, 0),
-                UGBlocks.deepturf_block.get(),
-                UGBlocks.deepturf.get(),
-                UGBlocks.shimmerweed.get(),
-                UGBlocks.tall_shimmerweed.get(),
-                UGBlocks.tall_deepturf.get()
+                UGBlocks.DEEPTURF_BLOCK.get(),
+                UGBlocks.DEEPTURF.get(),
+                UGBlocks.SHIMMERWEED.get(),
+                UGBlocks.TALL_SHIMMERWEED.get(),
+                UGBlocks.TALL_DEEPTURF.get()
         );
 
         iColors.register((stack, tint) -> {
@@ -141,8 +141,8 @@ public class ClientStuff {
                     return -1;
                 },
 
-                UGBlocks.shimmerweed.get(),
-                UGBlocks.tall_shimmerweed.get()
+                UGBlocks.SHIMMERWEED.get(),
+                UGBlocks.TALL_SHIMMERWEED.get()
         );
     }
 }

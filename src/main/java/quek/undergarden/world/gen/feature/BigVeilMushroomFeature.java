@@ -75,11 +75,11 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
         for(int i = 0; i <= x; ++i) {
             if (world.isAirBlock(posMutable)) {
                 if (i == x || !world.isAirBlock(posMutable.down())) {
-                    world.setBlockState(posMutable, UGBlocks.mushroom_veil_top.get().getDefaultState().with(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
+                    world.setBlockState(posMutable, UGBlocks.MUSHROOM_VEIL_TOP.get().getDefaultState().with(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
                     break;
                 }
 
-                world.setBlockState(posMutable, UGBlocks.mushroom_veil.get().getDefaultState(), 2);
+                world.setBlockState(posMutable, UGBlocks.MUSHROOM_VEIL.get().getDefaultState(), 2);
             }
 
             posMutable.move(Direction.DOWN);

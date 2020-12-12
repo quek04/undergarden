@@ -16,7 +16,7 @@ public class GooeyEffect extends Effect {
 
     @Override
     public void performEffect(LivingEntity entity, int amplifier) {
-        BlockState blockstate = UGBlocks.goo.get().getDefaultState();
+        BlockState blockstate = UGBlocks.GOO.get().getDefaultState();
         BlockPos pos = new BlockPos(entity.getPosX(), entity.getPosY(), entity.getPosZ());
 
         if (entity.world.isAirBlock(pos) && blockstate.isValidPosition(entity.world, pos) && !(entity instanceof ScintlingEntity)) {

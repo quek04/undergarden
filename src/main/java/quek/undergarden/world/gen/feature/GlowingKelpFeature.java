@@ -26,8 +26,8 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
         if(pos.getY() < ocean_y) {
             if (worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER) {
-                BlockState kelp = UGBlocks.glowing_kelp.get().getDefaultState();
-                BlockState kelp_top = UGBlocks.glowing_kelp_plant.get().getDefaultState();
+                BlockState kelp = UGBlocks.GLOWING_KELP.get().getDefaultState();
+                BlockState kelp_top = UGBlocks.GLOWING_KELP_PLANT.get().getDefaultState();
                 int k = 1 + rand.nextInt(10);
 
                 for(int l = 0; l <= k; ++l) {
@@ -40,7 +40,7 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
                         }
                     } else if (l > 0) {
                         BlockPos blockpos1 = blockpos.down();
-                        if (kelp.isValidPosition(worldIn, blockpos1) && worldIn.getBlockState(blockpos1.down()).getBlock() != UGBlocks.glowing_kelp.get()) {
+                        if (kelp.isValidPosition(worldIn, blockpos1) && worldIn.getBlockState(blockpos1.down()).getBlock() != UGBlocks.GLOWING_KELP.get()) {
                             worldIn.setBlockState(blockpos1, kelp.with(GlowingKelpTopBlock.AGE, rand.nextInt(4) + 20), 2);
                             ++i;
                         }

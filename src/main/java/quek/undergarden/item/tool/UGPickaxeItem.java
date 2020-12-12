@@ -23,8 +23,6 @@ import quek.undergarden.registry.UGItems;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import net.minecraft.item.Item.Properties;
-
 @Mod.EventBusSubscriber
 public class UGPickaxeItem extends PickaxeItem {
     public UGPickaxeItem(IItemTier tier) {
@@ -39,7 +37,7 @@ public class UGPickaxeItem extends PickaxeItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UGItems.froststeel_pickaxe.get()) {
+        if(stack.getItem() == UGItems.FROSTSTEEL_PICKAXE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
@@ -51,7 +49,7 @@ public class UGPickaxeItem extends PickaxeItem {
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
 
-            if(player.getHeldItemMainhand().getItem() == UGItems.froststeel_pickaxe.get()) {
+            if(player.getHeldItemMainhand().getItem() == UGItems.FROSTSTEEL_PICKAXE.get()) {
                 event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 2));
             }
         }

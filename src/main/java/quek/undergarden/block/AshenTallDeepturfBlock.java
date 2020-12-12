@@ -18,7 +18,7 @@ public class AshenTallDeepturfBlock extends UGPlantBlock {
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.isIn(UGBlocks.ashen_deepturf_block.get());
+        return state.isIn(UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
     }
 
     @Override

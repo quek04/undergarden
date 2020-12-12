@@ -9,10 +9,10 @@ import net.minecraft.util.SoundEvents;
 import java.util.function.Supplier;
 
 public enum UGArmors implements IArmorMaterial {
-    CLOGGRUM("cloggrum", 10, new int[]{3, 6, 6, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1, () -> Ingredient.fromItems(UGItems.cloggrum_ingot.get())),
-    FROSTSTEEL("froststeel", 20, new int[]{2, 5, 6, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 4, () -> Ingredient.fromItems(UGItems.froststeel_ingot.get())),
-    UTHERIC("utheric", 36, new int[]{3, 6, 8, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3, () -> Ingredient.fromItems(UGItems.utherium_ingot.get())),
-    MASTICATED("masticated", 17, new int[]{6, 6, 6, 6}, 5, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0, () -> Ingredient.fromItems(UGItems.masticator_scales.get()))
+    CLOGGRUM("cloggrum", 10, new int[]{3, 6, 6, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1, () -> Ingredient.fromItems(UGItems.CLOGGRUM_INGOT.get())),
+    FROSTSTEEL("froststeel", 20, new int[]{2, 5, 6, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 4, () -> Ingredient.fromItems(UGItems.FROSTSTEEL_INGOT.get())),
+    UTHERIC("utheric", 36, new int[]{3, 6, 8, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3, () -> Ingredient.fromItems(UGItems.UTHERIUM_INGOT.get())),
+    MASTICATED("masticated", 17, new int[]{6, 6, 6, 6}, 5, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0, () -> Ingredient.fromItems(UGItems.MASTICATOR_SCALES.get()))
     ;
 
     private static final int[] durability_arr = new int[]{13, 15, 16, 11};

@@ -37,7 +37,7 @@ public class GooBlock extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UGItems.cloggrum_boots.get() && !((PlayerEntity) entityIn).isPotionActive(UGEffects.gooey.get())) {
+        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((PlayerEntity) entityIn).isPotionActive(UGEffects.GOOEY.get())) {
             //do nothing!
         }
         else if(!(entityIn instanceof ScintlingEntity) && entityIn.isOnGround()) {

@@ -48,7 +48,7 @@ public class DeepsoilFarmlandBlock extends Block {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? UGBlocks.deepsoil.get().getDefaultState() : super.getStateForPlacement(context);
+        return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? UGBlocks.DEEPSOIL.get().getDefaultState() : super.getStateForPlacement(context);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class DeepsoilFarmlandBlock extends Block {
 
     @Override
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, UGBlocks.deepsoil.get().getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
+        if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, UGBlocks.DEEPSOIL.get().getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
             turnToDeepsoil(worldIn.getBlockState(pos), worldIn, pos);
         }
 
@@ -90,7 +90,7 @@ public class DeepsoilFarmlandBlock extends Block {
     }
 
     public static void turnToDeepsoil(BlockState state, World worldIn, BlockPos pos) {
-        worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, UGBlocks.deepsoil.get().getDefaultState(), worldIn, pos));
+        worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, UGBlocks.DEEPSOIL.get().getDefaultState(), worldIn, pos));
     }
 
     private boolean hasCrops(IBlockReader worldIn, BlockPos pos) {

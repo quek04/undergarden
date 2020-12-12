@@ -24,23 +24,23 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     public UGCaveWorldCarver(Codec<ProbabilityConfig> configCodec) {
         super(configCodec, 256);
         this.carvableBlocks = ImmutableSet.of(
-                UGBlocks.depthrock.get(),
-                UGBlocks.shiverstone.get(),
-                UGBlocks.deepturf_block.get(),
-                UGBlocks.ashen_deepturf_block.get(),
-                UGBlocks.deepsoil.get(),
-                UGBlocks.coal_ore.get(),
-                UGBlocks.iron_ore.get(),
-                UGBlocks.gold_ore.get(),
-                UGBlocks.diamond_ore.get(),
-                UGBlocks.cloggrum_ore.get(),
-                UGBlocks.froststeel_ore.get(),
-                UGBlocks.utherium_ore.get(),
-                UGBlocks.regalium_ore.get()
+                UGBlocks.DEPTHROCK.get(),
+                UGBlocks.SHIVERSTONE.get(),
+                UGBlocks.DEEPTURF_BLOCK.get(),
+                UGBlocks.ASHEN_DEEPTURF_BLOCK.get(),
+                UGBlocks.DEEPSOIL.get(),
+                UGBlocks.COAL_ORE.get(),
+                UGBlocks.IRON_ORE.get(),
+                UGBlocks.GOLD_ORE.get(),
+                UGBlocks.DIAMOND_ORE.get(),
+                UGBlocks.CLOGGRUM_ORE.get(),
+                UGBlocks.FROSTSTEEL_ORE.get(),
+                UGBlocks.UTHERIUM_ORE.get(),
+                UGBlocks.REGALIUM_ORE.get()
         );
         this.carvableFluids = ImmutableSet.of(
                 Fluids.WATER,
-                UGFluids.virulent_mix_source.get()
+                UGFluids.VIRULENT_MIX_SOURCE.get()
         );
     }
 
@@ -59,12 +59,12 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 return false;
             } else {
                 if (y < 11) {
-                    chunk.setBlockState(p_230358_5_, UGBlocks.virulent_mix.get().getDefaultState(), false);
+                    chunk.setBlockState(p_230358_5_, UGBlocks.VIRULENT_MIX.get().getDefaultState(), false);
                 } else {
                     chunk.setBlockState(p_230358_5_, CAVE_AIR, false);
                     if (isSurface.isTrue()) {
                         p_230358_7_.setAndMove(p_230358_5_, Direction.DOWN);
-                        if (chunk.getBlockState(p_230358_7_).isIn(UGBlocks.deepsoil.get())) {
+                        if (chunk.getBlockState(p_230358_7_).isIn(UGBlocks.DEEPSOIL.get())) {
                             chunk.setBlockState(p_230358_7_, p_230358_2_.apply(p_230358_5_).getGenerationSettings().getSurfaceBuilderConfig().getTop(), false);
                         }
                     }

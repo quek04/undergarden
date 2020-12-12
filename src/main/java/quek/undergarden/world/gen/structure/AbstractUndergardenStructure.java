@@ -69,7 +69,7 @@ public abstract class AbstractUndergardenStructure extends Structure<NoFeatureCo
         }
 
         private boolean isValidBlock(BlockState currentBlockstate) {
-            return currentBlockstate.isIn(UGBlocks.deepturf_block.get());
+            return currentBlockstate.isIn(UGBlocks.DEEPTURF_BLOCK.get());
         }
     }
 }

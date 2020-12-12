@@ -30,7 +30,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
             return false;
         } else {
             BlockState blockstate = seedReader.getBlockState(pos.up());
-            if (!blockstate.isIn(UGBlocks.depthrock.get()) && !blockstate.isIn(UGBlocks.shiverstone.get())) {
+            if (!blockstate.isIn(UGBlocks.DEPTHROCK.get()) && !blockstate.isIn(UGBlocks.SHIVERSTONE.get())) {
                 return false;
             } else {
                 this.func_236428_a_(seedReader, rand, pos);
@@ -51,7 +51,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
 
                 for(Direction direction : directionArray) {
                     BlockState blockstate = world.getBlockState(blockpos$mutable1.setAndMove(blockpos$mutable, direction));
-                    if (blockstate.isIn(UGBlocks.depthrock.get()) || blockstate.isIn(UGBlocks.shiverstone.get())) {
+                    if (blockstate.isIn(UGBlocks.DEPTHROCK.get()) || blockstate.isIn(UGBlocks.SHIVERSTONE.get())) {
                         ++j;
                     }
 
@@ -70,7 +70,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
             blockpos$mutable.setAndOffset(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
             if (world.isAirBlock(blockpos$mutable)) {
                 BlockState blockstate = world.getBlockState(blockpos$mutable.up());
-                if (blockstate.isIn(UGBlocks.depthrock.get()) || blockstate.isIn(UGBlocks.shiverstone.get())) {
+                if (blockstate.isIn(UGBlocks.DEPTHROCK.get()) || blockstate.isIn(UGBlocks.SHIVERSTONE.get())) {
                     int j = MathHelper.nextInt(rand, 1, 8);
                     if (rand.nextInt(6) == 0) {
                         j *= 2;
@@ -91,11 +91,11 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
         for(int i = 0; i <= x; ++i) {
             if (world.isAirBlock(posMutable)) {
                 if (i == x || !world.isAirBlock(posMutable.down())) {
-                    world.setBlockState(posMutable, UGBlocks.droopvine_top.get().getDefaultState().with(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
+                    world.setBlockState(posMutable, UGBlocks.DROOPVINE_TOP.get().getDefaultState().with(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
                     break;
                 }
 
-                world.setBlockState(posMutable, UGBlocks.droopvine.get().getDefaultState().with(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()), 2);
+                world.setBlockState(posMutable, UGBlocks.DROOPVINE.get().getDefaultState().with(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()), 2);
             }
 
             posMutable.move(Direction.DOWN);

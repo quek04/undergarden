@@ -34,7 +34,7 @@ public class SmogVentBlock extends Block {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return UGTileEntities.smog_vent_te.get().create();
+        return UGTileEntities.SMOG_VENT.get().create();
     }
 
 }

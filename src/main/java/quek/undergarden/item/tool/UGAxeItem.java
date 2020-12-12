@@ -24,8 +24,6 @@ import quek.undergarden.registry.UGItems;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import net.minecraft.item.Item.Properties;
-
 @Mod.EventBusSubscriber
 public class UGAxeItem extends AxeItem {
     public UGAxeItem(IItemTier tier, float attack) {
@@ -40,10 +38,10 @@ public class UGAxeItem extends AxeItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UGItems.utheric_axe.get()) {
+        if(stack.getItem() == UGItems.UTHERIC_AXE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.utheric_axe").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.froststeel_axe.get()) {
+        else if(stack.getItem() == UGItems.FROSTSTEEL_AXE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
@@ -55,12 +53,12 @@ public class UGAxeItem extends AxeItem {
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
-            if(player.getHeldItemMainhand().getItem() == UGItems.utheric_axe.get()) {
+            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIC_AXE.get()) {
                 if(event.getEntityLiving().getClassification(false) == EntityClassification.CREATURE) {
                     event.setAmount(damage * 1.5F);
                 }
             }
-            else if(player.getHeldItemMainhand().getItem() == UGItems.froststeel_axe.get()) {
+            else if(player.getHeldItemMainhand().getItem() == UGItems.FROSTSTEEL_AXE.get()) {
                 event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 3));
             }
         }

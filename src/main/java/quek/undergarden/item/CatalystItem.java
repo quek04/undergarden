@@ -28,10 +28,10 @@ public class CatalystItem extends Item {
     @Override
     public ActionResultType onItemUse(ItemUseContext context) {
         if(context.getPlayer() != null) {
-            if(context.getPlayer().world.getDimensionKey() == UGDimensions.undergarden_w || context.getPlayer().world.getDimensionKey() == World.OVERWORLD) {
+            if(context.getPlayer().world.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD || context.getPlayer().world.getDimensionKey() == World.OVERWORLD) {
                 for(Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos framePos = context.getPos().offset(direction);
-                    if(((UndergardenPortalBlock) UGBlocks.undergarden_portal.get()).trySpawnPortal(context.getWorld(), framePos)) {
+                    if(((UndergardenPortalBlock) UGBlocks.UNDERGARDEN_PORTAL.get()).trySpawnPortal(context.getWorld(), framePos)) {
                         context.getWorld().playSound(context.getPlayer(), framePos, UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                         context.getItem().damageItem(1, context.getPlayer(), (playerEntity) -> playerEntity.sendBreakAnimation(context.getHand()));
                         return ActionResultType.CONSUME;

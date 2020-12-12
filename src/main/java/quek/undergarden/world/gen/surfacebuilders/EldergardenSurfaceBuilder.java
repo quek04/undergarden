@@ -26,8 +26,8 @@ public class EldergardenSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConf
         for(int y = 256; y >= 0; y--) {
             block.setPos(xPos, y, zPos);
 
-            if(chunkIn.getBlockState(block).isIn(UGBlocks.depthrock.get())) {
-                chunkIn.setBlockState(block, UGBlocks.shiverstone.get().getDefaultState(), false);
+            if(chunkIn.getBlockState(block).isIn(UGBlocks.DEPTHROCK.get())) {
+                chunkIn.setBlockState(block, UGBlocks.SHIVERSTONE.get().getDefaultState(), false);
             }
         }
     }

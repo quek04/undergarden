@@ -14,8 +14,8 @@ public class UGFluids {
 
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, UGMod.MODID);
 
-    public static final RegistryObject<FlowingFluid> virulent_mix_source = FLUIDS.register("virulent_mix_source", () -> new ForgeFlowingFluid.Source(UGFluids.virulent_mix_properties));
-    public static final RegistryObject<FlowingFluid> virulent_mix_flowing = FLUIDS.register("virulent_mix_flowing", () -> new ForgeFlowingFluid.Flowing(UGFluids.virulent_mix_properties));
+    public static final RegistryObject<FlowingFluid> VIRULENT_MIX_SOURCE = FLUIDS.register("virulent_mix_source", () -> new ForgeFlowingFluid.Source(UGFluids.VIRULENT_MIX_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> VIRULENT_MIX_FLOWING = FLUIDS.register("virulent_mix_flowing", () -> new ForgeFlowingFluid.Flowing(UGFluids.VIRULENT_MIX_PROPERTIES));
 
-    public static final ForgeFlowingFluid.Properties virulent_mix_properties = new ForgeFlowingFluid.Properties(virulent_mix_source, virulent_mix_flowing, FluidAttributes.builder(new ResourceLocation(UGMod.MODID, "fluid/virulent_mix_still"), new ResourceLocation(UGMod.MODID, "fluid/virulent_mix_flow"))).bucket(UGItems.virulent_mix_bucket).block(UGBlocks.virulent_mix);
+    public static final ForgeFlowingFluid.Properties VIRULENT_MIX_PROPERTIES = new ForgeFlowingFluid.Properties(VIRULENT_MIX_SOURCE, VIRULENT_MIX_FLOWING, FluidAttributes.builder(new ResourceLocation(UGMod.MODID, "fluid/virulent_mix_still"), new ResourceLocation(UGMod.MODID, "fluid/virulent_mix_flow"))).bucket(UGItems.VIRULENT_MIX_BUCKET).block(UGBlocks.VIRULENT_MIX);
 }

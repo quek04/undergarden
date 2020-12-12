@@ -8,7 +8,7 @@ import quek.undergarden.registry.UGTileEntities;
 public class SmogVentTE extends TileEntity implements ITickableTileEntity {
 
     public SmogVentTE() {
-        super(UGTileEntities.smog_vent_te.get());
+        super(UGTileEntities.SMOG_VENT.get());
     }
 
     @Override

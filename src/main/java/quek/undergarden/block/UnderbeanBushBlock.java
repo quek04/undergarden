@@ -34,7 +34,7 @@ public class UnderbeanBushBlock extends UGBushBlock implements IGrowable {
 
     @Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-        return new ItemStack(UGItems.underbeans.get());
+        return new ItemStack(UGItems.UNDERBEANS.get());
     }
 
     @Override
@@ -56,7 +56,7 @@ public class UnderbeanBushBlock extends UGBushBlock implements IGrowable {
             return ActionResultType.PASS;
         } else if (i > 1) {
             int j = 1 + worldIn.rand.nextInt(2);
-            spawnAsEntity(worldIn, pos, new ItemStack(UGItems.underbeans.get(), j + (flag ? 1 : 0)));
+            spawnAsEntity(worldIn, pos, new ItemStack(UGItems.UNDERBEANS.get(), j + (flag ? 1 : 0)));
             worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
             worldIn.setBlockState(pos, state.with(AGE, 1), 2);
             return ActionResultType.SUCCESS;

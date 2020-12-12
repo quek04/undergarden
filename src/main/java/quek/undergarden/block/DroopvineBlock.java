@@ -45,7 +45,7 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     @Override
     protected AbstractTopPlantBlock getTopPlantBlock() {
-        return (AbstractTopPlantBlock) UGBlocks.droopvine_top.get();
+        return (AbstractTopPlantBlock) UGBlocks.DROOPVINE_TOP.get();
     }
 
     @Override

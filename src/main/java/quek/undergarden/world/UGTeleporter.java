@@ -58,8 +58,8 @@ public class UGTeleporter implements ITeleporter {
                     for(int eZ = -128; eZ <= 128; ++eZ) {
                         for(BlockPos blockpos1 = pos.add(eX, world.getHeight() - 1 - pos.getY(), eZ); blockpos1.getY() >= 0; blockpos1 = blockpos2) {
                             blockpos2 = blockpos1.down();
-                            if (world.getBlockState(blockpos1).getBlock() == UGBlocks.undergarden_portal.get()) {
-                                for(blockpos2 = blockpos1.down(); world.getBlockState(blockpos2).getBlock() == UGBlocks.undergarden_portal.get(); blockpos2 = blockpos2.down()) {
+                            if (world.getBlockState(blockpos1).getBlock() == UGBlocks.UNDERGARDEN_PORTAL.get()) {
+                                for(blockpos2 = blockpos1.down(); world.getBlockState(blockpos2).getBlock() == UGBlocks.UNDERGARDEN_PORTAL.get(); blockpos2 = blockpos2.down()) {
                                     blockpos1 = blockpos2;
                                 }
 
@@ -239,7 +239,7 @@ public class UGTeleporter implements ITeleporter {
             }
         }
 
-        BlockState portal = UGBlocks.undergarden_portal.get().getDefaultState().with(UndergardenPortalBlock.AXIS, xAxis == 0 ? Direction.Axis.Z : Direction.Axis.X);
+        BlockState portal = UGBlocks.UNDERGARDEN_PORTAL.get().getDefaultState().with(UndergardenPortalBlock.AXIS, xAxis == 0 ? Direction.Axis.Z : Direction.Axis.X);
 
         for (int pWidth = 0; pWidth < 2; ++pWidth) {
             for (int pHeight = 0; pHeight < 3; ++pHeight) {
