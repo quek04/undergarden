@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerBossInfo;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UGSounds;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 
@@ -64,22 +64,22 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.FORGOTTEN_GUARDIAN_LIVING.get();
+        return UGSoundEvents.FORGOTTEN_GUARDIAN_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.FORGOTTEN_GUARDIAN_HURT.get();
+        return UGSoundEvents.FORGOTTEN_GUARDIAN_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.FORGOTTEN_GUARDIAN_DEATH.get();
+        return UGSoundEvents.FORGOTTEN_GUARDIAN_DEATH.get();
     }
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_STEP.get(), 0.5F, 1.0F);
+        this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_STEP.get(), 0.5F, 1.0F);
     }
 
     @Override
@@ -139,7 +139,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
             this.applyEnchantments(this, entityIn);
         }
 
-        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
+        this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
         return flag;
     }
 
@@ -156,7 +156,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     public boolean attackEntityFrom(DamageSource source, float amount) {
         Entity entity = source.getImmediateSource();
         if (entity instanceof ProjectileEntity) {
-            this.playSound(UGSounds.FORGOTTEN_GUARDIAN_DEFLECT.get(), 1.0F, 1.0F);
+            this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_DEFLECT.get(), 1.0F, 1.0F);
             return false;
         }
         else return super.attackEntityFrom(source, amount);
@@ -166,7 +166,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     public void handleStatusUpdate(byte id) {
         if (id == 4) {
             this.attackTimer = 10;
-            this.playSound(UGSounds.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
+            this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
         }
         else {
             super.handleStatusUpdate(id);

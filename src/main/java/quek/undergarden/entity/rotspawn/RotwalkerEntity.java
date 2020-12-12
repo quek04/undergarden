@@ -10,7 +10,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UGSounds;
+import quek.undergarden.registry.UGSoundEvents;
 
 public class RotwalkerEntity extends AbstractRotspawnEntity {
 
@@ -28,17 +28,17 @@ public class RotwalkerEntity extends AbstractRotspawnEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.ROTWALKER_LIVING.get();
+        return UGSoundEvents.ROTWALKER_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.ROTWALKER_HURT.get();
+        return UGSoundEvents.ROTWALKER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.ROTWALKER_DEATH.get();
+        return UGSoundEvents.ROTWALKER_DEATH.get();
     }
 
     @Override

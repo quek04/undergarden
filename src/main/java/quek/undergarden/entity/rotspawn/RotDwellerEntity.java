@@ -17,7 +17,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UGSounds;
+import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.UUID;
 
@@ -50,17 +50,17 @@ public class RotDwellerEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.DWELLER_LIVING.get();
+        return UGSoundEvents.DWELLER_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.DWELLER_HURT.get();
+        return UGSoundEvents.DWELLER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.DWELLER_DEATH.get();
+        return UGSoundEvents.DWELLER_DEATH.get();
     }
 
     @Override

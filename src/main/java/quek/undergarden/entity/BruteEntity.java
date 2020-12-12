@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGSounds;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -58,18 +58,18 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     @Override
     protected SoundEvent getAmbientSound() {
         if(isAggressive())
-            return UGSounds.BRUTE_ANGRY.get();
-        else return UGSounds.BRUTE_LIVING.get();
+            return UGSoundEvents.BRUTE_ANGRY.get();
+        else return UGSoundEvents.BRUTE_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.BRUTE_HURT.get();
+        return UGSoundEvents.BRUTE_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.BRUTE_DEATH.get();
+        return UGSoundEvents.BRUTE_DEATH.get();
     }
 
     @Override

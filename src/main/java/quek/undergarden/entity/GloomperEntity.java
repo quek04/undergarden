@@ -26,7 +26,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGSounds;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -70,17 +70,17 @@ public class GloomperEntity extends AnimalEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.GLOOMPER_LIVING.get();
+        return UGSoundEvents.GLOOMPER_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.GLOOMPER_HURT.get();
+        return UGSoundEvents.GLOOMPER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.GLOOMPER_DEATH.get();
+        return UGSoundEvents.GLOOMPER_DEATH.get();
     }
 
     @Nullable

@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UGMod;
 
 @Mod.EventBusSubscriber(modid = UGMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class UGSounds {
+public class UGSoundEvents {
 
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, UGMod.MODID);
 

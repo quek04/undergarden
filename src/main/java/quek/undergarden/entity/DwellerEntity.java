@@ -1,7 +1,6 @@
 package quek.undergarden.entity;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -21,7 +20,7 @@ import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSounds;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -58,17 +57,17 @@ public class DwellerEntity extends AnimalEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.DWELLER_LIVING.get();
+        return UGSoundEvents.DWELLER_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.DWELLER_HURT.get();
+        return UGSoundEvents.DWELLER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.DWELLER_DEATH.get();
+        return UGSoundEvents.DWELLER_DEATH.get();
     }
 
     @Override

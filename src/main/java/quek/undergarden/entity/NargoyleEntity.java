@@ -13,7 +13,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
-import quek.undergarden.registry.UGSounds;
+import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.EnumSet;
 import java.util.Random;
@@ -52,17 +52,17 @@ public class NargoyleEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.NARGOYLE_HURT.get();
+        return UGSoundEvents.NARGOYLE_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.NARGOYLE_DEATH.get();
+        return UGSoundEvents.NARGOYLE_DEATH.get();
     }
 
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
-        this.playSound(UGSounds.NARGOYLE_ATTACK.get(), 1.0F, 1.0F);
+        this.playSound(UGSoundEvents.NARGOYLE_ATTACK.get(), 1.0F, 1.0F);
         return super.attackEntityAsMob(entityIn);
     }
 
