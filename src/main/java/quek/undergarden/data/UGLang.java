@@ -186,6 +186,8 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GRONGLE_BUTTON, "Grongle Button");
         addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
 
+        addItem(UGItems.MAMMOTH_DISC, "Music Disc");
+        add(UGItems.MAMMOTH_DISC.get().getTranslationKey() + ".desc", "Screem - Mammoth");
         addItem(UGItems.CATALYST, "Catalyst");
         addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
         addItem(UGItems.TWISTYTWIG, "Twistytwig");

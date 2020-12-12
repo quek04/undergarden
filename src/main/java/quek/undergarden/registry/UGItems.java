@@ -19,6 +19,9 @@ public class UGItems {
 
     public static final Rarity FORGOTTEN = Rarity.create("forgotten", TextFormatting.GREEN);
 
+    //discs
+    public static final RegistryObject<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new MusicDiscItem(15, UGSoundEvents.MAMMOTH_DISC, new Item.Properties().group(UGItemGroups.GROUP).rarity(Rarity.RARE).maxStackSize(1)));
+
     //normal stuff
     public static final RegistryObject<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
     public static final RegistryObject<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", DepthrockPebbleItem::new);
