@@ -2,13 +2,14 @@ package quek.undergarden.item.tool;
 
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
+import net.minecraft.item.ShieldItem;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGShields;
 
 import javax.annotation.Nullable;
-
-import net.minecraft.item.Item.Properties;
 
 public class UGShieldItem extends ShieldItem {
 

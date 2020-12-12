@@ -9,8 +9,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGItemGroups;
 
-import net.minecraft.item.Item.Properties;
-
 public class MasticatedChestplateItem extends ArmorItem {
 
     public MasticatedChestplateItem(IArmorMaterial materialIn) {
@@ -45,5 +43,4 @@ public class MasticatedChestplateItem extends ArmorItem {
     public String getArmorTexture(ItemStack itemstack, Entity entity, EquipmentSlotType slot, String layer) {
         return "undergarden:textures/models/armor/masticated_layer_1.png";
     }
-
 }
