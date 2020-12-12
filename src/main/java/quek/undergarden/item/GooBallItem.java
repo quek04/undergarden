@@ -29,12 +29,8 @@ public class GooBallItem extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         if (playerIn.isCrouching()) {
-            if (playerIn.canEat(this.getFood().canEatWhenFull())) {
-                playerIn.setActiveHand(handIn);
-                return ActionResult.resultConsume(itemstack);
-            } else {
-                return ActionResult.resultFail(itemstack);
-            }
+            playerIn.setActiveHand(handIn);
+            return ActionResult.resultConsume(itemstack);
         }
         else {
             worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
