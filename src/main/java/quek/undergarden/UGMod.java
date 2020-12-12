@@ -18,6 +18,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -30,7 +31,6 @@ import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import quek.undergarden.client.ClientStuff;
-import quek.undergarden.client.UGDimensionRenderInfo;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.entity.projectile.GooBallEntity;
@@ -223,7 +223,17 @@ public class UGMod {
 		ItemModelsProperties.registerProperty(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1.0F : 0.0F);
 		ItemModelsProperties.registerProperty(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1.0F : 0.0F);
 
-		DimensionRenderInfo.field_239208_a_.put(UGDimensions.UNDERGARDEN_DIMENSION.getLocation(), new UGDimensionRenderInfo());
+		DimensionRenderInfo.field_239208_a_.put(UGDimensions.UNDERGARDEN_DIMENSION.getLocation(), new DimensionRenderInfo(Float.NaN, false, DimensionRenderInfo.FogType.NONE, false, true) {
+			@Override
+			public Vector3d func_230494_a_(Vector3d vector3d, float sun) {
+				return vector3d;
+			}
+
+			@Override
+			public boolean func_230493_a_(int x, int y) {
+				return y <= 32;
+			}
+		});
 		//TODO: OthersideDRI
 	}
 
