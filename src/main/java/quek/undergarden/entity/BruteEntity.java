@@ -58,18 +58,18 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
     @Override
     protected SoundEvent getAmbientSound() {
         if(isAggressive())
-            return UGSounds.BRUTE_ANGRY;
-        else return UGSounds.BRUTE_LIVING;
+            return UGSounds.BRUTE_ANGRY.get();
+        else return UGSounds.BRUTE_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.BRUTE_HURT;
+        return UGSounds.BRUTE_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.BRUTE_DEATH;
+        return UGSounds.BRUTE_DEATH.get();
     }
 
     @Override

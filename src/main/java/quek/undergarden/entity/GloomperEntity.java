@@ -70,17 +70,17 @@ public class GloomperEntity extends AnimalEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.GLOOMPER_LIVING;
+        return UGSounds.GLOOMPER_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.GLOOMPER_HURT;
+        return UGSounds.GLOOMPER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.GLOOMPER_DEATH;
+        return UGSounds.GLOOMPER_DEATH.get();
     }
 
     @Nullable

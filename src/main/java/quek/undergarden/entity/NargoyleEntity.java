@@ -52,17 +52,17 @@ public class NargoyleEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.NARGOYLE_HURT;
+        return UGSounds.NARGOYLE_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.NARGOYLE_ATTACK;
+        return UGSounds.NARGOYLE_DEATH.get();
     }
 
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
-        this.playSound(UGSounds.NARGOYLE_ATTACK, 1.0F, 1.0F);
+        this.playSound(UGSounds.NARGOYLE_ATTACK.get(), 1.0F, 1.0F);
         return super.attackEntityAsMob(entityIn);
     }
 

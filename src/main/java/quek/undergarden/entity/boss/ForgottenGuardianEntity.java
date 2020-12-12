@@ -64,22 +64,22 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.FORGOTTEN_GUARDIAN_LIVING;
+        return UGSounds.FORGOTTEN_GUARDIAN_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.FORGOTTEN_GUARDIAN_HURT;
+        return UGSounds.FORGOTTEN_GUARDIAN_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.FORGOTTEN_GUARDIAN_DEATH;
+        return UGSounds.FORGOTTEN_GUARDIAN_DEATH.get();
     }
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_STEP, 0.5F, 1.0F);
+        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_STEP.get(), 0.5F, 1.0F);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
             for(BlockPos blockpos : BlockPos.getAllInBoxMutable(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
                 BlockState blockstate = this.world.getBlockState(blockpos);
                 Block block = blockstate.getBlock();
-                //if (block instanceof LeavesBlock) {
+                //if () {
                     flag = this.world.destroyBlock(blockpos, true, this) || flag;
                 //}
             }
@@ -139,7 +139,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
             this.applyEnchantments(this, entityIn);
         }
 
-        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_ATTACK, 1.0F, 1.0F);
+        this.playSound(UGSounds.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
         return flag;
     }
 
@@ -156,7 +156,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     public boolean attackEntityFrom(DamageSource source, float amount) {
         Entity entity = source.getImmediateSource();
         if (entity instanceof ProjectileEntity) {
-            this.playSound(UGSounds.FORGOTTEN_GUARDIAN_DEFLECT, 1.0F, 1.0F);
+            this.playSound(UGSounds.FORGOTTEN_GUARDIAN_DEFLECT.get(), 1.0F, 1.0F);
             return false;
         }
         else return super.attackEntityFrom(source, amount);
@@ -166,7 +166,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     public void handleStatusUpdate(byte id) {
         if (id == 4) {
             this.attackTimer = 10;
-            this.playSound(UGSounds.FORGOTTEN_GUARDIAN_ATTACK, 1.0F, 1.0F);
+            this.playSound(UGSounds.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
         }
         else {
             super.handleStatusUpdate(id);

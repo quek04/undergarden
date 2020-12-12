@@ -50,17 +50,17 @@ public class RotDwellerEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.DWELLER_LIVING;
+        return UGSounds.DWELLER_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.DWELLER_HURT;
+        return UGSounds.DWELLER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.DWELLER_DEATH;
+        return UGSounds.DWELLER_DEATH.get();
     }
 
     @Override

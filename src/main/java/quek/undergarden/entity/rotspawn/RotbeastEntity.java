@@ -33,17 +33,17 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSounds.ROTBEAST_LIVING;
+        return UGSounds.ROTBEAST_LIVING.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSounds.ROTBEAST_HURT;
+        return UGSounds.ROTBEAST_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSounds.ROTBEAST_DEATH;
+        return UGSounds.ROTBEAST_DEATH.get();
     }
 
     @Override

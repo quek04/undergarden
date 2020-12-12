@@ -63,6 +63,7 @@ public class UGMod {
 				UGItems.ITEMS,
 				UGParticleTypes.PARTICLES,
 				UGPotions.POTIONS,
+				UGSounds.SOUNDS,
 				UGStructures.STRUCTURES,
 				UGSurfaceBuilders.SURFACE_BUILDERS,
 				UGTileEntities.TILE_ENTITIES,
