@@ -2,6 +2,7 @@ package quek.undergarden.entity.boss;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -104,9 +105,9 @@ public class ForgottenGuardianEntity extends MonsterEntity {
             for(BlockPos blockpos : BlockPos.getAllInBoxMutable(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
                 BlockState blockstate = this.world.getBlockState(blockpos);
                 Block block = blockstate.getBlock();
-                //if () {
+                if (block != Blocks.BEDROCK) {
                     flag = this.world.destroyBlock(blockpos, true, this) || flag;
-                //}
+                }
             }
 
             if (!flag && this.onGround) {
