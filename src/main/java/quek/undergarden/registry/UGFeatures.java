@@ -175,10 +175,10 @@ public class UGFeatures {
                 new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.DIAMOND_ORE.get().getDefaultState(), 8)
         );
         public static final ConfiguredFeature<?, ?> CLOGGRUM_ORE = Feature.ORE.withConfiguration(
-                new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.CLOGGRUM_ORE.get().getDefaultState(), 5)
+                new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.CLOGGRUM_ORE.get().getDefaultState(), 9)
         );
         public static final ConfiguredFeature<?, ?> FROSTSTEEL_ORE = Feature.ORE.withConfiguration(
-                new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.FROSTSTEEL_ORE.get().getDefaultState(), 4)
+                new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.FROSTSTEEL_ORE.get().getDefaultState(), 9)
         );
         public static final ConfiguredFeature<?, ?> UTHERIUM_ORE = Feature.ORE.withConfiguration(
                 new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.UTHERIUM_ORE.get().getDefaultState(), 8)
@@ -262,8 +262,6 @@ public class UGFeatures {
     }
 
     public static void registerConfiguredFeatures() {
-
-
         register("spring", ConfiguredFeatures.SPRING.withPlacement(Placement.RANGE_BIASED.configure(new TopSolidRangeConfig(8, 8, 256))).square().func_242731_b(50));
         register("virulent_spring", ConfiguredFeatures.VIRULENT_SPRING.withPlacement(Placement.RANGE_BIASED.configure(new TopSolidRangeConfig(8, 8, 256))).square().func_242731_b(50));
         register("bog_virulent_spring", ConfiguredFeatures.VIRULENT_SPRING.withPlacement(Placement.RANGE_BIASED.configure(new TopSolidRangeConfig(8, 8, 256))).square().func_242731_b(100));
@@ -298,14 +296,14 @@ public class UGFeatures {
         register("blisterberry_patch", ConfiguredFeatures.BLISTERBERRY_BUSH_PATCH.range(256).square().func_242731_b(5));
         register("gloomgourd_patch", ConfiguredFeatures.GLOOMGOURD_PATCH.range(256).square().func_242731_b(5));
 
-        register("coal_ore", ConfiguredFeatures.COAL_ORE.range(256).square().func_242731_b(20));
-        register("iron_ore", ConfiguredFeatures.IRON_ORE.range(64).square().func_242731_b(20));
-        register("gold_ore", ConfiguredFeatures.GOLD_ORE.range(32).square().func_242731_b(2));
-        register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.range(16).square().func_242731_b(8));
-        register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.range(128).square().func_242731_b(15));
-        register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.range(64).square().func_242731_b(3));
-        register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.range(32).square().func_242731_b(1));
-        register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.range(11).square().func_242731_b(2));
+        register("coal_ore", ConfiguredFeatures.COAL_ORE.range(256).square().func_242731_b(30));
+        register("iron_ore", ConfiguredFeatures.IRON_ORE.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(200, 0, 16))).square().func_242731_b(10));
+        register("gold_ore", ConfiguredFeatures.GOLD_ORE.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(220, 0, 16))).square().func_242731_b(5));
+        register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(230, 0, 16))).square().func_242731_b(3));
+        register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.range(128).square().func_242731_b(20));
+        register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.range(64).square().func_242731_b(10));
+        register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.range(32).square().func_242731_b(5));
+        register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.range(11).square().func_242731_b(3));
 
         register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(256).square().func_242731_b(10));
         register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(256).square().func_242731_b(10));
