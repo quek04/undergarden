@@ -71,7 +71,9 @@
       "undergarden:blood_patch",
       "undergarden:underbean_patch",
       "undergarden:spring",
-      "undergarden:gloomgourd_patch"
+      "undergarden:gloomgourd_patch",
+      "undergarden:depthrock_boulder",
+      "undergarden:shiverstone_boulder"
     ]
   ],
   "starts": [

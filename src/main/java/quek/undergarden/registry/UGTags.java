@@ -27,6 +27,7 @@ public class UGTags {
 
     public static class Blocks {
 
+        public static final Tags.IOptionalNamedTag<Block> BASE_STONE_UNDERGARDEN = tag("base_stone_undergarden");
         public static final Tags.IOptionalNamedTag<Block> MUSHROOMS = tag("mushrooms");
         public static final Tags.IOptionalNamedTag<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
         public static final Tags.IOptionalNamedTag<Block> SMOGSTEM_LOGS = tag("smogstem_logs");

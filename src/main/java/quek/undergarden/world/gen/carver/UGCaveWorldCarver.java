@@ -3,6 +3,7 @@ package quek.undergarden.world.gen.carver;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -36,7 +37,9 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 UGBlocks.CLOGGRUM_ORE.get(),
                 UGBlocks.FROSTSTEEL_ORE.get(),
                 UGBlocks.UTHERIUM_ORE.get(),
-                UGBlocks.REGALIUM_ORE.get()
+                UGBlocks.REGALIUM_ORE.get(),
+                Blocks.SNOW,
+                Blocks.ICE
         );
         this.carvableFluids = ImmutableSet.of(
                 Fluids.WATER,

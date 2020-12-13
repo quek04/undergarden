@@ -35,7 +35,7 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         super(codec);
     }
 
-    public static boolean func_236410_c_(IWorldGenerationBaseReader world, BlockPos pos) {
+    public static boolean isLog(IWorldGenerationBaseReader world, BlockPos pos) {
         return isReplaceableAt(world, pos) || world.hasBlockState(pos, (state) -> state.isIn(BlockTags.LOGS));
     }
 
@@ -73,9 +73,6 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         return isLeaves(world, pos) || isTallPlant(world, pos) || isWater(world, pos);
     }
 
-    /**
-     * Called when placing the tree feature.
-     */
     private boolean place(IWorldGenerationReader generationReader, Random rand, BlockPos positionIn, Set<BlockPos> leaves, Set<BlockPos> logs, MutableBoundingBox boundingBoxIn, BaseTreeFeatureConfig configIn) {
         int trunk = configIn.trunkPlacer.func_236917_a_(rand);
         int leaf = configIn.foliagePlacer.func_230374_a_(rand, trunk, configIn);
@@ -88,14 +85,16 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         if (blockpos.getY() >= 1 && blockpos.getY() + trunk + 1 <= 256) {
             if (!isDeepturf(generationReader, blockpos.down()) || isWater(generationReader, positionIn)) {
                 return false;
-            } else {
+            }
+            else {
                 OptionalInt optionalint = configIn.minimumSize.func_236710_c_();
                 int l1 = this.func_241521_a_(generationReader, trunk, blockpos, configIn);
                 if (l1 >= trunk || optionalint.isPresent() && l1 >= optionalint.getAsInt()) {
                     List<FoliagePlacer.Foliage> list = configIn.trunkPlacer.func_230382_a_(generationReader, rand, l1, blockpos, leaves, boundingBoxIn, configIn);
                     list.forEach((foliage) -> configIn.foliagePlacer.func_236752_a_(generationReader, rand, configIn, l1, foliage, leaf, l, logs, boundingBoxIn));
                     return true;
-                } else {
+                }
+                else {
                     return false;
                 }
             }
@@ -114,7 +113,7 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
             for(int k = -j; k <= j; ++k) {
                 for(int l = -j; l <= j; ++l) {
                     blockpos$mutable.setAndOffset(p_241521_3_, k, i, l);
-                    if (!func_236410_c_(p_241521_1_, blockpos$mutable) || !p_241521_4_.ignoreVines && isVine(p_241521_1_, blockpos$mutable)) {
+                    if (!isLog(p_241521_1_, blockpos$mutable) || !p_241521_4_.ignoreVines && isVine(p_241521_1_, blockpos$mutable)) {
                         return i - 2;
                     }
                 }
@@ -134,30 +133,28 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         Set<BlockPos> set1 = Sets.newHashSet();
         Set<BlockPos> set2 = Sets.newHashSet();
         MutableBoundingBox mutableboundingbox = MutableBoundingBox.getNewBoundingBox();
-        boolean flag = this.place(reader, rand, pos, set, set1, mutableboundingbox, config);
-        if (mutableboundingbox.minX <= mutableboundingbox.maxX && flag && !set.isEmpty()) {
+        boolean canPlace = this.place(reader, rand, pos, set, set1, mutableboundingbox, config);
+        if (mutableboundingbox.minX <= mutableboundingbox.maxX && canPlace && !set.isEmpty()) {
             if (!config.decorators.isEmpty()) {
                 List<BlockPos> list = Lists.newArrayList(set);
                 List<BlockPos> list1 = Lists.newArrayList(set1);
                 list.sort(Comparator.comparingInt(Vector3i::getY));
                 list1.sort(Comparator.comparingInt(Vector3i::getY));
-                config.decorators.forEach((p_236405_6_) -> {
-                    p_236405_6_.func_225576_a_(reader, rand, list, list1, set2, mutableboundingbox);
-                });
+                config.decorators.forEach((treeDecorator) -> treeDecorator.func_225576_a_(reader, rand, list, list1, set2, mutableboundingbox));
             }
 
-            VoxelShapePart voxelshapepart = this.func_236403_a_(reader, mutableboundingbox, set, set2);
+            VoxelShapePart voxelshapepart = this.placeLogsAndLeaves(reader, mutableboundingbox, set, set2);
             Template.func_222857_a(reader, 3, voxelshapepart, mutableboundingbox.minX, mutableboundingbox.minY, mutableboundingbox.minZ);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
 
-    private VoxelShapePart func_236403_a_(IWorld p_236403_1_, MutableBoundingBox p_236403_2_, Set<BlockPos> p_236403_3_, Set<BlockPos> p_236403_4_) {
+    private VoxelShapePart placeLogsAndLeaves(IWorld world, MutableBoundingBox boundingBox, Set<BlockPos> p_236403_3_, Set<BlockPos> p_236403_4_) {
         List<Set<BlockPos>> list = Lists.newArrayList();
-        VoxelShapePart voxelshapepart = new BitSetVoxelShapePart(p_236403_2_.getXSize(), p_236403_2_.getYSize(), p_236403_2_.getZSize());
-        int i = 6;
+        VoxelShapePart voxelshapepart = new BitSetVoxelShapePart(boundingBox.getXSize(), boundingBox.getYSize(), boundingBox.getZSize());
 
         for(int j = 0; j < 6; ++j) {
             list.add(Sets.newHashSet());
@@ -166,25 +163,25 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
         for(BlockPos blockpos : Lists.newArrayList(p_236403_4_)) {
-            if (p_236403_2_.isVecInside(blockpos)) {
-                voxelshapepart.setFilled(blockpos.getX() - p_236403_2_.minX, blockpos.getY() - p_236403_2_.minY, blockpos.getZ() - p_236403_2_.minZ, true, true);
+            if (boundingBox.isVecInside(blockpos)) {
+                voxelshapepart.setFilled(blockpos.getX() - boundingBox.minX, blockpos.getY() - boundingBox.minY, blockpos.getZ() - boundingBox.minZ, true, true);
             }
         }
 
         for(BlockPos blockpos1 : Lists.newArrayList(p_236403_3_)) {
-            if (p_236403_2_.isVecInside(blockpos1)) {
-                voxelshapepart.setFilled(blockpos1.getX() - p_236403_2_.minX, blockpos1.getY() - p_236403_2_.minY, blockpos1.getZ() - p_236403_2_.minZ, true, true);
+            if (boundingBox.isVecInside(blockpos1)) {
+                voxelshapepart.setFilled(blockpos1.getX() - boundingBox.minX, blockpos1.getY() - boundingBox.minY, blockpos1.getZ() - boundingBox.minZ, true, true);
             }
 
             for(Direction direction : Direction.values()) {
                 blockpos$mutable.setAndMove(blockpos1, direction);
                 if (!p_236403_3_.contains(blockpos$mutable)) {
-                    BlockState blockstate = p_236403_1_.getBlockState(blockpos$mutable);
+                    BlockState blockstate = world.getBlockState(blockpos$mutable);
                     if (blockstate.hasProperty(BlockStateProperties.DISTANCE_1_7)) {
                         list.get(0).add(blockpos$mutable.toImmutable());
-                        func_236408_b_(p_236403_1_, blockpos$mutable, blockstate.with(BlockStateProperties.DISTANCE_1_7, Integer.valueOf(1)));
-                        if (p_236403_2_.isVecInside(blockpos$mutable)) {
-                            voxelshapepart.setFilled(blockpos$mutable.getX() - p_236403_2_.minX, blockpos$mutable.getY() - p_236403_2_.minY, blockpos$mutable.getZ() - p_236403_2_.minZ, true, true);
+                        func_236408_b_(world, blockpos$mutable, blockstate.with(BlockStateProperties.DISTANCE_1_7, 1));
+                        if (boundingBox.isVecInside(blockpos$mutable)) {
+                            voxelshapepart.setFilled(blockpos$mutable.getX() - boundingBox.minX, blockpos$mutable.getY() - boundingBox.minY, blockpos$mutable.getZ() - boundingBox.minZ, true, true);
                         }
                     }
                 }
@@ -196,21 +193,21 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
             Set<BlockPos> set1 = list.get(l);
 
             for(BlockPos blockpos2 : set) {
-                if (p_236403_2_.isVecInside(blockpos2)) {
-                    voxelshapepart.setFilled(blockpos2.getX() - p_236403_2_.minX, blockpos2.getY() - p_236403_2_.minY, blockpos2.getZ() - p_236403_2_.minZ, true, true);
+                if (boundingBox.isVecInside(blockpos2)) {
+                    voxelshapepart.setFilled(blockpos2.getX() - boundingBox.minX, blockpos2.getY() - boundingBox.minY, blockpos2.getZ() - boundingBox.minZ, true, true);
                 }
 
                 for(Direction direction1 : Direction.values()) {
                     blockpos$mutable.setAndMove(blockpos2, direction1);
                     if (!set.contains(blockpos$mutable) && !set1.contains(blockpos$mutable)) {
-                        BlockState blockstate1 = p_236403_1_.getBlockState(blockpos$mutable);
+                        BlockState blockstate1 = world.getBlockState(blockpos$mutable);
                         if (blockstate1.hasProperty(BlockStateProperties.DISTANCE_1_7)) {
                             int k = blockstate1.get(BlockStateProperties.DISTANCE_1_7);
                             if (k > l + 1) {
-                                BlockState blockstate2 = blockstate1.with(BlockStateProperties.DISTANCE_1_7, Integer.valueOf(l + 1));
-                                func_236408_b_(p_236403_1_, blockpos$mutable, blockstate2);
-                                if (p_236403_2_.isVecInside(blockpos$mutable)) {
-                                    voxelshapepart.setFilled(blockpos$mutable.getX() - p_236403_2_.minX, blockpos$mutable.getY() - p_236403_2_.minY, blockpos$mutable.getZ() - p_236403_2_.minZ, true, true);
+                                BlockState blockstate2 = blockstate1.with(BlockStateProperties.DISTANCE_1_7, l + 1);
+                                func_236408_b_(world, blockpos$mutable, blockstate2);
+                                if (boundingBox.isVecInside(blockpos$mutable)) {
+                                    voxelshapepart.setFilled(blockpos$mutable.getX() - boundingBox.minX, blockpos$mutable.getY() - boundingBox.minY, blockpos$mutable.getZ() - boundingBox.minZ, true, true);
                                 }
 
                                 set1.add(blockpos$mutable.toImmutable());
@@ -223,5 +220,4 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
         return voxelshapepart;
     }
-
 }

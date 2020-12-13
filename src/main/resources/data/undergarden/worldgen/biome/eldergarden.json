@@ -35,9 +35,10 @@
     ]
   },
   "features": [
-    [],
     [
-      "minecraft:lake_water",
+      "undergarden:ice_pillar"
+    ],
+    [
       "undergarden:lake_virulent"
     ],
     [],
@@ -55,16 +56,16 @@
       "undergarden:froststeel_ore",
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
-      "undergarden:deepsoil_patch"
+      "undergarden:deepsoil_patch",
+      "undergarden:ice_patch"
     ],
     [
-      "undergarden:glowing_kelp",
       "undergarden:indigo_patch",
       "undergarden:veil_patch",
       "undergarden:ink_patch",
       "undergarden:blood_patch",
-      "undergarden:spring",
-      "undergarden:virulent_spring"
+      "undergarden:virulent_spring",
+      "undergarden:depthrock_boulder"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -103,14 +104,7 @@
     "creature": [],
     "ambient": [],
     "water_creature": [],
-    "water_ambient": [
-      {
-        "type": "undergarden:gwibling",
-        "weight": 10,
-        "minCount": 3,
-        "maxCount": 6
-      }
-    ],
+    "water_ambient": [],
     "misc": []
   },
   "player_spawn_friendly": false,

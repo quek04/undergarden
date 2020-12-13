@@ -10,15 +10,14 @@ import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.feature.template.RuleTest;
+import net.minecraft.world.gen.feature.template.TagMatchRuleTest;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.BushFoliagePlacer;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
-import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -26,6 +25,7 @@ import quek.undergarden.UGMod;
 import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.world.gen.feature.*;
+import quek.undergarden.world.gen.trunkplacer.*;
 
 public class UGFeatures {
 
@@ -33,7 +33,6 @@ public class UGFeatures {
 
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> UNDERGARDEN_TREE = FEATURES.register(
             "undergarden_tree", () -> new UGTreeFeature(BaseTreeFeatureConfig.CODEC));
-
     public static final RegistryObject<Feature<BigMushroomFeatureConfig>> BLOOD_MUSHROOM = FEATURES.register(
             "blood_mushroom", () -> new BigBloodMushroomFeature(BigMushroomFeatureConfig.CODEC));
     public static final RegistryObject<Feature<BigMushroomFeatureConfig>> INDIGO_MUSHROOM = FEATURES.register(
@@ -42,18 +41,64 @@ public class UGFeatures {
             "ink_mushroom", () -> new BigInkMushroomFeature(BigMushroomFeatureConfig.CODEC));
     public static final RegistryObject<Feature<BigMushroomFeatureConfig>> VEIL_MUSHROOM = FEATURES.register(
             "veil_mushroom", () -> new BigVeilMushroomFeature(BigMushroomFeatureConfig.CODEC));
-
     public static final RegistryObject<Feature<NoFeatureConfig>> GLOWING_KELP = FEATURES.register(
             "glowing_kelp", () -> new GlowingKelpFeature(NoFeatureConfig.field_236558_a_));
-
     public static final RegistryObject<Feature<NoFeatureConfig>> SMOG_VENT = FEATURES.register(
             "smog_vent", () -> new SmogVentFeature(NoFeatureConfig.field_236558_a_));
-
     public static final RegistryObject<Feature<NoFeatureConfig>> DROOPVINE = FEATURES.register(
             "droopvine", () -> new DroopvineFeature(NoFeatureConfig.field_236558_a_));
+    public static final RegistryObject<Feature<NoFeatureConfig>> ICE_PILLAR = FEATURES.register(
+            "ice_pillar", () -> new IcePillarFeature(NoFeatureConfig.field_236558_a_));
+
+    public static final class ConfiguredFeatures {
+        public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> SMOGSTEM_TREE = UNDERGARDEN_TREE.get().withConfiguration(
+                (new BaseTreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_WOOD.get().getDefaultState()),
+                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().getDefaultState()),
+                        new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 2),
+                        new SmogstemTrunkPlacer(10, 2, 2),
+                        new TwoLayerFeature(1, 1, 2)))
+                        .setIgnoreVines().build());
+        public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> WIGGLEWOOD_TREE = UNDERGARDEN_TREE.get().withConfiguration(
+                (new BaseTreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(UGBlocks.WIGGLEWOOD_LOG.get().getDefaultState()),
+                        new SimpleBlockStateProvider(UGBlocks.WIGGLEWOOD_LEAVES.get().getDefaultState()),
+                        new BushFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 0),
+                        new ForkyTrunkPlacer(3, 1, 1),
+                        new TwoLayerFeature(1, 0, 2)))
+                        .setIgnoreVines().build());
+
+        public static final ConfiguredFeature<BigMushroomFeatureConfig, ?> BLOOD_MUSHROOM = UGFeatures.BLOOD_MUSHROOM.get().withConfiguration(
+                new BigMushroomFeatureConfig(
+                        new SimpleBlockStateProvider(UGBlocks.BLOOD_MUSHROOM_CAP.get().getDefaultState()),
+                        new SimpleBlockStateProvider(UGBlocks.BLOOD_MUSHROOM_STALK.get().getDefaultState()),
+                        3));
+        public static final ConfiguredFeature<BigMushroomFeatureConfig, ?> INDIGO_MUSHROOM = UGFeatures.INDIGO_MUSHROOM.get().withConfiguration(
+                new BigMushroomFeatureConfig(
+                        new SimpleBlockStateProvider(UGBlocks.INDIGO_MUSHROOM_CAP.get().getDefaultState()),
+                        new SimpleBlockStateProvider(UGBlocks.INDIGO_MUSHROOM_STALK.get().getDefaultState()),
+                        3));
+        public static final ConfiguredFeature<BigMushroomFeatureConfig, ?> INK_MUSHROOM = UGFeatures.INK_MUSHROOM.get().withConfiguration(
+                new BigMushroomFeatureConfig(
+                        new SimpleBlockStateProvider(UGBlocks.INK_MUSHROOM_CAP.get().getDefaultState()),
+                        new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()),
+                        5));
+        public static final ConfiguredFeature<BigMushroomFeatureConfig, ?> VEIL_MUSHROOM = UGFeatures.VEIL_MUSHROOM.get().withConfiguration(
+                new BigMushroomFeatureConfig(
+                        new SimpleBlockStateProvider(UGBlocks.VEIL_MUSHROOM_CAP.get().getDefaultState()),
+                        new SimpleBlockStateProvider(UGBlocks.VEIL_MUSHROOM_STALK.get().getDefaultState()),
+                        2));
+
+        public static final ConfiguredFeature<?, ?> DEPTHROCK_BOULDER = Feature.FOREST_ROCK.withConfiguration(
+                new BlockStateFeatureConfig(UGBlocks.DEPTHROCK.get().getDefaultState())
+        );
+        public static final ConfiguredFeature<?, ?> SHIVERSTONE_BOULDER = Feature.FOREST_ROCK.withConfiguration(
+                new BlockStateFeatureConfig(UGBlocks.SHIVERSTONE.get().getDefaultState())
+        );
+    }
 
     public static void registerConfiguredFeatures() {
-        final RuleTest DEPTHROCK_FILLER = new BlockMatchRuleTest(UGBlocks.DEPTHROCK.get());
+        final RuleTest UNDERGARDEN_FILLER = new TagMatchRuleTest(UGTags.Blocks.BASE_STONE_UNDERGARDEN);
 
         register("spring", Feature.SPRING_FEATURE.withConfiguration(new LiquidsConfig(Fluids.WATER.getDefaultState(), false, 4, 1, ImmutableSet.of(UGBlocks.DEPTHROCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.TREMBLECRUST.get()))).withPlacement(Placement.RANGE_BIASED.configure(new TopSolidRangeConfig(8, 8, 256))).square().func_242731_b(50));
         register("virulent_spring", Feature.SPRING_FEATURE.withConfiguration(new LiquidsConfig(UGFluids.VIRULENT_MIX_SOURCE.get().getDefaultState(), false, 4, 1, ImmutableSet.of(UGBlocks.DEPTHROCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.TREMBLECRUST.get()))).withPlacement(Placement.RANGE_BIASED.configure(new TopSolidRangeConfig(8, 8, 256))).square().func_242731_b(50));
@@ -89,50 +134,37 @@ public class UGFeatures {
         register("blisterberry_patch", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(UGBlocks.BLISTERBERRY_BUSH.get().getDefaultState().with(BlisterberryBushBlock.AGE, 3)), new SimpleBlockPlacer())).tries(64).whitelist(ImmutableSet.of(UGBlocks.ASHEN_DEEPTURF_BLOCK.get())).func_227317_b_().build()).range(256).square().func_242731_b(5));
         register("gloomgourd_patch", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(UGBlocks.GLOOMGOURD.get().getDefaultState()), new SimpleBlockPlacer())).tries(16).whitelist(ImmutableSet.of(UGBlocks.DEEPTURF_BLOCK.get())).func_227317_b_().build()).range(256).square().func_242731_b(5));
 
-        register("coal_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.COAL_ORE.get().getDefaultState(), 17)).range(256).square().func_242731_b(20));
-        register("iron_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.IRON_ORE.get().getDefaultState(), 9)).range(64).square().func_242731_b(20));
-        register("gold_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.GOLD_ORE.get().getDefaultState(), 9)).range(32).square().func_242731_b(2));
-        register("diamond_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.DIAMOND_ORE.get().getDefaultState(), 8)).range(16).square().func_242731_b(8));
-        register("cloggrum_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.CLOGGRUM_ORE.get().getDefaultState(), 5)).range(128).square().func_242731_b(15));
-        register("froststeel_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.FROSTSTEEL_ORE.get().getDefaultState(), 4)).range(64).square().func_242731_b(3));
-        register("utherium_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.UTHERIUM_ORE.get().getDefaultState(), 8)).range(32).square().func_242731_b(1));
-        register("regalium_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.REGALIUM_ORE.get().getDefaultState(), 4)).range(11).square().func_242731_b(2));
+        register("coal_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.COAL_ORE.get().getDefaultState(), 17)).range(256).square().func_242731_b(20));
+        register("iron_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.IRON_ORE.get().getDefaultState(), 9)).range(64).square().func_242731_b(20));
+        register("gold_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.GOLD_ORE.get().getDefaultState(), 9)).range(32).square().func_242731_b(2));
+        register("diamond_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.DIAMOND_ORE.get().getDefaultState(), 8)).range(16).square().func_242731_b(8));
+        register("cloggrum_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.CLOGGRUM_ORE.get().getDefaultState(), 5)).range(128).square().func_242731_b(15));
+        register("froststeel_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.FROSTSTEEL_ORE.get().getDefaultState(), 4)).range(64).square().func_242731_b(3));
+        register("utherium_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.UTHERIUM_ORE.get().getDefaultState(), 8)).range(32).square().func_242731_b(1));
+        register("regalium_ore", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.REGALIUM_ORE.get().getDefaultState(), 4)).range(11).square().func_242731_b(2));
 
-        register("shiverstone_patch", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.SHIVERSTONE.get().getDefaultState(), 33)).range(256).square().func_242731_b(10));
-        register("deepsoil_patch", Feature.ORE.withConfiguration(new OreFeatureConfig(DEPTHROCK_FILLER, UGBlocks.DEEPSOIL.get().getDefaultState(), 33)).range(256).square().func_242731_b(10));
+        register("shiverstone_patch", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.SHIVERSTONE.get().getDefaultState(), 33)).range(256).square().func_242731_b(10));
+        register("deepsoil_patch", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.DEEPSOIL.get().getDefaultState(), 33)).range(256).square().func_242731_b(10));
+        register("ice_patch", Feature.ORE.withConfiguration(new OreFeatureConfig(UNDERGARDEN_FILLER, Blocks.PACKED_ICE.getDefaultState(), 33)).range(256).square().func_242731_b(10));
 
-        register("smogstem_tree", UNDERGARDEN_TREE.get().withConfiguration(
-                (new BaseTreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LOG.get().getDefaultState()),
-                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().getDefaultState()),
-                        new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 2),
-                        new StraightTrunkPlacer(10, 2, 2),
-                        new TwoLayerFeature(1, 0, 1)))
-                        .setIgnoreVines().build()).withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
-        register("wigglewood_tree", UNDERGARDEN_TREE.get().withConfiguration(
-                (new BaseTreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.WIGGLEWOOD_LOG.get().getDefaultState()),
-                        new SimpleBlockStateProvider(UGBlocks.WIGGLEWOOD_LEAVES.get().getDefaultState()),
-                        new BushFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 0),
-                        new ForkyTrunkPlacer(3, 0, 0),
-                        new TwoLayerFeature(1, 0, 2)))
-                        .setIgnoreVines().build()).withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
+        register("smogstem_tree", ConfiguredFeatures.SMOGSTEM_TREE.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
+        register("wigglewood_tree", ConfiguredFeatures.WIGGLEWOOD_TREE.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
 
-        register("huge_blood_mushroom", BLOOD_MUSHROOM.get().withConfiguration(
-                new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.BLOOD_MUSHROOM_CAP.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.BLOOD_MUSHROOM_STALK.get().getDefaultState()), 3)).withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
-        register("huge_indigo_mushroom", INDIGO_MUSHROOM.get().withConfiguration(
-                new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.INDIGO_MUSHROOM_CAP.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.INDIGO_MUSHROOM_STALK.get().getDefaultState()), 3)).withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
-        register("huge_ink_mushroom", INK_MUSHROOM.get().withConfiguration(
-                new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.INK_MUSHROOM_CAP.get().getDefaultState()), new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()), 5)).withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
-        register("huge_veil_mushroom", VEIL_MUSHROOM.get().withConfiguration(
-                new BigMushroomFeatureConfig(new SimpleBlockStateProvider(UGBlocks.VEIL_MUSHROOM_CAP.get().getDefaultState()), new SimpleBlockStateProvider(UGBlocks.VEIL_MUSHROOM_STALK.get().getDefaultState()), 2)).withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
+        register("huge_blood_mushroom", ConfiguredFeatures.BLOOD_MUSHROOM.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
+        register("huge_indigo_mushroom", ConfiguredFeatures.INDIGO_MUSHROOM.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
+        register("huge_ink_mushroom", ConfiguredFeatures.INK_MUSHROOM.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
+        register("huge_veil_mushroom", ConfiguredFeatures.VEIL_MUSHROOM.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
+
+        register("depthrock_boulder", ConfiguredFeatures.DEPTHROCK_BOULDER.range(256).square().func_242731_b(5));
+        register("shiverstone_boulder", ConfiguredFeatures.SHIVERSTONE_BOULDER.range(256).square().func_242731_b(5));
 
         register("glowing_kelp", GLOWING_KELP.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(32).square().func_242731_b(100));
         register("smog_vent", SMOG_VENT.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
         register("droopvine", DROOPVINE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(100));
+        register("ice_pillar", ICE_PILLAR.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
     }
 
-    private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> feature) {
-        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(UGMod.MODID, name), feature);
+    private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> feature) {
+        Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(UGMod.MODID, name), feature);
     }
 }

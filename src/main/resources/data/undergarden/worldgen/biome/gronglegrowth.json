@@ -69,7 +69,9 @@
       "undergarden:gronglet_patch",
       "undergarden:underbean_patch",
       "undergarden:spring",
-      "undergarden:virulent_spring"
+      "undergarden:virulent_spring",
+      "undergarden:depthrock_boulder",
+      "undergarden:shiverstone_boulder"
     ]
   ],
   "starts": [

@@ -3,7 +3,7 @@
     "textures": {
         "particle": "undergarden:block/deepsoil",
         "bottom": "undergarden:block/deepsoil",
-        "top": "undergarden:block/deepturf_block_top",
+        "top": "minecraft:block/snow",
         "side": "undergarden:block/deepturf_block_snow"
     }
 }

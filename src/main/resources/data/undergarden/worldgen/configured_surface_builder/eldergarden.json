@@ -2,10 +2,13 @@
   "type": "undergarden:eldergarden",
   "config": {
     "top_material": {
-      "Name": "undergarden:depthrock"
+      "Name": "undergarden:deepturf_block",
+      "Properties": {
+        "snowy": "true"
+      }
     },
     "under_material": {
-      "Name": "undergarden:depthrock"
+      "Name": "undergarden:deepsoil"
     },
     "underwater_material": {
       "Name": "undergarden:depthrock"
