@@ -13,7 +13,6 @@ import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
@@ -21,20 +20,14 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.BossInfo;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerBossInfo;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGSoundEvents;
 
-import javax.annotation.Nullable;
-
 public class ForgottenGuardianEntity extends MonsterEntity {
 
-    private final ServerBossInfo bossInfo = (ServerBossInfo)(new ServerBossInfo(this.getDisplayName(), BossInfo.Color.GREEN, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
     private int attackTimer;
 
     public ForgottenGuardianEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
@@ -120,8 +113,6 @@ public class ForgottenGuardianEntity extends MonsterEntity {
                 this.jump();
             }
         }
-
-        this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
     }
 
     @Override
@@ -176,24 +167,6 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     @OnlyIn(Dist.CLIENT)
     public int getAttackTimer() {
         return this.attackTimer;
-    }
-
-    @Override
-    public void setCustomName(@Nullable ITextComponent name) {
-        super.setCustomName(name);
-        this.bossInfo.setName(this.getDisplayName());
-    }
-
-    @Override
-    public void addTrackingPlayer(ServerPlayerEntity player) {
-        super.addTrackingPlayer(player);
-        this.bossInfo.addPlayer(player);
-    }
-
-    @Override
-    public void removeTrackingPlayer(ServerPlayerEntity player) {
-        super.removeTrackingPlayer(player);
-        this.bossInfo.removePlayer(player);
     }
 
     @Override
