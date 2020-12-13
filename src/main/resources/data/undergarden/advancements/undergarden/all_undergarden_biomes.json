@@ -62,6 +62,12 @@
       "conditions": {
         "biome": "undergarden:gronglegrowth"
       }
+    },
+    "eldergarden": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "undergarden:eldergarden"
+      }
     }
   }
 
