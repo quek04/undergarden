@@ -51,8 +51,8 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
             blockpos$mutable.move(Direction.DOWN);
             BlockPos.Mutable blockpos$mutable2 = new BlockPos.Mutable();
 
-            for(int i = -3; i < 4; ++i) {
-                for(int j = -3; j < 4; ++j) {
+            for(int i = -3; i < 8; ++i) {
+                for(int j = -3; j < 8; ++j) {
                     int k = MathHelper.abs(i) * MathHelper.abs(j);
                     if (rand.nextInt(10) < 10 - k) {
                         blockpos$mutable2.setPos(blockpos$mutable.add(i, 0, j));
@@ -74,7 +74,8 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
             }
 
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -86,11 +87,12 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
 
     }
 
-    private boolean stopOrPlaceIce(IWorld p_236253_1_, Random p_236253_2_, BlockPos p_236253_3_) {
-        if (p_236253_2_.nextInt(10) != 0) {
-            p_236253_1_.setBlockState(p_236253_3_, Blocks.PACKED_ICE.getDefaultState(), 2);
+    private boolean stopOrPlaceIce(IWorld world, Random rand, BlockPos pos) {
+        if (rand.nextInt(10) != 0) {
+            world.setBlockState(pos, Blocks.PACKED_ICE.getDefaultState(), 2);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }

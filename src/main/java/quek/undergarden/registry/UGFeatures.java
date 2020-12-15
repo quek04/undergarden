@@ -307,7 +307,7 @@ public class UGFeatures {
 
         register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(256).square().func_242731_b(10));
         register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(256).square().func_242731_b(10));
-        register("ice_patch", ConfiguredFeatures.ICE_PATCH.range(256).square().func_242731_b(10));
+        register("ice_patch", ConfiguredFeatures.ICE_PATCH.range(256).square().func_242731_b(20));
 
         register("smogstem_tree", ConfiguredFeatures.SMOGSTEM_TREE.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
         register("wigglewood_tree", ConfiguredFeatures.WIGGLEWOOD_TREE.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
