@@ -10,8 +10,8 @@ public class UGBiomes {
 
     public static final RegistryKey<Biome> BARREN_ABYSS = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("barren_abyss"));
     public static final RegistryKey<Biome> DENSE_FOREST = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("dense_forest"));
-    public static final RegistryKey<Biome> ELDERGARDEN = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("eldergarden"));
     public static final RegistryKey<Biome> FORGOTTEN_FIELD = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("forgotten_field"));
+    public static final RegistryKey<Biome> FROSTFIELDS = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("frostfields"));
     public static final RegistryKey<Biome> GRONGLEGROWTH = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("gronglegrowth"));
     public static final RegistryKey<Biome> MUSHROOM_BOG = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("mushroom_bog"));
     public static final RegistryKey<Biome> SMOGSTEM_FOREST = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("smogstem_forest"));

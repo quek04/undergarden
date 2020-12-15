@@ -139,7 +139,7 @@
           }
         },
         {
-          "biome": "undergarden:eldergarden",
+          "biome": "undergarden:frostfields",
           "parameters": {
             "altitude": 0.0,
             "weirdness": 0.5,

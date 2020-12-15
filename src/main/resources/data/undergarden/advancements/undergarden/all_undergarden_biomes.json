@@ -63,10 +63,10 @@
         "biome": "undergarden:gronglegrowth"
       }
     },
-    "eldergarden": {
+    "frostfields": {
       "trigger": "minecraft:location",
       "conditions": {
-        "biome": "undergarden:eldergarden"
+        "biome": "undergarden:frostfields"
       }
     }
   }
