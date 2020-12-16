@@ -65,6 +65,11 @@
       "undergarden:music/disc/mammoth"
     ]
   },
+  "music.disc.limax_maximus": {
+    "sounds": [
+      "undergarden:music/disc/limax_maximus"
+    ]
+  },
   "item.blisterbomb": {
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [
