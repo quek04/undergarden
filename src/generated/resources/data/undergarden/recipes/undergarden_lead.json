@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TT ",
+    "TG ",
+    "  T"
+  ],
+  "key": {
+    "T": {
+      "item": "undergarden:twistytwig"
+    },
+    "G": {
+      "item": "undergarden:goo_ball"
+    }
+  },
+  "result": {
+    "item": "minecraft:lead",
+    "count": 4
+  }
+}

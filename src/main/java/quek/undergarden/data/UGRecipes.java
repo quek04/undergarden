@@ -200,7 +200,18 @@ public class UGRecipes extends UGRecipeProvider {
                 .patternLine("SS")
                 .patternLine("SS")
                 .key('S', UGItems.UTHERIC_SHARD.get())
-                .addCriterion("has_shard", hasItem(UGItems.UTHERIC_SHARD.get()));
+                .addCriterion("has_shard", hasItem(UGItems.UTHERIC_SHARD.get()))
+                .build(consumer, name("shard_to_chunk"));
+
+        ShapedRecipeBuilder.shapedRecipe(Items.LEAD, 4)
+                .patternLine("TT ")
+                .patternLine("TG ")
+                .patternLine("  T")
+                .key('T', UGItems.TWISTYTWIG.get())
+                .key('G', UGItems.GOO_BALL.get())
+                .addCriterion("has_twistytwig", hasItem(UGItems.TWISTYTWIG.get()))
+                .addCriterion("has_goo_ball", hasItem(UGItems.GOO_BALL.get()))
+                .build(consumer, name("undergarden_lead"));
 
         makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).build(consumer);
