@@ -71,6 +71,9 @@ public class UGEntityTypes {
     public static final EntityType<NargoyleEntity> NARGOYLE_TYPE = EntityType.Builder.create(NargoyleEntity::new, EntityClassification.MONSTER)
             .size(0.99F, 1.5F).build("nargoyle");
     public static final RegistryObject<EntityType<NargoyleEntity>> NARGOYLE = ENTITIES.register("nargoyle", () -> NARGOYLE_TYPE);
+    public static final EntityType<MuncherEntity> MUNCHER_TYPE = EntityType.Builder.create(MuncherEntity::new, EntityClassification.MONSTER)
+            .size(0.99F, 0.99F).build("muncher");
+    public static final RegistryObject<EntityType<MuncherEntity>> MUNCHER = ENTITIES.register("muncher", () -> MUNCHER_TYPE);
 
     //bosses
     public static final EntityType<MasticatorEntity> MASTICATOR_TYPE = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
@@ -90,7 +93,8 @@ public class UGEntityTypes {
         EntitySpawnPlacementRegistry.register(SCINTLING.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
         EntitySpawnPlacementRegistry.register(GLOOMPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GloomperEntity::canGloomperSpawn);
         EntitySpawnPlacementRegistry.register(STONEBORN.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, StonebornEntity::canStonebornSpawn);
-        EntitySpawnPlacementRegistry.register(NARGOYLE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, NargoyleEntity::canNargoyleSpawn);
+        EntitySpawnPlacementRegistry.register(NARGOYLE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
+        EntitySpawnPlacementRegistry.register(MUNCHER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
     }
 
     public static void entityAttributes() {
@@ -107,5 +111,6 @@ public class UGEntityTypes {
         GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(NARGOYLE.get(), NargoyleEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(FORGOTTEN_GUARDIAN.get(), ForgottenGuardianEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(MUNCHER.get(), MuncherEntity.registerAttributes().create());
     }
 }

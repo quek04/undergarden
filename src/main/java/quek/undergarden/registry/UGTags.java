@@ -33,6 +33,7 @@ public class UGTags {
         public static final Tags.IOptionalNamedTag<Block> SMOGSTEM_LOGS = tag("smogstem_logs");
         public static final Tags.IOptionalNamedTag<Block> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
         public static final Tags.IOptionalNamedTag<Block> GRONGLE_STEMS = tag("grongle_stems");
+        public static final Tags.IOptionalNamedTag<Block> MUNCHER_BREAKABLES = tag("muncher_breakables");
 
         private static Tags.IOptionalNamedTag<Block> tag(String name) {
             return BlockTags.createOptional(new ResourceLocation(UGMod.MODID, name));

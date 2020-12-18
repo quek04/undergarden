@@ -1,6 +1,9 @@
 package quek.undergarden.entity;
 
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
@@ -8,19 +11,15 @@ import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.EnumSet;
-import java.util.Random;
 
-public class NargoyleEntity extends MonsterEntity {
+public class NargoyleEntity extends AbstractCavernCreatureEntity {
 
-    public NargoyleEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+    public NargoyleEntity(EntityType<? extends AbstractCavernCreatureEntity> type, World worldIn) {
         super(type, worldIn);
     }
 
@@ -42,12 +41,6 @@ public class NargoyleEntity extends MonsterEntity {
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 5.0D)
                 .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D)
                 .createMutableAttribute(Attributes.FOLLOW_RANGE, 128.0D);
-    }
-
-    public static boolean canNargoyleSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        if(reason == SpawnReason.SPAWNER && worldIn.getDifficulty() != Difficulty.PEACEFUL)
-            return true;
-        else return worldIn.getDifficulty() != Difficulty.PEACEFUL && isValidLightLevel(worldIn, pos, randomIn) && canSpawnOn(type, worldIn, reason, pos, randomIn) && pos.getY() < 32;
     }
 
     @Override
