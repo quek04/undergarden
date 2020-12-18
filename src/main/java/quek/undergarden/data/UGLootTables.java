@@ -240,6 +240,7 @@ public class UGLootTables extends LootTableProvider {
             this.registerLootTable(UGEntityTypes.GLOOMPER.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.RAW_GLOOMPER_LEG.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
             this.registerLootTable(UGEntityTypes.STONEBORN.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.DEPTHROCK_PEBBLE.get()).acceptFunction(SetCount.builder(RandomValueRange.of(3.0F, 6.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(1.0F, 2.0F))))));
             this.registerLootTable(UGEntityTypes.NARGOYLE.get(), LootTable.builder());
+            this.registerLootTable(UGEntityTypes.MUNCHER.get(), LootTable.builder());
 
             this.registerLootTable(UGEntityTypes.MASTICATOR.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.MASTICATOR_SCALES.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(4.0F, 8.0F))))));
             this.registerLootTable(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.FORGOTTEN_NUGGET.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 16.0F))))));
@@ -249,7 +250,5 @@ public class UGLootTables extends LootTableProvider {
         protected Iterable<EntityType<?>> getKnownEntities() {
             return UGEntityTypes.ENTITIES.getEntries().stream().map(Supplier::get).collect(Collectors.toList());
         }
-
     }
 }
-

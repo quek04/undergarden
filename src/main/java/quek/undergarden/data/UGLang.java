@@ -315,6 +315,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.GLOOMPER, "Gloomper");
         addEntityType(UGEntityTypes.STONEBORN, "Stoneborn");
         addEntityType(UGEntityTypes.NARGOYLE, "Nargoyle");
+        addEntityType(UGEntityTypes.MUNCHER, "Muncher");
 
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
         addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
