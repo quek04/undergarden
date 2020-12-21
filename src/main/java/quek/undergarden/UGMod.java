@@ -130,18 +130,9 @@ public class UGMod {
 		DispenserBlock.registerDispenseBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
 		DispenserBlock.registerDispenseBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
 
-		DispenserBlock.registerDispenseBehavior(UGItems.DWELLER_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.GWIBLING_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.ROTDWELLER_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.ROTLING_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.ROTWALKER_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.ROTBEAST_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.BRUTE_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.SCINTLING_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.GLOOMPER_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.STONEBORN_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.MASTICATOR_SPAWN_EGG.get(), eggBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG.get(), eggBehavior);
+		for(UGSpawnEggItem item : UGSpawnEggItem.eggs()) {
+			DispenserBlock.registerDispenseBehavior(item, eggBehavior);
+		}
 
 		DispenserBlock.registerDispenseBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new ProjectileDispenseBehavior() {
 			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {

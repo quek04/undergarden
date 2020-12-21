@@ -72,7 +72,7 @@ public class UGEntityTypes {
             .size(0.99F, 1.5F).build("nargoyle");
     public static final RegistryObject<EntityType<NargoyleEntity>> NARGOYLE = ENTITIES.register("nargoyle", () -> NARGOYLE_TYPE);
     public static final EntityType<MuncherEntity> MUNCHER_TYPE = EntityType.Builder.create(MuncherEntity::new, EntityClassification.MONSTER)
-            .size(0.99F, 0.99F).build("muncher");
+            .size(0.8F, 0.8F).build("muncher");
     public static final RegistryObject<EntityType<MuncherEntity>> MUNCHER = ENTITIES.register("muncher", () -> MUNCHER_TYPE);
 
     //bosses

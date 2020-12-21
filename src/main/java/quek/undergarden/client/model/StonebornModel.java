@@ -88,9 +88,9 @@ public class StonebornModel<T extends StonebornEntity> extends AgeableModel<T> {
 	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 		this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
 		this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
+
 		this.leftarm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 		this.rightarm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		//ModelHelper.func_239105_a_(rightarm, leftarm, entity.isAggressive(), this.swingProgress, ageInTicks);
 
 		this.leftleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.rightleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;

@@ -6,6 +6,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.util.math.MathHelper;
 import quek.undergarden.entity.MuncherEntity;
 
 public class MuncherModel<T extends MuncherEntity> extends SegmentedModel<T> {
@@ -59,7 +60,13 @@ public class MuncherModel<T extends MuncherEntity> extends SegmentedModel<T> {
 
 	@Override
 	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		//previously the render function, render code was moved to a method below
+		this.upperjaw.rotateAngleX = (MathHelper.sin((entity.ticksExisted) * 0.5F) * 0.9F) * 0.3F;
+
+		this.leftarm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightarm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+
+		this.leftleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override

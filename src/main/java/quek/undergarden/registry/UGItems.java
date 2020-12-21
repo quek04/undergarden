@@ -133,17 +133,18 @@ public class UGItems {
     public static final RegistryObject<Item> VEILED_STEW = ITEMS.register("veiled_stew", () -> new SoupItem((new Item.Properties()).group(UGItemGroups.GROUP).food(UGFoods.VEILED).maxStackSize(1)));
 
     //spawn eggs
-    public static final RegistryObject<Item> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.DWELLER_TYPE, 4804417, 16776960));
-    public static final RegistryObject<Item> GWIBLING_SPAWN_EGG = ITEMS.register("gwibling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.GWIBLING_TYPE, 10064737, 15845330));
-    public static final RegistryObject<Item> ROTDWELLER_SPAWN_EGG = ITEMS.register("rotdweller_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTDWELLER_TYPE, 4804417, 16776960));
-    public static final RegistryObject<Item> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTLING_TYPE, 5988164, 10963256));
-    public static final RegistryObject<Item> ROTWALKER_SPAWN_EGG = ITEMS.register("rotwalker_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTWALKER_TYPE, 5988164, 10963256));
-    public static final RegistryObject<Item> ROTBEAST_SPAWN_EGG = ITEMS.register("rotbeast_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTBEAST_TYPE, 5988164,10963256));
-    public static final RegistryObject<Item> BRUTE_SPAWN_EGG = ITEMS.register("brute_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.BRUTE_TYPE, 7035982, 4012083));
-    public static final RegistryObject<Item> SCINTLING_SPAWN_EGG = ITEMS.register("scintling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.SCINTLING_TYPE, 8556655, 6314558));
-    public static final RegistryObject<Item> GLOOMPER_SPAWN_EGG = ITEMS.register("gloomper_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.GLOOMPER_TYPE, 4138045, 6579581));
-    public static final RegistryObject<Item> STONEBORN_SPAWN_EGG = ITEMS.register("stoneborn_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.STONEBORN_TYPE, 2437409, 9502615));
-    public static final RegistryObject<Item> NARGOYLE_SPAWN_EGG = ITEMS.register("nargoyle_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.NARGOYLE_TYPE, 3944755, 13407123));
+    public static final RegistryObject<UGSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.DWELLER_TYPE, 4804417, 16776960));
+    public static final RegistryObject<UGSpawnEggItem> GWIBLING_SPAWN_EGG = ITEMS.register("gwibling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.GWIBLING_TYPE, 10064737, 15845330));
+    public static final RegistryObject<UGSpawnEggItem> ROTDWELLER_SPAWN_EGG = ITEMS.register("rotdweller_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTDWELLER_TYPE, 4804417, 16776960));
+    public static final RegistryObject<UGSpawnEggItem> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTLING_TYPE, 5988164, 10963256));
+    public static final RegistryObject<UGSpawnEggItem> ROTWALKER_SPAWN_EGG = ITEMS.register("rotwalker_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTWALKER_TYPE, 5988164, 10963256));
+    public static final RegistryObject<UGSpawnEggItem> ROTBEAST_SPAWN_EGG = ITEMS.register("rotbeast_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTBEAST_TYPE, 5988164,10963256));
+    public static final RegistryObject<UGSpawnEggItem> BRUTE_SPAWN_EGG = ITEMS.register("brute_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.BRUTE_TYPE, 7035982, 4012083));
+    public static final RegistryObject<UGSpawnEggItem> SCINTLING_SPAWN_EGG = ITEMS.register("scintling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.SCINTLING_TYPE, 8556655, 6314558));
+    public static final RegistryObject<UGSpawnEggItem> GLOOMPER_SPAWN_EGG = ITEMS.register("gloomper_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.GLOOMPER_TYPE, 4138045, 6579581));
+    public static final RegistryObject<UGSpawnEggItem> STONEBORN_SPAWN_EGG = ITEMS.register("stoneborn_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.STONEBORN_TYPE, 2437409, 9502615));
+    public static final RegistryObject<UGSpawnEggItem> NARGOYLE_SPAWN_EGG = ITEMS.register("nargoyle_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.NARGOYLE_TYPE, 3944755, 13407123));
+    public static final RegistryObject<UGSpawnEggItem> MUNCHER_SPAWN_EGG = ITEMS.register("muncher_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.MUNCHER_TYPE, 2366466, 15881511));
 
     public static final RegistryObject<Item> MASTICATOR_SPAWN_EGG = ITEMS.register("masticator_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.MASTICATOR_TYPE, 2366466, 15881511));
     public static final RegistryObject<Item> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN_TYPE, 2114606, 1962863));

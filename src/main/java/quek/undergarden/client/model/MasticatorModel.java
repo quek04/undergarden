@@ -182,8 +182,6 @@ public class MasticatorModel<T extends MasticatorEntity> extends SegmentedModel<
 		this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
 
 		float flap = MathHelper.sin((entity.ticksExisted) * 0.3F) * 0.3F;
-
-		//this.upperjaw.rotateAngleX = MathHelper.cos(limbSwing * 0.5F) * limbSwingAmount;
 		this.lowerjaw.rotateAngleX = flap * 0.70F;
 
 		this.leftarm.rotateAngleX = MathHelper.cos(limbSwing * 0.5F) * 1.4F * limbSwingAmount;
