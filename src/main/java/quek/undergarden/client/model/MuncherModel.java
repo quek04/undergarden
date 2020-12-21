@@ -7,7 +7,7 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import quek.undergarden.entity.MuncherEntity;
+import quek.undergarden.entity.cavern.MuncherEntity;
 
 public class MuncherModel<T extends MuncherEntity> extends SegmentedModel<T> {
 	private final ModelRenderer muncher;

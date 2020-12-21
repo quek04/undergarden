@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.entity.NargoyleEntity;
+import quek.undergarden.entity.cavern.NargoyleEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class NargoyleModel<T extends NargoyleEntity> extends SegmentedModel<T> {

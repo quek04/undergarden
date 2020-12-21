@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UGMod;
 import quek.undergarden.client.model.MuncherModel;
 import quek.undergarden.client.render.layer.MuncherEyesLayer;
-import quek.undergarden.entity.MuncherEntity;
+import quek.undergarden.entity.cavern.MuncherEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class MuncherRender extends MobRenderer<MuncherEntity, MuncherModel<MuncherEntity>> {

@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.cavern;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;

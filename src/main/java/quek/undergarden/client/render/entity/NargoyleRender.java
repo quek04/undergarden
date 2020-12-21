@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.UGMod;
 import quek.undergarden.client.model.NargoyleModel;
-import quek.undergarden.entity.NargoyleEntity;
+import quek.undergarden.entity.cavern.NargoyleEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class NargoyleRender extends MobRenderer<NargoyleEntity, NargoyleModel<NargoyleEntity>> {

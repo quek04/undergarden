@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.cavern;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -13,6 +13,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import quek.undergarden.entity.cavern.AbstractCavernCreatureEntity;
 import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.EnumSet;

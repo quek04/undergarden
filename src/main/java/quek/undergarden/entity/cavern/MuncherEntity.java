@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.cavern;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -11,6 +11,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import quek.undergarden.entity.cavern.AbstractCavernCreatureEntity;
 import quek.undergarden.registry.UGTags;
 
 public class MuncherEntity extends AbstractCavernCreatureEntity {
