@@ -113,6 +113,12 @@
         "weight": 50,
         "minCount": 1,
         "maxCount": 1
+      },
+      {
+        "type": "undergarden:muncher",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
       }
     ],
     "creature": [
