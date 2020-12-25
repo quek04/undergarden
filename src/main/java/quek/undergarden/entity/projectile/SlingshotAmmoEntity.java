@@ -1,6 +1,7 @@
 package quek.undergarden.entity.projectile;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -33,14 +34,18 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
     }
 
     @Override
+    protected void onEntityHit(EntityRayTraceResult result) {
+        super.onEntityHit(result);
+        Entity entity = result.getEntity();
+        entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 6.0F);
+        this.playSound(SoundEvents.BLOCK_STONE_BREAK, 1, 1);
+        this.remove();
+    }
+
+    @Override
     protected void onImpact(RayTraceResult result) {
-        if (result.getType() == RayTraceResult.Type.ENTITY && ((EntityRayTraceResult)result).getEntity() instanceof LivingEntity) {
-            LivingEntity entity = (LivingEntity) ((EntityRayTraceResult)result).getEntity();
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 6.0F);
-            this.playSound(SoundEvents.BLOCK_STONE_BREAK, 1, 1);
-            this.remove();
-        }
-        else if(result.getType() == RayTraceResult.Type.BLOCK) {
+        super.onImpact(result);
+        if(result.getType() == RayTraceResult.Type.BLOCK) {
             BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) result;
             BlockState blockstate = this.world.getBlockState(blockraytraceresult.getPos());
             PlayerEntity player = (PlayerEntity) this.func_234616_v_();
