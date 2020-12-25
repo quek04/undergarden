@@ -15,6 +15,13 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> OTHERSIDE_AMBIENCE = register("ambient.otherside_ambience");
     public static final RegistryObject<SoundEvent> SPIRES_AMBIENCE = register("ambient.spires_ambience");
 
+    public static final RegistryObject<SoundEvent> ABYSS_AMBIENT_ADDITION = register("ambient.abyss_addition");
+    public static final RegistryObject<SoundEvent> BOG_AMBIENT_ADDITION = register("ambient.bog_addition");
+    public static final RegistryObject<SoundEvent> DEEP_AMBIENT_ADDITION = register("ambient.deep_addition");
+    public static final RegistryObject<SoundEvent> FOREST_AMBIENT_ADDITION = register("ambient.forest_addition");
+    public static final RegistryObject<SoundEvent> GRONGLE_AMBIENT_ADDITION = register("ambient.grongle_addition");
+    public static final RegistryObject<SoundEvent> ROCKY_AMBIENT_ADDITION = register("ambient.rocky_addition");
+
     public static final RegistryObject<SoundEvent> UNDERGARDEN_MUSIC = register("music.undergarden_music");
     public static final RegistryObject<SoundEvent> MAMMOTH_DISC = register("music.disc.mammoth");
     public static final RegistryObject<SoundEvent> LIMAX_MAXIMUS_DISC = register("music.disc.limax_maximus");

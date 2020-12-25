@@ -20,6 +20,59 @@
       }
     ]
   },
+  "ambient.abyss_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/abyss_1",
+      "undergarden:ambient/additions/abyss_2",
+      "undergarden:ambient/additions/abyss_3"
+    ]
+  },
+  "ambient.bog_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/bog_1",
+      "undergarden:ambient/additions/bog_2",
+      "undergarden:ambient/additions/bog_3",
+      "undergarden:ambient/additions/bog_4"
+    ]
+  },
+  "ambient.deep_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/deep_1",
+      "undergarden:ambient/additions/deep_2",
+      "undergarden:ambient/additions/deep_3",
+      "undergarden:ambient/additions/deep_4",
+      "undergarden:ambient/additions/deep_5"
+    ]
+  },
+  "ambient.forest_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/forest_1",
+      "undergarden:ambient/additions/forest_2",
+      "undergarden:ambient/additions/forest_3",
+      "undergarden:ambient/additions/forest_4",
+      "undergarden:ambient/additions/forest_5"
+    ]
+  },
+  "ambient.grongle_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/grongle_1",
+      "undergarden:ambient/additions/grongle_2",
+      "undergarden:ambient/additions/grongle_3",
+      "undergarden:ambient/additions/grongle_4",
+      "undergarden:ambient/additions/grongle_5"
+    ]
+  },
+  "ambient.rocky_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/rocky_1",
+      "undergarden:ambient/additions/rocky_2",
+      "undergarden:ambient/additions/rocky_3",
+      "undergarden:ambient/additions/rocky_4",
+      "undergarden:ambient/additions/rocky_5",
+      "undergarden:ambient/additions/rocky_6",
+      "undergarden:ambient/additions/rocky_7"
+    ]
+  },
   "ambient.undergarden_portal_ambient": {
     "subtitle": "subtitles.ambient.undergarden_portal_ambient",
     "sounds": [

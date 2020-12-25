@@ -21,6 +21,10 @@
       "probability": 0.05
     },
     "ambient_sound": "undergarden:ambient.undergarden_ambience",
+    "additions_sound": {
+      "sound": "undergarden:ambient.bog_addition",
+      "tick_chance": 0.0111
+    },
     "music": {
       "sound": "undergarden:music.undergarden_music",
       "min_delay": 12000,
