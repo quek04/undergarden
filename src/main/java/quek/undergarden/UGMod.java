@@ -83,6 +83,7 @@ public class UGMod {
 		UGStructures.registerStructures();
 		UGStructures.registerConfiguredStructures();
 		UGCriteria.register();
+		UGBiomes.toDictionary();
 
 		AxeItem.BLOCK_STRIPPING_MAP = ImmutableMap.<Block, Block>builder()
 				.putAll(AxeItem.BLOCK_STRIPPING_MAP)
