@@ -329,10 +329,10 @@ public class UGRecipes extends UGRecipeProvider {
         makeStew(UGItems.INDIGO_STEW, UGBlocks.INDIGO_MUSHROOM).build(consumer);
         makeStew(UGItems.VEILED_STEW, UGBlocks.VEIL_MUSHROOM).build(consumer);
 
-        smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).build(consumer, "smelt_depthrock_bricks");
-        smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).build(consumer, "smelt_shiverstone_bricks");
+        smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).build(consumer, name("smelt_depthrock_bricks"));
+        smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).build(consumer, name("smelt_shiverstone_bricks"));
 
-        smeltingRecipe(Items.IRON_INGOT, UGItems.CATALYST.get(), 1F).build(consumer, "smelt_catalyst");
+        smeltingRecipe(Items.IRON_INGOT, UGItems.CATALYST.get(), 1F).build(consumer, name("smelt_catalyst"));
 
         smeltingRecipe(Items.COAL, UGBlocks.COAL_ORE.get(), .7F).build(consumer, name("smelt_undergarden_coal"));
         blastingRecipe(Items.COAL, UGBlocks.COAL_ORE.get(), .7F).build(consumer, name("blast_undergarden_coal"));
