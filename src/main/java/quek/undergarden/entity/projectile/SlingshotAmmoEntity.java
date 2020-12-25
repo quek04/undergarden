@@ -3,6 +3,7 @@ package quek.undergarden.entity.projectile;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,15 +36,18 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
     protected void onImpact(RayTraceResult result) {
         if (result.getType() == RayTraceResult.Type.ENTITY && ((EntityRayTraceResult)result).getEntity() instanceof LivingEntity) {
             LivingEntity entity = (LivingEntity) ((EntityRayTraceResult)result).getEntity();
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)6);
+            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 6.0F);
             this.playSound(SoundEvents.BLOCK_STONE_BREAK, 1, 1);
             this.remove();
         }
         else if(result.getType() == RayTraceResult.Type.BLOCK) {
             BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult) result;
             BlockState blockstate = this.world.getBlockState(blockraytraceresult.getPos());
+            PlayerEntity player = (PlayerEntity) this.func_234616_v_();
             if(blockstate.isSolid()) {
-                this.entityDropItem(new ItemStack(getDefaultItem()));
+                if(player != null && !player.abilities.isCreativeMode) {
+                    this.entityDropItem(new ItemStack(getDefaultItem()));
+                }
                 this.playStepSound(blockraytraceresult.getPos(), blockstate);
                 this.remove();
             }
