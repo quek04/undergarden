@@ -11,7 +11,8 @@ public class UGItem extends Item {
 
     public UGItem() {
         super(new Properties()
-                .group(UGItemGroups.GROUP));
+                .group(UGItemGroups.GROUP)
+        );
     }
 
     public UGItem(Rarity rarity) {
