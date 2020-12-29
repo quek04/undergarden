@@ -128,6 +128,11 @@
       "undergarden:music/disc/relict"
     ]
   },
+  "music.disc.gloomper_anthem": {
+    "sounds": [
+      "undergarden:music/disc/gloomper_anthem"
+    ]
+  },
   "item.blisterbomb": {
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [

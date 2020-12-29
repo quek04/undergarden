@@ -192,6 +192,8 @@ public class UGLang extends LanguageProvider {
         add(UGItems.LIMAX_MAXIMUS_DISC.get().getTranslationKey() + ".desc", "Screem - Limax Maximus");
         addItem(UGItems.RELICT_DISC, "Music Disc");
         add(UGItems.RELICT_DISC.get().getTranslationKey() + ".desc", "Screem - Relict");
+        addItem(UGItems.GLOOMPER_ANTHEM_DISC, "Music Disc");
+        add(UGItems.GLOOMPER_ANTHEM_DISC.get().getTranslationKey() + ".desc", "Screem - Gloomper Anthem");
         addItem(UGItems.CATALYST, "Catalyst");
         addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
         addItem(UGItems.TWISTYTWIG, "Twistytwig");
