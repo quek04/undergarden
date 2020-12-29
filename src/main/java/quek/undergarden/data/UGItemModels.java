@@ -118,6 +118,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
 
         normalItem(UGItems.MAMMOTH_DISC);
+        normalItem(UGItems.LIMAX_MAXIMUS_DISC);
         normalItem(UGItems.CATALYST);
         normalItem(UGItems.DEPTHROCK_PEBBLE);
         normalItem(UGItems.TWISTYTWIG);
