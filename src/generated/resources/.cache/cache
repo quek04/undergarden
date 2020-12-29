@@ -446,7 +446,7 @@ dc68d57ea585ccf9641b7b43a1a508478bfa479c data/minecraft/tags/blocks/climbable.js
 e4b0ec58f0c25a257a7a24cc3bb3dfbfa074fcfc data/minecraft/tags/blocks/crops.json
 7b71b60f7dbdda687d701ba094099fdff8e4636a data/minecraft/tags/blocks/enderman_holdable.json
 4774a419cddd799dd366d7ad1a2d3d44e5d3c5f1 data/minecraft/tags/blocks/fence_gates.json
-38d17a92565ca12e4fad2b54a2a5ad77f13d654d data/minecraft/tags/blocks/flower_pots.json
+cea6e4b438d98c07988415e4852dbaadfa119aa7 data/minecraft/tags/blocks/flower_pots.json
 a233cb140bdded21e6dfc536954eefc34d98bf85 data/minecraft/tags/blocks/gold_ores.json
 87898a167c3d8191e26d2da672e744c41819dc87 data/minecraft/tags/blocks/leaves.json
 b679b7621b1a8b92f91a1761128fddd9ebcf665d data/minecraft/tags/blocks/logs_that_burn.json

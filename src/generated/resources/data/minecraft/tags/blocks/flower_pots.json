@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:potted_smogstem_sapling",
+    "undergarden:potted_wigglewood_sapling",
+    "undergarden:potted_shimmerweed",
+    "undergarden:potted_indigo_mushroom",
+    "undergarden:potted_veil_mushroom",
+    "undergarden:potted_ink_mushroom",
+    "undergarden:potted_blood_mushroom",
+    "undergarden:potted_gronglet",
+    "undergarden:potted_ditchbulb"
+  ]
+}
