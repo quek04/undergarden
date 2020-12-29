@@ -72,6 +72,16 @@ public class ClientStuff {
         render(UGBlocks.SEEPING_INK, cutout);
         render(UGBlocks.MUSHROOM_VEIL, cutout);
         render(UGBlocks.MUSHROOM_VEIL_TOP, cutout);
+        render(UGBlocks.POTTED_SHIMMERWEED, cutout);
+        render(UGBlocks.POTTED_SMOGSTEM_SAPLING, cutout);
+        render(UGBlocks.POTTED_WIGGLEWOOD_SAPLING, cutout);
+        render(UGBlocks.POTTED_INDIGO_MUSHROOM, cutout);
+        render(UGBlocks.POTTED_VEIL_MUSHROOM, cutout);
+        render(UGBlocks.POTTED_INDIGO_MUSHROOM, cutout);
+        render(UGBlocks.POTTED_INK_MUSHROOM, cutout);
+        render(UGBlocks.POTTED_BLOOD_MUSHROOM, cutout);
+        render(UGBlocks.POTTED_GRONGLET, cutout);
+        render(UGBlocks.POTTED_DITCHBULB, cutout);
 
         RenderTypeLookup.setRenderLayer(UGFluids.VIRULENT_MIX_SOURCE.get(), translucent);
         RenderTypeLookup.setRenderLayer(UGFluids.VIRULENT_MIX_FLOWING.get(), translucent);
@@ -113,7 +123,8 @@ public class ClientStuff {
                 UGBlocks.TALL_DEEPTURF.get(),
                 UGBlocks.TALL_SHIMMERWEED.get(),
                 UGBlocks.GLOOMGOURD_STEM.get(),
-                UGBlocks.GLOOMGOURD_STEM_ATTACHED.get()
+                UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(),
+                UGBlocks.POTTED_SHIMMERWEED.get()
         );
 
         colors.register((state, world, pos, tint) ->

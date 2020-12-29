@@ -6,6 +6,7 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.criterion.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.DoorBlock;
+import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;
@@ -59,14 +60,12 @@ public class UGLootTables extends LootTableProvider {
     }
 
     @Override
-    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables()
-    {
+    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
         return ImmutableList.of(Pair.of(Blocks::new, LootParameterSets.BLOCK), Pair.of(Entities::new, LootParameterSets.ENTITY));
     }
 
     @Override
     protected void validate(Map<ResourceLocation, LootTable> map, ValidationTracker validationtracker) {
-
     }
 
     public static class Blocks extends UGBlockLootTableProvider {
@@ -204,6 +203,15 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.FORGOTTEN_BLOCK);
             dropSelf(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
             dropSelf(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
+            registerFlowerPot(UGBlocks.POTTED_SMOGSTEM_SAPLING.get());
+            registerFlowerPot(UGBlocks.POTTED_WIGGLEWOOD_SAPLING.get());
+            registerFlowerPot(UGBlocks.POTTED_SHIMMERWEED.get());
+            registerFlowerPot(UGBlocks.POTTED_INDIGO_MUSHROOM.get());
+            registerFlowerPot(UGBlocks.POTTED_VEIL_MUSHROOM.get());
+            registerFlowerPot(UGBlocks.POTTED_INK_MUSHROOM.get());
+            registerFlowerPot(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
+            registerFlowerPot(UGBlocks.POTTED_GRONGLET.get());
+            registerFlowerPot(UGBlocks.POTTED_DITCHBULB.get());
         }
 
         @Override

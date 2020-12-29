@@ -69,6 +69,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.STRIDER_WARM_BLOCKS).add(UGBlocks.UTHERIUM_ORE.get(), UGBlocks.OTHERSIDE_UTHERIUM_ORE.get(), UGBlocks.UTHERIUM_BLOCK.get());
         tag(BlockTags.FENCE_GATES).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get());
         tag(BlockTags.MUSHROOM_GROW_BLOCK).add(UGBlocks.DEEPTURF_BLOCK.get());
+        tag(BlockTags.FLOWER_POTS).add(UGBlocks.POTTED_SMOGSTEM_SAPLING.get());
 
         //forge
         tag(Tags.Blocks.COBBLESTONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
