@@ -226,7 +226,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     protected void populateTradeData() {
-        VillagerTrades.ITrade[] trades = StonebornTrades.stoneborn_trades.get(1);
+        VillagerTrades.ITrade[] trades = StonebornTrades.STONEBORN_TRADES.get(1);
         if (trades != null) {
             MerchantOffers merchantoffers = this.getOffers();
             this.addTrades(merchantoffers, trades, 4);
