@@ -49,6 +49,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(ItemTags.WOODEN_FENCES).add(UGBlocks.SMOGSTEM_FENCE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem());
         tag(ItemTags.SAPLINGS).add(UGBlocks.SMOGSTEM_SAPLING.get().asItem(), UGBlocks.WIGGLEWOOD_SAPLING.get().asItem());
         tag(ItemTags.LOGS_THAT_BURN).addTag(UGTags.Items.SMOGSTEM_LOGS).addTag(UGTags.Items.WIGGLEWOOD_LOGS);
+        tag(ItemTags.LOGS).addTag(UGTags.Items.SMOGSTEM_LOGS).addTag(UGTags.Items.WIGGLEWOOD_LOGS).addTag(UGTags.Items.GRONGLE_STEMS);
         tag(ItemTags.SMALL_FLOWERS).add(UGBlocks.SHIMMERWEED.get().asItem());
         tag(ItemTags.WOODEN_PRESSURE_PLATES).add(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get().asItem(), UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get().asItem(), UGBlocks.GRONGLE_PRESSURE_PLATE.get().asItem());
         tag(ItemTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get().asItem(), UGBlocks.DEPTHROCK_BRICK_WALL.get().asItem(), UGBlocks.SHIVERSTONE_WALL.get().asItem(), UGBlocks.SHIVERSTONE_BRICK_WALL.get().asItem());
@@ -61,14 +62,17 @@ public class UGItemTags extends ItemTagsProvider {
         tag(ItemTags.COALS).add(UGItems.DITCHBULB.get());
         tag(ItemTags.BEACON_PAYMENT_ITEMS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_INGOT.get(), UGItems.REGALIUM_INGOT.get(), UGItems.FORGOTTEN_INGOT.get());
         tag(ItemTags.NON_FLAMMABLE_WOOD).addTag(UGTags.Items.GRONGLE_STEMS).add(UGBlocks.GRONGLE_PLANKS.get().asItem(), UGBlocks.GRONGLE_SLAB.get().asItem(), UGBlocks.GRONGLE_PRESSURE_PLATE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem(), UGBlocks.GRONGLE_TRAPDOOR.get().asItem(), UGBlocks.GRONGLE_FENCE_GATE.get().asItem(), UGBlocks.GRONGLE_STAIRS.get().asItem(), UGBlocks.GRONGLE_BUTTON.get().asItem(), UGBlocks.GRONGLE_DOOR.get().asItem()); //TODO grongle sign
-        tag(ItemTags.STONE_TOOL_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem());
-        tag(ItemTags.STONE_CRAFTING_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem());
+        tag(ItemTags.STONE_TOOL_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
+        tag(ItemTags.STONE_CRAFTING_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
         tag(ItemTags.MUSIC_DISCS).add(UGItems.MAMMOTH_DISC.get());
         tag(ItemTags.FISHES).add(UGItems.RAW_GWIBLING.get(), UGItems.COOKED_GWIBLING.get());
         tag(ItemTags.BOATS).add(UGItems.SMOGSTEM_BOAT.get(), UGItems.WIGGLEWOOD_BOAT.get(), UGItems.GRONGLE_BOAT.get());
 
         //forge
         tag(Tags.Items.BONES).add(UGItems.BRUTE_TUSK.get());
+        tag(Tags.Items.COBBLESTONE).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
+        tag(Tags.Items.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get().asItem(), UGBlocks.GRONGLE_FENCE_GATE.get().asItem());
+        tag(Tags.Items.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem());
         tag(Tags.Items.INGOTS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_INGOT.get(), UGItems.REGALIUM_INGOT.get(), UGItems.FORGOTTEN_INGOT.get());
         tag(Tags.Items.MUSHROOMS).addTag(UGTags.Items.MUSHROOMS);
         tag(Tags.Items.NUGGETS).add(UGItems.CLOGGRUM_NUGGET.get(), UGItems.FROSTSTEEL_NUGGET.get(), UGItems.UTHERIUM_CHUNK.get(), UGItems.REGALIUM_NUGGET.get(), UGItems.FORGOTTEN_NUGGET.get());
@@ -76,6 +80,11 @@ public class UGItemTags extends ItemTagsProvider {
         tag(Tags.Items.SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
         tag(Tags.Items.SLIMEBALLS).add(UGItems.GOO_BALL.get());
         tag(Tags.Items.STRING).add(UGItems.TWISTYTWIG.get());
+        tag(Tags.Items.ORES_COAL).add(UGBlocks.COAL_ORE.get().asItem());
+        tag(Tags.Items.ORES_DIAMOND).add(UGBlocks.DIAMOND_ORE.get().asItem());
+        tag(Tags.Items.ORES_IRON).add(UGBlocks.IRON_ORE.get().asItem());
+        tag(Tags.Items.STONE).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
+        tag(Tags.Items.STORAGE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get().asItem(), UGBlocks.FROSTSTEEL_BLOCK.get().asItem(), UGBlocks.UTHERIUM_BLOCK.get().asItem(), UGBlocks.REGALIUM_BLOCK.get().asItem(), UGBlocks.FORGOTTEN_BLOCK.get().asItem());
     }
 
     private TagsProvider.Builder<Item> tag(ITag.INamedTag<Item> tag) {

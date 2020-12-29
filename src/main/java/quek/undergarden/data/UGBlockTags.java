@@ -48,6 +48,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.WOODEN_FENCES).add(UGBlocks.SMOGSTEM_FENCE.get(), UGBlocks.WIGGLEWOOD_FENCE.get(), UGBlocks.GRONGLE_FENCE.get());
         tag(BlockTags.SAPLINGS).add(UGBlocks.SMOGSTEM_SAPLING.get(), UGBlocks.WIGGLEWOOD_SAPLING.get());
         tag(BlockTags.LOGS_THAT_BURN).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS);
+        tag(BlockTags.LOGS).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_STEMS);
         tag(BlockTags.SMALL_FLOWERS).add(UGBlocks.SHIMMERWEED.get());
         tag(BlockTags.ENDERMAN_HOLDABLE).addTag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.GLOOMGOURD.get(), UGBlocks.CARVED_GLOOMGOURD.get());
         tag(BlockTags.WOODEN_PRESSURE_PLATES).add(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get(), UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get(), UGBlocks.GRONGLE_PRESSURE_PLATE.get());
@@ -72,15 +73,15 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.FLOWER_POTS).add(UGBlocks.POTTED_SMOGSTEM_SAPLING.get(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING.get(), UGBlocks.POTTED_SHIMMERWEED.get(), UGBlocks.POTTED_INDIGO_MUSHROOM.get(), UGBlocks.POTTED_VEIL_MUSHROOM.get(), UGBlocks.POTTED_INK_MUSHROOM.get(), UGBlocks.POTTED_BLOOD_MUSHROOM.get(), UGBlocks.POTTED_GRONGLET.get(), UGBlocks.POTTED_DITCHBULB.get());
 
         //forge
-        tag(Tags.Blocks.COBBLESTONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
+        tag(Tags.Blocks.COBBLESTONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get());
         tag(Tags.Blocks.DIRT).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
         tag(Tags.Blocks.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get());
         tag(Tags.Blocks.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get(), UGBlocks.WIGGLEWOOD_FENCE.get(), UGBlocks.GRONGLE_FENCE.get());
-        tag(Tags.Blocks.ORES).add(UGBlocks.CLOGGRUM_ORE.get(), UGBlocks.FROSTSTEEL_ORE.get(), UGBlocks.UTHERIUM_ORE.get(), UGBlocks.REGALIUM_ORE.get());
+        tag(Tags.Blocks.ORES).add(UGBlocks.CLOGGRUM_ORE.get(), UGBlocks.FROSTSTEEL_ORE.get(), UGBlocks.UTHERIUM_ORE.get(), UGBlocks.REGALIUM_ORE.get(), UGBlocks.OTHERSIDE_UTHERIUM_ORE.get());
         tag(Tags.Blocks.ORES_COAL).add(UGBlocks.COAL_ORE.get());
         tag(Tags.Blocks.ORES_DIAMOND).add(UGBlocks.DIAMOND_ORE.get());
         tag(Tags.Blocks.ORES_IRON).add(UGBlocks.IRON_ORE.get());
-        tag(Tags.Blocks.STONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
+        tag(Tags.Blocks.STONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get());
         tag(Tags.Blocks.STORAGE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.FORGOTTEN_BLOCK.get());
     }
 
