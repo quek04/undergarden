@@ -25,6 +25,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> UNDERGARDEN_MUSIC = register("music.undergarden_music");
     public static final RegistryObject<SoundEvent> MAMMOTH_DISC = register("music.disc.mammoth");
     public static final RegistryObject<SoundEvent> LIMAX_MAXIMUS_DISC = register("music.disc.limax_maximus");
+    public static final RegistryObject<SoundEvent> RELICT_DISC = register("music.disc.relict");
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_AMBIENT = register("ambient.undergarden_portal_ambient");
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_ACTIVATE = register("item.undergarden_portal_activate");

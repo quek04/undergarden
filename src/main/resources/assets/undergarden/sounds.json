@@ -123,6 +123,11 @@
       "undergarden:music/disc/limax_maximus"
     ]
   },
+  "music.disc.relict": {
+    "sounds": [
+      "undergarden:music/disc/relict"
+    ]
+  },
   "item.blisterbomb": {
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [

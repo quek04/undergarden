@@ -21,6 +21,8 @@ public class UGItems {
 
     //discs
     public static final RegistryObject<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new MusicDiscItem(15, UGSoundEvents.MAMMOTH_DISC, new Item.Properties().group(UGItemGroups.GROUP).rarity(Rarity.RARE).maxStackSize(1)));
+    public static final RegistryObject<Item> LIMAX_MAXIMUS_DISC = ITEMS.register("music_disc_mammoth", () -> new MusicDiscItem(15, UGSoundEvents.LIMAX_MAXIMUS_DISC, new Item.Properties().group(UGItemGroups.GROUP).rarity(Rarity.RARE).maxStackSize(1)));
+    public static final RegistryObject<Item> RELICT_DISC = ITEMS.register("music_disc_mammoth", () -> new MusicDiscItem(15, UGSoundEvents.RELICT_DISC, new Item.Properties().group(UGItemGroups.GROUP).rarity(Rarity.RARE).maxStackSize(1)));
 
     //normal stuff
     public static final RegistryObject<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
