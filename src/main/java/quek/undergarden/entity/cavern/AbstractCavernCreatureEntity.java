@@ -17,7 +17,7 @@ public abstract class AbstractCavernCreatureEntity extends MonsterEntity {
     }
 
     public static boolean canCreatureSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        if(worldIn.getDifficulty() != Difficulty.PEACEFUL && isValidLightLevel(worldIn, pos, randomIn) && canSpawnOn(type, worldIn, reason, pos, randomIn)) {
+        if(canMonsterSpawnInLight(type, worldIn, reason, pos, randomIn)) {
             return reason == SpawnReason.SPAWNER || pos.getY() < 32;
         }
         return false;
