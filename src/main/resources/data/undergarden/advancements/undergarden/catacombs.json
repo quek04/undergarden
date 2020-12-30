@@ -4,10 +4,10 @@
       "item": "undergarden:depthrock_brick_stairs"
     },
     "title": {
-      "translate": "advancement.castle.title"
+      "translate": "advancement.catacombs.title"
     },
     "description": {
-      "translate": "advancement.castle.desc"
+      "translate": "advancement.catacombs.desc"
     },
     "show_toast": true,
     "announce_to_chat": true,
@@ -19,7 +19,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "feature": "undergarden:forgotten_castle"
+          "feature": "undergarden:catacombs"
         }
       }
     }

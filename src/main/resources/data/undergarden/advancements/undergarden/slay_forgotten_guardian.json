@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "frame": "goal"
   },
-  "parent": "undergarden:undergarden/castle",
+  "parent": "undergarden:undergarden/catacombs",
   "criteria": {
     "slay_forgotten_guardian": {
       "trigger": "minecraft:player_killed_entity",

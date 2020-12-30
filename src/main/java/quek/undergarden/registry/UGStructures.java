@@ -27,16 +27,13 @@ public class UGStructures {
 
     public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, UGMod.MODID);
 
-    public static final RegistryObject<Structure<NoFeatureConfig>> FORGOTTEN_CASTLE = STRUCTURES.register("forgotten_castle", () -> new ForgottenOutpostStructure(NoFeatureConfig.field_236558_a_));
     public static final RegistryObject<Structure<NoFeatureConfig>> CATACOMBS = STRUCTURES.register("catacombs", () -> new CatacombsStructure(NoFeatureConfig.field_236558_a_));
 
     public static void registerStructures() {
-        setupStructure(FORGOTTEN_CASTLE.get(), new StructureSeparationSettings(16, 8, 276320042), true);
         setupStructure(CATACOMBS.get(), new StructureSeparationSettings(16, 8, 276320045), true);
     }
 
     public static void registerConfiguredStructures() {
-        Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(UGMod.MODID, "forgotten_castle"), FORGOTTEN_CASTLE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(UGMod.MODID, "catacombs"), CATACOMBS.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
     }
 
@@ -49,7 +46,6 @@ public class UGStructures {
             }
             Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkProvider().generator.func_235957_b_().func_236195_a_());
 
-            tempMap.put(UGStructures.FORGOTTEN_CASTLE.get(), DimensionStructuresSettings.field_236191_b_.get(UGStructures.FORGOTTEN_CASTLE.get()));
             tempMap.put(UGStructures.CATACOMBS.get(), DimensionStructuresSettings.field_236191_b_.get(UGStructures.CATACOMBS.get()));
 
             serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;
