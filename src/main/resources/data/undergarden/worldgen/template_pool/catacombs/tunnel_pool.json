@@ -39,7 +39,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/catacombs_tunnel4",
         "processors": "undergarden:catacombs_degradation",
@@ -48,7 +48,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/catacombs_tunnel5",
         "processors": "undergarden:catacombs_degradation",
