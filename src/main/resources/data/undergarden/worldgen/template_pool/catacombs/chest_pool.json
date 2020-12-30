@@ -1,0 +1,42 @@
+{
+  "name": "undergarden:catacombs/chest_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_chest_muncher",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_chest_nargoyle",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_chest_rotling",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_chest_rotwalker",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -81,7 +81,8 @@
     ]
   ],
   "starts": [
-    "undergarden:forgotten_castle"
+    "undergarden:forgotten_castle",
+    "undergarden:catacombs"
   ],
   "spawners": {
     "monster": [

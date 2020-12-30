@@ -1,11 +1,11 @@
 {
-  "name": "undergarden:forgotten_castle/forgotten_guardian",
+  "name": "undergarden:catacombs/catacombs_entrance",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
-        "location": "undergarden:forgotten_castle/forgotten_guardian",
+        "location": "undergarden:catacombs/catacombs_entrance",
         "processors": "undergarden:castle_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

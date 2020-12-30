@@ -1,0 +1,51 @@
+{
+  "name": "undergarden:catacombs/way_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_entrance",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 100,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_4way",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 200,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_3way",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 300,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_2way",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 400,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_1way",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

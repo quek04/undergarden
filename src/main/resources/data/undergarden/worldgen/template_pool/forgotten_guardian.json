@@ -1,0 +1,15 @@
+{
+  "name": "undergarden:forgotten_guardian",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:forgotten_guardian",
+        "processors": "undergarden:castle_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
