@@ -351,7 +351,7 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("slingshot", "Your New Best Friend");
         addAdvDesc("slingshot", "Craft a Slingshot.");
 
-        addAdvTitle("slay_rotling", "Slay Rotling");
+        addAdvTitle("slay_rotling", "Birth Control");
         addAdvDesc("slay_rotling", "Slay the weakest of the Rotspawn, the Rotling.");
 
         addAdvTitle("shard_torch", "Warding Device");
@@ -389,6 +389,9 @@ public class UGLang extends LanguageProvider {
 
         addAdvTitle("forgotten_tools", "Forgotten Arsenal");
         addAdvDesc("forgotten_tools", "Obtain all 5 Forgotten tools.");
+
+        addAdvTitle("slay_scintling", "Terrible Person");
+        addAdvDesc("slay_scintling", "You killed an innocent Scintling. You monster...");
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
