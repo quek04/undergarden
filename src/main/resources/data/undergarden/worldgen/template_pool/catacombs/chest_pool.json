@@ -5,7 +5,16 @@
     {
       "weight": 2,
       "element": {
-        "location": "minecraft:empty",
+        "location": "undergarden:catacombs/catacombs_nothing",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_chest",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
