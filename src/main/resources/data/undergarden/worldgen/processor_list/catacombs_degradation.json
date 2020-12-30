@@ -8,7 +8,7 @@
           },
           "input_predicate": {
             "block": "undergarden:depthrock_bricks",
-            "probability": 0.7,
+            "probability": 0.5,
             "predicate_type": "minecraft:random_block_match"
           },
           "location_predicate": {
@@ -21,32 +21,6 @@
           },
           "input_predicate": {
             "block": "undergarden:depthrock_bricks",
-            "probability": 0.3,
-            "predicate_type": "minecraft:random_block_match"
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          }
-        },
-        {
-          "output_state": {
-            "Name": "minecraft:air"
-          },
-          "input_predicate": {
-            "block": "undergarden:depthrock_bricks",
-            "probability": 0.3,
-            "predicate_type": "minecraft:random_block_match"
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          }
-        },
-        {
-          "output_state": {
-            "Name": "minecraft:air"
-          },
-          "input_predicate": {
-            "block": "undergarden:wigglewood_planks",
             "probability": 0.3,
             "predicate_type": "minecraft:random_block_match"
           },

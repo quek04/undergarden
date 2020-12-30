@@ -36,7 +36,7 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
         @Override
         public void func_230364_a_(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager structureManager, int x, int z, Biome biome, NoFeatureConfig NoFeatureConfig) {
             BlockPos yPos = getHighestLand(chunkGenerator);
-            BlockPos blockPos = new BlockPos(x * 16, 1, z * 16);
+            BlockPos blockPos = new BlockPos(x * 16, 0, z * 16);
 
             JigsawManager.func_242837_a(
                     dynamicRegistryManager,
@@ -49,6 +49,9 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
                     this.rand,
                     true,
                     false);
+
+            this.components.forEach(piece -> piece.offset(0, 1, 0));
+            this.components.forEach(piece -> piece.getBoundingBox().minY -= 1);
 
             this.recalculateStructureSize();
 

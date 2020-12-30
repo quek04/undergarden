@@ -4,7 +4,7 @@
     {
       "rolls": {
         "min": 1.0,
-        "max": 8.0,
+        "max": 2.0,
         "type": "minecraft:uniform"
       },
       "entries": [
@@ -20,11 +20,6 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 5,
-          "name": "undergarden:music_disc_gloomper_anthem"
-        },
-        {
-          "type": "minecraft:item",
           "weight": 1,
           "name": "undergarden:forgotten_nugget"
         },
@@ -35,7 +30,22 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2.0,
+                "min": 1.0,
+                "max": 8.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "undergarden:gloomgourd_pie"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
                 "max": 8.0,
                 "type": "minecraft:uniform"
               }
@@ -75,7 +85,22 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 15,
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 0.0,
+                "max": 4.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "undergarden:regalium_nugget"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:enchant_randomly"
@@ -85,7 +110,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 15,
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:enchant_randomly"
@@ -95,7 +120,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 15,
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:enchant_randomly"
@@ -105,7 +130,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 15,
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:enchant_randomly"

@@ -3,10 +3,10 @@
   "fallback": "minecraft:empty",
   "elements": [
     {
-      "weight": 50,
+      "weight": 1,
       "element": {
         "location": "undergarden:catacombs/way_pool",
-        "processors": "undergarden:castle_degradation",
+        "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -15,7 +15,7 @@
       "weight": 200,
       "element": {
         "location": "undergarden:catacombs/catacombs_tunnel1",
-        "processors": "undergarden:castle_degradation",
+        "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -24,34 +24,43 @@
       "weight": 200,
       "element": {
         "location": "undergarden:catacombs/catacombs_tunnel2",
-        "processors": "undergarden:castle_degradation",
+        "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
-      "weight": 100,
+      "weight": 200,
       "element": {
         "location": "undergarden:catacombs/catacombs_tunnel3",
-        "processors": "undergarden:castle_degradation",
+        "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
-      "weight": 100,
+      "weight": 200,
       "element": {
         "location": "undergarden:catacombs/catacombs_tunnel4",
-        "processors": "undergarden:castle_degradation",
+        "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
     },
     {
-      "weight": 100,
+      "weight": 200,
       "element": {
         "location": "undergarden:catacombs/catacombs_tunnel5",
-        "processors": "undergarden:castle_degradation",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 50,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_tunnel_guardian",
+        "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
