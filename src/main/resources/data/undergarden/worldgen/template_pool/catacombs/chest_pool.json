@@ -23,15 +23,6 @@
     {
       "weight": 1,
       "element": {
-        "location": "undergarden:catacombs/catacombs_chest_muncher",
-        "processors": "minecraft:empty",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 1,
-      "element": {
         "location": "undergarden:catacombs/catacombs_chest_nargoyle",
         "processors": "minecraft:empty",
         "projection": "rigid",
