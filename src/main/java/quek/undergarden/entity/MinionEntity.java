@@ -12,7 +12,6 @@ import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
@@ -30,12 +29,13 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 20, 10.0F));
+        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 5, 10.0F));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 1.0000001E-5F));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) ->
-                entity instanceof IMob || entity.getType().isContained(UGTags.Entities.ROTSPAWN) || entity.getType().isContained(UGTags.Entities.CAVERN_CREATURE)));
+                entity instanceof IMob || entity.getType().isContained(UGTags.Entities.ROTSPAWN) || entity.getType().isContained(UGTags.Entities.CAVERN_CREATURE))
+        );
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
