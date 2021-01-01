@@ -13,6 +13,9 @@ public class StonebornTrades {
     public static final Int2ObjectMap<VillagerTrades.ITrade[]> STONEBORN_TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1,
             new VillagerTrades.ITrade[] {
                     new BuyForRegaliumTrade(UGItems.REGALIUM_INGOT.get(), UGItems.LIMAX_MAXIMUS_DISC.get(), 32, 1, 1, 25),
+                    new BuyForRegaliumTrade(UGItems.REGALIUM_INGOT.get(), UGItems.GLOOMPER_ANTHEM_DISC.get(), 32, 1, 1, 25),
+                    new SellForRegaliumTrade(UGItems.REGALIUM_INGOT.get(), UGItems.MAMMOTH_DISC.get(), 32, 1, 1, 25),
+                    new SellForRegaliumTrade(UGItems.REGALIUM_INGOT.get(), UGItems.RELICT_DISC.get(), 32, 1, 1, 25),
                     new BuyForRegaliumTrade(UGItems.REGALIUM_NUGGET.get(), UGItems.BLISTERBOMB.get(), 16, 8, 24, 5),
                     new BuyForRegaliumTrade(UGItems.REGALIUM_INGOT.get(), UGItems.SHARD_TORCH.get(), 1, 4, 10, 5),
                     new BuyForRegaliumTrade(UGItems.REGALIUM_NUGGET.get(), UGItems.GLOOMGOURD_SEEDS.get(), 3, 6, 100, 1),
