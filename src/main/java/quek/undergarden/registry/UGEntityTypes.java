@@ -40,6 +40,12 @@ public class UGEntityTypes {
     public static final EntityType<BlisterbombEntity> BLISTERBOMB_TYPE = EntityType.Builder.<BlisterbombEntity>create(BlisterbombEntity::new, EntityClassification.MISC)
             .size(0.5F, 0.5F).build("blisterbomb");
     public static final RegistryObject<EntityType<BlisterbombEntity>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> BLISTERBOMB_TYPE);
+    public static final EntityType<MinionProjectileEntity> MINION_PROJECTILE_TYPE = EntityType.Builder.<MinionProjectileEntity>create(MinionProjectileEntity::new, EntityClassification.MISC)
+            .size(0.25F, 0.25F).build("minion_projectile");
+    public static final RegistryObject<EntityType<MinionProjectileEntity>> MINION_PROJECTILE = ENTITIES.register("minion_projectile", () -> MINION_PROJECTILE_TYPE);
+    public static final EntityType<MinionEntity> MINION_TYPE = EntityType.Builder.create(MinionEntity::new, EntityClassification.MISC)
+            .size(0.8F, 0.9F).build("sploogie");
+    public static final RegistryObject<EntityType<MinionEntity>> MINION = ENTITIES.register("minion", () -> MINION_TYPE);
 
     //normal
     public static final EntityType<RotlingEntity> ROTLING_TYPE = EntityType.Builder.create(RotlingEntity::new, EntityClassification.MONSTER)

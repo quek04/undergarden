@@ -2,7 +2,6 @@ package quek.undergarden.client.model;
 // Made with Blockbench 3.7.4
 // Exported for Minecraft version 1.15
 
-
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;

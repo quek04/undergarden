@@ -94,6 +94,7 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GOO_BALL.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BLISTERBOMB.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MINION_PROJECTILE.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
 
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTLING.get(), RotlingRender::new);
@@ -111,6 +112,7 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MUNCHER.get(), MuncherRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MINION.get(), MinionRender::new);
     }
 
     public static void registerBlockColors() {

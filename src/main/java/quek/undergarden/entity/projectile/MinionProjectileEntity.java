@@ -24,23 +24,23 @@ import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class GooBallEntity extends ProjectileItemEntity {
+public class MinionProjectileEntity extends ProjectileItemEntity {
 
-    public GooBallEntity(EntityType<? extends GooBallEntity> type, World world) {
+    public MinionProjectileEntity(EntityType<? extends MinionProjectileEntity> type, World world) {
         super(type, world);
     }
 
-    public GooBallEntity(World worldIn, LivingEntity throwerIn) {
-        super(UGEntityTypes.GOO_BALL.get(), throwerIn, worldIn);
+    public MinionProjectileEntity(World worldIn, LivingEntity throwerIn) {
+        super(UGEntityTypes.MINION_PROJECTILE.get(), throwerIn, worldIn);
     }
 
-    public GooBallEntity(World worldIn, double x, double y, double z) {
-        super(UGEntityTypes.GOO_BALL.get(), x, y, z, worldIn);
+    public MinionProjectileEntity(World worldIn, double x, double y, double z) {
+        super(UGEntityTypes.MINION_PROJECTILE.get(), x, y, z, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return UGItems.GOO_BALL.get();
+        return UGItems.FORGOTTEN_NUGGET.get();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -67,23 +67,14 @@ public class GooBallEntity extends ProjectileItemEntity {
             
             if(entity instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entity;
-                if(livingEntity instanceof ScintlingEntity) {
-                    livingEntity.heal(2);
-                }
-                else {
-                    livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)0);
-                    livingEntity.addPotionEffect(new EffectInstance(UGEffects.GOOEY.get(), 100, 0, false, true));
-                }
+                livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 10.0F);
             }
-
-            this.playSound(SoundEvents.BLOCK_SLIME_BLOCK_BREAK, 1, 1);
         }
 
         if (!this.world.isRemote) {
             this.world.setEntityState(this, (byte)3);
             this.remove();
         }
-
     }
 
     @Override

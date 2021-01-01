@@ -33,7 +33,6 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AbstractCavernCreatureEntity.func_233666_p_()
                 .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
-                //.createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D)
                 .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
@@ -45,7 +44,7 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
         double zDistance = target.getPosZ() - this.getPosZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         pebble.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
-        this.playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.world.addEntity(pebble);
     }
 }
