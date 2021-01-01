@@ -143,6 +143,12 @@
         "weight": 5,
         "minCount": 4,
         "maxCount": 4
+      },
+      {
+        "type": "undergarden:sploogie",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
       }
     ],
     "ambient": [

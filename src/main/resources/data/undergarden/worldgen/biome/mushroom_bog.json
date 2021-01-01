@@ -115,6 +115,12 @@
         "weight": 50,
         "minCount": 1,
         "maxCount": 1
+      },
+      {
+        "type": "undergarden:sploogie",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
       }
     ],
     "creature": [
