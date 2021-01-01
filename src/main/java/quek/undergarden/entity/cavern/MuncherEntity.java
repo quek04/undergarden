@@ -51,6 +51,7 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
                 Block block = blockstate.getBlock();
                 if (block.isIn(UGTags.Blocks.MUNCHER_BREAKABLES)) {
                     this.world.destroyBlock(blockpos, false, this);
+                    this.heal(1.0F);
                 }
             }
         }
