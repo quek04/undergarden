@@ -110,6 +110,7 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.NARGOYLE.get(), NargoyleRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MUNCHER.get(), MuncherRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
     }
 
     public static void registerBlockColors() {

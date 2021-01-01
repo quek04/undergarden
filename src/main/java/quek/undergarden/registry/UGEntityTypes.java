@@ -15,6 +15,7 @@ import quek.undergarden.entity.boss.*;
 import quek.undergarden.entity.cavern.AbstractCavernCreatureEntity;
 import quek.undergarden.entity.cavern.MuncherEntity;
 import quek.undergarden.entity.cavern.NargoyleEntity;
+import quek.undergarden.entity.cavern.SploogieEntity;
 import quek.undergarden.entity.projectile.*;
 import quek.undergarden.entity.rotspawn.*;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
@@ -77,6 +78,9 @@ public class UGEntityTypes {
     public static final EntityType<MuncherEntity> MUNCHER_TYPE = EntityType.Builder.create(MuncherEntity::new, EntityClassification.MONSTER)
             .size(0.8F, 0.8F).build("muncher");
     public static final RegistryObject<EntityType<MuncherEntity>> MUNCHER = ENTITIES.register("muncher", () -> MUNCHER_TYPE);
+    public static final EntityType<SploogieEntity> SPLOOGIE_TYPE = EntityType.Builder.create(SploogieEntity::new, EntityClassification.MONSTER)
+            .size(0.8F, 0.8F).build("sploogie");
+    public static final RegistryObject<EntityType<SploogieEntity>> SPLOOGIE = ENTITIES.register("sploogie", () -> SPLOOGIE_TYPE);
 
     //bosses
     public static final EntityType<MasticatorEntity> MASTICATOR_TYPE = EntityType.Builder.create(MasticatorEntity::new, EntityClassification.MONSTER)
@@ -98,6 +102,7 @@ public class UGEntityTypes {
         EntitySpawnPlacementRegistry.register(STONEBORN.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, StonebornEntity::canStonebornSpawn);
         EntitySpawnPlacementRegistry.register(NARGOYLE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
         EntitySpawnPlacementRegistry.register(MUNCHER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
+        EntitySpawnPlacementRegistry.register(SPLOOGIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
     }
 
     public static void entityAttributes() {
@@ -115,5 +120,6 @@ public class UGEntityTypes {
         GlobalEntityTypeAttributes.put(NARGOYLE.get(), NargoyleEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(FORGOTTEN_GUARDIAN.get(), ForgottenGuardianEntity.registerAttributes().create());
         GlobalEntityTypeAttributes.put(MUNCHER.get(), MuncherEntity.registerAttributes().create());
+        GlobalEntityTypeAttributes.put(SPLOOGIE.get(), SploogieEntity.registerAttributes().create());
     }
 }

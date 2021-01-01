@@ -49,6 +49,7 @@ public class GooBallEntity extends ProjectileItemEntity {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void handleStatusUpdate(byte id) {
         if (id == 3) {
             IParticleData iparticledata = this.makeParticle();
@@ -57,7 +58,6 @@ public class GooBallEntity extends ProjectileItemEntity {
                 this.world.addParticle(iparticledata, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
             }
         }
-
     }
 
     @Override

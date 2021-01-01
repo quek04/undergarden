@@ -80,9 +80,7 @@ public class SlingshotItem extends ShootableItem {
                         ammoEntity = ammo(ammoEntity);
                         ammoEntity.func_234612_a_(playerentity, playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
-                        stack.damageItem(1, playerentity, (p_220009_1_) -> {
-                            p_220009_1_.sendBreakAnimation(playerentity.getActiveHand());
-                        });
+                        stack.damageItem(1, playerentity, (player) -> player.sendBreakAnimation(playerentity.getActiveHand()));
 
                         worldIn.addEntity(ammoEntity);
                     }
