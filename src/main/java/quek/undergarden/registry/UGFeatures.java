@@ -323,7 +323,7 @@ public class UGFeatures {
         register("glowing_kelp", ConfiguredFeatures.GLOWING_KELP.range(32).square().func_242731_b(100));
         register("smog_vent", ConfiguredFeatures.SMOG_VENT.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
         register("droopvine", ConfiguredFeatures.DROOPVINE.range(256).square().func_242731_b(100));
-        register("ice_pillar", ConfiguredFeatures.ICE_PILLAR.range(256).square().func_242731_b(20));
+        register("ice_pillar", ConfiguredFeatures.ICE_PILLAR.range(256).square().func_242731_b(50));
     }
 
     private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> feature) {
