@@ -232,7 +232,7 @@ public class UGMod {
 
 			@Override
 			public boolean func_230493_a_(int x, int y) {
-				return y <= 31;
+				return false;
 			}
 		});
 		//TODO: OthersideDRI
