@@ -44,7 +44,7 @@ public class UGEntityTypes {
             .size(0.25F, 0.25F).build("minion_projectile");
     public static final RegistryObject<EntityType<MinionProjectileEntity>> MINION_PROJECTILE = ENTITIES.register("minion_projectile", () -> MINION_PROJECTILE_TYPE);
     public static final EntityType<MinionEntity> MINION_TYPE = EntityType.Builder.create(MinionEntity::new, EntityClassification.MISC)
-            .size(0.8F, 0.9F).build("minion");
+            .size(0.8F, 1.2F).build("minion");
     public static final RegistryObject<EntityType<MinionEntity>> MINION = ENTITIES.register("minion", () -> MINION_TYPE);
 
     //normal

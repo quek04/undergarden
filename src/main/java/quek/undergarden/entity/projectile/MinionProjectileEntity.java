@@ -10,17 +10,14 @@ import net.minecraft.network.IPacket;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ItemParticleData;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
-import quek.undergarden.entity.ScintlingEntity;
-import quek.undergarden.registry.UGEffects;
+import quek.undergarden.entity.MinionEntity;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
@@ -67,7 +64,9 @@ public class MinionProjectileEntity extends ProjectileItemEntity {
             
             if(entity instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entity;
-                livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 10.0F);
+                if(!(livingEntity instanceof MinionEntity)) {
+                    livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 10.0F);
+                }
             }
         }
 
