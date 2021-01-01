@@ -39,6 +39,24 @@
       }
     },
     {
+      "weight": 200,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_tunnel6",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 200,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_tunnel7",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
       "weight": 100,
       "element": {
         "location": "undergarden:catacombs/catacombs_tunnel4",
