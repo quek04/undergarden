@@ -298,8 +298,8 @@ public class UGFeatures {
 
         register("coal_ore", ConfiguredFeatures.COAL_ORE.range(256).square().func_242731_b(30));
         register("iron_ore", ConfiguredFeatures.IRON_ORE.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(200, 0, 16))).square().func_242731_b(10));
-        register("gold_ore", ConfiguredFeatures.GOLD_ORE.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(220, 0, 16))).square().func_242731_b(5));
-        register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(230, 0, 16))).square().func_242731_b(3));
+        register("gold_ore", ConfiguredFeatures.GOLD_ORE.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(220, 0, 16))).square().func_242731_b(3));
+        register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(230, 0, 16))).square().func_242731_b(1));
         register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.range(128).square().func_242731_b(20));
         register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.range(64).square().func_242731_b(10));
         register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.range(32).square().func_242731_b(5));
