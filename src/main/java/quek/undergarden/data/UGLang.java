@@ -396,6 +396,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("slay_scintling", "Terrible Person");
         addAdvDesc("slay_scintling", "You killed an innocent Scintling. You monster...");
 
+        addAdvTitle("summon_minion", "Buildin' a Sentry");
+        addAdvDesc("summon_minion", "Create a Forgotten Minion using a Forgotten Block and a Carved Gloomgourd.");
+
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");
