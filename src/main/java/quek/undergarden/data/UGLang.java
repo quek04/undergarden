@@ -312,6 +312,7 @@ public class UGLang extends LanguageProvider {
         addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 
         addEntityType(UGEntityTypes.BOAT, "Undergarden Boat");
+        addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
         addEntityType(UGEntityTypes.DWELLER, "Dweller");
         addEntityType(UGEntityTypes.ROTDWELLER, "Rotdweller");
         addEntityType(UGEntityTypes.GWIBLING, "Gwibling");

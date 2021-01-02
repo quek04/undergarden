@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:cloggrum_block",
+    "undergarden:froststeel_block",
+    "undergarden:utherium_block",
+    "undergarden:regalium_block",
+    "undergarden:forgotten_block"
+  ]
+}
