@@ -399,6 +399,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("summon_minion", "Buildin' a Sentry");
         addAdvDesc("summon_minion", "Create a Forgotten Minion using a Forgotten Block and a Carved Gloomgourd.");
 
+        addAdvTitle("otherside_root", "The Otherside");
+        addAdvDesc("otherside_root", "Enter the realm of madness.");
+
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");
