@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "undergarden:cloggrum_hoe"
+  },
+  "addition": {
+    "item": "undergarden:forgotten_ingot"
+  },
+  "result": {
+    "item": "undergarden:forgotten_hoe"
+  }
+}
