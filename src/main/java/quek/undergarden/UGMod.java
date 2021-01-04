@@ -1,6 +1,7 @@
 package quek.undergarden;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import net.minecraft.block.*;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.data.DataGenerator;
@@ -73,139 +74,136 @@ public class UGMod {
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
-		UGEntityTypes.spawnPlacements();
-		UGEntityTypes.entityAttributes();
-		UGFeatures.registerConfiguredFeatures();
-		UGCarvers.registerConfiguredCarvers();
-		UGStructures.registerStructures();
-		UGStructures.registerConfiguredStructures();
-		UGCriteria.register();
-		UGBiomes.toDictionary();
+		event.enqueueWork(() -> {
+			UGEntityTypes.spawnPlacements();
+			UGEntityTypes.entityAttributes();
+			UGFeatures.registerConfiguredFeatures();
+			UGCarvers.registerConfiguredCarvers();
+			UGStructures.registerStructures();
+			UGStructures.registerConfiguredStructures();
+			UGCriteria.register();
+			UGBiomes.toDictionary();
 
-		AxeItem.BLOCK_STRIPPING_MAP = ImmutableMap.<Block, Block>builder()
-				.putAll(AxeItem.BLOCK_STRIPPING_MAP)
-				.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get())
-				.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get())
-				.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get())
-				.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get())
-				.put(UGBlocks.GRONGLE_STEM.get(), UGBlocks.STRIPPED_GRONGLE_STEM.get())
-				.put(UGBlocks.GRONGLE_HYPHAE.get(), UGBlocks.STRIPPED_GRONGLE_HYPHAE.get())
-				.build();
+			AxeItem.BLOCK_STRIPPING_MAP = Maps.newHashMap(AxeItem.BLOCK_STRIPPING_MAP);
+			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
+			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
+			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get());
+			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
+			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.GRONGLE_STEM.get(), UGBlocks.STRIPPED_GRONGLE_STEM.get());
+			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.GRONGLE_HYPHAE.get(), UGBlocks.STRIPPED_GRONGLE_HYPHAE.get());
 
-		HoeItem.HOE_LOOKUP = ImmutableMap.<Block, BlockState>builder()
-				.putAll(HoeItem.HOE_LOOKUP)
-				.put(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL_FARMLAND.get().getDefaultState())
-				.put(UGBlocks.DEEPSOIL.get(), UGBlocks.DEEPSOIL_FARMLAND.get().getDefaultState())
-				.put(UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEEPSOIL.get().getDefaultState())
-				.build();
+			HoeItem.HOE_LOOKUP.put(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL_FARMLAND.get().getDefaultState());
+			HoeItem.HOE_LOOKUP.put(UGBlocks.DEEPSOIL.get(), UGBlocks.DEEPSOIL_FARMLAND.get().getDefaultState());
+			HoeItem.HOE_LOOKUP.put(UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEEPSOIL.get().getDefaultState());
 
-		IDispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
-			private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
+			IDispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
+				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
 
-			public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
-				BucketItem bucketitem = (BucketItem)stack.getItem();
-				BlockPos blockpos = source.getBlockPos().offset(source.getBlockState().get(DispenserBlock.FACING));
-				World world = source.getWorld();
-				if (bucketitem.tryPlaceContainedLiquid(null, world, blockpos, null)) {
-					bucketitem.onLiquidPlaced(world, stack, blockpos);
-					return new ItemStack(Items.BUCKET);
-				} else {
-					return this.defaultBehavior.dispense(source, stack);
+				public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+					BucketItem bucketitem = (BucketItem)stack.getItem();
+					BlockPos blockpos = source.getBlockPos().offset(source.getBlockState().get(DispenserBlock.FACING));
+					World world = source.getWorld();
+					if (bucketitem.tryPlaceContainedLiquid(null, world, blockpos, null)) {
+						bucketitem.onLiquidPlaced(world, stack, blockpos);
+						return new ItemStack(Items.BUCKET);
+					} else {
+						return this.defaultBehavior.dispense(source, stack);
+					}
 				}
+			};
+
+			DefaultDispenseItemBehavior eggBehavior = new DefaultDispenseItemBehavior() {
+				public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+					Direction direction = source.getBlockState().get(DispenserBlock.FACING);
+					EntityType<?> type = ((UGSpawnEggItem)stack.getItem()).getType(stack.getTag());
+					type.spawn(source.getWorld(), stack, null, source.getBlockPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
+					stack.shrink(1);
+					return stack;
+				}
+			};
+
+			DispenserBlock.registerDispenseBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
+			DispenserBlock.registerDispenseBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
+
+			for(UGSpawnEggItem item : UGSpawnEggItem.eggs()) {
+				DispenserBlock.registerDispenseBehavior(item, eggBehavior);
 			}
-		};
 
-		DefaultDispenseItemBehavior eggBehavior = new DefaultDispenseItemBehavior() {
-			public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
-				Direction direction = source.getBlockState().get(DispenserBlock.FACING);
-				EntityType<?> type = ((UGSpawnEggItem)stack.getItem()).getType(stack.getTag());
-				type.spawn(source.getWorld(), stack, null, source.getBlockPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
-				stack.shrink(1);
-				return stack;
-			}
-		};
+			DispenserBlock.registerDispenseBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new ProjectileDispenseBehavior() {
+				protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+					return Util.make(new SlingshotAmmoEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+				}
+			});
 
-		DispenserBlock.registerDispenseBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
-		DispenserBlock.registerDispenseBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
+			DispenserBlock.registerDispenseBehavior(UGItems.GOO_BALL.get(), new ProjectileDispenseBehavior() {
+				protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+					return Util.make(new GooBallEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+				}
+			});
 
-		for(UGSpawnEggItem item : UGSpawnEggItem.eggs()) {
-			DispenserBlock.registerDispenseBehavior(item, eggBehavior);
-		}
+			DispenserBlock.registerDispenseBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new ProjectileDispenseBehavior() {
+				protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+					return Util.make(new RottenBlisterberryEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+				}
+			});
 
-		DispenserBlock.registerDispenseBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new ProjectileDispenseBehavior() {
-			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-				return Util.make(new SlingshotAmmoEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
-			}
+			DispenserBlock.registerDispenseBehavior(UGItems.BLISTERBOMB.get(), new ProjectileDispenseBehavior() {
+				protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+					return Util.make(new BlisterbombEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+				}
+			});
+
+			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().asItem(), UGPotions.BRITTLENESS.get());
+			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.REDSTONE, UGPotions.LONG_BRITTLENESS.get());
+			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.GLOWSTONE_DUST, UGPotions.STRONG_BRITTLENESS.get());
+
+			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.GLOOMGOURD.get().asItem(), UGPotions.VIRULENT_RESISTANCE.get());
+			PotionBrewing.addMix(UGPotions.VIRULENT_RESISTANCE.get(), Items.REDSTONE, UGPotions.LONG_VIRULENT_RESISTANCE.get());
+
+			ComposterBlock.registerCompostable(0.1F, UGItems.DROOPVINE.get());
+			ComposterBlock.registerCompostable(0.1F, UGItems.UNDERBEANS.get());
+			ComposterBlock.registerCompostable(0.2F, UGItems.BLISTERBERRY.get());
+			ComposterBlock.registerCompostable(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
+			ComposterBlock.registerCompostable(0.3F, UGItems.GLOWING_KELP.get());
+			ComposterBlock.registerCompostable(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
+			ComposterBlock.registerCompostable(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
+			ComposterBlock.registerCompostable(0.3F, UGBlocks.GRONGLE_CAP.get());
+			ComposterBlock.registerCompostable(0.3F, UGBlocks.SMOGSTEM_SAPLING.get());
+			ComposterBlock.registerCompostable(0.3F, UGBlocks.WIGGLEWOOD_SAPLING.get());
+			ComposterBlock.registerCompostable(0.3F, UGBlocks.GRONGLET.get());
+			ComposterBlock.registerCompostable(0.3F, UGBlocks.DEEPTURF.get());
+			ComposterBlock.registerCompostable(0.3F, UGBlocks.SHIMMERWEED.get());
+			ComposterBlock.registerCompostable(0.5F, UGBlocks.TALL_DEEPTURF.get());
+			ComposterBlock.registerCompostable(0.5F, UGBlocks.DITCHBULB_PLANT.get());
+			ComposterBlock.registerCompostable(0.5F, UGItems.DITCHBULB.get());
+			ComposterBlock.registerCompostable(0.5F, UGBlocks.TALL_SHIMMERWEED.get());
+			ComposterBlock.registerCompostable(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
+			ComposterBlock.registerCompostable(0.65F, UGBlocks.VEIL_MUSHROOM.get());
+			ComposterBlock.registerCompostable(0.65F, UGBlocks.INK_MUSHROOM.get());
+			ComposterBlock.registerCompostable(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
+			ComposterBlock.registerCompostable(0.65F, UGBlocks.GLOOMGOURD.get());
+			ComposterBlock.registerCompostable(0.65F, UGBlocks.CARVED_GLOOMGOURD.get());
+			ComposterBlock.registerCompostable(0.85F, UGBlocks.INDIGO_MUSHROOM_CAP.get());
+			ComposterBlock.registerCompostable(0.85F, UGBlocks.INDIGO_MUSHROOM_STALK.get());
+			ComposterBlock.registerCompostable(0.85F, UGBlocks.VEIL_MUSHROOM_CAP.get());
+			ComposterBlock.registerCompostable(0.85F, UGBlocks.VEIL_MUSHROOM_STALK.get());
+			ComposterBlock.registerCompostable(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
+			ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
+			ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get());
+			ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_STALK.get());
+
+			FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
+
+			pot.addPlant(UGBlocks.SMOGSTEM_SAPLING.getId(), UGBlocks.POTTED_SMOGSTEM_SAPLING);
+			pot.addPlant(UGBlocks.WIGGLEWOOD_SAPLING.getId(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING);
+			pot.addPlant(UGBlocks.SHIMMERWEED.getId(), UGBlocks.POTTED_SHIMMERWEED);
+			pot.addPlant(UGBlocks.INDIGO_MUSHROOM.getId(), UGBlocks.POTTED_INDIGO_MUSHROOM);
+			pot.addPlant(UGBlocks.VEIL_MUSHROOM.getId(), UGBlocks.POTTED_VEIL_MUSHROOM);
+			pot.addPlant(UGBlocks.INK_MUSHROOM.getId(), UGBlocks.POTTED_INK_MUSHROOM);
+			pot.addPlant(UGBlocks.BLOOD_MUSHROOM.getId(), UGBlocks.POTTED_BLOOD_MUSHROOM);
+			pot.addPlant(UGBlocks.GRONGLET.getId(), UGBlocks.POTTED_GRONGLET);
+			pot.addPlant(UGBlocks.DITCHBULB_PLANT.getId(), UGBlocks.POTTED_DITCHBULB);
 		});
-
-		DispenserBlock.registerDispenseBehavior(UGItems.GOO_BALL.get(), new ProjectileDispenseBehavior() {
-			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-				return Util.make(new GooBallEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
-			}
-		});
-
-		DispenserBlock.registerDispenseBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new ProjectileDispenseBehavior() {
-			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-				return Util.make(new RottenBlisterberryEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
-			}
-		});
-
-		DispenserBlock.registerDispenseBehavior(UGItems.BLISTERBOMB.get(), new ProjectileDispenseBehavior() {
-			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-				return Util.make(new BlisterbombEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
-			}
-		});
-
-		PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().asItem(), UGPotions.BRITTLENESS.get());
-		PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.REDSTONE, UGPotions.LONG_BRITTLENESS.get());
-		PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.GLOWSTONE_DUST, UGPotions.STRONG_BRITTLENESS.get());
-
-		PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.GLOOMGOURD.get().asItem(), UGPotions.VIRULENT_RESISTANCE.get());
-		PotionBrewing.addMix(UGPotions.VIRULENT_RESISTANCE.get(), Items.REDSTONE, UGPotions.LONG_VIRULENT_RESISTANCE.get());
-
-		ComposterBlock.registerCompostable(0.1F, UGItems.DROOPVINE.get());
-		ComposterBlock.registerCompostable(0.1F, UGItems.UNDERBEANS.get());
-		ComposterBlock.registerCompostable(0.2F, UGItems.BLISTERBERRY.get());
-		ComposterBlock.registerCompostable(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
-		ComposterBlock.registerCompostable(0.3F, UGItems.GLOWING_KELP.get());
-		ComposterBlock.registerCompostable(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
-		ComposterBlock.registerCompostable(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
-		ComposterBlock.registerCompostable(0.3F, UGBlocks.GRONGLE_CAP.get());
-		ComposterBlock.registerCompostable(0.3F, UGBlocks.SMOGSTEM_SAPLING.get());
-		ComposterBlock.registerCompostable(0.3F, UGBlocks.WIGGLEWOOD_SAPLING.get());
-		ComposterBlock.registerCompostable(0.3F, UGBlocks.GRONGLET.get());
-		ComposterBlock.registerCompostable(0.3F, UGBlocks.DEEPTURF.get());
-		ComposterBlock.registerCompostable(0.3F, UGBlocks.SHIMMERWEED.get());
-		ComposterBlock.registerCompostable(0.5F, UGBlocks.TALL_DEEPTURF.get());
-		ComposterBlock.registerCompostable(0.5F, UGBlocks.DITCHBULB_PLANT.get());
-		ComposterBlock.registerCompostable(0.5F, UGItems.DITCHBULB.get());
-		ComposterBlock.registerCompostable(0.5F, UGBlocks.TALL_SHIMMERWEED.get());
-		ComposterBlock.registerCompostable(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
-		ComposterBlock.registerCompostable(0.65F, UGBlocks.VEIL_MUSHROOM.get());
-		ComposterBlock.registerCompostable(0.65F, UGBlocks.INK_MUSHROOM.get());
-		ComposterBlock.registerCompostable(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
-		ComposterBlock.registerCompostable(0.65F, UGBlocks.GLOOMGOURD.get());
-		ComposterBlock.registerCompostable(0.65F, UGBlocks.CARVED_GLOOMGOURD.get());
-		ComposterBlock.registerCompostable(0.85F, UGBlocks.INDIGO_MUSHROOM_CAP.get());
-		ComposterBlock.registerCompostable(0.85F, UGBlocks.INDIGO_MUSHROOM_STALK.get());
-		ComposterBlock.registerCompostable(0.85F, UGBlocks.VEIL_MUSHROOM_CAP.get());
-		ComposterBlock.registerCompostable(0.85F, UGBlocks.VEIL_MUSHROOM_STALK.get());
-		ComposterBlock.registerCompostable(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
-		ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
-		ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get());
-		ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_STALK.get());
-
-		FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
-
-		pot.addPlant(UGBlocks.SMOGSTEM_SAPLING.getId(), UGBlocks.POTTED_SMOGSTEM_SAPLING);
-		pot.addPlant(UGBlocks.WIGGLEWOOD_SAPLING.getId(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING);
-		pot.addPlant(UGBlocks.SHIMMERWEED.getId(), UGBlocks.POTTED_SHIMMERWEED);
-		pot.addPlant(UGBlocks.INDIGO_MUSHROOM.getId(), UGBlocks.POTTED_INDIGO_MUSHROOM);
-		pot.addPlant(UGBlocks.VEIL_MUSHROOM.getId(), UGBlocks.POTTED_VEIL_MUSHROOM);
-		pot.addPlant(UGBlocks.INK_MUSHROOM.getId(), UGBlocks.POTTED_INK_MUSHROOM);
-		pot.addPlant(UGBlocks.BLOOD_MUSHROOM.getId(), UGBlocks.POTTED_BLOOD_MUSHROOM);
-		pot.addPlant(UGBlocks.GRONGLET.getId(), UGBlocks.POTTED_GRONGLET);
-		pot.addPlant(UGBlocks.DITCHBULB_PLANT.getId(), UGBlocks.POTTED_DITCHBULB);
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
