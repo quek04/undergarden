@@ -130,7 +130,7 @@ public class UndergardenPortalBlock extends Block {
                         if (destination != null && minecraftserver.getAllowNether() && !entity.isPassenger()) {
                             entity.world.getProfiler().startSection("undergarden_portal");
                             entity.func_242279_ag();
-                            entity.changeDimension(destination, new UGTeleporter());
+                            entity.changeDimension(destination, new UGTeleporter(destination));
                             entity.world.getProfiler().endSection();
                         }
                     }

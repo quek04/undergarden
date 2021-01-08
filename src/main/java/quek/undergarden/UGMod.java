@@ -61,6 +61,7 @@ public class UGMod {
 				UGFluids.FLUIDS,
 				UGItems.ITEMS,
 				UGParticleTypes.PARTICLES,
+				UGPointOfInterests.POI,
 				UGPotions.POTIONS,
 				UGSoundEvents.SOUNDS,
 				UGStructures.STRUCTURES,

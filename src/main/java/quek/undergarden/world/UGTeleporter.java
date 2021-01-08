@@ -1,296 +1,221 @@
 package quek.undergarden.world;
 
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PortalInfo;
+import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
+import net.minecraft.util.TeleportationRepositioner;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.math.ColumnPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.village.PointOfInterest;
+import net.minecraft.village.PointOfInterestManager;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.border.WorldBorder;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.server.TicketType;
 import net.minecraftforge.common.util.ITeleporter;
 import quek.undergarden.block.UndergardenPortalBlock;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGDimensions;
+import quek.undergarden.registry.UGPointOfInterests;
 
 import javax.annotation.Nullable;
-import java.util.Map;
-import java.util.Random;
+import java.util.Comparator;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class UGTeleporter implements ITeleporter {
 
-    protected final Map<ColumnPos, PortalPosition> destinationCoordinateCache = Maps.newHashMapWithExpectedSize(4096);
-    private final Object2LongMap<ColumnPos> columnMap = new Object2LongOpenHashMap<>();
+    protected final ServerWorld world;
 
-    public boolean placeInPortal(ServerWorld world, Entity entity, float yaw) {
-        PortalInfo pattern = this.placeInExistingPortal(world, entity, new BlockPos(entity.getPosition()));
-        return pattern != null;
+    public UGTeleporter(ServerWorld worldIn) {
+        this.world = worldIn;
     }
 
-    @Nullable
-    public PortalInfo placeInExistingPortal(ServerWorld world, Entity entity, BlockPos pos) {
-        boolean isFrame = true;
-        BlockPos blockpos = null;
-        ColumnPos columnpos = new ColumnPos(pos);
-        if (!(entity instanceof PlayerEntity) && this.columnMap.containsKey(columnpos)) {
-            return null;
-        } else {
-            UGTeleporter.PortalPosition position = this.destinationCoordinateCache.get(columnpos);
-            if (position != null) {
-                blockpos = position.pos;
-                position.lastUpdateTime = world.getGameTime();
-                isFrame = false;
-            } else {
-                double d0 = Double.MAX_VALUE;
-
-                for(int eX = -128; eX <= 128; ++eX) {
-                    BlockPos blockpos2;
-                    for(int eZ = -128; eZ <= 128; ++eZ) {
-                        for(BlockPos blockpos1 = pos.add(eX, world.getHeight() - 1 - pos.getY(), eZ); blockpos1.getY() >= 0; blockpos1 = blockpos2) {
-                            blockpos2 = blockpos1.down();
-                            if (world.getBlockState(blockpos1).getBlock() == UGBlocks.UNDERGARDEN_PORTAL.get()) {
-                                for(blockpos2 = blockpos1.down(); world.getBlockState(blockpos2).getBlock() == UGBlocks.UNDERGARDEN_PORTAL.get(); blockpos2 = blockpos2.down()) {
-                                    blockpos1 = blockpos2;
-                                }
-
-                                double distance = blockpos1.distanceSq(pos);
-                                if (d0 < 0.0D || distance < d0) {
-                                    d0 = distance;
-                                    blockpos = blockpos1;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (blockpos == null) {
-                long factor = world.getGameTime();
-                this.columnMap.put(columnpos, factor);
-                return null;
-            }
-            else {
-                if (isFrame) {
-                    this.destinationCoordinateCache.put(columnpos, new UGTeleporter.PortalPosition(blockpos, world.getGameTime()));
-                    world.getChunkProvider().registerTicket(TicketType.PORTAL, new ChunkPos(blockpos), 3, new BlockPos(columnpos.x, blockpos.getY(), columnpos.z));
-                }
-
-                return new PortalInfo(new Vector3d(blockpos.getX(), blockpos.getY(), blockpos.getZ()), entity.getMotion(), entity.rotationYaw, entity.rotationPitch);
-            }
-        }
+    public Optional<TeleportationRepositioner.Result> getExistingPortal(BlockPos pos) {
+        PointOfInterestManager pointofinterestmanager = this.world.getPointOfInterestManager();
+        int i = 128;
+        pointofinterestmanager.ensureLoadedAndValid(this.world, pos, i);
+        Optional<PointOfInterest> optional = pointofinterestmanager.getInSquare((poiType) -> {
+            return poiType == UGPointOfInterests.UNDERGARDEN_PORTAL.get();
+        }, pos, i, PointOfInterestManager.Status.ANY).sorted(Comparator.<PointOfInterest>comparingDouble((poi) -> {
+            return poi.getPos().distanceSq(pos);
+        }).thenComparingInt((poi) -> {
+            return poi.getPos().getY();
+        })).filter((poi) -> {
+            return this.world.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS);
+        }).findFirst();
+        return optional.map((poi) -> {
+            BlockPos blockpos = poi.getPos();
+            this.world.getChunkProvider().registerTicket(TicketType.PORTAL, new ChunkPos(blockpos), 3, blockpos);
+            BlockState blockstate = this.world.getBlockState(blockpos);
+            return TeleportationRepositioner.findLargestRectangle(blockpos, blockstate.get(BlockStateProperties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, (posIn) -> {
+                return this.world.getBlockState(posIn) == blockstate;
+            });
+        });
     }
 
-    /**
-     * Create a portal at the teleport location.
-     */
-    public void makePortal(ServerWorld world, Entity entity) {
-        Random random = new Random(world.getSeed());
+    public Optional<TeleportationRepositioner.Result> makePortal(BlockPos pos, Direction.Axis axis) {
+        Direction direction = Direction.getFacingFromAxis(Direction.AxisDirection.POSITIVE, axis);
         double d0 = -1.0D;
-        int entityX = MathHelper.floor(entity.getPosX());
-        int entityY = MathHelper.floor(entity.getPosY());
-        int entityZ = MathHelper.floor(entity.getPosZ());
-        int xPos = entityX;
-        int yPos = entityY;
-        int zPos = entityZ;
-        int baseAxis = 0;
-        int randAxis = random.nextInt(4);
-        BlockPos.Mutable mutable = new BlockPos.Mutable();
+        BlockPos blockpos = null;
+        double d1 = -1.0D;
+        BlockPos blockpos1 = null;
+        WorldBorder worldborder = this.world.getWorldBorder();
+        int dimensionLogicalHeight = this.world.func_234938_ad_() - 1;
+        BlockPos.Mutable mutablePos = pos.toMutable();
 
-        for (int startX = entityX - 16; startX <= entityX + 16; ++startX) {
-            double ePosX = (double) startX + 0.5D - entity.getPosX();
+        for(BlockPos.Mutable blockpos$mutable1 : BlockPos.func_243514_a(pos, 16, Direction.EAST, Direction.SOUTH)) {
+            int j = Math.min(dimensionLogicalHeight, this.world.getHeight(Heightmap.Type.MOTION_BLOCKING, blockpos$mutable1.getX(), blockpos$mutable1.getZ()));
+            if (worldborder.contains(blockpos$mutable1) && worldborder.contains(blockpos$mutable1.move(direction, 1))) {
+                blockpos$mutable1.move(direction.getOpposite(), 1);
 
-            for (int startZ = entityZ - 16; startZ <= entityZ + 16; ++startZ) {
-                double ePosZ = (double) startZ + 0.5D - entity.getPosZ();
-
-                searchpos:
-                for (int startY = world.getHeight() - 1; startY >= 0; --startY) {
-                    if (world.isAirBlock(mutable.setPos(startX, startY, startZ))) {
-                        while (startY > 0 && world.isAirBlock(mutable.setPos(startX, startY - 1, startZ))) {
-                            --startY;
+                for(int l = j; l >= 0; --l) {
+                    blockpos$mutable1.setY(l);
+                    if (this.world.isAirBlock(blockpos$mutable1)) {
+                        int i1;
+                        for(i1 = l; l > 0 && this.world.isAirBlock(blockpos$mutable1.move(Direction.DOWN)); --l) {
                         }
 
-                        for (int k3 = randAxis; k3 < randAxis + 4; ++k3) {
-                            int l3 = k3 % 2;
-                            int i4 = 1 - l3;
-                            if (k3 % 4 >= 2) {
-                                l3 = -l3;
-                                i4 = -i4;
-                            }
+                        if (l + 4 <= dimensionLogicalHeight) {
+                            int j1 = i1 - l;
+                            if (j1 <= 0 || j1 >= 3) {
+                                blockpos$mutable1.setY(l);
+                                if (this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, 0)) {
+                                    double d2 = pos.distanceSq(blockpos$mutable1);
+                                    if (this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, -1) && this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, 1) && (d0 == -1.0D || d0 > d2)) {
+                                        d0 = d2;
+                                        blockpos = blockpos$mutable1.toImmutable();
+                                    }
 
-                            for (int j4 = 0; j4 < 3; ++j4) {
-                                for (int k4 = 0; k4 < 4; ++k4) {
-                                    for (int portalHeight = -1; portalHeight < 4; ++portalHeight) {
-                                        int sPosX = startX + (k4 - 1) * l3 + j4 * i4;
-                                        int sPosY = startY + portalHeight;
-                                        int sPosZ = startZ + (k4 - 1) * i4 - j4 * l3;
-                                        mutable.setPos(sPosX, sPosY, sPosZ);
-                                        if (portalHeight < 0 && !world.getBlockState(mutable).getMaterial().isSolid() || portalHeight >= 0 && !world.isAirBlock(mutable)) {
-                                            continue searchpos;
-                                        }
+                                    if (d0 == -1.0D && (d1 == -1.0D || d1 > d2)) {
+                                        d1 = d2;
+                                        blockpos1 = blockpos$mutable1.toImmutable();
                                     }
                                 }
                             }
-
-                            double ePosY = (double) startY + 0.5D - entity.getPosY();
-                            double eArea = ePosX * ePosX + ePosY * ePosY + ePosZ * ePosZ;
-                            if (d0 < 0.0D || eArea < d0) {
-                                d0 = eArea;
-                                xPos = startX;
-                                yPos = startY;
-                                zPos = startZ;
-                                baseAxis = k3 % 4;
-                            }
                         }
                     }
                 }
             }
         }
 
-        if (d0 < 0.0D) {
-            for (int startX2 = entityX - 16; startX2 <= entityX + 16; ++startX2) {
-                double ePosX2 = (double) startX2 + 0.5D - entity.getPosX();
+        if (d0 == -1.0D && d1 != -1.0D) {
+            blockpos = blockpos1;
+            d0 = d1;
+        }
 
-                for (int startZ2 = entityZ - 16; startZ2 <= entityZ + 16; ++startZ2) {
-                    double ePosZ2 = (double) startZ2 + 0.5D - entity.getPosZ();
+        if (d0 == -1.0D) {
+            blockpos = (new BlockPos(pos.getX(), MathHelper.clamp(pos.getY(), 70, this.world.func_234938_ad_() - 10), pos.getZ())).toImmutable();
+            Direction direction1 = direction.rotateY();
+            if (!worldborder.contains(blockpos)) {
+                return Optional.empty();
+            }
 
-                    label214:
-                    for (int startY2 = world.getHeight() - 1; startY2 >= 0; --startY2) {
-                        if (world.isAirBlock(mutable.setPos(startX2, startY2, startZ2))) {
-                            while (startY2 > 0 && world.isAirBlock(mutable.setPos(startX2, startY2 - 1, startZ2))) {
-                                --startY2;
-                            }
-
-                            for (int l7 = randAxis; l7 < randAxis + 2; ++l7) {
-                                int l8 = l7 % 2;
-                                int k9 = 1 - l8;
-
-                                for (int i10 = 0; i10 < 4; ++i10) {
-                                    for (int portalHeight2 = -1; portalHeight2 < 4; ++portalHeight2) {
-                                        int sPosX2 = startX2 + (i10 - 1) * l8;
-                                        int sPosY2 = startY2 + portalHeight2;
-                                        int sPosZ2 = startZ2 + (i10 - 1) * k9;
-                                        mutable.setPos(sPosX2, sPosY2, sPosZ2);
-                                        if (portalHeight2 < 0 && !world.getBlockState(mutable).getMaterial().isSolid() || portalHeight2 >= 0 && !world.isAirBlock(mutable)) {
-                                            continue label214;
-                                        }
-                                    }
-                                }
-
-                                double ePosY2 = (double) startY2 + 0.5D - entity.getPosY();
-                                double eArea2 = ePosX2 * ePosX2 + ePosY2 * ePosY2 + ePosZ2 * ePosZ2;
-                                if (d0 < 0.0D || eArea2 < d0) {
-                                    d0 = eArea2;
-                                    xPos = startX2;
-                                    yPos = startY2;
-                                    zPos = startZ2;
-                                    baseAxis = l7 % 2;
-                                }
-                            }
-                        }
+            for(int l1 = -1; l1 < 2; ++l1) {
+                for(int k2 = 0; k2 < 2; ++k2) {
+                    for(int i3 = -1; i3 < 3; ++i3) {
+                        BlockState blockstate1 = i3 < 0 ? Blocks.STONE_BRICKS.getDefaultState() : Blocks.AIR.getDefaultState();
+                        mutablePos.setAndOffset(blockpos, k2 * direction.getXOffset() + l1 * direction1.getXOffset(), i3, k2 * direction.getZOffset() + l1 * direction1.getZOffset());
+                        this.world.setBlockState(mutablePos, blockstate1);
                     }
                 }
             }
         }
 
-        int baseX = xPos;
-        int baseY = yPos;
-        int baseZ = zPos;
-        int xAxis = baseAxis % 2;
-        int zAxis = 1 - xAxis;
-        if (baseAxis % 4 >= 2) {
-            xAxis = -xAxis;
-            zAxis = -zAxis;
-        }
-
-        if (d0 < 0.0D) {
-            yPos = MathHelper.clamp(yPos, 70, world.getHeight() - 10);
-            baseY = yPos;
-
-            for (int j7 = -1; j7 <= 1; ++j7) {
-                for (int i8 = 1; i8 < 3; ++i8) {
-                    for (int i9 = -1; i9 < 3; ++i9) {
-                        int frameX = baseX + (i8 - 1) * xAxis + j7 * zAxis;
-                        int frameY = baseY + i9;
-                        int frameZ = baseZ + (i8 - 1) * zAxis - j7 * xAxis;
-                        boolean flag = i9 < 0;
-                        mutable.setPos(frameX, frameY, frameZ);
-                        world.setBlockState(mutable, flag ? Blocks.STONE_BRICKS.getDefaultState() : Blocks.AIR.getDefaultState());
-                    }
+        for(int k1 = -1; k1 < 3; ++k1) {
+            for(int i2 = -1; i2 < 4; ++i2) {
+                if (k1 == -1 || k1 == 2 || i2 == -1 || i2 == 3) {
+                    mutablePos.setAndOffset(blockpos, k1 * direction.getXOffset(), i2, k1 * direction.getZOffset());
+                    this.world.setBlockState(mutablePos, Blocks.STONE_BRICKS.getDefaultState(), 3);
                 }
             }
         }
 
-        for (int fWidth = -1; fWidth < 3; ++fWidth) {
-            for (int fHeight = -1; fHeight < 4; ++fHeight) {
-                if (fWidth == -1 || fWidth == 2 || fHeight == -1 || fHeight == 3) {
-                    mutable.setPos(baseX + fWidth * xAxis, baseY + fHeight, baseZ + fWidth * zAxis);
-                    world.setBlockState(mutable, Blocks.STONE_BRICKS.getDefaultState(), 3);
+        BlockState undergardenPortal = UGBlocks.UNDERGARDEN_PORTAL.get().getDefaultState().with(NetherPortalBlock.AXIS, axis);
+
+        for(int j2 = 0; j2 < 2; ++j2) {
+            for(int l2 = 0; l2 < 3; ++l2) {
+                mutablePos.setAndOffset(blockpos, j2 * direction.getXOffset(), l2, j2 * direction.getZOffset());
+                this.world.setBlockState(mutablePos, undergardenPortal, 18);
+            }
+        }
+
+        return Optional.of(new TeleportationRepositioner.Result(blockpos.toImmutable(), 2, 3));
+    }
+
+    private boolean checkRegionForPlacement(BlockPos originalPos, BlockPos.Mutable offsetPos, Direction directionIn, int offsetScale) {
+        Direction direction = directionIn.rotateY();
+
+        for(int i = -1; i < 3; ++i) {
+            for(int j = -1; j < 4; ++j) {
+                offsetPos.setAndOffset(originalPos, directionIn.getXOffset() * i + direction.getXOffset() * offsetScale, j, directionIn.getZOffset() * i + direction.getZOffset() * offsetScale);
+                if (j < 0 && !this.world.getBlockState(offsetPos).getMaterial().isSolid()) {
+                    return false;
+                }
+
+                if (j >= 0 && !this.world.isAirBlock(offsetPos)) {
+                    return false;
                 }
             }
         }
 
-        BlockState portal = UGBlocks.UNDERGARDEN_PORTAL.get().getDefaultState().with(UndergardenPortalBlock.AXIS, xAxis == 0 ? Direction.Axis.Z : Direction.Axis.X);
+        return true;
+    }
 
-        for (int pWidth = 0; pWidth < 2; ++pWidth) {
-            for (int pHeight = 0; pHeight < 3; ++pHeight) {
-                mutable.setPos(baseX + pWidth * xAxis, baseY + pHeight, baseZ + pWidth * zAxis);
-                world.setBlockState(mutable, portal, 18);
-            }
-        }
-
+    @Override
+    public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
+        return repositionEntity.apply(false);
     }
 
     @Nullable
     @Override
     public PortalInfo getPortalInfo(Entity entity, ServerWorld destWorld, Function<ServerWorld, PortalInfo> defaultPortalInfo) {
-        WorldBorder worldborder = destWorld.getWorldBorder();
-        double d0 = Math.max(-2.9999872E7D, worldborder.minX() + 16.0D);
-        double d1 = Math.max(-2.9999872E7D, worldborder.minZ() + 16.0D);
-        double d2 = Math.min(2.9999872E7D, worldborder.maxX() - 16.0D);
-        double d3 = Math.min(2.9999872E7D, worldborder.maxZ() - 16.0D);
-        double d4 = DimensionType.getCoordinateDifference(entity.world.getDimensionType(), destWorld.getDimensionType());
-        BlockPos blockpos1 = new BlockPos(MathHelper.clamp(entity.getPosX() * d4, d0, d2), entity.getPosY(), MathHelper.clamp(entity.getPosZ() * d4, d1, d3));
-        if (!placeInPortal(destWorld, entity, entity.rotationYaw)) {
-            makePortal(destWorld, entity);
-            placeInPortal(destWorld, entity, entity.rotationYaw);
+        boolean destinationIsUG = destWorld.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD;
+        if (entity.world.getDimensionKey() != UGDimensions.UNDERGARDEN_WORLD && !destinationIsUG) {
+            return null;
         }
-        return this.placeInExistingPortal(destWorld, entity, blockpos1);
-    }
+        else {
+            WorldBorder border = destWorld.getWorldBorder();
+            double minX = Math.max(-2.9999872E7D, border.minX() + 16.0D);
+            double minZ = Math.max(-2.9999872E7D, border.minZ() + 16.0D);
+            double maxX = Math.min(2.9999872E7D, border.maxX() - 16.0D);
+            double maxZ = Math.min(2.9999872E7D, border.maxZ() - 16.0D);
+            double coordinateDifference = DimensionType.getCoordinateDifference(entity.world.getDimensionType(), destWorld.getDimensionType());
+            BlockPos blockpos = new BlockPos(MathHelper.clamp(entity.getPosX() * coordinateDifference, minX, maxX), entity.getPosY(), MathHelper.clamp(entity.getPosZ() * coordinateDifference, minZ, maxZ));
+            return this.func_241830_a(entity, blockpos).map((result) -> {
+                BlockState blockstate = entity.world.getBlockState(entity.field_242271_ac);
+                Direction.Axis axis;
+                Vector3d vector3d;
+                if (blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
+                    axis = blockstate.get(BlockStateProperties.HORIZONTAL_AXIS);
+                    TeleportationRepositioner.Result rectangle = TeleportationRepositioner.findLargestRectangle(entity.field_242271_ac, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.world.getBlockState(pos) == blockstate);
+                    vector3d = entity.func_241839_a(axis, rectangle);
+                } else {
+                    axis = Direction.Axis.X;
+                    vector3d = new Vector3d(0.5D, 0.0D, 0.0D);
+                }
 
-    @Override
-    public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
-        Entity newEntity = repositionEntity.apply(false);
-
-        if (!placeInPortal(destWorld, newEntity, newEntity.rotationYaw)) {
-            makePortal(destWorld, newEntity);
-            placeInPortal(destWorld, newEntity, newEntity.rotationYaw);
+                return PortalSize.func_242963_a(destWorld, result, axis, vector3d, entity.getSize(entity.getPose()), entity.getMotion(), entity.rotationYaw, entity.rotationPitch);
+            }).orElse(null);
         }
-
-        return newEntity;
     }
 
-    @Override
-    public boolean isVanilla() {
-        return false;
-    }
+    protected Optional<TeleportationRepositioner.Result> func_241830_a(Entity entity, BlockPos pos) {
+        Optional<TeleportationRepositioner.Result> optional = this.getExistingPortal(pos);
+        if (optional.isPresent()) {
+            return optional;
+        } else {
+            Direction.Axis direction$axis = this.world.getBlockState(entity.field_242271_ac).func_235903_d_(UndergardenPortalBlock.AXIS).orElse(Direction.Axis.X);
+            Optional<TeleportationRepositioner.Result> optional1 = this.makePortal(pos, direction$axis);
+            if (!optional1.isPresent()) {
+                //LOGGER.error("Unable to create a portal, likely target out of worldborder");
+            }
 
-    static class PortalPosition {
-        public final BlockPos pos;
-        public long lastUpdateTime;
-
-        public PortalPosition(BlockPos pos, long time) {
-            this.pos = pos;
-            this.lastUpdateTime = time;
+            return optional1;
         }
     }
 }
