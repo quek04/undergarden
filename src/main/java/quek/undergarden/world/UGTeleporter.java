@@ -36,25 +36,19 @@ public class UGTeleporter implements ITeleporter {
     }
 
     public Optional<TeleportationRepositioner.Result> getExistingPortal(BlockPos pos) {
-        PointOfInterestManager pointofinterestmanager = this.world.getPointOfInterestManager();
-        int i = 128;
-        pointofinterestmanager.ensureLoadedAndValid(this.world, pos, i);
-        Optional<PointOfInterest> optional = pointofinterestmanager.getInSquare((poiType) -> {
-            return poiType == UGPointOfInterests.UNDERGARDEN_PORTAL.get();
-        }, pos, i, PointOfInterestManager.Status.ANY).sorted(Comparator.<PointOfInterest>comparingDouble((poi) -> {
-            return poi.getPos().distanceSq(pos);
-        }).thenComparingInt((poi) -> {
-            return poi.getPos().getY();
-        })).filter((poi) -> {
-            return this.world.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS);
-        }).findFirst();
+        PointOfInterestManager poiManager = this.world.getPointOfInterestManager();
+        poiManager.ensureLoadedAndValid(this.world, pos, 128);
+        Optional<PointOfInterest> optional = poiManager.getInSquare((poiType) ->
+                poiType == UGPointOfInterests.UNDERGARDEN_PORTAL.get(), pos, 128, PointOfInterestManager.Status.ANY).sorted(Comparator.<PointOfInterest>comparingDouble((poi) ->
+                poi.getPos().distanceSq(pos)).thenComparingInt((poi) ->
+                poi.getPos().getY())).filter((poi) ->
+                this.world.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();
         return optional.map((poi) -> {
             BlockPos blockpos = poi.getPos();
             this.world.getChunkProvider().registerTicket(TicketType.PORTAL, new ChunkPos(blockpos), 3, blockpos);
             BlockState blockstate = this.world.getBlockState(blockpos);
-            return TeleportationRepositioner.findLargestRectangle(blockpos, blockstate.get(BlockStateProperties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, (posIn) -> {
-                return this.world.getBlockState(posIn) == blockstate;
-            });
+            return TeleportationRepositioner.findLargestRectangle(blockpos, blockstate.get(BlockStateProperties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, (posIn) ->
+                    this.world.getBlockState(posIn) == blockstate);
         });
     }
 
@@ -166,11 +160,6 @@ public class UGTeleporter implements ITeleporter {
         return true;
     }
 
-    @Override
-    public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
-        return repositionEntity.apply(false);
-    }
-
     @Nullable
     @Override
     public PortalInfo getPortalInfo(Entity entity, ServerWorld destWorld, Function<ServerWorld, PortalInfo> defaultPortalInfo) {
@@ -186,7 +175,7 @@ public class UGTeleporter implements ITeleporter {
             double maxZ = Math.min(2.9999872E7D, border.maxZ() - 16.0D);
             double coordinateDifference = DimensionType.getCoordinateDifference(entity.world.getDimensionType(), destWorld.getDimensionType());
             BlockPos blockpos = new BlockPos(MathHelper.clamp(entity.getPosX() * coordinateDifference, minX, maxX), entity.getPosY(), MathHelper.clamp(entity.getPosZ() * coordinateDifference, minZ, maxZ));
-            return this.func_241830_a(entity, blockpos).map((result) -> {
+            return this.getOrMakePortal(entity, blockpos).map((result) -> {
                 BlockState blockstate = entity.world.getBlockState(entity.field_242271_ac);
                 Direction.Axis axis;
                 Vector3d vector3d;
@@ -204,18 +193,19 @@ public class UGTeleporter implements ITeleporter {
         }
     }
 
-    protected Optional<TeleportationRepositioner.Result> func_241830_a(Entity entity, BlockPos pos) {
-        Optional<TeleportationRepositioner.Result> optional = this.getExistingPortal(pos);
-        if (optional.isPresent()) {
-            return optional;
-        } else {
-            Direction.Axis direction$axis = this.world.getBlockState(entity.field_242271_ac).func_235903_d_(UndergardenPortalBlock.AXIS).orElse(Direction.Axis.X);
-            Optional<TeleportationRepositioner.Result> optional1 = this.makePortal(pos, direction$axis);
-            if (!optional1.isPresent()) {
+    protected Optional<TeleportationRepositioner.Result> getOrMakePortal(Entity entity, BlockPos pos) {
+        Optional<TeleportationRepositioner.Result> existingPortal = this.getExistingPortal(pos);
+        if(existingPortal.isPresent()) {
+            return existingPortal;
+        }
+        else {
+            Direction.Axis portalAxis = this.world.getBlockState(entity.field_242271_ac).func_235903_d_(UndergardenPortalBlock.AXIS).orElse(Direction.Axis.X);
+            Optional<TeleportationRepositioner.Result> makePortal = this.makePortal(pos, portalAxis);
+            if (!makePortal.isPresent()) {
                 //LOGGER.error("Unable to create a portal, likely target out of worldborder");
             }
 
-            return optional1;
+            return makePortal;
         }
     }
 }

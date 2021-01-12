@@ -114,23 +114,24 @@ public class UndergardenPortalBlock extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entity) {
-        if (!entity.isPassenger() && !entity.isBeingRidden() && entity.isNonBoss()) {
-            if (entity.func_242280_ah()) {
+        if(!entity.isPassenger() && !entity.isBeingRidden() && entity.isNonBoss()) {
+            if(entity.func_242280_ah()) {
                 entity.func_242279_ag();
-            } else {
-                if (!entity.world.isRemote && !pos.equals(entity.field_242271_ac)) {
+            }
+            else {
+                if(!entity.world.isRemote && !pos.equals(entity.field_242271_ac)) {
                     entity.field_242271_ac = pos.toImmutable();
                 }
-                World serverworld = entity.world;
-                if(serverworld != null) {
-                    MinecraftServer minecraftserver = serverworld.getServer();
-                    RegistryKey<World> where2go = entity.world.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD ? World.OVERWORLD : UGDimensions.UNDERGARDEN_WORLD;
+                World entityWorld = entity.world;
+                if(entityWorld != null) {
+                    MinecraftServer minecraftserver = entityWorld.getServer();
+                    RegistryKey<World> destination = entity.world.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD ? World.OVERWORLD : UGDimensions.UNDERGARDEN_WORLD;
                     if(minecraftserver != null) {
-                        ServerWorld destination = minecraftserver.getWorld(where2go);
-                        if (destination != null && minecraftserver.getAllowNether() && !entity.isPassenger()) {
+                        ServerWorld destinationWorld = minecraftserver.getWorld(destination);
+                        if(destinationWorld != null && minecraftserver.getAllowNether() && !entity.isPassenger()) {
                             entity.world.getProfiler().startSection("undergarden_portal");
                             entity.func_242279_ag();
-                            entity.changeDimension(destination, new UGTeleporter(destination));
+                            entity.changeDimension(destinationWorld, new UGTeleporter(destinationWorld));
                             entity.world.getProfiler().endSection();
                         }
                     }
