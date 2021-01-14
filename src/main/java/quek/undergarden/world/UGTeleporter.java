@@ -129,7 +129,7 @@ public class UGTeleporter implements ITeleporter {
             }
         }
 
-        BlockState undergardenPortal = UGBlocks.UNDERGARDEN_PORTAL.get().getDefaultState().with(NetherPortalBlock.AXIS, axis);
+        BlockState undergardenPortal = UGBlocks.UNDERGARDEN_PORTAL.get().getDefaultState().with(UndergardenPortalBlock.AXIS, axis);
 
         for(int j2 = 0; j2 < 2; ++j2) {
             for(int l2 = 0; l2 < 3; ++l2) {
