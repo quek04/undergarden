@@ -51,10 +51,10 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         return world.hasBlockState(pos, (state) -> state.isAir() || state.isIn(BlockTags.LEAVES));
     }
 
-    private static boolean isDeepturf(IWorldGenerationBaseReader world, BlockPos pos) {
+    private static boolean isDirtOrFarmland(IWorldGenerationBaseReader world, BlockPos pos) {
         return world.hasBlockState(pos, (state) -> {
             Block block = state.getBlock();
-            return block == UGBlocks.DEEPTURF_BLOCK.get();
+            return isDirt(block) || block == Blocks.FARMLAND;
         });
     }
 
@@ -83,7 +83,7 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         blockpos = positionIn;
 
         if (blockpos.getY() >= 1 && blockpos.getY() + trunk + 1 <= 256) {
-            if (!isDeepturf(generationReader, blockpos.down()) || isWater(generationReader, positionIn)) {
+            if (!isDirtOrFarmland(generationReader, blockpos.down()) || isWater(generationReader, positionIn)) {
                 return false;
             }
             else {
