@@ -22,13 +22,15 @@ public class UGParticleTypes {
 
     public static final RegistryObject<BasicParticleType> SHARD = PARTICLES.register("shard", () -> new BasicParticleType(false));
     public static final RegistryObject<BasicParticleType> GRONGLE_SPORE = PARTICLES.register("grongle_spore", () -> new BasicParticleType(false));
+    public static final RegistryObject<BasicParticleType> UNDERGARDEN_PORTAL = PARTICLES.register("undergarden_portal", () -> new BasicParticleType(false));
 
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void registerParticleFactories(ParticleFactoryRegisterEvent event) {
         ParticleManager particleManager = Minecraft.getInstance().particles;
 
-        particleManager.registerFactory(UGParticleTypes.SHARD.get(), ShardParticle.Factory::new);
-        particleManager.registerFactory(UGParticleTypes.GRONGLE_SPORE.get(), GrongleSporeParticle.Factory::new);
+        particleManager.registerFactory(SHARD.get(), ShardParticle.Factory::new);
+        particleManager.registerFactory(GRONGLE_SPORE.get(), GrongleSporeParticle.Factory::new);
+        particleManager.registerFactory(UNDERGARDEN_PORTAL.get(), UndergardenPortalParticle.Factory::new);
     }
 }

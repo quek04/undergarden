@@ -9,17 +9,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GrongleSporeParticle extends SpriteTexturedParticle {
 
-    private GrongleSporeParticle(ClientWorld world, double x, double y, double z) {
-        super(world, x, y - 0.125D, z);
-        this.particleRed = 0.4F;
-        this.particleGreen = 0.4F;
-        this.particleBlue = 0.7F;
-        this.setSize(0.01F, 0.01F);
-        this.particleScale *= this.rand.nextFloat() * 0.6F + 0.2F;
-        this.maxAge = (int)(16.0D / (Math.random() * 0.8D + 0.2D));
-        this.canCollide = false;
-    }
-
     private GrongleSporeParticle(ClientWorld world, double x, double y, double z, double motionX, double motionY, double motionZ) {
         super(world, x, y - 0.125D, z, motionX, motionY, motionZ);
         this.setSize(0.01F, 0.01F);

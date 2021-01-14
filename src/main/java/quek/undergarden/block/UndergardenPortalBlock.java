@@ -27,10 +27,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGDimensions;
-import quek.undergarden.registry.UGSoundEvents;
-import quek.undergarden.registry.UGTags;
+import quek.undergarden.registry.*;
 import quek.undergarden.world.UGTeleporter;
 
 import javax.annotation.Nullable;
@@ -148,22 +145,22 @@ public class UndergardenPortalBlock extends Block {
         }
 
         for(int i = 0; i < 4; ++i) {
-            double d0 = (double)pos.getX() + (double)rand.nextFloat();
-            double d1 = (double)pos.getY() + (double)rand.nextFloat();
-            double d2 = (double)pos.getZ() + (double)rand.nextFloat();
-            double d3 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
-            double d4 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
-            double d5 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            double x = (double)pos.getX() + rand.nextDouble();
+            double y = (double)pos.getY() + rand.nextDouble();
+            double z = (double)pos.getZ() + rand.nextDouble();
+            double xSpeed = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            double ySpeed = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            double zSpeed = ((double)rand.nextFloat() - 0.5D) * 0.5D;
             int j = rand.nextInt(2) * 2 - 1;
-            if (worldIn.getBlockState(pos.west()).getBlock() != this && worldIn.getBlockState(pos.east()).getBlock() != this) {
-                d0 = (double)pos.getX() + 0.5D + 0.25D * (double)j;
-                d3 = rand.nextFloat() * 2.0F * (float)j;
+            if (!worldIn.getBlockState(pos.west()).isIn(this) && !worldIn.getBlockState(pos.east()).isIn(this)) {
+                x = (double)pos.getX() + 0.5D + 0.25D * (double)j;
+                xSpeed = rand.nextFloat() * 2.0F * (float)j;
             } else {
-                d2 = (double)pos.getZ() + 0.5D + 0.25D * (double)j;
-                d5 = rand.nextFloat() * 2.0F * (float)j;
+                z = (double)pos.getZ() + 0.5D + 0.25D * (double)j;
+                zSpeed = rand.nextFloat() * 2.0F * (float)j;
             }
 
-            worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, d3, d4, d5);
+            worldIn.addParticle(UGParticleTypes.UNDERGARDEN_PORTAL.get(), x, y, z, xSpeed, ySpeed, zSpeed);
         }
 
     }
