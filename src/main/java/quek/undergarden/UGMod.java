@@ -1,8 +1,10 @@
 package quek.undergarden;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import net.minecraft.block.*;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ComposterBlock;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.dispenser.*;
