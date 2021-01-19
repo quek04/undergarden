@@ -1,12 +1,11 @@
 {
   "type": "undergarden:undergarden",
   "generator": {
-    "type": "minecraft:noise",
-    "seed": 0,
+    "type": "undergarden:chunk_generator",
     "settings": "undergarden:undergarden",
+
     "biome_source": {
-      "seed": 0,
-      "type": "minecraft:multi_noise",
+      "type": "undergarden:biome_provider",
       "preset": "undergarden",
       "biomes": [
         {

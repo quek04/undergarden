@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "package": "quek.undergarden.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "undergarden.refmap.json",
+  "mixins": [
+    "DimensionGeneratorSettingsMixin"
+  ],
+  "minVersion": "0.8"
+}

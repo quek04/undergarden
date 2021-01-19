@@ -86,6 +86,7 @@ public class UGMod {
 			UGStructures.registerConfiguredStructures();
 			UGCriteria.register();
 			UGBiomes.toDictionary();
+			UGDimensions.registerDimensionStuff();
 
 			AxeItem.BLOCK_STRIPPING_MAP = Maps.newHashMap(AxeItem.BLOCK_STRIPPING_MAP);
 			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
