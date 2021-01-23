@@ -9,10 +9,10 @@
   "effects": {
     "sky_color": 2565927,
     "fog_color": 2565927,
-    "foliage_color": 16777215,
-    "grass_color": 16777215,
-    "water_color": 342306,
-    "water_fog_color": 332810,
+    "foliage_color": 14609908,
+    "grass_color": 14609908,
+    "water_color": 14609908,
+    "water_fog_color": 14609908,
     "grass_color_modifier": "none",
     "particle": {
       "options": {
