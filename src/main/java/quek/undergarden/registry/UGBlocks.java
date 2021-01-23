@@ -119,7 +119,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(2)));
     public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(3)));
     public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(1)));
-    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(2)));
+    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(SHIVERSTONE.get()).harvestLevel(2)));
     public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(3)));
     public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(TREMBLECRUST.get()).harvestLevel(4)));
     public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(4)));
