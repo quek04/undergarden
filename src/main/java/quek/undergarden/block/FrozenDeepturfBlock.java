@@ -4,12 +4,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGTags;
 
 import java.util.Random;
 
@@ -39,7 +38,7 @@ public class FrozenDeepturfBlock extends UGPlantBlock {
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (!worldIn.isRemote && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
+        if (!entityIn.getType().isContained(UGTags.Entities.ROTSPAWN) && !worldIn.isRemote && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
             double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
             double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);
             if (d0 >= (double) 0.003F || d1 >= (double) 0.003F) {
