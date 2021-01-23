@@ -2,7 +2,7 @@
   "type": "undergarden:eldergarden",
   "config": {
     "top_material": {
-      "Name": "undergarden:deepturf_block",
+      "Name": "undergarden:frozen_deepturf_block",
       "Properties": {
         "snowy": "false"
       }

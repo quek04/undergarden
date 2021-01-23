@@ -15,6 +15,6 @@ public class UGDoublePlantBlock extends DoublePlantBlock {
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.isIn(UGBlocks.DEEPTURF_BLOCK.get()) || state.isIn(UGBlocks.DEEPSOIL.get());
+        return state.isIn(UGBlocks.DEEPTURF_BLOCK.get()) || state.isIn(UGBlocks.DEEPSOIL.get()) || state.isIn(UGBlocks.FROZEN_DEEPTURF_BLOCK.get());
     }
 }

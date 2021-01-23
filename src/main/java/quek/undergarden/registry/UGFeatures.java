@@ -98,10 +98,15 @@ public class UGFeatures {
                         new SimpleBlockStateProvider(UGBlocks.ASHEN_DEEPTURF.get().getDefaultState()), new SimpleBlockPlacer()))
                         .tries(64).whitelist(ImmutableSet.of(UGBlocks.ASHEN_DEEPTURF_BLOCK.get())).func_227317_b_().build()
         );
+        public static final ConfiguredFeature<?, ?> FROZEN_DEEPTURF_PATCH = Feature.RANDOM_PATCH.withConfiguration(
+                (new BlockClusterFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(UGBlocks.FROZEN_DEEPTURF.get().getDefaultState()), new SimpleBlockPlacer()))
+                        .tries(64).whitelist(ImmutableSet.of(UGBlocks.FROZEN_DEEPTURF_BLOCK.get())).func_227317_b_().build()
+        );
         public static final ConfiguredFeature<?, ?> SHIMMERWEED_PATCH = Feature.RANDOM_PATCH.withConfiguration(
                 (new BlockClusterFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UGBlocks.SHIMMERWEED.get().getDefaultState()), new SimpleBlockPlacer()))
-                        .tries(32).whitelist(ImmutableSet.of(UGBlocks.DEEPTURF_BLOCK.get())).func_227317_b_().build()
+                        .tries(32).whitelist(ImmutableSet.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get())).func_227317_b_().build()
         );
         public static final ConfiguredFeature<?, ?> PEBBLE_PATCH = Feature.RANDOM_PATCH.withConfiguration(
                 (new BlockClusterFeatureConfig.Builder(
@@ -121,7 +126,7 @@ public class UGFeatures {
         public static final ConfiguredFeature<?, ?> TALL_SHIMMERWEED_PATCH = Feature.RANDOM_PATCH.withConfiguration(
                 (new BlockClusterFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UGBlocks.TALL_SHIMMERWEED.get().getDefaultState()), new DoublePlantBlockPlacer()))
-                        .tries(16).whitelist(ImmutableSet.of(UGBlocks.DEEPTURF_BLOCK.get())).func_227317_b_().build()
+                        .tries(16).whitelist(ImmutableSet.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get())).func_227317_b_().build()
         );
         public static final ConfiguredFeature<?, ?> INDIGO_MUSHROOM_PATCH = Feature.RANDOM_PATCH.withConfiguration(
                 (new BlockClusterFeatureConfig.Builder(
@@ -274,6 +279,7 @@ public class UGFeatures {
         register("lilypads", ConfiguredFeatures.LILYPADS.range(256).func_242731_b(5));
         register("deepturf_patch", ConfiguredFeatures.DEEPTURF_PATCH.range(256).square().func_242731_b(100));
         register("ashen_patch", ConfiguredFeatures.ASHEN_DEEPTURF_PATCH.range(256).square().func_242731_b(100));
+        register("frozen_patch", ConfiguredFeatures.FROZEN_DEEPTURF_PATCH.range(256).square().func_242731_b(100));
         register("shimmerweed_patch", ConfiguredFeatures.SHIMMERWEED_PATCH.range(256).square().func_242731_b(75));
         register("pebble_patch", ConfiguredFeatures.PEBBLE_PATCH.range(256).square().func_242731_b(75));
         register("ditchbulb_patch", ConfiguredFeatures.DITCHBULB_PATCH.range(256).square().func_242731_b(50));

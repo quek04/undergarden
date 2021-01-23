@@ -81,6 +81,7 @@ public class UGLang extends LanguageProvider {
 
         addBlock(UGBlocks.DEEPTURF_BLOCK, "Deepturf Block");
         addBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK, "Ashen Deepturf Block");
+        addBlock(UGBlocks.FROZEN_DEEPTURF_BLOCK, "Frozen Deepturf Block");
         addBlock(UGBlocks.DEEPSOIL, "Deepsoil");
         addBlock(UGBlocks.COARSE_DEEPSOIL, "Coarse Deepsoil");
         addBlock(UGBlocks.DEEPSOIL_FARMLAND, "Deepsoil Farmland");
@@ -91,6 +92,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.BLISTERBERRY_BUSH, "Blisterberry Bush");
         addBlock(UGBlocks.DEEPTURF, "Deepturf");
         addBlock(UGBlocks.ASHEN_DEEPTURF, "Ashen Deepturf");
+        addBlock(UGBlocks.FROZEN_DEEPTURF, "Frozen Deepturf");
         addBlock(UGBlocks.TALL_DEEPTURF, "Tall Deepturf");
         addBlock(UGBlocks.SHIMMERWEED, "Shimmerweed");
         addBlock(UGBlocks.TALL_SHIMMERWEED, "Tall Shimmerweed");

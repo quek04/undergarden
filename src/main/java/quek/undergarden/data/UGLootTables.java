@@ -212,6 +212,8 @@ public class UGLootTables extends LootTableProvider {
             registerFlowerPot(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
             registerFlowerPot(UGBlocks.POTTED_GRONGLET.get());
             registerFlowerPot(UGBlocks.POTTED_DITCHBULB.get());
+            dropWithSilk(UGBlocks.FROZEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
+            this.registerLootTable(UGBlocks.FROZEN_DEEPTURF.get(), BlockLootTables::onlyWithShears);
         }
 
         @Override

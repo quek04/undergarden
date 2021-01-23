@@ -62,7 +62,6 @@ public class BlisterberryBushBlock extends UGBushBlock implements IGrowable {
                     entityIn.attackEntityFrom(DamageSource.GENERIC, 2.0F);
                 }
             }
-
         }
     }
 

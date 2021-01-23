@@ -67,6 +67,7 @@ public class UGBlocks {
     //terrain
     public static final RegistryObject<Block> DEEPTURF_BLOCK = register("deepturf_block", () -> new DeepturfBlock(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> ASHEN_DEEPTURF_BLOCK = register("ashen_deepturf_block", () -> new Block(AbstractBlock.Properties.from(DEEPTURF_BLOCK.get())));
+    public static final RegistryObject<Block> FROZEN_DEEPTURF_BLOCK = register("frozen_deepturf_block", () -> new Block(AbstractBlock.Properties.from(DEEPTURF_BLOCK.get())));
     public static final RegistryObject<Block> DEEPSOIL = register("deepsoil", () -> new Block(AbstractBlock.Properties.from(DEEPTURF_BLOCK.get()).sound(SoundType.GROUND)));
     public static final RegistryObject<Block> COARSE_DEEPSOIL = register("coarse_deepsoil", () -> new Block(AbstractBlock.Properties.from(DEEPSOIL.get())));
     public static final RegistryObject<Block> DEEPSOIL_FARMLAND = register("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(AbstractBlock.Properties.from(Blocks.FARMLAND)));
@@ -78,6 +79,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> BLISTERBERRY_BUSH = BLOCKS.register("blisterberry_bush", () -> new BlisterberryBushBlock(AbstractBlock.Properties.from(Blocks.SWEET_BERRY_BUSH).setLightLevel((state) -> 6)));
     public static final RegistryObject<Block> DEEPTURF = register("deepturf", () -> new UGPlantBlock(AbstractBlock.Properties.from(Blocks.GRASS)));
     public static final RegistryObject<Block> ASHEN_DEEPTURF = register("ashen_deepturf", () -> new AshenTallDeepturfBlock(AbstractBlock.Properties.from(Blocks.GRASS)));
+    public static final RegistryObject<Block> FROZEN_DEEPTURF = register("frozen_deepturf", () -> new FrozenDeepturfBlock(AbstractBlock.Properties.from(Blocks.GRASS)));
     public static final RegistryObject<Block> TALL_DEEPTURF = register("tall_deepturf", () -> new UGDoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS)));
     public static final RegistryObject<Block> SHIMMERWEED = register("shimmerweed", () -> new UGPlantBlock(AbstractBlock.Properties.from(Blocks.GRASS).setLightLevel((state) -> 12)));
     public static final RegistryObject<Block> TALL_SHIMMERWEED = register("tall_shimmerweed", () -> new UGDoublePlantBlock(AbstractBlock.Properties.from(Blocks.TALL_GRASS).setLightLevel((state) -> 14)));
