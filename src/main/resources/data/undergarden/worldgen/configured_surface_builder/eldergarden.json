@@ -4,7 +4,7 @@
     "top_material": {
       "Name": "undergarden:deepturf_block",
       "Properties": {
-        "snowy": "true"
+        "snowy": "false"
       }
     },
     "under_material": {

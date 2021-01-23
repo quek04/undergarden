@@ -9,8 +9,8 @@
   "effects": {
     "sky_color": 2565927,
     "fog_color": 2565927,
-    "foliage_color": 7568503,
-    "grass_color": 7568503,
+    "foliage_color": 16777215,
+    "grass_color": 16777215,
     "water_color": 342306,
     "water_fog_color": 332810,
     "grass_color_modifier": "none",
@@ -64,6 +64,9 @@
       "undergarden:ice_patch"
     ],
     [
+      "undergarden:deepturf_patch",
+      "undergarden:shimmerweed_patch",
+      "undergarden:tall_shimmerweed_patch",
       "undergarden:indigo_patch",
       "undergarden:veil_patch",
       "undergarden:ink_patch",

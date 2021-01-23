@@ -55,7 +55,7 @@ public class EldergardenSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConf
 
                     i = basin;
                     if (y >= sealevel - 1) {
-                        chunkIn.setBlockState(pos.up(1), Blocks.SNOW.getDefaultState(), false);
+                        //chunkIn.setBlockState(pos.up(1), Blocks.SNOW.getDefaultState(), false);
                         chunkIn.setBlockState(pos, topBlock, false);
                     } else if (y < sealevel - 7 - basin) {
                         topBlock = Blocks.AIR.getDefaultState();
