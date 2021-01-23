@@ -32,7 +32,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> CLOGGRUM_BARS = register("cloggrum_bars", () -> new PaneBlock(AbstractBlock.Properties.from(Blocks.IRON_BARS)));
 
     //depthrock
-    public static final RegistryObject<Block> DEPTHROCK = register("depthrock", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE).sound(SoundType.BASALT).harvestLevel(1).setRequiresTool()));
+    public static final RegistryObject<Block> DEPTHROCK = register("depthrock", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE).sound(SoundType.BASALT).setRequiresTool()));
     public static final RegistryObject<Block> DEPTHROCK_BRICKS = register("depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(DEPTHROCK.get())));
     public static final RegistryObject<Block> CRACKED_DEPTHROCK_BRICKS = register("cracked_depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(DEPTHROCK.get())));
     public static final RegistryObject<Block> CHISELED_DEPTHROCK_BRICKS = register("chiseled_depthrock_bricks", () -> new Block(AbstractBlock.Properties.from(DEPTHROCK.get())));
@@ -46,7 +46,7 @@ public class UGBlocks {
     public static final RegistryObject<PressurePlateBlock> DEPTHROCK_PRESSURE_PLATE = register("depthrock_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.from(UGBlocks.DEPTHROCK.get()).notSolid().doesNotBlockMovement()));
 
     //shiverstone
-    public static final RegistryObject<Block> SHIVERSTONE = register("shiverstone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).harvestLevel(2).setRequiresTool().slipperiness(0.98F)));
+    public static final RegistryObject<Block> SHIVERSTONE = register("shiverstone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 12F).sound(SoundType.NETHER_BRICK).setRequiresTool().slipperiness(0.98F)));
     public static final RegistryObject<Block> SHIVERSTONE_BRICKS = register("shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(SHIVERSTONE.get())));
     public static final RegistryObject<Block> CRACKED_SHIVERSTONE_BRICKS = register("cracked_shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(SHIVERSTONE.get())));
     public static final RegistryObject<Block> CHISELED_SHIVERSTONE_BRICKS = register("chiseled_shiverstone_bricks", () -> new Block(AbstractBlock.Properties.from(SHIVERSTONE.get())));
