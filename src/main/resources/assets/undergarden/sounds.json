@@ -20,6 +20,13 @@
       }
     ]
   },
+  "ambient.frost_ambience": {
+    "sounds": [
+      {
+        "name": "undergarden:ambient/frost_ambience", "stream": false
+      }
+    ]
+  },
   "ambient.abyss_addition": {
     "sounds": [
       "undergarden:ambient/additions/abyss_1",

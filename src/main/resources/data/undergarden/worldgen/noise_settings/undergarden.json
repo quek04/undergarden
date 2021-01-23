@@ -43,7 +43,7 @@
     "density_factor": 0,
     "density_offset": 0.019921875,
     "random_density_offset": false,
-    "simplex_surface_noise": false,
+    "simplex_surface_noise": true,
     "island_noise_override": false,
     "amplified": false
   }
