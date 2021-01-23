@@ -12,7 +12,7 @@ public class UGSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, UGMod.MODID);
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_AMBIENCE = register("ambient.undergarden_ambience");
-    public static final RegistryObject<SoundEvent> OTHERSIDE_AMBIENCE = register("ambient.otherside_ambience");
+    public static final RegistryObject<SoundEvent> ABYSS_AMBIENCE = register("ambient.abyss_ambience");
     public static final RegistryObject<SoundEvent> SPIRES_AMBIENCE = register("ambient.spires_ambience");
 
     public static final RegistryObject<SoundEvent> ABYSS_AMBIENT_ADDITION = register("ambient.abyss_addition");
@@ -21,6 +21,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> FOREST_AMBIENT_ADDITION = register("ambient.forest_addition");
     public static final RegistryObject<SoundEvent> GRONGLE_AMBIENT_ADDITION = register("ambient.grongle_addition");
     public static final RegistryObject<SoundEvent> ROCKY_AMBIENT_ADDITION = register("ambient.rocky_addition");
+    public static final RegistryObject<SoundEvent> SPIRES_AMBIENT_ADDITION = register("ambient.spires_addition");
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_MUSIC = register("music.undergarden_music");
     public static final RegistryObject<SoundEvent> MAMMOTH_DISC = register("music.disc.mammoth");

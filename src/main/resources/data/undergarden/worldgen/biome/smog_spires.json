@@ -22,8 +22,8 @@
     },
     "ambient_sound": "undergarden:ambient.spires_ambience",
     "additions_sound": {
-      "sound": "undergarden:ambient.abyss_addition",
-      "tick_chance": 0.0111
+      "sound": "undergarden:ambient.spires_addition",
+      "tick_chance": 0.0211
     },
     "music": {
       "sound": "undergarden:music.undergarden_music",

@@ -13,10 +13,10 @@
       }
     ]
   },
-  "ambient.otherside_ambience": {
+  "ambient.abyss_ambience": {
     "sounds": [
       {
-        "name": "undergarden:ambient/otherside_ambience", "stream": false
+        "name": "undergarden:ambient/abyss_ambience", "stream": false
       }
     ]
   },
@@ -71,6 +71,15 @@
       "undergarden:ambient/additions/rocky_5",
       "undergarden:ambient/additions/rocky_6",
       "undergarden:ambient/additions/rocky_7"
+    ]
+  },
+  "ambient.spires_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/spires_1",
+      "undergarden:ambient/additions/spires_2",
+      "undergarden:ambient/additions/spires_3",
+      "undergarden:ambient/additions/spires_4",
+      "undergarden:ambient/additions/spires_5"
     ]
   },
   "ambient.undergarden_portal_ambient": {
