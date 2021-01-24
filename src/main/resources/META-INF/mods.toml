@@ -8,7 +8,7 @@ version="${file.jarVersion}"
 displayName="The Undergarden"
 logoFile="logo.png"
 logoBlur=false
-credits="Screem, Julian++, Gecko"
+credits="Contributors: Screem, Julian++, Gecko, Frenderman"
 authors="quek"
 description='''Deep underground, a forgotten land awaits.'''
 [[dependencies.undergarden]]
