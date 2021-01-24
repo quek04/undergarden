@@ -8,9 +8,12 @@ version="${file.jarVersion}"
 displayName="The Undergarden"
 logoFile="logo.png"
 logoBlur=false
-credits="Contributors: Screem, Julian++, Gecko, Frenderman"
-authors="quek"
-description='''Deep underground, a forgotten land awaits.'''
+description='''
+Developer and Creator: Quek
+Artists: Screem, Frenderman, Echolite
+Past Contributors: Gecko, Julian++
+
+Deep underground, a forgotten land awaits.'''
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
