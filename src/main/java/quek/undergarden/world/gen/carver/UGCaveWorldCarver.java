@@ -29,6 +29,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 UGBlocks.SHIVERSTONE.get(),
                 UGBlocks.DEEPTURF_BLOCK.get(),
                 UGBlocks.ASHEN_DEEPTURF_BLOCK.get(),
+                UGBlocks.FROZEN_DEEPTURF_BLOCK.get(),
                 UGBlocks.DEEPSOIL.get(),
                 UGBlocks.COAL_ORE.get(),
                 UGBlocks.IRON_ORE.get(),
@@ -38,7 +39,6 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 UGBlocks.FROSTSTEEL_ORE.get(),
                 UGBlocks.UTHERIUM_ORE.get(),
                 UGBlocks.REGALIUM_ORE.get(),
-                Blocks.SNOW,
                 Blocks.ICE
         );
         this.carvableFluids = ImmutableSet.of(
