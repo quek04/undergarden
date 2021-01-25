@@ -1,6 +1,7 @@
 package quek.undergarden.entity;
 
 import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -11,7 +12,10 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.Path;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
@@ -251,6 +255,28 @@ public class GloomperEntity extends AnimalEntity {
     @Override
     public Vector3d func_241205_ce_() {
         return new Vector3d(0.0D, 0.6F * this.getEyeHeight(), this.getWidth() * 0.4F);
+    }
+
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float amount) {
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(this.world, this.getPosX(), this.getPosY(), this.getPosZ());
+
+        cloud.setParticleData(ParticleTypes.DRAGON_BREATH);
+        cloud.setRadius(3.0F);
+        cloud.setRadiusOnUse(-0.5F);
+        cloud.setWaitTime(10);
+        cloud.setRadiusPerTick(-cloud.getRadius() / (float)cloud.getDuration());
+        cloud.addEffect(new EffectInstance(Effects.POISON, 40, 0));
+
+        this.playSound(SoundEvents.ENTITY_PUFFER_FISH_BLOW_UP, 1.0F, 1.0F);
+        this.world.addEntity(cloud);
+
+        return super.attackEntityFrom(source, amount);
+    }
+
+    @Override
+    public boolean addPotionEffect(EffectInstance effectInstanceIn) {
+        return effectInstanceIn.getPotion() != Effects.POISON;
     }
 
     public static class JumpHelperController extends JumpController {
