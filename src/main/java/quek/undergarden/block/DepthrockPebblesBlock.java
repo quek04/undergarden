@@ -14,7 +14,7 @@ import net.minecraft.world.IWorldReader;
 
 public class DepthrockPebblesBlock extends Block {
 
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
+    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D);
 
     public DepthrockPebblesBlock(AbstractBlock.Properties properties) {
         super(properties);

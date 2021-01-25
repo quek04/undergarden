@@ -111,9 +111,9 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.CRACKED_DEPTHROCK_BRICKS);
             dropSelf(UGBlocks.GLOOMGOURD);
             dropSelf(UGBlocks.CARVED_GLOOMGOURD);
-            this.registerLootTable(UGBlocks.DEPTHROCK_PEBBLES.get(), (bookshelf) -> droppingWithSilkTouchOrRandomly(bookshelf, UGItems.DEPTHROCK_PEBBLE.get(), RandomValueRange.of(1.0F, 3.0F)));
+            this.registerLootTable(UGBlocks.DEPTHROCK_PEBBLES.get(), (pebble) -> droppingRandomly(UGItems.DEPTHROCK_PEBBLE.get(), RandomValueRange.of(1.0F, 3.0F)));
             dropSelf(UGBlocks.GLOOM_O_LANTERN);
-            this.registerLootTable(UGBlocks.DITCHBULB_PLANT.get(), (deadBush) -> droppingWithShears(deadBush, withExplosionDecay(deadBush, ItemLootEntry.builder(UGItems.DITCHBULB.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))));
+            this.registerLootTable(UGBlocks.DITCHBULB_PLANT.get(), (ditchbulb) -> droppingWithShears(ditchbulb, withExplosionDecay(ditchbulb, ItemLootEntry.builder(UGItems.DITCHBULB.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))));
             dropSelf(UGBlocks.DEPTHROCK_STAIRS);
             dropSelf(UGBlocks.DEPTHROCK_BRICK_STAIRS);
             dropSelf(UGBlocks.SMOGSTEM_STAIRS);
