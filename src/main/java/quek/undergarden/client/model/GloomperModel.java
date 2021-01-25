@@ -20,7 +20,6 @@ public class GloomperModel<T extends GloomperEntity> extends AgeableModel<T> {
 	private final ModelRenderer feet;
 
 	private float jumpRotation;
-	private float jawRotation;
 
 	public GloomperModel() {
 		textureWidth = 128;
