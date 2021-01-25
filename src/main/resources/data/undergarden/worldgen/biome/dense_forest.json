@@ -127,19 +127,19 @@
     "creature": [
       {
         "type": "undergarden:dweller",
-        "weight": 5,
+        "weight": 10,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "undergarden:gloomper",
-        "weight": 5,
+        "weight": 10,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "undergarden:brute",
-        "weight": 5,
+        "weight": 10,
         "minCount": 4,
         "maxCount": 4
       },

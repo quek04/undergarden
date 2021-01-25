@@ -125,7 +125,7 @@
     "creature": [
       {
         "type": "undergarden:gloomper",
-        "weight": 5,
+        "weight": 10,
         "minCount": 8,
         "maxCount": 8
       }
