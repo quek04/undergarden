@@ -266,7 +266,7 @@ public class GloomperEntity extends AnimalEntity {
         cloud.setRadiusOnUse(-0.5F);
         cloud.setWaitTime(10);
         cloud.setRadiusPerTick(-cloud.getRadius() / (float)cloud.getDuration());
-        cloud.addEffect(new EffectInstance(Effects.POISON, 40, 0));
+        cloud.addEffect(new EffectInstance(Effects.POISON, 100, 0));
 
         if(this.rand.nextInt(2) == 0) {
             this.playSound(SoundEvents.ENTITY_PUFFER_FISH_BLOW_UP, 1.0F, 1.0F);
