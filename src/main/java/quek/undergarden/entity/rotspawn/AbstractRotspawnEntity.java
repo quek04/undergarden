@@ -13,7 +13,6 @@ import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.DwellerEntity;
-import quek.undergarden.entity.stoneborn.StonebornEntity;
 import quek.undergarden.registry.UGEntityTypes;
 
 import java.util.Random;
