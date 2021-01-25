@@ -1,0 +1,69 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:regalium_block"
+    },
+    "title": {
+      "translate": "advancement.all_blocks.title"
+    },
+    "description": {
+      "translate": "advancement.all_blocks.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "challenge"
+  },
+  "parent": "undergarden:undergarden/any_ore",
+  "criteria": {
+    "has_cloggrum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:cloggrum_block"
+          }
+        ]
+      }
+    },
+    "has_froststeel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:froststeel_block"
+          }
+        ]
+      }
+    },
+    "has_utherium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:utherium_block"
+          }
+        ]
+      }
+    },
+    "has_regalium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:regalium_block"
+          }
+        ]
+      }
+    },
+    "has_forgotten_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:forgotten_block"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -138,7 +138,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.FROSTSTEEL_BLOCK, "Block of Froststeel");
         addBlock(UGBlocks.UTHERIUM_BLOCK, "Block of Utherium");
         addBlock(UGBlocks.REGALIUM_BLOCK, "Block of Regalium");
-        addBlock(UGBlocks.FORGOTTEN_BLOCK, "Block of Forgotten Ore");
+        addBlock(UGBlocks.FORGOTTEN_BLOCK, "Block of Forgotten Metal");
 
         addBlock(UGBlocks.SMOGSTEM_SAPLING, "Smogstem Sapling");
         addBlock(UGBlocks.SMOGSTEM_LOG, "Smogstem Log");
@@ -368,8 +368,8 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("all_undergarden_biomes", "Subterranean Cartographer");
         addAdvDesc("all_undergarden_biomes", "Discover every Undergarden biome.");
 
-        addAdvTitle("cloggrum", "Deep Extraction");
-        addAdvDesc("cloggrum", "Acquire a Cloggrum Ingot.");
+        addAdvTitle("any_ore", "Deep Extraction");
+        addAdvDesc("any_ore", "Acquire any Undergarden ore.");
 
         addAdvTitle("underbeans", "Glorious Beans!");
         addAdvDesc("underbeans", "Find and pick an Underbean Bush.");
@@ -393,13 +393,19 @@ public class UGLang extends LanguageProvider {
         addAdvDesc("forgotten_ingot", "Forge a Forgotten Ingot from a Forgotten Guardian's nuggets.");
 
         addAdvTitle("forgotten_tools", "Forgotten Arsenal");
-        addAdvDesc("forgotten_tools", "Obtain all 5 Forgotten tools.");
+        addAdvDesc("forgotten_tools", "Use Forgotten Ingots to upgrade Cloggrum tools and make all 5 Forgotten tools.");
 
         addAdvTitle("slay_scintling", "Terrible Person");
         addAdvDesc("slay_scintling", "You killed an innocent Scintling. You monster...");
 
         addAdvTitle("summon_minion", "Buildin' a Sentry");
         addAdvDesc("summon_minion", "Create a Forgotten Minion using a Forgotten Block and a Carved Gloomgourd.");
+
+        addAdvTitle("cloggrum_armor", "Cover Me in Coprolites");
+        addAdvDesc("cloggrum_armor", "Obtain a full suit of Cloggrum armor.");
+
+        addAdvTitle("all_blocks", "Collector's Edition");
+        addAdvDesc("all_blocks", "Collect one block of every Undergarden ore.");
 
         addAdvTitle("otherside_root", "The Otherside");
         addAdvDesc("otherside_root", "Enter the realm of madness.");
