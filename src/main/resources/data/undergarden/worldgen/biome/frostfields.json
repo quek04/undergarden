@@ -22,7 +22,7 @@
     },
     "ambient_sound": "undergarden:ambient.frost_ambience",
     "additions_sound": {
-      "sound": "undergarden:ambient.rocky_addition",
+      "sound": "undergarden:ambient.frostfields_addition",
       "tick_chance": 0.00555
     },
     "music": {

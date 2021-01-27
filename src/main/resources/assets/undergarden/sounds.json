@@ -42,13 +42,13 @@
       "undergarden:ambient/additions/bog_4"
     ]
   },
-  "ambient.deep_addition": {
+  "ambient.fields_addition": {
     "sounds": [
-      "undergarden:ambient/additions/deep_1",
-      "undergarden:ambient/additions/deep_2",
-      "undergarden:ambient/additions/deep_3",
-      "undergarden:ambient/additions/deep_4",
-      "undergarden:ambient/additions/deep_5"
+      "undergarden:ambient/additions/fields_1",
+      "undergarden:ambient/additions/fields_2",
+      "undergarden:ambient/additions/fields_3",
+      "undergarden:ambient/additions/fields_4",
+      "undergarden:ambient/additions/fields_5"
     ]
   },
   "ambient.forest_addition": {
@@ -69,15 +69,14 @@
       "undergarden:ambient/additions/grongle_5"
     ]
   },
-  "ambient.rocky_addition": {
+  "ambient.frostfields_addition": {
     "sounds": [
-      "undergarden:ambient/additions/rocky_1",
-      "undergarden:ambient/additions/rocky_2",
-      "undergarden:ambient/additions/rocky_3",
-      "undergarden:ambient/additions/rocky_4",
-      "undergarden:ambient/additions/rocky_5",
-      "undergarden:ambient/additions/rocky_6",
-      "undergarden:ambient/additions/rocky_7"
+      "undergarden:ambient/additions/frostfields_1",
+      "undergarden:ambient/additions/frostfields_2",
+      "undergarden:ambient/additions/frostfields_3",
+      "undergarden:ambient/additions/frostfields_4",
+      "undergarden:ambient/additions/frostfields_5",
+      "undergarden:ambient/additions/frostfields_6"
     ]
   },
   "ambient.spires_addition": {
@@ -86,7 +85,12 @@
       "undergarden:ambient/additions/spires_2",
       "undergarden:ambient/additions/spires_3",
       "undergarden:ambient/additions/spires_4",
-      "undergarden:ambient/additions/spires_5"
+      "undergarden:ambient/additions/spires_5",
+      "undergarden:ambient/additions/spires_6",
+      "undergarden:ambient/additions/spires_7",
+      "undergarden:ambient/additions/spires_8",
+      "undergarden:ambient/additions/spires_9",
+      "undergarden:ambient/additions/spires_10"
     ]
   },
   "ambient.undergarden_portal_ambient": {

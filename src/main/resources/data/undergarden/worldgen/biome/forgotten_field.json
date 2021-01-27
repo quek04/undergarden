@@ -22,7 +22,7 @@
     },
     "ambient_sound": "undergarden:ambient.undergarden_ambience",
     "additions_sound": {
-      "sound": "undergarden:ambient.deep_addition",
+      "sound": "undergarden:ambient.fields_addition",
       "tick_chance": 0.00555
     },
     "music": {
