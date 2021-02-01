@@ -33,7 +33,6 @@ public class RotwalkerModel<T extends RotwalkerEntity> extends SegmentedModel<T>
 
 		rotwalker = new ModelRenderer(this);
 		rotwalker.setRotationPoint(0.0F, 24.0F, 0.0F);
-		
 
 		head = new ModelRenderer(this);
 		head.setRotationPoint(0.0F, -34.0F, 0.0F);
