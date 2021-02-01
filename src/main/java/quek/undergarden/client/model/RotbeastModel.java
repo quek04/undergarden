@@ -27,13 +27,11 @@ public class RotbeastModel<T extends RotbeastEntity> extends SegmentedModel<T> {
 	private final ModelRenderer rightLeg2;
 
 	public RotbeastModel() {
-		super();
 		textureWidth = 128;
 		textureHeight = 128;
 
 		rotbeast = new ModelRenderer(this);
 		rotbeast.setRotationPoint(0.0F, 24.0F, 0.0F);
-		
 
 		head = new ModelRenderer(this);
 		head.setRotationPoint(0.0F, -35.0F, -8.0F);
