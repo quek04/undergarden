@@ -24,6 +24,8 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> FROSTFIELDS_AMBIENT_ADDITION = register("ambient.frostfields_addition");
     public static final RegistryObject<SoundEvent> SPIRES_AMBIENT_ADDITION = register("ambient.spires_addition");
 
+    public static final RegistryObject<SoundEvent> ABYSS_MOOD = register("ambient.abyss_mood");
+
     public static final RegistryObject<SoundEvent> UNDERGARDEN_MUSIC = register("music.undergarden_music");
     public static final RegistryObject<SoundEvent> MAMMOTH_DISC = register("music.disc.mammoth");
     public static final RegistryObject<SoundEvent> LIMAX_MAXIMUS_DISC = register("music.disc.limax_maximus");

@@ -25,6 +25,12 @@
       "sound": "undergarden:ambient.abyss_addition",
       "tick_chance": 0.00555
     },
+    "mood_sound": {
+      "sound": "undergarden:ambient.abyss_mood",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
     "music": {
       "sound": "undergarden:music.undergarden_music",
       "min_delay": 12000,

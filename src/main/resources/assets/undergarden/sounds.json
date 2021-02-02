@@ -31,7 +31,10 @@
     "sounds": [
       "undergarden:ambient/additions/abyss_1",
       "undergarden:ambient/additions/abyss_2",
-      "undergarden:ambient/additions/abyss_3"
+      "undergarden:ambient/additions/abyss_3",
+      "undergarden:ambient/additions/abyss_4",
+      "undergarden:ambient/additions/abyss_5",
+      "undergarden:ambient/additions/abyss_6"
     ]
   },
   "ambient.bog_addition": {
@@ -48,7 +51,8 @@
       "undergarden:ambient/additions/fields_2",
       "undergarden:ambient/additions/fields_3",
       "undergarden:ambient/additions/fields_4",
-      "undergarden:ambient/additions/fields_5"
+      "undergarden:ambient/additions/fields_5",
+      "undergarden:ambient/additions/fields_6"
     ]
   },
   "ambient.forest_addition": {
@@ -91,6 +95,12 @@
       "undergarden:ambient/additions/spires_8",
       "undergarden:ambient/additions/spires_9",
       "undergarden:ambient/additions/spires_10"
+    ]
+  },
+  "ambient.abyss_mood": {
+    "sounds": [
+      "undergarden:ambient/moods/abyss_mood_1",
+      "undergarden:ambient/moods/abyss_mood_2"
     ]
   },
   "ambient.undergarden_portal_ambient": {
@@ -347,7 +357,8 @@
   "entity.stoneborn_chant": {
     "subtitle": "subtitles.entity.stoneborn_chant",
     "sounds": [
-      "undergarden:entity/stoneborn_chant"
+      "undergarden:entity/stoneborn_chant_1",
+      "undergarden:entity/stoneborn_chant_2"
     ]
   },
   "entity.stoneborn_death": {
