@@ -20,7 +20,6 @@ public class CatalystItem extends Item {
         super(new Properties()
                 .group(UGItemGroups.GROUP)
                 .maxStackSize(1)
-                .maxDamage(3)
                 .rarity(Rarity.RARE)
         );
     }
@@ -33,7 +32,6 @@ public class CatalystItem extends Item {
                     BlockPos framePos = context.getPos().offset(direction);
                     if(((UndergardenPortalBlock) UGBlocks.UNDERGARDEN_PORTAL.get()).trySpawnPortal(context.getWorld(), framePos)) {
                         context.getWorld().playSound(context.getPlayer(), framePos, UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                        context.getItem().damageItem(1, context.getPlayer(), (playerEntity) -> playerEntity.sendBreakAnimation(context.getHand()));
                         return ActionResultType.CONSUME;
                     }
                     else return ActionResultType.FAIL;
@@ -42,5 +40,4 @@ public class CatalystItem extends Item {
         }
         return ActionResultType.FAIL;
     }
-
 }
