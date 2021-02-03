@@ -119,7 +119,7 @@
     "creature": [
       {
         "type": "undergarden:dweller",
-        "weight": 10,
+        "weight": 100,
         "minCount": 8,
         "maxCount": 8
       }
@@ -146,5 +146,6 @@
   "player_spawn_friendly": false,
   "spawn_costs": {
 
-  }
+  },
+  "creature_spawn_probability": 0.5
 }

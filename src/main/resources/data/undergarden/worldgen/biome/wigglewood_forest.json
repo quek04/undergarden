@@ -129,19 +129,19 @@
     "creature": [
       {
         "type": "undergarden:dweller",
-        "weight": 10,
+        "weight": 100,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "undergarden:gloomper",
-        "weight": 10,
+        "weight": 100,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "undergarden:brute",
-        "weight": 10,
+        "weight": 100,
         "minCount": 4,
         "maxCount": 4
       }
@@ -168,5 +168,6 @@
   "player_spawn_friendly": false,
   "spawn_costs": {
 
-  }
+  },
+  "creature_spawn_probability": 0.5
 }

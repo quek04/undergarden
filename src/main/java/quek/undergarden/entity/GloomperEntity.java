@@ -69,7 +69,7 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     public static boolean canGloomperSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).isIn(UGBlocks.DEEPTURF_BLOCK.get()) && worldIn.getLightSubtracted(pos, 0) > 8;
+        return worldIn.getBlockState(pos.down()).isIn(UGBlocks.DEEPTURF_BLOCK.get());
     }
 
     @Override

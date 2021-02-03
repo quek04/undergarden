@@ -124,32 +124,32 @@
         "weight": 50,
         "minCount": 1,
         "maxCount": 1
-      }
-    ],
-    "creature": [
-      {
-        "type": "undergarden:dweller",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "undergarden:gloomper",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "undergarden:brute",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
       },
       {
         "type": "undergarden:sploogie",
         "weight": 50,
         "minCount": 1,
         "maxCount": 1
+      }
+    ],
+    "creature": [
+      {
+        "type": "undergarden:dweller",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:gloomper",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:brute",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
       }
     ],
     "ambient": [
@@ -174,5 +174,6 @@
   "player_spawn_friendly": false,
   "spawn_costs": {
 
-  }
+  },
+  "creature_spawn_probability": 0.5
 }
