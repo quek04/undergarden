@@ -17,48 +17,60 @@ public class GloomperModel<T extends GloomperEntity> extends AgeableModel<T> {
 	private final ModelRenderer head;
 	private final ModelRenderer jaw;
 	private final ModelRenderer arms;
+	private final ModelRenderer left;
+	private final ModelRenderer right;
 	private final ModelRenderer feet;
 
 	private float jumpRotation;
 
 	public GloomperModel() {
-		textureWidth = 128;
-		textureHeight = 128;
+		textureWidth = 64;
+		textureHeight = 64;
 
 		gloomper = new ModelRenderer(this);
 		gloomper.setRotationPoint(0.0F, 24.0F, 0.0F);
-		
+
 
 		body = new ModelRenderer(this);
 		body.setRotationPoint(0.0F, -10.0F, 3.0F);
 		gloomper.addChild(body);
 		setRotationAngle(body, -0.3491F, 0.0F, 0.0F);
-		body.setTextureOffset(0, 0).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F, 0.0F, false);
+		body.setTextureOffset(0, 0).addBox(-8.0F, -5.0F, -8.0F, 16.0F, 13.0F, 16.0F, 0.0F, false);
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(0.0F, -11.5F, -4.0F);
+		head.setRotationPoint(0.0F, -10.5F, -5.0F);
 		gloomper.addChild(head);
-		head.setTextureOffset(0, 32).addBox(-5.0F, -4.5F, -2.0F, 10.0F, 8.0F, 3.0F, 0.0F, false);
+		head.setTextureOffset(0, 31).addBox(-5.0F, -4.5F, -2.0F, 10.0F, 8.0F, 4.0F, 0.0F, false);
 
 		jaw = new ModelRenderer(this);
-		jaw.setRotationPoint(0.0F, 5.0F, -2.0F);
+		jaw.setRotationPoint(0.0F, 3.5F, -2.0F);
 		head.addChild(jaw);
-		setRotationAngle(jaw, 0.0F, 0.0F, 0.0F);
-		jaw.setTextureOffset(0, 43).addBox(-5.0F, -4.5F, -1.0F, 10.0F, 4.0F, 1.0F, 0.0F, false);
-		jaw.setTextureOffset(46, 43).addBox(-4.0F, -5.5F, -1.0F, 8.0F, 1.0F, 1.0F, 0.0F, false);
+		jaw.setTextureOffset(0, 43).addBox(-5.0F, -4.0F, -1.0F, 10.0F, 4.0F, 1.0F, 0.0F, false);
 
 		arms = new ModelRenderer(this);
-		arms.setRotationPoint(0.5F, -4.5F, -4.5F);
+		arms.setRotationPoint(0.5F, -4.5F, -3.5F);
 		gloomper.addChild(arms);
-		setRotationAngle(arms, -0.3491F, 0.0F, 0.0F);
-		arms.setTextureOffset(22, 43).addBox(5.5F, -0.5F, -2.5F, 3.0F, 6.0F, 3.0F, 0.0F, true);
-		arms.setTextureOffset(22, 43).addBox(-9.5F, -0.5F, -2.5F, 3.0F, 6.0F, 3.0F, 0.0F, false);
+
+
+		left = new ModelRenderer(this);
+		left.setRotationPoint(6.0F, -0.5F, -1.0F);
+		arms.addChild(left);
+		setRotationAngle(left, -0.5672F, -0.4363F, 0.0F);
+		left.setTextureOffset(22, 43).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, true);
+
+		right = new ModelRenderer(this);
+		right.setRotationPoint(-7.0F, -0.5F, -1.0F);
+		arms.addChild(right);
+		setRotationAngle(right, -0.5672F, 0.4363F, 0.0F);
+		right.setTextureOffset(22, 43).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, false);
 
 		feet = new ModelRenderer(this);
 		feet.setRotationPoint(0.0F, -2.0F, 8.0F);
 		gloomper.addChild(feet);
-		feet.setTextureOffset(26, 32).addBox(5.0F, 0.0F, -7.0F, 4.0F, 2.0F, 7.0F, 0.0F, true);
-		feet.setTextureOffset(26, 32).addBox(-9.0F, 0.0F, -7.0F, 4.0F, 2.0F, 7.0F, 0.0F, false);
+		feet.setTextureOffset(28, 32).addBox(7.0F, 0.0F, -7.0F, 4.0F, 2.0F, 7.0F, 0.0F, true);
+		feet.setTextureOffset(28, 32).addBox(-11.0F, 0.0F, -7.0F, 4.0F, 2.0F, 7.0F, 0.0F, false);
+		feet.setTextureOffset(0, 56).addBox(-11.0F, -5.0F, -3.0F, 4.0F, 5.0F, 3.0F, 0.0F, false);
+		feet.setTextureOffset(0, 56).addBox(7.0F, -5.0F, -3.0F, 4.0F, 5.0F, 3.0F, 0.0F, true);
 	}
 
 	@Override
