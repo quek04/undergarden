@@ -2,16 +2,20 @@ package quek.undergarden.client;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ActiveRenderInfo;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.item.BlockItem;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.client.render.entity.*;
@@ -159,5 +163,28 @@ public class ClientStuff {
                 UGBlocks.SHIMMERWEED.get(),
                 UGBlocks.TALL_SHIMMERWEED.get()
         );
+    }
+
+    @SubscribeEvent
+    public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
+        ActiveRenderInfo info = Minecraft.getInstance().gameRenderer.getActiveRenderInfo();
+        FluidState fluidState = info.getFluidState();
+
+        if(fluidState.getFluid() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getFluid() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
+            event.setRed(57 / 255F);
+            event.setGreen(25 / 255F);
+            event.setBlue(80 / 255F);
+        }
+    }
+
+    @SubscribeEvent
+    public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
+        ActiveRenderInfo info = Minecraft.getInstance().gameRenderer.getActiveRenderInfo();
+        FluidState fluidState = info.getFluidState();
+
+        if(fluidState.getFluid() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getFluid() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
+            event.setDensity(1.5F);
+            event.setCanceled(true);
+        }
     }
 }
