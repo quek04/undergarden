@@ -48,6 +48,7 @@ public class UGLang extends LanguageProvider {
     protected void addTranslations() {
         addBlock(UGBlocks.UNDERGARDEN_PORTAL, "Undergarden Portal");
         addBlock(UGBlocks.CLOGGRUM_BARS, "Cloggrum Bars");
+        addBlock(UGBlocks.STONEBORN_EFFIGY, "Stoneborn Effigy");
 
         addBlock(UGBlocks.DEPTHROCK, "Depthrock");
         addBlock(UGBlocks.DEPTHROCK_BRICKS, "Depthrock Bricks");

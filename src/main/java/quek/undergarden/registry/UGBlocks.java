@@ -27,6 +27,7 @@ public class UGBlocks {
 
     public static final RegistryObject<Block> UNDERGARDEN_PORTAL = BLOCKS.register("undergarden_portal", UndergardenPortalBlock::new);
 
+    public static final RegistryObject<Block> STONEBORN_EFFIGY = register("stoneborn_effigy", () -> new EffigyBlock(AbstractBlock.Properties.from(Blocks.COBBLESTONE)));
     public static final RegistryObject<Block> SHARD_TORCH = BLOCKS.register("shard_torch", () -> new ShardTorchBlock(AbstractBlock.Properties.from(Blocks.TORCH).setLightLevel((state) -> 6)));
     public static final RegistryObject<Block> SHARD_WALL_TORCH = BLOCKS.register("shard_wall_torch", () -> new ShardWallTorchBlock(AbstractBlock.Properties.from(Blocks.WALL_TORCH).setLightLevel((state) -> 6)));
     public static final RegistryObject<Block> CLOGGRUM_BARS = register("cloggrum_bars", () -> new PaneBlock(AbstractBlock.Properties.from(Blocks.IRON_BARS)));

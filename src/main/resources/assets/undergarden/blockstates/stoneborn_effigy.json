@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "undergarden:block/stoneborn_effigy",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "undergarden:block/stoneborn_effigy",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "undergarden:block/stoneborn_effigy",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "undergarden:block/stoneborn_effigy"
+    }
+  }
+}
