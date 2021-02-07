@@ -70,7 +70,7 @@ public class UGEntityTypes {
             .size(0.9F, 2).build("brute");
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> BRUTE_TYPE);
     public static final EntityType<ScintlingEntity> SCINTLING_TYPE = EntityType.Builder.create(ScintlingEntity::new, EntityClassification.AMBIENT)
-            .size(0.9F, .5F).build("scintling");
+            .size(1.0F, .5F).build("scintling");
     public static final RegistryObject<EntityType<ScintlingEntity>> SCINTLING = ENTITIES.register("scintling", () -> SCINTLING_TYPE);
     public static final EntityType<GloomperEntity> GLOOMPER_TYPE = EntityType.Builder.create(GloomperEntity::new, EntityClassification.CREATURE)
             .size(0.99F, 0.99F).build("gloomper");
