@@ -412,8 +412,7 @@ public class UGLang extends LanguageProvider {
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
-        add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");
-        add("tooltip.utheric_axe", "Bonus damage to passive animals.");
+        add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
         add("tooltip.forgotten_sword", "Deals 2x damage to non-boss Undergarden mobs.");

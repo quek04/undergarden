@@ -356,6 +356,5 @@
   "tooltip.forgotten_sword": "Deals 2x damage to non-boss Undergarden mobs.",
   "tooltip.froststeel_sword": "Slows targets.",
   "tooltip.slingshot": "Uses Depthrock Pebbles as ammo.",
-  "tooltip.utheric_axe": "Bonus damage to passive animals.",
-  "tooltip.utheric_sword": "Deals 10 damage to Rotspawn."
+  "tooltip.utheric_sword": "Deals 1.5x damage to Rotspawn."
 }

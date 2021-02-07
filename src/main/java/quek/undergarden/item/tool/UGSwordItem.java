@@ -67,20 +67,19 @@ public class UGSwordItem extends SwordItem {
             PlayerEntity player = (PlayerEntity) source;
             if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIC_SWORD.get()) {
                 if(event.getEntityLiving().getType().isContained(UGTags.Entities.ROTSPAWN)) {
-                    event.setAmount(damage * 1.4F);
+                    event.setAmount(damage * 1.5F);
                 }
-                else event.setAmount(damage * 1F);
+                else event.setAmount(damage);
             }
             else if(player.getHeldItemMainhand().getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
-                event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 4));
+                event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 3));
             }
             else if(player.getHeldItemMainhand().getItem() == UGItems.FORGOTTEN_SWORD.get()) {
                 if(event.getEntityLiving().getType().getRegistryName().getNamespace().equals("undergarden") && event.getEntityLiving().isNonBoss()) {
                     event.setAmount(damage * 2F);
                 }
-                else event.setAmount(damage * 1F);
+                else event.setAmount(damage);
             }
         }
     }
-
 }
