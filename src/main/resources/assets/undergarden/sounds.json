@@ -169,6 +169,19 @@
       "undergarden:item/blisterbomb"
     ]
   },
+  "item.slingshot_shoot": {
+    "subtitle": "subtitles.item.slingshot_shoot",
+    "sounds": [
+      "undergarden:item/slingshot_shoot"
+    ]
+  },
+  "item.slingshot_draw": {
+    "subtitle": "subtitles.item.slingshot_shoot",
+    "sounds": [
+      "undergarden:item/slingshot_draw_1",
+      "undergarden:item/slingshot_draw_2"
+    ]
+  },
   "entity.dweller_living": {
     "subtitle": "subtitles.entity.dweller_living",
     "sounds": [

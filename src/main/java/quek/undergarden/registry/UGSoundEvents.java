@@ -37,6 +37,9 @@ public class UGSoundEvents {
 
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
 
+    public static final RegistryObject<SoundEvent> SLINGSHOT_SHOOT = register("item.slingshot_shoot");
+    public static final RegistryObject<SoundEvent> SLINGSHOT_DRAW = register("item.slingshot_draw");
+
     public static final RegistryObject<SoundEvent> DWELLER_LIVING = register("entity.dweller_living");
     public static final RegistryObject<SoundEvent> DWELLER_HURT = register("entity.dweller_hurt");
     public static final RegistryObject<SoundEvent> DWELLER_DEATH = register("entity.dweller_death");

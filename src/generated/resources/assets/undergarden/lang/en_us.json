@@ -350,11 +350,14 @@
   "subtitles.entity.stoneborn_speaking": "Stoneborn speaks",
   "subtitles.entity.stoneborn_step": "Stoneborn steps",
   "subtitles.item.blisterbomb": "Blisterbomb thrown",
+  "subtitles.item.slingshot_draw": "Slingshot drawn",
+  "subtitles.item.slingshot_shoot": "Slingshot fired",
   "subtitles.item.undergarden_portal_activate": "Undergarden Portal activates",
   "tooltip.cloggrum_boots": "Scintling Goo doesn't slow you down when worn.",
   "tooltip.cloggrum_sword": "High damage, low durability.",
   "tooltip.forgotten_sword": "Deals 2x damage to non-boss Undergarden mobs.",
   "tooltip.froststeel_sword": "Slows targets.",
+  "tooltip.pebble": "Can be used as Slingshot ammo.",
   "tooltip.slingshot": "Uses Depthrock Pebbles as ammo.",
   "tooltip.utheric_sword": "Deals 1.5x damage to Rotspawn."
 }

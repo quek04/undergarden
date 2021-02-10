@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -19,9 +20,9 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.DepthrockPebbleItem;
-import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -59,58 +60,59 @@ public class SlingshotItem extends ShootableItem {
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof PlayerEntity) {
-            PlayerEntity playerentity = (PlayerEntity)entityLiving;
-            boolean flag = playerentity.abilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
-            ItemStack itemstack = playerentity.findAmmo(stack);
+            PlayerEntity player = (PlayerEntity)entityLiving;
+            boolean creativeOrInfinity = player.abilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
+            ItemStack itemstack = player.findAmmo(stack);
 
             int i = getUseDuration(stack) - timeLeft;
-            i = onArrowLoose(stack, worldIn, playerentity, i, !itemstack.isEmpty() || flag);
+            i = onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || creativeOrInfinity);
             if (i < 0) return;
 
-            if (!itemstack.isEmpty() || flag) {
+            if (!itemstack.isEmpty() || creativeOrInfinity) {
                 if (itemstack.isEmpty()) {
                     itemstack = new ItemStack(UGItems.DEPTHROCK_PEBBLE.get());
                 }
 
-                float f = getArrowVelocity(i);
+                float f = getProjectileVelocity(i);
                 if (!((double)f < 0.1D)) {
-                    boolean flag1 = playerentity.abilities.isCreativeMode || (itemstack.getItem() instanceof DepthrockPebbleItem && ((DepthrockPebbleItem)itemstack.getItem()).isInfinite(itemstack, stack, playerentity));
+                    boolean flag1 = player.abilities.isCreativeMode || (itemstack.getItem() instanceof DepthrockPebbleItem && ((DepthrockPebbleItem)itemstack.getItem()).isInfinite(itemstack, stack, player));
                     if (!worldIn.isRemote) {
                         SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(worldIn, entityLiving);
-                        ammoEntity = ammo(ammoEntity);
-                        ammoEntity.func_234612_a_(playerentity, playerentity.rotationPitch, playerentity.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
-                        stack.damageItem(1, playerentity, (player) -> player.sendBreakAnimation(playerentity.getActiveHand()));
+                        ammoEntity.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0F, f * 3.0F, 1.0F);
+
+                        stack.damageItem(1, player, (entity) -> player.sendBreakAnimation(player.getActiveHand()));
 
                         worldIn.addEntity(ammoEntity);
                     }
 
-                    worldIn.playSound(null, playerentity.getPosX(), playerentity.getPosY(), playerentity.getPosZ(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-                    if (!flag1 && !playerentity.abilities.isCreativeMode) {
+                    worldIn.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundCategory.PLAYERS, 0.5F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    if (!flag1 && !player.abilities.isCreativeMode) {
                         itemstack.shrink(1);
                         if (itemstack.isEmpty()) {
-                            playerentity.inventory.deleteStack(itemstack);
+                            player.inventory.deleteStack(itemstack);
                         }
                     }
 
-                    playerentity.addStat(Stats.ITEM_USED.get(this));
+                    player.addStat(Stats.ITEM_USED.get(this));
                 }
             }
         }
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        ItemStack itemstack = playerIn.getHeldItem(handIn);
-        boolean flag = !playerIn.findAmmo(itemstack).isEmpty();
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity player, Hand handIn) {
+        ItemStack itemstack = player.getHeldItem(handIn);
+        boolean hasAmmo = !player.findAmmo(itemstack).isEmpty();
 
-        ActionResult<ItemStack> ret = onArrowNock(itemstack, worldIn, playerIn, handIn, flag);
+        ActionResult<ItemStack> ret = onArrowNock(itemstack, worldIn, player, handIn, hasAmmo);
         if (ret != null) return ret;
 
-        if (!playerIn.abilities.isCreativeMode && !flag) {
+        if (!player.abilities.isCreativeMode && !hasAmmo) {
             return ActionResult.resultFail(itemstack);
         } else {
-            playerIn.setActiveHand(handIn);
+            player.setActiveHand(handIn);
+            worldIn.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), UGSoundEvents.SLINGSHOT_DRAW.get(), SoundCategory.PLAYERS, 0.5F, 1.0F);
             return ActionResult.resultConsume(itemstack);
         }
     }
@@ -131,7 +133,7 @@ public class SlingshotItem extends ShootableItem {
         return event.getCharge();
     }
 
-    public static float getArrowVelocity(int charge) {
+    public static float getProjectileVelocity(int charge) {
         float f = (float)charge / 5.0F;
         f = (f * f + f * 2.0F) / 3.0F;
         if (f > 1.0F) {
@@ -151,12 +153,8 @@ public class SlingshotItem extends ShootableItem {
         return UseAction.BOW;
     }
 
-    public SlingshotAmmoEntity ammo(SlingshotAmmoEntity ammoEntity) {
-        return ammoEntity;
-    }
-
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == UGBlocks.SMOGSTEM_PLANKS.get().asItem();
+        return repair.getItem().isIn(ItemTags.PLANKS);
     }
 }

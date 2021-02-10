@@ -416,9 +416,12 @@ public class UGLang extends LanguageProvider {
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
         add("tooltip.forgotten_sword", "Deals 2x damage to non-boss Undergarden mobs.");
+        add("tooltip.pebble", "Can be used as Slingshot ammo.");
 
         addSubtitle("item", "undergarden_portal_activate", "Undergarden Portal activates");
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
+        addSubtitle("item", "slingshot_draw", "Slingshot drawn");
+        addSubtitle("item", "slingshot_shoot", "Slingshot fired");
 
         addSubtitle("entity", "dweller_living", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
