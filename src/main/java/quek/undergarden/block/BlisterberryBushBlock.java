@@ -16,6 +16,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGDamageSources;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
@@ -59,7 +60,7 @@ public class BlisterberryBushBlock extends UGBushBlock implements IGrowable {
                 double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
                 double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);
                 if (d0 >= (double)0.003F || d1 >= (double)0.003F) {
-                    entityIn.attackEntityFrom(DamageSource.GENERIC, 2.0F);
+                    entityIn.attackEntityFrom(UGDamageSources.BLISTERBERRY_BUSH, 2.0F);
                 }
             }
         }

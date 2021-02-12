@@ -37,6 +37,10 @@ public class UGLang extends LanguageProvider {
         add("biome.undergarden." + biomeKey.getLocation().getPath(), name);
     }
 
+    private void addDeath(String deathName, String name) {
+        add("death.attack." + deathName, name);
+    }
+
     private void addPotion(Supplier<? extends Potion> potion, String name) {
         add("item.minecraft.potion.effect." + potion.get().getRegistryName().getPath(), "Potion of " + name);
         add("item.minecraft.splash_potion.effect." + potion.get().getRegistryName().getPath(), "Splash Potion of " + name);
@@ -477,5 +481,12 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "nargoyle_attack", "Nargoyle leaps");
 
         addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
+
+        addDeath("frozen_deepturf", "%1$s was stabbed by Frozen Deepturf");
+        addDeath("frozen_deepturf.player", "%1$s was stabbed by Frozen Deepturf whilst trying to escape %2$s");
+        addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
+        addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
+        addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");
+        addDeath("shard_torch.player", "%1$s was killed by a Shard Torch's magic whilst trying to escape %2$s");
     }
 }
