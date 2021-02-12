@@ -84,6 +84,9 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_DEFLECT = register("entity.forgotten_guardian_deflect");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_STEP = register("entity.forgotten_guardian_step");
 
+    public static final RegistryObject<SoundEvent> MINION_SHOOT = register("entity.minion_shoot");
+    public static final RegistryObject<SoundEvent> MINION_DEATH = register("entity.minion_death");
+
     public static final RegistryObject<SoundEvent> NARGOYLE_HURT = register("entity.nargoyle_hurt");
     public static final RegistryObject<SoundEvent> NARGOYLE_DEATH = register("entity.nargoyle_death");
     public static final RegistryObject<SoundEvent> NARGOYLE_ATTACK = register("entity.nargoyle_attack");

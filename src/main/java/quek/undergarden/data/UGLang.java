@@ -467,6 +467,9 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "forgotten_guardian_deflect", "Forgotten Guardian deflects");
         addSubtitle("entity", "forgotten_guardian_step", "Forgotten Guardian steps");
 
+        addSubtitle("entity", "minion_shoot", "Forgotten Minion shoots");
+        addSubtitle("entity", "minion_death", "Forgotten Minion dies");
+
         addSubtitle("entity", "nargoyle_hurt", "Nargoyle hurts");
         addSubtitle("entity", "nargoyle_death", "Nargoyle dies");
         addSubtitle("entity", "nargoyle_attack", "Nargoyle leaps");

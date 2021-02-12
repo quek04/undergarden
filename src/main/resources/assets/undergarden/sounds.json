@@ -465,5 +465,17 @@
       "undergarden:entity/nargoyle_attack_2",
       "undergarden:entity/nargoyle_attack_3"
     ]
+  },
+  "entity.minion_shoot": {
+    "subtitle": "subtitles.entity.minion_shoot",
+    "sounds": [
+      "undergarden:entity/minion_shoot"
+    ]
+  },
+  "entity.minion_death": {
+    "subtitle": "subtitles.entity.minion_death",
+    "sounds": [
+      "undergarden:entity/minion_death"
+    ]
   }
 }

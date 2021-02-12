@@ -14,11 +14,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.MinionProjectileEntity;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
 public class MinionEntity extends GolemEntity implements IRangedAttackMob {
@@ -47,6 +49,11 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
     }
 
     @Override
+    protected SoundEvent getDeathSound() {
+        return UGSoundEvents.MINION_DEATH.get();
+    }
+
+    @Override
     public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
         MinionProjectileEntity projectile = new MinionProjectileEntity(this.world, this);
         double xDistance = target.getPosX() - this.getPosX();
@@ -54,7 +61,7 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
         double zDistance = target.getPosZ() - this.getPosZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         projectile.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
-        this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0F, 0.5F);
+        this.playSound(UGSoundEvents.MINION_SHOOT.get(), 1.0F, 1.0F);
         this.world.addEntity(projectile);
     }
 
