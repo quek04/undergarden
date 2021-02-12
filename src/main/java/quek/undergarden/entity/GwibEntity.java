@@ -8,6 +8,7 @@ import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,7 +24,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class GwibEntity extends WaterMobEntity {
+public class GwibEntity extends WaterMobEntity implements IMob {
 
     public GwibEntity(EntityType<? extends WaterMobEntity> type, World world) {
         super(type, world);
@@ -80,6 +81,11 @@ public class GwibEntity extends WaterMobEntity {
         else {
             super.travel(travelVector);
         }
+    }
+
+    @Override
+    protected boolean isDespawnPeaceful() {
+        return true;
     }
 
     @Override
