@@ -98,5 +98,3 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
         this.setAngerTime(ANGER_TIME_RANGE.getRandomWithinRange(this.rand));
     }
 }
-
-

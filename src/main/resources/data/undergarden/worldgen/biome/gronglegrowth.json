@@ -147,7 +147,14 @@
         "maxCount": 8
       }
     ],
-    "water_creature": [],
+    "water_creature": [
+      {
+        "type": "undergarden:gwib",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
     "water_ambient": [
       {
         "type": "undergarden:gwibling",

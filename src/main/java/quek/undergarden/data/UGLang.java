@@ -299,6 +299,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.NARGOYLE_SPAWN_EGG, "Nargoyle Spawn Egg");
         addItem(UGItems.MUNCHER_SPAWN_EGG, "Muncher Spawn Egg");
         addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
+        addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
 
         addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
         addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
@@ -328,6 +329,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.NARGOYLE, "Nargoyle");
         addEntityType(UGEntityTypes.MUNCHER, "Muncher");
         addEntityType(UGEntityTypes.SPLOOGIE, "Sploogie");
+        addEntityType(UGEntityTypes.GWIB, "Gwib");
 
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
         addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");

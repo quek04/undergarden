@@ -117,6 +117,7 @@ public class ClientStuff {
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MUNCHER.get(), MuncherRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MINION.get(), MinionRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GWIB.get(), GwibRender::new);
     }
 
     public static void registerBlockColors() {
