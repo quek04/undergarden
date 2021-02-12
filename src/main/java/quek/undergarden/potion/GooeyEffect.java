@@ -23,9 +23,4 @@ public class GooeyEffect extends Effect {
             entity.world.setBlockState(pos, blockstate);
         }
     }
-
-    @Override
-    public boolean isReady(int duration, int amplifier) {
-        return duration > 0;
-    }
 }
