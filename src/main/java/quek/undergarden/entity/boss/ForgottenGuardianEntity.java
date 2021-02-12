@@ -164,4 +164,14 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     public boolean addPotionEffect(EffectInstance effectInstanceIn) {
         return false;
     }
+
+    @Override
+    public boolean isPushedByWater() {
+        return false;
+    }
+
+    @Override
+    public boolean canBeLeashedTo(PlayerEntity player) {
+        return false;
+    }
 }
