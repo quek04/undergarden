@@ -238,15 +238,6 @@ public class UGFeatures {
                         new TwoLayerFeature(1, 0, 2)))
                         .setIgnoreVines().build()
         );
-        public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> SMOGSTEM_TREE_SHORT = UNDERGARDEN_TREE.get().withConfiguration(
-                (new BaseTreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_WOOD.get().getDefaultState()),
-                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().getDefaultState()),
-                        new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 2),
-                        new SmogstemTrunkPlacer(5, 1, 1),
-                        new TwoLayerFeature(1, 1, 2)))
-                        .setIgnoreVines().build()
-        );
 
         public static final ConfiguredFeature<BigMushroomFeatureConfig, ?> BLOOD_MUSHROOM = UGFeatures.BLOOD_MUSHROOM.get().withConfiguration(
                 new BigMushroomFeatureConfig(
@@ -348,8 +339,6 @@ public class UGFeatures {
 
         register("smogstem_tree_tall", ConfiguredFeatures.SMOGSTEM_TREE_TALL.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
         register("wigglewood_tree_tall", ConfiguredFeatures.WIGGLEWOOD_TREE_TALL.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
-
-        register("smogstem_tree_short", ConfiguredFeatures.SMOGSTEM_TREE_SHORT.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(1))));
 
         register("huge_blood_mushroom", ConfiguredFeatures.BLOOD_MUSHROOM.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
         register("huge_indigo_mushroom", ConfiguredFeatures.INDIGO_MUSHROOM.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
