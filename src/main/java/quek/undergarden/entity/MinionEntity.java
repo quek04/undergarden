@@ -32,7 +32,7 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 20, 10.0F));
-        this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 1.0000001E-5F));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) ->
