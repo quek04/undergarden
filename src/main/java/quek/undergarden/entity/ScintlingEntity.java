@@ -33,7 +33,7 @@ public class ScintlingEntity extends AnimalEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0D, 2.5D));
+        this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 1.2D, 1.4D));
         this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
     }
@@ -41,7 +41,7 @@ public class ScintlingEntity extends AnimalEntity {
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AnimalEntity.func_233666_p_()
                 .createMutableAttribute(Attributes.MAX_HEALTH, 2.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.20D);
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.2D);
     }
 
 
