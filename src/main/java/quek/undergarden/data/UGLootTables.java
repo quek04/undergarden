@@ -23,6 +23,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import quek.undergarden.block.BlisterberryBushBlock;
+import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UGDoublePlantBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.data.provider.UGBlockLootTableProvider;
@@ -78,6 +79,10 @@ public class UGLootTables extends LootTableProvider {
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.BLISTERBERRY_BUSH.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UGItems.BLISTERBERRY.get())).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.BLISTERBERRY_BUSH.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UGItems.ROTTEN_BLISTERBERRY.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.BLISTERBERRY_BUSH.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UGItems.ROTTEN_BLISTERBERRY.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 1.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
+            this.registerLootTable(UGBlocks.DITCHBULB_PLANT.get(),
+                    LootTable.builder()
+                    .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.DITCHBULB_PLANT.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(DitchbulbBlock.AGE, 1))).addEntry(ItemLootEntry.builder(UGItems.DITCHBULB.get())).acceptFunction(SetCount.builder(ConstantRange.of(1))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
+            );
             dropWithSilk(UGBlocks.DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             this.registerLootTable(UGBlocks.TALL_DEEPTURF.get(), (block) -> droppingSeedsTall(block, UGBlocks.DEEPTURF.get()));
             this.registerLootTable(UGBlocks.TALL_SHIMMERWEED.get(), (block) -> droppingSeedsTall(block, UGBlocks.SHIMMERWEED.get()));
@@ -108,7 +113,6 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.CARVED_GLOOMGOURD);
             this.registerLootTable(UGBlocks.DEPTHROCK_PEBBLES.get(), (pebble) -> droppingRandomly(UGItems.DEPTHROCK_PEBBLE.get(), RandomValueRange.of(1.0F, 3.0F)));
             dropSelf(UGBlocks.GLOOM_O_LANTERN);
-            this.registerLootTable(UGBlocks.DITCHBULB_PLANT.get(), (ditchbulb) -> droppingWithShears(ditchbulb, withExplosionDecay(ditchbulb, ItemLootEntry.builder(UGItems.DITCHBULB.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))));
             dropSelf(UGBlocks.DEPTHROCK_STAIRS);
             dropSelf(UGBlocks.DEPTHROCK_BRICK_STAIRS);
             dropSelf(UGBlocks.SMOGSTEM_STAIRS);
@@ -206,7 +210,6 @@ public class UGLootTables extends LootTableProvider {
             registerFlowerPot(UGBlocks.POTTED_INK_MUSHROOM.get());
             registerFlowerPot(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
             registerFlowerPot(UGBlocks.POTTED_GRONGLET.get());
-            registerFlowerPot(UGBlocks.POTTED_DITCHBULB.get());
             dropWithSilk(UGBlocks.FROZEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             this.registerLootTable(UGBlocks.FROZEN_DEEPTURF.get(), BlockLootTables::onlyWithShears);
         }

@@ -45,7 +45,6 @@ public class UnderbeanBushBlock extends UGBushBlock implements IGrowable {
             worldIn.setBlockState(pos, state.with(AGE, i + 1), 2);
             net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
         }
-
     }
 
     @Override
@@ -71,7 +70,7 @@ public class UnderbeanBushBlock extends UGBushBlock implements IGrowable {
     }
 
     @Override
-    public boolean canGrow(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, boolean b) {
+    public boolean canGrow(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, boolean isClient) {
         return blockState.get(AGE) < 3;
     }
 

@@ -1,13 +1,14 @@
 package quek.undergarden.item;
 
-import net.minecraft.item.Item;
+import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.ItemStack;
+import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItemGroups;
 
-public class DitchbulbItem extends Item {
+public class DitchbulbItem extends BlockNamedItem {
 
     public DitchbulbItem() {
-        super(new Properties()
+        super(UGBlocks.DITCHBULB_PLANT.get(), new Properties()
                 .group(UGItemGroups.GROUP)
         );
     }

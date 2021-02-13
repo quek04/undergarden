@@ -206,7 +206,6 @@ public class UGMod {
 			pot.addPlant(UGBlocks.INK_MUSHROOM.getId(), UGBlocks.POTTED_INK_MUSHROOM);
 			pot.addPlant(UGBlocks.BLOOD_MUSHROOM.getId(), UGBlocks.POTTED_BLOOD_MUSHROOM);
 			pot.addPlant(UGBlocks.GRONGLET.getId(), UGBlocks.POTTED_GRONGLET);
-			pot.addPlant(UGBlocks.DITCHBULB_PLANT.getId(), UGBlocks.POTTED_DITCHBULB);
 		});
 	}
 

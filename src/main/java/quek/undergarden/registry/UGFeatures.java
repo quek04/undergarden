@@ -23,6 +23,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UGMod;
 import quek.undergarden.block.BlisterberryBushBlock;
+import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.world.gen.feature.*;
 import quek.undergarden.world.gen.trunkplacer.*;
@@ -115,7 +116,7 @@ public class UGFeatures {
         );
         public static final ConfiguredFeature<?, ?> DITCHBULB_PATCH = Feature.RANDOM_PATCH.withConfiguration(
                 (new BlockClusterFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.DITCHBULB_PLANT.get().getDefaultState()), new SimpleBlockPlacer()))
+                        new SimpleBlockStateProvider(UGBlocks.DITCHBULB_PLANT.get().getDefaultState().with(DitchbulbBlock.AGE, 1)), new SimpleBlockPlacer()))
                         .tries(16).whitelist(ImmutableSet.of(UGBlocks.DEPTHROCK.get())).func_227317_b_().build()
         );
         public static final ConfiguredFeature<?, ?> TALL_DEEPTURF_PATCH = Feature.RANDOM_PATCH.withConfiguration(
