@@ -50,7 +50,7 @@ public class UGItems {
             UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get(), new Item.Properties().group(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> GLOOMGOURD_SEEDS = ITEMS.register("gloomgourd_seeds", () -> new BlockNamedItem(
             UGBlocks.GLOOMGOURD_STEM.get(), (new Item.Properties()).group(UGItemGroups.GROUP)));
-    public static final RegistryObject<Item> DITCHBULB = ITEMS.register("ditchbulb", UGItem::new);
+    public static final RegistryObject<Item> DITCHBULB = ITEMS.register("ditchbulb", DitchbulbItem::new);
     public static final RegistryObject<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", UGItem::new);
     public static final RegistryObject<Item> GLOWING_KELP = ITEMS.register("glowing_kelp", () -> new BlockItem(UGBlocks.GLOWING_KELP.get(), (new Item.Properties()).group(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", GooBallItem::new);
