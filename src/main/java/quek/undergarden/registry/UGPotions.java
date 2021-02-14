@@ -16,6 +16,10 @@ public class UGPotions {
     public static final RegistryObject<Potion> LONG_BRITTLENESS = POTIONS.register("long_brittleness", () -> new Potion("brittleness", new EffectInstance(UGEffects.BRITTLENESS.get(), 1800)));
     public static final RegistryObject<Potion> STRONG_BRITTLENESS = POTIONS.register("strong_brittleness", () -> new Potion("brittleness", new EffectInstance(UGEffects.BRITTLENESS.get(), 450, 1)));
 
+    public static final RegistryObject<Potion> FEATHERWEIGHT = POTIONS.register("featherweight", () -> new Potion("featherweight", new EffectInstance(UGEffects.FEATHERWEIGHT.get(), 900)));
+    public static final RegistryObject<Potion> LONG_FEATHERWEIGHT = POTIONS.register("long_featherweight", () -> new Potion("featherweight", new EffectInstance(UGEffects.FEATHERWEIGHT.get(), 1800)));
+    public static final RegistryObject<Potion> STRONG_FEATHERWEIGHT = POTIONS.register("strong_featherweight", () -> new Potion("featherweight", new EffectInstance(UGEffects.FEATHERWEIGHT.get(), 450, 1)));
+
     public static final RegistryObject<Potion> VIRULENT_RESISTANCE = POTIONS.register("virulent_resistance", () -> new Potion("virulent_resistance", new EffectInstance(UGEffects.VIRULENT_RESISTANCE.get(), 3600)));
     public static final RegistryObject<Potion> LONG_VIRULENT_RESISTANCE = POTIONS.register("long_virulent_resistance", () -> new Potion("virulent_resistance", new EffectInstance(UGEffects.VIRULENT_RESISTANCE.get(), 9600)));
 

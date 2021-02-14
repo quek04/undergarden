@@ -346,6 +346,7 @@ public class UGLang extends LanguageProvider {
         addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
 
         addPotion(UGPotions.BRITTLENESS, "Brittleness");
+        addPotion(UGPotions.FEATHERWEIGHT, "Featherweight");
         addPotion(UGPotions.VIRULENT_RESISTANCE, "Virulent Resistance");
         addPotion(UGPotions.GLOWING, "Glowing");
 
