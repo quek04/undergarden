@@ -164,6 +164,9 @@ public class UGMod {
 			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.GLOOMGOURD.get().asItem(), UGPotions.VIRULENT_RESISTANCE.get());
 			PotionBrewing.addMix(UGPotions.VIRULENT_RESISTANCE.get(), Items.REDSTONE, UGPotions.LONG_VIRULENT_RESISTANCE.get());
 
+			PotionBrewing.addMix(Potions.AWKWARD, UGItems.DROOPVINE.get(), UGPotions.GLOWING.get());
+			PotionBrewing.addMix(UGPotions.GLOWING.get(), Items.REDSTONE, UGPotions.LONG_GLOWING.get());
+
 			ComposterBlock.registerCompostable(0.1F, UGItems.DROOPVINE.get());
 			ComposterBlock.registerCompostable(0.1F, UGItems.UNDERBEANS.get());
 			ComposterBlock.registerCompostable(0.2F, UGItems.BLISTERBERRY.get());
