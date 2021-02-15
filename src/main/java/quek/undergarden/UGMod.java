@@ -55,6 +55,7 @@ public class UGMod {
 		forgeBus.addListener(EventPriority.NORMAL, UGStructures::addDimensionalSpacing);
 
 		DeferredRegister<?>[] registers = {
+				UGBiomes.BIOMES,
 				UGBlocks.BLOCKS,
 				UGCarvers.CARVERS,
 				UGEffects.EFFECTS,

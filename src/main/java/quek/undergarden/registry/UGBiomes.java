@@ -3,21 +3,25 @@ package quek.undergarden.registry;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.*;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UGMod;
 
 public class UGBiomes {
 
-    public static final RegistryKey<Biome> BARREN_ABYSS = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("barren_abyss"));
-    public static final RegistryKey<Biome> DENSE_FOREST = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("dense_forest"));
-    public static final RegistryKey<Biome> FORGOTTEN_FIELD = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("forgotten_field"));
-    public static final RegistryKey<Biome> FROSTFIELDS = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("frostfields"));
-    public static final RegistryKey<Biome> GRONGLEGROWTH = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("gronglegrowth"));
-    public static final RegistryKey<Biome> MUSHROOM_BOG = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("mushroom_bog"));
-    public static final RegistryKey<Biome> SMOGSTEM_FOREST = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("smogstem_forest"));
-    public static final RegistryKey<Biome> SMOG_SPIRES = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("smog_spires"));
-    public static final RegistryKey<Biome> WIGGLEWOOD_FOREST = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name("wigglewood_forest"));
+    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, UGMod.MODID);
+
+    public static final RegistryKey<Biome> BARREN_ABYSS = register("barren_abyss");
+    public static final RegistryKey<Biome> DENSE_FOREST = register("dense_forest");
+    public static final RegistryKey<Biome> FORGOTTEN_FIELD = register("forgotten_field");
+    public static final RegistryKey<Biome> FROSTFIELDS = register("frostfields");
+    public static final RegistryKey<Biome> GRONGLEGROWTH = register("gronglegrowth");
+    public static final RegistryKey<Biome> MUSHROOM_BOG = register("mushroom_bog");
+    public static final RegistryKey<Biome> SMOGSTEM_FOREST = register("smogstem_forest");
+    public static final RegistryKey<Biome> SMOG_SPIRES = register("smog_spires");
+    public static final RegistryKey<Biome> WIGGLEWOOD_FOREST = register("wigglewood_forest");
 
     public static void toDictionary() {
         BiomeDictionary.addTypes(BARREN_ABYSS, BiomeDictionary.Type.COLD, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.WASTELAND);
@@ -33,5 +37,10 @@ public class UGBiomes {
 
     private static ResourceLocation name(String name) {
         return new ResourceLocation(UGMod.MODID, name);
+    }
+
+    private static RegistryKey<Biome> register(String name) {
+        BIOMES.register(name, BiomeMaker::makeVoidBiome);
+        return RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name(name));
     }
 }
