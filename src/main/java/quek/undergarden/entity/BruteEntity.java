@@ -38,10 +38,10 @@ public class BruteEntity extends MonsterEntity implements IAngerable {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 2.0F, false));
         this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.addGoal(6, new LookAtGoal(this, BruteEntity.class, 6.0F));
-        this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.addGoal(3, new LookAtGoal(this, BruteEntity.class, 6.0F));
+        this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
