@@ -28,9 +28,4 @@ public class BrittlenessEffect extends Effect {
             event.setAmount(damage * amplifier);
         }
     }
-
-    @Override
-    public boolean isReady(int duration, int amplifier) {
-        return duration > 0;
-    }
 }
