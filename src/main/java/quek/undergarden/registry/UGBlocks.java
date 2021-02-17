@@ -116,22 +116,22 @@ public class UGBlocks {
     public static final RegistryObject<Block> BLOOD_MUSHROOM_STALK = register("blood_mushroom_stalk", () -> new HugeMushroomBlock(AbstractBlock.Properties.from(Blocks.MUSHROOM_STEM)));
 
     //ores
-    public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(0)));
-    public static final RegistryObject<Block> IRON_ORE = register("iron_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(1)));
-    public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(2)));
-    public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(3)));
-    public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(1)));
-    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(SHIVERSTONE.get()).harvestLevel(2)));
-    public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(3)));
-    public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(TREMBLECRUST.get()).harvestLevel(4)));
-    public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(4)));
+    public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(0).setRequiresTool()));
+    public static final RegistryObject<Block> IRON_ORE = register("iron_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(1).setRequiresTool()));
+    public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(2).setRequiresTool()));
+    public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(3).setRequiresTool()));
+    public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(1).setRequiresTool()));
+    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(SHIVERSTONE.get()).harvestLevel(2).setRequiresTool()));
+    public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(3).setRequiresTool()));
+    public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(TREMBLECRUST.get()).harvestLevel(4).setRequiresTool()));
+    public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new UGOreBlock(AbstractBlock.Properties.from(DEPTHROCK.get()).harvestLevel(4).setRequiresTool()));
 
     //storage blocks
-    public static final RegistryObject<Block> CLOGGRUM_BLOCK = register("cloggrum_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(2)));
-    public static final RegistryObject<Block> FROSTSTEEL_BLOCK = register("froststeel_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(3)));
-    public static final RegistryObject<Block> UTHERIUM_BLOCK = register("utherium_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(3)));
-    public static final RegistryObject<Block> REGALIUM_BLOCK = register("regalium_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(4)));
-    public static final RegistryObject<Block> FORGOTTEN_BLOCK = register("forgotten_block", () -> new Block(AbstractBlock.Properties.from(Blocks.NETHERITE_BLOCK).harvestLevel(4)));
+    public static final RegistryObject<Block> CLOGGRUM_BLOCK = register("cloggrum_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(2).setRequiresTool()));
+    public static final RegistryObject<Block> FROSTSTEEL_BLOCK = register("froststeel_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(3).setRequiresTool()));
+    public static final RegistryObject<Block> UTHERIUM_BLOCK = register("utherium_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(3).setRequiresTool()));
+    public static final RegistryObject<Block> REGALIUM_BLOCK = register("regalium_block", () -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK).harvestLevel(4).setRequiresTool()));
+    public static final RegistryObject<Block> FORGOTTEN_BLOCK = register("forgotten_block", () -> new Block(AbstractBlock.Properties.from(Blocks.NETHERITE_BLOCK).harvestLevel(4).setRequiresTool()));
 
     //smogstem
     public static final RegistryObject<SaplingBlock> SMOGSTEM_SAPLING = register("smogstem_sapling", () -> new UGSaplingBlock(new SmogstemTree()));
