@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:depthrock_pebble"
+    },
+    "title": {
+      "translate": "advancement.shoot_slingshot.title"
+    },
+    "description": {
+      "translate": "advancement.shoot_slingshot.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "parent": "undergarden:undergarden/slingshot",
+  "criteria": {
+    "shot_pebble": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "is_projectile": true,
+            "direct_entity": {
+              "type": "undergarden:slingshot_ammo"
+            }
+          }
+        }
+      }
+    }
+  }
+}

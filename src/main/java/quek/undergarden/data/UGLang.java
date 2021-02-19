@@ -364,6 +364,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("slingshot", "Your New Best Friend");
         addAdvDesc("slingshot", "Craft a Slingshot.");
 
+        addAdvTitle("shoot_slingshot", "Flinging Rocks");
+        addAdvDesc("shoot_slingshot", "Shoot a pebble at something.");
+
         addAdvTitle("slay_rotling", "Birth Control");
         addAdvDesc("slay_rotling", "Slay the weakest of the Rotspawn, the Rotling.");
 
