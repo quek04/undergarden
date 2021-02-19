@@ -91,7 +91,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<GloomperEntity>> GLOOMPER = ENTITIES.register("gloomper", () -> GLOOMPER_TYPE);
 
     public static final EntityType<StonebornEntity> STONEBORN_TYPE = EntityType.Builder.create(StonebornEntity::new, EntityClassification.MONSTER)
-            .size(0.9F, 2.6F).build("stoneborn");
+            .size(1.0F, 2.6F).build("stoneborn");
     public static final RegistryObject<EntityType<StonebornEntity>> STONEBORN = ENTITIES.register("stoneborn", () -> STONEBORN_TYPE);
 
     public static final EntityType<NargoyleEntity> NARGOYLE_TYPE = EntityType.Builder.create(NargoyleEntity::new, EntityClassification.MONSTER)
