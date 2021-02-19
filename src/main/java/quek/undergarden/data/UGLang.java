@@ -239,11 +239,11 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FROSTSTEEL_SHOVEL, "Froststeel Shovel");
         addItem(UGItems.FROSTSTEEL_HOE, "Froststeel Hoe");
 
-        addItem(UGItems.UTHERIC_SWORD, "Utherium Sword");
-        addItem(UGItems.UTHERIC_PICKAXE, "Utherium Pickaxe");
-        addItem(UGItems.UTHERIC_AXE, "Utherium Axe");
-        addItem(UGItems.UTHERIC_SHOVEL, "Utherium Shovel");
-        addItem(UGItems.UTHERIC_HOE, "Utherium Hoe");
+        addItem(UGItems.UTHERIUM_SWORD, "Utherium Sword");
+        addItem(UGItems.UTHERIUM_PICKAXE, "Utherium Pickaxe");
+        addItem(UGItems.UTHERIUM_AXE, "Utherium Axe");
+        addItem(UGItems.UTHERIUM_SHOVEL, "Utherium Shovel");
+        addItem(UGItems.UTHERIUM_HOE, "Utherium Hoe");
 
         addItem(UGItems.FORGOTTEN_SWORD, "Forgotten Sword");
         addItem(UGItems.FORGOTTEN_PICKAXE, "Forgotten Pickaxe");
@@ -271,10 +271,10 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FROSTSTEEL_LEGGINGS, "Froststeel Leggings");
         addItem(UGItems.FROSTSTEEL_BOOTS, "Froststeel Boots");
 
-        addItem(UGItems.UTHERIC_HELMET, "Utherium Helmet");
-        addItem(UGItems.UTHERIC_CHESTPLATE, "Utherium Chestplate");
-        addItem(UGItems.UTHERIC_LEGGINGS, "Utherium Leggings");
-        addItem(UGItems.UTHERIC_BOOTS, "Utherium Boots");
+        addItem(UGItems.UTHERIUM_HELMET, "Utherium Helmet");
+        addItem(UGItems.UTHERIUM_CHESTPLATE, "Utherium Chestplate");
+        addItem(UGItems.UTHERIUM_LEGGINGS, "Utherium Leggings");
+        addItem(UGItems.UTHERIUM_BOOTS, "Utherium Boots");
 
         addItem(UGItems.UNDERBEANS, "Underbeans");
         addItem(UGItems.BLISTERBERRY, "Blisterberry");

@@ -50,7 +50,7 @@ public class UGSwordItem extends SwordItem {
         else if(stack.getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.UTHERIC_SWORD.get()) {
+        else if(stack.getItem() == UGItems.UTHERIUM_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").mergeStyle(TextFormatting.GRAY));
         }
         else if(stack.getItem() == UGItems.FORGOTTEN_SWORD.get()) {
@@ -65,7 +65,7 @@ public class UGSwordItem extends SwordItem {
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
-            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIC_SWORD.get()) {
+            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIUM_SWORD.get()) {
                 if(event.getEntityLiving().getType().isContained(UGTags.Entities.ROTSPAWN)) {
                     event.setAmount(damage * 1.5F);
                 }

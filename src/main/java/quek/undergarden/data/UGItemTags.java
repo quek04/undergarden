@@ -33,7 +33,7 @@ public class UGItemTags extends ItemTagsProvider {
         copy(UGTags.Blocks.MUSHROOMS, UGTags.Items.MUSHROOMS);
         tag(UGTags.Items.CLOGGRUM_ITEMS).add(UGItems.CLOGGRUM_SWORD.get(), UGItems.CLOGGRUM_PICKAXE.get(), UGItems.CLOGGRUM_AXE.get(), UGItems.CLOGGRUM_SHOVEL.get(), UGItems.CLOGGRUM_HOE.get(), UGItems.CLOGGRUM_HELMET.get(), UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.CLOGGRUM_BOOTS.get());
         tag(UGTags.Items.FROSTSTEEL_ITEMS).add(UGItems.FROSTSTEEL_SWORD.get(), UGItems.FROSTSTEEL_PICKAXE.get(), UGItems.FROSTSTEEL_AXE.get(), UGItems.FROSTSTEEL_SHOVEL.get(), UGItems.FROSTSTEEL_HOE.get(), UGItems.FROSTSTEEL_HELMET.get(), UGItems.FROSTSTEEL_CHESTPLATE.get(), UGItems.FROSTSTEEL_LEGGINGS.get(), UGItems.FROSTSTEEL_BOOTS.get());
-        tag(UGTags.Items.UTHERIUM_ITEMS).add(UGItems.UTHERIC_SWORD.get(), UGItems.UTHERIC_PICKAXE.get(), UGItems.UTHERIC_AXE.get(), UGItems.UTHERIC_SHOVEL.get(), UGItems.UTHERIC_HOE.get(), UGItems.UTHERIC_HELMET.get(), UGItems.UTHERIC_CHESTPLATE.get(), UGItems.UTHERIC_LEGGINGS.get(), UGItems.UTHERIC_BOOTS.get());
+        tag(UGTags.Items.UTHERIUM_ITEMS).add(UGItems.UTHERIUM_SWORD.get(), UGItems.UTHERIUM_PICKAXE.get(), UGItems.UTHERIUM_AXE.get(), UGItems.UTHERIUM_SHOVEL.get(), UGItems.UTHERIUM_HOE.get(), UGItems.UTHERIUM_HELMET.get(), UGItems.UTHERIUM_CHESTPLATE.get(), UGItems.UTHERIUM_LEGGINGS.get(), UGItems.UTHERIUM_BOOTS.get());
         copy(UGTags.Blocks.SMOGSTEM_LOGS, UGTags.Items.SMOGSTEM_LOGS);
         copy(UGTags.Blocks.WIGGLEWOOD_LOGS, UGTags.Items.WIGGLEWOOD_LOGS);
         copy(UGTags.Blocks.GRONGLE_STEMS, UGTags.Items.GRONGLE_STEMS);

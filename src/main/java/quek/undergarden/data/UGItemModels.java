@@ -166,10 +166,10 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.FROSTSTEEL_LEGGINGS);
         normalItem(UGItems.FROSTSTEEL_BOOTS);
 
-        normalItem(UGItems.UTHERIC_HELMET);
-        normalItem(UGItems.UTHERIC_CHESTPLATE);
-        normalItem(UGItems.UTHERIC_LEGGINGS);
-        normalItem(UGItems.UTHERIC_BOOTS);
+        normalItem(UGItems.UTHERIUM_HELMET);
+        normalItem(UGItems.UTHERIUM_CHESTPLATE);
+        normalItem(UGItems.UTHERIUM_LEGGINGS);
+        normalItem(UGItems.UTHERIUM_BOOTS);
 
         toolItem(UGItems.FROSTSTEEL_SWORD);
         toolItem(UGItems.FROSTSTEEL_PICKAXE);
@@ -177,11 +177,11 @@ public class UGItemModels extends UGItemModelProvider {
         toolItem(UGItems.FROSTSTEEL_SHOVEL);
         toolItem(UGItems.FROSTSTEEL_HOE);
 
-        toolItem(UGItems.UTHERIC_SWORD);
-        toolItem(UGItems.UTHERIC_PICKAXE);
-        toolItem(UGItems.UTHERIC_AXE);
-        toolItem(UGItems.UTHERIC_SHOVEL);
-        toolItem(UGItems.UTHERIC_HOE);
+        toolItem(UGItems.UTHERIUM_SWORD);
+        toolItem(UGItems.UTHERIUM_PICKAXE);
+        toolItem(UGItems.UTHERIUM_AXE);
+        toolItem(UGItems.UTHERIUM_SHOVEL);
+        toolItem(UGItems.UTHERIUM_HOE);
 
         toolItem(UGItems.FORGOTTEN_SWORD);
         toolItem(UGItems.FORGOTTEN_PICKAXE);

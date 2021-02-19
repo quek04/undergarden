@@ -240,23 +240,23 @@ public class UGRecipes extends UGRecipeProvider {
 
         makeSword(UGItems.CLOGGRUM_SWORD, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeSword(UGItems.FROSTSTEEL_SWORD, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makeSword(UGItems.UTHERIC_SWORD, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeSword(UGItems.UTHERIUM_SWORD, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makePickaxe(UGItems.CLOGGRUM_PICKAXE, UGItems.CLOGGRUM_INGOT).build(consumer);
         makePickaxe(UGItems.FROSTSTEEL_PICKAXE, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makePickaxe(UGItems.UTHERIC_PICKAXE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makePickaxe(UGItems.UTHERIUM_PICKAXE, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeAxe(UGItems.CLOGGRUM_AXE, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeAxe(UGItems.FROSTSTEEL_AXE, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makeAxe(UGItems.UTHERIC_AXE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeAxe(UGItems.UTHERIUM_AXE, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeShovel(UGItems.CLOGGRUM_SHOVEL, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeShovel(UGItems.FROSTSTEEL_SHOVEL, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makeShovel(UGItems.UTHERIC_SHOVEL, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeShovel(UGItems.UTHERIUM_SHOVEL, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeHoe(UGItems.CLOGGRUM_HOE, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeHoe(UGItems.FROSTSTEEL_HOE, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makeHoe(UGItems.UTHERIC_HOE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeHoe(UGItems.UTHERIUM_HOE, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeChestplate(UGItems.MASTICATED_CHESTPLATE, UGItems.MASTICATOR_SCALES).build(consumer);
 
@@ -270,10 +270,10 @@ public class UGRecipes extends UGRecipeProvider {
         makeLeggings(UGItems.FROSTSTEEL_LEGGINGS, UGItems.FROSTSTEEL_INGOT).build(consumer);
         makeBoots(UGItems.FROSTSTEEL_BOOTS, UGItems.FROSTSTEEL_INGOT).build(consumer);
 
-        makeHelmet(UGItems.UTHERIC_HELMET, UGItems.UTHERIUM_INGOT).build(consumer);
-        makeChestplate(UGItems.UTHERIC_CHESTPLATE, UGItems.UTHERIUM_INGOT).build(consumer);
-        makeLeggings(UGItems.UTHERIC_LEGGINGS, UGItems.UTHERIUM_INGOT).build(consumer);
-        makeBoots(UGItems.UTHERIC_BOOTS, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeHelmet(UGItems.UTHERIUM_HELMET, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeChestplate(UGItems.UTHERIUM_CHESTPLATE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeLeggings(UGItems.UTHERIUM_LEGGINGS, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeBoots(UGItems.UTHERIUM_BOOTS, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeStairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK).build(consumer);
         makeStairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS).build(consumer);

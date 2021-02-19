@@ -2,7 +2,6 @@ package quek.undergarden.item.tool;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.IItemTier;
@@ -39,7 +38,7 @@ public class UGAxeItem extends AxeItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UGItems.UTHERIC_AXE.get()) {
+        if(stack.getItem() == UGItems.UTHERIUM_AXE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").mergeStyle(TextFormatting.GRAY));
         }
         else if(stack.getItem() == UGItems.FROSTSTEEL_AXE.get()) {
@@ -57,7 +56,7 @@ public class UGAxeItem extends AxeItem {
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
-            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIC_AXE.get()) {
+            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIUM_AXE.get()) {
                 if(event.getEntityLiving().getType().isContained(UGTags.Entities.ROTSPAWN)) {
                     event.setAmount(damage * 1.5F);
                 }
