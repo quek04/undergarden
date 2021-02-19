@@ -78,7 +78,7 @@ public class UGEntityTypes {
             .size(.5F, .5F).build("gwibling");
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> GWIBLING_TYPE);
 
-    public static final EntityType<BruteEntity> BRUTE_TYPE = EntityType.Builder.create(BruteEntity::new, EntityClassification.MONSTER)
+    public static final EntityType<BruteEntity> BRUTE_TYPE = EntityType.Builder.create(BruteEntity::new, EntityClassification.CREATURE)
             .size(0.9F, 2).build("brute");
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> BRUTE_TYPE);
 
