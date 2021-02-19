@@ -140,6 +140,9 @@
       },
       {
         "name": "undergarden:music/acasta_gneiss", "stream": true
+      },
+      {
+        "name": "undergarden:music/all_that_wiggles_is_wood", "stream": true
       }
     ]
   },
