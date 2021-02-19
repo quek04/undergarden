@@ -25,7 +25,7 @@ public class BrittlenessEffect extends Effect {
         if (entity.isPotionActive(UGEffects.BRITTLENESS.get()) && source != DamageSource.OUT_OF_WORLD) {
             int amplifier = (entity.getActivePotionEffect(UGEffects.BRITTLENESS.get()).getAmplifier() + 1) + (entity.getTotalArmorValue() / 2) * 2;
 
-            event.setAmount(damage * amplifier);
+            event.setAmount(damage + amplifier);
         }
     }
 }
