@@ -156,11 +156,6 @@ public class BruteModel<T extends BruteEntity> extends AgeableModel<T> {
 		this.rightarm.rotateAngleX = 0.2618F + MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 	}
 
-	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		brute.render(matrixStack, buffer, packedLight, packedOverlay);
-	}
-
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
