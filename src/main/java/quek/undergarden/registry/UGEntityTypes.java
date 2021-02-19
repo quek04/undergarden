@@ -71,7 +71,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<DwellerEntity>> DWELLER = ENTITIES.register("dweller", () -> DWELLER_TYPE);
 
     public static final EntityType<RotDwellerEntity> ROTDWELLER_TYPE = EntityType.Builder.create(RotDwellerEntity::new, EntityClassification.MONSTER)
-            .size(0.9F, 1.8F).build("rotdweller");
+            .size(1.2F, 1.8F).build("rotdweller");
     public static final RegistryObject<EntityType<RotDwellerEntity>> ROTDWELLER = ENTITIES.register("rotdweller", () -> ROTDWELLER_TYPE);
 
     public static final EntityType<GwiblingEntity> GWIBLING_TYPE = EntityType.Builder.create(GwiblingEntity::new, EntityClassification.WATER_AMBIENT)
