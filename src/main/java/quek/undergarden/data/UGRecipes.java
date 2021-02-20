@@ -330,6 +330,12 @@ public class UGRecipes extends UGRecipeProvider {
         makeStew(UGItems.INDIGO_STEW, UGBlocks.INDIGO_MUSHROOM).build(consumer);
         makeStew(UGItems.VEILED_STEW, UGBlocks.VEIL_MUSHROOM).build(consumer);
 
+        smithingForgotten(UGItems.CLOGGRUM_SWORD, UGItems.FORGOTTEN_SWORD).build(consumer, name("forgotten_sword_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_PICKAXE, UGItems.FORGOTTEN_PICKAXE).build(consumer, name("forgotten_pickaxe_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_AXE, UGItems.FORGOTTEN_AXE).build(consumer, name("forgotten_axe_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_SHOVEL, UGItems.FORGOTTEN_SHOVEL).build(consumer, name("forgotten_shovel_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_HOE, UGItems.FORGOTTEN_HOE).build(consumer, name("forgotten_hoe_smithing"));
+
         smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).build(consumer, name("smelt_depthrock_bricks"));
         smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).build(consumer, name("smelt_shiverstone_bricks"));
 

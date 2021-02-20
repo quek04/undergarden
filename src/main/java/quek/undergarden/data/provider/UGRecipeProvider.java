@@ -1,10 +1,7 @@
 package quek.undergarden.data.provider;
 
 import net.minecraft.block.Block;
-import net.minecraft.data.CookingRecipeBuilder;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.data.ShapelessRecipeBuilder;
+import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -15,6 +12,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.common.data.ForgeRecipeProvider;
+import quek.undergarden.registry.UGItems;
 
 import java.util.function.Supplier;
 
@@ -298,5 +296,14 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
     public CookingRecipeBuilder smokingRecipe(IItemProvider result, IItemProvider ingredient, float exp, int count) {
         return CookingRecipeBuilder.cookingRecipe(Ingredient.fromStacks(new ItemStack(ingredient, count)), result, exp, 100, IRecipeSerializer.SMOKING)
                 .addCriterion("has_" + ingredient.asItem().getRegistryName(), hasItem(ingredient));
+    }
+
+    public SmithingRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> result) {
+        return SmithingRecipeBuilder.smithingRecipe(Ingredient.fromItems(input.get()), Ingredient.fromItems(upgradeItem.get()), result.get())
+                .addCriterion("has_" + upgradeItem.get().getRegistryName(), hasItem(upgradeItem.get()));
+    }
+
+    public SmithingRecipeBuilder smithingForgotten(Supplier<Item> input, Supplier<Item> result) {
+        return smithingRecipe(input, UGItems.FORGOTTEN_INGOT, result);
     }
 }
