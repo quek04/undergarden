@@ -375,10 +375,30 @@ public class UGRecipes extends UGRecipeProvider {
         smokingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), .35F).build(consumer, name("smoke_gwibling"));
 
         smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).build(consumer, name("smelt_gloomper_leg"));
-        blastingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).build(consumer, name("blast_gloomper_leg"));
+        smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).build(consumer, name("smoke_gloomper_leg"));
 
         smeltingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).build(consumer, name("smelt_glowing_kelp"));
         smokingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).build(consumer, name("smoke_glowing_kelp"));
+
+        depthrockStonecuttingRecipe(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).build(consumer, name("chiseled_depthrock_bricks_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_SLAB.get(), 2).build(consumer, name("depthrock_brick_slab_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_STAIRS.get()).build(consumer, name("depthrock_brick_stairs_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_WALL.get()).build(consumer, name("depthrock_brick_wall_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICKS.get()).build(consumer, name("depthrock_bricks_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_SLAB.get(), 2).build(consumer, name("depthrock_slab_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_STAIRS.get()).build(consumer, name("depthrock_stairs_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_WALL.get()).build(consumer, name("depthrock_wall_stonecutting"));
+
+        depthrockStonecuttingRecipe(UGItems.DEPTHROCK_PEBBLE.get(), 9).build(consumer, name("depthrock_pebble_stonecutting"));
+
+        shiverstoneStonecuttingRecipe(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get()).build(consumer, name("chiseled_shiverstone_bricks_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_SLAB.get(), 2).build(consumer, name("shiverstone_brick_slab_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_STAIRS.get()).build(consumer, name("shiverstone_brick_stairs_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_WALL.get()).build(consumer, name("shiverstone_brick_wall_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICKS.get()).build(consumer, name("shiverstone_bricks_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_SLAB.get(), 2).build(consumer, name("shiverstone_slab_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_STAIRS.get()).build(consumer, name("shiverstone_stairs_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_WALL.get()).build(consumer, name("shiverstone_wall_stonecutting"));
     }
 
     private ResourceLocation name(String name) {

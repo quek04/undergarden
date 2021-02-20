@@ -12,6 +12,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.common.data.ForgeRecipeProvider;
+import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 import java.util.function.Supplier;
@@ -305,5 +306,31 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
 
     public SmithingRecipeBuilder smithingForgotten(Supplier<Item> input, Supplier<Item> result) {
         return smithingRecipe(input, UGItems.FORGOTTEN_INGOT, result);
+    }
+
+    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, IItemProvider result) {
+        return SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(input.get()), result)
+                .addCriterion("has_" + input.get().getRegistryName(), hasItem(input.get()));
+    }
+
+    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, IItemProvider result, int resultAmount) {
+        return SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(input.get()), result, resultAmount)
+                .addCriterion("has_" + input.get().getRegistryName(), hasItem(input.get()));
+    }
+
+    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(IItemProvider result) {
+        return stonecuttingRecipe(UGBlocks.DEPTHROCK, result);
+    }
+
+    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(IItemProvider result, int resultAmount) {
+        return stonecuttingRecipe(UGBlocks.DEPTHROCK, result, resultAmount);
+    }
+
+    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(IItemProvider result) {
+        return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result);
+    }
+
+    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(IItemProvider result, int resultAmount) {
+        return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result, resultAmount);
     }
 }
