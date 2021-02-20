@@ -86,7 +86,7 @@ public class UGItems {
 
     public static final RegistryObject<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGTools.FORGOTTEN));
     public static final RegistryObject<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGTools.FORGOTTEN));
-    public static final RegistryObject<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGTools.FORGOTTEN, 3.0F, -2.9F));
+    public static final RegistryObject<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGTools.FORGOTTEN, 4.0F, -3.1F));
     public static final RegistryObject<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGTools.FORGOTTEN));
     public static final RegistryObject<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGTools.FORGOTTEN, -3, 0.0F));
 
