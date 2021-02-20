@@ -60,70 +60,70 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeStairs(Supplier<? extends Block> stairsOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeStairs(Supplier<? extends Block> stairsOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(stairsOut.get(), 4)
                 .patternLine("M  ")
                 .patternLine("MM ")
                 .patternLine("MMM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeSlab(Supplier<? extends Block> slabOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeSlab(Supplier<? extends Block> slabOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(slabOut.get(), 6)
                 .patternLine("MMM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeWall(Supplier<? extends Block> wallOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeWall(Supplier<? extends Block> wallOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(wallOut.get(), 6)
                 .patternLine("MMM")
                 .patternLine("MMM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeFence(Supplier<? extends Block> fenceOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeFence(Supplier<? extends Block> fenceOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(fenceOut.get(), 6)
                 .patternLine("M/M")
                 .patternLine("M/M")
-                .key('M', materialIn.get())
+                .key('M', blockIn.get())
                 .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeFenceGate(Supplier<? extends Block> fenceGateOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeFenceGate(Supplier<? extends Block> fenceGateOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(fenceGateOut.get())
                 .patternLine("/M/")
                 .patternLine("/M/")
-                .key('M', materialIn.get())
+                .key('M', blockIn.get())
                 .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(bricksOut.get(), 4)
                 .patternLine("MM")
                 .patternLine("MM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeChiseledBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeChiseledBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(bricksOut.get())
                 .patternLine("M")
                 .patternLine("M")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeWood(Supplier<? extends Block> woodOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeWood(Supplier<? extends Block> woodOut, Supplier<? extends Block> logIn) {
         return ShapedRecipeBuilder.shapedRecipe(woodOut.get(), 3)
                 .patternLine("MM")
                 .patternLine("MM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', logIn.get())
+                .addCriterion("has_" + logIn.get().getRegistryName().getPath(), hasItem(logIn.get()));
     }
 
     public ShapedRecipeBuilder makeIngotToBlock(Supplier<? extends Block> blockOut, Supplier<? extends Item> ingotIn) {
@@ -174,16 +174,6 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .key('#', materialIn.get())
                 .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
-    }
-
-    public ShapedRecipeBuilder makeTagPickaxe(Supplier<? extends Item> pickaxeOut, ITag.INamedTag<Item> materialIn) {
-        return ShapedRecipeBuilder.shapedRecipe(pickaxeOut.get())
-                .patternLine("###")
-                .patternLine(" / ")
-                .patternLine(" / ")
-                .key('#', materialIn)
-                .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn, hasItem(materialIn));
     }
 
     public ShapedRecipeBuilder makeAxe(Supplier<? extends Item> axeOut, Supplier<? extends Item> materialIn) {

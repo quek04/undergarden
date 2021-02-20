@@ -6,6 +6,7 @@ import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import quek.undergarden.UGMod;
@@ -117,7 +118,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .patternLine("CSC")
                 .patternLine("CCC")
                 .patternLine(" C ")
-                .key('S', UGBlocks.SMOGSTEM_PLANKS.get())
+                .key('S', ItemTags.PLANKS)
                 .key('C', UGItems.CLOGGRUM_INGOT.get())
                 .addCriterion("has_scales", hasItem(UGItems.CLOGGRUM_INGOT.get()))
                 .build(consumer);
