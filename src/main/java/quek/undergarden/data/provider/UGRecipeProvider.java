@@ -10,14 +10,12 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.common.data.ForgeRecipeProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 import java.util.function.Supplier;
 
-public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionBuilder {
+public class UGRecipeProvider extends RecipeProvider {
 
     public UGRecipeProvider(DataGenerator generatorIn) {
         super(generatorIn);
