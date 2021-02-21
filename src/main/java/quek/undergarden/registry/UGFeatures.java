@@ -329,7 +329,7 @@ public class UGFeatures {
         register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.range(128).square().func_242731_b(20));
         register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.range(64).square().func_242731_b(15));
         register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.range(32).square().func_242731_b(5));
-        register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.range(11).square().func_242731_b(3));
+        register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.range(12).square().func_242731_b(3));
 
         register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(256).square().func_242731_b(10));
         register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(256).square().func_242731_b(10));
