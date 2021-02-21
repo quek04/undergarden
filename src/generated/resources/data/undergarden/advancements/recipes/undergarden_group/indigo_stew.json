@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:indigo_stew"
+    ]
+  },
+  "criteria": {
+    "has_indigo_mushroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:indigo_mushroom"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:indigo_stew"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_indigo_mushroom",
+      "has_the_recipe"
+    ]
+  ]
+}

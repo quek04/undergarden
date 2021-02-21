@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:utherium_chunk_to_ingot"
+    ]
+  },
+  "criteria": {
+    "has_utherium_chunk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:utherium_chunk"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:utherium_chunk_to_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_utherium_chunk",
+      "has_the_recipe"
+    ]
+  ]
+}

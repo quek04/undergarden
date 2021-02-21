@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smelt_depthrock_bricks"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:depthrock_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:depthrock_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smelt_depthrock_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:depthrock_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

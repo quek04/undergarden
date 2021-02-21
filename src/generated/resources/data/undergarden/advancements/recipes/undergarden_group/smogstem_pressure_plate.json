@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smogstem_pressure_plate"
+    ]
+  },
+  "criteria": {
+    "has_smogstem_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:smogstem_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smogstem_pressure_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smogstem_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

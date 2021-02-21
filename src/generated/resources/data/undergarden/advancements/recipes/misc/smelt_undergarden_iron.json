@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smelt_undergarden_iron"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:iron_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smelt_undergarden_iron"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:iron_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

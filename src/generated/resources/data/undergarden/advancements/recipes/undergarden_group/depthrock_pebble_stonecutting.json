@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:depthrock_pebble_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:depthrock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:depthrock"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:depthrock_pebble_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:depthrock",
+      "has_the_recipe"
+    ]
+  ]
+}

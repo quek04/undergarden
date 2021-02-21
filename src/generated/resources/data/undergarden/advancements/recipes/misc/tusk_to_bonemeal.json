@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:tusk_to_bonemeal"
+    ]
+  },
+  "criteria": {
+    "has_tusk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:brute_tusk"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:tusk_to_bonemeal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_tusk",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:chiseled_shiverstone_bricks"
+    ]
+  },
+  "criteria": {
+    "has_shiverstone_brick_slab": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:shiverstone_brick_slab"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:chiseled_shiverstone_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_shiverstone_brick_slab",
+      "has_the_recipe"
+    ]
+  ]
+}

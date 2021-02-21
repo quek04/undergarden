@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:inky_stew"
+    ]
+  },
+  "criteria": {
+    "has_ink_mushroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:ink_mushroom"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:inky_stew"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ink_mushroom",
+      "has_the_recipe"
+    ]
+  ]
+}

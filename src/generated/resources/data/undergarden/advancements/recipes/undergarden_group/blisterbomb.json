@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:blisterbomb"
+    ]
+  },
+  "criteria": {
+    "has_twistytwig": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:twistytwig"
+          }
+        ]
+      }
+    },
+    "has_blisterberry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:rotten_blisterberry"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:blisterbomb"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_twistytwig",
+      "has_blisterberry",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:gloom_o_lantern"
+    ]
+  },
+  "criteria": {
+    "has_carved_gourd": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:carved_gloomgourd"
+          }
+        ]
+      }
+    },
+    "has_torch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:torch"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:gloom_o_lantern"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_carved_gourd",
+      "has_torch",
+      "has_the_recipe"
+    ]
+  ]
+}
