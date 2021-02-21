@@ -85,9 +85,6 @@ public class ClientStuff {
         render(UGBlocks.POTTED_BLOOD_MUSHROOM, cutout);
         render(UGBlocks.POTTED_GRONGLET, cutout);
         render(UGBlocks.FROZEN_DEEPTURF, cutout);
-
-        RenderTypeLookup.setRenderLayer(UGFluids.VIRULENT_MIX_SOURCE.get(), translucent);
-        RenderTypeLookup.setRenderLayer(UGFluids.VIRULENT_MIX_FLOWING.get(), translucent);
     }
 
     public static void registerEntityRenderers() {
