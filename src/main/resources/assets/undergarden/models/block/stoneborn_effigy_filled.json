@@ -2,7 +2,7 @@
   "parent": "minecraft:block/cube",
   "textures": {
     "particle": "undergarden:block/depthrock_bricks",
-    "north": "undergarden:block/stoneborn_effigy_empty",
+    "north": "undergarden:block/stoneborn_effigy_filled",
     "south": "undergarden:block/depthrock_bricks",
     "east": "undergarden:block/depthrock_bricks",
     "west": "undergarden:block/depthrock_bricks",

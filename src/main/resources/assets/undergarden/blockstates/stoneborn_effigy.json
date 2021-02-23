@@ -1,19 +1,34 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=north,charges=0": {
       "model": "undergarden:block/stoneborn_effigy",
       "y": 90
     },
-    "facing=east": {
+    "facing=east,charges=0": {
       "model": "undergarden:block/stoneborn_effigy",
       "y": 180
     },
-    "facing=south": {
+    "facing=south,charges=0": {
       "model": "undergarden:block/stoneborn_effigy",
       "y": 270
     },
-    "facing=west": {
+    "facing=west,charges=0": {
       "model": "undergarden:block/stoneborn_effigy"
+    },
+    "facing=north,charges=1": {
+      "model": "undergarden:block/stoneborn_effigy_filled",
+      "y": 90
+    },
+    "facing=east,charges=1": {
+      "model": "undergarden:block/stoneborn_effigy_filled",
+      "y": 180
+    },
+    "facing=south,charges=1": {
+      "model": "undergarden:block/stoneborn_effigy_filled",
+      "y": 270
+    },
+    "facing=west,charges=1": {
+      "model": "undergarden:block/stoneborn_effigy_filled"
     }
   }
 }
