@@ -444,6 +444,7 @@ ded16329ed2785ddad246b4d05bc876019f8d013 data/forge/tags/items/fences/wooden.jso
 9f10a35affc9c3b74d990bf22c88c45f8275398b data/forge/tags/items/ingots.json
 c77538548ae6aeaafde51e4509d3db6759d0eee7 data/forge/tags/items/mushrooms.json
 943cf9a1dd04471fea142f3ebab8a226f4090ee7 data/forge/tags/items/nuggets.json
+cc1831468acd0423801d37aa3bd0a9f6740df69c data/forge/tags/items/ores.json
 c6ab80c90c21c8b2454ab68d8c5309c36bded79f data/forge/tags/items/ores/coal.json
 bcf73da5de7bac4758d6de904147bce7775af8b2 data/forge/tags/items/ores/diamond.json
 c1007bd20aff2d3184f52489c617c52d5c8902e7 data/forge/tags/items/ores/iron.json

@@ -80,6 +80,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(Tags.Items.SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
         tag(Tags.Items.SLIMEBALLS).add(UGItems.GOO_BALL.get());
         tag(Tags.Items.STRING).add(UGItems.TWISTYTWIG.get());
+        tag(Tags.Items.ORES).add(UGBlocks.CLOGGRUM_ORE.get().asItem(), UGBlocks.FROSTSTEEL_ORE.get().asItem(), UGBlocks.UTHERIUM_ORE.get().asItem(), UGBlocks.REGALIUM_ORE.get().asItem(), UGBlocks.OTHERSIDE_UTHERIUM_ORE.get().asItem());
         tag(Tags.Items.ORES_COAL).add(UGBlocks.COAL_ORE.get().asItem());
         tag(Tags.Items.ORES_DIAMOND).add(UGBlocks.DIAMOND_ORE.get().asItem());
         tag(Tags.Items.ORES_IRON).add(UGBlocks.IRON_ORE.get().asItem());
