@@ -73,6 +73,15 @@ public class UGRecipes extends UGRecipeProvider {
                 .addCriterion("has_torch", hasItem(Items.TORCH))
                 .build(consumer);
 
+        ShapedRecipeBuilder.shapedRecipe(UGBlocks.SHARD_O_LANTERN.get())
+                .patternLine("G")
+                .patternLine("T")
+                .key('G', UGBlocks.CARVED_GLOOMGOURD.get())
+                .key('T', UGItems.SHARD_TORCH.get())
+                .addCriterion("has_carved_gourd", hasItem(UGBlocks.CARVED_GLOOMGOURD.get()))
+                .addCriterion("has_shard_torch", hasItem(UGItems.SHARD_TORCH.get()))
+                .build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(UGBlocks.CLOGGRUM_BARS.get(), 16)
                 .patternLine("CCC")
                 .patternLine("CCC")

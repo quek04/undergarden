@@ -49,6 +49,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.CARVED_GLOOMGOURD);
         itemBlock(UGBlocks.DEPTHROCK_PEBBLES);
         itemBlock(UGBlocks.GLOOM_O_LANTERN);
+        itemBlock(UGBlocks.SHARD_O_LANTERN);
         itemBlock(UGBlocks.CLOGGRUM_BLOCK);
         itemBlock(UGBlocks.FROSTSTEEL_BLOCK);
         itemBlock(UGBlocks.UTHERIUM_BLOCK);

@@ -113,6 +113,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.CARVED_GLOOMGOURD);
             this.registerLootTable(UGBlocks.DEPTHROCK_PEBBLES.get(), (pebble) -> droppingRandomly(UGItems.DEPTHROCK_PEBBLE.get(), RandomValueRange.of(1.0F, 3.0F)));
             dropSelf(UGBlocks.GLOOM_O_LANTERN);
+            dropSelf(UGBlocks.SHARD_O_LANTERN);
             dropSelf(UGBlocks.DEPTHROCK_STAIRS);
             dropSelf(UGBlocks.DEPTHROCK_BRICK_STAIRS);
             dropSelf(UGBlocks.SMOGSTEM_STAIRS);

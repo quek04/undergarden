@@ -88,6 +88,7 @@ public class UGBlocks {
     public static final RegistryObject<StemGrownBlock> GLOOMGOURD = register("gloomgourd", () -> new GloomgourdBlock(AbstractBlock.Properties.from(Blocks.PUMPKIN)));
     public static final RegistryObject<Block> CARVED_GLOOMGOURD = BLOCKS.register("carved_gloomgourd", () -> new CarvedGloomgourdBlock(AbstractBlock.Properties.from(Blocks.CARVED_PUMPKIN)));
     public static final RegistryObject<Block> GLOOM_O_LANTERN = register("gloom_o_lantern", () -> new CarvedGloomgourdBlock(AbstractBlock.Properties.from(Blocks.JACK_O_LANTERN).setLightLevel((state) -> 15)));
+    public static final RegistryObject<Block> SHARD_O_LANTERN = register("shard_o_lantern", () -> new CarvedGloomgourdShardBlock(AbstractBlock.Properties.from(GLOOM_O_LANTERN.get()).setLightLevel((state) -> 6)));
     public static final RegistryObject<StemBlock> GLOOMGOURD_STEM = BLOCKS.register("gloomgourd_stem", () -> new UGStemBlock(GLOOMGOURD.get(), AbstractBlock.Properties.from(Blocks.PUMPKIN_STEM)));
     public static final RegistryObject<AttachedStemBlock> GLOOMGOURD_STEM_ATTACHED = BLOCKS.register("gloomgourd_stem_attached", () -> new UGAttachedStemBlock(GLOOMGOURD.get(), AbstractBlock.Properties.from(Blocks.ATTACHED_PUMPKIN_STEM)));
     public static final RegistryObject<Block> DEPTHROCK_PEBBLES = BLOCKS.register("depthrock_pebbles", () -> new DepthrockPebblesBlock(AbstractBlock.Properties.create(Material.PLANTS).sound(SoundType.BASALT).notSolid().doesNotBlockMovement().hardnessAndResistance(0F)));
