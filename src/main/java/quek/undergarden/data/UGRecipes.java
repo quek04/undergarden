@@ -338,6 +338,7 @@ public class UGRecipes extends UGRecipeProvider {
 
         smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).build(consumer, name("smelt_depthrock_bricks"));
         smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).build(consumer, name("smelt_shiverstone_bricks"));
+        smeltingRecipe(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get(), UGBlocks.TREMBLECRUST_BRICKS.get(), .1F).build(consumer, name("smelt_tremblecrust_bricks"));
 
         smeltingRecipe(Items.DIAMOND, UGItems.CATALYST.get(), 0.0F).build(consumer, name("smelt_catalyst"));
 

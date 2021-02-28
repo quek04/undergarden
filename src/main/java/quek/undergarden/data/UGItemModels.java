@@ -77,6 +77,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.REGALIUM_BLOCK);
         itemBlock(UGBlocks.TREMBLECRUST);
         itemBlock(UGBlocks.TREMBLECRUST_BRICKS);
+        itemBlock(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
         itemBlock(UGBlocks.OTHERSIDE_UTHERIUM_ORE);
         itemBlock(UGBlocks.SMOGSTEM_WOOD);
         itemBlock(UGBlocks.WIGGLEWOOD_WOOD);

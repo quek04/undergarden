@@ -63,6 +63,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(6F, 24F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(3).setRequiresTool()));
     public static final RegistryObject<Block> LOOSE_TREMBLECRUST = register("loose_tremblecrust", () -> new LooseTremblecrustBlock(AbstractBlock.Properties.from(TREMBLECRUST.get()).noDrops()));
     public static final RegistryObject<Block> TREMBLECRUST_BRICKS = register("tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.from(TREMBLECRUST.get()).setRequiresTool()));
+    public static final RegistryObject<Block> CRACKED_TREMBLECRUST_BRICKS = register("cracked_tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.from(TREMBLECRUST_BRICKS.get())));
 
     //terrain
     public static final RegistryObject<Block> DEEPTURF_BLOCK = register("deepturf_block", () -> new DeepturfBlock(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK).harvestTool(ToolType.SHOVEL)));

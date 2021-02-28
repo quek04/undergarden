@@ -147,6 +147,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.REGALIUM_BLOCK);
             dropSelf(UGBlocks.TREMBLECRUST);
             dropSelf(UGBlocks.TREMBLECRUST_BRICKS);
+            dropSelf(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
             dropSelf(UGBlocks.SMOGSTEM_WOOD);
             dropSelf(UGBlocks.WIGGLEWOOD_WOOD);
             dropOther(UGBlocks.SHARD_TORCH, UGItems.SHARD_TORCH.get());

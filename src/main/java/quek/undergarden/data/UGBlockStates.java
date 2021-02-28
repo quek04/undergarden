@@ -48,6 +48,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.REGALIUM_BLOCK);
         block(UGBlocks.TREMBLECRUST);
         block(UGBlocks.TREMBLECRUST_BRICKS);
+        block(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
         block(UGBlocks.OTHERSIDE_UTHERIUM_ORE);
         block(UGBlocks.LOOSE_TREMBLECRUST);
         block(UGBlocks.IRON_ORE);

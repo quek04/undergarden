@@ -82,6 +82,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.TREMBLECRUST, "Tremblecrust");
         addBlock(UGBlocks.LOOSE_TREMBLECRUST, "Loose Tremblecrust");
         addBlock(UGBlocks.TREMBLECRUST_BRICKS, "Tremblecrust Bricks");
+        addBlock(UGBlocks.CRACKED_TREMBLECRUST_BRICKS, "Cracked Tremblecrust Bricks");
 
         addBlock(UGBlocks.DEEPTURF_BLOCK, "Deepturf Block");
         addBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK, "Ashen Deepturf Block");
