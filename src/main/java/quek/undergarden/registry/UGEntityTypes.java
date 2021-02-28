@@ -3,15 +3,18 @@ package quek.undergarden.registry;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UGMod;
 import quek.undergarden.entity.*;
-import quek.undergarden.entity.boss.*;
+import quek.undergarden.entity.boss.ForgottenGuardianEntity;
+import quek.undergarden.entity.boss.MasticatorEntity;
 import quek.undergarden.entity.cavern.AbstractCavernCreatureEntity;
 import quek.undergarden.entity.cavern.MuncherEntity;
 import quek.undergarden.entity.cavern.NargoyleEntity;
@@ -20,6 +23,7 @@ import quek.undergarden.entity.projectile.*;
 import quek.undergarden.entity.rotspawn.*;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
+@Mod.EventBusSubscriber(modid = "undergarden", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGEntityTypes {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, UGMod.MODID);
@@ -135,23 +139,24 @@ public class UGEntityTypes {
         EntitySpawnPlacementRegistry.register(GWIB.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GwibEntity::canGwibSpawn);
     }
 
-    public static void entityAttributes() {
-        GlobalEntityTypeAttributes.put(ROTLING.get(), RotlingEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(ROTWALKER.get(), RotwalkerEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(ROTBEAST.get(), RotbeastEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(DWELLER.get(), DwellerEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(ROTDWELLER.get(), RotDwellerEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(GWIBLING.get(), AbstractFishEntity.func_234176_m_().create());
-        GlobalEntityTypeAttributes.put(BRUTE.get(), BruteEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(SCINTLING.get(), ScintlingEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(GLOOMPER.get(), GloomperEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(STONEBORN.get(), StonebornEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(NARGOYLE.get(), NargoyleEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(FORGOTTEN_GUARDIAN.get(), ForgottenGuardianEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(MUNCHER.get(), MuncherEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(SPLOOGIE.get(), SploogieEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(MINION.get(), MinionEntity.registerAttributes().create());
-        GlobalEntityTypeAttributes.put(GWIB.get(), GwibEntity.registerAttributes().create());
+    @SubscribeEvent
+    public static void entityAttributes(EntityAttributeCreationEvent event) {
+        event.put(ROTLING.get(), RotlingEntity.registerAttributes().create());
+        event.put(ROTWALKER.get(), RotwalkerEntity.registerAttributes().create());
+        event.put(ROTBEAST.get(), RotbeastEntity.registerAttributes().create());
+        event.put(DWELLER.get(), DwellerEntity.registerAttributes().create());
+        event.put(ROTDWELLER.get(), RotDwellerEntity.registerAttributes().create());
+        event.put(GWIBLING.get(), AbstractFishEntity.func_234176_m_().create());
+        event.put(BRUTE.get(), BruteEntity.registerAttributes().create());
+        event.put(SCINTLING.get(), ScintlingEntity.registerAttributes().create());
+        event.put(GLOOMPER.get(), GloomperEntity.registerAttributes().create());
+        event.put(STONEBORN.get(), StonebornEntity.registerAttributes().create());
+        event.put(MASTICATOR.get(), MasticatorEntity.registerAttributes().create());
+        event.put(NARGOYLE.get(), NargoyleEntity.registerAttributes().create());
+        event.put(FORGOTTEN_GUARDIAN.get(), ForgottenGuardianEntity.registerAttributes().create());
+        event.put(MUNCHER.get(), MuncherEntity.registerAttributes().create());
+        event.put(SPLOOGIE.get(), SploogieEntity.registerAttributes().create());
+        event.put(MINION.get(), MinionEntity.registerAttributes().create());
+        event.put(GWIB.get(), GwibEntity.registerAttributes().create());
     }
 }

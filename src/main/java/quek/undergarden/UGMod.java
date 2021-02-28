@@ -80,7 +80,6 @@ public class UGMod {
 	public void setup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			UGEntityTypes.spawnPlacements();
-			UGEntityTypes.entityAttributes();
 			UGFeatures.registerConfiguredFeatures();
 			UGCarvers.registerConfiguredCarvers();
 			UGStructures.registerStructures();
