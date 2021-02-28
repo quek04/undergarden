@@ -487,6 +487,11 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "nargoyle_death", "Nargoyle dies");
         addSubtitle("entity", "nargoyle_attack", "Nargoyle leaps");
 
+        addSubtitle("entity", "muncher_living", "Muncher grumbles");
+        addSubtitle("entity", "muncher_hurt", "Muncher hurts");
+        addSubtitle("entity", "muncher_death", "Muncher dies");
+        addSubtitle("entity", "muncher_chew", "Muncher chews");
+
         addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
 
         addDeath("frozen_deepturf", "%1$s was stabbed by Frozen Deepturf");

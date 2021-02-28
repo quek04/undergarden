@@ -7,11 +7,14 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import quek.undergarden.entity.cavern.AbstractCavernCreatureEntity;
+import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
 public class MuncherEntity extends AbstractCavernCreatureEntity {
@@ -40,6 +43,21 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return UGSoundEvents.MUNCHER_LIVING.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return UGSoundEvents.MUNCHER_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return UGSoundEvents.MUNCHER_DEATH.get();
+    }
+
+    @Override
     public void livingTick() {
         super.livingTick();
 
@@ -52,6 +70,7 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
                 if (block.isIn(UGTags.Blocks.MUNCHER_BREAKABLES)) {
                     this.world.destroyBlock(blockpos, false, this);
                     this.heal(1.0F);
+                    this.playSound(UGSoundEvents.MUNCHER_CHEW.get(), 1.0F, 1.0F);
                 }
             }
         }

@@ -480,5 +480,36 @@
     "sounds": [
       "undergarden:entity/minion_death"
     ]
+  },
+  "entity.muncher_living": {
+    "subtitle": "subtitles.entity.muncher_living",
+    "sounds": [
+      "undergarden:entity/muncher_living_1",
+      "undergarden:entity/muncher_living_2",
+      "undergarden:entity/muncher_living_3",
+      "undergarden:entity/muncher_living_4",
+      "undergarden:entity/muncher_living_5",
+      "undergarden:entity/muncher_living_6"
+    ]
+  },
+  "entity.muncher_hurt": {
+    "subtitle": "subtitles.entity.muncher_hurt",
+    "sounds": [
+      "undergarden:entity/muncher_living_1",
+      "undergarden:entity/muncher_living_2"
+    ]
+  },
+  "entity.muncher_death": {
+    "subtitle": "subtitles.entity.muncher_death",
+    "sounds": [
+      "undergarden:entity/muncher_death"
+    ]
+  },
+  "entity.muncher_chew": {
+    "subtitle": "subtitles.entity.muncher_chew",
+    "sounds": [
+      "undergarden:entity/muncher_chew_1",
+      "undergarden:entity/muncher_chew_2"
+    ]
   }
 }

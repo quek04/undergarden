@@ -27,6 +27,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> ABYSS_MOOD = register("ambient.abyss_mood");
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_MUSIC = register("music.undergarden_music");
+
     public static final RegistryObject<SoundEvent> MAMMOTH_DISC = register("music.disc.mammoth");
     public static final RegistryObject<SoundEvent> LIMAX_MAXIMUS_DISC = register("music.disc.limax_maximus");
     public static final RegistryObject<SoundEvent> RELICT_DISC = register("music.disc.relict");
@@ -90,6 +91,11 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> NARGOYLE_HURT = register("entity.nargoyle_hurt");
     public static final RegistryObject<SoundEvent> NARGOYLE_DEATH = register("entity.nargoyle_death");
     public static final RegistryObject<SoundEvent> NARGOYLE_ATTACK = register("entity.nargoyle_attack");
+
+    public static final RegistryObject<SoundEvent> MUNCHER_LIVING = register("entity.muncher_living");
+    public static final RegistryObject<SoundEvent> MUNCHER_HURT = register("entity.muncher_hurt");
+    public static final RegistryObject<SoundEvent> MUNCHER_DEATH = register("entity.muncher_death");
+    public static final RegistryObject<SoundEvent> MUNCHER_CHEW = register("entity.muncher_chew");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(UGMod.MODID, name)));
