@@ -24,12 +24,10 @@ import net.minecraft.world.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
+import quek.undergarden.entity.stoneborn.goals.StonebornStealFromEffigyGoal;
 import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
 import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
-import quek.undergarden.registry.UGCriteria;
-import quek.undergarden.registry.UGDimensions;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -60,7 +58,6 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         this.goalSelector.addGoal(3, new LookAtGoal(this, LivingEntity.class, 32.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0D, true));
-
         this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)).setCallsForHelp());
     }
 
