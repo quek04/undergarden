@@ -63,11 +63,6 @@ public class GwiblingModel<T extends GwiblingEntity> extends SegmentedModel<T> {
 	}
 
 	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		gwibling.render(matrixStack, buffer, packedLight, packedOverlay);
-	}
-
-	@Override
 	public Iterable<ModelRenderer> getParts() {
 		return ImmutableSet.of(this.gwibling);
 	}

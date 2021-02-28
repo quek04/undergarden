@@ -20,7 +20,6 @@ import java.util.Random;
 
 public class UGStemBlock extends StemBlock {
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
     private final StemGrownBlock crop;
 
     public UGStemBlock(StemGrownBlock crop, AbstractBlock.Properties properties) {
@@ -67,11 +66,5 @@ public class UGStemBlock extends StemBlock {
     @OnlyIn(Dist.CLIENT)
     protected Item getSeedItem() {
         return UGItems.GLOOMGOURD_SEEDS.get();
-    }
-
-    @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-        Item item = this.getSeedItem();
-        return item == null ? ItemStack.EMPTY : new ItemStack(item);
     }
 }

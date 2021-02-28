@@ -55,6 +55,7 @@ public class UGMod {
 		forgeBus.addListener(EventPriority.NORMAL, UGStructures::addDimensionalSpacing);
 
 		DeferredRegister<?>[] registers = {
+				UGBiomes.BIOMES,
 				UGBlocks.BLOCKS,
 				UGCarvers.CARVERS,
 				UGEffects.EFFECTS,
@@ -79,7 +80,6 @@ public class UGMod {
 	public void setup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			UGEntityTypes.spawnPlacements();
-			UGEntityTypes.entityAttributes();
 			UGFeatures.registerConfiguredFeatures();
 			UGCarvers.registerConfiguredCarvers();
 			UGStructures.registerStructures();
@@ -161,8 +161,15 @@ public class UGMod {
 			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.REDSTONE, UGPotions.LONG_BRITTLENESS.get());
 			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.GLOWSTONE_DUST, UGPotions.STRONG_BRITTLENESS.get());
 
+			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.VEIL_MUSHROOM.get().asItem(), UGPotions.FEATHERWEIGHT.get());
+			PotionBrewing.addMix(UGPotions.FEATHERWEIGHT.get(), Items.REDSTONE, UGPotions.LONG_FEATHERWEIGHT.get());
+			PotionBrewing.addMix(UGPotions.FEATHERWEIGHT.get(), Items.GLOWSTONE_DUST, UGPotions.STRONG_FEATHERWEIGHT.get());
+
 			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.GLOOMGOURD.get().asItem(), UGPotions.VIRULENT_RESISTANCE.get());
 			PotionBrewing.addMix(UGPotions.VIRULENT_RESISTANCE.get(), Items.REDSTONE, UGPotions.LONG_VIRULENT_RESISTANCE.get());
+
+			PotionBrewing.addMix(Potions.AWKWARD, UGItems.DROOPVINE.get(), UGPotions.GLOWING.get());
+			PotionBrewing.addMix(UGPotions.GLOWING.get(), Items.REDSTONE, UGPotions.LONG_GLOWING.get());
 
 			ComposterBlock.registerCompostable(0.1F, UGItems.DROOPVINE.get());
 			ComposterBlock.registerCompostable(0.1F, UGItems.UNDERBEANS.get());
@@ -206,7 +213,6 @@ public class UGMod {
 			pot.addPlant(UGBlocks.INK_MUSHROOM.getId(), UGBlocks.POTTED_INK_MUSHROOM);
 			pot.addPlant(UGBlocks.BLOOD_MUSHROOM.getId(), UGBlocks.POTTED_BLOOD_MUSHROOM);
 			pot.addPlant(UGBlocks.GRONGLET.getId(), UGBlocks.POTTED_GRONGLET);
-			pot.addPlant(UGBlocks.DITCHBULB_PLANT.getId(), UGBlocks.POTTED_DITCHBULB);
 		});
 	}
 

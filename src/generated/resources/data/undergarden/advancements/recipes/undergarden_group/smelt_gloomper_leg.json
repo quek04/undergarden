@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smelt_gloomper_leg"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:raw_gloomper_leg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:raw_gloomper_leg"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smelt_gloomper_leg"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:raw_gloomper_leg",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smelt_froststeel_ore"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:froststeel_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:froststeel_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smelt_froststeel_ore"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:froststeel_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

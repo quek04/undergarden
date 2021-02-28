@@ -22,7 +22,6 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.DEPTHROCK);
         block(UGBlocks.DEEPSOIL);
         crossBlock(UGBlocks.ASHEN_DEEPTURF);
-        crossBlock(UGBlocks.DITCHBULB_PLANT);
         block(UGBlocks.COAL_ORE);
         block(UGBlocks.CLOGGRUM_ORE);
         block(UGBlocks.FROSTSTEEL_ORE);
@@ -49,6 +48,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.REGALIUM_BLOCK);
         block(UGBlocks.TREMBLECRUST);
         block(UGBlocks.TREMBLECRUST_BRICKS);
+        block(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
         block(UGBlocks.OTHERSIDE_UTHERIUM_ORE);
         block(UGBlocks.LOOSE_TREMBLECRUST);
         block(UGBlocks.IRON_ORE);

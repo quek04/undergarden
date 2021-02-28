@@ -24,6 +24,11 @@
           ],
           "name": "undergarden:raw_gwibling"
         }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        }
       ]
     },
     {

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:undergarden_lead"
+    ]
+  },
+  "criteria": {
+    "has_twistytwig": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:twistytwig"
+          }
+        ]
+      }
+    },
+    "has_goo_ball": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:goo_ball"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:undergarden_lead"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_twistytwig",
+      "has_goo_ball",
+      "has_the_recipe"
+    ]
+  ]
+}

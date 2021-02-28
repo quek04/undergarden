@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.Path;
+import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
@@ -277,8 +278,12 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @Override
-    public boolean addPotionEffect(EffectInstance effectInstanceIn) {
-        return effectInstanceIn.getPotion() != Effects.POISON;
+    public boolean isPotionApplicable(EffectInstance effectInstance) {
+        Effect effect = effectInstance.getPotion();
+        if (effect == Effects.POISON) {
+            return false;
+        }
+        else return super.isPotionApplicable(effectInstance);
     }
 
     public static class JumpHelperController extends JumpController {

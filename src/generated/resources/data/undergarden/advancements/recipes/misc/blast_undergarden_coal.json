@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:blast_undergarden_coal"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:coal_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:coal_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:blast_undergarden_coal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:coal_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

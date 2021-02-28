@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "undergarden:block/ditchbulb_plant"
+    }
+}

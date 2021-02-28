@@ -2,7 +2,6 @@ package quek.undergarden.item.tool;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.IItemTier;
@@ -20,14 +19,15 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGTags;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 @Mod.EventBusSubscriber
 public class UGAxeItem extends AxeItem {
-    public UGAxeItem(IItemTier tier, float attack) {
-        super(tier, attack, -3.2F, new Properties()
+    public UGAxeItem(IItemTier tier, float attack, float speed) {
+        super(tier, attack, speed, new Properties()
                 .maxStackSize(1)
                 .defaultMaxDamage(tier.getMaxUses())
                 .group(UGItemGroups.GROUP)
@@ -38,11 +38,14 @@ public class UGAxeItem extends AxeItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UGItems.UTHERIC_AXE.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.utheric_axe").mergeStyle(TextFormatting.GRAY));
+        if(stack.getItem() == UGItems.UTHERIUM_AXE.get()) {
+            tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").mergeStyle(TextFormatting.GRAY));
         }
         else if(stack.getItem() == UGItems.FROSTSTEEL_AXE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
+        }
+        else if(stack.getItem() == UGItems.FORGOTTEN_AXE.get()) {
+            tooltip.add(new TranslationTextComponent("tooltip.forgotten_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
 
@@ -53,13 +56,20 @@ public class UGAxeItem extends AxeItem {
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
-            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIC_AXE.get()) {
-                if(event.getEntityLiving().getClassification(false) == EntityClassification.CREATURE) {
+            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIUM_AXE.get()) {
+                if(event.getEntityLiving().getType().isContained(UGTags.Entities.ROTSPAWN)) {
                     event.setAmount(damage * 1.5F);
                 }
+                else event.setAmount(damage);
             }
             else if(player.getHeldItemMainhand().getItem() == UGItems.FROSTSTEEL_AXE.get()) {
                 event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 3));
+            }
+            else if(player.getHeldItemMainhand().getItem() == UGItems.FORGOTTEN_AXE.get()) {
+                if(event.getEntityLiving().getType().getRegistryName().getNamespace().equals("undergarden") && event.getEntityLiving().isNonBoss()) {
+                    event.setAmount(damage * 2F);
+                }
+                else event.setAmount(damage);
             }
         }
     }

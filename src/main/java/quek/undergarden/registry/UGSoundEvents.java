@@ -27,6 +27,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> ABYSS_MOOD = register("ambient.abyss_mood");
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_MUSIC = register("music.undergarden_music");
+
     public static final RegistryObject<SoundEvent> MAMMOTH_DISC = register("music.disc.mammoth");
     public static final RegistryObject<SoundEvent> LIMAX_MAXIMUS_DISC = register("music.disc.limax_maximus");
     public static final RegistryObject<SoundEvent> RELICT_DISC = register("music.disc.relict");
@@ -36,6 +37,9 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_ACTIVATE = register("item.undergarden_portal_activate");
 
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
+
+    public static final RegistryObject<SoundEvent> SLINGSHOT_SHOOT = register("item.slingshot_shoot");
+    public static final RegistryObject<SoundEvent> SLINGSHOT_DRAW = register("item.slingshot_draw");
 
     public static final RegistryObject<SoundEvent> DWELLER_LIVING = register("entity.dweller_living");
     public static final RegistryObject<SoundEvent> DWELLER_HURT = register("entity.dweller_hurt");
@@ -81,9 +85,17 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_DEFLECT = register("entity.forgotten_guardian_deflect");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_STEP = register("entity.forgotten_guardian_step");
 
+    public static final RegistryObject<SoundEvent> MINION_SHOOT = register("entity.minion_shoot");
+    public static final RegistryObject<SoundEvent> MINION_DEATH = register("entity.minion_death");
+
     public static final RegistryObject<SoundEvent> NARGOYLE_HURT = register("entity.nargoyle_hurt");
     public static final RegistryObject<SoundEvent> NARGOYLE_DEATH = register("entity.nargoyle_death");
     public static final RegistryObject<SoundEvent> NARGOYLE_ATTACK = register("entity.nargoyle_attack");
+
+    public static final RegistryObject<SoundEvent> MUNCHER_LIVING = register("entity.muncher_living");
+    public static final RegistryObject<SoundEvent> MUNCHER_HURT = register("entity.muncher_hurt");
+    public static final RegistryObject<SoundEvent> MUNCHER_DEATH = register("entity.muncher_death");
+    public static final RegistryObject<SoundEvent> MUNCHER_CHEW = register("entity.muncher_chew");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(UGMod.MODID, name)));

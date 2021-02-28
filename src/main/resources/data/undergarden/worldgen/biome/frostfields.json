@@ -1,8 +1,8 @@
 {
   "precipitation": "none",
   "category": "none",
-  "depth": 0.3625,
-  "scale": 1.225,
+  "depth": 0.0,
+  "scale": 0.0,
   "temperature": 0.14,
   "temperature_modifier": "none",
   "downfall": 0,

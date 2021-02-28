@@ -23,6 +23,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.UGMod;
 import quek.undergarden.block.BlisterberryBushBlock;
+import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.world.gen.feature.*;
 import quek.undergarden.world.gen.trunkplacer.*;
@@ -115,7 +116,7 @@ public class UGFeatures {
         );
         public static final ConfiguredFeature<?, ?> DITCHBULB_PATCH = Feature.RANDOM_PATCH.withConfiguration(
                 (new BlockClusterFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.DITCHBULB_PLANT.get().getDefaultState()), new SimpleBlockPlacer()))
+                        new SimpleBlockStateProvider(UGBlocks.DITCHBULB_PLANT.get().getDefaultState().with(DitchbulbBlock.AGE, 1)), new SimpleBlockPlacer()))
                         .tries(16).whitelist(ImmutableSet.of(UGBlocks.DEPTHROCK.get())).func_227317_b_().build()
         );
         public static final ConfiguredFeature<?, ?> TALL_DEEPTURF_PATCH = Feature.RANDOM_PATCH.withConfiguration(
@@ -238,15 +239,6 @@ public class UGFeatures {
                         new TwoLayerFeature(1, 0, 2)))
                         .setIgnoreVines().build()
         );
-        public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> SMOGSTEM_TREE_SHORT = UNDERGARDEN_TREE.get().withConfiguration(
-                (new BaseTreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_WOOD.get().getDefaultState()),
-                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().getDefaultState()),
-                        new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 2),
-                        new SmogstemTrunkPlacer(5, 1, 1),
-                        new TwoLayerFeature(1, 1, 2)))
-                        .setIgnoreVines().build()
-        );
 
         public static final ConfiguredFeature<BigMushroomFeatureConfig, ?> BLOOD_MUSHROOM = UGFeatures.BLOOD_MUSHROOM.get().withConfiguration(
                 new BigMushroomFeatureConfig(
@@ -337,7 +329,7 @@ public class UGFeatures {
         register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.range(128).square().func_242731_b(20));
         register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.range(64).square().func_242731_b(15));
         register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.range(32).square().func_242731_b(5));
-        register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.range(11).square().func_242731_b(3));
+        register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.range(12).square().func_242731_b(3));
 
         register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(256).square().func_242731_b(10));
         register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(256).square().func_242731_b(10));
@@ -348,8 +340,6 @@ public class UGFeatures {
 
         register("smogstem_tree_tall", ConfiguredFeatures.SMOGSTEM_TREE_TALL.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
         register("wigglewood_tree_tall", ConfiguredFeatures.WIGGLEWOOD_TREE_TALL.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(8))));
-
-        register("smogstem_tree_short", ConfiguredFeatures.SMOGSTEM_TREE_SHORT.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(1))));
 
         register("huge_blood_mushroom", ConfiguredFeatures.BLOOD_MUSHROOM.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));
         register("huge_indigo_mushroom", ConfiguredFeatures.INDIGO_MUSHROOM.withPlacement(Placement.COUNT_MULTILAYER.configure(new FeatureSpreadConfig(2))));

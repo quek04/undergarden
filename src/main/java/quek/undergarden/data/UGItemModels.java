@@ -49,6 +49,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.CARVED_GLOOMGOURD);
         itemBlock(UGBlocks.DEPTHROCK_PEBBLES);
         itemBlock(UGBlocks.GLOOM_O_LANTERN);
+        itemBlock(UGBlocks.SHARD_O_LANTERN);
         itemBlock(UGBlocks.CLOGGRUM_BLOCK);
         itemBlock(UGBlocks.FROSTSTEEL_BLOCK);
         itemBlock(UGBlocks.UTHERIUM_BLOCK);
@@ -77,6 +78,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.REGALIUM_BLOCK);
         itemBlock(UGBlocks.TREMBLECRUST);
         itemBlock(UGBlocks.TREMBLECRUST_BRICKS);
+        itemBlock(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
         itemBlock(UGBlocks.OTHERSIDE_UTHERIUM_ORE);
         itemBlock(UGBlocks.SMOGSTEM_WOOD);
         itemBlock(UGBlocks.WIGGLEWOOD_WOOD);
@@ -166,10 +168,10 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.FROSTSTEEL_LEGGINGS);
         normalItem(UGItems.FROSTSTEEL_BOOTS);
 
-        normalItem(UGItems.UTHERIC_HELMET);
-        normalItem(UGItems.UTHERIC_CHESTPLATE);
-        normalItem(UGItems.UTHERIC_LEGGINGS);
-        normalItem(UGItems.UTHERIC_BOOTS);
+        normalItem(UGItems.UTHERIUM_HELMET);
+        normalItem(UGItems.UTHERIUM_CHESTPLATE);
+        normalItem(UGItems.UTHERIUM_LEGGINGS);
+        normalItem(UGItems.UTHERIUM_BOOTS);
 
         toolItem(UGItems.FROSTSTEEL_SWORD);
         toolItem(UGItems.FROSTSTEEL_PICKAXE);
@@ -177,11 +179,11 @@ public class UGItemModels extends UGItemModelProvider {
         toolItem(UGItems.FROSTSTEEL_SHOVEL);
         toolItem(UGItems.FROSTSTEEL_HOE);
 
-        toolItem(UGItems.UTHERIC_SWORD);
-        toolItem(UGItems.UTHERIC_PICKAXE);
-        toolItem(UGItems.UTHERIC_AXE);
-        toolItem(UGItems.UTHERIC_SHOVEL);
-        toolItem(UGItems.UTHERIC_HOE);
+        toolItem(UGItems.UTHERIUM_SWORD);
+        toolItem(UGItems.UTHERIUM_PICKAXE);
+        toolItem(UGItems.UTHERIUM_AXE);
+        toolItem(UGItems.UTHERIUM_SHOVEL);
+        toolItem(UGItems.UTHERIUM_HOE);
 
         toolItem(UGItems.FORGOTTEN_SWORD);
         toolItem(UGItems.FORGOTTEN_PICKAXE);
@@ -224,6 +226,7 @@ public class UGItemModels extends UGItemModelProvider {
         egg(UGItems.NARGOYLE_SPAWN_EGG);
         egg(UGItems.MUNCHER_SPAWN_EGG);
         egg(UGItems.SPLOOGIE_SPAWN_EGG);
+        egg(UGItems.GWIB_SPAWN_EGG);
 
         egg(UGItems.MASTICATOR_SPAWN_EGG);
         egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);

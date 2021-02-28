@@ -37,6 +37,10 @@ public class UGLang extends LanguageProvider {
         add("biome.undergarden." + biomeKey.getLocation().getPath(), name);
     }
 
+    private void addDeath(String deathName, String name) {
+        add("death.attack." + deathName, name);
+    }
+
     private void addPotion(Supplier<? extends Potion> potion, String name) {
         add("item.minecraft.potion.effect." + potion.get().getRegistryName().getPath(), "Potion of " + name);
         add("item.minecraft.splash_potion.effect." + potion.get().getRegistryName().getPath(), "Splash Potion of " + name);
@@ -79,6 +83,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.TREMBLECRUST, "Tremblecrust");
         addBlock(UGBlocks.LOOSE_TREMBLECRUST, "Loose Tremblecrust");
         addBlock(UGBlocks.TREMBLECRUST_BRICKS, "Tremblecrust Bricks");
+        addBlock(UGBlocks.CRACKED_TREMBLECRUST_BRICKS, "Cracked Tremblecrust Bricks");
 
         addBlock(UGBlocks.DEEPTURF_BLOCK, "Deepturf Block");
         addBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK, "Ashen Deepturf Block");
@@ -101,6 +106,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GLOOMGOURD, "Gloomgourd");
         addBlock(UGBlocks.CARVED_GLOOMGOURD, "Carved Gloomgourd");
         addBlock(UGBlocks.GLOOM_O_LANTERN, "Gloom o'Lantern");
+        addBlock(UGBlocks.SHARD_O_LANTERN, "Shard o'Lantern");
         addBlock(UGBlocks.GLOOMGOURD_STEM, "Gloomgourd Stem");
         addBlock(UGBlocks.DEPTHROCK_PEBBLES, "Depthrock Pebbles");
         addBlock(UGBlocks.GLOWING_KELP, "Glitterkelp");
@@ -236,11 +242,11 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FROSTSTEEL_SHOVEL, "Froststeel Shovel");
         addItem(UGItems.FROSTSTEEL_HOE, "Froststeel Hoe");
 
-        addItem(UGItems.UTHERIC_SWORD, "Utherium Sword");
-        addItem(UGItems.UTHERIC_PICKAXE, "Utherium Pickaxe");
-        addItem(UGItems.UTHERIC_AXE, "Utherium Axe");
-        addItem(UGItems.UTHERIC_SHOVEL, "Utherium Shovel");
-        addItem(UGItems.UTHERIC_HOE, "Utherium Hoe");
+        addItem(UGItems.UTHERIUM_SWORD, "Utherium Sword");
+        addItem(UGItems.UTHERIUM_PICKAXE, "Utherium Pickaxe");
+        addItem(UGItems.UTHERIUM_AXE, "Utherium Axe");
+        addItem(UGItems.UTHERIUM_SHOVEL, "Utherium Shovel");
+        addItem(UGItems.UTHERIUM_HOE, "Utherium Hoe");
 
         addItem(UGItems.FORGOTTEN_SWORD, "Forgotten Sword");
         addItem(UGItems.FORGOTTEN_PICKAXE, "Forgotten Pickaxe");
@@ -268,10 +274,10 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FROSTSTEEL_LEGGINGS, "Froststeel Leggings");
         addItem(UGItems.FROSTSTEEL_BOOTS, "Froststeel Boots");
 
-        addItem(UGItems.UTHERIC_HELMET, "Utherium Helmet");
-        addItem(UGItems.UTHERIC_CHESTPLATE, "Utherium Chestplate");
-        addItem(UGItems.UTHERIC_LEGGINGS, "Utherium Leggings");
-        addItem(UGItems.UTHERIC_BOOTS, "Utherium Boots");
+        addItem(UGItems.UTHERIUM_HELMET, "Utherium Helmet");
+        addItem(UGItems.UTHERIUM_CHESTPLATE, "Utherium Chestplate");
+        addItem(UGItems.UTHERIUM_LEGGINGS, "Utherium Leggings");
+        addItem(UGItems.UTHERIUM_BOOTS, "Utherium Boots");
 
         addItem(UGItems.UNDERBEANS, "Underbeans");
         addItem(UGItems.BLISTERBERRY, "Blisterberry");
@@ -300,6 +306,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.NARGOYLE_SPAWN_EGG, "Nargoyle Spawn Egg");
         addItem(UGItems.MUNCHER_SPAWN_EGG, "Muncher Spawn Egg");
         addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
+        addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
 
         addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
         addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
@@ -329,6 +336,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.NARGOYLE, "Nargoyle");
         addEntityType(UGEntityTypes.MUNCHER, "Muncher");
         addEntityType(UGEntityTypes.SPLOOGIE, "Sploogie");
+        addEntityType(UGEntityTypes.GWIB, "Gwib");
 
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
         addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
@@ -341,7 +349,9 @@ public class UGLang extends LanguageProvider {
         addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
 
         addPotion(UGPotions.BRITTLENESS, "Brittleness");
+        addPotion(UGPotions.FEATHERWEIGHT, "Featherweight");
         addPotion(UGPotions.VIRULENT_RESISTANCE, "Virulent Resistance");
+        addPotion(UGPotions.GLOWING, "Glowing");
 
         addAdvTitle("undergarden_root", "The Undergarden");
 
@@ -356,6 +366,9 @@ public class UGLang extends LanguageProvider {
 
         addAdvTitle("slingshot", "Your New Best Friend");
         addAdvDesc("slingshot", "Craft a Slingshot.");
+
+        addAdvTitle("shoot_slingshot", "Flinging Rocks");
+        addAdvDesc("shoot_slingshot", "Shoot a pebble at something.");
 
         addAdvTitle("slay_rotling", "Birth Control");
         addAdvDesc("slay_rotling", "Slay the weakest of the Rotspawn, the Rotling.");
@@ -413,14 +426,16 @@ public class UGLang extends LanguageProvider {
 
         add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
-        add("tooltip.utheric_sword", "Deals 10 damage to Rotspawn.");
-        add("tooltip.utheric_axe", "Bonus damage to passive animals.");
+        add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
         add("tooltip.forgotten_sword", "Deals 2x damage to non-boss Undergarden mobs.");
+        add("tooltip.pebble", "Can be used as Slingshot ammo.");
 
         addSubtitle("item", "undergarden_portal_activate", "Undergarden Portal activates");
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
+        addSubtitle("item", "slingshot_draw", "Slingshot drawn");
+        addSubtitle("item", "slingshot_shoot", "Slingshot fired");
 
         addSubtitle("entity", "dweller_living", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
@@ -466,10 +481,25 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "forgotten_guardian_deflect", "Forgotten Guardian deflects");
         addSubtitle("entity", "forgotten_guardian_step", "Forgotten Guardian steps");
 
+        addSubtitle("entity", "minion_shoot", "Forgotten Minion shoots");
+        addSubtitle("entity", "minion_death", "Forgotten Minion dies");
+
         addSubtitle("entity", "nargoyle_hurt", "Nargoyle hurts");
         addSubtitle("entity", "nargoyle_death", "Nargoyle dies");
         addSubtitle("entity", "nargoyle_attack", "Nargoyle leaps");
 
+        addSubtitle("entity", "muncher_living", "Muncher grumbles");
+        addSubtitle("entity", "muncher_hurt", "Muncher hurts");
+        addSubtitle("entity", "muncher_death", "Muncher dies");
+        addSubtitle("entity", "muncher_chew", "Muncher chews");
+
         addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
+
+        addDeath("frozen_deepturf", "%1$s was stabbed by Frozen Deepturf");
+        addDeath("frozen_deepturf.player", "%1$s was stabbed by Frozen Deepturf whilst trying to escape %2$s");
+        addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
+        addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
+        addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");
+        addDeath("shard_torch.player", "%1$s was killed by a Shard Torch's magic whilst trying to escape %2$s");
     }
 }

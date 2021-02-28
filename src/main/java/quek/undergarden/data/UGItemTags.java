@@ -33,14 +33,14 @@ public class UGItemTags extends ItemTagsProvider {
         copy(UGTags.Blocks.MUSHROOMS, UGTags.Items.MUSHROOMS);
         tag(UGTags.Items.CLOGGRUM_ITEMS).add(UGItems.CLOGGRUM_SWORD.get(), UGItems.CLOGGRUM_PICKAXE.get(), UGItems.CLOGGRUM_AXE.get(), UGItems.CLOGGRUM_SHOVEL.get(), UGItems.CLOGGRUM_HOE.get(), UGItems.CLOGGRUM_HELMET.get(), UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.CLOGGRUM_BOOTS.get());
         tag(UGTags.Items.FROSTSTEEL_ITEMS).add(UGItems.FROSTSTEEL_SWORD.get(), UGItems.FROSTSTEEL_PICKAXE.get(), UGItems.FROSTSTEEL_AXE.get(), UGItems.FROSTSTEEL_SHOVEL.get(), UGItems.FROSTSTEEL_HOE.get(), UGItems.FROSTSTEEL_HELMET.get(), UGItems.FROSTSTEEL_CHESTPLATE.get(), UGItems.FROSTSTEEL_LEGGINGS.get(), UGItems.FROSTSTEEL_BOOTS.get());
-        tag(UGTags.Items.UTHERIUM_ITEMS).add(UGItems.UTHERIC_SWORD.get(), UGItems.UTHERIC_PICKAXE.get(), UGItems.UTHERIC_AXE.get(), UGItems.UTHERIC_SHOVEL.get(), UGItems.UTHERIC_HOE.get(), UGItems.UTHERIC_HELMET.get(), UGItems.UTHERIC_CHESTPLATE.get(), UGItems.UTHERIC_LEGGINGS.get(), UGItems.UTHERIC_BOOTS.get());
+        tag(UGTags.Items.UTHERIUM_ITEMS).add(UGItems.UTHERIUM_SWORD.get(), UGItems.UTHERIUM_PICKAXE.get(), UGItems.UTHERIUM_AXE.get(), UGItems.UTHERIUM_SHOVEL.get(), UGItems.UTHERIUM_HOE.get(), UGItems.UTHERIUM_HELMET.get(), UGItems.UTHERIUM_CHESTPLATE.get(), UGItems.UTHERIUM_LEGGINGS.get(), UGItems.UTHERIUM_BOOTS.get());
         copy(UGTags.Blocks.SMOGSTEM_LOGS, UGTags.Items.SMOGSTEM_LOGS);
         copy(UGTags.Blocks.WIGGLEWOOD_LOGS, UGTags.Items.WIGGLEWOOD_LOGS);
         copy(UGTags.Blocks.GRONGLE_STEMS, UGTags.Items.GRONGLE_STEMS);
 
         //vanilla
         tag(ItemTags.PLANKS).add(UGBlocks.SMOGSTEM_PLANKS.get().asItem(), UGBlocks.WIGGLEWOOD_PLANKS.get().asItem(), UGBlocks.GRONGLE_PLANKS.get().asItem());
-        tag(ItemTags.STONE_BRICKS).add(UGBlocks.DEPTHROCK_BRICKS.get().asItem(), UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().asItem(), UGBlocks.CHISELED_DEPTHROCK_BRICKS.get().asItem(), UGBlocks.SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.TREMBLECRUST_BRICKS.get().asItem());
+        tag(ItemTags.STONE_BRICKS).add(UGBlocks.DEPTHROCK_BRICKS.get().asItem(), UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().asItem(), UGBlocks.CHISELED_DEPTHROCK_BRICKS.get().asItem(), UGBlocks.SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.TREMBLECRUST_BRICKS.get().asItem(), UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get().asItem());
         tag(ItemTags.WOODEN_BUTTONS).add(UGBlocks.SMOGSTEM_BUTTON.get().asItem(), UGBlocks.WIGGLEWOOD_BUTTON.get().asItem(), UGBlocks.GRONGLE_BUTTON.get().asItem());
         tag(ItemTags.BUTTONS).add(UGBlocks.DEPTHROCK_BUTTON.get().asItem(), UGBlocks.SHIVERSTONE_BUTTON.get().asItem());
         tag(ItemTags.WOODEN_DOORS).add(UGBlocks.SMOGSTEM_DOOR.get().asItem(), UGBlocks.WIGGLEWOOD_DOOR.get().asItem(), UGBlocks.GRONGLE_DOOR.get().asItem());
@@ -80,6 +80,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(Tags.Items.SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
         tag(Tags.Items.SLIMEBALLS).add(UGItems.GOO_BALL.get());
         tag(Tags.Items.STRING).add(UGItems.TWISTYTWIG.get());
+        tag(Tags.Items.ORES).add(UGBlocks.CLOGGRUM_ORE.get().asItem(), UGBlocks.FROSTSTEEL_ORE.get().asItem(), UGBlocks.UTHERIUM_ORE.get().asItem(), UGBlocks.REGALIUM_ORE.get().asItem(), UGBlocks.OTHERSIDE_UTHERIUM_ORE.get().asItem());
         tag(Tags.Items.ORES_COAL).add(UGBlocks.COAL_ORE.get().asItem());
         tag(Tags.Items.ORES_DIAMOND).add(UGBlocks.DIAMOND_ORE.get().asItem());
         tag(Tags.Items.ORES_IRON).add(UGBlocks.IRON_ORE.get().asItem());

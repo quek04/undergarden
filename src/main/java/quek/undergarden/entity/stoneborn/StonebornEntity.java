@@ -137,15 +137,18 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         if (!this.inUndergarden()) {
             ++this.timeOutOfUG;
             this.addPotionEffect(new EffectInstance(Effects.NAUSEA, 300, 0));
-        } else {
+        }
+        else {
             this.timeOutOfUG = 0;
         }
 
         if (this.timeOutOfUG > 300) {
             this.playSound(UGSoundEvents.STONEBORN_CHANT.get(), 1.0F, 1.0F);
             this.remove();
-            Explosion.Mode explosionType = this.world.getGameRules().getBoolean(GameRules.MOB_GRIEFING) ? Explosion.Mode.BREAK : Explosion.Mode.NONE;
-            this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3, explosionType);
+            if (!this.world.isRemote) {
+                Explosion.Mode explosionType = this.world.getGameRules().getBoolean(GameRules.MOB_GRIEFING) ? Explosion.Mode.BREAK : Explosion.Mode.NONE;
+                this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3, explosionType);
+            }
         }
 
         if (!isAggressive()) {

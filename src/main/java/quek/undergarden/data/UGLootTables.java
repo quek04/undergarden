@@ -23,6 +23,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import quek.undergarden.block.BlisterberryBushBlock;
+import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UGDoublePlantBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.data.provider.UGBlockLootTableProvider;
@@ -41,14 +42,9 @@ import java.util.stream.Stream;
 
 public class UGLootTables extends LootTableProvider {
 
-    private static final ILootCondition.IBuilder SILK_TOUCH = MatchTool.builder(ItemPredicate.Builder.create().enchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))));
-    private static final ILootCondition.IBuilder NO_SILK_TOUCH = SILK_TOUCH.inverted();
     private static final ILootCondition.IBuilder SHEARS = MatchTool.builder(ItemPredicate.Builder.create().item(Items.SHEARS));
-    private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.alternative(SILK_TOUCH);
-    private static final ILootCondition.IBuilder NOT_SILK_TOUCH_OR_SHEARS = SILK_TOUCH_OR_SHEARS.inverted();
     private static final Set<Item> IMMUNE_TO_EXPLOSIONS = Stream.of(net.minecraft.block.Blocks.DRAGON_EGG, net.minecraft.block.Blocks.BEACON, net.minecraft.block.Blocks.CONDUIT, net.minecraft.block.Blocks.SKELETON_SKULL, net.minecraft.block.Blocks.WITHER_SKELETON_SKULL, net.minecraft.block.Blocks.PLAYER_HEAD, net.minecraft.block.Blocks.ZOMBIE_HEAD, net.minecraft.block.Blocks.CREEPER_HEAD, net.minecraft.block.Blocks.DRAGON_HEAD, net.minecraft.block.Blocks.SHULKER_BOX, net.minecraft.block.Blocks.BLACK_SHULKER_BOX, net.minecraft.block.Blocks.BLUE_SHULKER_BOX, net.minecraft.block.Blocks.BROWN_SHULKER_BOX, net.minecraft.block.Blocks.CYAN_SHULKER_BOX, net.minecraft.block.Blocks.GRAY_SHULKER_BOX, net.minecraft.block.Blocks.GREEN_SHULKER_BOX, net.minecraft.block.Blocks.LIGHT_BLUE_SHULKER_BOX, net.minecraft.block.Blocks.LIGHT_GRAY_SHULKER_BOX, net.minecraft.block.Blocks.LIME_SHULKER_BOX, net.minecraft.block.Blocks.MAGENTA_SHULKER_BOX, net.minecraft.block.Blocks.ORANGE_SHULKER_BOX, net.minecraft.block.Blocks.PINK_SHULKER_BOX, net.minecraft.block.Blocks.PURPLE_SHULKER_BOX, net.minecraft.block.Blocks.RED_SHULKER_BOX, net.minecraft.block.Blocks.WHITE_SHULKER_BOX, net.minecraft.block.Blocks.YELLOW_SHULKER_BOX).map(IItemProvider::asItem).collect(ImmutableSet.toImmutableSet());
     private static final float[] DEFAULT_SAPLING_DROP_RATES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
-    private static final float[] RARE_SAPLING_DROP_RATES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
 
     public UGLootTables(DataGenerator dataGeneratorIn) {
         super(dataGeneratorIn);
@@ -83,6 +79,10 @@ public class UGLootTables extends LootTableProvider {
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.BLISTERBERRY_BUSH.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UGItems.BLISTERBERRY.get())).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.BLISTERBERRY_BUSH.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 3))).addEntry(ItemLootEntry.builder(UGItems.ROTTEN_BLISTERBERRY.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
                             .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.BLISTERBERRY_BUSH.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlisterberryBushBlock.AGE, 2))).addEntry(ItemLootEntry.builder(UGItems.ROTTEN_BLISTERBERRY.get())).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 1.0F))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE))));
+            this.registerLootTable(UGBlocks.DITCHBULB_PLANT.get(),
+                    LootTable.builder()
+                    .addLootPool(LootPool.builder().acceptCondition(BlockStateProperty.builder(UGBlocks.DITCHBULB_PLANT.get()).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(DitchbulbBlock.AGE, 1))).addEntry(ItemLootEntry.builder(UGItems.DITCHBULB.get())).acceptFunction(SetCount.builder(ConstantRange.of(1))).acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE)))
+            );
             dropWithSilk(UGBlocks.DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             this.registerLootTable(UGBlocks.TALL_DEEPTURF.get(), (block) -> droppingSeedsTall(block, UGBlocks.DEEPTURF.get()));
             this.registerLootTable(UGBlocks.TALL_SHIMMERWEED.get(), (block) -> droppingSeedsTall(block, UGBlocks.SHIMMERWEED.get()));
@@ -114,7 +114,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.CARVED_GLOOMGOURD);
             this.registerLootTable(UGBlocks.DEPTHROCK_PEBBLES.get(), (pebble) -> droppingRandomly(UGItems.DEPTHROCK_PEBBLE.get(), RandomValueRange.of(1.0F, 3.0F)));
             dropSelf(UGBlocks.GLOOM_O_LANTERN);
-            this.registerLootTable(UGBlocks.DITCHBULB_PLANT.get(), (ditchbulb) -> droppingWithShears(ditchbulb, withExplosionDecay(ditchbulb, ItemLootEntry.builder(UGItems.DITCHBULB.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))))));
+            dropSelf(UGBlocks.SHARD_O_LANTERN);
             dropSelf(UGBlocks.DEPTHROCK_STAIRS);
             dropSelf(UGBlocks.DEPTHROCK_BRICK_STAIRS);
             dropSelf(UGBlocks.SMOGSTEM_STAIRS);
@@ -149,6 +149,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.REGALIUM_BLOCK);
             dropSelf(UGBlocks.TREMBLECRUST);
             dropSelf(UGBlocks.TREMBLECRUST_BRICKS);
+            dropSelf(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
             dropSelf(UGBlocks.SMOGSTEM_WOOD);
             dropSelf(UGBlocks.WIGGLEWOOD_WOOD);
             dropOther(UGBlocks.SHARD_TORCH, UGItems.SHARD_TORCH.get());
@@ -212,7 +213,6 @@ public class UGLootTables extends LootTableProvider {
             registerFlowerPot(UGBlocks.POTTED_INK_MUSHROOM.get());
             registerFlowerPot(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
             registerFlowerPot(UGBlocks.POTTED_GRONGLET.get());
-            registerFlowerPot(UGBlocks.POTTED_DITCHBULB.get());
             dropWithSilk(UGBlocks.FROZEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             this.registerLootTable(UGBlocks.FROZEN_DEEPTURF.get(), BlockLootTables::onlyWithShears);
         }
@@ -245,7 +245,7 @@ public class UGLootTables extends LootTableProvider {
             this.registerLootTable(UGEntityTypes.ROTBEAST.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.UTHERIC_SHARD.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))).acceptCondition(KilledByPlayer.builder()))));
             this.registerLootTable(UGEntityTypes.DWELLER.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.RAW_DWELLER_MEAT.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 3.0F))).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
             this.registerLootTable(UGEntityTypes.ROTDWELLER.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
-            this.registerLootTable(UGEntityTypes.GWIBLING.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.RAW_GWIBLING.get()).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))))).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.BONE_MEAL)).acceptCondition(RandomChance.builder(0.05F))));
+            this.registerLootTable(UGEntityTypes.GWIBLING.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.RAW_GWIBLING.get()).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE)))).acceptCondition(KilledByPlayer.builder())).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.BONE_MEAL)).acceptCondition(RandomChance.builder(0.05F))));
             this.registerLootTable(UGEntityTypes.BRUTE.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.BRUTE_TUSK.get()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
             this.registerLootTable(UGEntityTypes.SCINTLING.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.GOO_BALL.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 2.0F))))));
             this.registerLootTable(UGEntityTypes.GLOOMPER.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(Items.LEATHER).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 2.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.RAW_GLOOMPER_LEG.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F))).acceptFunction(Smelt.func_215953_b().acceptCondition(EntityHasProperty.builder(LootContext.EntityTarget.THIS, ON_FIRE))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(0.0F, 1.0F))))));
@@ -253,6 +253,7 @@ public class UGLootTables extends LootTableProvider {
             this.registerLootTable(UGEntityTypes.NARGOYLE.get(), LootTable.builder());
             this.registerLootTable(UGEntityTypes.MUNCHER.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(RandomValueRange.of(0.0F, 3.0F)).addEntry(ItemLootEntry.builder(UGItems.CLOGGRUM_NUGGET.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 3.0F))))).addLootPool(LootPool.builder().rolls(RandomValueRange.of(0.0F, 1.0F)).addEntry(ItemLootEntry.builder(UGItems.FROSTSTEEL_NUGGET.get()).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 3.0F))))));
             this.registerLootTable(UGEntityTypes.SPLOOGIE.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.DEPTHROCK_PEBBLE.get()).acceptFunction(SetCount.builder(RandomValueRange.of(3.0F, 6.0F))).acceptFunction(LootingEnchantBonus.builder(RandomValueRange.of(1.0F, 2.0F))))));
+            this.registerLootTable(UGEntityTypes.GWIB.get(), LootTable.builder());
 
             this.registerLootTable(UGEntityTypes.MASTICATOR.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.MASTICATOR_SCALES.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(4.0F, 8.0F))))));
             this.registerLootTable(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(UGItems.FORGOTTEN_NUGGET.get()).acceptCondition(KilledByPlayer.builder()).acceptFunction(SetCount.builder(RandomValueRange.of(0.0F, 16.0F))))));

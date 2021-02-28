@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:pebbles_to_depthrock"
+    ]
+  },
+  "criteria": {
+    "has_depthrock_pebble": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:depthrock_pebble"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:pebbles_to_depthrock"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_depthrock_pebble",
+      "has_the_recipe"
+    ]
+  ]
+}

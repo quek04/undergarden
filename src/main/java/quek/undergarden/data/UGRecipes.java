@@ -6,6 +6,7 @@ import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import quek.undergarden.UGMod;
@@ -72,6 +73,15 @@ public class UGRecipes extends UGRecipeProvider {
                 .addCriterion("has_torch", hasItem(Items.TORCH))
                 .build(consumer);
 
+        ShapedRecipeBuilder.shapedRecipe(UGBlocks.SHARD_O_LANTERN.get())
+                .patternLine("G")
+                .patternLine("T")
+                .key('G', UGBlocks.CARVED_GLOOMGOURD.get())
+                .key('T', UGItems.SHARD_TORCH.get())
+                .addCriterion("has_carved_gourd", hasItem(UGBlocks.CARVED_GLOOMGOURD.get()))
+                .addCriterion("has_shard_torch", hasItem(UGItems.SHARD_TORCH.get()))
+                .build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(UGBlocks.CLOGGRUM_BARS.get(), 16)
                 .patternLine("CCC")
                 .patternLine("CCC")
@@ -117,7 +127,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .patternLine("CSC")
                 .patternLine("CCC")
                 .patternLine(" C ")
-                .key('S', UGBlocks.SMOGSTEM_PLANKS.get())
+                .key('S', ItemTags.PLANKS)
                 .key('C', UGItems.CLOGGRUM_INGOT.get())
                 .addCriterion("has_scales", hasItem(UGItems.CLOGGRUM_INGOT.get()))
                 .build(consumer);
@@ -240,23 +250,23 @@ public class UGRecipes extends UGRecipeProvider {
 
         makeSword(UGItems.CLOGGRUM_SWORD, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeSword(UGItems.FROSTSTEEL_SWORD, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makeSword(UGItems.UTHERIC_SWORD, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeSword(UGItems.UTHERIUM_SWORD, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makePickaxe(UGItems.CLOGGRUM_PICKAXE, UGItems.CLOGGRUM_INGOT).build(consumer);
         makePickaxe(UGItems.FROSTSTEEL_PICKAXE, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makePickaxe(UGItems.UTHERIC_PICKAXE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makePickaxe(UGItems.UTHERIUM_PICKAXE, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeAxe(UGItems.CLOGGRUM_AXE, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeAxe(UGItems.FROSTSTEEL_AXE, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makeAxe(UGItems.UTHERIC_AXE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeAxe(UGItems.UTHERIUM_AXE, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeShovel(UGItems.CLOGGRUM_SHOVEL, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeShovel(UGItems.FROSTSTEEL_SHOVEL, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makeShovel(UGItems.UTHERIC_SHOVEL, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeShovel(UGItems.UTHERIUM_SHOVEL, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeHoe(UGItems.CLOGGRUM_HOE, UGItems.CLOGGRUM_INGOT).build(consumer);
         makeHoe(UGItems.FROSTSTEEL_HOE, UGItems.FROSTSTEEL_INGOT).build(consumer);
-        makeHoe(UGItems.UTHERIC_HOE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeHoe(UGItems.UTHERIUM_HOE, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeChestplate(UGItems.MASTICATED_CHESTPLATE, UGItems.MASTICATOR_SCALES).build(consumer);
 
@@ -270,10 +280,10 @@ public class UGRecipes extends UGRecipeProvider {
         makeLeggings(UGItems.FROSTSTEEL_LEGGINGS, UGItems.FROSTSTEEL_INGOT).build(consumer);
         makeBoots(UGItems.FROSTSTEEL_BOOTS, UGItems.FROSTSTEEL_INGOT).build(consumer);
 
-        makeHelmet(UGItems.UTHERIC_HELMET, UGItems.UTHERIUM_INGOT).build(consumer);
-        makeChestplate(UGItems.UTHERIC_CHESTPLATE, UGItems.UTHERIUM_INGOT).build(consumer);
-        makeLeggings(UGItems.UTHERIC_LEGGINGS, UGItems.UTHERIUM_INGOT).build(consumer);
-        makeBoots(UGItems.UTHERIC_BOOTS, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeHelmet(UGItems.UTHERIUM_HELMET, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeChestplate(UGItems.UTHERIUM_CHESTPLATE, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeLeggings(UGItems.UTHERIUM_LEGGINGS, UGItems.UTHERIUM_INGOT).build(consumer);
+        makeBoots(UGItems.UTHERIUM_BOOTS, UGItems.UTHERIUM_INGOT).build(consumer);
 
         makeStairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK).build(consumer);
         makeStairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS).build(consumer);
@@ -329,8 +339,15 @@ public class UGRecipes extends UGRecipeProvider {
         makeStew(UGItems.INDIGO_STEW, UGBlocks.INDIGO_MUSHROOM).build(consumer);
         makeStew(UGItems.VEILED_STEW, UGBlocks.VEIL_MUSHROOM).build(consumer);
 
+        smithingForgotten(UGItems.CLOGGRUM_SWORD, UGItems.FORGOTTEN_SWORD).build(consumer, name("forgotten_sword_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_PICKAXE, UGItems.FORGOTTEN_PICKAXE).build(consumer, name("forgotten_pickaxe_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_AXE, UGItems.FORGOTTEN_AXE).build(consumer, name("forgotten_axe_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_SHOVEL, UGItems.FORGOTTEN_SHOVEL).build(consumer, name("forgotten_shovel_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_HOE, UGItems.FORGOTTEN_HOE).build(consumer, name("forgotten_hoe_smithing"));
+
         smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).build(consumer, name("smelt_depthrock_bricks"));
         smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).build(consumer, name("smelt_shiverstone_bricks"));
+        smeltingRecipe(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get(), UGBlocks.TREMBLECRUST_BRICKS.get(), .1F).build(consumer, name("smelt_tremblecrust_bricks"));
 
         smeltingRecipe(Items.DIAMOND, UGItems.CATALYST.get(), 0.0F).build(consumer, name("smelt_catalyst"));
 
@@ -368,10 +385,30 @@ public class UGRecipes extends UGRecipeProvider {
         smokingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), .35F).build(consumer, name("smoke_gwibling"));
 
         smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).build(consumer, name("smelt_gloomper_leg"));
-        blastingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).build(consumer, name("blast_gloomper_leg"));
+        smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).build(consumer, name("smoke_gloomper_leg"));
 
         smeltingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).build(consumer, name("smelt_glowing_kelp"));
         smokingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).build(consumer, name("smoke_glowing_kelp"));
+
+        depthrockStonecuttingRecipe(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).build(consumer, name("chiseled_depthrock_bricks_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_SLAB.get(), 2).build(consumer, name("depthrock_brick_slab_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_STAIRS.get()).build(consumer, name("depthrock_brick_stairs_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_WALL.get()).build(consumer, name("depthrock_brick_wall_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICKS.get()).build(consumer, name("depthrock_bricks_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_SLAB.get(), 2).build(consumer, name("depthrock_slab_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_STAIRS.get()).build(consumer, name("depthrock_stairs_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_WALL.get()).build(consumer, name("depthrock_wall_stonecutting"));
+
+        depthrockStonecuttingRecipe(UGItems.DEPTHROCK_PEBBLE.get(), 9).build(consumer, name("depthrock_pebble_stonecutting"));
+
+        shiverstoneStonecuttingRecipe(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get()).build(consumer, name("chiseled_shiverstone_bricks_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_SLAB.get(), 2).build(consumer, name("shiverstone_brick_slab_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_STAIRS.get()).build(consumer, name("shiverstone_brick_stairs_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_WALL.get()).build(consumer, name("shiverstone_brick_wall_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICKS.get()).build(consumer, name("shiverstone_bricks_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_SLAB.get(), 2).build(consumer, name("shiverstone_slab_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_STAIRS.get()).build(consumer, name("shiverstone_stairs_stonecutting"));
+        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_WALL.get()).build(consumer, name("shiverstone_wall_stonecutting"));
     }
 
     private ResourceLocation name(String name) {

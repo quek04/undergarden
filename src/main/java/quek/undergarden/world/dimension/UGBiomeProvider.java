@@ -43,13 +43,10 @@ public class UGBiomeProvider extends NetherBiomeProvider {
                             .forGetter((netherProvider) -> netherProvider.weirdnessNoise))
                     .apply(instance, NetherBiomeProvider::new));
 
-    public static final Codec<NetherBiomeProvider> CODEC = Codec.mapEither(DefaultBuilder.CODEC, PACKET_CODEC).xmap((either) -> {
-        return either.map(DefaultBuilder::build, Function.identity());
-    }, (netherProvider) -> {
-        return netherProvider.getDefaultBuilder().map(Either::<DefaultBuilder, NetherBiomeProvider>left).orElseGet(() -> {
-            return Either.right(netherProvider);
-        });
-    }).codec();
+    public static final Codec<NetherBiomeProvider> CODEC = Codec.mapEither(DefaultBuilder.CODEC, PACKET_CODEC).xmap((either) ->
+            either.map(DefaultBuilder::build, Function.identity()), (netherProvider) ->
+            netherProvider.getDefaultBuilder().map(Either::<DefaultBuilder, NetherBiomeProvider>left).orElseGet(() ->
+                    Either.right(netherProvider))).codec();
 
     private UGBiomeProvider(long seed, List<Pair<Biome.Attributes, Supplier<Biome>>> biomeAttributes, Optional<Pair<Registry<Biome>, NetherBiomeProvider.Preset>> netherProviderPreset) {
         super(seed, biomeAttributes, netherProviderPreset);

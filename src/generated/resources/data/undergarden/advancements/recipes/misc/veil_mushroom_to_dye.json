@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:veil_mushroom_to_dye"
+    ]
+  },
+  "criteria": {
+    "has_veil_mushroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:veil_mushroom"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:veil_mushroom_to_dye"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_veil_mushroom",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "undergarden:raw_gloomper_leg"
+  },
+  "result": "undergarden:gloomper_leg",
+  "experience": 0.35,
+  "cookingtime": 100
+}

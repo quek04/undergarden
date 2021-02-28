@@ -1,5 +1,6 @@
 package quek.undergarden.entity.boss;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -11,14 +12,18 @@ import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGTags;
 
 public class ForgottenGuardianEntity extends MonsterEntity {
 
@@ -91,6 +96,17 @@ public class ForgottenGuardianEntity extends MonsterEntity {
         if (this.attackTimer > 0) {
             --this.attackTimer;
         }
+        if(this.collidedHorizontally) {
+            AxisAlignedBB axisalignedbb = this.getBoundingBox();
+
+            for(BlockPos blockpos : BlockPos.getAllInBoxMutable(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
+                BlockState blockstate = this.world.getBlockState(blockpos);
+                Block block = blockstate.getBlock();
+                if(!block.isIn(BlockTags.WITHER_IMMUNE)) {
+                    this.world.destroyBlock(blockpos, false, this);
+                }
+            }
+        }
     }
 
     @Override
@@ -162,6 +178,16 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
     @Override
     public boolean addPotionEffect(EffectInstance effectInstanceIn) {
+        return false;
+    }
+
+    @Override
+    public boolean isPushedByWater() {
+        return false;
+    }
+
+    @Override
+    public boolean canBeLeashedTo(PlayerEntity player) {
         return false;
     }
 }

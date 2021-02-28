@@ -3,6 +3,7 @@
   "values": [
     "minecraft:stone_bricks",
     "undergarden:depthrock_bricks",
-    "undergarden:shiverstone_bricks"
+    "undergarden:shiverstone_bricks",
+    "#minecraft:stone_bricks"
   ]
 }

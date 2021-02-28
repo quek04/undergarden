@@ -2,12 +2,12 @@ package quek.undergarden.block;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGDamageSources;
 import quek.undergarden.registry.UGTags;
 
 import java.util.Random;
@@ -42,7 +42,7 @@ public class FrozenDeepturfBlock extends UGPlantBlock {
             double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
             double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);
             if (d0 >= (double) 0.003F || d1 >= (double) 0.003F) {
-                entityIn.attackEntityFrom(DamageSource.GENERIC, 1.0F);
+                entityIn.attackEntityFrom(UGDamageSources.FROZEN_DEEPTURF, 1.0F);
             }
         }
     }

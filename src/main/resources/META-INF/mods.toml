@@ -11,13 +11,12 @@ logoBlur=false
 description='''
 Developer and Creator: Quek
 Artists: Screem, Frenderman, Echolite
-Past Contributors: Gecko, Julian++
 
 Deep underground, a forgotten land awaits.'''
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
-    versionRange="[34.1.25,)"
+    versionRange="[36.0.42,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.undergarden]]

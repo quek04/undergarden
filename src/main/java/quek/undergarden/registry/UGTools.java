@@ -10,7 +10,7 @@ public enum UGTools implements IItemTier {
     CLOGGRUM(286,5,4,2, 10, () -> {return Ingredient.fromItems(UGItems.CLOGGRUM_INGOT.get());}),
     FROSTSTEEL(575, 6, 3, 3, 15, () -> {return Ingredient.fromItems(UGItems.FROSTSTEEL_INGOT.get());}),
     UTHERIC(1279,8,3.5F,4,13, () -> {return Ingredient.fromItems(UGItems.UTHERIUM_INGOT.get());}),
-    FORGOTTEN(63, 10, 6, 4, 0, () -> {return Ingredient.fromItems(UGItems.FORGOTTEN_INGOT.get());})
+    FORGOTTEN(127, 10, 6, 4, 0, () -> {return Ingredient.fromItems(UGItems.FORGOTTEN_INGOT.get());})
     ;
 
     int maxUses;

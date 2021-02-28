@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:gloomgourd_seeds"
+    ]
+  },
+  "criteria": {
+    "has_gloomgourd": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:gloomgourd"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:gloomgourd_seeds"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gloomgourd",
+      "has_the_recipe"
+    ]
+  ]
+}

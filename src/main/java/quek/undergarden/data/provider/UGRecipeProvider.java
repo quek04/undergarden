@@ -1,10 +1,7 @@
 package quek.undergarden.data.provider;
 
 import net.minecraft.block.Block;
-import net.minecraft.data.CookingRecipeBuilder;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.data.ShapelessRecipeBuilder;
+import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -13,12 +10,12 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.common.data.ForgeRecipeProvider;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGItems;
 
 import java.util.function.Supplier;
 
-public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionBuilder {
+public class UGRecipeProvider extends RecipeProvider {
 
     public UGRecipeProvider(DataGenerator generatorIn) {
         super(generatorIn);
@@ -60,70 +57,70 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeStairs(Supplier<? extends Block> stairsOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeStairs(Supplier<? extends Block> stairsOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(stairsOut.get(), 4)
                 .patternLine("M  ")
                 .patternLine("MM ")
                 .patternLine("MMM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeSlab(Supplier<? extends Block> slabOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeSlab(Supplier<? extends Block> slabOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(slabOut.get(), 6)
                 .patternLine("MMM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeWall(Supplier<? extends Block> wallOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeWall(Supplier<? extends Block> wallOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(wallOut.get(), 6)
                 .patternLine("MMM")
                 .patternLine("MMM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeFence(Supplier<? extends Block> fenceOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeFence(Supplier<? extends Block> fenceOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(fenceOut.get(), 6)
                 .patternLine("M/M")
                 .patternLine("M/M")
-                .key('M', materialIn.get())
+                .key('M', blockIn.get())
                 .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeFenceGate(Supplier<? extends Block> fenceGateOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeFenceGate(Supplier<? extends Block> fenceGateOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(fenceGateOut.get())
                 .patternLine("/M/")
                 .patternLine("/M/")
-                .key('M', materialIn.get())
+                .key('M', blockIn.get())
                 .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(bricksOut.get(), 4)
                 .patternLine("MM")
                 .patternLine("MM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeChiseledBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeChiseledBricks(Supplier<? extends Block> bricksOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shapedRecipe(bricksOut.get())
                 .patternLine("M")
                 .patternLine("M")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', blockIn.get())
+                .addCriterion("has_" + blockIn.get().getRegistryName().getPath(), hasItem(blockIn.get()));
     }
 
-    public ShapedRecipeBuilder makeWood(Supplier<? extends Block> woodOut, Supplier<? extends Block> materialIn) {
+    public ShapedRecipeBuilder makeWood(Supplier<? extends Block> woodOut, Supplier<? extends Block> logIn) {
         return ShapedRecipeBuilder.shapedRecipe(woodOut.get(), 3)
                 .patternLine("MM")
                 .patternLine("MM")
-                .key('M', materialIn.get())
-                .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
+                .key('M', logIn.get())
+                .addCriterion("has_" + logIn.get().getRegistryName().getPath(), hasItem(logIn.get()));
     }
 
     public ShapedRecipeBuilder makeIngotToBlock(Supplier<? extends Block> blockOut, Supplier<? extends Item> ingotIn) {
@@ -174,16 +171,6 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
                 .key('#', materialIn.get())
                 .key('/', Tags.Items.RODS_WOODEN)
                 .addCriterion("has_" + materialIn.get().getRegistryName().getPath(), hasItem(materialIn.get()));
-    }
-
-    public ShapedRecipeBuilder makeTagPickaxe(Supplier<? extends Item> pickaxeOut, ITag.INamedTag<Item> materialIn) {
-        return ShapedRecipeBuilder.shapedRecipe(pickaxeOut.get())
-                .patternLine("###")
-                .patternLine(" / ")
-                .patternLine(" / ")
-                .key('#', materialIn)
-                .key('/', Tags.Items.RODS_WOODEN)
-                .addCriterion("has_" + materialIn, hasItem(materialIn));
     }
 
     public ShapedRecipeBuilder makeAxe(Supplier<? extends Item> axeOut, Supplier<? extends Item> materialIn) {
@@ -308,5 +295,40 @@ public class UGRecipeProvider extends ForgeRecipeProvider implements IConditionB
     public CookingRecipeBuilder smokingRecipe(IItemProvider result, IItemProvider ingredient, float exp, int count) {
         return CookingRecipeBuilder.cookingRecipe(Ingredient.fromStacks(new ItemStack(ingredient, count)), result, exp, 100, IRecipeSerializer.SMOKING)
                 .addCriterion("has_" + ingredient.asItem().getRegistryName(), hasItem(ingredient));
+    }
+
+    public SmithingRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> result) {
+        return SmithingRecipeBuilder.smithingRecipe(Ingredient.fromItems(input.get()), Ingredient.fromItems(upgradeItem.get()), result.get())
+                .addCriterion("has_" + upgradeItem.get().getRegistryName(), hasItem(upgradeItem.get()));
+    }
+
+    public SmithingRecipeBuilder smithingForgotten(Supplier<Item> input, Supplier<Item> result) {
+        return smithingRecipe(input, UGItems.FORGOTTEN_INGOT, result);
+    }
+
+    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, IItemProvider result) {
+        return SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(input.get()), result)
+                .addCriterion("has_" + input.get().getRegistryName(), hasItem(input.get()));
+    }
+
+    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, IItemProvider result, int resultAmount) {
+        return SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(input.get()), result, resultAmount)
+                .addCriterion("has_" + input.get().getRegistryName(), hasItem(input.get()));
+    }
+
+    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(IItemProvider result) {
+        return stonecuttingRecipe(UGBlocks.DEPTHROCK, result);
+    }
+
+    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(IItemProvider result, int resultAmount) {
+        return stonecuttingRecipe(UGBlocks.DEPTHROCK, result, resultAmount);
+    }
+
+    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(IItemProvider result) {
+        return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result);
+    }
+
+    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(IItemProvider result, int resultAmount) {
+        return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result, resultAmount);
     }
 }

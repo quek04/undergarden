@@ -140,6 +140,9 @@
       },
       {
         "name": "undergarden:music/acasta_gneiss", "stream": true
+      },
+      {
+        "name": "undergarden:music/all_that_wiggles_is_wood", "stream": true
       }
     ]
   },
@@ -167,6 +170,19 @@
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [
       "undergarden:item/blisterbomb"
+    ]
+  },
+  "item.slingshot_shoot": {
+    "subtitle": "subtitles.item.slingshot_shoot",
+    "sounds": [
+      "undergarden:item/slingshot_shoot"
+    ]
+  },
+  "item.slingshot_draw": {
+    "subtitle": "subtitles.item.slingshot_shoot",
+    "sounds": [
+      "undergarden:item/slingshot_draw_1",
+      "undergarden:item/slingshot_draw_2"
     ]
   },
   "entity.dweller_living": {
@@ -451,6 +467,49 @@
       "undergarden:entity/nargoyle_attack_1",
       "undergarden:entity/nargoyle_attack_2",
       "undergarden:entity/nargoyle_attack_3"
+    ]
+  },
+  "entity.minion_shoot": {
+    "subtitle": "subtitles.entity.minion_shoot",
+    "sounds": [
+      "undergarden:entity/minion_shoot"
+    ]
+  },
+  "entity.minion_death": {
+    "subtitle": "subtitles.entity.minion_death",
+    "sounds": [
+      "undergarden:entity/minion_death"
+    ]
+  },
+  "entity.muncher_living": {
+    "subtitle": "subtitles.entity.muncher_living",
+    "sounds": [
+      "undergarden:entity/muncher_living_1",
+      "undergarden:entity/muncher_living_2",
+      "undergarden:entity/muncher_living_3",
+      "undergarden:entity/muncher_living_4",
+      "undergarden:entity/muncher_living_5",
+      "undergarden:entity/muncher_living_6"
+    ]
+  },
+  "entity.muncher_hurt": {
+    "subtitle": "subtitles.entity.muncher_hurt",
+    "sounds": [
+      "undergarden:entity/muncher_living_1",
+      "undergarden:entity/muncher_living_2"
+    ]
+  },
+  "entity.muncher_death": {
+    "subtitle": "subtitles.entity.muncher_death",
+    "sounds": [
+      "undergarden:entity/muncher_death"
+    ]
+  },
+  "entity.muncher_chew": {
+    "subtitle": "subtitles.entity.muncher_chew",
+    "sounds": [
+      "undergarden:entity/muncher_chew_1",
+      "undergarden:entity/muncher_chew_2"
     ]
   }
 }
