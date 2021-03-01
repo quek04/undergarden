@@ -5,13 +5,13 @@ package quek.undergarden.client.model;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import quek.undergarden.entity.rotspawn.RotlingEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class RotlingModel<T extends Entity> extends SegmentedModel<T> {
+public class RotlingModel<T extends RotlingEntity> extends SegmentedModel<T> {
 	private final ModelRenderer body;
 	private final ModelRenderer head;
 	private final ModelRenderer rightLeg;
@@ -31,7 +31,6 @@ public class RotlingModel<T extends Entity> extends SegmentedModel<T> {
 		head = new ModelRenderer(this);
 		head.setRotationPoint(0.0F, -11.5F, 4.0F);
 		body.addChild(head);
-		setRotationAngle(head, -0.1745F, 0.0F, 0.0F);
 		head.setTextureOffset(0, 0).addBox(-4.0F, -5.0F, -8.0F, 8.0F, 5.0F, 8.0F, 0.0F, false);
 
 		rightLeg = new ModelRenderer(this);
@@ -58,9 +57,11 @@ public class RotlingModel<T extends Entity> extends SegmentedModel<T> {
 	}
 
 	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		this.leftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.rightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		this.head.rotateAngleX = entity.isAggressive() ? -0.5235F : -0.1745F;
+
+		this.leftArm.rotateAngleX = entity.isAggressive() ? -1.5F : MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightArm.rotateAngleX = entity.isAggressive() ? -1.5F : MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
 		this.leftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.rightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
