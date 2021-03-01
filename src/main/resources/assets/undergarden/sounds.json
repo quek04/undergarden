@@ -205,6 +205,12 @@
       "undergarden:entity/dweller_death_1"
     ]
   },
+  "entity.dweller_step": {
+    "subtitle": "subtitles.entity.dweller_death",
+    "sounds": [
+      "undergarden:entity/dweller_death_1"
+    ]
+  },
   "entity.rotwalker_living": {
     "subtitle": "subtitles.entity.rotwalker_living",
     "sounds": [
@@ -317,24 +323,7 @@
     "sounds": [
       "undergarden:entity/stoneborn_pleased_1",
       "undergarden:entity/stoneborn_pleased_2",
-      "undergarden:entity/stoneborn_pleased_3",
-      "undergarden:entity/stoneborn_chuckle_1",
-      "undergarden:entity/stoneborn_chuckle_2"
-    ]
-  },
-  "entity.stoneborn_awe": {
-    "subtitle": "subtitles.entity.stoneborn_awe",
-    "sounds": [
-      "undergarden:entity/stoneborn_awe_1",
-      "undergarden:entity/stoneborn_awe_2",
-      "undergarden:entity/stoneborn_awe_3"
-    ]
-  },
-  "entity.stoneborn_chuckle": {
-    "subtitle": "subtitles.entity.stoneborn_chuckle",
-    "sounds": [
-      "undergarden:entity/stoneborn_chuckle_1",
-      "undergarden:entity/stoneborn_chuckle_2"
+      "undergarden:entity/stoneborn_pleased_3"
     ]
   },
   "entity.stoneborn_hurt": {
@@ -348,16 +337,7 @@
     "subtitle": "subtitles.entity.stoneborn_angry",
     "sounds": [
       "undergarden:entity/stoneborn_angry_1",
-      "undergarden:entity/stoneborn_angry_2",
-      "undergarden:entity/stoneborn_growl_1",
-      "undergarden:entity/stoneborn_growl_2"
-    ]
-  },
-  "entity.stoneborn_growl": {
-    "subtitle": "subtitles.entity.stoneborn_growl",
-    "sounds": [
-      "undergarden:entity/stoneborn_growl_1",
-      "undergarden:entity/stoneborn_growl_2"
+      "undergarden:entity/stoneborn_angry_2"
     ]
   },
   "entity.stoneborn_confused": {
@@ -365,9 +345,7 @@
     "sounds": [
       "undergarden:entity/stoneborn_confused_1",
       "undergarden:entity/stoneborn_confused_2",
-      "undergarden:entity/stoneborn_confused_3",
-      "undergarden:entity/stoneborn_growl_1",
-      "undergarden:entity/stoneborn_growl_2"
+      "undergarden:entity/stoneborn_confused_3"
     ]
   },
   "entity.stoneborn_chant": {

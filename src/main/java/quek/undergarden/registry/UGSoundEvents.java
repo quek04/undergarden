@@ -65,11 +65,8 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> STONEBORN_STEP = register("entity.stoneborn_step");
     public static final RegistryObject<SoundEvent> STONEBORN_SPEAKING = register("entity.stoneborn_speaking");
     public static final RegistryObject<SoundEvent> STONEBORN_PLEASED = register("entity.stoneborn_pleased");
-    public static final RegistryObject<SoundEvent> STONEBORN_AWE = register("entity.stoneborn_awe");
-    public static final RegistryObject<SoundEvent> STONEBORN_CHUCKLE = register("entity.stoneborn_chuckle");
     public static final RegistryObject<SoundEvent> STONEBORN_HURT = register("entity.stoneborn_hurt");
     public static final RegistryObject<SoundEvent> STONEBORN_ANGRY = register("entity.stoneborn_angry");
-    public static final RegistryObject<SoundEvent> STONEBORN_GROWL = register("entity.stoneborn_growl");
     public static final RegistryObject<SoundEvent> STONEBORN_CONFUSED = register("entity.stoneborn_confused");
     public static final RegistryObject<SoundEvent> STONEBORN_CHANT = register("entity.stoneborn_chant");
     public static final RegistryObject<SoundEvent> STONEBORN_DEATH = register("entity.stoneborn_death");
