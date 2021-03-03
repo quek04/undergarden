@@ -120,6 +120,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
         itemBlock(UGBlocks.FROZEN_DEEPTURF_BLOCK);
         itemBlockFlat(UGBlocks.FROZEN_DEEPTURF);
+        itemBlock(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
 
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);

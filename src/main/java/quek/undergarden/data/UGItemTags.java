@@ -40,7 +40,6 @@ public class UGItemTags extends ItemTagsProvider {
 
         //vanilla
         tag(ItemTags.PLANKS).add(UGBlocks.SMOGSTEM_PLANKS.get().asItem(), UGBlocks.WIGGLEWOOD_PLANKS.get().asItem(), UGBlocks.GRONGLE_PLANKS.get().asItem());
-        tag(ItemTags.STONE_BRICKS).add(UGBlocks.DEPTHROCK_BRICKS.get().asItem(), UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().asItem(), UGBlocks.CHISELED_DEPTHROCK_BRICKS.get().asItem(), UGBlocks.SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get().asItem(), UGBlocks.TREMBLECRUST_BRICKS.get().asItem(), UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get().asItem());
         tag(ItemTags.WOODEN_BUTTONS).add(UGBlocks.SMOGSTEM_BUTTON.get().asItem(), UGBlocks.WIGGLEWOOD_BUTTON.get().asItem(), UGBlocks.GRONGLE_BUTTON.get().asItem());
         tag(ItemTags.BUTTONS).add(UGBlocks.DEPTHROCK_BUTTON.get().asItem(), UGBlocks.SHIVERSTONE_BUTTON.get().asItem());
         tag(ItemTags.WOODEN_DOORS).add(UGBlocks.SMOGSTEM_DOOR.get().asItem(), UGBlocks.WIGGLEWOOD_DOOR.get().asItem(), UGBlocks.GRONGLE_DOOR.get().asItem());

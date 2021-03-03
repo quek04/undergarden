@@ -331,4 +331,12 @@ public class UGRecipeProvider extends RecipeProvider {
     public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(IItemProvider result, int resultAmount) {
         return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result, resultAmount);
     }
+
+    public SingleItemRecipeBuilder tremblecrustStonecuttingRecipe(IItemProvider result) {
+        return stonecuttingRecipe(UGBlocks.TREMBLECRUST, result);
+    }
+
+    public SingleItemRecipeBuilder tremblecrustStonecuttingRecipe(IItemProvider result, int resultAmount) {
+        return stonecuttingRecipe(UGBlocks.TREMBLECRUST, result, resultAmount);
+    }
 }
