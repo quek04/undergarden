@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:tremblecrust_bricks"
+    }
+  },
+  "result": {
+    "item": "undergarden:tremblecrust_brick_slab",
+    "count": 6
+  }
+}

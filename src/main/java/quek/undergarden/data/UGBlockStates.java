@@ -77,13 +77,15 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.FROZEN_DEEPTURF);
         block(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
 
-        stairs(UGBlocks.DEPTHROCK_STAIRS, "depthrock");
-        stairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, "depthrock_bricks");
-        stairs(UGBlocks.SMOGSTEM_STAIRS, "smogstem_planks");
-        stairs(UGBlocks.WIGGLEWOOD_STAIRS, "wigglewood_planks");
-        stairs(UGBlocks.SHIVERSTONE_STAIRS, "shiverstone");
-        stairs(UGBlocks.SHIVERSTONE_BRICK_STAIRS, "shiverstone_bricks");
-        stairs(UGBlocks.GRONGLE_STAIRS, "grongle_planks");
+        stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
+        stairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS);
+        stairs(UGBlocks.SMOGSTEM_STAIRS, UGBlocks.SMOGSTEM_PLANKS);
+        stairs(UGBlocks.WIGGLEWOOD_STAIRS, UGBlocks.WIGGLEWOOD_PLANKS);
+        stairs(UGBlocks.SHIVERSTONE_STAIRS, UGBlocks.SHIVERSTONE);
+        stairs(UGBlocks.SHIVERSTONE_BRICK_STAIRS, UGBlocks.SHIVERSTONE_BRICKS);
+        stairs(UGBlocks.GRONGLE_STAIRS, UGBlocks.GRONGLE_PLANKS);
+        stairs(UGBlocks.TREMBLECRUST_STAIRS, UGBlocks.TREMBLECRUST);
+        stairs(UGBlocks.TREMBLECRUST_BRICK_STAIRS, UGBlocks.TREMBLECRUST_BRICKS);
 
         slab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK);
         slab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS);
@@ -92,15 +94,19 @@ public class UGBlockStates extends UGBlockstateProvider {
         slab(UGBlocks.SHIVERSTONE_SLAB, UGBlocks.SHIVERSTONE);
         slab(UGBlocks.SHIVERSTONE_BRICK_SLAB, UGBlocks.SHIVERSTONE_BRICKS);
         slab(UGBlocks.GRONGLE_SLAB, UGBlocks.GRONGLE_PLANKS);
+        slab(UGBlocks.TREMBLECRUST_SLAB, UGBlocks.TREMBLECRUST);
+        slab(UGBlocks.TREMBLECRUST_BRICK_SLAB, UGBlocks.TREMBLECRUST_BRICKS);
 
         wallBlock(UGBlocks.DEPTHROCK_WALL.get(), modLoc("block/depthrock"));
         wallBlock(UGBlocks.DEPTHROCK_BRICK_WALL.get(), modLoc("block/depthrock_bricks"));
         wallBlock(UGBlocks.SHIVERSTONE_WALL.get(), modLoc("block/shiverstone"));
         wallBlock(UGBlocks.SHIVERSTONE_BRICK_WALL.get(), modLoc("block/shiverstone_bricks"));
+        wallBlock(UGBlocks.TREMBLECRUST_WALL.get(), modLoc("block/tremblecrust"));
+        wallBlock(UGBlocks.TREMBLECRUST_BRICK_WALL.get(), modLoc("block/tremblecrust_bricks"));
 
-        fence(UGBlocks.SMOGSTEM_FENCE, "smogstem_planks");
-        fence(UGBlocks.WIGGLEWOOD_FENCE, "wigglewood_planks");
-        fence(UGBlocks.GRONGLE_FENCE, "grongle_planks");
+        fence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS);
+        fence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS);
+        fence(UGBlocks.GRONGLE_FENCE, UGBlocks.GRONGLE_PLANKS);
 
         fenceGateBlock(UGBlocks.SMOGSTEM_FENCE_GATE.get(), modLoc("block/smogstem_planks"));
         fenceGateBlock(UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), modLoc("block/wigglewood_planks"));

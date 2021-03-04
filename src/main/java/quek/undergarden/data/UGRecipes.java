@@ -35,6 +35,7 @@ public class UGRecipes extends UGRecipeProvider {
 
         makeChiseledBricks(UGBlocks.CHISELED_DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK_BRICK_SLAB).build(consumer);
         makeChiseledBricks(UGBlocks.CHISELED_SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE_BRICK_SLAB).build(consumer);
+        makeChiseledBricks(UGBlocks.CHISELED_TREMBLECRUST_BRICKS, UGBlocks.TREMBLECRUST_BRICK_SLAB).build(consumer);
 
         makeWood(UGBlocks.SMOGSTEM_WOOD, UGBlocks.SMOGSTEM_LOG).build(consumer);
         makeWood(UGBlocks.STRIPPED_SMOGSTEM_WOOD, UGBlocks.STRIPPED_SMOGSTEM_LOG).build(consumer);
@@ -213,7 +214,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .addCriterion("has_shard", hasItem(UGItems.UTHERIC_SHARD.get()))
                 .build(consumer, name("shard_to_chunk"));
 
-        ShapedRecipeBuilder.shapedRecipe(Items.LEAD, 4)
+        ShapedRecipeBuilder.shapedRecipe(Items.LEAD, 2)
                 .patternLine("TT ")
                 .patternLine("TG ")
                 .patternLine("  T")
@@ -292,6 +293,8 @@ public class UGRecipes extends UGRecipeProvider {
         makeStairs(UGBlocks.GRONGLE_STAIRS, UGBlocks.GRONGLE_PLANKS).build(consumer);
         makeStairs(UGBlocks.SHIVERSTONE_STAIRS, UGBlocks.SHIVERSTONE).build(consumer);
         makeStairs(UGBlocks.SHIVERSTONE_BRICK_STAIRS, UGBlocks.SHIVERSTONE_BRICKS).build(consumer);
+        makeStairs(UGBlocks.TREMBLECRUST_STAIRS, UGBlocks.TREMBLECRUST).build(consumer);
+        makeStairs(UGBlocks.TREMBLECRUST_BRICK_STAIRS, UGBlocks.TREMBLECRUST_BRICKS).build(consumer);
 
         makeSlab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK).build(consumer);
         makeSlab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS).build(consumer);
@@ -300,11 +303,15 @@ public class UGRecipes extends UGRecipeProvider {
         makeSlab(UGBlocks.GRONGLE_SLAB, UGBlocks.GRONGLE_PLANKS).build(consumer);
         makeSlab(UGBlocks.SHIVERSTONE_SLAB, UGBlocks.SHIVERSTONE).build(consumer);
         makeSlab(UGBlocks.SHIVERSTONE_BRICK_SLAB, UGBlocks.SHIVERSTONE_BRICKS).build(consumer);
+        makeSlab(UGBlocks.TREMBLECRUST_SLAB, UGBlocks.TREMBLECRUST).build(consumer);
+        makeSlab(UGBlocks.TREMBLECRUST_BRICK_SLAB, UGBlocks.TREMBLECRUST_BRICKS).build(consumer);
 
         makeWall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK).build(consumer);
         makeWall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS).build(consumer);
         makeWall(UGBlocks.SHIVERSTONE_WALL, UGBlocks.SHIVERSTONE).build(consumer);
         makeWall(UGBlocks.SHIVERSTONE_BRICK_WALL, UGBlocks.SHIVERSTONE_BRICKS).build(consumer);
+        makeWall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST).build(consumer);
+        makeWall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS).build(consumer);
 
         makeFence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
         makeFence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
@@ -327,12 +334,14 @@ public class UGRecipes extends UGRecipeProvider {
         makeButton(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS).build(consumer);
         makeButton(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK).build(consumer);
         makeButton(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE).build(consumer);
+        makeButton(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST).build(consumer);
 
         makePressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS).build(consumer);
         makePressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS).build(consumer);
         makePressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS).build(consumer);
         makePressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK).build(consumer);
         makePressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE).build(consumer);
+        makePressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, UGBlocks.TREMBLECRUST).build(consumer);
 
         makeStew(UGItems.BLOODY_STEW, UGBlocks.BLOOD_MUSHROOM).build(consumer);
         makeStew(UGItems.INKY_STEW, UGBlocks.INK_MUSHROOM).build(consumer);
@@ -375,8 +384,8 @@ public class UGRecipes extends UGRecipeProvider {
         smeltingRecipeTag(UGItems.FROSTSTEEL_NUGGET.get(), UGTags.Items.FROSTSTEEL_ITEMS, .1F).build(consumer, name("smelt_froststeel_item"));
         blastingRecipeTag(UGItems.FROSTSTEEL_NUGGET.get(), UGTags.Items.FROSTSTEEL_ITEMS, .1F).build(consumer, name("blast_froststeel_item"));
 
-        smeltingRecipeTag(UGItems.UTHERIC_SHARD.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("smelt_utherium_item"));
-        blastingRecipeTag(UGItems.UTHERIC_SHARD.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("blast_utherium_item"));
+        smeltingRecipeTag(UGItems.UTHERIUM_CHUNK.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("smelt_utherium_item"));
+        blastingRecipeTag(UGItems.UTHERIUM_CHUNK.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).build(consumer, name("blast_utherium_item"));
 
         smeltingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), .35F).build(consumer, name("smelt_dweller_meat"));
         smokingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), .35F).build(consumer, name("smoke_dweller_meat"));
@@ -409,6 +418,15 @@ public class UGRecipes extends UGRecipeProvider {
         shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_SLAB.get(), 2).build(consumer, name("shiverstone_slab_stonecutting"));
         shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_STAIRS.get()).build(consumer, name("shiverstone_stairs_stonecutting"));
         shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_WALL.get()).build(consumer, name("shiverstone_wall_stonecutting"));
+
+        tremblecrustStonecuttingRecipe(UGBlocks.CHISELED_TREMBLECRUST_BRICKS.get()).build(consumer, name("chiseled_tremblecrust_bricks_stonecutting"));
+        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_BRICK_SLAB.get(), 2).build(consumer, name("tremblecrust_brick_slab_stonecutting"));
+        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_BRICK_STAIRS.get()).build(consumer, name("tremblecrust_brick_stairs_stonecutting"));
+        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_BRICK_WALL.get()).build(consumer, name("tremblecrust_brick_wall_stonecutting"));
+        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_BRICKS.get()).build(consumer, name("tremblecrust_bricks_stonecutting"));
+        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_SLAB.get(), 2).build(consumer, name("tremblecrust_slab_stonecutting"));
+        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_STAIRS.get()).build(consumer, name("tremblecrust_stairs_stonecutting"));
+        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_WALL.get()).build(consumer, name("tremblecrust_wall_stonecutting"));
     }
 
     private ResourceLocation name(String name) {

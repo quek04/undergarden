@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:chiseled_tremblecrust_bricks"
+    ]
+  },
+  "criteria": {
+    "has_tremblecrust_brick_slab": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:tremblecrust_brick_slab"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:chiseled_tremblecrust_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_tremblecrust_brick_slab",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -92,6 +92,8 @@ public class UGItemModels extends UGItemModelProvider {
         wallInventory("depthrock_brick_wall", new ResourceLocation(UGMod.MODID, "block/depthrock_bricks"));
         wallInventory("shiverstone_brick_wall", new ResourceLocation(UGMod.MODID, "block/shiverstone_bricks"));
         wallInventory("shiverstone_wall", new ResourceLocation(UGMod.MODID, "block/shiverstone"));
+        wallInventory("tremblecrust_wall", new ResourceLocation(UGMod.MODID, "block/tremblecrust"));
+        wallInventory("tremblecrust_brick_wall", new ResourceLocation(UGMod.MODID, "block/tremblecrust_bricks"));
         itemBlock(UGBlocks.COARSE_DEEPSOIL);
         itemBlock(UGBlocks.SMOGSTEM_PRESSURE_PLATE);
         itemBlock(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);
@@ -121,6 +123,11 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.FROZEN_DEEPTURF_BLOCK);
         itemBlockFlat(UGBlocks.FROZEN_DEEPTURF);
         itemBlock(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
+        itemBlock(UGBlocks.TREMBLECRUST_STAIRS);
+        itemBlock(UGBlocks.TREMBLECRUST_BRICK_STAIRS);
+        itemBlock(UGBlocks.TREMBLECRUST_SLAB);
+        itemBlock(UGBlocks.TREMBLECRUST_BRICK_SLAB);
+        itemBlock(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
 
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);
