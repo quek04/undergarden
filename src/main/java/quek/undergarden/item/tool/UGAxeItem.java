@@ -41,10 +41,10 @@ public class UGAxeItem extends AxeItem {
         if(stack.getItem() == UGItems.UTHERIUM_AXE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.FROSTSTEEL_AXE.get()) {
+        if(stack.getItem() == UGItems.FROSTSTEEL_AXE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.FORGOTTEN_AXE.get()) {
+        if(stack.getItem() == UGItems.FORGOTTEN_AXE.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.forgotten_sword").mergeStyle(TextFormatting.GRAY));
         }
     }
