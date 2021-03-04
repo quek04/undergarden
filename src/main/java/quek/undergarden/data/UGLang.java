@@ -432,7 +432,6 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("otherside_root", "The Otherside");
         addAdvDesc("otherside_root", "Enter the realm of madness.");
 
-        add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
