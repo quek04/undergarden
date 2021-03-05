@@ -4,6 +4,8 @@ import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -30,6 +32,10 @@ public class UGBlockLootTableProvider extends BlockLootTables {
 
     public void dropSelf(Supplier<? extends Block> block) {
         super.registerDropSelfLootTable(block.get());
+    }
+
+    public void slab(Supplier<? extends SlabBlock> slab) {
+        this.registerLootTable(slab.get(), BlockLootTables::droppingSlab);
     }
 
     public void dropOther(Supplier<? extends Block> brokenBlock, IItemProvider droppedBlock) {

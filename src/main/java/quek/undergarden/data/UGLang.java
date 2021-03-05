@@ -84,6 +84,15 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.LOOSE_TREMBLECRUST, "Loose Tremblecrust");
         addBlock(UGBlocks.TREMBLECRUST_BRICKS, "Tremblecrust Bricks");
         addBlock(UGBlocks.CRACKED_TREMBLECRUST_BRICKS, "Cracked Tremblecrust Bricks");
+        addBlock(UGBlocks.CHISELED_TREMBLECRUST_BRICKS, "Chiseled Tremblecrust Bricks");
+        addBlock(UGBlocks.TREMBLECRUST_STAIRS, "Tremblecrust Stairs");
+        addBlock(UGBlocks.TREMBLECRUST_BRICK_STAIRS, "Tremblecrust Brick Stairs");
+        addBlock(UGBlocks.TREMBLECRUST_SLAB, "Tremblecrust Slab");
+        addBlock(UGBlocks.TREMBLECRUST_BRICK_SLAB, "Tremblecrust Brick Slab");
+        addBlock(UGBlocks.TREMBLECRUST_WALL, "Tremblecrust Wall");
+        addBlock(UGBlocks.TREMBLECRUST_BRICK_WALL, "Tremblecrust Brick Wall");
+        addBlock(UGBlocks.TREMBLECRUST_BUTTON, "Tremblecrust Button");
+        addBlock(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, "Tremblecrust Pressure Plate");
 
         addBlock(UGBlocks.DEEPTURF_BLOCK, "Deepturf Block");
         addBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK, "Ashen Deepturf Block");
@@ -424,7 +433,6 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("otherside_root", "The Otherside");
         addAdvDesc("otherside_root", "Enter the realm of madness.");
 
-        add("tooltip.cloggrum_sword", "High damage, low durability.");
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");

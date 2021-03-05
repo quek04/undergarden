@@ -44,16 +44,13 @@ public class UGSwordItem extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if(stack.getItem() == UGItems.CLOGGRUM_SWORD.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.cloggrum_sword").mergeStyle(TextFormatting.GRAY));
-        }
-        else if(stack.getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
+        if(stack.getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.UTHERIUM_SWORD.get()) {
+        if(stack.getItem() == UGItems.UTHERIUM_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").mergeStyle(TextFormatting.GRAY));
         }
-        else if(stack.getItem() == UGItems.FORGOTTEN_SWORD.get()) {
+        if(stack.getItem() == UGItems.FORGOTTEN_SWORD.get()) {
             tooltip.add(new TranslationTextComponent("tooltip.forgotten_sword").mergeStyle(TextFormatting.GRAY));
         }
     }

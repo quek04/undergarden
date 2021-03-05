@@ -56,17 +56,17 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         crossBlock(block, models().cross(name(block), texture(name(block))));
     }
 
-    public void stairs(Supplier<? extends StairsBlock> block, String name) {
-        stairsBlock(block.get(), texture(name));
+    public void stairs(Supplier<? extends StairsBlock> block, Supplier<? extends Block> fullBlock) {
+        stairsBlock(block.get(), texture(name(fullBlock)));
     }
 
     public void slab(Supplier<? extends SlabBlock> block, Supplier<? extends Block> fullBlock) {
         slabBlock(block.get(), texture(name(fullBlock)), texture(name(fullBlock)));
     }
 
-    public void fence(Supplier<? extends FenceBlock> block, String name) {
-        fenceBlock(block.get(), texture(name));
-        fenceColumn(block, name);
+    public void fence(Supplier<? extends FenceBlock> block, Supplier<? extends Block> fullBlock) {
+        fenceBlock(block.get(), texture(name(fullBlock)));
+        fenceColumn(block, name(fullBlock));
     }
 
     private void fenceColumn(Supplier<? extends FenceBlock> block, String side) {

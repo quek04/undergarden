@@ -119,10 +119,10 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.DEPTHROCK_BRICK_STAIRS);
             dropSelf(UGBlocks.SMOGSTEM_STAIRS);
             dropSelf(UGBlocks.WIGGLEWOOD_STAIRS);
-            dropSelf(UGBlocks.DEPTHROCK_SLAB);
-            dropSelf(UGBlocks.DEPTHROCK_BRICK_SLAB);
-            dropSelf(UGBlocks.SMOGSTEM_SLAB);
-            dropSelf(UGBlocks.WIGGLEWOOD_SLAB);
+            slab(UGBlocks.DEPTHROCK_SLAB);
+            slab(UGBlocks.DEPTHROCK_BRICK_SLAB);
+            slab(UGBlocks.SMOGSTEM_SLAB);
+            slab(UGBlocks.WIGGLEWOOD_SLAB);
             dropSelf(UGBlocks.DEPTHROCK_BRICK_WALL);
             dropSelf(UGBlocks.SMOGSTEM_FENCE);
             dropSelf(UGBlocks.WIGGLEWOOD_FENCE);
@@ -141,8 +141,8 @@ public class UGLootTables extends LootTableProvider {
             dropWithSilk(UGBlocks.ASHEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             dropSelf(UGBlocks.SHIVERSTONE);
             dropSelf(UGBlocks.SHIVERSTONE_BRICKS);
-            dropSelf(UGBlocks.SHIVERSTONE_SLAB);
-            dropSelf(UGBlocks.SHIVERSTONE_BRICK_SLAB);
+            slab(UGBlocks.SHIVERSTONE_SLAB);
+            slab(UGBlocks.SHIVERSTONE_BRICK_SLAB);
             dropSelf(UGBlocks.SHIVERSTONE_BRICK_WALL);
             dropSelf(UGBlocks.SHIVERSTONE_STAIRS);
             dropSelf(UGBlocks.SHIVERSTONE_BRICK_STAIRS);
@@ -176,7 +176,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.GRONGLE_PLANKS);
             dropSelf(UGBlocks.GRONGLE_HYPHAE);
             dropSelf(UGBlocks.GRONGLE_STAIRS);
-            dropSelf(UGBlocks.GRONGLE_SLAB);
+            slab(UGBlocks.GRONGLE_SLAB);
             dropSelf(UGBlocks.GRONGLE_FENCE);
             dropSelf(UGBlocks.GRONGLE_FENCE_GATE);
             this.registerLootTable(UGBlocks.GRONGLE_DOOR.get(), (block) -> droppingWhen(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
@@ -215,6 +215,15 @@ public class UGLootTables extends LootTableProvider {
             registerFlowerPot(UGBlocks.POTTED_GRONGLET.get());
             dropWithSilk(UGBlocks.FROZEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             this.registerLootTable(UGBlocks.FROZEN_DEEPTURF.get(), BlockLootTables::onlyWithShears);
+            dropSelf(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
+            dropSelf(UGBlocks.TREMBLECRUST_STAIRS);
+            dropSelf(UGBlocks.TREMBLECRUST_BRICK_STAIRS);
+            slab(UGBlocks.TREMBLECRUST_SLAB);
+            slab(UGBlocks.TREMBLECRUST_BRICK_SLAB);
+            dropSelf(UGBlocks.TREMBLECRUST_WALL);
+            dropSelf(UGBlocks.TREMBLECRUST_BRICK_WALL);
+            dropSelf(UGBlocks.TREMBLECRUST_BUTTON);
+            dropSelf(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
         }
 
         @Override

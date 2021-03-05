@@ -10,7 +10,7 @@ public enum UGTools implements IItemTier {
     CLOGGRUM(286,5,4,2, 10, () -> {return Ingredient.fromItems(UGItems.CLOGGRUM_INGOT.get());}),
     FROSTSTEEL(575, 6, 3, 3, 15, () -> {return Ingredient.fromItems(UGItems.FROSTSTEEL_INGOT.get());}),
     UTHERIC(1279,8,3.5F,4,13, () -> {return Ingredient.fromItems(UGItems.UTHERIUM_INGOT.get());}),
-    FORGOTTEN(127, 10, 6, 4, 0, () -> {return Ingredient.fromItems(UGItems.FORGOTTEN_INGOT.get());})
+    FORGOTTEN(1565, 10, 6, 4, 0, () -> {return Ingredient.fromItems(UGItems.FORGOTTEN_INGOT.get());})
     ;
 
     int maxUses;
@@ -20,11 +20,11 @@ public enum UGTools implements IItemTier {
     int enchantability;
     LazyValue<Ingredient> repairMaterial;
 
-    UGTools(int uses, float efficiency, float damage, int harvest, int enchant, Supplier<Ingredient> material) {
-        maxUses = uses;
+    UGTools(int durability, float efficiency, float attack, int harvestLevel, int enchant, Supplier<Ingredient> material) {
+        maxUses = durability;
         toolEfficiency = efficiency;
-        attackDamage = damage;
-        harvestLvl = harvest;
+        attackDamage = attack;
+        harvestLvl = harvestLevel;
         enchantability = enchant;
         repairMaterial = new LazyValue<>(material);
     }

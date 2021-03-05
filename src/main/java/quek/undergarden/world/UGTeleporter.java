@@ -37,9 +37,9 @@ public class UGTeleporter implements ITeleporter {
 
     public Optional<TeleportationRepositioner.Result> getExistingPortal(BlockPos pos) {
         PointOfInterestManager poiManager = this.world.getPointOfInterestManager();
-        poiManager.ensureLoadedAndValid(this.world, pos, 128);
+        poiManager.ensureLoadedAndValid(this.world, pos, 64);
         Optional<PointOfInterest> optional = poiManager.getInSquare((poiType) ->
-                poiType == UGPointOfInterests.UNDERGARDEN_PORTAL.get(), pos, 128, PointOfInterestManager.Status.ANY).sorted(Comparator.<PointOfInterest>comparingDouble((poi) ->
+                poiType == UGPointOfInterests.UNDERGARDEN_PORTAL.get(), pos, 64, PointOfInterestManager.Status.ANY).sorted(Comparator.<PointOfInterest>comparingDouble((poi) ->
                 poi.getPos().distanceSq(pos)).thenComparingInt((poi) ->
                 poi.getPos().getY())).filter((poi) ->
                 this.world.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();

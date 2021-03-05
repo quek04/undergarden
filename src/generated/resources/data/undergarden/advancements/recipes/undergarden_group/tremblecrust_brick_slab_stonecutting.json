@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:tremblecrust_brick_slab_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:tremblecrust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:tremblecrust"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:tremblecrust_brick_slab_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:tremblecrust",
+      "has_the_recipe"
+    ]
+  ]
+}
