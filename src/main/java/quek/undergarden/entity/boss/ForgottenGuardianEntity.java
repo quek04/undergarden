@@ -40,8 +40,8 @@ public class ForgottenGuardianEntity extends MonsterEntity {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
-        //this.goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
@@ -96,8 +96,8 @@ public class ForgottenGuardianEntity extends MonsterEntity {
         if (this.attackTimer > 0) {
             --this.attackTimer;
         }
-        if(this.collidedHorizontally) {
-            AxisAlignedBB axisalignedbb = this.getBoundingBox();
+        if(this.collidedHorizontally && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this)) {
+            AxisAlignedBB axisalignedbb = this.getBoundingBox().grow(0.2D, 0.0D, 0.2D);
 
             for(BlockPos blockpos : BlockPos.getAllInBoxMutable(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
                 BlockState blockstate = this.world.getBlockState(blockpos);
