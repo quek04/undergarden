@@ -12,13 +12,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItemGroups;
 
 public class CarvedGloomgourdItem extends BlockItem {
 
-    private static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(UGMod.MODID, "textures/gloomgourd_overlay.png");
+    private static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(Undergarden.MODID, "textures/gloomgourd_overlay.png");
 
     public CarvedGloomgourdItem() {
         super(UGBlocks.CARVED_GLOOMGOURD.get(), (new Properties()

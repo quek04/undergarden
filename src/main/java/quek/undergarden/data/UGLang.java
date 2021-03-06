@@ -6,7 +6,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.data.LanguageProvider;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.*;
 
 import java.util.function.Supplier;
@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 public class UGLang extends LanguageProvider {
 
     public UGLang(DataGenerator gen) {
-        super(gen, UGMod.MODID, "en_us");
+        super(gen, Undergarden.MODID, "en_us");
     }
 
     private void addItemGroup(ItemGroup group, String name) {

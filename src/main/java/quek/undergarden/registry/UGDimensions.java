@@ -5,7 +5,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.world.dimension.UGBiomeProvider;
 import quek.undergarden.world.dimension.UGChunkGenerator;
 
@@ -18,7 +18,7 @@ public class UGDimensions {
     public static final RegistryKey<World> OTHERSIDE_WORLD = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("otherside"));
 
     private static ResourceLocation name(String name) {
-        return new ResourceLocation(UGMod.MODID, name);
+        return new ResourceLocation(Undergarden.MODID, name);
     }
 
     public static void registerDimensionStuff() {

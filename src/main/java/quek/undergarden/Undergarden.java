@@ -30,7 +30,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
-import quek.undergarden.client.ClientStuff;
+import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.entity.projectile.GooBallEntity;
@@ -39,12 +39,12 @@ import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.UGSpawnEggItem;
 import quek.undergarden.registry.*;
 
-@Mod(UGMod.MODID)
-public class UGMod {
+@Mod(Undergarden.MODID)
+public class Undergarden {
 	
 	public static final String MODID = "undergarden";
 
-	public UGMod() {
+	public Undergarden() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		bus.addListener(this::setup);
@@ -217,10 +217,10 @@ public class UGMod {
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
-		ClientStuff.registerBlockRenderers();
-		ClientStuff.registerEntityRenderers();
-		ClientStuff.registerBlockColors();
-		ClientStuff.registerItemColors();
+		UndergardenClient.registerBlockRenderers();
+		UndergardenClient.registerEntityRenderers();
+		UndergardenClient.registerBlockColors();
+		UndergardenClient.registerItemColors();
 
 		ItemModelsProperties.registerProperty(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
 			if (entity == null) {

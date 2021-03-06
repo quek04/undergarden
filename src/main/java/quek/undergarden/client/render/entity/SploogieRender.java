@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.SploogieModel;
 import quek.undergarden.entity.cavern.SploogieEntity;
 
@@ -18,6 +18,6 @@ public class SploogieRender extends MobRenderer<SploogieEntity, SploogieModel<Sp
 
     @Override
     public ResourceLocation getEntityTexture(SploogieEntity entity) {
-        return new ResourceLocation(UGMod.MODID, "textures/entity/sploogie.png");
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/sploogie.png");
     }
 }

@@ -11,7 +11,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.*;
 import quek.undergarden.entity.boss.ForgottenGuardianEntity;
 import quek.undergarden.entity.boss.MasticatorEntity;
@@ -26,7 +26,7 @@ import quek.undergarden.entity.stoneborn.StonebornEntity;
 @Mod.EventBusSubscriber(modid = "undergarden", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGEntityTypes {
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, UGMod.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Undergarden.MODID);
 
     //misc
     public static final EntityType<UGBoatEntity> BOAT_TYPE = EntityType.Builder.<UGBoatEntity>create(UGBoatEntity::new, EntityClassification.MISC)

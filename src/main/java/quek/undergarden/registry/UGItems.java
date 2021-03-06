@@ -7,7 +7,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoatEntity;
 import quek.undergarden.item.*;
 import quek.undergarden.item.armor.*;
@@ -15,7 +15,7 @@ import quek.undergarden.item.tool.*;
 
 public class UGItems {
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, UGMod.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Undergarden.MODID);
 
     public static final Rarity FORGOTTEN = Rarity.create("forgotten", TextFormatting.GREEN);
 

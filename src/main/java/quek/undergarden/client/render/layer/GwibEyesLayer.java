@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.layers.AbstractEyesLayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwibModel;
 import quek.undergarden.entity.GwibEntity;
 
@@ -19,6 +19,6 @@ public class GwibEyesLayer<T extends GwibEntity, M extends GwibModel<T>> extends
 
     @Override
     public RenderType getRenderType() {
-        return RenderType.getEyes(new ResourceLocation(UGMod.MODID, "textures/entity/gwib_eyes.png"));
+        return RenderType.getEyes(new ResourceLocation(Undergarden.MODID, "textures/entity/gwib_eyes.png"));
     }
 }

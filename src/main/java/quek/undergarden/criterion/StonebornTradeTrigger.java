@@ -2,7 +2,7 @@ package quek.undergarden.criterion;
 
 import com.google.gson.JsonObject;
 import net.minecraft.advancements.criterion.*;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class StonebornTradeTrigger extends AbstractCriterionTrigger<StonebornTradeTrigger.Instance> {
 
-    private static final ResourceLocation ID = new ResourceLocation(UGMod.MODID, "stoneborn_trade");
+    private static final ResourceLocation ID = new ResourceLocation(Undergarden.MODID, "stoneborn_trade");
 
     @Override
     public ResourceLocation getId() {

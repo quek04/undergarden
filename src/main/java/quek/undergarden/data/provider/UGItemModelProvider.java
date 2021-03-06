@@ -7,14 +7,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
 
 public abstract class UGItemModelProvider extends ItemModelProvider {
 
     public UGItemModelProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, UGMod.MODID, fileHelper);
+        super(generator, Undergarden.MODID, fileHelper);
     }
 
     public String blockName(Supplier<? extends Block> block) {

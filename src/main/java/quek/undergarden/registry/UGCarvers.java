@@ -10,12 +10,12 @@ import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.carver.UGCaveWorldCarver;
 
 public class UGCarvers {
 
-    public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister.create(ForgeRegistries.WORLD_CARVERS, UGMod.MODID);
+    public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister.create(ForgeRegistries.WORLD_CARVERS, Undergarden.MODID);
 
     public static final RegistryObject<WorldCarver<ProbabilityConfig>> UNDERGARDEN_CAVE = CARVERS.register(
             "undergarden_cave", () -> new UGCaveWorldCarver(ProbabilityConfig.CODEC));
@@ -25,6 +25,6 @@ public class UGCarvers {
     }
 
     private static <WC extends ICarverConfig> void register(String name, ConfiguredCarver<WC> carver) {
-        Registry.register(WorldGenRegistries.CONFIGURED_CARVER, new ResourceLocation(UGMod.MODID, name), carver);
+        Registry.register(WorldGenRegistries.CONFIGURED_CARVER, new ResourceLocation(Undergarden.MODID, name), carver);
     }
 }

@@ -12,7 +12,7 @@ import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.world.gen.tree.SmogstemTree;
 import quek.undergarden.world.gen.tree.WigglewoodTree;
@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 
 public class UGBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, UGMod.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Undergarden.MODID);
 
     public static final RegistryObject<Block> UNDERGARDEN_PORTAL = BLOCKS.register("undergarden_portal", UndergardenPortalBlock::new);
 

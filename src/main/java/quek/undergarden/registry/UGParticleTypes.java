@@ -12,13 +12,13 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.particle.*;
 
-@Mod.EventBusSubscriber(modid = UGMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Undergarden.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGParticleTypes {
 
-    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, UGMod.MODID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, Undergarden.MODID);
 
     public static final RegistryObject<BasicParticleType> SHARD = PARTICLES.register("shard", () -> new BasicParticleType(false));
     public static final RegistryObject<BasicParticleType> GRONGLE_SPORE = PARTICLES.register("grongle_spore", () -> new BasicParticleType(false));

@@ -9,7 +9,7 @@ import net.minecraft.item.Items;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.data.provider.UGRecipeProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -430,6 +430,6 @@ public class UGRecipes extends UGRecipeProvider {
     }
 
     private ResourceLocation name(String name) {
-        return new ResourceLocation(UGMod.MODID, name);
+        return new ResourceLocation(Undergarden.MODID, name);
     }
 }

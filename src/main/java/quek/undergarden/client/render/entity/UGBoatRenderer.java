@@ -12,15 +12,15 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Quaternion;
 import net.minecraft.util.math.vector.Vector3f;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoatEntity;
 
 public class UGBoatRenderer extends EntityRenderer<UGBoatEntity> {
 
     private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[]{
-            new ResourceLocation(UGMod.MODID, "textures/entity/boat/smogstem.png"),
-            new ResourceLocation(UGMod.MODID, "textures/entity/boat/wigglewood.png"),
-            new ResourceLocation(UGMod.MODID, "textures/entity/boat/grongle.png")
+            new ResourceLocation(Undergarden.MODID, "textures/entity/boat/smogstem.png"),
+            new ResourceLocation(Undergarden.MODID, "textures/entity/boat/wigglewood.png"),
+            new ResourceLocation(Undergarden.MODID, "textures/entity/boat/grongle.png")
     };
     protected final BoatModel modelBoat = new BoatModel();
 

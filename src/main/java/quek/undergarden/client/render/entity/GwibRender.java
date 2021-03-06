@@ -8,7 +8,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwibModel;
 import quek.undergarden.client.render.layer.GwibEyesLayer;
 import quek.undergarden.entity.GwibEntity;
@@ -23,7 +23,7 @@ public class GwibRender extends MobRenderer<GwibEntity, GwibModel<GwibEntity>> {
 
     @Override
     public ResourceLocation getEntityTexture(GwibEntity entity) {
-        return new ResourceLocation(UGMod.MODID, "textures/entity/gwib.png");
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/gwib.png");
     }
 
     @Override

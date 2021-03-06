@@ -7,11 +7,11 @@ import net.minecraft.world.biome.*;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 
 public class UGBiomes {
 
-    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, UGMod.MODID);
+    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Undergarden.MODID);
 
     public static final RegistryKey<Biome> BARREN_ABYSS = register("barren_abyss");
     public static final RegistryKey<Biome> DENSE_FOREST = register("dense_forest");
@@ -36,7 +36,7 @@ public class UGBiomes {
     }
 
     private static ResourceLocation name(String name) {
-        return new ResourceLocation(UGMod.MODID, name);
+        return new ResourceLocation(Undergarden.MODID, name);
     }
 
     private static RegistryKey<Biome> register(String name) {

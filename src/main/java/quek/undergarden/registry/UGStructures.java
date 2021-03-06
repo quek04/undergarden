@@ -19,7 +19,7 @@ import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.*;
 
 import java.util.HashMap;
@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class UGStructures {
 
-    public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, UGMod.MODID);
+    public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, Undergarden.MODID);
 
     public static final RegistryObject<Structure<NoFeatureConfig>> CATACOMBS = STRUCTURES.register("catacombs", () -> new CatacombsStructure(NoFeatureConfig.field_236558_a_));
 
@@ -40,7 +40,7 @@ public class UGStructures {
     }
 
     public static void registerConfiguredStructures() {
-        Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(UGMod.MODID, "catacombs"), CATACOMBS.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+        Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(Undergarden.MODID, "catacombs"), CATACOMBS.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
 
         FlatGenerationSettings.STRUCTURES.put(CATACOMBS.get(), ConfiguredStructures.CATACOMBS);
     }

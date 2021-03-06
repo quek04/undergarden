@@ -9,7 +9,7 @@ import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 public class UGItemTags extends ItemTagsProvider {
 
     public UGItemTags(DataGenerator dataGenerator, BlockTagsProvider blockTagProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(dataGenerator, blockTagProvider, UGMod.MODID, existingFileHelper);
+        super(dataGenerator, blockTagProvider, Undergarden.MODID, existingFileHelper);
     }
 
     @Override

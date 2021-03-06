@@ -14,7 +14,7 @@ import net.minecraft.world.gen.feature.structure.AbstractVillagePiece;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 
 public class CatacombsStructure extends AbstractUndergardenStructure {
 
@@ -40,7 +40,7 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
 
             JigsawManager.func_242837_a(
                     dynamicRegistryManager,
-                    new VillageConfig(() -> dynamicRegistryManager.getRegistry(Registry.JIGSAW_POOL_KEY).getOrDefault(new ResourceLocation(UGMod.MODID, "catacombs/catacombs_entrance")), 100),
+                    new VillageConfig(() -> dynamicRegistryManager.getRegistry(Registry.JIGSAW_POOL_KEY).getOrDefault(new ResourceLocation(Undergarden.MODID, "catacombs/catacombs_entrance")), 100),
                     AbstractVillagePiece::new,
                     chunkGenerator,
                     structureManager,

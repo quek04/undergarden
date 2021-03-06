@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MinionModel;
 import quek.undergarden.client.render.layer.MinionEyesLayer;
 import quek.undergarden.entity.MinionEntity;
@@ -20,6 +20,6 @@ public class MinionRender extends MobRenderer<MinionEntity, MinionModel<MinionEn
 
     @Override
     public ResourceLocation getEntityTexture(MinionEntity entity) {
-        return new ResourceLocation(UGMod.MODID, "textures/entity/minion.png");
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/minion.png");
     }
 }

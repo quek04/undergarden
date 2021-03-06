@@ -21,7 +21,7 @@ import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
@@ -30,7 +30,7 @@ import quek.undergarden.world.gen.trunkplacer.*;
 
 public class UGFeatures {
 
-    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, UGMod.MODID);
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Undergarden.MODID);
 
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> UNDERGARDEN_TREE = FEATURES.register(
             "undergarden_tree", () -> new UGTreeFeature(BaseTreeFeatureConfig.CODEC));
@@ -356,6 +356,6 @@ public class UGFeatures {
     }
 
     private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> feature) {
-        Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(UGMod.MODID, name), feature);
+        Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(Undergarden.MODID, name), feature);
     }
 }

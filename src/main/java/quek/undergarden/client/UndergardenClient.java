@@ -28,7 +28,7 @@ import java.util.function.Supplier;
 
 @OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT)
-public class ClientStuff {
+public class UndergardenClient {
 
     private static void render(Supplier<? extends Block> block, RenderType render) {
         RenderTypeLookup.setRenderLayer(block.get(), render);

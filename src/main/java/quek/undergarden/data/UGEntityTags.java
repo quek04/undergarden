@@ -7,7 +7,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ITag;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGTags;
 
@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public class UGEntityTags extends EntityTypeTagsProvider {
 
     public UGEntityTags(DataGenerator dataGenerator, @Nullable ExistingFileHelper existingFileHelper) {
-        super(dataGenerator, UGMod.MODID, existingFileHelper);
+        super(dataGenerator, Undergarden.MODID, existingFileHelper);
     }
 
     @Override

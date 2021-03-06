@@ -5,11 +5,11 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 
 public class UGSoundEvents {
 
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, UGMod.MODID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Undergarden.MODID);
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_AMBIENCE = register("ambient.undergarden_ambience");
     public static final RegistryObject<SoundEvent> ABYSS_AMBIENCE = register("ambient.abyss_ambience");
@@ -95,6 +95,6 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> MUNCHER_CHEW = register("entity.muncher_chew");
 
     private static RegistryObject<SoundEvent> register(String name) {
-        return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(UGMod.MODID, name)));
+        return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Undergarden.MODID, name)));
     }
 }
