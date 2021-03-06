@@ -46,7 +46,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 100.0D)
+                .createMutableAttribute(Attributes.MAX_HEALTH, 80.0D)
                 .createMutableAttribute(Attributes.ARMOR, 20.0D)
                 .createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 5.0D)
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 20.0D)
