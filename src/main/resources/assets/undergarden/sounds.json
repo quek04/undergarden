@@ -473,8 +473,8 @@
   "entity.muncher_hurt": {
     "subtitle": "subtitles.entity.muncher_hurt",
     "sounds": [
-      "undergarden:entity/muncher_living_1",
-      "undergarden:entity/muncher_living_2"
+      "undergarden:entity/muncher_hurt_1",
+      "undergarden:entity/muncher_hurt_2"
     ]
   },
   "entity.muncher_death": {
