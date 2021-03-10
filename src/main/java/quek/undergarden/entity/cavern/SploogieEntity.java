@@ -31,20 +31,20 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return AbstractCavernCreatureEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D);
+        return AbstractCavernCreatureEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
     @Override
-    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
-        SlingshotAmmoEntity pebble = new SlingshotAmmoEntity(this.world, this);
-        double xDistance = target.getPosX() - this.getPosX();
-        double yDistance = target.getPosYHeight(0.3333333333333333D) - pebble.getPosY();
-        double zDistance = target.getPosZ() - this.getPosZ();
+    public void performRangedAttack(LivingEntity target, float distanceFactor) {
+        SlingshotAmmoEntity pebble = new SlingshotAmmoEntity(this.level, this);
+        double xDistance = target.getX() - this.getX();
+        double yDistance = target.getY(0.3333333333333333D) - pebble.getY();
+        double zDistance = target.getZ() - this.getZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         pebble.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
-        this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-        this.world.addEntity(pebble);
+        this.playSound(SoundEvents.ARROW_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+        this.level.addFreshEntity(pebble);
     }
 }

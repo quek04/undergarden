@@ -12,9 +12,9 @@ public class GrongleSporeParticle extends SpriteTexturedParticle {
     private GrongleSporeParticle(ClientWorld world, double x, double y, double z, double motionX, double motionY, double motionZ) {
         super(world, x, y - 0.125D, z, motionX, motionY, motionZ);
         this.setSize(0.01F, 0.01F);
-        this.particleScale *= this.rand.nextFloat() * 0.6F + 0.6F;
-        this.maxAge = (int)(16.0D / (Math.random() * 0.8D + 0.2D));
-        this.canCollide = false;
+        this.quadSize *= this.random.nextFloat() * 0.6F + 0.6F;
+        this.lifetime = (int)(16.0D / (Math.random() * 0.8D + 0.2D));
+        this.hasPhysics = false;
     }
 
     @Override
@@ -24,13 +24,13 @@ public class GrongleSporeParticle extends SpriteTexturedParticle {
 
     @Override
     public void tick() {
-        this.prevPosX = this.posX;
-        this.prevPosY = this.posY;
-        this.prevPosZ = this.posZ;
-        if (this.maxAge-- <= 0) {
-            this.setExpired();
+        this.xo = this.x;
+        this.yo = this.y;
+        this.zo = this.z;
+        if (this.lifetime-- <= 0) {
+            this.remove();
         } else {
-            this.move(this.motionX, this.motionY, this.motionZ);
+            this.move(this.xd, this.yd, this.zd);
         }
     }
 
@@ -42,10 +42,10 @@ public class GrongleSporeParticle extends SpriteTexturedParticle {
             this.spriteSet = spriteSet;
         }
 
-        public Particle makeParticle(BasicParticleType typeIn, ClientWorld worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            double d0 = (double)worldIn.rand.nextFloat() * -1.9D * (double)worldIn.rand.nextFloat() * 0.1D;
+        public Particle createParticle(BasicParticleType typeIn, ClientWorld worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+            double d0 = (double)worldIn.random.nextFloat() * -1.9D * (double)worldIn.random.nextFloat() * 0.1D;
             GrongleSporeParticle spore = new GrongleSporeParticle(worldIn, x, y, z, 0.0D, d0, 0.0D);
-            spore.selectSpriteRandomly(this.spriteSet);
+            spore.pickSprite(this.spriteSet);
             return spore;
         }
     }

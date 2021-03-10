@@ -48,7 +48,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         getVariantBuilder(wall.get()).forAllStates(state ->
                 ConfiguredModel.builder()
                         .modelFile(torchwall)
-                        .rotationY(((int) state.get(BlockStateProperties.HORIZONTAL_FACING).getHorizontalAngle() + 90) % 360)
+                        .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 90) % 360)
                         .build());
     }
 

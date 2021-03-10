@@ -24,49 +24,51 @@ import quek.undergarden.registry.UGTags;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import net.minecraft.item.Item.Properties;
+
 @Mod.EventBusSubscriber
 public class UGAxeItem extends AxeItem {
     public UGAxeItem(IItemTier tier, float attack, float speed) {
         super(tier, attack, speed, new Properties()
-                .maxStackSize(1)
-                .defaultMaxDamage(tier.getMaxUses())
-                .group(UGItemGroups.GROUP)
+                .stacksTo(1)
+                .defaultDurability(tier.getUses())
+                .tab(UGItemGroups.GROUP)
                 .rarity(UGSwordItem.isForgotten(tier))
         );
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UGItems.UTHERIUM_AXE.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").mergeStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.utheric_sword").withStyle(TextFormatting.GRAY));
         }
         if(stack.getItem() == UGItems.FROSTSTEEL_AXE.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").withStyle(TextFormatting.GRAY));
         }
         if(stack.getItem() == UGItems.FORGOTTEN_AXE.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.forgotten_sword").mergeStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.forgotten_sword").withStyle(TextFormatting.GRAY));
         }
     }
 
     @SubscribeEvent
     public static void attackEvent(LivingHurtEvent event) {
-        Entity source = event.getSource().getTrueSource();
+        Entity source = event.getSource().getEntity();
         float damage = event.getAmount();
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
-            if(player.getHeldItemMainhand().getItem() == UGItems.UTHERIUM_AXE.get()) {
-                if(event.getEntityLiving().getType().isContained(UGTags.Entities.ROTSPAWN)) {
+            if(player.getMainHandItem().getItem() == UGItems.UTHERIUM_AXE.get()) {
+                if(event.getEntityLiving().getType().is(UGTags.Entities.ROTSPAWN)) {
                     event.setAmount(damage * 1.5F);
                 }
                 else event.setAmount(damage);
             }
-            else if(player.getHeldItemMainhand().getItem() == UGItems.FROSTSTEEL_AXE.get()) {
-                event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 3));
+            else if(player.getMainHandItem().getItem() == UGItems.FROSTSTEEL_AXE.get()) {
+                event.getEntityLiving().addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, 600, 3));
             }
-            else if(player.getHeldItemMainhand().getItem() == UGItems.FORGOTTEN_AXE.get()) {
-                if(event.getEntityLiving().getType().getRegistryName().getNamespace().equals("undergarden") && event.getEntityLiving().isNonBoss()) {
+            else if(player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get()) {
+                if(event.getEntityLiving().getType().getRegistryName().getNamespace().equals("undergarden") && event.getEntityLiving().canChangeDimensions()) {
                     event.setAmount(damage * 2F);
                 }
                 else event.setAmount(damage);

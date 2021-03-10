@@ -21,15 +21,15 @@ public class StonebornTradeTrigger extends AbstractCriterionTrigger<StonebornTra
     }
 
     @Override
-    public StonebornTradeTrigger.Instance deserializeTrigger(JsonObject json, EntityPredicate.AndPredicate entityPredicate, ConditionArrayParser conditionsParser) {
-        EntityPredicate.AndPredicate entitypredicate$andpredicate = EntityPredicate.AndPredicate.deserializeJSONObject(json, "stoneborn", conditionsParser);
-        ItemPredicate itempredicate = ItemPredicate.deserialize(json.get("item"));
+    public StonebornTradeTrigger.Instance createInstance(JsonObject json, EntityPredicate.AndPredicate entityPredicate, ConditionArrayParser conditionsParser) {
+        EntityPredicate.AndPredicate entitypredicate$andpredicate = EntityPredicate.AndPredicate.fromJson(json, "stoneborn", conditionsParser);
+        ItemPredicate itempredicate = ItemPredicate.fromJson(json.get("item"));
         return new StonebornTradeTrigger.Instance(entityPredicate, entitypredicate$andpredicate, itempredicate);
     }
 
     public void test(ServerPlayerEntity player, StonebornEntity stoneborn, ItemStack stack) {
-        LootContext lootcontext = EntityPredicate.getLootContext(player, stoneborn);
-        this.triggerListeners(player, (instance) -> instance.test(lootcontext, stack));
+        LootContext lootcontext = EntityPredicate.createContext(player, stoneborn);
+        this.trigger(player, (instance) -> instance.test(lootcontext, stack));
     }
 
     public static class Instance extends CriterionInstance {
@@ -43,22 +43,22 @@ public class StonebornTradeTrigger extends AbstractCriterionTrigger<StonebornTra
         }
 
         public static StonebornTradeTrigger.Instance any() {
-            return new StonebornTradeTrigger.Instance(EntityPredicate.AndPredicate.ANY_AND, EntityPredicate.AndPredicate.ANY_AND, ItemPredicate.ANY);
+            return new StonebornTradeTrigger.Instance(EntityPredicate.AndPredicate.ANY, EntityPredicate.AndPredicate.ANY, ItemPredicate.ANY);
         }
 
         public boolean test(LootContext context, ItemStack stack) {
-            if (!this.stoneborn.testContext(context)) {
+            if (!this.stoneborn.matches(context)) {
                 return false;
             } else {
-                return this.item.test(stack);
+                return this.item.matches(stack);
             }
         }
 
         @Override
-        public JsonObject serialize(ConditionArraySerializer conditions) {
-            JsonObject jsonobject = super.serialize(conditions);
-            jsonobject.add("item", this.item.serialize());
-            jsonobject.add("stoneborn", this.stoneborn.serializeConditions(conditions));
+        public JsonObject serializeToJson(ConditionArraySerializer conditions) {
+            JsonObject jsonobject = super.serializeToJson(conditions);
+            jsonobject.add("item", this.item.serializeToJson());
+            jsonobject.add("stoneborn", this.stoneborn.toJson(conditions));
             return jsonobject;
         }
     }

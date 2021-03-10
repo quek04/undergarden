@@ -38,35 +38,35 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
     }
 
     public static boolean canRotspawnSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return randomIn.nextInt(10) == 0 && canMonsterSpawnInLight(type, worldIn, reason, pos, randomIn);
+        return randomIn.nextInt(10) == 0 && checkMonsterSpawnRules(type, worldIn, reason, pos, randomIn);
     }
 
     @Override
-    public void func_241847_a(ServerWorld world, LivingEntity entityLivingIn) { // on kill
-        super.func_241847_a(world, entityLivingIn);
-        if ((this.world.getDifficulty() == Difficulty.NORMAL || this.world.getDifficulty() == Difficulty.HARD) && entityLivingIn instanceof DwellerEntity) {
-            if (this.world.getDifficulty() != Difficulty.HARD && this.rand.nextBoolean()) {
+    public void killed(ServerWorld world, LivingEntity entityLivingIn) {
+        super.killed(world, entityLivingIn);
+        if ((this.level.getDifficulty() == Difficulty.NORMAL || this.level.getDifficulty() == Difficulty.HARD) && entityLivingIn instanceof DwellerEntity) {
+            if (this.level.getDifficulty() != Difficulty.HARD && this.random.nextBoolean()) {
                 return;
             }
 
             DwellerEntity dweller = (DwellerEntity)entityLivingIn;
-            RotDwellerEntity rotDweller = UGEntityTypes.ROTDWELLER.get().create(this.world);
+            RotDwellerEntity rotDweller = UGEntityTypes.ROTDWELLER.get().create(this.level);
 
-            rotDweller.copyLocationAndAnglesFrom(dweller);
+            rotDweller.copyPosition(dweller);
             dweller.remove();
-            rotDweller.onInitialSpawn(world, this.world.getDifficultyForLocation(new BlockPos(rotDweller.getPositionVec())), SpawnReason.CONVERSION, null, null);
+            rotDweller.finalizeSpawn(world, this.level.getCurrentDifficultyAt(new BlockPos(rotDweller.position())), SpawnReason.CONVERSION, null, null);
             if (dweller.hasCustomName()) {
                 rotDweller.setCustomName(dweller.getCustomName());
                 rotDweller.setCustomNameVisible(dweller.isCustomNameVisible());
             }
-            if (this.isNoDespawnRequired()) {
-                rotDweller.enablePersistence();
+            if (this.isPersistenceRequired()) {
+                rotDweller.setPersistenceRequired();
             }
-            if(dweller.isChild()) {
-                rotDweller.setChild(true);
+            if(dweller.isBaby()) {
+                rotDweller.setBaby(true);
             }
             rotDweller.setInvulnerable(this.isInvulnerable());
-            this.world.addEntity(rotDweller);
+            this.level.addFreshEntity(rotDweller);
         }
     }
 }

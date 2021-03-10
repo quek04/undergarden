@@ -26,8 +26,8 @@ public class ScintlingEntity extends AnimalEntity {
 
     public ScintlingEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
         super(type, worldIn);
-        this.stepHeight = 1.0F;
-        this.experienceValue = 0;
+        this.maxUpStep = 1.0F;
+        this.xpReward = 0;
     }
 
     @Override
@@ -39,40 +39,40 @@ public class ScintlingEntity extends AnimalEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return AnimalEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 2.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.2D);
+        return AnimalEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 2.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.2D);
     }
 
 
     public static boolean canScintlingSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.DEPTHROCK.get() || worldIn.getBlockState(pos.down()).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get();
+        return worldIn.getBlockState(pos.below()).getBlock() == UGBlocks.DEPTHROCK.get() || worldIn.getBlockState(pos.below()).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get();
     }
 
     @Override
-    public void livingTick() {
-        super.livingTick();
+    public void aiStep() {
+        super.aiStep();
 
-        if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this)) {
+        if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
             return;
         }
 
-        BlockState blockstate = UGBlocks.GOO.get().getDefaultState();
+        BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
 
         for(int l = 0; l < 4; ++l) {
-            int x = MathHelper.floor(this.getPosX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));
-            int y = MathHelper.floor(this.getPosY());
-            int z = MathHelper.floor(this.getPosZ() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
+            int x = MathHelper.floor(this.getX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));
+            int y = MathHelper.floor(this.getY());
+            int z = MathHelper.floor(this.getZ() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
             BlockPos blockpos = new BlockPos(x, y, z);
-            if (this.world.isAirBlock(blockpos) && blockstate.isValidPosition(this.world, blockpos)) {
-                this.world.setBlockState(blockpos, blockstate);
+            if (this.level.isEmptyBlock(blockpos) && blockstate.canSurvive(this.level, blockpos)) {
+                this.level.setBlockAndUpdate(blockpos, blockstate);
             }
         }
     }
 
     @Nullable
     @Override
-    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
+    public AgeableEntity getBreedOffspring(ServerWorld serverWorld, AgeableEntity ageableEntity) {
         return null;
     }
 

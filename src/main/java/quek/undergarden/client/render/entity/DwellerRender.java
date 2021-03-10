@@ -21,7 +21,7 @@ public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<Dwell
     }
 
     @Override
-    public ResourceLocation getEntityTexture(DwellerEntity entity) {
+    public ResourceLocation getTextureLocation(DwellerEntity entity) {
         return TEXTURE;
     }
 }

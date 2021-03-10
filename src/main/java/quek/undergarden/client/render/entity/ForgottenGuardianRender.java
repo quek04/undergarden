@@ -23,17 +23,17 @@ public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardianEntity
     }
 
     @Override
-    public ResourceLocation getEntityTexture(ForgottenGuardianEntity entity) {
+    public ResourceLocation getTextureLocation(ForgottenGuardianEntity entity) {
         return TEXTURE;
     }
 
     @Override
-    public void applyRotations(ForgottenGuardianEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
-        super.applyRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
-        if (!((double)entityLiving.limbSwingAmount < 0.01D)) {
-            float f1 = entityLiving.limbSwing - entityLiving.limbSwingAmount * (1.0F - partialTicks) + 6.0F;
+    public void setupRotations(ForgottenGuardianEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
+        super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
+        if (!((double)entityLiving.animationSpeed < 0.01D)) {
+            float f1 = entityLiving.animationPosition - entityLiving.animationSpeed * (1.0F - partialTicks) + 6.0F;
             float f2 = (Math.abs(f1 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-            matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(6.5F * f2));
+            matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(6.5F * f2));
         }
     }
 }

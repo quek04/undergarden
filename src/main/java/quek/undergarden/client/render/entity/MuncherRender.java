@@ -19,7 +19,7 @@ public class MuncherRender extends MobRenderer<MuncherEntity, MuncherModel<Munch
     }
 
     @Override
-    public ResourceLocation getEntityTexture(MuncherEntity entity) {
+    public ResourceLocation getTextureLocation(MuncherEntity entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/muncher.png");
     }
 }

@@ -13,8 +13,8 @@ public class LooseTremblecrustBlock extends Block {
     }
 
     @Override
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-        if(worldIn.getBlockState(pos.down()) == UGBlocks.LOOSE_TREMBLECRUST.get().getDefaultState() || worldIn.isAirBlock(pos.down())) {
+    public void stepOn(World worldIn, BlockPos pos, Entity entityIn) {
+        if(worldIn.getBlockState(pos.below()) == UGBlocks.LOOSE_TREMBLECRUST.get().defaultBlockState() || worldIn.isEmptyBlock(pos.below())) {
             worldIn.destroyBlock(pos, false);
         }
     }

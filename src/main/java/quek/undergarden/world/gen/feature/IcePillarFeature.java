@@ -21,33 +21,33 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        if (reader.isAirBlock(pos) && !reader.isAirBlock(pos.up())) {
-            BlockPos.Mutable blockpos$mutable = pos.toMutable();
-            BlockPos.Mutable blockpos$mutable1 = pos.toMutable();
+    public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+        if (reader.isEmptyBlock(pos) && !reader.isEmptyBlock(pos.above())) {
+            BlockPos.Mutable blockpos$mutable = pos.mutable();
+            BlockPos.Mutable blockpos$mutable1 = pos.mutable();
             boolean flag = true;
             boolean flag1 = true;
             boolean flag2 = true;
             boolean flag3 = true;
 
-            while(reader.isAirBlock(blockpos$mutable)) {
+            while(reader.isEmptyBlock(blockpos$mutable)) {
                 if (World.isOutsideBuildHeight(blockpos$mutable)) {
                     return true;
                 }
 
-                reader.setBlockState(blockpos$mutable, Blocks.PACKED_ICE.getDefaultState(), 2);
-                flag = flag && this.stopOrPlaceIce(reader, rand, blockpos$mutable1.setAndMove(blockpos$mutable, Direction.NORTH));
-                flag1 = flag1 && this.stopOrPlaceIce(reader, rand, blockpos$mutable1.setAndMove(blockpos$mutable, Direction.SOUTH));
-                flag2 = flag2 && this.stopOrPlaceIce(reader, rand, blockpos$mutable1.setAndMove(blockpos$mutable, Direction.WEST));
-                flag3 = flag3 && this.stopOrPlaceIce(reader, rand, blockpos$mutable1.setAndMove(blockpos$mutable, Direction.EAST));
+                reader.setBlock(blockpos$mutable, Blocks.PACKED_ICE.defaultBlockState(), 2);
+                flag = flag && this.stopOrPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.NORTH));
+                flag1 = flag1 && this.stopOrPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.SOUTH));
+                flag2 = flag2 && this.stopOrPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.WEST));
+                flag3 = flag3 && this.stopOrPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.EAST));
                 blockpos$mutable.move(Direction.DOWN);
             }
 
             blockpos$mutable.move(Direction.UP);
-            this.tryPlaceIce(reader, rand, blockpos$mutable1.setAndMove(blockpos$mutable, Direction.NORTH));
-            this.tryPlaceIce(reader, rand, blockpos$mutable1.setAndMove(blockpos$mutable, Direction.SOUTH));
-            this.tryPlaceIce(reader, rand, blockpos$mutable1.setAndMove(blockpos$mutable, Direction.WEST));
-            this.tryPlaceIce(reader, rand, blockpos$mutable1.setAndMove(blockpos$mutable, Direction.EAST));
+            this.tryPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.NORTH));
+            this.tryPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.SOUTH));
+            this.tryPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.WEST));
+            this.tryPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.EAST));
             blockpos$mutable.move(Direction.DOWN);
             BlockPos.Mutable blockpos$mutable2 = new BlockPos.Mutable();
 
@@ -55,10 +55,10 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
                 for(int j = -3; j < 8; ++j) {
                     int k = MathHelper.abs(i) * MathHelper.abs(j);
                     if (rand.nextInt(10) < 10 - k) {
-                        blockpos$mutable2.setPos(blockpos$mutable.add(i, 0, j));
+                        blockpos$mutable2.set(blockpos$mutable.offset(i, 0, j));
                         int l = 3;
 
-                        while(reader.isAirBlock(blockpos$mutable1.setAndMove(blockpos$mutable2, Direction.DOWN))) {
+                        while(reader.isEmptyBlock(blockpos$mutable1.setWithOffset(blockpos$mutable2, Direction.DOWN))) {
                             blockpos$mutable2.move(Direction.DOWN);
                             --l;
                             if (l <= 0) {
@@ -66,8 +66,8 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
                             }
                         }
 
-                        if (!reader.isAirBlock(blockpos$mutable1.setAndMove(blockpos$mutable2, Direction.DOWN))) {
-                            reader.setBlockState(blockpos$mutable2, Blocks.PACKED_ICE.getDefaultState(), 2);
+                        if (!reader.isEmptyBlock(blockpos$mutable1.setWithOffset(blockpos$mutable2, Direction.DOWN))) {
+                            reader.setBlock(blockpos$mutable2, Blocks.PACKED_ICE.defaultBlockState(), 2);
                         }
                     }
                 }
@@ -82,14 +82,14 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
 
     private void tryPlaceIce(IWorld world, Random rand, BlockPos pos) {
         if (rand.nextBoolean()) {
-            world.setBlockState(pos, Blocks.PACKED_ICE.getDefaultState(), 2);
+            world.setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 2);
         }
 
     }
 
     private boolean stopOrPlaceIce(IWorld world, Random rand, BlockPos pos) {
         if (rand.nextInt(10) != 0) {
-            world.setBlockState(pos, Blocks.PACKED_ICE.getDefaultState(), 2);
+            world.setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 2);
             return true;
         }
         else {

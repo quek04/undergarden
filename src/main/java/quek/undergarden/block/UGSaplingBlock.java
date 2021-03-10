@@ -13,12 +13,12 @@ import java.util.Random;
 public class UGSaplingBlock extends SaplingBlock {
 
     public UGSaplingBlock(Tree tree) {
-        super(tree, Properties.create(Material.PLANTS)
-                .hardnessAndResistance(0F)
-                .tickRandomly()
-                .sound(SoundType.PLANT)
-                .notSolid()
-                .doesNotBlockMovement()
+        super(tree, Properties.of(Material.PLANT)
+                .strength(0F)
+                .randomTicks()
+                .sound(SoundType.GRASS)
+                .noOcclusion()
+                .noCollission()
         );
     }
 
@@ -26,6 +26,6 @@ public class UGSaplingBlock extends SaplingBlock {
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         super.randomTick(state, worldIn, pos, rand);
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        this.placeTree(worldIn, pos, state, rand);
+        this.advanceTree(worldIn, pos, state, rand);
     }
 }

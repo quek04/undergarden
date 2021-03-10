@@ -12,7 +12,7 @@ public class SmogstemTree extends Tree {
 
     @Nullable
     @Override
-    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
+    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
         return UGFeatures.ConfiguredFeatures.SMOGSTEM_TREE;
     }
 }

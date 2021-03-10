@@ -14,10 +14,10 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class GrongletBlock extends UGBushBlock implements IGrowable {
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
+    protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
     private final Supplier<ConfiguredFeature<HugeFungusConfig, ?>> fungusConfig;
 
-    public GrongletBlock(AbstractBlock.Properties properties, Supplier<ConfiguredFeature<HugeFungusConfig, ?>> fungusConfig) {
+    public GrongletBlock(Properties properties, Supplier<ConfiguredFeature<HugeFungusConfig, ?>> fungusConfig) {
         super(properties);
         this.fungusConfig = fungusConfig;
     }
@@ -28,25 +28,25 @@ public class GrongletBlock extends UGBushBlock implements IGrowable {
     }
 
     @Override
-    public boolean isValidGround(BlockState state, IBlockReader reader, BlockPos pos) {
-        return state.isIn(Blocks.MYCELIUM) || super.isValidGround(state, reader, pos);
+    public boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) {
+        return state.is(Blocks.MYCELIUM) || super.mayPlaceOn(state, reader, pos);
     }
 
     @Override
-    public boolean canGrow(IBlockReader reader, BlockPos pos, BlockState state, boolean isClient) {
-        Block lvt_5_1_ = this.fungusConfig.get().config.field_236303_f_.getBlock();
-        Block lvt_6_1_ = reader.getBlockState(pos.down()).getBlock();
+    public boolean isValidBonemealTarget(IBlockReader reader, BlockPos pos, BlockState state, boolean isClient) {
+        Block lvt_5_1_ = this.fungusConfig.get().config.validBaseState.getBlock();
+        Block lvt_6_1_ = reader.getBlockState(pos.below()).getBlock();
         return lvt_6_1_ == lvt_5_1_;
     }
 
     @Override
-    public boolean canUseBonemeal(World world, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World world, Random rand, BlockPos pos, BlockState state) {
         return (double)rand.nextFloat() < 0.4D;
     }
 
     @Override
-    public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
-        this.fungusConfig.get().generate(world, world.getChunkProvider().getChunkGenerator(), rand, pos);
+    public void performBonemeal(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
+        this.fungusConfig.get().place(world, world.getChunkSource().getGenerator(), rand, pos);
     }
 
     @Override

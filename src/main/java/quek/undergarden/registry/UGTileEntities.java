@@ -13,7 +13,7 @@ public class UGTileEntities {
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Undergarden.MODID);
 
     public static final RegistryObject<TileEntityType<ShardTorchTE>> SHARD_TORCH = TILE_ENTITIES.register("shard_torch_te", () ->
-            TileEntityType.Builder.create(ShardTorchTE::new, UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get(), UGBlocks.SHARD_O_LANTERN.get()).build(null));
+            TileEntityType.Builder.of(ShardTorchTE::new, UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get(), UGBlocks.SHARD_O_LANTERN.get()).build(null));
     public static final RegistryObject<TileEntityType<SmogVentTE>> SMOG_VENT = TILE_ENTITIES.register("smog_vent_te", () ->
-            TileEntityType.Builder.create(SmogVentTE::new, UGBlocks.SMOG_VENT.get()).build(null));
+            TileEntityType.Builder.of(SmogVentTE::new, UGBlocks.SMOG_VENT.get()).build(null));
 }

@@ -21,7 +21,7 @@ public class MasticatorRender extends MobRenderer<MasticatorEntity, MasticatorMo
     }
 
     @Override
-    public ResourceLocation getEntityTexture(MasticatorEntity entity) {
+    public ResourceLocation getTextureLocation(MasticatorEntity entity) {
         return TEXTURE;
     }
 }

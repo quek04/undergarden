@@ -18,7 +18,7 @@ public class GwibEyesLayer<T extends GwibEntity, M extends GwibModel<T>> extends
     }
 
     @Override
-    public RenderType getRenderType() {
-        return RenderType.getEyes(new ResourceLocation(Undergarden.MODID, "textures/entity/gwib_eyes.png"));
+    public RenderType renderType() {
+        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/gwib_eyes.png"));
     }
 }

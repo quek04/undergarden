@@ -40,7 +40,7 @@ public class UGBiomes {
     }
 
     private static RegistryKey<Biome> register(String name) {
-        BIOMES.register(name, BiomeMaker::makeVoidBiome);
-        return RegistryKey.getOrCreateKey(Registry.BIOME_KEY, name(name));
+        BIOMES.register(name, BiomeMaker::theVoidBiome);
+        return RegistryKey.create(Registry.BIOME_REGISTRY, name(name));
     }
 }

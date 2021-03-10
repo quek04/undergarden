@@ -11,35 +11,37 @@ import net.minecraft.world.World;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGTools;
 
+import net.minecraft.item.Item.Properties;
+
 public class CloggrumBattleaxeItem extends SwordItem {
 
     public CloggrumBattleaxeItem() {
         super(UGTools.CLOGGRUM, 5, -3.5F, new Properties()
-                .maxStackSize(1)
-                .defaultMaxDamage(UGTools.CLOGGRUM.getMaxUses() * 3)
-                .group(UGItemGroups.GROUP)
+                .stacksTo(1)
+                .defaultDurability(UGTools.CLOGGRUM.getUses() * 3)
+                .tab(UGItemGroups.GROUP)
                 .rarity(Rarity.EPIC)
         );
     }
 
     @Override
-    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> list) {
-        if(isInGroup(group)) {
+    public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> list) {
+        if(allowdedIn(group)) {
             ItemStack stack = new ItemStack(this);
-            stack.addEnchantment(Enchantments.KNOCKBACK, 4);
+            stack.enchant(Enchantments.KNOCKBACK, 4);
             list.add(stack);
         }
 
     }
 
     @Override
-    public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn) {
+    public void onCraftedBy(ItemStack stack, World worldIn, PlayerEntity playerIn) {
         stack.serializeNBT();
-        stack.addEnchantment(Enchantments.KNOCKBACK, 4);
+        stack.enchant(Enchantments.KNOCKBACK, 4);
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isFoil(ItemStack stack) {
         return false;
     }
 

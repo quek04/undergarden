@@ -11,18 +11,18 @@ import quek.undergarden.world.dimension.UGChunkGenerator;
 
 public class UGDimensions {
 
-    public static final RegistryKey<DimensionType> UNDERGARDEN_DIMENSION = RegistryKey.getOrCreateKey(Registry.DIMENSION_TYPE_KEY, name("undergarden"));
-    public static final RegistryKey<World> UNDERGARDEN_WORLD = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("undergarden"));
+    public static final RegistryKey<DimensionType> UNDERGARDEN_DIMENSION = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, name("undergarden"));
+    public static final RegistryKey<World> UNDERGARDEN_WORLD = RegistryKey.create(Registry.DIMENSION_REGISTRY, name("undergarden"));
 
-    public static final RegistryKey<DimensionType> OTHERSIDE_DIMENSION = RegistryKey.getOrCreateKey(Registry.DIMENSION_TYPE_KEY, name("otherside"));
-    public static final RegistryKey<World> OTHERSIDE_WORLD = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("otherside"));
+    public static final RegistryKey<DimensionType> OTHERSIDE_DIMENSION = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, name("otherside"));
+    public static final RegistryKey<World> OTHERSIDE_WORLD = RegistryKey.create(Registry.DIMENSION_REGISTRY, name("otherside"));
 
     private static ResourceLocation name(String name) {
         return new ResourceLocation(Undergarden.MODID, name);
     }
 
     public static void registerDimensionStuff() {
-        Registry.register(Registry.CHUNK_GENERATOR_CODEC, name("chunk_generator"), UGChunkGenerator.CODEC);
-        Registry.register(Registry.BIOME_PROVIDER_CODEC, name("biome_provider"), UGBiomeProvider.CODEC);
+        Registry.register(Registry.CHUNK_GENERATOR, name("chunk_generator"), UGChunkGenerator.CODEC);
+        Registry.register(Registry.BIOME_SOURCE, name("biome_provider"), UGBiomeProvider.CODEC);
     }
 }

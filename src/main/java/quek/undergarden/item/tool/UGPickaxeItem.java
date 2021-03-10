@@ -23,34 +23,36 @@ import quek.undergarden.registry.UGItems;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import net.minecraft.item.Item.Properties;
+
 @Mod.EventBusSubscriber
 public class UGPickaxeItem extends PickaxeItem {
     public UGPickaxeItem(IItemTier tier) {
         super(tier, 1, -2.8F, new Properties()
-                .maxStackSize(1)
-                .defaultMaxDamage(tier.getMaxUses())
-                .group(UGItemGroups.GROUP)
+                .stacksTo(1)
+                .defaultDurability(tier.getUses())
+                .tab(UGItemGroups.GROUP)
                 .rarity(UGSwordItem.isForgotten(tier))
         );
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UGItems.FROSTSTEEL_PICKAXE.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").mergeStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").withStyle(TextFormatting.GRAY));
         }
     }
 
     @SubscribeEvent
     public static void attackEvent(LivingHurtEvent event) {
-        Entity source = event.getSource().getTrueSource();
+        Entity source = event.getSource().getEntity();
 
         if(source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
 
-            if(player.getHeldItemMainhand().getItem() == UGItems.FROSTSTEEL_PICKAXE.get()) {
-                event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SLOWNESS, 600, 2));
+            if(player.getMainHandItem().getItem() == UGItems.FROSTSTEEL_PICKAXE.get()) {
+                event.getEntityLiving().addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, 600, 2));
             }
         }
     }

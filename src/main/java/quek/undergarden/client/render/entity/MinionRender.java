@@ -19,7 +19,7 @@ public class MinionRender extends MobRenderer<MinionEntity, MinionModel<MinionEn
     }
 
     @Override
-    public ResourceLocation getEntityTexture(MinionEntity entity) {
+    public ResourceLocation getTextureLocation(MinionEntity entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/minion.png");
     }
 }

@@ -12,7 +12,7 @@ public class WigglewoodTree extends Tree {
 
     @Nullable
     @Override
-    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
+    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random randomIn, boolean largeHive) {
         return UGFeatures.ConfiguredFeatures.WIGGLEWOOD_TREE;
     }
 }

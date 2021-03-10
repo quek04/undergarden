@@ -13,14 +13,14 @@ import quek.undergarden.entity.BruteEntity;
 @OnlyIn(Dist.CLIENT)
 public class BruteEyesLayer<T extends BruteEntity, M extends BruteModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(Undergarden.MODID, "textures/entity/brute_eyes.png"));
+    private static final RenderType TEXTURE = RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/brute_eyes.png"));
 
     public BruteEyesLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);
     }
 
     @Override
-    public RenderType getRenderType() {
+    public RenderType renderType() {
         return TEXTURE;
     }
 }

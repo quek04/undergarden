@@ -21,7 +21,7 @@ public class BruteRender extends MobRenderer<BruteEntity, BruteModel<BruteEntity
     }
 
     @Override
-    public ResourceLocation getEntityTexture(BruteEntity entity) {
+    public ResourceLocation getTextureLocation(BruteEntity entity) {
         return TEXTURE;
     }
 }

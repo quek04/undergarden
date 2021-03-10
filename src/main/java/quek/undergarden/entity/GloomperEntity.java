@@ -45,10 +45,10 @@ public class GloomperEntity extends AnimalEntity {
 
     public GloomperEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
         super(type, worldIn);
-        this.jumpController = new JumpHelperController(this);
-        this.moveController = new GloomperEntity.MoveHelperController(this);
+        this.jumpControl = new JumpHelperController(this);
+        this.moveControl = new GloomperEntity.MoveHelperController(this);
         this.setMovementSpeed(0.0D);
-        this.stepHeight = 1.0F;
+        this.maxUpStep = 1.0F;
     }
 
     @Override
@@ -57,20 +57,20 @@ public class GloomperEntity extends AnimalEntity {
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0F, 2.5F));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromItems(UGBlocks.GLOOMGOURD.get()), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(UGBlocks.GLOOMGOURD.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return AnimalEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D);
+        return AnimalEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
     public static boolean canGloomperSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).isIn(UGBlocks.DEEPTURF_BLOCK.get());
+        return worldIn.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get());
     }
 
     @Override
@@ -90,8 +90,8 @@ public class GloomperEntity extends AnimalEntity {
 
     @Nullable
     @Override
-    public AgeableEntity func_241840_a(ServerWorld serverWorld, AgeableEntity ageableEntity) {
-        return UGEntityTypes.GLOOMPER.get().create(world);
+    public AgeableEntity getBreedOffspring(ServerWorld serverWorld, AgeableEntity ageableEntity) {
+        return UGEntityTypes.GLOOMPER.get().create(level);
     }
 
     @Override
@@ -100,40 +100,40 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return Ingredient.fromItems(UGBlocks.GLOOMGOURD.get()).test(stack);
+    public boolean isFood(ItemStack stack) {
+        return Ingredient.of(UGBlocks.GLOOMGOURD.get()).test(stack);
     }
 
     @Override
-    protected float getJumpUpwardsMotion() {
-        if (!this.collidedHorizontally && (!this.moveController.isUpdating() || !(this.moveController.getY() > this.getPosY() + 0.5D))) {
-            Path path = this.navigator.getPath();
-            if (path != null && !path.isFinished()) {
-                Vector3d vector3d = path.getPosition(this);
-                if (vector3d.y > this.getPosY() + 0.5D) {
+    protected float getJumpPower() {
+        if (!this.horizontalCollision && (!this.moveControl.hasWanted() || !(this.moveControl.getWantedY() > this.getY() + 0.5D))) {
+            Path path = this.navigation.getPath();
+            if (path != null && !path.isDone()) {
+                Vector3d vector3d = path.getNextEntityPos(this);
+                if (vector3d.y > this.getY() + 0.5D) {
                     return 0.5F;
                 }
             }
 
-            return this.moveController.getSpeed() <= 0.6D ? 0.2F : 0.3F;
+            return this.moveControl.getSpeedModifier() <= 0.6D ? 0.2F : 0.3F;
         } else {
             return 0.5F;
         }
     }
 
     @Override
-    protected void jump() {
-        super.jump();
-        double d0 = this.moveController.getSpeed();
+    protected void jumpFromGround() {
+        super.jumpFromGround();
+        double d0 = this.moveControl.getSpeedModifier();
         if (d0 > 0.0D) {
-            double d1 = horizontalMag(this.getMotion());
+            double d1 = getHorizontalDistanceSqr(this.getDeltaMovement());
             if (d1 < 0.01D) {
                 this.moveRelative(0.1F, new Vector3d(0.0D, 0.0D, 1.0D));
             }
         }
 
-        if (!this.world.isRemote) {
-            this.world.setEntityState(this, (byte)1);
+        if (!this.level.isClientSide) {
+            this.level.broadcastEntityEvent(this, (byte)1);
         }
 
     }
@@ -144,15 +144,15 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     public void setMovementSpeed(double newSpeed) {
-        this.getNavigator().setSpeed(newSpeed);
-        this.moveController.setMoveTo(this.moveController.getX(), this.moveController.getY(), this.moveController.getZ(), newSpeed);
+        this.getNavigation().setSpeedModifier(newSpeed);
+        this.moveControl.setWantedPosition(this.moveControl.getWantedX(), this.moveControl.getWantedY(), this.moveControl.getWantedZ(), newSpeed);
     }
 
     @Override
     public void setJumping(boolean jumping) {
         super.setJumping(jumping);
         if (jumping) {
-            this.playSound(SoundEvents.ENTITY_COD_FLOP, this.getSoundVolume(), ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 0.8F);
+            this.playSound(SoundEvents.COD_FLOP, this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) * 0.8F);
         }
 
     }
@@ -164,7 +164,7 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @Override
-    public void updateAITasks() {
+    public void customServerAiStep() {
         if (this.currentMoveTypeDuration > 0) {
             --this.currentMoveTypeDuration;
         }
@@ -175,13 +175,13 @@ public class GloomperEntity extends AnimalEntity {
                 this.checkLandingDelay();
             }
 
-            GloomperEntity.JumpHelperController jumpController = (GloomperEntity.JumpHelperController)this.jumpController;
+            GloomperEntity.JumpHelperController jumpController = (GloomperEntity.JumpHelperController)this.jumpControl;
             if (!jumpController.getIsJumping()) {
-                if (this.moveController.isUpdating() && this.currentMoveTypeDuration == 0) {
-                    Path path = this.navigator.getPath();
-                    Vector3d vector3d = new Vector3d(this.moveController.getX(), this.moveController.getY(), this.moveController.getZ());
-                    if (path != null && !path.isFinished()) {
-                        vector3d = path.getPosition(this);
+                if (this.moveControl.hasWanted() && this.currentMoveTypeDuration == 0) {
+                    Path path = this.navigation.getPath();
+                    Vector3d vector3d = new Vector3d(this.moveControl.getWantedX(), this.moveControl.getWantedY(), this.moveControl.getWantedZ());
+                    if (path != null && !path.isDone()) {
+                        vector3d = path.getNextEntityPos(this);
                     }
 
                     this.calculateRotationYaw(vector3d.x, vector3d.z);
@@ -196,24 +196,24 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @Override
-    public boolean shouldSpawnRunningEffects() {
+    public boolean canSpawnSprintParticle() {
         return false;
     }
 
     private void calculateRotationYaw(double x, double z) {
-        this.rotationYaw = (float)(MathHelper.atan2(z - this.getPosZ(), x - this.getPosX()) * (double)(180F / (float)Math.PI)) - 90.0F;
+        this.yRot = (float)(MathHelper.atan2(z - this.getZ(), x - this.getX()) * (double)(180F / (float)Math.PI)) - 90.0F;
     }
 
     private void enableJumpControl() {
-        ((GloomperEntity.JumpHelperController)this.jumpController).setCanJump(true);
+        ((GloomperEntity.JumpHelperController)this.jumpControl).setCanJump(true);
     }
 
     private void disableJumpControl() {
-        ((GloomperEntity.JumpHelperController)this.jumpController).setCanJump(false);
+        ((GloomperEntity.JumpHelperController)this.jumpControl).setCanJump(false);
     }
 
     private void updateMoveTypeDuration() {
-        if (this.moveController.getSpeed() < 2.2D) {
+        if (this.moveControl.getSpeedModifier() < 2.2D) {
             this.currentMoveTypeDuration = 10;
         } else {
             this.currentMoveTypeDuration = 1;
@@ -227,8 +227,8 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @Override
-    public void livingTick() {
-        super.livingTick();
+    public void aiStep() {
+        super.aiStep();
         if (this.jumpTicks != this.jumpDuration) {
             ++this.jumpTicks;
         } else if (this.jumpDuration != 0) {
@@ -241,49 +241,49 @@ public class GloomperEntity extends AnimalEntity {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void handleStatusUpdate(byte id) {
+    public void handleEntityEvent(byte id) {
         if (id == 1) {
-            this.handleRunningEffect();
+            this.spawnSprintParticle();
             this.jumpDuration = 10;
             this.jumpTicks = 0;
         } else {
-            super.handleStatusUpdate(id);
+            super.handleEntityEvent(id);
         }
 
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public Vector3d func_241205_ce_() {
-        return new Vector3d(0.0D, 0.6F * this.getEyeHeight(), this.getWidth() * 0.4F);
+    public Vector3d getLeashOffset() {
+        return new Vector3d(0.0D, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
     }
 
     @Override
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(this.world, this.getPosX(), this.getPosY(), this.getPosZ());
+    public boolean hurt(DamageSource source, float amount) {
+        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(this.level, this.getX(), this.getY(), this.getZ());
 
-        cloud.setParticleData(ParticleTypes.DRAGON_BREATH);
+        cloud.setParticle(ParticleTypes.DRAGON_BREATH);
         cloud.setRadius(3.0F);
         cloud.setRadiusOnUse(-0.5F);
         cloud.setWaitTime(10);
         cloud.setRadiusPerTick(-cloud.getRadius() / (float)cloud.getDuration());
         cloud.addEffect(new EffectInstance(Effects.POISON, 100, 0));
 
-        if(this.rand.nextInt(2) == 0) {
-            this.playSound(SoundEvents.ENTITY_PUFFER_FISH_BLOW_UP, 1.0F, 1.0F);
-            this.world.addEntity(cloud);
+        if(this.random.nextInt(2) == 0) {
+            this.playSound(SoundEvents.PUFFER_FISH_BLOW_UP, 1.0F, 1.0F);
+            this.level.addFreshEntity(cloud);
         }
 
-        return super.attackEntityFrom(source, amount);
+        return super.hurt(source, amount);
     }
 
     @Override
-    public boolean isPotionApplicable(EffectInstance effectInstance) {
-        Effect effect = effectInstance.getPotion();
+    public boolean canBeAffected(EffectInstance effectInstance) {
+        Effect effect = effectInstance.getEffect();
         if (effect == Effects.POISON) {
             return false;
         }
-        else return super.isPotionApplicable(effectInstance);
+        else return super.canBeAffected(effectInstance);
     }
 
     public static class JumpHelperController extends JumpController {
@@ -296,7 +296,7 @@ public class GloomperEntity extends AnimalEntity {
         }
 
         public boolean getIsJumping() {
-            return this.isJumping;
+            return this.jump;
         }
 
         public boolean canJump() {
@@ -309,9 +309,9 @@ public class GloomperEntity extends AnimalEntity {
 
         @Override
         public void tick() {
-            if (this.isJumping) {
+            if (this.jump) {
                 this.gloomper.startJumping();
-                this.isJumping = false;
+                this.jump = false;
             }
 
         }
@@ -328,9 +328,9 @@ public class GloomperEntity extends AnimalEntity {
 
         @Override
         public void tick() {
-            if (this.gloomper.onGround && !this.gloomper.isJumping && !((GloomperEntity.JumpHelperController)this.gloomper.jumpController).getIsJumping()) {
+            if (this.gloomper.onGround && !this.gloomper.jumping && !((GloomperEntity.JumpHelperController)this.gloomper.jumpControl).getIsJumping()) {
                 this.gloomper.setMovementSpeed(0.0D);
-            } else if (this.isUpdating()) {
+            } else if (this.hasWanted()) {
                 this.gloomper.setMovementSpeed(this.nextJumpSpeed);
             }
 
@@ -338,12 +338,12 @@ public class GloomperEntity extends AnimalEntity {
         }
 
         @Override
-        public void setMoveTo(double x, double y, double z, double speedIn) {
+        public void setWantedPosition(double x, double y, double z, double speedIn) {
             if (this.gloomper.isInWater()) {
                 speedIn = 1.5D;
             }
 
-            super.setMoveTo(x, y, z, speedIn);
+            super.setWantedPosition(x, y, z, speedIn);
             if (speedIn > 0.0D) {
                 this.nextJumpSpeed = speedIn;
             }

@@ -18,7 +18,7 @@ public class UGLang extends LanguageProvider {
     }
 
     private void addItemGroup(ItemGroup group, String name) {
-        add(group.getGroupName().getString(), name);
+        add(group.getDisplayName().getString(), name);
     }
 
     private void addAdvTitle(String advancementTitle, String name) {
@@ -34,7 +34,7 @@ public class UGLang extends LanguageProvider {
     }
 
     private void addBiome(RegistryKey<Biome> biomeKey, String name) {
-        add("biome.undergarden." + biomeKey.getLocation().getPath(), name);
+        add("biome.undergarden." + biomeKey.location().getPath(), name);
     }
 
     private void addDeath(String deathName, String name) {
@@ -204,13 +204,13 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
 
         addItem(UGItems.MAMMOTH_DISC, "Music Disc");
-        add(UGItems.MAMMOTH_DISC.get().getTranslationKey() + ".desc", "Screem - Mammoth");
+        add(UGItems.MAMMOTH_DISC.get().getDescriptionId() + ".desc", "Screem - Mammoth");
         addItem(UGItems.LIMAX_MAXIMUS_DISC, "Music Disc");
-        add(UGItems.LIMAX_MAXIMUS_DISC.get().getTranslationKey() + ".desc", "Screem - Limax Maximus");
+        add(UGItems.LIMAX_MAXIMUS_DISC.get().getDescriptionId() + ".desc", "Screem - Limax Maximus");
         addItem(UGItems.RELICT_DISC, "Music Disc");
-        add(UGItems.RELICT_DISC.get().getTranslationKey() + ".desc", "Screem - Relict");
+        add(UGItems.RELICT_DISC.get().getDescriptionId() + ".desc", "Screem - Relict");
         addItem(UGItems.GLOOMPER_ANTHEM_DISC, "Music Disc");
-        add(UGItems.GLOOMPER_ANTHEM_DISC.get().getTranslationKey() + ".desc", "Screem - Gloomper Anthem");
+        add(UGItems.GLOOMPER_ANTHEM_DISC.get().getDescriptionId() + ".desc", "Screem - Gloomper Anthem");
         addItem(UGItems.CATALYST, "Catalyst");
         addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
         addItem(UGItems.TWISTYTWIG, "Twistytwig");

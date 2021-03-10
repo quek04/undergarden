@@ -13,6 +13,6 @@ public class UGTrunkPlacerTypes {
     public static final TrunkPlacerType<SmogstemTrunkPlacer> SMOGSTEM_TRUNK_PLACER = register("smogstem_trunk_placer", SmogstemTrunkPlacer.CODEC);
 
     private static <P extends AbstractTrunkPlacer> TrunkPlacerType<P> register(String name, Codec<P> codec) {
-        return Registry.register(Registry.TRUNK_REPLACER, new ResourceLocation(Undergarden.MODID, name), new TrunkPlacerType<>(codec));
+        return Registry.register(Registry.TRUNK_PLACER_TYPES, new ResourceLocation(Undergarden.MODID, name), new TrunkPlacerType<>(codec));
     }
 }

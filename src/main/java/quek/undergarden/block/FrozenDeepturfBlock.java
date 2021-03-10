@@ -19,30 +19,30 @@ public class FrozenDeepturfBlock extends UGPlantBlock {
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.isIn(UGBlocks.FROZEN_DEEPTURF_BLOCK.get());
+    protected boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get());
     }
 
     @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
         return false;
     }
 
     @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state) {
         return false;
     }
 
     @Override
-    public void grow(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) { }
+    public void performBonemeal(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) { }
 
     @Override
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (!entityIn.getType().isContained(UGTags.Entities.ROTSPAWN) && !worldIn.isRemote && (entityIn.lastTickPosX != entityIn.getPosX() || entityIn.lastTickPosZ != entityIn.getPosZ())) {
-            double d0 = Math.abs(entityIn.getPosX() - entityIn.lastTickPosX);
-            double d1 = Math.abs(entityIn.getPosZ() - entityIn.lastTickPosZ);
+    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+        if (!entityIn.getType().is(UGTags.Entities.ROTSPAWN) && !worldIn.isClientSide && (entityIn.xOld != entityIn.getX() || entityIn.zOld != entityIn.getZ())) {
+            double d0 = Math.abs(entityIn.getX() - entityIn.xOld);
+            double d1 = Math.abs(entityIn.getZ() - entityIn.zOld);
             if (d0 >= (double) 0.003F || d1 >= (double) 0.003F) {
-                entityIn.attackEntityFrom(UGDamageSources.FROZEN_DEEPTURF, 1.0F);
+                entityIn.hurt(UGDamageSources.FROZEN_DEEPTURF, 1.0F);
             }
         }
     }

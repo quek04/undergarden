@@ -16,13 +16,15 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItemGroups;
 
+import net.minecraft.item.Item.Properties;
+
 public class CarvedGloomgourdItem extends BlockItem {
 
     private static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(Undergarden.MODID, "textures/gloomgourd_overlay.png");
 
     public CarvedGloomgourdItem() {
         super(UGBlocks.CARVED_GLOOMGOURD.get(), (new Properties()
-                .group(UGItemGroups.GROUP)
+                .tab(UGItemGroups.GROUP)
         ));
     }
 
@@ -39,17 +41,17 @@ public class CarvedGloomgourdItem extends BlockItem {
         RenderSystem.defaultBlendFunc();
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.disableAlphaTest();
-        Minecraft.getInstance().getTextureManager().bindTexture(OVERLAY_TEXTURE);
+        Minecraft.getInstance().getTextureManager().bind(OVERLAY_TEXTURE);
         Tessellator tessellator = Tessellator.getInstance();
-        BufferBuilder bufferbuilder = tessellator.getBuffer();
+        BufferBuilder bufferbuilder = tessellator.getBuilder();
         bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        final double scaledWidth = Minecraft.getInstance().getMainWindow().getScaledWidth();
-        final double scaledHeight = Minecraft.getInstance().getMainWindow().getScaledHeight();
-        bufferbuilder.pos(0.0D, scaledHeight, -90.0D).tex(0.0F, 1.0F).endVertex();
-        bufferbuilder.pos(scaledWidth, scaledHeight, -90.0D).tex(1.0F, 1.0F).endVertex();
-        bufferbuilder.pos(scaledWidth, 0.0D, -90.0D).tex(1.0F, 0.0F).endVertex();
-        bufferbuilder.pos(0.0D, 0.0D, -90.0D).tex(0.0F, 0.0F).endVertex();
-        tessellator.draw();
+        final double scaledWidth = Minecraft.getInstance().getWindow().getGuiScaledWidth();
+        final double scaledHeight = Minecraft.getInstance().getWindow().getGuiScaledHeight();
+        bufferbuilder.vertex(0.0D, scaledHeight, -90.0D).uv(0.0F, 1.0F).endVertex();
+        bufferbuilder.vertex(scaledWidth, scaledHeight, -90.0D).uv(1.0F, 1.0F).endVertex();
+        bufferbuilder.vertex(scaledWidth, 0.0D, -90.0D).uv(1.0F, 0.0F).endVertex();
+        bufferbuilder.vertex(0.0D, 0.0D, -90.0D).uv(0.0F, 0.0F).endVertex();
+        tessellator.end();
         RenderSystem.depthMask(true);
         RenderSystem.enableDepthTest();
         RenderSystem.enableAlphaTest();

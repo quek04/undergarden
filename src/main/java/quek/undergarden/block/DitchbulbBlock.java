@@ -27,73 +27,73 @@ import java.util.Random;
 
 public class DitchbulbBlock extends UGBushBlock implements IGrowable {
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_1;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
 
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
+    protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
 
-    public DitchbulbBlock(AbstractBlock.Properties properties) {
+    public DitchbulbBlock(Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
     @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(IBlockReader worldIn, BlockPos pos, BlockState state) {
         return new ItemStack(UGItems.DITCHBULB.get());
     }
 
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         super.tick(state, worldIn, pos, rand);
-        int age = state.get(AGE);
+        int age = state.getValue(AGE);
         if (age != 1 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, true)) {
-            worldIn.setBlockState(pos, state.with(AGE, 1), 2);
+            worldIn.setBlock(pos, state.setValue(AGE, 1), 2);
             net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
         }
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        int age = state.get(AGE);
+    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        int age = state.getValue(AGE);
         boolean maxAge = age == 1;
-        if (!maxAge && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
+        if (!maxAge && player.getItemInHand(handIn).getItem() == Items.BONE_MEAL) {
             return ActionResultType.PASS;
         }
         else if (maxAge) {
-            spawnAsEntity(worldIn, pos, new ItemStack(UGItems.DITCHBULB.get(), 1));
-            worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-            worldIn.setBlockState(pos, state.with(AGE, 0), 2);
+            popResource(worldIn, pos, new ItemStack(UGItems.DITCHBULB.get(), 1));
+            worldIn.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
+            worldIn.setBlock(pos, state.setValue(AGE, 0), 2);
             return ActionResultType.SUCCESS;
         }
         else {
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+            return super.use(state, worldIn, pos, player, handIn, hit);
         }
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
 
     @Override
-    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.isOpaqueCube(worldIn, pos);
+    public boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.isSolidRender(worldIn, pos);
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockpos = pos.down();
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        BlockPos blockpos = pos.below();
         BlockState blockstate = worldIn.getBlockState(blockpos);
         Block block = blockstate.getBlock();
         if (block != UGBlocks.DEEPTURF_BLOCK.get() && block != UGBlocks.DEEPSOIL.get() && block != UGBlocks.DEPTHROCK.get()) {
-            return worldIn.getLightSubtracted(pos, 0) < 0 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.util.Direction.UP, this);
+            return worldIn.getRawBrightness(pos, 0) < 0 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.util.Direction.UP, this);
         } else {
             return true;
         }
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        return !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        return !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -101,7 +101,7 @@ public class DitchbulbBlock extends UGBushBlock implements IGrowable {
         double x = (double) pos.getX() + 0.5D;
         double y = (double) pos.getY() + 0.8D;
         double z = (double) pos.getZ() + 0.5D;
-        if(stateIn.get(AGE) == 1) {
+        if(stateIn.getValue(AGE) == 1) {
             worldIn.addParticle(ParticleTypes.FLAME, x, y, z, 0.0D, 0.0D, 0.0D);
         }
     }
@@ -112,17 +112,17 @@ public class DitchbulbBlock extends UGBushBlock implements IGrowable {
     }
 
     @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return state.get(AGE) < 1;
+    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+        return state.getValue(AGE) < 1;
     }
 
     @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-        worldIn.setBlockState(pos, state.with(AGE, 1), 2);
+    public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+        worldIn.setBlock(pos, state.setValue(AGE, 1), 2);
     }
 }

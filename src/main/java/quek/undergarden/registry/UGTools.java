@@ -7,10 +7,10 @@ import net.minecraft.util.LazyValue;
 import java.util.function.Supplier;
 
 public enum UGTools implements IItemTier {
-    CLOGGRUM(286,5,4,2, 10, () -> {return Ingredient.fromItems(UGItems.CLOGGRUM_INGOT.get());}),
-    FROSTSTEEL(575, 6, 3, 3, 15, () -> {return Ingredient.fromItems(UGItems.FROSTSTEEL_INGOT.get());}),
-    UTHERIC(1279,8,3.5F,4,13, () -> {return Ingredient.fromItems(UGItems.UTHERIUM_INGOT.get());}),
-    FORGOTTEN(1565, 10, 6, 4, 0, () -> {return Ingredient.fromItems(UGItems.FORGOTTEN_INGOT.get());})
+    CLOGGRUM(286,5,4,2, 10, () -> {return Ingredient.of(UGItems.CLOGGRUM_INGOT.get());}),
+    FROSTSTEEL(575, 6, 3, 3, 15, () -> {return Ingredient.of(UGItems.FROSTSTEEL_INGOT.get());}),
+    UTHERIC(1279,8,3.5F,4,13, () -> {return Ingredient.of(UGItems.UTHERIUM_INGOT.get());}),
+    FORGOTTEN(1565, 10, 6, 4, 0, () -> {return Ingredient.of(UGItems.FORGOTTEN_INGOT.get());})
     ;
 
     int maxUses;
@@ -30,32 +30,32 @@ public enum UGTools implements IItemTier {
     }
 
     @Override
-    public int getMaxUses() {
+    public int getUses() {
         return maxUses;
     }
 
     @Override
-    public float getEfficiency() {
+    public float getSpeed() {
         return toolEfficiency;
     }
 
     @Override
-    public float getAttackDamage() {
+    public float getAttackDamageBonus() {
         return attackDamage;
     }
 
     @Override
-    public int getHarvestLevel() {
+    public int getLevel() {
         return harvestLvl;
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return enchantability;
     }
 
     @Override
-    public Ingredient getRepairMaterial() {
-        return this.repairMaterial.getValue();
+    public Ingredient getRepairIngredient() {
+        return this.repairMaterial.get();
     }
 }

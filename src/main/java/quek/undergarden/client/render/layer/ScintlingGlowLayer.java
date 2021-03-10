@@ -10,14 +10,14 @@ import quek.undergarden.entity.ScintlingEntity;
 
 public class ScintlingGlowLayer<T extends ScintlingEntity, M extends ScintlingModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.getEyes(new ResourceLocation(Undergarden.MODID, "textures/entity/scintling_glow.png"));
+    private static final RenderType TEXTURE = RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/scintling_glow.png"));
 
     public ScintlingGlowLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);
     }
 
     @Override
-    public RenderType getRenderType() {
+    public RenderType renderType() {
         return TEXTURE;
     }
 

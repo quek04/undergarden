@@ -25,33 +25,33 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean generate(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        if (!seedReader.isAirBlock(pos)) {
+    public boolean place(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
+        if (!seedReader.isEmptyBlock(pos)) {
             return false;
         } else {
-            BlockState blockstate = seedReader.getBlockState(pos.up());
-            if (!blockstate.isIn(UGBlocks.DEPTHROCK.get()) && !blockstate.isIn(UGBlocks.SHIVERSTONE.get())) {
+            BlockState blockstate = seedReader.getBlockState(pos.above());
+            if (!blockstate.is(UGBlocks.DEPTHROCK.get()) && !blockstate.is(UGBlocks.SHIVERSTONE.get())) {
                 return false;
             } else {
-                this.func_236428_a_(seedReader, rand, pos);
-                this.func_236429_b_(seedReader, rand, pos);
+                this.placeRoofNetherWart(seedReader, rand, pos);
+                this.placeRoofWeepingVines(seedReader, rand, pos);
                 return true;
             }
         }
     }
 
-    private void func_236428_a_(IWorld world, Random rand, BlockPos pos) {
+    private void placeRoofNetherWart(IWorld world, Random rand, BlockPos pos) {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
         BlockPos.Mutable blockpos$mutable1 = new BlockPos.Mutable();
 
         for(int i = 0; i < 200; ++i) {
-            blockpos$mutable.setAndOffset(pos, rand.nextInt(6) - rand.nextInt(6), rand.nextInt(2) - rand.nextInt(5), rand.nextInt(6) - rand.nextInt(6));
-            if (world.isAirBlock(blockpos$mutable)) {
+            blockpos$mutable.setWithOffset(pos, rand.nextInt(6) - rand.nextInt(6), rand.nextInt(2) - rand.nextInt(5), rand.nextInt(6) - rand.nextInt(6));
+            if (world.isEmptyBlock(blockpos$mutable)) {
                 int j = 0;
 
                 for(Direction direction : directionArray) {
-                    BlockState blockstate = world.getBlockState(blockpos$mutable1.setAndMove(blockpos$mutable, direction));
-                    if (blockstate.isIn(UGBlocks.DEPTHROCK.get()) || blockstate.isIn(UGBlocks.SHIVERSTONE.get())) {
+                    BlockState blockstate = world.getBlockState(blockpos$mutable1.setWithOffset(blockpos$mutable, direction));
+                    if (blockstate.is(UGBlocks.DEPTHROCK.get()) || blockstate.is(UGBlocks.SHIVERSTONE.get())) {
                         ++j;
                     }
 
@@ -63,14 +63,14 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
         }
     }
 
-    private void func_236429_b_(IWorld world, Random rand, BlockPos pos) {
+    private void placeRoofWeepingVines(IWorld world, Random rand, BlockPos pos) {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
         for(int i = 0; i < 100; ++i) {
-            blockpos$mutable.setAndOffset(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
-            if (world.isAirBlock(blockpos$mutable)) {
-                BlockState blockstate = world.getBlockState(blockpos$mutable.up());
-                if (blockstate.isIn(UGBlocks.DEPTHROCK.get()) || blockstate.isIn(UGBlocks.SHIVERSTONE.get())) {
+            blockpos$mutable.setWithOffset(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
+            if (world.isEmptyBlock(blockpos$mutable)) {
+                BlockState blockstate = world.getBlockState(blockpos$mutable.above());
+                if (blockstate.is(UGBlocks.DEPTHROCK.get()) || blockstate.is(UGBlocks.SHIVERSTONE.get())) {
                     int j = MathHelper.nextInt(rand, 1, 8);
                     if (rand.nextInt(6) == 0) {
                         j *= 2;
@@ -89,13 +89,13 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
 
     public static void placeDroopvine(IWorld world, Random rand, BlockPos.Mutable posMutable, int x, int y, int z) {
         for(int i = 0; i <= x; ++i) {
-            if (world.isAirBlock(posMutable)) {
-                if (i == x || !world.isAirBlock(posMutable.down())) {
-                    world.setBlockState(posMutable, UGBlocks.DROOPVINE_TOP.get().getDefaultState().with(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
+            if (world.isEmptyBlock(posMutable)) {
+                if (i == x || !world.isEmptyBlock(posMutable.below())) {
+                    world.setBlock(posMutable, UGBlocks.DROOPVINE_TOP.get().defaultBlockState().setValue(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
                     break;
                 }
 
-                world.setBlockState(posMutable, UGBlocks.DROOPVINE.get().getDefaultState().with(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()), 2);
+                world.setBlock(posMutable, UGBlocks.DROOPVINE.get().defaultBlockState().setValue(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()), 2);
             }
 
             posMutable.move(Direction.DOWN);

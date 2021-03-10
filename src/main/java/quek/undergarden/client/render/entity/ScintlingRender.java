@@ -21,7 +21,7 @@ public class ScintlingRender extends MobRenderer<ScintlingEntity, ScintlingModel
     }
 
     @Override
-    public ResourceLocation getEntityTexture(ScintlingEntity entity) {
+    public ResourceLocation getTextureLocation(ScintlingEntity entity) {
         return texture;
     }
 

@@ -19,8 +19,8 @@ public class FeatherweightEffect extends Effect {
     public static void applyFeatherweight(LivingKnockBackEvent event) {
         LivingEntity entity = event.getEntityLiving();
 
-        if(entity.isPotionActive(UGEffects.FEATHERWEIGHT.get())) {
-            int amplifier = (entity.getActivePotionEffect(UGEffects.FEATHERWEIGHT.get()).getAmplifier() + 2);
+        if(entity.hasEffect(UGEffects.FEATHERWEIGHT.get())) {
+            int amplifier = (entity.getEffect(UGEffects.FEATHERWEIGHT.get()).getAmplifier() + 2);
 
             event.setStrength(event.getStrength() * amplifier);
         }

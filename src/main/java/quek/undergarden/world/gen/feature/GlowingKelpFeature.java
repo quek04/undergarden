@@ -20,34 +20,34 @@ public class GlowingKelpFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean generate(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean place(ISeedReader worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoFeatureConfig config) {
         int i = 0;
         int ocean_y = 32;
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
         if(pos.getY() < ocean_y) {
             if (worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER) {
-                BlockState kelp = UGBlocks.GLOWING_KELP.get().getDefaultState();
-                BlockState kelp_top = UGBlocks.GLOWING_KELP_PLANT.get().getDefaultState();
+                BlockState kelp = UGBlocks.GLOWING_KELP.get().defaultBlockState();
+                BlockState kelp_top = UGBlocks.GLOWING_KELP_PLANT.get().defaultBlockState();
                 int k = 1 + rand.nextInt(10);
 
                 for(int l = 0; l <= k; ++l) {
-                    if (worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER && worldIn.getBlockState(blockpos.up()).getBlock() == Blocks.WATER && kelp_top.isValidPosition(worldIn, blockpos)) {
+                    if (worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER && worldIn.getBlockState(blockpos.above()).getBlock() == Blocks.WATER && kelp_top.canSurvive(worldIn, blockpos)) {
                         if (l == k) {
-                            worldIn.setBlockState(blockpos, kelp.with(GlowingKelpTopBlock.AGE, rand.nextInt(4) + 20), 2);
+                            worldIn.setBlock(blockpos, kelp.setValue(GlowingKelpTopBlock.AGE, rand.nextInt(4) + 20), 2);
                             ++i;
                         } else {
-                            worldIn.setBlockState(blockpos, kelp_top, 2);
+                            worldIn.setBlock(blockpos, kelp_top, 2);
                         }
                     } else if (l > 0) {
-                        BlockPos blockpos1 = blockpos.down();
-                        if (kelp.isValidPosition(worldIn, blockpos1) && worldIn.getBlockState(blockpos1.down()).getBlock() != UGBlocks.GLOWING_KELP.get()) {
-                            worldIn.setBlockState(blockpos1, kelp.with(GlowingKelpTopBlock.AGE, rand.nextInt(4) + 20), 2);
+                        BlockPos blockpos1 = blockpos.below();
+                        if (kelp.canSurvive(worldIn, blockpos1) && worldIn.getBlockState(blockpos1.below()).getBlock() != UGBlocks.GLOWING_KELP.get()) {
+                            worldIn.setBlock(blockpos1, kelp.setValue(GlowingKelpTopBlock.AGE, rand.nextInt(4) + 20), 2);
                             ++i;
                         }
                         break;
                     }
 
-                    blockpos = blockpos.up();
+                    blockpos = blockpos.above();
                 }
             }
         }

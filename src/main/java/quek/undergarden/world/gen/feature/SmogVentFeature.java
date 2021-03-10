@@ -20,13 +20,13 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
     }
 
     @Override
-    public boolean generate(ISeedReader worldIn, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        while (worldIn.isAirBlock(pos) && pos.getY() > 2) {
-            pos = pos.down();
+    public boolean place(ISeedReader worldIn, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+        while (worldIn.isEmptyBlock(pos) && pos.getY() > 2) {
+            pos = pos.below();
         }
 
-        if (worldIn.isAirBlock(pos.up()) && worldIn.getBlockState(pos).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
-            pos = pos.up(rand.nextInt(4));
+        if (worldIn.isEmptyBlock(pos.above()) && worldIn.getBlockState(pos).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
+            pos = pos.above(rand.nextInt(4));
             int ventHeight = 7;
             int j = ventHeight / 4 + rand.nextInt(2);
 
@@ -40,19 +40,19 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
                     for (int j1 = -l; j1 <= l; ++j1) {
                         float f2 = (float) MathHelper.abs(j1) - 0.25F;
                         if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > f * f)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(rand.nextFloat() > 0.75F))) {
-                            BlockState blockstate = worldIn.getBlockState(pos.add(i1, k, j1));
+                            BlockState blockstate = worldIn.getBlockState(pos.offset(i1, k, j1));
                             Block block = blockstate.getBlock();
                             BlockPos ventPos = new BlockPos(pos.getX(), pos.getY() + 7, pos.getZ()); //
-                            if (blockstate.isAir(worldIn, pos.add(i1, k, j1)) || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
-                                this.setBlockState(worldIn, pos.add(i1, k, j1), UGBlocks.DEPTHROCK.get().getDefaultState());
+                            if (blockstate.isAir(worldIn, pos.offset(i1, k, j1)) || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
+                                this.setBlock(worldIn, pos.offset(i1, k, j1), UGBlocks.DEPTHROCK.get().defaultBlockState());
                             }
-                            this.setBlockState(worldIn, ventPos, UGBlocks.SMOG_VENT.get().getDefaultState());
+                            this.setBlock(worldIn, ventPos, UGBlocks.SMOG_VENT.get().defaultBlockState());
 
                             if (k != 0 && l > 1) {
-                                blockstate = worldIn.getBlockState(pos.add(i1, -k, j1));
+                                blockstate = worldIn.getBlockState(pos.offset(i1, -k, j1));
                                 block = blockstate.getBlock();
-                                if (blockstate.isAir(worldIn, pos.add(i1, -k, j1)) || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
-                                    this.setBlockState(worldIn, pos.add(i1, -k, j1), UGBlocks.DEPTHROCK.get().getDefaultState());
+                                if (blockstate.isAir(worldIn, pos.offset(i1, -k, j1)) || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
+                                    this.setBlock(worldIn, pos.offset(i1, -k, j1), UGBlocks.DEPTHROCK.get().defaultBlockState());
                                 }
                             }
                         }
@@ -64,14 +64,14 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
 
             for(int l1 = -k1; l1 <= k1; ++l1) {
                 for(int i2 = -k1; i2 <= k1; ++i2) {
-                    BlockPos blockpos = pos.add(l1, -1, i2);
+                    BlockPos blockpos = pos.offset(l1, -1, i2);
                     BlockState blockstate1 = worldIn.getBlockState(blockpos);
                     Block block1 = blockstate1.getBlock();
                     if (!blockstate1.isAir(worldIn, blockpos) && block1 != UGBlocks.ASHEN_DEEPTURF_BLOCK.get() && block1 != UGBlocks.DEEPSOIL.get() && block1 != UGBlocks.DEPTHROCK.get()) {
                         break;
                     }
 
-                    worldIn.setBlockState(blockpos, UGBlocks.DEPTHROCK.get().getDefaultState(), 1);
+                    worldIn.setBlock(blockpos, UGBlocks.DEPTHROCK.get().defaultBlockState(), 1);
                 }
             }
             return true;

@@ -13,11 +13,11 @@ public class SmogVentTE extends TileEntity implements ITickableTileEntity {
 
     @Override
     public void tick() {
-        double x = (double)pos.getX() + 0.5D;
-        double y = (double)pos.getY() + 1D;
-        double z = (double)pos.getZ() + 0.5D;
-        if(world.isAirBlock(pos.up())) {
-            world.addParticle(ParticleTypes.LARGE_SMOKE, x, y, z, 0.0D, 0.05D, 0.0D);
+        double x = (double)worldPosition.getX() + 0.5D;
+        double y = (double)worldPosition.getY() + 1D;
+        double z = (double)worldPosition.getZ() + 0.5D;
+        if(level.isEmptyBlock(worldPosition.above())) {
+            level.addParticle(ParticleTypes.LARGE_SMOKE, x, y, z, 0.0D, 0.05D, 0.0D);
         }
     }
 }

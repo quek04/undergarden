@@ -11,29 +11,31 @@ import quek.undergarden.registry.UGShields;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.item.Item.Properties;
+
 public class UGShieldItem extends ShieldItem {
 
     private final UGShields shieldTiers;
 
     public UGShieldItem(UGShields tier, Rarity rarity) {
         super(new Properties()
-                .maxStackSize(1)
-                .maxDamage(tier.getMaxUses())
-                .group(UGItemGroups.GROUP)
+                .stacksTo(1)
+                .durability(tier.getMaxUses())
+                .tab(UGItemGroups.GROUP)
                 .rarity(rarity)
         );
         this.shieldTiers = tier;
-        DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
     }
 
     public UGShieldItem(UGShields tier) {
         super(new Properties()
-                .maxStackSize(1)
-                .maxDamage(tier.getMaxUses())
-                .group(UGItemGroups.GROUP)
+                .stacksTo(1)
+                .durability(tier.getMaxUses())
+                .tab(UGItemGroups.GROUP)
         );
         this.shieldTiers = tier;
-        DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
     }
 
     @Override
@@ -42,7 +44,7 @@ public class UGShieldItem extends ShieldItem {
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
         return this.shieldTiers.getRepairMaterial().test(repair);
     }
 }

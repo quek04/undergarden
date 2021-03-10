@@ -28,7 +28,7 @@ public class GwibEntity extends WaterMobEntity implements IMob {
 
     public GwibEntity(EntityType<? extends WaterMobEntity> type, World world) {
         super(type, world);
-        this.moveController = new GwibMovementController(this);
+        this.moveControl = new GwibMovementController(this);
     }
 
     @Override
@@ -40,42 +40,42 @@ public class GwibEntity extends WaterMobEntity implements IMob {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return WaterMobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
-                .createMutableAttribute(Attributes.ARMOR, 5.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 4.0D)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 64.0D);
+        return WaterMobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.ARMOR, 5.0D)
+                .add(Attributes.ATTACK_DAMAGE, 4.0D)
+                .add(Attributes.FOLLOW_RANGE, 64.0D);
     }
 
     public static boolean canGwibSpawn(EntityType<? extends WaterMobEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getBlockState(pos).isIn(Blocks.WATER) && worldIn.getBlockState(pos.up()).isIn(Blocks.WATER) && pos.getY() <= 32;
+        return worldIn.getBlockState(pos).is(Blocks.WATER) && worldIn.getBlockState(pos.above()).is(Blocks.WATER) && pos.getY() <= 32;
     }
 
     @Override
-    protected PathNavigator createNavigator(World worldIn) {
+    protected PathNavigator createNavigation(World worldIn) {
         return new SwimmerPathNavigator(this, worldIn);
     }
 
     @Override
-    public void livingTick() {
-        if (!this.isInWater() && this.onGround && this.collidedVertically) {
-            this.setMotion(this.getMotion().add((this.rand.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.rand.nextFloat() * 2.0F - 1.0F) * 0.05F));
+    public void aiStep() {
+        if (!this.isInWater() && this.onGround && this.verticalCollision) {
+            this.setDeltaMovement(this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
             this.onGround = false;
-            this.isAirBorne = true;
-            this.playSound(SoundEvents.ENTITY_COD_FLOP, 1.0F, this.getSoundPitch());
+            this.hasImpulse = true;
+            this.playSound(SoundEvents.COD_FLOP, 1.0F, this.getVoicePitch());
         }
 
-        super.livingTick();
+        super.aiStep();
     }
 
     @Override
     public void travel(Vector3d travelVector) {
-        if (this.isServerWorld() && this.isInWater()) {
+        if (this.isEffectiveAi() && this.isInWater()) {
             this.moveRelative(0.01F, travelVector);
-            this.move(MoverType.SELF, this.getMotion());
-            this.setMotion(this.getMotion().scale(0.9D));
-            if (this.getAttackTarget() == null) {
-                this.setMotion(this.getMotion().add(0.0D, -0.005D, 0.0D));
+            this.move(MoverType.SELF, this.getDeltaMovement());
+            this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
+            if (this.getTarget() == null) {
+                this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.005D, 0.0D));
             }
         }
         else {
@@ -84,7 +84,7 @@ public class GwibEntity extends WaterMobEntity implements IMob {
     }
 
     @Override
-    protected boolean isDespawnPeaceful() {
+    protected boolean shouldDespawnInPeaceful() {
         return true;
     }
 
@@ -103,30 +103,30 @@ public class GwibEntity extends WaterMobEntity implements IMob {
 
         @Override
         public void tick() {
-            if (this.gwib.areEyesInFluid(FluidTags.WATER)) {
-                this.gwib.setMotion(this.gwib.getMotion().add(0.0D, 0.005D, 0.0D));
+            if (this.gwib.isEyeInFluid(FluidTags.WATER)) {
+                this.gwib.setDeltaMovement(this.gwib.getDeltaMovement().add(0.0D, 0.005D, 0.0D));
             }
 
-            if (this.action == MovementController.Action.MOVE_TO && !this.gwib.getNavigator().noPath()) {
-                float movementSpeed = (float)(this.speed * this.gwib.getAttributeValue(Attributes.MOVEMENT_SPEED));
-                this.gwib.setAIMoveSpeed(MathHelper.lerp(0.125F, this.gwib.getAIMoveSpeed(), movementSpeed));
-                double d0 = this.posX - this.gwib.getPosX();
-                double d1 = this.posY - this.gwib.getPosY();
-                double d2 = this.posZ - this.gwib.getPosZ();
+            if (this.operation == MovementController.Action.MOVE_TO && !this.gwib.getNavigation().isDone()) {
+                float movementSpeed = (float)(this.speedModifier * this.gwib.getAttributeValue(Attributes.MOVEMENT_SPEED));
+                this.gwib.setSpeed(MathHelper.lerp(0.125F, this.gwib.getSpeed(), movementSpeed));
+                double d0 = this.wantedX - this.gwib.getX();
+                double d1 = this.wantedY - this.gwib.getY();
+                double d2 = this.wantedZ - this.gwib.getZ();
                 if (d1 != 0.0D) {
                     double d3 = MathHelper.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
-                    this.gwib.setMotion(this.gwib.getMotion().add(0.0D, (double)this.gwib.getAIMoveSpeed() * (d1 / d3) * 0.1D, 0.0D));
+                    this.gwib.setDeltaMovement(this.gwib.getDeltaMovement().add(0.0D, (double)this.gwib.getSpeed() * (d1 / d3) * 0.1D, 0.0D));
                 }
 
                 if (d0 != 0.0D || d2 != 0.0D) {
                     float f1 = (float)(MathHelper.atan2(d2, d0) * (double)(180F / (float)Math.PI)) - 90.0F;
-                    this.gwib.rotationYaw = this.limitAngle(this.gwib.rotationYaw, f1, 90.0F);
-                    this.gwib.renderYawOffset = this.gwib.rotationYaw;
+                    this.gwib.yRot = this.rotlerp(this.gwib.yRot, f1, 90.0F);
+                    this.gwib.yBodyRot = this.gwib.yRot;
                 }
 
             }
             else {
-                this.gwib.setAIMoveSpeed(0.0F);
+                this.gwib.setSpeed(0.0F);
             }
         }
     }

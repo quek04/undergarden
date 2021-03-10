@@ -28,89 +28,89 @@ public class RotwalkerModel<T extends RotwalkerEntity> extends SegmentedModel<T>
 	private final ModelRenderer leftLeg;
 
 	public RotwalkerModel() {
-		textureWidth = 64;
-		textureHeight = 64;
+		texWidth = 64;
+		texHeight = 64;
 
 		rotwalker = new ModelRenderer(this);
-		rotwalker.setRotationPoint(0.0F, 24.0F, 0.0F);
+		rotwalker.setPos(0.0F, 24.0F, 0.0F);
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(0.0F, -34.0F, 0.0F);
+		head.setPos(0.0F, -34.0F, 0.0F);
 		rotwalker.addChild(head);
 		setRotationAngle(head, 0.0873F, 0.0F, 0.0F);
-		head.setTextureOffset(0, 13).addBox(-4.0F, -10.0F, -7.0F, 8.0F, 7.0F, 8.0F, 0.0F, false);
+		head.texOffs(0, 13).addBox(-4.0F, -10.0F, -7.0F, 8.0F, 7.0F, 8.0F, 0.0F, false);
 
 		jaw = new ModelRenderer(this);
-		jaw.setRotationPoint(0.0F, -2.0F, 1.0F);
+		jaw.setPos(0.0F, -2.0F, 1.0F);
 		head.addChild(jaw);
 		setRotationAngle(jaw, -0.0873F, 0.0F, 0.0F);
-		jaw.setTextureOffset(25, 25).addBox(-3.0F, -1.0F, -8.0F, 6.0F, 2.0F, 7.0F, 0.0F, false);
+		jaw.texOffs(25, 25).addBox(-3.0F, -1.0F, -8.0F, 6.0F, 2.0F, 7.0F, 0.0F, false);
 
 		neck = new ModelRenderer(this);
-		neck.setRotationPoint(0.0F, -3.0F, 1.0F);
+		neck.setPos(0.0F, -3.0F, 1.0F);
 		head.addChild(neck);
 		setRotationAngle(neck, 0.1745F, 0.0F, 0.0F);
-		neck.setTextureOffset(0, 13).addBox(-1.0F, 0.0F, -2.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+		neck.texOffs(0, 13).addBox(-1.0F, 0.0F, -2.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
 
 		torso1 = new ModelRenderer(this);
-		torso1.setRotationPoint(0.0F, -31.0F, -1.0F);
+		torso1.setPos(0.0F, -31.0F, -1.0F);
 		rotwalker.addChild(torso1);
 		setRotationAngle(torso1, 0.0873F, 0.0F, 0.0F);
-		torso1.setTextureOffset(0, 0).addBox(-6.0F, -3.0F, -2.0F, 12.0F, 7.0F, 6.0F, 0.0F, false);
+		torso1.texOffs(0, 0).addBox(-6.0F, -3.0F, -2.0F, 12.0F, 7.0F, 6.0F, 0.0F, false);
 
 		torso2 = new ModelRenderer(this);
-		torso2.setRotationPoint(0.0F, 7.0F, 2.0F);
+		torso2.setPos(0.0F, 7.0F, 2.0F);
 		torso1.addChild(torso2);
 		setRotationAngle(torso2, -0.1745F, 0.0F, 0.0F);
-		torso2.setTextureOffset(0, 28).addBox(-4.0F, -3.0F, -3.0F, 8.0F, 8.0F, 4.0F, 0.0F, false);
+		torso2.texOffs(0, 28).addBox(-4.0F, -3.0F, -3.0F, 8.0F, 8.0F, 4.0F, 0.0F, false);
 
 		pelvis = new ModelRenderer(this);
-		pelvis.setRotationPoint(0.0F, 11.0F, 0.0F);
+		pelvis.setPos(0.0F, 11.0F, 0.0F);
 		torso1.addChild(pelvis);
 		setRotationAngle(pelvis, -0.0873F, 0.0F, 0.0F);
-		pelvis.setTextureOffset(24, 13).addBox(-5.0F, 0.0F, -2.0F, 10.0F, 3.0F, 4.0F, 0.0F, false);
+		pelvis.texOffs(24, 13).addBox(-5.0F, 0.0F, -2.0F, 10.0F, 3.0F, 4.0F, 0.0F, false);
 
 		rightArm = new ModelRenderer(this);
-		rightArm.setRotationPoint(-6.0F, -31.0F, -1.0F);
+		rightArm.setPos(-6.0F, -31.0F, -1.0F);
 		rotwalker.addChild(rightArm);
-		rightArm.setTextureOffset(24, 34).addBox(-2.0F, -1.0F, -1.0F, 2.0F, 21.0F, 2.0F, 0.0F, true);
+		rightArm.texOffs(24, 34).addBox(-2.0F, -1.0F, -1.0F, 2.0F, 21.0F, 2.0F, 0.0F, true);
 
 		leftArm = new ModelRenderer(this);
-		leftArm.setRotationPoint(6.0F, -31.0F, 0.0F);
+		leftArm.setPos(6.0F, -31.0F, 0.0F);
 		rotwalker.addChild(leftArm);
-		leftArm.setTextureOffset(24, 34).addBox(0.0F, -1.0F, -1.0F, 2.0F, 21.0F, 2.0F, 0.0F, false);
+		leftArm.texOffs(24, 34).addBox(0.0F, -1.0F, -1.0F, 2.0F, 21.0F, 2.0F, 0.0F, false);
 
 		rightLeg = new ModelRenderer(this);
-		rightLeg.setRotationPoint(-3.0F, -18.0F, 0.0F);
+		rightLeg.setPos(-3.0F, -18.0F, 0.0F);
 		rotwalker.addChild(rightLeg);
-		rightLeg.setTextureOffset(0, 40).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F, 0.0F, true);
+		rightLeg.texOffs(0, 40).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F, 0.0F, true);
 
 		leftLeg = new ModelRenderer(this);
-		leftLeg.setRotationPoint(3.0F, -18.0F, 0.0F);
+		leftLeg.setPos(3.0F, -18.0F, 0.0F);
 		rotwalker.addChild(leftLeg);
-		leftLeg.setTextureOffset(0, 40).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F, 0.0F, false);
+		leftLeg.texOffs(0, 40).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F, 0.0F, false);
 	}
 
 	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.rotateAngleX = 0.0873F + headPitch * ((float)Math.PI / 180F);
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
+		this.head.xRot = 0.0873F + headPitch * ((float)Math.PI / 180F);
 
-		this.leftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.rightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftArm.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightArm.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
-		this.leftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.leftLeg.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightLeg.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override
-	public Iterable<ModelRenderer> getParts() {
+	public Iterable<ModelRenderer> parts() {
 		return ImmutableSet.of(rotwalker);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
+		modelRenderer.xRot = x;
+		modelRenderer.yRot = y;
+		modelRenderer.zRot = z;
 	}
 }

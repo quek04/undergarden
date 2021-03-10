@@ -27,7 +27,7 @@ public class UGBlockTags extends BlockTagsProvider {
     }
 
     @Override
-    protected void registerTags() {
+    protected void addTags() {
         //undergarden
         tag(UGTags.Blocks.BASE_STONE_UNDERGARDEN).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
         tag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.VEIL_MUSHROOM.get(), UGBlocks.BLOOD_MUSHROOM.get());
@@ -84,7 +84,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.STORAGE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.FORGOTTEN_BLOCK.get());
     }
 
-    private TagsProvider.Builder<Block> tag(ITag.INamedTag<Block> tag) {
-        return this.getOrCreateBuilder(tag);
+    protected TagsProvider.Builder<Block> tag(ITag.INamedTag<Block> tag) {
+        return super.tag(tag);
     }
 }

@@ -34,12 +34,12 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return AbstractCavernCreatureEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 15.0D)
-                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 5.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.4D)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 128.0D);
+        return AbstractCavernCreatureEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 15.0D)
+                .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
+                .add(Attributes.ATTACK_DAMAGE, 3.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.4D)
+                .add(Attributes.FOLLOW_RANGE, 128.0D);
     }
 
     @Override
@@ -58,17 +58,17 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
     }
 
     @Override
-    public void livingTick() {
-        super.livingTick();
+    public void aiStep() {
+        super.aiStep();
 
-        if(this.collidedHorizontally || this.collidedVertically) {
+        if(this.horizontalCollision || this.verticalCollision) {
             AxisAlignedBB axisalignedbb = this.getBoundingBox();
 
-            for(BlockPos blockpos : BlockPos.getAllInBoxMutable(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
-                BlockState blockstate = this.world.getBlockState(blockpos);
+            for(BlockPos blockpos : BlockPos.betweenClosed(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
+                BlockState blockstate = this.level.getBlockState(blockpos);
                 Block block = blockstate.getBlock();
-                if (block.isIn(UGTags.Blocks.MUNCHER_BREAKABLES)) {
-                    this.world.destroyBlock(blockpos, false, this);
+                if (block.is(UGTags.Blocks.MUNCHER_BREAKABLES)) {
+                    this.level.destroyBlock(blockpos, false, this);
                     this.heal(1.0F);
                     this.playSound(UGSoundEvents.MUNCHER_CHEW.get(), 1.0F, 1.0F);
                 }

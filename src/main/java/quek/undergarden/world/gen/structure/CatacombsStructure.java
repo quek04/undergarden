@@ -16,6 +16,8 @@ import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import quek.undergarden.Undergarden;
 
+import net.minecraft.world.gen.feature.structure.Structure.IStartFactory;
+
 public class CatacombsStructure extends AbstractUndergardenStructure {
 
     public CatacombsStructure(Codec<NoFeatureConfig> codec) {
@@ -34,32 +36,32 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
         }
 
         @Override
-        public void func_230364_a_(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager structureManager, int x, int z, Biome biome, NoFeatureConfig NoFeatureConfig) {
+        public void generatePieces(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager structureManager, int x, int z, Biome biome, NoFeatureConfig NoFeatureConfig) {
             BlockPos yPos = getHighestLand(chunkGenerator);
             BlockPos blockPos = new BlockPos(x * 16, 0, z * 16);
 
-            JigsawManager.func_242837_a(
+            JigsawManager.addPieces(
                     dynamicRegistryManager,
-                    new VillageConfig(() -> dynamicRegistryManager.getRegistry(Registry.JIGSAW_POOL_KEY).getOrDefault(new ResourceLocation(Undergarden.MODID, "catacombs/catacombs_entrance")), 100),
+                    new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(new ResourceLocation(Undergarden.MODID, "catacombs/catacombs_entrance")), 100),
                     AbstractVillagePiece::new,
                     chunkGenerator,
                     structureManager,
                     blockPos,
-                    this.components,
-                    this.rand,
+                    this.pieces,
+                    this.random,
                     true,
                     false);
 
-            this.components.forEach(piece -> piece.offset(0, 1, 0));
-            this.components.forEach(piece -> piece.getBoundingBox().minY -= 1);
+            this.pieces.forEach(piece -> piece.move(0, 1, 0));
+            this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
 
-            this.recalculateStructureSize();
+            this.calculateBoundingBox();
 
             if (yPos.getY() >= 250 || yPos.getY() <= 32) {
-                this.func_214626_a(this.rand, 39, 40);
+                this.moveInsideHeights(this.random, 39, 40);
             }
             else {
-                this.func_214626_a(this.rand, yPos.getY()-15, yPos.getY()-14);
+                this.moveInsideHeights(this.random, yPos.getY()-15, yPos.getY()-14);
             }
         }
     }

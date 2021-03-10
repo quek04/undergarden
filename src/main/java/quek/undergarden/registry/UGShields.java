@@ -3,7 +3,7 @@ package quek.undergarden.registry;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum UGShields {
-    CLOGGRUM(672, Ingredient.fromItems(UGItems.CLOGGRUM_INGOT.get())),
+    CLOGGRUM(672, Ingredient.of(UGItems.CLOGGRUM_INGOT.get())),
     ;
 
     int maxUses;

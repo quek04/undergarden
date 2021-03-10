@@ -19,7 +19,7 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override
-    protected int func_225563_a_(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_) {
+    protected int getTreeRadiusForHeight(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_) {
         int i = 0;
         if (p_225563_4_ < p_225563_2_ && p_225563_4_ >= p_225563_2_ - 3) {
             i = p_225563_3_;
@@ -31,7 +31,7 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override //cap
-    protected void func_225564_a_(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
+    protected void makeCap(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
         for(int i = p_225564_4_ - 3; i <= p_225564_4_; ++i) {
             int j = i < p_225564_4_ ? config.foliageRadius : config.foliageRadius - 1;
             int k = config.foliageRadius - 2;
@@ -45,9 +45,9 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
                     boolean flag4 = flag || flag1;
                     boolean flag5 = flag2 || flag3;
                     if (i >= p_225564_4_ || flag4 != flag5) {
-                        posMutable.setAndOffset(pos, l, i, i1);
+                        posMutable.setWithOffset(pos, l, i, i1);
                         if (world.getBlockState(posMutable).canBeReplacedByLeaves(world, posMutable)) {
-                            this.setBlockState(world, posMutable, config.capProvider.getBlockState(random, pos).with(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).with(HugeMushroomBlock.WEST, l < -k).with(HugeMushroomBlock.EAST, l > k).with(HugeMushroomBlock.NORTH, i1 < -k).with(HugeMushroomBlock.SOUTH, i1 > k));
+                            this.setBlock(world, posMutable, config.capProvider.getState(random, pos).setValue(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).setValue(HugeMushroomBlock.WEST, l < -k).setValue(HugeMushroomBlock.EAST, l > k).setValue(HugeMushroomBlock.NORTH, i1 < -k).setValue(HugeMushroomBlock.SOUTH, i1 > k));
 
                             if(random.nextInt(5) == 0) {
                                 doVeil(posMutable, world, random);
@@ -60,8 +60,8 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
     }
 
     private static void doVeil(BlockPos pos, IWorld world, Random random) {
-        BlockPos.Mutable blockpos$mutable = pos.toMutable().move(Direction.DOWN);
-        if (world.isAirBlock(blockpos$mutable)) {
+        BlockPos.Mutable blockpos$mutable = pos.mutable().move(Direction.DOWN);
+        if (world.isEmptyBlock(blockpos$mutable)) {
             int i = MathHelper.nextInt(random, 1, 5);
             if (random.nextInt(7) == 0) {
                 i *= 2;
@@ -73,13 +73,13 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
 
     public static void placeVeil(IWorld world, Random rand, BlockPos.Mutable posMutable, int x, int y, int z) {
         for(int i = 0; i <= x; ++i) {
-            if (world.isAirBlock(posMutable)) {
-                if (i == x || !world.isAirBlock(posMutable.down())) {
-                    world.setBlockState(posMutable, UGBlocks.MUSHROOM_VEIL_TOP.get().getDefaultState().with(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
+            if (world.isEmptyBlock(posMutable)) {
+                if (i == x || !world.isEmptyBlock(posMutable.below())) {
+                    world.setBlock(posMutable, UGBlocks.MUSHROOM_VEIL_TOP.get().defaultBlockState().setValue(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
                     break;
                 }
 
-                world.setBlockState(posMutable, UGBlocks.MUSHROOM_VEIL.get().getDefaultState(), 2);
+                world.setBlock(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState(), 2);
             }
 
             posMutable.move(Direction.DOWN);

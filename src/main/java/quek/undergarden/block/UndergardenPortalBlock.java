@@ -6,7 +6,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
@@ -36,22 +35,22 @@ import java.util.Random;
 public class UndergardenPortalBlock extends Block {
 
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
-    protected static final VoxelShape X_AABB = Block.makeCuboidShape(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
-    protected static final VoxelShape Z_AABB = Block.makeCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
+    protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
+    protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
 
     public UndergardenPortalBlock() {
-        super(Properties.create(Material.PORTAL)
-                .hardnessAndResistance(-1F)
-                .doesNotBlockMovement()
-                .setLightLevel((state) -> 10)
+        super(Properties.of(Material.PORTAL)
+                .strength(-1F)
+                .noCollission()
+                .lightLevel((state) -> 10)
                 .noDrops()
         );
-        setDefaultState(stateContainer.getBaseState().with(AXIS, Direction.Axis.X));
+        registerDefaultState(stateDefinition.any().setValue(AXIS, Direction.Axis.X));
     }
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        switch(state.get(AXIS)) {
+        switch(state.getValue(AXIS)) {
             case Z:
                 return Z_AABB;
             case X:
@@ -102,34 +101,34 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         Direction.Axis direction$axis = facing.getAxis();
-        Direction.Axis direction$axis1 = stateIn.get(AXIS);
+        Direction.Axis direction$axis1 = stateIn.getValue(AXIS);
         boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-        return !flag && facingState.getBlock() != this && !(new Size(worldIn, currentPos, direction$axis1)).validatePortal() ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return !flag && facingState.getBlock() != this && !(new Size(worldIn, currentPos, direction$axis1)).validatePortal() ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entity) {
-        if(!entity.isPassenger() && !entity.isBeingRidden() && entity.isNonBoss()) {
-            if(entity.func_242280_ah()) {
-                entity.func_242279_ag();
+    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entity) {
+        if(!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
+            if(entity.isOnPortalCooldown()) {
+                entity.setPortalCooldown();
             }
             else {
-                if(!entity.world.isRemote && !pos.equals(entity.field_242271_ac)) {
-                    entity.field_242271_ac = pos.toImmutable();
+                if(!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
+                    entity.portalEntrancePos = pos.immutable();
                 }
-                World entityWorld = entity.world;
+                World entityWorld = entity.level;
                 if(entityWorld != null) {
                     MinecraftServer minecraftserver = entityWorld.getServer();
-                    RegistryKey<World> destination = entity.world.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD ? World.OVERWORLD : UGDimensions.UNDERGARDEN_WORLD;
+                    RegistryKey<World> destination = entity.level.dimension() == UGDimensions.UNDERGARDEN_WORLD ? World.OVERWORLD : UGDimensions.UNDERGARDEN_WORLD;
                     if(minecraftserver != null) {
-                        ServerWorld destinationWorld = minecraftserver.getWorld(destination);
-                        if(destinationWorld != null && minecraftserver.getAllowNether() && !entity.isPassenger()) {
-                            entity.world.getProfiler().startSection("undergarden_portal");
-                            entity.func_242279_ag();
+                        ServerWorld destinationWorld = minecraftserver.getLevel(destination);
+                        if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
+                            entity.level.getProfiler().push("undergarden_portal");
+                            entity.setPortalCooldown();
                             entity.changeDimension(destinationWorld, new UGTeleporter(destinationWorld));
-                            entity.world.getProfiler().endSection();
+                            entity.level.getProfiler().pop();
                         }
                     }
                 }
@@ -141,7 +140,7 @@ public class UndergardenPortalBlock extends Block {
     @Override
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (rand.nextInt(100) == 0) {
-            worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UGSoundEvents.UNDERGARDEN_PORTAL_AMBIENT.get(), SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
+            worldIn.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UGSoundEvents.UNDERGARDEN_PORTAL_AMBIENT.get(), SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
         }
 
         for(int i = 0; i < 4; ++i) {
@@ -152,7 +151,7 @@ public class UndergardenPortalBlock extends Block {
             double ySpeed = ((double)rand.nextFloat() - 0.5D) * 0.5D;
             double zSpeed = ((double)rand.nextFloat() - 0.5D) * 0.5D;
             int j = rand.nextInt(2) * 2 - 1;
-            if (!worldIn.getBlockState(pos.west()).isIn(this) && !worldIn.getBlockState(pos.east()).isIn(this)) {
+            if (!worldIn.getBlockState(pos.west()).is(this) && !worldIn.getBlockState(pos.east()).is(this)) {
                 x = (double)pos.getX() + 0.5D + 0.25D * (double)j;
                 xSpeed = rand.nextFloat() * 2.0F * (float)j;
             } else {
@@ -166,7 +165,7 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(IBlockReader worldIn, BlockPos pos, BlockState state) {
         return ItemStack.EMPTY;
     }
 
@@ -175,11 +174,11 @@ public class UndergardenPortalBlock extends Block {
         switch(rot) {
             case COUNTERCLOCKWISE_90:
             case CLOCKWISE_90:
-                switch(state.get(AXIS)) {
+                switch(state.getValue(AXIS)) {
                     case Z:
-                        return state.with(AXIS, Direction.Axis.X);
+                        return state.setValue(AXIS, Direction.Axis.X);
                     case X:
-                        return state.with(AXIS, Direction.Axis.Z);
+                        return state.setValue(AXIS, Direction.Axis.Z);
                     default:
                         return state;
                 }
@@ -189,7 +188,7 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AXIS);
     }
 
@@ -215,13 +214,13 @@ public class UndergardenPortalBlock extends Block {
                 this.rightDir = Direction.SOUTH;
             }
 
-            for(BlockPos blockpos = pos; pos.getY() > blockpos.getY() - 21 && pos.getY() > 0 && this.canConnect(worldIn.getBlockState(pos.down())); pos = pos.down()) {
+            for(BlockPos blockpos = pos; pos.getY() > blockpos.getY() - 21 && pos.getY() > 0 && this.canConnect(worldIn.getBlockState(pos.below())); pos = pos.below()) {
                 ;
             }
 
             int i = this.getDistanceUntilEdge(pos, this.leftDir) - 1;
             if (i >= 0) {
-                this.bottomLeft = pos.offset(this.leftDir, i);
+                this.bottomLeft = pos.relative(this.leftDir, i);
                 this.width = this.getDistanceUntilEdge(this.bottomLeft, this.rightDir);
                 if (this.width < 2 || this.width > 21) {
                     this.bottomLeft = null;
@@ -238,14 +237,14 @@ public class UndergardenPortalBlock extends Block {
         protected int getDistanceUntilEdge(BlockPos pos, Direction directionIn) {
             int i;
             for(i = 0; i < 22; ++i) {
-                BlockPos blockpos = pos.offset(directionIn, i);
-                if (!this.canConnect(this.world.getBlockState(blockpos)) || !(this.world.getBlockState(blockpos.down()).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
+                BlockPos blockpos = pos.relative(directionIn, i);
+                if (!this.canConnect(this.world.getBlockState(blockpos)) || !(this.world.getBlockState(blockpos.below()).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                     break;
                 }
             }
 
-            BlockPos framePos = pos.offset(directionIn, i);
-            return this.world.getBlockState(framePos).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS) ? i : 0;
+            BlockPos framePos = pos.relative(directionIn, i);
+            return this.world.getBlockState(framePos).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS) ? i : 0;
         }
 
         public int getHeight() {
@@ -260,7 +259,7 @@ public class UndergardenPortalBlock extends Block {
             label56:
             for(this.height = 0; this.height < 21; ++this.height) {
                 for(int i = 0; i < this.width; ++i) {
-                    BlockPos blockpos = this.bottomLeft.offset(this.rightDir, i).up(this.height);
+                    BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i).above(this.height);
                     BlockState blockstate = this.world.getBlockState(blockpos);
                     if (!this.canConnect(blockstate)) {
                         break label56;
@@ -272,13 +271,13 @@ public class UndergardenPortalBlock extends Block {
                     }
 
                     if (i == 0) {
-                        BlockPos framePos = blockpos.offset(this.leftDir);
-                        if (!(this.world.getBlockState(framePos).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
+                        BlockPos framePos = blockpos.relative(this.leftDir);
+                        if (!(this.world.getBlockState(framePos).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                             break label56;
                         }
                     } else if (i == this.width - 1) {
-                        BlockPos framePos = blockpos.offset(this.rightDir);
-                        if (!(this.world.getBlockState(framePos).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
+                        BlockPos framePos = blockpos.relative(this.rightDir);
+                        if (!(this.world.getBlockState(framePos).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                             break label56;
                         }
                     }
@@ -286,8 +285,8 @@ public class UndergardenPortalBlock extends Block {
             }
 
             for(int j = 0; j < this.width; ++j) {
-                BlockPos framePos = this.bottomLeft.offset(this.rightDir, j).up(this.height);
-                if (!(this.world.getBlockState(framePos).getBlock().isIn(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
+                BlockPos framePos = this.bottomLeft.relative(this.rightDir, j).above(this.height);
+                if (!(this.world.getBlockState(framePos).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                     this.height = 0;
                     break;
                 }
@@ -314,10 +313,10 @@ public class UndergardenPortalBlock extends Block {
 
         public void placePortalBlocks() {
             for(int i = 0; i < this.width; ++i) {
-                BlockPos blockpos = this.bottomLeft.offset(this.rightDir, i);
+                BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i);
 
                 for(int j = 0; j < this.height; ++j) {
-                    this.world.setBlockState(blockpos.up(j), UGBlocks.UNDERGARDEN_PORTAL.get().getDefaultState().with(UndergardenPortalBlock.AXIS, this.axis), 18);
+                    this.world.setBlock(blockpos.above(j), UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState().setValue(UndergardenPortalBlock.AXIS, this.axis), 18);
                 }
             }
 

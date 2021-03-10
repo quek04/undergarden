@@ -16,7 +16,7 @@ public class BigBloodMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override
-    protected int func_225563_a_(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_) {
+    protected int getTreeRadiusForHeight(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_) {
         int i = 0;
         if (p_225563_4_ < p_225563_2_ && p_225563_4_ >= p_225563_2_ - 3) {
             i = p_225563_3_;
@@ -28,7 +28,7 @@ public class BigBloodMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override //cap
-    protected void func_225564_a_(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
+    protected void makeCap(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
         for(int i = p_225564_4_ - 3; i <= p_225564_4_; ++i) {
             int j = i < p_225564_4_ ? config.foliageRadius : config.foliageRadius - 1;
             int k = config.foliageRadius - 2;
@@ -42,12 +42,12 @@ public class BigBloodMushroomFeature extends UGBigMushroomFeature {
                     boolean flag4 = flag || flag1;
                     boolean flag5 = flag2 || flag3;
                     if (i >= p_225564_4_ || flag4 != flag5) {
-                        posMutable.setAndOffset(pos, l, i, i1);
+                        posMutable.setWithOffset(pos, l, i, i1);
                         if (world.getBlockState(posMutable).canBeReplacedByLeaves(world, posMutable)) {
                             if(!(random.nextInt(10) == 0)) {
-                                this.setBlockState(world, posMutable, config.capProvider.getBlockState(random, pos).with(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).with(HugeMushroomBlock.WEST, l < -k).with(HugeMushroomBlock.EAST, l > k).with(HugeMushroomBlock.NORTH, i1 < -k).with(HugeMushroomBlock.SOUTH, i1 > k));
+                                this.setBlock(world, posMutable, config.capProvider.getState(random, pos).setValue(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).setValue(HugeMushroomBlock.WEST, l < -k).setValue(HugeMushroomBlock.EAST, l > k).setValue(HugeMushroomBlock.NORTH, i1 < -k).setValue(HugeMushroomBlock.SOUTH, i1 > k));
                             }
-                            else this.setBlockState(world, posMutable, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().getDefaultState());
+                            else this.setBlock(world, posMutable, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().defaultBlockState());
                         }
                     }
                 }

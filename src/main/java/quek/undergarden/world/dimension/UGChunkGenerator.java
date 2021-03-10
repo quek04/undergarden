@@ -16,12 +16,12 @@ public class UGChunkGenerator extends NoiseChunkGenerator {
     public static final Codec<UGChunkGenerator> CODEC = RecordCodecBuilder.create(
             (instance) -> instance.group(
                     BiomeProvider.CODEC.fieldOf("biome_source")
-                            .forGetter((chunkGenerator) -> chunkGenerator.biomeProvider),
+                            .forGetter((chunkGenerator) -> chunkGenerator.biomeSource),
                     Codec.LONG.fieldOf("seed")
                             .orElseGet(SeedBearer::giveMeSeed)
-                            .forGetter((chunkGenerator) -> chunkGenerator.field_236084_w_),
-                    DimensionSettings.field_236098_b_.fieldOf("settings")
-                            .forGetter((chunkGenerator) -> chunkGenerator.field_236080_h_))
+                            .forGetter((chunkGenerator) -> chunkGenerator.seed),
+                    DimensionSettings.CODEC.fieldOf("settings")
+                            .forGetter((chunkGenerator) -> chunkGenerator.settings))
                     .apply(instance, instance.stable(UGChunkGenerator::new)));
 
     public UGChunkGenerator(BiomeProvider biomeProvider, long seed, Supplier<DimensionSettings> dimensionSettingsSupplier) {
@@ -29,13 +29,13 @@ public class UGChunkGenerator extends NoiseChunkGenerator {
     }
 
     @Override
-    protected Codec<? extends ChunkGenerator> func_230347_a_() {
+    protected Codec<? extends ChunkGenerator> codec() {
         return CODEC;
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public ChunkGenerator func_230349_a_(long seed) {
-        return new UGChunkGenerator(this.biomeProvider.getBiomeProvider(seed), seed, this.field_236080_h_);
+    public ChunkGenerator withSeed(long seed) {
+        return new UGChunkGenerator(this.biomeSource.withSeed(seed), seed, this.settings);
     }
 }

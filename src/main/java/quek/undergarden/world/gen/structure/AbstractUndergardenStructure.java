@@ -21,7 +21,7 @@ public abstract class AbstractUndergardenStructure extends Structure<NoFeatureCo
     }
 
     @Override
-    public GenerationStage.Decoration getDecorationStage() {
+    public GenerationStage.Decoration step() {
         return GenerationStage.Decoration.SURFACE_STRUCTURES;
     }
 
@@ -32,12 +32,12 @@ public abstract class AbstractUndergardenStructure extends Structure<NoFeatureCo
         }
 
         public BlockPos getLowestLand(ChunkGenerator chunkGenerator) {
-            BlockPos.Mutable mutable = new BlockPos.Mutable().setPos(this.bounds.func_215126_f().getX(), 32, this.bounds.func_215126_f().getZ());
-            IBlockReader blockView = chunkGenerator.func_230348_a_(mutable.getX(), mutable.getZ());
+            BlockPos.Mutable mutable = new BlockPos.Mutable().set(this.boundingBox.getCenter().getX(), 32, this.boundingBox.getCenter().getZ());
+            IBlockReader blockView = chunkGenerator.getBaseColumn(mutable.getX(), mutable.getZ());
             BlockState currentBlockstate = blockView.getBlockState(mutable);
             while (mutable.getY() <= 250) {
 
-                if(blockView.getBlockState(mutable).getMaterial() != Material.AIR && blockView.getBlockState(mutable.up()).getMaterial() == Material.AIR && blockView.getBlockState(mutable.up(5)).getMaterial() == Material.AIR && isValidBlock(currentBlockstate)) {
+                if(blockView.getBlockState(mutable).getMaterial() != Material.AIR && blockView.getBlockState(mutable.above()).getMaterial() == Material.AIR && blockView.getBlockState(mutable.above(5)).getMaterial() == Material.AIR && isValidBlock(currentBlockstate)) {
                     mutable.move(Direction.UP);
                     break;
                 }
@@ -50,16 +50,16 @@ public abstract class AbstractUndergardenStructure extends Structure<NoFeatureCo
         }
 
         public BlockPos getHighestLand(ChunkGenerator chunkGenerator) {
-            BlockPos.Mutable mutable = new BlockPos.Mutable().setPos(this.bounds.func_215126_f().getX(), 250, this.bounds.func_215126_f().getZ());
-            IBlockReader blockView = chunkGenerator.func_230348_a_(mutable.getX(), mutable.getZ());
+            BlockPos.Mutable mutable = new BlockPos.Mutable().set(this.boundingBox.getCenter().getX(), 250, this.boundingBox.getCenter().getZ());
+            IBlockReader blockView = chunkGenerator.getBaseColumn(mutable.getX(), mutable.getZ());
             BlockState currentBlockstate;
             while (mutable.getY() > 32) {
                 currentBlockstate = blockView.getBlockState(mutable);
-                if (!currentBlockstate.isNormalCube(blockView, mutable)) {
+                if (!currentBlockstate.isRedstoneConductor(blockView, mutable)) {
                     mutable.move(Direction.DOWN);
                     continue;
                 }
-                else if (blockView.getBlockState(mutable.add(0, 3, 0)).getMaterial() == Material.AIR && isValidBlock(currentBlockstate)) {
+                else if (blockView.getBlockState(mutable.offset(0, 3, 0)).getMaterial() == Material.AIR && isValidBlock(currentBlockstate)) {
                     break;
                 }
                 mutable.move(Direction.DOWN);
@@ -69,7 +69,7 @@ public abstract class AbstractUndergardenStructure extends Structure<NoFeatureCo
         }
 
         private boolean isValidBlock(BlockState currentBlockstate) {
-            return currentBlockstate.isIn(UGBlocks.DEEPTURF_BLOCK.get());
+            return currentBlockstate.is(UGBlocks.DEEPTURF_BLOCK.get());
         }
     }
 }

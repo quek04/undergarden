@@ -21,7 +21,7 @@ public class RotDwellerRender extends MobRenderer<RotDwellerEntity, RotDwellerMo
     }
 
     @Override
-    public ResourceLocation getEntityTexture(RotDwellerEntity entity) {
+    public ResourceLocation getTextureLocation(RotDwellerEntity entity) {
         return TEXTURE;
     }
 }

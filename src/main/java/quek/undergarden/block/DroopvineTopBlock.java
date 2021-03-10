@@ -12,25 +12,25 @@ import java.util.Random;
 
 public class DroopvineTopBlock extends AbstractTopPlantBlock {
 
-    public static final VoxelShape SHAPE = Block.makeCuboidShape(1.0D, 1.0D, 1.0D, 16.0D, 16.0D, 16.0D);
+    public static final VoxelShape SHAPE = Block.box(1.0D, 1.0D, 1.0D, 16.0D, 16.0D, 16.0D);
 
-    public DroopvineTopBlock(AbstractBlock.Properties properties, Direction direction, boolean waterloggable, double growthChance) {
+    public DroopvineTopBlock(Properties properties, Direction direction, boolean waterloggable, double growthChance) {
         super(properties, direction, SHAPE, waterloggable, growthChance);
     }
 
     @Override
-    protected int getGrowthAmount(Random rand) {
-        return PlantBlockHelper.getGrowthAmount(rand);
+    protected int getBlocksToGrowWhenBonemealed(Random rand) {
+        return PlantBlockHelper.getBlocksToGrowWhenBonemealed(rand);
     }
 
     @Override
-    protected boolean canGrowIn(BlockState state) {
-        return PlantBlockHelper.isAir(state);
+    protected boolean canGrowInto(BlockState state) {
+        return PlantBlockHelper.isValidGrowthState(state);
     }
 
     @Override
-    protected Block getBodyPlantBlock() {
-        return UGBlocks.DROOPVINE.get().getDefaultState().with(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()).getBlock();
+    protected Block getBodyBlock() {
+        return UGBlocks.DROOPVINE.get().defaultBlockState().setValue(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()).getBlock();
     }
 
     @Override

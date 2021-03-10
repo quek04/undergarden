@@ -21,7 +21,7 @@ public class UGCarvers {
             "undergarden_cave", () -> new UGCaveWorldCarver(ProbabilityConfig.CODEC));
 
     public static void registerConfiguredCarvers() {
-        register("undergarden_cave", UNDERGARDEN_CAVE.get().func_242761_a(new ProbabilityConfig(0.5F)));
+        register("undergarden_cave", UNDERGARDEN_CAVE.get().configured(new ProbabilityConfig(0.5F)));
     }
 
     private static <WC extends ICarverConfig> void register(String name, ConfiguredCarver<WC> carver) {

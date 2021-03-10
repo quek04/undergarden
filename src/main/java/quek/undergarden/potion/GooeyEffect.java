@@ -15,12 +15,12 @@ public class GooeyEffect extends Effect {
     }
 
     @Override
-    public void performEffect(LivingEntity entity, int amplifier) {
-        BlockState blockstate = UGBlocks.GOO.get().getDefaultState();
-        BlockPos pos = new BlockPos(entity.getPosX(), entity.getPosY(), entity.getPosZ());
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
+        BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
 
-        if (entity.world.isAirBlock(pos) && blockstate.isValidPosition(entity.world, pos) && !(entity instanceof ScintlingEntity)) {
-            entity.world.setBlockState(pos, blockstate);
+        if (entity.level.isEmptyBlock(pos) && blockstate.canSurvive(entity.level, pos) && !(entity instanceof ScintlingEntity)) {
+            entity.level.setBlockAndUpdate(pos, blockstate);
         }
     }
 }

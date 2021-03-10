@@ -22,9 +22,9 @@ public class UndergardenPortalParticle extends PortalParticle {
         }
 
         @Override
-        public Particle makeParticle(BasicParticleType typeIn, ClientWorld worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+        public Particle createParticle(BasicParticleType typeIn, ClientWorld worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
             UndergardenPortalParticle portalParticle = new UndergardenPortalParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
-            portalParticle.selectSpriteRandomly(this.spriteSet);
+            portalParticle.pickSprite(this.spriteSet);
             portalParticle.setColor(0.0F, 0.25F, 0.05F);
             return portalParticle;
         }

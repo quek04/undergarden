@@ -19,7 +19,7 @@ public class NargoyleRender extends MobRenderer<NargoyleEntity, NargoyleModel<Na
     }
 
     @Override
-    public ResourceLocation getEntityTexture(NargoyleEntity entity) {
+    public ResourceLocation getTextureLocation(NargoyleEntity entity) {
         return texture;
     }
 }

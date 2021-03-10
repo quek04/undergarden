@@ -22,14 +22,14 @@ public abstract class UGBigMushroomFeature extends AbstractBigMushroomFeature {
     }
 
     private static boolean isDeepturf(IWorldGenerationBaseReader world, BlockPos pos) {
-        return world.hasBlockState(pos, (state) -> {
+        return world.isStateAtPosition(pos, (state) -> {
             Block block = state.getBlock();
             return block == UGBlocks.DEEPTURF_BLOCK.get() || block == UGBlocks.DEEPSOIL.get();
         });
     }
 
     @Override
-    protected boolean func_227209_a_(IWorld world, BlockPos pos, int p_227209_3_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
+    protected boolean isValidPosition(IWorld world, BlockPos pos, int p_227209_3_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
         int i = pos.getY();
         if (i >= 1 && i + p_227209_3_ + 1 < 256) {
             //if (!isDeepturf(world, pos)) {
@@ -37,12 +37,12 @@ public abstract class UGBigMushroomFeature extends AbstractBigMushroomFeature {
             //}
             //else {
                 for(int j = 0; j <= p_227209_3_; ++j) {
-                    int k = this.func_225563_a_(-1, -1, config.foliageRadius, j);
+                    int k = this.getTreeRadiusForHeight(-1, -1, config.foliageRadius, j);
 
                     for(int l = -k; l <= k; ++l) {
                         for(int i1 = -k; i1 <= k; ++i1) {
-                            BlockState blockstate = world.getBlockState(posMutable.setAndOffset(pos, l, j, i1));
-                            if (!blockstate.isAir(world, posMutable.setAndOffset(pos, l, j, i1)) && !blockstate.isIn(BlockTags.LEAVES)) {
+                            BlockState blockstate = world.getBlockState(posMutable.setWithOffset(pos, l, j, i1));
+                            if (!blockstate.isAir(world, posMutable.setWithOffset(pos, l, j, i1)) && !blockstate.is(BlockTags.LEAVES)) {
                                 return false;
                             }
                         }
@@ -57,26 +57,26 @@ public abstract class UGBigMushroomFeature extends AbstractBigMushroomFeature {
     }
 
     @Override
-    public boolean generate(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random random, BlockPos pos, BigMushroomFeatureConfig config) {
-        int i = this.func_227211_a_(random);
+    public boolean place(ISeedReader seedReader, ChunkGenerator chunkGenerator, Random random, BlockPos pos, BigMushroomFeatureConfig config) {
+        int i = this.getTreeHeight(random);
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
-        if (!this.func_227209_a_(seedReader, pos, i, blockpos$mutable, config)) {
+        if (!this.isValidPosition(seedReader, pos, i, blockpos$mutable, config)) {
             return false;
         } else {
-            this.func_225564_a_(seedReader, random, pos, i, blockpos$mutable, config);
-            this.func_227210_a_(seedReader, random, pos, config, i, blockpos$mutable);
+            this.makeCap(seedReader, random, pos, i, blockpos$mutable, config);
+            this.placeTrunk(seedReader, random, pos, config, i, blockpos$mutable);
             return true;
         }
     }
 
     @Override
-    protected abstract int func_225563_a_(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_);
+    protected abstract int getTreeRadiusForHeight(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_);
 
     @Override
-    protected abstract void func_225564_a_(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config);
+    protected abstract void makeCap(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config);
 
     @Override //stalk size
-    protected int func_227211_a_(Random random) {
+    protected int getTreeHeight(Random random) {
         int i = random.nextInt(6) + 6;
         if (random.nextInt(12) == 0) {
             i *= 2;

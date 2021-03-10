@@ -21,7 +21,7 @@ public class GloomperRender extends MobRenderer<GloomperEntity, GloomperModel<Gl
     }
 
     @Override
-    public ResourceLocation getEntityTexture(GloomperEntity entity) {
+    public ResourceLocation getTextureLocation(GloomperEntity entity) {
         return TEXTURE;
     }
 }

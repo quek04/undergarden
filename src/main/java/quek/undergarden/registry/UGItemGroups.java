@@ -7,7 +7,7 @@ public class UGItemGroups {
 
     public static final ItemGroup GROUP = new ItemGroup("undergarden_group") {
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             return new ItemStack(UGBlocks.DEEPTURF_BLOCK.get());
         }
     };

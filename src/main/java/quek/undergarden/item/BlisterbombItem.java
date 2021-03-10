@@ -12,33 +12,35 @@ import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSoundEvents;
 
+import net.minecraft.item.Item.Properties;
+
 public class BlisterbombItem extends Item {
 
     public BlisterbombItem() {
         super(new Properties()
-                .maxStackSize(8)
-                .group(UGItemGroups.GROUP)
+                .stacksTo(8)
+                .tab(UGItemGroups.GROUP)
         );
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        ItemStack itemstack = playerIn.getHeldItem(handIn);
-        worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), UGSoundEvents.BLISTERBOMB_THROW.get(), SoundCategory.NEUTRAL, 0.5F, 1F);
-        playerIn.getCooldownTracker().setCooldown(this, 50);
-        if (!worldIn.isRemote) {
+    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemStack itemstack = playerIn.getItemInHand(handIn);
+        worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), UGSoundEvents.BLISTERBOMB_THROW.get(), SoundCategory.NEUTRAL, 0.5F, 1F);
+        playerIn.getCooldowns().addCooldown(this, 50);
+        if (!worldIn.isClientSide) {
             BlisterbombEntity blisterbomb = new BlisterbombEntity(worldIn, playerIn);
             blisterbomb.setItem(itemstack);
-            blisterbomb.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
-            worldIn.addEntity(blisterbomb);
+            blisterbomb.shootFromRotation(playerIn, playerIn.xRot, playerIn.yRot, 0.0F, 1.5F, 1.0F);
+            worldIn.addFreshEntity(blisterbomb);
         }
 
-        playerIn.addStat(Stats.ITEM_USED.get(this));
-        if (!playerIn.abilities.isCreativeMode) {
+        playerIn.awardStat(Stats.ITEM_USED.get(this));
+        if (!playerIn.abilities.instabuild) {
             itemstack.shrink(1);
         }
 
-        return ActionResult.resultSuccess(itemstack);
+        return ActionResult.success(itemstack);
     }
 
 }

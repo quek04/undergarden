@@ -88,27 +88,27 @@ public class Undergarden {
 			UGBiomes.toDictionary();
 			UGDimensions.registerDimensionStuff();
 
-			AxeItem.BLOCK_STRIPPING_MAP = Maps.newHashMap(AxeItem.BLOCK_STRIPPING_MAP);
-			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
-			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
-			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get());
-			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
-			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.GRONGLE_STEM.get(), UGBlocks.STRIPPED_GRONGLE_STEM.get());
-			AxeItem.BLOCK_STRIPPING_MAP.put(UGBlocks.GRONGLE_HYPHAE.get(), UGBlocks.STRIPPED_GRONGLE_HYPHAE.get());
+			AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
+			AxeItem.STRIPABLES.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
+			AxeItem.STRIPABLES.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
+			AxeItem.STRIPABLES.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get());
+			AxeItem.STRIPABLES.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
+			AxeItem.STRIPABLES.put(UGBlocks.GRONGLE_STEM.get(), UGBlocks.STRIPPED_GRONGLE_STEM.get());
+			AxeItem.STRIPABLES.put(UGBlocks.GRONGLE_HYPHAE.get(), UGBlocks.STRIPPED_GRONGLE_HYPHAE.get());
 
-			HoeItem.HOE_LOOKUP.put(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL_FARMLAND.get().getDefaultState());
-			HoeItem.HOE_LOOKUP.put(UGBlocks.DEEPSOIL.get(), UGBlocks.DEEPSOIL_FARMLAND.get().getDefaultState());
-			HoeItem.HOE_LOOKUP.put(UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEEPSOIL.get().getDefaultState());
+			HoeItem.TILLABLES.put(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
+			HoeItem.TILLABLES.put(UGBlocks.DEEPSOIL.get(), UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
+			HoeItem.TILLABLES.put(UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEEPSOIL.get().defaultBlockState());
 
 			IDispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
 
-				public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+				public ItemStack execute(IBlockSource source, ItemStack stack) {
 					BucketItem bucketitem = (BucketItem)stack.getItem();
-					BlockPos blockpos = source.getBlockPos().offset(source.getBlockState().get(DispenserBlock.FACING));
-					World world = source.getWorld();
-					if (bucketitem.tryPlaceContainedLiquid(null, world, blockpos, null)) {
-						bucketitem.onLiquidPlaced(world, stack, blockpos);
+					BlockPos blockpos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
+					World world = source.getLevel();
+					if (bucketitem.emptyBucket(null, world, blockpos, null)) {
+						bucketitem.checkExtraContent(world, stack, blockpos);
 						return new ItemStack(Items.BUCKET);
 					} else {
 						return this.defaultBehavior.dispense(source, stack);
@@ -117,43 +117,43 @@ public class Undergarden {
 			};
 
 			DefaultDispenseItemBehavior eggBehavior = new DefaultDispenseItemBehavior() {
-				public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
-					Direction direction = source.getBlockState().get(DispenserBlock.FACING);
+				public ItemStack execute(IBlockSource source, ItemStack stack) {
+					Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
 					EntityType<?> type = ((UGSpawnEggItem)stack.getItem()).getType(stack.getTag());
-					type.spawn(source.getWorld(), stack, null, source.getBlockPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
+					type.spawn(source.getLevel(), stack, null, source.getPos().relative(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
 					stack.shrink(1);
 					return stack;
 				}
 			};
 
-			DispenserBlock.registerDispenseBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
-			DispenserBlock.registerDispenseBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
+			DispenserBlock.registerBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
+			DispenserBlock.registerBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
 
-			for(UGSpawnEggItem item : UGSpawnEggItem.eggs()) {
-				DispenserBlock.registerDispenseBehavior(item, eggBehavior);
+			for(SpawnEggItem item : UGSpawnEggItem.UGEggs()) {
+				DispenserBlock.registerBehavior(item, eggBehavior);
 			}
 
-			DispenserBlock.registerDispenseBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new ProjectileDispenseBehavior() {
-				protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-					return Util.make(new SlingshotAmmoEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new ProjectileDispenseBehavior() {
+				protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn) {
+					return Util.make(new SlingshotAmmoEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
-			DispenserBlock.registerDispenseBehavior(UGItems.GOO_BALL.get(), new ProjectileDispenseBehavior() {
-				protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-					return Util.make(new GooBallEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+			DispenserBlock.registerBehavior(UGItems.GOO_BALL.get(), new ProjectileDispenseBehavior() {
+				protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn) {
+					return Util.make(new GooBallEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
-			DispenserBlock.registerDispenseBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new ProjectileDispenseBehavior() {
-				protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-					return Util.make(new RottenBlisterberryEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+			DispenserBlock.registerBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new ProjectileDispenseBehavior() {
+				protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn) {
+					return Util.make(new RottenBlisterberryEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
-			DispenserBlock.registerDispenseBehavior(UGItems.BLISTERBOMB.get(), new ProjectileDispenseBehavior() {
-				protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-					return Util.make(new BlisterbombEntity(worldIn, position.getX(), position.getY(), position.getZ()), (entity) -> entity.setItem(stackIn));
+			DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new ProjectileDispenseBehavior() {
+				protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn) {
+					return Util.make(new BlisterbombEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
@@ -171,37 +171,37 @@ public class Undergarden {
 			PotionBrewing.addMix(Potions.AWKWARD, UGItems.DROOPVINE.get(), UGPotions.GLOWING.get());
 			PotionBrewing.addMix(UGPotions.GLOWING.get(), Items.REDSTONE, UGPotions.LONG_GLOWING.get());
 
-			ComposterBlock.registerCompostable(0.1F, UGItems.DROOPVINE.get());
-			ComposterBlock.registerCompostable(0.1F, UGItems.UNDERBEANS.get());
-			ComposterBlock.registerCompostable(0.2F, UGItems.BLISTERBERRY.get());
-			ComposterBlock.registerCompostable(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
-			ComposterBlock.registerCompostable(0.3F, UGItems.GLOWING_KELP.get());
-			ComposterBlock.registerCompostable(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
-			ComposterBlock.registerCompostable(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
-			ComposterBlock.registerCompostable(0.3F, UGBlocks.GRONGLE_CAP.get());
-			ComposterBlock.registerCompostable(0.3F, UGBlocks.SMOGSTEM_SAPLING.get());
-			ComposterBlock.registerCompostable(0.3F, UGBlocks.WIGGLEWOOD_SAPLING.get());
-			ComposterBlock.registerCompostable(0.3F, UGBlocks.GRONGLET.get());
-			ComposterBlock.registerCompostable(0.3F, UGBlocks.DEEPTURF.get());
-			ComposterBlock.registerCompostable(0.3F, UGBlocks.SHIMMERWEED.get());
-			ComposterBlock.registerCompostable(0.5F, UGBlocks.TALL_DEEPTURF.get());
-			ComposterBlock.registerCompostable(0.5F, UGBlocks.DITCHBULB_PLANT.get());
-			ComposterBlock.registerCompostable(0.5F, UGItems.DITCHBULB.get());
-			ComposterBlock.registerCompostable(0.5F, UGBlocks.TALL_SHIMMERWEED.get());
-			ComposterBlock.registerCompostable(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
-			ComposterBlock.registerCompostable(0.65F, UGBlocks.VEIL_MUSHROOM.get());
-			ComposterBlock.registerCompostable(0.65F, UGBlocks.INK_MUSHROOM.get());
-			ComposterBlock.registerCompostable(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
-			ComposterBlock.registerCompostable(0.65F, UGBlocks.GLOOMGOURD.get());
-			ComposterBlock.registerCompostable(0.65F, UGBlocks.CARVED_GLOOMGOURD.get());
-			ComposterBlock.registerCompostable(0.85F, UGBlocks.INDIGO_MUSHROOM_CAP.get());
-			ComposterBlock.registerCompostable(0.85F, UGBlocks.INDIGO_MUSHROOM_STALK.get());
-			ComposterBlock.registerCompostable(0.85F, UGBlocks.VEIL_MUSHROOM_CAP.get());
-			ComposterBlock.registerCompostable(0.85F, UGBlocks.VEIL_MUSHROOM_STALK.get());
-			ComposterBlock.registerCompostable(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
-			ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
-			ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get());
-			ComposterBlock.registerCompostable(0.85F, UGBlocks.BLOOD_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.1F, UGItems.DROOPVINE.get());
+			ComposterBlock.add(0.1F, UGItems.UNDERBEANS.get());
+			ComposterBlock.add(0.2F, UGItems.BLISTERBERRY.get());
+			ComposterBlock.add(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
+			ComposterBlock.add(0.3F, UGItems.GLOWING_KELP.get());
+			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
+			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
+			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_CAP.get());
+			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_SAPLING.get());
+			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_SAPLING.get());
+			ComposterBlock.add(0.3F, UGBlocks.GRONGLET.get());
+			ComposterBlock.add(0.3F, UGBlocks.DEEPTURF.get());
+			ComposterBlock.add(0.3F, UGBlocks.SHIMMERWEED.get());
+			ComposterBlock.add(0.5F, UGBlocks.TALL_DEEPTURF.get());
+			ComposterBlock.add(0.5F, UGBlocks.DITCHBULB_PLANT.get());
+			ComposterBlock.add(0.5F, UGItems.DITCHBULB.get());
+			ComposterBlock.add(0.5F, UGBlocks.TALL_SHIMMERWEED.get());
+			ComposterBlock.add(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
+			ComposterBlock.add(0.65F, UGBlocks.VEIL_MUSHROOM.get());
+			ComposterBlock.add(0.65F, UGBlocks.INK_MUSHROOM.get());
+			ComposterBlock.add(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
+			ComposterBlock.add(0.65F, UGBlocks.GLOOMGOURD.get());
+			ComposterBlock.add(0.65F, UGBlocks.CARVED_GLOOMGOURD.get());
+			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get());
+			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_STALK.get());
 
 			FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
 
@@ -222,24 +222,24 @@ public class Undergarden {
 		UndergardenClient.registerBlockColors();
 		UndergardenClient.registerItemColors();
 
-		ItemModelsProperties.registerProperty(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
+		ItemModelsProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
 			if (entity == null) {
 				return 0.0F;
 			} else {
-				return entity.getActiveItemStack() != stack ? 0.0F : (float)(stack.getUseDuration() - entity.getItemInUseCount()) / 20.0F;
+				return entity.getUseItem() != stack ? 0.0F : (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
 			}
 		});
-		ItemModelsProperties.registerProperty(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1.0F : 0.0F);
-		ItemModelsProperties.registerProperty(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1.0F : 0.0F);
+		ItemModelsProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+		ItemModelsProperties.register(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 
-		DimensionRenderInfo.field_239208_a_.put(UGDimensions.UNDERGARDEN_DIMENSION.getLocation(), new DimensionRenderInfo(Float.NaN, false, DimensionRenderInfo.FogType.NONE, false, true) {
+		DimensionRenderInfo.EFFECTS.put(UGDimensions.UNDERGARDEN_DIMENSION.location(), new DimensionRenderInfo(Float.NaN, false, DimensionRenderInfo.FogType.NONE, false, true) {
 			@Override
-			public Vector3d func_230494_a_(Vector3d vector3d, float sun) {
+			public Vector3d getBrightnessDependentFogColor(Vector3d vector3d, float sun) {
 				return vector3d;
 			}
 
 			@Override
-			public boolean func_230493_a_(int x, int y) {
+			public boolean isFoggyAt(int x, int y) {
 				return false;
 			}
 		});

@@ -31,8 +31,8 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
     public ForgottenGuardianEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
-        this.stepHeight = 1.0F;
-        this.experienceValue = 30;
+        this.maxUpStep = 1.0F;
+        this.xpReward = 30;
     }
 
     @Override
@@ -45,14 +45,14 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 80.0D)
-                .createMutableAttribute(Attributes.ARMOR, 20.0D)
-                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 5.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 20.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.2D)
-                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 64.0D);
+        return MonsterEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 80.0D)
+                .add(Attributes.ARMOR, 20.0D)
+                .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
+                .add(Attributes.ATTACK_DAMAGE, 20.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.2D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
+                .add(Attributes.FOLLOW_RANGE, 64.0D);
     }
 
     @Override
@@ -76,52 +76,52 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     }
 
     @Override
-    public boolean isNonBoss() {
+    public boolean canChangeDimensions() {
         return false;
     }
 
     @Override
     public void checkDespawn() {
-        if (this.world.getDifficulty() == Difficulty.PEACEFUL && this.isDespawnPeaceful()) {
+        if (this.level.getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
             this.remove();
         } else {
-            this.idleTime = 0;
+            this.noActionTime = 0;
         }
     }
 
     @Override
-    public void livingTick() {
-        super.livingTick();
+    public void aiStep() {
+        super.aiStep();
 
         if (this.attackTimer > 0) {
             --this.attackTimer;
         }
-        if(this.collidedHorizontally && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this)) {
-            AxisAlignedBB axisalignedbb = this.getBoundingBox().grow(0.2D, 0.0D, 0.2D);
+        if(this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
+            AxisAlignedBB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
-            for(BlockPos blockpos : BlockPos.getAllInBoxMutable(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
-                BlockState blockstate = this.world.getBlockState(blockpos);
+            for(BlockPos blockpos : BlockPos.betweenClosed(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
+                BlockState blockstate = this.level.getBlockState(blockpos);
                 Block block = blockstate.getBlock();
-                if(!block.isIn(BlockTags.WITHER_IMMUNE)) {
-                    this.world.destroyBlock(blockpos, false, this);
+                if(!block.is(BlockTags.WITHER_IMMUNE)) {
+                    this.level.destroyBlock(blockpos, false, this);
                 }
             }
         }
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
+    public boolean doHurtTarget(Entity entityIn) {
         this.attackTimer = 10;
-        this.world.setEntityState(this, (byte)4);
+        this.level.broadcastEntityEvent(this, (byte)4);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.rand.nextInt((int)damage) : damage;
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f1);
+        float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
+        boolean flag = entityIn.hurt(DamageSource.mobAttack(this), f1);
         if (flag) {
-            double x = entityIn.getPosX() - this.getPosX();
-            double z = entityIn.getPosZ() - this.getPosZ();
+            double x = entityIn.getX() - this.getX();
+            double z = entityIn.getZ() - this.getZ();
             double modifier = Math.max(x * x + z * z, 0.001D);
-            entityIn.setMotion(entityIn.getMotion().add((x / modifier) * 2, 0.2F, (z / modifier) * 2));
-            this.applyEnchantments(this, entityIn);
+            entityIn.setDeltaMovement(entityIn.getDeltaMovement().add((x / modifier) * 2, 0.2F, (z / modifier) * 2));
+            this.doEnchantDamageEffects(this, entityIn);
         }
 
         this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
@@ -129,32 +129,32 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     }
 
     @Override
-    protected void constructKnockBackVector(LivingEntity entityIn) {
-        double x = entityIn.getPosX() - this.getPosX();
-        double z = entityIn.getPosZ() - this.getPosZ();
+    protected void blockedByShield(LivingEntity entityIn) {
+        double x = entityIn.getX() - this.getX();
+        double z = entityIn.getZ() - this.getZ();
         double modifier = Math.max(x * x + z * z, 0.001D);
-        entityIn.addVelocity((x / modifier) * 2, 0.2F, (z / modifier) * 2);
-        entityIn.velocityChanged = true;
+        entityIn.push((x / modifier) * 2, 0.2F, (z / modifier) * 2);
+        entityIn.hurtMarked = true;
     }
 
     @Override
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        Entity entity = source.getImmediateSource();
+    public boolean hurt(DamageSource source, float amount) {
+        Entity entity = source.getDirectEntity();
         if (entity instanceof ProjectileEntity) {
             this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_DEFLECT.get(), 1.0F, 1.0F);
             return false;
         }
-        else return super.attackEntityFrom(source, amount);
+        else return super.hurt(source, amount);
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void handleStatusUpdate(byte id) {
+    public void handleEntityEvent(byte id) {
         if (id == 4) {
             this.attackTimer = 10;
             this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
         }
         else {
-            super.handleStatusUpdate(id);
+            super.handleEntityEvent(id);
         }
     }
 
@@ -169,25 +169,25 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     }
 
     @Override
-    public boolean onLivingFall(float distance, float damageMultiplier) {
+    public boolean causeFallDamage(float distance, float damageMultiplier) {
         return false;
     }
 
     @Override
-    protected void updateFallState(double y, boolean onGroundIn, BlockState state, BlockPos pos) { }
+    protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) { }
 
     @Override
-    public boolean addPotionEffect(EffectInstance effectInstanceIn) {
+    public boolean addEffect(EffectInstance effectInstanceIn) {
         return false;
     }
 
     @Override
-    public boolean isPushedByWater() {
+    public boolean isPushedByFluid() {
         return false;
     }
 
     @Override
-    public boolean canBeLeashedTo(PlayerEntity player) {
+    public boolean canBeLeashed(PlayerEntity player) {
         return false;
     }
 }

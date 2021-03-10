@@ -17,7 +17,7 @@ public class SploogieRender extends MobRenderer<SploogieEntity, SploogieModel<Sp
     }
 
     @Override
-    public ResourceLocation getEntityTexture(SploogieEntity entity) {
+    public ResourceLocation getTextureLocation(SploogieEntity entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/sploogie.png");
     }
 }

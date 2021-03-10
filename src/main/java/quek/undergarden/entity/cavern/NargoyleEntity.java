@@ -37,11 +37,11 @@ public class NargoyleEntity extends AbstractCavernCreatureEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 40.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 5.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 128.0D);
+        return MonsterEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.ATTACK_DAMAGE, 5.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D)
+                .add(Attributes.FOLLOW_RANGE, 128.0D);
     }
 
     @Override
@@ -55,9 +55,9 @@ public class NargoyleEntity extends AbstractCavernCreatureEntity {
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
+    public boolean doHurtTarget(Entity entityIn) {
         this.playSound(UGSoundEvents.NARGOYLE_ATTACK.get(), 1.0F, 1.0F);
-        return super.attackEntityAsMob(entityIn);
+        return super.doHurtTarget(entityIn);
     }
 
     public static class LeapAtTargetGoal extends Goal {
@@ -68,24 +68,24 @@ public class NargoyleEntity extends AbstractCavernCreatureEntity {
         public LeapAtTargetGoal(MobEntity leapingEntity, float leapMotionYIn) {
             this.leaper = leapingEntity;
             this.leapMotionY = leapMotionYIn;
-            this.setMutexFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
+            this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
         }
 
         @Override
-        public boolean shouldExecute() {
-            if (this.leaper.isBeingRidden()) {
+        public boolean canUse() {
+            if (this.leaper.isVehicle()) {
                 return false;
             } else {
-                this.leapTarget = this.leaper.getAttackTarget();
+                this.leapTarget = this.leaper.getTarget();
                 if (this.leapTarget == null) {
                     return false;
                 } else {
-                    double d0 = this.leaper.getDistanceSq(this.leapTarget);
+                    double d0 = this.leaper.distanceToSqr(this.leapTarget);
                     if (!(d0 < 4.0D) && !(d0 > 16.0D)) {
                         if (!this.leaper.isOnGround()) {
                             return false;
                         } else {
-                            return this.leaper.getRNG().nextInt(5) == 0;
+                            return this.leaper.getRandom().nextInt(5) == 0;
                         }
                     } else {
                         return false;
@@ -95,19 +95,19 @@ public class NargoyleEntity extends AbstractCavernCreatureEntity {
         }
 
         @Override
-        public boolean shouldContinueExecuting() {
+        public boolean canContinueToUse() {
             return !this.leaper.isOnGround();
         }
 
         @Override
-        public void startExecuting() {
-            Vector3d vector3d = this.leaper.getMotion();
-            Vector3d vector3d1 = new Vector3d(this.leapTarget.getPosX() - this.leaper.getPosX(), 0.0D, this.leapTarget.getPosZ() - this.leaper.getPosZ());
-            if (vector3d1.lengthSquared() > 1.0E-7D) {
+        public void start() {
+            Vector3d vector3d = this.leaper.getDeltaMovement();
+            Vector3d vector3d1 = new Vector3d(this.leapTarget.getX() - this.leaper.getX(), 0.0D, this.leapTarget.getZ() - this.leaper.getZ());
+            if (vector3d1.lengthSqr() > 1.0E-7D) {
                 vector3d1 = vector3d1.normalize().scale(0.4D).add(vector3d.scale(0.2D));
             }
 
-            this.leaper.setMotion(vector3d1.x * 2, this.leapMotionY, vector3d1.z * 2);
+            this.leaper.setDeltaMovement(vector3d1.x * 2, this.leapMotionY, vector3d1.z * 2);
         }
     }
 }

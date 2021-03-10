@@ -22,7 +22,7 @@ public class RotlingRender extends MobRenderer<RotlingEntity, RotlingModel<Rotli
     }
 
     @Override
-    public ResourceLocation getEntityTexture(RotlingEntity entity) {
+    public ResourceLocation getTextureLocation(RotlingEntity entity) {
         //if(OthersideDimension.isTheOtherside(entity.world)) {
         //    return otherside_texture;
         //}

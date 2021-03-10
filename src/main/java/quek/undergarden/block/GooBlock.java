@@ -1,6 +1,5 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -27,21 +26,21 @@ import java.util.Random;
 
 public class GooBlock extends Block {
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
-    protected static final VoxelShape SHAPE = makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
+    protected static final VoxelShape SHAPE = box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
-    public GooBlock(AbstractBlock.Properties properties) {
+    public GooBlock(Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armorInventory.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((PlayerEntity) entityIn).isPotionActive(UGEffects.GOOEY.get())) {
+    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((PlayerEntity) entityIn).hasEffect(UGEffects.GOOEY.get())) {
             //do nothing!
         }
         else if(!(entityIn instanceof ScintlingEntity) && entityIn.isOnGround()) {
-            entityIn.setMotionMultiplier(state, new Vector3d(0.45D, 0.45D, 0.45D));
+            entityIn.makeStuckInBlock(state, new Vector3d(0.45D, 0.45D, 0.45D));
         }
     }
 
@@ -51,32 +50,32 @@ public class GooBlock extends Block {
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockpos = pos.down();
-        return worldIn.getBlockState(blockpos).isSolidSide(worldIn, blockpos, Direction.UP);
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        BlockPos blockpos = pos.below();
+        return worldIn.getBlockState(blockpos).isFaceSturdy(worldIn, blockpos, Direction.UP);
     }
 
     @Override
-    public boolean isTransparent(BlockState state) {
+    public boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        return !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        return !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-        if (!state.isValidPosition(worldIn, pos)) {
+        if (!state.canSurvive(worldIn, pos)) {
             worldIn.removeBlock(pos, false);
         }
-        if(rand.nextFloat() < 100F + (float)state.get(AGE) * 0.50F) {
+        if(rand.nextFloat() < 100F + (float)state.getValue(AGE) * 0.50F) {
             worldIn.removeBlock(pos, false);
         }
     }

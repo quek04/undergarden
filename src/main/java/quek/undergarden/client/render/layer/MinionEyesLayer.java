@@ -15,7 +15,7 @@ public class MinionEyesLayer<T extends MinionEntity, M extends MinionModel<T>> e
     }
 
     @Override
-    public RenderType getRenderType() {
-        return RenderType.getEyes(new ResourceLocation(Undergarden.MODID, "textures/entity/minion_eye.png"));
+    public RenderType renderType() {
+        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/minion_eye.png"));
     }
 }

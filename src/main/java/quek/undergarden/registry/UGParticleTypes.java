@@ -27,10 +27,10 @@ public class UGParticleTypes {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void registerParticleFactories(ParticleFactoryRegisterEvent event) {
-        ParticleManager particleManager = Minecraft.getInstance().particles;
+        ParticleManager particleManager = Minecraft.getInstance().particleEngine;
 
-        particleManager.registerFactory(SHARD.get(), ShardParticle.Factory::new);
-        particleManager.registerFactory(GRONGLE_SPORE.get(), GrongleSporeParticle.Factory::new);
-        particleManager.registerFactory(UNDERGARDEN_PORTAL.get(), UndergardenPortalParticle.Factory::new);
+        particleManager.register(SHARD.get(), ShardParticle.Factory::new);
+        particleManager.register(GRONGLE_SPORE.get(), GrongleSporeParticle.Factory::new);
+        particleManager.register(UNDERGARDEN_PORTAL.get(), UndergardenPortalParticle.Factory::new);
     }
 }

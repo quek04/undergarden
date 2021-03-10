@@ -32,17 +32,17 @@ public class BlisterbombEntity extends ProjectileItemEntity {
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
-        if (!this.world.isRemote) {
+    protected void onHit(RayTraceResult result) {
+        if (!this.level.isClientSide) {
             if (result.getType() == RayTraceResult.Type.ENTITY || result.getType() == RayTraceResult.Type.BLOCK) {
-                this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3F, Explosion.Mode.BREAK);
+                this.level.explode(this, this.getX(), this.getY(), this.getZ(), 3F, Explosion.Mode.BREAK);
                 this.remove();
             }
         }
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }
