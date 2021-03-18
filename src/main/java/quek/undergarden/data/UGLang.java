@@ -500,7 +500,8 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "muncher_death", "Muncher dies");
         addSubtitle("entity", "muncher_chew", "Muncher chews");
 
-        addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
+        addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
+        addSubtitle("block", "undergarden_portal_travel", "Travelling through Undergarden portal");
 
         addDeath("frozen_deepturf", "%1$s was stabbed by Frozen Deepturf");
         addDeath("frozen_deepturf.player", "%1$s was stabbed by Frozen Deepturf whilst trying to escape %2$s");

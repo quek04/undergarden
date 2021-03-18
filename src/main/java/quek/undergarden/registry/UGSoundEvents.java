@@ -33,8 +33,9 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> RELICT_DISC = register("music.disc.relict");
     public static final RegistryObject<SoundEvent> GLOOMPER_ANTHEM_DISC = register("music.disc.gloomper_anthem");
 
-    public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_AMBIENT = register("ambient.undergarden_portal_ambient");
+    public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_AMBIENT = register("block.undergarden_portal_ambient");
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_ACTIVATE = register("item.undergarden_portal_activate");
+    public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_TRAVEL = register("block.undergarden_portal_travel");
 
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
 

@@ -2,8 +2,10 @@ package quek.undergarden.world;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.TeleportationRepositioner;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -21,6 +23,7 @@ import quek.undergarden.block.UndergardenPortalBlock;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGPointOfInterests;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
@@ -200,12 +203,12 @@ public class UGTeleporter implements ITeleporter {
         }
         else {
             Direction.Axis portalAxis = this.world.getBlockState(entity.portalEntrancePos).getOptionalValue(UndergardenPortalBlock.AXIS).orElse(Direction.Axis.X);
-            Optional<TeleportationRepositioner.Result> makePortal = this.makePortal(pos, portalAxis);
-            if (!makePortal.isPresent()) {
-                //LOGGER.error("Unable to create a portal, likely target out of worldborder");
-            }
-
-            return makePortal;
+            return this.makePortal(pos, portalAxis);
         }
+    }
+
+    @Override
+    public boolean playTeleportSound(ServerPlayerEntity player, ServerWorld sourceWorld, ServerWorld destWorld) {
+        return false;
     }
 }

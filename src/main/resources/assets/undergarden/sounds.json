@@ -103,16 +103,22 @@
       "undergarden:ambient/moods/abyss_mood_2"
     ]
   },
-  "ambient.undergarden_portal_ambient": {
-    "subtitle": "subtitles.ambient.undergarden_portal_ambient",
+  "block.undergarden_portal_ambient": {
+    "subtitle": "subtitles.block.undergarden_portal_ambient",
     "sounds": [
-      "undergarden:ambient/undergarden_portal_ambient"
+      "undergarden:block/undergarden_portal_ambient"
     ]
   },
   "item.undergarden_portal_activate": {
     "subtitle": "subtitles.item.undergarden_portal_activate",
     "sounds": [
       "undergarden:item/undergarden_portal_activate"
+    ]
+  },
+  "block.undergarden_portal_travel": {
+    "subtitle": "subtitles.block.undergarden_portal_travel",
+    "sounds": [
+      "undergarden:block/undergarden_portal_travel"
     ]
   },
   "music.undergarden_music": {
