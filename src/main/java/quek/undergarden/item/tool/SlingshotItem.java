@@ -5,10 +5,16 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
+import net.minecraft.item.ShootableItem;
+import net.minecraft.item.UseAction;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -28,11 +34,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
-import net.minecraft.item.Item.Properties;
-
 public class SlingshotItem extends ShootableItem {
-
-    public static final Predicate<ItemStack> SLINGSHOT_AMMO = (stack) -> stack.getItem() == UGItems.DEPTHROCK_PEBBLE.get();
 
     public SlingshotItem() {
         super(new Properties()
@@ -51,7 +53,7 @@ public class SlingshotItem extends ShootableItem {
 
     @Override
     public Predicate<ItemStack> getAllSupportedProjectiles() {
-        return SLINGSHOT_AMMO;
+        return (stack) -> stack.getItem() == UGItems.DEPTHROCK_PEBBLE.get();
     }
 
     @Override
