@@ -118,7 +118,7 @@ public class UGItems {
     public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utheric_boots", () -> new UndergardenArmorItem(UGArmors.UTHERIC, EquipmentSlotType.FEET));
 
     //foods
-    public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopvineItem::new);
+    public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopfruitItem::new);
     public static final RegistryObject<Item> UNDERBEANS = ITEMS.register("underbeans", () -> new BlockNamedItem(
             UGBlocks.UNDERBEAN_BUSH.get(), (new Item.Properties()).tab(UGItemGroups.GROUP).food(UGFoods.UNDERBEANS)));
     public static final RegistryObject<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new BlockNamedItem(

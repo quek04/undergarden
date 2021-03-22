@@ -16,7 +16,7 @@ public class UGFoods {
     public static final Food GOO_BALL = (new Food.Builder().nutrition(0).saturationMod(0).alwaysEat().effect(() -> new EffectInstance(UGEffects.GOOEY.get(), 600, 0, false, true), 1.0F).build());
     public static final Food RAW_GWIBLING = (new Food.Builder()).nutrition(2).saturationMod(0.1F).build();
     public static final Food COOKED_GWIBLING = (new Food.Builder()).nutrition(5).saturationMod(0.6F).build();
-    public static final Food DROOPVINE = (new Food.Builder()).nutrition(1).saturationMod(1).effect(() -> new EffectInstance(Effects.GLOWING, 600, 0, false, true), 1.0F).build();
+    public static final Food DROOPFRUIT = (new Food.Builder()).nutrition(1).saturationMod(1).effect(() -> new EffectInstance(Effects.GLOWING, 600, 0, false, true), 1.0F).build();
     public static final Food BLOODY = (new Food.Builder())
             .nutrition(4)
             .saturationMod(0.4F)
