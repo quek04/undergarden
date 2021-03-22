@@ -40,7 +40,7 @@ public class BruteEntity extends AnimalEntity implements IMob, IAngerable {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 2.0F, false));
-        this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, Ingredient.of(UGItems.DROOPVINE.get()), false));
+        this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, Ingredient.of(UGItems.DROOPFRUIT.get()), false));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
@@ -112,6 +112,6 @@ public class BruteEntity extends AnimalEntity implements IMob, IAngerable {
 
     @Override
     public boolean isFood(ItemStack stack) {
-        return Ingredient.of(UGItems.DROOPVINE.get()).test(stack);
+        return Ingredient.of(UGItems.DROOPFRUIT.get()).test(stack);
     }
 }

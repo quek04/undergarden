@@ -6,7 +6,6 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.criterion.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.DoorBlock;
-import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.data.loot.BlockLootTables;
@@ -156,8 +155,8 @@ public class UGLootTables extends LootTableProvider {
             this.add(UGBlocks.IRON_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(Items.IRON_NUGGET).apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F))).apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
             this.add(UGBlocks.GOLD_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(Items.GOLD_NUGGET).apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F))).apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
             dropWithFortune(UGBlocks.DIAMOND_ORE, Items.DIAMOND);
-            dropOther(UGBlocks.DROOPVINE_TOP, UGItems.DROOPVINE.get());
-            dropOther(UGBlocks.DROOPVINE, UGItems.DROOPVINE.get());
+            dropOther(UGBlocks.DROOPVINE_TOP, UGItems.DROOPFRUIT.get());
+            dropOther(UGBlocks.DROOPVINE, UGItems.DROOPFRUIT.get());
             dropSelf(UGBlocks.SMOGSTEM_FENCE_GATE);
             dropSelf(UGBlocks.WIGGLEWOOD_FENCE_GATE);
             dropSelf(UGBlocks.COARSE_DEEPSOIL);

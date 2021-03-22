@@ -120,6 +120,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GLOWING_KELP, "Glitterkelp");
         addBlock(UGBlocks.GLOWING_KELP_PLANT, "Glitterkelp");
         addBlock(UGBlocks.DROOPVINE_TOP, "Droopvine");
+        addBlock(UGBlocks.DROOPVINE, "Droopvine");
 
         addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
         addBlock(UGBlocks.INDIGO_MUSHROOM_CAP, "Indigo Mushroom Cap");
@@ -287,6 +288,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.UTHERIUM_LEGGINGS, "Utherium Leggings");
         addItem(UGItems.UTHERIUM_BOOTS, "Utherium Boots");
 
+        addItem(UGItems.DROOPFRUIT, "Droopfruit");
         addItem(UGItems.UNDERBEANS, "Underbeans");
         addItem(UGItems.BLISTERBERRY, "Blisterberry");
         addItem(UGItems.GLOOMGOURD_PIE, "Gloomgourd Pie");

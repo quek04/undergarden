@@ -168,10 +168,10 @@ public class Undergarden {
 			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.GLOOMGOURD.get().asItem(), UGPotions.VIRULENT_RESISTANCE.get());
 			PotionBrewing.addMix(UGPotions.VIRULENT_RESISTANCE.get(), Items.REDSTONE, UGPotions.LONG_VIRULENT_RESISTANCE.get());
 
-			PotionBrewing.addMix(Potions.AWKWARD, UGItems.DROOPVINE.get(), UGPotions.GLOWING.get());
+			PotionBrewing.addMix(Potions.AWKWARD, UGItems.DROOPFRUIT.get(), UGPotions.GLOWING.get());
 			PotionBrewing.addMix(UGPotions.GLOWING.get(), Items.REDSTONE, UGPotions.LONG_GLOWING.get());
 
-			ComposterBlock.add(0.1F, UGItems.DROOPVINE.get());
+			ComposterBlock.add(0.1F, UGItems.DROOPFRUIT.get());
 			ComposterBlock.add(0.1F, UGItems.UNDERBEANS.get());
 			ComposterBlock.add(0.2F, UGItems.BLISTERBERRY.get());
 			ComposterBlock.add(0.3F, UGItems.GLOOMGOURD_SEEDS.get());

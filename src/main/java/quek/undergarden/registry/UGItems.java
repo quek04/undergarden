@@ -56,7 +56,6 @@ public class UGItems {
     public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", GooBallItem::new);
     public static final RegistryObject<Item> ROTTEN_BLISTERBERRY = ITEMS.register("rotten_blisterberry", RottenBlisterberryItem::new);
     public static final RegistryObject<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
-    public static final RegistryObject<Item> DROOPVINE = ITEMS.register("droopvine_item", DroopvineItem::new);
     public static final RegistryObject<Item> CARVED_GLOOMGOURD = ITEMS.register("carved_gloomgourd", CarvedGloomgourdItem::new);
 
     //boss loot
@@ -119,6 +118,7 @@ public class UGItems {
     public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utheric_boots", () -> new UndergardenArmorItem(UGArmors.UTHERIC, EquipmentSlotType.FEET));
 
     //foods
+    public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopvineItem::new);
     public static final RegistryObject<Item> UNDERBEANS = ITEMS.register("underbeans", () -> new BlockNamedItem(
             UGBlocks.UNDERBEAN_BUSH.get(), (new Item.Properties()).tab(UGItemGroups.GROUP).food(UGFoods.UNDERBEANS)));
     public static final RegistryObject<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new BlockNamedItem(

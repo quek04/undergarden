@@ -155,7 +155,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.GOO_BALL);
         normalItem(UGItems.ROTTEN_BLISTERBERRY);
         normalItem(UGItems.BLISTERBOMB);
-        normalItem(UGItems.DROOPVINE);
+        normalItem(UGItems.DROOPFRUIT);
 
         toolItem(UGItems.CLOGGRUM_SWORD);
         toolItem(UGItems.CLOGGRUM_PICKAXE);
