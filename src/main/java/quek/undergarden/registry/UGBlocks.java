@@ -103,7 +103,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> DEPTHROCK_PEBBLES = BLOCKS.register("depthrock_pebbles", () -> new DepthrockPebblesBlock(AbstractBlock.Properties.of(Material.PLANT).sound(SoundType.BASALT).noOcclusion().noCollission().strength(0F)));
     public static final RegistryObject<GlowingKelpTopBlock> GLOWING_KELP = BLOCKS.register("glowing_kelp", () -> new GlowingKelpTopBlock(AbstractBlock.Properties.copy(Blocks.KELP).lightLevel((state) -> 10)));
     public static final RegistryObject<Block> GLOWING_KELP_PLANT = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(AbstractBlock.Properties.copy(Blocks.KELP_PLANT).lightLevel((state) -> 10)));
-    public static final RegistryObject<Block> DROOPVINE_TOP = BLOCKS.register("droopvine_top", () -> new DroopvineTopBlock(AbstractBlock.Properties.copy(Blocks.WEEPING_VINES).lightLevel((state) -> 10), Direction.DOWN, false, 0.1D));
+    public static final RegistryObject<Block> DROOPVINE_TOP = BLOCKS.register("droopvine_top", () -> new DroopvineTopBlock(AbstractBlock.Properties.copy(Blocks.WEEPING_VINES).noDrops(), Direction.DOWN, false, 0.1D));
     public static final RegistryObject<Block> DROOPVINE = BLOCKS.register("droopvine", () -> new DroopvineBlock(AbstractBlock.Properties.copy(Blocks.WEEPING_VINES_PLANT).lightLevel(DroopvineBlock.glowIfGlowy()), Direction.DOWN, false));
 
     //mushroom

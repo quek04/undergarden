@@ -21,10 +21,7 @@ import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import quek.undergarden.block.BlisterberryBushBlock;
-import quek.undergarden.block.DitchbulbBlock;
-import quek.undergarden.block.UGDoublePlantBlock;
-import quek.undergarden.block.UnderbeanBushBlock;
+import quek.undergarden.block.*;
 import quek.undergarden.data.provider.UGBlockLootTableProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
@@ -70,16 +67,15 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.DEPTHROCK);
             dropSelf(UGBlocks.DEEPSOIL);
             dropWithSilk(UGBlocks.DEEPSOIL_FARMLAND, UGBlocks.DEEPSOIL);
-            this.add(UGBlocks.UNDERBEAN_BUSH.get(),
-                    LootTable.lootTable().withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.UNDERBEAN_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UnderbeanBushBlock.AGE, 3))).add(ItemLootEntry.lootTableItem(UGItems.UNDERBEANS.get())).apply(SetCount.setCount(RandomValueRange.between(2.0F, 3.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))).withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.UNDERBEAN_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UnderbeanBushBlock.AGE, 2))).add(ItemLootEntry.lootTableItem(UGItems.UNDERBEANS.get())).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
-            this.add(UGBlocks.BLISTERBERRY_BUSH.get(),
-                    LootTable.lootTable()
-                            .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 3))).add(ItemLootEntry.lootTableItem(UGItems.BLISTERBERRY.get())).apply(SetCount.setCount(RandomValueRange.between(2.0F, 3.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-                            .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 2))).add(ItemLootEntry.lootTableItem(UGItems.BLISTERBERRY.get())).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-                            .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 3))).add(ItemLootEntry.lootTableItem(UGItems.ROTTEN_BLISTERBERRY.get())).apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-                            .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 2))).add(ItemLootEntry.lootTableItem(UGItems.ROTTEN_BLISTERBERRY.get())).apply(SetCount.setCount(RandomValueRange.between(0.0F, 1.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
-            this.add(UGBlocks.DITCHBULB_PLANT.get(),
-                    LootTable.lootTable()
+            this.add(UGBlocks.UNDERBEAN_BUSH.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.UNDERBEAN_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UnderbeanBushBlock.AGE, 3))).add(ItemLootEntry.lootTableItem(UGItems.UNDERBEANS.get())).apply(SetCount.setCount(RandomValueRange.between(2.0F, 3.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+                    .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.UNDERBEAN_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UnderbeanBushBlock.AGE, 2))).add(ItemLootEntry.lootTableItem(UGItems.UNDERBEANS.get())).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
+            this.add(UGBlocks.BLISTERBERRY_BUSH.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 3))).add(ItemLootEntry.lootTableItem(UGItems.BLISTERBERRY.get())).apply(SetCount.setCount(RandomValueRange.between(2.0F, 3.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+                    .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 2))).add(ItemLootEntry.lootTableItem(UGItems.BLISTERBERRY.get())).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+                    .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 3))).add(ItemLootEntry.lootTableItem(UGItems.ROTTEN_BLISTERBERRY.get())).apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+                    .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 2))).add(ItemLootEntry.lootTableItem(UGItems.ROTTEN_BLISTERBERRY.get())).apply(SetCount.setCount(RandomValueRange.between(0.0F, 1.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
+            this.add(UGBlocks.DITCHBULB_PLANT.get(), LootTable.lootTable()
                     .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.DITCHBULB_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DitchbulbBlock.AGE, 1))).add(ItemLootEntry.lootTableItem(UGItems.DITCHBULB.get())).apply(SetCount.setCount(ConstantRange.exactly(1))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
             );
             dropWithSilk(UGBlocks.DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
@@ -155,8 +151,10 @@ public class UGLootTables extends LootTableProvider {
             this.add(UGBlocks.IRON_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(Items.IRON_NUGGET).apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F))).apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
             this.add(UGBlocks.GOLD_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(Items.GOLD_NUGGET).apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F))).apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
             dropWithFortune(UGBlocks.DIAMOND_ORE, Items.DIAMOND);
-            dropOther(UGBlocks.DROOPVINE_TOP, UGItems.DROOPFRUIT.get());
             dropOther(UGBlocks.DROOPVINE, UGItems.DROOPFRUIT.get());
+            this.add(UGBlocks.DROOPVINE.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.DROOPVINE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DroopvineBlock.GLOWY, true))).add(ItemLootEntry.lootTableItem(UGItems.DROOPFRUIT.get())).apply(SetCount.setCount(ConstantRange.exactly(1))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+            );
             dropSelf(UGBlocks.SMOGSTEM_FENCE_GATE);
             dropSelf(UGBlocks.WIGGLEWOOD_FENCE_GATE);
             dropSelf(UGBlocks.COARSE_DEEPSOIL);
