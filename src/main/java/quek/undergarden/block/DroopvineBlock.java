@@ -22,20 +22,12 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     public DroopvineBlock(Properties properties, Direction growthDirection, boolean waterloggable) {
         super(properties, growthDirection, SHAPE, waterloggable);
-        this.registerDefaultState(this.stateDefinition.any().setValue(GLOWY, randomTorF()));
-    }
-
-    public static ToIntFunction<BlockState> glowIfGlowy() {
-        return (state) -> state.getValue(GLOWY) ? 10 : 0;
-    }
-
-    public static boolean randomTorF() {
-        return new Random().nextInt(5) == 1;
+        this.registerDefaultState(this.stateDefinition.any().setValue(GLOWY, false));
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.defaultBlockState().setValue(GLOWY, randomTorF());
+        return this.defaultBlockState().setValue(GLOWY, context.getPlayer().getRandom().nextBoolean());
     }
 
     @Override

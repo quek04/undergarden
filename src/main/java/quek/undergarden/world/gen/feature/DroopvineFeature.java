@@ -95,7 +95,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
                     break;
                 }
 
-                world.setBlock(posMutable, UGBlocks.DROOPVINE.get().defaultBlockState().setValue(DroopvineBlock.GLOWY, DroopvineBlock.randomTorF()), 2);
+                world.setBlock(posMutable, UGBlocks.DROOPVINE.get().defaultBlockState().setValue(DroopvineBlock.GLOWY, world.getRandom().nextBoolean()), 2);
             }
 
             posMutable.move(Direction.DOWN);
