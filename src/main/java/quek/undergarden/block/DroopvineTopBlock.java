@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class DroopvineTopBlock extends AbstractTopPlantBlock {
 
-    public static final VoxelShape SHAPE = Block.box(1.0D, 1.0D, 1.0D, 16.0D, 16.0D, 16.0D);
+    protected static final VoxelShape SHAPE = Block.box(4.0D, 5.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
     public DroopvineTopBlock(Properties properties, Direction direction, boolean waterloggable, double growthChance) {
         super(properties, direction, SHAPE, waterloggable, growthChance);

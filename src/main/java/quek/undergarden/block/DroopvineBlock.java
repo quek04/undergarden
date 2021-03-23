@@ -18,7 +18,7 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     public static final BooleanProperty GLOWY = BooleanProperty.create("glowy");
 
-    public static final VoxelShape SHAPE = Block.box(1.0D, 1.0D, 1.0D, 16.0D, 16.0D, 16.0D);
+    public static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
     public DroopvineBlock(Properties properties, Direction growthDirection, boolean waterloggable) {
         super(properties, growthDirection, SHAPE, waterloggable);
