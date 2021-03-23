@@ -27,7 +27,7 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.defaultBlockState().setValue(GLOWY, context.getPlayer().getRandom().nextBoolean());
+        return this.defaultBlockState().setValue(GLOWY, context.getLevel().getRandom().nextBoolean());
     }
 
     @Override
