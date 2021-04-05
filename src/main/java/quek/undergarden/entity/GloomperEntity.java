@@ -31,6 +31,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGParticleTypes;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
@@ -262,7 +263,7 @@ public class GloomperEntity extends AnimalEntity {
     public boolean hurt(DamageSource source, float amount) {
         AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(this.level, this.getX(), this.getY(), this.getZ());
 
-        cloud.setParticle(ParticleTypes.DRAGON_BREATH);
+        cloud.setParticle(UGParticleTypes.GLOOMPER_FART.get());
         cloud.setRadius(3.0F);
         cloud.setRadiusOnUse(-0.5F);
         cloud.setWaitTime(10);
