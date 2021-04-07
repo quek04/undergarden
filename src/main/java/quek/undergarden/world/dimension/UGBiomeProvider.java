@@ -17,6 +17,8 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import net.minecraft.world.biome.provider.NetherBiomeProvider.DefaultBuilder;
+
 public class UGBiomeProvider extends NetherBiomeProvider {
 
     public static final MapCodec<NetherBiomeProvider> PACKET_CODEC = RecordCodecBuilder.mapCodec(
@@ -28,24 +30,24 @@ public class UGBiomeProvider extends NetherBiomeProvider {
                             (biomeAttributes) -> biomeAttributes.group(
                                     Biome.Attributes.CODEC.fieldOf("parameters")
                                             .forGetter(Pair::getFirst),
-                                    Biome.BIOME_CODEC.fieldOf("biome")
+                                    Biome.CODEC.fieldOf("biome")
                                             .forGetter(Pair::getSecond))
                                     .apply(biomeAttributes, Pair::of))
                             .listOf().fieldOf("biomes")
-                            .forGetter((netherProvider) -> netherProvider.biomeAttributes),
+                            .forGetter((netherProvider) -> netherProvider.parameters),
                     NetherBiomeProvider.Noise.CODEC.fieldOf("temperature_noise")
-                            .forGetter((netherProvider) -> netherProvider.temperatureNoise),
+                            .forGetter((netherProvider) -> netherProvider.temperatureParams),
                     NetherBiomeProvider.Noise.CODEC.fieldOf("humidity_noise")
-                            .forGetter((netherProvider) -> netherProvider.humidityNoise),
+                            .forGetter((netherProvider) -> netherProvider.humidityParams),
                     NetherBiomeProvider.Noise.CODEC.fieldOf("altitude_noise")
-                            .forGetter((netherProvider) -> netherProvider.altitudeNoise),
+                            .forGetter((netherProvider) -> netherProvider.altitudeParams),
                     NetherBiomeProvider.Noise.CODEC.fieldOf("weirdness_noise")
-                            .forGetter((netherProvider) -> netherProvider.weirdnessNoise))
+                            .forGetter((netherProvider) -> netherProvider.weirdnessParams))
                     .apply(instance, NetherBiomeProvider::new));
 
     public static final Codec<NetherBiomeProvider> CODEC = Codec.mapEither(DefaultBuilder.CODEC, PACKET_CODEC).xmap((either) ->
-            either.map(DefaultBuilder::build, Function.identity()), (netherProvider) ->
-            netherProvider.getDefaultBuilder().map(Either::<DefaultBuilder, NetherBiomeProvider>left).orElseGet(() ->
+            either.map(DefaultBuilder::biomeSource, Function.identity()), (netherProvider) ->
+            netherProvider.preset().map(Either::<DefaultBuilder, NetherBiomeProvider>left).orElseGet(() ->
                     Either.right(netherProvider))).codec();
 
     private UGBiomeProvider(long seed, List<Pair<Biome.Attributes, Supplier<Biome>>> biomeAttributes, Optional<Pair<Registry<Biome>, NetherBiomeProvider.Preset>> netherProviderPreset) {
@@ -53,13 +55,13 @@ public class UGBiomeProvider extends NetherBiomeProvider {
     }
 
     @Override
-    protected Codec<? extends BiomeProvider> getBiomeProviderCodec() {
+    protected Codec<? extends BiomeProvider> codec() {
         return CODEC;
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public BiomeProvider getBiomeProvider(long seed) {
-        return new UGBiomeProvider(seed, this.biomeAttributes, this.netherProviderPreset);
+    public BiomeProvider withSeed(long seed) {
+        return new UGBiomeProvider(seed, this.parameters, this.preset);
     }
 }

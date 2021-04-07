@@ -19,49 +19,49 @@ public class MinionModel<T extends MinionEntity> extends SegmentedModel<T> {
 	private final ModelRenderer rightLeg2;
 
 	public MinionModel() {
-		textureWidth = 64;
-		textureHeight = 64;
+		texWidth = 64;
+		texHeight = 64;
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(0.0F, 10.0F, 0.0F);
-		head.setTextureOffset(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
-		head.setTextureOffset(27, 19).addBox(-1.0F, 1.0F, -7.0F, 2.0F, 2.0F, 3.0F, 0.0F, false);
+		head.setPos(0.0F, 10.0F, 0.0F);
+		head.texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
+		head.texOffs(27, 19).addBox(-1.0F, 1.0F, -7.0F, 2.0F, 2.0F, 3.0F, 0.0F, false);
 
 		body = new ModelRenderer(this);
-		body.setRotationPoint(0.0F, 17.5F, 0.0F);
-		body.setTextureOffset(0, 16).addBox(-3.0F, -3.5F, -3.0F, 6.0F, 7.0F, 6.0F, 0.0F, false);
+		body.setPos(0.0F, 17.5F, 0.0F);
+		body.texOffs(0, 16).addBox(-3.0F, -3.5F, -3.0F, 6.0F, 7.0F, 6.0F, 0.0F, false);
 
 		leftLeg1 = new ModelRenderer(this);
-		leftLeg1.setRotationPoint(2.0F, 21.0F, -2.0F);
-		leftLeg1.setTextureOffset(18, 16).addBox(0.0F, 0.0F, -3.0F, 3.0F, 3.0F, 3.0F, 0.0F, true);
+		leftLeg1.setPos(2.0F, 21.0F, -2.0F);
+		leftLeg1.texOffs(18, 16).addBox(0.0F, 0.0F, -3.0F, 3.0F, 3.0F, 3.0F, 0.0F, true);
 
 		leftLeg2 = new ModelRenderer(this);
-		leftLeg2.setRotationPoint(2.0F, 21.0F, 2.0F);
-		leftLeg2.setTextureOffset(18, 16).addBox(0.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F, 0.0F, true);
+		leftLeg2.setPos(2.0F, 21.0F, 2.0F);
+		leftLeg2.texOffs(18, 16).addBox(0.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F, 0.0F, true);
 
 		rightLeg1 = new ModelRenderer(this);
-		rightLeg1.setRotationPoint(-2.0F, 21.0F, -2.0F);
-		rightLeg1.setTextureOffset(18, 16).addBox(-3.0F, 0.0F, -3.0F, 3.0F, 3.0F, 3.0F, 0.0F, false);
+		rightLeg1.setPos(-2.0F, 21.0F, -2.0F);
+		rightLeg1.texOffs(18, 16).addBox(-3.0F, 0.0F, -3.0F, 3.0F, 3.0F, 3.0F, 0.0F, false);
 
 		rightLeg2 = new ModelRenderer(this);
-		rightLeg2.setRotationPoint(-2.0F, 21.0F, 2.0F);
-		rightLeg2.setTextureOffset(18, 16).addBox(-3.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F, 0.0F, false);
+		rightLeg2.setPos(-2.0F, 21.0F, 2.0F);
+		rightLeg2.texOffs(18, 16).addBox(-3.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F, 0.0F, false);
 	}
 
 	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
+		this.head.xRot = headPitch * ((float)Math.PI / 180F);
 
-		this.leftLeg1.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.leftLeg2.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.leftLeg1.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftLeg2.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 
-		this.rightLeg1.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.rightLeg2.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightLeg1.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightLeg2.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 	}
 
 	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
 		head.render(matrixStack, buffer, packedLight, packedOverlay);
 		body.render(matrixStack, buffer, packedLight, packedOverlay);
 		leftLeg1.render(matrixStack, buffer, packedLight, packedOverlay);
@@ -71,13 +71,13 @@ public class MinionModel<T extends MinionEntity> extends SegmentedModel<T> {
 	}
 
 	@Override
-	public Iterable<ModelRenderer> getParts() {
+	public Iterable<ModelRenderer> parts() {
 		return ImmutableList.of(head, body, leftLeg1, leftLeg2, rightLeg1, rightLeg2);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
+		modelRenderer.xRot = x;
+		modelRenderer.yRot = y;
+		modelRenderer.zRot = z;
 	}
 }

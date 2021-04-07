@@ -5,11 +5,11 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 
 public class UGSoundEvents {
 
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, UGMod.MODID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Undergarden.MODID);
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_AMBIENCE = register("ambient.undergarden_ambience");
     public static final RegistryObject<SoundEvent> ABYSS_AMBIENCE = register("ambient.abyss_ambience");
@@ -33,8 +33,9 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> RELICT_DISC = register("music.disc.relict");
     public static final RegistryObject<SoundEvent> GLOOMPER_ANTHEM_DISC = register("music.disc.gloomper_anthem");
 
-    public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_AMBIENT = register("ambient.undergarden_portal_ambient");
+    public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_AMBIENT = register("block.undergarden_portal_ambient");
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_ACTIVATE = register("item.undergarden_portal_activate");
+    public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_TRAVEL = register("block.undergarden_portal_travel");
 
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
 
@@ -94,7 +95,12 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> MUNCHER_DEATH = register("entity.muncher_death");
     public static final RegistryObject<SoundEvent> MUNCHER_CHEW = register("entity.muncher_chew");
 
+    public static final RegistryObject<SoundEvent> SPLOOGIE_LIVING = register("entity.sploogie_living");
+    public static final RegistryObject<SoundEvent> SPLOOGIE_HURT = register("entity.sploogie_hurt");
+    public static final RegistryObject<SoundEvent> SPLOOGIE_DEATH = register("entity.sploogie_death");
+    public static final RegistryObject<SoundEvent> SPLOOGIE_SPIT = register("entity.sploogie_spit");
+
     private static RegistryObject<SoundEvent> register(String name) {
-        return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(UGMod.MODID, name)));
+        return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Undergarden.MODID, name)));
     }
 }

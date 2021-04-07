@@ -28,16 +28,16 @@ import java.util.function.Supplier;
 
 @OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT)
-public class ClientStuff {
+public class UndergardenClient {
 
     private static void render(Supplier<? extends Block> block, RenderType render) {
         RenderTypeLookup.setRenderLayer(block.get(), render);
     }
 
     public static void registerBlockRenderers() {
-        RenderType cutout = RenderType.getCutout();
-        RenderType mipped = RenderType.getCutoutMipped();
-        RenderType translucent = RenderType.getTranslucent();
+        RenderType cutout = RenderType.cutout();
+        RenderType mipped = RenderType.cutoutMipped();
+        RenderType translucent = RenderType.translucent();
 
         render(UGBlocks.DEEPTURF_BLOCK, mipped);
         render(UGBlocks.DEEPTURF, cutout);
@@ -120,7 +120,7 @@ public class ClientStuff {
         BlockColors colors = Minecraft.getInstance().getBlockColors();
 
         colors.register((state, world, pos, tint) ->
-                        world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : new Color(91, 117, 91).getRGB(),
+                        world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : new Color(91, 117, 91).getRGB(),
                 UGBlocks.DEEPTURF_BLOCK.get(),
                 UGBlocks.DEEPTURF.get(),
                 UGBlocks.SHIMMERWEED.get(),
@@ -142,7 +142,7 @@ public class ClientStuff {
         BlockColors bColors = Minecraft.getInstance().getBlockColors();
         ItemColors iColors = Minecraft.getInstance().getItemColors();
 
-        iColors.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), null, null, 0),
+        iColors.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().defaultBlockState(), null, null, 0),
                 UGBlocks.DEEPTURF_BLOCK.get(),
                 UGBlocks.DEEPTURF.get(),
                 UGBlocks.SHIMMERWEED.get(),
@@ -164,10 +164,10 @@ public class ClientStuff {
 
     @SubscribeEvent
     public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
-        ActiveRenderInfo info = Minecraft.getInstance().gameRenderer.getActiveRenderInfo();
-        FluidState fluidState = info.getFluidState();
+        ActiveRenderInfo info = Minecraft.getInstance().gameRenderer.getMainCamera();
+        FluidState fluidState = info.getFluidInCamera();
 
-        if(fluidState.getFluid() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getFluid() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
+        if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
             event.setRed(57 / 255F);
             event.setGreen(25 / 255F);
             event.setBlue(80 / 255F);
@@ -176,10 +176,10 @@ public class ClientStuff {
 
     @SubscribeEvent
     public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
-        ActiveRenderInfo info = Minecraft.getInstance().gameRenderer.getActiveRenderInfo();
-        FluidState fluidState = info.getFluidState();
+        ActiveRenderInfo info = Minecraft.getInstance().gameRenderer.getMainCamera();
+        FluidState fluidState = info.getFluidInCamera();
 
-        if(fluidState.getFluid() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getFluid() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
+        if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
             event.setDensity(1.5F);
             event.setCanceled(true);
         }

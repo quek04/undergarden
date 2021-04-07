@@ -1,6 +1,5 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallTorchBlock;
 import net.minecraft.particles.ParticleTypes;
@@ -18,7 +17,7 @@ import java.util.Random;
 
 public class ShardWallTorchBlock extends WallTorchBlock {
 
-    public ShardWallTorchBlock(AbstractBlock.Properties properties) {
+    public ShardWallTorchBlock(Properties properties) {
         super(properties, ParticleTypes.FLAME);
     }
 
@@ -35,12 +34,12 @@ public class ShardWallTorchBlock extends WallTorchBlock {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        Direction direction = stateIn.get(HORIZONTAL_FACING);
+        Direction direction = stateIn.getValue(FACING);
         double x = (double)pos.getX() + 0.5D;
         double y = (double)pos.getY() + 0.7D;
         double z = (double)pos.getZ() + 0.5D;
         Direction oppositeDirection = direction.getOpposite();
-        worldIn.addParticle(ParticleTypes.SMOKE, x + 0.27D * (double)oppositeDirection.getXOffset(), y + 0.22D, z + 0.27D * (double)oppositeDirection.getZOffset(), 0.0D, 0.0D, 0.0D);
-        worldIn.addParticle(UGParticleTypes.SHARD.get(), x + 0.27D * (double)oppositeDirection.getXOffset(), y + 0.22D, z + 0.27D * (double)oppositeDirection.getZOffset(), 0.0D, 0.0D, 0.0D);
+        worldIn.addParticle(ParticleTypes.SMOKE, x + 0.27D * (double)oppositeDirection.getStepX(), y + 0.22D, z + 0.27D * (double)oppositeDirection.getStepZ(), 0.0D, 0.0D, 0.0D);
+        worldIn.addParticle(UGParticleTypes.SHARD.get(), x + 0.27D * (double)oppositeDirection.getStepX(), y + 0.22D, z + 0.27D * (double)oppositeDirection.getStepZ(), 0.0D, 0.0D, 0.0D);
     }
 }

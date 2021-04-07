@@ -39,38 +39,38 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
     }
 
     @Override
-    protected void onEntityHit(EntityRayTraceResult result) {
-        super.onEntityHit(result);
+    protected void onHitEntity(EntityRayTraceResult result) {
+        super.onHitEntity(result);
         Entity victim = result.getEntity();
-        victim.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 6.0F);
-        this.playSound(SoundEvents.BLOCK_STONE_BREAK, 1, 1);
-        if (!this.world.isRemote) {
-            this.world.setEntityState(this, (byte) 3);
+        victim.hurt(DamageSource.thrown(this, this.getOwner()), 6.0F);
+        this.playSound(SoundEvents.STONE_BREAK, 1, 1);
+        if (!this.level.isClientSide) {
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove();
         }
     }
 
     @Override
-    protected void func_230299_a_(BlockRayTraceResult result) {
-        super.func_230299_a_(result);
-        BlockState blockstate = this.world.getBlockState(result.getPos());
-        Entity shooter = this.func_234616_v_();
-        if(blockstate.isSolid()) {
-            if(!(shooter instanceof PlayerEntity) || (shooter instanceof PlayerEntity && ((PlayerEntity) shooter).abilities.isCreativeMode)) {
+    protected void onHitBlock(BlockRayTraceResult result) {
+        super.onHitBlock(result);
+        BlockState blockstate = this.level.getBlockState(result.getBlockPos());
+        Entity shooter = this.getOwner();
+        if(blockstate.canOcclude()) {
+            if(!(shooter instanceof PlayerEntity) || (shooter instanceof PlayerEntity && ((PlayerEntity) shooter).abilities.instabuild)) {
                 //don't drop anything
             } else {
-                this.entityDropItem(new ItemStack(getDefaultItem()));
+                this.spawnAtLocation(new ItemStack(getDefaultItem()));
             }
-            this.playStepSound(result.getPos(), blockstate);
-            if(!this.world.isRemote) {
-                this.world.setEntityState(this, (byte) 3);
+            this.playStepSound(result.getBlockPos(), blockstate);
+            if(!this.level.isClientSide) {
+                this.level.broadcastEntityEvent(this, (byte) 3);
                 this.remove();
             }
         }
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
@@ -86,12 +86,12 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void handleStatusUpdate(byte id) {
+    public void handleEntityEvent(byte id) {
         if (id == 3) {
             IParticleData iparticledata = this.makeParticle();
 
             for(int i = 0; i < 8; ++i) {
-                this.world.addParticle(iparticledata, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
+                this.level.addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }

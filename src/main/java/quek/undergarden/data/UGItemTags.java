@@ -9,7 +9,7 @@ import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 public class UGItemTags extends ItemTagsProvider {
 
     public UGItemTags(DataGenerator dataGenerator, BlockTagsProvider blockTagProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(dataGenerator, blockTagProvider, UGMod.MODID, existingFileHelper);
+        super(dataGenerator, blockTagProvider, Undergarden.MODID, existingFileHelper);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class UGItemTags extends ItemTagsProvider {
     }
 
     @Override
-    protected void registerTags() {
+    protected void addTags() {
         //undergarden
         copy(UGTags.Blocks.MUSHROOMS, UGTags.Items.MUSHROOMS);
         tag(UGTags.Items.CLOGGRUM_ITEMS).add(UGItems.CLOGGRUM_SWORD.get(), UGItems.CLOGGRUM_PICKAXE.get(), UGItems.CLOGGRUM_AXE.get(), UGItems.CLOGGRUM_SHOVEL.get(), UGItems.CLOGGRUM_HOE.get(), UGItems.CLOGGRUM_HELMET.get(), UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.CLOGGRUM_BOOTS.get());
@@ -87,7 +87,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(Tags.Items.STORAGE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get().asItem(), UGBlocks.FROSTSTEEL_BLOCK.get().asItem(), UGBlocks.UTHERIUM_BLOCK.get().asItem(), UGBlocks.REGALIUM_BLOCK.get().asItem(), UGBlocks.FORGOTTEN_BLOCK.get().asItem());
     }
 
-    private TagsProvider.Builder<Item> tag(ITag.INamedTag<Item> tag) {
-        return this.getOrCreateBuilder(tag);
+    protected TagsProvider.Builder<Item> tag(ITag.INamedTag<Item> tag) {
+        return super.tag(tag);
     }
 }

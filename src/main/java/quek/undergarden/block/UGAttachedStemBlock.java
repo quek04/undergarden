@@ -10,23 +10,23 @@ import quek.undergarden.registry.UGItems;
 
 public class UGAttachedStemBlock extends AttachedStemBlock {
 
-    public UGAttachedStemBlock(StemGrownBlock stemGrownBlock, AbstractBlock.Properties properties) {
+    public UGAttachedStemBlock(StemGrownBlock stemGrownBlock, Properties properties) {
         super(stemGrownBlock, properties);
     }
 
     @Override
-    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.getBlock() == UGBlocks.DEEPSOIL_FARMLAND.get();
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockpos = pos.down();
-        return isValidGround(worldIn.getBlockState(blockpos), worldIn, blockpos);
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        BlockPos blockpos = pos.below();
+        return mayPlaceOn(worldIn.getBlockState(blockpos), worldIn, blockpos);
     }
 
     @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(IBlockReader worldIn, BlockPos pos, BlockState state) {
         return new ItemStack(UGItems.GLOOMGOURD_SEEDS.get());
     }
 }

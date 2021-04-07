@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.StonebornModel;
 import quek.undergarden.client.render.layer.StonebornEyesLayer;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
@@ -19,12 +19,12 @@ public class StonebornRender extends MobRenderer<StonebornEntity, StonebornModel
     }
 
     @Override
-    public ResourceLocation getEntityTexture(StonebornEntity entity) {
-        return new ResourceLocation(UGMod.MODID, "textures/entity/stoneborn.png");
+    public ResourceLocation getTextureLocation(StonebornEntity entity) {
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/stoneborn.png");
     }
 
     @Override
-    protected boolean func_230495_a_(StonebornEntity stoneborn) {
+    protected boolean isShaking(StonebornEntity stoneborn) {
         return !stoneborn.inUndergarden();
     }
 }

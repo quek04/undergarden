@@ -26,7 +26,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
 import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
 import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGCriteria;
+import quek.undergarden.registry.UGDimensions;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -36,7 +39,7 @@ import java.util.UUID;
 public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, IMerchant {
 
     protected int timeOutOfUG = 0;
-    private static final RangedInteger ANGER_TIME_RANGE = TickRangeConverter.convertRange(20, 39);
+    private static final RangedInteger ANGER_TIME_RANGE = TickRangeConverter.rangeOfSeconds(20, 39);
     private int angerTime;
     private UUID targetUuid;
     @Nullable
@@ -46,7 +49,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
 
     public StonebornEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
-        this.stepHeight = 1.0F;
+        this.maxUpStep = 1.0F;
     }
 
     @Override
@@ -57,20 +60,21 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         this.goalSelector.addGoal(3, new LookAtGoal(this, LivingEntity.class, 32.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0D, true));
-        this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)).setCallsForHelp());
+
+        this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)).setAlertOthers());
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 50.0D)
-                .createMutableAttribute(Attributes.ARMOR, 10.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D)
-                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
+        return MonsterEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 50.0D)
+                .add(Attributes.ARMOR, 10.0D)
+                .add(Attributes.ATTACK_DAMAGE, 10.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
     }
 
     public static boolean canStonebornSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextInt(10) == 0 && canSpawnOn(type, worldIn, reason, pos, randomIn);
+        return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextInt(10) == 0 && checkMobSpawnRules(type, worldIn, reason, pos, randomIn);
     }
 
     @Override
@@ -112,21 +116,21 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public ActionResultType func_230254_b_(PlayerEntity player, Hand playerHand) {
-        ItemStack itemstack = player.getHeldItem(playerHand);
+    public ActionResultType mobInteract(PlayerEntity player, Hand playerHand) {
+        ItemStack itemstack = player.getItemInHand(playerHand);
         if (itemstack.getItem() != UGItems.STONEBORN_SPAWN_EGG.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
             if (this.getOffers().isEmpty()) {
-                return ActionResultType.func_233537_a_(this.world.isRemote);
+                return ActionResultType.sidedSuccess(this.level.isClientSide);
             } else {
-                if (!this.world.isRemote) {
-                    this.setCustomer(player);
-                    this.openMerchantContainer(player, this.getDisplayName(), 1);
+                if (!this.level.isClientSide) {
+                    this.setTradingPlayer(player);
+                    this.openTradingScreen(player, this.getDisplayName(), 1);
                 }
 
-                return ActionResultType.func_233537_a_(this.world.isRemote);
+                return ActionResultType.sidedSuccess(this.level.isClientSide);
             }
         } else {
-            return super.func_230254_b_(player, playerHand);
+            return super.mobInteract(player, playerHand);
         }
     }
 
@@ -135,7 +139,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         super.tick();
         if (!this.inUndergarden()) {
             ++this.timeOutOfUG;
-            this.addPotionEffect(new EffectInstance(Effects.NAUSEA, 300, 0));
+            this.addEffect(new EffectInstance(Effects.CONFUSION, 300, 0));
         }
         else {
             this.timeOutOfUG = 0;
@@ -144,69 +148,69 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         if (this.timeOutOfUG > 300) {
             this.playSound(UGSoundEvents.STONEBORN_CHANT.get(), 1.0F, 1.0F);
             this.remove();
-            if (!this.world.isRemote) {
-                Explosion.Mode explosionType = this.world.getGameRules().getBoolean(GameRules.MOB_GRIEFING) ? Explosion.Mode.BREAK : Explosion.Mode.NONE;
-                this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 3, explosionType);
+            if (!this.level.isClientSide) {
+                Explosion.Mode explosionType = this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) ? Explosion.Mode.BREAK : Explosion.Mode.NONE;
+                this.level.explode(this, this.getX(), this.getY(), this.getZ(), 3, explosionType);
             }
         }
 
         if (!isAggressive()) {
-            if (world.getGameTime() % 40 == 0) {
+            if (level.getGameTime() % 40 == 0) {
                 this.heal(1);
             }
         }
     }
 
     public boolean inUndergarden() {
-        return this.world.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD && !this.isAIDisabled();
+        return this.level.dimension() == UGDimensions.UNDERGARDEN_WORLD && !this.isNoAi();
     }
 
     @Override
-    public void writeAdditional(CompoundNBT nbt) {
-        super.writeAdditional(nbt);
+    public void addAdditionalSaveData(CompoundNBT nbt) {
+        super.addAdditionalSaveData(nbt);
         this.timeOutOfUG = nbt.getInt("timeOutOfUG");
     }
 
     @Override
-    public void readAdditional(CompoundNBT nbt) {
-        super.readAdditional(nbt);
+    public void readAdditionalSaveData(CompoundNBT nbt) {
+        super.readAdditionalSaveData(nbt);
         nbt.putInt("timeOutOfUG", this.timeOutOfUG);
     }
 
     @Override
-    public int getAngerTime() {
+    public int getRemainingPersistentAngerTime() {
         return this.angerTime;
     }
 
     @Override
-    public void setAngerTime(int time) {
+    public void setRemainingPersistentAngerTime(int time) {
         this.angerTime = time;
     }
 
     @Nullable
     @Override
-    public UUID getAngerTarget() {
+    public UUID getPersistentAngerTarget() {
         return this.targetUuid;
     }
 
     @Override
-    public void setAngerTarget(@Nullable UUID target) {
+    public void setPersistentAngerTarget(@Nullable UUID target) {
         this.targetUuid = target;
     }
 
     @Override
-    public void func_230258_H__() {
-        this.setAngerTime(ANGER_TIME_RANGE.getRandomWithinRange(this.rand));
+    public void startPersistentAngerTimer() {
+        this.setRemainingPersistentAngerTime(ANGER_TIME_RANGE.randomValue(this.random));
     }
 
     @Override
-    public void setCustomer(@Nullable PlayerEntity player) {
+    public void setTradingPlayer(@Nullable PlayerEntity player) {
         this.customer = player;
     }
 
     @Nullable
     @Override
-    public PlayerEntity getCustomer() {
+    public PlayerEntity getTradingPlayer() {
         return this.customer;
     }
 
@@ -236,7 +240,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         Set<Integer> set = Sets.newHashSet();
         if (newTrades.length > maxNumbers) {
             while(set.size() < maxNumbers) {
-                set.add(this.rand.nextInt(newTrades.length));
+                set.add(this.random.nextInt(newTrades.length));
             }
         } else {
             for(int i = 0; i < newTrades.length; ++i) {
@@ -246,7 +250,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
 
         for(Integer integer : set) {
             VillagerTrades.ITrade villagertrades$itrade = newTrades[integer];
-            MerchantOffer merchantoffer = villagertrades$itrade.getOffer(this, this.rand);
+            MerchantOffer merchantoffer = villagertrades$itrade.getOffer(this, this.random);
             if (merchantoffer != null) {
                 givenMerchantOffers.add(merchantoffer);
             }
@@ -255,53 +259,53 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void setClientSideOffers(@Nullable MerchantOffers offers) { }
+    public void overrideOffers(@Nullable MerchantOffers offers) { }
 
     @Override
-    public void onTrade(MerchantOffer offer) {
+    public void notifyTrade(MerchantOffer offer) {
         offer.increaseUses();
-        this.livingSoundTime = -this.getTalkInterval();
+        this.ambientSoundTime = -this.getAmbientSoundInterval();
         this.onStonebornTrade(offer);
         if (this.customer instanceof ServerPlayerEntity) {
-            UGCriteria.STONEBORN_TRADE.test((ServerPlayerEntity)this.customer, this, offer.getSellingStack());
+            UGCriteria.STONEBORN_TRADE.test((ServerPlayerEntity)this.customer, this, offer.getResult());
         }
     }
 
     protected void onStonebornTrade(MerchantOffer offer) {
-        if (offer.getDoesRewardExp()) {
-            int i = 3 + this.rand.nextInt(4);
-            this.world.addEntity(new ExperienceOrbEntity(this.world, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), i));
+        if (offer.shouldRewardExp()) {
+            int i = 3 + this.random.nextInt(4);
+            this.level.addFreshEntity(new ExperienceOrbEntity(this.level, this.getX(), this.getY() + 0.5D, this.getZ(), i));
         }
     }
 
     @Override
-    public void verifySellingItem(ItemStack stack) {
-        if (!this.world.isRemote && this.livingSoundTime > -this.getTalkInterval() + 20) {
-            this.livingSoundTime = -this.getTalkInterval();
-            this.playSound(this.getYesOrNoSound(!stack.isEmpty()), this.getSoundVolume(), this.getSoundPitch());
+    public void notifyTradeUpdated(ItemStack stack) {
+        if (!this.level.isClientSide && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
+            this.ambientSoundTime = -this.getAmbientSoundInterval();
+            this.playSound(this.getYesOrNoSound(!stack.isEmpty()), this.getSoundVolume(), this.getVoicePitch());
         }
     }
 
     @Override
-    public World getWorld() {
-        return this.world;
+    public World getLevel() {
+        return this.level;
     }
 
     @Override
-    public int getXp() {
+    public int getVillagerXp() {
         return 0;
     }
 
     @Override
-    public void setXP(int xpIn) { }
+    public void overrideXp(int xpIn) { }
 
     @Override
-    public boolean hasXPBar() {
+    public boolean showProgressBar() {
         return false;
     }
 
     @Override
-    public SoundEvent getYesSound() {
+    public SoundEvent getNotifyTradeSound() {
         return UGSoundEvents.STONEBORN_PLEASED.get();
     }
 }

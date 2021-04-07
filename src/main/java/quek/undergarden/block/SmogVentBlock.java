@@ -14,17 +14,17 @@ import quek.undergarden.registry.UGTileEntities;
 
 public class SmogVentBlock extends Block {
 
-    public SmogVentBlock(AbstractBlock.Properties properties) {
+    public SmogVentBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-        if (!entityIn.isImmuneToFire() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entityIn)) {
-            entityIn.setFire(3);
+    public void stepOn(World worldIn, BlockPos pos, Entity entityIn) {
+        if (!entityIn.fireImmune() && entityIn instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entityIn)) {
+            entityIn.setSecondsOnFire(3);
         }
 
-        super.onEntityWalk(worldIn, pos, entityIn);
+        super.stepOn(worldIn, pos, entityIn);
     }
 
     @Override
@@ -36,5 +36,4 @@ public class SmogVentBlock extends Block {
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return UGTileEntities.SMOG_VENT.get().create();
     }
-
 }

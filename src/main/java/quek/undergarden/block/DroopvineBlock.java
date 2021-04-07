@@ -18,33 +18,25 @@ public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     public static final BooleanProperty GLOWY = BooleanProperty.create("glowy");
 
-    public static final VoxelShape SHAPE = Block.makeCuboidShape(1.0D, 1.0D, 1.0D, 16.0D, 16.0D, 16.0D);
+    public static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
-    public DroopvineBlock(AbstractBlock.Properties properties, Direction growthDirection, boolean waterloggable) {
+    public DroopvineBlock(Properties properties, Direction growthDirection, boolean waterloggable) {
         super(properties, growthDirection, SHAPE, waterloggable);
-        this.setDefaultState(this.stateContainer.getBaseState().with(GLOWY, randomTorF()));
-    }
-
-    public static ToIntFunction<BlockState> glowIfGlowy() {
-        return (state) -> state.get(GLOWY) ? 10 : 0;
-    }
-
-    public static boolean randomTorF() {
-        return new Random().nextInt(5) == 1;
+        this.registerDefaultState(this.stateDefinition.any().setValue(GLOWY, false));
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(GLOWY, randomTorF());
+        return this.defaultBlockState().setValue(GLOWY, context.getLevel().getRandom().nextBoolean());
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(GLOWY);
     }
 
     @Override
-    protected AbstractTopPlantBlock getTopPlantBlock() {
+    protected AbstractTopPlantBlock getHeadBlock() {
         return (AbstractTopPlantBlock) UGBlocks.DROOPVINE_TOP.get();
     }
 

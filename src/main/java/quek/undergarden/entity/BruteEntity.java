@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class BruteEntity extends AnimalEntity implements IMob, IAngerable {
 
-    private static final RangedInteger ANGER_TIME_RANGE = TickRangeConverter.convertRange(20, 39);
+    private static final RangedInteger ANGER_TIME_RANGE = TickRangeConverter.rangeOfSeconds(20, 39);
     private int angerTime;
     private UUID targetUuid;
 
@@ -40,7 +40,7 @@ public class BruteEntity extends AnimalEntity implements IMob, IAngerable {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 2.0F, false));
-        this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, Ingredient.fromItems(UGItems.DROOPVINE.get()), false));
+        this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, Ingredient.of(UGItems.DROOPFRUIT.get()), false));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
@@ -51,14 +51,14 @@ public class BruteEntity extends AnimalEntity implements IMob, IAngerable {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 3.0D);
+        return MobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.23D)
+                .add(Attributes.ATTACK_DAMAGE, 3.0D);
     }
 
     public static boolean canBruteSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.down()).isIn(UGBlocks.DEEPTURF_BLOCK.get());
+        return worldIn.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get());
     }
 
     @Override
@@ -79,39 +79,39 @@ public class BruteEntity extends AnimalEntity implements IMob, IAngerable {
     }
 
     @Override
-    public int getAngerTime() {
+    public int getRemainingPersistentAngerTime() {
         return this.angerTime;
     }
 
     @Override
-    public void setAngerTime(int time) {
+    public void setRemainingPersistentAngerTime(int time) {
         this.angerTime = time;
     }
 
     @Nullable
     @Override
-    public UUID getAngerTarget() {
+    public UUID getPersistentAngerTarget() {
         return this.targetUuid;
     }
 
     @Override
-    public void setAngerTarget(@Nullable UUID target) {
+    public void setPersistentAngerTarget(@Nullable UUID target) {
         this.targetUuid = target;
     }
 
     @Override
-    public void func_230258_H__() {
-        this.setAngerTime(ANGER_TIME_RANGE.getRandomWithinRange(this.rand));
+    public void startPersistentAngerTimer() {
+        this.setRemainingPersistentAngerTime(ANGER_TIME_RANGE.randomValue(this.random));
     }
 
     @Nullable
     @Override
-    public AgeableEntity func_241840_a(ServerWorld world, AgeableEntity entity) {
+    public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
         return UGEntityTypes.BRUTE_TYPE.create(world);
     }
 
     @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return Ingredient.fromItems(UGItems.DROOPVINE.get()).test(stack);
+    public boolean isFood(ItemStack stack) {
+        return Ingredient.of(UGItems.DROOPFRUIT.get()).test(stack);
     }
 }

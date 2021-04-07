@@ -19,7 +19,7 @@ import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.*;
 
 import java.util.HashMap;
@@ -27,12 +27,12 @@ import java.util.Map;
 
 public class UGStructures {
 
-    public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, UGMod.MODID);
+    public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, Undergarden.MODID);
 
-    public static final RegistryObject<Structure<NoFeatureConfig>> CATACOMBS = STRUCTURES.register("catacombs", () -> new CatacombsStructure(NoFeatureConfig.field_236558_a_));
+    public static final RegistryObject<Structure<NoFeatureConfig>> CATACOMBS = STRUCTURES.register("catacombs", () -> new CatacombsStructure(NoFeatureConfig.CODEC));
 
     public static final class ConfiguredStructures {
-        public static final StructureFeature<?, ?> CATACOMBS = UGStructures.CATACOMBS.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+        public static final StructureFeature<?, ?> CATACOMBS = UGStructures.CATACOMBS.get().configured(IFeatureConfig.NONE);
     }
 
     public static void registerStructures() {
@@ -40,39 +40,39 @@ public class UGStructures {
     }
 
     public static void registerConfiguredStructures() {
-        Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(UGMod.MODID, "catacombs"), CATACOMBS.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+        Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(Undergarden.MODID, "catacombs"), CATACOMBS.get().configured(IFeatureConfig.NONE));
 
-        FlatGenerationSettings.STRUCTURES.put(CATACOMBS.get(), ConfiguredStructures.CATACOMBS);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(CATACOMBS.get(), ConfiguredStructures.CATACOMBS);
     }
 
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
         if(event.getWorld() instanceof ServerWorld) {
             ServerWorld serverWorld = (ServerWorld)event.getWorld();
 
-            if(serverWorld.getChunkProvider().getChunkGenerator() instanceof FlatChunkGenerator && serverWorld.getDimensionKey().equals(World.OVERWORLD)) {
+            if(serverWorld.getChunkSource().getGenerator() instanceof FlatChunkGenerator && serverWorld.dimension().equals(World.OVERWORLD)) {
                 return;
             }
 
-            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkProvider().generator.func_235957_b_().func_236195_a_());
-            tempMap.put(UGStructures.CATACOMBS.get(), DimensionStructuresSettings.field_236191_b_.get(UGStructures.CATACOMBS.get()));
-            serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;
+            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
+            tempMap.put(UGStructures.CATACOMBS.get(), DimensionStructuresSettings.DEFAULTS.get(UGStructures.CATACOMBS.get()));
+            serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
     }
 
     private static <F extends Structure<?>> void setupStructure(F structure, StructureSeparationSettings structureSeparationSettings, boolean transformSurroundingLand) {
-        Structure.NAME_STRUCTURE_BIMAP.put(structure.getRegistryName().toString(), structure);
+        Structure.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
 
         if(transformSurroundingLand) {
-            Structure.field_236384_t_ =
+            Structure.NOISE_AFFECTING_FEATURES =
                     ImmutableList.<Structure<?>>builder()
-                            .addAll(Structure.field_236384_t_)
+                            .addAll(Structure.NOISE_AFFECTING_FEATURES)
                             .add(structure)
                             .build();
         }
 
-        DimensionStructuresSettings.field_236191_b_ =
+        DimensionStructuresSettings.DEFAULTS =
                 ImmutableMap.<Structure<?>, StructureSeparationSettings>builder()
-                        .putAll(DimensionStructuresSettings.field_236191_b_)
+                        .putAll(DimensionStructuresSettings.DEFAULTS)
                         .put(structure, structureSeparationSettings)
                         .build();
     }

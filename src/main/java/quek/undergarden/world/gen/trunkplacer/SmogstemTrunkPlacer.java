@@ -22,21 +22,21 @@ import java.util.Set;
 public class SmogstemTrunkPlacer extends AbstractTrunkPlacer {
 
     public static final Codec<SmogstemTrunkPlacer> CODEC = RecordCodecBuilder.create((me) ->
-            func_236915_a_(me).apply(me, SmogstemTrunkPlacer::new));
+            trunkPlacerParts(me).apply(me, SmogstemTrunkPlacer::new));
 
     public SmogstemTrunkPlacer(int baseHeight, int firstRandHeight, int secondRandHeight) {
         super(baseHeight, firstRandHeight, secondRandHeight);
     }
 
     @Override
-    protected TrunkPlacerType<?> func_230381_a_() {
+    protected TrunkPlacerType<?> type() {
         return UGTrunkPlacerTypes.SMOGSTEM_TRUNK_PLACER;
     }
 
     @Override
-    public List<FoliagePlacer.Foliage> func_230382_a_(IWorldGenerationReader world, Random rand, int yMaybe, BlockPos pos, Set<BlockPos> posSet, MutableBoundingBox boundingBox, BaseTreeFeatureConfig config) {
+    public List<FoliagePlacer.Foliage> placeTrunk(IWorldGenerationReader world, Random rand, int yMaybe, BlockPos pos, Set<BlockPos> posSet, MutableBoundingBox boundingBox, BaseTreeFeatureConfig config) {
         IBlockReader reader = (IBlockReader) world;
-        int treeBaseHeight = config.trunkPlacer.func_236917_a_(rand);
+        int treeBaseHeight = config.trunkPlacer.getTreeHeight(rand);
         int j = treeBaseHeight / 8 + rand.nextInt(2);
 
         for (int k = 0; k < treeBaseHeight; ++k) {
@@ -49,15 +49,15 @@ public class SmogstemTrunkPlacer extends AbstractTrunkPlacer {
                 for (int j1 = -l; j1 <= l; ++j1) {
                     float f2 = (float) MathHelper.abs(j1) - 0.25F;
                     if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > thiccness * thiccness)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(rand.nextFloat() > 0.75F))) {
-                        BlockState blockstate = reader.getBlockState(pos.add(i1, k, j1));
+                        BlockState blockstate = reader.getBlockState(pos.offset(i1, k, j1));
                         if (blockstate.isAir((IBlockReader) world, pos)) {
-                            func_236911_a_(world, rand, pos.add(i1, k, j1), posSet, boundingBox, config);
+                            placeLog(world, rand, pos.offset(i1, k, j1), posSet, boundingBox, config);
                         }
 
                         if (k != 0 && l > 1) {
-                            blockstate = reader.getBlockState(pos.add(i1, -k, j1));
+                            blockstate = reader.getBlockState(pos.offset(i1, -k, j1));
                             if (blockstate.isAir((IBlockReader) world, pos)) {
-                                func_236911_a_(world, rand, pos.add(i1, k, j1), posSet, boundingBox, config);
+                                placeLog(world, rand, pos.offset(i1, k, j1), posSet, boundingBox, config);
                             }
                         }
                     }
@@ -65,6 +65,6 @@ public class SmogstemTrunkPlacer extends AbstractTrunkPlacer {
             }
         }
 
-        return ImmutableList.of(new FoliagePlacer.Foliage(pos.up(treeBaseHeight), 0, false));
+        return ImmutableList.of(new FoliagePlacer.Foliage(pos.above(treeBaseHeight), 0, false));
     }
 }

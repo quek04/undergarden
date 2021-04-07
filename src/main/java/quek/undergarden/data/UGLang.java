@@ -6,7 +6,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.data.LanguageProvider;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.*;
 
 import java.util.function.Supplier;
@@ -14,11 +14,11 @@ import java.util.function.Supplier;
 public class UGLang extends LanguageProvider {
 
     public UGLang(DataGenerator gen) {
-        super(gen, UGMod.MODID, "en_us");
+        super(gen, Undergarden.MODID, "en_us");
     }
 
     private void addItemGroup(ItemGroup group, String name) {
-        add(group.getGroupName().getString(), name);
+        add(group.getDisplayName().getString(), name);
     }
 
     private void addAdvTitle(String advancementTitle, String name) {
@@ -34,7 +34,7 @@ public class UGLang extends LanguageProvider {
     }
 
     private void addBiome(RegistryKey<Biome> biomeKey, String name) {
-        add("biome.undergarden." + biomeKey.getLocation().getPath(), name);
+        add("biome.undergarden." + biomeKey.location().getPath(), name);
     }
 
     private void addDeath(String deathName, String name) {
@@ -121,6 +121,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GLOWING_KELP, "Glitterkelp");
         addBlock(UGBlocks.GLOWING_KELP_PLANT, "Glitterkelp");
         addBlock(UGBlocks.DROOPVINE_TOP, "Droopvine");
+        addBlock(UGBlocks.DROOPVINE, "Droopvine");
 
         addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
         addBlock(UGBlocks.INDIGO_MUSHROOM_CAP, "Indigo Mushroom Cap");
@@ -205,13 +206,13 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
 
         addItem(UGItems.MAMMOTH_DISC, "Music Disc");
-        add(UGItems.MAMMOTH_DISC.get().getTranslationKey() + ".desc", "Screem - Mammoth");
+        add(UGItems.MAMMOTH_DISC.get().getDescriptionId() + ".desc", "Screem - Mammoth");
         addItem(UGItems.LIMAX_MAXIMUS_DISC, "Music Disc");
-        add(UGItems.LIMAX_MAXIMUS_DISC.get().getTranslationKey() + ".desc", "Screem - Limax Maximus");
+        add(UGItems.LIMAX_MAXIMUS_DISC.get().getDescriptionId() + ".desc", "Screem - Limax Maximus");
         addItem(UGItems.RELICT_DISC, "Music Disc");
-        add(UGItems.RELICT_DISC.get().getTranslationKey() + ".desc", "Screem - Relict");
+        add(UGItems.RELICT_DISC.get().getDescriptionId() + ".desc", "Screem - Relict");
         addItem(UGItems.GLOOMPER_ANTHEM_DISC, "Music Disc");
-        add(UGItems.GLOOMPER_ANTHEM_DISC.get().getTranslationKey() + ".desc", "Screem - Gloomper Anthem");
+        add(UGItems.GLOOMPER_ANTHEM_DISC.get().getDescriptionId() + ".desc", "Screem - Gloomper Anthem");
         addItem(UGItems.CATALYST, "Catalyst");
         addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
         addItem(UGItems.TWISTYTWIG, "Twistytwig");
@@ -288,6 +289,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.UTHERIUM_LEGGINGS, "Utherium Leggings");
         addItem(UGItems.UTHERIUM_BOOTS, "Utherium Boots");
 
+        addItem(UGItems.DROOPFRUIT, "Droopfruit");
         addItem(UGItems.UNDERBEANS, "Underbeans");
         addItem(UGItems.BLISTERBERRY, "Blisterberry");
         addItem(UGItems.GLOOMGOURD_PIE, "Gloomgourd Pie");
@@ -501,7 +503,13 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "muncher_death", "Muncher dies");
         addSubtitle("entity", "muncher_chew", "Muncher chews");
 
-        addSubtitle("ambient", "undergarden_portal_ambient", "Undergarden Portal beckons");
+        addSubtitle("entity", "sploogie_living", "Sploogie squeaks");
+        addSubtitle("entity", "sploogie_hurt", "Sploogie hurts");
+        addSubtitle("entity", "sploogie_death", "Sploogie dies");
+        addSubtitle("entity", "sploogie_spit", "Sploogie spits");
+
+        addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
+        addSubtitle("block", "undergarden_portal_travel", "Travelling through Undergarden portal");
 
         addDeath("frozen_deepturf", "%1$s was stabbed by Frozen Deepturf");
         addDeath("frozen_deepturf.player", "%1$s was stabbed by Frozen Deepturf whilst trying to escape %2$s");

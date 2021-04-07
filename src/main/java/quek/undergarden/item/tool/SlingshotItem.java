@@ -5,10 +5,16 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
+import net.minecraft.item.ShootableItem;
+import net.minecraft.item.UseAction;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -30,39 +36,37 @@ import java.util.function.Predicate;
 
 public class SlingshotItem extends ShootableItem {
 
-    public static final Predicate<ItemStack> SLINGSHOT_AMMO = (stack) -> stack.getItem() == UGItems.DEPTHROCK_PEBBLE.get();
-
     public SlingshotItem() {
         super(new Properties()
-                .maxStackSize(1)
-                .maxDamage(192)
-                .group(UGItemGroups.GROUP)
+                .stacksTo(1)
+                .durability(192)
+                .tab(UGItemGroups.GROUP)
                 .rarity(Rarity.UNCOMMON)
         );
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("tooltip.slingshot").mergeStyle(TextFormatting.GRAY));
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        tooltip.add(new TranslationTextComponent("tooltip.slingshot").withStyle(TextFormatting.GRAY));
     }
 
     @Override
-    public Predicate<ItemStack> getInventoryAmmoPredicate() {
-        return SLINGSHOT_AMMO;
+    public Predicate<ItemStack> getAllSupportedProjectiles() {
+        return (stack) -> stack.getItem() == UGItems.DEPTHROCK_PEBBLE.get();
     }
 
     @Override
-    public int func_230305_d_() {
+    public int getDefaultProjectileRange() {
         return 10;
     }
 
     @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
+    public void releaseUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity)entityLiving;
-            boolean creativeOrInfinity = player.abilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
-            ItemStack itemstack = player.findAmmo(stack);
+            boolean creativeOrInfinity = player.abilities.instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
+            ItemStack itemstack = player.getProjectile(stack);
 
             int i = getUseDuration(stack) - timeLeft;
             i = onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || creativeOrInfinity);
@@ -75,45 +79,45 @@ public class SlingshotItem extends ShootableItem {
 
                 float f = getProjectileVelocity(i);
                 if (!((double)f < 0.1D)) {
-                    boolean flag1 = player.abilities.isCreativeMode || (itemstack.getItem() instanceof DepthrockPebbleItem && ((DepthrockPebbleItem)itemstack.getItem()).isInfinite(itemstack, stack, player));
-                    if (!worldIn.isRemote) {
+                    boolean flag1 = player.abilities.instabuild || (itemstack.getItem() instanceof DepthrockPebbleItem && ((DepthrockPebbleItem)itemstack.getItem()).isInfinite(itemstack, stack, player));
+                    if (!worldIn.isClientSide) {
                         SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(worldIn, entityLiving);
 
-                        ammoEntity.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0F, f * 3.0F, 1.0F);
+                        ammoEntity.shootFromRotation(player, player.xRot, player.yRot, 0.0F, f * 3.0F, 1.0F);
 
-                        stack.damageItem(1, player, (entity) -> player.sendBreakAnimation(player.getActiveHand()));
+                        stack.hurtAndBreak(1, player, (entity) -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
-                        worldIn.addEntity(ammoEntity);
+                        worldIn.addFreshEntity(ammoEntity);
                     }
 
-                    worldIn.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundCategory.PLAYERS, 0.5F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-                    if (!flag1 && !player.abilities.isCreativeMode) {
+                    worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundCategory.PLAYERS, 0.5F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    if (!flag1 && !player.abilities.instabuild) {
                         itemstack.shrink(1);
                         if (itemstack.isEmpty()) {
-                            player.inventory.deleteStack(itemstack);
+                            player.inventory.removeItem(itemstack);
                         }
                     }
 
-                    player.addStat(Stats.ITEM_USED.get(this));
+                    player.awardStat(Stats.ITEM_USED.get(this));
                 }
             }
         }
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity player, Hand handIn) {
-        ItemStack itemstack = player.getHeldItem(handIn);
-        boolean hasAmmo = !player.findAmmo(itemstack).isEmpty();
+    public ActionResult<ItemStack> use(World worldIn, PlayerEntity player, Hand handIn) {
+        ItemStack itemstack = player.getItemInHand(handIn);
+        boolean hasAmmo = !player.getProjectile(itemstack).isEmpty();
 
         ActionResult<ItemStack> ret = onArrowNock(itemstack, worldIn, player, handIn, hasAmmo);
         if (ret != null) return ret;
 
-        if (!player.abilities.isCreativeMode && !hasAmmo) {
-            return ActionResult.resultFail(itemstack);
+        if (!player.abilities.instabuild && !hasAmmo) {
+            return ActionResult.fail(itemstack);
         } else {
-            player.setActiveHand(handIn);
-            worldIn.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), UGSoundEvents.SLINGSHOT_DRAW.get(), SoundCategory.PLAYERS, 0.5F, 1.0F);
-            return ActionResult.resultConsume(itemstack);
+            player.startUsingItem(handIn);
+            worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_DRAW.get(), SoundCategory.PLAYERS, 0.5F, 1.0F);
+            return ActionResult.consume(itemstack);
         }
     }
 
@@ -149,12 +153,12 @@ public class SlingshotItem extends ShootableItem {
     }
 
     @Override
-    public UseAction getUseAction(ItemStack stack) {
+    public UseAction getUseAnimation(ItemStack stack) {
         return UseAction.BOW;
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem().isIn(ItemTags.PLANKS);
+    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem().is(ItemTags.PLANKS);
     }
 }

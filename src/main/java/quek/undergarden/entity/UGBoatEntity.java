@@ -18,28 +18,28 @@ import quek.undergarden.registry.UGItems;
 
 public class UGBoatEntity extends BoatEntity {
 
-    private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.createKey(UGBoatEntity.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.defineId(UGBoatEntity.class, DataSerializers.INT);
 
     public UGBoatEntity(EntityType<? extends BoatEntity> type, World world) {
         super(type, world);
-        this.preventEntitySpawning = true;
+        this.blocksBuilding = true;
     }
 
     public UGBoatEntity(World worldIn, double x, double y, double z) {
         this(UGEntityTypes.BOAT.get(), worldIn);
-        this.setPosition(x, y, z);
-        this.setMotion(Vector3d.ZERO);
-        this.prevPosX = x;
-        this.prevPosY = y;
-        this.prevPosZ = z;
+        this.setPos(x, y, z);
+        this.setDeltaMovement(Vector3d.ZERO);
+        this.xo = x;
+        this.yo = y;
+        this.zo = z;
     }
 
     public UGBoatEntity.Type getUGBoatType() {
-        return UGBoatEntity.Type.byId(this.dataManager.get(BOAT_TYPE));
+        return UGBoatEntity.Type.byId(this.entityData.get(BOAT_TYPE));
     }
 
     @Override
-    public Item getItemBoat() {
+    public Item getDropItem() {
         switch(this.getUGBoatType()) {
             case SMOGSTEM:
             default:
@@ -52,29 +52,29 @@ public class UGBoatEntity extends BoatEntity {
     }
 
     public void setBoatType(UGBoatEntity.Type boatType) {
-        this.dataManager.set(BOAT_TYPE, boatType.ordinal());
+        this.entityData.set(BOAT_TYPE, boatType.ordinal());
     }
 
     @Override
-    protected void registerData() {
-        super.registerData();
-        this.dataManager.register(BOAT_TYPE, Type.SMOGSTEM.ordinal());
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(BOAT_TYPE, Type.SMOGSTEM.ordinal());
     }
 
     @Override
-    protected void writeAdditional(CompoundNBT compound) {
+    protected void addAdditionalSaveData(CompoundNBT compound) {
         compound.putString("Type", this.getUGBoatType().getName());
     }
 
     @Override
-    protected void readAdditional(CompoundNBT compound) {
+    protected void readAdditionalSaveData(CompoundNBT compound) {
         if (compound.contains("Type", 8)) {
             this.setBoatType(UGBoatEntity.Type.getTypeFromString(compound.getString("Type")));
         }
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 

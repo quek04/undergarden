@@ -8,7 +8,7 @@ import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 
 public class UGTags {
 
@@ -23,7 +23,7 @@ public class UGTags {
         public static final ITag.INamedTag<Item> GRONGLE_STEMS = tag("grongle_stems");
 
         private static ITag.INamedTag<Item> tag(String name) {
-            return ItemTags.createOptional(new ResourceLocation(UGMod.MODID, name));
+            return ItemTags.createOptional(new ResourceLocation(Undergarden.MODID, name));
         }
     }
 
@@ -38,7 +38,7 @@ public class UGTags {
         public static final ITag.INamedTag<Block> MUNCHER_BREAKABLES = tag("muncher_breakables");
 
         private static ITag.INamedTag<Block> tag(String name) {
-            return BlockTags.createOptional(new ResourceLocation(UGMod.MODID, name));
+            return BlockTags.createOptional(new ResourceLocation(Undergarden.MODID, name));
         }
     }
 
@@ -48,7 +48,7 @@ public class UGTags {
         public static final ITag.INamedTag<EntityType<?>> CAVERN_CREATURE = tag("cavern_creature");
 
         private static ITag.INamedTag<EntityType<?>> tag(String name) {
-            return EntityTypeTags.createOptional(new ResourceLocation(UGMod.MODID, name));
+            return EntityTypeTags.createOptional(new ResourceLocation(Undergarden.MODID, name));
         }
     }
 }

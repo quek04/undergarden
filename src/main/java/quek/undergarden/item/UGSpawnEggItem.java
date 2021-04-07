@@ -16,12 +16,12 @@ public class UGSpawnEggItem extends SpawnEggItem {
 
     public UGSpawnEggItem(EntityType<?> entity, int egg, int spots) {
         super(entity, egg, spots, new Properties()
-                .group(UGItemGroups.GROUP)
+                .tab(UGItemGroups.GROUP)
         );
         EGGS.put(entity, this);
     }
 
-    public static Iterable<UGSpawnEggItem> eggs() {
+    public static Iterable<UGSpawnEggItem> UGEggs() {
         return Iterables.unmodifiableIterable(EGGS.values());
     }
 }

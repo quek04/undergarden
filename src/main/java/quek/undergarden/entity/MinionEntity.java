@@ -36,16 +36,16 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) ->
-                entity instanceof IMob || entity.getType().isContained(UGTags.Entities.ROTSPAWN) || entity.getType().isContained(UGTags.Entities.CAVERN_CREATURE))
+                entity instanceof IMob || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
         );
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return GolemEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
-                .createMutableAttribute(Attributes.ARMOR, 10.0D)
-                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 5.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.2D);
+        return GolemEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.ARMOR, 10.0D)
+                .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.2D);
     }
 
     @Override
@@ -54,20 +54,20 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
     }
 
     @Override
-    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
-        MinionProjectileEntity projectile = new MinionProjectileEntity(this.world, this);
-        double xDistance = target.getPosX() - this.getPosX();
-        double yDistance = target.getPosYHeight(0.3333333333333333D) - projectile.getPosY();
-        double zDistance = target.getPosZ() - this.getPosZ();
+    public void performRangedAttack(LivingEntity target, float distanceFactor) {
+        MinionProjectileEntity projectile = new MinionProjectileEntity(this.level, this);
+        double xDistance = target.getX() - this.getX();
+        double yDistance = target.getY(0.3333333333333333D) - projectile.getY();
+        double zDistance = target.getZ() - this.getZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         projectile.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
         this.playSound(UGSoundEvents.MINION_SHOOT.get(), 1.0F, 1.0F);
-        this.world.addEntity(projectile);
+        this.level.addFreshEntity(projectile);
     }
 
     @Override
-    protected ActionResultType func_230254_b_(PlayerEntity player, Hand hand) {
-        ItemStack itemstack = player.getHeldItem(hand);
+    protected ActionResultType mobInteract(PlayerEntity player, Hand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
         Item item = itemstack.getItem();
         if (item != UGItems.FORGOTTEN_NUGGET.get()) {
             return ActionResultType.PASS;
@@ -77,12 +77,12 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
             if (this.getHealth() == health) {
                 return ActionResultType.PASS;
             } else {
-                this.playSound(SoundEvents.ENTITY_IRON_GOLEM_REPAIR, 1.0F, 2.0F);
-                if (!player.abilities.isCreativeMode) {
+                this.playSound(SoundEvents.IRON_GOLEM_REPAIR, 1.0F, 2.0F);
+                if (!player.abilities.instabuild) {
                     itemstack.shrink(1);
                 }
 
-                return ActionResultType.func_233537_a_(this.world.isRemote);
+                return ActionResultType.sidedSuccess(this.level.isClientSide);
             }
         }
     }

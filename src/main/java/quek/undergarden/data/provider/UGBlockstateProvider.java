@@ -8,14 +8,14 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ModelFile;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
 
 public abstract class UGBlockstateProvider extends BlockStateProvider {
 
     public UGBlockstateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, UGMod.MODID, fileHelper);
+        super(generator, Undergarden.MODID, fileHelper);
     }
 
     protected ResourceLocation texture(String name) {
@@ -48,7 +48,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         getVariantBuilder(wall.get()).forAllStates(state ->
                 ConfiguredModel.builder()
                         .modelFile(torchwall)
-                        .rotationY(((int) state.get(BlockStateProperties.HORIZONTAL_FACING).getHorizontalAngle() + 90) % 360)
+                        .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 90) % 360)
                         .build());
     }
 

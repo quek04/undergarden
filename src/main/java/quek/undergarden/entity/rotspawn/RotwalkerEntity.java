@@ -19,11 +19,11 @@ public class RotwalkerEntity extends AbstractRotspawnEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 40.0D)
-                .createMutableAttribute(Attributes.ARMOR, 3.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 5.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23D);
+        return MonsterEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.ARMOR, 3.0D)
+                .add(Attributes.ATTACK_DAMAGE, 5.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.23D);
     }
 
     @Override
@@ -43,6 +43,6 @@ public class RotwalkerEntity extends AbstractRotspawnEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
+        this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 0.5F);
     }
 }

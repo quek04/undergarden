@@ -44,38 +44,38 @@ public class CarvedGloomgourdBlock extends CarvedPumpkinBlock {
     }
 
     @Override
-    public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
-        if (!oldState.isIn(state.getBlock())) {
+    public void onPlace(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
+        if (!oldState.is(state.getBlock())) {
             this.trySpawnMinion(worldIn, pos);
         }
     }
 
     @Override
-    public boolean canDispenserPlace(IWorldReader reader, BlockPos pos) {
-        return this.getMinionBasePattern().match(reader, pos) != null;
+    public boolean canSpawnGolem(IWorldReader reader, BlockPos pos) {
+        return this.getMinionBasePattern().find(reader, pos) != null;
     }
 
     private void trySpawnMinion(World world, BlockPos pos) {
-        BlockPattern.PatternHelper minionPattern = this.getMinionPattern().match(world, pos);
+        BlockPattern.PatternHelper minionPattern = this.getMinionPattern().find(world, pos);
         if (minionPattern != null) {
-            for(int i = 0; i < this.getMinionPattern().getThumbLength(); ++i) {
-                CachedBlockInfo cachedblockinfo = minionPattern.translateOffset(0, i, 0);
-                world.setBlockState(cachedblockinfo.getPos(), Blocks.AIR.getDefaultState(), 2);
-                world.playEvent(2001, cachedblockinfo.getPos(), Block.getStateId(cachedblockinfo.getBlockState()));
+            for(int i = 0; i < this.getMinionPattern().getHeight(); ++i) {
+                CachedBlockInfo cachedblockinfo = minionPattern.getBlock(0, i, 0);
+                world.setBlock(cachedblockinfo.getPos(), Blocks.AIR.defaultBlockState(), 2);
+                world.levelEvent(2001, cachedblockinfo.getPos(), Block.getId(cachedblockinfo.getState()));
             }
 
             MinionEntity minionEntity = UGEntityTypes.MINION.get().create(world);
-            BlockPos blockpos1 = minionPattern.translateOffset(0, 2, 0).getPos();
-            minionEntity.setLocationAndAngles((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 1.0D, (double)blockpos1.getZ() + 0.5D, 0.0F, 0.0F);
-            world.addEntity(minionEntity);
+            BlockPos blockpos1 = minionPattern.getBlock(0, 2, 0).getPos();
+            minionEntity.moveTo((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 1.0D, (double)blockpos1.getZ() + 0.5D, 0.0F, 0.0F);
+            world.addFreshEntity(minionEntity);
 
-            for(ServerPlayerEntity serverplayerentity : world.getEntitiesWithinAABB(ServerPlayerEntity.class, minionEntity.getBoundingBox().grow(5.0D))) {
+            for(ServerPlayerEntity serverplayerentity : world.getEntitiesOfClass(ServerPlayerEntity.class, minionEntity.getBoundingBox().inflate(5.0D))) {
                 CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayerentity, minionEntity);
             }
 
-            for(int l = 0; l < this.getMinionPattern().getThumbLength(); ++l) {
-                CachedBlockInfo cachedblockinfo3 = minionPattern.translateOffset(0, l, 0);
-                world.func_230547_a_(cachedblockinfo3.getPos(), Blocks.AIR);
+            for(int l = 0; l < this.getMinionPattern().getHeight(); ++l) {
+                CachedBlockInfo cachedblockinfo3 = minionPattern.getBlock(0, l, 0);
+                world.blockUpdated(cachedblockinfo3.getPos(), Blocks.AIR);
             }
         }
     }

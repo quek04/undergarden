@@ -19,69 +19,69 @@ public class MuncherModel<T extends MuncherEntity> extends SegmentedModel<T> {
 	private final ModelRenderer rightarm;
 
 	public MuncherModel() {
-		textureWidth = 64;
-		textureHeight = 64;
+		texWidth = 64;
+		texHeight = 64;
 
 		muncher = new ModelRenderer(this);
-		muncher.setRotationPoint(0.0F, 16.0F, 5.0F);
+		muncher.setPos(0.0F, 16.0F, 5.0F);
 
 		lowerjaw = new ModelRenderer(this);
-		lowerjaw.setRotationPoint(0.0F, 5.0F, -5.0F);
+		lowerjaw.setPos(0.0F, 5.0F, -5.0F);
 		muncher.addChild(lowerjaw);
-		lowerjaw.setTextureOffset(0, 15).addBox(-5.0F, -5.0F, -5.0F, 10.0F, 4.0F, 10.0F, 0.0F, false);
-		lowerjaw.setTextureOffset(0, 29).addBox(-8.0F, -5.0F, 3.0F, 16.0F, 1.0F, 1.0F, 0.0F, false);
+		lowerjaw.texOffs(0, 15).addBox(-5.0F, -5.0F, -5.0F, 10.0F, 4.0F, 10.0F, 0.0F, false);
+		lowerjaw.texOffs(0, 29).addBox(-8.0F, -5.0F, 3.0F, 16.0F, 1.0F, 1.0F, 0.0F, false);
 
 		upperjaw = new ModelRenderer(this);
-		upperjaw.setRotationPoint(0.0F, 0.0F, 0.0F);
+		upperjaw.setPos(0.0F, 0.0F, 0.0F);
 		muncher.addChild(upperjaw);
-		upperjaw.setTextureOffset(0, 0).addBox(-5.0F, -5.0F, -10.0F, 10.0F, 5.0F, 10.0F, 0.0F, false);
-		upperjaw.setTextureOffset(0, 25).addBox(0.0F, -6.0F, -6.0F, 0.0F, 1.0F, 6.0F, 0.0F, false);
+		upperjaw.texOffs(0, 0).addBox(-5.0F, -5.0F, -10.0F, 10.0F, 5.0F, 10.0F, 0.0F, false);
+		upperjaw.texOffs(0, 25).addBox(0.0F, -6.0F, -6.0F, 0.0F, 1.0F, 6.0F, 0.0F, false);
 
 		leftleg = new ModelRenderer(this);
-		leftleg.setRotationPoint(-3.0F, 4.0F, -4.0F);
+		leftleg.setPos(-3.0F, 4.0F, -4.0F);
 		muncher.addChild(leftleg);
-		leftleg.setTextureOffset(30, 15).addBox(-1.0F, 0.0F, -1.0F, 3.0F, 4.0F, 3.0F, 0.0F, false);
+		leftleg.texOffs(30, 15).addBox(-1.0F, 0.0F, -1.0F, 3.0F, 4.0F, 3.0F, 0.0F, false);
 
 		rightleg = new ModelRenderer(this);
-		rightleg.setRotationPoint(3.0F, 4.0F, -4.0F);
+		rightleg.setPos(3.0F, 4.0F, -4.0F);
 		muncher.addChild(rightleg);
-		rightleg.setTextureOffset(30, 0).addBox(-2.0F, 0.0F, -1.0F, 3.0F, 4.0F, 3.0F, 0.0F, false);
+		rightleg.texOffs(30, 0).addBox(-2.0F, 0.0F, -1.0F, 3.0F, 4.0F, 3.0F, 0.0F, false);
 
 		leftarm = new ModelRenderer(this);
-		leftarm.setRotationPoint(5.0F, 2.0F, -3.0F);
+		leftarm.setPos(5.0F, 2.0F, -3.0F);
 		muncher.addChild(leftarm);
-		leftarm.setTextureOffset(0, 15).addBox(0.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+		leftarm.texOffs(0, 15).addBox(0.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
 
 		rightarm = new ModelRenderer(this);
-		rightarm.setRotationPoint(-5.0F, 2.0F, -3.0F);
+		rightarm.setPos(-5.0F, 2.0F, -3.0F);
 		muncher.addChild(rightarm);
-		rightarm.setTextureOffset(0, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+		rightarm.texOffs(0, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
 	}
 
 	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		this.upperjaw.rotateAngleX = (MathHelper.sin((entity.ticksExisted) * 0.5F) * 0.9F) * 0.3F;
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+		this.upperjaw.xRot = (MathHelper.sin((entity.tickCount) * 0.5F) * 0.9F) * 0.3F;
 
-		this.leftarm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.rightarm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftarm.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightarm.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
-		this.leftleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.leftleg.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightleg.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
 		muncher.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
 	@Override
-	public Iterable<ModelRenderer> getParts() {
+	public Iterable<ModelRenderer> parts() {
 		return ImmutableSet.of(this.muncher);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
+		modelRenderer.xRot = x;
+		modelRenderer.yRot = y;
+		modelRenderer.zRot = z;
 	}
 }

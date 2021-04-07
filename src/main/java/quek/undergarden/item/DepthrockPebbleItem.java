@@ -14,18 +14,20 @@ import quek.undergarden.registry.UGItemGroups;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import net.minecraft.item.Item.Properties;
+
 public class DepthrockPebbleItem extends ArrowItem {
 
     public DepthrockPebbleItem() {
         super(new Properties()
-                .group(UGItemGroups.GROUP)
+                .tab(UGItemGroups.GROUP)
         );
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("tooltip.pebble").mergeStyle(TextFormatting.GRAY));
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        tooltip.add(new TranslationTextComponent("tooltip.pebble").withStyle(TextFormatting.GRAY));
     }
 
 }

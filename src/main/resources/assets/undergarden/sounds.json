@@ -103,16 +103,22 @@
       "undergarden:ambient/moods/abyss_mood_2"
     ]
   },
-  "ambient.undergarden_portal_ambient": {
-    "subtitle": "subtitles.ambient.undergarden_portal_ambient",
+  "block.undergarden_portal_ambient": {
+    "subtitle": "subtitles.block.undergarden_portal_ambient",
     "sounds": [
-      "undergarden:ambient/undergarden_portal_ambient"
+      "undergarden:block/undergarden_portal_ambient"
     ]
   },
   "item.undergarden_portal_activate": {
     "subtitle": "subtitles.item.undergarden_portal_activate",
     "sounds": [
       "undergarden:item/undergarden_portal_activate"
+    ]
+  },
+  "block.undergarden_portal_travel": {
+    "subtitle": "subtitles.block.undergarden_portal_travel",
+    "sounds": [
+      "undergarden:block/undergarden_portal_travel"
     ]
   },
   "music.undergarden_music": {
@@ -473,8 +479,8 @@
   "entity.muncher_hurt": {
     "subtitle": "subtitles.entity.muncher_hurt",
     "sounds": [
-      "undergarden:entity/muncher_living_1",
-      "undergarden:entity/muncher_living_2"
+      "undergarden:entity/muncher_hurt_1",
+      "undergarden:entity/muncher_hurt_2"
     ]
   },
   "entity.muncher_death": {
@@ -488,6 +494,35 @@
     "sounds": [
       "undergarden:entity/muncher_chew_1",
       "undergarden:entity/muncher_chew_2"
+    ]
+  },
+  "entity.sploogie_living": {
+    "subtitle": "subtitles.entity.sploogie_living",
+    "sounds": [
+      "undergarden:entity/sploogie_living_1",
+      "undergarden:entity/sploogie_living_2",
+      "undergarden:entity/sploogie_living_3"
+    ]
+  },
+  "entity.sploogie_hurt": {
+    "subtitle": "subtitles.entity.sploogie_hurt",
+    "sounds": [
+      "undergarden:entity/sploogie_hurt_1",
+      "undergarden:entity/sploogie_hurt_2"
+    ]
+  },
+  "entity.sploogie_death": {
+    "subtitle": "subtitles.entity.sploogie_death",
+    "sounds": [
+      "undergarden:entity/sploogie_death"
+    ]
+  },
+  "entity.sploogie_spit": {
+    "subtitle": "subtitles.entity.sploogie_spit",
+    "sounds": [
+      "undergarden:entity/sploogie_spit_1",
+      "undergarden:entity/sploogie_spit_2",
+      "undergarden:entity/sploogie_spit_3"
     ]
   }
 }

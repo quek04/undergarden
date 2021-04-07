@@ -14,24 +14,26 @@ import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSoundEvents;
 
+import net.minecraft.item.Item.Properties;
+
 public class CatalystItem extends Item {
 
     public CatalystItem() {
         super(new Properties()
-                .group(UGItemGroups.GROUP)
-                .maxStackSize(1)
+                .tab(UGItemGroups.GROUP)
+                .stacksTo(1)
                 .rarity(Rarity.RARE)
         );
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
+    public ActionResultType useOn(ItemUseContext context) {
         if(context.getPlayer() != null) {
-            if(context.getPlayer().world.getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD || context.getPlayer().world.getDimensionKey() == World.OVERWORLD) {
+            if(context.getPlayer().level.dimension() == UGDimensions.UNDERGARDEN_WORLD || context.getPlayer().level.dimension() == World.OVERWORLD) {
                 for(Direction direction : Direction.Plane.VERTICAL) {
-                    BlockPos framePos = context.getPos().offset(direction);
-                    if(((UndergardenPortalBlock) UGBlocks.UNDERGARDEN_PORTAL.get()).trySpawnPortal(context.getWorld(), framePos)) {
-                        context.getWorld().playSound(context.getPlayer(), framePos, UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    BlockPos framePos = context.getClickedPos().relative(direction);
+                    if(((UndergardenPortalBlock) UGBlocks.UNDERGARDEN_PORTAL.get()).trySpawnPortal(context.getLevel(), framePos)) {
+                        context.getLevel().playSound(context.getPlayer(), framePos, UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundCategory.BLOCKS, 1.0F, 1.0F);
                         return ActionResultType.CONSUME;
                     }
                     else return ActionResultType.FAIL;
