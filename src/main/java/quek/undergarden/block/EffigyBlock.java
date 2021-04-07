@@ -30,17 +30,15 @@ public class EffigyBlock extends RespawnAnchorBlock {
 
     public EffigyBlock(AbstractBlock.Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(CHARGES, 0));
+        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(CHARGES, 1));
     }
 
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().rotateY());
     }
-
     public BlockState rotate(BlockState state, Rotation rot) {
         return state.with(FACING, rot.rotate(state.get(FACING)));
     }
-
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING).add(CHARGES);
     }

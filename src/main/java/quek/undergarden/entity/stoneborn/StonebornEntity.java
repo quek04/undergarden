@@ -24,7 +24,6 @@ import net.minecraft.world.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
-import quek.undergarden.entity.stoneborn.goals.StonebornStealFromEffigyGoal;
 import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
 import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
 import quek.undergarden.registry.*;
