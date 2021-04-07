@@ -2,7 +2,7 @@ package quek.undergarden.client.model;
 // Made with Blockbench 3.5.0
 // Exported for Minecraft version 1.15
 
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
@@ -120,12 +120,12 @@ public class DwellerModel<T extends DwellerEntity> extends AgeableModel<T> {
 
 	@Override
 	protected Iterable<ModelRenderer> headParts() {
-		return ImmutableSet.of();
+		return ImmutableList.of();
 	}
 
 	@Override
 	protected Iterable<ModelRenderer> bodyParts() {
-		return ImmutableSet.of(this.dweller);
+		return ImmutableList.of(this.dweller);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {

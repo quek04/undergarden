@@ -13,8 +13,6 @@ import quek.undergarden.client.render.layer.DwellerEyesLayer;
 @OnlyIn(Dist.CLIENT)
 public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<DwellerEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Undergarden.MODID, "textures/entity/dweller.png");
-
     public DwellerRender(EntityRendererManager rendererManager) {
         super(rendererManager, new DwellerModel<>(), .7F);
         this.addLayer(new DwellerEyesLayer<>(this));
@@ -22,6 +20,6 @@ public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<Dwell
 
     @Override
     public ResourceLocation getTextureLocation(DwellerEntity entity) {
-        return TEXTURE;
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/dweller.png");
     }
 }

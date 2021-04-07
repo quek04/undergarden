@@ -2,10 +2,11 @@ package quek.undergarden.client.model;
 // Made with Blockbench 3.5.2
 // Exported for Minecraft version 1.15
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.entity.model.SegmentedModel;
+import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.ScintlingEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class ScintlingModel<T extends ScintlingEntity> extends SegmentedModel<T> {
+public class ScintlingModel<T extends ScintlingEntity> extends AgeableModel<T> {
 	private final ModelRenderer scintling;
 	private final ModelRenderer head;
 	private final ModelRenderer leftStalk;
@@ -74,13 +75,13 @@ public class ScintlingModel<T extends ScintlingEntity> extends SegmentedModel<T>
 	}
 
 	@Override
-	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		scintling.render(matrixStack, buffer, packedLight, packedOverlay);
+	protected Iterable<ModelRenderer> headParts() {
+		return ImmutableList.of();
 	}
 
 	@Override
-	public Iterable<ModelRenderer> parts() {
-		return ImmutableSet.of(scintling);
+	protected Iterable<ModelRenderer> bodyParts() {
+		return ImmutableList.of(this.scintling);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
