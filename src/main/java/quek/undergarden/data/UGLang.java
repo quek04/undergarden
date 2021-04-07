@@ -502,6 +502,11 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "muncher_death", "Muncher dies");
         addSubtitle("entity", "muncher_chew", "Muncher chews");
 
+        addSubtitle("entity", "sploogie_living", "Sploogie squeaks");
+        addSubtitle("entity", "sploogie_hurt", "Sploogie hurts");
+        addSubtitle("entity", "sploogie_death", "Sploogie dies");
+        addSubtitle("entity", "sploogie_spit", "Sploogie spits");
+
         addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
         addSubtitle("block", "undergarden_portal_travel", "Travelling through Undergarden portal");
 

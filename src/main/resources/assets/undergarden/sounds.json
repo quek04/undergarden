@@ -495,5 +495,34 @@
       "undergarden:entity/muncher_chew_1",
       "undergarden:entity/muncher_chew_2"
     ]
+  },
+  "entity.sploogie_living": {
+    "subtitle": "subtitles.entity.sploogie_living",
+    "sounds": [
+      "undergarden:entity/sploogie_living_1",
+      "undergarden:entity/sploogie_living_2",
+      "undergarden:entity/sploogie_living_3"
+    ]
+  },
+  "entity.sploogie_hurt": {
+    "subtitle": "subtitles.entity.sploogie_hurt",
+    "sounds": [
+      "undergarden:entity/sploogie_hurt_1",
+      "undergarden:entity/sploogie_hurt_2"
+    ]
+  },
+  "entity.sploogie_death": {
+    "subtitle": "subtitles.entity.sploogie_death",
+    "sounds": [
+      "undergarden:entity/sploogie_death"
+    ]
+  },
+  "entity.sploogie_spit": {
+    "subtitle": "subtitles.entity.sploogie_spit",
+    "sounds": [
+      "undergarden:entity/sploogie_spit_1",
+      "undergarden:entity/sploogie_spit_2",
+      "undergarden:entity/sploogie_spit_3"
+    ]
   }
 }

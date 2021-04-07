@@ -8,10 +8,12 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
+import quek.undergarden.registry.UGSoundEvents;
 
 public class SploogieEntity extends AbstractCavernCreatureEntity implements IRangedAttackMob {
 
@@ -37,6 +39,21 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return UGSoundEvents.SPLOOGIE_LIVING.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return UGSoundEvents.SPLOOGIE_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return UGSoundEvents.SPLOOGIE_DEATH.get();
+    }
+
+    @Override
     public void performRangedAttack(LivingEntity target, float distanceFactor) {
         SlingshotAmmoEntity pebble = new SlingshotAmmoEntity(this.level, this);
         double xDistance = target.getX() - this.getX();
@@ -44,7 +61,7 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
         double zDistance = target.getZ() - this.getZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         pebble.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
-        this.playSound(SoundEvents.ARROW_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+        this.playSound(UGSoundEvents.SPLOOGIE_SPIT.get(), 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.level.addFreshEntity(pebble);
     }
 }

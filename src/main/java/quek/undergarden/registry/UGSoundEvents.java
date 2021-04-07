@@ -95,6 +95,11 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> MUNCHER_DEATH = register("entity.muncher_death");
     public static final RegistryObject<SoundEvent> MUNCHER_CHEW = register("entity.muncher_chew");
 
+    public static final RegistryObject<SoundEvent> SPLOOGIE_LIVING = register("entity.sploogie_living");
+    public static final RegistryObject<SoundEvent> SPLOOGIE_HURT = register("entity.sploogie_hurt");
+    public static final RegistryObject<SoundEvent> SPLOOGIE_DEATH = register("entity.sploogie_death");
+    public static final RegistryObject<SoundEvent> SPLOOGIE_SPIT = register("entity.sploogie_spit");
+
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Undergarden.MODID, name)));
     }
