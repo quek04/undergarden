@@ -63,7 +63,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(ItemTags.NON_FLAMMABLE_WOOD).addTag(UGTags.Items.GRONGLE_STEMS).add(UGBlocks.GRONGLE_PLANKS.get().asItem(), UGBlocks.GRONGLE_SLAB.get().asItem(), UGBlocks.GRONGLE_PRESSURE_PLATE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem(), UGBlocks.GRONGLE_TRAPDOOR.get().asItem(), UGBlocks.GRONGLE_FENCE_GATE.get().asItem(), UGBlocks.GRONGLE_STAIRS.get().asItem(), UGBlocks.GRONGLE_BUTTON.get().asItem(), UGBlocks.GRONGLE_DOOR.get().asItem()); //TODO grongle sign
         tag(ItemTags.STONE_TOOL_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
-        tag(ItemTags.MUSIC_DISCS).add(UGItems.MAMMOTH_DISC.get());
+        tag(ItemTags.MUSIC_DISCS).add(UGItems.MAMMOTH_DISC.get(), UGItems.LIMAX_MAXIMUS_DISC.get(), UGItems.RELICT_DISC.get(), UGItems.GLOOMPER_ANTHEM_DISC.get(), UGItems.GLOOMPER_SECRET_DISC.get());
         tag(ItemTags.FISHES).add(UGItems.RAW_GWIBLING.get(), UGItems.COOKED_GWIBLING.get());
         tag(ItemTags.BOATS).add(UGItems.SMOGSTEM_BOAT.get(), UGItems.WIGGLEWOOD_BOAT.get(), UGItems.GRONGLE_BOAT.get());
 

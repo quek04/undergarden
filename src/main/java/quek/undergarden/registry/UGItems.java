@@ -20,10 +20,11 @@ public class UGItems {
     public static final Rarity FORGOTTEN = Rarity.create("forgotten", TextFormatting.GREEN);
 
     //discs
-    public static final RegistryObject<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new MusicDiscItem(15, UGSoundEvents.MAMMOTH_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
-    public static final RegistryObject<Item> LIMAX_MAXIMUS_DISC = ITEMS.register("music_disc_limax_maximus", () -> new MusicDiscItem(15, UGSoundEvents.LIMAX_MAXIMUS_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
-    public static final RegistryObject<Item> RELICT_DISC = ITEMS.register("music_disc_relict", () -> new MusicDiscItem(15, UGSoundEvents.RELICT_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
-    public static final RegistryObject<Item> GLOOMPER_ANTHEM_DISC = ITEMS.register("music_disc_gloomper_anthem", () -> new MusicDiscItem(15, UGSoundEvents.GLOOMPER_ANTHEM_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
+    public static final RegistryObject<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new MusicDiscItem(0, UGSoundEvents.MAMMOTH_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
+    public static final RegistryObject<Item> LIMAX_MAXIMUS_DISC = ITEMS.register("music_disc_limax_maximus", () -> new MusicDiscItem(1, UGSoundEvents.LIMAX_MAXIMUS_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
+    public static final RegistryObject<Item> RELICT_DISC = ITEMS.register("music_disc_relict", () -> new MusicDiscItem(2, UGSoundEvents.RELICT_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
+    public static final RegistryObject<Item> GLOOMPER_ANTHEM_DISC = ITEMS.register("music_disc_gloomper_anthem", () -> new MusicDiscItem(3, UGSoundEvents.GLOOMPER_ANTHEM_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
+    public static final RegistryObject<Item> GLOOMPER_SECRET_DISC = ITEMS.register("music_disc_gloomper_secret", () -> new MusicDiscItem(15, UGSoundEvents.GLOOMPER_SECRET_DISC, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
 
     //normal stuff
     public static final RegistryObject<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);

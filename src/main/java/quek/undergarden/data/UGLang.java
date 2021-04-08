@@ -212,6 +212,8 @@ public class UGLang extends LanguageProvider {
         add(UGItems.RELICT_DISC.get().getDescriptionId() + ".desc", "Screem - Relict");
         addItem(UGItems.GLOOMPER_ANTHEM_DISC, "Music Disc");
         add(UGItems.GLOOMPER_ANTHEM_DISC.get().getDescriptionId() + ".desc", "Screem - Gloomper Anthem");
+        addItem(UGItems.GLOOMPER_SECRET_DISC, "Music Disc");
+        add(UGItems.GLOOMPER_SECRET_DISC.get().getDescriptionId() + ".desc", "An AI was given an image of a Gloomper and made this song");
         addItem(UGItems.CATALYST, "Catalyst");
         addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
         addItem(UGItems.TWISTYTWIG, "Twistytwig");

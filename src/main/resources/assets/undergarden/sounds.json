@@ -172,6 +172,11 @@
       "undergarden:music/disc/gloomper_anthem"
     ]
   },
+  "music.disc.gloomper_secret": {
+    "sounds": [
+      "undergarden:music/disc/gloomper_secret"
+    ]
+  },
   "item.blisterbomb": {
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [
