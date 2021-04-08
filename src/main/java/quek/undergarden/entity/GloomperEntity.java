@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.controller.JumpController;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.particles.ParticleTypes;
@@ -17,9 +18,7 @@ import net.minecraft.pathfinding.Path;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
@@ -29,10 +28,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGParticleTypes;
-import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -153,7 +149,7 @@ public class GloomperEntity extends AnimalEntity {
     public void setJumping(boolean jumping) {
         super.setJumping(jumping);
         if (jumping) {
-            this.playSound(SoundEvents.COD_FLOP, this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) * 0.8F);
+            this.playSound(UGSoundEvents.GLOOMPER_HOP.get(), this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) * 0.8F);
         }
 
     }
@@ -253,10 +249,20 @@ public class GloomperEntity extends AnimalEntity {
 
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
-    public Vector3d getLeashOffset() {
-        return new Vector3d(0.0D, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
+    public ActionResultType mobInteract(PlayerEntity player, Hand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if(stack.getItem() == UGItems.GLOOMPER_ANTHEM_DISC.get() && this.isAlive()) {
+            if(!this.level.isClientSide) {
+                this.spawnAtLocation(UGItems.GLOOMPER_SECRET_DISC.get());
+                this.kill();
+            }
+            if (!player.abilities.instabuild) {
+                stack.shrink(1);
+            }
+            return ActionResultType.sidedSuccess(this.level.isClientSide);
+        }
+        else return super.mobInteract(player, hand);
     }
 
     @Override
@@ -271,7 +277,7 @@ public class GloomperEntity extends AnimalEntity {
         cloud.addEffect(new EffectInstance(Effects.POISON, 100, 0));
 
         if(this.random.nextInt(2) == 0) {
-            this.playSound(SoundEvents.PUFFER_FISH_BLOW_UP, 1.0F, 1.0F);
+            this.playSound(UGSoundEvents.GLOOMPER_FART.get(), 1.0F, 1.0F);
             this.level.addFreshEntity(cloud);
         }
 

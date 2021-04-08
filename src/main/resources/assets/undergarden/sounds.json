@@ -172,6 +172,11 @@
       "undergarden:music/disc/gloomper_anthem"
     ]
   },
+  "music.disc.gloomper_secret": {
+    "sounds": [
+      "undergarden:music/disc/gloomper_secret"
+    ]
+  },
   "item.blisterbomb": {
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [
@@ -307,6 +312,40 @@
     "subtitle": "subtitles.entity.gloomper_death",
     "sounds": [
       "undergarden:entity/gloomper_death"
+    ]
+  },
+  "entity.gloomper_hop": {
+    "subtitle": "subtitles.entity.gloomper_hop",
+    "sounds": [
+      {
+        "name": "entity/fish/flop1",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop2",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop3",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop4",
+        "volume": 0.3
+      }
+    ]
+  },
+  "entity.gloomper_fart": {
+    "subtitle": "subtitles.entity.gloomper_fart",
+    "sounds": [
+      {
+        "name": "entity/pufferfish/blow_up1",
+        "volume": 0.45
+      },
+      {
+        "name": "entity/pufferfish/blow_up2",
+        "volume": 0.45
+      }
     ]
   },
   "entity.stoneborn_step": {

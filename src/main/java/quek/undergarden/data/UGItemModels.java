@@ -133,6 +133,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);
         normalItem(UGItems.GLOOMPER_ANTHEM_DISC);
         normalItem(UGItems.RELICT_DISC);
+        normalItem(UGItems.GLOOMPER_SECRET_DISC);
         normalItem(UGItems.CATALYST);
         normalItem(UGItems.DEPTHROCK_PEBBLE);
         normalItem(UGItems.TWISTYTWIG);
