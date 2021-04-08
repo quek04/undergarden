@@ -63,6 +63,8 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> GLOOMPER_LIVING = register("entity.gloomper_living");
     public static final RegistryObject<SoundEvent> GLOOMPER_HURT = register("entity.gloomper_hurt");
     public static final RegistryObject<SoundEvent> GLOOMPER_DEATH = register("entity.gloomper_death");
+    public static final RegistryObject<SoundEvent> GLOOMPER_HOP = register("entity.gloomper_hop");
+    public static final RegistryObject<SoundEvent> GLOOMPER_FART = register("entity.gloomper_fart");
 
     public static final RegistryObject<SoundEvent> STONEBORN_STEP = register("entity.stoneborn_step");
     public static final RegistryObject<SoundEvent> STONEBORN_SPEAKING = register("entity.stoneborn_speaking");

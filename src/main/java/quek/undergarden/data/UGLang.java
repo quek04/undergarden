@@ -468,15 +468,14 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "gloomper_living", "Gloomper croaks");
         addSubtitle("entity", "gloomper_hurt", "Gloomper hurts");
         addSubtitle("entity", "gloomper_death", "Gloomper dies");
+        addSubtitle("entity", "gloomper_hop", "Gloomper hops");
+        addSubtitle("entity", "gloomper_fart", "Gloomper farts");
 
         addSubtitle("entity", "stoneborn_step", "Stoneborn steps");
         addSubtitle("entity", "stoneborn_speaking", "Stoneborn speaks");
         addSubtitle("entity", "stoneborn_pleased", "Stoneborn pleased");
-        addSubtitle("entity", "stoneborn_awe", "Stoneborn awed");
-        addSubtitle("entity", "stoneborn_chuckle", "Stoneborn chuckles");
         addSubtitle("entity", "stoneborn_hurt", "Stoneborn hurts");
         addSubtitle("entity", "stoneborn_angry", "Stoneborn angered");
-        addSubtitle("entity", "stoneborn_growl", "Stoneborn growls");
         addSubtitle("entity", "stoneborn_confused", "Stoneborn confused");
         addSubtitle("entity", "stoneborn_chant", "Stoneborn chanting");
         addSubtitle("entity", "stoneborn_death", "Stoneborn dies");

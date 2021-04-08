@@ -149,7 +149,7 @@ public class GloomperEntity extends AnimalEntity {
     public void setJumping(boolean jumping) {
         super.setJumping(jumping);
         if (jumping) {
-            this.playSound(SoundEvents.COD_FLOP, this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) * 0.8F);
+            this.playSound(UGSoundEvents.GLOOMPER_HOP.get(), this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) * 0.8F);
         }
 
     }
@@ -277,7 +277,7 @@ public class GloomperEntity extends AnimalEntity {
         cloud.addEffect(new EffectInstance(Effects.POISON, 100, 0));
 
         if(this.random.nextInt(2) == 0) {
-            this.playSound(SoundEvents.PUFFER_FISH_BLOW_UP, 1.0F, 1.0F);
+            this.playSound(UGSoundEvents.GLOOMPER_FART.get(), 1.0F, 1.0F);
             this.level.addFreshEntity(cloud);
         }
 
