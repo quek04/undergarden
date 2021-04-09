@@ -433,6 +433,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("all_blocks", "Collector's Edition");
         addAdvDesc("all_blocks", "Collect one block of every Undergarden ore.");
 
+        addAdvTitle("gloomper_secret_disc", "Death Gloomps");
+        addAdvDesc("gloomper_secret_disc", "Obtain the secret music disc.");
+
         addAdvTitle("otherside_root", "The Otherside");
         addAdvDesc("otherside_root", "Enter the realm of madness.");
 
