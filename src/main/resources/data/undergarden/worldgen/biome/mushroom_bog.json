@@ -16,7 +16,7 @@
     "grass_color_modifier": "none",
     "particle": {
       "options": {
-        "type": "crimson_spore"
+        "type": "white_ash"
       },
       "probability": 0.05
     },
