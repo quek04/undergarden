@@ -30,11 +30,6 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
                 .texture("texture", ("block/" + name));
     }
 
-    public ItemModelBuilder itemFenceGate(Supplier<? extends Block> block, String name) {
-        return withExistingParent(blockName(block), mcLoc("block/fence_gate_inventory"))
-                .texture("texture", ("block/" + name));
-    }
-
 
     public ItemModelBuilder itemBlock(Supplier<? extends Block> block) {
         return itemBlock(block, blockName(block));

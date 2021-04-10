@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PPP",
+    " / "
+  ],
+  "key": {
+    "P": {
+      "item": "undergarden:smogstem_planks"
+    },
+    "/": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "undergarden:smogstem_sign",
+    "count": 3
+  }
+}

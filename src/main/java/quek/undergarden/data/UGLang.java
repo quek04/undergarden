@@ -319,9 +319,12 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.MUNCHER_SPAWN_EGG, "Muncher Spawn Egg");
         addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
         addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
-
         addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
         addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
+
+        addItem(UGItems.SMOGSTEM_SIGN, "Smogstem Sign");
+        addItem(UGItems.WIGGLEWOOD_SIGN, "Wigglewood Sign");
+        addItem(UGItems.GRONGLE_SIGN, "Grongle Sign");
 
         addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
         addBiome(UGBiomes.DENSE_FOREST, "Dense Forest");
