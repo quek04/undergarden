@@ -38,6 +38,8 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_ACTIVATE = register("item.undergarden_portal_activate");
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_TRAVEL = register("block.undergarden_portal_travel");
 
+    public static final RegistryObject<SoundEvent> EFFIGY_SET_SPAWN = register("block.effigy_set_spawn");
+
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
 
     public static final RegistryObject<SoundEvent> SLINGSHOT_SHOOT = register("item.slingshot_shoot");

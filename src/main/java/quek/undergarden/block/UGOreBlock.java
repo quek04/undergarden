@@ -6,6 +6,8 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UGOreBlock extends OreBlock {
 
     public UGOreBlock(Properties properties) {

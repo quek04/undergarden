@@ -12,6 +12,8 @@ import net.minecraft.world.World;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GloomgourdBlock extends StemGrownBlock {
 
     public GloomgourdBlock(Properties properties) {

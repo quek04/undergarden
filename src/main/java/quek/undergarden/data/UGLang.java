@@ -445,6 +445,7 @@ public class UGLang extends LanguageProvider {
         add("tooltip.pebble", "Can be used as Slingshot ammo.");
 
         addSubtitle("item", "undergarden_portal_activate", "Undergarden Portal activates");
+        addSubtitle("block", "effigy_set_spawn", "Effigy Sets Spawn");
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
         addSubtitle("item", "slingshot_draw", "Slingshot drawn");
         addSubtitle("item", "slingshot_shoot", "Slingshot fired");

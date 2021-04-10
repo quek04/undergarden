@@ -9,6 +9,8 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class AshenTallDeepturfBlock extends UGPlantBlock {
 
     public AshenTallDeepturfBlock(Properties properties) {

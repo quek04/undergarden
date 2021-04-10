@@ -22,6 +22,8 @@ import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BlisterberryBushBlock extends UGBushBlock implements IGrowable {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;

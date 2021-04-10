@@ -6,6 +6,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import quek.undergarden.registry.UGBlocks;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UGBushBlock extends BushBlock {
 
     public UGBushBlock(Properties properties) {

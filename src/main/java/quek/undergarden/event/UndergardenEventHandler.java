@@ -24,17 +24,17 @@ public class UndergardenEventHandler {
         BlockPos pos = event.getPos();
         BlockState state = world.getBlockState(pos);
 
-        if (player.getEntityWorld().getDimensionKey() == UGDimensions.UNDERGARDEN_WORLD) {
+        if (player.getCommandSenderWorld().dimension() == UGDimensions.UNDERGARDEN_WORLD) {
             if (state.getBlock() == Blocks.RESPAWN_ANCHOR) {
-                if (state.get(RespawnAnchorBlock.CHARGES) > 0) {
-                    if (!world.isRemote()) {
+                if (state.getValue(RespawnAnchorBlock.CHARGE) > 0) {
+                    if (!world.isClientSide()) {
                         world.removeBlock(pos, false);
-                        world.createExplosion(null, DamageSource.func_233546_a_(), null, (double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, 5.0F, true, Explosion.Mode.DESTROY);
+                        world.explode(null, DamageSource.badRespawnPointExplosion(), null, (double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, 5.0F, true, Explosion.Mode.DESTROY);
                     }
-                    player.swingArm(Hand.MAIN_HAND);
+                    player.swing(Hand.MAIN_HAND);
                     event.setCanceled(true);
-                } else {
-                    event.setCanceled(true);
+                } else if (player.getMainHandItem().getItem() == Blocks.GLOWSTONE.asItem() || player.getOffhandItem().getItem() == Blocks.GLOWSTONE.asItem()) {
+                    world.setBlock(pos, state.setValue(RespawnAnchorBlock.CHARGE, 1), 19);
                 }
             }
         }

@@ -24,6 +24,8 @@ import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GooBlock extends Block {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
