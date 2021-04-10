@@ -5,6 +5,7 @@ import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.SignItem;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
@@ -49,6 +50,8 @@ public class UGRecipeProvider extends RecipeProvider {
                 .requires(blockIn.get())
                 .unlockedBy("has_" + blockIn.get().getRegistryName().getPath(), has(blockIn.get()));
     }
+
+
 
     public ShapedRecipeBuilder makePressurePlate(Supplier<? extends Block> pressurePlateOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shaped(pressurePlateOut.get())
@@ -249,6 +252,16 @@ public class UGRecipeProvider extends RecipeProvider {
                 .pattern("P P")
                 .pattern("PPP")
                 .define('P', planksIn.get())
+                .unlockedBy("has_" + planksIn.get().getRegistryName().getPath(), has(planksIn.get()));
+    }
+
+    public ShapedRecipeBuilder makeSign(Supplier<? extends SignItem> signOut, Supplier<? extends Block> planksIn) {
+        return ShapedRecipeBuilder.shaped(signOut.get(), 3)
+                .pattern("PPP")
+                .pattern("PPP")
+                .pattern(" / ")
+                .define('P', planksIn.get())
+                .define('/', Tags.Items.RODS_WOODEN)
                 .unlockedBy("has_" + planksIn.get().getRegistryName().getPath(), has(planksIn.get()));
     }
 

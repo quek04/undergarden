@@ -224,7 +224,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FROSTSTEEL_NUGGET, "Froststeel Nugget");
         addItem(UGItems.UTHERIC_SHARD, "Utheric Shard");
         addItem(UGItems.UTHERIUM_INGOT, "Utherium Ingot");
-        addItem(UGItems.UTHERIUM_CHUNK, "Utherium Chunk");
+        addItem(UGItems.UTHERIUM_CHUNK, "Utherium Nugget");
         addItem(UGItems.REGALIUM_INGOT, "Regalium Ingot");
         addItem(UGItems.REGALIUM_NUGGET, "Regalium Nugget");
         addItem(UGItems.FORGOTTEN_INGOT, "Forgotten Ingot");
@@ -320,9 +320,12 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.MUNCHER_SPAWN_EGG, "Muncher Spawn Egg");
         addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
         addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
-
         addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
         addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
+
+        addItem(UGItems.SMOGSTEM_SIGN, "Smogstem Sign");
+        addItem(UGItems.WIGGLEWOOD_SIGN, "Wigglewood Sign");
+        addItem(UGItems.GRONGLE_SIGN, "Grongle Sign");
 
         addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
         addBiome(UGBiomes.DENSE_FOREST, "Dense Forest");
@@ -433,6 +436,9 @@ public class UGLang extends LanguageProvider {
 
         addAdvTitle("all_blocks", "Collector's Edition");
         addAdvDesc("all_blocks", "Collect one block of every Undergarden ore.");
+
+        addAdvTitle("gloomper_secret_disc", "Death Gloomps");
+        addAdvDesc("gloomper_secret_disc", "Obtain the secret music disc.");
 
         addAdvTitle("otherside_root", "The Otherside");
         addAdvDesc("otherside_root", "Enter the realm of madness.");

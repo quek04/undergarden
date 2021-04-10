@@ -221,6 +221,12 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.TREMBLECRUST_BRICK_WALL);
             dropSelf(UGBlocks.TREMBLECRUST_BUTTON);
             dropSelf(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
+            dropOther(UGBlocks.SMOGSTEM_SIGN, UGItems.SMOGSTEM_SIGN.get());
+            dropOther(UGBlocks.SMOGSTEM_WALL_SIGN, UGItems.SMOGSTEM_SIGN.get());
+            dropOther(UGBlocks.WIGGLEWOOD_SIGN, UGItems.WIGGLEWOOD_SIGN.get());
+            dropOther(UGBlocks.WIGGLEWOOD_WALL_SIGN, UGItems.WIGGLEWOOD_SIGN.get());
+            dropOther(UGBlocks.GRONGLE_SIGN, UGItems.GRONGLE_SIGN.get());
+            dropOther(UGBlocks.GRONGLE_WALL_SIGN, UGItems.GRONGLE_SIGN.get());
         }
 
         @Override
