@@ -8,8 +8,6 @@ import net.minecraft.world.IWorldReader;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class UGAttachedStemBlock extends AttachedStemBlock {
 
     public UGAttachedStemBlock(StemGrownBlock stemGrownBlock, Properties properties) {

@@ -1,6 +1,5 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -11,8 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGTileEntities;
-
-import net.minecraft.block.AbstractBlock.Properties;
 
 public class SmogVentBlock extends Block {
 

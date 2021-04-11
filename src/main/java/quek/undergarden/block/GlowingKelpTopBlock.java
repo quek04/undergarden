@@ -4,8 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.KelpTopBlock;
 import quek.undergarden.registry.UGBlocks;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class GlowingKelpTopBlock extends KelpTopBlock {
 
     public GlowingKelpTopBlock(Properties properties) {

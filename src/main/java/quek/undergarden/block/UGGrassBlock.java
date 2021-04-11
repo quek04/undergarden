@@ -14,8 +14,6 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class UGGrassBlock extends SpreadableSnowyDirtBlock {
 
     public UGGrassBlock(Properties builder) {

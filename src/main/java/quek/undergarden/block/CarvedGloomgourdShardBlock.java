@@ -5,8 +5,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockReader;
 import quek.undergarden.registry.UGTileEntities;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class CarvedGloomgourdShardBlock extends CarvedGloomgourdBlock {
 
     public CarvedGloomgourdShardBlock(Properties properties) {

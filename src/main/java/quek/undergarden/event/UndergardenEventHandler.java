@@ -33,8 +33,6 @@ public class UndergardenEventHandler {
                     }
                     player.swing(Hand.MAIN_HAND);
                     event.setCanceled(true);
-                } else if (player.getMainHandItem().getItem() == Blocks.GLOWSTONE.asItem() || player.getOffhandItem().getItem() == Blocks.GLOWSTONE.asItem()) {
-                    world.setBlock(pos, state.setValue(RespawnAnchorBlock.CHARGE, 1), 19);
                 }
             }
         }

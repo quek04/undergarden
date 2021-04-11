@@ -6,8 +6,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class MushroomVeilBlock extends AbstractBodyPlantBlock {
 
     public MushroomVeilBlock(Properties properties, Direction growthDirection, VoxelShape shape, boolean waterloggable) {
