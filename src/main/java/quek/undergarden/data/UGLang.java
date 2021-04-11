@@ -52,6 +52,7 @@ public class UGLang extends LanguageProvider {
     protected void addTranslations() {
         addBlock(UGBlocks.UNDERGARDEN_PORTAL, "Undergarden Portal");
         addBlock(UGBlocks.CLOGGRUM_BARS, "Cloggrum Bars");
+        addBlock(UGBlocks.STONEBORN_EFFIGY, "Stoneborn Effigy");
 
         addBlock(UGBlocks.DEPTHROCK, "Depthrock");
         addBlock(UGBlocks.DEPTHROCK_BRICKS, "Depthrock Bricks");
@@ -450,6 +451,7 @@ public class UGLang extends LanguageProvider {
         add("tooltip.pebble", "Can be used as Slingshot ammo.");
 
         addSubtitle("item", "undergarden_portal_activate", "Undergarden Portal activates");
+        addSubtitle("block", "effigy_set_spawn", "Effigy sets spawn");
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
         addSubtitle("item", "slingshot_draw", "Slingshot drawn");
         addSubtitle("item", "slingshot_shoot", "Slingshot fired");

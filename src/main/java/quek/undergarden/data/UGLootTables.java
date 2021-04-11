@@ -104,6 +104,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.BLOOD_MUSHROOM);
             dropSelf(UGBlocks.DEPTHROCK_BRICKS);
             dropSelf(UGBlocks.CRACKED_DEPTHROCK_BRICKS);
+            dropSelf(UGBlocks.STONEBORN_EFFIGY);
             dropSelf(UGBlocks.GLOOMGOURD);
             dropSelf(UGBlocks.CARVED_GLOOMGOURD);
             this.add(UGBlocks.DEPTHROCK_PEBBLES.get(), (pebble) -> createSingleItemTableWithSilkTouch(UGBlocks.DEPTHROCK_PEBBLES.get(), UGItems.DEPTHROCK_PEBBLE.get(), RandomValueRange.between(1.0F, 3.0F)));

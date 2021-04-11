@@ -121,6 +121,13 @@
       "undergarden:block/undergarden_portal_travel"
     ]
   },
+  "block.effigy_set_spawn": {
+    "subtitle": "subtitles.block.effigy_set_spawn",
+    "sounds": [
+      "undergarden:block/effigy_set_spawn"
+    ]
+  },
+
   "music.undergarden_music": {
     "sounds": [
       {

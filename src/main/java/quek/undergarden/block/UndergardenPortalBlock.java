@@ -32,6 +32,8 @@ import quek.undergarden.world.UGTeleporter;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UndergardenPortalBlock extends Block {
 
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
