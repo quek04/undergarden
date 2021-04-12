@@ -3,7 +3,7 @@
   "natural": false,
   "coordinate_scale": 4,
   "piglin_safe": true,
-  "respawn_anchor_works": true,
+  "respawn_anchor_works": false,
   "bed_works": false,
   "has_raids": false,
   "has_skylight": false,
