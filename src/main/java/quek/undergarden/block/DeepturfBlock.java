@@ -10,8 +10,6 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class DeepturfBlock extends UGGrassBlock implements IGrowable {
 
     public DeepturfBlock(Properties properties) {
