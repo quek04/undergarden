@@ -2,6 +2,9 @@ package quek.undergarden.block;
 
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;

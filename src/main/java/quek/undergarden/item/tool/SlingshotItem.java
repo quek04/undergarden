@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
-import net.minecraft.item.Item.Properties;
-
 public class SlingshotItem extends ShootableItem {
 
     public SlingshotItem() {

@@ -11,6 +11,9 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IWorldReader;
 import quek.undergarden.registry.UGBlocks;
 
+import java.util.Random;
+import java.util.function.ToIntFunction;
+
 public class DroopvineBlock extends AbstractBodyPlantBlock {
 
     public static final BooleanProperty GLOWY = BooleanProperty.create("glowy");
