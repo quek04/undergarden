@@ -1,10 +1,9 @@
 package quek.undergarden;
 
 import com.google.common.collect.Maps;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ComposterBlock;
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.block.*;
+import net.minecraft.client.renderer.Atlases;
+import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.dispenser.*;
@@ -24,6 +23,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -213,6 +213,10 @@ public class Undergarden {
 			pot.addPlant(UGBlocks.INK_MUSHROOM.getId(), UGBlocks.POTTED_INK_MUSHROOM);
 			pot.addPlant(UGBlocks.BLOOD_MUSHROOM.getId(), UGBlocks.POTTED_BLOOD_MUSHROOM);
 			pot.addPlant(UGBlocks.GRONGLET.getId(), UGBlocks.POTTED_GRONGLET);
+
+			WoodType.register(UGBlocks.SMOGSTEM_WOODTYPE);
+			WoodType.register(UGBlocks.WIGGLEWOOD_WOODTYPE);
+			WoodType.register(UGBlocks.GRONGLE_WOODTYPE);
 		});
 	}
 
@@ -221,6 +225,12 @@ public class Undergarden {
 		UndergardenClient.registerEntityRenderers();
 		UndergardenClient.registerBlockColors();
 		UndergardenClient.registerItemColors();
+		event.enqueueWork(() -> {
+			Atlases.addWoodType(UGBlocks.SMOGSTEM_WOODTYPE);
+			Atlases.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);
+			Atlases.addWoodType(UGBlocks.GRONGLE_WOODTYPE);
+		});
+		ClientRegistry.bindTileEntityRenderer(UGTileEntities.UNDERGARDEN_SIGN.get(), SignTileEntityRenderer::new);
 
 		ItemModelsProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
 			if (entity == null) {

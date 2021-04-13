@@ -54,7 +54,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(ItemTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get().asItem(), UGBlocks.DEPTHROCK_BRICK_WALL.get().asItem(), UGBlocks.SHIVERSTONE_WALL.get().asItem(), UGBlocks.SHIVERSTONE_BRICK_WALL.get().asItem(), UGBlocks.TREMBLECRUST_WALL.get().asItem(), UGBlocks.TREMBLECRUST_BRICK_WALL.get().asItem());
         tag(ItemTags.LEAVES).add(UGBlocks.SMOGSTEM_LEAVES.get().asItem(), UGBlocks.WIGGLEWOOD_LEAVES.get().asItem());
         tag(ItemTags.WOODEN_TRAPDOORS).add(UGBlocks.SMOGSTEM_TRAPDOOR.get().asItem(), UGBlocks.WIGGLEWOOD_TRAPDOOR.get().asItem(), UGBlocks.GRONGLE_TRAPDOOR.get().asItem());
-        //TODO standing & wall signs
+        tag(ItemTags.SIGNS).add(UGItems.SMOGSTEM_SIGN.get(), UGItems.WIGGLEWOOD_SIGN.get(), UGItems.GRONGLE_SIGN.get());
         tag(ItemTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get().asItem());
         tag(ItemTags.GOLD_ORES).add(UGBlocks.GOLD_ORE.get().asItem());
         tag(ItemTags.NON_FLAMMABLE_WOOD).addTag(UGTags.Items.GRONGLE_STEMS).add(UGBlocks.GRONGLE_PLANKS.get().asItem(), UGBlocks.GRONGLE_SLAB.get().asItem(), UGBlocks.GRONGLE_PRESSURE_PLATE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem(), UGBlocks.GRONGLE_TRAPDOOR.get().asItem(), UGBlocks.GRONGLE_FENCE_GATE.get().asItem(), UGBlocks.GRONGLE_STAIRS.get().asItem(), UGBlocks.GRONGLE_BUTTON.get().asItem(), UGBlocks.GRONGLE_DOOR.get().asItem()); //TODO grongle sign

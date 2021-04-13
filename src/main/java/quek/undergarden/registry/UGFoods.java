@@ -9,10 +9,10 @@ public class UGFoods {
     public static final Food UNDERBEANS = (new Food.Builder().nutrition(3).saturationMod(0.2F).fast().build());
     public static final Food BLISTERBERRY = (new Food.Builder().nutrition(6).saturationMod(0.4F).build());
     public static final Food GLOOMGOURD_PIE = (new Food.Builder()).nutrition(8).saturationMod(0.3F).effect(() -> new EffectInstance(UGEffects.VIRULENT_RESISTANCE.get(), 600, 0, false, true), 1.0F).build();
-    public static final Food RAW_DWELLER = (new Food.Builder().nutrition(3).saturationMod(0.3F).meat().build());
-    public static final Food COOKED_DWELLER = (new Food.Builder().nutrition(8).saturationMod(0.8F).meat().build());
+    public static final Food RAW_DWELLER = (new Food.Builder().nutrition(3).saturationMod(0.5F).meat().build());
+    public static final Food COOKED_DWELLER = (new Food.Builder().nutrition(8).saturationMod(1.0F).meat().build());
     public static final Food RAW_GLOOMPER_LEG = (new Food.Builder().nutrition(2).saturationMod(0.5F).meat().build());
-    public static final Food GLOOMPER_LEG = (new Food.Builder().nutrition(6).saturationMod(1.0F).meat().effect(() -> new EffectInstance(Effects.JUMP, 600, 0, false, true), 1.0F).build());
+    public static final Food GLOOMPER_LEG = (new Food.Builder().nutrition(6).saturationMod(0.9F).meat().effect(() -> new EffectInstance(Effects.JUMP, 600, 0, false, true), 1.0F).build());
     public static final Food GOO_BALL = (new Food.Builder().nutrition(0).saturationMod(0).alwaysEat().effect(() -> new EffectInstance(UGEffects.GOOEY.get(), 600, 0, false, true), 1.0F).build());
     public static final Food RAW_GWIBLING = (new Food.Builder()).nutrition(2).saturationMod(0.1F).build();
     public static final Food COOKED_GWIBLING = (new Food.Builder()).nutrition(5).saturationMod(0.6F).build();
