@@ -14,6 +14,8 @@ import quek.undergarden.registry.UGTileEntities;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class ShardTorchBlock extends TorchBlock {
 
 

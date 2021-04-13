@@ -12,6 +12,8 @@ import quek.undergarden.registry.UGTags;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class FrozenDeepturfBlock extends UGPlantBlock {
 
     public FrozenDeepturfBlock(Properties properties) {

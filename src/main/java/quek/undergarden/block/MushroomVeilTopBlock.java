@@ -10,6 +10,8 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class MushroomVeilTopBlock extends AbstractTopPlantBlock {
 
     public MushroomVeilTopBlock(Properties properties, Direction direction, VoxelShape shape, boolean waterloggable, double growthChance) {

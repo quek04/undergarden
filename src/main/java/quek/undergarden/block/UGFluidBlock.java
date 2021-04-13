@@ -15,6 +15,8 @@ import quek.undergarden.registry.UGTags;
 
 import java.util.function.Supplier;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class UGFluidBlock extends FlowingFluidBlock {
 
     public UGFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {

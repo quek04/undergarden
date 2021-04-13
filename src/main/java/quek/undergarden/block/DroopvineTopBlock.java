@@ -15,6 +15,8 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class DroopvineTopBlock extends AbstractTopPlantBlock {
 
     protected static final VoxelShape SHAPE = Block.box(4.0D, 5.0D, 4.0D, 12.0D, 16.0D, 12.0D);

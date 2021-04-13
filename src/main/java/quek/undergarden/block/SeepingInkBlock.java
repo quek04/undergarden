@@ -9,6 +9,8 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import quek.undergarden.registry.UGBlocks;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class SeepingInkBlock extends Block {
 
     public SeepingInkBlock(Properties properties) {
