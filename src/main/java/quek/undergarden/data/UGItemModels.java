@@ -239,9 +239,5 @@ public class UGItemModels extends UGItemModelProvider {
 
         egg(UGItems.MASTICATOR_SPAWN_EGG);
         egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
-
-        normalItem(UGItems.SMOGSTEM_SIGN);
-        normalItem(UGItems.WIGGLEWOOD_SIGN);
-        normalItem(UGItems.GRONGLE_SIGN);
     }
 }

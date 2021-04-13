@@ -5,7 +5,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.HugeFungusConfig;
@@ -162,10 +161,6 @@ public class UGBlocks {
     public static final RegistryObject<WoodButtonBlock> SMOGSTEM_BUTTON = register("smogstem_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion().noCollission()));
     public static final RegistryObject<PressurePlateBlock> SMOGSTEM_PRESSURE_PLATE = register("smogstem_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion().noCollission()));
 
-    public static final WoodType SMOGSTEM_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "smogstem").toString());
-    public static final RegistryObject<StandingSignBlock> SMOGSTEM_SIGN = BLOCKS.register("smogstem_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), SMOGSTEM_WOODTYPE));
-    public static final RegistryObject<WallSignBlock> SMOGSTEM_WALL_SIGN = BLOCKS.register("smogstem_wall_sign", () -> new UndergardenWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN), SMOGSTEM_WOODTYPE));
-
     //wigglewood
     public static final RegistryObject<SaplingBlock> WIGGLEWOOD_SAPLING = register("wigglewood_sapling", () -> new UGSaplingBlock(new WigglewoodTree()));
     public static final RegistryObject<RotatedPillarBlock> WIGGLEWOOD_LOG = register("wigglewood_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_LOG)));
@@ -183,10 +178,6 @@ public class UGBlocks {
     public static final RegistryObject<WoodButtonBlock> WIGGLEWOOD_BUTTON = register("wigglewood_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion().noCollission()));
     public static final RegistryObject<PressurePlateBlock> WIGGLEWOOD_PRESSURE_PLATE = register("wigglewood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion().noCollission()));
 
-    public static final WoodType WIGGLEWOOD_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "wigglewood").toString());
-    public static final RegistryObject<StandingSignBlock> WIGGLEWOOD_SIGN = BLOCKS.register("wigglewood_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), WIGGLEWOOD_WOODTYPE));
-    public static final RegistryObject<WallSignBlock> WIGGLEWOOD_WALL_SIGN = BLOCKS.register("wigglewood_wall_sign", () -> new UndergardenWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN), WIGGLEWOOD_WOODTYPE));
-
     //grongle
     public static final RegistryObject<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_FUNGUS).sound(SoundType.SHROOMLIGHT), () -> Feature.HUGE_FUNGUS.configured(new HugeFungusConfig(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.GRONGLE_STEM.get().defaultBlockState(), UGBlocks.GRONGLE_CAP.get().defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), true))));
     public static final RegistryObject<RotatedPillarBlock> GRONGLE_STEM = register("grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
@@ -203,10 +194,6 @@ public class UGBlocks {
     public static final RegistryObject<TrapDoorBlock> GRONGLE_TRAPDOOR = register("grongle_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
     public static final RegistryObject<WoodButtonBlock> GRONGLE_BUTTON = register("grongle_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion().noCollission()));
     public static final RegistryObject<PressurePlateBlock> GRONGLE_PRESSURE_PLATE = register("grongle_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion().noCollission()));
-
-    public static final WoodType GRONGLE_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "grongle").toString());
-    public static final RegistryObject<StandingSignBlock> GRONGLE_SIGN = BLOCKS.register("grongle_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), GRONGLE_WOODTYPE));
-    public static final RegistryObject<WallSignBlock> GRONGLE_WALL_SIGN = BLOCKS.register("grongle_wall_sign", () -> new UndergardenWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN), GRONGLE_WOODTYPE));
 
     //flower pots
     public static final RegistryObject<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = BLOCKS.register("potted_smogstem_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));

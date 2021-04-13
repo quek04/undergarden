@@ -7,7 +7,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.tileentity.ShardTorchTE;
 import quek.undergarden.block.tileentity.SmogVentTE;
-import quek.undergarden.block.tileentity.UndergardenSignTE;
 
 public class UGTileEntities {
 
@@ -17,13 +16,4 @@ public class UGTileEntities {
             TileEntityType.Builder.of(ShardTorchTE::new, UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get(), UGBlocks.SHARD_O_LANTERN.get()).build(null));
     public static final RegistryObject<TileEntityType<SmogVentTE>> SMOG_VENT = TILE_ENTITIES.register("smog_vent_te", () ->
             TileEntityType.Builder.of(SmogVentTE::new, UGBlocks.SMOG_VENT.get()).build(null));
-    public static final RegistryObject<TileEntityType<UndergardenSignTE>> UNDERGARDEN_SIGN = TILE_ENTITIES.register("undergarden_sign", () ->
-            TileEntityType.Builder.of(UndergardenSignTE::new,
-                    UGBlocks.SMOGSTEM_SIGN.get(),
-                    UGBlocks.SMOGSTEM_WALL_SIGN.get(),
-                    UGBlocks.WIGGLEWOOD_SIGN.get(),
-                    UGBlocks.WIGGLEWOOD_WALL_SIGN.get(),
-                    UGBlocks.GRONGLE_SIGN.get(),
-                    UGBlocks.GRONGLE_WALL_SIGN.get()
-            ).build(null));
 }

@@ -48,10 +48,6 @@ public class UGRecipes extends UGRecipeProvider {
         makeBoat(UGItems.WIGGLEWOOD_BOAT, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
         makeBoat(UGItems.GRONGLE_BOAT, UGBlocks.GRONGLE_PLANKS).save(consumer);
 
-        makeSign(UGItems.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
-        makeSign(UGItems.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
-        makeSign(UGItems.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
-
         ShapedRecipeBuilder.shaped(UGItems.TWISTYTWIG.get(), 4)
                 .pattern("P ")
                 .pattern(" P")

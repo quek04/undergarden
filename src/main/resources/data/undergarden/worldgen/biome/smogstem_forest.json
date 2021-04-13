@@ -16,7 +16,7 @@
     "grass_color_modifier": "none",
     "particle": {
       "options": {
-        "type": "white_ash"
+        "type": "warped_spore"
       },
       "probability": 0.025
     },
