@@ -34,7 +34,7 @@ public class EffigyBlock extends RespawnAnchorBlock {
 
     public EffigyBlock(AbstractBlock.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(CHARGE, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(CHARGE, 1));
     }
 
     @Override
@@ -57,30 +57,24 @@ public class EffigyBlock extends RespawnAnchorBlock {
         ItemStack itemstack = player.getItemInHand(handIn);
         if (handIn == Hand.MAIN_HAND && !(itemstack.getItem() == UGItems.REGALIUM_INGOT.get()) && player.getItemInHand(Hand.OFF_HAND).getItem() == UGItems.REGALIUM_INGOT.get()) {
             return ActionResultType.PASS;
-        }
-        else if (itemstack.getItem() == UGItems.REGALIUM_INGOT.get() && state.getValue(CHARGE) == 0) {
+        } else if (itemstack.getItem() == UGItems.REGALIUM_INGOT.get() && state.getValue(CHARGE)==0) {
             worldIn.setBlock(pos, state.setValue(CHARGE, 1), 19);
             if (!player.abilities.invulnerable) {
                 itemstack.shrink(1);
             }
 
             return ActionResultType.sidedSuccess(worldIn.isClientSide);
-        }
-        else if (state.getValue(CHARGE) == 0) {
-            return ActionResultType.PASS;
-        }
-        else if (!(worldIn.dimension() == UGDimensions.UNDERGARDEN_WORLD)) {
+        } else if (!(worldIn.dimension() == UGDimensions.UNDERGARDEN_WORLD)) {
             if (!worldIn.isClientSide) {
                 this.triggerExplosion(worldIn, pos);
             }
 
             return ActionResultType.sidedSuccess(worldIn.isClientSide);
-        }
-        else {
+        } else {
             if (!worldIn.isClientSide) {
                 ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)player;
                 if (serverplayerentity.getRespawnDimension() != worldIn.dimension() || !serverplayerentity.getRespawnPosition().equals(pos)) {
-                    serverplayerentity.setRespawnPosition(UGDimensions.UNDERGARDEN_WORLD, pos, 0.0F, false, true);
+                    serverplayerentity.setRespawnPosition(worldIn.dimension(), pos, 0.0F, false, true);
                     worldIn.playSound(null, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UGSoundEvents.EFFIGY_SET_SPAWN.get(), SoundCategory.BLOCKS, 3.0F, 1.0F);
                     return ActionResultType.SUCCESS;
                 }
@@ -93,6 +87,11 @@ public class EffigyBlock extends RespawnAnchorBlock {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+    }
+
+    @Override
+    public void onPlace(BlockState state, World world, BlockPos pos, BlockState blockState, boolean flag) {
+        world.setBlock(pos, state.setValue(CHARGE, 1), 19);
     }
 
     private void triggerExplosion(World world, final BlockPos pos2) {
@@ -126,7 +125,7 @@ public class EffigyBlock extends RespawnAnchorBlock {
         }
     }
 
-    public static Optional<Vector3d> findStandUpPosition(EntityType<?> entity, ICollisionReader reader, BlockPos pos) {
+    public static Optional<Vector3d> findRespawnPoint(EntityType<?> entity, ICollisionReader reader, BlockPos pos) {
         Optional<Vector3d> optional = findStandUpPosition(entity, reader, pos, true);
         return optional.isPresent() ? optional : findStandUpPosition(entity, reader, pos, false);
     }
