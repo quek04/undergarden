@@ -31,9 +31,5 @@ public class GwibRender extends MobRenderer<GwibEntity, GwibModel<GwibEntity>> {
         super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
         float f = 4.3F * MathHelper.sin(0.6F * ageInTicks);
         matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(f));
-        if (!entityLiving.isInWater()) {
-            matrixStackIn.translate(0.1F, 0.1F, -0.1F);
-            matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
-        }
     }
 }
