@@ -67,7 +67,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<RotwalkerEntity>> ROTWALKER = ENTITIES.register("rotwalker", () -> ROTWALKER_TYPE);
 
     public static final EntityType<RotbeastEntity> ROTBEAST_TYPE = EntityType.Builder.of(RotbeastEntity::new, EntityClassification.MONSTER)
-            .sized(1.0F,3).build("rotbeast");
+            .sized(2.0F,3.0F).build("rotbeast");
     public static final RegistryObject<EntityType<RotbeastEntity>> ROTBEAST = ENTITIES.register("rotbeast", () -> ROTBEAST_TYPE);
 
     public static final EntityType<DwellerEntity> DWELLER_TYPE = EntityType.Builder.of(DwellerEntity::new, EntityClassification.CREATURE)
