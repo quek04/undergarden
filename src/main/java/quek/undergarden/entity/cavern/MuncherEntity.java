@@ -70,7 +70,7 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
                 if (block.is(UGTags.Blocks.MUNCHER_BREAKABLES)) {
                     this.level.destroyBlock(blockpos, false, this);
                     this.heal(1.0F);
-                    this.playSound(UGSoundEvents.MUNCHER_CHEW.get(), 1.0F, 1.0F);
+                    this.playSound(UGSoundEvents.MUNCHER_CHEW.get(), 1.0F, this.getVoicePitch());
                 }
             }
         }
