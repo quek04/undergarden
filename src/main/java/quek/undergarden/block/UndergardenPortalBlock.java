@@ -77,8 +77,7 @@ public class UndergardenPortalBlock extends Block {
     public static class PortalSpawnEvent extends BlockEvent {
         private final UndergardenPortalBlock.Size size;
 
-        public PortalSpawnEvent(IWorld world, BlockPos pos, BlockState state, UndergardenPortalBlock.Size size)
-        {
+        public PortalSpawnEvent(IWorld world, BlockPos pos, BlockState state, UndergardenPortalBlock.Size size) {
             super(world, pos, state);
             this.size = size;
         }
