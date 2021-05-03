@@ -1,7 +1,7 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
+        maven { url = 'https://maven.minecraftforge.net' }
+        //jcenter()
         mavenCentral()
         maven { url='https://repo.spongepowered.org/repository/maven-public/' }
     }
@@ -94,6 +94,9 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}:api")
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}")
+
+    // i have no idea why this is needed!
+    annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
 }
 
 jar {
@@ -134,6 +137,7 @@ publishing {
 }
 
 repositories {
+    maven { url='https://repo.spongepowered.org/repository/maven-public/' }
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
