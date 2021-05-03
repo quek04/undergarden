@@ -36,9 +36,7 @@ public class GooBlock extends Block {
 
     @Override
     public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((PlayerEntity) entityIn).hasEffect(UGEffects.GOOEY.get())) {
-            //do nothing!
-        }
+        if(entityIn instanceof PlayerEntity && ((PlayerEntity) entityIn).inventory.armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((PlayerEntity) entityIn).hasEffect(UGEffects.GOOEY.get())) { }
         else if(!(entityIn instanceof ScintlingEntity) && entityIn.isOnGround()) {
             entityIn.makeStuckInBlock(state, new Vector3d(0.45D, 0.45D, 0.45D));
         }

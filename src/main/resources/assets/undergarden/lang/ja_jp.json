@@ -202,8 +202,6 @@
   "block.undergarden.wigglewood_wood": "くねった木の.. 木",
   "death.attack.blisterberry_bush": "%1$sはブリスターベリーの茂みが刺さって死んだ",
   "death.attack.blisterberry_bush.player": "%1$sは%2$sから逃げようとしてブリスターベリーの茂みが刺さって死んだ",
-  "death.attack.frozen_deepturf": "%1$sは凍った深奥芝に刺された",
-  "death.attack.frozen_deepturf.player": "%1$sは%2$sから逃げようとして深奥芝に刺された",
   "death.attack.shard_torch": "%1$sは破片の松明の魔法に殺された",
   "death.attack.shard_torch.player": "%1$sは%2$sから逃げようとして破片の松明の魔法に殺された",
   "effect.undergarden.brittleness": "脆弱",
