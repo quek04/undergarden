@@ -234,12 +234,14 @@ public class UGRecipes extends UGRecipeProvider {
         makeIngotToBlock(UGBlocks.REGALIUM_BLOCK, UGItems.REGALIUM_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.FORGOTTEN_BLOCK, UGItems.FORGOTTEN_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.DEPTHROCK, UGItems.DEPTHROCK_PEBBLE).save(consumer, name("pebbles_to_depthrock"));
+        makeIngotToBlock(UGBlocks.GOO_BLOCK, UGItems.GOO_BALL).save(consumer);
 
         makeBlockToIngot(UGItems.CLOGGRUM_INGOT, UGBlocks.CLOGGRUM_BLOCK).save(consumer, name("cloggrum_block_to_ingot"));
         makeBlockToIngot(UGItems.FROSTSTEEL_INGOT, UGBlocks.FROSTSTEEL_BLOCK).save(consumer, name("froststeel_block_to_ingot"));
         makeBlockToIngot(UGItems.UTHERIUM_INGOT, UGBlocks.UTHERIUM_BLOCK).save(consumer, name("utherium_block_to_ingot"));
         makeBlockToIngot(UGItems.REGALIUM_INGOT, UGBlocks.REGALIUM_BLOCK).save(consumer, name("regalium_block_to_ingot"));
         makeBlockToIngot(UGItems.FORGOTTEN_INGOT, UGBlocks.FORGOTTEN_BLOCK).save(consumer, name("forgotten_block_to_ingot"));
+        makeBlockToIngot(UGItems.GOO_BALL, UGBlocks.GOO_BLOCK).save(consumer, name("goo_block_to_ball"));
 
         makeIngotToNugget(UGItems.CLOGGRUM_NUGGET, UGItems.CLOGGRUM_INGOT).save(consumer, name("cloggrum_ingot_to_nugget"));
         makeIngotToNugget(UGItems.FROSTSTEEL_NUGGET, UGItems.FROSTSTEEL_INGOT).save(consumer, name("froststeel_ingot_to_nugget"));

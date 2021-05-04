@@ -82,7 +82,8 @@ public class UGBlocks {
     public static final RegistryObject<Block> DEEPSOIL = register("deepsoil", () -> new Block(AbstractBlock.Properties.copy(DEEPTURF_BLOCK.get()).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> COARSE_DEEPSOIL = register("coarse_deepsoil", () -> new Block(AbstractBlock.Properties.copy(DEEPSOIL.get())));
     public static final RegistryObject<Block> DEEPSOIL_FARMLAND = register("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(AbstractBlock.Properties.copy(Blocks.FARMLAND)));
-    public static final RegistryObject<Block> GOO = register("goo", () -> new GooBlock(AbstractBlock.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission().harvestTool(ToolType.SHOVEL)));
+    public static final RegistryObject<Block> GOO = register("goo", () -> new GooLayerBlock(AbstractBlock.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission().harvestTool(ToolType.SHOVEL)));
+    public static final RegistryObject<Block> GOO_BLOCK = register("goo_block", () -> new GooBlock(AbstractBlock.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> SMOG_VENT = register("smog_vent", () -> new SmogVentBlock(AbstractBlock.Properties.copy(DEPTHROCK.get())));
 
     //plants

@@ -226,6 +226,7 @@ public class UGLootTables extends LootTableProvider {
             dropOther(UGBlocks.WIGGLEWOOD_WALL_SIGN, UGItems.WIGGLEWOOD_SIGN.get());
             dropOther(UGBlocks.GRONGLE_SIGN, UGItems.GRONGLE_SIGN.get());
             dropOther(UGBlocks.GRONGLE_WALL_SIGN, UGItems.GRONGLE_SIGN.get());
+            dropSelf(UGBlocks.GOO_BLOCK);
         }
 
         @Override

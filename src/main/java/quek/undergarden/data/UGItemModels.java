@@ -128,6 +128,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.TREMBLECRUST_SLAB);
         itemBlock(UGBlocks.TREMBLECRUST_BRICK_SLAB);
         itemBlock(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
+        itemBlock(UGBlocks.GOO_BLOCK);
 
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);

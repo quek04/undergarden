@@ -100,6 +100,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.COARSE_DEEPSOIL, "Coarse Deepsoil");
         addBlock(UGBlocks.DEEPSOIL_FARMLAND, "Deepsoil Farmland");
         addBlock(UGBlocks.GOO, "Scintling Goo");
+        addBlock(UGBlocks.GOO_BLOCK, "Scintling Goo Block");
         addBlock(UGBlocks.SMOG_VENT, "Smog Vent");
 
         addBlock(UGBlocks.UNDERBEAN_BUSH, "Underbean Bush");
