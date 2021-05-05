@@ -129,15 +129,15 @@ public class UGBlocks {
     public static final RegistryObject<Block> BLOOD_MUSHROOM_STALK = register("blood_mushroom_stalk", () -> new HugeMushroomBlock(AbstractBlock.Properties.copy(Blocks.MUSHROOM_STEM)));
 
     //ores
-    public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).harvestLevel(0).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> IRON_ORE = register("iron_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).harvestLevel(1).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).harvestLevel(2).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).harvestLevel(3).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).harvestLevel(1).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(SHIVERSTONE.get()).harvestLevel(2).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).harvestLevel(3).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(TREMBLECRUST.get()).harvestLevel(4).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).harvestLevel(4).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestLevel(0).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> IRON_ORE = register("iron_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestLevel(1).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestLevel(2).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestLevel(3).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestLevel(1).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).harvestLevel(2).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestLevel(3).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(TREMBLECRUST.get()).strength(7.0F, 24.0F).harvestLevel(4).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestLevel(4).requiresCorrectToolForDrops()));
 
     //storage blocks
     public static final RegistryObject<Block> CLOGGRUM_BLOCK = register("cloggrum_block", () -> new Block(AbstractBlock.Properties.copy(Blocks.IRON_BLOCK).harvestLevel(2).requiresCorrectToolForDrops()));
