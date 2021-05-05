@@ -13,11 +13,6 @@
     }
   },
   "structures": {
-    "stronghold": {
-      "distance": 0,
-      "count": 0,
-      "spread": 0
-    },
     "structures": {}
   },
   "noise": {
@@ -27,9 +22,9 @@
       "offset": 0
     },
     "bottom_slide": {
-      "target": 320,
+      "target": 120,
       "size": 4,
-      "offset": -1
+      "offset": 0
     },
     "sampling": {
       "xz_scale": 1,
