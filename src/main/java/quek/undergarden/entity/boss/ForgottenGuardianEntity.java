@@ -5,12 +5,14 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.pathfinding.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.DamageSource;
@@ -19,11 +21,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGSoundEvents;
-import quek.undergarden.registry.UGTags;
 
 public class ForgottenGuardianEntity extends MonsterEntity {
 
@@ -38,7 +40,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -187,7 +189,32 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     }
 
     @Override
+    protected PathNavigator createNavigation(World world) {
+        return new ForgottenGuardianEntity.Navigator(this, world);
+    }
+
+    @Override
     public boolean canBeLeashed(PlayerEntity player) {
         return false;
+    }
+
+    static class Navigator extends GroundPathNavigator {
+        public Navigator(MobEntity entity, World world) {
+            super(entity, world);
+        }
+
+        protected PathFinder createPathFinder(int range) {
+            this.nodeEvaluator = new ForgottenGuardianEntity.Processor();
+            return new PathFinder(this.nodeEvaluator, range);
+        }
+    }
+
+    static class Processor extends WalkNodeProcessor {
+        private Processor() {
+        }
+
+        protected PathNodeType evaluateBlockPathType(IBlockReader world, boolean p_215744_2_, boolean p_215744_3_, BlockPos pos, PathNodeType pathNodeType) {
+            return PathNodeType.WALKABLE;
+        }
     }
 }
