@@ -18,7 +18,7 @@ public class GooBlock extends Block {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext selectionContext) {
-        return Block.box(1.0D, 0.0D, 1.0D, 15.0D, 15.0D, 15.0D);
+        return Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
     }
 
     @Override
@@ -26,5 +26,4 @@ public class GooBlock extends Block {
         entity.makeStuckInBlock(state, new Vector3d(1.0D, 0.0D, 1.0D));
         super.entityInside(state, world, pos, entity);
     }
-
 }
