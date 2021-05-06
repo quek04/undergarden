@@ -1,6 +1,6 @@
 package quek.undergarden.world.gen.structure;
 
-import com.mojang.serialization.Codec;
+    import com.mojang.serialization.Codec;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
@@ -47,15 +47,15 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
                     blockPos,
                     this.pieces,
                     this.random,
-                    true,
+                    false,
                     false);
 
             this.pieces.forEach(piece -> piece.move(0, 1, 0));
-            this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
+            //this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
 
             this.calculateBoundingBox();
 
-            this.moveInsideHeights(this.random, 30, 40);
+            this.moveInsideHeights(this.random, 32, 200);
         }
     }
 }

@@ -36,7 +36,7 @@ public class UGStructures {
     }
 
     public static void registerStructures() {
-        setupStructure(CATACOMBS.get(), new StructureSeparationSettings(16, 8, 276320045), true);
+        setupStructure(CATACOMBS.get(), new StructureSeparationSettings(24, 8, 276320045), true);
     }
 
     public static void registerConfiguredStructures() {
