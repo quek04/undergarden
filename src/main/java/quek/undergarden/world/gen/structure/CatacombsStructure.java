@@ -12,11 +12,10 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.AbstractVillagePiece;
 import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import quek.undergarden.Undergarden;
-
-import net.minecraft.world.gen.feature.structure.Structure.IStartFactory;
 
 public class CatacombsStructure extends AbstractUndergardenStructure {
 
@@ -29,7 +28,7 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
         return CatacombsStructure.Start::new;
     }
 
-    public static class Start extends AbstractUndergardenStructure.Start {
+    public static class Start extends StructureStart<NoFeatureConfig> {
 
         public Start(Structure<NoFeatureConfig> structureIn, int chunkX, int chunkZ, MutableBoundingBox mutableBoundingBox, int referenceIn, long seedIn) {
             super(structureIn, chunkX, chunkZ, mutableBoundingBox, referenceIn, seedIn);
@@ -37,7 +36,6 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
 
         @Override
         public void generatePieces(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager structureManager, int x, int z, Biome biome, NoFeatureConfig NoFeatureConfig) {
-            BlockPos yPos = getHighestLand(chunkGenerator);
             BlockPos blockPos = new BlockPos(x * 16, 0, z * 16);
 
             JigsawManager.addPieces(
@@ -57,12 +55,7 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
 
             this.calculateBoundingBox();
 
-            if (yPos.getY() >= 250 || yPos.getY() <= 32) {
-                this.moveInsideHeights(this.random, 39, 40);
-            }
-            else {
-                this.moveInsideHeights(this.random, yPos.getY()-15, yPos.getY()-14);
-            }
+            this.moveInsideHeights(this.random, 30, 40);
         }
     }
 }
