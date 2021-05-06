@@ -1,5 +1,5 @@
 {
-  "type": "undergarden:eldergarden",
+  "type": "undergarden:frostfields",
   "config": {
     "top_material": {
       "Name": "undergarden:frozen_deepturf_block",

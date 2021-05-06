@@ -32,7 +32,7 @@
       "replace_current_music": true
     }
   },
-  "surface_builder": "undergarden:eldergarden",
+  "surface_builder": "undergarden:frostfields",
   "carvers": {
     "air": [
       "undergarden:undergarden_cave"

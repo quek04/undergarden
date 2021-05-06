@@ -12,9 +12,9 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class EldergardenSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
+public class FrostfieldsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
 
-    public EldergardenSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) {
+    public FrostfieldsSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) {
         super(codec);
     }
 
@@ -55,7 +55,6 @@ public class EldergardenSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConf
 
                     i = basin;
                     if (y >= sealevel - 1) {
-                        //chunkIn.setBlockState(pos.up(1), Blocks.SNOW.getDefaultState(), false);
                         chunkIn.setBlockState(pos, topBlock, false);
                     } else if (y < sealevel - 7 - basin) {
                         topBlock = Blocks.AIR.defaultBlockState();
