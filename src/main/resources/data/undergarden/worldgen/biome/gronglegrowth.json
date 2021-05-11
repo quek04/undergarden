@@ -58,7 +58,9 @@
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
       "undergarden:shiverstone_patch",
-      "undergarden:deepsoil_patch"
+      "undergarden:deepsoil_patch",
+      "undergarden:sediment_disk",
+      "undergarden:sediment_patch"
     ],
     [
       "undergarden:lilypads",

@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
@@ -201,6 +202,12 @@ public class UGFeatures {
         public static final ConfiguredFeature<?, ?> ICE_PATCH = Feature.ORE.configured(
                 new OreFeatureConfig(UNDERGARDEN_FILLER, Blocks.PACKED_ICE.defaultBlockState(), 33)
         );
+        public static final ConfiguredFeature<?, ?> SEDIMENT_PATCH = Feature.ORE.configured(
+                new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.SEDIMENT.get().defaultBlockState(), 33)
+        );
+        public static final ConfiguredFeature<?, ?> SEDIMENT_DISK = Feature.DISK.configured(
+                new SphereReplaceConfig(UGBlocks.SEDIMENT.get().defaultBlockState(), FeatureSpread.of(2, 4), 2, ImmutableList.of(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get().defaultBlockState()))
+        );
 
         public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> SMOGSTEM_TREE = UNDERGARDEN_TREE.get().configured(
                 (new BaseTreeFeatureConfig.Builder(
@@ -334,6 +341,8 @@ public class UGFeatures {
         register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(256).squared().count(10));
         register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(256).squared().count(10));
         register("ice_patch", ConfiguredFeatures.ICE_PATCH.range(256).squared().count(20));
+        register("sediment_patch", ConfiguredFeatures.ICE_PATCH.range(32).squared().count(20));
+        register("sediment_disk", ConfiguredFeatures.SEDIMENT_DISK.range(32).squared().count(20));
 
         register("smogstem_tree", ConfiguredFeatures.SMOGSTEM_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
         register("wigglewood_tree", ConfiguredFeatures.WIGGLEWOOD_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));

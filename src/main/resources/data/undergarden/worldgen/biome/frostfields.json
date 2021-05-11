@@ -61,7 +61,9 @@
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
       "undergarden:deepsoil_patch",
-      "undergarden:ice_patch"
+      "undergarden:ice_patch",
+      "undergarden:sediment_disk",
+      "undergarden:sediment_patch"
     ],
     [
       "undergarden:frozen_patch",
