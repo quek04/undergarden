@@ -40,9 +40,9 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
-        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
@@ -53,8 +53,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
                 .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
                 .add(Attributes.ATTACK_DAMAGE, 20.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.2D)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-                .add(Attributes.FOLLOW_RANGE, 64.0D);
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
     }
 
     @Override
