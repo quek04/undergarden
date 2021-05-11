@@ -7,6 +7,7 @@ import net.minecraft.potion.Effects;
 public class UGFoods {
 
     public static final Food UNDERBEANS = (new Food.Builder().nutrition(3).saturationMod(0.2F).fast().build());
+    public static final Food ROASTED_UNDERBEANS = (new Food.Builder().nutrition(6).saturationMod(0.4F).build());
     public static final Food BLISTERBERRY = (new Food.Builder().nutrition(6).saturationMod(0.4F).build());
     public static final Food GLOOMGOURD_PIE = (new Food.Builder()).nutrition(8).saturationMod(0.3F).effect(() -> new EffectInstance(UGEffects.VIRULENT_RESISTANCE.get(), 600, 0, false, true), 1.0F).build();
     public static final Food RAW_DWELLER = (new Food.Builder().nutrition(3).saturationMod(0.5F).meat().build());

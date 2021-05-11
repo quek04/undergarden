@@ -115,6 +115,7 @@ public class UGItems {
     public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopfruitItem::new);
     public static final RegistryObject<Item> UNDERBEANS = ITEMS.register("underbeans", () -> new BlockNamedItem(
             UGBlocks.UNDERBEAN_BUSH.get(), (new Item.Properties()).tab(UGItemGroups.GROUP).food(UGFoods.UNDERBEANS)));
+    public static final RegistryObject<Item> ROASTED_UNDERBEANS = ITEMS.register("roasted_underbeans", () -> new UGItem(UGFoods.ROASTED_UNDERBEANS));
     public static final RegistryObject<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new BlockNamedItem(
             UGBlocks.BLISTERBERRY_BUSH.get(), (new Item.Properties()).tab(UGItemGroups.GROUP).food(UGFoods.BLISTERBERRY)));
     public static final RegistryObject<Item> ROTTEN_BLISTERBERRY = ITEMS.register("rotten_blisterberry", RottenBlisterberryItem::new);

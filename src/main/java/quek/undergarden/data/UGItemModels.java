@@ -210,6 +210,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.GWIBLING_BUCKET);
 
         normalItem(UGItems.UNDERBEANS);
+        normalItem(UGItems.ROASTED_UNDERBEANS);
         normalItem(UGItems.BLISTERBERRY);
         normalItem(UGItems.GLOOMGOURD_PIE);
         normalItem(UGItems.RAW_DWELLER_MEAT);

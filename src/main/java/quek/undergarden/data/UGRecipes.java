@@ -405,6 +405,9 @@ public class UGRecipes extends UGRecipeProvider {
         smeltingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).save(consumer, name("smelt_glowing_kelp"));
         smokingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).save(consumer, name("smoke_glowing_kelp"));
 
+        smeltingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smelt_underbeans"));
+        smokingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smoke_underbeans"));
+
         depthrockStonecuttingRecipe(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).save(consumer, name("chiseled_depthrock_bricks_stonecutting"));
         depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_SLAB.get(), 2).save(consumer, name("depthrock_brick_slab_stonecutting"));
         depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_STAIRS.get()).save(consumer, name("depthrock_brick_stairs_stonecutting"));

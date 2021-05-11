@@ -293,6 +293,7 @@ public class UGLang extends LanguageProvider {
 
         addItem(UGItems.DROOPFRUIT, "Droopfruit");
         addItem(UGItems.UNDERBEANS, "Underbeans");
+        addItem(UGItems.ROASTED_UNDERBEANS, "Roasted Underbeans");
         addItem(UGItems.BLISTERBERRY, "Blisterberry");
         addItem(UGItems.GLOOMGOURD_PIE, "Gloomgourd Pie");
         addItem(UGItems.RAW_DWELLER_MEAT, "Raw Dweller Meat");
