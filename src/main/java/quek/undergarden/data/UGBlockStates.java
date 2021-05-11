@@ -77,6 +77,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.FROZEN_DEEPTURF);
         block(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
         block(UGBlocks.GOO_BLOCK);
+        block(UGBlocks.SEDIMENT);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS);
