@@ -154,7 +154,7 @@
         "type": "undergarden:gwib",
         "weight": 10,
         "minCount": 1,
-        "maxCount": 2
+        "maxCount": 1
       }
     ],
     "water_ambient": [
