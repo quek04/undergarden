@@ -358,7 +358,7 @@ public class UGFeatures {
         register("depthrock_boulder", ConfiguredFeatures.DEPTHROCK_BOULDER.range(256).squared().count(5));
         register("shiverstone_boulder", ConfiguredFeatures.SHIVERSTONE_BOULDER.range(256).squared().count(5));
 
-        register("glowing_kelp", ConfiguredFeatures.GLOWING_KELP.range(32).squared().count(100));
+        register("glowing_kelp", ConfiguredFeatures.GLOWING_KELP.range(30).squared().count(100));
         register("smog_vent", ConfiguredFeatures.SMOG_VENT.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
         register("droopvine", ConfiguredFeatures.DROOPVINE.range(256).squared().count(100));
         register("ice_pillar", ConfiguredFeatures.ICE_PILLAR.range(256).squared().count(50));
