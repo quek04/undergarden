@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "undergarden:sediment_glass"
+    }
+  },
+  "result": {
+    "item": "undergarden:sediment_glass_pane",
+    "count": 16
+  }
+}

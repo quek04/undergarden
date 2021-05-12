@@ -75,7 +75,7 @@ public class UGBlocks {
     public static final RegistryObject<StoneButtonBlock> TREMBLECRUST_BUTTON = register("tremblecrust_button", () -> new StoneButtonBlock(AbstractBlock.Properties.copy(UGBlocks.TREMBLECRUST.get()).noOcclusion().noCollission()));
     public static final RegistryObject<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = register("tremblecrust_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(UGBlocks.TREMBLECRUST.get()).noOcclusion().noCollission()));
 
-    //terrain
+    //normal blocks
     public static final RegistryObject<Block> DEEPTURF_BLOCK = register("deepturf_block", () -> new DeepturfBlock(AbstractBlock.Properties.copy(Blocks.GRASS_BLOCK).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> ASHEN_DEEPTURF_BLOCK = register("ashen_deepturf_block", () -> new Block(AbstractBlock.Properties.copy(DEEPTURF_BLOCK.get())));
     public static final RegistryObject<Block> FROZEN_DEEPTURF_BLOCK = register("frozen_deepturf_block", () -> new Block(AbstractBlock.Properties.copy(DEEPTURF_BLOCK.get())));
@@ -86,6 +86,8 @@ public class UGBlocks {
     public static final RegistryObject<Block> GOO_BLOCK = register("goo_block", () -> new GooBlock(AbstractBlock.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> SMOG_VENT = register("smog_vent", () -> new SmogVentBlock(AbstractBlock.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> SEDIMENT = register("sediment", () -> new Block(AbstractBlock.Properties.copy(Blocks.SAND)));
+    public static final RegistryObject<Block> SEDIMENT_GLASS = register("sediment_glass", () -> new GlassBlock(AbstractBlock.Properties.copy(Blocks.GLASS)));
+    public static final RegistryObject<Block> SEDIMENT_GLASS_PANE = register("sediment_glass_pane", () -> new PaneBlock(AbstractBlock.Properties.copy(Blocks.GLASS_PANE)));
 
     //plants
     public static final RegistryObject<Block> UNDERBEAN_BUSH = BLOCKS.register("underbean_bush", () -> new UnderbeanBushBlock(AbstractBlock.Properties.copy(Blocks.SWEET_BERRY_BUSH)));

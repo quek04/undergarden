@@ -35,13 +35,17 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
         return itemBlock(block, blockName(block));
     }
 
-    public ItemModelBuilder itemBlock(Supplier<? extends Block> block, String model) {
-        return withExistingParent(blockName(block), modLoc("block/" + model));
+    public ItemModelBuilder itemBlock(Supplier<? extends Block> block, String name) {
+        return withExistingParent(blockName(block), modLoc("block/" + name));
     }
 
     public ItemModelBuilder itemBlockFlat(Supplier<? extends Block> block) {
+        return itemBlockFlat(block, blockName(block));
+    }
+
+    public ItemModelBuilder itemBlockFlat(Supplier<? extends Block> block, String name) {
         return withExistingParent(blockName(block), mcLoc("item/generated"))
-                .texture("layer0", modLoc("block/" + blockName(block)));
+                .texture("layer0", modLoc("block/" + name));
     }
 
     public ItemModelBuilder normalItem(Supplier<? extends Item> item) {

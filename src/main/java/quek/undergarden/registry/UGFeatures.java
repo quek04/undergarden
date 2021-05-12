@@ -341,7 +341,7 @@ public class UGFeatures {
         register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(256).squared().count(10));
         register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(256).squared().count(10));
         register("ice_patch", ConfiguredFeatures.ICE_PATCH.range(256).squared().count(20));
-        register("sediment_patch", ConfiguredFeatures.ICE_PATCH.range(32).squared().count(20));
+        register("sediment_patch", ConfiguredFeatures.SEDIMENT_PATCH.range(32).squared().count(20));
         register("sediment_disk", ConfiguredFeatures.SEDIMENT_DISK.range(32).squared().count(20));
 
         register("smogstem_tree", ConfiguredFeatures.SMOGSTEM_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));

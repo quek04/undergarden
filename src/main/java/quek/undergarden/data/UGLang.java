@@ -103,6 +103,8 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GOO_BLOCK, "Scintling Goo Block");
         addBlock(UGBlocks.SMOG_VENT, "Smog Vent");
         addBlock(UGBlocks.SEDIMENT, "Sediment");
+        addBlock(UGBlocks.SEDIMENT_GLASS, "Sediment Glass");
+        addBlock(UGBlocks.SEDIMENT_GLASS_PANE, "Sediment Glass Pane");
 
         addBlock(UGBlocks.UNDERBEAN_BUSH, "Underbean Bush");
         addBlock(UGBlocks.BLISTERBERRY_BUSH, "Blisterberry Bush");

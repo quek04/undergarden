@@ -130,6 +130,8 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
         itemBlock(UGBlocks.GOO_BLOCK);
         itemBlock(UGBlocks.SEDIMENT);
+        itemBlock(UGBlocks.SEDIMENT_GLASS);
+        itemBlockFlat(UGBlocks.SEDIMENT_GLASS_PANE, "sediment_glass");
 
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);

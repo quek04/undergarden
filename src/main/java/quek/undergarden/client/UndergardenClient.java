@@ -85,6 +85,8 @@ public class UndergardenClient {
         render(UGBlocks.POTTED_BLOOD_MUSHROOM, cutout);
         render(UGBlocks.POTTED_GRONGLET, cutout);
         render(UGBlocks.FROZEN_DEEPTURF, cutout);
+        render(UGBlocks.SEDIMENT_GLASS, translucent);
+        render(UGBlocks.SEDIMENT_GLASS_PANE, translucent);
     }
 
     public static void registerEntityRenderers() {

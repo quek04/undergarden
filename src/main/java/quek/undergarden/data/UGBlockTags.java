@@ -84,6 +84,10 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.ORES_IRON).add(UGBlocks.IRON_ORE.get());
         tag(Tags.Blocks.STONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get());
         tag(Tags.Blocks.STORAGE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.FORGOTTEN_BLOCK.get());
+        tag(Tags.Blocks.GLASS).add(UGBlocks.SEDIMENT_GLASS.get());
+        tag(Tags.Blocks.GLASS_COLORLESS).add(UGBlocks.SEDIMENT_GLASS.get());
+        tag(Tags.Blocks.GLASS_PANES).add(UGBlocks.SEDIMENT_GLASS_PANE.get());
+        tag(Tags.Blocks.GLASS_PANES_COLORLESS).add(UGBlocks.SEDIMENT_GLASS_PANE.get());
     }
 
     protected TagsProvider.Builder<Block> tag(ITag.INamedTag<Block> tag) {

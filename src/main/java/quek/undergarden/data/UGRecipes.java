@@ -228,6 +228,13 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_goo_ball", has(UGItems.GOO_BALL.get()))
                 .save(consumer, name("undergarden_lead"));
 
+        ShapedRecipeBuilder.shaped(UGBlocks.SEDIMENT_GLASS_PANE.get(), 16)
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', UGBlocks.SEDIMENT_GLASS.get())
+                .unlockedBy("has_sediment_glass", has(UGBlocks.SEDIMENT_GLASS.get()))
+                .save(consumer);
+
         makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_INGOT).save(consumer);
@@ -363,6 +370,8 @@ public class UGRecipes extends UGRecipeProvider {
         smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).save(consumer, name("smelt_depthrock_bricks"));
         smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).save(consumer, name("smelt_shiverstone_bricks"));
         smeltingRecipe(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get(), UGBlocks.TREMBLECRUST_BRICKS.get(), .1F).save(consumer, name("smelt_tremblecrust_bricks"));
+
+        smeltingRecipe(UGBlocks.SEDIMENT_GLASS.get(), UGBlocks.SEDIMENT.get(), 0.1F).save(consumer);
 
         smeltingRecipe(Items.DIAMOND, UGItems.CATALYST.get(), 0.0F).save(consumer, name("smelt_catalyst"));
 

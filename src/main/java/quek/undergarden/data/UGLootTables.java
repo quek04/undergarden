@@ -228,6 +228,8 @@ public class UGLootTables extends LootTableProvider {
             dropOther(UGBlocks.GRONGLE_WALL_SIGN, UGItems.GRONGLE_SIGN.get());
             dropSelf(UGBlocks.GOO_BLOCK);
             dropSelf(UGBlocks.SEDIMENT);
+            dropAsSilk(UGBlocks.SEDIMENT_GLASS);
+            dropAsSilk(UGBlocks.SEDIMENT_GLASS_PANE);
         }
 
         @Override
