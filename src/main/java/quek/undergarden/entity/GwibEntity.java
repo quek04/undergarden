@@ -50,7 +50,7 @@ public class GwibEntity extends WaterMobEntity implements IMob {
     }
 
     public static boolean canGwibSpawn(EntityType<? extends WaterMobEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
-        return worldIn.getBlockState(pos).is(Blocks.WATER) && worldIn.getBlockState(pos.above()).is(Blocks.WATER) && pos.getY() <= 32;
+        return randomIn.nextInt(10) == 0 && worldIn.getBlockState(pos).is(Blocks.WATER) && worldIn.getBlockState(pos.above()).is(Blocks.WATER) && pos.getY() <= 32;
     }
 
     @Override
