@@ -206,7 +206,7 @@ public class UGFeatures {
                 new OreFeatureConfig(UNDERGARDEN_FILLER, UGBlocks.SEDIMENT.get().defaultBlockState(), 33)
         );
         public static final ConfiguredFeature<?, ?> SEDIMENT_DISK = Feature.DISK.configured(
-                new SphereReplaceConfig(UGBlocks.SEDIMENT.get().defaultBlockState(), FeatureSpread.of(2, 4), 2, ImmutableList.of(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get().defaultBlockState()))
+                new SphereReplaceConfig(UGBlocks.SEDIMENT.get().defaultBlockState(), FeatureSpread.of(4, 4), 2, ImmutableList.of(UGBlocks.DEEPSOIL.get().defaultBlockState(), UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get().defaultBlockState()))
         );
 
         public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> SMOGSTEM_TREE = UNDERGARDEN_TREE.get().configured(
