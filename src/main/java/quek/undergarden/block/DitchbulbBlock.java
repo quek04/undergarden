@@ -45,7 +45,7 @@ public class DitchbulbBlock extends UGBushBlock implements IGrowable {
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         super.tick(state, worldIn, pos, rand);
         int age = state.getValue(AGE);
-        if (age != 1 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, true)) {
+        if (rand.nextInt(10) == 0 && age != 1 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, true)) {
             worldIn.setBlock(pos, state.setValue(AGE, 1), 2);
             net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
         }
