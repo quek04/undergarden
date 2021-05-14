@@ -211,7 +211,7 @@ public class UGFeatures {
 
         public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> SMOGSTEM_TREE = UNDERGARDEN_TREE.get().configured(
                 (new BaseTreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_WOOD.get().defaultBlockState()),
+                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LOG.get().defaultBlockState()),
                         new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().defaultBlockState()),
                         new BlobFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 2),
                         new SmogstemTrunkPlacer(10, 2, 2),
@@ -230,7 +230,7 @@ public class UGFeatures {
 
         public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> SMOGSTEM_TREE_TALL = UNDERGARDEN_TREE.get().configured(
                 (new BaseTreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_WOOD.get().defaultBlockState()),
+                        new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LOG.get().defaultBlockState()),
                         new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().defaultBlockState()),
                         new BlobFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 2),
                         new SmogstemTrunkPlacer(15, 4, 4),
