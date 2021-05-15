@@ -15,10 +15,14 @@ import net.minecraft.world.gen.feature.template.RuleTest;
 import net.minecraft.world.gen.feature.template.TagMatchRuleTest;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.BushFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.DarkOakFoliagePlacer;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import net.minecraft.world.gen.treedecorator.LeaveVineTreeDecorator;
+import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
+import net.minecraft.world.gen.trunkplacer.MegaJungleTrunkPlacer;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -227,6 +231,17 @@ public class UGFeatures {
                         new TwoLayerFeature(1, 0, 2)))
                         .ignoreVines().build()
         );
+        public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> GRONGLE_TREE = UNDERGARDEN_TREE.get().configured(
+                (new BaseTreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(UGBlocks.GRONGLE_STEM.get().defaultBlockState()),
+                        new SimpleBlockStateProvider(UGBlocks.GRONGLE_CAP.get().defaultBlockState()),
+                        new DarkOakFoliagePlacer(FeatureSpread.fixed(1), FeatureSpread.fixed(1)),
+                        new MegaJungleTrunkPlacer(10, 2, 19),
+                        new TwoLayerFeature(1, 1, 2)))
+                        .decorators(ImmutableList.of(
+                                TrunkVineTreeDecorator.INSTANCE, LeaveVineTreeDecorator.INSTANCE))
+                        .build()
+        );
 
         public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> SMOGSTEM_TREE_TALL = UNDERGARDEN_TREE.get().configured(
                 (new BaseTreeFeatureConfig.Builder(
@@ -346,6 +361,7 @@ public class UGFeatures {
 
         register("smogstem_tree", ConfiguredFeatures.SMOGSTEM_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
         register("wigglewood_tree", ConfiguredFeatures.WIGGLEWOOD_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
+        register("grongle_tree", ConfiguredFeatures.GRONGLE_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
 
         register("smogstem_tree_tall", ConfiguredFeatures.SMOGSTEM_TREE_TALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
         register("wigglewood_tree_tall", ConfiguredFeatures.WIGGLEWOOD_TREE_TALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
