@@ -55,13 +55,13 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.DIAMOND_ORE);
         crossBlock(UGBlocks.DROOPVINE_TOP);
         block(UGBlocks.COARSE_DEEPSOIL);
-        crossBlock(UGBlocks.GRONGLET);
-        block(UGBlocks.GRONGLE_CAP);
-        log(UGBlocks.GRONGLE_STEM, "grongle_stem");
+        crossBlock(UGBlocks.GRONGLE_SAPLING);
+        block(UGBlocks.GRONGLE_LEAVES);
+        log(UGBlocks.GRONGLE_LOG, "grongle_log");
         block(UGBlocks.GRONGLE_PLANKS);
         log(UGBlocks.STRIPPED_SMOGSTEM_LOG, "stripped_smogstem_log");
         log(UGBlocks.STRIPPED_WIGGLEWOOD_LOG, "stripped_wigglewood_log");
-        log(UGBlocks.STRIPPED_GRONGLE_STEM, "stripped_grongle_stem");
+        log(UGBlocks.STRIPPED_GRONGLE_LOG, "stripped_grongle_log");
         block(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
         block(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
         crossBlock(UGBlocks.SEEPING_INK);

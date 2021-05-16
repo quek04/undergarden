@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_undergarden:grongle_stems": {
+    "has_undergarden:grongle_logs": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "undergarden:grongle_stems"
+            "tag": "undergarden:grongle_logs"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_undergarden:grongle_stems",
+      "has_undergarden:grongle_logs",
       "has_the_recipe"
     ]
   ]

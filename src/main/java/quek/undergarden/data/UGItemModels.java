@@ -99,10 +99,10 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);
         itemBlock(UGBlocks.DEPTHROCK_PRESSURE_PLATE);
         itemBlock(UGBlocks.SHIVERSTONE_PRESSURE_PLATE);
-        itemBlockFlat(UGBlocks.GRONGLET);
-        itemBlock(UGBlocks.GRONGLE_STEM);
-        itemBlock(UGBlocks.GRONGLE_CAP);
-        itemBlock(UGBlocks.GRONGLE_HYPHAE);
+        itemBlockFlat(UGBlocks.GRONGLE_SAPLING);
+        itemBlock(UGBlocks.GRONGLE_LOG);
+        itemBlock(UGBlocks.GRONGLE_LEAVES);
+        itemBlock(UGBlocks.GRONGLE_WOOD);
         itemBlock(UGBlocks.GRONGLE_SLAB);
         itemFence(UGBlocks.GRONGLE_FENCE, "grongle_planks");
         itemBlock(UGBlocks.GRONGLE_PLANKS);
@@ -111,10 +111,10 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.GRONGLE_PRESSURE_PLATE);
         itemBlock(UGBlocks.STRIPPED_SMOGSTEM_LOG);
         itemBlock(UGBlocks.STRIPPED_WIGGLEWOOD_LOG);
-        itemBlock(UGBlocks.STRIPPED_GRONGLE_STEM);
+        itemBlock(UGBlocks.STRIPPED_GRONGLE_LOG);
         itemBlock(UGBlocks.STRIPPED_SMOGSTEM_WOOD);
         itemBlock(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD);
-        itemBlock(UGBlocks.STRIPPED_GRONGLE_HYPHAE);
+        itemBlock(UGBlocks.STRIPPED_GRONGLE_WOOD);
         itemBlock(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
         itemBlock(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
         itemBlock(UGBlocks.FORGOTTEN_BLOCK);

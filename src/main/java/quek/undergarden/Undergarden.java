@@ -93,8 +93,8 @@ public class Undergarden {
 			AxeItem.STRIPABLES.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
 			AxeItem.STRIPABLES.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get());
 			AxeItem.STRIPABLES.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
-			AxeItem.STRIPABLES.put(UGBlocks.GRONGLE_STEM.get(), UGBlocks.STRIPPED_GRONGLE_STEM.get());
-			AxeItem.STRIPABLES.put(UGBlocks.GRONGLE_HYPHAE.get(), UGBlocks.STRIPPED_GRONGLE_HYPHAE.get());
+			AxeItem.STRIPABLES.put(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get());
+			AxeItem.STRIPABLES.put(UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
 
 			HoeItem.TILLABLES.put(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
 			HoeItem.TILLABLES.put(UGBlocks.DEEPSOIL.get(), UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
@@ -178,10 +178,10 @@ public class Undergarden {
 			ComposterBlock.add(0.3F, UGItems.GLOWING_KELP.get());
 			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
 			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
-			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_CAP.get());
+			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_LEAVES.get());
 			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_SAPLING.get());
 			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_SAPLING.get());
-			ComposterBlock.add(0.3F, UGBlocks.GRONGLET.get());
+			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_SAPLING.get());
 			ComposterBlock.add(0.3F, UGBlocks.DEEPTURF.get());
 			ComposterBlock.add(0.3F, UGBlocks.SHIMMERWEED.get());
 			ComposterBlock.add(0.5F, UGBlocks.TALL_DEEPTURF.get());
@@ -212,7 +212,7 @@ public class Undergarden {
 			pot.addPlant(UGBlocks.VEIL_MUSHROOM.getId(), UGBlocks.POTTED_VEIL_MUSHROOM);
 			pot.addPlant(UGBlocks.INK_MUSHROOM.getId(), UGBlocks.POTTED_INK_MUSHROOM);
 			pot.addPlant(UGBlocks.BLOOD_MUSHROOM.getId(), UGBlocks.POTTED_BLOOD_MUSHROOM);
-			pot.addPlant(UGBlocks.GRONGLET.getId(), UGBlocks.POTTED_GRONGLET);
+			pot.addPlant(UGBlocks.GRONGLE_SAPLING.getId(), UGBlocks.POTTED_GRONGLE_SAPLING);
 
 			WoodType.register(UGBlocks.SMOGSTEM_WOODTYPE);
 			WoodType.register(UGBlocks.WIGGLEWOOD_WOODTYPE);

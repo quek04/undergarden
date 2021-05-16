@@ -192,12 +192,12 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.WIGGLEWOOD_BUTTON, "Wigglewood Button");
         addBlock(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, "Wigglewood Pressure Plate");
 
-        addBlock(UGBlocks.GRONGLET, "Gronglet");
-        addBlock(UGBlocks.GRONGLE_STEM, "Grongle Stem");
-        addBlock(UGBlocks.STRIPPED_GRONGLE_STEM, "Stripped Grongle Stem");
-        addBlock(UGBlocks.GRONGLE_HYPHAE, "Grongle Hyphae");
-        addBlock(UGBlocks.STRIPPED_GRONGLE_HYPHAE, "Stripped Grongle Hyphae");
-        addBlock(UGBlocks.GRONGLE_CAP, "Grongle Cap");
+        addBlock(UGBlocks.GRONGLE_SAPLING, "Grongle Sapling");
+        addBlock(UGBlocks.GRONGLE_LOG, "Grongle Log");
+        addBlock(UGBlocks.STRIPPED_GRONGLE_LOG, "Stripped Grongle Log");
+        addBlock(UGBlocks.GRONGLE_WOOD, "Grongle Wood");
+        addBlock(UGBlocks.STRIPPED_GRONGLE_WOOD, "Stripped Grongle Wood");
+        addBlock(UGBlocks.GRONGLE_LEAVES, "Grongle Leaves");
         addBlock(UGBlocks.GRONGLE_PLANKS, "Grongle Planks");
         addBlock(UGBlocks.GRONGLE_STAIRS, "Grongle Stairs");
         addBlock(UGBlocks.GRONGLE_SLAB, "Grongle Slab");

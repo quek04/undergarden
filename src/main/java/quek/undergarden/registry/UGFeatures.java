@@ -87,6 +87,13 @@ public class UGFeatures {
                         FeatureSpread.of(6, 8),
                         FeatureSpread.of(0, 4))
         );
+        public static final ConfiguredFeature<?, ?> GRONGLEGROWTH_PONDS = Feature.DELTA_FEATURE.configured(
+                new BasaltDeltasFeature(
+                        Blocks.WATER.defaultBlockState(),
+                        UGBlocks.SEDIMENT.get().defaultBlockState(),
+                        FeatureSpread.of(3, 4),
+                        FeatureSpread.of(0, 2))
+        );
 
         public static final ConfiguredFeature<?, ?> LILYPADS = Feature.RANDOM_PATCH.configured(
                 (new BlockClusterFeatureConfig.Builder(
@@ -152,11 +159,6 @@ public class UGFeatures {
         public static final ConfiguredFeature<?, ?> BLOOD_MUSHROOM_PATCH = Feature.RANDOM_PATCH.configured(
                 (new BlockClusterFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UGBlocks.BLOOD_MUSHROOM.get().defaultBlockState()), new SimpleBlockPlacer()))
-                        .tries(64).noProjection().build()
-        );
-        public static final ConfiguredFeature<?, ?> GRONGLET_PATCH = Feature.RANDOM_PATCH.configured(
-                (new BlockClusterFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.GRONGLET.get().defaultBlockState()), new SimpleBlockPlacer()))
                         .tries(64).noProjection().build()
         );
         public static final ConfiguredFeature<?, ?> UNDERBEAN_BUSH_PATCH = Feature.RANDOM_PATCH.configured(
@@ -233,8 +235,8 @@ public class UGFeatures {
         );
         public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> GRONGLE_TREE = UNDERGARDEN_TREE.get().configured(
                 (new BaseTreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(UGBlocks.GRONGLE_STEM.get().defaultBlockState()),
-                        new SimpleBlockStateProvider(UGBlocks.GRONGLE_CAP.get().defaultBlockState()),
+                        new SimpleBlockStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
+                        new SimpleBlockStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
                         new DarkOakFoliagePlacer(FeatureSpread.fixed(1), FeatureSpread.fixed(1)),
                         new MegaJungleTrunkPlacer(10, 2, 19),
                         new TwoLayerFeature(1, 1, 2)))
@@ -317,6 +319,7 @@ public class UGFeatures {
         register("bog_lake_virulent", ConfiguredFeatures.VIRULENT_LAKE.decorated(Placement.WATER_LAKE.configured(new ChanceConfig(2))));
 
         register("bog_pond", ConfiguredFeatures.BOG_PONDS.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(40))));
+        register("gronglegrowth_pond", ConfiguredFeatures.GRONGLEGROWTH_PONDS.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(40))));
 
         register("lilypads", ConfiguredFeatures.LILYPADS.range(256).count(5));
         register("deepturf_patch", ConfiguredFeatures.DEEPTURF_PATCH.range(256).squared().count(100));
@@ -333,7 +336,6 @@ public class UGFeatures {
         register("veil_patch", ConfiguredFeatures.VEIL_MUSHROOM_PATCH.range(256).squared().count(1));
         register("ink_patch", ConfiguredFeatures.INK_MUSHROOM_PATCH.range(256).squared().count(1));
         register("blood_patch", ConfiguredFeatures.BLOOD_MUSHROOM_PATCH.range(256).squared().count(1));
-        register("gronglet_patch", ConfiguredFeatures.GRONGLET_PATCH.range(256).squared().count(100));
 
         register("bog_indigo_patch", ConfiguredFeatures.INDIGO_MUSHROOM_PATCH.range(256).squared().count(25));
         register("bog_veil_patch", ConfiguredFeatures.VEIL_MUSHROOM_PATCH.range(256).squared().count(25));

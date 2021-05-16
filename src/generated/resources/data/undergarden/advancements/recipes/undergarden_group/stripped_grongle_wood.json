@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:stripped_grongle_wood"
+    ]
+  },
+  "criteria": {
+    "has_stripped_grongle_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:stripped_grongle_log"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:stripped_grongle_wood"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stripped_grongle_log",
+      "has_the_recipe"
+    ]
+  ]
+}

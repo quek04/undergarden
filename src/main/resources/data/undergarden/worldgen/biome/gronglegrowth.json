@@ -41,12 +41,13 @@
   "features": [
     [],
     [
-      "minecraft:lake_water",
-      "undergarden:lake_virulent"
+      "minecraft:lake_water"
     ],
     [],
     [],
-    [],
+    [
+      "undergarden:gronglegrowth_pond"
+    ],
     [],
     [],
     [
@@ -69,12 +70,15 @@
       "undergarden:droopvine",
       "undergarden:glowing_kelp",
       "undergarden:deepturf_patch",
-      "undergarden:tall_deepturf_patch",
+      "undergarden:shimmerweed_patch",
       "undergarden:pebble_patch",
-      "undergarden:gronglet_patch",
+      "undergarden:indigo_patch",
+      "undergarden:veil_patch",
+      "undergarden:ink_patch",
+      "undergarden:blood_patch",
       "undergarden:underbean_patch",
       "undergarden:spring",
-      "undergarden:virulent_spring",
+      "undergarden:gloomgourd_patch",
       "undergarden:depthrock_boulder",
       "undergarden:shiverstone_boulder"
     ]

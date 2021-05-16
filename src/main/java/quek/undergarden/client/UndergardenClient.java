@@ -68,7 +68,7 @@ public class UndergardenClient {
         render(UGBlocks.SHARD_WALL_TORCH, cutout);
         render(UGBlocks.DROOPVINE_TOP, cutout);
         render(UGBlocks.DROOPVINE, cutout);
-        render(UGBlocks.GRONGLET, cutout);
+        render(UGBlocks.GRONGLE_SAPLING, cutout);
         render(UGBlocks.GRONGLE_DOOR, cutout);
         render(UGBlocks.GRONGLE_TRAPDOOR, cutout);
         render(UGBlocks.VIRULENT_MIX, translucent);
@@ -83,7 +83,7 @@ public class UndergardenClient {
         render(UGBlocks.POTTED_INDIGO_MUSHROOM, cutout);
         render(UGBlocks.POTTED_INK_MUSHROOM, cutout);
         render(UGBlocks.POTTED_BLOOD_MUSHROOM, cutout);
-        render(UGBlocks.POTTED_GRONGLET, cutout);
+        render(UGBlocks.POTTED_GRONGLE_SAPLING, cutout);
         render(UGBlocks.FROZEN_DEEPTURF, cutout);
         render(UGBlocks.SEDIMENT_GLASS, translucent);
         render(UGBlocks.SEDIMENT_GLASS_PANE, translucent);

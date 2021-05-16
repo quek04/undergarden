@@ -192,12 +192,12 @@ public class UGBlocks {
     public static final RegistryObject<WallSignBlock> WIGGLEWOOD_WALL_SIGN = BLOCKS.register("wigglewood_wall_sign", () -> new UndergardenWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN), WIGGLEWOOD_WOODTYPE));
 
     //grongle
-    public static final RegistryObject<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_FUNGUS).sound(SoundType.SHROOMLIGHT), () -> Feature.HUGE_FUNGUS.configured(new HugeFungusConfig(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.GRONGLE_STEM.get().defaultBlockState(), UGBlocks.GRONGLE_CAP.get().defaultBlockState(), Blocks.SHROOMLIGHT.defaultBlockState(), true))));
-    public static final RegistryObject<RotatedPillarBlock> GRONGLE_STEM = register("grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
-    public static final RegistryObject<RotatedPillarBlock> STRIPPED_GRONGLE_STEM = register("stripped_grongle_stem", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
-    public static final RegistryObject<RotatedPillarBlock> GRONGLE_HYPHAE = register("grongle_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
-    public static final RegistryObject<RotatedPillarBlock> STRIPPED_GRONGLE_HYPHAE = register("stripped_grongle_hyphae", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.CRIMSON_STEM).sound(SoundType.SHROOMLIGHT)));
-    public static final RegistryObject<Block> GRONGLE_CAP = register("grongle_cap", () -> new Block(AbstractBlock.Properties.copy(Blocks.WARPED_WART_BLOCK).sound(SoundType.SHROOMLIGHT)));
+    public static final RegistryObject<Block> GRONGLE_SAPLING = register("grongle_sapling", () -> new UGSaplingBlock(new WigglewoodTree()));
+    public static final RegistryObject<RotatedPillarBlock> GRONGLE_LOG = register("grongle_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_GRONGLE_LOG = register("stripped_grongle_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> GRONGLE_WOOD = register("grongle_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_GRONGLE_WOOD = register("stripped_grongle_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
+    public static final RegistryObject<Block> GRONGLE_LEAVES = register("grongle_leaves", () -> new LeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<Block> GRONGLE_PLANKS = register("grongle_planks", () -> new Block(AbstractBlock.Properties.copy(Blocks.CRIMSON_PLANKS)));
     public static final RegistryObject<StairsBlock> GRONGLE_STAIRS = register("grongle_stairs", () -> new StairsBlock(() -> UGBlocks.GRONGLE_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
     public static final RegistryObject<SlabBlock> GRONGLE_SLAB = register("grongle_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
@@ -215,12 +215,12 @@ public class UGBlocks {
     //flower pots
     public static final RegistryObject<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = BLOCKS.register("potted_smogstem_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_WIGGLEWOOD_SAPLING = BLOCKS.register("potted_wigglewood_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, WIGGLEWOOD_SAPLING, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));
+    public static final RegistryObject<FlowerPotBlock> POTTED_GRONGLE_SAPLING = BLOCKS.register("potted_grongle_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, GRONGLE_SAPLING, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_SHIMMERWEED = BLOCKS.register("potted_shimmerweed", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SHIMMERWEED, AbstractBlock.Properties.copy(Blocks.FLOWER_POT).lightLevel((state) -> 12)));
     public static final RegistryObject<FlowerPotBlock> POTTED_INDIGO_MUSHROOM = BLOCKS.register("potted_indigo_mushroom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, INDIGO_MUSHROOM, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_VEIL_MUSHROOM = BLOCKS.register("potted_veil_mushroom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, VEIL_MUSHROOM, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_INK_MUSHROOM = BLOCKS.register("potted_ink_mushroom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, INK_MUSHROOM, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_BLOOD_MUSHROOM = BLOCKS.register("potted_blood_mushroom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOOD_MUSHROOM, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));
-    public static final RegistryObject<FlowerPotBlock> POTTED_GRONGLET = BLOCKS.register("potted_gronglet", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, GRONGLET, AbstractBlock.Properties.copy(Blocks.FLOWER_POT)));
 
     //fluids
     public static final RegistryObject<FlowingFluidBlock> VIRULENT_MIX = BLOCKS.register("virulent_mix", () -> new UGFluidBlock(

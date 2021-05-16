@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MM",
+    "MM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:grongle_log"
+    }
+  },
+  "result": {
+    "item": "undergarden:grongle_wood",
+    "count": 3
+  }
+}

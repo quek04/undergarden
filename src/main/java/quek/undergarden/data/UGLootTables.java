@@ -98,6 +98,7 @@ public class UGLootTables extends LootTableProvider {
             this.add(UGBlocks.SMOGSTEM_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.SMOGSTEM_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
             dropSelf(UGBlocks.WIGGLEWOOD_SAPLING);
             this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.WIGGLEWOOD_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
+            this.add(UGBlocks.GRONGLE_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.GRONGLE_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
             dropSelf(UGBlocks.INDIGO_MUSHROOM);
             dropSelf(UGBlocks.VEIL_MUSHROOM);
             dropSelf(UGBlocks.INK_MUSHROOM);
@@ -151,7 +152,6 @@ public class UGLootTables extends LootTableProvider {
             this.add(UGBlocks.IRON_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(Items.IRON_NUGGET).apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F))).apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
             this.add(UGBlocks.GOLD_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(Items.GOLD_NUGGET).apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F))).apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
             dropWithFortune(UGBlocks.DIAMOND_ORE, Items.DIAMOND);
-            dropOther(UGBlocks.DROOPVINE, UGItems.DROOPFRUIT.get());
             this.add(UGBlocks.DROOPVINE.get(), LootTable.lootTable()
                     .withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(UGBlocks.DROOPVINE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DroopvineBlock.GLOWY, true))).add(ItemLootEntry.lootTableItem(UGItems.DROOPFRUIT.get())).apply(SetCount.setCount(ConstantRange.exactly(1))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
             );
@@ -166,11 +166,10 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);
             dropSelf(UGBlocks.DEPTHROCK_PRESSURE_PLATE);
             dropSelf(UGBlocks.SHIVERSTONE_PRESSURE_PLATE);
-            dropSelf(UGBlocks.GRONGLET);
-            dropWithFortune(UGBlocks.GRONGLE_CAP, UGBlocks.GRONGLET.get().asItem());
-            dropSelf(UGBlocks.GRONGLE_STEM);
+            dropSelf(UGBlocks.GRONGLE_SAPLING);
+            dropSelf(UGBlocks.GRONGLE_LOG);
             dropSelf(UGBlocks.GRONGLE_PLANKS);
-            dropSelf(UGBlocks.GRONGLE_HYPHAE);
+            dropSelf(UGBlocks.GRONGLE_WOOD);
             dropSelf(UGBlocks.GRONGLE_STAIRS);
             slab(UGBlocks.GRONGLE_SLAB);
             dropSelf(UGBlocks.GRONGLE_FENCE);
@@ -181,10 +180,10 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.GRONGLE_PRESSURE_PLATE);
             dropSelf(UGBlocks.STRIPPED_SMOGSTEM_LOG);
             dropSelf(UGBlocks.STRIPPED_WIGGLEWOOD_LOG);
-            dropSelf(UGBlocks.STRIPPED_GRONGLE_STEM);
+            dropSelf(UGBlocks.STRIPPED_GRONGLE_LOG);
             dropSelf(UGBlocks.STRIPPED_SMOGSTEM_WOOD);
             dropSelf(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD);
-            dropSelf(UGBlocks.STRIPPED_GRONGLE_HYPHAE);
+            dropSelf(UGBlocks.STRIPPED_GRONGLE_WOOD);
             this.add(UGBlocks.GLOOMGOURD_STEM.get(), (stem) -> createStemDrops(stem, UGItems.GLOOMGOURD_SEEDS.get()));
             this.add(UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(), (stem) -> dropSeedsForStem(stem, UGItems.GLOOMGOURD_SEEDS.get()));
             dropSelf(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
@@ -208,7 +207,7 @@ public class UGLootTables extends LootTableProvider {
             dropPottedContents(UGBlocks.POTTED_VEIL_MUSHROOM.get());
             dropPottedContents(UGBlocks.POTTED_INK_MUSHROOM.get());
             dropPottedContents(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
-            dropPottedContents(UGBlocks.POTTED_GRONGLET.get());
+            dropPottedContents(UGBlocks.POTTED_GRONGLE_SAPLING.get());
             dropWithSilk(UGBlocks.FROZEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             this.add(UGBlocks.FROZEN_DEEPTURF.get(), BlockLootTables::createShearsOnlyDrop);
             dropSelf(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);

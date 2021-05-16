@@ -27,7 +27,7 @@ public class UGRecipes extends UGRecipeProvider {
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
         makePlanks(UGBlocks.SMOGSTEM_PLANKS, UGTags.Items.SMOGSTEM_LOGS).save(consumer);
         makePlanks(UGBlocks.WIGGLEWOOD_PLANKS, UGTags.Items.WIGGLEWOOD_LOGS).save(consumer);
-        makePlanks(UGBlocks.GRONGLE_PLANKS, UGTags.Items.GRONGLE_STEMS).save(consumer);
+        makePlanks(UGBlocks.GRONGLE_PLANKS, UGTags.Items.GRONGLE_LOGS).save(consumer);
 
         makeBricks(UGBlocks.DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK).save(consumer);
         makeBricks(UGBlocks.SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE).save(consumer);
@@ -41,8 +41,8 @@ public class UGRecipes extends UGRecipeProvider {
         makeWood(UGBlocks.STRIPPED_SMOGSTEM_WOOD, UGBlocks.STRIPPED_SMOGSTEM_LOG).save(consumer);
         makeWood(UGBlocks.WIGGLEWOOD_WOOD, UGBlocks.WIGGLEWOOD_LOG).save(consumer);
         makeWood(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD, UGBlocks.STRIPPED_WIGGLEWOOD_LOG).save(consumer);
-        makeWood(UGBlocks.GRONGLE_HYPHAE, UGBlocks.GRONGLE_STEM).save(consumer);
-        makeWood(UGBlocks.STRIPPED_GRONGLE_HYPHAE, UGBlocks.STRIPPED_GRONGLE_STEM).save(consumer);
+        makeWood(UGBlocks.GRONGLE_WOOD, UGBlocks.GRONGLE_LOG).save(consumer);
+        makeWood(UGBlocks.STRIPPED_GRONGLE_WOOD, UGBlocks.STRIPPED_GRONGLE_LOG).save(consumer);
 
         makeBoat(UGItems.SMOGSTEM_BOAT, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
         makeBoat(UGItems.WIGGLEWOOD_BOAT, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);

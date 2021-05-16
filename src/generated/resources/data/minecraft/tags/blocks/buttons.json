@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "undergarden:depthrock_button",
-    "undergarden:shiverstone_button"
+    "undergarden:shiverstone_button",
+    "undergarden:smogstem_button",
+    "undergarden:wigglewood_button",
+    "undergarden:grongle_button"
   ]
 }
