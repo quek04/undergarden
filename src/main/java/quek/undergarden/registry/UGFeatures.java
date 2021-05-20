@@ -19,8 +19,6 @@ import net.minecraft.world.gen.foliageplacer.DarkOakFoliagePlacer;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
-import net.minecraft.world.gen.treedecorator.LeaveVineTreeDecorator;
-import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.MegaJungleTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
@@ -33,7 +31,8 @@ import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.world.gen.feature.*;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
-import quek.undergarden.world.gen.trunkplacer.*;
+import quek.undergarden.world.gen.trunkplacer.GrongleTrunkPlacer;
+import quek.undergarden.world.gen.trunkplacer.SmogstemTrunkPlacer;
 
 public class UGFeatures {
 
@@ -240,7 +239,7 @@ public class UGFeatures {
                         new SimpleBlockStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
                         new SimpleBlockStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
                         new DarkOakFoliagePlacer(FeatureSpread.fixed(0), FeatureSpread.fixed(0)),
-                        new MegaJungleTrunkPlacer(10, 2, 19),
+                        new GrongleTrunkPlacer(10, 2, 19),
                         new TwoLayerFeature(1, 1, 2))
                         .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
                         .build()
