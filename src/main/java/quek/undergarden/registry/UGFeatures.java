@@ -20,7 +20,6 @@ import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
-import net.minecraft.world.gen.trunkplacer.MegaJungleTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -244,6 +243,16 @@ public class UGFeatures {
                         .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
                         .build()
         );
+        public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> GRONGLE_TREE_SMALL = UNDERGARDEN_TREE.get().configured(
+                new BaseTreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
+                        new SimpleBlockStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
+                        new DarkOakFoliagePlacer(FeatureSpread.fixed(0), FeatureSpread.fixed(0)),
+                        new StraightTrunkPlacer(5, 2, 19),
+                        new TwoLayerFeature(1, 0, 1))
+                        .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
+                        .build()
+        );
         public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> GRONGLE_BUSH = UNDERGARDEN_TREE.get().configured(
                 new BaseTreeFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
@@ -373,6 +382,7 @@ public class UGFeatures {
         register("smogstem_tree", ConfiguredFeatures.SMOGSTEM_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
         register("wigglewood_tree", ConfiguredFeatures.WIGGLEWOOD_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
         register("grongle_tree", ConfiguredFeatures.GRONGLE_TREE.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
+        register("grongle_tree_small", ConfiguredFeatures.GRONGLE_TREE_SMALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
         register("grongle_bush", ConfiguredFeatures.GRONGLE_BUSH.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(4))));
 
         register("smogstem_tree_tall", ConfiguredFeatures.SMOGSTEM_TREE_TALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
