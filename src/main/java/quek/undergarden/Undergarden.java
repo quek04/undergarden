@@ -70,6 +70,7 @@ public class Undergarden {
 				UGStructures.STRUCTURES,
 				UGSurfaceBuilders.SURFACE_BUILDERS,
 				UGTileEntities.TILE_ENTITIES,
+				UGTreeDecoratorTypes.TREE_DECORATORS
 		};
 
 		for (DeferredRegister<?> register : registers) {

@@ -34,7 +34,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
                 return false;
             } else {
                 this.placeRoofNetherWart(seedReader, rand, pos);
-                this.placeRoofWeepingVines(seedReader, rand, pos);
+                this.placeRoofDroopvine(seedReader, rand, pos);
                 return true;
             }
         }
@@ -63,7 +63,7 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
         }
     }
 
-    private void placeRoofWeepingVines(IWorld world, Random rand, BlockPos pos) {
+    private void placeRoofDroopvine(IWorld world, Random rand, BlockPos pos) {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
         for(int i = 0; i < 100; ++i) {
@@ -80,17 +80,17 @@ public class DroopvineFeature extends Feature<NoFeatureConfig> {
                         j = 1;
                     }
 
-                    placeDroopvine(world, rand, blockpos$mutable, j * 4, 17, 25);
+                    placeDroopvineColumn(world, rand, blockpos$mutable, j * 4, 17, 25);
                 }
             }
         }
 
     }
 
-    public static void placeDroopvine(IWorld world, Random rand, BlockPos.Mutable posMutable, int x, int y, int z) {
-        for(int i = 0; i <= x; ++i) {
+    public static void placeDroopvineColumn(IWorld world, Random rand, BlockPos.Mutable posMutable, int length, int y, int z) {
+        for(int i = 0; i <= length; ++i) {
             if (world.isEmptyBlock(posMutable)) {
-                if (i == x || !world.isEmptyBlock(posMutable.below())) {
+                if (i == length || !world.isEmptyBlock(posMutable.below())) {
                     world.setBlock(posMutable, UGBlocks.DROOPVINE_TOP.get().defaultBlockState().setValue(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
                     break;
                 }

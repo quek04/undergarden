@@ -78,6 +78,8 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.GOO_BLOCK);
         block(UGBlocks.SEDIMENT);
         block(UGBlocks.SEDIMENT_GLASS);
+        crossBlock(UGBlocks.HANGING_GRONGLE_LEAVES);
+        crossBlock(UGBlocks.HANGING_GRONGLE_LEAVES_TOP);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS);

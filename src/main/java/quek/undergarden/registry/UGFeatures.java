@@ -31,6 +31,7 @@ import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.world.gen.feature.*;
+import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.trunkplacer.*;
 
 public class UGFeatures {
@@ -92,7 +93,7 @@ public class UGFeatures {
                         Blocks.WATER.defaultBlockState(),
                         UGBlocks.SEDIMENT.get().defaultBlockState(),
                         FeatureSpread.of(3, 4),
-                        FeatureSpread.of(0, 2))
+                        FeatureSpread.of(2, 4))
         );
 
         public static final ConfiguredFeature<?, ?> LILYPADS = Feature.RANDOM_PATCH.configured(
@@ -237,11 +238,10 @@ public class UGFeatures {
                 (new BaseTreeFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
                         new SimpleBlockStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
-                        new DarkOakFoliagePlacer(FeatureSpread.fixed(1), FeatureSpread.fixed(1)),
+                        new DarkOakFoliagePlacer(FeatureSpread.fixed(0), FeatureSpread.fixed(0)),
                         new MegaJungleTrunkPlacer(10, 2, 19),
                         new TwoLayerFeature(1, 1, 2)))
-                        .decorators(ImmutableList.of(
-                                TrunkVineTreeDecorator.INSTANCE, LeaveVineTreeDecorator.INSTANCE))
+                        .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
                         .build()
         );
 
