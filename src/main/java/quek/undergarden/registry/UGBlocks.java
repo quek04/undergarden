@@ -199,7 +199,7 @@ public class UGBlocks {
     public static final RegistryObject<RotatedPillarBlock> GRONGLE_WOOD = register("grongle_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.OAK_WOOD)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_GRONGLE_WOOD = register("stripped_grongle_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
     public static final RegistryObject<Block> GRONGLE_LEAVES = register("grongle_leaves", () -> new LeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES)));
-    public static final RegistryObject<AbstractBodyPlantBlock> HANGING_GRONGLE_LEAVES = register("hanging_grongle_leaves", () -> new HangingGrongleLeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES).noDrops(), Direction.DOWN, false));
+    public static final RegistryObject<AbstractBodyPlantBlock> HANGING_GRONGLE_LEAVES = BLOCKS.register("hanging_grongle_leaves", () -> new HangingGrongleLeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES).noDrops(), Direction.DOWN, false));
     public static final RegistryObject<AbstractTopPlantBlock> HANGING_GRONGLE_LEAVES_TOP = BLOCKS.register("hanging_grongle_leaves_top", () -> new HangingGrongleLeavesTopBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES).noDrops(), Direction.DOWN, false, 0.0D));
     public static final RegistryObject<Block> GRONGLE_PLANKS = register("grongle_planks", () -> new Block(AbstractBlock.Properties.copy(Blocks.CRIMSON_PLANKS)));
     public static final RegistryObject<StairsBlock> GRONGLE_STAIRS = register("grongle_stairs", () -> new StairsBlock(() -> UGBlocks.GRONGLE_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
