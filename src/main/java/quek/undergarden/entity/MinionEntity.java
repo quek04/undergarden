@@ -33,8 +33,8 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 20, 10.0F));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+        //this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        //this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) ->
                 entity instanceof IMob || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
         );
@@ -45,7 +45,7 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.ARMOR, 10.0D)
                 .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.2D);
+                .add(Attributes.MOVEMENT_SPEED, 0.4D);
     }
 
     @Override
