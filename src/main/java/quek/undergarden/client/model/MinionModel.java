@@ -38,31 +38,28 @@ public class MinionModel<T extends MinionEntity> extends SegmentedModel<T> {
 		body.texOffs(27, 53).addBox(-3.0F, -6.0F, -16.0F, 6.0F, 6.0F, 13.0F, 0.0F, false);
 
 		backRightLeg = new ModelRenderer(this);
-		backRightLeg.setPos(0.0F, -1.0F, 5.0F);
+		backRightLeg.setPos(-2.0F, 6.0F, 7.0F);
 		body.addChild(backRightLeg);
-		backRightLeg.texOffs(39, 0).addBox(-7.0F, 7.0F, 2.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
+		backRightLeg.texOffs(39, 0).addBox(-5.0F, 0.0F, 0.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
 
 		backLeftLeg = new ModelRenderer(this);
-		backLeftLeg.setPos(0.0F, -1.0F, 5.0F);
+		backLeftLeg.setPos(2.0F, 6.0F, 7.0F);
 		body.addChild(backLeftLeg);
-		backLeftLeg.texOffs(52, 53).addBox(2.0F, 7.0F, 2.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
+		backLeftLeg.texOffs(52, 53).addBox(0.0F, 0.0F, 0.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
 
 		frontLeftLeg = new ModelRenderer(this);
-		frontLeftLeg.setPos(0.0F, -1.0F, 1.0F);
+		frontLeftLeg.setPos(2.0F, 6.0F, -1.0F);
 		body.addChild(frontLeftLeg);
-		frontLeftLeg.texOffs(54, 7).addBox(2.0F, 7.0F, -7.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
+		frontLeftLeg.texOffs(54, 7).addBox(0.0F, 0.0F, -5.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
 
 		frontRightLeg = new ModelRenderer(this);
-		frontRightLeg.setPos(0.0F, -1.0F, 1.0F);
+		frontRightLeg.setPos(-2.0F, 6.0F, -1.0F);
 		body.addChild(frontRightLeg);
-		frontRightLeg.texOffs(54, 19).addBox(-7.0F, 7.0F, -7.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
+		frontRightLeg.texOffs(54, 19).addBox(-5.0F, 0.0F, -5.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
 	}
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		//this.shell.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		//this.shell.xRot = headPitch * ((float)Math.PI / 180F);
-
 		this.frontLeftLeg.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.frontRightLeg.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 

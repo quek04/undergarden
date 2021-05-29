@@ -1,9 +1,6 @@
 package quek.undergarden.entity;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
@@ -40,12 +37,17 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
         );
     }
 
+    @Override
+    protected float getStandingEyeHeight(Pose pose, EntitySize size) {
+        return 1.0F;
+    }
+
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return GolemEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.ARMOR, 10.0D)
                 .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.4D);
+                .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
     @Override
