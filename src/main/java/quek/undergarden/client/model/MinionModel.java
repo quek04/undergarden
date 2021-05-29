@@ -3,76 +3,76 @@ package quek.undergarden.client.model;
 // Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import quek.undergarden.entity.MinionEntity;
 
 public class MinionModel<T extends MinionEntity> extends SegmentedModel<T> {
-	private final ModelRenderer head;
+	private final ModelRenderer forgottenMinion;
+	private final ModelRenderer shell;
 	private final ModelRenderer body;
-	private final ModelRenderer leftLeg1;
-	private final ModelRenderer leftLeg2;
-	private final ModelRenderer rightLeg1;
-	private final ModelRenderer rightLeg2;
+	private final ModelRenderer backRightLeg;
+	private final ModelRenderer backLeftLeg;
+	private final ModelRenderer frontLeftLeg;
+	private final ModelRenderer frontRightLeg;
 
 	public MinionModel() {
-		texWidth = 64;
-		texHeight = 64;
+		texWidth = 128;
+		texHeight = 128;
 
-		head = new ModelRenderer(this);
-		head.setPos(0.0F, 10.0F, 0.0F);
-		head.texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
-		head.texOffs(27, 19).addBox(-1.0F, 1.0F, -7.0F, 2.0F, 2.0F, 3.0F, 0.0F, false);
+		forgottenMinion = new ModelRenderer(this);
+		forgottenMinion.setPos(0.0F, 11.0F, -3.0F);
+
+		shell = new ModelRenderer(this);
+		shell.setPos(0.0F, 0.0F, 0.0F);
+		forgottenMinion.addChild(shell);
+		setRotationAngle(shell, -0.7854F, 0.0F, 0.0F);
+		shell.texOffs(0, 0).addBox(-6.0F, -14.0F, -8.0F, 12.0F, 17.0F, 15.0F, 0.0F, false);
+		shell.texOffs(40, 32).addBox(-5.0F, -13.0F, -7.0F, 10.0F, 13.0F, 8.0F, 0.0F, false);
 
 		body = new ModelRenderer(this);
-		body.setPos(0.0F, 17.5F, 0.0F);
-		body.texOffs(0, 16).addBox(-3.0F, -3.5F, -3.0F, 6.0F, 7.0F, 6.0F, 0.0F, false);
+		body.setPos(0.0F, 0.0F, 0.0F);
+		forgottenMinion.addChild(body);
+		body.texOffs(0, 32).addBox(-4.0F, -6.0F, -3.0F, 8.0F, 13.0F, 12.0F, 0.0F, false);
+		body.texOffs(27, 53).addBox(-3.0F, -6.0F, -16.0F, 6.0F, 6.0F, 13.0F, 0.0F, false);
 
-		leftLeg1 = new ModelRenderer(this);
-		leftLeg1.setPos(2.0F, 21.0F, -2.0F);
-		leftLeg1.texOffs(18, 16).addBox(0.0F, 0.0F, -3.0F, 3.0F, 3.0F, 3.0F, 0.0F, true);
+		backRightLeg = new ModelRenderer(this);
+		backRightLeg.setPos(0.0F, -1.0F, 5.0F);
+		body.addChild(backRightLeg);
+		backRightLeg.texOffs(39, 0).addBox(-7.0F, 7.0F, 2.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
 
-		leftLeg2 = new ModelRenderer(this);
-		leftLeg2.setPos(2.0F, 21.0F, 2.0F);
-		leftLeg2.texOffs(18, 16).addBox(0.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F, 0.0F, true);
+		backLeftLeg = new ModelRenderer(this);
+		backLeftLeg.setPos(0.0F, -1.0F, 5.0F);
+		body.addChild(backLeftLeg);
+		backLeftLeg.texOffs(52, 53).addBox(2.0F, 7.0F, 2.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
 
-		rightLeg1 = new ModelRenderer(this);
-		rightLeg1.setPos(-2.0F, 21.0F, -2.0F);
-		rightLeg1.texOffs(18, 16).addBox(-3.0F, 0.0F, -3.0F, 3.0F, 3.0F, 3.0F, 0.0F, false);
+		frontLeftLeg = new ModelRenderer(this);
+		frontLeftLeg.setPos(0.0F, -1.0F, 1.0F);
+		body.addChild(frontLeftLeg);
+		frontLeftLeg.texOffs(54, 7).addBox(2.0F, 7.0F, -7.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
 
-		rightLeg2 = new ModelRenderer(this);
-		rightLeg2.setPos(-2.0F, 21.0F, 2.0F);
-		rightLeg2.texOffs(18, 16).addBox(-3.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F, 0.0F, false);
+		frontRightLeg = new ModelRenderer(this);
+		frontRightLeg.setPos(0.0F, -1.0F, 1.0F);
+		body.addChild(frontRightLeg);
+		frontRightLeg.texOffs(54, 19).addBox(-7.0F, 7.0F, -7.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
 	}
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = headPitch * ((float)Math.PI / 180F);
+		//this.shell.yRot = netHeadYaw * ((float)Math.PI / 180F);
+		//this.shell.xRot = headPitch * ((float)Math.PI / 180F);
 
-		this.leftLeg1.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.leftLeg2.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.frontLeftLeg.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.frontRightLeg.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 
-		this.rightLeg1.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.rightLeg2.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-	}
-
-	@Override
-	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		head.render(matrixStack, buffer, packedLight, packedOverlay);
-		body.render(matrixStack, buffer, packedLight, packedOverlay);
-		leftLeg1.render(matrixStack, buffer, packedLight, packedOverlay);
-		leftLeg2.render(matrixStack, buffer, packedLight, packedOverlay);
-		rightLeg1.render(matrixStack, buffer, packedLight, packedOverlay);
-		rightLeg2.render(matrixStack, buffer, packedLight, packedOverlay);
+		this.backLeftLeg.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.backRightLeg.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 	}
 
 	@Override
 	public Iterable<ModelRenderer> parts() {
-		return ImmutableList.of(head, body, leftLeg1, leftLeg2, rightLeg1, rightLeg2);
+		return ImmutableList.of(forgottenMinion);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
