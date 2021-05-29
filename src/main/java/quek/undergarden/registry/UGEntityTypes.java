@@ -120,7 +120,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<MasticatorEntity>> MASTICATOR = ENTITIES.register("masticator", () -> MASTICATOR_TYPE);
 
     public static final EntityType<ForgottenGuardianEntity> FORGOTTEN_GUARDIAN_TYPE = EntityType.Builder.of(ForgottenGuardianEntity::new, EntityClassification.MONSTER)
-            .sized(0.8F, 3.5F).build("forgotten_guardian");
+            .sized(1.0F, 3.8F).build("forgotten_guardian");
     public static final RegistryObject<EntityType<ForgottenGuardianEntity>> FORGOTTEN_GUARDIAN = ENTITIES.register("forgotten_guardian", () -> FORGOTTEN_GUARDIAN_TYPE);
 
     public static void spawnPlacements() {
