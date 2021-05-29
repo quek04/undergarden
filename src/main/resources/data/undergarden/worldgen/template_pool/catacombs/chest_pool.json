@@ -5,7 +5,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "undergarden:catacombs/catacombs_nothing",
+        "location": "minecraft:empty",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

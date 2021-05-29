@@ -1,0 +1,42 @@
+{
+  "name": "undergarden:catacombs/interior_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 100,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_interior1",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 100,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_interior2",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 100,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_interior3",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 100,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_interior4",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
