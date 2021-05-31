@@ -43,6 +43,6 @@ public class MasticatedChestplateItem extends ArmorItem {
 
     @Override
     public String getArmorTexture(ItemStack itemstack, Entity entity, EquipmentSlotType slot, String layer) {
-        return "undergarden:textures/models/armor/masticated_layer_1.png";
+        return "undergarden:textures/armor/masticated_layer_1.png";
     }
 }

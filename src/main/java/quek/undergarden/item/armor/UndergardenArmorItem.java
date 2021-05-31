@@ -59,9 +59,9 @@ public class UndergardenArmorItem extends ArmorItem {
     @Override
     public String getArmorTexture(ItemStack itemstack, Entity entity, EquipmentSlotType slot, String layer) {
         if (slot == EquipmentSlotType.LEGS) {
-            return "undergarden:textures/models/armor/" + material.getName() + "_layer_2.png";
+            return "undergarden:textures/armor/" + material.getName() + "_layer_2.png";
         } else {
-            return "undergarden:textures/models/armor/" + material.getName() + "_layer_1.png";
+            return "undergarden:textures/armor/" + material.getName() + "_layer_1.png";
         }
     }
 
