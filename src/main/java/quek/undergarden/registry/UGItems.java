@@ -150,7 +150,7 @@ public class UGItems {
     public static final RegistryObject<UGSpawnEggItem> GWIB_SPAWN_EGG = ITEMS.register("gwib_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.GWIB_TYPE, 10064737, 4203803));
 
     public static final RegistryObject<Item> MASTICATOR_SPAWN_EGG = ITEMS.register("masticator_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.MASTICATOR_TYPE, 2366466, 15881511));
-    public static final RegistryObject<Item> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN_TYPE, 4076864, 9951919));
+    public static final RegistryObject<Item> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN_TYPE, 8126397, 3170136));
 
     //stuff that should be blocks
     public static final RegistryObject<Item> SHARD_TORCH = ITEMS.register("shard_torch", () -> new WallOrFloorItem(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
