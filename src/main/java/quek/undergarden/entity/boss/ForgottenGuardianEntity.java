@@ -49,9 +49,9 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 80.0D)
-                .add(Attributes.ARMOR, 20.0D)
+                .add(Attributes.ARMOR, 10.0D)
                 .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
-                .add(Attributes.ATTACK_DAMAGE, 20.0D)
+                .add(Attributes.ATTACK_DAMAGE, 10.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.2D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
     }
