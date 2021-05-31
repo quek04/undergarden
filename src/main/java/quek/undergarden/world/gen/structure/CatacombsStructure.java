@@ -36,7 +36,7 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
 
         @Override
         public void generatePieces(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager structureManager, int x, int z, Biome biome, NoFeatureConfig NoFeatureConfig) {
-            BlockPos blockPos = new BlockPos(x * 16, 0, z * 16);
+            BlockPos blockPos = new BlockPos(x * 16, 32, z * 16);
 
             JigsawManager.addPieces(
                     dynamicRegistryManager,
@@ -55,7 +55,7 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
 
             this.calculateBoundingBox();
 
-            this.moveInsideHeights(this.random, 32, 200);
+            //this.moveInsideHeights(this.random, 32, 200);
         }
     }
 }
