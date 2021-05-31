@@ -39,7 +39,6 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
