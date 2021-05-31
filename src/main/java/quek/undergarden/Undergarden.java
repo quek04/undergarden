@@ -186,7 +186,6 @@ public class Undergarden {
 			ComposterBlock.add(0.3F, UGBlocks.DEEPTURF.get());
 			ComposterBlock.add(0.3F, UGBlocks.SHIMMERWEED.get());
 			ComposterBlock.add(0.5F, UGBlocks.TALL_DEEPTURF.get());
-			ComposterBlock.add(0.5F, UGBlocks.DITCHBULB_PLANT.get());
 			ComposterBlock.add(0.5F, UGItems.DITCHBULB.get());
 			ComposterBlock.add(0.5F, UGBlocks.TALL_SHIMMERWEED.get());
 			ComposterBlock.add(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
