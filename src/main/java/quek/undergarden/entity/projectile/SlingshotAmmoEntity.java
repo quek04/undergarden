@@ -55,8 +55,8 @@ public class SlingshotAmmoEntity extends ProjectileItemEntity {
         super.onHitBlock(result);
         BlockState blockstate = this.level.getBlockState(result.getBlockPos());
         Entity shooter = this.getOwner();
-        if(blockstate.canOcclude()) {
-            if(!(shooter instanceof PlayerEntity) || (shooter instanceof PlayerEntity && ((PlayerEntity) shooter).abilities.instabuild)) {
+        if(blockstate.isCollisionShapeFullBlock(this.level, result.getBlockPos())) {
+            if(!(shooter instanceof PlayerEntity) || ((PlayerEntity) shooter).abilities.instabuild) {
                 //don't drop anything
             } else {
                 this.spawnAtLocation(new ItemStack(getDefaultItem()));
