@@ -86,7 +86,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> GOO = register("goo", () -> new GooLayerBlock(AbstractBlock.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission().harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> GOO_BLOCK = register("goo_block", () -> new GooBlock(AbstractBlock.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> SMOG_VENT = register("smog_vent", () -> new SmogVentBlock(AbstractBlock.Properties.copy(DEPTHROCK.get())));
-    public static final RegistryObject<Block> SEDIMENT = register("sediment", () -> new Block(AbstractBlock.Properties.copy(Blocks.SAND)));
+    public static final RegistryObject<Block> SEDIMENT = register("sediment", () -> new Block(AbstractBlock.Properties.copy(Blocks.SAND).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Block> SEDIMENT_GLASS = register("sediment_glass", () -> new GlassBlock(AbstractBlock.Properties.copy(Blocks.GLASS)));
     public static final RegistryObject<Block> SEDIMENT_GLASS_PANE = register("sediment_glass_pane", () -> new PaneBlock(AbstractBlock.Properties.copy(Blocks.GLASS_PANE)));
 
