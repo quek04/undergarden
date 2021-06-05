@@ -455,6 +455,7 @@ public class UGLang extends LanguageProvider {
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
         add("tooltip.forgotten_sword", "Deals 2x damage to non-boss Undergarden mobs.");
         add("tooltip.pebble", "Can be used as Slingshot ammo.");
+        add("tooltip.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
 
         addSubtitle("item", "undergarden_portal_activate", "Undergarden Portal activates");
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
