@@ -270,7 +270,7 @@ public class UGLootTables extends LootTableProvider {
             this.add(UGEntityTypes.GWIB.get(), LootTable.lootTable());
 
             this.add(UGEntityTypes.MASTICATOR.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.MASTICATOR_SCALES.get()).when(KilledByPlayer.killedByPlayer()).apply(SetCount.setCount(RandomValueRange.between(4.0F, 8.0F))))));
-            this.add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).when(KilledByPlayer.killedByPlayer()).apply(SetCount.setCount(RandomValueRange.between(0.0F, 16.0F))))));
+            this.add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).when(KilledByPlayer.killedByPlayer()).apply(SetCount.setCount(RandomValueRange.between(4.0F, 16.0F))))));
         }
 
         @Override
