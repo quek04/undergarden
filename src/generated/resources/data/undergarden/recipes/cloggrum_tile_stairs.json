@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M  ",
+    "MM ",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:cloggrum_tiles"
+    }
+  },
+  "result": {
+    "item": "undergarden:cloggrum_tile_stairs",
+    "count": 4
+  }
+}

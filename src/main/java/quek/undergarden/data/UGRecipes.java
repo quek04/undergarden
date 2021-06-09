@@ -235,6 +235,13 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_sediment_glass", has(UGBlocks.SEDIMENT_GLASS.get()))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(UGBlocks.CLOGGRUM_TILES.get(), 4)
+                .pattern("CC")
+                .pattern("CC")
+                .define('C', UGItems.CLOGGRUM_INGOT.get())
+                .unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
+                .save(consumer);
+
         makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_INGOT).save(consumer);
@@ -308,6 +315,7 @@ public class UGRecipes extends UGRecipeProvider {
         makeStairs(UGBlocks.SHIVERSTONE_BRICK_STAIRS, UGBlocks.SHIVERSTONE_BRICKS).save(consumer);
         makeStairs(UGBlocks.TREMBLECRUST_STAIRS, UGBlocks.TREMBLECRUST).save(consumer);
         makeStairs(UGBlocks.TREMBLECRUST_BRICK_STAIRS, UGBlocks.TREMBLECRUST_BRICKS).save(consumer);
+        makeStairs(UGBlocks.CLOGGRUM_TILE_STAIRS, UGBlocks.CLOGGRUM_TILES).save(consumer);
 
         makeSlab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK).save(consumer);
         makeSlab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -318,6 +326,7 @@ public class UGRecipes extends UGRecipeProvider {
         makeSlab(UGBlocks.SHIVERSTONE_BRICK_SLAB, UGBlocks.SHIVERSTONE_BRICKS).save(consumer);
         makeSlab(UGBlocks.TREMBLECRUST_SLAB, UGBlocks.TREMBLECRUST).save(consumer);
         makeSlab(UGBlocks.TREMBLECRUST_BRICK_SLAB, UGBlocks.TREMBLECRUST_BRICKS).save(consumer);
+        makeSlab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES).save(consumer);
 
         makeWall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK).save(consumer);
         makeWall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS).save(consumer);

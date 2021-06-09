@@ -229,6 +229,9 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.SEDIMENT);
             dropAsSilk(UGBlocks.SEDIMENT_GLASS);
             dropAsSilk(UGBlocks.SEDIMENT_GLASS_PANE);
+            dropSelf(UGBlocks.CLOGGRUM_TILES);
+            dropSelf(UGBlocks.CLOGGRUM_TILE_STAIRS);
+            dropSelf(UGBlocks.CLOGGRUM_TILE_SLAB);
         }
 
         @Override

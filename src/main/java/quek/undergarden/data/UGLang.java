@@ -51,7 +51,6 @@ public class UGLang extends LanguageProvider {
     @Override
     protected void addTranslations() {
         addBlock(UGBlocks.UNDERGARDEN_PORTAL, "Undergarden Portal");
-        addBlock(UGBlocks.CLOGGRUM_BARS, "Cloggrum Bars");
 
         addBlock(UGBlocks.DEPTHROCK, "Depthrock");
         addBlock(UGBlocks.DEPTHROCK_BRICKS, "Depthrock Bricks");
@@ -93,6 +92,22 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.TREMBLECRUST_BUTTON, "Tremblecrust Button");
         addBlock(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, "Tremblecrust Pressure Plate");
 
+        addBlock(UGBlocks.COAL_ORE, "Undergarden Coal Ore");
+        addBlock(UGBlocks.IRON_ORE, "Undergarden Iron Ore");
+        addBlock(UGBlocks.GOLD_ORE, "Undergarden Gold Ore");
+        addBlock(UGBlocks.DIAMOND_ORE, "Undergarden Diamond Ore");
+        addBlock(UGBlocks.CLOGGRUM_ORE, "Cloggrum Ore");
+        addBlock(UGBlocks.FROSTSTEEL_ORE, "Froststeel Ore");
+        addBlock(UGBlocks.UTHERIUM_ORE, "Utherium Ore");
+        addBlock(UGBlocks.OTHERSIDE_UTHERIUM_ORE, "Otherside Utherium Ore");
+        addBlock(UGBlocks.REGALIUM_ORE, "Regalium Ore");
+
+        addBlock(UGBlocks.CLOGGRUM_BLOCK, "Block of Cloggrum");
+        addBlock(UGBlocks.FROSTSTEEL_BLOCK, "Block of Froststeel");
+        addBlock(UGBlocks.UTHERIUM_BLOCK, "Block of Utherium");
+        addBlock(UGBlocks.REGALIUM_BLOCK, "Block of Regalium");
+        addBlock(UGBlocks.FORGOTTEN_BLOCK, "Block of Forgotten Metal");
+
         addBlock(UGBlocks.DEEPTURF_BLOCK, "Deepturf Block");
         addBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK, "Ashen Deepturf Block");
         addBlock(UGBlocks.FROZEN_DEEPTURF_BLOCK, "Frozen Deepturf Block");
@@ -105,6 +120,10 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.SEDIMENT, "Sediment");
         addBlock(UGBlocks.SEDIMENT_GLASS, "Sediment Glass");
         addBlock(UGBlocks.SEDIMENT_GLASS_PANE, "Sediment Glass Pane");
+        addBlock(UGBlocks.CLOGGRUM_BARS, "Cloggrum Bars");
+        addBlock(UGBlocks.CLOGGRUM_TILES, "Cloggrum Tiles");
+        addBlock(UGBlocks.CLOGGRUM_TILE_STAIRS, "Cloggrum Tile Stairs");
+        addBlock(UGBlocks.CLOGGRUM_TILE_SLAB, "Cloggrum Tile Slab");
 
         addBlock(UGBlocks.UNDERBEAN_BUSH, "Underbean Bush");
         addBlock(UGBlocks.BLISTERBERRY_BUSH, "Blisterberry Bush");
@@ -143,22 +162,6 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.BLOOD_MUSHROOM_CAP, "Blood Mushroom Cap");
         addBlock(UGBlocks.BLOOD_MUSHROOM_GLOBULE, "Blood Mushroom Globule");
         addBlock(UGBlocks.BLOOD_MUSHROOM_STALK, "Blood Mushroom Stalk");
-
-        addBlock(UGBlocks.COAL_ORE, "Undergarden Coal Ore");
-        addBlock(UGBlocks.IRON_ORE, "Undergarden Iron Ore");
-        addBlock(UGBlocks.GOLD_ORE, "Undergarden Gold Ore");
-        addBlock(UGBlocks.DIAMOND_ORE, "Undergarden Diamond Ore");
-        addBlock(UGBlocks.CLOGGRUM_ORE, "Cloggrum Ore");
-        addBlock(UGBlocks.FROSTSTEEL_ORE, "Froststeel Ore");
-        addBlock(UGBlocks.UTHERIUM_ORE, "Utherium Ore");
-        addBlock(UGBlocks.OTHERSIDE_UTHERIUM_ORE, "Otherside Utherium Ore");
-        addBlock(UGBlocks.REGALIUM_ORE, "Regalium Ore");
-
-        addBlock(UGBlocks.CLOGGRUM_BLOCK, "Block of Cloggrum");
-        addBlock(UGBlocks.FROSTSTEEL_BLOCK, "Block of Froststeel");
-        addBlock(UGBlocks.UTHERIUM_BLOCK, "Block of Utherium");
-        addBlock(UGBlocks.REGALIUM_BLOCK, "Block of Regalium");
-        addBlock(UGBlocks.FORGOTTEN_BLOCK, "Block of Forgotten Metal");
 
         addBlock(UGBlocks.SMOGSTEM_SAPLING, "Smogstem Sapling");
         addBlock(UGBlocks.SMOGSTEM_LOG, "Smogstem Log");

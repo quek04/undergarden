@@ -2,26 +2,30 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:grongle_boat"
+      "undergarden:cloggrum_tile_slab"
     ]
   },
   "criteria": {
-    "in_water": {
-      "trigger": "minecraft:enter_block",
+    "has_cloggrum_tiles": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "block": "minecraft:water"
+        "items": [
+          {
+            "item": "undergarden:cloggrum_tiles"
+          }
+        ]
       }
     },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:grongle_boat"
+        "recipe": "undergarden:cloggrum_tile_slab"
       }
     }
   },
   "requirements": [
     [
-      "in_water",
+      "has_cloggrum_tiles",
       "has_the_recipe"
     ]
   ]

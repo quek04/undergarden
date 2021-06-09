@@ -6,14 +6,10 @@
     ]
   },
   "criteria": {
-    "has_wigglewood_planks": {
-      "trigger": "minecraft:inventory_changed",
+    "in_water": {
+      "trigger": "minecraft:enter_block",
       "conditions": {
-        "items": [
-          {
-            "item": "undergarden:wigglewood_planks"
-          }
-        ]
+        "block": "minecraft:water"
       }
     },
     "has_the_recipe": {
@@ -25,7 +21,7 @@
   },
   "requirements": [
     [
-      "has_wigglewood_planks",
+      "in_water",
       "has_the_recipe"
     ]
   ]
