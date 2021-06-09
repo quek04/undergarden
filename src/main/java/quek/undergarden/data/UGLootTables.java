@@ -232,6 +232,9 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.CLOGGRUM_TILES);
             dropSelf(UGBlocks.CLOGGRUM_TILE_STAIRS);
             dropSelf(UGBlocks.CLOGGRUM_TILE_SLAB);
+            dropSelf(UGBlocks.DEPTHROCK_TILES);
+            dropSelf(UGBlocks.DEPTHROCK_TILE_STAIRS);
+            dropSelf(UGBlocks.DEPTHROCK_TILE_SLAB);
         }
 
         @Override

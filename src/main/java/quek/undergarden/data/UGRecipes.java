@@ -32,6 +32,7 @@ public class UGRecipes extends UGRecipeProvider {
         makeBricks(UGBlocks.DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK).save(consumer);
         makeBricks(UGBlocks.SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE).save(consumer);
         makeBricks(UGBlocks.TREMBLECRUST_BRICKS, UGBlocks.TREMBLECRUST).save(consumer);
+        makeBricks(UGBlocks.DEPTHROCK_TILES, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
 
         makeChiseledBricks(UGBlocks.CHISELED_DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK_BRICK_SLAB).save(consumer);
         makeChiseledBricks(UGBlocks.CHISELED_SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE_BRICK_SLAB).save(consumer);
@@ -316,6 +317,7 @@ public class UGRecipes extends UGRecipeProvider {
         makeStairs(UGBlocks.TREMBLECRUST_STAIRS, UGBlocks.TREMBLECRUST).save(consumer);
         makeStairs(UGBlocks.TREMBLECRUST_BRICK_STAIRS, UGBlocks.TREMBLECRUST_BRICKS).save(consumer);
         makeStairs(UGBlocks.CLOGGRUM_TILE_STAIRS, UGBlocks.CLOGGRUM_TILES).save(consumer);
+        makeStairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES).save(consumer);
 
         makeSlab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK).save(consumer);
         makeSlab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -327,6 +329,7 @@ public class UGRecipes extends UGRecipeProvider {
         makeSlab(UGBlocks.TREMBLECRUST_SLAB, UGBlocks.TREMBLECRUST).save(consumer);
         makeSlab(UGBlocks.TREMBLECRUST_BRICK_SLAB, UGBlocks.TREMBLECRUST_BRICKS).save(consumer);
         makeSlab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES).save(consumer);
+        makeSlab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES).save(consumer);
 
         makeWall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK).save(consumer);
         makeWall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -434,6 +437,9 @@ public class UGRecipes extends UGRecipeProvider {
         depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_SLAB.get(), 2).save(consumer, name("depthrock_slab_stonecutting"));
         depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_STAIRS.get()).save(consumer, name("depthrock_stairs_stonecutting"));
         depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_WALL.get()).save(consumer, name("depthrock_wall_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_TILES.get()).save(consumer, name("depthrock_tiles_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_TILE_STAIRS.get()).save(consumer, name("depthrock_tile_stairs_stonecutting"));
+        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_TILE_SLAB.get()).save(consumer, name("depthrock_tile_slab_stonecutting"));
 
         depthrockStonecuttingRecipe(UGItems.DEPTHROCK_PEBBLE.get(), 9).save(consumer, name("depthrock_pebble_stonecutting"));
 

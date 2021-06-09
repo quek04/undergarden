@@ -81,6 +81,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.HANGING_GRONGLE_LEAVES);
         crossBlock(UGBlocks.HANGING_GRONGLE_LEAVES_TOP);
         block(UGBlocks.CLOGGRUM_TILES);
+        block(UGBlocks.DEPTHROCK_TILES);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS);
@@ -92,6 +93,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         stairs(UGBlocks.TREMBLECRUST_STAIRS, UGBlocks.TREMBLECRUST);
         stairs(UGBlocks.TREMBLECRUST_BRICK_STAIRS, UGBlocks.TREMBLECRUST_BRICKS);
         stairs(UGBlocks.CLOGGRUM_TILE_STAIRS, UGBlocks.CLOGGRUM_TILES);
+        stairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES);
 
         slab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK);
         slab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS);
@@ -103,6 +105,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         slab(UGBlocks.TREMBLECRUST_SLAB, UGBlocks.TREMBLECRUST);
         slab(UGBlocks.TREMBLECRUST_BRICK_SLAB, UGBlocks.TREMBLECRUST_BRICKS);
         slab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES);
+        slab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES);
 
         wallBlock(UGBlocks.DEPTHROCK_WALL.get(), modLoc("block/depthrock"));
         wallBlock(UGBlocks.DEPTHROCK_BRICK_WALL.get(), modLoc("block/depthrock_bricks"));

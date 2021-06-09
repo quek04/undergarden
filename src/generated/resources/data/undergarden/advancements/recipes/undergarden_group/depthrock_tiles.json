@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:depthrock_tiles"
+    ]
+  },
+  "criteria": {
+    "has_depthrock_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:depthrock_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:depthrock_tiles"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_depthrock_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

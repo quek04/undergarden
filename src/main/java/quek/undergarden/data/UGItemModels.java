@@ -135,6 +135,9 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.CLOGGRUM_TILES);
         itemBlock(UGBlocks.CLOGGRUM_TILE_STAIRS);
         itemBlock(UGBlocks.CLOGGRUM_TILE_SLAB);
+        itemBlock(UGBlocks.DEPTHROCK_TILES);
+        itemBlock(UGBlocks.DEPTHROCK_TILE_STAIRS);
+        itemBlock(UGBlocks.DEPTHROCK_TILE_SLAB);
 
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);

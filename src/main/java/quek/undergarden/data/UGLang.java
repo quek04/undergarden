@@ -56,10 +56,13 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.DEPTHROCK_BRICKS, "Depthrock Bricks");
         addBlock(UGBlocks.CRACKED_DEPTHROCK_BRICKS, "Cracked Depthrock Bricks");
         addBlock(UGBlocks.CHISELED_DEPTHROCK_BRICKS, "Chiseled Depthrock Bricks");
+        addBlock(UGBlocks.DEPTHROCK_TILES, "Depthrock Tiles");
         addBlock(UGBlocks.DEPTHROCK_STAIRS, "Depthrock Stairs");
         addBlock(UGBlocks.DEPTHROCK_BRICK_STAIRS, "Depthrock Brick Stairs");
+        addBlock(UGBlocks.DEPTHROCK_TILE_STAIRS, "Depthrock Tile Stairs");
         addBlock(UGBlocks.DEPTHROCK_SLAB, "Depthrock Slab");
         addBlock(UGBlocks.DEPTHROCK_BRICK_SLAB, "Depthrock Brick Slab");
+        addBlock(UGBlocks.DEPTHROCK_TILE_SLAB, "Depthrock Tile Slab");
         addBlock(UGBlocks.DEPTHROCK_WALL, "Depthrock Wall");
         addBlock(UGBlocks.DEPTHROCK_BRICK_WALL, "Depthrock Brick Wall");
         addBlock(UGBlocks.DEPTHROCK_BUTTON, "Depthrock Button");

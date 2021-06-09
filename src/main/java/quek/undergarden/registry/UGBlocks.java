@@ -37,10 +37,13 @@ public class UGBlocks {
     public static final RegistryObject<Block> DEPTHROCK_BRICKS = register("depthrock_bricks", () -> new Block(AbstractBlock.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> CRACKED_DEPTHROCK_BRICKS = register("cracked_depthrock_bricks", () -> new Block(AbstractBlock.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> CHISELED_DEPTHROCK_BRICKS = register("chiseled_depthrock_bricks", () -> new Block(AbstractBlock.Properties.copy(DEPTHROCK.get())));
+    public static final RegistryObject<Block> DEPTHROCK_TILES = register("depthrock_tiles", () -> new Block(AbstractBlock.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<StairsBlock> DEPTHROCK_STAIRS = register("depthrock_stairs", () -> new StairsBlock(() -> UGBlocks.DEPTHROCK.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion()));
     public static final RegistryObject<StairsBlock> DEPTHROCK_BRICK_STAIRS = register("depthrock_brick_stairs", () -> new StairsBlock(() -> UGBlocks.DEPTHROCK_BRICKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK_BRICKS.get()).noOcclusion()));
+    public static final RegistryObject<StairsBlock> DEPTHROCK_TILE_STAIRS = register("depthrock_tile_stairs", () -> new StairsBlock(() -> UGBlocks.DEPTHROCK_TILES.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion()));
     public static final RegistryObject<SlabBlock> DEPTHROCK_SLAB = register("depthrock_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion()));
     public static final RegistryObject<SlabBlock> DEPTHROCK_BRICK_SLAB = register("depthrock_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK_BRICKS.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> DEPTHROCK_TILE_SLAB = register("depthrock_tile_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion()));
     public static final RegistryObject<WallBlock> DEPTHROCK_WALL = register("depthrock_wall", () -> new WallBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).noOcclusion()));
     public static final RegistryObject<WallBlock> DEPTHROCK_BRICK_WALL = register("depthrock_brick_wall", () -> new WallBlock(AbstractBlock.Properties.copy(DEPTHROCK_BRICKS.get()).noOcclusion()));
     public static final RegistryObject<StoneButtonBlock> DEPTHROCK_BUTTON = register("depthrock_button", () -> new StoneButtonBlock(AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion().noCollission()));
