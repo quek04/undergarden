@@ -65,7 +65,7 @@ public class UGBlocks {
 
     //tremblecrust
     public static final RegistryObject<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(6F, 24F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(3).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> LOOSE_TREMBLECRUST = register("loose_tremblecrust", () -> new LooseTremblecrustBlock(AbstractBlock.Properties.copy(TREMBLECRUST.get()).noDrops()));
+    public static final RegistryObject<Block> LOOSE_TREMBLECRUST = register("loose_tremblecrust", () -> new LooseTremblecrustBlock(AbstractBlock.Properties.copy(TREMBLECRUST.get()).strength(3F, 24F).noDrops()));
     public static final RegistryObject<Block> TREMBLECRUST_BRICKS = register("tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.copy(TREMBLECRUST.get()).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> CRACKED_TREMBLECRUST_BRICKS = register("cracked_tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.copy(TREMBLECRUST_BRICKS.get())));
     public static final RegistryObject<Block> CHISELED_TREMBLECRUST_BRICKS = register("chiseled_tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.copy(TREMBLECRUST_BRICKS.get())));
