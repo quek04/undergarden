@@ -109,7 +109,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.FROSTSTEEL_BLOCK, "Block of Froststeel");
         addBlock(UGBlocks.UTHERIUM_BLOCK, "Block of Utherium");
         addBlock(UGBlocks.REGALIUM_BLOCK, "Block of Regalium");
-        addBlock(UGBlocks.FORGOTTEN_BLOCK, "Block of Forgotten Metal");
+        addBlock(UGBlocks.FORGOTTEN_BLOCK, "Block of Undergardenium");
 
         addBlock(UGBlocks.DEEPTURF_BLOCK, "Deepturf Block");
         addBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK, "Ashen Deepturf Block");
@@ -238,8 +238,8 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.UTHERIUM_CHUNK, "Utherium Nugget");
         addItem(UGItems.REGALIUM_INGOT, "Regalium Ingot");
         addItem(UGItems.REGALIUM_NUGGET, "Regalium Nugget");
-        addItem(UGItems.FORGOTTEN_INGOT, "Forgotten Ingot");
-        addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
+        addItem(UGItems.FORGOTTEN_INGOT, "Undergardenium Ingot");
+        addItem(UGItems.FORGOTTEN_NUGGET, "Undergardenium Nugget");
         addItem(UGItems.SHARD_TORCH, "Shard Torch");
         addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");
         addItem(UGItems.DITCHBULB, "Ditchbulb");
@@ -271,11 +271,11 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.UTHERIUM_SHOVEL, "Utherium Shovel");
         addItem(UGItems.UTHERIUM_HOE, "Utherium Hoe");
 
-        addItem(UGItems.FORGOTTEN_SWORD, "Forgotten Sword");
-        addItem(UGItems.FORGOTTEN_PICKAXE, "Forgotten Pickaxe");
-        addItem(UGItems.FORGOTTEN_AXE, "Forgotten Axe");
-        addItem(UGItems.FORGOTTEN_SHOVEL, "Forgotten Shovel");
-        addItem(UGItems.FORGOTTEN_HOE, "Forgotten Hoe");
+        addItem(UGItems.FORGOTTEN_SWORD, "Undergardenium Sword");
+        addItem(UGItems.FORGOTTEN_PICKAXE, "Undergardenium Pickaxe");
+        addItem(UGItems.FORGOTTEN_AXE, "Undergardenium Axe");
+        addItem(UGItems.FORGOTTEN_SHOVEL, "Undergardenium Shovel");
+        addItem(UGItems.FORGOTTEN_HOE, "Undergardenium Hoe");
 
         addItem(UGItems.SMOGSTEM_BOAT, "Smogstem Boat");
         addItem(UGItems.WIGGLEWOOD_BOAT, "Wigglewood Boat");
@@ -333,7 +333,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
         addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
         addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
-        addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
+        addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Undergardenium Guardian Spawn Egg");
 
         addItem(UGItems.SMOGSTEM_SIGN, "Smogstem Sign");
         addItem(UGItems.WIGGLEWOOD_SIGN, "Wigglewood Sign");
@@ -350,7 +350,7 @@ public class UGLang extends LanguageProvider {
         addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 
         addEntityType(UGEntityTypes.BOAT, "Undergarden Boat");
-        addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
+        addEntityType(UGEntityTypes.MINION, "Undergardenium Minion");
         addEntityType(UGEntityTypes.DWELLER, "Dweller");
         addEntityType(UGEntityTypes.ROTDWELLER, "Rotdweller");
         addEntityType(UGEntityTypes.GWIBLING, "Gwibling");
@@ -367,7 +367,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.GWIB, "Gwib");
 
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
-        addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
+        addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Undergardenium Guardian");
 
         addItemGroup(UGItemGroups.GROUP, "The Undergarden");
 
@@ -429,19 +429,19 @@ public class UGLang extends LanguageProvider {
         addAdvDesc("plant_gloomgourd", "Plant a Gloomgourd seed.");
 
         addAdvTitle("slay_forgotten_guardian", "Decommissioned");
-        addAdvDesc("slay_forgotten_guardian", "Slay a Forgotten Guardian.");
+        addAdvDesc("slay_forgotten_guardian", "Slay an Undergardenium Guardian.");
 
         addAdvTitle("forgotten_ingot", "What Now Is");
-        addAdvDesc("forgotten_ingot", "Forge a Forgotten Ingot from a Forgotten Guardian's nuggets.");
+        addAdvDesc("forgotten_ingot", "Forge an Undergardenium Ingot from an Undergardenium Guardian's nuggets.");
 
-        addAdvTitle("forgotten_tools", "Forgotten Arsenal");
-        addAdvDesc("forgotten_tools", "Use Forgotten Ingots to upgrade Cloggrum tools and make all 5 Forgotten tools.");
+        addAdvTitle("forgotten_tools", "Undergardenium Arsenal");
+        addAdvDesc("forgotten_tools", "Use Undergardenium Ingots to upgrade Cloggrum tools and make all 5 Undergardenium tools.");
 
         addAdvTitle("slay_scintling", "Terrible Person");
         addAdvDesc("slay_scintling", "You killed an innocent Scintling. You monster...");
 
         addAdvTitle("summon_minion", "Buildin' a Sentry");
-        addAdvDesc("summon_minion", "Create a Forgotten Minion using a Forgotten Block and a Carved Gloomgourd.");
+        addAdvDesc("summon_minion", "Create an Undergardenium Minion using an Undergardenium Block and a Carved Gloomgourd.");
 
         addAdvTitle("cloggrum_armor", "Cover Me in Coprolites");
         addAdvDesc("cloggrum_armor", "Obtain a full suit of Cloggrum armor.");
@@ -504,15 +504,15 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "rotling_hurt", "Rotling hurts");
         addSubtitle("entity", "rotling_death", "Rotling dies");
 
-        addSubtitle("entity", "forgotten_guardian_living", "Forgotten Guardian creaks");
-        addSubtitle("entity", "forgotten_guardian_hurt", "Forgotten Guardian hurts");
-        addSubtitle("entity", "forgotten_guardian_death", "Forgotten Guardian dies");
-        addSubtitle("entity", "forgotten_guardian_attack", "Forgotten Guardian attacks");
-        addSubtitle("entity", "forgotten_guardian_deflect", "Forgotten Guardian deflects");
-        addSubtitle("entity", "forgotten_guardian_step", "Forgotten Guardian steps");
+        addSubtitle("entity", "forgotten_guardian_living", "Undergardenium Guardian creaks");
+        addSubtitle("entity", "forgotten_guardian_hurt", "Undergardenium Guardian hurts");
+        addSubtitle("entity", "forgotten_guardian_death", "Undergardenium Guardian dies");
+        addSubtitle("entity", "forgotten_guardian_attack", "Undergardenium Guardian attacks");
+        addSubtitle("entity", "forgotten_guardian_deflect", "Undergardenium Guardian deflects");
+        addSubtitle("entity", "forgotten_guardian_step", "Undergardenium Guardian steps");
 
-        addSubtitle("entity", "minion_shoot", "Forgotten Minion shoots");
-        addSubtitle("entity", "minion_death", "Forgotten Minion dies");
+        addSubtitle("entity", "minion_shoot", "Undergardenium Minion shoots");
+        addSubtitle("entity", "minion_death", "Undergardenium Minion dies");
 
         addSubtitle("entity", "nargoyle_hurt", "Nargoyle hurts");
         addSubtitle("entity", "nargoyle_death", "Nargoyle dies");
