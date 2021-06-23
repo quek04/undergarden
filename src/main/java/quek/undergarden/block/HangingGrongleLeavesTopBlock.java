@@ -7,6 +7,7 @@ import net.minecraft.block.PlantBlockHelper;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import quek.undergarden.registry.UGBlocks;
 
@@ -18,6 +19,12 @@ public class HangingGrongleLeavesTopBlock extends AbstractTopPlantBlock {
 
     public HangingGrongleLeavesTopBlock(Properties properties, Direction direction, boolean waterloggable, double growthChance) {
         super(properties, direction, SHAPE, waterloggable, growthChance);
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 25));
+    }
+
+    @Override
+    public BlockState getStateForPlacement(IWorld p_235504_1_) {
+        return this.defaultBlockState().setValue(AGE, 25);
     }
 
     @Override

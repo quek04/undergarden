@@ -132,7 +132,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.SMOGSTEM_TRAPDOOR);
             dropSelf(UGBlocks.WIGGLEWOOD_TRAPDOOR);
             dropWithSilk(UGBlocks.SMOG_VENT, UGBlocks.DEPTHROCK);
-            this.add(UGBlocks.GOO.get(), (bookshelf) -> createSingleItemTableWithSilkTouch(bookshelf, UGItems.GOO_BALL.get(), RandomValueRange.between(1.0F, 4.0F)));
+            this.add(UGBlocks.GOO.get(), (goo) -> createSingleItemTableWithSilkTouch(goo, UGItems.GOO_BALL.get(), RandomValueRange.between(1.0F, 4.0F)));
             dropWithSilk(UGBlocks.ASHEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             dropSelf(UGBlocks.SHIVERSTONE);
             dropSelf(UGBlocks.SHIVERSTONE_BRICKS);
@@ -235,6 +235,8 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.DEPTHROCK_TILES);
             dropSelf(UGBlocks.DEPTHROCK_TILE_STAIRS);
             dropSelf(UGBlocks.DEPTHROCK_TILE_SLAB);
+            this.add(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get(), BlockLootTables::createShearsOnlyDrop);
+            this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).when(SHEARS).add(ItemLootEntry.lootTableItem(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get()))));
         }
 
         @Override
