@@ -196,6 +196,13 @@
       "undergarden:item/slingshot_draw_2"
     ]
   },
+  "item.blisterberry_bush_pick_berries": {
+    "subtitle": "subtitles.item.pick_blisterberry_bush",
+    "sounds": [
+      "item/sweet_berries/pick_from_bush1",
+      "item/sweet_berries/pick_from_bush2"
+    ]
+  },
   "entity.dweller_ambient": {
     "subtitle": "subtitles.entity.dweller_ambient",
     "sounds": [

@@ -15,10 +15,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGDamageSources;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.*;
 
 import java.util.Random;
 
@@ -77,7 +74,7 @@ public class BlisterberryBushBlock extends UGBushBlock implements IGrowable {
             int random2 = worldIn.random.nextInt(2);
             popResource(worldIn, pos, new ItemStack(UGItems.BLISTERBERRY.get(), random + (flag ? 1 : 0)));
             popResource(worldIn, pos, new ItemStack(UGItems.ROTTEN_BLISTERBERRY.get(), random2 + (flag ? 1 : 0)));
-            worldIn.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
+            worldIn.playSound(null, pos, UGSoundEvents.PICK_BLISTERBERRY_BUSH.get(), SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
             worldIn.setBlock(pos, state.setValue(AGE, 1), 2);
             return ActionResultType.SUCCESS;
         } else {
