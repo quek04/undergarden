@@ -79,7 +79,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> ROTLING_HURT = register("entity.rotling_hurt");
     public static final RegistryObject<SoundEvent> ROTLING_DEATH = register("entity.rotling_death");
 
-    public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_ambient = register("entity.forgotten_guardian_ambient");
+    public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_AMBIENT = register("entity.forgotten_guardian_ambient");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_HURT = register("entity.forgotten_guardian_hurt");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_DEATH = register("entity.forgotten_guardian_death");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_ATTACK = register("entity.forgotten_guardian_attack");
@@ -102,6 +102,11 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> SPLOOGIE_HURT = register("entity.sploogie_hurt");
     public static final RegistryObject<SoundEvent> SPLOOGIE_DEATH = register("entity.sploogie_death");
     public static final RegistryObject<SoundEvent> SPLOOGIE_SPIT = register("entity.sploogie_spit");
+
+    public static final RegistryObject<SoundEvent> MASTICATOR_AMBIENT = register("entity.masticator_ambient");
+    public static final RegistryObject<SoundEvent> MASTICATOR_HURT = register("entity.masticator_hurt");
+    public static final RegistryObject<SoundEvent> MASTICATOR_DEATH = register("entity.masticator_death");
+    public static final RegistryObject<SoundEvent> MASTICATOR_EAT = register("entity.masticator_eat");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Undergarden.MODID, name)));

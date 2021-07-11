@@ -563,5 +563,36 @@
       "undergarden:entity/sploogie_spit_2",
       "undergarden:entity/sploogie_spit_3"
     ]
+  },
+  "entity.masticator_ambient": {
+    "subtitle": "subtitles.entity.masticator_ambient",
+    "sounds": [
+      "undergarden:entity/masticator_ambient_1",
+      "undergarden:entity/masticator_ambient_2",
+      "undergarden:entity/masticator_ambient_3",
+      "undergarden:entity/masticator_ambient_4"
+    ]
+  },
+  "entity.masticator_hurt": {
+    "subtitle": "subtitles.entity.masticator_hurt",
+    "sounds": [
+      "undergarden:entity/masticator_hurt_1",
+      "undergarden:entity/masticator_hurt_2",
+      "undergarden:entity/masticator_hurt_3"
+    ]
+  },
+  "entity.masticator_death": {
+    "subtitle": "subtitles.entity.masticator_death",
+    "sounds": [
+      "undergarden:entity/masticator_death"
+    ]
+  },
+  "entity.masticator_eat": {
+    "subtitle": "subtitles.entity.masticator_eat",
+    "sounds": [
+      "undergarden:entity/masticator_eat_1",
+      "undergarden:entity/masticator_eat_2",
+      "undergarden:entity/masticator_eat_3"
+    ]
   }
 }

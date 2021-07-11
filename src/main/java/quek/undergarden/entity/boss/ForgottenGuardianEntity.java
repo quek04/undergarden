@@ -57,7 +57,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.FORGOTTEN_GUARDIAN_ambient.get();
+        return UGSoundEvents.FORGOTTEN_GUARDIAN_AMBIENT.get();
     }
 
     @Override

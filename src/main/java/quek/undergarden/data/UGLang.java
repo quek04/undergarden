@@ -531,6 +531,11 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "sploogie_death", "Sploogie dies");
         addSubtitle("entity", "sploogie_spit", "Sploogie spits");
 
+        addSubtitle("entity", "masticator_ambient", "Masticator roars");
+        addSubtitle("entity", "masticator_hurt", "Masticator hurts");
+        addSubtitle("entity", "masticator_death", "Masticator dies");
+        addSubtitle("entity", "masticator_chew", "Masticator eats");
+
         addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
         addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
         addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");

@@ -11,6 +11,8 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -20,6 +22,7 @@ import net.minecraft.world.BossInfo;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerBossInfo;
 import net.minecraft.world.server.ServerWorld;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 
@@ -55,6 +58,21 @@ public class MasticatorEntity extends MonsterEntity {
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return UGSoundEvents.MASTICATOR_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return UGSoundEvents.MASTICATOR_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return UGSoundEvents.MASTICATOR_DEATH.get();
+    }
+
+    @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
         this.playSound(SoundEvents.RAVAGER_STEP, 0.20F, 0.5F);
     }
@@ -75,8 +93,8 @@ public class MasticatorEntity extends MonsterEntity {
         super.aiStep();
         if (this.isAlive()) {
             double d0 = this.getTarget() != null ? 0.35D : 0.3D;
-            double d1 = this.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
-            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(MathHelper.lerp(0.1D, d1, d0));
+            double speed = this.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
+            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(MathHelper.lerp(0.1D, speed, d0));
 
             if (this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
                 boolean flag = false;
@@ -100,9 +118,10 @@ public class MasticatorEntity extends MonsterEntity {
     }
 
     @Override
-    public void killed(ServerWorld world, LivingEntity entityLivingIn) { //on kill
+    public void killed(ServerWorld world, LivingEntity entityLivingIn) {
         super.killed(world, entityLivingIn);
         this.heal(this.getHealth() / 4);
+        this.playSound(UGSoundEvents.MASTICATOR_EAT.get(), 1.0F, 1.0F);
     }
 
     @Override
@@ -123,10 +142,10 @@ public class MasticatorEntity extends MonsterEntity {
         entityIn.hurtMarked = true;
     }
 
-    private void launch(Entity p_213688_1_) {
-        double d0 = p_213688_1_.getX() - this.getX();
-        double d1 = p_213688_1_.getZ() - this.getZ();
-        double d2 = Math.max(d0 * d0 + d1 * d1, 0.001D);
-        p_213688_1_.push(d0 / d2 * 4.0D, 0.2D, d1 / d2 * 4.0D);
+    private void launch(Entity target) {
+        double distanceX = target.getX() - this.getX();
+        double distanceZ = target.getZ() - this.getZ();
+        double d2 = Math.max(distanceX * distanceX + distanceZ * distanceZ, 0.001D);
+        target.push(distanceX / d2 * 4.0D, 0.2D, distanceZ / d2 * 4.0D);
     }
 }
