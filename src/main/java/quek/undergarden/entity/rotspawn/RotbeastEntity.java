@@ -1,13 +1,13 @@
 package quek.undergarden.entity.rotspawn;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -48,7 +48,7 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 0.5F);
+        this.playSound(UGSoundEvents.ROTBEAST_STEP.get(), 0.15F, 0.5F);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
             this.doEnchantDamageEffects(this, entityIn);
         }
 
-        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        this.playSound(UGSoundEvents.ROTBEAST_ATTACK.get(), 1.0F, 1.0F);
         return flag;
     }
 
@@ -80,7 +80,7 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
     public void handleEntityEvent(byte id) {
         if (id == 4) {
             this.attackTimer = 10;
-            this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+            this.playSound(UGSoundEvents.ROTBEAST_ATTACK.get(), 1.0F, 1.0F);
         }
         else {
             super.handleEntityEvent(id);

@@ -23,6 +23,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Random;
 
@@ -60,12 +61,12 @@ public class GwibEntity extends WaterMobEntity implements IMob {
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return SoundEvents.COD_HURT;
+        return UGSoundEvents.GWIB_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.COD_DEATH;
+        return UGSoundEvents.GWIB_DEATH.get();
     }
 
     @Override
@@ -74,7 +75,7 @@ public class GwibEntity extends WaterMobEntity implements IMob {
             this.setDeltaMovement(this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
             this.onGround = false;
             this.hasImpulse = true;
-            this.playSound(SoundEvents.COD_FLOP, 1.0F, this.getVoicePitch());
+            this.playSound(UGSoundEvents.GWIB_FLOP.get(), 1.0F, this.getVoicePitch());
         }
 
         super.aiStep();

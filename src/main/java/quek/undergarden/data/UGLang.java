@@ -474,14 +474,23 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "dweller_ambient", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
         addSubtitle("entity", "dweller_death", "Dweller dies");
+        addSubtitle("entity", "dweller_step", "Dweller steps");
+
+        addSubtitle("entity", "rotdweller_ambient", "Rotdweller grumbles");
+        addSubtitle("entity", "rotdweller_hurt", "Rotdweller hurts");
+        addSubtitle("entity", "rotdweller_death", "Rotdweller dies");
+        addSubtitle("entity", "rotdweller_step", "Rotdweller steps");
 
         addSubtitle("entity", "rotwalker_ambient", "Rotwalker groans");
         addSubtitle("entity", "rotwalker_hurt", "Rotwalker hurts");
         addSubtitle("entity", "rotwalker_death", "Rotwalker dies");
+        addSubtitle("entity", "rotwalker_step", "Rotwalker steps");
 
         addSubtitle("entity", "rotbeast_ambient", "Rotbeast groans");
         addSubtitle("entity", "rotbeast_hurt", "Rotbeast hurts");
         addSubtitle("entity", "rotbeast_death", "Rotbeast dies");
+        addSubtitle("entity", "rotbeast_step", "Rotbeast steps");
+        addSubtitle("entity", "rotbeast_attack", "Rotbeast attacks");
 
         addSubtitle("entity", "brute_ambient", "Brute exhales");
         addSubtitle("entity", "brute_hurt", "Brute hurts");
@@ -506,6 +515,7 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "rotling_ambient", "Rotling groans");
         addSubtitle("entity", "rotling_hurt", "Rotling hurts");
         addSubtitle("entity", "rotling_death", "Rotling dies");
+        addSubtitle("entity", "rotling_step", "Rotling steps");
 
         addSubtitle("entity", "forgotten_guardian_ambient", "Forgotten Guardian creaks");
         addSubtitle("entity", "forgotten_guardian_hurt", "Forgotten Guardian hurts");
@@ -516,6 +526,7 @@ public class UGLang extends LanguageProvider {
 
         addSubtitle("entity", "minion_shoot", "Forgotten Minion shoots");
         addSubtitle("entity", "minion_death", "Forgotten Minion dies");
+        addSubtitle("entity", "minion_repair", "Forgotten Minion repaired");
 
         addSubtitle("entity", "nargoyle_hurt", "Nargoyle hurts");
         addSubtitle("entity", "nargoyle_death", "Nargoyle dies");
@@ -535,6 +546,15 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "masticator_hurt", "Masticator hurts");
         addSubtitle("entity", "masticator_death", "Masticator dies");
         addSubtitle("entity", "masticator_eat", "Masticator eats");
+        addSubtitle("entity", "masticator_step", "Masticator steps");
+
+        addSubtitle("entity", "gwib_hurt", "Gwib hurts");
+        addSubtitle("entity", "gwib_death", "Gwib dies");
+        addSubtitle("entity", "gwib_flop", "Gwib flops");
+
+        addSubtitle("entity", "gwibling_hurt", "Gwibling hurts");
+        addSubtitle("entity", "gwibling_death", "Gwibling dies");
+        addSubtitle("entity", "gwibling_flop", "Gwibling flops");
 
         addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
         addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");

@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
@@ -72,7 +71,7 @@ public class DwellerEntity extends AnimalEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.COW_STEP, 0.15F, 0.5F);
+        this.playSound(UGSoundEvents.DWELLER_STEP.get(), 0.15F, 0.5F);
     }
 
     @Nullable

@@ -7,7 +7,6 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGSoundEvents;
@@ -42,7 +41,7 @@ public class RotlingEntity extends AbstractRotspawnEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ZOMBIE_STEP, 0.2F, 0.5F);
+        this.playSound(UGSoundEvents.ROTLING_STEP.get(), 0.2F, 0.5F);
     }
 
 }

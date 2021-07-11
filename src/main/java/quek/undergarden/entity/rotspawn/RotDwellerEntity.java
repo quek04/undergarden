@@ -14,7 +14,6 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGSoundEvents;
@@ -50,22 +49,22 @@ public class RotDwellerEntity extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.DWELLER_AMBIENT.get();
+        return UGSoundEvents.ROTDWELLER_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSoundEvents.DWELLER_HURT.get();
+        return UGSoundEvents.ROTDWELLER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return UGSoundEvents.DWELLER_DEATH.get();
+        return UGSoundEvents.ROTDWELLER_DEATH.get();
     }
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.COW_STEP, 0.15F, 0.5F);
+        this.playSound(UGSoundEvents.ROTDWELLER_STEP.get(), 0.15F, 0.5F);
     }
 
     @Override
@@ -97,7 +96,6 @@ public class RotDwellerEntity extends MonsterEntity {
         if (IS_CHILD.equals(key)) {
             this.refreshDimensions();
         }
-
         super.onSyncedDataUpdated(key);
     }
 }

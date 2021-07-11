@@ -61,15 +61,15 @@ public class ScintlingEntity extends AnimalEntity {
             return;
         }
 
-        BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
+        BlockState goo = UGBlocks.GOO.get().defaultBlockState();
 
         for(int l = 0; l < 4; ++l) {
             int x = MathHelper.floor(this.getX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));
             int y = MathHelper.floor(this.getY());
             int z = MathHelper.floor(this.getZ() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
             BlockPos blockpos = new BlockPos(x, y, z);
-            if (this.level.isEmptyBlock(blockpos) && blockstate.canSurvive(this.level, blockpos)) {
-                this.level.setBlockAndUpdate(blockpos, blockstate);
+            if (this.level.isEmptyBlock(blockpos) && goo.canSurvive(this.level, blockpos)) {
+                this.level.setBlockAndUpdate(blockpos, goo);
             }
         }
     }
@@ -86,7 +86,5 @@ public class ScintlingEntity extends AnimalEntity {
     }
 
     @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
-
-    }
+    protected void playStepSound(BlockPos pos, BlockState blockIn) { }
 }

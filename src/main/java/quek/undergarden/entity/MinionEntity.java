@@ -63,7 +63,7 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
         double zDistance = target.getZ() - this.getZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         projectile.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
-        this.playSound(UGSoundEvents.MINION_SHOOT.get(), 1.0F, 1.0F);
+        this.playSound(UGSoundEvents.MINION_SHOOT.get(), 1.0F, this.getVoicePitch());
         this.level.addFreshEntity(projectile);
     }
 
@@ -79,7 +79,7 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
             if (this.getHealth() == health) {
                 return ActionResultType.PASS;
             } else {
-                this.playSound(SoundEvents.IRON_GOLEM_REPAIR, 1.0F, 2.0F);
+                this.playSound(UGSoundEvents.MINION_REPAIR.get(), 1.0F, 2.0F);
                 if (!player.abilities.instabuild) {
                     itemstack.shrink(1);
                 }

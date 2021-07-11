@@ -61,7 +61,7 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
         double zDistance = target.getZ() - this.getZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         pebble.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
-        this.playSound(UGSoundEvents.SPLOOGIE_SPIT.get(), 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+        this.playSound(UGSoundEvents.SPLOOGIE_SPIT.get(), 1.0F, this.getVoicePitch());
         this.level.addFreshEntity(pebble);
     }
 }

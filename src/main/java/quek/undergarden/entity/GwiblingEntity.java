@@ -8,11 +8,11 @@ import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Random;
 
@@ -39,21 +39,21 @@ public class GwiblingEntity extends AbstractFishEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.COD_AMBIENT;
+        return null;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.COD_DEATH;
+        return UGSoundEvents.GWIBLING_DEATH.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.COD_HURT;
+        return UGSoundEvents.GWIBLING_HURT.get();
     }
 
     @Override
     protected SoundEvent getFlopSound() {
-        return SoundEvents.COD_FLOP;
+        return UGSoundEvents.GWIBLING_FLOP.get();
     }
 }

@@ -46,14 +46,23 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> DWELLER_AMBIENT = register("entity.dweller_ambient");
     public static final RegistryObject<SoundEvent> DWELLER_HURT = register("entity.dweller_hurt");
     public static final RegistryObject<SoundEvent> DWELLER_DEATH = register("entity.dweller_death");
+    public static final RegistryObject<SoundEvent> DWELLER_STEP = register("entity.dweller_step");
+
+    public static final RegistryObject<SoundEvent> ROTDWELLER_AMBIENT = register("entity.rotdweller_ambient");
+    public static final RegistryObject<SoundEvent> ROTDWELLER_HURT = register("entity.rotdweller_hurt");
+    public static final RegistryObject<SoundEvent> ROTDWELLER_DEATH = register("entity.rotdweller_death");
+    public static final RegistryObject<SoundEvent> ROTDWELLER_STEP = register("entity.rotdweller_step");
 
     public static final RegistryObject<SoundEvent> ROTWALKER_AMBIENT = register("entity.rotwalker_ambient");
     public static final RegistryObject<SoundEvent> ROTWALKER_HURT = register("entity.rotwalker_hurt");
     public static final RegistryObject<SoundEvent> ROTWALKER_DEATH = register("entity.rotwalker_death");
+    public static final RegistryObject<SoundEvent> ROTWALKER_STEP = register("entity.rotwalker_step");
 
     public static final RegistryObject<SoundEvent> ROTBEAST_AMBIENT = register("entity.rotbeast_ambient");
     public static final RegistryObject<SoundEvent> ROTBEAST_HURT = register("entity.rotbeast_hurt");
     public static final RegistryObject<SoundEvent> ROTBEAST_DEATH = register("entity.rotbeast_death");
+    public static final RegistryObject<SoundEvent> ROTBEAST_STEP = register("entity.rotbeast_step");
+    public static final RegistryObject<SoundEvent> ROTBEAST_ATTACK = register("entity.rotbeast_attack");
 
     public static final RegistryObject<SoundEvent> BRUTE_AMBIENT = register("entity.brute_ambient");
     public static final RegistryObject<SoundEvent> BRUTE_HURT = register("entity.brute_hurt");
@@ -78,6 +87,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> ROTLING_AMBIENT = register("entity.rotling_ambient");
     public static final RegistryObject<SoundEvent> ROTLING_HURT = register("entity.rotling_hurt");
     public static final RegistryObject<SoundEvent> ROTLING_DEATH = register("entity.rotling_death");
+    public static final RegistryObject<SoundEvent> ROTLING_STEP = register("entity.rotling_step");
 
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_AMBIENT = register("entity.forgotten_guardian_ambient");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_HURT = register("entity.forgotten_guardian_hurt");
@@ -88,6 +98,7 @@ public class UGSoundEvents {
 
     public static final RegistryObject<SoundEvent> MINION_SHOOT = register("entity.minion_shoot");
     public static final RegistryObject<SoundEvent> MINION_DEATH = register("entity.minion_death");
+    public static final RegistryObject<SoundEvent> MINION_REPAIR = register("entity.minion_repair");
 
     public static final RegistryObject<SoundEvent> NARGOYLE_HURT = register("entity.nargoyle_hurt");
     public static final RegistryObject<SoundEvent> NARGOYLE_DEATH = register("entity.nargoyle_death");
@@ -107,6 +118,15 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> MASTICATOR_HURT = register("entity.masticator_hurt");
     public static final RegistryObject<SoundEvent> MASTICATOR_DEATH = register("entity.masticator_death");
     public static final RegistryObject<SoundEvent> MASTICATOR_EAT = register("entity.masticator_eat");
+    public static final RegistryObject<SoundEvent> MASTICATOR_STEP = register("entity.masticator_step");
+
+    public static final RegistryObject<SoundEvent> GWIB_HURT = register("entity.gwib_hurt");
+    public static final RegistryObject<SoundEvent> GWIB_DEATH = register("entity.gwib_death");
+    public static final RegistryObject<SoundEvent> GWIB_FLOP = register("entity.gwib_flop");
+
+    public static final RegistryObject<SoundEvent> GWIBLING_HURT = register("entity.gwibling_hurt");
+    public static final RegistryObject<SoundEvent> GWIBLING_DEATH = register("entity.gwibling_death");
+    public static final RegistryObject<SoundEvent> GWIBLING_FLOP = register("entity.gwibling_flop");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Undergarden.MODID, name)));

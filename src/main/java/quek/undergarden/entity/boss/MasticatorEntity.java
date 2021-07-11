@@ -8,12 +8,14 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -74,7 +76,7 @@ public class MasticatorEntity extends MonsterEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.RAVAGER_STEP, 0.20F, 0.5F);
+        this.playSound(UGSoundEvents.MASTICATOR_STEP.get(), 0.20F, 0.5F);
     }
 
     @Override
@@ -121,7 +123,7 @@ public class MasticatorEntity extends MonsterEntity {
     public void killed(ServerWorld world, LivingEntity entityLivingIn) {
         super.killed(world, entityLivingIn);
         this.heal(this.getHealth() / 4);
-        this.playSound(UGSoundEvents.MASTICATOR_EAT.get(), 1.0F, 1.0F);
+        this.playSound(UGSoundEvents.MASTICATOR_EAT.get(), 1.0F, this.getVoicePitch());
     }
 
     @Override
