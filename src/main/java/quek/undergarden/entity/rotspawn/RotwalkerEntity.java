@@ -28,7 +28,7 @@ public class RotwalkerEntity extends AbstractRotspawnEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.ROTWALKER_LIVING.get();
+        return UGSoundEvents.ROTWALKER_AMBIENT.get();
     }
 
     @Override

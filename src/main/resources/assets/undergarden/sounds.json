@@ -109,10 +109,10 @@
       "undergarden:block/undergarden_portal_ambient"
     ]
   },
-  "item.undergarden_portal_activate": {
-    "subtitle": "subtitles.item.undergarden_portal_activate",
+  "block.undergarden_portal_activate": {
+    "subtitle": "subtitles.block.undergarden_portal_activate",
     "sounds": [
-      "undergarden:item/undergarden_portal_activate"
+      "undergarden:block/undergarden_portal_activate"
     ]
   },
   "block.undergarden_portal_travel": {
@@ -196,11 +196,11 @@
       "undergarden:item/slingshot_draw_2"
     ]
   },
-  "entity.dweller_living": {
-    "subtitle": "subtitles.entity.dweller_living",
+  "entity.dweller_ambient": {
+    "subtitle": "subtitles.entity.dweller_ambient",
     "sounds": [
-      "undergarden:entity/dweller_living_1",
-      "undergarden:entity/dweller_living_2"
+      "undergarden:entity/dweller_ambient_1",
+      "undergarden:entity/dweller_ambient_2"
     ]
   },
   "entity.dweller_hurt": {
@@ -222,12 +222,12 @@
       "undergarden:entity/dweller_death_1"
     ]
   },
-  "entity.rotwalker_living": {
-    "subtitle": "subtitles.entity.rotwalker_living",
+  "entity.rotwalker_ambient": {
+    "subtitle": "subtitles.entity.rotwalker_ambient",
     "sounds": [
-      "undergarden:entity/rotwalker_living_1",
-      "undergarden:entity/rotwalker_living_2",
-      "undergarden:entity/rotwalker_living_3"
+      "undergarden:entity/rotwalker_ambient_1",
+      "undergarden:entity/rotwalker_ambient_2",
+      "undergarden:entity/rotwalker_ambient_3"
     ]
   },
   "entity.rotwalker_hurt": {
@@ -244,12 +244,12 @@
       "undergarden:entity/rotwalker_death"
     ]
   },
-  "entity.rotbeast_living": {
-    "subtitle": "subtitles.entity.rotbeast_living",
+  "entity.rotbeast_ambient": {
+    "subtitle": "subtitles.entity.rotbeast_ambient",
     "sounds": [
-      "undergarden:entity/rotbeast_living_1",
-      "undergarden:entity/rotbeast_living_2",
-      "undergarden:entity/rotbeast_living_3"
+      "undergarden:entity/rotbeast_ambient_1",
+      "undergarden:entity/rotbeast_ambient_2",
+      "undergarden:entity/rotbeast_ambient_3"
     ]
   },
   "entity.rotbeast_hurt": {
@@ -266,13 +266,13 @@
       "undergarden:entity/rotbeast_death"
     ]
   },
-  "entity.brute_living": {
-    "subtitle": "subtitles.entity.brute_living",
+  "entity.brute_ambient": {
+    "subtitle": "subtitles.entity.brute_ambient",
     "sounds": [
-      "undergarden:entity/brute_living_1",
-      "undergarden:entity/brute_living_2",
-      "undergarden:entity/brute_living_3",
-      "undergarden:entity/brute_living_4"
+      "undergarden:entity/brute_ambient_1",
+      "undergarden:entity/brute_ambient_2",
+      "undergarden:entity/brute_ambient_3",
+      "undergarden:entity/brute_ambient_4"
     ]
   },
   "entity.brute_hurt": {
@@ -294,11 +294,11 @@
       "undergarden:entity/brute_aggro"
     ]
   },
-  "entity.gloomper_living": {
-    "subtitle": "subtitles.entity.gloomper_living",
+  "entity.gloomper_ambient": {
+    "subtitle": "subtitles.entity.gloomper_ambient",
     "sounds": [
-      "undergarden:entity/gloomper_living_1",
-      "undergarden:entity/gloomper_living_2"
+      "undergarden:entity/gloomper_ambient_1",
+      "undergarden:entity/gloomper_ambient_2"
     ]
   },
   "entity.gloomper_hurt": {
@@ -406,12 +406,12 @@
       "undergarden:entity/stoneborn_death"
     ]
   },
-  "entity.rotling_living": {
-    "subtitle": "subtitles.entity.rotling_living",
+  "entity.rotling_ambient": {
+    "subtitle": "subtitles.entity.rotling_ambient",
     "sounds": [
-      "undergarden:entity/rotling_living_1",
-      "undergarden:entity/rotling_living_2",
-      "undergarden:entity/rotling_living_3"
+      "undergarden:entity/rotling_ambient_1",
+      "undergarden:entity/rotling_ambient_2",
+      "undergarden:entity/rotling_ambient_3"
     ]
   },
   "entity.rotling_hurt": {
@@ -427,12 +427,12 @@
       "undergarden:entity/rotling_death"
     ]
   },
-  "entity.forgotten_guardian_living": {
-    "subtitle": "subtitles.entity.forgotten_guardian_living",
+  "entity.forgotten_guardian_ambient": {
+    "subtitle": "subtitles.entity.forgotten_guardian_ambient",
     "sounds": [
-      "undergarden:entity/fguardian_living_1",
-      "undergarden:entity/fguardian_living_2",
-      "undergarden:entity/fguardian_living_3"
+      "undergarden:entity/fguardian_ambient_1",
+      "undergarden:entity/fguardian_ambient_2",
+      "undergarden:entity/fguardian_ambient_3"
     ]
   },
   "entity.forgotten_guardian_hurt": {
@@ -504,15 +504,15 @@
       "undergarden:entity/minion_death"
     ]
   },
-  "entity.muncher_living": {
-    "subtitle": "subtitles.entity.muncher_living",
+  "entity.muncher_ambient": {
+    "subtitle": "subtitles.entity.muncher_ambient",
     "sounds": [
-      "undergarden:entity/muncher_living_1",
-      "undergarden:entity/muncher_living_2",
-      "undergarden:entity/muncher_living_3",
-      "undergarden:entity/muncher_living_4",
-      "undergarden:entity/muncher_living_5",
-      "undergarden:entity/muncher_living_6"
+      "undergarden:entity/muncher_ambient_1",
+      "undergarden:entity/muncher_ambient_2",
+      "undergarden:entity/muncher_ambient_3",
+      "undergarden:entity/muncher_ambient_4",
+      "undergarden:entity/muncher_ambient_5",
+      "undergarden:entity/muncher_ambient_6"
     ]
   },
   "entity.muncher_hurt": {
@@ -535,12 +535,12 @@
       "undergarden:entity/muncher_chew_2"
     ]
   },
-  "entity.sploogie_living": {
-    "subtitle": "subtitles.entity.sploogie_living",
+  "entity.sploogie_ambient": {
+    "subtitle": "subtitles.entity.sploogie_ambient",
     "sounds": [
-      "undergarden:entity/sploogie_living_1",
-      "undergarden:entity/sploogie_living_2",
-      "undergarden:entity/sploogie_living_3"
+      "undergarden:entity/sploogie_ambient_1",
+      "undergarden:entity/sploogie_ambient_2",
+      "undergarden:entity/sploogie_ambient_3"
     ]
   },
   "entity.sploogie_hurt": {

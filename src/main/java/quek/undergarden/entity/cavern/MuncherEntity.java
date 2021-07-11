@@ -13,7 +13,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import quek.undergarden.entity.cavern.AbstractCavernCreatureEntity;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
@@ -44,7 +43,7 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.MUNCHER_LIVING.get();
+        return UGSoundEvents.MUNCHER_AMBIENT.get();
     }
 
     @Override

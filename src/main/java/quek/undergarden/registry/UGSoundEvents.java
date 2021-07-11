@@ -35,7 +35,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> GLOOMPER_SECRET_DISC = register("music.disc.gloomper_secret");
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_AMBIENT = register("block.undergarden_portal_ambient");
-    public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_ACTIVATE = register("item.undergarden_portal_activate");
+    public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_ACTIVATE = register("block.undergarden_portal_activate");
     public static final RegistryObject<SoundEvent> UNDERGARDEN_PORTAL_TRAVEL = register("block.undergarden_portal_travel");
 
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
@@ -43,24 +43,24 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> SLINGSHOT_SHOOT = register("item.slingshot_shoot");
     public static final RegistryObject<SoundEvent> SLINGSHOT_DRAW = register("item.slingshot_draw");
 
-    public static final RegistryObject<SoundEvent> DWELLER_LIVING = register("entity.dweller_living");
+    public static final RegistryObject<SoundEvent> DWELLER_AMBIENT = register("entity.dweller_ambient");
     public static final RegistryObject<SoundEvent> DWELLER_HURT = register("entity.dweller_hurt");
     public static final RegistryObject<SoundEvent> DWELLER_DEATH = register("entity.dweller_death");
 
-    public static final RegistryObject<SoundEvent> ROTWALKER_LIVING = register("entity.rotwalker_living");
+    public static final RegistryObject<SoundEvent> ROTWALKER_AMBIENT = register("entity.rotwalker_ambient");
     public static final RegistryObject<SoundEvent> ROTWALKER_HURT = register("entity.rotwalker_hurt");
     public static final RegistryObject<SoundEvent> ROTWALKER_DEATH = register("entity.rotwalker_death");
 
-    public static final RegistryObject<SoundEvent> ROTBEAST_LIVING = register("entity.rotbeast_living");
+    public static final RegistryObject<SoundEvent> ROTBEAST_AMBIENT = register("entity.rotbeast_ambient");
     public static final RegistryObject<SoundEvent> ROTBEAST_HURT = register("entity.rotbeast_hurt");
     public static final RegistryObject<SoundEvent> ROTBEAST_DEATH = register("entity.rotbeast_death");
 
-    public static final RegistryObject<SoundEvent> BRUTE_LIVING = register("entity.brute_living");
+    public static final RegistryObject<SoundEvent> BRUTE_AMBIENT = register("entity.brute_ambient");
     public static final RegistryObject<SoundEvent> BRUTE_HURT = register("entity.brute_hurt");
     public static final RegistryObject<SoundEvent> BRUTE_DEATH = register("entity.brute_death");
     public static final RegistryObject<SoundEvent> BRUTE_ANGRY = register("entity.brute_angry");
 
-    public static final RegistryObject<SoundEvent> GLOOMPER_LIVING = register("entity.gloomper_living");
+    public static final RegistryObject<SoundEvent> GLOOMPER_AMBIENT = register("entity.gloomper_ambient");
     public static final RegistryObject<SoundEvent> GLOOMPER_HURT = register("entity.gloomper_hurt");
     public static final RegistryObject<SoundEvent> GLOOMPER_DEATH = register("entity.gloomper_death");
     public static final RegistryObject<SoundEvent> GLOOMPER_HOP = register("entity.gloomper_hop");
@@ -75,11 +75,11 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> STONEBORN_CHANT = register("entity.stoneborn_chant");
     public static final RegistryObject<SoundEvent> STONEBORN_DEATH = register("entity.stoneborn_death");
 
-    public static final RegistryObject<SoundEvent> ROTLING_LIVING = register("entity.rotling_living");
+    public static final RegistryObject<SoundEvent> ROTLING_AMBIENT = register("entity.rotling_ambient");
     public static final RegistryObject<SoundEvent> ROTLING_HURT = register("entity.rotling_hurt");
     public static final RegistryObject<SoundEvent> ROTLING_DEATH = register("entity.rotling_death");
 
-    public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_LIVING = register("entity.forgotten_guardian_living");
+    public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_ambient = register("entity.forgotten_guardian_ambient");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_HURT = register("entity.forgotten_guardian_hurt");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_DEATH = register("entity.forgotten_guardian_death");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_ATTACK = register("entity.forgotten_guardian_attack");
@@ -93,12 +93,12 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> NARGOYLE_DEATH = register("entity.nargoyle_death");
     public static final RegistryObject<SoundEvent> NARGOYLE_ATTACK = register("entity.nargoyle_attack");
 
-    public static final RegistryObject<SoundEvent> MUNCHER_LIVING = register("entity.muncher_living");
+    public static final RegistryObject<SoundEvent> MUNCHER_AMBIENT = register("entity.muncher_ambient");
     public static final RegistryObject<SoundEvent> MUNCHER_HURT = register("entity.muncher_hurt");
     public static final RegistryObject<SoundEvent> MUNCHER_DEATH = register("entity.muncher_death");
     public static final RegistryObject<SoundEvent> MUNCHER_CHEW = register("entity.muncher_chew");
 
-    public static final RegistryObject<SoundEvent> SPLOOGIE_LIVING = register("entity.sploogie_living");
+    public static final RegistryObject<SoundEvent> SPLOOGIE_AMBIENT = register("entity.sploogie_ambient");
     public static final RegistryObject<SoundEvent> SPLOOGIE_HURT = register("entity.sploogie_hurt");
     public static final RegistryObject<SoundEvent> SPLOOGIE_DEATH = register("entity.sploogie_death");
     public static final RegistryObject<SoundEvent> SPLOOGIE_SPIT = register("entity.sploogie_spit");

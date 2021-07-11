@@ -27,7 +27,7 @@ public class RotlingEntity extends AbstractRotspawnEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.ROTLING_LIVING.get();
+        return UGSoundEvents.ROTLING_AMBIENT.get();
     }
 
     @Override

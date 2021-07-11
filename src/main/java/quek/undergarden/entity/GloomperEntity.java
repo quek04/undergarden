@@ -13,7 +13,6 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
@@ -72,7 +71,7 @@ public class GloomperEntity extends AnimalEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.GLOOMPER_LIVING.get();
+        return UGSoundEvents.GLOOMPER_AMBIENT.get();
     }
 
     @Override

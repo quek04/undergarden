@@ -40,7 +40,7 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.SPLOOGIE_LIVING.get();
+        return UGSoundEvents.SPLOOGIE_AMBIENT.get();
     }
 
     @Override

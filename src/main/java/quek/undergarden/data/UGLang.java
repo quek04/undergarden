@@ -463,29 +463,32 @@ public class UGLang extends LanguageProvider {
         add("tooltip.pebble", "Can be used as Slingshot ammo.");
         add("tooltip.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
 
-        addSubtitle("item", "undergarden_portal_activate", "Undergarden Portal activates");
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
         addSubtitle("item", "slingshot_draw", "Slingshot drawn");
         addSubtitle("item", "slingshot_shoot", "Slingshot fired");
 
-        addSubtitle("entity", "dweller_living", "Dweller grumbles");
+        addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
+        addSubtitle("block", "undergarden_portal_activate", "Undergarden Portal activates");
+        addSubtitle("block", "undergarden_portal_travel", "Travelling through Undergarden portal");
+
+        addSubtitle("entity", "dweller_ambient", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
         addSubtitle("entity", "dweller_death", "Dweller dies");
 
-        addSubtitle("entity", "rotwalker_living", "Rotwalker groans");
+        addSubtitle("entity", "rotwalker_ambient", "Rotwalker groans");
         addSubtitle("entity", "rotwalker_hurt", "Rotwalker hurts");
         addSubtitle("entity", "rotwalker_death", "Rotwalker dies");
 
-        addSubtitle("entity", "rotbeast_living", "Rotbeast groans");
+        addSubtitle("entity", "rotbeast_ambient", "Rotbeast groans");
         addSubtitle("entity", "rotbeast_hurt", "Rotbeast hurts");
         addSubtitle("entity", "rotbeast_death", "Rotbeast dies");
 
-        addSubtitle("entity", "brute_living", "Brute exhales");
+        addSubtitle("entity", "brute_ambient", "Brute exhales");
         addSubtitle("entity", "brute_hurt", "Brute hurts");
         addSubtitle("entity", "brute_death", "Brute dies");
         addSubtitle("entity", "brute_angry", "Brute exhales angrily");
 
-        addSubtitle("entity", "gloomper_living", "Gloomper croaks");
+        addSubtitle("entity", "gloomper_ambient", "Gloomper croaks");
         addSubtitle("entity", "gloomper_hurt", "Gloomper hurts");
         addSubtitle("entity", "gloomper_death", "Gloomper dies");
         addSubtitle("entity", "gloomper_hop", "Gloomper hops");
@@ -500,11 +503,11 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "stoneborn_chant", "Stoneborn chanting");
         addSubtitle("entity", "stoneborn_death", "Stoneborn dies");
 
-        addSubtitle("entity", "rotling_living", "Rotling groans");
+        addSubtitle("entity", "rotling_ambient", "Rotling groans");
         addSubtitle("entity", "rotling_hurt", "Rotling hurts");
         addSubtitle("entity", "rotling_death", "Rotling dies");
 
-        addSubtitle("entity", "forgotten_guardian_living", "Forgotten Guardian creaks");
+        addSubtitle("entity", "forgotten_guardian_ambient", "Forgotten Guardian creaks");
         addSubtitle("entity", "forgotten_guardian_hurt", "Forgotten Guardian hurts");
         addSubtitle("entity", "forgotten_guardian_death", "Forgotten Guardian dies");
         addSubtitle("entity", "forgotten_guardian_attack", "Forgotten Guardian attacks");
@@ -518,18 +521,15 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "nargoyle_death", "Nargoyle dies");
         addSubtitle("entity", "nargoyle_attack", "Nargoyle leaps");
 
-        addSubtitle("entity", "muncher_living", "Muncher grumbles");
+        addSubtitle("entity", "muncher_ambient", "Muncher grumbles");
         addSubtitle("entity", "muncher_hurt", "Muncher hurts");
         addSubtitle("entity", "muncher_death", "Muncher dies");
         addSubtitle("entity", "muncher_chew", "Muncher chews");
 
-        addSubtitle("entity", "sploogie_living", "Sploogie squeaks");
+        addSubtitle("entity", "sploogie_ambient", "Sploogie squeaks");
         addSubtitle("entity", "sploogie_hurt", "Sploogie hurts");
         addSubtitle("entity", "sploogie_death", "Sploogie dies");
         addSubtitle("entity", "sploogie_spit", "Sploogie spits");
-
-        addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
-        addSubtitle("block", "undergarden_portal_travel", "Travelling through Undergarden portal");
 
         addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
         addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
