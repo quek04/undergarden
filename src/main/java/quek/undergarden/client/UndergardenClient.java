@@ -118,6 +118,7 @@ public class UndergardenClient {
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MINION.get(), MinionRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GWIB.get(), GwibRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MOG.get(), MogRender::new);
     }
 
     public static void registerBlockColors() {

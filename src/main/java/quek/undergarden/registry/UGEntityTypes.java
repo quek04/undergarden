@@ -114,6 +114,10 @@ public class UGEntityTypes {
             .sized(1.5F, 1.5F).build("gwib");
     public static final RegistryObject<EntityType<GwibEntity>> GWIB = ENTITIES.register("gwib", () -> GWIB_TYPE);
 
+    public static final EntityType<MogEntity> MOG_TYPE = EntityType.Builder.of(MogEntity::new, EntityClassification.CREATURE)
+            .sized(1.0F, 1.0F).build("mog");
+    public static final RegistryObject<EntityType<MogEntity>> MOG = ENTITIES.register("mog", () -> MOG_TYPE);
+
     //bosses
     public static final EntityType<MasticatorEntity> MASTICATOR_TYPE = EntityType.Builder.of(MasticatorEntity::new, EntityClassification.MONSTER)
             .sized(2.5F, 4).build("masticator");
@@ -137,6 +141,7 @@ public class UGEntityTypes {
         EntitySpawnPlacementRegistry.register(MUNCHER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
         EntitySpawnPlacementRegistry.register(SPLOOGIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
         EntitySpawnPlacementRegistry.register(GWIB.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GwibEntity::canGwibSpawn);
+        EntitySpawnPlacementRegistry.register(MOG.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MogEntity::canMogSpawn);
     }
 
     @SubscribeEvent
@@ -158,5 +163,6 @@ public class UGEntityTypes {
         event.put(SPLOOGIE.get(), SploogieEntity.registerAttributes().build());
         event.put(MINION.get(), MinionEntity.registerAttributes().build());
         event.put(GWIB.get(), GwibEntity.registerAttributes().build());
+        event.put(MOG.get(), MogEntity.registerAttributes().build());
     }
 }
