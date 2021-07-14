@@ -47,6 +47,7 @@ public class UGItems {
     public static final RegistryObject<Item> TWISTYTWIG = ITEMS.register("twistytwig", UGItem::new);
     public static final RegistryObject<Item> DITCHBULB = ITEMS.register("ditchbulb", DitchbulbItem::new);
     public static final RegistryObject<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", UGItem::new);
+    public static final RegistryObject<Item> MOGMOSS = ITEMS.register("mogmoss", UGItem::new);
 
     //boss loot
     public static final RegistryObject<Item> MASTICATOR_SCALES = ITEMS.register("masticator_scales", () -> new UGItem(Rarity.UNCOMMON));

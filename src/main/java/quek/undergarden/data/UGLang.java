@@ -244,6 +244,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");
         addItem(UGItems.DITCHBULB, "Ditchbulb");
         addItem(UGItems.BRUTE_TUSK, "Brute Tusk");
+        addItem(UGItems.MOGMOSS, "Mogmoss");
         addItem(UGItems.GOO_BALL, "Scintling Goo Ball");
         addItem(UGItems.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
         addItem(UGItems.BLISTERBOMB, "Blisterbomb");
@@ -365,6 +366,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.MUNCHER, "Muncher");
         addEntityType(UGEntityTypes.SPLOOGIE, "Sploogie");
         addEntityType(UGEntityTypes.GWIB, "Gwib");
+        addEntityType(UGEntityTypes.MOG, "Mog");
 
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
         addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
