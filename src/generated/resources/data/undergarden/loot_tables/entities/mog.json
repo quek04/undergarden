@@ -6,8 +6,30 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3.0,
+                "max": 6.0,
+                "type": "minecraft:uniform"
+              }
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 1.0,
+                "max": 2.0
+              }
+            }
+          ],
           "name": "undergarden:depthrock_pebble"
-        },
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
         {
           "type": "minecraft:item",
           "functions": [
@@ -21,16 +43,6 @@
             }
           ],
           "name": "undergarden:mogmoss"
-        }
-      ],
-      "functions": [
-        {
-          "function": "minecraft:set_count",
-          "count": {
-            "min": 3.0,
-            "max": 6.0,
-            "type": "minecraft:uniform"
-          }
         }
       ]
     }
