@@ -262,24 +262,178 @@ public class UGLootTables extends LootTableProvider {
 
         @Override
         protected void addTables() {
-            this.add(UGEntityTypes.ROTLING.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.UTHERIC_SHARD.get()).apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))).when(KilledByPlayer.killedByPlayer()))));
-            this.add(UGEntityTypes.ROTWALKER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.UTHERIC_SHARD.get()).apply(SetCount.setCount(RandomValueRange.between(1.0F, 4.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))).when(KilledByPlayer.killedByPlayer()))));
-            this.add(UGEntityTypes.ROTBEAST.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.UTHERIC_SHARD.get()).apply(SetCount.setCount(RandomValueRange.between(2.0F, 8.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))).when(KilledByPlayer.killedByPlayer()))));
-            this.add(UGEntityTypes.DWELLER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(Items.LEATHER).apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.RAW_DWELLER_MEAT.get()).apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F))).apply(Smelt.smelted().when(EntityHasProperty.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
-            this.add(UGEntityTypes.ROTDWELLER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(Items.LEATHER).apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
-            this.add(UGEntityTypes.GWIBLING.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.RAW_GWIBLING.get()).apply(Smelt.smelted().when(EntityHasProperty.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))).when(KilledByPlayer.killedByPlayer())).withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(Items.BONE_MEAL)).when(RandomChance.randomChance(0.05F))));
-            this.add(UGEntityTypes.BRUTE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.BRUTE_TUSK.get()).apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
-            this.add(UGEntityTypes.SCINTLING.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.GOO_BALL.get()).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 2.0F))))));
-            this.add(UGEntityTypes.GLOOMPER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(Items.LEATHER).apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))).withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.RAW_GLOOMPER_LEG.get()).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))).apply(Smelt.smelted().when(EntityHasProperty.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
-            this.add(UGEntityTypes.STONEBORN.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get()).apply(SetCount.setCount(RandomValueRange.between(3.0F, 6.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(1.0F, 2.0F))))));
-            this.add(UGEntityTypes.NARGOYLE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(RandomValueRange.between(1.0F, 3.0F)).add(ItemLootEntry.lootTableItem(Items.STRING)).apply(SetCount.setCount(ConstantRange.exactly(2))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(1.0F, 2.0F)))));
-            this.add(UGEntityTypes.MUNCHER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(RandomValueRange.between(0.0F, 3.0F)).add(ItemLootEntry.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F))))).withPool(LootPool.lootPool().setRolls(RandomValueRange.between(0.0F, 1.0F)).add(ItemLootEntry.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F))))));
-            this.add(UGEntityTypes.SPLOOGIE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get()).apply(SetCount.setCount(RandomValueRange.between(3.0F, 6.0F))).apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(1.0F, 2.0F))))));
+            this.add(UGEntityTypes.ROTLING.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.UTHERIC_SHARD.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))
+                                    .when(KilledByPlayer.killedByPlayer())
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.ROTWALKER.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.UTHERIC_SHARD.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(1.0F, 4.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))
+                                    .when(KilledByPlayer.killedByPlayer())
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.ROTBEAST.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.UTHERIC_SHARD.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(2.0F, 8.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))
+                                    .when(KilledByPlayer.killedByPlayer())
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.DWELLER.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(Items.LEATHER)
+                                    .apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))
+                            )
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.RAW_DWELLER_MEAT.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F)))
+                                    .apply(Smelt.smelted().when(EntityHasProperty.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))
+                    )
+            );
+            this.add(UGEntityTypes.ROTDWELLER.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(Items.LEATHER)
+                                    .apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))
+                    )
+            );
+            this.add(UGEntityTypes.GWIBLING.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.RAW_GWIBLING.get())
+                                    .apply(Smelt.smelted()
+                                            .when(EntityHasProperty.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))))
+                            .when(KilledByPlayer.killedByPlayer())
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(Items.BONE_MEAL))
+                            .when(RandomChance.randomChance(0.05F))
+                    )
+            );
+            this.add(UGEntityTypes.BRUTE.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.BRUTE_TUSK.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.SCINTLING.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.GOO_BALL.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 2.0F)))
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.GLOOMPER.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(Items.LEATHER)
+                                    .apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))
+                            )
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.RAW_GLOOMPER_LEG.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))
+                                    .apply(Smelt.smelted()
+                                            .when(EntityHasProperty.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.STONEBORN.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(3.0F, 6.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(1.0F, 2.0F)))
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.NARGOYLE.get(), LootTable.lootTable());
+            this.add(UGEntityTypes.MUNCHER.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(RandomValueRange.between(0.0F, 3.0F))
+                            .add(ItemLootEntry.lootTableItem(UGItems.CLOGGRUM_NUGGET.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F)))
+                            )
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(RandomValueRange.between(0.0F, 1.0F))
+                            .add(ItemLootEntry.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F)))
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.SPLOOGIE.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(3.0F, 6.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(1.0F, 2.0F)))
+                            )
+                    )
+            );
             this.add(UGEntityTypes.GWIB.get(), LootTable.lootTable());
-            this.add(UGEntityTypes.MOG.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())).apply(SetCount.setCount(RandomValueRange.between(3.0F, 6.0F))).add(ItemLootEntry.lootTableItem(UGItems.MOGMOSS.get()).apply(SetCount.setCount(RandomValueRange.between(0.0F, 1.0F))))));
+            this.add(UGEntityTypes.MOG.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(3.0F, 6.0F)))
+                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(1.0F, 2.0F)))
+                            )
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.MOGMOSS.get())
+                                    .apply(SetCount.setCount(RandomValueRange.between(0.0F, 1.0F)))
+                            )
+                    )
+            );
 
-            this.add(UGEntityTypes.MASTICATOR.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.MASTICATOR_SCALES.get()).when(KilledByPlayer.killedByPlayer()).apply(SetCount.setCount(RandomValueRange.between(4.0F, 8.0F))))));
-            this.add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).add(ItemLootEntry.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).when(KilledByPlayer.killedByPlayer()).apply(SetCount.setCount(RandomValueRange.between(4.0F, 16.0F))))));
+            this.add(UGEntityTypes.MASTICATOR.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.MASTICATOR_SCALES.get())
+                                    .when(KilledByPlayer.killedByPlayer())
+                                    .apply(SetCount.setCount(RandomValueRange.between(4.0F, 8.0F)))
+                            )
+                    )
+            );
+            this.add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantRange.exactly(1))
+                            .add(ItemLootEntry.lootTableItem(UGItems.FORGOTTEN_NUGGET.get())
+                                    .when(KilledByPlayer.killedByPlayer())
+                                    .apply(SetCount.setCount(RandomValueRange.between(4.0F, 16.0F)))
+                            )
+                    )
+            );
         }
 
         @Override
