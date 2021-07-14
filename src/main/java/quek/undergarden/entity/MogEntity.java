@@ -153,7 +153,7 @@ public class MogEntity extends AnimalEntity implements IForgeShearable {
 
             List<ItemStack> items = new ArrayList<>();
             for(int i = 0; i < mossAmount; i++) {
-                items.add(new ItemStack(UGItems.DEPTHROCK_PEBBLE.get())); //TODO moss
+                items.add(new ItemStack(UGItems.MOGMOSS.get()));
             }
             return items;
         }
