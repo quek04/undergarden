@@ -333,6 +333,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.MUNCHER_SPAWN_EGG, "Muncher Spawn Egg");
         addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
         addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
+        addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
         addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
         addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 
