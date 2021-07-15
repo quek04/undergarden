@@ -13,6 +13,7 @@ import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import quek.undergarden.entity.DwellerEntity;
+import quek.undergarden.entity.MogEntity;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 import quek.undergarden.registry.UGEntityTypes;
 
@@ -34,7 +35,7 @@ public abstract class AbstractRotspawnEntity extends MonsterEntity {
         this.targetSelector.addGoal(0, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, StonebornEntity.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AnimalEntity.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AnimalEntity.class, 10, true, false, (target) -> !(target instanceof MogEntity)));
     }
 
     public static boolean canRotspawnSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
