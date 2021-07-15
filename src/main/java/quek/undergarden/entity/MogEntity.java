@@ -39,6 +39,7 @@ public class MogEntity extends AnimalEntity implements IForgeShearable {
 
     public MogEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
+        this.maxUpStep = 1.0F;
     }
 
     @Override
@@ -99,12 +100,7 @@ public class MogEntity extends AnimalEntity implements IForgeShearable {
     }
 
     public void setMoss(boolean hasMoss) {
-        if(hasMoss) {
-            this.entityData.set(HAS_MOSS, true);
-        }
-        else {
-            this.entityData.set(HAS_MOSS, false);
-        }
+        this.entityData.set(HAS_MOSS, hasMoss);
     }
 
     @Override
