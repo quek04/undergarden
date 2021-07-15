@@ -219,7 +219,7 @@ public class UGFeatures {
                 new BaseTreeFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LOG.get().defaultBlockState()),
                         new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().defaultBlockState()),
-                        new BlobFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 2),
+                        new BlobFoliagePlacer(FeatureSpread.fixed(3), FeatureSpread.fixed(0), 2),
                         new SmogstemTrunkPlacer(10, 2, 2),
                         new TwoLayerFeature(1, 1, 2))
                         .ignoreVines().build()
@@ -267,7 +267,7 @@ public class UGFeatures {
                 new BaseTreeFeatureConfig.Builder(
                         new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LOG.get().defaultBlockState()),
                         new SimpleBlockStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().defaultBlockState()),
-                        new BlobFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 2),
+                        new BlobFoliagePlacer(FeatureSpread.fixed(3), FeatureSpread.fixed(0), 2),
                         new SmogstemTrunkPlacer(15, 4, 4),
                         new TwoLayerFeature(1, 1, 2))
                         .ignoreVines().build()
