@@ -65,9 +65,11 @@ public class MogModel<E extends MogEntity> extends AgeableModel<E> {
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
 		this.head.xRot = headPitch * ((float)Math.PI / 180F);
 
-		this.frontLegLeft.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.frontLegRight.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.backLegLeft.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.backLegRight.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.body.zRot = 0.1F * MathHelper.sin(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
+
+		this.frontLegLeft.xRot = MathHelper.cos(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
+		this.frontLegRight.xRot = MathHelper.cos(limbSwing * 2.0F + (float)Math.PI) * 4.0F * limbSwingAmount;
+		this.backLegLeft.xRot = MathHelper.cos(limbSwing * 2.0F + (float)Math.PI) * 4.0F * limbSwingAmount;
+		this.backLegRight.xRot = MathHelper.cos(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
 	}
 }
