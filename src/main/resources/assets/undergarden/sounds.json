@@ -724,5 +724,51 @@
       }
     ],
     "subtitle": "subtitles.entity.gwib_flop"
+  },
+  "entity.gwibling_hurt": {
+    "subtitle": "subtitles.entity.gwibling_hurt",
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ]
+  },
+  "entity.gwibling_death": {
+    "subtitle": "subtitles.entity.gwibling_death",
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ]
+  },
+  "entity.gwibling_flop": {
+    "sounds": [
+      {
+        "name": "entity/fish/flop1",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop2",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop3",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop4",
+        "volume": 0.3
+      }
+    ],
+    "subtitle": "subtitles.entity.gwibling_flop"
+  },
+  "item.pick_blisterberry_bush": {
+    "subtitle": "subtitles.item.blisterberry_bush_pick_berries",
+    "sounds": [
+      "item/sweet_berries/pick_from_bush1",
+      "item/sweet_berries/pick_from_bush2"
+    ]
   }
 }
