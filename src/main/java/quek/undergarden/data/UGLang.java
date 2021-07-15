@@ -52,6 +52,8 @@ public class UGLang extends LanguageProvider {
     protected void addTranslations() {
         addBlock(UGBlocks.UNDERGARDEN_PORTAL, "Undergarden Portal");
 
+        addBlock(UGBlocks.SHARD_TORCH, "Shard Torch");
+
         addBlock(UGBlocks.DEPTHROCK, "Depthrock");
         addBlock(UGBlocks.DEPTHROCK_BRICKS, "Depthrock Bricks");
         addBlock(UGBlocks.CRACKED_DEPTHROCK_BRICKS, "Cracked Depthrock Bricks");
@@ -181,6 +183,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.SMOGSTEM_TRAPDOOR, "Smogstem Trapdoor");
         addBlock(UGBlocks.SMOGSTEM_BUTTON, "Smogstem Button");
         addBlock(UGBlocks.SMOGSTEM_PRESSURE_PLATE, "Smogstem Pressure Plate");
+        addBlock(UGBlocks.SMOGSTEM_SIGN, "Smogstem Sign");
 
         addBlock(UGBlocks.WIGGLEWOOD_SAPLING, "Wigglewood Sapling");
         addBlock(UGBlocks.WIGGLEWOOD_LOG, "Wigglewood Log");
@@ -197,6 +200,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.WIGGLEWOOD_TRAPDOOR, "Wigglewood Trapdoor");
         addBlock(UGBlocks.WIGGLEWOOD_BUTTON, "Wigglewood Button");
         addBlock(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, "Wigglewood Pressure Plate");
+        addBlock(UGBlocks.WIGGLEWOOD_SIGN, "Wigglewood Sign");
 
         addBlock(UGBlocks.GRONGLE_SAPLING, "Grongle Sapling");
         addBlock(UGBlocks.GRONGLE_LOG, "Grongle Log");
@@ -215,6 +219,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GRONGLE_TRAPDOOR, "Grongle Trapdoor");
         addBlock(UGBlocks.GRONGLE_BUTTON, "Grongle Button");
         addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
+        addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
 
         addItem(UGItems.MAMMOTH_DISC, "Music Disc");
         add(UGItems.MAMMOTH_DISC.get().getDescriptionId() + ".desc", "Screem - Mammoth");
@@ -240,7 +245,6 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.REGALIUM_NUGGET, "Regalium Nugget");
         addItem(UGItems.FORGOTTEN_INGOT, "Forgotten Ingot");
         addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
-        addItem(UGItems.SHARD_TORCH, "Shard Torch");
         addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");
         addItem(UGItems.DITCHBULB, "Ditchbulb");
         addItem(UGItems.BRUTE_TUSK, "Brute Tusk");
@@ -336,10 +340,6 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
         addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
         addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
-
-        addItem(UGItems.SMOGSTEM_SIGN, "Smogstem Sign");
-        addItem(UGItems.WIGGLEWOOD_SIGN, "Wigglewood Sign");
-        addItem(UGItems.GRONGLE_SIGN, "Grongle Sign");
 
         addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
         addBiome(UGBiomes.DENSE_FOREST, "Dense Forest");

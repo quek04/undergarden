@@ -159,7 +159,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.REGALIUM_NUGGET);
         normalItem(UGItems.FORGOTTEN_INGOT);
         normalItem(UGItems.FORGOTTEN_NUGGET);
-        torchItem(UGItems.SHARD_TORCH);
+        torchItem(UGBlocks.SHARD_TORCH);
         normalItem(UGItems.DITCHBULB);
         normalItem(UGItems.GLOOMGOURD_SEEDS);
         normalItem(UGItems.BRUTE_TUSK);
@@ -254,8 +254,8 @@ public class UGItemModels extends UGItemModelProvider {
         egg(UGItems.MASTICATOR_SPAWN_EGG);
         egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
 
-        normalItem(UGItems.SMOGSTEM_SIGN);
-        normalItem(UGItems.WIGGLEWOOD_SIGN);
-        normalItem(UGItems.GRONGLE_SIGN);
+        sign(UGBlocks.SMOGSTEM_SIGN);
+        sign(UGBlocks.WIGGLEWOOD_SIGN);
+        sign(UGBlocks.GRONGLE_SIGN);
     }
 }

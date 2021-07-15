@@ -54,7 +54,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(ItemTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get().asItem(), UGBlocks.DEPTHROCK_BRICK_WALL.get().asItem(), UGBlocks.SHIVERSTONE_WALL.get().asItem(), UGBlocks.SHIVERSTONE_BRICK_WALL.get().asItem(), UGBlocks.TREMBLECRUST_WALL.get().asItem(), UGBlocks.TREMBLECRUST_BRICK_WALL.get().asItem());
         tag(ItemTags.LEAVES).add(UGBlocks.SMOGSTEM_LEAVES.get().asItem(), UGBlocks.WIGGLEWOOD_LEAVES.get().asItem(), UGBlocks.GRONGLE_LEAVES.get().asItem());
         tag(ItemTags.WOODEN_TRAPDOORS).add(UGBlocks.SMOGSTEM_TRAPDOOR.get().asItem(), UGBlocks.WIGGLEWOOD_TRAPDOOR.get().asItem(), UGBlocks.GRONGLE_TRAPDOOR.get().asItem());
-        tag(ItemTags.SIGNS).add(UGItems.SMOGSTEM_SIGN.get(), UGItems.WIGGLEWOOD_SIGN.get(), UGItems.GRONGLE_SIGN.get());
+        tag(ItemTags.SIGNS).add(UGBlocks.SMOGSTEM_SIGN.get().asItem(), UGBlocks.WIGGLEWOOD_SIGN.get().asItem(), UGBlocks.GRONGLE_SIGN.get().asItem());
         tag(ItemTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get().asItem());
         tag(ItemTags.GOLD_ORES).add(UGBlocks.GOLD_ORE.get().asItem());
         tag(ItemTags.COALS).add(UGItems.DITCHBULB.get());

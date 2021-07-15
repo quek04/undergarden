@@ -1,5 +1,6 @@
 package quek.undergarden.data.provider;
 
+import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
@@ -256,7 +257,7 @@ public class UGRecipeProvider extends RecipeProvider {
                 .unlockedBy("in_water", insideOf(Blocks.WATER));
     }
 
-    public ShapedRecipeBuilder makeSign(Supplier<? extends SignItem> signOut, Supplier<? extends Block> planksIn) {
+    public ShapedRecipeBuilder makeSign(Supplier<? extends AbstractSignBlock> signOut, Supplier<? extends Block> planksIn) {
         return ShapedRecipeBuilder.shaped(signOut.get(), 3)
                 .pattern("PPP")
                 .pattern("PPP")

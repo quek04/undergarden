@@ -153,11 +153,4 @@ public class UGItems {
 
     public static final RegistryObject<Item> MASTICATOR_SPAWN_EGG = ITEMS.register("masticator_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.MASTICATOR_TYPE, 2366466, 15881511));
     public static final RegistryObject<Item> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN_TYPE, 8126397, 3170136));
-
-    //stuff that should be blocks
-    public static final RegistryObject<Item> SHARD_TORCH = ITEMS.register("shard_torch", () -> new WallOrFloorItem(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
-    public static final RegistryObject<Item> CARVED_GLOOMGOURD = ITEMS.register("carved_gloomgourd", CarvedGloomgourdItem::new);
-    public static final RegistryObject<SignItem> SMOGSTEM_SIGN = ITEMS.register("smogstem_sign", () -> new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), UGBlocks.SMOGSTEM_SIGN.get(), UGBlocks.SMOGSTEM_WALL_SIGN.get()));
-    public static final RegistryObject<SignItem> WIGGLEWOOD_SIGN = ITEMS.register("wigglewood_sign", () -> new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), UGBlocks.WIGGLEWOOD_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_SIGN.get()));
-    public static final RegistryObject<SignItem> GRONGLE_SIGN = ITEMS.register("grongle_sign", () -> new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), UGBlocks.GRONGLE_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get()));
 }

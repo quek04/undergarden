@@ -1,5 +1,6 @@
 package quek.undergarden.data.provider;
 
+import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
@@ -53,7 +54,7 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
                 .texture("layer0", modLoc("item/" + item.get().getRegistryName().getPath()));
     }
 
-    public ItemModelBuilder torchItem(Supplier<? extends Item> item) {
+    public ItemModelBuilder torchItem(Supplier<? extends Block> item) {
         return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/" + item.get().getRegistryName().getPath()));
     }
@@ -65,5 +66,10 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 
     public ItemModelBuilder egg(Supplier<? extends Item> item) {
         return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));
+    }
+
+    public ItemModelBuilder sign(Supplier<? extends AbstractSignBlock> sign) {
+        return withExistingParent(blockName(sign), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/" + blockName(sign)));
     }
 }

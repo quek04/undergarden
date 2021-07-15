@@ -2,19 +2,18 @@ package quek.undergarden.registry;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.HugeFungusConfig;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
+import quek.undergarden.client.render.tileentity.DepthrockBedISTER;
+import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.world.gen.tree.GrongleTree;
 import quek.undergarden.world.gen.tree.SmogstemTree;
 import quek.undergarden.world.gen.tree.WigglewoodTree;
@@ -29,7 +28,7 @@ public class UGBlocks {
 
     public static final RegistryObject<Block> UNDERGARDEN_PORTAL = BLOCKS.register("undergarden_portal", UndergardenPortalBlock::new);
 
-    public static final RegistryObject<Block> SHARD_TORCH = BLOCKS.register("shard_torch", () -> new ShardTorchBlock(AbstractBlock.Properties.copy(Blocks.TORCH).lightLevel((state) -> 6)));
+    public static final RegistryObject<Block> SHARD_TORCH = register("shard_torch", () -> new ShardTorchBlock(AbstractBlock.Properties.copy(Blocks.TORCH).lightLevel((state) -> 6)));
     public static final RegistryObject<Block> SHARD_WALL_TORCH = BLOCKS.register("shard_wall_torch", () -> new ShardWallTorchBlock(AbstractBlock.Properties.copy(Blocks.WALL_TORCH).lightLevel((state) -> 6)));
 
     //depthrock
@@ -38,30 +37,30 @@ public class UGBlocks {
     public static final RegistryObject<Block> CRACKED_DEPTHROCK_BRICKS = register("cracked_depthrock_bricks", () -> new Block(AbstractBlock.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> CHISELED_DEPTHROCK_BRICKS = register("chiseled_depthrock_bricks", () -> new Block(AbstractBlock.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> DEPTHROCK_TILES = register("depthrock_tiles", () -> new Block(AbstractBlock.Properties.copy(DEPTHROCK.get())));
-    public static final RegistryObject<StairsBlock> DEPTHROCK_STAIRS = register("depthrock_stairs", () -> new StairsBlock(() -> UGBlocks.DEPTHROCK.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion()));
-    public static final RegistryObject<StairsBlock> DEPTHROCK_BRICK_STAIRS = register("depthrock_brick_stairs", () -> new StairsBlock(() -> UGBlocks.DEPTHROCK_BRICKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK_BRICKS.get()).noOcclusion()));
-    public static final RegistryObject<StairsBlock> DEPTHROCK_TILE_STAIRS = register("depthrock_tile_stairs", () -> new StairsBlock(() -> UGBlocks.DEPTHROCK_TILES.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> DEPTHROCK_SLAB = register("depthrock_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> DEPTHROCK_BRICK_SLAB = register("depthrock_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK_BRICKS.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> DEPTHROCK_TILE_SLAB = register("depthrock_tile_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion()));
+    public static final RegistryObject<StairsBlock> DEPTHROCK_STAIRS = register("depthrock_stairs", () -> new StairsBlock(() -> DEPTHROCK.get().defaultBlockState(), AbstractBlock.Properties.copy(DEPTHROCK.get()).noOcclusion()));
+    public static final RegistryObject<StairsBlock> DEPTHROCK_BRICK_STAIRS = register("depthrock_brick_stairs", () -> new StairsBlock(() -> DEPTHROCK_BRICKS.get().defaultBlockState(), AbstractBlock.Properties.copy(DEPTHROCK_BRICKS.get()).noOcclusion()));
+    public static final RegistryObject<StairsBlock> DEPTHROCK_TILE_STAIRS = register("depthrock_tile_stairs", () -> new StairsBlock(() -> DEPTHROCK_TILES.get().defaultBlockState(), AbstractBlock.Properties.copy(DEPTHROCK.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> DEPTHROCK_SLAB = register("depthrock_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> DEPTHROCK_BRICK_SLAB = register("depthrock_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(DEPTHROCK_BRICKS.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> DEPTHROCK_TILE_SLAB = register("depthrock_tile_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).noOcclusion()));
     public static final RegistryObject<WallBlock> DEPTHROCK_WALL = register("depthrock_wall", () -> new WallBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).noOcclusion()));
     public static final RegistryObject<WallBlock> DEPTHROCK_BRICK_WALL = register("depthrock_brick_wall", () -> new WallBlock(AbstractBlock.Properties.copy(DEPTHROCK_BRICKS.get()).noOcclusion()));
-    public static final RegistryObject<StoneButtonBlock> DEPTHROCK_BUTTON = register("depthrock_button", () -> new StoneButtonBlock(AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion().noCollission()));
-    public static final RegistryObject<PressurePlateBlock> DEPTHROCK_PRESSURE_PLATE = register("depthrock_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(UGBlocks.DEPTHROCK.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<StoneButtonBlock> DEPTHROCK_BUTTON = register("depthrock_button", () -> new StoneButtonBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<PressurePlateBlock> DEPTHROCK_PRESSURE_PLATE = register("depthrock_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(DEPTHROCK.get()).noOcclusion().noCollission()));
 
     //shiverstone
     public static final RegistryObject<Block> SHIVERSTONE = register("shiverstone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(3.5F, 12F).sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops().friction(0.98F)));
     public static final RegistryObject<Block> SHIVERSTONE_BRICKS = register("shiverstone_bricks", () -> new Block(AbstractBlock.Properties.copy(SHIVERSTONE.get())));
     public static final RegistryObject<Block> CRACKED_SHIVERSTONE_BRICKS = register("cracked_shiverstone_bricks", () -> new Block(AbstractBlock.Properties.copy(SHIVERSTONE.get())));
     public static final RegistryObject<Block> CHISELED_SHIVERSTONE_BRICKS = register("chiseled_shiverstone_bricks", () -> new Block(AbstractBlock.Properties.copy(SHIVERSTONE.get())));
-    public static final RegistryObject<StairsBlock> SHIVERSTONE_STAIRS = register("shiverstone_stairs", () -> new StairsBlock(() -> UGBlocks.SHIVERSTONE.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.SHIVERSTONE.get()).noOcclusion()));
-    public static final RegistryObject<StairsBlock> SHIVERSTONE_BRICK_STAIRS = register("shiverstone_brick_stairs", () -> new StairsBlock(() -> UGBlocks.SHIVERSTONE_BRICKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.SHIVERSTONE_BRICKS.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> SHIVERSTONE_SLAB = register("shiverstone_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.SHIVERSTONE.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> SHIVERSTONE_BRICK_SLAB = register("shiverstone_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.SHIVERSTONE_BRICKS.get()).noOcclusion()));
+    public static final RegistryObject<StairsBlock> SHIVERSTONE_STAIRS = register("shiverstone_stairs", () -> new StairsBlock(() -> SHIVERSTONE.get().defaultBlockState(), AbstractBlock.Properties.copy(SHIVERSTONE.get()).noOcclusion()));
+    public static final RegistryObject<StairsBlock> SHIVERSTONE_BRICK_STAIRS = register("shiverstone_brick_stairs", () -> new StairsBlock(() -> SHIVERSTONE_BRICKS.get().defaultBlockState(), AbstractBlock.Properties.copy(SHIVERSTONE_BRICKS.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> SHIVERSTONE_SLAB = register("shiverstone_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(SHIVERSTONE.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> SHIVERSTONE_BRICK_SLAB = register("shiverstone_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(SHIVERSTONE_BRICKS.get()).noOcclusion()));
     public static final RegistryObject<WallBlock> SHIVERSTONE_WALL = register("shiverstone_wall", () -> new WallBlock(AbstractBlock.Properties.copy(SHIVERSTONE.get()).noOcclusion()));
     public static final RegistryObject<WallBlock> SHIVERSTONE_BRICK_WALL = register("shiverstone_brick_wall", () -> new WallBlock(AbstractBlock.Properties.copy(SHIVERSTONE_BRICKS.get()).noOcclusion()));
-    public static final RegistryObject<StoneButtonBlock> SHIVERSTONE_BUTTON = register("shiverstone_button", () -> new StoneButtonBlock(AbstractBlock.Properties.copy(UGBlocks.SHIVERSTONE.get()).noOcclusion().noCollission()));
-    public static final RegistryObject<PressurePlateBlock> SHIVERSTONE_PRESSURE_PLATE = register("shiverstone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(UGBlocks.SHIVERSTONE.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<StoneButtonBlock> SHIVERSTONE_BUTTON = register("shiverstone_button", () -> new StoneButtonBlock(AbstractBlock.Properties.copy(SHIVERSTONE.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<PressurePlateBlock> SHIVERSTONE_PRESSURE_PLATE = register("shiverstone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(SHIVERSTONE.get()).noOcclusion().noCollission()));
 
     //tremblecrust
     public static final RegistryObject<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(6F, 24F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(3).requiresCorrectToolForDrops()));
@@ -69,14 +68,14 @@ public class UGBlocks {
     public static final RegistryObject<Block> TREMBLECRUST_BRICKS = register("tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.copy(TREMBLECRUST.get()).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> CRACKED_TREMBLECRUST_BRICKS = register("cracked_tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.copy(TREMBLECRUST_BRICKS.get())));
     public static final RegistryObject<Block> CHISELED_TREMBLECRUST_BRICKS = register("chiseled_tremblecrust_bricks", () -> new Block(AbstractBlock.Properties.copy(TREMBLECRUST_BRICKS.get())));
-    public static final RegistryObject<StairsBlock> TREMBLECRUST_STAIRS = register("tremblecrust_stairs", () -> new StairsBlock(() -> UGBlocks.TREMBLECRUST.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.TREMBLECRUST.get()).noOcclusion()));
-    public static final RegistryObject<StairsBlock> TREMBLECRUST_BRICK_STAIRS = register("tremblecrust_brick_stairs", () -> new StairsBlock(() -> UGBlocks.TREMBLECRUST_BRICKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.TREMBLECRUST_BRICKS.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> TREMBLECRUST_SLAB = register("tremblecrust_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.TREMBLECRUST.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> TREMBLECRUST_BRICK_SLAB = register("tremblecrust_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.TREMBLECRUST_BRICKS.get()).noOcclusion()));
+    public static final RegistryObject<StairsBlock> TREMBLECRUST_STAIRS = register("tremblecrust_stairs", () -> new StairsBlock(() -> TREMBLECRUST.get().defaultBlockState(), AbstractBlock.Properties.copy(TREMBLECRUST.get()).noOcclusion()));
+    public static final RegistryObject<StairsBlock> TREMBLECRUST_BRICK_STAIRS = register("tremblecrust_brick_stairs", () -> new StairsBlock(() -> TREMBLECRUST_BRICKS.get().defaultBlockState(), AbstractBlock.Properties.copy(TREMBLECRUST_BRICKS.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> TREMBLECRUST_SLAB = register("tremblecrust_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(TREMBLECRUST.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> TREMBLECRUST_BRICK_SLAB = register("tremblecrust_brick_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(TREMBLECRUST_BRICKS.get()).noOcclusion()));
     public static final RegistryObject<WallBlock> TREMBLECRUST_WALL = register("tremblecrust_wall", () -> new WallBlock(AbstractBlock.Properties.copy(TREMBLECRUST.get()).noOcclusion()));
     public static final RegistryObject<WallBlock> TREMBLECRUST_BRICK_WALL = register("tremblecrust_brick_wall", () -> new WallBlock(AbstractBlock.Properties.copy(TREMBLECRUST_BRICKS.get()).noOcclusion()));
-    public static final RegistryObject<StoneButtonBlock> TREMBLECRUST_BUTTON = register("tremblecrust_button", () -> new StoneButtonBlock(AbstractBlock.Properties.copy(UGBlocks.TREMBLECRUST.get()).noOcclusion().noCollission()));
-    public static final RegistryObject<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = register("tremblecrust_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(UGBlocks.TREMBLECRUST.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<StoneButtonBlock> TREMBLECRUST_BUTTON = register("tremblecrust_button", () -> new StoneButtonBlock(AbstractBlock.Properties.copy(TREMBLECRUST.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = register("tremblecrust_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, AbstractBlock.Properties.copy(TREMBLECRUST.get()).noOcclusion().noCollission()));
 
     //ores
     public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new UGOreBlock(AbstractBlock.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(0).requiresCorrectToolForDrops()));
@@ -126,7 +125,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> TALL_SHIMMERWEED = register("tall_shimmerweed", () -> new UGDoublePlantBlock(AbstractBlock.Properties.copy(Blocks.TALL_GRASS).lightLevel((state) -> 14)));
     public static final RegistryObject<Block> DITCHBULB_PLANT = BLOCKS.register("ditchbulb_plant", () -> new DitchbulbBlock(AbstractBlock.Properties.copy(Blocks.TALL_GRASS).randomTicks().lightLevel((state) -> state.getValue(DitchbulbBlock.AGE) == 1 ? 6 : 0)));
     public static final RegistryObject<StemGrownBlock> GLOOMGOURD = register("gloomgourd", () -> new GloomgourdBlock(AbstractBlock.Properties.copy(Blocks.PUMPKIN)));
-    public static final RegistryObject<Block> CARVED_GLOOMGOURD = BLOCKS.register("carved_gloomgourd", () -> new CarvedGloomgourdBlock(AbstractBlock.Properties.copy(Blocks.CARVED_PUMPKIN)));
+    public static final RegistryObject<Block> CARVED_GLOOMGOURD = register("carved_gloomgourd", () -> new CarvedGloomgourdBlock(AbstractBlock.Properties.copy(Blocks.CARVED_PUMPKIN)));
     public static final RegistryObject<Block> GLOOM_O_LANTERN = register("gloom_o_lantern", () -> new CarvedGloomgourdBlock(AbstractBlock.Properties.copy(Blocks.JACK_O_LANTERN).lightLevel((state) -> 15)));
     public static final RegistryObject<Block> SHARD_O_LANTERN = register("shard_o_lantern", () -> new CarvedGloomgourdShardBlock(AbstractBlock.Properties.copy(GLOOM_O_LANTERN.get()).lightLevel((state) -> 6)));
     public static final RegistryObject<StemBlock> GLOOMGOURD_STEM = BLOCKS.register("gloomgourd_stem", () -> new UGStemBlock(GLOOMGOURD.get(), AbstractBlock.Properties.copy(Blocks.PUMPKIN_STEM)));
@@ -165,17 +164,17 @@ public class UGBlocks {
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_SMOGSTEM_WOOD = register("stripped_smogstem_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
     public static final RegistryObject<Block> SMOGSTEM_LEAVES = register("smogstem_leaves", () -> new LeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<Block> SMOGSTEM_PLANKS = register("smogstem_planks", () -> new Block(AbstractBlock.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistryObject<StairsBlock> SMOGSTEM_STAIRS = register("smogstem_stairs", () -> new StairsBlock(() -> UGBlocks.SMOGSTEM_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> SMOGSTEM_SLAB = register("smogstem_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<FenceBlock> SMOGSTEM_FENCE = register("smogstem_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<FenceGateBlock> SMOGSTEM_FENCE_GATE = register("smogstem_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<DoorBlock> SMOGSTEM_DOOR = register("smogstem_door", () -> new DoorBlock(AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<TrapDoorBlock> SMOGSTEM_TRAPDOOR = register("smogstem_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<WoodButtonBlock> SMOGSTEM_BUTTON = register("smogstem_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion().noCollission()));
-    public static final RegistryObject<PressurePlateBlock> SMOGSTEM_PRESSURE_PLATE = register("smogstem_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<StairsBlock> SMOGSTEM_STAIRS = register("smogstem_stairs", () -> new StairsBlock(() -> SMOGSTEM_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> SMOGSTEM_SLAB = register("smogstem_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<FenceBlock> SMOGSTEM_FENCE = register("smogstem_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<FenceGateBlock> SMOGSTEM_FENCE_GATE = register("smogstem_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<DoorBlock> SMOGSTEM_DOOR = register("smogstem_door", () -> new DoorBlock(AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<TrapDoorBlock> SMOGSTEM_TRAPDOOR = register("smogstem_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<WoodButtonBlock> SMOGSTEM_BUTTON = register("smogstem_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<PressurePlateBlock> SMOGSTEM_PRESSURE_PLATE = register("smogstem_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion().noCollission()));
 
     public static final WoodType SMOGSTEM_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "smogstem").toString());
-    public static final RegistryObject<StandingSignBlock> SMOGSTEM_SIGN = BLOCKS.register("smogstem_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), SMOGSTEM_WOODTYPE));
+    public static final RegistryObject<StandingSignBlock> SMOGSTEM_SIGN = register("smogstem_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), SMOGSTEM_WOODTYPE));
     public static final RegistryObject<WallSignBlock> SMOGSTEM_WALL_SIGN = BLOCKS.register("smogstem_wall_sign", () -> new UndergardenWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN), SMOGSTEM_WOODTYPE));
 
     //wigglewood
@@ -186,17 +185,17 @@ public class UGBlocks {
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_WIGGLEWOOD_WOOD = register("stripped_wigglewood_wood", () -> new RotatedPillarBlock(AbstractBlock.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
     public static final RegistryObject<Block> WIGGLEWOOD_LEAVES = register("wigglewood_leaves", () -> new LeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<Block> WIGGLEWOOD_PLANKS = register("wigglewood_planks", () -> new Block(AbstractBlock.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistryObject<StairsBlock> WIGGLEWOOD_STAIRS = register("wigglewood_stairs", () -> new StairsBlock(() -> UGBlocks.SMOGSTEM_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.SMOGSTEM_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> WIGGLEWOOD_SLAB = register("wigglewood_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<FenceBlock> WIGGLEWOOD_FENCE = register("wigglewood_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<FenceGateBlock> WIGGLEWOOD_FENCE_GATE = register("wigglewood_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<DoorBlock> WIGGLEWOOD_DOOR = register("wigglewood_door", () -> new DoorBlock(AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<TrapDoorBlock> WIGGLEWOOD_TRAPDOOR = register("wigglewood_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<WoodButtonBlock> WIGGLEWOOD_BUTTON = register("wigglewood_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion().noCollission()));
-    public static final RegistryObject<PressurePlateBlock> WIGGLEWOOD_PRESSURE_PLATE = register("wigglewood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(UGBlocks.WIGGLEWOOD_PLANKS.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<StairsBlock> WIGGLEWOOD_STAIRS = register("wigglewood_stairs", () -> new StairsBlock(() -> SMOGSTEM_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> WIGGLEWOOD_SLAB = register("wigglewood_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(WIGGLEWOOD_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<FenceBlock> WIGGLEWOOD_FENCE = register("wigglewood_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(WIGGLEWOOD_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<FenceGateBlock> WIGGLEWOOD_FENCE_GATE = register("wigglewood_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.copy(WIGGLEWOOD_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<DoorBlock> WIGGLEWOOD_DOOR = register("wigglewood_door", () -> new DoorBlock(AbstractBlock.Properties.copy(WIGGLEWOOD_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<TrapDoorBlock> WIGGLEWOOD_TRAPDOOR = register("wigglewood_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(WIGGLEWOOD_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<WoodButtonBlock> WIGGLEWOOD_BUTTON = register("wigglewood_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(WIGGLEWOOD_PLANKS.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<PressurePlateBlock> WIGGLEWOOD_PRESSURE_PLATE = register("wigglewood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(WIGGLEWOOD_PLANKS.get()).noOcclusion().noCollission()));
 
     public static final WoodType WIGGLEWOOD_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "wigglewood").toString());
-    public static final RegistryObject<StandingSignBlock> WIGGLEWOOD_SIGN = BLOCKS.register("wigglewood_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), WIGGLEWOOD_WOODTYPE));
+    public static final RegistryObject<StandingSignBlock> WIGGLEWOOD_SIGN = register("wigglewood_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), WIGGLEWOOD_WOODTYPE));
     public static final RegistryObject<WallSignBlock> WIGGLEWOOD_WALL_SIGN = BLOCKS.register("wigglewood_wall_sign", () -> new UndergardenWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN), WIGGLEWOOD_WOODTYPE));
 
     //grongle
@@ -209,17 +208,17 @@ public class UGBlocks {
     public static final RegistryObject<AbstractBodyPlantBlock> HANGING_GRONGLE_LEAVES = BLOCKS.register("hanging_grongle_leaves", () -> new HangingGrongleLeavesBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES).noCollission(), Direction.DOWN, false));
     public static final RegistryObject<AbstractTopPlantBlock> HANGING_GRONGLE_LEAVES_TOP = register("hanging_grongle_leaves_top", () -> new HangingGrongleLeavesTopBlock(AbstractBlock.Properties.copy(Blocks.OAK_LEAVES).noCollission(), Direction.DOWN, false, 0.0D));
     public static final RegistryObject<Block> GRONGLE_PLANKS = register("grongle_planks", () -> new Block(AbstractBlock.Properties.copy(Blocks.CRIMSON_PLANKS)));
-    public static final RegistryObject<StairsBlock> GRONGLE_STAIRS = register("grongle_stairs", () -> new StairsBlock(() -> UGBlocks.GRONGLE_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<SlabBlock> GRONGLE_SLAB = register("grongle_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<FenceBlock> GRONGLE_FENCE = register("grongle_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<FenceGateBlock> GRONGLE_FENCE_GATE = register("grongle_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<DoorBlock> GRONGLE_DOOR = register("grongle_door", () -> new DoorBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<TrapDoorBlock> GRONGLE_TRAPDOOR = register("grongle_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<WoodButtonBlock> GRONGLE_BUTTON = register("grongle_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion().noCollission()));
-    public static final RegistryObject<PressurePlateBlock> GRONGLE_PRESSURE_PLATE = register("grongle_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(UGBlocks.GRONGLE_PLANKS.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<StairsBlock> GRONGLE_STAIRS = register("grongle_stairs", () -> new StairsBlock(() -> GRONGLE_PLANKS.get().defaultBlockState(), AbstractBlock.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<SlabBlock> GRONGLE_SLAB = register("grongle_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<FenceBlock> GRONGLE_FENCE = register("grongle_fence", () -> new FenceBlock(AbstractBlock.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<FenceGateBlock> GRONGLE_FENCE_GATE = register("grongle_fence_gate", () -> new FenceGateBlock(AbstractBlock.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<DoorBlock> GRONGLE_DOOR = register("grongle_door", () -> new DoorBlock(AbstractBlock.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<TrapDoorBlock> GRONGLE_TRAPDOOR = register("grongle_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<WoodButtonBlock> GRONGLE_BUTTON = register("grongle_button", () -> new WoodButtonBlock(AbstractBlock.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion().noCollission()));
+    public static final RegistryObject<PressurePlateBlock> GRONGLE_PRESSURE_PLATE = register("grongle_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion().noCollission()));
 
     public static final WoodType GRONGLE_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "grongle").toString());
-    public static final RegistryObject<StandingSignBlock> GRONGLE_SIGN = BLOCKS.register("grongle_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), GRONGLE_WOODTYPE));
+    public static final RegistryObject<StandingSignBlock> GRONGLE_SIGN = register("grongle_sign", () -> new UndergardenStandingSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_SIGN), GRONGLE_WOODTYPE));
     public static final RegistryObject<WallSignBlock> GRONGLE_WALL_SIGN = BLOCKS.register("grongle_wall_sign", () -> new UndergardenWallSignBlock(AbstractBlock.Properties.copy(Blocks.OAK_WALL_SIGN), GRONGLE_WOODTYPE));
 
     //flower pots
@@ -247,6 +246,34 @@ public class UGBlocks {
     }
 
     private static <T extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<T> block) {
-        return () -> new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP));
+        return () -> {
+            if(Objects.requireNonNull(block.get()) == SHARD_TORCH.get()) {
+                return new WallOrFloorItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties().tab(UGItemGroups.GROUP));
+            }
+            else if(Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == REGALIUM_ORE.get()) {
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.UNCOMMON));
+            }
+            else if(Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(UGItems.FORGOTTEN));
+            }
+            else if(Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
+                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1).setISTER(() -> DepthrockBedISTER::new));
+            }
+            else if(Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
+                return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP));
+            }
+            else if(Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {
+                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
+            }
+            else if(Objects.requireNonNull(block.get()) == WIGGLEWOOD_SIGN.get()) {
+                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
+            }
+            else if(Objects.requireNonNull(block.get()) == GRONGLE_SIGN.get()) {
+                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
+            }
+            else {
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP));
+            }
+        };
     }
 }

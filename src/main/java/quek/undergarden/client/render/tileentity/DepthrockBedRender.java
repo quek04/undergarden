@@ -43,9 +43,10 @@ public class DepthrockBedRender extends TileEntityRenderer<DepthrockBedTE> {
             TileEntityMerger.ICallbackWrapper<? extends DepthrockBedTE> icallbackwrapper = TileEntityMerger.combineWithNeigbour(UGTileEntities.DEPTHROCK_BED.get(), BedBlock::getBlockType, BedBlock::getConnectedDirection, ChestBlock.FACING, blockstate, world, bed.getBlockPos(), (iWorld, pos) -> false);
             int i = icallbackwrapper.<Int2IntFunction>apply(new DualBrightnessCallback<>()).get(combinedLight);
             this.renderPiece(matrixStack, renderTypeBuffer, blockstate.getValue(BedBlock.PART) == BedPart.HEAD, blockstate.getValue(BedBlock.FACING), i, combinedOverlay, false);
-        } else {
-            //this.renderPiece(matrixStack, renderTypeBuffer, true, Direction.SOUTH, combinedLight, combinedOverlay, false);
-            //this.renderPiece(matrixStack, renderTypeBuffer, false, Direction.SOUTH, combinedLight, combinedOverlay, true);
+        }
+        else {
+            this.renderPiece(matrixStack, renderTypeBuffer, true, Direction.SOUTH, combinedLight, combinedOverlay, false);
+            this.renderPiece(matrixStack, renderTypeBuffer, false, Direction.SOUTH, combinedLight, combinedOverlay, true);
         }
     }
 

@@ -1,6 +1,7 @@
 package quek.undergarden.item;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
@@ -8,6 +9,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,10 +24,8 @@ public class CarvedGloomgourdItem extends BlockItem {
 
     private static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(Undergarden.MODID, "textures/gloomgourd_overlay.png");
 
-    public CarvedGloomgourdItem() {
-        super(UGBlocks.CARVED_GLOOMGOURD.get(), (new Properties()
-                .tab(UGItemGroups.GROUP)
-        ));
+    public CarvedGloomgourdItem(Block block, Item.Properties properties) {
+        super(block, properties);
     }
 
     @Override

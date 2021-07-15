@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.criterion.*;
+import net.minecraft.block.BedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.data.DataGenerator;
@@ -17,6 +18,7 @@ import net.minecraft.item.Items;
 import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.*;
 import net.minecraft.loot.functions.*;
+import net.minecraft.state.properties.BedPart;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
@@ -147,8 +149,8 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
             dropSelf(UGBlocks.SMOGSTEM_WOOD);
             dropSelf(UGBlocks.WIGGLEWOOD_WOOD);
-            dropOther(UGBlocks.SHARD_TORCH, UGItems.SHARD_TORCH.get());
-            dropOther(UGBlocks.SHARD_WALL_TORCH, UGItems.SHARD_TORCH.get());
+            dropSelf(UGBlocks.SHARD_TORCH);
+            dropOther(UGBlocks.SHARD_WALL_TORCH, UGBlocks.SHARD_TORCH.get());
             this.add(UGBlocks.IRON_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(Items.IRON_NUGGET).apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F))).apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
             this.add(UGBlocks.GOLD_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, ItemLootEntry.lootTableItem(Items.GOLD_NUGGET).apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F))).apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
             dropWithFortune(UGBlocks.DIAMOND_ORE, Items.DIAMOND);
@@ -219,12 +221,12 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.TREMBLECRUST_BRICK_WALL);
             dropSelf(UGBlocks.TREMBLECRUST_BUTTON);
             dropSelf(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
-            dropOther(UGBlocks.SMOGSTEM_SIGN, UGItems.SMOGSTEM_SIGN.get());
-            dropOther(UGBlocks.SMOGSTEM_WALL_SIGN, UGItems.SMOGSTEM_SIGN.get());
-            dropOther(UGBlocks.WIGGLEWOOD_SIGN, UGItems.WIGGLEWOOD_SIGN.get());
-            dropOther(UGBlocks.WIGGLEWOOD_WALL_SIGN, UGItems.WIGGLEWOOD_SIGN.get());
-            dropOther(UGBlocks.GRONGLE_SIGN, UGItems.GRONGLE_SIGN.get());
-            dropOther(UGBlocks.GRONGLE_WALL_SIGN, UGItems.GRONGLE_SIGN.get());
+            dropSelf(UGBlocks.SMOGSTEM_SIGN);
+            dropOther(UGBlocks.SMOGSTEM_WALL_SIGN, UGBlocks.SMOGSTEM_SIGN.get());
+            dropSelf(UGBlocks.WIGGLEWOOD_SIGN);
+            dropOther(UGBlocks.WIGGLEWOOD_WALL_SIGN, UGBlocks.WIGGLEWOOD_SIGN.get());
+            dropSelf(UGBlocks.GRONGLE_SIGN);
+            dropOther(UGBlocks.GRONGLE_WALL_SIGN, UGBlocks.GRONGLE_SIGN.get());
             dropSelf(UGBlocks.GOO_BLOCK);
             dropSelf(UGBlocks.SEDIMENT);
             dropAsSilk(UGBlocks.SEDIMENT_GLASS);
@@ -237,6 +239,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.DEPTHROCK_TILE_SLAB);
             this.add(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get(), BlockLootTables::createShearsOnlyDrop);
             this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).when(SHEARS).add(ItemLootEntry.lootTableItem(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get()))));
+            this.add(UGBlocks.DEPTHROCK_BED.get(), (bed) -> createSinglePropConditionTable(bed, BedBlock.PART, BedPart.HEAD));
         }
 
         @Override

@@ -49,9 +49,9 @@ public class UGRecipes extends UGRecipeProvider {
         makeBoat(UGItems.WIGGLEWOOD_BOAT, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
         makeBoat(UGItems.GRONGLE_BOAT, UGBlocks.GRONGLE_PLANKS).save(consumer);
 
-        makeSign(UGItems.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
-        makeSign(UGItems.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
-        makeSign(UGItems.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
+        makeSign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
+        makeSign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
+        makeSign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
 
         ShapedRecipeBuilder.shaped(UGItems.TWISTYTWIG.get(), 4)
                 .pattern("P ")
@@ -83,9 +83,9 @@ public class UGRecipes extends UGRecipeProvider {
                 .pattern("G")
                 .pattern("T")
                 .define('G', UGBlocks.CARVED_GLOOMGOURD.get())
-                .define('T', UGItems.SHARD_TORCH.get())
+                .define('T', UGBlocks.SHARD_TORCH.get())
                 .unlockedBy("has_carved_gourd", has(UGBlocks.CARVED_GLOOMGOURD.get()))
-                .unlockedBy("has_shard_torch", has(UGItems.SHARD_TORCH.get()))
+                .unlockedBy("has_shard_torch", has(UGBlocks.SHARD_TORCH.get()))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(UGBlocks.CLOGGRUM_BARS.get(), 16)
@@ -138,7 +138,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_scales", has(UGItems.CLOGGRUM_INGOT.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(UGItems.SHARD_TORCH.get(), 1)
+        ShapedRecipeBuilder.shaped(UGBlocks.SHARD_TORCH.get(), 1)
                 .pattern("C")
                 .pattern("S")
                 .define('C', UGItems.UTHERIC_SHARD.get())
