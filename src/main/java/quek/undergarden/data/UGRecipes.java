@@ -53,6 +53,14 @@ public class UGRecipes extends UGRecipeProvider {
         makeSign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
         makeSign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
 
+        ShapedRecipeBuilder.shaped(UGBlocks.DEPTHROCK_BED.get())
+                .pattern("MMM")
+                .pattern("DDD")
+                .define('M', UGItems.MOGMOSS.get())
+                .define('D', UGBlocks.DEPTHROCK.get())
+                .unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
+                .save(consumer);
+
         ShapedRecipeBuilder.shaped(UGItems.TWISTYTWIG.get(), 4)
                 .pattern("P ")
                 .pattern(" P")
