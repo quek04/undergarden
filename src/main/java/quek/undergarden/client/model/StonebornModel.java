@@ -1,6 +1,6 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.6.5
-// Exported for Minecraft version 1.15
+// Made with Blockbench 3.9.2
+// Exported for Minecraft version 1.15 - 1.16 with Mojang mappings
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
@@ -29,7 +29,7 @@ public class StonebornModel<T extends StonebornEntity> extends AgeableModel<T> {
 
 		stoneborn = new ModelRenderer(this);
 		stoneborn.setPos(0.0F, 24.0F, 0.0F);
-		
+
 
 		head = new ModelRenderer(this);
 		head.setPos(0.0F, -29.0F, -1.0F);
@@ -42,16 +42,15 @@ public class StonebornModel<T extends StonebornEntity> extends AgeableModel<T> {
 		head.texOffs(48, 12).addBox(4.0F, -8.0F, 0.0F, 3.0F, 5.0F, 0.0F, 0.0F, false);
 
 		nose = new ModelRenderer(this);
-		nose.setPos(0.0F, -7.0F, -3.0F);
+		nose.setPos(0.0F, -6.75F, -3.0F);
 		head.addChild(nose);
 		setRotationAngle(nose, -0.2182F, 0.0F, 0.0F);
 		nose.texOffs(24, 0).addBox(-2.0F, -1.0F, -2.0F, 4.0F, 5.0F, 2.0F, 0.0F, false);
 
 		jaw = new ModelRenderer(this);
-		jaw.setPos(0.0F, 0.0F, -1.0F);
+		jaw.setPos(0.0F, 0.0F, -2.0F);
 		head.addChild(jaw);
-		setRotationAngle(jaw, 0.2182F, 0.0F, 0.0F);
-		jaw.texOffs(36, 0).addBox(-3.0F, -3.4329F, -2.9526F, 6.0F, 4.0F, 4.0F, 0.0F, false);
+		jaw.texOffs(36, 0).addBox(-3.0F, -3.0F, -3.0F, 6.0F, 4.0F, 4.0F, 0.0F, false);
 
 		body = new ModelRenderer(this);
 		body.setPos(0.0F, -22.0F, 1.0F);
@@ -61,27 +60,31 @@ public class StonebornModel<T extends StonebornEntity> extends AgeableModel<T> {
 		robe = new ModelRenderer(this);
 		robe.setPos(0.0F, 0.0F, 0.0F);
 		body.addChild(robe);
-		robe.texOffs(40, 23).addBox(-7.0F, -8.0F, -5.0F, 14.0F, 24.0F, 10.0F, 0.0F, false);
+		robe.texOffs(40, 21).addBox(-6.0F, -7.0F, -4.0F, 12.0F, 14.0F, 8.0F, 0.25F, false);
 
 		leftarm = new ModelRenderer(this);
 		leftarm.setPos(-6.0F, -26.5F, 1.0F);
 		stoneborn.addChild(leftarm);
+		setRotationAngle(leftarm, 0.0F, 0.0F, 0.0436F);
 		leftarm.texOffs(0, 48).addBox(-4.0F, -0.5F, -2.0F, 4.0F, 15.0F, 4.0F, 0.0F, false);
 
 		rightarm = new ModelRenderer(this);
 		rightarm.setPos(7.0F, -26.5F, 1.0F);
 		stoneborn.addChild(rightarm);
+		setRotationAngle(rightarm, 0.0F, 0.0F, -0.0436F);
 		rightarm.texOffs(0, 48).addBox(-1.0F, -0.5F, -2.0F, 4.0F, 15.0F, 4.0F, 0.0F, true);
 
 		leftleg = new ModelRenderer(this);
 		leftleg.setPos(-3.0F, -15.0F, 0.0F);
 		stoneborn.addChild(leftleg);
 		leftleg.texOffs(16, 48).addBox(-3.0F, 0.0F, -1.0F, 5.0F, 15.0F, 4.0F, 0.0F, false);
+		leftleg.texOffs(70, 48).addBox(-3.0F, 0.0F, -1.0F, 5.0F, 15.0F, 4.0F, 0.24F, false);
 
 		rightleg = new ModelRenderer(this);
 		rightleg.setPos(3.0F, -15.0F, 0.0F);
 		stoneborn.addChild(rightleg);
 		rightleg.texOffs(16, 48).addBox(-2.0F, 0.0F, -1.0F, 5.0F, 15.0F, 4.0F, 0.0F, true);
+		rightleg.texOffs(70, 48).addBox(-2.0F, 0.0F, -1.0F, 5.0F, 15.0F, 4.0F, 0.24F, true);
 	}
 
 	@Override
