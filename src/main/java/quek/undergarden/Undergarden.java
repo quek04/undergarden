@@ -31,6 +31,7 @@ import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import quek.undergarden.client.UndergardenClient;
+import quek.undergarden.client.render.tileentity.DepthrockBedRender;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.entity.projectile.GooBallEntity;
@@ -231,6 +232,7 @@ public class Undergarden {
 			Atlases.addWoodType(UGBlocks.GRONGLE_WOODTYPE);
 		});
 		ClientRegistry.bindTileEntityRenderer(UGTileEntities.UNDERGARDEN_SIGN.get(), SignTileEntityRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(UGTileEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
 
 		ItemModelsProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
 			if (entity == null) {

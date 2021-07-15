@@ -5,6 +5,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
+import quek.undergarden.block.tileentity.DepthrockBedTE;
 import quek.undergarden.block.tileentity.ShardTorchTE;
 import quek.undergarden.block.tileentity.SmogVentTE;
 import quek.undergarden.block.tileentity.UndergardenSignTE;
@@ -26,4 +27,5 @@ public class UGTileEntities {
                     UGBlocks.GRONGLE_SIGN.get(),
                     UGBlocks.GRONGLE_WALL_SIGN.get()
             ).build(null));
+    public static final RegistryObject<TileEntityType<DepthrockBedTE>> DEPTHROCK_BED = TILE_ENTITIES.register("depthrock_bed", () -> TileEntityType.Builder.of(DepthrockBedTE::new, UGBlocks.DEPTHROCK_BED.get()).build(null));
 }

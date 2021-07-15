@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/template_bed",
+  "textures": {
+    "particle": "undergarden:block/depthrock"
+  }
+}
