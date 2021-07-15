@@ -385,8 +385,8 @@ public class UGFeatures {
         register("grongle_tree_small", ConfiguredFeatures.GRONGLE_TREE_SMALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
         register("grongle_bush", ConfiguredFeatures.GRONGLE_BUSH.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
 
-        register("smogstem_tree_tall", ConfiguredFeatures.SMOGSTEM_TREE_TALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
-        register("wigglewood_tree_tall", ConfiguredFeatures.WIGGLEWOOD_TREE_TALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(8))));
+        register("smogstem_tree_tall", ConfiguredFeatures.SMOGSTEM_TREE_TALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(4))));
+        register("wigglewood_tree_tall", ConfiguredFeatures.WIGGLEWOOD_TREE_TALL.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(4))));
 
         register("huge_blood_mushroom", ConfiguredFeatures.BLOOD_MUSHROOM.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(2))));
         register("huge_indigo_mushroom", ConfiguredFeatures.INDIGO_MUSHROOM.decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(2))));
