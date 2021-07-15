@@ -35,7 +35,6 @@ import java.util.Random;
 public class MogEntity extends AnimalEntity implements IForgeShearable {
 
     private static final DataParameter<Boolean> HAS_MOSS = EntityDataManager.defineId(MogEntity.class, DataSerializers.BOOLEAN);
-    //private static final DataParameter<Integer> TIME_WITHOUT_MOSS = EntityDataManager.defineId(MogEntity.class, DataSerializers.INT);
     private int timeWithoutMoss;
 
     public MogEntity(EntityType<? extends AnimalEntity> entityType, World world) {
@@ -56,7 +55,8 @@ public class MogEntity extends AnimalEntity implements IForgeShearable {
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return AnimalEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.1D);
+                .add(Attributes.MOVEMENT_SPEED, 0.1D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
     }
 
     @Override
