@@ -115,15 +115,15 @@ public class MogEntity extends AnimalEntity implements IForgeShearable {
     @Override
     public void addAdditionalSaveData(CompoundNBT nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.putBoolean("Has moss", this.hasMoss());
-        this.timeWithoutMoss = nbt.getInt("Time without moss");
+        nbt.putBoolean("HasMoss", this.hasMoss());
+        this.timeWithoutMoss = nbt.getInt("TimeWithoutMoss");
     }
 
     @Override
     public void readAdditionalSaveData(CompoundNBT nbt) {
         super.readAdditionalSaveData(nbt);
-        this.setMoss(nbt.getBoolean("Has moss"));
-        nbt.putInt("Time without moss", this.timeWithoutMoss);
+        this.setMoss(nbt.getBoolean("HasMoss"));
+        nbt.putInt("TimeWithoutMoss", this.timeWithoutMoss);
     }
 
     @Override

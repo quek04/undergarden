@@ -168,13 +168,13 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     @Override
     public void addAdditionalSaveData(CompoundNBT nbt) {
         super.addAdditionalSaveData(nbt);
-        this.timeOutOfUG = nbt.getInt("timeOutOfUG");
+        this.timeOutOfUG = nbt.getInt("TimeOutOfUndergarden");
     }
 
     @Override
     public void readAdditionalSaveData(CompoundNBT nbt) {
         super.readAdditionalSaveData(nbt);
-        nbt.putInt("timeOutOfUG", this.timeOutOfUG);
+        nbt.putInt("TimeOutOfUndergarden", this.timeOutOfUG);
     }
 
     @Override
