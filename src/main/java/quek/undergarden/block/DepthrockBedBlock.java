@@ -1,7 +1,7 @@
 package quek.undergarden.block;
 
 import net.minecraft.block.BedBlock;
-import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,6 +13,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
@@ -22,9 +24,16 @@ import quek.undergarden.registry.UGDimensions;
 
 public class DepthrockBedBlock extends BedBlock {
 
+    protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
+
     public DepthrockBedBlock(Properties properties) {
         super(DyeColor.GREEN, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(OCCUPIED, Boolean.FALSE));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext selectionContext) {
+        return SHAPE;
     }
 
     @Override
