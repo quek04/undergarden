@@ -266,6 +266,7 @@ public class Undergarden {
 			generator.addProvider(new UGBlockStates(generator, helper));
 			generator.addProvider(new UGItemModels(generator, helper));
 			generator.addProvider(new UGLang(generator));
+			generator.addProvider(new UGSoundDefinitions(generator, helper));
 		}
 		if(event.includeServer()) {
 			generator.addProvider(new UGRecipes(generator));

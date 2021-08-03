@@ -55,6 +55,11 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> ROTDWELLER_DEATH = register("entity.rotdweller_death");
     public static final RegistryObject<SoundEvent> ROTDWELLER_STEP = register("entity.rotdweller_step");
 
+    public static final RegistryObject<SoundEvent> ROTLING_AMBIENT = register("entity.rotling_ambient");
+    public static final RegistryObject<SoundEvent> ROTLING_HURT = register("entity.rotling_hurt");
+    public static final RegistryObject<SoundEvent> ROTLING_DEATH = register("entity.rotling_death");
+    public static final RegistryObject<SoundEvent> ROTLING_STEP = register("entity.rotling_step");
+
     public static final RegistryObject<SoundEvent> ROTWALKER_AMBIENT = register("entity.rotwalker_ambient");
     public static final RegistryObject<SoundEvent> ROTWALKER_HURT = register("entity.rotwalker_hurt");
     public static final RegistryObject<SoundEvent> ROTWALKER_DEATH = register("entity.rotwalker_death");
@@ -85,11 +90,6 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> STONEBORN_CONFUSED = register("entity.stoneborn_confused");
     public static final RegistryObject<SoundEvent> STONEBORN_CHANT = register("entity.stoneborn_chant");
     public static final RegistryObject<SoundEvent> STONEBORN_DEATH = register("entity.stoneborn_death");
-
-    public static final RegistryObject<SoundEvent> ROTLING_AMBIENT = register("entity.rotling_ambient");
-    public static final RegistryObject<SoundEvent> ROTLING_HURT = register("entity.rotling_hurt");
-    public static final RegistryObject<SoundEvent> ROTLING_DEATH = register("entity.rotling_death");
-    public static final RegistryObject<SoundEvent> ROTLING_STEP = register("entity.rotling_step");
 
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_AMBIENT = register("entity.forgotten_guardian_ambient");
     public static final RegistryObject<SoundEvent> FORGOTTEN_GUARDIAN_HURT = register("entity.forgotten_guardian_hurt");

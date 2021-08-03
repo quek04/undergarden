@@ -2,28 +2,32 @@
   "ambient.undergarden_ambience": {
     "sounds": [
       {
-        "name": "undergarden:ambient/undergarden_ambience", "stream": false
-      }
-    ]
-  },
-  "ambient.spires_ambience": {
-    "sounds": [
-      {
-        "name": "undergarden:ambient/spires_ambience", "stream": false
+        "name": "undergarden:ambient/undergarden_ambience",
+        "stream": true
       }
     ]
   },
   "ambient.abyss_ambience": {
     "sounds": [
       {
-        "name": "undergarden:ambient/abyss_ambience", "stream": false
+        "name": "undergarden:ambient/abyss_ambience",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.spires_ambience": {
+    "sounds": [
+      {
+        "name": "undergarden:ambient/spires_ambience",
+        "stream": true
       }
     ]
   },
   "ambient.frost_ambience": {
     "sounds": [
       {
-        "name": "undergarden:ambient/frost_ambience", "stream": false
+        "name": "undergarden:ambient/frost_ambience",
+        "stream": true
       }
     ]
   },
@@ -103,6 +107,86 @@
       "undergarden:ambient/moods/abyss_mood_2"
     ]
   },
+  "music.undergarden_music": {
+    "sounds": [
+      {
+        "name": "undergarden:music/acasta_gneiss",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/all_that_wiggles_is_wood",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/another",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/brotherhood",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/grongletune",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/monument",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/pit_of_shivers",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/smog",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/wrought",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.mammoth": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/mammoth",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.limax_maximus": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/limax_maximus",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.relict": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/relict",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.gloomper_anthem": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/gloomper_anthem",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.gloomper_secret": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/gloomper_secret",
+        "stream": true
+      }
+    ]
+  },
   "block.undergarden_portal_ambient": {
     "subtitle": "subtitles.block.undergarden_portal_ambient",
     "sounds": [
@@ -119,62 +203,6 @@
     "subtitle": "subtitles.block.undergarden_portal_travel",
     "sounds": [
       "undergarden:block/undergarden_portal_travel"
-    ]
-  },
-  "music.undergarden_music": {
-    "sounds": [
-      {
-      "name": "undergarden:music/monument", "stream": true
-      },
-      {
-        "name": "undergarden:music/smog", "stream": true
-      },
-      {
-        "name": "undergarden:music/brotherhood", "stream": true
-      },
-      {
-        "name": "undergarden:music/pit_of_shivers", "stream": true
-      },
-      {
-        "name": "undergarden:music/another", "stream": true
-      },
-      {
-        "name": "undergarden:music/wrought", "stream": true
-      },
-      {
-        "name": "undergarden:music/grongletune", "stream": true
-      },
-      {
-        "name": "undergarden:music/acasta_gneiss", "stream": true
-      },
-      {
-        "name": "undergarden:music/all_that_wiggles_is_wood", "stream": true
-      }
-    ]
-  },
-  "music.disc.mammoth": {
-    "sounds": [
-      "undergarden:music/disc/mammoth"
-    ]
-  },
-  "music.disc.limax_maximus": {
-    "sounds": [
-      "undergarden:music/disc/limax_maximus"
-    ]
-  },
-  "music.disc.relict": {
-    "sounds": [
-      "undergarden:music/disc/relict"
-    ]
-  },
-  "music.disc.gloomper_anthem": {
-    "sounds": [
-      "undergarden:music/disc/gloomper_anthem"
-    ]
-  },
-  "music.disc.gloomper_secret": {
-    "sounds": [
-      "undergarden:music/disc/gloomper_secret"
     ]
   },
   "item.blisterbomb": {
@@ -196,7 +224,7 @@
       "undergarden:item/slingshot_draw_2"
     ]
   },
-  "item.blisterberry_bush_pick_berries": {
+  "item.pick_blisterberry_bush": {
     "subtitle": "subtitles.item.pick_blisterberry_bush",
     "sounds": [
       "item/sweet_berries/pick_from_bush1",
@@ -259,6 +287,37 @@
       "mob/cow/step2",
       "mob/cow/step3",
       "mob/cow/step4"
+    ]
+  },
+  "entity.rotling_ambient": {
+    "subtitle": "subtitles.entity.rotling_ambient",
+    "sounds": [
+      "undergarden:entity/rotling_ambient_1",
+      "undergarden:entity/rotling_ambient_2",
+      "undergarden:entity/rotling_ambient_3"
+    ]
+  },
+  "entity.rotling_hurt": {
+    "subtitle": "subtitles.entity.rotling_hurt",
+    "sounds": [
+      "undergarden:entity/rotling_hurt_1",
+      "undergarden:entity/rotling_hurt_2"
+    ]
+  },
+  "entity.rotling_death": {
+    "subtitle": "subtitles.entity.rotling_death",
+    "sounds": [
+      "undergarden:entity/rotling_death"
+    ]
+  },
+  "entity.rotling_step": {
+    "subtitle": "subtitles.entity.rotling_step",
+    "sounds": [
+      "mob/zombie/step1",
+      "mob/zombie/step2",
+      "mob/zombie/step3",
+      "mob/zombie/step4",
+      "mob/zombie/step5"
     ]
   },
   "entity.rotwalker_ambient": {
@@ -471,37 +530,6 @@
       "undergarden:entity/stoneborn_death"
     ]
   },
-  "entity.rotling_ambient": {
-    "subtitle": "subtitles.entity.rotling_ambient",
-    "sounds": [
-      "undergarden:entity/rotling_ambient_1",
-      "undergarden:entity/rotling_ambient_2",
-      "undergarden:entity/rotling_ambient_3"
-    ]
-  },
-  "entity.rotling_hurt": {
-    "subtitle": "subtitles.entity.rotling_hurt",
-    "sounds": [
-      "undergarden:entity/rotling_hurt_1",
-      "undergarden:entity/rotling_hurt_2"
-    ]
-  },
-  "entity.rotling_death": {
-    "subtitle": "subtitles.entity.rotling_death",
-    "sounds": [
-      "undergarden:entity/rotling_death"
-    ]
-  },
-  "entity.rotling_step": {
-    "subtitle": "subtitles.entity.rotling_step",
-    "sounds": [
-      "mob/zombie/step1",
-      "mob/zombie/step2",
-      "mob/zombie/step3",
-      "mob/zombie/step4",
-      "mob/zombie/step5"
-    ]
-  },
   "entity.forgotten_guardian_ambient": {
     "subtitle": "subtitles.entity.forgotten_guardian_ambient",
     "sounds": [
@@ -545,6 +573,24 @@
       "undergarden:entity/fguardian_step_3"
     ]
   },
+  "entity.minion_shoot": {
+    "subtitle": "subtitles.entity.minion_shoot",
+    "sounds": [
+      "undergarden:entity/minion_shoot"
+    ]
+  },
+  "entity.minion_death": {
+    "subtitle": "subtitles.entity.minion_death",
+    "sounds": [
+      "undergarden:entity/minion_death"
+    ]
+  },
+  "entity.minion_repair": {
+    "subtitle": "subtitles.entity.minion_repair",
+    "sounds": [
+      "mob/irongolem/repair"
+    ]
+  },
   "entity.nargoyle_hurt": {
     "subtitle": "subtitles.entity.nargoyle_hurt",
     "sounds": [
@@ -566,24 +612,6 @@
       "undergarden:entity/nargoyle_attack_2",
       "undergarden:entity/nargoyle_attack_3"
     ]
-  },
-  "entity.minion_shoot": {
-    "subtitle": "subtitles.entity.minion_shoot",
-    "sounds": [
-      "undergarden:entity/minion_shoot"
-    ]
-  },
-  "entity.minion_death": {
-    "subtitle": "subtitles.entity.minion_death",
-    "sounds": [
-      "undergarden:entity/minion_death"
-    ]
-  },
-  "entity.minion_repair": {
-    "sounds": [
-      "mob/irongolem/repair"
-    ],
-    "subtitle": "subtitles.entity.minion_repair"
   },
   "entity.muncher_ambient": {
     "subtitle": "subtitles.entity.muncher_ambient",
@@ -677,7 +705,7 @@
     ]
   },
   "entity.masticator_step": {
-    "subtitle": "subtitles.entity.masticator_step",
+    "subtitle": "subtitles.entity.masticator_stpe",
     "sounds": [
       "mob/ravager/step1",
       "mob/ravager/step2",
@@ -705,25 +733,25 @@
     ]
   },
   "entity.gwib_flop": {
+    "subtitle": "subtitles.entity.gwib_flop",
     "sounds": [
       {
         "name": "entity/fish/flop1",
-        "volume": 0.3
+        "volume": 0.5
       },
       {
         "name": "entity/fish/flop2",
-        "volume": 0.3
+        "volume": 0.5
       },
       {
         "name": "entity/fish/flop3",
-        "volume": 0.3
+        "volume": 0.5
       },
       {
         "name": "entity/fish/flop4",
-        "volume": 0.3
+        "volume": 0.5
       }
-    ],
-    "subtitle": "subtitles.entity.gwib_flop"
+    ]
   },
   "entity.gwibling_hurt": {
     "subtitle": "subtitles.entity.gwibling_hurt",
@@ -744,6 +772,7 @@
     ]
   },
   "entity.gwibling_flop": {
+    "subtitle": "subtitles.entity.gwibling_flop",
     "sounds": [
       {
         "name": "entity/fish/flop1",
@@ -761,14 +790,6 @@
         "name": "entity/fish/flop4",
         "volume": 0.3
       }
-    ],
-    "subtitle": "subtitles.entity.gwibling_flop"
-  },
-  "item.pick_blisterberry_bush": {
-    "subtitle": "subtitles.item.blisterberry_bush_pick_berries",
-    "sounds": [
-      "item/sweet_berries/pick_from_bush1",
-      "item/sweet_berries/pick_from_bush2"
     ]
   }
 }
