@@ -561,6 +561,10 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "gwibling_death", "Gwibling dies");
         addSubtitle("entity", "gwibling_flop", "Gwibling flops");
 
+        addSubtitle("entity", "mog_ambient", "Mog squeaks");
+        addSubtitle("entity", "mog_hurt", "Mog hurts");
+        addSubtitle("entity", "mog_death", "Mog dies");
+
         addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
         addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
         addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");

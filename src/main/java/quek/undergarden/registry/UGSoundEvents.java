@@ -130,6 +130,10 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> GWIBLING_DEATH = register("entity.gwibling_death");
     public static final RegistryObject<SoundEvent> GWIBLING_FLOP = register("entity.gwibling_flop");
 
+    public static final RegistryObject<SoundEvent> MOG_AMBIENT = register("entity.mog_ambient");
+    public static final RegistryObject<SoundEvent> MOG_HURT = register("entity.mog_hurt");
+    public static final RegistryObject<SoundEvent> MOG_DEATH = register("entity.mog_death");
+
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Undergarden.MODID, name)));
     }

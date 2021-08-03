@@ -470,5 +470,19 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("minecraft:entity/fish/flop3").volume(0.3F),
                 sound("minecraft:entity/fish/flop4").volume(0.3F)
         ).subtitle("subtitles.entity.gwibling_flop"));
+
+        this.add(UGSoundEvents.MOG_AMBIENT, definition().with(
+                sound("undergarden:entity/mog_ambient_1"),
+                sound("undergarden:entity/mog_ambient_2"),
+                sound("undergarden:entity/mog_ambient_3")
+        ).subtitle("subtitles.entity.mog_ambient"));
+        this.add(UGSoundEvents.MOG_HURT, definition().with(
+                sound("undergarden:entity/mog_hurt_1"),
+                sound("undergarden:entity/mog_hurt_2"),
+                sound("undergarden:entity/mog_hurt_3")
+        ).subtitle("subtitles.entity.mog_hurt"));
+        this.add(UGSoundEvents.MOG_DEATH, definition().with(
+                sound("undergarden:entity/mog_death")
+        ).subtitle("subtitles.entity.mog_death"));
     }
 }

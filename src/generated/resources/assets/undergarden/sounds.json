@@ -791,5 +791,27 @@
         "volume": 0.3
       }
     ]
+  },
+  "entity.mog_ambient": {
+    "subtitle": "subtitles.entity.mog_ambient",
+    "sounds": [
+      "undergarden:entity/mog_ambient_1",
+      "undergarden:entity/mog_ambient_2",
+      "undergarden:entity/mog_ambient_3"
+    ]
+  },
+  "entity.mog_hurt": {
+    "subtitle": "subtitles.entity.mog_hurt",
+    "sounds": [
+      "undergarden:entity/mog_hurt_1",
+      "undergarden:entity/mog_hurt_2",
+      "undergarden:entity/mog_hurt_3"
+    ]
+  },
+  "entity.mog_death": {
+    "subtitle": "subtitles.entity.mog_death",
+    "sounds": [
+      "undergarden:entity/mog_death"
+    ]
   }
 }
