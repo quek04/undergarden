@@ -14,61 +14,32 @@ import quek.undergarden.entity.cavern.NargoyleEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class NargoyleModel<T extends NargoyleEntity> extends SegmentedModel<T> {
-	private final ModelRenderer nargoyle;
-	private final ModelRenderer body_r1;
 	private final ModelRenderer body;
-	private final ModelRenderer lowerbody_r1;
-	private final ModelRenderer upperbody_r1;
 	private final ModelRenderer upperbody;
-	private final ModelRenderer arms_r1;
-	private final ModelRenderer head_r1;
 	private final ModelRenderer head;
 	private final ModelRenderer jaw;
+	private final ModelRenderer ear1;
+	private final ModelRenderer ear2;
 	private final ModelRenderer arms;
-	private final ModelRenderer upperarmright_r1;
 	private final ModelRenderer upperarmleft;
-	private final ModelRenderer lowerarmleft_r1;
 	private final ModelRenderer lowerarmleft;
 	private final ModelRenderer upperarmright;
-	private final ModelRenderer lowerarmright_r1;
 	private final ModelRenderer lowerarmright;
 	private final ModelRenderer lowerbody;
-	private final ModelRenderer legs_r1;
+	private final ModelRenderer cube_r1;
 	private final ModelRenderer legs;
-	private final ModelRenderer upperleftleg_r1;
 	private final ModelRenderer upperrightleg;
-	private final ModelRenderer lowerrightleg_r1;
 	private final ModelRenderer lowerrightleg;
 	private final ModelRenderer upperleftleg;
-	private final ModelRenderer lowerleftleg_r1;
 	private final ModelRenderer lowerleftleg;
 
 	public NargoyleModel() {
 		texWidth = 64;
 		texHeight = 64;
 
-		nargoyle = new ModelRenderer(this);
-		nargoyle.setPos(0.0F, 1.0F, 0.0F);
-
-		body_r1 = new ModelRenderer(this);
-		body_r1.setPos(0.0F, 2.0F, 0.0F);
-		nargoyle.addChild(body_r1);
-		setRotationAngle(body_r1, 0.0873F, 0.0F, 0.0F);
-
 		body = new ModelRenderer(this);
-		body.setPos(0.0F, 2.0F, 0.0F);
-		nargoyle.addChild(body);
+		body.setPos(0.0F, 3.0F, -3.0F);
 		setRotationAngle(body, 0.0873F, 0.0F, 0.0F);
-
-		lowerbody_r1 = new ModelRenderer(this);
-		lowerbody_r1.setPos(0.0F, 2.0F, 5.0F);
-		body.addChild(lowerbody_r1);
-		setRotationAngle(lowerbody_r1, -1.2217F, 0.0F, 0.0F);
-
-		upperbody_r1 = new ModelRenderer(this);
-		upperbody_r1.setPos(0.0F, 6.0F, 4.0F);
-		body.addChild(upperbody_r1);
-		setRotationAngle(upperbody_r1, 1.0472F, 0.0F, 0.0F);
 
 		upperbody = new ModelRenderer(this);
 		upperbody.setPos(0.0F, 6.0F, 4.0F);
@@ -76,129 +47,100 @@ public class NargoyleModel<T extends NargoyleEntity> extends SegmentedModel<T> {
 		setRotationAngle(upperbody, 1.0472F, 0.0F, 0.0F);
 		upperbody.texOffs(0, 0).addBox(-5.0F, -11.0F, 0.0F, 10.0F, 11.0F, 7.0F, 0.0F, false);
 
-		arms_r1 = new ModelRenderer(this);
-		arms_r1.setPos(0.0F, -9.5073F, 3.3309F);
-		upperbody.addChild(arms_r1);
-		setRotationAngle(arms_r1, -1.2217F, 0.0F, 0.0F);
-
-		head_r1 = new ModelRenderer(this);
-		head_r1.setPos(0.0F, -10.5265F, 2.907F);
-		upperbody.addChild(head_r1);
-		setRotationAngle(head_r1, 0.4363F, 0.0F, 0.0F);
-
 		head = new ModelRenderer(this);
-		head.setPos(0.0F, -10.5265F, 2.907F);
+		head.setPos(0.0F, -10.5F, 3.0F);
 		upperbody.addChild(head);
 		setRotationAngle(head, 0.4363F, 0.0F, 0.0F);
-		head.texOffs(0, 32).addBox(-4.0F, -9.4735F, -1.907F, 8.0F, 10.0F, 3.0F, 0.0F, false);
-		head.texOffs(16, 28).addBox(-3.0F, -8.4735F, -3.907F, 6.0F, 0.0F, 2.0F, 0.0F, false);
-		head.texOffs(0, 18).addBox(-5.0F, -1.4735F, -0.907F, 10.0F, 0.0F, 10.0F, 0.0F, false);
-		head.texOffs(6, 28).addBox(-2.0F, -9.4735F, -0.907F, 4.0F, 0.0F, 4.0F, 0.0F, false);
+		head.texOffs(42, 51).addBox(-4.0F, -9.5F, -2.0F, 8.0F, 10.0F, 3.0F, 0.0F, false);
+		head.texOffs(16, 28).addBox(-3.0F, -8.5F, -4.0F, 6.0F, 0.0F, 2.0F, 0.0F, false);
+		head.texOffs(45, 49).addBox(-2.0F, -9.5F, 1.0F, 4.0F, 0.0F, 2.0F, 0.0F, false);
 
 		jaw = new ModelRenderer(this);
-		jaw.setPos(0.0F, 0.067F, -1.8264F);
+		jaw.setPos(0.0F, 0.0F, -2.0F);
 		head.addChild(jaw);
-		jaw.texOffs(34, 35).addBox(-4.0F, -7.5405F, -1.0806F, 8.0F, 7.0F, 1.0F, 0.0F, false);
-		jaw.texOffs(26, 0).addBox(-2.0F, -6.5405F, -0.0806F, 4.0F, 0.0F, 1.0F, 0.0F, false);
+		jaw.texOffs(34, 35).addBox(-4.0F, -7.5F, -1.0F, 8.0F, 7.0F, 1.0F, 0.0F, false);
+		jaw.texOffs(26, 0).addBox(-2.0F, -6.5F, 0.0F, 4.0F, 0.0F, 1.0F, 0.0F, false);
+
+		ear1 = new ModelRenderer(this);
+		ear1.setPos(0.0F, -1.0F, 0.0F);
+		head.addChild(ear1);
+		setRotationAngle(ear1, 0.0F, 0.0F, -0.2618F);
+		ear1.texOffs(0, 54).addBox(-5.0F, -1.0F, -1.0F, 3.0F, 0.0F, 10.0F, 0.0F, false);
+
+		ear2 = new ModelRenderer(this);
+		ear2.setPos(3.5F, -1.0F, 5.0F);
+		head.addChild(ear2);
+		setRotationAngle(ear2, 0.0F, 0.0F, 0.2618F);
+		ear2.texOffs(0, 54).addBox(-1.5F, 0.0F, -6.0F, 3.0F, 0.0F, 10.0F, 0.0F, true);
 
 		arms = new ModelRenderer(this);
-		arms.setPos(0.0F, -9.5073F, 3.3309F);
+		arms.setPos(0.0F, -7.4927F, 3.3309F);
 		upperbody.addChild(arms);
-		setRotationAngle(arms, -1.2217F, 0.0F, 0.0F);
-
-		upperarmright_r1 = new ModelRenderer(this);
-		upperarmright_r1.setPos(0.0F, 0.0F, 0.0F);
-		arms.addChild(upperarmright_r1);
-		setRotationAngle(upperarmright_r1, -0.8727F, 0.0F, 0.0F);
+		setRotationAngle(arms, 1.5708F, 0.0F, 0.0F);
 
 		upperarmleft = new ModelRenderer(this);
-		upperarmleft.setPos(0.0F, 0.0F, 0.0F);
+		upperarmleft.setPos(0.0F, -0.0073F, -0.0309F);
 		arms.addChild(upperarmleft);
-		setRotationAngle(upperarmleft, -0.8727F, 0.0F, 0.0F);
-		upperarmleft.texOffs(34, 0).addBox(5.0F, -2.0F, -1.0F, 3.0F, 15.0F, 3.0F, 0.0F, false);
-
-		lowerarmleft_r1 = new ModelRenderer(this);
-		lowerarmleft_r1.setPos(7.0F, 12.0F, 1.0F);
-		upperarmleft.addChild(lowerarmleft_r1);
-		setRotationAngle(lowerarmleft_r1, 1.1345F, 0.0F, 0.0F);
+		setRotationAngle(upperarmleft, 0.8727F, 0.0F, 0.0F);
+		upperarmleft.texOffs(34, 0).addBox(5.0F, -9.9927F, -0.9691F, 3.0F, 12.0F, 3.0F, 0.0F, false);
 
 		lowerarmleft = new ModelRenderer(this);
-		lowerarmleft.setPos(7.0F, 12.0F, 1.0F);
+		lowerarmleft.setPos(7.0F, -9.9927F, 1.0309F);
 		upperarmleft.addChild(lowerarmleft);
-		setRotationAngle(lowerarmleft, 1.1345F, 0.0F, 0.0F);
-		lowerarmleft.texOffs(34, 43).addBox(-1.5F, -1.2806F, -1.2086F, 2.0F, 16.0F, 2.0F, 0.0F, false);
+		setRotationAngle(lowerarmleft, -1.1345F, 0.0F, 0.0F);
+		lowerarmleft.texOffs(34, 43).addBox(-1.5F, -14.7194F, -1.2086F, 2.0F, 16.0F, 2.0F, 0.0F, false);
 
 		upperarmright = new ModelRenderer(this);
-		upperarmright.setPos(0.0F, 0.0F, 0.0F);
+		upperarmright.setPos(0.0F, -0.0073F, -0.3309F);
 		arms.addChild(upperarmright);
-		setRotationAngle(upperarmright, -0.8727F, 0.0F, 0.0F);
-		upperarmright.texOffs(22, 35).addBox(-8.0F, -2.0F, -1.0F, 3.0F, 15.0F, 3.0F, 0.0F, false);
-
-		lowerarmright_r1 = new ModelRenderer(this);
-		lowerarmright_r1.setPos(-7.0F, 12.0F, 1.0F);
-		upperarmright.addChild(lowerarmright_r1);
-		setRotationAngle(lowerarmright_r1, 1.1345F, 0.0F, 0.0F);
+		setRotationAngle(upperarmright, 0.8727F, 0.0F, 0.0F);
+		upperarmright.texOffs(34, 0).addBox(-8.0F, -9.9927F, -0.6691F, 3.0F, 12.0F, 3.0F, 0.0F, true);
 
 		lowerarmright = new ModelRenderer(this);
-		lowerarmright.setPos(-7.0F, 12.0F, 1.0F);
+		lowerarmright.setPos(-7.0F, -9.9927F, 1.3309F);
 		upperarmright.addChild(lowerarmright);
-		setRotationAngle(lowerarmright, 1.1345F, 0.0F, 0.0F);
-		lowerarmright.texOffs(42, 43).addBox(-0.5F, -1.2806F, -1.2086F, 2.0F, 16.0F, 2.0F, 0.0F, false);
+		setRotationAngle(lowerarmright, -1.1345F, 0.0F, 0.0F);
+		lowerarmright.texOffs(34, 43).addBox(-0.5F, -14.7194F, -1.2086F, 2.0F, 16.0F, 2.0F, 0.0F, true);
 
 		lowerbody = new ModelRenderer(this);
 		lowerbody.setPos(0.0F, 2.0F, 5.0F);
 		body.addChild(lowerbody);
 		setRotationAngle(lowerbody, -1.2217F, 0.0F, 0.0F);
-		lowerbody.texOffs(21, 21).addBox(-3.0F, -2.2811F, -1.2679F, 6.0F, 5.0F, 9.0F, 0.0F, false);
 
-		legs_r1 = new ModelRenderer(this);
-		legs_r1.setPos(0.0F, 0.527F, 6.4479F);
-		lowerbody.addChild(legs_r1);
-		setRotationAngle(legs_r1, 1.2217F, 0.0F, 0.0F);
+		cube_r1 = new ModelRenderer(this);
+		cube_r1.setPos(0.0F, 2.7189F, -1.2679F);
+		lowerbody.addChild(cube_r1);
+		setRotationAngle(cube_r1, 0.48F, 0.0F, 0.0F);
+		cube_r1.texOffs(21, 21).addBox(-3.0F, -4.0F, 2.0F, 6.0F, 5.0F, 9.0F, 0.0F, false);
 
 		legs = new ModelRenderer(this);
-		legs.setPos(0.0F, 0.527F, 6.4479F);
+		legs.setPos(0.0F, -2.527F, 6.4479F);
 		lowerbody.addChild(legs);
-		setRotationAngle(legs, 1.2217F, 0.0F, 0.0F);
-
-		upperleftleg_r1 = new ModelRenderer(this);
-		upperleftleg_r1.setPos(0.0F, 0.0F, -1.0F);
-		legs.addChild(upperleftleg_r1);
-		setRotationAngle(upperleftleg_r1, 0.8727F, 0.0F, 0.0F);
+		setRotationAngle(legs, -1.7017F, 0.0F, 0.0F);
 
 		upperrightleg = new ModelRenderer(this);
-		upperrightleg.setPos(0.0F, 0.0F, -1.0F);
+		upperrightleg.setPos(0.0F, 0.027F, -0.9479F);
 		legs.addChild(upperrightleg);
-		setRotationAngle(upperrightleg, 0.8727F, 0.0F, 0.0F);
-		upperrightleg.texOffs(43, 15).addBox(-5.0F, -1.0F, -1.0F, 2.0F, 10.0F, 3.0F, 0.0F, false);
-
-		lowerrightleg_r1 = new ModelRenderer(this);
-		lowerrightleg_r1.setPos(-3.0F, 8.234F, -0.6428F);
-		upperrightleg.addChild(lowerrightleg_r1);
-		setRotationAngle(lowerrightleg_r1, -1.2217F, 0.0F, 0.0F);
+		setRotationAngle(upperrightleg, -0.8727F, 0.0F, 0.0F);
+		upperrightleg.texOffs(0, 18).addBox(-5.0F, -9.027F, -1.0521F, 2.0F, 10.0F, 3.0F, 0.0F, true);
 
 		lowerrightleg = new ModelRenderer(this);
-		lowerrightleg.setPos(-3.0F, 8.234F, -0.6428F);
+		lowerrightleg.setPos(-3.0F, -8.2609F, -0.6949F);
 		upperrightleg.addChild(lowerrightleg);
-		setRotationAngle(lowerrightleg, -1.2217F, 0.0F, 0.0F);
-		lowerrightleg.texOffs(6, 45).addBox(-1.5F, -1.1382F, -0.8628F, 1.0F, 10.0F, 2.0F, 0.0F, false);
+		setRotationAngle(lowerrightleg, 1.2217F, 0.0F, 0.0F);
+		lowerrightleg.texOffs(0, 31).addBox(-1.5F, -8.8618F, -0.8628F, 1.0F, 10.0F, 2.0F, 0.0F, false);
 
 		upperleftleg = new ModelRenderer(this);
-		upperleftleg.setPos(0.0F, 0.0F, -1.0F);
+		upperleftleg.setPos(0.0F, 0.027F, -0.9479F);
 		legs.addChild(upperleftleg);
-		setRotationAngle(upperleftleg, 0.8727F, 0.0F, 0.0F);
-		upperleftleg.texOffs(0, 18).addBox(3.0F, -1.0F, -1.0F, 2.0F, 10.0F, 3.0F, 0.0F, false);
-
-		lowerleftleg_r1 = new ModelRenderer(this);
-		lowerleftleg_r1.setPos(3.0F, 8.234F, -0.6428F);
-		upperleftleg.addChild(lowerleftleg_r1);
-		setRotationAngle(lowerleftleg_r1, -1.2217F, 0.0F, 0.0F);
+		setRotationAngle(upperleftleg, -0.8727F, 0.0F, 0.0F);
+		upperleftleg.texOffs(0, 18).addBox(3.0F, -9.027F, -1.0521F, 2.0F, 10.0F, 3.0F, 0.0F, false);
 
 		lowerleftleg = new ModelRenderer(this);
-		lowerleftleg.setPos(3.0F, 8.234F, -0.6428F);
+		lowerleftleg.setPos(3.0F, -8.2609F, -0.6949F);
 		upperleftleg.addChild(lowerleftleg);
-		setRotationAngle(lowerleftleg, -1.2217F, 0.0F, 0.0F);
-		lowerleftleg.texOffs(0, 45).addBox(0.5F, -1.1382F, -0.8628F, 1.0F, 10.0F, 2.0F, 0.0F, false);
+		setRotationAngle(lowerleftleg, 1.2217F, 0.0F, 0.0F);
+		lowerleftleg.texOffs(0, 31).addBox(0.5F, -8.8618F, -0.8628F, 1.0F, 10.0F, 2.0F, 0.0F, false);
 	}
 
 	@Override
@@ -207,24 +149,21 @@ public class NargoyleModel<T extends NargoyleEntity> extends SegmentedModel<T> {
 		this.head.zRot = headPitch * ((float)Math.PI / 180F);
 		this.head.xRot = 0.4363F + headPitch * ((float)Math.PI / 180F);
 
-		this.arms.xRot = -0.8727F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.arms.xRot = 1.5708F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
-		this.legs.xRot = 0.8727F + -(MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
+		this.legs.xRot = -1.7017F + -(MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
 
 		if(entity.isAggressive()) {
-			this.jaw.xRot = this.head.xRot + 0.2F;
+			this.jaw.xRot = 0.3491F;
 		}
-		else this.jaw.xRot = this.head.xRot;
-	}
-
-	@Override
-	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		nargoyle.render(matrixStack, buffer, packedLight, packedOverlay);
+		else {
+			this.jaw.xRot = 0.0F;
+		}
 	}
 
 	@Override
 	public Iterable<ModelRenderer> parts() {
-		return ImmutableSet.of(nargoyle);
+		return ImmutableSet.of(body);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
