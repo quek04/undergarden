@@ -3,8 +3,6 @@ package quek.undergarden.client.model;
 // Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableSet;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
@@ -26,7 +24,7 @@ public class NargoyleModel<T extends NargoyleEntity> extends SegmentedModel<T> {
 	private final ModelRenderer upperarmright;
 	private final ModelRenderer lowerarmright;
 	private final ModelRenderer lowerbody;
-	private final ModelRenderer cube_r1;
+	private final ModelRenderer hips;
 	private final ModelRenderer legs;
 	private final ModelRenderer upperrightleg;
 	private final ModelRenderer lowerrightleg;
@@ -107,11 +105,11 @@ public class NargoyleModel<T extends NargoyleEntity> extends SegmentedModel<T> {
 		body.addChild(lowerbody);
 		setRotationAngle(lowerbody, -1.2217F, 0.0F, 0.0F);
 
-		cube_r1 = new ModelRenderer(this);
-		cube_r1.setPos(0.0F, 2.7189F, -1.2679F);
-		lowerbody.addChild(cube_r1);
-		setRotationAngle(cube_r1, 0.48F, 0.0F, 0.0F);
-		cube_r1.texOffs(21, 21).addBox(-3.0F, -4.0F, 2.0F, 6.0F, 5.0F, 9.0F, 0.0F, false);
+		hips = new ModelRenderer(this);
+		hips.setPos(0.0F, 2.7189F, -1.2679F);
+		lowerbody.addChild(hips);
+		setRotationAngle(hips, 0.48F, 0.0F, 0.0F);
+		hips.texOffs(21, 21).addBox(-3.0F, -4.0F, 2.0F, 6.0F, 5.0F, 9.0F, 0.0F, false);
 
 		legs = new ModelRenderer(this);
 		legs.setPos(0.0F, -2.527F, 6.4479F);
