@@ -2,7 +2,7 @@ package quek.undergarden.client.model;
 // Made with Blockbench 3.5.0
 // Exported for Minecraft version 1.15
 
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
@@ -26,111 +26,111 @@ public class DwellerModel<T extends DwellerEntity> extends AgeableModel<T> {
 	private final ModelRenderer tail2;
 
 	public DwellerModel() {
-		textureWidth = 128;
-		textureHeight = 128;
+		texWidth = 128;
+		texHeight = 128;
 
 		dweller = new ModelRenderer(this);
-		dweller.setRotationPoint(0.0F, 24.0F, 0.0F);
+		dweller.setPos(0.0F, 24.0F, 0.0F);
 		
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(0.0F, -25.0F, -2.0F);
+		head.setPos(0.0F, -25.0F, -2.0F);
 		dweller.addChild(head);
 		setRotationAngle(head, -0.8727F, 0.0F, 0.0F);
-		head.setTextureOffset(0, 23).addBox(-5.0F, 1.0F, -4.0F, 10.0F, 8.0F, 6.0F, 0.0F, false);
-		head.setTextureOffset(8, 9).addBox(-1.0F, 6.0F, -5.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
-		head.setTextureOffset(8, 9).addBox(-1.0F, 3.0F, -5.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
+		head.texOffs(0, 23).addBox(-5.0F, 1.0F, -4.0F, 10.0F, 8.0F, 6.0F, 0.0F, false);
+		head.texOffs(8, 9).addBox(-1.0F, 6.0F, -5.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
+		head.texOffs(8, 9).addBox(-1.0F, 3.0F, -5.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
 
 		trunk = new ModelRenderer(this);
-		trunk.setRotationPoint(0.0F, 7.0F, -2.0F);
+		trunk.setPos(0.0F, 7.0F, -2.0F);
 		head.addChild(trunk);
 		setRotationAngle(trunk, 2.5307F, 0.0F, 0.0F);
-		trunk.setTextureOffset(65, 0).addBox(-2.0F, -2.0F, -9.0F, 4.0F, 3.0F, 9.0F, 0.0F, false);
+		trunk.texOffs(65, 0).addBox(-2.0F, -2.0F, -9.0F, 4.0F, 3.0F, 9.0F, 0.0F, false);
 
 		trunk2 = new ModelRenderer(this);
-		trunk2.setRotationPoint(0.0F, 0.0F, -8.0F);
+		trunk2.setPos(0.0F, 0.0F, -8.0F);
 		trunk.addChild(trunk2);
 		setRotationAngle(trunk2, 0.1745F, 0.0F, 0.0F);
-		trunk2.setTextureOffset(82, 0).addBox(-1.0F, -1.0F, -7.0F, 2.0F, 2.0F, 6.0F, 0.0F, false);
+		trunk2.texOffs(82, 0).addBox(-1.0F, -1.0F, -7.0F, 2.0F, 2.0F, 6.0F, 0.0F, false);
 
 		trunk3 = new ModelRenderer(this);
-		trunk3.setRotationPoint(0.0F, -1.0F, -6.0F);
+		trunk3.setPos(0.0F, -1.0F, -6.0F);
 		trunk2.addChild(trunk3);
 		setRotationAngle(trunk3, 0.2618F, 0.0F, 0.0F);
-		trunk3.setTextureOffset(92, 0).addBox(-1.0F, 1.0F, -5.0F, 2.0F, 1.0F, 4.0F, 0.0F, false);
+		trunk3.texOffs(92, 0).addBox(-1.0F, 1.0F, -5.0F, 2.0F, 1.0F, 4.0F, 0.0F, false);
 
 		torso = new ModelRenderer(this);
-		torso.setRotationPoint(0.0F, -23.0F, 3.0F);
+		torso.setPos(0.0F, -23.0F, 3.0F);
 		dweller.addChild(torso);
 		setRotationAngle(torso, -0.4363F, 0.0F, 0.0F);
-		torso.setTextureOffset(0, 0).addBox(-7.0F, -3.0F, -6.0F, 14.0F, 8.0F, 15.0F, 0.0F, false);
-		torso.setTextureOffset(32, 34).addBox(-2.0F, -1.0F, -9.0F, 4.0F, 3.0F, 5.0F, 0.0F, false);
-		torso.setTextureOffset(8, 9).addBox(-1.0F, -4.0F, -4.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
-		torso.setTextureOffset(0, 9).addBox(-1.0F, -6.0F, -1.0F, 2.0F, 4.0F, 1.0F, 0.0F, false);
-		torso.setTextureOffset(8, 9).addBox(-1.0F, -4.0F, 4.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
+		torso.texOffs(0, 0).addBox(-7.0F, -3.0F, -6.0F, 14.0F, 8.0F, 15.0F, 0.0F, false);
+		torso.texOffs(32, 34).addBox(-2.0F, -1.0F, -9.0F, 4.0F, 3.0F, 5.0F, 0.0F, false);
+		torso.texOffs(8, 9).addBox(-1.0F, -4.0F, -4.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
+		torso.texOffs(0, 9).addBox(-1.0F, -6.0F, -1.0F, 2.0F, 4.0F, 1.0F, 0.0F, false);
+		torso.texOffs(8, 9).addBox(-1.0F, -4.0F, 4.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
 
 		leftleg = new ModelRenderer(this);
-		leftleg.setRotationPoint(4.0F, -20.0F, 6.0F);
+		leftleg.setPos(4.0F, -20.0F, 6.0F);
 		dweller.addChild(leftleg);
 		setRotationAngle(leftleg, -0.6981F, 0.0F, 0.0F);
-		leftleg.setTextureOffset(0, 37).addBox(0.0F, -2.0F, -3.0F, 4.0F, 10.0F, 6.0F, 0.0F, false);
-		leftleg.setTextureOffset(40, 23).addBox(0.0F, 8.0F, 1.0F, 4.0F, 3.0F, 8.0F, 0.0F, false);
+		leftleg.texOffs(0, 37).addBox(0.0F, -2.0F, -3.0F, 4.0F, 10.0F, 6.0F, 0.0F, false);
+		leftleg.texOffs(40, 23).addBox(0.0F, 8.0F, 1.0F, 4.0F, 3.0F, 8.0F, 0.0F, false);
 
 		leftfoot = new ModelRenderer(this);
-		leftfoot.setRotationPoint(2.0F, 9.0F, 8.0F);
+		leftfoot.setPos(2.0F, 9.0F, 8.0F);
 		leftleg.addChild(leftfoot);
 		setRotationAngle(leftfoot, -0.8727F, 0.0F, 0.0F);
-		leftfoot.setTextureOffset(0, 53).addBox(-2.0F, -1.0F, 1.0F, 4.0F, 2.0F, 7.0F, 0.0F, false);
+		leftfoot.texOffs(0, 53).addBox(-2.0F, -1.0F, 1.0F, 4.0F, 2.0F, 7.0F, 0.0F, false);
 
 		rightleg = new ModelRenderer(this);
-		rightleg.setRotationPoint(-4.0F, -20.0F, 6.0F);
+		rightleg.setPos(-4.0F, -20.0F, 6.0F);
 		dweller.addChild(rightleg);
 		setRotationAngle(rightleg, -0.6981F, 0.0F, 0.0F);
-		rightleg.setTextureOffset(0, 37).addBox(-4.0F, -2.0F, -3.0F, 4.0F, 10.0F, 6.0F, 0.0F, true);
-		rightleg.setTextureOffset(40, 23).addBox(-4.0F, 8.0F, 1.0F, 4.0F, 3.0F, 8.0F, 0.0F, true);
+		rightleg.texOffs(0, 37).addBox(-4.0F, -2.0F, -3.0F, 4.0F, 10.0F, 6.0F, 0.0F, true);
+		rightleg.texOffs(40, 23).addBox(-4.0F, 8.0F, 1.0F, 4.0F, 3.0F, 8.0F, 0.0F, true);
 
 		rightfoot = new ModelRenderer(this);
-		rightfoot.setRotationPoint(-2.0F, 9.0F, 8.0F);
+		rightfoot.setPos(-2.0F, 9.0F, 8.0F);
 		rightleg.addChild(rightfoot);
 		setRotationAngle(rightfoot, -0.8727F, 0.0F, 0.0F);
-		rightfoot.setTextureOffset(0, 53).addBox(-2.0F, -1.0F, 1.0F, 4.0F, 2.0F, 7.0F, 0.0F, true);
+		rightfoot.texOffs(0, 53).addBox(-2.0F, -1.0F, 1.0F, 4.0F, 2.0F, 7.0F, 0.0F, true);
 
 		tail = new ModelRenderer(this);
-		tail.setRotationPoint(0.0F, -22.0F, 11.0F);
+		tail.setPos(0.0F, -22.0F, 11.0F);
 		dweller.addChild(tail);
 		setRotationAngle(tail, 0.1745F, 0.0F, 0.0F);
-		tail.setTextureOffset(43, 0).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F, 0.0F, false);
+		tail.texOffs(43, 0).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F, 0.0F, false);
 
 		tail2 = new ModelRenderer(this);
-		tail2.setRotationPoint(0.0F, 8.0F, 0.0F);
+		tail2.setPos(0.0F, 8.0F, 0.0F);
 		tail.addChild(tail2);
 		setRotationAngle(tail2, -0.2618F, 0.0F, 0.0F);
-		tail2.setTextureOffset(0, 0).addBox(-3.0F, 0.0F, -1.0F, 6.0F, 8.0F, 1.0F, 0.0F, false);
+		tail2.texOffs(0, 0).addBox(-3.0F, 0.0F, -1.0F, 6.0F, 8.0F, 1.0F, 0.0F, false);
 	}
 
 	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.rotateAngleX = -0.8727F + headPitch * ((float)Math.PI / 180F);
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
+		this.head.xRot = -0.8727F + headPitch * ((float)Math.PI / 180F);
 
-		this.leftleg.rotateAngleX = -0.6981F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftleg.xRot = -0.6981F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
-		this.rightleg.rotateAngleX = -0.6981F + MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightleg.xRot = -0.6981F + MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override
-	protected Iterable<ModelRenderer> getHeadParts() {
-		return ImmutableSet.of();
+	protected Iterable<ModelRenderer> headParts() {
+		return ImmutableList.of();
 	}
 
 	@Override
-	protected Iterable<ModelRenderer> getBodyParts() {
-		return ImmutableSet.of(this.dweller);
+	protected Iterable<ModelRenderer> bodyParts() {
+		return ImmutableList.of(this.dweller);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
+		modelRenderer.xRot = x;
+		modelRenderer.yRot = y;
+		modelRenderer.zRot = z;
 	}
 }

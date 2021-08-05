@@ -16,7 +16,7 @@ public class BigInkMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override
-    protected void func_225564_a_(IWorld world, Random random, BlockPos pos, int y, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
+    protected void makeCap(IWorld world, Random random, BlockPos pos, int y, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
         int i = config.foliageRadius;
 
         for(int j = -i; j <= i; ++j) {
@@ -28,16 +28,16 @@ public class BigInkMushroomFeature extends UGBigMushroomFeature {
                 boolean flag4 = flag || flag1;
                 boolean flag5 = flag2 || flag3;
                 if (!flag4 || !flag5) {
-                    posMutable.setAndOffset(pos, j, y, k);
+                    posMutable.setWithOffset(pos, j, y, k);
                     if (world.getBlockState(posMutable).canBeReplacedByLeaves(world, posMutable)) {
                         boolean flag6 = flag || flag5 && j == 1 - i;
                         boolean flag7 = flag1 || flag5 && j == i - 1;
                         boolean flag8 = flag2 || flag4 && k == 1 - i;
                         boolean flag9 = flag3 || flag4 && k == i - 1;
-                        this.setBlockState(world, posMutable, config.capProvider.getBlockState(random, pos).with(HugeMushroomBlock.WEST, flag6).with(HugeMushroomBlock.EAST, flag7).with(HugeMushroomBlock.NORTH, flag8).with(HugeMushroomBlock.SOUTH, flag9));
+                        this.setBlock(world, posMutable, config.capProvider.getState(random, pos).setValue(HugeMushroomBlock.WEST, flag6).setValue(HugeMushroomBlock.EAST, flag7).setValue(HugeMushroomBlock.NORTH, flag8).setValue(HugeMushroomBlock.SOUTH, flag9));
 
                         if(random.nextInt(10) == 0) {
-                            this.setBlockState(world, posMutable.down(1), UGBlocks.SEEPING_INK.get().getDefaultState());
+                            this.setBlock(world, posMutable.below(1), UGBlocks.SEEPING_INK.get().defaultBlockState());
                         }
                     }
                 }
@@ -47,7 +47,7 @@ public class BigInkMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override
-    protected int func_225563_a_(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_) {
+    protected int getTreeRadiusForHeight(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_) {
         return p_225563_4_ <= 3 ? 0 : p_225563_3_;
     }
 }

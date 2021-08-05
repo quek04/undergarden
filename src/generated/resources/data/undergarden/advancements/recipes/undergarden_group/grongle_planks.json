@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:grongle_planks"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:grongle_logs": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "undergarden:grongle_logs"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:grongle_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:grongle_logs",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -9,38 +9,40 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGItemGroups;
 
+import net.minecraft.item.Item.Properties;
+
 public class MasticatedChestplateItem extends ArmorItem {
 
     public MasticatedChestplateItem(IArmorMaterial materialIn) {
         super(materialIn, EquipmentSlotType.CHEST, new Properties()
                 .rarity(Rarity.EPIC)
-                .group(UGItemGroups.GROUP)
+                .tab(UGItemGroups.GROUP)
         );
     }
 
     @Override
-    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> list) {
-        if(isInGroup(group)) {
+    public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> list) {
+        if(allowdedIn(group)) {
             ItemStack stack = new ItemStack(this);
-            stack.addEnchantment(Enchantments.THORNS, 5);
+            stack.enchant(Enchantments.THORNS, 5);
             list.add(stack);
         }
 
     }
 
     @Override
-    public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn) {
+    public void onCraftedBy(ItemStack stack, World worldIn, PlayerEntity playerIn) {
         stack.serializeNBT();
-        stack.addEnchantment(Enchantments.THORNS, 5);
+        stack.enchant(Enchantments.THORNS, 5);
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isFoil(ItemStack stack) {
         return false;
     }
 
     @Override
     public String getArmorTexture(ItemStack itemstack, Entity entity, EquipmentSlotType slot, String layer) {
-        return "undergarden:textures/models/armor/masticated_layer_1.png";
+        return "undergarden:textures/armor/masticated_layer_1.png";
     }
 }

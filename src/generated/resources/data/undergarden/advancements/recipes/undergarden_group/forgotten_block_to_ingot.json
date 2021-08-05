@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:forgotten_block_to_ingot"
+    ]
+  },
+  "criteria": {
+    "has_forgotten_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:forgotten_block"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:forgotten_block_to_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_forgotten_block",
+      "has_the_recipe"
+    ]
+  ]
+}

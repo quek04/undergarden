@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M  ",
+    "MM ",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:depthrock_tiles"
+    }
+  },
+  "result": {
+    "item": "undergarden:depthrock_tile_stairs",
+    "count": 4
+  }
+}

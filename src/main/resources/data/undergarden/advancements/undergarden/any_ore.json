@@ -1,0 +1,67 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:cloggrum_ore"
+    },
+    "title": {
+      "translate": "advancement.any_ore.title"
+    },
+    "description": {
+      "translate": "advancement.any_ore.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "parent": "undergarden:undergarden/enter_undergarden",
+  "criteria": {
+    "has_cloggrum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:cloggrum_ore"
+          }
+        ]
+      }
+    },
+    "has_froststeel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:froststeel_ore"
+          }
+        ]
+      }
+    },
+    "has_utherium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:utherium_ore"
+          }
+        ]
+      }
+    },
+    "has_regalium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:regalium_ore"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+  [
+    "has_cloggrum",
+    "has_froststeel",
+    "has_utherium",
+    "has_regalium"
+  ]
+]
+}

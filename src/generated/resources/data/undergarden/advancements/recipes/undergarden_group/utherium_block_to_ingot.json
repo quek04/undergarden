@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:utherium_block_to_ingot"
+    ]
+  },
+  "criteria": {
+    "has_utherium_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:utherium_block"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:utherium_block_to_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_utherium_block",
+      "has_the_recipe"
+    ]
+  ]
+}

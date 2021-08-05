@@ -3,7 +3,7 @@ package quek.undergarden.data;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.data.provider.UGItemModelProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -49,6 +49,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.CARVED_GLOOMGOURD);
         itemBlock(UGBlocks.DEPTHROCK_PEBBLES);
         itemBlock(UGBlocks.GLOOM_O_LANTERN);
+        itemBlock(UGBlocks.SHARD_O_LANTERN);
         itemBlock(UGBlocks.CLOGGRUM_BLOCK);
         itemBlock(UGBlocks.FROSTSTEEL_BLOCK);
         itemBlock(UGBlocks.UTHERIUM_BLOCK);
@@ -77,6 +78,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.REGALIUM_BLOCK);
         itemBlock(UGBlocks.TREMBLECRUST);
         itemBlock(UGBlocks.TREMBLECRUST_BRICKS);
+        itemBlock(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
         itemBlock(UGBlocks.OTHERSIDE_UTHERIUM_ORE);
         itemBlock(UGBlocks.SMOGSTEM_WOOD);
         itemBlock(UGBlocks.WIGGLEWOOD_WOOD);
@@ -86,19 +88,21 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.DIAMOND_ORE);
         itemBlock(UGBlocks.SMOGSTEM_FENCE_GATE);
         itemBlock(UGBlocks.WIGGLEWOOD_FENCE_GATE);
-        wallInventory("depthrock_wall", new ResourceLocation(UGMod.MODID, "block/depthrock"));
-        wallInventory("depthrock_brick_wall", new ResourceLocation(UGMod.MODID, "block/depthrock_bricks"));
-        wallInventory("shiverstone_brick_wall", new ResourceLocation(UGMod.MODID, "block/shiverstone_bricks"));
-        wallInventory("shiverstone_wall", new ResourceLocation(UGMod.MODID, "block/shiverstone"));
+        wallInventory("depthrock_wall", new ResourceLocation(Undergarden.MODID, "block/depthrock"));
+        wallInventory("depthrock_brick_wall", new ResourceLocation(Undergarden.MODID, "block/depthrock_bricks"));
+        wallInventory("shiverstone_brick_wall", new ResourceLocation(Undergarden.MODID, "block/shiverstone_bricks"));
+        wallInventory("shiverstone_wall", new ResourceLocation(Undergarden.MODID, "block/shiverstone"));
+        wallInventory("tremblecrust_wall", new ResourceLocation(Undergarden.MODID, "block/tremblecrust"));
+        wallInventory("tremblecrust_brick_wall", new ResourceLocation(Undergarden.MODID, "block/tremblecrust_bricks"));
         itemBlock(UGBlocks.COARSE_DEEPSOIL);
         itemBlock(UGBlocks.SMOGSTEM_PRESSURE_PLATE);
         itemBlock(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);
         itemBlock(UGBlocks.DEPTHROCK_PRESSURE_PLATE);
         itemBlock(UGBlocks.SHIVERSTONE_PRESSURE_PLATE);
-        itemBlockFlat(UGBlocks.GRONGLET);
-        itemBlock(UGBlocks.GRONGLE_STEM);
-        itemBlock(UGBlocks.GRONGLE_CAP);
-        itemBlock(UGBlocks.GRONGLE_HYPHAE);
+        itemBlockFlat(UGBlocks.GRONGLE_SAPLING);
+        itemBlock(UGBlocks.GRONGLE_LOG);
+        itemBlock(UGBlocks.GRONGLE_LEAVES);
+        itemBlock(UGBlocks.GRONGLE_WOOD);
         itemBlock(UGBlocks.GRONGLE_SLAB);
         itemFence(UGBlocks.GRONGLE_FENCE, "grongle_planks");
         itemBlock(UGBlocks.GRONGLE_PLANKS);
@@ -107,20 +111,40 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.GRONGLE_PRESSURE_PLATE);
         itemBlock(UGBlocks.STRIPPED_SMOGSTEM_LOG);
         itemBlock(UGBlocks.STRIPPED_WIGGLEWOOD_LOG);
-        itemBlock(UGBlocks.STRIPPED_GRONGLE_STEM);
+        itemBlock(UGBlocks.STRIPPED_GRONGLE_LOG);
         itemBlock(UGBlocks.STRIPPED_SMOGSTEM_WOOD);
         itemBlock(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD);
-        itemBlock(UGBlocks.STRIPPED_GRONGLE_HYPHAE);
+        itemBlock(UGBlocks.STRIPPED_GRONGLE_WOOD);
         itemBlock(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
         itemBlock(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
         itemBlock(UGBlocks.FORGOTTEN_BLOCK);
         itemBlock(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
         itemBlock(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
+        itemBlock(UGBlocks.FROZEN_DEEPTURF_BLOCK);
+        itemBlockFlat(UGBlocks.FROZEN_DEEPTURF);
+        itemBlock(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
+        itemBlock(UGBlocks.TREMBLECRUST_STAIRS);
+        itemBlock(UGBlocks.TREMBLECRUST_BRICK_STAIRS);
+        itemBlock(UGBlocks.TREMBLECRUST_SLAB);
+        itemBlock(UGBlocks.TREMBLECRUST_BRICK_SLAB);
+        itemBlock(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
+        itemBlock(UGBlocks.GOO_BLOCK);
+        itemBlock(UGBlocks.SEDIMENT);
+        itemBlock(UGBlocks.SEDIMENT_GLASS);
+        itemBlockFlat(UGBlocks.SEDIMENT_GLASS_PANE, "sediment_glass");
+        itemBlock(UGBlocks.CLOGGRUM_TILES);
+        itemBlock(UGBlocks.CLOGGRUM_TILE_STAIRS);
+        itemBlock(UGBlocks.CLOGGRUM_TILE_SLAB);
+        itemBlock(UGBlocks.DEPTHROCK_TILES);
+        itemBlock(UGBlocks.DEPTHROCK_TILE_STAIRS);
+        itemBlock(UGBlocks.DEPTHROCK_TILE_SLAB);
+        itemBlockFlat(UGBlocks.HANGING_GRONGLE_LEAVES_TOP, "hanging_grongle_leaves");
 
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);
         normalItem(UGItems.GLOOMPER_ANTHEM_DISC);
         normalItem(UGItems.RELICT_DISC);
+        normalItem(UGItems.GLOOMPER_SECRET_DISC);
         normalItem(UGItems.CATALYST);
         normalItem(UGItems.DEPTHROCK_PEBBLE);
         normalItem(UGItems.TWISTYTWIG);
@@ -135,15 +159,16 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.REGALIUM_NUGGET);
         normalItem(UGItems.FORGOTTEN_INGOT);
         normalItem(UGItems.FORGOTTEN_NUGGET);
-        torchItem(UGItems.SHARD_TORCH);
+        torchItem(UGBlocks.SHARD_TORCH);
         normalItem(UGItems.DITCHBULB);
         normalItem(UGItems.GLOOMGOURD_SEEDS);
         normalItem(UGItems.BRUTE_TUSK);
+        normalItem(UGItems.MOGMOSS);
         normalItem(UGItems.GLOWING_KELP);
         normalItem(UGItems.GOO_BALL);
         normalItem(UGItems.ROTTEN_BLISTERBERRY);
         normalItem(UGItems.BLISTERBOMB);
-        normalItem(UGItems.DROOPVINE);
+        normalItem(UGItems.DROOPFRUIT);
 
         toolItem(UGItems.CLOGGRUM_SWORD);
         toolItem(UGItems.CLOGGRUM_PICKAXE);
@@ -164,10 +189,10 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.FROSTSTEEL_LEGGINGS);
         normalItem(UGItems.FROSTSTEEL_BOOTS);
 
-        normalItem(UGItems.UTHERIC_HELMET);
-        normalItem(UGItems.UTHERIC_CHESTPLATE);
-        normalItem(UGItems.UTHERIC_LEGGINGS);
-        normalItem(UGItems.UTHERIC_BOOTS);
+        normalItem(UGItems.UTHERIUM_HELMET);
+        normalItem(UGItems.UTHERIUM_CHESTPLATE);
+        normalItem(UGItems.UTHERIUM_LEGGINGS);
+        normalItem(UGItems.UTHERIUM_BOOTS);
 
         toolItem(UGItems.FROSTSTEEL_SWORD);
         toolItem(UGItems.FROSTSTEEL_PICKAXE);
@@ -175,11 +200,11 @@ public class UGItemModels extends UGItemModelProvider {
         toolItem(UGItems.FROSTSTEEL_SHOVEL);
         toolItem(UGItems.FROSTSTEEL_HOE);
 
-        toolItem(UGItems.UTHERIC_SWORD);
-        toolItem(UGItems.UTHERIC_PICKAXE);
-        toolItem(UGItems.UTHERIC_AXE);
-        toolItem(UGItems.UTHERIC_SHOVEL);
-        toolItem(UGItems.UTHERIC_HOE);
+        toolItem(UGItems.UTHERIUM_SWORD);
+        toolItem(UGItems.UTHERIUM_PICKAXE);
+        toolItem(UGItems.UTHERIUM_AXE);
+        toolItem(UGItems.UTHERIUM_SHOVEL);
+        toolItem(UGItems.UTHERIUM_HOE);
 
         toolItem(UGItems.FORGOTTEN_SWORD);
         toolItem(UGItems.FORGOTTEN_PICKAXE);
@@ -196,6 +221,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.GWIBLING_BUCKET);
 
         normalItem(UGItems.UNDERBEANS);
+        normalItem(UGItems.ROASTED_UNDERBEANS);
         normalItem(UGItems.BLISTERBERRY);
         normalItem(UGItems.GLOOMGOURD_PIE);
         normalItem(UGItems.RAW_DWELLER_MEAT);
@@ -222,8 +248,14 @@ public class UGItemModels extends UGItemModelProvider {
         egg(UGItems.NARGOYLE_SPAWN_EGG);
         egg(UGItems.MUNCHER_SPAWN_EGG);
         egg(UGItems.SPLOOGIE_SPAWN_EGG);
+        egg(UGItems.GWIB_SPAWN_EGG);
+        egg(UGItems.MOG_SPAWN_EGG);
 
         egg(UGItems.MASTICATOR_SPAWN_EGG);
         egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
+
+        sign(UGBlocks.SMOGSTEM_SIGN);
+        sign(UGBlocks.WIGGLEWOOD_SIGN);
+        sign(UGBlocks.GRONGLE_SIGN);
     }
 }

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:goo_block"
+    }
+  ],
+  "result": {
+    "item": "undergarden:goo_ball",
+    "count": 9
+  }
+}

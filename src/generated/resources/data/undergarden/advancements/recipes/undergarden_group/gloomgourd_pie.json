@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:gloomgourd_pie"
+    ]
+  },
+  "criteria": {
+    "has_mushroom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "undergarden:mushrooms"
+          }
+        ]
+      }
+    },
+    "has_gloomgourd": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:gloomgourd"
+          }
+        ]
+      }
+    },
+    "has_kelp": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:glowing_kelp"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:gloomgourd_pie"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mushroom",
+      "has_gloomgourd",
+      "has_kelp",
+      "has_the_recipe"
+    ]
+  ]
+}

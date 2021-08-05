@@ -1,12 +1,12 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
+        maven { url = 'https://maven.minecraftforge.net' }
+        //jcenter()
         mavenCentral()
-        maven { url='https://dist.creeper.host/Sponge/maven' }
+        maven { url='https://repo.spongepowered.org/repository/maven-public/' }
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
@@ -28,7 +28,7 @@ mixin {
 
 
 minecraft {
-    mappings channel: 'snapshot', version: project.mappings
+    mappings channel: 'official', version: project.mc_version
 
     runs {
         client {
@@ -91,9 +91,12 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
 
     // compile against the JEI API but do not include it at runtime
-    compileOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}:api")
+    compileOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}:api")
     // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}")
+
+    // i have no idea why this is needed!
+    annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
 }
 
 jar {
@@ -134,6 +137,7 @@ publishing {
 }
 
 repositories {
+    maven { url='https://repo.spongepowered.org/repository/maven-public/' }
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"

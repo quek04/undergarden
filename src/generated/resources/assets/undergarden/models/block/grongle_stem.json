@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "undergarden:block/grongle_stem_side",
-    "end": "undergarden:block/grongle_stem_end"
-  }
-}

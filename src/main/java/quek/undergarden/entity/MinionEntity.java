@@ -1,9 +1,6 @@
 package quek.undergarden.entity;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
@@ -14,11 +11,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.MinionProjectileEntity;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
 public class MinionEntity extends GolemEntity implements IRangedAttackMob {
@@ -29,38 +28,48 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 5, 10.0F));
-        this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 1.0000001E-5F));
-        this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 20, 10.0F));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        //this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        //this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) ->
-                entity instanceof IMob || entity.getType().isContained(UGTags.Entities.ROTSPAWN) || entity.getType().isContained(UGTags.Entities.CAVERN_CREATURE))
+                entity instanceof IMob || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
         );
     }
 
+    @Override
+    protected float getStandingEyeHeight(Pose pose, EntitySize size) {
+        return 1.0F;
+    }
+
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return GolemEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
-                .createMutableAttribute(Attributes.ARMOR, 10.0D)
-                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 5.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.2D);
+        return GolemEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.ARMOR, 10.0D)
+                .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
     @Override
-    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
-        MinionProjectileEntity projectile = new MinionProjectileEntity(this.world, this);
-        double xDistance = target.getPosX() - this.getPosX();
-        double yDistance = target.getPosYHeight(0.3333333333333333D) - projectile.getPosY();
-        double zDistance = target.getPosZ() - this.getPosZ();
+    protected SoundEvent getDeathSound() {
+        return UGSoundEvents.MINION_DEATH.get();
+    }
+
+    @Override
+    public void performRangedAttack(LivingEntity target, float distanceFactor) {
+        MinionProjectileEntity projectile = new MinionProjectileEntity(this.level, this);
+        double xDistance = target.getX() - this.getX();
+        double yDistance = target.getY(0.3333333333333333D) - projectile.getY();
+        double zDistance = target.getZ() - this.getZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         projectile.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
-        this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0F, 0.5F);
-        this.world.addEntity(projectile);
+        this.playSound(UGSoundEvents.MINION_SHOOT.get(), 1.0F, this.getVoicePitch());
+        this.level.addFreshEntity(projectile);
     }
 
     @Override
-    protected ActionResultType func_230254_b_(PlayerEntity player, Hand hand) {
-        ItemStack itemstack = player.getHeldItem(hand);
+    protected ActionResultType mobInteract(PlayerEntity player, Hand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
         Item item = itemstack.getItem();
         if (item != UGItems.FORGOTTEN_NUGGET.get()) {
             return ActionResultType.PASS;
@@ -70,12 +79,12 @@ public class MinionEntity extends GolemEntity implements IRangedAttackMob {
             if (this.getHealth() == health) {
                 return ActionResultType.PASS;
             } else {
-                this.playSound(SoundEvents.ENTITY_IRON_GOLEM_REPAIR, 1.0F, 2.0F);
-                if (!player.abilities.isCreativeMode) {
+                this.playSound(UGSoundEvents.MINION_REPAIR.get(), 1.0F, 2.0F);
+                if (!player.abilities.instabuild) {
                     itemstack.shrink(1);
                 }
 
-                return ActionResultType.func_233537_a_(this.world.isRemote);
+                return ActionResultType.sidedSuccess(this.level.isClientSide);
             }
         }
     }

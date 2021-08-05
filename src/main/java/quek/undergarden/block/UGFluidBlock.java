@@ -18,21 +18,21 @@ import java.util.function.Supplier;
 public class UGFluidBlock extends FlowingFluidBlock {
 
     public UGFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
-        super(supplier, properties.doesNotBlockMovement().hardnessAndResistance(100F).noDrops());
+        super(supplier, properties.noCollission().strength(100F).noDrops());
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         if(this.getFluid() == UGFluids.VIRULENT_MIX_SOURCE.get() || this.getFluid() == UGFluids.VIRULENT_MIX_FLOWING.get()) {
             if(entityIn.isAlive() && entityIn instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityIn;
-                if(livingEntity.getType().isContained(UGTags.Entities.ROTSPAWN) || livingEntity.getType().isContained(UGTags.Entities.CAVERN_CREATURE)) {
+                if(livingEntity.getType().is(UGTags.Entities.ROTSPAWN) || livingEntity.getType().is(UGTags.Entities.CAVERN_CREATURE)) {
 
                 }
-                else if(livingEntity.isPotionActive(UGEffects.VIRULENT_RESISTANCE.get())) {
+                else if(livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) {
 
                 }
-                else livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 600, 0));
+                else livingEntity.addEffect(new EffectInstance(Effects.POISON, 600, 0));
             }
         }
     }

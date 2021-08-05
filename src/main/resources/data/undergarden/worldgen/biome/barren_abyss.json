@@ -1,8 +1,8 @@
 {
   "precipitation": "none",
   "category": "none",
-  "depth": 0.3625,
-  "scale": 1.225,
+  "depth": 0.0,
+  "scale": 0.0,
   "temperature": 0.2,
   "temperature_modifier": "none",
   "downfall": 0,
@@ -24,6 +24,12 @@
     "additions_sound": {
       "sound": "undergarden:ambient.abyss_addition",
       "tick_chance": 0.00555
+    },
+    "mood_sound": {
+      "sound": "undergarden:ambient.abyss_mood",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
     },
     "music": {
       "sound": "undergarden:music.undergarden_music",
@@ -55,11 +61,12 @@
       "undergarden:gold_ore",
       "undergarden:diamond_ore",
       "undergarden:cloggrum_ore",
-      "undergarden:froststeel_ore",
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
       "undergarden:shiverstone_patch",
-      "undergarden:deepsoil_patch"
+      "undergarden:deepsoil_patch",
+      "undergarden:sediment_disk",
+      "undergarden:sediment_patch"
     ],
     [
       "undergarden:lilypads",
@@ -117,7 +124,14 @@
     ],
     "creature": [],
     "ambient": [],
-    "water_creature": [],
+    "water_creature": [
+      {
+        "type": "undergarden:gwib",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
     "water_ambient": [
       {
         "type": "undergarden:gwibling",

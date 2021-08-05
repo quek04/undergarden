@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "undergarden:catalyst"
   },
-  "result": "minecraft:iron_ingot",
-  "experience": 1.0,
+  "result": "minecraft:diamond",
+  "experience": 0.0,
   "cookingtime": 200
 }

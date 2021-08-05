@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:blast_froststeel_item"
+    ]
+  },
+  "criteria": {
+    "has_OptionalNamedTag[undergarden:froststeel_items]": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "undergarden:froststeel_items"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:blast_froststeel_item"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_OptionalNamedTag[undergarden:froststeel_items]",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:grongle_log",
+    "undergarden:stripped_grongle_log",
+    "undergarden:grongle_wood",
+    "undergarden:stripped_grongle_wood"
+  ]
+}

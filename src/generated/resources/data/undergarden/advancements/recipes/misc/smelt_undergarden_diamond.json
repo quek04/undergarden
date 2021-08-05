@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smelt_undergarden_diamond"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:diamond_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:diamond_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smelt_undergarden_diamond"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:diamond_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

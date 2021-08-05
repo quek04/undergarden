@@ -13,26 +13,26 @@ import java.util.Random;
 
 public class UGPlantBlock extends UGBushBlock implements IGrowable {
 
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
+    protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public UGPlantBlock(AbstractBlock.Properties properties) {
+    public UGPlantBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
 
     @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) {
         DoublePlantBlock doubleplantblock = (DoublePlantBlock) (this == UGBlocks.SHIMMERWEED.get() ? UGBlocks.TALL_SHIMMERWEED.get() : UGBlocks.TALL_DEEPTURF.get());
-        if (doubleplantblock.getDefaultState().isValidPosition(serverWorld, pos) && serverWorld.isAirBlock(pos.up())) {
+        if (doubleplantblock.defaultBlockState().canSurvive(serverWorld, pos) && serverWorld.isEmptyBlock(pos.above())) {
             doubleplantblock.placeAt(serverWorld, pos, 2);
         }
     }

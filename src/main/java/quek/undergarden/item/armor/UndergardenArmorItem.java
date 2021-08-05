@@ -25,41 +25,43 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
+import net.minecraft.item.Item.Properties;
+
 public class UndergardenArmorItem extends ArmorItem {
 
     private static final UUID[] ARMOR_MODIFIERS = new UUID[]{UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
 
     public UndergardenArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot) {
         super(materialIn, slot, new Properties()
-                .group(UGItemGroups.GROUP)
+                .tab(UGItemGroups.GROUP)
         );
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if(stack.getItem() == UGItems.CLOGGRUM_BOOTS.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.cloggrum_boots").mergeStyle(TextFormatting.GRAY));
+            tooltip.add(new TranslationTextComponent("tooltip.cloggrum_boots").withStyle(TextFormatting.GRAY));
         }
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
-        if(this.getArmorMaterial() == UGArmors.FROSTSTEEL && equipmentSlot == this.slot) {
+        if(this.getMaterial() == UGArmors.FROSTSTEEL && equipmentSlot == this.slot) {
             return ImmutableMultimap.of(
                     Attributes.MOVEMENT_SPEED, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE),
-                    Attributes.ARMOR, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_value", UGArmors.FROSTSTEEL.getDamageReductionAmount(this.slot), AttributeModifier.Operation.ADDITION),
+                    Attributes.ARMOR, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_value", UGArmors.FROSTSTEEL.getDefenseForSlot(this.slot), AttributeModifier.Operation.ADDITION),
                     Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ARMOR_MODIFIERS[equipmentSlot.getIndex()], "froststeel_armor_toughness_value", UGArmors.FROSTSTEEL.getToughness(), AttributeModifier.Operation.ADDITION)
             );
         }
-        return super.getAttributeModifiers(equipmentSlot);
+        return super.getDefaultAttributeModifiers(equipmentSlot);
     }
 
     @Override
     public String getArmorTexture(ItemStack itemstack, Entity entity, EquipmentSlotType slot, String layer) {
         if (slot == EquipmentSlotType.LEGS) {
-            return "undergarden:textures/models/armor/" + material.getName() + "_layer_2.png";
+            return "undergarden:textures/armor/" + material.getName() + "_layer_2.png";
         } else {
-            return "undergarden:textures/models/armor/" + material.getName() + "_layer_1.png";
+            return "undergarden:textures/armor/" + material.getName() + "_layer_1.png";
         }
     }
 

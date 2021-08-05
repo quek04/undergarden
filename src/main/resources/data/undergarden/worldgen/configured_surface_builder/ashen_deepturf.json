@@ -11,7 +11,7 @@
       "Name": "undergarden:deepsoil"
     },
     "underwater_material": {
-      "Name": "undergarden:deepsoil"
+      "Name": "undergarden:sediment"
     }
   }
 }

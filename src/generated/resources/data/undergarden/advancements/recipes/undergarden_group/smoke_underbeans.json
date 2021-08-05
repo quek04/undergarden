@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smoke_underbeans"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:underbeans": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:underbeans"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smoke_underbeans"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:underbeans",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -4,6 +4,6 @@
         "particle": "undergarden:block/deepsoil",
         "bottom": "undergarden:block/deepsoil",
         "top": "minecraft:block/snow",
-        "side": "undergarden:block/deepturf_block_snow"
+        "side": "undergarden:block/frozen_deepturf_block_side"
     }
 }

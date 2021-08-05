@@ -21,34 +21,34 @@ public class UGGrassBlock extends SpreadableSnowyDirtBlock {
     }
 
     private static boolean isSnowyConditions(BlockState state, IWorldReader world, BlockPos pos) {
-        BlockPos blockpos = pos.up();
+        BlockPos blockpos = pos.above();
         BlockState blockstate = world.getBlockState(blockpos);
-        if (blockstate.getBlock() == Blocks.SNOW && blockstate.get(SnowBlock.LAYERS) == 1) {
+        if (blockstate.getBlock() == Blocks.SNOW && blockstate.getValue(SnowBlock.LAYERS) == 1) {
             return true;
         } else {
-            int i = LightEngine.func_215613_a(world, state, pos, blockstate, blockpos, Direction.UP, blockstate.getOpacity(world, blockpos));
+            int i = LightEngine.getLightBlockInto(world, state, pos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(world, blockpos));
             return i < world.getMaxLightLevel();
         }
     }
 
     private static boolean isSnowyAndNotUnderwater(BlockState state, IWorldReader world, BlockPos pos) {
-        BlockPos blockpos = pos.up();
-        return isSnowyConditions(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.WATER);
+        BlockPos blockpos = pos.above();
+        return isSnowyConditions(state, world, pos) && !world.getFluidState(blockpos).is(FluidTags.WATER);
     }
 
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!isSnowyConditions(state, worldIn, pos)) {
             if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
-            worldIn.setBlockState(pos, UGBlocks.DEEPSOIL.get().getDefaultState());
+            worldIn.setBlockAndUpdate(pos, UGBlocks.DEEPSOIL.get().defaultBlockState());
         }
         else {
-            BlockState blockstate = this.getDefaultState();
+            BlockState blockstate = this.defaultBlockState();
 
             for (int i = 0; i < 4; ++i) {
-                BlockPos blockpos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                if (worldIn.getBlockState(blockpos).isIn(UGBlocks.DEEPSOIL.get()) && isSnowyAndNotUnderwater(blockstate, worldIn, blockpos)) {
-                    worldIn.setBlockState(blockpos, blockstate.with(SNOWY, worldIn.getBlockState(blockpos.up()).isIn(Blocks.SNOW)));
+                BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+                if (worldIn.getBlockState(blockpos).is(UGBlocks.DEEPSOIL.get()) && isSnowyAndNotUnderwater(blockstate, worldIn, blockpos)) {
+                    worldIn.setBlockAndUpdate(blockpos, blockstate.setValue(SNOWY, worldIn.getBlockState(blockpos.above()).is(Blocks.SNOW)));
                 }
             }
         }

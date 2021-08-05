@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:froststeel_shovel"
+    ]
+  },
+  "criteria": {
+    "has_froststeel_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:froststeel_ingot"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:froststeel_shovel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_froststeel_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side_alt",
+  "textures": {
+    "pane": "undergarden:block/sediment_glass",
+    "edge": "undergarden:block/sediment_glass_pane_top"
+  }
+}

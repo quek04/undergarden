@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:coarse_deepsoil_to_normal"
+    ]
+  },
+  "criteria": {
+    "has_coarse_deepsoil": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:coarse_deepsoil"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:coarse_deepsoil_to_normal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_coarse_deepsoil",
+      "has_the_recipe"
+    ]
+  ]
+}

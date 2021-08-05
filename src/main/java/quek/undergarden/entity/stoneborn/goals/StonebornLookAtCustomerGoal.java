@@ -14,9 +14,9 @@ public class StonebornLookAtCustomerGoal extends LookAtGoal {
     }
 
     @Override
-    public boolean shouldExecute() {
+    public boolean canUse() {
         if (this.stoneborn.hasCustomer()) {
-            this.closestEntity = this.stoneborn.getCustomer();
+            this.lookAt = this.stoneborn.getTradingPlayer();
             return true;
         } else {
             return false;

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:cloggrum_nugget_to_ingot"
+    ]
+  },
+  "criteria": {
+    "has_cloggrum_nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:cloggrum_nugget"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:cloggrum_nugget_to_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cloggrum_nugget",
+      "has_the_recipe"
+    ]
+  ]
+}

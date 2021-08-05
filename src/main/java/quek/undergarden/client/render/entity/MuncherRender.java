@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MuncherModel;
 import quek.undergarden.client.render.layer.MuncherEyesLayer;
 import quek.undergarden.entity.cavern.MuncherEntity;
@@ -19,7 +19,7 @@ public class MuncherRender extends MobRenderer<MuncherEntity, MuncherModel<Munch
     }
 
     @Override
-    public ResourceLocation getEntityTexture(MuncherEntity entity) {
-        return new ResourceLocation(UGMod.MODID, "textures/entity/muncher.png");
+    public ResourceLocation getTextureLocation(MuncherEntity entity) {
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/muncher.png");
     }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:shiverstone_wall"
+    ]
+  },
+  "criteria": {
+    "has_shiverstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:shiverstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:shiverstone_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_shiverstone",
+      "has_the_recipe"
+    ]
+  ]
+}

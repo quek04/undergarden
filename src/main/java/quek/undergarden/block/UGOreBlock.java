@@ -1,6 +1,5 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.OreBlock;
 import net.minecraft.util.math.MathHelper;
 import quek.undergarden.registry.UGBlocks;
@@ -9,12 +8,12 @@ import java.util.Random;
 
 public class UGOreBlock extends OreBlock {
 
-    public UGOreBlock(AbstractBlock.Properties properties) {
+    public UGOreBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    protected int getExperience(Random rand) {
+    protected int xpOnDrop(Random rand) {
         if (this == UGBlocks.COAL_ORE.get()) {
             return MathHelper.nextInt(rand, 0, 2);
         } else {

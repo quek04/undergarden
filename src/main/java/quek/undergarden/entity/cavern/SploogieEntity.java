@@ -8,10 +8,12 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
+import quek.undergarden.registry.UGSoundEvents;
 
 public class SploogieEntity extends AbstractCavernCreatureEntity implements IRangedAttackMob {
 
@@ -23,7 +25,7 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(0, new PanicGoal(this, 2.0D));
-        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.0D, 20, 15.0F));
+        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.0D, 40, 15.0F));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
@@ -31,20 +33,35 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return AbstractCavernCreatureEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D);
+        return AbstractCavernCreatureEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
     @Override
-    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
-        SlingshotAmmoEntity pebble = new SlingshotAmmoEntity(this.world, this);
-        double xDistance = target.getPosX() - this.getPosX();
-        double yDistance = target.getPosYHeight(0.3333333333333333D) - pebble.getPosY();
-        double zDistance = target.getPosZ() - this.getPosZ();
+    protected SoundEvent getAmbientSound() {
+        return UGSoundEvents.SPLOOGIE_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return UGSoundEvents.SPLOOGIE_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return UGSoundEvents.SPLOOGIE_DEATH.get();
+    }
+
+    @Override
+    public void performRangedAttack(LivingEntity target, float distanceFactor) {
+        SlingshotAmmoEntity pebble = new SlingshotAmmoEntity(this.level, this);
+        double xDistance = target.getX() - this.getX();
+        double yDistance = target.getY(0.3333333333333333D) - pebble.getY();
+        double zDistance = target.getZ() - this.getZ();
         double yMath = MathHelper.sqrt((xDistance * xDistance) + (zDistance * zDistance));
         pebble.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
-        this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-        this.world.addEntity(pebble);
+        this.playSound(UGSoundEvents.SPLOOGIE_SPIT.get(), 1.0F, this.getVoicePitch());
+        this.level.addFreshEntity(pebble);
     }
 }

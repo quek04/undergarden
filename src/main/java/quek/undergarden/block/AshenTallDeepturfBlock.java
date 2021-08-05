@@ -1,6 +1,5 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -12,25 +11,25 @@ import java.util.Random;
 
 public class AshenTallDeepturfBlock extends UGPlantBlock {
 
-    public AshenTallDeepturfBlock(AbstractBlock.Properties properties) {
+    public AshenTallDeepturfBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.isIn(UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
+    protected boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
     }
 
     @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
         return false;
     }
 
     @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state) {
         return false;
     }
 
     @Override
-    public void grow(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) { }
+    public void performBonemeal(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) { }
 }

@@ -1,13 +1,13 @@
 package quek.undergarden.entity.rotspawn;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -23,17 +23,17 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 80.0D)
-                .createMutableAttribute(Attributes.ARMOR, 3.0D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 10.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.22D)
-                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 0.5D);
+        return MonsterEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 80.0D)
+                .add(Attributes.ARMOR, 3.0D)
+                .add(Attributes.ATTACK_DAMAGE, 10.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.22D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.5D);
     }
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.ROTBEAST_LIVING.get();
+        return UGSoundEvents.ROTBEAST_AMBIENT.get();
     }
 
     @Override
@@ -48,12 +48,12 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 0.5F);
+        this.playSound(UGSoundEvents.ROTBEAST_STEP.get(), 0.15F, 0.5F);
     }
 
     @Override
-    public void livingTick() {
-        super.livingTick();
+    public void aiStep() {
+        super.aiStep();
 
         if (this.attackTimer > 0) {
             --this.attackTimer;
@@ -61,29 +61,29 @@ public class RotbeastEntity extends AbstractRotspawnEntity {
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
+    public boolean doHurtTarget(Entity entityIn) {
         this.attackTimer = 10;
-        this.world.setEntityState(this, (byte)4);
+        this.level.broadcastEntityEvent(this, (byte)4);
         float f = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        float f1 = (int)f > 0 ? f / 2.0F + (float)this.rand.nextInt((int)f) : f;
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f1);
+        float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
+        boolean flag = entityIn.hurt(DamageSource.mobAttack(this), f1);
         if (flag) {
-            entityIn.setMotion(entityIn.getMotion().add(0.0D, 0.4F, 0.0D));
-            this.applyEnchantments(this, entityIn);
+            entityIn.setDeltaMovement(entityIn.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
+            this.doEnchantDamageEffects(this, entityIn);
         }
 
-        this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        this.playSound(UGSoundEvents.ROTBEAST_ATTACK.get(), 1.0F, 1.0F);
         return flag;
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void handleStatusUpdate(byte id) {
+    public void handleEntityEvent(byte id) {
         if (id == 4) {
             this.attackTimer = 10;
-            this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+            this.playSound(UGSoundEvents.ROTBEAST_ATTACK.get(), 1.0F, 1.0F);
         }
         else {
-            super.handleStatusUpdate(id);
+            super.handleEntityEvent(id);
         }
     }
 

@@ -32,17 +32,17 @@ public class RottenBlisterberryEntity extends ProjectileItemEntity {
     }
 
     @Override
-    protected void onImpact(RayTraceResult result) {
-        if (!this.world.isRemote) {
+    protected void onHit(RayTraceResult result) {
+        if (!this.level.isClientSide) {
             if (result.getType() == RayTraceResult.Type.ENTITY || result.getType() == RayTraceResult.Type.BLOCK) {
-                this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 1.5F, Explosion.Mode.NONE);
+                this.level.explode(this, this.getX(), this.getY(), this.getZ(), 1.5F, Explosion.Mode.NONE);
                 this.remove();
             }
         }
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

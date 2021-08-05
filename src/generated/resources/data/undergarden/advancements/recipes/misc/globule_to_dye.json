@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:globule_to_dye"
+    ]
+  },
+  "criteria": {
+    "has_globule": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:blood_mushroom_globule"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:globule_to_dye"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_globule",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -11,13 +11,13 @@ public class UGItem extends Item {
 
     public UGItem() {
         super(new Properties()
-                .group(UGItemGroups.GROUP)
+                .tab(UGItemGroups.GROUP)
         );
     }
 
     public UGItem(Rarity rarity) {
         super(new Properties()
-                .group(UGItemGroups.GROUP)
+                .tab(UGItemGroups.GROUP)
                 .rarity(rarity)
         );
     }
@@ -25,6 +25,6 @@ public class UGItem extends Item {
     public UGItem(Food food) {
         super(new Properties()
                 .food(food)
-                .group(UGItemGroups.GROUP));
+                .tab(UGItemGroups.GROUP));
     }
 }

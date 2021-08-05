@@ -1,16 +1,16 @@
 {
   "precipitation": "none",
   "category": "none",
-  "depth": 0.3625,
-  "scale": 1.225,
+  "depth": 0.0,
+  "scale": 0.0,
   "temperature": 0.14,
   "temperature_modifier": "none",
   "downfall": 0,
   "effects": {
     "sky_color": 2565927,
     "fog_color": 2565927,
-    "foliage_color": 7568503,
-    "grass_color": 7568503,
+    "foliage_color": 14609908,
+    "grass_color": 14609908,
     "water_color": 342306,
     "water_fog_color": 332810,
     "grass_color_modifier": "none",
@@ -20,9 +20,9 @@
       },
       "probability": 0.118093334
     },
-    "ambient_sound": "undergarden:ambient.undergarden_ambience",
+    "ambient_sound": "undergarden:ambient.frost_ambience",
     "additions_sound": {
-      "sound": "undergarden:ambient.rocky_addition",
+      "sound": "undergarden:ambient.frostfields_addition",
       "tick_chance": 0.00555
     },
     "music": {
@@ -32,7 +32,7 @@
       "replace_current_music": true
     }
   },
-  "surface_builder": "undergarden:eldergarden",
+  "surface_builder": "undergarden:frostfields",
   "carvers": {
     "air": [
       "undergarden:undergarden_cave"
@@ -61,9 +61,14 @@
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
       "undergarden:deepsoil_patch",
-      "undergarden:ice_patch"
+      "undergarden:ice_patch",
+      "undergarden:sediment_disk",
+      "undergarden:sediment_patch"
     ],
     [
+      "undergarden:frozen_patch",
+      "undergarden:shimmerweed_patch",
+      "undergarden:tall_shimmerweed_patch",
       "undergarden:indigo_patch",
       "undergarden:veil_patch",
       "undergarden:ink_patch",

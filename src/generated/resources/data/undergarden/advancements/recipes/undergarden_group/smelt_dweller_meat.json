@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smelt_dweller_meat"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:raw_dweller_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "undergarden:raw_dweller_meat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smelt_dweller_meat"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:raw_dweller_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

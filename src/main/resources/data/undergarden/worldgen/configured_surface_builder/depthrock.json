@@ -8,7 +8,7 @@
       "Name": "undergarden:depthrock"
     },
     "underwater_material": {
-      "Name": "undergarden:deepsoil"
+      "Name": "undergarden:sediment"
     }
   }
 }

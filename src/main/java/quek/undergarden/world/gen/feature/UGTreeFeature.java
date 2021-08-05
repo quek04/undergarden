@@ -36,37 +36,37 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
     }
 
     public static boolean isLog(IWorldGenerationBaseReader world, BlockPos pos) {
-        return isReplaceableAt(world, pos) || world.hasBlockState(pos, (state) -> state.isIn(BlockTags.LOGS));
+        return isReplaceableAt(world, pos) || world.isStateAtPosition(pos, (state) -> state.is(BlockTags.LOGS));
     }
 
     private static boolean isVine(IWorldGenerationBaseReader world, BlockPos pos) {
-        return world.hasBlockState(pos, (state) -> state.isIn(Blocks.VINE));
+        return world.isStateAtPosition(pos, (state) -> state.is(Blocks.VINE));
     }
 
     private static boolean isWater(IWorldGenerationBaseReader world, BlockPos pos) {
-        return world.hasBlockState(pos, (state) -> state.isIn(Blocks.WATER));
+        return world.isStateAtPosition(pos, (state) -> state.is(Blocks.WATER));
     }
 
     public static boolean isLeaves(IWorldGenerationBaseReader world, BlockPos pos) {
-        return world.hasBlockState(pos, (state) -> state.isAir() || state.isIn(BlockTags.LEAVES));
+        return world.isStateAtPosition(pos, (state) -> state.isAir() || state.is(BlockTags.LEAVES));
     }
 
     private static boolean isDirtOrFarmland(IWorldGenerationBaseReader world, BlockPos pos) {
-        return world.hasBlockState(pos, (state) -> {
+        return world.isStateAtPosition(pos, (state) -> {
             Block block = state.getBlock();
             return isDirt(block) || block == Blocks.FARMLAND;
         });
     }
 
     private static boolean isTallPlant(IWorldGenerationBaseReader world, BlockPos pos) {
-        return world.hasBlockState(pos, (state) -> {
+        return world.isStateAtPosition(pos, (state) -> {
             Material material = state.getMaterial();
-            return material == Material.TALL_PLANTS;
+            return material == Material.REPLACEABLE_PLANT;
         });
     }
 
-    public static void func_236408_b_(IWorldWriter world, BlockPos pos, BlockState state) {
-        world.setBlockState(pos, state, 19);
+    public static void setBlockKnownShape(IWorldWriter world, BlockPos pos, BlockState state) {
+        world.setBlock(pos, state, 19);
     }
 
     public static boolean isReplaceableAt(IWorldGenerationBaseReader world, BlockPos pos) {
@@ -74,24 +74,24 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
     }
 
     private boolean place(IWorldGenerationReader generationReader, Random rand, BlockPos positionIn, Set<BlockPos> leaves, Set<BlockPos> logs, MutableBoundingBox boundingBoxIn, BaseTreeFeatureConfig configIn) {
-        int trunk = configIn.trunkPlacer.func_236917_a_(rand);
-        int leaf = configIn.foliagePlacer.func_230374_a_(rand, trunk, configIn);
+        int trunk = configIn.trunkPlacer.getTreeHeight(rand);
+        int leaf = configIn.foliagePlacer.foliageHeight(rand, trunk, configIn);
         int k = trunk - leaf;
-        int l = configIn.foliagePlacer.func_230376_a_(rand, k);
+        int l = configIn.foliagePlacer.foliageRadius(rand, k);
         BlockPos blockpos;
 
         blockpos = positionIn;
 
         if (blockpos.getY() >= 1 && blockpos.getY() + trunk + 1 <= 256) {
-            if (!isDirtOrFarmland(generationReader, blockpos.down()) || isWater(generationReader, positionIn)) {
+            if (!isDirtOrFarmland(generationReader, blockpos.below()) || isWater(generationReader, positionIn)) {
                 return false;
             }
             else {
-                OptionalInt optionalint = configIn.minimumSize.func_236710_c_();
-                int l1 = this.func_241521_a_(generationReader, trunk, blockpos, configIn);
+                OptionalInt optionalint = configIn.minimumSize.minClippedHeight();
+                int l1 = this.getMaxFreeTreeHeight(generationReader, trunk, blockpos, configIn);
                 if (l1 >= trunk || optionalint.isPresent() && l1 >= optionalint.getAsInt()) {
-                    List<FoliagePlacer.Foliage> list = configIn.trunkPlacer.func_230382_a_(generationReader, rand, l1, blockpos, leaves, boundingBoxIn, configIn);
-                    list.forEach((foliage) -> configIn.foliagePlacer.func_236752_a_(generationReader, rand, configIn, l1, foliage, leaf, l, logs, boundingBoxIn));
+                    List<FoliagePlacer.Foliage> list = configIn.trunkPlacer.placeTrunk(generationReader, rand, l1, blockpos, leaves, boundingBoxIn, configIn);
+                    list.forEach((foliage) -> configIn.foliagePlacer.createFoliage(generationReader, rand, configIn, l1, foliage, leaf, l, logs, boundingBoxIn));
                     return true;
                 }
                 else {
@@ -104,15 +104,15 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         }
     }
 
-    private int func_241521_a_(IWorldGenerationBaseReader p_241521_1_, int p_241521_2_, BlockPos p_241521_3_, BaseTreeFeatureConfig p_241521_4_) {
+    private int getMaxFreeTreeHeight(IWorldGenerationBaseReader p_241521_1_, int p_241521_2_, BlockPos p_241521_3_, BaseTreeFeatureConfig p_241521_4_) {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
         for(int i = 0; i <= p_241521_2_ + 1; ++i) {
-            int j = p_241521_4_.minimumSize.func_230369_a_(p_241521_2_, i);
+            int j = p_241521_4_.minimumSize.getSizeAtHeight(p_241521_2_, i);
 
             for(int k = -j; k <= j; ++k) {
                 for(int l = -j; l <= j; ++l) {
-                    blockpos$mutable.setAndOffset(p_241521_3_, k, i, l);
+                    blockpos$mutable.setWithOffset(p_241521_3_, k, i, l);
                     if (!isLog(p_241521_1_, blockpos$mutable) || !p_241521_4_.ignoreVines && isVine(p_241521_1_, blockpos$mutable)) {
                         return i - 2;
                     }
@@ -123,28 +123,28 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         return p_241521_2_;
     }
 
-    protected void setBlockState(IWorldWriter world, BlockPos pos, BlockState state) {
-        func_236408_b_(world, pos, state);
+    protected void setBlock(IWorldWriter world, BlockPos pos, BlockState state) {
+        setBlockKnownShape(world, pos, state);
     }
 
     @Override
-    public final boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, BaseTreeFeatureConfig config) {
+    public final boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, BaseTreeFeatureConfig config) {
         Set<BlockPos> set = Sets.newHashSet();
         Set<BlockPos> set1 = Sets.newHashSet();
         Set<BlockPos> set2 = Sets.newHashSet();
-        MutableBoundingBox mutableboundingbox = MutableBoundingBox.getNewBoundingBox();
+        MutableBoundingBox mutableboundingbox = MutableBoundingBox.getUnknownBox();
         boolean canPlace = this.place(reader, rand, pos, set, set1, mutableboundingbox, config);
-        if (mutableboundingbox.minX <= mutableboundingbox.maxX && canPlace && !set.isEmpty()) {
+        if (mutableboundingbox.x0 <= mutableboundingbox.x1 && canPlace && !set.isEmpty()) {
             if (!config.decorators.isEmpty()) {
                 List<BlockPos> list = Lists.newArrayList(set);
                 List<BlockPos> list1 = Lists.newArrayList(set1);
                 list.sort(Comparator.comparingInt(Vector3i::getY));
                 list1.sort(Comparator.comparingInt(Vector3i::getY));
-                config.decorators.forEach((treeDecorator) -> treeDecorator.func_225576_a_(reader, rand, list, list1, set2, mutableboundingbox));
+                config.decorators.forEach((treeDecorator) -> treeDecorator.place(reader, rand, list, list1, set2, mutableboundingbox));
             }
 
             VoxelShapePart voxelshapepart = this.placeLogsAndLeaves(reader, mutableboundingbox, set, set2);
-            Template.func_222857_a(reader, 3, voxelshapepart, mutableboundingbox.minX, mutableboundingbox.minY, mutableboundingbox.minZ);
+            Template.updateShapeAtEdge(reader, 3, voxelshapepart, mutableboundingbox.x0, mutableboundingbox.y0, mutableboundingbox.z0);
             return true;
         }
         else {
@@ -154,7 +154,7 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
     private VoxelShapePart placeLogsAndLeaves(IWorld world, MutableBoundingBox boundingBox, Set<BlockPos> p_236403_3_, Set<BlockPos> p_236403_4_) {
         List<Set<BlockPos>> list = Lists.newArrayList();
-        VoxelShapePart voxelshapepart = new BitSetVoxelShapePart(boundingBox.getXSize(), boundingBox.getYSize(), boundingBox.getZSize());
+        VoxelShapePart voxelshapepart = new BitSetVoxelShapePart(boundingBox.getXSpan(), boundingBox.getYSpan(), boundingBox.getZSpan());
 
         for(int j = 0; j < 6; ++j) {
             list.add(Sets.newHashSet());
@@ -163,25 +163,25 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
         for(BlockPos blockpos : Lists.newArrayList(p_236403_4_)) {
-            if (boundingBox.isVecInside(blockpos)) {
-                voxelshapepart.setFilled(blockpos.getX() - boundingBox.minX, blockpos.getY() - boundingBox.minY, blockpos.getZ() - boundingBox.minZ, true, true);
+            if (boundingBox.isInside(blockpos)) {
+                voxelshapepart.setFull(blockpos.getX() - boundingBox.x0, blockpos.getY() - boundingBox.y0, blockpos.getZ() - boundingBox.z0, true, true);
             }
         }
 
         for(BlockPos blockpos1 : Lists.newArrayList(p_236403_3_)) {
-            if (boundingBox.isVecInside(blockpos1)) {
-                voxelshapepart.setFilled(blockpos1.getX() - boundingBox.minX, blockpos1.getY() - boundingBox.minY, blockpos1.getZ() - boundingBox.minZ, true, true);
+            if (boundingBox.isInside(blockpos1)) {
+                voxelshapepart.setFull(blockpos1.getX() - boundingBox.x0, blockpos1.getY() - boundingBox.y0, blockpos1.getZ() - boundingBox.z0, true, true);
             }
 
             for(Direction direction : Direction.values()) {
-                blockpos$mutable.setAndMove(blockpos1, direction);
+                blockpos$mutable.setWithOffset(blockpos1, direction);
                 if (!p_236403_3_.contains(blockpos$mutable)) {
                     BlockState blockstate = world.getBlockState(blockpos$mutable);
-                    if (blockstate.hasProperty(BlockStateProperties.DISTANCE_1_7)) {
-                        list.get(0).add(blockpos$mutable.toImmutable());
-                        func_236408_b_(world, blockpos$mutable, blockstate.with(BlockStateProperties.DISTANCE_1_7, 1));
-                        if (boundingBox.isVecInside(blockpos$mutable)) {
-                            voxelshapepart.setFilled(blockpos$mutable.getX() - boundingBox.minX, blockpos$mutable.getY() - boundingBox.minY, blockpos$mutable.getZ() - boundingBox.minZ, true, true);
+                    if (blockstate.hasProperty(BlockStateProperties.DISTANCE)) {
+                        list.get(0).add(blockpos$mutable.immutable());
+                        setBlockKnownShape(world, blockpos$mutable, blockstate.setValue(BlockStateProperties.DISTANCE, 1));
+                        if (boundingBox.isInside(blockpos$mutable)) {
+                            voxelshapepart.setFull(blockpos$mutable.getX() - boundingBox.x0, blockpos$mutable.getY() - boundingBox.y0, blockpos$mutable.getZ() - boundingBox.z0, true, true);
                         }
                     }
                 }
@@ -193,24 +193,24 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
             Set<BlockPos> set1 = list.get(l);
 
             for(BlockPos blockpos2 : set) {
-                if (boundingBox.isVecInside(blockpos2)) {
-                    voxelshapepart.setFilled(blockpos2.getX() - boundingBox.minX, blockpos2.getY() - boundingBox.minY, blockpos2.getZ() - boundingBox.minZ, true, true);
+                if (boundingBox.isInside(blockpos2)) {
+                    voxelshapepart.setFull(blockpos2.getX() - boundingBox.x0, blockpos2.getY() - boundingBox.y0, blockpos2.getZ() - boundingBox.z0, true, true);
                 }
 
                 for(Direction direction1 : Direction.values()) {
-                    blockpos$mutable.setAndMove(blockpos2, direction1);
+                    blockpos$mutable.setWithOffset(blockpos2, direction1);
                     if (!set.contains(blockpos$mutable) && !set1.contains(blockpos$mutable)) {
                         BlockState blockstate1 = world.getBlockState(blockpos$mutable);
-                        if (blockstate1.hasProperty(BlockStateProperties.DISTANCE_1_7)) {
-                            int k = blockstate1.get(BlockStateProperties.DISTANCE_1_7);
+                        if (blockstate1.hasProperty(BlockStateProperties.DISTANCE)) {
+                            int k = blockstate1.getValue(BlockStateProperties.DISTANCE);
                             if (k > l + 1) {
-                                BlockState blockstate2 = blockstate1.with(BlockStateProperties.DISTANCE_1_7, l + 1);
-                                func_236408_b_(world, blockpos$mutable, blockstate2);
-                                if (boundingBox.isVecInside(blockpos$mutable)) {
-                                    voxelshapepart.setFilled(blockpos$mutable.getX() - boundingBox.minX, blockpos$mutable.getY() - boundingBox.minY, blockpos$mutable.getZ() - boundingBox.minZ, true, true);
+                                BlockState blockstate2 = blockstate1.setValue(BlockStateProperties.DISTANCE, l + 1);
+                                setBlockKnownShape(world, blockpos$mutable, blockstate2);
+                                if (boundingBox.isInside(blockpos$mutable)) {
+                                    voxelshapepart.setFull(blockpos$mutable.getX() - boundingBox.x0, blockpos$mutable.getY() - boundingBox.y0, blockpos$mutable.getZ() - boundingBox.z0, true, true);
                                 }
 
-                                set1.add(blockpos$mutable.toImmutable());
+                                set1.add(blockpos$mutable.immutable());
                             }
                         }
                     }

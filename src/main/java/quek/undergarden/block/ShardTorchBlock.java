@@ -1,6 +1,5 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TorchBlock;
 import net.minecraft.particles.ParticleTypes;
@@ -18,7 +17,7 @@ import java.util.Random;
 public class ShardTorchBlock extends TorchBlock {
 
 
-    public ShardTorchBlock(AbstractBlock.Properties properties) {
+    public ShardTorchBlock(Properties properties) {
         super(properties, ParticleTypes.FLAME);
     }
 

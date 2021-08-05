@@ -7,7 +7,7 @@
   ],
   "key": {
     "S": {
-      "item": "undergarden:smogstem_planks"
+      "tag": "minecraft:planks"
     },
     "C": {
       "item": "undergarden:cloggrum_ingot"

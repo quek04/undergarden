@@ -20,7 +20,6 @@ import java.util.Random;
 
 public class UGStemBlock extends StemBlock {
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
     private final StemGrownBlock crop;
 
     public UGStemBlock(StemGrownBlock crop, AbstractBlock.Properties properties) {
@@ -30,33 +29,33 @@ public class UGStemBlock extends StemBlock {
 
 
     @Override
-    public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.getBlock() == UGBlocks.DEEPSOIL_FARMLAND.get();
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockpos = pos.down();
-        return isValidGround(worldIn.getBlockState(blockpos), worldIn, blockpos);
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        BlockPos blockpos = pos.below();
+        return mayPlaceOn(worldIn.getBlockState(blockpos), worldIn, blockpos);
     }
 
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!worldIn.isAreaLoaded(pos, 1))
             return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        float f = CropsBlock.getGrowthChance(this, worldIn, pos);
+        float f = CropsBlock.getGrowthSpeed(this, worldIn, pos);
         if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
-            int i = state.get(AGE);
+            int i = state.getValue(AGE);
             if (i < 7) {
-                worldIn.setBlockState(pos, state.with(AGE, i + 1), 2);
+                worldIn.setBlock(pos, state.setValue(AGE, i + 1), 2);
             } else {
-                Direction direction = Direction.Plane.HORIZONTAL.random(random);
-                BlockPos blockpos = pos.offset(direction);
-                BlockState blockstate = worldIn.getBlockState(blockpos.down());
+                Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+                BlockPos blockpos = pos.relative(direction);
+                BlockState blockstate = worldIn.getBlockState(blockpos.below());
                 Block block = blockstate.getBlock();
-                if (worldIn.isAirBlock(blockpos) && (blockstate.canSustainPlant(worldIn, blockpos.down(), Direction.UP, this) || block == UGBlocks.DEEPSOIL_FARMLAND.get() || block == UGBlocks.DEEPSOIL.get() || block == UGBlocks.COARSE_DEEPSOIL.get() || block == UGBlocks.DEEPTURF_BLOCK.get())) {
-                    worldIn.setBlockState(blockpos, this.crop.getDefaultState());
-                    worldIn.setBlockState(pos, this.crop.getAttachedStem().getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, direction));
+                if (worldIn.isEmptyBlock(blockpos) && (blockstate.canSustainPlant(worldIn, blockpos.below(), Direction.UP, this) || block == UGBlocks.DEEPSOIL_FARMLAND.get() || block == UGBlocks.DEEPSOIL.get() || block == UGBlocks.COARSE_DEEPSOIL.get() || block == UGBlocks.DEEPTURF_BLOCK.get())) {
+                    worldIn.setBlockAndUpdate(blockpos, this.crop.defaultBlockState());
+                    worldIn.setBlockAndUpdate(pos, this.crop.getAttachedStem().defaultBlockState().setValue(HorizontalBlock.FACING, direction));
                 }
             }
             net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
@@ -67,11 +66,5 @@ public class UGStemBlock extends StemBlock {
     @OnlyIn(Dist.CLIENT)
     protected Item getSeedItem() {
         return UGItems.GLOOMGOURD_SEEDS.get();
-    }
-
-    @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-        Item item = this.getSeedItem();
-        return item == null ? ItemStack.EMPTY : new ItemStack(item);
     }
 }

@@ -1,8 +1,8 @@
 {
   "precipitation": "none",
   "category": "none",
-  "depth": 0.1,
-  "scale": 0.2,
+  "depth": 0.0,
+  "scale": 0.0,
   "temperature": 0.8,
   "temperature_modifier": "none",
   "downfall": 0,
@@ -54,17 +54,20 @@
       "undergarden:gold_ore",
       "undergarden:diamond_ore",
       "undergarden:cloggrum_ore",
-      "undergarden:froststeel_ore",
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
       "undergarden:shiverstone_patch",
-      "undergarden:deepsoil_patch"
+      "undergarden:deepsoil_patch",
+      "undergarden:sediment_disk",
+      "undergarden:sediment_patch"
     ],
     [
       "undergarden:lilypads",
       "undergarden:ditchbulb_patch",
       "undergarden:smogstem_tree",
       "undergarden:wigglewood_tree",
+      "undergarden:smogstem_tree_tall",
+      "undergarden:wigglewood_tree_tall",
       "undergarden:droopvine",
       "undergarden:glowing_kelp",
       "undergarden:deepturf_patch",
@@ -123,32 +126,38 @@
         "weight": 50,
         "minCount": 1,
         "maxCount": 1
-      }
-    ],
-    "creature": [
-      {
-        "type": "undergarden:dweller",
-        "weight": 5,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "undergarden:gloomper",
-        "weight": 5,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "undergarden:brute",
-        "weight": 5,
-        "minCount": 4,
-        "maxCount": 4
       },
       {
         "type": "undergarden:sploogie",
         "weight": 50,
         "minCount": 1,
         "maxCount": 1
+      }
+    ],
+    "creature": [
+      {
+        "type": "undergarden:dweller",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:gloomper",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:brute",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:mog",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
       }
     ],
     "ambient": [
@@ -159,7 +168,14 @@
         "maxCount": 8
       }
     ],
-    "water_creature": [],
+    "water_creature": [
+      {
+        "type": "undergarden:gwib",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
     "water_ambient": [
       {
         "type": "undergarden:gwibling",
@@ -173,5 +189,6 @@
   "player_spawn_friendly": false,
   "spawn_costs": {
 
-  }
+  },
+  "creature_spawn_probability": 0.5
 }

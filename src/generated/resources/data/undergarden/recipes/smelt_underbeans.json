@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "undergarden:underbeans"
+  },
+  "result": "undergarden:roasted_underbeans",
+  "experience": 0.35,
+  "cookingtime": 200
+}

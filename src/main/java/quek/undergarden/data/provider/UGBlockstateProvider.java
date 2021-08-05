@@ -8,14 +8,14 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ModelFile;
-import quek.undergarden.UGMod;
+import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
 
 public abstract class UGBlockstateProvider extends BlockStateProvider {
 
     public UGBlockstateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, UGMod.MODID, fileHelper);
+        super(generator, Undergarden.MODID, fileHelper);
     }
 
     protected ResourceLocation texture(String name) {
@@ -48,7 +48,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         getVariantBuilder(wall.get()).forAllStates(state ->
                 ConfiguredModel.builder()
                         .modelFile(torchwall)
-                        .rotationY(((int) state.get(BlockStateProperties.HORIZONTAL_FACING).getHorizontalAngle() + 90) % 360)
+                        .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 90) % 360)
                         .build());
     }
 
@@ -56,17 +56,17 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         crossBlock(block, models().cross(name(block), texture(name(block))));
     }
 
-    public void stairs(Supplier<? extends StairsBlock> block, String name) {
-        stairsBlock(block.get(), texture(name));
+    public void stairs(Supplier<? extends StairsBlock> block, Supplier<? extends Block> fullBlock) {
+        stairsBlock(block.get(), texture(name(fullBlock)));
     }
 
     public void slab(Supplier<? extends SlabBlock> block, Supplier<? extends Block> fullBlock) {
         slabBlock(block.get(), texture(name(fullBlock)), texture(name(fullBlock)));
     }
 
-    public void fence(Supplier<? extends FenceBlock> block, String name) {
-        fenceBlock(block.get(), texture(name));
-        fenceColumn(block, name);
+    public void fence(Supplier<? extends FenceBlock> block, Supplier<? extends Block> fullBlock) {
+        fenceBlock(block.get(), texture(name(fullBlock)));
+        fenceColumn(block, name(fullBlock));
     }
 
     private void fenceColumn(Supplier<? extends FenceBlock> block, String side) {

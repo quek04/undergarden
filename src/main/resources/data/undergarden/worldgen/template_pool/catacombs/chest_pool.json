@@ -5,7 +5,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "undergarden:catacombs/catacombs_nothing",
+        "location": "minecraft:empty",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -42,6 +42,24 @@
       "weight": 1,
       "element": {
         "location": "undergarden:catacombs/catacombs_chest_rotwalker",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_rotling",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:catacombs/catacombs_rotwalker",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"

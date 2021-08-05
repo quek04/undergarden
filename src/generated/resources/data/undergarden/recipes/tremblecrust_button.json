@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:tremblecrust"
+    }
+  ],
+  "result": {
+    "item": "undergarden:tremblecrust_button"
+  }
+}

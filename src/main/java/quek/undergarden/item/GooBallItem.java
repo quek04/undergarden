@@ -20,34 +20,34 @@ public class GooBallItem extends Item {
     public GooBallItem() {
         super(new Properties()
                 .food(UGFoods.GOO_BALL)
-                .maxStackSize(16)
-                .group(UGItemGroups.GROUP)
+                .stacksTo(16)
+                .tab(UGItemGroups.GROUP)
         );
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        ItemStack itemstack = playerIn.getHeldItem(handIn);
+    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemStack itemstack = playerIn.getItemInHand(handIn);
         if (playerIn.isCrouching()) {
-            playerIn.setActiveHand(handIn);
-            return ActionResult.resultConsume(itemstack);
+            playerIn.startUsingItem(handIn);
+            return ActionResult.consume(itemstack);
         }
         else {
-            worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-            playerIn.getCooldownTracker().setCooldown(this, 20);
-            if (!worldIn.isRemote) {
+            worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), SoundEvents.SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+            playerIn.getCooldowns().addCooldown(this, 20);
+            if (!worldIn.isClientSide) {
                 GooBallEntity gooBall = new GooBallEntity(worldIn, playerIn);
                 gooBall.setItem(itemstack);
-                gooBall.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
-                worldIn.addEntity(gooBall);
+                gooBall.shootFromRotation(playerIn, playerIn.xRot, playerIn.yRot, 0.0F, 1.5F, 1.0F);
+                worldIn.addFreshEntity(gooBall);
             }
 
-            playerIn.addStat(Stats.ITEM_USED.get(this));
-            if (!playerIn.abilities.isCreativeMode) {
+            playerIn.awardStat(Stats.ITEM_USED.get(this));
+            if (!playerIn.abilities.instabuild) {
                 itemstack.shrink(1);
             }
 
-            return ActionResult.resultSuccess(itemstack);
+            return ActionResult.success(itemstack);
         }
     }
 }
