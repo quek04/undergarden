@@ -550,6 +550,7 @@ e4ea5373780000071e58a3b5314242026f97955d data/forge/tags/items/storage_blocks.js
 e4ea5373780000071e58a3b5314242026f97955d data/minecraft/tags/blocks/beacon_base_blocks.json
 44ca7a7d7ee06c757d4f72ac712c5fd013ef2d45 data/minecraft/tags/blocks/bee_growables.json
 d29b5e8a4ed32487cd814eb79770067d43d5176d data/minecraft/tags/blocks/buttons.json
+27d1a6fa1d8b35ebb16c3382864166f8b1b59978 data/minecraft/tags/blocks/carpets.json
 dc68d57ea585ccf9641b7b43a1a508478bfa479c data/minecraft/tags/blocks/climbable.json
 e4b0ec58f0c25a257a7a24cc3bb3dfbfa074fcfc data/minecraft/tags/blocks/crops.json
 7b71b60f7dbdda687d701ba094099fdff8e4636a data/minecraft/tags/blocks/enderman_holdable.json
@@ -583,6 +584,7 @@ fca96de19f7127277f0c17d5948b8baf24ea0837 data/minecraft/tags/blocks/wooden_slabs
 9f10a35affc9c3b74d990bf22c88c45f8275398b data/minecraft/tags/items/beacon_payment_items.json
 ad8a33c5aafb159f47f6584f8b16bb37c14d4908 data/minecraft/tags/items/boats.json
 f27bfc6d5cc72725404ba318aba090fcfadf44d3 data/minecraft/tags/items/buttons.json
+27d1a6fa1d8b35ebb16c3382864166f8b1b59978 data/minecraft/tags/items/carpets.json
 4af30f8c9cd1aa0a1a3e7c88c5a423cebb51583f data/minecraft/tags/items/coals.json
 431c634e1e42d3296e1b0537f9d3cd83398ac61e data/minecraft/tags/items/fishes.json
 a233cb140bdded21e6dfc536954eefc34d98bf85 data/minecraft/tags/items/gold_ores.json
