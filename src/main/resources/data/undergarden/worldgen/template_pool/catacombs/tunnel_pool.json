@@ -14,7 +14,7 @@
     {
       "weight": 200,
       "element": {
-        "location": "undergarden:catacombs/catacombs_tunnel1",
+        "location": "undergarden:catacombs/tunnel1",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -23,7 +23,7 @@
     {
       "weight": 200,
       "element": {
-        "location": "undergarden:catacombs/catacombs_tunnel2",
+        "location": "undergarden:catacombs/tunnel2",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -32,7 +32,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/catacombs_tunnel3",
+        "location": "undergarden:catacombs/tunnel3",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -41,7 +41,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/catacombs_tunnel4",
+        "location": "undergarden:catacombs/tunnel4",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -50,7 +50,7 @@
     {
       "weight": 200,
       "element": {
-        "location": "undergarden:catacombs/catacombs_tunnel5",
+        "location": "undergarden:catacombs/tunnel5",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -59,7 +59,7 @@
     {
       "weight": 200,
       "element": {
-        "location": "undergarden:catacombs/catacombs_tunnel6",
+        "location": "undergarden:catacombs/tunnel6",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -68,7 +68,7 @@
     {
       "weight": 200,
       "element": {
-        "location": "undergarden:catacombs/catacombs_tunnel7",
+        "location": "undergarden:catacombs/tunnel7",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -77,7 +77,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/catacombs_room1",
+        "location": "undergarden:catacombs/room1",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -86,7 +86,7 @@
     {
       "weight": 200,
       "element": {
-        "location": "undergarden:catacombs/catacombs_room2",
+        "location": "undergarden:catacombs/room2",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -95,7 +95,7 @@
     {
       "weight": 200,
       "element": {
-        "location": "undergarden:catacombs/catacombs_room3",
+        "location": "undergarden:catacombs/room3",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -104,7 +104,7 @@
     {
       "weight": 50,
       "element": {
-        "location": "undergarden:catacombs/catacombs_tunnel_guardian",
+        "location": "undergarden:catacombs/tunnel_guardian",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
