@@ -113,6 +113,7 @@ public class UGBlocks {
     public static final RegistryObject<StairsBlock> CLOGGRUM_TILE_STAIRS = register("cloggrum_tile_stairs", () -> new StairsBlock(() -> CLOGGRUM_TILES.get().defaultBlockState(), AbstractBlock.Properties.copy(CLOGGRUM_TILES.get()).noOcclusion()));
     public static final RegistryObject<SlabBlock> CLOGGRUM_TILE_SLAB = register("cloggrum_tile_slab", () -> new SlabBlock(AbstractBlock.Properties.copy(CLOGGRUM_TILES.get()).noOcclusion()));
     public static final RegistryObject<BedBlock> DEPTHROCK_BED = register("depthrock_bed", () -> new DepthrockBedBlock(AbstractBlock.Properties.copy(DEPTHROCK.get())));
+    public static final RegistryObject<CarpetBlock> MOGMOSS_RUG = register("mogmoss_rug", () -> new CarpetBlock(DyeColor.GREEN, AbstractBlock.Properties.copy(Blocks.WHITE_CARPET)));
 
     //plants
     public static final RegistryObject<Block> UNDERBEAN_BUSH = BLOCKS.register("underbean_bush", () -> new UnderbeanBushBlock(AbstractBlock.Properties.copy(Blocks.SWEET_BERRY_BUSH)));

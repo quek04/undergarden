@@ -130,6 +130,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.CLOGGRUM_TILE_STAIRS, "Cloggrum Tile Stairs");
         addBlock(UGBlocks.CLOGGRUM_TILE_SLAB, "Cloggrum Tile Slab");
         addBlock(UGBlocks.DEPTHROCK_BED, "Depthrock Bed");
+        addBlock(UGBlocks.MOGMOSS_RUG, "Mogmoss Rug");
 
         addBlock(UGBlocks.UNDERBEAN_BUSH, "Underbean Bush");
         addBlock(UGBlocks.BLISTERBERRY_BUSH, "Blisterberry Bush");

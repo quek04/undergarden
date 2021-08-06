@@ -240,6 +240,7 @@ public class UGLootTables extends LootTableProvider {
             this.add(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get(), BlockLootTables::createShearsOnlyDrop);
             this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).when(SHEARS).add(ItemLootEntry.lootTableItem(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get()))));
             this.add(UGBlocks.DEPTHROCK_BED.get(), (bed) -> createSinglePropConditionTable(bed, BedBlock.PART, BedPart.HEAD));
+            dropSelf(UGBlocks.MOGMOSS_RUG);
         }
 
         @Override

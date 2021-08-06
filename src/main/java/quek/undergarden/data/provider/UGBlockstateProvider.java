@@ -6,6 +6,7 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ModelFile;
 import quek.undergarden.Undergarden;
@@ -82,5 +83,9 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
 
     public void trapdoor(Supplier<? extends TrapDoorBlock> block, String name) {
         trapdoorBlock(block.get(), texture(name + "_trapdoor"), true);
+    }
+
+    public void carpet(Supplier<? extends CarpetBlock> block) {
+        simpleBlock(block.get(), models().carpet(name(block), texture(name(block))));
     }
 }

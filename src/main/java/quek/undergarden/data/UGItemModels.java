@@ -139,6 +139,7 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.DEPTHROCK_TILE_STAIRS);
         itemBlock(UGBlocks.DEPTHROCK_TILE_SLAB);
         itemBlockFlat(UGBlocks.HANGING_GRONGLE_LEAVES_TOP, "hanging_grongle_leaves");
+        itemBlock(UGBlocks.MOGMOSS_RUG);
 
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);
