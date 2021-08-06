@@ -85,7 +85,7 @@ public class UGFeatures {
                         UGBlocks.VIRULENT_MIX.get().defaultBlockState(),
                         UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState(),
                         FeatureSpread.of(6, 8),
-                        FeatureSpread.of(0, 4))
+                        FeatureSpread.of(2, 4))
         );
         public static final ConfiguredFeature<?, ?> GRONGLEGROWTH_PONDS = Feature.DELTA_FEATURE.configured(
                 new BasaltDeltasFeature(
