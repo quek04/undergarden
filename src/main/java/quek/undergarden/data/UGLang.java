@@ -158,6 +158,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.VEIL_MUSHROOM, "Veiled Mushroom");
         addBlock(UGBlocks.VEIL_MUSHROOM_CAP, "Veil Mushroom Cap");
         addBlock(UGBlocks.VEIL_MUSHROOM_STALK, "Veil Mushroom Stalk");
+        addBlock(UGBlocks.MUSHROOM_VEIL, "Mushroom Veil");
         addBlock(UGBlocks.MUSHROOM_VEIL_TOP, "Mushroom Veil");
 
         addBlock(UGBlocks.INK_MUSHROOM, "Ink Mushroom");
