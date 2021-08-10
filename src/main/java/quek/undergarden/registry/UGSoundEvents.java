@@ -74,7 +74,6 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> BRUTE_AMBIENT = register("entity.brute_ambient");
     public static final RegistryObject<SoundEvent> BRUTE_HURT = register("entity.brute_hurt");
     public static final RegistryObject<SoundEvent> BRUTE_DEATH = register("entity.brute_death");
-    public static final RegistryObject<SoundEvent> BRUTE_ANGRY = register("entity.brute_angry");
 
     public static final RegistryObject<SoundEvent> GLOOMPER_AMBIENT = register("entity.gloomper_ambient");
     public static final RegistryObject<SoundEvent> GLOOMPER_HURT = register("entity.gloomper_hurt");

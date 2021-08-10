@@ -502,7 +502,6 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "brute_ambient", "Brute exhales");
         addSubtitle("entity", "brute_hurt", "Brute hurts");
         addSubtitle("entity", "brute_death", "Brute dies");
-        addSubtitle("entity", "brute_angry", "Brute exhales angrily");
 
         addSubtitle("entity", "gloomper_ambient", "Gloomper croaks");
         addSubtitle("entity", "gloomper_hurt", "Gloomper hurts");

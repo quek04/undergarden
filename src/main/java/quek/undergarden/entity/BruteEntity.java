@@ -63,9 +63,7 @@ public class BruteEntity extends AnimalEntity implements IMob, IAngerable {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        if(isAggressive())
-            return UGSoundEvents.BRUTE_ANGRY.get();
-        else return UGSoundEvents.BRUTE_AMBIENT.get();
+        return UGSoundEvents.BRUTE_AMBIENT.get();
     }
 
     @Override

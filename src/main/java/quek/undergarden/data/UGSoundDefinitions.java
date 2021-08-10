@@ -250,20 +250,20 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 
         this.add(UGSoundEvents.BRUTE_AMBIENT, definition().with(
                 sound("undergarden:entity/brute_ambient_1"),
-                sound("undergarden:entity/brute_ambient_2"),
-                sound("undergarden:entity/brute_ambient_3"),
-                sound("undergarden:entity/brute_ambient_4")
+                sound("undergarden:entity/brute_ambient_2")
         ).subtitle("subtitles.entity.brute_ambient"));
         this.add(UGSoundEvents.BRUTE_HURT, definition().with(
                 sound("undergarden:entity/brute_hurt_1"),
-                sound("undergarden:entity/brute_hurt_2")
+                sound("undergarden:entity/brute_hurt_2"),
+                sound("undergarden:entity/brute_hurt_3"),
+                sound("undergarden:entity/brute_hurt_4")
         ).subtitle("subtitles.entity.brute_hurt"));
         this.add(UGSoundEvents.BRUTE_DEATH, definition().with(
-                sound("undergarden:entity/brute_death")
+                sound("undergarden:entity/brute_hurt_1"),
+                sound("undergarden:entity/brute_hurt_2"),
+                sound("undergarden:entity/brute_hurt_3"),
+                sound("undergarden:entity/brute_hurt_4")
         ).subtitle("subtitles.entity.brute_death"));
-        this.add(UGSoundEvents.BRUTE_ANGRY, definition().with(
-                sound("undergarden:entity/brute_aggro")
-        ).subtitle("subtitles.entity.brute_angry"));
 
         this.add(UGSoundEvents.GLOOMPER_AMBIENT, definition().with(
                 sound("undergarden:entity/gloomper_ambient_1"),

@@ -398,28 +398,25 @@
     "subtitle": "subtitles.entity.brute_ambient",
     "sounds": [
       "undergarden:entity/brute_ambient_1",
-      "undergarden:entity/brute_ambient_2",
-      "undergarden:entity/brute_ambient_3",
-      "undergarden:entity/brute_ambient_4"
+      "undergarden:entity/brute_ambient_2"
     ]
   },
   "entity.brute_hurt": {
     "subtitle": "subtitles.entity.brute_hurt",
     "sounds": [
       "undergarden:entity/brute_hurt_1",
-      "undergarden:entity/brute_hurt_2"
+      "undergarden:entity/brute_hurt_2",
+      "undergarden:entity/brute_hurt_3",
+      "undergarden:entity/brute_hurt_4"
     ]
   },
   "entity.brute_death": {
     "subtitle": "subtitles.entity.brute_death",
     "sounds": [
-      "undergarden:entity/brute_death"
-    ]
-  },
-  "entity.brute_angry": {
-    "subtitle": "subtitles.entity.brute_angry",
-    "sounds": [
-      "undergarden:entity/brute_aggro"
+      "undergarden:entity/brute_hurt_1",
+      "undergarden:entity/brute_hurt_2",
+      "undergarden:entity/brute_hurt_3",
+      "undergarden:entity/brute_hurt_4"
     ]
   },
   "entity.gloomper_ambient": {
