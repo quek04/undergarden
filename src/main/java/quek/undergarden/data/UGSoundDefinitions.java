@@ -145,14 +145,16 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 
         this.add(UGSoundEvents.DWELLER_AMBIENT, definition().with(
                 sound("undergarden:entity/dweller_ambient_1"),
-                sound("undergarden:entity/dweller_ambient_2")
+                sound("undergarden:entity/dweller_ambient_2"),
+                sound("undergarden:entity/dweller_ambient_3")
         ).subtitle("subtitles.entity.dweller_ambient"));
         this.add(UGSoundEvents.DWELLER_HURT, definition().with(
                 sound("undergarden:entity/dweller_hurt_1"),
-                sound("undergarden:entity/dweller_hurt_2")
+                sound("undergarden:entity/dweller_hurt_2"),
+                sound("undergarden:entity/dweller_hurt_3")
         ).subtitle("subtitles.entity.dweller_hurt"));
         this.add(UGSoundEvents.DWELLER_DEATH, definition().with(
-                sound("undergarden:entity/dweller_death_1")
+                sound("undergarden:entity/dweller_death")
         ).subtitle("subtitles.entity.dweller_death"));
         this.add(UGSoundEvents.DWELLER_STEP, definition().with(
                 sound("minecraft:mob/cow/step1"),
@@ -163,14 +165,16 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 
         this.add(UGSoundEvents.ROTDWELLER_AMBIENT, definition().with(
                 sound("undergarden:entity/dweller_ambient_1"),
-                sound("undergarden:entity/dweller_ambient_2")
+                sound("undergarden:entity/dweller_ambient_2"),
+                sound("undergarden:entity/dweller_ambient_3")
         ).subtitle("subtitles.entity.rotdweller_ambient"));
         this.add(UGSoundEvents.ROTDWELLER_HURT, definition().with(
                 sound("undergarden:entity/dweller_hurt_1"),
-                sound("undergarden:entity/dweller_hurt_2")
+                sound("undergarden:entity/dweller_hurt_2"),
+                sound("undergarden:entity/dweller_hurt_3")
         ).subtitle("subtitles.entity.rotdweller_hurt"));
         this.add(UGSoundEvents.ROTDWELLER_DEATH, definition().with(
-                sound("undergarden:entity/dweller_death_1")
+                sound("undergarden:entity/dweller_death")
         ).subtitle("subtitles.entity.rotdweller_death"));
         this.add(UGSoundEvents.ROTDWELLER_STEP, definition().with(
                 sound("minecraft:mob/cow/step1"),

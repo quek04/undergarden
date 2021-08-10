@@ -235,20 +235,22 @@
     "subtitle": "subtitles.entity.dweller_ambient",
     "sounds": [
       "undergarden:entity/dweller_ambient_1",
-      "undergarden:entity/dweller_ambient_2"
+      "undergarden:entity/dweller_ambient_2",
+      "undergarden:entity/dweller_ambient_3"
     ]
   },
   "entity.dweller_hurt": {
     "subtitle": "subtitles.entity.dweller_hurt",
     "sounds": [
       "undergarden:entity/dweller_hurt_1",
-      "undergarden:entity/dweller_hurt_2"
+      "undergarden:entity/dweller_hurt_2",
+      "undergarden:entity/dweller_hurt_3"
     ]
   },
   "entity.dweller_death": {
     "subtitle": "subtitles.entity.dweller_death",
     "sounds": [
-      "undergarden:entity/dweller_death_1"
+      "undergarden:entity/dweller_death"
     ]
   },
   "entity.dweller_step": {
@@ -264,20 +266,22 @@
     "subtitle": "subtitles.entity.rotdweller_ambient",
     "sounds": [
       "undergarden:entity/dweller_ambient_1",
-      "undergarden:entity/dweller_ambient_2"
+      "undergarden:entity/dweller_ambient_2",
+      "undergarden:entity/dweller_ambient_3"
     ]
   },
   "entity.rotdweller_hurt": {
     "subtitle": "subtitles.entity.rotdweller_hurt",
     "sounds": [
       "undergarden:entity/dweller_hurt_1",
-      "undergarden:entity/dweller_hurt_2"
+      "undergarden:entity/dweller_hurt_2",
+      "undergarden:entity/dweller_hurt_3"
     ]
   },
   "entity.rotdweller_death": {
     "subtitle": "subtitles.entity.rotdweller_death",
     "sounds": [
-      "undergarden:entity/dweller_death_1"
+      "undergarden:entity/dweller_death"
     ]
   },
   "entity.rotdweller_step": {
