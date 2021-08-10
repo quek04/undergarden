@@ -1,47 +1,22 @@
 {
 	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
 	"textures": {
-		"0": "undergarden:block/depthrock",
-		"particle": "undergarden:block/depthrock"
+		"0": "undergarden:block/depthrock_pebbles_alt",
+		"particle": "undergarden:block/depthrock_pebbles_alt"
 	},
 	"elements": [
 		{
-			"from": [1, 0, 4],
-			"to": [8, 5, 11],
+			"from": [3, 0, 4],
+			"to": [11, 6, 12],
 			"rotation": {"angle": 0, "axis": "y", "origin": [9, 8, 12]},
 			"faces": {
-				"north": {"uv": [8, 11, 15, 16], "texture": "#0"},
-				"east": {"uv": [5, 11, 12, 16], "texture": "#0"},
-				"south": {"uv": [1, 11, 8, 16], "texture": "#0"},
-				"west": {"uv": [4, 11, 11, 16], "texture": "#0"},
-				"up": {"uv": [1, 4, 8, 11], "texture": "#0"},
-				"down": {"uv": [0, 0, 7, 7], "texture": "#0"}
-			}
-		},
-		{
-			"from": [8, 0, 3],
-			"to": [14, 3, 9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [16, 8, 11]},
-			"faces": {
-				"north": {"uv": [2, 13, 8, 16], "texture": "#0"},
-				"east": {"uv": [7, 13, 13, 16], "texture": "#0"},
-				"south": {"uv": [8, 13, 14, 16], "texture": "#0"},
-				"west": {"uv": [3, 13, 9, 16], "texture": "#0"},
-				"up": {"uv": [8, 3, 14, 9], "texture": "#0"},
-				"down": {"uv": [0, 0, 6, 6], "texture": "#0"}
-			}
-		},
-		{
-			"from": [8, 0, 9],
-			"to": [13, 4, 14],
-			"rotation": {"angle": 0, "axis": "y", "origin": [16, 8, 17]},
-			"faces": {
-				"north": {"uv": [3, 12, 8, 16], "texture": "#0"},
-				"east": {"uv": [2, 12, 7, 16], "texture": "#0"},
-				"south": {"uv": [8, 12, 13, 16], "texture": "#0"},
-				"west": {"uv": [9, 12, 14, 16], "texture": "#0"},
-				"up": {"uv": [8, 9, 13, 14], "texture": "#0"},
-				"down": {"uv": [0, 0, 5, 5], "texture": "#0"}
+				"north": {"uv": [7, 8, 11, 11], "texture": "#0"},
+				"east": {"uv": [11, 0, 15, 3], "texture": "#0"},
+				"south": {"uv": [11, 3, 15, 6], "texture": "#0"},
+				"west": {"uv": [11, 6, 15, 9], "texture": "#0"},
+				"up": {"uv": [11, 4, 7, 0], "texture": "#0"},
+				"down": {"uv": [11, 4, 7, 8], "texture": "#0"}
 			}
 		}
 	]
