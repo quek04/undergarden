@@ -84,9 +84,4 @@ public class DwellerEntity extends AnimalEntity {
     public boolean isFood(ItemStack stack) {
         return Ingredient.of(UGItems.UNDERBEANS.get()).test(stack);
     }
-
-    @Override
-    public float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
-        return this.isBaby() ? sizeIn.height * 0.95F : 1.3F;
-    }
 }
