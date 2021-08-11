@@ -147,7 +147,7 @@ public class UGItems {
     public static final RegistryObject<UGSpawnEggItem> STONEBORN_SPAWN_EGG = ITEMS.register("stoneborn_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.STONEBORN_TYPE, 3227179, 9502615));
     public static final RegistryObject<UGSpawnEggItem> NARGOYLE_SPAWN_EGG = ITEMS.register("nargoyle_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.NARGOYLE_TYPE, 3747634, 15508905));
     public static final RegistryObject<UGSpawnEggItem> MUNCHER_SPAWN_EGG = ITEMS.register("muncher_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.MUNCHER_TYPE, 2366466, 15881511));
-    public static final RegistryObject<UGSpawnEggItem> SPLOOGIE_SPAWN_EGG = ITEMS.register("sploogie_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.SPLOOGIE_TYPE, 8209171, 13554509));
+    public static final RegistryObject<UGSpawnEggItem> SPLOOGIE_SPAWN_EGG = ITEMS.register("sploogie_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.SPLOOGIE_TYPE, 16638885, 4559071));
     public static final RegistryObject<UGSpawnEggItem> GWIB_SPAWN_EGG = ITEMS.register("gwib_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.GWIB_TYPE, 10064737, 4203803));
     public static final RegistryObject<UGSpawnEggItem> MOG_SPAWN_EGG = ITEMS.register("mog_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.MOG_TYPE, 3227179, 6393396));
 
