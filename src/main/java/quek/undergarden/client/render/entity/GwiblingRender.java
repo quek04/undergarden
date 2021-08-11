@@ -6,26 +6,21 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.Undergarden;
+import quek.undergarden.client.model.GwiblingModel;
 import quek.undergarden.client.render.layer.GwiblingEyesLayer;
 import quek.undergarden.entity.GwiblingEntity;
-import quek.undergarden.client.model.GwiblingModel;
 
-@OnlyIn(Dist.CLIENT)
 public class GwiblingRender extends MobRenderer<GwiblingEntity, GwiblingModel<GwiblingEntity>> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Undergarden.MODID, "textures/entity/gwibling.png");
-
     public GwiblingRender(EntityRendererManager rendererManager) {
-        super(rendererManager, new GwiblingModel<>(), .3F);
+        super(rendererManager, new GwiblingModel<>(), 0.3F);
         this.addLayer(new GwiblingEyesLayer<>(this));
     }
 
     @Override
     public ResourceLocation getTextureLocation(GwiblingEntity entity) {
-        return TEXTURE;
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/gwibling.png");
     }
 
     @Override

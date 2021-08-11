@@ -1,18 +1,11 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.5.2
-// Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableSet;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.BruteEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class BruteModel<T extends BruteEntity> extends AgeableModel<T> {
 	private final ModelRenderer brute;
 	private final ModelRenderer uppertorso;
@@ -37,7 +30,6 @@ public class BruteModel<T extends BruteEntity> extends AgeableModel<T> {
 
 		brute = new ModelRenderer(this);
 		brute.setPos(0.0F, 24.0F, 0.0F);
-		
 
 		uppertorso = new ModelRenderer(this);
 		uppertorso.setPos(0.0F, -27.5F, 1.0F);

@@ -5,17 +5,12 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenGuardianModel;
 import quek.undergarden.client.render.layer.ForgottenGuardianEyesLayer;
 import quek.undergarden.entity.boss.ForgottenGuardianEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardianEntity, ForgottenGuardianModel<ForgottenGuardianEntity>> {
-
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten_guardian.png");
 
     public ForgottenGuardianRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new ForgottenGuardianModel<>(), 0.6F);
@@ -24,7 +19,7 @@ public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardianEntity
 
     @Override
     public ResourceLocation getTextureLocation(ForgottenGuardianEntity entity) {
-        return TEXTURE;
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten_guardian.png");
     }
 
     @Override

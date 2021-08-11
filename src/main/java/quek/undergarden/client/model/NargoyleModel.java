@@ -1,16 +1,11 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.9.2
-// Exported for Minecraft version 1.15 - 1.16 with Mojang mappings
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.cavern.NargoyleEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class NargoyleModel<T extends NargoyleEntity> extends SegmentedModel<T> {
 	private final ModelRenderer body;
 	private final ModelRenderer upperbody;

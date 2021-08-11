@@ -10,14 +10,12 @@ import quek.undergarden.entity.boss.MasticatorEntity;
 
 public class MasticatorEyesLayer<T extends MasticatorEntity, M extends MasticatorModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/masticator_eyes.png"));
-
     public MasticatorEyesLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);
     }
 
     @Override
     public RenderType renderType() {
-        return TEXTURE;
+        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/masticator_eyes.png"));
     }
 }

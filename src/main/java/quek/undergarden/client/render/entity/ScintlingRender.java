@@ -3,14 +3,11 @@ package quek.undergarden.client.render.entity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ScintlingModel;
 import quek.undergarden.client.render.layer.ScintlingGlowLayer;
 import quek.undergarden.entity.ScintlingEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class ScintlingRender extends MobRenderer<ScintlingEntity, ScintlingModel<ScintlingEntity>> {
 
     public ScintlingRender(EntityRendererManager manager) {

@@ -1,6 +1,4 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.7.5
-// Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;

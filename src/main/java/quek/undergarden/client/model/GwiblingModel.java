@@ -1,18 +1,11 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.5.0
-// Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableSet;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.GwiblingEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class GwiblingModel<T extends GwiblingEntity> extends SegmentedModel<T> {
 	private final ModelRenderer gwibling;
 	private final ModelRenderer body;
@@ -26,7 +19,6 @@ public class GwiblingModel<T extends GwiblingEntity> extends SegmentedModel<T> {
 
 		gwibling = new ModelRenderer(this);
 		gwibling.setPos(0.0F, 24.0F, 0.0F);
-		
 
 		body = new ModelRenderer(this);
 		body.setPos(0.0F, 0.0F, 0.0F);

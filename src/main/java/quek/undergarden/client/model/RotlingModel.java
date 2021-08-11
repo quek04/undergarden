@@ -1,16 +1,11 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.6.5
-// Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.rotspawn.RotlingEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class RotlingModel<T extends RotlingEntity> extends SegmentedModel<T> {
 	private final ModelRenderer body;
 	private final ModelRenderer head;

@@ -6,14 +6,11 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwibModel;
 import quek.undergarden.client.render.layer.GwibEyesLayer;
 import quek.undergarden.entity.GwibEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class GwibRender extends MobRenderer<GwibEntity, GwibModel<GwibEntity>> {
 
     public GwibRender(EntityRendererManager rendererManager) {

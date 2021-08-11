@@ -5,32 +5,21 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.Undergarden;
+import quek.undergarden.client.model.RotwalkerModel;
 import quek.undergarden.client.render.layer.RotwalkerEyesLayer;
 import quek.undergarden.entity.rotspawn.RotwalkerEntity;
-import quek.undergarden.client.model.RotwalkerModel;
-//import quek.undergarden.world.OthersideDimension;
 
-@OnlyIn(Dist.CLIENT)
 public class RotwalkerRender extends MobRenderer<RotwalkerEntity, RotwalkerModel<RotwalkerEntity>> {
 
-    private static final ResourceLocation texture = new ResourceLocation(Undergarden.MODID, "textures/entity/rotwalker.png");
-    private static final ResourceLocation otherside_texture = new ResourceLocation(Undergarden.MODID, "textures/entity/rotwalker_otherside.png");
-
     public RotwalkerRender(EntityRendererManager manager) {
-        super(manager, new RotwalkerModel(), 0.6f);
+        super(manager, new RotwalkerModel(), 0.6F);
         this.addLayer(new RotwalkerEyesLayer<>(this));
     }
 
     @Override
     public ResourceLocation getTextureLocation(RotwalkerEntity entity) {
-        //if(OthersideDimension.isTheOtherside(entity.world)) {
-        //    return otherside_texture;
-        //}
-        //else
-            return texture;
+        return new ResourceLocation(Undergarden.MODID, "textures/entity/rotwalker.png");
     }
 
     @Override

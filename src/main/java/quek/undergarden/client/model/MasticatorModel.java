@@ -1,6 +1,4 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.6.3
-// Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableSet;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -8,11 +6,8 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.boss.MasticatorEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class MasticatorModel<T extends MasticatorEntity> extends SegmentedModel<T> {
 	private final ModelRenderer masticator;
 	private final ModelRenderer head;
@@ -42,7 +37,6 @@ public class MasticatorModel<T extends MasticatorEntity> extends SegmentedModel<
 
 		masticator = new ModelRenderer(this);
 		masticator.setPos(0.0F, -21.0F, -10.0F);
-		
 
 		head = new ModelRenderer(this);
 		head.setPos(0.0F, -3.0F, 1.0F);
@@ -187,11 +181,6 @@ public class MasticatorModel<T extends MasticatorEntity> extends SegmentedModel<
 		this.leftarm.xRot = MathHelper.cos(limbSwing * 0.5F) * 1.4F * limbSwingAmount;
 
 		this.rightarm.xRot = MathHelper.cos(limbSwing * 0.5F + (float)Math.PI) * 1.4F * limbSwingAmount;
-	}
-
-	@Override
-	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		masticator.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
 	@Override

@@ -3,14 +3,11 @@ package quek.undergarden.client.render.entity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MinionModel;
 import quek.undergarden.client.render.layer.MinionEyesLayer;
 import quek.undergarden.entity.MinionEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class MinionRender extends MobRenderer<MinionEntity, MinionModel<MinionEntity>> {
 
     public MinionRender(EntityRendererManager renderManagerIn) {

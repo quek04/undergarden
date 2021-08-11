@@ -4,16 +4,11 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.AbstractEyesLayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.BruteModel;
 import quek.undergarden.entity.BruteEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class BruteEyesLayer<T extends BruteEntity, M extends BruteModel<T>> extends AbstractEyesLayer<T, M> {
-
-    private static final RenderType TEXTURE = RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/brute_eyes.png"));
 
     public BruteEyesLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);
@@ -21,6 +16,6 @@ public class BruteEyesLayer<T extends BruteEntity, M extends BruteModel<T>> exte
 
     @Override
     public RenderType renderType() {
-        return TEXTURE;
+        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/brute_eyes.png"));
     }
 }

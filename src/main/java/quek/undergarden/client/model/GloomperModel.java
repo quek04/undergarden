@@ -1,16 +1,11 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.5.4
-// Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.GloomperEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class GloomperModel<T extends GloomperEntity> extends AgeableModel<T> {
 	private final ModelRenderer gloomper;
 	private final ModelRenderer body;
@@ -29,7 +24,6 @@ public class GloomperModel<T extends GloomperEntity> extends AgeableModel<T> {
 
 		gloomper = new ModelRenderer(this);
 		gloomper.setPos(0.0F, 24.0F, 0.0F);
-
 
 		body = new ModelRenderer(this);
 		body.setPos(0.0F, -10.0F, 3.0F);

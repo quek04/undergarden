@@ -1,5 +1,4 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.7.4
 
 import com.google.common.collect.ImmutableSet;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -67,11 +66,6 @@ public class MuncherModel<T extends MuncherEntity> extends SegmentedModel<T> {
 
 		this.leftleg.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.rightleg.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-	}
-
-	@Override
-	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		muncher.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
 	@Override

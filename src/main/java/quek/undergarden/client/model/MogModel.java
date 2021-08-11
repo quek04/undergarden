@@ -1,16 +1,11 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.9.1
-// Exported for Minecraft version 1.15 - 1.16 with Mojang mappings
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.MogEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class MogModel<E extends MogEntity> extends AgeableModel<E> {
 	private final ModelRenderer frontLegLeft;
 	private final ModelRenderer frontLegRight;

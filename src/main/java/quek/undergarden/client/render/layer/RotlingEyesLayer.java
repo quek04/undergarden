@@ -10,15 +10,13 @@ import quek.undergarden.entity.rotspawn.RotlingEntity;
 
 public class RotlingEyesLayer<T extends RotlingEntity, M extends RotlingModel<T>> extends AbstractEyesLayer<T, M> {
 
-    private static final RenderType TEXTURE = RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/rotling_eyes.png"));
-
     public RotlingEyesLayer(IEntityRenderer<T, M> rendererIn) {
         super(rendererIn);
     }
 
     @Override
     public RenderType renderType() {
-        return TEXTURE;
+        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/rotling_eyes.png"));
     }
 
 }

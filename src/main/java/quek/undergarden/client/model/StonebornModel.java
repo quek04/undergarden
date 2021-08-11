@@ -1,16 +1,11 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.9.2
-// Exported for Minecraft version 1.15 - 1.16 with Mojang mappings
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
-@OnlyIn(Dist.CLIENT)
 public class StonebornModel<T extends StonebornEntity> extends AgeableModel<T> {
 	private final ModelRenderer stoneborn;
 	private final ModelRenderer head;
@@ -29,7 +24,6 @@ public class StonebornModel<T extends StonebornEntity> extends AgeableModel<T> {
 
 		stoneborn = new ModelRenderer(this);
 		stoneborn.setPos(0.0F, 24.0F, 0.0F);
-
 
 		head = new ModelRenderer(this);
 		head.setPos(0.0F, -29.0F, -1.0F);

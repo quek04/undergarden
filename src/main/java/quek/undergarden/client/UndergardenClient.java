@@ -13,7 +13,6 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.item.BlockItem;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -26,7 +25,6 @@ import quek.undergarden.registry.UGFluids;
 import java.awt.*;
 import java.util.function.Supplier;
 
-@OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT)
 public class UndergardenClient {
 

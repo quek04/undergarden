@@ -1,17 +1,12 @@
 package quek.undergarden.client.model;
-// Made with Blockbench 3.5.0
-// Exported for Minecraft version 1.15
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.entity.DwellerEntity;
 
-@OnlyIn(Dist.CLIENT)
-public class DwellerModel<T extends DwellerEntity> extends AgeableModel<T> {
+public class DwellerModel<T extends Entity> extends AgeableModel<T> {
 	private final ModelRenderer dweller;
 	private final ModelRenderer head;
 	private final ModelRenderer trunk;
@@ -31,7 +26,6 @@ public class DwellerModel<T extends DwellerEntity> extends AgeableModel<T> {
 
 		dweller = new ModelRenderer(this);
 		dweller.setPos(0.0F, 24.0F, 0.0F);
-		
 
 		head = new ModelRenderer(this);
 		head.setPos(0.0F, -25.0F, -2.0F);
