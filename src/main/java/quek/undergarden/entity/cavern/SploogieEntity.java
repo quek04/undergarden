@@ -1,8 +1,6 @@
 package quek.undergarden.entity.cavern;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
@@ -27,7 +25,6 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
         this.goalSelector.addGoal(0, new PanicGoal(this, 2.0D));
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.0D, 40, 15.0F));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, false));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
@@ -63,5 +60,10 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements IRan
         pebble.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
         this.playSound(UGSoundEvents.SPLOOGIE_SPIT.get(), 1.0F, this.getVoicePitch());
         this.level.addFreshEntity(pebble);
+    }
+
+    @Override
+    protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
+        return 0.3F;
     }
 }
