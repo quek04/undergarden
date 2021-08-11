@@ -27,10 +27,6 @@ public class SploogieModel<T extends SploogieEntity> extends SegmentedModel<T> {
 		head.texOffs(0, 30).addBox(-8.0F, -2.0F, -9.0F, 4.0F, 4.0F, 4.0F, 0.0F, true);
 		head.texOffs(0, 0).addBox(-5.0F, -4.0F, -8.0F, 10.0F, 8.0F, 8.0F, 0.0F, false);
 
-		//spine1 = new ModelRenderer(this);
-		//spine1.setPos(0.0F, -4.0F, -5.0F);
-		//head.addChild(spine1);
-
 		spine1 = new ModelRenderer(this);
 		spine1.setPos(0.0F, -4.0F, -5.0F);
 		head.addChild(spine1);
@@ -46,10 +42,6 @@ public class SploogieModel<T extends SploogieEntity> extends SegmentedModel<T> {
 		bodySegment1.setPos(0.0F, 21.0F, 0.0F);
 		bodySegment1.texOffs(0, 16).addBox(-4.0F, -4.0F, 0.0F, 8.0F, 7.0F, 7.0F, 0.0F, false);
 
-		//spine2 = new ModelRenderer(this);
-		//spine2.setPos(0.0F, -4.0F, 3.0F);
-		//segment1.addChild(spine2);
-
 		spine2 = new ModelRenderer(this);
 		spine2.setPos(0.0F, -4.0F, 3.0F);
 		bodySegment1.addChild(spine2);
@@ -60,10 +52,6 @@ public class SploogieModel<T extends SploogieEntity> extends SegmentedModel<T> {
 		bodySegment2.setPos(0.0F, 21.0F, 7.0F);
 		bodySegment2.texOffs(24, 24).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 6.0F, 6.0F, 0.0F, false);
 
-		//spine3 = new ModelRenderer(this);
-		//spine3.setPos(0.0F, -3.0F, 3.0F);
-		//segment2.addChild(spine3);
-
 		spine3 = new ModelRenderer(this);
 		spine3.setPos(0.0F, -3.0F, 3.0F);
 		bodySegment2.addChild(spine3);
@@ -73,10 +61,6 @@ public class SploogieModel<T extends SploogieEntity> extends SegmentedModel<T> {
 		bodySegment3 = new ModelRenderer(this);
 		bodySegment3.setPos(0.0F, 22.0F, 13.0F);
 		bodySegment3.texOffs(30, 16).addBox(-2.0F, -2.0F, 0.0F, 4.0F, 4.0F, 4.0F, 0.0F, false);
-
-		//spine4 = new ModelRenderer(this);
-		//spine4.setPos(0.0F, -2.0F, 2.0F);
-		//segment3.addChild(spine4);
 
 		spine4 = new ModelRenderer(this);
 		spine4.setPos(0.0F, -2.0F, 2.0F);
@@ -90,15 +74,15 @@ public class SploogieModel<T extends SploogieEntity> extends SegmentedModel<T> {
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
 		this.head.xRot = headPitch * ((float)Math.PI / 180F);
 
-		this.head.x = MathHelper.cos(ageInTicks * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1);
+		this.head.x = MathHelper.cos(limbSwing * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + limbSwingAmount);
 
-		this.bodySegment1.yRot = MathHelper.cos(ageInTicks * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1);
-		this.bodySegment2.yRot = MathHelper.cos(ageInTicks * 0.9F + 1 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(1 - 2));
-		this.bodySegment3.yRot = MathHelper.cos(ageInTicks * 0.9F + 0 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(-2));
+		this.bodySegment1.yRot = MathHelper.cos(limbSwing * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + limbSwingAmount);
+		this.bodySegment2.yRot = MathHelper.cos(limbSwing * 0.9F + 1 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(1 - 2) + limbSwingAmount);
+		this.bodySegment3.yRot = MathHelper.cos(limbSwing * 0.9F + 0 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(-2) + limbSwingAmount);
 
-		this.bodySegment1.x = MathHelper.cos(ageInTicks * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1);
-		this.bodySegment2.x = MathHelper.cos(ageInTicks * 0.9F + 1 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(1 - 2));
-		this.bodySegment3.x = MathHelper.cos(ageInTicks * 0.9F + 0 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(-2));
+		this.bodySegment1.x = MathHelper.cos(limbSwing * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + limbSwingAmount);
+		this.bodySegment2.x = MathHelper.cos(limbSwing * 0.9F + 1 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(1 - 2) + limbSwingAmount);
+		this.bodySegment3.x = MathHelper.cos(limbSwing * 0.9F + 0 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(-2) + limbSwingAmount);
 	}
 
 	@Override
