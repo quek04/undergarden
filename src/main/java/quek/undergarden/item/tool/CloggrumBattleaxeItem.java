@@ -9,16 +9,14 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import quek.undergarden.registry.UGItemGroups;
-import quek.undergarden.registry.UGTools;
-
-import net.minecraft.item.Item.Properties;
+import quek.undergarden.registry.UGItemTiers;
 
 public class CloggrumBattleaxeItem extends SwordItem {
 
     public CloggrumBattleaxeItem() {
-        super(UGTools.CLOGGRUM, 5, -3.5F, new Properties()
+        super(UGItemTiers.CLOGGRUM, 5, -3.5F, new Properties()
                 .stacksTo(1)
-                .defaultDurability(UGTools.CLOGGRUM.getUses() * 3)
+                .defaultDurability(UGItemTiers.CLOGGRUM.getUses() * 3)
                 .tab(UGItemGroups.GROUP)
                 .rarity(Rarity.EPIC)
         );

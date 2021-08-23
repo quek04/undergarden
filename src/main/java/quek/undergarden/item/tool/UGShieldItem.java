@@ -7,17 +7,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShieldItem;
 import quek.undergarden.registry.UGItemGroups;
-import quek.undergarden.registry.UGShields;
+import quek.undergarden.registry.UGShieldTiers;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.item.Item.Properties;
-
 public class UGShieldItem extends ShieldItem {
 
-    private final UGShields shieldTiers;
+    private final UGShieldTiers shieldTiers;
 
-    public UGShieldItem(UGShields tier, Rarity rarity) {
+    public UGShieldItem(UGShieldTiers tier, Rarity rarity) {
         super(new Properties()
                 .stacksTo(1)
                 .durability(tier.getMaxUses())
@@ -28,7 +26,7 @@ public class UGShieldItem extends ShieldItem {
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);
     }
 
-    public UGShieldItem(UGShields tier) {
+    public UGShieldItem(UGShieldTiers tier) {
         super(new Properties()
                 .stacksTo(1)
                 .durability(tier.getMaxUses())

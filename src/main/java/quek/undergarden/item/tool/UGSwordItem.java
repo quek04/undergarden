@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGTools;
+import quek.undergarden.registry.UGItemTiers;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -29,7 +29,7 @@ public class UGSwordItem extends SwordItem {
     }
 
     protected static Rarity isForgotten(IItemTier tier) {
-        if(tier.equals(UGTools.FORGOTTEN)) {
+        if(tier.equals(UGItemTiers.FORGOTTEN)) {
             return UGItems.FORGOTTEN;
         }
         else return Rarity.COMMON;
