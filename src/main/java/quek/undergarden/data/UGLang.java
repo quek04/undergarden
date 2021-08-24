@@ -459,6 +459,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("gloomper_secret_disc", "Death Gloomps");
         addAdvDesc("gloomper_secret_disc", "Obtain the secret music disc.");
 
+        addAdvTitle("forgotten_battleaxe", "Axe of Legends");
+        addAdvDesc("forgotten_battleaxe", "Upgrade a Cloggrum Battle Axe with a Forgotten Ingot.");
+
         addAdvTitle("otherside_root", "The Otherside");
         addAdvDesc("otherside_root", "Enter the realm of madness.");
 
