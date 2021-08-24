@@ -258,8 +258,8 @@ public class UGLang extends LanguageProvider {
 
         addItem(UGItems.MASTICATOR_SCALES, "Masticator Scales");
         addItem(UGItems.MASTICATED_CHESTPLATE, "Masticated Chestplate");
-        addItem(UGItems.CLOGGRUM_BATTLEAXE, "Cloggrum Battle Axe");
 
+        addItem(UGItems.CLOGGRUM_BATTLEAXE, "Cloggrum Battle Axe");
         addItem(UGItems.CLOGGRUM_SWORD, "Cloggrum Sword");
         addItem(UGItems.CLOGGRUM_PICKAXE, "Cloggrum Pickaxe");
         addItem(UGItems.CLOGGRUM_AXE, "Cloggrum Axe");
@@ -279,6 +279,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.UTHERIUM_SHOVEL, "Utherium Shovel");
         addItem(UGItems.UTHERIUM_HOE, "Utherium Hoe");
 
+        addItem(UGItems.FORGOTTEN_BATTLEAXE, "Forgotten Battle Axe");
         addItem(UGItems.FORGOTTEN_SWORD, "Forgotten Sword");
         addItem(UGItems.FORGOTTEN_PICKAXE, "Forgotten Pickaxe");
         addItem(UGItems.FORGOTTEN_AXE, "Forgotten Axe");

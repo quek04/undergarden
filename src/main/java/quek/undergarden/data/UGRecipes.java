@@ -392,6 +392,7 @@ public class UGRecipes extends UGRecipeProvider {
         smithingForgotten(UGItems.CLOGGRUM_AXE, UGItems.FORGOTTEN_AXE).save(consumer, name("forgotten_axe_smithing"));
         smithingForgotten(UGItems.CLOGGRUM_SHOVEL, UGItems.FORGOTTEN_SHOVEL).save(consumer, name("forgotten_shovel_smithing"));
         smithingForgotten(UGItems.CLOGGRUM_HOE, UGItems.FORGOTTEN_HOE).save(consumer, name("forgotten_hoe_smithing"));
+        smithingForgotten(UGItems.CLOGGRUM_BATTLEAXE, UGItems.FORGOTTEN_BATTLEAXE).save(consumer, name("forgotten_battleaxe_smithing"));
 
         smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).save(consumer, name("smelt_depthrock_bricks"));
         smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).save(consumer, name("smelt_shiverstone_bricks"));

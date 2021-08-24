@@ -1,0 +1,21 @@
+{
+    "parent":"forge:item/default",
+    "loader":"forge:separate-perspective",
+    "base": {
+        "parent": "undergarden:item/forgotten_battleaxe_in_hand"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "item/generated",
+            "textures": {
+                "layer0": "undergarden:item/forgotten_battleaxe_inventory"
+            }
+        },
+        "ground": {
+            "parent": "item/generated",
+            "textures": {
+                "layer0": "undergarden:item/forgotten_battleaxe_inventory"
+            }
+        }
+    }
+}

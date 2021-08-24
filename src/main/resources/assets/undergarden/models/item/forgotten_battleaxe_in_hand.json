@@ -1,0 +1,32 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "undergarden:item/forgotten_battleaxe"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, 55],
+			"translation": [0, 9, 0.5],
+			"scale": [2, 2, 1]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, -55],
+			"translation": [0, 9, 0.5],
+			"scale": [2, 2, 1]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [1.5, 1.5, 1]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, -25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [1.5, 1.5, 1]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.8, 0.8, 0.6]
+		}
+	}
+}
