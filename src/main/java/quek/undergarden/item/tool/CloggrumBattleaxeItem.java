@@ -42,5 +42,4 @@ public class CloggrumBattleaxeItem extends SwordItem {
     public boolean isFoil(ItemStack stack) {
         return false;
     }
-
 }

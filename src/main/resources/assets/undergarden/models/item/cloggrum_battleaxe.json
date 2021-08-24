@@ -10,6 +10,12 @@
             "textures": {
                 "layer0": "undergarden:item/cloggrum_battleaxe_inventory"
             }
+        },
+        "ground": {
+            "parent": "item/generated",
+            "textures": {
+                "layer0": "undergarden:item/cloggrum_battleaxe_inventory"
+            }
         }
     }
 }
