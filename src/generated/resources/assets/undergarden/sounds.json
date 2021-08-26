@@ -262,37 +262,6 @@
       "mob/cow/step4"
     ]
   },
-  "entity.rotdweller_ambient": {
-    "subtitle": "subtitles.entity.rotdweller_ambient",
-    "sounds": [
-      "undergarden:entity/dweller_ambient_1",
-      "undergarden:entity/dweller_ambient_2",
-      "undergarden:entity/dweller_ambient_3"
-    ]
-  },
-  "entity.rotdweller_hurt": {
-    "subtitle": "subtitles.entity.rotdweller_hurt",
-    "sounds": [
-      "undergarden:entity/dweller_hurt_1",
-      "undergarden:entity/dweller_hurt_2",
-      "undergarden:entity/dweller_hurt_3"
-    ]
-  },
-  "entity.rotdweller_death": {
-    "subtitle": "subtitles.entity.rotdweller_death",
-    "sounds": [
-      "undergarden:entity/dweller_death"
-    ]
-  },
-  "entity.rotdweller_step": {
-    "subtitle": "subtitles.entity.rotdweller_step",
-    "sounds": [
-      "mob/cow/step1",
-      "mob/cow/step2",
-      "mob/cow/step3",
-      "mob/cow/step4"
-    ]
-  },
   "entity.rotling_ambient": {
     "subtitle": "subtitles.entity.rotling_ambient",
     "sounds": [

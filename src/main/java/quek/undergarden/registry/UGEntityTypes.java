@@ -73,11 +73,6 @@ public class UGEntityTypes {
     public static final EntityType<DwellerEntity> DWELLER_TYPE = EntityType.Builder.of(DwellerEntity::new, EntityClassification.CREATURE)
             .sized(1.2F,1.8F).build("dweller");
     public static final RegistryObject<EntityType<DwellerEntity>> DWELLER = ENTITIES.register("dweller", () -> DWELLER_TYPE);
-
-    public static final EntityType<RotDwellerEntity> ROTDWELLER_TYPE = EntityType.Builder.of(RotDwellerEntity::new, EntityClassification.MONSTER)
-            .sized(1.2F, 1.8F).build("rotdweller");
-    public static final RegistryObject<EntityType<RotDwellerEntity>> ROTDWELLER = ENTITIES.register("rotdweller", () -> ROTDWELLER_TYPE);
-
     public static final EntityType<GwiblingEntity> GWIBLING_TYPE = EntityType.Builder.of(GwiblingEntity::new, EntityClassification.WATER_AMBIENT)
             .sized(.5F, .5F).build("gwibling");
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> GWIBLING_TYPE);
@@ -150,7 +145,6 @@ public class UGEntityTypes {
         event.put(ROTWALKER.get(), RotwalkerEntity.registerAttributes().build());
         event.put(ROTBEAST.get(), RotbeastEntity.registerAttributes().build());
         event.put(DWELLER.get(), DwellerEntity.registerAttributes().build());
-        event.put(ROTDWELLER.get(), RotDwellerEntity.registerAttributes().build());
         event.put(GWIBLING.get(), AbstractFishEntity.createAttributes().build());
         event.put(BRUTE.get(), BruteEntity.registerAttributes().build());
         event.put(SCINTLING.get(), ScintlingEntity.registerAttributes().build());

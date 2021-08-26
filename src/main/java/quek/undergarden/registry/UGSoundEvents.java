@@ -50,11 +50,6 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> DWELLER_DEATH = register("entity.dweller_death");
     public static final RegistryObject<SoundEvent> DWELLER_STEP = register("entity.dweller_step");
 
-    public static final RegistryObject<SoundEvent> ROTDWELLER_AMBIENT = register("entity.rotdweller_ambient");
-    public static final RegistryObject<SoundEvent> ROTDWELLER_HURT = register("entity.rotdweller_hurt");
-    public static final RegistryObject<SoundEvent> ROTDWELLER_DEATH = register("entity.rotdweller_death");
-    public static final RegistryObject<SoundEvent> ROTDWELLER_STEP = register("entity.rotdweller_step");
-
     public static final RegistryObject<SoundEvent> ROTLING_AMBIENT = register("entity.rotling_ambient");
     public static final RegistryObject<SoundEvent> ROTLING_HURT = register("entity.rotling_hurt");
     public static final RegistryObject<SoundEvent> ROTLING_DEATH = register("entity.rotling_death");

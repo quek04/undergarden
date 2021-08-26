@@ -163,26 +163,6 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("minecraft:mob/cow/step4")
         ).subtitle("subtitles.entity.dweller_step"));
 
-        this.add(UGSoundEvents.ROTDWELLER_AMBIENT, definition().with(
-                sound("undergarden:entity/dweller_ambient_1"),
-                sound("undergarden:entity/dweller_ambient_2"),
-                sound("undergarden:entity/dweller_ambient_3")
-        ).subtitle("subtitles.entity.rotdweller_ambient"));
-        this.add(UGSoundEvents.ROTDWELLER_HURT, definition().with(
-                sound("undergarden:entity/dweller_hurt_1"),
-                sound("undergarden:entity/dweller_hurt_2"),
-                sound("undergarden:entity/dweller_hurt_3")
-        ).subtitle("subtitles.entity.rotdweller_hurt"));
-        this.add(UGSoundEvents.ROTDWELLER_DEATH, definition().with(
-                sound("undergarden:entity/dweller_death")
-        ).subtitle("subtitles.entity.rotdweller_death"));
-        this.add(UGSoundEvents.ROTDWELLER_STEP, definition().with(
-                sound("minecraft:mob/cow/step1"),
-                sound("minecraft:mob/cow/step2"),
-                sound("minecraft:mob/cow/step3"),
-                sound("minecraft:mob/cow/step4")
-        ).subtitle("subtitles.entity.rotdweller_step"));
-
         this.add(UGSoundEvents.ROTLING_AMBIENT, definition().with(
                 sound("undergarden:entity/rotling_ambient_1"),
                 sound("undergarden:entity/rotling_ambient_2"),

@@ -329,7 +329,6 @@ public class UGLang extends LanguageProvider {
 
         addItem(UGItems.DWELLER_SPAWN_EGG, "Dweller Spawn Egg");
         addItem(UGItems.GWIBLING_SPAWN_EGG, "Gwibling Spawn Egg");
-        addItem(UGItems.ROTDWELLER_SPAWN_EGG, "Rotdweller Spawn Egg");
         addItem(UGItems.ROTLING_SPAWN_EGG, "Rotling Spawn Egg");
         addItem(UGItems.ROTWALKER_SPAWN_EGG, "Rotwalker Spawn Egg");
         addItem(UGItems.ROTBEAST_SPAWN_EGG, "Rotbeast Spawn Egg");
@@ -358,7 +357,6 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.BOAT, "Undergarden Boat");
         addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
         addEntityType(UGEntityTypes.DWELLER, "Dweller");
-        addEntityType(UGEntityTypes.ROTDWELLER, "Rotdweller");
         addEntityType(UGEntityTypes.GWIBLING, "Gwibling");
         addEntityType(UGEntityTypes.ROTLING, "Rotling");
         addEntityType(UGEntityTypes.ROTWALKER, "Rotwalker");
@@ -486,11 +484,6 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
         addSubtitle("entity", "dweller_death", "Dweller dies");
         addSubtitle("entity", "dweller_step", "Dweller steps");
-
-        addSubtitle("entity", "rotdweller_ambient", "Rotdweller grumbles");
-        addSubtitle("entity", "rotdweller_hurt", "Rotdweller hurts");
-        addSubtitle("entity", "rotdweller_death", "Rotdweller dies");
-        addSubtitle("entity", "rotdweller_step", "Rotdweller steps");
 
         addSubtitle("entity", "rotwalker_ambient", "Rotwalker groans");
         addSubtitle("entity", "rotwalker_hurt", "Rotwalker hurts");

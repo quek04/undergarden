@@ -312,14 +312,6 @@ public class UGLootTables extends LootTableProvider {
                                     .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))
                     )
             );
-            this.add(UGEntityTypes.ROTDWELLER.get(), LootTable.lootTable()
-                    .withPool(LootPool.lootPool()
-                            .setRolls(ConstantRange.exactly(1))
-                            .add(ItemLootEntry.lootTableItem(Items.LEATHER)
-                                    .apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
-                                    .apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))
-                    )
-            );
             this.add(UGEntityTypes.GWIBLING.get(), LootTable.lootTable()
                     .withPool(LootPool.lootPool()
                             .setRolls(ConstantRange.exactly(1))

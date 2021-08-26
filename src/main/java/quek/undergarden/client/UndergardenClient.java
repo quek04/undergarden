@@ -103,7 +103,6 @@ public class UndergardenClient {
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTWALKER.get(), RotwalkerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTBEAST.get(), RotbeastRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.DWELLER.get(), DwellerRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTDWELLER.get(), RotDwellerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GWIBLING.get(), GwiblingRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BRUTE.get(), BruteRender::new);
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SCINTLING.get(), ScintlingRender::new);
