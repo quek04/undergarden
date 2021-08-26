@@ -29,8 +29,7 @@ public class DwellerModel<T extends Entity> extends AgeableModel<T> {
 		torso.texOffs(0, 0).addBox(-1.0F, -3.0F, -8.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
 
 		head = new ModelRenderer(this);
-		head.setPos(0.0F, 1.0F, -5.0F);
-		torso.addChild(head);
+		head.setPos(0.0F, 1.0F, -2.0F);
 		head.texOffs(0, 46).addBox(-5.0F, 0.0F, -3.0F, 10.0F, 8.0F, 6.0F, 0.0F, false);
 
 		trunk = new ModelRenderer(this);
@@ -75,7 +74,7 @@ public class DwellerModel<T extends Entity> extends AgeableModel<T> {
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = -0.8727F + headPitch * ((float)Math.PI / 180F);
+		this.head.xRot = -1.3963F + headPitch * ((float)Math.PI / 180F);
 
 		this.leftLeg.xRot = -0.6109F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
@@ -89,7 +88,7 @@ public class DwellerModel<T extends Entity> extends AgeableModel<T> {
 
 	@Override
 	protected Iterable<ModelRenderer> bodyParts() {
-		return ImmutableList.of(this.torso, this.rightLeg, this.leftLeg);
+		return ImmutableList.of(this.head, this.torso, this.rightLeg, this.leftLeg);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
