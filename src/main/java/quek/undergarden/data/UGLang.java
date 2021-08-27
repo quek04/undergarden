@@ -255,6 +255,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.GOO_BALL, "Scintling Goo Ball");
         addItem(UGItems.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
         addItem(UGItems.BLISTERBOMB, "Blisterbomb");
+        addItem(UGItems.UNDERBEAN_STICK, "Underbean on a Stick");
 
         addItem(UGItems.MASTICATOR_SCALES, "Masticator Scales");
         addItem(UGItems.MASTICATED_CHESTPLATE, "Masticated Chestplate");

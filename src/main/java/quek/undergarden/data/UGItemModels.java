@@ -140,7 +140,6 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.DEPTHROCK_TILE_SLAB);
         itemBlockFlat(UGBlocks.HANGING_GRONGLE_LEAVES_TOP, "hanging_grongle_leaves");
         itemBlock(UGBlocks.MOGMOSS_RUG);
-
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);
         normalItem(UGItems.GLOOMPER_ANTHEM_DISC);
@@ -170,57 +169,45 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.ROTTEN_BLISTERBERRY);
         normalItem(UGItems.BLISTERBOMB);
         normalItem(UGItems.DROOPFRUIT);
-
         toolItem(UGItems.CLOGGRUM_SWORD);
         toolItem(UGItems.CLOGGRUM_PICKAXE);
         toolItem(UGItems.CLOGGRUM_AXE);
         toolItem(UGItems.CLOGGRUM_SHOVEL);
         toolItem(UGItems.CLOGGRUM_HOE);
-
         normalItem(UGItems.MASTICATOR_SCALES);
         normalItem(UGItems.MASTICATED_CHESTPLATE);
-
         normalItem(UGItems.CLOGGRUM_HELMET);
         normalItem(UGItems.CLOGGRUM_CHESTPLATE);
         normalItem(UGItems.CLOGGRUM_LEGGINGS);
         normalItem(UGItems.CLOGGRUM_BOOTS);
-
         normalItem(UGItems.FROSTSTEEL_HELMET);
         normalItem(UGItems.FROSTSTEEL_CHESTPLATE);
         normalItem(UGItems.FROSTSTEEL_LEGGINGS);
         normalItem(UGItems.FROSTSTEEL_BOOTS);
-
         normalItem(UGItems.UTHERIUM_HELMET);
         normalItem(UGItems.UTHERIUM_CHESTPLATE);
         normalItem(UGItems.UTHERIUM_LEGGINGS);
         normalItem(UGItems.UTHERIUM_BOOTS);
-
         toolItem(UGItems.FROSTSTEEL_SWORD);
         toolItem(UGItems.FROSTSTEEL_PICKAXE);
         toolItem(UGItems.FROSTSTEEL_AXE);
         toolItem(UGItems.FROSTSTEEL_SHOVEL);
         toolItem(UGItems.FROSTSTEEL_HOE);
-
         toolItem(UGItems.UTHERIUM_SWORD);
         toolItem(UGItems.UTHERIUM_PICKAXE);
         toolItem(UGItems.UTHERIUM_AXE);
         toolItem(UGItems.UTHERIUM_SHOVEL);
         toolItem(UGItems.UTHERIUM_HOE);
-
         toolItem(UGItems.FORGOTTEN_SWORD);
         toolItem(UGItems.FORGOTTEN_PICKAXE);
         toolItem(UGItems.FORGOTTEN_AXE);
         toolItem(UGItems.FORGOTTEN_SHOVEL);
         toolItem(UGItems.FORGOTTEN_HOE);
-
         normalItem(UGItems.SMOGSTEM_BOAT);
         normalItem(UGItems.WIGGLEWOOD_BOAT);
         normalItem(UGItems.GRONGLE_BOAT);
-
         normalItem(UGItems.VIRULENT_MIX_BUCKET);
-
         normalItem(UGItems.GWIBLING_BUCKET);
-
         normalItem(UGItems.UNDERBEANS);
         normalItem(UGItems.ROASTED_UNDERBEANS);
         normalItem(UGItems.BLISTERBERRY);
@@ -235,6 +222,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.INDIGO_STEW);
         normalItem(UGItems.INKY_STEW);
         normalItem(UGItems.VEILED_STEW);
+        rodItem(UGItems.UNDERBEAN_STICK);
 
         egg(UGItems.DWELLER_SPAWN_EGG);
         egg(UGItems.GWIBLING_SPAWN_EGG);
@@ -250,7 +238,6 @@ public class UGItemModels extends UGItemModelProvider {
         egg(UGItems.SPLOOGIE_SPAWN_EGG);
         egg(UGItems.GWIB_SPAWN_EGG);
         egg(UGItems.MOG_SPAWN_EGG);
-
         egg(UGItems.MASTICATOR_SPAWN_EGG);
         egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
 

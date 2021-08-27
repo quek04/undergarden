@@ -53,6 +53,12 @@ public class UGRecipes extends UGRecipeProvider {
         makeSign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
         makeSign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
 
+        ShapelessRecipeBuilder.shapeless(UGItems.UNDERBEAN_STICK.get())
+                .requires(Items.STICK)
+                .requires(UGItems.UNDERBEANS.get())
+                .unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
+                .save(consumer);
+
         ShapedRecipeBuilder.shaped(UGBlocks.MOGMOSS_RUG.get(), 3)
                 .pattern("MM")
                 .define('M', UGItems.MOGMOSS.get())
@@ -186,9 +192,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .requires(UGTags.Items.MUSHROOMS)
                 .requires(UGBlocks.GLOOMGOURD.get())
                 .requires(UGItems.GLOWING_KELP.get())
-                .unlockedBy("has_mushroom", has(UGTags.Items.MUSHROOMS))
                 .unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
-                .unlockedBy("has_kelp", has(UGItems.GLOWING_KELP.get()))
                 .save(consumer);
 
         ShapelessRecipeBuilder.shapeless(UGItems.GLOOMGOURD_SEEDS.get(), 4)

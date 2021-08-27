@@ -3,11 +3,12 @@ package quek.undergarden.client.model;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
+import quek.undergarden.entity.DwellerEntity;
 
-public class DwellerModel<T extends Entity> extends AgeableModel<T> {
+public class DwellerModel<T extends DwellerEntity> extends AgeableModel<T> {
 	private final ModelRenderer torso;
+	private final ModelRenderer mane;
 	private final ModelRenderer head;
 	private final ModelRenderer trunk;
 	private final ModelRenderer trunk2;
@@ -17,16 +18,20 @@ public class DwellerModel<T extends Entity> extends AgeableModel<T> {
 	private final ModelRenderer leftLeg;
 	private final ModelRenderer leftFoot;
 
-	public DwellerModel() {
+	public DwellerModel(float torsoInflate) {
 		texWidth = 128;
 		texHeight = 128;
 
 		torso = new ModelRenderer(this);
 		torso.setPos(0.0F, 2.0F, 3.0F);
 		setRotationAngle(torso, -0.4363F, 0.0F, 0.0F);
-		torso.texOffs(0, 23).addBox(-6.0F, -3.0F, -6.0F, 12.0F, 8.0F, 15.0F, 0.0F, false);
-		torso.texOffs(41, 10).addBox(-1.0F, -6.0F, -8.0F, 2.0F, 3.0F, 13.0F, 0.0F, false);
-		torso.texOffs(0, 0).addBox(-1.0F, -3.0F, -8.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+		torso.texOffs(0, 23).addBox(-6.0F, -3.0F, -6.0F, 12.0F, 8.0F, 15.0F, torsoInflate, false);
+
+		mane = new ModelRenderer(this);
+		mane.setPos(0.0F, 0.0F, 0.0F);
+		torso.addChild(mane);
+		mane.texOffs(41, 10).addBox(-1.0F, -6.0F, -8.0F, 2.0F, 3.0F, 13.0F, 0.0F, false);
+		mane.texOffs(0, 0).addBox(-1.0F, -3.0F, -8.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
 
 		head = new ModelRenderer(this);
 		head.setPos(0.0F, 1.0F, -2.0F);
@@ -95,5 +100,11 @@ public class DwellerModel<T extends Entity> extends AgeableModel<T> {
 		modelRenderer.xRot = x;
 		modelRenderer.yRot = y;
 		modelRenderer.zRot = z;
+	}
+
+	@Override
+	public void prepareMobModel(T entity, float p_212843_2_, float p_212843_3_, float p_212843_4_) {
+		this.mane.visible = !entity.isSaddled();
+		super.prepareMobModel(entity, p_212843_2_, p_212843_3_, p_212843_4_);
 	}
 }

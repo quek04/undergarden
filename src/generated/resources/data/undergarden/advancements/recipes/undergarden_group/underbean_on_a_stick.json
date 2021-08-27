@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:gloomgourd_pie"
+      "undergarden:underbean_on_a_stick"
     ]
   },
   "criteria": {
-    "has_gloomgourd": {
+    "has_underbeans": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "undergarden:gloomgourd"
+            "item": "undergarden:underbeans"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:gloomgourd_pie"
+        "recipe": "undergarden:underbean_on_a_stick"
       }
     }
   },
   "requirements": [
     [
-      "has_gloomgourd",
+      "has_underbeans",
       "has_the_recipe"
     ]
   ]

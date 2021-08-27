@@ -86,6 +86,7 @@ public class UGItems {
     public static final RegistryObject<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
     public static final RegistryObject<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
     public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", GooBallItem::new);
+    public static final RegistryObject<Item> UNDERBEAN_STICK = ITEMS.register("underbean_on_a_stick", () -> new UnderbeanOnAStickItem<>(new Item.Properties().stacksTo(1).durability(100).tab(UGItemGroups.GROUP), UGEntityTypes.DWELLER_TYPE));
 
     public static final RegistryObject<Item> SMOGSTEM_BOAT = ITEMS.register("smogstem_boat", () -> new UGBoatItem(UGBoatEntity.Type.SMOGSTEM, (new Item.Properties()).tab(UGItemGroups.GROUP).stacksTo(1)));
     public static final RegistryObject<Item> WIGGLEWOOD_BOAT = ITEMS.register("wigglewood_boat", () -> new UGBoatItem(UGBoatEntity.Type.WIGGLEWOOD, (new Item.Properties()).tab(UGItemGroups.GROUP).stacksTo(1)));
