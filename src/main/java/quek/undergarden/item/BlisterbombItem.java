@@ -1,18 +1,18 @@
 package quek.undergarden.item;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSoundEvents;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class BlisterbombItem extends Item {
 
@@ -24,9 +24,9 @@ public class BlisterbombItem extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
         ItemStack itemstack = playerIn.getItemInHand(handIn);
-        worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), UGSoundEvents.BLISTERBOMB_THROW.get(), SoundCategory.NEUTRAL, 0.5F, 1F);
+        worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), UGSoundEvents.BLISTERBOMB_THROW.get(), SoundSource.NEUTRAL, 0.5F, 1F);
         playerIn.getCooldowns().addCooldown(this, 50);
         if (!worldIn.isClientSide) {
             BlisterbombEntity blisterbomb = new BlisterbombEntity(worldIn, playerIn);
@@ -40,7 +40,7 @@ public class BlisterbombItem extends Item {
             itemstack.shrink(1);
         }
 
-        return ActionResult.success(itemstack);
+        return InteractionResultHolder.success(itemstack);
     }
 
 }

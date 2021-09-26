@@ -1,30 +1,36 @@
 package quek.undergarden.data.provider;
 
-import net.minecraft.advancements.criterion.EnchantmentPredicate;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.advancements.criterion.MinMaxBounds;
-import net.minecraft.block.Block;
+import net.minecraft.advancements.critereon.EnchantmentPredicate;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.loot.*;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.loot.conditions.MatchTool;
-import net.minecraft.loot.conditions.TableBonus;
-import net.minecraft.loot.functions.SetCount;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class UGBlockLootTableProvider extends BlockLootTables {
+import net.minecraft.world.level.storage.loot.ConstantIntValue;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.RandomValueBounds;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
 
-    private static final ILootCondition.IBuilder SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))));
-    private static final ILootCondition.IBuilder SHEARS = MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS));
-    private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.or(SILK_TOUCH);
+public class UGBlockLootTableProvider extends BlockLoot {
+
+    private static final LootItemCondition.Builder SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
+    private static final LootItemCondition.Builder SHEARS = MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS));
+    private static final LootItemCondition.Builder SILK_TOUCH_OR_SHEARS = SHEARS.or(SILK_TOUCH);
 
     public void registerTable(Supplier<? extends Block> block, Function<Block, LootTable.Builder> factory) {
         super.add(block.get(), factory);
@@ -35,10 +41,10 @@ public class UGBlockLootTableProvider extends BlockLootTables {
     }
 
     public void slab(Supplier<? extends SlabBlock> slab) {
-        this.add(slab.get(), BlockLootTables::createSlabItemTable);
+        this.add(slab.get(), BlockLoot::createSlabItemTable);
     }
 
-    public void dropOther(Supplier<? extends Block> brokenBlock, IItemProvider droppedBlock) {
+    public void dropOther(Supplier<? extends Block> brokenBlock, ItemLike droppedBlock) {
         super.dropOther(brokenBlock.get(), droppedBlock);
     }
 
@@ -46,7 +52,7 @@ public class UGBlockLootTableProvider extends BlockLootTables {
         super.dropWhenSilkTouch(block.get());
     }
 
-    public void dropWithSilk(Supplier<? extends Block> block, Supplier<? extends IItemProvider> drop) {
+    public void dropWithSilk(Supplier<? extends Block> block, Supplier<? extends ItemLike> drop) {
         add(block.get(), (result) -> createSingleItemTableWithSilkTouch(result, drop.get()));
     }
 
@@ -54,7 +60,7 @@ public class UGBlockLootTableProvider extends BlockLootTables {
         super.add(block.get(), (result) -> createOreDrop(result, drop.get()));
     }
 
-    public void dropWithFortune(Supplier<? extends Block> block, IItemProvider drop) {
+    public void dropWithFortune(Supplier<? extends Block> block, ItemLike drop) {
         super.add(block.get(), (result) -> createOreDrop(result, drop.asItem()));
     }
 
@@ -67,17 +73,17 @@ public class UGBlockLootTableProvider extends BlockLootTables {
     }
 
     protected static LootTable.Builder withChance(Block block, Block drop, float... chances) {
-        return createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, ItemLootEntry.lootTableItem(drop))
-                .when(TableBonus.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, chances)));
+        return createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(drop))
+                .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, chances)));
     }
 
     protected static LootTable.Builder withChanceAdditional(Block block, Block sapling, Item item, float... chances) {
-        return createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, ItemLootEntry.lootTableItem(sapling))
-                .when(TableBonus.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, chances)))
-                .withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+        return createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(sapling))
+                .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, chances)))
+                .withPool(LootPool.lootPool().setRolls(ConstantIntValue.exactly(1))
                         .when(SILK_TOUCH_OR_SHEARS)
-                        .add(applyExplosionDecay(block, ItemLootEntry.lootTableItem(item)
-                                .apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))))
-                                .when(TableBonus.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F))));
+                        .add(applyExplosionDecay(block, LootItem.lootTableItem(item)
+                                .apply(SetItemCountFunction.setCount(RandomValueBounds.between(1.0F, 2.0F))))
+                                .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F))));
     }
 }

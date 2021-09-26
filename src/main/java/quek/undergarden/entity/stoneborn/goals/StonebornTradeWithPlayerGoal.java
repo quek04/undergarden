@@ -1,7 +1,7 @@
 package quek.undergarden.entity.stoneborn.goals;
 
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.player.Player;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
 import java.util.EnumSet;
@@ -26,7 +26,7 @@ public class StonebornTradeWithPlayerGoal extends Goal {
         } else if (this.stoneborn.hurtMarked) {
             return false;
         } else {
-            PlayerEntity playerentity = this.stoneborn.getTradingPlayer();
+            Player playerentity = this.stoneborn.getTradingPlayer();
             if (playerentity == null) {
                 return false;
             } else if (this.stoneborn.distanceToSqr(playerentity) > 16.0D) {

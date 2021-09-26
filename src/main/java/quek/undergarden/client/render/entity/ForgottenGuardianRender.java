@@ -1,10 +1,10 @@
 package quek.undergarden.client.render.entity;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.resources.ResourceLocation;
+import com.mojang.math.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenGuardianModel;
 import quek.undergarden.client.render.layer.ForgottenGuardianEyesLayer;
@@ -12,7 +12,7 @@ import quek.undergarden.entity.boss.ForgottenGuardianEntity;
 
 public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardianEntity, ForgottenGuardianModel<ForgottenGuardianEntity>> {
 
-    public ForgottenGuardianRender(EntityRendererManager renderManagerIn) {
+    public ForgottenGuardianRender(EntityRenderDispatcher renderManagerIn) {
         super(renderManagerIn, new ForgottenGuardianModel<>(), 0.6F);
         this.addLayer(new ForgottenGuardianEyesLayer<>(this));
     }
@@ -23,7 +23,7 @@ public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardianEntity
     }
 
     @Override
-    public void setupRotations(ForgottenGuardianEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
+    public void setupRotations(ForgottenGuardianEntity entityLiving, PoseStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
         super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
         if (!((double)entityLiving.animationSpeed < 0.01D)) {
             float f1 = entityLiving.animationPosition - entityLiving.animationSpeed * (1.0F - partialTicks) + 6.0F;

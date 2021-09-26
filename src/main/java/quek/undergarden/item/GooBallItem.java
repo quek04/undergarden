@@ -1,19 +1,19 @@
 package quek.undergarden.item;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.GooBallEntity;
 import quek.undergarden.registry.UGFoods;
 import quek.undergarden.registry.UGItemGroups;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class GooBallItem extends Item {
 
@@ -26,14 +26,14 @@ public class GooBallItem extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
         ItemStack itemstack = playerIn.getItemInHand(handIn);
         if (playerIn.isCrouching()) {
             playerIn.startUsingItem(handIn);
-            return ActionResult.consume(itemstack);
+            return InteractionResultHolder.consume(itemstack);
         }
         else {
-            worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), SoundEvents.SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+            worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
             playerIn.getCooldowns().addCooldown(this, 20);
             if (!worldIn.isClientSide) {
                 GooBallEntity gooBall = new GooBallEntity(worldIn, playerIn);
@@ -47,7 +47,7 @@ public class GooBallItem extends Item {
                 itemstack.shrink(1);
             }
 
-            return ActionResult.success(itemstack);
+            return InteractionResultHolder.success(itemstack);
         }
     }
 }

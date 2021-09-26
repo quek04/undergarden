@@ -1,37 +1,47 @@
 package quek.undergarden.entity.boss;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.pathfinding.*;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class ForgottenGuardianEntity extends MonsterEntity {
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathFinder;
+import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
+
+public class ForgottenGuardianEntity extends Monster {
 
     private int attackTimer;
 
-    public ForgottenGuardianEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+    public ForgottenGuardianEntity(EntityType<? extends Monster> type, Level worldIn) {
         super(type, worldIn);
         this.maxUpStep = 1.0F;
         this.xpReward = 30;
@@ -40,13 +50,13 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
-        this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
-        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
-    public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.createMobAttributes()
+    public static AttributeSupplier.Builder registerAttributes() {
+        return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 80.0D)
                 .add(Attributes.ARMOR, 10.0D)
                 .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
@@ -97,9 +107,9 @@ public class ForgottenGuardianEntity extends MonsterEntity {
             --this.attackTimer;
         }
         if(this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
-            AxisAlignedBB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
+            AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
-            for(BlockPos blockpos : BlockPos.betweenClosed(MathHelper.floor(axisalignedbb.minX), MathHelper.floor(axisalignedbb.minY), MathHelper.floor(axisalignedbb.minZ), MathHelper.floor(axisalignedbb.maxX), MathHelper.floor(axisalignedbb.maxY), MathHelper.floor(axisalignedbb.maxZ))) {
+            for(BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
                 BlockState blockstate = this.level.getBlockState(blockpos);
                 Block block = blockstate.getBlock();
                 if(!block.is(BlockTags.WITHER_IMMUNE)) {
@@ -140,7 +150,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     @Override
     public boolean hurt(DamageSource source, float amount) {
         Entity entity = source.getDirectEntity();
-        if (entity instanceof ProjectileEntity) {
+        if (entity instanceof Projectile) {
             this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_DEFLECT.get(), 1.0F, 1.0F);
             return false;
         }
@@ -177,7 +187,7 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) { }
 
     @Override
-    public boolean addEffect(EffectInstance effectInstanceIn) {
+    public boolean addEffect(MobEffectInstance effectInstanceIn) {
         return false;
     }
 
@@ -187,17 +197,17 @@ public class ForgottenGuardianEntity extends MonsterEntity {
     }
 
     @Override
-    protected PathNavigator createNavigation(World world) {
+    protected PathNavigation createNavigation(Level world) {
         return new ForgottenGuardianEntity.Navigator(this, world);
     }
 
     @Override
-    public boolean canBeLeashed(PlayerEntity player) {
+    public boolean canBeLeashed(Player player) {
         return false;
     }
 
-    static class Navigator extends GroundPathNavigator {
-        public Navigator(MobEntity entity, World world) {
+    static class Navigator extends GroundPathNavigation {
+        public Navigator(Mob entity, Level world) {
             super(entity, world);
         }
 
@@ -207,12 +217,12 @@ public class ForgottenGuardianEntity extends MonsterEntity {
         }
     }
 
-    static class Processor extends WalkNodeProcessor {
+    static class Processor extends WalkNodeEvaluator {
         private Processor() {
         }
 
-        protected PathNodeType evaluateBlockPathType(IBlockReader world, boolean p_215744_2_, boolean p_215744_3_, BlockPos pos, PathNodeType pathNodeType) {
-            return PathNodeType.WALKABLE;
+        protected BlockPathTypes evaluateBlockPathType(BlockGetter world, boolean p_215744_2_, boolean p_215744_3_, BlockPos pos, BlockPathTypes pathNodeType) {
+            return BlockPathTypes.WALKABLE;
         }
     }
 }

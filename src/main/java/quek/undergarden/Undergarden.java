@@ -1,34 +1,46 @@
 package quek.undergarden;
 
 import com.google.common.collect.Maps;
+import net.minecraft.Util;
 import net.minecraft.block.*;
-import net.minecraft.client.renderer.Atlases;
-import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
-import net.minecraft.client.world.DimensionRenderInfo;
+import net.minecraft.client.renderer.DimensionSpecialEffects;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.BlockSource;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
+import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.dispenser.*;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.*;
-import net.minecraft.potion.PotionBrewing;
-import net.minecraft.potion.Potions;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Util;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fmlclient.registry.ClientRegistry;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.client.render.tileentity.DepthrockBedRender;
@@ -90,27 +102,27 @@ public class Undergarden {
 			UGBiomes.toDictionary();
 			UGDimensions.registerDimensionStuff();
 
-			AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
-			AxeItem.STRIPABLES.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
-			AxeItem.STRIPABLES.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
-			AxeItem.STRIPABLES.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get());
-			AxeItem.STRIPABLES.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
-			AxeItem.STRIPABLES.put(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get());
-			AxeItem.STRIPABLES.put(UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
+			AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
+			AxeItem.STRIPPABLES.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
+			AxeItem.STRIPPABLES.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
+			AxeItem.STRIPPABLES.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get());
+			AxeItem.STRIPPABLES.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
+			AxeItem.STRIPPABLES.put(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get());
+			AxeItem.STRIPPABLES.put(UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
 
 			HoeItem.TILLABLES.put(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
 			HoeItem.TILLABLES.put(UGBlocks.DEEPSOIL.get(), UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
 			HoeItem.TILLABLES.put(UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEEPSOIL.get().defaultBlockState());
 
-			IDispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
+			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
 
-				public ItemStack execute(IBlockSource source, ItemStack stack) {
+				public ItemStack execute(BlockSource source, ItemStack stack) {
 					BucketItem bucketitem = (BucketItem)stack.getItem();
 					BlockPos blockpos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
-					World world = source.getLevel();
-					if (bucketitem.emptyBucket(null, world, blockpos, null)) {
-						bucketitem.checkExtraContent(world, stack, blockpos);
+					Level world = source.getLevel();
+					if (bucketitem.emptyContents(null, world, blockpos, null)) {
+						bucketitem.checkExtraContent(null, world, stack, blockpos);
 						return new ItemStack(Items.BUCKET);
 					} else {
 						return this.defaultBehavior.dispense(source, stack);
@@ -119,10 +131,10 @@ public class Undergarden {
 			};
 
 			DefaultDispenseItemBehavior eggBehavior = new DefaultDispenseItemBehavior() {
-				public ItemStack execute(IBlockSource source, ItemStack stack) {
+				public ItemStack execute(BlockSource source, ItemStack stack) {
 					Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
 					EntityType<?> type = ((UGSpawnEggItem)stack.getItem()).getType(stack.getTag());
-					type.spawn(source.getLevel(), stack, null, source.getPos().relative(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
+					type.spawn(source.getLevel(), stack, null, source.getPos().relative(direction), MobSpawnType.DISPENSER, direction != Direction.UP, false);
 					stack.shrink(1);
 					return stack;
 				}
@@ -135,26 +147,26 @@ public class Undergarden {
 				DispenserBlock.registerBehavior(item, eggBehavior);
 			}
 
-			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new ProjectileDispenseBehavior() {
-				protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn) {
+			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
 					return Util.make(new SlingshotAmmoEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
-			DispenserBlock.registerBehavior(UGItems.GOO_BALL.get(), new ProjectileDispenseBehavior() {
-				protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn) {
+			DispenserBlock.registerBehavior(UGItems.GOO_BALL.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
 					return Util.make(new GooBallEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
-			DispenserBlock.registerBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new ProjectileDispenseBehavior() {
-				protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn) {
+			DispenserBlock.registerBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
 					return Util.make(new RottenBlisterberryEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
-			DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new ProjectileDispenseBehavior() {
-				protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn) {
+			DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
 					return Util.make(new BlisterbombEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
@@ -227,26 +239,26 @@ public class Undergarden {
 		UndergardenClient.registerBlockColors();
 		UndergardenClient.registerItemColors();
 		event.enqueueWork(() -> {
-			Atlases.addWoodType(UGBlocks.SMOGSTEM_WOODTYPE);
-			Atlases.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);
-			Atlases.addWoodType(UGBlocks.GRONGLE_WOODTYPE);
+			Sheets.addWoodType(UGBlocks.SMOGSTEM_WOODTYPE);
+			Sheets.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);
+			Sheets.addWoodType(UGBlocks.GRONGLE_WOODTYPE);
 		});
-		ClientRegistry.bindTileEntityRenderer(UGTileEntities.UNDERGARDEN_SIGN.get(), SignTileEntityRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(UGTileEntities.UNDERGARDEN_SIGN.get(), SignRenderer::new);
 		ClientRegistry.bindTileEntityRenderer(UGTileEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
 
-		ItemModelsProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
 			if (entity == null) {
 				return 0.0F;
 			} else {
 				return entity.getUseItem() != stack ? 0.0F : (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
 			}
 		});
-		ItemModelsProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-		ItemModelsProperties.register(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+		ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 
-		DimensionRenderInfo.EFFECTS.put(UGDimensions.UNDERGARDEN_DIMENSION.location(), new DimensionRenderInfo(Float.NaN, false, DimensionRenderInfo.FogType.NONE, false, true) {
+		DimensionSpecialEffects.EFFECTS.put(UGDimensions.UNDERGARDEN_DIMENSION.location(), new DimensionSpecialEffects(Float.NaN, false, DimensionSpecialEffects.SkyType.NONE, false, true) {
 			@Override
-			public Vector3d getBrightnessDependentFogColor(Vector3d vector3d, float sun) {
+			public Vec3 getBrightnessDependentFogColor(Vec3 vector3d, float sun) {
 				return vector3d;
 			}
 

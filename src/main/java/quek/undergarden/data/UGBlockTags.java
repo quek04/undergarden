@@ -1,12 +1,12 @@
 package quek.undergarden.data;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.data.BlockTagsProvider;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.TagsProvider;
+import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ITag;
+import net.minecraft.tags.Tag;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
@@ -90,7 +90,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.GLASS_PANES_COLORLESS).add(UGBlocks.SEDIMENT_GLASS_PANE.get());
     }
 
-    protected TagsProvider.Builder<Block> tag(ITag.INamedTag<Block> tag) {
+    protected TagsProvider.TagAppender<Block> tag(Tag.Named<Block> tag) {
         return super.tag(tag);
     }
 }

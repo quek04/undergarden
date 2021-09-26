@@ -2,19 +2,19 @@ package quek.undergarden.registry;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.WorldGenRegistries;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.FlatChunkGenerator;
-import net.minecraft.world.gen.FlatGenerationSettings;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.StructureFeature;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.settings.DimensionStructuresSettings;
-import net.minecraft.world.gen.settings.StructureSeparationSettings;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.FlatLevelSource;
+import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.StructureSettings;
+import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -27,52 +27,52 @@ import java.util.Map;
 
 public class UGStructures {
 
-    public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, Undergarden.MODID);
+    public static final DeferredRegister<StructureFeature<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, Undergarden.MODID);
 
-    public static final RegistryObject<Structure<NoFeatureConfig>> CATACOMBS = STRUCTURES.register("catacombs", () -> new CatacombsStructure(NoFeatureConfig.CODEC));
+    public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> CATACOMBS = STRUCTURES.register("catacombs", () -> new CatacombsStructure(NoneFeatureConfiguration.CODEC));
 
     public static final class ConfiguredStructures {
-        public static final StructureFeature<?, ?> CATACOMBS = UGStructures.CATACOMBS.get().configured(IFeatureConfig.NONE);
+        public static final ConfiguredStructureFeature<?, ?> CATACOMBS = UGStructures.CATACOMBS.get().configured(FeatureConfiguration.NONE);
     }
 
     public static void registerStructures() {
-        setupStructure(CATACOMBS.get(), new StructureSeparationSettings(24, 8, 276320045), true);
+        setupStructure(CATACOMBS.get(), new StructureFeatureConfiguration(24, 8, 276320045), true);
     }
 
     public static void registerConfiguredStructures() {
-        Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(Undergarden.MODID, "catacombs"), CATACOMBS.get().configured(IFeatureConfig.NONE));
+        Registry.register(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(Undergarden.MODID, "catacombs"), CATACOMBS.get().configured(FeatureConfiguration.NONE));
 
-        FlatGenerationSettings.STRUCTURE_FEATURES.put(CATACOMBS.get(), ConfiguredStructures.CATACOMBS);
+        FlatLevelGeneratorSettings.STRUCTURE_FEATURES.put(CATACOMBS.get(), ConfiguredStructures.CATACOMBS);
     }
 
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
-        if(event.getWorld() instanceof ServerWorld) {
-            ServerWorld serverWorld = (ServerWorld)event.getWorld();
+        if(event.getWorld() instanceof ServerLevel) {
+            ServerLevel serverWorld = (ServerLevel)event.getWorld();
 
-            if(serverWorld.getChunkSource().getGenerator() instanceof FlatChunkGenerator && serverWorld.dimension().equals(World.OVERWORLD)) {
+            if(serverWorld.getChunkSource().getGenerator() instanceof FlatLevelSource && serverWorld.dimension().equals(Level.OVERWORLD)) {
                 return;
             }
 
-            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
-            tempMap.put(UGStructures.CATACOMBS.get(), DimensionStructuresSettings.DEFAULTS.get(UGStructures.CATACOMBS.get()));
+            Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
+            tempMap.put(UGStructures.CATACOMBS.get(), StructureSettings.DEFAULTS.get(UGStructures.CATACOMBS.get()));
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
     }
 
-    private static <F extends Structure<?>> void setupStructure(F structure, StructureSeparationSettings structureSeparationSettings, boolean transformSurroundingLand) {
-        Structure.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
+    private static <F extends StructureFeature<?>> void setupStructure(F structure, StructureFeatureConfiguration structureSeparationSettings, boolean transformSurroundingLand) {
+        StructureFeature.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
 
         if(transformSurroundingLand) {
-            Structure.NOISE_AFFECTING_FEATURES =
-                    ImmutableList.<Structure<?>>builder()
-                            .addAll(Structure.NOISE_AFFECTING_FEATURES)
+            StructureFeature.NOISE_AFFECTING_FEATURES =
+                    ImmutableList.<StructureFeature<?>>builder()
+                            .addAll(StructureFeature.NOISE_AFFECTING_FEATURES)
                             .add(structure)
                             .build();
         }
 
-        DimensionStructuresSettings.DEFAULTS =
-                ImmutableMap.<Structure<?>, StructureSeparationSettings>builder()
-                        .putAll(DimensionStructuresSettings.DEFAULTS)
+        StructureSettings.DEFAULTS =
+                ImmutableMap.<StructureFeature<?>, StructureFeatureConfiguration>builder()
+                        .putAll(StructureSettings.DEFAULTS)
                         .put(structure, structureSeparationSettings)
                         .build();
     }

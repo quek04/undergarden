@@ -1,21 +1,21 @@
 package quek.undergarden.registry;
 
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.DimensionType;
-import net.minecraft.world.World;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.Registry;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.Level;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.dimension.UGBiomeProvider;
 import quek.undergarden.world.dimension.UGChunkGenerator;
 
 public class UGDimensions {
 
-    public static final RegistryKey<DimensionType> UNDERGARDEN_DIMENSION = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, name("undergarden"));
-    public static final RegistryKey<World> UNDERGARDEN_WORLD = RegistryKey.create(Registry.DIMENSION_REGISTRY, name("undergarden"));
+    public static final ResourceKey<DimensionType> UNDERGARDEN_DIMENSION = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, name("undergarden"));
+    public static final ResourceKey<Level> UNDERGARDEN_WORLD = ResourceKey.create(Registry.DIMENSION_REGISTRY, name("undergarden"));
 
-    public static final RegistryKey<DimensionType> OTHERSIDE_DIMENSION = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, name("otherside"));
-    public static final RegistryKey<World> OTHERSIDE_WORLD = RegistryKey.create(Registry.DIMENSION_REGISTRY, name("otherside"));
+    public static final ResourceKey<DimensionType> OTHERSIDE_DIMENSION = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, name("otherside"));
+    public static final ResourceKey<Level> OTHERSIDE_WORLD = ResourceKey.create(Registry.DIMENSION_REGISTRY, name("otherside"));
 
     private static ResourceLocation name(String name) {
         return new ResourceLocation(Undergarden.MODID, name);

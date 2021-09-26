@@ -1,24 +1,24 @@
 package quek.undergarden.entity.rotspawn;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class RotwalkerEntity extends AbstractRotspawnEntity {
 
-    public RotwalkerEntity(EntityType<? extends MonsterEntity> type, World world) {
+    public RotwalkerEntity(EntityType<? extends Monster> type, Level world) {
         super(type, world);
     }
 
-    public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.createMobAttributes()
+    public static AttributeSupplier.Builder registerAttributes() {
+        return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 40.0D)
                 .add(Attributes.ARMOR, 3.0D)
                 .add(Attributes.ATTACK_DAMAGE, 5.0D)

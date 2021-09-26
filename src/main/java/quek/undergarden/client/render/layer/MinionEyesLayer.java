@@ -1,16 +1,16 @@
 package quek.undergarden.client.render.layer;
 
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.AbstractEyesLayer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MinionModel;
 import quek.undergarden.entity.MinionEntity;
 
-public class MinionEyesLayer<T extends MinionEntity, M extends MinionModel<T>> extends AbstractEyesLayer<T, M> {
+public class MinionEyesLayer<T extends MinionEntity, M extends MinionModel<T>> extends EyesLayer<T, M> {
 
-    public MinionEyesLayer(IEntityRenderer<T, M> rendererIn) {
+    public MinionEyesLayer(RenderLayerParent<T, M> rendererIn) {
         super(rendererIn);
     }
 

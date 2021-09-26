@@ -1,17 +1,17 @@
 package quek.undergarden.client;
 
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ActiveRenderInfo;
-import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.Camera;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.item.BlockItem;
-import net.minecraft.world.biome.BiomeColors;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.color.item.ItemColors;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,7 +29,7 @@ import java.util.function.Supplier;
 public class UndergardenClient {
 
     private static void render(Supplier<? extends Block> block, RenderType render) {
-        RenderTypeLookup.setRenderLayer(block.get(), render);
+        ItemBlockRenderTypes.setRenderLayer(block.get(), render);
     }
 
     public static void registerBlockRenderers() {
@@ -92,11 +92,11 @@ public class UndergardenClient {
     public static void registerEntityRenderers() {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SLINGSHOT_AMMO.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GOO_BALL.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BLISTERBOMB.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MINION_PROJECTILE.get(), entity -> new SpriteRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SLINGSHOT_AMMO.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GOO_BALL.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BLISTERBOMB.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MINION_PROJECTILE.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
 
         RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTLING.get(), RotlingRender::new);
@@ -166,7 +166,7 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
-        ActiveRenderInfo info = Minecraft.getInstance().gameRenderer.getMainCamera();
+        Camera info = Minecraft.getInstance().gameRenderer.getMainCamera();
         FluidState fluidState = info.getFluidInCamera();
 
         if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
@@ -178,7 +178,7 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
-        ActiveRenderInfo info = Minecraft.getInstance().gameRenderer.getMainCamera();
+        Camera info = Minecraft.getInstance().gameRenderer.getMainCamera();
         FluidState fluidState = info.getFluidInCamera();
 
         if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {

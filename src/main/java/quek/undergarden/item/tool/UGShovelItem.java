@@ -1,13 +1,13 @@
 package quek.undergarden.item.tool;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.network.chat.Component;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGItemGroups;
@@ -16,8 +16,10 @@ import quek.undergarden.registry.UGItems;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import net.minecraft.world.item.Item.Properties;
+
 public class UGShovelItem extends ShovelItem {
-    public UGShovelItem(IItemTier tier) {
+    public UGShovelItem(Tier tier) {
         super(tier, 1.5F, -3, new Properties()
                 .stacksTo(1)
                 .defaultDurability(tier.getUses())
@@ -28,12 +30,12 @@ public class UGShovelItem extends ShovelItem {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         if(stack.getItem() == UGItems.FROSTSTEEL_SHOVEL.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.froststeel_sword").withStyle(TextFormatting.AQUA));
+            tooltip.add(new TranslatableComponent("tooltip.froststeel_sword").withStyle(ChatFormatting.AQUA));
         }
         if(stack.getItem() == UGItems.FORGOTTEN_SHOVEL.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.forgotten_tool").withStyle(TextFormatting.GREEN));
+            tooltip.add(new TranslatableComponent("tooltip.forgotten_tool").withStyle(ChatFormatting.GREEN));
         }
     }
 }

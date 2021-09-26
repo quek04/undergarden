@@ -1,20 +1,20 @@
 package quek.undergarden.item;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.Rarity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import quek.undergarden.block.UndergardenPortalBlock;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSoundEvents;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class CatalystItem extends Item {
 
@@ -27,19 +27,19 @@ public class CatalystItem extends Item {
     }
 
     @Override
-    public ActionResultType useOn(ItemUseContext context) {
+    public InteractionResult useOn(UseOnContext context) {
         if(context.getPlayer() != null) {
-            if(context.getPlayer().level.dimension() == UGDimensions.UNDERGARDEN_WORLD || context.getPlayer().level.dimension() == World.OVERWORLD) {
+            if(context.getPlayer().level.dimension() == UGDimensions.UNDERGARDEN_WORLD || context.getPlayer().level.dimension() == Level.OVERWORLD) {
                 for(Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos framePos = context.getClickedPos().relative(direction);
                     if(((UndergardenPortalBlock) UGBlocks.UNDERGARDEN_PORTAL.get()).trySpawnPortal(context.getLevel(), framePos)) {
-                        context.getLevel().playSound(context.getPlayer(), framePos, UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-                        return ActionResultType.CONSUME;
+                        context.getLevel().playSound(context.getPlayer(), framePos, UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                        return InteractionResult.CONSUME;
                     }
-                    else return ActionResultType.FAIL;
+                    else return InteractionResult.FAIL;
                 }
             }
         }
-        return ActionResultType.FAIL;
+        return InteractionResult.FAIL;
     }
 }

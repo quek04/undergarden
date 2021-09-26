@@ -1,17 +1,17 @@
 package quek.undergarden.block.tileentity;
 
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import quek.undergarden.registry.UGTileEntities;
 
-public class DepthrockBedTE extends TileEntity {
+public class DepthrockBedTE extends BlockEntity {
 
     public DepthrockBedTE() {
         super(UGTileEntities.DEPTHROCK_BED.get());
     }
 
     @Override
-    public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(this.worldPosition, 11, this.getUpdateTag());
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return new ClientboundBlockEntityDataPacket(this.worldPosition, 11, this.getUpdateTag());
     }
 }

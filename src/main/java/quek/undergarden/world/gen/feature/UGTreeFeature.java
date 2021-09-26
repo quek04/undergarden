@@ -3,77 +3,77 @@ package quek.undergarden.world.gen.feature;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.material.Material;
-import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MutableBoundingBox;
-import net.minecraft.util.math.shapes.BitSetVoxelShapePart;
-import net.minecraft.util.math.shapes.VoxelShapePart;
-import net.minecraft.util.math.vector.Vector3i;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldWriter;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.IWorldGenerationBaseReader;
-import net.minecraft.world.gen.IWorldGenerationReader;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.template.Template;
-import net.minecraft.world.gen.foliageplacer.FoliagePlacer;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.phys.shapes.BitSetDiscreteVoxelShape;
+import net.minecraft.world.phys.shapes.DiscreteVoxelShape;
+import net.minecraft.core.Vec3i;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelWriter;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.LevelSimulatedRW;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.*;
 
-public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
+public class UGTreeFeature extends Feature<TreeConfiguration> {
 
-    public UGTreeFeature(Codec<BaseTreeFeatureConfig> codec) {
+    public UGTreeFeature(Codec<TreeConfiguration> codec) {
         super(codec);
     }
 
-    public static boolean isLog(IWorldGenerationBaseReader world, BlockPos pos) {
+    public static boolean isLog(LevelSimulatedReader world, BlockPos pos) {
         return isReplaceableAt(world, pos) || world.isStateAtPosition(pos, (state) -> state.is(BlockTags.LOGS));
     }
 
-    private static boolean isVine(IWorldGenerationBaseReader world, BlockPos pos) {
+    private static boolean isVine(LevelSimulatedReader world, BlockPos pos) {
         return world.isStateAtPosition(pos, (state) -> state.is(Blocks.VINE));
     }
 
-    private static boolean isWater(IWorldGenerationBaseReader world, BlockPos pos) {
+    private static boolean isWater(LevelSimulatedReader world, BlockPos pos) {
         return world.isStateAtPosition(pos, (state) -> state.is(Blocks.WATER));
     }
 
-    public static boolean isLeaves(IWorldGenerationBaseReader world, BlockPos pos) {
+    public static boolean isLeaves(LevelSimulatedReader world, BlockPos pos) {
         return world.isStateAtPosition(pos, (state) -> state.isAir() || state.is(BlockTags.LEAVES));
     }
 
-    private static boolean isDirtOrFarmland(IWorldGenerationBaseReader world, BlockPos pos) {
+    private static boolean isDirtOrFarmland(LevelSimulatedReader world, BlockPos pos) {
         return world.isStateAtPosition(pos, (state) -> {
             Block block = state.getBlock();
             return isDirt(block) || block == Blocks.FARMLAND;
         });
     }
 
-    private static boolean isTallPlant(IWorldGenerationBaseReader world, BlockPos pos) {
+    private static boolean isTallPlant(LevelSimulatedReader world, BlockPos pos) {
         return world.isStateAtPosition(pos, (state) -> {
             Material material = state.getMaterial();
             return material == Material.REPLACEABLE_PLANT;
         });
     }
 
-    public static void setBlockKnownShape(IWorldWriter world, BlockPos pos, BlockState state) {
+    public static void setBlockKnownShape(LevelWriter world, BlockPos pos, BlockState state) {
         world.setBlock(pos, state, 19);
     }
 
-    public static boolean isReplaceableAt(IWorldGenerationBaseReader world, BlockPos pos) {
+    public static boolean isReplaceableAt(LevelSimulatedReader world, BlockPos pos) {
         return isLeaves(world, pos) || isTallPlant(world, pos) || isWater(world, pos);
     }
 
-    private boolean place(IWorldGenerationReader generationReader, Random rand, BlockPos positionIn, Set<BlockPos> leaves, Set<BlockPos> logs, MutableBoundingBox boundingBoxIn, BaseTreeFeatureConfig configIn) {
+    private boolean place(LevelSimulatedRW generationReader, Random rand, BlockPos positionIn, Set<BlockPos> leaves, Set<BlockPos> logs, BoundingBox boundingBoxIn, TreeConfiguration configIn) {
         int trunk = configIn.trunkPlacer.getTreeHeight(rand);
         int leaf = configIn.foliagePlacer.foliageHeight(rand, trunk, configIn);
         int k = trunk - leaf;
@@ -90,7 +90,7 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
                 OptionalInt optionalint = configIn.minimumSize.minClippedHeight();
                 int l1 = this.getMaxFreeTreeHeight(generationReader, trunk, blockpos, configIn);
                 if (l1 >= trunk || optionalint.isPresent() && l1 >= optionalint.getAsInt()) {
-                    List<FoliagePlacer.Foliage> list = configIn.trunkPlacer.placeTrunk(generationReader, rand, l1, blockpos, leaves, boundingBoxIn, configIn);
+                    List<FoliagePlacer.FoliageAttachment> list = configIn.trunkPlacer.placeTrunk(generationReader, rand, l1, blockpos, leaves, boundingBoxIn, configIn);
                     list.forEach((foliage) -> configIn.foliagePlacer.createFoliage(generationReader, rand, configIn, l1, foliage, leaf, l, logs, boundingBoxIn));
                     return true;
                 }
@@ -104,8 +104,8 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         }
     }
 
-    private int getMaxFreeTreeHeight(IWorldGenerationBaseReader p_241521_1_, int p_241521_2_, BlockPos p_241521_3_, BaseTreeFeatureConfig p_241521_4_) {
-        BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+    private int getMaxFreeTreeHeight(LevelSimulatedReader p_241521_1_, int p_241521_2_, BlockPos p_241521_3_, TreeConfiguration p_241521_4_) {
+        BlockPos.MutableBlockPos blockpos$mutable = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i <= p_241521_2_ + 1; ++i) {
             int j = p_241521_4_.minimumSize.getSizeAtHeight(p_241521_2_, i);
@@ -123,28 +123,28 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         return p_241521_2_;
     }
 
-    protected void setBlock(IWorldWriter world, BlockPos pos, BlockState state) {
+    protected void setBlock(LevelWriter world, BlockPos pos, BlockState state) {
         setBlockKnownShape(world, pos, state);
     }
 
     @Override
-    public final boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, BaseTreeFeatureConfig config) {
+    public final boolean place(WorldGenLevel reader, ChunkGenerator generator, Random rand, BlockPos pos, TreeConfiguration config) {
         Set<BlockPos> set = Sets.newHashSet();
         Set<BlockPos> set1 = Sets.newHashSet();
         Set<BlockPos> set2 = Sets.newHashSet();
-        MutableBoundingBox mutableboundingbox = MutableBoundingBox.getUnknownBox();
+        BoundingBox mutableboundingbox = BoundingBox.getUnknownBox();
         boolean canPlace = this.place(reader, rand, pos, set, set1, mutableboundingbox, config);
         if (mutableboundingbox.x0 <= mutableboundingbox.x1 && canPlace && !set.isEmpty()) {
             if (!config.decorators.isEmpty()) {
                 List<BlockPos> list = Lists.newArrayList(set);
                 List<BlockPos> list1 = Lists.newArrayList(set1);
-                list.sort(Comparator.comparingInt(Vector3i::getY));
-                list1.sort(Comparator.comparingInt(Vector3i::getY));
+                list.sort(Comparator.comparingInt(Vec3i::getY));
+                list1.sort(Comparator.comparingInt(Vec3i::getY));
                 config.decorators.forEach((treeDecorator) -> treeDecorator.place(reader, rand, list, list1, set2, mutableboundingbox));
             }
 
-            VoxelShapePart voxelshapepart = this.placeLogsAndLeaves(reader, mutableboundingbox, set, set2);
-            Template.updateShapeAtEdge(reader, 3, voxelshapepart, mutableboundingbox.x0, mutableboundingbox.y0, mutableboundingbox.z0);
+            DiscreteVoxelShape voxelshapepart = this.placeLogsAndLeaves(reader, mutableboundingbox, set, set2);
+            StructureTemplate.updateShapeAtEdge(reader, 3, voxelshapepart, mutableboundingbox.x0, mutableboundingbox.y0, mutableboundingbox.z0);
             return true;
         }
         else {
@@ -152,15 +152,15 @@ public class UGTreeFeature extends Feature<BaseTreeFeatureConfig> {
         }
     }
 
-    private VoxelShapePart placeLogsAndLeaves(IWorld world, MutableBoundingBox boundingBox, Set<BlockPos> p_236403_3_, Set<BlockPos> p_236403_4_) {
+    private DiscreteVoxelShape placeLogsAndLeaves(LevelAccessor world, BoundingBox boundingBox, Set<BlockPos> p_236403_3_, Set<BlockPos> p_236403_4_) {
         List<Set<BlockPos>> list = Lists.newArrayList();
-        VoxelShapePart voxelshapepart = new BitSetVoxelShapePart(boundingBox.getXSpan(), boundingBox.getYSpan(), boundingBox.getZSpan());
+        DiscreteVoxelShape voxelshapepart = new BitSetDiscreteVoxelShape(boundingBox.getXSpan(), boundingBox.getYSpan(), boundingBox.getZSpan());
 
         for(int j = 0; j < 6; ++j) {
             list.add(Sets.newHashSet());
         }
 
-        BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+        BlockPos.MutableBlockPos blockpos$mutable = new BlockPos.MutableBlockPos();
 
         for(BlockPos blockpos : Lists.newArrayList(p_236403_4_)) {
             if (boundingBox.isInside(blockpos)) {

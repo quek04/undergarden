@@ -1,17 +1,17 @@
 package quek.undergarden.client.render.tileentity;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.item.ItemStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
+import net.minecraft.world.item.ItemStack;
 import quek.undergarden.block.tileentity.DepthrockBedTE;
 
-public class DepthrockBedISTER extends ItemStackTileEntityRenderer {
+public class DepthrockBedISTER extends BlockEntityWithoutLevelRenderer {
 
     @Override
-    public void renderByItem(ItemStack stack, ItemCameraTransforms.TransformType transformType, MatrixStack matrixStack, IRenderTypeBuffer renderTypeBuffer, int combinedLight, int combinedOverlay) {
-        TileEntityRendererDispatcher.instance.renderItem(new DepthrockBedTE(), matrixStack, renderTypeBuffer, combinedLight, combinedOverlay);
+    public void renderByItem(ItemStack stack, ItemTransforms.TransformType transformType, PoseStack matrixStack, MultiBufferSource renderTypeBuffer, int combinedLight, int combinedOverlay) {
+        BlockEntityRenderDispatcher.instance.renderItem(new DepthrockBedTE(), matrixStack, renderTypeBuffer, combinedLight, combinedOverlay);
     }
 }

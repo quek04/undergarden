@@ -1,28 +1,28 @@
 package quek.undergarden.entity.projectile;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.ProjectileItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.network.IPacket;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.network.NetworkHooks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class RottenBlisterberryEntity extends ProjectileItemEntity {
+public class RottenBlisterberryEntity extends ThrowableItemProjectile {
 
-    public RottenBlisterberryEntity(EntityType<? extends RottenBlisterberryEntity> type, World world) {
+    public RottenBlisterberryEntity(EntityType<? extends RottenBlisterberryEntity> type, Level world) {
         super(type, world);
     }
 
-    public RottenBlisterberryEntity(World world, LivingEntity thrower) {
+    public RottenBlisterberryEntity(Level world, LivingEntity thrower) {
         super(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), thrower, world);
     }
 
-    public RottenBlisterberryEntity(World worldIn, double x, double y, double z) {
+    public RottenBlisterberryEntity(Level worldIn, double x, double y, double z) {
         super(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), x, y, z, worldIn);
     }
 
@@ -32,17 +32,17 @@ public class RottenBlisterberryEntity extends ProjectileItemEntity {
     }
 
     @Override
-    protected void onHit(RayTraceResult result) {
+    protected void onHit(HitResult result) {
         if (!this.level.isClientSide) {
-            if (result.getType() == RayTraceResult.Type.ENTITY || result.getType() == RayTraceResult.Type.BLOCK) {
-                this.level.explode(this, this.getX(), this.getY(), this.getZ(), 1.5F, Explosion.Mode.NONE);
+            if (result.getType() == HitResult.Type.ENTITY || result.getType() == HitResult.Type.BLOCK) {
+                this.level.explode(this, this.getX(), this.getY(), this.getZ(), 1.5F, Explosion.BlockInteraction.NONE);
                 this.remove();
             }
         }
     }
 
     @Override
-    public IPacket<?> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

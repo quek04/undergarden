@@ -1,24 +1,24 @@
 package quek.undergarden.entity.cavern;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.Level;
 
 import java.util.Random;
 
-public abstract class AbstractCavernCreatureEntity extends MonsterEntity {
+public abstract class AbstractCavernCreatureEntity extends Monster {
 
-    protected AbstractCavernCreatureEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+    protected AbstractCavernCreatureEntity(EntityType<? extends Monster> type, Level worldIn) {
         super(type, worldIn);
     }
 
-    public static boolean canCreatureSpawn(EntityType<? extends MonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
+    public static boolean canCreatureSpawn(EntityType<? extends Monster> type, ServerLevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {
         if(checkMonsterSpawnRules(type, worldIn, reason, pos, randomIn)) {
-            return reason == SpawnReason.SPAWNER || pos.getY() < 32;
+            return reason == MobSpawnType.SPAWNER || pos.getY() < 32;
         }
         return false;
     }

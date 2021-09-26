@@ -1,21 +1,23 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractTopPlantBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.PlantBlockHelper;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.NetherVines;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class DroopvineTopBlock extends AbstractTopPlantBlock {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class DroopvineTopBlock extends GrowingPlantHeadBlock {
 
     protected static final VoxelShape SHAPE = Block.box(4.0D, 5.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
@@ -24,7 +26,7 @@ public class DroopvineTopBlock extends AbstractTopPlantBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState state2, IWorld world, BlockPos pos, BlockPos pos2) {
+    public BlockState updateShape(BlockState state, Direction direction, BlockState state2, LevelAccessor world, BlockPos pos, BlockPos pos2) {
         if (direction == this.growthDirection.getOpposite() && !state.canSurvive(world, pos)) {
             world.getBlockTicks().scheduleTick(pos, this, 1);
         }
@@ -43,12 +45,12 @@ public class DroopvineTopBlock extends AbstractTopPlantBlock {
 
     @Override
     protected int getBlocksToGrowWhenBonemealed(Random rand) {
-        return PlantBlockHelper.getBlocksToGrowWhenBonemealed(rand);
+        return NetherVines.getBlocksToGrowWhenBonemealed(rand);
     }
 
     @Override
     protected boolean canGrowInto(BlockState state) {
-        return PlantBlockHelper.isValidGrowthState(state);
+        return NetherVines.isValidGrowthState(state);
     }
 
     @Override
@@ -57,7 +59,7 @@ public class DroopvineTopBlock extends AbstractTopPlantBlock {
     }
 
     @Override
-    public boolean isLadder(BlockState state, IWorldReader world, BlockPos pos, LivingEntity entity) {
+    public boolean isLadder(BlockState state, LevelReader world, BlockPos pos, LivingEntity entity) {
         return true;
     }
 }

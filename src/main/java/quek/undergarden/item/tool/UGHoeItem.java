@@ -1,18 +1,18 @@
 package quek.undergarden.item.tool;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.chat.Component;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGItemGroups;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class UGHoeItem extends HoeItem {
 
-    public UGHoeItem(IItemTier tier, int attack, float speed) {
+    public UGHoeItem(Tier tier, int attack, float speed) {
         super(tier, attack, speed, new Properties()
                 .stacksTo(1)
                 .durability(tier.getUses())
@@ -31,9 +31,9 @@ public class UGHoeItem extends HoeItem {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         if(stack.getItem() == UGItems.FORGOTTEN_HOE.get()) {
-            tooltip.add(new TranslationTextComponent("tooltip.forgotten_tool").withStyle(TextFormatting.GREEN));
+            tooltip.add(new TranslatableComponent("tooltip.forgotten_tool").withStyle(ChatFormatting.GREEN));
         }
     }
 }

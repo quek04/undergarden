@@ -1,38 +1,38 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IGrowable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.BigMushroomFeatureConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.server.level.ServerLevel;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGFeatures;
 
 import java.util.Random;
 
-public class UGMushroomBlock extends UGBushBlock implements IGrowable {
+public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
 
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
-    public UGMushroomBlock(AbstractBlock.Properties properties) {
+    public UGMushroomBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
         if (rand.nextInt(25) == 0) {
             int i = 5;
 
@@ -63,25 +63,25 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
     }
 
     @Override
-    public boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return state.isSolidRender(worldIn, pos);
     }
 
     @Override
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
         BlockPos blockpos = pos.below();
         BlockState blockstate = worldIn.getBlockState(blockpos);
         Block block = blockstate.getBlock();
         if (block != UGBlocks.DEEPTURF_BLOCK.get() && block != UGBlocks.DEEPSOIL.get()) {
-            return worldIn.getRawBrightness(pos, 0) < 13 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.util.Direction.UP, this);
+            return worldIn.getRawBrightness(pos, 0) < 13 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.core.Direction.UP, this);
         } else {
             return true;
         }
     }
 
-    public void bigMushroom(ServerWorld world, BlockPos pos, BlockState state, Random rand) {
+    public void bigMushroom(ServerLevel world, BlockPos pos, BlockState state, Random rand) {
         world.removeBlock(pos, false);
-        ConfiguredFeature<BigMushroomFeatureConfig, ?> feature;
+        ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> feature;
         if (this == UGBlocks.BLOOD_MUSHROOM.get()) {
             feature = UGFeatures.ConfiguredFeatures.BLOOD_MUSHROOM;
         }
@@ -106,17 +106,17 @@ public class UGMushroomBlock extends UGBushBlock implements IGrowable {
     }
 
     @Override
-    public boolean isValidBonemealTarget(IBlockReader iBlockReader, BlockPos blockPos, BlockState blockState, boolean b) {
+    public boolean isValidBonemealTarget(BlockGetter iBlockReader, BlockPos blockPos, BlockState blockState, boolean b) {
         return true;
     }
 
     @Override
-    public boolean isBonemealSuccess(World world, Random random, BlockPos blockPos, BlockState blockState) {
+    public boolean isBonemealSuccess(Level world, Random random, BlockPos blockPos, BlockState blockState) {
         return (double)random.nextFloat() < 0.4D;
     }
 
     @Override
-    public void performBonemeal(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel world, Random rand, BlockPos pos, BlockState state) {
         this.bigMushroom(world, pos, state, rand);
     }
 }

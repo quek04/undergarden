@@ -2,13 +2,15 @@ package quek.undergarden.item;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
-import net.minecraft.entity.EntityType;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.item.*;
 import quek.undergarden.registry.UGItemGroups;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 import java.util.Map;
+
+import net.minecraft.world.item.SpawnEggItem;
 
 public class UGSpawnEggItem extends SpawnEggItem {
 

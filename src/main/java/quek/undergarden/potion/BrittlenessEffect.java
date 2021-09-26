@@ -1,19 +1,19 @@
 package quek.undergarden.potion;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectType;
-import net.minecraft.util.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.registry.UGEffects;
 
 @Mod.EventBusSubscriber
-public class BrittlenessEffect extends Effect {
+public class BrittlenessEffect extends MobEffect {
 
     public BrittlenessEffect() {
-        super(EffectType.HARMFUL, 9843250);
+        super(MobEffectCategory.HARMFUL, 9843250);
     }
 
     @SubscribeEvent

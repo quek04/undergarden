@@ -2,8 +2,8 @@ package quek.undergarden.data.provider;
 
 import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelProvider;
@@ -12,6 +12,15 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
+
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.WoolCarpetBlock;
 
 public abstract class UGBlockstateProvider extends BlockStateProvider {
 
@@ -57,7 +66,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         crossBlock(block, models().cross(name(block), texture(name(block))));
     }
 
-    public void stairs(Supplier<? extends StairsBlock> block, Supplier<? extends Block> fullBlock) {
+    public void stairs(Supplier<? extends StairBlock> block, Supplier<? extends Block> fullBlock) {
         stairsBlock(block.get(), texture(name(fullBlock)));
     }
 
@@ -85,7 +94,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         trapdoorBlock(block.get(), texture(name + "_trapdoor"), true);
     }
 
-    public void carpet(Supplier<? extends CarpetBlock> block) {
+    public void carpet(Supplier<? extends WoolCarpetBlock> block) {
         simpleBlock(block.get(), models().carpet(name(block), texture(name(block))));
     }
 }

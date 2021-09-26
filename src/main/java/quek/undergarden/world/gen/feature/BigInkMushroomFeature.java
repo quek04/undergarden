@@ -1,22 +1,22 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.block.HugeMushroomBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.gen.feature.BigMushroomFeatureConfig;
+import net.minecraft.world.level.block.HugeMushroomBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
 public class BigInkMushroomFeature extends UGBigMushroomFeature {
 
-    public BigInkMushroomFeature(Codec<BigMushroomFeatureConfig> codec) {
+    public BigInkMushroomFeature(Codec<HugeMushroomFeatureConfiguration> codec) {
         super(codec);
     }
 
     @Override
-    protected void makeCap(IWorld world, Random random, BlockPos pos, int y, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
+    protected void makeCap(LevelAccessor world, Random random, BlockPos pos, int y, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
         int i = config.foliageRadius;
 
         for(int j = -i; j <= i; ++j) {

@@ -1,6 +1,6 @@
 package quek.undergarden.registry;
 
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public enum UGShieldTiers {
     CLOGGRUM(672, Ingredient.of(UGItems.CLOGGRUM_INGOT.get())),

@@ -1,26 +1,26 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +31,8 @@ import quek.undergarden.world.UGTeleporter;
 
 import javax.annotation.Nullable;
 import java.util.Random;
+
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class UndergardenPortalBlock extends Block {
 
@@ -49,7 +51,7 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         switch(state.getValue(AXIS)) {
             case Z:
                 return Z_AABB;
@@ -59,7 +61,7 @@ public class UndergardenPortalBlock extends Block {
         }
     }
 
-    public boolean trySpawnPortal(IWorld worldIn, BlockPos pos) {
+    public boolean trySpawnPortal(LevelAccessor worldIn, BlockPos pos) {
         UndergardenPortalBlock.Size UndergardenPortalBlock$size = this.isPortal(worldIn, pos);
         if (UndergardenPortalBlock$size != null && !onTrySpawnPortal(worldIn, pos, UndergardenPortalBlock$size)) {
             UndergardenPortalBlock$size.placePortalBlocks();
@@ -69,7 +71,7 @@ public class UndergardenPortalBlock extends Block {
         }
     }
 
-    public static boolean onTrySpawnPortal(IWorld world, BlockPos pos, UndergardenPortalBlock.Size size) {
+    public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, UndergardenPortalBlock.Size size) {
         return MinecraftForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
     }
 
@@ -77,7 +79,7 @@ public class UndergardenPortalBlock extends Block {
     public static class PortalSpawnEvent extends BlockEvent {
         private final UndergardenPortalBlock.Size size;
 
-        public PortalSpawnEvent(IWorld world, BlockPos pos, BlockState state, UndergardenPortalBlock.Size size) {
+        public PortalSpawnEvent(LevelAccessor world, BlockPos pos, BlockState state, UndergardenPortalBlock.Size size) {
             super(world, pos, state);
             this.size = size;
         }
@@ -89,7 +91,7 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Nullable
-    public UndergardenPortalBlock.Size isPortal(IWorld worldIn, BlockPos pos) {
+    public UndergardenPortalBlock.Size isPortal(LevelAccessor worldIn, BlockPos pos) {
         UndergardenPortalBlock.Size UndergardenPortalBlock$size = new Size(worldIn, pos, Direction.Axis.X);
         if (UndergardenPortalBlock$size.isValid() && UndergardenPortalBlock$size.portalBlockCount == 0) {
             return UndergardenPortalBlock$size;
@@ -100,7 +102,7 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
         Direction.Axis direction$axis = facing.getAxis();
         Direction.Axis direction$axis1 = stateIn.getValue(AXIS);
         boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
@@ -108,7 +110,7 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Override
-    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entity) {
+    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
         if(!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
             if(entity.isOnPortalCooldown()) {
                 entity.setPortalCooldown();
@@ -117,12 +119,12 @@ public class UndergardenPortalBlock extends Block {
                 if(!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
                     entity.portalEntrancePos = pos.immutable();
                 }
-                World entityWorld = entity.level;
+                Level entityWorld = entity.level;
                 if(entityWorld != null) {
                     MinecraftServer minecraftserver = entityWorld.getServer();
-                    RegistryKey<World> destination = entity.level.dimension() == UGDimensions.UNDERGARDEN_WORLD ? World.OVERWORLD : UGDimensions.UNDERGARDEN_WORLD;
+                    ResourceKey<Level> destination = entity.level.dimension() == UGDimensions.UNDERGARDEN_WORLD ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_WORLD;
                     if(minecraftserver != null) {
-                        ServerWorld destinationWorld = minecraftserver.getLevel(destination);
+                        ServerLevel destinationWorld = minecraftserver.getLevel(destination);
                         if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
                             entity.level.getProfiler().push("undergarden_portal");
                             entity.setPortalCooldown();
@@ -137,9 +139,9 @@ public class UndergardenPortalBlock extends Block {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
         if (rand.nextInt(100) == 0) {
-            worldIn.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UGSoundEvents.UNDERGARDEN_PORTAL_AMBIENT.get(), SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
+            worldIn.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UGSoundEvents.UNDERGARDEN_PORTAL_AMBIENT.get(), SoundSource.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
         }
 
         for(int i = 0; i < 4; ++i) {
@@ -164,7 +166,7 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Override
-    public ItemStack getCloneItemStack(IBlockReader worldIn, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state) {
         return ItemStack.EMPTY;
     }
 
@@ -187,12 +189,12 @@ public class UndergardenPortalBlock extends Block {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AXIS);
     }
 
     public static class Size {
-        private final IWorld world;
+        private final LevelAccessor world;
         private final Direction.Axis axis;
         private final Direction rightDir;
         private final Direction leftDir;
@@ -202,7 +204,7 @@ public class UndergardenPortalBlock extends Block {
         private int height;
         private int width;
 
-        public Size(IWorld worldIn, BlockPos pos, Direction.Axis axisIn) {
+        public Size(LevelAccessor worldIn, BlockPos pos, Direction.Axis axisIn) {
             this.world = worldIn;
             this.axis = axisIn;
             if (axisIn == Direction.Axis.X) {

@@ -1,17 +1,17 @@
 package quek.undergarden.potion;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectType;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.core.BlockPos;
 import quek.undergarden.entity.ScintlingEntity;
 import quek.undergarden.registry.UGBlocks;
 
-public class GooeyEffect extends Effect {
+public class GooeyEffect extends MobEffect {
 
     public GooeyEffect() {
-        super(EffectType.HARMFUL, 7827026);
+        super(MobEffectCategory.HARMFUL, 7827026);
     }
 
     @Override

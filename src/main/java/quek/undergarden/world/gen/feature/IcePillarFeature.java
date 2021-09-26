@@ -1,37 +1,37 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.Random;
 
-public class IcePillarFeature extends Feature<NoFeatureConfig> {
+public class IcePillarFeature extends Feature<NoneFeatureConfiguration> {
 
-    public IcePillarFeature(Codec<NoFeatureConfig> codec) {
+    public IcePillarFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean place(WorldGenLevel reader, ChunkGenerator generator, Random rand, BlockPos pos, NoneFeatureConfiguration config) {
         if (reader.isEmptyBlock(pos) && !reader.isEmptyBlock(pos.above())) {
-            BlockPos.Mutable blockpos$mutable = pos.mutable();
-            BlockPos.Mutable blockpos$mutable1 = pos.mutable();
+            BlockPos.MutableBlockPos blockpos$mutable = pos.mutable();
+            BlockPos.MutableBlockPos blockpos$mutable1 = pos.mutable();
             boolean flag = true;
             boolean flag1 = true;
             boolean flag2 = true;
             boolean flag3 = true;
 
             while(reader.isEmptyBlock(blockpos$mutable)) {
-                if (World.isOutsideBuildHeight(blockpos$mutable)) {
+                if (Level.isOutsideBuildHeight(blockpos$mutable)) {
                     return true;
                 }
 
@@ -49,11 +49,11 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
             this.tryPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.WEST));
             this.tryPlaceIce(reader, rand, blockpos$mutable1.setWithOffset(blockpos$mutable, Direction.EAST));
             blockpos$mutable.move(Direction.DOWN);
-            BlockPos.Mutable blockpos$mutable2 = new BlockPos.Mutable();
+            BlockPos.MutableBlockPos blockpos$mutable2 = new BlockPos.MutableBlockPos();
 
             for(int i = -3; i < 8; ++i) {
                 for(int j = -3; j < 8; ++j) {
-                    int k = MathHelper.abs(i) * MathHelper.abs(j);
+                    int k = Mth.abs(i) * Mth.abs(j);
                     if (rand.nextInt(10) < 10 - k) {
                         blockpos$mutable2.set(blockpos$mutable.offset(i, 0, j));
                         int l = 3;
@@ -80,14 +80,14 @@ public class IcePillarFeature extends Feature<NoFeatureConfig> {
         }
     }
 
-    private void tryPlaceIce(IWorld world, Random rand, BlockPos pos) {
+    private void tryPlaceIce(LevelAccessor world, Random rand, BlockPos pos) {
         if (rand.nextBoolean()) {
             world.setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 2);
         }
 
     }
 
-    private boolean stopOrPlaceIce(IWorld world, Random rand, BlockPos pos) {
+    private boolean stopOrPlaceIce(LevelAccessor world, Random rand, BlockPos pos) {
         if (rand.nextInt(10) != 0) {
             world.setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 2);
             return true;

@@ -2,16 +2,16 @@ package quek.undergarden.world.gen.carver;
 
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.IChunk;
-import net.minecraft.world.gen.carver.CaveWorldCarver;
-import net.minecraft.world.gen.feature.ProbabilityConfig;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.levelgen.carver.CaveWorldCarver;
+import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGFluids;
@@ -22,7 +22,7 @@ import java.util.function.Function;
 
 public class UGCaveWorldCarver extends CaveWorldCarver {
 
-    public UGCaveWorldCarver(Codec<ProbabilityConfig> configCodec) {
+    public UGCaveWorldCarver(Codec<ProbabilityFeatureConfiguration> configCodec) {
         super(configCodec, 300);
         this.replaceableBlocks = ImmutableSet.of(
                 UGBlocks.DEPTHROCK.get(),
@@ -48,7 +48,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected boolean carveBlock(IChunk chunk, Function<BlockPos, Biome> p_230358_2_, BitSet carvingMask, Random rand, BlockPos.Mutable p_230358_5_, BlockPos.Mutable p_230358_6_, BlockPos.Mutable p_230358_7_, int p_230358_8_, int p_230358_9_, int p_230358_10_, int posX, int posZ, int p_230358_13_, int y, int p_230358_15_, MutableBoolean isSurface) {
+    protected boolean carveBlock(ChunkAccess chunk, Function<BlockPos, Biome> p_230358_2_, BitSet carvingMask, Random rand, BlockPos.MutableBlockPos p_230358_5_, BlockPos.MutableBlockPos p_230358_6_, BlockPos.MutableBlockPos p_230358_7_, int p_230358_8_, int p_230358_9_, int p_230358_10_, int posX, int posZ, int p_230358_13_, int y, int p_230358_15_, MutableBoolean isSurface) {
         int i = p_230358_13_ | p_230358_15_ << 4 | y << 8;
         if (carvingMask.get(i)) {
             return false;
@@ -79,12 +79,12 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    public boolean isStartChunk(Random rand, int chunkX, int chunkZ, ProbabilityConfig config) {
+    public boolean isStartChunk(Random rand, int chunkX, int chunkZ, ProbabilityFeatureConfiguration config) {
         return rand.nextFloat() <= config.probability;
     }
 
     @Override
-    public boolean carve(IChunk chunk, Function<BlockPos, Biome> biomePos, Random rand, int seaLevel, int chunkXOffset, int chunkZOffset, int chunkX, int chunkZ, BitSet carvingMask, ProbabilityConfig config) {
+    public boolean carve(ChunkAccess chunk, Function<BlockPos, Biome> biomePos, Random rand, int seaLevel, int chunkXOffset, int chunkZOffset, int chunkX, int chunkZ, BitSet carvingMask, ProbabilityFeatureConfiguration config) {
         int i = (this.getRange() * 2 - 1) * 16;
         int j = rand.nextInt(rand.nextInt(rand.nextInt(this.getCaveBound()) + 1) + 1);
 
@@ -137,14 +137,14 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected void genRoom(IChunk p_227205_1_, Function<BlockPos, Biome> p_227205_2_, long p_227205_3_, int seaLevel, int chunkX, int chunkZ, double randOffsetXCoord, double startY, double randOffsetZCoord, float p_227205_14_, double p_227205_15_, BitSet carvingMask) {
-        double d0 = 1.5D + (MathHelper.sin(((float)Math.PI / 2F)) * p_227205_14_);
+    protected void genRoom(ChunkAccess p_227205_1_, Function<BlockPos, Biome> p_227205_2_, long p_227205_3_, int seaLevel, int chunkX, int chunkZ, double randOffsetXCoord, double startY, double randOffsetZCoord, float p_227205_14_, double p_227205_15_, BitSet carvingMask) {
+        double d0 = 1.5D + (Mth.sin(((float)Math.PI / 2F)) * p_227205_14_);
         double d1 = d0 * p_227205_15_;
         this.carveSphere(p_227205_1_, p_227205_2_, p_227205_3_, seaLevel, chunkX, chunkZ, randOffsetXCoord + 1.0D, startY, randOffsetZCoord, d0, d1, carvingMask);
     }
 
     @Override
-    protected void genTunnel(IChunk chunk, Function<BlockPos, Biome> biomePos, long seed, int seaLevel, int chunkX, int chunkZ, double randOffsetXCoord, double startY, double randOffsetZCoord, float caveRadius, float pitch, float p_227206_16_, int p_227206_17_, int p_227206_18_, double p_227206_19_, BitSet p_227206_21_) {
+    protected void genTunnel(ChunkAccess chunk, Function<BlockPos, Biome> biomePos, long seed, int seaLevel, int chunkX, int chunkZ, double randOffsetXCoord, double startY, double randOffsetZCoord, float caveRadius, float pitch, float p_227206_16_, int p_227206_17_, int p_227206_18_, double p_227206_19_, BitSet p_227206_21_) {
         Random random = new Random(seed);
         int i = random.nextInt(p_227206_18_ / 2) + p_227206_18_ / 4;
         boolean flag = random.nextInt(6) == 0;
@@ -152,12 +152,12 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
         float f1 = 0.0F;
 
         for(int j = p_227206_17_; j < p_227206_18_; ++j) {
-            double d0 = 1.5D + (MathHelper.sin((float)Math.PI * (float)j / (float)p_227206_18_) * caveRadius);
+            double d0 = 1.5D + (Mth.sin((float)Math.PI * (float)j / (float)p_227206_18_) * caveRadius);
             double d1 = d0 * p_227206_19_;
-            float f2 = MathHelper.cos(p_227206_16_);
-            randOffsetXCoord += (MathHelper.cos(pitch) * f2);
-            startY += MathHelper.sin(p_227206_16_);
-            randOffsetZCoord += (MathHelper.sin(pitch) * f2);
+            float f2 = Mth.cos(p_227206_16_);
+            randOffsetXCoord += (Mth.cos(pitch) * f2);
+            startY += Mth.sin(p_227206_16_);
+            randOffsetZCoord += (Mth.sin(pitch) * f2);
             p_227206_16_ = p_227206_16_ * (flag ? 0.92F : 0.7F);
             p_227206_16_ = p_227206_16_ + f1 * 0.1F;
             pitch += f * 0.1F;

@@ -1,15 +1,15 @@
 package quek.undergarden.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.block.AbstractTopPlantBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MutableBoundingBox;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.gen.treedecorator.TreeDecorator;
-import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGTreeDecoratorTypes;
 
@@ -28,7 +28,7 @@ public class GrongleLeafDecorator extends TreeDecorator {
     }
 
     @Override
-    public void place(ISeedReader world, Random rand, List<BlockPos> p_225576_3_, List<BlockPos> p_225576_4_, Set<BlockPos> p_225576_5_, MutableBoundingBox boundingBox) {
+    public void place(WorldGenLevel world, Random rand, List<BlockPos> p_225576_3_, List<BlockPos> p_225576_4_, Set<BlockPos> p_225576_5_, BoundingBox boundingBox) {
         p_225576_4_.forEach((pos) -> {
             if(rand.nextInt(10) == 0) {
                 this.placeHangingLeaves(world, rand, pos.below());
@@ -36,8 +36,8 @@ public class GrongleLeafDecorator extends TreeDecorator {
         });
     }
 
-    private void placeHangingLeaves(IWorld world, Random rand, BlockPos pos) {
-        BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+    private void placeHangingLeaves(LevelAccessor world, Random rand, BlockPos pos) {
+        BlockPos.MutableBlockPos blockpos$mutable = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 100; ++i) {
             blockpos$mutable.setWithOffset(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
@@ -51,11 +51,11 @@ public class GrongleLeafDecorator extends TreeDecorator {
         }
     }
 
-    public static void placeHangingLeavesColumn(IWorld world, BlockPos.Mutable posMutable, int length) {
+    public static void placeHangingLeavesColumn(LevelAccessor world, BlockPos.MutableBlockPos posMutable, int length) {
         for(int i = 0; i <= length; ++i) {
             if (world.isEmptyBlock(posMutable)) {
                 if (i == length || !world.isEmptyBlock(posMutable.below())) {
-                    world.setBlock(posMutable, UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get().defaultBlockState().setValue(AbstractTopPlantBlock.AGE, 25), 2);
+                    world.setBlock(posMutable, UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, 25), 2);
                     break;
                 }
 

@@ -3,15 +3,15 @@ package quek.undergarden.entity.stoneborn.trading;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.entity.merchant.villager.VillagerTrades;
-import net.minecraft.item.Items;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.item.Items;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 public class StonebornTrades {
 
-    public static final Int2ObjectMap<VillagerTrades.ITrade[]> STONEBORN_TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1,
-            new VillagerTrades.ITrade[] {
+    public static final Int2ObjectMap<VillagerTrades.ItemListing[]> STONEBORN_TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(1,
+            new VillagerTrades.ItemListing[] {
                     new BuyForRegaliumTrade(UGItems.REGALIUM_INGOT.get(), UGItems.LIMAX_MAXIMUS_DISC.get(), 32, 1, 1, 25),
                     new BuyForRegaliumTrade(UGItems.REGALIUM_INGOT.get(), UGItems.GLOOMPER_ANTHEM_DISC.get(), 32, 1, 1, 25),
                     new SellForRegaliumTrade(UGItems.REGALIUM_INGOT.get(), UGItems.MAMMOTH_DISC.get(), 32, 1, 1, 25),

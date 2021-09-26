@@ -1,18 +1,18 @@
 package quek.undergarden.world.gen.structure;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 
-public abstract class AbstractUndergardenStructure extends Structure<NoFeatureConfig> {
+public abstract class AbstractUndergardenStructure extends StructureFeature<NoneFeatureConfiguration> {
 
-    public AbstractUndergardenStructure(Codec<NoFeatureConfig> codec) {
+    public AbstractUndergardenStructure(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
     }
 
     @Override
-    public GenerationStage.Decoration step() {
-        return GenerationStage.Decoration.SURFACE_STRUCTURES;
+    public GenerationStep.Decoration step() {
+        return GenerationStep.Decoration.SURFACE_STRUCTURES;
     }
 }

@@ -1,16 +1,18 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractTopPlantBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.PlantBlockHelper;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.NetherVines;
+import net.minecraft.core.Direction;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class MushroomVeilTopBlock extends AbstractTopPlantBlock {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class MushroomVeilTopBlock extends GrowingPlantHeadBlock {
 
     public MushroomVeilTopBlock(Properties properties, Direction direction, VoxelShape shape, boolean waterloggable, double growthChance) {
         super(properties, direction, shape, waterloggable, growthChance);
@@ -18,12 +20,12 @@ public class MushroomVeilTopBlock extends AbstractTopPlantBlock {
 
     @Override
     protected int getBlocksToGrowWhenBonemealed(Random rand) {
-        return PlantBlockHelper.getBlocksToGrowWhenBonemealed(rand);
+        return NetherVines.getBlocksToGrowWhenBonemealed(rand);
     }
 
     @Override
     protected boolean canGrowInto(BlockState state) {
-        return PlantBlockHelper.isValidGrowthState(state);
+        return NetherVines.isValidGrowthState(state);
     }
 
     @Override

@@ -2,14 +2,14 @@ package quek.undergarden.world.gen.trunkplacer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MutableBoundingBox;
-import net.minecraft.world.gen.IWorldGenerationReader;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.TreeFeature;
-import net.minecraft.world.gen.foliageplacer.FoliagePlacer;
-import net.minecraft.world.gen.trunkplacer.MegaJungleTrunkPlacer;
-import net.minecraft.world.gen.trunkplacer.TrunkPlacerType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.LevelSimulatedRW;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGTrunkPlacerTypes;
 
@@ -32,7 +32,7 @@ public class GrongleTrunkPlacer extends MegaJungleTrunkPlacer {
     }
 
     @Override
-    public List<FoliagePlacer.Foliage> placeTrunk(IWorldGenerationReader world, Random rand, int y, BlockPos pos, Set<BlockPos> posSet, MutableBoundingBox boundingBox, BaseTreeFeatureConfig config) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedRW world, Random rand, int y, BlockPos pos, Set<BlockPos> posSet, BoundingBox boundingBox, TreeConfiguration config) {
         BlockPos blockpos = pos.below();
         TreeFeature.setBlockKnownShape(world, blockpos, UGBlocks.DEEPSOIL.get().defaultBlockState());
         TreeFeature.setBlockKnownShape(world, blockpos.east(), UGBlocks.DEEPSOIL.get().defaultBlockState());

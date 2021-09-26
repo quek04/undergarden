@@ -1,18 +1,18 @@
 package quek.undergarden.potion;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.registry.UGEffects;
 
 @Mod.EventBusSubscriber
-public class FeatherweightEffect extends Effect {
+public class FeatherweightEffect extends MobEffect {
 
     public FeatherweightEffect() {
-        super(EffectType.HARMFUL, 13158655);
+        super(MobEffectCategory.HARMFUL, 13158655);
     }
 
     @SubscribeEvent

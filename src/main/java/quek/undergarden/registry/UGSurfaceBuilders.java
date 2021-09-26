@@ -1,7 +1,7 @@
 package quek.undergarden.registry;
 
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilderBaseConfiguration;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -12,5 +12,5 @@ public class UGSurfaceBuilders {
 
     public static final DeferredRegister<SurfaceBuilder<?>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, Undergarden.MODID);
 
-    public static final RegistryObject<SurfaceBuilder<SurfaceBuilderConfig>> FROSTFIELDS = SURFACE_BUILDERS.register("frostfields", () -> new FrostfieldsSurfaceBuilder(SurfaceBuilderConfig.CODEC));
+    public static final RegistryObject<SurfaceBuilder<SurfaceBuilderBaseConfiguration>> FROSTFIELDS = SURFACE_BUILDERS.register("frostfields", () -> new FrostfieldsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC));
 }

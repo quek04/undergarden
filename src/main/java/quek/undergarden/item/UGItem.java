@@ -1,11 +1,11 @@
 package quek.undergarden.item;
 
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.Rarity;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import quek.undergarden.registry.UGItemGroups;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
 
 public class UGItem extends Item {
 
@@ -22,7 +22,7 @@ public class UGItem extends Item {
         );
     }
 
-    public UGItem(Food food) {
+    public UGItem(FoodProperties food) {
         super(new Properties()
                 .food(food)
                 .tab(UGItemGroups.GROUP));

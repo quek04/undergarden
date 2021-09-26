@@ -1,25 +1,25 @@
 package quek.undergarden.entity.stoneborn;
 
 import com.google.common.collect.Sets;
-import net.minecraft.block.BlockState;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.item.ExperienceOrbEntity;
-import net.minecraft.entity.merchant.IMerchant;
-import net.minecraft.entity.merchant.villager.VillagerTrades;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.MerchantOffer;
-import net.minecraft.item.MerchantOffers;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.item.trading.Merchant;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.MerchantOffers;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -36,18 +36,35 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
-public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, IMerchant {
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.npc.Npc;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+
+public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchant {
 
     protected int timeOutOfUG = 0;
-    private static final RangedInteger ANGER_TIME_RANGE = TickRangeConverter.rangeOfSeconds(20, 39);
+    private static final IntRange ANGER_TIME_RANGE = TimeUtil.rangeOfSeconds(20, 39);
     private int angerTime;
     private UUID targetUuid;
     @Nullable
-    private PlayerEntity customer;
+    private Player customer;
     @Nullable
     protected MerchantOffers offers;
 
-    public StonebornEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+    public StonebornEntity(EntityType<? extends Monster> type, Level worldIn) {
         super(type, worldIn);
         this.maxUpStep = 1.0F;
     }
@@ -56,16 +73,16 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new StonebornTradeWithPlayerGoal(this));
         this.goalSelector.addGoal(1, new StonebornLookAtCustomerGoal(this));
-        this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 0.3D));
-        this.goalSelector.addGoal(3, new LookAtGoal(this, LivingEntity.class, 32.0F));
-        this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.3D));
+        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, LivingEntity.class, 32.0F));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0D, true));
 
         this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)).setAlertOthers());
     }
 
-    public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MonsterEntity.createMobAttributes()
+    public static AttributeSupplier.Builder registerAttributes() {
+        return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 50.0D)
                 .add(Attributes.ARMOR, 10.0D)
                 .add(Attributes.ATTACK_DAMAGE, 10.0D)
@@ -73,7 +90,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
     }
 
-    public static boolean canStonebornSpawn(EntityType<? extends MonsterEntity> type, IWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn) {
+    public static boolean canStonebornSpawn(EntityType<? extends Monster> type, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {
         return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextInt(10) == 0 && checkMobSpawnRules(type, worldIn, reason, pos, randomIn);
     }
 
@@ -116,18 +133,18 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public ActionResultType mobInteract(PlayerEntity player, Hand playerHand) {
+    public InteractionResult mobInteract(Player player, InteractionHand playerHand) {
         ItemStack itemstack = player.getItemInHand(playerHand);
         if (itemstack.getItem() != UGItems.STONEBORN_SPAWN_EGG.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
             if (this.getOffers().isEmpty()) {
-                return ActionResultType.sidedSuccess(this.level.isClientSide);
+                return InteractionResult.sidedSuccess(this.level.isClientSide);
             } else {
                 if (!this.level.isClientSide) {
                     this.setTradingPlayer(player);
                     this.openTradingScreen(player, this.getDisplayName(), 1);
                 }
 
-                return ActionResultType.sidedSuccess(this.level.isClientSide);
+                return InteractionResult.sidedSuccess(this.level.isClientSide);
             }
         } else {
             return super.mobInteract(player, playerHand);
@@ -139,7 +156,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         super.tick();
         if (!this.inUndergarden()) {
             ++this.timeOutOfUG;
-            this.addEffect(new EffectInstance(Effects.CONFUSION, 300, 0));
+            this.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 300, 0));
         }
         else {
             this.timeOutOfUG = 0;
@@ -149,7 +166,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
             this.playSound(UGSoundEvents.STONEBORN_CHANT.get(), 1.0F, 1.0F);
             this.remove();
             if (!this.level.isClientSide) {
-                Explosion.Mode explosionType = this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) ? Explosion.Mode.BREAK : Explosion.Mode.NONE;
+                Explosion.BlockInteraction explosionType = this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
                 this.level.explode(this, this.getX(), this.getY(), this.getZ(), 3, explosionType);
             }
         }
@@ -166,13 +183,13 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundNBT nbt) {
+    public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         this.timeOutOfUG = nbt.getInt("TimeOutOfUndergarden");
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundNBT nbt) {
+    public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         nbt.putInt("TimeOutOfUndergarden", this.timeOutOfUG);
     }
@@ -204,13 +221,13 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public void setTradingPlayer(@Nullable PlayerEntity player) {
+    public void setTradingPlayer(@Nullable Player player) {
         this.customer = player;
     }
 
     @Nullable
     @Override
-    public PlayerEntity getTradingPlayer() {
+    public Player getTradingPlayer() {
         return this.customer;
     }
 
@@ -229,14 +246,14 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     protected void populateTradeData() {
-        VillagerTrades.ITrade[] trades = StonebornTrades.STONEBORN_TRADES.get(1);
+        VillagerTrades.ItemListing[] trades = StonebornTrades.STONEBORN_TRADES.get(1);
         if (trades != null) {
             MerchantOffers merchantoffers = this.getOffers();
             this.addTrades(merchantoffers, trades, 4);
         }
     }
 
-    protected void addTrades(MerchantOffers givenMerchantOffers, VillagerTrades.ITrade[] newTrades, int maxNumbers) {
+    protected void addTrades(MerchantOffers givenMerchantOffers, VillagerTrades.ItemListing[] newTrades, int maxNumbers) {
         Set<Integer> set = Sets.newHashSet();
         if (newTrades.length > maxNumbers) {
             while(set.size() < maxNumbers) {
@@ -249,7 +266,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         }
 
         for(Integer integer : set) {
-            VillagerTrades.ITrade villagertrades$itrade = newTrades[integer];
+            VillagerTrades.ItemListing villagertrades$itrade = newTrades[integer];
             MerchantOffer merchantoffer = villagertrades$itrade.getOffer(this, this.random);
             if (merchantoffer != null) {
                 givenMerchantOffers.add(merchantoffer);
@@ -266,15 +283,15 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
         offer.increaseUses();
         this.ambientSoundTime = -this.getAmbientSoundInterval();
         this.onStonebornTrade(offer);
-        if (this.customer instanceof ServerPlayerEntity) {
-            UGCriteria.STONEBORN_TRADE.test((ServerPlayerEntity)this.customer, this, offer.getResult());
+        if (this.customer instanceof ServerPlayer) {
+            UGCriteria.STONEBORN_TRADE.test((ServerPlayer)this.customer, this, offer.getResult());
         }
     }
 
     protected void onStonebornTrade(MerchantOffer offer) {
         if (offer.shouldRewardExp()) {
             int i = 3 + this.random.nextInt(4);
-            this.level.addFreshEntity(new ExperienceOrbEntity(this.level, this.getX(), this.getY() + 0.5D, this.getZ(), i));
+            this.level.addFreshEntity(new ExperienceOrb(this.level, this.getX(), this.getY() + 0.5D, this.getZ(), i));
         }
     }
 
@@ -287,7 +304,7 @@ public class StonebornEntity extends MonsterEntity implements IAngerable, INPC, 
     }
 
     @Override
-    public World getLevel() {
+    public Level getLevel() {
         return this.level;
     }
 

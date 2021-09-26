@@ -1,15 +1,15 @@
 package quek.undergarden.client.render.entity;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.NargoyleModel;
 import quek.undergarden.entity.cavern.NargoyleEntity;
 
 public class NargoyleRender extends MobRenderer<NargoyleEntity, NargoyleModel<NargoyleEntity>> {
 
-    public NargoyleRender(EntityRendererManager renderManagerIn) {
+    public NargoyleRender(EntityRenderDispatcher renderManagerIn) {
         super(renderManagerIn, new NargoyleModel<>(), 0.8F);
     }
 

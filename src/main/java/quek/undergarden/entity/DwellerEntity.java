@@ -1,26 +1,26 @@
 package quek.undergarden.entity;
 
-import net.minecraft.block.BlockState;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
@@ -30,35 +30,57 @@ import quek.undergarden.registry.UGSoundEvents;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable {
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.AgableMob;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ItemBasedSteering;
+import net.minecraft.world.entity.ItemSteerable;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.Saddleable;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.goal.BreedGoal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.FollowParentGoal;
+import net.minecraft.world.entity.ai.goal.PanicGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 
-    private static final DataParameter<Boolean> SADDLE = EntityDataManager.defineId(DwellerEntity.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Integer> BOOST_TIME = EntityDataManager.defineId(DwellerEntity.class, DataSerializers.INT);
-    private final BoostHelper steering = new BoostHelper(this.entityData, BOOST_TIME, SADDLE);
+public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
 
-    public DwellerEntity(EntityType<? extends DwellerEntity> type, World worldIn) {
+    private static final EntityDataAccessor<Boolean> SADDLE = SynchedEntityData.defineId(DwellerEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> BOOST_TIME = SynchedEntityData.defineId(DwellerEntity.class, EntityDataSerializers.INT);
+    private final ItemBasedSteering steering = new ItemBasedSteering(this.entityData, BOOST_TIME, SADDLE);
+
+    public DwellerEntity(EntityType<? extends DwellerEntity> type, Level worldIn) {
         super(type, worldIn);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new SwimGoal(this));
+        this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.UNDERBEANS.get(), UGItems.UNDERBEAN_STICK.get()), false));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0D, 2.5D));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
     }
 
-    public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return AnimalEntity.createMobAttributes()
+    public static AttributeSupplier.Builder registerAttributes() {
+        return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 15.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.15D);
     }
 
-    public static boolean canDwellerSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
+    public static boolean canDwellerSpawn(EntityType<? extends Animal> animal, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random random) {
         return worldIn.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get()) || worldIn.getBlockState(pos.below()).is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
     }
 
@@ -84,7 +106,7 @@ public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable
 
     @Nullable
     @Override
-    public AgeableEntity getBreedOffspring(ServerWorld serverWorld, AgeableEntity ageableEntity) {
+    public AgableMob getBreedOffspring(ServerLevel serverWorld, AgableMob ageableEntity) {
         return UGEntityTypes.DWELLER.get().create(level);
     }
 
@@ -94,13 +116,13 @@ public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundNBT nbt) {
+    public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         this.steering.addAdditionalSaveData(nbt);
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundNBT nbt) {
+    public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.steering.readAdditionalSaveData(nbt);
     }
@@ -113,7 +135,7 @@ public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable
     }
 
     @Override
-    public void onSyncedDataUpdated(DataParameter<?> data) {
+    public void onSyncedDataUpdated(EntityDataAccessor<?> data) {
         if (BOOST_TIME.equals(data) && this.level.isClientSide) {
             this.steering.onSynced();
         }
@@ -121,20 +143,20 @@ public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable
     }
 
     @Override
-    public ActionResultType mobInteract(PlayerEntity player, Hand hand) {
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
         boolean isFood = this.isFood(player.getItemInHand(hand));
         if (!isFood && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
             if (!this.level.isClientSide) {
                 player.startRiding(this);
             }
 
-            return ActionResultType.sidedSuccess(this.level.isClientSide);
+            return InteractionResult.sidedSuccess(this.level.isClientSide);
         }
         else {
-            ActionResultType actionresulttype = super.mobInteract(player, hand);
+            InteractionResult actionresulttype = super.mobInteract(player, hand);
             if (!actionresulttype.consumesAction()) {
                 ItemStack itemstack = player.getItemInHand(hand);
-                return itemstack.getItem() == Items.SADDLE ? itemstack.interactLivingEntity(player, this, hand) : ActionResultType.PASS;
+                return itemstack.getItem() == Items.SADDLE ? itemstack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
             }
             else {
                 return actionresulttype;
@@ -148,7 +170,7 @@ public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable
     }
 
     @Override
-    public void equipSaddle(@Nullable SoundCategory sound) {
+    public void equipSaddle(@Nullable SoundSource sound) {
         this.steering.setSaddle(true);
         if (sound != null) {
             this.level.playSound(null, this, SoundEvents.PIG_SADDLE, sound, 0.5F, 1.0F);
@@ -166,12 +188,12 @@ public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable
     }
 
     @Override
-    public void travel(Vector3d vector) {
+    public void travel(Vec3 vector) {
         this.travel(this, this.steering, vector);
     }
 
     @Override
-    public void travelWithInput(Vector3d vector) {
+    public void travelWithInput(Vec3 vector) {
         super.travel(vector);
     }
 
@@ -188,11 +210,11 @@ public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable
     @Override
     public boolean canBeControlledByRider() {
         Entity entity = this.getControllingPassenger();
-        if (!(entity instanceof PlayerEntity)) {
+        if (!(entity instanceof Player)) {
             return false;
         }
         else {
-            PlayerEntity playerentity = (PlayerEntity)entity;
+            Player playerentity = (Player)entity;
             return playerentity.getMainHandItem().getItem() == UGItems.UNDERBEAN_STICK.get() || playerentity.getOffhandItem().getItem() == UGItems.UNDERBEAN_STICK.get();
         }
     }
@@ -207,8 +229,8 @@ public class DwellerEntity extends AnimalEntity implements IRideable, IEquipable
 
     @Override
     public void positionRider(Entity passenger) {
-        float ySin = MathHelper.sin(this.yBodyRot * ((float)Math.PI / 180F));
-        float yCos = MathHelper.cos(this.yBodyRot * ((float)Math.PI / 180F));
+        float ySin = Mth.sin(this.yBodyRot * ((float)Math.PI / 180F));
+        float yCos = Mth.cos(this.yBodyRot * ((float)Math.PI / 180F));
         passenger.setPos(this.getX() + (double)(0.5F * ySin), this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset() - 0.1F, this.getZ() - (double)(0.5F * yCos));
     }
 }

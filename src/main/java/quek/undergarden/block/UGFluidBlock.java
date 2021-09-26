@@ -1,28 +1,30 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.fluid.FlowingFluid;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGFluids;
 import quek.undergarden.registry.UGTags;
 
 import java.util.function.Supplier;
 
-public class UGFluidBlock extends FlowingFluidBlock {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class UGFluidBlock extends LiquidBlock {
 
     public UGFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
         super(supplier, properties.noCollission().strength(100F).noDrops());
     }
 
     @Override
-    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
+    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
         if(this.getFluid() == UGFluids.VIRULENT_MIX_SOURCE.get() || this.getFluid() == UGFluids.VIRULENT_MIX_FLOWING.get()) {
             if(entityIn.isAlive() && entityIn instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityIn;
@@ -32,7 +34,7 @@ public class UGFluidBlock extends FlowingFluidBlock {
                 else if(livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) {
 
                 }
-                else livingEntity.addEffect(new EffectInstance(Effects.POISON, 600, 0));
+                else livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 600, 0));
             }
         }
     }

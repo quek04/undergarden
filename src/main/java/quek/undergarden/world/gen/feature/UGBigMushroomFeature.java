@@ -1,14 +1,14 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.world.gen.feature.AbstractBigMushroomFeature;
-import net.minecraft.world.gen.feature.BigMushroomFeatureConfig;
+import net.minecraft.world.level.levelgen.feature.AbstractHugeMushroomFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 
 import java.util.Random;
 
-public abstract class UGBigMushroomFeature extends AbstractBigMushroomFeature {
+public abstract class UGBigMushroomFeature extends AbstractHugeMushroomFeature {
 
-    public UGBigMushroomFeature(Codec<BigMushroomFeatureConfig> codec) {
+    public UGBigMushroomFeature(Codec<HugeMushroomFeatureConfiguration> codec) {
         super(codec);
     }
 

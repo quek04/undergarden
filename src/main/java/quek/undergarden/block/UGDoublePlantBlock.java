@@ -1,10 +1,12 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DoublePlantBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
 import quek.undergarden.registry.UGBlocks;
+
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class UGDoublePlantBlock extends DoublePlantBlock {
 
@@ -13,7 +15,7 @@ public class UGDoublePlantBlock extends DoublePlantBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return state.is(UGBlocks.DEEPTURF_BLOCK.get()) || state.is(UGBlocks.DEEPSOIL.get()) || state.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get());
     }
 }

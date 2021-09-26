@@ -1,10 +1,12 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.KelpTopBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.KelpBlock;
 import quek.undergarden.registry.UGBlocks;
 
-public class GlowingKelpTopBlock extends KelpTopBlock {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class GlowingKelpTopBlock extends KelpBlock {
 
     public GlowingKelpTopBlock(Properties properties) {
         super(properties);

@@ -1,22 +1,29 @@
 package quek.undergarden.data.provider;
 
-import net.minecraft.block.AbstractSignBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.world.level.block.SignBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.data.*;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.item.SignItem;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.tags.ITag;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.tags.Tag;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 import java.util.function.Supplier;
+
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
+import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 
 public class UGRecipeProvider extends RecipeProvider {
 
@@ -24,7 +31,7 @@ public class UGRecipeProvider extends RecipeProvider {
         super(generatorIn);
     }
 
-    public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, ITag.INamedTag<Item> logIn) {
+    public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, Tag.Named<Item> logIn) {
         return ShapelessRecipeBuilder.shapeless(plankOut.get(), 4)
                 .requires(logIn)
                 .unlockedBy("has_" + logIn.getName(), has(logIn));
@@ -257,7 +264,7 @@ public class UGRecipeProvider extends RecipeProvider {
                 .unlockedBy("in_water", insideOf(Blocks.WATER));
     }
 
-    public ShapedRecipeBuilder makeSign(Supplier<? extends AbstractSignBlock> signOut, Supplier<? extends Block> planksIn) {
+    public ShapedRecipeBuilder makeSign(Supplier<? extends SignBlock> signOut, Supplier<? extends Block> planksIn) {
         return ShapedRecipeBuilder.shaped(signOut.get(), 3)
                 .pattern("PPP")
                 .pattern("PPP")
@@ -267,91 +274,91 @@ public class UGRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_" + planksIn.get().getRegistryName().getPath(), has(planksIn.get()));
     }
 
-    public CookingRecipeBuilder smeltingRecipe(IItemProvider result, IItemProvider ingredient, float exp) {
+    public SimpleCookingRecipeBuilder smeltingRecipe(ItemLike result, ItemLike ingredient, float exp) {
         return smeltingRecipe(result, ingredient, exp, 1);
     }
 
-    public CookingRecipeBuilder smeltingRecipe(IItemProvider result, IItemProvider ingredient, float exp, int count) {
-        return CookingRecipeBuilder.smelting(Ingredient.of(new ItemStack(ingredient, count)), result, exp, 200)
+    public SimpleCookingRecipeBuilder smeltingRecipe(ItemLike result, ItemLike ingredient, float exp, int count) {
+        return SimpleCookingRecipeBuilder.smelting(Ingredient.of(new ItemStack(ingredient, count)), result, exp, 200)
                 .unlockedBy("has_" + ingredient.asItem().getRegistryName(), has(ingredient));
     }
 
-    public CookingRecipeBuilder smeltingRecipeTag(IItemProvider result, ITag.INamedTag<Item> ingredient, float exp) {
+    public SimpleCookingRecipeBuilder smeltingRecipeTag(ItemLike result, Tag.Named<Item> ingredient, float exp) {
         return smeltingRecipeTag(result, ingredient, exp, 1);
     }
 
-    public CookingRecipeBuilder smeltingRecipeTag(IItemProvider result, ITag.INamedTag<Item> ingredient, float exp, int count) {
-        return CookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, exp, 200)
+    public SimpleCookingRecipeBuilder smeltingRecipeTag(ItemLike result, Tag.Named<Item> ingredient, float exp, int count) {
+        return SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, exp, 200)
                 .unlockedBy("has_" + ingredient, has(ingredient));
     }
 
-    public CookingRecipeBuilder blastingRecipe(IItemProvider result, IItemProvider ingredient, float exp) {
+    public SimpleCookingRecipeBuilder blastingRecipe(ItemLike result, ItemLike ingredient, float exp) {
         return blastingRecipe(result, ingredient, exp, 1);
     }
 
-    public CookingRecipeBuilder blastingRecipe(IItemProvider result, IItemProvider ingredient, float exp, int count) {
-        return CookingRecipeBuilder.blasting(Ingredient.of(new ItemStack(ingredient, count)), result, exp, 100)
+    public SimpleCookingRecipeBuilder blastingRecipe(ItemLike result, ItemLike ingredient, float exp, int count) {
+        return SimpleCookingRecipeBuilder.blasting(Ingredient.of(new ItemStack(ingredient, count)), result, exp, 100)
                 .unlockedBy("has_" + ingredient.asItem().getRegistryName(), has(ingredient));
     }
 
-    public CookingRecipeBuilder blastingRecipeTag(IItemProvider result, ITag.INamedTag<Item> ingredient, float exp) {
+    public SimpleCookingRecipeBuilder blastingRecipeTag(ItemLike result, Tag.Named<Item> ingredient, float exp) {
         return blastingRecipeTag(result, ingredient, exp, 1);
     }
 
-    public CookingRecipeBuilder blastingRecipeTag(IItemProvider result, ITag.INamedTag<Item> ingredient, float exp, int count) {
-        return CookingRecipeBuilder.blasting(Ingredient.of(ingredient), result, exp, 100)
+    public SimpleCookingRecipeBuilder blastingRecipeTag(ItemLike result, Tag.Named<Item> ingredient, float exp, int count) {
+        return SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), result, exp, 100)
                 .unlockedBy("has_" + ingredient, has(ingredient));
     }
 
-    public CookingRecipeBuilder smokingRecipe(IItemProvider result, IItemProvider ingredient, float exp) {
+    public SimpleCookingRecipeBuilder smokingRecipe(ItemLike result, ItemLike ingredient, float exp) {
         return smokingRecipe(result, ingredient, exp, 1);
     }
 
-    public CookingRecipeBuilder smokingRecipe(IItemProvider result, IItemProvider ingredient, float exp, int count) {
-        return CookingRecipeBuilder.cooking(Ingredient.of(new ItemStack(ingredient, count)), result, exp, 100, IRecipeSerializer.SMOKING_RECIPE)
+    public SimpleCookingRecipeBuilder smokingRecipe(ItemLike result, ItemLike ingredient, float exp, int count) {
+        return SimpleCookingRecipeBuilder.cooking(Ingredient.of(new ItemStack(ingredient, count)), result, exp, 100, RecipeSerializer.SMOKING_RECIPE)
                 .unlockedBy("has_" + ingredient.asItem().getRegistryName(), has(ingredient));
     }
 
-    public SmithingRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> result) {
-        return SmithingRecipeBuilder.smithing(Ingredient.of(input.get()), Ingredient.of(upgradeItem.get()), result.get())
+    public UpgradeRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> result) {
+        return UpgradeRecipeBuilder.smithing(Ingredient.of(input.get()), Ingredient.of(upgradeItem.get()), result.get())
                 .unlocks("has_" + upgradeItem.get().getRegistryName(), has(upgradeItem.get()));
     }
 
-    public SmithingRecipeBuilder smithingForgotten(Supplier<Item> input, Supplier<Item> result) {
+    public UpgradeRecipeBuilder smithingForgotten(Supplier<Item> input, Supplier<Item> result) {
         return smithingRecipe(input, UGItems.FORGOTTEN_INGOT, result);
     }
 
-    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, IItemProvider result) {
+    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, ItemLike result) {
         return SingleItemRecipeBuilder.stonecutting(Ingredient.of(input.get()), result)
                 .unlocks("has_" + input.get().getRegistryName(), has(input.get()));
     }
 
-    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, IItemProvider result, int resultAmount) {
+    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, ItemLike result, int resultAmount) {
         return SingleItemRecipeBuilder.stonecutting(Ingredient.of(input.get()), result, resultAmount)
                 .unlocks("has_" + input.get().getRegistryName(), has(input.get()));
     }
 
-    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(IItemProvider result) {
+    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(ItemLike result) {
         return stonecuttingRecipe(UGBlocks.DEPTHROCK, result);
     }
 
-    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(IItemProvider result, int resultAmount) {
+    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(ItemLike result, int resultAmount) {
         return stonecuttingRecipe(UGBlocks.DEPTHROCK, result, resultAmount);
     }
 
-    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(IItemProvider result) {
+    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(ItemLike result) {
         return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result);
     }
 
-    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(IItemProvider result, int resultAmount) {
+    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(ItemLike result, int resultAmount) {
         return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result, resultAmount);
     }
 
-    public SingleItemRecipeBuilder tremblecrustStonecuttingRecipe(IItemProvider result) {
+    public SingleItemRecipeBuilder tremblecrustStonecuttingRecipe(ItemLike result) {
         return stonecuttingRecipe(UGBlocks.TREMBLECRUST, result);
     }
 
-    public SingleItemRecipeBuilder tremblecrustStonecuttingRecipe(IItemProvider result, int resultAmount) {
+    public SingleItemRecipeBuilder tremblecrustStonecuttingRecipe(ItemLike result, int resultAmount) {
         return stonecuttingRecipe(UGBlocks.TREMBLECRUST, result, resultAmount);
     }
 }

@@ -1,29 +1,29 @@
 package quek.undergarden.entity;
 
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.AreaEffectCloudEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.JumpController;
-import net.minecraft.entity.ai.controller.MovementController;
+import net.minecraft.world.entity.AgableMob;
+import net.minecraft.world.entity.AreaEffectCloud;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.JumpControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.pathfinding.Path;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.pathfinder.Path;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
@@ -32,14 +32,27 @@ import quek.undergarden.registry.*;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class GloomperEntity extends AnimalEntity {
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.goal.BreedGoal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.FollowParentGoal;
+import net.minecraft.world.entity.ai.goal.PanicGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+
+public class GloomperEntity extends Animal {
 
     private int jumpTicks;
     private int jumpDuration;
     private boolean wasOnGround;
     private int currentMoveTypeDuration;
 
-    public GloomperEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
+    public GloomperEntity(EntityType<? extends Animal> type, Level worldIn) {
         super(type, worldIn);
         this.jumpControl = new JumpHelperController(this);
         this.moveControl = new GloomperEntity.MoveHelperController(this);
@@ -49,23 +62,23 @@ public class GloomperEntity extends AnimalEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new SwimGoal(this));
+        this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0F, 2.5F));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(UGBlocks.GLOOMGOURD.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
     }
 
-    public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return AnimalEntity.createMobAttributes()
+    public static AttributeSupplier.Builder registerAttributes() {
+        return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
-    public static boolean canGloomperSpawn(EntityType<? extends AnimalEntity> animal, IWorld worldIn, SpawnReason reason, BlockPos pos, Random random) {
+    public static boolean canGloomperSpawn(EntityType<? extends Animal> animal, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random random) {
         return worldIn.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get());
     }
 
@@ -86,7 +99,7 @@ public class GloomperEntity extends AnimalEntity {
 
     @Nullable
     @Override
-    public AgeableEntity getBreedOffspring(ServerWorld serverWorld, AgeableEntity ageableEntity) {
+    public AgableMob getBreedOffspring(ServerLevel serverWorld, AgableMob ageableEntity) {
         return UGEntityTypes.GLOOMPER.get().create(level);
     }
 
@@ -105,7 +118,7 @@ public class GloomperEntity extends AnimalEntity {
         if (!this.horizontalCollision && (!this.moveControl.hasWanted() || !(this.moveControl.getWantedY() > this.getY() + 0.5D))) {
             Path path = this.navigation.getPath();
             if (path != null && !path.isDone()) {
-                Vector3d vector3d = path.getNextEntityPos(this);
+                Vec3 vector3d = path.getNextEntityPos(this);
                 if (vector3d.y > this.getY() + 0.5D) {
                     return 0.5F;
                 }
@@ -124,7 +137,7 @@ public class GloomperEntity extends AnimalEntity {
         if (d0 > 0.0D) {
             double d1 = getHorizontalDistanceSqr(this.getDeltaMovement());
             if (d1 < 0.01D) {
-                this.moveRelative(0.1F, new Vector3d(0.0D, 0.0D, 1.0D));
+                this.moveRelative(0.1F, new Vec3(0.0D, 0.0D, 1.0D));
             }
         }
 
@@ -175,7 +188,7 @@ public class GloomperEntity extends AnimalEntity {
             if (!jumpController.getIsJumping()) {
                 if (this.moveControl.hasWanted() && this.currentMoveTypeDuration == 0) {
                     Path path = this.navigation.getPath();
-                    Vector3d vector3d = new Vector3d(this.moveControl.getWantedX(), this.moveControl.getWantedY(), this.moveControl.getWantedZ());
+                    Vec3 vector3d = new Vec3(this.moveControl.getWantedX(), this.moveControl.getWantedY(), this.moveControl.getWantedZ());
                     if (path != null && !path.isDone()) {
                         vector3d = path.getNextEntityPos(this);
                     }
@@ -197,7 +210,7 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     private void calculateRotationYaw(double x, double z) {
-        this.yRot = (float)(MathHelper.atan2(z - this.getZ(), x - this.getX()) * (double)(180F / (float)Math.PI)) - 90.0F;
+        this.yRot = (float)(Mth.atan2(z - this.getZ(), x - this.getX()) * (double)(180F / (float)Math.PI)) - 90.0F;
     }
 
     private void enableJumpControl() {
@@ -249,7 +262,7 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @Override
-    public ActionResultType mobInteract(PlayerEntity player, Hand hand) {
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if(stack.getItem() == UGItems.GLOOMPER_ANTHEM_DISC.get() && this.isAlive()) {
             if(!this.level.isClientSide) {
@@ -259,21 +272,21 @@ public class GloomperEntity extends AnimalEntity {
             if (!player.abilities.instabuild) {
                 stack.shrink(1);
             }
-            return ActionResultType.sidedSuccess(this.level.isClientSide);
+            return InteractionResult.sidedSuccess(this.level.isClientSide);
         }
         else return super.mobInteract(player, hand);
     }
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(this.level, this.getX(), this.getY(), this.getZ());
+        AreaEffectCloud cloud = new AreaEffectCloud(this.level, this.getX(), this.getY(), this.getZ());
 
         cloud.setParticle(UGParticleTypes.GLOOMPER_FART.get());
         cloud.setRadius(3.0F);
         cloud.setRadiusOnUse(-0.5F);
         cloud.setWaitTime(10);
         cloud.setRadiusPerTick(-cloud.getRadius() / (float)cloud.getDuration());
-        cloud.addEffect(new EffectInstance(Effects.POISON, 100, 0));
+        cloud.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 0));
 
         if(this.random.nextInt(2) == 0) {
             this.playSound(UGSoundEvents.GLOOMPER_FART.get(), 1.0F, 1.0F);
@@ -284,15 +297,15 @@ public class GloomperEntity extends AnimalEntity {
     }
 
     @Override
-    public boolean canBeAffected(EffectInstance effectInstance) {
-        Effect effect = effectInstance.getEffect();
-        if (effect == Effects.POISON) {
+    public boolean canBeAffected(MobEffectInstance effectInstance) {
+        MobEffect effect = effectInstance.getEffect();
+        if (effect == MobEffects.POISON) {
             return false;
         }
         else return super.canBeAffected(effectInstance);
     }
 
-    public static class JumpHelperController extends JumpController {
+    public static class JumpHelperController extends JumpControl {
         private final GloomperEntity gloomper;
         private boolean canJump;
 
@@ -323,7 +336,7 @@ public class GloomperEntity extends AnimalEntity {
         }
     }
 
-    static class MoveHelperController extends MovementController {
+    static class MoveHelperController extends MoveControl {
         private final GloomperEntity gloomper;
         private double nextJumpSpeed;
 

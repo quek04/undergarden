@@ -1,20 +1,20 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.block.AbstractTopPlantBlock;
-import net.minecraft.block.HugeMushroomBlock;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.gen.feature.BigMushroomFeatureConfig;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.HugeMushroomBlock;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
 public class BigVeilMushroomFeature extends UGBigMushroomFeature {
 
-    public BigVeilMushroomFeature(Codec<BigMushroomFeatureConfig> codec) {
+    public BigVeilMushroomFeature(Codec<HugeMushroomFeatureConfiguration> codec) {
         super(codec);
     }
 
@@ -31,7 +31,7 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override //cap
-    protected void makeCap(IWorld world, Random random, BlockPos pos, int p_225564_4_, BlockPos.Mutable posMutable, BigMushroomFeatureConfig config) {
+    protected void makeCap(LevelAccessor world, Random random, BlockPos pos, int p_225564_4_, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
         for(int i = p_225564_4_ - 3; i <= p_225564_4_; ++i) {
             int j = i < p_225564_4_ ? config.foliageRadius : config.foliageRadius - 1;
             int k = config.foliageRadius - 2;
@@ -59,10 +59,10 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
         }
     }
 
-    private static void doVeil(BlockPos pos, IWorld world, Random random) {
-        BlockPos.Mutable blockpos$mutable = pos.mutable().move(Direction.DOWN);
+    private static void doVeil(BlockPos pos, LevelAccessor world, Random random) {
+        BlockPos.MutableBlockPos blockpos$mutable = pos.mutable().move(Direction.DOWN);
         if (world.isEmptyBlock(blockpos$mutable)) {
-            int i = MathHelper.nextInt(random, 1, 5);
+            int i = Mth.nextInt(random, 1, 5);
             if (random.nextInt(7) == 0) {
                 i *= 2;
             }
@@ -71,11 +71,11 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
         }
     }
 
-    public static void placeVeil(IWorld world, Random rand, BlockPos.Mutable posMutable, int x, int y, int z) {
+    public static void placeVeil(LevelAccessor world, Random rand, BlockPos.MutableBlockPos posMutable, int x, int y, int z) {
         for(int i = 0; i <= x; ++i) {
             if (world.isEmptyBlock(posMutable)) {
                 if (i == x || !world.isEmptyBlock(posMutable.below())) {
-                    world.setBlock(posMutable, UGBlocks.MUSHROOM_VEIL_TOP.get().defaultBlockState().setValue(AbstractTopPlantBlock.AGE, MathHelper.nextInt(rand, y, z)), 2);
+                    world.setBlock(posMutable, UGBlocks.MUSHROOM_VEIL_TOP.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(rand, y, z)), 2);
                     break;
                 }
 

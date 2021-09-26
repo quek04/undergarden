@@ -1,16 +1,27 @@
 package quek.undergarden.block;
 
 import net.minecraft.block.*;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
+
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.level.block.AttachedStemBlock;
+import net.minecraft.world.level.block.StemBlock;
+import net.minecraft.world.level.block.StemGrownBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class GloomgourdBlock extends StemGrownBlock {
 
@@ -19,13 +30,13 @@ public class GloomgourdBlock extends StemGrownBlock {
     }
 
     @Override
-    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         ItemStack itemstack = player.getItemInHand(handIn);
         if (itemstack.getItem() == Items.SHEARS) {
             if (!worldIn.isClientSide) {
                 Direction direction = hit.getDirection();
                 Direction direction1 = direction.getAxis() == Direction.Axis.Y ? player.getDirection().getOpposite() : direction;
-                worldIn.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                worldIn.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 worldIn.setBlock(pos, UGBlocks.CARVED_GLOOMGOURD.get().defaultBlockState().setValue(CarvedGloomgourdBlock.FACING, direction1), 11);
                 ItemEntity itementity = new ItemEntity(worldIn, (double)pos.getX() + 0.5D + (double)direction1.getStepX() * 0.65D, (double)pos.getY() + 0.1D, (double)pos.getZ() + 0.5D + (double)direction1.getStepZ() * 0.65D, new ItemStack(UGItems.GLOOMGOURD_SEEDS.get(), 4));
                 itementity.setDeltaMovement(0.05D * (double)direction1.getStepX() + worldIn.random.nextDouble() * 0.02D, 0.05D, 0.05D * (double)direction1.getStepZ() + worldIn.random.nextDouble() * 0.02D);
@@ -33,7 +44,7 @@ public class GloomgourdBlock extends StemGrownBlock {
                 itemstack.hurtAndBreak(1, player, (playerIn) -> playerIn.broadcastBreakEvent(handIn));
             }
 
-            return ActionResultType.SUCCESS;
+            return InteractionResult.SUCCESS;
         } else {
             return super.use(state, worldIn, pos, player, handIn, hit);
         }

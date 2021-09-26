@@ -1,43 +1,45 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SnowBlock;
-import net.minecraft.block.SpreadableSnowyDirtBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.SpreadingSnowyDirtBlock;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.lighting.LightEngine;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.lighting.LayerLightEngine;
+import net.minecraft.server.level.ServerLevel;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class UGGrassBlock extends SpreadableSnowyDirtBlock {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class UGGrassBlock extends SpreadingSnowyDirtBlock {
 
     public UGGrassBlock(Properties builder) {
         super(builder);
     }
 
-    private static boolean isSnowyConditions(BlockState state, IWorldReader world, BlockPos pos) {
+    private static boolean isSnowyConditions(BlockState state, LevelReader world, BlockPos pos) {
         BlockPos blockpos = pos.above();
         BlockState blockstate = world.getBlockState(blockpos);
-        if (blockstate.getBlock() == Blocks.SNOW && blockstate.getValue(SnowBlock.LAYERS) == 1) {
+        if (blockstate.getBlock() == Blocks.SNOW && blockstate.getValue(SnowLayerBlock.LAYERS) == 1) {
             return true;
         } else {
-            int i = LightEngine.getLightBlockInto(world, state, pos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(world, blockpos));
+            int i = LayerLightEngine.getLightBlockInto(world, state, pos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(world, blockpos));
             return i < world.getMaxLightLevel();
         }
     }
 
-    private static boolean isSnowyAndNotUnderwater(BlockState state, IWorldReader world, BlockPos pos) {
+    private static boolean isSnowyAndNotUnderwater(BlockState state, LevelReader world, BlockPos pos) {
         BlockPos blockpos = pos.above();
         return isSnowyConditions(state, world, pos) && !world.getFluidState(blockpos).is(FluidTags.WATER);
     }
 
     @Override
-    public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, Random random) {
         if (!isSnowyConditions(state, worldIn, pos)) {
             if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             worldIn.setBlockAndUpdate(pos, UGBlocks.DEEPSOIL.get().defaultBlockState());

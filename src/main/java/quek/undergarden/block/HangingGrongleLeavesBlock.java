@@ -1,16 +1,18 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractBodyPlantBlock;
-import net.minecraft.block.AbstractTopPlantBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.world.level.block.GrowingPlantBodyBlock;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.LevelReader;
 import quek.undergarden.registry.UGBlocks;
 
-public class HangingGrongleLeavesBlock extends AbstractBodyPlantBlock {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class HangingGrongleLeavesBlock extends GrowingPlantBodyBlock {
 
     public static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
@@ -19,12 +21,12 @@ public class HangingGrongleLeavesBlock extends AbstractBodyPlantBlock {
     }
 
     @Override
-    protected AbstractTopPlantBlock getHeadBlock() {
+    protected GrowingPlantHeadBlock getHeadBlock() {
         return UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get();
     }
 
     @Override
-    public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
+    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
         BlockPos blockpos = pos.relative(this.growthDirection.getOpposite());
         BlockState blockstate = world.getBlockState(blockpos);
         Block block = blockstate.getBlock();

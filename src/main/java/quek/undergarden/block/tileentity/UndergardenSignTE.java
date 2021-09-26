@@ -1,12 +1,12 @@
 package quek.undergarden.block.tileentity;
 
-import net.minecraft.tileentity.SignTileEntity;
-import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import quek.undergarden.registry.UGTileEntities;
 
-public class UndergardenSignTE extends SignTileEntity {
+public class UndergardenSignTE extends SignBlockEntity {
     @Override
-    public TileEntityType<?> getType() {
+    public BlockEntityType<?> getType() {
         return UGTileEntities.UNDERGARDEN_SIGN.get();
     }
 }

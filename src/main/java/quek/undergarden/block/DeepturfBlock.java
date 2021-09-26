@@ -1,33 +1,35 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IGrowable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class DeepturfBlock extends UGGrassBlock implements IGrowable {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class DeepturfBlock extends UGGrassBlock implements BonemealableBlock {
 
     public DeepturfBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState state, boolean isClient) {
         return worldIn.getBlockState(pos.above()).isAir();
     }
 
     @Override
-    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel worldIn, Random rand, BlockPos pos, BlockState state) {
         BlockPos blockpos = pos.above();
 
         label48:
@@ -43,7 +45,7 @@ public class DeepturfBlock extends UGGrassBlock implements IGrowable {
 
             BlockState blockstate2 = worldIn.getBlockState(blockpos1);
             if (blockstate2.is(deepturfOrShimmerweed(rand).getBlock()) && rand.nextInt(10) == 0) {
-                ((IGrowable)deepturfOrShimmerweed(rand).getBlock()).performBonemeal(worldIn, rand, blockpos1, blockstate2);
+                ((BonemealableBlock)deepturfOrShimmerweed(rand).getBlock()).performBonemeal(worldIn, rand, blockpos1, blockstate2);
             }
 
             if (blockstate2.isAir()) {

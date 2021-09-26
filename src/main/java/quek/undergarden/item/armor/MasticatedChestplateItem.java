@@ -1,27 +1,33 @@
 package quek.undergarden.item.armor;
 
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.item.*;
-import net.minecraft.util.NonNullList;
-import net.minecraft.world.World;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGItemGroups;
 
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item.Properties;
+
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 
 public class MasticatedChestplateItem extends ArmorItem {
 
-    public MasticatedChestplateItem(IArmorMaterial materialIn) {
-        super(materialIn, EquipmentSlotType.CHEST, new Properties()
+    public MasticatedChestplateItem(ArmorMaterial materialIn) {
+        super(materialIn, EquipmentSlot.CHEST, new Properties()
                 .rarity(Rarity.EPIC)
                 .tab(UGItemGroups.GROUP)
         );
     }
 
     @Override
-    public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> list) {
+    public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> list) {
         if(allowdedIn(group)) {
             ItemStack stack = new ItemStack(this);
             stack.enchant(Enchantments.THORNS, 5);
@@ -31,7 +37,7 @@ public class MasticatedChestplateItem extends ArmorItem {
     }
 
     @Override
-    public void onCraftedBy(ItemStack stack, World worldIn, PlayerEntity playerIn) {
+    public void onCraftedBy(ItemStack stack, Level worldIn, Player playerIn) {
         stack.serializeNBT();
         stack.enchant(Enchantments.THORNS, 5);
     }
@@ -42,7 +48,7 @@ public class MasticatedChestplateItem extends ArmorItem {
     }
 
     @Override
-    public String getArmorTexture(ItemStack itemstack, Entity entity, EquipmentSlotType slot, String layer) {
+    public String getArmorTexture(ItemStack itemstack, Entity entity, EquipmentSlot slot, String layer) {
         return "undergarden:textures/armor/masticated_layer_1.png";
     }
 }

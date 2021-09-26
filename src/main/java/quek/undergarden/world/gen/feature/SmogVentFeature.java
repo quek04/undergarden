@@ -1,26 +1,26 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class SmogVentFeature extends Feature<NoFeatureConfig> {
+public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
 
-    public SmogVentFeature(Codec<NoFeatureConfig> configCodec) {
+    public SmogVentFeature(Codec<NoneFeatureConfiguration> configCodec) {
         super(configCodec);
     }
 
     @Override
-    public boolean place(ISeedReader worldIn, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean place(WorldGenLevel worldIn, ChunkGenerator generator, Random rand, BlockPos pos, NoneFeatureConfiguration config) {
         while (worldIn.isEmptyBlock(pos) && pos.getY() > 2) {
             pos = pos.below();
         }
@@ -32,13 +32,13 @@ public class SmogVentFeature extends Feature<NoFeatureConfig> {
 
             for (int k = 0; k < ventHeight; ++k) {
                 float f = (1.0F - (float) k / (float) ventHeight) * (float) j;
-                int l = MathHelper.ceil(f);
+                int l = Mth.ceil(f);
 
                 for (int i1 = -l; i1 <= l; ++i1) {
-                    float f1 = (float) MathHelper.abs(i1) - 0.25F;
+                    float f1 = (float) Mth.abs(i1) - 0.25F;
 
                     for (int j1 = -l; j1 <= l; ++j1) {
-                        float f2 = (float) MathHelper.abs(j1) - 0.25F;
+                        float f2 = (float) Mth.abs(j1) - 0.25F;
                         if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > f * f)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(rand.nextFloat() > 0.75F))) {
                             BlockState blockstate = worldIn.getBlockState(pos.offset(i1, k, j1));
                             Block block = blockstate.getBlock();

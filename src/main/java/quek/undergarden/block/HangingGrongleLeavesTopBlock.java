@@ -1,19 +1,21 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.AbstractTopPlantBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.PlantBlockHelper;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.NetherVines;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class HangingGrongleLeavesTopBlock extends AbstractTopPlantBlock {
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
+public class HangingGrongleLeavesTopBlock extends GrowingPlantHeadBlock {
 
     protected static final VoxelShape SHAPE = Block.box(4.0D, 5.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
@@ -23,18 +25,18 @@ public class HangingGrongleLeavesTopBlock extends AbstractTopPlantBlock {
     }
 
     @Override
-    public BlockState getStateForPlacement(IWorld p_235504_1_) {
+    public BlockState getStateForPlacement(LevelAccessor p_235504_1_) {
         return this.defaultBlockState().setValue(AGE, 25);
     }
 
     @Override
     protected int getBlocksToGrowWhenBonemealed(Random rand) {
-        return PlantBlockHelper.getBlocksToGrowWhenBonemealed(rand);
+        return NetherVines.getBlocksToGrowWhenBonemealed(rand);
     }
 
     @Override
     protected boolean canGrowInto(BlockState state) {
-        return PlantBlockHelper.isValidGrowthState(state);
+        return NetherVines.isValidGrowthState(state);
     }
 
     @Override
@@ -43,7 +45,7 @@ public class HangingGrongleLeavesTopBlock extends AbstractTopPlantBlock {
     }
 
     @Override
-    public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
+    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
         BlockPos blockpos = pos.relative(this.growthDirection.getOpposite());
         BlockState blockstate = world.getBlockState(blockpos);
         Block block = blockstate.getBlock();

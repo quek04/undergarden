@@ -1,16 +1,16 @@
 package quek.undergarden.client.render.layer;
 
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.AbstractEyesLayer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MogModel;
 import quek.undergarden.entity.MogEntity;
 
-public class MogEyesLayer<E extends MogEntity, M extends MogModel<E>> extends AbstractEyesLayer<E, M> {
+public class MogEyesLayer<E extends MogEntity, M extends MogModel<E>> extends EyesLayer<E, M> {
 
-    public MogEyesLayer(IEntityRenderer<E, M> renderer) {
+    public MogEyesLayer(RenderLayerParent<E, M> renderer) {
         super(renderer);
     }
 

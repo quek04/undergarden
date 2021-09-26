@@ -1,26 +1,28 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.BedBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.DyeColor;
-import net.minecraft.state.properties.BedPart;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.BedBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.state.properties.BedPart;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import quek.undergarden.block.tileentity.DepthrockBedTE;
 import quek.undergarden.registry.UGDimensions;
+
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class DepthrockBedBlock extends BedBlock {
 
@@ -32,20 +34,20 @@ public class DepthrockBedBlock extends BedBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext selectionContext) {
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext selectionContext) {
         return SHAPE;
     }
 
     @Override
-    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult rayTraceResult) {
+    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult rayTraceResult) {
         if (world.isClientSide) {
-            return ActionResultType.CONSUME;
+            return InteractionResult.CONSUME;
         } else {
             if (state.getValue(PART) != BedPart.HEAD) {
                 pos = pos.relative(state.getValue(FACING));
                 state = world.getBlockState(pos);
                 if (!state.is(this)) {
-                    return ActionResultType.CONSUME;
+                    return InteractionResult.CONSUME;
                 }
             }
 
@@ -56,14 +58,14 @@ public class DepthrockBedBlock extends BedBlock {
                     world.removeBlock(blockpos, false);
                 }
 
-                world.explode(null, DamageSource.badRespawnPointExplosion(), null, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, 5.0F, true, Explosion.Mode.DESTROY);
-                return ActionResultType.SUCCESS;
+                world.explode(null, DamageSource.badRespawnPointExplosion(), null, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, 5.0F, true, Explosion.BlockInteraction.DESTROY);
+                return InteractionResult.SUCCESS;
             } else if (state.getValue(OCCUPIED)) {
                 //if (!this.kickVillagerOutOfBed(world, blockPos)) {
-                    player.displayClientMessage(new TranslationTextComponent("block.minecraft.bed.occupied"), true);
+                    player.displayClientMessage(new TranslatableComponent("block.minecraft.bed.occupied"), true);
                 //}
 
-                return ActionResultType.SUCCESS;
+                return InteractionResult.SUCCESS;
             } else {
                 player.startSleepInBed(pos).ifLeft((sleepResult) -> {
                     if (sleepResult != null) {
@@ -71,29 +73,29 @@ public class DepthrockBedBlock extends BedBlock {
                     }
 
                 });
-                return ActionResultType.SUCCESS;
+                return InteractionResult.SUCCESS;
             }
         }
     }
 
-    public static boolean canSetSpawn(World world) {
+    public static boolean canSetSpawn(Level world) {
         return world.dimension() == UGDimensions.UNDERGARDEN_WORLD;
     }
 
     @Override
-    public TileEntity newBlockEntity(IBlockReader world) {
+    public BlockEntity newBlockEntity(BlockGetter world) {
         return new DepthrockBedTE();
     }
 
     //stops reduced fall damage
     @Override
-    public void fallOn(World world, BlockPos pos, Entity entity, float distance) {
+    public void fallOn(Level world, BlockPos pos, Entity entity, float distance) {
         super.fallOn(world, pos, entity, distance);
     }
 
     //stops bouncing
     @Override
-    public void updateEntityAfterFallOn(IBlockReader world, Entity entity) {
+    public void updateEntityAfterFallOn(BlockGetter world, Entity entity) {
         entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
     }
 }

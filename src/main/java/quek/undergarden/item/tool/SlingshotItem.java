@@ -1,24 +1,24 @@
 package quek.undergarden.item.tool;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.ShootableItem;
-import net.minecraft.item.UseAction;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.network.chat.Component;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,7 +34,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class SlingshotItem extends ShootableItem {
+import net.minecraft.world.item.Item.Properties;
+
+public class SlingshotItem extends ProjectileWeaponItem {
 
     public SlingshotItem() {
         super(new Properties()
@@ -47,8 +49,8 @@ public class SlingshotItem extends ShootableItem {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("tooltip.slingshot").withStyle(TextFormatting.GRAY));
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        tooltip.add(new TranslatableComponent("tooltip.slingshot").withStyle(ChatFormatting.GRAY));
     }
 
     @Override
@@ -62,9 +64,9 @@ public class SlingshotItem extends ShootableItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
-        if (entityLiving instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity)entityLiving;
+    public void releaseUsing(ItemStack stack, Level worldIn, LivingEntity entityLiving, int timeLeft) {
+        if (entityLiving instanceof Player) {
+            Player player = (Player)entityLiving;
             boolean creativeOrInfinity = player.abilities.instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
             ItemStack itemstack = player.getProjectile(stack);
 
@@ -90,7 +92,7 @@ public class SlingshotItem extends ShootableItem {
                         worldIn.addFreshEntity(ammoEntity);
                     }
 
-                    worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundCategory.PLAYERS, 0.5F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
                     if (!flag1 && !player.abilities.instabuild) {
                         itemstack.shrink(1);
                         if (itemstack.isEmpty()) {
@@ -105,31 +107,31 @@ public class SlingshotItem extends ShootableItem {
     }
 
     @Override
-    public ActionResult<ItemStack> use(World worldIn, PlayerEntity player, Hand handIn) {
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player player, InteractionHand handIn) {
         ItemStack itemstack = player.getItemInHand(handIn);
         boolean hasAmmo = !player.getProjectile(itemstack).isEmpty();
 
-        ActionResult<ItemStack> ret = onArrowNock(itemstack, worldIn, player, handIn, hasAmmo);
+        InteractionResultHolder<ItemStack> ret = onArrowNock(itemstack, worldIn, player, handIn, hasAmmo);
         if (ret != null) return ret;
 
         if (!player.abilities.instabuild && !hasAmmo) {
-            return ActionResult.fail(itemstack);
+            return InteractionResultHolder.fail(itemstack);
         } else {
             player.startUsingItem(handIn);
-            worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_DRAW.get(), SoundCategory.PLAYERS, 0.5F, 1.0F);
-            return ActionResult.consume(itemstack);
+            worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_DRAW.get(), SoundSource.PLAYERS, 0.5F, 1.0F);
+            return InteractionResultHolder.consume(itemstack);
         }
     }
 
-    public static ActionResult<ItemStack> onArrowNock(ItemStack item, World world, PlayerEntity player, Hand hand, boolean hasAmmo)
+    public static InteractionResultHolder<ItemStack> onArrowNock(ItemStack item, Level world, Player player, InteractionHand hand, boolean hasAmmo)
     {
         ArrowNockEvent event = new ArrowNockEvent(player, item, hand, world, hasAmmo);
         if (MinecraftForge.EVENT_BUS.post(event))
-            return new ActionResult<>(ActionResultType.FAIL, item);
+            return new InteractionResultHolder<>(InteractionResult.FAIL, item);
         return event.getAction();
     }
 
-    public static int onArrowLoose(ItemStack stack, World world, PlayerEntity player, int charge, boolean hasAmmo)
+    public static int onArrowLoose(ItemStack stack, Level world, Player player, int charge, boolean hasAmmo)
     {
         ArrowLooseEvent event = new ArrowLooseEvent(player, stack, world, charge, hasAmmo);
         if (MinecraftForge.EVENT_BUS.post(event))
@@ -153,8 +155,8 @@ public class SlingshotItem extends ShootableItem {
     }
 
     @Override
-    public UseAction getUseAnimation(ItemStack stack) {
-        return UseAction.BOW;
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BOW;
     }
 
     @Override

@@ -1,10 +1,10 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.data.LanguageProvider;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.*;
@@ -17,7 +17,7 @@ public class UGLang extends LanguageProvider {
         super(gen, Undergarden.MODID, "en_us");
     }
 
-    private void addItemGroup(ItemGroup group, String name) {
+    private void addItemGroup(CreativeModeTab group, String name) {
         add(group.getDisplayName().getString(), name);
     }
 
@@ -33,7 +33,7 @@ public class UGLang extends LanguageProvider {
         add("subtitles." + category + "." + subtitleName, name);
     }
 
-    private void addBiome(RegistryKey<Biome> biomeKey, String name) {
+    private void addBiome(ResourceKey<Biome> biomeKey, String name) {
         add("biome.undergarden." + biomeKey.location().getPath(), name);
     }
 

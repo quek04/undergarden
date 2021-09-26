@@ -1,19 +1,19 @@
 package quek.undergarden.entity.projectile;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.ProjectileItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.IPacket;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ItemParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -21,17 +21,17 @@ import quek.undergarden.entity.MinionEntity;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class MinionProjectileEntity extends ProjectileItemEntity {
+public class MinionProjectileEntity extends ThrowableItemProjectile {
 
-    public MinionProjectileEntity(EntityType<? extends MinionProjectileEntity> type, World world) {
+    public MinionProjectileEntity(EntityType<? extends MinionProjectileEntity> type, Level world) {
         super(type, world);
     }
 
-    public MinionProjectileEntity(World worldIn, LivingEntity throwerIn) {
+    public MinionProjectileEntity(Level worldIn, LivingEntity throwerIn) {
         super(UGEntityTypes.MINION_PROJECTILE.get(), throwerIn, worldIn);
     }
 
-    public MinionProjectileEntity(World worldIn, double x, double y, double z) {
+    public MinionProjectileEntity(Level worldIn, double x, double y, double z) {
         super(UGEntityTypes.MINION_PROJECTILE.get(), x, y, z, worldIn);
     }
 
@@ -41,15 +41,15 @@ public class MinionProjectileEntity extends ProjectileItemEntity {
     }
 
     @OnlyIn(Dist.CLIENT)
-    private IParticleData makeParticle() {
-        return new ItemParticleData(ParticleTypes.ITEM, new ItemStack(getDefaultItem()));
+    private ParticleOptions makeParticle() {
+        return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(getDefaultItem()));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void handleEntityEvent(byte id) {
         if (id == 3) {
-            IParticleData iparticledata = this.makeParticle();
+            ParticleOptions iparticledata = this.makeParticle();
 
             for(int i = 0; i < 8; ++i) {
                 this.level.addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
@@ -58,9 +58,9 @@ public class MinionProjectileEntity extends ProjectileItemEntity {
     }
 
     @Override
-    protected void onHit(RayTraceResult result) {
-        if (result.getType() == RayTraceResult.Type.ENTITY) {
-            Entity entity = ((EntityRayTraceResult)result).getEntity();
+    protected void onHit(HitResult result) {
+        if (result.getType() == HitResult.Type.ENTITY) {
+            Entity entity = ((EntityHitResult)result).getEntity();
             
             if(entity instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entity;
@@ -77,7 +77,7 @@ public class MinionProjectileEntity extends ProjectileItemEntity {
     }
 
     @Override
-    public IPacket<?> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }
