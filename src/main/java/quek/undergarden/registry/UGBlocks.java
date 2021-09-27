@@ -1,8 +1,6 @@
 package quek.undergarden.registry;
 
-import net.minecraft.block.*;
 import net.minecraft.core.Direction;
-import net.minecraft.item.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
@@ -10,7 +8,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -67,7 +64,7 @@ public class UGBlocks {
     public static final RegistryObject<PressurePlateBlock> SHIVERSTONE_PRESSURE_PLATE = register("shiverstone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(SHIVERSTONE.get()).noOcclusion().noCollission()));
 
     //tremblecrust
-    public static final RegistryObject<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(6F, 24F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(3).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(6F, 24F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> LOOSE_TREMBLECRUST = register("loose_tremblecrust", () -> new LooseTremblecrustBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(3F, 24F).noDrops()));
     public static final RegistryObject<Block> TREMBLECRUST_BRICKS = register("tremblecrust_bricks", () -> new Block(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> CRACKED_TREMBLECRUST_BRICKS = register("cracked_tremblecrust_bricks", () -> new Block(BlockBehaviour.Properties.copy(TREMBLECRUST_BRICKS.get())));
@@ -82,34 +79,34 @@ public class UGBlocks {
     public static final RegistryObject<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = register("tremblecrust_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(TREMBLECRUST.get()).noOcclusion().noCollission()));
 
     //ores
-    public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(0).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> IRON_ORE = register("iron_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(3).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(1).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(3).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(7.0F, 24.0F).harvestTool(ToolType.PICKAXE).harvestLevel(4).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(4).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> IRON_ORE = register("iron_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(7.0F, 24.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 
     //storage blocks
-    public static final RegistryObject<Block> CLOGGRUM_BLOCK = register("cloggrum_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).harvestTool(ToolType.PICKAXE).harvestLevel(2).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> FROSTSTEEL_BLOCK = register("froststeel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).harvestTool(ToolType.PICKAXE).harvestLevel(3).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> UTHERIUM_BLOCK = register("utherium_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).harvestTool(ToolType.PICKAXE).harvestLevel(3).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> REGALIUM_BLOCK = register("regalium_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).harvestTool(ToolType.PICKAXE).harvestLevel(4).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> FORGOTTEN_BLOCK = register("forgotten_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).harvestTool(ToolType.PICKAXE).harvestLevel(4).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CLOGGRUM_BLOCK = register("cloggrum_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> FROSTSTEEL_BLOCK = register("froststeel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> UTHERIUM_BLOCK = register("utherium_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> REGALIUM_BLOCK = register("regalium_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> FORGOTTEN_BLOCK = register("forgotten_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).requiresCorrectToolForDrops()));
 
     //normal blocks
-    public static final RegistryObject<Block> DEEPTURF_BLOCK = register("deepturf_block", () -> new DeepturfBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).harvestTool(ToolType.SHOVEL)));
+    public static final RegistryObject<Block> DEEPTURF_BLOCK = register("deepturf_block", () -> new DeepturfBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
     public static final RegistryObject<Block> ASHEN_DEEPTURF_BLOCK = register("ashen_deepturf_block", () -> new Block(BlockBehaviour.Properties.copy(DEEPTURF_BLOCK.get())));
     public static final RegistryObject<Block> FROZEN_DEEPTURF_BLOCK = register("frozen_deepturf_block", () -> new Block(BlockBehaviour.Properties.copy(DEEPTURF_BLOCK.get())));
     public static final RegistryObject<Block> DEEPSOIL = register("deepsoil", () -> new Block(BlockBehaviour.Properties.copy(DEEPTURF_BLOCK.get()).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> COARSE_DEEPSOIL = register("coarse_deepsoil", () -> new Block(BlockBehaviour.Properties.copy(DEEPSOIL.get())));
     public static final RegistryObject<Block> DEEPSOIL_FARMLAND = register("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(BlockBehaviour.Properties.copy(Blocks.FARMLAND)));
-    public static final RegistryObject<Block> GOO = register("goo", () -> new GooLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission().harvestTool(ToolType.SHOVEL)));
-    public static final RegistryObject<Block> GOO_BLOCK = register("goo_block", () -> new GooBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).sound(SoundType.SLIME_BLOCK).noOcclusion().harvestTool(ToolType.SHOVEL)));
+    public static final RegistryObject<Block> GOO = register("goo", () -> new GooLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission()));
+    public static final RegistryObject<Block> GOO_BLOCK = register("goo_block", () -> new GooBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).sound(SoundType.SLIME_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> SMOG_VENT = register("smog_vent", () -> new SmogVentBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
-    public static final RegistryObject<Block> SEDIMENT = register("sediment", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND).harvestTool(ToolType.SHOVEL)));
+    public static final RegistryObject<Block> SEDIMENT = register("sediment", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND)));
     public static final RegistryObject<Block> SEDIMENT_GLASS = register("sediment_glass", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)));
     public static final RegistryObject<Block> SEDIMENT_GLASS_PANE = register("sediment_glass_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE)));
     public static final RegistryObject<Block> CLOGGRUM_BARS = register("cloggrum_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));

@@ -23,7 +23,7 @@ import java.util.function.Function;
 public class UGCaveWorldCarver extends CaveWorldCarver {
 
     public UGCaveWorldCarver(Codec<ProbabilityFeatureConfiguration> configCodec) {
-        super(configCodec, 300);
+        super(configCodec);
         this.replaceableBlocks = ImmutableSet.of(
                 UGBlocks.DEPTHROCK.get(),
                 UGBlocks.SHIVERSTONE.get(),

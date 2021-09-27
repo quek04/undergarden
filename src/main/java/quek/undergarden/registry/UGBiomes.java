@@ -1,16 +1,14 @@
 package quek.undergarden.registry;
 
+import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.biome.VanillaBiomes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.Registry;
-import net.minecraft.world.biome.*;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
-
-import net.minecraft.data.worldgen.biome.VanillaBiomes;
-import net.minecraft.world.level.biome.Biome;
 
 public class UGBiomes {
 
