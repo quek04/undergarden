@@ -19,10 +19,10 @@ import net.minecraft.resources.ResourceLocation;
 import com.mojang.math.Vector3f;
 import net.minecraft.world.level.Level;
 import quek.undergarden.Undergarden;
-import quek.undergarden.block.tileentity.DepthrockBedTE;
-import quek.undergarden.registry.UGTileEntities;
+import quek.undergarden.block.entity.DepthrockBedBlockEntity;
+import quek.undergarden.registry.UGBlockEntities;
 
-public class DepthrockBedRender extends BlockEntityRenderer<DepthrockBedTE> {
+public class DepthrockBedRender extends BlockEntityRenderer<DepthrockBedBlockEntity> {
 
     private final ModelPart headPiece;
     private final ModelPart footPiece;
@@ -36,11 +36,11 @@ public class DepthrockBedRender extends BlockEntityRenderer<DepthrockBedTE> {
     }
 
     @Override
-    public void render(DepthrockBedTE bed, float partialTicks, PoseStack matrixStack, MultiBufferSource renderTypeBuffer, int combinedLight, int combinedOverlay) {
+    public void render(DepthrockBedBlockEntity bed, float partialTicks, PoseStack matrixStack, MultiBufferSource renderTypeBuffer, int combinedLight, int combinedOverlay) {
         Level world = bed.getLevel();
         if (world != null) {
             BlockState blockstate = bed.getBlockState();
-            DoubleBlockCombiner.NeighborCombineResult<? extends DepthrockBedTE> icallbackwrapper = DoubleBlockCombiner.combineWithNeigbour(UGTileEntities.DEPTHROCK_BED.get(), BedBlock::getBlockType, BedBlock::getConnectedDirection, ChestBlock.FACING, blockstate, world, bed.getBlockPos(), (iWorld, pos) -> false);
+            DoubleBlockCombiner.NeighborCombineResult<? extends DepthrockBedBlockEntity> icallbackwrapper = DoubleBlockCombiner.combineWithNeigbour(UGBlockEntities.DEPTHROCK_BED.get(), BedBlock::getBlockType, BedBlock::getConnectedDirection, ChestBlock.FACING, blockstate, world, bed.getBlockPos(), (iWorld, pos) -> false);
             int i = icallbackwrapper.<Int2IntFunction>apply(new BrightnessCombiner<>()).get(combinedLight);
             this.renderPiece(matrixStack, renderTypeBuffer, blockstate.getValue(BedBlock.PART) == BedPart.HEAD, blockstate.getValue(BedBlock.FACING), i, combinedOverlay, false);
         }

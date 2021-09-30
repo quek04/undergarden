@@ -2,26 +2,33 @@ package quek.undergarden.registry;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.data.worldgen.Features;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.blockplacers.DoublePlantPlacer;
 import net.minecraft.world.level.levelgen.feature.blockplacers.SimpleBlockPlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.DarkOakFoliagePlacer;
-import net.minecraft.world.level.levelgen.placement.ChanceDecoratorConfiguration;
-import net.minecraft.world.level.levelgen.placement.FeatureDecorator;
-import net.minecraft.world.level.levelgen.feature.configurations.RangeDecoratorConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
+import net.minecraft.world.level.levelgen.placement.ChanceDecoratorConfiguration;
+import net.minecraft.world.level.levelgen.placement.FeatureDecorator;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
@@ -32,22 +39,6 @@ import quek.undergarden.world.gen.feature.*;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.trunkplacer.GrongleTrunkPlacer;
 import quek.undergarden.world.gen.trunkplacer.SmogstemTrunkPlacer;
-
-import net.minecraft.util.UniformInt;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.CountConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 
 public class UGFeatures {
 
@@ -234,27 +225,30 @@ public class UGFeatures {
         public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE = UNDERGARDEN_TREE.get().configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.SMOGSTEM_LOG.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().defaultBlockState()),
-                        new BlobFoliagePlacer(UniformInt.fixed(3), UniformInt.fixed(0), 2),
                         new SmogstemTrunkPlacer(10, 2, 2),
+                        new SimpleStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.SMOGSTEM_SAPLING.get().defaultBlockState()),
+                        new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
                         new TwoLayersFeatureSize(1, 1, 2))
                         .ignoreVines().build()
         );
         public static final ConfiguredFeature<TreeConfiguration, ?> WIGGLEWOOD_TREE = UNDERGARDEN_TREE.get().configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.WIGGLEWOOD_LOG.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.WIGGLEWOOD_LEAVES.get().defaultBlockState()),
-                        new BushFoliagePlacer(UniformInt.fixed(2), UniformInt.fixed(0), 0),
                         new ForkingTrunkPlacer(3, 1, 1),
+                        new SimpleStateProvider(UGBlocks.WIGGLEWOOD_LEAVES.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.WIGGLEWOOD_SAPLING.get().defaultBlockState()),
+                        new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0),
                         new TwoLayersFeatureSize(1, 0, 2))
                         .ignoreVines().build()
         );
         public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_TREE = UNDERGARDEN_TREE.get().configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
-                        new DarkOakFoliagePlacer(UniformInt.fixed(0), UniformInt.fixed(0)),
                         new GrongleTrunkPlacer(10, 2, 19),
+                        new SimpleStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.GRONGLE_SAPLING.get().defaultBlockState()),
+                        new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(1, 1, 2))
                         .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
                         .build()
@@ -262,9 +256,10 @@ public class UGFeatures {
         public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_TREE_SMALL = UNDERGARDEN_TREE.get().configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
-                        new DarkOakFoliagePlacer(UniformInt.fixed(0), UniformInt.fixed(0)),
                         new StraightTrunkPlacer(5, 2, 19),
+                        new SimpleStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.GRONGLE_SAPLING.get().defaultBlockState()),
+                        new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(1, 0, 1))
                         .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
                         .build()
@@ -272,9 +267,10 @@ public class UGFeatures {
         public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_BUSH = UNDERGARDEN_TREE.get().configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
-                        new DarkOakFoliagePlacer(UniformInt.fixed(0), UniformInt.fixed(0)),
                         new StraightTrunkPlacer(1, 0, 0),
+                        new SimpleStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.GRONGLE_SAPLING.get().defaultBlockState()),
+                        new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(0, 0, 0))
                         .build()
         );
@@ -282,18 +278,20 @@ public class UGFeatures {
         public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE_TALL = UNDERGARDEN_TREE.get().configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.SMOGSTEM_LOG.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().defaultBlockState()),
-                        new BlobFoliagePlacer(UniformInt.fixed(3), UniformInt.fixed(0), 2),
                         new SmogstemTrunkPlacer(15, 4, 4),
+                        new SimpleStateProvider(UGBlocks.SMOGSTEM_LEAVES.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.SMOGSTEM_SAPLING.get().defaultBlockState()),
+                        new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
                         new TwoLayersFeatureSize(1, 1, 2))
                         .ignoreVines().build()
         );
         public static final ConfiguredFeature<TreeConfiguration, ?> WIGGLEWOOD_TREE_TALL = UNDERGARDEN_TREE.get().configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.WIGGLEWOOD_LOG.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.WIGGLEWOOD_LEAVES.get().defaultBlockState()),
-                        new BushFoliagePlacer(UniformInt.fixed(2), UniformInt.fixed(0), 0),
                         new ForkingTrunkPlacer(6, 2, 2),
+                        new SimpleStateProvider(UGBlocks.WIGGLEWOOD_LEAVES.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.WIGGLEWOOD_SAPLING.get().defaultBlockState()),
+                        new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0),
                         new TwoLayersFeatureSize(1, 0, 2))
                         .ignoreVines().build()
         );
@@ -345,55 +343,58 @@ public class UGFeatures {
     }
 
     public static void registerConfiguredFeatures() {
-        register("spring", ConfiguredFeatures.SPRING.decorated(FeatureDecorator.RANGE_BIASED.configured(new RangeDecoratorConfiguration(8, 8, 256))).squared().count(50));
-        register("virulent_spring", ConfiguredFeatures.VIRULENT_SPRING.decorated(FeatureDecorator.RANGE_BIASED.configured(new RangeDecoratorConfiguration(8, 8, 256))).squared().count(50));
-        register("bog_virulent_spring", ConfiguredFeatures.VIRULENT_SPRING.decorated(FeatureDecorator.RANGE_BIASED.configured(new RangeDecoratorConfiguration(8, 8, 256))).squared().count(100));
+        register("spring", ConfiguredFeatures.SPRING.range(new RangeDecoratorConfiguration(BiasedToBottomHeight.of(VerticalAnchor.bottom(), VerticalAnchor.belowTop(8), 8))).squared().count(50));
+        register("virulent_spring", ConfiguredFeatures.VIRULENT_SPRING.range(new RangeDecoratorConfiguration(BiasedToBottomHeight.of(VerticalAnchor.bottom(), VerticalAnchor.belowTop(8), 8))).squared().count(50));
+        register("bog_virulent_spring", ConfiguredFeatures.VIRULENT_SPRING.range(new RangeDecoratorConfiguration(BiasedToBottomHeight.of(VerticalAnchor.bottom(), VerticalAnchor.belowTop(8), 8))).squared().count(100));
 
-        register("lake_virulent", ConfiguredFeatures.VIRULENT_LAKE.decorated(FeatureDecorator.WATER_LAKE.configured(new ChanceDecoratorConfiguration(8))));
-        register("bog_lake_virulent", ConfiguredFeatures.VIRULENT_LAKE.decorated(FeatureDecorator.WATER_LAKE.configured(new ChanceDecoratorConfiguration(2))));
+        register("lake_virulent", ConfiguredFeatures.VIRULENT_LAKE.range(Features.Decorators.FULL_RANGE).squared().rarity(8));
+        register("bog_lake_virulent", ConfiguredFeatures.VIRULENT_LAKE.range(Features.Decorators.FULL_RANGE).squared().rarity(2));
 
         register("bog_pond", ConfiguredFeatures.BOG_PONDS.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(40))));
         register("gronglegrowth_pond", ConfiguredFeatures.GRONGLEGROWTH_PONDS.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(40))));
 
-        register("lilypads", ConfiguredFeatures.LILYPADS.range(256).count(5));
-        register("deepturf_patch", ConfiguredFeatures.DEEPTURF_PATCH.range(256).squared().count(100));
-        register("ashen_patch", ConfiguredFeatures.ASHEN_DEEPTURF_PATCH.range(256).squared().count(100));
-        register("frozen_patch", ConfiguredFeatures.FROZEN_DEEPTURF_PATCH.range(256).squared().count(100));
-        register("shimmerweed_patch", ConfiguredFeatures.SHIMMERWEED_PATCH.range(256).squared().count(75));
-        register("pebble_patch", ConfiguredFeatures.PEBBLE_PATCH.range(256).squared().count(75));
-        register("ditchbulb_patch", ConfiguredFeatures.DITCHBULB_PATCH.range(256).squared().count(50));
+        register("lilypads", ConfiguredFeatures.LILYPADS.range(Features.Decorators.FULL_RANGE).count(5));
+        register("deepturf_patch", ConfiguredFeatures.DEEPTURF_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(100));
+        register("ashen_patch", ConfiguredFeatures.ASHEN_DEEPTURF_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(100));
+        register("frozen_patch", ConfiguredFeatures.FROZEN_DEEPTURF_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(100));
+        register("shimmerweed_patch", ConfiguredFeatures.SHIMMERWEED_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(75));
+        register("pebble_patch", ConfiguredFeatures.PEBBLE_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(75));
+        register("ditchbulb_patch", ConfiguredFeatures.DITCHBULB_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(50));
 
-        register("tall_deepturf_patch", ConfiguredFeatures.TALL_DEEPTURF_PATCH.range(256).squared().count(100));
-        register("tall_shimmerweed_patch", ConfiguredFeatures.TALL_SHIMMERWEED_PATCH.range(256).squared().count(50));
+        register("tall_deepturf_patch", ConfiguredFeatures.TALL_DEEPTURF_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(100));
+        register("tall_shimmerweed_patch", ConfiguredFeatures.TALL_SHIMMERWEED_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(50));
 
-        register("indigo_patch", ConfiguredFeatures.INDIGO_MUSHROOM_PATCH.range(256).squared().count(1));
-        register("veil_patch", ConfiguredFeatures.VEIL_MUSHROOM_PATCH.range(256).squared().count(1));
-        register("ink_patch", ConfiguredFeatures.INK_MUSHROOM_PATCH.range(256).squared().count(1));
-        register("blood_patch", ConfiguredFeatures.BLOOD_MUSHROOM_PATCH.range(256).squared().count(1));
+        register("indigo_patch", ConfiguredFeatures.INDIGO_MUSHROOM_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(1));
+        register("veil_patch", ConfiguredFeatures.VEIL_MUSHROOM_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(1));
+        register("ink_patch", ConfiguredFeatures.INK_MUSHROOM_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(1));
+        register("blood_patch", ConfiguredFeatures.BLOOD_MUSHROOM_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(1));
 
-        register("bog_indigo_patch", ConfiguredFeatures.INDIGO_MUSHROOM_PATCH.range(256).squared().count(25));
-        register("bog_veil_patch", ConfiguredFeatures.VEIL_MUSHROOM_PATCH.range(256).squared().count(25));
-        register("bog_ink_patch", ConfiguredFeatures.INK_MUSHROOM_PATCH.range(256).squared().count(25));
-        register("bog_blood_patch", ConfiguredFeatures.BLOOD_MUSHROOM_PATCH.range(256).squared().count(25));
+        register("bog_indigo_patch", ConfiguredFeatures.INDIGO_MUSHROOM_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(25));
+        register("bog_veil_patch", ConfiguredFeatures.VEIL_MUSHROOM_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(25));
+        register("bog_ink_patch", ConfiguredFeatures.INK_MUSHROOM_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(25));
+        register("bog_blood_patch", ConfiguredFeatures.BLOOD_MUSHROOM_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(25));
 
-        register("underbean_patch", ConfiguredFeatures.UNDERBEAN_BUSH_PATCH.range(256).squared().count(5));
-        register("blisterberry_patch", ConfiguredFeatures.BLISTERBERRY_BUSH_PATCH.range(256).squared().count(5));
-        register("gloomgourd_patch", ConfiguredFeatures.GLOOMGOURD_PATCH.range(256).squared().count(5));
+        register("underbean_patch", ConfiguredFeatures.UNDERBEAN_BUSH_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(5));
+        register("blisterberry_patch", ConfiguredFeatures.BLISTERBERRY_BUSH_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(5));
+        register("gloomgourd_patch", ConfiguredFeatures.GLOOMGOURD_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(5));
 
-        register("coal_ore", ConfiguredFeatures.COAL_ORE.range(256).squared().count(30));
-        register("iron_ore", ConfiguredFeatures.IRON_ORE.decorated(FeatureDecorator.RANGE.configured(new RangeDecoratorConfiguration(200, 0, 56))).squared().count(8));
-        register("gold_ore", ConfiguredFeatures.GOLD_ORE.decorated(FeatureDecorator.RANGE.configured(new RangeDecoratorConfiguration(220, 0, 36))).squared().count(2));
-        register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.decorated(FeatureDecorator.RANGE.configured(new RangeDecoratorConfiguration(230, 0, 26))).squared());
-        register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.range(128).squared().count(20));
-        register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.range(64).squared().count(15));
-        register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.range(32).squared().count(5));
-        register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.range(12).squared().count(3));
+        register("coal_ore", ConfiguredFeatures.COAL_ORE.range(Features.Decorators.FULL_RANGE).squared().count(30));
+        //register("iron_ore", ConfiguredFeatures.IRON_ORE.decorated(FeatureDecorator.RANGE.configured(new RangeDecoratorConfiguration(200, 0, 56))).squared().count(8));
+        register("iron_ore", ConfiguredFeatures.IRON_ORE.rangeUniform(VerticalAnchor.absolute(200), VerticalAnchor.top()).squared().count(8));
+        //register("gold_ore", ConfiguredFeatures.GOLD_ORE.decorated(FeatureDecorator.RANGE.configured(new RangeDecoratorConfiguration(220, 0, 36))).squared().count(2));
+        register("gold_ore", ConfiguredFeatures.GOLD_ORE.rangeUniform(VerticalAnchor.absolute(220), VerticalAnchor.top()).squared().count(2));
+        //register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.decorated(FeatureDecorator.RANGE.configured(new RangeDecoratorConfiguration(230, 0, 26))).squared());
+        register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.rangeUniform(VerticalAnchor.absolute(230), VerticalAnchor.top()).squared());
+        register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)).squared().count(20));
+        register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64)).squared().count(15));
+        register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)).squared().count(5));
+        register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(12)).squared().count(3));
 
-        register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(256).squared().count(10));
-        register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(256).squared().count(10));
-        register("ice_patch", ConfiguredFeatures.ICE_PATCH.range(256).squared().count(20));
-        register("sediment_patch", ConfiguredFeatures.SEDIMENT_PATCH.range(32).squared().count(20));
-        register("sediment_disk", ConfiguredFeatures.SEDIMENT_DISK.range(32).squared().count(20));
+        register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(10));
+        register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(10));
+        register("ice_patch", ConfiguredFeatures.ICE_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(20));
+        register("sediment_patch", ConfiguredFeatures.SEDIMENT_PATCH.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)).squared().count(20));
+        register("sediment_disk", ConfiguredFeatures.SEDIMENT_DISK.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)).squared().count(20));
 
         register("smogstem_tree", ConfiguredFeatures.SMOGSTEM_TREE.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(8))));
         register("wigglewood_tree", ConfiguredFeatures.WIGGLEWOOD_TREE.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(8))));
@@ -409,13 +410,13 @@ public class UGFeatures {
         register("huge_ink_mushroom", ConfiguredFeatures.INK_MUSHROOM.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(2))));
         register("huge_veil_mushroom", ConfiguredFeatures.VEIL_MUSHROOM.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(2))));
 
-        register("depthrock_boulder", ConfiguredFeatures.DEPTHROCK_BOULDER.range(256).squared().count(5));
-        register("shiverstone_boulder", ConfiguredFeatures.SHIVERSTONE_BOULDER.range(256).squared().count(5));
+        register("depthrock_boulder", ConfiguredFeatures.DEPTHROCK_BOULDER.range(Features.Decorators.FULL_RANGE).squared().count(5));
+        register("shiverstone_boulder", ConfiguredFeatures.SHIVERSTONE_BOULDER.range(Features.Decorators.FULL_RANGE).squared().count(5));
 
-        register("glowing_kelp", ConfiguredFeatures.GLOWING_KELP.range(30).squared().count(100));
+        register("glowing_kelp", ConfiguredFeatures.GLOWING_KELP.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(30)).squared().count(100));
         register("smog_vent", ConfiguredFeatures.SMOG_VENT.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(8))));
-        register("droopvine", ConfiguredFeatures.DROOPVINE.range(256).squared().count(100));
-        register("ice_pillar", ConfiguredFeatures.ICE_PILLAR.range(256).squared().count(50));
+        register("droopvine", ConfiguredFeatures.DROOPVINE.range(Features.Decorators.FULL_RANGE).squared().count(100));
+        register("ice_pillar", ConfiguredFeatures.ICE_PILLAR.range(Features.Decorators.FULL_RANGE).squared().count(50));
     }
 
     private static <FC extends FeatureConfiguration> void register(String name, ConfiguredFeature<FC, ?> feature) {

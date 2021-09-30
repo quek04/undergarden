@@ -1,26 +1,24 @@
 package quek.undergarden.block;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.block.*;
-import net.minecraft.world.level.block.state.pattern.BlockPattern;
-import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
-import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraft.world.level.LevelReader;
-import quek.undergarden.entity.MinionEntity;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGEntityTypes;
-
-import javax.annotation.Nullable;
-
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.pattern.BlockInWorld;
+import net.minecraft.world.level.block.state.pattern.BlockPattern;
+import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
+import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
+import quek.undergarden.entity.MinionEntity;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGEntityTypes;
+
+import javax.annotation.Nullable;
 
 public class CarvedGloomgourdBlock extends CarvedPumpkinBlock {
 

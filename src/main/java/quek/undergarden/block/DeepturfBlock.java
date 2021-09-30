@@ -10,9 +10,7 @@ import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-
-public class DeepturfBlock extends UGGrassBlock implements BonemealableBlock {
+public class DeepturfBlock extends SpreadingSnowyDeepsoilBlock implements BonemealableBlock {
 
     public DeepturfBlock(Properties properties) {
         super(properties);

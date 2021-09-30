@@ -1,30 +1,28 @@
 package quek.undergarden.block;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.core.Direction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.entity.ScintlingEntity;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
-
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class GooLayerBlock extends Block {
 
@@ -38,7 +36,7 @@ public class GooLayerBlock extends Block {
 
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
-        if(entityIn instanceof Player && ((Player) entityIn).inventory.armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((Player) entityIn).hasEffect(UGEffects.GOOEY.get())) { }
+        if(entityIn instanceof Player && ((Player) entityIn).getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((Player) entityIn).hasEffect(UGEffects.GOOEY.get())) { }
         else if(!(entityIn instanceof ScintlingEntity) && entityIn.isOnGround()) {
             entityIn.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
         }

@@ -82,7 +82,7 @@ public class Undergarden {
 				UGSoundEvents.SOUNDS,
 				UGStructures.STRUCTURES,
 				UGSurfaceBuilders.SURFACE_BUILDERS,
-				UGTileEntities.TILE_ENTITIES,
+				UGBlockEntities.BLOCK_ENTITIES,
 				UGTreeDecoratorTypes.TREE_DECORATORS
 		};
 
@@ -243,8 +243,8 @@ public class Undergarden {
 			Sheets.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);
 			Sheets.addWoodType(UGBlocks.GRONGLE_WOODTYPE);
 		});
-		ClientRegistry.bindTileEntityRenderer(UGTileEntities.UNDERGARDEN_SIGN.get(), SignRenderer::new);
-		ClientRegistry.bindTileEntityRenderer(UGTileEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
+		ClientRegistry.bindTileEntityRenderer(UGBlockEntities.UNDERGARDEN_SIGN.get(), SignRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
 
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity) -> {
 			if (entity == null) {

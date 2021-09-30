@@ -1,40 +1,22 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.*;
-import net.minecraft.world.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
-import javax.annotation.Nullable;
 import java.util.Random;
-
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.StemBlock;
-import net.minecraft.world.level.block.StemGrownBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
 
 public class UGStemBlock extends StemBlock {
 
-    private final StemGrownBlock crop;
-
-    public UGStemBlock(StemGrownBlock crop, BlockBehaviour.Properties properties) {
-        super(crop, properties);
-        this.crop = crop;
+    public UGStemBlock(StemGrownBlock pFruit, Properties pProperties) {
+        super(pFruit, UGItems.GLOOMGOURD_SEEDS, pProperties);
     }
-
 
     @Override
     public boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
@@ -62,17 +44,11 @@ public class UGStemBlock extends StemBlock {
                 BlockState blockstate = worldIn.getBlockState(blockpos.below());
                 Block block = blockstate.getBlock();
                 if (worldIn.isEmptyBlock(blockpos) && (blockstate.canSustainPlant(worldIn, blockpos.below(), Direction.UP, this) || block == UGBlocks.DEEPSOIL_FARMLAND.get() || block == UGBlocks.DEEPSOIL.get() || block == UGBlocks.COARSE_DEEPSOIL.get() || block == UGBlocks.DEEPTURF_BLOCK.get())) {
-                    worldIn.setBlockAndUpdate(blockpos, this.crop.defaultBlockState());
-                    worldIn.setBlockAndUpdate(pos, this.crop.getAttachedStem().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, direction));
+                    worldIn.setBlockAndUpdate(blockpos, this.getFruit().defaultBlockState());
+                    worldIn.setBlockAndUpdate(pos, this.getFruit().getAttachedStem().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, direction));
                 }
             }
             net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
         }
-    }
-
-    @Nullable
-    @OnlyIn(Dist.CLIENT)
-    protected Item getSeedItem() {
-        return UGItems.GLOOMGOURD_SEEDS.get();
     }
 }

@@ -2,6 +2,7 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -79,15 +80,15 @@ public class UGBlocks {
     public static final RegistryObject<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = register("tremblecrust_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(TREMBLECRUST.get()).noOcclusion().noCollission()));
 
     //ores
-    public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> IRON_ORE = register("iron_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(7.0F, 24.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new UGOreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> COAL_ORE = register("coal_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> IRON_ORE = register("iron_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> GOLD_ORE = register("gold_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIAMOND_ORE = register("diamond_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> CLOGGRUM_ORE = register("cloggrum_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> FROSTSTEEL_ORE = register("froststeel_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> UTHERIUM_ORE = register("utherium_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> OTHERSIDE_UTHERIUM_ORE = register("otherside_utherium_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(7.0F, 24.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> REGALIUM_ORE = register("regalium_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 
     //storage blocks
     public static final RegistryObject<Block> CLOGGRUM_BLOCK = register("cloggrum_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
@@ -259,7 +260,7 @@ public class UGBlocks {
                 return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(UGItems.FORGOTTEN));
             }
             else if(Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
-                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1).setISTER(() -> DepthrockBedISTER::new));
+                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)/*.setISTER(() -> DepthrockBedISTER::new)*/); //TODO: fix bed item render
             }
             else if(Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
                 return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP));

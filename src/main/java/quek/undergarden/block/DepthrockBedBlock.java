@@ -1,28 +1,26 @@
 package quek.undergarden.block;
 
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.state.properties.BedPart;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BedBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import quek.undergarden.block.tileentity.DepthrockBedTE;
+import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGDimensions;
-
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class DepthrockBedBlock extends BedBlock {
 
@@ -83,19 +81,18 @@ public class DepthrockBedBlock extends BedBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockGetter world) {
-        return new DepthrockBedTE();
-    }
-
-    //stops reduced fall damage
-    @Override
-    public void fallOn(Level world, BlockPos pos, Entity entity, float distance) {
-        super.fallOn(world, pos, entity, distance);
+    public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float p_152173_) {
+        super.fallOn(level, state, pos, entity, p_152173_);
     }
 
     //stops bouncing
     @Override
     public void updateEntityAfterFallOn(BlockGetter world, Entity entity) {
         entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return UGBlockEntities.DEPTHROCK_BED.get().create(pPos, pState);
     }
 }

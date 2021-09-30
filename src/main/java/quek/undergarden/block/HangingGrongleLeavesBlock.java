@@ -1,16 +1,14 @@
 package quek.undergarden.block;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantBodyBlock;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.core.Direction;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.level.LevelReader;
 import quek.undergarden.registry.UGBlocks;
-
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class HangingGrongleLeavesBlock extends GrowingPlantBodyBlock {
 
@@ -30,9 +28,10 @@ public class HangingGrongleLeavesBlock extends GrowingPlantBodyBlock {
         BlockPos blockpos = pos.relative(this.growthDirection.getOpposite());
         BlockState blockstate = world.getBlockState(blockpos);
         Block block = blockstate.getBlock();
-        if (!this.canAttachToBlock(block)) {
+        if (!this.canAttachTo(blockstate)) {
             return false;
-        } else {
+        }
+        else {
             return block == this.getHeadBlock() || block == this.getBodyBlock() || block == UGBlocks.GRONGLE_LEAVES.get();
         }
     }

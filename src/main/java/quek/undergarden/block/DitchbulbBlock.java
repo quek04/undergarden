@@ -1,40 +1,34 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.*;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.util.*;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGItems;
-
-import java.util.Random;
-
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGItems;
+
+import java.util.Random;
 
 public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
 
@@ -97,7 +91,8 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
         Block block = blockstate.getBlock();
         if (block != UGBlocks.DEEPTURF_BLOCK.get() && block != UGBlocks.DEEPSOIL.get() && block != UGBlocks.DEPTHROCK.get()) {
             return worldIn.getRawBrightness(pos, 0) < 0 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.core.Direction.UP, this);
-        } else {
+        }
+        else {
             return true;
         }
     }
@@ -107,7 +102,7 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
         return !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    @OnlyIn(Dist.CLIENT)
+    @Override
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
         double x = (double) pos.getX() + 0.5D;
         double y = (double) pos.getY() + 0.8D;

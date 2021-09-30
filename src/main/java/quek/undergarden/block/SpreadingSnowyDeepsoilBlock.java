@@ -16,31 +16,35 @@ import java.util.Random;
 
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
-public class UGGrassBlock extends SpreadingSnowyDirtBlock {
+public class SpreadingSnowyDeepsoilBlock extends SpreadingSnowyDirtBlock {
 
-    public UGGrassBlock(Properties builder) {
-        super(builder);
+    public SpreadingSnowyDeepsoilBlock(Properties properties) {
+        super(properties);
     }
 
-    private static boolean isSnowyConditions(BlockState state, LevelReader world, BlockPos pos) {
-        BlockPos blockpos = pos.above();
-        BlockState blockstate = world.getBlockState(blockpos);
-        if (blockstate.getBlock() == Blocks.SNOW && blockstate.getValue(SnowLayerBlock.LAYERS) == 1) {
+    private static boolean canBeGrass(BlockState pState, LevelReader pLevelReader, BlockPos pPos) {
+        BlockPos blockpos = pPos.above();
+        BlockState blockstate = pLevelReader.getBlockState(blockpos);
+        if (blockstate.is(Blocks.SNOW) && blockstate.getValue(SnowLayerBlock.LAYERS) == 1) {
             return true;
-        } else {
-            int i = LayerLightEngine.getLightBlockInto(world, state, pos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(world, blockpos));
-            return i < world.getMaxLightLevel();
+        }
+        else if (blockstate.getFluidState().getAmount() == 8) {
+            return false;
+        }
+        else {
+            int i = LayerLightEngine.getLightBlockInto(pLevelReader, pState, pPos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(pLevelReader, blockpos));
+            return i < pLevelReader.getMaxLightLevel();
         }
     }
 
-    private static boolean isSnowyAndNotUnderwater(BlockState state, LevelReader world, BlockPos pos) {
-        BlockPos blockpos = pos.above();
-        return isSnowyConditions(state, world, pos) && !world.getFluidState(blockpos).is(FluidTags.WATER);
+    private static boolean canPropagate(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        BlockPos blockpos = pPos.above();
+        return canBeGrass(pState, pLevel, pPos) && !pLevel.getFluidState(blockpos).is(FluidTags.WATER);
     }
 
     @Override
     public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, Random random) {
-        if (!isSnowyConditions(state, worldIn, pos)) {
+        if (!canBeGrass(state, worldIn, pos)) {
             if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             worldIn.setBlockAndUpdate(pos, UGBlocks.DEEPSOIL.get().defaultBlockState());
         }
@@ -49,7 +53,7 @@ public class UGGrassBlock extends SpreadingSnowyDirtBlock {
 
             for (int i = 0; i < 4; ++i) {
                 BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                if (worldIn.getBlockState(blockpos).is(UGBlocks.DEEPSOIL.get()) && isSnowyAndNotUnderwater(blockstate, worldIn, blockpos)) {
+                if (worldIn.getBlockState(blockpos).is(UGBlocks.DEEPSOIL.get()) && canPropagate(blockstate, worldIn, blockpos)) {
                     worldIn.setBlockAndUpdate(blockpos, blockstate.setValue(SNOWY, worldIn.getBlockState(blockpos.above()).is(Blocks.SNOW)));
                 }
             }

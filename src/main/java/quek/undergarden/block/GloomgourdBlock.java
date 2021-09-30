@@ -1,27 +1,23 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.*;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.util.*;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGItems;
-
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AttachedStemBlock;
 import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.StemGrownBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGItems;
 
 public class GloomgourdBlock extends StemGrownBlock {
 
@@ -45,7 +41,8 @@ public class GloomgourdBlock extends StemGrownBlock {
             }
 
             return InteractionResult.SUCCESS;
-        } else {
+        }
+        else {
             return super.use(state, worldIn, pos, player, handIn, hit);
         }
     }

@@ -1,22 +1,19 @@
 package quek.undergarden.block;
 
-import net.minecraft.block.*;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.AttachedStemBlock;
+import net.minecraft.world.level.block.StemGrownBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
-import net.minecraft.world.level.block.AttachedStemBlock;
-import net.minecraft.world.level.block.StemGrownBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraft.world.level.block.state.BlockState;
-
 public class UGAttachedStemBlock extends AttachedStemBlock {
 
-    public UGAttachedStemBlock(StemGrownBlock stemGrownBlock, Properties properties) {
-        super(stemGrownBlock, properties);
+    public UGAttachedStemBlock(StemGrownBlock pFruit, Properties pProperties) {
+        super(pFruit, UGItems.GLOOMGOURD_SEEDS, pProperties);
     }
 
     @Override

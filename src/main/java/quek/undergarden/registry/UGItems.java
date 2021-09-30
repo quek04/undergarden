@@ -1,26 +1,19 @@
 package quek.undergarden.registry;
 
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.item.*;
 import net.minecraft.ChatFormatting;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoatEntity;
 import quek.undergarden.item.*;
-import quek.undergarden.item.armor.*;
+import quek.undergarden.item.armor.MasticatedChestplateItem;
+import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
-
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BowlFoodItem;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.FishBucketItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
 
 public class UGItems {
 
@@ -104,8 +97,8 @@ public class UGItems {
     public static final RegistryObject<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(
             UGFluids.VIRULENT_MIX_SOURCE, (new Item.Properties()).tab(UGItemGroups.GROUP).stacksTo(1)));
 
-    public static final RegistryObject<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new FishBucketItem(
-            () -> UGEntityTypes.GWIBLING_TYPE, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(UGItemGroups.GROUP)));
+    public static final RegistryObject<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new MobBucketItem(
+            () -> UGEntityTypes.GWIBLING_TYPE, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, (new Item.Properties()).stacksTo(1).tab(UGItemGroups.GROUP)));
 
     //armors
     public static final RegistryObject<Item> CLOGGRUM_HELMET = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UGArmors.CLOGGRUM, EquipmentSlot.HEAD));

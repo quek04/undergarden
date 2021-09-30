@@ -1,13 +1,11 @@
 package quek.undergarden.block;
 
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.WallSignBlock;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.BlockGetter;
-import quek.undergarden.block.tileentity.UndergardenSignTE;
-
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import quek.undergarden.registry.UGBlockEntities;
 
 public class UndergardenWallSignBlock extends WallSignBlock {
 
@@ -16,12 +14,7 @@ public class UndergardenWallSignBlock extends WallSignBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockGetter world) {
-        return new UndergardenSignTE();
-    }
-
-    @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return UGBlockEntities.UNDERGARDEN_SIGN.get().create(pPos, pState);
     }
 }

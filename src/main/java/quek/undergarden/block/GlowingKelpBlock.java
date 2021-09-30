@@ -4,8 +4,6 @@ import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.KelpPlantBlock;
 import quek.undergarden.registry.UGBlocks;
 
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-
 public class GlowingKelpBlock extends KelpPlantBlock {
 
     public GlowingKelpBlock(Properties properties) {
