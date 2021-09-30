@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import quek.undergarden.block.GlowingKelpTopBlock;
 import quek.undergarden.registry.UGBlocks;
@@ -20,28 +21,31 @@ public class GlowingKelpFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     @Override
-    public boolean place(WorldGenLevel worldIn, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoneFeatureConfiguration config) {
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
+        WorldGenLevel level = pContext.level();
+        BlockPos pos = pContext.origin();
+        Random random = pContext.random();
         int i = 0;
-        int ocean_y = 32;
+        int oceanY = 32;
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
-        if(pos.getY() < ocean_y) {
-            if (worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER) {
+        if(pos.getY() < oceanY) {
+            if (level.getBlockState(blockpos).getBlock() == Blocks.WATER) {
                 BlockState kelp = UGBlocks.GLOWING_KELP.get().defaultBlockState();
                 BlockState kelp_top = UGBlocks.GLOWING_KELP_PLANT.get().defaultBlockState();
-                int k = 1 + rand.nextInt(10);
+                int k = 1 + random.nextInt(10);
 
                 for(int l = 0; l <= k; ++l) {
-                    if (worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER && worldIn.getBlockState(blockpos.above()).getBlock() == Blocks.WATER && kelp_top.canSurvive(worldIn, blockpos)) {
+                    if (level.getBlockState(blockpos).getBlock() == Blocks.WATER && level.getBlockState(blockpos.above()).getBlock() == Blocks.WATER && kelp_top.canSurvive(level, blockpos)) {
                         if (l == k) {
-                            worldIn.setBlock(blockpos, kelp.setValue(GlowingKelpTopBlock.AGE, rand.nextInt(4) + 20), 2);
+                            level.setBlock(blockpos, kelp.setValue(GlowingKelpTopBlock.AGE, random.nextInt(4) + 20), 2);
                             ++i;
                         } else {
-                            worldIn.setBlock(blockpos, kelp_top, 2);
+                            level.setBlock(blockpos, kelp_top, 2);
                         }
                     } else if (l > 0) {
                         BlockPos blockpos1 = blockpos.below();
-                        if (kelp.canSurvive(worldIn, blockpos1) && worldIn.getBlockState(blockpos1.below()).getBlock() != UGBlocks.GLOWING_KELP.get()) {
-                            worldIn.setBlock(blockpos1, kelp.setValue(GlowingKelpTopBlock.AGE, rand.nextInt(4) + 20), 2);
+                        if (kelp.canSurvive(level, blockpos1) && level.getBlockState(blockpos1.below()).getBlock() != UGBlocks.GLOWING_KELP.get()) {
+                            level.setBlock(blockpos1, kelp.setValue(GlowingKelpTopBlock.AGE, random.nextInt(4) + 20), 2);
                             ++i;
                         }
                         break;
@@ -53,5 +57,4 @@ public class GlowingKelpFeature extends Feature<NoneFeatureConfiguration> {
         }
         return i > 0;
     }
-
 }

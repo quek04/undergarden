@@ -29,7 +29,7 @@ public class BigInkMushroomFeature extends UGBigMushroomFeature {
                 boolean flag5 = flag2 || flag3;
                 if (!flag4 || !flag5) {
                     posMutable.setWithOffset(pos, j, y, k);
-                    if (world.getBlockState(posMutable).canBeReplacedByLeaves(world, posMutable)) {
+                    if (world.getBlockState(posMutable).isSolidRender(world, posMutable)) {
                         boolean flag6 = flag || flag5 && j == 1 - i;
                         boolean flag7 = flag1 || flag5 && j == i - 1;
                         boolean flag8 = flag2 || flag4 && k == 1 - i;

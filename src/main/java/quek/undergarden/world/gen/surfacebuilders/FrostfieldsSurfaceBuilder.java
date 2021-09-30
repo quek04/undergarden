@@ -19,62 +19,62 @@ public class FrostfieldsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderBase
     }
 
     @Override
-    public void apply(Random random, ChunkAccess chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderBaseConfiguration config) {
-        this.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, config.getTopMaterial(), config.getUnderMaterial(), config.getUnderwaterMaterial(), seaLevel);
+    public void apply(Random pRandom, ChunkAccess pChunk, Biome pBiome, int pX, int pZ, int pHeight, double pNoise, BlockState pDefaultBlock, BlockState pDefaultFluid, int pSeaLevel, int pMinSurfaceLevel, long pSeed, SurfaceBuilderBaseConfiguration pConfig) {
+
     }
 
-    protected void buildSurface(Random random, ChunkAccess chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, BlockState top, BlockState middle, BlockState bottom, int sealevel) {
-        BlockState topBlock = top;
-        BlockState middleBlock = middle;
+    protected void apply(Random pRandom, ChunkAccess pChunk, Biome pBiome, int pX, int pZ, int pHeight, double pNoise, BlockState pDefaultBlock, BlockState pDefaultFluid, BlockState pTopMaterial, BlockState pUnderMaterial, BlockState pUnderwaterMaterial, int pSeaLevel, int pMinSurfaceLevel) {
+        BlockState topBlock = pTopMaterial;
+        BlockState middleBlock = pUnderMaterial;
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
         int i = -1;
-        int basin = (int)(noise / 3.0D + 3.0D + random.nextDouble() * 0.25D);
-        int xPos = x & 15;
-        int zPos = z & 15;
+        int basin = (int)(pNoise / 3.0D + 3.0D + pRandom.nextDouble() * 0.25D);
+        int xPos = pX & 15;
+        int zPos = pZ & 15;
 
-        for(int y = startHeight; y >= 0; --y) {
+        for(int y = pHeight; y >= 0; --y) {
             pos.set(xPos, y, zPos);
-            BlockState blockstate2 = chunkIn.getBlockState(pos);
+            BlockState blockstate2 = pChunk.getBlockState(pos);
             if (blockstate2.isAir()) {
                 i = -1;
             }
-            else if (blockstate2.is(defaultBlock.getBlock())) {
+            else if (blockstate2.is(pDefaultBlock.getBlock())) {
                 if (i == -1) {
                     if (basin <= 0) {
                         topBlock = Blocks.AIR.defaultBlockState();
-                        middleBlock = defaultBlock;
-                    } else if (y >= sealevel - 4 && y <= sealevel + 1) {
-                        topBlock = top;
-                        middleBlock = middle;
+                        middleBlock = pDefaultBlock;
+                    } else if (y >= pSeaLevel - 4 && y <= pSeaLevel + 1) {
+                        topBlock = pTopMaterial;
+                        middleBlock = pUnderMaterial;
                     }
 
-                    if (y < sealevel && (topBlock == null || topBlock.isAir())) {
+                    if (y < pSeaLevel && (topBlock == null || topBlock.isAir())) {
                         topBlock = Blocks.ICE.defaultBlockState();
                         pos.set(xPos, y, zPos);
                     }
 
                     i = basin;
-                    if (y >= sealevel - 1) {
-                        chunkIn.setBlockState(pos, topBlock, false);
-                    } else if (y < sealevel - 7 - basin) {
+                    if (y >= pSeaLevel - 1) {
+                        pChunk.setBlockState(pos, topBlock, false);
+                    } else if (y < pSeaLevel - 7 - basin) {
                         topBlock = Blocks.AIR.defaultBlockState();
-                        middleBlock = defaultBlock;
-                        chunkIn.setBlockState(pos, bottom, false);
+                        middleBlock = pDefaultBlock;
+                        pChunk.setBlockState(pos, bottom, false);
                     } else {
-                        chunkIn.setBlockState(pos, middleBlock, false);
+                        pChunk.setBlockState(pos, middleBlock, false);
                     }
                 } else if (i > 0) {
                     --i;
-                    chunkIn.setBlockState(pos, middleBlock, false);
+                    pChunk.setBlockState(pos, middleBlock, false);
                 }
             }
             //replaces all default blocks (stone in Overworld, Depthrock in Undergarden etc) with Shiverstone
-            if(chunkIn.getBlockState(pos).is(defaultBlock.getBlock())) {
-                chunkIn.setBlockState(pos, UGBlocks.SHIVERSTONE.get().defaultBlockState(), false);
+            if(pChunk.getBlockState(pos).is(pDefaultBlock.getBlock())) {
+                pChunk.setBlockState(pos, UGBlocks.SHIVERSTONE.get().defaultBlockState(), false);
             }
             //replaces all water with ice
-            if (chunkIn.getBlockState(pos).is(Blocks.WATER)) {
-                chunkIn.setBlockState(pos, Blocks.ICE.defaultBlockState(), false);
+            if (pChunk.getBlockState(pos).is(pDefaultFluid.getBlock())) {
+                pChunk.setBlockState(pos, Blocks.ICE.defaultBlockState(), false);
             }
         }
 

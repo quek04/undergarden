@@ -10,6 +10,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import quek.undergarden.block.DroopvineBlock;
 import quek.undergarden.registry.UGBlocks;
@@ -25,16 +26,19 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     @Override
-    public boolean place(WorldGenLevel seedReader, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, NoneFeatureConfiguration config) {
-        if (!seedReader.isEmptyBlock(pos)) {
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
+        WorldGenLevel level = pContext.level();
+        BlockPos pos = pContext.origin();
+        Random random = pContext.random();
+        if (!level.isEmptyBlock(pos)) {
             return false;
         } else {
-            BlockState blockstate = seedReader.getBlockState(pos.above());
+            BlockState blockstate = level.getBlockState(pos.above());
             if (!blockstate.is(UGBlocks.DEPTHROCK.get()) && !blockstate.is(UGBlocks.SHIVERSTONE.get())) {
                 return false;
             } else {
-                this.placeRoofNetherWart(seedReader, rand, pos);
-                this.placeRoofDroopvine(seedReader, rand, pos);
+                this.placeRoofNetherWart(level, random, pos);
+                this.placeRoofDroopvine(level, random, pos);
                 return true;
             }
         }

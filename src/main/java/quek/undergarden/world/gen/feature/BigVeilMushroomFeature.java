@@ -46,7 +46,7 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
                     boolean flag5 = flag2 || flag3;
                     if (i >= p_225564_4_ || flag4 != flag5) {
                         posMutable.setWithOffset(pos, l, i, i1);
-                        if (world.getBlockState(posMutable).canBeReplacedByLeaves(world, posMutable)) {
+                        if (world.getBlockState(posMutable).isSolidRender(world, posMutable)) {
                             this.setBlock(world, posMutable, config.capProvider.getState(random, pos).setValue(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).setValue(HugeMushroomBlock.WEST, l < -k).setValue(HugeMushroomBlock.EAST, l > k).setValue(HugeMushroomBlock.NORTH, i1 < -k).setValue(HugeMushroomBlock.SOUTH, i1 > k));
 
                             if(random.nextInt(5) == 0) {
