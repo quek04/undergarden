@@ -167,7 +167,7 @@ public class UndergardenClient {
     @SubscribeEvent
     public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
         Camera info = Minecraft.getInstance().gameRenderer.getMainCamera();
-        FluidState fluidState = info.getFluidInCamera();
+        FluidState fluidState = info.getBlockAtCamera().getFluidState();
 
         if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
             event.setRed(57 / 255F);
@@ -179,7 +179,7 @@ public class UndergardenClient {
     @SubscribeEvent
     public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
         Camera info = Minecraft.getInstance().gameRenderer.getMainCamera();
-        FluidState fluidState = info.getFluidInCamera();
+        FluidState fluidState = info.getBlockAtCamera().getFluidState();
 
         if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
             event.setDensity(1.5F);
