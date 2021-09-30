@@ -9,15 +9,11 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import net.minecraft.world.level.biome.MultiNoiseBiomeSource.PresetInstance;
 
 public class UGBiomeProvider extends MultiNoiseBiomeSource {
 
@@ -31,8 +27,10 @@ public class UGBiomeProvider extends MultiNoiseBiomeSource {
                                     Biome.ClimateParameters.CODEC.fieldOf("parameters")
                                             .forGetter(Pair::getFirst),
                                     Biome.CODEC.fieldOf("biome")
-                                            .forGetter(Pair::getSecond))
-                                    .apply(biomeAttributes, Pair::of))
+                                            .forGetter(Pair::getSecond)
+                                    )
+                                    .apply(biomeAttributes, Pair::of)
+                            )
                             .listOf().fieldOf("biomes")
                             .forGetter((netherProvider) -> netherProvider.parameters),
                     MultiNoiseBiomeSource.NoiseParameters.CODEC.fieldOf("temperature_noise")
@@ -42,7 +40,8 @@ public class UGBiomeProvider extends MultiNoiseBiomeSource {
                     MultiNoiseBiomeSource.NoiseParameters.CODEC.fieldOf("altitude_noise")
                             .forGetter((netherProvider) -> netherProvider.altitudeParams),
                     MultiNoiseBiomeSource.NoiseParameters.CODEC.fieldOf("weirdness_noise")
-                            .forGetter((netherProvider) -> netherProvider.weirdnessParams))
+                            .forGetter((netherProvider) -> netherProvider.weirdnessParams)
+                    )
                     .apply(instance, MultiNoiseBiomeSource::new));
 
     public static final Codec<MultiNoiseBiomeSource> CODEC = Codec.mapEither(PresetInstance.CODEC, PACKET_CODEC).xmap((either) ->
@@ -59,7 +58,6 @@ public class UGBiomeProvider extends MultiNoiseBiomeSource {
         return CODEC;
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     public BiomeSource withSeed(long seed) {
         return new UGBiomeProvider(seed, this.parameters, this.preset);
