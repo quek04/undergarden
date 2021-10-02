@@ -3,10 +3,9 @@ package quek.undergarden.world.gen.trunkplacer;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.LevelSimulatedRW;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
@@ -15,7 +14,7 @@ import quek.undergarden.registry.UGTrunkPlacerTypes;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
+import java.util.function.BiConsumer;
 
 public class GrongleTrunkPlacer extends MegaJungleTrunkPlacer {
 
@@ -32,12 +31,13 @@ public class GrongleTrunkPlacer extends MegaJungleTrunkPlacer {
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedRW world, Random rand, int y, BlockPos pos, Set<BlockPos> posSet, BoundingBox boundingBox, TreeConfiguration config) {
-        BlockPos blockpos = pos.below();
-        TreeFeature.setBlockKnownShape(world, blockpos, UGBlocks.DEEPSOIL.get().defaultBlockState());
-        TreeFeature.setBlockKnownShape(world, blockpos.east(), UGBlocks.DEEPSOIL.get().defaultBlockState());
-        TreeFeature.setBlockKnownShape(world, blockpos.south(), UGBlocks.DEEPSOIL.get().defaultBlockState());
-        TreeFeature.setBlockKnownShape(world, blockpos.south().east(), UGBlocks.DEEPSOIL.get().defaultBlockState());
-        return super.placeTrunk(world, rand, y, pos, posSet, boundingBox, config);
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, Random random, int freeTreeHeight, BlockPos pos, TreeConfiguration config) {
+        BlockPos pos2 = pos.below();
+        BlockState deepsoil = UGBlocks.DEEPSOIL.get().defaultBlockState();
+        blockSetter.accept(pos2, deepsoil);
+        blockSetter.accept(pos2.east(), deepsoil);
+        blockSetter.accept(pos2.south(), deepsoil);
+        blockSetter.accept(pos2.south().east(), deepsoil);
+        return super.placeTrunk(level, blockSetter, random, freeTreeHeight, pos, config);
     }
 }

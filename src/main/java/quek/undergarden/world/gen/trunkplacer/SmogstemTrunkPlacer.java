@@ -3,12 +3,11 @@ package quek.undergarden.world.gen.trunkplacer;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelSimulatedRW;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
@@ -17,7 +16,7 @@ import quek.undergarden.registry.UGTrunkPlacerTypes;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
+import java.util.function.BiConsumer;
 
 public class SmogstemTrunkPlacer extends TrunkPlacer {
 
@@ -34,13 +33,13 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedRW world, Random rand, int yMaybe, BlockPos pos, Set<BlockPos> posSet, BoundingBox boundingBox, TreeConfiguration config) {
-        BlockGetter reader = (BlockGetter) world;
-        int treeBaseHeight = config.trunkPlacer.getTreeHeight(rand);
-        int j = treeBaseHeight / 8 + rand.nextInt(2);
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, Random pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+        BlockGetter blockGetter = (BlockGetter) pLevel;
+        int treeBaseHeight = pConfig.trunkPlacer.getTreeHeight(pRandom);
+        int j = treeBaseHeight / 8 + pRandom.nextInt(2);
 
-        for (int k = 0; k < treeBaseHeight; ++k) {
-            float thiccness = (1.0F - (float) k / (float) treeBaseHeight)*j;
+        for (int y = 0; y < treeBaseHeight; ++y) {
+            float thiccness = (1.0F - (float) y / (float) treeBaseHeight)*j;
             int l = Mth.ceil(treeBaseHeight);
 
             for (int i1 = -l; i1 <= l; ++i1) {
@@ -48,16 +47,18 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
 
                 for (int j1 = -l; j1 <= l; ++j1) {
                     float f2 = (float) Mth.abs(j1) - 0.25F;
-                    if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > thiccness * thiccness)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(rand.nextFloat() > 0.75F))) {
-                        BlockState blockstate = reader.getBlockState(pos.offset(i1, k, j1));
-                        if (blockstate.isAir((BlockGetter) world, pos)) {
-                            placeLog(world, rand, pos.offset(i1, k, j1), posSet, boundingBox, config);
+                    if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > thiccness * thiccness)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(pRandom.nextFloat() > 0.75F))) {
+                        BlockState blockstate = blockGetter.getBlockState(pPos.offset(i1, y, j1));
+                        if (blockstate.isAir()) {
+                            //placeLog(world, pRandom, pPos.offset(i1, y, j1), posSet, boundingBox, pConfig);
+                            placeLog(pLevel, pBlockSetter, pRandom, pPos.offset(i1, y, j1), pConfig);
                         }
 
-                        if (k != 0 && l > 1) {
-                            blockstate = reader.getBlockState(pos.offset(i1, -k, j1));
-                            if (blockstate.isAir((BlockGetter) world, pos)) {
-                                placeLog(world, rand, pos.offset(i1, k, j1), posSet, boundingBox, config);
+                        if (y != 0 && l > 1) {
+                            blockstate = blockGetter.getBlockState(pPos.offset(i1, -y, j1));
+                            if (blockstate.isAir()) {
+                                //placeLog(world, pRandom, pPos.offset(i1, y, j1), posSet, boundingBox, pConfig);
+                                placeLog(pLevel, pBlockSetter, pRandom, pPos.offset(i1, y, j1), pConfig);
                             }
                         }
                     }
@@ -65,6 +66,6 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
             }
         }
 
-        return ImmutableList.of(new FoliagePlacer.FoliageAttachment(pos.above(treeBaseHeight), 0, false));
+        return ImmutableList.of(new FoliagePlacer.FoliageAttachment(pPos.above(treeBaseHeight), 0, false));
     }
 }

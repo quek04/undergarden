@@ -1,9 +1,8 @@
 package quek.undergarden.world.gen.tree;
 
 import net.minecraft.world.level.block.grower.AbstractMegaTreeGrower;
-import net.minecraft.block.trees.Tree;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import quek.undergarden.registry.UGFeatures;
 
 import javax.annotation.Nullable;
