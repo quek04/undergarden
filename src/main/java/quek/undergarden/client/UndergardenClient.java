@@ -4,6 +4,7 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
+import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -16,7 +17,9 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import quek.undergarden.client.model.*;
 import quek.undergarden.client.render.entity.*;
+import quek.undergarden.entity.UGBoatEntity;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGFluids;
@@ -91,10 +94,12 @@ public class UndergardenClient {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
+        //
         event.registerEntityRenderer(UGEntityTypes.SLINGSHOT_AMMO.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.GOO_BALL.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
+        //
         event.registerEntityRenderer(UGEntityTypes.MINION.get(), MinionRender::new);
         event.registerEntityRenderer(UGEntityTypes.ROTLING.get(), RotlingRender::new);
         event.registerEntityRenderer(UGEntityTypes.ROTWALKER.get(), RotwalkerRender::new);
@@ -111,6 +116,30 @@ public class UndergardenClient {
         event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
         event.registerEntityRenderer(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
         event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
+    }
+
+    @SubscribeEvent
+    public static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        for(UGBoatEntity.Type boatType : UGBoatEntity.Type.values()) {
+            event.registerLayerDefinition(UGBoatRenderer.boatLayer(boatType), BoatModel::createBodyModel);
+        }
+        event.registerLayerDefinition(MinionModel.LAYER_LOCATION, MinionModel::createBodyLayer);
+        event.registerLayerDefinition(RotlingModel.LAYER_LOCATION, RotlingModel::createBodyLayer);
+        event.registerLayerDefinition(RotwalkerModel.LAYER_LOCATION, RotwalkerModel::createBodyLayer);
+        event.registerLayerDefinition(RotbeastModel.LAYER_LOCATION, RotbeastModel::createBodyLayer);
+        event.registerLayerDefinition(DwellerModel.LAYER_LOCATION, () -> DwellerModel.createBodyLayer(0.0F));
+        event.registerLayerDefinition(DwellerModel.SADDLE_LAYER_LOCATION, () -> DwellerModel.createBodyLayer(0.5F));
+        event.registerLayerDefinition(BruteModel.LAYER_LOCATION, BruteModel::createBodyLayer);
+        event.registerLayerDefinition(ScintlingModel.LAYER_LOCATION, ScintlingModel::createBodyLayer);
+        event.registerLayerDefinition(GloomperModel.LAYER_LOCATION, GloomperModel::createBodyLayer);
+        event.registerLayerDefinition(StonebornModel.LAYER_LOCATION, StonebornModel::createBodyLayer);
+        event.registerLayerDefinition(NargoyleModel.LAYER_LOCATION, NargoyleModel::createBodyLayer);
+        event.registerLayerDefinition(MuncherModel.LAYER_LOCATION, MuncherModel::createBodyLayer);
+        event.registerLayerDefinition(SploogieModel.LAYER_LOCATION, SploogieModel::createBodyLayer);
+        event.registerLayerDefinition(GwibModel.LAYER_LOCATION, GwibModel::createBodyLayer);
+        event.registerLayerDefinition(MogModel.LAYER_LOCATION, MogModel::createBodyLayer);
+        event.registerLayerDefinition(MasticatorModel.LAYER_LOCATION, MasticatorModel::createBodyLayer);
+        event.registerLayerDefinition(ForgottenGuardianModel.LAYER_LOCATION, ForgottenGuardianModel::createBodyLayer);
     }
 
     public static void registerBlockColors() {

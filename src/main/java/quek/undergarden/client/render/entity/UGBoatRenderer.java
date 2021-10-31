@@ -32,7 +32,7 @@ public class UGBoatRenderer extends EntityRenderer<UGBoatEntity> {
                 (boatType) -> Pair.of(new ResourceLocation("textures/entity/boat/" + boatType.getName() + ".png"), new BoatModel(renderContext.bakeLayer(boatLayer(boatType))))));
     }
 
-    private static ModelLayerLocation boatLayer(UGBoatEntity.Type boatType) {
+    public static ModelLayerLocation boatLayer(UGBoatEntity.Type boatType) {
         return new ModelLayerLocation(new ResourceLocation("undergarden", "boat/" + boatType.getName()), "main");
     }
 
