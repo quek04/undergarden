@@ -1,22 +1,20 @@
 package quek.undergarden.client;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.Camera;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.registry.UGBlocks;
@@ -92,36 +90,27 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(UGEntityTypes.ROTLING.get(), new RotlingRender(event.));
-    }
-
-    public static void registerEntityRenderers() {
-        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SLINGSHOT_AMMO.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GOO_BALL.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BLISTERBOMB.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MINION_PROJECTILE.get(), entity -> new ThrownItemRenderer<>(entity, itemRenderer));
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTLING.get(), RotlingRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTWALKER.get(), RotwalkerRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.ROTBEAST.get(), RotbeastRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.DWELLER.get(), DwellerRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GWIBLING.get(), GwiblingRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.BRUTE.get(), BruteRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SCINTLING.get(), ScintlingRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GLOOMPER.get(), GloomperRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.STONEBORN.get(), StonebornRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.NARGOYLE.get(), NargoyleRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MUNCHER.get(), MuncherRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MINION.get(), MinionRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.GWIB.get(), GwibRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(UGEntityTypes.MOG.get(), MogRender::new);
+        event.registerEntityRenderer(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.SLINGSHOT_AMMO.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.GOO_BALL.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.MINION.get(), MinionRender::new);
+        event.registerEntityRenderer(UGEntityTypes.ROTLING.get(), RotlingRender::new);
+        event.registerEntityRenderer(UGEntityTypes.ROTWALKER.get(), RotwalkerRender::new);
+        event.registerEntityRenderer(UGEntityTypes.ROTBEAST.get(), RotbeastRender::new);
+        event.registerEntityRenderer(UGEntityTypes.DWELLER.get(), DwellerRender::new);
+        event.registerEntityRenderer(UGEntityTypes.BRUTE.get(), BruteRender::new);
+        event.registerEntityRenderer(UGEntityTypes.SCINTLING.get(), ScintlingRender::new);
+        event.registerEntityRenderer(UGEntityTypes.GLOOMPER.get(), GloomperRender::new);
+        event.registerEntityRenderer(UGEntityTypes.STONEBORN.get(), StonebornRender::new);
+        event.registerEntityRenderer(UGEntityTypes.NARGOYLE.get(), NargoyleRender::new);
+        event.registerEntityRenderer(UGEntityTypes.MUNCHER.get(), MuncherRender::new);
+        event.registerEntityRenderer(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
+        event.registerEntityRenderer(UGEntityTypes.GWIB.get(), GwibRender::new);
+        event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
+        event.registerEntityRenderer(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
+        event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
     }
 
     public static void registerBlockColors() {
