@@ -1,41 +1,37 @@
 package quek.undergarden.entity.boss;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Mth;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.pathfinding.*;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.registry.UGSoundEvents;
-
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
+import net.minecraft.world.phys.AABB;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import quek.undergarden.registry.UGSoundEvents;
 
 public class ForgottenGuardianEntity extends Monster {
 
@@ -93,7 +89,7 @@ public class ForgottenGuardianEntity extends Monster {
     @Override
     public void checkDespawn() {
         if (this.level.getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
-            this.remove();
+            this.discard();
         } else {
             this.noActionTime = 0;
         }
@@ -111,8 +107,7 @@ public class ForgottenGuardianEntity extends Monster {
 
             for(BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
                 BlockState blockstate = this.level.getBlockState(blockpos);
-                Block block = blockstate.getBlock();
-                if(!block.is(BlockTags.WITHER_IMMUNE)) {
+                if(!blockstate.is(BlockTags.WITHER_IMMUNE)) {
                     this.level.destroyBlock(blockpos, false, this);
                 }
             }
@@ -179,15 +174,10 @@ public class ForgottenGuardianEntity extends Monster {
     }
 
     @Override
-    public boolean causeFallDamage(float distance, float damageMultiplier) {
-        return false;
-    }
-
-    @Override
     protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) { }
 
     @Override
-    public boolean addEffect(MobEffectInstance effectInstanceIn) {
+    public boolean canBeAffected(MobEffectInstance pPotioneffect) {
         return false;
     }
 
