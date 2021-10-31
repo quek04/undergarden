@@ -2,142 +2,79 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.cavern.NargoyleEntity;
 
 public class NargoyleModel<T extends NargoyleEntity> extends ListModel<T> {
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "nargoyle"), "main");
 	private final ModelPart body;
-	private final ModelPart upperbody;
 	private final ModelPart head;
-	private final ModelPart jaw;
-	private final ModelPart ear1;
-	private final ModelPart ear2;
 	private final ModelPart arms;
-	private final ModelPart upperarmleft;
-	private final ModelPart lowerarmleft;
-	private final ModelPart upperarmright;
-	private final ModelPart lowerarmright;
-	private final ModelPart lowerbody;
-	private final ModelPart hips;
 	private final ModelPart legs;
-	private final ModelPart upperrightleg;
-	private final ModelPart lowerrightleg;
-	private final ModelPart upperleftleg;
-	private final ModelPart lowerleftleg;
+	private final ModelPart jaw;
 
-	public NargoyleModel() {
-		texWidth = 64;
-		texHeight = 64;
+	public NargoyleModel(ModelPart root) {
+		this.body = root.getChild("body");
+		this.head = root.getChild("head");
+		this.arms = root.getChild("arms");
+		this.legs = root.getChild("legs");
+		this.jaw = root.getChild("jaw");
+	}
 
-		body = new ModelPart(this);
-		body.setPos(0.0F, 3.0F, -3.0F);
-		setRotationAngle(body, 0.0873F, 0.0F, 0.0F);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		upperbody = new ModelPart(this);
-		upperbody.setPos(0.0F, 6.0F, 4.0F);
-		body.addChild(upperbody);
-		setRotationAngle(upperbody, 1.0472F, 0.0F, 0.0F);
-		upperbody.texOffs(0, 0).addBox(-5.0F, -11.0F, 0.0F, 10.0F, 11.0F, 7.0F, 0.0F, false);
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, 3.0F, -3.0F, 0.0873F, 0.0F, 0.0F));
 
-		head = new ModelPart(this);
-		head.setPos(0.0F, -10.5F, 3.0F);
-		upperbody.addChild(head);
-		setRotationAngle(head, 0.4363F, 0.0F, 0.0F);
-		head.texOffs(42, 51).addBox(-4.0F, -9.5F, -2.0F, 8.0F, 10.0F, 3.0F, 0.0F, false);
-		head.texOffs(16, 28).addBox(-3.0F, -8.5F, -4.0F, 6.0F, 0.0F, 2.0F, 0.0F, false);
-		head.texOffs(45, 49).addBox(-2.0F, -9.5F, 1.0F, 4.0F, 0.0F, 2.0F, 0.0F, false);
+		PartDefinition upperbody = body.addOrReplaceChild("upperbody", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -11.0F, 0.0F, 10.0F, 11.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 6.0F, 4.0F, 1.0472F, 0.0F, 0.0F));
 
-		jaw = new ModelPart(this);
-		jaw.setPos(0.0F, 0.0F, -2.0F);
-		head.addChild(jaw);
-		jaw.texOffs(34, 35).addBox(-4.0F, -7.5F, -1.0F, 8.0F, 7.0F, 1.0F, 0.0F, false);
-		jaw.texOffs(26, 0).addBox(-2.0F, -6.5F, 0.0F, 4.0F, 0.0F, 1.0F, 0.0F, false);
+		PartDefinition head = upperbody.addOrReplaceChild("head", CubeListBuilder.create().texOffs(42, 51).addBox(-4.0F, -9.5F, -2.0F, 8.0F, 10.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(16, 28).addBox(-3.0F, -8.5F, -4.0F, 6.0F, 0.0F, 2.0F, new CubeDeformation(0.0F))
+				.texOffs(45, 49).addBox(-2.0F, -9.5F, 1.0F, 4.0F, 0.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -10.5F, 3.0F, 0.4363F, 0.0F, 0.0F));
 
-		ear1 = new ModelPart(this);
-		ear1.setPos(0.0F, -1.0F, 0.0F);
-		head.addChild(ear1);
-		setRotationAngle(ear1, 0.0F, 0.0F, -0.2618F);
-		ear1.texOffs(0, 54).addBox(-5.0F, -1.0F, -1.0F, 3.0F, 0.0F, 10.0F, 0.0F, false);
+		PartDefinition jaw = head.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(34, 35).addBox(-4.0F, -7.5F, -1.0F, 8.0F, 7.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(26, 0).addBox(-2.0F, -6.5F, 0.0F, 4.0F, 0.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, -2.0F));
 
-		ear2 = new ModelPart(this);
-		ear2.setPos(3.5F, -1.0F, 5.0F);
-		head.addChild(ear2);
-		setRotationAngle(ear2, 0.0F, 0.0F, 0.2618F);
-		ear2.texOffs(0, 54).addBox(-1.5F, 0.0F, -6.0F, 3.0F, 0.0F, 10.0F, 0.0F, true);
+		PartDefinition ear1 = head.addOrReplaceChild("ear1", CubeListBuilder.create().texOffs(0, 54).addBox(-5.0F, -1.0F, -1.0F, 3.0F, 0.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -1.0F, 0.0F, 0.0F, 0.0F, -0.2618F));
 
-		arms = new ModelPart(this);
-		arms.setPos(0.0F, -7.4927F, 3.3309F);
-		upperbody.addChild(arms);
-		setRotationAngle(arms, 1.5708F, 0.0F, 0.0F);
+		PartDefinition ear2 = head.addOrReplaceChild("ear2", CubeListBuilder.create().texOffs(0, 54).mirror().addBox(-1.5F, 0.0F, -6.0F, 3.0F, 0.0F, 10.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(3.5F, -1.0F, 5.0F, 0.0F, 0.0F, 0.2618F));
 
-		upperarmleft = new ModelPart(this);
-		upperarmleft.setPos(0.0F, -0.0073F, -0.0309F);
-		arms.addChild(upperarmleft);
-		setRotationAngle(upperarmleft, 0.8727F, 0.0F, 0.0F);
-		upperarmleft.texOffs(34, 0).addBox(5.0F, -9.9927F, -0.9691F, 3.0F, 12.0F, 3.0F, 0.0F, false);
+		PartDefinition arms = upperbody.addOrReplaceChild("arms", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -7.4927F, 3.3309F, 1.5708F, 0.0F, 0.0F));
 
-		lowerarmleft = new ModelPart(this);
-		lowerarmleft.setPos(7.0F, -9.9927F, 1.0309F);
-		upperarmleft.addChild(lowerarmleft);
-		setRotationAngle(lowerarmleft, -1.1345F, 0.0F, 0.0F);
-		lowerarmleft.texOffs(34, 43).addBox(-1.5F, -14.7194F, -1.2086F, 2.0F, 16.0F, 2.0F, 0.0F, false);
+		PartDefinition upperarmleft = arms.addOrReplaceChild("upperarmleft", CubeListBuilder.create().texOffs(34, 0).addBox(5.0F, -9.9927F, -0.9691F, 3.0F, 12.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -0.0073F, -0.0309F, 0.8727F, 0.0F, 0.0F));
 
-		upperarmright = new ModelPart(this);
-		upperarmright.setPos(0.0F, -0.0073F, -0.3309F);
-		arms.addChild(upperarmright);
-		setRotationAngle(upperarmright, 0.8727F, 0.0F, 0.0F);
-		upperarmright.texOffs(34, 0).addBox(-8.0F, -9.9927F, -0.6691F, 3.0F, 12.0F, 3.0F, 0.0F, true);
+		PartDefinition lowerarmleft = upperarmleft.addOrReplaceChild("lowerarmleft", CubeListBuilder.create().texOffs(34, 43).addBox(-1.5F, -14.7194F, -1.2086F, 2.0F, 16.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(7.0F, -9.9927F, 1.0309F, -1.1345F, 0.0F, 0.0F));
 
-		lowerarmright = new ModelPart(this);
-		lowerarmright.setPos(-7.0F, -9.9927F, 1.3309F);
-		upperarmright.addChild(lowerarmright);
-		setRotationAngle(lowerarmright, -1.1345F, 0.0F, 0.0F);
-		lowerarmright.texOffs(34, 43).addBox(-0.5F, -14.7194F, -1.2086F, 2.0F, 16.0F, 2.0F, 0.0F, true);
+		PartDefinition upperarmright = arms.addOrReplaceChild("upperarmright", CubeListBuilder.create().texOffs(34, 0).mirror().addBox(-8.0F, -9.9927F, -0.6691F, 3.0F, 12.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, -0.0073F, -0.3309F, 0.8727F, 0.0F, 0.0F));
 
-		lowerbody = new ModelPart(this);
-		lowerbody.setPos(0.0F, 2.0F, 5.0F);
-		body.addChild(lowerbody);
-		setRotationAngle(lowerbody, -1.2217F, 0.0F, 0.0F);
+		PartDefinition lowerarmright = upperarmright.addOrReplaceChild("lowerarmright", CubeListBuilder.create().texOffs(34, 43).mirror().addBox(-0.5F, -14.7194F, -1.2086F, 2.0F, 16.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-7.0F, -9.9927F, 1.3309F, -1.1345F, 0.0F, 0.0F));
 
-		hips = new ModelPart(this);
-		hips.setPos(0.0F, 2.7189F, -1.2679F);
-		lowerbody.addChild(hips);
-		setRotationAngle(hips, 0.48F, 0.0F, 0.0F);
-		hips.texOffs(21, 21).addBox(-3.0F, -4.0F, 2.0F, 6.0F, 5.0F, 9.0F, 0.0F, false);
+		PartDefinition lowerbody = body.addOrReplaceChild("lowerbody", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, 2.0F, 5.0F, -1.2217F, 0.0F, 0.0F));
 
-		legs = new ModelPart(this);
-		legs.setPos(0.0F, -2.527F, 6.4479F);
-		lowerbody.addChild(legs);
-		setRotationAngle(legs, -1.7017F, 0.0F, 0.0F);
+		PartDefinition hips = lowerbody.addOrReplaceChild("hips", CubeListBuilder.create().texOffs(21, 21).addBox(-3.0F, -4.0F, 2.0F, 6.0F, 5.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 2.7189F, -1.2679F, 0.48F, 0.0F, 0.0F));
 
-		upperrightleg = new ModelPart(this);
-		upperrightleg.setPos(0.0F, 0.027F, -0.9479F);
-		legs.addChild(upperrightleg);
-		setRotationAngle(upperrightleg, -0.8727F, 0.0F, 0.0F);
-		upperrightleg.texOffs(0, 18).addBox(-5.0F, -9.027F, -1.0521F, 2.0F, 10.0F, 3.0F, 0.0F, true);
+		PartDefinition legs = lowerbody.addOrReplaceChild("legs", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.527F, 6.4479F, -1.7017F, 0.0F, 0.0F));
 
-		lowerrightleg = new ModelPart(this);
-		lowerrightleg.setPos(-3.0F, -8.2609F, -0.6949F);
-		upperrightleg.addChild(lowerrightleg);
-		setRotationAngle(lowerrightleg, 1.2217F, 0.0F, 0.0F);
-		lowerrightleg.texOffs(0, 31).addBox(-1.5F, -8.8618F, -0.8628F, 1.0F, 10.0F, 2.0F, 0.0F, false);
+		PartDefinition upperrightleg = legs.addOrReplaceChild("upperrightleg", CubeListBuilder.create().texOffs(0, 18).mirror().addBox(-5.0F, -9.027F, -1.0521F, 2.0F, 10.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, 0.027F, -0.9479F, -0.8727F, 0.0F, 0.0F));
 
-		upperleftleg = new ModelPart(this);
-		upperleftleg.setPos(0.0F, 0.027F, -0.9479F);
-		legs.addChild(upperleftleg);
-		setRotationAngle(upperleftleg, -0.8727F, 0.0F, 0.0F);
-		upperleftleg.texOffs(0, 18).addBox(3.0F, -9.027F, -1.0521F, 2.0F, 10.0F, 3.0F, 0.0F, false);
+		PartDefinition lowerrightleg = upperrightleg.addOrReplaceChild("lowerrightleg", CubeListBuilder.create().texOffs(0, 31).addBox(-1.5F, -8.8618F, -0.8628F, 1.0F, 10.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-3.0F, -8.2609F, -0.6949F, 1.2217F, 0.0F, 0.0F));
 
-		lowerleftleg = new ModelPart(this);
-		lowerleftleg.setPos(3.0F, -8.2609F, -0.6949F);
-		upperleftleg.addChild(lowerleftleg);
-		setRotationAngle(lowerleftleg, 1.2217F, 0.0F, 0.0F);
-		lowerleftleg.texOffs(0, 31).addBox(0.5F, -8.8618F, -0.8628F, 1.0F, 10.0F, 2.0F, 0.0F, false);
+		PartDefinition upperleftleg = legs.addOrReplaceChild("upperleftleg", CubeListBuilder.create().texOffs(0, 18).addBox(3.0F, -9.027F, -1.0521F, 2.0F, 10.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.027F, -0.9479F, -0.8727F, 0.0F, 0.0F));
+
+		PartDefinition lowerleftleg = upperleftleg.addOrReplaceChild("lowerleftleg", CubeListBuilder.create().texOffs(0, 31).addBox(0.5F, -8.8618F, -0.8628F, 1.0F, 10.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(3.0F, -8.2609F, -0.6949F, 1.2217F, 0.0F, 0.0F));
+
+		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
 		this.head.zRot = headPitch * ((float)Math.PI / 180F);
 		this.head.xRot = 0.4363F + headPitch * ((float)Math.PI / 180F);
@@ -157,11 +94,5 @@ public class NargoyleModel<T extends NargoyleEntity> extends ListModel<T> {
 	@Override
 	public Iterable<ModelPart> parts() {
 		return ImmutableSet.of(body);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
 	}
 }

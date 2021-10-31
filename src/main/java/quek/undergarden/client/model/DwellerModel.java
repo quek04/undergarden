@@ -2,78 +2,57 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.AgeableListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.DwellerEntity;
 
 public class DwellerModel<T extends DwellerEntity> extends AgeableListModel<T> {
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "dweller"), "main");
 	private final ModelPart torso;
 	private final ModelPart mane;
 	private final ModelPart head;
-	private final ModelPart trunk;
-	private final ModelPart trunk2;
-	private final ModelPart tail;
 	private final ModelPart rightLeg;
-	private final ModelPart rightFoot;
 	private final ModelPart leftLeg;
-	private final ModelPart leftFoot;
 
-	public DwellerModel(float torsoInflate) {
-		texWidth = 128;
-		texHeight = 128;
+	public DwellerModel(ModelPart root) {
+		this.torso = root.getChild("torso");
+		this.mane = root.getChild("mane");
+		this.head = root.getChild("head");
+		this.rightLeg = root.getChild("rightLeg");
+		this.leftLeg = root.getChild("leftLeg");
+	}
 
-		torso = new ModelPart(this);
-		torso.setPos(0.0F, 2.0F, 3.0F);
-		setRotationAngle(torso, -0.4363F, 0.0F, 0.0F);
-		torso.texOffs(0, 23).addBox(-6.0F, -3.0F, -6.0F, 12.0F, 8.0F, 15.0F, torsoInflate, false);
+	public static LayerDefinition createBodyLayer(float torsoInflate) {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		mane = new ModelPart(this);
-		mane.setPos(0.0F, 0.0F, 0.0F);
-		torso.addChild(mane);
-		mane.texOffs(41, 10).addBox(-1.0F, -6.0F, -8.0F, 2.0F, 3.0F, 13.0F, 0.0F, false);
-		mane.texOffs(0, 0).addBox(-1.0F, -3.0F, -8.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+		PartDefinition torso = partdefinition.addOrReplaceChild("torso", CubeListBuilder.create().texOffs(0, 23).addBox(-6.0F, -3.0F, -6.0F, 12.0F, 8.0F, 15.0F, new CubeDeformation(torsoInflate)), PartPose.offsetAndRotation(0.0F, 2.0F, 3.0F, -0.4363F, 0.0F, 0.0F));
 
-		head = new ModelPart(this);
-		head.setPos(0.0F, 1.0F, -2.0F);
-		head.texOffs(0, 46).addBox(-5.0F, 0.0F, -3.0F, 10.0F, 8.0F, 6.0F, 0.0F, false);
+		PartDefinition mane = torso.addOrReplaceChild("mane", CubeListBuilder.create().texOffs(41, 10).addBox(-1.0F, -6.0F, -8.0F, 2.0F, 3.0F, 13.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 0).addBox(-1.0F, -3.0F, -8.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		trunk = new ModelPart(this);
-		trunk.setPos(0.0F, 8.0F, -1.0F);
-		head.addChild(trunk);
-		setRotationAngle(trunk, 2.618F, 0.0F, 0.0F);
-		trunk.texOffs(39, 26).addBox(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 9.0F, 0.0F, false);
+		PartDefinition tail = torso.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(52, 57).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 10.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -3.0F, 9.0F, 0.5236F, 0.0F, 0.0F));
 
-		trunk2 = new ModelPart(this);
-		trunk2.setPos(0.0F, 1.0F, -9.0F);
-		trunk.addChild(trunk2);
-		setRotationAngle(trunk2, 0.5236F, 0.0F, 0.0F);
-		trunk2.texOffs(39, 0).addBox(-1.0F, 0.0F, -7.0F, 2.0F, 2.0F, 7.0F, 0.0F, false);
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 46).addBox(-5.0F, 0.0F, -3.0F, 10.0F, 8.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 1.0F, -2.0F));
 
-		tail = new ModelPart(this);
-		tail.setPos(0.0F, -3.0F, 9.0F);
-		torso.addChild(tail);
-		setRotationAngle(tail, 0.5236F, 0.0F, 0.0F);
-		tail.texOffs(52, 57).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 10.0F, 2.0F, 0.0F, false);
+		PartDefinition trunk = head.addOrReplaceChild("trunk", CubeListBuilder.create().texOffs(39, 26).addBox(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 8.0F, -1.0F, 2.618F, 0.0F, 0.0F));
 
-		rightLeg = new ModelPart(this);
-		rightLeg.setPos(-5.0F, 5.0F, 6.0F);
-		rightLeg.texOffs(52, 40).addBox(-4.0F, -2.0F, -3.0F, 4.0F, 11.0F, 6.0F, 0.0F, false);
+		PartDefinition trunk2 = trunk.addOrReplaceChild("trunk2", CubeListBuilder.create().texOffs(39, 0).addBox(-1.0F, 0.0F, -7.0F, 2.0F, 2.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 1.0F, -9.0F, 0.5236F, 0.0F, 0.0F));
 
-		rightFoot = new ModelPart(this);
-		rightFoot.setPos(-2.0F, 9.0F, 3.0F);
-		rightLeg.addChild(rightFoot);
-		setRotationAngle(rightFoot, 0.6109F, 0.0F, 0.0F);
-		rightFoot.texOffs(0, 60).addBox(-1.0F, -3.0F, 0.0F, 2.0F, 13.0F, 3.0F, 0.0F, false);
+		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(52, 40).addBox(-4.0F, -2.0F, -3.0F, 4.0F, 11.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(-5.0F, 5.0F, 6.0F));
 
-		leftLeg = new ModelPart(this);
-		leftLeg.setPos(5.0F, 5.0F, 6.0F);
-		leftLeg.texOffs(32, 46).addBox(0.0F, -2.0F, -3.0F, 4.0F, 11.0F, 6.0F, 0.0F, false);
+		PartDefinition rightFoot = rightLeg.addOrReplaceChild("rightFoot", CubeListBuilder.create().texOffs(0, 60).addBox(-1.0F, -3.0F, 0.0F, 2.0F, 13.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.0F, 9.0F, 3.0F, 0.6109F, 0.0F, 0.0F));
 
-		leftFoot = new ModelPart(this);
-		leftFoot.setPos(2.0F, 9.0F, 3.0F);
-		leftLeg.addChild(leftFoot);
-		setRotationAngle(leftFoot, 0.6109F, 0.0F, 0.0F);
-		leftFoot.texOffs(58, 0).addBox(-1.0F, -3.0F, 0.0F, 2.0F, 13.0F, 3.0F, 0.0F, false);
+		PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(32, 46).addBox(0.0F, -2.0F, -3.0F, 4.0F, 11.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(5.0F, 5.0F, 6.0F));
+
+		PartDefinition leftFoot = leftLeg.addOrReplaceChild("leftFoot", CubeListBuilder.create().texOffs(58, 0).addBox(-1.0F, -3.0F, 0.0F, 2.0F, 13.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(2.0F, 9.0F, 3.0F, 0.6109F, 0.0F, 0.0F));
+
+		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
 	@Override
@@ -96,15 +75,9 @@ public class DwellerModel<T extends DwellerEntity> extends AgeableListModel<T> {
 		return ImmutableList.of(this.head, this.torso, this.rightLeg, this.leftLeg);
 	}
 
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
-	}
-
 	@Override
-	public void prepareMobModel(T entity, float p_212843_2_, float p_212843_3_, float p_212843_4_) {
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick) {
 		this.mane.visible = !entity.isSaddled();
-		super.prepareMobModel(entity, p_212843_2_, p_212843_3_, p_212843_4_);
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
 	}
 }

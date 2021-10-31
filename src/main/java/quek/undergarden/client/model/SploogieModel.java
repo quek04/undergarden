@@ -2,75 +2,58 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.cavern.SploogieEntity;
 
 public class SploogieModel<T extends SploogieEntity> extends ListModel<T> {
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "sploogie"), "main");
 	private final ModelPart head;
-	private final ModelPart spine1;
-	private final ModelPart mouth;
 	private final ModelPart bodySegment1;
-	private final ModelPart spine2;
 	private final ModelPart bodySegment2;
-	private final ModelPart spine3;
 	private final ModelPart bodySegment3;
-	private final ModelPart spine4;
 
-	public SploogieModel() {
-		texWidth = 64;
-		texHeight = 64;
+	public SploogieModel(ModelPart root) {
+		this.head = root.getChild("head");
+		this.bodySegment1 = root.getChild("bodySegment1");
+		this.bodySegment2 = root.getChild("bodySegment2");
+		this.bodySegment3 = root.getChild("bodySegment3");
+	}
 
-		head = new ModelPart(this);
-		head.setPos(0.0F, 20.0F, 0.0F);
-		head.texOffs(0, 30).addBox(4.0F, -2.0F, -9.0F, 4.0F, 4.0F, 4.0F, 0.0F, false);
-		head.texOffs(0, 30).addBox(-8.0F, -2.0F, -9.0F, 4.0F, 4.0F, 4.0F, 0.0F, true);
-		head.texOffs(0, 0).addBox(-5.0F, -4.0F, -8.0F, 10.0F, 8.0F, 8.0F, 0.0F, false);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		spine1 = new ModelPart(this);
-		spine1.setPos(0.0F, -4.0F, -5.0F);
-		head.addChild(spine1);
-		setRotationAngle(spine1, -0.7854F, 0.0F, 0.0F);
-		spine1.texOffs(0, 0).addBox(-2.0F, -7.0F, 0.0F, 4.0F, 7.0F, 0.0F, 0.0F, false);
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 30).addBox(4.0F, -2.0F, -9.0F, 4.0F, 4.0F, 4.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 30).mirror().addBox(-8.0F, -2.0F, -9.0F, 4.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false)
+				.texOffs(0, 0).addBox(-5.0F, -4.0F, -8.0F, 10.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 20.0F, 0.0F));
 
-		mouth = new ModelPart(this);
-		mouth.setPos(0.0F, 4.0F, -8.0F);
-		head.addChild(mouth);
-		mouth.texOffs(12, 34).addBox(-2.0F, -5.0F, -4.0F, 4.0F, 4.0F, 4.0F, 0.0F, false);
+		PartDefinition spine1 = head.addOrReplaceChild("spine1", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -7.0F, 0.0F, 4.0F, 7.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -4.0F, -5.0F, -0.7854F, 0.0F, 0.0F));
 
-		bodySegment1 = new ModelPart(this);
-		bodySegment1.setPos(0.0F, 21.0F, 0.0F);
-		bodySegment1.texOffs(0, 16).addBox(-4.0F, -4.0F, 0.0F, 8.0F, 7.0F, 7.0F, 0.0F, false);
+		PartDefinition mouth = head.addOrReplaceChild("mouth", CubeListBuilder.create().texOffs(12, 34).addBox(-2.0F, -5.0F, -4.0F, 4.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 4.0F, -8.0F));
 
-		spine2 = new ModelPart(this);
-		spine2.setPos(0.0F, -4.0F, 3.0F);
-		bodySegment1.addChild(spine2);
-		setRotationAngle(spine2, -0.9599F, 0.0F, 0.0F);
-		spine2.texOffs(0, 16).addBox(-1.5F, -6.0F, 0.0F, 3.0F, 6.0F, 0.0F, 0.0F, false);
+		PartDefinition bodySegment1 = partdefinition.addOrReplaceChild("bodySegment1", CubeListBuilder.create().texOffs(0, 16).addBox(-4.0F, -4.0F, 0.0F, 8.0F, 7.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 21.0F, 0.0F));
 
-		bodySegment2 = new ModelPart(this);
-		bodySegment2.setPos(0.0F, 21.0F, 7.0F);
-		bodySegment2.texOffs(24, 24).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 6.0F, 6.0F, 0.0F, false);
+		PartDefinition spine2 = bodySegment1.addOrReplaceChild("spine2", CubeListBuilder.create().texOffs(0, 16).addBox(-1.5F, -6.0F, 0.0F, 3.0F, 6.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -4.0F, 3.0F, -0.9599F, 0.0F, 0.0F));
 
-		spine3 = new ModelPart(this);
-		spine3.setPos(0.0F, -3.0F, 3.0F);
-		bodySegment2.addChild(spine3);
-		setRotationAngle(spine3, -1.1345F, 0.0F, 0.0F);
-		spine3.texOffs(23, 16).addBox(-1.0F, -4.0F, 0.0F, 2.0F, 4.0F, 0.0F, 0.0F, false);
+		PartDefinition bodySegment2 = partdefinition.addOrReplaceChild("bodySegment2", CubeListBuilder.create().texOffs(24, 24).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 21.0F, 7.0F));
 
-		bodySegment3 = new ModelPart(this);
-		bodySegment3.setPos(0.0F, 22.0F, 13.0F);
-		bodySegment3.texOffs(30, 16).addBox(-2.0F, -2.0F, 0.0F, 4.0F, 4.0F, 4.0F, 0.0F, false);
+		PartDefinition spine3 = bodySegment2.addOrReplaceChild("spine3", CubeListBuilder.create().texOffs(23, 16).addBox(-1.0F, -4.0F, 0.0F, 2.0F, 4.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -3.0F, 3.0F, -1.1345F, 0.0F, 0.0F));
 
-		spine4 = new ModelPart(this);
-		spine4.setPos(0.0F, -2.0F, 2.0F);
-		bodySegment3.addChild(spine4);
-		setRotationAngle(spine4, -1.309F, 0.0F, 0.0F);
-		spine4.texOffs(23, 20).addBox(-0.5F, -3.0F, 0.0F, 1.0F, 3.0F, 0.0F, 0.0F, false);
+		PartDefinition bodySegment3 = partdefinition.addOrReplaceChild("bodySegment3", CubeListBuilder.create().texOffs(30, 16).addBox(-2.0F, -2.0F, 0.0F, 4.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.0F, 13.0F));
+
+		PartDefinition spine4 = bodySegment3.addOrReplaceChild("spine4", CubeListBuilder.create().texOffs(23, 20).addBox(-0.5F, -3.0F, 0.0F, 1.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -2.0F, 2.0F, -1.309F, 0.0F, 0.0F));
+
+		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
 		this.head.xRot = headPitch * ((float)Math.PI / 180F);
 
@@ -88,11 +71,5 @@ public class SploogieModel<T extends SploogieEntity> extends ListModel<T> {
 	@Override
 	public Iterable<ModelPart> parts() {
 		return ImmutableList.of(this.head, this.bodySegment1, this.bodySegment2, this.bodySegment3);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
 	}
 }

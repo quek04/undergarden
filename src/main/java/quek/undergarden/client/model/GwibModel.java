@@ -2,58 +2,48 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.GwibEntity;
 
 public class GwibModel<T extends GwibEntity> extends ListModel<T> {
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "gwib"), "main");
 	private final ModelPart body;
 	private final ModelPart head;
 	private final ModelPart tail;
-	private final ModelPart tailfin;
-	private final ModelPart rightfin;
-	private final ModelPart leftfin;
-	private final ModelPart backfin;
 
-	public GwibModel() {
-		texWidth = 128;
-		texHeight = 128;
+	public GwibModel(ModelPart root) {
+		this.body = root.getChild("body");
+		this.head = root.getChild("head");
+		this.tail = root.getChild("tail");
+	}
 
-		body = new ModelPart(this);
-		body.setPos(0.0F, 24.0F, 0.0F);
-		body.texOffs(0, 32).addBox(-8.0F, -16.0F, -10.0F, 16.0F, 16.0F, 20.0F, 0.0F, false);
-		body.texOffs(0, 0).addBox(-9.0F, -17.0F, -11.0F, 18.0F, 10.0F, 22.0F, 0.0F, false);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		head = new ModelPart(this);
-		head.setPos(0.0F, 0.0F, 0.0F);
-		body.addChild(head);
-		head.texOffs(80, 14).addBox(-6.0F, -12.0F, -17.0F, 12.0F, 8.0F, 7.0F, 0.0F, false);
-		head.texOffs(74, 74).addBox(-7.0F, -13.0F, -18.0F, 14.0F, 10.0F, 8.0F, 0.0F, false);
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 32).addBox(-8.0F, -16.0F, -10.0F, 16.0F, 16.0F, 20.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 0).addBox(-9.0F, -17.0F, -11.0F, 18.0F, 10.0F, 22.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-		tail = new ModelPart(this);
-		tail.setPos(0.0F, -8.0F, 10.0F);
-		body.addChild(tail);
-		tail.texOffs(73, 43).addBox(-5.0F, -5.0F, 0.0F, 10.0F, 11.0F, 9.0F, 0.0F, false);
+		PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(80, 14).addBox(-6.0F, -12.0F, -17.0F, 12.0F, 8.0F, 7.0F, new CubeDeformation(0.0F))
+				.texOffs(74, 74).addBox(-7.0F, -13.0F, -18.0F, 14.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		tailfin = new ModelPart(this);
-		tailfin.setPos(0.0F, -1.0F, 6.0F);
-		tail.addChild(tailfin);
-		tailfin.texOffs(44, 53).addBox(0.0F, -14.0F, -1.0F, 0.0F, 23.0F, 15.0F, 0.0F, false);
+		PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(73, 43).addBox(-5.0F, -5.0F, 0.0F, 10.0F, 11.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 10.0F));
 
-		rightfin = new ModelPart(this);
-		rightfin.setPos(0.0F, 0.0F, 0.0F);
-		body.addChild(rightfin);
-		rightfin.texOffs(44, 0).addBox(-23.0F, -6.0F, -8.0F, 15.0F, 0.0F, 14.0F, 0.0F, false);
+		PartDefinition tailfin = tail.addOrReplaceChild("tailfin", CubeListBuilder.create().texOffs(44, 53).addBox(0.0F, -14.0F, -1.0F, 0.0F, 23.0F, 15.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.0F, 6.0F));
 
-		leftfin = new ModelPart(this);
-		leftfin.setPos(-8.0F, -6.0F, 0.0F);
-		body.addChild(leftfin);
-		leftfin.texOffs(38, 38).addBox(16.0F, 0.0F, -8.0F, 15.0F, 0.0F, 14.0F, 0.0F, false);
+		PartDefinition rightfin = body.addOrReplaceChild("rightfin", CubeListBuilder.create().texOffs(44, 0).addBox(-23.0F, -6.0F, -8.0F, 15.0F, 0.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		backfin = new ModelPart(this);
-		backfin.setPos(0.0F, -18.0F, 0.0F);
-		body.addChild(backfin);
-		backfin.texOffs(0, 46).addBox(0.0F, -14.0F, -8.0F, 0.0F, 15.0F, 22.0F, 0.0F, false);
+		PartDefinition leftfin = body.addOrReplaceChild("leftfin", CubeListBuilder.create().texOffs(38, 38).addBox(16.0F, 0.0F, -8.0F, 15.0F, 0.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(-8.0F, -6.0F, 0.0F));
+
+		PartDefinition backfin = body.addOrReplaceChild("backfin", CubeListBuilder.create().texOffs(0, 46).addBox(0.0F, -14.0F, -8.0F, 0.0F, 15.0F, 22.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -18.0F, 0.0F));
+
+		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
 	@Override
@@ -69,11 +59,5 @@ public class GwibModel<T extends GwibEntity> extends ListModel<T> {
 	@Override
 	public Iterable<ModelPart> parts() {
 		return ImmutableSet.of(this.body);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
 	}
 }

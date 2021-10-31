@@ -2,46 +2,47 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.GwiblingEntity;
 
 public class GwiblingModel<T extends GwiblingEntity> extends ListModel<T> {
-	private final ModelPart gwibling;
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "gwibling"), "main");
+	//private final ModelPart gwibling;
 	private final ModelPart body;
-	private final ModelPart rightfin;
-	private final ModelPart leftfin;
+	private final ModelPart rightFin;
+	private final ModelPart leftFin;
 	private final ModelPart tail;
 
-	public GwiblingModel() {
-		texWidth = 20;
-		texHeight = 12;
+	public GwiblingModel(ModelPart root) {
+		//this.gwibling = root.getChild("gwibling");
+		this.body = root.getChild("body");
+		this.rightFin = root.getChild("rightfin");
+		this.leftFin = root.getChild("leftfin");
+		this.tail = root.getChild("tail");
+	}
 
-		gwibling = new ModelPart(this);
-		gwibling.setPos(0.0F, 24.0F, 0.0F);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		body = new ModelPart(this);
-		body.setPos(0.0F, 0.0F, 0.0F);
-		gwibling.addChild(body);
-		body.texOffs(0, 0).addBox(-2.0F, -2.0F, -3.0F, 4.0F, 2.0F, 6.0F, 0.0F, false);
-		body.texOffs(0, 3).addBox(0.0F, -4.0F, -2.0F, 0.0F, 2.0F, 5.0F, 0.0F, false);
+		//PartDefinition gwibling = partdefinition.addOrReplaceChild("gwibling", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-		rightfin = new ModelPart(this);
-		rightfin.setPos(-3.0F, 0.0F, -2.0F);
-		body.addChild(rightfin);
-		setRotationAngle(rightfin, 0.0F, -0.2618F, 0.0F);
-		rightfin.texOffs(0, 7).addBox(1.0F, -1.0F, 0.0F, 0.0F, 2.0F, 3.0F, 0.0F, false);
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -2.0F, -3.0F, 4.0F, 2.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 3).addBox(0.0F, -4.0F, -2.0F, 0.0F, 2.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		leftfin = new ModelPart(this);
-		leftfin.setPos(2.0F, 0.0F, -2.0F);
-		body.addChild(leftfin);
-		setRotationAngle(leftfin, 0.0F, 0.2618F, 0.0F);
-		leftfin.texOffs(0, 7).addBox(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 3.0F, 0.0F, false);
+		PartDefinition rightfin = body.addOrReplaceChild("rightfin", CubeListBuilder.create().texOffs(0, 7).addBox(1.0F, -1.0F, 0.0F, 0.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-3.0F, 0.0F, -2.0F, 0.0F, -0.2618F, 0.0F));
 
-		tail = new ModelPart(this);
-		tail.setPos(0.0F, -1.0F, 3.0F);
-		body.addChild(tail);
-		tail.texOffs(0, 0).addBox(0.0F, -1.0F, 0.0F, 0.0F, 3.0F, 3.0F, 0.0F, false);
+		PartDefinition leftfin = body.addOrReplaceChild("leftfin", CubeListBuilder.create().texOffs(0, 7).addBox(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(2.0F, 0.0F, -2.0F, 0.0F, 0.2618F, 0.0F));
+
+		PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -1.0F, 0.0F, 0.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.0F, 3.0F));
+
+		return LayerDefinition.create(meshdefinition, 20, 12);
 	}
 
 	@Override
@@ -56,12 +57,6 @@ public class GwiblingModel<T extends GwiblingEntity> extends ListModel<T> {
 
 	@Override
 	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(this.gwibling);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
+		return ImmutableSet.of(this.body);
 	}
 }

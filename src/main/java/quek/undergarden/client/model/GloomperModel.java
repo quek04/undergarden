@@ -2,73 +2,63 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.AgeableListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.GloomperEntity;
 
 public class GloomperModel<T extends GloomperEntity> extends AgeableListModel<T> {
-	private final ModelPart gloomper;
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "gloomper"), "main");
+	//private final ModelPart gloomper;
 	private final ModelPart body;
 	private final ModelPart head;
 	private final ModelPart jaw;
 	private final ModelPart arms;
-	private final ModelPart left;
-	private final ModelPart right;
 	private final ModelPart feet;
 
 	private float jumpRotation;
 
-	public GloomperModel() {
-		texWidth = 64;
-		texHeight = 64;
+	public GloomperModel(ModelPart root) {
+		//this.gloomper = root.getChild("gloomper");
+		this.body = root.getChild("body");
+		this.head = root.getChild("head");
+		this.jaw = root.getChild("jaw");
+		this.arms = root.getChild("arms");
+		this.feet = root.getChild("feet");
+	}
 
-		gloomper = new ModelPart(this);
-		gloomper.setPos(0.0F, 24.0F, 0.0F);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		body = new ModelPart(this);
-		body.setPos(0.0F, -10.0F, 3.0F);
-		gloomper.addChild(body);
-		setRotationAngle(body, -0.3491F, 0.0F, 0.0F);
-		body.texOffs(0, 0).addBox(-8.0F, -5.0F, -8.0F, 16.0F, 13.0F, 16.0F, 0.0F, false);
+		//PartDefinition gloomper = partdefinition.addOrReplaceChild("gloomper", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-		head = new ModelPart(this);
-		head.setPos(0.0F, -10.5F, -5.0F);
-		gloomper.addChild(head);
-		head.texOffs(0, 31).addBox(-5.0F, -4.5F, -2.0F, 10.0F, 8.0F, 4.0F, 0.0F, false);
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -5.0F, -8.0F, 16.0F, 13.0F, 16.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -10.0F, 3.0F, -0.3491F, 0.0F, 0.0F));
 
-		jaw = new ModelPart(this);
-		jaw.setPos(0.0F, 3.5F, -2.0F);
-		head.addChild(jaw);
-		jaw.texOffs(0, 43).addBox(-5.0F, -4.0F, -1.0F, 10.0F, 4.0F, 1.0F, 0.0F, false);
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 31).addBox(-5.0F, -4.5F, -2.0F, 10.0F, 8.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -10.5F, -5.0F));
 
-		arms = new ModelPart(this);
-		arms.setPos(0.5F, -4.5F, -3.5F);
-		gloomper.addChild(arms);
+		PartDefinition jaw = head.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(0, 43).addBox(-5.0F, -4.0F, -1.0F, 10.0F, 4.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 3.5F, -2.0F));
 
+		PartDefinition arms = partdefinition.addOrReplaceChild("arms", CubeListBuilder.create(), PartPose.offset(0.5F, -4.5F, -3.5F));
 
-		left = new ModelPart(this);
-		left.setPos(6.0F, -0.5F, -1.0F);
-		arms.addChild(left);
-		setRotationAngle(left, -0.5672F, -0.4363F, 0.0F);
-		left.texOffs(22, 43).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, true);
+		PartDefinition left = arms.addOrReplaceChild("left", CubeListBuilder.create().texOffs(22, 43).mirror().addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(6.0F, -0.5F, -1.0F, -0.5672F, -0.4363F, 0.0F));
 
-		right = new ModelPart(this);
-		right.setPos(-7.0F, -0.5F, -1.0F);
-		arms.addChild(right);
-		setRotationAngle(right, -0.5672F, 0.4363F, 0.0F);
-		right.texOffs(22, 43).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, false);
+		PartDefinition right = arms.addOrReplaceChild("right", CubeListBuilder.create().texOffs(22, 43).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-7.0F, -0.5F, -1.0F, -0.5672F, 0.4363F, 0.0F));
 
-		feet = new ModelPart(this);
-		feet.setPos(0.0F, -2.0F, 8.0F);
-		gloomper.addChild(feet);
-		feet.texOffs(28, 32).addBox(7.0F, 0.0F, -7.0F, 4.0F, 2.0F, 7.0F, 0.0F, true);
-		feet.texOffs(28, 32).addBox(-11.0F, 0.0F, -7.0F, 4.0F, 2.0F, 7.0F, 0.0F, false);
-		feet.texOffs(0, 56).addBox(-11.0F, -5.0F, -3.0F, 4.0F, 5.0F, 3.0F, 0.0F, false);
-		feet.texOffs(0, 56).addBox(7.0F, -5.0F, -3.0F, 4.0F, 5.0F, 3.0F, 0.0F, true);
+		PartDefinition feet = partdefinition.addOrReplaceChild("feet", CubeListBuilder.create().texOffs(28, 32).mirror().addBox(7.0F, 0.0F, -7.0F, 4.0F, 2.0F, 7.0F, new CubeDeformation(0.0F)).mirror(false)
+				.texOffs(28, 32).addBox(-11.0F, 0.0F, -7.0F, 4.0F, 2.0F, 7.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 56).addBox(-11.0F, -5.0F, -3.0F, 4.0F, 5.0F, 3.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 56).mirror().addBox(7.0F, -5.0F, -3.0F, 4.0F, 5.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, -2.0F, 8.0F));
+
+		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		float age = ageInTicks - (float)entity.tickCount;
 		this.jumpRotation = Mth.sin(entity.getJumpCompletion(age) * (float)Math.PI);
 
@@ -89,12 +79,6 @@ public class GloomperModel<T extends GloomperEntity> extends AgeableListModel<T>
 
 	@Override
 	protected Iterable<ModelPart> bodyParts() {
-		return ImmutableSet.of(gloomper);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
+		return ImmutableSet.of(this.body, this.head, this.arms, this.feet);
 	}
 }

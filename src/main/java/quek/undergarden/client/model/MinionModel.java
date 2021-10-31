@@ -2,12 +2,18 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.MinionEntity;
 
 public class MinionModel<T extends MinionEntity> extends ListModel<T> {
-	private final ModelPart forgottenMinion;
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "minion"), "main");
+	//private final ModelPart forgottenMinion;
 	private final ModelPart shell;
 	private final ModelPart body;
 	private final ModelPart backRightLeg;
@@ -15,49 +21,41 @@ public class MinionModel<T extends MinionEntity> extends ListModel<T> {
 	private final ModelPart frontLeftLeg;
 	private final ModelPart frontRightLeg;
 
-	public MinionModel() {
-		texWidth = 128;
-		texHeight = 128;
+	public MinionModel(ModelPart root) {
+		//this.forgottenMinion = root.getChild("forgottenMinion");
+		this.shell = root.getChild("shell");
+		this.body = root.getChild("body");
+		this.backRightLeg = root.getChild("backRightLeg");
+		this.backLeftLeg = root.getChild("backRightLeg");
+		this.frontLeftLeg = root.getChild("frontLeftLeg");
+		this.frontRightLeg = root.getChild("frontRightLeg");
+	}
 
-		forgottenMinion = new ModelPart(this);
-		forgottenMinion.setPos(0.0F, 11.0F, -3.0F);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		shell = new ModelPart(this);
-		shell.setPos(0.0F, 0.0F, 0.0F);
-		forgottenMinion.addChild(shell);
-		setRotationAngle(shell, -0.7854F, 0.0F, 0.0F);
-		shell.texOffs(0, 0).addBox(-6.0F, -14.0F, -8.0F, 12.0F, 17.0F, 15.0F, 0.0F, false);
-		shell.texOffs(40, 32).addBox(-5.0F, -13.0F, -7.0F, 10.0F, 13.0F, 8.0F, 0.0F, false);
+		//PartDefinition forgottenMinion = partdefinition.addOrReplaceChild("forgottenMinion", CubeListBuilder.create(), PartPose.offset(0.0F, 11.0F, -3.0F));
 
-		body = new ModelPart(this);
-		body.setPos(0.0F, 0.0F, 0.0F);
-		forgottenMinion.addChild(body);
-		body.texOffs(0, 32).addBox(-4.0F, -6.0F, -3.0F, 8.0F, 13.0F, 12.0F, 0.0F, false);
-		body.texOffs(27, 53).addBox(-3.0F, -6.0F, -16.0F, 6.0F, 6.0F, 13.0F, 0.0F, false);
+		PartDefinition shell = partdefinition.addOrReplaceChild("shell", CubeListBuilder.create().texOffs(0, 0).addBox(-6.0F, -14.0F, -8.0F, 12.0F, 17.0F, 15.0F, new CubeDeformation(0.0F))
+				.texOffs(40, 32).addBox(-5.0F, -13.0F, -7.0F, 10.0F, 13.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -0.7854F, 0.0F, 0.0F));
 
-		backRightLeg = new ModelPart(this);
-		backRightLeg.setPos(-2.0F, 6.0F, 7.0F);
-		body.addChild(backRightLeg);
-		backRightLeg.texOffs(39, 0).addBox(-5.0F, 0.0F, 0.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 32).addBox(-4.0F, -6.0F, -3.0F, 8.0F, 13.0F, 12.0F, new CubeDeformation(0.0F))
+				.texOffs(27, 53).addBox(-3.0F, -6.0F, -16.0F, 6.0F, 6.0F, 13.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		backLeftLeg = new ModelPart(this);
-		backLeftLeg.setPos(2.0F, 6.0F, 7.0F);
-		body.addChild(backLeftLeg);
-		backLeftLeg.texOffs(52, 53).addBox(0.0F, 0.0F, 0.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
+		PartDefinition backRightLeg = body.addOrReplaceChild("backRightLeg", CubeListBuilder.create().texOffs(39, 0).addBox(-5.0F, 0.0F, 0.0F, 5.0F, 7.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 6.0F, 7.0F));
 
-		frontLeftLeg = new ModelPart(this);
-		frontLeftLeg.setPos(2.0F, 6.0F, -1.0F);
-		body.addChild(frontLeftLeg);
-		frontLeftLeg.texOffs(54, 7).addBox(0.0F, 0.0F, -5.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
+		PartDefinition backLeftLeg = body.addOrReplaceChild("backLeftLeg", CubeListBuilder.create().texOffs(52, 53).addBox(0.0F, 0.0F, 0.0F, 5.0F, 7.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, 6.0F, 7.0F));
 
-		frontRightLeg = new ModelPart(this);
-		frontRightLeg.setPos(-2.0F, 6.0F, -1.0F);
-		body.addChild(frontRightLeg);
-		frontRightLeg.texOffs(54, 19).addBox(-5.0F, 0.0F, -5.0F, 5.0F, 7.0F, 5.0F, 0.0F, false);
+		PartDefinition frontLeftLeg = body.addOrReplaceChild("frontLeftLeg", CubeListBuilder.create().texOffs(54, 7).addBox(0.0F, 0.0F, -5.0F, 5.0F, 7.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, 6.0F, -1.0F));
+
+		PartDefinition frontRightLeg = body.addOrReplaceChild("frontRightLeg", CubeListBuilder.create().texOffs(54, 19).addBox(-5.0F, 0.0F, -5.0F, 5.0F, 7.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 6.0F, -1.0F));
+
+		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.frontLeftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.frontRightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 
@@ -67,12 +65,6 @@ public class MinionModel<T extends MinionEntity> extends ListModel<T> {
 
 	@Override
 	public Iterable<ModelPart> parts() {
-		return ImmutableList.of(forgottenMinion);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
+		return ImmutableList.of(this.shell, this.body);
 	}
 }

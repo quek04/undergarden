@@ -2,11 +2,17 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.rotspawn.RotlingEntity;
 
 public class RotlingModel<T extends RotlingEntity> extends ListModel<T> {
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "rotling"), "main");
 	private final ModelPart body;
 	private final ModelPart head;
 	private final ModelPart rightLeg;
@@ -14,41 +20,33 @@ public class RotlingModel<T extends RotlingEntity> extends ListModel<T> {
 	private final ModelPart rightArm;
 	private final ModelPart leftArm;
 
-	public RotlingModel() {
-		texWidth = 64;
-		texHeight = 64;
+	public RotlingModel(ModelPart root) {
+		this.body = root.getChild("body");
+		this.head = root.getChild("head");
+		this.rightLeg = root.getChild("rightLeg");
+		this.leftLeg = root.getChild("leftLeg");
+		this.rightArm = root.getChild("rightArm");
+		this.leftArm = root.getChild("leftArm");
+	}
 
-		body = new ModelPart(this);
-		body.setPos(0.0F, 24.5F, 0.0F);
-		body.texOffs(0, 17).addBox(-4.0F, -10.5F, -4.0F, 8.0F, 7.0F, 8.0F, 0.0F, false);
-		body.texOffs(0, 38).addBox(-4.0F, -12.5F, -4.0F, 8.0F, 2.0F, 8.0F, 0.0F, false);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		head = new ModelPart(this);
-		head.setPos(0.0F, -11.5F, 4.0F);
-		body.addChild(head);
-		head.texOffs(0, 0).addBox(-4.0F, -5.0F, -8.0F, 8.0F, 5.0F, 8.0F, 0.0F, false);
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 17).addBox(-4.0F, -10.5F, -4.0F, 8.0F, 7.0F, 8.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 38).addBox(-4.0F, -12.5F, -4.0F, 8.0F, 2.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.5F, 0.0F));
 
-		rightLeg = new ModelPart(this);
-		rightLeg.setPos(-4.0F, -3.5F, 1.0F);
-		body.addChild(rightLeg);
-		rightLeg.texOffs(24, 2).addBox(0.0F, 0.0F, -2.0F, 3.0F, 3.0F, 3.0F, 0.0F, false);
+		PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -5.0F, -8.0F, 8.0F, 5.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -11.5F, 4.0F));
 
-		leftLeg = new ModelPart(this);
-		leftLeg.setPos(4.0F, -3.5F, 1.0F);
-		body.addChild(leftLeg);
-		leftLeg.texOffs(24, 2).addBox(-3.0F, 0.0F, -2.0F, 3.0F, 3.0F, 3.0F, 0.0F, true);
+		PartDefinition rightLeg = body.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(24, 2).addBox(0.0F, 0.0F, -2.0F, 3.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, -3.5F, 1.0F));
 
-		rightArm = new ModelPart(this);
-		rightArm.setPos(-3.0F, -10.5F, 0.0F);
-		body.addChild(rightArm);
-		setRotationAngle(rightArm, 0.0F, 0.0F, 0.4363F);
-		rightArm.texOffs(0, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 6.0F, 2.0F, 0.0F, false);
+		PartDefinition leftLeg = body.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(24, 2).mirror().addBox(-3.0F, 0.0F, -2.0F, 3.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(4.0F, -3.5F, 1.0F));
 
-		leftArm = new ModelPart(this);
-		leftArm.setPos(4.0F, -11.0F, 0.0F);
-		body.addChild(leftArm);
-		setRotationAngle(leftArm, 0.0F, 0.0F, -0.4363F);
-		leftArm.texOffs(0, 0).addBox(-1.2817F, 0.0977F, -1.0F, 2.0F, 6.0F, 2.0F, 0.0F, true);
+		PartDefinition rightArm = body.addOrReplaceChild("rightArm", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-3.0F, -10.5F, 0.0F, 0.0F, 0.0F, 0.4363F));
+
+		PartDefinition leftArm = body.addOrReplaceChild("leftArm", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(-1.2817F, 0.0977F, -1.0F, 2.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(4.0F, -11.0F, 0.0F, 0.0F, 0.0F, -0.4363F));
+
+		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override
@@ -65,11 +63,5 @@ public class RotlingModel<T extends RotlingEntity> extends ListModel<T> {
 	@Override
 	public Iterable<ModelPart> parts() {
 		return ImmutableList.of(body);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
 	}
 }

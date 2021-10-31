@@ -1,81 +1,70 @@
 package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.cavern.MuncherEntity;
 
 public class MuncherModel<T extends MuncherEntity> extends ListModel<T> {
-	private final ModelPart muncher;
-	private final ModelPart lowerjaw;
-	private final ModelPart upperjaw;
-	private final ModelPart leftleg;
-	private final ModelPart rightleg;
-	private final ModelPart leftarm;
-	private final ModelPart rightarm;
 
-	public MuncherModel() {
-		texWidth = 64;
-		texHeight = 64;
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "muncher"), "main");
+	private final ModelPart lowerJaw;
+	private final ModelPart upperJaw;
+	private final ModelPart leftLeg;
+	private final ModelPart rightLeg;
+	private final ModelPart leftArm;
+	private final ModelPart rightArm;
 
-		muncher = new ModelPart(this);
-		muncher.setPos(0.0F, 16.0F, 5.0F);
+	public MuncherModel(ModelPart root) {
+		this.lowerJaw = root.getChild("lowerJaw");
+		this.upperJaw = root.getChild("upperJaw");
+		this.leftLeg = root.getChild("leftLeg");
+		this.rightLeg = root.getChild("rightLeg");
+		this.leftArm = root.getChild("leftArm");
+		this.rightArm = root.getChild("rightArm");
+	}
 
-		lowerjaw = new ModelPart(this);
-		lowerjaw.setPos(0.0F, 5.0F, -5.0F);
-		muncher.addChild(lowerjaw);
-		lowerjaw.texOffs(0, 15).addBox(-5.0F, -5.0F, -5.0F, 10.0F, 4.0F, 10.0F, 0.0F, false);
-		lowerjaw.texOffs(0, 29).addBox(-8.0F, -5.0F, 3.0F, 16.0F, 1.0F, 1.0F, 0.0F, false);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		upperjaw = new ModelPart(this);
-		upperjaw.setPos(0.0F, 0.0F, 0.0F);
-		muncher.addChild(upperjaw);
-		upperjaw.texOffs(0, 0).addBox(-5.0F, -5.0F, -10.0F, 10.0F, 5.0F, 10.0F, 0.0F, false);
-		upperjaw.texOffs(0, 25).addBox(0.0F, -6.0F, -6.0F, 0.0F, 1.0F, 6.0F, 0.0F, false);
+		//PartDefinition muncher = partdefinition.addOrReplaceChild("muncher", CubeListBuilder.create(), PartPose.offset(0.0F, 16.0F, 5.0F));
 
-		leftleg = new ModelPart(this);
-		leftleg.setPos(-3.0F, 4.0F, -4.0F);
-		muncher.addChild(leftleg);
-		leftleg.texOffs(30, 15).addBox(-1.0F, 0.0F, -1.0F, 3.0F, 4.0F, 3.0F, 0.0F, false);
+		PartDefinition lowerJaw = partdefinition.addOrReplaceChild("lowerjaw", CubeListBuilder.create().texOffs(0, 15).addBox(-5.0F, -5.0F, -5.0F, 10.0F, 4.0F, 10.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 29).addBox(-8.0F, -5.0F, 3.0F, 16.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 5.0F, -5.0F));
 
-		rightleg = new ModelPart(this);
-		rightleg.setPos(3.0F, 4.0F, -4.0F);
-		muncher.addChild(rightleg);
-		rightleg.texOffs(30, 0).addBox(-2.0F, 0.0F, -1.0F, 3.0F, 4.0F, 3.0F, 0.0F, false);
+		PartDefinition upperJaw = partdefinition.addOrReplaceChild("upperjaw", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -5.0F, -10.0F, 10.0F, 5.0F, 10.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 25).addBox(0.0F, -6.0F, -6.0F, 0.0F, 1.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		leftarm = new ModelPart(this);
-		leftarm.setPos(5.0F, 2.0F, -3.0F);
-		muncher.addChild(leftarm);
-		leftarm.texOffs(0, 15).addBox(0.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+		PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftleg", CubeListBuilder.create().texOffs(30, 15).addBox(-1.0F, 0.0F, -1.0F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, 4.0F, -4.0F));
 
-		rightarm = new ModelPart(this);
-		rightarm.setPos(-5.0F, 2.0F, -3.0F);
-		muncher.addChild(rightarm);
-		rightarm.texOffs(0, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, false);
+		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightleg", CubeListBuilder.create().texOffs(30, 0).addBox(-2.0F, 0.0F, -1.0F, 3.0F, 4.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(3.0F, 4.0F, -4.0F));
+
+		PartDefinition leftArm = partdefinition.addOrReplaceChild("leftarm", CubeListBuilder.create().texOffs(0, 15).addBox(0.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(5.0F, 2.0F, -3.0F));
+
+		PartDefinition rightArm = partdefinition.addOrReplaceChild("rightarm", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-5.0F, 2.0F, -3.0F));
+
+		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		this.upperjaw.xRot = (Mth.sin((entity.tickCount) * 0.5F) * 0.9F) * 0.3F;
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		this.upperJaw.xRot = (Mth.sin((entity.tickCount) * 0.5F) * 0.9F) * 0.3F;
 
-		this.leftarm.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.rightarm.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
-		this.leftleg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightleg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override
 	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(this.muncher);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
+		return ImmutableSet.of(this.lowerJaw, this.upperJaw, this.leftLeg, this.rightLeg, this.leftArm, this.rightArm);
 	}
 }

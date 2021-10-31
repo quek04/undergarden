@@ -1,11 +1,9 @@
 package quek.undergarden;
 
 import com.google.common.collect.Maps;
-import com.ibm.icu.impl.Pair;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
@@ -37,11 +35,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fmlclient.registry.ClientRegistry;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import quek.undergarden.client.UndergardenClient;
-import quek.undergarden.client.render.tileentity.DepthrockBedRender;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.*;
 import quek.undergarden.item.UGSpawnEggItem;

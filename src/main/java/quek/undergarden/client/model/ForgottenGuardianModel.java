@@ -2,78 +2,68 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.entity.boss.ForgottenGuardianEntity;
 
 public class ForgottenGuardianModel<T extends ForgottenGuardianEntity> extends ListModel<T> {
-	private final ModelPart forgottenGuardian;
+
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "forgotten_guardian"), "main");
+	//private final ModelPart forgottenGuardian;
+	private final ModelPart head;
+	private final ModelPart torso;
+	private final ModelPart leftArm;
+	private final ModelPart rightArm;
 	private final ModelPart leftLeg;
 	private final ModelPart rightLeg;
-	private final ModelPart body;
-	private final ModelPart head;
-	private final ModelPart chest;
-	private final ModelPart torso;
-	private final ModelPart rightArm;
-	private final ModelPart leftArm;
 
-	public ForgottenGuardianModel() {
-		texWidth = 128;
-		texHeight = 128;
+	public ForgottenGuardianModel(ModelPart root) {
+		//this.forgottenGuardian = root.getChild("forgottenGuardian");
+		this.head = root.getChild("head");
+		this.torso = root.getChild("torso");
+		this.leftArm = root.getChild("leftArm");
+		this.rightArm = root.getChild("rightArm");
+		this.leftLeg = root.getChild("leftLeg");
+		this.rightLeg = root.getChild("rightLeg");
+	}
 
-		forgottenGuardian = new ModelPart(this);
-		forgottenGuardian.setPos(0.0F, -23.0F, 6.0F);
+	public static LayerDefinition createBodyLayer() {
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		leftLeg = new ModelPart(this);
-		leftLeg.setPos(4.0F, 14.0F, -6.0F);
-		forgottenGuardian.addChild(leftLeg);
-		leftLeg.texOffs(20, 73).addBox(-1.0F, 0.0F, -2.0F, 4.0F, 11.0F, 4.0F, 0.0F, false);
-		leftLeg.texOffs(0, 45).addBox(-2.0F, 11.0F, -3.0F, 6.0F, 22.0F, 6.0F, 0.0F, false);
+		//PartDefinition forgottenGuardian = partdefinition.addOrReplaceChild("forgottenGuardian", CubeListBuilder.create(), PartPose.offset(0.0F, -23.0F, 6.0F));
 
-		rightLeg = new ModelPart(this);
-		rightLeg.setPos(-4.0F, 14.0F, -6.0F);
-		forgottenGuardian.addChild(rightLeg);
-		rightLeg.texOffs(67, 76).addBox(-3.0F, 0.0F, -2.0F, 4.0F, 11.0F, 4.0F, 0.0F, false);
-		rightLeg.texOffs(24, 45).addBox(-4.0F, 11.0F, -3.0F, 6.0F, 22.0F, 6.0F, 0.0F, false);
+		PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(20, 73).addBox(-1.0F, 0.0F, -2.0F, 4.0F, 11.0F, 4.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 45).addBox(-2.0F, 11.0F, -3.0F, 6.0F, 22.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(4.0F, 14.0F, -6.0F));
 
-		body = new ModelPart(this);
-		body.setPos(0.0F, 13.0F, -6.0F);
-		forgottenGuardian.addChild(body);
-		body.texOffs(48, 11).addBox(-5.0F, 0.0F, -4.0F, 10.0F, 4.0F, 8.0F, 0.0F, false);
-		body.texOffs(48, 45).addBox(-3.0F, -14.0F, -3.0F, 6.0F, 17.0F, 6.0F, 0.0F, false);
+		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(67, 76).addBox(-3.0F, 0.0F, -2.0F, 4.0F, 11.0F, 4.0F, new CubeDeformation(0.0F))
+				.texOffs(24, 45).addBox(-4.0F, 11.0F, -3.0F, 6.0F, 22.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, 14.0F, -6.0F));
 
-		head = new ModelPart(this);
-		head.setPos(0.0F, -14.0F, 1.0F);
-		body.addChild(head);
-		head.texOffs(41, 69).addBox(-3.0F, -13.0F, -5.0F, 6.0F, 9.0F, 7.0F, 0.0F, false);
-		head.texOffs(76, 0).addBox(-3.0F, -13.0F, -4.0F, 6.0F, 6.0F, 6.0F, 0.0F, false);
-		head.texOffs(42, 0).addBox(-2.0F, -7.0F, -2.0F, 4.0F, 7.0F, 3.0F, 0.0F, false);
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(48, 11).addBox(-5.0F, 0.0F, -4.0F, 10.0F, 4.0F, 8.0F, new CubeDeformation(0.0F))
+				.texOffs(48, 45).addBox(-3.0F, -14.0F, -3.0F, 6.0F, 17.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 13.0F, -6.0F));
 
-		chest = new ModelPart(this);
-		chest.setPos(0.0F, -14.0F, 6.0F);
-		body.addChild(chest);
+		PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(41, 69).addBox(-3.0F, -13.0F, -5.0F, 6.0F, 9.0F, 7.0F, new CubeDeformation(0.0F))
+				.texOffs(76, 0).addBox(-3.0F, -13.0F, -4.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(42, 0).addBox(-2.0F, -7.0F, -2.0F, 4.0F, 7.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -14.0F, 1.0F));
 
-		torso = new ModelPart(this);
-		torso.setPos(0.0F, 0.0F, 0.0F);
-		chest.addChild(torso);
-		setRotationAngle(torso, 0.7854F, 0.0F, 0.0F);
-		torso.texOffs(0, 0).addBox(-8.0F, -9.0F, -9.0F, 16.0F, 9.0F, 10.0F, 0.0F, false);
+		//PartDefinition chest = body.addOrReplaceChild("chest", CubeListBuilder.create(), PartPose.offset(0.0F, -14.0F, 6.0F));
 
-		rightArm = new ModelPart(this);
-		rightArm.setPos(-8.0F, -19.0F, 1.0F);
-		body.addChild(rightArm);
-		setRotationAngle(rightArm, 0.0F, 0.0F, 0.0436F);
-		rightArm.texOffs(64, 60).addBox(-7.0F, -2.0F, -4.0F, 7.0F, 8.0F, 8.0F, 0.0F, false);
-		rightArm.texOffs(0, 73).addBox(-5.0F, 6.0F, -3.0F, 4.0F, 12.0F, 6.0F, 0.0F, false);
-		rightArm.texOffs(28, 19).addBox(-6.0F, 18.0F, -4.0F, 6.0F, 18.0F, 8.0F, 0.0F, false);
+		PartDefinition torso = body.addOrReplaceChild("torso", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -9.0F, -9.0F, 16.0F, 9.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.7854F, 0.0F, 0.0F));
 
-		leftArm = new ModelPart(this);
-		leftArm.setPos(8.0F, -19.0F, 1.0F);
-		body.addChild(leftArm);
-		setRotationAngle(leftArm, 0.0F, 0.0F, -0.0436F);
-		leftArm.texOffs(56, 23).addBox(0.0F, -2.0F, -4.0F, 7.0F, 8.0F, 8.0F, 0.0F, false);
-		leftArm.texOffs(72, 39).addBox(1.0F, 6.0F, -3.0F, 4.0F, 12.0F, 6.0F, 0.0F, false);
-		leftArm.texOffs(0, 19).addBox(0.0F, 18.0F, -4.0F, 6.0F, 18.0F, 8.0F, 0.0F, false);}
+		PartDefinition rightArm = body.addOrReplaceChild("rightArm", CubeListBuilder.create().texOffs(64, 60).addBox(-7.0F, -2.0F, -4.0F, 7.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 73).addBox(-5.0F, 6.0F, -3.0F, 4.0F, 12.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(28, 19).addBox(-6.0F, 18.0F, -4.0F, 6.0F, 18.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-8.0F, -19.0F, 1.0F, 0.0F, 0.0F, 0.0436F));
+
+		PartDefinition leftArm = body.addOrReplaceChild("leftArm", CubeListBuilder.create().texOffs(56, 23).addBox(0.0F, -2.0F, -4.0F, 7.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
+				.texOffs(72, 39).addBox(1.0F, 6.0F, -3.0F, 4.0F, 12.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 19).addBox(0.0F, 18.0F, -4.0F, 6.0F, 18.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(8.0F, -19.0F, 1.0F, 0.0F, 0.0F, -0.0436F));
+
+		return LayerDefinition.create(meshdefinition, 128, 128);
+	}
 
 	@Override
 	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -98,12 +88,6 @@ public class ForgottenGuardianModel<T extends ForgottenGuardianEntity> extends L
 
 	@Override
 	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(forgottenGuardian);
-	}
-
-	public void setRotationAngle(ModelPart modelRenderer, float x, float y, float z) {
-		modelRenderer.xRot = x;
-		modelRenderer.yRot = y;
-		modelRenderer.zRot = z;
+		return ImmutableSet.of(this.head, this.torso, this.leftArm, this.rightArm, this.leftLeg, this.rightLeg);
 	}
 }

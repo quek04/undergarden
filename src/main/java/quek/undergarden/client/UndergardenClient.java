@@ -13,6 +13,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -87,6 +88,11 @@ public class UndergardenClient {
         render(UGBlocks.SEDIMENT_GLASS_PANE, translucent);
         render(UGBlocks.HANGING_GRONGLE_LEAVES, cutout);
         render(UGBlocks.HANGING_GRONGLE_LEAVES_TOP, cutout);
+    }
+
+    @SubscribeEvent
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(UGEntityTypes.ROTLING.get(), new RotlingRender(event.));
     }
 
     public static void registerEntityRenderers() {
