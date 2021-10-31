@@ -1,12 +1,11 @@
 package quek.undergarden.entity.cavern;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 
 import java.util.Random;
 

@@ -1,27 +1,24 @@
 package quek.undergarden.entity.cavern;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGSoundEvents;
-import quek.undergarden.registry.UGTags;
-
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
+import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGTags;
 
 public class MuncherEntity extends AbstractCavernCreatureEntity {
 
@@ -72,8 +69,7 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
 
             for(BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
                 BlockState blockstate = this.level.getBlockState(blockpos);
-                Block block = blockstate.getBlock();
-                if (block.is(UGTags.Blocks.MUNCHER_BREAKABLES)) {
+                if (blockstate.is(UGTags.Blocks.MUNCHER_BREAKABLES)) {
                     this.level.destroyBlock(blockpos, false, this);
                     this.heal(1.0F);
                     this.playSound(UGSoundEvents.MUNCHER_CHEW.get(), 1.0F, this.getVoicePitch());
