@@ -1,11 +1,11 @@
 package quek.undergarden.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import com.mojang.math.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwibModel;
 import quek.undergarden.client.render.layer.GwibEyesLayer;
@@ -13,8 +13,8 @@ import quek.undergarden.entity.GwibEntity;
 
 public class GwibRender extends MobRenderer<GwibEntity, GwibModel<GwibEntity>> {
 
-    public GwibRender(EntityRenderDispatcher rendererManager) {
-        super(rendererManager, new GwibModel<>(), 0.5F);
+    public GwibRender(EntityRendererProvider.Context renderContext) {
+        super(renderContext, new GwibModel<>(renderContext.bakeLayer(GwibModel.LAYER_LOCATION)), 0.5F);
         this.addLayer(new GwibEyesLayer<>(this));
     }
 

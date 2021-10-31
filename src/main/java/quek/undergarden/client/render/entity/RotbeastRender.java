@@ -1,10 +1,10 @@
 package quek.undergarden.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import com.mojang.math.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.RotbeastModel;
 import quek.undergarden.client.render.layer.RotbeastEyesLayer;
@@ -12,8 +12,8 @@ import quek.undergarden.entity.rotspawn.RotbeastEntity;
 
 public class RotbeastRender extends MobRenderer<RotbeastEntity, RotbeastModel<RotbeastEntity>> {
 
-    public RotbeastRender(EntityRenderDispatcher manager) {
-        super(manager, new RotbeastModel(), 0.6F);
+    public RotbeastRender(EntityRendererProvider.Context renderContext) {
+        super(renderContext, new RotbeastModel<>(renderContext.bakeLayer(RotbeastModel.LAYER_LOCATION)), 0.6F);
         this.addLayer(new RotbeastEyesLayer<>(this));
     }
 

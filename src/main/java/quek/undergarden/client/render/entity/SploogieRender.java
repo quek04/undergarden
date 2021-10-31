@@ -1,6 +1,6 @@
 package quek.undergarden.client.render.entity;
 
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
@@ -9,8 +9,8 @@ import quek.undergarden.entity.cavern.SploogieEntity;
 
 public class SploogieRender extends MobRenderer<SploogieEntity, SploogieModel<SploogieEntity>> {
 
-    public SploogieRender(EntityRenderDispatcher renderManagerIn) {
-        super(renderManagerIn, new SploogieModel<>(), 0.5F);
+    public SploogieRender(EntityRendererProvider.Context renderContext) {
+        super(renderContext, new SploogieModel<>(renderContext.bakeLayer(SploogieModel.LAYER_LOCATION)), 0.5F);
     }
 
     @Override

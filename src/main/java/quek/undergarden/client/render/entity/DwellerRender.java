@@ -1,6 +1,6 @@
 package quek.undergarden.client.render.entity;
 
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.SaddleLayer;
 import net.minecraft.resources.ResourceLocation;
@@ -11,10 +11,10 @@ import quek.undergarden.entity.DwellerEntity;
 
 public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<DwellerEntity>> {
 
-    public DwellerRender(EntityRenderDispatcher rendererManager) {
-        super(rendererManager, new DwellerModel<>(0.0F), 0.7F);
+    public DwellerRender(EntityRendererProvider.Context renderContext) {
+        super(renderContext, new DwellerModel<>(renderContext.bakeLayer(DwellerModel.LAYER_LOCATION)), 0.7F);
         this.addLayer(new DwellerEyesLayer<>(this));
-        this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(0.5F), new ResourceLocation(Undergarden.MODID, "textures/entity/dweller_saddle.png")));
+        this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(renderContext.bakeLayer(DwellerModel.SADDLE_LAYER_LOCATION)), new ResourceLocation(Undergarden.MODID, "textures/entity/dweller_saddle.png")));
     }
 
     @Override

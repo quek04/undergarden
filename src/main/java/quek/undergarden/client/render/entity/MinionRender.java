@@ -1,6 +1,6 @@
 package quek.undergarden.client.render.entity;
 
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
@@ -10,8 +10,8 @@ import quek.undergarden.entity.MinionEntity;
 
 public class MinionRender extends MobRenderer<MinionEntity, MinionModel<MinionEntity>> {
 
-    public MinionRender(EntityRenderDispatcher renderManagerIn) {
-        super(renderManagerIn, new MinionModel<>(), 0.5F);
+    public MinionRender(EntityRendererProvider.Context renderContext) {
+        super(renderContext, new MinionModel<>(renderContext.bakeLayer(MinionModel.LAYER_LOCATION)), 0.5F);
         this.addLayer(new MinionEyesLayer<>(this));
     }
 

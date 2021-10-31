@@ -13,6 +13,7 @@ import quek.undergarden.entity.DwellerEntity;
 public class DwellerModel<T extends DwellerEntity> extends AgeableListModel<T> {
 
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "dweller"), "main");
+	public static final ModelLayerLocation SADDLE_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "dweller"), "saddle");
 	private final ModelPart torso;
 	private final ModelPart mane;
 	private final ModelPart head;

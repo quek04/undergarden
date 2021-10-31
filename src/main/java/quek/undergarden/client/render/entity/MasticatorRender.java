@@ -1,6 +1,6 @@
 package quek.undergarden.client.render.entity;
 
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
@@ -10,8 +10,8 @@ import quek.undergarden.entity.boss.MasticatorEntity;
 
 public class MasticatorRender extends MobRenderer<MasticatorEntity, MasticatorModel<MasticatorEntity>> {
 
-    public MasticatorRender(EntityRenderDispatcher renderManagerIn) {
-        super(renderManagerIn, new MasticatorModel<>(), 2.0F);
+    public MasticatorRender(EntityRendererProvider.Context renderContext) {
+        super(renderContext, new MasticatorModel<>(renderContext.bakeLayer(MasticatorModel.LAYER_LOCATION)), 2.0F);
         this.addLayer(new MasticatorEyesLayer<>(this));
     }
 
