@@ -43,5 +43,4 @@ public class RotlingEntity extends AbstractRotspawnEntity {
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
         this.playSound(UGSoundEvents.ROTLING_STEP.get(), 0.2F, 0.5F);
     }
-
 }
