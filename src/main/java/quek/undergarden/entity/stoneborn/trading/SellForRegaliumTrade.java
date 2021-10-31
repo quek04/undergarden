@@ -19,7 +19,6 @@ public class SellForRegaliumTrade implements VillagerTrades.ItemListing {
     private final int experience;
     private final float multiplier;
 
-
     public SellForRegaliumTrade(Item regalium, Item sell, int regaliumCount, int sellCount, int maxUses, int experience) {
         this(new ItemStack(regalium), new ItemStack(sell), regaliumCount, sellCount, maxUses, experience);
     }
