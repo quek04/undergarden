@@ -116,7 +116,7 @@ public class MasticatorEntity extends Monster {
             }
 
         }
-        this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
+        this.bossInfo.setProgress(this.getHealth() / this.getMaxHealth());
     }
 
     @Override
