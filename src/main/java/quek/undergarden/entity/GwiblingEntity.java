@@ -33,7 +33,7 @@ public class GwiblingEntity extends AbstractFish {
     }
 
     @Override
-    protected ItemStack getBucketItemStack() {
+    public ItemStack getBucketItemStack() {
         return new ItemStack(UGItems.GWIBLING_BUCKET.get());
     }
 

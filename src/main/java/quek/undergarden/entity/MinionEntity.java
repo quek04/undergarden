@@ -1,34 +1,26 @@
 package quek.undergarden.entity;
 
-import net.minecraft.entity.*;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.AbstractGolem;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.MinionProjectileEntity;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
-
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.RangedAttackMob;
 
 public class MinionEntity extends AbstractGolem implements RangedAttackMob {
 
@@ -71,7 +63,7 @@ public class MinionEntity extends AbstractGolem implements RangedAttackMob {
         double xDistance = target.getX() - this.getX();
         double yDistance = target.getY(0.3333333333333333D) - projectile.getY();
         double zDistance = target.getZ() - this.getZ();
-        double yMath = Mth.sqrt((xDistance * xDistance) + (zDistance * zDistance));
+        double yMath = Mth.sqrt((float) ((xDistance * xDistance) + (zDistance * zDistance)));
         projectile.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
         this.playSound(UGSoundEvents.MINION_SHOOT.get(), 1.0F, this.getVoicePitch());
         this.level.addFreshEntity(projectile);
@@ -90,7 +82,7 @@ public class MinionEntity extends AbstractGolem implements RangedAttackMob {
                 return InteractionResult.PASS;
             } else {
                 this.playSound(UGSoundEvents.MINION_REPAIR.get(), 1.0F, 2.0F);
-                if (!player.abilities.instabuild) {
+                if (!player.getAbilities().instabuild) {
                     itemstack.shrink(1);
                 }
 

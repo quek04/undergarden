@@ -1,37 +1,30 @@
 package quek.undergarden.entity;
 
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.entity.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.animal.AbstractFish;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.animal.AbstractFish;
+import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.Vec3;
 import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Random;
-
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.Pose;
 
 public class GwibEntity extends WaterAnimal implements Enemy {
 
@@ -133,14 +126,14 @@ public class GwibEntity extends WaterAnimal implements Enemy {
                 double d1 = this.wantedY - this.gwib.getY();
                 double d2 = this.wantedZ - this.gwib.getZ();
                 if (d1 != 0.0D) {
-                    double d3 = Mth.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
+                    double d3 = Mth.sqrt((float) (d0 * d0 + d1 * d1 + d2 * d2));
                     this.gwib.setDeltaMovement(this.gwib.getDeltaMovement().add(0.0D, (double)this.gwib.getSpeed() * (d1 / d3) * 0.1D, 0.0D));
                 }
 
                 if (d0 != 0.0D || d2 != 0.0D) {
                     float f1 = (float)(Mth.atan2(d2, d0) * (double)(180F / (float)Math.PI)) - 90.0F;
-                    this.gwib.yRot = this.rotlerp(this.gwib.yRot, f1, 90.0F);
-                    this.gwib.yBodyRot = this.gwib.yRot;
+                    this.gwib.setYRot(this.rotlerp(this.gwib.getYRot(), f1, 90.0F));
+                    this.gwib.yBodyRot = this.gwib.getYRot();
                 }
 
             }
