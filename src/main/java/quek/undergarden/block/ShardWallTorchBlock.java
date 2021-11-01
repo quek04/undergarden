@@ -6,22 +6,15 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.WallTorchBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.block.entity.ShardTorchBlockEntity;
-import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGDamageSources;
 import quek.undergarden.registry.UGParticleTypes;
 import quek.undergarden.registry.UGTags;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
 public class ShardWallTorchBlock extends WallTorchBlock /*implements EntityBlock*/ {
