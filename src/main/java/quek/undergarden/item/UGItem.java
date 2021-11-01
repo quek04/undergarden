@@ -5,8 +5,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import quek.undergarden.registry.UGItemGroups;
 
-import net.minecraft.world.item.Item.Properties;
-
 public class UGItem extends Item {
 
     public UGItem() {

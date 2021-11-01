@@ -135,9 +135,9 @@ public class Undergarden {
 			DispenserBlock.registerBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
 			DispenserBlock.registerBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
 
-			for(SpawnEggItem item : UGSpawnEggItem.UGEggs()) {
-				DispenserBlock.registerBehavior(item, eggBehavior);
-			}
+			//for(SpawnEggItem item : UGSpawnEggItem.UGEggs()) {
+			//	DispenserBlock.registerBehavior(item, eggBehavior);
+			//}
 
 			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {

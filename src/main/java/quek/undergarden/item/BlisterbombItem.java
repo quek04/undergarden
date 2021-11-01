@@ -1,18 +1,16 @@
 package quek.undergarden.item;
 
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSoundEvents;
-
-import net.minecraft.world.item.Item.Properties;
 
 public class BlisterbombItem extends Item {
 
@@ -31,12 +29,12 @@ public class BlisterbombItem extends Item {
         if (!worldIn.isClientSide) {
             BlisterbombEntity blisterbomb = new BlisterbombEntity(worldIn, playerIn);
             blisterbomb.setItem(itemstack);
-            blisterbomb.shootFromRotation(playerIn, playerIn.xRot, playerIn.yRot, 0.0F, 1.5F, 1.0F);
+            blisterbomb.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
             worldIn.addFreshEntity(blisterbomb);
         }
 
         playerIn.awardStat(Stats.ITEM_USED.get(this));
-        if (!playerIn.abilities.instabuild) {
+        if (!playerIn.getAbilities().instabuild) {
             itemstack.shrink(1);
         }
 

@@ -1,9 +1,17 @@
 package quek.undergarden.registry;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.blaze3d.vertex.VertexFormat;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -276,7 +284,37 @@ public class UGBlocks {
                 };
             }
             else if(Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
-                return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP));
+                return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
+                    @Override
+                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+                        consumer.accept(new IItemRenderProperties() {
+                            @Override
+                            public void renderHelmetOverlay(ItemStack stack, Player player, int width, int height, float partialTicks) {
+                                ResourceLocation overlay = new ResourceLocation(Undergarden.MODID, "textures/gloomgourd_overlay.png");
+                                RenderSystem.disableDepthTest();
+                                RenderSystem.depthMask(false);
+                                RenderSystem.defaultBlendFunc();
+                                RenderSystem.setShader(GameRenderer::getPositionTexShader);
+                                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+                                RenderSystem.setShaderTexture(0, overlay);
+                                //Minecraft.getInstance().getTextureManager().bindForSetup(overlay);
+                                Tesselator tessellator = Tesselator.getInstance();
+                                BufferBuilder bufferbuilder = tessellator.getBuilder();
+                                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+                                final double scaledWidth = Minecraft.getInstance().getWindow().getGuiScaledWidth();
+                                final double scaledHeight = Minecraft.getInstance().getWindow().getGuiScaledHeight();
+                                bufferbuilder.vertex(0.0D, scaledHeight, -90.0D).uv(0.0F, 1.0F).endVertex();
+                                bufferbuilder.vertex(scaledWidth, scaledHeight, -90.0D).uv(1.0F, 1.0F).endVertex();
+                                bufferbuilder.vertex(scaledWidth, 0.0D, -90.0D).uv(1.0F, 0.0F).endVertex();
+                                bufferbuilder.vertex(0.0D, 0.0D, -90.0D).uv(0.0F, 0.0F).endVertex();
+                                tessellator.end();
+                                RenderSystem.depthMask(true);
+                                RenderSystem.enableDepthTest();
+                                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+                            }
+                        });
+                    }
+                };
             }
             else if(Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {
                 return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
