@@ -1,12 +1,9 @@
 package quek.undergarden.client.particle;
 
-import net.minecraft.client.particle.*;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class GrongleSporeParticle extends TextureSheetParticle {
 
     private GrongleSporeParticle(ClientLevel world, double x, double y, double z, double motionX, double motionY, double motionZ) {
@@ -34,7 +31,6 @@ public class GrongleSporeParticle extends TextureSheetParticle {
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static class Factory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 

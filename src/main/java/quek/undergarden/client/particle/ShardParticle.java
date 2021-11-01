@@ -1,13 +1,10 @@
 package quek.undergarden.client.particle;
 
-import net.minecraft.client.particle.*;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ShardParticle extends RisingParticle {
 
     protected ShardParticle(ClientLevel clientWorld, double x, double y, double z, double motionX, double motionY, double motionZ) {
@@ -43,7 +40,6 @@ public class ShardParticle extends RisingParticle {
         return lvt_4_1_ | lvt_5_1_ << 16;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static class Factory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 
