@@ -30,7 +30,7 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
         return i;
     }
 
-    @Override //cap
+    @Override
     protected void makeCap(LevelAccessor world, Random random, BlockPos pos, int p_225564_4_, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
         for(int i = p_225564_4_ - 3; i <= p_225564_4_; ++i) {
             int j = i < p_225564_4_ ? config.foliageRadius : config.foliageRadius - 1;
