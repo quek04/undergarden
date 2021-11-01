@@ -29,16 +29,17 @@ public class UGBoatItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
-        ItemStack itemstack = playerIn.getItemInHand(handIn);
-        HitResult raytraceresult = getPlayerPOVHitResult(worldIn, playerIn, ClipContext.Fluid.ANY);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        HitResult raytraceresult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.ANY);
         if (raytraceresult.getType() == HitResult.Type.MISS) {
             return InteractionResultHolder.pass(itemstack);
-        } else {
-            Vec3 vector3d = playerIn.getViewVector(1.0F);
-            List<Entity> list = worldIn.getEntities(playerIn, playerIn.getBoundingBox().expandTowards(vector3d.scale(5.0D)).inflate(1.0D), ENTITY_PREDICATE);
+        }
+        else {
+            Vec3 vector3d = player.getViewVector(1.0F);
+            List<Entity> list = level.getEntities(player, player.getBoundingBox().expandTowards(vector3d.scale(5.0D)).inflate(1.0D), ENTITY_PREDICATE);
             if (!list.isEmpty()) {
-                Vec3 vector3d1 = playerIn.getEyePosition(1.0F);
+                Vec3 vector3d1 = player.getEyePosition(1.0F);
 
                 for(Entity entity : list) {
                     AABB axisalignedbb = entity.getBoundingBox().inflate(entity.getPickRadius());
@@ -49,23 +50,25 @@ public class UGBoatItem extends Item {
             }
 
             if (raytraceresult.getType() == HitResult.Type.BLOCK) {
-                UGBoatEntity boatentity = new UGBoatEntity(worldIn, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
-                boatentity.setBoatType(this.type);
-                boatentity.yRot = playerIn.yRot;
-                if (!worldIn.noCollision(boatentity, boatentity.getBoundingBox().inflate(-0.1D))) {
+                UGBoatEntity boat = new UGBoatEntity(level, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
+                boat.setBoatType(this.type);
+                boat.setYRot(player.getYRot());
+                if (!level.noCollision(boat, boat.getBoundingBox().inflate(-0.1D))) {
                     return InteractionResultHolder.fail(itemstack);
-                } else {
-                    if (!worldIn.isClientSide) {
-                        worldIn.addFreshEntity(boatentity);
-                        if (!playerIn.abilities.instabuild) {
+                }
+                else {
+                    if (!level.isClientSide) {
+                        level.addFreshEntity(boat);
+                        if (!player.getAbilities().instabuild) {
                             itemstack.shrink(1);
                         }
                     }
 
-                    playerIn.awardStat(Stats.ITEM_USED.get(this));
-                    return InteractionResultHolder.sidedSuccess(itemstack, worldIn.isClientSide());
+                    player.awardStat(Stats.ITEM_USED.get(this));
+                    return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
                 }
-            } else {
+            }
+            else {
                 return InteractionResultHolder.pass(itemstack);
             }
         }

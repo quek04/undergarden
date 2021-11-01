@@ -1,26 +1,20 @@
 package quek.undergarden.item.tool;
 
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ProjectileWeaponItem;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.network.chat.Component;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
@@ -34,8 +28,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
 
-import net.minecraft.world.item.Item.Properties;
-
 public class SlingshotItem extends ProjectileWeaponItem {
 
     public SlingshotItem() {
@@ -47,7 +39,6 @@ public class SlingshotItem extends ProjectileWeaponItem {
         );
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(new TranslatableComponent("tooltip.slingshot").withStyle(ChatFormatting.GRAY));
@@ -64,14 +55,14 @@ public class SlingshotItem extends ProjectileWeaponItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level worldIn, LivingEntity entityLiving, int timeLeft) {
-        if (entityLiving instanceof Player) {
-            Player player = (Player)entityLiving;
-            boolean creativeOrInfinity = player.abilities.instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
+        if (entity instanceof Player) {
+            Player player = (Player)entity;
+            boolean creativeOrInfinity = player.getAbilities().instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
             ItemStack itemstack = player.getProjectile(stack);
 
             int i = getUseDuration(stack) - timeLeft;
-            i = onArrowLoose(stack, worldIn, player, i, !itemstack.isEmpty() || creativeOrInfinity);
+            i = onArrowLoose(stack, level, player, i, !itemstack.isEmpty() || creativeOrInfinity);
             if (i < 0) return;
 
             if (!itemstack.isEmpty() || creativeOrInfinity) {
@@ -81,22 +72,22 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
                 float f = getProjectileVelocity(i);
                 if (!((double)f < 0.1D)) {
-                    boolean flag1 = player.abilities.instabuild || (itemstack.getItem() instanceof DepthrockPebbleItem && ((DepthrockPebbleItem)itemstack.getItem()).isInfinite(itemstack, stack, player));
-                    if (!worldIn.isClientSide) {
-                        SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(worldIn, entityLiving);
+                    boolean flag1 = player.getAbilities().instabuild || (itemstack.getItem() instanceof DepthrockPebbleItem && ((DepthrockPebbleItem)itemstack.getItem()).isInfinite(itemstack, stack, player));
+                    if (!level.isClientSide) {
+                        SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(level, entity);
 
-                        ammoEntity.shootFromRotation(player, player.xRot, player.yRot, 0.0F, f * 3.0F, 1.0F);
+                        ammoEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
 
-                        stack.hurtAndBreak(1, player, (entity) -> player.broadcastBreakEvent(player.getUsedItemHand()));
+                        stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
-                        worldIn.addFreshEntity(ammoEntity);
+                        level.addFreshEntity(ammoEntity);
                     }
 
-                    worldIn.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-                    if (!flag1 && !player.abilities.instabuild) {
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    if (!flag1 && !player.getAbilities().instabuild) {
                         itemstack.shrink(1);
                         if (itemstack.isEmpty()) {
-                            player.inventory.removeItem(itemstack);
+                            player.getInventory().removeItem(itemstack);
                         }
                     }
 
@@ -114,7 +105,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
         InteractionResultHolder<ItemStack> ret = onArrowNock(itemstack, worldIn, player, handIn, hasAmmo);
         if (ret != null) return ret;
 
-        if (!player.abilities.instabuild && !hasAmmo) {
+        if (!player.getAbilities().instabuild && !hasAmmo) {
             return InteractionResultHolder.fail(itemstack);
         } else {
             player.startUsingItem(handIn);
@@ -161,6 +152,6 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
     @Override
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem().is(ItemTags.PLANKS);
+        return repair.is(ItemTags.PLANKS);
     }
 }
