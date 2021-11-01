@@ -1,26 +1,22 @@
 package quek.undergarden.world.gen.structure;
 
-    import com.mojang.serialization.Codec;
-import net.minecraft.resources.ResourceLocation;
+import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-    import net.minecraft.world.level.ChunkPos;
-    import net.minecraft.world.level.LevelHeightAccessor;
-    import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
-import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 import quek.undergarden.Undergarden;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.world.level.levelgen.feature.StructureFeature.StructureStartFactory;
 
 public class CatacombsStructure extends AbstractUndergardenStructure {
 
