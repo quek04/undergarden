@@ -1,6 +1,7 @@
 package quek.undergarden;
 
 import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
@@ -101,10 +102,9 @@ public class Undergarden {
 			AxeItem.STRIPPABLES.put(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get());
 			AxeItem.STRIPPABLES.put(UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
 
-			//TODO
-//			HoeItem.TILLABLES.put(UGBlocks.DEEPTURF_BLOCK.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState())));
-//			HoeItem.TILLABLES.put(UGBlocks.DEEPSOIL.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState())));
-//			HoeItem.TILLABLES.put(UGBlocks.COARSE_DEEPSOIL.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL.get().defaultBlockState())));
+			HoeItem.TILLABLES.put(UGBlocks.DEEPTURF_BLOCK.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState())));
+			HoeItem.TILLABLES.put(UGBlocks.DEEPSOIL.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState())));
+			HoeItem.TILLABLES.put(UGBlocks.COARSE_DEEPSOIL.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL.get().defaultBlockState())));
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
@@ -227,7 +227,6 @@ public class Undergarden {
 
 	public void clientSetup(FMLClientSetupEvent event) {
 		UndergardenClient.registerBlockRenderers();
-		UndergardenClient.registerEntityRenderers();
 		UndergardenClient.registerBlockColors();
 		UndergardenClient.registerItemColors();
 		event.enqueueWork(() -> {
