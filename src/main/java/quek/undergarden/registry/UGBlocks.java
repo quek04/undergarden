@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -9,18 +10,20 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
-import quek.undergarden.client.render.tileentity.DepthrockBedISTER;
+import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.world.gen.tree.GrongleTree;
 import quek.undergarden.world.gen.tree.SmogstemTree;
 import quek.undergarden.world.gen.tree.WigglewoodTree;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -260,7 +263,17 @@ public class UGBlocks {
                 return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(UGItems.FORGOTTEN));
             }
             else if(Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
-                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)/*.setISTER(() -> DepthrockBedISTER::new)*/); //TODO: fix bed item render
+                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)) {
+                    @Override
+                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+                        consumer.accept(new IItemRenderProperties() {
+                            @Override
+                            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                                return new UndergardenBEWLR();
+                            }
+                        });
+                    }
+                };
             }
             else if(Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
                 return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP));

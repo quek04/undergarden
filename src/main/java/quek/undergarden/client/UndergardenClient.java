@@ -18,6 +18,7 @@ import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.client.model.*;
+import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.entity.UGBoatEntity;
 import quek.undergarden.registry.UGBlocks;
@@ -120,6 +121,9 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(DepthrockBedRender.HEAD_LAYER_LOCATION, DepthrockBedRender::createHeadLayer);
+        event.registerLayerDefinition(DepthrockBedRender.FOOT_LAYER_LOCATION, DepthrockBedRender::createFootLayer);
+        //
         for(UGBoatEntity.Type boatType : UGBoatEntity.Type.values()) {
             event.registerLayerDefinition(UGBoatRenderer.boatLayer(boatType), BoatModel::createBodyModel);
         }
@@ -190,8 +194,8 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
-        Camera info = Minecraft.getInstance().gameRenderer.getMainCamera();
-        FluidState fluidState = info.getBlockAtCamera().getFluidState();
+        Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+        FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
         if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
             event.setRed(57 / 255F);
@@ -202,8 +206,8 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
-        Camera info = Minecraft.getInstance().gameRenderer.getMainCamera();
-        FluidState fluidState = info.getBlockAtCamera().getFluidState();
+        Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+        FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
         if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
             event.setDensity(1.5F);
