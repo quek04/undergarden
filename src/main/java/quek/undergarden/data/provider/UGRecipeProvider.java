@@ -1,29 +1,22 @@
 package quek.undergarden.data.provider;
 
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.data.*;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.recipes.*;
+import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.item.SignItem;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.tags.Tag;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SignBlock;
 import net.minecraftforge.common.Tags;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 import java.util.function.Supplier;
-
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.data.recipes.SingleItemRecipeBuilder;
-import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 
 public class UGRecipeProvider extends RecipeProvider {
 
@@ -330,12 +323,12 @@ public class UGRecipeProvider extends RecipeProvider {
 
     public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, ItemLike result) {
         return SingleItemRecipeBuilder.stonecutting(Ingredient.of(input.get()), result)
-                .unlocks("has_" + input.get().getRegistryName(), has(input.get()));
+                .unlockedBy("has_" + input.get().getRegistryName(), has(input.get()));
     }
 
     public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, ItemLike result, int resultAmount) {
         return SingleItemRecipeBuilder.stonecutting(Ingredient.of(input.get()), result, resultAmount)
-                .unlocks("has_" + input.get().getRegistryName(), has(input.get()));
+                .unlockedBy("has_" + input.get().getRegistryName(), has(input.get()));
     }
 
     public SingleItemRecipeBuilder depthrockStonecuttingRecipe(ItemLike result) {
