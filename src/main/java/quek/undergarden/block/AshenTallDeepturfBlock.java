@@ -31,5 +31,5 @@ public class AshenTallDeepturfBlock extends UGPlantBlock {
     }
 
     @Override
-    public void performBonemeal(ServerLevel serverWorld, Random rand, BlockPos pos, BlockState state) { }
+    public void performBonemeal(ServerLevel serverWorld, Random random, BlockPos pos, BlockState state) { }
 }
