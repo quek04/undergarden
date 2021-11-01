@@ -44,8 +44,8 @@ public class UGFeatures {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Undergarden.MODID);
 
-    public static final RegistryObject<Feature<TreeConfiguration>> UNDERGARDEN_TREE = FEATURES.register(
-            "undergarden_tree", () -> new UGTreeFeature(TreeConfiguration.CODEC));
+//    public static final RegistryObject<Feature<TreeConfiguration>> UNDERGARDEN_TREE = FEATURES.register(
+//            "undergarden_tree", () -> new UGTreeFeature(TreeConfiguration.CODEC));
     public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> BLOOD_MUSHROOM = FEATURES.register(
             "blood_mushroom", () -> new BigBloodMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> INDIGO_MUSHROOM = FEATURES.register(
@@ -222,7 +222,7 @@ public class UGFeatures {
                 new DiskConfiguration(UGBlocks.SEDIMENT.get().defaultBlockState(), UniformInt.of(4, 4), 2, ImmutableList.of(UGBlocks.DEEPSOIL.get().defaultBlockState(), UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get().defaultBlockState()))
         );
 
-        public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE = UNDERGARDEN_TREE.get().configured(
+        public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.SMOGSTEM_LOG.get().defaultBlockState()),
                         new SmogstemTrunkPlacer(10, 2, 2),
@@ -232,7 +232,7 @@ public class UGFeatures {
                         new TwoLayersFeatureSize(1, 1, 2))
                         .ignoreVines().build()
         );
-        public static final ConfiguredFeature<TreeConfiguration, ?> WIGGLEWOOD_TREE = UNDERGARDEN_TREE.get().configured(
+        public static final ConfiguredFeature<TreeConfiguration, ?> WIGGLEWOOD_TREE = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.WIGGLEWOOD_LOG.get().defaultBlockState()),
                         new ForkingTrunkPlacer(3, 1, 1),
@@ -242,7 +242,7 @@ public class UGFeatures {
                         new TwoLayersFeatureSize(1, 0, 2))
                         .ignoreVines().build()
         );
-        public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_TREE = UNDERGARDEN_TREE.get().configured(
+        public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_TREE = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
                         new GrongleTrunkPlacer(10, 2, 19),
@@ -253,7 +253,7 @@ public class UGFeatures {
                         .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
                         .build()
         );
-        public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_TREE_SMALL = UNDERGARDEN_TREE.get().configured(
+        public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_TREE_SMALL = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
                         new StraightTrunkPlacer(5, 2, 19),
@@ -264,7 +264,7 @@ public class UGFeatures {
                         .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
                         .build()
         );
-        public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_BUSH = UNDERGARDEN_TREE.get().configured(
+        public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_BUSH = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
                         new StraightTrunkPlacer(1, 0, 0),
@@ -275,7 +275,7 @@ public class UGFeatures {
                         .build()
         );
 
-        public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE_TALL = UNDERGARDEN_TREE.get().configured(
+        public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE_TALL = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.SMOGSTEM_LOG.get().defaultBlockState()),
                         new SmogstemTrunkPlacer(15, 4, 4),
@@ -285,7 +285,7 @@ public class UGFeatures {
                         new TwoLayersFeatureSize(1, 1, 2))
                         .ignoreVines().build()
         );
-        public static final ConfiguredFeature<TreeConfiguration, ?> WIGGLEWOOD_TREE_TALL = UNDERGARDEN_TREE.get().configured(
+        public static final ConfiguredFeature<TreeConfiguration, ?> WIGGLEWOOD_TREE_TALL = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.WIGGLEWOOD_LOG.get().defaultBlockState()),
                         new ForkingTrunkPlacer(6, 2, 2),
