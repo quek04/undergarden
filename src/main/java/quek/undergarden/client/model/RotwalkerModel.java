@@ -8,11 +8,12 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.rotspawn.RotwalkerEntity;
 
 public class RotwalkerModel<T extends RotwalkerEntity> extends ListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "rotwalker"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "rotwalker"), "main");
 	private final ModelPart head;
 	private final ModelPart torso;
 	private final ModelPart leftArm;

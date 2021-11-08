@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:stripped_grongle_log"
+            "items": [
+              "undergarden:stripped_grongle_log"
+            ]
           }
         ]
       }

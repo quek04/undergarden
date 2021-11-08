@@ -8,12 +8,12 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.rotspawn.RotbeastEntity;
 
 public class RotbeastModel<T extends RotbeastEntity> extends ListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "rotbeast"), "main");
-	//private final ModelPart rotbeast;
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "rotbeast"), "main");
 	private final ModelPart head;
 	private final ModelPart jaw;
 	private final ModelPart torso;
@@ -23,40 +23,37 @@ public class RotbeastModel<T extends RotbeastEntity> extends ListModel<T> {
 	private final ModelPart leftArm;
 
 	public RotbeastModel(ModelPart root) {
-		//this.rotbeast = root.getChild("rotbeast");
 		this.head = root.getChild("head");
-		this.jaw = root.getChild("jaw");
+		this.jaw = head.getChild("jaw");
 		this.torso = root.getChild("torso");
 		this.rightLeg = root.getChild("rightLeg");
 		this.leftLeg = root.getChild("leftLeg");
 		this.rightArm = root.getChild("rightArm");
-		this.leftArm = root.getChild("rightArm");
+		this.leftArm = root.getChild("leftArm");
 	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		//PartDefinition rotbeast = partdefinition.addOrReplaceChild("rotbeast", CubeListBuilder.create(), PartPose.offset(0.0F, -2.5F, 5.0F));
-
-		PartDefinition torso = partdefinition.addOrReplaceChild("torso", CubeListBuilder.create(), PartPose.offset(15.0F, 26.5F, -5.0F));
+		PartDefinition torso = partdefinition.addOrReplaceChild("torso", CubeListBuilder.create(), PartPose.offset(15.0F, 24.0F, 0.0F));
 
 		PartDefinition lowerTorso = torso.addOrReplaceChild("lowerTorso", CubeListBuilder.create().texOffs(50, 46).addBox(-13.0F, -14.25F, -6.0F, 26.0F, 14.0F, 13.0F, new CubeDeformation(0.0F)), PartPose.offset(-15.0F, -16.75F, 5.5F));
 
 		PartDefinition upperTorso = lowerTorso.addOrReplaceChild("upperTorso", CubeListBuilder.create().texOffs(32, 91).addBox(-15.0F, -19.0F, -8.5F, 30.0F, 19.0F, 18.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -9.75F, -0.5F, 0.48F, 0.0F, 0.0F));
 
-		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(56, 10).mirror().addBox(-3.5F, 0.0F, -4.0F, 9.0F, 19.0F, 9.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(-7.5F, 7.5F, 0.5F));
+		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(56, 10).mirror().addBox(-3.5F, 0.0F, -4.0F, 9.0F, 19.0F, 9.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(-7.5F, 5.0F, 5.5F));
 
-		PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(56, 10).addBox(-5.5F, 0.0F, -4.0F, 9.0F, 19.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(7.5F, 7.5F, 0.5F));
+		PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(56, 10).addBox(-5.5F, 0.0F, -4.0F, 9.0F, 19.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(7.5F, 5.0F, 5.5F));
 
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(80, 26).addBox(-6.0F, -6.5F, -13.0F, 12.0F, 8.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -12.0F, -12.0F));
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(80, 26).addBox(-6.0F, -6.5F, -13.0F, 12.0F, 8.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -14.5F, -7.0F));
 
 		PartDefinition jaw = head.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(0, 15).addBox(-6.0F, -0.5F, -12.0F, 12.0F, 5.0F, 12.0F, new CubeDeformation(0.25F))
 				.texOffs(0, 1).addBox(-6.0F, -3.0F, -12.0F, 12.0F, 2.0F, 12.0F, new CubeDeformation(0.25F)), PartPose.offset(0.0F, 2.0F, -1.0F));
 
-		PartDefinition rightArm = partdefinition.addOrReplaceChild("rightArm", CubeListBuilder.create().texOffs(2, 86).addBox(-7.0F, -1.0F, -4.0F, 7.0F, 34.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(-15.0F, -14.5F, -3.0F));
+		PartDefinition rightArm = partdefinition.addOrReplaceChild("rightArm", CubeListBuilder.create().texOffs(2, 86).addBox(-7.0F, -1.0F, -4.0F, 7.0F, 34.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(-15.0F, -17.0F, 2.0F));
 
-		PartDefinition leftArm = partdefinition.addOrReplaceChild("leftArm", CubeListBuilder.create().texOffs(2, 86).mirror().addBox(0.0F, -1.0F, -4.0F, 7.0F, 34.0F, 8.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(15.0F, -14.5F, -3.0F));
+		PartDefinition leftArm = partdefinition.addOrReplaceChild("leftArm", CubeListBuilder.create().texOffs(2, 86).mirror().addBox(0.0F, -1.0F, -4.0F, 7.0F, 34.0F, 8.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(15.0F, -17.0F, 2.0F));
 
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}

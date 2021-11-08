@@ -78,6 +78,4 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
             return false;
         }
     }
-
-
 }

@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:twistytwig"
+            "items": [
+              "undergarden:twistytwig"
+            ]
           }
         ]
       }

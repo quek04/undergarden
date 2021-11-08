@@ -8,19 +8,20 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.GwibEntity;
 
 public class GwibModel<T extends GwibEntity> extends ListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "gwib"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "gwib"), "main");
 	private final ModelPart body;
 	private final ModelPart head;
 	private final ModelPart tail;
 
 	public GwibModel(ModelPart root) {
 		this.body = root.getChild("body");
-		this.head = root.getChild("head");
-		this.tail = root.getChild("tail");
+		this.head = body.getChild("head");
+		this.tail = body.getChild("tail");
 	}
 
 	public static LayerDefinition createBodyLayer() {

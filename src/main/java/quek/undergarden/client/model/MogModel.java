@@ -8,10 +8,11 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.MogEntity;
 
 public class MogModel<E extends MogEntity> extends AgeableListModel<E> {
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "mog"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "mog"), "main");
 	private final ModelPart frontLegLeft;
 	private final ModelPart frontLegRight;
 	private final ModelPart backLegRight;

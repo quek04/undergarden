@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:glowing_kelp"
+            "items": [
+              "undergarden:glowing_kelp"
+            ]
           }
         ]
       }

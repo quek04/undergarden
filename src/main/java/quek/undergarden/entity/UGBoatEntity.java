@@ -104,9 +104,6 @@ public class UGBoatEntity extends Boat {
             return this.name;
         }
 
-        /**
-         * Get a boat type by it's enum ordinal
-         */
         public static UGBoatEntity.Type byId(int id) {
             UGBoatEntity.Type[] aUGBoatEntity$type = values();
             if (id < 0 || id >= aUGBoatEntity$type.length) {

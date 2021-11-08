@@ -8,11 +8,12 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.cavern.SploogieEntity;
 
 public class SploogieModel<T extends SploogieEntity> extends ListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "sploogie"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "sploogie"), "main");
 	private final ModelPart head;
 	private final ModelPart bodySegment1;
 	private final ModelPart bodySegment2;

@@ -8,12 +8,13 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.DwellerEntity;
 
 public class DwellerModel<T extends DwellerEntity> extends AgeableListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "dweller"), "main");
-	public static final ModelLayerLocation SADDLE_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "dweller"), "saddle");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "dweller"), "main");
+	public static final ModelLayerLocation SADDLE_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "dweller"), "saddle");
 	private final ModelPart torso;
 	private final ModelPart mane;
 	private final ModelPart head;
@@ -22,7 +23,7 @@ public class DwellerModel<T extends DwellerEntity> extends AgeableListModel<T> {
 
 	public DwellerModel(ModelPart root) {
 		this.torso = root.getChild("torso");
-		this.mane = root.getChild("mane");
+		this.mane = torso.getChild("mane");
 		this.head = root.getChild("head");
 		this.rightLeg = root.getChild("rightLeg");
 		this.leftLeg = root.getChild("leftLeg");

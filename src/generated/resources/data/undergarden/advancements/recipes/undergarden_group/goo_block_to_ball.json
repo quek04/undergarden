@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:goo_block"
+            "items": [
+              "undergarden:goo_block"
+            ]
           }
         ]
       }

@@ -12,7 +12,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/tunnel1",
         "processors": "undergarden:catacombs_degradation",
@@ -21,7 +21,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/tunnel2",
         "processors": "undergarden:catacombs_degradation",
@@ -30,7 +30,7 @@
       }
     },
     {
-      "weight": 100,
+      "weight": 50,
       "element": {
         "location": "undergarden:catacombs/tunnel3",
         "processors": "undergarden:catacombs_degradation",
@@ -39,7 +39,7 @@
       }
     },
     {
-      "weight": 100,
+      "weight": 50,
       "element": {
         "location": "undergarden:catacombs/tunnel4",
         "processors": "undergarden:catacombs_degradation",
@@ -48,7 +48,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/tunnel5",
         "processors": "undergarden:catacombs_degradation",
@@ -57,7 +57,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/tunnel6",
         "processors": "undergarden:catacombs_degradation",
@@ -66,7 +66,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/tunnel7",
         "processors": "undergarden:catacombs_degradation",
@@ -75,7 +75,7 @@
       }
     },
     {
-      "weight": 100,
+      "weight": 50,
       "element": {
         "location": "undergarden:catacombs/room1",
         "processors": "undergarden:catacombs_degradation",
@@ -84,7 +84,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/room2",
         "processors": "undergarden:catacombs_degradation",
@@ -93,7 +93,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/room3",
         "processors": "undergarden:catacombs_degradation",
@@ -102,7 +102,7 @@
       }
     },
     {
-      "weight": 50,
+      "weight": 25,
       "element": {
         "location": "undergarden:catacombs/tunnel_guardian",
         "processors": "undergarden:catacombs_degradation",

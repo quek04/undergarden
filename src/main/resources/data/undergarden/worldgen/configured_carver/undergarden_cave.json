@@ -1,6 +1,24 @@
 {
+  "type": "undergarden:undergarden_cave",
   "config": {
-    "probability": 0.5
-  },
-  "type": "undergarden:undergarden_cave"
+    "probability": 0.5,
+    "y": {
+      "type": "minecraft:biased_to_bottom",
+      "min_inclusive": {
+        "absolute": 0
+      },
+      "max_inclusive": {
+        "absolute": 127
+      },
+      "inner": 8
+    },
+    "yScale": 0.5,
+    "lava_level": {
+      "above_bottom": 10
+    },
+    "aquifers_enabled": false,
+    "horizontal_radius_multiplier": 1,
+    "vertical_radius_multiplier": 1,
+    "floor_level": -0.7
+  }
 }

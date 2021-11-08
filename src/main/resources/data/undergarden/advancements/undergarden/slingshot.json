@@ -20,7 +20,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:slingshot"
+            "items": [
+              "undergarden:slingshot"
+            ]
           }
         ]
       }

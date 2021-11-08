@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.vehicle.Boat;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoatEntity;
 
 import java.util.Map;
@@ -29,11 +29,11 @@ public class UGBoatRenderer extends EntityRenderer<UGBoatEntity> {
         super(renderContext);
         this.shadowRadius = 0.8F;
         this.boatResources = Stream.of(UGBoatEntity.Type.values()).collect(ImmutableMap.toImmutableMap((boatType) -> boatType,
-                (boatType) -> Pair.of(new ResourceLocation("textures/entity/boat/" + boatType.getName() + ".png"), new BoatModel(renderContext.bakeLayer(boatLayer(boatType))))));
+                (boatType) -> Pair.of(new ResourceLocation(Undergarden.MODID, "textures/entity/boat/" + boatType.getName() + ".png"), new BoatModel(renderContext.bakeLayer(boatLayer(boatType))))));
     }
 
     public static ModelLayerLocation boatLayer(UGBoatEntity.Type boatType) {
-        return new ModelLayerLocation(new ResourceLocation("undergarden", "boat/" + boatType.getName()), "main");
+        return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "boat/" + boatType.getName()), "main");
     }
 
     @Override
@@ -51,14 +51,14 @@ public class UGBoatRenderer extends EntityRenderer<UGBoatEntity> {
             pMatrixStack.mulPose(Vector3f.XP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float)pEntity.getHurtDir()));
         }
 
-        float f2 = pEntity.getBubbleAngle(pPartialTicks);
-        if (!Mth.equal(f2, 0.0F)) {
+        float bubbleAngle = pEntity.getBubbleAngle(pPartialTicks);
+        if (!Mth.equal(bubbleAngle, 0.0F)) {
             pMatrixStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 1.0F), pEntity.getBubbleAngle(pPartialTicks), true));
         }
 
-        Pair<ResourceLocation, BoatModel> pair = getModelWithLocation(pEntity);
-        ResourceLocation resourcelocation = pair.getFirst();
-        BoatModel boatmodel = pair.getSecond();
+        Pair<ResourceLocation, BoatModel> pair = this.boatResources.get(pEntity.getUGBoatType());
+        ResourceLocation resourcelocation = (ResourceLocation)pair.getFirst();
+        BoatModel boatmodel = (BoatModel)pair.getSecond();
         pMatrixStack.scale(-1.0F, -1.0F, 1.0F);
         pMatrixStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
         boatmodel.setupAnim(pEntity, pPartialTicks, 0.0F, -0.1F, 0.0F, 0.0F);
@@ -74,9 +74,7 @@ public class UGBoatRenderer extends EntityRenderer<UGBoatEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(UGBoatEntity entity) {
-        return getModelWithLocation(entity).getFirst();
+    public ResourceLocation getTextureLocation(UGBoatEntity boat) {
+        return this.boatResources.get(boat.getUGBoatType()).getFirst();
     }
-
-    public Pair<ResourceLocation, BoatModel> getModelWithLocation(Boat boat) { return this.boatResources.get(boat.getBoatType()); }
 }

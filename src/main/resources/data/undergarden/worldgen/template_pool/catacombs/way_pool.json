@@ -12,7 +12,7 @@
       }
     },
     {
-      "weight": 100,
+      "weight": 25,
       "element": {
         "location": "undergarden:catacombs/4way",
         "processors": "undergarden:catacombs_degradation",
@@ -21,7 +21,7 @@
       }
     },
     {
-      "weight": 200,
+      "weight": 50,
       "element": {
         "location": "undergarden:catacombs/3way",
         "processors": "undergarden:catacombs_degradation",
@@ -30,7 +30,7 @@
       }
     },
     {
-      "weight": 300,
+      "weight": 75,
       "element": {
         "location": "undergarden:catacombs/2way",
         "processors": "undergarden:catacombs_degradation",
@@ -39,7 +39,7 @@
       }
     },
     {
-      "weight": 400,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/1way",
         "processors": "undergarden:catacombs_degradation",

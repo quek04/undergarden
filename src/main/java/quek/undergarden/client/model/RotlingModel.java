@@ -8,11 +8,12 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.rotspawn.RotlingEntity;
 
 public class RotlingModel<T extends RotlingEntity> extends ListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "rotling"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "rotling"), "main");
 	private final ModelPart body;
 	private final ModelPart head;
 	private final ModelPart rightLeg;
@@ -22,11 +23,11 @@ public class RotlingModel<T extends RotlingEntity> extends ListModel<T> {
 
 	public RotlingModel(ModelPart root) {
 		this.body = root.getChild("body");
-		this.head = root.getChild("head");
-		this.rightLeg = root.getChild("rightLeg");
-		this.leftLeg = root.getChild("leftLeg");
-		this.rightArm = root.getChild("rightArm");
-		this.leftArm = root.getChild("leftArm");
+		this.head = body.getChild("head");
+		this.rightLeg = body.getChild("rightLeg");
+		this.leftLeg = body.getChild("leftLeg");
+		this.rightArm = body.getChild("rightArm");
+		this.leftArm = body.getChild("leftArm");
 	}
 
 	public static LayerDefinition createBodyLayer() {

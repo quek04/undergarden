@@ -32,6 +32,5 @@ public class GwiblingRender extends MobRenderer<GwiblingEntity, GwiblingModel<Gw
             matrixStackIn.translate(0.1F, 0.1F, -0.1F);
             matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
         }
-
     }
 }

@@ -69,6 +69,7 @@ public class UGEntityTypes {
     public static final EntityType<DwellerEntity> DWELLER_TYPE = EntityType.Builder.of(DwellerEntity::new, MobCategory.CREATURE)
             .sized(1.2F,1.8F).build("dweller");
     public static final RegistryObject<EntityType<DwellerEntity>> DWELLER = ENTITIES.register("dweller", () -> DWELLER_TYPE);
+
     public static final EntityType<GwiblingEntity> GWIBLING_TYPE = EntityType.Builder.of(GwiblingEntity::new, MobCategory.WATER_AMBIENT)
             .sized(.5F, .5F).build("gwibling");
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> GWIBLING_TYPE);

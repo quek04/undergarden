@@ -3,6 +3,7 @@
   "pools": [
     {
       "rolls": 1.0,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
@@ -10,14 +11,17 @@
             {
               "condition": "minecraft:match_tool",
               "predicate": {
-                "item": "minecraft:shears"
+                "items": [
+                  "minecraft:shears"
+                ]
               }
             }
           ],
           "functions": [
             {
               "function": "minecraft:set_count",
-              "count": 1
+              "count": 1.0,
+              "add": false
             }
           ],
           "name": "undergarden:shimmerweed"
@@ -35,7 +39,9 @@
           "condition": "minecraft:location_check",
           "predicate": {
             "block": {
-              "block": "undergarden:tall_shimmerweed",
+              "blocks": [
+                "undergarden:tall_shimmerweed"
+              ],
               "state": {
                 "half": "upper"
               }
@@ -43,10 +49,12 @@
           },
           "offsetY": 1
         }
-      ]
+      ],
+      "functions": []
     },
     {
       "rolls": 1.0,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
@@ -54,14 +62,17 @@
             {
               "condition": "minecraft:match_tool",
               "predicate": {
-                "item": "minecraft:shears"
+                "items": [
+                  "minecraft:shears"
+                ]
               }
             }
           ],
           "functions": [
             {
               "function": "minecraft:set_count",
-              "count": 1
+              "count": 1.0,
+              "add": false
             }
           ],
           "name": "undergarden:shimmerweed"
@@ -79,7 +90,9 @@
           "condition": "minecraft:location_check",
           "predicate": {
             "block": {
-              "block": "undergarden:tall_shimmerweed",
+              "blocks": [
+                "undergarden:tall_shimmerweed"
+              ],
               "state": {
                 "half": "lower"
               }
@@ -87,7 +100,8 @@
           },
           "offsetY": -1
         }
-      ]
+      ],
+      "functions": []
     }
   ]
 }

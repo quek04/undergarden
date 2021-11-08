@@ -14,7 +14,7 @@ import java.util.Optional;
 @Mixin(WorldGenSettings.class)
 public class DimensionGeneratorSettingsMixin {
 
-    @Inject(method = "<init>(JZZLnet/minecraft/util/registry/SimpleRegistry;Ljava/util/Optional;)V", at = @At(value = "RETURN"))
+    @Inject(method = "<init>(JZZLnet/minecraft/core/MappedRegistry;Ljava/util/Optional;)V", at = @At(value = "RETURN"))
     private void getSeedFromConstructor(long seed, boolean generateFeatures, boolean bonusChest, MappedRegistry<LevelStem> options, Optional<String> legacyOptions, CallbackInfo ci) {
         SeedBearer.putInSeed(seed);
     }

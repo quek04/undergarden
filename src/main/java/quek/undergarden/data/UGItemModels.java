@@ -88,12 +88,12 @@ public class UGItemModels extends UGItemModelProvider {
         itemBlock(UGBlocks.DIAMOND_ORE);
         itemBlock(UGBlocks.SMOGSTEM_FENCE_GATE);
         itemBlock(UGBlocks.WIGGLEWOOD_FENCE_GATE);
-        wallInventory("depthrock_wall", new ResourceLocation(Undergarden.MODID, "block/depthrock"));
-        wallInventory("depthrock_brick_wall", new ResourceLocation(Undergarden.MODID, "block/depthrock_bricks"));
-        wallInventory("shiverstone_brick_wall", new ResourceLocation(Undergarden.MODID, "block/shiverstone_bricks"));
-        wallInventory("shiverstone_wall", new ResourceLocation(Undergarden.MODID, "block/shiverstone"));
-        wallInventory("tremblecrust_wall", new ResourceLocation(Undergarden.MODID, "block/tremblecrust"));
-        wallInventory("tremblecrust_brick_wall", new ResourceLocation(Undergarden.MODID, "block/tremblecrust_bricks"));
+        wallInventory("depthrock_wall", modLoc("block/depthrock"));
+        wallInventory("depthrock_brick_wall", modLoc("block/depthrock_bricks"));
+        wallInventory("shiverstone_wall", modLoc("block/shiverstone"));
+        wallInventory("shiverstone_brick_wall", modLoc("block/shiverstone_bricks"));
+        wallInventory("tremblecrust_wall", modLoc("block/tremblecrust"));
+        wallInventory("tremblecrust_brick_wall", modLoc("block/tremblecrust_bricks"));
         itemBlock(UGBlocks.COARSE_DEEPSOIL);
         itemBlock(UGBlocks.SMOGSTEM_PRESSURE_PLATE);
         itemBlock(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);

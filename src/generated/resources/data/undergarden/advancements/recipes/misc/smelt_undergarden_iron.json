@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:iron_ore"
+            "items": [
+              "undergarden:iron_ore"
+            ]
           }
         ]
       }

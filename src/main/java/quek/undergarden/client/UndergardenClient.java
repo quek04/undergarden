@@ -21,6 +21,7 @@ import quek.undergarden.client.model.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.entity.UGBoatEntity;
+import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGFluids;
@@ -28,7 +29,7 @@ import quek.undergarden.registry.UGFluids;
 import java.awt.*;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UndergardenClient {
 
     private static void render(Supplier<? extends Block> block, RenderType render) {
@@ -94,10 +95,13 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
+        //
         event.registerEntityRenderer(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
         //
         event.registerEntityRenderer(UGEntityTypes.SLINGSHOT_AMMO.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.GOO_BALL.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
         //
@@ -106,6 +110,7 @@ public class UndergardenClient {
         event.registerEntityRenderer(UGEntityTypes.ROTWALKER.get(), RotwalkerRender::new);
         event.registerEntityRenderer(UGEntityTypes.ROTBEAST.get(), RotbeastRender::new);
         event.registerEntityRenderer(UGEntityTypes.DWELLER.get(), DwellerRender::new);
+        event.registerEntityRenderer(UGEntityTypes.GWIBLING.get(), GwiblingRender::new);
         event.registerEntityRenderer(UGEntityTypes.BRUTE.get(), BruteRender::new);
         event.registerEntityRenderer(UGEntityTypes.SCINTLING.get(), ScintlingRender::new);
         event.registerEntityRenderer(UGEntityTypes.GLOOMPER.get(), GloomperRender::new);
@@ -127,12 +132,14 @@ public class UndergardenClient {
         for(UGBoatEntity.Type boatType : UGBoatEntity.Type.values()) {
             event.registerLayerDefinition(UGBoatRenderer.boatLayer(boatType), BoatModel::createBodyModel);
         }
+        //
         event.registerLayerDefinition(MinionModel.LAYER_LOCATION, MinionModel::createBodyLayer);
         event.registerLayerDefinition(RotlingModel.LAYER_LOCATION, RotlingModel::createBodyLayer);
         event.registerLayerDefinition(RotwalkerModel.LAYER_LOCATION, RotwalkerModel::createBodyLayer);
         event.registerLayerDefinition(RotbeastModel.LAYER_LOCATION, RotbeastModel::createBodyLayer);
         event.registerLayerDefinition(DwellerModel.LAYER_LOCATION, () -> DwellerModel.createBodyLayer(0.0F));
         event.registerLayerDefinition(DwellerModel.SADDLE_LAYER_LOCATION, () -> DwellerModel.createBodyLayer(0.5F));
+        event.registerLayerDefinition(GwiblingModel.LAYER_LOCATION, GwiblingModel::createBodyLayer);
         event.registerLayerDefinition(BruteModel.LAYER_LOCATION, BruteModel::createBodyLayer);
         event.registerLayerDefinition(ScintlingModel.LAYER_LOCATION, ScintlingModel::createBodyLayer);
         event.registerLayerDefinition(GloomperModel.LAYER_LOCATION, GloomperModel::createBodyLayer);
@@ -192,26 +199,29 @@ public class UndergardenClient {
         );
     }
 
-    @SubscribeEvent
-    public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
-        Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
-        FluidState fluidState = camera.getBlockAtCamera().getFluidState();
+    @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ForgeBusEvents {
+        @SubscribeEvent
+        public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
+            Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+            FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
-        if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
-            event.setRed(57 / 255F);
-            event.setGreen(25 / 255F);
-            event.setBlue(80 / 255F);
+            if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
+                event.setRed(57 / 255F);
+                event.setGreen(25 / 255F);
+                event.setBlue(80 / 255F);
+            }
         }
-    }
 
-    @SubscribeEvent
-    public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
-        Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
-        FluidState fluidState = camera.getBlockAtCamera().getFluidState();
+        @SubscribeEvent
+        public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
+            Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+            FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
-        if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
-            event.setDensity(1.5F);
-            event.setCanceled(true);
+            if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
+                event.setDensity(1.5F);
+                event.setCanceled(true);
+            }
         }
     }
 }

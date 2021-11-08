@@ -8,12 +8,15 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.cavern.NargoyleEntity;
 
 public class NargoyleModel<T extends NargoyleEntity> extends ListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "nargoyle"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "nargoyle"), "main");
 	private final ModelPart body;
+	private final ModelPart upperBody;
+	private final ModelPart lowerBody;
 	private final ModelPart head;
 	private final ModelPart arms;
 	private final ModelPart legs;
@@ -21,10 +24,12 @@ public class NargoyleModel<T extends NargoyleEntity> extends ListModel<T> {
 
 	public NargoyleModel(ModelPart root) {
 		this.body = root.getChild("body");
-		this.head = root.getChild("head");
-		this.arms = root.getChild("arms");
-		this.legs = root.getChild("legs");
-		this.jaw = root.getChild("jaw");
+		this.upperBody = body.getChild("upperbody");
+		this.lowerBody = body.getChild("lowerbody");
+		this.head = upperBody.getChild("head");
+		this.arms = upperBody.getChild("arms");
+		this.legs = lowerBody.getChild("legs");
+		this.jaw = head.getChild("jaw");
 	}
 
 	public static LayerDefinition createBodyLayer() {

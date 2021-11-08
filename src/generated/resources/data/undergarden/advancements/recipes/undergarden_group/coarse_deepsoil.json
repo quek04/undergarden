@@ -11,7 +11,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:deepsoil"
+            "items": [
+              "undergarden:deepsoil"
+            ]
           }
         ]
       }
@@ -21,7 +23,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:depthrock_pebble"
+            "items": [
+              "undergarden:depthrock_pebble"
+            ]
           }
         ]
       }
