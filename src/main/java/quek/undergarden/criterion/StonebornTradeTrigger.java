@@ -9,7 +9,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
-public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTradeTrigger.Instance> {
+public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTradeTrigger.TriggerInstance> {
 
     private static final ResourceLocation ID = new ResourceLocation(Undergarden.MODID, "stoneborn_trade");
 
@@ -19,10 +19,10 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
     }
 
     @Override
-    public StonebornTradeTrigger.Instance createInstance(JsonObject json, EntityPredicate.Composite entityPredicate, DeserializationContext conditionsParser) {
+    public TriggerInstance createInstance(JsonObject json, EntityPredicate.Composite entityPredicate, DeserializationContext conditionsParser) {
         EntityPredicate.Composite entitypredicate$andpredicate = EntityPredicate.Composite.fromJson(json, "stoneborn", conditionsParser);
         ItemPredicate itempredicate = ItemPredicate.fromJson(json.get("item"));
-        return new StonebornTradeTrigger.Instance(entityPredicate, entitypredicate$andpredicate, itempredicate);
+        return new TriggerInstance(entityPredicate, entitypredicate$andpredicate, itempredicate);
     }
 
     public void test(ServerPlayer player, StonebornEntity stoneborn, ItemStack stack) {
@@ -30,18 +30,18 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
         this.trigger(player, (instance) -> instance.test(lootcontext, stack));
     }
 
-    public static class Instance extends AbstractCriterionTriggerInstance {
+    public static class TriggerInstance extends AbstractCriterionTriggerInstance {
         private final EntityPredicate.Composite stoneborn;
         private final ItemPredicate item;
 
-        public Instance(EntityPredicate.Composite player, EntityPredicate.Composite stoneborn, ItemPredicate stack) {
+        public TriggerInstance(EntityPredicate.Composite player, EntityPredicate.Composite stoneborn, ItemPredicate stack) {
             super(StonebornTradeTrigger.ID, player);
             this.stoneborn = stoneborn;
             this.item = stack;
         }
 
-        public static StonebornTradeTrigger.Instance any() {
-            return new StonebornTradeTrigger.Instance(EntityPredicate.Composite.ANY, EntityPredicate.Composite.ANY, ItemPredicate.ANY);
+        public static TriggerInstance tradeWithStoneborn() {
+            return new TriggerInstance(EntityPredicate.Composite.ANY, EntityPredicate.Composite.ANY, ItemPredicate.ANY);
         }
 
         public boolean test(LootContext context, ItemStack stack) {

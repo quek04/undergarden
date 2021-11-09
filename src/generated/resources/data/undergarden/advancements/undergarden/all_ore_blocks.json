@@ -1,0 +1,52 @@
+{
+  "parent": "undergarden:undergarden/mine_ore",
+  "display": {
+    "icon": {
+      "item": "undergarden:regalium_block"
+    },
+    "title": {
+      "translate": "advancement.undergarden.all_ore_blocks.title"
+    },
+    "description": {
+      "translate": "advancement.undergarden.all_ore_blocks.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_all_ore_blocks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:cloggrum_block"
+            ]
+          },
+          {
+            "items": [
+              "undergarden:froststeel_block"
+            ]
+          },
+          {
+            "items": [
+              "undergarden:utherium_block"
+            ]
+          },
+          {
+            "items": [
+              "undergarden:regalium_block"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_all_ore_blocks"
+    ]
+  ]
+}

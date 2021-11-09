@@ -1,0 +1,37 @@
+{
+  "parent": "undergarden:undergarden/kill_rotling",
+  "display": {
+    "icon": {
+      "item": "undergarden:shard_torch"
+    },
+    "title": {
+      "translate": "advancement.undergarden.shard_torch.title"
+    },
+    "description": {
+      "translate": "advancement.undergarden.shard_torch.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_shard_torch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:shard_torch"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_shard_torch"
+    ]
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "undergarden:deepturf_block"
+    },
+    "title": {
+      "translate": "advancement.undergarden.root.title"
+    },
+    "description": {
+      "translate": ""
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "undergarden:textures/block/depthrock_bricks.png"
+  },
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "tick"
+    ]
+  ]
+}

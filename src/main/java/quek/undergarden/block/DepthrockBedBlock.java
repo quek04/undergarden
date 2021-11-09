@@ -77,7 +77,7 @@ public class DepthrockBedBlock extends BedBlock {
     }
 
     public static boolean canSetSpawn(Level world) {
-        return world.dimension() == UGDimensions.UNDERGARDEN_WORLD;
+        return world.dimension() == UGDimensions.UNDERGARDEN_LEVEL;
     }
 
     @Override

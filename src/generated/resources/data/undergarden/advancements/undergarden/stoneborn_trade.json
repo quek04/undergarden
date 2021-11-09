@@ -1,28 +1,29 @@
 {
+  "parent": "undergarden:undergarden/enter_undergarden",
   "display": {
     "icon": {
       "item": "undergarden:regalium_nugget"
     },
     "title": {
-      "translate": "advancement.trade_with_stoneborn.title"
+      "translate": "advancement.undergarden.stoneborn_trade.title"
     },
     "description": {
-      "translate": "advancement.trade_with_stoneborn.desc"
+      "translate": "advancement.undergarden.stoneborn_trade.desc"
     },
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "task"
+    "hidden": false
   },
-  "parent": "undergarden:undergarden/enter_undergarden",
   "criteria": {
-    "traded_with_stoneborn": {
+    "trade_with_stoneborn": {
       "trigger": "undergarden:stoneborn_trade",
       "conditions": {}
     }
   },
   "requirements": [
     [
-      "traded_with_stoneborn"
+      "trade_with_stoneborn"
     ]
   ]
 }

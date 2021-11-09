@@ -1,0 +1,37 @@
+{
+  "parent": "undergarden:undergarden/kill_forgotten_guardian",
+  "display": {
+    "icon": {
+      "item": "undergarden:forgotten_ingot"
+    },
+    "title": {
+      "translate": "advancement.undergarden.forgotten_ingot.title"
+    },
+    "description": {
+      "translate": "advancement.undergarden.forgotten_ingot.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_forgotten_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:forgotten_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_forgotten_ingot"
+    ]
+  ]
+}

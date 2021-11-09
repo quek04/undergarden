@@ -247,10 +247,10 @@ public class Undergarden {
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 
-		DimensionSpecialEffects.EFFECTS.put(UGDimensions.UNDERGARDEN_DIMENSION.location(), new DimensionSpecialEffects(Float.NaN, false, DimensionSpecialEffects.SkyType.NONE, false, true) {
+		DimensionSpecialEffects.EFFECTS.put(UGDimensions.UNDERGARDEN_LEVEL.location(), new DimensionSpecialEffects(Float.NaN, true, DimensionSpecialEffects.SkyType.NONE, false, true) {
 			@Override
-			public Vec3 getBrightnessDependentFogColor(Vec3 vector3d, float sun) {
-				return vector3d;
+			public Vec3 getBrightnessDependentFogColor(Vec3 fogColor, float brightness) {
+				return fogColor;
 			}
 
 			@Override
@@ -278,6 +278,7 @@ public class Undergarden {
 			generator.addProvider(blockTags);
 			generator.addProvider(new UGItemTags(generator, blockTags, helper));
 			generator.addProvider(new UGEntityTags(generator, helper));
+			generator.addProvider(new UGAdvancements(generator, helper));
 		}
 	}
 }

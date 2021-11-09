@@ -120,7 +120,7 @@ public class UndergardenPortalBlock extends Block {
                 Level entityWorld = entity.level;
                 if(entityWorld != null) {
                     MinecraftServer minecraftserver = entityWorld.getServer();
-                    ResourceKey<Level> destination = entity.level.dimension() == UGDimensions.UNDERGARDEN_WORLD ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_WORLD;
+                    ResourceKey<Level> destination = entity.level.dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
                     if(minecraftserver != null) {
                         ServerLevel destinationWorld = minecraftserver.getLevel(destination);
                         if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {

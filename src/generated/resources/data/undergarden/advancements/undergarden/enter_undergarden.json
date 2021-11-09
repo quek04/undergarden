@@ -1,19 +1,20 @@
 {
+  "parent": "undergarden:undergarden/catalyst",
   "display": {
     "icon": {
       "item": "undergarden:deepturf_block"
     },
     "title": {
-      "translate": "advancement.undergarden.title"
+      "translate": "advancement.undergarden.enter_undergarden.title"
     },
     "description": {
-      "translate": "advancement.undergarden.desc"
+      "translate": "advancement.undergarden.enter_undergarden.desc"
     },
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "task"
+    "hidden": false
   },
-  "parent": "undergarden:undergarden/catalyst",
   "criteria": {
     "enter_undergarden": {
       "trigger": "minecraft:changed_dimension",
@@ -21,5 +22,10 @@
         "to": "undergarden:undergarden"
       }
     }
-  }
+  },
+  "requirements": [
+    [
+      "enter_undergarden"
+    ]
+  ]
 }

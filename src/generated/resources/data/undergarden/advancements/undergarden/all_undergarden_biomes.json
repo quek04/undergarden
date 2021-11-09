@@ -1,0 +1,122 @@
+{
+  "parent": "undergarden:undergarden/enter_undergarden",
+  "display": {
+    "icon": {
+      "item": "undergarden:cloggrum_boots",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancement.undergarden.all_undergarden_biomes.title"
+    },
+    "description": {
+      "translate": "advancement.undergarden.all_undergarden_biomes.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "undergarden:barren_abyss": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:barren_abyss"
+        }
+      }
+    },
+    "undergarden:dense_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:dense_forest"
+        }
+      }
+    },
+    "undergarden:forgotten_field": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:forgotten_field"
+        }
+      }
+    },
+    "undergarden:frostfields": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:frostfields"
+        }
+      }
+    },
+    "undergarden:gronglegrowth": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:gronglegrowth"
+        }
+      }
+    },
+    "undergarden:mushroom_bog": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:mushroom_bog"
+        }
+      }
+    },
+    "undergarden:smog_spires": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:smog_spires"
+        }
+      }
+    },
+    "undergarden:smogstem_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:smogstem_forest"
+        }
+      }
+    },
+    "undergarden:wigglewood_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:wigglewood_forest"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "undergarden:barren_abyss"
+    ],
+    [
+      "undergarden:dense_forest"
+    ],
+    [
+      "undergarden:forgotten_field"
+    ],
+    [
+      "undergarden:frostfields"
+    ],
+    [
+      "undergarden:gronglegrowth"
+    ],
+    [
+      "undergarden:mushroom_bog"
+    ],
+    [
+      "undergarden:smog_spires"
+    ],
+    [
+      "undergarden:smogstem_forest"
+    ],
+    [
+      "undergarden:wigglewood_forest"
+    ]
+  ]
+}

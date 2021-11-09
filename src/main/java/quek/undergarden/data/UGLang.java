@@ -22,11 +22,11 @@ public class UGLang extends LanguageProvider {
     }
 
     private void addAdvTitle(String advancementTitle, String name) {
-        add("advancement." + advancementTitle + ".title", name);
+        add("advancement.undergarden." + advancementTitle + ".title", name);
     }
 
     private void addAdvDesc(String advancementTitle, String name) {
-        add("advancement." + advancementTitle + ".desc", name);
+        add("advancement.undergarden." + advancementTitle + ".desc", name);
     }
 
     private void addSubtitle(String category, String subtitleName, String name) {
@@ -387,16 +387,16 @@ public class UGLang extends LanguageProvider {
         addPotion(UGPotions.VIRULENT_RESISTANCE, "Virulent Resistance");
         addPotion(UGPotions.GLOWING, "Glowing");
 
-        addAdvTitle("undergarden_root", "The Undergarden");
+        addAdvTitle("root", "The Undergarden");
 
         addAdvTitle("catalyst", "One Ticket Please");
         addAdvDesc("catalyst", "Create the Catalyst.");
 
-        addAdvTitle("undergarden", "Enter the Undergarden");
-        addAdvDesc("undergarden", "The forgotten land awaits...");
+        addAdvTitle("enter_undergarden", "Enter the Undergarden");
+        addAdvDesc("enter_undergarden", "The forgotten land awaits...");
 
-        addAdvTitle("64gloomgourds", "Gourd Lord");
-        addAdvDesc("64gloomgourds", "Acquire a stack of Gloomgourds.");
+        addAdvTitle("stack_of_gloomgourds", "Gourd Lord");
+        addAdvDesc("stack_of_gloomgourds", "Acquire a stack of Gloomgourds.");
 
         addAdvTitle("slingshot", "Your New Best Friend");
         addAdvDesc("slingshot", "Craft a Slingshot.");
@@ -404,26 +404,26 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("shoot_slingshot", "Flinging Rocks");
         addAdvDesc("shoot_slingshot", "Shoot a pebble at something.");
 
-        addAdvTitle("slay_rotling", "Birth Control");
-        addAdvDesc("slay_rotling", "Slay the weakest of the Rotspawn, the Rotling.");
+        addAdvTitle("kill_rotling", "Birth Control");
+        addAdvDesc("kill_rotling", "Slay the weakest of the Rotspawn, the Rotling.");
 
         addAdvTitle("shard_torch", "Warding Device");
         addAdvDesc("shard_torch", "Craft a Shard Torch, a torch that can damage Rotspawn in its vicinity.");
 
-        addAdvTitle("slay_all_rotspawn", "Rotbane");
-        addAdvDesc("slay_all_rotspawn", "Slay all kinds of Rotspawn.");
+        addAdvTitle("kill_all_rotspawn", "Rotbane");
+        addAdvDesc("kill_all_rotspawn", "Slay all kinds of Rotspawn.");
 
         addAdvTitle("all_undergarden_biomes", "Subterranean Cartographer");
         addAdvDesc("all_undergarden_biomes", "Discover every Undergarden biome.");
 
-        addAdvTitle("any_ore", "Deep Extraction");
-        addAdvDesc("any_ore", "Acquire any Undergarden ore.");
+        addAdvTitle("mine_ore", "Deep Extraction");
+        addAdvDesc("mine_ore", "Acquire any Undergarden ore.");
 
         addAdvTitle("underbeans", "Glorious Beans!");
         addAdvDesc("underbeans", "Find and pick an Underbean Bush.");
 
-        addAdvTitle("trade_with_stoneborn", "Interdimensional Business");
-        addAdvDesc("trade_with_stoneborn", "Trade with a Stoneborn.");
+        addAdvTitle("stoneborn_trade", "Interdimensional Business");
+        addAdvDesc("stoneborn_trade", "Trade with a Stoneborn.");
 
         addAdvTitle("catch_gwibling", "Weird Fish");
         addAdvDesc("catch_gwibling", "Catch a Gwibling with a bucket.");
@@ -434,8 +434,8 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("plant_gloomgourd", "Purple Pumpkins");
         addAdvDesc("plant_gloomgourd", "Plant a Gloomgourd seed.");
 
-        addAdvTitle("slay_forgotten_guardian", "Decommissioned");
-        addAdvDesc("slay_forgotten_guardian", "Slay a Forgotten Guardian.");
+        addAdvTitle("kill_forgotten_guardian", "Decommissioned");
+        addAdvDesc("kill_forgotten_guardian", "Slay a Forgotten Guardian.");
 
         addAdvTitle("forgotten_ingot", "What Now Is");
         addAdvDesc("forgotten_ingot", "Forge a Forgotten Ingot from a Forgotten Guardian's nuggets.");
@@ -443,8 +443,8 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("forgotten_tools", "Forgotten Arsenal");
         addAdvDesc("forgotten_tools", "Use Forgotten Ingots to upgrade Cloggrum tools and make all 5 Forgotten tools.");
 
-        addAdvTitle("slay_scintling", "Terrible Person");
-        addAdvDesc("slay_scintling", "You killed an innocent Scintling. You monster...");
+        addAdvTitle("kill_scintling", "Terrible Person");
+        addAdvDesc("kill_scintling", "You killed an innocent Scintling. You monster...");
 
         addAdvTitle("summon_minion", "Buildin' a Sentry");
         addAdvDesc("summon_minion", "Create a Forgotten Minion using a Forgotten Block and a Carved Gloomgourd.");
@@ -452,8 +452,8 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("cloggrum_armor", "Cover Me in Coprolites");
         addAdvDesc("cloggrum_armor", "Obtain a full suit of Cloggrum armor.");
 
-        addAdvTitle("all_blocks", "Collector's Edition");
-        addAdvDesc("all_blocks", "Collect one block of every Undergarden ore.");
+        addAdvTitle("all_ore_blocks", "Collector's Edition");
+        addAdvDesc("all_ore_blocks", "Collect one block of every Undergarden ore.");
 
         addAdvTitle("gloomper_secret_disc", "Death Gloomps");
         addAdvDesc("gloomper_secret_disc", "Obtain the secret music disc.");
@@ -461,8 +461,8 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("forgotten_battleaxe", "Axe of Legends");
         addAdvDesc("forgotten_battleaxe", "Upgrade a Cloggrum Battle Axe with a Forgotten Ingot.");
 
-        addAdvTitle("otherside_root", "The Otherside");
-        addAdvDesc("otherside_root", "Enter the realm of madness.");
+        //addAdvTitle("otherside_root", "The Otherside");
+        //addAdvDesc("otherside_root", "Enter the realm of madness.");
 
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");

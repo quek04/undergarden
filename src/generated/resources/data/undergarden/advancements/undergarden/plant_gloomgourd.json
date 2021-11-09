@@ -1,0 +1,31 @@
+{
+  "parent": "undergarden:undergarden/enter_undergarden",
+  "display": {
+    "icon": {
+      "item": "undergarden:gloomgourd_seeds"
+    },
+    "title": {
+      "translate": "advancement.undergarden.plant_gloomgourd.title"
+    },
+    "description": {
+      "translate": "advancement.undergarden.plant_gloomgourd.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "plant_gloomgourd": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "block": "undergarden:gloomgourd_stem"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "plant_gloomgourd"
+    ]
+  ]
+}

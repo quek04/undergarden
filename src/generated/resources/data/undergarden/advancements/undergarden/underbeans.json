@@ -1,0 +1,37 @@
+{
+  "parent": "undergarden:undergarden/enter_undergarden",
+  "display": {
+    "icon": {
+      "item": "undergarden:underbeans"
+    },
+    "title": {
+      "translate": "advancement.undergarden.underbeans.title"
+    },
+    "description": {
+      "translate": "advancement.undergarden.underbeans.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_underbeans": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:underbeans"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_underbeans"
+    ]
+  ]
+}

@@ -27,7 +27,7 @@ public class CatalystItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         if(context.getPlayer() != null) {
-            if(context.getPlayer().level.dimension() == UGDimensions.UNDERGARDEN_WORLD || context.getPlayer().level.dimension() == Level.OVERWORLD) {
+            if(context.getPlayer().level.dimension() == UGDimensions.UNDERGARDEN_LEVEL || context.getPlayer().level.dimension() == Level.OVERWORLD) {
                 for(Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos framePos = context.getClickedPos().relative(direction);
                     if(((UndergardenPortalBlock) UGBlocks.UNDERGARDEN_PORTAL.get()).trySpawnPortal(context.getLevel(), framePos)) {

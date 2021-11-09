@@ -1,26 +1,29 @@
 {
+  "parent": "undergarden:undergarden/enter_undergarden",
   "display": {
     "icon": {
-      "item": "undergarden:regalium_block"
+      "item": "undergarden:cloggrum_ore"
     },
     "title": {
-      "translate": "advancement.all_blocks.title"
+      "translate": "advancement.undergarden.mine_ore.title"
     },
     "description": {
-      "translate": "advancement.all_blocks.desc"
+      "translate": "advancement.undergarden.mine_ore.desc"
     },
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "challenge"
+    "hidden": false
   },
-  "parent": "undergarden:undergarden/any_ore",
   "criteria": {
     "has_cloggrum": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "undergarden:cloggrum_block"
+            "items": [
+              "undergarden:cloggrum_ore"
+            ]
           }
         ]
       }
@@ -30,7 +33,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:froststeel_block"
+            "items": [
+              "undergarden:froststeel_ore"
+            ]
           }
         ]
       }
@@ -40,7 +45,9 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:utherium_block"
+            "items": [
+              "undergarden:utherium_ore"
+            ]
           }
         ]
       }
@@ -50,20 +57,20 @@
       "conditions": {
         "items": [
           {
-            "item": "undergarden:regalium_block"
-          }
-        ]
-      }
-    },
-    "has_forgotten_metal": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "undergarden:forgotten_block"
+            "items": [
+              "undergarden:regalium_ore"
+            ]
           }
         ]
       }
     }
-  }
+  },
+  "requirements": [
+    [
+      "has_cloggrum",
+      "has_froststeel",
+      "has_utherium",
+      "has_regalium"
+    ]
+  ]
 }

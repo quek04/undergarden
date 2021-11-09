@@ -1,0 +1,40 @@
+{
+  "parent": "undergarden:undergarden/kill_rotling",
+  "display": {
+    "icon": {
+      "item": "undergarden:utheric_sword",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancement.undergarden.kill_all_rotspawn.title"
+    },
+    "description": {
+      "translate": "advancement.undergarden.kill_all_rotspawn.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "kill_rotspawn": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "#undergarden:rotspawn"
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kill_rotspawn"
+    ]
+  ]
+}

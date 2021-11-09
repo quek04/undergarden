@@ -175,7 +175,7 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
     }
 
     public boolean inUndergarden() {
-        return this.level.dimension() == UGDimensions.UNDERGARDEN_WORLD && !this.isNoAi();
+        return this.level.dimension() == UGDimensions.UNDERGARDEN_LEVEL && !this.isNoAi();
     }
 
     @Override

@@ -167,8 +167,8 @@ public class UGTeleporter implements ITeleporter {
     @Nullable
     @Override
     public PortalInfo getPortalInfo(Entity entity, ServerLevel level, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        boolean destinationIsUG = level.dimension() == UGDimensions.UNDERGARDEN_WORLD;
-        if (entity.level.dimension() != UGDimensions.UNDERGARDEN_WORLD && !destinationIsUG) {
+        boolean destinationIsUG = level.dimension() == UGDimensions.UNDERGARDEN_LEVEL;
+        if (entity.level.dimension() != UGDimensions.UNDERGARDEN_LEVEL && !destinationIsUG) {
             return null;
         }
         else {
