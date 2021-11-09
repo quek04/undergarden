@@ -25,14 +25,6 @@ public class FrostfieldsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderBase
 
     protected void surfaceBuilder(Random pRandom, ChunkAccess pChunk, Biome pBiome, int pX, int pZ, int pHeight, double pNoise, BlockState pDefaultBlock, BlockState pDefaultFluid, BlockState pTopMaterial, BlockState pUnderMaterial, BlockState pUnderwaterMaterial, int pSeaLevel, int pMinSurfaceLevel) {
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-        //replaces all default blocks (stone in Overworld, Depthrock in Undergarden etc) with Shiverstone
-        if(pChunk.getBlockState(pos).is(pDefaultBlock.getBlock())) {
-            pChunk.setBlockState(pos, UGBlocks.SHIVERSTONE.get().defaultBlockState(), false);
-        }
-        //replaces all default fluids with ice
-        if (pChunk.getBlockState(pos).is(pDefaultFluid.getBlock())) {
-            pChunk.setBlockState(pos, Blocks.ICE.defaultBlockState(), false);
-        }
         int i = (int)(pNoise / 3.0D + 3.0D + pRandom.nextDouble() * 0.25D);
         if (i == 0) {
             boolean flag = false;
@@ -104,6 +96,14 @@ public class FrostfieldsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderBase
                     else if (k > 0) {
                         --k;
                         pChunk.setBlockState(pos, underMaterial, false);
+                    }
+                    //replaces all default blocks (stone in Overworld, Depthrock in Undergarden etc) with Shiverstone
+                    if(pChunk.getBlockState(pos).is(pDefaultBlock.getBlock())) {
+                        pChunk.setBlockState(pos, UGBlocks.SHIVERSTONE.get().defaultBlockState(), false);
+                    }
+                    //replaces all default fluids with ice
+                    if (pChunk.getBlockState(pos).is(pDefaultFluid.getBlock())) {
+                        pChunk.setBlockState(pos, Blocks.ICE.defaultBlockState(), false);
                     }
                 }
             }

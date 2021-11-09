@@ -37,7 +37,7 @@ public class IcePillarFeature extends Feature<NoneFeatureConfiguration> {
                     return true;
                 }
 
-                worldgenlevel.setBlock(blockpos$mutableblockpos, Blocks.BASALT.defaultBlockState(), 2);
+                worldgenlevel.setBlock(blockpos$mutableblockpos, Blocks.PACKED_ICE.defaultBlockState(), 2);
                 flag = flag && this.placeHangOff(worldgenlevel, random, blockpos$mutableblockpos1.setWithOffset(blockpos$mutableblockpos, Direction.NORTH));
                 flag1 = flag1 && this.placeHangOff(worldgenlevel, random, blockpos$mutableblockpos1.setWithOffset(blockpos$mutableblockpos, Direction.SOUTH));
                 flag2 = flag2 && this.placeHangOff(worldgenlevel, random, blockpos$mutableblockpos1.setWithOffset(blockpos$mutableblockpos, Direction.WEST));
@@ -69,7 +69,7 @@ public class IcePillarFeature extends Feature<NoneFeatureConfiguration> {
                         }
 
                         if (!worldgenlevel.isEmptyBlock(blockpos$mutableblockpos1.setWithOffset(blockpos$mutableblockpos2, Direction.DOWN))) {
-                            worldgenlevel.setBlock(blockpos$mutableblockpos2, Blocks.BASALT.defaultBlockState(), 2);
+                            worldgenlevel.setBlock(blockpos$mutableblockpos2, Blocks.PACKED_ICE.defaultBlockState(), 2);
                         }
                     }
                 }

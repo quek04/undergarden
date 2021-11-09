@@ -234,8 +234,6 @@ public class Undergarden {
 			Sheets.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);
 			Sheets.addWoodType(UGBlocks.GRONGLE_WOODTYPE);
 		});
-//		ClientRegistry.bindTileEntityRenderer(UGBlockEntities.UNDERGARDEN_SIGN.get(), SignRenderer::new);
-//		ClientRegistry.bindTileEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
 
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity, seed) -> {
 			if (entity == null) {

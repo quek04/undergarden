@@ -87,7 +87,6 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
                 }
             }
         }
-
     }
 
     public static void placeDroopvineColumn(LevelAccessor world, Random rand, BlockPos.MutableBlockPos posMutable, int length, int y, int z) {
@@ -103,6 +102,5 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
 
             posMutable.move(Direction.DOWN);
         }
-
     }
 }

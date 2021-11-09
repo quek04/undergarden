@@ -12,7 +12,7 @@ public abstract class UGBigMushroomFeature extends AbstractHugeMushroomFeature {
         super(codec);
     }
 
-    @Override //stalk size
+    @Override
     protected int getTreeHeight(Random random) {
         int i = random.nextInt(6) + 6;
         if (random.nextInt(12) == 0) {

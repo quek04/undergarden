@@ -15,7 +15,7 @@ public class BigIndigoMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override
-    protected void makeCap(LevelAccessor world, Random random, BlockPos pos, int p_225564_4_, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
+    protected void makeCap(LevelAccessor world, Random random, BlockPos pos, int shroomHeight, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
         int i = config.foliageRadius;
 
         for(int j = -i; j <= i; ++j) {
@@ -27,7 +27,7 @@ public class BigIndigoMushroomFeature extends UGBigMushroomFeature {
                 boolean flag4 = flag || flag1;
                 boolean flag5 = flag2 || flag3;
                 if (!flag4 || !flag5) {
-                    posMutable.setWithOffset(pos, j, p_225564_4_, k);
+                    posMutable.setWithOffset(pos, j, shroomHeight, k);
                     if (world.getBlockState(posMutable).isSolidRender(world, posMutable)) {
                         boolean flag6 = flag || flag5 && j == 1 - i;
                         boolean flag7 = flag1 || flag5 && j == i - 1;
@@ -38,7 +38,6 @@ public class BigIndigoMushroomFeature extends UGBigMushroomFeature {
                 }
             }
         }
-
     }
 
     @Override

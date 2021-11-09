@@ -31,9 +31,9 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
     }
 
     @Override
-    protected void makeCap(LevelAccessor world, Random random, BlockPos pos, int p_225564_4_, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
-        for(int i = p_225564_4_ - 3; i <= p_225564_4_; ++i) {
-            int j = i < p_225564_4_ ? config.foliageRadius : config.foliageRadius - 1;
+    protected void makeCap(LevelAccessor world, Random random, BlockPos pos, int shroomHeight, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
+        for(int i = shroomHeight - 3; i <= shroomHeight; ++i) {
+            int j = i < shroomHeight ? config.foliageRadius : config.foliageRadius - 1;
             int k = config.foliageRadius - 2;
 
             for(int l = -j; l <= j; ++l) {
@@ -44,10 +44,10 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
                     boolean flag3 = i1 == j;
                     boolean flag4 = flag || flag1;
                     boolean flag5 = flag2 || flag3;
-                    if (i >= p_225564_4_ || flag4 != flag5) {
+                    if (i >= shroomHeight || flag4 != flag5) {
                         posMutable.setWithOffset(pos, l, i, i1);
                         if (world.getBlockState(posMutable).isSolidRender(world, posMutable)) {
-                            this.setBlock(world, posMutable, config.capProvider.getState(random, pos).setValue(HugeMushroomBlock.UP, i >= p_225564_4_ - 1).setValue(HugeMushroomBlock.WEST, l < -k).setValue(HugeMushroomBlock.EAST, l > k).setValue(HugeMushroomBlock.NORTH, i1 < -k).setValue(HugeMushroomBlock.SOUTH, i1 > k));
+                            this.setBlock(world, posMutable, config.capProvider.getState(random, pos).setValue(HugeMushroomBlock.UP, i >= shroomHeight - 1).setValue(HugeMushroomBlock.WEST, l < -k).setValue(HugeMushroomBlock.EAST, l > k).setValue(HugeMushroomBlock.NORTH, i1 < -k).setValue(HugeMushroomBlock.SOUTH, i1 > k));
 
                             if(random.nextInt(5) == 0) {
                                 doVeil(posMutable, world, random);
@@ -84,6 +84,5 @@ public class BigVeilMushroomFeature extends UGBigMushroomFeature {
 
             posMutable.move(Direction.DOWN);
         }
-
     }
 }
