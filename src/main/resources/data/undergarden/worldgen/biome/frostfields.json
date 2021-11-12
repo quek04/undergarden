@@ -4,14 +4,14 @@
   "depth": 0.0,
   "scale": 0.0,
   "temperature": 0.14,
-  "temperature_modifier": "none",
+  "temperature_modifier": "frozen",
   "downfall": 0,
   "effects": {
     "sky_color": 1186057,
     "fog_color": 2565927,
     "foliage_color": 14609908,
     "grass_color": 14609908,
-    "water_color": 342306,
+    "water_color": 339257,
     "water_fog_color": 332810,
     "grass_color_modifier": "none",
     "particle": {
@@ -32,20 +32,21 @@
       "replace_current_music": true
     }
   },
-  "surface_builder": "undergarden:frostfields",
+  "surface_builder": "undergarden:frozen_deepturf",
   "carvers": {
     "air": [
       "undergarden:undergarden_cave"
     ]
   },
   "features": [
-    [
-      "undergarden:ice_pillar"
-    ],
+    [],
     [
       "undergarden:lake_virulent"
     ],
-    [],
+    [
+      "iceberg_packed",
+      "undergarden:ice_pillar"
+    ],
     [],
     [],
     [],
