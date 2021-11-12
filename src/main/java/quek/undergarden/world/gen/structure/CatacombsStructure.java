@@ -36,21 +36,21 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
         }
 
         @Override
-        public void generatePieces(RegistryAccess pRegistryAccess, ChunkGenerator pChunkGenerator, StructureManager pStructureManager, ChunkPos pChunkPos, Biome pBiome, NoneFeatureConfiguration pConfig, LevelHeightAccessor pLevel) {
-            BlockPos blockPos = new BlockPos(pChunkPos.getMinBlockX() * 16, 32, pChunkPos.getMinBlockZ() * 16);
+        public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager structureManager, ChunkPos chunkPos, Biome biome, NoneFeatureConfiguration config, LevelHeightAccessor level) {
+            BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 32, chunkPos.getMinBlockZ());
 
             JigsawPlacement.addPieces(
-                    pRegistryAccess,
-                    new JigsawConfiguration(() -> pRegistryAccess.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(new ResourceLocation(Undergarden.MODID, "catacombs/catacombs_entrance")), 100),
+                    registryAccess,
+                    new JigsawConfiguration(() -> registryAccess.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(new ResourceLocation(Undergarden.MODID, "catacombs/catacombs_entrance")), 100),
                     PoolElementStructurePiece::new,
-                    pChunkGenerator,
-                    pStructureManager,
+                    chunkGenerator,
+                    structureManager,
                     blockPos,
                     this,
                     this.random,
                     false,
                     false,
-                    pLevel);
+                    level);
 
             this.pieces.forEach(piece -> piece.move(0, 1, 0));
 

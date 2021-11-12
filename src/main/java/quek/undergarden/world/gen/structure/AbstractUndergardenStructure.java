@@ -13,6 +13,6 @@ public abstract class AbstractUndergardenStructure extends StructureFeature<None
 
     @Override
     public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.SURFACE_STRUCTURES;
+        return GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
     }
 }
