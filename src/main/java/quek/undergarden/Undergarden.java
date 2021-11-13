@@ -227,8 +227,6 @@ public class Undergarden {
 
 	public void clientSetup(FMLClientSetupEvent event) {
 		UndergardenClient.registerBlockRenderers();
-		UndergardenClient.registerBlockColors();
-		UndergardenClient.registerItemColors();
 		event.enqueueWork(() -> {
 			Sheets.addWoodType(UGBlocks.SMOGSTEM_WOODTYPE);
 			Sheets.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);

@@ -14,6 +14,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -155,11 +156,12 @@ public class UndergardenClient {
         event.registerLayerDefinition(ForgottenGuardianModel.LAYER_LOCATION, ForgottenGuardianModel::createBodyLayer);
     }
 
-    public static void registerBlockColors() {
-        BlockColors colors = Minecraft.getInstance().getBlockColors();
+    @SubscribeEvent
+    public static void registerBlockColors(ColorHandlerEvent.Block event) {
+        BlockColors colors = event.getBlockColors();
 
-        colors.register((state, world, pos, tint) ->
-                        world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : new Color(91, 117, 91).getRGB(),
+        colors.register((state, tintGetter, pos, tint) ->
+                        tintGetter != null && pos != null ? BiomeColors.getAverageGrassColor(tintGetter, pos) : new Color(91, 117, 91).getRGB(),
                 UGBlocks.DEEPTURF_BLOCK.get(),
                 UGBlocks.DEEPTURF.get(),
                 UGBlocks.SHIMMERWEED.get(),
@@ -177,9 +179,10 @@ public class UndergardenClient {
         );
     }
 
-    public static void registerItemColors() {
-        BlockColors bColors = Minecraft.getInstance().getBlockColors();
-        ItemColors iColors = Minecraft.getInstance().getItemColors();
+    @SubscribeEvent
+    public static void registerItemColors(ColorHandlerEvent.Item event) {
+        BlockColors bColors = event.getBlockColors();
+        ItemColors iColors = event.getItemColors();
 
         iColors.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().defaultBlockState(), null, null, 0),
                 UGBlocks.DEEPTURF_BLOCK.get(),
@@ -205,7 +208,7 @@ public class UndergardenClient {
     public static class ForgeBusEvents {
         @SubscribeEvent
         public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
-            Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+            Camera camera = event.getInfo();
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
             if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
@@ -217,11 +220,11 @@ public class UndergardenClient {
 
         @SubscribeEvent
         public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
-            Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+            Camera camera = event.getInfo();
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
             if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
-                event.setDensity(1F);
+                event.setDensity(1.5F);
                 event.setCanceled(true);
             }
         }
