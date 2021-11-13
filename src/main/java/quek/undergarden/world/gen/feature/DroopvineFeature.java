@@ -89,11 +89,11 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    public static void placeDroopvineColumn(LevelAccessor world, Random rand, BlockPos.MutableBlockPos posMutable, int length, int y, int z) {
+    public static void placeDroopvineColumn(LevelAccessor world, Random rand, BlockPos.MutableBlockPos posMutable, int length, int min, int max) {
         for(int i = 0; i <= length; ++i) {
             if (world.isEmptyBlock(posMutable)) {
                 if (i == length || !world.isEmptyBlock(posMutable.below())) {
-                    world.setBlock(posMutable, UGBlocks.DROOPVINE_TOP.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(rand, y, z)), 2);
+                    world.setBlock(posMutable, UGBlocks.DROOPVINE_TOP.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(rand, min, max)), 2);
                     break;
                 }
 

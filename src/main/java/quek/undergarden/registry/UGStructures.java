@@ -47,15 +47,15 @@ public class UGStructures {
 
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
         if(event.getWorld() instanceof ServerLevel) {
-            ServerLevel serverWorld = (ServerLevel)event.getWorld();
+            ServerLevel level = (ServerLevel)event.getWorld();
 
-            if(serverWorld.getChunkSource().getGenerator() instanceof FlatLevelSource && serverWorld.dimension().equals(Level.OVERWORLD)) {
+            if(level.getChunkSource().getGenerator() instanceof FlatLevelSource && level.dimension().equals(Level.OVERWORLD)) {
                 return;
             }
 
-            Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
+            Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(level.getChunkSource().generator.getSettings().structureConfig());
             tempMap.put(UGStructures.CATACOMBS.get(), StructureSettings.DEFAULTS.get(UGStructures.CATACOMBS.get()));
-            serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
+            level.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
     }
 

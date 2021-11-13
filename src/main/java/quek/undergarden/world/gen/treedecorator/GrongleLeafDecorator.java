@@ -3,6 +3,7 @@ package quek.undergarden.world.gen.treedecorator;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,11 +28,13 @@ public class GrongleLeafDecorator extends TreeDecorator {
     }
 
     @Override
-    public void place(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, Random pRandom, List<BlockPos> pLogPositions, List<BlockPos> pLeafPositions) {
-        pLeafPositions.forEach((blockPos -> {
-            if(pRandom.nextInt(10) == 0) {
-                this.placeHangingLeaves(pBlockSetter, pLevel, pRandom, blockPos);
-            }
+    public void place(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, Random random, List<BlockPos> logPositions, List<BlockPos> leafPositions) {
+        leafPositions.forEach((blockPos -> {
+            //if(Feature.isAir(level, blockPos)) {
+                if(level.isStateAtPosition(blockPos, blockState -> blockState.is(BlockTags.LEAVES))) {
+                    this.placeHangingLeaves(blockSetter, level, random, blockPos);
+                }
+           // }
         }));
     }
 
@@ -40,13 +43,12 @@ public class GrongleLeafDecorator extends TreeDecorator {
 
         for(int i = 0; i < 100; ++i) {
             posMutable.setWithOffset(pos, random.nextInt(8) - random.nextInt(8), random.nextInt(2) - random.nextInt(7), random.nextInt(8) - random.nextInt(8));
-            if (Feature.isAir(level, posMutable)) {
-                //BlockState blockstate = level.getBlockState(posMutable.above());
-                //if (blockstate.is(UGBlocks.GRONGLE_LEAVES.get())) {
+            //if (Feature.isAir(level, posMutable)) {
+                //if (level.isStateAtPosition(posMutable.above(), blockState -> blockState.is(BlockTags.LEAVES))) {
                     int length = random.nextInt(3);
                     placeHangingLeavesColumn(blockSetter, level, posMutable, length);
                 //}
-            }
+            //}
         }
     }
 
