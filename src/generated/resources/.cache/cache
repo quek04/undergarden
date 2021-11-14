@@ -581,6 +581,7 @@ fca96de19f7127277f0c17d5948b8baf24ea0837 data/minecraft/tags/blocks/wooden_slabs
 7f4bebaff3d66663350e5127f9a6678c2651797f data/minecraft/tags/blocks/wooden_stairs.json
 82798abbabdb45210bf357d1c1f61c1ef879f010 data/minecraft/tags/blocks/wooden_trapdoors.json
 6bdb2114b3c86473395c4c9e7d56089037a037de data/minecraft/tags/entity_types/impact_projectiles.json
+2afca8901455043d8586223a44255a8f85543406 data/minecraft/tags/fluids/water.json
 9f10a35affc9c3b74d990bf22c88c45f8275398b data/minecraft/tags/items/beacon_payment_items.json
 ad8a33c5aafb159f47f6584f8b16bb37c14d4908 data/minecraft/tags/items/boats.json
 f27bfc6d5cc72725404ba318aba090fcfadf44d3 data/minecraft/tags/items/buttons.json
@@ -1278,6 +1279,7 @@ a0b8a241fe4fe0b4411edd19cdef58bf08e65a31 data/undergarden/tags/blocks/smogstem_l
 a17f60d4722d9511ef0cc7592509ef477a6f98c9 data/undergarden/tags/blocks/wigglewood_logs.json
 fc9b675be694f8a77bef216b94469209a9be9e6e data/undergarden/tags/entity_types/cavern_creature.json
 0f6b99cd2dec4bf3e452155669d4afcbc26ece7b data/undergarden/tags/entity_types/rotspawn.json
+a1286ebaf730ef5f5c03c655d5a927d81ebceb95 data/undergarden/tags/fluids/virulent.json
 123ded01159bc158c0558c3376f4a66efdb1d803 data/undergarden/tags/items/cloggrum_items.json
 4b353e990be055c12915169b16465f9c2f878318 data/undergarden/tags/items/froststeel_items.json
 25be574be52b3f2ecceecce12ca8470388b14120 data/undergarden/tags/items/grongle_logs.json

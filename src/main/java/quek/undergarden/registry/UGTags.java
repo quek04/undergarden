@@ -1,13 +1,11 @@
 package quek.undergarden.registry;
 
+import net.minecraft.tags.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.material.Fluid;
 import quek.undergarden.Undergarden;
 
 public class UGTags {
@@ -49,6 +47,15 @@ public class UGTags {
 
         private static Tag.Named<EntityType<?>> tag(String name) {
             return EntityTypeTags.createOptional(new ResourceLocation(Undergarden.MODID, name));
+        }
+    }
+
+    public static class Fluids {
+
+        public static final Tag.Named<Fluid> VIRULENT = tag("virulent");
+
+        private static Tag.Named<Fluid> tag(String name) {
+            return FluidTags.createOptional(new ResourceLocation(Undergarden.MODID, name));
         }
     }
 }

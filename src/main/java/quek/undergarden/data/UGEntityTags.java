@@ -2,10 +2,7 @@ package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
-import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.Tag;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGEntityTypes;
@@ -32,9 +29,5 @@ public class UGEntityTags extends EntityTypeTagsProvider {
 
         //vanilla
         tag(EntityTypeTags.IMPACT_PROJECTILES).add(UGEntityTypes.BLISTERBOMB.get(), UGEntityTypes.ROTTEN_BLISTERBERRY.get(), UGEntityTypes.GOO_BALL.get(), UGEntityTypes.SLINGSHOT_AMMO.get(), UGEntityTypes.MINION_PROJECTILE.get());
-    }
-
-    protected TagsProvider.TagAppender<EntityType<?>> tag(Tag.Named<EntityType<?>> tag) {
-        return super.tag(tag);
     }
 }

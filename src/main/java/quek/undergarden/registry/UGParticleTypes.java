@@ -5,8 +5,6 @@ import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,7 +27,6 @@ public class UGParticleTypes {
     public static final RegistryObject<SimpleParticleType> GLOOMPER_FART = PARTICLES.register("gloomper_fart", () -> new SimpleParticleType(false));
 
     @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
     public static void registerParticleFactories(ParticleFactoryRegisterEvent event) {
         ParticleEngine particleManager = Minecraft.getInstance().particleEngine;
 

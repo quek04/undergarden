@@ -247,7 +247,7 @@ public class UGBlocks {
     public static final RegistryObject<FlowerPotBlock> POTTED_BLOOD_MUSHROOM = BLOCKS.register("potted_blood_mushroom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOOD_MUSHROOM, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 
     //fluids
-    public static final RegistryObject<LiquidBlock> VIRULENT_MIX = BLOCKS.register("virulent_mix", () -> new UGFluidBlock(
+    public static final RegistryObject<LiquidBlock> VIRULENT_MIX = BLOCKS.register("virulent_mix", () -> new VirulentMixBlock(
             () -> new ForgeFlowingFluid.Source(UGFluids.VIRULENT_MIX_PROPERTIES), BlockBehaviour.Properties.of(Material.WATER)));
 
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
