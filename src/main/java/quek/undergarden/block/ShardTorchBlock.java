@@ -14,7 +14,7 @@ import quek.undergarden.registry.UGTags;
 
 import java.util.Random;
 
-public class ShardTorchBlock extends TorchBlock /*implements EntityBlock*/ {
+public class ShardTorchBlock extends TorchBlock {
 
     public ShardTorchBlock(Properties properties) {
         super(properties, ParticleTypes.FLAME);
@@ -29,18 +29,6 @@ public class ShardTorchBlock extends TorchBlock /*implements EntityBlock*/ {
         worldIn.addParticle(UGParticleTypes.SHARD.get(), x, y, z, 0.0D, 0.0D, 0.0D);
     }
 
-//    @Nullable
-//    @Override
-//    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-//        return UGBlockEntities.SHARD_TORCH.get().create(pPos, pState);
-//    }
-//
-//    @Nullable
-//    @Override
-//    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-//        return pBlockEntityType == UGBlockEntities.SHARD_TORCH.get() ? ShardTorchBlockEntity::tick : null;
-//    }
-
     @Override
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
         pLevel.getBlockTicks().scheduleTick(pPos, this, 20);
@@ -48,16 +36,16 @@ public class ShardTorchBlock extends TorchBlock /*implements EntityBlock*/ {
 
     @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
-        //if(pLevel.getGameTime() % 20 == 0) {
-            pLevel.getEntitiesOfClass(LivingEntity.class, new AABB(
-                            pPos.getX() - 4,
-                            pPos.getY() - 4,
-                            pPos.getZ() - 4,
-                            pPos.getX() + 4,
-                            pPos.getY() + 4,
-                            pPos.getZ() + 4),
-                    entity -> entity.getType().is(UGTags.Entities.ROTSPAWN)).forEach(entity -> entity.hurt(UGDamageSources.SHARD_TORCH, 4));
-        //}
+        pLevel.getEntitiesOfClass(LivingEntity.class, new AABB(
+                        pPos.getX() - 4,
+                        pPos.getY() - 4,
+                        pPos.getZ() - 4,
+                        pPos.getX() + 4,
+                        pPos.getY() + 4,
+                        pPos.getZ() + 4
+                ),
+                entity -> entity.getType().is(UGTags.Entities.ROTSPAWN)).forEach(entity -> entity.hurt(UGDamageSources.SHARD_TORCH, 4));
+
         pLevel.getBlockTicks().scheduleTick(pPos, this, 20);
     }
 }
