@@ -17,14 +17,42 @@
     "hidden": false
   },
   "criteria": {
-    "kill_rotspawn": {
+    "kill_rotling": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
         "entity": [
           {
             "condition": "minecraft:entity_properties",
             "predicate": {
-              "type": "#undergarden:rotspawn"
+              "type": "undergarden:rotling"
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    },
+    "kill_rotwalker": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "undergarden:rotwalker"
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    },
+    "kill_rotbeast": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "undergarden:rotbeast"
             },
             "entity": "this"
           }
@@ -34,7 +62,13 @@
   },
   "requirements": [
     [
-      "kill_rotspawn"
+      "kill_rotling"
+    ],
+    [
+      "kill_rotwalker"
+    ],
+    [
+      "kill_rotbeast"
     ]
   ]
 }

@@ -275,7 +275,10 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                         true,
                         false
                 )
-                .addCriterion("kill_rotspawn", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(UGTags.Entities.ROTSPAWN).build()))
+                .requirements(RequirementsStrategy.AND)
+                .addCriterion("kill_rotling", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(UGEntityTypes.ROTLING.get()).build()))
+                .addCriterion("kill_rotwalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(UGEntityTypes.ROTWALKER.get()).build()))
+                .addCriterion("kill_rotbeast", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(UGEntityTypes.ROTBEAST.get()).build()))
                 .save(consumer, "undergarden:undergarden/kill_all_rotspawn");
 
         Advancement kill_scintling = Advancement.Builder.advancement()
