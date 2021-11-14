@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -23,7 +24,6 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
-import net.minecraft.world.level.levelgen.placement.ChanceDecoratorConfiguration;
 import net.minecraft.world.level.levelgen.placement.FeatureDecorator;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -47,13 +47,11 @@ public class UGFeatures {
 //    public static final RegistryObject<Feature<TreeConfiguration>> UNDERGARDEN_TREE = FEATURES.register(
 //            "undergarden_tree", () -> new UGTreeFeature(TreeConfiguration.CODEC));
     public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> BLOOD_MUSHROOM = FEATURES.register(
-            "blood_mushroom", () -> new BigBloodMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
-    public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> INDIGO_MUSHROOM = FEATURES.register(
-            "indigo_mushroom", () -> new BigIndigoMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
+            "blood_mushroom", () -> new HugeBloodMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> INK_MUSHROOM = FEATURES.register(
-            "ink_mushroom", () -> new BigInkMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
+            "ink_mushroom", () -> new HugeInkMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> VEIL_MUSHROOM = FEATURES.register(
-            "veil_mushroom", () -> new BigVeilMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
+            "veil_mushroom", () -> new HugeVeilMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> GLOWING_KELP = FEATURES.register(
             "glowing_kelp", () -> new GlowingKelpFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> SMOG_VENT = FEATURES.register(
@@ -298,26 +296,26 @@ public class UGFeatures {
 
         public static final ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> BLOOD_MUSHROOM = UGFeatures.BLOOD_MUSHROOM.get().configured(
                 new HugeMushroomFeatureConfiguration(
-                        new SimpleStateProvider(UGBlocks.BLOOD_MUSHROOM_CAP.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.BLOOD_MUSHROOM_STALK.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.BLOOD_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
+                        new SimpleStateProvider(UGBlocks.BLOOD_MUSHROOM_STALK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
                         3)
         );
-        public static final ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> INDIGO_MUSHROOM = UGFeatures.INDIGO_MUSHROOM.get().configured(
+        public static final ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> INDIGO_MUSHROOM = Feature.HUGE_BROWN_MUSHROOM.configured(
                 new HugeMushroomFeatureConfiguration(
-                        new SimpleStateProvider(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.INDIGO_MUSHROOM_STALK.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.UP, true)),
+                        new SimpleStateProvider(UGBlocks.INDIGO_MUSHROOM_STALK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
                         3)
         );
         public static final ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> INK_MUSHROOM = UGFeatures.INK_MUSHROOM.get().configured(
                 new HugeMushroomFeatureConfiguration(
-                        new SimpleStateProvider(UGBlocks.INK_MUSHROOM_CAP.get().defaultBlockState()),
-                        new SimpleStateProvider(Blocks.MUSHROOM_STEM.defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.INK_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.UP, true)),
+                        new SimpleStateProvider(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
                         5)
         );
         public static final ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> VEIL_MUSHROOM = UGFeatures.VEIL_MUSHROOM.get().configured(
                 new HugeMushroomFeatureConfiguration(
-                        new SimpleStateProvider(UGBlocks.VEIL_MUSHROOM_CAP.get().defaultBlockState()),
-                        new SimpleStateProvider(UGBlocks.VEIL_MUSHROOM_STALK.get().defaultBlockState()),
+                        new SimpleStateProvider(UGBlocks.VEIL_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
+                        new SimpleStateProvider(UGBlocks.VEIL_MUSHROOM_STALK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
                         2)
         );
 

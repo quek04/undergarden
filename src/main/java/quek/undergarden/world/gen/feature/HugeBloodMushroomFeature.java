@@ -4,27 +4,18 @@ import com.mojang.serialization.Codec;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.AbstractHugeMushroomFeature;
+import net.minecraft.world.level.levelgen.feature.HugeRedMushroomFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class BigBloodMushroomFeature extends UGBigMushroomFeature {
+public class HugeBloodMushroomFeature extends HugeRedMushroomFeature {
 
-    public BigBloodMushroomFeature(Codec<HugeMushroomFeatureConfiguration> codec) {
+    public HugeBloodMushroomFeature(Codec<HugeMushroomFeatureConfiguration> codec) {
         super(codec);
-    }
-
-    @Override
-    protected int getTreeRadiusForHeight(int p_225563_1_, int p_225563_2_, int p_225563_3_, int p_225563_4_) {
-        int i = 0;
-        if (p_225563_4_ < p_225563_2_ && p_225563_4_ >= p_225563_2_ - 3) {
-            i = p_225563_3_;
-        } else if (p_225563_4_ == p_225563_2_) {
-            i = p_225563_3_;
-        }
-
-        return i;
     }
 
     @Override
@@ -43,11 +34,14 @@ public class BigBloodMushroomFeature extends UGBigMushroomFeature {
                     boolean flag5 = flag2 || flag3;
                     if (i >= shroomHeight || flag4 != flag5) {
                         posMutable.setWithOffset(pos, l, i, i1);
-                        if (level.getBlockState(posMutable).isSolidRender(level, posMutable)) {
-                            if(!(random.nextInt(10) == 0)) {
-                                this.setBlock(level, posMutable, config.capProvider.getState(random, pos).setValue(HugeMushroomBlock.UP, i >= shroomHeight - 1).setValue(HugeMushroomBlock.WEST, l < -k).setValue(HugeMushroomBlock.EAST, l > k).setValue(HugeMushroomBlock.NORTH, i1 < -k).setValue(HugeMushroomBlock.SOUTH, i1 > k));
+                        if (!level.getBlockState(posMutable).isSolidRender(level, posMutable)) {
+                            BlockState state = config.capProvider.getState(random, pos);
+                            if (state.hasProperty(HugeMushroomBlock.WEST) && state.hasProperty(HugeMushroomBlock.EAST) && state.hasProperty(HugeMushroomBlock.NORTH) && state.hasProperty(HugeMushroomBlock.SOUTH) && state.hasProperty(HugeMushroomBlock.UP)) {
+                                state = state.setValue(HugeMushroomBlock.UP, i >= shroomHeight - 1).setValue(HugeMushroomBlock.WEST, l < -k).setValue(HugeMushroomBlock.EAST, l > k).setValue(HugeMushroomBlock.NORTH, i1 < -k).setValue(HugeMushroomBlock.SOUTH, i1 > k);
                             }
-                            else this.setBlock(level, posMutable, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().defaultBlockState());
+
+                            this.setBlock(level, posMutable, random.nextInt(10) == 0 ? UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().defaultBlockState() : state);
+                            //this.setBlock(level, posMutable, state);
                         }
                     }
                 }
