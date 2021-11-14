@@ -189,8 +189,8 @@ public class UGBlocks {
     public static final RegistryObject<PressurePlateBlock> SMOGSTEM_PRESSURE_PLATE = register("smogstem_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(SMOGSTEM_PLANKS.get()).noOcclusion().noCollission()));
 
     public static final WoodType SMOGSTEM_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "smogstem").toString());
-    public static final RegistryObject<StandingSignBlock> SMOGSTEM_SIGN = register("smogstem_sign", () -> new UndergardenStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), SMOGSTEM_WOODTYPE));
-    public static final RegistryObject<WallSignBlock> SMOGSTEM_WALL_SIGN = BLOCKS.register("smogstem_wall_sign", () -> new UndergardenWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), SMOGSTEM_WOODTYPE));
+    public static final RegistryObject<StandingSignBlock> SMOGSTEM_SIGN = register("smogstem_sign", () -> new UGStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), SMOGSTEM_WOODTYPE));
+    public static final RegistryObject<WallSignBlock> SMOGSTEM_WALL_SIGN = BLOCKS.register("smogstem_wall_sign", () -> new UGWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), SMOGSTEM_WOODTYPE));
 
     //wigglewood
     public static final RegistryObject<SaplingBlock> WIGGLEWOOD_SAPLING = register("wigglewood_sapling", () -> new UGSaplingBlock(new WigglewoodTree()));
@@ -210,8 +210,8 @@ public class UGBlocks {
     public static final RegistryObject<PressurePlateBlock> WIGGLEWOOD_PRESSURE_PLATE = register("wigglewood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(WIGGLEWOOD_PLANKS.get()).noOcclusion().noCollission()));
 
     public static final WoodType WIGGLEWOOD_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "wigglewood").toString());
-    public static final RegistryObject<StandingSignBlock> WIGGLEWOOD_SIGN = register("wigglewood_sign", () -> new UndergardenStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), WIGGLEWOOD_WOODTYPE));
-    public static final RegistryObject<WallSignBlock> WIGGLEWOOD_WALL_SIGN = BLOCKS.register("wigglewood_wall_sign", () -> new UndergardenWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), WIGGLEWOOD_WOODTYPE));
+    public static final RegistryObject<StandingSignBlock> WIGGLEWOOD_SIGN = register("wigglewood_sign", () -> new UGStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), WIGGLEWOOD_WOODTYPE));
+    public static final RegistryObject<WallSignBlock> WIGGLEWOOD_WALL_SIGN = BLOCKS.register("wigglewood_wall_sign", () -> new UGWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), WIGGLEWOOD_WOODTYPE));
 
     //grongle
     public static final RegistryObject<Block> GRONGLE_SAPLING = register("grongle_sapling", () -> new UGSaplingBlock(new GrongleTree()));
@@ -233,8 +233,8 @@ public class UGBlocks {
     public static final RegistryObject<PressurePlateBlock> GRONGLE_PRESSURE_PLATE = register("grongle_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(GRONGLE_PLANKS.get()).noOcclusion().noCollission()));
 
     public static final WoodType GRONGLE_WOODTYPE = WoodType.create(new ResourceLocation(Undergarden.MODID, "grongle").toString());
-    public static final RegistryObject<StandingSignBlock> GRONGLE_SIGN = register("grongle_sign", () -> new UndergardenStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), GRONGLE_WOODTYPE));
-    public static final RegistryObject<WallSignBlock> GRONGLE_WALL_SIGN = BLOCKS.register("grongle_wall_sign", () -> new UndergardenWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), GRONGLE_WOODTYPE));
+    public static final RegistryObject<StandingSignBlock> GRONGLE_SIGN = register("grongle_sign", () -> new UGStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), GRONGLE_WOODTYPE));
+    public static final RegistryObject<WallSignBlock> GRONGLE_WALL_SIGN = BLOCKS.register("grongle_wall_sign", () -> new UGWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), GRONGLE_WOODTYPE));
 
     //flower pots
     public static final RegistryObject<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = BLOCKS.register("potted_smogstem_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));

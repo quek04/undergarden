@@ -22,6 +22,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlac
 import net.minecraft.world.level.levelgen.feature.foliageplacers.DarkOakFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
 import net.minecraft.world.level.levelgen.placement.FeatureDecorator;
@@ -228,7 +229,9 @@ public class UGFeatures {
                         new SimpleStateProvider(UGBlocks.SMOGSTEM_SAPLING.get().defaultBlockState()),
                         new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
                         new TwoLayersFeatureSize(1, 1, 2))
-                        .ignoreVines().build()
+                        .ignoreVines()
+                        .dirt(new SimpleStateProvider(UGBlocks.DEEPSOIL.get().defaultBlockState()))
+                        .build()
         );
         public static final ConfiguredFeature<TreeConfiguration, ?> WIGGLEWOOD_TREE = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
@@ -238,17 +241,20 @@ public class UGFeatures {
                         new SimpleStateProvider(UGBlocks.WIGGLEWOOD_SAPLING.get().defaultBlockState()),
                         new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0),
                         new TwoLayersFeatureSize(1, 0, 2))
-                        .ignoreVines().build()
+                        .ignoreVines()
+                        .dirt(new SimpleStateProvider(UGBlocks.DEEPSOIL.get().defaultBlockState()))
+                        .build()
         );
         public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_TREE = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.GRONGLE_LOG.get().defaultBlockState()),
-                        new GrongleTrunkPlacer(10, 2, 19),
+                        new MegaJungleTrunkPlacer(10, 2, 19),
                         new SimpleStateProvider(UGBlocks.GRONGLE_LEAVES.get().defaultBlockState()),
                         new SimpleStateProvider(UGBlocks.GRONGLE_SAPLING.get().defaultBlockState()),
                         new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(1, 1, 2))
                         .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
+                        .dirt(new SimpleStateProvider(UGBlocks.DEEPSOIL.get().defaultBlockState()))
                         .build()
         );
         public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_TREE_SMALL = Feature.TREE.configured(
@@ -260,6 +266,7 @@ public class UGFeatures {
                         new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(1, 0, 1))
                         .decorators(ImmutableList.of(GrongleLeafDecorator.INSTANCE))
+                        .dirt(new SimpleStateProvider(UGBlocks.DEEPSOIL.get().defaultBlockState()))
                         .build()
         );
         public static final ConfiguredFeature<TreeConfiguration, ?> GRONGLE_BUSH = Feature.TREE.configured(
@@ -270,6 +277,7 @@ public class UGFeatures {
                         new SimpleStateProvider(UGBlocks.GRONGLE_SAPLING.get().defaultBlockState()),
                         new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(0, 0, 0))
+                        .dirt(new SimpleStateProvider(UGBlocks.DEEPSOIL.get().defaultBlockState()))
                         .build()
         );
 
@@ -281,7 +289,9 @@ public class UGFeatures {
                         new SimpleStateProvider(UGBlocks.SMOGSTEM_SAPLING.get().defaultBlockState()),
                         new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
                         new TwoLayersFeatureSize(1, 1, 2))
-                        .ignoreVines().build()
+                        .ignoreVines()
+                        .dirt(new SimpleStateProvider(UGBlocks.DEEPSOIL.get().defaultBlockState()))
+                        .build()
         );
         public static final ConfiguredFeature<TreeConfiguration, ?> WIGGLEWOOD_TREE_TALL = Feature.TREE.configured(
                 new TreeConfiguration.TreeConfigurationBuilder(
@@ -291,7 +301,9 @@ public class UGFeatures {
                         new SimpleStateProvider(UGBlocks.WIGGLEWOOD_SAPLING.get().defaultBlockState()),
                         new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 0),
                         new TwoLayersFeatureSize(1, 0, 2))
-                        .ignoreVines().build()
+                        .ignoreVines()
+                        .dirt(new SimpleStateProvider(UGBlocks.DEEPSOIL.get().defaultBlockState()))
+                        .build()
         );
 
         public static final ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> BLOOD_MUSHROOM = UGFeatures.BLOOD_MUSHROOM.get().configured(

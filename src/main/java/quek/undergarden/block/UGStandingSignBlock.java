@@ -7,9 +7,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import quek.undergarden.registry.UGBlockEntities;
 
-public class UndergardenStandingSignBlock extends StandingSignBlock {
+public class UGStandingSignBlock extends StandingSignBlock {
 
-    public UndergardenStandingSignBlock(Properties properties, WoodType woodType) {
+    public UGStandingSignBlock(Properties properties, WoodType woodType) {
         super(properties, woodType);
     }
 
