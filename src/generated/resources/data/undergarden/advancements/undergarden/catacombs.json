@@ -19,7 +19,9 @@
     "enter_catacombs": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {}
+        "location": {
+          "feature": "undergarden:catacombs"
+        }
       }
     }
   },

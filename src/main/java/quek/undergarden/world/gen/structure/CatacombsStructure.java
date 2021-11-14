@@ -29,6 +29,11 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
         return CatacombsStructure.Start::new;
     }
 
+    @Override
+    public String getFeatureName() {
+        return "undergarden:catacombs";
+    }
+
     public static class Start extends StructureStart<NoneFeatureConfiguration> {
 
         public Start(StructureFeature<NoneFeatureConfiguration> pFeature, ChunkPos pChunkPos, int pReferences, long pSeed) {
