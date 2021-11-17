@@ -6,11 +6,12 @@ import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
-import quek.undergarden.world.gen.surfacebuilders.FrostfieldsSurfaceBuilder;
+import quek.undergarden.world.gen.surfacebuilders.*;
 
 public class UGSurfaceBuilders {
 
     public static final DeferredRegister<SurfaceBuilder<?>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, Undergarden.MODID);
 
+    public static final RegistryObject<SurfaceBuilder<SurfaceBuilderBaseConfiguration>> DEFAULT = SURFACE_BUILDERS.register("default", () -> new UGDefaultSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC));
     public static final RegistryObject<SurfaceBuilder<SurfaceBuilderBaseConfiguration>> FROSTFIELDS = SURFACE_BUILDERS.register("frostfields", () -> new FrostfieldsSurfaceBuilder(SurfaceBuilderBaseConfiguration.CODEC));
 }

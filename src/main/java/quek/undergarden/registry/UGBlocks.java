@@ -113,7 +113,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> DEEPTURF_BLOCK = register("deepturf_block", () -> new DeepturfBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
     public static final RegistryObject<Block> ASHEN_DEEPTURF_BLOCK = register("ashen_deepturf_block", () -> new Block(BlockBehaviour.Properties.copy(DEEPTURF_BLOCK.get())));
     public static final RegistryObject<Block> FROZEN_DEEPTURF_BLOCK = register("frozen_deepturf_block", () -> new Block(BlockBehaviour.Properties.copy(DEEPTURF_BLOCK.get())));
-    public static final RegistryObject<Block> DEEPSOIL = register("deepsoil", () -> new Block(BlockBehaviour.Properties.copy(DEEPTURF_BLOCK.get()).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> DEEPSOIL = register("deepsoil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
     public static final RegistryObject<Block> COARSE_DEEPSOIL = register("coarse_deepsoil", () -> new Block(BlockBehaviour.Properties.copy(DEEPSOIL.get())));
     public static final RegistryObject<Block> DEEPSOIL_FARMLAND = register("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(BlockBehaviour.Properties.copy(Blocks.FARMLAND)));
     public static final RegistryObject<Block> GOO = register("goo", () -> new GooLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission()));

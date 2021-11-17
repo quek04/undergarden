@@ -1,5 +1,5 @@
 {
-  "type": "default",
+  "type": "undergarden:default",
   "config": {
     "top_material": {
       "Name": "undergarden:deepturf_block",

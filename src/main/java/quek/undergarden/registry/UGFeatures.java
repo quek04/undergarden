@@ -45,8 +45,6 @@ public class UGFeatures {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Undergarden.MODID);
 
-//    public static final RegistryObject<Feature<TreeConfiguration>> UNDERGARDEN_TREE = FEATURES.register(
-//            "undergarden_tree", () -> new UGTreeFeature(TreeConfiguration.CODEC));
     public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> BLOOD_MUSHROOM = FEATURES.register(
             "blood_mushroom", () -> new HugeBloodMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> INK_MUSHROOM = FEATURES.register(
