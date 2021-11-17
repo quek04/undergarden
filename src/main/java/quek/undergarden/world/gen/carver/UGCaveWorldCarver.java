@@ -44,7 +44,8 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 UGBlocks.CLOGGRUM_ORE.get(),
                 UGBlocks.FROSTSTEEL_ORE.get(),
                 UGBlocks.UTHERIUM_ORE.get(),
-                UGBlocks.REGALIUM_ORE.get()
+                UGBlocks.REGALIUM_ORE.get(),
+                UGBlocks.SEDIMENT.get()
         );
         this.liquids = ImmutableSet.of(
                 Fluids.WATER,
