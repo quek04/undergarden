@@ -128,7 +128,7 @@ public class UGFeatures {
         public static final ConfiguredFeature<?, ?> PEBBLE_PATCH = Feature.RANDOM_PATCH.configured(
                 (new RandomPatchConfiguration.GrassConfigurationBuilder(
                         new SimpleStateProvider(UGBlocks.DEPTHROCK_PEBBLES.get().defaultBlockState()), new SimpleBlockPlacer()))
-                        .tries(32).whitelist(ImmutableSet.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get())).noProjection().build()
+                        .tries(32).whitelist(ImmutableSet.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.SEDIMENT.get())).noProjection().build()
         );
         public static final ConfiguredFeature<?, ?> DITCHBULB_PATCH = Feature.RANDOM_PATCH.configured(
                 (new RandomPatchConfiguration.GrassConfigurationBuilder(
@@ -214,9 +214,6 @@ public class UGFeatures {
         );
         public static final ConfiguredFeature<?, ?> SEDIMENT_PATCH = Feature.ORE.configured(
                 new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.SEDIMENT.get().defaultBlockState(), 33)
-        );
-        public static final ConfiguredFeature<?, ?> SEDIMENT_DISK = Feature.DISK.configured(
-                new DiskConfiguration(UGBlocks.SEDIMENT.get().defaultBlockState(), UniformInt.of(4, 4), 2, ImmutableList.of(UGBlocks.DEEPSOIL.get().defaultBlockState(), UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get().defaultBlockState()))
         );
 
         public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE = Feature.TREE.configured(
@@ -399,7 +396,6 @@ public class UGFeatures {
         register("deepsoil_patch", ConfiguredFeatures.DEEPSOIL_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(10));
         register("ice_patch", ConfiguredFeatures.ICE_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(20));
         register("sediment_patch", ConfiguredFeatures.SEDIMENT_PATCH.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)).squared().count(20));
-        register("sediment_disk", ConfiguredFeatures.SEDIMENT_DISK.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)).squared().count(20));
 
         register("smogstem_tree", ConfiguredFeatures.SMOGSTEM_TREE.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(8))));
         register("wigglewood_tree", ConfiguredFeatures.WIGGLEWOOD_TREE.decorated(FeatureDecorator.COUNT_MULTILAYER.configured(new CountConfiguration(8))));
