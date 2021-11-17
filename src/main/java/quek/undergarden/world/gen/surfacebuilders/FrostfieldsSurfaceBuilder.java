@@ -29,14 +29,14 @@ public class FrostfieldsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderBase
     }
 
     @Override
-    public void apply(Random pRandom, ChunkAccess pChunk, Biome pBiome, int pX, int pZ, int pHeight, double pNoise, BlockState pDefaultBlock, BlockState pDefaultFluid, int pSeaLevel, int pMinSurfaceLevel, long pSeed, SurfaceBuilderBaseConfiguration pConfig) {
+    public void apply(Random random, ChunkAccess chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, int minSurfaceLevel, long seed, SurfaceBuilderBaseConfiguration config) {
         double d0 = 0.0D;
         double d1 = 0.0D;
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-        float f = pBiome.getTemperature(mutablePos.set(pX, 31, pZ));
-        double icebergNoise = Math.min(Math.abs(pNoise), this.icebergNoise.getValue((double)pX * 0.1D, (double)pZ * 0.1D, false) * 15.0D);
+        float f = biome.getTemperature(mutablePos.set(x, 31, z));
+        double icebergNoise = Math.min(Math.abs(noise), this.icebergNoise.getValue((double)x * 0.1D, (double)z * 0.1D, false) * 15.0D);
         if (icebergNoise > 1.8D) {
-            double icebergRoofNoise = Math.abs(this.icebergRoofNoise.getValue((double)pX * 0.09765625D, (double)pZ * 0.09765625D, false));
+            double icebergRoofNoise = Math.abs(this.icebergRoofNoise.getValue((double)x * 0.09765625D, (double)z * 0.09765625D, false));
             d0 = icebergNoise * icebergNoise * 1.2D;
             double d5 = Math.ceil(icebergRoofNoise * 40.0D) + 14.0D;
             if (d0 > d5) {
@@ -48,87 +48,85 @@ public class FrostfieldsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderBase
             }
 
             if (d0 > 2.0D) {
-                d1 = (double)pSeaLevel - d0 - 7.0D;
-                d0 = d0 + (double)pSeaLevel;
+                d1 = (double)seaLevel - d0 - 7.0D;
+                d0 = d0 + (double)seaLevel;
             } else {
                 d0 = 0.0D;
             }
         }
 
-        int x = pX & 15;
-        int z = pZ & 15;
-        SurfaceBuilderConfiguration config = pBiome.getGenerationSettings().getSurfaceBuilderConfig();
-        BlockState underMaterial = config.getUnderMaterial();
-        BlockState topMaterial = config.getTopMaterial();
+        SurfaceBuilderConfiguration surfaceConfig = biome.getGenerationSettings().getSurfaceBuilderConfig();
+        BlockState underMaterial = surfaceConfig.getUnderMaterial();
+        BlockState topMaterial = surfaceConfig.getTopMaterial();
         BlockState blockstate1 = underMaterial;
         BlockState blockstate2 = topMaterial;
-        int noise = (int)(pNoise / 3.0D + 3.0D + pRandom.nextDouble() * 0.25D);
+        int noiseIDK = (int)(noise / 3.0D + 3.0D + random.nextDouble() * 0.25D);
         int k = -1;
         int l = 0;
-        int i1 = 2 + pRandom.nextInt(4);
-        int j1 = pSeaLevel + 18 + pRandom.nextInt(10);
+        int i1 = 2 + random.nextInt(4);
+        int j1 = seaLevel + 18 + random.nextInt(10);
 
-        for(int y = Math.max(pHeight, (int)d0 + 1); y >= pMinSurfaceLevel; --y) {
+        for(int y = Math.max(height, (int)d0 + 1); y >= minSurfaceLevel; --y) {
             mutablePos.set(x, y, z);
-            if (pChunk.getBlockState(mutablePos).isAir() && y < (int)d0 && pRandom.nextDouble() > 0.01D) {
-                pChunk.setBlockState(mutablePos, Blocks.PACKED_ICE.defaultBlockState(), false);
+            if (chunk.getBlockState(mutablePos).isAir() && y < (int)d0 && random.nextDouble() > 0.01D) {
+                chunk.setBlockState(mutablePos, Blocks.PACKED_ICE.defaultBlockState(), false);
             }
-            else if (pChunk.getBlockState(mutablePos).getMaterial() == Material.WATER && y > (int)d1 && y < pSeaLevel && d1 != 0.0D && pRandom.nextDouble() > 0.15D) {
-                pChunk.setBlockState(mutablePos, Blocks.PACKED_ICE.defaultBlockState(), false);
+            else if (chunk.getBlockState(mutablePos).getMaterial() == Material.WATER && y > (int)d1 && y < seaLevel && d1 != 0.0D && random.nextDouble() > 0.15D) {
+                chunk.setBlockState(mutablePos, Blocks.PACKED_ICE.defaultBlockState(), false);
             }
 
-            BlockState blockstate3 = pChunk.getBlockState(mutablePos);
+            BlockState blockstate3 = chunk.getBlockState(mutablePos);
             if (blockstate3.isAir()) {
                 k = -1;
             }
-            else if (!blockstate3.is(pDefaultBlock.getBlock())) {
+            else if (!blockstate3.is(defaultBlock.getBlock())) {
                 if (blockstate3.is(Blocks.PACKED_ICE) && l <= i1 && y > j1) {
-                    pChunk.setBlockState(mutablePos, Blocks.SNOW_BLOCK.defaultBlockState(), false);
+                    chunk.setBlockState(mutablePos, Blocks.SNOW_BLOCK.defaultBlockState(), false);
                     ++l;
                 }
             }
             else if (k == -1) {
-                if (noise <= 0) {
+                if (noiseIDK <= 0) {
                     blockstate2 = Blocks.AIR.defaultBlockState();
-                    blockstate1 = pDefaultBlock;
+                    blockstate1 = defaultBlock;
                 }
-                else if (y >= pSeaLevel - 4 && y <= pSeaLevel + 1) {
-                    blockstate2 = topMaterial;
-                    blockstate1 = underMaterial;
+                else if (y <= seaLevel) {
+                    blockstate2 = UGBlocks.SEDIMENT.get().defaultBlockState();
+                    blockstate1 = UGBlocks.SEDIMENT.get().defaultBlockState();
                 }
 
-                if (y < pSeaLevel && (blockstate2 == null || blockstate2.isAir())) {
-                    if (pBiome.getTemperature(mutablePos.set(pX, y, pZ)) < 0.15F) {
+                if (y < seaLevel && (blockstate2 == null || blockstate2.isAir())) {
+                    if (biome.getTemperature(mutablePos.set(x, y, z)) < 0.15F) {
                         blockstate2 = Blocks.AIR.defaultBlockState();
                     }
                     else {
-                        blockstate2 = pDefaultFluid;
+                        blockstate2 = defaultFluid;
                     }
                 }
 
-                k = noise;
-                if (y >= pSeaLevel - 1) {
-                    pChunk.setBlockState(mutablePos, blockstate2, false);
+                k = noiseIDK;
+                if (y >= seaLevel - 1) {
+                    chunk.setBlockState(mutablePos, blockstate2, false);
                 }
-                else if (y < pSeaLevel - 7 - noise) {
+                else if (y < seaLevel - 7 - noiseIDK) {
                     blockstate2 = Blocks.AIR.defaultBlockState();
-                    blockstate1 = pDefaultBlock;
-                    pChunk.setBlockState(mutablePos, UGBlocks.SEDIMENT.get().defaultBlockState(), false);
+                    blockstate1 = defaultBlock;
+                    chunk.setBlockState(mutablePos, UGBlocks.SEDIMENT.get().defaultBlockState(), false);
                 }
                 else {
-                    pChunk.setBlockState(mutablePos, blockstate1, false);
+                    chunk.setBlockState(mutablePos, blockstate1, false);
                 }
             }
             else if (k > 0) {
                 --k;
-                pChunk.setBlockState(mutablePos, blockstate1, false);
+                chunk.setBlockState(mutablePos, blockstate1, false);
 //                if (k == 0 && blockstate1.is(Blocks.SAND) && j > 1) {
 //                    k = pRandom.nextInt(4) + Math.max(0, k1 - 63);
 //                    blockstate1 = blockstate1.is(Blocks.RED_SAND) ? Blocks.RED_SANDSTONE.defaultBlockState() : Blocks.SANDSTONE.defaultBlockState();
 //                }
             }
-            if(pChunk.getBlockState(mutablePos).is(pDefaultBlock.getBlock())) {
-                pChunk.setBlockState(mutablePos, UGBlocks.SHIVERSTONE.get().defaultBlockState(), false);
+            if(chunk.getBlockState(mutablePos).is(defaultBlock.getBlock())) {
+                chunk.setBlockState(mutablePos, UGBlocks.SHIVERSTONE.get().defaultBlockState(), false);
             }
         }
     }

@@ -42,7 +42,7 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
 
         @Override
         public void generatePieces(RegistryAccess registryAccess, ChunkGenerator chunkGenerator, StructureManager structureManager, ChunkPos chunkPos, Biome biome, NoneFeatureConfiguration config, LevelHeightAccessor level) {
-            BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 34, chunkPos.getMinBlockZ());
+            BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 33, chunkPos.getMinBlockZ());
 
             JigsawPlacement.addPieces(
                     registryAccess,
