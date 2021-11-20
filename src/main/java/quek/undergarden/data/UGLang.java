@@ -233,6 +233,8 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
         addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
 
+        add("fluid.undergarden.virulent_mix_source", "Virulent Mix");
+
         addItem(UGItems.MAMMOTH_DISC, "Music Disc");
         add(UGItems.MAMMOTH_DISC.get().getDescriptionId() + ".desc", "Screem - Mammoth");
         addItem(UGItems.LIMAX_MAXIMUS_DISC, "Music Disc");
