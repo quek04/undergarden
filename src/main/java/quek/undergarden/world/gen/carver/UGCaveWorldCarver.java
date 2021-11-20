@@ -5,14 +5,9 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.levelgen.Aquifer;
-import net.minecraft.world.level.levelgen.BaseStoneSource;
-import net.minecraft.world.level.levelgen.SingleBaseStoneSource;
-import net.minecraft.world.level.levelgen.carver.CarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.CarvingContext;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.CaveWorldCarver;
@@ -37,14 +32,14 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 UGBlocks.ASHEN_DEEPTURF_BLOCK.get(),
                 UGBlocks.FROZEN_DEEPTURF_BLOCK.get(),
                 UGBlocks.DEEPSOIL.get(),
-                UGBlocks.COAL_ORE.get(),
-                UGBlocks.IRON_ORE.get(),
-                UGBlocks.GOLD_ORE.get(),
-                UGBlocks.DIAMOND_ORE.get(),
-                UGBlocks.CLOGGRUM_ORE.get(),
-                UGBlocks.FROSTSTEEL_ORE.get(),
-                UGBlocks.UTHERIUM_ORE.get(),
-                UGBlocks.REGALIUM_ORE.get(),
+                UGBlocks.DEPTHROCK_COAL_ORE.get(),
+                UGBlocks.DEPTHROCK_IRON_ORE.get(),
+                UGBlocks.DEPTHROCK_GOLD_ORE.get(),
+                UGBlocks.DEPTHROCK_DIAMOND_ORE.get(),
+                UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(),
+                UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get(),
+                UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(),
+                UGBlocks.DEPTHROCK_REGALIUM_ORE.get(),
                 UGBlocks.SEDIMENT.get()
         );
         this.liquids = ImmutableSet.of(

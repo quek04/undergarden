@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_utherium_chunk": {
+    "has_utherium_nugget": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:utherium_chunk"
+              "undergarden:utherium_nugget"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_utherium_chunk",
+      "has_utherium_nugget",
       "has_the_recipe"
     ]
   ]

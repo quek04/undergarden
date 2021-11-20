@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "undergarden:regalium_crystal",
+  "ingredient": {
+    "item": "undergarden:depthrock_regalium_ore"
+  },
+  "result": "undergarden:regalium_crystal",
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -22,10 +22,10 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.DEPTHROCK);
         block(UGBlocks.DEEPSOIL);
         crossBlock(UGBlocks.ASHEN_DEEPTURF);
-        block(UGBlocks.COAL_ORE);
-        block(UGBlocks.CLOGGRUM_ORE);
-        block(UGBlocks.FROSTSTEEL_ORE);
-        block(UGBlocks.UTHERIUM_ORE);
+        block(UGBlocks.DEPTHROCK_COAL_ORE);
+        block(UGBlocks.DEPTHROCK_CLOGGRUM_ORE);
+        block(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE);
+        block(UGBlocks.DEPTHROCK_UTHERIUM_ORE);
         log(UGBlocks.SMOGSTEM_LOG, "smogstem_log");
         crossBlock(UGBlocks.SMOGSTEM_SAPLING);
         log(UGBlocks.WIGGLEWOOD_LOG, "wigglewood_log");
@@ -44,15 +44,15 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.GLOWING_KELP_PLANT);
         block(UGBlocks.SHIVERSTONE);
         block(UGBlocks.SHIVERSTONE_BRICKS);
-        block(UGBlocks.REGALIUM_ORE);
+        block(UGBlocks.DEPTHROCK_REGALIUM_ORE);
         block(UGBlocks.TREMBLECRUST);
         block(UGBlocks.TREMBLECRUST_BRICKS);
         block(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
-        block(UGBlocks.OTHERSIDE_UTHERIUM_ORE);
+        block(UGBlocks.TREMBLECRUST_UTHERIUM_ORE);
         block(UGBlocks.LOOSE_TREMBLECRUST);
-        block(UGBlocks.IRON_ORE);
-        block(UGBlocks.GOLD_ORE);
-        block(UGBlocks.DIAMOND_ORE);
+        block(UGBlocks.DEPTHROCK_IRON_ORE);
+        block(UGBlocks.DEPTHROCK_GOLD_ORE);
+        block(UGBlocks.DEPTHROCK_DIAMOND_ORE);
         crossBlock(UGBlocks.DROOPVINE_TOP);
         block(UGBlocks.COARSE_DEEPSOIL);
         crossBlock(UGBlocks.GRONGLE_SAPLING);
@@ -75,7 +75,6 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
         crossBlock(UGBlocks.FROZEN_DEEPTURF);
         block(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
-        block(UGBlocks.GOO_BLOCK);
         block(UGBlocks.SEDIMENT);
         block(UGBlocks.SEDIMENT_GLASS);
         crossBlock(UGBlocks.HANGING_GRONGLE_LEAVES);
@@ -83,6 +82,14 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.CLOGGRUM_TILES);
         block(UGBlocks.DEPTHROCK_TILES);
         carpet(UGBlocks.MOGMOSS_RUG);
+        block(UGBlocks.SHIVERSTONE_COAL_ORE);
+        block(UGBlocks.SHIVERSTONE_IRON_ORE);
+        block(UGBlocks.SHIVERSTONE_DIAMOND_ORE);
+        block(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE);
+        block(UGBlocks.SHIVERSTONE_UTHERIUM_ORE);
+        block(UGBlocks.SHIVERSTONE_REGALIUM_ORE);
+        block(UGBlocks.RAW_CLOGGRUM_BLOCK);
+        block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS);

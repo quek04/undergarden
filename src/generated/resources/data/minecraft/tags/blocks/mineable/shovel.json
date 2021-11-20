@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:deepturf_block",
+    "undergarden:ashen_deepturf_block",
+    "undergarden:frozen_deepturf_block",
+    "undergarden:deepsoil",
+    "undergarden:coarse_deepsoil",
+    "undergarden:deepsoil_farmland",
+    "undergarden:goo",
+    "undergarden:goo_block",
+    "undergarden:sediment"
+  ]
+}

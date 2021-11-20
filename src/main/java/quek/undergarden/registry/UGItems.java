@@ -29,17 +29,19 @@ public class UGItems {
     public static final RegistryObject<Item> GLOOMPER_SECRET_DISC = ITEMS.register("music_disc_gloomper_secret", () -> new RecordItem(15, UGSoundEvents.GLOOMPER_SECRET_DISC, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
 
     //crafting materials
+    public static final RegistryObject<Item> RAW_CLOGGRUM = ITEMS.register("raw_cloggrum", UGItem::new);
     public static final RegistryObject<Item> CLOGGRUM_INGOT = ITEMS.register("cloggrum_ingot", UGItem::new);
     public static final RegistryObject<Item> CLOGGRUM_NUGGET = ITEMS.register("cloggrum_nugget", UGItem::new);
 
+    public static final RegistryObject<Item> RAW_FROSTSTEEL = ITEMS.register("raw_froststeel", UGItem::new);
     public static final RegistryObject<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", UGItem::new);
     public static final RegistryObject<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", UGItem::new);
 
     public static final RegistryObject<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", UGItem::new);
-    public static final RegistryObject<Item> UTHERIUM_INGOT = ITEMS.register("utherium_ingot", UGItem::new);
-    public static final RegistryObject<Item> UTHERIUM_CHUNK = ITEMS.register("utherium_chunk", UGItem::new);
+    public static final RegistryObject<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", UGItem::new);
+    public static final RegistryObject<Item> UTHERIUM_NUGGET = ITEMS.register("utherium_nugget", UGItem::new);
 
-    public static final RegistryObject<Item> REGALIUM_INGOT = ITEMS.register("regalium_ingot", () -> new UGItem(Rarity.UNCOMMON));
+    public static final RegistryObject<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new UGItem(Rarity.UNCOMMON));
     public static final RegistryObject<Item> REGALIUM_NUGGET = ITEMS.register("regalium_nugget", () -> new UGItem(Rarity.UNCOMMON));
 
     public static final RegistryObject<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new UGItem(FORGOTTEN));
@@ -139,7 +141,6 @@ public class UGItems {
     public static final RegistryObject<Item> VEILED_STEW = ITEMS.register("veiled_stew", () -> new BowlFoodItem((new Item.Properties()).tab(UGItemGroups.GROUP).food(UGFoods.VEILED).stacksTo(1)));
 
     //spawn eggs
-    //TODO: see if _TYPE entity fields are no longer needed
     public static final RegistryObject<UGSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.DWELLER_TYPE, 4804417, 16776960));
     public static final RegistryObject<UGSpawnEggItem> GWIBLING_SPAWN_EGG = ITEMS.register("gwibling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.GWIBLING_TYPE, 10064737, 15845330));
     public static final RegistryObject<UGSpawnEggItem> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new UGSpawnEggItem(UGEntityTypes.ROTLING_TYPE, 5590327, 10500660));

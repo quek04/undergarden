@@ -63,7 +63,7 @@ public class UGLootTables extends LootTableProvider {
 
     @Override
     public String getName() {
-        return "Undergarden LootTables";
+        return "Undergarden Loot Tables";
     }
 
     @Override
@@ -72,8 +72,7 @@ public class UGLootTables extends LootTableProvider {
     }
 
     @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {
-    }
+    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {}
 
     public static class Blocks extends UGBlockLootTableProvider {
 
@@ -103,12 +102,6 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.WIGGLEWOOD_PLANKS);
             dropSelf(UGBlocks.SMOGSTEM_LOG);
             dropSelf(UGBlocks.WIGGLEWOOD_LOG);
-            dropWithFortune(UGBlocks.COAL_ORE, Items.COAL);
-            dropSelf(UGBlocks.CLOGGRUM_ORE);
-            dropSelf(UGBlocks.FROSTSTEEL_ORE);
-            dropWithFortune(UGBlocks.UTHERIUM_ORE, UGItems.UTHERIUM_CHUNK);
-            dropWithFortune(UGBlocks.OTHERSIDE_UTHERIUM_ORE, UGItems.UTHERIUM_CHUNK);
-            dropSelf(UGBlocks.REGALIUM_ORE);
             dropSelf(UGBlocks.SMOGSTEM_SAPLING);
             this.add(UGBlocks.SMOGSTEM_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.SMOGSTEM_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
             dropSelf(UGBlocks.WIGGLEWOOD_SAPLING);
@@ -164,9 +157,6 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.WIGGLEWOOD_WOOD);
             dropSelf(UGBlocks.SHARD_TORCH);
             dropOther(UGBlocks.SHARD_WALL_TORCH, UGBlocks.SHARD_TORCH.get());
-            this.add(UGBlocks.IRON_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(Items.IRON_NUGGET).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
-            this.add(UGBlocks.GOLD_ORE.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(Items.GOLD_NUGGET).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
-            dropWithFortune(UGBlocks.DIAMOND_ORE, Items.DIAMOND);
             this.add(UGBlocks.DROOPVINE.get(), LootTable.lootTable()
                     .withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.DROOPVINE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DroopvineBlock.GLOWY, true))).add(LootItem.lootTableItem(UGItems.DROOPFRUIT.get())).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
             );
@@ -254,6 +244,23 @@ public class UGLootTables extends LootTableProvider {
             this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(SHEARS).add(LootItem.lootTableItem(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get()))));
             this.add(UGBlocks.DEPTHROCK_BED.get(), (bed) -> createSinglePropConditionTable(bed, BedBlock.PART, BedPart.HEAD));
             dropSelf(UGBlocks.MOGMOSS_RUG);
+            ore(UGBlocks.DEPTHROCK_COAL_ORE, Items.COAL);
+            ore(UGBlocks.SHIVERSTONE_COAL_ORE, Items.COAL);
+            nuggetOre(UGBlocks.DEPTHROCK_IRON_ORE, Items.IRON_NUGGET);
+            nuggetOre(UGBlocks.SHIVERSTONE_IRON_ORE, Items.IRON_NUGGET);
+            nuggetOre(UGBlocks.DEPTHROCK_GOLD_ORE, Items.GOLD_NUGGET);
+            ore(UGBlocks.DEPTHROCK_DIAMOND_ORE, Items.DIAMOND);
+            ore(UGBlocks.SHIVERSTONE_DIAMOND_ORE, Items.DIAMOND);
+            ore(UGBlocks.DEPTHROCK_CLOGGRUM_ORE, UGItems.RAW_CLOGGRUM);
+            ore(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE, UGItems.RAW_CLOGGRUM);
+            ore(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE, UGItems.RAW_FROSTSTEEL);
+            ore(UGBlocks.DEPTHROCK_UTHERIUM_ORE, UGItems.UTHERIUM_CRYSTAL);
+            ore(UGBlocks.SHIVERSTONE_UTHERIUM_ORE, UGItems.UTHERIUM_CRYSTAL);
+            ore(UGBlocks.TREMBLECRUST_UTHERIUM_ORE, UGItems.UTHERIUM_CRYSTAL);
+            ore(UGBlocks.DEPTHROCK_REGALIUM_ORE, UGItems.REGALIUM_CRYSTAL);
+            ore(UGBlocks.SHIVERSTONE_REGALIUM_ORE, UGItems.REGALIUM_CRYSTAL);
+            dropSelf(UGBlocks.RAW_CLOGGRUM_BLOCK);
+            dropSelf(UGBlocks.RAW_FROSTSTEEL_BLOCK);
         }
 
         @Override

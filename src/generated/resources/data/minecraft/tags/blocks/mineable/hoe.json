@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:droopvine_top",
+    "undergarden:droopvine",
+    "undergarden:smogstem_leaves",
+    "undergarden:wigglewood_leaves",
+    "undergarden:grongle_leaves",
+    "undergarden:hanging_grongle_leaves_top",
+    "undergarden:hanging_grongle_leaves"
+  ]
+}

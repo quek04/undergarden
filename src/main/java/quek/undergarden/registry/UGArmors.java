@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 public enum UGArmors implements ArmorMaterial {
     CLOGGRUM("cloggrum", 10, new int[]{3, 6, 6, 3}, 10, SoundEvents.ARMOR_EQUIP_IRON, 1, () -> Ingredient.of(UGItems.CLOGGRUM_INGOT.get())),
     FROSTSTEEL("froststeel", 20, new int[]{2, 5, 6, 2}, 15, SoundEvents.ARMOR_EQUIP_GOLD, 4, () -> Ingredient.of(UGItems.FROSTSTEEL_INGOT.get())),
-    UTHERIC("utheric", 36, new int[]{3, 6, 8, 3}, 13, SoundEvents.ARMOR_EQUIP_DIAMOND, 3, () -> Ingredient.of(UGItems.UTHERIUM_INGOT.get())),
+    UTHERIC("utheric", 36, new int[]{3, 6, 8, 3}, 13, SoundEvents.ARMOR_EQUIP_DIAMOND, 3, () -> Ingredient.of(UGItems.UTHERIUM_CRYSTAL.get())),
     MASTICATED("masticated", 17, new int[]{6, 6, 6, 6}, 5, SoundEvents.ARMOR_EQUIP_DIAMOND, 0, () -> Ingredient.of(UGItems.MASTICATOR_SCALES.get()))
     ;
 

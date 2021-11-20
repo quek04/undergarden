@@ -3,7 +3,7 @@
   "ingredient": {
     "tag": "undergarden:utherium_items"
   },
-  "result": "undergarden:utherium_chunk",
+  "result": "undergarden:utherium_nugget",
   "experience": 0.1,
   "cookingtime": 100
 }

@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_regalium_ingot": {
+    "has_regalium_crystal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:regalium_ingot"
+              "undergarden:regalium_crystal"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_regalium_ingot",
+      "has_regalium_crystal",
       "has_the_recipe"
     ]
   ]

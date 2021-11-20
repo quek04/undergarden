@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "undergarden:diamond_ore"
+    "undergarden:depthrock_diamond_ore",
+    "undergarden:shiverstone_diamond_ore"
   ]
 }

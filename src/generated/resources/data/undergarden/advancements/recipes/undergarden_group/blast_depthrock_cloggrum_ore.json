@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:blast_depthrock_cloggrum_ore"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:depthrock_cloggrum_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:depthrock_cloggrum_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:blast_depthrock_cloggrum_ore"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:depthrock_cloggrum_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:blast_shiverstone_utherium_ore"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:shiverstone_utherium_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:shiverstone_utherium_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:blast_shiverstone_utherium_ore"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:shiverstone_utherium_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

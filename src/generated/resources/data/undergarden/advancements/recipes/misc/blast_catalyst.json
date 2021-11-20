@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:blast_catalyst"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:catalyst": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:catalyst"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:blast_catalyst"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:catalyst",
+      "has_the_recipe"
+    ]
+  ]
+}

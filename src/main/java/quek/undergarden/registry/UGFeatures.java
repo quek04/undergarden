@@ -38,7 +38,6 @@ import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.world.gen.feature.*;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
-import quek.undergarden.world.gen.trunkplacer.GrongleTrunkPlacer;
 import quek.undergarden.world.gen.trunkplacer.SmogstemTrunkPlacer;
 
 public class UGFeatures {
@@ -61,7 +60,42 @@ public class UGFeatures {
             "ice_pillar", () -> new IcePillarFeature(NoneFeatureConfiguration.CODEC));
 
     public static final class ConfiguredFeatures {
-        static final RuleTest UNDERGARDEN_FILLER = new TagMatchTest(UGTags.Blocks.BASE_STONE_UNDERGARDEN);
+        static final RuleTest BASE_STONE_UNDERGARDEN = new TagMatchTest(UGTags.Blocks.BASE_STONE_UNDERGARDEN);
+        static final RuleTest DEPTHROCK_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES);
+        static final RuleTest SHIVERSTONE_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES);
+        public static final RuleTest TREMBLECRUST_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES);
+
+        public static final ImmutableList<OreConfiguration.TargetBlockState> COAL_ORE_TARGETS = ImmutableList.of(
+                OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_COAL_ORE.get().defaultBlockState()),
+                OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_COAL_ORE.get().defaultBlockState())
+        );
+        public static final ImmutableList<OreConfiguration.TargetBlockState> IRON_ORE_TARGETS = ImmutableList.of(
+                OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_IRON_ORE.get().defaultBlockState()),
+                OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_IRON_ORE.get().defaultBlockState())
+        );
+        public static final ImmutableList<OreConfiguration.TargetBlockState> GOLD_ORE_TARGETS = ImmutableList.of(
+                OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_GOLD_ORE.get().defaultBlockState())
+        );
+        public static final ImmutableList<OreConfiguration.TargetBlockState> DIAMOND_ORE_TARGETS = ImmutableList.of(
+                OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_DIAMOND_ORE.get().defaultBlockState()),
+                OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_DIAMOND_ORE.get().defaultBlockState())
+        );
+        public static final ImmutableList<OreConfiguration.TargetBlockState> CLOGGRUM_ORE_TARGETS = ImmutableList.of(
+                OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get().defaultBlockState()),
+                OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get().defaultBlockState())
+        );
+        public static final ImmutableList<OreConfiguration.TargetBlockState> FROSTSTEEL_ORE_TARGETS = ImmutableList.of(
+                OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get().defaultBlockState())
+        );
+        public static final ImmutableList<OreConfiguration.TargetBlockState> UTHERIUM_ORE_TARGETS = ImmutableList.of(
+                OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_UTHERIUM_ORE.get().defaultBlockState()),
+                OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get().defaultBlockState()),
+                OreConfiguration.target(TREMBLECRUST_ORE_REPLACEABLES, UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get().defaultBlockState())
+        );
+        public static final ImmutableList<OreConfiguration.TargetBlockState> REGALIUM_ORE_TARGETS = ImmutableList.of(
+                OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_REGALIUM_ORE.get().defaultBlockState()),
+                OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_REGALIUM_ORE.get().defaultBlockState())
+        );
 
         public static final ConfiguredFeature<?, ?> SPRING = Feature.SPRING.configured(
                 new SpringConfiguration(
@@ -180,40 +214,40 @@ public class UGFeatures {
         );
 
         public static final ConfiguredFeature<?, ?> COAL_ORE = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.COAL_ORE.get().defaultBlockState(), 17)
+                new OreConfiguration(COAL_ORE_TARGETS, 17)
         );
         public static final ConfiguredFeature<?, ?> IRON_ORE = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.IRON_ORE.get().defaultBlockState(), 9)
+                new OreConfiguration(IRON_ORE_TARGETS, 9)
         );
         public static final ConfiguredFeature<?, ?> GOLD_ORE = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.GOLD_ORE.get().defaultBlockState(), 9)
+                new OreConfiguration(GOLD_ORE_TARGETS, 9)
         );
         public static final ConfiguredFeature<?, ?> DIAMOND_ORE = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.DIAMOND_ORE.get().defaultBlockState(), 8)
+                new OreConfiguration(DIAMOND_ORE_TARGETS, 8)
         );
         public static final ConfiguredFeature<?, ?> CLOGGRUM_ORE = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.CLOGGRUM_ORE.get().defaultBlockState(), 9)
+                new OreConfiguration(CLOGGRUM_ORE_TARGETS, 9)
         );
         public static final ConfiguredFeature<?, ?> FROSTSTEEL_ORE = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.FROSTSTEEL_ORE.get().defaultBlockState(), 9)
+                new OreConfiguration(FROSTSTEEL_ORE_TARGETS, 9)
         );
         public static final ConfiguredFeature<?, ?> UTHERIUM_ORE = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.UTHERIUM_ORE.get().defaultBlockState(), 8)
+                new OreConfiguration(UTHERIUM_ORE_TARGETS, 8)
         );
         public static final ConfiguredFeature<?, ?> REGALIUM_ORE = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.REGALIUM_ORE.get().defaultBlockState(), 4)
+                new OreConfiguration(REGALIUM_ORE_TARGETS, 4)
         );
         public static final ConfiguredFeature<?, ?> SHIVERSTONE_PATCH = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.SHIVERSTONE.get().defaultBlockState(), 33)
+                new OreConfiguration(BASE_STONE_UNDERGARDEN, UGBlocks.SHIVERSTONE.get().defaultBlockState(), 33)
         );
         public static final ConfiguredFeature<?, ?> DEEPSOIL_PATCH = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.DEEPSOIL.get().defaultBlockState(), 33)
+                new OreConfiguration(BASE_STONE_UNDERGARDEN, UGBlocks.DEEPSOIL.get().defaultBlockState(), 33)
         );
         public static final ConfiguredFeature<?, ?> ICE_PATCH = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, Blocks.PACKED_ICE.defaultBlockState(), 33)
+                new OreConfiguration(BASE_STONE_UNDERGARDEN, Blocks.PACKED_ICE.defaultBlockState(), 33)
         );
         public static final ConfiguredFeature<?, ?> SEDIMENT_PATCH = Feature.ORE.configured(
-                new OreConfiguration(UNDERGARDEN_FILLER, UGBlocks.SEDIMENT.get().defaultBlockState(), 33)
+                new OreConfiguration(BASE_STONE_UNDERGARDEN, UGBlocks.SEDIMENT.get().defaultBlockState(), 33)
         );
 
         public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE = Feature.TREE.configured(

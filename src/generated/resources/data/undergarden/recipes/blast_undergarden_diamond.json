@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "undergarden:diamond_ore"
-  },
-  "result": "minecraft:diamond",
-  "experience": 0.7,
-  "cookingtime": 100
-}

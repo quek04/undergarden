@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "group": "coal",
+  "ingredient": {
+    "item": "undergarden:depthrock_coal_ore"
+  },
+  "result": "minecraft:coal",
+  "experience": 0.1,
+  "cookingtime": 100
+}

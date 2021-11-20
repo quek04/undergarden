@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "undergarden:utherium_ingot"
+      "item": "undergarden:utherium_crystal"
     }
   ],
   "result": {
-    "item": "undergarden:utherium_chunk",
+    "item": "undergarden:utherium_nugget",
     "count": 9
   }
 }

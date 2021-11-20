@@ -20,6 +20,11 @@
           ],
           "name": "undergarden:gloomgourd_seeds"
         }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:explosion_decay"
+        }
       ]
     }
   ]

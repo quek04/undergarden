@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:depthrock_iron_ore",
+    "undergarden:shiverstone_iron_ore",
+    "undergarden:depthrock_cloggrum_ore",
+    "undergarden:shiverstone_cloggrum_ore",
+    "undergarden:raw_cloggrum_block",
+    "undergarden:cloggrum_block",
+    "undergarden:cloggrum_bars",
+    "undergarden:cloggrum_tiles",
+    "undergarden:cloggrum_tile_stairs",
+    "undergarden:cloggrum_tile_slab"
+  ]
+}

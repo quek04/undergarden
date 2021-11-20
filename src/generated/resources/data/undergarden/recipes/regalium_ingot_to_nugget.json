@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "undergarden:regalium_ingot"
+      "item": "undergarden:regalium_crystal"
     }
   ],
   "result": {

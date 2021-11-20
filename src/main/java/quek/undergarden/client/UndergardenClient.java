@@ -75,7 +75,6 @@ public class UndergardenClient {
         render(UGBlocks.GRONGLE_SAPLING, cutout);
         render(UGBlocks.GRONGLE_DOOR, cutout);
         render(UGBlocks.GRONGLE_TRAPDOOR, cutout);
-        render(UGBlocks.VIRULENT_MIX, translucent);
         render(UGBlocks.SEEPING_INK, cutout);
         render(UGBlocks.MUSHROOM_VEIL, cutout);
         render(UGBlocks.MUSHROOM_VEIL_TOP, cutout);
@@ -93,6 +92,7 @@ public class UndergardenClient {
         render(UGBlocks.SEDIMENT_GLASS_PANE, translucent);
         render(UGBlocks.HANGING_GRONGLE_LEAVES, cutout);
         render(UGBlocks.HANGING_GRONGLE_LEAVES_TOP, cutout);
+        render(UGBlocks.GOO_BLOCK, translucent);
     }
 
     @SubscribeEvent

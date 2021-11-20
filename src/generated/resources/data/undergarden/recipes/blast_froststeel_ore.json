@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "undergarden:froststeel_ore"
-  },
-  "result": "undergarden:froststeel_ingot",
-  "experience": 0.7,
-  "cookingtime": 100
-}

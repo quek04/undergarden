@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_utherium_ingot": {
+    "has_utherium_crystal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:utherium_ingot"
+              "undergarden:utherium_crystal"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_utherium_ingot",
+      "has_utherium_crystal",
       "has_the_recipe"
     ]
   ]

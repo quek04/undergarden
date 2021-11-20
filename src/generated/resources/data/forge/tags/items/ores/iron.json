@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "undergarden:iron_ore"
+    "undergarden:depthrock_iron_ore",
+    "undergarden:shiverstone_iron_ore"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "undergarden:catalyst"
+  },
+  "result": "minecraft:diamond",
+  "experience": 0.0,
+  "cookingtime": 100
+}

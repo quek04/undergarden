@@ -10,9 +10,7 @@ public class UGSpawnEggItem extends ForgeSpawnEggItem {
     //public static final Map<EntityType<?>, UGSpawnEggItem> EGGS = Maps.newIdentityHashMap();
 
     public UGSpawnEggItem(EntityType<? extends Mob> entity, int egg, int spots) {
-        super(() -> entity, egg, spots, new Properties()
-                .tab(UGItemGroups.GROUP)
-        );
+        super(() -> entity, egg, spots, new Properties().tab(UGItemGroups.GROUP));
         //EGGS.put(entity, this);
     }
 

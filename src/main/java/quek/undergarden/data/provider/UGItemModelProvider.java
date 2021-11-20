@@ -31,11 +31,11 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
                 .texture("texture", ("block/" + name));
     }
 
-    public ItemModelBuilder itemBlock(Supplier<? extends Block> block) {
-        return itemBlock(block, blockName(block));
+    public ItemModelBuilder block(Supplier<? extends Block> block) {
+        return block(block, blockName(block));
     }
 
-    public ItemModelBuilder itemBlock(Supplier<? extends Block> block, String name) {
+    public ItemModelBuilder block(Supplier<? extends Block> block, String name) {
         return withExistingParent(blockName(block), modLoc("block/" + name));
     }
 

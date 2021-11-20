@@ -1,8 +1,9 @@
 {
   "replace": false,
   "values": [
-    "undergarden:utherium_ore",
-    "undergarden:otherside_utherium_ore",
+    "undergarden:depthrock_utherium_ore",
+    "undergarden:shiverstone_utherium_ore",
+    "undergarden:tremblecrust_utherium_ore",
     "undergarden:utherium_block"
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "group": "undergarden:cloggrum_ingot",
+  "ingredient": {
+    "item": "undergarden:raw_cloggrum"
+  },
+  "result": "undergarden:cloggrum_ingot",
+  "experience": 0.7,
+  "cookingtime": 100
+}

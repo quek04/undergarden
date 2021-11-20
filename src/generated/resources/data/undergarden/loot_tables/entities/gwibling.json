@@ -30,8 +30,7 @@
         {
           "condition": "minecraft:killed_by_player"
         }
-      ],
-      "functions": []
+      ]
     },
     {
       "rolls": 1.0,
@@ -47,8 +46,7 @@
           "condition": "minecraft:random_chance",
           "chance": 0.05
         }
-      ],
-      "functions": []
+      ]
     }
   ]
 }

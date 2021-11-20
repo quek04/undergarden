@@ -1,10 +1,9 @@
 {
   "replace": false,
   "values": [
-    "undergarden:cloggrum_ore",
-    "undergarden:froststeel_ore",
-    "undergarden:utherium_ore",
-    "undergarden:regalium_ore",
-    "undergarden:otherside_utherium_ore"
+    "#forge:ores/cloggrum",
+    "#forge:ores/froststeel",
+    "#forge:ores/utherium",
+    "#forge:ores/regalium"
   ]
 }

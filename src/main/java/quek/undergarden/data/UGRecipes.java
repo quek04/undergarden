@@ -1,5 +1,6 @@
 package quek.undergarden.data;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -230,7 +231,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_veil_mushroom", has(UGBlocks.VEIL_MUSHROOM.get()))
                 .save(consumer, name("veil_mushroom_to_dye"));
 
-        ShapedRecipeBuilder.shaped(UGItems.UTHERIUM_CHUNK.get())
+        ShapedRecipeBuilder.shaped(UGItems.UTHERIUM_NUGGET.get())
                 .pattern("SS")
                 .pattern("SS")
                 .define('S', UGItems.UTHERIC_SHARD.get())
@@ -263,50 +264,50 @@ public class UGRecipes extends UGRecipeProvider {
 
         makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(consumer);
-        makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_INGOT).save(consumer);
-        makeIngotToBlock(UGBlocks.REGALIUM_BLOCK, UGItems.REGALIUM_INGOT).save(consumer);
+        makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_CRYSTAL).save(consumer);
+        makeIngotToBlock(UGBlocks.REGALIUM_BLOCK, UGItems.REGALIUM_CRYSTAL).save(consumer);
         makeIngotToBlock(UGBlocks.FORGOTTEN_BLOCK, UGItems.FORGOTTEN_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.DEPTHROCK, UGItems.DEPTHROCK_PEBBLE).save(consumer, name("pebbles_to_depthrock"));
         makeIngotToBlock(UGBlocks.GOO_BLOCK, UGItems.GOO_BALL).save(consumer);
 
         makeBlockToIngot(UGItems.CLOGGRUM_INGOT, UGBlocks.CLOGGRUM_BLOCK).save(consumer, name("cloggrum_block_to_ingot"));
         makeBlockToIngot(UGItems.FROSTSTEEL_INGOT, UGBlocks.FROSTSTEEL_BLOCK).save(consumer, name("froststeel_block_to_ingot"));
-        makeBlockToIngot(UGItems.UTHERIUM_INGOT, UGBlocks.UTHERIUM_BLOCK).save(consumer, name("utherium_block_to_ingot"));
-        makeBlockToIngot(UGItems.REGALIUM_INGOT, UGBlocks.REGALIUM_BLOCK).save(consumer, name("regalium_block_to_ingot"));
+        makeBlockToIngot(UGItems.UTHERIUM_CRYSTAL, UGBlocks.UTHERIUM_BLOCK).save(consumer, name("utherium_block_to_ingot"));
+        makeBlockToIngot(UGItems.REGALIUM_CRYSTAL, UGBlocks.REGALIUM_BLOCK).save(consumer, name("regalium_block_to_ingot"));
         makeBlockToIngot(UGItems.FORGOTTEN_INGOT, UGBlocks.FORGOTTEN_BLOCK).save(consumer, name("forgotten_block_to_ingot"));
         makeBlockToIngot(UGItems.GOO_BALL, UGBlocks.GOO_BLOCK).save(consumer, name("goo_block_to_ball"));
 
         makeIngotToNugget(UGItems.CLOGGRUM_NUGGET, UGItems.CLOGGRUM_INGOT).save(consumer, name("cloggrum_ingot_to_nugget"));
         makeIngotToNugget(UGItems.FROSTSTEEL_NUGGET, UGItems.FROSTSTEEL_INGOT).save(consumer, name("froststeel_ingot_to_nugget"));
-        makeIngotToNugget(UGItems.UTHERIUM_CHUNK, UGItems.UTHERIUM_INGOT).save(consumer, name("utherium_ingot_to_nugget"));
-        makeIngotToNugget(UGItems.REGALIUM_NUGGET, UGItems.REGALIUM_INGOT).save(consumer, name("regalium_ingot_to_nugget"));
+        makeIngotToNugget(UGItems.UTHERIUM_NUGGET, UGItems.UTHERIUM_CRYSTAL).save(consumer, name("utherium_ingot_to_nugget"));
+        makeIngotToNugget(UGItems.REGALIUM_NUGGET, UGItems.REGALIUM_CRYSTAL).save(consumer, name("regalium_ingot_to_nugget"));
         makeIngotToNugget(UGItems.FORGOTTEN_NUGGET, UGItems.FORGOTTEN_INGOT).save(consumer, name("forgotten_ingot_to_nugget"));
 
         makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).save(consumer, name("cloggrum_nugget_to_ingot"));
         makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).save(consumer, name("froststeel_nugget_to_ingot"));
-        makeNuggetToIngot(UGItems.UTHERIUM_INGOT, UGItems.UTHERIUM_CHUNK).save(consumer, name("utherium_chunk_to_ingot"));
-        makeNuggetToIngot(UGItems.REGALIUM_INGOT, UGItems.REGALIUM_NUGGET).save(consumer, name("regalium_chunk_to_ingot"));
+        makeNuggetToIngot(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIUM_NUGGET).save(consumer, name("utherium_chunk_to_ingot"));
+        makeNuggetToIngot(UGItems.REGALIUM_CRYSTAL, UGItems.REGALIUM_NUGGET).save(consumer, name("regalium_chunk_to_ingot"));
         makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_chunk_to_ingot"));
 
         makeSword(UGItems.CLOGGRUM_SWORD, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeSword(UGItems.FROSTSTEEL_SWORD, UGItems.FROSTSTEEL_INGOT).save(consumer);
-        makeSword(UGItems.UTHERIUM_SWORD, UGItems.UTHERIUM_INGOT).save(consumer);
+        makeSword(UGItems.UTHERIUM_SWORD, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 
         makePickaxe(UGItems.CLOGGRUM_PICKAXE, UGItems.CLOGGRUM_INGOT).save(consumer);
         makePickaxe(UGItems.FROSTSTEEL_PICKAXE, UGItems.FROSTSTEEL_INGOT).save(consumer);
-        makePickaxe(UGItems.UTHERIUM_PICKAXE, UGItems.UTHERIUM_INGOT).save(consumer);
+        makePickaxe(UGItems.UTHERIUM_PICKAXE, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 
         makeAxe(UGItems.CLOGGRUM_AXE, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeAxe(UGItems.FROSTSTEEL_AXE, UGItems.FROSTSTEEL_INGOT).save(consumer);
-        makeAxe(UGItems.UTHERIUM_AXE, UGItems.UTHERIUM_INGOT).save(consumer);
+        makeAxe(UGItems.UTHERIUM_AXE, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 
         makeShovel(UGItems.CLOGGRUM_SHOVEL, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeShovel(UGItems.FROSTSTEEL_SHOVEL, UGItems.FROSTSTEEL_INGOT).save(consumer);
-        makeShovel(UGItems.UTHERIUM_SHOVEL, UGItems.UTHERIUM_INGOT).save(consumer);
+        makeShovel(UGItems.UTHERIUM_SHOVEL, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 
         makeHoe(UGItems.CLOGGRUM_HOE, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeHoe(UGItems.FROSTSTEEL_HOE, UGItems.FROSTSTEEL_INGOT).save(consumer);
-        makeHoe(UGItems.UTHERIUM_HOE, UGItems.UTHERIUM_INGOT).save(consumer);
+        makeHoe(UGItems.UTHERIUM_HOE, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 
         makeChestplate(UGItems.MASTICATED_CHESTPLATE, UGItems.MASTICATOR_SCALES).save(consumer);
 
@@ -320,10 +321,10 @@ public class UGRecipes extends UGRecipeProvider {
         makeLeggings(UGItems.FROSTSTEEL_LEGGINGS, UGItems.FROSTSTEEL_INGOT).save(consumer);
         makeBoots(UGItems.FROSTSTEEL_BOOTS, UGItems.FROSTSTEEL_INGOT).save(consumer);
 
-        makeHelmet(UGItems.UTHERIUM_HELMET, UGItems.UTHERIUM_INGOT).save(consumer);
-        makeChestplate(UGItems.UTHERIUM_CHESTPLATE, UGItems.UTHERIUM_INGOT).save(consumer);
-        makeLeggings(UGItems.UTHERIUM_LEGGINGS, UGItems.UTHERIUM_INGOT).save(consumer);
-        makeBoots(UGItems.UTHERIUM_BOOTS, UGItems.UTHERIUM_INGOT).save(consumer);
+        makeHelmet(UGItems.UTHERIUM_HELMET, UGItems.UTHERIUM_CRYSTAL).save(consumer);
+        makeChestplate(UGItems.UTHERIUM_CHESTPLATE, UGItems.UTHERIUM_CRYSTAL).save(consumer);
+        makeLeggings(UGItems.UTHERIUM_LEGGINGS, UGItems.UTHERIUM_CRYSTAL).save(consumer);
+        makeBoots(UGItems.UTHERIUM_BOOTS, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 
         makeStairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK).save(consumer);
         makeStairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -398,49 +399,41 @@ public class UGRecipes extends UGRecipeProvider {
         smithingForgotten(UGItems.CLOGGRUM_HOE, UGItems.FORGOTTEN_HOE).save(consumer, name("forgotten_hoe_smithing"));
         smithingForgotten(UGItems.CLOGGRUM_BATTLEAXE, UGItems.FORGOTTEN_BATTLEAXE).save(consumer, name("forgotten_battleaxe_smithing"));
 
-        smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), .1F).save(consumer, name("smelt_depthrock_bricks"));
-        smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), .1F).save(consumer, name("smelt_shiverstone_bricks"));
-        smeltingRecipe(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get(), UGBlocks.TREMBLECRUST_BRICKS.get(), .1F).save(consumer, name("smelt_tremblecrust_bricks"));
+        smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), 0.1F).save(consumer, name("smelt_depthrock_bricks"));
+        smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), 0.1F).save(consumer, name("smelt_shiverstone_bricks"));
+        smeltingRecipe(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get(), UGBlocks.TREMBLECRUST_BRICKS.get(), 0.1F).save(consumer, name("smelt_tremblecrust_bricks"));
 
         smeltingRecipe(UGBlocks.SEDIMENT_GLASS.get(), UGBlocks.SEDIMENT.get(), 0.1F).save(consumer);
 
         smeltingRecipe(Items.DIAMOND, UGItems.CATALYST.get(), 0.0F).save(consumer, name("smelt_catalyst"));
+        blastingRecipe(Items.DIAMOND, UGItems.CATALYST.get(), 0.0F).save(consumer, name("blast_catalyst"));
 
-        smeltingRecipe(Items.COAL, UGBlocks.COAL_ORE.get(), .7F).save(consumer, name("smelt_undergarden_coal"));
-        blastingRecipe(Items.COAL, UGBlocks.COAL_ORE.get(), .7F).save(consumer, name("blast_undergarden_coal"));
-        smeltingRecipe(Items.IRON_INGOT, UGBlocks.IRON_ORE.get(), .7F).save(consumer, name("smelt_undergarden_iron"));
-        blastingRecipe(Items.IRON_INGOT, UGBlocks.IRON_ORE.get(), .7F).save(consumer, name("blast_undergarden_iron"));
-        smeltingRecipe(Items.GOLD_INGOT, UGBlocks.GOLD_ORE.get(), .7F).save(consumer, name("smelt_undergarden_gold"));
-        blastingRecipe(Items.GOLD_INGOT, UGBlocks.GOLD_ORE.get(), .7F).save(consumer, name("blast_undergarden_gold"));
-        smeltingRecipe(Items.DIAMOND, UGBlocks.DIAMOND_ORE.get(), .7F).save(consumer, name("smelt_undergarden_diamond"));
-        blastingRecipe(Items.DIAMOND, UGBlocks.DIAMOND_ORE.get(), .7F).save(consumer, name("blast_undergarden_diamond"));
+        ore(Items.COAL, ImmutableList.of(UGBlocks.DEPTHROCK_COAL_ORE.get(), UGBlocks.SHIVERSTONE_COAL_ORE.get()), 0.1F, "coal", consumer);
+        ore(Items.IRON_INGOT, ImmutableList.of(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get()), 0.7F, "iron_ingot", consumer);
+        ore(Items.GOLD_INGOT, ImmutableList.of(UGBlocks.DEPTHROCK_GOLD_ORE.get()), 1.0F, "gold_ingot", consumer);
+        ore(Items.DIAMOND, ImmutableList.of(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get()), 1.0F, "diamond", consumer);
+        ore(UGItems.CLOGGRUM_INGOT.get(), ImmutableList.of(UGItems.RAW_CLOGGRUM.get(), UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get()), 0.7F, "undergarden:cloggrum_ingot", consumer);
+        ore(UGItems.FROSTSTEEL_INGOT.get(), ImmutableList.of(UGItems.RAW_FROSTSTEEL.get(), UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get()), 0.7F, "undergarden:froststeel_ingot", consumer);
+        ore(UGItems.UTHERIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get()), 1.0F, "undergarden:utherium", consumer);
+        ore(UGItems.REGALIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get()), 1.0F, "undergarden:regalium_crystal", consumer);
 
-        smeltingRecipe(UGItems.CLOGGRUM_INGOT.get(), UGBlocks.CLOGGRUM_ORE.get(), .7F).save(consumer, name("smelt_cloggrum_ore"));
-        blastingRecipe(UGItems.CLOGGRUM_INGOT.get(), UGBlocks.CLOGGRUM_ORE.get(), .7F).save(consumer, name("blast_cloggrum_ore"));
-        smeltingRecipe(UGItems.FROSTSTEEL_INGOT.get(), UGBlocks.FROSTSTEEL_ORE.get(), .7F).save(consumer, name("smelt_froststeel_ore"));
-        blastingRecipe(UGItems.FROSTSTEEL_INGOT.get(), UGBlocks.FROSTSTEEL_ORE.get(), .7F).save(consumer, name("blast_froststeel_ore"));
-        smeltingRecipe(UGItems.UTHERIUM_CHUNK.get(), UGBlocks.UTHERIUM_ORE.get(), .9F).save(consumer, name("smelt_utherium_ore"));
-        blastingRecipe(UGItems.UTHERIUM_CHUNK.get(), UGBlocks.UTHERIUM_ORE.get(), .9F).save(consumer, name("blast_utherium_ore"));
-        smeltingRecipe(UGItems.REGALIUM_INGOT.get(), UGBlocks.REGALIUM_ORE.get(), 1F).save(consumer, name("smelt_regalium_ore"));
-        blastingRecipe(UGItems.REGALIUM_INGOT.get(), UGBlocks.REGALIUM_ORE.get(), 1F).save(consumer, name("blast_regalium_ore"));
+        smeltingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(consumer, name("smelt_cloggrum_item"));
+        blastingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(consumer, name("blast_cloggrum_item"));
 
-        smeltingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, .1F).save(consumer, name("smelt_cloggrum_item"));
-        blastingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, .1F).save(consumer, name("blast_cloggrum_item"));
+        smeltingRecipeTag(UGItems.UTHERIUM_CRYSTAL.get(), UGTags.Items.FROSTSTEEL_ITEMS, 0.1F).save(consumer, name("smelt_froststeel_item"));
+        blastingRecipeTag(UGItems.UTHERIUM_CRYSTAL.get(), UGTags.Items.FROSTSTEEL_ITEMS, 0.1F).save(consumer, name("blast_froststeel_item"));
 
-        smeltingRecipeTag(UGItems.FROSTSTEEL_NUGGET.get(), UGTags.Items.FROSTSTEEL_ITEMS, .1F).save(consumer, name("smelt_froststeel_item"));
-        blastingRecipeTag(UGItems.FROSTSTEEL_NUGGET.get(), UGTags.Items.FROSTSTEEL_ITEMS, .1F).save(consumer, name("blast_froststeel_item"));
+        smeltingRecipeTag(UGItems.UTHERIUM_NUGGET.get(), UGTags.Items.UTHERIUM_ITEMS, 0.1F).save(consumer, name("smelt_utherium_item"));
+        blastingRecipeTag(UGItems.UTHERIUM_NUGGET.get(), UGTags.Items.UTHERIUM_ITEMS, 0.1F).save(consumer, name("blast_utherium_item"));
 
-        smeltingRecipeTag(UGItems.UTHERIUM_CHUNK.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).save(consumer, name("smelt_utherium_item"));
-        blastingRecipeTag(UGItems.UTHERIUM_CHUNK.get(), UGTags.Items.UTHERIUM_ITEMS, .1F).save(consumer, name("blast_utherium_item"));
+        smeltingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(consumer, name("smelt_dweller_meat"));
+        smokingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(consumer, name("smoke_dweller_meat"));
 
-        smeltingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), .35F).save(consumer, name("smelt_dweller_meat"));
-        smokingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), .35F).save(consumer, name("smoke_dweller_meat"));
+        smeltingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), 0.35F).save(consumer, name("smelt_gwibling"));
+        smokingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), 0.35F).save(consumer, name("smoke_gwibling"));
 
-        smeltingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), .35F).save(consumer, name("smelt_gwibling"));
-        smokingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), .35F).save(consumer, name("smoke_gwibling"));
-
-        smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).save(consumer, name("smelt_gloomper_leg"));
-        smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), .35F).save(consumer, name("smoke_gloomper_leg"));
+        smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("smelt_gloomper_leg"));
+        smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("smoke_gloomper_leg"));
 
         smeltingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).save(consumer, name("smelt_glowing_kelp"));
         smokingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).save(consumer, name("smoke_glowing_kelp"));

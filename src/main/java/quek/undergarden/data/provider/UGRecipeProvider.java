@@ -2,6 +2,7 @@ package quek.undergarden.data.provider;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -13,9 +14,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SignBlock;
 import net.minecraftforge.common.Tags;
+import quek.undergarden.Undergarden;
+import quek.undergarden.data.UGRecipes;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
+import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class UGRecipeProvider extends RecipeProvider {
@@ -52,8 +57,6 @@ public class UGRecipeProvider extends RecipeProvider {
                 .requires(blockIn.get())
                 .unlockedBy("has_" + blockIn.get().getRegistryName().getPath(), has(blockIn.get()));
     }
-
-
 
     public ShapedRecipeBuilder makePressurePlate(Supplier<? extends Block> pressurePlateOut, Supplier<? extends Block> blockIn) {
         return ShapedRecipeBuilder.shaped(pressurePlateOut.get())
@@ -267,8 +270,19 @@ public class UGRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_" + planksIn.get().getRegistryName().getPath(), has(planksIn.get()));
     }
 
+    public void ore(ItemLike result, List<ItemLike> ingredients, float xp, String group, Consumer<FinishedRecipe> consumer) {
+        oreSmeltingRecipe(result, ingredients, xp, group, consumer);
+        oreBlastingRecipe(result, ingredients, xp, group, consumer);
+    }
+
     public SimpleCookingRecipeBuilder smeltingRecipe(ItemLike result, ItemLike ingredient, float exp) {
         return smeltingRecipe(result, ingredient, exp, 1);
+    }
+
+    private void oreSmeltingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, Consumer<FinishedRecipe> consumer) {
+        for(ItemLike ingredient : ingredients) {
+            smeltingRecipe(result, ingredient, xp, 1).group(group).save(consumer, new ResourceLocation(Undergarden.MODID, "smelt_" + ingredient.asItem().getRegistryName().getPath()));
+        }
     }
 
     public SimpleCookingRecipeBuilder smeltingRecipe(ItemLike result, ItemLike ingredient, float exp, int count) {
@@ -287,6 +301,12 @@ public class UGRecipeProvider extends RecipeProvider {
 
     public SimpleCookingRecipeBuilder blastingRecipe(ItemLike result, ItemLike ingredient, float exp) {
         return blastingRecipe(result, ingredient, exp, 1);
+    }
+
+    private void oreBlastingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, Consumer<FinishedRecipe> consumer) {
+        for(ItemLike ingredient : ingredients) {
+            blastingRecipe(result, ingredient, xp, 1).group(group).save(consumer, new ResourceLocation(Undergarden.MODID, "blast_" + ingredient.asItem().getRegistryName().getPath()));
+        }
     }
 
     public SimpleCookingRecipeBuilder blastingRecipe(ItemLike result, ItemLike ingredient, float exp, int count) {

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "undergarden:regalium_ore"
-  },
-  "result": "undergarden:regalium_ingot",
-  "experience": 1.0,
-  "cookingtime": 100
-}

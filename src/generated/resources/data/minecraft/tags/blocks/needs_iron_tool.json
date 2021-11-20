@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "undergarden:depthrock_gold_ore",
+    "undergarden:depthrock_diamond_ore",
+    "undergarden:shiverstone_diamond_ore",
+    "undergarden:shiverstone_froststeel_ore",
+    "undergarden:depthrock_regalium_ore",
+    "undergarden:shiverstone_regalium_ore",
+    "undergarden:raw_froststeel_block",
+    "undergarden:froststeel_block",
+    "undergarden:regalium_block",
+    "undergarden:depthrock_utherium_ore",
+    "undergarden:shiverstone_utherium_ore",
+    "undergarden:tremblecrust_utherium_ore",
+    "undergarden:utherium_block",
+    "undergarden:forgotten_block"
+  ]
+}
