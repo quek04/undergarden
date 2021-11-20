@@ -103,7 +103,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<SploogieEntity>> SPLOOGIE = ENTITIES.register("sploogie", () -> SPLOOGIE_TYPE);
 
     public static final EntityType<GwibEntity> GWIB_TYPE = EntityType.Builder.of(GwibEntity::new, MobCategory.WATER_CREATURE)
-            .sized(1.5F, 1.5F).build("gwib");
+            .sized(1.5F, 0.5F).build("gwib");
     public static final RegistryObject<EntityType<GwibEntity>> GWIB = ENTITIES.register("gwib", () -> GWIB_TYPE);
 
     public static final EntityType<MogEntity> MOG_TYPE = EntityType.Builder.of(MogEntity::new, MobCategory.CREATURE)

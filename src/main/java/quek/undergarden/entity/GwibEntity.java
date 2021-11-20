@@ -2,19 +2,18 @@ package quek.undergarden.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
+import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
@@ -28,17 +27,18 @@ import java.util.Random;
 
 public class GwibEntity extends WaterAnimal implements Enemy {
 
-    public GwibEntity(EntityType<? extends WaterAnimal> type, Level world) {
-        super(type, world);
-        this.moveControl = new GwibMovementController(this);
+    public GwibEntity(EntityType<? extends WaterAnimal> type, Level level) {
+        super(type, level);
+        this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
+        this.lookControl = new SmoothSwimmingLookControl(this, 10);
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new RandomSwimmingGoal(this, 1.5D, 120));
         this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.5D, false));
+        this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractFish.class, true));
     }
 
     public static AttributeSupplier.Builder registerAttributes() {
@@ -49,13 +49,13 @@ public class GwibEntity extends WaterAnimal implements Enemy {
                 .add(Attributes.FOLLOW_RANGE, 64.0D);
     }
 
-    public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {
-        return randomIn.nextInt(10) == 0 && worldIn.getBlockState(pos).is(Blocks.WATER) && worldIn.getBlockState(pos.above()).is(Blocks.WATER) && pos.getY() <= 32;
+    public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
+        return random.nextInt(10) == 0 && level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER) && pos.getY() <= 32;
     }
 
     @Override
-    protected PathNavigation createNavigation(Level worldIn) {
-        return new WaterBoundPathNavigation(this, worldIn);
+    protected PathNavigation createNavigation(Level level) {
+        return new WaterBoundPathNavigation(this, level);
     }
 
     @Override
@@ -102,44 +102,6 @@ public class GwibEntity extends WaterAnimal implements Enemy {
 
     @Override
     protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
-        return 0.5F;
-    }
-
-    static class GwibMovementController extends MoveControl {
-        private final GwibEntity gwib;
-
-        GwibMovementController(GwibEntity gwib) {
-            super(gwib);
-            this.gwib = gwib;
-        }
-
-        @Override
-        public void tick() {
-            if (this.gwib.isEyeInFluid(FluidTags.WATER)) {
-                this.gwib.setDeltaMovement(this.gwib.getDeltaMovement().add(0.0D, 0.005D, 0.0D));
-            }
-
-            if (this.operation == MoveControl.Operation.MOVE_TO && !this.gwib.getNavigation().isDone()) {
-                float movementSpeed = (float)(this.speedModifier * this.gwib.getAttributeValue(Attributes.MOVEMENT_SPEED));
-                this.gwib.setSpeed(Mth.lerp(0.125F, this.gwib.getSpeed(), movementSpeed));
-                double d0 = this.wantedX - this.gwib.getX();
-                double d1 = this.wantedY - this.gwib.getY();
-                double d2 = this.wantedZ - this.gwib.getZ();
-                if (d1 != 0.0D) {
-                    double d3 = Mth.sqrt((float) (d0 * d0 + d1 * d1 + d2 * d2));
-                    this.gwib.setDeltaMovement(this.gwib.getDeltaMovement().add(0.0D, (double)this.gwib.getSpeed() * (d1 / d3) * 0.1D, 0.0D));
-                }
-
-                if (d0 != 0.0D || d2 != 0.0D) {
-                    float f1 = (float)(Mth.atan2(d2, d0) * (double)(180F / (float)Math.PI)) - 90.0F;
-                    this.gwib.setYRot(this.rotlerp(this.gwib.getYRot(), f1, 90.0F));
-                    this.gwib.yBodyRot = this.gwib.getYRot();
-                }
-
-            }
-            else {
-                this.gwib.setSpeed(0.0F);
-            }
-        }
+        return 0.25F;
     }
 }
