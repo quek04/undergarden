@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:raw_froststeel_block"
+    }
+  ],
+  "result": {
+    "item": "undergarden:raw_froststeel",
+    "count": 9
+  }
+}

@@ -68,6 +68,7 @@
     "undergarden:cloggrum_tiles",
     "undergarden:cloggrum_tile_stairs",
     "undergarden:cloggrum_tile_slab",
-    "undergarden:depthrock_bed"
+    "undergarden:depthrock_bed",
+    "undergarden:cloggrum_lantern"
   ]
 }

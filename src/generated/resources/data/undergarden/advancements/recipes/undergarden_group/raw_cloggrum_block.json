@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:raw_cloggrum_block"
+    ]
+  },
+  "criteria": {
+    "has_raw_cloggrum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:raw_cloggrum"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:raw_cloggrum_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_cloggrum",
+      "has_the_recipe"
+    ]
+  ]
+}

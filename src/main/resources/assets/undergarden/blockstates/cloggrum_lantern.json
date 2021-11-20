@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "face=ceiling,facing=north": {
+      "model": "undergarden:block/cloggrum_lantern_ceiling"
+    },
+    "face=ceiling,facing=east": {
+      "model": "undergarden:block/cloggrum_lantern_ceiling",
+      "y": 90
+    },
+    "face=ceiling,facing=south": {
+      "model": "undergarden:block/cloggrum_lantern_ceiling",
+      "y": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "undergarden:block/cloggrum_lantern_ceiling",
+      "y": 270
+    },
+    "face=floor,facing=north": {
+      "model": "undergarden:block/cloggrum_lantern_floor"
+    },
+    "face=floor,facing=east": {
+      "model": "undergarden:block/cloggrum_lantern_floor",
+      "y": 90
+    },
+    "face=floor,facing=south": {
+      "model": "undergarden:block/cloggrum_lantern_floor",
+      "y": 180
+    },
+    "face=floor,facing=west": {
+      "model": "undergarden:block/cloggrum_lantern_floor",
+      "y": 270
+    },
+    "face=wall,facing=north": {
+      "model": "undergarden:block/cloggrum_lantern_wall"
+    },
+    "face=wall,facing=east": {
+      "model": "undergarden:block/cloggrum_lantern_wall",
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "undergarden:block/cloggrum_lantern_wall",
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "undergarden:block/cloggrum_lantern_wall",
+      "y": 270
+    }
+  }
+}

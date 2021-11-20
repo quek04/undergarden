@@ -175,7 +175,8 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.CLOGGRUM_TILES.get(),
                 UGBlocks.CLOGGRUM_TILE_STAIRS.get(),
                 UGBlocks.CLOGGRUM_TILE_SLAB.get(),
-                UGBlocks.DEPTHROCK_BED.get()
+                UGBlocks.DEPTHROCK_BED.get(),
+                UGBlocks.CLOGGRUM_LANTERN.get()
         );
         tag(BlockTags.MINEABLE_WITH_AXE).add(
                 UGBlocks.GLOOMGOURD.get(),

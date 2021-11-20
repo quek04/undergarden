@@ -261,6 +261,7 @@ public class UGLootTables extends LootTableProvider {
             ore(UGBlocks.SHIVERSTONE_REGALIUM_ORE, UGItems.REGALIUM_CRYSTAL);
             dropSelf(UGBlocks.RAW_CLOGGRUM_BLOCK);
             dropSelf(UGBlocks.RAW_FROSTSTEEL_BLOCK);
+            dropSelf(UGBlocks.CLOGGRUM_LANTERN);
         }
 
         @Override

@@ -1,14 +1,13 @@
 package quek.undergarden.data;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.world.item.Items;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import quek.undergarden.Undergarden;
 import quek.undergarden.data.provider.UGRecipeProvider;
@@ -81,7 +80,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_wigglewood_planks", has(UGBlocks.WIGGLEWOOD_PLANKS.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(Blocks.SCAFFOLDING, 6)
+        ShapedRecipeBuilder.shaped(Items.SCAFFOLDING, 6)
                 .pattern("STS")
                 .pattern("S S")
                 .pattern("S S")
@@ -168,7 +167,7 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(Blocks.TORCH, 2)
+        ShapedRecipeBuilder.shaped(Items.TORCH, 2)
                 .pattern("D")
                 .pattern("S")
                 .define('D', UGItems.DITCHBULB.get())
@@ -262,6 +261,16 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(UGBlocks.CLOGGRUM_LANTERN.get())
+                .pattern("NNN")
+                .pattern("NTN")
+                .pattern("NNN")
+                .define('N', UGItems.CLOGGRUM_NUGGET.get())
+                .define('T', Items.TORCH)
+                .unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
+                .save(consumer);
+
+
         makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_CRYSTAL).save(consumer);
@@ -288,6 +297,12 @@ public class UGRecipes extends UGRecipeProvider {
         makeNuggetToIngot(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIUM_NUGGET).save(consumer, name("utherium_chunk_to_ingot"));
         makeNuggetToIngot(UGItems.REGALIUM_CRYSTAL, UGItems.REGALIUM_NUGGET).save(consumer, name("regalium_chunk_to_ingot"));
         makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_chunk_to_ingot"));
+
+        makeIngotToBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, UGItems.RAW_CLOGGRUM).save(consumer);
+        makeIngotToBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, UGItems.RAW_FROSTSTEEL).save(consumer);
+
+        makeBlockToIngot(UGItems.RAW_CLOGGRUM, UGBlocks.RAW_CLOGGRUM_BLOCK).save(consumer, name("raw_cloggrum_from_block"));
+        makeBlockToIngot(UGItems.RAW_FROSTSTEEL, UGBlocks.RAW_FROSTSTEEL_BLOCK).save(consumer, name("raw_froststeel_from_block"));
 
         makeSword(UGItems.CLOGGRUM_SWORD, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeSword(UGItems.FROSTSTEEL_SWORD, UGItems.FROSTSTEEL_INGOT).save(consumer);
