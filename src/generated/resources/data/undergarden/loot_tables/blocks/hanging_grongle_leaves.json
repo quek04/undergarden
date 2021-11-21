@@ -7,47 +7,17 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "conditions": [
-            {
-              "condition": "minecraft:match_tool",
-              "predicate": {
-                "items": [
-                  "minecraft:shears"
-                ]
-              }
-            }
-          ],
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1.0,
-              "add": false
-            }
-          ],
           "name": "undergarden:hanging_grongle_leaves"
         }
       ],
       "conditions": [
         {
-          "condition": "minecraft:block_state_property",
-          "block": "undergarden:hanging_grongle_leaves",
-          "properties": {
-            "half": "lower"
-          }
-        },
-        {
-          "condition": "minecraft:location_check",
+          "condition": "minecraft:match_tool",
           "predicate": {
-            "block": {
-              "blocks": [
-                "undergarden:hanging_grongle_leaves"
-              ],
-              "state": {
-                "half": "upper"
-              }
-            }
-          },
-          "offsetY": 1
+            "items": [
+              "minecraft:shears"
+            ]
+          }
         }
       ]
     }
