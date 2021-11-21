@@ -6,6 +6,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGShieldTiers;
 
@@ -37,8 +39,8 @@ public class UGShieldItem extends ShieldItem {
     }
 
     @Override
-    public boolean isShield(ItemStack stack, @Nullable LivingEntity entity) {
-        return true;
+    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
+        return toolAction == ToolActions.SHIELD_BLOCK;
     }
 
     @Override
