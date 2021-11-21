@@ -32,11 +32,12 @@ public class GrongleLeafDecorator extends TreeDecorator {
     @Override
     public void place(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, Random random, List<BlockPos> logPositions, List<BlockPos> leafPositions) {
         leafPositions.forEach((pos -> {
-           if(random.nextInt(2) == 0) {
+           if(random.nextInt(3) == 0) {
                 BlockPos downPos = pos.below();
-                if(Feature.isAir(level, downPos)) {
+                BlockPos down2Pos = downPos.below();
+                if(Feature.isAir(level, downPos) && Feature.isAir(level, down2Pos)) {
                     blockSetter.accept(downPos, UGBlocks.HANGING_GRONGLE_LEAVES.get().defaultBlockState());
-                    blockSetter.accept(downPos.below(), UGBlocks.HANGING_GRONGLE_LEAVES.get().defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));
+                    blockSetter.accept(down2Pos, UGBlocks.HANGING_GRONGLE_LEAVES.get().defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));
                 }
             }
         }));
