@@ -435,11 +435,11 @@ public class UGRecipes extends UGRecipeProvider {
         smeltingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(consumer, name("smelt_cloggrum_item"));
         blastingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(consumer, name("blast_cloggrum_item"));
 
-        smeltingRecipeTag(UGItems.UTHERIUM_CRYSTAL.get(), UGTags.Items.FROSTSTEEL_ITEMS, 0.1F).save(consumer, name("smelt_froststeel_item"));
-        blastingRecipeTag(UGItems.UTHERIUM_CRYSTAL.get(), UGTags.Items.FROSTSTEEL_ITEMS, 0.1F).save(consumer, name("blast_froststeel_item"));
+        smeltingRecipeTag(UGItems.FROSTSTEEL_INGOT.get(), UGTags.Items.FROSTSTEEL_ITEMS, 0.1F).save(consumer, name("smelt_froststeel_item"));
+        blastingRecipeTag(UGItems.FROSTSTEEL_INGOT.get(), UGTags.Items.FROSTSTEEL_ITEMS, 0.1F).save(consumer, name("blast_froststeel_item"));
 
-        smeltingRecipeTag(UGItems.UTHERIUM_NUGGET.get(), UGTags.Items.UTHERIUM_ITEMS, 0.1F).save(consumer, name("smelt_utherium_item"));
-        blastingRecipeTag(UGItems.UTHERIUM_NUGGET.get(), UGTags.Items.UTHERIUM_ITEMS, 0.1F).save(consumer, name("blast_utherium_item"));
+        smeltingRecipeTag(UGItems.UTHERIUM_CRYSTAL.get(), UGTags.Items.UTHERIUM_ITEMS, 0.1F).save(consumer, name("smelt_utherium_item"));
+        blastingRecipeTag(UGItems.UTHERIUM_CRYSTAL.get(), UGTags.Items.UTHERIUM_ITEMS, 0.1F).save(consumer, name("blast_utherium_item"));
 
         smeltingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(consumer, name("smelt_dweller_meat"));
         smokingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(consumer, name("smoke_dweller_meat"));

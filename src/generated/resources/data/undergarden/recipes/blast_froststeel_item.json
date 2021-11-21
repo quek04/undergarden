@@ -3,7 +3,7 @@
   "ingredient": {
     "tag": "undergarden:froststeel_items"
   },
-  "result": "undergarden:utherium_crystal",
+  "result": "undergarden:froststeel_ingot",
   "experience": 0.1,
   "cookingtime": 100
 }
