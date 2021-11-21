@@ -91,7 +91,6 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
         this.add(UGSoundEvents.UNDERGARDEN_MUSIC, definition().with(
                 sound("undergarden:music/acasta_gneiss").stream(),
                 sound("undergarden:music/all_that_wiggles_is_wood").stream(),
-                sound("undergarden:music/another").stream(),
                 sound("undergarden:music/brotherhood").stream(),
                 sound("undergarden:music/grongletune").stream(),
                 sound("undergarden:music/monument").stream(),
