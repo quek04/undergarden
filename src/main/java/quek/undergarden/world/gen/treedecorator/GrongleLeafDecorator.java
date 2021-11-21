@@ -5,8 +5,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -29,7 +31,14 @@ public class GrongleLeafDecorator extends TreeDecorator {
 
     @Override
     public void place(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, Random random, List<BlockPos> logPositions, List<BlockPos> leafPositions) {
-        leafPositions.forEach((blockPos -> {
+        leafPositions.forEach((pos -> {
+           if(random.nextInt(2) == 0) {
+                BlockPos downPos = pos.below();
+                if(Feature.isAir(level, downPos)) {
+                    blockSetter.accept(downPos, UGBlocks.HANGING_GRONGLE_LEAVES.get().defaultBlockState());
+                    blockSetter.accept(downPos.below(), UGBlocks.HANGING_GRONGLE_LEAVES.get().defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));
+                }
+            }
         }));
     }
 }
