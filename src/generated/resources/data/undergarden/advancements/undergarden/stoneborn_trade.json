@@ -2,7 +2,7 @@
   "parent": "undergarden:undergarden/enter_undergarden",
   "display": {
     "icon": {
-      "item": "undergarden:regalium_nugget"
+      "item": "undergarden:regalium_crystal"
     },
     "title": {
       "translate": "advancement.undergarden.stoneborn_trade.title"

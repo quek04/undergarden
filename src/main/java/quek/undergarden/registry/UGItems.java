@@ -39,10 +39,8 @@ public class UGItems {
 
     public static final RegistryObject<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", UGItem::new);
     public static final RegistryObject<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", UGItem::new);
-    public static final RegistryObject<Item> UTHERIUM_NUGGET = ITEMS.register("utherium_nugget", UGItem::new);
 
     public static final RegistryObject<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new UGItem(Rarity.UNCOMMON));
-    public static final RegistryObject<Item> REGALIUM_NUGGET = ITEMS.register("regalium_nugget", () -> new UGItem(Rarity.UNCOMMON));
 
     public static final RegistryObject<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new UGItem(FORGOTTEN));
     public static final RegistryObject<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new UGItem(FORGOTTEN));

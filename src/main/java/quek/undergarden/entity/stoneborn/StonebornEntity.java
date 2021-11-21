@@ -34,8 +34,6 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
 import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
 import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
@@ -242,7 +240,7 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
     }
 
     protected void populateTradeData() {
-        VillagerTrades.ItemListing[] trades = StonebornTrades.STONEBORN_TRADES.get(1);
+        VillagerTrades.ItemListing[] trades = StonebornTrades.VAGABOND_TRADES.get(1);
         if (trades != null) {
             MerchantOffers merchantoffers = this.getOffers();
             this.addTrades(merchantoffers, trades, 4);
@@ -270,7 +268,6 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     public void overrideOffers(@Nullable MerchantOffers offers) { }
 

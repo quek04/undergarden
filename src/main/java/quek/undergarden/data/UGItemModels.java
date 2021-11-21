@@ -151,9 +151,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.FROSTSTEEL_NUGGET);
         normalItem(UGItems.UTHERIC_SHARD);
         normalItem(UGItems.UTHERIUM_CRYSTAL);
-        normalItem(UGItems.UTHERIUM_NUGGET);
         normalItem(UGItems.REGALIUM_CRYSTAL);
-        normalItem(UGItems.REGALIUM_NUGGET);
         normalItem(UGItems.FORGOTTEN_INGOT);
         normalItem(UGItems.FORGOTTEN_NUGGET);
         torchItem(UGBlocks.SHARD_TORCH);

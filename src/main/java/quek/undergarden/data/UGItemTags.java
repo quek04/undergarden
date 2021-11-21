@@ -42,8 +42,6 @@ public class UGItemTags extends ItemTagsProvider {
         tag(UGTags.Items.INGOTS_FORGOTTEN).add(UGItems.FORGOTTEN_INGOT.get());
         tag(UGTags.Items.NUGGETS_CLOGGRUM).add(UGItems.CLOGGRUM_INGOT.get());
         tag(UGTags.Items.NUGGETS_FROSTSTEEL).add(UGItems.FROSTSTEEL_INGOT.get());
-        tag(UGTags.Items.NUGGETS_UTHERIUM).add(UGItems.UTHERIUM_CRYSTAL.get());
-        tag(UGTags.Items.NUGGETS_REGALIUM).add(UGItems.REGALIUM_CRYSTAL.get());
         tag(UGTags.Items.NUGGETS_FORGOTTEN).add(UGItems.FORGOTTEN_INGOT.get());
         copy(UGTags.Blocks.ORES_CLOGGRUM, UGTags.Items.ORES_CLOGGRUM);
         copy(UGTags.Blocks.ORES_FROSTSTEEL, UGTags.Items.ORES_FROSTSTEEL);
@@ -92,7 +90,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(Tags.Items.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get().asItem(), UGBlocks.GRONGLE_FENCE_GATE.get().asItem());
         tag(Tags.Items.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem());
         tag(Tags.Items.MUSHROOMS).addTag(UGTags.Items.MUSHROOMS);
-        tag(Tags.Items.NUGGETS).add(UGItems.CLOGGRUM_NUGGET.get(), UGItems.FROSTSTEEL_NUGGET.get(), UGItems.UTHERIUM_NUGGET.get(), UGItems.REGALIUM_NUGGET.get(), UGItems.FORGOTTEN_NUGGET.get());
+        tag(Tags.Items.NUGGETS).add(UGItems.CLOGGRUM_NUGGET.get(), UGItems.FROSTSTEEL_NUGGET.get(), UGItems.FORGOTTEN_NUGGET.get());
         tag(Tags.Items.RODS_WOODEN).add(UGItems.TWISTYTWIG.get());
         tag(Tags.Items.SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
         tag(Tags.Items.SLIMEBALLS).add(UGItems.GOO_BALL.get());

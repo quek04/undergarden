@@ -29,8 +29,6 @@ public class UGTags {
 
         public static final Tag.Named<Item> NUGGETS_CLOGGRUM = forgeTag("nuggets/cloggrum");
         public static final Tag.Named<Item> NUGGETS_FROSTSTEEL = forgeTag("nuggets/froststeel");
-        public static final Tag.Named<Item> NUGGETS_UTHERIUM = forgeTag("nuggets/utherium");
-        public static final Tag.Named<Item> NUGGETS_REGALIUM = forgeTag("nuggets/regalium");
         public static final Tag.Named<Item> NUGGETS_FORGOTTEN = forgeTag("nuggets/forgotten_metal");
 
         public static final Tag.Named<Item> ORES_CLOGGRUM = forgeTag("ores/cloggrum");

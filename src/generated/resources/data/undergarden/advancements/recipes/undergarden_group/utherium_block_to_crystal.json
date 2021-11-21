@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:regalium_block_to_ingot"
+      "undergarden:utherium_block_to_crystal"
     ]
   },
   "criteria": {
-    "has_regalium_block": {
+    "has_utherium_block": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:regalium_block"
+              "undergarden:utherium_block"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:regalium_block_to_ingot"
+        "recipe": "undergarden:utherium_block_to_crystal"
       }
     }
   },
   "requirements": [
     [
-      "has_regalium_block",
+      "has_utherium_block",
       "has_the_recipe"
     ]
   ]

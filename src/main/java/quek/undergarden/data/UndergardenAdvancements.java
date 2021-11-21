@@ -112,7 +112,7 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
         Advancement stoneborn_trade = Advancement.Builder.advancement()
                 .parent(enter_undergarden)
                 .display(
-                        UGItems.REGALIUM_NUGGET.get(),
+                        UGItems.REGALIUM_CRYSTAL.get(),
                         new TranslatableComponent("advancement.undergarden.stoneborn_trade.title"),
                         new TranslatableComponent("advancement.undergarden.stoneborn_trade.desc"),
                         null,

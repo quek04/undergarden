@@ -255,9 +255,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FROSTSTEEL_NUGGET, "Froststeel Nugget");
         addItem(UGItems.UTHERIC_SHARD, "Utheric Shard");
         addItem(UGItems.UTHERIUM_CRYSTAL, "Utherium Crystal");
-        addItem(UGItems.UTHERIUM_NUGGET, "Utherium Nugget");
         addItem(UGItems.REGALIUM_CRYSTAL, "Regalium Crystal");
-        addItem(UGItems.REGALIUM_NUGGET, "Regalium Nugget");
         addItem(UGItems.FORGOTTEN_INGOT, "Forgotten Ingot");
         addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
         addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");

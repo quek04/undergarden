@@ -230,12 +230,13 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_veil_mushroom", has(UGBlocks.VEIL_MUSHROOM.get()))
                 .save(consumer, name("veil_mushroom_to_dye"));
 
-        ShapedRecipeBuilder.shaped(UGItems.UTHERIUM_NUGGET.get())
-                .pattern("SS")
-                .pattern("SS")
+        ShapedRecipeBuilder.shaped(UGItems.UTHERIUM_CRYSTAL.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
                 .define('S', UGItems.UTHERIC_SHARD.get())
                 .unlockedBy("has_shard", has(UGItems.UTHERIC_SHARD.get()))
-                .save(consumer, name("shard_to_chunk"));
+                .save(consumer, name("shard_to_crystal"));
 
         ShapedRecipeBuilder.shaped(Items.LEAD, 2)
                 .pattern("TT ")
@@ -281,21 +282,17 @@ public class UGRecipes extends UGRecipeProvider {
 
         makeBlockToIngot(UGItems.CLOGGRUM_INGOT, UGBlocks.CLOGGRUM_BLOCK).save(consumer, name("cloggrum_block_to_ingot"));
         makeBlockToIngot(UGItems.FROSTSTEEL_INGOT, UGBlocks.FROSTSTEEL_BLOCK).save(consumer, name("froststeel_block_to_ingot"));
-        makeBlockToIngot(UGItems.UTHERIUM_CRYSTAL, UGBlocks.UTHERIUM_BLOCK).save(consumer, name("utherium_block_to_ingot"));
-        makeBlockToIngot(UGItems.REGALIUM_CRYSTAL, UGBlocks.REGALIUM_BLOCK).save(consumer, name("regalium_block_to_ingot"));
+        makeBlockToIngot(UGItems.UTHERIUM_CRYSTAL, UGBlocks.UTHERIUM_BLOCK).save(consumer, name("utherium_block_to_crystal"));
+        makeBlockToIngot(UGItems.REGALIUM_CRYSTAL, UGBlocks.REGALIUM_BLOCK).save(consumer, name("regalium_block_to_crystal"));
         makeBlockToIngot(UGItems.FORGOTTEN_INGOT, UGBlocks.FORGOTTEN_BLOCK).save(consumer, name("forgotten_block_to_ingot"));
         makeBlockToIngot(UGItems.GOO_BALL, UGBlocks.GOO_BLOCK).save(consumer, name("goo_block_to_ball"));
 
         makeIngotToNugget(UGItems.CLOGGRUM_NUGGET, UGItems.CLOGGRUM_INGOT).save(consumer, name("cloggrum_ingot_to_nugget"));
         makeIngotToNugget(UGItems.FROSTSTEEL_NUGGET, UGItems.FROSTSTEEL_INGOT).save(consumer, name("froststeel_ingot_to_nugget"));
-        makeIngotToNugget(UGItems.UTHERIUM_NUGGET, UGItems.UTHERIUM_CRYSTAL).save(consumer, name("utherium_ingot_to_nugget"));
-        makeIngotToNugget(UGItems.REGALIUM_NUGGET, UGItems.REGALIUM_CRYSTAL).save(consumer, name("regalium_ingot_to_nugget"));
         makeIngotToNugget(UGItems.FORGOTTEN_NUGGET, UGItems.FORGOTTEN_INGOT).save(consumer, name("forgotten_ingot_to_nugget"));
 
         makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).save(consumer, name("cloggrum_nugget_to_ingot"));
         makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).save(consumer, name("froststeel_nugget_to_ingot"));
-        makeNuggetToIngot(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIUM_NUGGET).save(consumer, name("utherium_chunk_to_ingot"));
-        makeNuggetToIngot(UGItems.REGALIUM_CRYSTAL, UGItems.REGALIUM_NUGGET).save(consumer, name("regalium_chunk_to_ingot"));
         makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_chunk_to_ingot"));
 
         makeIngotToBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, UGItems.RAW_CLOGGRUM).save(consumer);

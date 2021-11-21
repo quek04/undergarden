@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SS",
-    "SS"
+    "SSS",
+    "SSS",
+    "SSS"
   ],
   "key": {
     "S": {
@@ -10,6 +11,6 @@
     }
   },
   "result": {
-    "item": "undergarden:utherium_nugget"
+    "item": "undergarden:utherium_crystal"
   }
 }

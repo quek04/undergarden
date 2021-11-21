@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:utherium_ingot_to_nugget"
+      "undergarden:shard_to_crystal"
     ]
   },
   "criteria": {
-    "has_utherium_crystal": {
+    "has_shard": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:utherium_crystal"
+              "undergarden:utheric_shard"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:utherium_ingot_to_nugget"
+        "recipe": "undergarden:shard_to_crystal"
       }
     }
   },
   "requirements": [
     [
-      "has_utherium_crystal",
+      "has_shard",
       "has_the_recipe"
     ]
   ]
