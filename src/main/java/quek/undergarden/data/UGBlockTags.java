@@ -256,7 +256,6 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.SMOGSTEM_LEAVES.get(),
                 UGBlocks.WIGGLEWOOD_LEAVES.get(),
                 UGBlocks.GRONGLE_LEAVES.get(),
-                UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get(),
                 UGBlocks.HANGING_GRONGLE_LEAVES.get()
         );
         tag(BlockTags.NEEDS_STONE_TOOL).add(

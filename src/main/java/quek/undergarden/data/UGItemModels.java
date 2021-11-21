@@ -136,7 +136,6 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.DEPTHROCK_TILES);
         block(UGBlocks.DEPTHROCK_TILE_STAIRS);
         block(UGBlocks.DEPTHROCK_TILE_SLAB);
-        blockFlat(UGBlocks.HANGING_GRONGLE_LEAVES_TOP, "hanging_grongle_leaves");
         block(UGBlocks.MOGMOSS_RUG);
         normalItem(UGItems.MAMMOTH_DISC);
         normalItem(UGItems.LIMAX_MAXIMUS_DISC);
@@ -232,6 +231,7 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.RAW_CLOGGRUM_BLOCK);
         block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
         blockFlatWithItemName(UGBlocks.CLOGGRUM_LANTERN, "cloggrum_lantern_item");
+        blockFlat(UGBlocks.HANGING_GRONGLE_LEAVES);
 
         egg(UGItems.DWELLER_SPAWN_EGG);
         egg(UGItems.GWIBLING_SPAWN_EGG);

@@ -91,7 +91,6 @@ public class UndergardenClient {
         render(UGBlocks.SEDIMENT_GLASS, translucent);
         render(UGBlocks.SEDIMENT_GLASS_PANE, translucent);
         render(UGBlocks.HANGING_GRONGLE_LEAVES, cutout);
-        render(UGBlocks.HANGING_GRONGLE_LEAVES_TOP, cutout);
         render(UGBlocks.GOO_BLOCK, translucent);
         render(UGBlocks.CLOGGRUM_LANTERN, cutout);
     }

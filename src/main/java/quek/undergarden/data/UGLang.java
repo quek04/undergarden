@@ -221,7 +221,6 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.STRIPPED_GRONGLE_WOOD, "Stripped Grongle Wood");
         addBlock(UGBlocks.GRONGLE_LEAVES, "Grongle Leaves");
         addBlock(UGBlocks.HANGING_GRONGLE_LEAVES, "Hanging Grongle Leaves");
-        addBlock(UGBlocks.HANGING_GRONGLE_LEAVES_TOP, "Hanging Grongle Leaves");
         addBlock(UGBlocks.GRONGLE_PLANKS, "Grongle Planks");
         addBlock(UGBlocks.GRONGLE_STAIRS, "Grongle Stairs");
         addBlock(UGBlocks.GRONGLE_SLAB, "Grongle Slab");

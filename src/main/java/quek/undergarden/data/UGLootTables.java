@@ -93,8 +93,8 @@ public class UGLootTables extends LootTableProvider {
                     .withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.DITCHBULB_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DitchbulbBlock.AGE, 1))).add(LootItem.lootTableItem(UGItems.DITCHBULB.get())).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
             );
             dropWithSilk(UGBlocks.DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
-            this.add(UGBlocks.TALL_DEEPTURF.get(), (block) -> droppingSeedsTall(block, UGBlocks.DEEPTURF.get()));
-            this.add(UGBlocks.TALL_SHIMMERWEED.get(), (block) -> droppingSeedsTall(block, UGBlocks.SHIMMERWEED.get()));
+            this.add(UGBlocks.TALL_DEEPTURF.get(), (block) -> tallGrassDrop(block, UGBlocks.DEEPTURF.get()));
+            this.add(UGBlocks.TALL_SHIMMERWEED.get(), (block) -> tallGrassDrop(block, UGBlocks.SHIMMERWEED.get()));
             this.add(UGBlocks.DEEPTURF.get(), BlockLoot::createShearsOnlyDrop);
             this.add(UGBlocks.SHIMMERWEED.get(), BlockLoot::createShearsOnlyDrop);
             this.add(UGBlocks.ASHEN_DEEPTURF.get(), BlockLoot::createShearsOnlyDrop);
@@ -240,8 +240,6 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.DEPTHROCK_TILES);
             dropSelf(UGBlocks.DEPTHROCK_TILE_STAIRS);
             dropSelf(UGBlocks.DEPTHROCK_TILE_SLAB);
-            this.add(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get(), BlockLoot::createShearsOnlyDrop);
-            this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(SHEARS).add(LootItem.lootTableItem(UGBlocks.HANGING_GRONGLE_LEAVES_TOP.get()))));
             this.add(UGBlocks.DEPTHROCK_BED.get(), (bed) -> createSinglePropConditionTable(bed, BedBlock.PART, BedPart.HEAD));
             dropSelf(UGBlocks.MOGMOSS_RUG);
             ore(UGBlocks.DEPTHROCK_COAL_ORE, Items.COAL);
@@ -262,6 +260,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.RAW_CLOGGRUM_BLOCK);
             dropSelf(UGBlocks.RAW_FROSTSTEEL_BLOCK);
             dropSelf(UGBlocks.CLOGGRUM_LANTERN);
+            this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), UGLootTables::hangingGrongleLeavesDrop);
         }
 
         @Override
@@ -270,9 +269,16 @@ public class UGLootTables extends LootTableProvider {
         }
     }
 
-    private static LootTable.Builder droppingSeedsTall(Block originalBlock, Block newBlock) {
+    private static LootTable.Builder tallGrassDrop(Block originalBlock, Block newBlock) {
         LootPoolEntryContainer.Builder<?> builder = LootItem.lootTableItem(newBlock).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).when(SHEARS);
         return LootTable.lootTable().withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(originalBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UGDoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(originalBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UGDoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(originalBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UGDoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(originalBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UGDoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
+    }
+
+    private static LootTable.Builder hangingGrongleLeavesDrop(Block block) {
+        LootPoolEntryContainer.Builder<?> builder = LootItem.lootTableItem(block)
+                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                .when(SHEARS);
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UGDoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UGDoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0))));
     }
 
     private static LootTable.Builder dropSeedsForStem(Block stem, Item stemSeed) {
