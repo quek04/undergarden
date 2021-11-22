@@ -20,8 +20,7 @@ public class UGToolEvents {
         Entity source = event.getSource().getEntity();
         float damage = event.getAmount();
 
-        if(source instanceof Player) {
-            Player player = (Player) source;
+        if(source instanceof Player player) {
             if(player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SWORD.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
                 if(event.getEntityLiving().getType().getRegistryName().getNamespace().equals("undergarden") && event.getEntityLiving().canChangeDimensions()) {
                     event.setAmount(damage * 2F);
@@ -47,8 +46,7 @@ public class UGToolEvents {
         Entity source = event.getSource().getEntity();
         float damage = event.getAmount();
 
-        if(source instanceof Player) {
-            Player player = (Player) source;
+        if(source instanceof Player player) {
             if(player.getMainHandItem().getItem() == UGItems.UTHERIUM_SWORD.get() || player.getMainHandItem().getItem() == UGItems.UTHERIUM_AXE.get()) {
                 if(event.getEntityLiving().getType().is(UGTags.Entities.ROTSPAWN)) {
                     event.setAmount(damage * 1.5F);
@@ -60,8 +58,7 @@ public class UGToolEvents {
     @SubscribeEvent
     public static void froststeelAttackEvent(LivingHurtEvent event) {
         Entity source = event.getSource().getEntity();
-        if(source instanceof Player) {
-            Player player = (Player) source;
+        if(source instanceof Player player) {
             if(player.getMainHandItem().getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
                 event.getEntityLiving().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 2));
             }

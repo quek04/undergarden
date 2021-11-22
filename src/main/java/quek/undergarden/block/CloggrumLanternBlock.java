@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
@@ -41,13 +42,19 @@ public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock
     }
 
     @Override
+    public boolean canSurvive(BlockState p_153479_, LevelReader p_153480_, BlockPos p_153481_) {
+        Direction direction = getConnectedDirection(p_153479_).getOpposite();
+        return Block.canSupportCenter(p_153480_, p_153481_.relative(direction), direction.getOpposite());
+    }
+
+    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         switch (getConnectedDirection(state)) {
             default -> {
-                return FLOOR_SHAPE;
+                return CEILING_SHAPE;
             }
             case UP -> {
-                return CEILING_SHAPE;
+                return FLOOR_SHAPE;
             }
             case NORTH -> {
                 return NORTH_WALL_SHAPE;
@@ -89,32 +96,18 @@ public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock
         return null;
     }
 
-    protected static Direction getConnectedDirection(BlockState state) {
-        switch (state.getValue(FACE)) {
-            default -> {
-                return Direction.DOWN;
-            }
-            case CEILING -> {
-                return Direction.UP;
-            }
-            case WALL -> {
-                return state.getValue(FACING);
-            }
-        }
-    }
-
     @Override
     public PushReaction getPistonPushReaction(BlockState state) {
         return PushReaction.DESTROY;
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos pFacingPos) {
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos pFacingPos) {
         if (state.getValue(WATERLOGGED)) {
             level.getLiquidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return getConnectedDirection(state).getOpposite() == direction && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, facingState, level, pos, pFacingPos);
+        return getConnectedDirection(state).getOpposite() == facing && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, pos, pFacingPos);
     }
 
     @Override
