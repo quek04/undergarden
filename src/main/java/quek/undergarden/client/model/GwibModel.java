@@ -42,7 +42,7 @@ public class GwibModel<T extends GwibEntity> extends ListModel<T> {
 		PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 37).addBox(-3.0F, -1.0F, 0.0F, 6.0F, 3.0F, 8.0F, new CubeDeformation(0.0F))
 				.texOffs(30, 32).addBox(-6.0F, 0.0F, 8.0F, 12.0F, 0.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -7.0F, 11.0F));
 
-		return LayerDefinition.create(meshdefinition, 128, 128);
+		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override

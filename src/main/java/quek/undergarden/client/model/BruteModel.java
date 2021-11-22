@@ -70,7 +70,7 @@ public class BruteModel<T extends BruteEntity> extends AgeableListModel<T> {
 
 		PartDefinition rightleg2 = rightleg.addOrReplaceChild("rightleg2", CubeListBuilder.create().texOffs(16, 40).mirror().addBox(-1.5F, -3.6274F, -3.7294F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-0.5F, 8.1933F, 2.8294F, 0.2618F, 0.0F, 0.0F));
 
-		return LayerDefinition.create(meshdefinition, 128, 128);
+		return LayerDefinition.create(meshdefinition, 128, 64);
 	}
 
 	@Override

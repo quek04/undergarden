@@ -421,9 +421,9 @@ public class UGFeatures {
         register("iron_ore", ConfiguredFeatures.IRON_ORE.rangeUniform(VerticalAnchor.absolute(200), VerticalAnchor.top()).squared().count(8));
         register("gold_ore", ConfiguredFeatures.GOLD_ORE.rangeUniform(VerticalAnchor.absolute(220), VerticalAnchor.top()).squared().count(2));
         register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.rangeUniform(VerticalAnchor.absolute(230), VerticalAnchor.top()).squared());
-        register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(128)).squared().count(20));
-        register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64)).squared().count(15));
-        register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)).squared().count(5));
+        register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.range(Features.Decorators.FULL_RANGE).squared().count(20));
+        register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.range(Features.Decorators.FULL_RANGE).squared().count(15));
+        register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)).squared().count(3));
         register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(12)).squared().count(3));
 
         register("shiverstone_patch", ConfiguredFeatures.SHIVERSTONE_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(10));
