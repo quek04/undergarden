@@ -2,7 +2,7 @@
   "parent": "undergarden:undergarden/kill_rotling",
   "display": {
     "icon": {
-      "item": "undergarden:utheric_sword",
+      "item": "undergarden:utherium_sword",
       "nbt": "{Damage:0}"
     },
     "title": {

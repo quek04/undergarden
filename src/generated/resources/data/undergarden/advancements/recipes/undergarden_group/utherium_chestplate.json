@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:utheric_shovel"
+      "undergarden:utherium_chestplate"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:utheric_shovel"
+        "recipe": "undergarden:utherium_chestplate"
       }
     }
   },

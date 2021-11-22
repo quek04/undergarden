@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
+    "MMM",
     "M M",
     "M M"
   ],
@@ -10,6 +11,6 @@
     }
   },
   "result": {
-    "item": "undergarden:utheric_boots"
+    "item": "undergarden:utherium_leggings"
   }
 }

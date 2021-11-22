@@ -1,16 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "MMM",
-    "M M",
-    "M M"
+    "###",
+    " / ",
+    " / "
   ],
   "key": {
-    "M": {
+    "#": {
       "item": "undergarden:utherium_crystal"
+    },
+    "/": {
+      "tag": "forge:rods/wooden"
     }
   },
   "result": {
-    "item": "undergarden:utheric_leggings"
+    "item": "undergarden:utherium_pickaxe"
   }
 }

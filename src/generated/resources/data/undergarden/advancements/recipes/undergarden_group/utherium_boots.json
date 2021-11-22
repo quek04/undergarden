@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:utheric_helmet"
+      "undergarden:utherium_boots"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:utheric_helmet"
+        "recipe": "undergarden:utherium_boots"
       }
     }
   },

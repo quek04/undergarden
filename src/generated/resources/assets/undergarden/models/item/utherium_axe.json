@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "undergarden:item/utheric_hoe"
+    "layer0": "undergarden:item/utherium_axe"
   }
 }

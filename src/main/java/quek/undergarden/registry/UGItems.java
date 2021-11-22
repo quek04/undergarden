@@ -70,11 +70,11 @@ public class UGItems {
     public static final RegistryObject<Item> FROSTSTEEL_SHOVEL = ITEMS.register("froststeel_shovel", () -> new UGShovelItem(UGItemTiers.FROSTSTEEL));
     public static final RegistryObject<Item> FROSTSTEEL_HOE = ITEMS.register("froststeel_hoe", () -> new UGHoeItem(UGItemTiers.FROSTSTEEL, -3, -1.0F));
 
-    public static final RegistryObject<Item> UTHERIUM_SWORD = ITEMS.register("utheric_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM));
-    public static final RegistryObject<Item> UTHERIUM_PICKAXE = ITEMS.register("utheric_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM));
-    public static final RegistryObject<Item> UTHERIUM_AXE = ITEMS.register("utheric_axe", () -> new UGAxeItem(UGItemTiers.UTHERIUM, 5.0F, -3.0F));
-    public static final RegistryObject<Item> UTHERIUM_SHOVEL = ITEMS.register("utheric_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM));
-    public static final RegistryObject<Item> UTHERIUM_HOE = ITEMS.register("utheric_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, -3, 0.0F));
+    public static final RegistryObject<Item> UTHERIUM_SWORD = ITEMS.register("utherium_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM));
+    public static final RegistryObject<Item> UTHERIUM_PICKAXE = ITEMS.register("utherium_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM));
+    public static final RegistryObject<Item> UTHERIUM_AXE = ITEMS.register("utherium_axe", () -> new UGAxeItem(UGItemTiers.UTHERIUM, 5.0F, -3.0F));
+    public static final RegistryObject<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM));
+    public static final RegistryObject<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, -3, 0.0F));
 
     public static final RegistryObject<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleAxeItem(UGItemTiers.FORGOTTEN, 5, -3.2F));
     public static final RegistryObject<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN));
@@ -111,10 +111,10 @@ public class UGItems {
     public static final RegistryObject<Item> FROSTSTEEL_LEGGINGS = ITEMS.register("froststeel_leggings", () -> new UndergardenArmorItem(UGArmors.FROSTSTEEL, EquipmentSlot.LEGS));
     public static final RegistryObject<Item> FROSTSTEEL_BOOTS = ITEMS.register("froststeel_boots", () -> new UndergardenArmorItem(UGArmors.FROSTSTEEL, EquipmentSlot.FEET));
 
-    public static final RegistryObject<Item> UTHERIUM_HELMET = ITEMS.register("utheric_helmet", () -> new UndergardenArmorItem(UGArmors.UTHERIC, EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utheric_chestplate", () -> new UndergardenArmorItem(UGArmors.UTHERIC, EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> UTHERIUM_LEGGINGS = ITEMS.register("utheric_leggings", () -> new UndergardenArmorItem(UGArmors.UTHERIC, EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utheric_boots", () -> new UndergardenArmorItem(UGArmors.UTHERIC, EquipmentSlot.FEET));
+    public static final RegistryObject<Item> UTHERIUM_HELMET = ITEMS.register("utherium_helmet", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utherium_chestplate", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.FEET));
 
     //foods/plants
     public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopfruitItem::new);

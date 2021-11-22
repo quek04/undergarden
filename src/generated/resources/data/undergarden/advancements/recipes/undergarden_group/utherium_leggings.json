@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:utheric_pickaxe"
+      "undergarden:utherium_leggings"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:utheric_pickaxe"
+        "recipe": "undergarden:utherium_leggings"
       }
     }
   },

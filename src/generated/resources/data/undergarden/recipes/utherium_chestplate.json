@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
+    "M M",
     "MMM",
-    "M M"
+    "MMM"
   ],
   "key": {
     "M": {
@@ -10,6 +11,6 @@
     }
   },
   "result": {
-    "item": "undergarden:utheric_helmet"
+    "item": "undergarden:utherium_chestplate"
   }
 }
