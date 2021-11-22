@@ -126,7 +126,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> DEEPSOIL_FARMLAND = register("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(BlockBehaviour.Properties.copy(Blocks.FARMLAND)));
     public static final RegistryObject<Block> GOO = register("goo", () -> new GooLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission()));
     public static final RegistryObject<Block> GOO_BLOCK = register("goo_block", () -> new GooBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).sound(SoundType.SLIME_BLOCK).noOcclusion()));
-    public static final RegistryObject<Block> SMOG_VENT = register("smog_vent", () -> new SmogVentBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
+    public static final RegistryObject<Block> SMOG_VENT = register("smog_vent", () -> new SmogVentBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).lightLevel((state) -> 10)));
     public static final RegistryObject<Block> SEDIMENT = register("sediment", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND)));
     public static final RegistryObject<Block> SEDIMENT_GLASS = register("sediment_glass", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)));
     public static final RegistryObject<Block> SEDIMENT_GLASS_PANE = register("sediment_glass_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE)));
