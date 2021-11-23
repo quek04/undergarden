@@ -3,14 +3,13 @@
   "config": {
     "probability": 0.5,
     "y": {
-      "type": "minecraft:biased_to_bottom",
+      "type": "minecraft:uniform",
       "min_inclusive": {
         "absolute": 0
       },
       "max_inclusive": {
-        "absolute": 127
-      },
-      "inner": 8
+        "absolute": 256
+      }
     },
     "yScale": 0.5,
     "lava_level": {

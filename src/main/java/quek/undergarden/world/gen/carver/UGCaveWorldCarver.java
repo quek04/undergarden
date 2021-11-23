@@ -49,31 +49,32 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected float getThickness(Random pRandom) {
-        return super.getThickness(pRandom) * 3;
+    protected float getThickness(Random random) {
+        return super.getThickness(random) * 3;
     }
 
-    protected boolean carveBlock(CarvingContext pContext, CaveCarverConfiguration pConfig, ChunkAccess pChunk, Function<BlockPos, Biome> pBiomeAccessor, BitSet pCarvingMask, Random pRandom, BlockPos.MutableBlockPos pPos, BlockPos.MutableBlockPos pCheckPos, Aquifer pAquifer, MutableBoolean pReachedSurface) {
-        BlockState blockstate = pChunk.getBlockState(pPos);
-        BlockState blockstate1 = pChunk.getBlockState(pCheckPos.setWithOffset(pPos, Direction.UP));
+    @Override
+    protected boolean carveBlock(CarvingContext context, CaveCarverConfiguration config, ChunkAccess chunk, Function<BlockPos, Biome> biomeAccessor, BitSet carvingMask, Random random, BlockPos.MutableBlockPos pos, BlockPos.MutableBlockPos checkPos, Aquifer aquifer, MutableBoolean reachedSurface) {
+        BlockState blockstate = chunk.getBlockState(pos);
+        BlockState blockstate1 = chunk.getBlockState(checkPos.setWithOffset(pos, Direction.UP));
         if (blockstate.is(UGBlocks.DEEPTURF_BLOCK.get()) || blockstate.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get()) || blockstate.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get())) {
-            pReachedSurface.setTrue();
+            reachedSurface.setTrue();
         }
 
-        if (!this.canReplaceBlock(blockstate, blockstate1) && !pConfig.debugSettings.isDebugMode()) {
+        if (!this.canReplaceBlock(blockstate, blockstate1) && !config.debugSettings.isDebugMode()) {
             return false;
         }
         else {
-            BlockState blockstate2 = this.getCarveState(pContext, pConfig, pPos, pAquifer);
+            BlockState blockstate2 = this.getCarveState(context, config, pos);
             if (blockstate2 == null) {
                 return false;
             }
             else {
-                pChunk.setBlockState(pPos, blockstate2, false);
-                if (pReachedSurface.isTrue()) {
-                    pCheckPos.setWithOffset(pPos, Direction.DOWN);
-                    if (pChunk.getBlockState(pCheckPos).is(UGBlocks.DEEPSOIL.get())) {
-                        pChunk.setBlockState(pCheckPos, pBiomeAccessor.apply(pPos).getGenerationSettings().getSurfaceBuilderConfig().getTopMaterial(), false);
+                chunk.setBlockState(pos, blockstate2, false);
+                if (reachedSurface.isTrue()) {
+                    checkPos.setWithOffset(pos, Direction.DOWN);
+                    if (chunk.getBlockState(checkPos).is(UGBlocks.DEEPSOIL.get())) {
+                        chunk.setBlockState(checkPos, biomeAccessor.apply(pos).getGenerationSettings().getSurfaceBuilderConfig().getTopMaterial(), false);
                     }
                 }
 
@@ -83,7 +84,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Nullable
-    private BlockState getCarveState(CarvingContext pContext, CaveCarverConfiguration pConfig, BlockPos pPos, Aquifer pAquifer) {
+    private BlockState getCarveState(CarvingContext pContext, CaveCarverConfiguration pConfig, BlockPos pPos) {
         if (pPos.getY() <= pConfig.lavaLevel.resolveY(pContext)) {
             return UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock();
         }
