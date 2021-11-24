@@ -2,6 +2,7 @@ package quek.undergarden.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -50,7 +51,7 @@ public class GwibEntity extends WaterAnimal implements Enemy {
     }
 
     public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
-        return random.nextInt(10) == 0 && level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER) && pos.getY() <= 32;
+        return !(level.getDifficulty() == Difficulty.PEACEFUL) && random.nextInt(10) == 0 && level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER) && pos.getY() <= 32;
     }
 
     @Override
