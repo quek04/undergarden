@@ -12,7 +12,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -27,7 +26,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.UUID;
 
-public class BruteEntity extends Animal implements Enemy, NeutralMob {
+public class BruteEntity extends Animal implements NeutralMob {
 
     private static final UniformInt ANGER_TIME_RANGE = TimeUtil.rangeOfSeconds(20, 39);
     private int angerTime;
@@ -58,8 +57,8 @@ public class BruteEntity extends Animal implements Enemy, NeutralMob {
                 .add(Attributes.ATTACK_DAMAGE, 3.0D);
     }
 
-    public static boolean canBruteSpawn(EntityType<? extends Animal> animal, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get());
+    public static boolean canBruteSpawn(EntityType<? extends Animal> animal, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, Random random) {
+        return level.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get());
     }
 
     @Override
@@ -105,12 +104,17 @@ public class BruteEntity extends Animal implements Enemy, NeutralMob {
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
-        return UGEntityTypes.BRUTE_TYPE.create(world);
+    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob entity) {
+        return UGEntityTypes.BRUTE_TYPE.create(level);
     }
 
     @Override
     public boolean isFood(ItemStack stack) {
         return Ingredient.of(UGItems.DROOPFRUIT.get()).test(stack);
+    }
+
+    @Override
+    public boolean canBeLeashed(Player player) {
+        return false;
     }
 }

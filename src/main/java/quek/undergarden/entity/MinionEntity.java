@@ -18,6 +18,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.MinionProjectileEntity;
+import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
@@ -32,10 +33,8 @@ public class MinionEntity extends AbstractGolem implements RangedAttackMob {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 20, 10.0F));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        //this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-        //this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Mob.class, 10, true, false, (entity) ->
-                entity instanceof Enemy || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
+                !(entity.getType() == UGEntityTypes.STONEBORN.get()) && entity instanceof Enemy || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
         );
     }
 

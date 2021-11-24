@@ -50,7 +50,7 @@ public class GwibEntity extends WaterAnimal implements Enemy {
                 .add(Attributes.FOLLOW_RANGE, 64.0D);
     }
 
-    public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
+    public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, Random random) {
         return !(level.getDifficulty() == Difficulty.PEACEFUL) && random.nextInt(10) == 0 && level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER) && pos.getY() <= 32;
     }
 

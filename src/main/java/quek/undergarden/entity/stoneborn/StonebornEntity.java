@@ -84,8 +84,8 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
     }
 
-    public static boolean canStonebornSpawn(EntityType<? extends Monster> type, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {
-        return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextInt(10) == 0 && checkMobSpawnRules(type, worldIn, reason, pos, randomIn);
+    public static boolean canStonebornSpawn(EntityType<? extends Monster> entity, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, Random random) {
+        return level.getDifficulty() != Difficulty.PEACEFUL && random.nextInt(10) == 0 && checkMobSpawnRules(entity, level, mobSpawnType, pos, random);
     }
 
     @Override
@@ -148,7 +148,7 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
     @Override
     public void tick() {
         super.tick();
-        if (!this.inUndergarden()) {
+        if (!this.inUndergarden() && !this.isNoAi()) {
             ++this.timeOutOfUG;
             this.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 300, 0));
         }
@@ -173,7 +173,7 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
     }
 
     public boolean inUndergarden() {
-        return this.level.dimension() == UGDimensions.UNDERGARDEN_LEVEL && !this.isNoAi();
+        return this.level.dimension() == UGDimensions.UNDERGARDEN_LEVEL;
     }
 
     @Override
