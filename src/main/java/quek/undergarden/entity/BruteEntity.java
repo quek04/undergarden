@@ -48,7 +48,7 @@ public class BruteEntity extends Animal implements Enemy, NeutralMob {
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, BruteEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(0, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(0, new HurtByTargetGoal(this).setAlertOthers());
     }
 
     public static AttributeSupplier.Builder registerAttributes() {
