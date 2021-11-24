@@ -223,7 +223,7 @@ public class UndergardenClient {
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
             if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
-                event.setDensity(0.5F);
+                event.setDensity(15F);
                 event.setCanceled(true);
             }
         }
