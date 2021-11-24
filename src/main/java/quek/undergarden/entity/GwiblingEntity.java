@@ -1,16 +1,15 @@
 package quek.undergarden.entity;
 
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
@@ -20,12 +19,6 @@ public class GwiblingEntity extends AbstractFish {
 
     public GwiblingEntity(EntityType<? extends AbstractFish> type, Level worldIn) {
         super(type, worldIn);
-    }
-
-    @Override
-    protected void registerGoals() {
-        super.registerGoals();
-        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, GwibEntity.class, 8.0F, 1.6D, 1.4D));
     }
 
     public static boolean canGwiblingSpawn(EntityType<? extends AbstractFish> type, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {
