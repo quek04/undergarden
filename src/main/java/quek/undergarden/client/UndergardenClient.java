@@ -1,7 +1,6 @@
 package quek.undergarden.client;
 
 import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.model.BoatModel;
@@ -224,7 +223,7 @@ public class UndergardenClient {
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
             if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
-                event.setDensity(1.5F);
+                event.setDensity(0.5F);
                 event.setCanceled(true);
             }
         }

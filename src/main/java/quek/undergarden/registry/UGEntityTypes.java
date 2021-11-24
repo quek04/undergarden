@@ -13,10 +13,17 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.*;
-import quek.undergarden.entity.boss.*;
-import quek.undergarden.entity.cavern.*;
+import quek.undergarden.entity.boss.ForgottenGuardianEntity;
+import quek.undergarden.entity.boss.MasticatorEntity;
+import quek.undergarden.entity.cavern.AbstractCavernCreatureEntity;
+import quek.undergarden.entity.cavern.MuncherEntity;
+import quek.undergarden.entity.cavern.NargoyleEntity;
+import quek.undergarden.entity.cavern.SploogieEntity;
 import quek.undergarden.entity.projectile.*;
-import quek.undergarden.entity.rotspawn.*;
+import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
+import quek.undergarden.entity.rotspawn.RotbeastEntity;
+import quek.undergarden.entity.rotspawn.RotlingEntity;
+import quek.undergarden.entity.rotspawn.RotwalkerEntity;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
 @Mod.EventBusSubscriber(modid = "undergarden", bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -71,7 +78,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<DwellerEntity>> DWELLER = ENTITIES.register("dweller", () -> DWELLER_TYPE);
 
     public static final EntityType<GwiblingEntity> GWIBLING_TYPE = EntityType.Builder.of(GwiblingEntity::new, MobCategory.WATER_AMBIENT)
-            .sized(.5F, .5F).build("gwibling");
+            .sized(.5F, .3F).build("gwibling");
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> GWIBLING_TYPE);
 
     public static final EntityType<BruteEntity> BRUTE_TYPE = EntityType.Builder.of(BruteEntity::new, MobCategory.CREATURE)
@@ -103,7 +110,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<SploogieEntity>> SPLOOGIE = ENTITIES.register("sploogie", () -> SPLOOGIE_TYPE);
 
     public static final EntityType<GwibEntity> GWIB_TYPE = EntityType.Builder.of(GwibEntity::new, MobCategory.WATER_CREATURE)
-            .sized(1.5F, 0.5F).build("gwib");
+            .sized(1.0F, 0.5F).build("gwib");
     public static final RegistryObject<EntityType<GwibEntity>> GWIB = ENTITIES.register("gwib", () -> GWIB_TYPE);
 
     public static final EntityType<MogEntity> MOG_TYPE = EntityType.Builder.of(MogEntity::new, MobCategory.CREATURE)
