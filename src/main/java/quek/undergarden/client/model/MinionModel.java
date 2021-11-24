@@ -25,7 +25,7 @@ public class MinionModel<T extends MinionEntity> extends ListModel<T> {
 		this.shell = root.getChild("shell");
 		this.body = root.getChild("body");
 		this.backRightLeg = body.getChild("backRightLeg");
-		this.backLeftLeg = body.getChild("backRightLeg");
+		this.backLeftLeg = body.getChild("backLeftLeg");
 		this.frontLeftLeg = body.getChild("frontLeftLeg");
 		this.frontRightLeg = body.getChild("frontRightLeg");
 	}
