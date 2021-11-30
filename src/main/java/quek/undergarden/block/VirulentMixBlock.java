@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import quek.undergarden.registry.UGEffects;
-import quek.undergarden.registry.UGFluids;
 import quek.undergarden.registry.UGTags;
 
 import java.util.function.Supplier;
@@ -19,7 +18,6 @@ public class VirulentMixBlock extends LiquidBlock {
 
     public VirulentMixBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
         super(supplier, properties.noCollission().strength(100F).noDrops());
-        this.fluid = supplier.get();
     }
 
     @Override

@@ -622,7 +622,6 @@ ee8943641cef807431bdc40fda8445e6281e70a1 data/minecraft/tags/blocks/needs_iron_t
 71b47285890ea7e9fc6aad1dc25e4538275438d9 data/minecraft/tags/blocks/needs_stone_tool.json
 054c09b02472f845a88fbc1ed57e38c020ab6b06 data/minecraft/tags/blocks/planks.json
 5b64059b9e02a343efa3237b82fd8dfd83525872 data/minecraft/tags/blocks/portals.json
-d004ec3b3367880a0cf2739ee47ad9dc91afc556 data/minecraft/tags/blocks/sand.json
 d2e5995e679e166a724c3feb96c5303aadee55ad data/minecraft/tags/blocks/saplings.json
 dd1e5d80df885747685242b1f499ac30ec627fb0 data/minecraft/tags/blocks/signs.json
 d235defe0ebba665d92951f8fc32a9cd435ace86 data/minecraft/tags/blocks/small_flowers.json
@@ -657,7 +656,6 @@ fe278e4e69d0788135dfd5e53c38593b1589ff3a data/minecraft/tags/items/logs.json
 fe278e4e69d0788135dfd5e53c38593b1589ff3a data/minecraft/tags/items/logs_that_burn.json
 1f71325b280c9b6bbf2410ccd6ed103132cf40a6 data/minecraft/tags/items/music_discs.json
 054c09b02472f845a88fbc1ed57e38c020ab6b06 data/minecraft/tags/items/planks.json
-d004ec3b3367880a0cf2739ee47ad9dc91afc556 data/minecraft/tags/items/sand.json
 d2e5995e679e166a724c3feb96c5303aadee55ad data/minecraft/tags/items/saplings.json
 0a43fa3d6cfa2dc2dc10bb532027714155d97396 data/minecraft/tags/items/signs.json
 d235defe0ebba665d92951f8fc32a9cd435ace86 data/minecraft/tags/items/small_flowers.json

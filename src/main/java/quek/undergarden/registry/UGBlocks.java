@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraftforge.client.IItemRenderProperties;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -256,7 +255,7 @@ public class UGBlocks {
 
     //fluids
     public static final RegistryObject<LiquidBlock> VIRULENT_MIX = BLOCKS.register("virulent_mix", () -> new VirulentMixBlock(
-            () -> new ForgeFlowingFluid.Source(UGFluids.VIRULENT_MIX_PROPERTIES), BlockBehaviour.Properties.of(Material.WATER)));
+            UGFluids.VIRULENT_MIX_SOURCE, BlockBehaviour.Properties.of(Material.WATER)));
 
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);
