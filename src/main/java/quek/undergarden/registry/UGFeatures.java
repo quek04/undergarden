@@ -217,13 +217,13 @@ public class UGFeatures {
                 new OreConfiguration(COAL_ORE_TARGETS, 17)
         );
         public static final ConfiguredFeature<?, ?> IRON_ORE = Feature.ORE.configured(
-                new OreConfiguration(IRON_ORE_TARGETS, 9)
+                new OreConfiguration(IRON_ORE_TARGETS, 9, 0.5F)
         );
         public static final ConfiguredFeature<?, ?> GOLD_ORE = Feature.ORE.configured(
-                new OreConfiguration(GOLD_ORE_TARGETS, 9)
+                new OreConfiguration(GOLD_ORE_TARGETS, 9, 0.5F)
         );
         public static final ConfiguredFeature<?, ?> DIAMOND_ORE = Feature.ORE.configured(
-                new OreConfiguration(DIAMOND_ORE_TARGETS, 8)
+                new OreConfiguration(DIAMOND_ORE_TARGETS, 8, 0.5F)
         );
         public static final ConfiguredFeature<?, ?> CLOGGRUM_ORE = Feature.ORE.configured(
                 new OreConfiguration(CLOGGRUM_ORE_TARGETS, 9)
@@ -232,7 +232,7 @@ public class UGFeatures {
                 new OreConfiguration(FROSTSTEEL_ORE_TARGETS, 9)
         );
         public static final ConfiguredFeature<?, ?> UTHERIUM_ORE = Feature.ORE.configured(
-                new OreConfiguration(UTHERIUM_ORE_TARGETS, 8)
+                new OreConfiguration(UTHERIUM_ORE_TARGETS, 8, 0.5F)
         );
         public static final ConfiguredFeature<?, ?> REGALIUM_ORE = Feature.ORE.configured(
                 new OreConfiguration(REGALIUM_ORE_TARGETS, 4)
@@ -418,11 +418,11 @@ public class UGFeatures {
         register("gloomgourd_patch", ConfiguredFeatures.GLOOMGOURD_PATCH.range(Features.Decorators.FULL_RANGE).squared().count(5));
 
         register("coal_ore", ConfiguredFeatures.COAL_ORE.range(Features.Decorators.FULL_RANGE).squared().count(30));
-        register("iron_ore", ConfiguredFeatures.IRON_ORE.rangeUniform(VerticalAnchor.absolute(200), VerticalAnchor.top()).squared().count(8));
-        register("gold_ore", ConfiguredFeatures.GOLD_ORE.rangeUniform(VerticalAnchor.absolute(220), VerticalAnchor.top()).squared().count(2));
-        register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.rangeUniform(VerticalAnchor.absolute(230), VerticalAnchor.top()).squared());
-        register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.range(Features.Decorators.FULL_RANGE).squared().count(20));
-        register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.range(Features.Decorators.FULL_RANGE).squared().count(15));
+        register("iron_ore", ConfiguredFeatures.IRON_ORE.rangeTriangle(VerticalAnchor.belowTop(128), VerticalAnchor.belowTop(-128)).squared().count(8));
+        register("gold_ore", ConfiguredFeatures.GOLD_ORE.rangeTriangle(VerticalAnchor.belowTop(64), VerticalAnchor.belowTop(-64)).squared().count(2));
+        register("diamond_ore", ConfiguredFeatures.DIAMOND_ORE.rangeUniform(VerticalAnchor.belowTop(16), VerticalAnchor.belowTop(-16)).squared());
+        register("cloggrum_ore", ConfiguredFeatures.CLOGGRUM_ORE.rangeTriangle(VerticalAnchor.aboveBottom(-256), VerticalAnchor.aboveBottom(256)).squared().count(20));
+        register("froststeel_ore", ConfiguredFeatures.FROSTSTEEL_ORE.rangeTriangle(VerticalAnchor.aboveBottom(-256), VerticalAnchor.aboveBottom(256)).squared().count(15));
         register("utherium_ore", ConfiguredFeatures.UTHERIUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)).squared().count(3));
         register("regalium_ore", ConfiguredFeatures.REGALIUM_ORE.rangeUniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(12)).squared().count(3));
 
