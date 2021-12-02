@@ -14,6 +14,6 @@ public class DepthrockBedBlockEntity extends BlockEntity {
 
     @Override
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return new ClientboundBlockEntityDataPacket(this.worldPosition, 11, this.getUpdateTag());
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 }

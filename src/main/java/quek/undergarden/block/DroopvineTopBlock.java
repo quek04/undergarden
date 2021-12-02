@@ -24,26 +24,26 @@ public class DroopvineTopBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState state2, LevelAccessor world, BlockPos pos, BlockPos pos2) {
-        if (direction == this.growthDirection.getOpposite() && !state.canSurvive(world, pos)) {
-            world.getBlockTicks().scheduleTick(pos, this, 1);
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
+        if (facing == this.growthDirection.getOpposite() && !state.canSurvive(level, pos)) {
+            level.scheduleTick(pos, this, 1);
         }
 
-        if (direction != this.growthDirection || !state2.is(this) && !state2.is(this.getBodyBlock())) {
+        if (facing != this.growthDirection || !facingState.is(this) && !facingState.is(this.getBodyBlock())) {
             if (this.scheduleFluidTicks) {
-                world.getLiquidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
             }
 
-            return super.updateShape(state, direction, state2, world, pos, pos2);
+            return super.updateShape(state, facing, facingState, level, pos, facingPos);
         }
         else {
-            return this.getBodyBlock().defaultBlockState().setValue(DroopvineBlock.GLOWY, world.getRandom().nextBoolean());
+            return this.getBodyBlock().defaultBlockState().setValue(DroopvineBlock.GLOWY, level.getRandom().nextBoolean());
         }
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(Random rand) {
-        return NetherVines.getBlocksToGrowWhenBonemealed(rand);
+    protected int getBlocksToGrowWhenBonemealed(Random random) {
+        return NetherVines.getBlocksToGrowWhenBonemealed(random);
     }
 
     @Override

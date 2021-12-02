@@ -26,27 +26,27 @@ public class SmogVentBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public boolean canCreatureSpawn(BlockState state, BlockGetter world, BlockPos pos, SpawnPlacements.Type type, EntityType<?> entityType) {
+    public boolean isValidSpawn(BlockState state, BlockGetter world, BlockPos pos, SpawnPlacements.Type type, EntityType<?> entityType) {
         return false;
     }
 
     @Override
-    public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
-        if (!pEntity.fireImmune() && pEntity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)pEntity)) {
-            pEntity.setSecondsOnFire(1);
+    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+        if (!entity.fireImmune() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entity)) {
+            entity.setSecondsOnFire(1);
         }
-        super.stepOn(pLevel, pPos, pState, pEntity);
+        super.stepOn(level, pos, state, entity);
     }
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return UGBlockEntities.SMOG_VENT.get().create(pPos, pState);
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return UGBlockEntities.SMOG_VENT.get().create(pos, state);
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return pBlockEntityType == UGBlockEntities.SMOG_VENT.get() ? SmogVentBlockEntity::tick : null;
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
+        return blockEntity == UGBlockEntities.SMOG_VENT.get() ? SmogVentBlockEntity::tick : null;
     }
 }

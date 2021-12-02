@@ -1,7 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.core.Registry;
-import net.minecraft.data.worldgen.biome.VanillaBiomes;
+import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
@@ -41,7 +41,7 @@ public class UGBiomes {
     }
 
     private static ResourceKey<Biome> register(String name) {
-        BIOMES.register(name, VanillaBiomes::theVoidBiome);
+        BIOMES.register(name, OverworldBiomes::theVoid);
         return ResourceKey.create(Registry.BIOME_REGISTRY, name(name));
     }
 }

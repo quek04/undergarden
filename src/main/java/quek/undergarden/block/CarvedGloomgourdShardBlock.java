@@ -18,22 +18,22 @@ public class CarvedGloomgourdShardBlock extends CarvedGloomgourdBlock {
     }
 
     @Override
-    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
-        pLevel.getBlockTicks().scheduleTick(pPos, this, 20);
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        level.scheduleTick(pos, this, 20);
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         //if(pLevel.getGameTime() % 20 == 0) {
-        pLevel.getEntitiesOfClass(LivingEntity.class, new AABB(
-                        pPos.getX() - 4,
-                        pPos.getY() - 4,
-                        pPos.getZ() - 4,
-                        pPos.getX() + 4,
-                        pPos.getY() + 4,
-                        pPos.getZ() + 4),
+        level.getEntitiesOfClass(LivingEntity.class, new AABB(
+                        pos.getX() - 4,
+                        pos.getY() - 4,
+                        pos.getZ() - 4,
+                        pos.getX() + 4,
+                        pos.getY() + 4,
+                        pos.getZ() + 4),
                 entity -> entity.getType().is(UGTags.Entities.ROTSPAWN)).forEach(entity -> entity.hurt(UGDamageSources.SHARD_TORCH, 4));
         //}
-        pLevel.getBlockTicks().scheduleTick(pPos, this, 20);
+        level.scheduleTick(pos, this, 20);
     }
 }
