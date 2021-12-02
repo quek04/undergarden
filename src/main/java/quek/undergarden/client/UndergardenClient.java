@@ -207,7 +207,7 @@ public class UndergardenClient {
     public static class ForgeBusEvents {
         @SubscribeEvent
         public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
-            Camera camera = event.getInfo();
+            Camera camera = event.getCamera();
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
             if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
@@ -219,7 +219,7 @@ public class UndergardenClient {
 
         @SubscribeEvent
         public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
-            Camera camera = event.getInfo();
+            Camera camera = event.getCamera();
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
             if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
