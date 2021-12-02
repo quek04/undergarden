@@ -1,11 +1,14 @@
 package quek.undergarden.registry;
 
 import net.minecraft.world.effect.MobEffect;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
-import quek.undergarden.potion.*;
+import quek.undergarden.potion.BrittlenessEffect;
+import quek.undergarden.potion.FeatherweightEffect;
+import quek.undergarden.potion.GooeyEffect;
+import quek.undergarden.potion.VirulentResistanceEffect;
 
 public class UGEffects {
 

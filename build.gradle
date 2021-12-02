@@ -22,10 +22,11 @@ version = project.undergarden_version
 group = 'quek.undergarden.modid'
 archivesBaseName = 'The_Undergarden-'+project.mc_version
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(16)
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'parchment', version: project.parchment_version+'-'+project.mc_version
+    //mappings channel: 'parchment', version: project.parchment_version+'-'+project.mc_version
+    mappings channel: 'official', version: '1.18'
 
     runs {
         client {
@@ -87,8 +88,8 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
 
-    compileOnly fg.deobf("mezz.jei:jei-${project.mc_version}:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${project.mc_version}:${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-${project.mc_version}:${jei_version}:api")
+    //runtimeOnly fg.deobf("mezz.jei:jei-${project.mc_version}:${jei_version}")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }

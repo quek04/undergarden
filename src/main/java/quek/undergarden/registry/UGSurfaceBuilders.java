@@ -2,11 +2,12 @@ package quek.undergarden.registry;
 
 import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilderBaseConfiguration;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
-import quek.undergarden.world.gen.surfacebuilders.*;
+import quek.undergarden.world.gen.surfacebuilders.FrostfieldsSurfaceBuilder;
+import quek.undergarden.world.gen.surfacebuilders.UGDefaultSurfaceBuilder;
 
 public class UGSurfaceBuilders {
 
