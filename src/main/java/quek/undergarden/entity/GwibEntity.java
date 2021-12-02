@@ -46,8 +46,7 @@ public class GwibEntity extends WaterAnimal implements Enemy {
         return WaterAnimal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.ARMOR, 5.0D)
-                .add(Attributes.ATTACK_DAMAGE, 4.0D)
-                .add(Attributes.FOLLOW_RANGE, 64.0D);
+                .add(Attributes.ATTACK_DAMAGE, 4.0D);
     }
 
     public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, Random random) {
