@@ -318,4 +318,9 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
     public SoundEvent getNotifyTradeSound() {
         return UGSoundEvents.STONEBORN_PLEASED.get();
     }
+
+    @Override
+    public boolean isClientSide() {
+        return this.getLevel().isClientSide;
+    }
 }
