@@ -40,7 +40,10 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
-import quek.undergarden.entity.projectile.*;
+import quek.undergarden.entity.projectile.BlisterbombEntity;
+import quek.undergarden.entity.projectile.GooBallEntity;
+import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
+import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.item.UGSpawnEggItem;
 import quek.undergarden.registry.*;
 
@@ -86,7 +89,7 @@ public class Undergarden {
 	public void setup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			UGEntityTypes.spawnPlacements();
-			UGFeatures.registerConfiguredFeatures();
+			//UGFeatures.registerConfiguredFeatures();
 			UGCarvers.registerConfiguredCarvers();
 			UGStructures.registerStructures();
 			UGStructures.registerConfiguredStructures();

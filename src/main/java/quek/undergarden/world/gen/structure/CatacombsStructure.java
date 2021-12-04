@@ -25,11 +25,6 @@ public class CatacombsStructure extends AbstractUndergardenStructure {
     }
 
     @Override
-    public StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
-        return CatacombsStructure.Start::new;
-    }
-
-    @Override
     public String getFeatureName() {
         return "undergarden:catacombs";
     }
