@@ -1,20 +1,20 @@
 package quek.undergarden.block;
 
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.server.level.ServerLevel;
 import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGFeatures;
+import quek.undergarden.registry.UGConfiguredFeatures;
 
 import java.util.Random;
 
@@ -83,16 +83,16 @@ public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
         world.removeBlock(pos, false);
         ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> feature;
         if (this == UGBlocks.BLOOD_MUSHROOM.get()) {
-            feature = UGFeatures.ConfiguredFeatures.BLOOD_MUSHROOM;
+            feature = UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM;
         }
         else if(this == UGBlocks.INDIGO_MUSHROOM.get()) {
-            feature = UGFeatures.ConfiguredFeatures.INDIGO_MUSHROOM;
+            feature = UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM;
         }
         else if(this == UGBlocks.INK_MUSHROOM.get()) {
-            feature = UGFeatures.ConfiguredFeatures.INK_MUSHROOM;
+            feature = UGConfiguredFeatures.HUGE_INK_MUSHROOM;
         }
         else if(this == UGBlocks.VEIL_MUSHROOM.get()) {
-            feature = UGFeatures.ConfiguredFeatures.VEIL_MUSHROOM;
+            feature = UGConfiguredFeatures.HUGE_VEIL_MUSHROOM;
         }
         else {
             return;
