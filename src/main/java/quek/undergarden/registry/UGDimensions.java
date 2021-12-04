@@ -1,12 +1,10 @@
 package quek.undergarden.registry;
 
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.Registry;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.Level;
 import quek.undergarden.Undergarden;
-import quek.undergarden.world.dimension.UGBiomeProvider;
 import quek.undergarden.world.dimension.UGChunkGenerator;
 
 public class UGDimensions {
@@ -20,6 +18,6 @@ public class UGDimensions {
 
     public static void registerDimensionStuff() {
         Registry.register(Registry.CHUNK_GENERATOR, name("chunk_generator"), UGChunkGenerator.CODEC);
-        Registry.register(Registry.BIOME_SOURCE, name("biome_provider"), UGBiomeProvider.CODEC);
+        //Registry.register(Registry.BIOME_SOURCE, name("biome_provider"), UGBiomeProvider.CODEC);
     }
 }
