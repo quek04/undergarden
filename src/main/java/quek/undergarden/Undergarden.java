@@ -76,7 +76,6 @@ public class Undergarden {
 				UGPotions.POTIONS,
 				UGSoundEvents.SOUNDS,
 				UGStructures.STRUCTURES,
-				UGSurfaceBuilders.SURFACE_BUILDERS,
 				UGBlockEntities.BLOCK_ENTITIES,
 				UGTreeDecoratorTypes.TREE_DECORATORS
 		};
