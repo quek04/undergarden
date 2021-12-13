@@ -2,15 +2,23 @@ package quek.undergarden.registry;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.FlatLevelSource;
 import net.minecraft.world.level.levelgen.StructureSettings;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.CatacombsStructure;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class UGStructures {
 
@@ -38,5 +46,18 @@ public class UGStructures {
                         .putAll(StructureSettings.DEFAULTS)
                         .put(structure, structureSeparationSettings)
                         .build();
+    }
+
+    public static void addDimensionalSpacing(final WorldEvent.Load event) {
+        if (event.getWorld() instanceof ServerLevel level) {
+            ChunkGenerator chunkGenerator = level.getChunkSource().getGenerator();
+            if (chunkGenerator instanceof FlatLevelSource && level.dimension().equals(Level.OVERWORLD)) {
+                return;
+            }
+            StructureSettings worldStructureConfig = chunkGenerator.getSettings();
+            Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(worldStructureConfig.structureConfig());
+            tempMap.putIfAbsent(CATACOMBS.get(), StructureSettings.DEFAULTS.get(CATACOMBS.get()));
+            worldStructureConfig.structureConfig = tempMap;
+        }
     }
 }

@@ -91,7 +91,6 @@ public class Undergarden {
 			//UGFeatures.registerConfiguredFeatures();
 			UGCarvers.registerConfiguredCarvers();
 			UGStructures.registerStructures();
-			UGStructures.registerConfiguredStructures();
 			UGCriteria.register();
 			UGBiomes.toDictionary();
 			UGDimensions.registerDimensionStuff();
