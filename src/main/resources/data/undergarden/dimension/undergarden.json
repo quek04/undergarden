@@ -3,7 +3,6 @@
   "generator": {
     "type": "undergarden:chunk_generator",
     "settings": "undergarden:undergarden",
-
     "biome_source": {
       "type": "undergarden:biome_provider",
       "preset": "undergarden",
@@ -11,118 +10,112 @@
         {
           "biome": "undergarden:forgotten_field",
           "parameters": {
-            "altitude": 0.0,
+            "erosion": 0.0,
+            "depth": 0.0,
             "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.0
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         },
         {
           "biome": "undergarden:mushroom_bog",
           "parameters": {
-            "altitude": 0.5,
+            "erosion": 0.0,
+            "depth": 0.0,
             "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.0
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         },
         {
           "biome": "undergarden:smogstem_forest",
           "parameters": {
-            "altitude": 0.4,
+            "erosion": 0.0,
+            "depth": 0.0,
             "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.0
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         },
         {
           "biome": "undergarden:wigglewood_forest",
           "parameters": {
-            "altitude": 0.2,
+            "erosion": 0.0,
+            "depth": 0.0,
             "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.0
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         },
         {
           "biome": "undergarden:dense_forest",
           "parameters": {
-            "altitude": 0.4,
-            "weirdness": 0.5,
+            "erosion": 0.0,
+            "depth": 0.0,
+            "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.0
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         },
         {
           "biome": "undergarden:gronglegrowth",
           "parameters": {
-            "altitude": 0.0,
-            "weirdness": 0.375,
+            "erosion": 0.0,
+            "depth": 0.0,
+            "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.5
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         },
         {
           "biome": "undergarden:barren_abyss",
           "parameters": {
-            "altitude": 0.0,
-            "weirdness": -0.5,
+            "erosion": 0.0,
+            "depth": 0.0,
+            "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.0
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         },
         {
           "biome": "undergarden:smog_spires",
           "parameters": {
-            "altitude": 0.0,
-            "weirdness": 0.5,
+            "erosion": 0.0,
+            "depth": 0.0,
+            "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.375
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         },
         {
           "biome": "undergarden:frostfields",
           "parameters": {
-            "altitude": 0.0,
-            "weirdness": 0.5,
+            "erosion": 0.0,
+            "depth": 0.0,
+            "weirdness": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "humidity": 0.0
+            "humidity": 0.0,
+            "continentalness": 0.0
           }
         }
-      ],
-      "altitude_noise": {
-        "firstOctave": -7,
-        "amplitudes": [
-          1, 1
-        ]
-      },
-      "weirdness_noise": {
-        "firstOctave": -7,
-        "amplitudes": [
-          1, 1
-        ]
-      },
-      "temperature_noise": {
-        "firstOctave": -7,
-        "amplitudes": [
-          1, 1
-        ]
-      },
-      "humidity_noise": {
-        "firstOctave": -7,
-        "amplitudes": [
-          1, 1
-        ]
-      }
+      ]
     }
   }
 }

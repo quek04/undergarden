@@ -1,8 +1,6 @@
 {
   "precipitation": "none",
   "category": "none",
-  "depth": 0.0,
-  "scale": 0.0,
   "temperature": 0.14,
   "temperature_modifier": "frozen",
   "downfall": 0,
@@ -32,7 +30,6 @@
       "replace_current_music": true
     }
   },
-  "surface_builder": "undergarden:frozen_deepturf",
   "carvers": {
     "air": [
       "undergarden:undergarden_cave"
@@ -40,48 +37,43 @@
   },
   "features": [
     [],
+    [],
     [
-      "undergarden:lake_virulent"
-    ],
-    [
-      "iceberg_packed",
+      "minecraft:iceberg_packed",
       "undergarden:ice_pillar"
     ],
-    [],
-    [],
     [],
     [],
     [],
     [
       "undergarden:coal_ore",
       "undergarden:iron_ore",
-      "undergarden:gold_ore",
       "undergarden:diamond_ore",
       "undergarden:cloggrum_ore",
       "undergarden:froststeel_ore",
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
-      "undergarden:deepsoil_patch",
-      "undergarden:ice_patch",
-      "undergarden:sediment_patch"
+      "undergarden:deepsoil_ore",
+      "undergarden:ice_ore",
+      "undergarden:sediment_ore"
+    ],
+    [],
+    [
+      "undergarden:virulent_mix_spring"
     ],
     [
-      "undergarden:frozen_patch",
+      "undergarden:frozen_deepturf_patch",
       "undergarden:shimmerweed_patch",
       "undergarden:tall_shimmerweed_patch",
-      "undergarden:indigo_patch",
-      "undergarden:veil_patch",
-      "undergarden:ink_patch",
-      "undergarden:blood_patch",
-      "undergarden:virulent_spring",
-      "undergarden:depthrock_boulder"
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:blood_mushroom_patch",
+      "undergarden:depthrock_rock"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
-  ],
-  "starts": [
-
   ],
   "spawners": {
     "monster": [

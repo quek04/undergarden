@@ -1,8 +1,6 @@
 {
   "precipitation": "none",
   "category": "none",
-  "depth": 0.0,
-  "scale": 0.0,
   "temperature": 0.8,
   "temperature_modifier": "none",
   "downfall": 0,
@@ -32,7 +30,6 @@
       "replace_current_music": true
     }
   },
-  "surface_builder": "undergarden:deepturf",
   "carvers": {
     "air": [
       "undergarden:undergarden_cave"
@@ -41,9 +38,6 @@
   "features": [
     [],
     [],
-    [
-      "minecraft:lake_water"
-    ],
     [],
     [],
     [],
@@ -56,32 +50,32 @@
       "undergarden:cloggrum_ore",
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
-      "undergarden:shiverstone_patch",
-      "undergarden:deepsoil_patch",
-      "undergarden:sediment_patch"
+      "undergarden:shiverstone_ore",
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore"
+    ],
+    [],
+    [
+      "undergarden:spring"
     ],
     [
-      "undergarden:lilypads",
+      "minecraft:patch_waterlily",
       "undergarden:ditchbulb_patch",
-      "undergarden:droopvine",
-      "undergarden:glowing_kelp",
+      "undergarden:droopvine_patch",
+      "undergarden:glitterkelp_patch",
       "undergarden:deepturf_patch",
       "undergarden:shimmerweed_patch",
       "undergarden:tall_shimmerweed_patch",
-      "undergarden:pebble_patch",
-      "undergarden:indigo_patch",
-      "undergarden:veil_patch",
-      "undergarden:ink_patch",
-      "undergarden:blood_patch",
-      "undergarden:underbean_patch",
-      "undergarden:spring",
+      "undergarden:depthrock_pebble_patch",
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:blood_mushroom_patch",
+      "undergarden:underbean_bush_patch",
       "undergarden:gloomgourd_patch",
-      "undergarden:depthrock_boulder",
-      "undergarden:shiverstone_boulder"
+      "undergarden:depthrock_rock",
+      "undergarden:shiverstone_rock"
     ]
-  ],
-  "starts": [
-    "undergarden:catacombs"
   ],
   "spawners": {
     "monster": [

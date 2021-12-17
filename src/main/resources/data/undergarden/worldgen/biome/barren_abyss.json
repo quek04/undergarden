@@ -1,8 +1,6 @@
 {
   "precipitation": "none",
   "category": "none",
-  "depth": 0.0,
-  "scale": 0.0,
   "temperature": 0.2,
   "temperature_modifier": "none",
   "downfall": 0,
@@ -38,17 +36,12 @@
       "replace_current_music": true
     }
   },
-  "surface_builder": "undergarden:depthrock",
   "carvers": {
     "air": [
       "undergarden:undergarden_cave"
     ]
   },
   "features": [
-    [],
-    [
-      "undergarden:lake_virulent"
-    ],
     [],
     [],
     [],
@@ -63,24 +56,24 @@
       "undergarden:cloggrum_ore",
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
-      "undergarden:shiverstone_patch",
-      "undergarden:deepsoil_patch",
-      "undergarden:sediment_patch"
+      "undergarden:shiverstone_ore",
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore"
+    ],
+    [],
+    [
+      "undergarden:virulent_mix_spring"
     ],
     [
-      "undergarden:lilypads",
-      "undergarden:glowing_kelp",
+      "minecraft:patch_waterlily",
+      "undergarden:glitterkelp_patch",
       "undergarden:ditchbulb_patch",
-      "undergarden:pebble_patch",
-      "undergarden:indigo_patch",
-      "undergarden:veil_patch",
-      "undergarden:ink_patch",
-      "undergarden:blood_patch",
-      "undergarden:virulent_spring"
+      "undergarden:depthrock_pebble_patch",
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:blood_mushroom_patch"
     ]
-  ],
-  "starts": [
-
   ],
   "spawners": {
     "monster": [

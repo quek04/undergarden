@@ -1,8 +1,6 @@
 {
   "precipitation": "none",
   "category": "none",
-  "depth": 0.0,
-  "scale": 0.0,
   "temperature": 0.8,
   "temperature_modifier": "none",
   "downfall": 0,
@@ -32,7 +30,6 @@
       "replace_current_music": true
     }
   },
-  "surface_builder": "undergarden:deepturf",
   "carvers": {
     "air": [
       "undergarden:undergarden_cave"
@@ -40,15 +37,12 @@
   },
   "features": [
     [],
-    [
-      "undergarden:bog_lake_virulent"
-    ],
+    [],
     [],
     [],
     [
-      "undergarden:bog_pond"
+      "undergarden:bog_delta"
     ],
-    [],
     [],
     [
       "undergarden:coal_ore",
@@ -58,31 +52,31 @@
       "undergarden:cloggrum_ore",
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
-      "undergarden:shiverstone_patch",
-      "undergarden:deepsoil_patch",
-      "undergarden:sediment_patch"
+      "undergarden:shiverstone_ore",
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore"
+    ],
+    [],
+    [
+      "undergarden:virulent_mix_bog_spring"
     ],
     [
-      "undergarden:lilypads",
+      "minecraft:patch_waterlily",
       "undergarden:ditchbulb_patch",
-      "undergarden:droopvine",
-      "undergarden:glowing_kelp",
+      "undergarden:droopvine_patch",
+      "undergarden:glitterkelp_patch",
       "undergarden:deepturf_patch",
       "undergarden:tall_deepturf_patch",
-      "undergarden:pebble_patch",
-      "undergarden:bog_indigo_patch",
-      "undergarden:bog_veil_patch",
-      "undergarden:bog_ink_patch",
-      "undergarden:bog_blood_patch",
-      "undergarden:bog_virulent_spring",
+      "undergarden:depthrock_pebble_patch",
+      "undergarden:depthrock_pebble_patch",
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
       "undergarden:huge_blood_mushroom",
       "undergarden:huge_indigo_mushroom",
       "undergarden:huge_ink_mushroom",
       "undergarden:huge_veil_mushroom"
     ]
-  ],
-  "starts": [
-
   ],
   "spawners": {
     "monster": [
