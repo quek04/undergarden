@@ -56,7 +56,7 @@ public class UGPlacedFeatures {
     public static final PlacedFeature BLISTERBERRY_BUSH_PATCH = register("blisterberry_bush_patch", UGConfiguredFeatures.BLISTERBERRY_BUSH_PATCH.placed(patch(5)));
     public static final PlacedFeature GLOOMGOURD_PATCH = register("gloomgourd_patch", UGConfiguredFeatures.GLOOMGOURD_PATCH.placed(patch(5)));
     public static final PlacedFeature DROOPVINE_PATCH = register("droopvine_patch", UGConfiguredFeatures.DROOPVINE.placed(patch(100)));
-    public static final PlacedFeature GLITTERKELP_PATCH = register("glitterkelp_patch", UGConfiguredFeatures.GLITTERKELP.placed(NoiseBasedCountPlacement.of(80, 80.0D, 0.0D), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)), BiomeFilter.biome()));
+    public static final PlacedFeature GLITTERKELP_PATCH = register("glitterkelp_patch", UGConfiguredFeatures.GLITTERKELP.placed(NoiseBasedCountPlacement.of(1000, 80.0D, 0.0D), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)), BiomeFilter.biome()));
 
     //tree
     public static final PlacedFeature SMOGSTEM_TREE = register("smogstem_tree", UGConfiguredFeatures.SMOGSTEM_TREE.placed(tree(8)));
