@@ -1,11 +1,14 @@
 package quek.undergarden.registry;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.*;
 import quek.undergarden.Undergarden;
 
@@ -75,11 +78,11 @@ public class UGPlacedFeatures {
     public static final PlacedFeature SHIVERSTONE_ROCK = register("shiverstone_rock", UGConfiguredFeatures.SHIVERSTONE_ROCK.placed(patch(5)));
 
     //misc
-    public static final PlacedFeature SMOG_VENT = register("smog_vent", UGConfiguredFeatures.SMOG_VENT.placed(tree(8)));
+    public static final PlacedFeature SMOG_VENT = register("smog_vent", UGConfiguredFeatures.SMOG_VENT.placed(CountOnEveryLayerPlacement.of(8), BiomeFilter.biome()));
     public static final PlacedFeature ICE_PILLAR = register("ice_pillar", UGConfiguredFeatures.ICE_PILLAR.placed(patch(50)));
 
     private static List<PlacementModifier> tree(int count) {
-        return List.of(CountOnEveryLayerPlacement.of(count), BiomeFilter.biome());
+        return List.of(CountOnEveryLayerPlacement.of(count), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)));
     }
 
     private static List<PlacementModifier> patch(int count) {
