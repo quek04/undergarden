@@ -40,7 +40,8 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get(),
                 UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(),
                 UGBlocks.DEPTHROCK_REGALIUM_ORE.get(),
-                UGBlocks.SEDIMENT.get()
+                UGBlocks.SEDIMENT.get(),
+                UGBlocks.COARSE_DEEPSOIL.get()
         );
         this.liquids = ImmutableSet.of(
                 Fluids.WATER,
