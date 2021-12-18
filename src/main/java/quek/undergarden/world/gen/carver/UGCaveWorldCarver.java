@@ -56,16 +56,16 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 
     @Override
     protected boolean carveBlock(CarvingContext context, CaveCarverConfiguration config, ChunkAccess chunk, Function<BlockPos, Biome> biomeAccessor, CarvingMask carvingMask, BlockPos.MutableBlockPos pos, BlockPos.MutableBlockPos checkPos, Aquifer aquifer, MutableBoolean reachedSurface) {
-        BlockState blockstate = chunk.getBlockState(pos);
-        if (blockstate.is(UGBlocks.DEEPTURF_BLOCK.get()) || blockstate.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get()) || blockstate.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get())) {
+        BlockState chunkState = chunk.getBlockState(pos);
+        if (chunkState.is(UGBlocks.DEEPTURF_BLOCK.get()) || chunkState.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get()) || chunkState.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get())) {
             reachedSurface.setTrue();
         }
 
-        if (!this.canReplaceBlock(blockstate)) {
+        if (!this.canReplaceBlock(chunkState)) {
             return false;
         }
         else {
-            BlockState carveState = this.getCarveState(context, config, pos, aquifer);
+            BlockState carveState = this.getCarveState(context, config, pos);
             if (carveState == null) {
                 return false;
             }
@@ -92,12 +92,12 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Nullable
-    private BlockState getCarveState(CarvingContext context, CaveCarverConfiguration config, BlockPos pos, Aquifer aquifer) {
+    private BlockState getCarveState(CarvingContext context, CaveCarverConfiguration config, BlockPos pos) {
         if (pos.getY() <= config.lavaLevel.resolveY(context)) {
             return UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock();
         }
         else {
-            return aquifer.computeSubstance(pos.getX(), pos.getY(), pos.getZ(), 0.0D, 0.0D);
+            return CAVE_AIR;
         }
     }
 }
