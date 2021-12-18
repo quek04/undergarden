@@ -49,30 +49,32 @@
     [],
     [],
     [
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore",
+      "undergarden:shiverstone_ore",
       "undergarden:coal_ore",
       "undergarden:iron_ore",
       "undergarden:gold_ore",
       "undergarden:diamond_ore",
       "undergarden:cloggrum_ore",
       "undergarden:utherium_ore",
-      "undergarden:regalium_ore",
-      "undergarden:shiverstone_ore",
-      "undergarden:deepsoil_ore",
-      "undergarden:sediment_ore"
+      "undergarden:regalium_ore"
     ],
     [],
     [
       "undergarden:virulent_mix_spring"
     ],
     [
-      "minecraft:patch_waterlily",
-      "undergarden:glitterkelp_patch",
-      "undergarden:ditchbulb_patch",
       "undergarden:depthrock_pebble_patch",
+      "undergarden:ditchbulb_patch",
+      "undergarden:blood_mushroom_patch",
       "undergarden:indigo_mushroom_patch",
-      "undergarden:veil_mushroom_patch",
       "undergarden:ink_mushroom_patch",
-      "undergarden:blood_mushroom_patch"
+      "undergarden:veil_mushroom_patch",
+      "undergarden:glitterkelp_patch"
+    ],
+    [
+      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {
@@ -135,7 +137,5 @@
     "misc": []
   },
   "player_spawn_friendly": false,
-  "spawn_costs": {
-
-  }
+  "spawn_costs": {}
 }

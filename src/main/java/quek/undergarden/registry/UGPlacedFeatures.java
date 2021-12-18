@@ -89,4 +89,6 @@ public class UGPlacedFeatures {
     private static PlacedFeature register(String name, PlacedFeature feature) {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(Undergarden.MODID, name), feature);
     }
+
+    public static void stupid() {}
 }

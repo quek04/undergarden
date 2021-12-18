@@ -39,6 +39,7 @@
     [],
     [],
     [
+      "undergarden:depthrock_rock",
       "minecraft:iceberg_packed",
       "undergarden:ice_pillar"
     ],
@@ -46,30 +47,29 @@
     [],
     [],
     [
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore",
       "undergarden:coal_ore",
       "undergarden:iron_ore",
       "undergarden:diamond_ore",
       "undergarden:cloggrum_ore",
-      "undergarden:froststeel_ore",
       "undergarden:utherium_ore",
       "undergarden:regalium_ore",
-      "undergarden:deepsoil_ore",
       "undergarden:ice_ore",
-      "undergarden:sediment_ore"
+      "undergarden:froststeel_ore"
     ],
     [],
     [
       "undergarden:virulent_mix_spring"
     ],
     [
-      "undergarden:frozen_deepturf_patch",
       "undergarden:shimmerweed_patch",
       "undergarden:tall_shimmerweed_patch",
-      "undergarden:indigo_mushroom_patch",
-      "undergarden:veil_mushroom_patch",
-      "undergarden:ink_mushroom_patch",
       "undergarden:blood_mushroom_patch",
-      "undergarden:depthrock_rock"
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:frozen_deepturf_patch"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -121,7 +121,5 @@
     "misc": []
   },
   "player_spawn_friendly": false,
-  "spawn_costs": {
-
-  }
+  "spawn_costs": {}
 }

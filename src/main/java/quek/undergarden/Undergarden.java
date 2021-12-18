@@ -87,8 +87,9 @@ public class Undergarden {
 
 	public void setup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
+			UGConfiguredFeatures.stupid();
+			UGPlacedFeatures.stupid();
 			UGEntityTypes.spawnPlacements();
-			//UGFeatures.registerConfiguredFeatures();
 			UGCarvers.registerConfiguredCarvers();
 			UGStructures.registerStructures();
 			UGCriteria.register();

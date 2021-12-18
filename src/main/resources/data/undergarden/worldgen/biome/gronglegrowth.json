@@ -38,47 +38,50 @@
   "features": [
     [],
     [],
-    [],
+    [
+      "undergarden:depthrock_rock",
+      "undergarden:shiverstone_rock"
+    ],
     [],
     [
       "undergarden:gronglegrowth_delta"
     ],
     [],
     [
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore",
+      "undergarden:shiverstone_ore",
       "undergarden:coal_ore",
       "undergarden:iron_ore",
       "undergarden:gold_ore",
       "undergarden:diamond_ore",
       "undergarden:cloggrum_ore",
       "undergarden:utherium_ore",
-      "undergarden:regalium_ore",
-      "undergarden:shiverstone_ore",
-      "undergarden:deepsoil_ore",
-      "undergarden:sediment_ore"
+      "undergarden:regalium_ore"
     ],
     [],
     [
       "undergarden:spring"
     ],
     [
-      "minecraft:patch_waterlily",
-      "undergarden:ditchbulb_patch",
-      "undergarden:grongle_tree",
-      "undergarden:small_grongle_tree",
-      "undergarden:grongle_bush",
-      "undergarden:droopvine_patch",
-      "undergarden:glitterkelp_patch",
       "undergarden:deepturf_patch",
       "undergarden:shimmerweed_patch",
       "undergarden:depthrock_pebble_patch",
-      "undergarden:indigo_mushroom_patch",
-      "undergarden:veil_mushroom_patch",
-      "undergarden:ink_mushroom_patch",
-      "undergarden:blood_mushroom_patch",
       "undergarden:underbean_bush_patch",
+      "undergarden:ditchbulb_patch",
+      "undergarden:blood_mushroom_patch",
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:droopvine_patch",
+      "undergarden:glitterkelp_patch",
       "undergarden:gloomgourd_patch",
-      "undergarden:depthrock_rock",
-      "undergarden:shiverstone_rock"
+      "undergarden:grongle_tree",
+      "undergarden:small_grongle_tree",
+      "undergarden:grongle_bush"
+    ],
+    [
+      "minecraft:freeze_top_layer"
     ]
   ],
   "spawners": {
@@ -173,8 +176,6 @@
     "misc": []
   },
   "player_spawn_friendly": false,
-  "spawn_costs": {
-
-  },
+  "spawn_costs": {},
   "creature_spawn_probability": 0.5
 }

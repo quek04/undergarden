@@ -64,7 +64,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
             return false;
         }
         else {
-            BlockState carveState = this.getCarveState(context, config, pos);
+            BlockState carveState = this.getCarveState(context, config, pos, aquifer);
             if (carveState == null) {
                 return false;
             }
@@ -91,12 +91,12 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Nullable
-    private BlockState getCarveState(CarvingContext context, CaveCarverConfiguration config, BlockPos pos) {
+    private BlockState getCarveState(CarvingContext context, CaveCarverConfiguration config, BlockPos pos, Aquifer aquifer) {
         if (pos.getY() <= config.lavaLevel.resolveY(context)) {
             return UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock();
         }
         else {
-            return AIR;
+            return aquifer.computeSubstance(pos.getX(), pos.getY(), pos.getZ(), 0.0D, 0.0D);
         }
     }
 }

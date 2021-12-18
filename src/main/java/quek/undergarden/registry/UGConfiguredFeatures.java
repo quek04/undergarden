@@ -135,4 +135,6 @@ public class UGConfiguredFeatures {
     private static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> feature) {
         return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Undergarden.MODID, name), feature);
     }
+
+    public static void stupid() {}
 }
