@@ -1,23 +1,18 @@
 {
-  "precipitation": "none",
-  "category": "none",
-  "temperature": 2.0,
-  "temperature_modifier": "none",
+  "temperature": 2,
   "downfall": 0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "category": "none",
+  "creature_spawn_probability": 0.5,
   "effects": {
-    "fog_color": 2565927,
-    "foliage_color": 7568503,
-    "grass_color": 7568503,
     "sky_color": 1186057,
+    "fog_color": 2565927,
     "water_color": 342306,
     "water_fog_color": 332810,
+    "grass_color": 7568503,
+    "foliage_color": 7568503,
     "grass_color_modifier": "none",
-    "particle": {
-      "options": {
-        "type": "white_ash"
-      },
-      "probability": 0.118093334
-    },
     "ambient_sound": "undergarden:ambient.spires_ambience",
     "additions_sound": {
       "sound": "undergarden:ambient.spires_addition",
@@ -28,53 +23,14 @@
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": true
+    },
+    "particle": {
+      "options": {
+        "type": "white_ash"
+      },
+      "probability": 0.118093334
     }
   },
-  "carvers": {
-    "air": [
-      "undergarden:undergarden_cave"
-    ]
-  },
-  "features": [
-    [],
-    [],
-    [
-      "undergarden:smog_vent"
-    ],
-    [],
-    [],
-    [],
-    [
-      "undergarden:deepsoil_ore",
-      "undergarden:sediment_ore",
-      "undergarden:shiverstone_ore",
-      "undergarden:coal_ore",
-      "undergarden:iron_ore",
-      "undergarden:gold_ore",
-      "undergarden:diamond_ore",
-      "undergarden:cloggrum_ore",
-      "undergarden:utherium_ore",
-      "undergarden:regalium_ore"
-    ],
-    [],
-    [
-      "undergarden:spring"
-    ],
-    [
-      "undergarden:depthrock_pebble_patch",
-      "undergarden:ditchbulb_patch",
-      "undergarden:blood_mushroom_patch",
-      "undergarden:indigo_mushroom_patch",
-      "undergarden:ink_mushroom_patch",
-      "undergarden:veil_mushroom_patch",
-      "undergarden:glitterkelp_patch",
-      "undergarden:ashen_deepturf_patch",
-      "undergarden:blisterberry_bush_patch"
-    ],
-    [
-      "minecraft:freeze_top_layer"
-    ]
-  ],
   "spawners": {
     "monster": [
       {
@@ -129,26 +85,50 @@
         "minCount": 4,
         "maxCount": 8
       }
-    ],
-    "water_creature": [
-      {
-        "type": "undergarden:gwib",
-        "weight": 10,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
-    "water_ambient": [
-      {
-        "type": "undergarden:gwibling",
-        "weight": 5,
-        "minCount": 3,
-        "maxCount": 6
-      }
-    ],
-    "misc": []
+    ]
   },
-  "player_spawn_friendly": false,
   "spawn_costs": {},
-  "creature_spawn_probability": 0.5
+  "carvers": {
+    "air": [
+      "undergarden:undergarden_cave"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [
+      "undergarden:smog_vent"
+    ],
+    [],
+    [],
+    [],
+    [
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore",
+      "undergarden:shiverstone_ore",
+      "undergarden:coal_ore",
+      "undergarden:iron_ore",
+      "undergarden:gold_ore",
+      "undergarden:diamond_ore",
+      "undergarden:cloggrum_ore",
+      "undergarden:utherium_ore",
+      "undergarden:regalium_ore"
+    ],
+    [],
+    [
+      "undergarden:spring"
+    ],
+    [
+      "undergarden:depthrock_pebble_patch",
+      "undergarden:ditchbulb_patch",
+      "undergarden:blood_mushroom_patch",
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:glitterkelp_patch",
+      "undergarden:ashen_deepturf_patch",
+      "undergarden:blisterberry_bush_patch"
+    ],
+    []
+  ]
 }

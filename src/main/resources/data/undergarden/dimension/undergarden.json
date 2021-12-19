@@ -5,7 +5,6 @@
     "settings": "undergarden:undergarden",
     "biome_source": {
       "type": "minecraft:multi_noise",
-      "preset": "undergarden",
       "biomes": [
         {
           "biome": "undergarden:forgotten_field",
@@ -16,6 +15,18 @@
             "erosion": 0,
             "weirdness": 0,
             "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0.53,
             "offset": 0
           }
         },
@@ -32,6 +43,18 @@
           }
         },
         {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": -0.7,
+            "humidity": -0.7,
+            "continentalness": -0.7,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0.53,
+            "offset": 0
+          }
+        },
+        {
           "biome": "undergarden:smogstem_forest",
           "parameters": {
             "temperature": 0.4,
@@ -40,6 +63,18 @@
             "erosion": 0,
             "weirdness": 0,
             "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": 0.4,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0.53,
             "offset": 0
           }
         },
@@ -56,6 +91,18 @@
           }
         },
         {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0.4,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0.53,
+            "offset": 0
+          }
+        },
+        {
           "biome": "undergarden:dense_forest",
           "parameters": {
             "temperature": 0.4,
@@ -64,6 +111,18 @@
             "erosion": 0,
             "weirdness": 0,
             "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": 0.4,
+            "humidity": 0.4,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0.53,
             "offset": 0
           }
         },
@@ -80,6 +139,18 @@
           }
         },
         {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": 0.4,
+            "humidity": 0.4,
+            "continentalness": 0.4,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0.53,
+            "offset": 0
+          }
+        },
+        {
           "biome": "undergarden:barren_abyss",
           "parameters": {
             "temperature": 0,
@@ -88,6 +159,18 @@
             "erosion": 0,
             "weirdness": 0.5,
             "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0.5,
+            "depth": 0.53,
             "offset": 0
           }
         },
@@ -104,6 +187,18 @@
           }
         },
         {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0.8,
+            "depth": 0.53,
+            "offset": 0
+          }
+        },
+        {
           "biome": "undergarden:mushroom_bog",
           "parameters": {
             "temperature": 0,
@@ -112,6 +207,18 @@
             "erosion": 0,
             "weirdness": -0.8,
             "depth": 0,
+            "offset": 0.5
+          }
+        },
+        {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": -0.8,
+            "depth": 0.53,
             "offset": 0.5
           }
         }

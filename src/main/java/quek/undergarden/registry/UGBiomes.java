@@ -14,6 +14,7 @@ public class UGBiomes {
 
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Undergarden.MODID);
 
+    public static final ResourceKey<Biome> ANCIENT_SEA = register("ancient_sea");
     public static final ResourceKey<Biome> BARREN_ABYSS = register("barren_abyss");
     public static final ResourceKey<Biome> DENSE_FOREST = register("dense_forest");
     public static final ResourceKey<Biome> FORGOTTEN_FIELD = register("forgotten_field");
@@ -25,15 +26,16 @@ public class UGBiomes {
     public static final ResourceKey<Biome> WIGGLEWOOD_FOREST = register("wigglewood_forest");
 
     public static void toDictionary() {
+        BiomeDictionary.addTypes(ANCIENT_SEA, BiomeDictionary.Type.WET, BiomeDictionary.Type.OCEAN);
         BiomeDictionary.addTypes(BARREN_ABYSS, BiomeDictionary.Type.COLD, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.WASTELAND);
-        BiomeDictionary.addTypes(DENSE_FOREST, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.FOREST);
-        BiomeDictionary.addTypes(FORGOTTEN_FIELD, BiomeDictionary.Type.HOT, BiomeDictionary.Type.WET, BiomeDictionary.Type.PLAINS);
+        BiomeDictionary.addTypes(DENSE_FOREST, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(FORGOTTEN_FIELD, BiomeDictionary.Type.WET, BiomeDictionary.Type.PLAINS);
         BiomeDictionary.addTypes(FROSTFIELDS, BiomeDictionary.Type.COLD, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.PLAINS);
-        BiomeDictionary.addTypes(GRONGLEGROWTH, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.MUSHROOM, BiomeDictionary.Type.FOREST);
-        BiomeDictionary.addTypes(MUSHROOM_BOG, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.MUSHROOM, BiomeDictionary.Type.SWAMP);
-        BiomeDictionary.addTypes(SMOGSTEM_FOREST, BiomeDictionary.Type.HOT, BiomeDictionary.Type.WET, BiomeDictionary.Type.FOREST);
-        BiomeDictionary.addTypes(SMOG_SPIRES, BiomeDictionary.Type.HOT, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SPOOKY);
-        BiomeDictionary.addTypes(WIGGLEWOOD_FOREST, BiomeDictionary.Type.HOT, BiomeDictionary.Type.WET, BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(GRONGLEGROWTH, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(MUSHROOM_BOG, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.MUSHROOM, BiomeDictionary.Type.SWAMP);
+        BiomeDictionary.addTypes(SMOGSTEM_FOREST, BiomeDictionary.Type.WET, BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(SMOG_SPIRES, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SPOOKY);
+        BiomeDictionary.addTypes(WIGGLEWOOD_FOREST, BiomeDictionary.Type.WET, BiomeDictionary.Type.FOREST);
     }
 
     private static ResourceLocation name(String name) {

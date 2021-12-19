@@ -1,23 +1,17 @@
 {
-  "precipitation": "none",
-  "category": "none",
   "temperature": 0.14,
-  "temperature_modifier": "frozen",
   "downfall": 0,
+  "precipitation": "none",
+  "temperature_modifier": "frozen",
+  "category": "none",
   "effects": {
     "sky_color": 1186057,
     "fog_color": 2565927,
-    "foliage_color": 14609908,
-    "grass_color": 14609908,
     "water_color": 339257,
     "water_fog_color": 332810,
+    "grass_color": 14609908,
+    "foliage_color": 14609908,
     "grass_color_modifier": "none",
-    "particle": {
-      "options": {
-        "type": "white_ash"
-      },
-      "probability": 0.118093334
-    },
     "ambient_sound": "undergarden:ambient.frost_ambience",
     "additions_sound": {
       "sound": "undergarden:ambient.frostfields_addition",
@@ -28,8 +22,55 @@
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": true
+    },
+    "particle": {
+      "options": {
+        "type": "white_ash"
+      },
+      "probability": 0.118093334
     }
   },
+  "spawners": {
+    "monster": [
+      {
+        "type": "undergarden:rotling",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:rotwalker",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:rotbeast",
+        "weight": 100,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "undergarden:nargoyle",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "undergarden:muncher",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "undergarden:sploogie",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ]
+  },
+  "spawn_costs": {},
   "carvers": {
     "air": [
       "undergarden:undergarden_cave"
@@ -71,58 +112,6 @@
       "undergarden:veil_mushroom_patch",
       "undergarden:frozen_deepturf_patch"
     ],
-    [
-      "minecraft:freeze_top_layer"
-    ]
-  ],
-  "starts": [
-    "undergarden:catacombs"
-  ],
-  "spawners": {
-    "monster": [
-      {
-        "type": "undergarden:rotling",
-        "weight": 100,
-        "minCount": 2,
-        "maxCount": 4
-      },
-      {
-        "type": "undergarden:rotwalker",
-        "weight": 100,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "undergarden:rotbeast",
-        "weight": 100,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "undergarden:nargoyle",
-        "weight": 50,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "undergarden:muncher",
-        "weight": 50,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "undergarden:sploogie",
-        "weight": 50,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
-    "creature": [],
-    "ambient": [],
-    "water_creature": [],
-    "water_ambient": [],
-    "misc": []
-  },
-  "player_spawn_friendly": false,
-  "spawn_costs": {}
+    []
+  ]
 }

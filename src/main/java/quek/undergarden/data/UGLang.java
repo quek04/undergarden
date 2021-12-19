@@ -355,6 +355,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
         addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 
+        addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
         addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
         addBiome(UGBiomes.DENSE_FOREST, "Dense Forest");
         addBiome(UGBiomes.FORGOTTEN_FIELD, "Forgotten Field");

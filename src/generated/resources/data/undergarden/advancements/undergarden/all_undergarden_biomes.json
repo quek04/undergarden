@@ -17,6 +17,14 @@
     "hidden": false
   },
   "criteria": {
+    "undergarden:ancient_sea": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:ancient_sea"
+        }
+      }
+    },
     "undergarden:barren_abyss": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -91,6 +99,9 @@
     }
   },
   "requirements": [
+    [
+      "undergarden:ancient_sea"
+    ],
     [
       "undergarden:barren_abyss"
     ],

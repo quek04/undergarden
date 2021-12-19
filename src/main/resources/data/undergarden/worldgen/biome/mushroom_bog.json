@@ -1,23 +1,18 @@
 {
-  "precipitation": "none",
-  "category": "none",
   "temperature": 0.8,
-  "temperature_modifier": "none",
   "downfall": 0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "category": "none",
+  "creature_spawn_probability": 0.5,
   "effects": {
-    "fog_color": 1640729,
-    "foliage_color": 5265970,
-    "grass_color": 5265970,
     "sky_color": 1186057,
+    "fog_color": 1640729,
     "water_color": 342306,
     "water_fog_color": 332810,
+    "grass_color": 5265970,
+    "foliage_color": 5265970,
     "grass_color_modifier": "none",
-    "particle": {
-      "options": {
-        "type": "white_ash"
-      },
-      "probability": 0.05
-    },
     "ambient_sound": "undergarden:ambient.undergarden_ambience",
     "additions_sound": {
       "sound": "undergarden:ambient.bog_addition",
@@ -28,60 +23,14 @@
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": true
+    },
+    "particle": {
+      "options": {
+        "type": "white_ash"
+      },
+      "probability": 0.05
     }
   },
-  "carvers": {
-    "air": [
-      "undergarden:undergarden_cave"
-    ]
-  },
-  "features": [
-    [],
-    [],
-    [],
-    [],
-    [
-      "undergarden:bog_delta"
-    ],
-    [],
-    [
-      "undergarden:deepsoil_ore",
-      "undergarden:sediment_ore",
-      "undergarden:shiverstone_ore",
-      "undergarden:coal_ore",
-      "undergarden:iron_ore",
-      "undergarden:gold_ore",
-      "undergarden:diamond_ore",
-      "undergarden:cloggrum_ore",
-      "undergarden:utherium_ore",
-      "undergarden:regalium_ore"
-    ],
-    [],
-    [
-      "undergarden:virulent_mix_bog_spring"
-    ],
-    [
-      "undergarden:deepturf_patch",
-      "undergarden:shimmerweed_patch",
-      "undergarden:depthrock_pebble_patch",
-      "undergarden:ditchbulb_patch",
-      "undergarden:tall_deepturf_patch",
-      "undergarden:blood_mushroom_patch",
-      "undergarden:indigo_mushroom_patch",
-      "undergarden:ink_mushroom_patch",
-      "undergarden:veil_mushroom_patch",
-      "undergarden:droopvine_patch",
-      "undergarden:glitterkelp_patch",
-      "undergarden:gloomgourd_patch",
-      "undergarden:huge_blood_mushroom",
-      "undergarden:huge_indigo_mushroom",
-      "undergarden:huge_ink_mushroom",
-      "undergarden:huge_veil_mushroom"
-    ],
-    [
-      "minecraft:freeze_top_layer"
-    ]
-  ],
   "spawners": {
     "monster": [
       {
@@ -136,26 +85,57 @@
         "minCount": 4,
         "maxCount": 8
       }
-    ],
-    "water_creature": [
-      {
-        "type": "undergarden:gwib",
-        "weight": 10,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
-    "water_ambient": [
-      {
-        "type": "undergarden:gwibling",
-        "weight": 5,
-        "minCount": 3,
-        "maxCount": 6
-      }
-    ],
-    "misc": []
+    ]
   },
-  "player_spawn_friendly": false,
   "spawn_costs": {},
-  "creature_spawn_probability": 0.5
+  "carvers": {
+    "air": [
+      "undergarden:undergarden_cave"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [
+      "undergarden:bog_delta"
+    ],
+    [],
+    [
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore",
+      "undergarden:shiverstone_ore",
+      "undergarden:coal_ore",
+      "undergarden:iron_ore",
+      "undergarden:gold_ore",
+      "undergarden:diamond_ore",
+      "undergarden:cloggrum_ore",
+      "undergarden:utherium_ore",
+      "undergarden:regalium_ore"
+    ],
+    [],
+    [
+      "undergarden:virulent_mix_bog_spring"
+    ],
+    [
+      "undergarden:deepturf_patch",
+      "undergarden:shimmerweed_patch",
+      "undergarden:depthrock_pebble_patch",
+      "undergarden:ditchbulb_patch",
+      "undergarden:tall_deepturf_patch",
+      "undergarden:blood_mushroom_patch",
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:droopvine_patch",
+      "undergarden:glitterkelp_patch",
+      "undergarden:gloomgourd_patch",
+      "undergarden:huge_blood_mushroom",
+      "undergarden:huge_indigo_mushroom",
+      "undergarden:huge_ink_mushroom",
+      "undergarden:huge_veil_mushroom"
+    ],
+    []
+  ]
 }
