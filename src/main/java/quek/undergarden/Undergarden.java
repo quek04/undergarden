@@ -90,8 +90,10 @@ public class Undergarden {
 			UGConfiguredFeatures.init();
 			UGPlacedFeatures.init();
 			UGConfiguredCarvers.init();
-			UGEntityTypes.spawnPlacements();
 			UGStructures.registerStructures();
+			UGConfiguredCarvers.init();
+			UGProcessorLists.init();
+			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGBiomes.toDictionary();
 			UGDimensions.registerDimensionStuff();

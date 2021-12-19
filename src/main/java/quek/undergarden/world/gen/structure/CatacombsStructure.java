@@ -1,14 +1,26 @@
 package quek.undergarden.world.gen.structure;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.feature.JigsawFeature;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
+import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
+import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
+import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
+import quek.undergarden.Undergarden;
 
-public class CatacombsStructure extends JigsawFeature {
+public class CatacombsStructure extends StructureFeature<JigsawConfiguration> {
 
     public CatacombsStructure(Codec<JigsawConfiguration> codec) {
-        super(codec, 33, false, false, (predicate) -> true);
+        super(codec, (context) -> {
+            JigsawConfiguration catacombsConfig = new JigsawConfiguration(() -> context.registryAccess().ownedRegistryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(new ResourceLocation(Undergarden.MODID, "catacombs/catacombs_entrance")), 50);
+            PieceGeneratorSupplier.Context<JigsawConfiguration> catacombsContext = new PieceGeneratorSupplier.Context<>(context.chunkGenerator(), context.biomeSource(), context.seed(), context.chunkPos(), catacombsConfig, context.heightAccessor(), context.validBiome(), context.structureManager(), context.registryAccess());
+            BlockPos catacombsPos = new BlockPos(context.chunkPos().getMinBlockX(), 33, context.chunkPos().getMinBlockZ());
+            return JigsawPlacement.addPieces(catacombsContext, PoolElementStructurePiece::new, catacombsPos, false, false);
+        });
     }
 
     @Override

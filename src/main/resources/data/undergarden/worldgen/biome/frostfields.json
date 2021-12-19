@@ -75,6 +75,9 @@
       "minecraft:freeze_top_layer"
     ]
   ],
+  "starts": [
+    "undergarden:catacombs"
+  ],
   "spawners": {
     "monster": [
       {

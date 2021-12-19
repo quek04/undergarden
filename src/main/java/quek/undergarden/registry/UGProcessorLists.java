@@ -13,4 +13,6 @@ public class UGProcessorLists {
     private static StructureProcessorList register(String name, ImmutableList<StructureProcessor> processors) {
         return BuiltinRegistries.register(BuiltinRegistries.PROCESSOR_LIST, new ResourceLocation(Undergarden.MODID, name), new StructureProcessorList(processors));
     }
+
+    public static void init() {}
 }

@@ -1,6 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.data.worldgen.PlainVillagePools;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
@@ -10,9 +11,11 @@ import quek.undergarden.Undergarden;
 
 public class UGConfiguredStructures {
 
-    public static ConfiguredStructureFeature<JigsawConfiguration, ? extends StructureFeature<JigsawConfiguration>> CATACOMBS = register("catacombs", UGStructures.CATACOMBS.get().configured(new JigsawConfiguration(() -> UGPools.CATACOMBS_START, 6)));
+    public static ConfiguredStructureFeature<JigsawConfiguration, ? extends StructureFeature<JigsawConfiguration>> CATACOMBS = register("catacombs", UGStructures.CATACOMBS.get().configured(new JigsawConfiguration(() -> PlainVillagePools.START, 0)));
 
     private static <FC extends FeatureConfiguration, F extends StructureFeature<FC>> ConfiguredStructureFeature<FC, F> register(String name, ConfiguredStructureFeature<FC, F> structure) {
         return BuiltinRegistries.register(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, new ResourceLocation(Undergarden.MODID, name), structure);
     }
+
+    public static void init() {}
 }
