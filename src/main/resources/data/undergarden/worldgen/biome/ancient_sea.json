@@ -19,6 +19,44 @@
     }
   },
   "spawners": {
+    "monster": [
+      {
+        "type": "undergarden:rotling",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:rotwalker",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "undergarden:rotbeast",
+        "weight": 100,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "undergarden:nargoyle",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "undergarden:muncher",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "undergarden:sploogie",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
     "water_ambient": [
       {
         "type": "undergarden:gwibling",
