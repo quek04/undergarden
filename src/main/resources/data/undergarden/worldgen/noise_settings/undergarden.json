@@ -20,8 +20,6 @@
     "height": 256,
     "size_horizontal": 2,
     "size_vertical": 2,
-    "island_noise_override": false,
-    "amplified": false,
     "sampling": {
       "xz_scale": 1,
       "y_scale": 3,
