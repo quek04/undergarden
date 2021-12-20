@@ -11,13 +11,13 @@ import java.util.Random;
 
 public abstract class AbstractCavernCreatureEntity extends Monster {
 
-    protected AbstractCavernCreatureEntity(EntityType<? extends Monster> type, Level worldIn) {
-        super(type, worldIn);
+    protected AbstractCavernCreatureEntity(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
     }
 
-    public static boolean canCreatureSpawn(EntityType<? extends Monster> type, ServerLevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {
-        if(checkMonsterSpawnRules(type, worldIn, reason, pos, randomIn)) {
-            return reason == MobSpawnType.SPAWNER || pos.getY() < 32;
+    public static boolean canCreatureSpawn(EntityType<? extends Monster> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        if(checkMonsterSpawnRules(type, level, spawnType, pos, random)) {
+            return spawnType == MobSpawnType.SPAWNER || pos.getY() < 32;
         }
         return false;
     }

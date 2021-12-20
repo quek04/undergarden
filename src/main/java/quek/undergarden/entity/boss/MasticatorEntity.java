@@ -1,46 +1,45 @@
 package quek.undergarden.entity.boss;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
+import net.minecraft.world.BossEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.BossEvent;
 import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 
 public class MasticatorEntity extends Monster {
 
-    private final ServerBossEvent bossInfo = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(false);
+    private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(false);
 
-    public MasticatorEntity(EntityType<? extends Monster> type, Level worldIn) {
-        super(type, worldIn);
+    public MasticatorEntity(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
         this.maxUpStep = 1.0F;
         this.xpReward = 25;
     }
 
     @Override
     protected void registerGoals() {
-        super.registerGoals();
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, false));
@@ -75,14 +74,14 @@ public class MasticatorEntity extends Monster {
     }
 
     @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
+    protected void playStepSound(BlockPos pos, BlockState state) {
         this.playSound(UGSoundEvents.MASTICATOR_STEP.get(), 0.20F, 0.5F);
     }
 
     @Override
     public void setCustomName(@Nullable Component name) {
         super.setCustomName(name);
-        this.bossInfo.setName(this.getDisplayName());
+        this.bossEvent.setName(this.getDisplayName());
     }
 
     @Override
@@ -116,12 +115,12 @@ public class MasticatorEntity extends Monster {
             }
 
         }
-        this.bossInfo.setProgress(this.getHealth() / this.getMaxHealth());
+        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
     }
 
     @Override
-    public void killed(ServerLevel world, LivingEntity entityLivingIn) {
-        super.killed(world, entityLivingIn);
+    public void killed(ServerLevel level, LivingEntity entity) {
+        super.killed(level, entity);
         this.heal(this.getHealth() / 4);
         this.playSound(UGSoundEvents.MASTICATOR_EAT.get(), 1.0F, this.getVoicePitch());
     }
@@ -129,19 +128,19 @@ public class MasticatorEntity extends Monster {
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
-        this.bossInfo.addPlayer(player);
+        this.bossEvent.addPlayer(player);
     }
 
     @Override
     public void stopSeenByPlayer(ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        this.bossInfo.removePlayer(player);
+        this.bossEvent.removePlayer(player);
     }
 
     @Override
-    protected void blockedByShield(LivingEntity entityIn) {
-        this.launch(entityIn);
-        entityIn.hurtMarked = true;
+    protected void blockedByShield(LivingEntity entity) {
+        this.launch(entity);
+        entity.hurtMarked = true;
     }
 
     private void launch(Entity target) {

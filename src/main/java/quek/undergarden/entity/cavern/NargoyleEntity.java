@@ -21,8 +21,8 @@ import java.util.EnumSet;
 
 public class NargoyleEntity extends AbstractCavernCreatureEntity {
 
-    public NargoyleEntity(EntityType<? extends AbstractCavernCreatureEntity> type, Level worldIn) {
-        super(type, worldIn);
+    public NargoyleEntity(EntityType<? extends AbstractCavernCreatureEntity> type, Level level) {
+        super(type, level);
     }
 
     @Override
@@ -56,9 +56,9 @@ public class NargoyleEntity extends AbstractCavernCreatureEntity {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entityIn) {
+    public boolean doHurtTarget(Entity entity) {
         this.playSound(UGSoundEvents.NARGOYLE_ATTACK.get(), 1.0F, 1.0F);
-        return super.doHurtTarget(entityIn);
+        return super.doHurtTarget(entity);
     }
 
     public static class LeapAtTargetGoal extends Goal {
@@ -66,9 +66,9 @@ public class NargoyleEntity extends AbstractCavernCreatureEntity {
         private LivingEntity leapTarget;
         private final float leapMotionY;
 
-        public LeapAtTargetGoal(Mob leapingEntity, float leapMotionYIn) {
-            this.leaper = leapingEntity;
-            this.leapMotionY = leapMotionYIn;
+        public LeapAtTargetGoal(Mob mob, float leapMotionY) {
+            this.leaper = mob;
+            this.leapMotionY = leapMotionY;
             this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
         }
 

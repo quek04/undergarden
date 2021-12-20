@@ -22,8 +22,8 @@ import quek.undergarden.registry.UGTags;
 
 public class MuncherEntity extends AbstractCavernCreatureEntity {
 
-    public MuncherEntity(EntityType<? extends AbstractCavernCreatureEntity> type, Level worldIn) {
-        super(type, worldIn);
+    public MuncherEntity(EntityType<? extends AbstractCavernCreatureEntity> type, Level level) {
+        super(type, level);
     }
 
     @Override

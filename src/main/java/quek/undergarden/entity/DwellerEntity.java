@@ -41,8 +41,8 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
     private static final EntityDataAccessor<Integer> BOOST_TIME = SynchedEntityData.defineId(DwellerEntity.class, EntityDataSerializers.INT);
     private final ItemBasedSteering steering = new ItemBasedSteering(this.entityData, BOOST_TIME, SADDLE);
 
-    public DwellerEntity(EntityType<? extends DwellerEntity> type, Level worldIn) {
-        super(type, worldIn);
+    public DwellerEntity(EntityType<? extends DwellerEntity> type, Level level) {
+        super(type, level);
     }
 
     @Override
@@ -63,8 +63,8 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
                 .add(Attributes.MOVEMENT_SPEED, 0.15D);
     }
 
-    public static boolean canDwellerSpawn(EntityType<? extends Animal> animal, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get()) || worldIn.getBlockState(pos.below()).is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
+    public static boolean canDwellerSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        return level.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get()) || level.getBlockState(pos.below()).is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
     }
 
     @Override
@@ -89,8 +89,8 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageableEntity) {
-        return UGEntityTypes.DWELLER.get().create(level);
+    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
+        return UGEntityTypes.DWELLER.get().create(this.level);
     }
 
     @Override
@@ -197,8 +197,8 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
             return false;
         }
         else {
-            Player playerentity = (Player)entity;
-            return playerentity.getMainHandItem().getItem() == UGItems.UNDERBEAN_STICK.get() || playerentity.getOffhandItem().getItem() == UGItems.UNDERBEAN_STICK.get();
+            Player player = (Player)entity;
+            return player.getMainHandItem().getItem() == UGItems.UNDERBEAN_STICK.get() || player.getOffhandItem().getItem() == UGItems.UNDERBEAN_STICK.get();
         }
     }
 

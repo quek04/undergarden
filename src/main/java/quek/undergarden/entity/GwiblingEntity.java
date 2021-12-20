@@ -17,12 +17,12 @@ import java.util.Random;
 
 public class GwiblingEntity extends AbstractFish {
 
-    public GwiblingEntity(EntityType<? extends AbstractFish> type, Level worldIn) {
-        super(type, worldIn);
+    public GwiblingEntity(EntityType<? extends AbstractFish> type, Level level) {
+        super(type, level);
     }
 
-    public static boolean canGwiblingSpawn(EntityType<? extends AbstractFish> type, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {
-        return worldIn.getBlockState(pos).is(Blocks.WATER) && worldIn.getBlockState(pos.above()).is(Blocks.WATER);
+    public static boolean canGwiblingSpawn(EntityType<? extends AbstractFish> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        return level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
     }
 
     @Override

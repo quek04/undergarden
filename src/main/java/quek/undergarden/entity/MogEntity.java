@@ -40,8 +40,8 @@ public class MogEntity extends Animal implements IForgeShearable {
     private static final EntityDataAccessor<Boolean> HAS_MOSS = SynchedEntityData.defineId(MogEntity.class, EntityDataSerializers.BOOLEAN);
     private int timeWithoutMoss;
 
-    public MogEntity(EntityType<? extends Animal> entityType, Level world) {
-        super(entityType, world);
+    public MogEntity(EntityType<? extends Animal> type, Level level) {
+        super(type, level);
         this.maxUpStep = 1.0F;
     }
 
@@ -89,8 +89,8 @@ public class MogEntity extends Animal implements IForgeShearable {
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob parent) {
-        return UGEntityTypes.MOG.get().create(world);
+    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
+        return UGEntityTypes.MOG.get().create(level);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class MogEntity extends Animal implements IForgeShearable {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+    protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
         return 0.2F;
     }
 
@@ -147,9 +147,9 @@ public class MogEntity extends Animal implements IForgeShearable {
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
         this.setMoss(true);
-        return super.finalizeSpawn(world, difficulty, reason, data, nbt);
+        return super.finalizeSpawn(level, difficulty, spawnType, data, nbt);
     }
 
     @Override
@@ -159,9 +159,9 @@ public class MogEntity extends Animal implements IForgeShearable {
 
     @Nonnull
     @Override
-    public List<ItemStack> onSheared(@Nullable Player player, @Nonnull ItemStack item, Level world, BlockPos pos, int fortune) {
-        world.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
-        if(!world.isClientSide) {
+    public List<ItemStack> onSheared(@Nullable Player player, @Nonnull ItemStack stack, Level level, BlockPos pos, int fortune) {
+        level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
+        if(!level.isClientSide) {
             this.setMoss(false);
             int mossAmount = 1 + this.random.nextInt(2);
 

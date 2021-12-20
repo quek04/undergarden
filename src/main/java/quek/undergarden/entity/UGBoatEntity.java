@@ -20,8 +20,8 @@ public class UGBoatEntity extends Boat {
 
     private static final EntityDataAccessor<Integer> BOAT_TYPE = SynchedEntityData.defineId(UGBoatEntity.class, EntityDataSerializers.INT);
 
-    public UGBoatEntity(EntityType<? extends Boat> type, Level world) {
-        super(type, world);
+    public UGBoatEntity(EntityType<? extends Boat> type, Level level) {
+        super(type, level);
         this.blocksBuilding = true;
     }
 

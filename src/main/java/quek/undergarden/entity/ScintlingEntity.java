@@ -25,8 +25,8 @@ import java.util.Random;
 
 public class ScintlingEntity extends Animal {
 
-    public ScintlingEntity(EntityType<? extends Animal> type, Level worldIn) {
-        super(type, worldIn);
+    public ScintlingEntity(EntityType<? extends Animal> type, Level level) {
+        super(type, level);
         this.maxUpStep = 1.0F;
         this.xpReward = 0;
     }
@@ -49,8 +49,8 @@ public class ScintlingEntity extends Animal {
     }
 
 
-    public static boolean canScintlingSpawn(EntityType<? extends Animal> animal, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.below()).getBlock() == UGBlocks.DEPTHROCK.get() || worldIn.getBlockState(pos.below()).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get();
+    public static boolean canScintlingSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        return level.getBlockState(pos.below()).getBlock() == UGBlocks.DEPTHROCK.get() || level.getBlockState(pos.below()).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get();
     }
 
     @Override
@@ -76,8 +76,8 @@ public class ScintlingEntity extends Animal {
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageableEntity) {
-        return UGEntityTypes.SCINTLING.get().create(level);
+    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
+        return UGEntityTypes.SCINTLING.get().create(this.level);
     }
 
     @Override
@@ -86,5 +86,5 @@ public class ScintlingEntity extends Animal {
     }
 
     @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) { }
+    protected void playStepSound(BlockPos pos, BlockState state) { }
 }

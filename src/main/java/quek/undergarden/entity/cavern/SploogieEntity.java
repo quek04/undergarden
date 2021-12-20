@@ -24,8 +24,8 @@ import quek.undergarden.registry.UGSoundEvents;
 
 public class SploogieEntity extends AbstractCavernCreatureEntity implements RangedAttackMob {
 
-    public SploogieEntity(EntityType<? extends Monster> type, Level worldIn) {
-        super(type, worldIn);
+    public SploogieEntity(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
     }
 
     @Override

@@ -32,8 +32,8 @@ public class BruteEntity extends Animal implements NeutralMob {
     private int angerTime;
     private UUID targetUuid;
 
-    public BruteEntity(EntityType<? extends Animal> type, Level worldIn) {
-        super(type, worldIn);
+    public BruteEntity(EntityType<? extends Animal> type, Level level) {
+        super(type, level);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class BruteEntity extends Animal implements NeutralMob {
                 .add(Attributes.ATTACK_DAMAGE, 3.0D);
     }
 
-    public static boolean canBruteSpawn(EntityType<? extends Animal> animal, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, Random random) {
+    public static boolean canBruteSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
         return level.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get());
     }
 

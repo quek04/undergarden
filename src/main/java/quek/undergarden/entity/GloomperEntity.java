@@ -42,8 +42,8 @@ public class GloomperEntity extends Animal {
     private boolean wasOnGround;
     private int currentMoveTypeDuration;
 
-    public GloomperEntity(EntityType<? extends Animal> type, Level worldIn) {
-        super(type, worldIn);
+    public GloomperEntity(EntityType<? extends Animal> type, Level level) {
+        super(type, level);
         this.jumpControl = new JumpHelperController(this);
         this.moveControl = new GloomperEntity.MoveHelperController(this);
         this.setMovementSpeed(0.0D);
@@ -68,8 +68,8 @@ public class GloomperEntity extends Animal {
                 .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
-    public static boolean canGloomperSpawn(EntityType<? extends Animal> animal, LevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random random) {
-        return worldIn.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get());
+    public static boolean canGloomperSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+        return level.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get());
     }
 
     @Override
@@ -89,8 +89,8 @@ public class GloomperEntity extends Animal {
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageableEntity) {
-        return UGEntityTypes.GLOOMPER.get().create(level);
+    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
+        return UGEntityTypes.GLOOMPER.get().create(this.level);
     }
 
     @Override
@@ -347,14 +347,14 @@ public class GloomperEntity extends Animal {
         }
 
         @Override
-        public void setWantedPosition(double x, double y, double z, double speedIn) {
+        public void setWantedPosition(double x, double y, double z, double speed) {
             if (this.gloomper.isInWater()) {
-                speedIn = 1.5D;
+                speed = 1.5D;
             }
 
-            super.setWantedPosition(x, y, z, speedIn);
-            if (speedIn > 0.0D) {
-                this.nextJumpSpeed = speedIn;
+            super.setWantedPosition(x, y, z, speed);
+            if (speed > 0.0D) {
+                this.nextJumpSpeed = speed;
             }
 
         }

@@ -25,8 +25,8 @@ import quek.undergarden.registry.UGTags;
 
 public class MinionEntity extends AbstractGolem implements RangedAttackMob {
 
-    public MinionEntity(EntityType<? extends AbstractGolem> type, Level worldIn) {
-        super(type, worldIn);
+    public MinionEntity(EntityType<? extends AbstractGolem> type, Level level) {
+        super(type, level);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class MinionEntity extends AbstractGolem implements RangedAttackMob {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
+    protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
         return 1.0F;
     }
 

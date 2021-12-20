@@ -37,8 +37,8 @@ public class ForgottenGuardianEntity extends Monster {
 
     private int attackTimer;
 
-    public ForgottenGuardianEntity(EntityType<? extends Monster> type, Level worldIn) {
-        super(type, worldIn);
+    public ForgottenGuardianEntity(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
         this.maxUpStep = 1.0F;
         this.xpReward = 30;
     }
@@ -77,7 +77,7 @@ public class ForgottenGuardianEntity extends Monster {
     }
 
     @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
+    protected void playStepSound(BlockPos pos, BlockState state) {
         this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_STEP.get(), 0.5F, 1.0F);
     }
 
@@ -115,18 +115,18 @@ public class ForgottenGuardianEntity extends Monster {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entityIn) {
+    public boolean doHurtTarget(Entity entity) {
         this.attackTimer = 10;
         this.level.broadcastEntityEvent(this, (byte)4);
         float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
-        boolean flag = entityIn.hurt(DamageSource.mobAttack(this), f1);
+        boolean flag = entity.hurt(DamageSource.mobAttack(this), f1);
         if (flag) {
-            double x = entityIn.getX() - this.getX();
-            double z = entityIn.getZ() - this.getZ();
+            double x = entity.getX() - this.getX();
+            double z = entity.getZ() - this.getZ();
             double modifier = Math.max(x * x + z * z, 0.001D);
-            entityIn.setDeltaMovement(entityIn.getDeltaMovement().add((x / modifier) * 2, 0.2F, (z / modifier) * 2));
-            this.doEnchantDamageEffects(this, entityIn);
+            entity.setDeltaMovement(entity.getDeltaMovement().add((x / modifier) * 2, 0.2F, (z / modifier) * 2));
+            this.doEnchantDamageEffects(this, entity);
         }
 
         this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
@@ -134,12 +134,12 @@ public class ForgottenGuardianEntity extends Monster {
     }
 
     @Override
-    protected void blockedByShield(LivingEntity entityIn) {
-        double x = entityIn.getX() - this.getX();
-        double z = entityIn.getZ() - this.getZ();
+    protected void blockedByShield(LivingEntity entity) {
+        double x = entity.getX() - this.getX();
+        double z = entity.getZ() - this.getZ();
         double modifier = Math.max(x * x + z * z, 0.001D);
-        entityIn.push((x / modifier) * 2, 0.2F, (z / modifier) * 2);
-        entityIn.hurtMarked = true;
+        entity.push((x / modifier) * 2, 0.2F, (z / modifier) * 2);
+        entity.hurtMarked = true;
     }
 
     @Override
@@ -177,7 +177,7 @@ public class ForgottenGuardianEntity extends Monster {
     protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) { }
 
     @Override
-    public boolean canBeAffected(MobEffectInstance pPotioneffect) {
+    public boolean canBeAffected(MobEffectInstance effectInstance) {
         return false;
     }
 
@@ -187,8 +187,8 @@ public class ForgottenGuardianEntity extends Monster {
     }
 
     @Override
-    protected PathNavigation createNavigation(Level world) {
-        return new ForgottenGuardianEntity.Navigator(this, world);
+    protected PathNavigation createNavigation(Level level) {
+        return new ForgottenGuardianEntity.Navigator(this, level);
     }
 
     @Override
@@ -197,8 +197,8 @@ public class ForgottenGuardianEntity extends Monster {
     }
 
     static class Navigator extends GroundPathNavigation {
-        public Navigator(Mob entity, Level world) {
-            super(entity, world);
+        public Navigator(Mob entity, Level level) {
+            super(entity, level);
         }
 
         protected PathFinder createPathFinder(int range) {
@@ -211,7 +211,7 @@ public class ForgottenGuardianEntity extends Monster {
         private Processor() {
         }
 
-        protected BlockPathTypes evaluateBlockPathType(BlockGetter world, boolean p_215744_2_, boolean p_215744_3_, BlockPos pos, BlockPathTypes pathNodeType) {
+        protected BlockPathTypes evaluateBlockPathType(BlockGetter level, boolean p_215744_2_, boolean p_215744_3_, BlockPos pos, BlockPathTypes pathNodeType) {
             return BlockPathTypes.WALKABLE;
         }
     }

@@ -49,7 +49,7 @@ public class GwibEntity extends WaterAnimal implements Enemy {
                 .add(Attributes.ATTACK_DAMAGE, 4.0D);
     }
 
-    public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, Random random) {
+    public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
         return !(level.getDifficulty() == Difficulty.PEACEFUL) && random.nextInt(10) == 0 && level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
     }
 
@@ -101,7 +101,7 @@ public class GwibEntity extends WaterAnimal implements Enemy {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+    protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
         return 0.25F;
     }
 }
