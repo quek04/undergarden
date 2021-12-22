@@ -43,7 +43,7 @@
           }
         },
         {
-          "biome": "undergarden:ancient_sea",
+          "biome": "undergarden:icy_sea",
           "parameters": {
             "temperature": -0.7,
             "humidity": -0.7,

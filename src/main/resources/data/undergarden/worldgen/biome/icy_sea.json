@@ -1,34 +1,22 @@
 {
-  "temperature": 2,
+  "temperature": 0.14,
   "downfall": 0,
   "precipitation": "none",
-  "temperature_modifier": "none",
+  "temperature_modifier": "frozen",
   "category": "none",
-  "creature_spawn_probability": 0.5,
   "effects": {
     "sky_color": 1186057,
     "fog_color": 2565927,
-    "water_color": 342306,
+    "water_color": 339257,
     "water_fog_color": 332810,
-    "grass_color": 7568503,
-    "foliage_color": 7568503,
-    "grass_color_modifier": "none",
-    "ambient_sound": "undergarden:ambient.spires_ambience",
-    "additions_sound": {
-      "sound": "undergarden:ambient.spires_addition",
-      "tick_chance": 0.0211
-    },
+    "grass_color": 14609908,
+    "foliage_color": 14609908,
+    "ambient_sound": "undergarden:ambient.frost_ambience",
     "music": {
       "sound": "undergarden:music.undergarden_music",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": true
-    },
-    "particle": {
-      "options": {
-        "type": "white_ash"
-      },
-      "probability": 0.118093334
     }
   },
   "spawners": {
@@ -69,22 +57,6 @@
         "minCount": 1,
         "maxCount": 1
       }
-    ],
-    "creature": [
-      {
-        "type": "undergarden:dweller",
-        "weight": 100,
-        "minCount": 8,
-        "maxCount": 8
-      }
-    ],
-    "ambient": [
-      {
-        "type": "undergarden:scintling",
-        "weight": 5,
-        "minCount": 4,
-        "maxCount": 8
-      }
     ]
   },
   "spawn_costs": {},
@@ -97,7 +69,8 @@
     [],
     [],
     [
-      "undergarden:smog_vent"
+      "minecraft:iceberg_packed",
+      "undergarden:ice_pillar"
     ],
     [],
     [],
@@ -105,28 +78,26 @@
     [
       "undergarden:deepsoil_ore",
       "undergarden:sediment_ore",
-      "undergarden:shiverstone_ore",
       "undergarden:coal_ore",
       "undergarden:iron_ore",
-      "undergarden:gold_ore",
       "undergarden:diamond_ore",
       "undergarden:cloggrum_ore",
       "undergarden:utherium_ore",
-      "undergarden:regalium_ore"
+      "undergarden:regalium_ore",
+      "undergarden:ice_ore",
+      "undergarden:froststeel_ore"
     ],
     [],
+    [],
     [
-      "undergarden:spring"
-    ],
-    [
-      "undergarden:depthrock_pebble_patch",
-      "undergarden:ditchbulb_patch",
+      "undergarden:shimmerweed_patch",
+      "undergarden:tall_shimmerweed_patch",
       "undergarden:blood_mushroom_patch",
       "undergarden:indigo_mushroom_patch",
       "undergarden:ink_mushroom_patch",
       "undergarden:veil_mushroom_patch",
-      "undergarden:ashen_deepturf_patch",
-      "undergarden:blisterberry_bush_patch"
+      "undergarden:glitterkelp_patch",
+      "undergarden:frozen_deepturf_patch"
     ],
     []
   ]

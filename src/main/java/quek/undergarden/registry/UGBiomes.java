@@ -20,6 +20,7 @@ public class UGBiomes {
     public static final ResourceKey<Biome> FORGOTTEN_FIELD = register("forgotten_field");
     public static final ResourceKey<Biome> FROSTFIELDS = register("frostfields");
     public static final ResourceKey<Biome> GRONGLEGROWTH = register("gronglegrowth");
+    public static final ResourceKey<Biome> ICY_SEA = register("icy_sea");
     public static final ResourceKey<Biome> MUSHROOM_BOG = register("mushroom_bog");
     public static final ResourceKey<Biome> SMOGSTEM_FOREST = register("smogstem_forest");
     public static final ResourceKey<Biome> SMOG_SPIRES = register("smog_spires");
@@ -32,6 +33,7 @@ public class UGBiomes {
         BiomeDictionary.addTypes(FORGOTTEN_FIELD, BiomeDictionary.Type.WET, BiomeDictionary.Type.PLAINS);
         BiomeDictionary.addTypes(FROSTFIELDS, BiomeDictionary.Type.COLD, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.PLAINS);
         BiomeDictionary.addTypes(GRONGLEGROWTH, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(ICY_SEA, BiomeDictionary.Type.COLD, BiomeDictionary.Type.OCEAN);
         BiomeDictionary.addTypes(MUSHROOM_BOG, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.MUSHROOM, BiomeDictionary.Type.SWAMP);
         BiomeDictionary.addTypes(SMOGSTEM_FOREST, BiomeDictionary.Type.WET, BiomeDictionary.Type.FOREST);
         BiomeDictionary.addTypes(SMOG_SPIRES, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SPOOKY);

@@ -361,6 +361,7 @@ public class UGLang extends LanguageProvider {
         addBiome(UGBiomes.FORGOTTEN_FIELD, "Forgotten Field");
         addBiome(UGBiomes.FROSTFIELDS, "Frostfields");
         addBiome(UGBiomes.GRONGLEGROWTH, "Gronglegrowth");
+        addBiome(UGBiomes.ICY_SEA, "Icy Sea");
         addBiome(UGBiomes.MUSHROOM_BOG, "Mushroom Bog");
         addBiome(UGBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
         addBiome(UGBiomes.SMOG_SPIRES, "Smog Spires");

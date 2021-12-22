@@ -65,6 +65,14 @@
         }
       }
     },
+    "undergarden:icy_sea": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:icy_sea"
+        }
+      }
+    },
     "undergarden:mushroom_bog": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -116,6 +124,9 @@
     ],
     [
       "undergarden:gronglegrowth"
+    ],
+    [
+      "undergarden:icy_sea"
     ],
     [
       "undergarden:mushroom_bog"

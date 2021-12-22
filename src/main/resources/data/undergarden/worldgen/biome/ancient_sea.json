@@ -72,6 +72,14 @@
         "minCount": 1,
         "maxCount": 1
       }
+    ],
+    "ambient": [
+      {
+        "type": "undergarden:scintling",
+        "weight": 5,
+        "minCount": 4,
+        "maxCount": 8
+      }
     ]
   },
   "spawn_costs": {},
