@@ -120,7 +120,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<MogEntity>> MOG = ENTITIES.register("mog", () -> MOG_TYPE);
 
     public static final EntityType<ForgottenEntity> FORGOTTEN_TYPE = EntityType.Builder.of(ForgottenEntity::new, MobCategory.MONSTER)
-            .sized(0.7F, 2.4F).build("forgotten");
+            .sized(0.7F, 2.2F).build("forgotten");
     public static final RegistryObject<EntityType<ForgottenEntity>> FORGOTTEN = ENTITIES.register("forgotten", () -> FORGOTTEN_TYPE);
 
     //bosses

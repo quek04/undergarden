@@ -1,5 +1,6 @@
 package quek.undergarden.client.render.entity;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.SkeletonRenderer;
@@ -22,5 +23,10 @@ public class ForgottenRender extends SkeletonRenderer {
     @Override
     public ResourceLocation getTextureLocation(AbstractSkeleton entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten.png");
+    }
+
+    @Override
+    protected void scale(AbstractSkeleton entity, PoseStack stack, float p_115316_) {
+        stack.scale(1.1F, 1.1F, 1.1F);
     }
 }
