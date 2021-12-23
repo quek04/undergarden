@@ -11,6 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoatEntity;
 import quek.undergarden.item.*;
+import quek.undergarden.item.armor.ForgottenArmorItem;
 import quek.undergarden.item.armor.MasticatedChestplateItem;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
@@ -115,6 +116,10 @@ public class UGItems {
     public static final RegistryObject<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utherium_chestplate", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.CHEST));
     public static final RegistryObject<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.LEGS));
     public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.FEET));
+
+    public static final RegistryObject<Item> FORGOTTEN_HELMET = ITEMS.register("forgotten_helmet", () -> new ForgottenArmorItem(EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> FORGOTTEN_CHESTPLATE = ITEMS.register("forgotten_chestplate", () -> new ForgottenArmorItem(EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> FORGOTTEN_LEGGINGS = ITEMS.register("forgotten_leggings", () -> new ForgottenArmorItem(EquipmentSlot.LEGS));
 
     //foods/plants
     public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopfruitItem::new);

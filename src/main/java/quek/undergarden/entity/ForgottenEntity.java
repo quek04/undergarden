@@ -8,8 +8,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
@@ -69,9 +69,9 @@ public class ForgottenEntity extends AbstractSkeleton {
     @Nullable
     public static Item getEquipmentForSlot(EquipmentSlot slot) {
         return switch (slot) {
-            case HEAD -> Items.NETHERITE_HELMET;
-            case CHEST -> Items.DIAMOND_CHESTPLATE;
-            case LEGS -> Items.DIAMOND_LEGGINGS;
+            case HEAD -> UGItems.FORGOTTEN_HELMET.get();
+            case CHEST -> UGItems.FORGOTTEN_CHESTPLATE.get();
+            case LEGS -> UGItems.FORGOTTEN_LEGGINGS.get();
             default -> null;
         };
     }
