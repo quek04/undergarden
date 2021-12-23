@@ -4,6 +4,10 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.SkeletonModel;
+import net.minecraft.client.model.geom.LayerDefinitions;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -122,6 +126,7 @@ public class UndergardenClient {
         event.registerEntityRenderer(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
         event.registerEntityRenderer(UGEntityTypes.GWIB.get(), GwibRender::new);
         event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
+        event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRender::new);
         event.registerEntityRenderer(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
         event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
     }
@@ -151,6 +156,9 @@ public class UndergardenClient {
         event.registerLayerDefinition(SploogieModel.LAYER_LOCATION, SploogieModel::createBodyLayer);
         event.registerLayerDefinition(GwibModel.LAYER_LOCATION, GwibModel::createBodyLayer);
         event.registerLayerDefinition(MogModel.LAYER_LOCATION, MogModel::createBodyLayer);
+        event.registerLayerDefinition(ForgottenRender.FORGOTTEN_LAYER, SkeletonModel::createBodyLayer);
+        event.registerLayerDefinition(ForgottenRender.FORGOTTEN_INNER_ARMOR_LAYER, () -> LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.INNER_ARMOR_DEFORMATION, 0.0F), 64, 32));
+        event.registerLayerDefinition(ForgottenRender.FORGOTTEN_OUTER_ARMOR_LAYER, () -> LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.OUTER_ARMOR_DEFORMATION, 0.0F), 64, 32));
         event.registerLayerDefinition(MasticatorModel.LAYER_LOCATION, MasticatorModel::createBodyLayer);
         event.registerLayerDefinition(ForgottenGuardianModel.LAYER_LOCATION, ForgottenGuardianModel::createBodyLayer);
     }
