@@ -41,28 +41,39 @@ public class ForgottenEntity extends AbstractSkeleton {
     }
 
     @Override
+    protected void populateDefaultEquipmentEnchantments(DifficultyInstance difficulty) {
+    }
+
+    @Override
     protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
         if (this.random.nextFloat() < 0.15F * difficulty.getSpecialMultiplier()) {
             float f = 0.1F;
 
             boolean flag = true;
 
-            for(EquipmentSlot equipmentslot : EquipmentSlot.values()) {
-                if (equipmentslot.getType() == EquipmentSlot.Type.ARMOR) {
-                    ItemStack itemstack = this.getItemBySlot(equipmentslot);
+            for(EquipmentSlot armorSlots : EquipmentSlot.values()) {
+                if (armorSlots.getType() == EquipmentSlot.Type.ARMOR) {
+                    ItemStack itemstack = this.getItemBySlot(armorSlots);
                     if (!flag && this.random.nextFloat() < f) {
                         break;
                     }
 
                     flag = false;
                     if (itemstack.isEmpty()) {
-                        Item item = getEquipmentForSlot(equipmentslot);
+                        Item item = getEquipmentForSlot(armorSlots);
                         if (item != null) {
-                            this.setItemSlot(equipmentslot, new ItemStack(item));
+                            this.setItemSlot(armorSlots, new ItemStack(item));
                         }
                     }
                 }
             }
+        }
+        boolean weaponRandom = this.random.nextBoolean();
+        if(weaponRandom) {
+            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_SWORD.get()));
+        }
+        else {
+            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_AXE.get()));
         }
     }
 
