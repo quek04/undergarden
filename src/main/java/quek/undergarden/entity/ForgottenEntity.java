@@ -1,7 +1,6 @@
 package quek.undergarden.entity;
 
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -11,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 
@@ -22,22 +22,22 @@ public class ForgottenEntity extends AbstractSkeleton {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.WITHER_SKELETON_AMBIENT;
+        return UGSoundEvents.FORGOTTEN_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.WITHER_SKELETON_HURT;
+        return UGSoundEvents.FORGOTTEN_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.WITHER_SKELETON_DEATH;
+        return UGSoundEvents.FORGOTTEN_DEATH.get();
     }
 
     @Override
     protected SoundEvent getStepSound() {
-        return SoundEvents.WITHER_SKELETON_STEP;
+        return UGSoundEvents.FORGOTTEN_STEP.get();
     }
 
     @Override
