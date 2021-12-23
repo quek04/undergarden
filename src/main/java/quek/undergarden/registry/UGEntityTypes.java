@@ -4,6 +4,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.AbstractFish;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -117,6 +119,10 @@ public class UGEntityTypes {
             .sized(1.0F, 1.0F).build("mog");
     public static final RegistryObject<EntityType<MogEntity>> MOG = ENTITIES.register("mog", () -> MOG_TYPE);
 
+    public static final EntityType<ForgottenEntity> FORGOTTEN_TYPE = EntityType.Builder.of(ForgottenEntity::new, MobCategory.MONSTER)
+            .sized(0.7F, 2.4F).build("forgotten");
+    public static final RegistryObject<EntityType<ForgottenEntity>> FORGOTTEN = ENTITIES.register("forgotten", () -> FORGOTTEN_TYPE);
+
     //bosses
     public static final EntityType<MasticatorEntity> MASTICATOR_TYPE = EntityType.Builder.of(MasticatorEntity::new, MobCategory.MONSTER)
             .sized(2.5F, 4).build("masticator");
@@ -141,6 +147,7 @@ public class UGEntityTypes {
         SpawnPlacements.register(SPLOOGIE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
         SpawnPlacements.register(GWIB.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GwibEntity::canGwibSpawn);
         SpawnPlacements.register(MOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MogEntity::canMogSpawn);
+        SpawnPlacements.register(FORGOTTEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
     }
 
     @SubscribeEvent
@@ -162,5 +169,6 @@ public class UGEntityTypes {
         event.put(MINION.get(), MinionEntity.registerAttributes().build());
         event.put(GWIB.get(), GwibEntity.registerAttributes().build());
         event.put(MOG.get(), MogEntity.registerAttributes().build());
+        event.put(FORGOTTEN.get(), AbstractSkeleton.createAttributes().build());
     }
 }
