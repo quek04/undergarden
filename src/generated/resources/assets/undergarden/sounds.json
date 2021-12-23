@@ -250,7 +250,7 @@
     ]
   },
   "entity.dweller_step": {
-    "subtitle": "subtitles.entity.dweller_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "mob/cow/step1",
       "mob/cow/step2",
@@ -280,7 +280,7 @@
     ]
   },
   "entity.rotling_step": {
-    "subtitle": "subtitles.entity.rotling_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "mob/zombie/step1",
       "mob/zombie/step2",
@@ -312,7 +312,7 @@
     ]
   },
   "entity.rotwalker_step": {
-    "subtitle": "subtitles.entity.rotwalker_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "mob/zombie/step1",
       "mob/zombie/step2",
@@ -344,7 +344,7 @@
     ]
   },
   "entity.rotbeast_step": {
-    "subtitle": "subtitles.entity.rotbeast_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "mob/zombie/step1",
       "mob/zombie/step2",
@@ -439,7 +439,7 @@
     ]
   },
   "entity.stoneborn_step": {
-    "subtitle": "subtitles.entity.stoneborn_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "undergarden:entity/stoneborn_step_1",
       "undergarden:entity/stoneborn_step_2"
@@ -532,7 +532,7 @@
     ]
   },
   "entity.forgotten_guardian_step": {
-    "subtitle": "subtitles.entity.forgotten_guardian_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "undergarden:entity/fguardian_step_1",
       "undergarden:entity/fguardian_step_2",
@@ -671,7 +671,7 @@
     ]
   },
   "entity.masticator_step": {
-    "subtitle": "subtitles.entity.masticator_stpe",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "mob/ravager/step1",
       "mob/ravager/step2",
@@ -778,6 +778,38 @@
     "subtitle": "subtitles.entity.mog_death",
     "sounds": [
       "undergarden:entity/mog_death"
+    ]
+  },
+  "entity.forgotten_ambient": {
+    "subtitle": "subtitles.entity.forgotten_ambient",
+    "sounds": [
+      "undergarden:entity/forgotten_ambient_1",
+      "undergarden:entity/forgotten_ambient_2",
+      "undergarden:entity/forgotten_ambient_3"
+    ]
+  },
+  "entity.forgotten_hurt": {
+    "subtitle": "subtitles.entity.forgotten_hurt",
+    "sounds": [
+      "undergarden:entity/forgotten_hurt_1",
+      "undergarden:entity/forgotten_hurt_2",
+      "undergarden:entity/forgotten_hurt_3",
+      "undergarden:entity/forgotten_hurt_4"
+    ]
+  },
+  "entity.forgotten_death": {
+    "subtitle": "subtitles.entity.forgotten_death",
+    "sounds": [
+      "undergarden:entity/forgotten_death"
+    ]
+  },
+  "entity.forgotten_step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "mob/wither_skeleton/step1",
+      "mob/wither_skeleton/step2",
+      "mob/wither_skeleton/step3",
+      "mob/wither_skeleton/step4"
     ]
   }
 }

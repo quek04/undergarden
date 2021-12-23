@@ -502,17 +502,14 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "dweller_ambient", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
         addSubtitle("entity", "dweller_death", "Dweller dies");
-        addSubtitle("entity", "dweller_step", "Dweller steps");
 
         addSubtitle("entity", "rotwalker_ambient", "Rotwalker groans");
         addSubtitle("entity", "rotwalker_hurt", "Rotwalker hurts");
         addSubtitle("entity", "rotwalker_death", "Rotwalker dies");
-        addSubtitle("entity", "rotwalker_step", "Rotwalker steps");
 
         addSubtitle("entity", "rotbeast_ambient", "Rotbeast groans");
         addSubtitle("entity", "rotbeast_hurt", "Rotbeast hurts");
         addSubtitle("entity", "rotbeast_death", "Rotbeast dies");
-        addSubtitle("entity", "rotbeast_step", "Rotbeast steps");
         addSubtitle("entity", "rotbeast_attack", "Rotbeast attacks");
 
         addSubtitle("entity", "brute_ambient", "Brute exhales");
@@ -525,7 +522,6 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "gloomper_hop", "Gloomper hops");
         addSubtitle("entity", "gloomper_fart", "Gloomper farts");
 
-        addSubtitle("entity", "stoneborn_step", "Stoneborn steps");
         addSubtitle("entity", "stoneborn_speaking", "Stoneborn speaks");
         addSubtitle("entity", "stoneborn_pleased", "Stoneborn pleased");
         addSubtitle("entity", "stoneborn_hurt", "Stoneborn hurts");
@@ -537,14 +533,12 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "rotling_ambient", "Rotling groans");
         addSubtitle("entity", "rotling_hurt", "Rotling hurts");
         addSubtitle("entity", "rotling_death", "Rotling dies");
-        addSubtitle("entity", "rotling_step", "Rotling steps");
 
         addSubtitle("entity", "forgotten_guardian_ambient", "Forgotten Guardian creaks");
         addSubtitle("entity", "forgotten_guardian_hurt", "Forgotten Guardian hurts");
         addSubtitle("entity", "forgotten_guardian_death", "Forgotten Guardian dies");
         addSubtitle("entity", "forgotten_guardian_attack", "Forgotten Guardian attacks");
         addSubtitle("entity", "forgotten_guardian_deflect", "Forgotten Guardian deflects");
-        addSubtitle("entity", "forgotten_guardian_step", "Forgotten Guardian steps");
 
         addSubtitle("entity", "minion_shoot", "Forgotten Minion shoots");
         addSubtitle("entity", "minion_death", "Forgotten Minion dies");
@@ -568,7 +562,6 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "masticator_hurt", "Masticator hurts");
         addSubtitle("entity", "masticator_death", "Masticator dies");
         addSubtitle("entity", "masticator_eat", "Masticator eats");
-        addSubtitle("entity", "masticator_step", "Masticator steps");
 
         addSubtitle("entity", "gwib_hurt", "Gwib hurts");
         addSubtitle("entity", "gwib_death", "Gwib dies");
@@ -581,6 +574,10 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "mog_ambient", "Mog squeaks");
         addSubtitle("entity", "mog_hurt", "Mog hurts");
         addSubtitle("entity", "mog_death", "Mog dies");
+
+        addSubtitle("entity", "forgotten_ambient", "Forgotten mutters");
+        addSubtitle("entity", "forgotten_hurt", "Forgotten hurts");
+        addSubtitle("entity", "forgotten_death", "Forgotten dies");
 
         addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
         addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");

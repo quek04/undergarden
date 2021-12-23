@@ -128,6 +128,11 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> MOG_HURT = register("entity.mog_hurt");
     public static final RegistryObject<SoundEvent> MOG_DEATH = register("entity.mog_death");
 
+    public static final RegistryObject<SoundEvent> FORGOTTEN_AMBIENT = register("entity.forgotten_ambient");
+    public static final RegistryObject<SoundEvent> FORGOTTEN_HURT = register("entity.forgotten_hurt");
+    public static final RegistryObject<SoundEvent> FORGOTTEN_DEATH = register("entity.forgotten_death");
+    public static final RegistryObject<SoundEvent> FORGOTTEN_STEP = register("entity.forgotten_step");
+
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Undergarden.MODID, name)));
     }
