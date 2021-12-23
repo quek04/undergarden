@@ -383,6 +383,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.SPLOOGIE, "Sploogie");
         addEntityType(UGEntityTypes.GWIB, "Gwib");
         addEntityType(UGEntityTypes.MOG, "Mog");
+        addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
 
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
         addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");

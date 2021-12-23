@@ -431,6 +431,7 @@ public class UGLootTables extends LootTableProvider {
                             )
                     )
             );
+            this.add(UGEntityTypes.FORGOTTEN.get(), LootTable.lootTable());
 
             this.add(UGEntityTypes.MASTICATOR.get(), LootTable.lootTable()
                     .withPool(LootPool.lootPool()
