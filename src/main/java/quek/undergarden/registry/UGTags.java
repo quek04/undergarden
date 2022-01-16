@@ -1,10 +1,10 @@
 package quek.undergarden.registry;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.versions.forge.ForgeVersion;
 import quek.undergarden.Undergarden;
@@ -71,6 +71,8 @@ public class UGTags {
         public static final Tag.Named<Block> STORAGE_BLOCKS_FROSTSTEEL = forgeTag("storage_blocks/froststeel");
         public static final Tag.Named<Block> STORAGE_BLOCKS_UTHERIUM = forgeTag("storage_blocks/utherium");
         public static final Tag.Named<Block> STORAGE_BLOCKS_REGALIUM = forgeTag("storage_blocks/regalium");
+        public static final Tag.Named<Block> STORAGE_BLOCKS_RAW_CLOGGRUM = forgeTag("storage_blocks/raw_cloggrum");
+        public static final Tag.Named<Block> STORAGE_BLOCKS_RAW_FROSTSTEEL = forgeTag("storage_blocks/raw_froststeel");
 
         private static Tag.Named<Block> tag(String name) {
             return BlockTags.createOptional(new ResourceLocation(Undergarden.MODID, name));
