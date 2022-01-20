@@ -7,13 +7,14 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.RotbeastModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.RotbeastEyesLayer;
 import quek.undergarden.entity.rotspawn.RotbeastEntity;
 
 public class RotbeastRender extends MobRenderer<RotbeastEntity, RotbeastModel<RotbeastEntity>> {
 
     public RotbeastRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new RotbeastModel<>(renderContext.bakeLayer(RotbeastModel.LAYER_LOCATION)), 0.6F);
+        super(renderContext, new RotbeastModel<>(renderContext.bakeLayer(UGModelLayers.ROTBEAST)), 0.6F);
         this.addLayer(new RotbeastEyesLayer<>(this));
     }
 

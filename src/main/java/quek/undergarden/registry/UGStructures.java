@@ -34,15 +34,13 @@ public class UGStructures {
         StructureFeature.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
 
         if(transformSurroundingLand) {
-            StructureFeature.NOISE_AFFECTING_FEATURES =
-                    ImmutableList.<StructureFeature<?>>builder()
+            StructureFeature.NOISE_AFFECTING_FEATURES = ImmutableList.<StructureFeature<?>>builder()
                             .addAll(StructureFeature.NOISE_AFFECTING_FEATURES)
                             .add(structure)
                             .build();
         }
 
-        StructureSettings.DEFAULTS =
-                ImmutableMap.<StructureFeature<?>, StructureFeatureConfiguration>builder()
+        StructureSettings.DEFAULTS = ImmutableMap.<StructureFeature<?>, StructureFeatureConfiguration>builder()
                         .putAll(StructureSettings.DEFAULTS)
                         .put(structure, structureSeparationSettings)
                         .build();

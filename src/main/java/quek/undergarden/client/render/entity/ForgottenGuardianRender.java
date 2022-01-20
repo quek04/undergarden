@@ -7,13 +7,14 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenGuardianModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.ForgottenGuardianEyesLayer;
 import quek.undergarden.entity.boss.ForgottenGuardianEntity;
 
 public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardianEntity, ForgottenGuardianModel<ForgottenGuardianEntity>> {
 
     public ForgottenGuardianRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new ForgottenGuardianModel<>(renderContext.bakeLayer(ForgottenGuardianModel.LAYER_LOCATION)), 0.6F);
+        super(renderContext, new ForgottenGuardianModel<>(renderContext.bakeLayer(UGModelLayers.FORGOTTEN_GUARDIAN)), 0.6F);
         this.addLayer(new ForgottenGuardianEyesLayer<>(this));
     }
 

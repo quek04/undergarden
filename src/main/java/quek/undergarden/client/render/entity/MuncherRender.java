@@ -5,13 +5,14 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MuncherModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MuncherEyesLayer;
 import quek.undergarden.entity.cavern.MuncherEntity;
 
 public class MuncherRender extends MobRenderer<MuncherEntity, MuncherModel<MuncherEntity>> {
 
     public MuncherRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new MuncherModel<>(renderContext.bakeLayer(MuncherModel.LAYER_LOCATION)), 0.5F);
+        super(renderContext, new MuncherModel<>(renderContext.bakeLayer(UGModelLayers.MUNCHER)), 0.5F);
         this.addLayer(new MuncherEyesLayer<>(this));
     }
 

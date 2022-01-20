@@ -8,13 +8,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwibModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.GwibEyesLayer;
 import quek.undergarden.entity.GwibEntity;
 
 public class GwibRender extends MobRenderer<GwibEntity, GwibModel<GwibEntity>> {
 
     public GwibRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new GwibModel<>(renderContext.bakeLayer(GwibModel.LAYER_LOCATION)), 0.5F);
+        super(renderContext, new GwibModel<>(renderContext.bakeLayer(UGModelLayers.GWIB)), 0.5F);
         this.addLayer(new GwibEyesLayer<>(this));
     }
 

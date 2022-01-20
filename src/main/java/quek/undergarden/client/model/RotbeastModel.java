@@ -2,18 +2,14 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.ListModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import quek.undergarden.Undergarden;
 import quek.undergarden.entity.rotspawn.RotbeastEntity;
 
 public class RotbeastModel<T extends RotbeastEntity> extends ListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "rotbeast"), "main");
 	private final ModelPart head;
 	private final ModelPart jaw;
 	private final ModelPart torso;
