@@ -96,7 +96,6 @@ public class Undergarden {
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGBiomes.toDictionary();
-			UGDimensions.registerDimensionStuff();
 
 			AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
 			AxeItem.STRIPPABLES.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
