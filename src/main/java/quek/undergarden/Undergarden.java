@@ -38,6 +38,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.DeferredRegister;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
@@ -51,6 +53,7 @@ import quek.undergarden.registry.*;
 public class Undergarden {
 	
 	public static final String MODID = "undergarden";
+	public static final Logger LOGGER = LogManager.getLogger();
 
 	public Undergarden() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -91,6 +94,7 @@ public class Undergarden {
 			UGPlacedFeatures.init();
 			UGConfiguredCarvers.init();
 			UGStructures.registerStructures();
+			UGConfiguredStructures.init();
 			UGConfiguredCarvers.init();
 			UGProcessorLists.init();
 			UGEntityTypes.spawnPlacements();

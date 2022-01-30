@@ -18,7 +18,7 @@ public class CatacombsStructure extends StructureFeature<JigsawConfiguration> {
         super(codec, (context) -> {
             JigsawConfiguration catacombsConfig = new JigsawConfiguration(() -> context.registryAccess().ownedRegistryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(new ResourceLocation(Undergarden.MODID, "catacombs/catacombs_entrance")), 50);
             PieceGeneratorSupplier.Context<JigsawConfiguration> catacombsContext = new PieceGeneratorSupplier.Context<>(context.chunkGenerator(), context.biomeSource(), context.seed(), context.chunkPos(), catacombsConfig, context.heightAccessor(), context.validBiome(), context.structureManager(), context.registryAccess());
-            BlockPos catacombsPos = new BlockPos(context.chunkPos().getMinBlockX(), 33, context.chunkPos().getMinBlockZ());
+            BlockPos catacombsPos = new BlockPos(context.chunkPos().getMinBlockX(), 34, context.chunkPos().getMinBlockZ());
             return JigsawPlacement.addPieces(catacombsContext, PoolElementStructurePiece::new, catacombsPos, false, false);
         });
     }
