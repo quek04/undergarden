@@ -210,11 +210,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:entity/rotling_death")
         ).subtitle("subtitles.entity.rotling_death"));
         this.add(UGSoundEvents.ROTLING_STEP, definition().with(
-                sound("minecraft:mob/zombie/step1").pitch(0.5F),
-                sound("minecraft:mob/zombie/step2").pitch(0.5F),
-                sound("minecraft:mob/zombie/step3").pitch(0.5F),
-                sound("minecraft:mob/zombie/step4").pitch(0.5F),
-                sound("minecraft:mob/zombie/step5").pitch(0.5F)
+                sound("minecraft:mob/zombie/step1").pitch(1.5F),
+                sound("minecraft:mob/zombie/step2").pitch(1.5F),
+                sound("minecraft:mob/zombie/step3").pitch(1.5F),
+                sound("minecraft:mob/zombie/step4").pitch(1.5F),
+                sound("minecraft:mob/zombie/step5").pitch(1.5F)
         ).subtitle("subtitles.block.generic.footsteps"));
 
         this.add(UGSoundEvents.ROTWALKER_AMBIENT, definition().with(
@@ -252,11 +252,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:entity/rotbeast_death")
         ).subtitle("subtitles.entity.rotbeast_death"));
         this.add(UGSoundEvents.ROTBEAST_STEP, definition().with(
-                sound("minecraft:mob/zombie/step1").pitch(0.5F),
-                sound("minecraft:mob/zombie/step2").pitch(0.5F),
-                sound("minecraft:mob/zombie/step3").pitch(0.5F),
-                sound("minecraft:mob/zombie/step4").pitch(0.5F),
-                sound("minecraft:mob/zombie/step5").pitch(0.5F)
+                sound("minecraft:mob/zombie/step1").pitch(0.3F),
+                sound("minecraft:mob/zombie/step2").pitch(0.3F),
+                sound("minecraft:mob/zombie/step3").pitch(0.3F),
+                sound("minecraft:mob/zombie/step4").pitch(0.3F),
+                sound("minecraft:mob/zombie/step5").pitch(0.3F)
         ).subtitle("subtitles.block.generic.footsteps"));
         this.add(UGSoundEvents.ROTBEAST_ATTACK, definition().with(
                 sound("minecraft:mob/irongolem/throw")
