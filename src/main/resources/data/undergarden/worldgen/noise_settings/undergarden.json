@@ -172,7 +172,8 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "undergarden:barren_abyss"
+            "undergarden:barren_abyss",
+            "undergarden:dead_sea"
           ]
         },
         "then_run": {
