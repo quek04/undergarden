@@ -295,12 +295,24 @@
     ]
   },
   "entity.dweller_step": {
-    "subtitle": "subtitles.entity.dweller_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "mob/cow/step1",
-      "mob/cow/step2",
-      "mob/cow/step3",
-      "mob/cow/step4"
+      {
+        "name": "mob/cow/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/cow/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/cow/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/cow/step4",
+        "pitch": 0.5
+      }
     ]
   },
   "entity.rotling_ambient": {
@@ -325,13 +337,28 @@
     ]
   },
   "entity.rotling_step": {
-    "subtitle": "subtitles.entity.rotling_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "mob/zombie/step1",
-      "mob/zombie/step2",
-      "mob/zombie/step3",
-      "mob/zombie/step4",
-      "mob/zombie/step5"
+      {
+        "name": "mob/zombie/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step4",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step5",
+        "pitch": 0.5
+      }
     ]
   },
   "entity.rotwalker_ambient": {
@@ -357,13 +384,28 @@
     ]
   },
   "entity.rotwalker_step": {
-    "subtitle": "subtitles.entity.rotwalker_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "mob/zombie/step1",
-      "mob/zombie/step2",
-      "mob/zombie/step3",
-      "mob/zombie/step4",
-      "mob/zombie/step5"
+      {
+        "name": "mob/zombie/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step4",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step5",
+        "pitch": 0.5
+      }
     ]
   },
   "entity.rotbeast_ambient": {
@@ -389,13 +431,28 @@
     ]
   },
   "entity.rotbeast_step": {
-    "subtitle": "subtitles.entity.rotbeast_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "mob/zombie/step1",
-      "mob/zombie/step2",
-      "mob/zombie/step3",
-      "mob/zombie/step4",
-      "mob/zombie/step5"
+      {
+        "name": "mob/zombie/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step4",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step5",
+        "pitch": 0.5
+      }
     ]
   },
   "entity.rotbeast_attack": {
@@ -484,7 +541,7 @@
     ]
   },
   "entity.stoneborn_step": {
-    "subtitle": "subtitles.entity.stoneborn_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "undergarden:entity/stoneborn_step_1",
       "undergarden:entity/stoneborn_step_2"
@@ -577,7 +634,7 @@
     ]
   },
   "entity.forgotten_guardian_step": {
-    "subtitle": "subtitles.entity.forgotten_guardian_step",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
       "undergarden:entity/fguardian_step_1",
       "undergarden:entity/fguardian_step_2",
@@ -716,13 +773,28 @@
     ]
   },
   "entity.masticator_step": {
-    "subtitle": "subtitles.entity.masticator_stpe",
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "mob/ravager/step1",
-      "mob/ravager/step2",
-      "mob/ravager/step3",
-      "mob/ravager/step4",
-      "mob/ravager/step5"
+      {
+        "name": "mob/ravager/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/ravager/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/ravager/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/ravager/step4",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/ravager/step5",
+        "pitch": 0.5
+      }
     ]
   },
   "entity.gwib_hurt": {

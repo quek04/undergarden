@@ -75,7 +75,7 @@ public class MasticatorEntity extends Monster {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(UGSoundEvents.MASTICATOR_STEP.get(), 0.20F, 0.5F);
+        this.playSound(UGSoundEvents.MASTICATOR_STEP.get(), 0.20F, 1.0F);
     }
 
     @Override
