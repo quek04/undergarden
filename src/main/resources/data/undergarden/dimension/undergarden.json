@@ -165,7 +165,7 @@
           }
         },
         {
-          "biome": "undergarden:ancient_sea",
+          "biome": "undergarden:dead_sea",
           "parameters": {
             "temperature": 0,
             "humidity": 0,
@@ -189,7 +189,7 @@
           }
         },
         {
-          "biome": "undergarden:ancient_sea",
+          "biome": "undergarden:dead_sea",
           "parameters": {
             "temperature": 0,
             "humidity": 0,

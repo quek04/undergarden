@@ -33,6 +33,14 @@
         }
       }
     },
+    "undergarden:dead_sea": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "undergarden:dead_sea"
+        }
+      }
+    },
     "undergarden:dense_forest": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -112,6 +120,9 @@
     ],
     [
       "undergarden:barren_abyss"
+    ],
+    [
+      "undergarden:dead_sea"
     ],
     [
       "undergarden:dense_forest"
