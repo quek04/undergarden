@@ -5,13 +5,14 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MogModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MogEyesLayer;
 import quek.undergarden.entity.MogEntity;
 
 public class MogRender extends MobRenderer<MogEntity, MogModel<MogEntity>> {
 
     public MogRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new MogModel<>(renderContext.bakeLayer(MogModel.LAYER_LOCATION)), 0.5F);
+        super(renderContext, new MogModel<>(renderContext.bakeLayer(UGModelLayers.MOG)), 0.5F);
         this.addLayer(new MogEyesLayer<>(this));
     }
 

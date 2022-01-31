@@ -2,18 +2,14 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.ListModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import quek.undergarden.Undergarden;
 import quek.undergarden.entity.cavern.NargoyleEntity;
 
 public class NargoyleModel<T extends NargoyleEntity> extends ListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "nargoyle"), "main");
 	private final ModelPart body;
 	private final ModelPart upperBody;
 	private final ModelPart lowerBody;

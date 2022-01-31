@@ -2,7 +2,6 @@
   "temperature": 0.8,
   "downfall": 0,
   "precipitation": "none",
-  "temperature_modifier": "none",
   "category": "none",
   "creature_spawn_probability": 0.5,
   "effects": {
@@ -12,8 +11,13 @@
     "water_fog_color": 332810,
     "grass_color": 5265970,
     "foliage_color": 5265970,
-    "grass_color_modifier": "none",
     "ambient_sound": "undergarden:ambient.undergarden_ambience",
+    "mood_sound": {
+      "sound": "undergarden:ambient.mood",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
     "additions_sound": {
       "sound": "undergarden:ambient.bog_addition",
       "tick_chance": 0.00555

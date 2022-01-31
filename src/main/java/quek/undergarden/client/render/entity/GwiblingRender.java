@@ -8,13 +8,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwiblingModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.GwiblingEyesLayer;
 import quek.undergarden.entity.GwiblingEntity;
 
 public class GwiblingRender extends MobRenderer<GwiblingEntity, GwiblingModel<GwiblingEntity>> {
 
     public GwiblingRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new GwiblingModel<>(renderContext.bakeLayer(GwiblingModel.LAYER_LOCATION)), 0.3F);
+        super(renderContext, new GwiblingModel<>(renderContext.bakeLayer(UGModelLayers.GWIBLING)), 0.3F);
         this.addLayer(new GwiblingEyesLayer<>(this));
     }
 

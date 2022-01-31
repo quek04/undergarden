@@ -2,18 +2,14 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.AgeableListModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import quek.undergarden.Undergarden;
 import quek.undergarden.entity.ScintlingEntity;
 
 public class ScintlingModel<T extends ScintlingEntity> extends AgeableListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "scintling"), "main");
 	private final ModelPart head;
 	private final ModelPart leftStalk;
 	private final ModelPart rightStalk;

@@ -2,19 +2,14 @@ package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.AgeableListModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import quek.undergarden.Undergarden;
 import quek.undergarden.entity.DwellerEntity;
 
 public class DwellerModel<T extends DwellerEntity> extends AgeableListModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "dweller"), "main");
-	public static final ModelLayerLocation SADDLE_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "dweller"), "saddle");
 	private final ModelPart torso;
 	private final ModelPart mane;
 	private final ModelPart head;

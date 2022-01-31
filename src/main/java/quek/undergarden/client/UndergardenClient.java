@@ -133,34 +133,34 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(DepthrockBedRender.HEAD_LAYER_LOCATION, DepthrockBedRender::createHeadLayer);
-        event.registerLayerDefinition(DepthrockBedRender.FOOT_LAYER_LOCATION, DepthrockBedRender::createFootLayer);
+        event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_HEAD, DepthrockBedRender::createHeadLayer);
+        event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_FOOT, DepthrockBedRender::createFootLayer);
         //
         for(UGBoatEntity.Type boatType : UGBoatEntity.Type.values()) {
             event.registerLayerDefinition(UGBoatRenderer.boatLayer(boatType), BoatModel::createBodyModel);
         }
         //
-        event.registerLayerDefinition(MinionModel.LAYER_LOCATION, MinionModel::createBodyLayer);
-        event.registerLayerDefinition(RotlingModel.LAYER_LOCATION, RotlingModel::createBodyLayer);
-        event.registerLayerDefinition(RotwalkerModel.LAYER_LOCATION, RotwalkerModel::createBodyLayer);
-        event.registerLayerDefinition(RotbeastModel.LAYER_LOCATION, RotbeastModel::createBodyLayer);
-        event.registerLayerDefinition(DwellerModel.LAYER_LOCATION, () -> DwellerModel.createBodyLayer(0.0F));
-        event.registerLayerDefinition(DwellerModel.SADDLE_LAYER_LOCATION, () -> DwellerModel.createBodyLayer(0.5F));
-        event.registerLayerDefinition(GwiblingModel.LAYER_LOCATION, GwiblingModel::createBodyLayer);
-        event.registerLayerDefinition(BruteModel.LAYER_LOCATION, BruteModel::createBodyLayer);
-        event.registerLayerDefinition(ScintlingModel.LAYER_LOCATION, ScintlingModel::createBodyLayer);
-        event.registerLayerDefinition(GloomperModel.LAYER_LOCATION, GloomperModel::createBodyLayer);
-        event.registerLayerDefinition(StonebornModel.LAYER_LOCATION, StonebornModel::createBodyLayer);
-        event.registerLayerDefinition(NargoyleModel.LAYER_LOCATION, NargoyleModel::createBodyLayer);
-        event.registerLayerDefinition(MuncherModel.LAYER_LOCATION, MuncherModel::createBodyLayer);
-        event.registerLayerDefinition(SploogieModel.LAYER_LOCATION, SploogieModel::createBodyLayer);
-        event.registerLayerDefinition(GwibModel.LAYER_LOCATION, GwibModel::createBodyLayer);
-        event.registerLayerDefinition(MogModel.LAYER_LOCATION, MogModel::createBodyLayer);
-        event.registerLayerDefinition(ForgottenRender.FORGOTTEN_LAYER, SkeletonModel::createBodyLayer);
-        event.registerLayerDefinition(ForgottenRender.FORGOTTEN_INNER_ARMOR_LAYER, () -> LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.INNER_ARMOR_DEFORMATION, 0.0F), 64, 32));
-        event.registerLayerDefinition(ForgottenRender.FORGOTTEN_OUTER_ARMOR_LAYER, () -> LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.OUTER_ARMOR_DEFORMATION, 0.0F), 64, 32));
-        event.registerLayerDefinition(MasticatorModel.LAYER_LOCATION, MasticatorModel::createBodyLayer);
-        event.registerLayerDefinition(ForgottenGuardianModel.LAYER_LOCATION, ForgottenGuardianModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.MINION, MinionModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.ROTLING, RotlingModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.ROTWALKER, RotwalkerModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.ROTBEAST, RotbeastModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.DWELLER, () -> DwellerModel.createBodyLayer(0.0F));
+        event.registerLayerDefinition(UGModelLayers.DWELLER_SADDLE, () -> DwellerModel.createBodyLayer(0.5F));
+        event.registerLayerDefinition(UGModelLayers.GWIBLING, GwiblingModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.BRUTE, BruteModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.SCINTLING, ScintlingModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.GLOOMPER, GloomperModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.STONEBORN, StonebornModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.NARGOYLE, NargoyleModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.MUNCHER, MuncherModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.SPLOOGIE, SploogieModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.GWIB, GwibModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.MOG, MogModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.FORGOTTEN_LAYER, SkeletonModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR_LAYER, () -> LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.INNER_ARMOR_DEFORMATION, 0.0F), 64, 32));
+        event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR_LAYER, () -> LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.OUTER_ARMOR_DEFORMATION, 0.0F), 64, 32));
+        event.registerLayerDefinition(UGModelLayers.MASTICATOR, MasticatorModel::createBodyLayer);
+        event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
     }
 
     @SubscribeEvent

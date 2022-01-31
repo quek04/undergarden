@@ -6,15 +6,16 @@ import net.minecraft.client.renderer.entity.layers.SaddleLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.DwellerModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.DwellerEyesLayer;
 import quek.undergarden.entity.DwellerEntity;
 
 public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<DwellerEntity>> {
 
     public DwellerRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new DwellerModel<>(renderContext.bakeLayer(DwellerModel.LAYER_LOCATION)), 0.7F);
+        super(renderContext, new DwellerModel<>(renderContext.bakeLayer(UGModelLayers.DWELLER)), 0.7F);
         this.addLayer(new DwellerEyesLayer<>(this));
-        this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(renderContext.bakeLayer(DwellerModel.SADDLE_LAYER_LOCATION)), new ResourceLocation(Undergarden.MODID, "textures/entity/dweller_saddle.png")));
+        this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(renderContext.bakeLayer(UGModelLayers.DWELLER_SADDLE)), new ResourceLocation(Undergarden.MODID, "textures/entity/dweller_saddle.png")));
     }
 
     @Override

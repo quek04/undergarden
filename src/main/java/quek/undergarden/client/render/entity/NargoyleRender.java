@@ -5,12 +5,13 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.NargoyleModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.entity.cavern.NargoyleEntity;
 
 public class NargoyleRender extends MobRenderer<NargoyleEntity, NargoyleModel<NargoyleEntity>> {
 
     public NargoyleRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new NargoyleModel<>(renderContext.bakeLayer(NargoyleModel.LAYER_LOCATION)), 0.8F);
+        super(renderContext, new NargoyleModel<>(renderContext.bakeLayer(UGModelLayers.NARGOYLE)), 0.8F);
     }
 
     @Override

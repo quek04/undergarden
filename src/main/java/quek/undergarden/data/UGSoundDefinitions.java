@@ -25,6 +25,9 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
         this.add(UGSoundEvents.FROST_AMBIENCE, definition().with(
                 sound("undergarden:ambient/frost_ambience").stream()
         ));
+        this.add(UGSoundEvents.SEA_AMBIENCE, definition().with(
+                sound("undergarden:ambient/sea_ambience").stream()
+        ));
 
         this.add(UGSoundEvents.ABYSS_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/abyss_1"),
@@ -32,13 +35,20 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/abyss_3"),
                 sound("undergarden:ambient/additions/abyss_4"),
                 sound("undergarden:ambient/additions/abyss_5"),
-                sound("undergarden:ambient/additions/abyss_6")
+                sound("undergarden:ambient/additions/abyss_6"),
+                sound("undergarden:ambient/additions/abyss_7"),
+                sound("undergarden:ambient/additions/abyss_8")
         ));
         this.add(UGSoundEvents.BOG_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/bog_1"),
                 sound("undergarden:ambient/additions/bog_2"),
                 sound("undergarden:ambient/additions/bog_3"),
-                sound("undergarden:ambient/additions/bog_4")
+                sound("undergarden:ambient/additions/bog_4"),
+                sound("undergarden:ambient/additions/bog_5"),
+                sound("undergarden:ambient/additions/bog_6"),
+                sound("undergarden:ambient/additions/bog_7"),
+                sound("undergarden:ambient/additions/bog_8"),
+                sound("undergarden:ambient/additions/bog_9")
         ));
         this.add(UGSoundEvents.FIELDS_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/fields_1"),
@@ -55,20 +65,14 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/forest_4"),
                 sound("undergarden:ambient/additions/forest_5")
         ));
-        this.add(UGSoundEvents.GRONGLE_AMBIENT_ADDITION, definition().with(
-                sound("undergarden:ambient/additions/grongle_1"),
-                sound("undergarden:ambient/additions/grongle_2"),
-                sound("undergarden:ambient/additions/grongle_3"),
-                sound("undergarden:ambient/additions/grongle_4"),
-                sound("undergarden:ambient/additions/grongle_5")
-        ));
         this.add(UGSoundEvents.FROSTFIELDS_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/frostfields_1"),
                 sound("undergarden:ambient/additions/frostfields_2"),
                 sound("undergarden:ambient/additions/frostfields_3"),
                 sound("undergarden:ambient/additions/frostfields_4"),
                 sound("undergarden:ambient/additions/frostfields_5"),
-                sound("undergarden:ambient/additions/frostfields_6")
+                sound("undergarden:ambient/additions/frostfields_6"),
+                sound("undergarden:ambient/additions/frostfields_7")
         ));
         this.add(UGSoundEvents.SPIRES_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/spires_1"),
@@ -82,16 +86,47 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/spires_9"),
                 sound("undergarden:ambient/additions/spires_10")
         ));
+        this.add(UGSoundEvents.SEA_AMBIENT_ADDITION, definition().with(
+                sound("undergarden:ambient/additions/sea_1"),
+                sound("undergarden:ambient/additions/sea_2"),
+                sound("undergarden:ambient/additions/sea_3"),
+                sound("undergarden:ambient/additions/sea_4"),
+                sound("undergarden:ambient/additions/sea_5"),
+                sound("undergarden:ambient/additions/sea_6"),
+                sound("undergarden:ambient/additions/sea_7"),
+                sound("undergarden:ambient/additions/sea_8"),
+                sound("undergarden:ambient/additions/sea_9")
+        ));
 
-        this.add(UGSoundEvents.ABYSS_MOOD, definition().with(
-                sound("undergarden:ambient/moods/abyss_mood_1"),
-                sound("undergarden:ambient/moods/abyss_mood_2")
+        this.add(UGSoundEvents.MOOD, definition().with(
+                sound("undergarden:ambient/moods/mood_1"),
+                sound("undergarden:ambient/moods/mood_2"),
+                sound("undergarden:ambient/moods/mood_3"),
+                sound("undergarden:ambient/moods/mood_4"),
+                sound("undergarden:ambient/moods/mood_5"),
+                sound("undergarden:ambient/moods/mood_6"),
+                sound("undergarden:ambient/moods/mood_7"),
+                sound("undergarden:ambient/moods/mood_8"),
+                sound("undergarden:ambient/moods/mood_9"),
+                sound("undergarden:ambient/moods/mood_10"),
+                sound("undergarden:ambient/moods/mood_11")
+        ));
+        this.add(UGSoundEvents.FROST_MOOD, definition().with(
+                sound("undergarden:ambient/moods/frost_mood_1"),
+                sound("undergarden:ambient/moods/frost_mood_2"),
+                sound("undergarden:ambient/moods/frost_mood_3"),
+                sound("undergarden:ambient/moods/frost_mood_4"),
+                sound("undergarden:ambient/moods/frost_mood_5"),
+                sound("undergarden:ambient/moods/frost_mood_6"),
+                sound("undergarden:ambient/moods/frost_mood_7"),
+                sound("undergarden:ambient/moods/frost_mood_8")
         ));
 
         this.add(UGSoundEvents.UNDERGARDEN_MUSIC, definition().with(
                 sound("undergarden:music/acasta_gneiss").stream(),
                 sound("undergarden:music/all_that_wiggles_is_wood").stream(),
                 sound("undergarden:music/brotherhood").stream(),
+                sound("undergarden:music/caps").stream(),
                 sound("undergarden:music/grongletune").stream(),
                 sound("undergarden:music/monument").stream(),
                 sound("undergarden:music/pit_of_shivers").stream(),

@@ -2,7 +2,6 @@
   "temperature": 0.2,
   "downfall": 0,
   "precipitation": "none",
-  "temperature_modifier": "none",
   "category": "none",
   "effects": {
     "sky_color": 1186057,
@@ -11,10 +10,9 @@
     "water_fog_color": 332810,
     "grass_color": 7568503,
     "foliage_color": 7568503,
-    "grass_color_modifier": "none",
     "ambient_sound": "undergarden:ambient.abyss_ambience",
     "mood_sound": {
-      "sound": "undergarden:ambient.abyss_mood",
+      "sound": "undergarden:ambient.mood",
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2

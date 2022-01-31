@@ -5,13 +5,14 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.BruteModel;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.BruteEyesLayer;
 import quek.undergarden.entity.BruteEntity;
 
 public class BruteRender extends MobRenderer<BruteEntity, BruteModel<BruteEntity>> {
 
     public BruteRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new BruteModel<>(renderContext.bakeLayer(BruteModel.LAYER_LOCATION)), 0.7F);
+        super(renderContext, new BruteModel<>(renderContext.bakeLayer(UGModelLayers.BRUTE)), 0.7F);
         this.addLayer(new BruteEyesLayer<>(this));
     }
 

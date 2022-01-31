@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
@@ -26,19 +25,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.entity.DepthrockBedBlockEntity;
+import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.registry.UGBlockEntities;
 
 public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlockEntity> {
-
-    public static final ModelLayerLocation HEAD_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "depthrock_bed_head"), "main");
-    public static final ModelLayerLocation FOOT_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("undergarden", "depthrock_bed_foot"), "main");
 
     private final ModelPart headPiece;
     private final ModelPart footPiece;
 
     public DepthrockBedRender(BlockEntityRendererProvider.Context renderContext) {
-        this.headPiece = renderContext.bakeLayer(HEAD_LAYER_LOCATION);
-        this.footPiece = renderContext.bakeLayer(FOOT_LAYER_LOCATION);
+        this.headPiece = renderContext.bakeLayer(UGModelLayers.DEPTHROCK_BED_HEAD);
+        this.footPiece = renderContext.bakeLayer(UGModelLayers.DEPTHROCK_BED_FOOT);
     }
 
     public static LayerDefinition createHeadLayer() {

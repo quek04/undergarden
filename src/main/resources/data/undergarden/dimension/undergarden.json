@@ -1,7 +1,9 @@
 {
   "type": "undergarden:undergarden",
+  "forge:use_server_seed": true,
   "generator": {
-    "type": "undergarden:chunk_generator",
+    "type": "minecraft:noise",
+    "seed": 0,
     "settings": "undergarden:undergarden",
     "biome_source": {
       "type": "minecraft:multi_noise",
@@ -163,7 +165,7 @@
           }
         },
         {
-          "biome": "undergarden:ancient_sea",
+          "biome": "undergarden:dead_sea",
           "parameters": {
             "temperature": 0,
             "humidity": 0,
@@ -187,7 +189,7 @@
           }
         },
         {
-          "biome": "undergarden:ancient_sea",
+          "biome": "undergarden:dead_sea",
           "parameters": {
             "temperature": 0,
             "humidity": 0,
