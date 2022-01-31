@@ -191,10 +191,10 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:entity/dweller_death")
         ).subtitle("subtitles.entity.dweller_death"));
         this.add(UGSoundEvents.DWELLER_STEP, definition().with(
-                sound("minecraft:mob/cow/step1"),
-                sound("minecraft:mob/cow/step2"),
-                sound("minecraft:mob/cow/step3"),
-                sound("minecraft:mob/cow/step4")
+                sound("minecraft:mob/cow/step1").pitch(0.5F),
+                sound("minecraft:mob/cow/step2").pitch(0.5F),
+                sound("minecraft:mob/cow/step3").pitch(0.5F),
+                sound("minecraft:mob/cow/step4").pitch(0.5F)
         ).subtitle("subtitles.block.generic.footsteps"));
 
         this.add(UGSoundEvents.ROTLING_AMBIENT, definition().with(
@@ -210,11 +210,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:entity/rotling_death")
         ).subtitle("subtitles.entity.rotling_death"));
         this.add(UGSoundEvents.ROTLING_STEP, definition().with(
-                sound("minecraft:mob/zombie/step1"),
-                sound("minecraft:mob/zombie/step2"),
-                sound("minecraft:mob/zombie/step3"),
-                sound("minecraft:mob/zombie/step4"),
-                sound("minecraft:mob/zombie/step5")
+                sound("minecraft:mob/zombie/step1").pitch(1.5F),
+                sound("minecraft:mob/zombie/step2").pitch(1.5F),
+                sound("minecraft:mob/zombie/step3").pitch(1.5F),
+                sound("minecraft:mob/zombie/step4").pitch(1.5F),
+                sound("minecraft:mob/zombie/step5").pitch(1.5F)
         ).subtitle("subtitles.block.generic.footsteps"));
 
         this.add(UGSoundEvents.ROTWALKER_AMBIENT, definition().with(
@@ -231,11 +231,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:entity/rotwalker_death")
         ).subtitle("subtitles.entity.rotwalker_death"));
         this.add(UGSoundEvents.ROTWALKER_STEP, definition().with(
-                sound("minecraft:mob/zombie/step1"),
-                sound("minecraft:mob/zombie/step2"),
-                sound("minecraft:mob/zombie/step3"),
-                sound("minecraft:mob/zombie/step4"),
-                sound("minecraft:mob/zombie/step5")
+                sound("minecraft:mob/zombie/step1").pitch(0.5F),
+                sound("minecraft:mob/zombie/step2").pitch(0.5F),
+                sound("minecraft:mob/zombie/step3").pitch(0.5F),
+                sound("minecraft:mob/zombie/step4").pitch(0.5F),
+                sound("minecraft:mob/zombie/step5").pitch(0.5F)
         ).subtitle("subtitles.block.generic.footsteps"));
 
         this.add(UGSoundEvents.ROTBEAST_AMBIENT, definition().with(
@@ -252,11 +252,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:entity/rotbeast_death")
         ).subtitle("subtitles.entity.rotbeast_death"));
         this.add(UGSoundEvents.ROTBEAST_STEP, definition().with(
-                sound("minecraft:mob/zombie/step1"),
-                sound("minecraft:mob/zombie/step2"),
-                sound("minecraft:mob/zombie/step3"),
-                sound("minecraft:mob/zombie/step4"),
-                sound("minecraft:mob/zombie/step5")
+                sound("minecraft:mob/zombie/step1").pitch(0.3F),
+                sound("minecraft:mob/zombie/step2").pitch(0.3F),
+                sound("minecraft:mob/zombie/step3").pitch(0.3F),
+                sound("minecraft:mob/zombie/step4").pitch(0.3F),
+                sound("minecraft:mob/zombie/step5").pitch(0.3F)
         ).subtitle("subtitles.block.generic.footsteps"));
         this.add(UGSoundEvents.ROTBEAST_ATTACK, definition().with(
                 sound("minecraft:mob/irongolem/throw")
@@ -444,11 +444,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:entity/masticator_eat_3")
         ).subtitle("subtitles.entity.masticator_eat"));
         this.add(UGSoundEvents.MASTICATOR_STEP, definition().with(
-                sound("minecraft:mob/ravager/step1"),
-                sound("minecraft:mob/ravager/step2"),
-                sound("minecraft:mob/ravager/step3"),
-                sound("minecraft:mob/ravager/step4"),
-                sound("minecraft:mob/ravager/step5")
+                sound("minecraft:mob/ravager/step1").pitch(0.5F),
+                sound("minecraft:mob/ravager/step2").pitch(0.5F),
+                sound("minecraft:mob/ravager/step3").pitch(0.5F),
+                sound("minecraft:mob/ravager/step4").pitch(0.5F),
+                sound("minecraft:mob/ravager/step5").pitch(0.5F)
         ).subtitle("subtitles.block.generic.footsteps"));
 
         this.add(UGSoundEvents.GWIB_HURT, definition().with(

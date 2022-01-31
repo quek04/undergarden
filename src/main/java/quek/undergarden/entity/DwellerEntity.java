@@ -84,7 +84,7 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(UGSoundEvents.DWELLER_STEP.get(), 0.15F, 0.5F);
+        this.playSound(UGSoundEvents.DWELLER_STEP.get(), 0.15F, 1.0F);
     }
 
     @Nullable
