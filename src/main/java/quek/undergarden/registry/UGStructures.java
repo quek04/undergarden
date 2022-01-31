@@ -78,7 +78,7 @@ public class UGStructures {
             HashMap<StructureFeature<?>, HashMultimap<ConfiguredStructureFeature<?, ?>, ResourceKey<Biome>>> ugStructureToMultiMap = new HashMap<>();
 
             for(Map.Entry<ResourceKey<Biome>, Biome> biomeEntry : level.registryAccess().ownedRegistryOrThrow(Registry.BIOME_REGISTRY).entrySet()) {
-                if(biomeEntry.getKey().equals(UGBiomes.FORGOTTEN_FIELD) || biomeEntry.getKey().equals(UGBiomes.ANCIENT_SEA)) {
+                if(biomeEntry.getKey().equals(UGBiomes.ANCIENT_SEA)) {
                     associateBiomeToConfiguredStructure(ugStructureToMultiMap, UGConfiguredStructures.CATACOMBS, biomeEntry.getKey());
                 }
             }

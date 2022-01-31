@@ -31,6 +31,14 @@
       }
     ]
   },
+  "ambient.sea_ambience": {
+    "sounds": [
+      {
+        "name": "undergarden:ambient/sea_ambience",
+        "stream": true
+      }
+    ]
+  },
   "ambient.abyss_addition": {
     "sounds": [
       "undergarden:ambient/additions/abyss_1",
@@ -38,7 +46,9 @@
       "undergarden:ambient/additions/abyss_3",
       "undergarden:ambient/additions/abyss_4",
       "undergarden:ambient/additions/abyss_5",
-      "undergarden:ambient/additions/abyss_6"
+      "undergarden:ambient/additions/abyss_6",
+      "undergarden:ambient/additions/abyss_7",
+      "undergarden:ambient/additions/abyss_8"
     ]
   },
   "ambient.bog_addition": {
@@ -46,7 +56,12 @@
       "undergarden:ambient/additions/bog_1",
       "undergarden:ambient/additions/bog_2",
       "undergarden:ambient/additions/bog_3",
-      "undergarden:ambient/additions/bog_4"
+      "undergarden:ambient/additions/bog_4",
+      "undergarden:ambient/additions/bog_5",
+      "undergarden:ambient/additions/bog_6",
+      "undergarden:ambient/additions/bog_7",
+      "undergarden:ambient/additions/bog_8",
+      "undergarden:ambient/additions/bog_9"
     ]
   },
   "ambient.fields_addition": {
@@ -68,15 +83,6 @@
       "undergarden:ambient/additions/forest_5"
     ]
   },
-  "ambient.grongle_addition": {
-    "sounds": [
-      "undergarden:ambient/additions/grongle_1",
-      "undergarden:ambient/additions/grongle_2",
-      "undergarden:ambient/additions/grongle_3",
-      "undergarden:ambient/additions/grongle_4",
-      "undergarden:ambient/additions/grongle_5"
-    ]
-  },
   "ambient.frostfields_addition": {
     "sounds": [
       "undergarden:ambient/additions/frostfields_1",
@@ -84,7 +90,8 @@
       "undergarden:ambient/additions/frostfields_3",
       "undergarden:ambient/additions/frostfields_4",
       "undergarden:ambient/additions/frostfields_5",
-      "undergarden:ambient/additions/frostfields_6"
+      "undergarden:ambient/additions/frostfields_6",
+      "undergarden:ambient/additions/frostfields_7"
     ]
   },
   "ambient.spires_addition": {
@@ -101,10 +108,44 @@
       "undergarden:ambient/additions/spires_10"
     ]
   },
-  "ambient.abyss_mood": {
+  "ambient.sea_addition": {
     "sounds": [
-      "undergarden:ambient/moods/abyss_mood_1",
-      "undergarden:ambient/moods/abyss_mood_2"
+      "undergarden:ambient/additions/sea_1",
+      "undergarden:ambient/additions/sea_2",
+      "undergarden:ambient/additions/sea_3",
+      "undergarden:ambient/additions/sea_4",
+      "undergarden:ambient/additions/sea_5",
+      "undergarden:ambient/additions/sea_6",
+      "undergarden:ambient/additions/sea_7",
+      "undergarden:ambient/additions/sea_8",
+      "undergarden:ambient/additions/sea_9"
+    ]
+  },
+  "ambient.mood": {
+    "sounds": [
+      "undergarden:ambient/moods/mood_1",
+      "undergarden:ambient/moods/mood_2",
+      "undergarden:ambient/moods/mood_3",
+      "undergarden:ambient/moods/mood_4",
+      "undergarden:ambient/moods/mood_5",
+      "undergarden:ambient/moods/mood_6",
+      "undergarden:ambient/moods/mood_7",
+      "undergarden:ambient/moods/mood_8",
+      "undergarden:ambient/moods/mood_9",
+      "undergarden:ambient/moods/mood_10",
+      "undergarden:ambient/moods/mood_11"
+    ]
+  },
+  "ambient.frost_mood": {
+    "sounds": [
+      "undergarden:ambient/moods/frost_mood_1",
+      "undergarden:ambient/moods/frost_mood_2",
+      "undergarden:ambient/moods/frost_mood_3",
+      "undergarden:ambient/moods/frost_mood_4",
+      "undergarden:ambient/moods/frost_mood_5",
+      "undergarden:ambient/moods/frost_mood_6",
+      "undergarden:ambient/moods/frost_mood_7",
+      "undergarden:ambient/moods/frost_mood_8"
     ]
   },
   "music.undergarden_music": {
@@ -119,6 +160,10 @@
       },
       {
         "name": "undergarden:music/brotherhood",
+        "stream": true
+      },
+      {
+        "name": "undergarden:music/caps",
         "stream": true
       },
       {

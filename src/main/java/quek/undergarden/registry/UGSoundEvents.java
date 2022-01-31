@@ -15,16 +15,18 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> ABYSS_AMBIENCE = register("ambient.abyss_ambience");
     public static final RegistryObject<SoundEvent> SPIRES_AMBIENCE = register("ambient.spires_ambience");
     public static final RegistryObject<SoundEvent> FROST_AMBIENCE = register("ambient.frost_ambience");
+    public static final RegistryObject<SoundEvent> SEA_AMBIENCE = register("ambient.sea_ambience");
 
     public static final RegistryObject<SoundEvent> ABYSS_AMBIENT_ADDITION = register("ambient.abyss_addition");
     public static final RegistryObject<SoundEvent> BOG_AMBIENT_ADDITION = register("ambient.bog_addition");
     public static final RegistryObject<SoundEvent> FIELDS_AMBIENT_ADDITION = register("ambient.fields_addition");
     public static final RegistryObject<SoundEvent> FOREST_AMBIENT_ADDITION = register("ambient.forest_addition");
-    public static final RegistryObject<SoundEvent> GRONGLE_AMBIENT_ADDITION = register("ambient.grongle_addition");
     public static final RegistryObject<SoundEvent> FROSTFIELDS_AMBIENT_ADDITION = register("ambient.frostfields_addition");
     public static final RegistryObject<SoundEvent> SPIRES_AMBIENT_ADDITION = register("ambient.spires_addition");
+    public static final RegistryObject<SoundEvent> SEA_AMBIENT_ADDITION = register("ambient.sea_addition");
 
-    public static final RegistryObject<SoundEvent> ABYSS_MOOD = register("ambient.abyss_mood");
+    public static final RegistryObject<SoundEvent> MOOD = register("ambient.mood");
+    public static final RegistryObject<SoundEvent> FROST_MOOD = register("ambient.frost_mood");
 
     public static final RegistryObject<SoundEvent> UNDERGARDEN_MUSIC = register("music.undergarden_music");
 
