@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -23,17 +23,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
-import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.entity.rotspawn.RotspawnEntity;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
 
@@ -52,7 +49,7 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
         this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.UNDERBEANS.get(), UGItems.UNDERBEAN_STICK.get()), false));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, AbstractRotspawnEntity.class, 12.0F, 2.0D, 2.5D));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnEntity.class, 12.0F, 2.0D, 2.5D));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
     }
@@ -61,10 +58,6 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 15.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.15D);
-    }
-
-    public static boolean canDwellerSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
-        return level.getBlockState(pos.below()).is(UGBlocks.DEEPTURF_BLOCK.get()) || level.getBlockState(pos.below()).is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
     }
 
     @Override
@@ -193,11 +186,10 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
     @Override
     public boolean canBeControlledByRider() {
         Entity entity = this.getControllingPassenger();
-        if (!(entity instanceof Player)) {
+        if (!(entity instanceof Player player)) {
             return false;
         }
         else {
-            Player player = (Player)entity;
             return player.getMainHandItem().getItem() == UGItems.UNDERBEAN_STICK.get() || player.getOffhandItem().getItem() == UGItems.UNDERBEAN_STICK.get();
         }
     }

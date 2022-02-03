@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GloomperModel;
-import quek.undergarden.entity.GloomperEntity;
+import quek.undergarden.entity.animal.GloomperEntity;
 
 public class GloomperEyesLayer<T extends GloomperEntity, M extends GloomperModel<T>> extends EyesLayer<T, M> {
 

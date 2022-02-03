@@ -6,7 +6,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.GwiblingEntity;
+import quek.undergarden.entity.animal.GwiblingEntity;
 
 public class GwiblingModel<T extends GwiblingEntity> extends ListModel<T> {
 

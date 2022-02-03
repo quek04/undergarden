@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ScintlingModel;
-import quek.undergarden.entity.ScintlingEntity;
+import quek.undergarden.entity.animal.ScintlingEntity;
 
 public class ScintlingGlowLayer<T extends ScintlingEntity, M extends ScintlingModel<T>> extends EyesLayer<T, M> {
 

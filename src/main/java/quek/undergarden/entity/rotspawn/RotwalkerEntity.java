@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class RotwalkerEntity extends AbstractRotspawnEntity {
+public class RotwalkerEntity extends RotspawnEntity {
 
     public RotwalkerEntity(EntityType<? extends Monster> type, Level world) {
         super(type, world);

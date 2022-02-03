@@ -11,14 +11,14 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import quek.undergarden.entity.MogEntity;
+import quek.undergarden.entity.animal.MogEntity;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
 import java.util.Random;
 
-public abstract class AbstractRotspawnEntity extends Monster {
+public class RotspawnEntity extends Monster {
 
-    protected AbstractRotspawnEntity(EntityType<? extends Monster> type, Level worldIn) {
+    protected RotspawnEntity(EntityType<? extends Monster> type, Level worldIn) {
         super(type, worldIn);
     }
 

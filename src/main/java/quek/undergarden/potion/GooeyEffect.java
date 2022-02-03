@@ -1,11 +1,11 @@
 package quek.undergarden.potion;
 
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.core.BlockPos;
-import quek.undergarden.entity.ScintlingEntity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import quek.undergarden.entity.animal.ScintlingEntity;
 import quek.undergarden.registry.UGBlocks;
 
 public class GooeyEffect extends MobEffect {

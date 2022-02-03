@@ -10,7 +10,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwiblingModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.GwiblingEyesLayer;
-import quek.undergarden.entity.GwiblingEntity;
+import quek.undergarden.entity.animal.GwiblingEntity;
 
 public class GwiblingRender extends MobRenderer<GwiblingEntity, GwiblingModel<GwiblingEntity>> {
 

@@ -19,9 +19,9 @@ import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.EnumSet;
 
-public class NargoyleEntity extends AbstractCavernCreatureEntity {
+public class NargoyleEntity extends CavernEntity {
 
-    public NargoyleEntity(EntityType<? extends AbstractCavernCreatureEntity> type, Level level) {
+    public NargoyleEntity(EntityType<? extends CavernEntity> type, Level level) {
         super(type, level);
     }
 

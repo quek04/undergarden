@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import quek.undergarden.entity.ScintlingEntity;
+import quek.undergarden.entity.animal.ScintlingEntity;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
 

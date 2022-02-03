@@ -9,9 +9,9 @@ import net.minecraft.world.level.ServerLevelAccessor;
 
 import java.util.Random;
 
-public abstract class AbstractCavernCreatureEntity extends Monster {
+public class CavernEntity extends Monster {
 
-    protected AbstractCavernCreatureEntity(EntityType<? extends Monster> type, Level level) {
+    protected CavernEntity(EntityType<? extends Monster> type, Level level) {
         super(type, level);
     }
 

@@ -1,4 +1,4 @@
-package quek.undergarden.entity;
+package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;

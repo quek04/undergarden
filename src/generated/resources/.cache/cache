@@ -599,6 +599,7 @@ e4ea5373780000071e58a3b5314242026f97955d data/forge/tags/items/storage_blocks.js
 f2e670aa152fae1acf319be30ae2425b67634826 data/forge/tags/items/storage_blocks/regalium.json
 067bb5d442b7f9b3ce6edaff5c30c034a68e2e65 data/forge/tags/items/storage_blocks/utherium.json
 67e0a58087cb3e3ab96e24e7a11dc55d8a1abe12 data/forge/tags/items/string.json
+e6ce1c86cc5f65402048fd1c4966f0171cfd5ca3 data/minecraft/tags/blocks/animals_spawnable_on.json
 2670962adc7ca1976d412129e4bec8346f22db32 data/minecraft/tags/blocks/bamboo_plantable_on.json
 e4ea5373780000071e58a3b5314242026f97955d data/minecraft/tags/blocks/beacon_base_blocks.json
 44ca7a7d7ee06c757d4f72ac712c5fd013ef2d45 data/minecraft/tags/blocks/bee_growables.json
@@ -612,6 +613,7 @@ e4b0ec58f0c25a257a7a24cc3bb3dfbfa074fcfc data/minecraft/tags/blocks/crops.json
 7b71b60f7dbdda687d701ba094099fdff8e4636a data/minecraft/tags/blocks/enderman_holdable.json
 4774a419cddd799dd366d7ad1a2d3d44e5d3c5f1 data/minecraft/tags/blocks/fence_gates.json
 b6f63d5721ab3759c2857f0870e652b81068a5f6 data/minecraft/tags/blocks/flower_pots.json
+e6ce1c86cc5f65402048fd1c4966f0171cfd5ca3 data/minecraft/tags/blocks/foxes_spawnable_on.json
 bfa732947582d40f94f38ae9f31470137ac7b12f data/minecraft/tags/blocks/gold_ores.json
 c1d6cf3d6813c2f3a82baa50d773505134185ade data/minecraft/tags/blocks/iron_ores.json
 ce6c7c05c6cfb09290a73aa6f13784eccaacee28 data/minecraft/tags/blocks/leaves.json
@@ -624,8 +626,10 @@ ead9fa3e8019b1c48dcf4417b7adc56483cb9e24 data/minecraft/tags/blocks/mineable/hoe
 6de4831fd4e1b2463606649d0d80f96e4ed6d3cc data/minecraft/tags/blocks/mushroom_grow_block.json
 ee8943641cef807431bdc40fda8445e6281e70a1 data/minecraft/tags/blocks/needs_iron_tool.json
 71b47285890ea7e9fc6aad1dc25e4538275438d9 data/minecraft/tags/blocks/needs_stone_tool.json
+e6ce1c86cc5f65402048fd1c4966f0171cfd5ca3 data/minecraft/tags/blocks/parrots_spawnable_on.json
 054c09b02472f845a88fbc1ed57e38c020ab6b06 data/minecraft/tags/blocks/planks.json
 5b64059b9e02a343efa3237b82fd8dfd83525872 data/minecraft/tags/blocks/portals.json
+e6ce1c86cc5f65402048fd1c4966f0171cfd5ca3 data/minecraft/tags/blocks/rabbits_spawnable_on.json
 d2e5995e679e166a724c3feb96c5303aadee55ad data/minecraft/tags/blocks/saplings.json
 dd1e5d80df885747685242b1f499ac30ec627fb0 data/minecraft/tags/blocks/signs.json
 d235defe0ebba665d92951f8fc32a9cd435ace86 data/minecraft/tags/blocks/small_flowers.json
@@ -636,6 +640,7 @@ d235defe0ebba665d92951f8fc32a9cd435ace86 data/minecraft/tags/blocks/small_flower
 d651d4d033f3d70a2c4fb32872883627dba527be data/minecraft/tags/blocks/wall_post_override.json
 cf367c3c3664f811093261ba525d4f0663a146e9 data/minecraft/tags/blocks/wall_signs.json
 26101c10e61be56f155fee3b798dbcb18d100fa3 data/minecraft/tags/blocks/walls.json
+e6ce1c86cc5f65402048fd1c4966f0171cfd5ca3 data/minecraft/tags/blocks/wolves_spawnable_on.json
 6b8a9ca969ee19687726d2c8f7824ad7b2159aa7 data/minecraft/tags/blocks/wooden_buttons.json
 36558d8dd079c29eb8d6f218636adfe36611273c data/minecraft/tags/blocks/wooden_doors.json
 ded16329ed2785ddad246b4d05bc876019f8d013 data/minecraft/tags/blocks/wooden_fences.json
