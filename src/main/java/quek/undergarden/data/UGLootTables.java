@@ -105,7 +105,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.SMOGSTEM_SAPLING);
             this.add(UGBlocks.SMOGSTEM_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.SMOGSTEM_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
             dropSelf(UGBlocks.WIGGLEWOOD_SAPLING);
-            this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.WIGGLEWOOD_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
+            this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> createSilkTouchOrShearsDispatchTable(leaves, applyExplosionCondition(leaves, LootItem.lootTableItem(UGBlocks.WIGGLEWOOD_SAPLING.get())).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, DEFAULT_SAPLING_DROP_RATES))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(applyExplosionDecay(leaves, LootItem.lootTableItem(UGItems.TWISTYTWIG.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F)))));
             this.add(UGBlocks.GRONGLE_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.GRONGLE_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
             dropSelf(UGBlocks.INDIGO_MUSHROOM);
             dropSelf(UGBlocks.VEIL_MUSHROOM);

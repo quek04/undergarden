@@ -96,7 +96,7 @@
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "minecraft:stick"
+          "name": "undergarden:twistytwig"
         }
       ],
       "conditions": [
