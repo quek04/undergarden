@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 public class VirulentMixBlock extends LiquidBlock {
 
     public VirulentMixBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
-        super(supplier, properties.noCollission().strength(100F).noDrops());
+        super(supplier, properties.noCollission().strength(100F).noDrops().lightLevel((state) -> 7));
     }
 
     @Override
