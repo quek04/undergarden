@@ -615,6 +615,7 @@ e4b0ec58f0c25a257a7a24cc3bb3dfbfa074fcfc data/minecraft/tags/blocks/crops.json
 b6f63d5721ab3759c2857f0870e652b81068a5f6 data/minecraft/tags/blocks/flower_pots.json
 e6ce1c86cc5f65402048fd1c4966f0171cfd5ca3 data/minecraft/tags/blocks/foxes_spawnable_on.json
 bfa732947582d40f94f38ae9f31470137ac7b12f data/minecraft/tags/blocks/gold_ores.json
+bd992a6c7352517c7ddd4a916068b9ca3105a38d data/minecraft/tags/blocks/impermeable.json
 c1d6cf3d6813c2f3a82baa50d773505134185ade data/minecraft/tags/blocks/iron_ores.json
 ce6c7c05c6cfb09290a73aa6f13784eccaacee28 data/minecraft/tags/blocks/leaves.json
 fe278e4e69d0788135dfd5e53c38593b1589ff3a data/minecraft/tags/blocks/logs.json
