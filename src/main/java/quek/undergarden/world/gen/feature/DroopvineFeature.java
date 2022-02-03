@@ -74,16 +74,16 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
             if (world.isEmptyBlock(blockpos$mutable)) {
                 BlockState blockstate = world.getBlockState(blockpos$mutable.above());
                 if (blockstate.is(UGBlocks.DEPTHROCK.get()) || blockstate.is(UGBlocks.SHIVERSTONE.get())) {
-                    int j = Mth.nextInt(rand, 1, 8);
+                    int length = Mth.nextInt(rand, 1, 8);
                     if (rand.nextInt(6) == 0) {
-                        j *= 2;
+                        length *= 2;
                     }
 
                     if (rand.nextInt(5) == 0) {
-                        j = 1;
+                        length = 1;
                     }
 
-                    placeDroopvineColumn(world, rand, blockpos$mutable, j * 4, 17, 25);
+                    placeDroopvineColumn(world, rand, blockpos$mutable, length, 17, 25);
                 }
             }
         }
