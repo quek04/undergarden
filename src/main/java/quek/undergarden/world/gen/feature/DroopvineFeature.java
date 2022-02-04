@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import quek.undergarden.block.DroopvineBlock;
+import quek.undergarden.block.DroopvinePlantBlock;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
@@ -93,11 +93,11 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
         for(int i = 0; i <= length; ++i) {
             if (world.isEmptyBlock(posMutable)) {
                 if (i == length || !world.isEmptyBlock(posMutable.below())) {
-                    world.setBlock(posMutable, UGBlocks.DROOPVINE_TOP.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(rand, min, max)), 2);
+                    world.setBlock(posMutable, UGBlocks.DROOPVINE.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(rand, min, max)), 2);
                     break;
                 }
 
-                world.setBlock(posMutable, UGBlocks.DROOPVINE.get().defaultBlockState().setValue(DroopvineBlock.GLOWY, world.getRandom().nextBoolean()), 2);
+                world.setBlock(posMutable, UGBlocks.DROOPVINE_PLANT.get().defaultBlockState().setValue(DroopvinePlantBlock.GLOWY, world.getRandom().nextBoolean()), 2);
             }
 
             posMutable.move(Direction.DOWN);

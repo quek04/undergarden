@@ -76,7 +76,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.PORTALS).add(UGBlocks.UNDERGARDEN_PORTAL.get()); //TODO otherside portal
         tag(BlockTags.BEACON_BASE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.FORGOTTEN_BLOCK.get());
         tag(BlockTags.WALL_POST_OVERRIDE).add(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get());
-        tag(BlockTags.CLIMBABLE).add(UGBlocks.DROOPVINE.get(), UGBlocks.DROOPVINE_TOP.get());
+        tag(BlockTags.CLIMBABLE).add(UGBlocks.DROOPVINE_PLANT.get(), UGBlocks.DROOPVINE.get());
         tag(BlockTags.STRIDER_WARM_BLOCKS).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get(), UGBlocks.UTHERIUM_BLOCK.get());
         tag(BlockTags.FENCE_GATES).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get());
         tag(BlockTags.MUSHROOM_GROW_BLOCK).add(UGBlocks.DEEPTURF_BLOCK.get());
@@ -260,8 +260,8 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.SEDIMENT.get()
         );
         tag(BlockTags.MINEABLE_WITH_HOE).add(
-                UGBlocks.DROOPVINE_TOP.get(),
                 UGBlocks.DROOPVINE.get(),
+                UGBlocks.DROOPVINE_PLANT.get(),
                 UGBlocks.SMOGSTEM_LEAVES.get(),
                 UGBlocks.WIGGLEWOOD_LEAVES.get(),
                 UGBlocks.GRONGLE_LEAVES.get(),

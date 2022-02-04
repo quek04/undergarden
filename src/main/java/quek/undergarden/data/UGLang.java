@@ -158,8 +158,8 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.DEPTHROCK_PEBBLES, "Depthrock Pebbles");
         addBlock(UGBlocks.GLOWING_KELP, "Glitterkelp");
         addBlock(UGBlocks.GLOWING_KELP_PLANT, "Glitterkelp");
-        addBlock(UGBlocks.DROOPVINE_TOP, "Droopvine");
         addBlock(UGBlocks.DROOPVINE, "Droopvine");
+        addBlock(UGBlocks.DROOPVINE_PLANT, "Droopvine");
 
         addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
         addBlock(UGBlocks.INDIGO_MUSHROOM_CAP, "Indigo Mushroom Cap");

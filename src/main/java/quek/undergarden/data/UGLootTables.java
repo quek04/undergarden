@@ -157,8 +157,8 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.WIGGLEWOOD_WOOD);
             dropSelf(UGBlocks.SHARD_TORCH);
             dropOther(UGBlocks.SHARD_WALL_TORCH, UGBlocks.SHARD_TORCH.get());
-            this.add(UGBlocks.DROOPVINE.get(), LootTable.lootTable()
-                    .withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.DROOPVINE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DroopvineBlock.GLOWY, true))).add(LootItem.lootTableItem(UGItems.DROOPFRUIT.get())).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+            this.add(UGBlocks.DROOPVINE_PLANT.get(), LootTable.lootTable()
+                    .withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.DROOPVINE_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DroopvinePlantBlock.GLOWY, true))).add(LootItem.lootTableItem(UGItems.DROOPFRUIT.get())).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
             );
             dropSelf(UGBlocks.SMOGSTEM_FENCE_GATE);
             dropSelf(UGBlocks.WIGGLEWOOD_FENCE_GATE);

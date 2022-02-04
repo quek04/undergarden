@@ -156,8 +156,8 @@ public class UGBlocks {
     public static final RegistryObject<Block> DEPTHROCK_PEBBLES = register("depthrock_pebbles", () -> new DepthrockPebblesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.BASALT).noOcclusion().noCollission().strength(0F)));
     public static final RegistryObject<GlowingKelpTopBlock> GLOWING_KELP = BLOCKS.register("glowing_kelp", () -> new GlowingKelpTopBlock(BlockBehaviour.Properties.copy(Blocks.KELP).lightLevel((state) -> 10)));
     public static final RegistryObject<Block> GLOWING_KELP_PLANT = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(BlockBehaviour.Properties.copy(Blocks.KELP_PLANT).lightLevel((state) -> 10)));
-    public static final RegistryObject<Block> DROOPVINE_TOP = BLOCKS.register("droopvine_top", () -> new DroopvineTopBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES).strength(0.1F).noDrops(), Direction.DOWN, false, 0.1D));
-    public static final RegistryObject<Block> DROOPVINE = BLOCKS.register("droopvine", () -> new DroopvineBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT).strength(0.1F).lightLevel((state) -> state.getValue(DroopvineBlock.GLOWY) ? 10 : 0), Direction.DOWN, false));
+    public static final RegistryObject<DroopvineBlock> DROOPVINE = BLOCKS.register("droopvine", () -> new DroopvineBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES).strength(0.1F).lightLevel(Droopvine.light())));
+    public static final RegistryObject<DroopvinePlantBlock> DROOPVINE_PLANT = BLOCKS.register("droopvine_plant", () -> new DroopvinePlantBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES_PLANT).strength(0.1F).lightLevel(Droopvine.light())));
 
     //mushroom
     public static final RegistryObject<Block> INDIGO_MUSHROOM = register("indigo_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM).lightLevel((state) -> 2)));

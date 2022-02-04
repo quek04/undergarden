@@ -10,9 +10,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GrowingPlantBodyBlock;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
@@ -20,38 +22,25 @@ import quek.undergarden.registry.UGItems;
 
 import java.util.Random;
 
-public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
+public class DroopvinePlantBlock extends GrowingPlantBodyBlock {
 
-    protected static final VoxelShape SHAPE = Block.box(4.0D, 5.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+    public static final BooleanProperty GLOWY = BooleanProperty.create("glowy");
 
-    public DroopvineBlock(Properties properties) {
-        super(properties, Direction.DOWN, SHAPE, false, 0.1D);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(GLOWY, false));
+    public static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+
+    public DroopvinePlantBlock(Properties properties) {
+        super(properties, Direction.DOWN, SHAPE, false);
+        this.registerDefaultState(this.stateDefinition.any().setValue(GLOWY, false));
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(Random random) {
-        return 1;
+    protected GrowingPlantHeadBlock getHeadBlock() {
+        return UGBlocks.DROOPVINE.get();
     }
 
     @Override
-    protected boolean canGrowInto(BlockState state) {
-        return state.isAir();
-    }
-
-    @Override
-    protected Block getBodyBlock() {
-        return UGBlocks.DROOPVINE_PLANT.get();
-    }
-
-    @Override
-    protected BlockState updateBodyAfterConvertedFromHead(BlockState head, BlockState body) {
-        return body.setValue(GLOWY, head.getValue(GLOWY));
-    }
-
-    @Override
-    protected BlockState getGrowIntoState(BlockState state, Random random) {
-        return super.getGrowIntoState(state, random).setValue(GLOWY, random.nextBoolean());
+    protected BlockState updateHeadAfterConvertedFromBody(BlockState body, BlockState head) {
+        return head.setValue(GLOWY, body.getValue(GLOWY));
     }
 
     @Override
@@ -66,7 +55,6 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
         builder.add(GLOWY);
     }
 

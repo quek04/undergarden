@@ -53,7 +53,6 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.DEPTHROCK_IRON_ORE);
         block(UGBlocks.DEPTHROCK_GOLD_ORE);
         block(UGBlocks.DEPTHROCK_DIAMOND_ORE);
-        crossBlock(UGBlocks.DROOPVINE_TOP);
         block(UGBlocks.COARSE_DEEPSOIL);
         crossBlock(UGBlocks.GRONGLE_SAPLING);
         block(UGBlocks.GRONGLE_LEAVES);

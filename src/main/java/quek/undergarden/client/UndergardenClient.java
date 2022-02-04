@@ -69,8 +69,8 @@ public class UndergardenClient {
         render(UGBlocks.GLOOMGOURD_STEM_ATTACHED, cutout);
         render(UGBlocks.SHARD_TORCH, cutout);
         render(UGBlocks.SHARD_WALL_TORCH, cutout);
-        render(UGBlocks.DROOPVINE_TOP, cutout);
         render(UGBlocks.DROOPVINE, cutout);
+        render(UGBlocks.DROOPVINE_PLANT, cutout);
         render(UGBlocks.GRONGLE_SAPLING, cutout);
         render(UGBlocks.GRONGLE_DOOR, cutout);
         render(UGBlocks.GRONGLE_TRAPDOOR, cutout);
