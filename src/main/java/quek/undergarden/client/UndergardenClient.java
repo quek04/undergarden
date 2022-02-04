@@ -56,8 +56,8 @@ public class UndergardenClient {
         render(UGBlocks.TALL_DEEPTURF, cutout);
         render(UGBlocks.TALL_SHIMMERWEED, cutout);
         render(UGBlocks.CLOGGRUM_BARS, cutout);
-        render(UGBlocks.GLOWING_KELP, cutout);
-        render(UGBlocks.GLOWING_KELP_PLANT, cutout);
+        render(UGBlocks.GLITTERKELP, cutout);
+        render(UGBlocks.GLITTERKELP_PLANT, cutout);
         render(UGBlocks.GOO, translucent);
         render(UGBlocks.SMOGSTEM_DOOR, cutout);
         render(UGBlocks.WIGGLEWOOD_DOOR, cutout);

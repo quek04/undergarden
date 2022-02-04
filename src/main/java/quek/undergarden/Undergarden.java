@@ -170,7 +170,7 @@ public class Undergarden {
 			ComposterBlock.add(0.1F, UGItems.UNDERBEANS.get());
 			ComposterBlock.add(0.2F, UGItems.BLISTERBERRY.get());
 			ComposterBlock.add(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
-			ComposterBlock.add(0.3F, UGItems.GLOWING_KELP.get());
+			ComposterBlock.add(0.3F, UGItems.GLITTERKELP.get());
 			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
 			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
 			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_LEAVES.get());

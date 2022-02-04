@@ -40,8 +40,8 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.BLOOD_MUSHROOM);
         block(UGBlocks.DEPTHROCK_BRICKS);
         block(UGBlocks.CRACKED_DEPTHROCK_BRICKS);
-        crossBlock(UGBlocks.GLOWING_KELP);
-        crossBlock(UGBlocks.GLOWING_KELP_PLANT);
+        crossBlock(UGBlocks.GLITTERKELP);
+        crossBlock(UGBlocks.GLITTERKELP_PLANT);
         block(UGBlocks.SHIVERSTONE);
         block(UGBlocks.SHIVERSTONE_BRICKS);
         block(UGBlocks.DEPTHROCK_REGALIUM_ORE);

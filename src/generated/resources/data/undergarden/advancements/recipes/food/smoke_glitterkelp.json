@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:smelt_glowing_kelp"
+      "undergarden:smoke_glitterkelp"
     ]
   },
   "criteria": {
-    "has_undergarden:glowing_kelp": {
+    "has_undergarden:glitterkelp": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:glowing_kelp"
+              "undergarden:glitterkelp"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:smelt_glowing_kelp"
+        "recipe": "undergarden:smoke_glitterkelp"
       }
     }
   },
   "requirements": [
     [
-      "has_undergarden:glowing_kelp",
+      "has_undergarden:glitterkelp",
       "has_the_recipe"
     ]
   ]

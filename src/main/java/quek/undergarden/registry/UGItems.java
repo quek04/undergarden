@@ -128,7 +128,7 @@ public class UGItems {
     public static final RegistryObject<Item> COOKED_GWIBLING = ITEMS.register("cooked_gwibling", () -> new UGItem(UGFoods.COOKED_GWIBLING));
     public static final RegistryObject<Item> RAW_GLOOMPER_LEG = ITEMS.register("raw_gloomper_leg", () -> new UGItem(UGFoods.RAW_GLOOMPER_LEG));
     public static final RegistryObject<Item> GLOOMPER_LEG = ITEMS.register("gloomper_leg", () -> new UGItem(UGFoods.GLOOMPER_LEG));
-    public static final RegistryObject<Item> GLOWING_KELP = ITEMS.register("glowing_kelp", () -> new BlockItem(UGBlocks.GLOWING_KELP.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
+    public static final RegistryObject<Item> GLITTERKELP = ITEMS.register("glitterkelp", () -> new BlockItem(UGBlocks.GLITTERKELP.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> GLOOMGOURD_SEEDS = ITEMS.register("gloomgourd_seeds", () -> new ItemNameBlockItem(UGBlocks.GLOOMGOURD_STEM.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> BLOODY_STEW = ITEMS.register("bloody_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGItemGroups.GROUP).food(UGFoods.BLOODY).stacksTo(1)));
     public static final RegistryObject<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGItemGroups.GROUP).food(UGFoods.INKY).stacksTo(1)));

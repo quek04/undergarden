@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "undergarden:block/glowing_kelp_plant"
+    "cross": "undergarden:block/glitterkelp"
   }
 }

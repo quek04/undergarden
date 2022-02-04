@@ -4,14 +4,14 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.KelpBlock;
 import quek.undergarden.registry.UGBlocks;
 
-public class GlowingKelpTopBlock extends KelpBlock {
+public class GlitterkelpBlock extends KelpBlock {
 
-    public GlowingKelpTopBlock(Properties properties) {
+    public GlitterkelpBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     protected Block getBodyBlock() {
-        return UGBlocks.GLOWING_KELP_PLANT.get();
+        return UGBlocks.GLITTERKELP_PLANT.get();
     }
 }

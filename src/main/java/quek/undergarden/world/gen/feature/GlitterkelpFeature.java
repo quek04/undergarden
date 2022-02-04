@@ -8,14 +8,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import quek.undergarden.block.GlowingKelpTopBlock;
+import quek.undergarden.block.GlitterkelpBlock;
 import quek.undergarden.registry.UGBlocks;
 
 import java.util.Random;
 
-public class GlowingKelpFeature extends Feature<NoneFeatureConfiguration> {
+public class GlitterkelpFeature extends Feature<NoneFeatureConfiguration> {
 
-    public GlowingKelpFeature(Codec<NoneFeatureConfiguration> configCodec) {
+    public GlitterkelpFeature(Codec<NoneFeatureConfiguration> configCodec) {
         super(configCodec);
     }
 
@@ -29,22 +29,22 @@ public class GlowingKelpFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
         if(pos.getY() < oceanY) {
             if (level.getBlockState(blockpos).getBlock() == Blocks.WATER) {
-                BlockState kelp = UGBlocks.GLOWING_KELP.get().defaultBlockState();
-                BlockState kelpTop = UGBlocks.GLOWING_KELP_PLANT.get().defaultBlockState();
+                BlockState kelp = UGBlocks.GLITTERKELP.get().defaultBlockState();
+                BlockState kelpTop = UGBlocks.GLITTERKELP_PLANT.get().defaultBlockState();
                 int k = 1 + random.nextInt(10);
 
                 for(int l = 0; l <= k; ++l) {
                     if (level.getBlockState(blockpos).getBlock() == Blocks.WATER && level.getBlockState(blockpos.above()).getBlock() == Blocks.WATER && kelpTop.canSurvive(level, blockpos)) {
                         if (l == k) {
-                            level.setBlock(blockpos, kelp.setValue(GlowingKelpTopBlock.AGE, random.nextInt(4) + 20), 2);
+                            level.setBlock(blockpos, kelp.setValue(GlitterkelpBlock.AGE, random.nextInt(4) + 20), 2);
                             ++i;
                         } else {
                             level.setBlock(blockpos, kelpTop, 2);
                         }
                     } else if (l > 0) {
                         BlockPos blockpos1 = blockpos.below();
-                        if (kelp.canSurvive(level, blockpos1) && level.getBlockState(blockpos1.below()).getBlock() != UGBlocks.GLOWING_KELP.get()) {
-                            level.setBlock(blockpos1, kelp.setValue(GlowingKelpTopBlock.AGE, random.nextInt(4) + 20), 2);
+                        if (kelp.canSurvive(level, blockpos1) && level.getBlockState(blockpos1.below()).getBlock() != UGBlocks.GLITTERKELP.get()) {
+                            level.setBlock(blockpos1, kelp.setValue(GlitterkelpBlock.AGE, random.nextInt(4) + 20), 2);
                             ++i;
                         }
                         break;

@@ -156,8 +156,8 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.SHARD_O_LANTERN, "Shard o'Lantern");
         addBlock(UGBlocks.GLOOMGOURD_STEM, "Gloomgourd Stem");
         addBlock(UGBlocks.DEPTHROCK_PEBBLES, "Depthrock Pebbles");
-        addBlock(UGBlocks.GLOWING_KELP, "Glitterkelp");
-        addBlock(UGBlocks.GLOWING_KELP_PLANT, "Glitterkelp");
+        addBlock(UGBlocks.GLITTERKELP, "Glitterkelp");
+        addBlock(UGBlocks.GLITTERKELP_PLANT, "Glitterkelp");
         addBlock(UGBlocks.DROOPVINE, "Droopvine");
         addBlock(UGBlocks.DROOPVINE_PLANT, "Droopvine");
 

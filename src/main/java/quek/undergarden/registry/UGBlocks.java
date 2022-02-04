@@ -154,8 +154,8 @@ public class UGBlocks {
     public static final RegistryObject<StemBlock> GLOOMGOURD_STEM = BLOCKS.register("gloomgourd_stem", () -> new UGStemBlock(GLOOMGOURD.get(), BlockBehaviour.Properties.copy(Blocks.PUMPKIN_STEM)));
     public static final RegistryObject<AttachedStemBlock> GLOOMGOURD_STEM_ATTACHED = BLOCKS.register("gloomgourd_stem_attached", () -> new UGAttachedStemBlock(GLOOMGOURD.get(), BlockBehaviour.Properties.copy(Blocks.ATTACHED_PUMPKIN_STEM)));
     public static final RegistryObject<Block> DEPTHROCK_PEBBLES = register("depthrock_pebbles", () -> new DepthrockPebblesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.BASALT).noOcclusion().noCollission().strength(0F)));
-    public static final RegistryObject<GlowingKelpTopBlock> GLOWING_KELP = BLOCKS.register("glowing_kelp", () -> new GlowingKelpTopBlock(BlockBehaviour.Properties.copy(Blocks.KELP).lightLevel((state) -> 10)));
-    public static final RegistryObject<Block> GLOWING_KELP_PLANT = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(BlockBehaviour.Properties.copy(Blocks.KELP_PLANT).lightLevel((state) -> 10)));
+    public static final RegistryObject<GlitterkelpBlock> GLITTERKELP = BLOCKS.register("glitterkelp", () -> new GlitterkelpBlock(BlockBehaviour.Properties.copy(Blocks.KELP).lightLevel((state) -> 10)));
+    public static final RegistryObject<Block> GLITTERKELP_PLANT = BLOCKS.register("glitterkelp_plant", () -> new GlitterkelpPlantBlock(BlockBehaviour.Properties.copy(Blocks.KELP_PLANT).lightLevel((state) -> 10)));
     public static final RegistryObject<DroopvineBlock> DROOPVINE = BLOCKS.register("droopvine", () -> new DroopvineBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES).strength(0.1F).lightLevel(Droopvine.light())));
     public static final RegistryObject<DroopvinePlantBlock> DROOPVINE_PLANT = BLOCKS.register("droopvine_plant", () -> new DroopvinePlantBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES_PLANT).strength(0.1F).lightLevel(Droopvine.light())));
 

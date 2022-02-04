@@ -159,7 +159,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.GLOOMGOURD_SEEDS);
         normalItem(UGItems.BRUTE_TUSK);
         normalItem(UGItems.MOGMOSS);
-        normalItem(UGItems.GLOWING_KELP);
+        normalItem(UGItems.GLITTERKELP);
         normalItem(UGItems.GOO_BALL);
         normalItem(UGItems.ROTTEN_BLISTERBERRY);
         normalItem(UGItems.BLISTERBOMB);

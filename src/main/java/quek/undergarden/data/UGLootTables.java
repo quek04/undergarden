@@ -133,8 +133,8 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.FROSTSTEEL_BLOCK);
             dropSelf(UGBlocks.UTHERIUM_BLOCK);
             dropSelf(UGBlocks.CLOGGRUM_BARS);
-            dropOther(UGBlocks.GLOWING_KELP, UGItems.GLOWING_KELP.get());
-            dropOther(UGBlocks.GLOWING_KELP_PLANT, UGItems.GLOWING_KELP.get());
+            dropOther(UGBlocks.GLITTERKELP, UGItems.GLITTERKELP.get());
+            dropOther(UGBlocks.GLITTERKELP_PLANT, UGItems.GLITTERKELP.get());
             this.add(UGBlocks.SMOGSTEM_DOOR.get(), (block) -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             this.add(UGBlocks.WIGGLEWOOD_DOOR.get(), (block) -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             dropSelf(UGBlocks.SMOGSTEM_TRAPDOOR);
