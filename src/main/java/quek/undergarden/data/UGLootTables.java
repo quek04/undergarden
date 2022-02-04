@@ -157,9 +157,6 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.WIGGLEWOOD_WOOD);
             dropSelf(UGBlocks.SHARD_TORCH);
             dropOther(UGBlocks.SHARD_WALL_TORCH, UGBlocks.SHARD_TORCH.get());
-            this.add(UGBlocks.DROOPVINE_PLANT.get(), LootTable.lootTable()
-                    .withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.DROOPVINE_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DroopvinePlantBlock.GLOWY, true))).add(LootItem.lootTableItem(UGItems.DROOPFRUIT.get())).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-            );
             dropSelf(UGBlocks.SMOGSTEM_FENCE_GATE);
             dropSelf(UGBlocks.WIGGLEWOOD_FENCE_GATE);
             dropSelf(UGBlocks.COARSE_DEEPSOIL);
@@ -261,12 +258,18 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.RAW_FROSTSTEEL_BLOCK);
             dropSelf(UGBlocks.CLOGGRUM_LANTERN);
             this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), BlockLoot::createShearsOnlyDrop);
+            this.add(UGBlocks.DROOPVINE.get(), (UGLootTables::droopvine));
+            this.add(UGBlocks.DROOPVINE_PLANT.get(), (UGLootTables::droopvine));
         }
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
             return UGBlocks.BLOCKS.getEntries().stream().map(Supplier::get).collect(Collectors.toList());
         }
+    }
+
+    private static LootTable.Builder droopvine(Block block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(UGItems.DROOPFRUIT.get())).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(Droopvine.GLOWY, true))));
     }
 
     private static LootTable.Builder tallGrassDrop(Block originalBlock, Block newBlock) {

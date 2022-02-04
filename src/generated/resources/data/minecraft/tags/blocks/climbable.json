@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "undergarden:droopvine",
-    "undergarden:droopvine_top"
+    "undergarden:droopvine_plant",
+    "undergarden:droopvine"
   ]
 }

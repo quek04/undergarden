@@ -13,7 +13,7 @@
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "undergarden:droopvine",
+          "block": "undergarden:droopvine_plant",
           "properties": {
             "glowy": "true"
           }
