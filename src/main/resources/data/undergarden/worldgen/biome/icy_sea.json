@@ -67,6 +67,22 @@
         "minCount": 1,
         "maxCount": 1
       }
+    ],
+    "water_ambient": [
+      {
+        "type": "undergarden:gwibling",
+        "weight": 5,
+        "minCount": 3,
+        "maxCount": 6
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "undergarden:gwib",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      }
     ]
   },
   "spawn_costs": {},
