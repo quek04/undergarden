@@ -65,7 +65,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
         crossBlock(UGBlocks.SEEPING_INK);
         crossBlock(UGBlocks.MUSHROOM_VEIL);
-        crossBlock(UGBlocks.MUSHROOM_VEIL_TOP);
+        crossBlock(UGBlocks.MUSHROOM_VEIL_PLANT);
         block(UGBlocks.FORGOTTEN_BLOCK);
         block(UGBlocks.CLOGGRUM_BLOCK);
         block(UGBlocks.FROSTSTEEL_BLOCK);

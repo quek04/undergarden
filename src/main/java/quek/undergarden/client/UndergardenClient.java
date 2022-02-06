@@ -75,8 +75,8 @@ public class UndergardenClient {
         render(UGBlocks.GRONGLE_DOOR, cutout);
         render(UGBlocks.GRONGLE_TRAPDOOR, cutout);
         render(UGBlocks.SEEPING_INK, cutout);
+        render(UGBlocks.MUSHROOM_VEIL_PLANT, cutout);
         render(UGBlocks.MUSHROOM_VEIL, cutout);
-        render(UGBlocks.MUSHROOM_VEIL_TOP, cutout);
         render(UGBlocks.POTTED_SHIMMERWEED, cutout);
         render(UGBlocks.POTTED_SMOGSTEM_SAPLING, cutout);
         render(UGBlocks.POTTED_WIGGLEWOOD_SAPLING, cutout);
