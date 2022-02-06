@@ -1,6 +1,46 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "block/cross",
+  "ambientocclusion": false,
   "textures": {
-    "cross": "undergarden:block/glowy_droopvine"
-  }
+    "cross": "undergarden:block/droopvine",
+    "glowy": "undergarden:block/droopvine_glowy"
+  },
+  "elements": [
+    {   "from": [ 0.8, 0, 8 ],
+      "to": [ 15.2, 16, 8 ],
+      "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+      "shade": false,
+      "faces": {
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#cross", "tintindex": 0},
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#cross", "tintindex": 0}
+      }
+    },
+    {   "from": [ 8, 0, 0.8 ],
+      "to": [ 8, 16, 15.2 ],
+      "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+      "shade": false,
+      "faces": {
+        "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#cross", "tintindex": 0},
+        "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#cross", "tintindex": 0}
+      }
+    },
+    {   "from": [ 0.8, 0, 8 ],
+      "to": [ 15.2, 16, 8 ],
+      "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+      "shade": false,
+      "faces": {
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#glowy"},
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#glowy"}
+      }
+    },
+    {   "from": [ 8, 0, 0.8 ],
+      "to": [ 8, 16, 15.2 ],
+      "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },
+      "shade": false,
+      "faces": {
+        "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#glowy"},
+        "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#glowy"}
+      }
+    }
+  ]
 }

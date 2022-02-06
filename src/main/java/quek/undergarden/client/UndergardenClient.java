@@ -168,7 +168,9 @@ public class UndergardenClient {
                 UGBlocks.TALL_SHIMMERWEED.get(),
                 UGBlocks.GLOOMGOURD_STEM.get(),
                 UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(),
-                UGBlocks.POTTED_SHIMMERWEED.get()
+                UGBlocks.POTTED_SHIMMERWEED.get(),
+                UGBlocks.DROOPVINE.get(),
+                UGBlocks.DROOPVINE_PLANT.get()
         );
 
         colors.register((state, world, pos, tint) ->
