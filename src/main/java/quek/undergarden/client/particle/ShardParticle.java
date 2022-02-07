@@ -7,8 +7,8 @@ import net.minecraft.util.Mth;
 
 public class ShardParticle extends RisingParticle {
 
-    protected ShardParticle(ClientLevel clientWorld, double x, double y, double z, double motionX, double motionY, double motionZ) {
-        super(clientWorld, x, y, z, motionX, motionY, motionZ);
+    protected ShardParticle(ClientLevel level, double x, double y, double z, double motionX, double motionY, double motionZ) {
+        super(level, x, y, z, motionX, motionY, motionZ);
     }
 
     @Override
@@ -29,9 +29,9 @@ public class ShardParticle extends RisingParticle {
     public int getLightColor(float partialTick) {
         float lvt_2_1_ = ((float)this.age + partialTick) / (float)this.lifetime;
         lvt_2_1_ = Mth.clamp(lvt_2_1_, 0.0F, 1.0F);
-        int lvt_3_1_ = super.getLightColor(partialTick);
-        int lvt_4_1_ = lvt_3_1_ & 255;
-        int lvt_5_1_ = lvt_3_1_ >> 16 & 255;
+        int lightColor = super.getLightColor(partialTick);
+        int lvt_4_1_ = lightColor & 255;
+        int lvt_5_1_ = lightColor >> 16 & 255;
         lvt_4_1_ += (int)(lvt_2_1_ * 15.0F * 16.0F);
         if (lvt_4_1_ > 240) {
             lvt_4_1_ = 240;
@@ -40,15 +40,15 @@ public class ShardParticle extends RisingParticle {
         return lvt_4_1_ | lvt_5_1_ << 16;
     }
 
-    public static class Factory implements ParticleProvider<SimpleParticleType> {
+    public static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 
-        public Factory(SpriteSet spriteSet) {
+        public Provider(SpriteSet spriteSet) {
             this.spriteSet = spriteSet;
         }
 
-        public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            ShardParticle lvt_15_1_ = new ShardParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
+        public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+            ShardParticle lvt_15_1_ = new ShardParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
             lvt_15_1_.pickSprite(this.spriteSet);
             return lvt_15_1_;
         }
