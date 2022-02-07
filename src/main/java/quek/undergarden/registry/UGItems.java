@@ -147,7 +147,7 @@ public class UGItems {
     public static final RegistryObject<ForgeSpawnEggItem> STONEBORN_SPAWN_EGG = ITEMS.register("stoneborn_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.STONEBORN, 3227179, 9502615, new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<ForgeSpawnEggItem> NARGOYLE_SPAWN_EGG = ITEMS.register("nargoyle_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.NARGOYLE, 3747634, 15508905, new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<ForgeSpawnEggItem> MUNCHER_SPAWN_EGG = ITEMS.register("muncher_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MUNCHER, 2366466, 15881511, new Item.Properties().tab(UGItemGroups.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> SPLOOGIE_SPAWN_EGG = ITEMS.register("sploogie_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.SPLOOGIE, 16638885, 4559071, new Item.Properties().tab(UGItemGroups.GROUP)));
+    public static final RegistryObject<ForgeSpawnEggItem> SPLOOGIE_SPAWN_EGG = ITEMS.register("sploogie_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.SPLOOGIE, 10585715, 4559071, new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<ForgeSpawnEggItem> GWIB_SPAWN_EGG = ITEMS.register("gwib_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.GWIB, 10064737, 4203803, new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<ForgeSpawnEggItem> MOG_SPAWN_EGG = ITEMS.register("mog_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MOG, 3227179, 6393396, new Item.Properties().tab(UGItemGroups.GROUP)));
 
