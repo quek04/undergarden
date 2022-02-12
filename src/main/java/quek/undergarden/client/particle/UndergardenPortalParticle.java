@@ -9,7 +9,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 
 public class UndergardenPortalParticle extends PortalParticle {
 
-    protected UndergardenPortalParticle(ClientLevel level, double x, double y, double z, double motionX, double motionY, double motionZ) {
+    private UndergardenPortalParticle(ClientLevel level, double x, double y, double z, double motionX, double motionY, double motionZ) {
         super(level, x, y, z, motionX, motionY, motionZ);
     }
 

@@ -7,7 +7,7 @@ import net.minecraft.util.Mth;
 
 public class ShardParticle extends RisingParticle {
 
-    protected ShardParticle(ClientLevel level, double x, double y, double z, double motionX, double motionY, double motionZ) {
+    private ShardParticle(ClientLevel level, double x, double y, double z, double motionX, double motionY, double motionZ) {
         super(level, x, y, z, motionX, motionY, motionZ);
     }
 
@@ -48,9 +48,9 @@ public class ShardParticle extends RisingParticle {
         }
 
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            ShardParticle lvt_15_1_ = new ShardParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
-            lvt_15_1_.pickSprite(this.spriteSet);
-            return lvt_15_1_;
+            ShardParticle shard = new ShardParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
+            shard.pickSprite(this.spriteSet);
+            return shard;
         }
     }
 }

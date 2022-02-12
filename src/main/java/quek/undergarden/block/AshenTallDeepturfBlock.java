@@ -21,12 +21,12 @@ public class AshenTallDeepturfBlock extends UGPlantBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
         return false;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, Random rand, BlockPos pos, BlockState state) {
         return false;
     }
 

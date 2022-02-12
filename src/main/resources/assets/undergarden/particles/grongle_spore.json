@@ -1,7 +1,7 @@
 {
   "textures": [
-    "undergarden:grongle_spore_1",
-    "undergarden:grongle_spore_2",
-    "undergarden:grongle_spore_3"
+    "undergarden:grongle_spore/grongle_spore_1",
+    "undergarden:grongle_spore/grongle_spore_2",
+    "undergarden:grongle_spore/grongle_spore_3"
   ]
 }

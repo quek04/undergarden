@@ -9,9 +9,11 @@ import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGParticleTypes;
 
 import java.util.Random;
 
@@ -24,12 +26,12 @@ public class UGPlantBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
@@ -42,12 +44,25 @@ public class UGPlantBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return SHAPE;
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        Vec3 offset = state.getOffset(level, pos);
+        return SHAPE.move(offset.x, offset.y, offset.z);
     }
 
     @Override
     public BlockBehaviour.OffsetType getOffsetType() {
         return BlockBehaviour.OffsetType.XZ;
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+        if(this == UGBlocks.SHIMMERWEED.get()) {
+            double x = (double) pos.getX() + random.nextFloat();
+            double y = (double) pos.getY() + 0.2D + random.nextFloat();
+            double z = (double) pos.getZ() + random.nextFloat();
+            double xSpeed = (double)random.nextFloat() * -0.9D * (double)random.nextFloat();
+            double zSpeed = (double)random.nextFloat() * -0.9D * (double)random.nextFloat();
+            level.addParticle(UGParticleTypes.SHIMMER.get(), x, y, z, xSpeed, 0.0D, zSpeed);
+        }
     }
 }

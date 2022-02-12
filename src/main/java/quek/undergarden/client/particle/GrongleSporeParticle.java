@@ -34,13 +34,13 @@ public class GrongleSporeParticle extends TextureSheetParticle {
     public static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 
-        public Provider(SpriteSet spriteSet) {
-            this.spriteSet = spriteSet;
+        public Provider(SpriteSet sprites) {
+            this.spriteSet = sprites;
         }
 
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            double motionY = (double)level.random.nextFloat() * -50.0D * (double)level.random.nextFloat() * 0.1D;
-            GrongleSporeParticle spore = new GrongleSporeParticle(level, x, y, z, 0.0D, motionY, 0.0D);
+            double yMotion = (double)level.random.nextFloat() * -50.0D * (double)level.random.nextFloat() * 0.1D;
+            GrongleSporeParticle spore = new GrongleSporeParticle(level, x, y, z, 0.0D, yMotion, 0.0D);
             spore.pickSprite(this.spriteSet);
             return spore;
         }
