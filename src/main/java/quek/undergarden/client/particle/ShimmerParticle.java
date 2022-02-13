@@ -2,7 +2,11 @@ package quek.undergarden.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.core.particles.ParticleGroup;
 import net.minecraft.core.particles.SimpleParticleType;
+import quek.undergarden.registry.UGParticleTypes;
+
+import java.util.Optional;
 
 public class ShimmerParticle extends TextureSheetParticle {
 
@@ -17,6 +21,7 @@ public class ShimmerParticle extends TextureSheetParticle {
         this.yd *= ySpeed;
         this.zd *= zSpeed;
         this.setSpriteFromAge(sprites);
+        this.hasPhysics = true;
     }
 
     @Override
@@ -38,7 +43,12 @@ public class ShimmerParticle extends TextureSheetParticle {
         }
 
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            return new ShimmerParticle(level, this.sprites, x, y, z, xSpeed, ySpeed, zSpeed);
+            return new ShimmerParticle(level, this.sprites, x, y, z, xSpeed, ySpeed, zSpeed) {
+                @Override
+                public Optional<ParticleGroup> getParticleGroup() {
+                    return Optional.of(UGParticleTypes.SHIMMER_GROUP);
+                }
+            };
         }
     }
 }

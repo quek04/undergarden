@@ -3,6 +3,7 @@ package quek.undergarden.registry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.SmokeParticle;
+import net.minecraft.core.particles.ParticleGroup;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -27,6 +28,8 @@ public class UGParticleTypes {
     public static final RegistryObject<SimpleParticleType> UNDERGARDEN_PORTAL = PARTICLES.register("undergarden_portal", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> GLOOMPER_FART = PARTICLES.register("gloomper_fart", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> SHIMMER = PARTICLES.register("shimmer", () -> new SimpleParticleType(false));
+
+    public static final ParticleGroup SHIMMER_GROUP = new ParticleGroup(1000);
 
     @SubscribeEvent
     public static void registerParticleFactories(ParticleFactoryRegisterEvent event) {

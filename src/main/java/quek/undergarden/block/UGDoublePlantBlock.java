@@ -31,8 +31,8 @@ public class UGDoublePlantBlock extends DoublePlantBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Vec3 randomOffset = state.getOffset(level, pos);
-        return state.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE.move(randomOffset.x, randomOffset.y, randomOffset.z) : UPPER_SHAPE.move(randomOffset.x, randomOffset.y, randomOffset.z);
+        Vec3 offset = state.getOffset(level, pos);
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE.move(offset.x, offset.y, offset.z) : UPPER_SHAPE.move(offset.x, offset.y, offset.z);
     }
 
     @Override
