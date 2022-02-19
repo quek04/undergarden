@@ -2,6 +2,7 @@ package quek.undergarden.registry;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -23,7 +24,7 @@ public enum UGArmors implements ArmorMaterial {
     private final SoundEvent sound;
     private final float toughness;
     private final float knockbackResistance;
-    private final Supplier<Ingredient> repairIngredient;
+    private final LazyLoadedValue<Ingredient> repairIngredient;
 
     UGArmors(String name, int durability, int[] protection, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
         this.name = name;
@@ -33,46 +34,46 @@ public enum UGArmors implements ArmorMaterial {
         this.sound = sound;
         this.toughness = toughness;
         this.knockbackResistance = knockbackResistance;
-        this.repairIngredient = repairIngredient;
+        this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
     }
 
     @Override
     public int getDurabilityForSlot(EquipmentSlot slotIn) {
-        return DURABILITY[slotIn.getIndex()] * durabilityMultiplier;
+        return DURABILITY[slotIn.getIndex()] * this.durabilityMultiplier;
     }
 
     @Override
     public int getDefenseForSlot(EquipmentSlot slotIn) {
-        return slotProtections[slotIn.getIndex()];
+        return this.slotProtections[slotIn.getIndex()];
     }
 
     @Override
     public int getEnchantmentValue() {
-        return enchantmentValue;
+        return this.enchantmentValue;
     }
 
     @Override
     public SoundEvent getEquipSound() {
-        return sound;
+        return this.sound;
     }
 
     @Override
     public Ingredient getRepairIngredient() {
-        return repairIngredient.get();
+        return this.repairIngredient.get();
     }
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public float getToughness() {
-        return toughness;
+        return this.toughness;
     }
 
     @Override
     public float getKnockbackResistance() {
-        return knockbackResistance;
+        return this.knockbackResistance;
     }
 }

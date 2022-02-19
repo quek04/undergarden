@@ -1,6 +1,5 @@
 package quek.undergarden.item.tool;
 
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -11,8 +10,6 @@ import net.minecraftforge.common.ToolActions;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGShieldTiers;
 
-import javax.annotation.Nullable;
-
 public class UGShieldItem extends ShieldItem {
 
     private final UGShieldTiers shieldTiers;
@@ -20,7 +17,7 @@ public class UGShieldItem extends ShieldItem {
     public UGShieldItem(UGShieldTiers tier, Rarity rarity) {
         super(new Properties()
                 .stacksTo(1)
-                .durability(tier.getMaxUses())
+                .durability(tier.getDurability())
                 .tab(UGItemGroups.GROUP)
                 .rarity(rarity)
         );
@@ -31,7 +28,7 @@ public class UGShieldItem extends ShieldItem {
     public UGShieldItem(UGShieldTiers tier) {
         super(new Properties()
                 .stacksTo(1)
-                .durability(tier.getMaxUses())
+                .durability(tier.getDurability())
                 .tab(UGItemGroups.GROUP)
         );
         this.shieldTiers = tier;
@@ -45,6 +42,6 @@ public class UGShieldItem extends ShieldItem {
 
     @Override
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return this.shieldTiers.getRepairMaterial().test(repair);
+        return this.shieldTiers.getRepairIngredient().test(repair);
     }
 }

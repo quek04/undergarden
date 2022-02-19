@@ -7,10 +7,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum UGItemTiers implements Tier {
-    CLOGGRUM(2, 286, 6.0F, 3.0F, 8, () -> {return Ingredient.of(UGItems.CLOGGRUM_INGOT.get());}),
-    FROSTSTEEL(2, 575, 7.0F, 2.0F, 20, () -> {return Ingredient.of(UGItems.FROSTSTEEL_INGOT.get());}),
-    UTHERIUM(3, 1279, 8.5F, 3.5F, 17, () -> {return Ingredient.of(UGItems.UTHERIUM_CRYSTAL.get());}),
-    FORGOTTEN(4, 1876, 8.0F, 3.0F, 2, () -> {return Ingredient.of(UGItems.FORGOTTEN_INGOT.get());})
+    CLOGGRUM(2, 286, 6.0F, 3.0F, 8, () -> Ingredient.of(UGItems.CLOGGRUM_INGOT.get())),
+    FROSTSTEEL(2, 575, 7.0F, 2.0F, 20, () -> Ingredient.of(UGItems.FROSTSTEEL_INGOT.get())),
+    UTHERIUM(3, 1279, 8.5F, 3.5F, 17, () -> Ingredient.of(UGItems.UTHERIUM_CRYSTAL.get())),
+    FORGOTTEN(4, 1876, 8.0F, 3.0F, 2, () -> Ingredient.of(UGItems.FORGOTTEN_INGOT.get()))
     ;
 
     private final int level;
