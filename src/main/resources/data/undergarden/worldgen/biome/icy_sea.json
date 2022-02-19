@@ -20,7 +20,7 @@
     },
     "additions_sound": {
       "sound": "undergarden:ambient.frostfields_addition",
-      "tick_chance": 0.00555
+      "tick_chance": 0.002775
     },
     "music": {
       "sound": "undergarden:music.undergarden_music",
