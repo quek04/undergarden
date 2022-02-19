@@ -54,7 +54,7 @@ public class UGItems {
 
     //boss loot
     public static final RegistryObject<Item> MASTICATOR_SCALES = ITEMS.register("masticator_scales", () -> new UGItem(Rarity.UNCOMMON));
-    public static final RegistryObject<Item> MASTICATED_CHESTPLATE = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UGArmors.MASTICATED));
+    public static final RegistryObject<Item> MASTICATED_CHESTPLATE = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UGArmorMaterials.MASTICATED));
 
     //tools
     public static final RegistryObject<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleAxeItem(UGItemTiers.CLOGGRUM, 7, -3.4F));
@@ -100,20 +100,20 @@ public class UGItems {
     public static final RegistryObject<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new MobBucketItem(UGEntityTypes.GWIBLING, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).tab(UGItemGroups.GROUP)));
 
     //armors
-    public static final RegistryObject<Item> CLOGGRUM_HELMET = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UGArmors.CLOGGRUM, EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> CLOGGRUM_CHESTPLATE = ITEMS.register("cloggrum_chestplate", () -> new UndergardenArmorItem(UGArmors.CLOGGRUM, EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> CLOGGRUM_LEGGINGS = ITEMS.register("cloggrum_leggings", () -> new UndergardenArmorItem(UGArmors.CLOGGRUM, EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> CLOGGRUM_BOOTS = ITEMS.register("cloggrum_boots", () -> new UndergardenArmorItem(UGArmors.CLOGGRUM, EquipmentSlot.FEET));
+    public static final RegistryObject<Item> CLOGGRUM_HELMET = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> CLOGGRUM_CHESTPLATE = ITEMS.register("cloggrum_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> CLOGGRUM_LEGGINGS = ITEMS.register("cloggrum_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> CLOGGRUM_BOOTS = ITEMS.register("cloggrum_boots", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, EquipmentSlot.FEET));
 
-    public static final RegistryObject<Item> FROSTSTEEL_HELMET = ITEMS.register("froststeel_helmet", () -> new UndergardenArmorItem(UGArmors.FROSTSTEEL, EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> FROSTSTEEL_CHESTPLATE = ITEMS.register("froststeel_chestplate", () -> new UndergardenArmorItem(UGArmors.FROSTSTEEL, EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> FROSTSTEEL_LEGGINGS = ITEMS.register("froststeel_leggings", () -> new UndergardenArmorItem(UGArmors.FROSTSTEEL, EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> FROSTSTEEL_BOOTS = ITEMS.register("froststeel_boots", () -> new UndergardenArmorItem(UGArmors.FROSTSTEEL, EquipmentSlot.FEET));
+    public static final RegistryObject<Item> FROSTSTEEL_HELMET = ITEMS.register("froststeel_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> FROSTSTEEL_CHESTPLATE = ITEMS.register("froststeel_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> FROSTSTEEL_LEGGINGS = ITEMS.register("froststeel_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> FROSTSTEEL_BOOTS = ITEMS.register("froststeel_boots", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, EquipmentSlot.FEET));
 
-    public static final RegistryObject<Item> UTHERIUM_HELMET = ITEMS.register("utherium_helmet", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utherium_chestplate", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.LEGS));
-    public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmors.UTHERIUM, EquipmentSlot.FEET));
+    public static final RegistryObject<Item> UTHERIUM_HELMET = ITEMS.register("utherium_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, EquipmentSlot.HEAD));
+    public static final RegistryObject<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utherium_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, EquipmentSlot.CHEST));
+    public static final RegistryObject<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, EquipmentSlot.FEET));
 
     //foods/plants
     public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopfruitItem::new);
