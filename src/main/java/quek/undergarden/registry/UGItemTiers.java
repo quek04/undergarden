@@ -14,15 +14,15 @@ public enum UGItemTiers implements Tier {
     ;
 
     private final int level;
-    private final int uses;
+    private final int durability;
     private final float speed;
     private final float damage;
     private final int enchantmentValue;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    UGItemTiers(int level, int uses, float speed, float damage, int enchantmentValue, Supplier<Ingredient> repairIngredient) {
+    UGItemTiers(int level, int durability, float speed, float damage, int enchantmentValue, Supplier<Ingredient> repairIngredient) {
         this.level = level;
-        this.uses = uses;
+        this.durability = durability;
         this.speed = speed;
         this.damage = damage;
         this.enchantmentValue = enchantmentValue;
@@ -30,7 +30,7 @@ public enum UGItemTiers implements Tier {
     }
 
     public int getUses() {
-        return this.uses;
+        return this.durability;
     }
 
     public float getSpeed() {
