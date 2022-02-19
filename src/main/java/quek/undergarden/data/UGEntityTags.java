@@ -26,6 +26,7 @@ public class UGEntityTags extends EntityTypeTagsProvider {
         //undergarden
         tag(UGTags.Entities.ROTSPAWN).add(UGEntityTypes.ROTLING.get(), UGEntityTypes.ROTWALKER.get(), UGEntityTypes.ROTBEAST.get());
         tag(UGTags.Entities.CAVERN_CREATURE).add(UGEntityTypes.NARGOYLE.get(), UGEntityTypes.SCINTLING.get(), UGEntityTypes.MUNCHER.get(), UGEntityTypes.SPLOOGIE.get());
+        tag(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX).addTags(UGTags.Entities.ROTSPAWN, UGTags.Entities.CAVERN_CREATURE).add(UGEntityTypes.STONEBORN.get(), UGEntityTypes.MOG.get(), UGEntityTypes.GLOOMPER.get());
 
         //vanilla
         tag(EntityTypeTags.IMPACT_PROJECTILES).add(UGEntityTypes.BLISTERBOMB.get(), UGEntityTypes.ROTTEN_BLISTERBERRY.get(), UGEntityTypes.GOO_BALL.get(), UGEntityTypes.SLINGSHOT_AMMO.get(), UGEntityTypes.MINION_PROJECTILE.get());
