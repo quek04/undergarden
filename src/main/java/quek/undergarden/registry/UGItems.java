@@ -57,32 +57,32 @@ public class UGItems {
     public static final RegistryObject<Item> MASTICATED_CHESTPLATE = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UGArmors.MASTICATED));
 
     //tools
-    public static final RegistryObject<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleAxeItem(UGItemTiers.CLOGGRUM, 5, -3.4F));
-    public static final RegistryObject<Item> CLOGGRUM_SWORD = ITEMS.register("cloggrum_sword", () -> new UGSwordItem(UGItemTiers.CLOGGRUM));
-    public static final RegistryObject<Item> CLOGGRUM_PICKAXE = ITEMS.register("cloggrum_pickaxe", () -> new UGPickaxeItem(UGItemTiers.CLOGGRUM));
-    public static final RegistryObject<Item> CLOGGRUM_AXE = ITEMS.register("cloggrum_axe", () -> new UGAxeItem(UGItemTiers.CLOGGRUM, 4.0F, -3.2F));
-    public static final RegistryObject<Item> CLOGGRUM_SHOVEL = ITEMS.register("cloggrum_shovel", () -> new UGShovelItem(UGItemTiers.CLOGGRUM));
-    public static final RegistryObject<Item> CLOGGRUM_HOE = ITEMS.register("cloggrum_hoe", () -> new UGHoeItem(UGItemTiers.CLOGGRUM, -4, -2.0F));
+    public static final RegistryObject<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleAxeItem(UGItemTiers.CLOGGRUM, 7, -3.4F));
+    public static final RegistryObject<Item> CLOGGRUM_SWORD = ITEMS.register("cloggrum_sword", () -> new UGSwordItem(UGItemTiers.CLOGGRUM, 3, -2.4F));
+    public static final RegistryObject<Item> CLOGGRUM_PICKAXE = ITEMS.register("cloggrum_pickaxe", () -> new UGPickaxeItem(UGItemTiers.CLOGGRUM, 1, -2.8F));
+    public static final RegistryObject<Item> CLOGGRUM_AXE = ITEMS.register("cloggrum_axe", () -> new UGAxeItem(UGItemTiers.CLOGGRUM, 5.0F, -3.1F));
+    public static final RegistryObject<Item> CLOGGRUM_SHOVEL = ITEMS.register("cloggrum_shovel", () -> new UGShovelItem(UGItemTiers.CLOGGRUM, 1.5F, -3.0F));
+    public static final RegistryObject<Item> CLOGGRUM_HOE = ITEMS.register("cloggrum_hoe", () -> new UGHoeItem(UGItemTiers.CLOGGRUM, -3, -1.0F));
     public static final RegistryObject<Item> CLOGGRUM_SHIELD = ITEMS.register("cloggrum_shield", () -> new UGShieldItem(UGShieldTiers.CLOGGRUM));
 
-    public static final RegistryObject<Item> FROSTSTEEL_SWORD = ITEMS.register("froststeel_sword", () -> new UGSwordItem(UGItemTiers.FROSTSTEEL));
-    public static final RegistryObject<Item> FROSTSTEEL_PICKAXE = ITEMS.register("froststeel_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FROSTSTEEL));
-    public static final RegistryObject<Item> FROSTSTEEL_AXE = ITEMS.register("froststeel_axe", () -> new UGAxeItem(UGItemTiers.FROSTSTEEL, 5.0F, -3.1F));
-    public static final RegistryObject<Item> FROSTSTEEL_SHOVEL = ITEMS.register("froststeel_shovel", () -> new UGShovelItem(UGItemTiers.FROSTSTEEL));
-    public static final RegistryObject<Item> FROSTSTEEL_HOE = ITEMS.register("froststeel_hoe", () -> new UGHoeItem(UGItemTiers.FROSTSTEEL, -3, -1.0F));
+    public static final RegistryObject<Item> FROSTSTEEL_SWORD = ITEMS.register("froststeel_sword", () -> new UGSwordItem(UGItemTiers.FROSTSTEEL, 3, -2.4F));
+    public static final RegistryObject<Item> FROSTSTEEL_PICKAXE = ITEMS.register("froststeel_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FROSTSTEEL, 1, -2.8F));
+    public static final RegistryObject<Item> FROSTSTEEL_AXE = ITEMS.register("froststeel_axe", () -> new UGAxeItem(UGItemTiers.FROSTSTEEL, 6.0F, -3.0F));
+    public static final RegistryObject<Item> FROSTSTEEL_SHOVEL = ITEMS.register("froststeel_shovel", () -> new UGShovelItem(UGItemTiers.FROSTSTEEL, 1.5F, -3.0F));
+    public static final RegistryObject<Item> FROSTSTEEL_HOE = ITEMS.register("froststeel_hoe", () -> new UGHoeItem(UGItemTiers.FROSTSTEEL, -2, -0.5F));
 
-    public static final RegistryObject<Item> UTHERIUM_SWORD = ITEMS.register("utherium_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM));
-    public static final RegistryObject<Item> UTHERIUM_PICKAXE = ITEMS.register("utherium_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM));
+    public static final RegistryObject<Item> UTHERIUM_SWORD = ITEMS.register("utherium_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM, 3, -2.4F));
+    public static final RegistryObject<Item> UTHERIUM_PICKAXE = ITEMS.register("utherium_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM, 1, -2.8F));
     public static final RegistryObject<Item> UTHERIUM_AXE = ITEMS.register("utherium_axe", () -> new UGAxeItem(UGItemTiers.UTHERIUM, 5.0F, -3.0F));
-    public static final RegistryObject<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM));
+    public static final RegistryObject<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM, 1.5F, -3.0F));
     public static final RegistryObject<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, -3, 0.0F));
 
-    public static final RegistryObject<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleAxeItem(UGItemTiers.FORGOTTEN, 5, -3.2F));
-    public static final RegistryObject<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN));
-    public static final RegistryObject<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN));
-    public static final RegistryObject<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, 4.0F, -3.0F));
-    public static final RegistryObject<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN));
-    public static final RegistryObject<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, -5, 0.0F));
+    public static final RegistryObject<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleAxeItem(UGItemTiers.FORGOTTEN, 7, -3.4F));
+    public static final RegistryObject<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, 3, -2.4F));
+    public static final RegistryObject<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, 1, -2.8F));
+    public static final RegistryObject<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, 5.0F, -3.0F));
+    public static final RegistryObject<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN, 1.5F, -3.0F));
+    public static final RegistryObject<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, -3, 0.0F));
 
     //misc tools
     public static final RegistryObject<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);

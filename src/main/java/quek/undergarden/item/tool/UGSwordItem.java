@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class UGSwordItem extends SwordItem {
-    public UGSwordItem(Tier tier) {
-        super(tier, 3, -2.4F, new Properties()
+    public UGSwordItem(Tier tier, int attackDamage, float attackSpeed) {
+        super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .defaultDurability(tier.getUses())
                 .tab(UGItemGroups.GROUP)

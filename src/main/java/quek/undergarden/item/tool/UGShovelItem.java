@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class UGShovelItem extends ShovelItem {
-    public UGShovelItem(Tier tier) {
-        super(tier, 1.5F, -3, new Properties()
+    public UGShovelItem(Tier tier, float attackDamage, float attackSpeed) {
+        super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .defaultDurability(tier.getUses())
                 .tab(UGItemGroups.GROUP)
