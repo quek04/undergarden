@@ -17,7 +17,7 @@ public class CavernEntity extends Monster {
 
     public static boolean canCreatureSpawn(EntityType<? extends Monster> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
         if(checkMonsterSpawnRules(type, level, spawnType, pos, random)) {
-            return spawnType == MobSpawnType.SPAWNER || pos.getY() < 32;
+            return spawnType == MobSpawnType.SPAWNER || pos.getY() < 24;
         }
         return false;
     }
