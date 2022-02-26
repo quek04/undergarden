@@ -5,7 +5,6 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -174,6 +173,6 @@ public class UGEntityTypes {
         event.put(MINION.get(), MinionEntity.registerAttributes().build());
         event.put(GWIB.get(), GwibEntity.registerAttributes().build());
         event.put(MOG.get(), MogEntity.registerAttributes().build());
-        event.put(FORGOTTEN.get(), AbstractSkeleton.createAttributes().build());
+        event.put(FORGOTTEN.get(), ForgottenEntity.createAttributes().build());
     }
 }
