@@ -11,6 +11,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import quek.undergarden.entity.ForgottenEntity;
 import quek.undergarden.entity.animal.MogEntity;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
@@ -32,6 +33,7 @@ public class RotspawnEntity extends Monster {
         this.targetSelector.addGoal(0, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, StonebornEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, ForgottenEntity.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, 10, true, false, (target) -> !(target instanceof MogEntity)));
     }
 
