@@ -3,8 +3,10 @@ package quek.undergarden.entity;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -46,30 +48,18 @@ public class ForgottenEntity extends AbstractSkeleton {
 
     @Override
     protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
-        if (this.random.nextFloat() < 0.15F * difficulty.getSpecialMultiplier()) {
-            float f = 0.1F;
-
-            boolean flag = true;
-
-            for(EquipmentSlot armorSlots : EquipmentSlot.values()) {
-                if (armorSlots.getType() == EquipmentSlot.Type.ARMOR) {
-                    ItemStack itemstack = this.getItemBySlot(armorSlots);
-                    if (!flag && this.random.nextFloat() < f) {
-                        break;
-                    }
-
-                    flag = false;
-                    if (itemstack.isEmpty()) {
-                        Item item = getEquipmentForSlot(armorSlots);
-                        if (item != null) {
-                            this.setItemSlot(armorSlots, new ItemStack(item));
-                        }
+        for (EquipmentSlot armorSlots : EquipmentSlot.values()) {
+            if (armorSlots.getType() == EquipmentSlot.Type.ARMOR) {
+                ItemStack armorStack = this.getItemBySlot(armorSlots);
+                if (armorStack.isEmpty()) {
+                    Item item = getEquipmentForSlot(armorSlots);
+                    if (item != null && this.random.nextBoolean()) {
+                        this.setItemSlot(armorSlots, new ItemStack(item));
                     }
                 }
             }
         }
-        boolean weaponRandom = this.random.nextBoolean();
-        if(weaponRandom) {
+        if(this.random.nextBoolean()) {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_SWORD.get()));
         }
         else {
@@ -85,5 +75,10 @@ public class ForgottenEntity extends AbstractSkeleton {
             case LEGS -> UGItems.FORGOTTEN_LEGGINGS.get();
             default -> null;
         };
+    }
+
+    @Override
+    protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
+        return 1.9F;
     }
 }
