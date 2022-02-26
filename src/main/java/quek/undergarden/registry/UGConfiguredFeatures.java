@@ -91,7 +91,7 @@ public class UGConfiguredFeatures {
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> BLISTERBERRY_BUSH_PATCH = register("blisterberry_bush_patch", Feature.RANDOM_PATCH.configured(patch(UGBlocks.BLISTERBERRY_BUSH.get().defaultBlockState().setValue(BlisterberryBushBlock.AGE, 3), 64, List.of(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()))));
     public static final ConfiguredFeature<RandomPatchConfiguration, ?> GLOOMGOURD_PATCH = register("gloomgourd_patch", Feature.RANDOM_PATCH.configured(patch(UGBlocks.GLOOMGOURD.get(), 16, List.of(UGBlocks.DEEPTURF_BLOCK.get()))));
     public static final ConfiguredFeature<?, ?> DROOPVINE = register("droopvine", UGFeatures.DROOPVINE.get().configured(FeatureConfiguration.NONE));
-    public static final ConfiguredFeature<?, ?> GLITTERKELP = register("glitterkelp", UGFeatures.GLOWING_KELP.get().configured(FeatureConfiguration.NONE));
+    public static final ConfiguredFeature<?, ?> GLITTERKELP = register("glitterkelp", UGFeatures.GLITTERKELP.get().configured(FeatureConfiguration.NONE));
 
     //tree
     public static final ConfiguredFeature<TreeConfiguration, ?> SMOGSTEM_TREE = register("smogstem_tree", Feature.TREE.configured(new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()), new SmogstemTrunkPlacer(10, 2, 2), BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines().dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).build()));

@@ -76,7 +76,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.PORTALS).add(UGBlocks.UNDERGARDEN_PORTAL.get()); //TODO otherside portal
         tag(BlockTags.BEACON_BASE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.FORGOTTEN_BLOCK.get());
         tag(BlockTags.WALL_POST_OVERRIDE).add(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get());
-        tag(BlockTags.CLIMBABLE).add(UGBlocks.DROOPVINE.get(), UGBlocks.DROOPVINE_TOP.get());
+        tag(BlockTags.CLIMBABLE).add(UGBlocks.DROOPVINE_PLANT.get(), UGBlocks.DROOPVINE.get());
         tag(BlockTags.STRIDER_WARM_BLOCKS).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get(), UGBlocks.UTHERIUM_BLOCK.get());
         tag(BlockTags.FENCE_GATES).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get());
         tag(BlockTags.MUSHROOM_GROW_BLOCK).add(UGBlocks.DEEPTURF_BLOCK.get());
@@ -87,6 +87,12 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.GOLD_ORES).add(UGBlocks.DEPTHROCK_GOLD_ORE.get());
         tag(BlockTags.DIAMOND_ORES).add(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get());
         tag(BlockTags.DIRT).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
+        tag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
+        tag(BlockTags.PARROTS_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
+        tag(BlockTags.RABBITS_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
+        tag(BlockTags.FOXES_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
+        tag(BlockTags.WOLVES_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
+        tag(BlockTags.IMPERMEABLE).add(UGBlocks.SEDIMENT_GLASS.get());
 
         //forge
         tag(Tags.Blocks.ORES).addTags(UGTags.Blocks.ORES_CLOGGRUM, UGTags.Blocks.ORES_FROSTSTEEL, UGTags.Blocks.ORES_UTHERIUM, UGTags.Blocks.ORES_REGALIUM);
@@ -254,8 +260,8 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.SEDIMENT.get()
         );
         tag(BlockTags.MINEABLE_WITH_HOE).add(
-                UGBlocks.DROOPVINE_TOP.get(),
                 UGBlocks.DROOPVINE.get(),
+                UGBlocks.DROOPVINE_PLANT.get(),
                 UGBlocks.SMOGSTEM_LEAVES.get(),
                 UGBlocks.WIGGLEWOOD_LEAVES.get(),
                 UGBlocks.GRONGLE_LEAVES.get(),

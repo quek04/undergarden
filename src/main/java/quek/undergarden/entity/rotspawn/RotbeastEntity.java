@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class RotbeastEntity extends AbstractRotspawnEntity {
+public class RotbeastEntity extends RotspawnEntity {
 
     private int attackTimer;
 

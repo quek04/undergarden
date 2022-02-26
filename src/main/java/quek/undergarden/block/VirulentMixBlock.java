@@ -17,13 +17,13 @@ import java.util.function.Supplier;
 public class VirulentMixBlock extends LiquidBlock {
 
     public VirulentMixBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
-        super(supplier, properties.noCollission().strength(100F).noDrops());
+        super(supplier, properties.noCollission().strength(100F).noDrops().lightLevel((state) -> 10));
     }
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if(entity.isAlive() && entity instanceof LivingEntity livingEntity) {
-            if(livingEntity.getType().is(UGTags.Entities.ROTSPAWN) || livingEntity.getType().is(UGTags.Entities.CAVERN_CREATURE)) {}
+            if(livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX)) {}
             else if(livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) {}
             else livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 600, 0));
         }

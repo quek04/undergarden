@@ -16,8 +16,8 @@ import java.util.List;
 
 public class UGHoeItem extends HoeItem {
 
-    public UGHoeItem(Tier tier, int attack, float speed) {
-        super(tier, attack, speed, new Properties()
+    public UGHoeItem(Tier tier, int attackDamage, float attackSpeed) {
+        super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .durability(tier.getUses())
                 .tab(UGItemGroups.GROUP)

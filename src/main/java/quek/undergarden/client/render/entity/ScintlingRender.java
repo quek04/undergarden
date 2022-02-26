@@ -7,7 +7,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ScintlingModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.ScintlingGlowLayer;
-import quek.undergarden.entity.ScintlingEntity;
+import quek.undergarden.entity.animal.ScintlingEntity;
 
 public class ScintlingRender extends MobRenderer<ScintlingEntity, ScintlingModel<ScintlingEntity>> {
 

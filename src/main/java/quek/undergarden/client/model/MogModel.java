@@ -6,7 +6,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.MogEntity;
+import quek.undergarden.entity.animal.MogEntity;
 
 public class MogModel<E extends MogEntity> extends AgeableListModel<E> {
 

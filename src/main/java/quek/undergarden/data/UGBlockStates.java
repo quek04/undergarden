@@ -40,8 +40,8 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.BLOOD_MUSHROOM);
         block(UGBlocks.DEPTHROCK_BRICKS);
         block(UGBlocks.CRACKED_DEPTHROCK_BRICKS);
-        crossBlock(UGBlocks.GLOWING_KELP);
-        crossBlock(UGBlocks.GLOWING_KELP_PLANT);
+        crossBlock(UGBlocks.GLITTERKELP);
+        crossBlock(UGBlocks.GLITTERKELP_PLANT);
         block(UGBlocks.SHIVERSTONE);
         block(UGBlocks.SHIVERSTONE_BRICKS);
         block(UGBlocks.DEPTHROCK_REGALIUM_ORE);
@@ -53,7 +53,6 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.DEPTHROCK_IRON_ORE);
         block(UGBlocks.DEPTHROCK_GOLD_ORE);
         block(UGBlocks.DEPTHROCK_DIAMOND_ORE);
-        crossBlock(UGBlocks.DROOPVINE_TOP);
         block(UGBlocks.COARSE_DEEPSOIL);
         crossBlock(UGBlocks.GRONGLE_SAPLING);
         block(UGBlocks.GRONGLE_LEAVES);
@@ -66,7 +65,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
         crossBlock(UGBlocks.SEEPING_INK);
         crossBlock(UGBlocks.MUSHROOM_VEIL);
-        crossBlock(UGBlocks.MUSHROOM_VEIL_TOP);
+        crossBlock(UGBlocks.MUSHROOM_VEIL_PLANT);
         block(UGBlocks.FORGOTTEN_BLOCK);
         block(UGBlocks.CLOGGRUM_BLOCK);
         block(UGBlocks.FROSTSTEEL_BLOCK);

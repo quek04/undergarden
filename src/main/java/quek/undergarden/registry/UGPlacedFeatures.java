@@ -32,8 +32,8 @@ public class UGPlacedFeatures {
 
     //springs
     public static final PlacedFeature SPRING = register("spring", UGConfiguredFeatures.SPRING.placed(CountPlacement.of(50), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome()));
-    public static final PlacedFeature VIRULENT_MIX_SPRING = register("virulent_mix_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING.placed(CountPlacement.of(50), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome()));
-    public static final PlacedFeature VIRULENT_MIX_BOG_SPRING = register("virulent_mix_bog_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING.placed(CountPlacement.of(100), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome()));
+    public static final PlacedFeature VIRULENT_MIX_SPRING = register("virulent_mix_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING.placed(CountPlacement.of(25), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome()));
+    public static final PlacedFeature VIRULENT_MIX_BOG_SPRING = register("virulent_mix_bog_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING.placed(CountPlacement.of(50), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome()));
 
     //deltas
     public static final PlacedFeature BOG_DELTA = register("bog_delta", UGConfiguredFeatures.BOG_DELTA.placed(CountOnEveryLayerPlacement.of(40), BiomeFilter.biome()));
@@ -69,6 +69,7 @@ public class UGPlacedFeatures {
 
     //huge mushrooms
     public static final PlacedFeature HUGE_INDIGO_MUSHROOM = register("huge_indigo_mushroom", UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM.placed(tree(2)));
+    public static final PlacedFeature HUGE_INDIGO_MUSHROOM_SMOGSTEM_FOREST = register("huge_indigo_mushroom_smogstem_forest", UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM.placed(tree(1)));
     public static final PlacedFeature HUGE_VEIL_MUSHROOM = register("huge_veil_mushroom", UGConfiguredFeatures.HUGE_VEIL_MUSHROOM.placed(tree(2)));
     public static final PlacedFeature HUGE_INK_MUSHROOM = register("huge_ink_mushroom", UGConfiguredFeatures.HUGE_INK_MUSHROOM.placed(tree(2)));
     public static final PlacedFeature HUGE_BLOOD_MUSHROOM = register("huge_blood_mushroom", UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM.placed(tree(2)));

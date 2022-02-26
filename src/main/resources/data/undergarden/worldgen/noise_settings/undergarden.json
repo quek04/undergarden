@@ -89,6 +89,23 @@
       {
         "type": "minecraft:condition",
         "if_true": {
+          "type": "minecraft:y_above",
+          "anchor": {
+            "below_top": 5
+          },
+          "surface_depth_multiplier": 0,
+          "add_stone_depth": false
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "undergarden:depthrock"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
           "type": "minecraft:stone_depth",
           "offset": 0,
           "surface_type": "floor",

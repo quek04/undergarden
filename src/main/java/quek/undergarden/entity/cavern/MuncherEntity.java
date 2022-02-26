@@ -20,9 +20,9 @@ import net.minecraft.world.phys.AABB;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
-public class MuncherEntity extends AbstractCavernCreatureEntity {
+public class MuncherEntity extends CavernEntity {
 
-    public MuncherEntity(EntityType<? extends AbstractCavernCreatureEntity> type, Level level) {
+    public MuncherEntity(EntityType<? extends CavernEntity> type, Level level) {
         super(type, level);
     }
 
@@ -37,12 +37,11 @@ public class MuncherEntity extends AbstractCavernCreatureEntity {
     }
 
     public static AttributeSupplier.Builder registerAttributes() {
-        return AbstractCavernCreatureEntity.createMobAttributes()
+        return CavernEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 15.0D)
                 .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
                 .add(Attributes.ATTACK_DAMAGE, 3.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.4D)
-                .add(Attributes.FOLLOW_RANGE, 128.0D);
+                .add(Attributes.MOVEMENT_SPEED, 0.4D);
     }
 
     @Override

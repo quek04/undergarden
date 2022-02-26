@@ -86,6 +86,7 @@ public class UGTags {
 
         public static final Tag.Named<EntityType<?>> ROTSPAWN = tag("rotspawn");
         public static final Tag.Named<EntityType<?>> CAVERN_CREATURE = tag("cavern_creature");
+        public static final Tag.Named<EntityType<?>> IMMUNE_TO_VIRULENT_MIX = tag("immune_to_virulent_mix");
 
         private static Tag.Named<EntityType<?>> tag(String name) {
             return EntityTypeTags.createOptional(new ResourceLocation(Undergarden.MODID, name));

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#undergarden:rotspawn",
+    "#undergarden:cavern_creature",
+    "undergarden:stoneborn",
+    "undergarden:mog",
+    "undergarden:gloomper"
+  ]
+}

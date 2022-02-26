@@ -4,6 +4,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,48 +24,57 @@ public class DeepsoilFarmlandBlock extends FarmBlock {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return !this.defaultBlockState().canSurvive(pContext.getLevel(), pContext.getClickedPos()) ? UGBlocks.DEEPSOIL.get().defaultBlockState() : super.getStateForPlacement(pContext);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos()) ? UGBlocks.DEEPSOIL.get().defaultBlockState() : super.getStateForPlacement(context);
     }
 
-    public static void turnToDeepsoil(BlockState pState, Level pLevel, BlockPos pPos) {
-        pLevel.setBlockAndUpdate(pPos, pushEntitiesUp(pState, UGBlocks.DEEPSOIL.get().defaultBlockState(), pLevel, pPos));
+    public static void turnToDeepsoil(BlockState state, Level level, BlockPos pos) {
+        level.setBlockAndUpdate(pos, pushEntitiesUp(state, UGBlocks.DEEPSOIL.get().defaultBlockState(), level, pos));
     }
 
-    private static boolean isNearWater(LevelReader pLevel, BlockPos pPos) {
-        for(BlockPos blockpos : BlockPos.betweenClosed(pPos.offset(-4, 0, -4), pPos.offset(4, 1, 4))) {
-            if (pLevel.getFluidState(blockpos).is(FluidTags.WATER)) {
+    private static boolean isNearWater(LevelReader level, BlockPos pos) {
+        for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, 0, -4), pos.offset(4, 1, 4))) {
+            if (level.getFluidState(blockpos).is(FluidTags.WATER)) {
                 return true;
             }
         }
-        return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(pLevel, pPos);
+        return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(level, pos);
     }
 
-    private static boolean isUnderCrops(BlockGetter pLevel, BlockPos pPos) {
-        BlockState plant = pLevel.getBlockState(pPos.above());
-        BlockState state = pLevel.getBlockState(pPos);
-        return plant.getBlock() instanceof net.minecraftforge.common.IPlantable && state.canSustainPlant(pLevel, pPos, Direction.UP, (net.minecraftforge.common.IPlantable)plant.getBlock());
+    private static boolean isUnderCrops(BlockGetter level, BlockPos pos) {
+        BlockState plant = level.getBlockState(pos.above());
+        BlockState state = level.getBlockState(pos);
+        return plant.getBlock() instanceof net.minecraftforge.common.IPlantable && state.canSustainPlant(level, pos, Direction.UP, (net.minecraftforge.common.IPlantable)plant.getBlock());
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRand) {
-        if (!pState.canSurvive(pLevel, pPos)) {
-            turnToDeepsoil(pState, pLevel, pPos);
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+        if (!state.canSurvive(level, pos)) {
+            turnToDeepsoil(state, level, pos);
         }
     }
 
     @Override
-    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
-        int moistness = pState.getValue(MOISTURE);
-        if (!isNearWater(pLevel, pPos) && !pLevel.isRainingAt(pPos.above())) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+        int moistness = state.getValue(MOISTURE);
+        if (!isNearWater(level, pos) && !level.isRainingAt(pos.above())) {
             if (moistness > 0) {
-                pLevel.setBlock(pPos, pState.setValue(MOISTURE, moistness - 1), 2);
-            } else if (!isUnderCrops(pLevel, pPos)) {
-                turnToDeepsoil(pState, pLevel, pPos);
+                level.setBlock(pos, state.setValue(MOISTURE, moistness - 1), 2);
+            } else if (!isUnderCrops(level, pos)) {
+                turnToDeepsoil(state, level, pos);
             }
         } else if (moistness < 7) {
-            pLevel.setBlock(pPos, pState.setValue(MOISTURE, 7), 2);
+            level.setBlock(pos, state.setValue(MOISTURE, 7), 2);
         }
 
+    }
+
+    @Override
+    public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDamage) {
+        if (!level.isClientSide && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(level, pos, UGBlocks.DEEPSOIL.get().defaultBlockState(), fallDamage, entity)) {
+            turnToDeepsoil(state, level, pos);
+        }
+
+        entity.causeFallDamage(fallDamage, 1.0F, DamageSource.FALL);
     }
 }

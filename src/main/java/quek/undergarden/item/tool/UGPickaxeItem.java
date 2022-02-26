@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class UGPickaxeItem extends PickaxeItem {
-    public UGPickaxeItem(Tier tier) {
-        super(tier, 1, -2.8F, new Properties()
+    public UGPickaxeItem(Tier tier, int attackDamage, float attackSpeed) {
+        super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .defaultDurability(tier.getUses())
                 .tab(UGItemGroups.GROUP)

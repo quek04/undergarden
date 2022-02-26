@@ -7,7 +7,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MogModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MogEyesLayer;
-import quek.undergarden.entity.MogEntity;
+import quek.undergarden.entity.animal.MogEntity;
 
 public class MogRender extends MobRenderer<MogEntity, MogModel<MogEntity>> {
 

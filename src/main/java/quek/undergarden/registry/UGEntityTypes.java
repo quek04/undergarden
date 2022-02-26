@@ -4,6 +4,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.AbstractFish;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -14,17 +15,21 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.*;
+import quek.undergarden.entity.ForgottenEntity;
+import quek.undergarden.entity.GwibEntity;
+import quek.undergarden.entity.MinionEntity;
+import quek.undergarden.entity.UGBoatEntity;
+import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.boss.ForgottenGuardianEntity;
 import quek.undergarden.entity.boss.MasticatorEntity;
-import quek.undergarden.entity.cavern.AbstractCavernCreatureEntity;
+import quek.undergarden.entity.cavern.CavernEntity;
 import quek.undergarden.entity.cavern.MuncherEntity;
 import quek.undergarden.entity.cavern.NargoyleEntity;
 import quek.undergarden.entity.cavern.SploogieEntity;
 import quek.undergarden.entity.projectile.*;
-import quek.undergarden.entity.rotspawn.AbstractRotspawnEntity;
 import quek.undergarden.entity.rotspawn.RotbeastEntity;
 import quek.undergarden.entity.rotspawn.RotlingEntity;
+import quek.undergarden.entity.rotspawn.RotspawnEntity;
 import quek.undergarden.entity.rotspawn.RotwalkerEntity;
 import quek.undergarden.entity.stoneborn.StonebornEntity;
 
@@ -134,19 +139,19 @@ public class UGEntityTypes {
 
     public static void spawnPlacements() {
         SpawnPlacements.register(GWIBLING.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GwiblingEntity::canGwiblingSpawn);
-        SpawnPlacements.register(DWELLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DwellerEntity::canDwellerSpawn);
-        SpawnPlacements.register(ROTLING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractRotspawnEntity::canRotspawnSpawn);
-        SpawnPlacements.register(ROTWALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractRotspawnEntity::canRotspawnSpawn);
-        SpawnPlacements.register(ROTBEAST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractRotspawnEntity::canRotspawnSpawn);
-        SpawnPlacements.register(BRUTE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, BruteEntity::canBruteSpawn);
+        SpawnPlacements.register(DWELLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
+        SpawnPlacements.register(ROTLING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnEntity::canRotspawnSpawn);
+        SpawnPlacements.register(ROTWALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnEntity::canRotspawnSpawn);
+        SpawnPlacements.register(ROTBEAST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnEntity::canRotspawnSpawn);
+        SpawnPlacements.register(BRUTE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
         SpawnPlacements.register(SCINTLING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ScintlingEntity::canScintlingSpawn);
-        SpawnPlacements.register(GLOOMPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GloomperEntity::canGloomperSpawn);
+        SpawnPlacements.register(GLOOMPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
         SpawnPlacements.register(STONEBORN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, StonebornEntity::canStonebornSpawn);
-        SpawnPlacements.register(NARGOYLE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
-        SpawnPlacements.register(MUNCHER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
-        SpawnPlacements.register(SPLOOGIE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractCavernCreatureEntity::canCreatureSpawn);
+        SpawnPlacements.register(NARGOYLE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernEntity::canCreatureSpawn);
+        SpawnPlacements.register(MUNCHER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernEntity::canCreatureSpawn);
+        SpawnPlacements.register(SPLOOGIE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernEntity::canCreatureSpawn);
         SpawnPlacements.register(GWIB.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GwibEntity::canGwibSpawn);
-        SpawnPlacements.register(MOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MogEntity::canMogSpawn);
+        SpawnPlacements.register(MOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules);
         SpawnPlacements.register(FORGOTTEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
     }
 

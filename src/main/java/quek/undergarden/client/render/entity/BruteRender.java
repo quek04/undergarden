@@ -7,7 +7,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.BruteModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.BruteEyesLayer;
-import quek.undergarden.entity.BruteEntity;
+import quek.undergarden.entity.animal.BruteEntity;
 
 public class BruteRender extends MobRenderer<BruteEntity, BruteModel<BruteEntity>> {
 

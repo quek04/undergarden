@@ -4,12 +4,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
-import quek.undergarden.registry.UGArmors;
+import quek.undergarden.registry.UGArmorMaterials;
 
 public class ForgottenArmorItem extends ArmorItem {
 
     public ForgottenArmorItem(EquipmentSlot slot) {
-        super(UGArmors.FORGOTTEN, slot, new Properties());
+        super(UGArmorMaterials.FORGOTTEN, slot, new Properties());
     }
 
     @Override

@@ -60,8 +60,8 @@ public class UndergardenClient {
         render(UGBlocks.TALL_DEEPTURF, cutout);
         render(UGBlocks.TALL_SHIMMERWEED, cutout);
         render(UGBlocks.CLOGGRUM_BARS, cutout);
-        render(UGBlocks.GLOWING_KELP, cutout);
-        render(UGBlocks.GLOWING_KELP_PLANT, cutout);
+        render(UGBlocks.GLITTERKELP, cutout);
+        render(UGBlocks.GLITTERKELP_PLANT, cutout);
         render(UGBlocks.GOO, translucent);
         render(UGBlocks.SMOGSTEM_DOOR, cutout);
         render(UGBlocks.WIGGLEWOOD_DOOR, cutout);
@@ -73,14 +73,14 @@ public class UndergardenClient {
         render(UGBlocks.GLOOMGOURD_STEM_ATTACHED, cutout);
         render(UGBlocks.SHARD_TORCH, cutout);
         render(UGBlocks.SHARD_WALL_TORCH, cutout);
-        render(UGBlocks.DROOPVINE_TOP, cutout);
         render(UGBlocks.DROOPVINE, cutout);
+        render(UGBlocks.DROOPVINE_PLANT, cutout);
         render(UGBlocks.GRONGLE_SAPLING, cutout);
         render(UGBlocks.GRONGLE_DOOR, cutout);
         render(UGBlocks.GRONGLE_TRAPDOOR, cutout);
         render(UGBlocks.SEEPING_INK, cutout);
+        render(UGBlocks.MUSHROOM_VEIL_PLANT, cutout);
         render(UGBlocks.MUSHROOM_VEIL, cutout);
-        render(UGBlocks.MUSHROOM_VEIL_TOP, cutout);
         render(UGBlocks.POTTED_SHIMMERWEED, cutout);
         render(UGBlocks.POTTED_SMOGSTEM_SAPLING, cutout);
         render(UGBlocks.POTTED_WIGGLEWOOD_SAPLING, cutout);
@@ -176,7 +176,9 @@ public class UndergardenClient {
                 UGBlocks.TALL_SHIMMERWEED.get(),
                 UGBlocks.GLOOMGOURD_STEM.get(),
                 UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(),
-                UGBlocks.POTTED_SHIMMERWEED.get()
+                UGBlocks.POTTED_SHIMMERWEED.get(),
+                UGBlocks.DROOPVINE.get(),
+                UGBlocks.DROOPVINE_PLANT.get()
         );
 
         colors.register((state, world, pos, tint) ->

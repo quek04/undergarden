@@ -8,15 +8,12 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.PotionBrewing;
@@ -46,7 +43,6 @@ import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.entity.projectile.GooBallEntity;
 import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
 import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
-import quek.undergarden.item.UGSpawnEggItem;
 import quek.undergarden.registry.*;
 
 @Mod(Undergarden.MODID)
@@ -129,22 +125,8 @@ public class Undergarden {
 				}
 			};
 
-			DefaultDispenseItemBehavior eggBehavior = new DefaultDispenseItemBehavior() {
-				public ItemStack execute(BlockSource source, ItemStack stack) {
-					Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
-					EntityType<?> type = ((UGSpawnEggItem)stack.getItem()).getType(stack.getTag());
-					type.spawn(source.getLevel(), stack, null, source.getPos().relative(direction), MobSpawnType.DISPENSER, direction != Direction.UP, false);
-					stack.shrink(1);
-					return stack;
-				}
-			};
-
 			DispenserBlock.registerBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
 			DispenserBlock.registerBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
-
-			//for(SpawnEggItem item : UGSpawnEggItem.UGEggs()) {
-			//	DispenserBlock.registerBehavior(item, eggBehavior);
-			//}
 
 			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
@@ -188,7 +170,7 @@ public class Undergarden {
 			ComposterBlock.add(0.1F, UGItems.UNDERBEANS.get());
 			ComposterBlock.add(0.2F, UGItems.BLISTERBERRY.get());
 			ComposterBlock.add(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
-			ComposterBlock.add(0.3F, UGItems.GLOWING_KELP.get());
+			ComposterBlock.add(0.3F, UGItems.GLITTERKELP.get());
 			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
 			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
 			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_LEAVES.get());
@@ -261,7 +243,7 @@ public class Undergarden {
 				return false;
 			}
 		});
-		//TODO: OthersideDRI
+		//TODO: OthersideDSE
 	}
 
 	public void gatherData(GatherDataEvent event) {

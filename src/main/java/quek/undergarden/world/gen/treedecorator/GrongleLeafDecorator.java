@@ -23,7 +23,7 @@ public class GrongleLeafDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> type() {
-        return UGTreeDecoratorTypes.GRONGLE_LEAF_DECORATOR;
+        return UGTreeDecoratorTypes.GRONGLE_LEAF_DECORATOR.get();
     }
 
     @Override

@@ -7,7 +7,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GloomperModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.GloomperEyesLayer;
-import quek.undergarden.entity.GloomperEntity;
+import quek.undergarden.entity.animal.GloomperEntity;
 
 public class GloomperRender extends MobRenderer<GloomperEntity, GloomperModel<GloomperEntity>> {
 

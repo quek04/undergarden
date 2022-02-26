@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.biome.Biome;
@@ -48,18 +47,13 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 UGBlocks.COARSE_DEEPSOIL.get()
         );
         this.liquids = ImmutableSet.of(
-                Fluids.WATER,
-                UGFluids.VIRULENT_MIX_SOURCE.get()
+                Fluids.WATER
         );
     }
 
     @Override
     protected float getThickness(Random random) {
         return super.getThickness(random) * 3;
-    }
-
-    protected boolean canReplaceBlock(BlockState state, BlockState aboveState) {
-        return super.canReplaceBlock(state) && !aboveState.getFluidState().is(FluidTags.WATER);
     }
 
     @Override
@@ -119,12 +113,11 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     @Override
     protected boolean carveBlock(CarvingContext context, CaveCarverConfiguration config, ChunkAccess chunk, Function<BlockPos, Biome> biomeAccessor, CarvingMask carvingMask, BlockPos.MutableBlockPos pos, BlockPos.MutableBlockPos checkPos, Aquifer aquifer, MutableBoolean reachedSurface) {
         BlockState chunkState = chunk.getBlockState(pos);
-        BlockState aboveChunkState = chunk.getBlockState(checkPos.setWithOffset(pos, Direction.UP));
         if (chunkState.is(UGBlocks.DEEPTURF_BLOCK.get()) || chunkState.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get()) || chunkState.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get())) {
             reachedSurface.setTrue();
         }
 
-        if (!this.canReplaceBlock(chunkState, aboveChunkState)) {
+        if (!this.canReplaceBlock(chunkState)) {
             return false;
         }
         else {
@@ -166,14 +159,14 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 
     protected boolean hasDisallowedLiquid(ChunkAccess chunk, int minX, int maxX, int minY, int maxY, int minZ, int maxZ) {
         ChunkPos chunkpos = chunk.getPos();
-        int i = chunkpos.getMinBlockX();
-        int j = chunkpos.getMinBlockZ();
+        int minBlockX = chunkpos.getMinBlockX();
+        int minBlockZ = chunkpos.getMinBlockZ();
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
 
         for(int x = minX; x <= maxX; ++x) {
             for(int z = minZ; z <= maxZ; ++z) {
                 for(int y = minY - 1; y <= maxY + 1; ++y) {
-                    mutablePos.set(i + x, y, j + z);
+                    mutablePos.set(minBlockX + x, y, minBlockZ + z);
                     if (this.liquids.contains(chunk.getFluidState(mutablePos).getType())) {
                         return true;
                     }

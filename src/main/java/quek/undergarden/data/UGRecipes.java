@@ -191,7 +191,7 @@ public class UGRecipes extends UGRecipeProvider {
         ShapelessRecipeBuilder.shapeless(UGItems.GLOOMGOURD_PIE.get())
                 .requires(UGTags.Items.MUSHROOMS)
                 .requires(UGBlocks.GLOOMGOURD.get())
-                .requires(UGItems.GLOWING_KELP.get())
+                .requires(UGItems.GLITTERKELP.get())
                 .unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
                 .save(consumer);
 
@@ -447,8 +447,8 @@ public class UGRecipes extends UGRecipeProvider {
         smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("smelt_gloomper_leg"));
         smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("smoke_gloomper_leg"));
 
-        smeltingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).save(consumer, name("smelt_glowing_kelp"));
-        smokingRecipe(Items.DRIED_KELP, UGItems.GLOWING_KELP.get(), 0.1F).save(consumer, name("smoke_glowing_kelp"));
+        smeltingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(consumer, name("smelt_glitterkelp"));
+        smokingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(consumer, name("smoke_glitterkelp"));
 
         smeltingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smelt_underbeans"));
         smokingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smoke_underbeans"));

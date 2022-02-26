@@ -22,7 +22,7 @@ import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class SploogieEntity extends AbstractCavernCreatureEntity implements RangedAttackMob {
+public class SploogieEntity extends CavernEntity implements RangedAttackMob {
 
     public SploogieEntity(EntityType<? extends Monster> type, Level level) {
         super(type, level);
@@ -39,7 +39,7 @@ public class SploogieEntity extends AbstractCavernCreatureEntity implements Rang
     }
 
     public static AttributeSupplier.Builder registerAttributes() {
-        return AbstractCavernCreatureEntity.createMobAttributes()
+        return CavernEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }

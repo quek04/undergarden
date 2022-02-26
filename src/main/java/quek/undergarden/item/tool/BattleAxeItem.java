@@ -16,8 +16,8 @@ import java.util.List;
 
 public class BattleAxeItem extends SwordItem {
 
-    public BattleAxeItem(Tier tier, int damage, float speed) {
-        super(tier, damage, speed, new Properties()
+    public BattleAxeItem(Tier tier, int attackDamage, float attackSpeed) {
+        super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .defaultDurability(tier.getUses() * 3)
                 .tab(UGItemGroups.GROUP)
@@ -26,8 +26,8 @@ public class BattleAxeItem extends SwordItem {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> list) {
-        if(allowdedIn(group)) {
+    public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> list) {
+        if(allowdedIn(tab)) {
             ItemStack stack = new ItemStack(this);
             stack.enchant(Enchantments.KNOCKBACK, 4);
             list.add(stack);
@@ -35,7 +35,7 @@ public class BattleAxeItem extends SwordItem {
     }
 
     @Override
-    public void onCraftedBy(ItemStack stack, Level worldIn, Player playerIn) {
+    public void onCraftedBy(ItemStack stack, Level level, Player player) {
         stack.serializeNBT();
         stack.enchant(Enchantments.KNOCKBACK, 4);
     }
@@ -46,7 +46,7 @@ public class BattleAxeItem extends SwordItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         if(stack.getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
             tooltip.add(new TranslatableComponent("tooltip.forgotten_sword").withStyle(ChatFormatting.GREEN));
         }

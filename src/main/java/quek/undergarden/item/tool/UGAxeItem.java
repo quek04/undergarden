@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class UGAxeItem extends AxeItem {
-    public UGAxeItem(Tier tier, float attack, float speed) {
-        super(tier, attack, speed, new Properties()
+    public UGAxeItem(Tier tier, float attackDamage, float attackSpeed) {
+        super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .defaultDurability(tier.getUses())
                 .tab(UGItemGroups.GROUP)

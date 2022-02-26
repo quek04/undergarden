@@ -1,12 +1,12 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.HugeMushroomBlock;
-import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.HugeRedMushroomFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
@@ -69,11 +69,11 @@ public class HugeVeilMushroomFeature extends HugeRedMushroomFeature {
         for(int i = 0; i <= length; ++i) {
             if (level.isEmptyBlock(posMutable)) {
                 if (i == length || !level.isEmptyBlock(posMutable.below())) {
-                    level.setBlock(posMutable, UGBlocks.MUSHROOM_VEIL_TOP.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, min, max)), 2);
+                    level.setBlock(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, min, max)), 2);
                     break;
                 }
 
-                level.setBlock(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState(), 2);
+                level.setBlock(posMutable, UGBlocks.MUSHROOM_VEIL_PLANT.get().defaultBlockState(), 2);
             }
 
             posMutable.move(Direction.DOWN);

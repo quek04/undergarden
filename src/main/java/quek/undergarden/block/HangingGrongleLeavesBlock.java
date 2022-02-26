@@ -2,6 +2,7 @@ package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -16,7 +17,6 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import quek.undergarden.registry.UGBlocks;
 
 import javax.annotation.Nullable;
 
@@ -31,13 +31,13 @@ public class HangingGrongleLeavesBlock extends UGDoublePlantBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Vec3 randomOffset = state.getOffset(level, pos);
-        return state.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE.move(randomOffset.x, randomOffset.y, randomOffset.z) : UPPER_SHAPE.move(randomOffset.x, randomOffset.y, randomOffset.z);
+        Vec3 offset = state.getOffset(level, pos);
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE.move(offset.x, offset.y, offset.z) : UPPER_SHAPE.move(offset.x, offset.y, offset.z);
     }
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(UGBlocks.GRONGLE_LEAVES.get());
+        return state.is(BlockTags.LEAVES);
     }
 
     @Override

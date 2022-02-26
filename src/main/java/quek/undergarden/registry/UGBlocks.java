@@ -8,7 +8,6 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +16,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -154,10 +152,10 @@ public class UGBlocks {
     public static final RegistryObject<StemBlock> GLOOMGOURD_STEM = BLOCKS.register("gloomgourd_stem", () -> new UGStemBlock(GLOOMGOURD.get(), BlockBehaviour.Properties.copy(Blocks.PUMPKIN_STEM)));
     public static final RegistryObject<AttachedStemBlock> GLOOMGOURD_STEM_ATTACHED = BLOCKS.register("gloomgourd_stem_attached", () -> new UGAttachedStemBlock(GLOOMGOURD.get(), BlockBehaviour.Properties.copy(Blocks.ATTACHED_PUMPKIN_STEM)));
     public static final RegistryObject<Block> DEPTHROCK_PEBBLES = register("depthrock_pebbles", () -> new DepthrockPebblesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.BASALT).noOcclusion().noCollission().strength(0F)));
-    public static final RegistryObject<GlowingKelpTopBlock> GLOWING_KELP = BLOCKS.register("glowing_kelp", () -> new GlowingKelpTopBlock(BlockBehaviour.Properties.copy(Blocks.KELP).lightLevel((state) -> 10)));
-    public static final RegistryObject<Block> GLOWING_KELP_PLANT = BLOCKS.register("glowing_kelp_plant", () -> new GlowingKelpBlock(BlockBehaviour.Properties.copy(Blocks.KELP_PLANT).lightLevel((state) -> 10)));
-    public static final RegistryObject<Block> DROOPVINE_TOP = BLOCKS.register("droopvine_top", () -> new DroopvineTopBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES).strength(0.1F).noDrops(), Direction.DOWN, false, 0.1D));
-    public static final RegistryObject<Block> DROOPVINE = BLOCKS.register("droopvine", () -> new DroopvineBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT).strength(0.1F).lightLevel((state) -> state.getValue(DroopvineBlock.GLOWY) ? 10 : 0), Direction.DOWN, false));
+    public static final RegistryObject<GlitterkelpBlock> GLITTERKELP = BLOCKS.register("glitterkelp", () -> new GlitterkelpBlock(BlockBehaviour.Properties.copy(Blocks.KELP).lightLevel((state) -> 10)));
+    public static final RegistryObject<GlitterkelpPlantBlock> GLITTERKELP_PLANT = BLOCKS.register("glitterkelp_plant", () -> new GlitterkelpPlantBlock(BlockBehaviour.Properties.copy(Blocks.KELP_PLANT).lightLevel((state) -> 10)));
+    public static final RegistryObject<DroopvineBlock> DROOPVINE = BLOCKS.register("droopvine", () -> new DroopvineBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES).strength(0.1F).lightLevel(Droopvine.light())));
+    public static final RegistryObject<DroopvinePlantBlock> DROOPVINE_PLANT = BLOCKS.register("droopvine_plant", () -> new DroopvinePlantBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES_PLANT).strength(0.1F).lightLevel(Droopvine.light())));
 
     //mushroom
     public static final RegistryObject<Block> INDIGO_MUSHROOM = register("indigo_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM).lightLevel((state) -> 2)));
@@ -167,8 +165,8 @@ public class UGBlocks {
     public static final RegistryObject<Block> VEIL_MUSHROOM = register("veil_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> VEIL_MUSHROOM_CAP = register("veil_mushroom_cap", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> VEIL_MUSHROOM_STALK = register("veil_mushroom_stalk", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
-    public static final RegistryObject<Block> MUSHROOM_VEIL = BLOCKS.register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES).noDrops(), Direction.DOWN, Shapes.block(), false));
-    public static final RegistryObject<GrowingPlantHeadBlock> MUSHROOM_VEIL_TOP = BLOCKS.register("mushroom_veil_top", () -> new MushroomVeilTopBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT).noDrops(), Direction.DOWN, Shapes.block(), false, 0.1D));
+    public static final RegistryObject<MushroomVeilBlock> MUSHROOM_VEIL = BLOCKS.register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES).noDrops()));
+    public static final RegistryObject<MushroomVeilPlantBlock> MUSHROOM_VEIL_PLANT = BLOCKS.register("mushroom_veil_plant", () -> new MushroomVeilPlantBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT).noDrops()));
 
     public static final RegistryObject<Block> INK_MUSHROOM = register("ink_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> INK_MUSHROOM_CAP = register("ink_mushroom_cap", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));

@@ -156,10 +156,10 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.SHARD_O_LANTERN, "Shard o'Lantern");
         addBlock(UGBlocks.GLOOMGOURD_STEM, "Gloomgourd Stem");
         addBlock(UGBlocks.DEPTHROCK_PEBBLES, "Depthrock Pebbles");
-        addBlock(UGBlocks.GLOWING_KELP, "Glitterkelp");
-        addBlock(UGBlocks.GLOWING_KELP_PLANT, "Glitterkelp");
-        addBlock(UGBlocks.DROOPVINE_TOP, "Droopvine");
+        addBlock(UGBlocks.GLITTERKELP, "Glitterkelp");
+        addBlock(UGBlocks.GLITTERKELP_PLANT, "Glitterkelp");
         addBlock(UGBlocks.DROOPVINE, "Droopvine");
+        addBlock(UGBlocks.DROOPVINE_PLANT, "Droopvine");
 
         addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
         addBlock(UGBlocks.INDIGO_MUSHROOM_CAP, "Indigo Mushroom Cap");
@@ -168,8 +168,8 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.VEIL_MUSHROOM, "Veiled Mushroom");
         addBlock(UGBlocks.VEIL_MUSHROOM_CAP, "Veil Mushroom Cap");
         addBlock(UGBlocks.VEIL_MUSHROOM_STALK, "Veil Mushroom Stalk");
+        addBlock(UGBlocks.MUSHROOM_VEIL_PLANT, "Mushroom Veil");
         addBlock(UGBlocks.MUSHROOM_VEIL, "Mushroom Veil");
-        addBlock(UGBlocks.MUSHROOM_VEIL_TOP, "Mushroom Veil");
 
         addBlock(UGBlocks.INK_MUSHROOM, "Ink Mushroom");
         addBlock(UGBlocks.INK_MUSHROOM_CAP, "Ink Mushroom Cap");
@@ -489,7 +489,7 @@ public class UGLang extends LanguageProvider {
         add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
         add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
-        add("tooltip.forgotten_sword", "Deals 2x damage to non-boss Undergarden mobs.");
+        add("tooltip.forgotten_sword", "Deals 1.5x damage to non-boss Undergarden mobs.");
         add("tooltip.pebble", "Can be used as Slingshot ammo.");
         add("tooltip.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
 

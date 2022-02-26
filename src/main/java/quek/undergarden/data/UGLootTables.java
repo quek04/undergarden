@@ -105,7 +105,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.SMOGSTEM_SAPLING);
             this.add(UGBlocks.SMOGSTEM_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.SMOGSTEM_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
             dropSelf(UGBlocks.WIGGLEWOOD_SAPLING);
-            this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.WIGGLEWOOD_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
+            this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> createSilkTouchOrShearsDispatchTable(leaves, applyExplosionCondition(leaves, LootItem.lootTableItem(UGBlocks.WIGGLEWOOD_SAPLING.get())).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, DEFAULT_SAPLING_DROP_RATES))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(applyExplosionDecay(leaves, LootItem.lootTableItem(UGItems.TWISTYTWIG.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F)))));
             this.add(UGBlocks.GRONGLE_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.GRONGLE_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
             dropSelf(UGBlocks.INDIGO_MUSHROOM);
             dropSelf(UGBlocks.VEIL_MUSHROOM);
@@ -133,8 +133,8 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.FROSTSTEEL_BLOCK);
             dropSelf(UGBlocks.UTHERIUM_BLOCK);
             dropSelf(UGBlocks.CLOGGRUM_BARS);
-            dropOther(UGBlocks.GLOWING_KELP, UGItems.GLOWING_KELP.get());
-            dropOther(UGBlocks.GLOWING_KELP_PLANT, UGItems.GLOWING_KELP.get());
+            dropOther(UGBlocks.GLITTERKELP, UGItems.GLITTERKELP.get());
+            dropOther(UGBlocks.GLITTERKELP_PLANT, UGItems.GLITTERKELP.get());
             this.add(UGBlocks.SMOGSTEM_DOOR.get(), (block) -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             this.add(UGBlocks.WIGGLEWOOD_DOOR.get(), (block) -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
             dropSelf(UGBlocks.SMOGSTEM_TRAPDOOR);
@@ -157,9 +157,6 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.WIGGLEWOOD_WOOD);
             dropSelf(UGBlocks.SHARD_TORCH);
             dropOther(UGBlocks.SHARD_WALL_TORCH, UGBlocks.SHARD_TORCH.get());
-            this.add(UGBlocks.DROOPVINE.get(), LootTable.lootTable()
-                    .withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.DROOPVINE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DroopvineBlock.GLOWY, true))).add(LootItem.lootTableItem(UGItems.DROOPFRUIT.get())).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-            );
             dropSelf(UGBlocks.SMOGSTEM_FENCE_GATE);
             dropSelf(UGBlocks.WIGGLEWOOD_FENCE_GATE);
             dropSelf(UGBlocks.COARSE_DEEPSOIL);
@@ -261,12 +258,18 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.RAW_FROSTSTEEL_BLOCK);
             dropSelf(UGBlocks.CLOGGRUM_LANTERN);
             this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), BlockLoot::createShearsOnlyDrop);
+            this.add(UGBlocks.DROOPVINE.get(), (UGLootTables::droopvine));
+            this.add(UGBlocks.DROOPVINE_PLANT.get(), (UGLootTables::droopvine));
         }
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
             return UGBlocks.BLOCKS.getEntries().stream().map(Supplier::get).collect(Collectors.toList());
         }
+    }
+
+    private static LootTable.Builder droopvine(Block block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(UGItems.DROOPFRUIT.get())).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(Droopvine.GLOWY, true))));
     }
 
     private static LootTable.Builder tallGrassDrop(Block originalBlock, Block newBlock) {

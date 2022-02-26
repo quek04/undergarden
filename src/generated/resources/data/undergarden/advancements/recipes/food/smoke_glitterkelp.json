@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:smoke_glitterkelp"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:glitterkelp": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:glitterkelp"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:smoke_glitterkelp"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:glitterkelp",
+      "has_the_recipe"
+    ]
+  ]
+}

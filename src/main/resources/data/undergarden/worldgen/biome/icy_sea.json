@@ -20,7 +20,7 @@
     },
     "additions_sound": {
       "sound": "undergarden:ambient.frostfields_addition",
-      "tick_chance": 0.00555
+      "tick_chance": 0.002775
     },
     "music": {
       "sound": "undergarden:music.undergarden_music",
@@ -64,6 +64,22 @@
       {
         "type": "undergarden:sploogie",
         "weight": 50,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "undergarden:gwibling",
+        "weight": 5,
+        "minCount": 3,
+        "maxCount": 6
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "undergarden:gwib",
+        "weight": 10,
         "minCount": 1,
         "maxCount": 1
       }

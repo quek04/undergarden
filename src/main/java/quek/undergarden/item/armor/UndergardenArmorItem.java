@@ -15,7 +15,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGArmors;
+import quek.undergarden.registry.UGArmorMaterials;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGItems;
 
@@ -25,15 +25,15 @@ import java.util.UUID;
 
 public class UndergardenArmorItem extends ArmorItem {
 
-    private static final UUID[] ARMOR_MODIFIERS = new UUID[]{UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
-
     public UndergardenArmorItem(ArmorMaterial material, EquipmentSlot slot) {
         super(material, slot, new Properties()
                 .tab(UGItemGroups.GROUP)
         );
     }
 
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         if(stack.getItem() == UGItems.CLOGGRUM_BOOTS.get()) {
             tooltip.add(new TranslatableComponent("tooltip.cloggrum_boots").withStyle(ChatFormatting.GRAY));
         }
@@ -41,11 +41,13 @@ public class UndergardenArmorItem extends ArmorItem {
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
-        if(this.getMaterial() == UGArmors.FROSTSTEEL && slot == this.slot) {
+        if(this.getMaterial() == UGArmorMaterials.FROSTSTEEL && slot == this.slot) {
+            UUID uuid = ARMOR_MODIFIER_UUID_PER_SLOT[slot.getIndex()];
             return ImmutableMultimap.of(
-                    Attributes.MOVEMENT_SPEED, new AttributeModifier(ARMOR_MODIFIERS[slot.getIndex()], "froststeel_slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE),
-                    Attributes.ARMOR, new AttributeModifier(ARMOR_MODIFIERS[slot.getIndex()], "froststeel_armor_value", UGArmors.FROSTSTEEL.getDefenseForSlot(this.slot), AttributeModifier.Operation.ADDITION),
-                    Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ARMOR_MODIFIERS[slot.getIndex()], "froststeel_armor_toughness_value", UGArmors.FROSTSTEEL.getToughness(), AttributeModifier.Operation.ADDITION)
+                    Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, "Froststeel slowness", -0.05, AttributeModifier.Operation.MULTIPLY_BASE),
+                    Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", UGArmorMaterials.FROSTSTEEL.getDefenseForSlot(this.slot), AttributeModifier.Operation.ADDITION),
+                    Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor toughness", UGArmorMaterials.FROSTSTEEL.getToughness(), AttributeModifier.Operation.ADDITION),
+                    Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "Armor knockback resistance", UGArmorMaterials.FROSTSTEEL.getKnockbackResistance(), AttributeModifier.Operation.ADDITION)
             );
         }
         return super.getDefaultAttributeModifiers(slot);

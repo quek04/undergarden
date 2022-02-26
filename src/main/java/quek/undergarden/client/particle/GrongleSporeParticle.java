@@ -6,8 +6,8 @@ import net.minecraft.core.particles.SimpleParticleType;
 
 public class GrongleSporeParticle extends TextureSheetParticle {
 
-    private GrongleSporeParticle(ClientLevel world, double x, double y, double z, double motionX, double motionY, double motionZ) {
-        super(world, x, y - 0.125D, z, motionX, motionY, motionZ);
+    private GrongleSporeParticle(ClientLevel level, double x, double y, double z, double motionX, double motionY, double motionZ) {
+        super(level, x, y, z, motionX, motionY, motionZ);
         this.setSize(0.01F, 0.01F);
         this.quadSize *= this.random.nextFloat() * 0.6F + 0.6F;
         this.lifetime = (int)(16.0D / (Math.random() * 0.8D + 0.2D));
@@ -31,16 +31,16 @@ public class GrongleSporeParticle extends TextureSheetParticle {
         }
     }
 
-    public static class Factory implements ParticleProvider<SimpleParticleType> {
+    public static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 
-        public Factory(SpriteSet spriteSet) {
-            this.spriteSet = spriteSet;
+        public Provider(SpriteSet sprites) {
+            this.spriteSet = sprites;
         }
 
-        public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            double d0 = (double)worldIn.random.nextFloat() * -1.9D * (double)worldIn.random.nextFloat() * 0.1D;
-            GrongleSporeParticle spore = new GrongleSporeParticle(worldIn, x, y, z, 0.0D, d0, 0.0D);
+        public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+            double yMotion = (double)level.random.nextFloat() * -50.0D * (double)level.random.nextFloat() * 0.1D;
+            GrongleSporeParticle spore = new GrongleSporeParticle(level, x, y, z, 0.0D, yMotion, 0.0D);
             spore.pickSprite(this.spriteSet);
             return spore;
         }
