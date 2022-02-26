@@ -21,7 +21,7 @@ import java.util.List;
 
 public class CatacombsStructure extends StructureFeature<JigsawConfiguration> {
 
-    public static final WeightedRandomList<MobSpawnSettings.SpawnerData> FORGOTTEN_SPAWNS = WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 100, 1, 1));
+    public static final WeightedRandomList<MobSpawnSettings.SpawnerData> FORGOTTEN_SPAWNS = WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 100, 4, 4));
 
     public CatacombsStructure(Codec<JigsawConfiguration> codec) {
         super(codec, (context) -> {
