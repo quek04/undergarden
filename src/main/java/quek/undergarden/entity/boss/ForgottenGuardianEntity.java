@@ -102,13 +102,15 @@ public class ForgottenGuardianEntity extends Monster {
         if (this.attackTimer > 0) {
             --this.attackTimer;
         }
-        if(this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
-            AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
+        if (this.isAggressive()) {
+            if(this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
+                AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
-            for(BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
-                BlockState blockstate = this.level.getBlockState(blockpos);
-                if(!blockstate.is(BlockTags.WITHER_IMMUNE)) {
-                    this.level.destroyBlock(blockpos, false, this);
+                for(BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
+                    BlockState blockstate = this.level.getBlockState(blockpos);
+                    if(!blockstate.is(BlockTags.WITHER_IMMUNE)) {
+                        this.level.destroyBlock(blockpos, false, this);
+                    }
                 }
             }
         }

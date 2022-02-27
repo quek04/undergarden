@@ -81,8 +81,8 @@ public class NargoyleEntity extends CavernEntity {
                 if (this.leapTarget == null) {
                     return false;
                 } else {
-                    double d0 = this.leaper.distanceToSqr(this.leapTarget);
-                    if (!(d0 < 4.0D) && !(d0 > 16.0D)) {
+                    double distance = this.leaper.distanceToSqr(this.leapTarget);
+                    if (!(distance < 4.0D) && !(distance > 16.0D)) {
                         if (!this.leaper.isOnGround()) {
                             return false;
                         } else {
