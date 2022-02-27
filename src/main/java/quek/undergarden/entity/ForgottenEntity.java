@@ -109,4 +109,9 @@ public class ForgottenEntity extends AbstractSkeleton {
     protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
         return 1.9F;
     }
+
+    @Override
+    protected boolean isSunBurnTick() {
+        return false;
+    }
 }
