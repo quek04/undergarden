@@ -10,6 +10,7 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.loot.ChestLoot;
 import net.minecraft.data.loot.EntityLoot;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -36,6 +37,7 @@ import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.BinomialDistributionGenerator;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.data.provider.UGBlockLootTableProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -68,14 +70,13 @@ public class UGLootTables extends LootTableProvider {
 
     @Override
     protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
-        return ImmutableList.of(Pair.of(Blocks::new, LootContextParamSets.BLOCK), Pair.of(Entities::new, LootContextParamSets.ENTITY));
+        return ImmutableList.of(Pair.of(Blocks::new, LootContextParamSets.BLOCK), Pair.of(Entities::new, LootContextParamSets.ENTITY), Pair.of(Chests::new, LootContextParamSets.CHEST));
     }
 
     @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {}
+    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext context) {}
 
     public static class Blocks extends UGBlockLootTableProvider {
-
         @Override
         protected void addTables() {
             dropSelf(UGBlocks.DEPTHROCK);
@@ -286,7 +287,6 @@ public class UGLootTables extends LootTableProvider {
     }
 
     public static class Entities extends EntityLoot {
-
         @Override
         protected void addTables() {
             this.add(UGEntityTypes.ROTLING.get(), LootTable.lootTable()
@@ -459,6 +459,42 @@ public class UGLootTables extends LootTableProvider {
         @Override
         protected Iterable<EntityType<?>> getKnownEntities() {
             return UGEntityTypes.ENTITIES.getEntries().stream().map(Supplier::get).collect(Collectors.toList());
+        }
+    }
+
+    public static class Chests extends ChestLoot {
+        @Override
+        public void accept(BiConsumer<ResourceLocation, LootTable.Builder> builder) {
+            builder.accept(new ResourceLocation(Undergarden.MODID, "chests/catacombs"), LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantValue.exactly(2.0F))
+                            .add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+                            .add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+                            .add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                            .add(LootItem.lootTableItem(Items.COAL).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
+                            .add(LootItem.lootTableItem(UGItems.DITCHBULB.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 18.0F))))
+                            .add(LootItem.lootTableItem(Items.IRON_NUGGET).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+                            .add(LootItem.lootTableItem(Items.GOLD_NUGGET).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantValue.exactly(2.0F))
+                            .add(LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+                            .add(LootItem.lootTableItem(UGItems.TWISTYTWIG.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+                            .add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+                            .add(LootItem.lootTableItem(Items.BONE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 5.0F))))
+                            .add(LootItem.lootTableItem(UGItems.GLOOMGOURD_SEEDS.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantValue.exactly(1.0F))
+                            .add(LootItem.lootTableItem(UGItems.CLOGGRUM_INGOT.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).setWeight(10))
+                            .add(LootItem.lootTableItem(UGItems.FROSTSTEEL_INGOT.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).setWeight(10))
+                            .add(LootItem.lootTableItem(Items.IRON_INGOT).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).setWeight(10))
+                            .add(LootItem.lootTableItem(Items.GOLD_INGOT).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).setWeight(10))
+                            .add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1))
+                            .add(LootItem.lootTableItem(UGItems.GLOOMGOURD_PIE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))).setWeight(5))
+                            .add(LootItem.lootTableItem(UGItems.BLISTERBERRY.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))).setWeight(5))
+                    )
+            );
         }
     }
 }
