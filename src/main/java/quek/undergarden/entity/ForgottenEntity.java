@@ -19,6 +19,7 @@ import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.rotspawn.RotspawnEntity;
 import quek.undergarden.registry.UGItems;
@@ -76,13 +77,13 @@ public class ForgottenEntity extends AbstractSkeleton {
 
     @Override
     protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
-        for (EquipmentSlot armorSlots : EquipmentSlot.values()) {
-            if (armorSlots.getType() == EquipmentSlot.Type.ARMOR) {
-                ItemStack armorStack = this.getItemBySlot(armorSlots);
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() == EquipmentSlot.Type.ARMOR) {
+                ItemStack armorStack = this.getItemBySlot(slot);
                 if (armorStack.isEmpty()) {
-                    Item item = getEquipmentForSlot(armorSlots);
+                    Item item = getEquipmentForSlot(slot);
                     if (item != null && this.random.nextBoolean()) {
-                        this.setItemSlot(armorSlots, new ItemStack(item));
+                        this.setItemSlot(slot, new ItemStack(item));
                     }
                 }
             }
@@ -92,6 +93,26 @@ public class ForgottenEntity extends AbstractSkeleton {
         }
         else {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_AXE.get()));
+        }
+    }
+
+    //don't drop armorye
+    @Override
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHit) {
+        for(EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() == EquipmentSlot.Type.HAND) {
+                ItemStack itemstack = this.getItemBySlot(slot);
+                float dropChance = this.getEquipmentDropChance(slot);
+                boolean flag = dropChance > 1.0F;
+                if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack) && (recentlyHit || flag) && Math.max(this.random.nextFloat() - (float)looting * 0.01F, 0.0F) < dropChance) {
+                    if (!flag && itemstack.isDamageableItem()) {
+                        itemstack.setDamageValue(itemstack.getMaxDamage() - this.random.nextInt(1 + this.random.nextInt(Math.max(itemstack.getMaxDamage() - 3, 1))));
+                    }
+
+                    this.spawnAtLocation(itemstack);
+                    this.setItemSlot(slot, ItemStack.EMPTY);
+                }
+            }
         }
     }
 
