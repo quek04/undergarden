@@ -270,7 +270,7 @@ public class UGBlocks {
             if(Objects.requireNonNull(block.get()) == SHARD_TORCH.get()) {
                 return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties().tab(UGItemGroups.GROUP));
             }
-            else if(Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DEPTHROCK_REGALIUM_ORE.get()) {
+            else if(Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DEPTHROCK_REGALIUM_ORE.get() || Objects.requireNonNull(block.get()) == SHIVERSTONE_REGALIUM_ORE.get()) {
                 return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.UNCOMMON));
             }
             else if(Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
