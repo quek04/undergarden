@@ -620,7 +620,7 @@ fe278e4e69d0788135dfd5e53c38593b1589ff3a data/minecraft/tags/blocks/logs.json
 fe278e4e69d0788135dfd5e53c38593b1589ff3a data/minecraft/tags/blocks/logs_that_burn.json
 b7291d7a61292ded0948732227daa5c3f7ef6f79 data/minecraft/tags/blocks/mineable/axe.json
 dfc0dd9c64378358c4fa0b5e686cc32c5cb8ab17 data/minecraft/tags/blocks/mineable/hoe.json
-193419411954469ee6fa486a56579c0d4bfd1e7b data/minecraft/tags/blocks/mineable/pickaxe.json
+c322a3831f30fd82a1209ffc8b2e6545a9366b6d data/minecraft/tags/blocks/mineable/pickaxe.json
 7d80373955edd9d11b9f4c86033d3e628d16468d data/minecraft/tags/blocks/mineable/shovel.json
 6de4831fd4e1b2463606649d0d80f96e4ed6d3cc data/minecraft/tags/blocks/mushroom_grow_block.json
 ee8943641cef807431bdc40fda8445e6281e70a1 data/minecraft/tags/blocks/needs_iron_tool.json
