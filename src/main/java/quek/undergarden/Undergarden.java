@@ -265,6 +265,7 @@ public class Undergarden {
 			generator.addProvider(new UGEntityTags(generator, helper));
 			generator.addProvider(new UGAdvancements(generator, helper));
 			generator.addProvider(new UGFluidTags(generator, helper));
+			generator.addProvider(new UGBiomeTags(generator));
 		}
 	}
 }
