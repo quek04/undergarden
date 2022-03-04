@@ -1,6 +1,7 @@
 package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -27,17 +28,17 @@ public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
-        if (rand.nextInt(25) == 0) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+        if (random.nextInt(25) == 0) {
             int i = 5;
 
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4))) {
-                if (worldIn.getBlockState(blockpos).getBlock() == this) {
+                if (level.getBlockState(blockpos).getBlock() == this) {
                     --i;
                     if (i <= 0) {
                         return;
@@ -45,43 +46,43 @@ public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
                 }
             }
 
-            BlockPos blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
+            BlockPos blockpos1 = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
 
             for(int k = 0; k < 4; ++k) {
-                if (worldIn.isEmptyBlock(blockpos1) && state.canSurvive(worldIn, blockpos1)) {
+                if (level.isEmptyBlock(blockpos1) && state.canSurvive(level, blockpos1)) {
                     pos = blockpos1;
                 }
 
-                blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
+                blockpos1 = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
             }
 
-            if (worldIn.isEmptyBlock(blockpos1) && state.canSurvive(worldIn, blockpos1)) {
-                worldIn.setBlock(blockpos1, state, 2);
+            if (level.isEmptyBlock(blockpos1) && state.canSurvive(level, blockpos1)) {
+                level.setBlock(blockpos1, state, 2);
             }
         }
 
     }
 
     @Override
-    public boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
-        return state.isSolidRender(worldIn, pos);
+    public boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
+        return state.isSolidRender(level, pos);
     }
 
     @Override
-    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos blockpos = pos.below();
-        BlockState blockstate = worldIn.getBlockState(blockpos);
+        BlockState blockstate = level.getBlockState(blockpos);
         Block block = blockstate.getBlock();
         if (block != UGBlocks.DEEPTURF_BLOCK.get() && block != UGBlocks.DEEPSOIL.get()) {
-            return worldIn.getRawBrightness(pos, 0) < 13 && blockstate.canSustainPlant(worldIn, blockpos, net.minecraft.core.Direction.UP, this);
+            return level.getRawBrightness(pos, 0) < 13 && blockstate.canSustainPlant(level, blockpos, net.minecraft.core.Direction.UP, this);
         } else {
             return true;
         }
     }
 
-    public void bigMushroom(ServerLevel world, BlockPos pos, BlockState state, Random rand) {
-        world.removeBlock(pos, false);
-        ConfiguredFeature<HugeMushroomFeatureConfiguration, ?> feature;
+    public void bigMushroom(ServerLevel level, BlockPos pos, BlockState state, Random random) {
+        level.removeBlock(pos, false);
+        Holder<ConfiguredFeature<HugeMushroomFeatureConfiguration, ?>> feature;
         if (this == UGBlocks.BLOOD_MUSHROOM.get()) {
             feature = UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM;
         }
@@ -98,10 +99,10 @@ public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
             return;
         }
 
-        if (feature.place(world, world.getChunkSource().getGenerator(), rand, pos)) {
+        if (feature.value().place(level, level.getChunkSource().getGenerator(), random, pos)) {
         }
         else {
-            world.setBlock(pos, state, 3);
+            level.setBlock(pos, state, 3);
         }
     }
 

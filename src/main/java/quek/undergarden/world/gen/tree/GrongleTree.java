@@ -1,8 +1,8 @@
 package quek.undergarden.world.gen.tree;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.grower.AbstractMegaTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import quek.undergarden.registry.UGConfiguredFeatures;
 
 import javax.annotation.Nullable;
@@ -12,13 +12,13 @@ public class GrongleTree extends AbstractMegaTreeGrower {
 
     @Nullable
     @Override
-    public ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random rand, boolean largeHive) {
-        return UGConfiguredFeatures.SMALL_GRONGLE_TREE;
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredMegaFeature(Random random) {
+        return UGConfiguredFeatures.GRONGLE_TREE;
     }
 
     @Nullable
     @Override
-    protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredMegaFeature(Random rand) {
-        return UGConfiguredFeatures.GRONGLE_TREE;
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean hive) {
+        return UGConfiguredFeatures.SMALL_GRONGLE_TREE;
     }
 }
