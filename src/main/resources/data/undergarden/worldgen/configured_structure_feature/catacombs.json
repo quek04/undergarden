@@ -1,6 +1,6 @@
 {
   "type": "undergarden:catacombs",
-  "biomes": "undergarden:ancient_sea",
+  "biomes": "#undergarden:has_structure/catacombs",
   "adapt_noise": true,
   "spawn_overrides": {},
   "config": {
