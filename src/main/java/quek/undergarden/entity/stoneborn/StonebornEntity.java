@@ -158,8 +158,8 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
 
         if (this.timeOutOfUG > 300) {
             this.playSound(UGSoundEvents.STONEBORN_CHANT.get(), 1.0F, 1.0F);
-            this.remove(RemovalReason.KILLED);
             if (!this.level.isClientSide) {
+                this.remove(RemovalReason.KILLED);
                 Explosion.BlockInteraction explosionType = this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
                 this.level.explode(this, this.getX(), this.getY(), this.getZ(), 3, explosionType);
             }
