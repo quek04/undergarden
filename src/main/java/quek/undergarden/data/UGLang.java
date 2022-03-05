@@ -500,6 +500,9 @@ public class UGLang extends LanguageProvider {
         addSubtitle("block", "undergarden_portal_activate", "Undergarden Portal activates");
         addSubtitle("block", "undergarden_portal_travel", "Travelling through Undergarden portal");
 
+        addSubtitle("block", "virulent.flow", "Virulent Mix flows");
+        addSubtitle("block", "virulent.bubble", "Virulent Mix bubbles");
+
         addSubtitle("entity", "dweller_ambient", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
         addSubtitle("entity", "dweller_death", "Dweller dies");

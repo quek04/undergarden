@@ -230,6 +230,17 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:block/undergarden_portal_travel")
         ).subtitle("subtitles.block.undergarden_portal_travel"));
 
+        this.add(UGSoundEvents.VIRULENT_FLOW, definition().with(
+                sound("undergarden:liquid/virulent_flowing_1"),
+                sound("undergarden:liquid/virulent_flowing_2")
+        ).subtitle("subtitles.block.virulent.flow"));
+        this.add(UGSoundEvents.VIRULENT_BUBBLE, definition().with(
+                sound("undergarden:liquid/virulent_bubble_1"),
+                sound("undergarden:liquid/virulent_bubble_2"),
+                sound("undergarden:liquid/virulent_bubble_3"),
+                sound("undergarden:liquid/virulent_bubble_4")
+        ).subtitle("subtitles.block.virulent.bubble"));
+
         this.add(UGSoundEvents.BLISTERBOMB_THROW, definition().with(
                 sound("undergarden:item/blisterbomb")
         ).subtitle("subtitles.item.blisterbomb"));
@@ -246,6 +257,17 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("minecraft:item/sweet_berries/pick_from_bush1"),
                 sound("minecraft:item/sweet_berries/pick_from_bush2")
         ).subtitle("subtitles.item.pick_blisterberry_bush"));
+
+        this.add(UGSoundEvents.BUCKET_FILL_VIRULENT, definition().with(
+                sound("undergarden:item/bucket/fill_virulent_mix_1"),
+                sound("undergarden:item/bucket/fill_virulent_mix_2"),
+                sound("undergarden:item/bucket/fill_virulent_mix_3")
+        ).subtitle("subtitles.item.bucket.fill"));
+        this.add(UGSoundEvents.BUCKET_EMPTY_VIRULENT, definition().with(
+                sound("undergarden:item/bucket/empty_virulent_mix_1"),
+                sound("undergarden:item/bucket/empty_virulent_mix_2"),
+                sound("undergarden:item/bucket/empty_virulent_mix_3")
+        ).subtitle("subtitles.item.bucket.empty"));
 
         this.add(UGSoundEvents.DWELLER_AMBIENT, definition().with(
                 sound("undergarden:entity/dweller_ambient_1"),
