@@ -37,7 +37,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/abyss_5"),
                 sound("undergarden:ambient/additions/abyss_6"),
                 sound("undergarden:ambient/additions/abyss_7"),
-                sound("undergarden:ambient/additions/abyss_8")
+                sound("undergarden:ambient/additions/abyss_8"),
+                sound("undergarden:ambient/additions/abyss_9"),
+                sound("undergarden:ambient/additions/abyss_10"),
+                sound("undergarden:ambient/additions/abyss_11"),
+                sound("undergarden:ambient/additions/abyss_12")
         ));
         this.add(UGSoundEvents.BOG_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/bog_1"),
@@ -48,7 +52,8 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/bog_6"),
                 sound("undergarden:ambient/additions/bog_7"),
                 sound("undergarden:ambient/additions/bog_8"),
-                sound("undergarden:ambient/additions/bog_9")
+                sound("undergarden:ambient/additions/bog_9"),
+                sound("undergarden:ambient/additions/bog_10")
         ));
         this.add(UGSoundEvents.FIELDS_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/fields_1"),
@@ -56,14 +61,64 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/fields_3"),
                 sound("undergarden:ambient/additions/fields_4"),
                 sound("undergarden:ambient/additions/fields_5"),
-                sound("undergarden:ambient/additions/fields_6")
+                sound("undergarden:ambient/additions/fields_6"),
+                sound("undergarden:ambient/additions/fields_7"),
+                sound("undergarden:ambient/additions/fields_8"),
+                sound("undergarden:ambient/additions/fields_9"),
+                sound("undergarden:ambient/additions/fields_10"),
+                sound("undergarden:ambient/additions/fields_11"),
+                sound("undergarden:ambient/additions/fields_12"),
+                sound("undergarden:ambient/additions/fields_13"),
+                sound("undergarden:ambient/additions/fields_14"),
+                sound("undergarden:ambient/additions/fields_15"),
+                sound("undergarden:ambient/additions/fields_16"),
+                sound("undergarden:ambient/additions/fields_17"),
+                sound("undergarden:ambient/additions/fields_18")
         ));
-        this.add(UGSoundEvents.FOREST_AMBIENT_ADDITION, definition().with(
+        this.add(UGSoundEvents.SMOGSTEM_FOREST_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/forest_1"),
                 sound("undergarden:ambient/additions/forest_2"),
                 sound("undergarden:ambient/additions/forest_3"),
                 sound("undergarden:ambient/additions/forest_4"),
-                sound("undergarden:ambient/additions/forest_5")
+                sound("undergarden:ambient/additions/forest_5"),
+                sound("undergarden:ambient/additions/forest_6"),
+                sound("undergarden:ambient/additions/forest_7"),
+                sound("undergarden:ambient/additions/forest_8"),
+                sound("undergarden:ambient/additions/smogstem_1"),
+                sound("undergarden:ambient/additions/smogstem_2"),
+                sound("undergarden:ambient/additions/smogstem_3"),
+                sound("undergarden:ambient/additions/smogstem_4")
+        ));
+        this.add(UGSoundEvents.WIGGLEWOOD_FOREST_AMBIENT_ADDITION, definition().with(
+                sound("undergarden:ambient/additions/forest_1"),
+                sound("undergarden:ambient/additions/forest_2"),
+                sound("undergarden:ambient/additions/forest_3"),
+                sound("undergarden:ambient/additions/forest_4"),
+                sound("undergarden:ambient/additions/forest_5"),
+                sound("undergarden:ambient/additions/forest_6"),
+                sound("undergarden:ambient/additions/forest_7"),
+                sound("undergarden:ambient/additions/forest_8"),
+                sound("undergarden:ambient/additions/wigglewood_1"),
+                sound("undergarden:ambient/additions/wigglewood_2"),
+                sound("undergarden:ambient/additions/wigglewood_3"),
+                sound("undergarden:ambient/additions/wigglewood_4"),
+                sound("undergarden:ambient/additions/wigglewood_5")
+        ));
+        this.add(UGSoundEvents.GRONGLEGROWTH_AMBIENT_ADDITION, definition().with(
+                sound("undergarden:ambient/additions/forest_1"),
+                sound("undergarden:ambient/additions/forest_2"),
+                sound("undergarden:ambient/additions/forest_3"),
+                sound("undergarden:ambient/additions/forest_4"),
+                sound("undergarden:ambient/additions/forest_5"),
+                sound("undergarden:ambient/additions/forest_6"),
+                sound("undergarden:ambient/additions/forest_7"),
+                sound("undergarden:ambient/additions/forest_8"),
+                sound("undergarden:ambient/additions/grongle_1"),
+                sound("undergarden:ambient/additions/grongle_2"),
+                sound("undergarden:ambient/additions/grongle_3"),
+                sound("undergarden:ambient/additions/grongle_4"),
+                sound("undergarden:ambient/additions/grongle_5"),
+                sound("undergarden:ambient/additions/grongle_6")
         ));
         this.add(UGSoundEvents.FROSTFIELDS_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/frostfields_1"),
@@ -72,7 +127,17 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/frostfields_4"),
                 sound("undergarden:ambient/additions/frostfields_5"),
                 sound("undergarden:ambient/additions/frostfields_6"),
-                sound("undergarden:ambient/additions/frostfields_7")
+                sound("undergarden:ambient/additions/frostfields_7"),
+                sound("undergarden:ambient/additions/frostfields_8"),
+                sound("undergarden:ambient/additions/frostfields_9"),
+                sound("undergarden:ambient/additions/frostfields_10"),
+                sound("undergarden:ambient/additions/frostfields_11"),
+                sound("undergarden:ambient/additions/frostfields_12"),
+                sound("undergarden:ambient/additions/frostfields_13"),
+                sound("undergarden:ambient/additions/frostfields_14"),
+                sound("undergarden:ambient/additions/frostfields_15"),
+                sound("undergarden:ambient/additions/frostfields_16"),
+                sound("undergarden:ambient/additions/frostfields_17")
         ));
         this.add(UGSoundEvents.SPIRES_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/spires_1"),
@@ -109,7 +174,12 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/moods/mood_8"),
                 sound("undergarden:ambient/moods/mood_9"),
                 sound("undergarden:ambient/moods/mood_10"),
-                sound("undergarden:ambient/moods/mood_11")
+                sound("undergarden:ambient/moods/mood_11"),
+                sound("undergarden:ambient/moods/mood_12"),
+                sound("undergarden:ambient/moods/mood_13"),
+                sound("undergarden:ambient/moods/mood_13"),
+                sound("undergarden:ambient/moods/mood_14"),
+                sound("undergarden:ambient/moods/mood_15")
         ));
         this.add(UGSoundEvents.FROST_MOOD, definition().with(
                 sound("undergarden:ambient/moods/frost_mood_1"),

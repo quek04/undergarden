@@ -13,7 +13,7 @@
     "foliage_color": 4103962,
     "ambient_sound": "undergarden:ambient.undergarden_ambience",
     "additions_sound": {
-      "sound": "undergarden:ambient.forest_addition",
+      "sound": "undergarden:ambient.gronglegrowth_addition",
       "tick_chance": 0.00555
     },
     "music": {

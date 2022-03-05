@@ -20,7 +20,9 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> ABYSS_AMBIENT_ADDITION = register("ambient.abyss_addition");
     public static final RegistryObject<SoundEvent> BOG_AMBIENT_ADDITION = register("ambient.bog_addition");
     public static final RegistryObject<SoundEvent> FIELDS_AMBIENT_ADDITION = register("ambient.fields_addition");
-    public static final RegistryObject<SoundEvent> FOREST_AMBIENT_ADDITION = register("ambient.forest_addition");
+    public static final RegistryObject<SoundEvent> SMOGSTEM_FOREST_AMBIENT_ADDITION = register("ambient.smogstem_forest_addition");
+    public static final RegistryObject<SoundEvent> WIGGLEWOOD_FOREST_AMBIENT_ADDITION = register("ambient.wigglewood_forest_addition");
+    public static final RegistryObject<SoundEvent> GRONGLEGROWTH_AMBIENT_ADDITION = register("ambient.gronglegrowth_addition");
     public static final RegistryObject<SoundEvent> FROSTFIELDS_AMBIENT_ADDITION = register("ambient.frostfields_addition");
     public static final RegistryObject<SoundEvent> SPIRES_AMBIENT_ADDITION = register("ambient.spires_addition");
     public static final RegistryObject<SoundEvent> SEA_AMBIENT_ADDITION = register("ambient.sea_addition");
