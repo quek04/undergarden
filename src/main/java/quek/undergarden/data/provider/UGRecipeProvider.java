@@ -3,7 +3,7 @@ package quek.undergarden.data.provider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SignBlock;
 import net.minecraftforge.common.Tags;
 import quek.undergarden.Undergarden;
-import quek.undergarden.data.UGRecipes;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
@@ -29,10 +28,11 @@ public class UGRecipeProvider extends RecipeProvider {
         super(generatorIn);
     }
 
-    public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, Tag.Named<Item> logIn) {
+    public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, TagKey<Item> logIn) {
         return ShapelessRecipeBuilder.shapeless(plankOut.get(), 4)
                 .requires(logIn)
-                .unlockedBy("has_" + logIn.getName(), has(logIn));
+                .group("planks")
+                .unlockedBy("has_log", has(logIn));
     }
 
     public ShapedRecipeBuilder makeDoor(Supplier<? extends Block> doorOut, Supplier<? extends Block> plankIn) {
@@ -290,11 +290,11 @@ public class UGRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_" + ingredient.asItem().getRegistryName(), has(ingredient));
     }
 
-    public SimpleCookingRecipeBuilder smeltingRecipeTag(ItemLike result, Tag.Named<Item> ingredient, float exp) {
+    public SimpleCookingRecipeBuilder smeltingRecipeTag(ItemLike result, TagKey<Item> ingredient, float exp) {
         return smeltingRecipeTag(result, ingredient, exp, 1);
     }
 
-    public SimpleCookingRecipeBuilder smeltingRecipeTag(ItemLike result, Tag.Named<Item> ingredient, float exp, int count) {
+    public SimpleCookingRecipeBuilder smeltingRecipeTag(ItemLike result, TagKey<Item> ingredient, float exp, int count) {
         return SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), result, exp, 200)
                 .unlockedBy("has_" + ingredient, has(ingredient));
     }
@@ -314,11 +314,11 @@ public class UGRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_" + ingredient.asItem().getRegistryName(), has(ingredient));
     }
 
-    public SimpleCookingRecipeBuilder blastingRecipeTag(ItemLike result, Tag.Named<Item> ingredient, float exp) {
+    public SimpleCookingRecipeBuilder blastingRecipeTag(ItemLike result, TagKey<Item> ingredient, float exp) {
         return blastingRecipeTag(result, ingredient, exp, 1);
     }
 
-    public SimpleCookingRecipeBuilder blastingRecipeTag(ItemLike result, Tag.Named<Item> ingredient, float exp, int count) {
+    public SimpleCookingRecipeBuilder blastingRecipeTag(ItemLike result, TagKey<Item> ingredient, float exp, int count) {
         return SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), result, exp, 100)
                 .unlockedBy("has_" + ingredient, has(ingredient));
     }

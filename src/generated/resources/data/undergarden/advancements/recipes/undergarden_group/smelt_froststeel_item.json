@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_OptionalNamedTag[undergarden:froststeel_items]": {
+    "has_TagKey[minecraft:item / undergarden:froststeel_items]": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_OptionalNamedTag[undergarden:froststeel_items]",
+      "has_TagKey[minecraft:item / undergarden:froststeel_items]",
       "has_the_recipe"
     ]
   ]

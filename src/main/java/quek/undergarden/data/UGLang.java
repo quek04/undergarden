@@ -494,7 +494,7 @@ public class UGLang extends LanguageProvider {
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
         addSubtitle("item", "slingshot_draw", "Slingshot drawn");
         addSubtitle("item", "slingshot_shoot", "Slingshot fired");
-        addSubtitle("item", "blisterberry_bush_pick_berries", "Blisterberry Bush picked");
+        addSubtitle("item", "pick_blisterberry_bush", "Blisterberry Bush picked");
 
         addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
         addSubtitle("block", "undergarden_portal_activate", "Undergarden Portal activates");
