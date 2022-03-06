@@ -12,9 +12,9 @@ public class UGModelLayers {
     public static final ModelLayerLocation DWELLER = register("dweller");
     public static final ModelLayerLocation DWELLER_SADDLE = register("dweller", "saddle");
     public static final ModelLayerLocation FORGOTTEN_GUARDIAN = register("forgotten_guardian");
-    public static final ModelLayerLocation FORGOTTEN_INNER_ARMOR_LAYER = register("forgotten", "inner_armor");
-    public static final ModelLayerLocation FORGOTTEN_LAYER = register("forgotten");
-    public static final ModelLayerLocation FORGOTTEN_OUTER_ARMOR_LAYER = register("forgotten", "outer_armor");
+    public static final ModelLayerLocation FORGOTTEN_INNER_ARMOR = register("forgotten", "inner_armor");
+    public static final ModelLayerLocation FORGOTTEN = register("forgotten");
+    public static final ModelLayerLocation FORGOTTEN_OUTER_ARMOR = register("forgotten", "outer_armor");
     public static final ModelLayerLocation GLOOMPER = register("gloomper");
     public static final ModelLayerLocation GWIB = register("gwib");
     public static final ModelLayerLocation GWIBLING = register("gwibling");
