@@ -105,9 +105,16 @@ public class ForgottenEntity extends AbstractSkeleton {
             if (slot.getType() == EquipmentSlot.Type.HAND) {
                 ItemStack itemstack = this.getItemBySlot(slot);
                 float dropChance = this.getEquipmentDropChance(slot);
-                boolean flag = dropChance > 1.0F;
-                if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack) && (recentlyHit || flag) && Math.max(this.random.nextFloat() - (float) looting * 0.01F, 0.0F) < dropChance) {
-                    if (!flag && itemstack.isDamageableItem()) {
+                boolean doDrop = dropChance > 1.0F;
+                if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack) && (recentlyHit || doDrop) && Math.max(this.random.nextFloat() - (float) looting * 0.01F, 0.0F) < dropChance) {
+                    if (!doDrop && itemstack.isDamageableItem()) {
+                        itemstack.setDamageValue(itemstack.getMaxDamage() - this.random.nextInt(1 + this.random.nextInt(Math.max(itemstack.getMaxDamage() - 3, 1))));
+                    }
+                    this.spawnAtLocation(itemstack);
+                    this.setItemSlot(slot, ItemStack.EMPTY);
+                }
+                if (itemstack.is(UGItems.CLOGGRUM_BATTLEAXE.get()) && !EnchantmentHelper.hasVanishingCurse(itemstack) && recentlyHit /*&& Math.max(this.random.nextFloat() - (float) looting * 0.01F, 0.0F) < dropChance*/) {
+                    if (itemstack.isDamageableItem()) {
                         itemstack.setDamageValue(itemstack.getMaxDamage() - this.random.nextInt(1 + this.random.nextInt(Math.max(itemstack.getMaxDamage() - 3, 1))));
                     }
                     this.spawnAtLocation(itemstack);
