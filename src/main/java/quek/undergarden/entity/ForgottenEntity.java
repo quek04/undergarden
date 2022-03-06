@@ -9,10 +9,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
@@ -20,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.rotspawn.RotspawnEntity;
 import quek.undergarden.registry.UGItems;
@@ -35,8 +33,9 @@ public class ForgottenEntity extends AbstractSkeleton {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -73,6 +72,10 @@ public class ForgottenEntity extends AbstractSkeleton {
 
     @Override
     protected void populateDefaultEquipmentEnchantments(DifficultyInstance difficulty) {
+        if (this.getMainHandItem().is(UGItems.CLOGGRUM_BATTLEAXE.get())) {
+            ItemStack mainHandItem = this.getMainHandItem();
+            mainHandItem.enchant(Enchantments.KNOCKBACK, 4);
+        }
     }
 
     @Override
