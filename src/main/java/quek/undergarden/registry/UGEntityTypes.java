@@ -61,10 +61,7 @@ public class UGEntityTypes {
     public static final RegistryObject<EntityType<SploogieEntity>> SPLOOGIE = ENTITIES.register("sploogie", () -> EntityType.Builder.of(SploogieEntity::new, MobCategory.MONSTER).sized(0.8F, 0.8F).build("sploogie"));
     public static final RegistryObject<EntityType<GwibEntity>> GWIB = ENTITIES.register("gwib", () -> EntityType.Builder.of(GwibEntity::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.5F).build("gwib"));
     public static final RegistryObject<EntityType<MogEntity>> MOG = ENTITIES.register("mog", () -> EntityType.Builder.of(MogEntity::new, MobCategory.CREATURE).sized(1.0F, 1.0F).build("mog"));
-
-    public static final EntityType<ForgottenEntity> FORGOTTEN_TYPE = EntityType.Builder.of(ForgottenEntity::new, MobCategory.MONSTER)
-            .sized(0.7F, 2.2F).build("forgotten");
-    public static final RegistryObject<EntityType<ForgottenEntity>> FORGOTTEN = ENTITIES.register("forgotten", () -> FORGOTTEN_TYPE);
+    public static final RegistryObject<EntityType<ForgottenEntity>> FORGOTTEN = ENTITIES.register("forgotten", () -> EntityType.Builder.of(ForgottenEntity::new, MobCategory.MONSTER).sized(0.7F, 2.2F).build("forgotten"));
 
     //bosses
     public static final RegistryObject<EntityType<MasticatorEntity>> MASTICATOR = ENTITIES.register("masticator", () -> EntityType.Builder.of(MasticatorEntity::new, MobCategory.MONSTER).sized(2.5F, 4).build("masticator"));
