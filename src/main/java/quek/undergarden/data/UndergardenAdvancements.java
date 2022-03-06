@@ -18,6 +18,7 @@ import java.util.function.Consumer;
 
 public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> {
     private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST);
+    @SuppressWarnings("unused")
     @Override
     public void accept(Consumer<Advancement> consumer) {
         Advancement root = Advancement.Builder.advancement()
@@ -180,7 +181,7 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .addCriterion("has_cloggrum_armor", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.CLOGGRUM_HELMET.get(), UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.CLOGGRUM_BOOTS.get()))
                 .save(consumer, "undergarden:undergarden/cloggrum_armor");
 
-        addBiomes(Advancement.Builder.advancement(), UNDERGARDEN_BIOMES)
+        addBiomes(Advancement.Builder.advancement())
                 .parent(enter_undergarden)
                 .display(
                         UGItems.CLOGGRUM_BOOTS.get(),
@@ -406,10 +407,25 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 )
                 .addCriterion("has_disc", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.GLOOMPER_SECRET_DISC.get()))
                 .save(consumer, "undergarden:undergarden/gloomper_secret_disc");
+
+        Advancement cloggrum_battleaxe = Advancement.Builder.advancement()
+                .parent(catacombs)
+                .display(
+                        UGItems.CLOGGRUM_BATTLEAXE.get(),
+                        new TranslatableComponent("advancement.undergarden.cloggrum_battleaxe.title"),
+                        new TranslatableComponent("advancement.undergarden.cloggrum_battleaxe.desc"),
+                        null,
+                        FrameType.GOAL,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("has_cloggrum_battleaxe", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.CLOGGRUM_BATTLEAXE.get()))
+                .save(consumer, "undergarden:undergarden/cloggrum_battleaxe");
     }
 
-    protected static Advancement.Builder addBiomes(Advancement.Builder builder, List<ResourceKey<Biome>> biomes) {
-        for(ResourceKey<Biome> resourcekey : biomes) {
+    protected static Advancement.Builder addBiomes(Advancement.Builder builder) {
+        for(ResourceKey<Biome> resourcekey : UndergardenAdvancements.UNDERGARDEN_BIOMES) {
             builder.addCriterion(resourcekey.location().toString(), LocationTrigger.TriggerInstance.located(LocationPredicate.inBiome(resourcekey)));
         }
 
