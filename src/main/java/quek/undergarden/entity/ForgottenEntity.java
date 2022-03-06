@@ -88,27 +88,28 @@ public class ForgottenEntity extends AbstractSkeleton {
                 }
             }
         }
-        if(this.random.nextBoolean()) {
+        if (this.random.nextBoolean()) {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_SWORD.get()));
-        }
-        else {
+        } else {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_AXE.get()));
+        }
+        if (this.random.nextInt(50) == 0) {
+            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_BATTLEAXE.get()));
         }
     }
 
-    //don't drop armorye
+    //don't drop armor
     @Override
     protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHit) {
-        for(EquipmentSlot slot : EquipmentSlot.values()) {
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
             if (slot.getType() == EquipmentSlot.Type.HAND) {
                 ItemStack itemstack = this.getItemBySlot(slot);
                 float dropChance = this.getEquipmentDropChance(slot);
                 boolean flag = dropChance > 1.0F;
-                if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack) && (recentlyHit || flag) && Math.max(this.random.nextFloat() - (float)looting * 0.01F, 0.0F) < dropChance) {
+                if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack) && (recentlyHit || flag) && Math.max(this.random.nextFloat() - (float) looting * 0.01F, 0.0F) < dropChance) {
                     if (!flag && itemstack.isDamageableItem()) {
                         itemstack.setDamageValue(itemstack.getMaxDamage() - this.random.nextInt(1 + this.random.nextInt(Math.max(itemstack.getMaxDamage() - 3, 1))));
                     }
-
                     this.spawnAtLocation(itemstack);
                     this.setItemSlot(slot, ItemStack.EMPTY);
                 }
