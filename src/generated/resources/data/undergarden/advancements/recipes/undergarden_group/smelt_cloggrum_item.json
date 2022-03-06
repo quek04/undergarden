@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_OptionalNamedTag[undergarden:cloggrum_items]": {
+    "has_TagKey[minecraft:item / undergarden:cloggrum_items]": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_OptionalNamedTag[undergarden:cloggrum_items]",
+      "has_TagKey[minecraft:item / undergarden:cloggrum_items]",
       "has_the_recipe"
     ]
   ]

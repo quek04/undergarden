@@ -100,7 +100,7 @@ public class BruteEntity extends Animal implements NeutralMob {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob entity) {
-        return UGEntityTypes.BRUTE_TYPE.create(level);
+        return UGEntityTypes.BRUTE.get().create(level);
     }
 
     @Override

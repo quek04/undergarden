@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
 import net.minecraft.core.Position;
+import net.minecraft.core.Registry;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
@@ -25,9 +26,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -58,9 +57,6 @@ public class Undergarden {
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
 
-		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
-		forgeBus.addListener(EventPriority.NORMAL, UGStructures::addDimensionalSpacing);
-
 		DeferredRegister<?>[] registers = {
 				UGBiomes.BIOMES,
 				UGBlocks.BLOCKS,
@@ -86,13 +82,13 @@ public class Undergarden {
 
 	public void setup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
+			//this is here because there is no deferred register for trunk placers!
+			Registry.register(Registry.TRUNK_PLACER_TYPES, new ResourceLocation(Undergarden.MODID, "smogstem_trunk_placer"), UGTrunkPlacerTypes.SMOGSTEM_TRUNK_PLACER);
+
 			UGConfiguredFeatures.init();
 			UGPlacedFeatures.init();
 			UGConfiguredCarvers.init();
-			UGStructures.registerStructures();
-			UGConfiguredStructures.init();
 			UGConfiguredCarvers.init();
-			UGProcessorLists.init();
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGBiomes.toDictionary();

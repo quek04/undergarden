@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.biome.Biome;
@@ -57,7 +58,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected boolean carveEllipsoid(CarvingContext pContext, CaveCarverConfiguration pConfig, ChunkAccess pChunk, Function<BlockPos, Biome> pBiomeAccessor, Aquifer pAquifer, double pX, double pY, double pZ, double pHorizontalRadius, double pVerticalRadius, CarvingMask pCarvingMask, WorldCarver.CarveSkipChecker pSkipChecker) {
+    protected boolean carveEllipsoid(CarvingContext pContext, CaveCarverConfiguration pConfig, ChunkAccess pChunk, Function<BlockPos, Holder<Biome>> pBiomeAccessor, Aquifer pAquifer, double pX, double pY, double pZ, double pHorizontalRadius, double pVerticalRadius, CarvingMask pCarvingMask, WorldCarver.CarveSkipChecker pSkipChecker) {
         ChunkPos chunkPos = pChunk.getPos();
         double middleX = chunkPos.getMiddleBlockX();
         double middleZ = chunkPos.getMiddleBlockZ();
@@ -111,7 +112,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
     }
 
     @Override
-    protected boolean carveBlock(CarvingContext context, CaveCarverConfiguration config, ChunkAccess chunk, Function<BlockPos, Biome> biomeAccessor, CarvingMask carvingMask, BlockPos.MutableBlockPos pos, BlockPos.MutableBlockPos checkPos, Aquifer aquifer, MutableBoolean reachedSurface) {
+    protected boolean carveBlock(CarvingContext context, CaveCarverConfiguration config, ChunkAccess chunk, Function<BlockPos, Holder<Biome>> biomeAccessor, CarvingMask carvingMask, BlockPos.MutableBlockPos pos, BlockPos.MutableBlockPos checkPos, Aquifer aquifer, MutableBoolean reachedSurface) {
         BlockState chunkState = chunk.getBlockState(pos);
         if (chunkState.is(UGBlocks.DEEPTURF_BLOCK.get()) || chunkState.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get()) || chunkState.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get())) {
             reachedSurface.setTrue();

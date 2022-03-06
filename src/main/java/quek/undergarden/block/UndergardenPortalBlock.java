@@ -236,17 +236,13 @@ public class UndergardenPortalBlock extends Block {
             int i;
             for(i = 0; i < 22; ++i) {
                 BlockPos blockpos = pos.relative(directionIn, i);
-//                if (!this.canConnect(this.level.getBlockState(blockpos)) || !(this.level.getBlockState(blockpos.below()).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-//                    break;
-//                }
-                if(!this.canConnect(this.level.getBlockState(blockpos)) || !(UGTags.Blocks.PORTAL_FRAME_BLOCKS.contains(this.level.getBlockState(blockpos.below()).getBlock()))) {
+                if(!this.canConnect(this.level.getBlockState(blockpos)) || !(this.level.getBlockState(blockpos.below()).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                     break;
                 }
             }
 
             BlockPos framePos = pos.relative(directionIn, i);
-//            return this.level.getBlockState(framePos).getBlock().in(UGTags.Blocks.PORTAL_FRAME_BLOCKS) ? i : 0;
-            return UGTags.Blocks.PORTAL_FRAME_BLOCKS.contains(this.level.getBlockState(framePos).getBlock()) ? i : 0;
+            return this.level.getBlockState(framePos).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS) ? i : 0;
         }
 
         public int getHeight() {
@@ -274,18 +270,12 @@ public class UndergardenPortalBlock extends Block {
 
                     if (i == 0) {
                         BlockPos framePos = blockpos.relative(this.leftDir);
-//                        if (!(this.level.getBlockState(framePos).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-//                            break label56;
-//                        }
-                        if (!(UGTags.Blocks.PORTAL_FRAME_BLOCKS.contains(this.level.getBlockState(framePos).getBlock()))) {
+                        if (!(this.level.getBlockState(framePos).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                             break label56;
                         }
                     } else if (i == this.width - 1) {
                         BlockPos framePos = blockpos.relative(this.rightDir);
-//                        if (!(this.level.getBlockState(framePos).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-//                            break label56;
-//                        }
-                        if (!(UGTags.Blocks.PORTAL_FRAME_BLOCKS.contains(this.level.getBlockState(framePos).getBlock()))) {
+                        if (!(this.level.getBlockState(framePos).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                             break label56;
                         }
                     }
@@ -294,11 +284,7 @@ public class UndergardenPortalBlock extends Block {
 
             for(int j = 0; j < this.width; ++j) {
                 BlockPos framePos = this.bottomLeft.relative(this.rightDir, j).above(this.height);
-//                if (!(this.level.getBlockState(framePos).getBlock().is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-//                    this.height = 0;
-//                    break;
-//                }
-                if (!(UGTags.Blocks.PORTAL_FRAME_BLOCKS.contains(this.level.getBlockState(framePos).getBlock()))) {
+                if (!(this.level.getBlockState(framePos).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
                     this.height = 0;
                     break;
                 }

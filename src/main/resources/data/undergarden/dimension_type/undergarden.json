@@ -11,7 +11,7 @@
   "fixed_time": 18000,
   "ambient_light": 0.1,
   "logical_height": 256,
-  "infiniburn": "minecraft:infiniburn_overworld",
+  "infiniburn": "#minecraft:infiniburn_overworld",
   "effects": "undergarden:undergarden",
   "min_y": 0,
   "height": 256

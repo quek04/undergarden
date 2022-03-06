@@ -48,7 +48,11 @@
       "undergarden:ambient/additions/abyss_5",
       "undergarden:ambient/additions/abyss_6",
       "undergarden:ambient/additions/abyss_7",
-      "undergarden:ambient/additions/abyss_8"
+      "undergarden:ambient/additions/abyss_8",
+      "undergarden:ambient/additions/abyss_9",
+      "undergarden:ambient/additions/abyss_10",
+      "undergarden:ambient/additions/abyss_11",
+      "undergarden:ambient/additions/abyss_12"
     ]
   },
   "ambient.bog_addition": {
@@ -61,7 +65,8 @@
       "undergarden:ambient/additions/bog_6",
       "undergarden:ambient/additions/bog_7",
       "undergarden:ambient/additions/bog_8",
-      "undergarden:ambient/additions/bog_9"
+      "undergarden:ambient/additions/bog_9",
+      "undergarden:ambient/additions/bog_10"
     ]
   },
   "ambient.fields_addition": {
@@ -71,16 +76,70 @@
       "undergarden:ambient/additions/fields_3",
       "undergarden:ambient/additions/fields_4",
       "undergarden:ambient/additions/fields_5",
-      "undergarden:ambient/additions/fields_6"
+      "undergarden:ambient/additions/fields_6",
+      "undergarden:ambient/additions/fields_7",
+      "undergarden:ambient/additions/fields_8",
+      "undergarden:ambient/additions/fields_9",
+      "undergarden:ambient/additions/fields_10",
+      "undergarden:ambient/additions/fields_11",
+      "undergarden:ambient/additions/fields_12",
+      "undergarden:ambient/additions/fields_13",
+      "undergarden:ambient/additions/fields_14",
+      "undergarden:ambient/additions/fields_15",
+      "undergarden:ambient/additions/fields_16",
+      "undergarden:ambient/additions/fields_17",
+      "undergarden:ambient/additions/fields_18"
     ]
   },
-  "ambient.forest_addition": {
+  "ambient.smogstem_forest_addition": {
     "sounds": [
       "undergarden:ambient/additions/forest_1",
       "undergarden:ambient/additions/forest_2",
       "undergarden:ambient/additions/forest_3",
       "undergarden:ambient/additions/forest_4",
-      "undergarden:ambient/additions/forest_5"
+      "undergarden:ambient/additions/forest_5",
+      "undergarden:ambient/additions/forest_6",
+      "undergarden:ambient/additions/forest_7",
+      "undergarden:ambient/additions/forest_8",
+      "undergarden:ambient/additions/smogstem_1",
+      "undergarden:ambient/additions/smogstem_2",
+      "undergarden:ambient/additions/smogstem_3",
+      "undergarden:ambient/additions/smogstem_4"
+    ]
+  },
+  "ambient.wigglewood_forest_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/forest_1",
+      "undergarden:ambient/additions/forest_2",
+      "undergarden:ambient/additions/forest_3",
+      "undergarden:ambient/additions/forest_4",
+      "undergarden:ambient/additions/forest_5",
+      "undergarden:ambient/additions/forest_6",
+      "undergarden:ambient/additions/forest_7",
+      "undergarden:ambient/additions/forest_8",
+      "undergarden:ambient/additions/wigglewood_1",
+      "undergarden:ambient/additions/wigglewood_2",
+      "undergarden:ambient/additions/wigglewood_3",
+      "undergarden:ambient/additions/wigglewood_4",
+      "undergarden:ambient/additions/wigglewood_5"
+    ]
+  },
+  "ambient.gronglegrowth_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/forest_1",
+      "undergarden:ambient/additions/forest_2",
+      "undergarden:ambient/additions/forest_3",
+      "undergarden:ambient/additions/forest_4",
+      "undergarden:ambient/additions/forest_5",
+      "undergarden:ambient/additions/forest_6",
+      "undergarden:ambient/additions/forest_7",
+      "undergarden:ambient/additions/forest_8",
+      "undergarden:ambient/additions/grongle_1",
+      "undergarden:ambient/additions/grongle_2",
+      "undergarden:ambient/additions/grongle_3",
+      "undergarden:ambient/additions/grongle_4",
+      "undergarden:ambient/additions/grongle_5",
+      "undergarden:ambient/additions/grongle_6"
     ]
   },
   "ambient.frostfields_addition": {
@@ -91,7 +150,17 @@
       "undergarden:ambient/additions/frostfields_4",
       "undergarden:ambient/additions/frostfields_5",
       "undergarden:ambient/additions/frostfields_6",
-      "undergarden:ambient/additions/frostfields_7"
+      "undergarden:ambient/additions/frostfields_7",
+      "undergarden:ambient/additions/frostfields_8",
+      "undergarden:ambient/additions/frostfields_9",
+      "undergarden:ambient/additions/frostfields_10",
+      "undergarden:ambient/additions/frostfields_11",
+      "undergarden:ambient/additions/frostfields_12",
+      "undergarden:ambient/additions/frostfields_13",
+      "undergarden:ambient/additions/frostfields_14",
+      "undergarden:ambient/additions/frostfields_15",
+      "undergarden:ambient/additions/frostfields_16",
+      "undergarden:ambient/additions/frostfields_17"
     ]
   },
   "ambient.spires_addition": {
@@ -133,7 +202,12 @@
       "undergarden:ambient/moods/mood_8",
       "undergarden:ambient/moods/mood_9",
       "undergarden:ambient/moods/mood_10",
-      "undergarden:ambient/moods/mood_11"
+      "undergarden:ambient/moods/mood_11",
+      "undergarden:ambient/moods/mood_12",
+      "undergarden:ambient/moods/mood_13",
+      "undergarden:ambient/moods/mood_13",
+      "undergarden:ambient/moods/mood_14",
+      "undergarden:ambient/moods/mood_15"
     ]
   },
   "ambient.frost_mood": {
@@ -246,6 +320,22 @@
       "undergarden:block/undergarden_portal_travel"
     ]
   },
+  "block.virulent.flow": {
+    "subtitle": "subtitles.block.virulent.flow",
+    "sounds": [
+      "undergarden:liquid/virulent_flowing_1",
+      "undergarden:liquid/virulent_flowing_2"
+    ]
+  },
+  "block.virulent.bubble": {
+    "subtitle": "subtitles.block.virulent.bubble",
+    "sounds": [
+      "undergarden:liquid/virulent_bubble_1",
+      "undergarden:liquid/virulent_bubble_2",
+      "undergarden:liquid/virulent_bubble_3",
+      "undergarden:liquid/virulent_bubble_4"
+    ]
+  },
   "item.blisterbomb": {
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [
@@ -270,6 +360,22 @@
     "sounds": [
       "item/sweet_berries/pick_from_bush1",
       "item/sweet_berries/pick_from_bush2"
+    ]
+  },
+  "item.bucket.fill_virulent": {
+    "subtitle": "subtitles.item.bucket.fill",
+    "sounds": [
+      "undergarden:item/bucket/fill_virulent_mix_1",
+      "undergarden:item/bucket/fill_virulent_mix_2",
+      "undergarden:item/bucket/fill_virulent_mix_3"
+    ]
+  },
+  "item.bucket.empty_virulent": {
+    "subtitle": "subtitles.item.bucket.empty",
+    "sounds": [
+      "undergarden:item/bucket/empty_virulent_mix_1",
+      "undergarden:item/bucket/empty_virulent_mix_2",
+      "undergarden:item/bucket/empty_virulent_mix_3"
     ]
   },
   "entity.dweller_ambient": {

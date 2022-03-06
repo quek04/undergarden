@@ -314,7 +314,7 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                         true,
                         false
                 )
-                .addCriterion("enter_catacombs", LocationTrigger.TriggerInstance.located(LocationPredicate.inFeature(UGStructures.CATACOMBS.get())))
+                .addCriterion("enter_catacombs", LocationTrigger.TriggerInstance.located(LocationPredicate.inFeature(UGStructures.CATACOMBS_KEY)))
                 .save(consumer, "undergarden:undergarden/catacombs");
 
         Advancement kill_guardian = Advancement.Builder.advancement()

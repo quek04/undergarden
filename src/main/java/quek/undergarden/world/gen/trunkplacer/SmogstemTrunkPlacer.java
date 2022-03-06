@@ -33,10 +33,10 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, Random pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
-        BlockGetter blockGetter = (BlockGetter) pLevel;
-        int treeBaseHeight = pConfig.trunkPlacer.getTreeHeight(pRandom);
-        int j = treeBaseHeight / 8 + pRandom.nextInt(2);
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, Random random, int freeTreeHeight, BlockPos pos, TreeConfiguration config) {
+        BlockGetter blockGetter = (BlockGetter) level;
+        int treeBaseHeight = config.trunkPlacer.getTreeHeight(random);
+        int j = treeBaseHeight / 8 + random.nextInt(2);
 
         for (int y = 0; y < treeBaseHeight; ++y) {
             float thiccness = (1.0F - (float) y / (float) treeBaseHeight)*j;
@@ -47,18 +47,16 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
 
                 for (int j1 = -l; j1 <= l; ++j1) {
                     float f2 = (float) Mth.abs(j1) - 0.25F;
-                    if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > thiccness * thiccness)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(pRandom.nextFloat() > 0.75F))) {
-                        BlockState blockstate = blockGetter.getBlockState(pPos.offset(i1, y, j1));
+                    if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > thiccness * thiccness)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(random.nextFloat() > 0.75F))) {
+                        BlockState blockstate = blockGetter.getBlockState(pos.offset(i1, y, j1));
                         if (blockstate.isAir()) {
-                            //placeLog(world, pRandom, pPos.offset(i1, y, j1), posSet, boundingBox, pConfig);
-                            placeLog(pLevel, pBlockSetter, pRandom, pPos.offset(i1, y, j1), pConfig);
+                            placeLog(level, blockSetter, random, pos.offset(i1, y, j1), config);
                         }
 
                         if (y != 0 && l > 1) {
-                            blockstate = blockGetter.getBlockState(pPos.offset(i1, -y, j1));
+                            blockstate = blockGetter.getBlockState(pos.offset(i1, -y, j1));
                             if (blockstate.isAir()) {
-                                //placeLog(world, pRandom, pPos.offset(i1, y, j1), posSet, boundingBox, pConfig);
-                                placeLog(pLevel, pBlockSetter, pRandom, pPos.offset(i1, y, j1), pConfig);
+                                placeLog(level, blockSetter, random, pos.offset(i1, y, j1), config);
                             }
                         }
                     }
@@ -66,6 +64,6 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
             }
         }
 
-        return ImmutableList.of(new FoliagePlacer.FoliageAttachment(pPos.above(treeBaseHeight), 0, false));
+        return ImmutableList.of(new FoliagePlacer.FoliageAttachment(pos.above(treeBaseHeight), 0, false));
     }
 }
