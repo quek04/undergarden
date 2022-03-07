@@ -25,7 +25,7 @@ public class ForgottenModel<T extends ForgottenEntity> extends HumanoidModel<T> 
     }
 
     @Override
-    public void prepareMobModel(T entity, float p_103794_, float p_103795_, float p_103796_) {
+    public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick) {
         this.rightArmPose = HumanoidModel.ArmPose.EMPTY;
         this.leftArmPose = HumanoidModel.ArmPose.EMPTY;
         if (!entity.getMainHandItem().isEmpty()) {
@@ -35,13 +35,13 @@ public class ForgottenModel<T extends ForgottenEntity> extends HumanoidModel<T> 
                 this.leftArmPose = ArmPose.ITEM;
             }
         }
-        super.prepareMobModel(entity, p_103794_, p_103795_, p_103796_);
+        super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
     }
 
     @Override
-    public void translateToHand(HumanoidArm arm, PoseStack poseStack) {
-        float offset = arm == HumanoidArm.RIGHT ? 1.0F : -1.0F;
-        ModelPart modelpart = this.getArm(arm);
+    public void translateToHand(HumanoidArm side, PoseStack poseStack) {
+        float offset = side == HumanoidArm.RIGHT ? 1.0F : -1.0F;
+        ModelPart modelpart = this.getArm(side);
         modelpart.x += offset;
         modelpart.translateAndRotate(poseStack);
         modelpart.x -= offset;
