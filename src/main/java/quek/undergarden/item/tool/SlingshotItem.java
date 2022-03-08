@@ -21,6 +21,7 @@ import quek.undergarden.item.SlingshotAmmoItem;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGTags;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -44,7 +45,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
     @Override
     public Predicate<ItemStack> getAllSupportedProjectiles() {
-        return (stack) -> stack.getItem() == UGItems.DEPTHROCK_PEBBLE.get() || stack.getItem() == UGItems.GOO_BALL.get();
+        return (stack) -> stack.is(UGTags.Items.SLINGSHOT_AMMO);
     }
 
     @Override
