@@ -18,10 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
-import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
@@ -56,7 +53,6 @@ public class SlingshotAmmoEntity extends ThrowableItemProjectile {
         float length = (float) this.getDeltaMovement().length();
         int damage = Mth.ceil(Mth.clamp((double) length * airTime, 0.0D, 2.147483647E9D));
         victim.hurt(new IndirectEntityDamageSource("arrow", this, this.getOwner()), damage);
-        Undergarden.LOGGER.info(damage);
         this.playSound(SoundEvents.STONE_BREAK, 1, 1);
         if (!this.level.isClientSide) {
             this.level.broadcastEntityEvent(this, (byte) 3);
@@ -93,12 +89,10 @@ public class SlingshotAmmoEntity extends ThrowableItemProjectile {
         return UGItems.DEPTHROCK_PEBBLE.get();
     }
 
-    @OnlyIn(Dist.CLIENT)
     private ParticleOptions makeParticle() {
         return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(getDefaultItem()));
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     public void handleEntityEvent(byte id) {
         if (id == 3) {

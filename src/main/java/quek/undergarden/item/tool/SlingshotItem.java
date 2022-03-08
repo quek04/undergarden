@@ -11,13 +11,13 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
-import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
-import quek.undergarden.item.DepthrockPebbleItem;
+import quek.undergarden.item.SlingshotAmmoItem;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
@@ -44,7 +44,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
     @Override
     public Predicate<ItemStack> getAllSupportedProjectiles() {
-        return (stack) -> stack.getItem() == UGItems.DEPTHROCK_PEBBLE.get();
+        return (stack) -> stack.getItem() == UGItems.DEPTHROCK_PEBBLE.get() || stack.getItem() == UGItems.GOO_BALL.get();
     }
 
     @Override
@@ -56,22 +56,22 @@ public class SlingshotItem extends ProjectileWeaponItem {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
         if (entity instanceof Player player) {
             boolean isCreative = player.getAbilities().instabuild;
-            ItemStack itemstack = player.getProjectile(stack);
+            ItemStack projectileStack = player.getProjectile(stack);
 
             int useTime = getUseDuration(stack) - timeLeft;
-            useTime = onArrowLoose(stack, level, player, useTime, !itemstack.isEmpty() || isCreative);
+            useTime = onArrowLoose(stack, level, player, useTime, !projectileStack.isEmpty() || isCreative);
             if (useTime < 0) return;
 
-            if (!itemstack.isEmpty() || isCreative) {
-                if (itemstack.isEmpty()) {
-                    itemstack = new ItemStack(UGItems.DEPTHROCK_PEBBLE.get());
+            if (!projectileStack.isEmpty() || isCreative) {
+                if (projectileStack.isEmpty()) {
+                    projectileStack = new ItemStack(UGItems.DEPTHROCK_PEBBLE.get());
                 }
 
                 float velocity = getProjectileVelocity(useTime);
                 if (!((double) velocity < 0.1D)) {
-                    boolean flag1 = player.getAbilities().instabuild || (itemstack.getItem() instanceof DepthrockPebbleItem);
                     if (!level.isClientSide) {
-                        SlingshotAmmoEntity ammoEntity = new SlingshotAmmoEntity(level, entity);
+                        SlingshotAmmoItem ammoItem = (SlingshotAmmoItem) projectileStack.getItem();
+                        Projectile ammoEntity = ammoItem.createProjectile(level, player);
 
                         ammoEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2, 1.0F);
 
@@ -81,10 +81,10 @@ public class SlingshotItem extends ProjectileWeaponItem {
                     }
 
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-                    if (!flag1 && !player.getAbilities().instabuild) {
-                        itemstack.shrink(1);
-                        if (itemstack.isEmpty()) {
-                            player.getInventory().removeItem(itemstack);
+                    if (!isCreative) {
+                        projectileStack.shrink(1);
+                        if (projectileStack.isEmpty()) {
+                            player.getInventory().removeItem(projectileStack);
                         }
                     }
 

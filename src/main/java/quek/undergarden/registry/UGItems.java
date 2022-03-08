@@ -46,7 +46,7 @@ public class UGItems {
     public static final RegistryObject<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new UGItem(FORGOTTEN));
     public static final RegistryObject<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new UGItem(FORGOTTEN));
 
-    public static final RegistryObject<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", DepthrockPebbleItem::new);
+    public static final RegistryObject<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", SlingshotAmmoItem::new);
     public static final RegistryObject<Item> TWISTYTWIG = ITEMS.register("twistytwig", UGItem::new);
     public static final RegistryObject<Item> DITCHBULB = ITEMS.register("ditchbulb", DitchbulbItem::new);
     public static final RegistryObject<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", UGItem::new);
@@ -88,7 +88,7 @@ public class UGItems {
     public static final RegistryObject<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
     public static final RegistryObject<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
     public static final RegistryObject<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
-    public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", GooBallItem::new);
+    public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", () -> new SlingshotAmmoItem(new Item.Properties().tab(UGItemGroups.GROUP).food(UGFoods.GOO_BALL)));
     public static final RegistryObject<Item> UNDERBEAN_STICK = ITEMS.register("underbean_on_a_stick", () -> new UnderbeanOnAStickItem(new Item.Properties().stacksTo(1).durability(100).tab(UGItemGroups.GROUP)));
 
     public static final RegistryObject<Item> SMOGSTEM_BOAT = ITEMS.register("smogstem_boat", () -> new UGBoatItem(UGBoatEntity.Type.SMOGSTEM, new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)));

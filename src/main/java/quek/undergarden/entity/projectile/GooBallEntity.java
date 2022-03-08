@@ -26,16 +26,16 @@ import quek.undergarden.registry.UGItems;
 
 public class GooBallEntity extends ThrowableItemProjectile {
 
-    public GooBallEntity(EntityType<? extends GooBallEntity> type, Level world) {
-        super(type, world);
+    public GooBallEntity(EntityType<? extends GooBallEntity> type, Level level) {
+        super(type, level);
     }
 
-    public GooBallEntity(Level worldIn, LivingEntity throwerIn) {
-        super(UGEntityTypes.GOO_BALL.get(), throwerIn, worldIn);
+    public GooBallEntity(Level level, LivingEntity shooter) {
+        super(UGEntityTypes.GOO_BALL.get(), shooter, level);
     }
 
-    public GooBallEntity(Level worldIn, double x, double y, double z) {
-        super(UGEntityTypes.GOO_BALL.get(), x, y, z, worldIn);
+    public GooBallEntity(Level level, double x, double y, double z) {
+        super(UGEntityTypes.GOO_BALL.get(), x, y, z, level);
     }
 
     @Override
@@ -43,7 +43,6 @@ public class GooBallEntity extends ThrowableItemProjectile {
         return UGItems.GOO_BALL.get();
     }
 
-    @OnlyIn(Dist.CLIENT)
     private ParticleOptions makeParticle() {
         return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(getDefaultItem()));
     }
@@ -54,7 +53,7 @@ public class GooBallEntity extends ThrowableItemProjectile {
         if (id == 3) {
             ParticleOptions iparticledata = this.makeParticle();
 
-            for(int i = 0; i < 8; ++i) {
+            for (int i = 0; i < 8; ++i) {
                 this.level.addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
@@ -63,15 +62,13 @@ public class GooBallEntity extends ThrowableItemProjectile {
     @Override
     protected void onHit(HitResult result) {
         if (result.getType() == HitResult.Type.ENTITY) {
-            Entity entity = ((EntityHitResult)result).getEntity();
-            
-            if(entity instanceof LivingEntity) {
-                LivingEntity livingEntity = (LivingEntity) entity;
-                if(livingEntity instanceof ScintlingEntity) {
+            Entity entity = ((EntityHitResult) result).getEntity();
+
+            if (entity instanceof LivingEntity livingEntity) {
+                if (livingEntity instanceof ScintlingEntity) {
                     livingEntity.heal(2);
-                }
-                else {
-                    livingEntity.hurt(DamageSource.thrown(this, this.getOwner()), (float)0);
+                } else {
+                    livingEntity.hurt(DamageSource.thrown(this, this.getOwner()), (float) 0);
                     livingEntity.addEffect(new MobEffectInstance(UGEffects.GOOEY.get(), 100, 0, false, true));
                 }
             }
@@ -80,10 +77,9 @@ public class GooBallEntity extends ThrowableItemProjectile {
         }
 
         if (!this.level.isClientSide) {
-            this.level.broadcastEntityEvent(this, (byte)3);
+            this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove(RemovalReason.KILLED);
         }
-
     }
 
     @Override
