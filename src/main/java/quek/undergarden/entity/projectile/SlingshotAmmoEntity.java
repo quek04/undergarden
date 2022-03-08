@@ -5,7 +5,8 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,28 +21,42 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
 public class SlingshotAmmoEntity extends ThrowableItemProjectile {
 
-    public SlingshotAmmoEntity(EntityType<? extends SlingshotAmmoEntity> type, Level worldIn) {
-        super(type, worldIn);
+    private int airTime = 1;
+
+    public SlingshotAmmoEntity(EntityType<? extends SlingshotAmmoEntity> type, Level level) {
+        super(type, level);
     }
 
-    public SlingshotAmmoEntity(Level worldIn, double x, double y, double z) {
-        super(UGEntityTypes.SLINGSHOT_AMMO.get(), x, y, z, worldIn);
+    public SlingshotAmmoEntity(Level level, double x, double y, double z) {
+        super(UGEntityTypes.SLINGSHOT_AMMO.get(), x, y, z, level);
     }
 
-    public SlingshotAmmoEntity(Level worldIn, LivingEntity shooter) {
-        super(UGEntityTypes.SLINGSHOT_AMMO.get(), shooter, worldIn);
+    public SlingshotAmmoEntity(Level level, LivingEntity shooter) {
+        super(UGEntityTypes.SLINGSHOT_AMMO.get(), shooter, level);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.level.getGameTime() % 5 == 0) {
+            airTime++;
+        }
     }
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
         Entity victim = result.getEntity();
-        victim.hurt(DamageSource.thrown(this, this.getOwner()), 6.0F);
+        float length = (float) this.getDeltaMovement().length();
+        int damage = Mth.ceil(Mth.clamp((double) length * airTime, 0.0D, 2.147483647E9D));
+        victim.hurt(new IndirectEntityDamageSource("arrow", this, this.getOwner()), damage);
+        Undergarden.LOGGER.info(damage);
         this.playSound(SoundEvents.STONE_BREAK, 1, 1);
         if (!this.level.isClientSide) {
             this.level.broadcastEntityEvent(this, (byte) 3);
@@ -54,14 +69,14 @@ public class SlingshotAmmoEntity extends ThrowableItemProjectile {
         super.onHitBlock(result);
         BlockState blockstate = this.level.getBlockState(result.getBlockPos());
         Entity shooter = this.getOwner();
-        if(blockstate.isCollisionShapeFullBlock(this.level, result.getBlockPos())) {
-            if(!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
+        if (blockstate.isCollisionShapeFullBlock(this.level, result.getBlockPos())) {
+            if (!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
                 //don't drop anything
             } else {
                 this.spawnAtLocation(new ItemStack(getDefaultItem()));
             }
             this.playStepSound(result.getBlockPos(), blockstate);
-            if(!this.level.isClientSide) {
+            if (!this.level.isClientSide) {
                 this.level.broadcastEntityEvent(this, (byte) 3);
                 this.remove(RemovalReason.KILLED);
             }
@@ -89,7 +104,7 @@ public class SlingshotAmmoEntity extends ThrowableItemProjectile {
         if (id == 3) {
             ParticleOptions iparticledata = this.makeParticle();
 
-            for(int i = 0; i < 8; ++i) {
+            for (int i = 0; i < 8; ++i) {
                 this.level.addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
