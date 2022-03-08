@@ -19,7 +19,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import quek.undergarden.entity.projectile.SlingshotPebbleEntity;
+import quek.undergarden.entity.projectile.slingshot.SlingshotPebbleEntity;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class SploogieEntity extends CavernEntity implements RangedAttackMob {

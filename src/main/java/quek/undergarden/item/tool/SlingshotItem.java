@@ -74,7 +74,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
                         SlingshotAmmoItem ammoItem = (SlingshotAmmoItem) projectileStack.getItem();
                         Projectile ammoEntity = ammoItem.createProjectile(level, player);
 
-                        ammoEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2, 1.0F);
+                        ammoEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2.0F, 1.0F);
 
                         stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
