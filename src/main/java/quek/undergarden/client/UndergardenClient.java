@@ -101,7 +101,7 @@ public class UndergardenClient {
         //
         event.registerEntityRenderer(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
         //
-        event.registerEntityRenderer(UGEntityTypes.SLINGSHOT_AMMO.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.SLINGSHOT_PEBBLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.GOO_BALL.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);

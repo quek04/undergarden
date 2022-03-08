@@ -91,7 +91,7 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                         true,
                         false
                 )
-                .addCriterion("shoot_slingshot", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().type(DamageSourcePredicate.Builder.damageType().isProjectile(true).direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_AMMO.get())))))
+                .addCriterion("shoot_slingshot", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().type(DamageSourcePredicate.Builder.damageType().isProjectile(true).direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_PEBBLE.get())))))
                 .save(consumer, "undergarden:undergarden/shoot_slingshot");
 
         Advancement underbeans = Advancement.Builder.advancement()

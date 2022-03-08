@@ -22,20 +22,20 @@ import net.minecraftforge.network.NetworkHooks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class SlingshotAmmoEntity extends ThrowableItemProjectile {
+public class SlingshotPebbleEntity extends ThrowableItemProjectile {
 
     private int airTime = 1;
 
-    public SlingshotAmmoEntity(EntityType<? extends SlingshotAmmoEntity> type, Level level) {
+    public SlingshotPebbleEntity(EntityType<? extends SlingshotPebbleEntity> type, Level level) {
         super(type, level);
     }
 
-    public SlingshotAmmoEntity(Level level, double x, double y, double z) {
-        super(UGEntityTypes.SLINGSHOT_AMMO.get(), x, y, z, level);
+    public SlingshotPebbleEntity(Level level, double x, double y, double z) {
+        super(UGEntityTypes.SLINGSHOT_PEBBLE.get(), x, y, z, level);
     }
 
-    public SlingshotAmmoEntity(Level level, LivingEntity shooter) {
-        super(UGEntityTypes.SLINGSHOT_AMMO.get(), shooter, level);
+    public SlingshotPebbleEntity(Level level, LivingEntity shooter) {
+        super(UGEntityTypes.SLINGSHOT_PEBBLE.get(), shooter, level);
     }
 
     @Override

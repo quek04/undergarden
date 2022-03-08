@@ -37,7 +37,7 @@ public class UGEntityTypes {
 
     //misc
     public static final RegistryObject<EntityType<UGBoatEntity>> BOAT = ENTITIES.register("boat", () -> EntityType.Builder.<UGBoatEntity>of(UGBoatEntity::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("boat"));
-    public static final RegistryObject<EntityType<SlingshotAmmoEntity>> SLINGSHOT_AMMO = ENTITIES.register("slingshot_ammo", () -> EntityType.Builder.<SlingshotAmmoEntity>of(SlingshotAmmoEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("slingshot_ammo"));
+    public static final RegistryObject<EntityType<SlingshotPebbleEntity>> SLINGSHOT_PEBBLE = ENTITIES.register("slingshot_pebble", () -> EntityType.Builder.<SlingshotPebbleEntity>of(SlingshotPebbleEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("slingshot_pebble"));
     public static final RegistryObject<EntityType<GooBallEntity>> GOO_BALL = ENTITIES.register("goo_ball", () -> EntityType.Builder.<GooBallEntity>of(GooBallEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("goo_ball"));
     public static final RegistryObject<EntityType<RottenBlisterberryEntity>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> EntityType.Builder.<RottenBlisterberryEntity>of(RottenBlisterberryEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("rotten_blisterberry"));
     public static final RegistryObject<EntityType<BlisterbombEntity>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> EntityType.Builder.<BlisterbombEntity>of(BlisterbombEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).build("blisterbomb"));

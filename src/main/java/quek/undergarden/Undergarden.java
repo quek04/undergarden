@@ -41,7 +41,7 @@ import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.entity.projectile.GooBallEntity;
 import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
-import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
+import quek.undergarden.entity.projectile.SlingshotPebbleEntity;
 import quek.undergarden.registry.*;
 
 @Mod(Undergarden.MODID)
@@ -126,7 +126,7 @@ public class Undergarden {
 
 			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new SlingshotAmmoEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+					return Util.make(new SlingshotPebbleEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
