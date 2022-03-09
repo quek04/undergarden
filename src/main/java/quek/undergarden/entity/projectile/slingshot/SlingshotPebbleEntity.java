@@ -49,7 +49,7 @@ public class SlingshotPebbleEntity extends SlingshotProjectile {
         float length = (float) this.getDeltaMovement().length();
         int damage = Mth.ceil(Mth.clamp((double) length * airTime, 0.0D, 2.147483647E9D));
         victim.hurt(new IndirectEntityDamageSource("arrow", this, this.getOwner()), damage);
-        this.playSound(SoundEvents.STONE_BREAK, 1, 1);
+        this.playSound(SoundEvents.STONE_BREAK, 1.0F, 1.0F);
         if (!this.level.isClientSide) {
             this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove(RemovalReason.KILLED);

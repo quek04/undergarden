@@ -77,7 +77,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
                         stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
                         if (EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.RICOCHET.get(), stack) > 0) {
-                            slingshotProjectile.setRicochet(true);
+                            slingshotProjectile.setRicochetTimes(EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.RICOCHET.get(), stack) + 1);
                         }
 
                         level.addFreshEntity(slingshotProjectile);
