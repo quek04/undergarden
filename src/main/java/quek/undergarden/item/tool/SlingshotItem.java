@@ -69,15 +69,16 @@ public class SlingshotItem extends ProjectileWeaponItem {
                 float velocity = getProjectileVelocity(useTime);
                 if (!((double) velocity < 0.1D)) {
                     if (!level.isClientSide) {
-                        SlingshotAmmoItem ammoItem = (SlingshotAmmoItem) projectileStack.getItem();
+                        SlingshotAmmoItem ammoItem = (SlingshotAmmoItem)(projectileStack.getItem() instanceof SlingshotAmmoItem ? projectileStack.getItem() : UGItems.DEPTHROCK_PEBBLE.get());
                         SlingshotProjectile slingshotProjectile = ammoItem.createProjectile(level, player);
 
                         slingshotProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2.0F, 1.0F);
 
                         stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
-                        if (EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.RICOCHET.get(), stack) > 0) {
-                            slingshotProjectile.setRicochetTimes(EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.RICOCHET.get(), stack) + 1);
+                        int ricochet = EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.RICOCHET.get(), stack);
+                        if (ricochet > 0) {
+                            slingshotProjectile.setRicochetTimes(ricochet + 1);
                         }
 
                         level.addFreshEntity(slingshotProjectile);
