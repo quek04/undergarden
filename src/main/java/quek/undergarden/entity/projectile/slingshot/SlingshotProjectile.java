@@ -13,7 +13,7 @@ import net.minecraft.world.phys.EntityHitResult;
 
 public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 
-    private boolean ricochet;
+    protected boolean ricochet;
 
     public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, Level level) {
         super(type, level);
@@ -34,11 +34,10 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
-
         super.onHitBlock(result);
         BlockState blockstate = this.level.getBlockState(result.getBlockPos());
         Entity shooter = this.getOwner();
-        if (blockstate.isCollisionShapeFullBlock(this.level, result.getBlockPos())) {
+        if (!blockstate.getCollisionShape(this.level, result.getBlockPos()).isEmpty()) {
             if (!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
                 //don't drop anything
             } else {

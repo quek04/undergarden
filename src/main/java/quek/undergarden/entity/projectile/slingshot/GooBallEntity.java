@@ -14,7 +14,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
@@ -59,21 +58,18 @@ public class GooBallEntity extends SlingshotProjectile {
     }
 
     @Override
-    protected void onHit(HitResult result) {
-        if (result.getType() == HitResult.Type.ENTITY) {
-            Entity entity = ((EntityHitResult) result).getEntity();
-
-            if (entity instanceof LivingEntity livingEntity) {
-                if (livingEntity instanceof ScintlingEntity) {
-                    livingEntity.heal(2);
-                } else {
-                    livingEntity.hurt(DamageSource.thrown(this, this.getOwner()), (float) 0);
-                    livingEntity.addEffect(new MobEffectInstance(UGEffects.GOOEY.get(), 100, 0, false, true));
-                }
+    protected void onHitEntity(EntityHitResult result) {
+        super.onHitEntity(result);
+        Entity entity = result.getEntity();
+        if (entity instanceof LivingEntity livingEntity) {
+            if (livingEntity instanceof ScintlingEntity) {
+                livingEntity.heal(2);
+            } else {
+                livingEntity.hurt(DamageSource.thrown(this, this.getOwner()), (float) 0);
+                livingEntity.addEffect(new MobEffectInstance(UGEffects.GOOEY.get(), 100, 0, false, true));
             }
-
-            this.playSound(SoundEvents.SLIME_BLOCK_BREAK, 1, 1);
         }
+        this.playSound(SoundEvents.SLIME_BLOCK_BREAK, 1, 1);
 
         if (!this.level.isClientSide) {
             this.level.broadcastEntityEvent(this, (byte) 3);
