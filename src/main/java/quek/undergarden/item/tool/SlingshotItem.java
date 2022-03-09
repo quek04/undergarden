@@ -11,17 +11,15 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
 import quek.undergarden.item.SlingshotAmmoItem;
-import quek.undergarden.registry.UGItemGroups;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
-import quek.undergarden.registry.UGTags;
+import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -72,13 +70,17 @@ public class SlingshotItem extends ProjectileWeaponItem {
                 if (!((double) velocity < 0.1D)) {
                     if (!level.isClientSide) {
                         SlingshotAmmoItem ammoItem = (SlingshotAmmoItem) projectileStack.getItem();
-                        Projectile ammoEntity = ammoItem.createProjectile(level, player);
+                        SlingshotProjectile slingshotProjectile = ammoItem.createProjectile(level, player);
 
-                        ammoEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2.0F, 1.0F);
+                        slingshotProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2.0F, 1.0F);
 
                         stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
-                        level.addFreshEntity(ammoEntity);
+                        if (EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.RICOCHET.get(), stack) > 0) {
+                            slingshotProjectile.setRicochet(true);
+                        }
+
+                        level.addFreshEntity(slingshotProjectile);
                     }
 
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);

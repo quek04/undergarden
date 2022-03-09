@@ -10,7 +10,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -24,7 +23,7 @@ import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class GooBallEntity extends ThrowableItemProjectile {
+public class GooBallEntity extends SlingshotProjectile {
 
     public GooBallEntity(EntityType<? extends GooBallEntity> type, Level level) {
         super(type, level);

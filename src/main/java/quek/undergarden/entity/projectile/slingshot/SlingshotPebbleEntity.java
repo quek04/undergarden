@@ -10,19 +10,15 @@ import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class SlingshotPebbleEntity extends ThrowableItemProjectile {
+public class SlingshotPebbleEntity extends SlingshotProjectile {
 
     private int airTime = 1;
 
@@ -57,25 +53,6 @@ public class SlingshotPebbleEntity extends ThrowableItemProjectile {
         if (!this.level.isClientSide) {
             this.level.broadcastEntityEvent(this, (byte) 3);
             this.remove(RemovalReason.KILLED);
-        }
-    }
-
-    @Override
-    protected void onHitBlock(BlockHitResult result) {
-        super.onHitBlock(result);
-        BlockState blockstate = this.level.getBlockState(result.getBlockPos());
-        Entity shooter = this.getOwner();
-        if (blockstate.isCollisionShapeFullBlock(this.level, result.getBlockPos())) {
-            if (!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
-                //don't drop anything
-            } else {
-                this.spawnAtLocation(new ItemStack(getDefaultItem()));
-            }
-            this.playStepSound(result.getBlockPos(), blockstate);
-            if (!this.level.isClientSide) {
-                this.level.broadcastEntityEvent(this, (byte) 3);
-                this.remove(RemovalReason.KILLED);
-            }
         }
     }
 

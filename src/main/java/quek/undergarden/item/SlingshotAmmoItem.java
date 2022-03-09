@@ -4,13 +4,13 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.slingshot.GooBallEntity;
 import quek.undergarden.entity.projectile.slingshot.SlingshotPebbleEntity;
+import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGItems;
 
@@ -29,7 +29,7 @@ public class SlingshotAmmoItem extends Item {
         super(properties);
     }
 
-    public Projectile createProjectile(Level level, LivingEntity shooter) {
+    public SlingshotProjectile createProjectile(Level level, LivingEntity shooter) {
         if (this == UGItems.GOO_BALL.get()) {
             return new GooBallEntity(level, shooter);
         } else {

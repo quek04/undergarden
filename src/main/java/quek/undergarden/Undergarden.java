@@ -72,7 +72,8 @@ public class Undergarden {
 				UGSoundEvents.SOUNDS,
 				UGStructures.STRUCTURES,
 				UGBlockEntities.BLOCK_ENTITIES,
-				UGTreeDecoratorTypes.TREE_DECORATORS
+				UGTreeDecoratorTypes.TREE_DECORATORS,
+				UGEnchantments.ENCHANTMENTS
 		};
 
 		for (DeferredRegister<?> register : registers) {
