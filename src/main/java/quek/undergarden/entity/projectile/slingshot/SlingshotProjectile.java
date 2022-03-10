@@ -46,7 +46,7 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
                 if (this.ricochet) {
                     Vec3 delta = this.getDeltaMovement();
                     Direction direction = result.getDirection();
-                    float velocity = 0.5F;
+                    float velocity = (float) delta.length() / (this.ricochetTimes / 2.0F);
                     if (direction == Direction.UP || direction == Direction.DOWN) {
                         this.shoot(delta.x, delta.reverse().y, delta.z, velocity, 1.0F);
                     } else if (direction == Direction.WEST || direction == Direction.EAST) {
