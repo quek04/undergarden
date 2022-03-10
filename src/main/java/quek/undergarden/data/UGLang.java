@@ -425,6 +425,9 @@ public class UGLang extends LanguageProvider {
         addAdvTitle("shoot_slingshot", "Flinging Rocks");
         addAdvDesc("shoot_slingshot", "Shoot a pebble at something.");
 
+        addAdvTitle("shoot_slingshot_goo", "Flying Inconvenience");
+        addAdvDesc("shoot_slingshot_goo", "Shoot a Scintling Goo Ball at something to annoy it.");
+
         addAdvTitle("slingshot_20_damage", "Sniping's a Good Job");
         addAdvDesc("slingshot_20_damage", "Deal 20 or more damage to something with a single pebble...!?");
 

@@ -94,6 +94,21 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .addCriterion("shoot_slingshot", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().type(DamageSourcePredicate.Builder.damageType().direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_PEBBLE.get())))))
                 .save(consumer, "undergarden:undergarden/shoot_slingshot");
 
+        Advancement shoot_slingshot_goo = Advancement.Builder.advancement()
+                .parent(slingshot)
+                .display(
+                        UGItems.GOO_BALL.get(),
+                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_goo.title"),
+                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_goo.desc"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("shoot_slingshot_goo", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().type(DamageSourcePredicate.Builder.damageType().direct(EntityPredicate.Builder.entity().of(UGEntityTypes.GOO_BALL.get())))))
+                .save(consumer, "undergarden:undergarden/shoot_slingshot_goo");
+
         Advancement slingshot_20_damage = Advancement.Builder.advancement()
                 .parent(shoot_slingshot)
                 .display(
@@ -106,7 +121,7 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                         true,
                         false
                 )
-                .addCriterion("100_damage", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().dealtDamage(MinMaxBounds.Doubles.atLeast(20.0D)).type(DamageSourcePredicate.Builder.damageType().direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_PEBBLE.get())))))
+                .addCriterion("20_damage", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().dealtDamage(MinMaxBounds.Doubles.atLeast(20.0D)).type(DamageSourcePredicate.Builder.damageType().direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_PEBBLE.get())))))
                 .save(consumer, "undergarden:undergarden/slingshot_20_damage");
 
         Advancement underbeans = Advancement.Builder.advancement()
