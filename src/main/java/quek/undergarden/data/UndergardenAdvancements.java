@@ -91,8 +91,23 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                         true,
                         false
                 )
-                .addCriterion("shoot_slingshot", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().type(DamageSourcePredicate.Builder.damageType().isProjectile(true).direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_PEBBLE.get())))))
+                .addCriterion("shoot_slingshot", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().type(DamageSourcePredicate.Builder.damageType().direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_PEBBLE.get())))))
                 .save(consumer, "undergarden:undergarden/shoot_slingshot");
+
+        Advancement slingshot_20_damage = Advancement.Builder.advancement()
+                .parent(shoot_slingshot)
+                .display(
+                        UGItems.DEPTHROCK_PEBBLE.get(),
+                        new TranslatableComponent("advancement.undergarden.slingshot_20_damage.title"),
+                        new TranslatableComponent("advancement.undergarden.slingshot_20_damage.desc"),
+                        null,
+                        FrameType.CHALLENGE,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("100_damage", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().dealtDamage(MinMaxBounds.Doubles.atLeast(20.0D)).type(DamageSourcePredicate.Builder.damageType().direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_PEBBLE.get())))))
+                .save(consumer, "undergarden:undergarden/slingshot_20_damage");
 
         Advancement underbeans = Advancement.Builder.advancement()
                 .parent(enter_undergarden)
