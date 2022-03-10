@@ -16,17 +16,22 @@ public class RicochetEnchantment extends Enchantment {
     }
 
     @Override
+    public boolean isTreasureOnly() {
+        return true;
+    }
+
+    @Override
     public boolean isTradeable() {
+        return false;
+    }
+
+    @Override
+    public boolean isDiscoverable() {
         return false;
     }
 
     @Override
     public boolean isAllowedOnBooks() {
         return false;
-    }
-
-    @Override
-    public boolean isTreasureOnly() {
-        return true;
     }
 }
