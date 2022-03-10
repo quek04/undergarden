@@ -395,6 +395,8 @@ public class UGLang extends LanguageProvider {
         addEffect(UGEffects.FEATHERWEIGHT, "Featherweight");
         addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
 
+        addEnchantment(UGEnchantments.RICOCHET, "Ricochet");
+
         //JEED compat
         add("effect.undergarden.gooey.description", "Scintling Goo will constantly be placed under victim's feet.");
         add("effect.undergarden.brittleness.description", "The higher the victim's armor value is, the more damage they will take. Amount of damage received scales with potion level.");
@@ -485,7 +487,6 @@ public class UGLang extends LanguageProvider {
 
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
-        add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
         add("tooltip.forgotten_sword", "Deals 1.5x damage to non-boss Undergarden mobs.");
         add("tooltip.pebble", "Can be used as Slingshot ammo.");

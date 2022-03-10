@@ -238,6 +238,7 @@
   "effect.undergarden.gooey.description": "Scintling Goo will constantly be placed under victim's feet.",
   "effect.undergarden.virulent_resistance": "Virulent Resistance",
   "effect.undergarden.virulent_resistance.description": "Grants immunity to Virulent Mix's poison. Will not cure already active poison.",
+  "enchantment.undergarden.ricochet": "Ricochet",
   "entity.undergarden.boat": "Undergarden Boat",
   "entity.undergarden.brute": "Brute",
   "entity.undergarden.dweller": "Dweller",
@@ -454,6 +455,5 @@
   "tooltip.forgotten_tool": "Mines Undergarden blocks 1.5x as fast.",
   "tooltip.froststeel_sword": "Slows targets.",
   "tooltip.pebble": "Can be used as Slingshot ammo.",
-  "tooltip.slingshot": "Uses Depthrock Pebbles as ammo.",
   "tooltip.utheric_sword": "Deals 1.5x damage to Rotspawn."
 }
