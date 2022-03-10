@@ -1,4 +1,4 @@
-package quek.undergarden.enchantment;
+package quek.undergarden.item.enchantment;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
