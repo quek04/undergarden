@@ -1,5 +1,7 @@
 package quek.undergarden.entity.projectile.slingshot;
 
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -32,6 +34,8 @@ public class RottenBlisterberryEntity extends SlingshotProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
+        Entity victim = result.getEntity();
+        victim.hurt(new IndirectEntityDamageSource("arrow", this, this.getOwner()), 0.0F);
         if (!this.level.isClientSide) {
             this.level.explode(this, this.getX(), this.getY(), this.getZ(), 1.5F, Explosion.BlockInteraction.NONE);
             this.discard();

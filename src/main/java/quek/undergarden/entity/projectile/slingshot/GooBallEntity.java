@@ -4,7 +4,7 @@ import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -63,7 +63,7 @@ public class GooBallEntity extends SlingshotProjectile {
             if (livingEntity instanceof ScintlingEntity) {
                 livingEntity.heal(2);
             } else {
-                livingEntity.hurt(DamageSource.thrown(this, this.getOwner()), (float) 0);
+                livingEntity.hurt(new IndirectEntityDamageSource("arrow", this, this.getOwner()), 0.0F);
                 livingEntity.addEffect(new MobEffectInstance(UGEffects.GOOEY.get(), 100, 0, false, true));
             }
         }
