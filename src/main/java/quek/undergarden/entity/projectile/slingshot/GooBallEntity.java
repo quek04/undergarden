@@ -3,7 +3,6 @@ package quek.undergarden.entity.projectile.slingshot;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,7 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.network.NetworkHooks;
 import quek.undergarden.entity.animal.ScintlingEntity;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGEntityTypes;
@@ -73,12 +71,7 @@ public class GooBallEntity extends SlingshotProjectile {
 
         if (!this.level.isClientSide) {
             this.level.broadcastEntityEvent(this, (byte) 3);
-            this.remove(RemovalReason.KILLED);
+            this.discard();
         }
-    }
-
-    @Override
-    public Packet<?> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

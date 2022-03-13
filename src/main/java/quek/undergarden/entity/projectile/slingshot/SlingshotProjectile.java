@@ -1,6 +1,7 @@
 package quek.undergarden.entity.projectile.slingshot;
 
 import net.minecraft.core.Direction;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -11,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.NetworkHooks;
 
 public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 
@@ -56,7 +58,7 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
                     }
                     this.ricochetTimes--;
                     if (this.ricochetTimes == 0) {
-                        this.remove(RemovalReason.KILLED);
+                        this.discard();
                         if (!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
                             //don't drop anything
                         } else {
@@ -64,7 +66,7 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
                         }
                     }
                 } else {
-                    this.remove(RemovalReason.KILLED);
+                    this.discard();
                     if (!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
                         //don't drop anything
                     } else {
@@ -78,5 +80,10 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
     public void setRicochetTimes(int times) {
         this.ricochet = true;
         this.ricochetTimes = times;
+    }
+
+    @Override
+    public Packet<?> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

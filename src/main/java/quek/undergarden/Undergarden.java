@@ -39,8 +39,8 @@ import org.apache.logging.log4j.Logger;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
-import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
 import quek.undergarden.entity.projectile.slingshot.GooBallEntity;
+import quek.undergarden.entity.projectile.slingshot.RottenBlisterberryEntity;
 import quek.undergarden.entity.projectile.slingshot.SlingshotPebbleEntity;
 import quek.undergarden.registry.*;
 

@@ -34,7 +34,7 @@ public class UGItemTags extends ItemTagsProvider {
         copy(UGTags.Blocks.SMOGSTEM_LOGS, UGTags.Items.SMOGSTEM_LOGS);
         copy(UGTags.Blocks.WIGGLEWOOD_LOGS, UGTags.Items.WIGGLEWOOD_LOGS);
         copy(UGTags.Blocks.GRONGLE_LOGS, UGTags.Items.GRONGLE_LOGS);
-        tag(UGTags.Items.SLINGSHOT_AMMO).add(UGItems.DEPTHROCK_PEBBLE.get(), UGItems.GOO_BALL.get());
+        tag(UGTags.Items.SLINGSHOT_AMMO).add(UGItems.DEPTHROCK_PEBBLE.get(), UGItems.GOO_BALL.get(), UGItems.ROTTEN_BLISTERBERRY.get());
         //undergarden forge
         tag(UGTags.Items.INGOTS_CLOGGRUM).add(UGItems.CLOGGRUM_INGOT.get());
         tag(UGTags.Items.INGOTS_FROSTSTEEL).add(UGItems.FROSTSTEEL_INGOT.get());

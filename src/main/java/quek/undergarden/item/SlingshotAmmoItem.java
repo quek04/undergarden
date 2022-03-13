@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.slingshot.GooBallEntity;
+import quek.undergarden.entity.projectile.slingshot.RottenBlisterberryEntity;
 import quek.undergarden.entity.projectile.slingshot.SlingshotPebbleEntity;
 import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
 import quek.undergarden.registry.UGItemGroups;
@@ -32,9 +33,11 @@ public class SlingshotAmmoItem extends Item {
     public SlingshotProjectile createProjectile(Level level, LivingEntity shooter) {
         if (this == UGItems.GOO_BALL.get()) {
             return new GooBallEntity(level, shooter);
-        } else {
-            return new SlingshotPebbleEntity(level, shooter);
         }
+        if (this == UGItems.ROTTEN_BLISTERBERRY.get()) {
+            return new RottenBlisterberryEntity(level, shooter);
+        }
+        return new SlingshotPebbleEntity(level, shooter);
     }
 
     @Override
