@@ -14,7 +14,7 @@ public class SmogVentBlockEntity extends BlockEntity {
     }
 
     public static <B extends BlockEntity>void tick(Level level, BlockPos pos, BlockState state, B blockEntity) {
-        if(level.isClientSide()) {
+        if (level.isClientSide) {
             double x = (double)pos.getX() + 0.5D;
             double y = (double)pos.getY() + 1D;
             double z = (double)pos.getZ() + 0.5D;

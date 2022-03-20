@@ -24,6 +24,7 @@ public class GooBallEntity extends SlingshotProjectile {
 
     public GooBallEntity(EntityType<? extends GooBallEntity> type, Level level) {
         super(type, level);
+        this.setDropItem(true);
     }
 
     public GooBallEntity(Level level, LivingEntity shooter) {

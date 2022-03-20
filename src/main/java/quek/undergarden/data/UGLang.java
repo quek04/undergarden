@@ -232,6 +232,8 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
         addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
 
+        addBlock(UGBlocks.GRONGLET, "Gronglet");
+
         add("fluid.undergarden.virulent_mix_source", "Virulent Mix");
 
         addItem(UGItems.MAMMOTH_DISC, "Music Disc");

@@ -16,6 +16,7 @@ public class RottenBlisterberryEntity extends SlingshotProjectile {
 
     public RottenBlisterberryEntity(EntityType<? extends RottenBlisterberryEntity> type, Level level) {
         super(type, level);
+        this.setDropItem(false);
     }
 
     public RottenBlisterberryEntity(Level level, LivingEntity shooter) {

@@ -19,7 +19,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import quek.undergarden.entity.projectile.slingshot.SlingshotPebbleEntity;
+import quek.undergarden.entity.projectile.slingshot.DepthrockPebbleEntity;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class SploogieEntity extends CavernEntity implements RangedAttackMob {
@@ -61,7 +61,7 @@ public class SploogieEntity extends CavernEntity implements RangedAttackMob {
 
     @Override
     public void performRangedAttack(LivingEntity target, float distanceFactor) {
-        SlingshotPebbleEntity pebble = new SlingshotPebbleEntity(this.level, this);
+        DepthrockPebbleEntity pebble = new DepthrockPebbleEntity(this.level, this);
         double xDistance = target.getX() - this.getX();
         double yDistance = target.getY(0.3333333333333333D) - pebble.getY();
         double zDistance = target.getZ() - this.getZ();

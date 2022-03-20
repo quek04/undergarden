@@ -1,4 +1,4 @@
-package quek.undergarden.item.tool;
+package quek.undergarden.item.tool.slingshot;
 
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -18,7 +18,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
-import quek.undergarden.item.SlingshotAmmoItem;
 import quek.undergarden.registry.*;
 
 import java.util.function.Predicate;
@@ -62,7 +61,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
                 float velocity = getProjectileVelocity(useTime);
                 if (!((double) velocity < 0.1D)) {
                     if (!level.isClientSide) {
-                        SlingshotAmmoItem ammoItem = (SlingshotAmmoItem)(projectileStack.getItem() instanceof SlingshotAmmoItem ? projectileStack.getItem() : UGItems.DEPTHROCK_PEBBLE.get());
+                        SlingshotAmmo ammoItem = (SlingshotAmmo) (projectileStack.getItem() instanceof SlingshotAmmo ? projectileStack.getItem() : UGItems.DEPTHROCK_PEBBLE.get());
                         SlingshotProjectile slingshotProjectile = ammoItem.createProjectile(level, player);
 
                         slingshotProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2.0F, 1.0F);

@@ -19,6 +19,8 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
     protected boolean ricochet;
     protected int ricochetTimes = 0;
 
+    private boolean dropItem;
+
     public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, Level level) {
         super(type, level);
     }
@@ -61,7 +63,7 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
                         this.discard();
                         if (!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
                             //don't drop anything
-                        } else {
+                        } else if (this.dropItem) {
                             this.spawnAtLocation(new ItemStack(getDefaultItem()));
                         }
                     }
@@ -69,7 +71,7 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
                     this.discard();
                     if (!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
                         //don't drop anything
-                    } else {
+                    } else if (this.dropItem) {
                         this.spawnAtLocation(new ItemStack(getDefaultItem()));
                     }
                 }
@@ -80,6 +82,10 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
     public void setRicochetTimes(int times) {
         this.ricochet = true;
         this.ricochetTimes = times;
+    }
+
+    protected void setDropItem(boolean dropItem) {
+        this.dropItem = dropItem;
     }
 
     @Override

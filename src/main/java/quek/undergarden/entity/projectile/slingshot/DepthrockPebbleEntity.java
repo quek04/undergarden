@@ -16,20 +16,21 @@ import net.minecraft.world.phys.EntityHitResult;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class SlingshotPebbleEntity extends SlingshotProjectile {
+public class DepthrockPebbleEntity extends SlingshotProjectile {
 
     private int airTime = 1;
 
-    public SlingshotPebbleEntity(EntityType<? extends SlingshotPebbleEntity> type, Level level) {
+    public DepthrockPebbleEntity(EntityType<? extends DepthrockPebbleEntity> type, Level level) {
         super(type, level);
     }
 
-    public SlingshotPebbleEntity(Level level, double x, double y, double z) {
-        super(UGEntityTypes.SLINGSHOT_PEBBLE.get(), x, y, z, level);
+    public DepthrockPebbleEntity(Level level, double x, double y, double z) {
+        super(UGEntityTypes.DEPTHROCK_PEBBLE.get(), x, y, z, level);
     }
 
-    public SlingshotPebbleEntity(Level level, LivingEntity shooter) {
-        super(UGEntityTypes.SLINGSHOT_PEBBLE.get(), shooter, level);
+    public DepthrockPebbleEntity(Level level, LivingEntity shooter) {
+        super(UGEntityTypes.DEPTHROCK_PEBBLE.get(), shooter, level);
+        this.setDropItem(true);
     }
 
     @Override

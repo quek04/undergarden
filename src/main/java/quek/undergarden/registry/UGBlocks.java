@@ -24,6 +24,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.item.CarvedGloomgourdItem;
+import quek.undergarden.item.tool.slingshot.GrongletItem;
 import quek.undergarden.world.gen.tree.GrongleTree;
 import quek.undergarden.world.gen.tree.SmogstemTree;
 import quek.undergarden.world.gen.tree.WigglewoodTree;
@@ -241,6 +242,8 @@ public class UGBlocks {
     public static final RegistryObject<StandingSignBlock> GRONGLE_SIGN = register("grongle_sign", () -> new UGStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), GRONGLE_WOODTYPE));
     public static final RegistryObject<WallSignBlock> GRONGLE_WALL_SIGN = BLOCKS.register("grongle_wall_sign", () -> new UGWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), GRONGLE_WOODTYPE));
 
+    public static final RegistryObject<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of(Material.DECORATION).lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(SoundType.SLIME_BLOCK)));
+
     //flower pots
     public static final RegistryObject<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = BLOCKS.register("potted_smogstem_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_WIGGLEWOOD_SAPLING = BLOCKS.register("potted_wigglewood_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, WIGGLEWOOD_SAPLING, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
@@ -278,6 +281,19 @@ public class UGBlocks {
             }
             else if(Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
                 return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)) {
+                    @Override
+                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+                        consumer.accept(new IItemRenderProperties() {
+                            @Override
+                            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                                return new UndergardenBEWLR();
+                            }
+                        });
+                    }
+                };
+            }
+            else if(Objects.requireNonNull(block.get()) == GRONGLET.get()) {
+                return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
                     @Override
                     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
                         consumer.accept(new IItemRenderProperties() {

@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.item.enchantment.RicochetEnchantment;
-import quek.undergarden.item.tool.SlingshotItem;
+import quek.undergarden.item.tool.slingshot.SlingshotItem;
 
 public class UGEnchantments {
 

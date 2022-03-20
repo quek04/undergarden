@@ -22,7 +22,7 @@
         "damage": {
           "type": {
             "direct_entity": {
-              "type": "undergarden:slingshot_pebble"
+              "type": "undergarden:depthrock_pebble"
             }
           }
         }

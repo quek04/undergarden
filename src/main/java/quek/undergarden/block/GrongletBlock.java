@@ -1,0 +1,86 @@
+package quek.undergarden.block;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DirectionalBlock;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import quek.undergarden.block.entity.GrongletBlockEntity;
+import quek.undergarden.registry.UGBlockEntities;
+
+import javax.annotation.Nullable;
+
+public class GrongletBlock extends DirectionalBlock implements EntityBlock {
+
+    private static final VoxelShape UP_SHAPE = Block.box(0.0F, 0.0F, 0.0F, 16.0F, 4.0F, 16.0F);
+    private static final VoxelShape DOWN_SHAPE = Block.box(0.0F, 12.0F, 0.0F, 16.0F, 16.0F, 16.0F);
+    private static final VoxelShape NORTH_SHAPE = Block.box(0.0F, 0.0F, 12.0F, 16.0F, 16.0F, 16.0F);
+    private static final VoxelShape EAST_SHAPE = Block.box(0.0F, 0.0F, 0.0F, 4.0F, 16.0F, 16.0F);
+    private static final VoxelShape SOUTH_SHAPE = Block.box(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 4.0F);
+    private static final VoxelShape WEST_SHAPE = Block.box(12.0F, 0.0F, 0.0F, 16.0F, 16.0F, 16.0F);
+
+    public GrongletBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return switch (state.getValue(FACING)) {
+            default -> UP_SHAPE;
+            case DOWN -> DOWN_SHAPE;
+            case NORTH -> NORTH_SHAPE;
+            case EAST -> EAST_SHAPE;
+            case SOUTH -> SOUTH_SHAPE;
+            case WEST -> WEST_SHAPE;
+        };
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction direction = context.getClickedFace();
+        BlockState state = context.getLevel().getBlockState(context.getClickedPos().relative(direction.getOpposite()));
+        return state.is(this) && state.getValue(FACING) == direction ? this.defaultBlockState().setValue(FACING, direction.getOpposite()) : this.defaultBlockState().setValue(FACING, direction);
+    }
+
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        Direction direction = state.getValue(FACING);
+        return canSupportCenter(level, pos.relative(direction.getOpposite()), state.getValue(GrongletBlock.FACING));
+    }
+
+    @Override
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+        return state.getValue(FACING).getOpposite() == facing && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return UGBlockEntities.GRONGLET.get().create(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
+        return blockEntity == UGBlockEntities.GRONGLET.get() ? GrongletBlockEntity::tick : null;
+    }
+}
