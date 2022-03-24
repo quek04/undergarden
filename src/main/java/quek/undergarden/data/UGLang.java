@@ -516,7 +516,7 @@ public class UGLang extends LanguageProvider {
 
         addSubtitle("item", "slingshot_draw", "Slingshot drawn");
         addSubtitle("item", "slingshot_shoot", "Slingshot fired");
-        addSubtitle("item", "gronglet_shoot", "Gronglet fired");
+        addSubtitle("item", "slingshot.gronglet_shoot", "Gronglet fired");
 
         addSubtitle("item", "pick_blisterberry_bush", "Blisterberry Bush picked");
 
