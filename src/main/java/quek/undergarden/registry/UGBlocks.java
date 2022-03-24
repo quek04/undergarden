@@ -242,7 +242,7 @@ public class UGBlocks {
     public static final RegistryObject<StandingSignBlock> GRONGLE_SIGN = register("grongle_sign", () -> new UGStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), GRONGLE_WOODTYPE));
     public static final RegistryObject<WallSignBlock> GRONGLE_WALL_SIGN = BLOCKS.register("grongle_wall_sign", () -> new UGWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), GRONGLE_WOODTYPE));
 
-    public static final RegistryObject<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of(Material.DECORATION).lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(SoundType.SLIME_BLOCK)));
+    public static final RegistryObject<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of(Material.DECORATION).lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
 
     //flower pots
     public static final RegistryObject<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = BLOCKS.register("potted_smogstem_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));

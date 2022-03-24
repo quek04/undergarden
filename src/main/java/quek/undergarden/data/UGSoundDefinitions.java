@@ -241,6 +241,28 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:liquid/virulent_bubble_4")
         ).subtitle("subtitles.block.virulent.bubble"));
 
+        this.add(UGSoundEvents.GRONGLET_AMBIENT, definition().with(
+                sound("undergarden:block/gronglet/gronglet_ambient_1"),
+                sound("undergarden:block/gronglet/gronglet_ambient_2"),
+                sound("undergarden:block/gronglet/gronglet_ambient_3")
+        ).subtitle("subtitles.block.gronglet.ambient"));
+        this.add(UGSoundEvents.GRONGLET_BREAK, definition().with(
+                sound("undergarden:block/gronglet/gronglet_1"),
+                sound("undergarden:block/gronglet/gronglet_2"),
+                sound("undergarden:block/gronglet/gronglet_3"),
+                sound("undergarden:block/gronglet/gronglet_4"),
+                sound("undergarden:block/gronglet/gronglet_5"),
+                sound("undergarden:block/gronglet/gronglet_6")
+        ).subtitle("subtitles.block.generic.break"));
+        this.add(UGSoundEvents.GRONGLET_PLACE, definition().with(
+                sound("undergarden:block/gronglet/gronglet_1"),
+                sound("undergarden:block/gronglet/gronglet_2"),
+                sound("undergarden:block/gronglet/gronglet_3"),
+                sound("undergarden:block/gronglet/gronglet_4"),
+                sound("undergarden:block/gronglet/gronglet_5"),
+                sound("undergarden:block/gronglet/gronglet_6")
+        ).subtitle("subtitles.block.generic.place"));
+
         this.add(UGSoundEvents.BLISTERBOMB_THROW, definition().with(
                 sound("undergarden:item/blisterbomb")
         ).subtitle("subtitles.item.blisterbomb"));
@@ -252,6 +274,10 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:item/slingshot_draw_1"),
                 sound("undergarden:item/slingshot_draw_2")
         ).subtitle("subtitles.item.slingshot_shoot"));
+        this.add(UGSoundEvents.GRONGLET_SHOOT, definition().with(
+                sound("undergarden:item/gronglet_shoot_1"),
+                sound("undergarden:item/gronglet_shoot_2")
+        ).subtitle("subtitles.item.slingshot.gronglet_shoot"));
 
         this.add(UGSoundEvents.PICK_BLISTERBERRY_BUSH, definition().with(
                 sound("minecraft:item/sweet_berries/pick_from_bush1"),

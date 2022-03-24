@@ -336,6 +336,36 @@
       "undergarden:liquid/virulent_bubble_4"
     ]
   },
+  "block.gronglet.ambient": {
+    "subtitle": "subtitles.block.gronglet.ambient",
+    "sounds": [
+      "undergarden:block/gronglet/gronglet_ambient_1",
+      "undergarden:block/gronglet/gronglet_ambient_2",
+      "undergarden:block/gronglet/gronglet_ambient_3"
+    ]
+  },
+  "block.gronglet.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "undergarden:block/gronglet/gronglet_1",
+      "undergarden:block/gronglet/gronglet_2",
+      "undergarden:block/gronglet/gronglet_3",
+      "undergarden:block/gronglet/gronglet_4",
+      "undergarden:block/gronglet/gronglet_5",
+      "undergarden:block/gronglet/gronglet_6"
+    ]
+  },
+  "block.gronglet.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "undergarden:block/gronglet/gronglet_1",
+      "undergarden:block/gronglet/gronglet_2",
+      "undergarden:block/gronglet/gronglet_3",
+      "undergarden:block/gronglet/gronglet_4",
+      "undergarden:block/gronglet/gronglet_5",
+      "undergarden:block/gronglet/gronglet_6"
+    ]
+  },
   "item.blisterbomb": {
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [
@@ -353,6 +383,13 @@
     "sounds": [
       "undergarden:item/slingshot_draw_1",
       "undergarden:item/slingshot_draw_2"
+    ]
+  },
+  "item.slingshot.gronglet_shoot": {
+    "subtitle": "subtitles.item.slingshot.gronglet_shoot",
+    "sounds": [
+      "undergarden:item/gronglet_shoot_1",
+      "undergarden:item/gronglet_shoot_2"
     ]
   },
   "item.pick_blisterberry_bush": {

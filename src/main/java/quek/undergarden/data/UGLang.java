@@ -503,17 +503,22 @@ public class UGLang extends LanguageProvider {
         add("tooltip.pebble", "Can be used as Slingshot ammo.");
         add("tooltip.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
 
-        addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
-        addSubtitle("item", "slingshot_draw", "Slingshot drawn");
-        addSubtitle("item", "slingshot_shoot", "Slingshot fired");
-        addSubtitle("item", "pick_blisterberry_bush", "Blisterberry Bush picked");
-
         addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
         addSubtitle("block", "undergarden_portal_activate", "Undergarden Portal activates");
         addSubtitle("block", "undergarden_portal_travel", "Travelling through Undergarden portal");
 
         addSubtitle("block", "virulent.flow", "Virulent Mix flows");
         addSubtitle("block", "virulent.bubble", "Virulent Mix bubbles");
+
+        addSubtitle("block", "gronglet.ambient", "Gronglet chirps");
+
+        addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
+
+        addSubtitle("item", "slingshot_draw", "Slingshot drawn");
+        addSubtitle("item", "slingshot_shoot", "Slingshot fired");
+        addSubtitle("item", "gronglet_shoot", "Gronglet fired");
+
+        addSubtitle("item", "pick_blisterberry_bush", "Blisterberry Bush picked");
 
         addSubtitle("entity", "dweller_ambient", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");

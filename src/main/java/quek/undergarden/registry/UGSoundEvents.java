@@ -45,10 +45,15 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> VIRULENT_FLOW = register("block.virulent.flow");
     public static final RegistryObject<SoundEvent> VIRULENT_BUBBLE = register("block.virulent.bubble");
 
+    public static final RegistryObject<SoundEvent> GRONGLET_AMBIENT = register("block.gronglet.ambient");
+    public static final RegistryObject<SoundEvent> GRONGLET_BREAK = register("block.gronglet.break");
+    public static final RegistryObject<SoundEvent> GRONGLET_PLACE = register("block.gronglet.place");
+
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
 
     public static final RegistryObject<SoundEvent> SLINGSHOT_SHOOT = register("item.slingshot_shoot");
     public static final RegistryObject<SoundEvent> SLINGSHOT_DRAW = register("item.slingshot_draw");
+    public static final RegistryObject<SoundEvent> GRONGLET_SHOOT = register("item.slingshot.gronglet_shoot");
 
     public static final RegistryObject<SoundEvent> PICK_BLISTERBERRY_BUSH = register("item.pick_blisterberry_bush");
 
