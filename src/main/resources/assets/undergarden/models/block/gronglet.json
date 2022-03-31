@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:builtin/entity",
   "textures": {
-    "particle": "undergarden:block/gronglet"
+    "particle": "minecraft:block/yellow_concrete"
   }
 }
