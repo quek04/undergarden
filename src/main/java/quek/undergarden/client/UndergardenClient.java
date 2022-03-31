@@ -224,12 +224,12 @@ public class UndergardenClient {
         }
 
         @SubscribeEvent
-        public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
+        public static void renderVirulentFogDensity(EntityViewRenderEvent.RenderFogEvent event) {
             Camera camera = event.getCamera();
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
             if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
-                event.setDensity(15F);
+                event.setFarPlaneDistance(15.0F);
                 event.setCanceled(true);
             }
         }
