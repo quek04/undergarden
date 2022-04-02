@@ -245,6 +245,7 @@
   "effect.undergarden.gooey.description": "Scintling Goo will constantly be placed under victim's feet.",
   "effect.undergarden.virulent_resistance": "Virulent Resistance",
   "effect.undergarden.virulent_resistance.description": "Grants immunity to Virulent Mix's poison. Will not cure already active poison.",
+  "enchantment.undergarden.longevity": "Longevity",
   "enchantment.undergarden.ricochet": "Ricochet",
   "entity.undergarden.boat": "Undergarden Boat",
   "entity.undergarden.brute": "Brute",

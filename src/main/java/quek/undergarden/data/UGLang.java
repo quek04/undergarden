@@ -398,6 +398,7 @@ public class UGLang extends LanguageProvider {
         addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
 
         addEnchantment(UGEnchantments.RICOCHET, "Ricochet");
+        addEnchantment(UGEnchantments.LONGEVITY, "Longevity");
 
         //JEED compat
         add("effect.undergarden.gooey.description", "Scintling Goo will constantly be placed under victim's feet.");
