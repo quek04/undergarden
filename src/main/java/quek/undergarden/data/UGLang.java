@@ -399,6 +399,7 @@ public class UGLang extends LanguageProvider {
 
         addEnchantment(UGEnchantments.RICOCHET, "Ricochet");
         addEnchantment(UGEnchantments.LONGEVITY, "Longevity");
+        addEnchantment(UGEnchantments.SELF_SLING, "Self Sling");
 
         //JEED compat
         add("effect.undergarden.gooey.description", "Scintling Goo will constantly be placed under victim's feet.");

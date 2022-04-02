@@ -247,6 +247,7 @@
   "effect.undergarden.virulent_resistance.description": "Grants immunity to Virulent Mix's poison. Will not cure already active poison.",
   "enchantment.undergarden.longevity": "Longevity",
   "enchantment.undergarden.ricochet": "Ricochet",
+  "enchantment.undergarden.self_sling": "Self Sling",
   "entity.undergarden.boat": "Undergarden Boat",
   "entity.undergarden.brute": "Brute",
   "entity.undergarden.dweller": "Dweller",
