@@ -15,6 +15,8 @@ import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.PotionBrewing;
@@ -39,9 +41,10 @@ import org.apache.logging.log4j.Logger;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
-import quek.undergarden.entity.projectile.slingshot.DepthrockPebbleEntity;
-import quek.undergarden.entity.projectile.slingshot.GooBallEntity;
-import quek.undergarden.entity.projectile.slingshot.RottenBlisterberryEntity;
+import quek.undergarden.entity.projectile.slingshot.*;
+import quek.undergarden.item.UGItem;
+import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
+import quek.undergarden.item.tool.slingshot.SlingshotItem;
 import quek.undergarden.registry.*;
 
 @Mod(Undergarden.MODID)
@@ -208,6 +211,39 @@ public class Undergarden {
 			WoodType.register(UGBlocks.SMOGSTEM_WOODTYPE);
 			WoodType.register(UGBlocks.WIGGLEWOOD_WOODTYPE);
 			WoodType.register(UGBlocks.GRONGLE_WOODTYPE);
+
+			SlingshotItem.registerAmmo(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new DepthrockPebbleEntity(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new RottenBlisterberryEntity(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGItems.GOO_BALL.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new GooBallEntity(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGBlocks.GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new GrongletEntity(shooter, level);
+				}
+
+				@Override
+				public SoundEvent getFiringSound() {
+					return UGSoundEvents.GRONGLET_SHOOT.get();
+				}
+			});
 		});
 	}
 
