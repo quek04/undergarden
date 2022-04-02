@@ -19,7 +19,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGEnchantments;
+import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Map;
 import java.util.function.Predicate;
@@ -35,6 +38,16 @@ public class SlingshotItem extends ProjectileWeaponItem {
                 .tab(UGItemGroups.GROUP)
                 .rarity(Rarity.UNCOMMON)
         );
+    }
+
+    @Override
+    public int getMaxDamage(ItemStack stack) {
+        int longevity = EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.LONGEVITY.get(), stack);
+        int durability = super.getMaxDamage(stack);
+        if (longevity > 0) {
+            return durability * (longevity + 1);
+        }
+        else return durability;
     }
 
     /**
