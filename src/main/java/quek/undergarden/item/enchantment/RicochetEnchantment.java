@@ -31,4 +31,9 @@ public class RicochetEnchantment extends Enchantment {
     public boolean isDiscoverable() {
         return false;
     }
+
+    @Override
+    public boolean checkCompatibility(Enchantment other) {
+        return !(other instanceof SelfSlingEnchantment) && super.checkCompatibility(other);
+    }
 }
