@@ -15,6 +15,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
@@ -74,18 +75,32 @@ public class SlingshotItem extends ProjectileWeaponItem {
         if (entity instanceof Player player) {
             boolean isCreative = player.getAbilities().instabuild;
             ItemStack projectileStack = player.getProjectile(stack);
+            boolean selfSling = EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.SELF_SLING.get(), stack) > 0;
 
             int useTime = getUseDuration(stack) - timeLeft;
-            useTime = onArrowLoose(stack, level, player, useTime, !projectileStack.isEmpty() || isCreative);
+            useTime = onArrowLoose(stack, level, player, useTime, !projectileStack.isEmpty() || isCreative || selfSling);
             if (useTime < 0) return;
 
-            if (!projectileStack.isEmpty()) {
+            float velocity = getProjectileVelocity(useTime);
+
+            if (selfSling) {
+                if (!player.isOnGround()) {
+                    return;
+                }
+                Vec3 delta = player.getLookAngle();
+                player.push(delta.x * (velocity * 2), delta.y * (velocity) + 0.5D, delta.z * (velocity * 2));
+                if (!level.isClientSide) {
+                    stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+                }
+            }
+
+            if (!projectileStack.isEmpty() && !selfSling) {
                 //correct the projectile stack in creative. player.getProjectile defaults it to an arrow in creative, but slingshots don't shoot arrows!
                 if (projectileStack.is(Items.ARROW)) {
                     projectileStack = new ItemStack(UGItems.DEPTHROCK_PEBBLE.get());
                 }
 
-                float velocity = getProjectileVelocity(useTime);
                 if (!((double) velocity < 0.1D)) {
                     if (!level.isClientSide) {
                         SlingshotProjectile slingshotProjectile = AMMO_REGISTRY.get(projectileStack.getItem()).getProjectile(level, entity.blockPosition(), player, projectileStack);
@@ -119,18 +134,19 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        boolean hasAmmo = !player.getProjectile(itemstack).isEmpty();
+        ItemStack stack = player.getItemInHand(hand);
+        boolean hasAmmo = !player.getProjectile(stack).isEmpty();
+        boolean selfSling = EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.SELF_SLING.get(), stack) > 0;
 
-        InteractionResultHolder<ItemStack> ret = onArrowNock(itemstack, level, player, hand, hasAmmo);
+        InteractionResultHolder<ItemStack> ret = onArrowNock(stack, level, player, hand, hasAmmo);
         if (ret != null) return ret;
 
-        if (!player.getAbilities().instabuild && !hasAmmo) {
-            return InteractionResultHolder.fail(itemstack);
+        if (!player.getAbilities().instabuild && !hasAmmo && !selfSling) {
+            return InteractionResultHolder.fail(stack);
         } else {
             player.startUsingItem(hand);
             level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_DRAW.get(), SoundSource.PLAYERS, 0.5F, 1.0F);
-            return InteractionResultHolder.consume(itemstack);
+            return InteractionResultHolder.consume(stack);
         }
     }
 
