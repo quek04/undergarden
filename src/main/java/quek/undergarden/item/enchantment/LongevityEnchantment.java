@@ -13,6 +13,16 @@ public class LongevityEnchantment extends Enchantment {
     }
 
     @Override
+    public int getMinCost(int level) {
+        return 1 + (level - 1) * 10;
+    }
+
+    @Override
+    public int getMaxCost(int level) {
+        return this.getMinCost(level) + 15;
+    }
+
+    @Override
     public boolean canEnchant(ItemStack stack) {
         return stack.getItem() instanceof SlingshotItem || super.canEnchant(stack);
     }
@@ -24,11 +34,6 @@ public class LongevityEnchantment extends Enchantment {
 
     @Override
     public boolean isTradeable() {
-        return false;
-    }
-
-    @Override
-    public boolean isDiscoverable() {
         return false;
     }
 }
