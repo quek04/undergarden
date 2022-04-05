@@ -42,7 +42,6 @@ import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
 import quek.undergarden.entity.projectile.slingshot.*;
-import quek.undergarden.item.UGItem;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
 import quek.undergarden.registry.*;
@@ -262,6 +261,8 @@ public class Undergarden {
 				return entity.getUseItem() != stack ? 0.0F : (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
 			}
 		});
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 

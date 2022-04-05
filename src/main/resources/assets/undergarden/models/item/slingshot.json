@@ -23,6 +23,52 @@
                 "pull": 0.9
             },
             "model": "undergarden:item/slingshot_pulling_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "rotten_blisterberry": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_blisterberry_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65,
+                "rotten_blisterberry": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_blisterberry_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9,
+                "rotten_blisterberry": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_blisterberry_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "goo_ball": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gooball_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65,
+                "goo_ball": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gooball_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9,
+                "goo_ball": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gooball_2"
         }
     ]
 }
