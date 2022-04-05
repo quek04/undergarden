@@ -93,6 +93,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
                     stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
                 }
+                player.awardStat(Stats.ITEM_USED.get(this));
             }
 
             if (!projectileStack.isEmpty() && !selfSling) {
