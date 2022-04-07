@@ -69,6 +69,29 @@
                 "goo_ball": 1
             },
             "model": "undergarden:item/slingshot_pulling_gooball_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "self_sling": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_self_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65,
+                "self_sling": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_self_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9,
+                "self_sling": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_self_2"
         }
     ]
 }
