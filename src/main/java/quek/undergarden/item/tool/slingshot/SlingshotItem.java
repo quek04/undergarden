@@ -88,7 +88,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
                     return;
                 }
                 Vec3 delta = player.getLookAngle();
-                player.push(delta.x * (velocity * 2), delta.y * (velocity) + 0.5D, delta.z * (velocity * 2));
+                player.push(delta.x * (velocity * 2), (delta.y * velocity) + (velocity / 2), delta.z * (velocity * 2));
                 if (!level.isClientSide) {
                     stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
