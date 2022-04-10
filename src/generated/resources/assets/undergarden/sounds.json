@@ -66,7 +66,12 @@
       "undergarden:ambient/additions/bog_7",
       "undergarden:ambient/additions/bog_8",
       "undergarden:ambient/additions/bog_9",
-      "undergarden:ambient/additions/bog_10"
+      "undergarden:ambient/additions/bog_10",
+      "undergarden:ambient/additions/bog_11",
+      "undergarden:ambient/additions/bog_12",
+      "undergarden:ambient/additions/bog_13",
+      "undergarden:ambient/additions/bog_14",
+      "undergarden:ambient/additions/bog_15"
     ]
   },
   "ambient.fields_addition": {
@@ -104,7 +109,9 @@
       "undergarden:ambient/additions/smogstem_1",
       "undergarden:ambient/additions/smogstem_2",
       "undergarden:ambient/additions/smogstem_3",
-      "undergarden:ambient/additions/smogstem_4"
+      "undergarden:ambient/additions/smogstem_4",
+      "undergarden:ambient/additions/smogstem_5",
+      "undergarden:ambient/additions/smogstem_6"
     ]
   },
   "ambient.wigglewood_forest_addition": {
@@ -121,7 +128,11 @@
       "undergarden:ambient/additions/wigglewood_2",
       "undergarden:ambient/additions/wigglewood_3",
       "undergarden:ambient/additions/wigglewood_4",
-      "undergarden:ambient/additions/wigglewood_5"
+      "undergarden:ambient/additions/wigglewood_5",
+      "undergarden:ambient/additions/wigglewood_6",
+      "undergarden:ambient/additions/wigglewood_7",
+      "undergarden:ambient/additions/wigglewood_8",
+      "undergarden:ambient/additions/wigglewood_9"
     ]
   },
   "ambient.gronglegrowth_addition": {
@@ -140,6 +151,24 @@
       "undergarden:ambient/additions/grongle_4",
       "undergarden:ambient/additions/grongle_5",
       "undergarden:ambient/additions/grongle_6"
+    ]
+  },
+  "ambient.dense_forest_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/forest_1",
+      "undergarden:ambient/additions/forest_2",
+      "undergarden:ambient/additions/forest_3",
+      "undergarden:ambient/additions/forest_4",
+      "undergarden:ambient/additions/forest_5",
+      "undergarden:ambient/additions/forest_6",
+      "undergarden:ambient/additions/forest_7",
+      "undergarden:ambient/additions/forest_8",
+      "undergarden:ambient/additions/dense_1",
+      "undergarden:ambient/additions/dense_2",
+      "undergarden:ambient/additions/dense_3",
+      "undergarden:ambient/additions/dense_4",
+      "undergarden:ambient/additions/dense_5",
+      "undergarden:ambient/additions/dense_6"
     ]
   },
   "ambient.frostfields_addition": {
