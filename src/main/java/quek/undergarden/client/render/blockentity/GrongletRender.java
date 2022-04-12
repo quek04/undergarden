@@ -95,6 +95,8 @@ public class GrongletRender implements BlockEntityRenderer<GrongletBlockEntity> 
         }
         poseStack.mulPose(direction.getRotation());
         poseStack.mulPose(Vector3f.ZP.rotationDegrees(180F));
+        int yaw = gronglet.yaw;
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(yaw));
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(new ResourceLocation(Undergarden.MODID, "textures/block/gronglet.png")));
         this.body.render(poseStack, consumer, packedLight, packedOverlay);
         this.limbs.render(poseStack, consumer, packedLight, packedOverlay);
