@@ -15,7 +15,7 @@ import quek.undergarden.registry.UGEntityTypes;
 
 public class GrongletEntity extends SlingshotProjectile {
 
-    public GrongletEntity(double x, double y, double z, Level level) {
+    public GrongletEntity(Level level, double x, double y, double z) {
         super(UGEntityTypes.GRONGLET.get(), x, y, z, level);
     }
 

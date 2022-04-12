@@ -152,6 +152,12 @@ public class Undergarden {
 				}
 			});
 
+			DispenserBlock.registerBehavior(UGBlocks.GRONGLET.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new GrongletEntity(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
+				}
+			});
+
 			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().asItem(), UGPotions.BRITTLENESS.get());
 			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.REDSTONE, UGPotions.LONG_BRITTLENESS.get());
 			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.GLOWSTONE_DUST, UGPotions.STRONG_BRITTLENESS.get());
