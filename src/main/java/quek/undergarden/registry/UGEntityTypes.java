@@ -13,6 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
+import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.entity.GwibEntity;
 import quek.undergarden.entity.MinionEntity;
 import quek.undergarden.entity.UGBoatEntity;
@@ -42,6 +43,7 @@ public class UGEntityTypes {
 
     //misc
     public static final RegistryObject<EntityType<UGBoatEntity>> BOAT = ENTITIES.register("boat", () -> EntityType.Builder.<UGBoatEntity>of(UGBoatEntity::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("boat"));
+    public static final RegistryObject<EntityType<Boomgourd>> BOOMGOURD = ENTITIES.register("boomgourd", () -> EntityType.Builder.<Boomgourd>of(Boomgourd::new, MobCategory.MISC).fireImmune().sized(1.0F, 1.0F).clientTrackingRange(10).updateInterval(10).build("boomgourd"));
     public static final RegistryObject<EntityType<DepthrockPebbleEntity>> DEPTHROCK_PEBBLE = ENTITIES.register("depthrock_pebble", () -> EntityType.Builder.<DepthrockPebbleEntity>of(DepthrockPebbleEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("depthrock_pebble"));
     public static final RegistryObject<EntityType<GooBallEntity>> GOO_BALL = ENTITIES.register("goo_ball", () -> EntityType.Builder.<GooBallEntity>of(GooBallEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("goo_ball"));
     public static final RegistryObject<EntityType<RottenBlisterberryEntity>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> EntityType.Builder.<RottenBlisterberryEntity>of(RottenBlisterberryEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("rotten_blisterberry"));

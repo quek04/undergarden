@@ -271,6 +271,15 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(UGBlocks.BOOMGOURD.get())
+                .pattern("BBB")
+                .pattern("BGB")
+                .pattern("BBB")
+                .define('B', UGItems.BLISTERBOMB.get())
+                .define('G', UGBlocks.GLOOMGOURD.get())
+                .unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
+                .unlockedBy("has_blisterbomb", has(UGItems.BLISTERBOMB.get()))
+                .save(consumer);
 
         makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
         makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(consumer);

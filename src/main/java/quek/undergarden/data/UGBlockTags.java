@@ -192,6 +192,7 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.CARVED_GLOOMGOURD.get(),
                 UGBlocks.GLOOM_O_LANTERN.get(),
                 UGBlocks.SHARD_O_LANTERN.get(),
+                UGBlocks.BOOMGOURD.get(),
                 UGBlocks.GLOOMGOURD_STEM.get(),
                 UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(),
                 UGBlocks.INDIGO_MUSHROOM_CAP.get(),

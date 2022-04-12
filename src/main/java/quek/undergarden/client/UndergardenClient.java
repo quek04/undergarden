@@ -102,6 +102,7 @@ public class UndergardenClient {
         event.registerBlockEntityRenderer(UGBlockEntities.GRONGLET.get(), GrongletRender::new);
         //
         event.registerEntityRenderer(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.BOOMGOURD.get(), BoomgourdRender::new);
         //
         event.registerEntityRenderer(UGEntityTypes.DEPTHROCK_PEBBLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.GOO_BALL.get(), ThrownItemRenderer::new);
