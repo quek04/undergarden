@@ -6,11 +6,11 @@
   ],
   "key": {
     "M": {
-      "item": "undergarden:polished_depthrock"
+      "item": "undergarden:depthrock"
     }
   },
   "result": {
-    "item": "undergarden:depthrock_bricks",
+    "item": "undergarden:polished_depthrock",
     "count": 4
   }
 }

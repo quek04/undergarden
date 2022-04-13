@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:depthrock_bricks"
+      "undergarden:polished_depthrock_slab"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:depthrock_bricks"
+        "recipe": "undergarden:polished_depthrock_slab"
       }
     }
   },

@@ -87,8 +87,10 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.SHIVERSTONE_REGALIUM_ORE);
         block(UGBlocks.RAW_CLOGGRUM_BLOCK);
         block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
+        block(UGBlocks.POLISHED_DEPTHROCK);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
+        stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);
         stairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS);
         stairs(UGBlocks.SMOGSTEM_STAIRS, UGBlocks.SMOGSTEM_PLANKS);
         stairs(UGBlocks.WIGGLEWOOD_STAIRS, UGBlocks.WIGGLEWOOD_PLANKS);
@@ -101,6 +103,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         stairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES);
 
         slab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK);
+        slab(UGBlocks.POLISHED_DEPTHROCK_SLAB, UGBlocks.POLISHED_DEPTHROCK);
         slab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS);
         slab(UGBlocks.SMOGSTEM_SLAB, UGBlocks.SMOGSTEM_PLANKS);
         slab(UGBlocks.WIGGLEWOOD_SLAB, UGBlocks.WIGGLEWOOD_PLANKS);
@@ -112,12 +115,13 @@ public class UGBlockStates extends UGBlockstateProvider {
         slab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES);
         slab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES);
 
-        wallBlock(UGBlocks.DEPTHROCK_WALL.get(), modLoc("block/depthrock"));
-        wallBlock(UGBlocks.DEPTHROCK_BRICK_WALL.get(), modLoc("block/depthrock_bricks"));
-        wallBlock(UGBlocks.SHIVERSTONE_WALL.get(), modLoc("block/shiverstone"));
-        wallBlock(UGBlocks.SHIVERSTONE_BRICK_WALL.get(), modLoc("block/shiverstone_bricks"));
-        wallBlock(UGBlocks.TREMBLECRUST_WALL.get(), modLoc("block/tremblecrust"));
-        wallBlock(UGBlocks.TREMBLECRUST_BRICK_WALL.get(), modLoc("block/tremblecrust_bricks"));
+        wall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK);
+        wall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK);
+        wall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS);
+        wall(UGBlocks.SHIVERSTONE_WALL, UGBlocks.SHIVERSTONE);
+        wall(UGBlocks.SHIVERSTONE_BRICK_WALL, UGBlocks.SHIVERSTONE_BRICKS);
+        wall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST);
+        wall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS);
 
         fence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS);
         fence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS);
