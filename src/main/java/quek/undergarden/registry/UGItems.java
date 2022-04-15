@@ -91,7 +91,6 @@ public class UGItems {
     public static final RegistryObject<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
     public static final RegistryObject<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
     public static final RegistryObject<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
-    public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", () -> new SlingshotAmmoItem(new Item.Properties().tab(UGItemGroups.GROUP).food(UGFoods.GOO_BALL)));
     public static final RegistryObject<Item> UNDERBEAN_STICK = ITEMS.register("underbean_on_a_stick", () -> new UnderbeanOnAStickItem(new Item.Properties().stacksTo(1).durability(100).tab(UGItemGroups.GROUP)));
 
     public static final RegistryObject<Item> SMOGSTEM_BOAT = ITEMS.register("smogstem_boat", () -> new UGBoatItem(UGBoatEntity.Type.SMOGSTEM, new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)));
@@ -124,6 +123,7 @@ public class UGItems {
     public static final RegistryObject<Item> ROASTED_UNDERBEANS = ITEMS.register("roasted_underbeans", () -> new UGItem(UGFoods.ROASTED_UNDERBEANS));
     public static final RegistryObject<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new ItemNameBlockItem(UGBlocks.BLISTERBERRY_BUSH.get(), new Item.Properties().tab(UGItemGroups.GROUP).food(UGFoods.BLISTERBERRY)));
     public static final RegistryObject<Item> ROTTEN_BLISTERBERRY = ITEMS.register("rotten_blisterberry", () -> new RottenBlisterberryItem(new Item.Properties().tab(UGItemGroups.GROUP).food(UGFoods.ROTTEN_BLISTERBERRY)));
+    public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", () -> new SlingshotAmmoItem(new Item.Properties().tab(UGItemGroups.GROUP).food(UGFoods.GOO_BALL)));
     public static final RegistryObject<Item> GLOOMGOURD_PIE = ITEMS.register("gloomgourd_pie", () -> new UGItem(UGFoods.GLOOMGOURD_PIE));
     public static final RegistryObject<Item> RAW_DWELLER_MEAT = ITEMS.register("raw_dweller_meat", () -> new UGItem(UGFoods.RAW_DWELLER));
     public static final RegistryObject<Item> DWELLER_STEAK = ITEMS.register("dweller_steak", () -> new UGItem(UGFoods.COOKED_DWELLER));
