@@ -23,9 +23,4 @@ public class GooeyEffect extends MobEffect {
             entity.level.setBlockAndUpdate(pos, blockstate);
         }
     }
-
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        return duration > 0;
-    }
 }

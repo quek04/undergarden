@@ -247,6 +247,7 @@ public class Undergarden {
 					return UGSoundEvents.GRONGLET_SHOOT.get();
 				}
 			});
+
 			FireBlock fire = (FireBlock) Blocks.FIRE;
 			//planks
 			fire.setFlammable(UGBlocks.SMOGSTEM_PLANKS.get(), 5, 20);
