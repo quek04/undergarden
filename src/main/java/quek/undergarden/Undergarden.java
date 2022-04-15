@@ -23,10 +23,7 @@ import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -250,6 +247,64 @@ public class Undergarden {
 					return UGSoundEvents.GRONGLET_SHOOT.get();
 				}
 			});
+			FireBlock fire = (FireBlock) Blocks.FIRE;
+			//planks
+			fire.setFlammable(UGBlocks.SMOGSTEM_PLANKS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_PLANKS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_PLANKS.get(), 5, 20);
+			//slabs
+			fire.setFlammable(UGBlocks.SMOGSTEM_SLAB.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_SLAB.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_SLAB.get(), 5, 20);
+			//fence gates
+			fire.setFlammable(UGBlocks.SMOGSTEM_FENCE_GATE.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_FENCE_GATE.get(), 5, 20);
+			//fences
+			fire.setFlammable(UGBlocks.SMOGSTEM_FENCE.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_FENCE.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_FENCE.get(), 5, 20);
+			//stairs
+			fire.setFlammable(UGBlocks.SMOGSTEM_STAIRS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_STAIRS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_STAIRS.get(), 5, 20);
+			//logs
+			fire.setFlammable(UGBlocks.SMOGSTEM_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.GRONGLE_LOG.get(), 5, 5);
+			//stripped logs
+			fire.setFlammable(UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.STRIPPED_GRONGLE_LOG.get(), 5, 5);
+			//woods
+			fire.setFlammable(UGBlocks.SMOGSTEM_WOOD.get(), 5, 5);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_WOOD.get(), 5, 5);
+			fire.setFlammable(UGBlocks.GRONGLE_WOOD.get(), 5, 5);
+			//stripped woods
+			fire.setFlammable(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get(), 5, 5);
+			fire.setFlammable(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get(), 5, 5);
+			fire.setFlammable(UGBlocks.STRIPPED_GRONGLE_WOOD.get(), 5, 5);
+			//leaves
+			fire.setFlammable(UGBlocks.SMOGSTEM_LEAVES.get(), 30, 60);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_LEAVES.get(), 30, 60);
+			fire.setFlammable(UGBlocks.GRONGLE_LEAVES.get(), 30, 60);
+			fire.setFlammable(UGBlocks.HANGING_GRONGLE_LEAVES.get(), 30, 60);
+			//plants
+			fire.setFlammable(UGBlocks.DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.ASHEN_DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.FROZEN_DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.SHIMMERWEED.get(), 60, 100);
+			fire.setFlammable(UGBlocks.TALL_DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.TALL_SHIMMERWEED.get(), 60, 100);
+			fire.setFlammable(UGBlocks.UNDERBEAN_BUSH.get(), 60, 100);
+			fire.setFlammable(UGBlocks.BLISTERBERRY_BUSH.get(), 60, 100);
+			fire.setFlammable(UGBlocks.ASHEN_DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.DITCHBULB_PLANT.get(), 60, 100);
+			fire.setFlammable(UGBlocks.DROOPVINE.get(), 15, 60);
+			fire.setFlammable(UGBlocks.DROOPVINE_PLANT.get(), 15, 60);
+			//other
+			fire.setFlammable(UGBlocks.MOGMOSS_RUG.get(), 60, 20);
+			fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
 		});
 	}
 
