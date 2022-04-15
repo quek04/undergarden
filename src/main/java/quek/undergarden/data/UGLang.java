@@ -55,17 +55,21 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.SHARD_TORCH, "Shard Torch");
 
         addBlock(UGBlocks.DEPTHROCK, "Depthrock");
+        addBlock(UGBlocks.POLISHED_DEPTHROCK, "Polished Depthrock");
         addBlock(UGBlocks.DEPTHROCK_BRICKS, "Depthrock Bricks");
         addBlock(UGBlocks.CRACKED_DEPTHROCK_BRICKS, "Cracked Depthrock Bricks");
         addBlock(UGBlocks.CHISELED_DEPTHROCK_BRICKS, "Chiseled Depthrock Bricks");
         addBlock(UGBlocks.DEPTHROCK_TILES, "Depthrock Tiles");
         addBlock(UGBlocks.DEPTHROCK_STAIRS, "Depthrock Stairs");
+        addBlock(UGBlocks.POLISHED_DEPTHROCK_STAIRS, "Polished Depthrock Stairs");
         addBlock(UGBlocks.DEPTHROCK_BRICK_STAIRS, "Depthrock Brick Stairs");
         addBlock(UGBlocks.DEPTHROCK_TILE_STAIRS, "Depthrock Tile Stairs");
         addBlock(UGBlocks.DEPTHROCK_SLAB, "Depthrock Slab");
+        addBlock(UGBlocks.POLISHED_DEPTHROCK_SLAB, "Polished Depthrock Slab");
         addBlock(UGBlocks.DEPTHROCK_BRICK_SLAB, "Depthrock Brick Slab");
         addBlock(UGBlocks.DEPTHROCK_TILE_SLAB, "Depthrock Tile Slab");
         addBlock(UGBlocks.DEPTHROCK_WALL, "Depthrock Wall");
+        addBlock(UGBlocks.POLISHED_DEPTHROCK_WALL, "Polished Depthrock Wall");
         addBlock(UGBlocks.DEPTHROCK_BRICK_WALL, "Depthrock Brick Wall");
         addBlock(UGBlocks.DEPTHROCK_BUTTON, "Depthrock Button");
         addBlock(UGBlocks.DEPTHROCK_PRESSURE_PLATE, "Depthrock Pressure Plate");

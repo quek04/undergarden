@@ -13,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -29,8 +30,6 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class ForgottenGuardianEntity extends Monster {
@@ -45,6 +44,7 @@ public class ForgottenGuardianEntity extends Monster {
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
@@ -57,6 +57,7 @@ public class ForgottenGuardianEntity extends Monster {
                 .add(Attributes.ARMOR, 10.0D)
                 .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
                 .add(Attributes.ATTACK_DAMAGE, 10.0D)
+                .add(Attributes.ATTACK_KNOCKBACK, 2.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.2D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
     }
@@ -120,19 +121,8 @@ public class ForgottenGuardianEntity extends Monster {
     public boolean doHurtTarget(Entity entity) {
         this.attackTimer = 10;
         this.level.broadcastEntityEvent(this, (byte)4);
-        float damage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        float f1 = (int)damage > 0 ? damage / 2.0F + (float)this.random.nextInt((int)damage) : damage;
-        boolean flag = entity.hurt(DamageSource.mobAttack(this), f1);
-        if (flag) {
-            double x = entity.getX() - this.getX();
-            double z = entity.getZ() - this.getZ();
-            double modifier = Math.max(x * x + z * z, 0.001D);
-            entity.setDeltaMovement(entity.getDeltaMovement().add((x / modifier) * 2, 0.2F, (z / modifier) * 2));
-            this.doEnchantDamageEffects(this, entity);
-        }
-
         this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
-        return flag;
+        return super.doHurtTarget(entity);
     }
 
     @Override
@@ -154,18 +144,15 @@ public class ForgottenGuardianEntity extends Monster {
         else return super.hurt(source, amount);
     }
 
-    @OnlyIn(Dist.CLIENT)
     public void handleEntityEvent(byte id) {
         if (id == 4) {
             this.attackTimer = 10;
-            this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
         }
         else {
             super.handleEntityEvent(id);
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     public int getAttackTimer() {
         return this.attackTimer;
     }

@@ -64,6 +64,10 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         slabBlock(block.get(), texture(name(fullBlock)), texture(name(fullBlock)));
     }
 
+    public void wall(Supplier<? extends WallBlock> wall, Supplier<? extends Block> fullBlock) {
+        wallBlock(wall.get(), texture(name(fullBlock)));
+    }
+
     public void fence(Supplier<? extends FenceBlock> block, Supplier<? extends Block> fullBlock) {
         fenceBlock(block.get(), texture(name(fullBlock)));
         fenceColumn(block, name(fullBlock));

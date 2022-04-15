@@ -45,17 +45,21 @@ public class UGBlocks {
 
     //depthrock
     public static final RegistryObject<Block> DEPTHROCK = register("depthrock", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.BASALT).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> POLISHED_DEPTHROCK = register("polished_depthrock", () -> new Block(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> DEPTHROCK_BRICKS = register("depthrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> CRACKED_DEPTHROCK_BRICKS = register("cracked_depthrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> CHISELED_DEPTHROCK_BRICKS = register("chiseled_depthrock_bricks", () -> new Block(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<Block> DEPTHROCK_TILES = register("depthrock_tiles", () -> new Block(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<StairBlock> DEPTHROCK_STAIRS = register("depthrock_stairs", () -> new StairBlock(() -> DEPTHROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(DEPTHROCK.get())));
+    public static final RegistryObject<StairBlock> POLISHED_DEPTHROCK_STAIRS = register("polished_depthrock_stairs", () -> new StairBlock(() -> POLISHED_DEPTHROCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_DEPTHROCK.get())));
     public static final RegistryObject<StairBlock> DEPTHROCK_BRICK_STAIRS = register("depthrock_brick_stairs", () -> new StairBlock(() -> DEPTHROCK_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(DEPTHROCK_BRICKS.get())));
-    public static final RegistryObject<StairBlock> DEPTHROCK_TILE_STAIRS = register("depthrock_tile_stairs", () -> new StairBlock(() -> DEPTHROCK_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(DEPTHROCK.get())));
+    public static final RegistryObject<StairBlock> DEPTHROCK_TILE_STAIRS = register("depthrock_tile_stairs", () -> new StairBlock(() -> DEPTHROCK_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(DEPTHROCK_TILES.get())));
     public static final RegistryObject<SlabBlock> DEPTHROCK_SLAB = register("depthrock_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
+    public static final RegistryObject<SlabBlock> POLISHED_DEPTHROCK_SLAB = register("polished_depthrock_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_DEPTHROCK.get())));
     public static final RegistryObject<SlabBlock> DEPTHROCK_BRICK_SLAB = register("depthrock_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(DEPTHROCK_BRICKS.get())));
     public static final RegistryObject<SlabBlock> DEPTHROCK_TILE_SLAB = register("depthrock_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
     public static final RegistryObject<WallBlock> DEPTHROCK_WALL = register("depthrock_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
+    public static final RegistryObject<WallBlock> POLISHED_DEPTHROCK_WALL = register("polished_depthrock_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_DEPTHROCK.get())));
     public static final RegistryObject<WallBlock> DEPTHROCK_BRICK_WALL = register("depthrock_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(DEPTHROCK_BRICKS.get())));
     public static final RegistryObject<StoneButtonBlock> DEPTHROCK_BUTTON = register("depthrock_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).noCollission()));
     public static final RegistryObject<PressurePlateBlock> DEPTHROCK_PRESSURE_PLATE = register("depthrock_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(DEPTHROCK.get()).noCollission()));

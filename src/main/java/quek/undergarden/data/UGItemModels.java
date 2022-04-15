@@ -86,12 +86,13 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.DEPTHROCK_DIAMOND_ORE);
         block(UGBlocks.SMOGSTEM_FENCE_GATE);
         block(UGBlocks.WIGGLEWOOD_FENCE_GATE);
-        wallInventory("depthrock_wall", modLoc("block/depthrock"));
-        wallInventory("depthrock_brick_wall", modLoc("block/depthrock_bricks"));
-        wallInventory("shiverstone_wall", modLoc("block/shiverstone"));
-        wallInventory("shiverstone_brick_wall", modLoc("block/shiverstone_bricks"));
-        wallInventory("tremblecrust_wall", modLoc("block/tremblecrust"));
-        wallInventory("tremblecrust_brick_wall", modLoc("block/tremblecrust_bricks"));
+        wall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK);
+        wall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK);
+        wall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS);
+        wall(UGBlocks.SHIVERSTONE_WALL, UGBlocks.SHIVERSTONE);
+        wall(UGBlocks.SHIVERSTONE_BRICK_WALL, UGBlocks.SHIVERSTONE_BRICKS);
+        wall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST);
+        wall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS);
         block(UGBlocks.COARSE_DEEPSOIL);
         block(UGBlocks.SMOGSTEM_PRESSURE_PLATE);
         block(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);
@@ -231,6 +232,9 @@ public class UGItemModels extends UGItemModelProvider {
         blockFlatWithItemName(UGBlocks.CLOGGRUM_LANTERN, "cloggrum_lantern_item");
         blockFlat(UGBlocks.HANGING_GRONGLE_LEAVES);
         block(UGBlocks.BOOMGOURD);
+        block(UGBlocks.POLISHED_DEPTHROCK);
+        block(UGBlocks.POLISHED_DEPTHROCK_SLAB);
+        block(UGBlocks.POLISHED_DEPTHROCK_STAIRS);
 
         egg(UGItems.DWELLER_SPAWN_EGG);
         egg(UGItems.GWIBLING_SPAWN_EGG);

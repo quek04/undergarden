@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:depthrock_bricks"
+      "undergarden:polished_depthrock_stairs_stonecutting"
     ]
   },
   "criteria": {
-    "has_polished_depthrock": {
+    "has_undergarden:depthrock": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:polished_depthrock"
+              "undergarden:depthrock"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:depthrock_bricks"
+        "recipe": "undergarden:polished_depthrock_stairs_stonecutting"
       }
     }
   },
   "requirements": [
     [
-      "has_polished_depthrock",
+      "has_undergarden:depthrock",
       "has_the_recipe"
     ]
   ]

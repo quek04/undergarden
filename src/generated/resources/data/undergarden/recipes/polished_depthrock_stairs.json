@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "MM",
-    "MM"
+    "M  ",
+    "MM ",
+    "MMM"
   ],
   "key": {
     "M": {
@@ -10,7 +11,7 @@
     }
   },
   "result": {
-    "item": "undergarden:depthrock_bricks",
+    "item": "undergarden:polished_depthrock_stairs",
     "count": 4
   }
 }
