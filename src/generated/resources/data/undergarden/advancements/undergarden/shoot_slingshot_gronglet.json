@@ -2,13 +2,13 @@
   "parent": "undergarden:undergarden/slingshot",
   "display": {
     "icon": {
-      "item": "undergarden:rotten_blisterberry"
+      "item": "undergarden:gronglet"
     },
     "title": {
-      "translate": "advancement.undergarden.shoot_slingshot_rotten_blisterberry.title"
+      "translate": "advancement.undergarden.shoot_slingshot_gronglet.title"
     },
     "description": {
-      "translate": "advancement.undergarden.shoot_slingshot_rotten_blisterberry.desc"
+      "translate": "advancement.undergarden.shoot_slingshot_gronglet.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,7 +16,7 @@
     "hidden": false
   },
   "criteria": {
-    "shoot_slingshot_rotten_blisterberry": {
+    "shoot_slingshot_gronglet": {
       "trigger": "undergarden:slingshot_fire",
       "conditions": {
         "slingshot": {
@@ -26,7 +26,7 @@
         },
         "ammo": {
           "items": [
-            "undergarden:rotten_blisterberry"
+            "undergarden:gronglet"
           ]
         }
       }
@@ -34,7 +34,7 @@
   },
   "requirements": [
     [
-      "shoot_slingshot_rotten_blisterberry"
+      "shoot_slingshot_gronglet"
     ]
   ]
 }

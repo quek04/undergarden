@@ -16,22 +16,25 @@
     "hidden": false
   },
   "criteria": {
-    "shoot_goo": {
-      "trigger": "minecraft:player_hurt_entity",
+    "shoot_slingshot_goo": {
+      "trigger": "undergarden:slingshot_fire",
       "conditions": {
-        "damage": {
-          "type": {
-            "direct_entity": {
-              "type": "undergarden:goo_ball"
-            }
-          }
+        "slingshot": {
+          "items": [
+            "undergarden:slingshot"
+          ]
+        },
+        "ammo": {
+          "items": [
+            "undergarden:goo_ball"
+          ]
         }
       }
     }
   },
   "requirements": [
     [
-      "shoot_goo"
+      "shoot_slingshot_goo"
     ]
   ]
 }

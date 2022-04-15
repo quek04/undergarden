@@ -17,14 +17,17 @@
   },
   "criteria": {
     "shoot_slingshot": {
-      "trigger": "minecraft:player_hurt_entity",
+      "trigger": "undergarden:slingshot_fire",
       "conditions": {
-        "damage": {
-          "type": {
-            "direct_entity": {
-              "type": "undergarden:depthrock_pebble"
-            }
-          }
+        "slingshot": {
+          "items": [
+            "undergarden:slingshot"
+          ]
+        },
+        "ammo": {
+          "items": [
+            "undergarden:depthrock_pebble"
+          ]
         }
       }
     }

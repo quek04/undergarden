@@ -3,6 +3,7 @@ package quek.undergarden.item.tool.slingshot;
 import it.unimi.dsi.fastutil.objects.AbstractObject2ObjectFunction;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.Util;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
@@ -20,10 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
-import quek.undergarden.registry.UGEnchantments;
-import quek.undergarden.registry.UGItemGroups;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.*;
 
 import java.util.Map;
 import java.util.function.Predicate;
@@ -117,6 +115,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
                         level.addFreshEntity(slingshotProjectile);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), AMMO_REGISTRY.get(projectileStack.getItem()).getFiringSound(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+                        UGCriteria.SLINGSHOT_FIRE.trigger((ServerPlayer) player, stack, projectileStack);
                     }
                     AMMO_REGISTRY.get(projectileStack.getItem()).addAdditionalFiringEffects(level, player);
 
