@@ -606,6 +606,9 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "mog_hurt", "Mog hurts");
         addSubtitle("entity", "mog_death", "Mog dies");
 
+        addSubtitle("entity", "scintling.hurt", "Scintling hurts");
+        addSubtitle("entity", "scintling.death", "Scintling dies");
+
         addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
         addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
         addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");

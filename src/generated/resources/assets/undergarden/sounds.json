@@ -1068,5 +1068,25 @@
     "sounds": [
       "undergarden:entity/mog_death"
     ]
+  },
+  "entity.scintling.hurt": {
+    "subtitle": "subtitles.entity.scintling.hurt",
+    "sounds": [
+      "block/honeyblock/break1",
+      "block/honeyblock/break2",
+      "block/honeyblock/break3",
+      "block/honeyblock/break4",
+      "block/honeyblock/break5"
+    ]
+  },
+  "entity.scintling.death": {
+    "subtitle": "subtitles.entity.scintling.death",
+    "sounds": [
+      "block/honeyblock/break1",
+      "block/honeyblock/break2",
+      "block/honeyblock/break3",
+      "block/honeyblock/break4",
+      "block/honeyblock/break5"
+    ]
   }
 }

@@ -647,5 +647,21 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
         this.add(UGSoundEvents.MOG_DEATH, definition().with(
                 sound("undergarden:entity/mog_death")
         ).subtitle("subtitles.entity.mog_death"));
+
+        this.add(UGSoundEvents.SCINTLING_HURT, definition().with(
+                sound("minecraft:block/honeyblock/break1"),
+                sound("minecraft:block/honeyblock/break2"),
+                sound("minecraft:block/honeyblock/break3"),
+                sound("minecraft:block/honeyblock/break4"),
+                sound("minecraft:block/honeyblock/break5")
+        ).subtitle("subtitles.entity.scintling.hurt"));
+
+        this.add(UGSoundEvents.SCINTLING_DEATH, definition().with(
+                sound("minecraft:block/honeyblock/break1"),
+                sound("minecraft:block/honeyblock/break2"),
+                sound("minecraft:block/honeyblock/break3"),
+                sound("minecraft:block/honeyblock/break4"),
+                sound("minecraft:block/honeyblock/break5")
+        ).subtitle("subtitles.entity.scintling.death"));
     }
 }
