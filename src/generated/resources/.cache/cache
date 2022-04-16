@@ -553,6 +553,9 @@ bd992a6c7352517c7ddd4a916068b9ca3105a38d data/forge/tags/blocks/glass/colorless.
 bd992a6c7352517c7ddd4a916068b9ca3105a38d data/forge/tags/blocks/glass/silica.json
 f66692217e14affb604b531b8eacaa4e22655aec data/forge/tags/blocks/glass_panes.json
 f66692217e14affb604b531b8eacaa4e22655aec data/forge/tags/blocks/glass_panes/colorless.json
+6e428c51ca8e1db644cfa16d6291fac7e9d5f28c data/forge/tags/blocks/ore_bearing_ground/depthrock.json
+1586a56a74c88510d0155c038ac8ac8c2283e472 data/forge/tags/blocks/ore_bearing_ground/shiverstone.json
+efd30b3928c74cb42407982df4cf92fcaa9acb10 data/forge/tags/blocks/ore_bearing_ground/tremblecrust.json
 fb3511ed868251c31a57153dbc6596be78a75024 data/forge/tags/blocks/ore_rates/singular.json
 efc23852cc431b4dffb2d178a9ea57cc4f666df5 data/forge/tags/blocks/ore_rates/sparse.json
 fb3511ed868251c31a57153dbc6596be78a75024 data/forge/tags/blocks/ores.json
@@ -564,6 +567,9 @@ bfa732947582d40f94f38ae9f31470137ac7b12f data/forge/tags/blocks/ores/gold.json
 c1d6cf3d6813c2f3a82baa50d773505134185ade data/forge/tags/blocks/ores/iron.json
 2873f8076a224cd93b28d89dbc9015c890769fb9 data/forge/tags/blocks/ores/regalium.json
 02c3f292b0ea72b2bc192aad10c2634085a3c1d4 data/forge/tags/blocks/ores/utherium.json
+9ddfbb5dcf5da7a8e1dd658a02dfacb9c6c5cdef data/forge/tags/blocks/ores_in_ground/depthrock.json
+12b824ac1336743c5e05ee34f6a15ba87b1409b6 data/forge/tags/blocks/ores_in_ground/shiverstone.json
+d2a07d859980ea37a0cdae180942fa27433b9429 data/forge/tags/blocks/ores_in_ground/tremblecrust.json
 d004ec3b3367880a0cf2739ee47ad9dc91afc556 data/forge/tags/blocks/sand.json
 d004ec3b3367880a0cf2739ee47ad9dc91afc556 data/forge/tags/blocks/sand/colorless.json
 14067c5aef4c08ff14d0f163328d74ce1c5e634f data/forge/tags/blocks/stone.json
