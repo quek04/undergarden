@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "undergarden:depthrock_bricks"
+  },
+  "result": "undergarden:chiseled_depthrock_bricks",
+  "count": 1
+}

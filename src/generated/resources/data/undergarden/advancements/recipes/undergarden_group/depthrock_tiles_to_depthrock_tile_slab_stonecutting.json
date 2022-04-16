@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:depthrock_tiles_to_depthrock_tile_slab_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:depthrock_tiles": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:depthrock_tiles"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:depthrock_tiles_to_depthrock_tile_slab_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:depthrock_tiles",
+      "has_the_recipe"
+    ]
+  ]
+}

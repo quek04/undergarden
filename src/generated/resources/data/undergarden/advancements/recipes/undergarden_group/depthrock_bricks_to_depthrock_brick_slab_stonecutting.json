@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:forgotten_chunk_to_ingot"
+      "undergarden:depthrock_bricks_to_depthrock_brick_slab_stonecutting"
     ]
   },
   "criteria": {
-    "has_forgotten_nugget": {
+    "has_undergarden:depthrock_bricks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:forgotten_nugget"
+              "undergarden:depthrock_bricks"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:forgotten_chunk_to_ingot"
+        "recipe": "undergarden:depthrock_bricks_to_depthrock_brick_slab_stonecutting"
       }
     }
   },
   "requirements": [
     [
-      "has_forgotten_nugget",
+      "has_undergarden:depthrock_bricks",
       "has_the_recipe"
     ]
   ]
