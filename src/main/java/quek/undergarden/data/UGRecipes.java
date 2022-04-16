@@ -303,7 +303,7 @@ public class UGRecipes extends UGRecipeProvider {
 
         makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).save(consumer, name("cloggrum_nugget_to_ingot"));
         makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).save(consumer, name("froststeel_nugget_to_ingot"));
-        makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_chunk_to_ingot"));
+        makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_nugget_to_ingot"));
 
         makeIngotToBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, UGItems.RAW_CLOGGRUM).save(consumer);
         makeIngotToBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, UGItems.RAW_FROSTSTEEL).save(consumer);
@@ -466,41 +466,57 @@ public class UGRecipes extends UGRecipeProvider {
         smeltingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smelt_underbeans"));
         smokingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smoke_underbeans"));
 
-        depthrockStonecuttingRecipe(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).save(consumer, name("chiseled_depthrock_bricks_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_SLAB.get(), 2).save(consumer, name("depthrock_brick_slab_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_STAIRS.get()).save(consumer, name("depthrock_brick_stairs_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICK_WALL.get()).save(consumer, name("depthrock_brick_wall_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_BRICKS.get()).save(consumer, name("depthrock_bricks_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_SLAB.get(), 2).save(consumer, name("depthrock_slab_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_STAIRS.get()).save(consumer, name("depthrock_stairs_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_WALL.get()).save(consumer, name("depthrock_wall_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_TILES.get()).save(consumer, name("depthrock_tiles_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_TILE_STAIRS.get()).save(consumer, name("depthrock_tile_stairs_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.DEPTHROCK_TILE_SLAB.get()).save(consumer, name("depthrock_tile_slab_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.POLISHED_DEPTHROCK.get()).save(consumer, name("polished_depthrock_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.POLISHED_DEPTHROCK_SLAB.get(), 2).save(consumer, name("polished_depthrock_slab_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.POLISHED_DEPTHROCK_STAIRS.get()).save(consumer, name("polished_depthrock_stairs_stonecutting"));
-        depthrockStonecuttingRecipe(UGBlocks.POLISHED_DEPTHROCK_WALL.get()).save(consumer, name("polished_depthrock_wall_stonecutting"));
+        depthrockStonecutting(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).save(consumer, name("chiseled_depthrock_bricks_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_BRICK_SLAB.get(), 2).save(consumer, name("depthrock_brick_slab_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_BRICK_STAIRS.get()).save(consumer, name("depthrock_brick_stairs_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_BRICK_WALL.get()).save(consumer, name("depthrock_brick_wall_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_BRICKS.get()).save(consumer, name("depthrock_bricks_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_SLAB.get(), 2).save(consumer, name("depthrock_slab_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_STAIRS.get()).save(consumer, name("depthrock_stairs_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_WALL.get()).save(consumer, name("depthrock_wall_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_TILES.get()).save(consumer, name("depthrock_tiles_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_TILE_STAIRS.get()).save(consumer, name("depthrock_tile_stairs_stonecutting"));
+        depthrockStonecutting(UGBlocks.DEPTHROCK_TILE_SLAB.get(), 2).save(consumer, name("depthrock_tile_slab_stonecutting"));
+        depthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK.get()).save(consumer, name("polished_depthrock_stonecutting"));
+        depthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_SLAB.get(), 2).save(consumer, name("polished_depthrock_slab_stonecutting"));
+        depthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_STAIRS.get()).save(consumer, name("polished_depthrock_stairs_stonecutting"));
+        depthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_WALL.get()).save(consumer, name("polished_depthrock_wall_stonecutting"));
+        depthrockStonecutting(UGItems.DEPTHROCK_PEBBLE.get(), 9).save(consumer, name("depthrock_pebble_stonecutting"));
+        depthrockBricksStonecutting(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).save(consumer, name("depthrock_bricks_to_chiseled_depthrock_bricks_stonecutting"));
+        depthrockBricksStonecutting(UGBlocks.DEPTHROCK_BRICK_SLAB.get(), 2).save(consumer, name("depthrock_bricks_to_depthrock_brick_slab_stonecutting"));
+        depthrockBricksStonecutting(UGBlocks.DEPTHROCK_BRICK_STAIRS.get()).save(consumer, name("depthrock_bricks_to_depthrock_brick_stairs_stonecutting"));
+        depthrockBricksStonecutting(UGBlocks.DEPTHROCK_BRICK_WALL.get()).save(consumer, name("depthrock_bricks_to_depthrock_brick_wall_stonecutting"));
+        depthrockTilesStonecutting(UGBlocks.DEPTHROCK_TILE_STAIRS.get()).save(consumer, name("depthrock_tiles_to_depthrock_tile_stairs_stonecutting"));
+        depthrockTilesStonecutting(UGBlocks.DEPTHROCK_TILE_SLAB.get(), 2).save(consumer, name("depthrock_tiles_to_depthrock_tile_slab_stonecutting"));
+        polishedDepthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_SLAB.get(), 2).save(consumer, name("polished_depthrock_to_polished_depthrock_slab_stonecutting"));
+        polishedDepthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_STAIRS.get()).save(consumer, name("polished_depthrock_to_polished_depthrock_stairs_stonecutting"));
+        polishedDepthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_WALL.get()).save(consumer, name("polished_depthrock_to_polished_depthrock_wall_stonecutting"));
 
-        depthrockStonecuttingRecipe(UGItems.DEPTHROCK_PEBBLE.get(), 9).save(consumer, name("depthrock_pebble_stonecutting"));
+        shiverstoneStonecutting(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get()).save(consumer, name("chiseled_shiverstone_bricks_stonecutting"));
+        shiverstoneStonecutting(UGBlocks.SHIVERSTONE_BRICK_SLAB.get(), 2).save(consumer, name("shiverstone_brick_slab_stonecutting"));
+        shiverstoneStonecutting(UGBlocks.SHIVERSTONE_BRICK_STAIRS.get()).save(consumer, name("shiverstone_brick_stairs_stonecutting"));
+        shiverstoneStonecutting(UGBlocks.SHIVERSTONE_BRICK_WALL.get()).save(consumer, name("shiverstone_brick_wall_stonecutting"));
+        shiverstoneStonecutting(UGBlocks.SHIVERSTONE_BRICKS.get()).save(consumer, name("shiverstone_bricks_stonecutting"));
+        shiverstoneStonecutting(UGBlocks.SHIVERSTONE_SLAB.get(), 2).save(consumer, name("shiverstone_slab_stonecutting"));
+        shiverstoneStonecutting(UGBlocks.SHIVERSTONE_STAIRS.get()).save(consumer, name("shiverstone_stairs_stonecutting"));
+        shiverstoneStonecutting(UGBlocks.SHIVERSTONE_WALL.get()).save(consumer, name("shiverstone_wall_stonecutting"));
+        shiverstoneBricksStonecutting(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get()).save(consumer, name("shiverstone_bricks_to_chiseled_shiverstone_bricks_stonecutting"));
+        shiverstoneBricksStonecutting(UGBlocks.SHIVERSTONE_BRICK_SLAB.get(), 2).save(consumer, name("shiverstone_bricks_to_shiverstone_brick_slab_stonecutting"));
+        shiverstoneBricksStonecutting(UGBlocks.SHIVERSTONE_BRICK_STAIRS.get()).save(consumer, name("shiverstone_bricks_to_shiverstone_brick_stairs_stonecutting"));
+        shiverstoneBricksStonecutting(UGBlocks.SHIVERSTONE_BRICK_WALL.get()).save(consumer, name("shiverstone_bricks_to_shiverstone_brick_wall_stonecutting"));
 
-        shiverstoneStonecuttingRecipe(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get()).save(consumer, name("chiseled_shiverstone_bricks_stonecutting"));
-        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_SLAB.get(), 2).save(consumer, name("shiverstone_brick_slab_stonecutting"));
-        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_STAIRS.get()).save(consumer, name("shiverstone_brick_stairs_stonecutting"));
-        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICK_WALL.get()).save(consumer, name("shiverstone_brick_wall_stonecutting"));
-        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_BRICKS.get()).save(consumer, name("shiverstone_bricks_stonecutting"));
-        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_SLAB.get(), 2).save(consumer, name("shiverstone_slab_stonecutting"));
-        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_STAIRS.get()).save(consumer, name("shiverstone_stairs_stonecutting"));
-        shiverstoneStonecuttingRecipe(UGBlocks.SHIVERSTONE_WALL.get()).save(consumer, name("shiverstone_wall_stonecutting"));
-
-        tremblecrustStonecuttingRecipe(UGBlocks.CHISELED_TREMBLECRUST_BRICKS.get()).save(consumer, name("chiseled_tremblecrust_bricks_stonecutting"));
-        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_BRICK_SLAB.get(), 2).save(consumer, name("tremblecrust_brick_slab_stonecutting"));
-        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_BRICK_STAIRS.get()).save(consumer, name("tremblecrust_brick_stairs_stonecutting"));
-        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_BRICK_WALL.get()).save(consumer, name("tremblecrust_brick_wall_stonecutting"));
-        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_BRICKS.get()).save(consumer, name("tremblecrust_bricks_stonecutting"));
-        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_SLAB.get(), 2).save(consumer, name("tremblecrust_slab_stonecutting"));
-        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_STAIRS.get()).save(consumer, name("tremblecrust_stairs_stonecutting"));
-        tremblecrustStonecuttingRecipe(UGBlocks.TREMBLECRUST_WALL.get()).save(consumer, name("tremblecrust_wall_stonecutting"));
+        tremblecrustStonecutting(UGBlocks.CHISELED_TREMBLECRUST_BRICKS.get()).save(consumer, name("chiseled_tremblecrust_bricks_stonecutting"));
+        tremblecrustStonecutting(UGBlocks.TREMBLECRUST_BRICK_SLAB.get(), 2).save(consumer, name("tremblecrust_brick_slab_stonecutting"));
+        tremblecrustStonecutting(UGBlocks.TREMBLECRUST_BRICK_STAIRS.get()).save(consumer, name("tremblecrust_brick_stairs_stonecutting"));
+        tremblecrustStonecutting(UGBlocks.TREMBLECRUST_BRICK_WALL.get()).save(consumer, name("tremblecrust_brick_wall_stonecutting"));
+        tremblecrustStonecutting(UGBlocks.TREMBLECRUST_BRICKS.get()).save(consumer, name("tremblecrust_bricks_stonecutting"));
+        tremblecrustStonecutting(UGBlocks.TREMBLECRUST_SLAB.get(), 2).save(consumer, name("tremblecrust_slab_stonecutting"));
+        tremblecrustStonecutting(UGBlocks.TREMBLECRUST_STAIRS.get()).save(consumer, name("tremblecrust_stairs_stonecutting"));
+        tremblecrustStonecutting(UGBlocks.TREMBLECRUST_WALL.get()).save(consumer, name("tremblecrust_wall_stonecutting"));
+        tremblecrustBricksStonecutting(UGBlocks.CHISELED_TREMBLECRUST_BRICKS.get()).save(consumer, name("tremblecrust_bricks_to_chiseled_tremblecrust_bricks_stonecutting"));
+        tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_SLAB.get(), 2).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_slab_stonecutting"));
+        tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_STAIRS.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_stairs_stonecutting"));
+        tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_WALL.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_wall_stonecutting"));
     }
 
     private ResourceLocation name(String name) {
