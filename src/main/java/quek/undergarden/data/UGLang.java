@@ -112,7 +112,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE, "Shiverstone Cloggrum Ore");
         addBlock(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE, "Shiverstone Froststeel Ore");
         addBlock(UGBlocks.DEPTHROCK_UTHERIUM_ORE, "Depthrock Utherium Ore");
-        addBlock(UGBlocks.SHIVERSTONE_UTHERIUM_ORE, "Shiverstone Utherium");
+        addBlock(UGBlocks.SHIVERSTONE_UTHERIUM_ORE, "Shiverstone Utherium Ore");
         addBlock(UGBlocks.TREMBLECRUST_UTHERIUM_ORE, "Tremblecrust Utherium Ore");
         addBlock(UGBlocks.DEPTHROCK_REGALIUM_ORE, "Depthrock Regalium Ore");
         addBlock(UGBlocks.SHIVERSTONE_REGALIUM_ORE, "Shiverstone Regalium Ore");
