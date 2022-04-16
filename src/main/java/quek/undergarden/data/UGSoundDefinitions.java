@@ -289,6 +289,9 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:block/gronglet/gronglet_5"),
                 sound("undergarden:block/gronglet/gronglet_6")
         ).subtitle("subtitles.block.generic.place"));
+        this.add(UGSoundEvents.GRONGLET_BURN, definition().with(
+                sound("undergarden:block/gronglet/gronglet_burn")
+        ).subtitle("subtitles.block.gronglet.burn"));
 
         this.add(UGSoundEvents.BLISTERBOMB_THROW, definition().with(
                 sound("undergarden:item/blisterbomb")

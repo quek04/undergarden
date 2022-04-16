@@ -395,6 +395,12 @@
       "undergarden:block/gronglet/gronglet_6"
     ]
   },
+  "block.gronglet.burn": {
+    "subtitle": "subtitles.block.gronglet.burn",
+    "sounds": [
+      "undergarden:block/gronglet/gronglet_burn"
+    ]
+  },
   "item.blisterbomb": {
     "subtitle": "subtitles.item.blisterbomb",
     "sounds": [

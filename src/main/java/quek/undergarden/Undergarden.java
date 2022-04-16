@@ -306,6 +306,7 @@ public class Undergarden {
 			//other
 			fire.setFlammable(UGBlocks.MOGMOSS_RUG.get(), 60, 20);
 			fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
+			fire.setFlammable(UGBlocks.GRONGLET.get(), 100, 100);
 		});
 	}
 

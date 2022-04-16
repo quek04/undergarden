@@ -398,6 +398,7 @@
   "item.undergarden.wigglewood_boat": "Wigglewood Boat",
   "itemGroup.undergarden_group": "The Undergarden",
   "subtitles.block.gronglet.ambient": "Gronglet chirps",
+  "subtitles.block.gronglet.burn": "Gronglet shrieks",
   "subtitles.block.undergarden_portal_activate": "Undergarden Portal activates",
   "subtitles.block.undergarden_portal_ambient": "Undergarden Portal beckons",
   "subtitles.block.undergarden_portal_travel": "Travelling through Undergarden portal",

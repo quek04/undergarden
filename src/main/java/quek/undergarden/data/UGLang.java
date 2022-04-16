@@ -521,6 +521,7 @@ public class UGLang extends LanguageProvider {
         addSubtitle("block", "virulent.bubble", "Virulent Mix bubbles");
 
         addSubtitle("block", "gronglet.ambient", "Gronglet chirps");
+        addSubtitle("block", "gronglet.burn", "Gronglet shrieks");
 
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
 

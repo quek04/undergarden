@@ -49,6 +49,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> GRONGLET_AMBIENT = register("block.gronglet.ambient");
     public static final RegistryObject<SoundEvent> GRONGLET_BREAK = register("block.gronglet.break");
     public static final RegistryObject<SoundEvent> GRONGLET_PLACE = register("block.gronglet.place");
+    public static final RegistryObject<SoundEvent> GRONGLET_BURN = register("block.gronglet.burn");
 
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
 
