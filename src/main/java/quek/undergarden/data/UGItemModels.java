@@ -235,6 +235,7 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.POLISHED_DEPTHROCK);
         block(UGBlocks.POLISHED_DEPTHROCK_SLAB);
         block(UGBlocks.POLISHED_DEPTHROCK_STAIRS);
+        normalItem(UGItems.DITCHBULB_PASTE);
 
         egg(UGItems.DWELLER_SPAWN_EGG);
         egg(UGItems.GWIBLING_SPAWN_EGG);
