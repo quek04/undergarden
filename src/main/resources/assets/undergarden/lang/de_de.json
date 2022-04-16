@@ -467,7 +467,6 @@
     "subtitles.entity.stoneborn_pleased":"Steingebohrener zufrieden",
     "subtitles.entity.stoneborn_speaking":"Steingebohrener redet",
     "subtitles.item.blisterbomb":"Blasenbombe geworfen",
-    "subtitles.item.ditchbulb.use":"Grabenknolle gluckst",
     "subtitles.item.pick_blisterberry_bush":"Blasenbeerenbush gepflückt",
     "subtitles.item.slingshot.gronglet_shoot":"Schleuder gefeuert",
     "subtitles.item.slingshot_draw":"Schleuder gezogen",
@@ -477,5 +476,10 @@
     "tooltip.forgotten_tool":"Baut Blöcke vom Undergarden 1,5 mal so schnell ab.",
     "tooltip.froststeel_sword":"Verlangsamt Ziel.",
     "tooltip.pebble":"Kann als Munition für die Schleuder benutzt werden.",
-    "tooltip.utheric_sword":"Macht 1,5x mal so viel Schaden zu Moderwesen."
+    "tooltip.utheric_sword":"Macht 1,5x mal so viel Schaden zu Moderwesen.",
+    "enchantment.undergarden.longevity.desc":"Erhöht die maximale haltbarkeit der Schleuder.",
+    "enchantment.undergarden.ricochet.desc":"Projektile, die von der Schleuder abgefeuert werden, prallen von Blockoberflächen ab.",
+    "enchantment.undergarden.self_sling.desc":"Anstatt Munition abzufeuern, feuert die Schleuder Sie ab. Man muss auf dem boden sein.",
+    "item.undergarden.ditchbulb_paste":"Grabenknollenpaste",
+    "subtitles.item.ditchbulb_paste.use":"Grabenknollenpaste gluckst"
 }
