@@ -61,6 +61,7 @@ public class GrongletEntity extends SlingshotProjectile {
         } else {
             this.spawnAtLocation(new ItemStack(getDefaultItem()));
         }
+        this.level.playSound(null, result.getEntity().blockPosition(), UGSoundEvents.GRONGLET_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         this.discard();
     }
 }
