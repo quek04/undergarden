@@ -322,6 +322,12 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:item/bucket/empty_virulent_mix_3")
         ).subtitle("subtitles.item.bucket.empty"));
 
+        this.add(UGSoundEvents.DITCHBULB_USE, definition().with(
+                sound("minecraft:item/ink_sac/ink_sac1"),
+                sound("minecraft:item/ink_sac/ink_sac2"),
+                sound("minecraft:item/ink_sac/ink_sac3")
+        ).subtitle("subtitles.item.ditchbulb.use"));
+
         this.add(UGSoundEvents.DWELLER_AMBIENT, definition().with(
                 sound("undergarden:entity/dweller_ambient_1"),
                 sound("undergarden:entity/dweller_ambient_2"),

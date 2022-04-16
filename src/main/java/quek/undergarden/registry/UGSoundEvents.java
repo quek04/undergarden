@@ -61,6 +61,8 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> BUCKET_FILL_VIRULENT = register("item.bucket.fill_virulent");
     public static final RegistryObject<SoundEvent> BUCKET_EMPTY_VIRULENT = register("item.bucket.empty_virulent");
 
+    public static final RegistryObject<SoundEvent> DITCHBULB_USE = register("item.ditchbulb.use");
+
     public static final RegistryObject<SoundEvent> DWELLER_AMBIENT = register("entity.dweller_ambient");
     public static final RegistryObject<SoundEvent> DWELLER_HURT = register("entity.dweller_hurt");
     public static final RegistryObject<SoundEvent> DWELLER_DEATH = register("entity.dweller_death");

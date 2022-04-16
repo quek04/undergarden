@@ -444,6 +444,14 @@
       "undergarden:item/bucket/empty_virulent_mix_3"
     ]
   },
+  "item.ditchbulb.use": {
+    "subtitle": "subtitles.item.ditchbulb.use",
+    "sounds": [
+      "item/ink_sac/ink_sac1",
+      "item/ink_sac/ink_sac2",
+      "item/ink_sac/ink_sac3"
+    ]
+  },
   "entity.dweller_ambient": {
     "subtitle": "subtitles.entity.dweller_ambient",
     "sounds": [

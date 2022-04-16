@@ -47,7 +47,7 @@ public class GrongletEntity extends SlingshotProjectile {
                 this.level.setBlock(pos.relative(direction), UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction), 2);
                 this.level.playSound(null, pos, UGSoundEvents.GRONGLET_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             } else {
-                this.spawnAtLocation(new ItemStack(getDefaultItem()));
+                this.spawnAtLocation(new ItemStack(this.getDefaultItem()));
             }
             this.discard();
         }
@@ -57,9 +57,9 @@ public class GrongletEntity extends SlingshotProjectile {
     protected void onHitEntity(EntityHitResult result) {
         LivingEntity entity = (LivingEntity) result.getEntity();
         if (entity instanceof Player player && !player.hasItemInSlot(EquipmentSlot.HEAD)) {
-            player.setItemSlot(EquipmentSlot.HEAD, new ItemStack(UGBlocks.GRONGLET.get()));
+            player.setItemSlot(EquipmentSlot.HEAD, new ItemStack(this.getDefaultItem()));
         } else {
-            this.spawnAtLocation(new ItemStack(getDefaultItem()));
+            this.spawnAtLocation(new ItemStack(this.getDefaultItem()));
         }
         this.level.playSound(null, result.getEntity().blockPosition(), UGSoundEvents.GRONGLET_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         this.discard();
