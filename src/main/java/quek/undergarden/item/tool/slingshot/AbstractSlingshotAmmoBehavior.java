@@ -23,7 +23,7 @@ public abstract class AbstractSlingshotAmmoBehavior {
 	public abstract SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack);
 
 	/**
-	 * Sets the sound to play when a projectile is fired. By default it's set to be UGSoundEvents.SLINGSHOT_SHOOT, but you can set it to be whatever you want.
+	 * Sets the sound to play when a projectile is fired. By default, it's set to be UGSoundEvents.SLINGSHOT_SHOOT, but you can set it to be whatever you want.
 	 *
 	 * @return the sound to play when fired
 	 */

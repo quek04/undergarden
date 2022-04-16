@@ -300,7 +300,7 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
         this.add(UGSoundEvents.SLINGSHOT_DRAW, definition().with(
                 sound("undergarden:item/slingshot_draw_1"),
                 sound("undergarden:item/slingshot_draw_2")
-        ).subtitle("subtitles.item.slingshot_shoot"));
+        ).subtitle("subtitles.item.slingshot_draw"));
         this.add(UGSoundEvents.GRONGLET_SHOOT, definition().with(
                 sound("undergarden:item/gronglet_shoot_1"),
                 sound("undergarden:item/gronglet_shoot_2")

@@ -408,7 +408,7 @@
     ]
   },
   "item.slingshot_draw": {
-    "subtitle": "subtitles.item.slingshot_shoot",
+    "subtitle": "subtitles.item.slingshot_draw",
     "sounds": [
       "undergarden:item/slingshot_draw_1",
       "undergarden:item/slingshot_draw_2"
