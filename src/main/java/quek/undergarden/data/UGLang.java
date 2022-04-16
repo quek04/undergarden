@@ -267,6 +267,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
         addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");
         addItem(UGItems.DITCHBULB, "Ditchbulb");
+        addItem(UGItems.DITCHBULB_PASTE, "Ditchbulb Paste");
         addItem(UGItems.BRUTE_TUSK, "Brute Tusk");
         addItem(UGItems.MOGMOSS, "Mogmoss");
         addItem(UGItems.GOO_BALL, "Scintling Goo Ball");

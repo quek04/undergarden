@@ -70,7 +70,7 @@ public class UGItemTags extends ItemTagsProvider {
         tag(ItemTags.WOODEN_TRAPDOORS).add(UGBlocks.SMOGSTEM_TRAPDOOR.get().asItem(), UGBlocks.WIGGLEWOOD_TRAPDOOR.get().asItem(), UGBlocks.GRONGLE_TRAPDOOR.get().asItem());
         tag(ItemTags.SIGNS).add(UGBlocks.SMOGSTEM_SIGN.get().asItem(), UGBlocks.WIGGLEWOOD_SIGN.get().asItem(), UGBlocks.GRONGLE_SIGN.get().asItem());
         tag(ItemTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get().asItem());
-        tag(ItemTags.COALS).add(UGItems.DITCHBULB.get());
+        tag(ItemTags.COALS).add(UGItems.DITCHBULB_PASTE.get());
         tag(ItemTags.BEACON_PAYMENT_ITEMS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_CRYSTAL.get(), UGItems.REGALIUM_CRYSTAL.get(), UGItems.FORGOTTEN_INGOT.get());
         tag(ItemTags.STONE_TOOL_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());

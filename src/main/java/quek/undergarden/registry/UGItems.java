@@ -51,7 +51,8 @@ public class UGItems {
 
     public static final RegistryObject<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", () -> new SlingshotAmmoItem(new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> TWISTYTWIG = ITEMS.register("twistytwig", UGItem::new);
-    public static final RegistryObject<Item> DITCHBULB = ITEMS.register("ditchbulb", DitchbulbItem::new);
+    public static final RegistryObject<Item> DITCHBULB = ITEMS.register("ditchbulb", () -> new ItemNameBlockItem(UGBlocks.DITCHBULB_PLANT.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
+    public static final RegistryObject<Item> DITCHBULB_PASTE = ITEMS.register("ditchbulb_paste", DitchbulbPasteItem::new);
     public static final RegistryObject<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", UGItem::new);
     public static final RegistryObject<Item> MOGMOSS = ITEMS.register("mogmoss", UGItem::new);
 

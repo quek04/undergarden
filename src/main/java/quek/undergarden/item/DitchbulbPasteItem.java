@@ -3,7 +3,7 @@ package quek.undergarden.item;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -15,17 +15,16 @@ import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
-import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class DitchbulbItem extends ItemNameBlockItem {
+public class DitchbulbPasteItem extends Item {
 
-    public DitchbulbItem() {
-        super(UGBlocks.DITCHBULB_PLANT.get(), new Properties()
+    public DitchbulbPasteItem() {
+        super(new Properties()
                 .tab(UGItemGroups.GROUP)
         );
     }

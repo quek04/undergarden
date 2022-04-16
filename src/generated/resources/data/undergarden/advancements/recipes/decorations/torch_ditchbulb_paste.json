@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "undergarden:smogstem_torch_ditchbulb"
+      "undergarden:torch_ditchbulb_paste"
     ]
   },
   "criteria": {
-    "has_ditchbulb": {
+    "has_ditchbulb_paste": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:ditchbulb"
+              "undergarden:ditchbulb_paste"
             ]
           }
         ]
@@ -31,13 +31,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "undergarden:smogstem_torch_ditchbulb"
+        "recipe": "undergarden:torch_ditchbulb_paste"
       }
     }
   },
   "requirements": [
     [
-      "has_ditchbulb",
+      "has_ditchbulb_paste",
       "has_stick",
       "has_the_recipe"
     ]

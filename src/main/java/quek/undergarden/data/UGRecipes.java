@@ -171,11 +171,11 @@ public class UGRecipes extends UGRecipeProvider {
         ShapedRecipeBuilder.shaped(Items.TORCH, 2)
                 .pattern("D")
                 .pattern("S")
-                .define('D', UGItems.DITCHBULB.get())
+                .define('D', UGItems.DITCHBULB_PASTE.get())
                 .define('S', Tags.Items.RODS_WOODEN)
-                .unlockedBy("has_ditchbulb", has(UGItems.DITCHBULB.get()))
+                .unlockedBy("has_ditchbulb_paste", has(UGItems.DITCHBULB_PASTE.get()))
                 .unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-                .save(consumer, name("smogstem_torch_ditchbulb"));
+                .save(consumer, name("torch_ditchbulb_paste"));
 
         ShapedRecipeBuilder.shaped(UGItems.CATALYST.get())
                 .pattern("GIG")
@@ -280,6 +280,11 @@ public class UGRecipes extends UGRecipeProvider {
                 .define('G', UGBlocks.GLOOMGOURD.get())
                 .unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
                 .unlockedBy("has_blisterbomb", has(UGItems.BLISTERBOMB.get()))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(UGItems.DITCHBULB_PASTE.get())
+                .requires(UGItems.DITCHBULB.get())
+                .unlockedBy("has_ditchbulb", has(UGItems.DITCHBULB.get()))
                 .save(consumer);
 
         makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
