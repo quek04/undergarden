@@ -450,8 +450,8 @@
       "undergarden:item/bucket/empty_virulent_mix_3"
     ]
   },
-  "item.ditchbulb.use": {
-    "subtitle": "subtitles.item.ditchbulb.use",
+  "item.ditchbulb_paste.use": {
+    "subtitle": "subtitles.item.ditchbulb_paste.use",
     "sounds": [
       "item/ink_sac/ink_sac1",
       "item/ink_sac/ink_sac2",
