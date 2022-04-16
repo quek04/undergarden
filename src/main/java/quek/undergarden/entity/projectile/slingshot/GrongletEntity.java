@@ -4,7 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -53,7 +55,12 @@ public class GrongletEntity extends SlingshotProjectile {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        this.spawnAtLocation(new ItemStack(getDefaultItem()));
+        LivingEntity entity = (LivingEntity) result.getEntity();
+        if (entity instanceof Player player && !player.hasItemInSlot(EquipmentSlot.HEAD)) {
+            player.setItemSlot(EquipmentSlot.HEAD, new ItemStack(UGBlocks.GRONGLET.get()));
+        } else {
+            this.spawnAtLocation(new ItemStack(getDefaultItem()));
+        }
         this.discard();
     }
 }
