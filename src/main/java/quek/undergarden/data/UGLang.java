@@ -403,10 +403,6 @@ public class UGLang extends LanguageProvider {
         addEffect(UGEffects.FEATHERWEIGHT, "Featherweight");
         addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
 
-        addEnchantment(UGEnchantments.RICOCHET, "Ricochet");
-        addEnchantment(UGEnchantments.LONGEVITY, "Longevity");
-        addEnchantment(UGEnchantments.SELF_SLING, "Self Sling");
-
         //JEED compat
         add("effect.undergarden.gooey.description", "Scintling Goo will constantly be placed under victim's feet.");
         add("effect.undergarden.brittleness.description", "The higher the victim's armor value is, the more damage they will take. Amount of damage received scales with potion level.");
@@ -417,6 +413,15 @@ public class UGLang extends LanguageProvider {
         addPotion(UGPotions.FEATHERWEIGHT, "Featherweight");
         addPotion(UGPotions.VIRULENT_RESISTANCE, "Virulent Resistance");
         addPotion(UGPotions.GLOWING, "Glowing");
+
+        addEnchantment(UGEnchantments.RICOCHET, "Ricochet");
+        addEnchantment(UGEnchantments.LONGEVITY, "Longevity");
+        addEnchantment(UGEnchantments.SELF_SLING, "Self Sling");
+
+        //Enchantment Descriptions compat
+        add("enchantment.undergarden.ricochet.desc", "Projectiles fired by the Slingshot will bounce off block surfaces.");
+        add("enchantment.undergarden.longevity.desc", "Increases max durability of the Slingshot.");
+        add("enchantment.undergarden.self_sling.desc", "Instead of firing ammo, the Slingshot fires you. Requires you to be on the ground.");
 
         addAdvTitle("root", "The Undergarden");
 
