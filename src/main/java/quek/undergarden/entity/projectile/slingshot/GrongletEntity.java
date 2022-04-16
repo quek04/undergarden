@@ -2,6 +2,7 @@ package quek.undergarden.entity.projectile.slingshot;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -12,6 +13,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import quek.undergarden.block.GrongletBlock;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGSoundEvents;
 
 public class GrongletEntity extends SlingshotProjectile {
 
@@ -41,6 +43,7 @@ public class GrongletEntity extends SlingshotProjectile {
             Direction direction = result.getDirection();
             if (UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction).canSurvive(this.level, pos.relative(direction)) && this.level.getBlockState(pos.relative(direction)).isAir()) {
                 this.level.setBlock(pos.relative(direction), UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction), 2);
+                this.level.playSound(null, pos, UGSoundEvents.GRONGLET_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             } else {
                 this.spawnAtLocation(new ItemStack(getDefaultItem()));
             }
