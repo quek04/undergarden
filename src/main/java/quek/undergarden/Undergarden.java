@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
 import net.minecraft.core.Position;
-import net.minecraft.core.Registry;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
@@ -69,7 +68,8 @@ public class Undergarden {
 				UGSoundEvents.SOUNDS,
 				UGStructures.STRUCTURES,
 				UGBlockEntities.BLOCK_ENTITIES,
-				UGTreeDecoratorTypes.TREE_DECORATORS
+				UGTreeDecoratorTypes.TREE_DECORATORS,
+				UGTrunkPlacerTypes.TRUNK_PLACERS
 		};
 
 		for (DeferredRegister<?> register : registers) {
@@ -79,9 +79,6 @@ public class Undergarden {
 
 	public void setup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			//this is here because there is no deferred register for trunk placers!
-			Registry.register(Registry.TRUNK_PLACER_TYPES, new ResourceLocation(Undergarden.MODID, "smogstem_trunk_placer"), UGTrunkPlacerTypes.SMOGSTEM_TRUNK_PLACER);
-
 			UGConfiguredFeatures.init();
 			UGPlacedFeatures.init();
 			UGConfiguredCarvers.init();

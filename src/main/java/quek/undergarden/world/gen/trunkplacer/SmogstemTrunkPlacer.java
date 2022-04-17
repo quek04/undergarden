@@ -29,7 +29,7 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
 
     @Override
     protected TrunkPlacerType<?> type() {
-        return UGTrunkPlacerTypes.SMOGSTEM_TRUNK_PLACER;
+        return UGTrunkPlacerTypes.SMOGSTEM_TRUNK_PLACER.get();
     }
 
     @Override
