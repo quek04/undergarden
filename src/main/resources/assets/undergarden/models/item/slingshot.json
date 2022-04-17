@@ -73,6 +73,29 @@
         {
             "predicate": {
                 "pulling": 1,
+                "gronglet": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gronglet_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65,
+                "gronglet": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gronglet_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9,
+                "gronglet": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gronglet_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
                 "self_sling": 1
             },
             "model": "undergarden:item/slingshot_pulling_self_0"
