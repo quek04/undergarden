@@ -20,16 +20,12 @@ import quek.undergarden.client.model.UGModelLayers;
 public class GrongletRender implements BlockEntityRenderer<GrongletBlockEntity> {
 
     private final ModelPart burs;
-    private final ModelPart sideBurs;
-    private final ModelPart edgeBurs;
     private final ModelPart limbs;
     private final ModelPart body;
 
     public GrongletRender(BlockEntityRendererProvider.Context context) {
         ModelPart gronglet = context.bakeLayer(UGModelLayers.GRONGLET);
         this.burs = gronglet.getChild("burs");
-        this.sideBurs = burs.getChild("side_burs");
-        this.edgeBurs = burs.getChild("edge_burs");
         this.limbs = gronglet.getChild("limbs");
         this.body = gronglet.getChild("body");
     }
