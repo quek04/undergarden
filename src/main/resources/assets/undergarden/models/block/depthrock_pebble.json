@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "undergarden:block/depthrock_pebbles_alt",
-		"particle": "undergarden:block/depthrock_pebbles_alt"
+		"0": "undergarden:block/depthrock_pebble",
+		"particle": "undergarden:block/depthrock_pebble"
 	},
 	"elements": [
 		{

@@ -15,6 +15,7 @@ import quek.undergarden.item.*;
 import quek.undergarden.item.armor.MasticatedChestplateItem;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
+import quek.undergarden.item.tool.slingshot.DepthrockPebbleItem;
 import quek.undergarden.item.tool.slingshot.RottenBlisterberryItem;
 import quek.undergarden.item.tool.slingshot.SlingshotAmmoItem;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
@@ -49,7 +50,7 @@ public class UGItems {
     public static final RegistryObject<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new UGItem(FORGOTTEN));
     public static final RegistryObject<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new UGItem(FORGOTTEN));
 
-    public static final RegistryObject<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", () -> new SlingshotAmmoItem(new Item.Properties().tab(UGItemGroups.GROUP)));
+    public static final RegistryObject<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", () -> new DepthrockPebbleItem(UGBlocks.DEPTHROCK_PEBBLES.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> TWISTYTWIG = ITEMS.register("twistytwig", UGItem::new);
     public static final RegistryObject<Item> DITCHBULB = ITEMS.register("ditchbulb", () -> new ItemNameBlockItem(UGBlocks.DITCHBULB_PLANT.get(), new Item.Properties().tab(UGItemGroups.GROUP)));
     public static final RegistryObject<Item> DITCHBULB_PASTE = ITEMS.register("ditchbulb_paste", DitchbulbPasteItem::new);
