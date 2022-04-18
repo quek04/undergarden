@@ -46,15 +46,23 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> VIRULENT_FLOW = register("block.virulent.flow");
     public static final RegistryObject<SoundEvent> VIRULENT_BUBBLE = register("block.virulent.bubble");
 
+    public static final RegistryObject<SoundEvent> GRONGLET_AMBIENT = register("block.gronglet.ambient");
+    public static final RegistryObject<SoundEvent> GRONGLET_BREAK = register("block.gronglet.break");
+    public static final RegistryObject<SoundEvent> GRONGLET_PLACE = register("block.gronglet.place");
+    public static final RegistryObject<SoundEvent> GRONGLET_BURN = register("block.gronglet.burn");
+
     public static final RegistryObject<SoundEvent> BLISTERBOMB_THROW = register("item.blisterbomb");
 
     public static final RegistryObject<SoundEvent> SLINGSHOT_SHOOT = register("item.slingshot_shoot");
     public static final RegistryObject<SoundEvent> SLINGSHOT_DRAW = register("item.slingshot_draw");
+    public static final RegistryObject<SoundEvent> GRONGLET_SHOOT = register("item.slingshot.gronglet_shoot");
 
     public static final RegistryObject<SoundEvent> PICK_BLISTERBERRY_BUSH = register("item.pick_blisterberry_bush");
 
     public static final RegistryObject<SoundEvent> BUCKET_FILL_VIRULENT = register("item.bucket.fill_virulent");
     public static final RegistryObject<SoundEvent> BUCKET_EMPTY_VIRULENT = register("item.bucket.empty_virulent");
+
+    public static final RegistryObject<SoundEvent> DITCHBULB_PASTE_USE = register("item.ditchbulb_paste.use");
 
     public static final RegistryObject<SoundEvent> DWELLER_AMBIENT = register("entity.dweller_ambient");
     public static final RegistryObject<SoundEvent> DWELLER_HURT = register("entity.dweller_hurt");
@@ -138,6 +146,9 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> MOG_AMBIENT = register("entity.mog_ambient");
     public static final RegistryObject<SoundEvent> MOG_HURT = register("entity.mog_hurt");
     public static final RegistryObject<SoundEvent> MOG_DEATH = register("entity.mog_death");
+
+    public static final RegistryObject<SoundEvent> SCINTLING_HURT = register("entity.scintling.hurt");
+    public static final RegistryObject<SoundEvent> SCINTLING_DEATH = register("entity.scintling.death");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Undergarden.MODID, name)));

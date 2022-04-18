@@ -1,14 +1,15 @@
 package quek.undergarden.registry;
 
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 
 public class UGFoods {
 
     public static final FoodProperties UNDERBEANS = (new FoodProperties.Builder().nutrition(3).saturationMod(0.2F).fast().build());
     public static final FoodProperties ROASTED_UNDERBEANS = (new FoodProperties.Builder().nutrition(6).saturationMod(0.4F).build());
     public static final FoodProperties BLISTERBERRY = (new FoodProperties.Builder().nutrition(6).saturationMod(0.2F).build());
+    public static final FoodProperties ROTTEN_BLISTERBERRY = (new FoodProperties.Builder().nutrition(3).saturationMod(0.1F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).build());
     public static final FoodProperties GLOOMGOURD_PIE = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.5F).effect(() -> new MobEffectInstance(UGEffects.VIRULENT_RESISTANCE.get(), 600, 0, false, true), 1.0F).build();
     public static final FoodProperties RAW_DWELLER = (new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).meat().build());
     public static final FoodProperties COOKED_DWELLER = (new FoodProperties.Builder().nutrition(8).saturationMod(1.2F).meat().build());

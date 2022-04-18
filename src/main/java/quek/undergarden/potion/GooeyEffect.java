@@ -7,6 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.entity.animal.ScintlingEntity;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGEffects;
 
 public class GooeyEffect extends MobEffect {
 
@@ -26,6 +27,6 @@ public class GooeyEffect extends MobEffect {
 
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
-        return duration > 0;
+        return this == UGEffects.GOOEY.get();
     }
 }

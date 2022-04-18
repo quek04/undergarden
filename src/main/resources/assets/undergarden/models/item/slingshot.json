@@ -23,6 +23,98 @@
                 "pull": 0.9
             },
             "model": "undergarden:item/slingshot_pulling_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "rotten_blisterberry": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_blisterberry_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65,
+                "rotten_blisterberry": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_blisterberry_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9,
+                "rotten_blisterberry": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_blisterberry_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "goo_ball": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gooball_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65,
+                "goo_ball": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gooball_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9,
+                "goo_ball": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gooball_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "gronglet": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gronglet_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65,
+                "gronglet": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gronglet_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9,
+                "gronglet": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_gronglet_2"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "self_sling": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_self_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65,
+                "self_sling": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_self_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9,
+                "self_sling": 1
+            },
+            "model": "undergarden:item/slingshot_pulling_self_2"
         }
     ]
 }

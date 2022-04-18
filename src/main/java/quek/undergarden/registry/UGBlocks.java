@@ -24,6 +24,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.item.CarvedGloomgourdItem;
+import quek.undergarden.item.tool.slingshot.GrongletItem;
 import quek.undergarden.world.gen.tree.GrongleTree;
 import quek.undergarden.world.gen.tree.SmogstemTree;
 import quek.undergarden.world.gen.tree.WigglewoodTree;
@@ -153,9 +154,10 @@ public class UGBlocks {
     public static final RegistryObject<Block> CARVED_GLOOMGOURD = register("carved_gloomgourd", () -> new CarvedGloomgourdBlock(BlockBehaviour.Properties.copy(Blocks.CARVED_PUMPKIN)));
     public static final RegistryObject<Block> GLOOM_O_LANTERN = register("gloom_o_lantern", () -> new CarvedGloomgourdBlock(BlockBehaviour.Properties.copy(Blocks.JACK_O_LANTERN).lightLevel((state) -> 15)));
     public static final RegistryObject<Block> SHARD_O_LANTERN = register("shard_o_lantern", () -> new CarvedGloomgourdShardBlock(BlockBehaviour.Properties.copy(GLOOM_O_LANTERN.get()).lightLevel((state) -> 6)));
+    public static final RegistryObject<Block> BOOMGOURD = register("boomgourd", () -> new BoomgourdBlock(BlockBehaviour.Properties.copy(Blocks.TNT).strength(1.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<StemBlock> GLOOMGOURD_STEM = BLOCKS.register("gloomgourd_stem", () -> new UGStemBlock(GLOOMGOURD.get(), BlockBehaviour.Properties.copy(Blocks.PUMPKIN_STEM)));
     public static final RegistryObject<AttachedStemBlock> GLOOMGOURD_STEM_ATTACHED = BLOCKS.register("gloomgourd_stem_attached", () -> new UGAttachedStemBlock(GLOOMGOURD.get(), BlockBehaviour.Properties.copy(Blocks.ATTACHED_PUMPKIN_STEM)));
-    public static final RegistryObject<Block> DEPTHROCK_PEBBLES = register("depthrock_pebbles", () -> new DepthrockPebblesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.BASALT).noOcclusion().noCollission().strength(0F)));
+    public static final RegistryObject<Block> DEPTHROCK_PEBBLES = BLOCKS.register("depthrock_pebbles", () -> new DepthrockPebblesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.BASALT).noOcclusion().noCollission().strength(0F)));
     public static final RegistryObject<GlitterkelpBlock> GLITTERKELP = BLOCKS.register("glitterkelp", () -> new GlitterkelpBlock(BlockBehaviour.Properties.copy(Blocks.KELP).lightLevel((state) -> 10)));
     public static final RegistryObject<GlitterkelpPlantBlock> GLITTERKELP_PLANT = BLOCKS.register("glitterkelp_plant", () -> new GlitterkelpPlantBlock(BlockBehaviour.Properties.copy(Blocks.KELP_PLANT).lightLevel((state) -> 10)));
     public static final RegistryObject<DroopvineBlock> DROOPVINE = BLOCKS.register("droopvine", () -> new DroopvineBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES).strength(0.1F).lightLevel(Droopvine.light())));
@@ -245,6 +247,8 @@ public class UGBlocks {
     public static final RegistryObject<StandingSignBlock> GRONGLE_SIGN = register("grongle_sign", () -> new UGStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), GRONGLE_WOODTYPE));
     public static final RegistryObject<WallSignBlock> GRONGLE_WALL_SIGN = BLOCKS.register("grongle_wall_sign", () -> new UGWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), GRONGLE_WOODTYPE));
 
+    public static final RegistryObject<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of(Material.DECORATION).lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+
     //flower pots
     public static final RegistryObject<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = BLOCKS.register("potted_smogstem_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_WIGGLEWOOD_SAPLING = BLOCKS.register("potted_wigglewood_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, WIGGLEWOOD_SAPLING, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
@@ -282,6 +286,19 @@ public class UGBlocks {
             }
             else if(Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
                 return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)) {
+                    @Override
+                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+                        consumer.accept(new IItemRenderProperties() {
+                            @Override
+                            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                                return new UndergardenBEWLR();
+                            }
+                        });
+                    }
+                };
+            }
+            else if(Objects.requireNonNull(block.get()) == GRONGLET.get()) {
+                return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
                     @Override
                     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
                         consumer.accept(new IItemRenderProperties() {

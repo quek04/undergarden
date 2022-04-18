@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:boomgourd"
+    ]
+  },
+  "criteria": {
+    "has_gloomgourd": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:gloomgourd"
+            ]
+          }
+        ]
+      }
+    },
+    "has_blisterbomb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:blisterbomb"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:boomgourd"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gloomgourd",
+      "has_blisterbomb",
+      "has_the_recipe"
+    ]
+  ]
+}

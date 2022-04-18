@@ -10,5 +10,5 @@ public class UGItemGroups {
         public ItemStack makeIcon() {
             return new ItemStack(UGBlocks.DEEPTURF_BLOCK.get());
         }
-    };
+    }.setEnchantmentCategories(UGEnchantments.SLINGSHOT);
 }

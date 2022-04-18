@@ -13,6 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
+import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.entity.GwibEntity;
 import quek.undergarden.entity.MinionEntity;
 import quek.undergarden.entity.UGBoatEntity;
@@ -23,7 +24,12 @@ import quek.undergarden.entity.cavern.CavernEntity;
 import quek.undergarden.entity.cavern.MuncherEntity;
 import quek.undergarden.entity.cavern.NargoyleEntity;
 import quek.undergarden.entity.cavern.SploogieEntity;
-import quek.undergarden.entity.projectile.*;
+import quek.undergarden.entity.projectile.BlisterbombEntity;
+import quek.undergarden.entity.projectile.MinionProjectileEntity;
+import quek.undergarden.entity.projectile.slingshot.DepthrockPebbleEntity;
+import quek.undergarden.entity.projectile.slingshot.GooBallEntity;
+import quek.undergarden.entity.projectile.slingshot.GrongletEntity;
+import quek.undergarden.entity.projectile.slingshot.RottenBlisterberryEntity;
 import quek.undergarden.entity.rotspawn.RotbeastEntity;
 import quek.undergarden.entity.rotspawn.RotlingEntity;
 import quek.undergarden.entity.rotspawn.RotspawnEntity;
@@ -37,10 +43,12 @@ public class UGEntityTypes {
 
     //misc
     public static final RegistryObject<EntityType<UGBoatEntity>> BOAT = ENTITIES.register("boat", () -> EntityType.Builder.<UGBoatEntity>of(UGBoatEntity::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("boat"));
-    public static final RegistryObject<EntityType<SlingshotAmmoEntity>> SLINGSHOT_AMMO = ENTITIES.register("slingshot_ammo", () -> EntityType.Builder.<SlingshotAmmoEntity>of(SlingshotAmmoEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("slingshot_ammo"));
+    public static final RegistryObject<EntityType<Boomgourd>> BOOMGOURD = ENTITIES.register("boomgourd", () -> EntityType.Builder.<Boomgourd>of(Boomgourd::new, MobCategory.MISC).fireImmune().sized(1.0F, 1.0F).clientTrackingRange(10).updateInterval(10).build("boomgourd"));
+    public static final RegistryObject<EntityType<DepthrockPebbleEntity>> DEPTHROCK_PEBBLE = ENTITIES.register("depthrock_pebble", () -> EntityType.Builder.<DepthrockPebbleEntity>of(DepthrockPebbleEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("depthrock_pebble"));
     public static final RegistryObject<EntityType<GooBallEntity>> GOO_BALL = ENTITIES.register("goo_ball", () -> EntityType.Builder.<GooBallEntity>of(GooBallEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("goo_ball"));
     public static final RegistryObject<EntityType<RottenBlisterberryEntity>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> EntityType.Builder.<RottenBlisterberryEntity>of(RottenBlisterberryEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("rotten_blisterberry"));
     public static final RegistryObject<EntityType<BlisterbombEntity>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> EntityType.Builder.<BlisterbombEntity>of(BlisterbombEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).build("blisterbomb"));
+    public static final RegistryObject<EntityType<GrongletEntity>> GRONGLET = ENTITIES.register("gronglet", () -> EntityType.Builder.<GrongletEntity>of(GrongletEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).build("gronglet"));
     public static final RegistryObject<EntityType<MinionProjectileEntity>> MINION_PROJECTILE = ENTITIES.register("minion_projectile", () -> EntityType.Builder.<MinionProjectileEntity>of(MinionProjectileEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("minion_projectile"));
     public static final RegistryObject<EntityType<MinionEntity>> MINION = ENTITIES.register("minion", () -> EntityType.Builder.of(MinionEntity::new, MobCategory.MISC).sized(1.0F, 1.6F).build("minion"));
 

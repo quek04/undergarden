@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:shiverstone_bricks_to_shiverstone_brick_wall_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:shiverstone_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:shiverstone_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:shiverstone_bricks_to_shiverstone_brick_wall_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:shiverstone_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

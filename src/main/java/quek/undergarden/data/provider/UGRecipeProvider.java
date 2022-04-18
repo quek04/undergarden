@@ -341,37 +341,77 @@ public class UGRecipeProvider extends RecipeProvider {
         return smithingRecipe(input, UGItems.FORGOTTEN_INGOT, result);
     }
 
-    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, ItemLike result) {
+    public SingleItemRecipeBuilder stonecutting(Supplier<Block> input, ItemLike result) {
         return SingleItemRecipeBuilder.stonecutting(Ingredient.of(input.get()), result)
                 .unlockedBy("has_" + input.get().getRegistryName(), has(input.get()));
     }
 
-    public SingleItemRecipeBuilder stonecuttingRecipe(Supplier<Block> input, ItemLike result, int resultAmount) {
+    public SingleItemRecipeBuilder stonecutting(Supplier<Block> input, ItemLike result, int resultAmount) {
         return SingleItemRecipeBuilder.stonecutting(Ingredient.of(input.get()), result, resultAmount)
                 .unlockedBy("has_" + input.get().getRegistryName(), has(input.get()));
     }
 
-    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(ItemLike result) {
-        return stonecuttingRecipe(UGBlocks.DEPTHROCK, result);
+    public SingleItemRecipeBuilder depthrockStonecutting(ItemLike result) {
+        return stonecutting(UGBlocks.DEPTHROCK, result);
     }
 
-    public SingleItemRecipeBuilder depthrockStonecuttingRecipe(ItemLike result, int resultAmount) {
-        return stonecuttingRecipe(UGBlocks.DEPTHROCK, result, resultAmount);
+    public SingleItemRecipeBuilder depthrockStonecutting(ItemLike result, int resultAmount) {
+        return stonecutting(UGBlocks.DEPTHROCK, result, resultAmount);
     }
 
-    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(ItemLike result) {
-        return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result);
+    public SingleItemRecipeBuilder depthrockBricksStonecutting(ItemLike result) {
+        return stonecutting(UGBlocks.DEPTHROCK_BRICKS, result);
     }
 
-    public SingleItemRecipeBuilder shiverstoneStonecuttingRecipe(ItemLike result, int resultAmount) {
-        return stonecuttingRecipe(UGBlocks.SHIVERSTONE, result, resultAmount);
+    public SingleItemRecipeBuilder depthrockBricksStonecutting(ItemLike result, int resultAmount) {
+        return stonecutting(UGBlocks.DEPTHROCK_BRICKS, result, resultAmount);
     }
 
-    public SingleItemRecipeBuilder tremblecrustStonecuttingRecipe(ItemLike result) {
-        return stonecuttingRecipe(UGBlocks.TREMBLECRUST, result);
+    public SingleItemRecipeBuilder depthrockTilesStonecutting(ItemLike result) {
+        return stonecutting(UGBlocks.DEPTHROCK_TILES, result);
     }
 
-    public SingleItemRecipeBuilder tremblecrustStonecuttingRecipe(ItemLike result, int resultAmount) {
-        return stonecuttingRecipe(UGBlocks.TREMBLECRUST, result, resultAmount);
+    public SingleItemRecipeBuilder depthrockTilesStonecutting(ItemLike result, int resultAmount) {
+        return stonecutting(UGBlocks.DEPTHROCK_TILES, result, resultAmount);
+    }
+
+    public SingleItemRecipeBuilder polishedDepthrockStonecutting(ItemLike result) {
+        return stonecutting(UGBlocks.POLISHED_DEPTHROCK, result);
+    }
+
+    public SingleItemRecipeBuilder polishedDepthrockStonecutting(ItemLike result, int resultAmount) {
+        return stonecutting(UGBlocks.POLISHED_DEPTHROCK, result, resultAmount);
+    }
+
+    public SingleItemRecipeBuilder shiverstoneStonecutting(ItemLike result) {
+        return stonecutting(UGBlocks.SHIVERSTONE, result);
+    }
+
+    public SingleItemRecipeBuilder shiverstoneStonecutting(ItemLike result, int resultAmount) {
+        return stonecutting(UGBlocks.SHIVERSTONE, result, resultAmount);
+    }
+
+    public SingleItemRecipeBuilder shiverstoneBricksStonecutting(ItemLike result) {
+        return stonecutting(UGBlocks.SHIVERSTONE_BRICKS, result);
+    }
+
+    public SingleItemRecipeBuilder shiverstoneBricksStonecutting(ItemLike result, int resultAmount) {
+        return stonecutting(UGBlocks.SHIVERSTONE_BRICKS, result, resultAmount);
+    }
+
+    public SingleItemRecipeBuilder tremblecrustStonecutting(ItemLike result) {
+        return stonecutting(UGBlocks.TREMBLECRUST, result);
+    }
+
+    public SingleItemRecipeBuilder tremblecrustStonecutting(ItemLike result, int resultAmount) {
+        return stonecutting(UGBlocks.TREMBLECRUST, result, resultAmount);
+    }
+
+    public SingleItemRecipeBuilder tremblecrustBricksStonecutting(ItemLike result) {
+        return stonecutting(UGBlocks.TREMBLECRUST_BRICKS, result);
+    }
+
+    public SingleItemRecipeBuilder tremblecrustBricksStonecutting(ItemLike result, int resultAmount) {
+        return stonecutting(UGBlocks.TREMBLECRUST_BRICKS, result, resultAmount);
     }
 }

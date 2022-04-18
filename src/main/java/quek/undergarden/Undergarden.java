@@ -14,10 +14,13 @@ import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -35,9 +38,9 @@ import org.apache.logging.log4j.Logger;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.BlisterbombEntity;
-import quek.undergarden.entity.projectile.GooBallEntity;
-import quek.undergarden.entity.projectile.RottenBlisterberryEntity;
-import quek.undergarden.entity.projectile.SlingshotAmmoEntity;
+import quek.undergarden.entity.projectile.slingshot.*;
+import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
+import quek.undergarden.item.tool.slingshot.SlingshotItem;
 import quek.undergarden.registry.*;
 
 @Mod(Undergarden.MODID)
@@ -69,6 +72,7 @@ public class Undergarden {
 				UGStructures.STRUCTURES,
 				UGBlockEntities.BLOCK_ENTITIES,
 				UGTreeDecoratorTypes.TREE_DECORATORS,
+				UGEnchantments.ENCHANTMENTS,
 				UGTrunkPlacerTypes.TRUNK_PLACERS
 		};
 
@@ -120,7 +124,7 @@ public class Undergarden {
 
 			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new SlingshotAmmoEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+					return Util.make(new DepthrockPebbleEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
@@ -139,6 +143,12 @@ public class Undergarden {
 			DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
 					return Util.make(new BlisterbombEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+				}
+			});
+
+			DispenserBlock.registerBehavior(UGBlocks.GRONGLET.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new GrongletEntity(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
 				}
 			});
 
@@ -202,6 +212,39 @@ public class Undergarden {
 			WoodType.register(UGBlocks.WIGGLEWOOD_WOODTYPE);
 			WoodType.register(UGBlocks.GRONGLE_WOODTYPE);
 
+			SlingshotItem.registerAmmo(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new DepthrockPebbleEntity(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new RottenBlisterberryEntity(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGItems.GOO_BALL.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new GooBallEntity(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGBlocks.GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new GrongletEntity(shooter, level);
+				}
+
+				@Override
+				public SoundEvent getFiringSound() {
+					return UGSoundEvents.GRONGLET_SHOOT.get();
+				}
+			});
+
 			FireBlock fire = (FireBlock) Blocks.FIRE;
 			//planks
 			fire.setFlammable(UGBlocks.SMOGSTEM_PLANKS.get(), 5, 20);
@@ -259,7 +302,8 @@ public class Undergarden {
 			fire.setFlammable(UGBlocks.DROOPVINE_PLANT.get(), 15, 60);
 			//other
 			fire.setFlammable(UGBlocks.MOGMOSS_RUG.get(), 60, 20);
-			//fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
+			fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
+			fire.setFlammable(UGBlocks.GRONGLET.get(), 100, 100);
 		});
 	}
 
@@ -278,6 +322,10 @@ public class Undergarden {
 				return entity.getUseItem() != stack ? 0.0F : (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
 			}
 		});
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("self_sling"), (stack, level, entity, seed) -> entity != null && EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.SELF_SLING.get(), stack) > 0 ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 

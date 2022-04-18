@@ -158,6 +158,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.CARVED_GLOOMGOURD, "Carved Gloomgourd");
         addBlock(UGBlocks.GLOOM_O_LANTERN, "Gloom o'Lantern");
         addBlock(UGBlocks.SHARD_O_LANTERN, "Shard o'Lantern");
+        addBlock(UGBlocks.BOOMGOURD, "Boomgourd");
         addBlock(UGBlocks.GLOOMGOURD_STEM, "Gloomgourd Stem");
         addBlock(UGBlocks.DEPTHROCK_PEBBLES, "Depthrock Pebbles");
         addBlock(UGBlocks.GLITTERKELP, "Glitterkelp");
@@ -236,6 +237,8 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
         addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
 
+        addBlock(UGBlocks.GRONGLET, "Gronglet");
+
         add("fluid.undergarden.virulent_mix_source", "Virulent Mix");
 
         addItem(UGItems.MAMMOTH_DISC, "Music Disc");
@@ -264,6 +267,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
         addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");
         addItem(UGItems.DITCHBULB, "Ditchbulb");
+        addItem(UGItems.DITCHBULB_PASTE, "Ditchbulb Paste");
         addItem(UGItems.BRUTE_TUSK, "Brute Tusk");
         addItem(UGItems.MOGMOSS, "Mogmoss");
         addItem(UGItems.GOO_BALL, "Scintling Goo Ball");
@@ -410,6 +414,15 @@ public class UGLang extends LanguageProvider {
         addPotion(UGPotions.VIRULENT_RESISTANCE, "Virulent Resistance");
         addPotion(UGPotions.GLOWING, "Glowing");
 
+        addEnchantment(UGEnchantments.RICOCHET, "Ricochet");
+        addEnchantment(UGEnchantments.LONGEVITY, "Longevity");
+        addEnchantment(UGEnchantments.SELF_SLING, "Self Sling");
+
+        //Enchantment Descriptions compat
+        add("enchantment.undergarden.ricochet.desc", "Projectiles fired by the Slingshot will bounce off block surfaces.");
+        add("enchantment.undergarden.longevity.desc", "Increases max durability of the Slingshot.");
+        add("enchantment.undergarden.self_sling.desc", "Instead of firing ammo, the Slingshot fires you. Requires you to be on the ground.");
+
         addAdvTitle("root", "The Undergarden");
 
         addAdvTitle("catalyst", "One Ticket Please");
@@ -426,6 +439,18 @@ public class UGLang extends LanguageProvider {
 
         addAdvTitle("shoot_slingshot", "Flinging Rocks");
         addAdvDesc("shoot_slingshot", "Shoot a pebble at something.");
+
+        addAdvTitle("shoot_slingshot_goo", "Flying Inconvenience");
+        addAdvDesc("shoot_slingshot_goo", "Shoot a Scintling Goo Ball at something to annoy it.");
+
+        addAdvTitle("shoot_slingshot_rotten_blisterberry", "This Isn't Safe");
+        addAdvDesc("shoot_slingshot_rotten_blisterberry", "Shoot a Rotten Blisterberry at something, and hopefully keep all your limbs.");
+
+        addAdvTitle("shoot_slingshot_gronglet", "Ethically Questionable");
+        addAdvDesc("shoot_slingshot_gronglet", "Shoot a Gronglet! Is this okay..?");
+
+        addAdvTitle("slingshot_20_damage", "Sniping's a Good Job");
+        addAdvDesc("slingshot_20_damage", "Deal 20 or more damage to something with a single pebble...!?");
 
         addAdvTitle("kill_rotling", "Birth Control");
         addAdvDesc("kill_rotling", "Slay the weakest of the Rotspawn, the Rotling.");
@@ -489,16 +514,10 @@ public class UGLang extends LanguageProvider {
 
         add("tooltip.froststeel_sword", "Slows targets.");
         add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
-        add("tooltip.slingshot", "Uses Depthrock Pebbles as ammo.");
         add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
         add("tooltip.forgotten_sword", "Deals 1.5x damage to non-boss Undergarden mobs.");
         add("tooltip.pebble", "Can be used as Slingshot ammo.");
         add("tooltip.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
-
-        addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
-        addSubtitle("item", "slingshot_draw", "Slingshot drawn");
-        addSubtitle("item", "slingshot_shoot", "Slingshot fired");
-        addSubtitle("item", "pick_blisterberry_bush", "Blisterberry Bush picked");
 
         addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
         addSubtitle("block", "undergarden_portal_activate", "Undergarden Portal activates");
@@ -506,6 +525,19 @@ public class UGLang extends LanguageProvider {
 
         addSubtitle("block", "virulent.flow", "Virulent Mix flows");
         addSubtitle("block", "virulent.bubble", "Virulent Mix bubbles");
+
+        addSubtitle("block", "gronglet.ambient", "Gronglet chirps");
+        addSubtitle("block", "gronglet.burn", "Gronglet shrieks");
+
+        addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
+
+        addSubtitle("item", "slingshot_draw", "Slingshot drawn");
+        addSubtitle("item", "slingshot_shoot", "Slingshot fired");
+        addSubtitle("item", "slingshot.gronglet_shoot", "Slingshot fired");
+
+        addSubtitle("item", "pick_blisterberry_bush", "Blisterberry Bush picked");
+
+        addSubtitle("item", "ditchbulb_paste.use", "Ditchbulb Paste squelches");
 
         addSubtitle("entity", "dweller_ambient", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
@@ -582,6 +614,9 @@ public class UGLang extends LanguageProvider {
         addSubtitle("entity", "mog_ambient", "Mog squeaks");
         addSubtitle("entity", "mog_hurt", "Mog hurts");
         addSubtitle("entity", "mog_death", "Mog dies");
+
+        addSubtitle("entity", "scintling.hurt", "Scintling hurts");
+        addSubtitle("entity", "scintling.death", "Scintling dies");
 
         addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
         addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");

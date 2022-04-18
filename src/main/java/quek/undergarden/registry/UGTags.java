@@ -21,6 +21,7 @@ public class UGTags {
         public static final TagKey<Item> SMOGSTEM_LOGS = tag("smogstem_logs");
         public static final TagKey<Item> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
         public static final TagKey<Item> GRONGLE_LOGS = tag("grongle_logs");
+        public static final TagKey<Item> SLINGSHOT_AMMO = tag("slingshot_ammo");
 
         public static final TagKey<Item> INGOTS_CLOGGRUM = forgeTag("ingots/cloggrum");
         public static final TagKey<Item> INGOTS_FROSTSTEEL = forgeTag("ingots/froststeel");

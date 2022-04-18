@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:polished_depthrock_to_polished_depthrock_wall_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_undergarden:polished_depthrock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:polished_depthrock"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:polished_depthrock_to_polished_depthrock_wall_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_undergarden:polished_depthrock",
+      "has_the_recipe"
+    ]
+  ]
+}

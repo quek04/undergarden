@@ -231,9 +231,11 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
         blockFlatWithItemName(UGBlocks.CLOGGRUM_LANTERN, "cloggrum_lantern_item");
         blockFlat(UGBlocks.HANGING_GRONGLE_LEAVES);
+        block(UGBlocks.BOOMGOURD);
         block(UGBlocks.POLISHED_DEPTHROCK);
         block(UGBlocks.POLISHED_DEPTHROCK_SLAB);
         block(UGBlocks.POLISHED_DEPTHROCK_STAIRS);
+        normalItem(UGItems.DITCHBULB_PASTE);
 
         egg(UGItems.DWELLER_SPAWN_EGG);
         egg(UGItems.GWIBLING_SPAWN_EGG);

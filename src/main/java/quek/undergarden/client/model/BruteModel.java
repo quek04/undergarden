@@ -31,41 +31,29 @@ public class BruteModel<T extends BruteEntity> extends AgeableListModel<T> {
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition uppertorso = partdefinition.addOrReplaceChild("uppertorso", CubeListBuilder.create().texOffs(0, 0).addBox(-7.0F, -7.5F, -4.0F, 14.0F, 15.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(78, 22).addBox(0.0F, -7.5F, 4.0F, 0.0F, 14.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -3.5F, 1.0F, 0.8727F, 0.0F, 0.0F));
+				.texOffs(36, 37).addBox(0.0F, -10.5F, 1.0F, 0.0F, 18.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -3.5F, 1.0F, 0.8727F, 0.0F, 0.0F));
 
-		PartDefinition lowertorso = uppertorso.addOrReplaceChild("lowertorso", CubeListBuilder.create().texOffs(0, 23).addBox(-6.0F, -5.9973F, -2.76F, 12.0F, 12.0F, 5.0F, new CubeDeformation(0.0F))
-				.texOffs(90, 29).addBox(0.0F, -5.9973F, 2.24F, 0.0F, 9.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 10.4973F, -1.24F, -0.5236F, 0.0F, 0.0F));
+		PartDefinition lowertorso = uppertorso.addOrReplaceChild("lowertorso", CubeListBuilder.create().texOffs(36, 29).addBox(-6.0F, -5.9973F, -2.76F, 12.0F, 12.0F, 5.0F, new CubeDeformation(0.0F))
+				.texOffs(46, 60).addBox(0.0F, -5.9973F, 2.24F, 0.0F, 9.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 10.4973F, -1.24F, -0.5236F, 0.0F, 0.0F));
 
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(44, 0).addBox(-5.0F, -5.0F, -8.0F, 10.0F, 5.0F, 9.0F, new CubeDeformation(0.0F))
-				.texOffs(45, 14).addBox(-3.0F, 0.0F, -8.0F, 6.0F, 2.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.0F, -3.0F));
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(36, 14).addBox(-5.0F, -6.0F, -8.0F, 10.0F, 6.0F, 9.0F, new CubeDeformation(0.0F))
+				.texOffs(44, 0).addBox(-3.0F, 0.0F, -8.0F, 6.0F, 3.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -4.0F, -3.0F, 0.0F, 0.0F, 0.0F));
 
-		PartDefinition horns = head.addOrReplaceChild("horns", CubeListBuilder.create().texOffs(48, 41).addBox(-5.5F, -2.0F, -3.0F, 2.0F, 3.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(48, 41).mirror().addBox(3.5F, -2.0F, -3.0F, 2.0F, 3.0F, 8.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, 4.0F, -6.0F, 1.2217F, 0.0F, 0.0F));
+		PartDefinition horns = head.addOrReplaceChild("horns", CubeListBuilder.create().texOffs(62, 57).addBox(-5.5F, -2.0F, -3.0F, 2.0F, 3.0F, 8.0F, new CubeDeformation(0.0F))
+				.texOffs(16, 58).addBox(3.5F, -2.0F, -3.0F, 2.0F, 3.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 4.0F, -6.0F, 1.2217F, 0.0F, 0.0F));
 
-		PartDefinition horns2 = horns.addOrReplaceChild("horns2", CubeListBuilder.create().texOffs(32, 45).addBox(-5.5F, 1.0F, -5.0F, 2.0F, 1.0F, 6.0F, new CubeDeformation(0.0F))
-				.texOffs(32, 45).mirror().addBox(3.5F, 1.0F, -5.0F, 2.0F, 1.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, 0.0F, -2.0F, -1.5708F, 0.0F, 0.0F));
+		PartDefinition horns2 = horns.addOrReplaceChild("horns2", CubeListBuilder.create().texOffs(30, 64).addBox(-5.5F, 1.0F, -5.0F, 2.0F, 2.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(36, 0).addBox(3.5F, 1.0F, -5.0F, 2.0F, 2.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, -2.0F, -1.5708F, 0.0F, 0.0F));
 
-		PartDefinition leftarm = partdefinition.addOrReplaceChild("leftarm", CubeListBuilder.create().texOffs(34, 23).addBox(0.0F, -4.0F, -3.0F, 3.0F, 17.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(7.0F, -2.0F, -1.0F, 0.2618F, 0.0F, 0.0F));
+		PartDefinition leftarm = partdefinition.addOrReplaceChild("leftarm", CubeListBuilder.create().texOffs(18, 23).addBox(0.0F, -4.0F, -3.0F, 4.0F, 30.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(7.0F, -2.0F, -1.0F));
 
-		PartDefinition leftarm2 = leftarm.addOrReplaceChild("leftarm2", CubeListBuilder.create().texOffs(50, 24).addBox(0.1F, -2.0F, -2.5F, 3.0F, 13.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 13.0F, 0.0F, -0.7854F, 0.0F, 0.0F));
+		PartDefinition rightarm = partdefinition.addOrReplaceChild("rightarm", CubeListBuilder.create().texOffs(0, 23).addBox(-4.0F, -4.0F, -3.0F, 4.0F, 30.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(-7.0F, -2.0F, -1.0F));
 
-		PartDefinition lefthand = leftarm.addOrReplaceChild("lefthand", CubeListBuilder.create().texOffs(64, 24).addBox(-1.0F, -4.5F, -2.0F, 3.0F, 5.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(1.0F, 24.0F, -9.0F, -0.2618F, 0.0F, 0.0F));
+		PartDefinition leftleg = partdefinition.addOrReplaceChild("leftleg", CubeListBuilder.create().texOffs(0, 58).addBox(-1.8F, -1.0F, -2.0F, 4.0F, 15.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(4.0F, 10.0F, 10.0F));
 
-		PartDefinition rightarm = partdefinition.addOrReplaceChild("rightarm", CubeListBuilder.create().texOffs(34, 23).mirror().addBox(-3.0F, -4.0F, -3.0F, 3.0F, 17.0F, 5.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-7.0F, -2.0F, -1.0F, 0.2618F, 0.0F, 0.0F));
+		PartDefinition rightleg = partdefinition.addOrReplaceChild("rightleg", CubeListBuilder.create().texOffs(54, 46).addBox(-2.2F, -1.0F, -2.0F, 4.0F, 15.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, 10.0F, 10.0F));
 
-		PartDefinition rightarm2 = rightarm.addOrReplaceChild("rightarm2", CubeListBuilder.create().texOffs(50, 24).mirror().addBox(-0.1F, -2.0F, -2.5F, 3.0F, 13.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-3.0F, 13.0F, 0.0F, -0.7854F, 0.0F, 0.0F));
-
-		PartDefinition righthand = rightarm.addOrReplaceChild("righthand", CubeListBuilder.create().texOffs(64, 24).mirror().addBox(-1.0F, -4.5F, -2.0F, 3.0F, 5.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-2.0F, 24.0F, -9.0F, -0.2618F, 0.0F, 0.0F));
-
-		PartDefinition leftleg = partdefinition.addOrReplaceChild("leftleg", CubeListBuilder.create().texOffs(0, 40).addBox(-1.9F, -1.0F, -1.7412F, 4.0F, 8.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(4.0F, 10.0F, 9.0F, -0.2618F, 0.0F, 0.0F));
-
-		PartDefinition leftleg2 = leftleg.addOrReplaceChild("leftleg2", CubeListBuilder.create().texOffs(16, 40).addBox(-1.5F, -3.6274F, -3.7294F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-0.5F, 8.1933F, 2.8294F, 0.2618F, 0.0F, 0.0F));
-
-		PartDefinition rightleg = partdefinition.addOrReplaceChild("rightleg", CubeListBuilder.create().texOffs(0, 40).mirror().addBox(-2.1F, -1.0341F, -1.7412F, 4.0F, 8.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-4.0F, 10.0F, 9.0F, -0.2618F, 0.0F, 0.0F));
-
-		PartDefinition rightleg2 = rightleg.addOrReplaceChild("rightleg2", CubeListBuilder.create().texOffs(16, 40).mirror().addBox(-1.5F, -3.6274F, -3.7294F, 4.0F, 9.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-0.5F, 8.1933F, 2.8294F, 0.2618F, 0.0F, 0.0F));
-
-		return LayerDefinition.create(meshdefinition, 128, 64);
+		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
 	@Override
@@ -83,10 +71,10 @@ public class BruteModel<T extends BruteEntity> extends AgeableListModel<T> {
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
 		this.head.xRot = headPitch * ((float)Math.PI / 180F);
 
-		this.leftLeg.xRot = -0.2618F + Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.xRot = -0.2618F + Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
-		this.leftArm.xRot = 0.2618F + Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.rightArm.xRot = 0.2618F + Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 	}
 }
