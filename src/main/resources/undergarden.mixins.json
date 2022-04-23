@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "undergarden.refmap.json",
   "mixins": [
+    "BubbleColumnBlockMixin"
   ],
   "minVersion": "0.8"
 }
