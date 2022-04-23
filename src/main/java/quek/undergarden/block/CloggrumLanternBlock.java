@@ -42,9 +42,9 @@ public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock
     }
 
     @Override
-    public boolean canSurvive(BlockState p_153479_, LevelReader p_153480_, BlockPos p_153481_) {
-        Direction direction = getConnectedDirection(p_153479_).getOpposite();
-        return Block.canSupportCenter(p_153480_, p_153481_.relative(direction), direction.getOpposite());
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        Direction direction = getConnectedDirection(state).getOpposite();
+        return Block.canSupportCenter(level, pos.relative(direction), direction.getOpposite());
     }
 
     @Override
@@ -102,12 +102,12 @@ public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos pFacingPos) {
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return getConnectedDirection(state).getOpposite() == facing && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, pos, pFacingPos);
+        return getConnectedDirection(state).getOpposite() == facing && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, pos, facingPos);
     }
 
     @Override

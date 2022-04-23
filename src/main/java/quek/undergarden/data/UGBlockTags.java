@@ -47,6 +47,12 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(UGTags.Blocks.STORAGE_BLOCKS_REGALIUM).add(UGBlocks.REGALIUM_BLOCK.get());
         tag(UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM).add(UGBlocks.RAW_CLOGGRUM_BLOCK.get());
         tag(UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL).add(UGBlocks.RAW_FROSTSTEEL_BLOCK.get());
+        tag(UGTags.Blocks.DEPTHROCK_GROUND).add(UGBlocks.DEPTHROCK.get());
+        tag(UGTags.Blocks.DEPTHROCK_ORES).add(UGBlocks.DEPTHROCK_COAL_ORE.get(), UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.DEPTHROCK_GOLD_ORE.get(), UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.DEPTHROCK_REGALIUM_ORE.get());
+        tag(UGTags.Blocks.SHIVERSTONE_GROUND).add(UGBlocks.SHIVERSTONE.get());
+        tag(UGTags.Blocks.SHIVERSTONE_ORES).add(UGBlocks.SHIVERSTONE_COAL_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get());
+        tag(UGTags.Blocks.TREMBLECRUST_GROUND).add(UGBlocks.TREMBLECRUST.get());
+        tag(UGTags.Blocks.TREMBLECRUST_ORES).add(UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get());
 
         //vanilla
         tag(BlockTags.PLANKS).add(UGBlocks.SMOGSTEM_PLANKS.get(), UGBlocks.WIGGLEWOOD_PLANKS.get(), UGBlocks.GRONGLE_PLANKS.get());
@@ -63,7 +69,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.ENDERMAN_HOLDABLE).addTag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.GLOOMGOURD.get(), UGBlocks.CARVED_GLOOMGOURD.get());
         tag(BlockTags.WOODEN_PRESSURE_PLATES).add(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get(), UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get(), UGBlocks.GRONGLE_PRESSURE_PLATE.get());
         tag(BlockTags.STONE_PRESSURE_PLATES).add(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get(), UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get());
-        tag(BlockTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get(), UGBlocks.DEPTHROCK_BRICK_WALL.get(), UGBlocks.SHIVERSTONE_WALL.get(), UGBlocks.SHIVERSTONE_BRICK_WALL.get(), UGBlocks.TREMBLECRUST_WALL.get(), UGBlocks.TREMBLECRUST_BRICK_WALL.get());
+        tag(BlockTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get(), UGBlocks.POLISHED_DEPTHROCK_WALL.get(), UGBlocks.DEPTHROCK_BRICK_WALL.get(), UGBlocks.SHIVERSTONE_WALL.get(), UGBlocks.SHIVERSTONE_BRICK_WALL.get(), UGBlocks.TREMBLECRUST_WALL.get(), UGBlocks.TREMBLECRUST_BRICK_WALL.get());
         tag(BlockTags.LEAVES).add(UGBlocks.SMOGSTEM_LEAVES.get(), UGBlocks.WIGGLEWOOD_LEAVES.get(), UGBlocks.GRONGLE_LEAVES.get());
         tag(BlockTags.WOODEN_TRAPDOORS).add(UGBlocks.SMOGSTEM_TRAPDOOR.get(), UGBlocks.WIGGLEWOOD_TRAPDOOR.get(), UGBlocks.GRONGLE_TRAPDOOR.get());
         tag(BlockTags.BAMBOO_PLANTABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
@@ -118,17 +124,21 @@ public class UGBlockTags extends BlockTagsProvider {
         //huge mineables lists!
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 UGBlocks.DEPTHROCK.get(),
+                UGBlocks.POLISHED_DEPTHROCK.get(),
                 UGBlocks.DEPTHROCK_BRICKS.get(),
                 UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(),
                 UGBlocks.CHISELED_DEPTHROCK_BRICKS.get(),
                 UGBlocks.DEPTHROCK_TILES.get(),
                 UGBlocks.DEPTHROCK_STAIRS.get(),
+                UGBlocks.POLISHED_DEPTHROCK_STAIRS.get(),
                 UGBlocks.DEPTHROCK_BRICK_STAIRS.get(),
                 UGBlocks.DEPTHROCK_TILE_STAIRS.get(),
                 UGBlocks.DEPTHROCK_SLAB.get(),
+                UGBlocks.POLISHED_DEPTHROCK_SLAB.get(),
                 UGBlocks.DEPTHROCK_BRICK_SLAB.get(),
                 UGBlocks.DEPTHROCK_TILE_SLAB.get(),
                 UGBlocks.DEPTHROCK_WALL.get(),
+                UGBlocks.POLISHED_DEPTHROCK_WALL.get(),
                 UGBlocks.DEPTHROCK_BRICK_WALL.get(),
                 UGBlocks.DEPTHROCK_BUTTON.get(),
                 UGBlocks.DEPTHROCK_PRESSURE_PLATE.get(),
@@ -192,6 +202,7 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.CARVED_GLOOMGOURD.get(),
                 UGBlocks.GLOOM_O_LANTERN.get(),
                 UGBlocks.SHARD_O_LANTERN.get(),
+                UGBlocks.BOOMGOURD.get(),
                 UGBlocks.GLOOMGOURD_STEM.get(),
                 UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(),
                 UGBlocks.INDIGO_MUSHROOM_CAP.get(),

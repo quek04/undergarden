@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M  ",
+    "MM ",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "undergarden:polished_depthrock"
+    }
+  },
+  "result": {
+    "item": "undergarden:polished_depthrock_stairs",
+    "count": 4
+  }
+}

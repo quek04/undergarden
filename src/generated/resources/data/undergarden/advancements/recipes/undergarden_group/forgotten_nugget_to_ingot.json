@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:forgotten_nugget_to_ingot"
+    ]
+  },
+  "criteria": {
+    "has_forgotten_nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:forgotten_nugget"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:forgotten_nugget_to_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_forgotten_nugget",
+      "has_the_recipe"
+    ]
+  ]
+}

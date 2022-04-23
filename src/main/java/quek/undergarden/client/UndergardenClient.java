@@ -23,6 +23,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
+import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.entity.UGBoatEntity;
 import quek.undergarden.registry.UGBlockEntities;
@@ -101,13 +102,16 @@ public class UndergardenClient {
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
         event.registerBlockEntityRenderer(UGBlockEntities.UNDERGARDEN_SIGN.get(), SignRenderer::new);
+        event.registerBlockEntityRenderer(UGBlockEntities.GRONGLET.get(), GrongletRender::new);
         //
         event.registerEntityRenderer(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.BOOMGOURD.get(), BoomgourdRender::new);
         //
-        event.registerEntityRenderer(UGEntityTypes.SLINGSHOT_AMMO.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.DEPTHROCK_PEBBLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.GOO_BALL.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.GRONGLET.get(), GrongletEntityRender::new);
         event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
         //
         event.registerEntityRenderer(UGEntityTypes.MINION.get(), MinionRender::new);
@@ -134,6 +138,7 @@ public class UndergardenClient {
     public static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_HEAD, DepthrockBedRender::createHeadLayer);
         event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_FOOT, DepthrockBedRender::createFootLayer);
+        event.registerLayerDefinition(UGModelLayers.GRONGLET, GrongletRender::createBodyLayer);
         //
         for(UGBoatEntity.Type boatType : UGBoatEntity.Type.values()) {
             event.registerLayerDefinition(UGBoatRenderer.boatLayer(boatType), BoatModel::createBodyModel);
@@ -227,12 +232,12 @@ public class UndergardenClient {
         }
 
         @SubscribeEvent
-        public static void renderVirulentFogDensity(EntityViewRenderEvent.FogDensity event) {
+        public static void renderVirulentFogDensity(EntityViewRenderEvent.RenderFogEvent event) {
             Camera camera = event.getCamera();
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
             if(fluidState.getType() == UGFluids.VIRULENT_MIX_FLOWING.get() || fluidState.getType() == UGFluids.VIRULENT_MIX_SOURCE.get()) {
-                event.setDensity(15F);
+                event.setFarPlaneDistance(15.0F);
                 event.setCanceled(true);
             }
         }

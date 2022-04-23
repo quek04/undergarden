@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_depthrock": {
+    "has_polished_depthrock": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:depthrock"
+              "undergarden:polished_depthrock"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_depthrock",
+      "has_polished_depthrock",
       "has_the_recipe"
     ]
   ]

@@ -53,7 +53,12 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/bog_7"),
                 sound("undergarden:ambient/additions/bog_8"),
                 sound("undergarden:ambient/additions/bog_9"),
-                sound("undergarden:ambient/additions/bog_10")
+                sound("undergarden:ambient/additions/bog_10"),
+                sound("undergarden:ambient/additions/bog_11"),
+                sound("undergarden:ambient/additions/bog_12"),
+                sound("undergarden:ambient/additions/bog_13"),
+                sound("undergarden:ambient/additions/bog_14"),
+                sound("undergarden:ambient/additions/bog_15")
         ));
         this.add(UGSoundEvents.FIELDS_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/fields_1"),
@@ -87,7 +92,9 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/smogstem_1"),
                 sound("undergarden:ambient/additions/smogstem_2"),
                 sound("undergarden:ambient/additions/smogstem_3"),
-                sound("undergarden:ambient/additions/smogstem_4")
+                sound("undergarden:ambient/additions/smogstem_4"),
+                sound("undergarden:ambient/additions/smogstem_5"),
+                sound("undergarden:ambient/additions/smogstem_6")
         ));
         this.add(UGSoundEvents.WIGGLEWOOD_FOREST_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/forest_1"),
@@ -102,7 +109,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/wigglewood_2"),
                 sound("undergarden:ambient/additions/wigglewood_3"),
                 sound("undergarden:ambient/additions/wigglewood_4"),
-                sound("undergarden:ambient/additions/wigglewood_5")
+                sound("undergarden:ambient/additions/wigglewood_5"),
+                sound("undergarden:ambient/additions/wigglewood_6"),
+                sound("undergarden:ambient/additions/wigglewood_7"),
+                sound("undergarden:ambient/additions/wigglewood_8"),
+                sound("undergarden:ambient/additions/wigglewood_9")
         ));
         this.add(UGSoundEvents.GRONGLEGROWTH_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/forest_1"),
@@ -119,6 +130,22 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/grongle_4"),
                 sound("undergarden:ambient/additions/grongle_5"),
                 sound("undergarden:ambient/additions/grongle_6")
+        ));
+        this.add(UGSoundEvents.DENSE_FOREST_AMBIENT_ADDITION, definition().with(
+                sound("undergarden:ambient/additions/forest_1"),
+                sound("undergarden:ambient/additions/forest_2"),
+                sound("undergarden:ambient/additions/forest_3"),
+                sound("undergarden:ambient/additions/forest_4"),
+                sound("undergarden:ambient/additions/forest_5"),
+                sound("undergarden:ambient/additions/forest_6"),
+                sound("undergarden:ambient/additions/forest_7"),
+                sound("undergarden:ambient/additions/forest_8"),
+                sound("undergarden:ambient/additions/dense_1"),
+                sound("undergarden:ambient/additions/dense_2"),
+                sound("undergarden:ambient/additions/dense_3"),
+                sound("undergarden:ambient/additions/dense_4"),
+                sound("undergarden:ambient/additions/dense_5"),
+                sound("undergarden:ambient/additions/dense_6")
         ));
         this.add(UGSoundEvents.FROSTFIELDS_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/frostfields_1"),
@@ -241,6 +268,31 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:liquid/virulent_bubble_4")
         ).subtitle("subtitles.block.virulent.bubble"));
 
+        this.add(UGSoundEvents.GRONGLET_AMBIENT, definition().with(
+                sound("undergarden:block/gronglet/gronglet_ambient_1"),
+                sound("undergarden:block/gronglet/gronglet_ambient_2"),
+                sound("undergarden:block/gronglet/gronglet_ambient_3")
+        ).subtitle("subtitles.block.gronglet.ambient"));
+        this.add(UGSoundEvents.GRONGLET_BREAK, definition().with(
+                sound("undergarden:block/gronglet/gronglet_1"),
+                sound("undergarden:block/gronglet/gronglet_2"),
+                sound("undergarden:block/gronglet/gronglet_3"),
+                sound("undergarden:block/gronglet/gronglet_4"),
+                sound("undergarden:block/gronglet/gronglet_5"),
+                sound("undergarden:block/gronglet/gronglet_6")
+        ).subtitle("subtitles.block.generic.break"));
+        this.add(UGSoundEvents.GRONGLET_PLACE, definition().with(
+                sound("undergarden:block/gronglet/gronglet_1"),
+                sound("undergarden:block/gronglet/gronglet_2"),
+                sound("undergarden:block/gronglet/gronglet_3"),
+                sound("undergarden:block/gronglet/gronglet_4"),
+                sound("undergarden:block/gronglet/gronglet_5"),
+                sound("undergarden:block/gronglet/gronglet_6")
+        ).subtitle("subtitles.block.generic.place"));
+        this.add(UGSoundEvents.GRONGLET_BURN, definition().with(
+                sound("undergarden:block/gronglet/gronglet_burn")
+        ).subtitle("subtitles.block.gronglet.burn"));
+
         this.add(UGSoundEvents.BLISTERBOMB_THROW, definition().with(
                 sound("undergarden:item/blisterbomb")
         ).subtitle("subtitles.item.blisterbomb"));
@@ -251,7 +303,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
         this.add(UGSoundEvents.SLINGSHOT_DRAW, definition().with(
                 sound("undergarden:item/slingshot_draw_1"),
                 sound("undergarden:item/slingshot_draw_2")
-        ).subtitle("subtitles.item.slingshot_shoot"));
+        ).subtitle("subtitles.item.slingshot_draw"));
+        this.add(UGSoundEvents.GRONGLET_SHOOT, definition().with(
+                sound("undergarden:item/gronglet_shoot_1"),
+                sound("undergarden:item/gronglet_shoot_2")
+        ).subtitle("subtitles.item.slingshot.gronglet_shoot"));
 
         this.add(UGSoundEvents.PICK_BLISTERBERRY_BUSH, definition().with(
                 sound("minecraft:item/sweet_berries/pick_from_bush1"),
@@ -268,6 +324,12 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:item/bucket/empty_virulent_mix_2"),
                 sound("undergarden:item/bucket/empty_virulent_mix_3")
         ).subtitle("subtitles.item.bucket.empty"));
+
+        this.add(UGSoundEvents.DITCHBULB_PASTE_USE, definition().with(
+                sound("minecraft:item/ink_sac/ink_sac1"),
+                sound("minecraft:item/ink_sac/ink_sac2"),
+                sound("minecraft:item/ink_sac/ink_sac3")
+        ).subtitle("subtitles.item.ditchbulb_paste.use"));
 
         this.add(UGSoundEvents.DWELLER_AMBIENT, definition().with(
                 sound("undergarden:entity/dweller_ambient_1"),
@@ -615,5 +677,21 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("mob/wither_skeleton/step3"),
                 sound("mob/wither_skeleton/step4")
         ).subtitle("subtitles.block.generic.footsteps"));
+
+        this.add(UGSoundEvents.SCINTLING_HURT, definition().with(
+                sound("minecraft:block/honeyblock/break1"),
+                sound("minecraft:block/honeyblock/break2"),
+                sound("minecraft:block/honeyblock/break3"),
+                sound("minecraft:block/honeyblock/break4"),
+                sound("minecraft:block/honeyblock/break5")
+        ).subtitle("subtitles.entity.scintling.hurt"));
+
+        this.add(UGSoundEvents.SCINTLING_DEATH, definition().with(
+                sound("minecraft:block/honeyblock/break1"),
+                sound("minecraft:block/honeyblock/break2"),
+                sound("minecraft:block/honeyblock/break3"),
+                sound("minecraft:block/honeyblock/break4"),
+                sound("minecraft:block/honeyblock/break5")
+        ).subtitle("subtitles.entity.scintling.death"));
     }
 }

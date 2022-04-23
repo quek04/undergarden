@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import quek.undergarden.Undergarden;
+import quek.undergarden.criterion.SlingshotFireTrigger;
 import quek.undergarden.criterion.StonebornTradeTrigger;
 import quek.undergarden.registry.*;
 
@@ -92,8 +93,68 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                         true,
                         false
                 )
-                .addCriterion("shoot_slingshot", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().type(DamageSourcePredicate.Builder.damageType().isProjectile(true).direct(EntityPredicate.Builder.entity().of(UGEntityTypes.SLINGSHOT_AMMO.get())))))
+                .addCriterion("shoot_slingshot", SlingshotFireTrigger.TriggerInstance.shotItem(UGItems.DEPTHROCK_PEBBLE.get()))
                 .save(consumer, "undergarden:undergarden/shoot_slingshot");
+
+        Advancement shoot_slingshot_goo = Advancement.Builder.advancement()
+                .parent(slingshot)
+                .display(
+                        UGItems.GOO_BALL.get(),
+                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_goo.title"),
+                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_goo.desc"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("shoot_slingshot_goo", SlingshotFireTrigger.TriggerInstance.shotItem(UGItems.GOO_BALL.get()))
+                .save(consumer, "undergarden:undergarden/shoot_slingshot_goo");
+
+        Advancement shoot_slingshot_rotten_blisterberry = Advancement.Builder.advancement()
+                .parent(slingshot)
+                .display(
+                        UGItems.ROTTEN_BLISTERBERRY.get(),
+                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_rotten_blisterberry.title"),
+                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_rotten_blisterberry.desc"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("shoot_slingshot_rotten_blisterberry", SlingshotFireTrigger.TriggerInstance.shotItem(UGItems.ROTTEN_BLISTERBERRY.get()))
+                .save(consumer, "undergarden:undergarden/shoot_slingshot_rotten_blisterberry");
+
+        Advancement slingshot_20_damage = Advancement.Builder.advancement()
+                .parent(shoot_slingshot)
+                .display(
+                        UGItems.DEPTHROCK_PEBBLE.get(),
+                        new TranslatableComponent("advancement.undergarden.slingshot_20_damage.title"),
+                        new TranslatableComponent("advancement.undergarden.slingshot_20_damage.desc"),
+                        null,
+                        FrameType.CHALLENGE,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("20_damage", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntity(DamagePredicate.Builder.damageInstance().dealtDamage(MinMaxBounds.Doubles.atLeast(20.0D)).type(DamageSourcePredicate.Builder.damageType().direct(EntityPredicate.Builder.entity().of(UGEntityTypes.DEPTHROCK_PEBBLE.get())))))
+                .save(consumer, "undergarden:undergarden/slingshot_20_damage");
+
+        Advancement shoot_slingshot_gronglet = Advancement.Builder.advancement()
+                .parent(slingshot)
+                .display(
+                        UGBlocks.GRONGLET.get(),
+                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_gronglet.title"),
+                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_gronglet.desc"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("shoot_slingshot_gronglet", SlingshotFireTrigger.TriggerInstance.shotItem(UGBlocks.GRONGLET.get()))
+                .save(consumer, "undergarden:undergarden/shoot_slingshot_gronglet");
 
         Advancement underbeans = Advancement.Builder.advancement()
                 .parent(enter_undergarden)

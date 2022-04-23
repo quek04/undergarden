@@ -6,6 +6,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.entity.DepthrockBedBlockEntity;
+import quek.undergarden.block.entity.GrongletBlockEntity;
 import quek.undergarden.block.entity.SmogVentBlockEntity;
 import quek.undergarden.block.entity.UndergardenSignBlockEntity;
 
@@ -26,4 +27,5 @@ public class UGBlockEntities {
             ).build(null));
     public static final RegistryObject<BlockEntityType<DepthrockBedBlockEntity>> DEPTHROCK_BED = BLOCK_ENTITIES.register("depthrock_bed", () ->
             BlockEntityType.Builder.of(DepthrockBedBlockEntity::new, UGBlocks.DEPTHROCK_BED.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GrongletBlockEntity>> GRONGLET = BLOCK_ENTITIES.register("gronglet", () -> BlockEntityType.Builder.of(GrongletBlockEntity::new, UGBlocks.GRONGLET.get()).build(null));
 }

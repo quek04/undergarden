@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:torch_ditchbulb_paste"
+    ]
+  },
+  "criteria": {
+    "has_ditchbulb_paste": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:ditchbulb_paste"
+            ]
+          }
+        ]
+      }
+    },
+    "has_stick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rods/wooden"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:torch_ditchbulb_paste"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ditchbulb_paste",
+      "has_stick",
+      "has_the_recipe"
+    ]
+  ]
+}

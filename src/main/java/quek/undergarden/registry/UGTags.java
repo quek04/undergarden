@@ -21,6 +21,7 @@ public class UGTags {
         public static final TagKey<Item> SMOGSTEM_LOGS = tag("smogstem_logs");
         public static final TagKey<Item> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
         public static final TagKey<Item> GRONGLE_LOGS = tag("grongle_logs");
+        public static final TagKey<Item> SLINGSHOT_AMMO = tag("slingshot_ammo");
 
         public static final TagKey<Item> INGOTS_CLOGGRUM = forgeTag("ingots/cloggrum");
         public static final TagKey<Item> INGOTS_FROSTSTEEL = forgeTag("ingots/froststeel");
@@ -74,6 +75,15 @@ public class UGTags {
         public static final TagKey<Block> STORAGE_BLOCKS_REGALIUM = forgeTag("storage_blocks/regalium");
         public static final TagKey<Block> STORAGE_BLOCKS_RAW_CLOGGRUM = forgeTag("storage_blocks/raw_cloggrum");
         public static final TagKey<Block> STORAGE_BLOCKS_RAW_FROSTSTEEL = forgeTag("storage_blocks/raw_froststeel");
+
+        public static final TagKey<Block> DEPTHROCK_GROUND = forgeTag("ore_bearing_ground/depthrock");
+        public static final TagKey<Block> DEPTHROCK_ORES = forgeTag("ores_in_ground/depthrock");
+
+        public static final TagKey<Block> SHIVERSTONE_GROUND = forgeTag("ore_bearing_ground/shiverstone");
+        public static final TagKey<Block> SHIVERSTONE_ORES = forgeTag("ores_in_ground/shiverstone");
+
+        public static final TagKey<Block> TREMBLECRUST_GROUND = forgeTag("ore_bearing_ground/tremblecrust");
+        public static final TagKey<Block> TREMBLECRUST_ORES = forgeTag("ores_in_ground/tremblecrust");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(Undergarden.MODID, name));

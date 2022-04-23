@@ -1,13 +1,14 @@
 package quek.undergarden.data.provider;
 
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.item.Item;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SignBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
@@ -18,11 +19,11 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
         super(generator, Undergarden.MODID, fileHelper);
     }
 
-    public String blockName(Supplier<? extends Block> block) {
+    private String blockName(Supplier<? extends Block> block) {
         return block.get().getRegistryName().getPath();
     }
 
-    protected ResourceLocation texture(String name) {
+    private ResourceLocation texture(String name) {
         return modLoc("block/" + name);
     }
 
@@ -80,5 +81,9 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
     public ItemModelBuilder sign(Supplier<? extends SignBlock> sign) {
         return withExistingParent(blockName(sign), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/" + blockName(sign)));
+    }
+
+    public ItemModelBuilder wall(Supplier<? extends WallBlock> wall, Supplier<? extends Block> fullBlock) {
+        return wallInventory(wall.get().getRegistryName().getPath(), texture(blockName(fullBlock)));
     }
 }

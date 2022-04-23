@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "undergarden:ditchbulb_paste"
+    ]
+  },
+  "criteria": {
+    "has_ditchbulb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:ditchbulb"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "undergarden:ditchbulb_paste"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ditchbulb",
+      "has_the_recipe"
+    ]
+  ]
+}
