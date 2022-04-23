@@ -89,7 +89,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${project.mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${project.mc_version}:${jei_version}")
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 mixin {
