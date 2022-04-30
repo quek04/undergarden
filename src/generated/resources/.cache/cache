@@ -1498,3 +1498,5 @@ a1286ebaf730ef5f5c03c655d5a927d81ebceb95 data/undergarden/tags/fluids/virulent.j
 a0b8a241fe4fe0b4411edd19cdef58bf08e65a31 data/undergarden/tags/items/smogstem_logs.json
 23958deb7dc8a259ccf2bc8073b7af6b2dc1888a data/undergarden/tags/items/utherium_items.json
 a17f60d4722d9511ef0cc7592509ef477a6f98c9 data/undergarden/tags/items/wigglewood_logs.json
+5cf033b461013b4bc3323949bcd358749e971658 data/undergarden/tags/worldgen/biome/has_structure/catacombs.json
+f4884e716c30c429d30f37330bb1af004b850c2e data/undergarden/tags/worldgen/biome/has_structure/forgotten_ruin.json

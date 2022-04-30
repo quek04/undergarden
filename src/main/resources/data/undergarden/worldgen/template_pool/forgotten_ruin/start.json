@@ -1,0 +1,15 @@
+{
+  "name": "undergarden:forgotten_ruin/start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "undergarden:forgotten_ruin/top_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "undergarden:forgotten_ruin",
+  "biomes": "#undergarden:has_structure/forgotten_ruin",
+  "adapt_noise": true,
+  "spawn_overrides": {},
+  "config": {
+    "start_pool": "undergarden:forgotten_ruin/start",
+    "size": 7
+  }
+}

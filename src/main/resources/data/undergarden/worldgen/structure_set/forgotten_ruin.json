@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "undergarden:forgotten_ruin",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 4,
+    "separation": 2,
+    "salt": 276320046
+  }
+}
