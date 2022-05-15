@@ -61,6 +61,7 @@ public class UGPlacedFeatures {
 
     //tree
     public static final Holder<PlacedFeature> SMOGSTEM_TREE = register("smogstem_tree", UGConfiguredFeatures.SMOGSTEM_TREE, tree(8));
+    public static final Holder<PlacedFeature> WIDE_SMOGSTEM_TREE = register("wide_smogstem_tree", UGConfiguredFeatures.WIDE_SMOGSTEM_TREE, tree(2));
     public static final Holder<PlacedFeature> TALL_SMOGSTEM_TREE = register("tall_smogstem_tree", UGConfiguredFeatures.TALL_SMOGSTEM_TREE, tree(4));
     public static final Holder<PlacedFeature> WIGGLEWOOD_TREE = register("wigglewood_tree", UGConfiguredFeatures.WIGGLEWOOD_TREE, tree(8));
     public static final Holder<PlacedFeature> TALL_WIGGLEWOOD_TREE = register("tall_wigglewood_tree", UGConfiguredFeatures.TALL_WIGGLEWOOD_TREE, tree(4));
