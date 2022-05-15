@@ -23,9 +23,13 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -90,18 +94,6 @@ public class Undergarden {
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGBiomes.toDictionary();
-
-			AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
-			AxeItem.STRIPPABLES.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
-
-			HoeItem.TILLABLES.put(UGBlocks.DEEPTURF_BLOCK.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState())));
-			HoeItem.TILLABLES.put(UGBlocks.DEEPSOIL.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState())));
-			HoeItem.TILLABLES.put(UGBlocks.COARSE_DEEPSOIL.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL.get().defaultBlockState())));
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
