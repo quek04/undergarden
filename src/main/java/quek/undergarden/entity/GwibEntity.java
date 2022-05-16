@@ -1,8 +1,10 @@
 package quek.undergarden.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -20,8 +22,10 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Random;
@@ -36,9 +40,9 @@ public class GwibEntity extends WaterAnimal implements Enemy {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new RandomSwimmingGoal(this, 1.5D, 120));
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.5D, false));
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
+        this.goalSelector.addGoal(1, new GwibAttackGoal(this, 1.5D, false));
+        this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 1.5D, 120));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
@@ -51,6 +55,16 @@ public class GwibEntity extends WaterAnimal implements Enemy {
 
     public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
         return !(level.getDifficulty() == Difficulty.PEACEFUL) && random.nextInt(10) == 0 && level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
+    }
+
+    @Override
+    public int getMaxHeadXRot() {
+        return 1;
+    }
+
+    @Override
+    public int getMaxHeadYRot() {
+        return 1;
     }
 
     @Override
@@ -103,5 +117,32 @@ public class GwibEntity extends WaterAnimal implements Enemy {
     @Override
     protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
         return 0.25F;
+    }
+
+    private boolean targetIsInWater(LivingEntity target) {
+        if (target != null) {
+            return target.isInWater();
+        }
+        else return false;
+    }
+
+    static class GwibAttackGoal extends MeleeAttackGoal {
+
+        private final GwibEntity gwib;
+
+        public GwibAttackGoal(GwibEntity gwib, double speedModifier, boolean followingTargetEvenIfNotSeen) {
+            super(gwib, speedModifier, followingTargetEvenIfNotSeen);
+            this.gwib = gwib;
+        }
+
+        @Override
+        public boolean canUse() {
+            return super.canUse() && this.gwib.targetIsInWater(this.gwib.getTarget());
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return super.canContinueToUse() && this.gwib.targetIsInWater(this.gwib.getTarget());
+        }
     }
 }
