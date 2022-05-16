@@ -32,9 +32,9 @@ public class UGPlacedFeatures {
     public static final Holder<PlacedFeature> SEDIMENT_ORE = register("sediment_ore", UGConfiguredFeatures.SEDIMENT_ORE, OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32))));
 
     //springs
-    public static final Holder<PlacedFeature> SPRING = register("spring", UGConfiguredFeatures.SPRING, CountPlacement.of(50), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
-    public static final Holder<PlacedFeature> VIRULENT_MIX_SPRING = register("virulent_mix_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING, CountPlacement.of(25), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
-    public static final Holder<PlacedFeature> VIRULENT_MIX_BOG_SPRING = register("virulent_mix_bog_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING, CountPlacement.of(50), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
+    public static final Holder<PlacedFeature> SPRING = register("spring", UGConfiguredFeatures.SPRING, CountPlacement.of(20), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
+    public static final Holder<PlacedFeature> VIRULENT_MIX_SPRING = register("virulent_mix_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING, CountPlacement.of(20), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
+    public static final Holder<PlacedFeature> VIRULENT_MIX_BOG_SPRING = register("virulent_mix_bog_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING, CountPlacement.of(25), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
 
     //deltas
     public static final Holder<PlacedFeature> BOG_DELTA = register("bog_delta", UGConfiguredFeatures.BOG_DELTA, CountOnEveryLayerPlacement.of(40), BiomeFilter.biome());
