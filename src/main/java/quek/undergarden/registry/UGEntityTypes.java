@@ -55,7 +55,7 @@ public class UGEntityTypes {
     //normal
     public static final RegistryObject<EntityType<RotlingEntity>> ROTLING = ENTITIES.register("rotling", () -> EntityType.Builder.of(RotlingEntity::new, MobCategory.MONSTER).sized(0.6F, 1.0F).build("rotling"));
     public static final RegistryObject<EntityType<RotwalkerEntity>> ROTWALKER = ENTITIES.register("rotwalker", () -> EntityType.Builder.of(RotwalkerEntity::new, MobCategory.MONSTER).sized(0.8F,2.5F).build("rotwalker"));
-    public static final RegistryObject<EntityType<RotbeastEntity>> ROTBEAST = ENTITIES.register("rotbeast", () -> EntityType.Builder.of(RotbeastEntity::new, MobCategory.MONSTER).sized(2.0F,3.0F).build("rotbeast"));
+    public static final RegistryObject<EntityType<RotbeastEntity>> ROTBEAST = ENTITIES.register("rotbeast", () -> EntityType.Builder.of(RotbeastEntity::new, MobCategory.MONSTER).sized(1.5F,3.0F).build("rotbeast"));
     public static final RegistryObject<EntityType<DwellerEntity>> DWELLER = ENTITIES.register("dweller", () -> EntityType.Builder.of(DwellerEntity::new, MobCategory.CREATURE).sized(1.2F,1.8F).build("dweller"));
     public static final RegistryObject<EntityType<GwiblingEntity>> GWIBLING = ENTITIES.register("gwibling", () -> EntityType.Builder.of(GwiblingEntity::new, MobCategory.WATER_AMBIENT).sized(.5F, .3F).build("gwibling"));
     public static final RegistryObject<EntityType<BruteEntity>> BRUTE = ENTITIES.register("brute", () -> EntityType.Builder.of(BruteEntity::new, MobCategory.CREATURE).sized(1.0F, 2).build("brute"));
