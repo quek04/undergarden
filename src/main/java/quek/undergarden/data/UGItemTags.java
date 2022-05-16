@@ -34,23 +34,34 @@ public class UGItemTags extends ItemTagsProvider {
         copy(UGTags.Blocks.SMOGSTEM_LOGS, UGTags.Items.SMOGSTEM_LOGS);
         copy(UGTags.Blocks.WIGGLEWOOD_LOGS, UGTags.Items.WIGGLEWOOD_LOGS);
         copy(UGTags.Blocks.GRONGLE_LOGS, UGTags.Items.GRONGLE_LOGS);
+
         //undergarden forge
+        tag(UGTags.Items.RAW_MATERIALS_CLOGGRUM).add(UGItems.RAW_CLOGGRUM.get());
+        tag(UGTags.Items.RAW_MATERIALS_FROSTSTEEL).add(UGItems.RAW_FROSTSTEEL.get());
+
         tag(UGTags.Items.INGOTS_CLOGGRUM).add(UGItems.CLOGGRUM_INGOT.get());
         tag(UGTags.Items.INGOTS_FROSTSTEEL).add(UGItems.FROSTSTEEL_INGOT.get());
         tag(UGTags.Items.INGOTS_UTHERIUM).add(UGItems.UTHERIUM_CRYSTAL.get());
         tag(UGTags.Items.INGOTS_REGALIUM).add(UGItems.REGALIUM_CRYSTAL.get());
-        tag(UGTags.Items.INGOTS_FORGOTTEN).add(UGItems.FORGOTTEN_INGOT.get());
-        tag(UGTags.Items.NUGGETS_CLOGGRUM).add(UGItems.CLOGGRUM_INGOT.get());
-        tag(UGTags.Items.NUGGETS_FROSTSTEEL).add(UGItems.FROSTSTEEL_INGOT.get());
-        tag(UGTags.Items.NUGGETS_FORGOTTEN).add(UGItems.FORGOTTEN_INGOT.get());
+        tag(UGTags.Items.INGOTS_FORGOTTEN_METAL).add(UGItems.FORGOTTEN_INGOT.get());
+
+        tag(UGTags.Items.NUGGETS_CLOGGRUM).add(UGItems.CLOGGRUM_NUGGET.get());
+        tag(UGTags.Items.NUGGETS_FROSTSTEEL).add(UGItems.FROSTSTEEL_NUGGET.get());
+        tag(UGTags.Items.NUGGETS_FORGOTTEN_METAL).add(UGItems.FORGOTTEN_NUGGET.get());
+
         copy(UGTags.Blocks.ORES_CLOGGRUM, UGTags.Items.ORES_CLOGGRUM);
         copy(UGTags.Blocks.ORES_FROSTSTEEL, UGTags.Items.ORES_FROSTSTEEL);
         copy(UGTags.Blocks.ORES_UTHERIUM, UGTags.Items.ORES_UTHERIUM);
         copy(UGTags.Blocks.ORES_REGALIUM, UGTags.Items.ORES_REGALIUM);
+
         copy(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM, UGTags.Items.STORAGE_BLOCKS_CLOGGRUM);
         copy(UGTags.Blocks.STORAGE_BLOCKS_FROSTSTEEL, UGTags.Items.STORAGE_BLOCKS_FROSTSTEEL);
         copy(UGTags.Blocks.STORAGE_BLOCKS_UTHERIUM, UGTags.Items.STORAGE_BLOCKS_UTHERIUM);
         copy(UGTags.Blocks.STORAGE_BLOCKS_REGALIUM, UGTags.Items.STORAGE_BLOCKS_REGALIUM);
+        copy(UGTags.Blocks.STORAGE_BLOCKS_FORGOTTEN_METAL, UGTags.Items.STORAGE_BLOCKS_FORGOTTEN_METAL);
+
+        copy(UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM, UGTags.Items.STORAGE_BLOCKS_RAW_CLOGGRUM);
+        copy(UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL, UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL);
 
         //vanilla
         tag(ItemTags.PLANKS).add(UGBlocks.SMOGSTEM_PLANKS.get().asItem(), UGBlocks.WIGGLEWOOD_PLANKS.get().asItem(), UGBlocks.GRONGLE_PLANKS.get().asItem());
@@ -89,23 +100,24 @@ public class UGItemTags extends ItemTagsProvider {
         tag(Tags.Items.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get().asItem(), UGBlocks.GRONGLE_FENCE_GATE.get().asItem());
         tag(Tags.Items.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem());
         tag(Tags.Items.MUSHROOMS).addTag(UGTags.Items.MUSHROOMS);
-        tag(Tags.Items.NUGGETS).add(UGItems.CLOGGRUM_NUGGET.get(), UGItems.FROSTSTEEL_NUGGET.get(), UGItems.FORGOTTEN_NUGGET.get());
+        tag(Tags.Items.NUGGETS).addTags(UGTags.Items.NUGGETS_CLOGGRUM, UGTags.Items.NUGGETS_FROSTSTEEL, UGTags.Items.NUGGETS_FORGOTTEN_METAL);
         tag(Tags.Items.SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
         tag(Tags.Items.SLIMEBALLS).add(UGItems.GOO_BALL.get());
         tag(Tags.Items.STRING).add(UGItems.TWISTYTWIG.get());
-        tag(Tags.Items.INGOTS).addTags(UGTags.Items.INGOTS_CLOGGRUM, UGTags.Items.INGOTS_FROSTSTEEL, UGTags.Items.INGOTS_UTHERIUM, UGTags.Items.INGOTS_REGALIUM);
+        tag(Tags.Items.INGOTS).addTags(UGTags.Items.INGOTS_CLOGGRUM, UGTags.Items.INGOTS_FROSTSTEEL, UGTags.Items.INGOTS_UTHERIUM, UGTags.Items.INGOTS_REGALIUM, UGTags.Items.INGOTS_FORGOTTEN_METAL);
         tag(Tags.Items.ORES).addTags(UGTags.Items.ORES_CLOGGRUM, UGTags.Items.ORES_FROSTSTEEL, UGTags.Items.ORES_UTHERIUM, UGTags.Items.ORES_REGALIUM).add(UGBlocks.DEPTHROCK_COAL_ORE.get().asItem(), UGBlocks.SHIVERSTONE_COAL_ORE.get().asItem(), UGBlocks.DEPTHROCK_IRON_ORE.get().asItem(), UGBlocks.SHIVERSTONE_IRON_ORE.get().asItem(), UGBlocks.DEPTHROCK_GOLD_ORE.get().asItem(), UGBlocks.DEPTHROCK_DIAMOND_ORE.get().asItem(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get().asItem());
         tag(Tags.Items.ORES_COAL).add(UGBlocks.DEPTHROCK_COAL_ORE.get().asItem(), UGBlocks.SHIVERSTONE_COAL_ORE.get().asItem());
         tag(Tags.Items.ORES_IRON).add(UGBlocks.DEPTHROCK_IRON_ORE.get().asItem(), UGBlocks.SHIVERSTONE_IRON_ORE.get().asItem());
         tag(Tags.Items.ORES_GOLD).add(UGBlocks.DEPTHROCK_GOLD_ORE.get().asItem());
         tag(Tags.Items.ORES_DIAMOND).add(UGBlocks.DEPTHROCK_DIAMOND_ORE.get().asItem(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get().asItem());
         tag(Tags.Items.STONE).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
-        tag(Tags.Items.STORAGE_BLOCKS).add(UGBlocks.CLOGGRUM_BLOCK.get().asItem(), UGBlocks.FROSTSTEEL_BLOCK.get().asItem(), UGBlocks.UTHERIUM_BLOCK.get().asItem(), UGBlocks.REGALIUM_BLOCK.get().asItem(), UGBlocks.FORGOTTEN_BLOCK.get().asItem());
+        tag(Tags.Items.STORAGE_BLOCKS).addTags(UGTags.Items.STORAGE_BLOCKS_CLOGGRUM, UGTags.Items.STORAGE_BLOCKS_RAW_CLOGGRUM, UGTags.Items.STORAGE_BLOCKS_FROSTSTEEL, UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL, UGTags.Items.STORAGE_BLOCKS_UTHERIUM, UGTags.Items.STORAGE_BLOCKS_REGALIUM, UGTags.Items.STORAGE_BLOCKS_FORGOTTEN_METAL);
         tag(Tags.Items.GLASS).add(UGBlocks.SEDIMENT_GLASS.get().asItem());
         tag(Tags.Items.GLASS_COLORLESS).add(UGBlocks.SEDIMENT_GLASS.get().asItem());
         tag(Tags.Items.GLASS_PANES).add(UGBlocks.SEDIMENT_GLASS_PANE.get().asItem());
         tag(Tags.Items.GLASS_PANES_COLORLESS).add(UGBlocks.SEDIMENT_GLASS_PANE.get().asItem());
         tag(Tags.Items.SAND).add(UGBlocks.SEDIMENT.get().asItem());
         tag(Tags.Items.SAND_COLORLESS).add(UGBlocks.SEDIMENT.get().asItem());
+        tag(Tags.Items.RAW_MATERIALS).addTags(UGTags.Items.RAW_MATERIALS_CLOGGRUM, UGTags.Items.RAW_MATERIALS_FROSTSTEEL);
     }
 }
