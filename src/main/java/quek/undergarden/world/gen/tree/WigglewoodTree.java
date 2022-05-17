@@ -13,6 +13,6 @@ public class WigglewoodTree extends AbstractTreeGrower {
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean hive) {
-        return UGConfiguredFeatures.WIGGLEWOOD_TREE;
+        return UGConfiguredFeatures.WIGGLEWOOD_TREE.getHolder().get();
     }
 }

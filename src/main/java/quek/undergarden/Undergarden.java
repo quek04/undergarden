@@ -1,7 +1,5 @@
 package quek.undergarden;
 
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
@@ -17,19 +15,17 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -62,22 +58,25 @@ public class Undergarden {
 
 		DeferredRegister<?>[] registers = {
 				UGBiomes.BIOMES,
+				UGBlockEntities.BLOCK_ENTITIES,
 				UGBlocks.BLOCKS,
 				UGCarvers.CARVERS,
+				UGConfiguredCarvers.CONFIGURED_CARVERS,
+				UGConfiguredFeatures.CONFIGURED_FEATURES,
 				UGEffects.EFFECTS,
+				UGEnchantments.ENCHANTMENTS,
 				UGEntityTypes.ENTITIES,
 				UGFeatures.FEATURES,
 				UGFluids.FLUIDS,
 				UGItems.ITEMS,
 				UGParticleTypes.PARTICLES,
+				UGPlacedFeatures.PLACED_FEATURES,
 				UGPointOfInterests.POI,
 				UGPotions.POTIONS,
 				UGSoundEvents.SOUNDS,
 				UGStructures.STRUCTURES,
-				UGBlockEntities.BLOCK_ENTITIES,
 				UGTreeDecoratorTypes.TREE_DECORATORS,
-				UGEnchantments.ENCHANTMENTS,
-				UGTrunkPlacerTypes.TRUNK_PLACERS
+				UGTrunkPlacerTypes.TRUNK_PLACERS,
 		};
 
 		for (DeferredRegister<?> register : registers) {
@@ -87,10 +86,6 @@ public class Undergarden {
 
 	public void setup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			UGConfiguredFeatures.init();
-			UGPlacedFeatures.init();
-			UGConfiguredCarvers.init();
-			UGConfiguredCarvers.init();
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGBiomes.toDictionary();

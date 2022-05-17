@@ -82,18 +82,18 @@ public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
 
     public void bigMushroom(ServerLevel level, BlockPos pos, BlockState state, Random random) {
         level.removeBlock(pos, false);
-        Holder<ConfiguredFeature<HugeMushroomFeatureConfiguration, ?>> feature;
+        Holder<ConfiguredFeature<?, ?>> feature;
         if (this == UGBlocks.BLOOD_MUSHROOM.get()) {
-            feature = UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM;
+            feature = UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM.getHolder().get();
         }
         else if(this == UGBlocks.INDIGO_MUSHROOM.get()) {
-            feature = UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM;
+            feature = UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM.getHolder().get();
         }
         else if(this == UGBlocks.INK_MUSHROOM.get()) {
-            feature = UGConfiguredFeatures.HUGE_INK_MUSHROOM;
+            feature = UGConfiguredFeatures.HUGE_INK_MUSHROOM.getHolder().get();
         }
         else if(this == UGBlocks.VEIL_MUSHROOM.get()) {
-            feature = UGConfiguredFeatures.HUGE_VEIL_MUSHROOM;
+            feature = UGConfiguredFeatures.HUGE_VEIL_MUSHROOM.getHolder().get();
         }
         else {
             return;

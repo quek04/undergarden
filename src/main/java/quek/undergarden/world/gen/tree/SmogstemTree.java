@@ -13,12 +13,12 @@ public class SmogstemTree extends AbstractMegaTreeGrower {
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean hive) {
-        return UGConfiguredFeatures.SMOGSTEM_TREE;
+        return UGConfiguredFeatures.SMOGSTEM_TREE.getHolder().get();
     }
 
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredMegaFeature(Random pRandom) {
-        return UGConfiguredFeatures.WIDE_SMOGSTEM_TREE;
+        return UGConfiguredFeatures.WIDE_SMOGSTEM_TREE.getHolder().get();
     }
 }
