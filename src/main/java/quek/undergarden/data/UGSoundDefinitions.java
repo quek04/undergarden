@@ -404,21 +404,26 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
         this.add(UGSoundEvents.ROTBEAST_HURT, definition().with(
                 sound("undergarden:entity/rotbeast_hurt_1"),
                 sound("undergarden:entity/rotbeast_hurt_2"),
-                sound("undergarden:entity/rotbeast_hurt_3")
+                sound("undergarden:entity/rotbeast_hurt_3"),
+                sound("undergarden:entity/rotbeast_hurt_4")
         ).subtitle("subtitles.entity.rotbeast_hurt"));
         this.add(UGSoundEvents.ROTBEAST_DEATH, definition().with(
                 sound("undergarden:entity/rotbeast_death")
         ).subtitle("subtitles.entity.rotbeast_death"));
         this.add(UGSoundEvents.ROTBEAST_STEP, definition().with(
-                sound("minecraft:mob/zombie/step1").pitch(0.3F),
-                sound("minecraft:mob/zombie/step2").pitch(0.3F),
-                sound("minecraft:mob/zombie/step3").pitch(0.3F),
-                sound("minecraft:mob/zombie/step4").pitch(0.3F),
-                sound("minecraft:mob/zombie/step5").pitch(0.3F)
+                sound("undergarden:entity/rotbeast_step_1"),
+                sound("undergarden:entity/rotbeast_step_2"),
+                sound("undergarden:entity/rotbeast_step_3")
         ).subtitle("subtitles.block.generic.footsteps"));
         this.add(UGSoundEvents.ROTBEAST_ATTACK, definition().with(
-                sound("minecraft:mob/irongolem/throw")
+                sound("undergarden:entity/rotbeast_attack_1"),
+                sound("undergarden:entity/rotbeast_attack_2")
         ).subtitle("subtitles.entity.rotbeast_attack"));
+        this.add(UGSoundEvents.ROTBEAST_ROAR, definition().with(
+                sound("undergarden:entity/rotbeast_roar_1"),
+                sound("undergarden:entity/rotbeast_roar_2"),
+                sound("undergarden:entity/rotbeast_roar_3")
+        ).subtitle("subtitles.entity.rotbeast.roar"));
 
         this.add(UGSoundEvents.BRUTE_AMBIENT, definition().with(
                 sound("undergarden:entity/brute_ambient_1"),

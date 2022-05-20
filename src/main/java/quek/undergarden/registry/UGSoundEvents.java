@@ -86,6 +86,7 @@ public class UGSoundEvents {
     public static final RegistryObject<SoundEvent> ROTBEAST_DEATH = register("entity.rotbeast_death");
     public static final RegistryObject<SoundEvent> ROTBEAST_STEP = register("entity.rotbeast_step");
     public static final RegistryObject<SoundEvent> ROTBEAST_ATTACK = register("entity.rotbeast_attack");
+    public static final RegistryObject<SoundEvent> ROTBEAST_ROAR = register("entity.rotbeast.roar");
 
     public static final RegistryObject<SoundEvent> BRUTE_AMBIENT = register("entity.brute_ambient");
     public static final RegistryObject<SoundEvent> BRUTE_HURT = register("entity.brute_hurt");
