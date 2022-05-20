@@ -458,6 +458,12 @@
       "item/ink_sac/ink_sac3"
     ]
   },
+  "entity.boomgourd.primed": {
+    "subtitle": "subtitles.entity.boomgourd.primed",
+    "sounds": [
+      "undergarden:entity/boomgourd_primed"
+    ]
+  },
   "entity.dweller_ambient": {
     "subtitle": "subtitles.entity.dweller_ambient",
     "sounds": [

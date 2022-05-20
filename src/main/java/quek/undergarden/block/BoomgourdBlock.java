@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import quek.undergarden.entity.Boomgourd;
+import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 
@@ -25,7 +26,7 @@ public class BoomgourdBlock extends TntBlock {
         if (!level.isClientSide) {
             Boomgourd boomgourd = new Boomgourd(level, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, entity);
             level.addFreshEntity(boomgourd);
-            level.playSound(null, boomgourd.getX(), boomgourd.getY(), boomgourd.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, boomgourd.getX(), boomgourd.getY(), boomgourd.getZ(), UGSoundEvents.BOOMGOURD_PRIMED.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(entity, GameEvent.PRIME_FUSE, pos);
         }
     }

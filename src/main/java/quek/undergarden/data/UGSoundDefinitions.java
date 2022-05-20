@@ -331,6 +331,10 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("minecraft:item/ink_sac/ink_sac3")
         ).subtitle("subtitles.item.ditchbulb_paste.use"));
 
+        this.add(UGSoundEvents.BOOMGOURD_PRIMED, definition().with(
+                sound("undergarden:entity/boomgourd_primed")
+        ).subtitle("subtitles.entity.boomgourd.primed"));
+
         this.add(UGSoundEvents.DWELLER_AMBIENT, definition().with(
                 sound("undergarden:entity/dweller_ambient_1"),
                 sound("undergarden:entity/dweller_ambient_2"),

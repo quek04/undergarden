@@ -539,6 +539,8 @@ public class UGLang extends LanguageProvider {
 
         addSubtitle("item", "ditchbulb_paste.use", "Ditchbulb Paste squelches");
 
+        addSubtitle("entity", "boomgourd.primed", "Boomgourd fizzes");
+
         addSubtitle("entity", "dweller_ambient", "Dweller grumbles");
         addSubtitle("entity", "dweller_hurt", "Dweller hurts");
         addSubtitle("entity", "dweller_death", "Dweller dies");
