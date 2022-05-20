@@ -41,7 +41,8 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:ambient/additions/abyss_9"),
                 sound("undergarden:ambient/additions/abyss_10"),
                 sound("undergarden:ambient/additions/abyss_11"),
-                sound("undergarden:ambient/additions/abyss_12")
+                sound("undergarden:ambient/additions/abyss_12"),
+                sound("undergarden:ambient/additions/abyss_13")
         ));
         this.add(UGSoundEvents.BOG_AMBIENT_ADDITION, definition().with(
                 sound("undergarden:ambient/additions/bog_1"),
