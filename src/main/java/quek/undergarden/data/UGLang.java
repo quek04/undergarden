@@ -519,9 +519,9 @@ public class UGLang extends LanguageProvider {
         add("tooltip.pebble", "Can be used as Slingshot ammo.");
         add("tooltip.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
 
-        addSubtitle("block", "undergarden_portal_ambient", "Undergarden Portal beckons");
-        addSubtitle("block", "undergarden_portal_activate", "Undergarden Portal activates");
-        addSubtitle("block", "undergarden_portal_travel", "Travelling through Undergarden portal");
+        addSubtitle("block", "undergarden_portal.ambient", "Undergarden Portal beckons");
+        addSubtitle("block", "undergarden_portal.activate", "Undergarden Portal activates");
+        addSubtitle("block", "undergarden_portal.travel", "Travelling through Undergarden portal");
 
         addSubtitle("block", "virulent.flow", "Virulent Mix flows");
         addSubtitle("block", "virulent.bubble", "Virulent Mix bubbles");
@@ -531,92 +531,92 @@ public class UGLang extends LanguageProvider {
 
         addSubtitle("item", "blisterbomb", "Blisterbomb thrown");
 
-        addSubtitle("item", "slingshot_draw", "Slingshot drawn");
-        addSubtitle("item", "slingshot_shoot", "Slingshot fired");
+        addSubtitle("item", "slingshot.draw", "Slingshot drawn");
+        addSubtitle("item", "slingshot.shoot", "Slingshot fired");
         addSubtitle("item", "slingshot.gronglet_shoot", "Slingshot fired");
 
-        addSubtitle("item", "pick_blisterberry_bush", "Blisterberry Bush picked");
+        addSubtitle("item", "blisterberry_bush.pick", "Blisterberry Bush picked");
 
         addSubtitle("item", "ditchbulb_paste.use", "Ditchbulb Paste squelches");
 
         addSubtitle("entity", "boomgourd.primed", "Boomgourd fizzes");
 
-        addSubtitle("entity", "dweller_ambient", "Dweller grumbles");
-        addSubtitle("entity", "dweller_hurt", "Dweller hurts");
-        addSubtitle("entity", "dweller_death", "Dweller dies");
+        addSubtitle("entity", "dweller.ambient", "Dweller grumbles");
+        addSubtitle("entity", "dweller.hurt", "Dweller hurts");
+        addSubtitle("entity", "dweller.death", "Dweller dies");
 
-        addSubtitle("entity", "rotwalker_ambient", "Rotwalker groans");
-        addSubtitle("entity", "rotwalker_hurt", "Rotwalker hurts");
-        addSubtitle("entity", "rotwalker_death", "Rotwalker dies");
+        addSubtitle("entity", "rotwalker.ambient", "Rotwalker groans");
+        addSubtitle("entity", "rotwalker.hurt", "Rotwalker hurts");
+        addSubtitle("entity", "rotwalker.death", "Rotwalker dies");
 
-        addSubtitle("entity", "rotbeast_ambient", "Rotbeast groans");
-        addSubtitle("entity", "rotbeast_hurt", "Rotbeast hurts");
-        addSubtitle("entity", "rotbeast_death", "Rotbeast dies");
-        addSubtitle("entity", "rotbeast_attack", "Rotbeast attacks");
+        addSubtitle("entity", "rotbeast.ambient", "Rotbeast groans");
+        addSubtitle("entity", "rotbeast.hurt", "Rotbeast hurts");
+        addSubtitle("entity", "rotbeast.death", "Rotbeast dies");
+        addSubtitle("entity", "rotbeast.attack", "Rotbeast attacks");
         addSubtitle("entity", "rotbeast.roar", "Rotbeast roars");
 
-        addSubtitle("entity", "brute_ambient", "Brute exhales");
-        addSubtitle("entity", "brute_hurt", "Brute hurts");
-        addSubtitle("entity", "brute_death", "Brute dies");
+        addSubtitle("entity", "brute.ambient", "Brute exhales");
+        addSubtitle("entity", "brute.hurt", "Brute hurts");
+        addSubtitle("entity", "brute.death", "Brute dies");
 
-        addSubtitle("entity", "gloomper_ambient", "Gloomper croaks");
-        addSubtitle("entity", "gloomper_hurt", "Gloomper hurts");
-        addSubtitle("entity", "gloomper_death", "Gloomper dies");
-        addSubtitle("entity", "gloomper_hop", "Gloomper hops");
-        addSubtitle("entity", "gloomper_fart", "Gloomper farts");
+        addSubtitle("entity", "gloomper.ambient", "Gloomper croaks");
+        addSubtitle("entity", "gloomper.hurt", "Gloomper hurts");
+        addSubtitle("entity", "gloomper.death", "Gloomper dies");
+        addSubtitle("entity", "gloomper.hop", "Gloomper hops");
+        addSubtitle("entity", "gloomper.fart", "Gloomper farts");
 
-        addSubtitle("entity", "stoneborn_speaking", "Stoneborn speaks");
-        addSubtitle("entity", "stoneborn_pleased", "Stoneborn pleased");
-        addSubtitle("entity", "stoneborn_hurt", "Stoneborn hurts");
-        addSubtitle("entity", "stoneborn_angry", "Stoneborn angered");
-        addSubtitle("entity", "stoneborn_confused", "Stoneborn confused");
-        addSubtitle("entity", "stoneborn_chant", "Stoneborn chanting");
-        addSubtitle("entity", "stoneborn_death", "Stoneborn dies");
+        addSubtitle("entity", "stoneborn.speaking", "Stoneborn speaks");
+        addSubtitle("entity", "stoneborn.pleased", "Stoneborn pleased");
+        addSubtitle("entity", "stoneborn.hurt", "Stoneborn hurts");
+        addSubtitle("entity", "stoneborn.angry", "Stoneborn angered");
+        addSubtitle("entity", "stoneborn.confused", "Stoneborn confused");
+        addSubtitle("entity", "stoneborn.chant", "Stoneborn chanting");
+        addSubtitle("entity", "stoneborn.death", "Stoneborn dies");
 
-        addSubtitle("entity", "rotling_ambient", "Rotling groans");
-        addSubtitle("entity", "rotling_hurt", "Rotling hurts");
-        addSubtitle("entity", "rotling_death", "Rotling dies");
+        addSubtitle("entity", "rotling.ambient", "Rotling groans");
+        addSubtitle("entity", "rotling.hurt", "Rotling hurts");
+        addSubtitle("entity", "rotling.death", "Rotling dies");
 
-        addSubtitle("entity", "forgotten_guardian_ambient", "Forgotten Guardian creaks");
-        addSubtitle("entity", "forgotten_guardian_hurt", "Forgotten Guardian hurts");
-        addSubtitle("entity", "forgotten_guardian_death", "Forgotten Guardian dies");
-        addSubtitle("entity", "forgotten_guardian_attack", "Forgotten Guardian attacks");
-        addSubtitle("entity", "forgotten_guardian_deflect", "Forgotten Guardian deflects");
+        addSubtitle("entity", "forgotten_guardian.ambient", "Forgotten Guardian creaks");
+        addSubtitle("entity", "forgotten_guardian.hurt", "Forgotten Guardian hurts");
+        addSubtitle("entity", "forgotten_guardian.death", "Forgotten Guardian dies");
+        addSubtitle("entity", "forgotten_guardian.attack", "Forgotten Guardian attacks");
+        addSubtitle("entity", "forgotten_guardian.deflect", "Forgotten Guardian deflects");
 
-        addSubtitle("entity", "minion_shoot", "Forgotten Minion shoots");
-        addSubtitle("entity", "minion_death", "Forgotten Minion dies");
-        addSubtitle("entity", "minion_repair", "Forgotten Minion repaired");
+        addSubtitle("entity", "minion.shoot", "Forgotten Minion shoots");
+        addSubtitle("entity", "minion.death", "Forgotten Minion dies");
+        addSubtitle("entity", "minion.repair", "Forgotten Minion repaired");
 
-        addSubtitle("entity", "nargoyle_hurt", "Nargoyle hurts");
-        addSubtitle("entity", "nargoyle_death", "Nargoyle dies");
-        addSubtitle("entity", "nargoyle_attack", "Nargoyle leaps");
+        addSubtitle("entity", "nargoyle.hurt", "Nargoyle hurts");
+        addSubtitle("entity", "nargoyle.death", "Nargoyle dies");
+        addSubtitle("entity", "nargoyle.attack", "Nargoyle leaps");
 
-        addSubtitle("entity", "muncher_ambient", "Muncher grumbles");
-        addSubtitle("entity", "muncher_hurt", "Muncher hurts");
-        addSubtitle("entity", "muncher_death", "Muncher dies");
-        addSubtitle("entity", "muncher_chew", "Muncher chews");
+        addSubtitle("entity", "muncher.ambient", "Muncher grumbles");
+        addSubtitle("entity", "muncher.hurt", "Muncher hurts");
+        addSubtitle("entity", "muncher.death", "Muncher dies");
+        addSubtitle("entity", "muncher.chew", "Muncher chews");
 
-        addSubtitle("entity", "sploogie_ambient", "Sploogie squeaks");
-        addSubtitle("entity", "sploogie_hurt", "Sploogie hurts");
-        addSubtitle("entity", "sploogie_death", "Sploogie dies");
-        addSubtitle("entity", "sploogie_spit", "Sploogie spits");
+        addSubtitle("entity", "sploogie.ambient", "Sploogie squeaks");
+        addSubtitle("entity", "sploogie.hurt", "Sploogie hurts");
+        addSubtitle("entity", "sploogie.death", "Sploogie dies");
+        addSubtitle("entity", "sploogie.spit", "Sploogie spits");
 
-        addSubtitle("entity", "masticator_ambient", "Masticator roars");
-        addSubtitle("entity", "masticator_hurt", "Masticator hurts");
-        addSubtitle("entity", "masticator_death", "Masticator dies");
-        addSubtitle("entity", "masticator_eat", "Masticator eats");
+        addSubtitle("entity", "masticator.ambient", "Masticator roars");
+        addSubtitle("entity", "masticator.hurt", "Masticator hurts");
+        addSubtitle("entity", "masticator.death", "Masticator dies");
+        addSubtitle("entity", "masticator.eat", "Masticator eats");
 
-        addSubtitle("entity", "gwib_hurt", "Gwib hurts");
-        addSubtitle("entity", "gwib_death", "Gwib dies");
-        addSubtitle("entity", "gwib_flop", "Gwib flops");
+        addSubtitle("entity", "gwib.hurt", "Gwib hurts");
+        addSubtitle("entity", "gwib.death", "Gwib dies");
+        addSubtitle("entity", "gwib.flop", "Gwib flops");
 
-        addSubtitle("entity", "gwibling_hurt", "Gwibling hurts");
-        addSubtitle("entity", "gwibling_death", "Gwibling dies");
-        addSubtitle("entity", "gwibling_flop", "Gwibling flops");
+        addSubtitle("entity", "gwibling.hurt", "Gwibling hurts");
+        addSubtitle("entity", "gwibling.death", "Gwibling dies");
+        addSubtitle("entity", "gwibling.flop", "Gwibling flops");
 
-        addSubtitle("entity", "mog_ambient", "Mog squeaks");
-        addSubtitle("entity", "mog_hurt", "Mog hurts");
-        addSubtitle("entity", "mog_death", "Mog dies");
+        addSubtitle("entity", "mog.ambient", "Mog squeaks");
+        addSubtitle("entity", "mog.hurt", "Mog hurts");
+        addSubtitle("entity", "mog.death", "Mog dies");
 
         addSubtitle("entity", "scintling.hurt", "Scintling hurts");
         addSubtitle("entity", "scintling.death", "Scintling dies");
