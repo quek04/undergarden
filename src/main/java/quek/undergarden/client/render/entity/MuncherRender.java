@@ -7,9 +7,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MuncherModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MuncherEyesLayer;
-import quek.undergarden.entity.cavern.MuncherEntity;
+import quek.undergarden.entity.cavern.Muncher;
 
-public class MuncherRender extends MobRenderer<MuncherEntity, MuncherModel<MuncherEntity>> {
+public class MuncherRender extends MobRenderer<Muncher, MuncherModel<Muncher>> {
 
     public MuncherRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new MuncherModel<>(renderContext.bakeLayer(UGModelLayers.MUNCHER)), 0.5F);
@@ -17,7 +17,7 @@ public class MuncherRender extends MobRenderer<MuncherEntity, MuncherModel<Munch
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MuncherEntity entity) {
+    public ResourceLocation getTextureLocation(Muncher entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/muncher.png");
     }
 }

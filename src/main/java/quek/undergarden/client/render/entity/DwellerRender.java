@@ -8,9 +8,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.DwellerModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.DwellerEyesLayer;
-import quek.undergarden.entity.animal.DwellerEntity;
+import quek.undergarden.entity.animal.Dweller;
 
-public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<DwellerEntity>> {
+public class DwellerRender extends MobRenderer<Dweller, DwellerModel<Dweller>> {
 
     public DwellerRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new DwellerModel<>(renderContext.bakeLayer(UGModelLayers.DWELLER)), 0.7F);
@@ -19,7 +19,7 @@ public class DwellerRender extends MobRenderer<DwellerEntity, DwellerModel<Dwell
     }
 
     @Override
-    public ResourceLocation getTextureLocation(DwellerEntity entity) {
+    public ResourceLocation getTextureLocation(Dweller entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/dweller.png");
     }
 }

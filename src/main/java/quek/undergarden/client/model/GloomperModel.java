@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.GloomperEntity;
+import quek.undergarden.entity.animal.Gloomper;
 
-public class GloomperModel<T extends GloomperEntity> extends AgeableListModel<T> {
+public class GloomperModel<T extends Gloomper> extends AgeableListModel<T> {
 
 	private final ModelPart body;
 	private final ModelPart head;

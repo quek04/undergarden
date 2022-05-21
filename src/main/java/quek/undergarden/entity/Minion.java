@@ -17,15 +17,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import quek.undergarden.entity.projectile.MinionProjectileEntity;
+import quek.undergarden.entity.projectile.MinionProjectile;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
-public class MinionEntity extends AbstractGolem implements RangedAttackMob {
+public class Minion extends AbstractGolem implements RangedAttackMob {
 
-    public MinionEntity(EntityType<? extends AbstractGolem> type, Level level) {
+    public Minion(EntityType<? extends AbstractGolem> type, Level level) {
         super(type, level);
     }
 
@@ -58,7 +58,7 @@ public class MinionEntity extends AbstractGolem implements RangedAttackMob {
 
     @Override
     public void performRangedAttack(LivingEntity target, float distanceFactor) {
-        MinionProjectileEntity projectile = new MinionProjectileEntity(this.level, this);
+        MinionProjectile projectile = new MinionProjectile(this.level, this);
         double xDistance = target.getX() - this.getX();
         double yDistance = target.getY(0.3333333333333333D) - projectile.getY();
         double zDistance = target.getZ() - this.getZ();

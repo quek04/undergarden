@@ -47,7 +47,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
-public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchant {
+public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
     protected int timeOutOfUG = 0;
     private static final UniformInt ANGER_TIME_RANGE = TimeUtil.rangeOfSeconds(20, 39);
@@ -58,8 +58,8 @@ public class StonebornEntity extends Monster implements NeutralMob, Npc, Merchan
     @Nullable
     protected MerchantOffers offers;
 
-    public StonebornEntity(EntityType<? extends Monster> type, Level worldIn) {
-        super(type, worldIn);
+    public Stoneborn(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
         this.maxUpStep = 1.0F;
     }
 

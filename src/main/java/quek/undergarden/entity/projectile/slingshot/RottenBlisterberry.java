@@ -10,18 +10,18 @@ import net.minecraft.world.phys.EntityHitResult;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class RottenBlisterberryEntity extends SlingshotProjectile {
+public class RottenBlisterberry extends SlingshotProjectile {
 
-    public RottenBlisterberryEntity(EntityType<? extends RottenBlisterberryEntity> type, Level level) {
+    public RottenBlisterberry(EntityType<? extends RottenBlisterberry> type, Level level) {
         super(type, level);
         this.setDropItem(false);
     }
 
-    public RottenBlisterberryEntity(Level level, LivingEntity shooter) {
+    public RottenBlisterberry(Level level, LivingEntity shooter) {
         super(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), shooter, level);
     }
 
-    public RottenBlisterberryEntity(Level level, double x, double y, double z) {
+    public RottenBlisterberry(Level level, double x, double y, double z) {
         super(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), x, y, z, level);
     }
 

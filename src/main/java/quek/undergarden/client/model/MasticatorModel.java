@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.boss.MasticatorEntity;
+import quek.undergarden.entity.boss.Masticator;
 
-public class MasticatorModel<T extends MasticatorEntity> extends ListModel<T> {
+public class MasticatorModel<T extends Masticator> extends ListModel<T> {
 
 	private final ModelPart head;
 	private final ModelPart lowerJaw;

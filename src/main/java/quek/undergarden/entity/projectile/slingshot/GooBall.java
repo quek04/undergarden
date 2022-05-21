@@ -15,23 +15,23 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.entity.animal.ScintlingEntity;
+import quek.undergarden.entity.animal.Scintling;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class GooBallEntity extends SlingshotProjectile {
+public class GooBall extends SlingshotProjectile {
 
-    public GooBallEntity(EntityType<? extends GooBallEntity> type, Level level) {
+    public GooBall(EntityType<? extends GooBall> type, Level level) {
         super(type, level);
         this.setDropItem(true);
     }
 
-    public GooBallEntity(Level level, LivingEntity shooter) {
+    public GooBall(Level level, LivingEntity shooter) {
         super(UGEntityTypes.GOO_BALL.get(), shooter, level);
     }
 
-    public GooBallEntity(Level level, double x, double y, double z) {
+    public GooBall(Level level, double x, double y, double z) {
         super(UGEntityTypes.GOO_BALL.get(), x, y, z, level);
     }
 
@@ -61,7 +61,7 @@ public class GooBallEntity extends SlingshotProjectile {
         super.onHitEntity(result);
         Entity entity = result.getEntity();
         if (entity instanceof LivingEntity livingEntity) {
-            if (livingEntity instanceof ScintlingEntity) {
+            if (livingEntity instanceof Scintling) {
                 livingEntity.heal(2);
             } else {
                 livingEntity.hurt(new IndirectEntityDamageSource("arrow", this, this.getOwner()), 0.0F);

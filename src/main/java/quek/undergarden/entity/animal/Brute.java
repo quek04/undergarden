@@ -22,13 +22,13 @@ import quek.undergarden.registry.UGSoundEvents;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class BruteEntity extends Animal implements NeutralMob {
+public class Brute extends Animal implements NeutralMob {
 
     private static final UniformInt ANGER_TIME_RANGE = TimeUtil.rangeOfSeconds(20, 39);
     private int angerTime;
     private UUID targetUuid;
 
-    public BruteEntity(EntityType<? extends Animal> type, Level level) {
+    public Brute(EntityType<? extends Animal> type, Level level) {
         super(type, level);
     }
 
@@ -41,7 +41,7 @@ public class BruteEntity extends Animal implements NeutralMob {
         this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, BruteEntity.class, 6.0F));
+        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Brute.class, 6.0F));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(0, new HurtByTargetGoal(this).setAlertOthers());
     }

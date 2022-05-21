@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.cavern.SploogieEntity;
+import quek.undergarden.entity.cavern.Sploogie;
 
-public class SploogieModel<T extends SploogieEntity> extends ListModel<T> {
+public class SploogieModel<T extends Sploogie> extends ListModel<T> {
 
 	private final ModelPart head;
 	private final ModelPart bodySegment1;

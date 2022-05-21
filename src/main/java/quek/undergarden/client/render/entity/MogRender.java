@@ -7,9 +7,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MogModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MogEyesLayer;
-import quek.undergarden.entity.animal.MogEntity;
+import quek.undergarden.entity.animal.Mog;
 
-public class MogRender extends MobRenderer<MogEntity, MogModel<MogEntity>> {
+public class MogRender extends MobRenderer<Mog, MogModel<Mog>> {
 
     public MogRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new MogModel<>(renderContext.bakeLayer(UGModelLayers.MOG)), 0.5F);
@@ -17,7 +17,7 @@ public class MogRender extends MobRenderer<MogEntity, MogModel<MogEntity>> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MogEntity entity) {
+    public ResourceLocation getTextureLocation(Mog entity) {
         if(entity.hasMoss()) {
             return new ResourceLocation(Undergarden.MODID, "textures/entity/mog.png");
         }

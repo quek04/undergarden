@@ -26,22 +26,22 @@ import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import quek.undergarden.entity.rotspawn.RotspawnEntity;
+import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
 
-public class GloomperEntity extends Animal {
+public class Gloomper extends Animal {
 
     private int jumpTicks;
     private int jumpDuration;
     private boolean wasOnGround;
     private int currentMoveTypeDuration;
 
-    public GloomperEntity(EntityType<? extends Animal> type, Level level) {
+    public Gloomper(EntityType<? extends Animal> type, Level level) {
         super(type, level);
         this.jumpControl = new JumpHelperController(this);
-        this.moveControl = new GloomperEntity.MoveHelperController(this);
+        this.moveControl = new Gloomper.MoveHelperController(this);
         this.setMovementSpeed(0.0D);
         this.maxUpStep = 1.0F;
     }
@@ -51,7 +51,7 @@ public class GloomperEntity extends Animal {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.5D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnEntity.class, 12.0F, 2.0F, 2.5F));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 2.0F, 2.5F));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(UGBlocks.GLOOMGOURD.get()), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -166,7 +166,7 @@ public class GloomperEntity extends Animal {
                 this.checkLandingDelay();
             }
 
-            GloomperEntity.JumpHelperController jumpController = (GloomperEntity.JumpHelperController)this.jumpControl;
+            Gloomper.JumpHelperController jumpController = (Gloomper.JumpHelperController)this.jumpControl;
             if (!jumpController.getIsJumping()) {
                 if (this.moveControl.hasWanted() && this.currentMoveTypeDuration == 0) {
                     Path path = this.navigation.getPath();
@@ -196,11 +196,11 @@ public class GloomperEntity extends Animal {
     }
 
     private void enableJumpControl() {
-        ((GloomperEntity.JumpHelperController)this.jumpControl).setCanJump(true);
+        ((Gloomper.JumpHelperController)this.jumpControl).setCanJump(true);
     }
 
     private void disableJumpControl() {
-        ((GloomperEntity.JumpHelperController)this.jumpControl).setCanJump(false);
+        ((Gloomper.JumpHelperController)this.jumpControl).setCanJump(false);
     }
 
     private void updateMoveTypeDuration() {
@@ -288,10 +288,10 @@ public class GloomperEntity extends Animal {
     }
 
     public static class JumpHelperController extends JumpControl {
-        private final GloomperEntity gloomper;
+        private final Gloomper gloomper;
         private boolean canJump;
 
-        public JumpHelperController(GloomperEntity gloomper) {
+        public JumpHelperController(Gloomper gloomper) {
             super(gloomper);
             this.gloomper = gloomper;
         }
@@ -319,17 +319,17 @@ public class GloomperEntity extends Animal {
     }
 
     static class MoveHelperController extends MoveControl {
-        private final GloomperEntity gloomper;
+        private final Gloomper gloomper;
         private double nextJumpSpeed;
 
-        public MoveHelperController(GloomperEntity gloomper) {
+        public MoveHelperController(Gloomper gloomper) {
             super(gloomper);
             this.gloomper = gloomper;
         }
 
         @Override
         public void tick() {
-            if (this.gloomper.onGround && !this.gloomper.jumping && !((GloomperEntity.JumpHelperController)this.gloomper.jumpControl).getIsJumping()) {
+            if (this.gloomper.onGround && !this.gloomper.jumping && !((Gloomper.JumpHelperController)this.gloomper.jumpControl).getIsJumping()) {
                 this.gloomper.setMovementSpeed(0.0D);
             } else if (this.hasWanted()) {
                 this.gloomper.setMovementSpeed(this.nextJumpSpeed);

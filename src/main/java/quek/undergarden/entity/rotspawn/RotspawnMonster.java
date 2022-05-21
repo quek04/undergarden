@@ -11,15 +11,15 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import quek.undergarden.entity.animal.MogEntity;
-import quek.undergarden.entity.stoneborn.StonebornEntity;
+import quek.undergarden.entity.animal.Mog;
+import quek.undergarden.entity.stoneborn.Stoneborn;
 
 import java.util.Random;
 
-public class RotspawnEntity extends Monster {
+public class RotspawnMonster extends Monster {
 
-    protected RotspawnEntity(EntityType<? extends Monster> type, Level worldIn) {
-        super(type, worldIn);
+    protected RotspawnMonster(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class RotspawnEntity extends Monster {
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(0, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, StonebornEntity.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, 10, true, false, (target) -> !(target instanceof MogEntity)));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Stoneborn.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, 10, true, false, (target) -> !(target instanceof Mog)));
     }
 
     public static boolean canRotspawnSpawn(EntityType<? extends Monster> type, ServerLevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {

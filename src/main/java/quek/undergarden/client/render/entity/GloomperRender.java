@@ -7,9 +7,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GloomperModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.GloomperEyesLayer;
-import quek.undergarden.entity.animal.GloomperEntity;
+import quek.undergarden.entity.animal.Gloomper;
 
-public class GloomperRender extends MobRenderer<GloomperEntity, GloomperModel<GloomperEntity>> {
+public class GloomperRender extends MobRenderer<Gloomper, GloomperModel<Gloomper>> {
 
     public GloomperRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new GloomperModel<>(renderContext.bakeLayer(UGModelLayers.GLOOMPER)), 1.0F);
@@ -17,7 +17,7 @@ public class GloomperRender extends MobRenderer<GloomperEntity, GloomperModel<Gl
     }
 
     @Override
-    public ResourceLocation getTextureLocation(GloomperEntity entity) {
+    public ResourceLocation getTextureLocation(Gloomper entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/gloomper.png");
     }
 }

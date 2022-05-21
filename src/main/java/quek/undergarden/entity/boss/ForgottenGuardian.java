@@ -32,11 +32,11 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class ForgottenGuardianEntity extends Monster {
+public class ForgottenGuardian extends Monster {
 
     private int attackTimer;
 
-    public ForgottenGuardianEntity(EntityType<? extends Monster> type, Level level) {
+    public ForgottenGuardian(EntityType<? extends Monster> type, Level level) {
         super(type, level);
         this.maxUpStep = 1.0F;
         this.xpReward = 30;
@@ -177,7 +177,7 @@ public class ForgottenGuardianEntity extends Monster {
 
     @Override
     protected PathNavigation createNavigation(Level level) {
-        return new ForgottenGuardianEntity.Navigator(this, level);
+        return new ForgottenGuardian.Navigator(this, level);
     }
 
     @Override
@@ -191,7 +191,7 @@ public class ForgottenGuardianEntity extends Monster {
         }
 
         protected PathFinder createPathFinder(int range) {
-            this.nodeEvaluator = new ForgottenGuardianEntity.Processor();
+            this.nodeEvaluator = new ForgottenGuardian.Processor();
             return new PathFinder(this.nodeEvaluator, range);
         }
     }

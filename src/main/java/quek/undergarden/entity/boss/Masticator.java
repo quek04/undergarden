@@ -28,11 +28,11 @@ import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 
-public class MasticatorEntity extends Monster {
+public class Masticator extends Monster {
 
     private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(false);
 
-    public MasticatorEntity(EntityType<? extends Monster> type, Level level) {
+    public Masticator(EntityType<? extends Monster> type, Level level) {
         super(type, level);
         this.maxUpStep = 1.0F;
         this.xpReward = 25;

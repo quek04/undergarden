@@ -17,7 +17,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import quek.undergarden.entity.rotspawn.RotspawnEntity;
+import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
@@ -26,9 +26,9 @@ import quek.undergarden.registry.UGSoundEvents;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class ScintlingEntity extends Animal {
+public class Scintling extends Animal {
 
-    public ScintlingEntity(EntityType<? extends Animal> type, Level level) {
+    public Scintling(EntityType<? extends Animal> type, Level level) {
         super(type, level);
         this.maxUpStep = 1.0F;
         this.xpReward = 0;
@@ -37,7 +37,7 @@ public class ScintlingEntity extends Animal {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, RotspawnEntity.class, 12.0F, 1.2D, 1.4D));
+        this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 1.2D, 1.4D));
         this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.BLISTERBERRY.get()), false));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));

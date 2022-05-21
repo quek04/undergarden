@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.cavern.NargoyleEntity;
+import quek.undergarden.entity.cavern.Nargoyle;
 
-public class NargoyleModel<T extends NargoyleEntity> extends ListModel<T> {
+public class NargoyleModel<T extends Nargoyle> extends ListModel<T> {
 
 	private final ModelPart body;
 	private final ModelPart upperBody;

@@ -17,22 +17,22 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
-import quek.undergarden.entity.MinionEntity;
+import quek.undergarden.entity.Minion;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class MinionProjectileEntity extends ThrowableItemProjectile {
+public class MinionProjectile extends ThrowableItemProjectile {
 
-    public MinionProjectileEntity(EntityType<? extends MinionProjectileEntity> type, Level world) {
+    public MinionProjectile(EntityType<? extends MinionProjectile> type, Level world) {
         super(type, world);
     }
 
-    public MinionProjectileEntity(Level worldIn, LivingEntity throwerIn) {
-        super(UGEntityTypes.MINION_PROJECTILE.get(), throwerIn, worldIn);
+    public MinionProjectile(Level level, LivingEntity shooter) {
+        super(UGEntityTypes.MINION_PROJECTILE.get(), shooter, level);
     }
 
-    public MinionProjectileEntity(Level worldIn, double x, double y, double z) {
-        super(UGEntityTypes.MINION_PROJECTILE.get(), x, y, z, worldIn);
+    public MinionProjectile(Level level, double x, double y, double z) {
+        super(UGEntityTypes.MINION_PROJECTILE.get(), x, y, z, level);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class MinionProjectileEntity extends ThrowableItemProjectile {
             
             if(entity instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entity;
-                if(!(livingEntity instanceof MinionEntity)) {
+                if(!(livingEntity instanceof Minion)) {
                     livingEntity.hurt(DamageSource.thrown(this, this.getOwner()), 10.0F);
                 }
             }

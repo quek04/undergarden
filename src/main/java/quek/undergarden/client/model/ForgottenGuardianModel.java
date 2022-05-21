@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.boss.ForgottenGuardianEntity;
+import quek.undergarden.entity.boss.ForgottenGuardian;
 
-public class ForgottenGuardianModel<T extends ForgottenGuardianEntity> extends ListModel<T> {
+public class ForgottenGuardianModel<T extends ForgottenGuardian> extends ListModel<T> {
 
 	private final ModelPart head;
 	private final ModelPart body;

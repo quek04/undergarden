@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import quek.undergarden.entity.animal.ScintlingEntity;
+import quek.undergarden.entity.animal.Scintling;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
 
@@ -37,7 +37,7 @@ public class GooLayerBlock extends Block {
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
         if(entityIn instanceof Player && ((Player) entityIn).getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((Player) entityIn).hasEffect(UGEffects.GOOEY.get())) { }
-        else if(!(entityIn instanceof ScintlingEntity) && entityIn.isOnGround()) {
+        else if(!(entityIn instanceof Scintling) && entityIn.isOnGround()) {
             entityIn.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
         }
     }

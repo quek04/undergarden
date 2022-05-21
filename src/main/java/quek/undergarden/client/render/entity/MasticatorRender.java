@@ -7,9 +7,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MasticatorModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MasticatorEyesLayer;
-import quek.undergarden.entity.boss.MasticatorEntity;
+import quek.undergarden.entity.boss.Masticator;
 
-public class MasticatorRender extends MobRenderer<MasticatorEntity, MasticatorModel<MasticatorEntity>> {
+public class MasticatorRender extends MobRenderer<Masticator, MasticatorModel<Masticator>> {
 
     public MasticatorRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new MasticatorModel<>(renderContext.bakeLayer(UGModelLayers.MASTICATOR)), 2.0F);
@@ -17,7 +17,7 @@ public class MasticatorRender extends MobRenderer<MasticatorEntity, MasticatorMo
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MasticatorEntity entity) {
+    public ResourceLocation getTextureLocation(Masticator entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/masticator.png");
     }
 }

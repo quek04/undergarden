@@ -11,10 +11,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class RotlingEntity extends RotspawnEntity {
+public class Rotling extends RotspawnMonster {
 
-    public RotlingEntity(EntityType<? extends Monster> type, Level worldIn) {
-        super(type, worldIn);
+    public Rotling(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
     }
 
     public static AttributeSupplier.Builder registerAttributes() {

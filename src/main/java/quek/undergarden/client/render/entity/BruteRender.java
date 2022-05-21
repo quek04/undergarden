@@ -7,9 +7,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.BruteModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.BruteEyesLayer;
-import quek.undergarden.entity.animal.BruteEntity;
+import quek.undergarden.entity.animal.Brute;
 
-public class BruteRender extends MobRenderer<BruteEntity, BruteModel<BruteEntity>> {
+public class BruteRender extends MobRenderer<Brute, BruteModel<Brute>> {
 
     public BruteRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new BruteModel<>(renderContext.bakeLayer(UGModelLayers.BRUTE)), 0.7F);
@@ -17,7 +17,7 @@ public class BruteRender extends MobRenderer<BruteEntity, BruteModel<BruteEntity
     }
 
     @Override
-    public ResourceLocation getTextureLocation(BruteEntity entity) {
+    public ResourceLocation getTextureLocation(Brute entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/brute.png");
     }
 }

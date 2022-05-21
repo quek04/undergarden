@@ -19,12 +19,12 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import quek.undergarden.entity.projectile.slingshot.DepthrockPebbleEntity;
+import quek.undergarden.entity.projectile.slingshot.DepthrockPebble;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class SploogieEntity extends CavernEntity implements RangedAttackMob {
+public class Sploogie extends CavernMonster implements RangedAttackMob {
 
-    public SploogieEntity(EntityType<? extends Monster> type, Level level) {
+    public Sploogie(EntityType<? extends Monster> type, Level level) {
         super(type, level);
     }
 
@@ -39,7 +39,7 @@ public class SploogieEntity extends CavernEntity implements RangedAttackMob {
     }
 
     public static AttributeSupplier.Builder registerAttributes() {
-        return CavernEntity.createMobAttributes()
+        return CavernMonster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
@@ -61,7 +61,7 @@ public class SploogieEntity extends CavernEntity implements RangedAttackMob {
 
     @Override
     public void performRangedAttack(LivingEntity target, float distanceFactor) {
-        DepthrockPebbleEntity pebble = new DepthrockPebbleEntity(this.level, this);
+        DepthrockPebble pebble = new DepthrockPebble(this.level, this);
         double xDistance = target.getX() - this.getX();
         double yDistance = target.getY(0.3333333333333333D) - pebble.getY();
         double zDistance = target.getZ() - this.getZ();

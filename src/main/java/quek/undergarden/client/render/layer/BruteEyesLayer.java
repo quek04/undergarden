@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.BruteModel;
-import quek.undergarden.entity.animal.BruteEntity;
+import quek.undergarden.entity.animal.Brute;
 
-public class BruteEyesLayer<T extends BruteEntity, M extends BruteModel<T>> extends EyesLayer<T, M> {
+public class BruteEyesLayer<T extends Brute, M extends BruteModel<T>> extends EyesLayer<T, M> {
 
     public BruteEyesLayer(RenderLayerParent<T, M> rendererIn) {
         super(rendererIn);

@@ -17,17 +17,17 @@ import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class GrongletEntity extends SlingshotProjectile {
+public class Gronglet extends SlingshotProjectile {
 
-    public GrongletEntity(Level level, double x, double y, double z) {
+    public Gronglet(Level level, double x, double y, double z) {
         super(UGEntityTypes.GRONGLET.get(), x, y, z, level);
     }
 
-    public GrongletEntity(LivingEntity shooter, Level level) {
+    public Gronglet(LivingEntity shooter, Level level) {
         super(UGEntityTypes.GRONGLET.get(), shooter, level);
     }
 
-    public GrongletEntity(EntityType<GrongletEntity> type, Level level) {
+    public Gronglet(EntityType<Gronglet> type, Level level) {
         super(type, level);
         this.setDropItem(false);
     }

@@ -32,12 +32,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MogEntity extends Animal implements IForgeShearable {
+public class Mog extends Animal implements IForgeShearable {
 
-    private static final EntityDataAccessor<Boolean> HAS_MOSS = SynchedEntityData.defineId(MogEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> HAS_MOSS = SynchedEntityData.defineId(Mog.class, EntityDataSerializers.BOOLEAN);
     private int timeWithoutMoss;
 
-    public MogEntity(EntityType<? extends Animal> type, Level level) {
+    public Mog(EntityType<? extends Animal> type, Level level) {
         super(type, level);
         this.maxUpStep = 1.0F;
     }

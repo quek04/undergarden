@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwiblingModel;
-import quek.undergarden.entity.animal.GwiblingEntity;
+import quek.undergarden.entity.animal.Gwibling;
 
-public class GwiblingEyesLayer<T extends GwiblingEntity, M extends GwiblingModel<T>> extends EyesLayer<T, M> {
+public class GwiblingEyesLayer<T extends Gwibling, M extends GwiblingModel<T>> extends EyesLayer<T, M> {
 
     public GwiblingEyesLayer(RenderLayerParent<T, M> rendererIn) {
         super(rendererIn);

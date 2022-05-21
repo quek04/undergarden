@@ -12,17 +12,17 @@ import net.minecraftforge.network.NetworkHooks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class BlisterbombEntity extends ThrowableItemProjectile {
+public class Blisterbomb extends ThrowableItemProjectile {
 
-    public BlisterbombEntity(EntityType<? extends BlisterbombEntity> type, Level world) {
+    public Blisterbomb(EntityType<? extends Blisterbomb> type, Level world) {
         super(type, world);
     }
 
-    public BlisterbombEntity(Level world, LivingEntity thrower) {
+    public Blisterbomb(Level world, LivingEntity thrower) {
         super(UGEntityTypes.BLISTERBOMB.get(), thrower, world);
     }
 
-    public BlisterbombEntity(Level worldIn, double x, double y, double z) {
+    public Blisterbomb(Level worldIn, double x, double y, double z) {
         super(UGEntityTypes.BLISTERBOMB.get(), x, y, z, worldIn);
     }
 

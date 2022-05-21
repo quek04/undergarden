@@ -7,9 +7,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ScintlingModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.ScintlingGlowLayer;
-import quek.undergarden.entity.animal.ScintlingEntity;
+import quek.undergarden.entity.animal.Scintling;
 
-public class ScintlingRender extends MobRenderer<ScintlingEntity, ScintlingModel<ScintlingEntity>> {
+public class ScintlingRender extends MobRenderer<Scintling, ScintlingModel<Scintling>> {
 
     public ScintlingRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new ScintlingModel<>(renderContext.bakeLayer(UGModelLayers.SCINTLING)), 0.5F);
@@ -17,7 +17,7 @@ public class ScintlingRender extends MobRenderer<ScintlingEntity, ScintlingModel
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ScintlingEntity entity) {
+    public ResourceLocation getTextureLocation(Scintling entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/scintling.png");
     }
 

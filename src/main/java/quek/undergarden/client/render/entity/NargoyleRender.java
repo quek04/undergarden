@@ -6,16 +6,16 @@ import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.NargoyleModel;
 import quek.undergarden.client.model.UGModelLayers;
-import quek.undergarden.entity.cavern.NargoyleEntity;
+import quek.undergarden.entity.cavern.Nargoyle;
 
-public class NargoyleRender extends MobRenderer<NargoyleEntity, NargoyleModel<NargoyleEntity>> {
+public class NargoyleRender extends MobRenderer<Nargoyle, NargoyleModel<Nargoyle>> {
 
     public NargoyleRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new NargoyleModel<>(renderContext.bakeLayer(UGModelLayers.NARGOYLE)), 0.8F);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(NargoyleEntity entity) {
+    public ResourceLocation getTextureLocation(Nargoyle entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/nargoyle.png");
     }
 }

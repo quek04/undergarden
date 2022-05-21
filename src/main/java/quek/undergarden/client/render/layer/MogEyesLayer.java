@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MogModel;
-import quek.undergarden.entity.animal.MogEntity;
+import quek.undergarden.entity.animal.Mog;
 
-public class MogEyesLayer<E extends MogEntity, M extends MogModel<E>> extends EyesLayer<E, M> {
+public class MogEyesLayer<E extends Mog, M extends MogModel<E>> extends EyesLayer<E, M> {
 
     public MogEyesLayer(RenderLayerParent<E, M> renderer) {
         super(renderer);

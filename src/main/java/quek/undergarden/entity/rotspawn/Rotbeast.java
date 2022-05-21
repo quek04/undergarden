@@ -14,12 +14,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class RotbeastEntity extends RotspawnEntity {
+public class Rotbeast extends RotspawnMonster {
 
     private int attackTimer;
 
-    public RotbeastEntity(EntityType<? extends Monster> type, Level world) {
-        super(type, world);
+    public Rotbeast(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
     }
 
     public static AttributeSupplier.Builder registerAttributes() {

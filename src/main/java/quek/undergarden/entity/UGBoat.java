@@ -16,16 +16,16 @@ import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class UGBoatEntity extends Boat {
+public class UGBoat extends Boat {
 
-    private static final EntityDataAccessor<Integer> BOAT_TYPE = SynchedEntityData.defineId(UGBoatEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> BOAT_TYPE = SynchedEntityData.defineId(UGBoat.class, EntityDataSerializers.INT);
 
-    public UGBoatEntity(EntityType<? extends Boat> type, Level level) {
+    public UGBoat(EntityType<? extends Boat> type, Level level) {
         super(type, level);
         this.blocksBuilding = true;
     }
 
-    public UGBoatEntity(Level worldIn, double x, double y, double z) {
+    public UGBoat(Level worldIn, double x, double y, double z) {
         this(UGEntityTypes.BOAT.get(), worldIn);
         this.setPos(x, y, z);
         this.setDeltaMovement(Vec3.ZERO);
@@ -34,8 +34,8 @@ public class UGBoatEntity extends Boat {
         this.zo = z;
     }
 
-    public UGBoatEntity.Type getUGBoatType() {
-        return UGBoatEntity.Type.byId(this.entityData.get(BOAT_TYPE));
+    public UGBoat.Type getUGBoatType() {
+        return UGBoat.Type.byId(this.entityData.get(BOAT_TYPE));
     }
 
     @Override
@@ -51,7 +51,7 @@ public class UGBoatEntity extends Boat {
         }
     }
 
-    public void setBoatType(UGBoatEntity.Type boatType) {
+    public void setBoatType(UGBoat.Type boatType) {
         this.entityData.set(BOAT_TYPE, boatType.ordinal());
     }
 
@@ -69,7 +69,7 @@ public class UGBoatEntity extends Boat {
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {
         if (compound.contains("Type", 8)) {
-            this.setBoatType(UGBoatEntity.Type.getTypeFromString(compound.getString("Type")));
+            this.setBoatType(UGBoat.Type.getTypeFromString(compound.getString("Type")));
         }
     }
 
@@ -104,8 +104,8 @@ public class UGBoatEntity extends Boat {
             return this.name;
         }
 
-        public static UGBoatEntity.Type byId(int id) {
-            UGBoatEntity.Type[] aUGBoatEntity$type = values();
+        public static UGBoat.Type byId(int id) {
+            UGBoat.Type[] aUGBoatEntity$type = values();
             if (id < 0 || id >= aUGBoatEntity$type.length) {
                 id = 0;
             }
@@ -113,8 +113,8 @@ public class UGBoatEntity extends Boat {
             return aUGBoatEntity$type[id];
         }
 
-        public static UGBoatEntity.Type getTypeFromString(String nameIn) {
-            UGBoatEntity.Type[] boatTypeArray = values();
+        public static UGBoat.Type getTypeFromString(String nameIn) {
+            UGBoat.Type[] boatTypeArray = values();
 
             for (Type type : boatTypeArray) {
                 if (type.getName().equals(nameIn)) {

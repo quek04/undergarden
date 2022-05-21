@@ -25,20 +25,20 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import quek.undergarden.entity.rotspawn.RotspawnEntity;
+import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 
-public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
+public class Dweller extends Animal implements ItemSteerable, Saddleable {
 
-    private static final EntityDataAccessor<Boolean> SADDLE = SynchedEntityData.defineId(DwellerEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> BOOST_TIME = SynchedEntityData.defineId(DwellerEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> SADDLE = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> BOOST_TIME = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.INT);
     private final ItemBasedSteering steering = new ItemBasedSteering(this.entityData, BOOST_TIME, SADDLE);
 
-    public DwellerEntity(EntityType<? extends DwellerEntity> type, Level level) {
+    public Dweller(EntityType<? extends Dweller> type, Level level) {
         super(type, level);
     }
 
@@ -49,7 +49,7 @@ public class DwellerEntity extends Animal implements ItemSteerable, Saddleable {
         this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.UNDERBEANS.get(), UGItems.UNDERBEAN_STICK.get()), false));
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnEntity.class, 12.0F, 2.0D, 2.5D));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 2.0D, 2.5D));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
     }

@@ -15,9 +15,9 @@ import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Random;
 
-public class GwiblingEntity extends AbstractFish {
+public class Gwibling extends AbstractFish {
 
-    public GwiblingEntity(EntityType<? extends AbstractFish> type, Level level) {
+    public Gwibling(EntityType<? extends AbstractFish> type, Level level) {
         super(type, level);
     }
 

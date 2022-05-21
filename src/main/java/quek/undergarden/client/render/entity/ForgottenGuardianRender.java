@@ -9,9 +9,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenGuardianModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.ForgottenGuardianEyesLayer;
-import quek.undergarden.entity.boss.ForgottenGuardianEntity;
+import quek.undergarden.entity.boss.ForgottenGuardian;
 
-public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardianEntity, ForgottenGuardianModel<ForgottenGuardianEntity>> {
+public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardian, ForgottenGuardianModel<ForgottenGuardian>> {
 
     public ForgottenGuardianRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new ForgottenGuardianModel<>(renderContext.bakeLayer(UGModelLayers.FORGOTTEN_GUARDIAN)), 0.6F);
@@ -19,12 +19,12 @@ public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardianEntity
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ForgottenGuardianEntity entity) {
+    public ResourceLocation getTextureLocation(ForgottenGuardian entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten_guardian.png");
     }
 
     @Override
-    public void setupRotations(ForgottenGuardianEntity entityLiving, PoseStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
+    public void setupRotations(ForgottenGuardian entityLiving, PoseStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
         super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
         if (!((double)entityLiving.animationSpeed < 0.01D)) {
             float f1 = entityLiving.animationPosition - entityLiving.animationSpeed * (1.0F - partialTicks) + 6.0F;

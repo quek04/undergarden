@@ -5,7 +5,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import quek.undergarden.entity.projectile.BlisterbombEntity;
+import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.registry.UGEntityTypes;
 
 import javax.annotation.Nullable;
@@ -33,7 +33,7 @@ public class Boomgourd extends PrimedTnt {
     protected void explode() {
         this.level.explode(this, this.getX(), this.getY(0.0625D), this.getZ(), 4.0F, Explosion.BlockInteraction.BREAK);
         for (int i = 0; i < 4; i++) {
-            BlisterbombEntity blisterbomb = new BlisterbombEntity(this.level, this.getX(), this.getY(), this.getZ());
+            Blisterbomb blisterbomb = new Blisterbomb(this.level, this.getX(), this.getY(), this.getZ());
             Random random = this.level.random;
             blisterbomb.shoot(random.nextDouble() * (random.nextBoolean() ? -1 : 1), 0.5F, random.nextDouble() * (random.nextBoolean() ? -1 : 1), 0.5F, 10.0F);
             this.level.addFreshEntity(blisterbomb);
