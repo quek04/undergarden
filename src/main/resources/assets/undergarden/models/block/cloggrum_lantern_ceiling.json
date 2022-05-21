@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "undergarden:block/cloggrum_lantern",
-		"particle": "undergarden:block/cloggrum_lantern"
+		"particle": "undergarden:block/cloggrum_block"
 	},
 	"elements": [
 		{
