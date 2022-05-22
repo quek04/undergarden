@@ -25,13 +25,13 @@ public class GwiblingRender extends MobRenderer<Gwibling, GwiblingModel<Gwibling
     }
 
     @Override
-    protected void setupRotations(Gwibling entityLiving, PoseStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
-        super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
+    protected void setupRotations(Gwibling entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks) {
+        super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
         float f = 4.3F * Mth.sin(0.6F * ageInTicks);
-        matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(f));
-        if (!entityLiving.isInWater()) {
-            matrixStackIn.translate(0.1F, 0.1F, -0.1F);
-            matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(f));
+        if (!entity.isInWater()) {
+            poseStack.translate(0.1F, 0.1F, -0.1F);
+            poseStack.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
         }
     }
 }
