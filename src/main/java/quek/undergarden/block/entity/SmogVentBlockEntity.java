@@ -6,6 +6,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGBlockEntities;
+import quek.undergarden.registry.UGParticleTypes;
 
 public class SmogVentBlockEntity extends BlockEntity {
 
@@ -19,7 +20,7 @@ public class SmogVentBlockEntity extends BlockEntity {
             double y = (double)pos.getY() + 1D;
             double z = (double)pos.getZ() + 0.5D;
             if(level.isEmptyBlock(pos.above())) {
-                level.addParticle(ParticleTypes.LARGE_SMOKE, x, y, z, 0.0D, 0.05D, 0.0D);
+                level.addParticle(UGParticleTypes.SMOG.get(), x, y + 0.1D, z, 0.0D, 0.05D, 0.0D);
             }
             if(level.isWaterAt(pos.above())) {
                 level.addParticle(ParticleTypes.BUBBLE_COLUMN_UP, x, y + 0.1D, z, 0.0D, 0.05D, 0.0D);

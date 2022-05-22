@@ -11,7 +11,7 @@
     "water_fog_color": 332810,
     "grass_color": 14609908,
     "foliage_color": 14609908,
-    "ambient_sound": "undergarden:ambient.frost_ambience",
+    "ambient_sound": "undergarden:ambient.frost",
     "mood_sound": {
       "sound": "undergarden:ambient.frost_mood",
       "tick_delay": 6000,
@@ -23,7 +23,7 @@
       "tick_chance": 0.002775
     },
     "music": {
-      "sound": "undergarden:music.undergarden_music",
+      "sound": "undergarden:music.undergarden",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": true
