@@ -19,11 +19,8 @@ public class SmogVentBlockEntity extends BlockEntity {
             double x = (double)pos.getX() + 0.5D;
             double y = (double)pos.getY() + 1D;
             double z = (double)pos.getZ() + 0.5D;
-            if(level.isEmptyBlock(pos.above())) {
+            if(level.isEmptyBlock(pos.above()) || level.isWaterAt(pos.above())) {
                 level.addParticle(UGParticleTypes.SMOG.get(), x, y + 0.1D, z, 0.0D, 0.05D, 0.0D);
-            }
-            if(level.isWaterAt(pos.above())) {
-                level.addParticle(ParticleTypes.BUBBLE_COLUMN_UP, x, y + 0.1D, z, 0.0D, 0.05D, 0.0D);
             }
         }
     }

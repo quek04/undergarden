@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.Boomgourd;
-import quek.undergarden.entity.Gwib;
+import quek.undergarden.entity.animal.Gwib;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.*;

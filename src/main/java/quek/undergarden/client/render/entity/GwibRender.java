@@ -10,7 +10,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwibModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.GwibEyesLayer;
-import quek.undergarden.entity.Gwib;
+import quek.undergarden.entity.animal.Gwib;
 
 public class GwibRender extends MobRenderer<Gwib, GwibModel<Gwib>> {
 
