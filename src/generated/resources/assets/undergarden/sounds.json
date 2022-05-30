@@ -639,14 +639,6 @@
       "undergarden:entity/rotbeast_attack_2"
     ]
   },
-  "entity.rotbeast.roar": {
-    "subtitle": "subtitles.entity.rotbeast.roar",
-    "sounds": [
-      "undergarden:entity/rotbeast_roar_1",
-      "undergarden:entity/rotbeast_roar_2",
-      "undergarden:entity/rotbeast_roar_3"
-    ]
-  },
   "entity.brute.ambient": {
     "subtitle": "subtitles.entity.brute.ambient",
     "sounds": [

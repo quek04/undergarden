@@ -420,11 +420,6 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
                 sound("undergarden:entity/rotbeast_attack_1"),
                 sound("undergarden:entity/rotbeast_attack_2")
         ).subtitle("subtitles.entity.rotbeast.attack"));
-        this.add(UGSoundEvents.ROTBEAST_ROAR, definition().with(
-                sound("undergarden:entity/rotbeast_roar_1"),
-                sound("undergarden:entity/rotbeast_roar_2"),
-                sound("undergarden:entity/rotbeast_roar_3")
-        ).subtitle("subtitles.entity.rotbeast.roar"));
 
         this.add(UGSoundEvents.BRUTE_AMBIENT, definition().with(
                 sound("undergarden:entity/brute_ambient_1"),
