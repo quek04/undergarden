@@ -4,6 +4,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.data.provider.UGItemModelProvider;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
 public class UGItemModels extends UGItemModelProvider {
@@ -203,7 +204,7 @@ public class UGItemModels extends UGItemModelProvider {
         normalItem(UGItems.WIGGLEWOOD_BOAT);
         normalItem(UGItems.GRONGLE_BOAT);
         normalItem(UGItems.VIRULENT_MIX_BUCKET);
-        normalItem(UGItems.GWIBLING_BUCKET);
+        entityBucketItem(UGItems.GWIBLING_BUCKET, UGEntityTypes.GWIBLING);
         normalItem(UGItems.UNDERBEANS);
         normalItem(UGItems.ROASTED_UNDERBEANS);
         normalItem(UGItems.BLISTERBERRY);
