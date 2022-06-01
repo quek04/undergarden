@@ -9,9 +9,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.ForgottenEyesLayer;
-import quek.undergarden.entity.ForgottenEntity;
+import quek.undergarden.entity.Forgotten;
 
-public class ForgottenRender extends HumanoidMobRenderer<ForgottenEntity, ForgottenModel<ForgottenEntity>> {
+public class ForgottenRender extends HumanoidMobRenderer<Forgotten, ForgottenModel<Forgotten>> {
 
     public ForgottenRender(EntityRendererProvider.Context context) {
         super(context, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN)), 0.5F);
@@ -20,12 +20,12 @@ public class ForgottenRender extends HumanoidMobRenderer<ForgottenEntity, Forgot
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ForgottenEntity entity) {
+    public ResourceLocation getTextureLocation(Forgotten entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten.png");
     }
 
     @Override
-    protected void scale(ForgottenEntity entity, PoseStack stack, float p_115316_) {
+    protected void scale(Forgotten entity, PoseStack stack, float p_115316_) {
         stack.scale(1.1F, 1.1F, 1.1F);
     }
 }

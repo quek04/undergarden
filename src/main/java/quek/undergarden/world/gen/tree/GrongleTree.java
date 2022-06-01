@@ -13,12 +13,12 @@ public class GrongleTree extends AbstractMegaTreeGrower {
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredMegaFeature(Random random) {
-        return UGConfiguredFeatures.GRONGLE_TREE;
+        return UGConfiguredFeatures.GRONGLE_TREE.getHolder().get();
     }
 
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean hive) {
-        return UGConfiguredFeatures.SMALL_GRONGLE_TREE;
+        return UGConfiguredFeatures.SMALL_GRONGLE_TREE.getHolder().get();
     }
 }

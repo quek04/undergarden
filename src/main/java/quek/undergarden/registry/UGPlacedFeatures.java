@@ -1,7 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -10,6 +10,8 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 
 import java.util.List;
@@ -17,71 +19,74 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class UGPlacedFeatures {
 
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, Undergarden.MODID);
+
     //ores
-    public static final Holder<PlacedFeature> COAL_ORE = register("coal_ore", UGConfiguredFeatures.COAL_ORE, OrePlacements.commonOrePlacement(30, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
-    public static final Holder<PlacedFeature> IRON_ORE = register("iron_ore", UGConfiguredFeatures.IRON_ORE, OrePlacements.commonOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.belowTop(128), VerticalAnchor.belowTop(-128))));
-    public static final Holder<PlacedFeature> GOLD_ORE = register("gold_ore", UGConfiguredFeatures.GOLD_ORE, OrePlacements.commonOrePlacement(2, HeightRangePlacement.triangle(VerticalAnchor.belowTop(64), VerticalAnchor.belowTop(-64))));
-    public static final Holder<PlacedFeature> DIAMOND_ORE = register("diamond_ore", UGConfiguredFeatures.DIAMOND_ORE, OrePlacements.commonOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.belowTop(16), VerticalAnchor.belowTop(-16))));
-    public static final Holder<PlacedFeature> CLOGGRUM_ORE = register("cloggrum_ore", UGConfiguredFeatures.CLOGGRUM_ORE, OrePlacements.commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-256), VerticalAnchor.aboveBottom(256))));
-    public static final Holder<PlacedFeature> FROSTSTEEL_ORE = register("froststeel_ore", UGConfiguredFeatures.FROSTSTEEL_ORE, OrePlacements.commonOrePlacement(15, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-256), VerticalAnchor.aboveBottom(256))));
-    public static final Holder<PlacedFeature> UTHERIUM_ORE = register("utherium_ore", UGConfiguredFeatures.UTHERIUM_ORE, OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32))));
-    public static final Holder<PlacedFeature> REGALIUM_ORE = register("regalium_ore", UGConfiguredFeatures.REGALIUM_ORE, OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(12))));
-    public static final Holder<PlacedFeature> SHIVERSTONE_ORE = register("shiverstone_ore", UGConfiguredFeatures.SHIVERSTONE_ORE, OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
-    public static final Holder<PlacedFeature> DEEPSOIL_ORE = register("deepsoil_ore", UGConfiguredFeatures.DEEPSOIL_ORE, OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
-    public static final Holder<PlacedFeature> ICE_ORE = register("ice_ore", UGConfiguredFeatures.ICE_ORE, OrePlacements.commonOrePlacement(20, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
-    public static final Holder<PlacedFeature> SEDIMENT_ORE = register("sediment_ore", UGConfiguredFeatures.SEDIMENT_ORE, OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32))));
+    public static final RegistryObject<PlacedFeature> COAL_ORE = PLACED_FEATURES.register("coal_ore", () -> new PlacedFeature(UGConfiguredFeatures.COAL_ORE.getHolder().get(), OrePlacements.commonOrePlacement(30, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> IRON_ORE = PLACED_FEATURES.register("iron_ore", () -> new PlacedFeature(UGConfiguredFeatures.IRON_ORE.getHolder().get(), OrePlacements.commonOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.belowTop(128), VerticalAnchor.belowTop(-128)))));
+    public static final RegistryObject<PlacedFeature> GOLD_ORE = PLACED_FEATURES.register("gold_ore", () -> new PlacedFeature(UGConfiguredFeatures.GOLD_ORE.getHolder().get(), OrePlacements.commonOrePlacement(2, HeightRangePlacement.triangle(VerticalAnchor.belowTop(64), VerticalAnchor.belowTop(-64)))));
+    public static final RegistryObject<PlacedFeature> DIAMOND_ORE = PLACED_FEATURES.register("diamond_ore", () -> new PlacedFeature(UGConfiguredFeatures.DIAMOND_ORE.getHolder().get(), OrePlacements.commonOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.belowTop(16), VerticalAnchor.belowTop(-16)))));
+    public static final RegistryObject<PlacedFeature> CLOGGRUM_ORE = PLACED_FEATURES.register("cloggrum_ore", () -> new PlacedFeature(UGConfiguredFeatures.CLOGGRUM_ORE.getHolder().get(), OrePlacements.commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-256), VerticalAnchor.aboveBottom(256)))));
+    public static final RegistryObject<PlacedFeature> FROSTSTEEL_ORE = PLACED_FEATURES.register("froststeel_ore", () -> new PlacedFeature(UGConfiguredFeatures.FROSTSTEEL_ORE.getHolder().get(), OrePlacements.commonOrePlacement(15, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-256), VerticalAnchor.aboveBottom(256)))));
+    public static final RegistryObject<PlacedFeature> UTHERIUM_ORE = PLACED_FEATURES.register("utherium_ore", () -> new PlacedFeature(UGConfiguredFeatures.UTHERIUM_ORE.getHolder().get(), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)))));
+    public static final RegistryObject<PlacedFeature> REGALIUM_ORE = PLACED_FEATURES.register("regalium_ore", () -> new PlacedFeature(UGConfiguredFeatures.REGALIUM_ORE.getHolder().get(), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(12)))));
+    public static final RegistryObject<PlacedFeature> SHIVERSTONE_ORE = PLACED_FEATURES.register("shiverstone_ore", () -> new PlacedFeature(UGConfiguredFeatures.SHIVERSTONE_ORE.getHolder().get(), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> DEEPSOIL_ORE = PLACED_FEATURES.register("deepsoil_ore", () -> new PlacedFeature(UGConfiguredFeatures.DEEPSOIL_ORE.getHolder().get(), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> ICE_ORE = PLACED_FEATURES.register("ice_ore", () -> new PlacedFeature(UGConfiguredFeatures.ICE_ORE.getHolder().get(), OrePlacements.commonOrePlacement(20, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> SEDIMENT_ORE = PLACED_FEATURES.register("sediment_ore", () -> new PlacedFeature(UGConfiguredFeatures.SEDIMENT_ORE.getHolder().get(), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)))));
 
     //springs
-    public static final Holder<PlacedFeature> SPRING = register("spring", UGConfiguredFeatures.SPRING, CountPlacement.of(50), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
-    public static final Holder<PlacedFeature> VIRULENT_MIX_SPRING = register("virulent_mix_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING, CountPlacement.of(25), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
-    public static final Holder<PlacedFeature> VIRULENT_MIX_BOG_SPRING = register("virulent_mix_bog_spring", UGConfiguredFeatures.VIRULENT_MIX_SPRING, CountPlacement.of(50), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome());
+    public static final RegistryObject<PlacedFeature> SPRING = PLACED_FEATURES.register("spring", () -> new PlacedFeature(UGConfiguredFeatures.SPRING.getHolder().get(), List.of(CountPlacement.of(20), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome())));
+    public static final RegistryObject<PlacedFeature> VIRULENT_MIX_SPRING = PLACED_FEATURES.register("virulent_mix_spring", () -> new PlacedFeature(UGConfiguredFeatures.VIRULENT_MIX_SPRING.getHolder().get(), List.of(CountPlacement.of(20), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome())));
+    public static final RegistryObject<PlacedFeature> VIRULENT_MIX_BOG_SPRING = PLACED_FEATURES.register("virulent_mix_bog_spring", () -> new PlacedFeature(UGConfiguredFeatures.VIRULENT_MIX_SPRING.getHolder().get(), List.of(CountPlacement.of(25), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()), BiomeFilter.biome())));
 
     //deltas
-    public static final Holder<PlacedFeature> BOG_DELTA = register("bog_delta", UGConfiguredFeatures.BOG_DELTA, CountOnEveryLayerPlacement.of(40), BiomeFilter.biome());
-    public static final Holder<PlacedFeature> GRONGLEGROWTH_DELTA = register("gronglegrowth_delta", UGConfiguredFeatures.GRONGLEGROWTH_DELTA, CountOnEveryLayerPlacement.of(40), BiomeFilter.biome());
+    public static final RegistryObject<PlacedFeature> BOG_DELTA = PLACED_FEATURES.register("bog_delta", () -> new PlacedFeature(UGConfiguredFeatures.BOG_DELTA.getHolder().get(), List.of(CountOnEveryLayerPlacement.of(40), BiomeFilter.biome())));
+    public static final RegistryObject<PlacedFeature> GRONGLEGROWTH_DELTA = PLACED_FEATURES.register("gronglegrowth_delta", () -> new PlacedFeature(UGConfiguredFeatures.GRONGLEGROWTH_DELTA.getHolder().get(), List.of(CountOnEveryLayerPlacement.of(40), BiomeFilter.biome())));
 
     //vegetation
-    public static final Holder<PlacedFeature> DEEPTURF_PATCH = register("deepturf_patch", UGConfiguredFeatures.DEEPTURF_PATCH, patch(100));
-    public static final Holder<PlacedFeature> ASHEN_DEEPTURF_PATCH = register("ashen_deepturf_patch", UGConfiguredFeatures.ASHEN_DEEPTURF_PATCH, patch(100));
-    public static final Holder<PlacedFeature> FROZEN_DEEPTURF_PATCH = register("frozen_deepturf_patch", UGConfiguredFeatures.FROZEN_DEEPTURF_PATCH, patch(100));
-    public static final Holder<PlacedFeature> SHIMMERWEED_PATCH = register("shimmerweed_patch", UGConfiguredFeatures.SHIMMERWEED_PATCH, patch(75));
-    public static final Holder<PlacedFeature> DEPTHROCK_PEBBLE_PATCH = register("depthrock_pebble_patch", UGConfiguredFeatures.DEPTHROCK_PEBBLE_PATCH, patch(75));
-    public static final Holder<PlacedFeature> DITCHBULB_PATCH = register("ditchbulb_patch", UGConfiguredFeatures.DITCHBULB_PATCH, patch(75));
-    public static final Holder<PlacedFeature> TALL_DEEPTURF_PATCH = register("tall_deepturf_patch", UGConfiguredFeatures.TALL_DEEPTURF_PATCH, patch(100));
-    public static final Holder<PlacedFeature> TALL_SHIMMERWEED_PATCH = register("tall_shimmerweed_patch", UGConfiguredFeatures.TALL_SHIMMERWEED_PATCH, patch(50));
-    public static final Holder<PlacedFeature> INDIGO_MUSHROOM_PATCH = register("indigo_mushroom_patch", UGConfiguredFeatures.INDIGO_MUSHROOM_PATCH, patch(1));
-    public static final Holder<PlacedFeature> VEIL_MUSHROOM_PATCH = register("veil_mushroom_patch", UGConfiguredFeatures.VEIL_MUSHROOM_PATCH, patch(1));
-    public static final Holder<PlacedFeature> INK_MUSHROOM_PATCH = register("ink_mushroom_patch", UGConfiguredFeatures.INK_MUSHROOM_PATCH, patch(1));
-    public static final Holder<PlacedFeature> BLOOD_MUSHROOM_PATCH = register("blood_mushroom_patch", UGConfiguredFeatures.BLOOD_MUSHROOM_PATCH, patch(1));
-    public static final Holder<PlacedFeature> UNDERBEAN_BUSH_PATCH = register("underbean_bush_patch", UGConfiguredFeatures.UNDERBEAN_BUSH_PATCH, patch(5));
-    public static final Holder<PlacedFeature> BLISTERBERRY_BUSH_PATCH = register("blisterberry_bush_patch", UGConfiguredFeatures.BLISTERBERRY_BUSH_PATCH, patch(5));
-    public static final Holder<PlacedFeature> GLOOMGOURD_PATCH = register("gloomgourd_patch", UGConfiguredFeatures.GLOOMGOURD_PATCH, patch(5));
-    public static final Holder<PlacedFeature> DROOPVINE_PATCH = register("droopvine_patch", UGConfiguredFeatures.DROOPVINE, patch(100));
-    public static final Holder<PlacedFeature> GLITTERKELP_PATCH = register("glitterkelp_patch", UGConfiguredFeatures.GLITTERKELP, NoiseBasedCountPlacement.of(1000, 80.0D, 0.0D), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)), BiomeFilter.biome());
+    public static final RegistryObject<PlacedFeature> DEEPTURF_PATCH = PLACED_FEATURES.register("deepturf_patch", () -> new PlacedFeature(UGConfiguredFeatures.DEEPTURF_PATCH.getHolder().get(), patch(100)));
+    public static final RegistryObject<PlacedFeature> ASHEN_DEEPTURF_PATCH = PLACED_FEATURES.register("ashen_deepturf_patch", () -> new PlacedFeature(UGConfiguredFeatures.ASHEN_DEEPTURF_PATCH.getHolder().get(), patch(100)));
+    public static final RegistryObject<PlacedFeature> FROZEN_DEEPTURF_PATCH = PLACED_FEATURES.register("frozen_deepturf_patch", () -> new PlacedFeature(UGConfiguredFeatures.FROZEN_DEEPTURF_PATCH.getHolder().get(), patch(100)));
+    public static final RegistryObject<PlacedFeature> SHIMMERWEED_PATCH = PLACED_FEATURES.register("shimmerweed_patch", () -> new PlacedFeature(UGConfiguredFeatures.SHIMMERWEED_PATCH.getHolder().get(), patch(75)));
+    public static final RegistryObject<PlacedFeature> DEPTHROCK_PEBBLE_PATCH = PLACED_FEATURES.register("depthrock_pebble_patch", () -> new PlacedFeature(UGConfiguredFeatures.DEPTHROCK_PEBBLE_PATCH.getHolder().get(), patch(75)));
+    public static final RegistryObject<PlacedFeature> DITCHBULB_PATCH = PLACED_FEATURES.register("ditchbulb_patch", () -> new PlacedFeature(UGConfiguredFeatures.DITCHBULB_PATCH.getHolder().get(), patch(75)));
+    public static final RegistryObject<PlacedFeature> TALL_DEEPTURF_PATCH = PLACED_FEATURES.register("tall_deepturf_patch", () -> new PlacedFeature(UGConfiguredFeatures.TALL_DEEPTURF_PATCH.getHolder().get(), patch(100)));
+    public static final RegistryObject<PlacedFeature> TALL_SHIMMERWEED_PATCH = PLACED_FEATURES.register("tall_shimmerweed_patch", () -> new PlacedFeature(UGConfiguredFeatures.TALL_SHIMMERWEED_PATCH.getHolder().get(), patch(50)));
+    public static final RegistryObject<PlacedFeature> INDIGO_MUSHROOM_PATCH = PLACED_FEATURES.register("indigo_mushroom_patch", () -> new PlacedFeature(UGConfiguredFeatures.INDIGO_MUSHROOM_PATCH.getHolder().get(), patch(1)));
+    public static final RegistryObject<PlacedFeature> VEIL_MUSHROOM_PATCH = PLACED_FEATURES.register("veil_mushroom_patch", () -> new PlacedFeature(UGConfiguredFeatures.VEIL_MUSHROOM_PATCH.getHolder().get(), patch(1)));
+    public static final RegistryObject<PlacedFeature> INK_MUSHROOM_PATCH = PLACED_FEATURES.register("ink_mushroom_patch", () -> new PlacedFeature(UGConfiguredFeatures.INK_MUSHROOM_PATCH.getHolder().get(), patch(1)));
+    public static final RegistryObject<PlacedFeature> BLOOD_MUSHROOM_PATCH = PLACED_FEATURES.register("blood_mushroom_patch", () -> new PlacedFeature(UGConfiguredFeatures.BLOOD_MUSHROOM_PATCH.getHolder().get(), patch(1)));
+    public static final RegistryObject<PlacedFeature> UNDERBEAN_BUSH_PATCH = PLACED_FEATURES.register("underbean_bush_patch", () -> new PlacedFeature(UGConfiguredFeatures.UNDERBEAN_BUSH_PATCH.getHolder().get(), patch(5)));
+    public static final RegistryObject<PlacedFeature> BLISTERBERRY_BUSH_PATCH = PLACED_FEATURES.register("blisterberry_bush_patch", () -> new PlacedFeature(UGConfiguredFeatures.BLISTERBERRY_BUSH_PATCH.getHolder().get(), patch(5)));
+    public static final RegistryObject<PlacedFeature> GLOOMGOURD_PATCH = PLACED_FEATURES.register("gloomgourd_patch", () -> new PlacedFeature(UGConfiguredFeatures.GLOOMGOURD_PATCH.getHolder().get(), patch(5)));
+    public static final RegistryObject<PlacedFeature> DROOPVINE_PATCH = PLACED_FEATURES.register("droopvine_patch", () -> new PlacedFeature(UGConfiguredFeatures.DROOPVINE.getHolder().get(), patch(100)));
+    public static final RegistryObject<PlacedFeature> GLITTERKELP_PATCH = PLACED_FEATURES.register("glitterkelp_patch", () -> new PlacedFeature(UGConfiguredFeatures.GLITTERKELP.getHolder().get(), List.of(NoiseBasedCountPlacement.of(1000, 80.0D, 0.0D), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)), BiomeFilter.biome())));
 
     //tree
-    public static final Holder<PlacedFeature> SMOGSTEM_TREE = register("smogstem_tree", UGConfiguredFeatures.SMOGSTEM_TREE, tree(8));
-    public static final Holder<PlacedFeature> TALL_SMOGSTEM_TREE = register("tall_smogstem_tree", UGConfiguredFeatures.TALL_SMOGSTEM_TREE, tree(4));
-    public static final Holder<PlacedFeature> WIGGLEWOOD_TREE = register("wigglewood_tree", UGConfiguredFeatures.WIGGLEWOOD_TREE, tree(8));
-    public static final Holder<PlacedFeature> TALL_WIGGLEWOOD_TREE = register("tall_wigglewood_tree", UGConfiguredFeatures.TALL_WIGGLEWOOD_TREE, tree(4));
-    public static final Holder<PlacedFeature> GRONGLE_TREE = register("grongle_tree", UGConfiguredFeatures.GRONGLE_TREE, tree(8));
-    public static final Holder<PlacedFeature> SMALL_GRONGLE_TREE = register("small_grongle_tree", UGConfiguredFeatures.SMALL_GRONGLE_TREE, tree(8));
-    public static final Holder<PlacedFeature> GRONGLE_BUSH = register("grongle_bush", UGConfiguredFeatures.GRONGLE_BUSH, tree(8));
+    public static final RegistryObject<PlacedFeature> SMOGSTEM_TREE = PLACED_FEATURES.register("smogstem_tree", () -> new PlacedFeature(UGConfiguredFeatures.SMOGSTEM_TREE.getHolder().get(), tree(8)));
+    public static final RegistryObject<PlacedFeature> WIDE_SMOGSTEM_TREE = PLACED_FEATURES.register("wide_smogstem_tree", () -> new PlacedFeature(UGConfiguredFeatures.WIDE_SMOGSTEM_TREE.getHolder().get(), tree(2)));
+    public static final RegistryObject<PlacedFeature> TALL_SMOGSTEM_TREE = PLACED_FEATURES.register("tall_smogstem_tree", () -> new PlacedFeature(UGConfiguredFeatures.TALL_SMOGSTEM_TREE.getHolder().get(), tree(4)));
+    public static final RegistryObject<PlacedFeature> WIGGLEWOOD_TREE = PLACED_FEATURES.register("wigglewood_tree", () -> new PlacedFeature(UGConfiguredFeatures.WIGGLEWOOD_TREE.getHolder().get(), tree(8)));
+    public static final RegistryObject<PlacedFeature> TALL_WIGGLEWOOD_TREE = PLACED_FEATURES.register("tall_wigglewood_tree", () -> new PlacedFeature(UGConfiguredFeatures.TALL_WIGGLEWOOD_TREE.getHolder().get(), tree(4)));
+    public static final RegistryObject<PlacedFeature> GRONGLE_TREE = PLACED_FEATURES.register("grongle_tree", () -> new PlacedFeature(UGConfiguredFeatures.GRONGLE_TREE.getHolder().get(), tree(8)));
+    public static final RegistryObject<PlacedFeature> SMALL_GRONGLE_TREE = PLACED_FEATURES.register("small_grongle_tree", () -> new PlacedFeature(UGConfiguredFeatures.SMALL_GRONGLE_TREE.getHolder().get(), tree(8)));
+    public static final RegistryObject<PlacedFeature> GRONGLE_BUSH = PLACED_FEATURES.register("grongle_bush", () -> new PlacedFeature(UGConfiguredFeatures.GRONGLE_BUSH.getHolder().get(), tree(8)));
 
     //huge mushrooms
-    public static final Holder<PlacedFeature> HUGE_INDIGO_MUSHROOM = register("huge_indigo_mushroom", UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM, tree(2));
-    public static final Holder<PlacedFeature> HUGE_INDIGO_MUSHROOM_SMOGSTEM_FOREST = register("huge_indigo_mushroom_smogstem_forest", UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM, tree(1));
-    public static final Holder<PlacedFeature> HUGE_VEIL_MUSHROOM = register("huge_veil_mushroom", UGConfiguredFeatures.HUGE_VEIL_MUSHROOM, tree(2));
-    public static final Holder<PlacedFeature> HUGE_INK_MUSHROOM = register("huge_ink_mushroom", UGConfiguredFeatures.HUGE_INK_MUSHROOM, tree(2));
-    public static final Holder<PlacedFeature> HUGE_BLOOD_MUSHROOM = register("huge_blood_mushroom", UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM, tree(2));
+    public static final RegistryObject<PlacedFeature> HUGE_INDIGO_MUSHROOM = PLACED_FEATURES.register("huge_indigo_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM.getHolder().get(), tree(2)));
+    public static final RegistryObject<PlacedFeature> HUGE_INDIGO_MUSHROOM_SMOGSTEM_FOREST = PLACED_FEATURES.register("huge_indigo_mushroom_smogstem_forest", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM.getHolder().get(), tree(1)));
+    public static final RegistryObject<PlacedFeature> HUGE_VEIL_MUSHROOM = PLACED_FEATURES.register("huge_veil_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_VEIL_MUSHROOM.getHolder().get(), tree(2)));
+    public static final RegistryObject<PlacedFeature> HUGE_INK_MUSHROOM = PLACED_FEATURES.register("huge_ink_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_INK_MUSHROOM.getHolder().get(), tree(2)));
+    public static final RegistryObject<PlacedFeature> HUGE_BLOOD_MUSHROOM = PLACED_FEATURES.register("huge_blood_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM.getHolder().get(), tree(2)));
 
     //rocks
-    public static final Holder<PlacedFeature> DEPTHROCK_ROCK = register("depthrock_rock", UGConfiguredFeatures.DEPTHROCK_ROCK, patch(5));
-    public static final Holder<PlacedFeature> SHIVERSTONE_ROCK = register("shiverstone_rock", UGConfiguredFeatures.SHIVERSTONE_ROCK, patch(5));
+    public static final RegistryObject<PlacedFeature> DEPTHROCK_ROCK = PLACED_FEATURES.register("depthrock_rock", () -> new PlacedFeature(UGConfiguredFeatures.DEPTHROCK_ROCK.getHolder().get(), patch(5)));
+    public static final RegistryObject<PlacedFeature> SHIVERSTONE_ROCK = PLACED_FEATURES.register("shiverstone_rock", () -> new PlacedFeature(UGConfiguredFeatures.SHIVERSTONE_ROCK.getHolder().get(), patch(5)));
 
     //misc
-    public static final Holder<PlacedFeature> SMOG_VENT = register("smog_vent", UGConfiguredFeatures.SMOG_VENT, CountOnEveryLayerPlacement.of(8), BiomeFilter.biome());
-    public static final Holder<PlacedFeature> ICE_PILLAR = register("ice_pillar", UGConfiguredFeatures.ICE_PILLAR, patch(50));
+    public static final RegistryObject<PlacedFeature> SMOG_VENT = PLACED_FEATURES.register("smog_vent", () -> new PlacedFeature(UGConfiguredFeatures.SMOG_VENT.getHolder().get(), List.of(CountOnEveryLayerPlacement.of(8), BiomeFilter.biome())));
+    public static final RegistryObject<PlacedFeature> ICE_PILLAR = PLACED_FEATURES.register("ice_pillar", () -> new PlacedFeature(UGConfiguredFeatures.ICE_PILLAR.getHolder().get(), patch(50)));
 
     private static List<PlacementModifier> tree(int count) {
         return List.of(CountOnEveryLayerPlacement.of(count), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)));
@@ -90,14 +95,4 @@ public class UGPlacedFeatures {
     private static List<PlacementModifier> patch(int count) {
         return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
     }
-
-    public static Holder<PlacedFeature> register(String name, Holder<? extends ConfiguredFeature<?, ?>> configuredFeature, List<PlacementModifier> placementModifiers) {
-        return PlacementUtils.register(new ResourceLocation(Undergarden.MODID, name).toString(), configuredFeature, placementModifiers);
-    }
-
-    public static Holder<PlacedFeature> register(String name, Holder<? extends ConfiguredFeature<?, ?>> configuredFeature, PlacementModifier... placementModifiers) {
-        return PlacementUtils.register(new ResourceLocation(Undergarden.MODID, name).toString(), configuredFeature, List.of(placementModifiers));
-    }
-
-    public static void init() {}
 }

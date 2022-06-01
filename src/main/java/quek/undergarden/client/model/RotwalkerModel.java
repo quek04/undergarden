@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.rotspawn.RotwalkerEntity;
+import quek.undergarden.entity.rotspawn.Rotwalker;
 
-public class RotwalkerModel<T extends RotwalkerEntity> extends ListModel<T> {
+public class RotwalkerModel<T extends Rotwalker> extends ListModel<T> {
 
 	private final ModelPart head;
 	private final ModelPart torso;

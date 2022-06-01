@@ -13,10 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
-import quek.undergarden.client.particle.GrongleSporeParticle;
-import quek.undergarden.client.particle.ShardParticle;
-import quek.undergarden.client.particle.ShimmerParticle;
-import quek.undergarden.client.particle.UndergardenPortalParticle;
+import quek.undergarden.client.particle.*;
 
 @Mod.EventBusSubscriber(modid = Undergarden.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGParticleTypes {
@@ -28,6 +25,7 @@ public class UGParticleTypes {
     public static final RegistryObject<SimpleParticleType> UNDERGARDEN_PORTAL = PARTICLES.register("undergarden_portal", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> GLOOMPER_FART = PARTICLES.register("gloomper_fart", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> SHIMMER = PARTICLES.register("shimmer", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> SMOG = PARTICLES.register("smog", () -> new SimpleParticleType(false));
 
     public static final ParticleGroup SHIMMER_GROUP = new ParticleGroup(1000);
 
@@ -40,5 +38,6 @@ public class UGParticleTypes {
         engine.register(UNDERGARDEN_PORTAL.get(), UndergardenPortalParticle.Provider::new);
         engine.register(GLOOMPER_FART.get(), SmokeParticle.Provider::new);
         engine.register(SHIMMER.get(), ShimmerParticle.Provider::new);
+        engine.register(SMOG.get(), SmogParticle.Provider::new);
     }
 }

@@ -13,7 +13,7 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.Level;
-import quek.undergarden.entity.UGBoatEntity;
+import quek.undergarden.entity.UGBoat;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -21,9 +21,9 @@ import java.util.function.Predicate;
 public class UGBoatItem extends Item {
 
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
-    private final UGBoatEntity.Type type;
+    private final UGBoat.Type type;
 
-    public UGBoatItem(UGBoatEntity.Type typeIn, Item.Properties properties) {
+    public UGBoatItem(UGBoat.Type typeIn, Item.Properties properties) {
         super(properties);
         this.type = typeIn;
     }
@@ -50,7 +50,7 @@ public class UGBoatItem extends Item {
             }
 
             if (raytraceresult.getType() == HitResult.Type.BLOCK) {
-                UGBoatEntity boat = new UGBoatEntity(level, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
+                UGBoat boat = new UGBoat(level, raytraceresult.getLocation().x, raytraceresult.getLocation().y, raytraceresult.getLocation().z);
                 boat.setBoatType(this.type);
                 boat.setYRot(player.getYRot());
                 if (!level.noCollision(boat, boat.getBoundingBox().inflate(-0.1D))) {

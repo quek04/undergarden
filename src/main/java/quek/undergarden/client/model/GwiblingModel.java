@@ -6,19 +6,15 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.GwiblingEntity;
+import quek.undergarden.entity.animal.Gwibling;
 
-public class GwiblingModel<T extends GwiblingEntity> extends ListModel<T> {
+public class GwiblingModel<T extends Gwibling> extends ListModel<T> {
 
 	private final ModelPart body;
-	private final ModelPart rightFin;
-	private final ModelPart leftFin;
 	private final ModelPart tail;
 
 	public GwiblingModel(ModelPart root) {
 		this.body = root.getChild("body");
-		this.rightFin = body.getChild("rightfin");
-		this.leftFin = body.getChild("leftfin");
 		this.tail = body.getChild("tail");
 	}
 
@@ -40,6 +36,8 @@ public class GwiblingModel<T extends GwiblingEntity> extends ListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		this.body.xRot = headPitch * ((float)Math.PI / 180F);
+		this.body.yRot = netHeadYaw * ((float)Math.PI / 180F);
 		float f = 1.0F;
 		if (!entity.isInWater()) {
 			f = 1.5F;

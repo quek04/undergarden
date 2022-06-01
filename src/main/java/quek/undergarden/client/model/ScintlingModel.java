@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.ScintlingEntity;
+import quek.undergarden.entity.animal.Scintling;
 
-public class ScintlingModel<T extends ScintlingEntity> extends AgeableListModel<T> {
+public class ScintlingModel<T extends Scintling> extends AgeableListModel<T> {
 
 	private final ModelPart head;
 	private final ModelPart leftStalk;

@@ -1,6 +1,7 @@
 package quek.undergarden.world.gen.trunkplacer;
 
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -20,11 +21,27 @@ import java.util.function.BiConsumer;
 
 public class SmogstemTrunkPlacer extends TrunkPlacer {
 
-    public static final Codec<SmogstemTrunkPlacer> CODEC = RecordCodecBuilder.create((me) ->
-            trunkPlacerParts(me).apply(me, SmogstemTrunkPlacer::new));
+    protected final int width;
 
-    public SmogstemTrunkPlacer(int baseHeight, int firstRandHeight, int secondRandHeight) {
+    public static final Codec<SmogstemTrunkPlacer> CODEC = RecordCodecBuilder.create((me) ->
+            smogstemTrunkPlacerParts(me).apply(me, SmogstemTrunkPlacer::new));
+
+    public SmogstemTrunkPlacer(int baseHeight, int firstRandHeight, int secondRandHeight, int width) {
         super(baseHeight, firstRandHeight, secondRandHeight);
+        this.width = width;
+    }
+
+    protected static <P extends SmogstemTrunkPlacer> Products.P4<RecordCodecBuilder.Mu<P>, Integer, Integer, Integer, Integer> smogstemTrunkPlacerParts(RecordCodecBuilder.Instance<P> instance) {
+        return instance.group(
+                Codec.intRange(0, 32).fieldOf("base_height")
+                        .forGetter((placer) -> placer.baseHeight),
+                Codec.intRange(0, 24).fieldOf("height_rand_a")
+                        .forGetter((placer) -> placer.heightRandA),
+                Codec.intRange(0, 24).fieldOf("height_rand_b")
+                        .forGetter((placer) -> placer.heightRandB),
+                Codec.intRange(1, 2).fieldOf("width")
+                        .forGetter((placer) -> placer.width)
+        );
     }
 
     @Override
@@ -36,10 +53,10 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
     public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, Random random, int freeTreeHeight, BlockPos pos, TreeConfiguration config) {
         BlockGetter blockGetter = (BlockGetter) level;
         int treeBaseHeight = config.trunkPlacer.getTreeHeight(random);
-        int j = treeBaseHeight / 8 + random.nextInt(2);
+        int width = this.width;
 
         for (int y = 0; y < treeBaseHeight; ++y) {
-            float thiccness = (1.0F - (float) y / (float) treeBaseHeight)*j;
+            float thiccness = (1.0F - (float) y / (float) treeBaseHeight)*width;
             int l = Mth.ceil(treeBaseHeight);
 
             for (int i1 = -l; i1 <= l; ++i1) {

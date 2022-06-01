@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.GwibEntity;
+import quek.undergarden.entity.animal.Gwib;
 
-public class GwibModel<T extends GwibEntity> extends ListModel<T> {
+public class GwibModel<T extends Gwib> extends ListModel<T> {
 
 	private final ModelPart tail;
 	private final ModelPart body;

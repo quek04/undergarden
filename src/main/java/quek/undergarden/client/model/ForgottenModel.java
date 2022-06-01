@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.HumanoidArm;
-import quek.undergarden.entity.ForgottenEntity;
+import quek.undergarden.entity.Forgotten;
 
-public class ForgottenModel<T extends ForgottenEntity> extends HumanoidModel<T> {
+public class ForgottenModel<T extends Forgotten> extends HumanoidModel<T> {
 
     public ForgottenModel(ModelPart part) {
         super(part);

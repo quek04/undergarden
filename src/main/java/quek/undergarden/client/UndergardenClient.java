@@ -25,7 +25,7 @@ import quek.undergarden.client.model.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
-import quek.undergarden.entity.UGBoatEntity;
+import quek.undergarden.entity.UGBoat;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
@@ -140,7 +140,7 @@ public class UndergardenClient {
         event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_FOOT, DepthrockBedRender::createFootLayer);
         event.registerLayerDefinition(UGModelLayers.GRONGLET, GrongletRender::createBodyLayer);
         //
-        for(UGBoatEntity.Type boatType : UGBoatEntity.Type.values()) {
+        for(UGBoat.Type boatType : UGBoat.Type.values()) {
             event.registerLayerDefinition(UGBoatRenderer.boatLayer(boatType), BoatModel::createBodyModel);
         }
         //

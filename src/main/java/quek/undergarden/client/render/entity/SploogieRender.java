@@ -6,16 +6,16 @@ import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.SploogieModel;
 import quek.undergarden.client.model.UGModelLayers;
-import quek.undergarden.entity.cavern.SploogieEntity;
+import quek.undergarden.entity.cavern.Sploogie;
 
-public class SploogieRender extends MobRenderer<SploogieEntity, SploogieModel<SploogieEntity>> {
+public class SploogieRender extends MobRenderer<Sploogie, SploogieModel<Sploogie>> {
 
     public SploogieRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new SploogieModel<>(renderContext.bakeLayer(UGModelLayers.SPLOOGIE)), 0.5F);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(SploogieEntity entity) {
+    public ResourceLocation getTextureLocation(Sploogie entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/sploogie.png");
     }
 }

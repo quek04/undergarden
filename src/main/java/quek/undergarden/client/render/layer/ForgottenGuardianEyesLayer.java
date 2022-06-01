@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenGuardianModel;
-import quek.undergarden.entity.boss.ForgottenGuardianEntity;
+import quek.undergarden.entity.boss.ForgottenGuardian;
 
-public class ForgottenGuardianEyesLayer<T extends ForgottenGuardianEntity, M extends ForgottenGuardianModel<T>> extends EyesLayer<T, M> {
+public class ForgottenGuardianEyesLayer<T extends ForgottenGuardian, M extends ForgottenGuardianModel<T>> extends EyesLayer<T, M> {
 
     public ForgottenGuardianEyesLayer(RenderLayerParent<T, M> rendererIn) {
         super(rendererIn);

@@ -7,9 +7,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MinionModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MinionEyesLayer;
-import quek.undergarden.entity.MinionEntity;
+import quek.undergarden.entity.Minion;
 
-public class MinionRender extends MobRenderer<MinionEntity, MinionModel<MinionEntity>> {
+public class MinionRender extends MobRenderer<Minion, MinionModel<Minion>> {
 
     public MinionRender(EntityRendererProvider.Context renderContext) {
         super(renderContext, new MinionModel<>(renderContext.bakeLayer(UGModelLayers.MINION)), 0.5F);
@@ -17,7 +17,7 @@ public class MinionRender extends MobRenderer<MinionEntity, MinionModel<MinionEn
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MinionEntity entity) {
+    public ResourceLocation getTextureLocation(Minion entity) {
         return new ResourceLocation(Undergarden.MODID, "textures/entity/minion.png");
     }
 }

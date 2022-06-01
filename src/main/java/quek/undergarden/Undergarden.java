@@ -1,7 +1,5 @@
 package quek.undergarden;
 
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
@@ -17,7 +15,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -37,7 +37,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
-import quek.undergarden.entity.projectile.BlisterbombEntity;
+import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.slingshot.*;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
@@ -58,22 +58,25 @@ public class Undergarden {
 
 		DeferredRegister<?>[] registers = {
 				UGBiomes.BIOMES,
+				UGBlockEntities.BLOCK_ENTITIES,
 				UGBlocks.BLOCKS,
 				UGCarvers.CARVERS,
+				UGConfiguredCarvers.CONFIGURED_CARVERS,
+				UGConfiguredFeatures.CONFIGURED_FEATURES,
 				UGEffects.EFFECTS,
+				UGEnchantments.ENCHANTMENTS,
 				UGEntityTypes.ENTITIES,
 				UGFeatures.FEATURES,
 				UGFluids.FLUIDS,
 				UGItems.ITEMS,
 				UGParticleTypes.PARTICLES,
+				UGPlacedFeatures.PLACED_FEATURES,
 				UGPointOfInterests.POI,
 				UGPotions.POTIONS,
 				UGSoundEvents.SOUNDS,
 				UGStructures.STRUCTURES,
-				UGBlockEntities.BLOCK_ENTITIES,
 				UGTreeDecoratorTypes.TREE_DECORATORS,
-				UGEnchantments.ENCHANTMENTS,
-				UGTrunkPlacerTypes.TRUNK_PLACERS
+				UGTrunkPlacerTypes.TRUNK_PLACERS,
 		};
 
 		for (DeferredRegister<?> register : registers) {
@@ -83,25 +86,9 @@ public class Undergarden {
 
 	public void setup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			UGConfiguredFeatures.init();
-			UGPlacedFeatures.init();
-			UGConfiguredCarvers.init();
-			UGConfiguredCarvers.init();
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGBiomes.toDictionary();
-
-			AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
-			AxeItem.STRIPPABLES.put(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get());
-			AxeItem.STRIPPABLES.put(UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
-
-			HoeItem.TILLABLES.put(UGBlocks.DEEPTURF_BLOCK.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState())));
-			HoeItem.TILLABLES.put(UGBlocks.DEEPSOIL.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState())));
-			HoeItem.TILLABLES.put(UGBlocks.COARSE_DEEPSOIL.get(), Pair.of(HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(UGBlocks.DEEPSOIL.get().defaultBlockState())));
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
@@ -124,31 +111,31 @@ public class Undergarden {
 
 			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new DepthrockPebbleEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+					return Util.make(new DepthrockPebble(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
 			DispenserBlock.registerBehavior(UGItems.GOO_BALL.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new GooBallEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+					return Util.make(new GooBall(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
 			DispenserBlock.registerBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new RottenBlisterberryEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+					return Util.make(new RottenBlisterberry(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
 			DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new BlisterbombEntity(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+					return Util.make(new Blisterbomb(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
 				}
 			});
 
 			DispenserBlock.registerBehavior(UGBlocks.GRONGLET.get(), new AbstractProjectileDispenseBehavior() {
 				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-					return Util.make(new GrongletEntity(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
+					return Util.make(new Gronglet(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
 				}
 			});
 
@@ -215,28 +202,28 @@ public class Undergarden {
 			SlingshotItem.registerAmmo(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new DepthrockPebbleEntity(level, shooter);
+					return new DepthrockPebble(level, shooter);
 				}
 			});
 
 			SlingshotItem.registerAmmo(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new RottenBlisterberryEntity(level, shooter);
+					return new RottenBlisterberry(level, shooter);
 				}
 			});
 
 			SlingshotItem.registerAmmo(UGItems.GOO_BALL.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new GooBallEntity(level, shooter);
+					return new GooBall(level, shooter);
 				}
 			});
 
 			SlingshotItem.registerAmmo(UGBlocks.GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new GrongletEntity(shooter, level);
+					return new Gronglet(shooter, level);
 				}
 
 				@Override

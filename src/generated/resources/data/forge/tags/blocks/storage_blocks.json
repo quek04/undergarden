@@ -6,6 +6,7 @@
     "#forge:storage_blocks/utherium",
     "#forge:storage_blocks/regalium",
     "#forge:storage_blocks/raw_cloggrum",
-    "#forge:storage_blocks/raw_froststeel"
+    "#forge:storage_blocks/raw_froststeel",
+    "#forge:storage_blocks/forgotten_metal"
   ]
 }

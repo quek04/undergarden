@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.world.level.block.state.pattern.BlockPattern;
 import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import quek.undergarden.entity.MinionEntity;
+import quek.undergarden.entity.Minion;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 
@@ -68,7 +68,7 @@ public class CarvedGloomgourdBlock extends CarvedPumpkinBlock {
                 world.levelEvent(2001, cachedblockinfo.getPos(), Block.getId(cachedblockinfo.getState()));
             }
 
-            MinionEntity minionEntity = UGEntityTypes.MINION.get().create(world);
+            Minion minionEntity = UGEntityTypes.MINION.get().create(world);
             BlockPos blockpos1 = minionPattern.getBlock(0, 2, 0).getPos();
             minionEntity.moveTo((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 1.0D, (double)blockpos1.getZ() + 0.5D, 0.0F, 0.0F);
             world.addFreshEntity(minionEntity);

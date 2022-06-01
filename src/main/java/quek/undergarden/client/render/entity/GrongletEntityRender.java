@@ -8,9 +8,9 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import quek.undergarden.entity.projectile.slingshot.GrongletEntity;
+import quek.undergarden.entity.projectile.slingshot.Gronglet;
 
-public class GrongletEntityRender extends ThrownItemRenderer<GrongletEntity> {
+public class GrongletEntityRender extends ThrownItemRenderer<Gronglet> {
 
     private final ItemRenderer itemRenderer;
 
@@ -20,7 +20,7 @@ public class GrongletEntityRender extends ThrownItemRenderer<GrongletEntity> {
     }
 
     @Override
-    public void render(GrongletEntity entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+    public void render(Gronglet entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         if (entity.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entity) < 12.25D)) {
             poseStack.pushPose();
             poseStack.scale(3.0F, 3.0F, 3.0F);

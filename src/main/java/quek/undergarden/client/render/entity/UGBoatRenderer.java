@@ -16,28 +16,28 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.UGBoatEntity;
+import quek.undergarden.entity.UGBoat;
 
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class UGBoatRenderer extends EntityRenderer<UGBoatEntity> {
+public class UGBoatRenderer extends EntityRenderer<UGBoat> {
 
-    private final Map<UGBoatEntity.Type, Pair<ResourceLocation, BoatModel>> boatResources;
+    private final Map<UGBoat.Type, Pair<ResourceLocation, BoatModel>> boatResources;
 
     public UGBoatRenderer(EntityRendererProvider.Context renderContext) {
         super(renderContext);
         this.shadowRadius = 0.8F;
-        this.boatResources = Stream.of(UGBoatEntity.Type.values()).collect(ImmutableMap.toImmutableMap((boatType) -> boatType,
+        this.boatResources = Stream.of(UGBoat.Type.values()).collect(ImmutableMap.toImmutableMap((boatType) -> boatType,
                 (boatType) -> Pair.of(new ResourceLocation(Undergarden.MODID, "textures/entity/boat/" + boatType.getName() + ".png"), new BoatModel(renderContext.bakeLayer(boatLayer(boatType))))));
     }
 
-    public static ModelLayerLocation boatLayer(UGBoatEntity.Type boatType) {
+    public static ModelLayerLocation boatLayer(UGBoat.Type boatType) {
         return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, "boat/" + boatType.getName()), "main");
     }
 
     @Override
-    public void render(UGBoatEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
+    public void render(UGBoat pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
         pMatrixStack.pushPose();
         pMatrixStack.translate(0.0D, 0.375D, 0.0D);
         pMatrixStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - pEntityYaw));
@@ -74,7 +74,7 @@ public class UGBoatRenderer extends EntityRenderer<UGBoatEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(UGBoatEntity boat) {
+    public ResourceLocation getTextureLocation(UGBoat boat) {
         return this.boatResources.get(boat.getUGBoatType()).getFirst();
     }
 }

@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.stoneborn.StonebornEntity;
+import quek.undergarden.entity.stoneborn.Stoneborn;
 
 public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTradeTrigger.TriggerInstance> {
 
@@ -25,7 +25,7 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
         return new TriggerInstance(entityPredicate, entitypredicate$andpredicate, itempredicate);
     }
 
-    public void test(ServerPlayer player, StonebornEntity stoneborn, ItemStack stack) {
+    public void test(ServerPlayer player, Stoneborn stoneborn, ItemStack stack) {
         LootContext lootcontext = EntityPredicate.createContext(player, stoneborn);
         this.trigger(player, (instance) -> instance.test(lootcontext, stack));
     }

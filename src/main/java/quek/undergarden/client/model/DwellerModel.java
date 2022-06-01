@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.DwellerEntity;
+import quek.undergarden.entity.animal.Dweller;
 
-public class DwellerModel<T extends DwellerEntity> extends AgeableListModel<T> {
+public class DwellerModel<T extends Dweller> extends AgeableListModel<T> {
 
 	private final ModelPart torso;
 	private final ModelPart mane;

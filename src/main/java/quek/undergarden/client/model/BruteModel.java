@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.BruteEntity;
+import quek.undergarden.entity.animal.Brute;
 
-public class BruteModel<T extends BruteEntity> extends AgeableListModel<T> {
+public class BruteModel<T extends Brute> extends AgeableListModel<T> {
 
 	private final ModelPart head;
 	private final ModelPart torso;

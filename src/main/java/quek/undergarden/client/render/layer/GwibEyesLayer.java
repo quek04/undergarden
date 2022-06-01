@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwibModel;
-import quek.undergarden.entity.GwibEntity;
+import quek.undergarden.entity.animal.Gwib;
 
-public class GwibEyesLayer<T extends GwibEntity, M extends GwibModel<T>> extends EyesLayer<T, M> {
+public class GwibEyesLayer<T extends Gwib, M extends GwibModel<T>> extends EyesLayer<T, M> {
 
     public GwibEyesLayer(RenderLayerParent<T, M> rendererIn) {
         super(rendererIn);

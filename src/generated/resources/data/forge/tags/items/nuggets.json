@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "undergarden:cloggrum_nugget",
-    "undergarden:froststeel_nugget",
-    "undergarden:forgotten_nugget"
+    "#forge:nuggets/cloggrum",
+    "#forge:nuggets/froststeel",
+    "#forge:nuggets/forgotten_metal"
   ]
 }

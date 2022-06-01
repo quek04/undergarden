@@ -11,7 +11,7 @@
     "water_fog_color": 332810,
     "grass_color": 5928296,
     "foliage_color": 5928296,
-    "ambient_sound": "undergarden:ambient.undergarden_ambience",
+    "ambient_sound": "undergarden:ambient.undergarden",
     "mood_sound": {
       "sound": "undergarden:ambient.mood",
       "tick_delay": 6000,
@@ -23,7 +23,7 @@
       "tick_chance": 0.00555
     },
     "music": {
-      "sound": "undergarden:music.undergarden_music",
+      "sound": "undergarden:music.undergarden",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": true
@@ -159,7 +159,8 @@
       "undergarden:droopvine_patch",
       "undergarden:gloomgourd_patch",
       "undergarden:smogstem_tree",
-      "undergarden:huge_indigo_mushroom_smogstem_forest"
+      "undergarden:huge_indigo_mushroom_smogstem_forest",
+      "undergarden:wide_smogstem_tree"
     ],
     []
   ]

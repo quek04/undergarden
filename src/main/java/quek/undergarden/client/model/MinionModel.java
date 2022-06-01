@@ -6,9 +6,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.MinionEntity;
+import quek.undergarden.entity.Minion;
 
-public class MinionModel<T extends MinionEntity> extends ListModel<T> {
+public class MinionModel<T extends Minion> extends ListModel<T> {
 
 	private final ModelPart shell;
 	private final ModelPart body;

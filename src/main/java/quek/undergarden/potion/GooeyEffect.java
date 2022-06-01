@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import quek.undergarden.entity.animal.ScintlingEntity;
+import quek.undergarden.entity.animal.Scintling;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEffects;
 
@@ -20,7 +20,7 @@ public class GooeyEffect extends MobEffect {
         BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
         BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
 
-        if (entity.level.isEmptyBlock(pos) && blockstate.canSurvive(entity.level, pos) && !(entity instanceof ScintlingEntity)) {
+        if (entity.level.isEmptyBlock(pos) && blockstate.canSurvive(entity.level, pos) && !(entity instanceof Scintling)) {
             entity.level.setBlockAndUpdate(pos, blockstate);
         }
     }
