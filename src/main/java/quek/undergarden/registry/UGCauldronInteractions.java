@@ -6,7 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import java.util.Map;
-public interface UGCauldronInteraction extends CauldronInteraction {
+public interface UGCauldronInteractions extends CauldronInteraction {
 
     CauldronInteraction FILL_VIRULENT_MIX = (state, world, pos, player, hand, stack) ->
             CauldronInteraction.emptyBucket(world, pos, player, hand, stack, UGBlocks.VIRULENT_MIX_CAULDRON.get().defaultBlockState(), UGSoundEvents.BUCKET_EMPTY_VIRULENT.get());

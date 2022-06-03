@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-import quek.undergarden.registry.UGCauldronInteraction;
+import quek.undergarden.registry.UGCauldronInteractions;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
@@ -23,7 +23,7 @@ import java.util.Random;
 public class VirulentMixCauldronBlock extends AbstractCauldronBlock {
 
     public VirulentMixCauldronBlock(Properties properties) {
-        super(properties, UGCauldronInteraction.VIRULENT_MIX);
+        super(properties, UGCauldronInteractions.VIRULENT_MIX);
     }
 
     @Override
