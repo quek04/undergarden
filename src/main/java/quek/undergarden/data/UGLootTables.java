@@ -269,6 +269,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.AMOROUS_BRISTLE);
             dropSelf(UGBlocks.MISERABELL);
             dropSelf(UGBlocks.BUTTERBUNCH);
+            dropOther(UGBlocks.VIRULENT_MIX_CAULDRON, Items.CAULDRON);
         }
 
         @Override
