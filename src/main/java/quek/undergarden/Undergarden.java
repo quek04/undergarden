@@ -89,6 +89,7 @@ public class Undergarden {
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGBiomes.toDictionary();
+			UGCauldronInteraction.register();
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();

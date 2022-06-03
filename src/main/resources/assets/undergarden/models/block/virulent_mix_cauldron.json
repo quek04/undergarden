@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_cauldron_full",
+  "textures": {
+    "content": "undergarden:fluid/virulent_mix_still"
+  }
+}
