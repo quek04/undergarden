@@ -5,7 +5,6 @@ import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
@@ -26,21 +25,6 @@ public class UGBiomes {
     public static final ResourceKey<Biome> SMOGSTEM_FOREST = register("smogstem_forest");
     public static final ResourceKey<Biome> SMOG_SPIRES = register("smog_spires");
     public static final ResourceKey<Biome> WIGGLEWOOD_FOREST = register("wigglewood_forest");
-
-    public static void toDictionary() {
-        BiomeDictionary.addTypes(ANCIENT_SEA, BiomeDictionary.Type.WET, BiomeDictionary.Type.OCEAN);
-        BiomeDictionary.addTypes(BARREN_ABYSS, BiomeDictionary.Type.COLD, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.WASTELAND);
-        BiomeDictionary.addTypes(DEAD_SEA, BiomeDictionary.Type.COLD, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.WASTELAND);
-        BiomeDictionary.addTypes(DENSE_FOREST, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.FOREST);
-        BiomeDictionary.addTypes(FORGOTTEN_FIELD, BiomeDictionary.Type.WET, BiomeDictionary.Type.PLAINS);
-        BiomeDictionary.addTypes(FROSTFIELDS, BiomeDictionary.Type.COLD, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.PLAINS);
-        BiomeDictionary.addTypes(GRONGLEGROWTH, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.FOREST);
-        BiomeDictionary.addTypes(ICY_SEA, BiomeDictionary.Type.COLD, BiomeDictionary.Type.OCEAN);
-        BiomeDictionary.addTypes(MUSHROOM_BOG, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.MUSHROOM, BiomeDictionary.Type.SWAMP);
-        BiomeDictionary.addTypes(SMOGSTEM_FOREST, BiomeDictionary.Type.WET, BiomeDictionary.Type.FOREST);
-        BiomeDictionary.addTypes(SMOG_SPIRES, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.SPOOKY);
-        BiomeDictionary.addTypes(WIGGLEWOOD_FOREST, BiomeDictionary.Type.WET, BiomeDictionary.Type.FOREST);
-    }
 
     private static ResourceLocation name(String name) {
         return new ResourceLocation(Undergarden.MODID, name);

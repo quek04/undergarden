@@ -3,7 +3,6 @@ package quek.undergarden.item.tool;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -27,7 +26,7 @@ public class BattleAxeItem extends SwordItem {
 
     @Override
     public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> list) {
-        if(allowdedIn(tab)) {
+        if(this.allowedIn(tab)) {
             ItemStack stack = new ItemStack(this);
             stack.enchant(Enchantments.KNOCKBACK, 4);
             list.add(stack);
@@ -48,7 +47,7 @@ public class BattleAxeItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         if(stack.getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
-            tooltip.add(new TranslatableComponent("tooltip.forgotten_sword").withStyle(ChatFormatting.GREEN));
+            tooltip.add(Component.translatable("tooltip.forgotten_sword").withStyle(ChatFormatting.GREEN));
         }
     }
 }

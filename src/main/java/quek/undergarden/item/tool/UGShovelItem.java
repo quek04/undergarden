@@ -2,7 +2,6 @@ package quek.undergarden.item.tool;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
@@ -27,10 +26,10 @@ public class UGShovelItem extends ShovelItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         if(stack.getItem() == UGItems.FROSTSTEEL_SHOVEL.get()) {
-            tooltip.add(new TranslatableComponent("tooltip.froststeel_sword").withStyle(ChatFormatting.AQUA));
+            tooltip.add(Component.translatable("tooltip.froststeel_sword").withStyle(ChatFormatting.AQUA));
         }
         if(stack.getItem() == UGItems.FORGOTTEN_SHOVEL.get()) {
-            tooltip.add(new TranslatableComponent("tooltip.forgotten_tool").withStyle(ChatFormatting.GREEN));
+            tooltip.add(Component.translatable("tooltip.forgotten_tool").withStyle(ChatFormatting.GREEN));
         }
     }
 }
