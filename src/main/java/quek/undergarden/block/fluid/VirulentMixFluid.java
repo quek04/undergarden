@@ -18,7 +18,7 @@ public abstract class VirulentMixFluid extends ForgeFlowingFluid {
         super(properties);
     }
 
-    @Override
+    /*@Override
     protected void animateTick(Level level, BlockPos pos, FluidState state, Random random) {
         if (random.nextInt(200) == 0) {
             level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), UGSoundEvents.VIRULENT_BUBBLE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
@@ -26,7 +26,7 @@ public abstract class VirulentMixFluid extends ForgeFlowingFluid {
         if (!state.isSource() && random.nextInt(64) == 0) {
             level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), UGSoundEvents.VIRULENT_FLOW.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
         }
-    }
+    }*/
 
     @Override
     public int getTickDelay(LevelReader level) {

@@ -99,7 +99,7 @@ public class UGItems {
     public static final RegistryObject<Item> WIGGLEWOOD_BOAT = ITEMS.register("wigglewood_boat", () -> new UGBoatItem(UGBoat.Type.WIGGLEWOOD, new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)));
     public static final RegistryObject<Item> GRONGLE_BOAT = ITEMS.register("grongle_boat", () -> new UGBoatItem(UGBoat.Type.GRONGLE, new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)));
 
-    public static final RegistryObject<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new UGBucketItem(UGFluids.VIRULENT_MIX_SOURCE, new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)));
+    public static final RegistryObject<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new UGBucketItem(UGFluids.VIRULENT_MIX_SOURCE, new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1).craftRemainder(Items.BUCKET)));
 
     public static final RegistryObject<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new MobBucketItem(UGEntityTypes.GWIBLING, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).tab(UGItemGroups.GROUP)));
 
