@@ -1,40 +1,8 @@
 {
-  "ambient.undergarden": {
-    "sounds": [
-      {
-        "name": "undergarden:ambient/undergarden_ambience",
-        "stream": true
-      }
-    ]
-  },
   "ambient.abyss": {
     "sounds": [
       {
         "name": "undergarden:ambient/abyss_ambience",
-        "stream": true
-      }
-    ]
-  },
-  "ambient.spires": {
-    "sounds": [
-      {
-        "name": "undergarden:ambient/spires_ambience",
-        "stream": true
-      }
-    ]
-  },
-  "ambient.frost": {
-    "sounds": [
-      {
-        "name": "undergarden:ambient/frost_ambience",
-        "stream": true
-      }
-    ]
-  },
-  "ambient.sea": {
-    "sounds": [
-      {
-        "name": "undergarden:ambient/sea_ambience",
         "stream": true
       }
     ]
@@ -75,6 +43,24 @@
       "undergarden:ambient/additions/bog_15"
     ]
   },
+  "ambient.dense_forest_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/forest_1",
+      "undergarden:ambient/additions/forest_2",
+      "undergarden:ambient/additions/forest_3",
+      "undergarden:ambient/additions/forest_4",
+      "undergarden:ambient/additions/forest_5",
+      "undergarden:ambient/additions/forest_6",
+      "undergarden:ambient/additions/forest_7",
+      "undergarden:ambient/additions/forest_8",
+      "undergarden:ambient/additions/dense_1",
+      "undergarden:ambient/additions/dense_2",
+      "undergarden:ambient/additions/dense_3",
+      "undergarden:ambient/additions/dense_4",
+      "undergarden:ambient/additions/dense_5",
+      "undergarden:ambient/additions/dense_6"
+    ]
+  },
   "ambient.fields_addition": {
     "sounds": [
       "undergarden:ambient/additions/fields_1",
@@ -97,79 +83,24 @@
       "undergarden:ambient/additions/fields_18"
     ]
   },
-  "ambient.smogstem_forest_addition": {
+  "ambient.frost": {
     "sounds": [
-      "undergarden:ambient/additions/forest_1",
-      "undergarden:ambient/additions/forest_2",
-      "undergarden:ambient/additions/forest_3",
-      "undergarden:ambient/additions/forest_4",
-      "undergarden:ambient/additions/forest_5",
-      "undergarden:ambient/additions/forest_6",
-      "undergarden:ambient/additions/forest_7",
-      "undergarden:ambient/additions/forest_8",
-      "undergarden:ambient/additions/smogstem_1",
-      "undergarden:ambient/additions/smogstem_2",
-      "undergarden:ambient/additions/smogstem_3",
-      "undergarden:ambient/additions/smogstem_4",
-      "undergarden:ambient/additions/smogstem_5",
-      "undergarden:ambient/additions/smogstem_6"
+      {
+        "name": "undergarden:ambient/frost_ambience",
+        "stream": true
+      }
     ]
   },
-  "ambient.wigglewood_forest_addition": {
+  "ambient.frost_mood": {
     "sounds": [
-      "undergarden:ambient/additions/forest_1",
-      "undergarden:ambient/additions/forest_2",
-      "undergarden:ambient/additions/forest_3",
-      "undergarden:ambient/additions/forest_4",
-      "undergarden:ambient/additions/forest_5",
-      "undergarden:ambient/additions/forest_6",
-      "undergarden:ambient/additions/forest_7",
-      "undergarden:ambient/additions/forest_8",
-      "undergarden:ambient/additions/wigglewood_1",
-      "undergarden:ambient/additions/wigglewood_2",
-      "undergarden:ambient/additions/wigglewood_3",
-      "undergarden:ambient/additions/wigglewood_4",
-      "undergarden:ambient/additions/wigglewood_5",
-      "undergarden:ambient/additions/wigglewood_6",
-      "undergarden:ambient/additions/wigglewood_7",
-      "undergarden:ambient/additions/wigglewood_8",
-      "undergarden:ambient/additions/wigglewood_9"
-    ]
-  },
-  "ambient.gronglegrowth_addition": {
-    "sounds": [
-      "undergarden:ambient/additions/forest_1",
-      "undergarden:ambient/additions/forest_2",
-      "undergarden:ambient/additions/forest_3",
-      "undergarden:ambient/additions/forest_4",
-      "undergarden:ambient/additions/forest_5",
-      "undergarden:ambient/additions/forest_6",
-      "undergarden:ambient/additions/forest_7",
-      "undergarden:ambient/additions/forest_8",
-      "undergarden:ambient/additions/grongle_1",
-      "undergarden:ambient/additions/grongle_2",
-      "undergarden:ambient/additions/grongle_3",
-      "undergarden:ambient/additions/grongle_4",
-      "undergarden:ambient/additions/grongle_5",
-      "undergarden:ambient/additions/grongle_6"
-    ]
-  },
-  "ambient.dense_forest_addition": {
-    "sounds": [
-      "undergarden:ambient/additions/forest_1",
-      "undergarden:ambient/additions/forest_2",
-      "undergarden:ambient/additions/forest_3",
-      "undergarden:ambient/additions/forest_4",
-      "undergarden:ambient/additions/forest_5",
-      "undergarden:ambient/additions/forest_6",
-      "undergarden:ambient/additions/forest_7",
-      "undergarden:ambient/additions/forest_8",
-      "undergarden:ambient/additions/dense_1",
-      "undergarden:ambient/additions/dense_2",
-      "undergarden:ambient/additions/dense_3",
-      "undergarden:ambient/additions/dense_4",
-      "undergarden:ambient/additions/dense_5",
-      "undergarden:ambient/additions/dense_6"
+      "undergarden:ambient/moods/frost_mood_1",
+      "undergarden:ambient/moods/frost_mood_2",
+      "undergarden:ambient/moods/frost_mood_3",
+      "undergarden:ambient/moods/frost_mood_4",
+      "undergarden:ambient/moods/frost_mood_5",
+      "undergarden:ambient/moods/frost_mood_6",
+      "undergarden:ambient/moods/frost_mood_7",
+      "undergarden:ambient/moods/frost_mood_8"
     ]
   },
   "ambient.frostfields_addition": {
@@ -193,31 +124,22 @@
       "undergarden:ambient/additions/frostfields_17"
     ]
   },
-  "ambient.spires_addition": {
+  "ambient.gronglegrowth_addition": {
     "sounds": [
-      "undergarden:ambient/additions/spires_1",
-      "undergarden:ambient/additions/spires_2",
-      "undergarden:ambient/additions/spires_3",
-      "undergarden:ambient/additions/spires_4",
-      "undergarden:ambient/additions/spires_5",
-      "undergarden:ambient/additions/spires_6",
-      "undergarden:ambient/additions/spires_7",
-      "undergarden:ambient/additions/spires_8",
-      "undergarden:ambient/additions/spires_9",
-      "undergarden:ambient/additions/spires_10"
-    ]
-  },
-  "ambient.sea_addition": {
-    "sounds": [
-      "undergarden:ambient/additions/sea_1",
-      "undergarden:ambient/additions/sea_2",
-      "undergarden:ambient/additions/sea_3",
-      "undergarden:ambient/additions/sea_4",
-      "undergarden:ambient/additions/sea_5",
-      "undergarden:ambient/additions/sea_6",
-      "undergarden:ambient/additions/sea_7",
-      "undergarden:ambient/additions/sea_8",
-      "undergarden:ambient/additions/sea_9"
+      "undergarden:ambient/additions/forest_1",
+      "undergarden:ambient/additions/forest_2",
+      "undergarden:ambient/additions/forest_3",
+      "undergarden:ambient/additions/forest_4",
+      "undergarden:ambient/additions/forest_5",
+      "undergarden:ambient/additions/forest_6",
+      "undergarden:ambient/additions/forest_7",
+      "undergarden:ambient/additions/forest_8",
+      "undergarden:ambient/additions/grongle_1",
+      "undergarden:ambient/additions/grongle_2",
+      "undergarden:ambient/additions/grongle_3",
+      "undergarden:ambient/additions/grongle_4",
+      "undergarden:ambient/additions/grongle_5",
+      "undergarden:ambient/additions/grongle_6"
     ]
   },
   "ambient.mood": {
@@ -240,16 +162,897 @@
       "undergarden:ambient/moods/mood_15"
     ]
   },
-  "ambient.frost_mood": {
+  "ambient.sea": {
     "sounds": [
-      "undergarden:ambient/moods/frost_mood_1",
-      "undergarden:ambient/moods/frost_mood_2",
-      "undergarden:ambient/moods/frost_mood_3",
-      "undergarden:ambient/moods/frost_mood_4",
-      "undergarden:ambient/moods/frost_mood_5",
-      "undergarden:ambient/moods/frost_mood_6",
-      "undergarden:ambient/moods/frost_mood_7",
-      "undergarden:ambient/moods/frost_mood_8"
+      {
+        "name": "undergarden:ambient/sea_ambience",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.sea_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/sea_1",
+      "undergarden:ambient/additions/sea_2",
+      "undergarden:ambient/additions/sea_3",
+      "undergarden:ambient/additions/sea_4",
+      "undergarden:ambient/additions/sea_5",
+      "undergarden:ambient/additions/sea_6",
+      "undergarden:ambient/additions/sea_7",
+      "undergarden:ambient/additions/sea_8",
+      "undergarden:ambient/additions/sea_9"
+    ]
+  },
+  "ambient.smogstem_forest_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/forest_1",
+      "undergarden:ambient/additions/forest_2",
+      "undergarden:ambient/additions/forest_3",
+      "undergarden:ambient/additions/forest_4",
+      "undergarden:ambient/additions/forest_5",
+      "undergarden:ambient/additions/forest_6",
+      "undergarden:ambient/additions/forest_7",
+      "undergarden:ambient/additions/forest_8",
+      "undergarden:ambient/additions/smogstem_1",
+      "undergarden:ambient/additions/smogstem_2",
+      "undergarden:ambient/additions/smogstem_3",
+      "undergarden:ambient/additions/smogstem_4",
+      "undergarden:ambient/additions/smogstem_5",
+      "undergarden:ambient/additions/smogstem_6"
+    ]
+  },
+  "ambient.spires": {
+    "sounds": [
+      {
+        "name": "undergarden:ambient/spires_ambience",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.spires_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/spires_1",
+      "undergarden:ambient/additions/spires_2",
+      "undergarden:ambient/additions/spires_3",
+      "undergarden:ambient/additions/spires_4",
+      "undergarden:ambient/additions/spires_5",
+      "undergarden:ambient/additions/spires_6",
+      "undergarden:ambient/additions/spires_7",
+      "undergarden:ambient/additions/spires_8",
+      "undergarden:ambient/additions/spires_9",
+      "undergarden:ambient/additions/spires_10"
+    ]
+  },
+  "ambient.undergarden": {
+    "sounds": [
+      {
+        "name": "undergarden:ambient/undergarden_ambience",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.wigglewood_forest_addition": {
+    "sounds": [
+      "undergarden:ambient/additions/forest_1",
+      "undergarden:ambient/additions/forest_2",
+      "undergarden:ambient/additions/forest_3",
+      "undergarden:ambient/additions/forest_4",
+      "undergarden:ambient/additions/forest_5",
+      "undergarden:ambient/additions/forest_6",
+      "undergarden:ambient/additions/forest_7",
+      "undergarden:ambient/additions/forest_8",
+      "undergarden:ambient/additions/wigglewood_1",
+      "undergarden:ambient/additions/wigglewood_2",
+      "undergarden:ambient/additions/wigglewood_3",
+      "undergarden:ambient/additions/wigglewood_4",
+      "undergarden:ambient/additions/wigglewood_5",
+      "undergarden:ambient/additions/wigglewood_6",
+      "undergarden:ambient/additions/wigglewood_7",
+      "undergarden:ambient/additions/wigglewood_8",
+      "undergarden:ambient/additions/wigglewood_9"
+    ]
+  },
+  "block.gronglet.ambient": {
+    "sounds": [
+      "undergarden:block/gronglet/gronglet_ambient_1",
+      "undergarden:block/gronglet/gronglet_ambient_2",
+      "undergarden:block/gronglet/gronglet_ambient_3"
+    ],
+    "subtitle": "subtitles.block.gronglet.ambient"
+  },
+  "block.gronglet.break": {
+    "sounds": [
+      "undergarden:block/gronglet/gronglet_1",
+      "undergarden:block/gronglet/gronglet_2",
+      "undergarden:block/gronglet/gronglet_3",
+      "undergarden:block/gronglet/gronglet_4",
+      "undergarden:block/gronglet/gronglet_5",
+      "undergarden:block/gronglet/gronglet_6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.gronglet.burn": {
+    "sounds": [
+      "undergarden:block/gronglet/gronglet_burn"
+    ],
+    "subtitle": "subtitles.block.gronglet.burn"
+  },
+  "block.gronglet.place": {
+    "sounds": [
+      "undergarden:block/gronglet/gronglet_1",
+      "undergarden:block/gronglet/gronglet_2",
+      "undergarden:block/gronglet/gronglet_3",
+      "undergarden:block/gronglet/gronglet_4",
+      "undergarden:block/gronglet/gronglet_5",
+      "undergarden:block/gronglet/gronglet_6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.undergarden_portal.activate": {
+    "sounds": [
+      "undergarden:block/undergarden_portal_activate"
+    ],
+    "subtitle": "subtitles.block.undergarden_portal.activate"
+  },
+  "block.undergarden_portal.ambient": {
+    "sounds": [
+      "undergarden:block/undergarden_portal_ambient"
+    ],
+    "subtitle": "subtitles.block.undergarden_portal.ambient"
+  },
+  "block.undergarden_portal.travel": {
+    "sounds": [
+      "undergarden:block/undergarden_portal_travel"
+    ],
+    "subtitle": "subtitles.block.undergarden_portal.travel"
+  },
+  "block.virulent.bubble": {
+    "sounds": [
+      "undergarden:liquid/virulent_bubble_1",
+      "undergarden:liquid/virulent_bubble_2",
+      "undergarden:liquid/virulent_bubble_3",
+      "undergarden:liquid/virulent_bubble_4"
+    ],
+    "subtitle": "subtitles.block.virulent.bubble"
+  },
+  "block.virulent.flow": {
+    "sounds": [
+      "undergarden:liquid/virulent_flowing_1",
+      "undergarden:liquid/virulent_flowing_2"
+    ],
+    "subtitle": "subtitles.block.virulent.flow"
+  },
+  "entity.boomgourd.primed": {
+    "sounds": [
+      "undergarden:entity/boomgourd_primed"
+    ],
+    "subtitle": "subtitles.entity.boomgourd.primed"
+  },
+  "entity.brute.ambient": {
+    "sounds": [
+      "undergarden:entity/brute_ambient_1",
+      "undergarden:entity/brute_ambient_2"
+    ],
+    "subtitle": "subtitles.entity.brute.ambient"
+  },
+  "entity.brute.death": {
+    "sounds": [
+      "undergarden:entity/brute_hurt_1",
+      "undergarden:entity/brute_hurt_2",
+      "undergarden:entity/brute_hurt_3",
+      "undergarden:entity/brute_hurt_4"
+    ],
+    "subtitle": "subtitles.entity.brute.death"
+  },
+  "entity.brute.hurt": {
+    "sounds": [
+      "undergarden:entity/brute_hurt_1",
+      "undergarden:entity/brute_hurt_2",
+      "undergarden:entity/brute_hurt_3",
+      "undergarden:entity/brute_hurt_4"
+    ],
+    "subtitle": "subtitles.entity.brute.hurt"
+  },
+  "entity.dweller.ambient": {
+    "sounds": [
+      "undergarden:entity/dweller_ambient_1",
+      "undergarden:entity/dweller_ambient_2",
+      "undergarden:entity/dweller_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.dweller.ambient"
+  },
+  "entity.dweller.death": {
+    "sounds": [
+      "undergarden:entity/dweller_death"
+    ],
+    "subtitle": "subtitles.entity.dweller.death"
+  },
+  "entity.dweller.hurt": {
+    "sounds": [
+      "undergarden:entity/dweller_hurt_1",
+      "undergarden:entity/dweller_hurt_2",
+      "undergarden:entity/dweller_hurt_3"
+    ],
+    "subtitle": "subtitles.entity.dweller.hurt"
+  },
+  "entity.dweller.step": {
+    "sounds": [
+      {
+        "name": "mob/cow/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/cow/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/cow/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/cow/step4",
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.forgotten_guardian.ambient": {
+    "sounds": [
+      "undergarden:entity/fguardian_ambient_1",
+      "undergarden:entity/fguardian_ambient_2",
+      "undergarden:entity/fguardian_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.forgotten_guardian.ambient"
+  },
+  "entity.forgotten_guardian.attack": {
+    "sounds": [
+      "undergarden:entity/fguardian_attack_1",
+      "undergarden:entity/fguardian_attack_2"
+    ],
+    "subtitle": "subtitles.entity.forgotten_guardian.attack"
+  },
+  "entity.forgotten_guardian.death": {
+    "sounds": [
+      "undergarden:entity/fguardian_death"
+    ],
+    "subtitle": "subtitles.entity.forgotten_guardian.death"
+  },
+  "entity.forgotten_guardian.deflect": {
+    "sounds": [
+      "undergarden:entity/fguardian_deflect"
+    ],
+    "subtitle": "subtitles.entity.forgotten_guardian.deflect"
+  },
+  "entity.forgotten_guardian.hurt": {
+    "sounds": [
+      "undergarden:entity/fguardian_hurt_1",
+      "undergarden:entity/fguardian_hurt_2",
+      "undergarden:entity/fguardian_hurt_3"
+    ],
+    "subtitle": "subtitles.entity.forgotten_guardian.hurt"
+  },
+  "entity.forgotten_guardian.step": {
+    "sounds": [
+      "undergarden:entity/fguardian_step_1",
+      "undergarden:entity/fguardian_step_2",
+      "undergarden:entity/fguardian_step_3"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.gloomper.ambient": {
+    "sounds": [
+      "undergarden:entity/gloomper_ambient_1",
+      "undergarden:entity/gloomper_ambient_2"
+    ],
+    "subtitle": "subtitles.entity.gloomper.ambient"
+  },
+  "entity.gloomper.death": {
+    "sounds": [
+      "undergarden:entity/gloomper_death"
+    ],
+    "subtitle": "subtitles.entity.gloomper.death"
+  },
+  "entity.gloomper.fart": {
+    "sounds": [
+      {
+        "name": "entity/pufferfish/blow_up1",
+        "volume": 0.45
+      },
+      {
+        "name": "entity/pufferfish/blow_up2",
+        "volume": 0.45
+      }
+    ],
+    "subtitle": "subtitles.entity.gloomper.fart"
+  },
+  "entity.gloomper.hop": {
+    "sounds": [
+      {
+        "name": "entity/fish/flop1",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop2",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop3",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop4",
+        "volume": 0.3
+      }
+    ],
+    "subtitle": "subtitles.entity.gloomper.hop"
+  },
+  "entity.gloomper.hurt": {
+    "sounds": [
+      "undergarden:entity/gloomper_hurt_1",
+      "undergarden:entity/gloomper_hurt_2"
+    ],
+    "subtitle": "subtitles.entity.gloomper.hurt"
+  },
+  "entity.gwib.death": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.gwib.death"
+  },
+  "entity.gwib.flop": {
+    "sounds": [
+      {
+        "name": "entity/fish/flop1",
+        "volume": 0.5
+      },
+      {
+        "name": "entity/fish/flop2",
+        "volume": 0.5
+      },
+      {
+        "name": "entity/fish/flop3",
+        "volume": 0.5
+      },
+      {
+        "name": "entity/fish/flop4",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.entity.gwib.flop"
+  },
+  "entity.gwib.hurt": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.gwib.hurt"
+  },
+  "entity.gwibling.death": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.gwibling.death"
+  },
+  "entity.gwibling.flop": {
+    "sounds": [
+      {
+        "name": "entity/fish/flop1",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop2",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop3",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop4",
+        "volume": 0.3
+      }
+    ],
+    "subtitle": "subtitles.entity.gwibling.flop"
+  },
+  "entity.gwibling.hurt": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.gwibling.hurt"
+  },
+  "entity.masticator.ambient": {
+    "sounds": [
+      "undergarden:entity/masticator_ambient_1",
+      "undergarden:entity/masticator_ambient_2",
+      "undergarden:entity/masticator_ambient_3",
+      "undergarden:entity/masticator_ambient_4"
+    ],
+    "subtitle": "subtitles.entity.masticator.ambient"
+  },
+  "entity.masticator.death": {
+    "sounds": [
+      "undergarden:entity/masticator_death"
+    ],
+    "subtitle": "subtitles.entity.masticator.death"
+  },
+  "entity.masticator.eat": {
+    "sounds": [
+      "undergarden:entity/masticator_eat_1",
+      "undergarden:entity/masticator_eat_2",
+      "undergarden:entity/masticator_eat_3"
+    ],
+    "subtitle": "subtitles.entity.masticator.eat"
+  },
+  "entity.masticator.hurt": {
+    "sounds": [
+      "undergarden:entity/masticator_hurt_1",
+      "undergarden:entity/masticator_hurt_2",
+      "undergarden:entity/masticator_hurt_3"
+    ],
+    "subtitle": "subtitles.entity.masticator.hurt"
+  },
+  "entity.masticator.step": {
+    "sounds": [
+      {
+        "name": "mob/ravager/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/ravager/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/ravager/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/ravager/step4",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/ravager/step5",
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.minion.death": {
+    "sounds": [
+      "undergarden:entity/minion_death"
+    ],
+    "subtitle": "subtitles.entity.minion.death"
+  },
+  "entity.minion.repair": {
+    "sounds": [
+      "mob/irongolem/repair"
+    ],
+    "subtitle": "subtitles.entity.minion.repair"
+  },
+  "entity.minion.shoot": {
+    "sounds": [
+      "undergarden:entity/minion_shoot"
+    ],
+    "subtitle": "subtitles.entity.minion.shoot"
+  },
+  "entity.mog.ambient": {
+    "sounds": [
+      "undergarden:entity/mog_ambient_1",
+      "undergarden:entity/mog_ambient_2",
+      "undergarden:entity/mog_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.mog.ambient"
+  },
+  "entity.mog.death": {
+    "sounds": [
+      "undergarden:entity/mog_death"
+    ],
+    "subtitle": "subtitles.entity.mog.death"
+  },
+  "entity.mog.hurt": {
+    "sounds": [
+      "undergarden:entity/mog_hurt_1",
+      "undergarden:entity/mog_hurt_2",
+      "undergarden:entity/mog_hurt_3"
+    ],
+    "subtitle": "subtitles.entity.mog.hurt"
+  },
+  "entity.muncher.ambient": {
+    "sounds": [
+      "undergarden:entity/muncher_ambient_1",
+      "undergarden:entity/muncher_ambient_2",
+      "undergarden:entity/muncher_ambient_3",
+      "undergarden:entity/muncher_ambient_4",
+      "undergarden:entity/muncher_ambient_5",
+      "undergarden:entity/muncher_ambient_6"
+    ],
+    "subtitle": "subtitles.entity.muncher.ambient"
+  },
+  "entity.muncher.chew": {
+    "sounds": [
+      "undergarden:entity/muncher_chew_1",
+      "undergarden:entity/muncher_chew_2"
+    ],
+    "subtitle": "subtitles.entity.muncher.chew"
+  },
+  "entity.muncher.death": {
+    "sounds": [
+      "undergarden:entity/muncher_death"
+    ],
+    "subtitle": "subtitles.entity.muncher.death"
+  },
+  "entity.muncher.hurt": {
+    "sounds": [
+      "undergarden:entity/muncher_hurt_1",
+      "undergarden:entity/muncher_hurt_2"
+    ],
+    "subtitle": "subtitles.entity.muncher.hurt"
+  },
+  "entity.nargoyle.attack": {
+    "sounds": [
+      "undergarden:entity/nargoyle_attack_1",
+      "undergarden:entity/nargoyle_attack_2",
+      "undergarden:entity/nargoyle_attack_3"
+    ],
+    "subtitle": "subtitles.entity.nargoyle.attack"
+  },
+  "entity.nargoyle.death": {
+    "sounds": [
+      "undergarden:entity/nargoyle_death"
+    ],
+    "subtitle": "subtitles.entity.nargoyle.death"
+  },
+  "entity.nargoyle.hurt": {
+    "sounds": [
+      "undergarden:entity/nargoyle_hurt_1",
+      "undergarden:entity/nargoyle_hurt_2",
+      "undergarden:entity/nargoyle_hurt_3"
+    ],
+    "subtitle": "subtitles.entity.nargoyle.hurt"
+  },
+  "entity.rotbeast.ambient": {
+    "sounds": [
+      "undergarden:entity/rotbeast_ambient_1",
+      "undergarden:entity/rotbeast_ambient_2",
+      "undergarden:entity/rotbeast_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.rotbeast.ambient"
+  },
+  "entity.rotbeast.attack": {
+    "sounds": [
+      "undergarden:entity/rotbeast_attack_1",
+      "undergarden:entity/rotbeast_attack_2"
+    ],
+    "subtitle": "subtitles.entity.rotbeast.attack"
+  },
+  "entity.rotbeast.death": {
+    "sounds": [
+      "undergarden:entity/rotbeast_death"
+    ],
+    "subtitle": "subtitles.entity.rotbeast.death"
+  },
+  "entity.rotbeast.hurt": {
+    "sounds": [
+      "undergarden:entity/rotbeast_hurt_1",
+      "undergarden:entity/rotbeast_hurt_2",
+      "undergarden:entity/rotbeast_hurt_3",
+      "undergarden:entity/rotbeast_hurt_4"
+    ],
+    "subtitle": "subtitles.entity.rotbeast.hurt"
+  },
+  "entity.rotbeast.step": {
+    "sounds": [
+      "undergarden:entity/rotbeast_step_1",
+      "undergarden:entity/rotbeast_step_2",
+      "undergarden:entity/rotbeast_step_3"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.rotling.ambient": {
+    "sounds": [
+      "undergarden:entity/rotling_ambient_1",
+      "undergarden:entity/rotling_ambient_2",
+      "undergarden:entity/rotling_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.rotling.ambient"
+  },
+  "entity.rotling.death": {
+    "sounds": [
+      "undergarden:entity/rotling_death"
+    ],
+    "subtitle": "subtitles.entity.rotling.death"
+  },
+  "entity.rotling.hurt": {
+    "sounds": [
+      "undergarden:entity/rotling_hurt_1",
+      "undergarden:entity/rotling_hurt_2"
+    ],
+    "subtitle": "subtitles.entity.rotling.hurt"
+  },
+  "entity.rotling.step": {
+    "sounds": [
+      {
+        "name": "mob/zombie/step1",
+        "pitch": 1.5
+      },
+      {
+        "name": "mob/zombie/step2",
+        "pitch": 1.5
+      },
+      {
+        "name": "mob/zombie/step3",
+        "pitch": 1.5
+      },
+      {
+        "name": "mob/zombie/step4",
+        "pitch": 1.5
+      },
+      {
+        "name": "mob/zombie/step5",
+        "pitch": 1.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.rotwalker.ambient": {
+    "sounds": [
+      "undergarden:entity/rotwalker_ambient_1",
+      "undergarden:entity/rotwalker_ambient_2",
+      "undergarden:entity/rotwalker_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.rotwalker.ambient"
+  },
+  "entity.rotwalker.death": {
+    "sounds": [
+      "undergarden:entity/rotwalker_death"
+    ],
+    "subtitle": "subtitles.entity.rotwalker.death"
+  },
+  "entity.rotwalker.hurt": {
+    "sounds": [
+      "undergarden:entity/rotwalker_hurt_1",
+      "undergarden:entity/rotwalker_hurt_2",
+      "undergarden:entity/rotwalker_hurt_3"
+    ],
+    "subtitle": "subtitles.entity.rotwalker.hurt"
+  },
+  "entity.rotwalker.step": {
+    "sounds": [
+      {
+        "name": "mob/zombie/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step4",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step5",
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.scintling.death": {
+    "sounds": [
+      "block/honeyblock/break1",
+      "block/honeyblock/break2",
+      "block/honeyblock/break3",
+      "block/honeyblock/break4",
+      "block/honeyblock/break5"
+    ],
+    "subtitle": "subtitles.entity.scintling.death"
+  },
+  "entity.scintling.hurt": {
+    "sounds": [
+      "block/honeyblock/break1",
+      "block/honeyblock/break2",
+      "block/honeyblock/break3",
+      "block/honeyblock/break4",
+      "block/honeyblock/break5"
+    ],
+    "subtitle": "subtitles.entity.scintling.hurt"
+  },
+  "entity.sploogie.ambient": {
+    "sounds": [
+      "undergarden:entity/sploogie_ambient_1",
+      "undergarden:entity/sploogie_ambient_2",
+      "undergarden:entity/sploogie_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.sploogie.ambient"
+  },
+  "entity.sploogie.death": {
+    "sounds": [
+      "undergarden:entity/sploogie_death"
+    ],
+    "subtitle": "subtitles.entity.sploogie.death"
+  },
+  "entity.sploogie.hurt": {
+    "sounds": [
+      "undergarden:entity/sploogie_hurt_1",
+      "undergarden:entity/sploogie_hurt_2"
+    ],
+    "subtitle": "subtitles.entity.sploogie.hurt"
+  },
+  "entity.sploogie.spit": {
+    "sounds": [
+      "undergarden:entity/sploogie_spit_1",
+      "undergarden:entity/sploogie_spit_2",
+      "undergarden:entity/sploogie_spit_3"
+    ],
+    "subtitle": "subtitles.entity.sploogie.spit"
+  },
+  "entity.stoneborn.angry": {
+    "sounds": [
+      "undergarden:entity/stoneborn_angry_1",
+      "undergarden:entity/stoneborn_angry_2"
+    ],
+    "subtitle": "subtitles.entity.stoneborn.angry"
+  },
+  "entity.stoneborn.chant": {
+    "sounds": [
+      "undergarden:entity/stoneborn_chant_1",
+      "undergarden:entity/stoneborn_chant_2"
+    ],
+    "subtitle": "subtitles.entity.stoneborn.chant"
+  },
+  "entity.stoneborn.confused": {
+    "sounds": [
+      "undergarden:entity/stoneborn_confused_1",
+      "undergarden:entity/stoneborn_confused_2",
+      "undergarden:entity/stoneborn_confused_3"
+    ],
+    "subtitle": "subtitles.entity.stoneborn.confused"
+  },
+  "entity.stoneborn.death": {
+    "sounds": [
+      "undergarden:entity/stoneborn_death"
+    ],
+    "subtitle": "subtitles.entity.stoneborn.death"
+  },
+  "entity.stoneborn.hurt": {
+    "sounds": [
+      "undergarden:entity/stoneborn_hurt_1",
+      "undergarden:entity/stoneborn_hurt_2"
+    ],
+    "subtitle": "subtitles.entity.stoneborn.hurt"
+  },
+  "entity.stoneborn.pleased": {
+    "sounds": [
+      "undergarden:entity/stoneborn_pleased_1",
+      "undergarden:entity/stoneborn_pleased_2",
+      "undergarden:entity/stoneborn_pleased_3"
+    ],
+    "subtitle": "subtitles.entity.stoneborn.pleased"
+  },
+  "entity.stoneborn.speaking": {
+    "sounds": [
+      "undergarden:entity/stoneborn_speaking_1",
+      "undergarden:entity/stoneborn_speaking_2",
+      "undergarden:entity/stoneborn_speaking_3"
+    ],
+    "subtitle": "subtitles.entity.stoneborn.speaking"
+  },
+  "entity.stoneborn.step": {
+    "sounds": [
+      "undergarden:entity/stoneborn_step_1",
+      "undergarden:entity/stoneborn_step_2"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "item.blisterberry_bush.pick": {
+    "sounds": [
+      "item/sweet_berries/pick_from_bush1",
+      "item/sweet_berries/pick_from_bush2"
+    ],
+    "subtitle": "subtitles.item.blisterberry_bush.pick"
+  },
+  "item.blisterbomb": {
+    "sounds": [
+      "undergarden:item/blisterbomb"
+    ],
+    "subtitle": "subtitles.item.blisterbomb"
+  },
+  "item.bucket.empty_virulent": {
+    "sounds": [
+      "undergarden:item/bucket/empty_virulent_mix_1",
+      "undergarden:item/bucket/empty_virulent_mix_2",
+      "undergarden:item/bucket/empty_virulent_mix_3"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
+  },
+  "item.bucket.fill_virulent": {
+    "sounds": [
+      "undergarden:item/bucket/fill_virulent_mix_1",
+      "undergarden:item/bucket/fill_virulent_mix_2",
+      "undergarden:item/bucket/fill_virulent_mix_3"
+    ],
+    "subtitle": "subtitles.item.bucket.fill"
+  },
+  "item.ditchbulb_paste.use": {
+    "sounds": [
+      "item/ink_sac/ink_sac1",
+      "item/ink_sac/ink_sac2",
+      "item/ink_sac/ink_sac3"
+    ],
+    "subtitle": "subtitles.item.ditchbulb_paste.use"
+  },
+  "item.slingshot.draw": {
+    "sounds": [
+      "undergarden:item/slingshot_draw_1",
+      "undergarden:item/slingshot_draw_2"
+    ],
+    "subtitle": "subtitles.item.slingshot.draw"
+  },
+  "item.slingshot.gronglet_shoot": {
+    "sounds": [
+      "undergarden:item/gronglet_shoot_1",
+      "undergarden:item/gronglet_shoot_2"
+    ],
+    "subtitle": "subtitles.item.slingshot.gronglet_shoot"
+  },
+  "item.slingshot.shoot": {
+    "sounds": [
+      "undergarden:item/slingshot_shoot"
+    ],
+    "subtitle": "subtitles.item.slingshot.shoot"
+  },
+  "music.disc.gloomper_anthem": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/gloomper_anthem",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.gloomper_secret": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/gloomper_secret",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.limax_maximus": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/limax_maximus",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.mammoth": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/mammoth",
+        "stream": true
+      }
+    ]
+  },
+  "music.disc.relict": {
+    "sounds": [
+      {
+        "name": "undergarden:music/disc/relict",
+        "stream": true
+      }
     ]
   },
   "music.undergarden": {
@@ -290,809 +1093,6 @@
         "name": "undergarden:music/wrought",
         "stream": true
       }
-    ]
-  },
-  "music.disc.mammoth": {
-    "sounds": [
-      {
-        "name": "undergarden:music/disc/mammoth",
-        "stream": true
-      }
-    ]
-  },
-  "music.disc.limax_maximus": {
-    "sounds": [
-      {
-        "name": "undergarden:music/disc/limax_maximus",
-        "stream": true
-      }
-    ]
-  },
-  "music.disc.relict": {
-    "sounds": [
-      {
-        "name": "undergarden:music/disc/relict",
-        "stream": true
-      }
-    ]
-  },
-  "music.disc.gloomper_anthem": {
-    "sounds": [
-      {
-        "name": "undergarden:music/disc/gloomper_anthem",
-        "stream": true
-      }
-    ]
-  },
-  "music.disc.gloomper_secret": {
-    "sounds": [
-      {
-        "name": "undergarden:music/disc/gloomper_secret",
-        "stream": true
-      }
-    ]
-  },
-  "block.undergarden_portal.ambient": {
-    "subtitle": "subtitles.block.undergarden_portal.ambient",
-    "sounds": [
-      "undergarden:block/undergarden_portal_ambient"
-    ]
-  },
-  "block.undergarden_portal.activate": {
-    "subtitle": "subtitles.block.undergarden_portal.activate",
-    "sounds": [
-      "undergarden:block/undergarden_portal_activate"
-    ]
-  },
-  "block.undergarden_portal.travel": {
-    "subtitle": "subtitles.block.undergarden_portal.travel",
-    "sounds": [
-      "undergarden:block/undergarden_portal_travel"
-    ]
-  },
-  "block.virulent.flow": {
-    "subtitle": "subtitles.block.virulent.flow",
-    "sounds": [
-      "undergarden:liquid/virulent_flowing_1",
-      "undergarden:liquid/virulent_flowing_2"
-    ]
-  },
-  "block.virulent.bubble": {
-    "subtitle": "subtitles.block.virulent.bubble",
-    "sounds": [
-      "undergarden:liquid/virulent_bubble_1",
-      "undergarden:liquid/virulent_bubble_2",
-      "undergarden:liquid/virulent_bubble_3",
-      "undergarden:liquid/virulent_bubble_4"
-    ]
-  },
-  "block.gronglet.ambient": {
-    "subtitle": "subtitles.block.gronglet.ambient",
-    "sounds": [
-      "undergarden:block/gronglet/gronglet_ambient_1",
-      "undergarden:block/gronglet/gronglet_ambient_2",
-      "undergarden:block/gronglet/gronglet_ambient_3"
-    ]
-  },
-  "block.gronglet.break": {
-    "subtitle": "subtitles.block.generic.break",
-    "sounds": [
-      "undergarden:block/gronglet/gronglet_1",
-      "undergarden:block/gronglet/gronglet_2",
-      "undergarden:block/gronglet/gronglet_3",
-      "undergarden:block/gronglet/gronglet_4",
-      "undergarden:block/gronglet/gronglet_5",
-      "undergarden:block/gronglet/gronglet_6"
-    ]
-  },
-  "block.gronglet.place": {
-    "subtitle": "subtitles.block.generic.place",
-    "sounds": [
-      "undergarden:block/gronglet/gronglet_1",
-      "undergarden:block/gronglet/gronglet_2",
-      "undergarden:block/gronglet/gronglet_3",
-      "undergarden:block/gronglet/gronglet_4",
-      "undergarden:block/gronglet/gronglet_5",
-      "undergarden:block/gronglet/gronglet_6"
-    ]
-  },
-  "block.gronglet.burn": {
-    "subtitle": "subtitles.block.gronglet.burn",
-    "sounds": [
-      "undergarden:block/gronglet/gronglet_burn"
-    ]
-  },
-  "item.blisterbomb": {
-    "subtitle": "subtitles.item.blisterbomb",
-    "sounds": [
-      "undergarden:item/blisterbomb"
-    ]
-  },
-  "item.slingshot.shoot": {
-    "subtitle": "subtitles.item.slingshot.shoot",
-    "sounds": [
-      "undergarden:item/slingshot_shoot"
-    ]
-  },
-  "item.slingshot.draw": {
-    "subtitle": "subtitles.item.slingshot.draw",
-    "sounds": [
-      "undergarden:item/slingshot_draw_1",
-      "undergarden:item/slingshot_draw_2"
-    ]
-  },
-  "item.slingshot.gronglet_shoot": {
-    "subtitle": "subtitles.item.slingshot.gronglet_shoot",
-    "sounds": [
-      "undergarden:item/gronglet_shoot_1",
-      "undergarden:item/gronglet_shoot_2"
-    ]
-  },
-  "item.blisterberry_bush.pick": {
-    "subtitle": "subtitles.item.blisterberry_bush.pick",
-    "sounds": [
-      "item/sweet_berries/pick_from_bush1",
-      "item/sweet_berries/pick_from_bush2"
-    ]
-  },
-  "item.bucket.fill_virulent": {
-    "subtitle": "subtitles.item.bucket.fill",
-    "sounds": [
-      "undergarden:item/bucket/fill_virulent_mix_1",
-      "undergarden:item/bucket/fill_virulent_mix_2",
-      "undergarden:item/bucket/fill_virulent_mix_3"
-    ]
-  },
-  "item.bucket.empty_virulent": {
-    "subtitle": "subtitles.item.bucket.empty",
-    "sounds": [
-      "undergarden:item/bucket/empty_virulent_mix_1",
-      "undergarden:item/bucket/empty_virulent_mix_2",
-      "undergarden:item/bucket/empty_virulent_mix_3"
-    ]
-  },
-  "item.ditchbulb_paste.use": {
-    "subtitle": "subtitles.item.ditchbulb_paste.use",
-    "sounds": [
-      "item/ink_sac/ink_sac1",
-      "item/ink_sac/ink_sac2",
-      "item/ink_sac/ink_sac3"
-    ]
-  },
-  "entity.boomgourd.primed": {
-    "subtitle": "subtitles.entity.boomgourd.primed",
-    "sounds": [
-      "undergarden:entity/boomgourd_primed"
-    ]
-  },
-  "entity.dweller.ambient": {
-    "subtitle": "subtitles.entity.dweller.ambient",
-    "sounds": [
-      "undergarden:entity/dweller_ambient_1",
-      "undergarden:entity/dweller_ambient_2",
-      "undergarden:entity/dweller_ambient_3"
-    ]
-  },
-  "entity.dweller.hurt": {
-    "subtitle": "subtitles.entity.dweller.hurt",
-    "sounds": [
-      "undergarden:entity/dweller_hurt_1",
-      "undergarden:entity/dweller_hurt_2",
-      "undergarden:entity/dweller_hurt_3"
-    ]
-  },
-  "entity.dweller.death": {
-    "subtitle": "subtitles.entity.dweller.death",
-    "sounds": [
-      "undergarden:entity/dweller_death"
-    ]
-  },
-  "entity.dweller.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      {
-        "name": "mob/cow/step1",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/cow/step2",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/cow/step3",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/cow/step4",
-        "pitch": 0.5
-      }
-    ]
-  },
-  "entity.rotling.ambient": {
-    "subtitle": "subtitles.entity.rotling.ambient",
-    "sounds": [
-      "undergarden:entity/rotling_ambient_1",
-      "undergarden:entity/rotling_ambient_2",
-      "undergarden:entity/rotling_ambient_3"
-    ]
-  },
-  "entity.rotling.hurt": {
-    "subtitle": "subtitles.entity.rotling.hurt",
-    "sounds": [
-      "undergarden:entity/rotling_hurt_1",
-      "undergarden:entity/rotling_hurt_2"
-    ]
-  },
-  "entity.rotling.death": {
-    "subtitle": "subtitles.entity.rotling.death",
-    "sounds": [
-      "undergarden:entity/rotling_death"
-    ]
-  },
-  "entity.rotling.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      {
-        "name": "mob/zombie/step1",
-        "pitch": 1.5
-      },
-      {
-        "name": "mob/zombie/step2",
-        "pitch": 1.5
-      },
-      {
-        "name": "mob/zombie/step3",
-        "pitch": 1.5
-      },
-      {
-        "name": "mob/zombie/step4",
-        "pitch": 1.5
-      },
-      {
-        "name": "mob/zombie/step5",
-        "pitch": 1.5
-      }
-    ]
-  },
-  "entity.rotwalker.ambient": {
-    "subtitle": "subtitles.entity.rotwalker.ambient",
-    "sounds": [
-      "undergarden:entity/rotwalker_ambient_1",
-      "undergarden:entity/rotwalker_ambient_2",
-      "undergarden:entity/rotwalker_ambient_3"
-    ]
-  },
-  "entity.rotwalker.hurt": {
-    "subtitle": "subtitles.entity.rotwalker.hurt",
-    "sounds": [
-      "undergarden:entity/rotwalker_hurt_1",
-      "undergarden:entity/rotwalker_hurt_2",
-      "undergarden:entity/rotwalker_hurt_3"
-    ]
-  },
-  "entity.rotwalker.death": {
-    "subtitle": "subtitles.entity.rotwalker.death",
-    "sounds": [
-      "undergarden:entity/rotwalker_death"
-    ]
-  },
-  "entity.rotwalker.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      {
-        "name": "mob/zombie/step1",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/zombie/step2",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/zombie/step3",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/zombie/step4",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/zombie/step5",
-        "pitch": 0.5
-      }
-    ]
-  },
-  "entity.rotbeast.ambient": {
-    "subtitle": "subtitles.entity.rotbeast.ambient",
-    "sounds": [
-      "undergarden:entity/rotbeast_ambient_1",
-      "undergarden:entity/rotbeast_ambient_2",
-      "undergarden:entity/rotbeast_ambient_3"
-    ]
-  },
-  "entity.rotbeast.hurt": {
-    "subtitle": "subtitles.entity.rotbeast.hurt",
-    "sounds": [
-      "undergarden:entity/rotbeast_hurt_1",
-      "undergarden:entity/rotbeast_hurt_2",
-      "undergarden:entity/rotbeast_hurt_3",
-      "undergarden:entity/rotbeast_hurt_4"
-    ]
-  },
-  "entity.rotbeast.death": {
-    "subtitle": "subtitles.entity.rotbeast.death",
-    "sounds": [
-      "undergarden:entity/rotbeast_death"
-    ]
-  },
-  "entity.rotbeast.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      "undergarden:entity/rotbeast_step_1",
-      "undergarden:entity/rotbeast_step_2",
-      "undergarden:entity/rotbeast_step_3"
-    ]
-  },
-  "entity.rotbeast.attack": {
-    "subtitle": "subtitles.entity.rotbeast.attack",
-    "sounds": [
-      "undergarden:entity/rotbeast_attack_1",
-      "undergarden:entity/rotbeast_attack_2"
-    ]
-  },
-  "entity.brute.ambient": {
-    "subtitle": "subtitles.entity.brute.ambient",
-    "sounds": [
-      "undergarden:entity/brute_ambient_1",
-      "undergarden:entity/brute_ambient_2"
-    ]
-  },
-  "entity.brute.hurt": {
-    "subtitle": "subtitles.entity.brute.hurt",
-    "sounds": [
-      "undergarden:entity/brute_hurt_1",
-      "undergarden:entity/brute_hurt_2",
-      "undergarden:entity/brute_hurt_3",
-      "undergarden:entity/brute_hurt_4"
-    ]
-  },
-  "entity.brute.death": {
-    "subtitle": "subtitles.entity.brute.death",
-    "sounds": [
-      "undergarden:entity/brute_hurt_1",
-      "undergarden:entity/brute_hurt_2",
-      "undergarden:entity/brute_hurt_3",
-      "undergarden:entity/brute_hurt_4"
-    ]
-  },
-  "entity.gloomper.ambient": {
-    "subtitle": "subtitles.entity.gloomper.ambient",
-    "sounds": [
-      "undergarden:entity/gloomper_ambient_1",
-      "undergarden:entity/gloomper_ambient_2"
-    ]
-  },
-  "entity.gloomper.hurt": {
-    "subtitle": "subtitles.entity.gloomper.hurt",
-    "sounds": [
-      "undergarden:entity/gloomper_hurt_1",
-      "undergarden:entity/gloomper_hurt_2"
-    ]
-  },
-  "entity.gloomper.death": {
-    "subtitle": "subtitles.entity.gloomper.death",
-    "sounds": [
-      "undergarden:entity/gloomper_death"
-    ]
-  },
-  "entity.gloomper.hop": {
-    "subtitle": "subtitles.entity.gloomper.hop",
-    "sounds": [
-      {
-        "name": "entity/fish/flop1",
-        "volume": 0.3
-      },
-      {
-        "name": "entity/fish/flop2",
-        "volume": 0.3
-      },
-      {
-        "name": "entity/fish/flop3",
-        "volume": 0.3
-      },
-      {
-        "name": "entity/fish/flop4",
-        "volume": 0.3
-      }
-    ]
-  },
-  "entity.gloomper.fart": {
-    "subtitle": "subtitles.entity.gloomper.fart",
-    "sounds": [
-      {
-        "name": "entity/pufferfish/blow_up1",
-        "volume": 0.45
-      },
-      {
-        "name": "entity/pufferfish/blow_up2",
-        "volume": 0.45
-      }
-    ]
-  },
-  "entity.stoneborn.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      "undergarden:entity/stoneborn_step_1",
-      "undergarden:entity/stoneborn_step_2"
-    ]
-  },
-  "entity.stoneborn.speaking": {
-    "subtitle": "subtitles.entity.stoneborn.speaking",
-    "sounds": [
-      "undergarden:entity/stoneborn_speaking_1",
-      "undergarden:entity/stoneborn_speaking_2",
-      "undergarden:entity/stoneborn_speaking_3"
-    ]
-  },
-  "entity.stoneborn.pleased": {
-    "subtitle": "subtitles.entity.stoneborn.pleased",
-    "sounds": [
-      "undergarden:entity/stoneborn_pleased_1",
-      "undergarden:entity/stoneborn_pleased_2",
-      "undergarden:entity/stoneborn_pleased_3"
-    ]
-  },
-  "entity.stoneborn.hurt": {
-    "subtitle": "subtitles.entity.stoneborn.hurt",
-    "sounds": [
-      "undergarden:entity/stoneborn_hurt_1",
-      "undergarden:entity/stoneborn_hurt_2"
-    ]
-  },
-  "entity.stoneborn.angry": {
-    "subtitle": "subtitles.entity.stoneborn.angry",
-    "sounds": [
-      "undergarden:entity/stoneborn_angry_1",
-      "undergarden:entity/stoneborn_angry_2"
-    ]
-  },
-  "entity.stoneborn.confused": {
-    "subtitle": "subtitles.entity.stoneborn.confused",
-    "sounds": [
-      "undergarden:entity/stoneborn_confused_1",
-      "undergarden:entity/stoneborn_confused_2",
-      "undergarden:entity/stoneborn_confused_3"
-    ]
-  },
-  "entity.stoneborn.chant": {
-    "subtitle": "subtitles.entity.stoneborn.chant",
-    "sounds": [
-      "undergarden:entity/stoneborn_chant_1",
-      "undergarden:entity/stoneborn_chant_2"
-    ]
-  },
-  "entity.stoneborn.death": {
-    "subtitle": "subtitles.entity.stoneborn.death",
-    "sounds": [
-      "undergarden:entity/stoneborn_death"
-    ]
-  },
-  "entity.forgotten_guardian.ambient": {
-    "subtitle": "subtitles.entity.forgotten_guardian.ambient",
-    "sounds": [
-      "undergarden:entity/fguardian_ambient_1",
-      "undergarden:entity/fguardian_ambient_2",
-      "undergarden:entity/fguardian_ambient_3"
-    ]
-  },
-  "entity.forgotten_guardian.hurt": {
-    "subtitle": "subtitles.entity.forgotten_guardian.hurt",
-    "sounds": [
-      "undergarden:entity/fguardian_hurt_1",
-      "undergarden:entity/fguardian_hurt_2",
-      "undergarden:entity/fguardian_hurt_3"
-    ]
-  },
-  "entity.forgotten_guardian.death": {
-    "subtitle": "subtitles.entity.forgotten_guardian.death",
-    "sounds": [
-      "undergarden:entity/fguardian_death"
-    ]
-  },
-  "entity.forgotten_guardian.attack": {
-    "subtitle": "subtitles.entity.forgotten_guardian.attack",
-    "sounds": [
-      "undergarden:entity/fguardian_attack_1",
-      "undergarden:entity/fguardian_attack_2"
-    ]
-  },
-  "entity.forgotten_guardian.deflect": {
-    "subtitle": "subtitles.entity.forgotten_guardian.deflect",
-    "sounds": [
-      "undergarden:entity/fguardian_deflect"
-    ]
-  },
-  "entity.forgotten_guardian.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      "undergarden:entity/fguardian_step_1",
-      "undergarden:entity/fguardian_step_2",
-      "undergarden:entity/fguardian_step_3"
-    ]
-  },
-  "entity.minion.shoot": {
-    "subtitle": "subtitles.entity.minion.shoot",
-    "sounds": [
-      "undergarden:entity/minion_shoot"
-    ]
-  },
-  "entity.minion.death": {
-    "subtitle": "subtitles.entity.minion.death",
-    "sounds": [
-      "undergarden:entity/minion_death"
-    ]
-  },
-  "entity.minion.repair": {
-    "subtitle": "subtitles.entity.minion.repair",
-    "sounds": [
-      "mob/irongolem/repair"
-    ]
-  },
-  "entity.nargoyle.hurt": {
-    "subtitle": "subtitles.entity.nargoyle.hurt",
-    "sounds": [
-      "undergarden:entity/nargoyle_hurt_1",
-      "undergarden:entity/nargoyle_hurt_2",
-      "undergarden:entity/nargoyle_hurt_3"
-    ]
-  },
-  "entity.nargoyle.death": {
-    "subtitle": "subtitles.entity.nargoyle.death",
-    "sounds": [
-      "undergarden:entity/nargoyle_death"
-    ]
-  },
-  "entity.nargoyle.attack": {
-    "subtitle": "subtitles.entity.nargoyle.attack",
-    "sounds": [
-      "undergarden:entity/nargoyle_attack_1",
-      "undergarden:entity/nargoyle_attack_2",
-      "undergarden:entity/nargoyle_attack_3"
-    ]
-  },
-  "entity.muncher.ambient": {
-    "subtitle": "subtitles.entity.muncher.ambient",
-    "sounds": [
-      "undergarden:entity/muncher_ambient_1",
-      "undergarden:entity/muncher_ambient_2",
-      "undergarden:entity/muncher_ambient_3",
-      "undergarden:entity/muncher_ambient_4",
-      "undergarden:entity/muncher_ambient_5",
-      "undergarden:entity/muncher_ambient_6"
-    ]
-  },
-  "entity.muncher.hurt": {
-    "subtitle": "subtitles.entity.muncher.hurt",
-    "sounds": [
-      "undergarden:entity/muncher_hurt_1",
-      "undergarden:entity/muncher_hurt_2"
-    ]
-  },
-  "entity.muncher.death": {
-    "subtitle": "subtitles.entity.muncher.death",
-    "sounds": [
-      "undergarden:entity/muncher_death"
-    ]
-  },
-  "entity.muncher.chew": {
-    "subtitle": "subtitles.entity.muncher.chew",
-    "sounds": [
-      "undergarden:entity/muncher_chew_1",
-      "undergarden:entity/muncher_chew_2"
-    ]
-  },
-  "entity.sploogie.ambient": {
-    "subtitle": "subtitles.entity.sploogie.ambient",
-    "sounds": [
-      "undergarden:entity/sploogie_ambient_1",
-      "undergarden:entity/sploogie_ambient_2",
-      "undergarden:entity/sploogie_ambient_3"
-    ]
-  },
-  "entity.sploogie.hurt": {
-    "subtitle": "subtitles.entity.sploogie.hurt",
-    "sounds": [
-      "undergarden:entity/sploogie_hurt_1",
-      "undergarden:entity/sploogie_hurt_2"
-    ]
-  },
-  "entity.sploogie.death": {
-    "subtitle": "subtitles.entity.sploogie.death",
-    "sounds": [
-      "undergarden:entity/sploogie_death"
-    ]
-  },
-  "entity.sploogie.spit": {
-    "subtitle": "subtitles.entity.sploogie.spit",
-    "sounds": [
-      "undergarden:entity/sploogie_spit_1",
-      "undergarden:entity/sploogie_spit_2",
-      "undergarden:entity/sploogie_spit_3"
-    ]
-  },
-  "entity.masticator.ambient": {
-    "subtitle": "subtitles.entity.masticator.ambient",
-    "sounds": [
-      "undergarden:entity/masticator_ambient_1",
-      "undergarden:entity/masticator_ambient_2",
-      "undergarden:entity/masticator_ambient_3",
-      "undergarden:entity/masticator_ambient_4"
-    ]
-  },
-  "entity.masticator.hurt": {
-    "subtitle": "subtitles.entity.masticator.hurt",
-    "sounds": [
-      "undergarden:entity/masticator_hurt_1",
-      "undergarden:entity/masticator_hurt_2",
-      "undergarden:entity/masticator_hurt_3"
-    ]
-  },
-  "entity.masticator.death": {
-    "subtitle": "subtitles.entity.masticator.death",
-    "sounds": [
-      "undergarden:entity/masticator_death"
-    ]
-  },
-  "entity.masticator.eat": {
-    "subtitle": "subtitles.entity.masticator.eat",
-    "sounds": [
-      "undergarden:entity/masticator_eat_1",
-      "undergarden:entity/masticator_eat_2",
-      "undergarden:entity/masticator_eat_3"
-    ]
-  },
-  "entity.masticator.step": {
-    "subtitle": "subtitles.block.generic.footsteps",
-    "sounds": [
-      {
-        "name": "mob/ravager/step1",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/ravager/step2",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/ravager/step3",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/ravager/step4",
-        "pitch": 0.5
-      },
-      {
-        "name": "mob/ravager/step5",
-        "pitch": 0.5
-      }
-    ]
-  },
-  "entity.gwib.hurt": {
-    "subtitle": "subtitles.entity.gwib.hurt",
-    "sounds": [
-      "entity/fish/hurt1",
-      "entity/fish/hurt2",
-      "entity/fish/hurt3",
-      "entity/fish/hurt4"
-    ]
-  },
-  "entity.gwib.death": {
-    "subtitle": "subtitles.entity.gwib.death",
-    "sounds": [
-      "entity/fish/hurt1",
-      "entity/fish/hurt2",
-      "entity/fish/hurt3",
-      "entity/fish/hurt4"
-    ]
-  },
-  "entity.gwib.flop": {
-    "subtitle": "subtitles.entity.gwib.flop",
-    "sounds": [
-      {
-        "name": "entity/fish/flop1",
-        "volume": 0.5
-      },
-      {
-        "name": "entity/fish/flop2",
-        "volume": 0.5
-      },
-      {
-        "name": "entity/fish/flop3",
-        "volume": 0.5
-      },
-      {
-        "name": "entity/fish/flop4",
-        "volume": 0.5
-      }
-    ]
-  },
-  "entity.gwibling.hurt": {
-    "subtitle": "subtitles.entity.gwibling.hurt",
-    "sounds": [
-      "entity/fish/hurt1",
-      "entity/fish/hurt2",
-      "entity/fish/hurt3",
-      "entity/fish/hurt4"
-    ]
-  },
-  "entity.gwibling.death": {
-    "subtitle": "subtitles.entity.gwibling.death",
-    "sounds": [
-      "entity/fish/hurt1",
-      "entity/fish/hurt2",
-      "entity/fish/hurt3",
-      "entity/fish/hurt4"
-    ]
-  },
-  "entity.gwibling.flop": {
-    "subtitle": "subtitles.entity.gwibling.flop",
-    "sounds": [
-      {
-        "name": "entity/fish/flop1",
-        "volume": 0.3
-      },
-      {
-        "name": "entity/fish/flop2",
-        "volume": 0.3
-      },
-      {
-        "name": "entity/fish/flop3",
-        "volume": 0.3
-      },
-      {
-        "name": "entity/fish/flop4",
-        "volume": 0.3
-      }
-    ]
-  },
-  "entity.mog.ambient": {
-    "subtitle": "subtitles.entity.mog.ambient",
-    "sounds": [
-      "undergarden:entity/mog_ambient_1",
-      "undergarden:entity/mog_ambient_2",
-      "undergarden:entity/mog_ambient_3"
-    ]
-  },
-  "entity.mog.hurt": {
-    "subtitle": "subtitles.entity.mog.hurt",
-    "sounds": [
-      "undergarden:entity/mog_hurt_1",
-      "undergarden:entity/mog_hurt_2",
-      "undergarden:entity/mog_hurt_3"
-    ]
-  },
-  "entity.mog.death": {
-    "subtitle": "subtitles.entity.mog.death",
-    "sounds": [
-      "undergarden:entity/mog_death"
-    ]
-  },
-  "entity.scintling.hurt": {
-    "subtitle": "subtitles.entity.scintling.hurt",
-    "sounds": [
-      "block/honeyblock/break1",
-      "block/honeyblock/break2",
-      "block/honeyblock/break3",
-      "block/honeyblock/break4",
-      "block/honeyblock/break5"
-    ]
-  },
-  "entity.scintling.death": {
-    "subtitle": "subtitles.entity.scintling.death",
-    "sounds": [
-      "block/honeyblock/break1",
-      "block/honeyblock/break2",
-      "block/honeyblock/break3",
-      "block/honeyblock/break4",
-      "block/honeyblock/break5"
     ]
   }
 }

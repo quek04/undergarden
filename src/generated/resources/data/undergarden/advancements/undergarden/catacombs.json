@@ -1,28 +1,36 @@
 {
   "parent": "undergarden:undergarden/enter_undergarden",
+  "criteria": {
+    "enter_catacombs": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "undergarden:catacombs"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
   "display": {
-    "icon": {
-      "item": "undergarden:depthrock_brick_stairs"
-    },
-    "title": {
-      "translate": "advancement.undergarden.catacombs.title"
-    },
+    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.catacombs.desc"
     },
     "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:depthrock_brick_stairs"
+    },
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
-  "criteria": {
-    "enter_catacombs": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "feature": "undergarden:catacombs"
-        }
-      }
+    "title": {
+      "translate": "advancement.undergarden.catacombs.title"
     }
   },
   "requirements": [

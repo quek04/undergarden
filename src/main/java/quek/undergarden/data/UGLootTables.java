@@ -287,7 +287,7 @@ public class UGLootTables extends LootTableProvider {
         return LootTable.lootTable().withPool(withExplosionDecay(stem, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(stemSeed).apply(SetItemCountFunction.setCount(BinomialDistributionGenerator.binomial(3, 0.53333336F))))));
     }
 
-    protected static <T> T withExplosionDecay(ItemLike item, FunctionUserBuilder<T> function) {
+    protected static <T extends FunctionUserBuilder<T>> T withExplosionDecay(ItemLike item, FunctionUserBuilder<T> function) {
         return !IMMUNE_TO_EXPLOSIONS.contains(item.asItem()) ? function.apply(ApplyExplosionDecay.explosionDecay()) : function.unwrap();
     }
 

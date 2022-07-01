@@ -1,23 +1,7 @@
 {
   "parent": "undergarden:undergarden/mine_ore",
-  "display": {
-    "icon": {
-      "item": "undergarden:regalium_block"
-    },
-    "title": {
-      "translate": "advancement.undergarden.all_ore_blocks.title"
-    },
-    "description": {
-      "translate": "advancement.undergarden.all_ore_blocks.desc"
-    },
-    "frame": "challenge",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
   "criteria": {
     "has_all_ore_blocks": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -41,7 +25,23 @@
             ]
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.undergarden.all_ore_blocks.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:regalium_block"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.undergarden.all_ore_blocks.title"
     }
   },
   "requirements": [

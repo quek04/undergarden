@@ -1,0 +1,5 @@
+// 1.19	2022-06-30T12:46:27.0904197	Undergarden Entity Type Tags
+b210e12c149f69eec2dc5b34d39fe0ebddac387a data/minecraft/tags/entity_types/impact_projectiles.json
+82504d61ef59415f00c1684bc94ed787e0d98d0e data/undergarden/tags/entity_types/cavern_creature.json
+bc04b7eb22f99762d158c0b94bb221228217a956 data/undergarden/tags/entity_types/immune_to_virulent_mix.json
+59ed5e86a01c0d7bf7e62d9da86639ea3c447f10 data/undergarden/tags/entity_types/rotspawn.json

@@ -34,11 +34,6 @@ public class DepthrockPebblesBlock extends Block {
     }
 
     @Override
-    public BlockBehaviour.OffsetType getOffsetType() {
-        return BlockBehaviour.OffsetType.XZ;
-    }
-
-    @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos blockpos = pos.below();
         return level.getBlockState(blockpos).isFaceSturdy(level, blockpos, Direction.UP);

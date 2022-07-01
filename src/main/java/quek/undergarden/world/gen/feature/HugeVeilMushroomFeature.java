@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.HugeMushroomBlock;
@@ -21,7 +22,7 @@ public class HugeVeilMushroomFeature extends HugeRedMushroomFeature {
     }
 
     @Override
-    protected void makeCap(LevelAccessor level, Random random, BlockPos pos, int shroomHeight, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
+    protected void makeCap(LevelAccessor level, RandomSource random, BlockPos pos, int shroomHeight, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
         for(int i = shroomHeight - 3; i <= shroomHeight; ++i) {
             int j = i < shroomHeight ? config.foliageRadius : config.foliageRadius - 1;
             int k = config.foliageRadius - 2;
@@ -53,7 +54,7 @@ public class HugeVeilMushroomFeature extends HugeRedMushroomFeature {
         }
     }
 
-    private static void doVeil(BlockPos pos, LevelAccessor level, Random random) {
+    private static void doVeil(BlockPos pos, LevelAccessor level, RandomSource random) {
         BlockPos.MutableBlockPos posMutable = pos.mutable().move(Direction.DOWN);
         if (level.isEmptyBlock(posMutable)) {
             int i = Mth.nextInt(random, 1, 5);
@@ -65,7 +66,7 @@ public class HugeVeilMushroomFeature extends HugeRedMushroomFeature {
         }
     }
 
-    public static void placeVeil(LevelAccessor level, Random random, BlockPos.MutableBlockPos posMutable, int length, int min, int max) {
+    public static void placeVeil(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos posMutable, int length, int min, int max) {
         for(int i = 0; i <= length; ++i) {
             if (level.isEmptyBlock(posMutable)) {
                 if (i == length || !level.isEmptyBlock(posMutable.below())) {

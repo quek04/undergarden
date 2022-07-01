@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.WallTorchBlock;
@@ -22,7 +23,7 @@ public class ShardWallTorchBlock extends WallTorchBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         Direction direction = state.getValue(FACING);
         double x = (double)pos.getX() + 0.5D;
         double y = (double)pos.getY() + 0.7D;
@@ -38,7 +39,7 @@ public class ShardWallTorchBlock extends WallTorchBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         level.getEntitiesOfClass(LivingEntity.class, new AABB(
                         pos.getX() - 4,
                         pos.getY() - 4,

@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "/": {
+      "tag": "forge:rods/wooden"
+    },
+    "P": {
+      "item": "undergarden:wigglewood_planks"
+    }
+  },
   "pattern": [
     "PPP",
     "PPP",
     " / "
   ],
-  "key": {
-    "P": {
-      "item": "undergarden:wigglewood_planks"
-    },
-    "/": {
-      "tag": "forge:rods/wooden"
-    }
-  },
   "result": {
-    "item": "undergarden:wigglewood_sign",
-    "count": 3
+    "count": 3,
+    "item": "undergarden:wigglewood_sign"
   }
 }

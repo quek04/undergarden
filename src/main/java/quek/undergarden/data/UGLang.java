@@ -6,6 +6,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.data.LanguageProvider;
+import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.*;
 
@@ -42,10 +43,10 @@ public class UGLang extends LanguageProvider {
     }
 
     private void addPotion(Supplier<? extends Potion> potion, String name) {
-        add("item.minecraft.potion.effect." + potion.get().getRegistryName().getPath(), "Potion of " + name);
-        add("item.minecraft.splash_potion.effect." + potion.get().getRegistryName().getPath(), "Splash Potion of " + name);
-        add("item.minecraft.lingering_potion.effect." + potion.get().getRegistryName().getPath(), "Lingering Potion of " + name);
-        add("item.minecraft.tipped_arrow.effect." + potion.get().getRegistryName().getPath(), "Arrow of " + name);
+        add("item.minecraft.potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Potion of " + name);
+        add("item.minecraft.splash_potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Splash Potion of " + name);
+        add("item.minecraft.lingering_potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Lingering Potion of " + name);
+        add("item.minecraft.tipped_arrow.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Arrow of " + name);
     }
 
     @Override

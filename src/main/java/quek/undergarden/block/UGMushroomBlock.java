@@ -3,6 +3,7 @@ package quek.undergarden.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -33,7 +34,7 @@ public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (random.nextInt(25) == 0) {
             int i = 5;
 
@@ -80,7 +81,7 @@ public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
         }
     }
 
-    public void bigMushroom(ServerLevel level, BlockPos pos, BlockState state, Random random) {
+    public void bigMushroom(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
         level.removeBlock(pos, false);
         Holder<ConfiguredFeature<?, ?>> feature;
         if (this == UGBlocks.BLOOD_MUSHROOM.get()) {
@@ -112,12 +113,12 @@ public class UGMushroomBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isBonemealSuccess(Level world, Random random, BlockPos blockPos, BlockState blockState) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos blockPos, BlockState blockState) {
         return (double)random.nextFloat() < 0.4D;
     }
 
     @Override
-    public void performBonemeal(ServerLevel world, Random rand, BlockPos pos, BlockState state) {
-        this.bigMushroom(world, pos, state, rand);
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        this.bigMushroom(level, pos, state, random);
     }
 }

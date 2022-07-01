@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "undergarden:tremblecrust"
   },
-  "result": "undergarden:tremblecrust_bricks",
-  "count": 1
+  "result": "undergarden:tremblecrust_bricks"
 }

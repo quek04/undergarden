@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
@@ -20,7 +21,7 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
     }
 
     private String blockName(Supplier<? extends Block> block) {
-        return block.get().getRegistryName().getPath();
+        return ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
     }
 
     private ResourceLocation texture(String name) {
@@ -55,27 +56,27 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
     }
 
     public ItemModelBuilder normalItem(Supplier<? extends Item> item) {
-        return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/generated"))
-                .texture("layer0", modLoc("item/" + item.get().getRegistryName().getPath()));
+        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
     }
 
     public ItemModelBuilder torchItem(Supplier<? extends Block> item) {
-        return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/generated"))
-                .texture("layer0", modLoc("block/" + item.get().getRegistryName().getPath()));
+        return withExistingParent(ForgeRegistries.BLOCKS.getKey(item.get()).getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/" + ForgeRegistries.BLOCKS.getKey(item.get()).getPath()));
     }
 
     public ItemModelBuilder toolItem(Supplier<? extends Item> item) {
-        return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/handheld"))
-                .texture("layer0", modLoc("item/" + item.get().getRegistryName().getPath()));
+        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld"))
+                .texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
     }
 
     public ItemModelBuilder rodItem(Supplier<? extends Item> item) {
-        return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/handheld_rod"))
-                .texture("layer0", modLoc("item/" + item.get().getRegistryName().getPath()));
+        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld_rod"))
+                .texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
     }
 
     public ItemModelBuilder egg(Supplier<? extends Item> item) {
-        return withExistingParent(item.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));
+        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     public ItemModelBuilder sign(Supplier<? extends SignBlock> sign) {
@@ -84,6 +85,6 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
     }
 
     public ItemModelBuilder wall(Supplier<? extends WallBlock> wall, Supplier<? extends Block> fullBlock) {
-        return wallInventory(wall.get().getRegistryName().getPath(), texture(blockName(fullBlock)));
+        return wallInventory(ForgeRegistries.BLOCKS.getKey(wall.get()).getPath(), texture(blockName(fullBlock)));
     }
 }

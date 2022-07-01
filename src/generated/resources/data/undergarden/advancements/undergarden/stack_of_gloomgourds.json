@@ -1,33 +1,33 @@
 {
   "parent": "undergarden:undergarden/plant_gloomgourd",
+  "criteria": {
+    "has_64_gloomgourds": {
+      "conditions": {
+        "items": [
+          {
+            "count": 64,
+            "items": [
+              "undergarden:gloomgourd"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
   "display": {
-    "icon": {
-      "item": "undergarden:gloomgourd"
-    },
-    "title": {
-      "translate": "advancement.undergarden.stack_of_gloomgourds.title"
-    },
+    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.stack_of_gloomgourds.desc"
     },
     "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "undergarden:gloomgourd"
+    },
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": true
-  },
-  "criteria": {
-    "has_64_gloomgourds": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:gloomgourd"
-            ],
-            "count": 64
-          }
-        ]
-      }
+    "title": {
+      "translate": "advancement.undergarden.stack_of_gloomgourds.title"
     }
   },
   "requirements": [

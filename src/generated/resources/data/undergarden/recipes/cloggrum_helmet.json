@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "MMM",
-    "M M"
-  ],
   "key": {
     "M": {
       "item": "undergarden:cloggrum_ingot"
     }
   },
+  "pattern": [
+    "MMM",
+    "M M"
+  ],
   "result": {
     "item": "undergarden:cloggrum_helmet"
   }

@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -48,14 +49,14 @@ public class DeepsoilFarmlandBlock extends FarmBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!state.canSurvive(level, pos)) {
             turnToDeepsoil(state, level, pos);
         }
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         int moistness = state.getValue(MOISTURE);
         if (!isNearWater(level, pos) && !level.isRainingAt(pos.above())) {
             if (moistness > 0) {

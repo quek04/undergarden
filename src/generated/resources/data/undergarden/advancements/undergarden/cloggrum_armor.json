@@ -1,24 +1,7 @@
 {
   "parent": "undergarden:undergarden/mine_ore",
-  "display": {
-    "icon": {
-      "item": "undergarden:cloggrum_chestplate",
-      "nbt": "{Damage:0}"
-    },
-    "title": {
-      "translate": "advancement.undergarden.cloggrum_armor.title"
-    },
-    "description": {
-      "translate": "advancement.undergarden.cloggrum_armor.desc"
-    },
-    "frame": "goal",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
   "criteria": {
     "has_cloggrum_armor": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -42,7 +25,24 @@
             ]
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.undergarden.cloggrum_armor.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:cloggrum_chestplate",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.undergarden.cloggrum_armor.title"
     }
   },
   "requirements": [

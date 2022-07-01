@@ -40,15 +40,11 @@ public class UGBoat extends Boat {
 
     @Override
     public Item getDropItem() {
-        switch(this.getUGBoatType()) {
-            case SMOGSTEM:
-            default:
-                return UGItems.SMOGSTEM_BOAT.get();
-            case WIGGLEWOOD:
-                return UGItems.WIGGLEWOOD_BOAT.get();
-            case GRONGLE:
-                return UGItems.GRONGLE_BOAT.get();
-        }
+        return switch (this.getUGBoatType()) {
+            case SMOGSTEM -> UGItems.SMOGSTEM_BOAT.get();
+            case WIGGLEWOOD -> UGItems.WIGGLEWOOD_BOAT.get();
+            case GRONGLE -> UGItems.GRONGLE_BOAT.get();
+        };
     }
 
     public void setBoatType(UGBoat.Type boatType) {

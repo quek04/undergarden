@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "##",
-    " /",
-    " /"
-  ],
   "key": {
     "#": {
       "item": "undergarden:utherium_crystal"
@@ -13,6 +8,11 @@
       "tag": "forge:rods/wooden"
     }
   },
+  "pattern": [
+    "##",
+    " /",
+    " /"
+  ],
   "result": {
     "item": "undergarden:utherium_hoe"
   }

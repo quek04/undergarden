@@ -1,3 +1,4 @@
+/*
 package quek.undergarden.world.gen.structure;
 
 import com.mojang.serialization.Codec;
@@ -30,4 +31,4 @@ public class CatacombsStructure extends StructureFeature<JigsawConfiguration> {
 //    public String getFeatureName() {
 //        return "undergarden:catacombs";
 //    }
-}
+}*/

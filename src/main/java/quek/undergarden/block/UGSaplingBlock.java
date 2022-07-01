@@ -2,6 +2,7 @@ package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
@@ -23,9 +24,9 @@ public class UGSaplingBlock extends SaplingBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
-        super.randomTick(state, worldIn, pos, rand);
-        if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        this.advanceTree(worldIn, pos, state, rand);
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        super.randomTick(state, level, pos, random);
+        if (!level.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
+        this.advanceTree(level, pos, state, random);
     }
 }

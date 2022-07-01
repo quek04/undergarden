@@ -1,6 +1,7 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
@@ -18,7 +19,7 @@ public class HugeInkMushroomFeature extends HugeBrownMushroomFeature {
     }
 
     @Override
-    protected void makeCap(LevelAccessor level, Random random, BlockPos pos, int shroomHeight, BlockPos.MutableBlockPos mutablePos, HugeMushroomFeatureConfiguration config) {
+    protected void makeCap(LevelAccessor level, RandomSource random, BlockPos pos, int shroomHeight, BlockPos.MutableBlockPos mutablePos, HugeMushroomFeatureConfiguration config) {
         int capRadius = config.foliageRadius;
 
         for(int j = -capRadius; j <= capRadius; ++j) {

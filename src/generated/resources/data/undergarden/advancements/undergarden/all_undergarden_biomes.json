@@ -1,117 +1,213 @@
 {
   "parent": "undergarden:undergarden/enter_undergarden",
+  "criteria": {
+    "undergarden:ancient_sea": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:ancient_sea"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:barren_abyss": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:barren_abyss"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:dead_sea": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:dead_sea"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:dense_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:dense_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:forgotten_field": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:forgotten_field"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:frostfields": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:frostfields"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:gronglegrowth": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:gronglegrowth"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:icy_sea": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:icy_sea"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:mushroom_bog": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:mushroom_bog"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:smog_spires": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:smog_spires"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:smogstem_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:smogstem_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:wigglewood_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:wigglewood_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
   "display": {
-    "icon": {
-      "item": "undergarden:cloggrum_boots",
-      "nbt": "{Damage:0}"
-    },
-    "title": {
-      "translate": "advancement.undergarden.all_undergarden_biomes.title"
-    },
+    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.all_undergarden_biomes.desc"
     },
     "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:cloggrum_boots",
+      "nbt": "{Damage:0}"
+    },
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
-  "criteria": {
-    "undergarden:ancient_sea": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:ancient_sea"
-        }
-      }
-    },
-    "undergarden:barren_abyss": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:barren_abyss"
-        }
-      }
-    },
-    "undergarden:dead_sea": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:dead_sea"
-        }
-      }
-    },
-    "undergarden:dense_forest": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:dense_forest"
-        }
-      }
-    },
-    "undergarden:forgotten_field": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:forgotten_field"
-        }
-      }
-    },
-    "undergarden:frostfields": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:frostfields"
-        }
-      }
-    },
-    "undergarden:gronglegrowth": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:gronglegrowth"
-        }
-      }
-    },
-    "undergarden:icy_sea": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:icy_sea"
-        }
-      }
-    },
-    "undergarden:mushroom_bog": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:mushroom_bog"
-        }
-      }
-    },
-    "undergarden:smog_spires": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:smog_spires"
-        }
-      }
-    },
-    "undergarden:smogstem_forest": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:smogstem_forest"
-        }
-      }
-    },
-    "undergarden:wigglewood_forest": {
-      "trigger": "minecraft:location",
-      "conditions": {
-        "location": {
-          "biome": "undergarden:wigglewood_forest"
-        }
-      }
+    "title": {
+      "translate": "advancement.undergarden.all_undergarden_biomes.title"
     }
   },
   "requirements": [

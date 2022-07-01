@@ -1,10 +1,10 @@
 {
   "type": "minecraft:smithing",
-  "base": {
-    "item": "undergarden:cloggrum_shovel"
-  },
   "addition": {
     "item": "undergarden:forgotten_ingot"
+  },
+  "base": {
+    "item": "undergarden:cloggrum_shovel"
   },
   "result": {
     "item": "undergarden:forgotten_shovel"

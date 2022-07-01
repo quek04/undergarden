@@ -9,6 +9,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
 
@@ -22,7 +23,7 @@ public class UGToolEvents {
 
         if(source instanceof Player player) {
             if(player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SWORD.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
-                if(event.getEntityLiving().getType().getRegistryName().getNamespace().equals("undergarden") && event.getEntityLiving().canChangeDimensions()) {
+                if(ForgeRegistries.ENTITIES.getKey(event.getEntityLiving().getType()).getNamespace().equals("undergarden") && event.getEntityLiving().canChangeDimensions()) {
                     event.setAmount(damage * 1.5F);
                 }
             }
@@ -35,7 +36,7 @@ public class UGToolEvents {
         BlockState state = event.getState();
 
         if(player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SHOVEL.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_HOE.get()) {
-            if(state != null && state.getBlock().getRegistryName().getNamespace().equals("undergarden")) {
+            if(state != null && ForgeRegistries.BLOCKS.getKey(state.getBlock()).getNamespace().equals("undergarden")) {
                 event.setNewSpeed(event.getOriginalSpeed() * 1.5F);
             }
         }

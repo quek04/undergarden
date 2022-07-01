@@ -2,6 +2,7 @@ package quek.undergarden.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -64,7 +65,7 @@ public class DitchbulbPasteItem extends Item {
     }
 
     private void playSound(Level level, BlockPos pos) {
-        Random random = level.getRandom();
+        RandomSource random = level.getRandom();
         level.playSound(null, pos, UGSoundEvents.DITCHBULB_PASTE_USE.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
     }
 }

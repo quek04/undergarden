@@ -1,9 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "DP",
-    "PD"
-  ],
   "key": {
     "D": {
       "item": "undergarden:deepsoil"
@@ -12,8 +8,12 @@
       "item": "undergarden:depthrock_pebble"
     }
   },
+  "pattern": [
+    "DP",
+    "PD"
+  ],
   "result": {
-    "item": "undergarden:coarse_deepsoil",
-    "count": 4
+    "count": 4,
+    "item": "undergarden:coarse_deepsoil"
   }
 }

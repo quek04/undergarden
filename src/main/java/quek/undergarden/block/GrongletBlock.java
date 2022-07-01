@@ -4,6 +4,7 @@ import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -94,7 +95,7 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (random.nextInt(10) == 0) {
             level.playLocalSound(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, UGSoundEvents.GRONGLET_AMBIENT.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F, false);
         }
@@ -115,7 +116,7 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
     @Override
     public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
         if (!level.isClientSide) {
-            Random random = level.random;
+            RandomSource random = level.random;
             level.playSound(null, pos, UGSoundEvents.GRONGLET_BURN.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
         }
     }

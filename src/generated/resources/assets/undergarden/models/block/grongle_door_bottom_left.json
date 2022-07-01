@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/door_bottom",
+  "parent": "minecraft:block/door_bottom_left",
   "textures": {
     "bottom": "undergarden:block/grongle_door_bottom",
     "top": "undergarden:block/grongle_door_top"

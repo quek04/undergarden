@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -40,34 +41,34 @@ public class UnderbeanBushBlock extends UGBushBlock implements BonemealableBlock
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
         return new ItemStack(UGItems.UNDERBEANS.get());
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
-        super.tick(state, worldIn, pos, rand);
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        super.tick(state, level, pos, random);
         int i = state.getValue(AGE);
-        if (i < 3 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(5) == 0)) {
-            worldIn.setBlock(pos, state.setValue(AGE, i + 1), 2);
-            net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
+        if (i < 3 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
+            level.setBlock(pos, state.setValue(AGE, i + 1), 2);
+            net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
         }
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         int i = state.getValue(AGE);
         boolean flag = i == 3;
-        if (!flag && player.getItemInHand(handIn).getItem() == Items.BONE_MEAL) {
+        if (!flag && player.getItemInHand(hand).getItem() == Items.BONE_MEAL) {
             return InteractionResult.PASS;
         } else if (i > 1) {
-            int j = 1 + worldIn.random.nextInt(2);
-            popResource(worldIn, pos, new ItemStack(UGItems.UNDERBEANS.get(), j + (flag ? 1 : 0)));
-            worldIn.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
-            worldIn.setBlock(pos, state.setValue(AGE, 1), 2);
+            int j = 1 + level.random.nextInt(2);
+            popResource(level, pos, new ItemStack(UGItems.UNDERBEANS.get(), j + (flag ? 1 : 0)));
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+            level.setBlock(pos, state.setValue(AGE, 1), 2);
             return InteractionResult.SUCCESS;
         } else {
-            return super.use(state, worldIn, pos, player, handIn, hit);
+            return super.use(state, level, pos, player, hand, result);
         }
     }
 
@@ -77,18 +78,18 @@ public class UnderbeanBushBlock extends UGBushBlock implements BonemealableBlock
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter iBlockReader, BlockPos blockPos, BlockState blockState, boolean isClient) {
-        return blockState.getValue(AGE) < 3;
+    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
+        return state.getValue(AGE) < 3;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level world, Random random, BlockPos blockPos, BlockState blockState) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel worldIn, Random rand, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         int i = Math.min(3, state.getValue(AGE) + 1);
-        worldIn.setBlock(pos, state.setValue(AGE, i), 2);
+        level.setBlock(pos, state.setValue(AGE, i), 2);
     }
 }

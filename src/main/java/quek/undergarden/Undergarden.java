@@ -68,6 +68,7 @@ public class Undergarden {
 				UGEntityTypes.ENTITIES,
 				UGFeatures.FEATURES,
 				UGFluids.FLUIDS,
+				UGFluids.TYPES,
 				UGItems.ITEMS,
 				UGParticleTypes.PARTICLES,
 				UGPlacedFeatures.PLACED_FEATURES,
@@ -88,7 +89,6 @@ public class Undergarden {
 		event.enqueueWork(() -> {
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
-			UGBiomes.toDictionary();
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
@@ -335,20 +335,20 @@ public class Undergarden {
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if(event.includeClient()) {
-			generator.addProvider(new UGBlockStates(generator, helper));
-			generator.addProvider(new UGItemModels(generator, helper));
-			generator.addProvider(new UGLang(generator));
-			generator.addProvider(new UGSoundDefinitions(generator, helper));
+			generator.addProvider(true, new UGBlockStates(generator, helper));
+			generator.addProvider(true, new UGItemModels(generator, helper));
+			generator.addProvider(true, new UGLang(generator));
+			generator.addProvider(true, new UGSoundDefinitions(generator, helper));
 		}
 		if(event.includeServer()) {
-			generator.addProvider(new UGRecipes(generator));
-			generator.addProvider(new UGLootTables(generator));
+			generator.addProvider(true, new UGRecipes(generator));
+			generator.addProvider(true, new UGLootTables(generator));
 			UGBlockTags blockTags = new UGBlockTags(generator, helper);
-			generator.addProvider(blockTags);
-			generator.addProvider(new UGItemTags(generator, blockTags, helper));
-			generator.addProvider(new UGEntityTags(generator, helper));
-			generator.addProvider(new UGAdvancements(generator, helper));
-			generator.addProvider(new UGFluidTags(generator, helper));
+			generator.addProvider(true, blockTags);
+			generator.addProvider(true, new UGItemTags(generator, blockTags, helper));
+			generator.addProvider(true, new UGEntityTags(generator, helper));
+			generator.addProvider(true, new UGAdvancements(generator, helper));
+			generator.addProvider(true, new UGFluidTags(generator, helper));
 		}
 	}
 }

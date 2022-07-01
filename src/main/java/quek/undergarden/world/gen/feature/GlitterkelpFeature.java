@@ -2,6 +2,7 @@ package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,7 +24,7 @@ public class GlitterkelpFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
         WorldGenLevel level = pContext.level();
         BlockPos pos = pContext.origin();
-        Random random = pContext.random();
+        RandomSource random = pContext.random();
         int i = 0;
         int oceanY = 32;
         BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());

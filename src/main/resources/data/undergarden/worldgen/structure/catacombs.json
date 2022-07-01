@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#undergarden:has_structure/catacombs",
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_thin",
+  "start_pool": "undergarden:catacombs/catacombs_entrance",
+  "size": 7,
+  "start_height": {
+    "absolute": 34
+  },
+  "max_distance_from_center": 80,
+  "use_expansion_hack": false
+}

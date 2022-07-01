@@ -2,6 +2,7 @@ package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
@@ -25,7 +26,7 @@ public class Gwibling extends AbstractFish {
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
     }
 
-    public static boolean canGwiblingSpawn(EntityType<? extends AbstractFish> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+    public static boolean canGwiblingSpawn(EntityType<? extends AbstractFish> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         return level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
     }
 

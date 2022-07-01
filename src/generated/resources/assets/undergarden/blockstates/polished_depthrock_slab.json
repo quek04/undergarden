@@ -1,13 +1,13 @@
 {
   "variants": {
-    "type=top": {
-      "model": "undergarden:block/polished_depthrock_slab_top"
-    },
     "type=bottom": {
       "model": "undergarden:block/polished_depthrock_slab"
     },
     "type=double": {
       "model": "undergarden:block/polished_depthrock"
+    },
+    "type=top": {
+      "model": "undergarden:block/polished_depthrock_slab_top"
     }
   }
 }

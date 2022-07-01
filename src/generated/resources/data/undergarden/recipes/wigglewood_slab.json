@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "MMM"
-  ],
   "key": {
     "M": {
       "item": "undergarden:wigglewood_planks"
     }
   },
+  "pattern": [
+    "MMM"
+  ],
   "result": {
-    "item": "undergarden:wigglewood_slab",
-    "count": 6
+    "count": 6,
+    "item": "undergarden:wigglewood_slab"
   }
 }

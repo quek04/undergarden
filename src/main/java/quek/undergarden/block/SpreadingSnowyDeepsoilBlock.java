@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
@@ -43,7 +44,7 @@ public class SpreadingSnowyDeepsoilBlock extends SpreadingSnowyDirtBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource random) {
         if (!canBeGrass(state, worldIn, pos)) {
             if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             worldIn.setBlockAndUpdate(pos, UGBlocks.DEEPSOIL.get().defaultBlockState());

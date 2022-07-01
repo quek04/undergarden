@@ -179,18 +179,17 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
     }
 
     @Nullable
+    @Override
     public Entity getControllingPassenger() {
-        return this.getPassengers().isEmpty() ? null : this.getPassengers().get(0);
+        Entity entity = this.getFirstPassenger();
+        return entity != null && this.canBeControlledBy(entity) ? entity : null;
     }
 
-    @Override
-    public boolean canBeControlledByRider() {
-        Entity entity = this.getControllingPassenger();
-        if (!(entity instanceof Player player)) {
+    private boolean canBeControlledBy(Entity entity) {
+        if (this.isSaddled() && entity instanceof Player player) {
+            return player.getMainHandItem().is(UGItems.UNDERBEAN_STICK.get()) || player.getOffhandItem().is(UGItems.UNDERBEAN_STICK.get());
+        } else {
             return false;
-        }
-        else {
-            return player.getMainHandItem().getItem() == UGItems.UNDERBEAN_STICK.get() || player.getOffhandItem().getItem() == UGItems.UNDERBEAN_STICK.get();
         }
     }
 

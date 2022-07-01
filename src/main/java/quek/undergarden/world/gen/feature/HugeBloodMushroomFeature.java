@@ -1,6 +1,7 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
@@ -19,7 +20,7 @@ public class HugeBloodMushroomFeature extends HugeRedMushroomFeature {
     }
 
     @Override
-    protected void makeCap(LevelAccessor level, Random random, BlockPos pos, int shroomHeight, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
+    protected void makeCap(LevelAccessor level, RandomSource random, BlockPos pos, int shroomHeight, BlockPos.MutableBlockPos posMutable, HugeMushroomFeatureConfiguration config) {
         for(int i = shroomHeight - 3; i <= shroomHeight; ++i) {
             int j = i < shroomHeight ? config.foliageRadius : config.foliageRadius - 1;
             int k = config.foliageRadius - 2;

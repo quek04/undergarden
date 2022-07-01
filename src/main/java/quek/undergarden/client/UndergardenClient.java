@@ -101,7 +101,8 @@ public class UndergardenClient {
         event.registerBlockEntityRenderer(UGBlockEntities.UNDERGARDEN_SIGN.get(), SignRenderer::new);
         event.registerBlockEntityRenderer(UGBlockEntities.GRONGLET.get(), GrongletRender::new);
         //
-        event.registerEntityRenderer(UGEntityTypes.BOAT.get(), UGBoatRenderer::new);
+        event.registerEntityRenderer(UGEntityTypes.BOAT.get(), (context) -> new UGBoatRenderer(context, false));
+        event.registerEntityRenderer(UGEntityTypes.CHEST_BOAT.get(), (context) -> new UGBoatRenderer(context, true));
         event.registerEntityRenderer(UGEntityTypes.BOOMGOURD.get(), BoomgourdRender::new);
         //
         event.registerEntityRenderer(UGEntityTypes.DEPTHROCK_PEBBLE.get(), ThrownItemRenderer::new);
@@ -137,7 +138,8 @@ public class UndergardenClient {
         event.registerLayerDefinition(UGModelLayers.GRONGLET, GrongletRender::createBodyLayer);
         //
         for(UGBoat.Type boatType : UGBoat.Type.values()) {
-            event.registerLayerDefinition(UGBoatRenderer.boatLayer(boatType), BoatModel::createBodyModel);
+            event.registerLayerDefinition(UGBoatRenderer.createBoatModelName(boatType), () -> BoatModel.createBodyModel(false));
+            event.registerLayerDefinition(UGBoatRenderer.createChestBoatModelName(boatType), () -> BoatModel.createBodyModel(true));
         }
         //
         event.registerLayerDefinition(UGModelLayers.MINION, MinionModel::createBodyLayer);

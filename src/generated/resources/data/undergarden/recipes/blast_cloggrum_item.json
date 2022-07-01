@@ -1,9 +1,9 @@
 {
   "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.1,
   "ingredient": {
     "tag": "undergarden:cloggrum_items"
   },
-  "result": "undergarden:cloggrum_nugget",
-  "experience": 0.1,
-  "cookingtime": 100
+  "result": "undergarden:cloggrum_nugget"
 }

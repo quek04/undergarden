@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BB"
-  ],
   "key": {
     "B": {
       "item": "undergarden:grongle_planks"
     }
   },
+  "pattern": [
+    "BB"
+  ],
   "result": {
     "item": "undergarden:grongle_pressure_plate"
   }

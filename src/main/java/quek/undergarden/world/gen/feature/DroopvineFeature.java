@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
@@ -25,10 +26,10 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos pos = pContext.origin();
-        Random random = pContext.random();
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos pos = context.origin();
+        RandomSource random = context.random();
         if(!level.isEmptyBlock(pos)) {
             return false;
         }
@@ -44,38 +45,38 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeRoofDroopvine(LevelAccessor world, Random rand, BlockPos pos) {
+    private void placeRoofDroopvine(LevelAccessor world, RandomSource random, BlockPos pos) {
         BlockPos.MutableBlockPos posMutable = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 100; ++i) {
-            posMutable.setWithOffset(pos, rand.nextInt(8) - rand.nextInt(8), rand.nextInt(2) - rand.nextInt(7), rand.nextInt(8) - rand.nextInt(8));
+            posMutable.setWithOffset(pos, random.nextInt(8) - random.nextInt(8), random.nextInt(2) - random.nextInt(7), random.nextInt(8) - random.nextInt(8));
             if (world.isEmptyBlock(posMutable)) {
                 BlockState blockstate = world.getBlockState(posMutable.above());
                 if (blockstate.is(UGBlocks.DEPTHROCK.get()) || blockstate.is(UGBlocks.SHIVERSTONE.get())) {
-                    int length = Mth.nextInt(rand, 1, 8);
-                    if (rand.nextInt(6) == 0) {
+                    int length = Mth.nextInt(random, 1, 8);
+                    if (random.nextInt(6) == 0) {
                         length *= 2;
                     }
 
-                    if (rand.nextInt(5) == 0) {
+                    if (random.nextInt(5) == 0) {
                         length = 1;
                     }
 
-                    placeDroopvineColumn(world, rand, posMutable, length, 17, 25);
+                    placeDroopvineColumn(world, random, posMutable, length, 17, 25);
                 }
             }
         }
     }
 
-    public static void placeDroopvineColumn(LevelAccessor world, Random rand, BlockPos.MutableBlockPos posMutable, int length, int min, int max) {
+    public static void placeDroopvineColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos posMutable, int length, int min, int max) {
         for(int i = 0; i <= length; ++i) {
-            if (world.isEmptyBlock(posMutable)) {
-                if (i == length || !world.isEmptyBlock(posMutable.below())) {
-                    world.setBlock(posMutable, UGBlocks.DROOPVINE.get().defaultBlockState().setValue(Droopvine.GLOWY, world.getRandom().nextBoolean()).setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(rand, min, max)), 2);
+            if (level.isEmptyBlock(posMutable)) {
+                if (i == length || !level.isEmptyBlock(posMutable.below())) {
+                    level.setBlock(posMutable, UGBlocks.DROOPVINE.get().defaultBlockState().setValue(Droopvine.GLOWY, level.getRandom().nextBoolean()).setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, min, max)), 2);
                     break;
                 }
 
-                world.setBlock(posMutable, UGBlocks.DROOPVINE_PLANT.get().defaultBlockState().setValue(Droopvine.GLOWY, world.getRandom().nextBoolean()), 2);
+                level.setBlock(posMutable, UGBlocks.DROOPVINE_PLANT.get().defaultBlockState().setValue(Droopvine.GLOWY, level.getRandom().nextBoolean()), 2);
             }
 
             posMutable.move(Direction.DOWN);

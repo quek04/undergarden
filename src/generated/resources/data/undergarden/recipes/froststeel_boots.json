@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "M M",
-    "M M"
-  ],
   "key": {
     "M": {
       "item": "undergarden:froststeel_ingot"
     }
   },
+  "pattern": [
+    "M M",
+    "M M"
+  ],
   "result": {
     "item": "undergarden:froststeel_boots"
   }

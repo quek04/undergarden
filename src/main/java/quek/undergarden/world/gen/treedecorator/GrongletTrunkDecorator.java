@@ -3,6 +3,7 @@ package quek.undergarden.world.gen.treedecorator;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -27,20 +28,22 @@ public class GrongletTrunkDecorator extends TreeDecorator {
     }
 
     @Override
-    public void place(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, Random random, List<BlockPos> logPositions, List<BlockPos> leafPositions) {
-        logPositions.forEach((pos) -> {
+    public void place(TreeDecorator.Context context) {
+        RandomSource random = context.random();
+
+        context.logs().forEach((pos) -> {
             for (Direction direction : Direction.Plane.HORIZONTAL) {
                 BlockPos newPos = pos.offset(direction.getStepX(), 0, direction.getStepZ());
                 if (random.nextInt(50) == 0) {
-                    if (Feature.isAir(level, newPos)) {
-                        placeGronglet(blockSetter, newPos, direction);
+                    if (context.isAir(newPos)) {
+                        placeGronglet(context, newPos, direction);
                     }
                 }
             }
         });
     }
 
-    private void placeGronglet(BiConsumer<BlockPos, BlockState> blockSetter, BlockPos pos, Direction direction) {
-        blockSetter.accept(pos, UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction));
+    private void placeGronglet(TreeDecorator.Context context, BlockPos pos, Direction direction) {
+        context.setBlock(pos, UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction));
     }
 }

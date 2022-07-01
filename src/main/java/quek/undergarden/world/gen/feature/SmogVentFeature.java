@@ -3,6 +3,7 @@ package quek.undergarden.world.gen.feature;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,10 +21,10 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos pos = pContext.origin();
-        Random random = pContext.random();
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos pos = context.origin();
+        RandomSource random = context.random();
         while (level.isEmptyBlock(pos) && pos.getY() > 2) {
             pos = pos.below();
         }

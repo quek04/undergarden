@@ -1,6 +1,7 @@
 package quek.undergarden.entity.rotspawn;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.goal.*;
@@ -35,7 +36,7 @@ public class RotspawnMonster extends Monster {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, 10, true, false, (target) -> !(target instanceof Mog)));
     }
 
-    public static boolean canRotspawnSpawn(EntityType<? extends Monster> type, ServerLevelAccessor worldIn, MobSpawnType reason, BlockPos pos, Random randomIn) {
-        return randomIn.nextInt(10) == 0 && checkMonsterSpawnRules(type, worldIn, reason, pos, randomIn);
+    public static boolean canRotspawnSpawn(EntityType<? extends Monster> type, ServerLevelAccessor level, MobSpawnType reason, BlockPos pos, RandomSource random) {
+        return random.nextInt(10) == 0 && checkMonsterSpawnRules(type, level, reason, pos, random);
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -46,7 +47,7 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
         int age = state.getValue(AGE);
         if (random.nextInt(10) == 0 && age != 1 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, true)) {
@@ -56,7 +57,7 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         int age = state.getValue(AGE);
         boolean maxAge = age == 1;
         if (!maxAge && player.getItemInHand(hand).getItem() == Items.BONE_MEAL) {
@@ -69,7 +70,7 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
             return InteractionResult.SUCCESS;
         }
         else {
-            return super.use(state, level, pos, player, hand, hit);
+            return super.use(state, level, pos, player, hand, result);
         }
     }
 
@@ -89,7 +90,7 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         double x = (double) pos.getX() + 0.5D;
         double y = (double) pos.getY() + 0.8D;
         double z = (double) pos.getZ() + 0.5D;
@@ -109,12 +110,12 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         level.setBlock(pos, state.setValue(AGE, 1), 2);
     }
 }

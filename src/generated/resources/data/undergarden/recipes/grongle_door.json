@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "PP",
-    "PP",
-    "PP"
-  ],
   "key": {
     "P": {
       "item": "undergarden:grongle_planks"
     }
   },
+  "pattern": [
+    "PP",
+    "PP",
+    "PP"
+  ],
   "result": {
-    "item": "undergarden:grongle_door",
-    "count": 3
+    "count": 3,
+    "item": "undergarden:grongle_door"
   }
 }

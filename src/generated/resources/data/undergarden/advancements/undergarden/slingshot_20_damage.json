@@ -1,35 +1,35 @@
 {
   "parent": "undergarden:undergarden/shoot_slingshot",
-  "display": {
-    "icon": {
-      "item": "undergarden:depthrock_pebble"
-    },
-    "title": {
-      "translate": "advancement.undergarden.slingshot_20_damage.title"
-    },
-    "description": {
-      "translate": "advancement.undergarden.slingshot_20_damage.desc"
-    },
-    "frame": "challenge",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
   "criteria": {
     "20_damage": {
-      "trigger": "minecraft:player_hurt_entity",
       "conditions": {
         "damage": {
-          "dealt": {
-            "min": 20.0
-          },
           "type": {
             "direct_entity": {
               "type": "undergarden:depthrock_pebble"
             }
+          },
+          "dealt": {
+            "min": 20.0
           }
         }
-      }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.undergarden.slingshot_20_damage.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:depthrock_pebble"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.undergarden.slingshot_20_damage.title"
     }
   },
   "requirements": [

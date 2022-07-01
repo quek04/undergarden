@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.Difficulty;
@@ -84,7 +85,7 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
     }
 
-    public static boolean canStonebornSpawn(EntityType<? extends Monster> entity, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, Random random) {
+    public static boolean canStonebornSpawn(EntityType<? extends Monster> entity, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, RandomSource random) {
         return level.getDifficulty() != Difficulty.PEACEFUL && random.nextInt(10) == 0 && checkMobSpawnRules(entity, level, mobSpawnType, pos, random);
     }
 

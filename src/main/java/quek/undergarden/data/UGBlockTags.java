@@ -30,6 +30,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES).add(UGBlocks.DEPTHROCK.get());
         tag(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES).add(UGBlocks.SHIVERSTONE.get());
         tag(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES).add(UGBlocks.TREMBLECRUST.get(), UGBlocks.LOOSE_TREMBLECRUST.get());
+        tag(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES).addTags(UGTags.Blocks.BASE_STONE_UNDERGARDEN, BlockTags.DIRT, UGTags.Blocks.ORES_CLOGGRUM, UGTags.Blocks.ORES_FROSTSTEEL, UGTags.Blocks.ORES_UTHERIUM, UGTags.Blocks.ORES_REGALIUM).add(UGBlocks.SEDIMENT.get());
         tag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.INK_MUSHROOM.get(), UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.VEIL_MUSHROOM.get(), UGBlocks.BLOOD_MUSHROOM.get());
         tag(UGTags.Blocks.PORTAL_FRAME_BLOCKS).add(Blocks.STONE_BRICKS, Blocks.DEEPSLATE_BRICKS, UGBlocks.DEPTHROCK_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get()).addTag(BlockTags.STONE_BRICKS);
         tag(UGTags.Blocks.SMOGSTEM_LOGS).add(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
@@ -94,7 +95,7 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.FENCE_GATES).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get());
         tag(BlockTags.MUSHROOM_GROW_BLOCK).add(UGBlocks.DEEPTURF_BLOCK.get());
         tag(BlockTags.FLOWER_POTS).add(UGBlocks.POTTED_SMOGSTEM_SAPLING.get(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING.get(), UGBlocks.POTTED_SHIMMERWEED.get(), UGBlocks.POTTED_INDIGO_MUSHROOM.get(), UGBlocks.POTTED_VEIL_MUSHROOM.get(), UGBlocks.POTTED_INK_MUSHROOM.get(), UGBlocks.POTTED_BLOOD_MUSHROOM.get(), UGBlocks.POTTED_GRONGLE_SAPLING.get());
-        tag(BlockTags.CARPETS).add(UGBlocks.MOGMOSS_RUG.get());
+        tag(BlockTags.WOOL_CARPETS).add(UGBlocks.MOGMOSS_RUG.get());
         tag(BlockTags.COAL_ORES).add(UGBlocks.DEPTHROCK_COAL_ORE.get(), UGBlocks.SHIVERSTONE_COAL_ORE.get());
         tag(BlockTags.IRON_ORES).add(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get());
         tag(BlockTags.GOLD_ORES).add(UGBlocks.DEPTHROCK_GOLD_ORE.get());

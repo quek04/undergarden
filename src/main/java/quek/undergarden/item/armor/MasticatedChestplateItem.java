@@ -20,7 +20,7 @@ public class MasticatedChestplateItem extends ArmorItem {
 
     @Override
     public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> list) {
-        if(allowdedIn(group)) {
+        if(this.allowedIn(group)) {
             ItemStack stack = new ItemStack(this);
             stack.enchant(Enchantments.THORNS, 5);
             list.add(stack);
