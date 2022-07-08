@@ -13,7 +13,7 @@ description='''Deep underground, a forgotten land awaits.'''
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
-    versionRange="[41.0.45,)"
+    versionRange="[41.0.64,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.undergarden]]
