@@ -24,13 +24,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.IBlockRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientBlockExtensions;
 import quek.undergarden.block.entity.GrongletBlockEntity;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 import java.util.function.Consumer;
 
 public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
@@ -50,8 +49,8 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    public void initializeClient(Consumer<IBlockRenderProperties> consumer) {
-        consumer.accept(new IBlockRenderProperties() {
+    public void initializeClient(Consumer<IClientBlockExtensions> consumer) {
+        consumer.accept(new IClientBlockExtensions() {
             @Override
             public boolean addDestroyEffects(BlockState state, Level Level, BlockPos pos, ParticleEngine manager) {
                 return true;

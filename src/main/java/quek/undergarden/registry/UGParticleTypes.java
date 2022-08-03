@@ -1,12 +1,10 @@
 package quek.undergarden.registry;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.core.particles.ParticleGroup;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -30,14 +28,12 @@ public class UGParticleTypes {
     public static final ParticleGroup SHIMMER_GROUP = new ParticleGroup(1000);
 
     @SubscribeEvent
-    public static void registerParticleFactories(ParticleFactoryRegisterEvent event) {
-        ParticleEngine engine = Minecraft.getInstance().particleEngine;
-
-        engine.register(SHARD.get(), ShardParticle.Provider::new);
-        engine.register(GRONGLE_SPORE.get(), GrongleSporeParticle.Provider::new);
-        engine.register(UNDERGARDEN_PORTAL.get(), UndergardenPortalParticle.Provider::new);
-        engine.register(GLOOMPER_FART.get(), SmokeParticle.Provider::new);
-        engine.register(SHIMMER.get(), ShimmerParticle.Provider::new);
-        engine.register(SMOG.get(), SmogParticle.Provider::new);
+    public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
+        event.register(SHARD.get(), ShardParticle.Provider::new);
+        event.register(GRONGLE_SPORE.get(), GrongleSporeParticle.Provider::new);
+        event.register(UNDERGARDEN_PORTAL.get(), UndergardenPortalParticle.Provider::new);
+        event.register(GLOOMPER_FART.get(), SmokeParticle.Provider::new);
+        event.register(SHIMMER.get(), ShimmerParticle.Provider::new);
+        event.register(SMOG.get(), SmogParticle.Provider::new);
     }
 }

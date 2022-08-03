@@ -17,7 +17,7 @@ public class FeatherweightEffect extends MobEffect {
 
     @SubscribeEvent
     public static void applyFeatherweight(LivingKnockBackEvent event) {
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity entity = event.getEntity();
 
         if(entity.hasEffect(UGEffects.FEATHERWEIGHT.get())) {
             int amplifier = (entity.getEffect(UGEffects.FEATHERWEIGHT.get()).getAmplifier() + 2);

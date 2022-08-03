@@ -27,11 +27,11 @@ public class UGItems {
     public static final Rarity FORGOTTEN = Rarity.create("forgotten", ChatFormatting.GREEN);
 
     //discs
-    public static final RegistryObject<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new RecordItem(0, UGSoundEvents.MAMMOTH_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
-    public static final RegistryObject<Item> LIMAX_MAXIMUS_DISC = ITEMS.register("music_disc_limax_maximus", () -> new RecordItem(1, UGSoundEvents.LIMAX_MAXIMUS_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
-    public static final RegistryObject<Item> RELICT_DISC = ITEMS.register("music_disc_relict", () -> new RecordItem(2, UGSoundEvents.RELICT_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
-    public static final RegistryObject<Item> GLOOMPER_ANTHEM_DISC = ITEMS.register("music_disc_gloomper_anthem", () -> new RecordItem(3, UGSoundEvents.GLOOMPER_ANTHEM_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1)));
-    public static final RegistryObject<Item> GLOOMPER_SECRET_DISC = ITEMS.register("music_disc_gloomper_secret", () -> new RecordItem(15, UGSoundEvents.GLOOMPER_SECRET_DISC, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
+    public static final RegistryObject<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new RecordItem(0, UGSoundEvents.MAMMOTH_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1), 3860));
+    public static final RegistryObject<Item> LIMAX_MAXIMUS_DISC = ITEMS.register("music_disc_limax_maximus", () -> new RecordItem(1, UGSoundEvents.LIMAX_MAXIMUS_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1), 3220));
+    public static final RegistryObject<Item> RELICT_DISC = ITEMS.register("music_disc_relict", () -> new RecordItem(2, UGSoundEvents.RELICT_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1), 3740));
+    public static final RegistryObject<Item> GLOOMPER_ANTHEM_DISC = ITEMS.register("music_disc_gloomper_anthem", () -> new RecordItem(3, UGSoundEvents.GLOOMPER_ANTHEM_DISC, new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.RARE).stacksTo(1), 4080));
+    public static final RegistryObject<Item> GLOOMPER_SECRET_DISC = ITEMS.register("music_disc_gloomper_secret", () -> new RecordItem(15, UGSoundEvents.GLOOMPER_SECRET_DISC, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1), 3180));
 
     //crafting materials
     public static final RegistryObject<Item> RAW_CLOGGRUM = ITEMS.register("raw_cloggrum", UGItem::new);

@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -287,10 +287,10 @@ public class UGBlocks {
             else if(Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
                 return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)) {
                     @Override
-                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-                        consumer.accept(new IItemRenderProperties() {
+                    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                        consumer.accept(new IClientItemExtensions() {
                             @Override
-                            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                                 return new UndergardenBEWLR();
                             }
                         });
@@ -300,10 +300,10 @@ public class UGBlocks {
             else if(Objects.requireNonNull(block.get()) == GRONGLET.get()) {
                 return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
                     @Override
-                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-                        consumer.accept(new IItemRenderProperties() {
+                    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                        consumer.accept(new IClientItemExtensions() {
                             @Override
-                            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                                 return new UndergardenBEWLR();
                             }
                         });
@@ -313,8 +313,8 @@ public class UGBlocks {
             else if(Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
                 return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
                     @Override
-                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-                        consumer.accept(new IItemRenderProperties() {
+                    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                        consumer.accept(new IClientItemExtensions() {
                             @Override
                             public void renderHelmetOverlay(ItemStack stack, Player player, int width, int height, float partialTicks) {
                                 ResourceLocation overlay = new ResourceLocation(Undergarden.MODID, "textures/gloomgourd_overlay.png");
@@ -324,7 +324,7 @@ public class UGBlocks {
                                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
                                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                                 RenderSystem.setShaderTexture(0, overlay);
-                                //Minecraft.getInstance().getTextureManager().bindForSetup(overlay);
+                                Minecraft.getInstance().getTextureManager().bindForSetup(overlay);
                                 Tesselator tessellator = Tesselator.getInstance();
                                 BufferBuilder bufferbuilder = tessellator.getBuilder();
                                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);

@@ -3,7 +3,7 @@ package quek.undergarden.registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.client.IFluidTypeRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,8 +20,8 @@ public class UGFluids {
 
     public static final RegistryObject<FluidType> VIRULENT_MIX_TYPE = TYPES.register("virulent_mix", () -> new FluidType(FluidType.Properties.create().lightLevel(10).density(1500).temperature(600).viscosity(3000).motionScale(0.007D).canExtinguish(true)) {
                 @Override
-                public void initializeClient(Consumer<IFluidTypeRenderProperties> consumer) {
-                    consumer.accept(new IFluidTypeRenderProperties() {
+                public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
+                    consumer.accept(new IClientFluidTypeExtensions() {
                         @Override
                         public ResourceLocation getStillTexture() {
                             return new ResourceLocation(Undergarden.MODID, "fluid/virulent_mix_still");

@@ -18,7 +18,7 @@ public class BrittlenessEffect extends MobEffect {
 
     @SubscribeEvent
     public static void applyBrittleness(LivingDamageEvent event) {
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity entity = event.getEntity();
         DamageSource source = event.getSource();
         float damage = event.getAmount();
 

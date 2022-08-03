@@ -25,13 +25,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.UGTeleporter;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class UndergardenPortalBlock extends Block {
 

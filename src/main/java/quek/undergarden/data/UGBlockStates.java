@@ -127,9 +127,9 @@ public class UGBlockStates extends UGBlockstateProvider {
         fence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS);
         fence(UGBlocks.GRONGLE_FENCE, UGBlocks.GRONGLE_PLANKS);
 
-        fenceGateBlock(UGBlocks.SMOGSTEM_FENCE_GATE.get(), modLoc("block/smogstem_planks"));
-        fenceGateBlock(UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), modLoc("block/wigglewood_planks"));
-        fenceGateBlock(UGBlocks.GRONGLE_FENCE_GATE.get(), modLoc("block/grongle_planks"));
+        fenceGate(UGBlocks.SMOGSTEM_FENCE_GATE, UGBlocks.SMOGSTEM_PLANKS);
+        fenceGate(UGBlocks.WIGGLEWOOD_FENCE_GATE, UGBlocks.WIGGLEWOOD_PLANKS);
+        fenceGate(UGBlocks.GRONGLE_FENCE_GATE, UGBlocks.GRONGLE_PLANKS);
 
         door(UGBlocks.SMOGSTEM_DOOR, "smogstem");
         door(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood");
@@ -139,22 +139,22 @@ public class UGBlockStates extends UGBlockstateProvider {
         trapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR, "wigglewood");
         trapdoor(UGBlocks.GRONGLE_TRAPDOOR, "grongle");
 
-        button(UGBlocks.DEPTHROCK_BUTTON);
-        button(UGBlocks.SHIVERSTONE_BUTTON);
-        button(UGBlocks.TREMBLECRUST_BUTTON);
-        button(UGBlocks.SMOGSTEM_BUTTON);
-        button(UGBlocks.WIGGLEWOOD_BUTTON);
-        button(UGBlocks.GRONGLE_BUTTON);
+        button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
+        button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
+        button(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST);
+        button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
+        button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
+        button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
 
-        pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE);
-        pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE);
-        pressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
-        pressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE);
-        pressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);
-        pressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE);
+        pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK);
+        pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE);
+        pressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, UGBlocks.TREMBLECRUST);
+        pressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS);
+        pressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS);
+        pressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS);
 
-        sign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_WALL_SIGN);
-        sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN);
-        sign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_WALL_SIGN);
+        sign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_WALL_SIGN, "smogstem");
+        sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN, "wigglewood");
+        sign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_WALL_SIGN, "grongle");
     }
 }

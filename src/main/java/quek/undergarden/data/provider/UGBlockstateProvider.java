@@ -106,53 +106,19 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         fenceColumn(block, name(fullBlock));
     }
 
-    private void fenceColumn(Supplier<? extends FenceBlock> block, String side) {
+    private void fenceColumn(Supplier<? extends FenceBlock> block, String name) {
         String baseName = name(block);
         fourWayBlock(block.get(),
-                models().fencePost(baseName + "_post", texture(side)),
-                models().fenceSide(baseName + "_side", texture(side)));
+                models().fencePost(baseName + "_post", texture(name)),
+                models().fenceSide(baseName + "_side", texture(name)));
     }
 
-    //https://github.com/MinecraftForge/MinecraftForge/pull/8687
+    public void fenceGate(Supplier<? extends FenceGateBlock> block, Supplier<? extends Block> fullBlock) {
+        fenceGateBlock(block.get(), texture(name(fullBlock)));
+    }
+
     public void door(Supplier<? extends DoorBlock> block, String name) {
-        doorBlockInternal(block.get(), name(block), texture(name + "_door_bottom"), texture(name + "_door_top"));
-    }
-
-    private void doorBlockInternal(DoorBlock block, String baseName, ResourceLocation bottom, ResourceLocation top) {
-        ModelFile bottomLeft = door(baseName + "_bottom_left", "door_bottom_left", bottom, top);
-        ModelFile bottomLeftOpen = door(baseName + "_bottom_left_open", "door_bottom_left_open", bottom, top);
-        ModelFile bottomRight = door(baseName + "_bottom_right", "door_bottom_right", bottom, top);
-        ModelFile bottomRightOpen = door(baseName + "_bottom_right_open", "door_bottom_right_open", bottom, top);
-        ModelFile topLeft = door(baseName + "_top_left", "door_top_left", bottom, top);
-        ModelFile topLeftOpen = door(baseName + "_top_left_open", "door_top_left_open", bottom, top);
-        ModelFile topRight = door(baseName + "_top_right", "door_top_right", bottom, top);
-        ModelFile topRightOpen = door(baseName + "_top_right_open", "door_top_right_open", bottom, top);
-        doorBlock(block, bottomLeft, bottomLeftOpen, bottomRight, bottomRightOpen, topLeft, topLeftOpen, topRight, topRightOpen);
-    }
-
-    private ModelBuilder<?> door(String name, String model, ResourceLocation bottom, ResourceLocation top) {
-        return models().withExistingParent(name, "block/" + model)
-                .texture("bottom", bottom)
-                .texture("top", top)
-                .renderType("cutout");
-    }
-
-    private void doorBlock(DoorBlock block, ModelFile bottomLeft, ModelFile bottomLeftOpen, ModelFile bottomRight, ModelFile bottomRightOpen, ModelFile topLeft, ModelFile topLeftOpen, ModelFile topRight, ModelFile topRightOpen) {
-        getVariantBuilder(block).forAllStatesExcept(state -> {
-            int yRot = ((int) state.getValue(DoorBlock.FACING).toYRot()) + 90;
-            boolean right = state.getValue(DoorBlock.HINGE) == DoorHingeSide.RIGHT;
-            boolean open = state.getValue(DoorBlock.OPEN);
-            if (open) {
-                yRot += 90;
-            }
-            if (right && open) {
-                yRot += 180;
-            }
-            yRot %= 360;
-            return ConfiguredModel.builder().modelFile(state.getValue(DoorBlock.HALF) == DoubleBlockHalf.LOWER ? (right ? (open ? bottomRightOpen : bottomRight) : (open ? bottomLeftOpen : bottomLeft)) : (right ? (open ? topRightOpen : topRight) : (open ? topLeftOpen : topLeft)))
-                    .rotationY(yRot)
-                    .build();
-        }, DoorBlock.POWERED);
+        doorBlock(block.get(), name(block), texture(name + "_door_bottom"), texture(name + "_door_top"));
     }
 
     public void trapdoor(Supplier<? extends TrapDoorBlock> block, String name) {
@@ -163,15 +129,15 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         simpleBlock(block.get(), models().carpet(name(block), texture(name(block))));
     }
 
-    public void button(Supplier<? extends ButtonBlock> block) {
-        buttonBlock(block.get(), texture(name(block).replace("_button", "")));
+    public void button(Supplier<? extends ButtonBlock> block, Supplier<? extends Block> fullBlock) {
+        buttonBlock(block.get(), texture(name(fullBlock)));
     }
 
-    public void pressurePlate(Supplier<? extends PressurePlateBlock> block) {
-        pressurePlateBlock(block.get(), texture(name(block).replace("_pressure_plate", "")));
+    public void pressurePlate(Supplier<? extends PressurePlateBlock> block, Supplier<? extends Block> fullBlock) {
+        pressurePlateBlock(block.get(), texture(name(fullBlock)));
     }
 
-    public void sign(Supplier<? extends StandingSignBlock> standingBlock, Supplier<? extends WallSignBlock> wallBlock) {
-        signBlock(standingBlock.get(), wallBlock.get(), texture(name(standingBlock).replace("_sign", "_planks")));
+    public void sign(Supplier<? extends StandingSignBlock> standingBlock, Supplier<? extends WallSignBlock> wallBlock, String name) {
+        signBlock(standingBlock.get(), wallBlock.get(), modLoc("entity/signs/" + name));
     }
 }

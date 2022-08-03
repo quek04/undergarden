@@ -40,7 +40,7 @@ import quek.undergarden.entity.stoneborn.Stoneborn;
 @Mod.EventBusSubscriber(modid = "undergarden", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGEntityTypes {
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Undergarden.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Undergarden.MODID);
 
     //misc
     public static final RegistryObject<EntityType<UGBoat>> BOAT = ENTITIES.register("boat", () -> EntityType.Builder.<UGBoat>of(UGBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("boat"));
