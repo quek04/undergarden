@@ -1,6 +1,6 @@
 {
     "parent":"forge:item/default",
-    "loader":"forge:separate-perspective",
+    "loader":"forge:separate_transforms",
     "base": {
         "parent": "undergarden:item/cloggrum_battleaxe_in_hand"
     },
