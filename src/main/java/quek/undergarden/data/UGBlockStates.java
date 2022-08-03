@@ -138,5 +138,23 @@ public class UGBlockStates extends UGBlockstateProvider {
         trapdoor(UGBlocks.SMOGSTEM_TRAPDOOR, "smogstem");
         trapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR, "wigglewood");
         trapdoor(UGBlocks.GRONGLE_TRAPDOOR, "grongle");
+
+        button(UGBlocks.DEPTHROCK_BUTTON);
+        button(UGBlocks.SHIVERSTONE_BUTTON);
+        button(UGBlocks.TREMBLECRUST_BUTTON);
+        button(UGBlocks.SMOGSTEM_BUTTON);
+        button(UGBlocks.WIGGLEWOOD_BUTTON);
+        button(UGBlocks.GRONGLE_BUTTON);
+
+        pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE);
+        pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE);
+        pressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
+        pressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE);
+        pressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);
+        pressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE);
+
+        sign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_WALL_SIGN);
+        sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN);
+        sign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_WALL_SIGN);
     }
 }

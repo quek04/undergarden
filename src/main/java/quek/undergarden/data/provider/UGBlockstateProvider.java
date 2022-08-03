@@ -6,20 +6,34 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelBuilder;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
 
 public abstract class UGBlockstateProvider extends BlockStateProvider {
 
-    public UGBlockstateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Undergarden.MODID, fileHelper);
+    private final UGBlockModelProvider blockModels;
+
+    public UGBlockstateProvider(DataGenerator generator, ExistingFileHelper helper) {
+        super(generator, Undergarden.MODID, helper);
+        this.blockModels = new UGBlockModelProvider(generator, helper) {
+            @Override
+            protected void registerModels() {}
+
+            @Override
+            public @NotNull String getName() {
+                return "Undergarden Block Models";
+            }
+        };
+    }
+
+    @Override
+    public BlockModelProvider models() {
+        return blockModels;
     }
 
     protected ResourceLocation texture(String name) {
@@ -34,6 +48,21 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         simpleBlock(block.get());
     }
 
+    public void grass(Supplier<? extends Block> block) {
+        ModelFile model = models().cubeBottomTop(
+                name(block),
+                texture(name(block) + "_side"),
+                texture("deepsoil"),
+                texture(name(block) + "_top"));
+        getVariantBuilder(block.get()).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(model)
+                        .build()
+        ).forAllStates(state ->
+                ConfiguredModel.allYRotations(model, 0, false)
+        );
+    }
+
     public void log(Supplier<? extends RotatedPillarBlock> block, String name) {
         axisBlock(block.get(), texture(name));
     }
@@ -46,8 +75,8 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     public void torchBlock(Supplier<? extends Block> block, Supplier<? extends Block> wall) {
-        ModelFile torch = models().torch(name(block), texture(name(block)));
-        ModelFile torchwall = models().torchWall(name(wall), texture(name(block)));
+        ModelFile torch = models().torch(name(block), texture(name(block))).renderType("cutout");
+        ModelFile torchwall = models().torchWall(name(wall), texture(name(block))).renderType("cutout");
         simpleBlock(block.get(), torch);
         getVariantBuilder(wall.get()).forAllStates(state ->
                 ConfiguredModel.builder()
@@ -57,7 +86,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     public void crossBlock(Supplier<? extends Block> block) {
-        crossBlock(block, models().cross(name(block), texture(name(block))));
+        crossBlock(block, models().cross(name(block), texture(name(block))).renderType("cutout"));
     }
 
     public void stairs(Supplier<? extends StairBlock> block, Supplier<? extends Block> fullBlock) {
@@ -104,7 +133,8 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     private ModelBuilder<?> door(String name, String model, ResourceLocation bottom, ResourceLocation top) {
         return models().withExistingParent(name, "block/" + model)
                 .texture("bottom", bottom)
-                .texture("top", top);
+                .texture("top", top)
+                .renderType("cutout");
     }
 
     private void doorBlock(DoorBlock block, ModelFile bottomLeft, ModelFile bottomLeftOpen, ModelFile bottomRight, ModelFile bottomRightOpen, ModelFile topLeft, ModelFile topLeftOpen, ModelFile topRight, ModelFile topRightOpen) {
@@ -131,5 +161,17 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
 
     public void carpet(Supplier<? extends WoolCarpetBlock> block) {
         simpleBlock(block.get(), models().carpet(name(block), texture(name(block))));
+    }
+
+    public void button(Supplier<? extends ButtonBlock> block) {
+        buttonBlock(block.get(), texture(name(block).replace("_button", "")));
+    }
+
+    public void pressurePlate(Supplier<? extends PressurePlateBlock> block) {
+        pressurePlateBlock(block.get(), texture(name(block).replace("_pressure_plate", "")));
+    }
+
+    public void sign(Supplier<? extends StandingSignBlock> standingBlock, Supplier<? extends WallSignBlock> wallBlock) {
+        signBlock(standingBlock.get(), wallBlock.get(), texture(name(standingBlock).replace("_sign", "_planks")));
     }
 }

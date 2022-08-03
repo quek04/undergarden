@@ -13,9 +13,9 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.client.model.*;
@@ -163,7 +163,7 @@ public class UndergardenClient {
     }
 
     @SubscribeEvent
-    public static void registerBlockColors(ColorHandlerEvent.Block event) {
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
         BlockColors colors = event.getBlockColors();
 
         colors.register((state, tintGetter, pos, tint) ->
@@ -188,7 +188,7 @@ public class UndergardenClient {
     }
 
     @SubscribeEvent
-    public static void registerItemColors(ColorHandlerEvent.Item event) {
+    public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
         BlockColors bColors = event.getBlockColors();
         ItemColors iColors = event.getItemColors();
 
@@ -215,7 +215,7 @@ public class UndergardenClient {
     @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class ForgeBusEvents {
         @SubscribeEvent
-        public static void renderVirulentFogColor(EntityViewRenderEvent.FogColors event) {
+        public static void renderVirulentFogColor(ViewportEvent.ComputeFogColor event) {
             Camera camera = event.getCamera();
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
@@ -227,7 +227,7 @@ public class UndergardenClient {
         }
 
         @SubscribeEvent
-        public static void renderVirulentFogDensity(EntityViewRenderEvent.RenderFogEvent event) {
+        public static void renderVirulentFogDensity(ViewportEvent.RenderFog event) {
             Camera camera = event.getCamera();
             FluidState fluidState = camera.getBlockAtCamera().getFluidState();
 
