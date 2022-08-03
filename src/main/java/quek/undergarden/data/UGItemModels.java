@@ -257,5 +257,12 @@ public class UGItemModels extends UGItemModelProvider {
         sign(UGBlocks.SMOGSTEM_SIGN);
         sign(UGBlocks.WIGGLEWOOD_SIGN);
         sign(UGBlocks.GRONGLE_SIGN);
+
+        button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
+        button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
+        button(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST);
+        button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
+        button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
+        button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
     }
 }

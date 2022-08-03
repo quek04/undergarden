@@ -4,6 +4,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.SignBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -86,5 +87,9 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 
     public ItemModelBuilder wall(Supplier<? extends WallBlock> wall, Supplier<? extends Block> fullBlock) {
         return wallInventory(ForgeRegistries.BLOCKS.getKey(wall.get()).getPath(), texture(blockName(fullBlock)));
+    }
+
+    public ItemModelBuilder button(Supplier<? extends ButtonBlock> button, Supplier<? extends Block> fullBlock) {
+        return buttonInventory(ForgeRegistries.BLOCKS.getKey(button.get()).getPath(), texture(blockName(fullBlock)));
     }
 }
