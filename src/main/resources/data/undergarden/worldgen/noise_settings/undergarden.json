@@ -44,7 +44,14 @@
     },
     "continents": "minecraft:overworld/continents",
     "erosion": "minecraft:overworld/erosion",
-    "depth": "minecraft:overworld/depth",
+    "depth": {
+      "type": "minecraft:range_choice",
+      "input": "minecraft:y",
+      "min_inclusive": 0,
+      "max_exclusive": 32,
+      "when_in_range": 2,
+      "when_out_of_range": -2
+    },
     "ridges": "minecraft:overworld/ridges",
     "initial_density_without_jaggedness": 0,
     "final_density": {

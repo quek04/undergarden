@@ -18,7 +18,7 @@ public class UGFluids {
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, Undergarden.MODID);
     public static final DeferredRegister<FluidType> TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Undergarden.MODID);
 
-    public static final RegistryObject<FluidType> VIRULENT_MIX_TYPE = TYPES.register("virulent_mix", () -> new FluidType(FluidType.Properties.create().lightLevel(10).density(1500).temperature(600).viscosity(3000).motionScale(0.007D).canExtinguish(true)) {
+    public static final RegistryObject<FluidType> VIRULENT_MIX_TYPE = TYPES.register("virulent_mix", () -> new FluidType(FluidType.Properties.create().lightLevel(10).density(1500).temperature(600).viscosity(3000).canExtinguish(true)) {
                 @Override
                 public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
                     consumer.accept(new IClientFluidTypeExtensions() {
