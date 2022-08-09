@@ -26,7 +26,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
     //mappings channel: 'parchment', version: project.parchment_version+'-'+project.mc_version
-    mappings channel: 'parchment', version: '1.18.2-2022.08.02-1.19.1'
+    mappings channel: 'parchment', version: '1.18.2-2022.08.07-1.19.2'
 
     runs {
         client {
