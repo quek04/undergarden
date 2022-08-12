@@ -8,7 +8,6 @@ import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -16,7 +15,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.vehicle.Boat;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoat;
 
@@ -30,7 +28,7 @@ public class UGBoatRenderer extends EntityRenderer<UGBoat> {
     public UGBoatRenderer(EntityRendererProvider.Context context, boolean chest) {
         super(context);
         this.shadowRadius = 0.8F;
-        this.boatResources = Stream.of(UGBoat.Type.values()).collect(ImmutableMap.toImmutableMap((type) -> type, (type) -> Pair.of(new ResourceLocation(getTextureLocation(type, chest)), this.createBoatModel(context, type, chest))));
+        this.boatResources = Stream.of(UGBoat.Type.values()).collect(ImmutableMap.toImmutableMap((type) -> type, (type) -> Pair.of(new ResourceLocation(Undergarden.MODID, getTextureLocation(type, chest)), this.createBoatModel(context, type, chest))));
     }
 
     private static ModelLayerLocation createLocation(String path, String model) {

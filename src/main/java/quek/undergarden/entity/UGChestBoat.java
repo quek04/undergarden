@@ -19,9 +19,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
 
@@ -37,7 +38,11 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
     }
 
     public UGChestBoat(Level level, double x, double y, double z) {
-        super(level, x, y, z);
+        this(UGEntityTypes.CHEST_BOAT.get(), level);
+        this.setPos(x, y, z);
+        this.xo = x;
+        this.yo = y;
+        this.zo = z;
     }
     
     @Override
@@ -95,9 +100,9 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
     @Override
     public Item getDropItem() {
         return switch (this.getUGBoatType()) {
-            case SMOGSTEM -> Items.SPRUCE_CHEST_BOAT;
-            case WIGGLEWOOD -> Items.BIRCH_CHEST_BOAT;
-            case GRONGLE -> Items.JUNGLE_CHEST_BOAT;
+            case SMOGSTEM -> UGItems.SMOGSTEM_CHEST_BOAT.get();
+            case WIGGLEWOOD -> UGItems.WIGGLEWOOD_CHEST_BOAT.get();
+            case GRONGLE -> UGItems.GRONGLE_CHEST_BOAT.get();
         };
     }
 

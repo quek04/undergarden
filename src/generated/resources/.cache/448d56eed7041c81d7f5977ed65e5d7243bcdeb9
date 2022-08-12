@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-10T21:32:41.2606756	Undergarden Item Models
+// 1.19.2	2022-08-12T00:31:48.698178	Undergarden Item Models
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
 8badee57abd7354d80bbf6f6ff7ea5981701e87d assets/undergarden/models/item/blisterberry.json
@@ -103,6 +103,7 @@ b605f3f9e6ee53fca464ae71c48e5c00c65ffee7 assets/undergarden/models/item/gloomgou
 b80ec223a13883a4e0b5b97561008785aeddb652 assets/undergarden/models/item/goo_block.json
 a9a369bb3bee179423e37bca38c92068eea2229e assets/undergarden/models/item/grongle_boat.json
 7548bc5a091c3cc179d2be54770c24bb1c1de807 assets/undergarden/models/item/grongle_button.json
+07b8d7aa0570c86a8e3dc9fbc75267be8b8be084 assets/undergarden/models/item/grongle_chest_boat.json
 c20d04fff49bd8786bc0069babba574009147c84 assets/undergarden/models/item/grongle_fence.json
 3445d6df4f3fdf390f1e8bafa0b4ab4d9efc1752 assets/undergarden/models/item/grongle_fence_gate.json
 c8aca78efc9e2af7bc14aca8f4ffcf98e206a70b assets/undergarden/models/item/grongle_leaves.json
@@ -179,6 +180,7 @@ f55dec2a163316770235ff3c0d50f68df9a8f30c assets/undergarden/models/item/shiverst
 332b7a0f57b79c8a22626c5bb818ed332dc1f1dc assets/undergarden/models/item/shiverstone_wall.json
 b1b506e99c033186cdcb46c04ee6cfd9a7ed72e1 assets/undergarden/models/item/smogstem_boat.json
 11367edb216fa3264e2f255dfcebc5d3082050dd assets/undergarden/models/item/smogstem_button.json
+e6a8ebf57744eccd6a6502b873fbfdee7707a23a assets/undergarden/models/item/smogstem_chest_boat.json
 495ec38526c9f28cef3404cc9161739638ccc368 assets/undergarden/models/item/smogstem_fence.json
 176450ccb7ab8e5f3a86c5fc926b997f97d7551d assets/undergarden/models/item/smogstem_fence_gate.json
 c9da54493546f22f8a938095bce07a740c4f01d2 assets/undergarden/models/item/smogstem_leaves.json
@@ -230,6 +232,7 @@ c24f8ab98977fa5632f49e23f7cb5f5b0495a372 assets/undergarden/models/item/utherium
 7dc572a7d9018cdb99651a693e2076ef0c0ab45f assets/undergarden/models/item/virulent_mix_bucket.json
 9ba6ff5526e6980996a1514bde2bb1ccf9ab65b7 assets/undergarden/models/item/wigglewood_boat.json
 eaeb3b7f6b08759e3be681bc8348eb38a67059c7 assets/undergarden/models/item/wigglewood_button.json
+e5c2c4548ecbbd9373f1a2ffa69027b8f83d4cdf assets/undergarden/models/item/wigglewood_chest_boat.json
 c4b467f8f882da1451517666e53fe58e5c8f0fe6 assets/undergarden/models/item/wigglewood_fence.json
 e66b4021294c244c4bf402e938470aa9b2886e97 assets/undergarden/models/item/wigglewood_fence_gate.json
 e9d21a2948238d9b58ba2bae57b4d77ac2629e7f assets/undergarden/models/item/wigglewood_leaves.json

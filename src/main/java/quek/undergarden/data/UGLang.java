@@ -307,8 +307,11 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FORGOTTEN_HOE, "Forgotten Hoe");
 
         addItem(UGItems.SMOGSTEM_BOAT, "Smogstem Boat");
+        addItem(UGItems.SMOGSTEM_CHEST_BOAT, "Smogstem Boat with Chest");
         addItem(UGItems.WIGGLEWOOD_BOAT, "Wigglewood Boat");
+        addItem(UGItems.WIGGLEWOOD_CHEST_BOAT, "Wigglewood Boat with Chest");
         addItem(UGItems.GRONGLE_BOAT, "Grongle Boat");
+        addItem(UGItems.GRONGLE_CHEST_BOAT, "Grongle Boat with Chest");
 
         addItem(UGItems.SLINGSHOT, "Slingshot");
 
@@ -377,7 +380,8 @@ public class UGLang extends LanguageProvider {
         addBiome(UGBiomes.SMOG_SPIRES, "Smog Spires");
         addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 
-        addEntityType(UGEntityTypes.BOAT, "Undergarden Boat");
+        addEntityType(UGEntityTypes.BOAT, "Boat");
+        addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");
         addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
         addEntityType(UGEntityTypes.DWELLER, "Dweller");
         addEntityType(UGEntityTypes.GWIBLING, "Gwibling");

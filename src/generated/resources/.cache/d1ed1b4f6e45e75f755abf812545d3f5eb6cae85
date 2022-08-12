@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-10T21:32:41.2396567	Undergarden Item Tags
+// 1.19.2	2022-08-12T00:31:48.7001796	Undergarden Item Tags
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/forge/tags/items/bones.json
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/items/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/items/fences/wooden.json
@@ -47,6 +47,7 @@ f6351c69c0c850e784a6001e86af48b79515252d data/forge/tags/items/storage_blocks/fr
 8c08daec4cb74d7ceb504552c74bb474623e6b3d data/minecraft/tags/items/beacon_payment_items.json
 571f6c52db76e7be76a61070ebe78e606bac244e data/minecraft/tags/items/boats.json
 a87a49ce98c8d86d8b65fd56423bffd073a37722 data/minecraft/tags/items/buttons.json
+8ce94b49484d72c5395b752651f3d49513dbc75c data/minecraft/tags/items/chest_boats.json
 ab5d5379958d5f6e16350bdef7131e2ed1a3e599 data/minecraft/tags/items/coals.json
 62c40ea267632e8e82f52a31fe05cb49de3176a0 data/minecraft/tags/items/coal_ores.json
 2a9940ae63110d339b9dc8547f89e0dc4d24307e data/minecraft/tags/items/diamond_ores.json

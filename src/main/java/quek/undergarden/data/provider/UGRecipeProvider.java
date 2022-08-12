@@ -3,6 +3,7 @@ package quek.undergarden.data.provider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -258,7 +259,16 @@ public class UGRecipeProvider extends RecipeProvider {
                 .pattern("P P")
                 .pattern("PPP")
                 .define('P', planksIn.get())
+                .group("boat")
                 .unlockedBy("in_water", insideOf(Blocks.WATER));
+    }
+
+    public ShapelessRecipeBuilder makeChestBoat(Supplier<? extends Item> chestBoatOut, Supplier<? extends Block> boatIn) {
+        return ShapelessRecipeBuilder.shapeless(chestBoatOut.get())
+                .requires(boatIn.get())
+                .requires(Tags.Items.CHESTS_WOODEN)
+                .group("chest_boat")
+                .unlockedBy("has_boat", has(ItemTags.BOATS));
     }
 
     public ShapedRecipeBuilder makeSign(Supplier<? extends SignBlock> signOut, Supplier<? extends Block> planksIn) {

@@ -200,8 +200,11 @@ public class UGItemModels extends UGItemModelProvider {
         toolItem(UGItems.FORGOTTEN_SHOVEL);
         toolItem(UGItems.FORGOTTEN_HOE);
         normalItem(UGItems.SMOGSTEM_BOAT);
+        normalItem(UGItems.SMOGSTEM_CHEST_BOAT);
         normalItem(UGItems.WIGGLEWOOD_BOAT);
+        normalItem(UGItems.WIGGLEWOOD_CHEST_BOAT);
         normalItem(UGItems.GRONGLE_BOAT);
+        normalItem(UGItems.GRONGLE_CHEST_BOAT);
         normalItem(UGItems.VIRULENT_MIX_BUCKET);
         normalItem(UGItems.GWIBLING_BUCKET);
         normalItem(UGItems.UNDERBEANS);
