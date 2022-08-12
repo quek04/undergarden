@@ -1,7 +1,6 @@
 package quek.undergarden;
 
 import net.minecraft.Util;
-import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
@@ -20,11 +19,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -35,7 +32,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.slingshot.*;
@@ -295,7 +291,7 @@ public class Undergarden {
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
-		UndergardenClient.registerBlockRenderers();
+		//UndergardenClient.registerBlockRenderers();
 		event.enqueueWork(() -> {
 			Sheets.addWoodType(UGBlocks.SMOGSTEM_WOODTYPE);
 			Sheets.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);

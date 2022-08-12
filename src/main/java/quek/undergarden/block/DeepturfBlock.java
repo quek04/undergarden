@@ -1,15 +1,13 @@
 package quek.undergarden.block;
 
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGBlocks;
-
-import java.util.Random;
 
 public class DeepturfBlock extends SpreadingSnowyDeepsoilBlock implements BonemealableBlock {
 
@@ -18,8 +16,8 @@ public class DeepturfBlock extends SpreadingSnowyDeepsoilBlock implements Boneme
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return worldIn.getBlockState(pos.above()).isAir();
+    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
+        return level.getBlockState(pos.above()).isAir();
     }
 
     @Override

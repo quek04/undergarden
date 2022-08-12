@@ -29,8 +29,8 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
         return modLoc("block/" + name);
     }
 
-    public ItemModelBuilder itemFence(Supplier<? extends Block> block, String name) {
-        return withExistingParent(blockName(block), mcLoc("block/fence_inventory"))
+    public void itemFence(Supplier<? extends Block> block, String name) {
+        withExistingParent(blockName(block), mcLoc("block/fence_inventory"))
                 .texture("texture", ("block/" + name));
     }
 
@@ -42,46 +42,47 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
         return withExistingParent(blockName(block), modLoc("block/" + name));
     }
 
-    public ItemModelBuilder blockFlat(Supplier<? extends Block> block) {
-        return blockFlat(block, blockName(block));
+    public void blockFlat(Supplier<? extends Block> block) {
+        withExistingParent(blockName(block), mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/" + blockName(block)));
     }
 
-    public ItemModelBuilder blockFlat(Supplier<? extends Block> block, String name) {
-        return withExistingParent(blockName(block), mcLoc("item/generated"))
+    public void blockFlatWithBlockTexture(Supplier<? extends Block> block, String name) {
+        withExistingParent(blockName(block), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/" + name));
     }
 
-    public ItemModelBuilder blockFlatWithItemName(Supplier<? extends Block> block, String name) {
-        return withExistingParent(blockName(block), mcLoc("item/generated"))
+    public void blockFlatWithItemTexture(Supplier<? extends Block> block, String name) {
+        withExistingParent(blockName(block), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/" + name));
     }
 
-    public ItemModelBuilder normalItem(Supplier<? extends Item> item) {
-        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/generated"))
+    public void normalItem(Supplier<? extends Item> item) {
+        withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
     }
 
-    public ItemModelBuilder torchItem(Supplier<? extends Block> item) {
-        return withExistingParent(ForgeRegistries.BLOCKS.getKey(item.get()).getPath(), mcLoc("item/generated"))
+    public void torchItem(Supplier<? extends Block> item) {
+        withExistingParent(ForgeRegistries.BLOCKS.getKey(item.get()).getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/" + ForgeRegistries.BLOCKS.getKey(item.get()).getPath()));
     }
 
-    public ItemModelBuilder toolItem(Supplier<? extends Item> item) {
-        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld"))
+    public void toolItem(Supplier<? extends Item> item) {
+        withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
     }
 
-    public ItemModelBuilder rodItem(Supplier<? extends Item> item) {
-        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld_rod"))
+    public void rodItem(Supplier<? extends Item> item) {
+        withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld_rod"))
                 .texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
     }
 
-    public ItemModelBuilder egg(Supplier<? extends Item> item) {
-        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/template_spawn_egg"));
+    public void egg(Supplier<? extends Item> item) {
+        withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/template_spawn_egg"));
     }
 
-    public ItemModelBuilder sign(Supplier<? extends SignBlock> sign) {
-        return withExistingParent(blockName(sign), mcLoc("item/generated"))
+    public void sign(Supplier<? extends SignBlock> sign) {
+        withExistingParent(blockName(sign), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/" + blockName(sign)));
     }
 

@@ -4,9 +4,10 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DoorHingeSide;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraftforge.client.model.generators.*;
+import net.minecraftforge.client.model.generators.BlockModelProvider;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
@@ -48,19 +49,8 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         simpleBlock(block.get());
     }
 
-    public void grass(Supplier<? extends Block> block) {
-        ModelFile model = models().cubeBottomTop(
-                name(block),
-                texture(name(block) + "_side"),
-                texture("deepsoil"),
-                texture(name(block) + "_top"));
-        getVariantBuilder(block.get()).forAllStates(state ->
-                ConfiguredModel.builder()
-                        .modelFile(model)
-                        .build()
-        ).forAllStates(state ->
-                ConfiguredModel.allYRotations(model, 0, false)
-        );
+    public void blockTranslucent(Supplier<? extends Block> block) {
+        simpleBlock(block.get(), models().cubeAll(name(block), blockTexture(block.get())).renderType("translucent"));
     }
 
     public void log(Supplier<? extends RotatedPillarBlock> block, String name) {

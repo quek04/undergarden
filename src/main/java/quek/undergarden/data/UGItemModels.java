@@ -130,7 +130,7 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.GOO_BLOCK);
         block(UGBlocks.SEDIMENT);
         block(UGBlocks.SEDIMENT_GLASS);
-        blockFlat(UGBlocks.SEDIMENT_GLASS_PANE, "sediment_glass");
+        blockFlatWithBlockTexture(UGBlocks.SEDIMENT_GLASS_PANE, "sediment_glass");
         block(UGBlocks.CLOGGRUM_TILES);
         block(UGBlocks.CLOGGRUM_TILE_STAIRS);
         block(UGBlocks.CLOGGRUM_TILE_SLAB);
@@ -229,7 +229,7 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.SHIVERSTONE_REGALIUM_ORE);
         block(UGBlocks.RAW_CLOGGRUM_BLOCK);
         block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
-        blockFlatWithItemName(UGBlocks.CLOGGRUM_LANTERN, "cloggrum_lantern_item");
+        blockFlatWithItemTexture(UGBlocks.CLOGGRUM_LANTERN, "cloggrum_lantern_item");
         blockFlat(UGBlocks.HANGING_GRONGLE_LEAVES);
         block(UGBlocks.BOOMGOURD);
         block(UGBlocks.POLISHED_DEPTHROCK);

@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/template_glass_pane_side",
+  "render_type": "minecraft:translucent",
   "textures": {
     "pane": "undergarden:block/sediment_glass",
     "edge": "undergarden:block/sediment_glass_pane_top"

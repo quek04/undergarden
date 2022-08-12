@@ -2,16 +2,12 @@ package quek.undergarden.client;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,12 +25,11 @@ import quek.undergarden.entity.UGBoat;
 import quek.undergarden.registry.*;
 
 import java.awt.*;
-import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UndergardenClient {
 
-    private static void render(Supplier<? extends Block> block, RenderType render) {
+    /*private static void render(Supplier<? extends Block> block, RenderType render) {
         ItemBlockRenderTypes.setRenderLayer(block.get(), render);
     }
 
@@ -93,7 +88,7 @@ public class UndergardenClient {
         render(UGBlocks.HANGING_GRONGLE_LEAVES, cutout);
         render(UGBlocks.GOO_BLOCK, translucent);
         render(UGBlocks.CLOGGRUM_LANTERN, cutout);
-    }
+    }*/
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -164,9 +159,7 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
-        BlockColors colors = event.getBlockColors();
-
-        colors.register((state, tintGetter, pos, tint) ->
+        event.register((state, tintGetter, pos, tint) ->
                         tintGetter != null && pos != null ? BiomeColors.getAverageGrassColor(tintGetter, pos) : new Color(91, 117, 91).getRGB(),
                 UGBlocks.DEEPTURF_BLOCK.get(),
                 UGBlocks.DEEPTURF.get(),
@@ -180,7 +173,7 @@ public class UndergardenClient {
                 UGBlocks.DROOPVINE_PLANT.get()
         );
 
-        colors.register((state, world, pos, tint) ->
+        event.register((state, world, pos, tint) ->
                         new Color(54, 45, 66).getRGB(),
                 UGBlocks.GLOOMGOURD_STEM.get(),
                 UGBlocks.GLOOMGOURD_STEM_ATTACHED.get()
@@ -190,9 +183,8 @@ public class UndergardenClient {
     @SubscribeEvent
     public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
         BlockColors bColors = event.getBlockColors();
-        ItemColors iColors = event.getItemColors();
 
-        iColors.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().defaultBlockState(), null, null, 0),
+        event.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().defaultBlockState(), null, null, 0),
                 UGBlocks.DEEPTURF_BLOCK.get(),
                 UGBlocks.DEEPTURF.get(),
                 UGBlocks.SHIMMERWEED.get(),
@@ -200,7 +192,7 @@ public class UndergardenClient {
                 UGBlocks.TALL_DEEPTURF.get()
         );
 
-        iColors.register((stack, tint) -> {
+        event.register((stack, tint) -> {
                     if(tint == 0) {
                         return new Color(91, 117, 91).getRGB();
                     }

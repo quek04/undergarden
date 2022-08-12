@@ -74,8 +74,8 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
         crossBlock(UGBlocks.FROZEN_DEEPTURF);
         block(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
-        block(UGBlocks.SEDIMENT);
-        block(UGBlocks.SEDIMENT_GLASS);
+        blockTranslucent(UGBlocks.SEDIMENT);
+        blockTranslucent(UGBlocks.SEDIMENT_GLASS);
         block(UGBlocks.CLOGGRUM_TILES);
         block(UGBlocks.DEPTHROCK_TILES);
         carpet(UGBlocks.MOGMOSS_RUG);
