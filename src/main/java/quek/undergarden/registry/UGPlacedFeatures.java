@@ -4,11 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -48,11 +46,11 @@ public class UGPlacedFeatures {
     public static final RegistryObject<PlacedFeature> DEEPTURF_PATCH = PLACED_FEATURES.register("deepturf_patch", () -> new PlacedFeature(UGConfiguredFeatures.DEEPTURF_PATCH.getHolder().get(), patch(100)));
     public static final RegistryObject<PlacedFeature> ASHEN_DEEPTURF_PATCH = PLACED_FEATURES.register("ashen_deepturf_patch", () -> new PlacedFeature(UGConfiguredFeatures.ASHEN_DEEPTURF_PATCH.getHolder().get(), patch(100)));
     public static final RegistryObject<PlacedFeature> FROZEN_DEEPTURF_PATCH = PLACED_FEATURES.register("frozen_deepturf_patch", () -> new PlacedFeature(UGConfiguredFeatures.FROZEN_DEEPTURF_PATCH.getHolder().get(), patch(100)));
-    public static final RegistryObject<PlacedFeature> SHIMMERWEED_PATCH = PLACED_FEATURES.register("shimmerweed_patch", () -> new PlacedFeature(UGConfiguredFeatures.SHIMMERWEED_PATCH.getHolder().get(), patch(75)));
-    public static final RegistryObject<PlacedFeature> DEPTHROCK_PEBBLE_PATCH = PLACED_FEATURES.register("depthrock_pebble_patch", () -> new PlacedFeature(UGConfiguredFeatures.DEPTHROCK_PEBBLE_PATCH.getHolder().get(), patch(75)));
+    public static final RegistryObject<PlacedFeature> SHIMMERWEED_PATCH = PLACED_FEATURES.register("shimmerweed_patch", () -> new PlacedFeature(UGConfiguredFeatures.SHIMMERWEED_PATCH.getHolder().get(), noise(500, 75.0D, 0.0D)));
+    public static final RegistryObject<PlacedFeature> DEPTHROCK_PEBBLE_PATCH = PLACED_FEATURES.register("depthrock_pebble_patch", () -> new PlacedFeature(UGConfiguredFeatures.DEPTHROCK_PEBBLE_PATCH.getHolder().get(), noise(500, 50.0D, 0.D)));
     public static final RegistryObject<PlacedFeature> DITCHBULB_PATCH = PLACED_FEATURES.register("ditchbulb_patch", () -> new PlacedFeature(UGConfiguredFeatures.DITCHBULB_PATCH.getHolder().get(), patch(75)));
     public static final RegistryObject<PlacedFeature> TALL_DEEPTURF_PATCH = PLACED_FEATURES.register("tall_deepturf_patch", () -> new PlacedFeature(UGConfiguredFeatures.TALL_DEEPTURF_PATCH.getHolder().get(), patch(100)));
-    public static final RegistryObject<PlacedFeature> TALL_SHIMMERWEED_PATCH = PLACED_FEATURES.register("tall_shimmerweed_patch", () -> new PlacedFeature(UGConfiguredFeatures.TALL_SHIMMERWEED_PATCH.getHolder().get(), patch(50)));
+    public static final RegistryObject<PlacedFeature> TALL_SHIMMERWEED_PATCH = PLACED_FEATURES.register("tall_shimmerweed_patch", () -> new PlacedFeature(UGConfiguredFeatures.TALL_SHIMMERWEED_PATCH.getHolder().get(), noise(500, 75.0D, 0.0D)));
     public static final RegistryObject<PlacedFeature> INDIGO_MUSHROOM_PATCH = PLACED_FEATURES.register("indigo_mushroom_patch", () -> new PlacedFeature(UGConfiguredFeatures.INDIGO_MUSHROOM_PATCH.getHolder().get(), patch(1)));
     public static final RegistryObject<PlacedFeature> VEIL_MUSHROOM_PATCH = PLACED_FEATURES.register("veil_mushroom_patch", () -> new PlacedFeature(UGConfiguredFeatures.VEIL_MUSHROOM_PATCH.getHolder().get(), patch(1)));
     public static final RegistryObject<PlacedFeature> INK_MUSHROOM_PATCH = PLACED_FEATURES.register("ink_mushroom_patch", () -> new PlacedFeature(UGConfiguredFeatures.INK_MUSHROOM_PATCH.getHolder().get(), patch(1)));
@@ -94,5 +92,9 @@ public class UGPlacedFeatures {
 
     private static List<PlacementModifier> patch(int count) {
         return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
+    }
+
+    private static List<PlacementModifier> noise(int noiseToCountRatio, double factor, double offset) {
+        return List.of(NoiseBasedCountPlacement.of(noiseToCountRatio, factor, offset), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
     }
 }
