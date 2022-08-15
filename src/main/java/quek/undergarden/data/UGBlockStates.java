@@ -88,6 +88,9 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.RAW_CLOGGRUM_BLOCK);
         block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
         block(UGBlocks.POLISHED_DEPTHROCK);
+        crossBlock(UGBlocks.AMOROUS_BRISTLE);
+        crossBlock(UGBlocks.MISERABELL);
+        crossBlock(UGBlocks.BUTTERBUNCH);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);

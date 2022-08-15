@@ -266,6 +266,9 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.POLISHED_DEPTHROCK_STAIRS);
             dropSelf(UGBlocks.POLISHED_DEPTHROCK_SLAB);
             dropSelf(UGBlocks.POLISHED_DEPTHROCK_WALL);
+            dropSelf(UGBlocks.AMOROUS_BRISTLE);
+            dropSelf(UGBlocks.MISERABELL);
+            dropSelf(UGBlocks.BUTTERBUNCH);
         }
 
         @Override

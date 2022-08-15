@@ -1,4 +1,5 @@
-// 1.19.2	2022-08-15T10:59:54.4968496	Undergarden Item Models
+// 1.19.2	2022-08-15T17:32:17.6272575	Undergarden Item Models
+daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
 8badee57abd7354d80bbf6f6ff7ea5981701e87d assets/undergarden/models/item/blisterberry.json
@@ -9,6 +10,7 @@ b62f795ece9a852ff785eaa7ef4b4ec242ca6319 assets/undergarden/models/item/blood_mu
 570eff5a21cc3edc3a97becf2408e33ee85e8a3c assets/undergarden/models/item/boomgourd.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/brute_spawn_egg.json
 6728f28b4bb8cbdc417675b635c94cbb123832d7 assets/undergarden/models/item/brute_tusk.json
+be7a04c2c06b382febf1ce101c30ec32e6335f83 assets/undergarden/models/item/butterbunch.json
 d886c66918103b4f977fbc7f2fb9e35202ad9257 assets/undergarden/models/item/carved_gloomgourd.json
 d8ad3da097f37a140d245449600ddb8b0a0e94af assets/undergarden/models/item/catalyst.json
 83aed0ee30316728d046c338a1fd8d26f700349c assets/undergarden/models/item/chiseled_depthrock_bricks.json
@@ -127,6 +129,7 @@ f4f2da27e0af25333d7ff5e033141d2bc9ca1890 assets/undergarden/models/item/ink_mush
 d364dc28b6f1e63ebb27aeae15fe822e87c85c87 assets/undergarden/models/item/masticated_chestplate.json
 a06d61903192a22b9601a82e8b0d3e2aeec86505 assets/undergarden/models/item/masticator_scales.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/masticator_spawn_egg.json
+c3ff50d54fbdaf6cec277ade85918ff7075e2d23 assets/undergarden/models/item/miserabell.json
 2ee6873febae8f6c34e20895b2c59f258100ae3d assets/undergarden/models/item/mogmoss.json
 107d0c9ced12b3dacc090e61b41f0dd87112ee21 assets/undergarden/models/item/mogmoss_rug.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/mog_spawn_egg.json

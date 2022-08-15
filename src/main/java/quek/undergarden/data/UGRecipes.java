@@ -231,6 +231,21 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_veil_mushroom", has(UGBlocks.VEIL_MUSHROOM.get()))
                 .save(consumer, name("veil_mushroom_to_dye"));
 
+        ShapelessRecipeBuilder.shapeless(Items.PINK_DYE)
+                .requires(UGBlocks.AMOROUS_BRISTLE.get())
+                .unlockedBy("has_amorous_bristle", has(UGBlocks.AMOROUS_BRISTLE.get()))
+                .save(consumer, name("amorous_bristle_to_dye"));
+
+        ShapelessRecipeBuilder.shapeless(Items.LIGHT_BLUE_DYE)
+                .requires(UGBlocks.MISERABELL.get())
+                .unlockedBy("has_miserabell", has(UGBlocks.MISERABELL.get()))
+                .save(consumer, name("miserabell_to_dye"));
+
+        ShapelessRecipeBuilder.shapeless(Items.YELLOW_DYE)
+                .requires(UGBlocks.BUTTERBUNCH.get())
+                .unlockedBy("has_butterbunch", has(UGBlocks.BUTTERBUNCH.get()))
+                .save(consumer, name("butterbunch_to_dye"));
+
         ShapedRecipeBuilder.shaped(UGItems.UTHERIUM_CRYSTAL.get())
                 .pattern("SSS")
                 .pattern("SSS")

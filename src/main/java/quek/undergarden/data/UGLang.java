@@ -146,6 +146,9 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.MOGMOSS_RUG, "Mogmoss Rug");
         addBlock(UGBlocks.CLOGGRUM_LANTERN, "Cloggrum Lantern");
 
+        addBlock(UGBlocks.AMOROUS_BRISTLE, "Amorous Bristle");
+        addBlock(UGBlocks.MISERABELL, "Miserabell");
+        addBlock(UGBlocks.BUTTERBUNCH, "Butterbunch");
         addBlock(UGBlocks.UNDERBEAN_BUSH, "Underbean Bush");
         addBlock(UGBlocks.BLISTERBERRY_BUSH, "Blisterberry Bush");
         addBlock(UGBlocks.DEEPTURF, "Deepturf");

@@ -1,4 +1,5 @@
-// 1.19.2	2022-08-10T21:32:41.2586728	Undergarden Loot Tables
+// 1.19.2	2022-08-15T17:32:17.6352649	Undergarden Loot Tables
+41ed64c053d947752331444f709eaaa1d2475d33 data/undergarden/loot_tables/blocks/amorous_bristle.json
 7df034228d77c0bcf64cf642af38b510a5e0dd85 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 bdf7d335fce989c44cbf4347f37ec83cf12de1f1 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
 9a885b20f407d4f83f6a3e0fb6fc38094a245bd2 data/undergarden/loot_tables/blocks/blisterberry_bush.json
@@ -7,6 +8,7 @@ a1a06183d805450160fe44895813a8f1a725343d data/undergarden/loot_tables/blocks/blo
 640e08b1787dac17b8f8d159ff83c92168852587 data/undergarden/loot_tables/blocks/blood_mushroom_globule.json
 f4eb494a4458328e836b57979930b0106b62a8ff data/undergarden/loot_tables/blocks/blood_mushroom_stalk.json
 e2f9300f3d2394d446c63b4926d3c7723a6f6e0e data/undergarden/loot_tables/blocks/boomgourd.json
+6731a65204da10626ba11d12bd79ec7cf8d789a7 data/undergarden/loot_tables/blocks/butterbunch.json
 c68aee0f9d427a82a8885db905b8971cfef14a55 data/undergarden/loot_tables/blocks/carved_gloomgourd.json
 96c8d629ede55030db0a62069de1df1165e9bd17 data/undergarden/loot_tables/blocks/chiseled_depthrock_bricks.json
 a5c99f315761c009f08684480e2f3852512a30d9 data/undergarden/loot_tables/blocks/chiseled_shiverstone_bricks.json
@@ -84,6 +86,7 @@ c5b8e9af262a4cd02bfeedfb169a9327cb9f3590 data/undergarden/loot_tables/blocks/ind
 3b4f10f888fc5daade7aa9f4d2cb4f9c5e59ae54 data/undergarden/loot_tables/blocks/indigo_mushroom_stalk.json
 cecc0e97c26ef860fa07e04ad9ca278a377004cc data/undergarden/loot_tables/blocks/ink_mushroom.json
 b2192706e7e8b87062ea16fc39c8092195b3795c data/undergarden/loot_tables/blocks/ink_mushroom_cap.json
+98ef3055150f960e91ca504bbe1d39c2cee15991 data/undergarden/loot_tables/blocks/miserabell.json
 a18def62a4ab9f1c587302e8d61f2484ad1fda3a data/undergarden/loot_tables/blocks/mogmoss_rug.json
 cd01f5479e52a7e66c8646d18a357450a18213c2 data/undergarden/loot_tables/blocks/polished_depthrock.json
 a32ba7b4b30439644292d999ccc040ce07dd10c0 data/undergarden/loot_tables/blocks/polished_depthrock_slab.json
