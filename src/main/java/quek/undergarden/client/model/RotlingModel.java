@@ -53,8 +53,8 @@ public class RotlingModel<T extends Rotling> extends ListModel<T> {
 
 		this.leftArm.xRot = entity.isAggressive() ? -1.5F : Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 		this.rightArm.xRot = entity.isAggressive() ? -1.5F : Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightArm.zRot = 0.0F;
-		this.leftArm.zRot = 0.0F;
+		this.rightArm.zRot = 0.4363F;
+		this.leftArm.zRot = -0.4363F;
 		AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
 
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
