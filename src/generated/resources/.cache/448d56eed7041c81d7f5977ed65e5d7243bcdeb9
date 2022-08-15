@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-12T00:31:48.698178	Undergarden Item Models
+// 1.19.2	2022-08-15T10:59:54.4968496	Undergarden Item Models
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
 8badee57abd7354d80bbf6f6ff7ea5981701e87d assets/undergarden/models/item/blisterberry.json
@@ -158,7 +158,7 @@ aa8ed02244470d559527fb64cf5d04367ca1c2b4 assets/undergarden/models/item/regalium
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/scintling_spawn_egg.json
 a2724777c564a71697ef09e77ef417affa505127 assets/undergarden/models/item/sediment.json
 65ff2c6d7d379d64b8378112d703342d20dcd3f4 assets/undergarden/models/item/sediment_glass.json
-b8fcf30487f79ad8999149e8cbc94006b6f0d24d assets/undergarden/models/item/sediment_glass_pane.json
+9c2fbb29464e526190ed4243fe0b30499272bafa assets/undergarden/models/item/sediment_glass_pane.json
 b2659ba8816c161a06d82719b573b17887bd96cd assets/undergarden/models/item/shard_o_lantern.json
 4b361a85ec3a0d468fcdf040322616b9b2d5b35e assets/undergarden/models/item/shard_torch.json
 1303b00cc47a8f56c2881e7f8f763d5cf42f88dd assets/undergarden/models/item/shiverstone.json

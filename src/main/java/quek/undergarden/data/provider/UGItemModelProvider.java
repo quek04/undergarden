@@ -49,7 +49,8 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 
     public void blockFlatWithBlockTexture(Supplier<? extends Block> block, String name) {
         withExistingParent(blockName(block), mcLoc("item/generated"))
-                .texture("layer0", modLoc("block/" + name));
+                .texture("layer0", modLoc("block/" + name))
+                .renderType("translucent");
     }
 
     public void blockFlatWithItemTexture(Supplier<? extends Block> block, String name) {
