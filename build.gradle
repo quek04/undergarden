@@ -25,8 +25,7 @@ archivesBaseName = 'The_Undergarden-'+project.mc_version
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    //mappings channel: 'parchment', version: project.parchment_version+'-'+project.mc_version
-    mappings channel: 'parchment', version: '1.18.2-2022.08.07-1.19.2'
+    mappings channel: 'parchment', version: project.parchment_version+'-'+project.mc_version
 
     runs {
         client {
@@ -87,8 +86,11 @@ sourceSets.main.resources {
 dependencies {
     minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
 
-    /*compileOnly fg.deobf("mezz.jei:jei-${project.mc_version}:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${project.mc_version}:${jei_version}")*/
+    // compile against the JEI API but do not include it at runtime
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
+    // at runtime, use the full JEI jar for Forge
+    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
