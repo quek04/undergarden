@@ -22,9 +22,11 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.FluidInteractionRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -82,6 +84,14 @@ public class Undergarden {
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
+		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+				ForgeMod.WATER_TYPE.get(),
+				fluidState -> UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState()
+		));
+		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+				ForgeMod.LAVA_TYPE.get(),
+				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState()
+		));
 		event.enqueueWork(() -> {
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
@@ -291,7 +301,6 @@ public class Undergarden {
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
-		//UndergardenClient.registerBlockRenderers();
 		event.enqueueWork(() -> {
 			Sheets.addWoodType(UGBlocks.SMOGSTEM_WOODTYPE);
 			Sheets.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);
