@@ -68,6 +68,7 @@ public class UGPlacedFeatures {
     public static final RegistryObject<PlacedFeature> SMOGSTEM_TREE = PLACED_FEATURES.register("smogstem_tree", () -> new PlacedFeature(UGConfiguredFeatures.SMOGSTEM_TREE.getHolder().get(), tree(8)));
     public static final RegistryObject<PlacedFeature> WIDE_SMOGSTEM_TREE = PLACED_FEATURES.register("wide_smogstem_tree", () -> new PlacedFeature(UGConfiguredFeatures.WIDE_SMOGSTEM_TREE.getHolder().get(), tree(2)));
     public static final RegistryObject<PlacedFeature> TALL_SMOGSTEM_TREE = PLACED_FEATURES.register("tall_smogstem_tree", () -> new PlacedFeature(UGConfiguredFeatures.TALL_SMOGSTEM_TREE.getHolder().get(), tree(4)));
+    public static final RegistryObject<PlacedFeature> SMOGSTEM_BUSH = PLACED_FEATURES.register("smogstem_bush", () -> new PlacedFeature(UGConfiguredFeatures.SMOGSTEM_BUSH.getHolder().get(), tree(8)));
     public static final RegistryObject<PlacedFeature> WIGGLEWOOD_TREE = PLACED_FEATURES.register("wigglewood_tree", () -> new PlacedFeature(UGConfiguredFeatures.WIGGLEWOOD_TREE.getHolder().get(), tree(8)));
     public static final RegistryObject<PlacedFeature> TALL_WIGGLEWOOD_TREE = PLACED_FEATURES.register("tall_wigglewood_tree", () -> new PlacedFeature(UGConfiguredFeatures.TALL_WIGGLEWOOD_TREE.getHolder().get(), tree(4)));
     public static final RegistryObject<PlacedFeature> GRONGLE_TREE = PLACED_FEATURES.register("grongle_tree", () -> new PlacedFeature(UGConfiguredFeatures.GRONGLE_TREE.getHolder().get(), tree(8)));
@@ -75,11 +76,11 @@ public class UGPlacedFeatures {
     public static final RegistryObject<PlacedFeature> GRONGLE_BUSH = PLACED_FEATURES.register("grongle_bush", () -> new PlacedFeature(UGConfiguredFeatures.GRONGLE_BUSH.getHolder().get(), tree(8)));
 
     //huge mushrooms
-    public static final RegistryObject<PlacedFeature> HUGE_INDIGO_MUSHROOM = PLACED_FEATURES.register("huge_indigo_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM.getHolder().get(), tree(2)));
+    public static final RegistryObject<PlacedFeature> HUGE_INDIGO_MUSHROOM = PLACED_FEATURES.register("huge_indigo_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM.getHolder().get(), tree(8)));
     public static final RegistryObject<PlacedFeature> HUGE_INDIGO_MUSHROOM_SMOGSTEM_FOREST = PLACED_FEATURES.register("huge_indigo_mushroom_smogstem_forest", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM.getHolder().get(), tree(1)));
-    public static final RegistryObject<PlacedFeature> HUGE_VEIL_MUSHROOM = PLACED_FEATURES.register("huge_veil_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_VEIL_MUSHROOM.getHolder().get(), tree(2)));
-    public static final RegistryObject<PlacedFeature> HUGE_INK_MUSHROOM = PLACED_FEATURES.register("huge_ink_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_INK_MUSHROOM.getHolder().get(), tree(2)));
-    public static final RegistryObject<PlacedFeature> HUGE_BLOOD_MUSHROOM = PLACED_FEATURES.register("huge_blood_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM.getHolder().get(), tree(2)));
+    public static final RegistryObject<PlacedFeature> HUGE_VEIL_MUSHROOM = PLACED_FEATURES.register("huge_veil_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_VEIL_MUSHROOM.getHolder().get(), tree(8)));
+    public static final RegistryObject<PlacedFeature> HUGE_INK_MUSHROOM = PLACED_FEATURES.register("huge_ink_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_INK_MUSHROOM.getHolder().get(), tree(8)));
+    public static final RegistryObject<PlacedFeature> HUGE_BLOOD_MUSHROOM = PLACED_FEATURES.register("huge_blood_mushroom", () -> new PlacedFeature(UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM.getHolder().get(), tree(8)));
 
     //rocks
     public static final RegistryObject<PlacedFeature> DEPTHROCK_ROCK = PLACED_FEATURES.register("depthrock_rock", () -> new PlacedFeature(UGConfiguredFeatures.DEPTHROCK_ROCK.getHolder().get(), patch(5)));

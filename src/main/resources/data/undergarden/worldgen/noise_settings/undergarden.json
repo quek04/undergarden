@@ -213,7 +213,8 @@
           "type": "minecraft:biome",
           "biome_is": [
             "undergarden:frostfields",
-            "undergarden:icy_sea"
+            "undergarden:icy_sea",
+            "undergarden:veil_mushroom_bog"
           ]
         },
         "then_run": {
@@ -264,7 +265,8 @@
           "type": "minecraft:biome",
           "biome_is": [
             "undergarden:barren_abyss",
-            "undergarden:dead_sea"
+            "undergarden:dead_sea",
+            "undergarden:ink_mushroom_bog"
           ]
         },
         "then_run": {

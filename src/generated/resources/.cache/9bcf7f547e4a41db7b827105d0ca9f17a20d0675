@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-15T17:32:17.6322622	Undergarden Block Tags
+// 1.19.2	2022-08-17T22:40:52.492156	Undergarden Block Tags
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -36,7 +36,7 @@ f6351c69c0c850e784a6001e86af48b79515252d data/forge/tags/blocks/storage_blocks/f
 810ef04646d83f141fff0d6dd5ae8fa940fe6fcd data/forge/tags/blocks/storage_blocks/regalium.json
 52b5ca18e5f7310e1c9836dfa8911171d203dd17 data/forge/tags/blocks/storage_blocks/utherium.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/animals_spawnable_on.json
-f06baf40f10409223d1f9ae1d0a32008bde5b88c data/minecraft/tags/blocks/bamboo_plantable_on.json
+826d2299db376d2d8ebd105748378fea7ec10f17 data/minecraft/tags/blocks/bamboo_plantable_on.json
 1460a92421526df19c3f3e37eccb55c5f76d4cea data/minecraft/tags/blocks/beacon_base_blocks.json
 9bc9bb5b52ea4e1a1ebcd0b127ebcff2e6180540 data/minecraft/tags/blocks/bee_growables.json
 19e3a21b060d78048a98b1d11bccdd107ff184f0 data/minecraft/tags/blocks/buttons.json
@@ -44,8 +44,8 @@ e93ac353f63e1d7dda2e3613642163624698b8a3 data/minecraft/tags/blocks/climbable.js
 62c40ea267632e8e82f52a31fe05cb49de3176a0 data/minecraft/tags/blocks/coal_ores.json
 6e482a5d5f0aeb43858158efce08e3ece858b898 data/minecraft/tags/blocks/crops.json
 2a9940ae63110d339b9dc8547f89e0dc4d24307e data/minecraft/tags/blocks/diamond_ores.json
-f06baf40f10409223d1f9ae1d0a32008bde5b88c data/minecraft/tags/blocks/dirt.json
-1fc744a86b7712a442a4633ade9b330fd7eec063 data/minecraft/tags/blocks/enderman_holdable.json
+826d2299db376d2d8ebd105748378fea7ec10f17 data/minecraft/tags/blocks/dirt.json
+c680f46111d02a81749eac8cfb3d8447c9970b19 data/minecraft/tags/blocks/enderman_holdable.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/minecraft/tags/blocks/fence_gates.json
 ad402f3052698702139be53e34d3dd9680a875c3 data/minecraft/tags/blocks/flower_pots.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/foxes_spawnable_on.json
@@ -59,7 +59,7 @@ a1d36f4adeb577dbca1af912ed3ca97eefae5716 data/minecraft/tags/blocks/mineable/axe
 78905c3a496e4d94c24d07af3e585bf14688d33b data/minecraft/tags/blocks/mineable/hoe.json
 a134513420d0f934f70db432e2f857deb9e43b7a data/minecraft/tags/blocks/mineable/pickaxe.json
 69d2571d2d15a8aefb59f5d5ba8c0d1952690da0 data/minecraft/tags/blocks/mineable/shovel.json
-71d43bd7693322591958d1bf64643dffd825720a data/minecraft/tags/blocks/mushroom_grow_block.json
+6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/mushroom_grow_block.json
 d9d7618c3b761eb6be22a82adc7cb33b8bf129a7 data/minecraft/tags/blocks/needs_iron_tool.json
 e23b33feabca15116fe540dfbb0dd952f858707f data/minecraft/tags/blocks/needs_stone_tool.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/parrots_spawnable_on.json

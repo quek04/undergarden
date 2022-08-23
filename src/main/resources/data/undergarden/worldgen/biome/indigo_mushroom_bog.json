@@ -6,11 +6,11 @@
   "creature_spawn_probability": 0.5,
   "effects": {
     "sky_color": 1186057,
-    "fog_color": 1640729,
+    "fog_color": 2432083,
     "water_color": 342306,
     "water_fog_color": 332810,
-    "grass_color": 5265970,
-    "foliage_color": 5265970,
+    "grass_color": 4212845,
+    "foliage_color": 4212845,
     "ambient_sound": "undergarden:ambient.undergarden",
     "mood_sound": {
       "sound": "undergarden:ambient.mood",
@@ -134,10 +134,8 @@
       "undergarden:veil_mushroom_patch",
       "undergarden:droopvine_patch",
       "undergarden:gloomgourd_patch",
-      "undergarden:huge_blood_mushroom",
       "undergarden:huge_indigo_mushroom",
-      "undergarden:huge_ink_mushroom",
-      "undergarden:huge_veil_mushroom"
+      "undergarden:smogstem_bush"
     ],
     []
   ]
