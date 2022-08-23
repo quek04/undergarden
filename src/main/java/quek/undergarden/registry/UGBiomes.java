@@ -15,15 +15,18 @@ public class UGBiomes {
 
     public static final ResourceKey<Biome> ANCIENT_SEA = register("ancient_sea");
     public static final ResourceKey<Biome> BARREN_ABYSS = register("barren_abyss");
+    public static final ResourceKey<Biome> BLOOD_MUSHROOM_BOG = register("blood_mushroom_bog");
     public static final ResourceKey<Biome> DEAD_SEA = register("dead_sea");
     public static final ResourceKey<Biome> DENSE_FOREST = register("dense_forest");
     public static final ResourceKey<Biome> FORGOTTEN_FIELD = register("forgotten_field");
     public static final ResourceKey<Biome> FROSTFIELDS = register("frostfields");
     public static final ResourceKey<Biome> GRONGLEGROWTH = register("gronglegrowth");
     public static final ResourceKey<Biome> ICY_SEA = register("icy_sea");
-    public static final ResourceKey<Biome> MUSHROOM_BOG = register("mushroom_bog");
+    public static final ResourceKey<Biome> INDIGO_MUSHROOM_BOG = register("indigo_mushroom_bog");
+    public static final ResourceKey<Biome> INK_MUSHROOM_BOG = register("ink_mushroom_bog");
     public static final ResourceKey<Biome> SMOGSTEM_FOREST = register("smogstem_forest");
     public static final ResourceKey<Biome> SMOG_SPIRES = register("smog_spires");
+    public static final ResourceKey<Biome> VEIL_MUSHROOM_BOG = register("veil_mushroom_bog");
     public static final ResourceKey<Biome> WIGGLEWOOD_FOREST = register("wigglewood_forest");
 
     private static ResourceLocation name(String name) {
