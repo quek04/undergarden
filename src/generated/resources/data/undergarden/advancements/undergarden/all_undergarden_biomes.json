@@ -33,6 +33,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "undergarden:blood_mushroom_bog": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:blood_mushroom_bog"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "undergarden:dead_sea": {
       "conditions": {
         "player": [
@@ -129,7 +145,7 @@
       },
       "trigger": "minecraft:location"
     },
-    "undergarden:mushroom_bog": {
+    "undergarden:indigo_mushroom_bog": {
       "conditions": {
         "player": [
           {
@@ -137,7 +153,23 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:mushroom_bog"
+                "biome": "undergarden:indigo_mushroom_bog"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:ink_mushroom_bog": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:ink_mushroom_bog"
               }
             }
           }
@@ -170,6 +202,22 @@
             "predicate": {
               "location": {
                 "biome": "undergarden:smogstem_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "undergarden:veil_mushroom_bog": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:veil_mushroom_bog"
               }
             }
           }
@@ -236,7 +284,7 @@
       "undergarden:icy_sea"
     ],
     [
-      "undergarden:mushroom_bog"
+      "undergarden:blood_mushroom_bog"
     ],
     [
       "undergarden:smog_spires"
@@ -246,6 +294,15 @@
     ],
     [
       "undergarden:wigglewood_forest"
+    ],
+    [
+      "undergarden:indigo_mushroom_bog"
+    ],
+    [
+      "undergarden:ink_mushroom_bog"
+    ],
+    [
+      "undergarden:veil_mushroom_bog"
     ]
   ]
 }
