@@ -210,6 +210,9 @@ public class UGLootTables extends LootTableProvider {
             dropPottedContents(UGBlocks.POTTED_INK_MUSHROOM.get());
             dropPottedContents(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
             dropPottedContents(UGBlocks.POTTED_GRONGLE_SAPLING.get());
+            dropPottedContents(UGBlocks.POTTED_AMOROUS_BRISTLE.get());
+            dropPottedContents(UGBlocks.POTTED_MISERABELL.get());
+            dropPottedContents(UGBlocks.POTTED_BUTTERBUNCH.get());
             dropWithSilk(UGBlocks.FROZEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             this.add(UGBlocks.FROZEN_DEEPTURF.get(), BlockLoot::createShearsOnlyDrop);
             dropSelf(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);

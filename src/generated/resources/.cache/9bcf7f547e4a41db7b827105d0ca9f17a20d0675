@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-24T09:18:54.2709852	Undergarden Block Tags
+// 1.19.2	2022-08-24T15:03:25.4269743	Undergarden Block Tags
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -47,7 +47,7 @@ e93ac353f63e1d7dda2e3613642163624698b8a3 data/minecraft/tags/blocks/climbable.js
 826d2299db376d2d8ebd105748378fea7ec10f17 data/minecraft/tags/blocks/dirt.json
 c680f46111d02a81749eac8cfb3d8447c9970b19 data/minecraft/tags/blocks/enderman_holdable.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/minecraft/tags/blocks/fence_gates.json
-ad402f3052698702139be53e34d3dd9680a875c3 data/minecraft/tags/blocks/flower_pots.json
+7d12a1afbc6a51e4f3d7d92c1a9c80c8a9c3692b data/minecraft/tags/blocks/flower_pots.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/foxes_spawnable_on.json
 1ff4fda258af9af2b26506246439633b3440f264 data/minecraft/tags/blocks/gold_ores.json
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/blocks/impermeable.json
