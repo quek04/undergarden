@@ -23,31 +23,12 @@ import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGFluids;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 import java.util.function.Function;
 
 public class UGCaveWorldCarver extends CaveWorldCarver {
 
     public UGCaveWorldCarver(Codec<CaveCarverConfiguration> configCodec) {
         super(configCodec);
-        /*this.replaceableBlocks = ImmutableSet.of(
-                UGBlocks.DEPTHROCK.get(),
-                UGBlocks.SHIVERSTONE.get(),
-                UGBlocks.DEEPTURF_BLOCK.get(),
-                UGBlocks.ASHEN_DEEPTURF_BLOCK.get(),
-                UGBlocks.FROZEN_DEEPTURF_BLOCK.get(),
-                UGBlocks.DEEPSOIL.get(),
-                UGBlocks.DEPTHROCK_COAL_ORE.get(),
-                UGBlocks.DEPTHROCK_IRON_ORE.get(),
-                UGBlocks.DEPTHROCK_GOLD_ORE.get(),
-                UGBlocks.DEPTHROCK_DIAMOND_ORE.get(),
-                UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(),
-                UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get(),
-                UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(),
-                UGBlocks.DEPTHROCK_REGALIUM_ORE.get(),
-                UGBlocks.SEDIMENT.get(),
-                UGBlocks.COARSE_DEEPSOIL.get()
-        );*/
         this.liquids = ImmutableSet.of(
                 Fluids.WATER
         );
