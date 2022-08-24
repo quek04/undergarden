@@ -243,7 +243,9 @@ public class UGLang extends LanguageProvider {
 
         addBlock(UGBlocks.GRONGLET, "Gronglet");
 
-        add("fluid.undergarden.virulent_mix_source", "Virulent Mix");
+        addBlock(UGBlocks.VIRULENT_MIX, "Virulent Mix");
+
+        addBlock(UGBlocks.VIRULENT_MIX_CAULDRON, "Virulent Mix Cauldron");
 
         addItem(UGItems.MAMMOTH_DISC, "Music Disc");
         add(UGItems.MAMMOTH_DISC.get().getDescriptionId() + ".desc", "Screem - Mammoth");
@@ -372,15 +374,18 @@ public class UGLang extends LanguageProvider {
 
         addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
         addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
+        addBiome(UGBiomes.BLOOD_MUSHROOM_BOG, "Blood Mushroom Bog");
         addBiome(UGBiomes.DEAD_SEA, "Dead Sea");
         addBiome(UGBiomes.DENSE_FOREST, "Dense Forest");
         addBiome(UGBiomes.FORGOTTEN_FIELD, "Forgotten Field");
         addBiome(UGBiomes.FROSTFIELDS, "Frostfields");
         addBiome(UGBiomes.GRONGLEGROWTH, "Gronglegrowth");
         addBiome(UGBiomes.ICY_SEA, "Icy Sea");
-        addBiome(UGBiomes.BLOOD_MUSHROOM_BOG, "Mushroom Bog");
+        addBiome(UGBiomes.INDIGO_MUSHROOM_BOG, "Indigo Mushroom Bog");
+        addBiome(UGBiomes.INK_MUSHROOM_BOG, "Ink Mushroom Bog");
         addBiome(UGBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
         addBiome(UGBiomes.SMOG_SPIRES, "Smog Spires");
+        addBiome(UGBiomes.VEIL_MUSHROOM_BOG, "Veil Mushroom Bog");
         addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 
         addEntityType(UGEntityTypes.BOAT, "Boat");
