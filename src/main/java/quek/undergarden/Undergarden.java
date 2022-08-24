@@ -95,6 +95,7 @@ public class Undergarden {
 		event.enqueueWork(() -> {
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
+			UGCauldronInteractions.register();
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();

@@ -266,6 +266,10 @@ public class UGBlocks {
     public static final RegistryObject<LiquidBlock> VIRULENT_MIX = BLOCKS.register("virulent_mix", () -> new VirulentMixBlock(
             UGFluids.VIRULENT_MIX_SOURCE, BlockBehaviour.Properties.of(Material.WATER)));
 
+    //cauldrons
+    public static final RegistryObject<Block> VIRULENT_MIX_CAULDRON = BLOCKS.register("virulent_mix_cauldron", () -> new VirulentMixCauldronBlock(
+            BlockBehaviour.Properties.copy(Blocks.CAULDRON).lightLevel((state) -> 10).randomTicks()));
+
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);
         UGItems.ITEMS.register(name, item.apply(register));
