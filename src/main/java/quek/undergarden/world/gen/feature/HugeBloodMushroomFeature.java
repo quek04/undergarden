@@ -1,22 +1,29 @@
 package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.AbstractHugeMushroomFeature;
 import net.minecraft.world.level.levelgen.feature.HugeRedMushroomFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
 import quek.undergarden.registry.UGBlocks;
-
-import java.util.Random;
 
 public class HugeBloodMushroomFeature extends HugeRedMushroomFeature {
 
     public HugeBloodMushroomFeature(Codec<HugeMushroomFeatureConfiguration> codec) {
         super(codec);
+    }
+
+    @Override
+    protected int getTreeHeight(RandomSource random) {
+        int i = random.nextInt(3) + 7;
+        if (random.nextInt(12) == 0) {
+            i *= 2;
+        }
+
+        return i;
     }
 
     @Override

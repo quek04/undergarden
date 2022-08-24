@@ -344,7 +344,8 @@
           "type": "minecraft:biome",
           "biome_is": [
             "undergarden:frostfields",
-            "undergarden:icy_sea"
+            "undergarden:icy_sea",
+            "undergarden:veil_mushroom_bog"
           ]
         },
         "then_run": {

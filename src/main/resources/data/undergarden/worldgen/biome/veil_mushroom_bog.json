@@ -100,7 +100,9 @@
   "features": [
     [],
     [],
-    [],
+    [
+      "undergarden:ice_pillar"
+    ],
     [],
     [
       "undergarden:bog_delta"
