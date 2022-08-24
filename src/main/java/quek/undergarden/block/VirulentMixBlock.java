@@ -26,9 +26,9 @@ public class VirulentMixBlock extends LiquidBlock {
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if(entity.isAlive() && entity instanceof LivingEntity livingEntity) {
-            if(livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX)) {}
-            else if(livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) {}
-            else livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 0));
+            if(livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX) || livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get()))
+                return;
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 0));
         }
     }
 

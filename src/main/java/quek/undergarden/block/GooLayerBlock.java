@@ -23,8 +23,6 @@ import quek.undergarden.entity.animal.Scintling;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
 
-import java.util.Random;
-
 public class GooLayerBlock extends Block {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
@@ -37,8 +35,9 @@ public class GooLayerBlock extends Block {
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if(entity instanceof Player && ((Player) entity).getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((Player) entity).hasEffect(UGEffects.GOOEY.get())) { }
-        else if(!(entity instanceof Scintling) && entity.isOnGround()) {
+        if(entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY.get()))
+            return;
+        if(!(entity instanceof Scintling) && entity.isOnGround()) {
             entity.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
         }
     }
