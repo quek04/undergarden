@@ -2,6 +2,7 @@ package quek.undergarden.block;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
@@ -21,22 +22,70 @@ public class UGBlockEvents {
         if (!event.isSimulated()) {
             if (action == ToolActions.AXE_STRIP) {
                 if (state.is(UGBlocks.SMOGSTEM_LOG.get())) {
-                    event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().defaultBlockState());
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.X) {
+                        event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y) {
+                        event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Z) {
+                        event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+                    }
                 }
                 if (state.is(UGBlocks.SMOGSTEM_WOOD.get())) {
-                    event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().defaultBlockState());
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.X) {
+                        event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y) {
+                        event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Z) {
+                        event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+                    }
                 }
                 if (state.is(UGBlocks.WIGGLEWOOD_LOG.get())) {
-                    event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().defaultBlockState());
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.X) {
+                        event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y) {
+                        event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Z) {
+                        event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+                    }
                 }
                 if (state.is(UGBlocks.WIGGLEWOOD_WOOD.get())) {
-                    event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().defaultBlockState());
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.X) {
+                        event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y) {
+                        event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Z) {
+                        event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+                    }
                 }
                 if (state.is(UGBlocks.GRONGLE_LOG.get())) {
-                    event.setFinalState(UGBlocks.STRIPPED_GRONGLE_LOG.get().defaultBlockState());
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.X) {
+                        event.setFinalState(UGBlocks.STRIPPED_GRONGLE_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y) {
+                        event.setFinalState(UGBlocks.STRIPPED_GRONGLE_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Z) {
+                        event.setFinalState(UGBlocks.STRIPPED_GRONGLE_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+                    }
                 }
                 if (state.is(UGBlocks.GRONGLE_WOOD.get())) {
-                    event.setFinalState(UGBlocks.STRIPPED_GRONGLE_WOOD.get().defaultBlockState());
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.X) {
+                        event.setFinalState(UGBlocks.STRIPPED_GRONGLE_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y) {
+                        event.setFinalState(UGBlocks.STRIPPED_GRONGLE_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
+                    }
+                    if (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Z) {
+                        event.setFinalState(UGBlocks.STRIPPED_GRONGLE_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+                    }
                 }
             }
             if (action == ToolActions.HOE_TILL && (context.getClickedFace() != Direction.DOWN && context.getLevel().getBlockState(context.getClickedPos().above()).isAir())) {
