@@ -33,11 +33,6 @@ public class UGPlacedFeatures {
     public static final RegistryObject<PlacedFeature> ICE_ORE = PLACED_FEATURES.register("ice_ore", () -> new PlacedFeature(UGConfiguredFeatures.ICE_ORE.getHolder().get(), OrePlacements.commonOrePlacement(20, PlacementUtils.FULL_RANGE)));
     public static final RegistryObject<PlacedFeature> SEDIMENT_ORE = PLACED_FEATURES.register("sediment_ore", () -> new PlacedFeature(UGConfiguredFeatures.SEDIMENT_ORE.getHolder().get(), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)))));
 
-    //springs
-    public static final RegistryObject<PlacedFeature> SPRING = PLACED_FEATURES.register("spring", () -> new PlacedFeature(UGConfiguredFeatures.SPRING.getHolder().get(), List.of(CountPlacement.of(20), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome())));
-    public static final RegistryObject<PlacedFeature> VIRULENT_MIX_SPRING = PLACED_FEATURES.register("virulent_mix_spring", () -> new PlacedFeature(UGConfiguredFeatures.VIRULENT_MIX_SPRING.getHolder().get(), List.of(CountPlacement.of(20), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome())));
-    public static final RegistryObject<PlacedFeature> VIRULENT_MIX_BOG_SPRING = PLACED_FEATURES.register("virulent_mix_bog_spring", () -> new PlacedFeature(UGConfiguredFeatures.VIRULENT_MIX_SPRING.getHolder().get(), List.of(CountPlacement.of(25), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome())));
-
     //deltas
     public static final RegistryObject<PlacedFeature> BOG_DELTA = PLACED_FEATURES.register("bog_delta", () -> new PlacedFeature(UGConfiguredFeatures.BOG_DELTA.getHolder().get(), List.of(CountOnEveryLayerPlacement.of(40), BiomeFilter.biome())));
     public static final RegistryObject<PlacedFeature> GRONGLEGROWTH_DELTA = PLACED_FEATURES.register("gronglegrowth_delta", () -> new PlacedFeature(UGConfiguredFeatures.GRONGLEGROWTH_DELTA.getHolder().get(), List.of(CountOnEveryLayerPlacement.of(40), BiomeFilter.biome())));

@@ -74,14 +74,6 @@
         "maxCount": 1
       }
     ],
-    "creature": [
-      {
-        "type": "undergarden:gloomper",
-        "weight": 100,
-        "minCount": 8,
-        "maxCount": 8
-      }
-    ],
     "ambient": [
       {
         "type": "undergarden:scintling",
@@ -121,9 +113,7 @@
       "undergarden:regalium_ore"
     ],
     [],
-    [
-      "undergarden:virulent_mix_bog_spring"
-    ],
+    [],
     [
       "undergarden:depthrock_pebble_patch",
       "undergarden:ditchbulb_patch",

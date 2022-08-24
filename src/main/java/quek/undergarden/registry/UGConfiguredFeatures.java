@@ -1,7 +1,6 @@
 package quek.undergarden.registry;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -24,7 +23,6 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPl
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
@@ -60,10 +58,6 @@ public class UGConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> DEEPSOIL_ORE = CONFIGURED_FEATURES.register("deepsoil_ore", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(BASE_STONE_UNDERGARDEN, UGBlocks.DEEPSOIL.get().defaultBlockState(), 33)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ICE_ORE = CONFIGURED_FEATURES.register("ice_ore", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(BASE_STONE_UNDERGARDEN, Blocks.PACKED_ICE.defaultBlockState(), 33)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> SEDIMENT_ORE = CONFIGURED_FEATURES.register("sediment_ore", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(BASE_STONE_UNDERGARDEN, UGBlocks.SEDIMENT.get().defaultBlockState(), 33)));
-
-    //springs
-    public static final RegistryObject<ConfiguredFeature<?, ?>> SPRING = CONFIGURED_FEATURES.register("spring", () -> new ConfiguredFeature<>(Feature.SPRING, new SpringConfiguration(Fluids.WATER.defaultFluidState(), false, 4, 1, HolderSet.direct(Block::builtInRegistryHolder, UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.DEEPSOIL.get()))));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> VIRULENT_MIX_SPRING = CONFIGURED_FEATURES.register("virulent_mix_spring", () -> new ConfiguredFeature<>(Feature.SPRING, new SpringConfiguration(UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState(), false, 4, 1, HolderSet.direct(Block::builtInRegistryHolder, UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.DEEPSOIL.get()))));
 
     //deltas
     public static final RegistryObject<ConfiguredFeature<?, ?>> BOG_DELTA = CONFIGURED_FEATURES.register("bog_delta", () -> new ConfiguredFeature<>(UGFeatures.DELTA.get(), new DeltaFeatureConfiguration(UGBlocks.VIRULENT_MIX.get().defaultBlockState(), UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState(), UniformInt.of(6, 8), UniformInt.of(2, 4))));
