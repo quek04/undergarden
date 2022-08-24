@@ -70,9 +70,9 @@ public class UGConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> GRONGLEGROWTH_DELTA = CONFIGURED_FEATURES.register("gronglegrowth_delta", () -> new ConfiguredFeature<>(UGFeatures.DELTA.get(), new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), UGBlocks.SEDIMENT.get().defaultBlockState(), UniformInt.of(3, 4), UniformInt.of(2, 4))));
 
     //vegetation
-    public static final RegistryObject<ConfiguredFeature<?, ?>> AMOROUS_BRISTLE_PATCH = CONFIGURED_FEATURES.register("amorous_bristle_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.AMOROUS_BRISTLE.get(), 64)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> MISERABELL_PATCH = CONFIGURED_FEATURES.register("miserabell_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.MISERABELL.get(), 64)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> BUTTERBUNCH_PATCH = CONFIGURED_FEATURES.register("butterbunch_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.BUTTERBUNCH.get(), 64)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> AMOROUS_BRISTLE_PATCH = CONFIGURED_FEATURES.register("amorous_bristle_patch", () -> new ConfiguredFeature<>(Feature.FLOWER, patch(UGBlocks.AMOROUS_BRISTLE.get(), 64)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> MISERABELL_PATCH = CONFIGURED_FEATURES.register("miserabell_patch", () -> new ConfiguredFeature<>(Feature.FLOWER, patch(UGBlocks.MISERABELL.get(), 64)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BUTTERBUNCH_PATCH = CONFIGURED_FEATURES.register("butterbunch_patch", () -> new ConfiguredFeature<>(Feature.FLOWER, patch(UGBlocks.BUTTERBUNCH.get(), 64)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> DEEPTURF_PATCH = CONFIGURED_FEATURES.register("deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DEEPTURF.get(), 64)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ASHEN_DEEPTURF_PATCH = CONFIGURED_FEATURES.register("ashen_deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.ASHEN_DEEPTURF.get(), 64)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> FROZEN_DEEPTURF_PATCH = CONFIGURED_FEATURES.register("frozen_deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.FROZEN_DEEPTURF.get(), 64)));

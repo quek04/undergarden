@@ -141,9 +141,9 @@ public class UGBlocks {
     public static final RegistryObject<Block> CLOGGRUM_LANTERN = register("cloggrum_lantern", () -> new CloggrumLanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN)));
 
     //plants
-    public static final RegistryObject<Block> AMOROUS_BRISTLE = register("amorous_bristle", () -> new UGPlantBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)));
-    public static final RegistryObject<Block> MISERABELL = register("miserabell", () -> new UGPlantBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)));
-    public static final RegistryObject<Block> BUTTERBUNCH = register("butterbunch", () -> new UGPlantBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+    public static final RegistryObject<Block> AMOROUS_BRISTLE = register("amorous_bristle", () -> new UGFlowerBlock(BlockBehaviour.Properties.copy(Blocks.POPPY)));
+    public static final RegistryObject<Block> MISERABELL = register("miserabell", () -> new UGFlowerBlock(BlockBehaviour.Properties.copy(Blocks.CORNFLOWER)));
+    public static final RegistryObject<Block> BUTTERBUNCH = register("butterbunch", () -> new UGFlowerBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistryObject<Block> UNDERBEAN_BUSH = BLOCKS.register("underbean_bush", () -> new UnderbeanBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
     public static final RegistryObject<Block> BLISTERBERRY_BUSH = BLOCKS.register("blisterberry_bush", () -> new BlisterberryBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH).lightLevel((state) -> 6)));
     public static final RegistryObject<Block> DEEPTURF = register("deepturf", () -> new UGPlantBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)));
