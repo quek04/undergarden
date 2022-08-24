@@ -86,11 +86,11 @@ public class Undergarden {
 	public void setup(FMLCommonSetupEvent event) {
 		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
 				ForgeMod.WATER_TYPE.get(),
-				fluidState -> UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState()
+				fluidState -> UGBlocks.DEPTHROCK.get().defaultBlockState()
 		));
 		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
 				ForgeMod.LAVA_TYPE.get(),
-				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState()
+				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
 			UGEntityTypes.spawnPlacements();
