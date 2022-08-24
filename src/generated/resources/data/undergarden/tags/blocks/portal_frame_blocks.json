@@ -1,9 +1,14 @@
 {
   "values": [
     "minecraft:stone_bricks",
+    "minecraft:mossy_stone_bricks",
     "minecraft:deepslate_bricks",
+    "minecraft:deepslate_tiles",
+    "minecraft:polished_deepslate",
+    "minecraft:reinforced_deepslate",
     "undergarden:depthrock_bricks",
-    "undergarden:shiverstone_bricks",
-    "#minecraft:stone_bricks"
+    "undergarden:depthrock_tiles",
+    "undergarden:polished_depthrock",
+    "undergarden:shiverstone_bricks"
   ]
 }
