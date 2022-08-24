@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-17T22:40:52.492156	Undergarden Block Tags
+// 1.19.2	2022-08-24T09:18:54.2709852	Undergarden Block Tags
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -57,7 +57,7 @@ bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/blocks/impermeable.
 9479ebbe396f89b63bb5a43f52770666961999c9 data/minecraft/tags/blocks/logs_that_burn.json
 a1d36f4adeb577dbca1af912ed3ca97eefae5716 data/minecraft/tags/blocks/mineable/axe.json
 78905c3a496e4d94c24d07af3e585bf14688d33b data/minecraft/tags/blocks/mineable/hoe.json
-a134513420d0f934f70db432e2f857deb9e43b7a data/minecraft/tags/blocks/mineable/pickaxe.json
+62770b51c9c1e3fa425ae8147f05c9507da0046b data/minecraft/tags/blocks/mineable/pickaxe.json
 69d2571d2d15a8aefb59f5d5ba8c0d1952690da0 data/minecraft/tags/blocks/mineable/shovel.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/mushroom_grow_block.json
 d9d7618c3b761eb6be22a82adc7cb33b8bf129a7 data/minecraft/tags/blocks/needs_iron_tool.json

@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-15T17:32:17.6352649	Undergarden Loot Tables
+// 1.19.2	2022-08-24T09:18:54.2679822	Undergarden Loot Tables
 41ed64c053d947752331444f709eaaa1d2475d33 data/undergarden/loot_tables/blocks/amorous_bristle.json
 7df034228d77c0bcf64cf642af38b510a5e0dd85 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 bdf7d335fce989c44cbf4347f37ec83cf12de1f1 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -167,6 +167,7 @@ e8cf89794d57e0e426a7d25fd39791be04f3da78 data/undergarden/loot_tables/blocks/tre
 c891b4509136c8ccfe850afb9d634fceab673e86 data/undergarden/loot_tables/blocks/veil_mushroom.json
 5fe38afb95c77bdcfc7541d6f7b4f2a6e7ee029f data/undergarden/loot_tables/blocks/veil_mushroom_cap.json
 c49d7474023fad857444347639d35e6f72a77a4e data/undergarden/loot_tables/blocks/veil_mushroom_stalk.json
+548d115eeb79b74d3fbe03951bdc179110ed6f8a data/undergarden/loot_tables/blocks/virulent_mix_cauldron.json
 98a3076e0e78fedaf6d65cc46c645c4732961371 data/undergarden/loot_tables/blocks/wigglewood_button.json
 38b6c8eee83d7daf16d06d14c959b1a4ed5a4369 data/undergarden/loot_tables/blocks/wigglewood_door.json
 f478a97db3e668745d77951c615b1e0fe29dd976 data/undergarden/loot_tables/blocks/wigglewood_fence.json

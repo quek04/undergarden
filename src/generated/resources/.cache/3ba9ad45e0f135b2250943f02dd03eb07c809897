@@ -1,0 +1,16 @@
+// 1.19.2	2022-08-24T10:18:50.8422885	Undergarden Biome Tags
+3de4db43e1661fb8ad0d36a49f5104891ed25f0d data/forge/tags/worldgen/biome/is_cold.json
+42001210d5ad1149f5fb5cb9dffe6564614c7695 data/forge/tags/worldgen/biome/is_dead.json
+6f78cd66c74e627e66315a0549b09fe517deb3ee data/forge/tags/worldgen/biome/is_dense.json
+2fee8824f5a992e8d7f7b556edb4b5460cb8c7bb data/forge/tags/worldgen/biome/is_dry.json
+695f11a0f6e6f4dce23624d808f5781272bf1aed data/forge/tags/worldgen/biome/is_plains.json
+5e924b95d4533cfb3d6c307dc0d334aea7a2eccd data/forge/tags/worldgen/biome/is_sparse.json
+a6b4457bfa551000bef81d626ebe467e3fb631b6 data/forge/tags/worldgen/biome/is_swamp.json
+2b780e05f235f261d8b9940e1c30dc02e3bff390 data/forge/tags/worldgen/biome/is_wasteland.json
+d2cd5daf6f9d3b478d982dfbc2d0d27eaac1d4f8 data/forge/tags/worldgen/biome/is_water.json
+00d16264a5237696ee7ad5aa1bfd1ec1d481056d data/minecraft/tags/worldgen/biome/is_forest.json
+bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_patrol_spawns.json
+bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_wandering_trader_spawns.json
+bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_zombie_sieges.json
+fb492fb26cd1d10641f6696b90b914c9449c328f data/undergarden/tags/worldgen/biome/has_structure/catacombs.json
+3096203bae4053bbc1e72d46a7c5deeaba1bf4f5 data/undergarden/tags/worldgen/biome/is_undergarden.json

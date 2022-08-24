@@ -120,5 +120,15 @@ public class UGItemTags extends ItemTagsProvider {
         tag(Tags.Items.SAND).add(UGBlocks.SEDIMENT.get().asItem());
         tag(Tags.Items.SAND_COLORLESS).add(UGBlocks.SEDIMENT.get().asItem());
         tag(Tags.Items.RAW_MATERIALS).addTags(UGTags.Items.RAW_MATERIALS_CLOGGRUM, UGTags.Items.RAW_MATERIALS_FROSTSTEEL);
+        tag(Tags.Items.TOOLS_SWORDS).add(UGItems.CLOGGRUM_SWORD.get(), UGItems.FROSTSTEEL_SWORD.get(), UGItems.UTHERIUM_SWORD.get(), UGItems.FORGOTTEN_SWORD.get());
+        tag(Tags.Items.TOOLS_PICKAXES).add(UGItems.CLOGGRUM_PICKAXE.get(), UGItems.FROSTSTEEL_PICKAXE.get(), UGItems.UTHERIUM_PICKAXE.get(), UGItems.FORGOTTEN_PICKAXE.get());
+        tag(Tags.Items.TOOLS_AXES).add(UGItems.CLOGGRUM_AXE.get(), UGItems.FROSTSTEEL_AXE.get(), UGItems.UTHERIUM_AXE.get(), UGItems.FORGOTTEN_AXE.get());
+        tag(Tags.Items.TOOLS_SHOVELS).add(UGItems.CLOGGRUM_SHOVEL.get(), UGItems.FROSTSTEEL_SHOVEL.get(), UGItems.UTHERIUM_SHOVEL.get(), UGItems.FORGOTTEN_SHOVEL.get());
+        tag(Tags.Items.TOOLS_HOES).add(UGItems.CLOGGRUM_HOE.get(), UGItems.FROSTSTEEL_HOE.get(), UGItems.UTHERIUM_HOE.get(), UGItems.FORGOTTEN_HOE.get());
+        tag(Tags.Items.TOOLS_SHIELDS).add(UGItems.CLOGGRUM_SHIELD.get());
+        tag(Tags.Items.ARMORS_HELMETS).add(UGItems.CLOGGRUM_HELMET.get(), UGItems.FROSTSTEEL_HELMET.get(), UGItems.UTHERIUM_HELMET.get());
+        tag(Tags.Items.ARMORS_CHESTPLATES).add(UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.FROSTSTEEL_CHESTPLATE.get(), UGItems.UTHERIUM_CHESTPLATE.get(), UGItems.MASTICATED_CHESTPLATE.get());
+        tag(Tags.Items.ARMORS_LEGGINGS).add(UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.FROSTSTEEL_LEGGINGS.get(), UGItems.UTHERIUM_LEGGINGS.get());
+        tag(Tags.Items.ARMORS_BOOTS).add(UGItems.CLOGGRUM_BOOTS.get(), UGItems.FROSTSTEEL_BOOTS.get(), UGItems.UTHERIUM_BOOTS.get());
     }
 }

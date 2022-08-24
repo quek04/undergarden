@@ -124,6 +124,8 @@ public class UGTags {
 
     public static class Biomes {
 
+        public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
+
         public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
 
         private static TagKey<Biome> tag(String name) {

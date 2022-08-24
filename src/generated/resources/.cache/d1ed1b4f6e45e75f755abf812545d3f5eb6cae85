@@ -1,4 +1,8 @@
-// 1.19.2	2022-08-15T17:32:17.6342641	Undergarden Item Tags
+// 1.19.2	2022-08-24T09:18:54.2729871	Undergarden Item Tags
+9b86bbc17df24411b53ea716b5b6b343f35d5caa data/forge/tags/items/armors/boots.json
+af8f07accb2d83fca68d1c3b0e34b65fb0d627c2 data/forge/tags/items/armors/chestplates.json
+190c6df9b3c9fce666bd129e9f9cc22ab09fa9ee data/forge/tags/items/armors/helmets.json
+b88ca5598b53a7cd0bea0bbd641d84b061e92198 data/forge/tags/items/armors/leggings.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/forge/tags/items/bones.json
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/items/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/items/fences/wooden.json
@@ -44,6 +48,12 @@ f6351c69c0c850e784a6001e86af48b79515252d data/forge/tags/items/storage_blocks/fr
 810ef04646d83f141fff0d6dd5ae8fa940fe6fcd data/forge/tags/items/storage_blocks/regalium.json
 52b5ca18e5f7310e1c9836dfa8911171d203dd17 data/forge/tags/items/storage_blocks/utherium.json
 9a8cc6c956febccfd19957093f57ae05f2a7b2d0 data/forge/tags/items/string.json
+c20555ec5f1be2597700944531daac51da863c5b data/forge/tags/items/tools/axes.json
+8fb4b3f3cc997c22a634002b26f4507d3aba1852 data/forge/tags/items/tools/hoes.json
+0d42b6d280281c95f545b1f531eaa606226ce75d data/forge/tags/items/tools/pickaxes.json
+95614f7be0548fd714fe5df83aef6ba61df54614 data/forge/tags/items/tools/shields.json
+ae68b39bd6519aabb8beaf43408ee4e9f8eed518 data/forge/tags/items/tools/shovels.json
+f8741fc12c99d7e2f904a1ce55c7aa5ffbd1f333 data/forge/tags/items/tools/swords.json
 8c08daec4cb74d7ceb504552c74bb474623e6b3d data/minecraft/tags/items/beacon_payment_items.json
 571f6c52db76e7be76a61070ebe78e606bac244e data/minecraft/tags/items/boats.json
 a87a49ce98c8d86d8b65fd56423bffd073a37722 data/minecraft/tags/items/buttons.json
