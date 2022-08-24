@@ -29,7 +29,8 @@ public class UGDeltaFeature extends DeltaFeature {
             UGBlocks.INK_MUSHROOM_CAP.get(),
             UGBlocks.VEIL_MUSHROOM_CAP.get(),
             UGBlocks.DEPTHROCK.get(),
-            UGBlocks.SHIVERSTONE.get()
+            UGBlocks.SHIVERSTONE.get(),
+            UGBlocks.BLOOD_MUSHROOM_GLOBULE.get()
     );
 
     private static final Direction[] DIRECTIONS = Direction.values();
