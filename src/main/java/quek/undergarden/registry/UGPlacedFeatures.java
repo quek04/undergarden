@@ -83,7 +83,6 @@ public class UGPlacedFeatures {
 
     //misc
     public static final RegistryObject<PlacedFeature> SMOG_VENT = PLACED_FEATURES.register("smog_vent", () -> new PlacedFeature(UGConfiguredFeatures.SMOG_VENT.getHolder().get(), tree(8)));
-    public static final RegistryObject<PlacedFeature> SMOG_VENT_INK_BOG = PLACED_FEATURES.register("smog_vent_ink_bog", () -> new PlacedFeature(UGConfiguredFeatures.SMOG_VENT.getHolder().get(), tree(4)));
     public static final RegistryObject<PlacedFeature> ICE_PILLAR = PLACED_FEATURES.register("ice_pillar", () -> new PlacedFeature(UGConfiguredFeatures.ICE_PILLAR.getHolder().get(), patch(50)));
 
     private static List<PlacementModifier> tree(int count) {
