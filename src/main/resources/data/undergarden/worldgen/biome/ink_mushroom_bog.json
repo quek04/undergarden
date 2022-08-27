@@ -9,9 +9,9 @@
     "fog_color": 1640729,
     "water_color": 342306,
     "water_fog_color": 332810,
-    "grass_color": 7568503,
-    "foliage_color": 7568503,
-    "ambient_sound": "undergarden:ambient.spires",
+    "grass_color": 4075847,
+    "foliage_color": 4075847,
+    "ambient_sound": "undergarden:ambient.abyss",
     "mood_sound": {
       "sound": "undergarden:ambient.mood",
       "tick_delay": 6000,
@@ -92,9 +92,7 @@
   "features": [
     [],
     [],
-    [
-      "undergarden:smog_vent_ink_bog"
-    ],
+    [],
     [],
     [
       "undergarden:bog_delta"

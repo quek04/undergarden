@@ -9,8 +9,8 @@
     "fog_color": 1643784,
     "water_color": 342306,
     "water_fog_color": 332810,
-    "grass_color": 5265970,
-    "foliage_color": 5265970,
+    "grass_color": 6180396,
+    "foliage_color": 6180396,
     "ambient_sound": "undergarden:ambient.undergarden",
     "mood_sound": {
       "sound": "undergarden:ambient.mood",
@@ -122,7 +122,6 @@
     [],
     [
       "undergarden:deepturf_patch",
-      "undergarden:shimmerweed_patch",
       "undergarden:depthrock_pebble_patch",
       "undergarden:ditchbulb_patch",
       "undergarden:tall_deepturf_patch",
