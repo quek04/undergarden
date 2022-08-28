@@ -7,7 +7,7 @@ import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGShieldTiers;
 
 public class UGShieldItem extends ShieldItem {
@@ -18,7 +18,7 @@ public class UGShieldItem extends ShieldItem {
         super(new Properties()
                 .stacksTo(1)
                 .durability(tier.getDurability())
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
                 .rarity(rarity)
         );
         this.shieldTiers = tier;
@@ -29,7 +29,7 @@ public class UGShieldItem extends ShieldItem {
         super(new Properties()
                 .stacksTo(1)
                 .durability(tier.getDurability())
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
         );
         this.shieldTiers = tier;
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSE_ITEM_BEHAVIOR);

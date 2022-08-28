@@ -286,16 +286,16 @@ public class UGBlocks {
     private static <T extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<T> block) {
         return () -> {
             if(Objects.requireNonNull(block.get()) == SHARD_TORCH.get()) {
-                return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties().tab(UGItemGroups.GROUP));
+                return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP));
             }
             else if(Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DEPTHROCK_REGALIUM_ORE.get() || Objects.requireNonNull(block.get()) == SHIVERSTONE_REGALIUM_ORE.get()) {
-                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.UNCOMMON));
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP).rarity(Rarity.UNCOMMON));
             }
             else if(Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
-                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(UGItems.FORGOTTEN));
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP).rarity(UGItems.FORGOTTEN));
             }
             else if(Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
-                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)) {
+                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP).stacksTo(1)) {
                     @Override
                     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
                         consumer.accept(new IClientItemExtensions() {
@@ -308,7 +308,7 @@ public class UGBlocks {
                 };
             }
             else if(Objects.requireNonNull(block.get()) == GRONGLET.get()) {
-                return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
+                return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP)) {
                     @Override
                     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
                         consumer.accept(new IClientItemExtensions() {
@@ -321,7 +321,7 @@ public class UGBlocks {
                 };
             }
             else if(Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
-                return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
+                return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP)) {
                     @Override
                     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
                         consumer.accept(new IClientItemExtensions() {
@@ -354,16 +354,16 @@ public class UGBlocks {
                 };
             }
             else if(Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {
-                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
+                return new SignItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
             }
             else if(Objects.requireNonNull(block.get()) == WIGGLEWOOD_SIGN.get()) {
-                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
+                return new SignItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
             }
             else if(Objects.requireNonNull(block.get()) == GRONGLE_SIGN.get()) {
-                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
+                return new SignItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
             }
             else {
-                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP));
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP));
             }
         };
     }

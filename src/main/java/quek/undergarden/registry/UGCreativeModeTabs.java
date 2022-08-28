@@ -3,7 +3,7 @@ package quek.undergarden.registry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
-public class UGItemGroups {
+public class UGCreativeModeTabs {
 
     public static final CreativeModeTab GROUP = new CreativeModeTab("undergarden_group") {
         @Override

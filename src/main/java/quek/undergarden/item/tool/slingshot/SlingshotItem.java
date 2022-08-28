@@ -34,7 +34,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
         super(new Properties()
                 .stacksTo(1)
                 .durability(192)
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
                 .rarity(Rarity.UNCOMMON)
         );
     }

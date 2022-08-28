@@ -409,7 +409,7 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
         addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 
-        addItemGroup(UGItemGroups.GROUP, "The Undergarden");
+        addItemGroup(UGCreativeModeTabs.GROUP, "The Undergarden");
 
         addEffect(UGEffects.GOOEY, "Gooey");
         addEffect(UGEffects.BRITTLENESS, "Brittleness");

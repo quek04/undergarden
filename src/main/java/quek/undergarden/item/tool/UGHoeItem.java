@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
@@ -19,7 +19,7 @@ public class UGHoeItem extends HoeItem {
         super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .durability(tier.getUses())
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
                 .rarity(UGSwordItem.isForgotten(tier))
         );
     }

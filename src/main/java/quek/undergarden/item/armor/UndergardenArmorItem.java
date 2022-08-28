@@ -15,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGArmorMaterials;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
@@ -26,7 +26,7 @@ public class UndergardenArmorItem extends ArmorItem {
 
     public UndergardenArmorItem(ArmorMaterial material, EquipmentSlot slot) {
         super(material, slot, new Properties()
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
         );
     }
 

@@ -10,15 +10,15 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import quek.undergarden.block.UndergardenPortalBlock;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGDimensions;
-import quek.undergarden.registry.UGItemGroups;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class CatalystItem extends Item {
 
     public CatalystItem() {
         super(new Properties()
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
                 .stacksTo(1)
                 .rarity(Rarity.RARE)
         );
