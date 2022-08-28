@@ -53,7 +53,7 @@ public class UGFluids {
 
                         @Override
                         public ResourceLocation getOverlayTexture() {
-                            return new ResourceLocation("block/water_overlay");
+                            return new ResourceLocation(Undergarden.MODID, "fluid/virulent_mix_flow");
                         }
 
                         @Override
