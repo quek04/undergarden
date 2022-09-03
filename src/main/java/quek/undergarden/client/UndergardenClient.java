@@ -205,25 +205,25 @@ public class UndergardenClient {
         RenderSystem.setShaderTexture(0, BRITTLENESS_ARMOR);
         RenderSystem.enableBlend();
 
-        int left = width / 2 - 91;
-        int top = height - 49;
+        int x = width / 2 - 91;
+        int y = height - 49;
 
         int level = player.getArmorValue();
         for (int i = 1; level > 0 && i < 20; i += 2)
         {
             if (i < level)
             {
-                gui.blit(stack, left, top, 34, 9, 9, 9);
+                gui.blit(stack, x, y, 34, 9, 9, 9);
             }
             else if (i == level)
             {
-                gui.blit(stack, left, top, 25, 9, 9, 9);
+                gui.blit(stack, x, y, 25, 9, 9, 9);
             }
             else if (i > level)
             {
-                gui.blit(stack, left, top, 16, 9, 9, 9);
+                gui.blit(stack, x, y, 16, 9, 9, 9);
             }
-            left += 8;
+            x += 8;
         }
         gui.leftHeight += 10;
 

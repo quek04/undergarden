@@ -1,6 +1,7 @@
 package quek.undergarden.registry;
 
 import com.google.common.collect.ImmutableList;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -13,11 +14,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.DarkOakFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
@@ -31,9 +36,12 @@ import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongletTrunkDecorator;
+import quek.undergarden.world.gen.treedecorator.ReplaceLeafDecorator;
+import quek.undergarden.world.gen.trunkplacer.SingleForkingTrunkPlacer;
 import quek.undergarden.world.gen.trunkplacer.SmogstemTrunkPlacer;
 
 import java.util.List;
+import java.util.OptionalInt;
 
 public class UGConfiguredFeatures {
 
@@ -99,8 +107,8 @@ public class UGConfiguredFeatures {
     //huge mushrooms
     public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_INDIGO_MUSHROOM = CONFIGURED_FEATURES.register("huge_indigo_mushroom", () -> new ConfiguredFeature<>(Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.UP, true)), BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_STALK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)), 3)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_VEIL_MUSHROOM = CONFIGURED_FEATURES.register("huge_veil_mushroom", () -> new ConfiguredFeature<>(UGFeatures.VEIL_MUSHROOM.get(), new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)), BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STALK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)), 2)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_INK_MUSHROOM = CONFIGURED_FEATURES.register("huge_ink_mushroom", () -> new ConfiguredFeature<>(UGFeatures.INK_MUSHROOM.get(), new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.UP, true)), BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)), 5)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_BLOOD_MUSHROOM = CONFIGURED_FEATURES.register("huge_blood_mushroom", () -> new ConfiguredFeature<>(UGFeatures.BLOOD_MUSHROOM.get(), new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)), BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STALK.get().defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)), 3)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_INK_MUSHROOM = CONFIGURED_FEATURES.register("huge_ink_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.MUSHROOM_STEM), new SingleForkingTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get()), new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 2)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new AttachedToLeavesDecorator(0.2F, 1, 0, BlockStateProvider.simple(UGBlocks.SEEPING_INK.get()), 1, List.of(Direction.DOWN)))).build()));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_BLOOD_MUSHROOM = CONFIGURED_FEATURES.register("huge_blood_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STALK.get()), new DarkOakTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new ReplaceLeafDecorator(0.2F, BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_GLOBULE.get())))).build()));
 
     //rocks
     public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHROCK_ROCK = CONFIGURED_FEATURES.register("depthrock_rock", () -> new ConfiguredFeature<>(Feature.FOREST_ROCK, new BlockStateConfiguration(UGBlocks.DEPTHROCK.get().defaultBlockState())));
