@@ -40,6 +40,7 @@ import java.awt.*;
 public class UndergardenClient {
 
     private static final ResourceLocation VIRULENCE_HEARTS = new ResourceLocation(Undergarden.MODID, "textures/gui/virulence_hearts.png");
+    private static final ResourceLocation BRITTLENESS_ARMOR = new ResourceLocation(Undergarden.MODID, "textures/gui/brittleness_armor.png");
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -172,13 +173,20 @@ public class UndergardenClient {
 
     @SubscribeEvent
     public static void registerOverlays(RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "virulence_hearts", ((gui, stack, partialTick, width, height) -> {
+        event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "virulence_hearts", (gui, stack, partialTick, width, height) -> {
             Minecraft minecraft = Minecraft.getInstance();
             LocalPlayer player = minecraft.player;
             if (player != null && player.hasEffect(UGEffects.VIRULENCE.get()) && gui.shouldDrawSurvivalElements()) {
                 renderVirulenceHearts(width, height, stack, gui, player);
             }
-        }));
+        });
+        event.registerAbove(VanillaGuiOverlay.ARMOR_LEVEL.id(), "brittleness_armor", (gui, stack, partialTick, width, height) -> {
+            Minecraft minecraft = Minecraft.getInstance();
+            LocalPlayer player = minecraft.player;
+            if (player != null && player.hasEffect(UGEffects.BRITTLENESS.get()) && gui.shouldDrawSurvivalElements()) {
+                renderBrittlenessArmor(width, height, stack, gui, player);
+            }
+        });
     }
 
     @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -191,6 +199,35 @@ public class UndergardenClient {
                 event.setCanceled(true);
             }
         }
+    }
+
+    private static void renderBrittlenessArmor(int width, int height, PoseStack stack, ForgeGui gui, Player player) {
+        RenderSystem.setShaderTexture(0, BRITTLENESS_ARMOR);
+        RenderSystem.enableBlend();
+
+        int left = width / 2 - 91;
+        int top = height - 49;
+
+        int level = player.getArmorValue();
+        for (int i = 1; level > 0 && i < 20; i += 2)
+        {
+            if (i < level)
+            {
+                gui.blit(stack, left, top, 34, 9, 9, 9);
+            }
+            else if (i == level)
+            {
+                gui.blit(stack, left, top, 25, 9, 9, 9);
+            }
+            else if (i > level)
+            {
+                gui.blit(stack, left, top, 16, 9, 9, 9);
+            }
+            left += 8;
+        }
+        gui.leftHeight += 10;
+
+        RenderSystem.disableBlend();
     }
 
     private static void renderVirulenceHearts(int width, int height, PoseStack stack, ForgeGui gui, Player player) {
