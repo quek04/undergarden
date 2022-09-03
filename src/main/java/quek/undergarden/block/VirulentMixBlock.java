@@ -3,7 +3,6 @@ package quek.undergarden.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -28,7 +27,7 @@ public class VirulentMixBlock extends LiquidBlock {
         if(entity.isAlive() && entity instanceof LivingEntity livingEntity) {
             if(livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX) || livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get()))
                 return;
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 0));
+            livingEntity.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 200, 0));
         }
     }
 

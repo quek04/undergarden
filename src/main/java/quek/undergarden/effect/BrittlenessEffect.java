@@ -1,4 +1,4 @@
-package quek.undergarden.potion;
+package quek.undergarden.effect;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;

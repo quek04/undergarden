@@ -1,33 +1,45 @@
 package quek.undergarden.client;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
+import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.entity.UGBoat;
-import quek.undergarden.registry.UGBlockEntities;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGDimensions;
-import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.*;
 
 import java.awt.*;
 
 @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UndergardenClient {
+
+    private static final ResourceLocation VIRULENCE_HEARTS = new ResourceLocation(Undergarden.MODID, "textures/gui/virulence_hearts.png");
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -158,7 +170,118 @@ public class UndergardenClient {
         });
     }
 
-    /*@Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    @SubscribeEvent
+    public static void registerOverlays(RegisterGuiOverlaysEvent event) {
+        event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "virulence_hearts", ((gui, stack, partialTick, width, height) -> {
+            Minecraft minecraft = Minecraft.getInstance();
+            LocalPlayer player = minecraft.player;
+            if (player != null && player.hasEffect(UGEffects.VIRULENCE.get()) && gui.shouldDrawSurvivalElements()) {
+                renderVirulenceHearts(width, height, stack, gui, player);
+            }
+        }));
+    }
+
+    @Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class ForgeBusEvents {
-    }*/
+        @SubscribeEvent
+        public static void overlaysPre(RenderGuiOverlayEvent.Pre event) {
+            Minecraft minecraft = Minecraft.getInstance();
+            LocalPlayer player = minecraft.player;
+            if (player != null && event.getOverlay().id() == VanillaGuiOverlay.PLAYER_HEALTH.id() && player.hasEffect(UGEffects.VIRULENCE.get())) {
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    private static void renderVirulenceHearts(int width, int height, PoseStack stack, ForgeGui gui, Player player) {
+        RenderSystem.setShaderTexture(0, VIRULENCE_HEARTS);
+        RenderSystem.enableBlend();
+
+        int health = Mth.ceil(player.getHealth());
+        boolean highlight = gui.healthBlinkTime > (long) gui.getGuiTicks() && (gui.healthBlinkTime - (long) gui.getGuiTicks()) / 3L % 2L == 1L;
+
+        if (health < gui.lastHealth && player.invulnerableTime > 0) {
+            gui.lastHealthTime = Util.getMillis();
+            gui.healthBlinkTime = gui.getGuiTicks() + 20;
+        } else if (health > gui.lastHealth && player.invulnerableTime > 0) {
+            gui.lastHealthTime = Util.getMillis();
+            gui.healthBlinkTime = gui.getGuiTicks() + 10;
+        }
+
+        if (Util.getMillis() - gui.lastHealthTime > 1000L) {
+            gui.lastHealth = health;
+            gui.displayHealth = health;
+            gui.lastHealthTime = Util.getMillis();
+        }
+
+        gui.lastHealth = health;
+        int healthLast = gui.displayHealth;
+
+        AttributeInstance attrMaxHealth = player.getAttribute(Attributes.MAX_HEALTH);
+        float healthMax = Math.max((float) attrMaxHealth.getValue(), Math.max(healthLast, health));
+        int absorb = Mth.ceil(player.getAbsorptionAmount());
+
+        int healthRows = Mth.ceil((healthMax + absorb) / 2.0F / 10.0F);
+        int rowHeight = Math.max(10 - (healthRows - 2), 3);
+
+        gui.random.setSeed(gui.getGuiTicks() * 312871L);
+
+        int x = width / 2 - 91;
+        int y = height - 39;
+        gui.leftHeight += (healthRows * rowHeight);
+        if (rowHeight != 10) gui.leftHeight += 10 - rowHeight;
+
+        int regen = -1;
+        if (player.hasEffect(MobEffects.REGENERATION)) {
+            regen = gui.getGuiTicks() % Mth.ceil(healthMax + 5.0F);
+        }
+
+        renderHearts(stack, gui, player, x, y, rowHeight, regen, healthMax, health, healthLast, absorb, highlight);
+
+        RenderSystem.disableBlend();
+    }
+
+    private static void renderHearts(PoseStack stack, ForgeGui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
+        Gui.HeartType heartType = Gui.HeartType.forPlayer(player);
+        int hardcoreOffset = 9 * (player.level.getLevelData().isHardcore() ? 5 : 0);
+        int healthAmount = Mth.ceil((double)healthMax / 2.0D);
+        int absorptionAmount = Mth.ceil((double)absorb / 2.0D);
+        int l = healthAmount * 2;
+
+        for(int i1 = healthAmount + absorptionAmount - 1; i1 >= 0; --i1) {
+            int j1 = i1 / 10;
+            int k1 = i1 % 10;
+            int newX = x + k1 * 8;
+            int newY = y - j1 * height;
+            if (health + absorb <= 4) {
+                newY += gui.random.nextInt(2);
+            }
+
+            if (i1 < healthAmount && i1 == regen) {
+                newY -= 2;
+            }
+
+            gui.renderHeart(stack, Gui.HeartType.CONTAINER, newX, newY, hardcoreOffset, highlight, false);
+            int j2 = i1 * 2;
+            boolean flag = i1 >= healthAmount;
+            if (flag) {
+                int k2 = j2 - l;
+                if (k2 < absorb) {
+                    boolean flag1 = k2 + 1 == absorb;
+                    gui.renderHeart(stack, heartType == Gui.HeartType.WITHERED ? heartType : Gui.HeartType.ABSORBING, newX, newY, hardcoreOffset, false, flag1);
+                }
+            }
+
+            if (highlight && j2 < healthLast) {
+                boolean flag2 = j2 + 1 == healthLast;
+                gui.renderHeart(stack, heartType, newX, newY, hardcoreOffset, true, flag2);
+            }
+
+            if (j2 < health) {
+                boolean flag3 = j2 + 1 == health;
+                gui.renderHeart(stack, heartType, newX, newY, hardcoreOffset, false, flag3);
+            }
+        }
+
+    }
 }

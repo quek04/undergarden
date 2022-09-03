@@ -2,7 +2,6 @@ package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -12,7 +11,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
-
 import net.minecraft.world.phys.HitResult;
 import quek.undergarden.registry.UGCauldronInteractions;
 import quek.undergarden.registry.UGEffects;
@@ -45,7 +43,7 @@ public class VirulentMixCauldronBlock extends AbstractCauldronBlock {
             if(livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX)
                 || livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) return;
 
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 0));
+            livingEntity.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 200, 0));
         }
     }
 

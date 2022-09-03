@@ -1,4 +1,4 @@
-package quek.undergarden.potion;
+package quek.undergarden.effect;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

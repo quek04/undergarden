@@ -415,12 +415,14 @@ public class UGLang extends LanguageProvider {
         addEffect(UGEffects.BRITTLENESS, "Brittleness");
         addEffect(UGEffects.FEATHERWEIGHT, "Featherweight");
         addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
+        addEffect(UGEffects.VIRULENCE, "Virulence");
 
         //JEED compat
         add("effect.undergarden.gooey.description", "Scintling Goo will constantly be placed under victim's feet.");
         add("effect.undergarden.brittleness.description", "The higher the victim's armor value is, the more damage they will take. Amount of damage received scales with potion level.");
         add("effect.undergarden.featherweight.description", "When damaged, victim will receive increased knockback. Amount of knockback scales with potion level.");
-        add("effect.undergarden.virulent_resistance.description", "Grants immunity to Virulent Mix's poison. Will not cure already active poison.");
+        add("effect.undergarden.virulent_resistance.description", "Grants immunity to Virulence.");
+        add("effect.undergarden.virulence.description", "Similar to poison, but does more damage at a slower rate. Damage is suppressed by Virulent Resistance.");
 
         addPotion(UGPotions.BRITTLENESS, "Brittleness");
         addPotion(UGPotions.FEATHERWEIGHT, "Featherweight");
