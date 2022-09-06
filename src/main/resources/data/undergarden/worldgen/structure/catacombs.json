@@ -3,7 +3,7 @@
   "biomes": "#undergarden:has_structure/catacombs",
   "step": "surface_structures",
   "spawn_overrides": {},
-  "terrain_adaptation": "beard_thin",
+  "terrain_adaptation": "beard_box",
   "start_pool": "undergarden:catacombs/catacombs_entrance",
   "size": 7,
   "start_height": {

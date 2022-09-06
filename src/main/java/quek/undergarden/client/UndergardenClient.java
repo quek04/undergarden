@@ -219,8 +219,7 @@ public class UndergardenClient {
             {
                 gui.blit(stack, x, y, 25, 9, 9, 9);
             }
-            else if (i > level)
-            {
+            else {
                 gui.blit(stack, x, y, 16, 9, 9, 9);
             }
             x += 8;
