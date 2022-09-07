@@ -239,7 +239,6 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "undergarden:ink_mushroom_bog",
             "undergarden:blood_mushroom_bog"
           ]
         },
