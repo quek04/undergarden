@@ -22,7 +22,6 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGFluids;
 
-import javax.annotation.Nullable;
 import java.util.function.Function;
 
 public class UGCaveWorldCarver extends CaveWorldCarver {
@@ -130,7 +129,6 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
         }
     }
 
-    @Nullable
     private BlockState getCarveState(CarvingContext context, CaveCarverConfiguration config, BlockPos pos) {
         if (pos.getY() <= config.lavaLevel.resolveY(context)) {
             return UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock();

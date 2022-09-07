@@ -43,7 +43,7 @@ public class UGDeltaFeature extends DeltaFeature {
 
     @Override
     public boolean place(FeaturePlaceContext<DeltaFeatureConfiguration> context) {
-        boolean flag = false;
+        boolean generate = false;
         RandomSource random = context.random();
         WorldGenLevel level = context.level();
         DeltaFeatureConfiguration config = context.config();
@@ -63,31 +63,29 @@ public class UGDeltaFeature extends DeltaFeature {
 
             if (isClear(level, blockpos1, config)) {
                 if (flag2) {
-                    flag = true;
+                    generate = true;
                     this.setBlock(level, blockpos1, config.rim());
                 }
 
                 BlockPos blockpos2 = blockpos1.offset(i, 0, j);
                 if (isClear(level, blockpos2, config)) {
-                    flag = true;
+                    generate = true;
                     this.setBlock(level, blockpos2, config.contents());
                 }
             }
         }
 
-        return flag;
+        return generate;
     }
 
     private static boolean isClear(LevelAccessor level, BlockPos pos, DeltaFeatureConfiguration config) {
         BlockState state = level.getBlockState(pos);
-        if (state.is(config.contents().getBlock())) {
-            return false;
-        } else if (CANNOT_REPLACE.contains(state.getBlock())) {
+        if (state.is(config.contents().getBlock()) || CANNOT_REPLACE.contains(state.getBlock()) || !state.isSolidRender(level, pos)) {
             return false;
         } else {
             for(Direction direction : DIRECTIONS) {
-                boolean flag = level.getBlockState(pos.relative(direction)).isAir();
-                if (flag && direction != Direction.UP || !flag && direction == Direction.UP) {
+                boolean isAir = level.getBlockState(pos.relative(direction)).isAir();
+                if (isAir && direction != Direction.UP || !isAir && direction == Direction.UP) {
                     return false;
                 }
             }

@@ -14,10 +14,6 @@ public class UGFeatures {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Undergarden.MODID);
 
-    public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> BLOOD_MUSHROOM = FEATURES.register(
-            "blood_mushroom", () -> new HugeBloodMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
-    public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> INK_MUSHROOM = FEATURES.register(
-            "ink_mushroom", () -> new HugeInkMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<HugeMushroomFeatureConfiguration>> VEIL_MUSHROOM = FEATURES.register(
             "veil_mushroom", () -> new HugeVeilMushroomFeature(HugeMushroomFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> GLITTERKELP = FEATURES.register(

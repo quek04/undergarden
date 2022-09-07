@@ -9,6 +9,6 @@
   "start_height": {
     "absolute": 34
   },
-  "max_distance_from_center": 80,
+  "max_distance_from_center": 116,
   "use_expansion_hack": false
 }
