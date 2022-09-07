@@ -242,6 +242,14 @@ public class UGItemModels extends UGItemModelProvider {
         blockFlat(UGBlocks.AMOROUS_BRISTLE);
         blockFlat(UGBlocks.MISERABELL);
         blockFlat(UGBlocks.BUTTERBUNCH);
+        block(UGBlocks.INDIGO_MUSHROOM_CAP);
+        block(UGBlocks.INDIGO_MUSHROOM_STEM);
+        block(UGBlocks.VEIL_MUSHROOM_CAP);
+        block(UGBlocks.VEIL_MUSHROOM_STEM);
+        block(UGBlocks.INK_MUSHROOM_CAP);
+        block(UGBlocks.INK_MUSHROOM_STEM);
+        block(UGBlocks.BLOOD_MUSHROOM_CAP);
+        block(UGBlocks.BLOOD_MUSHROOM_STEM);
 
         egg(UGItems.DWELLER_SPAWN_EGG);
         egg(UGItems.GWIBLING_SPAWN_EGG);

@@ -172,11 +172,11 @@ public class UGLang extends LanguageProvider {
 
         addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
         addBlock(UGBlocks.INDIGO_MUSHROOM_CAP, "Indigo Mushroom Cap");
-        addBlock(UGBlocks.INDIGO_MUSHROOM_STALK, "Indigo Mushroom Stalk");
+        addBlock(UGBlocks.INDIGO_MUSHROOM_STEM, "Indigo Mushroom Stem");
 
         addBlock(UGBlocks.VEIL_MUSHROOM, "Veiled Mushroom");
         addBlock(UGBlocks.VEIL_MUSHROOM_CAP, "Veil Mushroom Cap");
-        addBlock(UGBlocks.VEIL_MUSHROOM_STALK, "Veil Mushroom Stalk");
+        addBlock(UGBlocks.VEIL_MUSHROOM_STEM, "Veil Mushroom Stem");
         addBlock(UGBlocks.MUSHROOM_VEIL_PLANT, "Mushroom Veil");
         addBlock(UGBlocks.MUSHROOM_VEIL, "Mushroom Veil");
 
@@ -187,7 +187,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.BLOOD_MUSHROOM, "Blood Mushroom");
         addBlock(UGBlocks.BLOOD_MUSHROOM_CAP, "Blood Mushroom Cap");
         addBlock(UGBlocks.BLOOD_MUSHROOM_GLOBULE, "Blood Mushroom Globule");
-        addBlock(UGBlocks.BLOOD_MUSHROOM_STALK, "Blood Mushroom Stalk");
+        addBlock(UGBlocks.BLOOD_MUSHROOM_STEM, "Blood Mushroom Stem");
 
         addBlock(UGBlocks.SMOGSTEM_SAPLING, "Smogstem Sapling");
         addBlock(UGBlocks.SMOGSTEM_LOG, "Smogstem Log");

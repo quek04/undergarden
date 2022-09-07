@@ -183,13 +183,13 @@ public class Undergarden {
 			ComposterBlock.add(0.65F, UGBlocks.GLOOMGOURD.get());
 			ComposterBlock.add(0.65F, UGBlocks.CARVED_GLOOMGOURD.get());
 			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_STEM.get());
 			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_STEM.get());
 			ComposterBlock.add(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
 			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
 			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get());
-			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_STEM.get());
 
 			FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
 

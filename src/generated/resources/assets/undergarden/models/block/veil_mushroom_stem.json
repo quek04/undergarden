@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "undergarden:block/blood_mushroom_stalk"
+    "all": "undergarden:block/veil_mushroom_stem"
   }
 }

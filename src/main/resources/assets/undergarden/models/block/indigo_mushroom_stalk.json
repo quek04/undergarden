@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_single_face",
-  "textures": {
-    "texture": "undergarden:block/indigo_mushroom_stalk"
-  }
-}

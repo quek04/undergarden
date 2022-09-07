@@ -1,6 +1,7 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.data.provider.UGBlockstateProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -91,6 +92,14 @@ public class UGBlockStates extends UGBlockstateProvider {
         crossBlock(UGBlocks.AMOROUS_BRISTLE);
         crossBlock(UGBlocks.MISERABELL);
         crossBlock(UGBlocks.BUTTERBUNCH);
+        block(UGBlocks.INDIGO_MUSHROOM_CAP);
+        block(UGBlocks.INDIGO_MUSHROOM_STEM);
+        block(UGBlocks.VEIL_MUSHROOM_CAP);
+        block(UGBlocks.VEIL_MUSHROOM_STEM);
+        block(UGBlocks.INK_MUSHROOM_CAP);
+        simpleBlock(UGBlocks.INK_MUSHROOM_STEM.get(), models().cubeAll(name(UGBlocks.INK_MUSHROOM_STEM), blockTexture(Blocks.MUSHROOM_STEM)));
+        block(UGBlocks.BLOOD_MUSHROOM_CAP);
+        block(UGBlocks.BLOOD_MUSHROOM_STEM);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);

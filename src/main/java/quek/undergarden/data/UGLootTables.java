@@ -193,12 +193,13 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.SHIVERSTONE_WALL);
             this.add(UGBlocks.BLOOD_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.BLOOD_MUSHROOM.get()));
             dropSelf(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
-            dropAsSilk(UGBlocks.BLOOD_MUSHROOM_STALK);
+            dropAsSilk(UGBlocks.BLOOD_MUSHROOM_STEM);
             this.add(UGBlocks.INDIGO_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.INDIGO_MUSHROOM.get()));
-            dropAsSilk(UGBlocks.INDIGO_MUSHROOM_STALK);
+            dropAsSilk(UGBlocks.INDIGO_MUSHROOM_STEM);
             this.add(UGBlocks.VEIL_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.VEIL_MUSHROOM.get()));
-            dropAsSilk(UGBlocks.VEIL_MUSHROOM_STALK);
+            dropAsSilk(UGBlocks.VEIL_MUSHROOM_STEM);
             this.add(UGBlocks.INK_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.INK_MUSHROOM.get()));
+            dropAsSilk(UGBlocks.INK_MUSHROOM_STEM);
             dropSelf(UGBlocks.FORGOTTEN_BLOCK);
             dropSelf(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
             dropSelf(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);

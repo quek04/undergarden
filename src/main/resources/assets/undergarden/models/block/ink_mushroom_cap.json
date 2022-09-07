@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_single_face",
-  "textures": {
-    "texture": "undergarden:block/ink_mushroom_cap"
-  }
-}
