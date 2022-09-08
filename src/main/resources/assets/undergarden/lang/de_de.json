@@ -78,7 +78,6 @@
     "block.undergarden.blood_mushroom":"Blutpilz",
     "block.undergarden.blood_mushroom_cap":"Blutpilzkappe",
     "block.undergarden.blood_mushroom_globule":"Blutpilzkügelchen",
-    "block.undergarden.blood_mushroom_stalk":"Blutpilzstiel",
     "block.undergarden.boomgourd":"Donnerkürbis",
     "block.undergarden.butterbunch":"Butterbund",
     "block.undergarden.carved_gloomgourd":"Geschnitzter Düsterkürbis",
@@ -153,7 +152,6 @@
     "block.undergarden.hanging_grongle_leaves":"Hängendes Grongellaub",
     "block.undergarden.indigo_mushroom":"Indigopilz",
     "block.undergarden.indigo_mushroom_cap":"Indigopilzkappe",
-    "block.undergarden.indigo_mushroom_stalk":"Indigopilzstiel",
     "block.undergarden.ink_mushroom":"Tintenpilz",
     "block.undergarden.ink_mushroom_cap":"Tintenpilzkappe",
     "block.undergarden.loose_tremblecrust":"Lockere Zitterkrust",
@@ -230,7 +228,6 @@
     "block.undergarden.utherium_block":"Utheriumblock",
     "block.undergarden.veil_mushroom":"Schleierpilz",
     "block.undergarden.veil_mushroom_cap":"Schleierpilzkappe",
-    "block.undergarden.veil_mushroom_stalk":"Schleierpilzstiel",
     "block.undergarden.wigglewood_button":"Wackelholzknopf",
     "block.undergarden.wigglewood_door":"Wackelholztür",
     "block.undergarden.wigglewood_fence":"Wackelholzzaun",
@@ -493,5 +490,10 @@
     "item.undergarden.smogstem_chest_boat":"Smogstieltruhenboot",
     "item.undergarden.wigglewood_chest_boat":"Wackelholztruhenboot",
     "subtitles.entity.boomgourd.primed":"Donnerkürbis zischt",
-    "subtitles.item.blisterberry_bush.pick":"Blasenbeerenbush gepflückt"
+    "subtitles.item.blisterberry_bush.pick":"Blasenbeerenbush gepflückt",
+    "block.undergarden.blood_mushroom_stem":"Blutpilzstiel",
+    "block.undergarden.indigo_mushroom_stem":"Indigopilzstiel",
+    "block.undergarden.veil_mushroom_stem":"Schleierpilzstiel",
+    "effect.undergarden.virulence":"Virulenz",
+    "effect.undergarden.virulence.description":"Ähnlich zur Vergiftung, schadet aber langsamer. Schaden ist unterdrückt mit Virulenter Resistenz."
 }
