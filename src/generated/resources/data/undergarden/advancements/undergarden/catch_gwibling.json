@@ -1,23 +1,7 @@
 {
   "parent": "undergarden:undergarden/enter_undergarden",
-  "display": {
-    "icon": {
-      "item": "undergarden:gwibling_bucket"
-    },
-    "title": {
-      "translate": "advancement.undergarden.catch_gwibling.title"
-    },
-    "description": {
-      "translate": "advancement.undergarden.catch_gwibling.desc"
-    },
-    "frame": "task",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
   "criteria": {
     "has_gwibling_bucket": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -26,7 +10,23 @@
             ]
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.undergarden.catch_gwibling.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:gwibling_bucket"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.undergarden.catch_gwibling.title"
     }
   },
   "requirements": [

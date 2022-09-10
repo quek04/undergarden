@@ -1,24 +1,7 @@
 {
   "parent": "undergarden:undergarden/forgotten_ingot",
-  "display": {
-    "icon": {
-      "item": "undergarden:forgotten_pickaxe",
-      "nbt": "{Damage:0}"
-    },
-    "title": {
-      "translate": "advancement.undergarden.forgotten_tools.title"
-    },
-    "description": {
-      "translate": "advancement.undergarden.forgotten_tools.desc"
-    },
-    "frame": "challenge",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
   "criteria": {
     "has_forgotten_tools": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -52,7 +35,24 @@
             ]
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.undergarden.forgotten_tools.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:forgotten_pickaxe",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.undergarden.forgotten_tools.title"
     }
   },
   "requirements": [

@@ -1,7 +1,7 @@
 package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -60,7 +60,7 @@ public class DepthrockBedBlock extends BedBlock {
                 return InteractionResult.SUCCESS;
             } else if (state.getValue(OCCUPIED)) {
                 //if (!this.kickVillagerOutOfBed(world, blockPos)) {
-                    player.displayClientMessage(new TranslatableComponent("block.minecraft.bed.occupied"), true);
+                    player.displayClientMessage(Component.translatable("block.minecraft.bed.occupied"), true);
                 //}
 
                 return InteractionResult.SUCCESS;

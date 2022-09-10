@@ -1,6 +1,7 @@
 package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableList;
+import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.ListModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -52,6 +53,9 @@ public class RotlingModel<T extends Rotling> extends ListModel<T> {
 
 		this.leftArm.xRot = entity.isAggressive() ? -1.5F : Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 		this.rightArm.xRot = entity.isAggressive() ? -1.5F : Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightArm.zRot = 0.4363F;
+		this.leftArm.zRot = -0.4363F;
+		AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
 
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;

@@ -10,7 +10,6 @@ import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
@@ -25,10 +24,9 @@ public class UGBoat extends Boat {
         this.blocksBuilding = true;
     }
 
-    public UGBoat(Level worldIn, double x, double y, double z) {
-        this(UGEntityTypes.BOAT.get(), worldIn);
+    public UGBoat(Level level, double x, double y, double z) {
+        this(UGEntityTypes.BOAT.get(), level);
         this.setPos(x, y, z);
-        this.setDeltaMovement(Vec3.ZERO);
         this.xo = x;
         this.yo = y;
         this.zo = z;
@@ -40,18 +38,14 @@ public class UGBoat extends Boat {
 
     @Override
     public Item getDropItem() {
-        switch(this.getUGBoatType()) {
-            case SMOGSTEM:
-            default:
-                return UGItems.SMOGSTEM_BOAT.get();
-            case WIGGLEWOOD:
-                return UGItems.WIGGLEWOOD_BOAT.get();
-            case GRONGLE:
-                return UGItems.GRONGLE_BOAT.get();
-        }
+        return switch (this.getUGBoatType()) {
+            case SMOGSTEM -> UGItems.SMOGSTEM_BOAT.get();
+            case WIGGLEWOOD -> UGItems.WIGGLEWOOD_BOAT.get();
+            case GRONGLE -> UGItems.GRONGLE_BOAT.get();
+        };
     }
 
-    public void setBoatType(UGBoat.Type boatType) {
+    public void setUGBoatType(UGBoat.Type boatType) {
         this.entityData.set(BOAT_TYPE, boatType.ordinal());
     }
 
@@ -69,7 +63,7 @@ public class UGBoat extends Boat {
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {
         if (compound.contains("Type", 8)) {
-            this.setBoatType(UGBoat.Type.getTypeFromString(compound.getString("Type")));
+            this.setUGBoatType(UGBoat.Type.getTypeFromString(compound.getString("Type")));
         }
     }
 

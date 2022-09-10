@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BB"
-  ],
   "key": {
     "B": {
       "item": "undergarden:shiverstone"
     }
   },
+  "pattern": [
+    "BB"
+  ],
   "result": {
     "item": "undergarden:shiverstone_pressure_plate"
   }

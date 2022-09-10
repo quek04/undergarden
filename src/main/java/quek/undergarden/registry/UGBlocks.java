@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -80,7 +80,7 @@ public class UGBlocks {
 
     //tremblecrust
     public static final RegistryObject<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(6F, 24F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> LOOSE_TREMBLECRUST = register("loose_tremblecrust", () -> new LooseTremblecrustBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(3F, 24F).noDrops()));
+    public static final RegistryObject<Block> LOOSE_TREMBLECRUST = register("loose_tremblecrust", () -> new LooseTremblecrustBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(3F, 24F).noLootTable()));
     public static final RegistryObject<Block> TREMBLECRUST_BRICKS = register("tremblecrust_bricks", () -> new Block(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> CRACKED_TREMBLECRUST_BRICKS = register("cracked_tremblecrust_bricks", () -> new Block(BlockBehaviour.Properties.copy(TREMBLECRUST_BRICKS.get())));
     public static final RegistryObject<Block> CHISELED_TREMBLECRUST_BRICKS = register("chiseled_tremblecrust_bricks", () -> new Block(BlockBehaviour.Properties.copy(TREMBLECRUST_BRICKS.get())));
@@ -94,21 +94,21 @@ public class UGBlocks {
     public static final RegistryObject<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = register("tremblecrust_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(TREMBLECRUST.get()).noCollission()));
 
     //ores
-    public static final RegistryObject<Block> DEPTHROCK_COAL_ORE = register("depthrock_coal_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(0, 2)));
-    public static final RegistryObject<Block> SHIVERSTONE_COAL_ORE = register("shiverstone_coal_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops(), UniformInt.of(0, 2)));
-    public static final RegistryObject<Block> DEPTHROCK_IRON_ORE = register("depthrock_iron_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> SHIVERSTONE_IRON_ORE = register("shiverstone_iron_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> DEPTHROCK_GOLD_ORE = register("depthrock_gold_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> DEPTHROCK_DIAMOND_ORE = register("depthrock_diamond_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
-    public static final RegistryObject<Block> SHIVERSTONE_DIAMOND_ORE = register("shiverstone_diamond_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
-    public static final RegistryObject<Block> DEPTHROCK_CLOGGRUM_ORE = register("depthrock_cloggrum_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> SHIVERSTONE_CLOGGRUM_ORE = register("shiverstone_cloggrum_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> SHIVERSTONE_FROSTSTEEL_ORE = register("shiverstone_froststeel_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> DEPTHROCK_UTHERIUM_ORE = register("depthrock_utherium_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
-    public static final RegistryObject<Block> SHIVERSTONE_UTHERIUM_ORE = register("shiverstone_utherium_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
-    public static final RegistryObject<Block> TREMBLECRUST_UTHERIUM_ORE = register("tremblecrust_utherium_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(7.0F, 24.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
-    public static final RegistryObject<Block> DEPTHROCK_REGALIUM_ORE = register("depthrock_regalium_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> SHIVERSTONE_REGALIUM_ORE = register("shiverstone_regalium_ore", () -> new OreBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DEPTHROCK_COAL_ORE = register("depthrock_coal_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> SHIVERSTONE_COAL_ORE = register("shiverstone_coal_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops(), UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> DEPTHROCK_IRON_ORE = register("depthrock_iron_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SHIVERSTONE_IRON_ORE = register("shiverstone_iron_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DEPTHROCK_GOLD_ORE = register("depthrock_gold_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DEPTHROCK_DIAMOND_ORE = register("depthrock_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> SHIVERSTONE_DIAMOND_ORE = register("shiverstone_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> DEPTHROCK_CLOGGRUM_ORE = register("depthrock_cloggrum_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SHIVERSTONE_CLOGGRUM_ORE = register("shiverstone_cloggrum_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SHIVERSTONE_FROSTSTEEL_ORE = register("shiverstone_froststeel_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DEPTHROCK_UTHERIUM_ORE = register("depthrock_utherium_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> SHIVERSTONE_UTHERIUM_ORE = register("shiverstone_utherium_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> TREMBLECRUST_UTHERIUM_ORE = register("tremblecrust_utherium_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(7.0F, 24.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> DEPTHROCK_REGALIUM_ORE = register("depthrock_regalium_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SHIVERSTONE_REGALIUM_ORE = register("shiverstone_regalium_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 
     //storage blocks
     public static final RegistryObject<Block> RAW_CLOGGRUM_BLOCK = register("raw_cloggrum_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK)));
@@ -141,6 +141,9 @@ public class UGBlocks {
     public static final RegistryObject<Block> CLOGGRUM_LANTERN = register("cloggrum_lantern", () -> new CloggrumLanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN)));
 
     //plants
+    public static final RegistryObject<Block> AMOROUS_BRISTLE = register("amorous_bristle", () -> new UGFlowerBlock(BlockBehaviour.Properties.copy(Blocks.POPPY)));
+    public static final RegistryObject<Block> MISERABELL = register("miserabell", () -> new UGFlowerBlock(BlockBehaviour.Properties.copy(Blocks.CORNFLOWER)));
+    public static final RegistryObject<Block> BUTTERBUNCH = register("butterbunch", () -> new UGFlowerBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistryObject<Block> UNDERBEAN_BUSH = BLOCKS.register("underbean_bush", () -> new UnderbeanBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
     public static final RegistryObject<Block> BLISTERBERRY_BUSH = BLOCKS.register("blisterberry_bush", () -> new BlisterberryBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH).lightLevel((state) -> 6)));
     public static final RegistryObject<Block> DEEPTURF = register("deepturf", () -> new UGPlantBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)));
@@ -165,23 +168,24 @@ public class UGBlocks {
 
     //mushroom
     public static final RegistryObject<Block> INDIGO_MUSHROOM = register("indigo_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM).lightLevel((state) -> 2)));
-    public static final RegistryObject<Block> INDIGO_MUSHROOM_CAP = register("indigo_mushroom_cap", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
-    public static final RegistryObject<Block> INDIGO_MUSHROOM_STALK = register("indigo_mushroom_stalk", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final RegistryObject<Block> INDIGO_MUSHROOM_CAP = register("indigo_mushroom_cap", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final RegistryObject<Block> INDIGO_MUSHROOM_STEM = register("indigo_mushroom_stem", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
 
     public static final RegistryObject<Block> VEIL_MUSHROOM = register("veil_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
-    public static final RegistryObject<Block> VEIL_MUSHROOM_CAP = register("veil_mushroom_cap", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
-    public static final RegistryObject<Block> VEIL_MUSHROOM_STALK = register("veil_mushroom_stalk", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
-    public static final RegistryObject<MushroomVeilBlock> MUSHROOM_VEIL = BLOCKS.register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES).noDrops()));
-    public static final RegistryObject<MushroomVeilPlantBlock> MUSHROOM_VEIL_PLANT = BLOCKS.register("mushroom_veil_plant", () -> new MushroomVeilPlantBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT).noDrops()));
+    public static final RegistryObject<Block> VEIL_MUSHROOM_CAP = register("veil_mushroom_cap", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final RegistryObject<Block> VEIL_MUSHROOM_STEM = register("veil_mushroom_stem", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final RegistryObject<MushroomVeilBlock> MUSHROOM_VEIL = BLOCKS.register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES).noLootTable()));
+    public static final RegistryObject<MushroomVeilPlantBlock> MUSHROOM_VEIL_PLANT = BLOCKS.register("mushroom_veil_plant", () -> new MushroomVeilPlantBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT).noLootTable()));
 
     public static final RegistryObject<Block> INK_MUSHROOM = register("ink_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
-    public static final RegistryObject<Block> INK_MUSHROOM_CAP = register("ink_mushroom_cap", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
-    public static final RegistryObject<Block> SEEPING_INK = BLOCKS.register("seeping_ink", () -> new SeepingInkBlock(BlockBehaviour.Properties.of(Material.WOOD).sound(SoundType.WET_GRASS).instabreak().noDrops().noOcclusion().noCollission()));
+    public static final RegistryObject<Block> INK_MUSHROOM_CAP = register("ink_mushroom_cap", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final RegistryObject<Block> SEEPING_INK = BLOCKS.register("seeping_ink", () -> new SeepingInkBlock(BlockBehaviour.Properties.of(Material.WOOD).sound(SoundType.WET_GRASS).instabreak().noLootTable().noOcclusion().noCollission()));
+    public static final RegistryObject<Block> INK_MUSHROOM_STEM = register("ink_mushroom_stem", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM)));
 
     public static final RegistryObject<Block> BLOOD_MUSHROOM = register("blood_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
-    public static final RegistryObject<Block> BLOOD_MUSHROOM_CAP = register("blood_mushroom_cap", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final RegistryObject<Block> BLOOD_MUSHROOM_CAP = register("blood_mushroom_cap", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> BLOOD_MUSHROOM_GLOBULE = register("blood_mushroom_globule", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).sound(SoundType.SLIME_BLOCK)));
-    public static final RegistryObject<Block> BLOOD_MUSHROOM_STALK = register("blood_mushroom_stalk", () -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM)));
+    public static final RegistryObject<Block> BLOOD_MUSHROOM_STEM = register("blood_mushroom_stem", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM)));
 
     //smogstem
     public static final RegistryObject<SaplingBlock> SMOGSTEM_SAPLING = register("smogstem_sapling", () -> new UGSaplingBlock(new SmogstemTree()));
@@ -258,10 +262,17 @@ public class UGBlocks {
     public static final RegistryObject<FlowerPotBlock> POTTED_VEIL_MUSHROOM = BLOCKS.register("potted_veil_mushroom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, VEIL_MUSHROOM, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_INK_MUSHROOM = BLOCKS.register("potted_ink_mushroom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, INK_MUSHROOM, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_BLOOD_MUSHROOM = BLOCKS.register("potted_blood_mushroom", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOOD_MUSHROOM, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
+    public static final RegistryObject<FlowerPotBlock> POTTED_AMOROUS_BRISTLE = BLOCKS.register("potted_amorous_bristle", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, AMOROUS_BRISTLE, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
+    public static final RegistryObject<FlowerPotBlock> POTTED_MISERABELL = BLOCKS.register("potted_miserabell", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, MISERABELL, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
+    public static final RegistryObject<FlowerPotBlock> POTTED_BUTTERBUNCH = BLOCKS.register("potted_butterbunch", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BUTTERBUNCH, BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 
     //fluids
     public static final RegistryObject<LiquidBlock> VIRULENT_MIX = BLOCKS.register("virulent_mix", () -> new VirulentMixBlock(
             UGFluids.VIRULENT_MIX_SOURCE, BlockBehaviour.Properties.of(Material.WATER)));
+
+    //cauldrons
+    public static final RegistryObject<Block> VIRULENT_MIX_CAULDRON = BLOCKS.register("virulent_mix_cauldron", () -> new VirulentMixCauldronBlock(
+            BlockBehaviour.Properties.copy(Blocks.CAULDRON).lightLevel((state) -> 10).randomTicks()));
 
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);
@@ -276,21 +287,21 @@ public class UGBlocks {
     private static <T extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<T> block) {
         return () -> {
             if(Objects.requireNonNull(block.get()) == SHARD_TORCH.get()) {
-                return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties().tab(UGItemGroups.GROUP));
+                return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP));
             }
             else if(Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DEPTHROCK_REGALIUM_ORE.get() || Objects.requireNonNull(block.get()) == SHIVERSTONE_REGALIUM_ORE.get()) {
-                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(Rarity.UNCOMMON));
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP).rarity(Rarity.UNCOMMON));
             }
             else if(Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
-                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).rarity(UGItems.FORGOTTEN));
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP).rarity(UGItems.FORGOTTEN));
             }
             else if(Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
-                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(1)) {
+                return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP).stacksTo(1)) {
                     @Override
-                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-                        consumer.accept(new IItemRenderProperties() {
+                    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                        consumer.accept(new IClientItemExtensions() {
                             @Override
-                            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                                 return new UndergardenBEWLR();
                             }
                         });
@@ -298,12 +309,12 @@ public class UGBlocks {
                 };
             }
             else if(Objects.requireNonNull(block.get()) == GRONGLET.get()) {
-                return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
+                return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP)) {
                     @Override
-                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-                        consumer.accept(new IItemRenderProperties() {
+                    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                        consumer.accept(new IClientItemExtensions() {
                             @Override
-                            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                                 return new UndergardenBEWLR();
                             }
                         });
@@ -311,10 +322,10 @@ public class UGBlocks {
                 };
             }
             else if(Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
-                return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP)) {
+                return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP)) {
                     @Override
-                    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-                        consumer.accept(new IItemRenderProperties() {
+                    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+                        consumer.accept(new IClientItemExtensions() {
                             @Override
                             public void renderHelmetOverlay(ItemStack stack, Player player, int width, int height, float partialTicks) {
                                 ResourceLocation overlay = new ResourceLocation(Undergarden.MODID, "textures/gloomgourd_overlay.png");
@@ -324,7 +335,7 @@ public class UGBlocks {
                                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
                                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                                 RenderSystem.setShaderTexture(0, overlay);
-                                //Minecraft.getInstance().getTextureManager().bindForSetup(overlay);
+                                Minecraft.getInstance().getTextureManager().bindForSetup(overlay);
                                 Tesselator tessellator = Tesselator.getInstance();
                                 BufferBuilder bufferbuilder = tessellator.getBuilder();
                                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
@@ -344,16 +355,16 @@ public class UGBlocks {
                 };
             }
             else if(Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {
-                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
+                return new SignItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
             }
             else if(Objects.requireNonNull(block.get()) == WIGGLEWOOD_SIGN.get()) {
-                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
+                return new SignItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
             }
             else if(Objects.requireNonNull(block.get()) == GRONGLE_SIGN.get()) {
-                return new SignItem(new Item.Properties().tab(UGItemGroups.GROUP).stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
+                return new SignItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
             }
             else {
-                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGItemGroups.GROUP));
+                return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().tab(UGCreativeModeTabs.GROUP));
             }
         };
     }

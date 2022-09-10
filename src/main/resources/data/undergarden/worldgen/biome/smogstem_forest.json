@@ -143,9 +143,7 @@
       "undergarden:regalium_ore"
     ],
     [],
-    [
-      "undergarden:spring"
-    ],
+    [],
     [
       "undergarden:deepturf_patch",
       "undergarden:shimmerweed_patch",
@@ -160,7 +158,9 @@
       "undergarden:gloomgourd_patch",
       "undergarden:smogstem_tree",
       "undergarden:huge_indigo_mushroom_smogstem_forest",
-      "undergarden:wide_smogstem_tree"
+      "undergarden:wide_smogstem_tree",
+      "undergarden:amorous_bristle_patch",
+      "undergarden:miserabell_patch"
     ],
     []
   ]

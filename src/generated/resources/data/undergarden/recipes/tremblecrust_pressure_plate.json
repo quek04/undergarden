@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BB"
-  ],
   "key": {
     "B": {
       "item": "undergarden:tremblecrust"
     }
   },
+  "pattern": [
+    "BB"
+  ],
   "result": {
     "item": "undergarden:tremblecrust_pressure_plate"
   }

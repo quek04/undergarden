@@ -1,63 +1,63 @@
 {
   "parent": "undergarden:undergarden/kill_rotling",
+  "criteria": {
+    "kill_rotbeast": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:rotbeast"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "kill_rotling": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:rotling"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "kill_rotwalker": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:rotwalker"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
   "display": {
-    "icon": {
-      "item": "undergarden:utherium_sword",
-      "nbt": "{Damage:0}"
-    },
-    "title": {
-      "translate": "advancement.undergarden.kill_all_rotspawn.title"
-    },
+    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.kill_all_rotspawn.desc"
     },
     "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:utherium_sword",
+      "nbt": "{Damage:0}"
+    },
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
-  "criteria": {
-    "kill_rotling": {
-      "trigger": "minecraft:player_killed_entity",
-      "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "predicate": {
-              "type": "undergarden:rotling"
-            },
-            "entity": "this"
-          }
-        ]
-      }
-    },
-    "kill_rotwalker": {
-      "trigger": "minecraft:player_killed_entity",
-      "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "predicate": {
-              "type": "undergarden:rotwalker"
-            },
-            "entity": "this"
-          }
-        ]
-      }
-    },
-    "kill_rotbeast": {
-      "trigger": "minecraft:player_killed_entity",
-      "conditions": {
-        "entity": [
-          {
-            "condition": "minecraft:entity_properties",
-            "predicate": {
-              "type": "undergarden:rotbeast"
-            },
-            "entity": "this"
-          }
-        ]
-      }
+    "title": {
+      "translate": "advancement.undergarden.kill_all_rotspawn.title"
     }
   },
   "requirements": [

@@ -7,10 +7,12 @@ import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongletTrunkDecorator;
+import quek.undergarden.world.gen.treedecorator.ReplaceLeafDecorator;
 
 public class UGTreeDecoratorTypes {
     public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATORS = DeferredRegister.create(ForgeRegistries.TREE_DECORATOR_TYPES, Undergarden.MODID);
 
     public static final RegistryObject<TreeDecoratorType<GrongleLeafDecorator>> GRONGLE_LEAF_DECORATOR = TREE_DECORATORS.register("grongle_leaf_decorator", () -> new TreeDecoratorType<>(GrongleLeafDecorator.CODEC));
     public static final RegistryObject<TreeDecoratorType<GrongletTrunkDecorator>> GRONGLET_TRUNK_DECORATOR = TREE_DECORATORS.register("gronglet_trunk_decorator", () -> new TreeDecoratorType<>(GrongletTrunkDecorator.CODEC));
+    public static final RegistryObject<TreeDecoratorType<ReplaceLeafDecorator>> REPLACE_LEAF_DECORATOR = TREE_DECORATORS.register("replace_leaf", () -> new TreeDecoratorType<>(ReplaceLeafDecorator.CODEC));
 }

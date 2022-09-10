@@ -2,7 +2,6 @@ package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.FluidTagsProvider;
-import net.minecraft.tags.FluidTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGFluids;
@@ -24,7 +23,5 @@ public class UGFluidTags extends FluidTagsProvider {
     @Override
     protected void addTags() {
         tag(UGTags.Fluids.VIRULENT).add(UGFluids.VIRULENT_MIX_SOURCE.get(), UGFluids.VIRULENT_MIX_FLOWING.get());
-
-        tag(FluidTags.WATER).addTag(UGTags.Fluids.VIRULENT);
     }
 }

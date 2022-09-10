@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "undergarden:amorous_bristle"
+    }
+  ],
+  "result": {
+    "item": "minecraft:pink_dye"
+  }
+}

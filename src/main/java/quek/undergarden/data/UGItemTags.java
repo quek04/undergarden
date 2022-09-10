@@ -74,13 +74,13 @@ public class UGItemTags extends ItemTagsProvider {
         tag(ItemTags.SAPLINGS).add(UGBlocks.SMOGSTEM_SAPLING.get().asItem(), UGBlocks.WIGGLEWOOD_SAPLING.get().asItem(), UGBlocks.GRONGLE_SAPLING.get().asItem());
         tag(ItemTags.LOGS_THAT_BURN).addTag(UGTags.Items.SMOGSTEM_LOGS).addTag(UGTags.Items.WIGGLEWOOD_LOGS).addTag(UGTags.Items.GRONGLE_LOGS);
         tag(ItemTags.LOGS).addTag(UGTags.Items.SMOGSTEM_LOGS).addTag(UGTags.Items.WIGGLEWOOD_LOGS).addTag(UGTags.Items.GRONGLE_LOGS);
-        tag(ItemTags.SMALL_FLOWERS).add(UGBlocks.SHIMMERWEED.get().asItem());
+        tag(ItemTags.SMALL_FLOWERS).add(UGBlocks.SHIMMERWEED.get().asItem(), UGBlocks.AMOROUS_BRISTLE.get().asItem(), UGBlocks.MISERABELL.get().asItem(), UGBlocks.BUTTERBUNCH.get().asItem());
+        tag(ItemTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get().asItem());
         tag(ItemTags.WOODEN_PRESSURE_PLATES).add(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get().asItem(), UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get().asItem(), UGBlocks.GRONGLE_PRESSURE_PLATE.get().asItem());
         tag(ItemTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get().asItem(), UGBlocks.DEPTHROCK_BRICK_WALL.get().asItem(), UGBlocks.SHIVERSTONE_WALL.get().asItem(), UGBlocks.SHIVERSTONE_BRICK_WALL.get().asItem(), UGBlocks.TREMBLECRUST_WALL.get().asItem(), UGBlocks.TREMBLECRUST_BRICK_WALL.get().asItem());
         tag(ItemTags.LEAVES).add(UGBlocks.SMOGSTEM_LEAVES.get().asItem(), UGBlocks.WIGGLEWOOD_LEAVES.get().asItem(), UGBlocks.GRONGLE_LEAVES.get().asItem());
         tag(ItemTags.WOODEN_TRAPDOORS).add(UGBlocks.SMOGSTEM_TRAPDOOR.get().asItem(), UGBlocks.WIGGLEWOOD_TRAPDOOR.get().asItem(), UGBlocks.GRONGLE_TRAPDOOR.get().asItem());
         tag(ItemTags.SIGNS).add(UGBlocks.SMOGSTEM_SIGN.get().asItem(), UGBlocks.WIGGLEWOOD_SIGN.get().asItem(), UGBlocks.GRONGLE_SIGN.get().asItem());
-        tag(ItemTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get().asItem());
         tag(ItemTags.COALS).add(UGItems.DITCHBULB_PASTE.get());
         tag(ItemTags.BEACON_PAYMENT_ITEMS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_CRYSTAL.get(), UGItems.REGALIUM_CRYSTAL.get(), UGItems.FORGOTTEN_INGOT.get());
         tag(ItemTags.STONE_TOOL_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
@@ -88,7 +88,8 @@ public class UGItemTags extends ItemTagsProvider {
         tag(ItemTags.MUSIC_DISCS).add(UGItems.MAMMOTH_DISC.get(), UGItems.LIMAX_MAXIMUS_DISC.get(), UGItems.RELICT_DISC.get(), UGItems.GLOOMPER_ANTHEM_DISC.get(), UGItems.GLOOMPER_SECRET_DISC.get());
         tag(ItemTags.FISHES).add(UGItems.RAW_GWIBLING.get(), UGItems.COOKED_GWIBLING.get());
         tag(ItemTags.BOATS).add(UGItems.SMOGSTEM_BOAT.get(), UGItems.WIGGLEWOOD_BOAT.get(), UGItems.GRONGLE_BOAT.get());
-        tag(ItemTags.CARPETS).add(UGBlocks.MOGMOSS_RUG.get().asItem());
+        tag(ItemTags.CHEST_BOATS).add(UGItems.SMOGSTEM_CHEST_BOAT.get(), UGItems.WIGGLEWOOD_CHEST_BOAT.get(), UGItems.GRONGLE_CHEST_BOAT.get());
+        tag(ItemTags.WOOL_CARPETS).add(UGBlocks.MOGMOSS_RUG.get().asItem());
         tag(ItemTags.COAL_ORES).add(UGBlocks.DEPTHROCK_COAL_ORE.get().asItem(), UGBlocks.SHIVERSTONE_COAL_ORE.get().asItem());
         tag(ItemTags.IRON_ORES).add(UGBlocks.DEPTHROCK_IRON_ORE.get().asItem(), UGBlocks.SHIVERSTONE_IRON_ORE.get().asItem());
         tag(ItemTags.GOLD_ORES).add(UGBlocks.DEPTHROCK_GOLD_ORE.get().asItem());
@@ -119,5 +120,15 @@ public class UGItemTags extends ItemTagsProvider {
         tag(Tags.Items.SAND).add(UGBlocks.SEDIMENT.get().asItem());
         tag(Tags.Items.SAND_COLORLESS).add(UGBlocks.SEDIMENT.get().asItem());
         tag(Tags.Items.RAW_MATERIALS).addTags(UGTags.Items.RAW_MATERIALS_CLOGGRUM, UGTags.Items.RAW_MATERIALS_FROSTSTEEL);
+        tag(Tags.Items.TOOLS_SWORDS).add(UGItems.CLOGGRUM_SWORD.get(), UGItems.FROSTSTEEL_SWORD.get(), UGItems.UTHERIUM_SWORD.get(), UGItems.FORGOTTEN_SWORD.get());
+        tag(Tags.Items.TOOLS_PICKAXES).add(UGItems.CLOGGRUM_PICKAXE.get(), UGItems.FROSTSTEEL_PICKAXE.get(), UGItems.UTHERIUM_PICKAXE.get(), UGItems.FORGOTTEN_PICKAXE.get());
+        tag(Tags.Items.TOOLS_AXES).add(UGItems.CLOGGRUM_AXE.get(), UGItems.FROSTSTEEL_AXE.get(), UGItems.UTHERIUM_AXE.get(), UGItems.FORGOTTEN_AXE.get());
+        tag(Tags.Items.TOOLS_SHOVELS).add(UGItems.CLOGGRUM_SHOVEL.get(), UGItems.FROSTSTEEL_SHOVEL.get(), UGItems.UTHERIUM_SHOVEL.get(), UGItems.FORGOTTEN_SHOVEL.get());
+        tag(Tags.Items.TOOLS_HOES).add(UGItems.CLOGGRUM_HOE.get(), UGItems.FROSTSTEEL_HOE.get(), UGItems.UTHERIUM_HOE.get(), UGItems.FORGOTTEN_HOE.get());
+        tag(Tags.Items.TOOLS_SHIELDS).add(UGItems.CLOGGRUM_SHIELD.get());
+        tag(Tags.Items.ARMORS_HELMETS).add(UGItems.CLOGGRUM_HELMET.get(), UGItems.FROSTSTEEL_HELMET.get(), UGItems.UTHERIUM_HELMET.get());
+        tag(Tags.Items.ARMORS_CHESTPLATES).add(UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.FROSTSTEEL_CHESTPLATE.get(), UGItems.UTHERIUM_CHESTPLATE.get(), UGItems.MASTICATED_CHESTPLATE.get());
+        tag(Tags.Items.ARMORS_LEGGINGS).add(UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.FROSTSTEEL_LEGGINGS.get(), UGItems.UTHERIUM_LEGGINGS.get());
+        tag(Tags.Items.ARMORS_BOOTS).add(UGItems.CLOGGRUM_BOOTS.get(), UGItems.FROSTSTEEL_BOOTS.get(), UGItems.UTHERIUM_BOOTS.get());
     }
 }

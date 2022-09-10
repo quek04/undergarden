@@ -4,6 +4,7 @@ import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -23,13 +24,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.IBlockRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientBlockExtensions;
 import quek.undergarden.block.entity.GrongletBlockEntity;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 import java.util.function.Consumer;
 
 public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
@@ -49,8 +49,8 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    public void initializeClient(Consumer<IBlockRenderProperties> consumer) {
-        consumer.accept(new IBlockRenderProperties() {
+    public void initializeClient(Consumer<IClientBlockExtensions> consumer) {
+        consumer.accept(new IClientBlockExtensions() {
             @Override
             public boolean addDestroyEffects(BlockState state, Level Level, BlockPos pos, ParticleEngine manager) {
                 return true;
@@ -94,8 +94,8 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
-        if (random.nextInt(10) == 0) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (random.nextInt(20) == 0) {
             level.playLocalSound(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, UGSoundEvents.GRONGLET_AMBIENT.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F, false);
         }
     }
@@ -115,7 +115,7 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
     @Override
     public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
         if (!level.isClientSide) {
-            Random random = level.random;
+            RandomSource random = level.random;
             level.playSound(null, pos, UGSoundEvents.GRONGLET_BURN.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
         }
     }

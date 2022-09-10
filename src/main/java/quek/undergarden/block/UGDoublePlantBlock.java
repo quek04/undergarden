@@ -1,6 +1,7 @@
 package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -12,8 +13,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGParticleTypes;
-
-import java.util.Random;
 
 public class UGDoublePlantBlock extends DoublePlantBlock {
 
@@ -36,7 +35,7 @@ public class UGDoublePlantBlock extends DoublePlantBlock {
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if(this == UGBlocks.TALL_SHIMMERWEED.get() && state.getValue(HALF) == DoubleBlockHalf.UPPER) {
             double x = (double) pos.getX() + random.nextFloat();
             double y = (double) pos.getY() + random.nextFloat();

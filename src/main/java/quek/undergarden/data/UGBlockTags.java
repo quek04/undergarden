@@ -30,8 +30,9 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES).add(UGBlocks.DEPTHROCK.get());
         tag(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES).add(UGBlocks.SHIVERSTONE.get());
         tag(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES).add(UGBlocks.TREMBLECRUST.get(), UGBlocks.LOOSE_TREMBLECRUST.get());
+        tag(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES).addTags(UGTags.Blocks.BASE_STONE_UNDERGARDEN, BlockTags.DIRT, UGTags.Blocks.ORES_CLOGGRUM, UGTags.Blocks.ORES_FROSTSTEEL, UGTags.Blocks.ORES_UTHERIUM, UGTags.Blocks.ORES_REGALIUM).add(UGBlocks.SEDIMENT.get());
         tag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.INK_MUSHROOM.get(), UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.VEIL_MUSHROOM.get(), UGBlocks.BLOOD_MUSHROOM.get());
-        tag(UGTags.Blocks.PORTAL_FRAME_BLOCKS).add(Blocks.STONE_BRICKS, Blocks.DEEPSLATE_BRICKS, UGBlocks.DEPTHROCK_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get()).addTag(BlockTags.STONE_BRICKS);
+        tag(UGTags.Blocks.PORTAL_FRAME_BLOCKS).add(Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS, Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_TILES, Blocks.POLISHED_DEEPSLATE, Blocks.REINFORCED_DEEPSLATE, UGBlocks.DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_TILES.get(), UGBlocks.POLISHED_DEPTHROCK.get(), UGBlocks.SHIVERSTONE_BRICKS.get());
         tag(UGTags.Blocks.SMOGSTEM_LOGS).add(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
         tag(UGTags.Blocks.WIGGLEWOOD_LOGS).add(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
         tag(UGTags.Blocks.GRONGLE_LOGS).add(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get(), UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
@@ -72,18 +73,18 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.SAPLINGS).add(UGBlocks.SMOGSTEM_SAPLING.get(), UGBlocks.WIGGLEWOOD_SAPLING.get(), UGBlocks.GRONGLE_SAPLING.get());
         tag(BlockTags.LOGS_THAT_BURN).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_LOGS);
         tag(BlockTags.LOGS).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_LOGS);
-        tag(BlockTags.SMALL_FLOWERS).add(UGBlocks.SHIMMERWEED.get());
-        tag(BlockTags.ENDERMAN_HOLDABLE).addTag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.GLOOMGOURD.get(), UGBlocks.CARVED_GLOOMGOURD.get());
+        tag(BlockTags.SMALL_FLOWERS).add(UGBlocks.SHIMMERWEED.get(), UGBlocks.AMOROUS_BRISTLE.get(), UGBlocks.MISERABELL.get(), UGBlocks.BUTTERBUNCH.get());
+        tag(BlockTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get());
+        tag(BlockTags.ENDERMAN_HOLDABLE).addTag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.GLOOMGOURD.get(), UGBlocks.CARVED_GLOOMGOURD.get());
         tag(BlockTags.WOODEN_PRESSURE_PLATES).add(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get(), UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get(), UGBlocks.GRONGLE_PRESSURE_PLATE.get());
         tag(BlockTags.STONE_PRESSURE_PLATES).add(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get(), UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get());
         tag(BlockTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get(), UGBlocks.POLISHED_DEPTHROCK_WALL.get(), UGBlocks.DEPTHROCK_BRICK_WALL.get(), UGBlocks.SHIVERSTONE_WALL.get(), UGBlocks.SHIVERSTONE_BRICK_WALL.get(), UGBlocks.TREMBLECRUST_WALL.get(), UGBlocks.TREMBLECRUST_BRICK_WALL.get());
         tag(BlockTags.LEAVES).add(UGBlocks.SMOGSTEM_LEAVES.get(), UGBlocks.WIGGLEWOOD_LEAVES.get(), UGBlocks.GRONGLE_LEAVES.get());
         tag(BlockTags.WOODEN_TRAPDOORS).add(UGBlocks.SMOGSTEM_TRAPDOOR.get(), UGBlocks.WIGGLEWOOD_TRAPDOOR.get(), UGBlocks.GRONGLE_TRAPDOOR.get());
-        tag(BlockTags.BAMBOO_PLANTABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
+        tag(BlockTags.BAMBOO_PLANTABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
         tag(BlockTags.STANDING_SIGNS).add(UGBlocks.SMOGSTEM_SIGN.get(), UGBlocks.WIGGLEWOOD_SIGN.get(), UGBlocks.GRONGLE_SIGN.get());
         tag(BlockTags.WALL_SIGNS).add(UGBlocks.SMOGSTEM_WALL_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get());
         tag(BlockTags.SIGNS).add(UGBlocks.SMOGSTEM_SIGN.get(), UGBlocks.WIGGLEWOOD_SIGN.get(), UGBlocks.GRONGLE_SIGN.get(), UGBlocks.SMOGSTEM_WALL_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get());
-        tag(BlockTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get());
         tag(BlockTags.CROPS).add(UGBlocks.GLOOMGOURD_STEM.get());
         tag(BlockTags.BEE_GROWABLES).add(UGBlocks.UNDERBEAN_BUSH.get(), UGBlocks.BLISTERBERRY_BUSH.get());
         tag(BlockTags.PORTALS).add(UGBlocks.UNDERGARDEN_PORTAL.get()); //TODO otherside portal
@@ -92,14 +93,14 @@ public class UGBlockTags extends BlockTagsProvider {
         tag(BlockTags.CLIMBABLE).add(UGBlocks.DROOPVINE_PLANT.get(), UGBlocks.DROOPVINE.get());
         tag(BlockTags.STRIDER_WARM_BLOCKS).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get(), UGBlocks.UTHERIUM_BLOCK.get());
         tag(BlockTags.FENCE_GATES).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get());
-        tag(BlockTags.MUSHROOM_GROW_BLOCK).add(UGBlocks.DEEPTURF_BLOCK.get());
-        tag(BlockTags.FLOWER_POTS).add(UGBlocks.POTTED_SMOGSTEM_SAPLING.get(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING.get(), UGBlocks.POTTED_SHIMMERWEED.get(), UGBlocks.POTTED_INDIGO_MUSHROOM.get(), UGBlocks.POTTED_VEIL_MUSHROOM.get(), UGBlocks.POTTED_INK_MUSHROOM.get(), UGBlocks.POTTED_BLOOD_MUSHROOM.get(), UGBlocks.POTTED_GRONGLE_SAPLING.get());
-        tag(BlockTags.CARPETS).add(UGBlocks.MOGMOSS_RUG.get());
+        tag(BlockTags.MUSHROOM_GROW_BLOCK).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
+        tag(BlockTags.FLOWER_POTS).add(UGBlocks.POTTED_SMOGSTEM_SAPLING.get(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING.get(), UGBlocks.POTTED_SHIMMERWEED.get(), UGBlocks.POTTED_INDIGO_MUSHROOM.get(), UGBlocks.POTTED_VEIL_MUSHROOM.get(), UGBlocks.POTTED_INK_MUSHROOM.get(), UGBlocks.POTTED_BLOOD_MUSHROOM.get(), UGBlocks.POTTED_GRONGLE_SAPLING.get(), UGBlocks.POTTED_AMOROUS_BRISTLE.get(), UGBlocks.POTTED_MISERABELL.get(), UGBlocks.POTTED_BUTTERBUNCH.get());
+        tag(BlockTags.WOOL_CARPETS).add(UGBlocks.MOGMOSS_RUG.get());
         tag(BlockTags.COAL_ORES).add(UGBlocks.DEPTHROCK_COAL_ORE.get(), UGBlocks.SHIVERSTONE_COAL_ORE.get());
         tag(BlockTags.IRON_ORES).add(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get());
         tag(BlockTags.GOLD_ORES).add(UGBlocks.DEPTHROCK_GOLD_ORE.get());
         tag(BlockTags.DIAMOND_ORES).add(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get());
-        tag(BlockTags.DIRT).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
+        tag(BlockTags.DIRT).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
         tag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
         tag(BlockTags.PARROTS_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
         tag(BlockTags.RABBITS_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
@@ -202,7 +203,8 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.CLOGGRUM_TILE_STAIRS.get(),
                 UGBlocks.CLOGGRUM_TILE_SLAB.get(),
                 UGBlocks.DEPTHROCK_BED.get(),
-                UGBlocks.CLOGGRUM_LANTERN.get()
+                UGBlocks.CLOGGRUM_LANTERN.get(),
+                UGBlocks.VIRULENT_MIX_CAULDRON.get()
         );
         tag(BlockTags.MINEABLE_WITH_AXE).add(
                 UGBlocks.GLOOMGOURD.get(),
@@ -213,13 +215,13 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.GLOOMGOURD_STEM.get(),
                 UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(),
                 UGBlocks.INDIGO_MUSHROOM_CAP.get(),
-                UGBlocks.INDIGO_MUSHROOM_STALK.get(),
+                UGBlocks.INDIGO_MUSHROOM_STEM.get(),
                 UGBlocks.VEIL_MUSHROOM_CAP.get(),
-                UGBlocks.VEIL_MUSHROOM_STALK.get(),
+                UGBlocks.VEIL_MUSHROOM_STEM.get(),
                 UGBlocks.INK_MUSHROOM_CAP.get(),
                 UGBlocks.BLOOD_MUSHROOM_CAP.get(),
                 UGBlocks.BLOOD_MUSHROOM_GLOBULE.get(),
-                UGBlocks.BLOOD_MUSHROOM_STALK.get(),
+                UGBlocks.BLOOD_MUSHROOM_STEM.get(),
                 UGBlocks.SMOGSTEM_LOG.get(),
                 UGBlocks.STRIPPED_SMOGSTEM_LOG.get(),
                 UGBlocks.SMOGSTEM_WOOD.get(),

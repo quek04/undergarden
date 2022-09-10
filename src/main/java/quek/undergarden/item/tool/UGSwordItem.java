@@ -2,10 +2,9 @@ package quek.undergarden.item.tool;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGItemTiers;
 import quek.undergarden.registry.UGItems;
 
@@ -17,7 +16,7 @@ public class UGSwordItem extends SwordItem {
         super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .defaultDurability(tier.getUses())
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
                 .rarity(isForgotten(tier))
         );
     }
@@ -32,13 +31,13 @@ public class UGSwordItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         if(stack.getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
-            tooltip.add(new TranslatableComponent("tooltip.froststeel_sword").withStyle(ChatFormatting.AQUA));
+            tooltip.add(Component.translatable("tooltip.froststeel_sword").withStyle(ChatFormatting.AQUA));
         }
         if(stack.getItem() == UGItems.UTHERIUM_SWORD.get()) {
-            tooltip.add(new TranslatableComponent("tooltip.utheric_sword").withStyle(ChatFormatting.RED));
+            tooltip.add(Component.translatable("tooltip.utheric_sword").withStyle(ChatFormatting.RED));
         }
         if(stack.getItem() == UGItems.FORGOTTEN_SWORD.get()) {
-            tooltip.add(new TranslatableComponent("tooltip.forgotten_sword").withStyle(ChatFormatting.GREEN));
+            tooltip.add(Component.translatable("tooltip.forgotten_sword").withStyle(ChatFormatting.GREEN));
         }
     }
 }

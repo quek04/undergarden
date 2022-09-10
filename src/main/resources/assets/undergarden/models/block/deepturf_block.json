@@ -1,4 +1,6 @@
-{   "parent": "block/block",
+{
+    "parent": "block/block",
+    "render_type": "minecraft:cutout_mipped",
     "textures": {
         "particle": "undergarden:block/deepsoil",
         "bottom": "undergarden:block/deepsoil",

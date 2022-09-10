@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/tinted_cross",
+  "render_type": "minecraft:cutout",
   "textures": {
     "cross": "undergarden:block/droopvine"
   }

@@ -2,6 +2,7 @@ package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -23,8 +24,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 import quek.undergarden.registry.UGSoundEvents;
-
-import java.util.Random;
 
 public class Gwib extends WaterAnimal implements Enemy {
 
@@ -49,7 +48,7 @@ public class Gwib extends WaterAnimal implements Enemy {
                 .add(Attributes.ATTACK_DAMAGE, 4.0D);
     }
 
-    public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, Random random) {
+    public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         return !(level.getDifficulty() == Difficulty.PEACEFUL) && random.nextInt(10) == 0 && level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
     }
 

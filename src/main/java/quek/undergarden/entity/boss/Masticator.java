@@ -119,10 +119,10 @@ public class Masticator extends Monster {
     }
 
     @Override
-    public void killed(ServerLevel level, LivingEntity entity) {
-        super.killed(level, entity);
+    public boolean wasKilled(ServerLevel level, LivingEntity entity) {
         this.heal(this.getHealth() / 4);
         this.playSound(UGSoundEvents.MASTICATOR_EAT.get(), 1.0F, this.getVoicePitch());
+        return super.wasKilled(level, entity);
     }
 
     @Override

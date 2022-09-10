@@ -3,6 +3,7 @@ package quek.undergarden.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -18,8 +19,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
-import java.util.Random;
-
 public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 
     protected static final VoxelShape SHAPE = Block.box(4.0D, 5.0D, 4.0D, 12.0D, 16.0D, 12.0D);
@@ -30,7 +29,7 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(Random random) {
+    protected int getBlocksToGrowWhenBonemealed(RandomSource random) {
         return 1;
     }
 
@@ -50,7 +49,7 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
     }
 
     @Override
-    protected BlockState getGrowIntoState(BlockState state, Random random) {
+    protected BlockState getGrowIntoState(BlockState state, RandomSource random) {
         return super.getGrowIntoState(state, random).setValue(GLOWY, random.nextBoolean());
     }
 
@@ -60,7 +59,7 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         return Droopvine.use(state, level, pos);
     }
 
@@ -76,12 +75,12 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         level.setBlock(pos, state.setValue(GLOWY, true), 2);
     }
 }

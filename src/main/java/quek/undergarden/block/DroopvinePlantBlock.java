@@ -3,6 +3,7 @@ package quek.undergarden.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -19,8 +20,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
-
-import java.util.Random;
 
 public class DroopvinePlantBlock extends GrowingPlantBodyBlock {
 
@@ -49,7 +48,7 @@ public class DroopvinePlantBlock extends GrowingPlantBodyBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         return Droopvine.use(state, level, pos);
     }
 
@@ -64,12 +63,12 @@ public class DroopvinePlantBlock extends GrowingPlantBodyBlock {
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         level.setBlock(pos, state.setValue(GLOWY, true), 2);
     }
 }

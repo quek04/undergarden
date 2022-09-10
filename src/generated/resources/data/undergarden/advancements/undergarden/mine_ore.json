@@ -1,71 +1,7 @@
 {
   "parent": "undergarden:undergarden/enter_undergarden",
-  "display": {
-    "icon": {
-      "item": "undergarden:raw_cloggrum"
-    },
-    "title": {
-      "translate": "advancement.undergarden.mine_ore.title"
-    },
-    "description": {
-      "translate": "advancement.undergarden.mine_ore.desc"
-    },
-    "frame": "task",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
   "criteria": {
-    "has_raw_cloggrum": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:raw_cloggrum"
-            ]
-          }
-        ]
-      }
-    },
-    "has_raw_froststeel": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:raw_froststeel"
-            ]
-          }
-        ]
-      }
-    },
-    "has_utherium": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:utherium_crystal"
-            ]
-          }
-        ]
-      }
-    },
-    "has_regalium_crystal": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:regalium_crystal"
-            ]
-          }
-        ]
-      }
-    },
     "has_depthrock_cloggrum": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -74,58 +10,10 @@
             ]
           }
         ]
-      }
-    },
-    "has_shiverstone_cloggrum": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:shiverstone_cloggrum_ore"
-            ]
-          }
-        ]
-      }
-    },
-    "has_shiverstone_froststeel": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:shiverstone_froststeel_ore"
-            ]
-          }
-        ]
-      }
-    },
-    "has_depthrock_utherium": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:depthrock_utherium_ore"
-            ]
-          }
-        ]
-      }
-    },
-    "has_shiverstone_utherium": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "undergarden:shiverstone_utherium_ore"
-            ]
-          }
-        ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_depthrock_regalium": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -134,10 +22,82 @@
             ]
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_depthrock_utherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:depthrock_utherium_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_raw_cloggrum": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:raw_cloggrum"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_raw_froststeel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:raw_froststeel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_regalium_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:regalium_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shiverstone_cloggrum": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:shiverstone_cloggrum_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shiverstone_froststeel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:shiverstone_froststeel_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_shiverstone_regalium": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -146,7 +106,47 @@
             ]
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shiverstone_utherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:shiverstone_utherium_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_utherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:utherium_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.undergarden.mine_ore.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:raw_cloggrum"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.undergarden.mine_ore.title"
     }
   },
   "requirements": [

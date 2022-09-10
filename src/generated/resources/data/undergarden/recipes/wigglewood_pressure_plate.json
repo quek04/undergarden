@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BB"
-  ],
   "key": {
     "B": {
       "item": "undergarden:wigglewood_planks"
     }
   },
+  "pattern": [
+    "BB"
+  ],
   "result": {
     "item": "undergarden:wigglewood_pressure_plate"
   }

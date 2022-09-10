@@ -19,7 +19,7 @@
       "offset": 2
     },
     "additions_sound": {
-      "sound": "undergarden:ambient.forest_addition",
+      "sound": "undergarden:ambient.dense_forest_addition",
       "tick_chance": 0.00555
     },
     "music": {
@@ -144,9 +144,7 @@
       "undergarden:regalium_ore"
     ],
     [],
-    [
-      "undergarden:spring"
-    ],
+    [],
     [
       "undergarden:deepturf_patch",
       "undergarden:shimmerweed_patch",
@@ -164,7 +162,10 @@
       "undergarden:smogstem_tree",
       "undergarden:wigglewood_tree",
       "undergarden:tall_smogstem_tree",
-      "undergarden:tall_wigglewood_tree"
+      "undergarden:tall_wigglewood_tree",
+      "undergarden:amorous_bristle_patch",
+      "undergarden:miserabell_patch",
+      "undergarden:butterbunch_patch"
     ],
     []
   ]

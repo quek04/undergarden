@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "M  ",
-    "MM ",
-    "MMM"
-  ],
   "key": {
     "M": {
       "item": "undergarden:wigglewood_planks"
     }
   },
+  "pattern": [
+    "M  ",
+    "MM ",
+    "MMM"
+  ],
   "result": {
-    "item": "undergarden:wigglewood_stairs",
-    "count": 4
+    "count": 4,
+    "item": "undergarden:wigglewood_stairs"
   }
 }

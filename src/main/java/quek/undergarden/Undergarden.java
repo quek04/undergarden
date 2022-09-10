@@ -1,7 +1,6 @@
 package quek.undergarden;
 
 import net.minecraft.Util;
-import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
@@ -20,22 +19,21 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.FluidInteractionRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.slingshot.*;
@@ -68,6 +66,7 @@ public class Undergarden {
 				UGEntityTypes.ENTITIES,
 				UGFeatures.FEATURES,
 				UGFluids.FLUIDS,
+				UGFluids.TYPES,
 				UGItems.ITEMS,
 				UGParticleTypes.PARTICLES,
 				UGPlacedFeatures.PLACED_FEATURES,
@@ -85,10 +84,18 @@ public class Undergarden {
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
+		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+				ForgeMod.WATER_TYPE.get(),
+				fluidState -> UGBlocks.DEPTHROCK.get().defaultBlockState()
+		));
+		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+				ForgeMod.LAVA_TYPE.get(),
+				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
+		));
 		event.enqueueWork(() -> {
 			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
-			UGBiomes.toDictionary();
+			UGCauldronInteractions.register();
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
@@ -176,13 +183,13 @@ public class Undergarden {
 			ComposterBlock.add(0.65F, UGBlocks.GLOOMGOURD.get());
 			ComposterBlock.add(0.65F, UGBlocks.CARVED_GLOOMGOURD.get());
 			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_STEM.get());
 			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_STEM.get());
 			ComposterBlock.add(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
 			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
 			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get());
-			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_STALK.get());
+			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_STEM.get());
 
 			FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
 
@@ -194,6 +201,9 @@ public class Undergarden {
 			pot.addPlant(UGBlocks.INK_MUSHROOM.getId(), UGBlocks.POTTED_INK_MUSHROOM);
 			pot.addPlant(UGBlocks.BLOOD_MUSHROOM.getId(), UGBlocks.POTTED_BLOOD_MUSHROOM);
 			pot.addPlant(UGBlocks.GRONGLE_SAPLING.getId(), UGBlocks.POTTED_GRONGLE_SAPLING);
+			pot.addPlant(UGBlocks.AMOROUS_BRISTLE.getId(), UGBlocks.POTTED_AMOROUS_BRISTLE);
+			pot.addPlant(UGBlocks.MISERABELL.getId(), UGBlocks.POTTED_MISERABELL);
+			pot.addPlant(UGBlocks.BUTTERBUNCH.getId(), UGBlocks.POTTED_BUTTERBUNCH);
 
 			WoodType.register(UGBlocks.SMOGSTEM_WOODTYPE);
 			WoodType.register(UGBlocks.WIGGLEWOOD_WOODTYPE);
@@ -287,6 +297,9 @@ public class Undergarden {
 			fire.setFlammable(UGBlocks.DITCHBULB_PLANT.get(), 60, 100);
 			fire.setFlammable(UGBlocks.DROOPVINE.get(), 15, 60);
 			fire.setFlammable(UGBlocks.DROOPVINE_PLANT.get(), 15, 60);
+			fire.setFlammable(UGBlocks.AMOROUS_BRISTLE.get(), 60, 100);
+			fire.setFlammable(UGBlocks.MISERABELL.get(), 60, 100);
+			fire.setFlammable(UGBlocks.BUTTERBUNCH.get(), 60, 100);
 			//other
 			fire.setFlammable(UGBlocks.MOGMOSS_RUG.get(), 60, 20);
 			fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
@@ -295,7 +308,6 @@ public class Undergarden {
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
-		UndergardenClient.registerBlockRenderers();
 		event.enqueueWork(() -> {
 			Sheets.addWoodType(UGBlocks.SMOGSTEM_WOODTYPE);
 			Sheets.addWoodType(UGBlocks.WIGGLEWOOD_WOODTYPE);
@@ -312,22 +324,9 @@ public class Undergarden {
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
-		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("self_sling"), (stack, level, entity, seed) -> entity != null && EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.SELF_SLING.get(), stack) > 0 ? 1.0F : 0.0F);
+		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("self_sling"), (stack, level, entity, seed) -> entity != null && stack.getEnchantmentLevel(UGEnchantments.SELF_SLING.get()) > 0 ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 		ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-
-		DimensionSpecialEffects.EFFECTS.put(UGDimensions.UNDERGARDEN_LEVEL.location(), new DimensionSpecialEffects(Float.NaN, true, DimensionSpecialEffects.SkyType.NONE, false, true) {
-			@Override
-			public Vec3 getBrightnessDependentFogColor(Vec3 fogColor, float brightness) {
-				return fogColor;
-			}
-
-			@Override
-			public boolean isFoggyAt(int x, int y) {
-				return false;
-			}
-		});
-		//TODO: OthersideDSE
 	}
 
 	public void gatherData(GatherDataEvent event) {
@@ -335,21 +334,21 @@ public class Undergarden {
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if(event.includeClient()) {
-			generator.addProvider(new UGBlockStates(generator, helper));
-			generator.addProvider(new UGItemModels(generator, helper));
-			generator.addProvider(new UGLang(generator));
-			generator.addProvider(new UGSoundDefinitions(generator, helper));
+			generator.addProvider(true, new UGBlockStates(generator, helper));
+			generator.addProvider(true, new UGItemModels(generator, helper));
+			generator.addProvider(true, new UGLang(generator));
+			generator.addProvider(true, new UGSoundDefinitions(generator, helper));
 		}
 		if(event.includeServer()) {
-			generator.addProvider(new UGRecipes(generator));
-			generator.addProvider(new UGLootTables(generator));
+			generator.addProvider(true, new UGRecipes(generator));
+			generator.addProvider(true, new UGLootTables(generator));
 			UGBlockTags blockTags = new UGBlockTags(generator, helper);
-			generator.addProvider(blockTags);
-			generator.addProvider(new UGItemTags(generator, blockTags, helper));
-			generator.addProvider(new UGEntityTags(generator, helper));
-			generator.addProvider(new UGAdvancements(generator, helper));
-			generator.addProvider(new UGFluidTags(generator, helper));
-			generator.addProvider(new UGBiomeTags(generator, helper));
+			generator.addProvider(true, blockTags);
+			generator.addProvider(true, new UGItemTags(generator, blockTags, helper));
+			generator.addProvider(true, new UGEntityTags(generator, helper));
+			generator.addProvider(true, new UGAdvancements(generator, helper));
+			generator.addProvider(true, new UGFluidTags(generator, helper));
+			generator.addProvider(true, new UGBiomeTags(generator, helper));
 		}
 	}
 }

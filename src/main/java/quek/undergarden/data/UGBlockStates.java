@@ -1,6 +1,7 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.data.provider.UGBlockstateProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -74,8 +75,8 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
         crossBlock(UGBlocks.FROZEN_DEEPTURF);
         block(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
-        block(UGBlocks.SEDIMENT);
-        block(UGBlocks.SEDIMENT_GLASS);
+        blockTranslucent(UGBlocks.SEDIMENT);
+        blockTranslucent(UGBlocks.SEDIMENT_GLASS);
         block(UGBlocks.CLOGGRUM_TILES);
         block(UGBlocks.DEPTHROCK_TILES);
         carpet(UGBlocks.MOGMOSS_RUG);
@@ -88,6 +89,17 @@ public class UGBlockStates extends UGBlockstateProvider {
         block(UGBlocks.RAW_CLOGGRUM_BLOCK);
         block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
         block(UGBlocks.POLISHED_DEPTHROCK);
+        crossBlock(UGBlocks.AMOROUS_BRISTLE);
+        crossBlock(UGBlocks.MISERABELL);
+        crossBlock(UGBlocks.BUTTERBUNCH);
+        block(UGBlocks.INDIGO_MUSHROOM_CAP);
+        block(UGBlocks.INDIGO_MUSHROOM_STEM);
+        block(UGBlocks.VEIL_MUSHROOM_CAP);
+        block(UGBlocks.VEIL_MUSHROOM_STEM);
+        block(UGBlocks.INK_MUSHROOM_CAP);
+        simpleBlock(UGBlocks.INK_MUSHROOM_STEM.get(), models().cubeAll(name(UGBlocks.INK_MUSHROOM_STEM), blockTexture(Blocks.MUSHROOM_STEM)));
+        block(UGBlocks.BLOOD_MUSHROOM_CAP);
+        block(UGBlocks.BLOOD_MUSHROOM_STEM);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);
@@ -127,9 +139,9 @@ public class UGBlockStates extends UGBlockstateProvider {
         fence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS);
         fence(UGBlocks.GRONGLE_FENCE, UGBlocks.GRONGLE_PLANKS);
 
-        fenceGateBlock(UGBlocks.SMOGSTEM_FENCE_GATE.get(), modLoc("block/smogstem_planks"));
-        fenceGateBlock(UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), modLoc("block/wigglewood_planks"));
-        fenceGateBlock(UGBlocks.GRONGLE_FENCE_GATE.get(), modLoc("block/grongle_planks"));
+        fenceGate(UGBlocks.SMOGSTEM_FENCE_GATE, UGBlocks.SMOGSTEM_PLANKS);
+        fenceGate(UGBlocks.WIGGLEWOOD_FENCE_GATE, UGBlocks.WIGGLEWOOD_PLANKS);
+        fenceGate(UGBlocks.GRONGLE_FENCE_GATE, UGBlocks.GRONGLE_PLANKS);
 
         door(UGBlocks.SMOGSTEM_DOOR, "smogstem");
         door(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood");
@@ -138,5 +150,23 @@ public class UGBlockStates extends UGBlockstateProvider {
         trapdoor(UGBlocks.SMOGSTEM_TRAPDOOR, "smogstem");
         trapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR, "wigglewood");
         trapdoor(UGBlocks.GRONGLE_TRAPDOOR, "grongle");
+
+        button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
+        button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
+        button(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST);
+        button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
+        button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
+        button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
+
+        pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK);
+        pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE);
+        pressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, UGBlocks.TREMBLECRUST);
+        pressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS);
+        pressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS);
+        pressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS);
+
+        sign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_WALL_SIGN, "smogstem");
+        sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN, "wigglewood");
+        sign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_WALL_SIGN, "grongle");
     }
 }

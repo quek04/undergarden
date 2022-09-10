@@ -2,39 +2,38 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "functions": [
             {
-              "function": "minecraft:set_count",
+              "add": false,
               "conditions": [
                 {
-                  "condition": "minecraft:block_state_property",
                   "block": "undergarden:depthrock_pebbles",
+                  "condition": "minecraft:block_state_property",
                   "properties": {
                     "pebbles": "1"
                   }
                 }
               ],
               "count": 1.0,
-              "add": false
+              "function": "minecraft:set_count"
             },
             {
-              "function": "minecraft:set_count",
+              "add": false,
               "conditions": [
                 {
-                  "condition": "minecraft:block_state_property",
                   "block": "undergarden:depthrock_pebbles",
+                  "condition": "minecraft:block_state_property",
                   "properties": {
                     "pebbles": "2"
                   }
                 }
               ],
               "count": 2.0,
-              "add": false
+              "function": "minecraft:set_count"
             },
             {
               "function": "minecraft:explosion_decay"
@@ -42,7 +41,8 @@
           ],
           "name": "undergarden:depthrock_pebble"
         }
-      ]
+      ],
+      "rolls": 1.0
     }
   ]
 }

@@ -9,7 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.Blisterbomb;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class BlisterbombItem extends Item {
@@ -17,7 +17,7 @@ public class BlisterbombItem extends Item {
     public BlisterbombItem() {
         super(new Properties()
                 .stacksTo(8)
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
         );
     }
 

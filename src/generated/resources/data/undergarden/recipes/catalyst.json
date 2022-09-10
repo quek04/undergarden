@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "GIG",
-    "IDI",
-    "GIG"
-  ],
   "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
     "G": {
       "item": "minecraft:gold_ingot"
     },
     "I": {
       "item": "minecraft:iron_ingot"
-    },
-    "D": {
-      "item": "minecraft:diamond"
     }
   },
+  "pattern": [
+    "GIG",
+    "IDI",
+    "GIG"
+  ],
   "result": {
     "item": "undergarden:catalyst"
   }

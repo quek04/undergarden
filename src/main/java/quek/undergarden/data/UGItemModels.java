@@ -130,7 +130,7 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.GOO_BLOCK);
         block(UGBlocks.SEDIMENT);
         block(UGBlocks.SEDIMENT_GLASS);
-        blockFlat(UGBlocks.SEDIMENT_GLASS_PANE, "sediment_glass");
+        blockFlatWithBlockTexture(UGBlocks.SEDIMENT_GLASS_PANE, "sediment_glass");
         block(UGBlocks.CLOGGRUM_TILES);
         block(UGBlocks.CLOGGRUM_TILE_STAIRS);
         block(UGBlocks.CLOGGRUM_TILE_SLAB);
@@ -200,8 +200,11 @@ public class UGItemModels extends UGItemModelProvider {
         toolItem(UGItems.FORGOTTEN_SHOVEL);
         toolItem(UGItems.FORGOTTEN_HOE);
         normalItem(UGItems.SMOGSTEM_BOAT);
+        normalItem(UGItems.SMOGSTEM_CHEST_BOAT);
         normalItem(UGItems.WIGGLEWOOD_BOAT);
+        normalItem(UGItems.WIGGLEWOOD_CHEST_BOAT);
         normalItem(UGItems.GRONGLE_BOAT);
+        normalItem(UGItems.GRONGLE_CHEST_BOAT);
         normalItem(UGItems.VIRULENT_MIX_BUCKET);
         normalItem(UGItems.GWIBLING_BUCKET);
         normalItem(UGItems.UNDERBEANS);
@@ -229,13 +232,24 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.SHIVERSTONE_REGALIUM_ORE);
         block(UGBlocks.RAW_CLOGGRUM_BLOCK);
         block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
-        blockFlatWithItemName(UGBlocks.CLOGGRUM_LANTERN, "cloggrum_lantern_item");
+        blockFlatWithItemTexture(UGBlocks.CLOGGRUM_LANTERN, "cloggrum_lantern_item");
         blockFlat(UGBlocks.HANGING_GRONGLE_LEAVES);
         block(UGBlocks.BOOMGOURD);
         block(UGBlocks.POLISHED_DEPTHROCK);
         block(UGBlocks.POLISHED_DEPTHROCK_SLAB);
         block(UGBlocks.POLISHED_DEPTHROCK_STAIRS);
         normalItem(UGItems.DITCHBULB_PASTE);
+        blockFlat(UGBlocks.AMOROUS_BRISTLE);
+        blockFlat(UGBlocks.MISERABELL);
+        blockFlat(UGBlocks.BUTTERBUNCH);
+        block(UGBlocks.INDIGO_MUSHROOM_CAP);
+        block(UGBlocks.INDIGO_MUSHROOM_STEM);
+        block(UGBlocks.VEIL_MUSHROOM_CAP);
+        block(UGBlocks.VEIL_MUSHROOM_STEM);
+        block(UGBlocks.INK_MUSHROOM_CAP);
+        block(UGBlocks.INK_MUSHROOM_STEM);
+        block(UGBlocks.BLOOD_MUSHROOM_CAP);
+        block(UGBlocks.BLOOD_MUSHROOM_STEM);
 
         egg(UGItems.DWELLER_SPAWN_EGG);
         egg(UGItems.GWIBLING_SPAWN_EGG);
@@ -258,5 +272,12 @@ public class UGItemModels extends UGItemModelProvider {
         sign(UGBlocks.SMOGSTEM_SIGN);
         sign(UGBlocks.WIGGLEWOOD_SIGN);
         sign(UGBlocks.GRONGLE_SIGN);
+
+        button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
+        button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
+        button(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST);
+        button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
+        button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
+        button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
     }
 }

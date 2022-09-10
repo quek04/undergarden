@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:red_dye",
-    "count": 9
+    "count": 9,
+    "item": "minecraft:red_dye"
   }
 }

@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BBB",
-    "BGB",
-    "BBB"
-  ],
   "key": {
     "B": {
       "item": "undergarden:blisterbomb"
@@ -13,6 +8,11 @@
       "item": "undergarden:gloomgourd"
     }
   },
+  "pattern": [
+    "BBB",
+    "BGB",
+    "BBB"
+  ],
   "result": {
     "item": "undergarden:boomgourd"
   }

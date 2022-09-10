@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "MM",
-    "MM"
-  ],
   "key": {
     "M": {
       "item": "undergarden:polished_depthrock"
     }
   },
+  "pattern": [
+    "MM",
+    "MM"
+  ],
   "result": {
-    "item": "undergarden:depthrock_bricks",
-    "count": 4
+    "count": 4,
+    "item": "undergarden:depthrock_bricks"
   }
 }

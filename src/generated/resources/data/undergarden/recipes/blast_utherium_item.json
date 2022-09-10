@@ -1,9 +1,9 @@
 {
   "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.1,
   "ingredient": {
     "tag": "undergarden:utherium_items"
   },
-  "result": "undergarden:utherium_crystal",
-  "experience": 0.1,
-  "cookingtime": 100
+  "result": "undergarden:utherium_crystal"
 }

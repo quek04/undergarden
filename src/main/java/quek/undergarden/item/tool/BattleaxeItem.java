@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -13,7 +12,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
@@ -28,7 +27,7 @@ public class BattleaxeItem extends SwordItem {
         super(tier, attackDamage, attackSpeed, new Properties()
                 .stacksTo(1)
                 .defaultDurability(tier.getUses() * 3)
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
                 .rarity(Rarity.EPIC)
         );
     }
@@ -48,7 +47,7 @@ public class BattleaxeItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         if(stack.getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
-            tooltip.add(new TranslatableComponent("tooltip.forgotten_sword").withStyle(ChatFormatting.GREEN));
+            tooltip.add(Component.translatable("tooltip.forgotten_sword").withStyle(ChatFormatting.GREEN));
         }
     }
 

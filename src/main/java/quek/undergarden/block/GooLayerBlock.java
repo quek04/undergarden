@@ -3,6 +3,7 @@ package quek.undergarden.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -22,8 +23,6 @@ import quek.undergarden.entity.animal.Scintling;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
 
-import java.util.Random;
-
 public class GooLayerBlock extends Block {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
@@ -35,15 +34,16 @@ public class GooLayerBlock extends Block {
     }
 
     @Override
-    public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
-        if(entityIn instanceof Player && ((Player) entityIn).getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !((Player) entityIn).hasEffect(UGEffects.GOOEY.get())) { }
-        else if(!(entityIn instanceof Scintling) && entityIn.isOnGround()) {
-            entityIn.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if(entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY.get()))
+            return;
+        if(!(entity instanceof Scintling) && entity.isOnGround()) {
+            entity.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
         }
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
@@ -53,9 +53,9 @@ public class GooLayerBlock extends Block {
     }
 
     @Override
-    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos blockpos = pos.below();
-        return worldIn.getBlockState(blockpos).isFaceSturdy(worldIn, blockpos, Direction.UP);
+        return level.getBlockState(blockpos).isFaceSturdy(level, blockpos, Direction.UP);
     }
 
     @Override
@@ -64,17 +64,17 @@ public class GooLayerBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
-        return !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
+        return !state.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
-        if (!state.canSurvive(worldIn, pos)) {
-            worldIn.removeBlock(pos, false);
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (!state.canSurvive(level, pos)) {
+            level.removeBlock(pos, false);
         }
-        if(rand.nextFloat() < 100F + (float)state.getValue(AGE) * 0.50F) {
-            worldIn.removeBlock(pos, false);
+        if(random.nextFloat() < 100F + (float)state.getValue(AGE) * 0.50F) {
+            level.removeBlock(pos, false);
         }
     }
 }

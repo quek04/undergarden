@@ -2,8 +2,8 @@
     "textures": {
         "particle": "undergarden:block/deepsoil",
         "bottom": "undergarden:block/deepsoil",
-        "top": "undergarden:block/ashen_deepturf_top",
-        "side": "undergarden:block/ashen_deepturf_side"
+        "top": "undergarden:block/ashen_deepturf_block_top",
+        "side": "undergarden:block/ashen_deepturf_block_side"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

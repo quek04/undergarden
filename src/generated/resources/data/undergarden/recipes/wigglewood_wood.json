@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "MM",
-    "MM"
-  ],
   "key": {
     "M": {
       "item": "undergarden:wigglewood_log"
     }
   },
+  "pattern": [
+    "MM",
+    "MM"
+  ],
   "result": {
-    "item": "undergarden:wigglewood_wood",
-    "count": 3
+    "count": 3,
+    "item": "undergarden:wigglewood_wood"
   }
 }

@@ -1,6 +1,7 @@
 package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
+import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.ListModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -58,6 +59,10 @@ public class RotbeastModel<T extends Rotbeast> extends ListModel<T> {
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
 		this.head.xRot = headPitch * ((float)Math.PI / 180F);
+
+		this.rightArm.zRot = 0.0F;
+		this.leftArm.zRot = 0.0F;
+		AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
 
 		this.jaw.xRot = entity.isAggressive() ? 0.3491F : 0.0F;
 

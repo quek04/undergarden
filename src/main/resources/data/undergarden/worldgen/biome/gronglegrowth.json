@@ -134,9 +134,7 @@
       "undergarden:regalium_ore"
     ],
     [],
-    [
-      "undergarden:spring"
-    ],
+    [],
     [
       "undergarden:deepturf_patch",
       "undergarden:shimmerweed_patch",
@@ -151,7 +149,9 @@
       "undergarden:gloomgourd_patch",
       "undergarden:grongle_tree",
       "undergarden:small_grongle_tree",
-      "undergarden:grongle_bush"
+      "undergarden:grongle_bush",
+      "undergarden:amorous_bristle_patch",
+      "undergarden:butterbunch_patch"
     ],
     []
   ]

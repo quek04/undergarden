@@ -4,18 +4,37 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.client.model.generators.BlockModelProvider;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
 
 public abstract class UGBlockstateProvider extends BlockStateProvider {
 
-    public UGBlockstateProvider(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Undergarden.MODID, fileHelper);
+    private final UGBlockModelProvider blockModels;
+
+    public UGBlockstateProvider(DataGenerator generator, ExistingFileHelper helper) {
+        super(generator, Undergarden.MODID, helper);
+        this.blockModels = new UGBlockModelProvider(generator, helper) {
+            @Override
+            protected void registerModels() {}
+
+            @Override
+            public @NotNull String getName() {
+                return "Undergarden Block Models";
+            }
+        };
+    }
+
+    @Override
+    public BlockModelProvider models() {
+        return blockModels;
     }
 
     protected ResourceLocation texture(String name) {
@@ -23,11 +42,15 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     protected String name(Supplier<? extends Block> block) {
-        return block.get().getRegistryName().getPath();
+        return ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
     }
 
     public void block(Supplier<? extends Block> block) {
         simpleBlock(block.get());
+    }
+
+    public void blockTranslucent(Supplier<? extends Block> block) {
+        simpleBlock(block.get(), models().cubeAll(name(block), blockTexture(block.get())).renderType("translucent"));
     }
 
     public void log(Supplier<? extends RotatedPillarBlock> block, String name) {
@@ -42,8 +65,8 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     public void torchBlock(Supplier<? extends Block> block, Supplier<? extends Block> wall) {
-        ModelFile torch = models().torch(name(block), texture(name(block)));
-        ModelFile torchwall = models().torchWall(name(wall), texture(name(block)));
+        ModelFile torch = models().torch(name(block), texture(name(block))).renderType("cutout");
+        ModelFile torchwall = models().torchWall(name(wall), texture(name(block))).renderType("cutout");
         simpleBlock(block.get(), torch);
         getVariantBuilder(wall.get()).forAllStates(state ->
                 ConfiguredModel.builder()
@@ -53,7 +76,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     public void crossBlock(Supplier<? extends Block> block) {
-        crossBlock(block, models().cross(name(block), texture(name(block))));
+        crossBlock(block, models().cross(name(block), texture(name(block))).renderType("cutout"));
     }
 
     public void stairs(Supplier<? extends StairBlock> block, Supplier<? extends Block> fullBlock) {
@@ -73,15 +96,19 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
         fenceColumn(block, name(fullBlock));
     }
 
-    private void fenceColumn(Supplier<? extends FenceBlock> block, String side) {
-        String baseName = block.get().getRegistryName().toString();
+    private void fenceColumn(Supplier<? extends FenceBlock> block, String name) {
+        String baseName = name(block);
         fourWayBlock(block.get(),
-                models().fencePost(baseName + "_post", texture(side)),
-                models().fenceSide(baseName + "_side", texture(side)));
+                models().fencePost(baseName + "_post", texture(name)),
+                models().fenceSide(baseName + "_side", texture(name)));
+    }
+
+    public void fenceGate(Supplier<? extends FenceGateBlock> block, Supplier<? extends Block> fullBlock) {
+        fenceGateBlock(block.get(), texture(name(fullBlock)));
     }
 
     public void door(Supplier<? extends DoorBlock> block, String name) {
-        doorBlock(block.get(), texture(name + "_door_bottom"), texture(name + "_door_top"));
+        doorBlock(block.get(), name(block), texture(name + "_door_bottom"), texture(name + "_door_top"));
     }
 
     public void trapdoor(Supplier<? extends TrapDoorBlock> block, String name) {
@@ -90,5 +117,17 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
 
     public void carpet(Supplier<? extends WoolCarpetBlock> block) {
         simpleBlock(block.get(), models().carpet(name(block), texture(name(block))));
+    }
+
+    public void button(Supplier<? extends ButtonBlock> block, Supplier<? extends Block> fullBlock) {
+        buttonBlock(block.get(), texture(name(fullBlock)));
+    }
+
+    public void pressurePlate(Supplier<? extends PressurePlateBlock> block, Supplier<? extends Block> fullBlock) {
+        pressurePlateBlock(block.get(), texture(name(fullBlock)));
+    }
+
+    public void sign(Supplier<? extends StandingSignBlock> standingBlock, Supplier<? extends WallSignBlock> wallBlock, String name) {
+        signBlock(standingBlock.get(), wallBlock.get(), modLoc("entity/signs/" + name));
     }
 }

@@ -1,10 +1,10 @@
 {
   "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 1.0,
   "group": "undergarden:utherium",
   "ingredient": {
     "item": "undergarden:shiverstone_utherium_ore"
   },
-  "result": "undergarden:utherium_crystal",
-  "experience": 1.0,
-  "cookingtime": 100
+  "result": "undergarden:utherium_crystal"
 }

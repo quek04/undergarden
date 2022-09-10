@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "/": {
+      "tag": "forge:rods/wooden"
+    },
+    "M": {
+      "item": "undergarden:smogstem_planks"
+    }
+  },
   "pattern": [
     "/M/",
     "/M/"
   ],
-  "key": {
-    "M": {
-      "item": "undergarden:smogstem_planks"
-    },
-    "/": {
-      "tag": "forge:rods/wooden"
-    }
-  },
   "result": {
     "item": "undergarden:smogstem_fence_gate"
   }

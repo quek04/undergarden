@@ -1,34 +1,34 @@
 {
   "parent": "undergarden:undergarden/catacombs",
-  "display": {
-    "icon": {
-      "item": "undergarden:forgotten_block"
-    },
-    "title": {
-      "translate": "advancement.undergarden.kill_forgotten_guardian.title"
-    },
-    "description": {
-      "translate": "advancement.undergarden.kill_forgotten_guardian.desc"
-    },
-    "frame": "goal",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
   "criteria": {
     "kill_forgotten_guardian": {
-      "trigger": "minecraft:player_killed_entity",
       "conditions": {
         "entity": [
           {
             "condition": "minecraft:entity_properties",
+            "entity": "this",
             "predicate": {
               "type": "undergarden:forgotten_guardian"
-            },
-            "entity": "this"
+            }
           }
         ]
-      }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.undergarden.kill_forgotten_guardian.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:forgotten_block"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.undergarden.kill_forgotten_guardian.title"
     }
   },
   "requirements": [

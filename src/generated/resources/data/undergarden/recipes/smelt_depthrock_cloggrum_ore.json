@@ -1,10 +1,10 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.7,
   "group": "undergarden:cloggrum_ingot",
   "ingredient": {
     "item": "undergarden:depthrock_cloggrum_ore"
   },
-  "result": "undergarden:cloggrum_ingot",
-  "experience": 0.7,
-  "cookingtime": 200
+  "result": "undergarden:cloggrum_ingot"
 }

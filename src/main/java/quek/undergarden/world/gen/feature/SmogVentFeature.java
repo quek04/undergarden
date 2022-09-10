@@ -3,6 +3,7 @@ package quek.undergarden.world.gen.feature;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -11,8 +12,6 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import quek.undergarden.registry.UGBlocks;
 
-import java.util.Random;
-
 public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
 
     public SmogVentFeature(Codec<NoneFeatureConfiguration> codec) {
@@ -20,15 +19,15 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos pos = pContext.origin();
-        Random random = pContext.random();
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos pos = context.origin();
+        RandomSource random = context.random();
         while (level.isEmptyBlock(pos) && pos.getY() > 2) {
             pos = pos.below();
         }
 
-        if (level.isEmptyBlock(pos.above()) && level.getBlockState(pos).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
+        if (level.isEmptyBlock(pos.above())/* && level.getBlockState(pos).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()*/) {
             pos = pos.above(random.nextInt(4));
             int ventHeight = 7;
             int j = ventHeight / 4 + random.nextInt(2);
@@ -46,7 +45,7 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
                             BlockState blockstate = level.getBlockState(pos.offset(i1, k, j1));
                             Block block = blockstate.getBlock();
                             BlockPos ventPos = new BlockPos(pos.getX(), pos.getY() + 7, pos.getZ());
-                            if (blockstate.isAir() || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
+                            if (blockstate.isAir()/* || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()*/) {
                                 this.setBlock(level, pos.offset(i1, k, j1), UGBlocks.DEPTHROCK.get().defaultBlockState());
                             }
                             this.setBlock(level, ventPos, UGBlocks.SMOG_VENT.get().defaultBlockState());
@@ -54,7 +53,7 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
                             if (k != 0 && l > 1) {
                                 blockstate = level.getBlockState(pos.offset(i1, -k, j1));
                                 block = blockstate.getBlock();
-                                if (blockstate.isAir() || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) {
+                                if (blockstate.isAir()/* || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()*/) {
                                     this.setBlock(level, pos.offset(i1, -k, j1), UGBlocks.DEPTHROCK.get().defaultBlockState());
                                 }
                             }
@@ -70,7 +69,7 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
                     BlockPos blockpos = pos.offset(l1, -1, i2);
                     BlockState blockstate1 = level.getBlockState(blockpos);
                     Block block1 = blockstate1.getBlock();
-                    if (!blockstate1.isAir() && block1 != UGBlocks.ASHEN_DEEPTURF_BLOCK.get() && block1 != UGBlocks.DEEPSOIL.get() && block1 != UGBlocks.DEPTHROCK.get()) {
+                    if (!blockstate1.isAir()/* && block1 != UGBlocks.ASHEN_DEEPTURF_BLOCK.get() && block1 != UGBlocks.DEEPSOIL.get() && block1 != UGBlocks.DEPTHROCK.get()*/) {
                         break;
                     }
 

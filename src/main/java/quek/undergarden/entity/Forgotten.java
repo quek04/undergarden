@@ -1,6 +1,7 @@
 package quek.undergarden.entity;
 
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityDimensions;
@@ -17,7 +18,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGItems;
@@ -71,32 +71,24 @@ public class Forgotten extends AbstractSkeleton {
     }
 
     @Override
-    protected void populateDefaultEquipmentEnchantments(DifficultyInstance difficulty) {
-        if (this.getMainHandItem().is(UGItems.CLOGGRUM_BATTLEAXE.get())) {
-            ItemStack mainHandItem = this.getMainHandItem();
-            mainHandItem.enchant(Enchantments.KNOCKBACK, 4);
-        }
-    }
-
-    @Override
-    protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
+    protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
         for (EquipmentSlot slot : EquipmentSlot.values()) {
             if (slot.getType() == EquipmentSlot.Type.ARMOR) {
                 ItemStack armorStack = this.getItemBySlot(slot);
                 if (armorStack.isEmpty()) {
                     Item item = getEquipmentForSlot(slot);
-                    if (item != null && this.random.nextBoolean()) {
+                    if (item != null && random.nextBoolean()) {
                         this.setItemSlot(slot, new ItemStack(item));
                     }
                 }
             }
         }
-        if (this.random.nextBoolean()) {
+        if (random.nextBoolean()) {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_SWORD.get()));
         } else {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_AXE.get()));
         }
-        if (this.random.nextInt(50) == 0) {
+        if (random.nextInt(50) == 0) {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_BATTLEAXE.get()));
         }
     }

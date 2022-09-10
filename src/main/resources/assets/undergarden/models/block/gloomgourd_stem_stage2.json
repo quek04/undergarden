@@ -1,5 +1,6 @@
 {
     "parent": "block/stem_growth2",
+    "render_type": "minecraft:cutout",
     "textures": {
         "stem": "block/melon_stem"
     }

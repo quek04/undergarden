@@ -2,6 +2,7 @@ package quek.undergarden.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,17 +16,16 @@ import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class DitchbulbPasteItem extends Item {
 
     public DitchbulbPasteItem() {
         super(new Properties()
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
         );
     }
 
@@ -64,7 +64,7 @@ public class DitchbulbPasteItem extends Item {
     }
 
     private void playSound(Level level, BlockPos pos) {
-        Random random = level.getRandom();
+        RandomSource random = level.getRandom();
         level.playSound(null, pos, UGSoundEvents.DITCHBULB_PASTE_USE.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
     }
 }

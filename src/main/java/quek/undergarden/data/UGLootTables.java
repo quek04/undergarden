@@ -194,12 +194,13 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.SHIVERSTONE_WALL);
             this.add(UGBlocks.BLOOD_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.BLOOD_MUSHROOM.get()));
             dropSelf(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
-            dropAsSilk(UGBlocks.BLOOD_MUSHROOM_STALK);
+            dropAsSilk(UGBlocks.BLOOD_MUSHROOM_STEM);
             this.add(UGBlocks.INDIGO_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.INDIGO_MUSHROOM.get()));
-            dropAsSilk(UGBlocks.INDIGO_MUSHROOM_STALK);
+            dropAsSilk(UGBlocks.INDIGO_MUSHROOM_STEM);
             this.add(UGBlocks.VEIL_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.VEIL_MUSHROOM.get()));
-            dropAsSilk(UGBlocks.VEIL_MUSHROOM_STALK);
+            dropAsSilk(UGBlocks.VEIL_MUSHROOM_STEM);
             this.add(UGBlocks.INK_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.INK_MUSHROOM.get()));
+            dropAsSilk(UGBlocks.INK_MUSHROOM_STEM);
             dropSelf(UGBlocks.FORGOTTEN_BLOCK);
             dropSelf(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
             dropSelf(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
@@ -211,6 +212,9 @@ public class UGLootTables extends LootTableProvider {
             dropPottedContents(UGBlocks.POTTED_INK_MUSHROOM.get());
             dropPottedContents(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
             dropPottedContents(UGBlocks.POTTED_GRONGLE_SAPLING.get());
+            dropPottedContents(UGBlocks.POTTED_AMOROUS_BRISTLE.get());
+            dropPottedContents(UGBlocks.POTTED_MISERABELL.get());
+            dropPottedContents(UGBlocks.POTTED_BUTTERBUNCH.get());
             dropWithSilk(UGBlocks.FROZEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
             this.add(UGBlocks.FROZEN_DEEPTURF.get(), BlockLoot::createShearsOnlyDrop);
             dropSelf(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
@@ -267,6 +271,10 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.POLISHED_DEPTHROCK_STAIRS);
             dropSelf(UGBlocks.POLISHED_DEPTHROCK_SLAB);
             dropSelf(UGBlocks.POLISHED_DEPTHROCK_WALL);
+            dropSelf(UGBlocks.AMOROUS_BRISTLE);
+            dropSelf(UGBlocks.MISERABELL);
+            dropSelf(UGBlocks.BUTTERBUNCH);
+            dropOther(UGBlocks.VIRULENT_MIX_CAULDRON, Items.CAULDRON);
         }
 
         @Override
@@ -288,7 +296,7 @@ public class UGLootTables extends LootTableProvider {
         return LootTable.lootTable().withPool(withExplosionDecay(stem, LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(stemSeed).apply(SetItemCountFunction.setCount(BinomialDistributionGenerator.binomial(3, 0.53333336F))))));
     }
 
-    protected static <T> T withExplosionDecay(ItemLike item, FunctionUserBuilder<T> function) {
+    protected static <T extends FunctionUserBuilder<T>> T withExplosionDecay(ItemLike item, FunctionUserBuilder<T> function) {
         return !IMMUNE_TO_EXPLOSIONS.contains(item.asItem()) ? function.apply(ApplyExplosionDecay.explosionDecay()) : function.unwrap();
     }
 

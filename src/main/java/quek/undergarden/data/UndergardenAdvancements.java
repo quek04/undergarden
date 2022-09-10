@@ -2,10 +2,11 @@ package quek.undergarden.data;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.*;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
@@ -18,30 +19,30 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> {
-    private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST);
+    private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG);
     @SuppressWarnings("unused")
     @Override
     public void accept(Consumer<Advancement> consumer) {
         Advancement root = Advancement.Builder.advancement()
                 .display(
                         UGBlocks.DEEPTURF_BLOCK.get(),
-                        new TranslatableComponent("advancement.undergarden.root.title"),
-                        new TranslatableComponent(""),
+                        Component.translatable("advancement.undergarden.root.title"),
+                        Component.translatable(""),
                         new ResourceLocation(Undergarden.MODID, "textures/block/depthrock_bricks.png"),
                         FrameType.TASK,
                         false,
                         false,
                         false
                 )
-                .addCriterion("tick", new TickTrigger.TriggerInstance(EntityPredicate.Composite.ANY))
+                .addCriterion("tick", new PlayerTrigger.TriggerInstance(CriteriaTriggers.TICK.getId(), EntityPredicate.Composite.ANY))
                 .save(consumer, "undergarden:undergarden/root");
 
         Advancement catalyst = Advancement.Builder.advancement()
                 .parent(root)
                 .display(
                         UGItems.CATALYST.get(),
-                        new TranslatableComponent("advancement.undergarden.catalyst.title"),
-                        new TranslatableComponent("advancement.undergarden.catalyst.desc"),
+                        Component.translatable("advancement.undergarden.catalyst.title"),
+                        Component.translatable("advancement.undergarden.catalyst.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -55,8 +56,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(catalyst)
                 .display(
                         UGBlocks.DEEPTURF_BLOCK.get(),
-                        new TranslatableComponent("advancement.undergarden.enter_undergarden.title"),
-                        new TranslatableComponent("advancement.undergarden.enter_undergarden.desc"),
+                        Component.translatable("advancement.undergarden.enter_undergarden.title"),
+                        Component.translatable("advancement.undergarden.enter_undergarden.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -70,8 +71,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.SLINGSHOT.get(),
-                        new TranslatableComponent("advancement.undergarden.slingshot.title"),
-                        new TranslatableComponent("advancement.undergarden.slingshot.desc"),
+                        Component.translatable("advancement.undergarden.slingshot.title"),
+                        Component.translatable("advancement.undergarden.slingshot.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -85,8 +86,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(slingshot)
                 .display(
                         UGItems.DEPTHROCK_PEBBLE.get(),
-                        new TranslatableComponent("advancement.undergarden.shoot_slingshot.title"),
-                        new TranslatableComponent("advancement.undergarden.shoot_slingshot.desc"),
+                        Component.translatable("advancement.undergarden.shoot_slingshot.title"),
+                        Component.translatable("advancement.undergarden.shoot_slingshot.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -100,8 +101,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(slingshot)
                 .display(
                         UGItems.GOO_BALL.get(),
-                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_goo.title"),
-                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_goo.desc"),
+                        Component.translatable("advancement.undergarden.shoot_slingshot_goo.title"),
+                        Component.translatable("advancement.undergarden.shoot_slingshot_goo.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -115,8 +116,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(slingshot)
                 .display(
                         UGItems.ROTTEN_BLISTERBERRY.get(),
-                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_rotten_blisterberry.title"),
-                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_rotten_blisterberry.desc"),
+                        Component.translatable("advancement.undergarden.shoot_slingshot_rotten_blisterberry.title"),
+                        Component.translatable("advancement.undergarden.shoot_slingshot_rotten_blisterberry.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -130,8 +131,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(shoot_slingshot)
                 .display(
                         UGItems.DEPTHROCK_PEBBLE.get(),
-                        new TranslatableComponent("advancement.undergarden.slingshot_20_damage.title"),
-                        new TranslatableComponent("advancement.undergarden.slingshot_20_damage.desc"),
+                        Component.translatable("advancement.undergarden.slingshot_20_damage.title"),
+                        Component.translatable("advancement.undergarden.slingshot_20_damage.desc"),
                         null,
                         FrameType.CHALLENGE,
                         true,
@@ -145,8 +146,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(slingshot)
                 .display(
                         UGBlocks.GRONGLET.get(),
-                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_gronglet.title"),
-                        new TranslatableComponent("advancement.undergarden.shoot_slingshot_gronglet.desc"),
+                        Component.translatable("advancement.undergarden.shoot_slingshot_gronglet.title"),
+                        Component.translatable("advancement.undergarden.shoot_slingshot_gronglet.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -160,8 +161,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.UNDERBEANS.get(),
-                        new TranslatableComponent("advancement.undergarden.underbeans.title"),
-                        new TranslatableComponent("advancement.undergarden.underbeans.desc"),
+                        Component.translatable("advancement.undergarden.underbeans.title"),
+                        Component.translatable("advancement.undergarden.underbeans.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -175,8 +176,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.REGALIUM_CRYSTAL.get(),
-                        new TranslatableComponent("advancement.undergarden.stoneborn_trade.title"),
-                        new TranslatableComponent("advancement.undergarden.stoneborn_trade.desc"),
+                        Component.translatable("advancement.undergarden.stoneborn_trade.title"),
+                        Component.translatable("advancement.undergarden.stoneborn_trade.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -190,8 +191,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.RAW_CLOGGRUM.get(),
-                        new TranslatableComponent("advancement.undergarden.mine_ore.title"),
-                        new TranslatableComponent("advancement.undergarden.mine_ore.desc"),
+                        Component.translatable("advancement.undergarden.mine_ore.title"),
+                        Component.translatable("advancement.undergarden.mine_ore.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -216,8 +217,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(mine_ore)
                 .display(
                         UGBlocks.REGALIUM_BLOCK.get(),
-                        new TranslatableComponent("advancement.undergarden.all_ore_blocks.title"),
-                        new TranslatableComponent("advancement.undergarden.all_ore_blocks.desc"),
+                        Component.translatable("advancement.undergarden.all_ore_blocks.title"),
+                        Component.translatable("advancement.undergarden.all_ore_blocks.desc"),
                         null,
                         FrameType.CHALLENGE,
                         true,
@@ -231,8 +232,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(mine_ore)
                 .display(
                         UGItems.CLOGGRUM_CHESTPLATE.get(),
-                        new TranslatableComponent("advancement.undergarden.cloggrum_armor.title"),
-                        new TranslatableComponent("advancement.undergarden.cloggrum_armor.desc"),
+                        Component.translatable("advancement.undergarden.cloggrum_armor.title"),
+                        Component.translatable("advancement.undergarden.cloggrum_armor.desc"),
                         null,
                         FrameType.GOAL,
                         true,
@@ -242,12 +243,12 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .addCriterion("has_cloggrum_armor", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.CLOGGRUM_HELMET.get(), UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.CLOGGRUM_BOOTS.get()))
                 .save(consumer, "undergarden:undergarden/cloggrum_armor");
 
-        addBiomes(Advancement.Builder.advancement())
+        addBiomes(Advancement.Builder.advancement(), UNDERGARDEN_BIOMES)
                 .parent(enter_undergarden)
                 .display(
                         UGItems.CLOGGRUM_BOOTS.get(),
-                        new TranslatableComponent("advancement.undergarden.all_undergarden_biomes.title"),
-                        new TranslatableComponent("advancement.undergarden.all_undergarden_biomes.desc"),
+                        Component.translatable("advancement.undergarden.all_undergarden_biomes.title"),
+                        Component.translatable("advancement.undergarden.all_undergarden_biomes.desc"),
                         null,
                         FrameType.CHALLENGE,
                         true,
@@ -260,8 +261,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.GLOOMGOURD_SEEDS.get(),
-                        new TranslatableComponent("advancement.undergarden.plant_gloomgourd.title"),
-                        new TranslatableComponent("advancement.undergarden.plant_gloomgourd.desc"),
+                        Component.translatable("advancement.undergarden.plant_gloomgourd.title"),
+                        Component.translatable("advancement.undergarden.plant_gloomgourd.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -275,8 +276,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(plant_gloomgourd)
                 .display(
                         UGBlocks.GLOOMGOURD.get(),
-                        new TranslatableComponent("advancement.undergarden.stack_of_gloomgourds.title"),
-                        new TranslatableComponent("advancement.undergarden.stack_of_gloomgourds.desc"),
+                        Component.translatable("advancement.undergarden.stack_of_gloomgourds.title"),
+                        Component.translatable("advancement.undergarden.stack_of_gloomgourds.desc"),
                         null,
                         FrameType.GOAL,
                         true,
@@ -290,8 +291,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.GWIBLING_BUCKET.get(),
-                        new TranslatableComponent("advancement.undergarden.catch_gwibling.title"),
-                        new TranslatableComponent("advancement.undergarden.catch_gwibling.desc"),
+                        Component.translatable("advancement.undergarden.catch_gwibling.title"),
+                        Component.translatable("advancement.undergarden.catch_gwibling.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -305,8 +306,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.UTHERIC_SHARD.get(),
-                        new TranslatableComponent("advancement.undergarden.kill_rotling.title"),
-                        new TranslatableComponent("advancement.undergarden.kill_rotling.desc"),
+                        Component.translatable("advancement.undergarden.kill_rotling.title"),
+                        Component.translatable("advancement.undergarden.kill_rotling.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -320,8 +321,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(kill_rotling)
                 .display(
                         UGBlocks.SHARD_TORCH.get(),
-                        new TranslatableComponent("advancement.undergarden.shard_torch.title"),
-                        new TranslatableComponent("advancement.undergarden.shard_torch.desc"),
+                        Component.translatable("advancement.undergarden.shard_torch.title"),
+                        Component.translatable("advancement.undergarden.shard_torch.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -335,8 +336,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(kill_rotling)
                 .display(
                         UGItems.UTHERIUM_SWORD.get(),
-                        new TranslatableComponent("advancement.undergarden.kill_all_rotspawn.title"),
-                        new TranslatableComponent("advancement.undergarden.kill_all_rotspawn.desc"),
+                        Component.translatable("advancement.undergarden.kill_all_rotspawn.title"),
+                        Component.translatable("advancement.undergarden.kill_all_rotspawn.desc"),
                         null,
                         FrameType.CHALLENGE,
                         true,
@@ -353,8 +354,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.GOO_BALL.get(),
-                        new TranslatableComponent("advancement.undergarden.kill_scintling.title"),
-                        new TranslatableComponent("advancement.undergarden.kill_scintling.desc"),
+                        Component.translatable("advancement.undergarden.kill_scintling.title"),
+                        Component.translatable("advancement.undergarden.kill_scintling.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -368,23 +369,23 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGBlocks.DEPTHROCK_BRICK_STAIRS.get(),
-                        new TranslatableComponent("advancement.undergarden.catacombs.title"),
-                        new TranslatableComponent("advancement.undergarden.catacombs.desc"),
+                        Component.translatable("advancement.undergarden.catacombs.title"),
+                        Component.translatable("advancement.undergarden.catacombs.desc"),
                         null,
                         FrameType.TASK,
                         true,
                         true,
                         false
                 )
-                .addCriterion("enter_catacombs", LocationTrigger.TriggerInstance.located(LocationPredicate.inFeature(UGStructures.CATACOMBS_KEY)))
+                .addCriterion("enter_catacombs", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(UGStructures.CATACOMBS_KEY)))
                 .save(consumer, "undergarden:undergarden/catacombs");
 
         Advancement kill_guardian = Advancement.Builder.advancement()
                 .parent(catacombs)
                 .display(
                         UGBlocks.FORGOTTEN_BLOCK.get(),
-                        new TranslatableComponent("advancement.undergarden.kill_forgotten_guardian.title"),
-                        new TranslatableComponent("advancement.undergarden.kill_forgotten_guardian.desc"),
+                        Component.translatable("advancement.undergarden.kill_forgotten_guardian.title"),
+                        Component.translatable("advancement.undergarden.kill_forgotten_guardian.desc"),
                         null,
                         FrameType.GOAL,
                         true,
@@ -398,8 +399,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(kill_guardian)
                 .display(
                         UGItems.FORGOTTEN_INGOT.get(),
-                        new TranslatableComponent("advancement.undergarden.forgotten_ingot.title"),
-                        new TranslatableComponent("advancement.undergarden.forgotten_ingot.desc"),
+                        Component.translatable("advancement.undergarden.forgotten_ingot.title"),
+                        Component.translatable("advancement.undergarden.forgotten_ingot.desc"),
                         null,
                         FrameType.TASK,
                         true,
@@ -413,8 +414,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(forgotten_ingot)
                 .display(
                         UGItems.FORGOTTEN_PICKAXE.get(),
-                        new TranslatableComponent("advancement.undergarden.forgotten_tools.title"),
-                        new TranslatableComponent("advancement.undergarden.forgotten_tools.desc"),
+                        Component.translatable("advancement.undergarden.forgotten_tools.title"),
+                        Component.translatable("advancement.undergarden.forgotten_tools.desc"),
                         null,
                         FrameType.CHALLENGE,
                         true,
@@ -428,8 +429,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(forgotten_ingot)
                 .display(
                         UGItems.FORGOTTEN_BATTLEAXE.get(),
-                        new TranslatableComponent("advancement.undergarden.forgotten_battleaxe.title"),
-                        new TranslatableComponent("advancement.undergarden.forgotten_battleaxe.desc"),
+                        Component.translatable("advancement.undergarden.forgotten_battleaxe.title"),
+                        Component.translatable("advancement.undergarden.forgotten_battleaxe.desc"),
                         null,
                         FrameType.CHALLENGE,
                         true,
@@ -443,8 +444,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(forgotten_ingot)
                 .display(
                         UGBlocks.CARVED_GLOOMGOURD.get(),
-                        new TranslatableComponent("advancement.undergarden.summon_minion.title"),
-                        new TranslatableComponent("advancement.undergarden.summon_minion.desc"),
+                        Component.translatable("advancement.undergarden.summon_minion.title"),
+                        Component.translatable("advancement.undergarden.summon_minion.desc"),
                         null,
                         FrameType.GOAL,
                         true,
@@ -458,8 +459,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(enter_undergarden)
                 .display(
                         UGItems.GLOOMPER_SECRET_DISC.get(),
-                        new TranslatableComponent("advancement.undergarden.gloomper_secret_disc.title"),
-                        new TranslatableComponent("advancement.undergarden.gloomper_secret_disc.desc"),
+                        Component.translatable("advancement.undergarden.gloomper_secret_disc.title"),
+                        Component.translatable("advancement.undergarden.gloomper_secret_disc.desc"),
                         null,
                         FrameType.CHALLENGE,
                         true,
@@ -473,8 +474,8 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .parent(catacombs)
                 .display(
                         UGItems.CLOGGRUM_BATTLEAXE.get(),
-                        new TranslatableComponent("advancement.undergarden.cloggrum_battleaxe.title"),
-                        new TranslatableComponent("advancement.undergarden.cloggrum_battleaxe.desc"),
+                        Component.translatable("advancement.undergarden.cloggrum_battleaxe.title"),
+                        Component.translatable("advancement.undergarden.cloggrum_battleaxe.desc"),
                         null,
                         FrameType.GOAL,
                         true,
@@ -485,9 +486,10 @@ public class UndergardenAdvancements implements Consumer<Consumer<Advancement>> 
                 .save(consumer, "undergarden:undergarden/cloggrum_battleaxe");
     }
 
-    protected static Advancement.Builder addBiomes(Advancement.Builder builder) {
-        for(ResourceKey<Biome> resourcekey : UndergardenAdvancements.UNDERGARDEN_BIOMES) {
-            builder.addCriterion(resourcekey.location().toString(), LocationTrigger.TriggerInstance.located(LocationPredicate.inBiome(resourcekey)));
+
+    protected static Advancement.Builder addBiomes(Advancement.Builder builder, List<ResourceKey<Biome>> biomes) {
+        for(ResourceKey<Biome> biome : biomes) {
+            builder.addCriterion(biome.location().toString(), PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(biome)));
         }
 
         return builder;

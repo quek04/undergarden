@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": {
+      "item": "undergarden:depthrock"
+    },
+    "M": {
+      "item": "undergarden:mogmoss"
+    }
+  },
   "pattern": [
     "MMM",
     "DDD"
   ],
-  "key": {
-    "M": {
-      "item": "undergarden:mogmoss"
-    },
-    "D": {
-      "item": "undergarden:depthrock"
-    }
-  },
   "result": {
     "item": "undergarden:depthrock_bed"
   }

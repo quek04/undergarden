@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "M  ",
-    "MM ",
-    "MMM"
-  ],
   "key": {
     "M": {
       "item": "undergarden:shiverstone_bricks"
     }
   },
+  "pattern": [
+    "M  ",
+    "MM ",
+    "MMM"
+  ],
   "result": {
-    "item": "undergarden:shiverstone_brick_stairs",
-    "count": 4
+    "count": 4,
+    "item": "undergarden:shiverstone_brick_stairs"
   }
 }

@@ -1,6 +1,7 @@
 package quek.undergarden.block;
 
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.NetherVines;
@@ -8,8 +9,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
-
-import java.util.Random;
 
 public class MushroomVeilBlock extends GrowingPlantHeadBlock {
 
@@ -20,7 +19,7 @@ public class MushroomVeilBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(Random random) {
+    protected int getBlocksToGrowWhenBonemealed(RandomSource random) {
         return NetherVines.getBlocksToGrowWhenBonemealed(random);
     }
 

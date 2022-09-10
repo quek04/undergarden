@@ -6,6 +6,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.data.LanguageProvider;
+import net.minecraftforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.*;
 
@@ -42,10 +43,10 @@ public class UGLang extends LanguageProvider {
     }
 
     private void addPotion(Supplier<? extends Potion> potion, String name) {
-        add("item.minecraft.potion.effect." + potion.get().getRegistryName().getPath(), "Potion of " + name);
-        add("item.minecraft.splash_potion.effect." + potion.get().getRegistryName().getPath(), "Splash Potion of " + name);
-        add("item.minecraft.lingering_potion.effect." + potion.get().getRegistryName().getPath(), "Lingering Potion of " + name);
-        add("item.minecraft.tipped_arrow.effect." + potion.get().getRegistryName().getPath(), "Arrow of " + name);
+        add("item.minecraft.potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Potion of " + name);
+        add("item.minecraft.splash_potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Splash Potion of " + name);
+        add("item.minecraft.lingering_potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Lingering Potion of " + name);
+        add("item.minecraft.tipped_arrow.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Arrow of " + name);
     }
 
     @Override
@@ -145,6 +146,9 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.MOGMOSS_RUG, "Mogmoss Rug");
         addBlock(UGBlocks.CLOGGRUM_LANTERN, "Cloggrum Lantern");
 
+        addBlock(UGBlocks.AMOROUS_BRISTLE, "Amorous Bristle");
+        addBlock(UGBlocks.MISERABELL, "Miserabell");
+        addBlock(UGBlocks.BUTTERBUNCH, "Butterbunch");
         addBlock(UGBlocks.UNDERBEAN_BUSH, "Underbean Bush");
         addBlock(UGBlocks.BLISTERBERRY_BUSH, "Blisterberry Bush");
         addBlock(UGBlocks.DEEPTURF, "Deepturf");
@@ -168,11 +172,11 @@ public class UGLang extends LanguageProvider {
 
         addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
         addBlock(UGBlocks.INDIGO_MUSHROOM_CAP, "Indigo Mushroom Cap");
-        addBlock(UGBlocks.INDIGO_MUSHROOM_STALK, "Indigo Mushroom Stalk");
+        addBlock(UGBlocks.INDIGO_MUSHROOM_STEM, "Indigo Mushroom Stem");
 
         addBlock(UGBlocks.VEIL_MUSHROOM, "Veiled Mushroom");
         addBlock(UGBlocks.VEIL_MUSHROOM_CAP, "Veil Mushroom Cap");
-        addBlock(UGBlocks.VEIL_MUSHROOM_STALK, "Veil Mushroom Stalk");
+        addBlock(UGBlocks.VEIL_MUSHROOM_STEM, "Veil Mushroom Stem");
         addBlock(UGBlocks.MUSHROOM_VEIL_PLANT, "Mushroom Veil");
         addBlock(UGBlocks.MUSHROOM_VEIL, "Mushroom Veil");
 
@@ -183,7 +187,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.BLOOD_MUSHROOM, "Blood Mushroom");
         addBlock(UGBlocks.BLOOD_MUSHROOM_CAP, "Blood Mushroom Cap");
         addBlock(UGBlocks.BLOOD_MUSHROOM_GLOBULE, "Blood Mushroom Globule");
-        addBlock(UGBlocks.BLOOD_MUSHROOM_STALK, "Blood Mushroom Stalk");
+        addBlock(UGBlocks.BLOOD_MUSHROOM_STEM, "Blood Mushroom Stem");
 
         addBlock(UGBlocks.SMOGSTEM_SAPLING, "Smogstem Sapling");
         addBlock(UGBlocks.SMOGSTEM_LOG, "Smogstem Log");
@@ -239,7 +243,9 @@ public class UGLang extends LanguageProvider {
 
         addBlock(UGBlocks.GRONGLET, "Gronglet");
 
-        add("fluid.undergarden.virulent_mix_source", "Virulent Mix");
+        addBlock(UGBlocks.VIRULENT_MIX, "Virulent Mix");
+
+        addBlock(UGBlocks.VIRULENT_MIX_CAULDRON, "Virulent Mix Cauldron");
 
         addItem(UGItems.MAMMOTH_DISC, "Music Disc");
         add(UGItems.MAMMOTH_DISC.get().getDescriptionId() + ".desc", "Screem - Mammoth");
@@ -306,8 +312,11 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.FORGOTTEN_HOE, "Forgotten Hoe");
 
         addItem(UGItems.SMOGSTEM_BOAT, "Smogstem Boat");
+        addItem(UGItems.SMOGSTEM_CHEST_BOAT, "Smogstem Boat with Chest");
         addItem(UGItems.WIGGLEWOOD_BOAT, "Wigglewood Boat");
+        addItem(UGItems.WIGGLEWOOD_CHEST_BOAT, "Wigglewood Boat with Chest");
         addItem(UGItems.GRONGLE_BOAT, "Grongle Boat");
+        addItem(UGItems.GRONGLE_CHEST_BOAT, "Grongle Boat with Chest");
 
         addItem(UGItems.SLINGSHOT, "Slingshot");
 
@@ -366,18 +375,22 @@ public class UGLang extends LanguageProvider {
 
         addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
         addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
+        addBiome(UGBiomes.BLOOD_MUSHROOM_BOG, "Blood Mushroom Bog");
         addBiome(UGBiomes.DEAD_SEA, "Dead Sea");
         addBiome(UGBiomes.DENSE_FOREST, "Dense Forest");
         addBiome(UGBiomes.FORGOTTEN_FIELD, "Forgotten Field");
         addBiome(UGBiomes.FROSTFIELDS, "Frostfields");
         addBiome(UGBiomes.GRONGLEGROWTH, "Gronglegrowth");
         addBiome(UGBiomes.ICY_SEA, "Icy Sea");
-        addBiome(UGBiomes.MUSHROOM_BOG, "Mushroom Bog");
+        addBiome(UGBiomes.INDIGO_MUSHROOM_BOG, "Indigo Mushroom Bog");
+        addBiome(UGBiomes.INK_MUSHROOM_BOG, "Ink Mushroom Bog");
         addBiome(UGBiomes.SMOGSTEM_FOREST, "Smogstem Forest");
         addBiome(UGBiomes.SMOG_SPIRES, "Smog Spires");
+        addBiome(UGBiomes.VEIL_MUSHROOM_BOG, "Veil Mushroom Bog");
         addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 
-        addEntityType(UGEntityTypes.BOAT, "Undergarden Boat");
+        addEntityType(UGEntityTypes.BOAT, "Boat");
+        addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");
         addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
         addEntityType(UGEntityTypes.DWELLER, "Dweller");
         addEntityType(UGEntityTypes.GWIBLING, "Gwibling");
@@ -398,18 +411,20 @@ public class UGLang extends LanguageProvider {
         addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
         addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 
-        addItemGroup(UGItemGroups.GROUP, "The Undergarden");
+        addItemGroup(UGCreativeModeTabs.GROUP, "The Undergarden");
 
         addEffect(UGEffects.GOOEY, "Gooey");
         addEffect(UGEffects.BRITTLENESS, "Brittleness");
         addEffect(UGEffects.FEATHERWEIGHT, "Featherweight");
         addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
+        addEffect(UGEffects.VIRULENCE, "Virulence");
 
         //JEED compat
         add("effect.undergarden.gooey.description", "Scintling Goo will constantly be placed under victim's feet.");
         add("effect.undergarden.brittleness.description", "The higher the victim's armor value is, the more damage they will take. Amount of damage received scales with potion level.");
         add("effect.undergarden.featherweight.description", "When damaged, victim will receive increased knockback. Amount of knockback scales with potion level.");
-        add("effect.undergarden.virulent_resistance.description", "Grants immunity to Virulent Mix's poison. Will not cure already active poison.");
+        add("effect.undergarden.virulent_resistance.description", "Grants immunity to Virulence.");
+        add("effect.undergarden.virulence.description", "Similar to poison, but does more damage at a slower rate. Damage is suppressed by Virulent Resistance.");
 
         addPotion(UGPotions.BRITTLENESS, "Brittleness");
         addPotion(UGPotions.FEATHERWEIGHT, "Featherweight");

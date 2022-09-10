@@ -63,6 +63,7 @@ public class UGTags {
         public static final TagKey<Block> DEPTHROCK_ORE_REPLACEABLES = tag("depthrock_ore_replaceables");
         public static final TagKey<Block> SHIVERSTONE_ORE_REPLACEABLES = tag("shiverstone_ore_replaceables");
         public static final TagKey<Block> TREMBLECRUST_ORE_REPLACEABLES = tag("tremblecrust_ore_replaceables");
+        public static final TagKey<Block> UNDERGARDEN_CARVER_REPLACEABLES = tag("undergarden_carver_replaceables");
         public static final TagKey<Block> MUSHROOMS = tag("mushrooms");
         public static final TagKey<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
         public static final TagKey<Block> SMOGSTEM_LOGS = tag("smogstem_logs");
@@ -122,12 +123,13 @@ public class UGTags {
     }
 
     public static class Biomes {
+        public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
 
-        public static final TagKey<Biome> HAS_CATACOMBS = tag("catacombs");
-        public static final TagKey<Biome> HAS_FORGOTTEN_RUIN = tag("forgotten_ruin");
+        public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
+        public static final TagKey<Biome> HAS_FORGOTTEN_RUIN = tag("has_structure/forgotten_ruin");
 
         private static TagKey<Biome> tag(String name) {
-            return BiomeTags.create(new ResourceLocation(Undergarden.MODID, "has_structure/" + name).toString());
+            return BiomeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());
         }
     }
 }

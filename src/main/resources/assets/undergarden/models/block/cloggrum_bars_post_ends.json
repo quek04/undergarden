@@ -1,5 +1,6 @@
 {
     "ambientocclusion": false,
+    "render_type": "minecraft:cutout",
     "textures": {
         "particle": "undergarden:block/cloggrum_bars",
         "edge": "undergarden:block/cloggrum_bars"

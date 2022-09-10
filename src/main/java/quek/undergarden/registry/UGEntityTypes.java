@@ -15,10 +15,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.*;
-import quek.undergarden.entity.Boomgourd;
-import quek.undergarden.entity.animal.Gwib;
-import quek.undergarden.entity.Minion;
-import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.boss.ForgottenGuardian;
 import quek.undergarden.entity.boss.Masticator;
@@ -41,10 +37,11 @@ import quek.undergarden.entity.stoneborn.Stoneborn;
 @Mod.EventBusSubscriber(modid = "undergarden", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGEntityTypes {
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Undergarden.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Undergarden.MODID);
 
     //misc
     public static final RegistryObject<EntityType<UGBoat>> BOAT = ENTITIES.register("boat", () -> EntityType.Builder.<UGBoat>of(UGBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("boat"));
+    public static final RegistryObject<EntityType<UGChestBoat>> CHEST_BOAT = ENTITIES.register("chest_boat", () -> EntityType.Builder.<UGChestBoat>of(UGChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("chest_boat"));
     public static final RegistryObject<EntityType<Boomgourd>> BOOMGOURD = ENTITIES.register("boomgourd", () -> EntityType.Builder.<Boomgourd>of(Boomgourd::new, MobCategory.MISC).fireImmune().sized(1.0F, 1.0F).clientTrackingRange(10).updateInterval(10).build("boomgourd"));
     public static final RegistryObject<EntityType<DepthrockPebble>> DEPTHROCK_PEBBLE = ENTITIES.register("depthrock_pebble", () -> EntityType.Builder.<DepthrockPebble>of(DepthrockPebble::new, MobCategory.MISC).sized(0.25F, 0.25F).build("depthrock_pebble"));
     public static final RegistryObject<EntityType<GooBall>> GOO_BALL = ENTITIES.register("goo_ball", () -> EntityType.Builder.<GooBall>of(GooBall::new, MobCategory.MISC).sized(0.25F, 0.25F).build("goo_ball"));

@@ -1,6 +1,8 @@
 {
-  "replace": false,
   "values": [
-    "undergarden:shimmerweed"
+    "undergarden:shimmerweed",
+    "undergarden:amorous_bristle",
+    "undergarden:miserabell",
+    "undergarden:butterbunch"
   ]
 }

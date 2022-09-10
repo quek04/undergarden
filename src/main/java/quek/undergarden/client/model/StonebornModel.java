@@ -1,6 +1,7 @@
 package quek.undergarden.client.model;
 
 import com.google.common.collect.ImmutableSet;
+import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.ListModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -65,6 +66,9 @@ public class StonebornModel<T extends Stoneborn> extends ListModel<T> {
 
 		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightArm.zRot = -0.0436F;
+		this.leftArm.zRot = 0.0436F;
+		AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
 
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;

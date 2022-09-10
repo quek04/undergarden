@@ -3,6 +3,7 @@ package quek.undergarden.client.render.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.TntMinecartRenderer;
@@ -14,8 +15,11 @@ import quek.undergarden.registry.UGBlocks;
 
 public class BoomgourdRender extends EntityRenderer<Boomgourd> {
 
+    private final BlockRenderDispatcher blockRenderer;
+
     public BoomgourdRender(EntityRendererProvider.Context context) {
         super(context);
+        this.blockRenderer = context.getBlockRenderDispatcher();
     }
 
     @Override
@@ -34,7 +38,7 @@ public class BoomgourdRender extends EntityRenderer<Boomgourd> {
         poseStack.mulPose(Vector3f.YP.rotationDegrees(-90.0F));
         poseStack.translate(-0.5D, -0.5D, 0.5D);
         poseStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
-        TntMinecartRenderer.renderWhiteSolidBlock(UGBlocks.BOOMGOURD.get().defaultBlockState(), poseStack, buffer, packedLight, fuse / 5 % 2 == 0);
+        TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, UGBlocks.BOOMGOURD.get().defaultBlockState(), poseStack, buffer, packedLight, fuse / 5 % 2 == 0);
         poseStack.popPose();
         super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight);
     }

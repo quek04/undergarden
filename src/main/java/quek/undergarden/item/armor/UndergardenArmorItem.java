@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -16,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGArmorMaterials;
-import quek.undergarden.registry.UGItemGroups;
+import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
@@ -27,7 +26,7 @@ public class UndergardenArmorItem extends ArmorItem {
 
     public UndergardenArmorItem(ArmorMaterial material, EquipmentSlot slot) {
         super(material, slot, new Properties()
-                .tab(UGItemGroups.GROUP)
+                .tab(UGCreativeModeTabs.GROUP)
         );
     }
 
@@ -35,7 +34,7 @@ public class UndergardenArmorItem extends ArmorItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         if(stack.getItem() == UGItems.CLOGGRUM_BOOTS.get()) {
-            tooltip.add(new TranslatableComponent("tooltip.cloggrum_boots").withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("tooltip.cloggrum_boots").withStyle(ChatFormatting.GRAY));
         }
     }
 

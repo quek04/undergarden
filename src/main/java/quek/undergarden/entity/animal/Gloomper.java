@@ -8,7 +8,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.EntityType;
@@ -268,7 +267,7 @@ public class Gloomper extends Animal {
         cloud.setRadiusOnUse(-0.5F);
         cloud.setWaitTime(10);
         cloud.setRadiusPerTick(-cloud.getRadius() / (float)cloud.getDuration());
-        cloud.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 0));
+        cloud.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 100, 0));
 
         if(this.random.nextInt(2) == 0) {
             this.playSound(UGSoundEvents.GLOOMPER_FART.get(), 1.0F, 1.0F);
@@ -281,7 +280,7 @@ public class Gloomper extends Animal {
     @Override
     public boolean canBeAffected(MobEffectInstance effectInstance) {
         MobEffect effect = effectInstance.getEffect();
-        if (effect == MobEffects.POISON) {
+        if (effect == UGEffects.VIRULENCE.get()) {
             return false;
         }
         else return super.canBeAffected(effectInstance);

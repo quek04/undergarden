@@ -1,5 +1,6 @@
 {
   "parent": "block/block",
+  "render_type": "minecraft:translucent",
   "textures": {
     "bottom": "undergarden:block/goo_block_bottom",
     "side": "undergarden:block/goo_block_side",

@@ -5,10 +5,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
-import quek.undergarden.potion.BrittlenessEffect;
-import quek.undergarden.potion.FeatherweightEffect;
-import quek.undergarden.potion.GooeyEffect;
-import quek.undergarden.potion.VirulentResistanceEffect;
+import quek.undergarden.effect.*;
 
 public class UGEffects {
 
@@ -18,4 +15,5 @@ public class UGEffects {
     public static final RegistryObject<MobEffect> BRITTLENESS = EFFECTS.register("brittleness", BrittlenessEffect::new);
     public static final RegistryObject<MobEffect> FEATHERWEIGHT = EFFECTS.register("featherweight", FeatherweightEffect::new);
     public static final RegistryObject<MobEffect> VIRULENT_RESISTANCE = EFFECTS.register("virulent_resistance", VirulentResistanceEffect::new);
+    public static final RegistryObject<MobEffect> VIRULENCE = EFFECTS.register("virulence", VirulenceEffect::new);
 }

@@ -2,23 +2,23 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "undergarden:droopvine_plant",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "glowy": "true"
+          }
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
           "name": "undergarden:droopvine_item"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "undergarden:droopvine_plant",
-          "properties": {
-            "glowy": "true"
-          }
-        }
-      ]
+      "rolls": 1.0
     }
   ]
 }

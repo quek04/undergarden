@@ -1,6 +1,7 @@
 {
-    "parent": "block/cross",
-    "textures": {
-        "cross": "undergarden:block/ditchbulb_plant"
-    }
+  "parent": "block/cross",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "undergarden:block/ditchbulb_plant"
+  }
 }

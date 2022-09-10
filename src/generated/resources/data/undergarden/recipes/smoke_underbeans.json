@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smoking",
+  "cookingtime": 100,
+  "experience": 0.35,
   "ingredient": {
     "item": "undergarden:underbeans"
   },
-  "result": "undergarden:roasted_underbeans",
-  "experience": 0.35,
-  "cookingtime": 100
+  "result": "undergarden:roasted_underbeans"
 }

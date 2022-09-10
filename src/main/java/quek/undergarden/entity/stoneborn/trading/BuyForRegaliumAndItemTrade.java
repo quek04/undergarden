@@ -1,5 +1,6 @@
 package quek.undergarden.entity.stoneborn.trading;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.Item;
@@ -8,7 +9,6 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class BuyForRegaliumAndItemTrade implements VillagerTrades.ItemListing {
 
@@ -34,7 +34,7 @@ public class BuyForRegaliumAndItemTrade implements VillagerTrades.ItemListing {
 
     @Nullable
     @Override
-    public MerchantOffer getOffer(Entity entity, Random random) {
+    public MerchantOffer getOffer(Entity entity, RandomSource random) {
         return new MerchantOffer(new ItemStack(UGItems.REGALIUM_CRYSTAL.get(), this.regaliumCount), new ItemStack(this.buy.getItem(), this.buyCount), new ItemStack(this.sell.getItem(), this.sellCount), this.maxUses, 0, 0);
     }
 }
