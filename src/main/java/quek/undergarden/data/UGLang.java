@@ -186,7 +186,7 @@ public class UGLang extends LanguageProvider {
 
         addBlock(UGBlocks.BLOOD_MUSHROOM, "Blood Mushroom");
         addBlock(UGBlocks.BLOOD_MUSHROOM_CAP, "Blood Mushroom Cap");
-        addBlock(UGBlocks.BLOOD_MUSHROOM_GLOBULE, "Blood Mushroom Globule");
+        addBlock(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP, "Engorged Blood Mushroom Cap");
         addBlock(UGBlocks.BLOOD_MUSHROOM_STEM, "Blood Mushroom Stem");
 
         addBlock(UGBlocks.SMOGSTEM_SAPLING, "Smogstem Sapling");
@@ -350,6 +350,7 @@ public class UGLang extends LanguageProvider {
         addItem(UGItems.COOKED_GWIBLING, "Cooked Gwibling");
         addItem(UGItems.RAW_GLOOMPER_LEG, "Raw Gloomper Leg");
         addItem(UGItems.GLOOMPER_LEG, "Gloomper Leg");
+        addItem(UGItems.BLOOD_GLOBULE, "Blood Globule");
         addItem(UGItems.BLOODY_STEW, "Bloody Stew");
         addItem(UGItems.INDIGO_STEW, "Indigo Stew");
         addItem(UGItems.INKY_STEW, "Inky Stew");

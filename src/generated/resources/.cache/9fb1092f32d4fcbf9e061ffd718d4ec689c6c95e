@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-15T17:32:17.6282585	Recipes
+// 1.19.2	2022-09-16T20:37:13.3850077	Recipes
 39c2e0588ef0f2792a8cb53ca1476965f3aa7fad data/undergarden/advancements/recipes/decorations/torch_ditchbulb_paste.json
 6559286c214c32294ef86928c044d32e0af35141 data/undergarden/advancements/recipes/decorations/undergarden_scaffolding.json
 2889a3b1950367efbbf84fb99016f3eb14366863 data/undergarden/advancements/recipes/food/smelt_glitterkelp.json
@@ -14,7 +14,6 @@ f7df8bbedc4501052bf4292540f364b1ae44f0ea data/undergarden/advancements/recipes/m
 cb16388832f576d5fb4f31454e0791c4c3324e35 data/undergarden/advancements/recipes/misc/blast_shiverstone_iron_ore.json
 90f95b8a43a718bf39c5b3082d12c303470a9217 data/undergarden/advancements/recipes/misc/blood_mushroom_to_dye.json
 775ecfdae77e378c6b5e0c89ae95f06796eff82e data/undergarden/advancements/recipes/misc/butterbunch_to_dye.json
-891d38efc15973e87e03d735a113475993b1ece6 data/undergarden/advancements/recipes/misc/globule_to_dye.json
 e39d7f328b95577dd5f933e99fdd614ec9eeebad data/undergarden/advancements/recipes/misc/indigo_mushroom_to_dye.json
 51e1be2271a1fab35afd9022ff0a91d117d9e6d1 data/undergarden/advancements/recipes/misc/ink_mushroom_to_dye.json
 13bd8bb3abca710c8c7a73bdc8ff0b3d5998b917 data/undergarden/advancements/recipes/misc/miserabell_to_dye.json
@@ -383,7 +382,6 @@ a393da1b34e287299eb579a20439a04986b56025 data/undergarden/recipes/froststeel_leg
 59e959292b43a5551697fee80d2093b494013b63 data/undergarden/recipes/froststeel_pickaxe.json
 bb4dec7c4aa25176822ce92d66e056b511e74b19 data/undergarden/recipes/froststeel_shovel.json
 b772a549b3f9d217920e7a84e5e29384160c7f6c data/undergarden/recipes/froststeel_sword.json
-bb0f2f9aeb467d8f502882b321bdea7cb91ccdfa data/undergarden/recipes/globule_to_dye.json
 5b3975736b7f6a13899d9605d6eccf8d469f0d59 data/undergarden/recipes/gloomgourd_pie.json
 9fce7b52c232c562324dd3b62454936683d2c4cd data/undergarden/recipes/gloomgourd_seeds.json
 6b1e67070cbb8254f0db7fe90eaa2945a1006e98 data/undergarden/recipes/gloom_o_lantern.json

@@ -63,7 +63,6 @@ public class UGBlockStates extends UGBlockstateProvider {
         log(UGBlocks.STRIPPED_WIGGLEWOOD_LOG, "stripped_wigglewood_log");
         log(UGBlocks.STRIPPED_GRONGLE_LOG, "stripped_grongle_log");
         block(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
-        block(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
         crossBlock(UGBlocks.SEEPING_INK);
         crossBlock(UGBlocks.MUSHROOM_VEIL);
         crossBlock(UGBlocks.MUSHROOM_VEIL_PLANT);
@@ -100,6 +99,7 @@ public class UGBlockStates extends UGBlockstateProvider {
         simpleBlock(UGBlocks.INK_MUSHROOM_STEM.get(), models().cubeAll(name(UGBlocks.INK_MUSHROOM_STEM), blockTexture(Blocks.MUSHROOM_STEM)));
         block(UGBlocks.BLOOD_MUSHROOM_CAP);
         block(UGBlocks.BLOOD_MUSHROOM_STEM);
+        block(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP);
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);

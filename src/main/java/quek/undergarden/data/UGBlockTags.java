@@ -220,7 +220,7 @@ public class UGBlockTags extends BlockTagsProvider {
                 UGBlocks.VEIL_MUSHROOM_STEM.get(),
                 UGBlocks.INK_MUSHROOM_CAP.get(),
                 UGBlocks.BLOOD_MUSHROOM_CAP.get(),
-                UGBlocks.BLOOD_MUSHROOM_GLOBULE.get(),
+                UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(),
                 UGBlocks.BLOOD_MUSHROOM_STEM.get(),
                 UGBlocks.SMOGSTEM_LOG.get(),
                 UGBlocks.STRIPPED_SMOGSTEM_LOG.get(),

@@ -25,12 +25,12 @@ public class UGDeltaFeature extends DeltaFeature {
             UGBlocks.WIGGLEWOOD_LEAVES.get(),
             UGBlocks.GRONGLE_LEAVES.get(),
             UGBlocks.BLOOD_MUSHROOM_CAP.get(),
+            UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(),
             UGBlocks.INDIGO_MUSHROOM_CAP.get(),
             UGBlocks.INK_MUSHROOM_CAP.get(),
             UGBlocks.VEIL_MUSHROOM_CAP.get(),
             UGBlocks.DEPTHROCK.get(),
             UGBlocks.SHIVERSTONE.get(),
-            UGBlocks.BLOOD_MUSHROOM_GLOBULE.get(),
             Blocks.PACKED_ICE,
             Blocks.SNOW_BLOCK
     );
