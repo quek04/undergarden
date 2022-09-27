@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-07T15:03:43.9496096	Undergarden Block Tags
+// 1.19.2	2022-09-26T21:25:51.0850276	Undergarden Block Tags
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -55,7 +55,7 @@ bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/blocks/impermeable.
 497779cef1ba178c2d1e96ca25b75892c32f086f data/minecraft/tags/blocks/leaves.json
 9479ebbe396f89b63bb5a43f52770666961999c9 data/minecraft/tags/blocks/logs.json
 9479ebbe396f89b63bb5a43f52770666961999c9 data/minecraft/tags/blocks/logs_that_burn.json
-d3fc28369e305850755b7e8c6cb1a3a6879feef6 data/minecraft/tags/blocks/mineable/axe.json
+fafff32dd87177c6b6ffab623faf9add1e2b449a data/minecraft/tags/blocks/mineable/axe.json
 78905c3a496e4d94c24d07af3e585bf14688d33b data/minecraft/tags/blocks/mineable/hoe.json
 62770b51c9c1e3fa425ae8147f05c9507da0046b data/minecraft/tags/blocks/mineable/pickaxe.json
 69d2571d2d15a8aefb59f5d5ba8c0d1952690da0 data/minecraft/tags/blocks/mineable/shovel.json

@@ -138,6 +138,7 @@ public class UGItems {
     public static final RegistryObject<Item> GLOOMPER_LEG = ITEMS.register("gloomper_leg", () -> new UGItem(UGFoods.GLOOMPER_LEG));
     public static final RegistryObject<Item> GLITTERKELP = ITEMS.register("glitterkelp", () -> new BlockItem(UGBlocks.GLITTERKELP.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
     public static final RegistryObject<Item> GLOOMGOURD_SEEDS = ITEMS.register("gloomgourd_seeds", () -> new ItemNameBlockItem(UGBlocks.GLOOMGOURD_STEM.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
+    public static final RegistryObject<Item> BLOOD_GLOBULE = ITEMS.register("blood_globule", () -> new UGItem(UGFoods.BLOOD_GLOBULE));
     public static final RegistryObject<Item> BLOODY_STEW = ITEMS.register("bloody_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.BLOODY).stacksTo(1)));
     public static final RegistryObject<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.INKY).stacksTo(1)));
     public static final RegistryObject<Item> INDIGO_STEW = ITEMS.register("indigo_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.INDIGO).stacksTo(1)));

@@ -1,11 +1,10 @@
-// 1.19.2	2022-09-07T15:03:43.953613	Undergarden Loot Tables
+// 1.19.2	2022-09-26T21:25:51.0880304	Undergarden Loot Tables
 41ed64c053d947752331444f709eaaa1d2475d33 data/undergarden/loot_tables/blocks/amorous_bristle.json
 7df034228d77c0bcf64cf642af38b510a5e0dd85 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 bdf7d335fce989c44cbf4347f37ec83cf12de1f1 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
 9a885b20f407d4f83f6a3e0fb6fc38094a245bd2 data/undergarden/loot_tables/blocks/blisterberry_bush.json
 a1a06183d805450160fe44895813a8f1a725343d data/undergarden/loot_tables/blocks/blood_mushroom.json
 06f828e6982fe1c7cf2b2d0e5806522b1de55824 data/undergarden/loot_tables/blocks/blood_mushroom_cap.json
-640e08b1787dac17b8f8d159ff83c92168852587 data/undergarden/loot_tables/blocks/blood_mushroom_globule.json
 81a3dddf9adb2ceaea9aea468909204de2fa8964 data/undergarden/loot_tables/blocks/blood_mushroom_stem.json
 e2f9300f3d2394d446c63b4926d3c7723a6f6e0e data/undergarden/loot_tables/blocks/boomgourd.json
 6731a65204da10626ba11d12bd79ec7cf8d789a7 data/undergarden/loot_tables/blocks/butterbunch.json
@@ -52,6 +51,7 @@ aa0ff73d6a7e980d9368aff4c8ce0948511f8790 data/undergarden/loot_tables/blocks/dep
 61d495dd8c8f9171238ca0140482f0b52ad1dbff data/undergarden/loot_tables/blocks/ditchbulb_plant.json
 e36a698efd76285dc5717be26096c26e8ff82c1c data/undergarden/loot_tables/blocks/droopvine.json
 fa1b7f3426dedc5071b22bcd1305f82473e312cd data/undergarden/loot_tables/blocks/droopvine_plant.json
+cc40103bf712d546357ba7512d5f316d61044b08 data/undergarden/loot_tables/blocks/engorged_blood_mushroom_cap.json
 a32f5a0e9e5398764aacc771698cc9ef73a08c12 data/undergarden/loot_tables/blocks/forgotten_block.json
 a236a1279d641bc14748d06708588e8368d066c3 data/undergarden/loot_tables/blocks/froststeel_block.json
 f86055b8abb0d6d181a32ad8d180c43dbc709a21 data/undergarden/loot_tables/blocks/frozen_deepturf.json

@@ -23,10 +23,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
+import net.minecraft.world.level.storage.loot.*;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.*;
@@ -192,7 +189,14 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.DEPTHROCK_WALL);
             dropSelf(UGBlocks.SHIVERSTONE_WALL);
             this.add(UGBlocks.BLOOD_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.BLOOD_MUSHROOM.get()));
-            dropSelf(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
+            this.add(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), (block -> LootTable.lootTable()
+                    .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                            .add(LootItem.lootTableItem(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get()).when(HAS_SILK_TOUCH)
+                                    .otherwise(applyExplosionDecay(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), LootItem.lootTableItem(UGItems.BLOOD_GLOBULE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F)))))
+                                    .append(applyExplosionDecay(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), LootItem.lootTableItem(UGBlocks.BLOOD_MUSHROOM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(-6.0F, 2.0F))).apply(LimitCount.limitCount(IntRange.lowerBound(0))))))
+                            )
+                    )
+            );
             dropAsSilk(UGBlocks.BLOOD_MUSHROOM_STEM);
             this.add(UGBlocks.INDIGO_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.INDIGO_MUSHROOM.get()));
             dropAsSilk(UGBlocks.INDIGO_MUSHROOM_STEM);

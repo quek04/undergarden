@@ -1,13 +1,13 @@
-// 1.19.2	2022-09-07T15:08:28.3335742	Undergarden Item Models
+// 1.19.2	2022-09-26T21:25:51.0910328	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
 8badee57abd7354d80bbf6f6ff7ea5981701e87d assets/undergarden/models/item/blisterberry.json
 5b4eb9f4bdf4e20a591040b2956f9d7f19385737 assets/undergarden/models/item/blisterbomb.json
 b84d9c9ed2da59bd89e4cecb1dcd1c2faeb05139 assets/undergarden/models/item/bloody_stew.json
+a9c5cc29fac70ee67b04c0aa2544f105985f93fc assets/undergarden/models/item/blood_globule.json
 b62f795ece9a852ff785eaa7ef4b4ec242ca6319 assets/undergarden/models/item/blood_mushroom.json
 fdf77de27b3b34c9dee3f144128ccec43e939cc4 assets/undergarden/models/item/blood_mushroom_cap.json
-4cd31d11822def6966b3e9e8ed8e42d1977f43b0 assets/undergarden/models/item/blood_mushroom_globule.json
 2e1ff54606b30c9854de9b4a206bd1247efffbb9 assets/undergarden/models/item/blood_mushroom_stem.json
 570eff5a21cc3edc3a97becf2408e33ee85e8a3c assets/undergarden/models/item/boomgourd.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/brute_spawn_egg.json
@@ -72,6 +72,7 @@ be5ab78320f8c6af0c2204c0357a1bc67965ff36 assets/undergarden/models/item/depthroc
 73a393fe47b1aaaf24313702a1ca96b5c44b5819 assets/undergarden/models/item/droopvine_item.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/dweller_spawn_egg.json
 c0e8ea1b02ad0a123b0c58b66340e061bfee35ab assets/undergarden/models/item/dweller_steak.json
+0b31ca6d1daa5f6709929451fc5e57cde6467bcd assets/undergarden/models/item/engorged_blood_mushroom_cap.json
 ffe1bacd446e5ddc30b3ba311a1b9bc059248f24 assets/undergarden/models/item/forgotten_axe.json
 7f8a957dc8907b96ef12c4844faf3ff37ec8f7e4 assets/undergarden/models/item/forgotten_block.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/forgotten_guardian_spawn_egg.json
