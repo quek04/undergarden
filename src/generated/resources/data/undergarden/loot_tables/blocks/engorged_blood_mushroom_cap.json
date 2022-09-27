@@ -66,6 +66,9 @@
                   "limit": {
                     "min": 0.0
                   }
+                },
+                {
+                  "function": "minecraft:explosion_decay"
                 }
               ],
               "name": "undergarden:blood_mushroom"
