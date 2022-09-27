@@ -157,6 +157,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.TALL_DEEPTURF, "Tall Deepturf");
         addBlock(UGBlocks.SHIMMERWEED, "Shimmerweed");
         addBlock(UGBlocks.TALL_SHIMMERWEED, "Tall Shimmerweed");
+        addBlock(UGBlocks.POTTED_SHIMMERWEED, "Potted Shimmerweed");
         addBlock(UGBlocks.DITCHBULB_PLANT, "Ditchbulb Plant");
         addBlock(UGBlocks.GLOOMGOURD, "Gloomgourd");
         addBlock(UGBlocks.CARVED_GLOOMGOURD, "Carved Gloomgourd");
@@ -171,25 +172,30 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.DROOPVINE_PLANT, "Droopvine");
 
         addBlock(UGBlocks.INDIGO_MUSHROOM, "Indigo Mushroom");
+        addBlock(UGBlocks.POTTED_INDIGO_MUSHROOM, "Potted Indigo Mushroom");
         addBlock(UGBlocks.INDIGO_MUSHROOM_CAP, "Indigo Mushroom Cap");
         addBlock(UGBlocks.INDIGO_MUSHROOM_STEM, "Indigo Mushroom Stem");
 
         addBlock(UGBlocks.VEIL_MUSHROOM, "Veiled Mushroom");
+        addBlock(UGBlocks.POTTED_VEIL_MUSHROOM, "Potted Veiled Mushroom");
         addBlock(UGBlocks.VEIL_MUSHROOM_CAP, "Veil Mushroom Cap");
         addBlock(UGBlocks.VEIL_MUSHROOM_STEM, "Veil Mushroom Stem");
         addBlock(UGBlocks.MUSHROOM_VEIL_PLANT, "Mushroom Veil");
         addBlock(UGBlocks.MUSHROOM_VEIL, "Mushroom Veil");
 
         addBlock(UGBlocks.INK_MUSHROOM, "Ink Mushroom");
+        addBlock(UGBlocks.POTTED_INK_MUSHROOM, "Potted Ink Mushroom");
         addBlock(UGBlocks.INK_MUSHROOM_CAP, "Ink Mushroom Cap");
         addBlock(UGBlocks.SEEPING_INK, "Seeping Ink");
 
         addBlock(UGBlocks.BLOOD_MUSHROOM, "Blood Mushroom");
+        addBlock(UGBlocks.POTTED_BLOOD_MUSHROOM, "Potted Blood Mushroom");
         addBlock(UGBlocks.BLOOD_MUSHROOM_CAP, "Blood Mushroom Cap");
         addBlock(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP, "Engorged Blood Mushroom Cap");
         addBlock(UGBlocks.BLOOD_MUSHROOM_STEM, "Blood Mushroom Stem");
 
         addBlock(UGBlocks.SMOGSTEM_SAPLING, "Smogstem Sapling");
+        addBlock(UGBlocks.POTTED_SMOGSTEM_SAPLING, "Potted Smogstem Sapling");
         addBlock(UGBlocks.SMOGSTEM_LOG, "Smogstem Log");
         addBlock(UGBlocks.STRIPPED_SMOGSTEM_LOG, "Stripped Smogstem Log");
         addBlock(UGBlocks.SMOGSTEM_WOOD, "Smogstem Wood");
@@ -207,6 +213,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.SMOGSTEM_SIGN, "Smogstem Sign");
 
         addBlock(UGBlocks.WIGGLEWOOD_SAPLING, "Wigglewood Sapling");
+        addBlock(UGBlocks.POTTED_WIGGLEWOOD_SAPLING, "Potted Wigglewood Sapling");
         addBlock(UGBlocks.WIGGLEWOOD_LOG, "Wigglewood Log");
         addBlock(UGBlocks.STRIPPED_WIGGLEWOOD_LOG, "Stripped Wigglewood Log");
         addBlock(UGBlocks.WIGGLEWOOD_WOOD, "Wigglewood.. Wood");
@@ -224,6 +231,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.WIGGLEWOOD_SIGN, "Wigglewood Sign");
 
         addBlock(UGBlocks.GRONGLE_SAPLING, "Grongle Sapling");
+        addBlock(UGBlocks.POTTED_GRONGLE_SAPLING, "Potted Grongle Sapling");
         addBlock(UGBlocks.GRONGLE_LOG, "Grongle Log");
         addBlock(UGBlocks.STRIPPED_GRONGLE_LOG, "Stripped Grongle Log");
         addBlock(UGBlocks.GRONGLE_WOOD, "Grongle Wood");
