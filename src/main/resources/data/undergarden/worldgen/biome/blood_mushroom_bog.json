@@ -3,15 +3,14 @@
   "downfall": 0,
   "precipitation": "none",
   "category": "none",
-  "creature_spawn_probability": 0.5,
   "effects": {
     "sky_color": 1186057,
-    "fog_color": 1643784,
+    "fog_color": 2565927,
     "water_color": 342306,
     "water_fog_color": 332810,
     "grass_color": 6180396,
     "foliage_color": 6180396,
-    "ambient_sound": "undergarden:ambient.undergarden",
+    "ambient_sound": "undergarden:ambient.abyss",
     "mood_sound": {
       "sound": "undergarden:ambient.mood",
       "tick_delay": 6000,
@@ -30,9 +29,9 @@
     },
     "particle": {
       "options": {
-        "type": "white_ash"
+        "type": "ash"
       },
-      "probability": 0.05
+      "probability": 0.118093334
     }
   },
   "spawners": {
@@ -72,14 +71,6 @@
         "weight": 50,
         "minCount": 1,
         "maxCount": 1
-      }
-    ],
-    "creature": [
-      {
-        "type": "undergarden:gloomper",
-        "weight": 100,
-        "minCount": 8,
-        "maxCount": 8
       }
     ],
     "ambient": [
