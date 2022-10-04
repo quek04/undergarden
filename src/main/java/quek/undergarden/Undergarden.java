@@ -76,6 +76,7 @@ public class Undergarden {
 				UGStructures.STRUCTURES,
 				UGTreeDecoratorTypes.TREE_DECORATORS,
 				UGTrunkPlacerTypes.TRUNK_PLACERS,
+				UGFoliagePlacers.FOLIAGE_PLACERS
 		};
 
 		for (DeferredRegister<?> register : registers) {
