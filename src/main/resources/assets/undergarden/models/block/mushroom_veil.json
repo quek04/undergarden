@@ -1,0 +1,19 @@
+{
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "undergarden:block/mushroom_veil",
+    "veil": "undergarden:block/mushroom_veil"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0.8 ],
+      "to": [ 16, 16, 0.8 ],
+      "shade": false,
+      "faces": {
+        "north": { "uv": [ 16, 0, 0, 16 ], "texture": "#veil" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#veil" }
+      }
+    }
+  ]
+}

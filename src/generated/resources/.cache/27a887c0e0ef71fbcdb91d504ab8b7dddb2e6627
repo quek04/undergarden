@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-26T21:25:51.0880304	Undergarden Loot Tables
+// 1.19.2	2022-10-04T12:01:10.8678629	Undergarden Loot Tables
 41ed64c053d947752331444f709eaaa1d2475d33 data/undergarden/loot_tables/blocks/amorous_bristle.json
 7df034228d77c0bcf64cf642af38b510a5e0dd85 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 bdf7d335fce989c44cbf4347f37ec83cf12de1f1 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -89,6 +89,7 @@ b2192706e7e8b87062ea16fc39c8092195b3795c data/undergarden/loot_tables/blocks/ink
 1ce1344eb693cd78ff285abb2d88223c4c871548 data/undergarden/loot_tables/blocks/ink_mushroom_stem.json
 98ef3055150f960e91ca504bbe1d39c2cee15991 data/undergarden/loot_tables/blocks/miserabell.json
 a18def62a4ab9f1c587302e8d61f2484ad1fda3a data/undergarden/loot_tables/blocks/mogmoss_rug.json
+7d5880946c4e065aa3682249bd04d937a9992c4b data/undergarden/loot_tables/blocks/mushroom_veil.json
 cd01f5479e52a7e66c8646d18a357450a18213c2 data/undergarden/loot_tables/blocks/polished_depthrock.json
 a32ba7b4b30439644292d999ccc040ce07dd10c0 data/undergarden/loot_tables/blocks/polished_depthrock_slab.json
 6891e34a4314a462af024906e4b0b8172fbeeafc data/undergarden/loot_tables/blocks/polished_depthrock_stairs.json

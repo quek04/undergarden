@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-26T21:25:51.0930355	Undergarden Block States
+// 1.19.2	2022-10-04T12:01:10.8708665	Undergarden Block States
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
 3caa35193766b684dc360e477e5208fb99d055f6 assets/undergarden/blockstates/ashen_deepturf.json
 02328547a7e9108bb15d031935f8ddeeff689970 assets/undergarden/blockstates/blood_mushroom.json
@@ -66,8 +66,6 @@ b2d4a89e5a07b56531a9889c9fda6f9582d2a313 assets/undergarden/blockstates/ink_mush
 a887805cbc508de7d236fcdf5044f344f9029909 assets/undergarden/blockstates/loose_tremblecrust.json
 de992bab1f5d25607e4b64fb22c6fa7f2f28f8b3 assets/undergarden/blockstates/miserabell.json
 75503f1e195cb43b0abb7d620b2c987c34e74abc assets/undergarden/blockstates/mogmoss_rug.json
-785f8ba43fb30fc0eb6690821d6588f149028b76 assets/undergarden/blockstates/mushroom_veil.json
-9c2dffc2ac68754a958f332033b317ec2392113a assets/undergarden/blockstates/mushroom_veil_plant.json
 032444c8b700e01b565bf377830a29302a2b2802 assets/undergarden/blockstates/polished_depthrock.json
 385d1bf53453aabeacd7b4236fe0ec1b851e7184 assets/undergarden/blockstates/polished_depthrock_slab.json
 9fd339d25512c1c00899b97e3239bc57b8e35966 assets/undergarden/blockstates/polished_depthrock_stairs.json
@@ -245,8 +243,6 @@ e76bdcfc9fbe1425a4c476a9b3e8963c0fcb2df6 assets/undergarden/models/block/ink_mus
 95816fc6bb14c08269d2cbaff746920d5306c59d assets/undergarden/models/block/loose_tremblecrust.json
 7409a7eeeebe41b4922a0312f6b97a52c3a7d4f2 assets/undergarden/models/block/miserabell.json
 7b896f9559f468722a440eb84010fcbb7e729ba9 assets/undergarden/models/block/mogmoss_rug.json
-9c9bbc5d1b50fc885e14f4e55cdc20ab8051fdf6 assets/undergarden/models/block/mushroom_veil.json
-c67879dd9bdc83cf6c86f973ab1e0cba943b99d3 assets/undergarden/models/block/mushroom_veil_plant.json
 a19186e3376cd630e75ffa29eeef706e374aeb37 assets/undergarden/models/block/polished_depthrock.json
 8955ab84ab57024a10ce52b641178b8e8ff072c9 assets/undergarden/models/block/polished_depthrock_slab.json
 81ae794103d887e5b5fe4fdcca5d53fefd4d48fa assets/undergarden/models/block/polished_depthrock_slab_top.json

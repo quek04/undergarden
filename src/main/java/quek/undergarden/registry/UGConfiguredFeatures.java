@@ -33,7 +33,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
-import quek.undergarden.world.gen.foliageplacer.ConeFoliagePlacer;
+import quek.undergarden.world.gen.foliageplacer.VeilFoliagePlacer;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongletTrunkDecorator;
 import quek.undergarden.world.gen.treedecorator.ReplaceLeafDecorator;
@@ -106,7 +106,7 @@ public class UGConfiguredFeatures {
 
     //huge mushrooms
     public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_INDIGO_MUSHROOM = CONFIGURED_FEATURES.register("huge_indigo_mushroom", () -> new ConfiguredFeature<>(Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState()), BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_STEM.get().defaultBlockState()), 3)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_VEIL_MUSHROOM = CONFIGURED_FEATURES.register("huge_veil_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get()), new StraightTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get()), new ConeFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).build()));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_VEIL_MUSHROOM = CONFIGURED_FEATURES.register("huge_veil_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get()), new StraightTrunkPlacer(9, 1, 1), BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get()), new VeilFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).build()));
     public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_INK_MUSHROOM = CONFIGURED_FEATURES.register("huge_ink_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_STEM.get()), new SingleForkingTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get()), new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 2)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new AttachedToLeavesDecorator(0.2F, 1, 0, BlockStateProvider.simple(UGBlocks.SEEPING_INK.get()), 1, List.of(Direction.DOWN)))).build()));
     public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_BLOOD_MUSHROOM = CONFIGURED_FEATURES.register("huge_blood_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STEM.get()), new DarkOakTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new ReplaceLeafDecorator(0.2F, BlockStateProvider.simple(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())))).build()));
 

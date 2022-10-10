@@ -64,8 +64,6 @@ public class UGBlockStates extends UGBlockstateProvider {
         log(UGBlocks.STRIPPED_GRONGLE_LOG, "stripped_grongle_log");
         block(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
         crossBlock(UGBlocks.SEEPING_INK);
-        crossBlock(UGBlocks.MUSHROOM_VEIL);
-        crossBlock(UGBlocks.MUSHROOM_VEIL_PLANT);
         block(UGBlocks.FORGOTTEN_BLOCK);
         block(UGBlocks.CLOGGRUM_BLOCK);
         block(UGBlocks.FROSTSTEEL_BLOCK);

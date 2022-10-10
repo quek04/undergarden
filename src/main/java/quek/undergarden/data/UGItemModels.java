@@ -245,6 +245,7 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.INDIGO_MUSHROOM_STEM);
         block(UGBlocks.VEIL_MUSHROOM_CAP);
         block(UGBlocks.VEIL_MUSHROOM_STEM);
+        blockFlat(UGBlocks.MUSHROOM_VEIL);
         block(UGBlocks.INK_MUSHROOM_CAP);
         block(UGBlocks.INK_MUSHROOM_STEM);
         block(UGBlocks.BLOOD_MUSHROOM_CAP);

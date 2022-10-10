@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-26T21:25:51.0910328	Undergarden Item Models
+// 1.19.2	2022-10-04T12:01:10.8638594	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
@@ -141,6 +141,7 @@ c3ff50d54fbdaf6cec277ade85918ff7075e2d23 assets/undergarden/models/item/miserabe
 107d0c9ced12b3dacc090e61b41f0dd87112ee21 assets/undergarden/models/item/mogmoss_rug.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/mog_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/muncher_spawn_egg.json
+90a87efa8a9d0d7e6f388ee480e1c2f227a60c1d assets/undergarden/models/item/mushroom_veil.json
 d85eda9c185bada4b89e691854880ad02f25a9a9 assets/undergarden/models/item/music_disc_gloomper_anthem.json
 666d5da2367e8cdc5e1366bb74e5873172bbe9c8 assets/undergarden/models/item/music_disc_gloomper_secret.json
 20214c54059ee52f51141d694db9f50d2bd77e4d assets/undergarden/models/item/music_disc_limax_maximus.json

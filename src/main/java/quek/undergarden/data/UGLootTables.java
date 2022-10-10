@@ -278,6 +278,7 @@ public class UGLootTables extends LootTableProvider {
             dropSelf(UGBlocks.MISERABELL);
             dropSelf(UGBlocks.BUTTERBUNCH);
             dropOther(UGBlocks.VIRULENT_MIX_CAULDRON, Items.CAULDRON);
+            this.add(UGBlocks.MUSHROOM_VEIL.get(), BlockLoot::createShearsOnlyDrop);
         }
 
         @Override
