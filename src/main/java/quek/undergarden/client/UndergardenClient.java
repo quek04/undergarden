@@ -20,6 +20,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
@@ -205,7 +206,7 @@ public class UndergardenClient {
         public static void undergardenFog(ViewportEvent.RenderFog event) {
             Minecraft minecraft = Minecraft.getInstance();
             LocalPlayer player = minecraft.player;
-            if (player != null && player.getLevel().dimension() == UGDimensions.UNDERGARDEN_LEVEL) {
+            if (player != null && player.getLevel().dimension() == UGDimensions.UNDERGARDEN_LEVEL && event.getCamera().getFluidInCamera() == FogType.NONE) {
                 RenderSystem.setShaderFogStart(0.0F);
                 RenderSystem.setShaderFogEnd(200.0F);
                 RenderSystem.setShaderFogShape(FogShape.SPHERE);
