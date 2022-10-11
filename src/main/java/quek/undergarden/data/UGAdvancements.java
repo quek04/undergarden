@@ -9,8 +9,8 @@ import java.util.function.Consumer;
 
 public class UGAdvancements extends AdvancementProvider {
 
-    public UGAdvancements(DataGenerator generatorIn, ExistingFileHelper fileHelperIn) {
-        super(generatorIn, fileHelperIn);
+    public UGAdvancements(DataGenerator generator, ExistingFileHelper fileHelper) {
+        super(generator, fileHelper);
     }
 
     @Override

@@ -1,5 +1,10 @@
 {
   "values": [
-    "undergarden:ancient_sea"
+    "undergarden:ancient_sea",
+    "undergarden:dense_forest",
+    "undergarden:forgotten_field",
+    "undergarden:gronglegrowth",
+    "undergarden:smogstem_forest",
+    "undergarden:wigglewood_forest"
   ]
 }

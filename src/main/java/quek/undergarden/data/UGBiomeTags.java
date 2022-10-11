@@ -20,7 +20,7 @@ public class UGBiomeTags extends BiomeTagsProvider {
     protected void addTags() {
         //undergarden
         tag(UGTags.Biomes.IS_UNDERGARDEN).add(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.SMOGSTEM_FOREST, UGBiomes.SMOG_SPIRES, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.WIGGLEWOOD_FOREST);
-        tag(UGTags.Biomes.HAS_CATACOMBS).add(UGBiomes.ANCIENT_SEA);
+        tag(UGTags.Biomes.HAS_CATACOMBS).add(UGBiomes.ANCIENT_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.GRONGLEGROWTH, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST);
 
         //vanilla
         tag(BiomeTags.IS_FOREST).add(UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.DENSE_FOREST, UGBiomes.GRONGLEGROWTH);
