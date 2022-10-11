@@ -26,7 +26,7 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
             pos = pos.below();
         }
 
-        if (level.isEmptyBlock(pos.above())/* && level.getBlockState(pos).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()*/) {
+        if (level.isEmptyBlock(pos.above(7))/* && level.getBlockState(pos).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()*/) {
             pos = pos.above(random.nextInt(4));
             int ventHeight = 7;
             int j = ventHeight / 4 + random.nextInt(2);
@@ -76,8 +76,7 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
                 }
             }
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
