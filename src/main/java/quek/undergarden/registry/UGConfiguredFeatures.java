@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.DarkOakFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
@@ -31,6 +32,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.BlisterberryBushBlock;
+import quek.undergarden.block.DepthrockPebblesBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
 import quek.undergarden.world.gen.foliageplacer.VeilFoliagePlacer;
@@ -79,7 +81,7 @@ public class UGConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> ASHEN_DEEPTURF_PATCH = CONFIGURED_FEATURES.register("ashen_deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.ASHEN_DEEPTURF.get(), 64)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> FROZEN_DEEPTURF_PATCH = CONFIGURED_FEATURES.register("frozen_deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.FROZEN_DEEPTURF.get(), 64)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> SHIMMERWEED_PATCH = CONFIGURED_FEATURES.register("shimmerweed_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.SHIMMERWEED.get(), 32)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHROCK_PEBBLE_PATCH = CONFIGURED_FEATURES.register("depthrock_pebble_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DEPTHROCK_PEBBLES.get(), 32, List.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.SEDIMENT.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHROCK_PEBBLE_PATCH = CONFIGURED_FEATURES.register("depthrock_pebble_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, pebble(UGBlocks.DEPTHROCK_PEBBLES.get(), List.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.SEDIMENT.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
     public static final RegistryObject<ConfiguredFeature<?, ?>> DITCHBULB_PATCH = CONFIGURED_FEATURES.register("ditchbulb_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DITCHBULB_PLANT.get().defaultBlockState().setValue(DitchbulbBlock.AGE, 1), 16, List.of(UGBlocks.DEPTHROCK.get()))));
     public static final RegistryObject<ConfiguredFeature<?, ?>> TALL_DEEPTURF_PATCH = CONFIGURED_FEATURES.register("tall_deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.TALL_DEEPTURF.get(), 32)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> TALL_SHIMMERWEED_PATCH = CONFIGURED_FEATURES.register("tall_shimmerweed_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.TALL_SHIMMERWEED.get(), 32)));
@@ -124,6 +126,10 @@ public class UGConfiguredFeatures {
 
     private static RandomPatchConfiguration patch(Block block, int tries, List<Block> whitelist) {
         return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(block)), whitelist, tries);
+    }
+
+    private static RandomPatchConfiguration pebble(Block block, List<Block> whitelist) {
+        return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new RandomizedIntStateProvider(BlockStateProvider.simple(block), DepthrockPebblesBlock.PEBBLES, UniformInt.of(1, 2))), whitelist, 32);
     }
 
     private static RandomPatchConfiguration patch(BlockState block, int tries, List<Block> whitelist) {
