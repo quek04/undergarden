@@ -10,11 +10,11 @@
   "coordinate_scale": 4,
   "ambient_light": 0.1,
   "fixed_time": 18000,
-  "logical_height": 256,
+  "logical_height": 128,
   "effects": "undergarden:undergarden",
   "infiniburn": "#minecraft:infiniburn_overworld",
   "min_y": 0,
-  "height": 256,
+  "height": 128,
   "monster_spawn_light_level": {
     "type": "minecraft:uniform",
     "value": {

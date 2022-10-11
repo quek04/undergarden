@@ -1,5 +1,6 @@
 package quek.undergarden.client;
 
+import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
@@ -197,6 +198,17 @@ public class UndergardenClient {
             LocalPlayer player = minecraft.player;
             if (player != null && event.getOverlay().id() == VanillaGuiOverlay.PLAYER_HEALTH.id() && player.hasEffect(UGEffects.VIRULENCE.get())) {
                 event.setCanceled(true);
+            }
+        }
+
+        @SubscribeEvent
+        public static void undergardenFog(ViewportEvent.RenderFog event) {
+            Minecraft minecraft = Minecraft.getInstance();
+            LocalPlayer player = minecraft.player;
+            if (player != null && player.getLevel().dimension() == UGDimensions.UNDERGARDEN_LEVEL) {
+                RenderSystem.setShaderFogStart(0.0F);
+                RenderSystem.setShaderFogEnd(200.0F);
+                RenderSystem.setShaderFogShape(FogShape.SPHERE);
             }
         }
     }
