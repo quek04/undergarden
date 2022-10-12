@@ -4,6 +4,7 @@ import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.gui.Gui;
@@ -206,7 +207,8 @@ public class UndergardenClient {
         public static void undergardenFog(ViewportEvent.RenderFog event) {
             Minecraft minecraft = Minecraft.getInstance();
             LocalPlayer player = minecraft.player;
-            if (player != null && player.getLevel().dimension() == UGDimensions.UNDERGARDEN_LEVEL && event.getCamera().getFluidInCamera() == FogType.NONE) {
+            Camera camera = event.getCamera();
+            if (player != null && player.getLevel().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
                 RenderSystem.setShaderFogStart(0.0F);
                 RenderSystem.setShaderFogEnd(200.0F);
                 RenderSystem.setShaderFogShape(FogShape.SPHERE);

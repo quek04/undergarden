@@ -12,8 +12,6 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-import java.util.Random;
-
 public class IcePillarFeature extends Feature<NoneFeatureConfiguration> {
 
     public IcePillarFeature(Codec<NoneFeatureConfiguration> codec) {
@@ -93,8 +91,7 @@ public class IcePillarFeature extends Feature<NoneFeatureConfiguration> {
         if (random.nextInt(10) != 0) {
             level.setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 2);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
