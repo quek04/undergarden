@@ -15,17 +15,12 @@ import net.minecraft.world.level.block.GrowingPlantBodyBlock;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
-import java.util.Random;
-
-public class DroopvinePlantBlock extends GrowingPlantBodyBlock {
-
-    public static final BooleanProperty GLOWY = BooleanProperty.create("glowy");
+public class DroopvinePlantBlock extends GrowingPlantBodyBlock implements Droopvine {
 
     public static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 

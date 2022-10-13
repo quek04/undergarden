@@ -19,8 +19,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
-import java.util.Random;
-
 public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 
     protected static final VoxelShape SHAPE = Block.box(4.0D, 5.0D, 4.0D, 12.0D, 16.0D, 12.0D);
