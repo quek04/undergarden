@@ -1,4 +1,4 @@
-// 1.19.2	2022-10-04T12:01:10.8638594	Undergarden Item Models
+// 1.19.2	2022-10-15T20:18:13.823291	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
@@ -120,7 +120,7 @@ be4a2fc5bd094f0924aaad5b0425e26f529c9115 assets/undergarden/models/item/grongle_
 b407a0a0c3fb9826cd2336d6f1ef53ca2c7f2c40 assets/undergarden/models/item/grongle_slab.json
 6d929e3126f72468df52502d0e6b500b78d7eec3 assets/undergarden/models/item/grongle_stairs.json
 303a2348da27eff182e938b36a42cc56a5d89143 assets/undergarden/models/item/grongle_wood.json
-fe76cb7d1ba3949d7315f8ea247b8c87c17a5cce assets/undergarden/models/item/gwibling_bucket.json
+014b6fc2968784bf480cb73ca753c2ebeef6a7ec assets/undergarden/models/item/gwibling_bucket.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/gwibling_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/gwib_spawn_egg.json
 4c60308e7dc7957df5dcd150de20ca01f175c3b7 assets/undergarden/models/item/hanging_grongle_leaves.json

@@ -2,6 +2,7 @@ package quek.undergarden.data.provider;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
@@ -61,6 +62,12 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
     public void normalItem(Supplier<? extends Item> item) {
         withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
+    }
+
+    public void entityBucketItem(Supplier<? extends Item> item, Supplier<? extends EntityType<?>> entityType) {
+         withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/lower_bucket"))
+                .texture("layer1", modLoc("item/bucket_content/" + ForgeRegistries.ENTITY_TYPES.getKey(entityType.get()).getPath()));
     }
 
     public void torchItem(Supplier<? extends Block> item) {
