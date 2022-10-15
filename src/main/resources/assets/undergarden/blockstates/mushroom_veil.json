@@ -2,10 +2,138 @@
   "multipart": [
     {
       "apply": {
+        "model": "undergarden:block/mushroom_veil_end"
+      },
+      "when": {
+        "north": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+
+    {
+      "apply": {
         "model": "undergarden:block/mushroom_veil"
       },
       "when": {
-        "north": "true"
+        "north": "true",
+        "end": "false"
       }
     },
     {
@@ -17,7 +145,8 @@
         "north": "false",
         "south": "false",
         "up": "false",
-        "west": "false"
+        "west": "false",
+        "end": "false"
       }
     },
     {
@@ -27,7 +156,8 @@
         "y": 90
       },
       "when": {
-        "east": "true"
+        "east": "true",
+        "end": "false"
       }
     },
     {
@@ -41,7 +171,8 @@
         "north": "false",
         "south": "false",
         "up": "false",
-        "west": "false"
+        "west": "false",
+        "end": "false"
       }
     },
     {
@@ -51,7 +182,8 @@
         "y": 180
       },
       "when": {
-        "south": "true"
+        "south": "true",
+        "end": "false"
       }
     },
     {
@@ -65,7 +197,8 @@
         "north": "false",
         "south": "false",
         "up": "false",
-        "west": "false"
+        "west": "false",
+        "end": "false"
       }
     },
     {
@@ -75,7 +208,8 @@
         "y": 270
       },
       "when": {
-        "west": "true"
+        "west": "true",
+        "end": "false"
       }
     },
     {
@@ -89,7 +223,8 @@
         "north": "false",
         "south": "false",
         "up": "false",
-        "west": "false"
+        "west": "false",
+        "end": "false"
       }
     },
     {
@@ -99,7 +234,8 @@
         "x": 270
       },
       "when": {
-        "up": "true"
+        "up": "true",
+        "end": "false"
       }
     },
     {
@@ -113,7 +249,8 @@
         "north": "false",
         "south": "false",
         "up": "false",
-        "west": "false"
+        "west": "false",
+        "end": "false"
       }
     }
   ]

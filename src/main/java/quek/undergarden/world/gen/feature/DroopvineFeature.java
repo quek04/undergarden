@@ -15,11 +15,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 import quek.undergarden.block.Droopvine;
 import quek.undergarden.registry.UGBlocks;
 
-import java.util.Random;
-
 public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
-
-    private static final Direction[] directionArray = Direction.values();
 
     public DroopvineFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
@@ -32,13 +28,11 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = context.random();
         if(!level.isEmptyBlock(pos)) {
             return false;
-        }
-        else {
+        } else {
             BlockState blockstate = level.getBlockState(pos.above());
             if(!blockstate.is(UGBlocks.DEPTHROCK.get()) && !blockstate.is(UGBlocks.SHIVERSTONE.get())) {
                 return false;
-            }
-            else {
+            } else {
                 this.placeRoofDroopvine(level, random, pos);
                 return true;
             }
