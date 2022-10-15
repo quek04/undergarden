@@ -3,6 +3,7 @@ package quek.undergarden.world.gen.foliageplacer;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
+import quek.undergarden.block.MushroomVeilBlock;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGFoliagePlacers;
 
@@ -79,8 +81,6 @@ public class VeilFoliagePlacer extends FoliagePlacer {
                 posMutable.setWithOffset(pos, -x, centerY, z - 1);
                 if (x == 1 || x == 2) {
                     addHangingVeil(posMutable, VineBlock.SOUTH, VineBlock.WEST, level, blockSetter, random);
-                } else {
-                    addHangingVeil(posMutable, VineBlock.SOUTH, level, blockSetter, random);
                 }
             }
             posMutable.setWithOffset(pos, -x, centerY, z);
@@ -92,8 +92,6 @@ public class VeilFoliagePlacer extends FoliagePlacer {
                 posMutable.setWithOffset(pos, -x, centerY, -z + 1);
                 if (x == 1 || x == 2) {
                     addHangingVeil(posMutable, VineBlock.NORTH, VineBlock.WEST, level, blockSetter, random);
-                } else {
-                    addHangingVeil(posMutable, VineBlock.NORTH, level, blockSetter, random);
                 }
             }
             posMutable.setWithOffset(pos, -x, centerY, -z);
@@ -135,21 +133,33 @@ public class VeilFoliagePlacer extends FoliagePlacer {
 
     }
 
-    private void addHangingVeil(BlockPos pos, BooleanProperty side, LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, RandomSource random) {
-        blockSetter.accept(pos, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true).setValue(VineBlock.UP, true));
-        int i = 4;
-        for (BlockPos belowPos = pos.below(); level.isStateAtPosition(belowPos, BlockBehaviour.BlockStateBase::isAir) && i - random.nextInt(3) > 0; i--) {
-            blockSetter.accept(belowPos, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true));
-            belowPos = belowPos.below();
+    private void addHangingVeil(BlockPos.MutableBlockPos posMutable, BooleanProperty side, LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, RandomSource random) {
+        int length = 4 - random.nextInt(3);
+        blockSetter.accept(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true).setValue(VineBlock.UP, true));
+        for (int i = 0; i <= length; i++) {
+            if (level.isStateAtPosition(posMutable, BlockBehaviour.BlockStateBase::isAir)) {
+                if (i == length || !level.isStateAtPosition(posMutable.below(), BlockBehaviour.BlockStateBase::isAir)) {
+                    blockSetter.accept(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true).setValue(MushroomVeilBlock.END, true));
+                    break;
+                }
+                blockSetter.accept(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true));
+            }
+            posMutable.move(Direction.DOWN);
         }
     }
 
-    private void addHangingVeil(BlockPos pos, BooleanProperty side, BooleanProperty side2, LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, RandomSource random) {
-        blockSetter.accept(pos, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true).setValue(side2, true).setValue(VineBlock.UP, true));
-        int i = 4;
-        for (BlockPos belowPos = pos.below(); level.isStateAtPosition(belowPos, BlockBehaviour.BlockStateBase::isAir) && i - random.nextInt(3) > 0; i--) {
-            blockSetter.accept(belowPos, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true).setValue(side2, true));
-            belowPos = belowPos.below();
+    private void addHangingVeil(BlockPos.MutableBlockPos posMutable, BooleanProperty side, BooleanProperty side2, LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, RandomSource random) {
+        int length = 4 - random.nextInt(3);
+        blockSetter.accept(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true).setValue(side2, true).setValue(VineBlock.UP, true));
+        for (int i = 0; i <= length; i++) {
+            if (level.isStateAtPosition(posMutable, BlockBehaviour.BlockStateBase::isAir)) {
+                if (i == length || !level.isStateAtPosition(posMutable.below(), BlockBehaviour.BlockStateBase::isAir)) {
+                    blockSetter.accept(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true).setValue(side2, true).setValue(MushroomVeilBlock.END, true));
+                    break;
+                }
+                blockSetter.accept(posMutable, UGBlocks.MUSHROOM_VEIL.get().defaultBlockState().setValue(side, true).setValue(side2, true));
+            }
+            posMutable.move(Direction.DOWN);
         }
     }
 
