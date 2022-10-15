@@ -1,8 +1,11 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import quek.undergarden.Undergarden;
 import quek.undergarden.data.provider.UGBlockstateProvider;
 import quek.undergarden.registry.UGBlocks;
 
@@ -97,7 +100,13 @@ public class UGBlockStates extends UGBlockstateProvider {
         simpleBlock(UGBlocks.INK_MUSHROOM_STEM.get(), models().cubeAll(name(UGBlocks.INK_MUSHROOM_STEM), blockTexture(Blocks.MUSHROOM_STEM)));
         block(UGBlocks.BLOOD_MUSHROOM_CAP);
         block(UGBlocks.BLOOD_MUSHROOM_STEM);
-        block(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP);
+        getVariantBuilder(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get()).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(cubeAll(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())).nextModel()
+                        .modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_2", new ResourceLocation(Undergarden.MODID, "block/engorged_blood_mushroom_cap_2"))).nextModel()
+                        .modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", new ResourceLocation(Undergarden.MODID, "block/engorged_blood_mushroom_cap_3")))
+                        .build()
+        );
 
         stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
         stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);
