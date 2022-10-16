@@ -77,7 +77,6 @@
     "block.undergarden.blisterberry_bush":"Blasenbeerenbusch",
     "block.undergarden.blood_mushroom":"Blutpilz",
     "block.undergarden.blood_mushroom_cap":"Blutpilzkappe",
-    "block.undergarden.blood_mushroom_globule":"Blutpilzkügelchen",
     "block.undergarden.boomgourd":"Donnerkürbis",
     "block.undergarden.butterbunch":"Butterbund",
     "block.undergarden.carved_gloomgourd":"Geschnitzter Düsterkürbis",
@@ -157,7 +156,6 @@
     "block.undergarden.loose_tremblecrust":"Lockere Zitterkrust",
     "block.undergarden.mogmoss_rug":"Mogmoosteppich",
     "block.undergarden.mushroom_veil":"Pilzschleier",
-    "block.undergarden.mushroom_veil_plant":"Pilzschleier",
     "block.undergarden.polished_depthrock":"Polierter Tiefstein",
     "block.undergarden.polished_depthrock_slab":"Polierte Tiefsteinstufe",
     "block.undergarden.polished_depthrock_stairs":"Polierte Tiefsteintreppen",
@@ -495,5 +493,15 @@
     "block.undergarden.indigo_mushroom_stem":"Indigopilzstiel",
     "block.undergarden.veil_mushroom_stem":"Schleierpilzstiel",
     "effect.undergarden.virulence":"Virulenz",
-    "effect.undergarden.virulence.description":"Ähnlich zur Vergiftung, schadet aber langsamer. Schaden ist unterdrückt mit Virulenter Resistenz."
+    "effect.undergarden.virulence.description":"Ähnlich zur Vergiftung, schadet aber langsamer. Schaden ist unterdrückt mit Virulenter Resistenz.",
+    "block.undergarden.engorged_blood_mushroom_cap":"Geschwollene Blutpilzkappe",
+    "block.undergarden.potted_blood_mushroom":"Eingetopfter Blutpilz",
+    "block.undergarden.potted_grongle_sapling":"Eingetopfter Grongelsetzling",
+    "block.undergarden.potted_indigo_mushroom":"Eingetopfter Indigopilz",
+    "block.undergarden.potted_ink_mushroom":"Eingetopfter Tintenpilz",
+    "block.undergarden.potted_shimmerweed":"Eingetopftes Schimmergras",
+    "block.undergarden.potted_smogstem_sapling":"Eingetopfter Smogstielsetzling",
+    "block.undergarden.potted_veil_mushroom":"Eingetopfter Schleierpilz",
+    "block.undergarden.potted_wigglewood_sapling":"Eingetopfter Wackelholzsetzling",
+    "item.undergarden.blood_globule":"Blutblob"
 }
