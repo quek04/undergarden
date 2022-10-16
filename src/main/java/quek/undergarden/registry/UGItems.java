@@ -62,7 +62,7 @@ public class UGItems {
     public static final RegistryObject<Item> MASTICATED_CHESTPLATE = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UGArmorMaterials.MASTICATED));
 
     //tools
-    public static final RegistryObject<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleAxeItem(UGItemTiers.CLOGGRUM, 7, -3.4F));
+    public static final RegistryObject<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleaxeItem(UGItemTiers.CLOGGRUM, 7, -3.4F));
     public static final RegistryObject<Item> CLOGGRUM_SWORD = ITEMS.register("cloggrum_sword", () -> new UGSwordItem(UGItemTiers.CLOGGRUM, 3, -2.4F));
     public static final RegistryObject<Item> CLOGGRUM_PICKAXE = ITEMS.register("cloggrum_pickaxe", () -> new UGPickaxeItem(UGItemTiers.CLOGGRUM, 1, -2.8F));
     public static final RegistryObject<Item> CLOGGRUM_AXE = ITEMS.register("cloggrum_axe", () -> new UGAxeItem(UGItemTiers.CLOGGRUM, 5.0F, -3.1F));
@@ -82,7 +82,7 @@ public class UGItems {
     public static final RegistryObject<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM, 1.5F, -3.0F));
     public static final RegistryObject<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, -3, 0.0F));
 
-    public static final RegistryObject<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleAxeItem(UGItemTiers.FORGOTTEN, 7, -3.4F));
+    public static final RegistryObject<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleaxeItem(UGItemTiers.FORGOTTEN, 7, -3.4F));
     public static final RegistryObject<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, 3, -2.4F));
     public static final RegistryObject<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, 1, -2.8F));
     public static final RegistryObject<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, 5.0F, -3.0F));
