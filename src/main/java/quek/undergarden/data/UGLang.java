@@ -185,6 +185,7 @@ public class UGLang extends LanguageProvider {
         addBlock(UGBlocks.INK_MUSHROOM, "Ink Mushroom");
         addBlock(UGBlocks.POTTED_INK_MUSHROOM, "Potted Ink Mushroom");
         addBlock(UGBlocks.INK_MUSHROOM_CAP, "Ink Mushroom Cap");
+        addBlock(UGBlocks.INK_MUSHROOM_STEM, "Ink Mushroom Stem");
         addBlock(UGBlocks.SEEPING_INK, "Seeping Ink");
 
         addBlock(UGBlocks.BLOOD_MUSHROOM, "Blood Mushroom");

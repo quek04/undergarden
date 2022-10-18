@@ -108,11 +108,11 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
     }
 
     public void door(Supplier<? extends DoorBlock> block, String name) {
-        doorBlock(block.get(), name(block), texture(name + "_door_bottom"), texture(name + "_door_top"));
+        doorBlockWithRenderType(block.get(), name(block), texture(name + "_door_bottom"), texture(name + "_door_top"), "cutout");
     }
 
     public void trapdoor(Supplier<? extends TrapDoorBlock> block, String name) {
-        trapdoorBlock(block.get(), texture(name + "_trapdoor"), true);
+        trapdoorBlockWithRenderType(block.get(), texture(name + "_trapdoor"), true, "cutout");
     }
 
     public void carpet(Supplier<? extends WoolCarpetBlock> block) {
