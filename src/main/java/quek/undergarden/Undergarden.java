@@ -94,7 +94,6 @@ public class Undergarden {
 				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
-			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGCauldronInteractions.register();
 
