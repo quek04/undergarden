@@ -1,8 +1,10 @@
 package quek.undergarden.client;
 
+import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.gui.Gui;
@@ -22,6 +24,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
@@ -39,7 +42,7 @@ import quek.undergarden.registry.*;
 
 import java.awt.*;
 
-@Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Undergarden.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UndergardenClient {
 
     private static final ResourceLocation VIRULENCE_HEARTS = new ResourceLocation(Undergarden.MODID, "textures/gui/virulence_hearts.png");
@@ -204,6 +207,18 @@ public class UndergardenClient {
             LocalPlayer player = minecraft.player;
             if (player != null && event.getOverlay().id() == VanillaGuiOverlay.PLAYER_HEALTH.id() && player.hasEffect(UGEffects.VIRULENCE.get())) {
                 event.setCanceled(true);
+            }
+        }
+
+        @SubscribeEvent
+        public static void undergardenFog(ViewportEvent.RenderFog event) {
+            Minecraft minecraft = Minecraft.getInstance();
+            LocalPlayer player = minecraft.player;
+            Camera camera = event.getCamera();
+            if (player != null && player.getLevel().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
+                RenderSystem.setShaderFogStart(0.0F);
+                RenderSystem.setShaderFogEnd(200.0F);
+                RenderSystem.setShaderFogShape(FogShape.SPHERE);
             }
         }
     }

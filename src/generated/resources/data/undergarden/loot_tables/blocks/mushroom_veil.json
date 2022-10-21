@@ -5,13 +5,18 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "minecraft:survives_explosion"
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "items": [
+              "minecraft:shears"
+            ]
+          }
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "undergarden:blood_mushroom_globule"
+          "name": "undergarden:mushroom_veil"
         }
       ],
       "rolls": 1.0

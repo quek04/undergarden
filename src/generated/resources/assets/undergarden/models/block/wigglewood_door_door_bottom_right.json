@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/door_bottom_right",
+  "render_type": "minecraft:cutout",
   "textures": {
     "bottom": "undergarden:block/wigglewood_door_bottom",
     "top": "undergarden:block/wigglewood_door_top"

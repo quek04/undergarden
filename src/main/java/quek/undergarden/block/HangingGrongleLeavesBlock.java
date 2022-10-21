@@ -45,8 +45,7 @@ public class HangingGrongleLeavesBlock extends UGDoublePlantBlock {
         DoubleBlockHalf half = state.getValue(HALF);
         if (facing.getAxis() != Direction.Axis.Y || half == DoubleBlockHalf.LOWER != (facing == Direction.DOWN) || facingState.is(this) && facingState.getValue(HALF) != half) {
             return half == DoubleBlockHalf.LOWER && facing == Direction.UP && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : state;
-        }
-        else {
+        } else {
             return Blocks.AIR.defaultBlockState();
         }
     }

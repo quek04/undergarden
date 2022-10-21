@@ -2,7 +2,7 @@ buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
-        maven { url='https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         maven { url = 'https://maven.parchmentmc.org' }
     }
     dependencies {
@@ -135,7 +135,7 @@ publishing {
 
 repositories {
     maven {
-        url='https://repo.spongepowered.org/repository/maven-public/'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
     }
     maven {
         // location of the maven that hosts JEI files

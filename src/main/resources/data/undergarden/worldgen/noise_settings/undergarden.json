@@ -15,7 +15,7 @@
   },
   "noise": {
     "min_y": 0,
-    "height": 256,
+    "height": 128,
     "size_horizontal": 2,
     "size_vertical": 2
   },
@@ -85,8 +85,8 @@
                       "type": "minecraft:mul",
                       "argument1": {
                         "type": "minecraft:y_clamped_gradient",
-                        "from_y": 232,
-                        "to_y": 256,
+                        "from_y": 110,
+                        "to_y": 128,
                         "from_value": 1,
                         "to_value": 0
                       },
@@ -213,8 +213,7 @@
           "type": "minecraft:biome",
           "biome_is": [
             "undergarden:frostfields",
-            "undergarden:icy_sea",
-            "undergarden:veil_mushroom_bog"
+            "undergarden:icy_sea"
           ]
         },
         "then_run": {
@@ -428,8 +427,7 @@
           "type": "minecraft:biome",
           "biome_is": [
             "undergarden:frostfields",
-            "undergarden:icy_sea",
-            "undergarden:veil_mushroom_bog"
+            "undergarden:icy_sea"
           ]
         },
         "then_run": {

@@ -6,12 +6,12 @@
   "creature_spawn_probability": 0.5,
   "effects": {
     "sky_color": 1186057,
-    "fog_color": 2565927,
+    "fog_color": 1643784,
     "water_color": 342306,
     "water_fog_color": 332810,
-    "grass_color": 14609908,
-    "foliage_color": 14609908,
-    "ambient_sound": "undergarden:ambient.frost",
+    "grass_color": 7696730,
+    "foliage_color": 7696730,
+    "ambient_sound": "undergarden:ambient.undergarden",
     "mood_sound": {
       "sound": "undergarden:ambient.mood",
       "tick_delay": 6000,
@@ -74,6 +74,14 @@
         "maxCount": 1
       }
     ],
+    "creature": [
+      {
+        "type": "undergarden:gloomper",
+        "weight": 100,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
     "ambient": [
       {
         "type": "undergarden:scintling",
@@ -92,9 +100,7 @@
   "features": [
     [],
     [],
-    [
-      "undergarden:ice_pillar"
-    ],
+    [],
     [],
     [
       "undergarden:bog_delta"
@@ -115,13 +121,17 @@
     [],
     [],
     [
+      "undergarden:deepturf_patch",
       "undergarden:shimmerweed_patch",
+      "undergarden:depthrock_pebble_patch",
       "undergarden:ditchbulb_patch",
+      "undergarden:tall_deepturf_patch",
       "undergarden:blood_mushroom_patch",
       "undergarden:indigo_mushroom_patch",
       "undergarden:ink_mushroom_patch",
       "undergarden:veil_mushroom_patch",
-      "undergarden:frozen_deepturf_patch",
+      "undergarden:droopvine_patch",
+      "undergarden:gloomgourd_patch",
       "undergarden:huge_veil_mushroom"
     ],
     []

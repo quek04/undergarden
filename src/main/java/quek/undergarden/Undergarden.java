@@ -76,6 +76,7 @@ public class Undergarden {
 				UGStructures.STRUCTURES,
 				UGTreeDecoratorTypes.TREE_DECORATORS,
 				UGTrunkPlacerTypes.TRUNK_PLACERS,
+				UGFoliagePlacers.FOLIAGE_PLACERS
 		};
 
 		for (DeferredRegister<?> register : registers) {
@@ -93,7 +94,6 @@ public class Undergarden {
 				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
-			UGEntityTypes.spawnPlacements();
 			UGCriteria.register();
 			UGCauldronInteractions.register();
 
@@ -117,26 +117,26 @@ public class Undergarden {
 			DispenserBlock.registerBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
 
 			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new DepthrockPebble(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new DepthrockPebble(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
 				}
 			});
 
 			DispenserBlock.registerBehavior(UGItems.GOO_BALL.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new GooBall(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new GooBall(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
 				}
 			});
 
 			DispenserBlock.registerBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new RottenBlisterberry(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new RottenBlisterberry(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
 				}
 			});
 
 			DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-					return Util.make(new Blisterbomb(worldIn, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stackIn));
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new Blisterbomb(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
 				}
 			});
 
@@ -146,7 +146,7 @@ public class Undergarden {
 				}
 			});
 
-			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get().asItem(), UGPotions.BRITTLENESS.get());
+			PotionBrewing.addMix(Potions.AWKWARD, UGItems.BLOOD_GLOBULE.get(), UGPotions.BRITTLENESS.get());
 			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.REDSTONE, UGPotions.LONG_BRITTLENESS.get());
 			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.GLOWSTONE_DUST, UGPotions.STRONG_BRITTLENESS.get());
 
@@ -163,6 +163,8 @@ public class Undergarden {
 			ComposterBlock.add(0.1F, UGItems.DROOPFRUIT.get());
 			ComposterBlock.add(0.1F, UGItems.UNDERBEANS.get());
 			ComposterBlock.add(0.2F, UGItems.BLISTERBERRY.get());
+			ComposterBlock.add(0.2F, UGItems.ROTTEN_BLISTERBERRY.get());
+			ComposterBlock.add(0.2F, UGItems.BLOOD_GLOBULE.get());
 			ComposterBlock.add(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
 			ComposterBlock.add(0.3F, UGItems.GLITTERKELP.get());
 			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
@@ -188,7 +190,7 @@ public class Undergarden {
 			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_STEM.get());
 			ComposterBlock.add(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
 			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_GLOBULE.get());
+			ComposterBlock.add(0.85F, UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get());
 			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_STEM.get());
 
 			FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;

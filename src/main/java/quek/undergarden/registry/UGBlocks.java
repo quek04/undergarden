@@ -174,8 +174,7 @@ public class UGBlocks {
     public static final RegistryObject<Block> VEIL_MUSHROOM = register("veil_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> VEIL_MUSHROOM_CAP = register("veil_mushroom_cap", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> VEIL_MUSHROOM_STEM = register("veil_mushroom_stem", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
-    public static final RegistryObject<MushroomVeilBlock> MUSHROOM_VEIL = BLOCKS.register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES).noLootTable()));
-    public static final RegistryObject<MushroomVeilPlantBlock> MUSHROOM_VEIL_PLANT = BLOCKS.register("mushroom_veil_plant", () -> new MushroomVeilPlantBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT).noLootTable()));
+    public static final RegistryObject<Block> MUSHROOM_VEIL = register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.copy(Blocks.VINE)));
 
     public static final RegistryObject<Block> INK_MUSHROOM = register("ink_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> INK_MUSHROOM_CAP = register("ink_mushroom_cap", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
@@ -184,7 +183,7 @@ public class UGBlocks {
 
     public static final RegistryObject<Block> BLOOD_MUSHROOM = register("blood_mushroom", () -> new UGMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)));
     public static final RegistryObject<Block> BLOOD_MUSHROOM_CAP = register("blood_mushroom_cap", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
-    public static final RegistryObject<Block> BLOOD_MUSHROOM_GLOBULE = register("blood_mushroom_globule", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).sound(SoundType.SLIME_BLOCK)));
+    public static final RegistryObject<Block> ENGORGED_BLOOD_MUSHROOM_CAP = register("engorged_blood_mushroom_cap", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK)));
     public static final RegistryObject<Block> BLOOD_MUSHROOM_STEM = register("blood_mushroom_stem", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM)));
 
     //smogstem

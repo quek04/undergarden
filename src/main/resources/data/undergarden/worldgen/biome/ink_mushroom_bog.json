@@ -3,7 +3,6 @@
   "downfall": 0,
   "precipitation": "none",
   "category": "none",
-  "creature_spawn_probability": 0.5,
   "effects": {
     "sky_color": 1186057,
     "fog_color": 1640729,
@@ -11,7 +10,7 @@
     "water_fog_color": 332810,
     "grass_color": 4075847,
     "foliage_color": 4075847,
-    "ambient_sound": "undergarden:ambient.abyss",
+    "ambient_sound": "undergarden:ambient.undergarden",
     "mood_sound": {
       "sound": "undergarden:ambient.mood",
       "tick_delay": 6000,

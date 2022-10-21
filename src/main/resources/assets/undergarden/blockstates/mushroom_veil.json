@@ -1,0 +1,257 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end"
+      },
+      "when": {
+        "north": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "end": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil_end",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "true"
+      }
+    },
+
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil"
+      },
+      "when": {
+        "north": "true",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "end": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "undergarden:block/mushroom_veil",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false",
+        "end": "false"
+      }
+    }
+  ]
+}

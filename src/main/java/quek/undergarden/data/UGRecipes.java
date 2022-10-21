@@ -206,11 +206,6 @@ public class UGRecipes extends UGRecipeProvider {
                 .unlockedBy("has_tusk", has(UGItems.BRUTE_TUSK.get()))
                 .save(consumer, name("tusk_to_bonemeal"));
 
-        ShapelessRecipeBuilder.shapeless(Items.RED_DYE, 9)
-                .requires(UGBlocks.BLOOD_MUSHROOM_GLOBULE.get())
-                .unlockedBy("has_globule", has(UGBlocks.BLOOD_MUSHROOM_GLOBULE.get()))
-                .save(consumer, name("globule_to_dye"));
-
         ShapelessRecipeBuilder.shapeless(Items.RED_DYE)
                 .requires(UGBlocks.BLOOD_MUSHROOM.get())
                 .unlockedBy("has_blood_mushroom", has(UGBlocks.BLOOD_MUSHROOM.get()))

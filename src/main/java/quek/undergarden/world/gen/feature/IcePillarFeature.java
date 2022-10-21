@@ -91,8 +91,7 @@ public class IcePillarFeature extends Feature<NoneFeatureConfiguration> {
         if (random.nextInt(10) != 0) {
             level.setBlock(pos, Blocks.PACKED_ICE.defaultBlockState(), 2);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

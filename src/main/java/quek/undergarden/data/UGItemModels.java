@@ -115,7 +115,6 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD);
         block(UGBlocks.STRIPPED_GRONGLE_WOOD);
         block(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
-        block(UGBlocks.BLOOD_MUSHROOM_GLOBULE);
         block(UGBlocks.FORGOTTEN_BLOCK);
         block(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
         block(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
@@ -246,10 +245,13 @@ public class UGItemModels extends UGItemModelProvider {
         block(UGBlocks.INDIGO_MUSHROOM_STEM);
         block(UGBlocks.VEIL_MUSHROOM_CAP);
         block(UGBlocks.VEIL_MUSHROOM_STEM);
+        blockFlat(UGBlocks.MUSHROOM_VEIL);
         block(UGBlocks.INK_MUSHROOM_CAP);
         block(UGBlocks.INK_MUSHROOM_STEM);
         block(UGBlocks.BLOOD_MUSHROOM_CAP);
         block(UGBlocks.BLOOD_MUSHROOM_STEM);
+        normalItem(UGItems.BLOOD_GLOBULE);
+        block(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP);
 
         egg(UGItems.DWELLER_SPAWN_EGG);
         egg(UGItems.GWIBLING_SPAWN_EGG);

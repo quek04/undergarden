@@ -17,8 +17,6 @@ import quek.undergarden.registry.UGBlocks;
 
 public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
 
-    private static final Direction[] directionArray = Direction.values();
-
     public DroopvineFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
     }
@@ -30,26 +28,24 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = context.random();
         if(!level.isEmptyBlock(pos)) {
             return false;
-        }
-        else {
+        } else {
             BlockState blockstate = level.getBlockState(pos.above());
             if(!blockstate.is(UGBlocks.DEPTHROCK.get()) && !blockstate.is(UGBlocks.SHIVERSTONE.get())) {
                 return false;
-            }
-            else {
+            } else {
                 this.placeRoofDroopvine(level, random, pos);
                 return true;
             }
         }
     }
 
-    private void placeRoofDroopvine(LevelAccessor world, RandomSource random, BlockPos pos) {
+    private void placeRoofDroopvine(LevelAccessor level, RandomSource random, BlockPos pos) {
         BlockPos.MutableBlockPos posMutable = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 100; ++i) {
             posMutable.setWithOffset(pos, random.nextInt(8) - random.nextInt(8), random.nextInt(2) - random.nextInt(7), random.nextInt(8) - random.nextInt(8));
-            if (world.isEmptyBlock(posMutable)) {
-                BlockState blockstate = world.getBlockState(posMutable.above());
+            if (level.isEmptyBlock(posMutable)) {
+                BlockState blockstate = level.getBlockState(posMutable.above());
                 if (blockstate.is(UGBlocks.DEPTHROCK.get()) || blockstate.is(UGBlocks.SHIVERSTONE.get())) {
                     int length = Mth.nextInt(random, 1, 8);
                     if (random.nextInt(6) == 0) {
@@ -60,13 +56,13 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
                         length = 1;
                     }
 
-                    placeDroopvineColumn(world, random, posMutable, length, 17, 25);
+                    placeDroopvineColumn(level, random, posMutable, length, 17, 25);
                 }
             }
         }
     }
 
-    public static void placeDroopvineColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos posMutable, int length, int min, int max) {
+    private static void placeDroopvineColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos posMutable, int length, int min, int max) {
         for(int i = 0; i <= length; ++i) {
             if (level.isEmptyBlock(posMutable)) {
                 if (i == length || !level.isEmptyBlock(posMutable.below())) {

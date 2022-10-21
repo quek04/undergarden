@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.DarkOakFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
@@ -31,8 +32,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.BlisterberryBushBlock;
+import quek.undergarden.block.DepthrockPebblesBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
+import quek.undergarden.world.gen.foliageplacer.VeilFoliagePlacer;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongletTrunkDecorator;
 import quek.undergarden.world.gen.treedecorator.ReplaceLeafDecorator;
@@ -78,7 +81,7 @@ public class UGConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> ASHEN_DEEPTURF_PATCH = CONFIGURED_FEATURES.register("ashen_deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.ASHEN_DEEPTURF.get(), 64)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> FROZEN_DEEPTURF_PATCH = CONFIGURED_FEATURES.register("frozen_deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.FROZEN_DEEPTURF.get(), 64)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> SHIMMERWEED_PATCH = CONFIGURED_FEATURES.register("shimmerweed_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.SHIMMERWEED.get(), 32)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHROCK_PEBBLE_PATCH = CONFIGURED_FEATURES.register("depthrock_pebble_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DEPTHROCK_PEBBLES.get(), 32, List.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.SEDIMENT.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHROCK_PEBBLE_PATCH = CONFIGURED_FEATURES.register("depthrock_pebble_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, pebble(UGBlocks.DEPTHROCK_PEBBLES.get(), List.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.SEDIMENT.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
     public static final RegistryObject<ConfiguredFeature<?, ?>> DITCHBULB_PATCH = CONFIGURED_FEATURES.register("ditchbulb_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DITCHBULB_PLANT.get().defaultBlockState().setValue(DitchbulbBlock.AGE, 1), 16, List.of(UGBlocks.DEPTHROCK.get()))));
     public static final RegistryObject<ConfiguredFeature<?, ?>> TALL_DEEPTURF_PATCH = CONFIGURED_FEATURES.register("tall_deepturf_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.TALL_DEEPTURF.get(), 32)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> TALL_SHIMMERWEED_PATCH = CONFIGURED_FEATURES.register("tall_shimmerweed_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.TALL_SHIMMERWEED.get(), 32)));
@@ -105,9 +108,9 @@ public class UGConfiguredFeatures {
 
     //huge mushrooms
     public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_INDIGO_MUSHROOM = CONFIGURED_FEATURES.register("huge_indigo_mushroom", () -> new ConfiguredFeature<>(Feature.HUGE_BROWN_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_CAP.get().defaultBlockState()), BlockStateProvider.simple(UGBlocks.INDIGO_MUSHROOM_STEM.get().defaultBlockState()), 3)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_VEIL_MUSHROOM = CONFIGURED_FEATURES.register("huge_veil_mushroom", () -> new ConfiguredFeature<>(UGFeatures.VEIL_MUSHROOM.get(), new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get().defaultBlockState()), BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get().defaultBlockState()), 2)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_INK_MUSHROOM = CONFIGURED_FEATURES.register("huge_ink_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(Blocks.MUSHROOM_STEM), new SingleForkingTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get()), new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 2)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new AttachedToLeavesDecorator(0.2F, 1, 0, BlockStateProvider.simple(UGBlocks.SEEPING_INK.get()), 1, List.of(Direction.DOWN)))).build()));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_BLOOD_MUSHROOM = CONFIGURED_FEATURES.register("huge_blood_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STEM.get()), new DarkOakTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new ReplaceLeafDecorator(0.2F, BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_GLOBULE.get())))).build()));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_VEIL_MUSHROOM = CONFIGURED_FEATURES.register("huge_veil_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get()), new StraightTrunkPlacer(9, 1, 1), BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get()), new VeilFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).build()));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_INK_MUSHROOM = CONFIGURED_FEATURES.register("huge_ink_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_STEM.get()), new SingleForkingTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get()), new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 2)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new AttachedToLeavesDecorator(0.2F, 1, 0, BlockStateProvider.simple(UGBlocks.SEEPING_INK.get()), 1, List.of(Direction.DOWN)))).build()));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> HUGE_BLOOD_MUSHROOM = CONFIGURED_FEATURES.register("huge_blood_mushroom", () -> new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STEM.get()), new DarkOakTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new ReplaceLeafDecorator(0.2F, BlockStateProvider.simple(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())))).build()));
 
     //rocks
     public static final RegistryObject<ConfiguredFeature<?, ?>> DEPTHROCK_ROCK = CONFIGURED_FEATURES.register("depthrock_rock", () -> new ConfiguredFeature<>(Feature.FOREST_ROCK, new BlockStateConfiguration(UGBlocks.DEPTHROCK.get().defaultBlockState())));
@@ -123,6 +126,10 @@ public class UGConfiguredFeatures {
 
     private static RandomPatchConfiguration patch(Block block, int tries, List<Block> whitelist) {
         return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(block)), whitelist, tries);
+    }
+
+    private static RandomPatchConfiguration pebble(Block block, List<Block> whitelist) {
+        return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new RandomizedIntStateProvider(BlockStateProvider.simple(block), DepthrockPebblesBlock.PEBBLES, UniformInt.of(1, 2))), whitelist, 32);
     }
 
     private static RandomPatchConfiguration patch(BlockState block, int tries, List<Block> whitelist) {
