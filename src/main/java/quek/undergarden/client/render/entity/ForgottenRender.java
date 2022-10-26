@@ -25,7 +25,7 @@ public class ForgottenRender extends HumanoidMobRenderer<Forgotten, ForgottenMod
     }
 
     @Override
-    protected void scale(Forgotten entity, PoseStack stack, float p_115316_) {
+    protected void scale(Forgotten entity, PoseStack stack, float partialTicks) {
         stack.scale(1.1F, 1.1F, 1.1F);
     }
 }
