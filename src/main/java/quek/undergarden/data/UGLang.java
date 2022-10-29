@@ -653,6 +653,6 @@ public class UGLang extends LanguageProvider {
         addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");
         addDeath("shard_torch.player", "%1$s was killed by a Shard Torch's magic whilst trying to escape %2$s");
 
-        addConfig("return_portal_block_id", "Return Portal Block ID");
+        addConfig("return_portal_frame_block_id", "Return Portal Frame Block ID");
     }
 }

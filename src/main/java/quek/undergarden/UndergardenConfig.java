@@ -9,16 +9,16 @@ import org.apache.commons.lang3.tuple.Pair;
 public class UndergardenConfig {
 
     public static class Common {
-        public static ConfigValue<String> return_portal_block_id;
+        public static ConfigValue<String> return_portal_frame_block_id;
 
         public Common(ForgeConfigSpec.Builder builder) {
-            return_portal_block_id = builder
+            return_portal_frame_block_id = builder
                     .comment("""
                             Determines what block the game will generate Undergarden return portals out of
                             Use the block tag undergarden:portal_frame_blocks to determine what blocks portals can be built with
-                            If value entered is not a valid block it will default to generating minecraft:stone_bricks""")
-                    .translation("undergarden.config.return_portal_block_id")
-                    .define("Return Portal Block ID", ForgeRegistries.BLOCKS.getKey(Blocks.STONE_BRICKS).toString());
+                            If value entered here is not a valid block it will default to generating minecraft:stone_bricks""")
+                    .translation("undergarden.config.return_portal_frame_block_id")
+                    .define("Return Portal Frame Block ID", ForgeRegistries.BLOCKS.getKey(Blocks.STONE_BRICKS).toString());
             builder.build();
         }
     }

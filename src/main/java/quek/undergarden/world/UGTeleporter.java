@@ -37,7 +37,7 @@ import java.util.function.Function;
 public class UGTeleporter implements ITeleporter {
 
     protected final ServerLevel level;
-    private final BlockState frame = !ForgeRegistries.BLOCKS.containsKey(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_block_id.get())) ? Blocks.STONE_BRICKS.defaultBlockState() : ForgeRegistries.BLOCKS.getValue(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_block_id.get())).defaultBlockState();
+    private final BlockState frame = !ForgeRegistries.BLOCKS.containsKey(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())) ? Blocks.STONE_BRICKS.defaultBlockState() : ForgeRegistries.BLOCKS.getValue(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())).defaultBlockState();
 
     public UGTeleporter(ServerLevel level) {
         this.level = level;
