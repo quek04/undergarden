@@ -15,11 +15,17 @@
       ]
     }
   },
-  "terrain_adaptation": "beard_thin",
+  "terrain_adaptation": "none",
   "start_pool": "undergarden:catacombs/catacombs_entrance",
   "size": 25,
   "start_height": {
-    "above_bottom": 48
+    "type": "minecraft:uniform",
+    "min_inclusive": {
+      "absolute": 32
+    },
+    "max_inclusive": {
+      "absolute": 40
+    }
   },
   "max_distance_from_center": 116
 }
