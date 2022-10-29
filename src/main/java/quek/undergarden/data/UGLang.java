@@ -49,6 +49,10 @@ public class UGLang extends LanguageProvider {
         add("item.minecraft.tipped_arrow.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Arrow of " + name);
     }
 
+    private void addConfig(String configName, String name) {
+        add("config.undergarden." + configName, name);
+    }
+
     @Override
     protected void addTranslations() {
         addBlock(UGBlocks.UNDERGARDEN_PORTAL, "Undergarden Portal");
@@ -648,5 +652,7 @@ public class UGLang extends LanguageProvider {
         addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
         addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");
         addDeath("shard_torch.player", "%1$s was killed by a Shard Torch's magic whilst trying to escape %2$s");
+
+        addConfig("return_portal_block_id", "Return Portal Block ID");
     }
 }

@@ -3,6 +3,7 @@ package quek.undergarden.world;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.TicketType;
@@ -21,6 +22,8 @@ import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.ITeleporter;
+import net.minecraftforge.registries.ForgeRegistries;
+import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.UndergardenPortalBlock;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGDimensions;
@@ -34,9 +37,10 @@ import java.util.function.Function;
 public class UGTeleporter implements ITeleporter {
 
     protected final ServerLevel level;
+    private final BlockState frame = !ForgeRegistries.BLOCKS.containsKey(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_block_id.get())) ? Blocks.STONE_BRICKS.defaultBlockState() : ForgeRegistries.BLOCKS.getValue(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_block_id.get())).defaultBlockState();
 
-    public UGTeleporter(ServerLevel worldIn) {
-        this.level = worldIn;
+    public UGTeleporter(ServerLevel level) {
+        this.level = level;
     }
 
     public Optional<BlockUtil.FoundRectangle> getExistingPortal(BlockPos pos) {
@@ -116,7 +120,7 @@ public class UGTeleporter implements ITeleporter {
             for(int l1 = -1; l1 < 2; ++l1) {
                 for(int k2 = 0; k2 < 2; ++k2) {
                     for(int i3 = -1; i3 < 3; ++i3) {
-                        BlockState blockstate1 = i3 < 0 ? Blocks.STONE_BRICKS.defaultBlockState() : Blocks.AIR.defaultBlockState();
+                        BlockState blockstate1 = i3 < 0 ? frame : Blocks.AIR.defaultBlockState();
                         mutablePos.setWithOffset(blockpos, k2 * direction.getStepX() + l1 * direction1.getStepX(), i3, k2 * direction.getStepZ() + l1 * direction1.getStepZ());
                         this.level.setBlockAndUpdate(mutablePos, blockstate1);
                     }
@@ -128,7 +132,7 @@ public class UGTeleporter implements ITeleporter {
             for(int i2 = -1; i2 < 4; ++i2) {
                 if (k1 == -1 || k1 == 2 || i2 == -1 || i2 == 3) {
                     mutablePos.setWithOffset(blockpos, k1 * direction.getStepX(), i2, k1 * direction.getStepZ());
-                    this.level.setBlock(mutablePos, Blocks.STONE_BRICKS.defaultBlockState(), 3);
+                    this.level.setBlock(mutablePos, frame, 3);
                 }
             }
         }
