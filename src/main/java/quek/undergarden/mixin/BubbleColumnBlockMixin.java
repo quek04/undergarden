@@ -14,9 +14,10 @@ public class BubbleColumnBlockMixin {
 
     @Inject(
             method = "getColumnState(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;",
-            at = @At("RETURN"),
-            cancellable = true)
-    private static void getColumnStateMixin(BlockState state, CallbackInfoReturnable<BlockState> cir) {
+            at = @At(value = "RETURN", ordinal = 2),
+            cancellable = true
+    )
+    private static void undergarden_smogVentBubbleColumn(BlockState state, CallbackInfoReturnable<BlockState> cir) {
         if (state.is(UGBlocks.SMOG_VENT.get())) {
             cir.setReturnValue(Blocks.BUBBLE_COLUMN.defaultBlockState().setValue(BubbleColumnBlock.DRAG_DOWN, false));
         }

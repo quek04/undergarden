@@ -67,16 +67,17 @@ public class Undergarden {
 				UGFeatures.FEATURES,
 				UGFluids.FLUIDS,
 				UGFluids.TYPES,
+				UGFoliagePlacers.FOLIAGE_PLACERS,
 				UGItems.ITEMS,
 				UGParticleTypes.PARTICLES,
 				UGPlacedFeatures.PLACED_FEATURES,
 				UGPointOfInterests.POI,
 				UGPotions.POTIONS,
 				UGSoundEvents.SOUNDS,
+				UGStructureProcessors.PROCESSORS,
 				UGStructures.STRUCTURES,
 				UGTreeDecoratorTypes.TREE_DECORATORS,
 				UGTrunkPlacerTypes.TRUNK_PLACERS,
-				UGFoliagePlacers.FOLIAGE_PLACERS
 		};
 
 		for (DeferredRegister<?> register : registers) {
