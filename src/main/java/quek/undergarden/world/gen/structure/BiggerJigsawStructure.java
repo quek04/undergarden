@@ -73,7 +73,7 @@ public class BiggerJigsawStructure extends Structure {
         if (y <= seaLevel) {
             return Optional.empty();
         } else {
-            BlockPos pos = new BlockPos(x, y, z);
+            BlockPos pos = new BlockPos(x, y + 1, z);
             return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.maxDepth, pos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
         }
     }
