@@ -102,7 +102,7 @@
       }
     },
     {
-      "weight": 25,
+      "weight": 100,
       "element": {
         "location": "undergarden:catacombs/tunnel/tunnel_guardian",
         "processors": "undergarden:catacombs_degradation",
