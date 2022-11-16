@@ -5,7 +5,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/interior/interior1",
+        "location": "undergarden:catacombs/interior/interior_altar",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -14,7 +14,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/interior/interior2",
+        "location": "undergarden:catacombs/interior/interior_garden",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -23,7 +23,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/interior/interior3",
+        "location": "undergarden:catacombs/interior/interior_grass",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -32,7 +32,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/interior/interior4new",
+        "location": "undergarden:catacombs/interior/interior_grasschest",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -41,7 +41,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/interior/interioraltar",
+        "location": "undergarden:catacombs/interior/interior_grasschest2",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -50,7 +50,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/interior/interiorgrass",
+        "location": "undergarden:catacombs/interior/interior_prison",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
@@ -59,16 +59,7 @@
     {
       "weight": 100,
       "element": {
-        "location": "undergarden:catacombs/interior/interiorjail",
-        "processors": "undergarden:catacombs_degradation",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 100,
-      "element": {
-        "location": "undergarden:catacombs/interior/interiormorgue",
+        "location": "undergarden:catacombs/interior/interior_prison2",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
