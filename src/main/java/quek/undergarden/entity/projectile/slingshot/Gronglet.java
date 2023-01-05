@@ -3,6 +3,7 @@ package quek.undergarden.entity.projectile.slingshot;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -55,7 +56,7 @@ public class Gronglet extends SlingshotProjectile {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        LivingEntity entity = (LivingEntity) result.getEntity();
+        Entity entity = result.getEntity();
         if (entity instanceof Player player && !player.hasItemInSlot(EquipmentSlot.HEAD)) {
             player.setItemSlot(EquipmentSlot.HEAD, new ItemStack(this.getDefaultItem()));
         } else {
