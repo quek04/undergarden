@@ -10,7 +10,7 @@ import quek.undergarden.world.gen.carver.UGCaveWorldCarver;
 
 public class UGCarvers {
 
-    public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister.create(ForgeRegistries.WORLD_CARVERS, Undergarden.MODID);
+	public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister.create(ForgeRegistries.WORLD_CARVERS, Undergarden.MODID);
 
-    public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> UNDERGARDEN_CAVE = CARVERS.register("undergarden_cave", () -> new UGCaveWorldCarver(CaveCarverConfiguration.CODEC));
+	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> UNDERGARDEN_CAVE = CARVERS.register("undergarden_cave", () -> new UGCaveWorldCarver(CaveCarverConfiguration.CODEC));
 }

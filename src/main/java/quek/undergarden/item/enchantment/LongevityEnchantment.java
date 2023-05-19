@@ -8,32 +8,32 @@ import quek.undergarden.item.tool.slingshot.SlingshotItem;
 
 public class LongevityEnchantment extends Enchantment {
 
-    public LongevityEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots) {
-        super(rarity, category, slots);
-    }
+	public LongevityEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots) {
+		super(rarity, category, slots);
+	}
 
-    @Override
-    public int getMinCost(int level) {
-        return 1 + (level - 1) * 10;
-    }
+	@Override
+	public int getMinCost(int level) {
+		return 1 + (level - 1) * 10;
+	}
 
-    @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 15;
-    }
+	@Override
+	public int getMaxCost(int level) {
+		return this.getMinCost(level) + 15;
+	}
 
-    @Override
-    public boolean canEnchant(ItemStack stack) {
-        return stack.getItem() instanceof SlingshotItem || super.canEnchant(stack);
-    }
+	@Override
+	public boolean canEnchant(ItemStack stack) {
+		return stack.getItem() instanceof SlingshotItem || super.canEnchant(stack);
+	}
 
-    @Override
-    public int getMaxLevel() {
-        return 3;
-    }
+	@Override
+	public int getMaxLevel() {
+		return 3;
+	}
 
-    @Override
-    public boolean isTradeable() {
-        return false;
-    }
+	@Override
+	public boolean isTradeable() {
+		return false;
+	}
 }

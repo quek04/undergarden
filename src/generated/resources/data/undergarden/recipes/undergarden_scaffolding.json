@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "S": {
       "tag": "forge:rods/wooden"
@@ -16,5 +17,6 @@
   "result": {
     "count": 6,
     "item": "minecraft:scaffolding"
-  }
+  },
+  "show_notification": true
 }

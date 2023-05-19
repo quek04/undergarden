@@ -7,49 +7,48 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum UGItemTiers implements Tier {
-    CLOGGRUM(2, 286, 6.0F, 3.0F, 8, () -> Ingredient.of(UGItems.CLOGGRUM_INGOT.get())),
-    FROSTSTEEL(2, 575, 7.0F, 2.0F, 20, () -> Ingredient.of(UGItems.FROSTSTEEL_INGOT.get())),
-    UTHERIUM(3, 1279, 8.5F, 3.5F, 17, () -> Ingredient.of(UGItems.UTHERIUM_CRYSTAL.get())),
-    FORGOTTEN(4, 1876, 8.0F, 3.0F, 2, () -> Ingredient.of(UGItems.FORGOTTEN_INGOT.get()))
-    ;
+	CLOGGRUM(2, 286, 6.0F, 3.0F, 8, () -> Ingredient.of(UGItems.CLOGGRUM_INGOT.get())),
+	FROSTSTEEL(2, 575, 7.0F, 2.0F, 20, () -> Ingredient.of(UGItems.FROSTSTEEL_INGOT.get())),
+	UTHERIUM(3, 1279, 8.5F, 3.5F, 17, () -> Ingredient.of(UGItems.UTHERIUM_CRYSTAL.get())),
+	FORGOTTEN(4, 1876, 8.0F, 3.0F, 2, () -> Ingredient.of(UGItems.FORGOTTEN_INGOT.get()));
 
-    private final int level;
-    private final int durability;
-    private final float speed;
-    private final float damage;
-    private final int enchantmentValue;
-    private final LazyLoadedValue<Ingredient> repairIngredient;
+	private final int level;
+	private final int durability;
+	private final float speed;
+	private final float damage;
+	private final int enchantmentValue;
+	private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    UGItemTiers(int level, int durability, float speed, float damage, int enchantmentValue, Supplier<Ingredient> repairIngredient) {
-        this.level = level;
-        this.durability = durability;
-        this.speed = speed;
-        this.damage = damage;
-        this.enchantmentValue = enchantmentValue;
-        this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
-    }
+	UGItemTiers(int level, int durability, float speed, float damage, int enchantmentValue, Supplier<Ingredient> repairIngredient) {
+		this.level = level;
+		this.durability = durability;
+		this.speed = speed;
+		this.damage = damage;
+		this.enchantmentValue = enchantmentValue;
+		this.repairIngredient = new LazyLoadedValue<>(repairIngredient);
+	}
 
-    public int getUses() {
-        return this.durability;
-    }
+	public int getUses() {
+		return this.durability;
+	}
 
-    public float getSpeed() {
-        return this.speed;
-    }
+	public float getSpeed() {
+		return this.speed;
+	}
 
-    public float getAttackDamageBonus() {
-        return this.damage;
-    }
+	public float getAttackDamageBonus() {
+		return this.damage;
+	}
 
-    public int getLevel() {
-        return this.level;
-    }
+	public int getLevel() {
+		return this.level;
+	}
 
-    public int getEnchantmentValue() {
-        return this.enchantmentValue;
-    }
+	public int getEnchantmentValue() {
+		return this.enchantmentValue;
+	}
 
-    public Ingredient getRepairIngredient() {
-        return this.repairIngredient.get();
-    }
+	public Ingredient getRepairIngredient() {
+		return this.repairIngredient.get();
+	}
 }

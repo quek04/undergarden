@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "layer0": "undergarden:block/tall_shimmerweed_top",
+    "layer1": "undergarden:block/tall_shimmerweed_bulb"
+  }
+}

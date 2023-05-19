@@ -1,0 +1,207 @@
+{
+  "type": "undergarden:undergarden",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "undergarden:forgotten_field",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:frostfields",
+          "parameters": {
+            "continentalness": -0.9,
+            "depth": -2.0,
+            "erosion": -0.7,
+            "humidity": -0.4,
+            "offset": 0.0,
+            "temperature": -1.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:smogstem_forest",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 1.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:wigglewood_forest",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.0,
+            "humidity": -0.4,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:dense_forest",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.0,
+            "humidity": 0.4,
+            "offset": 0.0,
+            "temperature": 1.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:gronglegrowth",
+          "parameters": {
+            "continentalness": 0.9,
+            "depth": -2.0,
+            "erosion": 0.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:barren_abyss",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.7,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:smog_spires",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 1.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:ink_mushroom_bog",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": 1.0
+          }
+        },
+        {
+          "biome": "undergarden:indigo_mushroom_bog",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 1.0,
+            "weirdness": 1.0
+          }
+        },
+        {
+          "biome": "undergarden:veil_mushroom_bog",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": -1.0
+          }
+        },
+        {
+          "biome": "undergarden:blood_mushroom_bog",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": 0.7,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": -1.0
+          }
+        },
+        {
+          "biome": "undergarden:ancient_sea",
+          "parameters": {
+            "continentalness": [
+              0.0,
+              0.9
+            ],
+            "depth": 2.0,
+            "erosion": 0.0,
+            "humidity": [
+              0.0,
+              0.4
+            ],
+            "offset": 0.0,
+            "temperature": [
+              0.0,
+              1.0
+            ],
+            "weirdness": [
+              -1.0,
+              1.0
+            ]
+          }
+        },
+        {
+          "biome": "undergarden:dead_sea",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 2.0,
+            "erosion": [
+              0.7,
+              1.0
+            ],
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:icy_sea",
+          "parameters": {
+            "continentalness": -0.7,
+            "depth": 2.0,
+            "erosion": 0.0,
+            "humidity": -0.7,
+            "offset": 0.0,
+            "temperature": -0.7,
+            "weirdness": 0.0
+          }
+        }
+      ]
+    },
+    "settings": "undergarden:undergarden"
+  }
+}

@@ -36,8 +36,8 @@ public class GwiblingModel<T extends Gwibling> extends ListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.body.xRot = headPitch * ((float)Math.PI / 180F);
-		this.body.yRot = netHeadYaw * ((float)Math.PI / 180F);
+		this.body.xRot = headPitch * ((float) Math.PI / 180F);
+		this.body.yRot = netHeadYaw * ((float) Math.PI / 180F);
 		float f = 1.0F;
 		if (!entity.isInWater()) {
 			f = 1.5F;

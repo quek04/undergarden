@@ -8,12 +8,12 @@ import net.minecraft.world.level.block.Block;
 
 public class CarvedGloomgourdItem extends BlockItem {
 
-    public CarvedGloomgourdItem(Block block, Item.Properties properties) {
-        super(block, properties);
-    }
+	public CarvedGloomgourdItem(Block block, Item.Properties properties) {
+		super(block, properties);
+	}
 
-    @Override
-    public EquipmentSlot getEquipmentSlot(ItemStack stack) {
-        return EquipmentSlot.HEAD;
-    }
+	@Override
+	public EquipmentSlot getEquipmentSlot(ItemStack stack) {
+		return EquipmentSlot.HEAD;
+	}
 }

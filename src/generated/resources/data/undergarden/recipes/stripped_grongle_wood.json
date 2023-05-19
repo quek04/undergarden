@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "M": {
       "item": "undergarden:stripped_grongle_log"
@@ -12,5 +13,6 @@
   "result": {
     "count": 3,
     "item": "undergarden:stripped_grongle_wood"
-  }
+  },
+  "show_notification": true
 }

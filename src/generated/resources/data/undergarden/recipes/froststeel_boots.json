@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "item": "undergarden:froststeel_ingot"
@@ -11,5 +12,6 @@
   ],
   "result": {
     "item": "undergarden:froststeel_boots"
-  }
+  },
+  "show_notification": true
 }

@@ -54,12 +54,12 @@ public class DwellerModel<T extends Dweller> extends AgeableListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = -1.3963F + headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+		this.head.xRot = -1.3963F + headPitch * ((float) Math.PI / 180F);
 
 		this.leftLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
-		this.rightLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override

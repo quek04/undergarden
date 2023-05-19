@@ -11,14 +11,14 @@ import quek.undergarden.entity.animal.Scintling;
 
 public class ScintlingRender extends MobRenderer<Scintling, ScintlingModel<Scintling>> {
 
-    public ScintlingRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new ScintlingModel<>(renderContext.bakeLayer(UGModelLayers.SCINTLING)), 0.5F);
-        this.addLayer(new ScintlingGlowLayer<>(this));
-    }
+	public ScintlingRender(EntityRendererProvider.Context renderContext) {
+		super(renderContext, new ScintlingModel<>(renderContext.bakeLayer(UGModelLayers.SCINTLING)), 0.5F);
+		this.addLayer(new ScintlingGlowLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Scintling entity) {
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/scintling.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Scintling entity) {
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/scintling.png");
+	}
 
 }

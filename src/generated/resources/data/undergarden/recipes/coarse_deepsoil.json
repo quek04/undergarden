@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "D": {
       "item": "undergarden:deepsoil"
@@ -15,5 +16,6 @@
   "result": {
     "count": 4,
     "item": "undergarden:coarse_deepsoil"
-  }
+  },
+  "show_notification": true
 }

@@ -8,18 +8,18 @@ import quek.undergarden.registry.UGBlockEntities;
 
 public class GrongletBlockEntity extends BlockEntity {
 
-    public int yaw;
+	public int yaw;
 
-    public GrongletBlockEntity(BlockPos pos, BlockState state) {
-        super(UGBlockEntities.GRONGLET.get(), pos, state);
-        yaw = -1;
-    }
+	public GrongletBlockEntity(BlockPos pos, BlockState state) {
+		super(UGBlockEntities.GRONGLET.get(), pos, state);
+		yaw = -1;
+	}
 
-    public static void tick(Level level, BlockPos pos, BlockState state, GrongletBlockEntity blockEntity) {
-        if (level.isClientSide) {
-            if (blockEntity.yaw == -1) {
-                blockEntity.yaw = level.random.nextInt(360);
-            }
-        }
-    }
+	public static void tick(Level level, BlockPos pos, BlockState state, GrongletBlockEntity blockEntity) {
+		if (level.isClientSide) {
+			if (blockEntity.yaw == -1) {
+				blockEntity.yaw = level.random.nextInt(360);
+			}
+		}
+	}
 }

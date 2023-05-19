@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantBodyBlock;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
@@ -22,50 +23,50 @@ import quek.undergarden.registry.UGItems;
 
 public class DroopvinePlantBlock extends GrowingPlantBodyBlock implements Droopvine {
 
-    public static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+	public static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
-    public DroopvinePlantBlock(Properties properties) {
-        super(properties, Direction.DOWN, SHAPE, false);
-        this.registerDefaultState(this.stateDefinition.any().setValue(GLOWY, false));
-    }
+	public DroopvinePlantBlock(Properties properties) {
+		super(properties, Direction.DOWN, SHAPE, false);
+		this.registerDefaultState(this.stateDefinition.any().setValue(GLOWY, false));
+	}
 
-    @Override
-    protected GrowingPlantHeadBlock getHeadBlock() {
-        return UGBlocks.DROOPVINE.get();
-    }
+	@Override
+	protected GrowingPlantHeadBlock getHeadBlock() {
+		return UGBlocks.DROOPVINE.get();
+	}
 
-    @Override
-    protected BlockState updateHeadAfterConvertedFromBody(BlockState body, BlockState head) {
-        return head.setValue(GLOWY, body.getValue(GLOWY));
-    }
+	@Override
+	protected BlockState updateHeadAfterConvertedFromBody(BlockState body, BlockState head) {
+		return head.setValue(GLOWY, body.getValue(GLOWY));
+	}
 
-    @Override
-    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
-        return new ItemStack(UGItems.DROOPFRUIT.get());
-    }
+	@Override
+	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+		return new ItemStack(UGItems.DROOPFRUIT.get());
+	}
 
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        return Droopvine.use(state, level, pos);
-    }
+	@Override
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+		return Droopvine.use(state, level, pos);
+	}
 
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(GLOWY);
-    }
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(GLOWY);
+	}
 
-    @Override
-    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
-        return !state.getValue(GLOWY);
-    }
+	@Override
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+		return !state.getValue(GLOWY);
+	}
 
-    @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return true;
-    }
+	@Override
+	public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+		return true;
+	}
 
-    @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        level.setBlock(pos, state.setValue(GLOWY, true), 2);
-    }
+	@Override
+	public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+		level.setBlock(pos, state.setValue(GLOWY, true), 2);
+	}
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "C": {
       "item": "undergarden:utheric_shard"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "undergarden:shard_torch"
-  }
+  },
+  "show_notification": true
 }

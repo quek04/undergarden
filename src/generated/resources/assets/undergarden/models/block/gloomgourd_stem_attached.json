@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stem_fruit",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "stem": "minecraft:block/melon_stem",
+    "upperstem": "minecraft:block/attached_melon_stem"
+  }
+}

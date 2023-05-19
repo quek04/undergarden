@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "M": {
       "item": "undergarden:tremblecrust"
@@ -12,5 +13,6 @@
   "result": {
     "count": 4,
     "item": "undergarden:tremblecrust_bricks"
-  }
+  },
+  "show_notification": true
 }

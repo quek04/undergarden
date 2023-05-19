@@ -13,12 +13,12 @@ import java.util.List;
 
 public class DepthrockPebbleItem extends ItemNameBlockItem {
 
-    public DepthrockPebbleItem(Block block, Properties properties) {
-        super(block, properties);
-    }
+	public DepthrockPebbleItem(Block block, Properties properties) {
+		super(block, properties);
+	}
 
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
-        tooltipComponents.add(Component.translatable("tooltip.pebble").withStyle(ChatFormatting.GRAY));
-    }
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
+		tooltipComponents.add(Component.translatable("tooltip.pebble").withStyle(ChatFormatting.GRAY));
+	}
 }

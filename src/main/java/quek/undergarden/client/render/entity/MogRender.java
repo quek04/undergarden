@@ -11,16 +11,16 @@ import quek.undergarden.entity.animal.Mog;
 
 public class MogRender extends MobRenderer<Mog, MogModel<Mog>> {
 
-    public MogRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new MogModel<>(renderContext.bakeLayer(UGModelLayers.MOG)), 0.5F);
-        this.addLayer(new MogEyesLayer<>(this));
-    }
+	public MogRender(EntityRendererProvider.Context renderContext) {
+		super(renderContext, new MogModel<>(renderContext.bakeLayer(UGModelLayers.MOG)), 0.5F);
+		this.addLayer(new MogEyesLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Mog entity) {
-        if(entity.hasMoss()) {
-            return new ResourceLocation(Undergarden.MODID, "textures/entity/mog.png");
-        }
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/mog_naked.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Mog entity) {
+		if (entity.hasMoss()) {
+			return new ResourceLocation(Undergarden.MODID, "textures/entity/mog.png");
+		}
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/mog_naked.png");
+	}
 }

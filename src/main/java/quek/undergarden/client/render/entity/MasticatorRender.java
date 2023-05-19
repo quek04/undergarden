@@ -11,13 +11,13 @@ import quek.undergarden.entity.boss.Masticator;
 
 public class MasticatorRender extends MobRenderer<Masticator, MasticatorModel<Masticator>> {
 
-    public MasticatorRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new MasticatorModel<>(renderContext.bakeLayer(UGModelLayers.MASTICATOR)), 2.0F);
-        this.addLayer(new MasticatorEyesLayer<>(this));
-    }
+	public MasticatorRender(EntityRendererProvider.Context renderContext) {
+		super(renderContext, new MasticatorModel<>(renderContext.bakeLayer(UGModelLayers.MASTICATOR)), 2.0F);
+		this.addLayer(new MasticatorEyesLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Masticator entity) {
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/masticator.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Masticator entity) {
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/masticator.png");
+	}
 }

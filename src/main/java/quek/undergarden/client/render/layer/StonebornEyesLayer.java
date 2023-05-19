@@ -10,13 +10,13 @@ import quek.undergarden.entity.stoneborn.Stoneborn;
 
 public class StonebornEyesLayer<T extends Stoneborn, M extends StonebornModel<T>> extends EyesLayer<T, M> {
 
-    public StonebornEyesLayer(RenderLayerParent<T, M> rendererIn) {
-        super(rendererIn);
-    }
+	public StonebornEyesLayer(RenderLayerParent<T, M> rendererIn) {
+		super(rendererIn);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/stoneborn_eyes.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/stoneborn_eyes.png"));
+	}
 
 }

@@ -1,3 +1,6 @@
-// 1.19.2	2022-10-16T11:47:46.6910609	Undergarden Biome Tags
+// 1.19.4	2023-05-19T08:58:31.5556699	Undergarden Biome Tags
+bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_patrol_spawns.json
+bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_wandering_trader_spawns.json
+bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_zombie_sieges.json
 cdd58a6b569185a3932aa09d9470ae6b5788f0ca data/undergarden/tags/worldgen/biome/has_structure/catacombs.json
 3096203bae4053bbc1e72d46a7c5deeaba1bf4f5 data/undergarden/tags/worldgen/biome/is_undergarden.json

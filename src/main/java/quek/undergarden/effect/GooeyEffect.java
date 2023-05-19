@@ -11,22 +11,22 @@ import quek.undergarden.registry.UGEffects;
 
 public class GooeyEffect extends MobEffect {
 
-    public GooeyEffect() {
-        super(MobEffectCategory.HARMFUL, 7827026);
-    }
+	public GooeyEffect() {
+		super(MobEffectCategory.HARMFUL, 7827026);
+	}
 
-    @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
-        BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
-        BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
+	@Override
+	public void applyEffectTick(LivingEntity entity, int amplifier) {
+		BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
+		BlockPos pos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
 
-        if (entity.level.isEmptyBlock(pos) && blockstate.canSurvive(entity.level, pos) && !(entity instanceof Scintling)) {
-            entity.level.setBlockAndUpdate(pos, blockstate);
-        }
-    }
+		if (entity.level.isEmptyBlock(pos) && blockstate.canSurvive(entity.level, pos) && !(entity instanceof Scintling)) {
+			entity.level.setBlockAndUpdate(pos, blockstate);
+		}
+	}
 
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        return this == UGEffects.GOOEY.get();
-    }
+	@Override
+	public boolean isDurationEffectTick(int duration, int amplifier) {
+		return this == UGEffects.GOOEY.get();
+	}
 }
