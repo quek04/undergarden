@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "#": {
       "item": "undergarden:depthrock_pebble"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "undergarden:depthrock"
-  }
+  },
+  "show_notification": true
 }

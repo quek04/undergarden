@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "M": {
       "item": "undergarden:cloggrum_tiles"
@@ -11,5 +12,6 @@
   "result": {
     "count": 6,
     "item": "undergarden:cloggrum_tile_slab"
-  }
+  },
+  "show_notification": true
 }

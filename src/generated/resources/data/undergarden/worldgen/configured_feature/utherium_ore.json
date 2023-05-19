@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.5,
+    "size": 8,
+    "targets": [
+      {
+        "state": {
+          "Name": "undergarden:depthrock_utherium_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "undergarden:depthrock_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "undergarden:shiverstone_utherium_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "undergarden:shiverstone_ore_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "undergarden:tremblecrust_utherium_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "undergarden:tremblecrust_ore_replaceables"
+        }
+      }
+    ]
+  }
+}

@@ -10,12 +10,12 @@ import quek.undergarden.entity.rotspawn.Rotbeast;
 
 public class RotbeastEyesLayer<T extends Rotbeast, M extends RotbeastModel<T>> extends EyesLayer<T, M> {
 
-    public RotbeastEyesLayer(RenderLayerParent<T, M> rendererIn) {
-        super(rendererIn);
-    }
+	public RotbeastEyesLayer(RenderLayerParent<T, M> rendererIn) {
+		super(rendererIn);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/rotbeast_eyes.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/rotbeast_eyes.png"));
+	}
 }

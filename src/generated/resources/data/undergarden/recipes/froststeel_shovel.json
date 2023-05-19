@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "#": {
       "item": "undergarden:froststeel_ingot"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "undergarden:froststeel_shovel"
-  }
+  },
+  "show_notification": true
 }

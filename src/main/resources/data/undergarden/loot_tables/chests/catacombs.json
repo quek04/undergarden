@@ -3,8 +3,8 @@
   "pools": [
     {
       "rolls": {
-        "min": 1.0,
-        "max": 4.0,
+        "min": 1,
+        "max": 4,
         "type": "minecraft:uniform"
       },
       "entries": [
@@ -30,8 +30,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
-                "max": 8.0,
+                "min": 1,
+                "max": 8,
                 "type": "minecraft:uniform"
               }
             }
@@ -45,8 +45,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
-                "max": 8.0,
+                "min": 1,
+                "max": 8,
                 "type": "minecraft:uniform"
               }
             }
@@ -60,8 +60,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
-                "max": 8.0,
+                "min": 1,
+                "max": 8,
                 "type": "minecraft:uniform"
               }
             }
@@ -75,8 +75,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 0.0,
-                "max": 4.0,
+                "min": 0,
+                "max": 4,
                 "type": "minecraft:uniform"
               }
             }
@@ -90,8 +90,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 0.0,
-                "max": 4.0,
+                "min": 0,
+                "max": 4,
                 "type": "minecraft:uniform"
               }
             }

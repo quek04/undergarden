@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "undergarden:block/gloomgourd_top",
-        "front": "undergarden:block/carved_gloomgourd",
-        "side": "undergarden:block/gloomgourd_side"
-    }
-}

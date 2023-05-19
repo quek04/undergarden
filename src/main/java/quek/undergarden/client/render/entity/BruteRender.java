@@ -11,13 +11,13 @@ import quek.undergarden.entity.animal.Brute;
 
 public class BruteRender extends MobRenderer<Brute, BruteModel<Brute>> {
 
-    public BruteRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new BruteModel<>(renderContext.bakeLayer(UGModelLayers.BRUTE)), 0.7F);
-        this.addLayer(new BruteEyesLayer<>(this));
-    }
+	public BruteRender(EntityRendererProvider.Context renderContext) {
+		super(renderContext, new BruteModel<>(renderContext.bakeLayer(UGModelLayers.BRUTE)), 0.7F);
+		this.addLayer(new BruteEyesLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Brute entity) {
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/brute.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Brute entity) {
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/brute.png");
+	}
 }

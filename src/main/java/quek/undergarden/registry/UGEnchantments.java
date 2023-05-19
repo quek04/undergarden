@@ -14,11 +14,11 @@ import quek.undergarden.item.tool.slingshot.SlingshotItem;
 
 public class UGEnchantments {
 
-    public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, Undergarden.MODID);
+	public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, Undergarden.MODID);
 
-    public static final EnchantmentCategory SLINGSHOT = EnchantmentCategory.create("slingshot", (item -> item instanceof SlingshotItem));
+	public static final EnchantmentCategory SLINGSHOT = EnchantmentCategory.create("slingshot", (item -> item instanceof SlingshotItem));
 
-    public static final RegistryObject<Enchantment> RICOCHET = ENCHANTMENTS.register("ricochet", () -> new RicochetEnchantment(Enchantment.Rarity.UNCOMMON, SLINGSHOT, EquipmentSlot.MAINHAND));
-    public static final RegistryObject<Enchantment> LONGEVITY = ENCHANTMENTS.register("longevity", () -> new LongevityEnchantment(Enchantment.Rarity.COMMON, SLINGSHOT, EquipmentSlot.MAINHAND));
-    public static final RegistryObject<Enchantment> SELF_SLING = ENCHANTMENTS.register("self_sling", () -> new SelfSlingEnchantment(Enchantment.Rarity.RARE, SLINGSHOT, EquipmentSlot.MAINHAND));
+	public static final RegistryObject<Enchantment> RICOCHET = ENCHANTMENTS.register("ricochet", () -> new RicochetEnchantment(Enchantment.Rarity.UNCOMMON, SLINGSHOT, EquipmentSlot.MAINHAND));
+	public static final RegistryObject<Enchantment> LONGEVITY = ENCHANTMENTS.register("longevity", () -> new LongevityEnchantment(Enchantment.Rarity.COMMON, SLINGSHOT, EquipmentSlot.MAINHAND));
+	public static final RegistryObject<Enchantment> SELF_SLING = ENCHANTMENTS.register("self_sling", () -> new SelfSlingEnchantment(Enchantment.Rarity.RARE, SLINGSHOT, EquipmentSlot.MAINHAND));
 }

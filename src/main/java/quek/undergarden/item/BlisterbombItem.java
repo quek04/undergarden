@@ -9,36 +9,34 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.Blisterbomb;
-import quek.undergarden.registry.UGCreativeModeTabs;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class BlisterbombItem extends Item {
 
-    public BlisterbombItem() {
-        super(new Properties()
-                .stacksTo(8)
-                .tab(UGCreativeModeTabs.GROUP)
-        );
-    }
+	public BlisterbombItem() {
+		super(new Properties()
+				.stacksTo(8)
+		);
+	}
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
-        ItemStack itemstack = playerIn.getItemInHand(handIn);
-        worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), UGSoundEvents.BLISTERBOMB_THROW.get(), SoundSource.NEUTRAL, 0.5F, 1F);
-        playerIn.getCooldowns().addCooldown(this, 50);
-        if (!worldIn.isClientSide) {
-            Blisterbomb blisterbomb = new Blisterbomb(worldIn, playerIn);
-            blisterbomb.setItem(itemstack);
-            blisterbomb.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
-            worldIn.addFreshEntity(blisterbomb);
-        }
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+		ItemStack itemstack = playerIn.getItemInHand(handIn);
+		worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), UGSoundEvents.BLISTERBOMB_THROW.get(), SoundSource.NEUTRAL, 0.5F, 1F);
+		playerIn.getCooldowns().addCooldown(this, 50);
+		if (!worldIn.isClientSide) {
+			Blisterbomb blisterbomb = new Blisterbomb(worldIn, playerIn);
+			blisterbomb.setItem(itemstack);
+			blisterbomb.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
+			worldIn.addFreshEntity(blisterbomb);
+		}
 
-        playerIn.awardStat(Stats.ITEM_USED.get(this));
-        if (!playerIn.getAbilities().instabuild) {
-            itemstack.shrink(1);
-        }
+		playerIn.awardStat(Stats.ITEM_USED.get(this));
+		if (!playerIn.getAbilities().instabuild) {
+			itemstack.shrink(1);
+		}
 
-        return InteractionResultHolder.success(itemstack);
-    }
+		return InteractionResultHolder.success(itemstack);
+	}
 
 }

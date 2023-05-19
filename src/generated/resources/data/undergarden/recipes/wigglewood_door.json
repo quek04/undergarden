@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "key": {
     "P": {
       "item": "undergarden:wigglewood_planks"
@@ -13,5 +14,6 @@
   "result": {
     "count": 3,
     "item": "undergarden:wigglewood_door"
-  }
+  },
+  "show_notification": true
 }

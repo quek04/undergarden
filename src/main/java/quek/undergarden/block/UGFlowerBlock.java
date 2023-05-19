@@ -8,12 +8,12 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class UGFlowerBlock extends UGPlantBlock {
 
-    public UGFlowerBlock(Properties properties) {
-        super(properties);
-    }
+	public UGFlowerBlock(Properties properties) {
+		super(properties);
+	}
 
-    @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        popResource(level, pos, new ItemStack(this));
-    }
+	@Override
+	public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+		popResource(level, pos, new ItemStack(this));
+	}
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "key": {
     "B": {
       "item": "undergarden:depthrock"
@@ -10,5 +11,6 @@
   ],
   "result": {
     "item": "undergarden:depthrock_pressure_plate"
-  }
+  },
+  "show_notification": true
 }

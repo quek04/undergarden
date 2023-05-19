@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "undergarden:block/boomgourd_top",
+    "side": "undergarden:block/boomgourd_side",
+    "top": "undergarden:block/boomgourd_top"
+  }
+}

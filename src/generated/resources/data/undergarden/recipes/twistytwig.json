@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "P": {
       "item": "undergarden:wigglewood_planks"
@@ -12,5 +13,6 @@
   "result": {
     "count": 4,
     "item": "undergarden:twistytwig"
-  }
+  },
+  "show_notification": true
 }
