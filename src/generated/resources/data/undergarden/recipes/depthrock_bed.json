@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "D": {
       "item": "undergarden:depthrock"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "undergarden:depthrock_bed"
-  }
+  },
+  "show_notification": true
 }

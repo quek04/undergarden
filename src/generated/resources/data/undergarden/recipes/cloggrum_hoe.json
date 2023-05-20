@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "#": {
       "item": "undergarden:cloggrum_ingot"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "undergarden:cloggrum_hoe"
-  }
+  },
+  "show_notification": true
 }

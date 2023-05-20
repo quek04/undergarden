@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "#": {
       "item": "undergarden:utherium_crystal"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "undergarden:utherium_hoe"
-  }
+  },
+  "show_notification": true
 }

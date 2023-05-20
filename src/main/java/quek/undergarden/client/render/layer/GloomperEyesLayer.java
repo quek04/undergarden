@@ -10,12 +10,12 @@ import quek.undergarden.entity.animal.Gloomper;
 
 public class GloomperEyesLayer<T extends Gloomper, M extends GloomperModel<T>> extends EyesLayer<T, M> {
 
-    public GloomperEyesLayer(RenderLayerParent<T, M> renderer) {
-        super(renderer);
-    }
+	public GloomperEyesLayer(RenderLayerParent<T, M> renderer) {
+		super(renderer);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/gloomper_eyes.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/gloomper_eyes.png"));
+	}
 }

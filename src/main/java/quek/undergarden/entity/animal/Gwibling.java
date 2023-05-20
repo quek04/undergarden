@@ -16,42 +16,40 @@ import net.minecraft.world.level.block.Blocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
-import java.util.Random;
-
 public class Gwibling extends AbstractFish {
 
-    public Gwibling(EntityType<? extends AbstractFish> type, Level level) {
-        super(type, level);
-        this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
-        this.lookControl = new SmoothSwimmingLookControl(this, 10);
-    }
+	public Gwibling(EntityType<? extends AbstractFish> type, Level level) {
+		super(type, level);
+		this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
+		this.lookControl = new SmoothSwimmingLookControl(this, 10);
+	}
 
-    public static boolean canGwiblingSpawn(EntityType<? extends AbstractFish> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
-    }
+	public static boolean canGwiblingSpawn(EntityType<? extends AbstractFish> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+		return level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
+	}
 
-    @Override
-    public ItemStack getBucketItemStack() {
-        return new ItemStack(UGItems.GWIBLING_BUCKET.get());
-    }
+	@Override
+	public ItemStack getBucketItemStack() {
+		return new ItemStack(UGItems.GWIBLING_BUCKET.get());
+	}
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return null;
-    }
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return null;
+	}
 
-    @Override
-    protected SoundEvent getDeathSound() {
-        return UGSoundEvents.GWIBLING_DEATH.get();
-    }
+	@Override
+	protected SoundEvent getDeathSound() {
+		return UGSoundEvents.GWIBLING_DEATH.get();
+	}
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return UGSoundEvents.GWIBLING_HURT.get();
-    }
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return UGSoundEvents.GWIBLING_HURT.get();
+	}
 
-    @Override
-    protected SoundEvent getFlopSound() {
-        return UGSoundEvents.GWIBLING_FLOP.get();
-    }
+	@Override
+	protected SoundEvent getFlopSound() {
+		return UGSoundEvents.GWIBLING_FLOP.get();
+	}
 }

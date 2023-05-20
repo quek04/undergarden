@@ -1,0 +1,29 @@
+{
+  "feature": "undergarden:glitterkelp",
+  "placement": [
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_factor": 80.0,
+      "noise_offset": 0.0,
+      "noise_to_count_ratio": 1000
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 31
+        },
+        "min_inclusive": {
+          "above_bottom": 0
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

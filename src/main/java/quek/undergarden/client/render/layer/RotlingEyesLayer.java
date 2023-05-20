@@ -10,13 +10,13 @@ import quek.undergarden.entity.rotspawn.Rotling;
 
 public class RotlingEyesLayer<T extends Rotling, M extends RotlingModel<T>> extends EyesLayer<T, M> {
 
-    public RotlingEyesLayer(RenderLayerParent<T, M> rendererIn) {
-        super(rendererIn);
-    }
+	public RotlingEyesLayer(RenderLayerParent<T, M> rendererIn) {
+		super(rendererIn);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/rotling_eyes.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/rotling_eyes.png"));
+	}
 
 }

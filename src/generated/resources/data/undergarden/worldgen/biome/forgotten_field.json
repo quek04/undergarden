@@ -1,0 +1,165 @@
+{
+  "carvers": {
+    "air": "undergarden:undergarden_cave"
+  },
+  "creature_spawn_probability": 0.5,
+  "downfall": 0.0,
+  "effects": {
+    "additions_sound": {
+      "sound": "undergarden:ambient.fields_addition",
+      "tick_chance": 0.00555
+    },
+    "ambient_sound": "undergarden:ambient.undergarden",
+    "fog_color": 1186057,
+    "foliage_color": 5993819,
+    "grass_color": 5993819,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "undergarden:ambient.mood",
+      "tick_delay": 6000
+    },
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": true,
+      "sound": "undergarden:music.undergarden"
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:white_ash"
+      },
+      "probability": 0.025
+    },
+    "sky_color": 1186057,
+    "water_color": 342306,
+    "water_fog_color": 332810
+  },
+  "features": [
+    [],
+    [],
+    [
+      "undergarden:depthrock_rock",
+      "undergarden:shiverstone_rock"
+    ],
+    [],
+    [],
+    [],
+    [
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore",
+      "undergarden:shiverstone_ore",
+      "undergarden:coal_ore",
+      "undergarden:iron_ore",
+      "undergarden:gold_ore",
+      "undergarden:diamond_ore",
+      "undergarden:cloggrum_ore",
+      "undergarden:utherium_ore",
+      "undergarden:regalium_ore"
+    ],
+    [],
+    [],
+    [
+      "undergarden:blood_mushroom_patch",
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:deepturf_patch",
+      "undergarden:shimmerweed_patch",
+      "undergarden:depthrock_pebble_patch",
+      "undergarden:underbean_bush_patch",
+      "undergarden:ditchbulb_patch",
+      "undergarden:tall_shimmerweed_patch",
+      "undergarden:droopvine_patch",
+      "undergarden:gloomgourd_patch"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [
+      {
+        "type": "undergarden:scintling",
+        "maxCount": 8,
+        "minCount": 4,
+        "weight": 5
+      }
+    ],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "undergarden:gloomper",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:brute",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:mog",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:dweller",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "undergarden:nargoyle",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 50
+      },
+      {
+        "type": "undergarden:muncher",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 50
+      },
+      {
+        "type": "undergarden:sploogie",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 50
+      },
+      {
+        "type": "undergarden:rotling",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotwalker",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotbeast",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:stoneborn",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 100
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.8
+}

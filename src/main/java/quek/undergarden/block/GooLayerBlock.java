@@ -25,56 +25,56 @@ import quek.undergarden.registry.UGItems;
 
 public class GooLayerBlock extends Block {
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
-    protected static final VoxelShape SHAPE = box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+	public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
+	protected static final VoxelShape SHAPE = box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
-    public GooLayerBlock(Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-    }
+	public GooLayerBlock(Properties properties) {
+		super(properties);
+		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
+	}
 
-    @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if(entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY.get()))
-            return;
-        if(!(entity instanceof Scintling) && entity.isOnGround()) {
-            entity.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
-        }
-    }
+	@Override
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+		if (entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY.get()))
+			return;
+		if (!(entity instanceof Scintling) && entity.isOnGround()) {
+			entity.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
+		}
+	}
 
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE;
-    }
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		return SHAPE;
+	}
 
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
-    }
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(AGE);
+	}
 
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockPos blockpos = pos.below();
-        return level.getBlockState(blockpos).isFaceSturdy(level, blockpos, Direction.UP);
-    }
+	@Override
+	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+		BlockPos blockpos = pos.below();
+		return level.getBlockState(blockpos).isFaceSturdy(level, blockpos, Direction.UP);
+	}
 
-    @Override
-    public boolean useShapeForLightOcclusion(BlockState state) {
-        return true;
-    }
+	@Override
+	public boolean useShapeForLightOcclusion(BlockState state) {
+		return true;
+	}
 
-    @Override
-    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
-        return !state.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, worldIn, currentPos, facingPos);
-    }
+	@Override
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
+		return !state.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, worldIn, currentPos, facingPos);
+	}
 
-    @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (!state.canSurvive(level, pos)) {
-            level.removeBlock(pos, false);
-        }
-        if(random.nextFloat() < 100F + (float)state.getValue(AGE) * 0.50F) {
-            level.removeBlock(pos, false);
-        }
-    }
+	@Override
+	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		if (!state.canSurvive(level, pos)) {
+			level.removeBlock(pos, false);
+		}
+		if (random.nextFloat() < 100F + (float) state.getValue(AGE) * 0.50F) {
+			level.removeBlock(pos, false);
+		}
+	}
 }

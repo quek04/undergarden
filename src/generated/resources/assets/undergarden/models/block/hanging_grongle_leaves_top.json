@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "undergarden:block/hanging_grongle_leaves_top"
+  }
+}

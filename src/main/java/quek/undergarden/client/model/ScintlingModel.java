@@ -44,10 +44,10 @@ public class ScintlingModel<T extends Scintling> extends AgeableListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+		this.head.xRot = headPitch * ((float) Math.PI / 180F);
 
-		this.torso.yRot = Mth.cos(limbSwing * 0.5F + (float)Math.PI) * 0.5F * limbSwingAmount;
+		this.torso.yRot = Mth.cos(limbSwing * 0.5F + (float) Math.PI) * 0.5F * limbSwingAmount;
 
 		this.tail.yRot = Mth.cos(limbSwing * 0.5F) * 0.5F * limbSwingAmount;
 

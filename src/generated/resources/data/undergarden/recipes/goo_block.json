@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "#": {
       "item": "undergarden:goo_ball"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "undergarden:goo_block"
-  }
+  },
+  "show_notification": true
 }

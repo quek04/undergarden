@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[43,)"
+loaderVersion="[45,)"
 issueTrackerURL="https://github.com/quek04/The-Undergarden/issues"
 license="MIT"
 [[mods]]
@@ -13,12 +13,12 @@ description='''Deep underground, a forgotten land awaits.'''
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
-    versionRange="[43.1.42,)"
+    versionRange="[45.0.50,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.undergarden]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.2,)"
+    versionRange="[1.19.4]"
     ordering="NONE"
     side="BOTH"

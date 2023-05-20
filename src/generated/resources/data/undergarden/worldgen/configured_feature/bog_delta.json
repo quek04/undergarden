@@ -1,0 +1,28 @@
+{
+  "type": "undergarden:delta",
+  "config": {
+    "contents": {
+      "Name": "undergarden:virulent_mix",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    "rim": {
+      "Name": "undergarden:coarse_deepsoil"
+    },
+    "rim_size": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 4,
+        "min_inclusive": 2
+      }
+    },
+    "size": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 8,
+        "min_inclusive": 6
+      }
+    }
+  }
+}

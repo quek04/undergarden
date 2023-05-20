@@ -13,35 +13,35 @@ import quek.undergarden.registry.UGSoundEvents;
 
 public class Rotwalker extends RotspawnMonster {
 
-    public Rotwalker(EntityType<? extends Monster> type, Level level) {
-        super(type, level);
-    }
+	public Rotwalker(EntityType<? extends Monster> type, Level level) {
+		super(type, level);
+	}
 
-    public static AttributeSupplier.Builder registerAttributes() {
-        return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 40.0D)
-                .add(Attributes.ARMOR, 3.0D)
-                .add(Attributes.ATTACK_DAMAGE, 5.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.23D);
-    }
+	public static AttributeSupplier.Builder registerAttributes() {
+		return Monster.createMobAttributes()
+				.add(Attributes.MAX_HEALTH, 40.0D)
+				.add(Attributes.ARMOR, 3.0D)
+				.add(Attributes.ATTACK_DAMAGE, 5.0D)
+				.add(Attributes.MOVEMENT_SPEED, 0.23D);
+	}
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.ROTWALKER_AMBIENT.get();
-    }
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return UGSoundEvents.ROTWALKER_AMBIENT.get();
+	}
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSoundEvents.ROTWALKER_HURT.get();
-    }
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSource) {
+		return UGSoundEvents.ROTWALKER_HURT.get();
+	}
 
-    @Override
-    protected SoundEvent getDeathSound() {
-        return UGSoundEvents.ROTWALKER_DEATH.get();
-    }
+	@Override
+	protected SoundEvent getDeathSound() {
+		return UGSoundEvents.ROTWALKER_DEATH.get();
+	}
 
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(UGSoundEvents.ROTWALKER_STEP.get(), 0.15F, 1.0F);
-    }
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState blockIn) {
+		this.playSound(UGSoundEvents.ROTWALKER_STEP.get(), 0.15F, 1.0F);
+	}
 }

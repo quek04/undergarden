@@ -10,12 +10,12 @@ import quek.undergarden.entity.cavern.Nargoyle;
 
 public class NargoyleRender extends MobRenderer<Nargoyle, NargoyleModel<Nargoyle>> {
 
-    public NargoyleRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new NargoyleModel<>(renderContext.bakeLayer(UGModelLayers.NARGOYLE)), 0.8F);
-    }
+	public NargoyleRender(EntityRendererProvider.Context renderContext) {
+		super(renderContext, new NargoyleModel<>(renderContext.bakeLayer(UGModelLayers.NARGOYLE)), 0.8F);
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Nargoyle entity) {
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/nargoyle.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Nargoyle entity) {
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/nargoyle.png");
+	}
 }

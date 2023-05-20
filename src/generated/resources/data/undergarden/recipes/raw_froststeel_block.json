@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "#": {
       "item": "undergarden:raw_froststeel"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "undergarden:raw_froststeel_block"
-  }
+  },
+  "show_notification": true
 }

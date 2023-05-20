@@ -1,0 +1,27 @@
+{
+  "feature": "undergarden:iron_ore",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 8
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "below_top": -64
+        },
+        "min_inclusive": {
+          "below_top": 64
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

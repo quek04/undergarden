@@ -1,0 +1,65 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:randomized_int_state_provider",
+            "property": "pebbles",
+            "source": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "undergarden:depthrock_pebbles",
+                "Properties": {
+                  "pebbles": "1"
+                }
+              }
+            },
+            "values": {
+              "type": "minecraft:uniform",
+              "value": {
+                "max_inclusive": 2,
+                "min_inclusive": 1
+              }
+            }
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:air"
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": [
+                  "undergarden:deepturf_block",
+                  "undergarden:ashen_deepturf_block",
+                  "undergarden:depthrock",
+                  "undergarden:shiverstone",
+                  "undergarden:sediment",
+                  "undergarden:coarse_deepsoil"
+                ],
+                "offset": [
+                  0,
+                  -1,
+                  0
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "tries": 32,
+    "xz_spread": 7,
+    "y_spread": 3
+  }
+}

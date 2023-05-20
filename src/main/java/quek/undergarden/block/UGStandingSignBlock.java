@@ -9,13 +9,13 @@ import quek.undergarden.registry.UGBlockEntities;
 
 public class UGStandingSignBlock extends StandingSignBlock {
 
-    public UGStandingSignBlock(Properties properties, WoodType woodType) {
-        super(properties, woodType);
-    }
+	public UGStandingSignBlock(Properties properties, WoodType woodType) {
+		super(properties, woodType);
+	}
 
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return UGBlockEntities.UNDERGARDEN_SIGN.get().create(pPos, pState);
-    }
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+		return UGBlockEntities.UNDERGARDEN_SIGN.get().create(pPos, pState);
+	}
 
 }
