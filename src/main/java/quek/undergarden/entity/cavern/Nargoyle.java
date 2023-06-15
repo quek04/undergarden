@@ -83,7 +83,7 @@ public class Nargoyle extends CavernMonster {
 				} else {
 					double distance = this.leaper.distanceToSqr(this.leapTarget);
 					if (!(distance < 4.0D) && !(distance > 16.0D)) {
-						if (!this.leaper.isOnGround()) {
+						if (!this.leaper.onGround()) {
 							return false;
 						} else {
 							return this.leaper.getRandom().nextInt(5) == 0;
@@ -97,7 +97,7 @@ public class Nargoyle extends CavernMonster {
 
 		@Override
 		public boolean canContinueToUse() {
-			return !this.leaper.isOnGround();
+			return !this.leaper.onGround();
 		}
 
 		@Override

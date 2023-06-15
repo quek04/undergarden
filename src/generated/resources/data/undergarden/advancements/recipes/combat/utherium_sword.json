@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:utherium_sword"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

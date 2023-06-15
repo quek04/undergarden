@@ -10,6 +10,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
@@ -31,6 +32,7 @@ import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.BinomialDistributionGenerator;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
 import quek.undergarden.data.provider.UGBlockLootTableProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -40,6 +42,7 @@ import quek.undergarden.registry.UGItems;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -53,6 +56,7 @@ public class UGLootTables extends LootTableProvider {
 	public UGLootTables(PackOutput output) {
 		super(output, Set.of(), List.of(
 				new SubProviderEntry(Blocks::new, LootContextParamSets.BLOCK),
+				new SubProviderEntry(Chests::new, LootContextParamSets.CHEST),
 				new SubProviderEntry(Entities::new, LootContextParamSets.ENTITY)));
 	}
 
@@ -224,6 +228,12 @@ public class UGLootTables extends LootTableProvider {
 			dropOther(UGBlocks.WIGGLEWOOD_WALL_SIGN, UGBlocks.WIGGLEWOOD_SIGN.get());
 			dropSelf(UGBlocks.GRONGLE_SIGN);
 			dropOther(UGBlocks.GRONGLE_WALL_SIGN, UGBlocks.GRONGLE_SIGN.get());
+			dropSelf(UGBlocks.SMOGSTEM_HANGING_SIGN);
+			dropOther(UGBlocks.SMOGSTEM_WALL_HANGING_SIGN, UGBlocks.SMOGSTEM_HANGING_SIGN.get());
+			dropSelf(UGBlocks.WIGGLEWOOD_HANGING_SIGN);
+			dropOther(UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN, UGBlocks.WIGGLEWOOD_HANGING_SIGN.get());
+			dropSelf(UGBlocks.GRONGLE_HANGING_SIGN);
+			dropOther(UGBlocks.GRONGLE_WALL_HANGING_SIGN, UGBlocks.GRONGLE_HANGING_SIGN.get());
 			dropSelf(UGBlocks.GOO_BLOCK);
 			dropSelf(UGBlocks.SEDIMENT);
 			dropAsSilk(UGBlocks.SEDIMENT_GLASS);
@@ -470,6 +480,35 @@ public class UGLootTables extends LootTableProvider {
 		@Override
 		protected Stream<EntityType<?>> getKnownEntityTypes() {
 			return UGEntityTypes.ENTITIES.getEntries().stream().map(Supplier::get);
+		}
+	}
+
+	public static class Chests implements LootTableSubProvider {
+
+		@Override
+		public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
+			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/catacombs"), LootTable.lootTable().withPool(LootPool.lootPool()
+					.setRolls(UniformGenerator.between(3.0F, 8.0F))
+					.add(LootItem.lootTableItem(UGItems.MAMMOTH_DISC.get()).setWeight(5))
+					.add(LootItem.lootTableItem(UGItems.RELICT_DISC.get()).setWeight(5))
+					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()).setWeight(5))
+					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1))
+					.add(LootItem.lootTableItem(UGItems.GLOOMGOURD_PIE.get()).setWeight(40)
+							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40)
+							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
+					.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).setWeight(40)
+							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
+					.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get()).setWeight(40)
+							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))).setWeight(40))
+					.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL.get()).setWeight(40)
+							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))).setWeight(40))
+					.add(LootItem.lootTableItem(UGItems.GLOOMGOURD_PIE.get()).setWeight(40)
+							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_PICKAXE.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SHOVEL.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))));
 		}
 	}
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:shiverstone_bricks_to_shiverstone_brick_stairs_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

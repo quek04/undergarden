@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:smelt_dweller_meat"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

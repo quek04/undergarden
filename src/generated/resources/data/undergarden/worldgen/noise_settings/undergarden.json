@@ -180,20 +180,30 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:not",
-          "invert": {
-            "type": "minecraft:y_above",
-            "add_stone_depth": false,
-            "anchor": {
-              "absolute": 33
-            },
-            "surface_depth_multiplier": 0
-          }
+          "type": "minecraft:stone_depth",
+          "add_surface_depth": true,
+          "offset": 0,
+          "secondary_depth_range": 0,
+          "surface_type": "floor"
         },
         "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "undergarden:sediment"
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:not",
+            "invert": {
+              "type": "minecraft:y_above",
+              "add_stone_depth": false,
+              "anchor": {
+                "absolute": 33
+              },
+              "surface_depth_multiplier": 0
+            }
+          },
+          "then_run": {
+            "type": "minecraft:block",
+            "result_state": {
+              "Name": "undergarden:sediment"
+            }
           }
         }
       },

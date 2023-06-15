@@ -52,7 +52,7 @@ public class MinionProjectile extends ThrowableItemProjectile {
 			ParticleOptions iparticledata = this.makeParticle();
 
 			for (int i = 0; i < 8; ++i) {
-				this.level.addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}
@@ -70,8 +70,8 @@ public class MinionProjectile extends ThrowableItemProjectile {
 			}
 		}
 
-		if (!this.level.isClientSide) {
-			this.level.broadcastEntityEvent(this, (byte) 3);
+		if (!this.level().isClientSide) {
+			this.level().broadcastEntityEvent(this, (byte) 3);
 			this.remove(RemovalReason.KILLED);
 		}
 	}

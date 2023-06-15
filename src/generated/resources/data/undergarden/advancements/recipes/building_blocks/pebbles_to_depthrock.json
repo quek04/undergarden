@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:pebbles_to_depthrock"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

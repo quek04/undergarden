@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-19T08:58:31.5546684	Undergarden Item Tags
+// 1.20.1	2023-06-14T22:10:50.1092582	Undergarden Item Tags
 9b86bbc17df24411b53ea716b5b6b343f35d5caa data/forge/tags/items/armors/boots.json
 af8f07accb2d83fca68d1c3b0e34b65fb0d627c2 data/forge/tags/items/armors/chestplates.json
 190c6df9b3c9fce666bd129e9f9cc22ab09fa9ee data/forge/tags/items/armors/helmets.json
@@ -60,6 +60,7 @@ ab5d5379958d5f6e16350bdef7131e2ed1a3e599 data/minecraft/tags/items/coals.json
 2a9940ae63110d339b9dc8547f89e0dc4d24307e data/minecraft/tags/items/diamond_ores.json
 59b2233a0fa2348978a5257b17dbcbc10ca25d4c data/minecraft/tags/items/fishes.json
 1ff4fda258af9af2b26506246439633b3440f264 data/minecraft/tags/items/gold_ores.json
+64bc82b817a493262e7f2242e3a89c44ff9b8c3d data/minecraft/tags/items/hanging_signs.json
 8fb4b3f3cc997c22a634002b26f4507d3aba1852 data/minecraft/tags/items/hoes.json
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/minecraft/tags/items/iron_ores.json
 497779cef1ba178c2d1e96ca25b75892c32f086f data/minecraft/tags/items/leaves.json

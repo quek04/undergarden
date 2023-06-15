@@ -35,5 +35,6 @@
     [
       "summoned_minion"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

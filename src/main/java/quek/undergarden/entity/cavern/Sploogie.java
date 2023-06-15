@@ -61,14 +61,14 @@ public class Sploogie extends CavernMonster implements RangedAttackMob {
 
 	@Override
 	public void performRangedAttack(LivingEntity target, float distanceFactor) {
-		DepthrockPebble pebble = new DepthrockPebble(this.level, this);
+		DepthrockPebble pebble = new DepthrockPebble(this.level(), this);
 		double xDistance = target.getX() - this.getX();
 		double yDistance = target.getY(0.3333333333333333D) - pebble.getY();
 		double zDistance = target.getZ() - this.getZ();
 		double yMath = Mth.sqrt((float) ((xDistance * xDistance) + (zDistance * zDistance)));
 		pebble.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
 		this.playSound(UGSoundEvents.SPLOOGIE_SPIT.get(), 1.0F, this.getVoicePitch());
-		this.level.addFreshEntity(pebble);
+		this.level().addFreshEntity(pebble);
 	}
 
 	@Override

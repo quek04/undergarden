@@ -89,7 +89,7 @@ public class ForgottenGuardian extends Monster {
 
 	@Override
 	public void checkDespawn() {
-		if (this.level.getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
+		if (this.level().getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
 			this.discard();
 		} else {
 			this.noActionTime = 0;
@@ -104,13 +104,13 @@ public class ForgottenGuardian extends Monster {
 			--this.attackTimer;
 		}
 		if (this.isAggressive()) {
-			if (this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
+			if (this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
 				AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
-					BlockState blockstate = this.level.getBlockState(blockpos);
+					BlockState blockstate = this.level().getBlockState(blockpos);
 					if (!blockstate.is(BlockTags.WITHER_IMMUNE)) {
-						this.level.destroyBlock(blockpos, false, this);
+						this.level().destroyBlock(blockpos, false, this);
 					}
 				}
 			}
@@ -120,7 +120,7 @@ public class ForgottenGuardian extends Monster {
 	@Override
 	public boolean doHurtTarget(Entity entity) {
 		this.attackTimer = 10;
-		this.level.broadcastEntityEvent(this, (byte) 4);
+		this.level().broadcastEntityEvent(this, (byte) 4);
 		this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
 		return super.doHurtTarget(entity);
 	}

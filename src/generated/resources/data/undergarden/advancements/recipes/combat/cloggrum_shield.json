@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:cloggrum_shield"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

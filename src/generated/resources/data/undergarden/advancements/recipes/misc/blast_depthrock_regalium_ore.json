@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:blast_depthrock_regalium_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

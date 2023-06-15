@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:veiled_stew"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

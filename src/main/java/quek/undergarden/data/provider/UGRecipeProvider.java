@@ -12,9 +12,11 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CeilingHangingSignBlock;
 import net.minecraft.world.level.block.SignBlock;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -280,6 +282,16 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_" + ForgeRegistries.BLOCKS.getKey(planksIn.get()).getPath(), has(planksIn.get()));
 	}
 
+	protected ShapedRecipeBuilder makeHangingSign(Supplier<? extends CeilingHangingSignBlock> result, Supplier<? extends Block> log) {
+		return ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result.get(), 6)
+				.pattern("| |")
+				.pattern("###")
+				.pattern("###")
+				.define('#', log.get())
+				.define('|', Items.CHAIN)
+				.unlockedBy("has_" + ForgeRegistries.BLOCKS.getKey(log.get()).getPath(), has(log.get()));
+	}
+
 	public void ore(ItemLike result, List<ItemLike> ingredients, float xp, String group, Consumer<FinishedRecipe> consumer) {
 		oreSmeltingRecipe(result, ingredients, xp, group, consumer);
 		oreBlastingRecipe(result, ingredients, xp, group, consumer);
@@ -340,17 +352,16 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 	public SimpleCookingRecipeBuilder smokingRecipe(ItemLike result, ItemLike ingredient, float exp, int count) {
 		return SimpleCookingRecipeBuilder.smoking(Ingredient.of(new ItemStack(ingredient, count)), RecipeCategory.MISC, result, exp, 100)
 				.unlockedBy("has_" + ForgeRegistries.ITEMS.getKey(ingredient.asItem()), has(ingredient));
+
 	}
 
-	@SuppressWarnings("removal")
-	public LegacyUpgradeRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> result) {
-		return LegacyUpgradeRecipeBuilder.smithing(Ingredient.of(input.get()), Ingredient.of(upgradeItem.get()), RecipeCategory.MISC, result.get())
+	public SmithingTransformRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> templateItem, Supplier<Item> result) {
+		return SmithingTransformRecipeBuilder.smithing(Ingredient.of(templateItem.get()), Ingredient.of(input.get()), Ingredient.of(upgradeItem.get()), RecipeCategory.MISC, result.get())
 				.unlocks("has_" + ForgeRegistries.ITEMS.getKey(upgradeItem.get()), has(upgradeItem.get()));
 	}
 
-	@SuppressWarnings("removal")
-	public LegacyUpgradeRecipeBuilder smithingForgotten(Supplier<Item> input, Supplier<Item> result) {
-		return smithingRecipe(input, UGItems.FORGOTTEN_INGOT, result);
+	public SmithingTransformRecipeBuilder smithingForgotten(Supplier<Item> input, Supplier<Item> result) {
+		return smithingRecipe(input, UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_UPGRADE_TEMPLATE, result);
 	}
 
 	public SingleItemRecipeBuilder stonecutting(Supplier<Block> input, ItemLike result) {

@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-19T10:42:38.1200688	Undergarden Item Models
+// 1.20.1	2023-06-14T22:10:50.12409	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
@@ -82,6 +82,7 @@ ffe1bacd446e5ddc30b3ba311a1b9bc059248f24 assets/undergarden/models/item/forgotte
 8feff5cf6bdd55dab0b98bbe35f845972d40a3fd assets/undergarden/models/item/forgotten_pickaxe.json
 6489231c9e76d0a40c1f6310da1f7fcb1a8823da assets/undergarden/models/item/forgotten_shovel.json
 474c619870d55fbb87d349a9b8d73c608012353f assets/undergarden/models/item/forgotten_sword.json
+5446661f941d4188a694af1aa380ae5324bfd7d9 assets/undergarden/models/item/forgotten_upgrade_smithing_template.json
 7e0d7237a501482650df8a2bcdfcca34f9c6776e assets/undergarden/models/item/froststeel_axe.json
 c8e4286c6c61b40b4357d54ced1b1ade54548da5 assets/undergarden/models/item/froststeel_block.json
 14546bce1fb91229fdbba5bb3c0d226c9ceafa2c assets/undergarden/models/item/froststeel_boots.json
@@ -112,6 +113,7 @@ a9a369bb3bee179423e37bca38c92068eea2229e assets/undergarden/models/item/grongle_
 b002a2061488f456871b1e09f8bade69af4888d3 assets/undergarden/models/item/grongle_door.json
 c20d04fff49bd8786bc0069babba574009147c84 assets/undergarden/models/item/grongle_fence.json
 3445d6df4f3fdf390f1e8bafa0b4ab4d9efc1752 assets/undergarden/models/item/grongle_fence_gate.json
+193f694e9927a22493863ca27837c09348363a4b assets/undergarden/models/item/grongle_hanging_sign.json
 c8aca78efc9e2af7bc14aca8f4ffcf98e206a70b assets/undergarden/models/item/grongle_leaves.json
 626449fe9649f4f8838a08e1942201ef5bbbb050 assets/undergarden/models/item/grongle_log.json
 1bef38e64248f01f1a83beb715cc8ff744f3022a assets/undergarden/models/item/grongle_planks.json
@@ -196,6 +198,7 @@ e6a8ebf57744eccd6a6502b873fbfdee7707a23a assets/undergarden/models/item/smogstem
 3fb98d61cce63518c0e75508f1c045367708b795 assets/undergarden/models/item/smogstem_door.json
 495ec38526c9f28cef3404cc9161739638ccc368 assets/undergarden/models/item/smogstem_fence.json
 176450ccb7ab8e5f3a86c5fc926b997f97d7551d assets/undergarden/models/item/smogstem_fence_gate.json
+0baff74e0566b250b782abe6b90d3601819144ec assets/undergarden/models/item/smogstem_hanging_sign.json
 c9da54493546f22f8a938095bce07a740c4f01d2 assets/undergarden/models/item/smogstem_leaves.json
 01210a27f34e6fd2a31cbd7fad90f6415d50e15d assets/undergarden/models/item/smogstem_log.json
 13d7435b97a2cfc9fc63c2df6a0bf8b2666e6942 assets/undergarden/models/item/smogstem_planks.json
@@ -254,6 +257,7 @@ e5c2c4548ecbbd9373f1a2ffa69027b8f83d4cdf assets/undergarden/models/item/wigglewo
 1228f51dc8afc81297a2828c8ac927a9a06cb9d1 assets/undergarden/models/item/wigglewood_door.json
 c4b467f8f882da1451517666e53fe58e5c8f0fe6 assets/undergarden/models/item/wigglewood_fence.json
 e66b4021294c244c4bf402e938470aa9b2886e97 assets/undergarden/models/item/wigglewood_fence_gate.json
+90e006bafa979a22dc32226360c7f8da1c9c497b assets/undergarden/models/item/wigglewood_hanging_sign.json
 e9d21a2948238d9b58ba2bae57b4d77ac2629e7f assets/undergarden/models/item/wigglewood_leaves.json
 53f4920e4787c368c937703dba26593700290a3b assets/undergarden/models/item/wigglewood_log.json
 436eb04a59133bdcf4ba79deecce96d4c097fdc2 assets/undergarden/models/item/wigglewood_planks.json

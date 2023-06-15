@@ -42,12 +42,12 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 	@Override
 	protected void onHitBlock(BlockHitResult result) {
 		super.onHitBlock(result);
-		BlockState blockstate = this.level.getBlockState(result.getBlockPos());
+		BlockState blockstate = this.level().getBlockState(result.getBlockPos());
 		LivingEntity shooter = (LivingEntity) this.getOwner();
-		if (!blockstate.getCollisionShape(this.level, result.getBlockPos()).isEmpty()) {
+		if (!blockstate.getCollisionShape(this.level(), result.getBlockPos()).isEmpty()) {
 			this.playStepSound(result.getBlockPos(), blockstate);
-			if (!this.level.isClientSide) {
-				this.level.broadcastEntityEvent(this, (byte) 3);
+			if (!this.level().isClientSide) {
+				this.level().broadcastEntityEvent(this, (byte) 3);
 				if (this.ricochet) {
 					Vec3 delta = this.getDeltaMovement();
 					Direction direction = result.getDirection();

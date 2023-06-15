@@ -33,5 +33,6 @@
     [
       "has_shard_torch"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

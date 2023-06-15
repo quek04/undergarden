@@ -163,5 +163,6 @@
       "has_depthrock_regalium",
       "has_shiverstone_regalium"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

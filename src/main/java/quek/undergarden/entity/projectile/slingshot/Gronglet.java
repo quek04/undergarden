@@ -41,12 +41,12 @@ public class Gronglet extends SlingshotProjectile {
 	@Override
 	protected void onHitBlock(BlockHitResult result) {
 		super.onHitBlock(result);
-		if (!this.level.isClientSide && this.ricochetTimes == 0) {
+		if (!this.level().isClientSide && this.ricochetTimes == 0) {
 			BlockPos pos = result.getBlockPos();
 			Direction direction = result.getDirection();
-			if (UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction).canSurvive(this.level, pos.relative(direction)) && this.level.getBlockState(pos.relative(direction)).isAir()) {
-				this.level.setBlock(pos.relative(direction), UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction), 2);
-				this.level.playSound(null, pos, UGSoundEvents.GRONGLET_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+			if (UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction).canSurvive(this.level(), pos.relative(direction)) && this.level().getBlockState(pos.relative(direction)).isAir()) {
+				this.level().setBlock(pos.relative(direction), UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction), 2);
+				this.level().playSound(null, pos, UGSoundEvents.GRONGLET_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 			} else {
 				this.spawnAtLocation(new ItemStack(this.getDefaultItem()));
 			}
@@ -62,7 +62,7 @@ public class Gronglet extends SlingshotProjectile {
 		} else {
 			this.spawnAtLocation(new ItemStack(this.getDefaultItem()));
 		}
-		this.level.playSound(null, result.getEntity().blockPosition(), UGSoundEvents.GRONGLET_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+		this.level().playSound(null, result.getEntity().blockPosition(), UGSoundEvents.GRONGLET_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 		this.discard();
 	}
 }

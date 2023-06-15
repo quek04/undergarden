@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:cloggrum_bars"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

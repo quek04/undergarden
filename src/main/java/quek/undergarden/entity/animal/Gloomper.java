@@ -81,7 +81,7 @@ public class Gloomper extends Animal {
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return UGEntityTypes.GLOOMPER.get().create(this.level);
+		return UGEntityTypes.GLOOMPER.get().create(this.level());
 	}
 
 	@Override
@@ -122,8 +122,8 @@ public class Gloomper extends Animal {
 			}
 		}
 
-		if (!this.level.isClientSide) {
-			this.level.broadcastEntityEvent(this, (byte) 1);
+		if (!this.level().isClientSide) {
+			this.level().broadcastEntityEvent(this, (byte) 1);
 		}
 
 	}
@@ -159,7 +159,7 @@ public class Gloomper extends Animal {
 			--this.currentMoveTypeDuration;
 		}
 
-		if (this.onGround) {
+		if (this.onGround()) {
 			if (!this.wasOnGround) {
 				this.setJumping(false);
 				this.checkLandingDelay();
@@ -182,7 +182,7 @@ public class Gloomper extends Animal {
 			}
 		}
 
-		this.wasOnGround = this.onGround;
+		this.wasOnGround = this.onGround();
 	}
 
 	@Override
@@ -246,20 +246,20 @@ public class Gloomper extends Animal {
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (stack.getItem() == UGItems.GLOOMPER_ANTHEM_DISC.get() && this.isAlive()) {
-			if (!this.level.isClientSide) {
+			if (!this.level().isClientSide) {
 				this.spawnAtLocation(UGItems.GLOOMPER_SECRET_DISC.get());
 				this.kill();
 			}
 			if (!player.getAbilities().instabuild) {
 				stack.shrink(1);
 			}
-			return InteractionResult.sidedSuccess(this.level.isClientSide);
+			return InteractionResult.sidedSuccess(this.level().isClientSide);
 		} else return super.mobInteract(player, hand);
 	}
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
-		AreaEffectCloud cloud = new AreaEffectCloud(this.level, this.getX(), this.getY(), this.getZ());
+		AreaEffectCloud cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
 
 		cloud.setParticle(UGParticleTypes.GLOOMPER_FART.get());
 		cloud.setRadius(3.0F);
@@ -270,7 +270,7 @@ public class Gloomper extends Animal {
 
 		if (this.random.nextInt(2) == 0) {
 			this.playSound(UGSoundEvents.GLOOMPER_FART.get(), 1.0F, 1.0F);
-			this.level.addFreshEntity(cloud);
+			this.level().addFreshEntity(cloud);
 		}
 
 		return super.hurt(source, amount);
@@ -326,7 +326,7 @@ public class Gloomper extends Animal {
 
 		@Override
 		public void tick() {
-			if (this.gloomper.onGround && !this.gloomper.jumping && !((Gloomper.JumpHelperController) this.gloomper.jumpControl).getIsJumping()) {
+			if (this.gloomper.onGround() && !this.gloomper.jumping && !((Gloomper.JumpHelperController) this.gloomper.jumpControl).getIsJumping()) {
 				this.gloomper.setMovementSpeed(0.0D);
 			} else if (this.hasWanted()) {
 				this.gloomper.setMovementSpeed(this.nextJumpSpeed);

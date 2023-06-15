@@ -58,14 +58,14 @@ public class Minion extends AbstractGolem implements RangedAttackMob {
 
 	@Override
 	public void performRangedAttack(LivingEntity target, float distanceFactor) {
-		MinionProjectile projectile = new MinionProjectile(this.level, this);
+		MinionProjectile projectile = new MinionProjectile(this.level(), this);
 		double xDistance = target.getX() - this.getX();
 		double yDistance = target.getY(0.3333333333333333D) - projectile.getY();
 		double zDistance = target.getZ() - this.getZ();
 		double yMath = Mth.sqrt((float) ((xDistance * xDistance) + (zDistance * zDistance)));
 		projectile.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
 		this.playSound(UGSoundEvents.MINION_SHOOT.get(), 1.0F, this.getVoicePitch());
-		this.level.addFreshEntity(projectile);
+		this.level().addFreshEntity(projectile);
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class Minion extends AbstractGolem implements RangedAttackMob {
 					itemstack.shrink(1);
 				}
 
-				return InteractionResult.sidedSuccess(this.level.isClientSide);
+				return InteractionResult.sidedSuccess(this.level().isClientSide);
 			}
 		}
 	}

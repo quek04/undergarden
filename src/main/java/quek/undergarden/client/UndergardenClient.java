@@ -8,11 +8,13 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
+import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -50,6 +52,7 @@ public class UndergardenClient {
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
 		event.registerBlockEntityRenderer(UGBlockEntities.UNDERGARDEN_SIGN.get(), SignRenderer::new);
+		event.registerBlockEntityRenderer(UGBlockEntities.UNDERGARDEN_HANGING_SIGN.get(), HangingSignRenderer::new);
 		event.registerBlockEntityRenderer(UGBlockEntities.GRONGLET.get(), GrongletRender::new);
 		//
 		event.registerEntityRenderer(UGEntityTypes.BOAT.get(), (context) -> new UGBoatRenderer(context, false));
@@ -207,7 +210,7 @@ public class UndergardenClient {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			Camera camera = event.getCamera();
-			if (player != null && player.getLevel().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
+			if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
 				RenderSystem.setShaderFogStart(0.0F);
 				RenderSystem.setShaderFogEnd(200.0F);
 				RenderSystem.setShaderFogShape(FogShape.SPHERE);
@@ -215,8 +218,7 @@ public class UndergardenClient {
 		}
 	}
 
-	private static void renderBrittlenessArmor(int width, int height, PoseStack stack, ForgeGui gui, Player player) {
-		RenderSystem.setShaderTexture(0, BRITTLENESS_ARMOR);
+	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, ForgeGui gui, Player player) {
 		RenderSystem.enableBlend();
 
 		int x = width / 2 - 91;
@@ -225,11 +227,11 @@ public class UndergardenClient {
 		int level = player.getArmorValue();
 		for (int i = 1; level > 0 && i < 20; i += 2) {
 			if (i < level) {
-				gui.blit(stack, x, y, 34, 9, 9, 9);
+				graphics.blit(BRITTLENESS_ARMOR, x, y, 34, 9, 9, 9);
 			} else if (i == level) {
-				gui.blit(stack, x, y, 25, 9, 9, 9);
+				graphics.blit(BRITTLENESS_ARMOR, x, y, 25, 9, 9, 9);
 			} else {
-				gui.blit(stack, x, y, 16, 9, 9, 9);
+				graphics.blit(BRITTLENESS_ARMOR, x, y, 16, 9, 9, 9);
 			}
 			x += 8;
 		}
@@ -238,7 +240,7 @@ public class UndergardenClient {
 		RenderSystem.disableBlend();
 	}
 
-	private static void renderVirulenceHearts(int width, int height, PoseStack stack, ForgeGui gui, Player player) {
+	private static void renderVirulenceHearts(int width, int height, GuiGraphics graphics, ForgeGui gui, Player player) {
 		RenderSystem.setShaderTexture(0, VIRULENCE_HEARTS);
 		RenderSystem.enableBlend();
 
@@ -269,10 +271,10 @@ public class UndergardenClient {
 		int healthRows = Mth.ceil((healthMax + absorb) / 2.0F / 10.0F);
 		int rowHeight = Math.max(10 - (healthRows - 2), 3);
 
-		gui.random.setSeed(gui.getGuiTicks() * 312871L);
+		gui.random.setSeed(gui.getGuiTicks() * 312871);
 
-		int x = width / 2 - 91;
-		int y = height - 39;
+		int x = width / 2 - 111;
+		int y = height - 59;
 		gui.leftHeight += (healthRows * rowHeight);
 		if (rowHeight != 10) gui.leftHeight += 10 - rowHeight;
 
@@ -281,14 +283,14 @@ public class UndergardenClient {
 			regen = gui.getGuiTicks() % Mth.ceil(healthMax + 5.0F);
 		}
 
-		renderHearts(stack, gui, player, x, y, rowHeight, regen, healthMax, health, healthLast, absorb, highlight);
+		renderHearts(graphics, gui, player, x, y, rowHeight, regen, healthMax, health, healthLast, absorb, highlight);
 
 		RenderSystem.disableBlend();
 	}
 
-	private static void renderHearts(PoseStack stack, ForgeGui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
+	private static void renderHearts(GuiGraphics graphics, ForgeGui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
 		Gui.HeartType heartType = Gui.HeartType.forPlayer(player);
-		int hardcoreOffset = 9 * (player.level.getLevelData().isHardcore() ? 5 : 0);
+		int hardcoreOffset = 9 * (player.level().getLevelData().isHardcore() ? 5 : 0);
 		int healthAmount = Mth.ceil((double) healthMax / 2.0D);
 		int absorptionAmount = Mth.ceil((double) absorb / 2.0D);
 		int l = healthAmount * 2;
@@ -306,27 +308,30 @@ public class UndergardenClient {
 				newY -= 2;
 			}
 
-			gui.renderHeart(stack, Gui.HeartType.CONTAINER, newX, newY, hardcoreOffset, highlight, false);
+			renderHeart(graphics, Gui.HeartType.CONTAINER, newX, newY, hardcoreOffset, highlight, false);
 			int j2 = i1 * 2;
 			boolean flag = i1 >= healthAmount;
 			if (flag) {
 				int k2 = j2 - l;
 				if (k2 < absorb) {
 					boolean flag1 = k2 + 1 == absorb;
-					gui.renderHeart(stack, heartType == Gui.HeartType.WITHERED ? heartType : Gui.HeartType.ABSORBING, newX, newY, hardcoreOffset, false, flag1);
+					renderHeart(graphics, heartType == Gui.HeartType.WITHERED ? heartType : Gui.HeartType.ABSORBING, newX, newY, hardcoreOffset, false, flag1);
 				}
 			}
 
 			if (highlight && j2 < healthLast) {
 				boolean flag2 = j2 + 1 == healthLast;
-				gui.renderHeart(stack, heartType, newX, newY, hardcoreOffset, true, flag2);
+				renderHeart(graphics, heartType, newX, newY, hardcoreOffset, true, flag2);
 			}
 
 			if (j2 < health) {
 				boolean flag3 = j2 + 1 == health;
-				gui.renderHeart(stack, heartType, newX, newY, hardcoreOffset, false, flag3);
+				renderHeart(graphics, heartType, newX, newY, hardcoreOffset, false, flag3);
 			}
 		}
+	}
 
+	private static void renderHeart(GuiGraphics graphics, Gui.HeartType type, int x, int y, int offset, boolean blinking, boolean halfHeart) {
+		graphics.blit(VIRULENCE_HEARTS, x, y, type.getX(halfHeart, blinking), offset, 9, 9);
 	}
 }

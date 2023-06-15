@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:coarse_deepsoil_to_normal"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

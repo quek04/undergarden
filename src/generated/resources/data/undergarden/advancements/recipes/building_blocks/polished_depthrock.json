@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:polished_depthrock"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

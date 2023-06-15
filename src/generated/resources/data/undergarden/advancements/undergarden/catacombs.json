@@ -37,5 +37,6 @@
     [
       "enter_catacombs"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

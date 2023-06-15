@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:bloody_stew"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

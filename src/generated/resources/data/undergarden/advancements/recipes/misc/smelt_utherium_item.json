@@ -28,5 +28,6 @@
     "recipes": [
       "undergarden:smelt_utherium_item"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:chiseled_depthrock_bricks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

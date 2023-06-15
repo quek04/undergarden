@@ -24,5 +24,6 @@
     "recipes": [
       "undergarden:wigglewood_boat"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

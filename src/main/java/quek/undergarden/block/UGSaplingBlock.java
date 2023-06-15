@@ -7,12 +7,15 @@ import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 public class UGSaplingBlock extends SaplingBlock {
 
 	public UGSaplingBlock(AbstractTreeGrower tree) {
-		super(tree, Properties.of(Material.PLANT)
+		super(tree, Properties.of()
+				.mapColor(MapColor.PLANT)
+				.pushReaction(PushReaction.DESTROY)
 				.strength(0F)
 				.randomTicks()
 				.sound(SoundType.GRASS)

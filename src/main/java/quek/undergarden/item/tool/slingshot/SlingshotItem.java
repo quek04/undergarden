@@ -83,7 +83,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 			float velocity = getProjectileVelocity(useTime);
 
 			if (selfSling) {
-				if (!player.isOnGround()) {
+				if (!player.onGround()) {
 					return;
 				}
 				Vec3 delta = player.getLookAngle();

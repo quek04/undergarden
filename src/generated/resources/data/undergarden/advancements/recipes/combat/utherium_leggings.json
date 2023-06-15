@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:utherium_leggings"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

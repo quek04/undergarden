@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:blast_shiverstone_coal_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

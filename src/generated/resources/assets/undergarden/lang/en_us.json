@@ -139,6 +139,7 @@
   "block.undergarden.grongle_door": "Grongle Door",
   "block.undergarden.grongle_fence": "Grongle Fence",
   "block.undergarden.grongle_fence_gate": "Grongle Fence Gate",
+  "block.undergarden.grongle_hanging_sign": "Grongle Hanging Sign",
   "block.undergarden.grongle_leaves": "Grongle Leaves",
   "block.undergarden.grongle_log": "Grongle Log",
   "block.undergarden.grongle_planks": "Grongle Planks",
@@ -205,6 +206,7 @@
   "block.undergarden.smogstem_door": "Smogstem Door",
   "block.undergarden.smogstem_fence": "Smogstem Fence",
   "block.undergarden.smogstem_fence_gate": "Smogstem Fence Gate",
+  "block.undergarden.smogstem_hanging_sign": "Smogstem Hanging Sign",
   "block.undergarden.smogstem_leaves": "Smogstem Leaves",
   "block.undergarden.smogstem_log": "Smogstem Log",
   "block.undergarden.smogstem_planks": "Smogstem Planks",
@@ -246,6 +248,7 @@
   "block.undergarden.wigglewood_door": "Wigglewood Door",
   "block.undergarden.wigglewood_fence": "Wigglewood Fence",
   "block.undergarden.wigglewood_fence_gate": "Wigglewood Fence Gate",
+  "block.undergarden.wigglewood_hanging_sign": "Wigglewood Hanging Sign",
   "block.undergarden.wigglewood_leaves": "Wigglewood Leaves",
   "block.undergarden.wigglewood_log": "Wigglewood Log",
   "block.undergarden.wigglewood_planks": "Wigglewood Planks",
@@ -399,6 +402,10 @@
   "item.undergarden.rotwalker_spawn_egg": "Rotwalker Spawn Egg",
   "item.undergarden.scintling_spawn_egg": "Scintling Spawn Egg",
   "item.undergarden.slingshot": "Slingshot",
+  "item.undergarden.smithing_template.forgotten_upgrade.additions_slot_description": "Add Forgotten Ingot",
+  "item.undergarden.smithing_template.forgotten_upgrade.applies_to": "Cloggrum Tools",
+  "item.undergarden.smithing_template.forgotten_upgrade.base_slot_description": "Add cloggrum weapon or tool",
+  "item.undergarden.smithing_template.forgotten_upgrade.ingredients": "Forgotten Ingot",
   "item.undergarden.smogstem_boat": "Smogstem Boat",
   "item.undergarden.smogstem_chest_boat": "Smogstem Boat with Chest",
   "item.undergarden.sploogie_spawn_egg": "Sploogie Spawn Egg",
@@ -503,5 +510,6 @@
   "tooltip.forgotten_tool": "Mines Undergarden blocks 1.5x as fast.",
   "tooltip.froststeel_sword": "Slows targets.",
   "tooltip.pebble": "Can be used as Slingshot ammo.",
-  "tooltip.utheric_sword": "Deals 1.5x damage to Rotspawn."
+  "tooltip.utheric_sword": "Deals 1.5x damage to Rotspawn.",
+  "upgrade.undergarden.forgotten_upgrade": "Forgotten Tool Upgrade"
 }

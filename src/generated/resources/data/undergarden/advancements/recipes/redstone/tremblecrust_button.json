@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:tremblecrust_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -18,6 +18,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.ForgeEventFactory;
 import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
@@ -69,7 +70,7 @@ public class Scintling extends Animal {
 	public void aiStep() {
 		super.aiStep();
 
-		if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this) || this.isBaby()) {
+		if (!ForgeEventFactory.getMobGriefingEvent(this.level(), this) || this.isBaby()) {
 			return;
 		}
 
@@ -80,8 +81,8 @@ public class Scintling extends Animal {
 			int y = Mth.floor(this.getY());
 			int z = Mth.floor(this.getZ() + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
 			BlockPos blockpos = new BlockPos(x, y, z);
-			if (this.level.isEmptyBlock(blockpos) && goo.canSurvive(this.level, blockpos)) {
-				this.level.setBlockAndUpdate(blockpos, goo);
+			if (this.level().isEmptyBlock(blockpos) && goo.canSurvive(this.level(), blockpos)) {
+				this.level().setBlockAndUpdate(blockpos, goo);
 			}
 		}
 	}
@@ -89,7 +90,7 @@ public class Scintling extends Animal {
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return UGEntityTypes.SCINTLING.get().create(this.level);
+		return UGEntityTypes.SCINTLING.get().create(this.level());
 	}
 
 	@Override

@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:blast_catalyst"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

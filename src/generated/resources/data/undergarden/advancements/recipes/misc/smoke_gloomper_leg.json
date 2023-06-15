@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:smoke_gloomper_leg"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

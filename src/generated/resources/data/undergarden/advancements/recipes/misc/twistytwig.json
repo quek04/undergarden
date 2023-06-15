@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:twistytwig"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

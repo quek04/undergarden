@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:tremblecrust_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

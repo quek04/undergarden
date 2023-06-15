@@ -63,7 +63,7 @@ public class Rotbeast extends RotspawnMonster {
 	@Override
 	public boolean doHurtTarget(Entity entityIn) {
 		this.attackTimer = 10;
-		this.level.broadcastEntityEvent(this, (byte) 4);
+		this.level().broadcastEntityEvent(this, (byte) 4);
 		float f = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
 		float f1 = (int) f > 0 ? f / 2.0F + (float) this.random.nextInt((int) f) : f;
 		boolean flag = entityIn.hurt(this.damageSources().mobAttack(this), f1);

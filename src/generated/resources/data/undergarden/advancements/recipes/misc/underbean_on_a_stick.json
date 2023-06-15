@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:underbean_on_a_stick"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

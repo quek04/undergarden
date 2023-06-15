@@ -58,7 +58,11 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
 	public Stoneborn(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
-		this.maxUpStep = 1.0F;
+	}
+
+	@Override
+	public float getStepHeight() {
+		return 1.0F;
 	}
 
 	@Override
@@ -129,14 +133,14 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 		ItemStack itemstack = player.getItemInHand(playerHand);
 		if (itemstack.getItem() != UGItems.STONEBORN_SPAWN_EGG.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
 			if (this.getOffers().isEmpty()) {
-				return InteractionResult.sidedSuccess(this.level.isClientSide);
+				return InteractionResult.sidedSuccess(this.level().isClientSide);
 			} else {
-				if (!this.level.isClientSide) {
+				if (!this.level().isClientSide) {
 					this.setTradingPlayer(player);
 					this.openTradingScreen(player, this.getDisplayName(), 1);
 				}
 
-				return InteractionResult.sidedSuccess(this.level.isClientSide);
+				return InteractionResult.sidedSuccess(this.level().isClientSide);
 			}
 		} else {
 			return super.mobInteract(player, playerHand);
@@ -155,21 +159,21 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
 		if (this.timeOutOfUG > 300) {
 			this.playSound(UGSoundEvents.STONEBORN_CHANT.get(), 1.0F, 1.0F);
-			if (!this.level.isClientSide) {
+			if (!this.level().isClientSide) {
 				this.remove(RemovalReason.KILLED);
-				this.level.explode(this, this.getX(), this.getY(), this.getZ(), 3, Level.ExplosionInteraction.MOB);
+				this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3, Level.ExplosionInteraction.MOB);
 			}
 		}
 
-		if (!isAggressive()) {
-			if (level.getGameTime() % 40 == 0) {
+		if (!this.isAggressive()) {
+			if (this.level().getGameTime() % 40 == 0) {
 				this.heal(1);
 			}
 		}
 	}
 
 	public boolean inUndergarden() {
-		return this.level.dimension() == UGDimensions.UNDERGARDEN_LEVEL;
+		return this.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL;
 	}
 
 	@Override
@@ -281,21 +285,16 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 	protected void onStonebornTrade(MerchantOffer offer) {
 		if (offer.shouldRewardExp()) {
 			int i = 3 + this.random.nextInt(4);
-			this.level.addFreshEntity(new ExperienceOrb(this.level, this.getX(), this.getY() + 0.5D, this.getZ(), i));
+			this.level().addFreshEntity(new ExperienceOrb(this.level(), this.getX(), this.getY() + 0.5D, this.getZ(), i));
 		}
 	}
 
 	@Override
 	public void notifyTradeUpdated(ItemStack stack) {
-		if (!this.level.isClientSide && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
+		if (!this.level().isClientSide && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
 			this.ambientSoundTime = -this.getAmbientSoundInterval();
 			this.playSound(this.getYesOrNoSound(!stack.isEmpty()), this.getSoundVolume(), this.getVoicePitch());
 		}
-	}
-
-	@Override
-	public Level getLevel() {
-		return this.level;
 	}
 
 	@Override
@@ -319,6 +318,6 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
 	@Override
 	public boolean isClientSide() {
-		return this.getLevel().isClientSide;
+		return this.level().isClientSide();
 	}
 }

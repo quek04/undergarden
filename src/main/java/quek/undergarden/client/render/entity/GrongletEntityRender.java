@@ -25,7 +25,7 @@ public class GrongletEntityRender extends ThrownItemRenderer<Gronglet> {
 			poseStack.pushPose();
 			poseStack.scale(3.0F, 3.0F, 3.0F);
 			poseStack.mulPose(Axis.YP.rotationDegrees((entity.tickCount + partialTicks) * 20));
-			this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, packedLight, OverlayTexture.NO_OVERLAY, poseStack, bufferSource, entity.getLevel(), entity.getId());
+			this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, packedLight, OverlayTexture.NO_OVERLAY, poseStack, bufferSource, entity.level(), entity.getId());
 			poseStack.popPose();
 		}
 	}

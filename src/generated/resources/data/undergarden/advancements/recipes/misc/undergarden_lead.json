@@ -43,5 +43,6 @@
     "recipes": [
       "undergarden:undergarden_lead"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

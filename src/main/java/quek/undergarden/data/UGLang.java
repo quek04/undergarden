@@ -215,6 +215,7 @@ public class UGLang extends LanguageProvider {
 		addBlock(UGBlocks.SMOGSTEM_BUTTON, "Smogstem Button");
 		addBlock(UGBlocks.SMOGSTEM_PRESSURE_PLATE, "Smogstem Pressure Plate");
 		addBlock(UGBlocks.SMOGSTEM_SIGN, "Smogstem Sign");
+		addBlock(UGBlocks.SMOGSTEM_HANGING_SIGN, "Smogstem Hanging Sign");
 
 		addBlock(UGBlocks.WIGGLEWOOD_SAPLING, "Wigglewood Sapling");
 		addBlock(UGBlocks.POTTED_WIGGLEWOOD_SAPLING, "Potted Wigglewood Sapling");
@@ -233,6 +234,7 @@ public class UGLang extends LanguageProvider {
 		addBlock(UGBlocks.WIGGLEWOOD_BUTTON, "Wigglewood Button");
 		addBlock(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, "Wigglewood Pressure Plate");
 		addBlock(UGBlocks.WIGGLEWOOD_SIGN, "Wigglewood Sign");
+		addBlock(UGBlocks.WIGGLEWOOD_HANGING_SIGN, "Wigglewood Hanging Sign");
 
 		addBlock(UGBlocks.GRONGLE_SAPLING, "Grongle Sapling");
 		addBlock(UGBlocks.POTTED_GRONGLE_SAPLING, "Potted Grongle Sapling");
@@ -252,6 +254,7 @@ public class UGLang extends LanguageProvider {
 		addBlock(UGBlocks.GRONGLE_BUTTON, "Grongle Button");
 		addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
 		addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
+		addBlock(UGBlocks.GRONGLE_HANGING_SIGN, "Grongle Hanging Sign");
 
 		addBlock(UGBlocks.GRONGLET, "Gronglet");
 
@@ -315,6 +318,12 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.UTHERIUM_AXE, "Utherium Axe");
 		addItem(UGItems.UTHERIUM_SHOVEL, "Utherium Shovel");
 		addItem(UGItems.UTHERIUM_HOE, "Utherium Hoe");
+
+		add("upgrade.undergarden.forgotten_upgrade", "Forgotten Tool Upgrade");
+		add("item.undergarden.smithing_template.forgotten_upgrade.additions_slot_description", "Add Forgotten Ingot");
+		add("item.undergarden.smithing_template.forgotten_upgrade.applies_to", "Cloggrum Tools");
+		add("item.undergarden.smithing_template.forgotten_upgrade.base_slot_description", "Add cloggrum weapon or tool");
+		add("item.undergarden.smithing_template.forgotten_upgrade.ingredients", "Forgotten Ingot");
 
 		addItem(UGItems.FORGOTTEN_BATTLEAXE, "Forgotten Battleaxe");
 		addItem(UGItems.FORGOTTEN_SWORD, "Forgotten Sword");

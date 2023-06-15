@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:regalium_block_to_crystal"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

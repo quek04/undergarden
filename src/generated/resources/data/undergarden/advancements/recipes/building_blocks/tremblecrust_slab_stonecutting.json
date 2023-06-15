@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:tremblecrust_slab_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

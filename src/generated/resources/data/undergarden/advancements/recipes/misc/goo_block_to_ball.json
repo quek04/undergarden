@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:goo_block_to_ball"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

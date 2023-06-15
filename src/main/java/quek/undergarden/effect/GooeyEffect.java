@@ -20,8 +20,8 @@ public class GooeyEffect extends MobEffect {
 		BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
 		BlockPos pos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
 
-		if (entity.level.isEmptyBlock(pos) && blockstate.canSurvive(entity.level, pos) && !(entity instanceof Scintling)) {
-			entity.level.setBlockAndUpdate(pos, blockstate);
+		if (entity.level().isEmptyBlock(pos) && blockstate.canSurvive(entity.level(), pos) && !(entity instanceof Scintling)) {
+			entity.level().setBlockAndUpdate(pos, blockstate);
 		}
 	}
 

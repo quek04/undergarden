@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:depthrock_bricks_to_depthrock_brick_stairs_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

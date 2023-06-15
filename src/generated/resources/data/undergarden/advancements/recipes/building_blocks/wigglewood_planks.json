@@ -28,5 +28,6 @@
     "recipes": [
       "undergarden:wigglewood_planks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

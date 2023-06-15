@@ -21,7 +21,7 @@ public class StonebornTradeWithPlayerGoal extends Goal {
 			return false;
 		} else if (this.stoneborn.isInWater()) {
 			return false;
-		} else if (!this.stoneborn.isOnGround()) {
+		} else if (!this.stoneborn.onGround()) {
 			return false;
 		} else if (this.stoneborn.hurtMarked) {
 			return false;

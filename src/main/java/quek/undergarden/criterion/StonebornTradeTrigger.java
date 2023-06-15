@@ -19,8 +19,8 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
 	}
 
 	@Override
-	public TriggerInstance createInstance(JsonObject json, EntityPredicate.Composite entityPredicate, DeserializationContext conditionsParser) {
-		EntityPredicate.Composite entitypredicate$andpredicate = EntityPredicate.Composite.fromJson(json, "stoneborn", conditionsParser);
+	public TriggerInstance createInstance(JsonObject json, ContextAwarePredicate entityPredicate, DeserializationContext conditionsParser) {
+		ContextAwarePredicate entitypredicate$andpredicate = EntityPredicate.fromJson(json, "stoneborn", conditionsParser);
 		ItemPredicate itempredicate = ItemPredicate.fromJson(json.get("item"));
 		return new TriggerInstance(entityPredicate, entitypredicate$andpredicate, itempredicate);
 	}
@@ -31,17 +31,17 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
 	}
 
 	public static class TriggerInstance extends AbstractCriterionTriggerInstance {
-		private final EntityPredicate.Composite stoneborn;
+		private final ContextAwarePredicate stoneborn;
 		private final ItemPredicate item;
 
-		public TriggerInstance(EntityPredicate.Composite player, EntityPredicate.Composite stoneborn, ItemPredicate stack) {
+		public TriggerInstance(ContextAwarePredicate player, ContextAwarePredicate stoneborn, ItemPredicate stack) {
 			super(StonebornTradeTrigger.ID, player);
 			this.stoneborn = stoneborn;
 			this.item = stack;
 		}
 
 		public static TriggerInstance tradeWithStoneborn() {
-			return new TriggerInstance(EntityPredicate.Composite.ANY, EntityPredicate.Composite.ANY, ItemPredicate.ANY);
+			return new TriggerInstance(ContextAwarePredicate.ANY, ContextAwarePredicate.ANY, ItemPredicate.ANY);
 		}
 
 		public boolean test(LootContext context, ItemStack stack) {

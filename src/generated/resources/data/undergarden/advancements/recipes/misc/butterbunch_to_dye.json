@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:butterbunch_to_dye"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

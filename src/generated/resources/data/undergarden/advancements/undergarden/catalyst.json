@@ -33,5 +33,6 @@
     [
       "has_catalyst"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

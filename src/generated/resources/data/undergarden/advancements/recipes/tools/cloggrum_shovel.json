@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:cloggrum_shovel"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

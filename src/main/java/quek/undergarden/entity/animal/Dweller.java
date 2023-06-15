@@ -82,7 +82,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return UGEntityTypes.DWELLER.get().create(this.level);
+		return UGEntityTypes.DWELLER.get().create(this.level());
 	}
 
 	@Override
@@ -111,7 +111,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 
 	@Override
 	public void onSyncedDataUpdated(EntityDataAccessor<?> data) {
-		if (BOOST_TIME.equals(data) && this.level.isClientSide) {
+		if (BOOST_TIME.equals(data) && this.level().isClientSide) {
 			this.steering.onSynced();
 		}
 		super.onSyncedDataUpdated(data);
@@ -121,11 +121,11 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		boolean isFood = this.isFood(player.getItemInHand(hand));
 		if (!isFood && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
-			if (!this.level.isClientSide) {
+			if (!this.level().isClientSide) {
 				player.startRiding(this);
 			}
 
-			return InteractionResult.sidedSuccess(this.level.isClientSide);
+			return InteractionResult.sidedSuccess(this.level().isClientSide);
 		} else {
 			InteractionResult actionresulttype = super.mobInteract(player, hand);
 			if (!actionresulttype.consumesAction()) {
@@ -146,7 +146,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	public void equipSaddle(@Nullable SoundSource sound) {
 		this.steering.setSaddle(true);
 		if (sound != null) {
-			this.level.playSound(null, this, SoundEvents.PIG_SADDLE, sound, 0.5F, 1.0F);
+			this.level().playSound(null, this, SoundEvents.PIG_SADDLE, sound, 0.5F, 1.0F);
 		}
 	}
 
@@ -162,7 +162,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 
 
 	@Override
-	protected float getRiddenSpeed(LivingEntity entity) {
+	protected float getRiddenSpeed(Player player) {
 		return (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 1.1F;
 	}
 
@@ -190,9 +190,9 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	}
 
 	@Override
-	public void positionRider(Entity passenger) {
+	public void positionRider(Entity passenger, Entity.MoveFunction callback) {
 		float ySin = Mth.sin(this.yBodyRot * ((float) Math.PI / 180F));
 		float yCos = Mth.cos(this.yBodyRot * ((float) Math.PI / 180F));
-		passenger.setPos(this.getX() + (double) (0.5F * ySin), this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset() - 0.1F, this.getZ() - (double) (0.5F * yCos));
+		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset() - 0.1F, this.getZ() - (double) (0.5F * yCos));
 	}
 }

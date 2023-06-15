@@ -116,4 +116,10 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
 	public void sign(Supplier<? extends StandingSignBlock> standingBlock, Supplier<? extends WallSignBlock> wallBlock, String name) {
 		signBlock(standingBlock.get(), wallBlock.get(), modLoc("block/" + name));
 	}
+
+	public void hangingSign(Supplier<? extends CeilingHangingSignBlock> standingBlock, Supplier<? extends WallHangingSignBlock> wallBlock, String name) {
+		ModelFile model = models().getBuilder(name(standingBlock)).texture("particle", modLoc("block/" + name));
+		simpleBlock(standingBlock.get(), model);
+		simpleBlock(wallBlock.get(), model);
+	}
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:smoke_gwibling"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:smelt_depthrock_utherium_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

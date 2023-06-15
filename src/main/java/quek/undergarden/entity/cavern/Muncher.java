@@ -64,13 +64,13 @@ public class Muncher extends CavernMonster {
 		super.aiStep();
 
 		if (this.isAggressive()) {
-			if (this.horizontalCollision || this.verticalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
+			if (this.horizontalCollision || this.verticalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
 				AABB axisalignedbb = this.getBoundingBox();
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
-					BlockState blockstate = this.level.getBlockState(blockpos);
+					BlockState blockstate = this.level().getBlockState(blockpos);
 					if (blockstate.is(UGTags.Blocks.MUNCHER_BREAKABLES)) {
-						this.level.destroyBlock(blockpos, false, this);
+						this.level().destroyBlock(blockpos, false, this);
 						this.heal(1.0F);
 						this.playSound(UGSoundEvents.MUNCHER_CHEW.get(), 1.0F, this.getVoicePitch());
 					}

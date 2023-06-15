@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-19T08:58:31.5516539	Undergarden Entity Type Tags
+// 1.20.1	2023-06-14T19:43:59.81889	Undergarden Entity Type Tags
 b210e12c149f69eec2dc5b34d39fe0ebddac387a data/minecraft/tags/entity_types/impact_projectiles.json
 82504d61ef59415f00c1684bc94ed787e0d98d0e data/undergarden/tags/entity_types/cavern_creature.json
 bc04b7eb22f99762d158c0b94bb221228217a956 data/undergarden/tags/entity_types/immune_to_virulent_mix.json

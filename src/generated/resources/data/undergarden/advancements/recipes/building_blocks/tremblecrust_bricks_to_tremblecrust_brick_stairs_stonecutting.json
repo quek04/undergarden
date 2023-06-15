@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:tremblecrust_bricks_to_tremblecrust_brick_stairs_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

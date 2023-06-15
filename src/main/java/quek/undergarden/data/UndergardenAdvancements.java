@@ -38,7 +38,7 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 						false,
 						false
 				)
-				.addCriterion("tick", new PlayerTrigger.TriggerInstance(CriteriaTriggers.TICK.getId(), EntityPredicate.Composite.ANY))
+				.addCriterion("tick", new PlayerTrigger.TriggerInstance(CriteriaTriggers.TICK.getId(), ContextAwarePredicate.ANY))
 				.save(consumer, "undergarden:undergarden/root");
 
 		Advancement catalyst = Advancement.Builder.advancement()
@@ -273,7 +273,7 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 						true,
 						false
 				)
-				.addCriterion("plant_gloomgourd", PlacedBlockTrigger.TriggerInstance.placedBlock(UGBlocks.GLOOMGOURD_STEM.get()))
+				.addCriterion("plant_gloomgourd", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(UGBlocks.GLOOMGOURD_STEM.get()))
 				.save(consumer, "undergarden:undergarden/plant_gloomgourd");
 
 		Advancement stack_of_gloomgourds = Advancement.Builder.advancement()

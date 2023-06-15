@@ -88,7 +88,8 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(BlockTags.BAMBOO_PLANTABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get());
 		tag(BlockTags.STANDING_SIGNS).add(UGBlocks.SMOGSTEM_SIGN.get(), UGBlocks.WIGGLEWOOD_SIGN.get(), UGBlocks.GRONGLE_SIGN.get());
 		tag(BlockTags.WALL_SIGNS).add(UGBlocks.SMOGSTEM_WALL_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get());
-		tag(BlockTags.SIGNS).add(UGBlocks.SMOGSTEM_SIGN.get(), UGBlocks.WIGGLEWOOD_SIGN.get(), UGBlocks.GRONGLE_SIGN.get(), UGBlocks.SMOGSTEM_WALL_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get());
+		tag(BlockTags.CEILING_HANGING_SIGNS).add(UGBlocks.SMOGSTEM_HANGING_SIGN.get(), UGBlocks.WIGGLEWOOD_HANGING_SIGN.get(), UGBlocks.GRONGLE_HANGING_SIGN.get());
+		tag(BlockTags.WALL_HANGING_SIGNS).add(UGBlocks.SMOGSTEM_WALL_HANGING_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN.get(), UGBlocks.GRONGLE_WALL_HANGING_SIGN.get());
 		tag(BlockTags.CROPS).add(UGBlocks.GLOOMGOURD_STEM.get());
 		tag(BlockTags.BEE_GROWABLES).add(UGBlocks.UNDERBEAN_BUSH.get(), UGBlocks.BLISTERBERRY_BUSH.get());
 		tag(BlockTags.PORTALS).add(UGBlocks.UNDERGARDEN_PORTAL.get()); //TODO otherside portal

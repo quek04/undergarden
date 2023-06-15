@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:smelt_depthrock_iron_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

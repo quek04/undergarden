@@ -36,8 +36,8 @@ public class DepthrockPebble extends SlingshotProjectile {
 	@Override
 	public void tick() {
 		super.tick();
-		if (this.level.getGameTime() % 5 == 0) {
-			airTime++;
+		if (this.level().getGameTime() % 5 == 0) {
+			this.airTime++;
 		}
 	}
 
@@ -46,11 +46,11 @@ public class DepthrockPebble extends SlingshotProjectile {
 		super.onHitEntity(result);
 		Entity victim = result.getEntity();
 		float length = (float) this.getDeltaMovement().length();
-		int damage = Mth.ceil(Mth.clamp((double) length * airTime, 0.0D, 2.147483647E9D));
+		int damage = Mth.ceil(Mth.clamp((double) length * this.airTime, 0.0D, 2.147483647E9D));
 		victim.hurt(this.damageSources().source(UGDamageSources.DEPTHROCK_PEBBLE, this, this.getOwner()), damage);
 		this.playSound(SoundEvents.STONE_BREAK, 1.0F, 1.0F);
-		if (!this.level.isClientSide) {
-			this.level.broadcastEntityEvent(this, (byte) 3);
+		if (!this.level().isClientSide) {
+			this.level().broadcastEntityEvent(this, (byte) 3);
 			this.discard();
 		}
 	}
@@ -70,7 +70,7 @@ public class DepthrockPebble extends SlingshotProjectile {
 			ParticleOptions iparticledata = this.makeParticle();
 
 			for (int i = 0; i < 8; ++i) {
-				this.level.addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}

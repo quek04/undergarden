@@ -19,7 +19,7 @@ public class SlingshotFireTrigger extends SimpleCriterionTrigger<SlingshotFireTr
 	}
 
 	@Override
-	protected SlingshotFireTrigger.TriggerInstance createInstance(JsonObject json, EntityPredicate.Composite entityPredicate, DeserializationContext context) {
+	protected SlingshotFireTrigger.TriggerInstance createInstance(JsonObject json, ContextAwarePredicate entityPredicate, DeserializationContext context) {
 		ItemPredicate slingshotPredicate = ItemPredicate.fromJson(json.get("slingshot"));
 		ItemPredicate ammoPredicate = ItemPredicate.fromJson(json.get("ammo"));
 		return new SlingshotFireTrigger.TriggerInstance(entityPredicate, slingshotPredicate, ammoPredicate);
@@ -33,14 +33,14 @@ public class SlingshotFireTrigger extends SimpleCriterionTrigger<SlingshotFireTr
 		private final ItemPredicate slingshot;
 		private final ItemPredicate ammo;
 
-		public TriggerInstance(EntityPredicate.Composite player, ItemPredicate slingshot, ItemPredicate ammo) {
+		public TriggerInstance(ContextAwarePredicate player, ItemPredicate slingshot, ItemPredicate ammo) {
 			super(SlingshotFireTrigger.ID, player);
 			this.slingshot = slingshot;
 			this.ammo = ammo;
 		}
 
 		public static SlingshotFireTrigger.TriggerInstance shotItem(ItemLike slingshot, ItemLike ammo) {
-			return new SlingshotFireTrigger.TriggerInstance(EntityPredicate.Composite.ANY, ItemPredicate.Builder.item().of(slingshot).build(), ItemPredicate.Builder.item().of(ammo).build());
+			return new SlingshotFireTrigger.TriggerInstance(ContextAwarePredicate.ANY, ItemPredicate.Builder.item().of(slingshot).build(), ItemPredicate.Builder.item().of(ammo).build());
 		}
 
 		public static SlingshotFireTrigger.TriggerInstance shotItem(ItemLike ammo) {

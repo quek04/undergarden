@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:blast_raw_cloggrum"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

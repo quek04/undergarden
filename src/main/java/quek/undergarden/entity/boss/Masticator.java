@@ -97,19 +97,19 @@ public class Masticator extends Monster {
 			double speed = this.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
 			this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(Mth.lerp(0.1D, speed, d0));
 
-			if (this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
+			if (this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
 				boolean flag = false;
 				AABB axisalignedbb = this.getBoundingBox().inflate(0.2D);
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
-					BlockState blockstate = this.level.getBlockState(blockpos);
+					BlockState blockstate = this.level().getBlockState(blockpos);
 					Block block = blockstate.getBlock();
 					if (block instanceof LeavesBlock) {
-						flag = this.level.destroyBlock(blockpos, true, this) || flag;
+						flag = this.level().destroyBlock(blockpos, true, this) || flag;
 					}
 				}
 
-				if (!flag && this.onGround) {
+				if (!flag && this.onGround()) {
 					this.jumpFromGround();
 				}
 			}
@@ -119,10 +119,10 @@ public class Masticator extends Monster {
 	}
 
 	@Override
-	public boolean wasKilled(ServerLevel level, LivingEntity entity) {
+	public boolean killedEntity(ServerLevel level, LivingEntity entity) {
 		this.heal(this.getHealth() / 4);
 		this.playSound(UGSoundEvents.MASTICATOR_EAT.get(), 1.0F, this.getVoicePitch());
-		return super.wasKilled(level, entity);
+		return super.killedEntity(level, entity);
 	}
 
 	@Override

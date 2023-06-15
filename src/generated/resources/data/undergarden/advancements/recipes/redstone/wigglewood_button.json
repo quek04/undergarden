@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:wigglewood_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

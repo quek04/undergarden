@@ -1,5 +1,6 @@
 package quek.undergarden.effect;
 
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -22,7 +23,7 @@ public class BrittlenessEffect extends MobEffect {
 		DamageSource source = event.getSource();
 		float damage = event.getAmount();
 
-		if (entity.hasEffect(UGEffects.BRITTLENESS.get()) && source != event.getEntity().damageSources().outOfWorld()) {
+		if (entity.hasEffect(UGEffects.BRITTLENESS.get()) && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
 			int amplifier = (entity.getEffect(UGEffects.BRITTLENESS.get()).getAmplifier() + 1) + (entity.getArmorValue() / 4) * 2;
 
 			event.setAmount(damage + amplifier);

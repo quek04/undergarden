@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:blood_mushroom_to_dye"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

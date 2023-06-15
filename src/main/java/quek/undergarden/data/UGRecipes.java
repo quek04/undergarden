@@ -56,6 +56,10 @@ public class UGRecipes extends UGRecipeProvider {
 		makeSign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeSign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
 
+		makeHangingSign(UGBlocks.SMOGSTEM_HANGING_SIGN, UGBlocks.STRIPPED_SMOGSTEM_LOG).save(consumer);
+		makeHangingSign(UGBlocks.WIGGLEWOOD_HANGING_SIGN, UGBlocks.STRIPPED_WIGGLEWOOD_LOG).save(consumer);
+		makeHangingSign(UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.STRIPPED_GRONGLE_LOG).save(consumer);
+
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, UGItems.UNDERBEAN_STICK.get())
 				.requires(Items.STICK)
 				.requires(UGItems.UNDERBEANS.get())
@@ -433,6 +437,16 @@ public class UGRecipes extends UGRecipeProvider {
 		makeStew(UGItems.INKY_STEW, UGBlocks.INK_MUSHROOM).save(consumer);
 		makeStew(UGItems.INDIGO_STEW, UGBlocks.INDIGO_MUSHROOM).save(consumer);
 		makeStew(UGItems.VEILED_STEW, UGBlocks.VEIL_MUSHROOM).save(consumer);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get(), 2)
+				.pattern("DTD")
+				.pattern("DRD")
+				.pattern("DDD")
+				.define('D', Tags.Items.GEMS_DIAMOND)
+				.define('R', UGBlocks.DEPTHROCK.get())
+				.define('T', UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get())
+				.unlockedBy("has_template", has( UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()))
+				.save(consumer);
 
 		smithingForgotten(UGItems.CLOGGRUM_SWORD, UGItems.FORGOTTEN_SWORD).save(consumer, name("forgotten_sword_smithing"));
 		smithingForgotten(UGItems.CLOGGRUM_PICKAXE, UGItems.FORGOTTEN_PICKAXE).save(consumer, name("forgotten_pickaxe_smithing"));

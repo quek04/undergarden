@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:raw_froststeel_from_block"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

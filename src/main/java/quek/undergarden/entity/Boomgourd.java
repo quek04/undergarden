@@ -30,12 +30,12 @@ public class Boomgourd extends PrimedTnt {
 
 	@Override
 	protected void explode() {
-		this.level.explode(this, this.getX(), this.getY(0.0625D), this.getZ(), 4.0F, Level.ExplosionInteraction.BLOCK);
+		this.level().explode(this, this.getX(), this.getY(0.0625D), this.getZ(), 4.0F, Level.ExplosionInteraction.BLOCK);
 		for (int i = 0; i < 4; i++) {
-			Blisterbomb blisterbomb = new Blisterbomb(this.level, this.getX(), this.getY(), this.getZ());
-			RandomSource random = this.level.random;
+			Blisterbomb blisterbomb = new Blisterbomb(this.level(), this.getX(), this.getY(), this.getZ());
+			RandomSource random = this.level().random;
 			blisterbomb.shoot(random.nextDouble() * (random.nextBoolean() ? -1 : 1), 0.5F, random.nextDouble() * (random.nextBoolean() ? -1 : 1), 0.5F, 10.0F);
-			this.level.addFreshEntity(blisterbomb);
+			this.level().addFreshEntity(blisterbomb);
 		}
 	}
 }

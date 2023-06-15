@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:smelt_gwibling"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

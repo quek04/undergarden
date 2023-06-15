@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:utherium_chestplate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

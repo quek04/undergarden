@@ -51,5 +51,6 @@
         "min": 0.0
       }
     }
-  ]
+  ],
+  "random_sequence": "undergarden:entities/muncher"
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:cloggrum_tile_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

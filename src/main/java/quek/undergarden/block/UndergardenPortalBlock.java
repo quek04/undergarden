@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
@@ -39,7 +39,8 @@ public class UndergardenPortalBlock extends Block {
 	protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
 
 	public UndergardenPortalBlock() {
-		super(Properties.of(Material.PORTAL)
+		super(Properties.of()
+				.pushReaction(PushReaction.BLOCK)
 				.strength(-1F)
 				.noCollission()
 				.lightLevel((state) -> 10)
@@ -112,20 +113,20 @@ public class UndergardenPortalBlock extends Block {
 			if (entity.isOnPortalCooldown()) {
 				entity.setPortalCooldown();
 			} else {
-				if (!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
+				if (!entity.level().isClientSide() && !pos.equals(entity.portalEntrancePos)) {
 					entity.portalEntrancePos = pos.immutable();
 				}
-				Level entityWorld = entity.level;
-				if (entityWorld != null) {
-					MinecraftServer minecraftserver = entityWorld.getServer();
-					ResourceKey<Level> destination = entity.level.dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
+				Level level1 = entity.level();
+				if (level1 != null) {
+					MinecraftServer minecraftserver = level1.getServer();
+					ResourceKey<Level> destination = entity.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
 					if (minecraftserver != null) {
 						ServerLevel destinationWorld = minecraftserver.getLevel(destination);
 						if (destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
-							entity.level.getProfiler().push("undergarden_portal");
+							entity.level().getProfiler().push("undergarden_portal");
 							entity.setPortalCooldown();
 							entity.changeDimension(destinationWorld, new UGTeleporter(destinationWorld));
-							entity.level.getProfiler().pop();
+							entity.level().getProfiler().pop();
 						}
 					}
 				}

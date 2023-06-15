@@ -31,6 +31,7 @@ public class UGItems {
 	public static final RegistryObject<Item> RELICT_DISC = ITEMS.register("music_disc_relict", () -> new RecordItem(2, UGSoundEvents.RELICT_DISC, new Item.Properties().rarity(Rarity.RARE).stacksTo(1), 3740));
 	public static final RegistryObject<Item> GLOOMPER_ANTHEM_DISC = ITEMS.register("music_disc_gloomper_anthem", () -> new RecordItem(3, UGSoundEvents.GLOOMPER_ANTHEM_DISC, new Item.Properties().rarity(Rarity.RARE).stacksTo(1), 4080));
 	public static final RegistryObject<Item> GLOOMPER_SECRET_DISC = ITEMS.register("music_disc_gloomper_secret", () -> new RecordItem(15, UGSoundEvents.GLOOMPER_SECRET_DISC, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1), 3180));
+	public static final RegistryObject<Item> FORGOTTEN_UPGRADE_TEMPLATE = ITEMS.register("forgotten_upgrade_smithing_template", ForgottenSmithingTemplateItem::new);
 
 	//crafting materials
 	public static final RegistryObject<Item> RAW_CLOGGRUM = ITEMS.register("raw_cloggrum", UGItem::new);

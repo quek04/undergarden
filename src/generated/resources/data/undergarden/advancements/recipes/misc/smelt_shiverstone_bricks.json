@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:smelt_shiverstone_bricks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

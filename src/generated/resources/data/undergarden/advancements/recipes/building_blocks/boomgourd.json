@@ -43,5 +43,6 @@
     "recipes": [
       "undergarden:boomgourd"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

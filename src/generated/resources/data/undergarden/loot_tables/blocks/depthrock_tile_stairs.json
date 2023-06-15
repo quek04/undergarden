@@ -16,5 +16,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "undergarden:blocks/depthrock_tile_stairs"
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:polished_depthrock_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

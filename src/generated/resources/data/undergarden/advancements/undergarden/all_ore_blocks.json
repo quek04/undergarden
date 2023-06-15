@@ -48,5 +48,6 @@
     [
       "has_all_ore_blocks"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

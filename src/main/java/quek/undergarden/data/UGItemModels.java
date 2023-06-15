@@ -194,6 +194,7 @@ public class UGItemModels extends UGItemModelProvider {
 		toolItem(UGItems.UTHERIUM_AXE);
 		toolItem(UGItems.UTHERIUM_SHOVEL);
 		toolItem(UGItems.UTHERIUM_HOE);
+		normalItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE);
 		toolItem(UGItems.FORGOTTEN_SWORD);
 		toolItem(UGItems.FORGOTTEN_PICKAXE);
 		toolItem(UGItems.FORGOTTEN_AXE);
@@ -274,6 +275,10 @@ public class UGItemModels extends UGItemModelProvider {
 		sign(UGBlocks.SMOGSTEM_SIGN);
 		sign(UGBlocks.WIGGLEWOOD_SIGN);
 		sign(UGBlocks.GRONGLE_SIGN);
+
+		sign(UGBlocks.SMOGSTEM_HANGING_SIGN);
+		sign(UGBlocks.WIGGLEWOOD_HANGING_SIGN);
+		sign(UGBlocks.GRONGLE_HANGING_SIGN);
 
 		button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
 		button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);

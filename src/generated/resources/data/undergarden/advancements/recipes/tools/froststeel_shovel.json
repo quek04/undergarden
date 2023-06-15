@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:froststeel_shovel"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

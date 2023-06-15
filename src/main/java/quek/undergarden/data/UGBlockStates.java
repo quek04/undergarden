@@ -188,6 +188,10 @@ public class UGBlockStates extends UGBlockstateProvider {
 		sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN, "wigglewood_planks");
 		sign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_WALL_SIGN, "grongle_planks");
 
+		hangingSign(UGBlocks.SMOGSTEM_HANGING_SIGN, UGBlocks.SMOGSTEM_WALL_HANGING_SIGN, "stripped_smogstem_log_side");
+		hangingSign(UGBlocks.WIGGLEWOOD_HANGING_SIGN, UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN, "stripped_wigglewood_log_side");
+		hangingSign(UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.GRONGLE_WALL_HANGING_SIGN, "stripped_grongle_log_side");
+
 		ModelFile ashen_deepturf = models().cubeBottomTop(name(UGBlocks.ASHEN_DEEPTURF_BLOCK), texture("ashen_deepturf_block_side"), texture("deepsoil"), texture("ashen_deepturf_block_top"));
 		simpleBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), ConfiguredModel.builder()
 				.modelFile(ashen_deepturf).nextModel()
