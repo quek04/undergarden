@@ -31,7 +31,6 @@ public class Scintling extends Animal {
 
 	public Scintling(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
-		this.maxUpStep = 1.0F;
 		this.xpReward = 0;
 	}
 
@@ -54,6 +53,11 @@ public class Scintling extends Animal {
 
 	public static boolean canScintlingSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
 		return level.getBlockState(pos.below()).getBlock() == UGBlocks.DEPTHROCK.get() || level.getBlockState(pos.below()).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get();
+	}
+
+	@Override
+	public float maxUpStep() {
+		return 1.0F;
 	}
 
 	@Override

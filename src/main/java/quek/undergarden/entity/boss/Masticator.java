@@ -34,7 +34,6 @@ public class Masticator extends Monster {
 
 	public Masticator(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
-		this.maxUpStep = 1.0F;
 		this.xpReward = 25;
 	}
 
@@ -56,6 +55,11 @@ public class Masticator extends Monster {
 				.add(Attributes.MOVEMENT_SPEED, 0.40D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
 				.add(Attributes.FOLLOW_RANGE, 64.0D);
+	}
+
+	@Override
+	public float maxUpStep() {
+		return 1.0F;
 	}
 
 	@Override

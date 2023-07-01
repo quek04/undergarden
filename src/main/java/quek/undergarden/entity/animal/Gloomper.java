@@ -42,7 +42,6 @@ public class Gloomper extends Animal {
 		this.jumpControl = new JumpHelperController(this);
 		this.moveControl = new Gloomper.MoveHelperController(this);
 		this.setMovementSpeed(0.0D);
-		this.maxUpStep = 1.0F;
 	}
 
 	@Override
@@ -61,6 +60,11 @@ public class Gloomper extends Animal {
 		return Animal.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 20.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.3D);
+	}
+
+	@Override
+	public float maxUpStep() {
+		return 1.0F;
 	}
 
 	@Override
