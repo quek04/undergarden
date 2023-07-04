@@ -22,6 +22,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.entity.animal.Scintling;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGTags;
 
 public class GooLayerBlock extends Block {
 
@@ -37,7 +38,7 @@ public class GooLayerBlock extends Block {
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 		if (entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY.get()))
 			return;
-		if (!(entity instanceof Scintling) && entity.onGround()) {
+		if (!entity.getType().is(UGTags.Entities.IMMUNE_TO_SCINTLING_GOO) && entity.onGround()) {
 			entity.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
 		}
 	}
