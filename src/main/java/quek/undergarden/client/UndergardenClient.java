@@ -196,14 +196,6 @@ public class UndergardenClient {
 
 	@Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 	public static class ForgeBusEvents {
-		@SubscribeEvent
-		public static void overlaysPre(RenderGuiOverlayEvent.Pre event) {
-			Minecraft minecraft = Minecraft.getInstance();
-			LocalPlayer player = minecraft.player;
-			if (player != null && event.getOverlay().id() == VanillaGuiOverlay.PLAYER_HEALTH.id() && player.hasEffect(UGEffects.VIRULENCE.get())) {
-				event.setCanceled(true);
-			}
-		}
 
 		@SubscribeEvent
 		public static void undergardenFog(ViewportEvent.RenderFog event) {
@@ -219,8 +211,6 @@ public class UndergardenClient {
 	}
 
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, ForgeGui gui, Player player) {
-		RenderSystem.enableBlend();
-
 		int x = width / 2 - 91;
 		int y = height - 49;
 
@@ -235,15 +225,9 @@ public class UndergardenClient {
 			}
 			x += 8;
 		}
-		gui.leftHeight += 10;
-
-		RenderSystem.disableBlend();
 	}
 
 	private static void renderVirulenceHearts(int width, int height, GuiGraphics graphics, ForgeGui gui, Player player) {
-		RenderSystem.setShaderTexture(0, VIRULENCE_HEARTS);
-		RenderSystem.enableBlend();
-
 		int health = Mth.ceil(player.getHealth());
 		boolean highlight = gui.healthBlinkTime > (long) gui.getGuiTicks() && (gui.healthBlinkTime - (long) gui.getGuiTicks()) / 3L % 2L == 1L;
 
@@ -273,10 +257,8 @@ public class UndergardenClient {
 
 		gui.random.setSeed(gui.getGuiTicks() * 312871);
 
-		int x = width / 2 - 111;
-		int y = height - 59;
-		gui.leftHeight += (healthRows * rowHeight);
-		if (rowHeight != 10) gui.leftHeight += 10 - rowHeight;
+		int x = width / 2 - 91;
+		int y = height - 39;
 
 		int regen = -1;
 		if (player.hasEffect(MobEffects.REGENERATION)) {
@@ -284,8 +266,6 @@ public class UndergardenClient {
 		}
 
 		renderHearts(graphics, gui, player, x, y, rowHeight, regen, healthMax, health, healthLast, absorb, highlight);
-
-		RenderSystem.disableBlend();
 	}
 
 	private static void renderHearts(GuiGraphics graphics, ForgeGui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
