@@ -127,6 +127,12 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 
 			return InteractionResult.sidedSuccess(this.level().isClientSide);
 		} else {
+			if (this.isSaddled() && player.isSecondaryUseActive() && player.getItemInHand(hand).isEmpty()) {
+				this.spawnAtLocation(Items.SADDLE);
+				this.playSound(UGSoundEvents.DWELLER_SADDLE_REMOVE.get());
+				this.steering.setSaddle(false);
+				return InteractionResult.sidedSuccess(this.level().isClientSide());
+			}
 			InteractionResult actionresulttype = super.mobInteract(player, hand);
 			if (!actionresulttype.consumesAction()) {
 				ItemStack itemstack = player.getItemInHand(hand);

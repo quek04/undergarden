@@ -450,6 +450,7 @@
   "subtitles.entity.dweller.ambient": "Dweller grumbles",
   "subtitles.entity.dweller.death": "Dweller dies",
   "subtitles.entity.dweller.hurt": "Dweller hurts",
+  "subtitles.entity.dweller.remove_saddle": "Saddle removed",
   "subtitles.entity.forgotten_guardian.ambient": "Forgotten Guardian creaks",
   "subtitles.entity.forgotten_guardian.attack": "Forgotten Guardian attacks",
   "subtitles.entity.forgotten_guardian.death": "Forgotten Guardian dies",

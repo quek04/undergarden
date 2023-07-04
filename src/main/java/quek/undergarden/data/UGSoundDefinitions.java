@@ -356,6 +356,11 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:mob/cow/step3").pitch(0.5F),
 				sound("minecraft:mob/cow/step4").pitch(0.5F)
 		).subtitle("subtitles.block.generic.footsteps"));
+		this.add(UGSoundEvents.DWELLER_SADDLE_REMOVE, definition().with(
+				sound("minecraft:item/bundle/drop_contents1").pitch(0.95F),
+				sound("minecraft:item/bundle/drop_contents2").pitch(0.95F),
+				sound("minecraft:item/bundle/drop_contents3").pitch(0.95F)
+		).subtitle("subtitles.entity.dweller.remove_saddle"));
 
 		this.add(UGSoundEvents.ROTLING_AMBIENT, definition().with(
 				sound("undergarden:entity/rotling_ambient_1"),

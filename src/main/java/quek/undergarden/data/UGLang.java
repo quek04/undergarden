@@ -589,6 +589,7 @@ public class UGLang extends LanguageProvider {
 		addSubtitle("entity", "dweller.ambient", "Dweller grumbles");
 		addSubtitle("entity", "dweller.hurt", "Dweller hurts");
 		addSubtitle("entity", "dweller.death", "Dweller dies");
+		addSubtitle("entity", "dweller.remove_saddle", "Saddle removed");
 
 		addSubtitle("entity", "rotwalker.ambient", "Rotwalker groans");
 		addSubtitle("entity", "rotwalker.hurt", "Rotwalker hurts");

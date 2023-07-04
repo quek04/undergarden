@@ -375,6 +375,23 @@
     ],
     "subtitle": "subtitles.entity.dweller.hurt"
   },
+  "entity.dweller.saddle_remove": {
+    "sounds": [
+      {
+        "name": "item/bundle/drop_contents1",
+        "pitch": 0.95
+      },
+      {
+        "name": "item/bundle/drop_contents2",
+        "pitch": 0.95
+      },
+      {
+        "name": "item/bundle/drop_contents3",
+        "pitch": 0.95
+      }
+    ],
+    "subtitle": "subtitles.entity.dweller.remove_saddle"
+  },
   "entity.dweller.step": {
     "sounds": [
       {
