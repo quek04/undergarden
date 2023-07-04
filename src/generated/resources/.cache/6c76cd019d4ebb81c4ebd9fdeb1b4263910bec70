@@ -1,4 +1,4 @@
-// 1.20.1	2023-06-14T22:10:50.1145872	Undergarden Block States
+// 1.20.1	2023-07-03T20:09:33.6107664	Undergarden Block States
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
 3caa35193766b684dc360e477e5208fb99d055f6 assets/undergarden/blockstates/ashen_deepturf.json
 6919d06515a0a18838e81bb21207cad377dbaa31 assets/undergarden/blockstates/ashen_deepturf_block.json
@@ -286,8 +286,8 @@ d3c9e77349f09d837f4f6df5fde53ee1556ceba3 assets/undergarden/models/block/grongle
 8d478a30c3b5f7a22fd4965edcf71afbc57efe24 assets/undergarden/models/block/grongle_trapdoor_top.json
 6757e9c7c93fb60f1ae91be65a02d3ee583fb354 assets/undergarden/models/block/grongle_wood.json
 15478b9b577b3c5d7f4bd14042ebe777254c8302 assets/undergarden/models/block/grongle_wood_horizontal.json
-4b10715b76c550043ef531c007dd3ffa60b457ed assets/undergarden/models/block/hanging_grongle_leaves.json
-b0723feb48ec28e148f97c8217f1ad8f1982b563 assets/undergarden/models/block/hanging_grongle_leaves_top.json
+55c95b328c226f2f2e481eedbf408cc9733b19da assets/undergarden/models/block/hanging_grongle_leaves.json
+024e7869d646b0d5392a7e2b45d3b19a46670e3b assets/undergarden/models/block/hanging_grongle_leaves_top.json
 8be512ae7a51086fd80f995428bca5271561d155 assets/undergarden/models/block/indigo_mushroom.json
 7dcd6641e01e988df43c9411b78108ed11cfebe6 assets/undergarden/models/block/indigo_mushroom_cap.json
 5b57e65b87c44adfd01b7c138302f21769ba4e65 assets/undergarden/models/block/indigo_mushroom_stem.json

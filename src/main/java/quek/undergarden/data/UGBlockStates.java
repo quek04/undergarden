@@ -240,7 +240,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 
 		getVariantBuilder(UGBlocks.HANGING_GRONGLE_LEAVES.get()).forAllStates(state -> {
 			String name = name(UGBlocks.HANGING_GRONGLE_LEAVES) + (state.getValue(HangingGrongleLeavesBlock.HALF) == DoubleBlockHalf.UPPER ? "_top" : "");
-			return ConfiguredModel.builder().modelFile(models().cross(name, texture(name))).build();
+			return ConfiguredModel.builder().modelFile(models().cross(name, texture(name)).renderType("minecraft:cutout")).build();
 		});
 	}
 }
