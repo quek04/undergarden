@@ -412,6 +412,14 @@ public class UGLang extends LanguageProvider {
 
 		addEntityType(UGEntityTypes.BOAT, "Boat");
 		addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");
+		addEntityType(UGEntityTypes.BOOMGOURD, "Boomgourd");
+		addEntityType(UGEntityTypes.DEPTHROCK_PEBBLE, "Depthrock Pebble");
+		addEntityType(UGEntityTypes.GOO_BALL, "Goo Ball");
+		addEntityType(UGEntityTypes.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
+		addEntityType(UGEntityTypes.BLISTERBOMB, "Blisterbomb");
+		addEntityType(UGEntityTypes.GRONGLET, "Gronglet");
+		addEntityType(UGEntityTypes.MINION_PROJECTILE, "Minion Projectile");
+
 		addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
 		addEntityType(UGEntityTypes.DWELLER, "Dweller");
 		addEntityType(UGEntityTypes.GWIBLING, "Gwibling");
