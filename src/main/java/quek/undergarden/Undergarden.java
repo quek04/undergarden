@@ -32,6 +32,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -366,29 +367,33 @@ public class Undergarden {
 	public void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 		PackOutput output = generator.getPackOutput();
-		CompletableFuture<HolderLookup.Provider> future = event.getLookupProvider();
+		CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
-		if (event.includeClient()) {
-			generator.addProvider(true, new UGBlockStates(output, helper));
-			generator.addProvider(true, new UGItemModels(output, helper));
-			generator.addProvider(true, new UGLang(output));
-			generator.addProvider(true, new UGSoundDefinitions(output, helper));
-		}
-		if (event.includeServer()) {
-			generator.addProvider(true, new UGRecipes(output));
-			generator.addProvider(true, new UGLootTables(output));
-			UGBlockTags blockTags = new UGBlockTags(output, future, helper);
-			generator.addProvider(true, blockTags);
-			generator.addProvider(true, new UGItemTags(output, future, blockTags.contentsGetter(), helper));
-			generator.addProvider(true, new UGEntityTags(output, future, helper));
-			generator.addProvider(true, new UGAdvancements(output, future, helper));
-			generator.addProvider(true, new UGFluidTags(output, future, helper));
-			UGRegistries.addProviders(true, generator, output, future, helper);
-			generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
-					Component.literal("Undergarden resources"),
-					DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES),
-					Arrays.stream(PackType.values()).collect(Collectors.toMap(Function.identity(), DetectedVersion.BUILT_IN::getPackVersion)))));
-		}
+		generator.addProvider(event.includeClient(), new UGBlockStates(output, helper));
+		generator.addProvider(event.includeClient(), new UGItemModels(output, helper));
+		generator.addProvider(event.includeClient(), new UGLang(output));
+		generator.addProvider(event.includeClient(), new UGSoundDefinitions(output, helper));
+
+
+		generator.addProvider(event.includeServer(), new UGRecipes(output));
+		generator.addProvider(event.includeServer(), new UGLootTables(output));
+		UGBlockTags blockTags = new UGBlockTags(output, provider, helper);
+		generator.addProvider(event.includeServer(), blockTags);
+		generator.addProvider(event.includeServer(), new UGItemTags(output, provider, blockTags.contentsGetter(), helper));
+		generator.addProvider(event.includeServer(), new UGEntityTags(output, provider, helper));
+		generator.addProvider(event.includeServer(), new UGAdvancements(output, provider, helper));
+		generator.addProvider(event.includeServer(), new UGFluidTags(output, provider, helper));
+		DatapackBuiltinEntriesProvider datapackProvider = new UGRegistries(output, provider);
+		CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
+		generator.addProvider(event.includeServer(), datapackProvider);
+		generator.addProvider(event.includeServer(), new UGBiomeTags(output, lookupProvider, helper));
+		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
+
+		generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
+				Component.literal("Undergarden resources"),
+				DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES),
+				Arrays.stream(PackType.values()).collect(Collectors.toMap(Function.identity(), DetectedVersion.BUILT_IN::getPackVersion)))));
+
 	}
 }

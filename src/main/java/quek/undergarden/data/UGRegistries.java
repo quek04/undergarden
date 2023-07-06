@@ -31,17 +31,7 @@ public class UGRegistries extends DatapackBuiltinEntriesProvider {
 			.add(Registries.TEMPLATE_POOL, UGStructures::bootstrapPools)
 			.add(Registries.DAMAGE_TYPE, UGDamageSources::bootstrap);
 
-	private UGRegistries(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
+	public UGRegistries(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
 		super(output, future, BUILDER, Set.of("minecraft", Undergarden.MODID));
-	}
-
-	public static void addProviders(boolean isServer, DataGenerator generator, PackOutput output, CompletableFuture<HolderLookup.Provider> provider, ExistingFileHelper helper) {
-		generator.addProvider(isServer, new UGRegistries(output, provider));
-		generator.addProvider(isServer, new UGBiomeTags(output, provider.thenApply(r -> append(r, BUILDER)), helper));
-		generator.addProvider(isServer, new UGDamageTypeTags(output, provider.thenApply(r -> append(r, BUILDER)), helper));
-	}
-
-	private static HolderLookup.Provider append(HolderLookup.Provider original, RegistrySetBuilder builder) {
-		return builder.buildPatch(RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY), original);
 	}
 }
