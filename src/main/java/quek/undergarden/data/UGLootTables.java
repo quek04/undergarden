@@ -197,6 +197,7 @@ public class UGLootTables extends LootTableProvider {
 			dropAsSilk(UGBlocks.VEIL_MUSHROOM_STEM);
 			this.add(UGBlocks.INK_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.INK_MUSHROOM.get()));
 			dropAsSilk(UGBlocks.INK_MUSHROOM_STEM);
+			this.add(UGBlocks.SEEPING_INK.get(), BlockLootSubProvider::createShearsOnlyDrop);
 			dropSelf(UGBlocks.FORGOTTEN_BLOCK);
 			dropSelf(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
 			dropSelf(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);

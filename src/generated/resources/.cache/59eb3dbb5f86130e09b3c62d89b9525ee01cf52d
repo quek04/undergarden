@@ -1,4 +1,4 @@
-// 1.20.1	2023-06-14T22:10:50.1115948	Loot Tables
+// 1.20.1	2023-07-05T18:33:38.8448111	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 2645cf89fe60362fa8217dc5825683e04755a423 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 151c2f71107612bce2811d7825f88937bff932f0 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -113,6 +113,7 @@ c0eaaebc3f9675ed34376fb7d7e7f2e149ea98fe data/undergarden/loot_tables/blocks/raw
 0aa650ef41619f90ef2bf1b2c5ed8ccf522d4a02 data/undergarden/loot_tables/blocks/sediment.json
 b89bdf4435ee0d33584fb03f9c559ef4623f9162 data/undergarden/loot_tables/blocks/sediment_glass.json
 1e442f24834dabf04e0985ac70c21779e6e3da06 data/undergarden/loot_tables/blocks/sediment_glass_pane.json
+c00e6c73f56d0c75b531ffcb8c61ff289fdbc69e data/undergarden/loot_tables/blocks/seeping_ink.json
 2179eab894f34d12767d6e45e3f4f3613d06f5a5 data/undergarden/loot_tables/blocks/shard_o_lantern.json
 31d83c6f649c29aa27d7c2122c0c84dcbff5b4ce data/undergarden/loot_tables/blocks/shard_torch.json
 61dd41d7facfa6da7b2347da0eaded216fdc1db1 data/undergarden/loot_tables/blocks/shard_wall_torch.json
