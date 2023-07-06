@@ -25,7 +25,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
     // https://ldtteam.jfrog.io/ui/native/parchmentmc-public/org/parchmentmc/data
-    mappings channel: 'parchment', version: project.parchment_version+'-'+project.mc_version
+    mappings channel: 'parchment', version: project.parchment_version
 
     runs {
         client {
