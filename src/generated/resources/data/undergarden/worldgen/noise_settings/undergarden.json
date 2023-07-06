@@ -217,9 +217,19 @@
           ]
         },
         "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "undergarden:frozen_deepturf_block"
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:stone_depth",
+            "add_surface_depth": false,
+            "offset": 0,
+            "secondary_depth_range": 0,
+            "surface_type": "floor"
+          },
+          "then_run": {
+            "type": "minecraft:block",
+            "result_state": {
+              "Name": "undergarden:frozen_deepturf_block"
+            }
           }
         }
       },
@@ -386,6 +396,12 @@
                   "result_state": {
                     "Name": "undergarden:depthrock"
                   }
+                }
+              },
+              {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "undergarden:depthrock"
                 }
               }
             ]

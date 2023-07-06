@@ -130,7 +130,9 @@ public class UGDimensions {
 						//sediment
 						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(33), 0)), SurfaceRules.state(UGBlocks.SEDIMENT.get().defaultBlockState()))),
 						//frozen deepturf
-						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.state(UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState())),
+						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.ifTrue(
+								SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
+								SurfaceRules.state(UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState()))),
 						//mix coarse deepsoil into blood bog
 						SurfaceRules.ifTrue(
 								SurfaceRules.isBiome(UGBiomes.BLOOD_MUSHROOM_BOG),
@@ -178,7 +180,8 @@ public class UGDimensions {
 												SurfaceRules.ifTrue(
 														SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),
 														SurfaceRules.state(UGBlocks.DEPTHROCK.get().defaultBlockState())
-												)
+												),
+												SurfaceRules.state(UGBlocks.DEPTHROCK.get().defaultBlockState())
 										)
 								)
 						),
