@@ -1,10 +1,10 @@
 {
   "textures": [
-    "undergarden:shimmer/shimmer_0",
-    "undergarden:shimmer/shimmer_1",
-    "undergarden:shimmer/shimmer_2",
-    "undergarden:shimmer/shimmer_3",
-    "undergarden:shimmer/shimmer_4",
-    "undergarden:shimmer/shimmer_5"
+    "undergarden:shimmer_0",
+    "undergarden:shimmer_1",
+    "undergarden:shimmer_2",
+    "undergarden:shimmer_3",
+    "undergarden:shimmer_4",
+    "undergarden:shimmer_5"
   ]
 }

@@ -20,6 +20,7 @@ public class UGParticleTypes {
 	public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, Undergarden.MODID);
 
 	public static final RegistryObject<SimpleParticleType> SHARD = PARTICLES.register("shard", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> SHARD_BEAM = PARTICLES.register("shard_beam", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> GRONGLE_SPORE = PARTICLES.register("grongle_spore", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> UNDERGARDEN_PORTAL = PARTICLES.register("undergarden_portal", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> GLOOMPER_FART = PARTICLES.register("gloomper_fart", () -> new SimpleParticleType(false));
@@ -31,6 +32,7 @@ public class UGParticleTypes {
 	@SubscribeEvent
 	public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
 		event.registerSpriteSet(SHARD.get(), ShardParticle.Provider::new);
+		event.registerSpriteSet(SHARD_BEAM.get(), ShardParticle.BeamProvider::new);
 		event.registerSpriteSet(GRONGLE_SPORE.get(), GrongleSporeParticle.Provider::new);
 		event.registerSpriteSet(UNDERGARDEN_PORTAL.get(), UndergardenPortalParticle.Provider::new);
 		event.registerSpriteSet(GLOOMPER_FART.get(), SmokeParticle.Provider::new);

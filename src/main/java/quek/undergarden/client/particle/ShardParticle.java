@@ -53,4 +53,19 @@ public class ShardParticle extends RisingParticle {
 			return shard;
 		}
 	}
+
+	public static class BeamProvider implements ParticleProvider<SimpleParticleType> {
+		private final SpriteSet spriteSet;
+
+		public BeamProvider(SpriteSet spriteSet) {
+			this.spriteSet = spriteSet;
+		}
+
+		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+			ShardParticle shard = new ShardParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
+			shard.lifetime = 5;
+			shard.pickSprite(this.spriteSet);
+			return shard;
+		}
+	}
 }

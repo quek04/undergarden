@@ -23,16 +23,12 @@ public class CarvedGloomgourdShardBlock extends CarvedGloomgourdBlock {
 
 	@Override
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		//if(pLevel.getGameTime() % 20 == 0) {
-		level.getEntitiesOfClass(LivingEntity.class, new AABB(
-						pos.getX() - 4,
-						pos.getY() - 4,
-						pos.getZ() - 4,
-						pos.getX() + 4,
-						pos.getY() + 4,
-						pos.getZ() + 4),
-				entity -> entity.getType().is(UGTags.Entities.ROTSPAWN)).forEach(entity -> entity.hurt(level.damageSources().source(UGDamageSources.SHARD_TORCH), 4));
-		//}
+		level.getEntitiesOfClass(LivingEntity.class, new AABB(pos).inflate(4.0D),
+				entity -> entity.getType().is(UGTags.Entities.ROTSPAWN)).forEach(entity -> {
+			if (entity.hurt(UGDamageSources.getShardTorchDamage(level, pos.getCenter()), 4)) {
+				ShardTorchBlock.drawParticlesTo(level, pos.getCenter(), entity);
+			}
+		});
 		level.scheduleTick(pos, this, 20);
 	}
 }
