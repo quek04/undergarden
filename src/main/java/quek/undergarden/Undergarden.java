@@ -51,6 +51,7 @@ import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.slingshot.*;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
+import quek.undergarden.network.UGPacketHandler;
 import quek.undergarden.registry.*;
 
 import java.util.Arrays;
@@ -110,6 +111,7 @@ public class Undergarden {
 				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
+			UGPacketHandler.init();
 			UGCriteria.register();
 			UGCauldronInteractions.register();
 

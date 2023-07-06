@@ -5,12 +5,17 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
+import quek.undergarden.network.CreateCritParticlePacket;
+import quek.undergarden.network.UGPacketHandler;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGParticleTypes;
 import quek.undergarden.registry.UGTags;
 
 @Mod.EventBusSubscriber(modid = "undergarden")
@@ -23,7 +28,7 @@ public class UGToolEvents {
 
 		if (source instanceof Player player) {
 			if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SWORD.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
-				if (ForgeRegistries.ENTITY_TYPES.getKey(event.getEntity().getType()).getNamespace().equals("undergarden") && event.getEntity().canChangeDimensions()) {
+				if (ForgeRegistries.ENTITY_TYPES.getKey(event.getEntity().getType()).getNamespace().equals("undergarden") && !event.getEntity().getType().is(Tags.EntityTypes.BOSSES)) {
 					event.setAmount(damage * 1.5F);
 				}
 			}
@@ -48,9 +53,12 @@ public class UGToolEvents {
 		float damage = event.getAmount();
 
 		if (source instanceof Player player) {
-			if (player.getMainHandItem().getItem() == UGItems.UTHERIUM_SWORD.get() || player.getMainHandItem().getItem() == UGItems.UTHERIUM_AXE.get()) {
+			if (player.getMainHandItem().is(UGItems.UTHERIUM_SWORD.get()) || player.getMainHandItem().is(UGItems.UTHERIUM_AXE.get())) {
 				if (event.getEntity().getType().is(UGTags.Entities.ROTSPAWN)) {
 					event.setAmount(damage * 1.5F);
+					if (!event.getEntity().level().isClientSide()) {
+						UGPacketHandler.CHANNEL.send(PacketDistributor.ALL.noArg(), new CreateCritParticlePacket(event.getEntity().getId(), 2, UGParticleTypes.UTHERIUM_CRIT.get()));
+					}
 				}
 			}
 		}
@@ -60,16 +68,10 @@ public class UGToolEvents {
 	public static void froststeelAttackEvent(LivingHurtEvent event) {
 		Entity source = event.getSource().getEntity();
 		if (source instanceof Player player) {
-			if (player.getMainHandItem().getItem() == UGItems.FROSTSTEEL_SWORD.get()) {
+			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_SWORD.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_AXE.get())) {
 				event.getEntity().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 2));
 			}
-			if (player.getMainHandItem().getItem() == UGItems.FROSTSTEEL_PICKAXE.get()) {
-				event.getEntity().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 1));
-			}
-			if (player.getMainHandItem().getItem() == UGItems.FROSTSTEEL_AXE.get()) {
-				event.getEntity().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 2));
-			}
-			if (player.getMainHandItem().getItem() == UGItems.FROSTSTEEL_SHOVEL.get()) {
+			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_PICKAXE.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_SHOVEL.get())) {
 				event.getEntity().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 1));
 			}
 		}
