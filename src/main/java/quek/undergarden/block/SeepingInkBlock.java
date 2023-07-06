@@ -21,11 +21,14 @@ public class SeepingInkBlock extends Block {
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
-		BlockPos blockpos = pos.relative(Direction.DOWN.getOpposite());
-		BlockState blockstate = worldIn.getBlockState(blockpos);
-		Block block = blockstate.getBlock();
+	public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+		return reader.getBlockState(pos.above()).isFaceSturdy(reader, pos.above(), Direction.DOWN);
+	}
 
-		return block == UGBlocks.INK_MUSHROOM_CAP.get();
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		if (level.getRandom().nextInt(level.getBlockState(pos.above()).is(UGBlocks.INK_MUSHROOM_CAP.get()) ? 5 : 15) == 0 && level.getBlockState(pos.below()).isAir()) {
+			level.addParticle(UGParticleTypes.DRIPPING_INK.get(), pos.getX() + 0.55D, pos.getY() + 0.1D, pos.getZ() + 0.45D, 0.0F, 0.0F, 0.0F);
+		}
 	}
 }

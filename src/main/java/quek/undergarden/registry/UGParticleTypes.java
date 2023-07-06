@@ -27,6 +27,15 @@ public class UGParticleTypes {
 	public static final RegistryObject<SimpleParticleType> SHIMMER = PARTICLES.register("shimmer", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> SMOG = PARTICLES.register("smog", () -> new SimpleParticleType(false));
 
+	public static final RegistryObject<SimpleParticleType> DRIPPING_BLOOD = PARTICLES.register("dripping_blood", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> FALLING_BLOOD = PARTICLES.register("falling_blood", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> LANDING_BLOOD = PARTICLES.register("landing_blood", () -> new SimpleParticleType(false));
+
+	public static final RegistryObject<SimpleParticleType> DRIPPING_INK = PARTICLES.register("dripping_ink", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> FALLING_INK = PARTICLES.register("falling_ink", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> LANDING_INK = PARTICLES.register("landing_ink", () -> new SimpleParticleType(false));
+
+	
 	public static final ParticleGroup SHIMMER_GROUP = new ParticleGroup(1000);
 
 	@SubscribeEvent
@@ -38,5 +47,12 @@ public class UGParticleTypes {
 		event.registerSpriteSet(GLOOMPER_FART.get(), SmokeParticle.Provider::new);
 		event.registerSpriteSet(SHIMMER.get(), ShimmerParticle.Provider::new);
 		event.registerSpriteSet(SMOG.get(), SmogParticle.Provider::new);
+
+		event.registerSprite(DRIPPING_BLOOD.get(), MushroomDripParticle::createBloodHangParticle);
+		event.registerSprite(FALLING_BLOOD.get(), MushroomDripParticle::createBloodFallParticle);
+		event.registerSprite(LANDING_BLOOD.get(), MushroomDripParticle::createBloodLandParticle);
+		event.registerSprite(DRIPPING_INK.get(), MushroomDripParticle::createInkHangParticle);
+		event.registerSprite(FALLING_INK.get(), MushroomDripParticle::createInkFallParticle);
+		event.registerSprite(LANDING_INK.get(), MushroomDripParticle::createInkLandParticle);
 	}
 }
