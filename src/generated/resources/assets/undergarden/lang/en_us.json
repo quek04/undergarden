@@ -266,6 +266,8 @@
   "death.attack.shard_torch.player": "%1$s was killed by a Shard Torch's magic whilst trying to escape %2$s",
   "effect.undergarden.brittleness": "Brittleness",
   "effect.undergarden.brittleness.description": "The higher the victim's armor value is, the more damage they will take. Amount of damage received scales with potion level.",
+  "effect.undergarden.chilly": "Chilly",
+  "effect.undergarden.chilly.description": "Slows the victim down and causes them to visually shake.",
   "effect.undergarden.featherweight": "Featherweight",
   "effect.undergarden.featherweight.description": "When damaged, victim will receive increased knockback. Amount of knockback scales with potion level.",
   "effect.undergarden.gooey": "Gooey",

@@ -3,6 +3,9 @@
   "package": "quek.undergarden.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "undergarden.refmap.json",
+  "client": [
+    "LivingEntityRendererMixin"
+  ],
   "mixins": [
     "BubbleColumnBlockMixin",
     "CauldronBlockMixin",

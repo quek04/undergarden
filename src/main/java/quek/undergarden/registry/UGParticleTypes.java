@@ -27,6 +27,7 @@ public class UGParticleTypes {
 	public static final RegistryObject<SimpleParticleType> SHIMMER = PARTICLES.register("shimmer", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> SMOG = PARTICLES.register("smog", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> UTHERIUM_CRIT = PARTICLES.register("utherium_crit", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> SNOWFLAKE = PARTICLES.register("snowflake", () -> new SimpleParticleType(false));
 
 	public static final RegistryObject<SimpleParticleType> DRIPPING_BLOOD = PARTICLES.register("dripping_blood", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> FALLING_BLOOD = PARTICLES.register("falling_blood", () -> new SimpleParticleType(false));
@@ -51,7 +52,8 @@ public class UGParticleTypes {
 		event.registerSpriteSet(GLOOMPER_FART.get(), SmokeParticle.Provider::new);
 		event.registerSpriteSet(SHIMMER.get(), ShimmerParticle.Provider::new);
 		event.registerSpriteSet(SMOG.get(), SmogParticle.Provider::new);
-		event.registerSpriteSet(UTHERIUM_CRIT.get(), CustomCritParticle.UtheriumProvider::new);
+		event.registerSpriteSet(UTHERIUM_CRIT.get(), UtheriumCritParticle.Provider::new);
+		event.registerSpriteSet(SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
 
 		event.registerSprite(DRIPPING_BLOOD.get(), UGDripParticles::createBloodHangParticle);
 		event.registerSprite(FALLING_BLOOD.get(), UGDripParticles::createBloodFallParticle);

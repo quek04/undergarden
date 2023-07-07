@@ -4,12 +4,12 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 
-public class CustomCritParticle extends TextureSheetParticle {
+public class UtheriumCritParticle extends TextureSheetParticle {
 
 	private float rotSpeed;
 	private final float spinAcceleration;
 
-	protected CustomCritParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+	protected UtheriumCritParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 		super(level, x, y, z, xSpeed, ySpeed, zSpeed);
 		this.friction = 1.0F;
 		this.xd *= 0.1F;
@@ -50,15 +50,15 @@ public class CustomCritParticle extends TextureSheetParticle {
 		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
 	}
 
-	public static class UtheriumProvider implements ParticleProvider<SimpleParticleType> {
+	public static class Provider implements ParticleProvider<SimpleParticleType> {
 		private final SpriteSet spriteSet;
 
-		public UtheriumProvider(SpriteSet spriteSet) {
+		public Provider(SpriteSet spriteSet) {
 			this.spriteSet = spriteSet;
 		}
 
 		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			CustomCritParticle crit = new CustomCritParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
+			UtheriumCritParticle crit = new UtheriumCritParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
 			crit.lifetime = 40;
 			crit.gravity = 0.025F;
 			crit.pickSprite(this.spriteSet);

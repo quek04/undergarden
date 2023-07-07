@@ -16,4 +16,6 @@ public class UGEffects {
 	public static final RegistryObject<MobEffect> FEATHERWEIGHT = EFFECTS.register("featherweight", FeatherweightEffect::new);
 	public static final RegistryObject<MobEffect> VIRULENT_RESISTANCE = EFFECTS.register("virulent_resistance", VirulentResistanceEffect::new);
 	public static final RegistryObject<MobEffect> VIRULENCE = EFFECTS.register("virulence", VirulenceEffect::new);
+	public static final RegistryObject<MobEffect> CHILLY = EFFECTS.register("chilly", ChillyEffect::new);
+
 }
