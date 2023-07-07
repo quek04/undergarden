@@ -152,6 +152,7 @@ public class UGSoundEvents {
 
 	public static final RegistryObject<SoundEvent> SCINTLING_HURT = register("entity.scintling.hurt");
 	public static final RegistryObject<SoundEvent> SCINTLING_DEATH = register("entity.scintling.death");
+	public static final RegistryObject<SoundEvent> SCINTLING_STEP = register("entity.scintling.step");
 
 	private static RegistryObject<SoundEvent> register(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Undergarden.MODID, name)));

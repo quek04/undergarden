@@ -683,5 +683,12 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:block/honeyblock/break4"),
 				sound("minecraft:block/honeyblock/break5")
 		).subtitle("subtitles.entity.scintling.death"));
+
+		this.add(UGSoundEvents.SCINTLING_STEP, definition().with(
+				sound("minecraft:block/honeyblock/slide1"),
+				sound("minecraft:block/honeyblock/slide2"),
+				sound("minecraft:block/honeyblock/slide3"),
+				sound("minecraft:block/honeyblock/slide4")
+		));
 	}
 }

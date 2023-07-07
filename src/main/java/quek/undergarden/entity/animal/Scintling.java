@@ -104,5 +104,6 @@ public class Scintling extends Animal {
 
 	@Override
 	protected void playStepSound(BlockPos pos, BlockState state) {
+		this.playSound(UGSoundEvents.SCINTLING_STEP.get(), 0.3F, 1.0F);
 	}
 }

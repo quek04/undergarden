@@ -888,6 +888,14 @@
     ],
     "subtitle": "subtitles.entity.scintling.hurt"
   },
+  "entity.scintling.step": {
+    "sounds": [
+      "block/honeyblock/slide1",
+      "block/honeyblock/slide2",
+      "block/honeyblock/slide3",
+      "block/honeyblock/slide4"
+    ]
+  },
   "entity.sploogie.ambient": {
     "sounds": [
       "undergarden:entity/sploogie_ambient_1",
