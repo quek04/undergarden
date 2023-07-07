@@ -9,6 +9,7 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import quek.undergarden.Undergarden;
 import quek.undergarden.data.provider.UGRecipeProvider;
@@ -59,6 +60,30 @@ public class UGRecipes extends UGRecipeProvider {
 		makeHangingSign(UGBlocks.SMOGSTEM_HANGING_SIGN, UGBlocks.STRIPPED_SMOGSTEM_LOG).save(consumer);
 		makeHangingSign(UGBlocks.WIGGLEWOOD_HANGING_SIGN, UGBlocks.STRIPPED_WIGGLEWOOD_LOG).save(consumer);
 		makeHangingSign(UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.STRIPPED_GRONGLE_LOG).save(consumer);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.STONECUTTER)
+				.pattern(" I ")
+				.pattern("SSS")
+				.define('I', Items.IRON_INGOT)
+				.define('S', UGBlocks.DEPTHROCK.get())
+				.unlockedBy("has_depthrock", has(UGBlocks.DEPTHROCK.get()))
+				.save(consumer, name("stonecutter_from_depthrock"));
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.STONECUTTER)
+				.pattern(" I ")
+				.pattern("SSS")
+				.define('I', Items.IRON_INGOT)
+				.define('S', UGBlocks.SHIVERSTONE.get())
+				.unlockedBy("has_shiverstone", has(UGBlocks.SHIVERSTONE.get()))
+				.save(consumer, name("stonecutter_from_shiverstone"));
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.STONECUTTER)
+				.pattern(" I ")
+				.pattern("SSS")
+				.define('I', Items.IRON_INGOT)
+				.define('S', UGBlocks.TREMBLECRUST.get())
+				.unlockedBy("has_tremblecrust", has(UGBlocks.TREMBLECRUST.get()))
+				.save(consumer, name("stonecutter_from_tremblecrust"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, UGItems.UNDERBEAN_STICK.get())
 				.requires(Items.STICK)

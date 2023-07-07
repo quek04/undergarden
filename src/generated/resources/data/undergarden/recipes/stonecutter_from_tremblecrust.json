@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "undergarden:tremblecrust"
+    }
+  },
+  "pattern": [
+    " I ",
+    "SSS"
+  ],
+  "result": {
+    "item": "minecraft:stonecutter"
+  },
+  "show_notification": true
+}
