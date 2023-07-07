@@ -36,7 +36,10 @@ public class UGParticleTypes {
 	public static final RegistryObject<SimpleParticleType> FALLING_INK = PARTICLES.register("falling_ink", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> LANDING_INK = PARTICLES.register("landing_ink", () -> new SimpleParticleType(false));
 
-	
+	public static final RegistryObject<SimpleParticleType> DRIPPING_VIRULENT = PARTICLES.register("dripping_virulent", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> FALLING_VIRULENT = PARTICLES.register("falling_virulent", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> LANDING_VIRULENT = PARTICLES.register("landing_virulent", () -> new SimpleParticleType(false));
+
 	public static final ParticleGroup SHIMMER_GROUP = new ParticleGroup(1000);
 
 	@SubscribeEvent
@@ -50,11 +53,14 @@ public class UGParticleTypes {
 		event.registerSpriteSet(SMOG.get(), SmogParticle.Provider::new);
 		event.registerSpriteSet(UTHERIUM_CRIT.get(), CustomCritParticle.UtheriumProvider::new);
 
-		event.registerSprite(DRIPPING_BLOOD.get(), MushroomDripParticle::createBloodHangParticle);
-		event.registerSprite(FALLING_BLOOD.get(), MushroomDripParticle::createBloodFallParticle);
-		event.registerSprite(LANDING_BLOOD.get(), MushroomDripParticle::createBloodLandParticle);
-		event.registerSprite(DRIPPING_INK.get(), MushroomDripParticle::createInkHangParticle);
-		event.registerSprite(FALLING_INK.get(), MushroomDripParticle::createInkFallParticle);
-		event.registerSprite(LANDING_INK.get(), MushroomDripParticle::createInkLandParticle);
+		event.registerSprite(DRIPPING_BLOOD.get(), UGDripParticles::createBloodHangParticle);
+		event.registerSprite(FALLING_BLOOD.get(), UGDripParticles::createBloodFallParticle);
+		event.registerSprite(LANDING_BLOOD.get(), UGDripParticles::createBloodLandParticle);
+		event.registerSprite(DRIPPING_INK.get(), UGDripParticles::createInkHangParticle);
+		event.registerSprite(FALLING_INK.get(), UGDripParticles::createInkFallParticle);
+		event.registerSprite(LANDING_INK.get(), UGDripParticles::createInkLandParticle);
+		event.registerSprite(DRIPPING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentHangParticle);
+		event.registerSprite(FALLING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentFallParticle);
+		event.registerSprite(LANDING_VIRULENT.get(), UGDripParticles::createVirulentLandParticle);
 	}
 }
