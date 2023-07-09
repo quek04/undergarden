@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGItems;
@@ -87,9 +88,10 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
 
 	@Override
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-		double x = (double) pos.getX() + 0.5D;
-		double y = (double) pos.getY() + 0.8D;
-		double z = (double) pos.getZ() + 0.5D;
+		Vec3 offset = state.getOffset(level, pos);
+		double x = (double) pos.getX() + 0.5D + offset.x();
+		double y = (double) pos.getY() + 0.8D + offset.y();
+		double z = (double) pos.getZ() + 0.5D + offset.z();
 		if (state.getValue(AGE) == 1) {
 			level.addParticle(ParticleTypes.FLAME, x, y, z, 0.0D, 0.0D, 0.0D);
 		}
@@ -97,7 +99,8 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		return SHAPE;
+		Vec3 offset = state.getOffset(level, pos);
+		return SHAPE.move(offset.x(), offset.y(), offset.z());
 	}
 
 	@Override

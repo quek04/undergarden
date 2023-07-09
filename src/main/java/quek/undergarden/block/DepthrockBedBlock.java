@@ -79,8 +79,8 @@ public class DepthrockBedBlock extends BedBlock {
 	}
 
 	@Override
-	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float p_152173_) {
-		super.fallOn(level, state, pos, entity, p_152173_);
+	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float distance) {
+		entity.causeFallDamage(distance, 1.25F, entity.damageSources().fall());
 	}
 
 	//stops bouncing

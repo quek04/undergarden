@@ -27,7 +27,8 @@ import quek.undergarden.registry.UGItems;
 public class UnderbeanBushBlock extends UGBushBlock implements BonemealableBlock {
 
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-	protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
+	protected static final VoxelShape BABY_SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
+	protected static final VoxelShape NORMAL_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
 	public UnderbeanBushBlock(Properties properties) {
 		super(properties);
@@ -36,7 +37,7 @@ public class UnderbeanBushBlock extends UGBushBlock implements BonemealableBlock
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		return SHAPE;
+		return state.getValue(AGE) == 0 ? BABY_SHAPE : NORMAL_SHAPE;
 	}
 
 	@Override

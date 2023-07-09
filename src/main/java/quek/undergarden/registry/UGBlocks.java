@@ -322,37 +322,7 @@ public class UGBlocks {
 					}
 				};
 			} else if (Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
-				return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties()) {
-					@Override
-					public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-						consumer.accept(new IClientItemExtensions() {
-							@Override
-							public void renderHelmetOverlay(ItemStack stack, Player player, int width, int height, float partialTicks) {
-								ResourceLocation overlay = new ResourceLocation(Undergarden.MODID, "textures/gloomgourd_overlay.png");
-								RenderSystem.disableDepthTest();
-								RenderSystem.depthMask(false);
-								RenderSystem.defaultBlendFunc();
-								RenderSystem.setShader(GameRenderer::getPositionTexShader);
-								RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-								RenderSystem.setShaderTexture(0, overlay);
-								Minecraft.getInstance().getTextureManager().bindForSetup(overlay);
-								Tesselator tessellator = Tesselator.getInstance();
-								BufferBuilder bufferbuilder = tessellator.getBuilder();
-								bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-								final double scaledWidth = Minecraft.getInstance().getWindow().getGuiScaledWidth();
-								final double scaledHeight = Minecraft.getInstance().getWindow().getGuiScaledHeight();
-								bufferbuilder.vertex(0.0D, scaledHeight, -90.0D).uv(0.0F, 1.0F).endVertex();
-								bufferbuilder.vertex(scaledWidth, scaledHeight, -90.0D).uv(1.0F, 1.0F).endVertex();
-								bufferbuilder.vertex(scaledWidth, 0.0D, -90.0D).uv(1.0F, 0.0F).endVertex();
-								bufferbuilder.vertex(0.0D, 0.0D, -90.0D).uv(0.0F, 0.0F).endVertex();
-								tessellator.end();
-								RenderSystem.depthMask(true);
-								RenderSystem.enableDepthTest();
-								RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-							}
-						});
-					}
-				};
+				return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {
 				return new SignItem(new Item.Properties().stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
 			} else if (Objects.requireNonNull(block.get()) == WIGGLEWOOD_SIGN.get()) {
