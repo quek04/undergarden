@@ -10,8 +10,8 @@ import quek.undergarden.entity.boss.Masticator;
 
 public class MasticatorEyesLayer<T extends Masticator, M extends MasticatorModel<T>> extends EyesLayer<T, M> {
 
-	public MasticatorEyesLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public MasticatorEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

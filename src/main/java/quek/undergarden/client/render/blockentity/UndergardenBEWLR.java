@@ -22,14 +22,14 @@ public class UndergardenBEWLR extends BlockEntityWithoutLevelRenderer {
 	}
 
 	@Override
-	public void renderByItem(ItemStack stack, ItemDisplayContext context, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+	public void renderByItem(ItemStack stack, ItemDisplayContext context, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
 		Item item = stack.getItem();
 		if (item instanceof BlockItem) {
 			Block block = ((BlockItem) item).getBlock();
 			if (block instanceof GrongletBlock) {
-				Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new GrongletBlockEntity(BlockPos.ZERO, UGBlocks.GRONGLET.get().defaultBlockState()), poseStack, buffer, packedLight, packedOverlay);
+				Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new GrongletBlockEntity(BlockPos.ZERO, UGBlocks.GRONGLET.get().defaultBlockState()), ms, buffer, light, overlay);
 			} else {
-				Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new DepthrockBedBlockEntity(BlockPos.ZERO, UGBlocks.DEPTHROCK_BED.get().defaultBlockState()), poseStack, buffer, packedLight, packedOverlay);
+				Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new DepthrockBedBlockEntity(BlockPos.ZERO, UGBlocks.DEPTHROCK_BED.get().defaultBlockState()), ms, buffer, light, overlay);
 			}
 		}
 	}

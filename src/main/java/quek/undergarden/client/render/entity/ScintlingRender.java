@@ -11,8 +11,8 @@ import quek.undergarden.entity.animal.Scintling;
 
 public class ScintlingRender extends MobRenderer<Scintling, ScintlingModel<Scintling>> {
 
-	public ScintlingRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new ScintlingModel<>(renderContext.bakeLayer(UGModelLayers.SCINTLING)), 0.5F);
+	public ScintlingRender(EntityRendererProvider.Context context) {
+		super(context, new ScintlingModel<>(context.bakeLayer(UGModelLayers.SCINTLING)), 0.5F);
 		this.addLayer(new ScintlingGlowLayer<>(this));
 	}
 

@@ -11,8 +11,8 @@ import quek.undergarden.entity.cavern.Muncher;
 
 public class MuncherRender extends MobRenderer<Muncher, MuncherModel<Muncher>> {
 
-	public MuncherRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new MuncherModel<>(renderContext.bakeLayer(UGModelLayers.MUNCHER)), 0.5F);
+	public MuncherRender(EntityRendererProvider.Context context) {
+		super(context, new MuncherModel<>(context.bakeLayer(UGModelLayers.MUNCHER)), 0.5F);
 		this.addLayer(new MuncherEyesLayer<>(this));
 	}
 

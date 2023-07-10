@@ -8,8 +8,8 @@ import quek.undergarden.registry.UGBlockEntities;
 
 public class DepthrockBedBlockEntity extends BlockEntity {
 
-	public DepthrockBedBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
-		super(UGBlockEntities.DEPTHROCK_BED.get(), pWorldPosition, pBlockState);
+	public DepthrockBedBlockEntity(BlockPos pos, BlockState state) {
+		super(UGBlockEntities.DEPTHROCK_BED.get(), pos, state);
 	}
 
 	@Override

@@ -26,10 +26,10 @@ public class ShardParticle extends RisingParticle {
 		return this.quadSize * (1.0F - lvt_2_1_ * lvt_2_1_ * 0.5F);
 	}
 
-	public int getLightColor(float partialTick) {
-		float lvt_2_1_ = ((float) this.age + partialTick) / (float) this.lifetime;
+	public int getLightColor(float partialTicks) {
+		float lvt_2_1_ = ((float) this.age + partialTicks) / (float) this.lifetime;
 		lvt_2_1_ = Mth.clamp(lvt_2_1_, 0.0F, 1.0F);
-		int lightColor = super.getLightColor(partialTick);
+		int lightColor = super.getLightColor(partialTicks);
 		int lvt_4_1_ = lightColor & 255;
 		int lvt_5_1_ = lightColor >> 16 & 255;
 		lvt_4_1_ += (int) (lvt_2_1_ * 15.0F * 16.0F);

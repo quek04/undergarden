@@ -48,9 +48,9 @@ public class CarvedGloomgourdBlock extends CarvedPumpkinBlock {
 	}
 
 	@Override
-	public void onPlace(BlockState state, Level worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
+	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
 		if (!oldState.is(state.getBlock())) {
-			this.trySpawnMinion(worldIn, pos);
+			this.trySpawnMinion(level, pos);
 		}
 	}
 
@@ -59,27 +59,27 @@ public class CarvedGloomgourdBlock extends CarvedPumpkinBlock {
 		return this.getMinionBasePattern().find(reader, pos) != null;
 	}
 
-	private void trySpawnMinion(Level world, BlockPos pos) {
-		BlockPattern.BlockPatternMatch minionPattern = this.getMinionPattern().find(world, pos);
+	private void trySpawnMinion(Level level, BlockPos pos) {
+		BlockPattern.BlockPatternMatch minionPattern = this.getMinionPattern().find(level, pos);
 		if (minionPattern != null) {
 			for (int i = 0; i < this.getMinionPattern().getHeight(); ++i) {
 				BlockInWorld cachedblockinfo = minionPattern.getBlock(0, i, 0);
-				world.setBlock(cachedblockinfo.getPos(), Blocks.AIR.defaultBlockState(), 2);
-				world.levelEvent(2001, cachedblockinfo.getPos(), Block.getId(cachedblockinfo.getState()));
+				level.setBlock(cachedblockinfo.getPos(), Blocks.AIR.defaultBlockState(), 2);
+				level.levelEvent(2001, cachedblockinfo.getPos(), Block.getId(cachedblockinfo.getState()));
 			}
 
-			Minion minionEntity = UGEntityTypes.MINION.get().create(world);
+			Minion minionEntity = UGEntityTypes.MINION.get().create(level);
 			BlockPos blockpos1 = minionPattern.getBlock(0, 2, 0).getPos();
 			minionEntity.moveTo((double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 1.0D, (double) blockpos1.getZ() + 0.5D, 0.0F, 0.0F);
-			world.addFreshEntity(minionEntity);
+			level.addFreshEntity(minionEntity);
 
-			for (ServerPlayer serverplayerentity : world.getEntitiesOfClass(ServerPlayer.class, minionEntity.getBoundingBox().inflate(5.0D))) {
+			for (ServerPlayer serverplayerentity : level.getEntitiesOfClass(ServerPlayer.class, minionEntity.getBoundingBox().inflate(5.0D))) {
 				CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayerentity, minionEntity);
 			}
 
 			for (int l = 0; l < this.getMinionPattern().getHeight(); ++l) {
 				BlockInWorld cachedblockinfo3 = minionPattern.getBlock(0, l, 0);
-				world.blockUpdated(cachedblockinfo3.getPos(), Blocks.AIR);
+				level.blockUpdated(cachedblockinfo3.getPos(), Blocks.AIR);
 			}
 		}
 	}

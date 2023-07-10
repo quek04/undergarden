@@ -19,6 +19,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -27,9 +28,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.ForgeHooks;
 import quek.undergarden.registry.UGItems;
 
-public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
+public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
 
@@ -49,9 +51,9 @@ public class DitchbulbBlock extends UGBushBlock implements BonemealableBlock {
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		super.tick(state, level, pos, random);
 		int age = state.getValue(AGE);
-		if (random.nextInt(10) == 0 && age != 1 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, true)) {
+		if (random.nextInt(10) == 0 && age != 1 && ForgeHooks.onCropsGrowPre(level, pos, state, true)) {
 			level.setBlock(pos, state.setValue(AGE, 1), 2);
-			net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+			ForgeHooks.onCropsGrowPost(level, pos, state);
 		}
 	}
 

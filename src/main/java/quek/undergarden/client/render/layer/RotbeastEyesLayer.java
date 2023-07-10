@@ -10,8 +10,8 @@ import quek.undergarden.entity.rotspawn.Rotbeast;
 
 public class RotbeastEyesLayer<T extends Rotbeast, M extends RotbeastModel<T>> extends EyesLayer<T, M> {
 
-	public RotbeastEyesLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public RotbeastEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

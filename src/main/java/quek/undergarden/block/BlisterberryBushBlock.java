@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -23,10 +24,13 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.checkerframework.checker.units.qual.A;
-import quek.undergarden.registry.*;
+import net.minecraftforge.common.ForgeHooks;
+import quek.undergarden.registry.UGDamageSources;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSoundEvents;
 
-public class BlisterberryBushBlock extends UGBushBlock implements BonemealableBlock {
+public class BlisterberryBushBlock extends BushBlock implements BonemealableBlock {
 
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 	protected static final VoxelShape BABY_SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 8.0D, 12.0D);
@@ -43,11 +47,6 @@ public class BlisterberryBushBlock extends UGBushBlock implements BonemealableBl
 	}
 
 	@Override
-	protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-		return state.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
-	}
-
-	@Override
 	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
 		return new ItemStack(UGItems.BLISTERBERRY.get());
 	}
@@ -56,9 +55,9 @@ public class BlisterberryBushBlock extends UGBushBlock implements BonemealableBl
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		super.tick(state, level, pos, random);
 		int i = state.getValue(AGE);
-		if (i < 3 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
+		if (i < 3 && ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
 			level.setBlock(pos, state.setValue(AGE, i + 1), 2);
-			net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+			ForgeHooks.onCropsGrowPost(level, pos, state);
 		}
 
 	}
@@ -67,7 +66,7 @@ public class BlisterberryBushBlock extends UGBushBlock implements BonemealableBl
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 		if (entity.getType() != UGEntityTypes.SCINTLING.get()) {
 			entity.makeStuckInBlock(state, new Vec3(0.8F, 0.75D, 0.8F));
-			if (!level.isClientSide && state.getValue(AGE) > 0 && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
+			if (!level.isClientSide() && state.getValue(AGE) > 0 && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
 				double d0 = Math.abs(entity.getX() - entity.xOld);
 				double d1 = Math.abs(entity.getZ() - entity.zOld);
 				if (d0 >= (double) 0.003F || d1 >= (double) 0.003F) {
@@ -81,14 +80,14 @@ public class BlisterberryBushBlock extends UGBushBlock implements BonemealableBl
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		int age = state.getValue(AGE);
 		boolean flag = age == 3;
-		if (!flag && player.getItemInHand(hand).getItem() == Items.BONE_MEAL) {
+		if (!flag && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
 			return InteractionResult.PASS;
 		} else if (age > 1) {
-			int random = 1 + level.random.nextInt(2);
-			int random2 = level.random.nextInt(2);
+			int random = 1 + level.getRandom().nextInt(2);
+			int random2 = level.getRandom().nextInt(2);
 			popResource(level, pos, new ItemStack(UGItems.BLISTERBERRY.get(), random + (flag ? 1 : 0)));
 			popResource(level, pos, new ItemStack(UGItems.ROTTEN_BLISTERBERRY.get(), random2 + (flag ? 1 : 0)));
-			level.playSound(null, pos, UGSoundEvents.PICK_BLISTERBERRY_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+			level.playSound(null, pos, UGSoundEvents.PICK_BLISTERBERRY_BUSH.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.getRandom().nextFloat() * 0.4F);
 			level.setBlock(pos, state.setValue(AGE, 1), 2);
 			return InteractionResult.SUCCESS;
 		} else {

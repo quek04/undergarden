@@ -14,16 +14,16 @@ import quek.undergarden.registry.UGItems;
 
 public class Blisterbomb extends ThrowableItemProjectile {
 
-	public Blisterbomb(EntityType<? extends Blisterbomb> type, Level world) {
-		super(type, world);
+	public Blisterbomb(EntityType<? extends Blisterbomb> type, Level level) {
+		super(type, level);
 	}
 
-	public Blisterbomb(Level world, LivingEntity thrower) {
-		super(UGEntityTypes.BLISTERBOMB.get(), thrower, world);
+	public Blisterbomb(Level level, LivingEntity thrower) {
+		super(UGEntityTypes.BLISTERBOMB.get(), thrower, level);
 	}
 
-	public Blisterbomb(Level worldIn, double x, double y, double z) {
-		super(UGEntityTypes.BLISTERBOMB.get(), x, y, z, worldIn);
+	public Blisterbomb(Level level, double x, double y, double z) {
+		super(UGEntityTypes.BLISTERBOMB.get(), x, y, z, level);
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class Blisterbomb extends ThrowableItemProjectile {
 
 	@Override
 	protected void onHit(HitResult result) {
-		if (!this.level().isClientSide) {
+		if (!this.level().isClientSide()) {
 			if (result.getType() == HitResult.Type.ENTITY || result.getType() == HitResult.Type.BLOCK) {
 				this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3F, Level.ExplosionInteraction.NONE);
 				this.remove(RemovalReason.KILLED);

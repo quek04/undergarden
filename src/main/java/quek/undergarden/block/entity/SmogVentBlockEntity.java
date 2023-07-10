@@ -9,8 +9,8 @@ import quek.undergarden.registry.UGParticleTypes;
 
 public class SmogVentBlockEntity extends BlockEntity {
 
-	public SmogVentBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
-		super(UGBlockEntities.SMOG_VENT.get(), pWorldPosition, pBlockState);
+	public SmogVentBlockEntity(BlockPos pos, BlockState state) {
+		super(UGBlockEntities.SMOG_VENT.get(), pos, state);
 	}
 
 	public static <B extends BlockEntity> void tick(Level level, BlockPos pos, BlockState state, B blockEntity) {

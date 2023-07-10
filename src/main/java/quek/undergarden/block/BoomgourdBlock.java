@@ -32,7 +32,7 @@ public class BoomgourdBlock extends TntBlock {
 
 	@Override
 	public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity entity) {
-		if (!level.isClientSide) {
+		if (!level.isClientSide()) {
 			Boomgourd boomgourd = new Boomgourd(level, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, entity);
 			level.addFreshEntity(boomgourd);
 			level.playSound(null, boomgourd.getX(), boomgourd.getY(), boomgourd.getZ(), UGSoundEvents.BOOMGOURD_PRIMED.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -42,10 +42,10 @@ public class BoomgourdBlock extends TntBlock {
 
 	@Override
 	public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
-		if (!level.isClientSide) {
+		if (!level.isClientSide()) {
 			Boomgourd boomgourd = new Boomgourd(level, (double) pos.getX() + 0.5D, pos.getY(), (double) pos.getZ() + 0.5D, explosion.getIndirectSourceEntity());
 			int fuse = boomgourd.getFuse();
-			boomgourd.setFuse((short) (level.random.nextInt(fuse / 4) + fuse / 8));
+			boomgourd.setFuse((short) (level.getRandom().nextInt(fuse / 4) + fuse / 8));
 			level.addFreshEntity(boomgourd);
 		}
 	}

@@ -10,8 +10,8 @@ import quek.undergarden.entity.rotspawn.Rotling;
 
 public class RotlingEyesLayer<T extends Rotling, M extends RotlingModel<T>> extends EyesLayer<T, M> {
 
-	public RotlingEyesLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public RotlingEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class Gronglet extends SlingshotProjectile {
 	@Override
 	protected void onHitBlock(BlockHitResult result) {
 		super.onHitBlock(result);
-		if (!this.level().isClientSide && this.ricochetTimes == 0) {
+		if (!this.level().isClientSide() && this.ricochetTimes == 0) {
 			BlockPos pos = result.getBlockPos();
 			Direction direction = result.getDirection();
 			if (UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction).canSurvive(this.level(), pos.relative(direction)) && this.level().getBlockState(pos.relative(direction)).isAir()) {

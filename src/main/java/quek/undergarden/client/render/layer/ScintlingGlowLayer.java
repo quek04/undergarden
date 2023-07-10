@@ -10,8 +10,8 @@ import quek.undergarden.entity.animal.Scintling;
 
 public class ScintlingGlowLayer<T extends Scintling, M extends ScintlingModel<T>> extends EyesLayer<T, M> {
 
-	public ScintlingGlowLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public ScintlingGlowLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

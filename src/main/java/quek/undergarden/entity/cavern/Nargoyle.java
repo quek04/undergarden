@@ -46,7 +46,7 @@ public class Nargoyle extends CavernMonster {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.NARGOYLE_HURT.get();
 	}
 

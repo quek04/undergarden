@@ -73,8 +73,8 @@ public class DwellerModel<T extends Dweller> extends AgeableListModel<T> {
 	}
 
 	@Override
-	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick) {
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTicks) {
 		this.mane.visible = !entity.isSaddled();
-		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTicks);
 	}
 }

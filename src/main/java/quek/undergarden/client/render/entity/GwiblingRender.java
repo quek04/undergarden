@@ -14,8 +14,8 @@ import quek.undergarden.entity.animal.Gwibling;
 
 public class GwiblingRender extends MobRenderer<Gwibling, GwiblingModel<Gwibling>> {
 
-	public GwiblingRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new GwiblingModel<>(renderContext.bakeLayer(UGModelLayers.GWIBLING)), 0.3F);
+	public GwiblingRender(EntityRendererProvider.Context context) {
+		super(context, new GwiblingModel<>(context.bakeLayer(UGModelLayers.GWIBLING)), 0.3F);
 		this.addLayer(new GwiblingEyesLayer<>(this));
 	}
 
@@ -25,13 +25,13 @@ public class GwiblingRender extends MobRenderer<Gwibling, GwiblingModel<Gwibling
 	}
 
 	@Override
-	protected void setupRotations(Gwibling entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks) {
-		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+	protected void setupRotations(Gwibling entity, PoseStack stack, float ageInTicks, float rotationYaw, float partialTicks) {
+		super.setupRotations(entity, stack, ageInTicks, rotationYaw, partialTicks);
 		float f = 4.3F * Mth.sin(0.6F * ageInTicks);
-		poseStack.mulPose(Axis.YP.rotationDegrees(f));
+		stack.mulPose(Axis.YP.rotationDegrees(f));
 		if (!entity.isInWater()) {
-			poseStack.translate(0.1F, 0.1F, -0.1F);
-			poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+			stack.translate(0.1F, 0.1F, -0.1F);
+			stack.mulPose(Axis.ZP.rotationDegrees(90.0F));
 		}
 	}
 }

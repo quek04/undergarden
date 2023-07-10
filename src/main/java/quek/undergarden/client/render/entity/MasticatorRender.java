@@ -11,8 +11,8 @@ import quek.undergarden.entity.boss.Masticator;
 
 public class MasticatorRender extends MobRenderer<Masticator, MasticatorModel<Masticator>> {
 
-	public MasticatorRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new MasticatorModel<>(renderContext.bakeLayer(UGModelLayers.MASTICATOR)), 2.0F);
+	public MasticatorRender(EntityRendererProvider.Context context) {
+		super(context, new MasticatorModel<>(context.bakeLayer(UGModelLayers.MASTICATOR)), 2.0F);
 		this.addLayer(new MasticatorEyesLayer<>(this));
 	}
 

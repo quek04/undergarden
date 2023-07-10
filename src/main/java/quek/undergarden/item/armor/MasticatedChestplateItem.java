@@ -12,14 +12,14 @@ import net.minecraft.world.level.Level;
 
 public class MasticatedChestplateItem extends ArmorItem {
 
-	public MasticatedChestplateItem(ArmorMaterial materialIn) {
-		super(materialIn, Type.CHESTPLATE, new Properties()
+	public MasticatedChestplateItem(ArmorMaterial material) {
+		super(material, Type.CHESTPLATE, new Properties()
 				.rarity(Rarity.EPIC)
 		);
 	}
 
 	@Override
-	public void onCraftedBy(ItemStack stack, Level worldIn, Player playerIn) {
+	public void onCraftedBy(ItemStack stack, Level level, Player playerIn) {
 		stack.serializeNBT();
 		stack.enchant(Enchantments.THORNS, 5);
 	}
@@ -30,7 +30,7 @@ public class MasticatedChestplateItem extends ArmorItem {
 	}
 
 	@Override
-	public String getArmorTexture(ItemStack itemstack, Entity entity, EquipmentSlot slot, String layer) {
+	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String layer) {
 		return "undergarden:textures/armor/masticated_layer_1.png";
 	}
 }

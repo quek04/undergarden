@@ -10,8 +10,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class Rotbeast extends RotspawnMonster {
@@ -37,7 +35,7 @@ public class Rotbeast extends RotspawnMonster {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.ROTBEAST_HURT.get();
 	}
 
@@ -47,7 +45,7 @@ public class Rotbeast extends RotspawnMonster {
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn) {
+	protected void playStepSound(BlockPos pos, BlockState state) {
 		this.playSound(UGSoundEvents.ROTBEAST_STEP.get(), 0.15F, 1.0F);
 	}
 
@@ -61,22 +59,21 @@ public class Rotbeast extends RotspawnMonster {
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn) {
+	public boolean doHurtTarget(Entity entity) {
 		this.attackTimer = 10;
 		this.level().broadcastEntityEvent(this, (byte) 4);
 		float f = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-		float f1 = (int) f > 0 ? f / 2.0F + (float) this.random.nextInt((int) f) : f;
-		boolean flag = entityIn.hurt(this.damageSources().mobAttack(this), f1);
+		float f1 = (int) f > 0 ? f / 2.0F + (float) this.getRandom().nextInt((int) f) : f;
+		boolean flag = entity.hurt(this.damageSources().mobAttack(this), f1);
 		if (flag) {
-			entityIn.setDeltaMovement(entityIn.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
-			this.doEnchantDamageEffects(this, entityIn);
+			entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
+			this.doEnchantDamageEffects(this, entity);
 		}
 
 		this.playSound(UGSoundEvents.ROTBEAST_ATTACK.get(), 1.0F, 1.0F);
 		return flag;
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	public void handleEntityEvent(byte id) {
 		if (id == 4) {
 			this.attackTimer = 10;
@@ -86,7 +83,6 @@ public class Rotbeast extends RotspawnMonster {
 		}
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	public int getAttackTimer() {
 		return this.attackTimer;
 	}

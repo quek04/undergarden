@@ -10,6 +10,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -44,6 +45,7 @@ public class Brute extends Animal implements NeutralMob {
 		this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Brute.class, 6.0F));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(0, new HurtByTargetGoal(this).setAlertOthers());
+		this.targetSelector.addGoal(2, new ResetUniversalAngerTargetGoal<>(this, true));
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {
@@ -59,7 +61,7 @@ public class Brute extends Animal implements NeutralMob {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.BRUTE_HURT.get();
 	}
 
@@ -111,7 +113,7 @@ public class Brute extends Animal implements NeutralMob {
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose pPose, EntityDimensions pSize) {
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
 		return 1.9F;
 	}
 }

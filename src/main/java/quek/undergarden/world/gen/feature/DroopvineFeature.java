@@ -14,6 +14,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import quek.undergarden.block.Droopvine;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGTags;
 
 public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
 
@@ -30,7 +31,7 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
 			return false;
 		} else {
 			BlockState blockstate = level.getBlockState(pos.above());
-			if (!blockstate.is(UGBlocks.DEPTHROCK.get()) && !blockstate.is(UGBlocks.SHIVERSTONE.get())) {
+			if (!blockstate.is(UGTags.Blocks.BASE_STONE_UNDERGARDEN)) {
 				return false;
 			} else {
 				this.placeRoofDroopvine(level, random, pos);
@@ -46,7 +47,7 @@ public class DroopvineFeature extends Feature<NoneFeatureConfiguration> {
 			posMutable.setWithOffset(pos, random.nextInt(8) - random.nextInt(8), random.nextInt(2) - random.nextInt(7), random.nextInt(8) - random.nextInt(8));
 			if (level.isEmptyBlock(posMutable)) {
 				BlockState blockstate = level.getBlockState(posMutable.above());
-				if (blockstate.is(UGBlocks.DEPTHROCK.get()) || blockstate.is(UGBlocks.SHIVERSTONE.get())) {
+				if (blockstate.is(UGTags.Blocks.BASE_STONE_UNDERGARDEN)) {
 					int length = Mth.nextInt(random, 1, 8);
 					if (random.nextInt(6) == 0) {
 						length *= 2;

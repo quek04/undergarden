@@ -1,4 +1,4 @@
-// 1.20.1	2023-06-14T22:10:50.1135902	Undergarden Block Tags
+// 1.20.1	2023-07-09T23:20:06.5261509	Undergarden Block Tags
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -92,6 +92,7 @@ d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/blocks/grongle_lo
 963615f7d9b44e3d738714937b2f19b4ef75525e data/undergarden/tags/blocks/muncher_breakables.json
 695146ab3553cf9d293d63b66b7e9c70c22f850c data/undergarden/tags/blocks/mushrooms.json
 d06d1c2dfb74f0c3d13fd37e1e5b8a7d5d1e588b data/undergarden/tags/blocks/portal_frame_blocks.json
+623ab7217e9af30498af2fbdea52aceeae67771f data/undergarden/tags/blocks/scintling_spawnable_on.json
 53dadb11482fdd04c73848240ea721d1176b5286 data/undergarden/tags/blocks/shiverstone_ore_replaceables.json
 1cc17ab498d59a9bdc36071e12595df0cdeab3e7 data/undergarden/tags/blocks/smogstem_logs.json
 817f355c76e8ad6e17a570f60cb4a0aa5154af28 data/undergarden/tags/blocks/tremblecrust_ore_replaceables.json

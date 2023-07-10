@@ -34,7 +34,7 @@ public abstract class VirulentMixFluid extends ForgeFlowingFluid {
 	public static class Flowing extends VirulentMixFluid {
 		public Flowing(Properties properties) {
 			super(properties);
-			registerDefaultState(getStateDefinition().any().setValue(LEVEL, 7));
+			this.registerDefaultState(this.getStateDefinition().any().setValue(LEVEL, 7));
 		}
 
 		@Override

@@ -13,8 +13,6 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import quek.undergarden.Undergarden;
 
-import javax.annotation.Nonnull;
-
 public class UGDamageSources {
 
 	public static final ResourceKey<DamageType> DEPTHROCK_PEBBLE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "depthrock_pebble"));

@@ -85,7 +85,7 @@ public class Minion extends AbstractGolem implements RangedAttackMob {
 					itemstack.shrink(1);
 				}
 
-				return InteractionResult.sidedSuccess(this.level().isClientSide);
+				return InteractionResult.sidedSuccess(this.level().isClientSide());
 			}
 		}
 	}

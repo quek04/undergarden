@@ -1,7 +1,6 @@
 package quek.undergarden.world.gen.trunkplacer;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -23,25 +22,17 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
 
 	protected final int width;
 
-	public static final Codec<SmogstemTrunkPlacer> CODEC = RecordCodecBuilder.create((me) ->
-			smogstemTrunkPlacerParts(me).apply(me, SmogstemTrunkPlacer::new));
+	public static final Codec<SmogstemTrunkPlacer> CODEC = RecordCodecBuilder.create(instance ->
+			instance.group(
+							Codec.intRange(0, 32).fieldOf("base_height").forGetter((placer) -> placer.baseHeight),
+							Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter((placer) -> placer.heightRandA),
+							Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter((placer) -> placer.heightRandB),
+							Codec.intRange(1, 2).fieldOf("width").forGetter((placer) -> placer.width))
+					.apply(instance, SmogstemTrunkPlacer::new));
 
 	public SmogstemTrunkPlacer(int baseHeight, int firstRandHeight, int secondRandHeight, int width) {
 		super(baseHeight, firstRandHeight, secondRandHeight);
 		this.width = width;
-	}
-
-	protected static <P extends SmogstemTrunkPlacer> Products.P4<RecordCodecBuilder.Mu<P>, Integer, Integer, Integer, Integer> smogstemTrunkPlacerParts(RecordCodecBuilder.Instance<P> instance) {
-		return instance.group(
-				Codec.intRange(0, 32).fieldOf("base_height")
-						.forGetter((placer) -> placer.baseHeight),
-				Codec.intRange(0, 24).fieldOf("height_rand_a")
-						.forGetter((placer) -> placer.heightRandA),
-				Codec.intRange(0, 24).fieldOf("height_rand_b")
-						.forGetter((placer) -> placer.heightRandB),
-				Codec.intRange(1, 2).fieldOf("width")
-						.forGetter((placer) -> placer.width)
-		);
 	}
 
 	@Override

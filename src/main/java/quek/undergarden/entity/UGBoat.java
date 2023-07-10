@@ -34,7 +34,7 @@ public class UGBoat extends Boat {
 	}
 
 	public UGBoat.Type getUGBoatType() {
-		return UGBoat.Type.byId(this.entityData.get(BOAT_TYPE));
+		return UGBoat.Type.byId(this.getEntityData().get(BOAT_TYPE));
 	}
 
 	@Override
@@ -47,13 +47,13 @@ public class UGBoat extends Boat {
 	}
 
 	public void setUGBoatType(UGBoat.Type boatType) {
-		this.entityData.set(BOAT_TYPE, boatType.ordinal());
+		this.getEntityData().set(BOAT_TYPE, boatType.ordinal());
 	}
 
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
-		this.entityData.define(BOAT_TYPE, Type.SMOGSTEM.ordinal());
+		this.getEntityData().define(BOAT_TYPE, Type.SMOGSTEM.ordinal());
 	}
 
 	@Override

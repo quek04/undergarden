@@ -72,7 +72,7 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.FORGOTTEN_GUARDIAN_HURT.get();
 	}
 
@@ -147,6 +147,7 @@ public class ForgottenGuardian extends Monster {
 		} else return super.hurt(source, amount);
 	}
 
+	@Override
 	public void handleEntityEvent(byte id) {
 		if (id == 4) {
 			this.attackTimer = 10;
@@ -165,7 +166,7 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
+	protected void checkFallDamage(double y, boolean onGorund, BlockState state, BlockPos pos) {
 	}
 
 	@Override
@@ -194,16 +195,17 @@ public class ForgottenGuardian extends Monster {
 		}
 
 		protected PathFinder createPathFinder(int range) {
-			this.nodeEvaluator = new ForgottenGuardian.Processor();
+			this.nodeEvaluator = new ForgottenGuardian.Evaluator();
 			return new PathFinder(this.nodeEvaluator, range);
 		}
 	}
 
-	static class Processor extends WalkNodeEvaluator {
-		private Processor() {
+	static class Evaluator extends WalkNodeEvaluator {
+		private Evaluator() {
 		}
 
-		protected BlockPathTypes evaluateBlockPathType(BlockGetter level, boolean p_215744_2_, boolean p_215744_3_, BlockPos pos, BlockPathTypes pathNodeType) {
+		@Override
+		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, BlockPos pos, BlockPathTypes types) {
 			return BlockPathTypes.WALKABLE;
 		}
 	}

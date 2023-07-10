@@ -68,7 +68,7 @@ public class Masticator extends Monster {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.MASTICATOR_HURT.get();
 	}
 
@@ -124,7 +124,7 @@ public class Masticator extends Monster {
 
 	@Override
 	public boolean killedEntity(ServerLevel level, LivingEntity entity) {
-		this.heal(this.getHealth() / 4);
+		this.heal(entity.getHealth() / 4);
 		this.playSound(UGSoundEvents.MASTICATOR_EAT.get(), 1.0F, this.getVoicePitch());
 		return super.killedEntity(level, entity);
 	}

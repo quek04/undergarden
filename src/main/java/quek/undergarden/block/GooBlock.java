@@ -19,13 +19,13 @@ public class GooBlock extends Block {
 	}
 
 	@Override
-	public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext selectionContext) {
+	public VoxelShape getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
 		return SHAPE;
 	}
 
 	@Override
-	public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 		entity.makeStuckInBlock(state, new Vec3(2.0D, 0.0D, 2.0D));
-		super.entityInside(state, world, pos, entity);
+		super.entityInside(state, level, pos, entity);
 	}
 }

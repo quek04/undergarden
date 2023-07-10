@@ -27,7 +27,7 @@ public class GlitterkelpFeature extends Feature<NoneFeatureConfiguration> {
 		int oceanY = 32;
 		BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
 		if (pos.getY() < oceanY) {
-			if (level.getBlockState(blockpos).getBlock() == Blocks.WATER) {
+			if (level.getBlockState(blockpos).is(Blocks.WATER)) {
 				BlockState kelp = UGBlocks.GLITTERKELP.get().defaultBlockState();
 				BlockState kelpTop = UGBlocks.GLITTERKELP_PLANT.get().defaultBlockState();
 				int k = 1 + random.nextInt(10);

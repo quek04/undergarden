@@ -11,8 +11,8 @@ import quek.undergarden.entity.animal.Brute;
 
 public class BruteRender extends MobRenderer<Brute, BruteModel<Brute>> {
 
-	public BruteRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new BruteModel<>(renderContext.bakeLayer(UGModelLayers.BRUTE)), 0.7F);
+	public BruteRender(EntityRendererProvider.Context context) {
+		super(context, new BruteModel<>(context.bakeLayer(UGModelLayers.BRUTE)), 0.7F);
 		this.addLayer(new BruteEyesLayer<>(this));
 	}
 

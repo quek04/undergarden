@@ -10,8 +10,8 @@ import quek.undergarden.entity.animal.Mog;
 
 public class MogEyesLayer<E extends Mog, M extends MogModel<E>> extends EyesLayer<E, M> {
 
-	public MogEyesLayer(RenderLayerParent<E, M> renderer) {
-		super(renderer);
+	public MogEyesLayer(RenderLayerParent<E, M> parent) {
+		super(parent);
 	}
 
 	@Override

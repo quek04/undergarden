@@ -23,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class Gwib extends WaterAnimal implements Enemy {
@@ -68,7 +69,7 @@ public class Gwib extends WaterAnimal implements Enemy {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.GWIB_HURT.get();
 	}
 
@@ -80,7 +81,7 @@ public class Gwib extends WaterAnimal implements Enemy {
 	@Override
 	public void aiStep() {
 		if (!this.isInWater() && this.onGround() && this.verticalCollision) {
-			this.setDeltaMovement(this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
+			this.setDeltaMovement(this.getDeltaMovement().add((this.getRandom().nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
 			this.setOnGround(false);
 			this.hasImpulse = true;
 			this.playSound(UGSoundEvents.GWIB_FLOP.get(), 1.0F, this.getVoicePitch());
@@ -113,7 +114,7 @@ public class Gwib extends WaterAnimal implements Enemy {
 		return 0.25F;
 	}
 
-	private boolean targetIsInWater(LivingEntity target) {
+	private boolean targetIsInWater(@Nullable LivingEntity target) {
 		if (target != null) {
 			return target.isInWater();
 		} else return false;

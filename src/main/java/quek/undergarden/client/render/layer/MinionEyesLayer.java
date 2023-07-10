@@ -10,8 +10,8 @@ import quek.undergarden.entity.Minion;
 
 public class MinionEyesLayer<T extends Minion, M extends MinionModel<T>> extends EyesLayer<T, M> {
 
-	public MinionEyesLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public MinionEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

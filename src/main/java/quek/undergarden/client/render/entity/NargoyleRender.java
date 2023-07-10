@@ -10,8 +10,8 @@ import quek.undergarden.entity.cavern.Nargoyle;
 
 public class NargoyleRender extends MobRenderer<Nargoyle, NargoyleModel<Nargoyle>> {
 
-	public NargoyleRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new NargoyleModel<>(renderContext.bakeLayer(UGModelLayers.NARGOYLE)), 0.8F);
+	public NargoyleRender(EntityRendererProvider.Context context) {
+		super(context, new NargoyleModel<>(context.bakeLayer(UGModelLayers.NARGOYLE)), 0.8F);
 	}
 
 	@Override

@@ -22,7 +22,7 @@ public class UGAxeItem extends AxeItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
 		if (stack.getItem() == UGItems.UTHERIUM_AXE.get()) {
 			tooltip.add(Component.translatable("tooltip.utheric_sword").withStyle(ChatFormatting.RED));
 		}

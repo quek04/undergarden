@@ -11,8 +11,8 @@ import quek.undergarden.entity.Minion;
 
 public class MinionRender extends MobRenderer<Minion, MinionModel<Minion>> {
 
-	public MinionRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new MinionModel<>(renderContext.bakeLayer(UGModelLayers.MINION)), 0.5F);
+	public MinionRender(EntityRendererProvider.Context context) {
+		super(context, new MinionModel<>(context.bakeLayer(UGModelLayers.MINION)), 0.5F);
 		this.addLayer(new MinionEyesLayer<>(this));
 	}
 

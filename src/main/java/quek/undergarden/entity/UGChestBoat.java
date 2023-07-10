@@ -68,14 +68,14 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 	}
 
 	@Override
-	public void destroy(DamageSource damageSource) {
-		super.destroy(damageSource);
-		this.chestVehicleDestroyed(damageSource, this.level(), this);
+	public void destroy(DamageSource source) {
+		super.destroy(source);
+		this.chestVehicleDestroyed(source, this.level(), this);
 	}
 
 	@Override
 	public void remove(Entity.RemovalReason reason) {
-		if (!this.level().isClientSide && reason.shouldDestroy()) {
+		if (!this.level().isClientSide() && reason.shouldDestroy()) {
 			Containers.dropContents(this.level(), this, this);
 		}
 
@@ -117,28 +117,28 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 	}
 
 	@Override
-	public ItemStack getItem(int p_219880_) {
-		return this.getChestVehicleItem(p_219880_);
+	public ItemStack getItem(int slot) {
+		return this.getChestVehicleItem(slot);
 	}
 
 	@Override
-	public ItemStack removeItem(int p_219882_, int p_219883_) {
-		return this.removeChestVehicleItem(p_219882_, p_219883_);
+	public ItemStack removeItem(int slot, int amount) {
+		return this.removeChestVehicleItem(slot, amount);
 	}
 
 	@Override
-	public ItemStack removeItemNoUpdate(int p_219904_) {
-		return this.removeChestVehicleItemNoUpdate(p_219904_);
+	public ItemStack removeItemNoUpdate(int slot) {
+		return this.removeChestVehicleItemNoUpdate(slot);
 	}
 
 	@Override
-	public void setItem(int p_219885_, ItemStack p_219886_) {
-		this.setChestVehicleItem(p_219885_, p_219886_);
+	public void setItem(int slot, ItemStack stack) {
+		this.setChestVehicleItem(slot, stack);
 	}
 
 	@Override
-	public SlotAccess getSlot(int p_219918_) {
-		return this.getChestVehicleSlot(p_219918_);
+	public SlotAccess getSlot(int index) {
+		return this.getChestVehicleSlot(index);
 	}
 
 	@Override
@@ -146,23 +146,23 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 	}
 
 	@Override
-	public boolean stillValid(Player p_219896_) {
-		return this.isChestVehicleStillValid(p_219896_);
+	public boolean stillValid(Player player) {
+		return this.isChestVehicleStillValid(player);
 	}
 
 	@Nullable
 	@Override
-	public AbstractContainerMenu createMenu(int p_219910_, Inventory p_219911_, Player p_219912_) {
-		if (this.lootTable != null && p_219912_.isSpectator()) {
+	public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+		if (this.lootTable != null && player.isSpectator()) {
 			return null;
 		} else {
-			this.unpackLootTable(p_219911_.player);
-			return ChestMenu.threeRows(p_219910_, p_219911_, this);
+			this.unpackLootTable(inventory.player);
+			return ChestMenu.threeRows(id, inventory, this);
 		}
 	}
 
-	public void unpackLootTable(@Nullable Player p_219914_) {
-		this.unpackChestVehicleLootTable(p_219914_);
+	public void unpackLootTable(@Nullable Player player) {
+		this.unpackChestVehicleLootTable(player);
 	}
 
 	@Nullable
@@ -172,8 +172,8 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 	}
 
 	@Override
-	public void setLootTable(@Nullable ResourceLocation p_219890_) {
-		this.lootTable = p_219890_;
+	public void setLootTable(@Nullable ResourceLocation lootTable) {
+		this.lootTable = lootTable;
 	}
 
 	@Override
@@ -182,8 +182,8 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 	}
 
 	@Override
-	public void setLootTableSeed(long p_219888_) {
-		this.lootTableSeed = p_219888_;
+	public void setLootTableSeed(long seed) {
+		this.lootTableSeed = seed;
 	}
 
 	@Override

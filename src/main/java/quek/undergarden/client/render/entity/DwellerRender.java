@@ -12,10 +12,10 @@ import quek.undergarden.entity.animal.Dweller;
 
 public class DwellerRender extends MobRenderer<Dweller, DwellerModel<Dweller>> {
 
-	public DwellerRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new DwellerModel<>(renderContext.bakeLayer(UGModelLayers.DWELLER)), 0.7F);
+	public DwellerRender(EntityRendererProvider.Context context) {
+		super(context, new DwellerModel<>(context.bakeLayer(UGModelLayers.DWELLER)), 0.7F);
 		this.addLayer(new DwellerEyesLayer<>(this));
-		this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(renderContext.bakeLayer(UGModelLayers.DWELLER_SADDLE)), new ResourceLocation(Undergarden.MODID, "textures/entity/dweller_saddle.png")));
+		this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(context.bakeLayer(UGModelLayers.DWELLER_SADDLE)), new ResourceLocation(Undergarden.MODID, "textures/entity/dweller_saddle.png")));
 	}
 
 	@Override

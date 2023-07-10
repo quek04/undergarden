@@ -34,31 +34,31 @@ public class UGItems {
 	public static final RegistryObject<Item> FORGOTTEN_UPGRADE_TEMPLATE = ITEMS.register("forgotten_upgrade_smithing_template", ForgottenSmithingTemplateItem::new);
 
 	//crafting materials
-	public static final RegistryObject<Item> RAW_CLOGGRUM = ITEMS.register("raw_cloggrum", UGItem::new);
-	public static final RegistryObject<Item> CLOGGRUM_INGOT = ITEMS.register("cloggrum_ingot", UGItem::new);
-	public static final RegistryObject<Item> CLOGGRUM_NUGGET = ITEMS.register("cloggrum_nugget", UGItem::new);
+	public static final RegistryObject<Item> RAW_CLOGGRUM = ITEMS.register("raw_cloggrum", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> CLOGGRUM_INGOT = ITEMS.register("cloggrum_ingot", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> CLOGGRUM_NUGGET = ITEMS.register("cloggrum_nugget", () -> new Item(new Item.Properties()));
 
-	public static final RegistryObject<Item> RAW_FROSTSTEEL = ITEMS.register("raw_froststeel", UGItem::new);
-	public static final RegistryObject<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", UGItem::new);
-	public static final RegistryObject<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", UGItem::new);
+	public static final RegistryObject<Item> RAW_FROSTSTEEL = ITEMS.register("raw_froststeel", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
 
-	public static final RegistryObject<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", UGItem::new);
-	public static final RegistryObject<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", UGItem::new);
+	public static final RegistryObject<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties()));
 
-	public static final RegistryObject<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new UGItem(Rarity.UNCOMMON));
+	public static final RegistryObject<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-	public static final RegistryObject<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new UGItem(FORGOTTEN));
-	public static final RegistryObject<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new UGItem(FORGOTTEN));
+	public static final RegistryObject<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
+	public static final RegistryObject<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
 
 	public static final RegistryObject<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", () -> new DepthrockPebbleItem(UGBlocks.DEPTHROCK_PEBBLES.get(), new Item.Properties()));
-	public static final RegistryObject<Item> TWISTYTWIG = ITEMS.register("twistytwig", UGItem::new);
+	public static final RegistryObject<Item> TWISTYTWIG = ITEMS.register("twistytwig", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> DITCHBULB = ITEMS.register("ditchbulb", () -> new ItemNameBlockItem(UGBlocks.DITCHBULB_PLANT.get(), new Item.Properties()));
 	public static final RegistryObject<Item> DITCHBULB_PASTE = ITEMS.register("ditchbulb_paste", DitchbulbPasteItem::new);
-	public static final RegistryObject<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", UGItem::new);
-	public static final RegistryObject<Item> MOGMOSS = ITEMS.register("mogmoss", UGItem::new);
+	public static final RegistryObject<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> MOGMOSS = ITEMS.register("mogmoss", () -> new Item(new Item.Properties()));
 
 	//boss loot
-	public static final RegistryObject<Item> MASTICATOR_SCALES = ITEMS.register("masticator_scales", () -> new UGItem(Rarity.UNCOMMON));
+	public static final RegistryObject<Item> MASTICATOR_SCALES = ITEMS.register("masticator_scales", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> MASTICATED_CHESTPLATE = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UGArmorMaterials.MASTICATED));
 
 	//tools
@@ -123,22 +123,22 @@ public class UGItems {
 	public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.BOOTS));
 
 	//foods/plants
-	public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopfruitItem::new);
+	public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new ItemNameBlockItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));
 	public static final RegistryObject<Item> UNDERBEANS = ITEMS.register("underbeans", () -> new ItemNameBlockItem(UGBlocks.UNDERBEAN_BUSH.get(), new Item.Properties().food(UGFoods.UNDERBEANS)));
-	public static final RegistryObject<Item> ROASTED_UNDERBEANS = ITEMS.register("roasted_underbeans", () -> new UGItem(UGFoods.ROASTED_UNDERBEANS));
+	public static final RegistryObject<Item> ROASTED_UNDERBEANS = ITEMS.register("roasted_underbeans", () -> new Item(new Item.Properties().food(UGFoods.ROASTED_UNDERBEANS)));
 	public static final RegistryObject<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new ItemNameBlockItem(UGBlocks.BLISTERBERRY_BUSH.get(), new Item.Properties().food(UGFoods.BLISTERBERRY)));
 	public static final RegistryObject<Item> ROTTEN_BLISTERBERRY = ITEMS.register("rotten_blisterberry", () -> new RottenBlisterberryItem(new Item.Properties().food(UGFoods.ROTTEN_BLISTERBERRY)));
 	public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", () -> new SlingshotAmmoItem(new Item.Properties().food(UGFoods.GOO_BALL)));
-	public static final RegistryObject<Item> GLOOMGOURD_PIE = ITEMS.register("gloomgourd_pie", () -> new UGItem(UGFoods.GLOOMGOURD_PIE));
-	public static final RegistryObject<Item> RAW_DWELLER_MEAT = ITEMS.register("raw_dweller_meat", () -> new UGItem(UGFoods.RAW_DWELLER));
-	public static final RegistryObject<Item> DWELLER_STEAK = ITEMS.register("dweller_steak", () -> new UGItem(UGFoods.COOKED_DWELLER));
-	public static final RegistryObject<Item> RAW_GWIBLING = ITEMS.register("raw_gwibling", () -> new UGItem(UGFoods.RAW_GWIBLING));
-	public static final RegistryObject<Item> COOKED_GWIBLING = ITEMS.register("cooked_gwibling", () -> new UGItem(UGFoods.COOKED_GWIBLING));
-	public static final RegistryObject<Item> RAW_GLOOMPER_LEG = ITEMS.register("raw_gloomper_leg", () -> new UGItem(UGFoods.RAW_GLOOMPER_LEG));
-	public static final RegistryObject<Item> GLOOMPER_LEG = ITEMS.register("gloomper_leg", () -> new UGItem(UGFoods.GLOOMPER_LEG));
+	public static final RegistryObject<Item> GLOOMGOURD_PIE = ITEMS.register("gloomgourd_pie", () -> new Item(new Item.Properties().food(UGFoods.GLOOMGOURD_PIE)));
+	public static final RegistryObject<Item> RAW_DWELLER_MEAT = ITEMS.register("raw_dweller_meat", () -> new Item(new Item.Properties().food(UGFoods.RAW_DWELLER)));
+	public static final RegistryObject<Item> DWELLER_STEAK = ITEMS.register("dweller_steak", () -> new Item(new Item.Properties().food(UGFoods.COOKED_DWELLER)));
+	public static final RegistryObject<Item> RAW_GWIBLING = ITEMS.register("raw_gwibling", () -> new Item(new Item.Properties().food(UGFoods.RAW_GWIBLING)));
+	public static final RegistryObject<Item> COOKED_GWIBLING = ITEMS.register("cooked_gwibling", () -> new Item(new Item.Properties().food(UGFoods.COOKED_GWIBLING)));
+	public static final RegistryObject<Item> RAW_GLOOMPER_LEG = ITEMS.register("raw_gloomper_leg", () -> new Item(new Item.Properties().food(UGFoods.RAW_GLOOMPER_LEG)));
+	public static final RegistryObject<Item> GLOOMPER_LEG = ITEMS.register("gloomper_leg", () -> new Item(new Item.Properties().food(UGFoods.GLOOMPER_LEG)));
 	public static final RegistryObject<Item> GLITTERKELP = ITEMS.register("glitterkelp", () -> new BlockItem(UGBlocks.GLITTERKELP.get(), new Item.Properties()));
 	public static final RegistryObject<Item> GLOOMGOURD_SEEDS = ITEMS.register("gloomgourd_seeds", () -> new ItemNameBlockItem(UGBlocks.GLOOMGOURD_STEM.get(), new Item.Properties()));
-	public static final RegistryObject<Item> BLOOD_GLOBULE = ITEMS.register("blood_globule", () -> new UGItem(UGFoods.BLOOD_GLOBULE));
+	public static final RegistryObject<Item> BLOOD_GLOBULE = ITEMS.register("blood_globule", () -> new Item(new Item.Properties().food(UGFoods.BLOOD_GLOBULE)));
 	public static final RegistryObject<Item> BLOODY_STEW = ITEMS.register("bloody_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.BLOODY).stacksTo(1)));
 	public static final RegistryObject<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.INKY).stacksTo(1)));
 	public static final RegistryObject<Item> INDIGO_STEW = ITEMS.register("indigo_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.INDIGO).stacksTo(1)));

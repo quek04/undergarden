@@ -30,7 +30,7 @@ public class Rotling extends RotspawnMonster {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.ROTLING_HURT.get();
 	}
 
@@ -40,7 +40,7 @@ public class Rotling extends RotspawnMonster {
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn) {
+	protected void playStepSound(BlockPos pos, BlockState state) {
 		this.playSound(UGSoundEvents.ROTLING_STEP.get(), 0.2F, 1.0F);
 	}
 }

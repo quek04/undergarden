@@ -1,15 +1,11 @@
 package quek.undergarden.entity.projectile.slingshot;
 
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import quek.undergarden.registry.UGDamageSources;
@@ -49,7 +45,7 @@ public class DepthrockPebble extends SlingshotProjectile {
 		int damage = Mth.ceil(Mth.clamp((double) length * this.airTime, 0.0D, 2.147483647E9D));
 		victim.hurt(this.damageSources().source(UGDamageSources.DEPTHROCK_PEBBLE, this, this.getOwner()), damage);
 		this.playSound(SoundEvents.STONE_BREAK, 1.0F, 1.0F);
-		if (!this.level().isClientSide) {
+		if (!this.level().isClientSide()) {
 			this.level().broadcastEntityEvent(this, (byte) 3);
 			this.discard();
 		}
@@ -60,17 +56,11 @@ public class DepthrockPebble extends SlingshotProjectile {
 		return UGItems.DEPTHROCK_PEBBLE.get();
 	}
 
-	private ParticleOptions makeParticle() {
-		return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(getDefaultItem()));
-	}
-
 	@Override
 	public void handleEntityEvent(byte id) {
 		if (id == 3) {
-			ParticleOptions iparticledata = this.makeParticle();
-
 			for (int i = 0; i < 8; ++i) {
-				this.level().addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(this.makeParticle(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}

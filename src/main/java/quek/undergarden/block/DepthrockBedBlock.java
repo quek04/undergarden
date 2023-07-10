@@ -30,31 +30,31 @@ public class DepthrockBedBlock extends BedBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext selectionContext) {
+	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext selectionContext) {
 		return SHAPE;
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult rayTraceResult) {
-		if (world.isClientSide) {
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult rayTraceResult) {
+		if (level.isClientSide()) {
 			return InteractionResult.CONSUME;
 		} else {
 			if (state.getValue(PART) != BedPart.HEAD) {
 				pos = pos.relative(state.getValue(FACING));
-				state = world.getBlockState(pos);
+				state = level.getBlockState(pos);
 				if (!state.is(this)) {
 					return InteractionResult.CONSUME;
 				}
 			}
 
-			if (!canSetSpawn(world)) {
-				world.removeBlock(pos, false);
+			if (!canSetSpawn(level)) {
+				level.removeBlock(pos, false);
 				BlockPos blockpos = pos.relative(state.getValue(FACING).getOpposite());
-				if (world.getBlockState(blockpos).is(this)) {
-					world.removeBlock(blockpos, false);
+				if (level.getBlockState(blockpos).is(this)) {
+					level.removeBlock(blockpos, false);
 				}
 
-				world.explode(null, world.damageSources().badRespawnPointExplosion(pos.getCenter()), null, (double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, 5.0F, true, Level.ExplosionInteraction.BLOCK);
+				level.explode(null, level.damageSources().badRespawnPointExplosion(pos.getCenter()), null, (double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, 5.0F, true, Level.ExplosionInteraction.BLOCK);
 				return InteractionResult.SUCCESS;
 			} else if (state.getValue(OCCUPIED)) {
 				//if (!this.kickVillagerOutOfBed(world, blockPos)) {
@@ -74,8 +74,8 @@ public class DepthrockBedBlock extends BedBlock {
 		}
 	}
 
-	public static boolean canSetSpawn(Level world) {
-		return world.dimension() == UGDimensions.UNDERGARDEN_LEVEL;
+	public static boolean canSetSpawn(Level level) {
+		return level.dimension() == UGDimensions.UNDERGARDEN_LEVEL;
 	}
 
 	@Override
@@ -85,12 +85,12 @@ public class DepthrockBedBlock extends BedBlock {
 
 	//stops bouncing
 	@Override
-	public void updateEntityAfterFallOn(BlockGetter world, Entity entity) {
+	public void updateEntityAfterFallOn(BlockGetter getter, Entity entity) {
 		entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
 	}
 
 	@Override
-	public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-		return UGBlockEntities.DEPTHROCK_BED.get().create(pPos, pState);
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return UGBlockEntities.DEPTHROCK_BED.get().create(pos, state);
 	}
 }

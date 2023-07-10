@@ -44,7 +44,7 @@ public class Gwibling extends AbstractFish {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.GWIBLING_HURT.get();
 	}
 

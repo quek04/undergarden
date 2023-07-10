@@ -10,8 +10,8 @@ import quek.undergarden.entity.animal.Dweller;
 
 public class DwellerEyesLayer<T extends Dweller, M extends DwellerModel<T>> extends EyesLayer<T, M> {
 
-	public DwellerEyesLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public DwellerEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

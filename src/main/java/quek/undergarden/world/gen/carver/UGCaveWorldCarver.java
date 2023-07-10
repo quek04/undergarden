@@ -28,9 +28,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 
 	public UGCaveWorldCarver(Codec<CaveCarverConfiguration> configCodec) {
 		super(configCodec);
-		this.liquids = ImmutableSet.of(
-				Fluids.WATER
-		);
+		this.liquids = ImmutableSet.of(Fluids.WATER);
 	}
 
 	@Override

@@ -70,7 +70,7 @@ public class Mog extends Animal implements IForgeShearable {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.MOG_HURT.get();
 	}
 
@@ -98,23 +98,23 @@ public class Mog extends Animal implements IForgeShearable {
 	@Override
 	public void tick() {
 		super.tick();
-		if (!hasMoss()) {
-			timeWithoutMoss++;
+		if (!this.hasMoss()) {
+			this.timeWithoutMoss++;
 		} else {
-			timeWithoutMoss = 0;
+			this.timeWithoutMoss = 0;
 		}
 
-		if (timeWithoutMoss == 6000) {
-			setMoss(true);
+		if (this.timeWithoutMoss == 6000) {
+			this.setMoss(true);
 		}
 	}
 
 	public boolean hasMoss() {
-		return this.entityData.get(HAS_MOSS);
+		return this.getEntityData().get(HAS_MOSS);
 	}
 
 	public void setMoss(boolean hasMoss) {
-		this.entityData.set(HAS_MOSS, hasMoss);
+		this.getEntityData().set(HAS_MOSS, hasMoss);
 	}
 
 	@Override
@@ -123,29 +123,29 @@ public class Mog extends Animal implements IForgeShearable {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag nbt) {
-		super.addAdditionalSaveData(nbt);
-		nbt.putBoolean("HasMoss", this.hasMoss());
-		this.timeWithoutMoss = nbt.getInt("TimeWithoutMoss");
+	public void addAdditionalSaveData(CompoundTag tag) {
+		super.addAdditionalSaveData(tag);
+		tag.putBoolean("HasMoss", this.hasMoss());
+		this.timeWithoutMoss = tag.getInt("TimeWithoutMoss");
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag nbt) {
-		super.readAdditionalSaveData(nbt);
-		this.setMoss(nbt.getBoolean("HasMoss"));
-		nbt.putInt("TimeWithoutMoss", this.timeWithoutMoss);
+	public void readAdditionalSaveData(CompoundTag tag) {
+		super.readAdditionalSaveData(tag);
+		this.setMoss(tag.getBoolean("HasMoss"));
+		tag.putInt("TimeWithoutMoss", this.timeWithoutMoss);
 	}
 
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
-		this.entityData.define(HAS_MOSS, true);
+		this.getEntityData().define(HAS_MOSS, true);
 	}
 
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData data, @Nullable CompoundTag nbt) {
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData data, @Nullable CompoundTag tag) {
 		this.setMoss(true);
-		return super.finalizeSpawn(level, difficulty, spawnType, data, nbt);
+		return super.finalizeSpawn(level, difficulty, spawnType, data, tag);
 	}
 
 	@Override
@@ -157,9 +157,12 @@ public class Mog extends Animal implements IForgeShearable {
 	@Override
 	public List<ItemStack> onSheared(@Nullable Player player, @Nonnull ItemStack stack, Level level, BlockPos pos, int fortune) {
 		level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
-		if (!level.isClientSide) {
+		if (!level.isClientSide()) {
 			this.setMoss(false);
-			int mossAmount = 1 + this.random.nextInt(2);
+			int mossAmount = 1 + this.getRandom().nextInt(2);
+			if (fortune > 0) {
+				mossAmount += this.getRandom().nextInt(fortune);
+			}
 
 			List<ItemStack> items = new ArrayList<>();
 			for (int i = 0; i < mossAmount; i++) {

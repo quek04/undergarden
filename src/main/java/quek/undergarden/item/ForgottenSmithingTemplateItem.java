@@ -3,11 +3,8 @@ package quek.undergarden.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SmithingTemplateItem;
 import quek.undergarden.Undergarden;
-import quek.undergarden.registry.UGItems;
 
 import java.util.List;
 

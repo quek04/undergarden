@@ -10,8 +10,8 @@ import quek.undergarden.entity.cavern.Sploogie;
 
 public class SploogieRender extends MobRenderer<Sploogie, SploogieModel<Sploogie>> {
 
-	public SploogieRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new SploogieModel<>(renderContext.bakeLayer(UGModelLayers.SPLOOGIE)), 0.5F);
+	public SploogieRender(EntityRendererProvider.Context context) {
+		super(context, new SploogieModel<>(context.bakeLayer(UGModelLayers.SPLOOGIE)), 0.5F);
 	}
 
 	@Override

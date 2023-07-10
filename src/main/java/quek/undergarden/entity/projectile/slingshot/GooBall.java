@@ -1,19 +1,13 @@
 package quek.undergarden.entity.projectile.slingshot;
 
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import quek.undergarden.entity.animal.Scintling;
 import quek.undergarden.registry.UGDamageSources;
 import quek.undergarden.registry.UGEffects;
@@ -40,18 +34,11 @@ public class GooBall extends SlingshotProjectile {
 		return UGItems.GOO_BALL.get();
 	}
 
-	private ParticleOptions makeParticle() {
-		return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(getDefaultItem()));
-	}
-
-	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void handleEntityEvent(byte id) {
 		if (id == 3) {
-			ParticleOptions iparticledata = this.makeParticle();
-
 			for (int i = 0; i < 8; ++i) {
-				this.level().addParticle(iparticledata, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(this.makeParticle(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}

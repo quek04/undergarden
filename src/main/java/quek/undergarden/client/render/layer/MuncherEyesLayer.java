@@ -10,8 +10,8 @@ import quek.undergarden.entity.cavern.Muncher;
 
 public class MuncherEyesLayer<T extends Muncher, M extends MuncherModel<T>> extends EyesLayer<T, M> {
 
-	public MuncherEyesLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public MuncherEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

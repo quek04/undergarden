@@ -33,9 +33,9 @@ public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlock
 	private final ModelPart headPiece;
 	private final ModelPart footPiece;
 
-	public DepthrockBedRender(BlockEntityRendererProvider.Context renderContext) {
-		this.headPiece = renderContext.bakeLayer(UGModelLayers.DEPTHROCK_BED_HEAD);
-		this.footPiece = renderContext.bakeLayer(UGModelLayers.DEPTHROCK_BED_FOOT);
+	public DepthrockBedRender(BlockEntityRendererProvider.Context context) {
+		this.headPiece = context.bakeLayer(UGModelLayers.DEPTHROCK_BED_HEAD);
+		this.footPiece = context.bakeLayer(UGModelLayers.DEPTHROCK_BED_FOOT);
 	}
 
 	public static LayerDefinition createHeadLayer() {
@@ -53,28 +53,28 @@ public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlock
 	}
 
 	@Override
-	public void render(DepthrockBedBlockEntity bed, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
+	public void render(DepthrockBedBlockEntity bed, float partialTicks, PoseStack stack, MultiBufferSource buffer, int light, int overlay) {
 		Level level = bed.getLevel();
 		if (level != null) {
 			BlockState blockstate = bed.getBlockState();
 			DoubleBlockCombiner.NeighborCombineResult<? extends DepthrockBedBlockEntity> neighborCombineResult = DoubleBlockCombiner.combineWithNeigbour(UGBlockEntities.DEPTHROCK_BED.get(), BedBlock::getBlockType, BedBlock::getConnectedDirection, ChestBlock.FACING, blockstate, level, bed.getBlockPos(), (levelAccessor, pos) -> false);
-			int i = neighborCombineResult.<Int2IntFunction>apply(new BrightnessCombiner<>()).get(combinedLight);
-			this.renderPiece(poseStack, buffer, blockstate.getValue(BedBlock.PART) == BedPart.HEAD ? this.headPiece : this.footPiece, blockstate.getValue(BedBlock.FACING), i, combinedOverlay, false);
+			int i = neighborCombineResult.<Int2IntFunction>apply(new BrightnessCombiner<>()).get(light);
+			this.renderPiece(stack, buffer, blockstate.getValue(BedBlock.PART) == BedPart.HEAD ? this.headPiece : this.footPiece, blockstate.getValue(BedBlock.FACING), i, overlay, false);
 		} else {
-			this.renderPiece(poseStack, buffer, this.headPiece, Direction.SOUTH, combinedLight, combinedOverlay, false);
-			this.renderPiece(poseStack, buffer, this.footPiece, Direction.SOUTH, combinedLight, combinedOverlay, true);
+			this.renderPiece(stack, buffer, this.headPiece, Direction.SOUTH, light, overlay, false);
+			this.renderPiece(stack, buffer, this.footPiece, Direction.SOUTH, light, overlay, true);
 		}
 	}
 
-	private void renderPiece(PoseStack poseStack, MultiBufferSource multiBufferSource, ModelPart bedPart, Direction direction, int combinedLight, int combinedOverlay, boolean isBedFoot) {
-		poseStack.pushPose();
-		poseStack.translate(0.0D, 0.5625D, isBedFoot ? -1.0D : 0.0D);
-		poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-		poseStack.translate(0.5D, 0.5D, 0.5D);
-		poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F + direction.toYRot()));
-		poseStack.translate(-0.5D, -0.5D, -0.5D);
+	private void renderPiece(PoseStack stack, MultiBufferSource multiBufferSource, ModelPart bedPart, Direction direction, int light, int overlay, boolean isBedFoot) {
+		stack.pushPose();
+		stack.translate(0.0D, 0.5625D, isBedFoot ? -1.0D : 0.0D);
+		stack.mulPose(Axis.XP.rotationDegrees(90.0F));
+		stack.translate(0.5D, 0.5D, 0.5D);
+		stack.mulPose(Axis.ZP.rotationDegrees(180.0F + direction.toYRot()));
+		stack.translate(-0.5D, -0.5D, -0.5D);
 		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entitySolid(new ResourceLocation(Undergarden.MODID, "textures/block/depthrock_bed.png")));
-		bedPart.render(poseStack, vertexConsumer, combinedLight, combinedOverlay);
-		poseStack.popPose();
+		bedPart.render(stack, vertexConsumer, light, overlay);
+		stack.popPose();
 	}
 }

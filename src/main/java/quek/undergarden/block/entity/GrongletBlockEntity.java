@@ -12,13 +12,13 @@ public class GrongletBlockEntity extends BlockEntity {
 
 	public GrongletBlockEntity(BlockPos pos, BlockState state) {
 		super(UGBlockEntities.GRONGLET.get(), pos, state);
-		yaw = -1;
+		this.yaw = -1;
 	}
 
 	public static void tick(Level level, BlockPos pos, BlockState state, GrongletBlockEntity blockEntity) {
-		if (level.isClientSide) {
+		if (level.isClientSide()) {
 			if (blockEntity.yaw == -1) {
-				blockEntity.yaw = level.random.nextInt(360);
+				blockEntity.yaw = level.getRandom().nextInt(360);
 			}
 		}
 	}

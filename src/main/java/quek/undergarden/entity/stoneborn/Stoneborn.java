@@ -22,6 +22,7 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -73,8 +74,8 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 		this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, LivingEntity.class, 32.0F));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 		this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0D, true));
-
 		this.targetSelector.addGoal(0, (new HurtByTargetGoal(this)).setAlertOthers());
+		this.targetSelector.addGoal(2, new ResetUniversalAngerTargetGoal<>(this, true));
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {
@@ -97,20 +98,20 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
 	@Override
 	protected SoundEvent getAmbientSound() {
-		if (isAggressive()) {
+		if (this.isAggressive()) {
 			return UGSoundEvents.STONEBORN_ANGRY.get();
 		}
-		if (hasCustomer()) {
+		if (this.hasCustomer()) {
 			return UGSoundEvents.STONEBORN_SPEAKING.get();
 		}
-		if (!inUndergarden()) {
+		if (!this.inUndergarden()) {
 			return UGSoundEvents.STONEBORN_CONFUSED.get();
 		}
 		return null;
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.STONEBORN_HURT.get();
 	}
 
@@ -120,7 +121,7 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn) {
+	protected void playStepSound(BlockPos pos, BlockState state) {
 		this.playSound(UGSoundEvents.STONEBORN_STEP.get(), 1.0F, 1.0F);
 	}
 
@@ -129,21 +130,18 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 	}
 
 	@Override
-	public InteractionResult mobInteract(Player player, InteractionHand playerHand) {
-		ItemStack itemstack = player.getItemInHand(playerHand);
-		if (itemstack.getItem() != UGItems.STONEBORN_SPAWN_EGG.get() && this.isAlive() && !this.hasCustomer() && inUndergarden()) {
-			if (this.getOffers().isEmpty()) {
-				return InteractionResult.sidedSuccess(this.level().isClientSide);
-			} else {
-				if (!this.level().isClientSide) {
+	public InteractionResult mobInteract(Player player, InteractionHand hand) {
+		ItemStack itemstack = player.getItemInHand(hand);
+		if (itemstack.getItem() != UGItems.STONEBORN_SPAWN_EGG.get() && this.isAlive() && !this.hasCustomer() && this.inUndergarden()) {
+			if (!this.getOffers().isEmpty()) {
+				if (!this.level().isClientSide()) {
 					this.setTradingPlayer(player);
 					this.openTradingScreen(player, this.getDisplayName(), 1);
 				}
-
-				return InteractionResult.sidedSuccess(this.level().isClientSide);
 			}
+			return InteractionResult.sidedSuccess(this.level().isClientSide());
 		} else {
-			return super.mobInteract(player, playerHand);
+			return super.mobInteract(player, hand);
 		}
 	}
 
@@ -159,7 +157,7 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
 		if (this.timeOutOfUG > 300) {
 			this.playSound(UGSoundEvents.STONEBORN_CHANT.get(), 1.0F, 1.0F);
-			if (!this.level().isClientSide) {
+			if (!this.level().isClientSide()) {
 				this.remove(RemovalReason.KILLED);
 				this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3, Level.ExplosionInteraction.MOB);
 			}
@@ -177,15 +175,15 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag nbt) {
-		super.addAdditionalSaveData(nbt);
-		this.timeOutOfUG = nbt.getInt("TimeOutOfUndergarden");
+	public void addAdditionalSaveData(CompoundTag tag) {
+		super.addAdditionalSaveData(tag);
+		this.timeOutOfUG = tag.getInt("TimeOutOfUndergarden");
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag nbt) {
-		super.readAdditionalSaveData(nbt);
-		nbt.putInt("TimeOutOfUndergarden", this.timeOutOfUG);
+	public void readAdditionalSaveData(CompoundTag tag) {
+		super.readAdditionalSaveData(tag);
+		tag.putInt("TimeOutOfUndergarden", this.timeOutOfUG);
 	}
 
 	@Override
@@ -284,14 +282,14 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
 	protected void onStonebornTrade(MerchantOffer offer) {
 		if (offer.shouldRewardExp()) {
-			int i = 3 + this.random.nextInt(4);
+			int i = 3 + this.getRandom().nextInt(4);
 			this.level().addFreshEntity(new ExperienceOrb(this.level(), this.getX(), this.getY() + 0.5D, this.getZ(), i));
 		}
 	}
 
 	@Override
 	public void notifyTradeUpdated(ItemStack stack) {
-		if (!this.level().isClientSide && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
+		if (!this.level().isClientSide() && this.ambientSoundTime > -this.getAmbientSoundInterval() + 20) {
 			this.ambientSoundTime = -this.getAmbientSoundInterval();
 			this.playSound(this.getYesOrNoSound(!stack.isEmpty()), this.getSoundVolume(), this.getVoicePitch());
 		}

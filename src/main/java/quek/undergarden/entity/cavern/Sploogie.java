@@ -50,7 +50,7 @@ public class Sploogie extends CavernMonster implements RangedAttackMob {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.SPLOOGIE_HURT.get();
 	}
 
@@ -72,7 +72,7 @@ public class Sploogie extends CavernMonster implements RangedAttackMob {
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
 		return 0.3F;
 	}
 }

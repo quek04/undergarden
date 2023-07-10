@@ -36,7 +36,7 @@ public class CreateCritParticlePacket {
 
 	public static class Handler {
 
-		public static boolean onMessage(CreateCritParticlePacket message, Supplier<NetworkEvent.Context> ctx) {
+		public static void onMessage(CreateCritParticlePacket message, Supplier<NetworkEvent.Context> ctx) {
 			ctx.get().enqueueWork(() -> {
 				Entity entity = Minecraft.getInstance().level.getEntity(message.id);
 				if (entity != null) {
@@ -44,7 +44,6 @@ public class CreateCritParticlePacket {
 				}
 			});
 			ctx.get().setPacketHandled(true);
-			return true;
 		}
 	}
 }

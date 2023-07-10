@@ -31,7 +31,7 @@ public class Rotwalker extends RotspawnMonster {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.ROTWALKER_HURT.get();
 	}
 
@@ -41,7 +41,7 @@ public class Rotwalker extends RotspawnMonster {
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn) {
+	protected void playStepSound(BlockPos pos, BlockState state) {
 		this.playSound(UGSoundEvents.ROTWALKER_STEP.get(), 0.15F, 1.0F);
 	}
 }

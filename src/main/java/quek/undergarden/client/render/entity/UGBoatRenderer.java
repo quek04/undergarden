@@ -56,10 +56,10 @@ public class UGBoatRenderer extends EntityRenderer<UGBoat> {
 	}
 
 	@Override
-	public void render(UGBoat entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
-		poseStack.pushPose();
-		poseStack.translate(0.0D, 0.375D, 0.0D);
-		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
+	public void render(UGBoat entity, float yaw, float partialTicks, PoseStack stack, MultiBufferSource bufferSource, int light) {
+		stack.pushPose();
+		stack.translate(0.0D, 0.375D, 0.0D);
+		stack.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
 		float f = (float) entity.getHurtTime() - partialTicks;
 		float f1 = entity.getDamage() - partialTicks;
 		if (f1 < 0.0F) {
@@ -67,29 +67,29 @@ public class UGBoatRenderer extends EntityRenderer<UGBoat> {
 		}
 
 		if (f > 0.0F) {
-			poseStack.mulPose(Axis.XP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float) entity.getHurtDir()));
+			stack.mulPose(Axis.XP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float) entity.getHurtDir()));
 		}
 
 		float bubbleAngle = entity.getBubbleAngle(partialTicks);
 		if (!Mth.equal(bubbleAngle, 0.0F)) {
-			poseStack.mulPose(new Quaternionf().setAngleAxis(entity.getBubbleAngle(partialTicks) * ((float) Math.PI / 180F), 1.0F, 0.0F, 1.0F));
+			stack.mulPose(new Quaternionf().setAngleAxis(entity.getBubbleAngle(partialTicks) * ((float) Math.PI / 180F), 1.0F, 0.0F, 1.0F));
 		}
 
 		Pair<ResourceLocation, BoatModel> boatResources = this.boatResources.get(entity.getUGBoatType());
 		ResourceLocation texture = boatResources.getFirst();
 		BoatModel boat = boatResources.getSecond();
-		poseStack.scale(-1.0F, -1.0F, 1.0F);
-		poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
+		stack.scale(-1.0F, -1.0F, 1.0F);
+		stack.mulPose(Axis.YP.rotationDegrees(90.0F));
 		boat.setupAnim(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F);
 		VertexConsumer vertexconsumer = bufferSource.getBuffer(boat.renderType(texture));
-		boat.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+		boat.renderToBuffer(stack, vertexconsumer, light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 		if (!entity.isUnderWater()) {
 			VertexConsumer vertexconsumer1 = bufferSource.getBuffer(RenderType.waterMask());
-			boat.waterPatch().render(poseStack, vertexconsumer1, packedLight, OverlayTexture.NO_OVERLAY);
+			boat.waterPatch().render(stack, vertexconsumer1, light, OverlayTexture.NO_OVERLAY);
 		}
 
-		poseStack.popPose();
-		super.render(entity, yaw, partialTicks, poseStack, bufferSource, packedLight);
+		stack.popPose();
+		super.render(entity, yaw, partialTicks, stack, bufferSource, light);
 	}
 
 	@Override

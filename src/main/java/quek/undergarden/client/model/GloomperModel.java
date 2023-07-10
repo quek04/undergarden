@@ -60,9 +60,9 @@ public class GloomperModel<T extends Gloomper> extends AgeableListModel<T> {
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
-		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-		this.jumpRotation = Mth.sin(entityIn.getJumpCompletion(partialTick) * (float) Math.PI);
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTicks) {
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTicks);
+		this.jumpRotation = Mth.sin(entity.getJumpCompletion(partialTicks) * (float) Math.PI);
 	}
 
 	@Override

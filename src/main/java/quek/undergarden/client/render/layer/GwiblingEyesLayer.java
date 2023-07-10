@@ -10,8 +10,8 @@ import quek.undergarden.entity.animal.Gwibling;
 
 public class GwiblingEyesLayer<T extends Gwibling, M extends GwiblingModel<T>> extends EyesLayer<T, M> {
 
-	public GwiblingEyesLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public GwiblingEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

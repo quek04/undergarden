@@ -17,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.event.ForgeEventFactory;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
@@ -50,7 +51,7 @@ public class Muncher extends CavernMonster {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.MUNCHER_HURT.get();
 	}
 
@@ -64,7 +65,7 @@ public class Muncher extends CavernMonster {
 		super.aiStep();
 
 		if (this.isAggressive()) {
-			if (this.horizontalCollision || this.verticalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
+			if (this.horizontalCollision || this.verticalCollision && ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
 				AABB axisalignedbb = this.getBoundingBox();
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {

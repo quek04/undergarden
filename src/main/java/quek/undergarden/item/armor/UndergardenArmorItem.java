@@ -25,8 +25,7 @@ import java.util.UUID;
 public class UndergardenArmorItem extends ArmorItem {
 
 	public UndergardenArmorItem(ArmorMaterial material, Type slot) {
-		super(material, slot, new Properties()
-		);
+		super(material, slot, new Properties().stacksTo(1));
 	}
 
 	@Override
@@ -58,9 +57,9 @@ public class UndergardenArmorItem extends ArmorItem {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String layer) {
 		if (slot == EquipmentSlot.LEGS) {
-			return "undergarden:textures/armor/" + material.getName() + "_layer_2.png";
+			return "undergarden:textures/armor/" + this.material.getName() + "_layer_2.png";
 		} else {
-			return "undergarden:textures/armor/" + material.getName() + "_layer_1.png";
+			return "undergarden:textures/armor/" + this.material.getName() + "_layer_1.png";
 		}
 	}
 }

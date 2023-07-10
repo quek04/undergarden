@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -38,8 +39,6 @@ import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.entity.UGBoat;
 import quek.undergarden.registry.*;
-
-import java.awt.*;
 
 @Mod.EventBusSubscriber(modid = Undergarden.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UndergardenClient {
@@ -116,7 +115,7 @@ public class UndergardenClient {
 	@SubscribeEvent
 	public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
 		event.register((state, tintGetter, pos, tint) ->
-						tintGetter != null && pos != null ? BiomeColors.getAverageGrassColor(tintGetter, pos) : new Color(91, 117, 91).getRGB(),
+						tintGetter != null && pos != null ? BiomeColors.getAverageGrassColor(tintGetter, pos) : FastColor.ARGB32.color(0, 91, 117, 91),
 				UGBlocks.DEEPTURF_BLOCK.get(),
 				UGBlocks.DEEPTURF.get(),
 				UGBlocks.SHIMMERWEED.get(),
@@ -130,7 +129,7 @@ public class UndergardenClient {
 		);
 
 		event.register((state, world, pos, tint) ->
-						new Color(54, 45, 66).getRGB(),
+				FastColor.ARGB32.color(0, 54, 45, 66),
 				UGBlocks.GLOOMGOURD_STEM.get(),
 				UGBlocks.GLOOMGOURD_STEM_ATTACHED.get()
 		);
@@ -150,7 +149,7 @@ public class UndergardenClient {
 
 		event.register((stack, tint) -> {
 					if (tint == 0) {
-						return new Color(91, 117, 91).getRGB();
+						return FastColor.ARGB32.color(0, 91, 117, 91);
 					}
 					return -1;
 				},
@@ -177,14 +176,14 @@ public class UndergardenClient {
 
 	@SubscribeEvent
 	public static void registerOverlays(RegisterGuiOverlaysEvent event) {
-		event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "virulence_hearts", (gui, stack, partialTick, width, height) -> {
+		event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "virulence_hearts", (gui, stack, partialTicks, width, height) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.VIRULENCE.get()) && gui.shouldDrawSurvivalElements()) {
 				renderVirulenceHearts(width, height, stack, gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiOverlay.ARMOR_LEVEL.id(), "brittleness_armor", (gui, stack, partialTick, width, height) -> {
+		event.registerAbove(VanillaGuiOverlay.ARMOR_LEVEL.id(), "brittleness_armor", (gui, stack, partialTicks, width, height) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.BRITTLENESS.get()) && gui.shouldDrawSurvivalElements()) {
@@ -254,6 +253,7 @@ public class UndergardenClient {
 		int healthRows = Mth.ceil((healthMax + absorb) / 2.0F / 10.0F);
 		int rowHeight = Math.max(10 - (healthRows - 2), 3);
 
+		//do NOT cast this to long
 		gui.random.setSeed(gui.getGuiTicks() * 312871);
 
 		int x = width / 2 - 91;

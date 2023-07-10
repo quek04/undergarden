@@ -10,8 +10,8 @@ import quek.undergarden.entity.stoneborn.Stoneborn;
 
 public class StonebornEyesLayer<T extends Stoneborn, M extends StonebornModel<T>> extends EyesLayer<T, M> {
 
-	public StonebornEyesLayer(RenderLayerParent<T, M> rendererIn) {
-		super(rendererIn);
+	public StonebornEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
 	}
 
 	@Override

@@ -11,8 +11,8 @@ import quek.undergarden.entity.animal.Mog;
 
 public class MogRender extends MobRenderer<Mog, MogModel<Mog>> {
 
-	public MogRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new MogModel<>(renderContext.bakeLayer(UGModelLayers.MOG)), 0.5F);
+	public MogRender(EntityRendererProvider.Context context) {
+		super(context, new MogModel<>(context.bakeLayer(UGModelLayers.MOG)), 0.5F);
 		this.addLayer(new MogEyesLayer<>(this));
 	}
 

@@ -1,6 +1,5 @@
 package quek.undergarden.block;
 
-import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -24,13 +23,11 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.client.extensions.common.IClientBlockExtensions;
 import quek.undergarden.block.entity.GrongletBlockEntity;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
-import java.util.function.Consumer;
 
 public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
 
@@ -46,16 +43,6 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
 	public GrongletBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
-	}
-
-	@Override
-	public void initializeClient(Consumer<IClientBlockExtensions> consumer) {
-		consumer.accept(new IClientBlockExtensions() {
-			@Override
-			public boolean addDestroyEffects(BlockState state, Level Level, BlockPos pos, ParticleEngine manager) {
-				return true;
-			}
-		});
 	}
 
 	@Override
@@ -114,8 +101,8 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
 
 	@Override
 	public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
-		if (!level.isClientSide) {
-			RandomSource random = level.random;
+		if (!level.isClientSide()) {
+			RandomSource random = level.getRandom();
 			level.playSound(null, pos, UGSoundEvents.GRONGLET_BURN.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
 		}
 	}

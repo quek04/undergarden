@@ -20,8 +20,8 @@ public class UGShieldItem extends ShieldItem {
 	}
 
 	@Override
-	public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
-		return toolAction == ToolActions.SHIELD_BLOCK;
+	public boolean canPerformAction(ItemStack stack, ToolAction action) {
+		return action == ToolActions.SHIELD_BLOCK;
 	}
 
 	@Override

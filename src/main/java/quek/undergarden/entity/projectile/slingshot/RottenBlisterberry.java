@@ -1,8 +1,5 @@
 package quek.undergarden.entity.projectile.slingshot;
 
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -35,9 +32,7 @@ public class RottenBlisterberry extends SlingshotProjectile {
 	@Override
 	protected void onHitEntity(EntityHitResult result) {
 		super.onHitEntity(result);
-//		Entity victim = result.getEntity();
-//		victim.hurt(this.damageSources().source(DamageTypes.ARROW, this, this.getOwner()), 0.0F);
-		if (!this.level().isClientSide) {
+		if (!this.level().isClientSide()) {
 			this.level().explode(this, this.getX(), this.getY(), this.getZ(), 1.5F, Level.ExplosionInteraction.NONE);
 			this.discard();
 		}
@@ -46,7 +41,7 @@ public class RottenBlisterberry extends SlingshotProjectile {
 	@Override
 	protected void onHitBlock(BlockHitResult result) {
 		super.onHitBlock(result);
-		if (!this.level().isClientSide && this.ricochetTimes == 0) {
+		if (!this.level().isClientSide() && this.ricochetTimes == 0) {
 			this.level().explode(this, this.getX(), this.getY(), this.getZ(), 1.5F, Level.ExplosionInteraction.NONE);
 			this.discard();
 		}

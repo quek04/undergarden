@@ -57,12 +57,12 @@ public class UGFluids {
 						}
 
 						@Override
-						public @NotNull Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
+						public @NotNull Vector3f modifyFogColor(Camera camera, float partialTicks, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
 							return new Vector3f(57 / 255F, 25 / 255F, 80 / 255F);
 						}
 
 						@Override
-						public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance, float partialTick, float nearDistance, float farDistance, FogShape shape) {
+						public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance, float partialTicks, float nearDistance, float farDistance, FogShape shape) {
 							RenderSystem.setShaderFogStart(0.0F);
 							RenderSystem.setShaderFogEnd(3.0F);
 						}

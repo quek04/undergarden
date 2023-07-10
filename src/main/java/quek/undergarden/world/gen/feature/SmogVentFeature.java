@@ -26,7 +26,7 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
 			pos = pos.below();
 		}
 
-		if (level.isEmptyBlock(pos.above(7))/* && level.getBlockState(pos).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()*/) {
+		if (level.isEmptyBlock(pos.above(7))) {
 			pos = pos.above(random.nextInt(4));
 			int ventHeight = 7;
 			int j = ventHeight / 4 + random.nextInt(2);
@@ -42,17 +42,15 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
 						float f2 = (float) Mth.abs(j1) - 0.25F;
 						if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > f * f)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(random.nextFloat() > 0.75F))) {
 							BlockState blockstate = level.getBlockState(pos.offset(i1, k, j1));
-							//Block block = blockstate.getBlock();
 							BlockPos ventPos = new BlockPos(pos.getX(), pos.getY() + 7, pos.getZ());
-							if (blockstate.isAir()/* || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()*/) {
+							if (blockstate.isAir()) {
 								this.setBlock(level, pos.offset(i1, k, j1), UGBlocks.DEPTHROCK.get().defaultBlockState());
 							}
 							this.setBlock(level, ventPos, UGBlocks.SMOG_VENT.get().defaultBlockState());
 
 							if (k != 0 && l > 1) {
 								blockstate = level.getBlockState(pos.offset(i1, -k, j1));
-								//block = blockstate.getBlock();
-								if (blockstate.isAir()/* || block == UGBlocks.ASHEN_DEEPTURF_BLOCK.get()*/) {
+								if (blockstate.isAir()) {
 									this.setBlock(level, pos.offset(i1, -k, j1), UGBlocks.DEPTHROCK.get().defaultBlockState());
 								}
 							}
@@ -67,8 +65,7 @@ public class SmogVentFeature extends Feature<NoneFeatureConfiguration> {
 				for (int i2 = -k1; i2 <= k1; ++i2) {
 					BlockPos blockpos = pos.offset(l1, -1, i2);
 					BlockState blockstate1 = level.getBlockState(blockpos);
-					//Block block1 = blockstate1.getBlock();
-					if (!blockstate1.isAir()/* && block1 != UGBlocks.ASHEN_DEEPTURF_BLOCK.get() && block1 != UGBlocks.DEEPSOIL.get() && block1 != UGBlocks.DEPTHROCK.get()*/) {
+					if (!blockstate1.isAir()) {
 						break;
 					}
 

@@ -23,6 +23,22 @@
       }
     },
     {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": [
+          "undergarden:deepturf_block",
+          "undergarden:deepsoil",
+          "undergarden:frozen_deepturf_block"
+        ],
+        "offset": [
+          0,
+          -1,
+          0
+        ]
+      }
+    },
+    {
       "type": "minecraft:biome"
     }
   ]

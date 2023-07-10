@@ -7,8 +7,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGBlockEntities;
 
 public class UndergardenSignBlockEntity extends SignBlockEntity {
-	public UndergardenSignBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
-		super(pWorldPosition, pBlockState);
+	public UndergardenSignBlockEntity(BlockPos pos, BlockState state) {
+		super(pos, state);
 	}
 
 	@Override

@@ -20,10 +20,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.ForgeEventFactory;
 import quek.undergarden.entity.rotspawn.RotspawnMonster;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
 
@@ -52,7 +49,7 @@ public class Scintling extends Animal {
 	}
 
 	public static boolean canScintlingSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-		return level.getBlockState(pos.below()).getBlock() == UGBlocks.DEPTHROCK.get() || level.getBlockState(pos.below()).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get();
+		return level.getBlockState(pos.below()).is(UGTags.Blocks.SCINTLING_SPAWNABLE_ON);
 	}
 
 	@Override
@@ -61,7 +58,7 @@ public class Scintling extends Animal {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.SCINTLING_HURT.get();
 	}
 

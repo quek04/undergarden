@@ -38,7 +38,7 @@ public class VirulentMixCauldronBlock extends AbstractCauldronBlock {
 	}
 
 	@Override
-	public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 		if (entity.isAlive() && entity instanceof LivingEntity livingEntity && this.isEntityInsideContent(state, pos, entity)) {
 			if (livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX)
 					|| livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) return;
@@ -48,7 +48,7 @@ public class VirulentMixCauldronBlock extends AbstractCauldronBlock {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter getter, BlockPos pos, Player player) {
 		return new ItemStack(Items.CAULDRON);
 	}
 }

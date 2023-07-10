@@ -35,7 +35,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 
 	private static final EntityDataAccessor<Boolean> SADDLE = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> BOOST_TIME = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.INT);
-	private final ItemBasedSteering steering = new ItemBasedSteering(this.entityData, BOOST_TIME, SADDLE);
+	private final ItemBasedSteering steering = new ItemBasedSteering(this.getEntityData(), BOOST_TIME, SADDLE);
 
 	public Dweller(EntityType<? extends Dweller> type, Level level) {
 		super(type, level);
@@ -65,7 +65,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSource) {
+	protected SoundEvent getHurtSound(DamageSource source) {
 		return UGSoundEvents.DWELLER_HURT.get();
 	}
 
@@ -75,7 +75,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn) {
+	protected void playStepSound(BlockPos pos, BlockState state) {
 		this.playSound(UGSoundEvents.DWELLER_STEP.get(), 0.15F, 1.0F);
 	}
 
@@ -91,27 +91,27 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag nbt) {
-		super.addAdditionalSaveData(nbt);
-		this.steering.addAdditionalSaveData(nbt);
+	public void addAdditionalSaveData(CompoundTag tag) {
+		super.addAdditionalSaveData(tag);
+		this.steering.addAdditionalSaveData(tag);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag nbt) {
-		super.readAdditionalSaveData(nbt);
-		this.steering.readAdditionalSaveData(nbt);
+	public void readAdditionalSaveData(CompoundTag tag) {
+		super.readAdditionalSaveData(tag);
+		this.steering.readAdditionalSaveData(tag);
 	}
 
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
-		this.entityData.define(SADDLE, false);
-		this.entityData.define(BOOST_TIME, 0);
+		this.getEntityData().define(SADDLE, false);
+		this.getEntityData().define(BOOST_TIME, 0);
 	}
 
 	@Override
 	public void onSyncedDataUpdated(EntityDataAccessor<?> data) {
-		if (BOOST_TIME.equals(data) && this.level().isClientSide) {
+		if (BOOST_TIME.equals(data) && this.level().isClientSide()) {
 			this.steering.onSynced();
 		}
 		super.onSyncedDataUpdated(data);
@@ -121,11 +121,11 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		boolean isFood = this.isFood(player.getItemInHand(hand));
 		if (!isFood && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
-			if (!this.level().isClientSide) {
+			if (!this.level().isClientSide()) {
 				player.startRiding(this);
 			}
 
-			return InteractionResult.sidedSuccess(this.level().isClientSide);
+			return InteractionResult.sidedSuccess(this.level().isClientSide());
 		} else {
 			if (this.isSaddled() && player.isSecondaryUseActive() && player.getItemInHand(hand).isEmpty()) {
 				this.spawnAtLocation(Items.SADDLE);
@@ -133,12 +133,12 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 				this.steering.setSaddle(false);
 				return InteractionResult.sidedSuccess(this.level().isClientSide());
 			}
-			InteractionResult actionresulttype = super.mobInteract(player, hand);
-			if (!actionresulttype.consumesAction()) {
+			InteractionResult result = super.mobInteract(player, hand);
+			if (!result.consumesAction()) {
 				ItemStack itemstack = player.getItemInHand(hand);
-				return itemstack.getItem() == Items.SADDLE ? itemstack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
+				return itemstack.is(Items.SADDLE) ? itemstack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
 			} else {
-				return actionresulttype;
+				return result;
 			}
 		}
 	}
@@ -149,10 +149,10 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	}
 
 	@Override
-	public void equipSaddle(@Nullable SoundSource sound) {
+	public void equipSaddle(@Nullable SoundSource source) {
 		this.steering.setSaddle(true);
-		if (sound != null) {
-			this.level().playSound(null, this, SoundEvents.PIG_SADDLE, sound, 0.5F, 1.0F);
+		if (source != null) {
+			this.level().playSound(null, this, SoundEvents.PIG_SADDLE, source, 0.5F, 1.0F);
 		}
 	}
 

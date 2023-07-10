@@ -14,8 +14,8 @@ import quek.undergarden.entity.animal.Gwib;
 
 public class GwibRender extends MobRenderer<Gwib, GwibModel<Gwib>> {
 
-	public GwibRender(EntityRendererProvider.Context renderContext) {
-		super(renderContext, new GwibModel<>(renderContext.bakeLayer(UGModelLayers.GWIB)), 0.5F);
+	public GwibRender(EntityRendererProvider.Context context) {
+		super(context, new GwibModel<>(context.bakeLayer(UGModelLayers.GWIB)), 0.5F);
 		this.addLayer(new GwibEyesLayer<>(this));
 	}
 
@@ -25,9 +25,9 @@ public class GwibRender extends MobRenderer<Gwib, GwibModel<Gwib>> {
 	}
 
 	@Override
-	protected void setupRotations(Gwib entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks) {
-		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+	protected void setupRotations(Gwib entity, PoseStack stack, float ageInTicks, float rotationYaw, float partialTicks) {
+		super.setupRotations(entity, stack, ageInTicks, rotationYaw, partialTicks);
 		float f = 4.3F * Mth.sin(0.6F * ageInTicks);
-		poseStack.mulPose(Axis.YP.rotationDegrees(-f));
+		stack.mulPose(Axis.YP.rotationDegrees(-f));
 	}
 }

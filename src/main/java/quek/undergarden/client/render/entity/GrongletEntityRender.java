@@ -20,13 +20,13 @@ public class GrongletEntityRender extends ThrownItemRenderer<Gronglet> {
 	}
 
 	@Override
-	public void render(Gronglet entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+	public void render(Gronglet entity, float yaw, float partialTicks, PoseStack stack, MultiBufferSource bufferSource, int light) {
 		if (entity.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entity) < 12.25D)) {
-			poseStack.pushPose();
-			poseStack.scale(3.0F, 3.0F, 3.0F);
-			poseStack.mulPose(Axis.YP.rotationDegrees((entity.tickCount + partialTicks) * 20));
-			this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, packedLight, OverlayTexture.NO_OVERLAY, poseStack, bufferSource, entity.level(), entity.getId());
-			poseStack.popPose();
+			stack.pushPose();
+			stack.scale(3.0F, 3.0F, 3.0F);
+			stack.mulPose(Axis.YP.rotationDegrees((entity.tickCount + partialTicks) * 20));
+			this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, stack, bufferSource, entity.level(), entity.getId());
+			stack.popPose();
 		}
 	}
 }

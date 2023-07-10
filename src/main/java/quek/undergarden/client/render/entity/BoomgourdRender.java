@@ -23,9 +23,9 @@ public class BoomgourdRender extends EntityRenderer<Boomgourd> {
 	}
 
 	@Override
-	public void render(Boomgourd entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-		poseStack.pushPose();
-		poseStack.translate(0.0D, 0.5D, 0.0D);
+	public void render(Boomgourd entity, float yaw, float partialTicks, PoseStack stack, MultiBufferSource buffer, int light) {
+		stack.pushPose();
+		stack.translate(0.0D, 0.5D, 0.0D);
 		int fuse = entity.getFuse();
 		if ((float) fuse - partialTicks + 1.0F < 10.0F) {
 			float f = 1.0F - ((float) fuse - partialTicks + 1.0F) / 10.0F;
@@ -33,14 +33,14 @@ public class BoomgourdRender extends EntityRenderer<Boomgourd> {
 			f *= f;
 			f *= f;
 			float f1 = 1.0F + f * 0.3F;
-			poseStack.scale(f1, f1, f1);
+			stack.scale(f1, f1, f1);
 		}
-		poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
-		poseStack.translate(-0.5D, -0.5D, 0.5D);
-		poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-		TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, UGBlocks.BOOMGOURD.get().defaultBlockState(), poseStack, buffer, packedLight, fuse / 5 % 2 == 0);
-		poseStack.popPose();
-		super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight);
+		stack.mulPose(Axis.YP.rotationDegrees(-90.0F));
+		stack.translate(-0.5D, -0.5D, 0.5D);
+		stack.mulPose(Axis.YP.rotationDegrees(90.0F));
+		TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, UGBlocks.BOOMGOURD.get().defaultBlockState(), stack, buffer, light, fuse / 5 % 2 == 0);
+		stack.popPose();
+		super.render(entity, yaw, partialTicks, stack, buffer, light);
 	}
 
 	@Override

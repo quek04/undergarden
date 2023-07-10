@@ -20,15 +20,15 @@ public class BlisterbombItem extends Item {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+	public InteractionResultHolder<ItemStack> use(Level level, Player playerIn, InteractionHand handIn) {
 		ItemStack itemstack = playerIn.getItemInHand(handIn);
-		worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), UGSoundEvents.BLISTERBOMB_THROW.get(), SoundSource.NEUTRAL, 0.5F, 1F);
+		level.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), UGSoundEvents.BLISTERBOMB_THROW.get(), SoundSource.NEUTRAL, 0.5F, 1F);
 		playerIn.getCooldowns().addCooldown(this, 50);
-		if (!worldIn.isClientSide) {
-			Blisterbomb blisterbomb = new Blisterbomb(worldIn, playerIn);
+		if (!level.isClientSide) {
+			Blisterbomb blisterbomb = new Blisterbomb(level, playerIn);
 			blisterbomb.setItem(itemstack);
 			blisterbomb.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
-			worldIn.addFreshEntity(blisterbomb);
+			level.addFreshEntity(blisterbomb);
 		}
 
 		playerIn.awardStat(Stats.ITEM_USED.get(this));
