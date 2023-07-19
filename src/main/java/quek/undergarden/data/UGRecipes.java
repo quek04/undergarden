@@ -61,6 +61,14 @@ public class UGRecipes extends UGRecipeProvider {
 		makeHangingSign(UGBlocks.WIGGLEWOOD_HANGING_SIGN, UGBlocks.STRIPPED_WIGGLEWOOD_LOG).save(consumer);
 		makeHangingSign(UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.STRIPPED_GRONGLE_LOG).save(consumer);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, Blocks.STICKY_PISTON)
+				.pattern("G")
+				.pattern("P")
+				.define('G', UGItems.GOO_BALL.get())
+				.define('P', Blocks.PISTON)
+				.unlockedBy("has_goo_ball", has(UGItems.GOO_BALL.get()))
+				.save(consumer, name("sticky_piston_from_goo_ball"));
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.STONECUTTER)
 				.pattern(" I ")
 				.pattern("SSS")
