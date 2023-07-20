@@ -39,6 +39,7 @@ public class ForgottenGuardian extends Monster {
 	public ForgottenGuardian(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
 		this.xpReward = 30;
+		this.setMaxUpStep(1.0F);
 	}
 
 	@Override
@@ -59,11 +60,6 @@ public class ForgottenGuardian extends Monster {
 				.add(Attributes.ATTACK_KNOCKBACK, 2.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.2D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
-	}
-
-	@Override
-	public float maxUpStep() {
-		return 1.0F;
 	}
 
 	@Override

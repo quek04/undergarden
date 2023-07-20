@@ -39,6 +39,7 @@ public class Mog extends Animal implements IForgeShearable {
 
 	public Mog(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
+		this.setMaxUpStep(1.0F);
 	}
 
 	@Override
@@ -57,11 +58,6 @@ public class Mog extends Animal implements IForgeShearable {
 				.add(Attributes.MAX_HEALTH, 20.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.1D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
-	}
-
-	@Override
-	public float maxUpStep() {
-		return 1.0F;
 	}
 
 	@Override
