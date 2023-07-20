@@ -14,6 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
+import quek.undergarden.Undergarden;
 import quek.undergarden.effect.ChillyEffect;
 import quek.undergarden.network.CreateCritParticlePacket;
 import quek.undergarden.network.UGPacketHandler;
@@ -22,7 +23,7 @@ import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGParticleTypes;
 import quek.undergarden.registry.UGTags;
 
-@Mod.EventBusSubscriber(modid = "undergarden")
+@Mod.EventBusSubscriber(modid = Undergarden.MODID)
 public class UGToolEvents {
 
 	@SubscribeEvent
@@ -32,7 +33,7 @@ public class UGToolEvents {
 
 		if (source instanceof Player player) {
 			if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SWORD.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
-				if (ForgeRegistries.ENTITY_TYPES.getKey(event.getEntity().getType()).getNamespace().equals("undergarden") && !event.getEntity().getType().is(Tags.EntityTypes.BOSSES)) {
+				if (ForgeRegistries.ENTITY_TYPES.getKey(event.getEntity().getType()).getNamespace().equals(Undergarden.MODID) && !event.getEntity().getType().is(Tags.EntityTypes.BOSSES)) {
 					event.setAmount(damage * 1.5F);
 				}
 			}
@@ -45,7 +46,7 @@ public class UGToolEvents {
 		BlockState state = event.getState();
 
 		if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SHOVEL.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_HOE.get()) {
-			if (state != null && ForgeRegistries.BLOCKS.getKey(state.getBlock()).getNamespace().equals("undergarden")) {
+			if (state != null && ForgeRegistries.BLOCKS.getKey(state.getBlock()).getNamespace().equals(Undergarden.MODID)) {
 				event.setNewSpeed(event.getOriginalSpeed() * 1.5F);
 			}
 		}

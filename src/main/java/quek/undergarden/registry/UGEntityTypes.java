@@ -36,7 +36,7 @@ import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.entity.rotspawn.Rotwalker;
 import quek.undergarden.entity.stoneborn.Stoneborn;
 
-@Mod.EventBusSubscriber(modid = "undergarden", bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Undergarden.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGEntityTypes {
 
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Undergarden.MODID);

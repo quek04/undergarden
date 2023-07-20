@@ -192,7 +192,7 @@ public class UndergardenClient {
 		});
 	}
 
-	@Mod.EventBusSubscriber(modid = "undergarden", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+	@Mod.EventBusSubscriber(modid = Undergarden.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 	public static class ForgeBusEvents {
 
 		@SubscribeEvent

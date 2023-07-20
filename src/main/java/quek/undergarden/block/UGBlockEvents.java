@@ -8,9 +8,10 @@ import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 
-@Mod.EventBusSubscriber(modid = "undergarden")
+@Mod.EventBusSubscriber(modid = Undergarden.MODID)
 public class UGBlockEvents {
 
 	@SubscribeEvent
