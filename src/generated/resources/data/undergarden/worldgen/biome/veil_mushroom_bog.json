@@ -10,9 +10,9 @@
       "tick_chance": 0.00555
     },
     "ambient_sound": "undergarden:ambient.undergarden",
-    "fog_color": 2432083,
-    "foliage_color": 4212845,
-    "grass_color": 4212845,
+    "fog_color": 1643784,
+    "foliage_color": 7696730,
+    "grass_color": 7696730,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,

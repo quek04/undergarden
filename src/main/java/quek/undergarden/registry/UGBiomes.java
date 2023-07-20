@@ -378,7 +378,7 @@ public class UGBiomes {
 				.hasPrecipitation(false)
 				.downfall(0.0F)
 				.temperature(0.8F)
-				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2432083, 4212845), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION)
+				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1643784, 7696730), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION)
 						.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.05F))
 						.build())
 				.build());

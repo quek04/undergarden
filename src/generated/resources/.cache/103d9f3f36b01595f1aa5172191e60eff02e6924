@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-09T23:20:06.5301433	Registries
+// 1.20.1	2023-07-19T21:25:54.1624513	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -18,7 +18,7 @@ c4df97b40f689d2fabaaa5b668bc1e7dbbaad89d data/undergarden/worldgen/biome/icy_sea
 03ad38cb4c7139a2b4333726df6a7ec53982c555 data/undergarden/worldgen/biome/ink_mushroom_bog.json
 f54d408e71c20f8fcf0babe0b741a1a02ed7603f data/undergarden/worldgen/biome/smogstem_forest.json
 fb18435b928b8ab3bbd5424296fef27bbda15cb3 data/undergarden/worldgen/biome/smog_spires.json
-eed21edd7e2b7db72c2f5a3524cc0243872d957a data/undergarden/worldgen/biome/veil_mushroom_bog.json
+669e99e62e2560880e851dceef1d8fe98038169d data/undergarden/worldgen/biome/veil_mushroom_bog.json
 9f861efec33c8eff4f8ed28a982b4e4e8bcf8abb data/undergarden/worldgen/biome/wigglewood_forest.json
 0cb135b1b4bab8de8975b3e98e8aa873385911bb data/undergarden/worldgen/configured_carver/undergarden_cave.json
 316d650d067fd6b4f165fce00eb44265806ca0da data/undergarden/worldgen/configured_feature/amorous_bristle_patch.json
