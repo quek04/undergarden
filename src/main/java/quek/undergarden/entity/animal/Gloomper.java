@@ -139,7 +139,7 @@ public class Gloomper extends Animal {
 	@Override
 	public void setJumping(boolean jumping) {
 		super.setJumping(jumping);
-		if (jumping) {
+		if (jumping && !this.isInWater() && !this.wasTouchingWater) {
 			this.playSound(UGSoundEvents.GLOOMPER_HOP.get(), this.getSoundVolume(), ((this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F) * 0.8F);
 		}
 
