@@ -521,5 +521,10 @@
   "tooltip.froststeel_sword": "Slows targets.",
   "tooltip.pebble": "Can be used as Slingshot ammo.",
   "tooltip.utheric_sword": "Deals 1.5x damage to Rotspawn.",
+  "trim_material.undergarden.cloggrum": "Cloggrum material",
+  "trim_material.undergarden.forgotten": "Forgotten material",
+  "trim_material.undergarden.froststeel": "Froststeel material",
+  "trim_material.undergarden.regalium": "Regalium material",
+  "trim_material.undergarden.utherium": "Utherium material",
   "upgrade.undergarden.forgotten_upgrade": "Forgotten Tool Upgrade"
 }

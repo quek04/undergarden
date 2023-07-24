@@ -674,5 +674,11 @@ public class UGLang extends LanguageProvider {
 		addDeath("shard_torch.player", "%1$s was killed by a Shard Torch's magic whilst trying to escape %2$s");
 
 		addConfig("return_portal_frame_block_id", "Return Portal Frame Block ID");
+
+		add("trim_material.undergarden.cloggrum", "Cloggrum material");
+		add("trim_material.undergarden.froststeel", "Froststeel material");
+		add("trim_material.undergarden.regalium", "Regalium material");
+		add("trim_material.undergarden.utherium", "Utherium material");
+		add("trim_material.undergarden.forgotten", "Forgotten material");
 	}
 }

@@ -1,10 +1,15 @@
-// 1.20.1	2023-07-19T21:25:54.1624513	Registries
+// 1.20.1	2023-07-24T11:40:28.8985058	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
 c0569bb60eae60387e4744ad37bb4ef0db3e7f3f data/undergarden/damage_type/shard_torch.json
 1bce106678a271e59ecf36c75d07cfa97d77203f data/undergarden/dimension/undergarden.json
 e3dcdd74ed2f3388f6c6618e9a3c2b75faeff5d7 data/undergarden/dimension_type/undergarden.json
+ba55b1bc010adbbdab82b4d91bb3564b4dda83b8 data/undergarden/trim_material/cloggrum.json
+c8c6a58f4be320eea614534d8deea0bf8fccbdc5 data/undergarden/trim_material/forgotten.json
+7d23c208c91a2e947f787394768890117be413b9 data/undergarden/trim_material/froststeel.json
+454515e2a0f4138c16193d3149edb77c5c2d44e5 data/undergarden/trim_material/regalium.json
+09eb930731ab47b0788177e0b8285ff012034da8 data/undergarden/trim_material/utherium.json
 7d35be1273087c05d2d9ab8912a39b05cef6af17 data/undergarden/worldgen/biome/ancient_sea.json
 5b3dbbf12f00328bfa9f769accdf337533e3326b data/undergarden/worldgen/biome/barren_abyss.json
 6dd5cc4e7d411c3c305c3f02cf95d16caf8ac835 data/undergarden/worldgen/biome/blood_mushroom_bog.json
