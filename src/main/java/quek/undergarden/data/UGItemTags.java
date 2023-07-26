@@ -103,6 +103,7 @@ public class UGItemTags extends ItemTagsProvider {
 				.add(UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.FROSTSTEEL_LEGGINGS.get(), UGItems.UTHERIUM_LEGGINGS.get())
 				.add(UGItems.CLOGGRUM_BOOTS.get(), UGItems.FROSTSTEEL_BOOTS.get(), UGItems.UTHERIUM_BOOTS.get());
 		tag(ItemTags.TRIM_MATERIALS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_CRYSTAL.get(), UGItems.REGALIUM_CRYSTAL.get(), UGItems.FORGOTTEN_INGOT.get());
+		tag(ItemTags.VILLAGER_PLANTABLE_SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
 
 		//forge
 		tag(Tags.Items.BONES).add(UGItems.BRUTE_TUSK.get());

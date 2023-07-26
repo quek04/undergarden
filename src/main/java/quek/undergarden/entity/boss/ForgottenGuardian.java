@@ -162,10 +162,6 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	protected void checkFallDamage(double y, boolean onGorund, BlockState state, BlockPos pos) {
-	}
-
-	@Override
 	public boolean canBeAffected(MobEffectInstance effectInstance) {
 		return false;
 	}

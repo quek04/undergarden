@@ -2,8 +2,10 @@
   "values": [
     "#undergarden:rotspawn",
     "#undergarden:cavern_creature",
+    "#forge:bosses",
     "undergarden:stoneborn",
     "undergarden:mog",
-    "undergarden:gloomper"
+    "undergarden:gloomper",
+    "minecraft:warden"
   ]
 }
