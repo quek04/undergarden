@@ -43,10 +43,11 @@ import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
+import java.nio.file.Path;
 import java.util.Set;
 import java.util.UUID;
 
-public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
+public class Stoneborn extends PathfinderMob implements NeutralMob, Npc, Merchant {
 
 	protected int timeOutOfUG = 0;
 	private static final UniformInt ANGER_TIME_RANGE = TimeUtil.rangeOfSeconds(20, 39);
@@ -57,13 +58,9 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 	@Nullable
 	protected MerchantOffers offers;
 
-	public Stoneborn(EntityType<? extends Monster> type, Level level) {
+	public Stoneborn(EntityType<? extends PathfinderMob> type, Level level) {
 		super(type, level);
-	}
-
-	@Override
-	public float getStepHeight() {
-		return 1.0F;
+		this.setMaxUpStep(1.0F);
 	}
 
 	@Override
@@ -87,7 +84,7 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
 	}
 
-	public static boolean canStonebornSpawn(EntityType<? extends Monster> entity, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, RandomSource random) {
+	public static boolean canStonebornSpawn(EntityType<? extends PathfinderMob> entity, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, RandomSource random) {
 		return level.getDifficulty() != Difficulty.PEACEFUL && random.nextInt(10) == 0 && checkMobSpawnRules(entity, level, mobSpawnType, pos, random);
 	}
 

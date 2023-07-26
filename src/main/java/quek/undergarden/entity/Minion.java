@@ -34,7 +34,7 @@ public class Minion extends AbstractGolem implements RangedAttackMob {
 		this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 20, 10.0F));
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Mob.class, 10, true, false, (entity) ->
-				!(entity.getType() == UGEntityTypes.STONEBORN.get()) && entity instanceof Enemy || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
+				entity instanceof Enemy || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
 		);
 	}
 

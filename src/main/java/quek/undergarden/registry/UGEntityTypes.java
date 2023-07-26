@@ -63,7 +63,7 @@ public class UGEntityTypes {
 	public static final RegistryObject<EntityType<Brute>> BRUTE = ENTITIES.register("brute", () -> EntityType.Builder.of(Brute::new, MobCategory.CREATURE).sized(1.0F, 2).build("brute"));
 	public static final RegistryObject<EntityType<Scintling>> SCINTLING = ENTITIES.register("scintling", () -> EntityType.Builder.of(Scintling::new, MobCategory.AMBIENT).sized(1.0F, .5F).build("scintling"));
 	public static final RegistryObject<EntityType<Gloomper>> GLOOMPER = ENTITIES.register("gloomper", () -> EntityType.Builder.of(Gloomper::new, MobCategory.CREATURE).sized(0.99F, 0.99F).build("gloomper"));
-	public static final RegistryObject<EntityType<Stoneborn>> STONEBORN = ENTITIES.register("stoneborn", () -> EntityType.Builder.of(Stoneborn::new, MobCategory.MONSTER).sized(1.0F, 2.6F).build("stoneborn"));
+	public static final RegistryObject<EntityType<Stoneborn>> STONEBORN = ENTITIES.register("stoneborn", () -> EntityType.Builder.of(Stoneborn::new, MobCategory.CREATURE).sized(1.0F, 2.6F).build("stoneborn"));
 	public static final RegistryObject<EntityType<Nargoyle>> NARGOYLE = ENTITIES.register("nargoyle", () -> EntityType.Builder.of(Nargoyle::new, MobCategory.MONSTER).sized(1.0F, 1.5F).build("nargoyle"));
 	public static final RegistryObject<EntityType<Muncher>> MUNCHER = ENTITIES.register("muncher", () -> EntityType.Builder.of(Muncher::new, MobCategory.MONSTER).sized(0.8F, 0.8F).build("muncher"));
 	public static final RegistryObject<EntityType<Sploogie>> SPLOOGIE = ENTITIES.register("sploogie", () -> EntityType.Builder.of(Sploogie::new, MobCategory.MONSTER).sized(0.8F, 0.8F).build("sploogie"));

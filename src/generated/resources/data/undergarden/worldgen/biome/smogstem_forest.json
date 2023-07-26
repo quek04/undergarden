@@ -91,6 +91,12 @@
     "axolotls": [],
     "creature": [
       {
+        "type": "undergarden:stoneborn",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 100
+      },
+      {
         "type": "undergarden:gloomper",
         "maxCount": 4,
         "minCount": 4,
@@ -150,12 +156,6 @@
       {
         "type": "undergarden:rotbeast",
         "maxCount": 2,
-        "minCount": 1,
-        "weight": 100
-      },
-      {
-        "type": "undergarden:stoneborn",
-        "maxCount": 3,
         "minCount": 1,
         "weight": 100
       }
