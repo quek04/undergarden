@@ -8,7 +8,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.DwellerModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.DwellerEyesLayer;
-import quek.undergarden.entity.animal.Dweller;
+import quek.undergarden.entity.animal.dweller.Dweller;
 
 public class DwellerRender extends MobRenderer<Dweller, DwellerModel<Dweller>> {
 

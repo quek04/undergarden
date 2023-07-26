@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.DwellerModel;
-import quek.undergarden.entity.animal.Dweller;
+import quek.undergarden.entity.animal.dweller.Dweller;
 
 public class DwellerEyesLayer<T extends Dweller, M extends DwellerModel<T>> extends EyesLayer<T, M> {
 

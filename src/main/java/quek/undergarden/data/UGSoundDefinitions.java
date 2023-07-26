@@ -350,6 +350,9 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 		this.add(UGSoundEvents.DWELLER_DEATH, definition().with(
 				sound("undergarden:entity/dweller_death")
 		).subtitle("subtitles.entity.dweller.death"));
+		this.add(UGSoundEvents.DWELLER_JUMP, definition().with(
+				sound("undergarden:entity/dweller_jump")
+		).subtitle("subtitles.entity.dweller.jump"));
 		this.add(UGSoundEvents.DWELLER_STEP, definition().with(
 				sound("minecraft:mob/cow/step1").pitch(0.5F),
 				sound("minecraft:mob/cow/step2").pitch(0.5F),

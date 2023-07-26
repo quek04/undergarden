@@ -375,6 +375,12 @@
     ],
     "subtitle": "subtitles.entity.dweller.hurt"
   },
+  "entity.dweller.jump": {
+    "sounds": [
+      "undergarden:entity/dweller_jump"
+    ],
+    "subtitle": "subtitles.entity.dweller.jump"
+  },
   "entity.dweller.saddle_remove": {
     "sounds": [
       {

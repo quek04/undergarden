@@ -69,6 +69,7 @@ public class UGSoundEvents {
 	public static final RegistryObject<SoundEvent> DWELLER_AMBIENT = register("entity.dweller.ambient");
 	public static final RegistryObject<SoundEvent> DWELLER_HURT = register("entity.dweller.hurt");
 	public static final RegistryObject<SoundEvent> DWELLER_DEATH = register("entity.dweller.death");
+	public static final RegistryObject<SoundEvent> DWELLER_JUMP = register("entity.dweller.jump");
 	public static final RegistryObject<SoundEvent> DWELLER_STEP = register("entity.dweller.step");
 	public static final RegistryObject<SoundEvent> DWELLER_SADDLE_REMOVE = register("entity.dweller.saddle_remove");
 

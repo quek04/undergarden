@@ -19,6 +19,7 @@ import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.UGChestBoat;
 import quek.undergarden.entity.animal.*;
+import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.entity.boss.ForgottenGuardian;
 import quek.undergarden.entity.cavern.CavernMonster;
 import quek.undergarden.entity.cavern.Muncher;

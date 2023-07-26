@@ -6,7 +6,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.Dweller;
+import quek.undergarden.entity.animal.dweller.Dweller;
 
 public class DwellerModel<T extends Dweller> extends AgeableListModel<T> {
 
@@ -57,9 +57,9 @@ public class DwellerModel<T extends Dweller> extends AgeableListModel<T> {
 		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
 		this.head.xRot = -1.3963F + headPitch * ((float) Math.PI / 180F);
 
-		this.leftLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F) * 0.66F * limbSwingAmount;
 
-		this.rightLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.rightLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 0.66F * limbSwingAmount;
 	}
 
 	@Override

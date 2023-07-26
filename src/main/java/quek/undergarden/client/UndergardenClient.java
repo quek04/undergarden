@@ -38,6 +38,7 @@ import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.entity.UGBoat;
+import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.registry.*;
 
 @Mod.EventBusSubscriber(modid = Undergarden.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -190,6 +191,15 @@ public class UndergardenClient {
 				renderBrittlenessArmor(width, height, stack, gui, player);
 			}
 		});
+		//render XP bar since we cancel the jump bar
+		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
+		event.registerAbove(VanillaGuiOverlay.EXPERIENCE_BAR.id(), "dweller_xp_bar", (gui, stack, partialTicks, width, height) -> {
+			Minecraft minecraft = Minecraft.getInstance();
+			LocalPlayer player = minecraft.player;
+			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
+				gui.renderExperienceBar(stack, width / 2 - 91);
+			}
+		});
 	}
 
 	@Mod.EventBusSubscriber(modid = Undergarden.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -204,6 +214,15 @@ public class UndergardenClient {
 				RenderSystem.setShaderFogStart(0.0F);
 				RenderSystem.setShaderFogEnd(200.0F);
 				RenderSystem.setShaderFogShape(FogShape.SPHERE);
+			}
+		}
+
+		@SubscribeEvent
+		public static void dontRenderJumpBarForDweller(RenderGuiOverlayEvent.Pre event) {
+			if (event.getOverlay().id() == VanillaGuiOverlay.JUMP_BAR.id()) {
+				if (Minecraft.getInstance().player.getVehicle() instanceof Dweller) {
+					event.setCanceled(true);
+				}
 			}
 		}
 	}

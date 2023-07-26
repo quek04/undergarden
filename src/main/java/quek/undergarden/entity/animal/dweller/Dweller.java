@@ -1,4 +1,4 @@
-package quek.undergarden.entity.animal;
+package quek.undergarden.entity.animal.dweller;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -24,6 +25,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
@@ -31,24 +39,36 @@ import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
 
-public class Dweller extends Animal implements ItemSteerable, Saddleable {
+@Mod.EventBusSubscriber(modid = Undergarden.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class Dweller extends Animal implements ItemSteerable, Saddleable, PlayerRideableJumping {
 
 	private static final EntityDataAccessor<Boolean> SADDLE = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> BOOST_TIME = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.INT);
-	private final ItemBasedSteering steering = new ItemBasedSteering(this.getEntityData(), BOOST_TIME, SADDLE);
+	private final DwellerItemBasedSteering steering = new DwellerItemBasedSteering(this.getEntityData(), BOOST_TIME, SADDLE);
+	private float playerJumpPendingScale;
+	private boolean isJumping;
+	private int wildJumpCooldown;
+	@Nullable
+	private PanicGoal panicGoal;
+
+	@Nullable
+	private DwellerAvoidEntityGoal<?> avoidGoal;
 
 	public Dweller(EntityType<? extends Dweller> type, Level level) {
 		super(type, level);
+		this.setMaxUpStep(1.0F);
+		this.wildJumpCooldown = 300 + this.getRandom().nextInt(500);
 	}
 
 	@Override
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
-		this.goalSelector.addGoal(1, new PanicGoal(this, 2.5D));
+		this.goalSelector.addGoal(1, this.panicGoal = new PanicGoal(this, 2.5D));
 		this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.UNDERBEANS.get(), UGItems.UNDERBEAN_STICK.get()), false));
 		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
-		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 2.0D, 2.5D));
+		this.goalSelector.addGoal(2, this.avoidGoal = new DwellerAvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 2.0D, 2.5D));
+		this.goalSelector.addGoal(2, new DwellerJumpGoal(this));
 		this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 	}
@@ -56,7 +76,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	public static AttributeSupplier.Builder registerAttributes() {
 		return Animal.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 15.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.15D);
+				.add(Attributes.MOVEMENT_SPEED, 0.2D);
 	}
 
 	@Override
@@ -94,12 +114,14 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		this.steering.addAdditionalSaveData(tag);
+		tag.putInt("JumpCooldown", this.getWildJumpCooldown());
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
 		this.steering.readAdditionalSaveData(tag);
+		this.setWildJumpCooldown(tag.getInt("JumpCooldown"));
 	}
 
 	@Override
@@ -115,6 +137,14 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 			this.steering.onSynced();
 		}
 		super.onSyncedDataUpdated(data);
+	}
+
+	@Override
+	public void aiStep() {
+		super.aiStep();
+		if (this.wildJumpCooldown > 0) {
+			this.wildJumpCooldown--;
+		}
 	}
 
 	@Override
@@ -169,7 +199,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 
 	@Override
 	protected float getRiddenSpeed(Player player) {
-		return (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 1.1F;
+		return (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED) * this.steering.boostFactor();
 	}
 
 	@Nullable
@@ -177,6 +207,18 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 	public LivingEntity getControllingPassenger() {
 		Entity entity = this.getFirstPassenger();
 		return entity != null && this.canBeControlledBy(entity) && entity instanceof LivingEntity living ? living : null;
+	}
+
+	@Override
+	protected int calculateFallDamage(float distance, float multiplier) {
+		return super.calculateFallDamage(distance, multiplier) - 10;
+	}
+
+	@SubscribeEvent
+	public static void cancelPlayerFallDamage(LivingAttackEvent event) {
+		if (event.getEntity() instanceof Player player && player.getVehicle() instanceof Dweller && event.getSource().is(DamageTypeTags.IS_FALL)) {
+			event.setCanceled(true);
+		}
 	}
 
 	private boolean canBeControlledBy(Entity entity) {
@@ -200,5 +242,119 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable {
 		float ySin = Mth.sin(this.yBodyRot * ((float) Math.PI / 180F));
 		float yCos = Mth.cos(this.yBodyRot * ((float) Math.PI / 180F));
 		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset() - 0.1F, this.getZ() - (double) (0.5F * yCos));
+	}
+
+	public boolean isJumping() {
+		return this.isJumping;
+	}
+
+	public void setIsJumping(boolean jumping) {
+		this.isJumping = jumping;
+	}
+
+	@Override
+	protected void tickRidden(Player player, Vec3 vec) {
+		super.tickRidden(player, vec);
+		this.steering.tickBoost();
+		Vec2 vec2 = this.getRiddenRotation(player);
+		this.setRot(vec2.y, vec2.x);
+		this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
+		if (this.isControlledByLocalInstance()) {
+			if (this.onGround()) {
+				this.setIsJumping(false);
+				if (this.playerJumpPendingScale > 0.0F && !this.isJumping()) {
+					this.jump(vec.z() > 0.0D);
+				}
+				this.playerJumpPendingScale = 0.0F;
+			}
+		}
+	}
+
+	protected Vec2 getRiddenRotation(LivingEntity entity) {
+		return new Vec2(entity.getXRot() * 0.5F, entity.getYRot());
+	}
+
+	public void jump(boolean moveHorizontally) {
+		double d0 = this.getBlockJumpFactor();
+		double d1 = d0 + (double)this.getJumpBoostPower();
+		Vec3 vec3 = this.getDeltaMovement();
+		this.setDeltaMovement(vec3.x(), d1, vec3.z());
+		this.setIsJumping(true);
+		this.hasImpulse = true;
+		ForgeHooks.onLivingJump(this);
+		if (moveHorizontally) {
+			float f = Mth.sin(this.getYRot() * ((float)Math.PI / 180F));
+			float f1 = Mth.cos(this.getYRot() * ((float)Math.PI / 180F));
+			this.setDeltaMovement(this.getDeltaMovement().add(-0.4F * f, 0.0D, 0.4F * f1));
+		}
+	}
+
+	@Override
+	public void onPlayerJump(int power) {
+		if (this.isSaddled() && this.onGround()) {
+			this.playerJumpPendingScale = 1.0F;
+		}
+	}
+
+	@Override
+	public boolean canJump() {
+		return this.isSaddled() && this.getControllingPassenger() != null;
+	}
+
+	@Override
+	public void handleStartJump(int pJumpPower) {
+		if (this.onGround()) {
+			this.playSound(UGSoundEvents.DWELLER_JUMP.get(), this.getSoundVolume(), this.getVoicePitch());
+			//ensure we dont play an ambient sound while jumping
+			this.ambientSoundTime = -30;
+		}
+	}
+
+	@Override
+	public void handleStopJump() {
+
+	}
+
+	@Nullable
+	public PanicGoal getPanicGoal() {
+		return this.panicGoal;
+	}
+
+	@Nullable
+	public DwellerAvoidEntityGoal<?> getAvoidGoal() {
+		return this.avoidGoal;
+	}
+
+	public int getWildJumpCooldown() {
+		return this.wildJumpCooldown;
+	}
+
+	public void setWildJumpCooldown(int cooldown) {
+		this.wildJumpCooldown = cooldown;
+	}
+
+	public static class DwellerAvoidEntityGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
+
+		private boolean running;
+
+		public DwellerAvoidEntityGoal(PathfinderMob pMob, Class<T> pEntityClassToAvoid, float pMaxDistance, double pWalkSpeedModifier, double pSprintSpeedModifier) {
+			super(pMob, pEntityClassToAvoid, pMaxDistance, pWalkSpeedModifier, pSprintSpeedModifier);
+		}
+
+		@Override
+		public void start() {
+			super.start();
+			this.running = true;
+		}
+
+		@Override
+		public void stop() {
+			super.stop();
+			this.running = false;
+		}
+
+		public boolean isRunning() {
+			return this.running;
+		}
 	}
 }
