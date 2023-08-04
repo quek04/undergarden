@@ -25,8 +25,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,6 +40,7 @@ import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = Undergarden.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Dweller extends Animal implements ItemSteerable, Saddleable, PlayerRideableJumping {
@@ -142,7 +145,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	@Override
 	public void aiStep() {
 		super.aiStep();
-		if (this.wildJumpCooldown > 0) {
+		if (this.wildJumpCooldown > 0 && !this.canJump() && !this.isVehicle()) {
 			this.wildJumpCooldown--;
 		}
 	}
@@ -227,6 +230,36 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		} else {
 			return false;
 		}
+	}
+
+	//[VanillaCopy] of Entity.collide, but change the collision box to encapsulate the player if being ridden to prevent them from sufficating in walls.
+	//honestly, vanilla should do this too
+	@Override
+	public Vec3 collide(Vec3 vec) {
+		AABB aabb = this.getPassengers().isEmpty() ? this.getBoundingBox() : EntityDimensions.scalable(1.2F, 2.65F).makeBoundingBox(this.position());
+		List<VoxelShape> list = this.level().getEntityCollisions(this, aabb.expandTowards(vec));
+		Vec3 vec3 = vec.lengthSqr() == 0.0D ? vec : collideBoundingBox(this, vec, aabb, this.level(), list);
+		boolean flag = vec.x() != vec3.x();
+		boolean flag1 = vec.y() != vec3.y();
+		boolean flag2 = vec.z() != vec3.z();
+		boolean flag3 = this.onGround() || flag1 && vec.y() < 0.0D;
+		float stepHeight = this.getStepHeight();
+		if (stepHeight > 0.0F && flag3 && (flag || flag2)) {
+			Vec3 vec31 = collideBoundingBox(this, new Vec3(vec.x(), stepHeight, vec.z()), aabb, this.level(), list);
+			Vec3 vec32 = collideBoundingBox(this, new Vec3(0.0D, stepHeight, 0.0D), aabb.expandTowards(vec.x(), 0.0D, vec.z()), this.level(), list);
+			if (vec32.y() < (double)stepHeight) {
+				Vec3 vec33 = collideBoundingBox(this, new Vec3(vec.x(), 0.0D, vec.z()), aabb.move(vec32), this.level(), list).add(vec32);
+				if (vec33.horizontalDistanceSqr() > vec31.horizontalDistanceSqr()) {
+					vec31 = vec33;
+				}
+			}
+
+			if (vec31.horizontalDistanceSqr() > vec3.horizontalDistanceSqr()) {
+				return vec31.add(collideBoundingBox(this, new Vec3(0.0D, -vec31.y() + vec.y(), 0.0D), aabb.move(vec31), this.level(), list));
+			}
+		}
+
+		return vec3;
 	}
 
 	@Override
