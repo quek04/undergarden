@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:amorous_bristle_to_dye"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -304,5 +304,6 @@
     [
       "undergarden:veil_mushroom_bog"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

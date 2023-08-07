@@ -10,13 +10,13 @@ import quek.undergarden.entity.boss.ForgottenGuardian;
 
 public class ForgottenGuardianEyesLayer<T extends ForgottenGuardian, M extends ForgottenGuardianModel<T>> extends EyesLayer<T, M> {
 
-    public ForgottenGuardianEyesLayer(RenderLayerParent<T, M> rendererIn) {
-        super(rendererIn);
-    }
+	public ForgottenGuardianEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten_guardian_eyes.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten_guardian_eyes.png"));
+	}
 
 }

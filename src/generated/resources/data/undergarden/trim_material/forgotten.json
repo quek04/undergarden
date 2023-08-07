@@ -1,0 +1,9 @@
+{
+  "asset_name": "forgotten",
+  "description": {
+    "color": "#48C88E",
+    "translate": "trim_material.undergarden.forgotten"
+  },
+  "ingredient": "undergarden:forgotten_ingot",
+  "item_model_index": 0.7
+}

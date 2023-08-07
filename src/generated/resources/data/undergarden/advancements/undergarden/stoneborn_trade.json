@@ -25,5 +25,6 @@
     [
       "trade_with_stoneborn"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

@@ -15,14 +15,14 @@ import java.util.function.Supplier;
 
 public class UGBucketItem extends BucketItem {
 
-    public UGBucketItem(Supplier<? extends Fluid> fluid, Properties properties) {
-        super(fluid, properties);
-    }
+	public UGBucketItem(Supplier<? extends Fluid> fluid, Properties properties) {
+		super(fluid, properties);
+	}
 
-    @Override
-    protected void playEmptySound(@Nullable Player player, LevelAccessor level, BlockPos pos) {
-        SoundEvent soundEvent = UGSoundEvents.BUCKET_EMPTY_VIRULENT.get();
-        level.playSound(player, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-        level.gameEvent(player, GameEvent.FLUID_PLACE, pos);
-    }
+	@Override
+	protected void playEmptySound(@Nullable Player player, LevelAccessor level, BlockPos pos) {
+		SoundEvent soundEvent = UGSoundEvents.BUCKET_EMPTY_VIRULENT.get();
+		level.playSound(player, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
+		level.gameEvent(player, GameEvent.FLUID_PLACE, pos);
+	}
 }

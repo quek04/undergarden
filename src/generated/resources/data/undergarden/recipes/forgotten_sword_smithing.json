@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "undergarden:forgotten_ingot"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "undergarden:forgotten_sword"
+  },
+  "template": {
+    "item": "undergarden:forgotten_upgrade_smithing_template"
   }
 }

@@ -12,31 +12,31 @@ import quek.undergarden.registry.UGTreeDecoratorTypes;
 
 public class GrongletTrunkDecorator extends TreeDecorator {
 
-    public static final GrongletTrunkDecorator INSTANCE = new GrongletTrunkDecorator();
-    public static final Codec<GrongletTrunkDecorator> CODEC = Codec.unit(() -> INSTANCE);
+	public static final GrongletTrunkDecorator INSTANCE = new GrongletTrunkDecorator();
+	public static final Codec<GrongletTrunkDecorator> CODEC = Codec.unit(() -> INSTANCE);
 
-    @Override
-    protected TreeDecoratorType<?> type() {
-        return UGTreeDecoratorTypes.GRONGLET_TRUNK_DECORATOR.get();
-    }
+	@Override
+	protected TreeDecoratorType<?> type() {
+		return UGTreeDecoratorTypes.GRONGLET_TRUNK_DECORATOR.get();
+	}
 
-    @Override
-    public void place(TreeDecorator.Context context) {
-        RandomSource random = context.random();
+	@Override
+	public void place(TreeDecorator.Context context) {
+		RandomSource random = context.random();
 
-        context.logs().forEach((pos) -> {
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-                BlockPos newPos = pos.offset(direction.getStepX(), 0, direction.getStepZ());
-                if (random.nextInt(50) == 0) {
-                    if (context.isAir(newPos)) {
-                        placeGronglet(context, newPos, direction);
-                    }
-                }
-            }
-        });
-    }
+		context.logs().forEach((pos) -> {
+			for (Direction direction : Direction.Plane.HORIZONTAL) {
+				BlockPos newPos = pos.offset(direction.getStepX(), 0, direction.getStepZ());
+				if (random.nextInt(50) == 0) {
+					if (context.isAir(newPos)) {
+						placeGronglet(context, newPos, direction);
+					}
+				}
+			}
+		});
+	}
 
-    private void placeGronglet(TreeDecorator.Context context, BlockPos pos, Direction direction) {
-        context.setBlock(pos, UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction));
-    }
+	private void placeGronglet(TreeDecorator.Context context, BlockPos pos, Direction direction) {
+		context.setBlock(pos, UGBlocks.GRONGLET.get().defaultBlockState().setValue(GrongletBlock.FACING, direction));
+	}
 }

@@ -70,5 +70,6 @@
     [
       "kill_rotbeast"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

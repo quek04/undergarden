@@ -59,14 +59,14 @@ public class MogModel<E extends Mog> extends AgeableListModel<E> {
 
 	@Override
 	public void setupAnim(E entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+		this.head.xRot = headPitch * ((float) Math.PI / 180F);
 
 		this.body.zRot = 0.1F * Mth.sin(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
 
 		this.frontLegLeft.xRot = Mth.cos(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
-		this.frontLegRight.xRot = Mth.cos(limbSwing * 2.0F + (float)Math.PI) * 4.0F * limbSwingAmount;
-		this.backLegLeft.xRot = Mth.cos(limbSwing * 2.0F + (float)Math.PI) * 4.0F * limbSwingAmount;
+		this.frontLegRight.xRot = Mth.cos(limbSwing * 2.0F + (float) Math.PI) * 4.0F * limbSwingAmount;
+		this.backLegLeft.xRot = Mth.cos(limbSwing * 2.0F + (float) Math.PI) * 4.0F * limbSwingAmount;
 		this.backLegRight.xRot = Mth.cos(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
 	}
 }

@@ -90,15 +90,15 @@ public class MasticatorModel<T extends Masticator> extends ListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+		this.head.xRot = headPitch * ((float) Math.PI / 180F);
 
 		float chew = Mth.sin((entity.tickCount) * 0.3F) * 0.3F;
 		this.lowerJaw.xRot = chew * 0.70F;
 
 		this.leftArm.xRot = Mth.cos(limbSwing * 0.5F) * 1.4F * limbSwingAmount;
 
-		this.rightArm.xRot = Mth.cos(limbSwing * 0.5F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightArm.xRot = Mth.cos(limbSwing * 0.5F + (float) Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override

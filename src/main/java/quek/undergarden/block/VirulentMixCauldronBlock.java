@@ -18,37 +18,37 @@ import quek.undergarden.registry.UGTags;
 
 public class VirulentMixCauldronBlock extends AbstractCauldronBlock {
 
-    public VirulentMixCauldronBlock(Properties properties) {
-        super(properties, UGCauldronInteractions.VIRULENT_MIX);
-    }
+	public VirulentMixCauldronBlock(Properties properties) {
+		super(properties, UGCauldronInteractions.VIRULENT_MIX);
+	}
 
-    @Override
-    public boolean isFull(BlockState state) {
-        return true;
-    }
+	@Override
+	public boolean isFull(BlockState state) {
+		return true;
+	}
 
-    @Override
-    protected double getContentHeight(BlockState state) {
-        return 0.9375D;
-    }
+	@Override
+	protected double getContentHeight(BlockState state) {
+		return 0.9375D;
+	}
 
-    @Override
-    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
-        return 3;
-    }
+	@Override
+	public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return 3;
+	}
 
-    @Override
-    public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
-        if(entity.isAlive() && entity instanceof LivingEntity livingEntity && this.isEntityInsideContent(state, pos, entity)) {
-            if(livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX)
-                || livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) return;
+	@Override
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+		if (entity.isAlive() && entity instanceof LivingEntity livingEntity && this.isEntityInsideContent(state, pos, entity)) {
+			if (livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX)
+					|| livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) return;
 
-            livingEntity.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 200, 0));
-        }
-    }
+			livingEntity.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 200, 0));
+		}
+	}
 
-    @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
-        return new ItemStack(Items.CAULDRON);
-    }
+	@Override
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter getter, BlockPos pos, Player player) {
+		return new ItemStack(Items.CAULDRON);
+	}
 }

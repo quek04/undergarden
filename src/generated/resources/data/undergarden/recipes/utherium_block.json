@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "#": {
       "item": "undergarden:utherium_crystal"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "undergarden:utherium_block"
-  }
+  },
+  "show_notification": true
 }

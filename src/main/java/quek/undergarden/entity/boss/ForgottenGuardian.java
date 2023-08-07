@@ -34,174 +34,171 @@ import quek.undergarden.registry.UGSoundEvents;
 
 public class ForgottenGuardian extends Monster {
 
-    private int attackTimer;
+	private int attackTimer;
 
-    public ForgottenGuardian(EntityType<? extends Monster> type, Level level) {
-        super(type, level);
-        this.maxUpStep = 1.0F;
-        this.xpReward = 30;
-    }
+	public ForgottenGuardian(EntityType<? extends Monster> type, Level level) {
+		super(type, level);
+		this.xpReward = 30;
+		this.setMaxUpStep(1.0F);
+	}
 
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
-        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-    }
+	@Override
+	protected void registerGoals() {
+		this.goalSelector.addGoal(0, new FloatGoal(this));
+		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
+		this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
+		this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
+		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+	}
 
-    public static AttributeSupplier.Builder registerAttributes() {
-        return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 80.0D)
-                .add(Attributes.ARMOR, 10.0D)
-                .add(Attributes.ARMOR_TOUGHNESS, 5.0D)
-                .add(Attributes.ATTACK_DAMAGE, 10.0D)
-                .add(Attributes.ATTACK_KNOCKBACK, 2.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.2D)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
-    }
+	public static AttributeSupplier.Builder registerAttributes() {
+		return Monster.createMobAttributes()
+				.add(Attributes.MAX_HEALTH, 80.0D)
+				.add(Attributes.ARMOR, 10.0D)
+				.add(Attributes.ARMOR_TOUGHNESS, 5.0D)
+				.add(Attributes.ATTACK_DAMAGE, 10.0D)
+				.add(Attributes.ATTACK_KNOCKBACK, 2.0D)
+				.add(Attributes.MOVEMENT_SPEED, 0.2D)
+				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
+	}
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return UGSoundEvents.FORGOTTEN_GUARDIAN_AMBIENT.get();
-    }
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return UGSoundEvents.FORGOTTEN_GUARDIAN_AMBIENT.get();
+	}
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSoundEvents.FORGOTTEN_GUARDIAN_HURT.get();
-    }
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return UGSoundEvents.FORGOTTEN_GUARDIAN_HURT.get();
+	}
 
-    @Override
-    protected SoundEvent getDeathSound() {
-        return UGSoundEvents.FORGOTTEN_GUARDIAN_DEATH.get();
-    }
+	@Override
+	protected SoundEvent getDeathSound() {
+		return UGSoundEvents.FORGOTTEN_GUARDIAN_DEATH.get();
+	}
 
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_STEP.get(), 0.5F, 1.0F);
-    }
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState state) {
+		this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_STEP.get(), 0.5F, 1.0F);
+	}
 
-    @Override
-    public boolean canChangeDimensions() {
-        return false;
-    }
+	@Override
+	public boolean canChangeDimensions() {
+		return false;
+	}
 
-    @Override
-    public void checkDespawn() {
-        if (this.level.getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
-            this.discard();
-        } else {
-            this.noActionTime = 0;
-        }
-    }
+	@Override
+	public void checkDespawn() {
+		if (this.level().getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
+			this.discard();
+		} else {
+			this.noActionTime = 0;
+		}
+	}
 
-    @Override
-    public void aiStep() {
-        super.aiStep();
+	@Override
+	public void aiStep() {
+		super.aiStep();
 
-        if (this.attackTimer > 0) {
-            --this.attackTimer;
-        }
-        if (this.isAggressive()) {
-            if(this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)) {
-                AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
+		if (this.attackTimer > 0) {
+			--this.attackTimer;
+		}
+		if (this.isAggressive()) {
+			if (this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
+				AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
-                for(BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
-                    BlockState blockstate = this.level.getBlockState(blockpos);
-                    if(!blockstate.is(BlockTags.WITHER_IMMUNE)) {
-                        this.level.destroyBlock(blockpos, false, this);
-                    }
-                }
-            }
-        }
-    }
+				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
+					BlockState blockstate = this.level().getBlockState(blockpos);
+					if (!blockstate.is(BlockTags.WITHER_IMMUNE)) {
+						this.level().destroyBlock(blockpos, false, this);
+					}
+				}
+			}
+		}
+	}
 
-    @Override
-    public boolean doHurtTarget(Entity entity) {
-        this.attackTimer = 10;
-        this.level.broadcastEntityEvent(this, (byte)4);
-        this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
-        return super.doHurtTarget(entity);
-    }
+	@Override
+	public boolean doHurtTarget(Entity entity) {
+		this.attackTimer = 10;
+		this.level().broadcastEntityEvent(this, (byte) 4);
+		this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
+		return super.doHurtTarget(entity);
+	}
 
-    @Override
-    protected void blockedByShield(LivingEntity entity) {
-        double x = entity.getX() - this.getX();
-        double z = entity.getZ() - this.getZ();
-        double modifier = Math.max(x * x + z * z, 0.001D);
-        entity.push((x / modifier) * 2, 0.2F, (z / modifier) * 2);
-        entity.hurtMarked = true;
-    }
+	@Override
+	protected void blockedByShield(LivingEntity entity) {
+		double x = entity.getX() - this.getX();
+		double z = entity.getZ() - this.getZ();
+		double modifier = Math.max(x * x + z * z, 0.001D);
+		entity.push((x / modifier) * 2, 0.2F, (z / modifier) * 2);
+		entity.hurtMarked = true;
+	}
 
-    @Override
-    public boolean hurt(DamageSource source, float amount) {
-        Entity entity = source.getDirectEntity();
-        if (entity instanceof Projectile) {
-            this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_DEFLECT.get(), 1.0F, 1.0F);
-            return false;
-        }
-        else return super.hurt(source, amount);
-    }
+	@Override
+	public boolean hurt(DamageSource source, float amount) {
+		Entity entity = source.getDirectEntity();
+		if (entity instanceof Projectile) {
+			this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_DEFLECT.get(), 1.0F, 1.0F);
+			return false;
+		} else return super.hurt(source, amount);
+	}
 
-    public void handleEntityEvent(byte id) {
-        if (id == 4) {
-            this.attackTimer = 10;
-        }
-        else {
-            super.handleEntityEvent(id);
-        }
-    }
+	@Override
+	public void handleEntityEvent(byte id) {
+		if (id == 4) {
+			this.attackTimer = 10;
+		} else {
+			super.handleEntityEvent(id);
+		}
+	}
 
-    public int getAttackTimer() {
-        return this.attackTimer;
-    }
+	public int getAttackTimer() {
+		return this.attackTimer;
+	}
 
-    @Override
-    public boolean canBreatheUnderwater() {
-        return true;
-    }
+	@Override
+	public boolean canBreatheUnderwater() {
+		return true;
+	}
 
-    @Override
-    protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) { }
+	@Override
+	public boolean canBeAffected(MobEffectInstance effectInstance) {
+		return false;
+	}
 
-    @Override
-    public boolean canBeAffected(MobEffectInstance effectInstance) {
-        return false;
-    }
+	@Override
+	public boolean isPushedByFluid() {
+		return false;
+	}
 
-    @Override
-    public boolean isPushedByFluid() {
-        return false;
-    }
+	@Override
+	protected PathNavigation createNavigation(Level level) {
+		return new ForgottenGuardian.Navigator(this, level);
+	}
 
-    @Override
-    protected PathNavigation createNavigation(Level level) {
-        return new ForgottenGuardian.Navigator(this, level);
-    }
+	@Override
+	public boolean canBeLeashed(Player player) {
+		return false;
+	}
 
-    @Override
-    public boolean canBeLeashed(Player player) {
-        return false;
-    }
+	static class Navigator extends GroundPathNavigation {
+		public Navigator(Mob entity, Level level) {
+			super(entity, level);
+		}
 
-    static class Navigator extends GroundPathNavigation {
-        public Navigator(Mob entity, Level level) {
-            super(entity, level);
-        }
+		protected PathFinder createPathFinder(int range) {
+			this.nodeEvaluator = new ForgottenGuardian.Evaluator();
+			return new PathFinder(this.nodeEvaluator, range);
+		}
+	}
 
-        protected PathFinder createPathFinder(int range) {
-            this.nodeEvaluator = new ForgottenGuardian.Processor();
-            return new PathFinder(this.nodeEvaluator, range);
-        }
-    }
+	static class Evaluator extends WalkNodeEvaluator {
+		private Evaluator() {
+		}
 
-    static class Processor extends WalkNodeEvaluator {
-        private Processor() {
-        }
-
-        protected BlockPathTypes evaluateBlockPathType(BlockGetter level, boolean p_215744_2_, boolean p_215744_3_, BlockPos pos, BlockPathTypes pathNodeType) {
-            return BlockPathTypes.WALKABLE;
-        }
-    }
+		@Override
+		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, BlockPos pos, BlockPathTypes types) {
+			return BlockPathTypes.WALKABLE;
+		}
+	}
 }

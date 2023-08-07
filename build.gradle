@@ -12,7 +12,6 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
-//
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
@@ -25,7 +24,8 @@ archivesBaseName = 'The_Undergarden-'+project.mc_version
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'parchment', version: project.parchment_version+'-'+project.mc_version
+    // https://ldtteam.jfrog.io/ui/native/parchmentmc-public/org/parchmentmc/data
+    mappings channel: 'parchment', version: project.parchment_version
 
     runs {
         client {

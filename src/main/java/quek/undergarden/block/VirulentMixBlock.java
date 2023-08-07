@@ -18,21 +18,21 @@ import java.util.function.Supplier;
 
 public class VirulentMixBlock extends LiquidBlock {
 
-    public VirulentMixBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
-        super(supplier, properties.noCollission().strength(100F).noLootTable().lightLevel((state) -> 10));
-    }
+	public VirulentMixBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
+		super(supplier, properties.noCollission().strength(100F).noLootTable().lightLevel((state) -> 10));
+	}
 
-    @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if(entity.isAlive() && entity instanceof LivingEntity livingEntity) {
-            if(livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX) || livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get()))
-                return;
-            livingEntity.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 200, 0));
-        }
-    }
+	@Override
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+		if (entity.isAlive() && entity instanceof LivingEntity livingEntity) {
+			if (livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX) || livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get()))
+				return;
+			livingEntity.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 200, 0));
+		}
+	}
 
-    @Override
-    public Optional<SoundEvent> getPickupSound() {
-        return Optional.of(UGSoundEvents.BUCKET_FILL_VIRULENT.get());
-    }
+	@Override
+	public Optional<SoundEvent> getPickupSound() {
+		return Optional.of(UGSoundEvents.BUCKET_FILL_VIRULENT.get());
+	}
 }

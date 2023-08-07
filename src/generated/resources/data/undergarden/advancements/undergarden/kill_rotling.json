@@ -35,5 +35,6 @@
     [
       "kill_rotling"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

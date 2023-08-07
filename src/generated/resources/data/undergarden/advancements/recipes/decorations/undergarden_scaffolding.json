@@ -41,5 +41,6 @@
     "recipes": [
       "undergarden:undergarden_scaffolding"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

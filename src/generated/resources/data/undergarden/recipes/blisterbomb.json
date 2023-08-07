@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "B": {
       "item": "undergarden:rotten_blisterberry"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "undergarden:blisterbomb"
-  }
+  },
+  "show_notification": true
 }

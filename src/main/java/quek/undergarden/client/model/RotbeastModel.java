@@ -57,8 +57,8 @@ public class RotbeastModel<T extends Rotbeast> extends ListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+		this.head.xRot = headPitch * ((float) Math.PI / 180F);
 
 		this.rightArm.zRot = 0.0F;
 		this.leftArm.zRot = 0.0F;
@@ -67,17 +67,16 @@ public class RotbeastModel<T extends Rotbeast> extends ListModel<T> {
 		this.jaw.xRot = entity.isAggressive() ? 0.3491F : 0.0F;
 
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
-		int attackTimer = entityIn.getAttackTimer();
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTicks) {
+		int attackTimer = entity.getAttackTimer();
 		if (attackTimer > 0) {
-			this.rightArm.xRot = -2.0F + 1.5F * Mth.triangleWave((float) attackTimer - partialTick, 10.0F);
-			this.leftArm.xRot = -2.0F + 1.5F * Mth.triangleWave((float) attackTimer - partialTick, 10.0F);
-		}
-		else {
+			this.rightArm.xRot = -2.0F + 1.5F * Mth.triangleWave((float) attackTimer - partialTicks, 10.0F);
+			this.leftArm.xRot = -2.0F + 1.5F * Mth.triangleWave((float) attackTimer - partialTicks, 10.0F);
+		} else {
 			this.rightArm.xRot = (-0.2F + 1.5F * Mth.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
 			this.leftArm.xRot = (-0.2F - 1.5F * Mth.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
 		}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 276320045,
+    "separation": 12,
+    "spacing": 24
+  },
+  "structures": [
+    {
+      "structure": "undergarden:catacombs",
+      "weight": 1
+    }
+  ]
+}

@@ -18,85 +18,85 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.ForgeEventFactory;
 import quek.undergarden.entity.rotspawn.RotspawnMonster;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
 
 public class Scintling extends Animal {
 
-    public Scintling(EntityType<? extends Animal> type, Level level) {
-        super(type, level);
-        this.maxUpStep = 1.0F;
-        this.xpReward = 0;
-    }
+	public Scintling(EntityType<? extends Animal> type, Level level) {
+		super(type, level);
+		this.xpReward = 0;
+		this.setMaxUpStep(1.0F);
+	}
 
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 1.2D, 1.4D));
-        this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.BLISTERBERRY.get()), false));
-        this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-    }
+	@Override
+	protected void registerGoals() {
+		this.goalSelector.addGoal(0, new FloatGoal(this));
+		this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 1.2D, 1.4D));
+		this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.BLISTERBERRY.get()), false));
+		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
+		this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
+		this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
+	}
 
-    public static AttributeSupplier.Builder registerAttributes() {
-        return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 2.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.2D);
-    }
+	public static AttributeSupplier.Builder registerAttributes() {
+		return Animal.createMobAttributes()
+				.add(Attributes.MAX_HEALTH, 2.0D)
+				.add(Attributes.MOVEMENT_SPEED, 0.2D);
+	}
 
-    public static boolean canScintlingSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getBlockState(pos.below()).getBlock() == UGBlocks.DEPTHROCK.get() || level.getBlockState(pos.below()).getBlock() == UGBlocks.ASHEN_DEEPTURF_BLOCK.get();
-    }
+	public static boolean canScintlingSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+		return level.getBlockState(pos.below()).is(UGTags.Blocks.SCINTLING_SPAWNABLE_ON);
+	}
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return UGSoundEvents.SCINTLING_HURT.get();
-    }
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return UGSoundEvents.SCINTLING_HURT.get();
+	}
 
-    @Override
-    protected SoundEvent getDeathSound() {
-        return UGSoundEvents.SCINTLING_DEATH.get();
-    }
+	@Override
+	protected SoundEvent getDeathSound() {
+		return UGSoundEvents.SCINTLING_DEATH.get();
+	}
 
-    @Override
-    public void aiStep() {
-        super.aiStep();
+	@Override
+	public void aiStep() {
+		super.aiStep();
 
-        if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this) || this.isBaby()) {
-            return;
-        }
+		if (!ForgeEventFactory.getMobGriefingEvent(this.level(), this) || this.isBaby()) {
+			return;
+		}
 
-        BlockState goo = UGBlocks.GOO.get().defaultBlockState();
+		BlockState goo = UGBlocks.GOO.get().defaultBlockState();
 
-        for(int l = 0; l < 4; ++l) {
-            int x = Mth.floor(this.getX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));
-            int y = Mth.floor(this.getY());
-            int z = Mth.floor(this.getZ() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
-            BlockPos blockpos = new BlockPos(x, y, z);
-            if (this.level.isEmptyBlock(blockpos) && goo.canSurvive(this.level, blockpos)) {
-                this.level.setBlockAndUpdate(blockpos, goo);
-            }
-        }
-    }
+		for (int l = 0; l < 4; ++l) {
+			int x = Mth.floor(this.getX() + (double) ((float) (l % 2 * 2 - 1) * 0.25F));
+			int y = Mth.floor(this.getY());
+			int z = Mth.floor(this.getZ() + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
+			BlockPos blockpos = new BlockPos(x, y, z);
+			if (this.level().isEmptyBlock(blockpos) && goo.canSurvive(this.level(), blockpos)) {
+				this.level().setBlockAndUpdate(blockpos, goo);
+			}
+		}
+	}
 
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-        return UGEntityTypes.SCINTLING.get().create(this.level);
-    }
+	@Nullable
+	@Override
+	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
+		return UGEntityTypes.SCINTLING.get().create(this.level());
+	}
 
-    @Override
-    public boolean isFood(ItemStack stack) {
-        return Ingredient.of(UGItems.BLISTERBERRY.get()).test(stack);
-    }
+	@Override
+	public boolean isFood(ItemStack stack) {
+		return Ingredient.of(UGItems.BLISTERBERRY.get()).test(stack);
+	}
 
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState state) { }
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState state) {
+		this.playSound(UGSoundEvents.SCINTLING_STEP.get(), 0.3F, 1.0F);
+	}
 }

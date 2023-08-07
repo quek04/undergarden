@@ -14,19 +14,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.NetherPortalBlock;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.Cancelable;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.UGTeleporter;
 
@@ -34,298 +34,279 @@ import javax.annotation.Nullable;
 
 public class UndergardenPortalBlock extends Block {
 
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
-    protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
-    protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
+	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
+	protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
+	protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
 
-    public UndergardenPortalBlock() {
-        super(Properties.of(Material.PORTAL)
-                .strength(-1F)
-                .noCollission()
-                .lightLevel((state) -> 10)
-                .noLootTable()
-        );
-        registerDefaultState(stateDefinition.any().setValue(AXIS, Direction.Axis.X));
-    }
+	public UndergardenPortalBlock() {
+		super(Properties.of()
+				.pushReaction(PushReaction.BLOCK)
+				.strength(-1F)
+				.noCollission()
+				.lightLevel((state) -> 10)
+				.noLootTable()
+		);
+		registerDefaultState(stateDefinition.any().setValue(AXIS, Direction.Axis.X));
+	}
 
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        switch(state.getValue(AXIS)) {
-            case Z:
-                return Z_AABB;
-            case X:
-            default:
-                return X_AABB;
-        }
-    }
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		switch (state.getValue(AXIS)) {
+			case Z:
+				return Z_AABB;
+			case X:
+			default:
+				return X_AABB;
+		}
+	}
 
-    public boolean trySpawnPortal(LevelAccessor level, BlockPos pos) {
-        UndergardenPortalBlock.Size UndergardenPortalBlock$size = this.isPortal(level, pos);
-        if (UndergardenPortalBlock$size != null && !onTrySpawnPortal(level, pos, UndergardenPortalBlock$size)) {
-            UndergardenPortalBlock$size.placePortalBlocks();
-            return true;
-        } else {
-            return false;
-        }
-    }
+	public boolean trySpawnPortal(LevelAccessor level, BlockPos pos) {
+		UndergardenPortalBlock.UGPortalShape size = this.isPortal(level, pos);
+		if (size != null && !onTrySpawnPortal(level, pos, size)) {
+			size.createPortalBlocks();
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-    public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, UndergardenPortalBlock.Size size) {
-        return MinecraftForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
-    }
+	public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, UndergardenPortalBlock.UGPortalShape size) {
+		return MinecraftForge.EVENT_BUS.post(new BlockEvent.PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
+	}
 
-    @Cancelable
-    public static class PortalSpawnEvent extends BlockEvent {
-        private final UndergardenPortalBlock.Size size;
+	@Nullable
+	public UndergardenPortalBlock.UGPortalShape isPortal(LevelAccessor level, BlockPos pos) {
+		UndergardenPortalBlock.UGPortalShape UndergardenPortalBlock$size = new UGPortalShape(level, pos, Direction.Axis.X);
+		if (UndergardenPortalBlock$size.isValid() && UndergardenPortalBlock$size.numPortalBlocks == 0) {
+			return UndergardenPortalBlock$size;
+		} else {
+			UndergardenPortalBlock.UGPortalShape UndergardenPortalBlock$size1 = new UGPortalShape(level, pos, Direction.Axis.Z);
+			return UndergardenPortalBlock$size1.isValid() && UndergardenPortalBlock$size1.numPortalBlocks == 0 ? UndergardenPortalBlock$size1 : null;
+		}
+	}
 
-        public PortalSpawnEvent(LevelAccessor world, BlockPos pos, BlockState state, UndergardenPortalBlock.Size size) {
-            super(world, pos, state);
-            this.size = size;
-        }
+	@Override
+	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+		Direction.Axis direction$axis = facing.getAxis();
+		Direction.Axis direction$axis1 = stateIn.getValue(AXIS);
+		boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
+		return !flag && facingState.getBlock() != this && !(new UGPortalShape(level, currentPos, direction$axis1)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, level, currentPos, facingPos);
+	}
 
-        public UndergardenPortalBlock.Size getPortalSize()
-        {
-            return size;
-        }
-    }
+	@Override
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+		if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
+			if (entity.isOnPortalCooldown()) {
+				entity.setPortalCooldown();
+			} else {
+				if (!entity.level().isClientSide() && !pos.equals(entity.portalEntrancePos)) {
+					entity.portalEntrancePos = pos.immutable();
+				}
+				Level level1 = entity.level();
+				if (level1 != null) {
+					MinecraftServer minecraftserver = level1.getServer();
+					ResourceKey<Level> destination = entity.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
+					if (minecraftserver != null) {
+						ServerLevel destinationWorld = minecraftserver.getLevel(destination);
+						if (destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
+							entity.level().getProfiler().push("undergarden_portal");
+							entity.setPortalCooldown();
+							entity.changeDimension(destinationWorld, new UGTeleporter(destinationWorld));
+							entity.level().getProfiler().pop();
+						}
+					}
+				}
+			}
+		}
+	}
 
-    @Nullable
-    public UndergardenPortalBlock.Size isPortal(LevelAccessor level, BlockPos pos) {
-        UndergardenPortalBlock.Size UndergardenPortalBlock$size = new Size(level, pos, Direction.Axis.X);
-        if (UndergardenPortalBlock$size.isValid() && UndergardenPortalBlock$size.portalBlockCount == 0) {
-            return UndergardenPortalBlock$size;
-        } else {
-            UndergardenPortalBlock.Size UndergardenPortalBlock$size1 = new Size(level, pos, Direction.Axis.Z);
-            return UndergardenPortalBlock$size1.isValid() && UndergardenPortalBlock$size1.portalBlockCount == 0 ? UndergardenPortalBlock$size1 : null;
-        }
-    }
+	
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		if (random.nextInt(100) == 0) {
+			level.playLocalSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, UGSoundEvents.UNDERGARDEN_PORTAL_AMBIENT.get(), SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false);
+		}
 
-    @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-        Direction.Axis direction$axis = facing.getAxis();
-        Direction.Axis direction$axis1 = stateIn.getValue(AXIS);
-        boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-        return !flag && facingState.getBlock() != this && !(new Size(level, currentPos, direction$axis1)).validatePortal() ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, level, currentPos, facingPos);
-    }
+		for (int i = 0; i < 4; ++i) {
+			double x = (double) pos.getX() + random.nextDouble();
+			double y = (double) pos.getY() + random.nextDouble();
+			double z = (double) pos.getZ() + random.nextDouble();
+			double xSpeed = ((double) random.nextFloat() - 0.5D) * 0.5D;
+			double ySpeed = ((double) random.nextFloat() - 0.5D) * 0.5D;
+			double zSpeed = ((double) random.nextFloat() - 0.5D) * 0.5D;
+			int j = random.nextInt(2) * 2 - 1;
+			if (!level.getBlockState(pos.west()).is(this) && !level.getBlockState(pos.east()).is(this)) {
+				x = (double) pos.getX() + 0.5D + 0.25D * (double) j;
+				xSpeed = random.nextFloat() * 2.0F * (float) j;
+			} else {
+				z = (double) pos.getZ() + 0.5D + 0.25D * (double) j;
+				zSpeed = random.nextFloat() * 2.0F * (float) j;
+			}
 
-    @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if(!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
-            if(entity.isOnPortalCooldown()) {
-                entity.setPortalCooldown();
-            }
-            else {
-                if(!entity.level.isClientSide && !pos.equals(entity.portalEntrancePos)) {
-                    entity.portalEntrancePos = pos.immutable();
-                }
-                Level entityWorld = entity.level;
-                if(entityWorld != null) {
-                    MinecraftServer minecraftserver = entityWorld.getServer();
-                    ResourceKey<Level> destination = entity.level.dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
-                    if(minecraftserver != null) {
-                        ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-                        if(destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
-                            entity.level.getProfiler().push("undergarden_portal");
-                            entity.setPortalCooldown();
-                            entity.changeDimension(destinationWorld, new UGTeleporter(destinationWorld));
-                            entity.level.getProfiler().pop();
-                        }
-                    }
-                }
-            }
-        }
-    }
+			level.addParticle(UGParticleTypes.UNDERGARDEN_PORTAL.get(), x, y, z, xSpeed, ySpeed, zSpeed);
+		}
 
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (random.nextInt(100) == 0) {
-            level.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, UGSoundEvents.UNDERGARDEN_PORTAL_AMBIENT.get(), SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false);
-        }
+	}
 
-        for(int i = 0; i < 4; ++i) {
-            double x = (double)pos.getX() + random.nextDouble();
-            double y = (double)pos.getY() + random.nextDouble();
-            double z = (double)pos.getZ() + random.nextDouble();
-            double xSpeed = ((double)random.nextFloat() - 0.5D) * 0.5D;
-            double ySpeed = ((double)random.nextFloat() - 0.5D) * 0.5D;
-            double zSpeed = ((double)random.nextFloat() - 0.5D) * 0.5D;
-            int j = random.nextInt(2) * 2 - 1;
-            if (!level.getBlockState(pos.west()).is(this) && !level.getBlockState(pos.east()).is(this)) {
-                x = (double)pos.getX() + 0.5D + 0.25D * (double)j;
-                xSpeed = random.nextFloat() * 2.0F * (float)j;
-            } else {
-                z = (double)pos.getZ() + 0.5D + 0.25D * (double)j;
-                zSpeed = random.nextFloat() * 2.0F * (float)j;
-            }
+	@Override
+	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+		return ItemStack.EMPTY;
+	}
 
-            level.addParticle(UGParticleTypes.UNDERGARDEN_PORTAL.get(), x, y, z, xSpeed, ySpeed, zSpeed);
-        }
+	@Override
+	public BlockState rotate(BlockState state, Rotation rot) {
+		switch (rot) {
+			case COUNTERCLOCKWISE_90:
+			case CLOCKWISE_90:
+				switch (state.getValue(AXIS)) {
+					case Z:
+						return state.setValue(AXIS, Direction.Axis.X);
+					case X:
+						return state.setValue(AXIS, Direction.Axis.Z);
+					default:
+						return state;
+				}
+			default:
+				return state;
+		}
+	}
 
-    }
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(AXIS);
+	}
 
-    @Override
-    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
-        return ItemStack.EMPTY;
-    }
+	//copy of Minecraft's PortalShape, frame and portal blocks changed accordingly
+	public static class UGPortalShape extends PortalShape {
+		private static final int MIN_WIDTH = 1;
+		public static final int MAX_WIDTH = 21;
+		private static final int MIN_HEIGHT = 2;
+		public static final int MAX_HEIGHT = 21;
+		private static final BlockBehaviour.StatePredicate FRAME = (state, getter, pos) -> state.is(UGTags.Blocks.PORTAL_FRAME_BLOCKS);
+		private final LevelAccessor level;
+		private final Direction.Axis axis;
+		private final Direction rightDir;
+		private int numPortalBlocks;
+		private BlockPos bottomLeft;
+		private int height;
+		private final int width;
 
-    @Override
-    public BlockState rotate(BlockState state, Rotation rot) {
-        switch(rot) {
-            case COUNTERCLOCKWISE_90:
-            case CLOCKWISE_90:
-                switch(state.getValue(AXIS)) {
-                    case Z:
-                        return state.setValue(AXIS, Direction.Axis.X);
-                    case X:
-                        return state.setValue(AXIS, Direction.Axis.Z);
-                    default:
-                        return state;
-                }
-            default:
-                return state;
-        }
-    }
+		public UGPortalShape(LevelAccessor level, BlockPos bottomLeftPos, Direction.Axis axis) {
+			super(level, bottomLeftPos, axis);
+			this.level = level;
+			this.axis = axis;
+			this.rightDir = axis == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
+			this.bottomLeft = this.calculateBottomLeft(bottomLeftPos);
+			if (this.bottomLeft == null) {
+				this.bottomLeft = bottomLeftPos;
+				this.width = 1;
+				this.height = 1;
+			} else {
+				this.width = this.calculateWidth();
+				if (this.width > 0) {
+					this.height = this.calculateHeight();
+				}
+			}
 
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AXIS);
-    }
+		}
 
-    public static class Size {
-        private final LevelAccessor level;
-        private final Direction.Axis axis;
-        private final Direction rightDir;
-        private final Direction leftDir;
-        private int portalBlockCount;
-        @Nullable
-        private BlockPos bottomLeft;
-        private int height;
-        private int width;
+		@Nullable
+		private BlockPos calculateBottomLeft(BlockPos pos) {
+			for (int i = Math.max(this.level.getMinBuildHeight(), pos.getY() - MAX_HEIGHT); pos.getY() > i && isEmpty(this.level.getBlockState(pos.below())); pos = pos.below()) {
+			}
 
-        public Size(LevelAccessor level, BlockPos pos, Direction.Axis axis) {
-            this.level = level;
-            this.axis = axis;
-            if (axis == Direction.Axis.X) {
-                this.leftDir = Direction.EAST;
-                this.rightDir = Direction.WEST;
-            } else {
-                this.leftDir = Direction.NORTH;
-                this.rightDir = Direction.SOUTH;
-            }
+			Direction direction = this.rightDir.getOpposite();
+			int j = this.getDistanceUntilEdgeAboveFrame(pos, direction) - 1;
+			return j < 0 ? null : pos.relative(direction, j);
+		}
 
-            for(BlockPos blockpos = pos; pos.getY() > blockpos.getY() - 21 && pos.getY() > 0 && this.canConnect(level.getBlockState(pos.below())); pos = pos.below()) {
-            }
+		private int calculateWidth() {
+			int i = this.getDistanceUntilEdgeAboveFrame(this.bottomLeft, this.rightDir);
+			return i >= MIN_WIDTH && i <= MAX_WIDTH ? i : 0;
+		}
 
-            int i = this.getDistanceUntilEdge(pos, this.leftDir) - 1;
-            if (i >= 0) {
-                this.bottomLeft = pos.relative(this.leftDir, i);
-                this.width = this.getDistanceUntilEdge(this.bottomLeft, this.rightDir);
-                if (this.width < 2 || this.width > 21) {
-                    this.bottomLeft = null;
-                    this.width = 0;
-                }
-            }
+		private int getDistanceUntilEdgeAboveFrame(BlockPos pos, Direction direction) {
+			BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
 
-            if (this.bottomLeft != null) {
-                this.height = this.calculatePortalHeight();
-            }
+			for (int i = 0; i <= MAX_WIDTH; ++i) {
+				mutablePos.set(pos).move(direction, i);
+				BlockState blockstate = this.level.getBlockState(mutablePos);
+				if (!isEmpty(blockstate)) {
+					if (FRAME.test(blockstate, this.level, mutablePos)) {
+						return i;
+					}
+					break;
+				}
 
-        }
+				BlockState blockstate1 = this.level.getBlockState(mutablePos.move(Direction.DOWN));
+				if (!FRAME.test(blockstate1, this.level, mutablePos)) {
+					break;
+				}
+			}
 
-        protected int getDistanceUntilEdge(BlockPos pos, Direction directionIn) {
-            int i;
-            for(i = 0; i < 22; ++i) {
-                BlockPos blockpos = pos.relative(directionIn, i);
-                if(!this.canConnect(this.level.getBlockState(blockpos)) || !(this.level.getBlockState(blockpos.below()).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-                    break;
-                }
-            }
+			return 0;
+		}
 
-            BlockPos framePos = pos.relative(directionIn, i);
-            return this.level.getBlockState(framePos).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS) ? i : 0;
-        }
+		private int calculateHeight() {
+			BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+			int i = this.getDistanceUntilTop(mutablePos);
+			return i >= MIN_HEIGHT && i <= MAX_HEIGHT && this.hasTopFrame(mutablePos, i) ? i : 0;
+		}
 
-        public int getHeight() {
-            return this.height;
-        }
+		private boolean hasTopFrame(BlockPos.MutableBlockPos pos, int height) {
+			for (int i = 0; i < this.width; ++i) {
+				BlockPos.MutableBlockPos mutablePos = pos.set(this.bottomLeft).move(Direction.UP, height).move(this.rightDir, i);
+				if (!FRAME.test(this.level.getBlockState(mutablePos), this.level, mutablePos)) {
+					return false;
+				}
+			}
 
-        public int getWidth() {
-            return this.width;
-        }
+			return true;
+		}
 
-        protected int calculatePortalHeight() {
-            label56:
-            for(this.height = 0; this.height < 21; ++this.height) {
-                for(int i = 0; i < this.width; ++i) {
-                    BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i).above(this.height);
-                    BlockState blockstate = this.level.getBlockState(blockpos);
-                    if (!this.canConnect(blockstate)) {
-                        break label56;
-                    }
+		private int getDistanceUntilTop(BlockPos.MutableBlockPos pos) {
+			for (int i = 0; i < MAX_HEIGHT; ++i) {
+				pos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, -1);
+				if (!FRAME.test(this.level.getBlockState(pos), this.level, pos)) {
+					return i;
+				}
 
-                    Block block = blockstate.getBlock();
-                    if (block == UGBlocks.UNDERGARDEN_PORTAL.get()) {
-                        ++this.portalBlockCount;
-                    }
+				pos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, this.width);
+				if (!FRAME.test(this.level.getBlockState(pos), this.level, pos)) {
+					return i;
+				}
 
-                    if (i == 0) {
-                        BlockPos framePos = blockpos.relative(this.leftDir);
-                        if (!(this.level.getBlockState(framePos).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-                            break label56;
-                        }
-                    } else if (i == this.width - 1) {
-                        BlockPos framePos = blockpos.relative(this.rightDir);
-                        if (!(this.level.getBlockState(framePos).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-                            break label56;
-                        }
-                    }
-                }
-            }
+				for (int j = 0; j < this.width; ++j) {
+					pos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, j);
+					BlockState blockstate = this.level.getBlockState(pos);
+					if (!isEmpty(blockstate)) {
+						return i;
+					}
 
-            for(int j = 0; j < this.width; ++j) {
-                BlockPos framePos = this.bottomLeft.relative(this.rightDir, j).above(this.height);
-                if (!(this.level.getBlockState(framePos).is(UGTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-                    this.height = 0;
-                    break;
-                }
-            }
+					if (blockstate.is(Blocks.NETHER_PORTAL)) {
+						++this.numPortalBlocks;
+					}
+				}
+			}
 
-            if (this.height <= 21 && this.height >= 3) {
-                return this.height;
-            } else {
-                this.bottomLeft = null;
-                this.width = 0;
-                this.height = 0;
-                return 0;
-            }
-        }
+			return MAX_HEIGHT;
+		}
 
-        protected boolean canConnect(BlockState pos) {
-            Block block = pos.getBlock();
-            return pos.isAir() || block == UGBlocks.UNDERGARDEN_PORTAL.get();
-        }
+		private static boolean isEmpty(BlockState state) {
+			return state.isAir() || state.is(UGBlocks.UNDERGARDEN_PORTAL.get());
+		}
 
-        public boolean isValid() {
-            return this.bottomLeft != null && this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21;
-        }
+		public boolean isValid() {
+			return this.bottomLeft != null && this.width >= MIN_WIDTH && this.width <= MAX_WIDTH && this.height >= MIN_HEIGHT && this.height <= MAX_HEIGHT;
+		}
 
-        public void placePortalBlocks() {
-            for(int i = 0; i < this.width; ++i) {
-                BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i);
+		public void createPortalBlocks() {
+			BlockState blockstate = UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState().setValue(NetherPortalBlock.AXIS, this.axis);
+			BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1)).forEach(pos -> this.level.setBlock(pos, blockstate, 18));
+		}
 
-                for(int j = 0; j < this.height; ++j) {
-                    this.level.setBlock(blockpos.above(j), UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState().setValue(UndergardenPortalBlock.AXIS, this.axis), 18);
-                }
-            }
-
-        }
-
-        private boolean isPortalCountValidForSize() {
-            return this.portalBlockCount >= this.width * this.height;
-        }
-
-        public boolean validatePortal() {
-            return this.isValid() && this.isPortalCountValidForSize();
-        }
-    }
+		public boolean isComplete() {
+			return this.isValid() && this.numPortalBlocks == this.width * this.height;
+		}
+	}
 }

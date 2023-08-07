@@ -1,6 +1,7 @@
 package quek.undergarden.data;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
@@ -8,20 +9,21 @@ import quek.undergarden.registry.UGFluids;
 import quek.undergarden.registry.UGTags;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
 public class UGFluidTags extends FluidTagsProvider {
 
-    public UGFluidTags(DataGenerator dataGenerator, @Nullable ExistingFileHelper existingFileHelper) {
-        super(dataGenerator, Undergarden.MODID, existingFileHelper);
-    }
+	public UGFluidTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future, @Nullable ExistingFileHelper existingFileHelper) {
+		super(output, future, Undergarden.MODID, existingFileHelper);
+	}
 
-    @Override
-    public String getName() {
-        return "Undergarden Fluid Tags";
-    }
+	@Override
+	public String getName() {
+		return "Undergarden Fluid Tags";
+	}
 
-    @Override
-    protected void addTags() {
-        tag(UGTags.Fluids.VIRULENT).add(UGFluids.VIRULENT_MIX_SOURCE.get(), UGFluids.VIRULENT_MIX_FLOWING.get());
-    }
+	@Override
+	protected void addTags(HolderLookup.Provider provider) {
+		tag(UGTags.Fluids.VIRULENT).add(UGFluids.VIRULENT_MIX_SOURCE.get(), UGFluids.VIRULENT_MIX_FLOWING.get());
+	}
 }

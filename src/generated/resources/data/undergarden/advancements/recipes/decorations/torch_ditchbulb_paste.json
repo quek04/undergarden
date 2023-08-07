@@ -41,5 +41,6 @@
     "recipes": [
       "undergarden:torch_ditchbulb_paste"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

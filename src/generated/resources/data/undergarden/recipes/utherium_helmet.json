@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "item": "undergarden:utherium_crystal"
@@ -11,5 +12,6 @@
   ],
   "result": {
     "item": "undergarden:utherium_helmet"
-  }
+  },
+  "show_notification": true
 }

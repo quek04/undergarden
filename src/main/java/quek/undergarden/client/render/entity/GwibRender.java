@@ -1,7 +1,7 @@
 package quek.undergarden.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -14,20 +14,20 @@ import quek.undergarden.entity.animal.Gwib;
 
 public class GwibRender extends MobRenderer<Gwib, GwibModel<Gwib>> {
 
-    public GwibRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new GwibModel<>(renderContext.bakeLayer(UGModelLayers.GWIB)), 0.5F);
-        this.addLayer(new GwibEyesLayer<>(this));
-    }
+	public GwibRender(EntityRendererProvider.Context context) {
+		super(context, new GwibModel<>(context.bakeLayer(UGModelLayers.GWIB)), 0.5F);
+		this.addLayer(new GwibEyesLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Gwib entity) {
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/gwib.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Gwib entity) {
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/gwib.png");
+	}
 
-    @Override
-    protected void setupRotations(Gwib entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks) {
-        super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
-        float f = 4.3F * Mth.sin(0.6F * ageInTicks);
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(-f));
-    }
+	@Override
+	protected void setupRotations(Gwib entity, PoseStack stack, float ageInTicks, float rotationYaw, float partialTicks) {
+		super.setupRotations(entity, stack, ageInTicks, rotationYaw, partialTicks);
+		float f = 4.3F * Mth.sin(0.6F * ageInTicks);
+		stack.mulPose(Axis.YP.rotationDegrees(-f));
+	}
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "G": {
       "item": "undergarden:carved_gloomgourd"
@@ -14,5 +15,6 @@
   ],
   "result": {
     "item": "undergarden:gloom_o_lantern"
-  }
+  },
+  "show_notification": true
 }

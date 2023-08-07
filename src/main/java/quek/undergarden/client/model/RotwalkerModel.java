@@ -54,17 +54,17 @@ public class RotwalkerModel<T extends Rotwalker> extends ListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = 0.0873F + headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+		this.head.xRot = 0.0873F + headPitch * ((float) Math.PI / 180F);
 
-		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;
+		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F;
 		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
 		this.rightArm.zRot = 0.0F;
 		this.leftArm.zRot = 0.0F;
 		AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
 
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
 	}
 
 	@Override

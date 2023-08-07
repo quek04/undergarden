@@ -6,20 +6,20 @@ import quek.undergarden.entity.stoneborn.Stoneborn;
 
 public class StonebornLookAtCustomerGoal extends LookAtPlayerGoal {
 
-    private final Stoneborn stoneborn;
+	private final Stoneborn stoneborn;
 
-    public StonebornLookAtCustomerGoal(Stoneborn stoneborn) {
-        super(stoneborn, Player.class, 8.0F);
-        this.stoneborn = stoneborn;
-    }
+	public StonebornLookAtCustomerGoal(Stoneborn stoneborn) {
+		super(stoneborn, Player.class, 8.0F);
+		this.stoneborn = stoneborn;
+	}
 
-    @Override
-    public boolean canUse() {
-        if (this.stoneborn.hasCustomer()) {
-            this.lookAt = this.stoneborn.getTradingPlayer();
-            return true;
-        } else {
-            return false;
-        }
-    }
+	@Override
+	public boolean canUse() {
+		if (this.stoneborn.hasCustomer()) {
+			this.lookAt = this.stoneborn.getTradingPlayer();
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

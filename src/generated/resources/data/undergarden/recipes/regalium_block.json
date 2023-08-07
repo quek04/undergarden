@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "#": {
       "item": "undergarden:regalium_crystal"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "undergarden:regalium_block"
-  }
+  },
+  "show_notification": true
 }

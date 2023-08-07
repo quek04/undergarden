@@ -14,31 +14,31 @@ import quek.undergarden.registry.UGEntityTypes;
 
 public class UnderbeanOnAStickItem extends Item {
 
-    public UnderbeanOnAStickItem(Properties properties) {
-        super(properties);
-    }
+	public UnderbeanOnAStickItem(Properties properties) {
+		super(properties);
+	}
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        if (!level.isClientSide) {
-            Entity entity = player.getVehicle();
-            if (player.isPassenger() && entity instanceof ItemSteerable && entity.getType() == UGEntityTypes.DWELLER.get()) {
-                ItemSteerable steerable = (ItemSteerable) entity;
-                if (steerable.boost()) {
-                    itemstack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
-                    if (itemstack.isEmpty()) {
-                        ItemStack stick = new ItemStack(Items.STICK);
-                        stick.setTag(itemstack.getTag());
-                        return InteractionResultHolder.success(stick);
-                    }
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		ItemStack itemstack = player.getItemInHand(hand);
+		if (!level.isClientSide) {
+			Entity entity = player.getVehicle();
+			if (player.isPassenger() && entity instanceof ItemSteerable && entity.getType() == UGEntityTypes.DWELLER.get()) {
+				ItemSteerable steerable = (ItemSteerable) entity;
+				if (steerable.boost()) {
+					itemstack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
+					if (itemstack.isEmpty()) {
+						ItemStack stick = new ItemStack(Items.STICK);
+						stick.setTag(itemstack.getTag());
+						return InteractionResultHolder.success(stick);
+					}
 
-                    return InteractionResultHolder.success(itemstack);
-                }
-            }
+					return InteractionResultHolder.success(itemstack);
+				}
+			}
 
-            player.awardStat(Stats.ITEM_USED.get(this));
-        }
-        return InteractionResultHolder.pass(itemstack);
-    }
+			player.awardStat(Stats.ITEM_USED.get(this));
+		}
+		return InteractionResultHolder.pass(itemstack);
+	}
 }

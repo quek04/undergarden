@@ -23,52 +23,52 @@ import quek.undergarden.registry.UGStructures;
 import java.util.Optional;
 
 public class BiggerJigsawStructure extends Structure {
-    public static final Codec<BiggerJigsawStructure> CODEC = RecordCodecBuilder.<BiggerJigsawStructure>mapCodec((instance) ->
-            instance.group(settingsCodec(instance),
-                    StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter((structure) -> structure.startPool),
-                    ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter((structure) -> structure.startJigsawName),
-                    Codec.intRange(0, 100).fieldOf("size").forGetter((structure) -> structure.maxDepth),
-                    HeightProvider.CODEC.fieldOf("start_height").forGetter((structure) -> structure.startHeight),
-                    Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter((structure) -> structure.projectStartToHeightmap),
-                    Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter((structure) -> structure.maxDistanceFromCenter)
-            ).apply(instance, BiggerJigsawStructure::new))/*.flatXmap(verifyRange(), verifyRange())*/.codec();
+	public static final Codec<BiggerJigsawStructure> CODEC = RecordCodecBuilder.<BiggerJigsawStructure>mapCodec((instance) ->
+			instance.group(settingsCodec(instance),
+					StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter((structure) -> structure.startPool),
+					ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter((structure) -> structure.startJigsawName),
+					Codec.intRange(0, 100).fieldOf("size").forGetter((structure) -> structure.maxDepth),
+					HeightProvider.CODEC.fieldOf("start_height").forGetter((structure) -> structure.startHeight),
+					Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter((structure) -> structure.projectStartToHeightmap),
+					Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter((structure) -> structure.maxDistanceFromCenter)
+			).apply(instance, BiggerJigsawStructure::new))/*.flatXmap(verifyRange(), verifyRange())*/.codec();
 
-    protected final Holder<StructureTemplatePool> startPool;
-    protected final Optional<ResourceLocation> startJigsawName;
-    protected final int maxDepth;
-    final HeightProvider startHeight;
-    protected final Optional<Heightmap.Types> projectStartToHeightmap;
-    protected final int maxDistanceFromCenter;
+	private final Holder<StructureTemplatePool> startPool;
+	private final Optional<ResourceLocation> startJigsawName;
+	private final int maxDepth;
+	private final HeightProvider startHeight;
+	private final Optional<Heightmap.Types> projectStartToHeightmap;
+	private final int maxDistanceFromCenter;
 
-    public BiggerJigsawStructure(Structure.StructureSettings structureSettings, Holder<StructureTemplatePool> startPool, Optional<ResourceLocation> startJigsawName, int maxDepth, HeightProvider startHeight, Optional<Heightmap.Types> projectStartToHeightmap, int maxDistanceFromCenter) {
-        super(structureSettings);
-        this.startPool = startPool;
-        this.startJigsawName = startJigsawName;
-        this.maxDepth = maxDepth;
-        this.startHeight = startHeight;
-        this.projectStartToHeightmap = projectStartToHeightmap;
-        this.maxDistanceFromCenter = maxDistanceFromCenter;
-    }
+	public BiggerJigsawStructure(Structure.StructureSettings structureSettings, Holder<StructureTemplatePool> startPool, Optional<ResourceLocation> startJigsawName, int maxDepth, HeightProvider startHeight, Optional<Heightmap.Types> projectStartToHeightmap, int maxDistanceFromCenter) {
+		super(structureSettings);
+		this.startPool = startPool;
+		this.startJigsawName = startJigsawName;
+		this.maxDepth = maxDepth;
+		this.startHeight = startHeight;
+		this.projectStartToHeightmap = projectStartToHeightmap;
+		this.maxDistanceFromCenter = maxDistanceFromCenter;
+	}
 
-    @Override
-    public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context) {
-        WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-        random.setLargeFeatureSeed(context.seed(), context.chunkPos().x, context.chunkPos().z);
-        int x = context.chunkPos().getMinBlockX() + random.nextInt(16);
-        int z = context.chunkPos().getMinBlockZ() + random.nextInt(16);
-        int seaLevel = context.chunkGenerator().getSeaLevel();
-        int y = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
-        NoiseColumn column = context.chunkGenerator().getBaseColumn(x, z, context.heightAccessor(), context.randomState());
-        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos(x, y, z);
+	@Override
+	public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context) {
+		WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
+		random.setLargeFeatureSeed(context.seed(), context.chunkPos().x, context.chunkPos().z);
+		int x = context.chunkPos().getMinBlockX() + random.nextInt(16);
+		int z = context.chunkPos().getMinBlockZ() + random.nextInt(16);
+		int seaLevel = context.chunkGenerator().getSeaLevel();
+		int y = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
+		NoiseColumn column = context.chunkGenerator().getBaseColumn(x, z, context.heightAccessor(), context.randomState());
+		BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos(x, y, z);
 
-        while (y > seaLevel) {
-            BlockState state = column.getBlock(y);
-            --y;
-            BlockState state1 = column.getBlock(y);
-            if (state.isAir() && state1.isFaceSturdy(EmptyBlockGetter.INSTANCE, mutablePos.setY(y), Direction.UP)) {
-                break;
-            }
-        }
+		while (y > seaLevel) {
+			BlockState state = column.getBlock(y);
+			--y;
+			BlockState state1 = column.getBlock(y);
+			if (state.isAir() && state1.isFaceSturdy(EmptyBlockGetter.INSTANCE, mutablePos.setY(y), Direction.UP)) {
+				break;
+			}
+		}
 
         if (y <= seaLevel) {
             return Optional.empty();
@@ -78,8 +78,8 @@ public class BiggerJigsawStructure extends Structure {
         }
     }
 
-    @Override
-    public StructureType<?> type() {
-        return UGStructures.BIGGER_JIGSAW.get();
-    }
+	@Override
+	public StructureType<?> type() {
+		return UGStructures.BIGGER_JIGSAW.get();
+	}
 }

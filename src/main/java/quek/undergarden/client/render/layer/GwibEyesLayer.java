@@ -10,12 +10,12 @@ import quek.undergarden.entity.animal.Gwib;
 
 public class GwibEyesLayer<T extends Gwib, M extends GwibModel<T>> extends EyesLayer<T, M> {
 
-    public GwibEyesLayer(RenderLayerParent<T, M> rendererIn) {
-        super(rendererIn);
-    }
+	public GwibEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/gwib_eyes.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/gwib_eyes.png"));
+	}
 }

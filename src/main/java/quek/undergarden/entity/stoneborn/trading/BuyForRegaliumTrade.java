@@ -12,25 +12,25 @@ import javax.annotation.Nullable;
 
 public class BuyForRegaliumTrade implements VillagerTrades.ItemListing {
 
-    private final ItemStack sell;
-    private final int regaliumCount;
-    private final int count;
-    private final int maxUses;
+	private final ItemStack sell;
+	private final int regaliumCount;
+	private final int count;
+	private final int maxUses;
 
-    public BuyForRegaliumTrade(Item item, int regaliumCount, int count, int maxUses) {
-        this(new ItemStack(item), regaliumCount, count, maxUses);
-    }
+	public BuyForRegaliumTrade(Item item, int regaliumCount, int count, int maxUses) {
+		this(new ItemStack(item), regaliumCount, count, maxUses);
+	}
 
-    public BuyForRegaliumTrade(ItemStack stack, int regaliumCount, int count, int maxUses) {
-        this.sell = stack;
-        this.regaliumCount = regaliumCount;
-        this.count = count;
-        this.maxUses = maxUses;
-    }
+	public BuyForRegaliumTrade(ItemStack stack, int regaliumCount, int count, int maxUses) {
+		this.sell = stack;
+		this.regaliumCount = regaliumCount;
+		this.count = count;
+		this.maxUses = maxUses;
+	}
 
-    @Nullable
-    @Override
-    public MerchantOffer getOffer(Entity entity, RandomSource random) {
-        return new MerchantOffer(new ItemStack(UGItems.REGALIUM_CRYSTAL.get(), this.regaliumCount), new ItemStack(this.sell.getItem(), this.count), this.maxUses, 0, 0);
-    }
+	@Nullable
+	@Override
+	public MerchantOffer getOffer(Entity entity, RandomSource random) {
+		return new MerchantOffer(new ItemStack(UGItems.REGALIUM_CRYSTAL.get(), this.regaliumCount), new ItemStack(this.sell.getItem(), this.count), this.maxUses, 0, 0);
+	}
 }

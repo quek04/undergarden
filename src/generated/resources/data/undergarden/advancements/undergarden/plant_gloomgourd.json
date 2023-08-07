@@ -3,7 +3,12 @@
   "criteria": {
     "plant_gloomgourd": {
       "conditions": {
-        "block": "undergarden:gloomgourd_stem"
+        "location": [
+          {
+            "block": "undergarden:gloomgourd_stem",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
       },
       "trigger": "minecraft:placed_block"
     }
@@ -27,5 +32,6 @@
     [
       "plant_gloomgourd"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

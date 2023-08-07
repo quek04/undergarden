@@ -59,5 +59,6 @@
     [
       "has_forgotten_tools"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

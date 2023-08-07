@@ -6,12 +6,12 @@ import quek.undergarden.registry.UGBlocks;
 
 public class GlitterkelpPlantBlock extends KelpPlantBlock {
 
-    public GlitterkelpPlantBlock(Properties properties) {
-        super(properties);
-    }
+	public GlitterkelpPlantBlock(Properties properties) {
+		super(properties);
+	}
 
-    @Override
-    protected GrowingPlantHeadBlock getHeadBlock() {
-        return UGBlocks.GLITTERKELP.get();
-    }
+	@Override
+	protected GrowingPlantHeadBlock getHeadBlock() {
+		return UGBlocks.GLITTERKELP.get();
+	}
 }

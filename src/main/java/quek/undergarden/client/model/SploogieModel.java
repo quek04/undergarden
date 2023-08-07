@@ -51,18 +51,18 @@ public class SploogieModel<T extends Sploogie> extends ListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+		this.head.xRot = headPitch * ((float) Math.PI / 180F);
 
-		this.head.x = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + limbSwingAmount);
+		this.head.x = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + limbSwingAmount);
 
-		this.bodySegment1.yRot = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + limbSwingAmount);
-		this.bodySegment2.yRot = Mth.cos(limbSwing * 0.9F + 1 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(1 - 2) + limbSwingAmount);
-		this.bodySegment3.yRot = Mth.cos(limbSwing * 0.9F + 0 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(-2) + limbSwingAmount);
+		this.bodySegment1.yRot = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + limbSwingAmount);
+		this.bodySegment2.yRot = Mth.cos(limbSwing * 0.9F + 1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(1 - 2) + limbSwingAmount);
+		this.bodySegment3.yRot = Mth.cos(limbSwing * 0.9F + 0 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(-2) + limbSwingAmount);
 
-		this.bodySegment1.x = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + limbSwingAmount);
-		this.bodySegment2.x = Mth.cos(limbSwing * 0.9F + 1 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(1 - 2) + limbSwingAmount);
-		this.bodySegment3.x = Mth.cos(limbSwing * 0.9F + 0 * 0.15F * (float)Math.PI) * (float)Math.PI * 0.05F * (1 + Math.abs(-2) + limbSwingAmount);
+		this.bodySegment1.x = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + limbSwingAmount);
+		this.bodySegment2.x = Mth.cos(limbSwing * 0.9F + 1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(1 - 2) + limbSwingAmount);
+		this.bodySegment3.x = Mth.cos(limbSwing * 0.9F + 0 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(-2) + limbSwingAmount);
 	}
 
 	@Override

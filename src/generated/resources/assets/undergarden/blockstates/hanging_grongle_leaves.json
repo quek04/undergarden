@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "undergarden:block/hanging_grongle_leaves"
+    },
+    "half=upper": {
+      "model": "undergarden:block/hanging_grongle_leaves_top"
+    }
+  }
+}

@@ -11,13 +11,13 @@ import quek.undergarden.entity.rotspawn.Rotling;
 
 public class RotlingRender extends MobRenderer<Rotling, RotlingModel<Rotling>> {
 
-    public RotlingRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new RotlingModel<>(renderContext.bakeLayer(UGModelLayers.ROTLING)), 0.6F);
-        this.addLayer(new RotlingEyesLayer<>(this));
-    }
+	public RotlingRender(EntityRendererProvider.Context context) {
+		super(context, new RotlingModel<>(context.bakeLayer(UGModelLayers.ROTLING)), 0.6F);
+		this.addLayer(new RotlingEyesLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Rotling entity) {
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/rotling.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Rotling entity) {
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/rotling.png");
+	}
 }

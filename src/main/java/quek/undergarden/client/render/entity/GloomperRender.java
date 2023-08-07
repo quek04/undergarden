@@ -11,13 +11,13 @@ import quek.undergarden.entity.animal.Gloomper;
 
 public class GloomperRender extends MobRenderer<Gloomper, GloomperModel<Gloomper>> {
 
-    public GloomperRender(EntityRendererProvider.Context renderContext) {
-        super(renderContext, new GloomperModel<>(renderContext.bakeLayer(UGModelLayers.GLOOMPER)), 1.0F);
-        this.addLayer(new GloomperEyesLayer<>(this));
-    }
+	public GloomperRender(EntityRendererProvider.Context context) {
+		super(context, new GloomperModel<>(context.bakeLayer(UGModelLayers.GLOOMPER)), 1.0F);
+		this.addLayer(new GloomperEyesLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Gloomper entity) {
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/gloomper.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Gloomper entity) {
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/gloomper.png");
+	}
 }

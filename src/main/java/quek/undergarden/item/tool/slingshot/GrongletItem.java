@@ -14,17 +14,17 @@ import java.util.List;
 
 public class GrongletItem extends BlockItem {
 
-    public GrongletItem(Block block, Properties properties) {
-        super(block, properties);
-    }
+	public GrongletItem(Block block, Properties properties) {
+		super(block, properties);
+	}
 
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
-        tooltipComponents.add(Component.translatable("tooltip.pebble").withStyle(ChatFormatting.GRAY));
-    }
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
+		tooltipComponents.add(Component.translatable("tooltip.pebble").withStyle(ChatFormatting.GRAY));
+	}
 
-    @Override
-    public EquipmentSlot getEquipmentSlot(ItemStack stack) {
-        return EquipmentSlot.HEAD;
-    }
+	@Override
+	public EquipmentSlot getEquipmentSlot(ItemStack stack) {
+		return EquipmentSlot.HEAD;
+	}
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "undergarden:smelt_shiverstone_diamond_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

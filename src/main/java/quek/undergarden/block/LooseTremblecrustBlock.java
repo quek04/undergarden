@@ -9,15 +9,15 @@ import quek.undergarden.registry.UGBlocks;
 
 public class LooseTremblecrustBlock extends Block {
 
-    public LooseTremblecrustBlock(Properties properties) {
-        super(properties);
-    }
+	public LooseTremblecrustBlock(Properties properties) {
+		super(properties);
+	}
 
 
-    @Override
-    public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
-        if(pLevel.getBlockState(pPos.below()) == UGBlocks.LOOSE_TREMBLECRUST.get().defaultBlockState() || pLevel.isEmptyBlock(pPos.below())) {
-            pLevel.destroyBlock(pPos, false);
-        }
-    }
+	@Override
+	public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+		if (level.getBlockState(pos.below()).is(UGBlocks.LOOSE_TREMBLECRUST.get()) || level.isEmptyBlock(pos.below())) {
+			level.destroyBlock(pos, false);
+		}
+	}
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "key": {
     "M": {
       "item": "undergarden:masticator_scales"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "undergarden:masticated_chestplate"
-  }
+  },
+  "show_notification": true
 }

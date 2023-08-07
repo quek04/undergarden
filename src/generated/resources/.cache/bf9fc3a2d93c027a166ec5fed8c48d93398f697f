@@ -1,5 +1,11 @@
-// 1.19.2	2022-10-21T17:46:58.1146156	Undergarden Entity Type Tags
+// 1.20.1	2023-07-26T10:33:23.0303293	Undergarden Entity Type Tags
+d9a7c6d8c29ace1cf686be5f4ec1aedaaeedf725 data/forge/tags/entity_types/bosses.json
+1384ad7158709624105a815c89f486aae7c481a4 data/minecraft/tags/entity_types/dismounts_underwater.json
+044ec6baf770075dc184db54f0c5b4f46cfbf791 data/minecraft/tags/entity_types/fall_damage_immune.json
+d9a7c6d8c29ace1cf686be5f4ec1aedaaeedf725 data/minecraft/tags/entity_types/freeze_immune_entity_types.json
 b210e12c149f69eec2dc5b34d39fe0ebddac387a data/minecraft/tags/entity_types/impact_projectiles.json
+6a6a35d1139f6e70ea3a31c1e7286e7a8c2b7691 data/minecraft/tags/entity_types/powder_snow_walkable_mobs.json
 82504d61ef59415f00c1684bc94ed787e0d98d0e data/undergarden/tags/entity_types/cavern_creature.json
-bc04b7eb22f99762d158c0b94bb221228217a956 data/undergarden/tags/entity_types/immune_to_virulent_mix.json
+18023393335eb51d4812b9c642b593d569b7a5bb data/undergarden/tags/entity_types/immune_to_scintling_goo.json
+271aac66d5a8fab40accef14661dbec40e8f2438 data/undergarden/tags/entity_types/immune_to_virulent_mix.json
 59ed5e86a01c0d7bf7e62d9da86639ea3c447f10 data/undergarden/tags/entity_types/rotspawn.json

@@ -31,11 +31,11 @@ public class UGModelLayers {
     public static final ModelLayerLocation STONEBORN = register("stoneborn");
     public static final ModelLayerLocation GRONGLET = register("gronglet");
 
-    private static ModelLayerLocation register(String name) {
-        return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), "main");
-    }
+	private static ModelLayerLocation register(String name) {
+		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), "main");
+	}
 
-    private static ModelLayerLocation register(String name, String layerName) {
-        return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), layerName);
-    }
+	private static ModelLayerLocation register(String name, String layerName) {
+		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), layerName);
+	}
 }

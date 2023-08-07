@@ -76,18 +76,17 @@ public class NargoyleModel<T extends Nargoyle> extends ListModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
-		this.head.zRot = headPitch * ((float)Math.PI / 180F);
-		this.head.xRot = 0.4363F + headPitch * ((float)Math.PI / 180F);
+		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
+		this.head.zRot = headPitch * ((float) Math.PI / 180F);
+		this.head.xRot = 0.4363F + headPitch * ((float) Math.PI / 180F);
 
 		this.arms.xRot = 1.5708F + Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
 		this.legs.xRot = -1.7017F + -(Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
 
-		if(entity.isAggressive()) {
+		if (entity.isAggressive()) {
 			this.jaw.xRot = 0.3491F;
-		}
-		else {
+		} else {
 			this.jaw.xRot = 0.0F;
 		}
 	}

@@ -27,5 +27,6 @@
     [
       "enter_undergarden"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

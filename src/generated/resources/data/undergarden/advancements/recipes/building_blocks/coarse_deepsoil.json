@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deepsoil": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:deepsoil"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pebble": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "undergarden:depthrock_pebble"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:coarse_deepsoil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_deepsoil",
+      "has_pebble",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:coarse_deepsoil"
+    ]
+  },
+  "sends_telemetry_event": false
+}

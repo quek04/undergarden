@@ -1,7 +1,0 @@
-{
-    "parent": "block/cross",
-    "render_type": "minecraft:cutout",
-    "textures": {
-        "cross": "undergarden:block/blisterberry_bush_0"
-    }
-}

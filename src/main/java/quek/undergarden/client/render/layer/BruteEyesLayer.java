@@ -10,12 +10,12 @@ import quek.undergarden.entity.animal.Brute;
 
 public class BruteEyesLayer<T extends Brute, M extends BruteModel<T>> extends EyesLayer<T, M> {
 
-    public BruteEyesLayer(RenderLayerParent<T, M> rendererIn) {
-        super(rendererIn);
-    }
+	public BruteEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/brute_eyes.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/brute_eyes.png"));
+	}
 }

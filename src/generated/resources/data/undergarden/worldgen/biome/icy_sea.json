@@ -1,0 +1,133 @@
+{
+  "carvers": {
+    "air": "undergarden:undergarden_cave"
+  },
+  "downfall": 0.0,
+  "effects": {
+    "additions_sound": {
+      "sound": "undergarden:ambient.frostfields_addition",
+      "tick_chance": 0.002775
+    },
+    "ambient_sound": "undergarden:ambient.sea",
+    "fog_color": 2565927,
+    "foliage_color": 14609908,
+    "grass_color": 14609908,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "undergarden:ambient.frost_mood",
+      "tick_delay": 6000
+    },
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": true,
+      "sound": "undergarden:music.undergarden"
+    },
+    "sky_color": 1186057,
+    "water_color": 342306,
+    "water_fog_color": 332810
+  },
+  "features": [
+    [],
+    [],
+    [
+      "minecraft:iceberg_packed",
+      "undergarden:ice_pillar"
+    ],
+    [],
+    [],
+    [],
+    [
+      "undergarden:deepsoil_ore",
+      "undergarden:sediment_ore",
+      "undergarden:shiverstone_ore",
+      "undergarden:coal_ore",
+      "undergarden:iron_ore",
+      "undergarden:gold_ore",
+      "undergarden:diamond_ore",
+      "undergarden:cloggrum_ore",
+      "undergarden:utherium_ore",
+      "undergarden:regalium_ore",
+      "undergarden:ice_ore",
+      "undergarden:froststeel_ore"
+    ],
+    [],
+    [],
+    [
+      "undergarden:blood_mushroom_patch",
+      "undergarden:indigo_mushroom_patch",
+      "undergarden:ink_mushroom_patch",
+      "undergarden:veil_mushroom_patch",
+      "undergarden:shimmerweed_patch",
+      "undergarden:tall_shimmerweed_patch",
+      "undergarden:glitterkelp_patch",
+      "undergarden:frozen_deepturf_patch"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "undergarden:nargoyle",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 50
+      },
+      {
+        "type": "undergarden:muncher",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 50
+      },
+      {
+        "type": "undergarden:sploogie",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 50
+      },
+      {
+        "type": "undergarden:rotling",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotwalker",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotbeast",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 100
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [
+      {
+        "type": "undergarden:gwibling",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 5
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "undergarden:gwib",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 10
+      }
+    ]
+  },
+  "temperature": 0.14,
+  "temperature_modifier": "frozen"
+}

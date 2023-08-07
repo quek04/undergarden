@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "M": {
       "item": "undergarden:shiverstone"
@@ -12,5 +13,6 @@
   "result": {
     "count": 6,
     "item": "undergarden:shiverstone_wall"
-  }
+  },
+  "show_notification": true
 }

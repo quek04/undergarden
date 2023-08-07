@@ -10,13 +10,13 @@ import quek.undergarden.entity.animal.Scintling;
 
 public class ScintlingGlowLayer<T extends Scintling, M extends ScintlingModel<T>> extends EyesLayer<T, M> {
 
-    public ScintlingGlowLayer(RenderLayerParent<T, M> rendererIn) {
-        super(rendererIn);
-    }
+	public ScintlingGlowLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/scintling_glow.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/scintling_glow.png"));
+	}
 
 }
