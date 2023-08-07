@@ -1,15 +1,14 @@
 {
-  "name": "undergarden:catacombs/stair_pool",
-  "fallback": "minecraft:empty",
   "elements": [
     {
-      "weight": 1,
       "element": {
+        "element_type": "minecraft:single_pool_element",
         "location": "undergarden:catacombs/stair",
         "processors": "undergarden:catacombs_degradation",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
+        "projection": "rigid"
+      },
+      "weight": 1
     }
-  ]
+  ],
+  "fallback": "minecraft:empty"
 }

@@ -15,7 +15,7 @@ public class ForgottenRender extends HumanoidMobRenderer<Forgotten, ForgottenMod
 
     public ForgottenRender(EntityRendererProvider.Context context) {
         super(context, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN)), 0.5F);
-        this.addLayer(new HumanoidArmorLayer<>(this, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_INNER_ARMOR)), new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_OUTER_ARMOR))));
+        this.addLayer(new HumanoidArmorLayer<>(this, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_INNER_ARMOR)), new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_OUTER_ARMOR)), context.getModelManager()));
         this.addLayer(new ForgottenEyesLayer<>(this));
     }
 

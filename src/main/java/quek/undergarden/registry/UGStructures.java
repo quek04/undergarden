@@ -43,6 +43,7 @@ public class UGStructures {
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_START = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "catacombs/catacombs_entrance"));
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_CHEST = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "catacombs/chest_pool"));
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_INTERIOR = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "catacombs/interior_pool"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_STAIR = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "catacombs/stair_pool"));
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_TUNNEL = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "catacombs/tunnel_pool"));
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_WAY = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "catacombs/way_pool"));
 
@@ -79,6 +80,7 @@ public class UGStructures {
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/interior3").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/interior4").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100)
 		), StructureTemplatePool.Projection.RIGID));
+		context.register(CATACOMBS_STAIR, new StructureTemplatePool(emptyPool, ImmutableList.of(Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/stair").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1)), StructureTemplatePool.Projection.RIGID));
 		context.register(CATACOMBS_TUNNEL, new StructureTemplatePool(emptyPool, ImmutableList.of(
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/way_pool").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/tunnel1").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),

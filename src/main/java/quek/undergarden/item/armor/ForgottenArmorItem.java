@@ -8,7 +8,7 @@ import quek.undergarden.registry.UGArmorMaterials;
 
 public class ForgottenArmorItem extends ArmorItem {
 
-    public ForgottenArmorItem(EquipmentSlot slot) {
+    public ForgottenArmorItem(Type slot) {
         super(UGArmorMaterials.FORGOTTEN, slot, new Properties());
     }
 

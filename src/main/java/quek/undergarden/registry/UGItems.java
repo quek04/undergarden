@@ -123,48 +123,48 @@ public class UGItems {
 	public static final RegistryObject<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.LEGGINGS));
 	public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.BOOTS));
 
-    public static final RegistryObject<Item> FORGOTTEN_HELMET = ITEMS.register("forgotten_helmet", () -> new ForgottenArmorItem(EquipmentSlot.HEAD));
-    public static final RegistryObject<Item> FORGOTTEN_CHESTPLATE = ITEMS.register("forgotten_chestplate", () -> new ForgottenArmorItem(EquipmentSlot.CHEST));
-    public static final RegistryObject<Item> FORGOTTEN_LEGGINGS = ITEMS.register("forgotten_leggings", () -> new ForgottenArmorItem(EquipmentSlot.LEGS));
+    public static final RegistryObject<Item> FORGOTTEN_HELMET = ITEMS.register("forgotten_helmet", () -> new ForgottenArmorItem(ArmorItem.Type.HELMET));
+    public static final RegistryObject<Item> FORGOTTEN_CHESTPLATE = ITEMS.register("forgotten_chestplate", () -> new ForgottenArmorItem(ArmorItem.Type.CHESTPLATE));
+    public static final RegistryObject<Item> FORGOTTEN_LEGGINGS = ITEMS.register("forgotten_leggings", () -> new ForgottenArmorItem(ArmorItem.Type.LEGGINGS));
 
     //foods/plants
-    public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", DroopfruitItem::new);
-    public static final RegistryObject<Item> UNDERBEANS = ITEMS.register("underbeans", () -> new ItemNameBlockItem(UGBlocks.UNDERBEAN_BUSH.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.UNDERBEANS)));
-    public static final RegistryObject<Item> ROASTED_UNDERBEANS = ITEMS.register("roasted_underbeans", () -> new UGItem(UGFoods.ROASTED_UNDERBEANS));
-    public static final RegistryObject<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new ItemNameBlockItem(UGBlocks.BLISTERBERRY_BUSH.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.BLISTERBERRY)));
-    public static final RegistryObject<Item> ROTTEN_BLISTERBERRY = ITEMS.register("rotten_blisterberry", () -> new RottenBlisterberryItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.ROTTEN_BLISTERBERRY)));
-    public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", () -> new SlingshotAmmoItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.GOO_BALL)));
-    public static final RegistryObject<Item> GLOOMGOURD_PIE = ITEMS.register("gloomgourd_pie", () -> new UGItem(UGFoods.GLOOMGOURD_PIE));
-    public static final RegistryObject<Item> RAW_DWELLER_MEAT = ITEMS.register("raw_dweller_meat", () -> new UGItem(UGFoods.RAW_DWELLER));
-    public static final RegistryObject<Item> DWELLER_STEAK = ITEMS.register("dweller_steak", () -> new UGItem(UGFoods.COOKED_DWELLER));
-    public static final RegistryObject<Item> RAW_GWIBLING = ITEMS.register("raw_gwibling", () -> new UGItem(UGFoods.RAW_GWIBLING));
-    public static final RegistryObject<Item> COOKED_GWIBLING = ITEMS.register("cooked_gwibling", () -> new UGItem(UGFoods.COOKED_GWIBLING));
-    public static final RegistryObject<Item> RAW_GLOOMPER_LEG = ITEMS.register("raw_gloomper_leg", () -> new UGItem(UGFoods.RAW_GLOOMPER_LEG));
-    public static final RegistryObject<Item> GLOOMPER_LEG = ITEMS.register("gloomper_leg", () -> new UGItem(UGFoods.GLOOMPER_LEG));
-    public static final RegistryObject<Item> GLITTERKELP = ITEMS.register("glitterkelp", () -> new BlockItem(UGBlocks.GLITTERKELP.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<Item> GLOOMGOURD_SEEDS = ITEMS.register("gloomgourd_seeds", () -> new ItemNameBlockItem(UGBlocks.GLOOMGOURD_STEM.get(), new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<Item> BLOOD_GLOBULE = ITEMS.register("blood_globule", () -> new UGItem(UGFoods.BLOOD_GLOBULE));
-    public static final RegistryObject<Item> BLOODY_STEW = ITEMS.register("bloody_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.BLOODY).stacksTo(1)));
-    public static final RegistryObject<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.INKY).stacksTo(1)));
-    public static final RegistryObject<Item> INDIGO_STEW = ITEMS.register("indigo_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.INDIGO).stacksTo(1)));
-    public static final RegistryObject<Item> VEILED_STEW = ITEMS.register("veiled_stew", () -> new BowlFoodItem(new Item.Properties().tab(UGCreativeModeTabs.GROUP).food(UGFoods.VEILED).stacksTo(1)));
+	public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new ItemNameBlockItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));
+	public static final RegistryObject<Item> UNDERBEANS = ITEMS.register("underbeans", () -> new ItemNameBlockItem(UGBlocks.UNDERBEAN_BUSH.get(), new Item.Properties().food(UGFoods.UNDERBEANS)));
+	public static final RegistryObject<Item> ROASTED_UNDERBEANS = ITEMS.register("roasted_underbeans", () -> new Item(new Item.Properties().food(UGFoods.ROASTED_UNDERBEANS)));
+	public static final RegistryObject<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new ItemNameBlockItem(UGBlocks.BLISTERBERRY_BUSH.get(), new Item.Properties().food(UGFoods.BLISTERBERRY)));
+	public static final RegistryObject<Item> ROTTEN_BLISTERBERRY = ITEMS.register("rotten_blisterberry", () -> new RottenBlisterberryItem(new Item.Properties().food(UGFoods.ROTTEN_BLISTERBERRY)));
+	public static final RegistryObject<Item> GOO_BALL = ITEMS.register("goo_ball", () -> new SlingshotAmmoItem(new Item.Properties().food(UGFoods.GOO_BALL)));
+	public static final RegistryObject<Item> GLOOMGOURD_PIE = ITEMS.register("gloomgourd_pie", () -> new Item(new Item.Properties().food(UGFoods.GLOOMGOURD_PIE)));
+	public static final RegistryObject<Item> RAW_DWELLER_MEAT = ITEMS.register("raw_dweller_meat", () -> new Item(new Item.Properties().food(UGFoods.RAW_DWELLER)));
+	public static final RegistryObject<Item> DWELLER_STEAK = ITEMS.register("dweller_steak", () -> new Item(new Item.Properties().food(UGFoods.COOKED_DWELLER)));
+	public static final RegistryObject<Item> RAW_GWIBLING = ITEMS.register("raw_gwibling", () -> new Item(new Item.Properties().food(UGFoods.RAW_GWIBLING)));
+	public static final RegistryObject<Item> COOKED_GWIBLING = ITEMS.register("cooked_gwibling", () -> new Item(new Item.Properties().food(UGFoods.COOKED_GWIBLING)));
+	public static final RegistryObject<Item> RAW_GLOOMPER_LEG = ITEMS.register("raw_gloomper_leg", () -> new Item(new Item.Properties().food(UGFoods.RAW_GLOOMPER_LEG)));
+	public static final RegistryObject<Item> GLOOMPER_LEG = ITEMS.register("gloomper_leg", () -> new Item(new Item.Properties().food(UGFoods.GLOOMPER_LEG)));
+	public static final RegistryObject<Item> GLITTERKELP = ITEMS.register("glitterkelp", () -> new BlockItem(UGBlocks.GLITTERKELP.get(), new Item.Properties()));
+	public static final RegistryObject<Item> GLOOMGOURD_SEEDS = ITEMS.register("gloomgourd_seeds", () -> new ItemNameBlockItem(UGBlocks.GLOOMGOURD_STEM.get(), new Item.Properties()));
+	public static final RegistryObject<Item> BLOOD_GLOBULE = ITEMS.register("blood_globule", () -> new Item(new Item.Properties().food(UGFoods.BLOOD_GLOBULE)));
+	public static final RegistryObject<Item> BLOODY_STEW = ITEMS.register("bloody_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.BLOODY).stacksTo(1)));
+	public static final RegistryObject<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.INKY).stacksTo(1)));
+	public static final RegistryObject<Item> INDIGO_STEW = ITEMS.register("indigo_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.INDIGO).stacksTo(1)));
+	public static final RegistryObject<Item> VEILED_STEW = ITEMS.register("veiled_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.VEILED).stacksTo(1)));
 
-    //spawn eggs
-    public static final RegistryObject<ForgeSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.DWELLER, 4804417, 16776960, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> GWIBLING_SPAWN_EGG = ITEMS.register("gwibling_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.GWIBLING, 10064737, 15845330, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.ROTLING, 5590327, 10500660, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> ROTWALKER_SPAWN_EGG = ITEMS.register("rotwalker_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.ROTWALKER, 5590327, 10500660, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> ROTBEAST_SPAWN_EGG = ITEMS.register("rotbeast_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.ROTBEAST, 5590327,10500660, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> BRUTE_SPAWN_EGG = ITEMS.register("brute_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.BRUTE, 7035982, 4012083, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> SCINTLING_SPAWN_EGG = ITEMS.register("scintling_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.SCINTLING, 8556655, 6314558, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> GLOOMPER_SPAWN_EGG = ITEMS.register("gloomper_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.GLOOMPER, 4138045, 6579581, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> STONEBORN_SPAWN_EGG = ITEMS.register("stoneborn_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.STONEBORN, 3227179, 9502615, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> NARGOYLE_SPAWN_EGG = ITEMS.register("nargoyle_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.NARGOYLE, 3747634, 15508905, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> MUNCHER_SPAWN_EGG = ITEMS.register("muncher_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MUNCHER, 2366466, 15881511, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> SPLOOGIE_SPAWN_EGG = ITEMS.register("sploogie_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.SPLOOGIE, 10585715, 4559071, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> GWIB_SPAWN_EGG = ITEMS.register("gwib_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.GWIB, 10064737, 4203803, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> MOG_SPAWN_EGG = ITEMS.register("mog_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MOG, 3227179, 6393396, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
-    public static final RegistryObject<ForgeSpawnEggItem> FORGOTTEN_SPAWN_EGG = ITEMS.register("forgotten_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.FORGOTTEN, 5393733, 9502615, new Item.Properties().tab(UGCreativeModeTabs.GROUP)));
+	//spawn eggs
+    public static final RegistryObject<ForgeSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.DWELLER, 4804417, 16776960, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> GWIBLING_SPAWN_EGG = ITEMS.register("gwibling_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.GWIBLING, 10064737, 15845330, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.ROTLING, 5590327, 10500660, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> ROTWALKER_SPAWN_EGG = ITEMS.register("rotwalker_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.ROTWALKER, 5590327, 10500660, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> ROTBEAST_SPAWN_EGG = ITEMS.register("rotbeast_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.ROTBEAST, 5590327,10500660, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> BRUTE_SPAWN_EGG = ITEMS.register("brute_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.BRUTE, 7035982, 4012083, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> SCINTLING_SPAWN_EGG = ITEMS.register("scintling_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.SCINTLING, 8556655, 6314558, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> GLOOMPER_SPAWN_EGG = ITEMS.register("gloomper_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.GLOOMPER, 4138045, 6579581, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> STONEBORN_SPAWN_EGG = ITEMS.register("stoneborn_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.STONEBORN, 3227179, 9502615, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> NARGOYLE_SPAWN_EGG = ITEMS.register("nargoyle_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.NARGOYLE, 3747634, 15508905, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> MUNCHER_SPAWN_EGG = ITEMS.register("muncher_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MUNCHER, 2366466, 15881511, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> SPLOOGIE_SPAWN_EGG = ITEMS.register("sploogie_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.SPLOOGIE, 10585715, 4559071, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> GWIB_SPAWN_EGG = ITEMS.register("gwib_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.GWIB, 10064737, 4203803, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> MOG_SPAWN_EGG = ITEMS.register("mog_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MOG, 3227179, 6393396, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> FORGOTTEN_SPAWN_EGG = ITEMS.register("forgotten_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.FORGOTTEN, 5393733, 9502615, new Item.Properties()));
 
 	//public static final RegistryObject<ForgeSpawnEggItem> MASTICATOR_SPAWN_EGG = ITEMS.register("masticator_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MASTICATOR, 2366466, 15881511, new Item.Properties()));
 	public static final RegistryObject<ForgeSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));

@@ -60,6 +60,11 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 				.texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
 	}
 
+	public void normalItemWithItemTexture(Supplier<? extends Item> item, String name) {
+		withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/generated"))
+				.texture("layer0", modLoc("item/" + name));
+	}
+
 	public void torchItem(Supplier<? extends Block> item) {
 		withExistingParent(ForgeRegistries.BLOCKS.getKey(item.get()).getPath(), mcLoc("item/generated"))
 				.texture("layer0", modLoc("block/" + ForgeRegistries.BLOCKS.getKey(item.get()).getPath()));

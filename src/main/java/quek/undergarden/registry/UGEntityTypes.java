@@ -104,7 +104,6 @@ public class UGEntityTypes {
         event.put(SCINTLING.get(), Scintling.registerAttributes().build());
         event.put(GLOOMPER.get(), Gloomper.registerAttributes().build());
         event.put(STONEBORN.get(), Stoneborn.registerAttributes().build());
-        event.put(MASTICATOR.get(), Masticator.registerAttributes().build());
         event.put(NARGOYLE.get(), Nargoyle.registerAttributes().build());
         event.put(FORGOTTEN_GUARDIAN.get(), ForgottenGuardian.registerAttributes().build());
         event.put(MUNCHER.get(), Muncher.registerAttributes().build());

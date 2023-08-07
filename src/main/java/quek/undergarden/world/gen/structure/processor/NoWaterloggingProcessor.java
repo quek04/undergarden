@@ -22,18 +22,18 @@ public class NoWaterloggingProcessor extends StructureProcessor {
 
     @Nullable
     @Override
-    public StructureTemplate.StructureBlockInfo processBlock(LevelReader level, BlockPos p_74417_, BlockPos pos, StructureTemplate.StructureBlockInfo blockInfo, StructureTemplate.StructureBlockInfo relativeBlockInfo, StructurePlaceSettings settings) {
-        if (!relativeBlockInfo.state.getFluidState().isEmpty()) {
-            if (level instanceof WorldGenRegion region && !region.getCenter().equals(new ChunkPos(relativeBlockInfo.pos))) {
+    public StructureTemplate.StructureBlockInfo processBlock(LevelReader level, BlockPos pos, BlockPos newPos, StructureTemplate.StructureBlockInfo blockInfo, StructureTemplate.StructureBlockInfo relativeBlockInfo, StructurePlaceSettings settings) {
+        if (!relativeBlockInfo.state().getFluidState().isEmpty()) {
+            if (level instanceof WorldGenRegion region && !region.getCenter().equals(new ChunkPos(relativeBlockInfo.pos()))) {
                 return relativeBlockInfo;
             }
 
-            ChunkAccess chunk = level.getChunk(relativeBlockInfo.pos);
+            ChunkAccess chunk = level.getChunk(relativeBlockInfo.pos());
             int minY = chunk.getMinBuildHeight();
             int maxY = chunk.getMaxBuildHeight();
-            int currentY = relativeBlockInfo.pos.getY();
+            int currentY = relativeBlockInfo.pos().getY();
             if (currentY >= minY && currentY <= maxY) {
-                ((LevelAccessor) level).scheduleTick(relativeBlockInfo.pos, relativeBlockInfo.state.getBlock(), 0);
+                ((LevelAccessor) level).scheduleTick(relativeBlockInfo.pos(), relativeBlockInfo.state().getBlock(), 0);
             }
         }
         return relativeBlockInfo;

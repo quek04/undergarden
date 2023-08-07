@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-05T18:33:38.8448111	Loot Tables
+// 1.20.1	2023-08-06T20:50:39.9798899	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 2645cf89fe60362fa8217dc5825683e04755a423 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 151c2f71107612bce2811d7825f88937bff932f0 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -198,6 +198,7 @@ de3654c36b0de167199d4298e3fa561b070be348 data/undergarden/loot_tables/blocks/wig
 96ddd2216b01209f8f6438d166cb78093ece9150 data/undergarden/loot_tables/chests/catacombs.json
 db6385448bb2bd7d8c71d07699ad3e07910074f7 data/undergarden/loot_tables/entities/brute.json
 39fbdb50f1f0b85ffd82fa4a8c5d31bc12c24372 data/undergarden/loot_tables/entities/dweller.json
+d8a35c3794d4473e308b5036d29543631efd520e data/undergarden/loot_tables/entities/forgotten.json
 93fdb346d38cad8b2fea41f5fb815163ef8ce80f data/undergarden/loot_tables/entities/forgotten_guardian.json
 bbfb30d778850ca8b2be17dae22a45fa73a790c4 data/undergarden/loot_tables/entities/gloomper.json
 633576ab0f0003f8df092eeee009c2de33d80031 data/undergarden/loot_tables/entities/gwib.json

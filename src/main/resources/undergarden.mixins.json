@@ -9,7 +9,7 @@
   "mixins": [
     "BubbleColumnBlockMixin",
     "StructureProcessorAccessor",
-    "StructureTemplateMixin"
+    "StructureTemplateMixin",
     "CauldronBlockMixin",
     "PointedDripstoneMixin"
   ],

@@ -444,6 +444,21 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 				.addCriterion("has_forgotten_battleaxe", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.FORGOTTEN_BATTLEAXE.get()))
 				.save(consumer, "undergarden:undergarden/forgotten_battleaxe");
 
+		Advancement summon_minion = Advancement.Builder.advancement()
+				.parent(forgotten_ingot)
+				.display(
+						UGBlocks.CARVED_GLOOMGOURD.get(),
+						Component.translatable("advancement.undergarden.summon_minion.title"),
+						Component.translatable("advancement.undergarden.summon_minion.desc"),
+						null,
+						FrameType.GOAL,
+						true,
+						true,
+						false
+				)
+				.addCriterion("summoned_minion", SummonedEntityTrigger.TriggerInstance.summonedEntity(EntityPredicate.Builder.entity().of(UGEntityTypes.MINION.get())))
+				.save(consumer, "undergarden:undergarden/summon_minion");
+
         Advancement gloomper_secret_disc = Advancement.Builder.advancement()
                 .parent(enter_undergarden)
                 .display(
