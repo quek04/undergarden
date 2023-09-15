@@ -1,99 +1,111 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        mavenCentral()
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-        maven { url = 'https://maven.parchmentmc.org' }
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.gradle' version '[6.0.18,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+}
+
+def secrets = new Properties()
+def secretsFile = file('secrets.properties')
+if (secretsFile.exists()) {
+    secretsFile.withInputStream {
+        stream -> secrets.load(stream)
     }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7.+'
-        classpath 'org.parchmentmc:librarian:1.+'
+
+    fileTree("secrets").matching {
+        include "**/*.properties"
+    }.each {
+        File file ->
+            file.withInputStream {
+                stream -> secrets.load(stream)
+            }
     }
 }
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = project.undergarden_version
-group = 'quek.undergarden.modid'
-archivesBaseName = 'The_Undergarden-'+project.mc_version
+group = 'quek.undergarden'
+base {
+    archivesName = 'The_Undergarden-'+project.minecraft_version
+}
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
     // https://ldtteam.jfrog.io/ui/native/parchmentmc-public/org/parchmentmc/data
-    mappings channel: 'parchment', version: project.parchment_version
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
-        client {
+        configureEach {
             workingDirectory project.file('run')
-
-            arg "-mixin.config=undergarden.mixins.json"
-
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
+            property 'forge.logging.console.level', 'debug'
+            property 'fml.earlyprogresswindow', 'false'
+            property 'mixin.env.disableRefMap', 'true'
 
             mods {
-                undergarden {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
+        }
+
+        client {
+            taskName "Minecraft_Client_${project.minecraft_version}"
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--username', secrets.getProperty("username")?: 'Dev', secrets.getProperty("uuid") ? '--uuid' : '', secrets.getProperty("uuid")?: ''
         }
 
         server {
-            workingDirectory project.file('run')
+            taskName "Minecraft_Server_${project.minecraft_version}"
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
+        }
 
-            arg "-mixin.config=undergarden.mixins.json"
-
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
-
-            mods {
-                undergarden {
-                    source sourceSets.main
-                }
-            }
+        gameTestServer {
+            taskName "Minecraft_GameTestServer_${project.minecraft_version}"
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         data {
-            workingDirectory project.file('run')
-
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'undergarden', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing', file('src/generated/resources/')
-
-            environment 'target', 'fmluserdevdata'
-
-            mods {
-                undergarden {
-                    source sourceSets.main
-                }
-            }
+            taskName "Minecraft_Data_${project.minecraft_version}"
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
     }
-
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 }
 
-sourceSets.main.resources {
-    srcDir 'src/generated/resources'
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    maven {
+        name 'Jared\'s Maven' // JEI
+        url 'https://maven.blamejared.com/'
+    }
+    maven {
+        name 'Curseforge Maven' // Jade
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        url "https://modmaven.dev/"
+    }
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
+    minecraft "net.neoforged:forge:${project.minecraft_version}-${project.neo_version}"
 
     // compile against the JEI API but do not include it at runtime
-    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
-    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${project.minecraft_version}-forge-api:${project.jei_version}"))
     // at runtime, use the full JEI jar for Forge
-    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+    runtimeOnly(fg.deobf("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}"))
 
-    implementation fg.deobf("curse.maven:jade-324717:${jade_version}")
-    implementation fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:${jeed_version}")
+    implementation fg.deobf("curse.maven:jade-324717:${project.jade_version}")
+    implementation fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:${project.jeed_version}")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
@@ -103,26 +115,24 @@ mixin {
     config 'undergarden.mixins.json'
 }
 
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes([
-            "Specification-Title": "undergarden",
-            "Specification-Vendor": "quek",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"quek",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "undergarden.mixins.json"
+                "Specification-Title"     : "undergarden",
+                "Specification-Vendor"    : "quek",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "quek",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+    finalizedBy 'reobfJar'
 }
-
-jar.finalizedBy('reobfJar')
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        register('mavenJava', MavenPublication) {
             artifact jar
         }
     }
@@ -133,24 +143,6 @@ publishing {
     }
 }
 
-repositories {
-    maven {
-        url = 'https://repo.spongepowered.org/repository/maven-public/'
-    }
-    maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
-    maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
-    }
-    maven {
-        url = "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
