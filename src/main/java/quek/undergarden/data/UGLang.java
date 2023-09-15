@@ -536,7 +536,7 @@ public class UGLang extends LanguageProvider {
 		addAdvDesc("forgotten_ingot", "Forge a Forgotten Ingot from a Forgotten Guardian's nuggets.");
 
 		addAdvTitle("forgotten_tools", "Forgotten Arsenal");
-		addAdvDesc("forgotten_tools", "Use Forgotten Ingots to upgrade Cloggrum tools and make all 5 Forgotten tools.");
+		addAdvDesc("forgotten_tools", "Use Forgotten Ingots to upgrade Cloggrum tools and make all 6 Forgotten tools.");
 
 		addAdvTitle("kill_scintling", "Terrible Person");
 		addAdvDesc("kill_scintling", "You killed an innocent Scintling. You monster...");
