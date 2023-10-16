@@ -25,7 +25,6 @@ public class UGRecipes extends UGRecipeProvider {
 		super(output);
 	}
 
-	@SuppressWarnings("removal")
 	@Override
 	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 		makePlanks(UGBlocks.SMOGSTEM_PLANKS, UGTags.Items.SMOGSTEM_LOGS).save(consumer);

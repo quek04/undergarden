@@ -35,7 +35,7 @@ public class Blisterbomb extends ThrowableItemProjectile {
 	protected void onHit(HitResult result) {
 		if (!this.level().isClientSide()) {
 			if (result.getType() == HitResult.Type.ENTITY || result.getType() == HitResult.Type.BLOCK) {
-				this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3F, Level.ExplosionInteraction.NONE);
+				this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3F, Level.ExplosionInteraction.BLOCK);
 				this.remove(RemovalReason.KILLED);
 			}
 		}
