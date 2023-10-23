@@ -4,13 +4,11 @@ import net.minecraft.DetectedVersion;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Position;
+import net.minecraft.core.*;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
@@ -44,6 +42,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegisterEvent;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.entity.projectile.Blisterbomb;
@@ -52,9 +51,11 @@ import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
 import quek.undergarden.network.UGPacketHandler;
 import quek.undergarden.registry.*;
+import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -69,6 +70,7 @@ public class Undergarden {
 		bus.addListener(this::setup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
+		bus.addListener((Consumer<RegisterEvent>) event -> Registry.register(BuiltInRegistries.CHUNK_GENERATOR, new ResourceLocation(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC));
 
 		DeferredRegister<?>[] registers = {
 				UGBlockEntities.BLOCK_ENTITIES,
@@ -112,7 +114,6 @@ public class Undergarden {
 			UGPacketHandler.init();
 			UGCriteria.register();
 			UGCauldronInteractions.register();
-
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
 

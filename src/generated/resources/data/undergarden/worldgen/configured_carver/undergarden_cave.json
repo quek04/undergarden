@@ -4,7 +4,7 @@
     "floor_level": -0.7,
     "horizontal_radius_multiplier": 1.0,
     "lava_level": {
-      "above_bottom": 10
+      "absolute": 11
     },
     "probability": 0.5,
     "replaceable": "#undergarden:undergarden_carver_replaceables",
@@ -12,10 +12,10 @@
     "y": {
       "type": "minecraft:uniform",
       "max_inclusive": {
-        "below_top": 1
+        "below_top": 5
       },
       "min_inclusive": {
-        "above_bottom": 5
+        "absolute": 5
       }
     },
     "yScale": 0.5

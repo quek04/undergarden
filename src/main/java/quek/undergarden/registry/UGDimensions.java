@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import quek.undergarden.Undergarden;
+import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.List;
 import java.util.OptionalLong;
@@ -47,8 +48,8 @@ public class UGDimensions {
 				4.0D, //coordinate scale
 				true, //bed works
 				false, //respawn anchor works
-				0, // Minimum Y Level
-				128, // Height + Min Y = Max Y
+				-64, // Minimum Y Level
+				192, // Height + Min Y = Max Y
 				128, // Logical Height
 				BlockTags.INFINIBURN_OVERWORLD, //infiniburn
 				name("undergarden"), // DimensionRenderInfo
@@ -61,38 +62,68 @@ public class UGDimensions {
 		HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
 		HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
 		context.register(UNDERGARDEN_LEVEL_STEM, new LevelStem(dimTypes.getOrThrow(UNDERGARDEN_DIM_TYPE),
-				new NoiseBasedChunkGenerator(UGBiomes.buildBiomeSource(biomeRegistry), noiseGenSettings.getOrThrow(UNDERGARDEN_NOISE_GEN))));
+				new UGNoiseBasedChunkGenerator(UGBiomes.buildBiomeSource(biomeRegistry), noiseGenSettings.getOrThrow(UNDERGARDEN_NOISE_GEN))));
 	}
 
 	public static void bootstrapNoise(BootstapContext<NoiseGeneratorSettings> context) {
 		HolderGetter<DensityFunction> functions = context.lookup(Registries.DENSITY_FUNCTION);
-		HolderGetter<NormalNoise.NoiseParameters> noises = context.lookup(Registries.NOISE);
-		DensityFunction densityfunction = NoiseRouterData.getFunction(functions, NoiseRouterData.SHIFT_X);
-		DensityFunction densityfunction1 = NoiseRouterData.getFunction(functions, NoiseRouterData.SHIFT_Z);
+		HolderGetter<NormalNoise.NoiseParameters> noiseParameters = context.lookup(Registries.NOISE);
+		DensityFunction xShift = NoiseRouterData.getFunction(functions, NoiseRouterData.SHIFT_X);
+		DensityFunction zShift = NoiseRouterData.getFunction(functions, NoiseRouterData.SHIFT_Z);
 
 		context.register(UNDERGARDEN_NOISE_GEN, new NoiseGeneratorSettings(
-				NoiseSettings.create(0, 128, 2, 2),
+				NoiseSettings.create(-64, 192, 2, 2),
 				UGBlocks.DEPTHROCK.get().defaultBlockState(),
 				Blocks.WATER.defaultBlockState(),
 				new NoiseRouter(
-						DensityFunctions.zero(), //barrier
-						DensityFunctions.zero(), //fluid level floodedness
-						DensityFunctions.zero(), //fluid level spread
-						DensityFunctions.zero(), //lava
-						DensityFunctions.shiftedNoise2d(densityfunction, densityfunction1, 0.25D, noises.getOrThrow(Noises.TEMPERATURE)), //temperature
-						DensityFunctions.shiftedNoise2d(densityfunction, densityfunction1, 0.25D, noises.getOrThrow(Noises.VEGETATION)), //vegetation
+						DensityFunctions.constant(0.0D), //barrier
+						DensityFunctions.constant(0.0D), //fluid level floodedness
+						DensityFunctions.constant(0.0D), //fluid level spread
+						DensityFunctions.constant(0.0D), //lava
+						DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noiseParameters.getOrThrow(Noises.TEMPERATURE)), //temperature
+						DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noiseParameters.getOrThrow(Noises.VEGETATION)), //vegetation
 						NoiseRouterData.getFunction(functions, NoiseRouterData.CONTINENTS), //continents
 						NoiseRouterData.getFunction(functions, NoiseRouterData.EROSION), //erosion
 						DensityFunctions.rangeChoice(
 								NoiseRouterData.getFunction(functions, NoiseRouterData.Y),
 								0.0D,
 								32.0D,
-								DensityFunctions.constant(2.0D),
-								DensityFunctions.constant(-2.0D)), //depth
+								DensityFunctions.constant(-1.0D),
+								DensityFunctions.rangeChoice(
+										NoiseRouterData.getFunction(functions, NoiseRouterData.Y),
+										-64.0D,
+										0.0D,
+										DensityFunctions.constant(-2.0D),
+										DensityFunctions.constant(0.0D)
+								)
+						), //depth
 						NoiseRouterData.getFunction(functions, NoiseRouterData.RIDGES), //ridges
 						DensityFunctions.zero(), //initial density
 						DensityFunctions.mul(
-								DensityFunctions.constant(0.64D),
+								//DensityFunctions.constant(0.64D),
+								DensityFunctions.interpolated(
+										DensityFunctions.blendDensity(
+												DensityFunctions.add(
+														DensityFunctions.constant(2.5D),
+														DensityFunctions.mul(
+																DensityFunctions.yClampedGradient(24, -8, 0.0D, 1.0D),
+																DensityFunctions.add(
+																		DensityFunctions.constant(-2.5D),
+																		DensityFunctions.add(
+																				DensityFunctions.constant(0.5D),
+																				DensityFunctions.mul(
+																						DensityFunctions.yClampedGradient(-48, -64, 1.0D, 0.0D),
+																						DensityFunctions.add(
+																								DensityFunctions.constant(-0.5F),
+																								BlendedNoise.createUnseeded(0.1D, 0.3D, 25.0D, 50.0D, 1.0D)
+																						)
+																				)
+																		)
+																)
+														)
+												)
+										)
+								),
 								DensityFunctions.interpolated(
 										DensityFunctions.blendDensity(
 												DensityFunctions.add(
@@ -107,7 +138,8 @@ public class UGDimensions {
 																						DensityFunctions.yClampedGradient(110, 128, 1.0D, 0.0D),
 																						DensityFunctions.add(
 																								DensityFunctions.constant(-0.5F),
-																								BlendedNoise.createUnseeded(0.1D, 0.3D, 80.0D, 60.0D, 1.0D))
+																								BlendedNoise.createUnseeded(0.1D, 0.3D, 80.0D, 60.0D, 1.0D)
+																						)
 																				)
 																		)
 																)
@@ -128,7 +160,7 @@ public class UGDimensions {
 						//filler depthrock
 						SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), SurfaceRules.state(UGBlocks.DEPTHROCK.get().defaultBlockState())),
 						//sediment
-						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(33), 0)), SurfaceRules.state(UGBlocks.SEDIMENT.get().defaultBlockState()))),
+						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(33), 0)), SurfaceRules.state(UGBlocks.SEDIMENT.get().defaultBlockState())))),
 						//frozen deepturf
 						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.ifTrue(
 								SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
@@ -140,7 +172,7 @@ public class UGDimensions {
 										SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
 										SurfaceRules.sequence(
 												SurfaceRules.ifTrue(
-														SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
+														SurfaceRules.noiseCondition(noiseParameters.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
 														SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
 												),
 												SurfaceRules.ifTrue(
@@ -157,7 +189,7 @@ public class UGDimensions {
 										SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
 										SurfaceRules.sequence(
 												SurfaceRules.ifTrue(
-														SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
+														SurfaceRules.noiseCondition(noiseParameters.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
 														SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
 												),
 												SurfaceRules.ifTrue(
@@ -174,7 +206,7 @@ public class UGDimensions {
 										SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
 										SurfaceRules.sequence(
 												SurfaceRules.ifTrue(
-														SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
+														SurfaceRules.noiseCondition(noiseParameters.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
 														SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
 												),
 												SurfaceRules.ifTrue(
@@ -186,12 +218,14 @@ public class UGDimensions {
 								)
 						),
 						//cover the ground in deepturf
-						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR), SurfaceRules.state(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState())),
+						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.state(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState()))),
 						//add deepsoil underneath
-						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR), SurfaceRules.state(UGBlocks.DEEPSOIL.get().defaultBlockState())),
+						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.state(UGBlocks.DEEPSOIL.get().defaultBlockState()))),
 						//add shiverstone to icy biomes
-						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.state(UGBlocks.SHIVERSTONE.get().defaultBlockState()))
-				),
+						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.state(UGBlocks.SHIVERSTONE.get().defaultBlockState())),
+						//add dreadrock to bottom of world
+						SurfaceRules.ifTrue(SurfaceRules.verticalGradient("undergarden:dreadrock", VerticalAnchor.absolute(0), VerticalAnchor.absolute(5)), SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState()))
+						),
 				List.of(), //spawn targets
 				32,
 				false,

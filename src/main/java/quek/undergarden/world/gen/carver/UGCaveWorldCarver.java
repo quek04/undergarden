@@ -99,32 +99,28 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 			return false;
 		} else {
 			BlockState carveState = this.getCarveState(context, config, pos);
-			if (carveState == null) {
-				return false;
-			} else {
-				chunk.setBlockState(pos, carveState, false);
-				if (aquifer.shouldScheduleFluidUpdate() && !carveState.getFluidState().isEmpty()) {
-					chunk.markPosForPostprocessing(pos);
-				}
+            chunk.setBlockState(pos, carveState, false);
+            if (aquifer.shouldScheduleFluidUpdate() && !carveState.getFluidState().isEmpty()) {
+                chunk.markPosForPostprocessing(pos);
+            }
 
-				if (reachedSurface.isTrue()) {
-					checkPos.setWithOffset(pos, Direction.DOWN);
-					if (chunk.getBlockState(checkPos).is(UGBlocks.DEEPSOIL.get())) {
-						context.topMaterial(biomeAccessor, chunk, checkPos, !carveState.getFluidState().isEmpty()).ifPresent((state) -> {
-							chunk.setBlockState(checkPos, state, false);
-							if (!state.getFluidState().isEmpty()) {
-								chunk.markPosForPostprocessing(checkPos);
-							}
-						});
-					}
-				}
-				return true;
-			}
-		}
+            if (reachedSurface.isTrue()) {
+                checkPos.setWithOffset(pos, Direction.DOWN);
+                if (chunk.getBlockState(checkPos).is(UGBlocks.DEEPSOIL.get())) {
+                    context.topMaterial(biomeAccessor, chunk, checkPos, !carveState.getFluidState().isEmpty()).ifPresent((state) -> {
+                        chunk.setBlockState(checkPos, state, false);
+                        if (!state.getFluidState().isEmpty()) {
+                            chunk.markPosForPostprocessing(checkPos);
+                        }
+                    });
+                }
+            }
+            return true;
+        }
 	}
 
 	private BlockState getCarveState(CarvingContext context, CaveCarverConfiguration config, BlockPos pos) {
-		if (pos.getY() <= config.lavaLevel.resolveY(context)) {
+		if (/*pos.getY() >= 0 && */pos.getY() <= config.lavaLevel.resolveY(context)) {
 			return UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock();
 		} else {
 			return CAVE_AIR;

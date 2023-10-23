@@ -81,6 +81,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "undergarden:depths": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:depths"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "undergarden:forgotten_field": {
       "conditions": {
         "player": [
@@ -303,6 +319,9 @@
     ],
     [
       "undergarden:veil_mushroom_bog"
+    ],
+    [
+      "undergarden:depths"
     ]
   ],
   "sends_telemetry_event": true

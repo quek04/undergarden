@@ -36,6 +36,7 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> SMOG_SPIRES = create("smog_spires");
 	public static final ResourceKey<Biome> VEIL_MUSHROOM_BOG = create("veil_mushroom_bog");
 	public static final ResourceKey<Biome> WIGGLEWOOD_FOREST = create("wigglewood_forest");
+	public static final ResourceKey<Biome> DEPTHS = create("depths");
 
 	private static ResourceKey<Biome> create(String name) {
 		return ResourceKey.create(Registries.BIOME, new ResourceLocation(Undergarden.MODID, name));
@@ -413,6 +414,19 @@ public class UGBiomes {
 						.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
 						.build())
 				.build());
+
+		context.register(DEPTHS, new Biome.BiomeBuilder()
+				.generationSettings(addOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+						.build())
+				.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+						.build())
+				.hasPrecipitation(false)
+				.downfall(0.0F)
+				.temperature(0.8F)
+				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 0, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
+						.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+						.build())
+				.build());
 	}
 
 	private static BiomeGenerationSettings.Builder addOresAndCaves(BiomeGenerationSettings.Builder builder) {
@@ -476,21 +490,22 @@ public class UGBiomes {
 
 	public static BiomeSource buildBiomeSource(HolderGetter<Biome> biomes) {
 		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(ImmutableList.of(
-				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(FORGOTTEN_FIELD)),
-				Pair.of(Climate.parameters(-1.0F, -0.4F, -0.9F, -0.7F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(FROSTFIELDS)),
-				Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(SMOGSTEM_FOREST)),
-				Pair.of(Climate.parameters(0.0F, -0.4F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(WIGGLEWOOD_FOREST)),
-				Pair.of(Climate.parameters(1.0F, 0.4F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DENSE_FOREST)),
-				Pair.of(Climate.parameters(0.0F, 0.0F, 0.9F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(GRONGLEGROWTH)),
-				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(BARREN_ABYSS)),
-				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 1.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(SMOG_SPIRES)),
-				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 1.0F, 0.0F), biomes.getOrThrow(INK_MUSHROOM_BOG)),
-				Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, -2.0F, 1.0F, 0.0F), biomes.getOrThrow(INDIGO_MUSHROOM_BOG)),
-				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, -1.0F, 0.0F), biomes.getOrThrow(VEIL_MUSHROOM_BOG)),
-				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, -2.0F, -1.0F, 0.0F), biomes.getOrThrow(BLOOD_MUSHROOM_BOG)),
-				Pair.of(Climate.parameters(Climate.Parameter.span(0.0F, 1.0F), Climate.Parameter.span(0.0F, 0.4F), Climate.Parameter.span(0.0F, 0.9F), Climate.Parameter.point(0.0F), Climate.Parameter.point(2.0F), Climate.Parameter.span(-1.0F, 1.0F), 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
-				Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.7F, 1.0F), Climate.Parameter.point(2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(DEAD_SEA)),
-				Pair.of(Climate.parameters(-0.7F, -0.7F, -0.7F, 0.0F, 2.0F, 0.0F, 0.0F), biomes.getOrThrow(ICY_SEA))
+				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(FORGOTTEN_FIELD)),
+				Pair.of(Climate.parameters(-1.0F, -0.4F, -0.9F, -0.7F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(FROSTFIELDS)),
+				Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(SMOGSTEM_FOREST)),
+				Pair.of(Climate.parameters(0.0F, -0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(WIGGLEWOOD_FOREST)),
+				Pair.of(Climate.parameters(1.0F, 0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(DENSE_FOREST)),
+				Pair.of(Climate.parameters(0.0F, 0.0F, 0.9F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(GRONGLEGROWTH)),
+				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(BARREN_ABYSS)),
+				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(SMOG_SPIRES)),
+				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F), biomes.getOrThrow(INK_MUSHROOM_BOG)),
+				Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F), biomes.getOrThrow(INDIGO_MUSHROOM_BOG)),
+				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F), biomes.getOrThrow(VEIL_MUSHROOM_BOG)),
+				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, 0.0F, -1.0F, 0.0F), biomes.getOrThrow(BLOOD_MUSHROOM_BOG)),
+				Pair.of(Climate.parameters(Climate.Parameter.span(0.0F, 1.0F), Climate.Parameter.span(0.0F, 0.4F), Climate.Parameter.span(0.0F, 0.9F), Climate.Parameter.point(0.0F), Climate.Parameter.point(-1.0F), Climate.Parameter.span(-1.0F, 1.0F), 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
+				Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.7F, 1.0F), Climate.Parameter.point(-1.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(DEAD_SEA)),
+				Pair.of(Climate.parameters(-0.7F, -0.7F, -0.7F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ICY_SEA)),
+				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DEPTHS))
 		)));
 	}
 }
