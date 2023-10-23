@@ -563,7 +563,7 @@
         "then_run": {
           "type": "minecraft:block",
           "result_state": {
-            "Name": "undergarden:tremblecrust"
+            "Name": "undergarden:dreadrock"
           }
         }
       }

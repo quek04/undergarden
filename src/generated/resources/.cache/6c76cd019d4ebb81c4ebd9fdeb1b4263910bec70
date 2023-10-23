@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-03T20:09:33.6107664	Undergarden Block States
+// 1.20.1	2023-10-22T20:20:07.1153768	Undergarden Block States
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
 3caa35193766b684dc360e477e5208fb99d055f6 assets/undergarden/blockstates/ashen_deepturf.json
 6919d06515a0a18838e81bb21207cad377dbaa31 assets/undergarden/blockstates/ashen_deepturf_block.json
@@ -43,6 +43,7 @@ a80ee14d928b293d5a13f4731f8b8951efd86a05 assets/undergarden/blockstates/depthroc
 c2f757c755dfc1161c70e5f6f1b15e1fbf1a2e2f assets/undergarden/blockstates/depthrock_tile_stairs.json
 7a6a2e4a41346ffaaf29ee96f91ed65bc3c4fff0 assets/undergarden/blockstates/depthrock_utherium_ore.json
 1f6a07f1aa7ddadbbea80fbe6e313d05a30279cc assets/undergarden/blockstates/depthrock_wall.json
+bddb89d6b09bf24f7414353a178f04681f40d7ac assets/undergarden/blockstates/dreadrock.json
 61410e9ca2834c9160f5ca4e7478192d99e3ab31 assets/undergarden/blockstates/engorged_blood_mushroom_cap.json
 e4e3b9036e1b4bbf18e35ecf44ab42706f801a8f assets/undergarden/blockstates/forgotten_block.json
 ee6d3b2c91094d89848482e5865bdea6aad6270c assets/undergarden/blockstates/froststeel_block.json
@@ -230,6 +231,7 @@ fa6d1280fdfdff7c4d59b91d5790255d83fa99c3 assets/undergarden/models/block/depthro
 9547c912e8bf6e04e6165154edd8870980808dbd assets/undergarden/models/block/depthrock_wall_post.json
 9bdfd2ae1f715945c6da9d5adc13216c163e6fb2 assets/undergarden/models/block/depthrock_wall_side.json
 c3bb743fd05eae8f6c2d74dd8e1e5ab426e0837b assets/undergarden/models/block/depthrock_wall_side_tall.json
+547657bfbee18d46ee2032d4fa130e76e7d3c45a assets/undergarden/models/block/dreadrock.json
 1531f5634e4ffd9b19a2d3c04a9c9050a5e7905c assets/undergarden/models/block/engorged_blood_mushroom_cap.json
 4a0fcf8357924976ae08c0454301cf9d11a8d75f assets/undergarden/models/block/engorged_blood_mushroom_cap_2.json
 c69a117512518fed1ec1476d8c317a1edfc1b3dc assets/undergarden/models/block/engorged_blood_mushroom_cap_3.json

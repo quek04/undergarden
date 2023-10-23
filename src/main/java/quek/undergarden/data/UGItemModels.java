@@ -20,6 +20,7 @@ public class UGItemModels extends UGItemModelProvider {
 
 	@Override
 	protected void registerModels() {
+		block(UGBlocks.DREADROCK);
 		block(UGBlocks.DEPTHROCK);
 		block(UGBlocks.DEPTHROCK_COAL_ORE);
 		block(UGBlocks.DEPTHROCK_CLOGGRUM_ORE);

@@ -224,7 +224,7 @@ public class UGDimensions {
 						//add shiverstone to icy biomes
 						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.state(UGBlocks.SHIVERSTONE.get().defaultBlockState())),
 						//add dreadrock to bottom of world
-						SurfaceRules.ifTrue(SurfaceRules.verticalGradient("undergarden:dreadrock", VerticalAnchor.absolute(0), VerticalAnchor.absolute(5)), SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState()))
+						SurfaceRules.ifTrue(SurfaceRules.verticalGradient("undergarden:dreadrock", VerticalAnchor.absolute(0), VerticalAnchor.absolute(5)), SurfaceRules.state(UGBlocks.DREADROCK.get().defaultBlockState()))
 						),
 				List.of(), //spawn targets
 				32,

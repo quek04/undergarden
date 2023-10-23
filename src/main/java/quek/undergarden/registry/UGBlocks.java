@@ -72,6 +72,9 @@ public class UGBlocks {
 	public static final RegistryObject<ButtonBlock> SHIVERSTONE_BUTTON = register("shiverstone_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(SHIVERSTONE.get()).noCollission(), BlockSetType.STONE, 20, false));
 	public static final RegistryObject<PressurePlateBlock> SHIVERSTONE_PRESSURE_PLATE = register("shiverstone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(SHIVERSTONE.get()).noCollission(), BlockSetType.STONE));
 
+	//dreadrock
+	public static final RegistryObject<Block> DREADROCK = register("dreadrock", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_GREEN).strength(3.0F, 12.0F).sound(UGSoundTypes.DREADROCK).requiresCorrectToolForDrops()));
+
 	//tremblecrust
 	public static final RegistryObject<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.DEEPSLATE).strength(6F, 24F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
 	public static final RegistryObject<Block> LOOSE_TREMBLECRUST = register("loose_tremblecrust", () -> new LooseTremblecrustBlock(BlockBehaviour.Properties.copy(TREMBLECRUST.get()).strength(3F, 24F).noLootTable()));

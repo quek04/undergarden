@@ -31,7 +31,7 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 				.display(
 						UGBlocks.DEEPTURF_BLOCK.get(),
 						Component.translatable("advancement.undergarden.root.title"),
-						Component.translatable(""),
+						Component.empty(),
 						new ResourceLocation(Undergarden.MODID, "textures/block/depthrock_bricks.png"),
 						FrameType.TASK,
 						false,
@@ -413,6 +413,21 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 				)
 				.addCriterion("has_forgotten_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.FORGOTTEN_INGOT.get()))
 				.save(consumer, "undergarden:undergarden/forgotten_ingot");
+
+		Advancement enter_depths = Advancement.Builder.advancement()
+				.parent(forgotten_ingot)
+				.display(
+						UGBlocks.DREADROCK.get(),
+						Component.translatable("advancement.undergarden.enter_depths.title"),
+						Component.translatable("advancement.undergarden.enter_depths.desc"),
+						null,
+						FrameType.GOAL,
+						true,
+						true,
+						false
+				)
+				.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(UGBiomes.DEPTHS)))
+				.save(consumer, "undergarden:undergarden/enter_depths");
 
 		Advancement forgotten_tools = Advancement.Builder.advancement()
 				.parent(forgotten_ingot)

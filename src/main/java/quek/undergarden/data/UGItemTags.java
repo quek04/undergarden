@@ -107,7 +107,7 @@ public class UGItemTags extends ItemTagsProvider {
 
 		//forge
 		tag(Tags.Items.BONES).add(UGItems.BRUTE_TUSK.get());
-		tag(Tags.Items.COBBLESTONE).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
+		tag(Tags.Items.COBBLESTONE).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem(), UGBlocks.DREADROCK.get().asItem());
 		tag(Tags.Items.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get().asItem(), UGBlocks.GRONGLE_FENCE_GATE.get().asItem());
 		tag(Tags.Items.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem());
 		tag(Tags.Items.MUSHROOMS).addTag(UGTags.Items.MUSHROOMS);
@@ -121,7 +121,7 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(Tags.Items.ORES_IRON).add(UGBlocks.DEPTHROCK_IRON_ORE.get().asItem(), UGBlocks.SHIVERSTONE_IRON_ORE.get().asItem());
 		tag(Tags.Items.ORES_GOLD).add(UGBlocks.DEPTHROCK_GOLD_ORE.get().asItem());
 		tag(Tags.Items.ORES_DIAMOND).add(UGBlocks.DEPTHROCK_DIAMOND_ORE.get().asItem(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get().asItem());
-		tag(Tags.Items.STONE).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem());
+		tag(Tags.Items.STONE).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem(), UGBlocks.DREADROCK.get().asItem());
 		tag(Tags.Items.STORAGE_BLOCKS).addTags(UGTags.Items.STORAGE_BLOCKS_CLOGGRUM, UGTags.Items.STORAGE_BLOCKS_RAW_CLOGGRUM, UGTags.Items.STORAGE_BLOCKS_FROSTSTEEL, UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL, UGTags.Items.STORAGE_BLOCKS_UTHERIUM, UGTags.Items.STORAGE_BLOCKS_REGALIUM, UGTags.Items.STORAGE_BLOCKS_FORGOTTEN_METAL);
 		tag(Tags.Items.GLASS).add(UGBlocks.SEDIMENT_GLASS.get().asItem());
 		tag(Tags.Items.GLASS_COLORLESS).add(UGBlocks.SEDIMENT_GLASS.get().asItem());

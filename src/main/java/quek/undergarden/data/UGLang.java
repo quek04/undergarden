@@ -92,6 +92,8 @@ public class UGLang extends LanguageProvider {
 		addBlock(UGBlocks.SHIVERSTONE_BUTTON, "Shiverstone Button");
 		addBlock(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, "Shiverstone Pressure Plate");
 
+		addBlock(UGBlocks.DREADROCK, "Dreadrock");
+
 		addBlock(UGBlocks.TREMBLECRUST, "Tremblecrust");
 		addBlock(UGBlocks.LOOSE_TREMBLECRUST, "Loose Tremblecrust");
 		addBlock(UGBlocks.TREMBLECRUST_BRICKS, "Tremblecrust Bricks");
@@ -409,6 +411,7 @@ public class UGLang extends LanguageProvider {
 		addBiome(UGBiomes.SMOG_SPIRES, "Smog Spires");
 		addBiome(UGBiomes.VEIL_MUSHROOM_BOG, "Veil Mushroom Bog");
 		addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
+		addBiome(UGBiomes.DEPTHS, "Depths");
 
 		addEntityType(UGEntityTypes.BOAT, "Boat");
 		addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");
@@ -534,6 +537,9 @@ public class UGLang extends LanguageProvider {
 
 		addAdvTitle("forgotten_ingot", "What Now Is");
 		addAdvDesc("forgotten_ingot", "Forge a Forgotten Ingot from a Forgotten Guardian's nuggets.");
+
+		addAdvTitle("enter_depths", "Into the Depths");
+		addAdvDesc("enter_depths", "Break through the Dreadrock barrier at the bottom of the Undergarden and enter the Depths...");
 
 		addAdvTitle("forgotten_tools", "Forgotten Arsenal");
 		addAdvDesc("forgotten_tools", "Use Forgotten Ingots to upgrade Cloggrum tools and make all 6 Forgotten tools.");

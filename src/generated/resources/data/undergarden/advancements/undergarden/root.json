@@ -9,7 +9,7 @@
     "announce_to_chat": false,
     "background": "undergarden:textures/block/depthrock_bricks.png",
     "description": {
-      "translate": ""
+      "text": ""
     },
     "frame": "task",
     "hidden": false,

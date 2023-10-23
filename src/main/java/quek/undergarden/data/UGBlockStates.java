@@ -28,6 +28,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
+		block(UGBlocks.DREADROCK);
 		torchBlock(UGBlocks.SHARD_TORCH, UGBlocks.SHARD_WALL_TORCH);
 		block(UGBlocks.DEPTHROCK);
 		block(UGBlocks.DEEPSOIL);

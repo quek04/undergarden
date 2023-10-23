@@ -69,6 +69,7 @@ public class UGLootTables extends LootTableProvider {
 
 		@Override
 		protected void generate() {
+			dropSelf(UGBlocks.DREADROCK);
 			dropSelf(UGBlocks.DEPTHROCK);
 			dropSelf(UGBlocks.DEEPSOIL);
 			dropWithSilk(UGBlocks.DEEPSOIL_FARMLAND, UGBlocks.DEEPSOIL);

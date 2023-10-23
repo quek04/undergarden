@@ -1,0 +1,42 @@
+{
+  "parent": "undergarden:undergarden/forgotten_ingot",
+  "criteria": {
+    "has_entered_depths": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:depths"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.undergarden.enter_depths.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "undergarden:dreadrock"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.undergarden.enter_depths.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_entered_depths"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
