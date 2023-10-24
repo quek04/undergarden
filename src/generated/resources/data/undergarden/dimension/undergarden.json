@@ -191,12 +191,12 @@
         {
           "biome": "undergarden:icy_sea",
           "parameters": {
-            "continentalness": -0.7,
+            "continentalness": -0.9,
             "depth": -1.0,
-            "erosion": 0.0,
-            "humidity": -0.7,
+            "erosion": -0.7,
+            "humidity": -0.4,
             "offset": 0.0,
-            "temperature": -0.7,
+            "temperature": -1.0,
             "weirdness": 0.0
           }
         },

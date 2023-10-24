@@ -120,7 +120,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 	}
 
 	private BlockState getCarveState(CarvingContext context, CaveCarverConfiguration config, BlockPos pos) {
-		if (/*pos.getY() >= 0 && */pos.getY() <= config.lavaLevel.resolveY(context)) {
+		if (pos.getY() <= config.lavaLevel.resolveY(context)) {
 			return UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock();
 		} else {
 			return CAVE_AIR;

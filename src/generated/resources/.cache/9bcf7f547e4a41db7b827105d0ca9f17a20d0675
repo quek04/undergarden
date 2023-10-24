@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-22T20:20:07.1133469	Undergarden Block Tags
+// 1.20.1	2023-10-23T19:01:54.6439188	Undergarden Block Tags
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -88,7 +88,7 @@ fca6ad989a1440629e3d8acd762c227a9f592caf data/minecraft/tags/blocks/wooden_slabs
 584d22ba9cc244d0ab56b57c3344be5f5f0c263a data/minecraft/tags/blocks/wooden_stairs.json
 aafaf830e9ca896252ebc84c9ccc7e5bb2b0e5e8 data/minecraft/tags/blocks/wooden_trapdoors.json
 6d82b372b96cab8e0a37bd8d11ab40bc92ef63a5 data/minecraft/tags/blocks/wool_carpets.json
-53f1b7a4cd25c233a4d5d2b70f36266c5dc7dead data/undergarden/tags/blocks/base_stone_undergarden.json
+653bbc56a6821246b2b236646267136e31f37038 data/undergarden/tags/blocks/base_stone_undergarden.json
 2edb0616f83e57e7d98c4ab93226cc8008e68de5 data/undergarden/tags/blocks/depthrock_ore_replaceables.json
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/blocks/grongle_logs.json
 963615f7d9b44e3d738714937b2f19b4ef75525e data/undergarden/tags/blocks/muncher_breakables.json
