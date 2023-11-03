@@ -211,9 +211,15 @@ public class UndergardenClient {
 			LocalPlayer player = minecraft.player;
 			Camera camera = event.getCamera();
 			if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
-				RenderSystem.setShaderFogStart(0.0F);
-				RenderSystem.setShaderFogEnd(200.0F);
-				RenderSystem.setShaderFogShape(FogShape.SPHERE);
+				if (player.level().getBiome(player.getOnPos()).is(UGBiomes.DEPTHS)) {
+					RenderSystem.setShaderFogStart(0.0F);
+					RenderSystem.setShaderFogEnd(50.0F);
+					RenderSystem.setShaderFogShape(FogShape.SPHERE);
+				} else {
+					RenderSystem.setShaderFogStart(0.0F);
+					RenderSystem.setShaderFogEnd(200.0F);
+					RenderSystem.setShaderFogShape(FogShape.SPHERE);
+				}
 			}
 		}
 

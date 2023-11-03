@@ -112,10 +112,10 @@ public class UGDimensions {
 																		DensityFunctions.add(
 																				DensityFunctions.constant(0.5D),
 																				DensityFunctions.mul(
-																						DensityFunctions.yClampedGradient(-48, -64, 1.0D, 0.0D),
+																						DensityFunctions.yClampedGradient(-54, -64, 1.0D, 0.0D),
 																						DensityFunctions.add(
 																								DensityFunctions.constant(-0.5F),
-																								BlendedNoise.createUnseeded(0.1D, 0.3D, 25.0D, 50.0D, 1.0D)
+																								BlendedNoise.createUnseeded(10.0D, 0.1D, 0.1D, 10.0D, 8.0D)
 																						)
 																				)
 																		)
