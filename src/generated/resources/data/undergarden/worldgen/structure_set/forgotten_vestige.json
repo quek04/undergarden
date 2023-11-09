@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 276320046,
+    "separation": 2,
+    "spacing": 4
+  },
+  "structures": [
+    {
+      "structure": "undergarden:forgotten_vestige",
+      "weight": 1
+    }
+  ]
+}

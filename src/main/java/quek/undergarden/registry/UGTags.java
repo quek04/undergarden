@@ -131,6 +131,7 @@ public class UGTags {
 		public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
 
 		public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
+		public static final TagKey<Biome> HAS_FORGOTTEN_VESTIGE = tag("has_structure/forgotten_vestige");
 
 		private static TagKey<Biome> tag(String name) {
 			return BiomeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());

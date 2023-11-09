@@ -1,0 +1,194 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/arch_1",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/arch_2",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/arch_3",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/arch_4",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/arch_5",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/arch_6",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/face_1",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/face_2",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/face_3",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/house_1",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/house_2",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/house_3",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/house_4",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/house_5",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/house_6",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/shiverstone/arch_1",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/shiverstone/arch_2",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/shiverstone/arch_3",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/shiverstone/arch_4",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/shiverstone/arch_5",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/shiverstone/arch_6",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}
