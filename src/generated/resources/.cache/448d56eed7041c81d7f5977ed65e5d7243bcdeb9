@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-05T18:33:38.8498008	Undergarden Item Models
+// 1.20.1	2023-12-15T17:25:11.3540821	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
@@ -9,6 +9,7 @@ a9c5cc29fac70ee67b04c0aa2544f105985f93fc assets/undergarden/models/item/blood_gl
 b62f795ece9a852ff785eaa7ef4b4ec242ca6319 assets/undergarden/models/item/blood_mushroom.json
 fdf77de27b3b34c9dee3f144128ccec43e939cc4 assets/undergarden/models/item/blood_mushroom_cap.json
 2e1ff54606b30c9854de9b4a206bd1247efffbb9 assets/undergarden/models/item/blood_mushroom_stem.json
+7461e7796348d0f5658742c81297d39652b982c7 assets/undergarden/models/item/blue_mogmoss.json
 570eff5a21cc3edc3a97becf2408e33ee85e8a3c assets/undergarden/models/item/boomgourd.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/brute_spawn_egg.json
 6728f28b4bb8cbdc417675b635c94cbb123832d7 assets/undergarden/models/item/brute_tusk.json
@@ -210,6 +211,7 @@ f84dd2dd708d364da501288b7ec055d2576c1998 assets/undergarden/models/item/smogstem
 fe0781da18a33c13de9d4ce5cc799c2f22d5056f assets/undergarden/models/item/smogstem_stairs.json
 7451cb77cc9fcfc322702cecdcd6dc8c3dc6bd05 assets/undergarden/models/item/smogstem_trapdoor.json
 1d6e02d0c8069aacde06e2d75b8332f3b154352f assets/undergarden/models/item/smogstem_wood.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/smog_mog_spawn_egg.json
 17565693037f0a26831c55d530ff61920166c350 assets/undergarden/models/item/smog_vent.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/sploogie_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/stoneborn_spawn_egg.json

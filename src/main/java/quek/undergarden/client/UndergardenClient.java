@@ -80,6 +80,7 @@ public class UndergardenClient {
 		event.registerEntityRenderer(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
 		event.registerEntityRenderer(UGEntityTypes.GWIB.get(), GwibRender::new);
 		event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
+		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRender::new);
 		//event.registerEntityRenderer(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
 	}
@@ -109,6 +110,7 @@ public class UndergardenClient {
 		event.registerLayerDefinition(UGModelLayers.SPLOOGIE, SploogieModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.GWIB, GwibModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.MOG, MogModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.SMOG_MOG, SmogMogModel::createBodyLayer);
 		//event.registerLayerDefinition(UGModelLayers.MASTICATOR, MasticatorModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
 	}

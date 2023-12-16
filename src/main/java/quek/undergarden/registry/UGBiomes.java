@@ -69,7 +69,10 @@ public class UGBiomes {
 						.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEPTHROCK_PEBBLE_PATCH)
 						.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DITCHBULB_PATCH)
 						.build())
-				.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder())).build())
+				.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+						.creatureGenerationProbability(0.5F)
+						.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.SMOG_MOG.get(), 100, 2, 4))
+						.build())
 				.hasPrecipitation(false)
 				.downfall(0.0F)
 				.temperature(0.2F)
@@ -111,7 +114,7 @@ public class UGBiomes {
 				.hasPrecipitation(false)
 				.downfall(0.0F)
 				.temperature(0.8F)
-				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION).build())
+				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION).build())
 				.build());
 
 		context.register(DENSE_FOREST, new Biome.BiomeBuilder()
@@ -316,13 +319,14 @@ public class UGBiomes {
 				.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 						.creatureGenerationProbability(0.5F)
 						.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 100, 8, 8))
+						.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.SMOG_MOG.get(), 100, 2, 4))
 						.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
 						.build())
 				.hasPrecipitation(false)
 				.downfall(0.0F)
 				.temperature(2.0F)
 				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 7568503), UGSoundEvents.SPIRES_AMBIENCE, UGSoundEvents.SPIRES_AMBIENT_ADDITION)
-						.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.118093334F))
+						.ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.118093334F))
 						.build())
 				.build());
 

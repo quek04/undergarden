@@ -21,7 +21,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.IForgeShearable;
+import net.minecraftforge.fluids.FluidType;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
@@ -39,7 +41,6 @@ public class Mog extends Animal implements IForgeShearable {
 
 	public Mog(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
-		this.setMaxUpStep(1.0F);
 	}
 
 	@Override
@@ -57,7 +58,8 @@ public class Mog extends Animal implements IForgeShearable {
 		return Animal.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 20.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.1D)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
+				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
+				.add(ForgeMod.STEP_HEIGHT.get(), 1.0F);
 	}
 
 	@Override
@@ -75,9 +77,14 @@ public class Mog extends Animal implements IForgeShearable {
 		return UGSoundEvents.MOG_DEATH.get();
 	}
 
-	@Override
+	/*@Override
 	public boolean canBreatheUnderwater() {
 		return true;
+	}*/
+
+	@Override
+	public boolean canDrownInFluidType(FluidType type) {
+		return false;
 	}
 
 	@Nullable

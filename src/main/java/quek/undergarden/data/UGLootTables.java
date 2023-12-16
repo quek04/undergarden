@@ -459,6 +459,22 @@ public class UGLootTables extends LootTableProvider {
 					)
 			);
 
+			this.add(UGEntityTypes.SMOG_MOG.get(), LootTable.lootTable()
+					.withPool(LootPool.lootPool()
+							.setRolls(ConstantValue.exactly(1))
+							.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
+									.apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 6.0F)))
+									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(1.0F, 2.0F)))
+							)
+					)
+					.withPool(LootPool.lootPool()
+							.setRolls(ConstantValue.exactly(1))
+							.add(LootItem.lootTableItem(UGItems.BLUE_MOGMOSS.get())
+									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+							)
+					)
+			);
+
 //            this.add(UGEntityTypes.MASTICATOR.get(), LootTable.lootTable()
 //                    .withPool(LootPool.lootPool()
 //                            .setRolls(ConstantValue.exactly(1))

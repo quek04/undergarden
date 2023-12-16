@@ -291,6 +291,7 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.DITCHBULB_PASTE, "Ditchbulb Paste");
 		addItem(UGItems.BRUTE_TUSK, "Brute Tusk");
 		addItem(UGItems.MOGMOSS, "Mogmoss");
+		addItem(UGItems.BLUE_MOGMOSS, "Blue Mogmoss");
 		addItem(UGItems.GOO_BALL, "Scintling Goo Ball");
 		addItem(UGItems.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
 		addItem(UGItems.BLISTERBOMB, "Blisterbomb");
@@ -391,6 +392,7 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
 		addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
 		addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
+		addItem(UGItems.SMOG_MOG_SPAWN_EGG, "S'Mog Spawn Egg");
 		//addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 
@@ -435,6 +437,7 @@ public class UGLang extends LanguageProvider {
 		addEntityType(UGEntityTypes.SPLOOGIE, "Sploogie");
 		addEntityType(UGEntityTypes.GWIB, "Gwib");
 		addEntityType(UGEntityTypes.MOG, "Mog");
+		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
 
 		//addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
 		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
@@ -665,6 +668,10 @@ public class UGLang extends LanguageProvider {
 		addSubtitle("entity", "mog.ambient", "Mog squeaks");
 		addSubtitle("entity", "mog.hurt", "Mog hurts");
 		addSubtitle("entity", "mog.death", "Mog dies");
+
+		addSubtitle("entity", "smog_mog.ambient", "S'Mog squeaks");
+		addSubtitle("entity", "smog_mog.hurt", "S'Mog hurts");
+		addSubtitle("entity", "smog_mog.death", "S'Mog dies");
 
 		addSubtitle("entity", "scintling.hurt", "Scintling hurts");
 		addSubtitle("entity", "scintling.death", "Scintling dies");

@@ -255,6 +255,7 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.BLOOD_MUSHROOM_STEM);
 		normalItem(UGItems.BLOOD_GLOBULE);
 		block(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP);
+		normalItem(UGItems.BLUE_MOGMOSS);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
@@ -270,6 +271,7 @@ public class UGItemModels extends UGItemModelProvider {
 		egg(UGItems.SPLOOGIE_SPAWN_EGG);
 		egg(UGItems.GWIB_SPAWN_EGG);
 		egg(UGItems.MOG_SPAWN_EGG);
+		egg(UGItems.SMOG_MOG_SPAWN_EGG);
 		//egg(UGItems.MASTICATOR_SPAWN_EGG);
 		egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
 

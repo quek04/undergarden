@@ -10,7 +10,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoat;
-import quek.undergarden.item.*;
+import quek.undergarden.item.BlisterbombItem;
+import quek.undergarden.item.CatalystItem;
+import quek.undergarden.item.DitchbulbPasteItem;
+import quek.undergarden.item.ForgottenSmithingTemplateItem;
 import quek.undergarden.item.armor.MasticatedChestplateItem;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
@@ -56,6 +59,7 @@ public class UGItems {
 	public static final RegistryObject<Item> DITCHBULB_PASTE = ITEMS.register("ditchbulb_paste", DitchbulbPasteItem::new);
 	public static final RegistryObject<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> MOGMOSS = ITEMS.register("mogmoss", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> BLUE_MOGMOSS = ITEMS.register("blue_mogmoss", () -> new Item(new Item.Properties()));
 
 	//boss loot
 	public static final RegistryObject<Item> MASTICATOR_SCALES = ITEMS.register("masticator_scales", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
@@ -159,6 +163,7 @@ public class UGItems {
 	public static final RegistryObject<ForgeSpawnEggItem> SPLOOGIE_SPAWN_EGG = ITEMS.register("sploogie_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.SPLOOGIE, 10585715, 4559071, new Item.Properties()));
 	public static final RegistryObject<ForgeSpawnEggItem> GWIB_SPAWN_EGG = ITEMS.register("gwib_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.GWIB, 10064737, 4203803, new Item.Properties()));
 	public static final RegistryObject<ForgeSpawnEggItem> MOG_SPAWN_EGG = ITEMS.register("mog_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MOG, 3227179, 6393396, new Item.Properties()));
+	public static final RegistryObject<ForgeSpawnEggItem> SMOG_MOG_SPAWN_EGG = ITEMS.register("smog_mog_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.SMOG_MOG, 3227179, 3444366, new Item.Properties()));
 
 	//public static final RegistryObject<ForgeSpawnEggItem> MASTICATOR_SPAWN_EGG = ITEMS.register("masticator_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.MASTICATOR, 2366466, 15881511, new Item.Properties()));
 	public static final RegistryObject<ForgeSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));

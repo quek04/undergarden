@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-05T18:33:38.8448111	Loot Tables
+// 1.20.1	2023-12-15T17:25:11.3459134	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 2645cf89fe60362fa8217dc5825683e04755a423 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 151c2f71107612bce2811d7825f88937bff932f0 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -209,5 +209,6 @@ bbfb30d778850ca8b2be17dae22a45fa73a790c4 data/undergarden/loot_tables/entities/g
 9d35eff18ccef2ea568b16769f6b7df540867ae5 data/undergarden/loot_tables/entities/rotling.json
 f85ad3893ba5e6fabc05ee8023288c400c5c9097 data/undergarden/loot_tables/entities/rotwalker.json
 7861bb72d0547dfc6abc9f41529e1a9d8f7ae4ac data/undergarden/loot_tables/entities/scintling.json
+e362dee0a531eea328e2b719052dc766d8d7b735 data/undergarden/loot_tables/entities/smog_mog.json
 6031d8cc44939259a53e1b390ee84fe421e26d4e data/undergarden/loot_tables/entities/sploogie.json
 d2a9b67d1b1f235636e9e00cf67146f73e69ef8f data/undergarden/loot_tables/entities/stoneborn.json

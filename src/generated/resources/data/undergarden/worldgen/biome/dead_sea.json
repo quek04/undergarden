@@ -5,7 +5,7 @@
   "downfall": 0.0,
   "effects": {
     "additions_sound": {
-      "sound": "undergarden:ambient.bog_addition",
+      "sound": "undergarden:ambient.abyss_addition",
       "tick_chance": 0.00555
     },
     "ambient_sound": "undergarden:ambient.abyss",

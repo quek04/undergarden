@@ -2,6 +2,7 @@
   "carvers": {
     "air": "undergarden:undergarden_cave"
   },
+  "creature_spawn_probability": 0.5,
   "downfall": 0.0,
   "effects": {
     "additions_sound": {
@@ -69,7 +70,14 @@
   "spawners": {
     "ambient": [],
     "axolotls": [],
-    "creature": [],
+    "creature": [
+      {
+        "type": "undergarden:smog_mog",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 100
+      }
+    ],
     "misc": [],
     "monster": [
       {
