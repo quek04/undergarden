@@ -1,5 +1,6 @@
 {
   "values": [
+    "#minecraft:animals_spawnable_on",
     "undergarden:ashen_deepturf_block",
     "undergarden:coarse_deepsoil",
     "undergarden:depthrock",
