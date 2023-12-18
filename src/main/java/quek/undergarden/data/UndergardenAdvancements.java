@@ -384,6 +384,21 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 				.addCriterion("enter_catacombs", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(UGStructures.CATACOMBS)))
 				.save(consumer, "undergarden:undergarden/catacombs");
 
+		Advancement cloggrum_battleaxe = Advancement.Builder.advancement()
+				.parent(catacombs)
+				.display(
+						UGItems.CLOGGRUM_BATTLEAXE.get(),
+						Component.translatable("advancement.undergarden.cloggrum_battleaxe.title"),
+						Component.translatable("advancement.undergarden.cloggrum_battleaxe.desc"),
+						null,
+						FrameType.GOAL,
+						true,
+						true,
+						false
+				)
+				.addCriterion("has_cloggrum_battleaxe", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.CLOGGRUM_BATTLEAXE.get()))
+				.save(consumer, "undergarden:undergarden/cloggrum_battleaxe");
+
 		Advancement kill_guardian = Advancement.Builder.advancement()
 				.parent(catacombs)
 				.display(

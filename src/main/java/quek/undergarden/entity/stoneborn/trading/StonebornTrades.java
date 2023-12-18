@@ -19,7 +19,7 @@ public class StonebornTrades {
 					new BuyForRegaliumTrade(UGItems.BLISTERBOMB.get(), 16, 8, 24),
 					new BuyForRegaliumTrade(UGBlocks.SHARD_TORCH.get().asItem(), 1, 4, 10),
 					new BuyForRegaliumTrade(UGItems.GLOOMGOURD_SEEDS.get(), 1, 6, 6),
-					new BuyForRegaliumAndItemTrade(UGItems.CLOGGRUM_AXE.get(), UGItems.CLOGGRUM_BATTLEAXE.get(), 64, 1, 1, 1),
+					//new BuyForRegaliumAndItemTrade(UGItems.CLOGGRUM_AXE.get(), UGItems.CLOGGRUM_BATTLEAXE.get(), 64, 1, 1, 1),
 					new SellForRegaliumTrade(Items.DIAMOND, 12, 1, 5),
 					new SellForRegaliumTrade(Items.IRON_INGOT, 4, 1, 5),
 					new SellForRegaliumTrade(Items.GOLD_INGOT, 2, 1, 5),

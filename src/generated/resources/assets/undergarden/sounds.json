@@ -419,6 +419,38 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "entity.forgotten.ambient": {
+    "sounds": [
+      "undergarden:entity/forgotten_ambient_1",
+      "undergarden:entity/forgotten_ambient_2",
+      "undergarden:entity/forgotten_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.forgotten.ambient"
+  },
+  "entity.forgotten.death": {
+    "sounds": [
+      "undergarden:entity/forgotten_death"
+    ],
+    "subtitle": "subtitles.entity.forgotten.death"
+  },
+  "entity.forgotten.hurt": {
+    "sounds": [
+      "undergarden:entity/forgotten_hurt_1",
+      "undergarden:entity/forgotten_hurt_2",
+      "undergarden:entity/forgotten_hurt_3",
+      "undergarden:entity/forgotten_hurt_4"
+    ],
+    "subtitle": "subtitles.entity.forgotten.hurt"
+  },
+  "entity.forgotten.step": {
+    "sounds": [
+      "mob/wither_skeleton/step1",
+      "mob/wither_skeleton/step2",
+      "mob/wither_skeleton/step3",
+      "mob/wither_skeleton/step4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
   "entity.forgotten_guardian.ambient": {
     "sounds": [
       "undergarden:entity/fguardian_ambient_1",

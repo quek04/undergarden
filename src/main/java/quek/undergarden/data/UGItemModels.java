@@ -272,6 +272,7 @@ public class UGItemModels extends UGItemModelProvider {
 		egg(UGItems.GWIB_SPAWN_EGG);
 		egg(UGItems.MOG_SPAWN_EGG);
 		egg(UGItems.SMOG_MOG_SPAWN_EGG);
+		egg(UGItems.FORGOTTEN_SPAWN_EGG);
 		//egg(UGItems.MASTICATOR_SPAWN_EGG);
 		egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
 

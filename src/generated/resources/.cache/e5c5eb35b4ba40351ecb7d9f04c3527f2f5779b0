@@ -1,10 +1,11 @@
-// 1.20.1	2023-06-14T19:43:59.8369396	Advancements
+// 1.20.1	2023-12-17T23:22:22.0169864	Advancements
 83d508f377efc8771255dd659e08579485014add data/undergarden/advancements/undergarden/all_ore_blocks.json
 04b27d2dd2ce6350478a69887a8fb03ec6b5ef20 data/undergarden/advancements/undergarden/all_undergarden_biomes.json
 edd7134c950790101bca4747b48e3b43115a7126 data/undergarden/advancements/undergarden/catacombs.json
 bb8fe96cca63f03d31dc3a441c77b7dc14a8bc58 data/undergarden/advancements/undergarden/catalyst.json
 f7eddc998ac75e06fa36c5861e1502a08ad6229d data/undergarden/advancements/undergarden/catch_gwibling.json
 a19a19c9b46dc5f1ef0b40499d0e8d12602845e2 data/undergarden/advancements/undergarden/cloggrum_armor.json
+f506fe95d47215f9ebdc0659bbe5307cbbfcb9c7 data/undergarden/advancements/undergarden/cloggrum_battleaxe.json
 8a1d1915830da23ef6cc3d195e7152fdd3c66d87 data/undergarden/advancements/undergarden/enter_undergarden.json
 f90d725a4092a2329cadb72a8f4cb9e8c929d915 data/undergarden/advancements/undergarden/forgotten_battleaxe.json
 e2b57b40fd8f6a58674110c9ce163cd6d449692b data/undergarden/advancements/undergarden/forgotten_ingot.json

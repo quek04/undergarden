@@ -361,6 +361,10 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.UTHERIUM_LEGGINGS, "Utherium Leggings");
 		addItem(UGItems.UTHERIUM_BOOTS, "Utherium Boots");
 
+		addItem(UGItems.FORGOTTEN_HELMET, "Forgotten Helmet");
+		addItem(UGItems.FORGOTTEN_CHESTPLATE, "Forgotten Chestplate");
+		addItem(UGItems.FORGOTTEN_LEGGINGS, "Forgotten Leggings");
+
 		addItem(UGItems.DROOPFRUIT, "Droopfruit");
 		addItem(UGItems.UNDERBEANS, "Underbeans");
 		addItem(UGItems.ROASTED_UNDERBEANS, "Roasted Underbeans");
@@ -393,6 +397,7 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
 		addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
 		addItem(UGItems.SMOG_MOG_SPAWN_EGG, "S'Mog Spawn Egg");
+		addItem(UGItems.FORGOTTEN_SPAWN_EGG, "Forgotten Spawn Egg");
 		//addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 
@@ -438,6 +443,7 @@ public class UGLang extends LanguageProvider {
 		addEntityType(UGEntityTypes.GWIB, "Gwib");
 		addEntityType(UGEntityTypes.MOG, "Mog");
 		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
+		addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
 
 		//addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
 		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
@@ -480,6 +486,9 @@ public class UGLang extends LanguageProvider {
 
 		addAdvTitle("enter_undergarden", "Enter the Undergarden");
 		addAdvDesc("enter_undergarden", "The forgotten land awaits...");
+
+		addAdvTitle("plant_gloomgourd", "Purple Pumpkins");
+		addAdvDesc("plant_gloomgourd", "Plant a Gloomgourd seed.");
 
 		addAdvTitle("stack_of_gloomgourds", "Gourd Lord");
 		addAdvDesc("stack_of_gloomgourds", "Acquire a stack of Gloomgourds.");
@@ -529,8 +538,8 @@ public class UGLang extends LanguageProvider {
 		addAdvTitle("catacombs", "Forgotten Halls");
 		addAdvDesc("catacombs", "Enter some Catacombs.");
 
-		addAdvTitle("plant_gloomgourd", "Purple Pumpkins");
-		addAdvDesc("plant_gloomgourd", "Plant a Gloomgourd seed.");
+		addAdvTitle("cloggrum_battleaxe", "Cold Dead Hands");
+		addAdvDesc("cloggrum_battleaxe", "Obtain a Cloggrum Battleaxe from a Forgotten carrying one.");
 
 		addAdvTitle("kill_forgotten_guardian", "Decommissioned");
 		addAdvDesc("kill_forgotten_guardian", "Slay a Forgotten Guardian.");
@@ -675,6 +684,10 @@ public class UGLang extends LanguageProvider {
 
 		addSubtitle("entity", "scintling.hurt", "Scintling hurts");
 		addSubtitle("entity", "scintling.death", "Scintling dies");
+
+		addSubtitle("entity", "forgotten.ambient", "Forgotten mutters");
+		addSubtitle("entity", "forgotten.hurt", "Forgotten hurts");
+		addSubtitle("entity", "forgotten.death", "Forgotten dies");
 
 		addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
 		addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");

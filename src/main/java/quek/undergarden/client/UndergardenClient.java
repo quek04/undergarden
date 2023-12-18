@@ -10,6 +10,9 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
@@ -81,6 +84,7 @@ public class UndergardenClient {
 		event.registerEntityRenderer(UGEntityTypes.GWIB.get(), GwibRender::new);
 		event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
 		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRender::new);
+		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRender::new);
 		//event.registerEntityRenderer(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
 	}
@@ -111,6 +115,9 @@ public class UndergardenClient {
 		event.registerLayerDefinition(UGModelLayers.GWIB, GwibModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.MOG, MogModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.SMOG_MOG, SmogMogModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
+		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		//event.registerLayerDefinition(UGModelLayers.MASTICATOR, MasticatorModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
 	}

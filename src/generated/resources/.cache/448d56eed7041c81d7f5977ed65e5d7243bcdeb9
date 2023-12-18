@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-15T17:25:11.3540821	Undergarden Item Models
+// 1.20.1	2023-12-17T23:28:59.0481059	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
@@ -82,6 +82,7 @@ ffe1bacd446e5ddc30b3ba311a1b9bc059248f24 assets/undergarden/models/item/forgotte
 3d11b9de8f30501bcd4019154f901cc1650d354e assets/undergarden/models/item/forgotten_nugget.json
 8feff5cf6bdd55dab0b98bbe35f845972d40a3fd assets/undergarden/models/item/forgotten_pickaxe.json
 6489231c9e76d0a40c1f6310da1f7fcb1a8823da assets/undergarden/models/item/forgotten_shovel.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/forgotten_spawn_egg.json
 474c619870d55fbb87d349a9b8d73c608012353f assets/undergarden/models/item/forgotten_sword.json
 5446661f941d4188a694af1aa380ae5324bfd7d9 assets/undergarden/models/item/forgotten_upgrade_smithing_template.json
 7e0d7237a501482650df8a2bcdfcca34f9c6776e assets/undergarden/models/item/froststeel_axe.json

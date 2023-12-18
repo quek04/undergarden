@@ -9,15 +9,15 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.Pools;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.random.WeightedRandomList;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
+import net.minecraft.world.level.levelgen.structure.*;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
@@ -61,7 +61,7 @@ public class UGStructures {
 		HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 		HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
-		context.register(CATACOMBS, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS), Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(CATACOMBS_START), Optional.empty(), 25, ConstantHeight.of(VerticalAnchor.aboveBottom(48)), Optional.empty(), 116));
+		context.register(CATACOMBS, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS), Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1)))), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(CATACOMBS_START), Optional.empty(), 25, ConstantHeight.of(VerticalAnchor.aboveBottom(48)), Optional.empty(), 116));
 		context.register(FORGOTTEN_VESTIGE, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE), Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(FORGOTTEN_VESTIGE_POOL), Optional.empty(), 5, UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.TOP), Optional.empty(), 10));
 	}
 
@@ -79,9 +79,10 @@ public class UGStructures {
 		context.register(CATACOMBS_CHEST, new StructureTemplatePool(emptyPool, ImmutableList.of(
 				Pair.of(StructurePoolElement.single("minecraft:empty"), 2),
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest").toString()), 2),
-				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_nargoyle").toString()), 1),
+				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_forgotten").toString()), 1)
+				/*Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_nargoyle").toString()), 1),
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_rotling").toString()), 1),
-				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_rotwalker").toString()), 1)
+				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_rotwalker").toString()), 1)*/
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(CATACOMBS_INTERIOR, new StructureTemplatePool(emptyPool, ImmutableList.of(
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/interior1").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
