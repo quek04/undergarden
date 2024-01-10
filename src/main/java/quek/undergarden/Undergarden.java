@@ -97,6 +97,7 @@ public class Undergarden {
 		}
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, UndergardenConfig.COMMON_SPEC);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, UndergardenConfig.CLIENT_SPEC);
 	}
 
 	public void setup(FMLCommonSetupEvent event) {

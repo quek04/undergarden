@@ -36,6 +36,7 @@ import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.Undergarden;
+import quek.undergarden.UndergardenConfig;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
@@ -216,13 +217,15 @@ public class UndergardenClient {
 
 		@SubscribeEvent
 		public static void undergardenFog(ViewportEvent.RenderFog event) {
-			Minecraft minecraft = Minecraft.getInstance();
-			LocalPlayer player = minecraft.player;
-			Camera camera = event.getCamera();
-			if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
-				RenderSystem.setShaderFogStart(0.0F);
-				RenderSystem.setShaderFogEnd(200.0F);
-				RenderSystem.setShaderFogShape(FogShape.SPHERE);
+			if (UndergardenConfig.Client.toggle_undergarden_fog.get()) {
+				Minecraft minecraft = Minecraft.getInstance();
+				LocalPlayer player = minecraft.player;
+				Camera camera = event.getCamera();
+				if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
+					RenderSystem.setShaderFogStart(0.0F);
+					RenderSystem.setShaderFogEnd(200.0F);
+					RenderSystem.setShaderFogShape(FogShape.SPHERE);
+				}
 			}
 		}
 
