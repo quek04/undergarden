@@ -213,7 +213,8 @@
           "type": "minecraft:biome",
           "biome_is": [
             "undergarden:frostfields",
-            "undergarden:icy_sea"
+            "undergarden:icy_sea",
+            "undergarden:frosty_smogstem_forest"
           ]
         },
         "then_run": {
@@ -449,7 +450,8 @@
           "type": "minecraft:biome",
           "biome_is": [
             "undergarden:frostfields",
-            "undergarden:icy_sea"
+            "undergarden:icy_sea",
+            "undergarden:frosty_smogstem_forest"
           ]
         },
         "then_run": {

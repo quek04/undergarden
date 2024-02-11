@@ -130,7 +130,7 @@ public class UGDimensions {
 						//sediment
 						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(33), 0)), SurfaceRules.state(UGBlocks.SEDIMENT.get().defaultBlockState()))),
 						//frozen deepturf
-						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.ifTrue(
+						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA, UGBiomes.FROSTY_SMOGSTEM_FOREST), SurfaceRules.ifTrue(
 								SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
 								SurfaceRules.state(UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState()))),
 						//mix coarse deepsoil into blood bog
@@ -190,7 +190,7 @@ public class UGDimensions {
 						//add deepsoil underneath
 						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR), SurfaceRules.state(UGBlocks.DEEPSOIL.get().defaultBlockState())),
 						//add shiverstone to icy biomes
-						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.state(UGBlocks.SHIVERSTONE.get().defaultBlockState()))
+						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA, UGBiomes.FROSTY_SMOGSTEM_FOREST), SurfaceRules.state(UGBlocks.SHIVERSTONE.get().defaultBlockState()))
 				),
 				List.of(), //spawn targets
 				32,

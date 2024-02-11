@@ -28,6 +28,7 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> DENSE_FOREST = create("dense_forest");
 	public static final ResourceKey<Biome> FORGOTTEN_FIELD = create("forgotten_field");
 	public static final ResourceKey<Biome> FROSTFIELDS = create("frostfields");
+	public static final ResourceKey<Biome> FROSTY_SMOGSTEM_FOREST = create("frosty_smogstem_forest");
 	public static final ResourceKey<Biome> GRONGLEGROWTH = create("gronglegrowth");
 	public static final ResourceKey<Biome> ICY_SEA = create("icy_sea");
 	public static final ResourceKey<Biome> INDIGO_MUSHROOM_BOG = create("indigo_mushroom_bog");
@@ -201,6 +202,28 @@ public class UGBiomes {
 				.temperature(0.14F)
 				.temperatureAdjustment(Biome.TemperatureModifier.FROZEN)
 				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 14609908), UGSoundEvents.FROST_MOOD, UGSoundEvents.FROST_AMBIENCE, UGSoundEvents.FROSTFIELDS_AMBIENT_ADDITION, 0.002775D)
+						.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.118093334F))
+						.build())
+				.build());
+
+		context.register(FROSTY_SMOGSTEM_FOREST, new Biome.BiomeBuilder()
+				.generationSettings(addOresAndCaves(addShroomPatches(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)))
+						.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, UGPlacedFeatures.DEPTHROCK_ROCK)
+						.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, UGPlacedFeatures.ICE_PILLAR)
+						.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.ICE_ORE)
+						.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.FROSTSTEEL_ORE)
+						.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.SHIMMERWEED_PATCH)
+						.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.TALL_SHIMMERWEED_PATCH)
+						.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.FROZEN_DEEPTURF_PATCH)
+						.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.SMOGSTEM_TREE)
+						.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.WIDE_SMOGSTEM_TREE)
+						.build())
+				.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder())).build())
+				.hasPrecipitation(false)
+				.downfall(0.0F)
+				.temperature(0.14F)
+				.temperatureAdjustment(Biome.TemperatureModifier.FROZEN)
+				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 14609908), UGSoundEvents.FROST_MOOD, UGSoundEvents.FROST_AMBIENCE, UGSoundEvents.SMOGSTEM_FOREST_AMBIENT_ADDITION, 0.002775D)
 						.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.118093334F))
 						.build())
 				.build());
@@ -486,6 +509,7 @@ public class UGBiomes {
 				Pair.of(Climate.parameters(0.0F, -0.4F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(WIGGLEWOOD_FOREST)),
 				Pair.of(Climate.parameters(1.0F, 0.4F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DENSE_FOREST)),
 				Pair.of(Climate.parameters(0.0F, 0.0F, 0.9F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(GRONGLEGROWTH)),
+				Pair.of(Climate.parameters(-1.0F, -0.4F, -0.9F, -0.7F, -2.0F, 0.5F, 0.0F), biomes.getOrThrow(FROSTY_SMOGSTEM_FOREST)),
 				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(BARREN_ABYSS)),
 				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 1.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(SMOG_SPIRES)),
 				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 1.0F, 0.0F), biomes.getOrThrow(INK_MUSHROOM_BOG)),
@@ -494,7 +518,7 @@ public class UGBiomes {
 				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, -2.0F, -1.0F, 0.0F), biomes.getOrThrow(BLOOD_MUSHROOM_BOG)),
 				Pair.of(Climate.parameters(Climate.Parameter.span(0.0F, 1.0F), Climate.Parameter.span(0.0F, 0.4F), Climate.Parameter.span(0.0F, 0.9F), Climate.Parameter.point(0.0F), Climate.Parameter.point(2.0F), Climate.Parameter.span(-1.0F, 1.0F), 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
 				Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.7F, 1.0F), Climate.Parameter.point(2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(DEAD_SEA)),
-				Pair.of(Climate.parameters(-0.7F, -0.7F, -0.7F, 0.0F, 2.0F, 0.0F, 0.0F), biomes.getOrThrow(ICY_SEA))
+				Pair.of(Climate.parameters(Climate.Parameter.point(-1.0F), Climate.Parameter.point(-0.4F), Climate.Parameter.point(-0.9F), Climate.Parameter.point(-0.7F), Climate.Parameter.point(2.0F), Climate.Parameter.span(0.0F, 0.5F), 0.0F), biomes.getOrThrow(ICY_SEA))
 		)));
 	}
 }
