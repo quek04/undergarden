@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-17T23:22:22.0135688	Registries
+// 1.20.1	2024-02-11T14:58:47.5260194	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -11,7 +11,7 @@ c8c6a58f4be320eea614534d8deea0bf8fccbdc5 data/undergarden/trim_material/forgotte
 454515e2a0f4138c16193d3149edb77c5c2d44e5 data/undergarden/trim_material/regalium.json
 09eb930731ab47b0788177e0b8285ff012034da8 data/undergarden/trim_material/utherium.json
 7d35be1273087c05d2d9ab8912a39b05cef6af17 data/undergarden/worldgen/biome/ancient_sea.json
-dca9883b198a98b32b3352b446e50027fdc7d80e data/undergarden/worldgen/biome/barren_abyss.json
+75646d4ac7f0b156eb59b0c269d71e7280ccd86d data/undergarden/worldgen/biome/barren_abyss.json
 6dd5cc4e7d411c3c305c3f02cf95d16caf8ac835 data/undergarden/worldgen/biome/blood_mushroom_bog.json
 35a50b4087c2f72fb2bde8569f4d0e1c1f50562e data/undergarden/worldgen/biome/dead_sea.json
 5db6778449903e66342e6de5ab4953e778a7d7e9 data/undergarden/worldgen/biome/dense_forest.json
@@ -22,7 +22,7 @@ c4df97b40f689d2fabaaa5b668bc1e7dbbaad89d data/undergarden/worldgen/biome/icy_sea
 76b334488707e23739899d435b088bafa72bf5ca data/undergarden/worldgen/biome/indigo_mushroom_bog.json
 03ad38cb4c7139a2b4333726df6a7ec53982c555 data/undergarden/worldgen/biome/ink_mushroom_bog.json
 f54d408e71c20f8fcf0babe0b741a1a02ed7603f data/undergarden/worldgen/biome/smogstem_forest.json
-8fac1f1507fef95906ab6cb617d8cd94a59971d9 data/undergarden/worldgen/biome/smog_spires.json
+689e11ed21292b68deeb3c840a9974d08a6179cb data/undergarden/worldgen/biome/smog_spires.json
 669e99e62e2560880e851dceef1d8fe98038169d data/undergarden/worldgen/biome/veil_mushroom_bog.json
 9f861efec33c8eff4f8ed28a982b4e4e8bcf8abb data/undergarden/worldgen/biome/wigglewood_forest.json
 0cb135b1b4bab8de8975b3e98e8aa873385911bb data/undergarden/worldgen/configured_carver/undergarden_cave.json

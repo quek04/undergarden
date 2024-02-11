@@ -70,14 +70,7 @@
   "spawners": {
     "ambient": [],
     "axolotls": [],
-    "creature": [
-      {
-        "type": "undergarden:smog_mog",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 100
-      }
-    ],
+    "creature": [],
     "misc": [],
     "monster": [
       {
