@@ -138,6 +138,7 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.DEPTHROCK_TILE_STAIRS);
 		block(UGBlocks.DEPTHROCK_TILE_SLAB);
 		block(UGBlocks.MOGMOSS_RUG);
+		block(UGBlocks.BLUE_MOGMOSS_RUG);
 		normalItem(UGItems.MAMMOTH_DISC);
 		normalItem(UGItems.LIMAX_MAXIMUS_DISC);
 		normalItem(UGItems.GLOOMPER_ANTHEM_DISC);

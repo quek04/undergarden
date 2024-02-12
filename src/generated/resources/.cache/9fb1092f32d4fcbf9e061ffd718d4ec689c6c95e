@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-19T16:19:48.7114498	Recipes
+// 1.20.1	2024-02-11T21:37:07.6530065	Recipes
 1774ab450fe30ef6ac9a9b468fb2e17b36b70dd0 data/undergarden/advancements/recipes/building_blocks/boomgourd.json
 78cbcd73701aedbcd4120e6a0ddc778c7102c2d2 data/undergarden/advancements/recipes/building_blocks/chiseled_depthrock_bricks.json
 e32be2e97284a807c892bb748c7fd0b777c4f250 data/undergarden/advancements/recipes/building_blocks/chiseled_depthrock_bricks_stonecutting.json
@@ -120,6 +120,7 @@ b102ca90ef7f44ba1a3e04034e0a2eb30afec2c8 data/undergarden/advancements/recipes/c
 08fffbf9ee69f7231ab64476e55cd30311ef479b data/undergarden/advancements/recipes/combat/utherium_helmet.json
 bfe67200a736fbfc92ffef5c20295b82e050a7a9 data/undergarden/advancements/recipes/combat/utherium_leggings.json
 be75b5e283d7b973e78bc30f108f1f96e6bd4614 data/undergarden/advancements/recipes/combat/utherium_sword.json
+fb090e5b4ab2e843a0fe6cd0b4dbec1688c49d90 data/undergarden/advancements/recipes/decorations/blue_mogmoss_rug.json
 b717ec2ceeceaea3885012a4253dd99f05cd9f73 data/undergarden/advancements/recipes/decorations/cloggrum_bars.json
 c7ba5460b83150aa799cc314b49c0d48fdb5db83 data/undergarden/advancements/recipes/decorations/cloggrum_lantern.json
 73258ce0eedbbad40856110580f47bd4898668c2 data/undergarden/advancements/recipes/decorations/depthrock_bed.json
@@ -306,6 +307,7 @@ b0e69edb1ac1aeffce0ed58f9dc610af09d22ba5 data/undergarden/recipes/blast_shiverst
 a8dcc3f63fe0cc8e0154f0e6a388208c82025b7a data/undergarden/recipes/blisterbomb.json
 960690bb0c1226c37ed5f0047271f4dff7d40e31 data/undergarden/recipes/bloody_stew.json
 a8562c0070f9257209c7b58e4f869b318c28c503 data/undergarden/recipes/blood_mushroom_to_dye.json
+a29d348b6edc0f71dfe6b9e7a4a3d42622e7d4b6 data/undergarden/recipes/blue_mogmoss_rug.json
 36b7fdfc43df03aac973e88a15bd1074c2005455 data/undergarden/recipes/boomgourd.json
 58c591cc78fd3c1301e8cb61090ff82e2b28e860 data/undergarden/recipes/butterbunch_to_dye.json
 b283523d20e575aab39ed5d7901ef53b6ebcb2f8 data/undergarden/recipes/catalyst.json

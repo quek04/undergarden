@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-17T23:22:22.0070588	Loot Tables
+// 1.20.1	2024-02-11T21:37:07.6454963	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 2645cf89fe60362fa8217dc5825683e04755a423 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 151c2f71107612bce2811d7825f88937bff932f0 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -6,6 +6,7 @@ a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amo
 95a00d5b30c8c29738599f0d0af9330dc9a8079a data/undergarden/loot_tables/blocks/blood_mushroom.json
 23362c5b680142898ec5d2e76243553c31505310 data/undergarden/loot_tables/blocks/blood_mushroom_cap.json
 6b8435f2db3318281f386ce586da32413915c496 data/undergarden/loot_tables/blocks/blood_mushroom_stem.json
+832be502eb1d9fa3c7a60360c440ce9e4561b88a data/undergarden/loot_tables/blocks/blue_mogmoss_rug.json
 2351ca5ac1c9ca7573346debe48fa129e995c339 data/undergarden/loot_tables/blocks/boomgourd.json
 8a175315277b6051d76502dde234a9717ad484cd data/undergarden/loot_tables/blocks/butterbunch.json
 30c99fa916601e24d3d33d5b6ee640ad68db6b5a data/undergarden/loot_tables/blocks/carved_gloomgourd.json

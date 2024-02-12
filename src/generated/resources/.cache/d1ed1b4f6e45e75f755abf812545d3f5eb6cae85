@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-26T08:52:51.771272	Undergarden Item Tags
+// 1.20.1	2024-02-11T21:37:07.6409618	Undergarden Item Tags
 9b86bbc17df24411b53ea716b5b6b343f35d5caa data/forge/tags/items/armors/boots.json
 af8f07accb2d83fca68d1c3b0e34b65fb0d627c2 data/forge/tags/items/armors/chestplates.json
 190c6df9b3c9fce666bd129e9f9cc22ab09fa9ee data/forge/tags/items/armors/helmets.json
@@ -88,7 +88,7 @@ ae0281d7e08fd6d65ce6e4cc0e61ccfdbc6d7996 data/minecraft/tags/items/wooden_pressu
 fca6ad989a1440629e3d8acd762c227a9f592caf data/minecraft/tags/items/wooden_slabs.json
 584d22ba9cc244d0ab56b57c3344be5f5f0c263a data/minecraft/tags/items/wooden_stairs.json
 aafaf830e9ca896252ebc84c9ccc7e5bb2b0e5e8 data/minecraft/tags/items/wooden_trapdoors.json
-6d82b372b96cab8e0a37bd8d11ab40bc92ef63a5 data/minecraft/tags/items/wool_carpets.json
+167c0dd12d5b92d32e097f8168ebc9247fb7f34e data/minecraft/tags/items/wool_carpets.json
 0efe9ba74d75fe82c231146821cefea8a5d83bc1 data/undergarden/tags/items/cloggrum_items.json
 5ef5cab2225820eae6b47b41a5a19b4523237199 data/undergarden/tags/items/froststeel_items.json
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/items/grongle_logs.json

@@ -248,6 +248,7 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.DEPTHROCK_TILE_SLAB);
 			this.add(UGBlocks.DEPTHROCK_BED.get(), (bed) -> createSinglePropConditionTable(bed, BedBlock.PART, BedPart.HEAD));
 			dropSelf(UGBlocks.MOGMOSS_RUG);
+			dropSelf(UGBlocks.BLUE_MOGMOSS_RUG);
 			ore(UGBlocks.DEPTHROCK_COAL_ORE, Items.COAL);
 			ore(UGBlocks.SHIVERSTONE_COAL_ORE, Items.COAL);
 			nuggetOre(UGBlocks.DEPTHROCK_IRON_ORE, Items.IRON_NUGGET);

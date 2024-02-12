@@ -104,6 +104,12 @@ public class UGRecipes extends UGRecipeProvider {
 				.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
 				.save(consumer);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.BLUE_MOGMOSS_RUG.get(), 3)
+				.pattern("MM")
+				.define('M', UGItems.BLUE_MOGMOSS.get())
+				.unlockedBy("has_blue_mogmoss", has(UGItems.BLUE_MOGMOSS.get()))
+				.save(consumer);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.DEPTHROCK_BED.get())
 				.pattern("MMM")
 				.pattern("DDD")
