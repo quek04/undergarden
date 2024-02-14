@@ -1,5 +1,5 @@
 {
-  "parent": "undergarden:undergarden/forgotten_ingot",
+  "parent": "undergarden:undergarden/cloggrum_battleaxe",
   "criteria": {
     "has_forgotten_battleaxe": {
       "conditions": {

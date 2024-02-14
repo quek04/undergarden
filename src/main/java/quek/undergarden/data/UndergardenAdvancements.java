@@ -445,7 +445,7 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 				.save(consumer, "undergarden:undergarden/forgotten_tools");
 
 		Advancement forgotten_battleaxe = Advancement.Builder.advancement()
-				.parent(forgotten_ingot)
+				.parent(cloggrum_battleaxe)
 				.display(
 						UGItems.FORGOTTEN_BATTLEAXE.get(),
 						Component.translatable("advancement.undergarden.forgotten_battleaxe.title"),
