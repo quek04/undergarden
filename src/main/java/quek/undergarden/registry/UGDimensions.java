@@ -174,8 +174,8 @@ public class UGDimensions {
 												SurfaceRules.ifTrue(
 														SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),
 														SurfaceRules.state(UGBlocks.DEPTHROCK.get().defaultBlockState())
-												)//,
-												//SurfaceRules.state(UGBlocks.DEPTHROCK.get().defaultBlockState())
+												),
+												SurfaceRules.state(UGBlocks.DEPTHROCK.get().defaultBlockState())
 										)
 								)
 						),

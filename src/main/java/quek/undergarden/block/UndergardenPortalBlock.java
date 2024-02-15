@@ -298,7 +298,7 @@ public class UndergardenPortalBlock extends Block {
 						return i;
 					}
 
-					if (blockstate.is(Blocks.NETHER_PORTAL)) {
+					if (blockstate.is(UGBlocks.UNDERGARDEN_PORTAL.get())) {
 						++this.numPortalBlocks;
 					}
 				}

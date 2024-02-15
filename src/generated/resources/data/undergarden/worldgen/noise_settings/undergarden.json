@@ -371,6 +371,12 @@
                     "Name": "undergarden:depthrock"
                   }
                 }
+              },
+              {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "undergarden:depthrock"
+                }
               }
             ]
           }
