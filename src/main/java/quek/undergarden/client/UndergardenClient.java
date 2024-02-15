@@ -234,9 +234,9 @@ public class UndergardenClient {
 				Minecraft minecraft = Minecraft.getInstance();
 				LocalPlayer player = minecraft.player;
 				Camera camera = event.getCamera();
-				if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
-					RenderSystem.setShaderFogStart(0.0F);
-					RenderSystem.setShaderFogEnd(200.0F);
+				if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && event.getType() == FogType.NONE) {
+					RenderSystem.setShaderFogStart(-30.0F);
+					RenderSystem.setShaderFogEnd(225.0F);
 					RenderSystem.setShaderFogShape(FogShape.SPHERE);
 				}
 			}
