@@ -18,31 +18,31 @@ public class SmogMogModel<E extends Entity> extends AgeableListModel<E> {
     private final ModelPart backLegRight;
 
     public SmogMogModel(ModelPart root) {
-            this.body = root.getChild("body");
+        this.body = root.getChild("body");
 		this.head = root.getChild("head");
-		this.frontLegLeft = root.getChild("frontLegLeft");
-		this.frontLegRight = root.getChild("frontLegRight");
-		this.backLegLeft = root.getChild("backLegLeft");
-		this.backLegRight = root.getChild("backLegRight");
+		this.frontLegLeft = root.getChild("left_front_leg");
+		this.frontLegRight = root.getChild("right_front_leg");
+		this.backLegLeft = root.getChild("left_back_leg");
+		this.backLegRight = root.getChild("right_back_leg");
 }
 
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-7.0F, -16.0F, -7.0F, 14.0F, 12.0F, 14.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 26).addBox(-5.0F, -28.0F, -5.0F, 10.0F, 12.0F, 10.0F, new CubeDeformation(0.0F))
-                .texOffs(42, 0).addBox(-8.0F, -17.0F, -8.0F, 5.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+        partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-7.0F, -16.0F, -7.0F, 14.0F, 12.0F, 14.0F)
+                .texOffs(0, 26).addBox(-5.0F, -28.0F, -5.0F, 10.0F, 12.0F, 10.0F)
+                .texOffs(42, 0).addBox(-8.0F, -17.0F, -8.0F, 5.0F, 5.0F, 5.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-        PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(30, 26).addBox(-3.0F, -2.0F, -5.0F, 6.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 18.0F, -4.0F));
+        partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(30, 26).addBox(-3.0F, -3.0F, -2.0F, 6.0F, 5.0F, 5.0F), PartPose.offset(0.0F, 19.0F, -7.0F));
 
-        PartDefinition frontLegLeft = partdefinition.addOrReplaceChild("frontLegLeft", CubeListBuilder.create().texOffs(0, 48).addBox(0.0F, 0.0F, -4.0F, 4.0F, 5.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(4.0F, 19.0F, -4.0F));
+        partdefinition.addOrReplaceChild("left_front_leg", CubeListBuilder.create().texOffs(0, 48).addBox(0.0F, 0.0F, -4.0F, 4.0F, 5.0F, 4.0F), PartPose.offset(4.0F, 19.0F, -4.0F));
 
-        PartDefinition frontLegRight = partdefinition.addOrReplaceChild("frontLegRight", CubeListBuilder.create().texOffs(16, 48).addBox(-4.0F, 0.0F, -4.0F, 4.0F, 5.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, 19.0F, -4.0F));
+        partdefinition.addOrReplaceChild("right_front_leg", CubeListBuilder.create().texOffs(16, 48).addBox(-4.0F, 0.0F, -4.0F, 4.0F, 5.0F, 4.0F), PartPose.offset(-4.0F, 19.0F, -4.0F));
 
-        PartDefinition backLegLeft = partdefinition.addOrReplaceChild("backLegLeft", CubeListBuilder.create().texOffs(16, 48).mirror().addBox(0.0F, 0.0F, -4.0F, 4.0F, 5.0F, 4.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(4.0F, 19.0F, 8.0F));
+        partdefinition.addOrReplaceChild("left_back_leg", CubeListBuilder.create().texOffs(16, 48).mirror().addBox(0.0F, 0.0F, -4.0F, 4.0F, 5.0F, 4.0F).mirror(false), PartPose.offset(4.0F, 19.0F, 8.0F));
 
-        PartDefinition backLegRight = partdefinition.addOrReplaceChild("backLegRight", CubeListBuilder.create().texOffs(32, 48).addBox(-4.0F, 0.0F, 0.0F, 4.0F, 5.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, 19.0F, 4.0F));
+        partdefinition.addOrReplaceChild("right_back_leg", CubeListBuilder.create().texOffs(32, 48).addBox(-4.0F, 0.0F, 0.0F, 4.0F, 5.0F, 4.0F), PartPose.offset(-4.0F, 19.0F, 4.0F));
 
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
