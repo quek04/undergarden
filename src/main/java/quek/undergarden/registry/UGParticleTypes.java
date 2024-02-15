@@ -25,7 +25,7 @@ public class UGParticleTypes {
 	public static final RegistryObject<SimpleParticleType> UNDERGARDEN_PORTAL = PARTICLES.register("undergarden_portal", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> GLOOMPER_FART = PARTICLES.register("gloomper_fart", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> SHIMMER = PARTICLES.register("shimmer", () -> new SimpleParticleType(false));
-	public static final RegistryObject<SimpleParticleType> SMOG = PARTICLES.register("smog", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> SMOG = PARTICLES.register("smog", () -> new SimpleParticleType(true));
 	public static final RegistryObject<SimpleParticleType> UTHERIUM_CRIT = PARTICLES.register("utherium_crit", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> SNOWFLAKE = PARTICLES.register("snowflake", () -> new SimpleParticleType(false));
 
