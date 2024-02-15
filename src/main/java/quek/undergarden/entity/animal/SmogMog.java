@@ -37,6 +37,11 @@ public class SmogMog extends Mog {
                 .add(ForgeMod.STEP_HEIGHT.get(), 1.0F);
     }
 
+    @Override
+    public boolean checkSpawnRules(LevelAccessor accessor, MobSpawnType type) {
+        return true;
+    }
+
     public static boolean checkSmogMogSpawnRules(EntityType<? extends Animal> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         return level.getBlockState(pos.below()).is(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON);
     }
@@ -89,12 +94,12 @@ public class SmogMog extends Mog {
 
     @Override
     public void aiStep() {
-        if (this.level().isClientSide()) {
+        if (this.level().isClientSide() && this.tickCount % 2 == 0) {
             double x = this.getX();
-            double y = this.getY() + (this.isBaby() ? 1.0F : 2.0F);
+            double y = this.getY() + this.getBbHeight();
             double z = this.getZ();
             if (this.isAlive()) {
-                level().addParticle(UGParticleTypes.SMOG.get(), x, y, z, 0.0D, 0.05D, 0.0D);
+                this.level().addAlwaysVisibleParticle(UGParticleTypes.SMOG.get(), x, y, z, 0.0D, 0.05D, 0.0D);
             }
         }
         super.aiStep();
