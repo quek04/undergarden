@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-11T21:37:07.6600352	Undergarden Item Models
+// 1.20.1	2024-02-14T19:54:52.4527902	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
@@ -196,6 +196,7 @@ f55dec2a163316770235ff3c0d50f68df9a8f30c assets/undergarden/models/item/shiverst
 2255ea6949ff8e94a81dc9f3ec26df890ec8be7f assets/undergarden/models/item/shiverstone_stairs.json
 34c1acf24450927f55d9a0c8516172a1b0969b0e assets/undergarden/models/item/shiverstone_utherium_ore.json
 332b7a0f57b79c8a22626c5bb818ed332dc1f1dc assets/undergarden/models/item/shiverstone_wall.json
+f056196bf47c56f0a7febf87e57794cb6e38dd0e assets/undergarden/models/item/slop_bowl.json
 b1b506e99c033186cdcb46c04ee6cfd9a7ed72e1 assets/undergarden/models/item/smogstem_boat.json
 11367edb216fa3264e2f255dfcebc5d3082050dd assets/undergarden/models/item/smogstem_button.json
 e6a8ebf57744eccd6a6502b873fbfdee7707a23a assets/undergarden/models/item/smogstem_chest_boat.json

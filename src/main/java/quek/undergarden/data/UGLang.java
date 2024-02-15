@@ -382,6 +382,7 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.INDIGO_STEW, "Indigo Stew");
 		addItem(UGItems.INKY_STEW, "Inky Stew");
 		addItem(UGItems.VEILED_STEW, "Veiled Stew");
+		addItem(UGItems.SLOP_BOWL, "Slop Bowl");
 
 		addItem(UGItems.DWELLER_SPAWN_EGG, "Dweller Spawn Egg");
 		addItem(UGItems.GWIBLING_SPAWN_EGG, "Gwibling Spawn Egg");

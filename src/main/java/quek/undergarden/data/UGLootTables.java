@@ -508,28 +508,22 @@ public class UGLootTables extends LootTableProvider {
 
 		@Override
 		public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
-			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/catacombs"), LootTable.lootTable().withPool(LootPool.lootPool()
+			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/catacombs"), LootTable.lootTable()
+					.withPool(LootPool.lootPool()
 					.setRolls(UniformGenerator.between(3.0F, 8.0F))
 					.add(LootItem.lootTableItem(UGItems.MAMMOTH_DISC.get()).setWeight(5))
 					.add(LootItem.lootTableItem(UGItems.RELICT_DISC.get()).setWeight(5))
 					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()).setWeight(5))
 					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1))
-					.add(LootItem.lootTableItem(UGItems.GLOOMGOURD_PIE.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.GLOOMGOURD_PIE.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_PICKAXE.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SHOVEL.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))));
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+					.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+					.add(LootItem.lootTableItem(UGItems.SLOP_BOWL.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.3F, 0.8F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.3F, 0.8F))))
+					)
+			);
 		}
 	}
 }

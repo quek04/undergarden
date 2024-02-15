@@ -36,22 +36,6 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "undergarden:gloomgourd_pie",
-          "weight": 40
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 8.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "undergarden:cloggrum_nugget",
           "weight": 40
         },
@@ -85,7 +69,7 @@
             }
           ],
           "name": "undergarden:utheric_shard",
-          "weight": 40
+          "weight": 20
         },
         {
           "type": "minecraft:item",
@@ -101,7 +85,7 @@
             }
           ],
           "name": "undergarden:regalium_crystal",
-          "weight": 40
+          "weight": 20
         },
         {
           "type": "minecraft:item",
@@ -116,7 +100,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "undergarden:gloomgourd_pie",
+          "name": "undergarden:slop_bowl",
           "weight": 40
         },
         {
@@ -124,6 +108,15 @@
           "functions": [
             {
               "function": "minecraft:enchant_randomly"
+            },
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.8,
+                "min": 0.3
+              },
+              "function": "minecraft:set_damage"
             }
           ],
           "name": "undergarden:cloggrum_sword",
@@ -134,29 +127,18 @@
           "functions": [
             {
               "function": "minecraft:enchant_randomly"
-            }
-          ],
-          "name": "undergarden:cloggrum_pickaxe",
-          "weight": 10
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
+            },
             {
-              "function": "minecraft:enchant_randomly"
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.8,
+                "min": 0.3
+              },
+              "function": "minecraft:set_damage"
             }
           ],
           "name": "undergarden:cloggrum_axe",
-          "weight": 10
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "function": "minecraft:enchant_randomly"
-            }
-          ],
-          "name": "undergarden:cloggrum_shovel",
           "weight": 10
         }
       ],

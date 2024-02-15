@@ -153,6 +153,7 @@ public class UGItems {
 	public static final RegistryObject<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.INKY).stacksTo(1)));
 	public static final RegistryObject<Item> INDIGO_STEW = ITEMS.register("indigo_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.INDIGO).stacksTo(1)));
 	public static final RegistryObject<Item> VEILED_STEW = ITEMS.register("veiled_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.VEILED).stacksTo(1)));
+	public static final RegistryObject<Item> SLOP_BOWL = ITEMS.register("slop_bowl", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.SLOP).stacksTo(1)));
 
 	//spawn eggs
 	public static final RegistryObject<ForgeSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new ForgeSpawnEggItem(UGEntityTypes.DWELLER, 4804417, 16776960, new Item.Properties()));

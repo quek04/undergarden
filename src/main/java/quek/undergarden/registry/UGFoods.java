@@ -48,4 +48,6 @@ public class UGFoods {
 			.effect(() -> new MobEffectInstance(UGEffects.FEATHERWEIGHT.get(), 600, 0, false, true), 1.0F)
 			.alwaysEat()
 			.build();
+
+	public static final FoodProperties SLOP = new FoodProperties.Builder().nutrition(6).saturationMod(0.6F).effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 200, 0, false, true), 1.0F).build();
 }

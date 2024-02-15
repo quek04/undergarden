@@ -257,6 +257,7 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.BLOOD_GLOBULE);
 		block(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP);
 		normalItem(UGItems.BLUE_MOGMOSS);
+		normalItem(UGItems.SLOP_BOWL);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
