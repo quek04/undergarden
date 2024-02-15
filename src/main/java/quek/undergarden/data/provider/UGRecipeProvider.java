@@ -263,7 +263,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 				.unlockedBy("in_water", insideOf(Blocks.WATER));
 	}
 
-	public ShapelessRecipeBuilder makeChestBoat(Supplier<? extends Item> chestBoatOut, Supplier<? extends Block> boatIn) {
+	public ShapelessRecipeBuilder makeChestBoat(Supplier<? extends Item> chestBoatOut, Supplier<? extends Item> boatIn) {
 		return ShapelessRecipeBuilder.shapeless(RecipeCategory.TRANSPORTATION, chestBoatOut.get())
 				.requires(boatIn.get())
 				.requires(Tags.Items.CHESTS_WOODEN)

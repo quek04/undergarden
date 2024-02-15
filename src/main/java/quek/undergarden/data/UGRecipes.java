@@ -52,6 +52,10 @@ public class UGRecipes extends UGRecipeProvider {
 		makeBoat(UGItems.WIGGLEWOOD_BOAT, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeBoat(UGItems.GRONGLE_BOAT, UGBlocks.GRONGLE_PLANKS).save(consumer);
 
+		makeChestBoat(UGItems.SMOGSTEM_CHEST_BOAT, UGItems.SMOGSTEM_BOAT).save(consumer);
+		makeChestBoat(UGItems.WIGGLEWOOD_CHEST_BOAT, UGItems.WIGGLEWOOD_BOAT).save(consumer);
+		makeChestBoat(UGItems.GRONGLE_CHEST_BOAT, UGItems.GRONGLE_BOAT).save(consumer);
+
 		makeSign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeSign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeSign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
