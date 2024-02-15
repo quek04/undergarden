@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-11T21:37:07.6530065	Recipes
+// 1.20.1	2024-02-14T20:21:00.3228752	Recipes
 1774ab450fe30ef6ac9a9b468fb2e17b36b70dd0 data/undergarden/advancements/recipes/building_blocks/boomgourd.json
 78cbcd73701aedbcd4120e6a0ddc778c7102c2d2 data/undergarden/advancements/recipes/building_blocks/chiseled_depthrock_bricks.json
 e32be2e97284a807c892bb748c7fd0b777c4f250 data/undergarden/advancements/recipes/building_blocks/chiseled_depthrock_bricks_stonecutting.json
@@ -154,6 +154,8 @@ ddb60237b3fc7fc8eba078023d7a5307f39c0a47 data/undergarden/advancements/recipes/d
 ab2054f965a575fb3489aafeeebb70a69ed68595 data/undergarden/advancements/recipes/food/gloomgourd_pie.json
 ce8209c0d46b4a31d1875e6f29c74e7b9b4b4b9a data/undergarden/advancements/recipes/food/indigo_stew.json
 23aef5df7c8cedc4e69625736fa495fe58abee22 data/undergarden/advancements/recipes/food/inky_stew.json
+d98f688916367c0cfaf603e4e5c5c7670a5440ac data/undergarden/advancements/recipes/food/slop_bowl.json
+bfde113532617188936d433a97b5a8b1ea5aec04 data/undergarden/advancements/recipes/food/slop_bowl_blue_moss.json
 29bc104bff29d008f2af9efa713b70e5342c350d data/undergarden/advancements/recipes/food/veiled_stew.json
 548e8637ddaa92c0b674d109a93fa9690d384683 data/undergarden/advancements/recipes/misc/amorous_bristle_to_dye.json
 2f8e9fd8bbc8a5d000d9752ecab8488696e6158f data/undergarden/advancements/recipes/misc/blast_catalyst.json
@@ -462,6 +464,8 @@ beeb9a5cd495c3f4cfe2d18c9a3f6aad66f8c366 data/undergarden/recipes/shiverstone_sl
 04c7cb55666dbd954094533935a16698bf314462 data/undergarden/recipes/shiverstone_wall.json
 37a064363e4d9d7de4ae4635aa8e468d3ba85e83 data/undergarden/recipes/shiverstone_wall_stonecutting.json
 bdb17474f8fa7e258fd2691c00e136308fce68eb data/undergarden/recipes/slingshot.json
+c292acfcdde3e1cdf2c279fceb33f3db9f3bdc4e data/undergarden/recipes/slop_bowl.json
+22f795a80ac44451d508b1cbe677f33228cced1e data/undergarden/recipes/slop_bowl_blue_moss.json
 8783818aef86c02751f3749532308e57b6f0f1f8 data/undergarden/recipes/smelt_catalyst.json
 a44be2a9ecab3386ac5d3e57c9d2396dbcddcf31 data/undergarden/recipes/smelt_cloggrum_item.json
 9972c17035c3bd4ed56afddbc0c67f6880916410 data/undergarden/recipes/smelt_depthrock_bricks.json

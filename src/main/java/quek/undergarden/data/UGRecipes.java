@@ -476,6 +476,22 @@ public class UGRecipes extends UGRecipeProvider {
 		makeStew(UGItems.INDIGO_STEW, UGBlocks.INDIGO_MUSHROOM).save(consumer);
 		makeStew(UGItems.VEILED_STEW, UGBlocks.VEIL_MUSHROOM).save(consumer);
 
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.SLOP_BOWL.get())
+				.requires(Items.BOWL)
+				.requires(UGItems.UNDERBEANS.get(), 2)
+				.requires(UGItems.MOGMOSS.get(), 2)
+				.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
+				.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.SLOP_BOWL.get())
+				.requires(Items.BOWL)
+				.requires(UGItems.UNDERBEANS.get(), 2)
+				.requires(UGItems.BLUE_MOGMOSS.get(), 2)
+				.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
+				.unlockedBy("has_blue_mogmoss", has(UGItems.BLUE_MOGMOSS.get()))
+				.save(consumer, name("slop_bowl_blue_moss"));
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get(), 2)
 				.pattern("DTD")
 				.pattern("DRD")
