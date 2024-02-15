@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.Pools;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.structure.*;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
+import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
@@ -68,7 +70,7 @@ public class UGStructures {
 	public static void bootstrapSets(BootstapContext<StructureSet> context) {
 		HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
 		context.register(CATACOMBS_SET, new StructureSet(structures.getOrThrow(CATACOMBS), new RandomSpreadStructurePlacement(24, 12, RandomSpreadType.LINEAR, 276320045)));
-		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(4, 2, RandomSpreadType.LINEAR, 276320046)));
+		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 6, 3, RandomSpreadType.LINEAR)));
 	}
 
 	public static void bootstrapPools(BootstapContext<StructureTemplatePool> context) {
