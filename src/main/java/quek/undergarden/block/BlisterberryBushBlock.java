@@ -25,10 +25,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
-import quek.undergarden.registry.UGDamageSources;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.*;
 
 public class BlisterberryBushBlock extends BushBlock implements BonemealableBlock {
 
@@ -64,7 +61,7 @@ public class BlisterberryBushBlock extends BushBlock implements BonemealableBloc
 
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-		if (entity.getType() != UGEntityTypes.SCINTLING.get()) {
+		if (!entity.getType().is(UGTags.Entities.IMMUNE_TO_BLISTERBERRY_BUSH)) {
 			entity.makeStuckInBlock(state, new Vec3(0.8F, 0.75D, 0.8F));
 			if (!level.isClientSide() && state.getValue(AGE) > 0 && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
 				double d0 = Math.abs(entity.getX() - entity.xOld);

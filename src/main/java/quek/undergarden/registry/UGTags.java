@@ -112,6 +112,7 @@ public class UGTags {
 		public static final TagKey<EntityType<?>> CAVERN_CREATURE = tag("cavern_creature");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_VIRULENT_MIX = tag("immune_to_virulent_mix");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_SCINTLING_GOO = tag("immune_to_scintling_goo");
+		public static final TagKey<EntityType<?>> IMMUNE_TO_BLISTERBERRY_BUSH = tag("immune_to_blisterberry_bush");
 
 		private static TagKey<EntityType<?>> tag(String name) {
 			return EntityTypeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());
