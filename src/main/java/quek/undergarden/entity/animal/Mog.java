@@ -17,6 +17,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -44,6 +45,11 @@ public class Mog extends Animal implements IForgeShearable {
 	}
 
 	@Override
+	public float getStepHeight() {
+		return 1.0F;
+	}
+
+	@Override
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new PanicGoal(this, 1.5D));
 		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
@@ -58,8 +64,7 @@ public class Mog extends Animal implements IForgeShearable {
 		return Animal.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 20.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.1D)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
-				.add(ForgeMod.STEP_HEIGHT.get(), 1.0F);
+				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
 	}
 
 	@Override
@@ -169,10 +174,14 @@ public class Mog extends Animal implements IForgeShearable {
 
 			List<ItemStack> items = new ArrayList<>();
 			for (int i = 0; i < mossAmount; i++) {
-				items.add(new ItemStack(UGItems.MOGMOSS.get()));
+				items.add(new ItemStack(this.getMossItem()));
 			}
 			return items;
 		}
 		return Collections.emptyList();
+	}
+
+	public Item getMossItem() {
+		return UGItems.MOGMOSS.get();
 	}
 }

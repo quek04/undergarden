@@ -12,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -33,8 +34,7 @@ public class SmogMog extends Mog {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 30.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.1D)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
-                .add(ForgeMod.STEP_HEIGHT.get(), 1.0F);
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
     }
 
     @Override
@@ -72,26 +72,6 @@ public class SmogMog extends Mog {
         return 0.4F;
     }
 
-    @Nonnull
-    @Override
-    public List<ItemStack> onSheared(@Nullable Player player, @Nonnull ItemStack stack, Level level, BlockPos pos, int fortune) {
-        level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
-        if (!level.isClientSide()) {
-            this.setMoss(false);
-            int mossAmount = 1 + this.getRandom().nextInt(2);
-            if (fortune > 0) {
-                mossAmount += this.getRandom().nextInt(fortune);
-            }
-
-            List<ItemStack> items = new ArrayList<>();
-            for (int i = 0; i < mossAmount; i++) {
-                items.add(new ItemStack(UGItems.BLUE_MOGMOSS.get()));
-            }
-            return items;
-        }
-        return Collections.emptyList();
-    }
-
     @Override
     public void aiStep() {
         if (this.level().isClientSide() && this.tickCount % 2 == 0) {
@@ -103,5 +83,10 @@ public class SmogMog extends Mog {
             }
         }
         super.aiStep();
+    }
+
+    @Override
+    public Item getMossItem() {
+        return UGItems.BLUE_MOGMOSS.get();
     }
 }
