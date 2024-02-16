@@ -3,16 +3,9 @@ package quek.undergarden.capability;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGSoundEvents;
-import quek.undergarden.registry.UndergardenCapabilities;
 
-@Mod.EventBusSubscriber(modid = Undergarden.MODID)
 public class UndergardenPortalCapability implements IUndergardenPortal {
 
     private final Player player;
@@ -108,13 +101,5 @@ public class UndergardenPortalCapability implements IUndergardenPortal {
 
     private void playPortalSound(Minecraft minecraft) {
         minecraft.getSoundManager().play(SimpleSoundInstance.forLocalAmbience(UGSoundEvents.UNDERGARDEN_PORTAL_TRAVEL.get(), this.getPlayer().getRandom().nextFloat() * 0.4F + 0.8F, 0.25F));
-    }
-
-    @SubscribeEvent
-    public static void portalTick(LivingEvent.LivingTickEvent event) {
-        LivingEntity entity = event.getEntity();
-        if (entity instanceof Player player) {
-            player.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(IUndergardenPortal::handleUndergardenPortal);
-        }
     }
 }
