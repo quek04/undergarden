@@ -31,7 +31,7 @@ public class UndergardenCapabilities {
             ICapabilityProvider provider = new ICapabilityProvider() {
                 @Override
                 public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-                    return capability.cast();
+                    return UNDERGARDEN_PORTAL_CAPABILITY.orEmpty(cap, capability);
                 }
             };
             event.addCapability(new ResourceLocation(Undergarden.MODID, "portal"), provider);
