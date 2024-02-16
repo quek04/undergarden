@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.world.entity.player.Player;
+import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class UndergardenPortalCapability implements IUndergardenPortal {
@@ -68,7 +69,7 @@ public class UndergardenPortalCapability implements IUndergardenPortal {
                 }
 
                 if (this.getPortalAnimTime() == 0.0F) {
-                    this.playPortalSound(minecraft);
+                    UndergardenClient.playPortalSound(minecraft, this.getPlayer());
                 }
             }
         }
@@ -97,9 +98,5 @@ public class UndergardenPortalCapability implements IUndergardenPortal {
                 this.portalTimer -= 4;
             }
         }
-    }
-
-    private void playPortalSound(Minecraft minecraft) {
-        minecraft.getSoundManager().play(SimpleSoundInstance.forLocalAmbience(UGSoundEvents.UNDERGARDEN_PORTAL_TRAVEL.get(), this.getPlayer().getRandom().nextFloat() * 0.4F + 0.8F, 0.25F));
     }
 }

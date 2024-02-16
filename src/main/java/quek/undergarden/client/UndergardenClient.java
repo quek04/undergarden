@@ -22,6 +22,7 @@ import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
@@ -379,5 +380,9 @@ public class UndergardenClient {
 			guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
 			poseStack.popPose();
 		}
+	}
+
+	public static void playPortalSound(Minecraft minecraft, Player player) {
+		minecraft.getSoundManager().play(SimpleSoundInstance.forLocalAmbience(UGSoundEvents.UNDERGARDEN_PORTAL_TRAVEL.get(), player.getRandom().nextFloat() * 0.4F + 0.8F, 0.25F));
 	}
 }
