@@ -72,6 +72,7 @@ public class UGTags {
 		public static final TagKey<Block> GRONGLE_LOGS = tag("grongle_logs");
 		public static final TagKey<Block> MUNCHER_BREAKABLES = tag("muncher_breakables");
 		public static final TagKey<Block> SCINTLING_SPAWNABLE_ON = tag("scintling_spawnable_on");
+		public static final TagKey<Block> SMOG_MOG_SPAWNABLE_ON = tag("smog_mog_spawnable_on");
 
 		public static final TagKey<Block> ORES_CLOGGRUM = forgeTag("ores/cloggrum");
 		public static final TagKey<Block> ORES_FROSTSTEEL = forgeTag("ores/froststeel");
@@ -111,6 +112,7 @@ public class UGTags {
 		public static final TagKey<EntityType<?>> CAVERN_CREATURE = tag("cavern_creature");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_VIRULENT_MIX = tag("immune_to_virulent_mix");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_SCINTLING_GOO = tag("immune_to_scintling_goo");
+		public static final TagKey<EntityType<?>> IMMUNE_TO_BLISTERBERRY_BUSH = tag("immune_to_blisterberry_bush");
 
 		private static TagKey<EntityType<?>> tag(String name) {
 			return EntityTypeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());
@@ -131,6 +133,7 @@ public class UGTags {
 		public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
 
 		public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
+		public static final TagKey<Biome> HAS_FORGOTTEN_VESTIGE = tag("has_structure/forgotten_vestige");
 
 		private static TagKey<Biome> tag(String name) {
 			return BiomeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());

@@ -23,12 +23,32 @@ public class UndergardenConfig {
 		}
 	}
 
+	public static class Client {
+
+		public static ConfigValue<Boolean> toggle_undergarden_fog;
+
+		public Client(ForgeConfigSpec.Builder builder) {
+			toggle_undergarden_fog = builder
+					.comment("""
+							Toggles the Undergarden's special fog parameters. Set  false to disable it, and return to the vanilla fog.""")
+					.translation("undergarden.config.toggle_undergarden_fog")
+					.define("Toggle Undergarden Fog", true);
+			builder.build();
+		}
+	}
+
 	static final ForgeConfigSpec COMMON_SPEC;
 	public static final Common COMMON;
 
+	static final ForgeConfigSpec CLIENT_SPEC;
+	public static final Client CLIENT;
+
 	static {
-		final Pair<UndergardenConfig.Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(UndergardenConfig.Common::new);
-		COMMON_SPEC = specPair.getRight();
-		COMMON = specPair.getLeft();
+		final Pair<UndergardenConfig.Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(UndergardenConfig.Common::new);
+		COMMON_SPEC = common.getRight();
+		COMMON = common.getLeft();
+		final Pair<UndergardenConfig.Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(UndergardenConfig.Client::new);
+		CLIENT_SPEC = client.getRight();
+		CLIENT = client.getLeft();
 	}
 }

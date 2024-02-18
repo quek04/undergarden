@@ -671,6 +671,20 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("undergarden:entity/mog_death")
 		).subtitle("subtitles.entity.mog.death"));
 
+		this.add(UGSoundEvents.SMOG_MOG_AMBIENT, definition().with(
+				sound("undergarden:entity/mog_ambient_1").pitch(0.5F),
+				sound("undergarden:entity/mog_ambient_2").pitch(0.5F),
+				sound("undergarden:entity/mog_ambient_3").pitch(0.5F)
+		).subtitle("subtitles.entity.smog_mog.ambient"));
+		this.add(UGSoundEvents.SMOG_MOG_HURT, definition().with(
+				sound("undergarden:entity/mog_hurt_1").pitch(0.5F),
+				sound("undergarden:entity/mog_hurt_2").pitch(0.5F),
+				sound("undergarden:entity/mog_hurt_3").pitch(0.5F)
+		).subtitle("subtitles.entity.smog_mog.hurt"));
+		this.add(UGSoundEvents.SMOG_MOG_DEATH, definition().with(
+				sound("undergarden:entity/mog_death").pitch(0.5F)
+		).subtitle("subtitles.entity.smog_mog.death"));
+
 		this.add(UGSoundEvents.SCINTLING_HURT, definition().with(
 				sound("minecraft:block/honeyblock/break1"),
 				sound("minecraft:block/honeyblock/break2"),
@@ -678,7 +692,6 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:block/honeyblock/break4"),
 				sound("minecraft:block/honeyblock/break5")
 		).subtitle("subtitles.entity.scintling.hurt"));
-
 		this.add(UGSoundEvents.SCINTLING_DEATH, definition().with(
 				sound("minecraft:block/honeyblock/break1"),
 				sound("minecraft:block/honeyblock/break2"),
@@ -686,12 +699,32 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:block/honeyblock/break4"),
 				sound("minecraft:block/honeyblock/break5")
 		).subtitle("subtitles.entity.scintling.death"));
-
 		this.add(UGSoundEvents.SCINTLING_STEP, definition().with(
 				sound("minecraft:block/honeyblock/slide1"),
 				sound("minecraft:block/honeyblock/slide2"),
 				sound("minecraft:block/honeyblock/slide3"),
 				sound("minecraft:block/honeyblock/slide4")
 		));
+
+		this.add(UGSoundEvents.FORGOTTEN_AMBIENT, definition().with(
+				sound("undergarden:entity/forgotten_ambient_1"),
+				sound("undergarden:entity/forgotten_ambient_2"),
+				sound("undergarden:entity/forgotten_ambient_3")
+		).subtitle("subtitles.entity.forgotten.ambient"));
+		this.add(UGSoundEvents.FORGOTTEN_HURT, definition().with(
+				sound("undergarden:entity/forgotten_hurt_1"),
+				sound("undergarden:entity/forgotten_hurt_2"),
+				sound("undergarden:entity/forgotten_hurt_3"),
+				sound("undergarden:entity/forgotten_hurt_4")
+		).subtitle("subtitles.entity.forgotten.hurt"));
+		this.add(UGSoundEvents.FORGOTTEN_DEATH, definition().with(
+				sound("undergarden:entity/forgotten_death")
+		).subtitle("subtitles.entity.forgotten.death"));
+		this.add(UGSoundEvents.FORGOTTEN_STEP, definition().with(
+				sound("mob/wither_skeleton/step1"),
+				sound("mob/wither_skeleton/step2"),
+				sound("mob/wither_skeleton/step3"),
+				sound("mob/wither_skeleton/step4")
+		).subtitle("subtitles.block.generic.footsteps"));
 	}
 }

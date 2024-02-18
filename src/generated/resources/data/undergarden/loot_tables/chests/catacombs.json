@@ -6,41 +6,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "undergarden:music_disc_mammoth",
-          "weight": 5
-        },
-        {
-          "type": "minecraft:item",
-          "name": "undergarden:music_disc_relict",
-          "weight": 5
-        },
-        {
-          "type": "minecraft:item",
-          "name": "undergarden:forgotten_upgrade_smithing_template",
-          "weight": 5
-        },
-        {
-          "type": "minecraft:item",
-          "name": "undergarden:forgotten_nugget"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 8.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "undergarden:gloomgourd_pie",
-          "weight": 40
-        },
-        {
-          "type": "minecraft:item",
           "functions": [
             {
               "add": false,
@@ -85,7 +50,7 @@
             }
           ],
           "name": "undergarden:utheric_shard",
-          "weight": 40
+          "weight": 20
         },
         {
           "type": "minecraft:item",
@@ -101,7 +66,7 @@
             }
           ],
           "name": "undergarden:regalium_crystal",
-          "weight": 40
+          "weight": 20
         },
         {
           "type": "minecraft:item",
@@ -116,14 +81,43 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "undergarden:gloomgourd_pie",
+          "name": "undergarden:slop_bowl",
           "weight": 40
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 5.0,
+        "min": 2.0
+      }
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 2
         },
         {
           "type": "minecraft:item",
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "max": 20.0,
+                "min": 15.0
+              },
+              "treasure": false
+            },
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.6
+              },
+              "function": "minecraft:set_damage"
             }
           ],
           "name": "undergarden:cloggrum_sword",
@@ -133,17 +127,22 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
-            }
-          ],
-          "name": "undergarden:cloggrum_pickaxe",
-          "weight": 10
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "max": 20.0,
+                "min": 15.0
+              },
+              "treasure": false
+            },
             {
-              "function": "minecraft:enchant_randomly"
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.6
+              },
+              "function": "minecraft:set_damage"
             }
           ],
           "name": "undergarden:cloggrum_axe",
@@ -153,18 +152,83 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "max": 30.0,
+                "min": 25.0
+              },
+              "treasure": true
+            },
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.5,
+                "min": 0.2
+              },
+              "function": "minecraft:set_damage"
             }
           ],
-          "name": "undergarden:cloggrum_shovel",
+          "name": "undergarden:cloggrum_sword",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "max": 30.0,
+                "min": 25.0
+              },
+              "treasure": true
+            },
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.5,
+                "min": 0.2
+              },
+              "function": "minecraft:set_damage"
+            }
+          ],
+          "name": "undergarden:cloggrum_axe",
           "weight": 10
         }
       ],
-      "rolls": {
-        "type": "minecraft:uniform",
-        "max": 8.0,
-        "min": 3.0
-      }
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "undergarden:music_disc_mammoth",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "undergarden:music_disc_relict",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "undergarden:forgotten_upgrade_smithing_template",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "undergarden:forgotten_nugget"
+        }
+      ],
+      "rolls": 1.0
     }
   ],
   "random_sequence": "undergarden:chests/catacombs"

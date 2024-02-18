@@ -21,7 +21,9 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.block.entity.SmogVentBlockEntity;
+import quek.undergarden.data.UGEntityTags;
 import quek.undergarden.registry.UGBlockEntities;
+import quek.undergarden.registry.UGEntityTypes;
 
 import javax.annotation.Nullable;
 
@@ -33,12 +35,12 @@ public class SmogVentBlock extends Block implements EntityBlock {
 
 	@Override
 	public boolean isValidSpawn(BlockState state, BlockGetter level, BlockPos pos, SpawnPlacements.Type type, EntityType<?> entity) {
-		return false;
+		return entity == UGEntityTypes.SMOG_MOG.get();
 	}
 
 	@Override
 	public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-		if (!entity.fireImmune() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entity)) {
+		if (entity.getType() != UGEntityTypes.SMOG_MOG.get() && !entity.fireImmune() && entity instanceof LivingEntity living && !EnchantmentHelper.hasFrostWalker(living)) {
 			entity.hurt(level.damageSources().hotFloor(), 1.0F);
 		}
 		super.stepOn(level, pos, state, entity);

@@ -25,29 +25,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "undergarden:catacombs/chest_nargoyle",
-        "processors": {
-          "processors": []
-        },
-        "projection": "rigid"
-      },
-      "weight": 1
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "undergarden:catacombs/chest_rotling",
-        "processors": {
-          "processors": []
-        },
-        "projection": "rigid"
-      },
-      "weight": 1
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "undergarden:catacombs/chest_rotwalker",
+        "location": "undergarden:catacombs/chest_forgotten",
         "processors": {
           "processors": []
         },

@@ -4,11 +4,13 @@ import net.minecraft.DetectedVersion;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.core.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.BlockSource;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
@@ -42,7 +44,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegisterEvent;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.entity.projectile.Blisterbomb;
@@ -51,11 +52,9 @@ import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
 import quek.undergarden.network.UGPacketHandler;
 import quek.undergarden.registry.*;
-import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -70,6 +69,7 @@ public class Undergarden {
 		bus.addListener(this::setup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
+		MinecraftForge.EVENT_BUS.addListener(this::portalTick);
 		bus.addListener((Consumer<RegisterEvent>) event -> Registry.register(BuiltInRegistries.CHUNK_GENERATOR, new ResourceLocation(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC));
 
 		DeferredRegister<?>[] registers = {
@@ -99,6 +99,7 @@ public class Undergarden {
 		}
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, UndergardenConfig.COMMON_SPEC);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, UndergardenConfig.CLIENT_SPEC);
 	}
 
 	public void setup(FMLCommonSetupEvent event) {
@@ -114,6 +115,7 @@ public class Undergarden {
 			UGPacketHandler.init();
 			UGCriteria.register();
 			UGCauldronInteractions.register();
+
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
 				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
 
@@ -335,6 +337,7 @@ public class Undergarden {
 			fire.setFlammable(UGBlocks.BUTTERBUNCH.get(), 60, 100);
 			//other
 			fire.setFlammable(UGBlocks.MOGMOSS_RUG.get(), 60, 20);
+			fire.setFlammable(UGBlocks.BLUE_MOGMOSS_RUG.get(), 60, 20);
 			fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
 			fire.setFlammable(UGBlocks.GRONGLET.get(), 100, 100);
 		});
@@ -387,11 +390,19 @@ public class Undergarden {
 		generator.addProvider(event.includeServer(), datapackProvider);
 		generator.addProvider(event.includeServer(), new UGBiomeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
+		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));
 
 		generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
 				Component.literal("Undergarden resources"),
 				DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES),
 				Arrays.stream(PackType.values()).collect(Collectors.toMap(Function.identity(), DetectedVersion.BUILT_IN::getPackVersion)))));
 
+	}
+
+	public void portalTick(LivingEvent.LivingTickEvent event) {
+		LivingEntity entity = event.getEntity();
+		if (entity instanceof Player player) {
+			player.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(IUndergardenPortal::handleUndergardenPortal);
+		}
 	}
 }

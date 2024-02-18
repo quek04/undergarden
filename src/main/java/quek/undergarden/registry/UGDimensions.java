@@ -17,7 +17,6 @@ import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import quek.undergarden.Undergarden;
-import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.List;
 import java.util.OptionalLong;
@@ -25,14 +24,12 @@ import java.util.OptionalLong;
 public class UGDimensions {
 
 	public static final ResourceKey<Level> UNDERGARDEN_LEVEL = ResourceKey.create(Registries.DIMENSION, name("undergarden"));
-	public static final ResourceKey<Level> OTHERSIDE_LEVEL = ResourceKey.create(Registries.DIMENSION, name("otherside"));
 
 	public static final ResourceKey<NoiseGeneratorSettings> UNDERGARDEN_NOISE_GEN = ResourceKey.create(Registries.NOISE_SETTINGS, name("undergarden"));
 
 	public static final ResourceKey<DimensionType> UNDERGARDEN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, name("undergarden"));
 
 	public static final ResourceKey<LevelStem> UNDERGARDEN_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, name("undergarden"));
-
 
 	private static ResourceLocation name(String name) {
 		return new ResourceLocation(Undergarden.MODID, name);
@@ -160,11 +157,7 @@ public class UGDimensions {
 						//filler depthrock
 						SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0), SurfaceRules.state(UGBlocks.DEPTHROCK.get().defaultBlockState())),
 						//sediment
-						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(33), 0)), SurfaceRules.state(UGBlocks.SEDIMENT.get().defaultBlockState())))),
-						//frozen deepturf
-						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.ifTrue(
-								SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
-								SurfaceRules.state(UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState()))),
+                        SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(33), 0)), SurfaceRules.state(UGBlocks.SEDIMENT.get().defaultBlockState())))),
 						//mix coarse deepsoil into blood bog
 						SurfaceRules.ifTrue(
 								SurfaceRules.isBiome(UGBiomes.BLOOD_MUSHROOM_BOG),
@@ -189,7 +182,7 @@ public class UGDimensions {
 										SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
 										SurfaceRules.sequence(
 												SurfaceRules.ifTrue(
-														SurfaceRules.noiseCondition(noiseParameters.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
+														SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
 														SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
 												),
 												SurfaceRules.ifTrue(
@@ -206,7 +199,7 @@ public class UGDimensions {
 										SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
 										SurfaceRules.sequence(
 												SurfaceRules.ifTrue(
-														SurfaceRules.noiseCondition(noiseParameters.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
+														SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
 														SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
 												),
 												SurfaceRules.ifTrue(
@@ -217,15 +210,32 @@ public class UGDimensions {
 										)
 								)
 						),
+						//mix powder snow into icy biomes
+						SurfaceRules.ifTrue(
+								SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA, UGBiomes.FROSTY_SMOGSTEM_FOREST),
+								SurfaceRules.ifTrue(
+										SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
+										SurfaceRules.sequence(
+												SurfaceRules.ifTrue(
+														SurfaceRules.noiseCondition(noises.getOrThrow(Noises.POWDER_SNOW).key(), 0.45D, 0.58D),
+														SurfaceRules.state(Blocks.POWDER_SNOW.defaultBlockState())
+												),
+												SurfaceRules.ifTrue(
+														SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
+														SurfaceRules.state(UGBlocks.FROZEN_DEEPTURF_BLOCK.get().defaultBlockState())
+												)
+										)
+								)
+						),
 						//cover the ground in deepturf
 						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.state(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState()))),
 						//add deepsoil underneath
 						SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.state(UGBlocks.DEEPSOIL.get().defaultBlockState()))),
 						//add shiverstone to icy biomes
-						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA), SurfaceRules.state(UGBlocks.SHIVERSTONE.get().defaultBlockState())),
-						//add dreadrock to bottom of world
-						SurfaceRules.ifTrue(SurfaceRules.verticalGradient("undergarden:dreadrock", VerticalAnchor.absolute(0), VerticalAnchor.absolute(5)), SurfaceRules.state(UGBlocks.DREADROCK.get().defaultBlockState()))
-						),
+						SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.FROSTFIELDS, UGBiomes.ICY_SEA, UGBiomes.FROSTY_SMOGSTEM_FOREST), SurfaceRules.state(UGBlocks.SHIVERSTONE.get().defaultBlockState())),
+                        //add dreadrock to bottom of world
+                        SurfaceRules.ifTrue(SurfaceRules.verticalGradient("undergarden:dreadrock", VerticalAnchor.absolute(0), VerticalAnchor.absolute(5)), SurfaceRules.state(UGBlocks.DREADROCK.get().defaultBlockState()))
+				        ),
 				List.of(), //spawn targets
 				32,
 				false,

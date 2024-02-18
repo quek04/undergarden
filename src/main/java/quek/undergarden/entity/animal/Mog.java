@@ -17,11 +17,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.IForgeShearable;
+import net.minecraftforge.fluids.FluidType;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
@@ -39,7 +42,11 @@ public class Mog extends Animal implements IForgeShearable {
 
 	public Mog(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
-		this.setMaxUpStep(1.0F);
+	}
+
+	@Override
+	public float getStepHeight() {
+		return 1.0F;
 	}
 
 	@Override
@@ -75,9 +82,14 @@ public class Mog extends Animal implements IForgeShearable {
 		return UGSoundEvents.MOG_DEATH.get();
 	}
 
-	@Override
+	/*@Override
 	public boolean canBreatheUnderwater() {
 		return true;
+	}*/
+
+	@Override
+	public boolean canDrownInFluidType(FluidType type) {
+		return false;
 	}
 
 	@Nullable
@@ -162,10 +174,14 @@ public class Mog extends Animal implements IForgeShearable {
 
 			List<ItemStack> items = new ArrayList<>();
 			for (int i = 0; i < mossAmount; i++) {
-				items.add(new ItemStack(UGItems.MOGMOSS.get()));
+				items.add(new ItemStack(this.getMossItem()));
 			}
 			return items;
 		}
 		return Collections.emptyList();
+	}
+
+	public Item getMossItem() {
+		return UGItems.MOGMOSS.get();
 	}
 }

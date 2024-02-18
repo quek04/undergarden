@@ -93,6 +93,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		block(UGBlocks.CLOGGRUM_TILES);
 		block(UGBlocks.DEPTHROCK_TILES);
 		carpet(UGBlocks.MOGMOSS_RUG);
+		carpet(UGBlocks.BLUE_MOGMOSS_RUG);
 		block(UGBlocks.SHIVERSTONE_COAL_ORE);
 		block(UGBlocks.SHIVERSTONE_IRON_ORE);
 		block(UGBlocks.SHIVERSTONE_DIAMOND_ORE);

@@ -135,6 +135,7 @@ public class UGBlocks {
 	public static final RegistryObject<SlabBlock> CLOGGRUM_TILE_SLAB = register("cloggrum_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(CLOGGRUM_TILES.get())));
 	public static final RegistryObject<BedBlock> DEPTHROCK_BED = register("depthrock_bed", () -> new DepthrockBedBlock(BlockBehaviour.Properties.copy(DEPTHROCK.get())));
 	public static final RegistryObject<WoolCarpetBlock> MOGMOSS_RUG = register("mogmoss_rug", () -> new WoolCarpetBlock(DyeColor.LIME, BlockBehaviour.Properties.copy(Blocks.GREEN_CARPET)));
+	public static final RegistryObject<WoolCarpetBlock> BLUE_MOGMOSS_RUG = register("blue_mogmoss_rug", () -> new WoolCarpetBlock(DyeColor.BLUE, BlockBehaviour.Properties.copy(Blocks.BLUE_CARPET)));
 	public static final RegistryObject<Block> CLOGGRUM_LANTERN = register("cloggrum_lantern", () -> new CloggrumLanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN).pushReaction(PushReaction.DESTROY)));
 
 	//plants

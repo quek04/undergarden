@@ -52,6 +52,10 @@ public class UGRecipes extends UGRecipeProvider {
 		makeBoat(UGItems.WIGGLEWOOD_BOAT, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeBoat(UGItems.GRONGLE_BOAT, UGBlocks.GRONGLE_PLANKS).save(consumer);
 
+		makeChestBoat(UGItems.SMOGSTEM_CHEST_BOAT, UGItems.SMOGSTEM_BOAT).save(consumer);
+		makeChestBoat(UGItems.WIGGLEWOOD_CHEST_BOAT, UGItems.WIGGLEWOOD_BOAT).save(consumer);
+		makeChestBoat(UGItems.GRONGLE_CHEST_BOAT, UGItems.GRONGLE_BOAT).save(consumer);
+
 		makeSign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeSign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeSign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
@@ -102,6 +106,12 @@ public class UGRecipes extends UGRecipeProvider {
 				.pattern("MM")
 				.define('M', UGItems.MOGMOSS.get())
 				.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
+				.save(consumer);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.BLUE_MOGMOSS_RUG.get(), 3)
+				.pattern("MM")
+				.define('M', UGItems.BLUE_MOGMOSS.get())
+				.unlockedBy("has_blue_mogmoss", has(UGItems.BLUE_MOGMOSS.get()))
 				.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.DEPTHROCK_BED.get())
@@ -469,6 +479,22 @@ public class UGRecipes extends UGRecipeProvider {
 		makeStew(UGItems.INKY_STEW, UGBlocks.INK_MUSHROOM).save(consumer);
 		makeStew(UGItems.INDIGO_STEW, UGBlocks.INDIGO_MUSHROOM).save(consumer);
 		makeStew(UGItems.VEILED_STEW, UGBlocks.VEIL_MUSHROOM).save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.SLOP_BOWL.get())
+				.requires(Items.BOWL)
+				.requires(UGItems.UNDERBEANS.get(), 2)
+				.requires(UGItems.MOGMOSS.get(), 2)
+				.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
+				.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.SLOP_BOWL.get())
+				.requires(Items.BOWL)
+				.requires(UGItems.UNDERBEANS.get(), 2)
+				.requires(UGItems.BLUE_MOGMOSS.get(), 2)
+				.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
+				.unlockedBy("has_blue_mogmoss", has(UGItems.BLUE_MOGMOSS.get()))
+				.save(consumer, name("slop_bowl_blue_moss"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get(), 2)
 				.pattern("DTD")

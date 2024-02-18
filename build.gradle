@@ -106,6 +106,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:jade-324717:${project.jade_version}")
     implementation fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:${project.jeed_version}")
+    implementation fg.deobf("curse.maven:better-advancements-272515:${project.better_advancements_version}")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

@@ -1,5 +1,5 @@
-// 1.20.1	2023-10-23T19:01:54.6439188	Undergarden Block Tags
-47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/forge/tags/blocks/cobblestone.json
+// 1.20.1	2024-02-11T21:37:07.6484991	Undergarden Block Tags
+3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/forge/tags/blocks/glass.json
@@ -26,7 +26,7 @@ db55d2ad566e237ae4f9c7be135014b68da9cb35 data/forge/tags/blocks/ore_rates/singul
 e6a229594992a9243c23cf327981fe7697ecc4de data/forge/tags/blocks/ore_rates/sparse.json
 a8875da36804ee7aa34e82ce3fda06e61ac6b429 data/forge/tags/blocks/sand.json
 a8875da36804ee7aa34e82ce3fda06e61ac6b429 data/forge/tags/blocks/sand/colorless.json
-47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/forge/tags/blocks/stone.json
+3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/blocks/stone.json
 13c73c45b560e59ca5b74d7c8b7d546ae10f3562 data/forge/tags/blocks/storage_blocks.json
 b0d52e6b3906ec7fd9849cec019a4ed84f70ba01 data/forge/tags/blocks/storage_blocks/cloggrum.json
 5304b3bf9402d2bf37f94d8908e9910fd9de9016 data/forge/tags/blocks/storage_blocks/forgotten_metal.json
@@ -60,7 +60,7 @@ bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/blocks/impermeable.
 0d90808086e3aad6dc31200f215524957736650a data/minecraft/tags/blocks/maintains_farmland.json
 fafff32dd87177c6b6ffab623faf9add1e2b449a data/minecraft/tags/blocks/mineable/axe.json
 78905c3a496e4d94c24d07af3e585bf14688d33b data/minecraft/tags/blocks/mineable/hoe.json
-5f8203e134b4f4491c577901f9afd1de117e9e95 data/minecraft/tags/blocks/mineable/pickaxe.json
+62770b51c9c1e3fa425ae8147f05c9507da0046b data/minecraft/tags/blocks/mineable/pickaxe.json
 69d2571d2d15a8aefb59f5d5ba8c0d1952690da0 data/minecraft/tags/blocks/mineable/shovel.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/mushroom_grow_block.json
 d9d7618c3b761eb6be22a82adc7cb33b8bf129a7 data/minecraft/tags/blocks/needs_iron_tool.json
@@ -87,7 +87,7 @@ ae0281d7e08fd6d65ce6e4cc0e61ccfdbc6d7996 data/minecraft/tags/blocks/wooden_press
 fca6ad989a1440629e3d8acd762c227a9f592caf data/minecraft/tags/blocks/wooden_slabs.json
 584d22ba9cc244d0ab56b57c3344be5f5f0c263a data/minecraft/tags/blocks/wooden_stairs.json
 aafaf830e9ca896252ebc84c9ccc7e5bb2b0e5e8 data/minecraft/tags/blocks/wooden_trapdoors.json
-6d82b372b96cab8e0a37bd8d11ab40bc92ef63a5 data/minecraft/tags/blocks/wool_carpets.json
+167c0dd12d5b92d32e097f8168ebc9247fb7f34e data/minecraft/tags/blocks/wool_carpets.json
 653bbc56a6821246b2b236646267136e31f37038 data/undergarden/tags/blocks/base_stone_undergarden.json
 2edb0616f83e57e7d98c4ab93226cc8008e68de5 data/undergarden/tags/blocks/depthrock_ore_replaceables.json
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/blocks/grongle_logs.json
@@ -97,6 +97,7 @@ d06d1c2dfb74f0c3d13fd37e1e5b8a7d5d1e588b data/undergarden/tags/blocks/portal_fra
 623ab7217e9af30498af2fbdea52aceeae67771f data/undergarden/tags/blocks/scintling_spawnable_on.json
 53dadb11482fdd04c73848240ea721d1176b5286 data/undergarden/tags/blocks/shiverstone_ore_replaceables.json
 1cc17ab498d59a9bdc36071e12595df0cdeab3e7 data/undergarden/tags/blocks/smogstem_logs.json
+7088ff8bd12ffe365a41d902eb729711e7430d00 data/undergarden/tags/blocks/smog_mog_spawnable_on.json
 817f355c76e8ad6e17a570f60cb4a0aa5154af28 data/undergarden/tags/blocks/tremblecrust_ore_replaceables.json
 18ef7966deaaa72070b26735c15e4a73c7d061c2 data/undergarden/tags/blocks/undergarden_carver_replaceables.json
 3bd166cb38f35e0d1854fe644fe122c02e4f9e22 data/undergarden/tags/blocks/wigglewood_logs.json

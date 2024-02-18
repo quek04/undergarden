@@ -26,7 +26,9 @@ import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.level.BlockEvent;
+import quek.undergarden.capability.IUndergardenPortal;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.UGTeleporter;
 
@@ -95,27 +97,40 @@ public class UndergardenPortalBlock extends Block {
 
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-		if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
+		if (entity.canChangeDimensions()) {
 			if (entity.isOnPortalCooldown()) {
 				entity.setPortalCooldown();
 			} else {
 				if (!entity.level().isClientSide() && !pos.equals(entity.portalEntrancePos)) {
 					entity.portalEntrancePos = pos.immutable();
 				}
-				Level level1 = entity.level();
-				if (level1 != null) {
-					MinecraftServer minecraftserver = level1.getServer();
-					ResourceKey<Level> destination = entity.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
-					if (minecraftserver != null) {
-						ServerLevel destinationWorld = minecraftserver.getLevel(destination);
-						if (destinationWorld != null && minecraftserver.isNetherEnabled() && !entity.isPassenger()) {
-							entity.level().getProfiler().push("undergarden_portal");
-							entity.setPortalCooldown();
-							entity.changeDimension(destinationWorld, new UGTeleporter(destinationWorld));
-							entity.level().getProfiler().pop();
+
+				LazyOptional<IUndergardenPortal> portalCapability = entity.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY);
+
+				if (portalCapability.isPresent()) {
+					portalCapability.ifPresent(consumer -> {
+						consumer.setInPortal(true);
+						int waitTime = consumer.getPortalTimer();
+						if (waitTime >= entity.getPortalWaitTime()) {
+							this.handleUndergardenPortal(entity);
+							consumer.setPortalTimer(0);
 						}
-					}
-				}
+					});
+				} else this.handleUndergardenPortal(entity);
+            }
+		}
+	}
+
+	private void handleUndergardenPortal(Entity entity) {
+		MinecraftServer server = entity.level().getServer();
+		ResourceKey<Level> destination = entity.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
+		if (server != null) {
+			ServerLevel destinationLevel = server.getLevel(destination);
+			if (destinationLevel != null && server.isNetherEnabled() && !entity.isPassenger()) {
+				entity.level().getProfiler().push("undergarden_portal");
+				entity.setPortalCooldown();
+				entity.changeDimension(destinationLevel, new UGTeleporter(destinationLevel));
+				entity.level().getProfiler().pop();
 			}
 		}
 	}
@@ -283,7 +298,7 @@ public class UndergardenPortalBlock extends Block {
 						return i;
 					}
 
-					if (blockstate.is(Blocks.NETHER_PORTAL)) {
+					if (blockstate.is(UGBlocks.UNDERGARDEN_PORTAL.get())) {
 						++this.numPortalBlocks;
 					}
 				}

@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class UndergardenAdvancements implements ForgeAdvancementProvider.AdvancementGenerator {
-	private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.DEPTHS);
+	private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.FROSTY_SMOGSTEM_FOREST, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.DEPTHS);
 
 	@SuppressWarnings("unused")
 	@Override
@@ -384,6 +384,21 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 				.addCriterion("enter_catacombs", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(UGStructures.CATACOMBS)))
 				.save(consumer, "undergarden:undergarden/catacombs");
 
+		Advancement cloggrum_battleaxe = Advancement.Builder.advancement()
+				.parent(catacombs)
+				.display(
+						UGItems.CLOGGRUM_BATTLEAXE.get(),
+						Component.translatable("advancement.undergarden.cloggrum_battleaxe.title"),
+						Component.translatable("advancement.undergarden.cloggrum_battleaxe.desc"),
+						null,
+						FrameType.GOAL,
+						true,
+						true,
+						false
+				)
+				.addCriterion("has_cloggrum_battleaxe", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.CLOGGRUM_BATTLEAXE.get()))
+				.save(consumer, "undergarden:undergarden/cloggrum_battleaxe");
+
 		Advancement kill_guardian = Advancement.Builder.advancement()
 				.parent(catacombs)
 				.display(
@@ -445,7 +460,7 @@ public class UndergardenAdvancements implements ForgeAdvancementProvider.Advance
 				.save(consumer, "undergarden:undergarden/forgotten_tools");
 
 		Advancement forgotten_battleaxe = Advancement.Builder.advancement()
-				.parent(forgotten_ingot)
+				.parent(cloggrum_battleaxe)
 				.display(
 						UGItems.FORGOTTEN_BATTLEAXE.get(),
 						Component.translatable("advancement.undergarden.forgotten_battleaxe.title"),

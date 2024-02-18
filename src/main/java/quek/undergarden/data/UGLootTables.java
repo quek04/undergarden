@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.*;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.*;
@@ -249,6 +250,7 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.DEPTHROCK_TILE_SLAB);
 			this.add(UGBlocks.DEPTHROCK_BED.get(), (bed) -> createSinglePropConditionTable(bed, BedBlock.PART, BedPart.HEAD));
 			dropSelf(UGBlocks.MOGMOSS_RUG);
+			dropSelf(UGBlocks.BLUE_MOGMOSS_RUG);
 			ore(UGBlocks.DEPTHROCK_COAL_ORE, Items.COAL);
 			ore(UGBlocks.SHIVERSTONE_COAL_ORE, Items.COAL);
 			nuggetOre(UGBlocks.DEPTHROCK_IRON_ORE, Items.IRON_NUGGET);
@@ -460,6 +462,24 @@ public class UGLootTables extends LootTableProvider {
 					)
 			);
 
+			this.add(UGEntityTypes.SMOG_MOG.get(), LootTable.lootTable()
+					.withPool(LootPool.lootPool()
+							.setRolls(ConstantValue.exactly(1))
+							.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
+									.apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 6.0F)))
+									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(1.0F, 2.0F)))
+							)
+					)
+					.withPool(LootPool.lootPool()
+							.setRolls(ConstantValue.exactly(1))
+							.add(LootItem.lootTableItem(UGItems.BLUE_MOGMOSS.get())
+									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+							)
+					)
+			);
+
+			this.add(UGEntityTypes.FORGOTTEN.get(), LootTable.lootTable());
+
 //            this.add(UGEntityTypes.MASTICATOR.get(), LootTable.lootTable()
 //                    .withPool(LootPool.lootPool()
 //                            .setRolls(ConstantValue.exactly(1))
@@ -490,28 +510,29 @@ public class UGLootTables extends LootTableProvider {
 
 		@Override
 		public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
-			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/catacombs"), LootTable.lootTable().withPool(LootPool.lootPool()
-					.setRolls(UniformGenerator.between(3.0F, 8.0F))
-					.add(LootItem.lootTableItem(UGItems.MAMMOTH_DISC.get()).setWeight(5))
-					.add(LootItem.lootTableItem(UGItems.RELICT_DISC.get()).setWeight(5))
-					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()).setWeight(5))
-					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1))
-					.add(LootItem.lootTableItem(UGItems.GLOOMGOURD_PIE.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.GLOOMGOURD_PIE.get()).setWeight(40)
-							.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))).setWeight(40))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_PICKAXE.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SHOVEL.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))));
+			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/catacombs"), LootTable.lootTable()
+					.withPool(LootPool.lootPool()
+							.setRolls(UniformGenerator.between(2.0F, 5.0F))
+							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+							.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+							.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+							.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+							.add(LootItem.lootTableItem(UGItems.SLOP_BOWL.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F)))))
+					.withPool(LootPool.lootPool()
+							.setRolls(ConstantValue.exactly(1.0F))
+							.add(EmptyLootItem.emptyItem().setWeight(2))
+							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
+							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
+							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(25.0F, 30.0F)).allowTreasure()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F))))
+							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(25.0F, 30.0F)).allowTreasure()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F)))))
+					.withPool(LootPool.lootPool()
+							.setRolls(ConstantValue.exactly(1.0F))
+							.add(EmptyLootItem.emptyItem().setWeight(8))
+							.add(LootItem.lootTableItem(UGItems.MAMMOTH_DISC.get()).setWeight(4))
+							.add(LootItem.lootTableItem(UGItems.RELICT_DISC.get()).setWeight(4))
+							.add(LootItem.lootTableItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()).setWeight(3))
+							.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1)))
+			);
 		}
 	}
 }

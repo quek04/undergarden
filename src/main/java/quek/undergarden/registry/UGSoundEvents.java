@@ -151,9 +151,18 @@ public class UGSoundEvents {
 	public static final RegistryObject<SoundEvent> MOG_HURT = register("entity.mog.hurt");
 	public static final RegistryObject<SoundEvent> MOG_DEATH = register("entity.mog.death");
 
+	public static final RegistryObject<SoundEvent> SMOG_MOG_AMBIENT = register("entity.smog_mog.ambient");
+	public static final RegistryObject<SoundEvent> SMOG_MOG_HURT = register("entity.smog_mog.hurt");
+	public static final RegistryObject<SoundEvent> SMOG_MOG_DEATH = register("entity.smog_mog.death");
+
 	public static final RegistryObject<SoundEvent> SCINTLING_HURT = register("entity.scintling.hurt");
 	public static final RegistryObject<SoundEvent> SCINTLING_DEATH = register("entity.scintling.death");
 	public static final RegistryObject<SoundEvent> SCINTLING_STEP = register("entity.scintling.step");
+
+	public static final RegistryObject<SoundEvent> FORGOTTEN_AMBIENT = register("entity.forgotten.ambient");
+	public static final RegistryObject<SoundEvent> FORGOTTEN_HURT = register("entity.forgotten.hurt");
+	public static final RegistryObject<SoundEvent> FORGOTTEN_DEATH = register("entity.forgotten.death");
+	public static final RegistryObject<SoundEvent> FORGOTTEN_STEP = register("entity.forgotten.step");
 
 	private static RegistryObject<SoundEvent> register(String name) {
 		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Undergarden.MODID, name)));

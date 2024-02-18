@@ -1,56 +1,13 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.Undergarden;
+import quek.undergarden.data.provider.UGLangProvider;
 import quek.undergarden.registry.*;
 
-import java.util.function.Supplier;
-
-public class UGLang extends LanguageProvider {
+public class UGLang extends UGLangProvider {
 
 	public UGLang(PackOutput output) {
-		super(output, Undergarden.MODID, "en_us");
-	}
-
-	private void addItemGroup(CreativeModeTab group, String name) {
-		add(group.getDisplayName().getString(), name);
-	}
-
-	private void addAdvTitle(String advancementTitle, String name) {
-		add("advancement.undergarden." + advancementTitle + ".title", name);
-	}
-
-	private void addAdvDesc(String advancementTitle, String name) {
-		add("advancement.undergarden." + advancementTitle + ".desc", name);
-	}
-
-	private void addSubtitle(String category, String subtitleName, String name) {
-		add("subtitles." + category + "." + subtitleName, name);
-	}
-
-	private void addBiome(ResourceKey<Biome> biomeKey, String name) {
-		add("biome.undergarden." + biomeKey.location().getPath(), name);
-	}
-
-	private void addDeath(String deathName, String name) {
-		add("death.attack." + deathName, name);
-	}
-
-	private void addPotion(Supplier<? extends Potion> potion, String name) {
-		add("item.minecraft.potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Potion of " + name);
-		add("item.minecraft.splash_potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Splash Potion of " + name);
-		add("item.minecraft.lingering_potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Lingering Potion of " + name);
-		add("item.minecraft.tipped_arrow.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Arrow of " + name);
-	}
-
-	private void addConfig(String configName, String name) {
-		add("config.undergarden." + configName, name);
+		super(output);
 	}
 
 	@Override
@@ -150,6 +107,7 @@ public class UGLang extends LanguageProvider {
 		addBlock(UGBlocks.CLOGGRUM_TILE_SLAB, "Cloggrum Tile Slab");
 		addBlock(UGBlocks.DEPTHROCK_BED, "Depthrock Bed");
 		addBlock(UGBlocks.MOGMOSS_RUG, "Mogmoss Rug");
+		addBlock(UGBlocks.BLUE_MOGMOSS_RUG, "Blue Mogmoss Rug");
 		addBlock(UGBlocks.CLOGGRUM_LANTERN, "Cloggrum Lantern");
 
 		addBlock(UGBlocks.AMOROUS_BRISTLE, "Amorous Bristle");
@@ -293,6 +251,7 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.DITCHBULB_PASTE, "Ditchbulb Paste");
 		addItem(UGItems.BRUTE_TUSK, "Brute Tusk");
 		addItem(UGItems.MOGMOSS, "Mogmoss");
+		addItem(UGItems.BLUE_MOGMOSS, "Blue Mogmoss");
 		addItem(UGItems.GOO_BALL, "Scintling Goo Ball");
 		addItem(UGItems.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
 		addItem(UGItems.BLISTERBOMB, "Blisterbomb");
@@ -362,6 +321,10 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.UTHERIUM_LEGGINGS, "Utherium Leggings");
 		addItem(UGItems.UTHERIUM_BOOTS, "Utherium Boots");
 
+		addItem(UGItems.FORGOTTEN_HELMET, "Forgotten Helmet");
+		addItem(UGItems.FORGOTTEN_CHESTPLATE, "Forgotten Chestplate");
+		addItem(UGItems.FORGOTTEN_LEGGINGS, "Forgotten Leggings");
+
 		addItem(UGItems.DROOPFRUIT, "Droopfruit");
 		addItem(UGItems.UNDERBEANS, "Underbeans");
 		addItem(UGItems.ROASTED_UNDERBEANS, "Roasted Underbeans");
@@ -378,6 +341,7 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.INDIGO_STEW, "Indigo Stew");
 		addItem(UGItems.INKY_STEW, "Inky Stew");
 		addItem(UGItems.VEILED_STEW, "Veiled Stew");
+		addItem(UGItems.SLOP_BOWL, "Slop Bowl");
 
 		addItem(UGItems.DWELLER_SPAWN_EGG, "Dweller Spawn Egg");
 		addItem(UGItems.GWIBLING_SPAWN_EGG, "Gwibling Spawn Egg");
@@ -393,6 +357,8 @@ public class UGLang extends LanguageProvider {
 		addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
 		addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
 		addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
+		addItem(UGItems.SMOG_MOG_SPAWN_EGG, "S'Mog Spawn Egg");
+		addItem(UGItems.FORGOTTEN_SPAWN_EGG, "Forgotten Spawn Egg");
 		//addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 
@@ -403,6 +369,7 @@ public class UGLang extends LanguageProvider {
 		addBiome(UGBiomes.DENSE_FOREST, "Dense Forest");
 		addBiome(UGBiomes.FORGOTTEN_FIELD, "Forgotten Field");
 		addBiome(UGBiomes.FROSTFIELDS, "Frostfields");
+		addBiome(UGBiomes.FROSTY_SMOGSTEM_FOREST, "Frosty Smogstem Forest");
 		addBiome(UGBiomes.GRONGLEGROWTH, "Gronglegrowth");
 		addBiome(UGBiomes.ICY_SEA, "Icy Sea");
 		addBiome(UGBiomes.INDIGO_MUSHROOM_BOG, "Indigo Mushroom Bog");
@@ -438,6 +405,8 @@ public class UGLang extends LanguageProvider {
 		addEntityType(UGEntityTypes.SPLOOGIE, "Sploogie");
 		addEntityType(UGEntityTypes.GWIB, "Gwib");
 		addEntityType(UGEntityTypes.MOG, "Mog");
+		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
+		addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
 
 		//addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
 		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
@@ -480,6 +449,9 @@ public class UGLang extends LanguageProvider {
 
 		addAdvTitle("enter_undergarden", "Enter the Undergarden");
 		addAdvDesc("enter_undergarden", "The forgotten land awaits...");
+
+		addAdvTitle("plant_gloomgourd", "Purple Pumpkins");
+		addAdvDesc("plant_gloomgourd", "Plant a Gloomgourd seed.");
 
 		addAdvTitle("stack_of_gloomgourds", "Gourd Lord");
 		addAdvDesc("stack_of_gloomgourds", "Acquire a stack of Gloomgourds.");
@@ -529,8 +501,8 @@ public class UGLang extends LanguageProvider {
 		addAdvTitle("catacombs", "Forgotten Halls");
 		addAdvDesc("catacombs", "Enter some Catacombs.");
 
-		addAdvTitle("plant_gloomgourd", "Purple Pumpkins");
-		addAdvDesc("plant_gloomgourd", "Plant a Gloomgourd seed.");
+		addAdvTitle("cloggrum_battleaxe", "Cold Dead Hands");
+		addAdvDesc("cloggrum_battleaxe", "Obtain a Cloggrum Battleaxe from a Forgotten carrying one.");
 
 		addAdvTitle("kill_forgotten_guardian", "Decommissioned");
 		addAdvDesc("kill_forgotten_guardian", "Slay a Forgotten Guardian.");
@@ -672,8 +644,16 @@ public class UGLang extends LanguageProvider {
 		addSubtitle("entity", "mog.hurt", "Mog hurts");
 		addSubtitle("entity", "mog.death", "Mog dies");
 
+		addSubtitle("entity", "smog_mog.ambient", "S'Mog squeaks");
+		addSubtitle("entity", "smog_mog.hurt", "S'Mog hurts");
+		addSubtitle("entity", "smog_mog.death", "S'Mog dies");
+
 		addSubtitle("entity", "scintling.hurt", "Scintling hurts");
 		addSubtitle("entity", "scintling.death", "Scintling dies");
+
+		addSubtitle("entity", "forgotten.ambient", "Forgotten mutters");
+		addSubtitle("entity", "forgotten.hurt", "Forgotten hurts");
+		addSubtitle("entity", "forgotten.death", "Forgotten dies");
 
 		addDeath("blisterberry_bush", "%1$s was poked by a Blisterberry Bush");
 		addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");

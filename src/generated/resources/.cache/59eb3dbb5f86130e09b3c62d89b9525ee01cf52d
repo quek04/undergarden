@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-22T20:20:07.1108421	Loot Tables
+// 1.20.1	2024-02-16T18:02:14.8429056	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 2645cf89fe60362fa8217dc5825683e04755a423 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 151c2f71107612bce2811d7825f88937bff932f0 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -6,6 +6,7 @@ a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amo
 95a00d5b30c8c29738599f0d0af9330dc9a8079a data/undergarden/loot_tables/blocks/blood_mushroom.json
 23362c5b680142898ec5d2e76243553c31505310 data/undergarden/loot_tables/blocks/blood_mushroom_cap.json
 6b8435f2db3318281f386ce586da32413915c496 data/undergarden/loot_tables/blocks/blood_mushroom_stem.json
+832be502eb1d9fa3c7a60360c440ce9e4561b88a data/undergarden/loot_tables/blocks/blue_mogmoss_rug.json
 2351ca5ac1c9ca7573346debe48fa129e995c339 data/undergarden/loot_tables/blocks/boomgourd.json
 8a175315277b6051d76502dde234a9717ad484cd data/undergarden/loot_tables/blocks/butterbunch.json
 30c99fa916601e24d3d33d5b6ee640ad68db6b5a data/undergarden/loot_tables/blocks/carved_gloomgourd.json
@@ -49,7 +50,6 @@ b8eff71d852e95b23d2ebfcac1a40db11f32a613 data/undergarden/loot_tables/blocks/dep
 eaf1f258a38225249d160e2e7fe7bb48ea0534c4 data/undergarden/loot_tables/blocks/depthrock_utherium_ore.json
 6bd42a722e5b83294fabb29223ddaae0501c8835 data/undergarden/loot_tables/blocks/depthrock_wall.json
 77d81b885754a745c5f25b91aa0b67adb15dec83 data/undergarden/loot_tables/blocks/ditchbulb_plant.json
-2ad7531d2749daf9ee3536311f2432213921696e data/undergarden/loot_tables/blocks/dreadrock.json
 24e4f9a8ce8c486a22a57d30b16b73dba9bed0e6 data/undergarden/loot_tables/blocks/droopvine.json
 68e73b0cf3361c8b25163d77c46aa1bb04543eba data/undergarden/loot_tables/blocks/droopvine_plant.json
 71bebe74f338506f8ff361c0f15703694f32dfff data/undergarden/loot_tables/blocks/engorged_blood_mushroom_cap.json
@@ -196,9 +196,10 @@ cb6221219836809c5e8ae724d1183e0fac29f46a data/undergarden/loot_tables/blocks/wig
 e18a1662c0587515a5f7ca3bcef69cdd871fc29d data/undergarden/loot_tables/blocks/wigglewood_wall_hanging_sign.json
 754d0dd01e8e4c90e9a193e3389334dd17ea3279 data/undergarden/loot_tables/blocks/wigglewood_wall_sign.json
 de3654c36b0de167199d4298e3fa561b070be348 data/undergarden/loot_tables/blocks/wigglewood_wood.json
-96ddd2216b01209f8f6438d166cb78093ece9150 data/undergarden/loot_tables/chests/catacombs.json
+d2b50f3bc2c7522dc3e46f0902c71324e43b5a80 data/undergarden/loot_tables/chests/catacombs.json
 db6385448bb2bd7d8c71d07699ad3e07910074f7 data/undergarden/loot_tables/entities/brute.json
 39fbdb50f1f0b85ffd82fa4a8c5d31bc12c24372 data/undergarden/loot_tables/entities/dweller.json
+d8a35c3794d4473e308b5036d29543631efd520e data/undergarden/loot_tables/entities/forgotten.json
 93fdb346d38cad8b2fea41f5fb815163ef8ce80f data/undergarden/loot_tables/entities/forgotten_guardian.json
 bbfb30d778850ca8b2be17dae22a45fa73a790c4 data/undergarden/loot_tables/entities/gloomper.json
 633576ab0f0003f8df092eeee009c2de33d80031 data/undergarden/loot_tables/entities/gwib.json
@@ -210,5 +211,6 @@ bbfb30d778850ca8b2be17dae22a45fa73a790c4 data/undergarden/loot_tables/entities/g
 9d35eff18ccef2ea568b16769f6b7df540867ae5 data/undergarden/loot_tables/entities/rotling.json
 f85ad3893ba5e6fabc05ee8023288c400c5c9097 data/undergarden/loot_tables/entities/rotwalker.json
 7861bb72d0547dfc6abc9f41529e1a9d8f7ae4ac data/undergarden/loot_tables/entities/scintling.json
+e362dee0a531eea328e2b719052dc766d8d7b735 data/undergarden/loot_tables/entities/smog_mog.json
 6031d8cc44939259a53e1b390ee84fe421e26d4e data/undergarden/loot_tables/entities/sploogie.json
 d2a9b67d1b1f235636e9e00cf67146f73e69ef8f data/undergarden/loot_tables/entities/stoneborn.json

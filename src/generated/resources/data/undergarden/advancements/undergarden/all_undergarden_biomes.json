@@ -129,6 +129,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "undergarden:frosty_smogstem_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:frosty_smogstem_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "undergarden:gronglegrowth": {
       "conditions": {
         "player": [
@@ -292,6 +308,9 @@
     ],
     [
       "undergarden:frostfields"
+    ],
+    [
+      "undergarden:frosty_smogstem_forest"
     ],
     [
       "undergarden:gronglegrowth"

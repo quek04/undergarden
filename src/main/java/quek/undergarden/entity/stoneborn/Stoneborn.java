@@ -162,12 +162,6 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 				this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3, Level.ExplosionInteraction.MOB);
 			}
 		}
-
-		if (!this.isAggressive()) {
-			if (this.level().getGameTime() % 40 == 0) {
-				this.heal(1);
-			}
-		}
 	}
 
 	public boolean inUndergarden() {

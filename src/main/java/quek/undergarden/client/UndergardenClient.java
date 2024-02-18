@@ -1,7 +1,9 @@
 package quek.undergarden.client;
 
+import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -10,12 +12,17 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
@@ -33,6 +40,8 @@ import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import quek.undergarden.Undergarden;
+import quek.undergarden.UndergardenConfig;
+import quek.undergarden.capability.IUndergardenPortal;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
@@ -80,6 +89,8 @@ public class UndergardenClient {
 		event.registerEntityRenderer(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
 		event.registerEntityRenderer(UGEntityTypes.GWIB.get(), GwibRender::new);
 		event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
+		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRender::new);
+		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRender::new);
 		//event.registerEntityRenderer(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
 	}
@@ -109,6 +120,10 @@ public class UndergardenClient {
 		event.registerLayerDefinition(UGModelLayers.SPLOOGIE, SploogieModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.GWIB, GwibModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.MOG, MogModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.SMOG_MOG, SmogMogModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
+		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		//event.registerLayerDefinition(UGModelLayers.MASTICATOR, MasticatorModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
 	}
@@ -177,27 +192,36 @@ public class UndergardenClient {
 
 	@SubscribeEvent
 	public static void registerOverlays(RegisterGuiOverlaysEvent event) {
-		event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "virulence_hearts", (gui, stack, partialTicks, width, height) -> {
+		event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "virulence_hearts", (gui, guiGraphics, partialTicks, width, height) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.VIRULENCE.get()) && gui.shouldDrawSurvivalElements()) {
-				renderVirulenceHearts(width, height, stack, gui, player);
+				renderVirulenceHearts(width, height, guiGraphics, gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiOverlay.ARMOR_LEVEL.id(), "brittleness_armor", (gui, stack, partialTicks, width, height) -> {
+		event.registerAbove(VanillaGuiOverlay.ARMOR_LEVEL.id(), "brittleness_armor", (gui, guiGraphics, partialTicks, width, height) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.BRITTLENESS.get()) && gui.shouldDrawSurvivalElements()) {
-				renderBrittlenessArmor(width, height, stack, gui, player);
+				renderBrittlenessArmor(width, height, guiGraphics, gui, player);
 			}
 		});
 		//render XP bar since we cancel the jump bar
 		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		event.registerAbove(VanillaGuiOverlay.EXPERIENCE_BAR.id(), "dweller_xp_bar", (gui, stack, partialTicks, width, height) -> {
+		event.registerAbove(VanillaGuiOverlay.EXPERIENCE_BAR.id(), "dweller_xp_bar", (gui, guiGraphics, partialTicks, width, height) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
-				gui.renderExperienceBar(stack, width / 2 - 91);
+				gui.renderExperienceBar(guiGraphics, width / 2 - 91);
+			}
+		});
+		event.registerAboveAll("undergarden_portal_overlay", (gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
+			Minecraft minecraft = Minecraft.getInstance();
+			Window window = minecraft.getWindow();
+			LocalPlayer player = minecraft.player;
+
+			if (player != null) {
+				player.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(consumer -> renderPortalOverlay(guiGraphics, minecraft, window, consumer, partialTick));
 			}
 		});
 	}
@@ -207,18 +231,20 @@ public class UndergardenClient {
 
 		@SubscribeEvent
 		public static void undergardenFog(ViewportEvent.RenderFog event) {
-			Minecraft minecraft = Minecraft.getInstance();
-			LocalPlayer player = minecraft.player;
-			Camera camera = event.getCamera();
-			if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && camera.getBlockAtCamera().getFluidState().isEmpty()) {
-				if (player.level().getBiome(player.getOnPos()).is(UGBiomes.DEPTHS)) {
-					RenderSystem.setShaderFogStart(0.0F);
-					RenderSystem.setShaderFogEnd(50.0F);
-					RenderSystem.setShaderFogShape(FogShape.SPHERE);
-				} else {
-					RenderSystem.setShaderFogStart(0.0F);
-					RenderSystem.setShaderFogEnd(200.0F);
-					RenderSystem.setShaderFogShape(FogShape.SPHERE);
+			if (UndergardenConfig.Client.toggle_undergarden_fog.get()) {
+				Minecraft minecraft = Minecraft.getInstance();
+				LocalPlayer player = minecraft.player;
+				Camera camera = event.getCamera();
+				if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && event.getType() == FogType.NONE) {
+                    if (player.level().getBiome(player.getOnPos()).is(UGBiomes.DEPTHS)) {
+                        RenderSystem.setShaderFogStart(-30.0F);
+                        RenderSystem.setShaderFogEnd(50.0F);
+                        RenderSystem.setShaderFogShape(FogShape.SPHERE);
+                    } else {
+                        RenderSystem.setShaderFogStart(-30.0F);
+                        RenderSystem.setShaderFogEnd(225.0F);
+                        RenderSystem.setShaderFogShape(FogShape.SPHERE);
+                    }
 				}
 			}
 		}
@@ -337,5 +363,32 @@ public class UndergardenClient {
 
 	private static void renderHeart(GuiGraphics graphics, Gui.HeartType type, int x, int y, int offset, boolean blinking, boolean halfHeart) {
 		graphics.blit(VIRULENCE_HEARTS, x, y, type.getX(halfHeart, blinking), offset, 9, 9);
+	}
+
+	private static void renderPortalOverlay(GuiGraphics guiGraphics, Minecraft minecraft, Window window, IUndergardenPortal portal, float partialTicks) {
+		PoseStack poseStack = guiGraphics.pose();
+		float alpha = portal.getPrevPortalAnimTime() + (portal.getPortalAnimTime() - portal.getPrevPortalAnimTime()) * partialTicks;
+		if (alpha > 0.0F) {
+			if (alpha < 1.0F) {
+				alpha = alpha * alpha;
+				alpha = alpha * alpha;
+				alpha = alpha * 0.8F + 0.2F;
+			}
+
+			poseStack.pushPose();
+			RenderSystem.disableDepthTest();
+			RenderSystem.depthMask(false);
+			guiGraphics.setColor(1.0F, 1.0F, 1.0F, alpha);
+			TextureAtlasSprite textureatlassprite = minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState());
+			guiGraphics.blit(0, 0, -90, window.getGuiScaledWidth(), window.getGuiScaledHeight(), textureatlassprite);
+			RenderSystem.depthMask(true);
+			RenderSystem.enableDepthTest();
+			guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+			poseStack.popPose();
+		}
+	}
+
+	public static void playPortalSound(Minecraft minecraft, Player player) {
+		minecraft.getSoundManager().play(SimpleSoundInstance.forLocalAmbience(UGSoundEvents.UNDERGARDEN_PORTAL_TRAVEL.get(), player.getRandom().nextFloat() * 0.4F + 0.8F, 0.25F));
 	}
 }
