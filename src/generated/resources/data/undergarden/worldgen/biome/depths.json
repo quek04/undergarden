@@ -61,44 +61,7 @@
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [
-      {
-        "type": "undergarden:nargoyle",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 50
-      },
-      {
-        "type": "undergarden:muncher",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 50
-      },
-      {
-        "type": "undergarden:sploogie",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 50
-      },
-      {
-        "type": "undergarden:rotling",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 100
-      },
-      {
-        "type": "undergarden:rotwalker",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "undergarden:rotbeast",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 100
-      }
-    ],
+    "monster": [],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []
