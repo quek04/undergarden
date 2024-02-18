@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-16T18:02:14.8429056	Loot Tables
+// 1.20.1	2024-02-18T13:13:38.273853	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 2645cf89fe60362fa8217dc5825683e04755a423 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 151c2f71107612bce2811d7825f88937bff932f0 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -50,6 +50,7 @@ b8eff71d852e95b23d2ebfcac1a40db11f32a613 data/undergarden/loot_tables/blocks/dep
 eaf1f258a38225249d160e2e7fe7bb48ea0534c4 data/undergarden/loot_tables/blocks/depthrock_utherium_ore.json
 6bd42a722e5b83294fabb29223ddaae0501c8835 data/undergarden/loot_tables/blocks/depthrock_wall.json
 77d81b885754a745c5f25b91aa0b67adb15dec83 data/undergarden/loot_tables/blocks/ditchbulb_plant.json
+2ad7531d2749daf9ee3536311f2432213921696e data/undergarden/loot_tables/blocks/dreadrock.json
 24e4f9a8ce8c486a22a57d30b16b73dba9bed0e6 data/undergarden/loot_tables/blocks/droopvine.json
 68e73b0cf3361c8b25163d77c46aa1bb04543eba data/undergarden/loot_tables/blocks/droopvine_plant.json
 71bebe74f338506f8ff361c0f15703694f32dfff data/undergarden/loot_tables/blocks/engorged_blood_mushroom_cap.json

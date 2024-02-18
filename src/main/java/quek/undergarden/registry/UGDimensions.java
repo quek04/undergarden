@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import quek.undergarden.Undergarden;
+import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.List;
 import java.util.OptionalLong;
@@ -64,7 +65,7 @@ public class UGDimensions {
 
 	public static void bootstrapNoise(BootstapContext<NoiseGeneratorSettings> context) {
 		HolderGetter<DensityFunction> functions = context.lookup(Registries.DENSITY_FUNCTION);
-		HolderGetter<NormalNoise.NoiseParameters> noiseParameters = context.lookup(Registries.NOISE);
+		HolderGetter<NormalNoise.NoiseParameters> noises = context.lookup(Registries.NOISE);
 		DensityFunction xShift = NoiseRouterData.getFunction(functions, NoiseRouterData.SHIFT_X);
 		DensityFunction zShift = NoiseRouterData.getFunction(functions, NoiseRouterData.SHIFT_Z);
 
@@ -73,12 +74,12 @@ public class UGDimensions {
 				UGBlocks.DEPTHROCK.get().defaultBlockState(),
 				Blocks.WATER.defaultBlockState(),
 				new NoiseRouter(
-						DensityFunctions.constant(0.0D), //barrier
-						DensityFunctions.constant(0.0D), //fluid level floodedness
-						DensityFunctions.constant(0.0D), //fluid level spread
-						DensityFunctions.constant(0.0D), //lava
-						DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noiseParameters.getOrThrow(Noises.TEMPERATURE)), //temperature
-						DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noiseParameters.getOrThrow(Noises.VEGETATION)), //vegetation
+						DensityFunctions.zero(), //barrier
+						DensityFunctions.zero(), //fluid level floodedness
+						DensityFunctions.zero(), //fluid level spread
+						DensityFunctions.zero(), //lava
+						DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.TEMPERATURE)), //temperature
+						DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.VEGETATION)), //vegetation
 						NoiseRouterData.getFunction(functions, NoiseRouterData.CONTINENTS), //continents
 						NoiseRouterData.getFunction(functions, NoiseRouterData.EROSION), //erosion
 						DensityFunctions.rangeChoice(
@@ -165,7 +166,7 @@ public class UGDimensions {
 										SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
 										SurfaceRules.sequence(
 												SurfaceRules.ifTrue(
-														SurfaceRules.noiseCondition(noiseParameters.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
+														SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
 														SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
 												),
 												SurfaceRules.ifTrue(
