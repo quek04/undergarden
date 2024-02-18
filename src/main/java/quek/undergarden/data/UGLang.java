@@ -1,56 +1,13 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.registries.ForgeRegistries;
-import quek.undergarden.Undergarden;
+import quek.undergarden.data.provider.UGLangProvider;
 import quek.undergarden.registry.*;
 
-import java.util.function.Supplier;
-
-public class UGLang extends LanguageProvider {
+public class UGLang extends UGLangProvider {
 
 	public UGLang(PackOutput output) {
-		super(output, Undergarden.MODID, "en_us");
-	}
-
-	private void addItemGroup(CreativeModeTab group, String name) {
-		add(group.getDisplayName().getString(), name);
-	}
-
-	private void addAdvTitle(String advancementTitle, String name) {
-		add("advancement.undergarden." + advancementTitle + ".title", name);
-	}
-
-	private void addAdvDesc(String advancementTitle, String name) {
-		add("advancement.undergarden." + advancementTitle + ".desc", name);
-	}
-
-	private void addSubtitle(String category, String subtitleName, String name) {
-		add("subtitles." + category + "." + subtitleName, name);
-	}
-
-	private void addBiome(ResourceKey<Biome> biomeKey, String name) {
-		add("biome.undergarden." + biomeKey.location().getPath(), name);
-	}
-
-	private void addDeath(String deathName, String name) {
-		add("death.attack." + deathName, name);
-	}
-
-	private void addPotion(Supplier<? extends Potion> potion, String name) {
-		add("item.minecraft.potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Potion of " + name);
-		add("item.minecraft.splash_potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Splash Potion of " + name);
-		add("item.minecraft.lingering_potion.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Lingering Potion of " + name);
-		add("item.minecraft.tipped_arrow.effect." + ForgeRegistries.POTIONS.getKey(potion.get()).getPath(), "Arrow of " + name);
-	}
-
-	private void addConfig(String configName, String name) {
-		add("config.undergarden." + configName, name);
+		super(output);
 	}
 
 	@Override
