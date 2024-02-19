@@ -67,34 +67,34 @@ public class UGTeleporter implements ITeleporter {
 		double d1 = -1.0D;
 		BlockPos blockpos1 = null;
 		WorldBorder worldborder = this.level.getWorldBorder();
-		int i = Math.min(this.level.getMaxBuildHeight(), this.level.getMinBuildHeight() + this.level.getLogicalHeight()) - 1;
+		int minHeight = Math.min(this.level.getMaxBuildHeight(), this.level.getLogicalHeight()) - 1;
 		BlockPos.MutableBlockPos blockpos$mutableblockpos = pos.mutable();
 
 		for(BlockPos.MutableBlockPos checkPos : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
-			int validStartHeight = Math.min(i, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, checkPos.getX(), checkPos.getZ()));
+			int validStartHeight = Math.min(minHeight, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, checkPos.getX(), checkPos.getZ()));
 			if (worldborder.isWithinBounds(checkPos) && worldborder.isWithinBounds(checkPos.move(direction, 1))) {
 				checkPos.move(direction.getOpposite(), 1);
 
-				for(int l = validStartHeight; l >= this.level.getMinBuildHeight(); --l) {
-					checkPos.setY(l);
+				for(int y = validStartHeight; y >= 0; --y) {
+					checkPos.setY(y);
 					if (this.canPortalReplaceBlock(checkPos)) {
 						int i1;
-						for(i1 = l; l > this.level.getMinBuildHeight() && this.canPortalReplaceBlock(checkPos.move(Direction.DOWN)); --l) {
+						for(i1 = y; y > 0 && this.canPortalReplaceBlock(checkPos.move(Direction.DOWN)); --y) {
 						}
 
-						if (l + 4 <= i) {
-							int j1 = i1 - l;
+						if (y + 4 <= minHeight) {
+							int j1 = i1 - y;
 							if (j1 <= 0 || j1 >= 3) {
-								checkPos.setY(l);
+								checkPos.setY(y);
 								if (this.canHostFrame(checkPos, blockpos$mutableblockpos, direction, 0)) {
-									double d2 = pos.distSqr(checkPos);
-									if (this.canHostFrame(checkPos, blockpos$mutableblockpos, direction, -1) && this.canHostFrame(checkPos, blockpos$mutableblockpos, direction, 1) && (d0 == -1.0D || d0 > d2)) {
-										d0 = d2;
+									double distSqr = pos.distSqr(checkPos);
+									if (this.canHostFrame(checkPos, blockpos$mutableblockpos, direction, -1) && this.canHostFrame(checkPos, blockpos$mutableblockpos, direction, 1) && (d0 == -1.0D || d0 > distSqr)) {
+										d0 = distSqr;
 										blockpos = checkPos.immutable();
 									}
 
-									if (d0 == -1.0D && (d1 == -1.0D || d1 > d2)) {
-										d1 = d2;
+									if (d0 == -1.0D && (d1 == -1.0D || d1 > distSqr)) {
+										d1 = distSqr;
 										blockpos1 = checkPos.immutable();
 									}
 								}
@@ -111,8 +111,8 @@ public class UGTeleporter implements ITeleporter {
 		}
 
 		if (d0 == -1.0D) {
-			int k1 = Math.max(this.level.getMinBuildHeight() + 1, 70);
-			int i2 = i - 9;
+			int k1 = Mth.clamp(pos.getY(), 32, 70);
+			int i2 = minHeight - 9;
 			if (i2 < k1) {
 				return Optional.empty();
 			}

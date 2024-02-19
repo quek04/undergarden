@@ -24,10 +24,10 @@ public class UGNoiseBasedChunkGenerator extends NoiseBasedChunkGenerator {
         super.globalFluidPicker = Suppliers.memoize(() -> createFluidPicker(settings.value()));
     }
 
-    private static Aquifer.FluidPicker createFluidPicker(NoiseGeneratorSettings pSettings) {
-        int seaLevel = pSettings.seaLevel();
+    private static Aquifer.FluidPicker createFluidPicker(NoiseGeneratorSettings settings) {
+        int seaLevel = settings.seaLevel();
         Aquifer.FluidStatus air = new Aquifer.FluidStatus(0, Blocks.AIR.defaultBlockState());
-        Aquifer.FluidStatus water = new Aquifer.FluidStatus(seaLevel, pSettings.defaultFluid());
+        Aquifer.FluidStatus water = new Aquifer.FluidStatus(seaLevel, settings.defaultFluid());
         return (x, y, z) -> y <= 0 ? air : water;
     }
 
