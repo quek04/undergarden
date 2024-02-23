@@ -5,7 +5,6 @@ import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
-import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.gui.Gui;
@@ -144,8 +143,7 @@ public class UndergardenClient {
 				UGBlocks.DROOPVINE_PLANT.get()
 		);
 
-		event.register((state, world, pos, tint) ->
-				FastColor.ARGB32.color(0, 54, 45, 66),
+		event.register((state, world, pos, tint) -> FastColor.ARGB32.color(0, 54, 45, 66),
 				UGBlocks.GLOOMGOURD_STEM.get(),
 				UGBlocks.GLOOMGOURD_STEM_ATTACHED.get()
 		);
@@ -219,7 +217,7 @@ public class UndergardenClient {
 			Minecraft minecraft = Minecraft.getInstance();
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
-			
+
 			if (player != null) {
 				player.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(consumer -> renderPortalOverlay(guiGraphics, minecraft, window, consumer, partialTick));
 			}

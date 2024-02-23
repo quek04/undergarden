@@ -15,8 +15,8 @@ import quek.undergarden.registry.UGStructureProcessors;
 public class StructureTemplateMixin {
 
 	@Inject(method = "placeInWorld", at = @At(value = "HEAD"))
-	private void undergarden$removeWaterloggingInStructures(ServerLevelAccessor level, BlockPos pos, BlockPos p_230331_, StructurePlaceSettings settings, RandomSource random, int flags, CallbackInfoReturnable<Boolean> cir) {
-		if (settings.getProcessors().stream().anyMatch(processor -> ((StructureProcessorAccessor)processor).callGetType() == UGStructureProcessors.NO_WATERLOGGING.get())) {
+	private void undergarden$removeWaterloggingInStructures(ServerLevelAccessor level, BlockPos oldPos, BlockPos pos, StructurePlaceSettings settings, RandomSource random, int flags, CallbackInfoReturnable<Boolean> cir) {
+		if (settings.getProcessors().stream().anyMatch(processor -> ((StructureProcessorAccessor) processor).callGetType() == UGStructureProcessors.NO_WATERLOGGING.get())) {
 			settings.setKeepLiquids(false);
 		}
 	}

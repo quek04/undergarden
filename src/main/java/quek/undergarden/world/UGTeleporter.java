@@ -70,16 +70,16 @@ public class UGTeleporter implements ITeleporter {
 		int i = Math.min(this.level.getMaxBuildHeight(), this.level.getMinBuildHeight() + this.level.getLogicalHeight()) - 1;
 		BlockPos.MutableBlockPos blockpos$mutableblockpos = pos.mutable();
 
-		for(BlockPos.MutableBlockPos checkPos : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
+		for (BlockPos.MutableBlockPos checkPos : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
 			int validStartHeight = Math.min(i, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, checkPos.getX(), checkPos.getZ()));
 			if (worldborder.isWithinBounds(checkPos) && worldborder.isWithinBounds(checkPos.move(direction, 1))) {
 				checkPos.move(direction.getOpposite(), 1);
 
-				for(int l = validStartHeight; l >= this.level.getMinBuildHeight(); --l) {
+				for (int l = validStartHeight; l >= this.level.getMinBuildHeight(); --l) {
 					checkPos.setY(l);
 					if (this.canPortalReplaceBlock(checkPos)) {
 						int i1;
-						for(i1 = l; l > this.level.getMinBuildHeight() && this.canPortalReplaceBlock(checkPos.move(Direction.DOWN)); --l) {
+						for (i1 = l; l > this.level.getMinBuildHeight() && this.canPortalReplaceBlock(checkPos.move(Direction.DOWN)); --l) {
 						}
 
 						if (l + 4 <= i) {
@@ -123,9 +123,9 @@ public class UGTeleporter implements ITeleporter {
 				return Optional.empty();
 			}
 
-			for(int i3 = -1; i3 < 2; ++i3) {
-				for(int j3 = 0; j3 < 2; ++j3) {
-					for(int k3 = -1; k3 < 3; ++k3) {
+			for (int i3 = -1; i3 < 2; ++i3) {
+				for (int j3 = 0; j3 < 2; ++j3) {
+					for (int k3 = -1; k3 < 3; ++k3) {
 						BlockState blockstate1 = k3 < 0 ? this.frame : Blocks.AIR.defaultBlockState();
 						blockpos$mutableblockpos.setWithOffset(blockpos, j3 * direction.getStepX() + i3 * direction1.getStepX(), k3, j3 * direction.getStepZ() + i3 * direction1.getStepZ());
 						this.level.setBlockAndUpdate(blockpos$mutableblockpos, blockstate1);
@@ -134,8 +134,8 @@ public class UGTeleporter implements ITeleporter {
 			}
 		}
 
-		for(int l1 = -1; l1 < 3; ++l1) {
-			for(int j2 = -1; j2 < 4; ++j2) {
+		for (int l1 = -1; l1 < 3; ++l1) {
+			for (int j2 = -1; j2 < 4; ++j2) {
 				if (l1 == -1 || l1 == 2 || j2 == -1 || j2 == 3) {
 					blockpos$mutableblockpos.setWithOffset(blockpos, l1 * direction.getStepX(), j2, l1 * direction.getStepZ());
 					this.level.setBlock(blockpos$mutableblockpos, this.frame, 3);
@@ -145,8 +145,8 @@ public class UGTeleporter implements ITeleporter {
 
 		BlockState blockstate = UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState().setValue(UndergardenPortalBlock.AXIS, axis);
 
-		for(int k2 = 0; k2 < 2; ++k2) {
-			for(int l2 = 0; l2 < 3; ++l2) {
+		for (int k2 = 0; k2 < 2; ++k2) {
+			for (int l2 = 0; l2 < 3; ++l2) {
 				blockpos$mutableblockpos.setWithOffset(blockpos, k2 * direction.getStepX(), l2, k2 * direction.getStepZ());
 				this.level.setBlock(blockpos$mutableblockpos, blockstate, 18);
 			}
@@ -163,8 +163,8 @@ public class UGTeleporter implements ITeleporter {
 	private boolean canHostFrame(BlockPos originalPos, BlockPos.MutableBlockPos offsetPos, Direction direction, int offsetScale) {
 		Direction checkDir = direction.getClockWise();
 
-		for(int i = -1; i < 3; ++i) {
-			for(int j = -1; j < 4; ++j) {
+		for (int i = -1; i < 3; ++i) {
+			for (int j = -1; j < 4; ++j) {
 				offsetPos.setWithOffset(originalPos, direction.getStepX() * i + checkDir.getStepX() * offsetScale, j, direction.getStepZ() * i + checkDir.getStepZ() * offsetScale);
 				if (j < 0 && !this.level.getBlockState(offsetPos).isSolid()) {
 					return false;

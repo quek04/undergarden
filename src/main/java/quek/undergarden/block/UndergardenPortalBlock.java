@@ -117,7 +117,7 @@ public class UndergardenPortalBlock extends Block {
 						}
 					});
 				} else this.handleUndergardenPortal(entity);
-            }
+			}
 		}
 	}
 
@@ -135,7 +135,7 @@ public class UndergardenPortalBlock extends Block {
 		}
 	}
 
-	
+
 	@Override
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
 		if (random.nextInt(100) == 0) {

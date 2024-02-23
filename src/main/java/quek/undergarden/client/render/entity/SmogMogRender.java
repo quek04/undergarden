@@ -11,16 +11,16 @@ import quek.undergarden.entity.animal.SmogMog;
 
 public class SmogMogRender extends MobRenderer<SmogMog, SmogMogModel<SmogMog>> {
 
-    public SmogMogRender(EntityRendererProvider.Context context) {
-        super(context, new SmogMogModel<>(context.bakeLayer(UGModelLayers.SMOG_MOG)), 0.5F);
-        this.addLayer(new SmogMogEyesLayer<>(this));
-    }
+	public SmogMogRender(EntityRendererProvider.Context context) {
+		super(context, new SmogMogModel<>(context.bakeLayer(UGModelLayers.SMOG_MOG)), 0.5F);
+		this.addLayer(new SmogMogEyesLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(SmogMog entity) {
-        if (entity.hasMoss()) {
-            return new ResourceLocation(Undergarden.MODID, "textures/entity/smog_mog.png");
-        }
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/smog_mog_naked.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(SmogMog entity) {
+		if (entity.hasMoss()) {
+			return new ResourceLocation(Undergarden.MODID, "textures/entity/smog_mog.png");
+		}
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/smog_mog_naked.png");
+	}
 }

@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.block.entity.SmogVentBlockEntity;
-import quek.undergarden.data.UGEntityTags;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGEntityTypes;
 

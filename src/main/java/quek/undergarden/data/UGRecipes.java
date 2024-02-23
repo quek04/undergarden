@@ -503,7 +503,7 @@ public class UGRecipes extends UGRecipeProvider {
 				.define('D', Tags.Items.GEMS_DIAMOND)
 				.define('R', UGBlocks.DEPTHROCK.get())
 				.define('T', UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get())
-				.unlockedBy("has_template", has( UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()))
+				.unlockedBy("has_template", has(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()))
 				.save(consumer);
 
 		smithingForgotten(UGItems.CLOGGRUM_SWORD, UGItems.FORGOTTEN_SWORD).save(consumer, name("forgotten_sword_smithing"));

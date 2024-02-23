@@ -10,12 +10,12 @@ import quek.undergarden.entity.Forgotten;
 
 public class ForgottenEyesLayer<T extends Forgotten, M extends ForgottenModel<T>> extends EyesLayer<T, M> {
 
-    public ForgottenEyesLayer(RenderLayerParent<T, M> parent) {
-        super(parent);
-    }
+	public ForgottenEyesLayer(RenderLayerParent<T, M> parent) {
+		super(parent);
+	}
 
-    @Override
-    public RenderType renderType() {
-        return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten_eyes.png"));
-    }
+	@Override
+	public RenderType renderType() {
+		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten_eyes.png"));
+	}
 }

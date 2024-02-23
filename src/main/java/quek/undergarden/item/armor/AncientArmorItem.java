@@ -8,16 +8,16 @@ import quek.undergarden.registry.UGArmorMaterials;
 
 public class AncientArmorItem extends ArmorItem {
 
-    public AncientArmorItem(Type slot) {
-        super(UGArmorMaterials.ANCIENT, slot, new Properties());
-    }
+	public AncientArmorItem(Type slot) {
+		super(UGArmorMaterials.ANCIENT, slot, new Properties());
+	}
 
-    @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String layer) {
-        if (slot == EquipmentSlot.LEGS) {
-            return "undergarden:textures/armor/ancient_layer_2.png";
-        } else {
-            return "undergarden:textures/armor/ancient_layer_1.png";
-        }
-    }
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String layer) {
+		if (slot == EquipmentSlot.LEGS) {
+			return "undergarden:textures/armor/ancient_layer_2.png";
+		} else {
+			return "undergarden:textures/armor/ancient_layer_1.png";
+		}
+	}
 }
