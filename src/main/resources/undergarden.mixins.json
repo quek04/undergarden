@@ -9,7 +9,9 @@
   "mixins": [
     "BubbleColumnBlockMixin",
     "CauldronBlockMixin",
-    "PointedDripstoneMixin"
+    "PointedDripstoneMixin",
+    "StructureProcessorAccessor",
+    "StructureTemplateMixin"
   ],
   "minVersion": "0.8"
 }

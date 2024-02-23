@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-16T13:19:52.4966706	Registries
+// 1.20.1	2024-02-22T21:35:36.2127483	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -131,7 +131,7 @@ c95492fddfd32a7ce560d4349496a3d162999377 data/undergarden/worldgen/placed_featur
 d33ba217bace3a9bc3a5a4a52ebd75c2a0b8786b data/undergarden/worldgen/placed_feature/veil_mushroom_patch.json
 94a4d225e7574974d46ea2fe00f3ba094fb67266 data/undergarden/worldgen/placed_feature/wide_smogstem_tree.json
 e79924b5eeae891d3634ba2d8932ef8e82fa90c5 data/undergarden/worldgen/placed_feature/wigglewood_tree.json
-9aec56c0a8b01ec017fe84d4a6e387d6627d3e9e data/undergarden/worldgen/processor_list/catacombs_degradation.json
+a58b19efa00ae913a639b73da75edee5969634e3 data/undergarden/worldgen/processor_list/catacombs_degradation.json
 ab35819db2ba427c865b236a5305c4d237672345 data/undergarden/worldgen/processor_list/forgotten_vestige_degradation.json
 5184431a0127109f3499e23a4594cc51a156e432 data/undergarden/worldgen/structure/catacombs.json
 ad2f57fc9cc819318f54327e05abf31ad37c4bea data/undergarden/worldgen/structure/forgotten_vestige.json

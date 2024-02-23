@@ -91,6 +91,7 @@ public class Undergarden {
 				UGPointOfInterests.POI,
 				UGPotions.POTIONS,
 				UGSoundEvents.SOUNDS,
+				UGStructureProcessors.PROCESSORS,
 				UGStructures.STRUCTURES,
 				UGCreativeModeTabs.TABS,
 				UGTreeDecoratorTypes.TREE_DECORATORS,

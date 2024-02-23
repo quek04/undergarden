@@ -29,6 +29,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.BiggerJigsawStructure;
+import quek.undergarden.world.gen.structure.processor.NoWaterloggingProcessor;
 
 import java.util.List;
 import java.util.Map;
@@ -147,7 +148,8 @@ public class UGStructures {
 								AlwaysTrueTest.INSTANCE,
 								UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState()
 						)
-				))
+				)),
+				new NoWaterloggingProcessor()
 		)));
 
 		context.register(FORGOTTEN_VESTIGE_DEGRADATION, new StructureProcessorList(List.of(
