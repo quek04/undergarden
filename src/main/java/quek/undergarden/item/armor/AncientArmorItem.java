@@ -6,18 +6,18 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import quek.undergarden.registry.UGArmorMaterials;
 
-public class ForgottenArmorItem extends ArmorItem {
+public class AncientArmorItem extends ArmorItem {
 
-    public ForgottenArmorItem(Type slot) {
-        super(UGArmorMaterials.FORGOTTEN, slot, new Properties());
+    public AncientArmorItem(Type slot) {
+        super(UGArmorMaterials.ANCIENT, slot, new Properties());
     }
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String layer) {
         if (slot == EquipmentSlot.LEGS) {
-            return "undergarden:textures/armor/forgotten_layer_2.png";
+            return "undergarden:textures/armor/ancient_layer_2.png";
         } else {
-            return "undergarden:textures/armor/forgotten_layer_1.png";
+            return "undergarden:textures/armor/ancient_layer_1.png";
         }
     }
 }

@@ -258,9 +258,9 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP);
 		normalItem(UGItems.BLUE_MOGMOSS);
 		normalItem(UGItems.SLOP_BOWL);
-		normalItemSpecifiedTexture(UGItems.FORGOTTEN_HELMET, "cloggrum_helmet");
-		normalItemSpecifiedTexture(UGItems.FORGOTTEN_CHESTPLATE, "cloggrum_chestplate");
-		normalItemSpecifiedTexture(UGItems.FORGOTTEN_LEGGINGS, "cloggrum_leggings");
+		normalItem(UGItems.ANCIENT_HELMET);
+		normalItem(UGItems.ANCIENT_CHESTPLATE);
+		normalItem(UGItems.ANCIENT_LEGGINGS);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
