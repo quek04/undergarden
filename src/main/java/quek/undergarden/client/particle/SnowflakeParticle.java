@@ -22,8 +22,8 @@ public class SnowflakeParticle extends TextureSheetParticle {
 		this.lifetime = 80;
 		this.quadSize *= 0.5F;
 		this.hasPhysics = true;
-		this.rotSpeed = (float)Math.toRadians(this.random.nextBoolean() ? -60.0D : 60.0D);
-		this.spinAcceleration = (float)Math.toRadians(this.random.nextBoolean() ? -25.0D : 25.0D);
+		this.rotSpeed = (float) Math.toRadians(this.random.nextBoolean() ? -60.0D : 60.0D);
+		this.spinAcceleration = (float) Math.toRadians(this.random.nextBoolean() ? -25.0D : 25.0D);
 	}
 
 	@Override

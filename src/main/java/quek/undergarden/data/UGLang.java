@@ -321,9 +321,9 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.UTHERIUM_LEGGINGS, "Utherium Leggings");
 		addItem(UGItems.UTHERIUM_BOOTS, "Utherium Boots");
 
-		addItem(UGItems.FORGOTTEN_HELMET, "Forgotten Helmet");
-		addItem(UGItems.FORGOTTEN_CHESTPLATE, "Forgotten Chestplate");
-		addItem(UGItems.FORGOTTEN_LEGGINGS, "Forgotten Leggings");
+		addItem(UGItems.ANCIENT_HELMET, "Ancient Helmet");
+		addItem(UGItems.ANCIENT_CHESTPLATE, "Ancient Chestplate");
+		addItem(UGItems.ANCIENT_LEGGINGS, "Ancient Leggings");
 
 		addItem(UGItems.DROOPFRUIT, "Droopfruit");
 		addItem(UGItems.UNDERBEANS, "Underbeans");

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UGCreativeModeTabs {
 
-	private static final List<RegistryObject<Item>> DONT_INCLUDE = List.of(UGItems.GLOOMPER_SECRET_DISC, UGItems.MASTICATOR_SCALES, UGItems.MASTICATED_CHESTPLATE, UGItems.FORGOTTEN_HELMET, UGItems.FORGOTTEN_CHESTPLATE, UGItems.FORGOTTEN_LEGGINGS);
+	private static final List<RegistryObject<Item>> DONT_INCLUDE = List.of(UGItems.GLOOMPER_SECRET_DISC, UGItems.MASTICATOR_SCALES, UGItems.MASTICATED_CHESTPLATE);
 
 	public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Undergarden.MODID);
 
@@ -24,9 +24,9 @@ public class UGCreativeModeTabs {
 				output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(UGEnchantments.RICOCHET.get(), UGEnchantments.RICOCHET.get().getMaxLevel())));
 				output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(UGEnchantments.LONGEVITY.get(), UGEnchantments.LONGEVITY.get().getMaxLevel())));
 				output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(UGEnchantments.SELF_SLING.get(), UGEnchantments.SELF_SLING.get().getMaxLevel())));
-				UGItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-					if (!DONT_INCLUDE.contains(itemRegistryObject) && !itemRegistryObject.getKey().location().getPath().contains("tremblecrust")) {
-						output.accept(itemRegistryObject.get());
+				UGItems.ITEMS.getEntries().forEach(item -> {
+					if (!DONT_INCLUDE.contains(item) && !item.getKey().location().getPath().contains("tremblecrust")) {
+						output.accept(item.get());
 					}
 				});
 			}).build());

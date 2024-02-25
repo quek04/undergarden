@@ -13,19 +13,19 @@ import quek.undergarden.entity.Forgotten;
 
 public class ForgottenRender extends HumanoidMobRenderer<Forgotten, ForgottenModel<Forgotten>> {
 
-    public ForgottenRender(EntityRendererProvider.Context context) {
-        super(context, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN)), 0.5F);
-        this.addLayer(new HumanoidArmorLayer<>(this, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_INNER_ARMOR)), new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_OUTER_ARMOR)), context.getModelManager()));
-        this.addLayer(new ForgottenEyesLayer<>(this));
-    }
+	public ForgottenRender(EntityRendererProvider.Context context) {
+		super(context, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN)), 0.5F);
+		this.addLayer(new HumanoidArmorLayer<>(this, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_INNER_ARMOR)), new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_OUTER_ARMOR)), context.getModelManager()));
+		this.addLayer(new ForgottenEyesLayer<>(this));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Forgotten entity) {
-        return new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Forgotten entity) {
+		return new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten.png");
+	}
 
-    @Override
-    protected void scale(Forgotten entity, PoseStack stack, float partialTicks) {
-        stack.scale(1.1F, 1.1F, 1.1F);
-    }
+	@Override
+	protected void scale(Forgotten entity, PoseStack stack, float partialTicks) {
+		stack.scale(1.1F, 1.1F, 1.1F);
+	}
 }

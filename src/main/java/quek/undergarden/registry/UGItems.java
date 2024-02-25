@@ -14,7 +14,7 @@ import quek.undergarden.item.BlisterbombItem;
 import quek.undergarden.item.CatalystItem;
 import quek.undergarden.item.DitchbulbPasteItem;
 import quek.undergarden.item.ForgottenSmithingTemplateItem;
-import quek.undergarden.item.armor.ForgottenArmorItem;
+import quek.undergarden.item.armor.AncientArmorItem;
 import quek.undergarden.item.armor.MasticatedChestplateItem;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
@@ -127,10 +127,9 @@ public class UGItems {
 	public static final RegistryObject<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.LEGGINGS));
 	public static final RegistryObject<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.BOOTS));
 
-	public static final RegistryObject<Item> FORGOTTEN_HELMET = ITEMS.register("forgotten_helmet", () -> new ForgottenArmorItem(ArmorItem.Type.HELMET));
-	public static final RegistryObject<Item> FORGOTTEN_CHESTPLATE = ITEMS.register("forgotten_chestplate", () -> new ForgottenArmorItem(ArmorItem.Type.CHESTPLATE));
-	public static final RegistryObject<Item> FORGOTTEN_LEGGINGS = ITEMS.register("forgotten_leggings", () -> new ForgottenArmorItem(ArmorItem.Type.LEGGINGS));
-
+	public static final RegistryObject<Item> ANCIENT_HELMET = ITEMS.register("ancient_helmet", () -> new AncientArmorItem(ArmorItem.Type.HELMET));
+	public static final RegistryObject<Item> ANCIENT_CHESTPLATE = ITEMS.register("ancient_chestplate", () -> new AncientArmorItem(ArmorItem.Type.CHESTPLATE));
+	public static final RegistryObject<Item> ANCIENT_LEGGINGS = ITEMS.register("ancient_leggings", () -> new AncientArmorItem(ArmorItem.Type.LEGGINGS));
 
 	//foods/plants
 	public static final RegistryObject<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new ItemNameBlockItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));

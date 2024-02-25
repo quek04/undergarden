@@ -20,8 +20,8 @@ public class UtheriumCritParticle extends TextureSheetParticle {
 		this.zd += zSpeed * 0.05D;
 		this.quadSize *= 0.75F;
 		this.hasPhysics = true;
-		this.rotSpeed = (float)Math.toRadians(this.random.nextBoolean() ? -90.0D : 90.0D);
-		this.spinAcceleration = (float)Math.toRadians(this.random.nextBoolean() ? -15.0D : 15.0D);
+		this.rotSpeed = (float) Math.toRadians(this.random.nextBoolean() ? -90.0D : 90.0D);
+		this.spinAcceleration = (float) Math.toRadians(this.random.nextBoolean() ? -15.0D : 15.0D);
 	}
 
 	@Override

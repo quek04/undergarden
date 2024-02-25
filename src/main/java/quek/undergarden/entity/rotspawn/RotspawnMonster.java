@@ -100,7 +100,7 @@ public class RotspawnMonster extends Monster {
 
 		@Override
 		public boolean canUse() {
-			return ((RotspawnMonster)this.mob).fleeTime <= 0 && super.canUse();
+			return ((RotspawnMonster) this.mob).fleeTime <= 0 && super.canUse();
 		}
 	}
 }

@@ -126,7 +126,6 @@ public class Gloomper extends Animal {
 
 	}
 
-	
 	public float getJumpCompletion(float delta) {
 		return this.jumpDuration == 0 ? 0.0F : ((float) this.jumpTicks + delta) / (float) this.jumpDuration;
 	}

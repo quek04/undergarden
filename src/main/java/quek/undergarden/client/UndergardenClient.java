@@ -144,8 +144,7 @@ public class UndergardenClient {
 				UGBlocks.DROOPVINE_PLANT.get()
 		);
 
-		event.register((state, world, pos, tint) ->
-				FastColor.ARGB32.color(0, 54, 45, 66),
+		event.register((state, world, pos, tint) -> FastColor.ARGB32.color(0, 54, 45, 66),
 				UGBlocks.GLOOMGOURD_STEM.get(),
 				UGBlocks.GLOOMGOURD_STEM_ATTACHED.get()
 		);
@@ -232,18 +231,18 @@ public class UndergardenClient {
 		@SubscribeEvent
 		public static void undergardenFog(ViewportEvent.RenderFog event) {
 			if (UndergardenConfig.Client.toggle_undergarden_fog.get()) {
-				Minecraft minecraft = Minecraft.getInstance();
-				LocalPlayer player = minecraft.player;
-				Camera camera = event.getCamera();
-				if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && camera.getFluidInCamera() == FogType.NONE && event.getType() == FogType.NONE) {
+				LocalPlayer player = Minecraft.getInstance().player;
+				if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && event.getCamera().getFluidInCamera() == FogType.NONE && event.getType() == FogType.NONE) {
                     if (player.level().getBiome(player.getOnPos()).is(UGBiomes.DEPTHS)) {
-                        RenderSystem.setShaderFogStart(-30.0F);
-                        RenderSystem.setShaderFogEnd(50.0F);
-                        RenderSystem.setShaderFogShape(FogShape.SPHERE);
+                        event.setNearPlaneDistance(-30.0F);
+                        event.setFarPlaneDistance(50.0F);
+                        event.setFogShape(FogShape.SPHERE);
+                        event.setCanceled(true);
                     } else {
-                        RenderSystem.setShaderFogStart(-30.0F);
-                        RenderSystem.setShaderFogEnd(225.0F);
-                        RenderSystem.setShaderFogShape(FogShape.SPHERE);
+                        event.setNearPlaneDistance(-30.0F);
+                        event.setFarPlaneDistance(225.0F);
+                        event.setFogShape(FogShape.SPHERE);
+                        event.setCanceled(true);
                     }
 				}
 			}

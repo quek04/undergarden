@@ -17,6 +17,9 @@
           }
         }
       ]
+    },
+    {
+      "processor_type": "undergarden:no_waterlogging"
     }
   ]
 }

@@ -27,7 +27,8 @@ public class DwellerJumpGoal extends JumpGoal {
 	}
 
 	private boolean isAbleToFreelyJump() {
-		if (!this.dweller.getPassengers().isEmpty() || this.dweller.getWildJumpCooldown() > 0 || !this.dweller.onGround()) return false;
+		if (!this.dweller.getPassengers().isEmpty() || this.dweller.getWildJumpCooldown() > 0 || !this.dweller.onGround())
+			return false;
 		return this.dweller.getPanicGoal() != null && !this.dweller.getPanicGoal().isRunning() &&
 				this.dweller.getAvoidGoal() != null && !this.dweller.getAvoidGoal().isRunning();
 	}

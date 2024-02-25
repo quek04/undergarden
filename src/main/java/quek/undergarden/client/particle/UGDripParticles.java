@@ -37,10 +37,11 @@ public class UGDripParticles extends DripParticle {
 
 	public static TextureSheetParticle createBloodLandParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 		DripParticle dripparticle = new DripParticle.DripLandParticle(level, x, y, z, Fluids.EMPTY);
-		dripparticle.setLifetime((int)(64.0D / (Math.random() * 0.8D + 0.2D)));
+		dripparticle.setLifetime((int) (64.0D / (Math.random() * 0.8D + 0.2D)));
 		dripparticle.setColor(0.622F, 0.082F, 0.082F);
 		return dripparticle;
 	}
+
 	public static TextureSheetParticle createInkHangParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 		DripParticle hangParticle = new DripParticle.DripHangParticle(level, x, y, z, Fluids.EMPTY, UGParticleTypes.FALLING_INK.get());
 		hangParticle.gravity *= 0.01F;
@@ -58,7 +59,7 @@ public class UGDripParticles extends DripParticle {
 
 	public static TextureSheetParticle createInkLandParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 		DripParticle dripparticle = new DripParticle.DripLandParticle(level, x, y, z, Fluids.EMPTY);
-		dripparticle.setLifetime((int)(64.0D / (Math.random() * 0.8D + 0.2D)));
+		dripparticle.setLifetime((int) (64.0D / (Math.random() * 0.8D + 0.2D)));
 		dripparticle.setColor(0.0F, 0.0F, 0.0F);
 		return dripparticle;
 	}

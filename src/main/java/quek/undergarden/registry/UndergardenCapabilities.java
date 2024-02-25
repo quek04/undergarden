@@ -21,20 +21,21 @@ import quek.undergarden.capability.UndergardenPortalCapability;
 @Mod.EventBusSubscriber(modid = Undergarden.MODID)
 public class UndergardenCapabilities {
 
-    public static final Capability<IUndergardenPortal> UNDERGARDEN_PORTAL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+	public static final Capability<IUndergardenPortal> UNDERGARDEN_PORTAL_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
+	});
 
-    @SubscribeEvent
-    public static void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof Player player) {
-            UndergardenPortalCapability portal = new UndergardenPortalCapability(player);
-            LazyOptional<IUndergardenPortal> capability = LazyOptional.of(() -> portal);
-            ICapabilityProvider provider = new ICapabilityProvider() {
-                @Override
-                public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-                    return UNDERGARDEN_PORTAL_CAPABILITY.orEmpty(cap, capability);
-                }
-            };
-            event.addCapability(new ResourceLocation(Undergarden.MODID, "portal"), provider);
-        }
-    }
+	@SubscribeEvent
+	public static void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
+		if (event.getObject() instanceof Player player) {
+			UndergardenPortalCapability portal = new UndergardenPortalCapability(player);
+			LazyOptional<IUndergardenPortal> capability = LazyOptional.of(() -> portal);
+			ICapabilityProvider provider = new ICapabilityProvider() {
+				@Override
+				public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+					return UNDERGARDEN_PORTAL_CAPABILITY.orEmpty(cap, capability);
+				}
+			};
+			event.addCapability(new ResourceLocation(Undergarden.MODID, "portal"), provider);
+		}
+	}
 }

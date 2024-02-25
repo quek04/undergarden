@@ -5,15 +5,19 @@ import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 
 @AutoRegisterCapability
 public interface IUndergardenPortal {
-    Player getPlayer();
-    void setInPortal(boolean inPortal);
-    boolean isInsidePortal();
+	Player getPlayer();
 
-    void setPortalTimer(int timer);
-    int getPortalTimer();
+	void setInPortal(boolean inPortal);
 
-    float getPortalAnimTime();
-    float getPrevPortalAnimTime();
+	boolean isInsidePortal();
 
-    void handleUndergardenPortal();
+	void setPortalTimer(int timer);
+
+	int getPortalTimer();
+
+	float getPortalAnimTime();
+
+	float getPrevPortalAnimTime();
+
+	void handleUndergardenPortal();
 }

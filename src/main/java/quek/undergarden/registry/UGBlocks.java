@@ -324,7 +324,7 @@ public class UGBlocks {
 				return new SignItem(new Item.Properties().stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
 			} else if (Objects.requireNonNull(block.get()) == GRONGLE_SIGN.get()) {
 				return new SignItem(new Item.Properties().stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
-			}  else if (Objects.requireNonNull(block.get()) == SMOGSTEM_HANGING_SIGN.get()) {
+			} else if (Objects.requireNonNull(block.get()) == SMOGSTEM_HANGING_SIGN.get()) {
 				return new HangingSignItem(SMOGSTEM_HANGING_SIGN.get(), SMOGSTEM_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (Objects.requireNonNull(block.get()) == WIGGLEWOOD_HANGING_SIGN.get()) {
 				return new HangingSignItem(WIGGLEWOOD_HANGING_SIGN.get(), WIGGLEWOOD_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));

@@ -25,7 +25,10 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGDamageSources;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGTags;
 
 public class BlisterberryBushBlock extends BushBlock implements BonemealableBlock {
 

@@ -247,7 +247,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		if (stepHeight > 0.0F && flag3 && (flag || flag2)) {
 			Vec3 vec31 = collideBoundingBox(this, new Vec3(vec.x(), stepHeight, vec.z()), aabb, this.level(), list);
 			Vec3 vec32 = collideBoundingBox(this, new Vec3(0.0D, stepHeight, 0.0D), aabb.expandTowards(vec.x(), 0.0D, vec.z()), this.level(), list);
-			if (vec32.y() < (double)stepHeight) {
+			if (vec32.y() < (double) stepHeight) {
 				Vec3 vec33 = collideBoundingBox(this, new Vec3(vec.x(), 0.0D, vec.z()), aabb.move(vec32), this.level(), list).add(vec32);
 				if (vec33.horizontalDistanceSqr() > vec31.horizontalDistanceSqr()) {
 					vec31 = vec33;
@@ -309,15 +309,15 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 
 	public void jump(boolean moveHorizontally) {
 		double d0 = this.getBlockJumpFactor();
-		double d1 = d0 + (double)this.getJumpBoostPower();
+		double d1 = d0 + (double) this.getJumpBoostPower();
 		Vec3 vec3 = this.getDeltaMovement();
 		this.setDeltaMovement(vec3.x(), d1, vec3.z());
 		this.setIsJumping(true);
 		this.hasImpulse = true;
 		ForgeHooks.onLivingJump(this);
 		if (moveHorizontally) {
-			float f = Mth.sin(this.getYRot() * ((float)Math.PI / 180F));
-			float f1 = Mth.cos(this.getYRot() * ((float)Math.PI / 180F));
+			float f = Mth.sin(this.getYRot() * ((float) Math.PI / 180F));
+			float f1 = Mth.cos(this.getYRot() * ((float) Math.PI / 180F));
 			this.setDeltaMovement(this.getDeltaMovement().add(-0.4F * f, 0.0D, 0.4F * f1));
 		}
 	}
