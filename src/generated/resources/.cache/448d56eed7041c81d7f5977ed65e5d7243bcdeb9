@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-22T19:38:41.3216859	Undergarden Item Models
+// 1.20.1	2024-02-28T15:24:38.152883	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -74,6 +74,8 @@ be5ab78320f8c6af0c2204c0357a1bc67965ff36 assets/undergarden/models/item/depthroc
 3b1a1188d19e5c629d5ce9463b41556de67f9d88 assets/undergarden/models/item/ditchbulb.json
 84321adf6f6269021450c97db288f0a152645b6c assets/undergarden/models/item/ditchbulb_paste.json
 5789e9aa4c582f2e8d68a1d7eaa117d98decf646 assets/undergarden/models/item/ditchbulb_plant.json
+91d7aee40a619093a0b215586025252316bbcab8 assets/undergarden/models/item/dreadrock.json
+1d7c7deb3166f72de40994024c0a3552c082c898 assets/undergarden/models/item/dreadrock_rogdorium_ore.json
 73a393fe47b1aaaf24313702a1ca96b5c44b5819 assets/undergarden/models/item/droopvine_item.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/dweller_spawn_egg.json
 c0e8ea1b02ad0a123b0c58b66340e061bfee35ab assets/undergarden/models/item/dweller_steak.json
@@ -168,9 +170,14 @@ a107e247146e1facb042af47b21c694458c17b15 assets/undergarden/models/item/polished
 0fc71ee818510cf1119fd2cca486a61c5d36cd3f assets/undergarden/models/item/raw_froststeel_block.json
 1201ca1b664aaf60c0564c29ee7b5c716d12bc72 assets/undergarden/models/item/raw_gloomper_leg.json
 4536d05b1819ad84656d05c5db60c2da32d13911 assets/undergarden/models/item/raw_gwibling.json
+56c239e0338c3bf3d3f1b86dec71a71aa5b0d01f assets/undergarden/models/item/raw_rogdorium.json
+579ffbf8a43a7caab94e101b90231e8f007144b3 assets/undergarden/models/item/raw_rogdorium_block.json
 a7aa476a9940178842b82d4fb1305474d5e832cd assets/undergarden/models/item/regalium_block.json
 aa8ed02244470d559527fb64cf5d04367ca1c2b4 assets/undergarden/models/item/regalium_crystal.json
 58973c1b8803dd7e6e9f1a7631979bb2b1f1281b assets/undergarden/models/item/roasted_underbeans.json
+0e429282157df54a316847af90941c56c1ab07d5 assets/undergarden/models/item/rogdorium_block.json
+14a51f4ac34ed77550ce1a9aea1131edce13bb0a assets/undergarden/models/item/rogdorium_ingot.json
+574ae8e52118ddee2cd7f47bda828409e184d3a2 assets/undergarden/models/item/rogdorium_nugget.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotbeast_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotling_spawn_egg.json
 40141e2ab72043141ce8fa10ca8320b5ed7c75fa assets/undergarden/models/item/rotten_blisterberry.json

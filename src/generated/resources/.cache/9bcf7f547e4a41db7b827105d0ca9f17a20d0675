@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-18T13:13:38.2758545	Undergarden Block Tags
+// 1.20.1	2024-02-28T15:24:38.1467711	Undergarden Block Tags
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -7,7 +7,7 @@ bad58d012e76aabbd30db15906b541b6d206a5c1 data/forge/tags/blocks/glass/colorless.
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/forge/tags/blocks/glass/silica.json
 35e33f58ef9fa9a58d3a6f9263f433985c0ef7fe data/forge/tags/blocks/glass_panes.json
 35e33f58ef9fa9a58d3a6f9263f433985c0ef7fe data/forge/tags/blocks/glass_panes/colorless.json
-db55d2ad566e237ae4f9c7be135014b68da9cb35 data/forge/tags/blocks/ores.json
+60d51dc24c17cfa14d4d53693908d341b325b0a3 data/forge/tags/blocks/ores.json
 920d91b08adc319f5e21ad24bd5b404312ac3697 data/forge/tags/blocks/ores/cloggrum.json
 62c40ea267632e8e82f52a31fe05cb49de3176a0 data/forge/tags/blocks/ores/coal.json
 2a9940ae63110d339b9dc8547f89e0dc4d24307e data/forge/tags/blocks/ores/diamond.json
@@ -15,25 +15,30 @@ fc5ae36fdf5ea4c696b5449231b913194e494f99 data/forge/tags/blocks/ores/froststeel.
 1ff4fda258af9af2b26506246439633b3440f264 data/forge/tags/blocks/ores/gold.json
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/forge/tags/blocks/ores/iron.json
 d167dc7c6307f29c3576dd30cbd4f279298280a5 data/forge/tags/blocks/ores/regalium.json
+c60715a0c25bcbfea2fca9df9ca1667ccdfc33b4 data/forge/tags/blocks/ores/rogdorium.json
 bcc2d1842d284580d780c4b2b979decf79afb893 data/forge/tags/blocks/ores/utherium.json
 978f34d5e3602db546a942bc55428eedff0df7b1 data/forge/tags/blocks/ores_in_ground/depthrock.json
+c60715a0c25bcbfea2fca9df9ca1667ccdfc33b4 data/forge/tags/blocks/ores_in_ground/dreadrock.json
 82efef989ac198a1251d6e7866d4ad1858565b8e data/forge/tags/blocks/ores_in_ground/shiverstone.json
 cc5b4908b5d5d816001aa9c6baaf1c66dac6f42f data/forge/tags/blocks/ores_in_ground/tremblecrust.json
 2edb0616f83e57e7d98c4ab93226cc8008e68de5 data/forge/tags/blocks/ore_bearing_ground/depthrock.json
+cbc9652a42caf8f045b4a2303a296da3185f69ab data/forge/tags/blocks/ore_bearing_ground/dreadrock.json
 53dadb11482fdd04c73848240ea721d1176b5286 data/forge/tags/blocks/ore_bearing_ground/shiverstone.json
 be14d2a8e1829e2bd4075385a1618a5d038e0920 data/forge/tags/blocks/ore_bearing_ground/tremblecrust.json
-db55d2ad566e237ae4f9c7be135014b68da9cb35 data/forge/tags/blocks/ore_rates/singular.json
+60d51dc24c17cfa14d4d53693908d341b325b0a3 data/forge/tags/blocks/ore_rates/singular.json
 e6a229594992a9243c23cf327981fe7697ecc4de data/forge/tags/blocks/ore_rates/sparse.json
 a8875da36804ee7aa34e82ce3fda06e61ac6b429 data/forge/tags/blocks/sand.json
 a8875da36804ee7aa34e82ce3fda06e61ac6b429 data/forge/tags/blocks/sand/colorless.json
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/forge/tags/blocks/stone.json
-13c73c45b560e59ca5b74d7c8b7d546ae10f3562 data/forge/tags/blocks/storage_blocks.json
+cb68d8163056bf36e6d85c7466ea6415a8039227 data/forge/tags/blocks/storage_blocks.json
 b0d52e6b3906ec7fd9849cec019a4ed84f70ba01 data/forge/tags/blocks/storage_blocks/cloggrum.json
 5304b3bf9402d2bf37f94d8908e9910fd9de9016 data/forge/tags/blocks/storage_blocks/forgotten_metal.json
 f6351c69c0c850e784a6001e86af48b79515252d data/forge/tags/blocks/storage_blocks/froststeel.json
 38ed12ec56267b879e56ead1850128d4e00fef93 data/forge/tags/blocks/storage_blocks/raw_cloggrum.json
 4b02f35b2bd70258e3fd2a06bcf1f354697b17a0 data/forge/tags/blocks/storage_blocks/raw_froststeel.json
+9594fea4f7a951f1000cf9f055b82df1667607d6 data/forge/tags/blocks/storage_blocks/raw_rogdorium.json
 810ef04646d83f141fff0d6dd5ae8fa940fe6fcd data/forge/tags/blocks/storage_blocks/regalium.json
+3bdef93231894b46bd36181f7f8698a941403928 data/forge/tags/blocks/storage_blocks/rogdorium.json
 52b5ca18e5f7310e1c9836dfa8911171d203dd17 data/forge/tags/blocks/storage_blocks/utherium.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/animals_spawnable_on.json
 826d2299db376d2d8ebd105748378fea7ec10f17 data/minecraft/tags/blocks/bamboo_plantable_on.json
@@ -60,7 +65,7 @@ bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/blocks/impermeable.
 0d90808086e3aad6dc31200f215524957736650a data/minecraft/tags/blocks/maintains_farmland.json
 fafff32dd87177c6b6ffab623faf9add1e2b449a data/minecraft/tags/blocks/mineable/axe.json
 78905c3a496e4d94c24d07af3e585bf14688d33b data/minecraft/tags/blocks/mineable/hoe.json
-5f8203e134b4f4491c577901f9afd1de117e9e95 data/minecraft/tags/blocks/mineable/pickaxe.json
+3dd201f9cbc02e553390e691becb98070538559d data/minecraft/tags/blocks/mineable/pickaxe.json
 69d2571d2d15a8aefb59f5d5ba8c0d1952690da0 data/minecraft/tags/blocks/mineable/shovel.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/mushroom_grow_block.json
 d9d7618c3b761eb6be22a82adc7cb33b8bf129a7 data/minecraft/tags/blocks/needs_iron_tool.json
@@ -90,6 +95,7 @@ aafaf830e9ca896252ebc84c9ccc7e5bb2b0e5e8 data/minecraft/tags/blocks/wooden_trapd
 167c0dd12d5b92d32e097f8168ebc9247fb7f34e data/minecraft/tags/blocks/wool_carpets.json
 653bbc56a6821246b2b236646267136e31f37038 data/undergarden/tags/blocks/base_stone_undergarden.json
 2edb0616f83e57e7d98c4ab93226cc8008e68de5 data/undergarden/tags/blocks/depthrock_ore_replaceables.json
+cbc9652a42caf8f045b4a2303a296da3185f69ab data/undergarden/tags/blocks/dreadrock_ore_replaceables.json
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/blocks/grongle_logs.json
 963615f7d9b44e3d738714937b2f19b4ef75525e data/undergarden/tags/blocks/muncher_breakables.json
 695146ab3553cf9d293d63b66b7e9c70c22f850c data/undergarden/tags/blocks/mushrooms.json

@@ -283,6 +283,9 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.BUTTERBUNCH);
 			dropOther(UGBlocks.VIRULENT_MIX_CAULDRON, Items.CAULDRON);
 			this.add(UGBlocks.MUSHROOM_VEIL.get(), BlockLootSubProvider::createShearsOnlyDrop);
+			ore(UGBlocks.DREADROCK_ROGDORIUM_ORE, UGItems.RAW_ROGDORIUM);
+			dropSelf(UGBlocks.ROGDORIUM_BLOCK);
+			dropSelf(UGBlocks.RAW_ROGDORIUM_BLOCK);
 		}
 
 		@Override

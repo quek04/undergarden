@@ -121,6 +121,9 @@ public class UGBlockStates extends UGBlockstateProvider {
 						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", new ResourceLocation(Undergarden.MODID, "block/engorged_blood_mushroom_cap_3")))
 						.build()
 		);
+		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
+		block(UGBlocks.ROGDORIUM_BLOCK);
+		block(UGBlocks.RAW_ROGDORIUM_BLOCK);
 
 		stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
 		stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);

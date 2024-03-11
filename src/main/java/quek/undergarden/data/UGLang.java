@@ -80,11 +80,14 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.TREMBLECRUST_UTHERIUM_ORE, "Tremblecrust Utherium Ore");
 		addBlock(UGBlocks.DEPTHROCK_REGALIUM_ORE, "Depthrock Regalium Ore");
 		addBlock(UGBlocks.SHIVERSTONE_REGALIUM_ORE, "Shiverstone Regalium Ore");
+		addBlock(UGBlocks.DREADROCK_ROGDORIUM_ORE, "Dreadrock Rogdorium Ore");
 
 		addBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, "Block of Raw Cloggrum");
 		addBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, "Block of Raw Froststeel");
+		addBlock(UGBlocks.RAW_ROGDORIUM_BLOCK, "Block of Raw Rogdorium");
 		addBlock(UGBlocks.CLOGGRUM_BLOCK, "Block of Cloggrum");
 		addBlock(UGBlocks.FROSTSTEEL_BLOCK, "Block of Froststeel");
+		addBlock(UGBlocks.ROGDORIUM_BLOCK, "Block of Rogdorium");
 		addBlock(UGBlocks.UTHERIUM_BLOCK, "Block of Utherium");
 		addBlock(UGBlocks.REGALIUM_BLOCK, "Block of Regalium");
 		addBlock(UGBlocks.FORGOTTEN_BLOCK, "Block of Forgotten Metal");
@@ -241,6 +244,9 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.RAW_FROSTSTEEL, "Raw Froststeel");
 		addItem(UGItems.FROSTSTEEL_INGOT, "Froststeel Ingot");
 		addItem(UGItems.FROSTSTEEL_NUGGET, "Froststeel Nugget");
+		addItem(UGItems.RAW_ROGDORIUM, "Raw Rogdorium");
+		addItem(UGItems.ROGDORIUM_INGOT, "Rogdorium Ingot");
+		addItem(UGItems.ROGDORIUM_NUGGET, "Rogdorium Nugget");
 		addItem(UGItems.UTHERIC_SHARD, "Utheric Shard");
 		addItem(UGItems.UTHERIUM_CRYSTAL, "Utherium Crystal");
 		addItem(UGItems.REGALIUM_CRYSTAL, "Regalium Crystal");

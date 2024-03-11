@@ -27,6 +27,7 @@ public class UGItems {
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Undergarden.MODID);
 
+	public static final Rarity ROGDORIUM = Rarity.create("rogdorium", ChatFormatting.AQUA);
 	public static final Rarity FORGOTTEN = Rarity.create("forgotten", ChatFormatting.GREEN);
 
 	//discs
@@ -45,6 +46,10 @@ public class UGItems {
 	public static final RegistryObject<Item> RAW_FROSTSTEEL = ITEMS.register("raw_froststeel", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
+
+	public static final RegistryObject<Item> RAW_ROGDORIUM = ITEMS.register("raw_rogdorium", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
+	public static final RegistryObject<Item> ROGDORIUM_INGOT = ITEMS.register("rogdorium_ingot", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
+	public static final RegistryObject<Item> ROGDORIUM_NUGGET = ITEMS.register("rogdorium_nugget", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
 
 	public static final RegistryObject<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties()));
