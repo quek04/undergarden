@@ -17,7 +17,7 @@
     }
   },
   "start_height": {
-    "above_bottom": 48
+    "above_bottom": 112
   },
   "start_pool": "undergarden:catacombs/catacombs_entrance",
   "step": "surface_structures",
