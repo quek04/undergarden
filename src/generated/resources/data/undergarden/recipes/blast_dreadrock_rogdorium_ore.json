@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "undergarden:rogdorium_ingot",
+  "ingredient": {
+    "item": "undergarden:dreadrock_rogdorium_ore"
+  },
+  "result": "undergarden:rogdorium_ingot"
+}

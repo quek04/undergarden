@@ -347,6 +347,7 @@ public class UGRecipes extends UGRecipeProvider {
 
 		makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(consumer);
+		makeIngotToBlock(UGBlocks.ROGDORIUM_BLOCK, UGItems.ROGDORIUM_INGOT).save(consumer);
 		makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 		makeIngotToBlock(UGBlocks.REGALIUM_BLOCK, UGItems.REGALIUM_CRYSTAL).save(consumer);
 		makeIngotToBlock(UGBlocks.FORGOTTEN_BLOCK, UGItems.FORGOTTEN_INGOT).save(consumer);
@@ -355,6 +356,7 @@ public class UGRecipes extends UGRecipeProvider {
 
 		makeBlockToIngot(UGItems.CLOGGRUM_INGOT, UGBlocks.CLOGGRUM_BLOCK).save(consumer, name("cloggrum_block_to_ingot"));
 		makeBlockToIngot(UGItems.FROSTSTEEL_INGOT, UGBlocks.FROSTSTEEL_BLOCK).save(consumer, name("froststeel_block_to_ingot"));
+		makeBlockToIngot(UGItems.ROGDORIUM_INGOT, UGBlocks.ROGDORIUM_BLOCK).save(consumer, name("rogdorium_block_to_ingot"));
 		makeBlockToIngot(UGItems.UTHERIUM_CRYSTAL, UGBlocks.UTHERIUM_BLOCK).save(consumer, name("utherium_block_to_crystal"));
 		makeBlockToIngot(UGItems.REGALIUM_CRYSTAL, UGBlocks.REGALIUM_BLOCK).save(consumer, name("regalium_block_to_crystal"));
 		makeBlockToIngot(UGItems.FORGOTTEN_INGOT, UGBlocks.FORGOTTEN_BLOCK).save(consumer, name("forgotten_block_to_ingot"));
@@ -362,17 +364,21 @@ public class UGRecipes extends UGRecipeProvider {
 
 		makeIngotToNugget(UGItems.CLOGGRUM_NUGGET, UGItems.CLOGGRUM_INGOT).save(consumer, name("cloggrum_ingot_to_nugget"));
 		makeIngotToNugget(UGItems.FROSTSTEEL_NUGGET, UGItems.FROSTSTEEL_INGOT).save(consumer, name("froststeel_ingot_to_nugget"));
+		makeIngotToNugget(UGItems.ROGDORIUM_NUGGET, UGItems.ROGDORIUM_INGOT).save(consumer, name("rogdorium_ingot_to_nugget"));
 		makeIngotToNugget(UGItems.FORGOTTEN_NUGGET, UGItems.FORGOTTEN_INGOT).save(consumer, name("forgotten_ingot_to_nugget"));
 
 		makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).save(consumer, name("cloggrum_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).save(consumer, name("froststeel_nugget_to_ingot"));
+		makeNuggetToIngot(UGItems.ROGDORIUM_INGOT, UGItems.ROGDORIUM_NUGGET).save(consumer, name("rogdorium_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_nugget_to_ingot"));
 
 		makeIngotToBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, UGItems.RAW_CLOGGRUM).save(consumer);
 		makeIngotToBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, UGItems.RAW_FROSTSTEEL).save(consumer);
+		makeIngotToBlock(UGBlocks.RAW_ROGDORIUM_BLOCK, UGItems.RAW_ROGDORIUM).save(consumer);
 
 		makeBlockToIngot(UGItems.RAW_CLOGGRUM, UGBlocks.RAW_CLOGGRUM_BLOCK).save(consumer, name("raw_cloggrum_from_block"));
 		makeBlockToIngot(UGItems.RAW_FROSTSTEEL, UGBlocks.RAW_FROSTSTEEL_BLOCK).save(consumer, name("raw_froststeel_from_block"));
+		makeBlockToIngot(UGItems.RAW_ROGDORIUM, UGBlocks.RAW_ROGDORIUM_BLOCK).save(consumer, name("raw_rogdorium_from_block"));
 
 		makeSword(UGItems.CLOGGRUM_SWORD, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeSword(UGItems.FROSTSTEEL_SWORD, UGItems.FROSTSTEEL_INGOT).save(consumer);
@@ -528,6 +534,7 @@ public class UGRecipes extends UGRecipeProvider {
 		ore(Items.DIAMOND, ImmutableList.of(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get()), 1.0F, "diamond", consumer);
 		ore(UGItems.CLOGGRUM_INGOT.get(), ImmutableList.of(UGItems.RAW_CLOGGRUM.get(), UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get()), 0.7F, "undergarden:cloggrum_ingot", consumer);
 		ore(UGItems.FROSTSTEEL_INGOT.get(), ImmutableList.of(UGItems.RAW_FROSTSTEEL.get(), UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get()), 0.7F, "undergarden:froststeel_ingot", consumer);
+		ore(UGItems.ROGDORIUM_INGOT.get(), ImmutableList.of(UGItems.RAW_ROGDORIUM.get(), UGBlocks.DREADROCK_ROGDORIUM_ORE.get()), 0.7F, "undergarden:rogdorium_ingot", consumer);
 		ore(UGItems.UTHERIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get()), 1.0F, "undergarden:utherium", consumer);
 		ore(UGItems.REGALIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get()), 1.0F, "undergarden:regalium_crystal", consumer);
 

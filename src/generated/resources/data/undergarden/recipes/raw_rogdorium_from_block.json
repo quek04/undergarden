@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "undergarden:raw_rogdorium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "undergarden:raw_rogdorium"
+  }
+}
