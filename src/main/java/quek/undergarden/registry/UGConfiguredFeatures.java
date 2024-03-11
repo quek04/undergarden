@@ -52,6 +52,7 @@ public class UGConfiguredFeatures {
 	public static final RuleTest BASE_STONE_UNDERGARDEN = new TagMatchTest(UGTags.Blocks.BASE_STONE_UNDERGARDEN);
 	public static final RuleTest DEPTHROCK_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES);
 	public static final RuleTest SHIVERSTONE_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES);
+	public static final RuleTest DREADROCK_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.DREADROCK_ORE_REPLACEABLES);
 	public static final RuleTest TREMBLECRUST_ORE_REPLACEABLES = new TagMatchTest(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES);
 
 	//ores
@@ -61,6 +62,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DIAMOND_ORE = create("diamond_ore");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> CLOGGRUM_ORE = create("cloggrum_ore");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> FROSTSTEEL_ORE = create("froststeel_ore");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ROGDORIUM_ORE = create("rogdorium_ore");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_ORE = create("utherium_ore");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> REGALIUM_ORE = create("regalium_ore");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SHIVERSTONE_ORE = create("shiverstone_ore");
@@ -130,6 +132,7 @@ public class UGConfiguredFeatures {
 		context.register(DIAMOND_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_DIAMOND_ORE.get().defaultBlockState()), OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_DIAMOND_ORE.get().defaultBlockState())), 8, 0.5F)));
 		context.register(CLOGGRUM_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get().defaultBlockState()), OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get().defaultBlockState())), 9)));
 		context.register(FROSTSTEEL_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get().defaultBlockState())), 9)));
+		context.register(ROGDORIUM_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DREADROCK_ORE_REPLACEABLES, UGBlocks.DREADROCK_ROGDORIUM_ORE.get().defaultBlockState())), 9)));
 		context.register(UTHERIUM_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_UTHERIUM_ORE.get().defaultBlockState()), OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get().defaultBlockState()), OreConfiguration.target(TREMBLECRUST_ORE_REPLACEABLES, UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get().defaultBlockState())), 8, 0.5F)));
 		context.register(REGALIUM_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_REGALIUM_ORE.get().defaultBlockState()), OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_REGALIUM_ORE.get().defaultBlockState())), 4)));
 		context.register(SHIVERSTONE_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(BASE_STONE_UNDERGARDEN, UGBlocks.SHIVERSTONE.get().defaultBlockState(), 33)));

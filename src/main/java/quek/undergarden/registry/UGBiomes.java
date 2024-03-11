@@ -444,6 +444,7 @@ public class UGBiomes {
 
 		context.register(DEPTHS, new Biome.BiomeBuilder()
 				.generationSettings(addOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+						.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.ROGDORIUM_ORE)
 						.build())
 				.mobSpawnSettings(new MobSpawnSettings.Builder().build())
 				.hasPrecipitation(false)

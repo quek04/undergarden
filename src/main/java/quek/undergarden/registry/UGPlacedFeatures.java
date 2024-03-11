@@ -28,6 +28,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> DIAMOND_ORE = create("diamond_ore");
 	public static final ResourceKey<PlacedFeature> CLOGGRUM_ORE = create("cloggrum_ore");
 	public static final ResourceKey<PlacedFeature> FROSTSTEEL_ORE = create("froststeel_ore");
+	public static final ResourceKey<PlacedFeature> ROGDORIUM_ORE = create("rogdorium_ore");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_ORE = create("utherium_ore");
 	public static final ResourceKey<PlacedFeature> REGALIUM_ORE = create("regalium_ore");
 	public static final ResourceKey<PlacedFeature> SHIVERSTONE_ORE = create("shiverstone_ore");
@@ -100,6 +101,7 @@ public class UGPlacedFeatures {
 		context.register(DIAMOND_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DIAMOND_ORE), OrePlacements.commonOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.belowTop(16), VerticalAnchor.belowTop(-16)))));
 		context.register(CLOGGRUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.CLOGGRUM_ORE), OrePlacements.commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128)))));
 		context.register(FROSTSTEEL_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.FROSTSTEEL_ORE), OrePlacements.commonOrePlacement(15, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128)))));
+		context.register(ROGDORIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ROGDORIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)))));
 		context.register(UTHERIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(32)))));
 		context.register(REGALIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.REGALIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(12)))));
 		context.register(SHIVERSTONE_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SHIVERSTONE_ORE), OrePlacements.commonOrePlacement(10, PlacementUtils.FULL_RANGE)));

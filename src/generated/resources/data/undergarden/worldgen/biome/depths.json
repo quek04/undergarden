@@ -51,7 +51,8 @@
       "undergarden:diamond_ore",
       "undergarden:cloggrum_ore",
       "undergarden:utherium_ore",
-      "undergarden:regalium_ore"
+      "undergarden:regalium_ore",
+      "undergarden:rogdorium_ore"
     ]
   ],
   "has_precipitation": false,
