@@ -224,7 +224,8 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 				UGBlocks.CLOGGRUM_TILE_SLAB.get(),
 				UGBlocks.DEPTHROCK_BED.get(),
 				UGBlocks.CLOGGRUM_LANTERN.get(),
-				UGBlocks.VIRULENT_MIX_CAULDRON.get()
+				UGBlocks.VIRULENT_MIX_CAULDRON.get(),
+				UGBlocks.UTHERIUM_GROWTH.get()
 		);
 		tag(BlockTags.MINEABLE_WITH_AXE).add(
 				UGBlocks.GLOOMGOURD.get(),

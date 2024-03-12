@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-28T15:24:38.1478785	Undergarden Block States
+// 1.20.1	2024-03-10T22:04:04.3170737	Undergarden Block States
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
 3caa35193766b684dc360e477e5208fb99d055f6 assets/undergarden/blockstates/ashen_deepturf.json
 6919d06515a0a18838e81bb21207cad377dbaa31 assets/undergarden/blockstates/ashen_deepturf_block.json
@@ -150,6 +150,7 @@ dc09d1de5b34dfe468c8e581d61db0df81adc1f1 assets/undergarden/blockstates/tremblec
 acf3b2e3ba11f579e6643fefc072fda2135bfce2 assets/undergarden/blockstates/tremblecrust_utherium_ore.json
 26cba7a7490c3e329319369bbabe63f75ae08646 assets/undergarden/blockstates/tremblecrust_wall.json
 6aa602cb30df5c9b9a67d4b133000e122acc83c1 assets/undergarden/blockstates/utherium_block.json
+079b14a4b411769d8e3178d72025efd07df3fd12 assets/undergarden/blockstates/utherium_growth.json
 a6fa0233ee8fe4539c334f0125a711d0397bf7be assets/undergarden/blockstates/veil_mushroom.json
 26fe50c6f10dc9821b4829d72b9a3ea3dcef0369 assets/undergarden/blockstates/veil_mushroom_cap.json
 85e7ced0be04d18fa7715f9fadb7e9ff186181fd assets/undergarden/blockstates/veil_mushroom_stem.json
@@ -423,6 +424,7 @@ b887cf19e41818d804cf566188d3989f7c6e35f2 assets/undergarden/models/block/tremble
 717e81ab075f6432932cb2ac737788cd538e53a1 assets/undergarden/models/block/tremblecrust_wall_side.json
 7f81ac33f9e4889bca4e0d08547fc44f8311503c assets/undergarden/models/block/tremblecrust_wall_side_tall.json
 bee822c1793fb69b8e23cd4519b551754ab82365 assets/undergarden/models/block/utherium_block.json
+f04a493b88d79dd183dacb39001e6e292c8504e5 assets/undergarden/models/block/utherium_growth.json
 1c2e6d85bc5ed049c0262932f0ffec98e6957693 assets/undergarden/models/block/veil_mushroom.json
 328f339f6590c10b030572776ff9d42f79538516 assets/undergarden/models/block/veil_mushroom_cap.json
 b9fa0c467bd5581110282f4c4d41f6ec0fe83e8d assets/undergarden/models/block/veil_mushroom_stem.json

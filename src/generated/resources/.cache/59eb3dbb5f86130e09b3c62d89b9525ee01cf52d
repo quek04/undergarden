@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-28T15:24:38.1436676	Loot Tables
+// 1.20.1	2024-03-10T22:04:04.3117968	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 2645cf89fe60362fa8217dc5825683e04755a423 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 151c2f71107612bce2811d7825f88937bff932f0 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
@@ -179,6 +179,7 @@ df68cf11988bc89db1c9c03de07502a9def84da6 data/undergarden/loot_tables/blocks/tre
 d4337e8eae5292de1cced16d543451f5c19ebec4 data/undergarden/loot_tables/blocks/tremblecrust_wall.json
 b3d158b4fc12d93364c0c0fddcf3ecf6470e926d data/undergarden/loot_tables/blocks/underbean_bush.json
 211539ce2de441a9b2b917dd6b0eb91282e446fa data/undergarden/loot_tables/blocks/utherium_block.json
+fdec00834033c068c7da8ac38092a318b1cddeda data/undergarden/loot_tables/blocks/utherium_growth.json
 7ad6888674019e33d832935e16dce8f18fb51c8d data/undergarden/loot_tables/blocks/veil_mushroom.json
 d439f3b7c2dc6c7558f220ec3a5f1f282a945fd3 data/undergarden/loot_tables/blocks/veil_mushroom_cap.json
 c794d61d6188a97bc3b20825bd7d5e7690fa60b2 data/undergarden/loot_tables/blocks/veil_mushroom_stem.json

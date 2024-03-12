@@ -39,7 +39,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "undergarden:utherium_growth_columns"
+    ],
     [],
     [
       "undergarden:deepsoil_ore",

@@ -1,6 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraftforge.registries.DeferredRegister;
@@ -23,4 +24,6 @@ public class UGFeatures {
 			"ice_pillar", () -> new IcePillarFeature(NoneFeatureConfiguration.CODEC));
 	public static final RegistryObject<Feature<DeltaFeatureConfiguration>> DELTA = FEATURES.register(
 			"delta", () -> new UGDeltaFeature(DeltaFeatureConfiguration.CODEC));
+	public static final RegistryObject<Feature<ColumnFeatureConfiguration>> UTHERIUM_GROWTH_COLUMNS = FEATURES.register(
+		"utherium_growth_columns", () -> new UtheriumGrowthColumnsFeature(ColumnFeatureConfiguration.CODEC));
 }

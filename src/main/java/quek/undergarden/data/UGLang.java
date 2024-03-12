@@ -112,6 +112,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.MOGMOSS_RUG, "Mogmoss Rug");
 		addBlock(UGBlocks.BLUE_MOGMOSS_RUG, "Blue Mogmoss Rug");
 		addBlock(UGBlocks.CLOGGRUM_LANTERN, "Cloggrum Lantern");
+		addBlock(UGBlocks.UTHERIUM_GROWTH, "Utherium Growth");
 
 		addBlock(UGBlocks.AMOROUS_BRISTLE, "Amorous Bristle");
 		addBlock(UGBlocks.MISERABELL, "Miserabell");

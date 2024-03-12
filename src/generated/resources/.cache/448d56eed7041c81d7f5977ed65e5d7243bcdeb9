@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-28T15:24:38.152883	Undergarden Item Models
+// 1.20.1	2024-03-10T22:04:04.3231162	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -256,6 +256,7 @@ b7201358dcd42374bef3d4be5a523e9b0a5402c2 assets/undergarden/models/item/utherium
 b92e4bb6602ddd65df848c11aaa8d2e3bd0b2cce assets/undergarden/models/item/utherium_boots.json
 9969946915ba26c0f63553dcbf1a163b4603f902 assets/undergarden/models/item/utherium_chestplate.json
 b2ff367dbc736ab272109187b9406c06779c8883 assets/undergarden/models/item/utherium_crystal.json
+b38a9a4d8db410643d883210565741a8af8108f6 assets/undergarden/models/item/utherium_growth.json
 ea5e6fa8a59dc09ee377ebe5f7831240a21afac2 assets/undergarden/models/item/utherium_helmet.json
 2cf3d19b425b8bc41811f6abf62a069625ff080a assets/undergarden/models/item/utherium_hoe.json
 e7c8174a93c259f32175caf620e810a5ca6c9dc6 assets/undergarden/models/item/utherium_leggings.json

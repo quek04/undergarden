@@ -286,6 +286,7 @@ public class UGLootTables extends LootTableProvider {
 			ore(UGBlocks.DREADROCK_ROGDORIUM_ORE, UGItems.RAW_ROGDORIUM);
 			dropSelf(UGBlocks.ROGDORIUM_BLOCK);
 			dropSelf(UGBlocks.RAW_ROGDORIUM_BLOCK);
+			dropSelf(UGBlocks.UTHERIUM_GROWTH);
 		}
 
 		@Override

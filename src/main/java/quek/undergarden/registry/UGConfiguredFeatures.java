@@ -120,6 +120,7 @@ public class UGConfiguredFeatures {
 	//misc
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMOG_VENT = create("smog_vent");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_PILLAR = create("ice_pillar");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH_COLUMNS = create("utherium_growth_columns");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Undergarden.MODID, name));
@@ -190,7 +191,7 @@ public class UGConfiguredFeatures {
 		//misc
 		context.register(SMOG_VENT, new ConfiguredFeature<>(UGFeatures.SMOG_VENT.get(), FeatureConfiguration.NONE));
 		context.register(ICE_PILLAR, new ConfiguredFeature<>(UGFeatures.ICE_PILLAR.get(), FeatureConfiguration.NONE));
-
+		context.register(UTHERIUM_GROWTH_COLUMNS, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH_COLUMNS.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 3), UniformInt.of(5, 10))));
 	}
 
 	private static RandomPatchConfiguration patch(Block block, int tries) {
