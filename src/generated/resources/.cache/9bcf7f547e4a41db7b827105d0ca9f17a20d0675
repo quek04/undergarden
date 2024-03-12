@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-11T20:36:04.912204	Undergarden Block Tags
+// 1.20.1	2024-03-11T21:11:25.5563142	Undergarden Block Tags
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -16,9 +16,9 @@ fc5ae36fdf5ea4c696b5449231b913194e494f99 data/forge/tags/blocks/ores/froststeel.
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/forge/tags/blocks/ores/iron.json
 d167dc7c6307f29c3576dd30cbd4f279298280a5 data/forge/tags/blocks/ores/regalium.json
 c60715a0c25bcbfea2fca9df9ca1667ccdfc33b4 data/forge/tags/blocks/ores/rogdorium.json
-bcc2d1842d284580d780c4b2b979decf79afb893 data/forge/tags/blocks/ores/utherium.json
+5bb61e2a52a47a6e811f803c39182a641744c9b9 data/forge/tags/blocks/ores/utherium.json
 978f34d5e3602db546a942bc55428eedff0df7b1 data/forge/tags/blocks/ores_in_ground/depthrock.json
-c60715a0c25bcbfea2fca9df9ca1667ccdfc33b4 data/forge/tags/blocks/ores_in_ground/dreadrock.json
+2315d2dc8d18cfa1e4b5ec49978cfd184434dcc6 data/forge/tags/blocks/ores_in_ground/dreadrock.json
 82efef989ac198a1251d6e7866d4ad1858565b8e data/forge/tags/blocks/ores_in_ground/shiverstone.json
 cc5b4908b5d5d816001aa9c6baaf1c66dac6f42f data/forge/tags/blocks/ores_in_ground/tremblecrust.json
 2edb0616f83e57e7d98c4ab93226cc8008e68de5 data/forge/tags/blocks/ore_bearing_ground/depthrock.json
@@ -65,7 +65,7 @@ bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/blocks/impermeable.
 0d90808086e3aad6dc31200f215524957736650a data/minecraft/tags/blocks/maintains_farmland.json
 fafff32dd87177c6b6ffab623faf9add1e2b449a data/minecraft/tags/blocks/mineable/axe.json
 78905c3a496e4d94c24d07af3e585bf14688d33b data/minecraft/tags/blocks/mineable/hoe.json
-d6d4d1e5f29dfec843fa207ff8599abdcfa80586 data/minecraft/tags/blocks/mineable/pickaxe.json
+1ed68ac42363f15aa30c414c1049c6fdd2c1b059 data/minecraft/tags/blocks/mineable/pickaxe.json
 69d2571d2d15a8aefb59f5d5ba8c0d1952690da0 data/minecraft/tags/blocks/mineable/shovel.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/mushroom_grow_block.json
 d9d7618c3b761eb6be22a82adc7cb33b8bf129a7 data/minecraft/tags/blocks/needs_iron_tool.json

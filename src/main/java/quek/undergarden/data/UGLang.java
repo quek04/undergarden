@@ -75,12 +75,13 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.DEPTHROCK_CLOGGRUM_ORE, "Depthrock Cloggrum Ore");
 		addBlock(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE, "Shiverstone Cloggrum Ore");
 		addBlock(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE, "Shiverstone Froststeel Ore");
+		addBlock(UGBlocks.DREADROCK_ROGDORIUM_ORE, "Dreadrock Rogdorium Ore");
 		addBlock(UGBlocks.DEPTHROCK_UTHERIUM_ORE, "Depthrock Utherium Ore");
 		addBlock(UGBlocks.SHIVERSTONE_UTHERIUM_ORE, "Shiverstone Utherium Ore");
 		addBlock(UGBlocks.TREMBLECRUST_UTHERIUM_ORE, "Tremblecrust Utherium Ore");
+		addBlock(UGBlocks.DREADROCK_UTHERIUM_ORE, "Dreadrock Utherium Ore");
 		addBlock(UGBlocks.DEPTHROCK_REGALIUM_ORE, "Depthrock Regalium Ore");
 		addBlock(UGBlocks.SHIVERSTONE_REGALIUM_ORE, "Shiverstone Regalium Ore");
-		addBlock(UGBlocks.DREADROCK_ROGDORIUM_ORE, "Dreadrock Rogdorium Ore");
 
 		addBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, "Block of Raw Cloggrum");
 		addBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, "Block of Raw Froststeel");

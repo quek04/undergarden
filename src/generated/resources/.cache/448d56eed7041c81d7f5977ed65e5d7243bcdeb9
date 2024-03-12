@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-10T22:04:04.3231162	Undergarden Item Models
+// 1.20.1	2024-03-11T21:14:27.6640991	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -76,6 +76,7 @@ be5ab78320f8c6af0c2204c0357a1bc67965ff36 assets/undergarden/models/item/depthroc
 5789e9aa4c582f2e8d68a1d7eaa117d98decf646 assets/undergarden/models/item/ditchbulb_plant.json
 91d7aee40a619093a0b215586025252316bbcab8 assets/undergarden/models/item/dreadrock.json
 1d7c7deb3166f72de40994024c0a3552c082c898 assets/undergarden/models/item/dreadrock_rogdorium_ore.json
+e916817ee66a298342a27f681ca359ff5627c09f assets/undergarden/models/item/dreadrock_utherium_ore.json
 73a393fe47b1aaaf24313702a1ca96b5c44b5819 assets/undergarden/models/item/droopvine_item.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/dweller_spawn_egg.json
 c0e8ea1b02ad0a123b0c58b66340e061bfee35ab assets/undergarden/models/item/dweller_steak.json

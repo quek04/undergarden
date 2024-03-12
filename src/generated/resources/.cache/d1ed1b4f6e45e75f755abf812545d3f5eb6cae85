@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-28T15:24:38.140163	Undergarden Item Tags
+// 1.20.1	2024-03-11T21:11:25.5502815	Undergarden Item Tags
 9b86bbc17df24411b53ea716b5b6b343f35d5caa data/forge/tags/items/armors/boots.json
 af8f07accb2d83fca68d1c3b0e34b65fb0d627c2 data/forge/tags/items/armors/chestplates.json
 190c6df9b3c9fce666bd129e9f9cc22ab09fa9ee data/forge/tags/items/armors/helmets.json
@@ -33,7 +33,7 @@ fc5ae36fdf5ea4c696b5449231b913194e494f99 data/forge/tags/items/ores/froststeel.j
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/forge/tags/items/ores/iron.json
 d167dc7c6307f29c3576dd30cbd4f279298280a5 data/forge/tags/items/ores/regalium.json
 c60715a0c25bcbfea2fca9df9ca1667ccdfc33b4 data/forge/tags/items/ores/rogdorium.json
-bcc2d1842d284580d780c4b2b979decf79afb893 data/forge/tags/items/ores/utherium.json
+5bb61e2a52a47a6e811f803c39182a641744c9b9 data/forge/tags/items/ores/utherium.json
 35d112f6ae1910e2c16695533c33760b311ef14e data/forge/tags/items/raw_materials.json
 7799f63bb2677d3bbdc16a7c1a13204a26bddcbd data/forge/tags/items/raw_materials/cloggrum.json
 a499256240329e35507ca6cd4c880d0a1746cad4 data/forge/tags/items/raw_materials/froststeel.json

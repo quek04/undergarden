@@ -49,7 +49,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(UGTags.Blocks.ORES_CLOGGRUM).add(UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get());
 		tag(UGTags.Blocks.ORES_FROSTSTEEL).add(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get());
 		tag(UGTags.Blocks.ORES_ROGDORIUM).add(UGBlocks.DREADROCK_ROGDORIUM_ORE.get());
-		tag(UGTags.Blocks.ORES_UTHERIUM).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get());
+		tag(UGTags.Blocks.ORES_UTHERIUM).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get());
 		tag(UGTags.Blocks.ORES_REGALIUM).add(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get());
 
 		tag(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM).add(UGBlocks.CLOGGRUM_BLOCK.get());
@@ -70,7 +70,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(UGTags.Blocks.SHIVERSTONE_ORES).add(UGBlocks.SHIVERSTONE_COAL_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get());
 
 		tag(UGTags.Blocks.DREADROCK_GROUND).add(UGBlocks.DREADROCK.get());
-		tag(UGTags.Blocks.DREADROCK_ORES).add(UGBlocks.DREADROCK_ROGDORIUM_ORE.get());
+		tag(UGTags.Blocks.DREADROCK_ORES).add(UGBlocks.DREADROCK_ROGDORIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get());
 
 		tag(UGTags.Blocks.TREMBLECRUST_GROUND).add(UGBlocks.TREMBLECRUST.get());
 		tag(UGTags.Blocks.TREMBLECRUST_ORES).add(UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get());
@@ -225,7 +225,8 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 				UGBlocks.DEPTHROCK_BED.get(),
 				UGBlocks.CLOGGRUM_LANTERN.get(),
 				UGBlocks.VIRULENT_MIX_CAULDRON.get(),
-				UGBlocks.UTHERIUM_GROWTH.get()
+				UGBlocks.UTHERIUM_GROWTH.get(),
+				UGBlocks.DREADROCK_UTHERIUM_ORE.get()
 		);
 		tag(BlockTags.MINEABLE_WITH_AXE).add(
 				UGBlocks.GLOOMGOURD.get(),

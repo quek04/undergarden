@@ -535,7 +535,7 @@ public class UGRecipes extends UGRecipeProvider {
 		ore(UGItems.CLOGGRUM_INGOT.get(), ImmutableList.of(UGItems.RAW_CLOGGRUM.get(), UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get()), 0.7F, "undergarden:cloggrum_ingot", consumer);
 		ore(UGItems.FROSTSTEEL_INGOT.get(), ImmutableList.of(UGItems.RAW_FROSTSTEEL.get(), UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get()), 0.7F, "undergarden:froststeel_ingot", consumer);
 		ore(UGItems.ROGDORIUM_INGOT.get(), ImmutableList.of(UGItems.RAW_ROGDORIUM.get(), UGBlocks.DREADROCK_ROGDORIUM_ORE.get()), 0.7F, "undergarden:rogdorium_ingot", consumer);
-		ore(UGItems.UTHERIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get()), 1.0F, "undergarden:utherium", consumer);
+		ore(UGItems.UTHERIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get()), 1.0F, "undergarden:utherium", consumer);
 		ore(UGItems.REGALIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get()), 1.0F, "undergarden:regalium_crystal", consumer);
 
 		smeltingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(consumer, name("smelt_cloggrum_item"));

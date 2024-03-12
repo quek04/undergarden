@@ -269,6 +269,7 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.ROGDORIUM_INGOT);
 		normalItem(UGItems.ROGDORIUM_NUGGET);
 		block(UGBlocks.UTHERIUM_GROWTH);
+		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
