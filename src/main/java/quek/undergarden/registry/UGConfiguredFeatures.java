@@ -8,7 +8,9 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.ConstantFloat;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -36,6 +38,7 @@ import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DepthrockPebblesBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
+import quek.undergarden.world.gen.feature.UtheriumCrystalConfiguration;
 import quek.undergarden.world.gen.foliageplacer.VeilFoliagePlacer;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
 import quek.undergarden.world.gen.treedecorator.GrongletTrunkDecorator;
@@ -120,7 +123,7 @@ public class UGConfiguredFeatures {
 	//misc
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMOG_VENT = create("smog_vent");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_PILLAR = create("ice_pillar");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH_COLUMNS = create("utherium_growth_columns");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH = create("utherium_growth");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Undergarden.MODID, name));
@@ -191,7 +194,10 @@ public class UGConfiguredFeatures {
 		//misc
 		context.register(SMOG_VENT, new ConfiguredFeature<>(UGFeatures.SMOG_VENT.get(), FeatureConfiguration.NONE));
 		context.register(ICE_PILLAR, new ConfiguredFeature<>(UGFeatures.ICE_PILLAR.get(), FeatureConfiguration.NONE));
-		context.register(UTHERIUM_GROWTH_COLUMNS, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH_COLUMNS.get(), new ColumnFeatureConfiguration(UniformInt.of(1, 3), UniformInt.of(5, 10))));
+		context.register(UTHERIUM_GROWTH, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH.get(), new UtheriumCrystalConfiguration(
+		new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(2, 5)),
+				new LargeDripstoneConfiguration(50, UniformInt.of(3, 16), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
+				0.4F)));
 	}
 
 	private static RandomPatchConfiguration patch(Block block, int tries) {
