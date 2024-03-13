@@ -32,6 +32,14 @@ public class UGDimensions {
 
 	public static final ResourceKey<LevelStem> UNDERGARDEN_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, name("undergarden"));
 
+	public static final ResourceKey<Level> OTHERSIDE_LEVEL = ResourceKey.create(Registries.DIMENSION, name("otherside"));
+
+	public static final ResourceKey<NoiseGeneratorSettings> OTHERSIDE_NOISE_GEN = ResourceKey.create(Registries.NOISE_SETTINGS, name("otherside"));
+
+	public static final ResourceKey<DimensionType> OTHERSIDE_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, name("otherside"));
+
+	public static final ResourceKey<LevelStem> OTHERSIDE_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, name("otherside"));
+
 	private static ResourceLocation name(String name) {
 		return new ResourceLocation(Undergarden.MODID, name);
 	}
@@ -53,6 +61,22 @@ public class UGDimensions {
 				name("undergarden"), // DimensionRenderInfo
 				0.1F, // ambient light
 				new DimensionType.MonsterSettings(true, false, UniformInt.of(0, 7), 0)));
+		context.register(OTHERSIDE_DIM_TYPE, new DimensionType(
+			OptionalLong.of(6000L), //fixed time
+			true, //skylight
+			false, //ceiling
+			false, //ultrawarm
+			true, //natural
+			1.0D, //coordinate scale
+			false, //bed works
+			false, //respawn anchor works
+			0, // Minimum Y Level
+			320, // Height + Min Y = Max Y
+			320, // Logical Height
+			BlockTags.INFINIBURN_OVERWORLD, //infiniburn
+			name("otherside"), // DimensionRenderInfo
+			0.0F, // ambient light
+			new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)));
 	}
 
 	public static void bootstrapStem(BootstapContext<LevelStem> context) {
@@ -61,6 +85,8 @@ public class UGDimensions {
 		HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
 		context.register(UNDERGARDEN_LEVEL_STEM, new LevelStem(dimTypes.getOrThrow(UNDERGARDEN_DIM_TYPE),
 				new UGNoiseBasedChunkGenerator(UGBiomes.buildBiomeSource(biomeRegistry), noiseGenSettings.getOrThrow(UNDERGARDEN_NOISE_GEN))));
+		context.register(OTHERSIDE_LEVEL_STEM, new LevelStem(dimTypes.getOrThrow(OTHERSIDE_DIM_TYPE),
+			new NoiseBasedChunkGenerator(UGBiomes.buildOthersideBiomeSource(biomeRegistry), noiseGenSettings.getOrThrow(OTHERSIDE_NOISE_GEN))));
 	}
 
 	public static void bootstrapNoise(BootstapContext<NoiseGeneratorSettings> context) {
@@ -243,6 +269,60 @@ public class UGDimensions {
 				false,
 				false,
 				false
+		));
+		context.register(OTHERSIDE_NOISE_GEN, new NoiseGeneratorSettings(
+			NoiseSettings.create(0, 320, 2, 1),
+			UGBlocks.TREMBLECRUST.get().defaultBlockState(),
+			Blocks.AIR.defaultBlockState(),
+			new NoiseRouter(
+				DensityFunctions.zero(), //barrier
+				DensityFunctions.zero(), //fluid level floodedness
+				DensityFunctions.zero(), //fluid level spread
+				DensityFunctions.zero(), //lava
+				DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.TEMPERATURE)), //temperature
+				DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.VEGETATION)), //vegetation
+				DensityFunctions.zero(), //continents
+				DensityFunctions.zero(), //erosion
+				DensityFunctions.zero(), //depth
+				DensityFunctions.zero(), //ridges
+				DensityFunctions.zero(), //initial density
+				DensityFunctions.mul(
+					DensityFunctions.constant(0.64D),
+					DensityFunctions.interpolated(
+						DensityFunctions.blendDensity(
+							DensityFunctions.add(
+								DensityFunctions.constant(-0.234375),
+								DensityFunctions.mul(
+									DensityFunctions.yClampedGradient(4, 32, 0.0D, 1.0D),
+									DensityFunctions.add(
+										DensityFunctions.constant(0.234375),
+										DensityFunctions.add(
+											DensityFunctions.constant(-23.4375),
+											DensityFunctions.mul(
+												DensityFunctions.yClampedGradient(64, 440, 1.0D, 0.0D),
+												DensityFunctions.add(
+													DensityFunctions.constant(23.4375),
+													BlendedNoise.createUnseeded(0.25D, 0.25D, 80, 160, 4)
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				).squeeze(), //final density
+				DensityFunctions.zero(), //vein toggle
+				DensityFunctions.zero(), //vein ridged
+				DensityFunctions.zero() //vein gap
+			),
+			SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState()),
+			List.of(),
+			-64,
+			false,
+			false,
+			false,
+			false
 		));
 	}
 }

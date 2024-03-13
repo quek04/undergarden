@@ -39,6 +39,8 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> WIGGLEWOOD_FOREST = create("wigglewood_forest");
 	public static final ResourceKey<Biome> DEPTHS = create("depths");
 
+	public static final ResourceKey<Biome> HOWLING_PLAINS = create("howling_plains");
+
 	private static ResourceKey<Biome> create(String name) {
 		return ResourceKey.create(Registries.BIOME, new ResourceLocation(Undergarden.MODID, name));
 	}
@@ -455,6 +457,17 @@ public class UGBiomes {
 						.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
 						.build())
 				.build());
+
+		context.register(HOWLING_PLAINS, new Biome.BiomeBuilder()
+				.generationSettings(new BiomeGenerationSettings.Builder(featureGetter, carverGetter).build())
+				.mobSpawnSettings(addRotspawn(new MobSpawnSettings.Builder()).build())
+				.hasPrecipitation(false)
+				.downfall(0.0F)
+				.temperature(0.0F)
+				.specialEffects(generateOthersideColors(new BiomeSpecialEffects.Builder(), 12364199, 5154490)
+					.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+					.build())
+			.build());
 	}
 
 	private static BiomeGenerationSettings.Builder addOresAndCaves(BiomeGenerationSettings.Builder builder) {
@@ -516,6 +529,16 @@ public class UGBiomes {
 				.foliageColorOverride(grass);
 	}
 
+	private static BiomeSpecialEffects.Builder generateOthersideColors(BiomeSpecialEffects.Builder builder, int skyFog, int grass) {
+		return builder
+			.skyColor(8079174)
+			.fogColor(skyFog)
+			.waterColor(342306)
+			.waterFogColor(332810)
+			.grassColorOverride(grass)
+			.foliageColorOverride(grass);
+	}
+
 	public static BiomeSource buildBiomeSource(HolderGetter<Biome> biomes) {
 		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(ImmutableList.of(
 				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(FORGOTTEN_FIELD)),
@@ -537,6 +560,12 @@ public class UGBiomes {
 				Pair.of(Climate.parameters(Climate.Parameter.point(-1.0F), Climate.Parameter.point(-0.4F), Climate.Parameter.point(-0.9F), Climate.Parameter.point(-0.7F), Climate.Parameter.point(-1.0F), Climate.Parameter.span(0.0F, 0.5F), 0.0F), biomes.getOrThrow(ICY_SEA)),
 
 				Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DEPTHS))
+		)));
+	}
+
+	public static BiomeSource buildOthersideBiomeSource(HolderGetter<Biome> biomes) {
+		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(ImmutableList.of(
+			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(HOWLING_PLAINS))
 		)));
 	}
 }
