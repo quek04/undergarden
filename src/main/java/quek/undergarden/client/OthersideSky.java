@@ -66,15 +66,14 @@ public class OthersideSky {
 					poseStack.popPose();
 				}*/
 
-		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 		poseStack.pushPose();
-		float f11 = 1.0F - level.getRainLevel(partialTick);
-		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, f11);
-		poseStack.mulPose(Axis.XN.rotationDegrees(75.0F));
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		poseStack.mulPose(Axis.XN.rotationDegrees(90.0F));
 		//poseStack.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
 
 		Matrix4f matrix4f1 = poseStack.last().pose();
-		float size = 50.0F;
+		float size = 200.0F;
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderTexture(0, VORTEX_LOCATION);
 		bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
@@ -143,15 +142,15 @@ public class OthersideSky {
 		float f3 = (float)(d2 - (double)Mth.floor(d2));
 		float f4 = (float)(d3 / 4.0D - (double)Mth.floor(d3 / 4.0D)) * 4.0F;
 		float f5 = (float)(d4 - (double)Mth.floor(d4));
-		Vec3 vec3 = level.getCloudColor(partialTick);
+		Vec3 cloudColor = level.getCloudColor(partialTick);
 		int i = (int)Math.floor(d2);
 		int j = (int)Math.floor(d3 / 4.0D);
 		int k = (int)Math.floor(d4);
-		if (i != levelRenderer.prevCloudX || j != levelRenderer.prevCloudY || k != levelRenderer.prevCloudZ || Minecraft.getInstance().options.getCloudsType() != levelRenderer.prevCloudsType || levelRenderer.prevCloudColor.distanceToSqr(vec3) > 2.0E-4D) {
+		if (i != levelRenderer.prevCloudX || j != levelRenderer.prevCloudY || k != levelRenderer.prevCloudZ || Minecraft.getInstance().options.getCloudsType() != levelRenderer.prevCloudsType || levelRenderer.prevCloudColor.distanceToSqr(cloudColor) > 2.0E-4D) {
 			levelRenderer.prevCloudX = i;
 			levelRenderer.prevCloudY = j;
 			levelRenderer.prevCloudZ = k;
-			levelRenderer.prevCloudColor = vec3;
+			levelRenderer.prevCloudColor = cloudColor;
 			levelRenderer.prevCloudsType = minecraft.options.getCloudsType();
 			levelRenderer.generateClouds = true;
 		}
@@ -164,7 +163,7 @@ public class OthersideSky {
 			}
 
 			levelRenderer.cloudBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-			BufferBuilder.RenderedBuffer buildClouds = levelRenderer.buildClouds(bufferbuilder, d2, d3, d4, vec3);
+			BufferBuilder.RenderedBuffer buildClouds = levelRenderer.buildClouds(bufferbuilder, d2, d3, d4, cloudColor);
 			levelRenderer.cloudBuffer.bind();
 			levelRenderer.cloudBuffer.upload(buildClouds);
 			VertexBuffer.unbind();
