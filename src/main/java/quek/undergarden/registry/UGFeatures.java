@@ -24,6 +24,6 @@ public class UGFeatures {
 			"ice_pillar", () -> new IcePillarFeature(NoneFeatureConfiguration.CODEC));
 	public static final RegistryObject<Feature<DeltaFeatureConfiguration>> DELTA = FEATURES.register(
 			"delta", () -> new UGDeltaFeature(DeltaFeatureConfiguration.CODEC));
-	public static final RegistryObject<Feature<ColumnFeatureConfiguration>> UTHERIUM_GROWTH_COLUMNS = FEATURES.register(
-		"utherium_growth_columns", () -> new UtheriumGrowthColumnsFeature(ColumnFeatureConfiguration.CODEC));
+	public static final RegistryObject<Feature<UtheriumCrystalConfiguration>> UTHERIUM_GROWTH = FEATURES.register(
+		"utherium_growth", () -> new UtheriumCrystalFeature(UtheriumCrystalConfiguration.CODEC));
 }
