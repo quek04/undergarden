@@ -5,7 +5,6 @@ import net.minecraft.Util;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
@@ -32,21 +31,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fluids.FluidInteractionRegistry;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.capability.IUndergardenPortal;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.Boomgourd;
@@ -67,13 +59,12 @@ public class Undergarden {
 
 	public static final String MODID = "undergarden";
 
-	public Undergarden() {
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+	public Undergarden(IEventBus bus) {
 
 		bus.addListener(this::setup);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
-		MinecraftForge.EVENT_BUS.addListener(this::portalTick);
+		NeoForge.EVENT_BUS.addListener(this::portalTick);
 
 		DeferredRegister<?>[] registers = {
 				UGBlockEntities.BLOCK_ENTITIES,
