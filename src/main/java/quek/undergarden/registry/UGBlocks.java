@@ -146,7 +146,7 @@ public class UGBlocks {
 	public static final RegistryObject<Block> FROZEN_DEEPTURF = register("frozen_deepturf", () -> new TallDeepturfVariantBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)));
 	public static final RegistryObject<Block> TALL_DEEPTURF = register("tall_deepturf", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS)));
 	public static final RegistryObject<Block> SHIMMERWEED = register("shimmerweed", () -> new ShimmerweedBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel((state) -> 12)));
-	public static final RegistryObject<Block> TALL_SHIMMERWEED = register("tall_shimmerweed", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).lightLevel((state) -> 14)));
+	public static final RegistryObject<Block> TALL_SHIMMERWEED = register("tall_shimmerweed", () -> new TallShimmerweedBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).lightLevel((state) -> 14)));
 	public static final RegistryObject<Block> DITCHBULB_PLANT = BLOCKS.register("ditchbulb_plant", () -> new DitchbulbBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).randomTicks().lightLevel((state) -> state.getValue(DitchbulbBlock.AGE) == 1 ? 6 : 0)));
 	public static final RegistryObject<StemGrownBlock> GLOOMGOURD = register("gloomgourd", () -> new GloomgourdBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).pushReaction(PushReaction.DESTROY).strength(1.0F).sound(SoundType.WOOD)));
 	public static final RegistryObject<Block> CARVED_GLOOMGOURD = register("carved_gloomgourd", () -> new CarvedGloomgourdBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).pushReaction(PushReaction.DESTROY).strength(1.0F).sound(SoundType.WOOD)));

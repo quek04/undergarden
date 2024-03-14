@@ -16,6 +16,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGParticleTypes;
 
 public class ShimmerweedBlock extends BushBlock implements BonemealableBlock, IForgeShearable {
 	protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
@@ -44,6 +45,15 @@ public class ShimmerweedBlock extends BushBlock implements BonemealableBlock, IF
 		if (doubleplantblock.defaultBlockState().canSurvive(level, pos) && level.isEmptyBlock(pos.above())) {
 			DoublePlantBlock.placeAt(level, doubleplantblock.defaultBlockState(), pos, 2);
 		}
+	}
 
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		double x = (double) pos.getX() + random.nextFloat();
+		double y = (double) pos.getY() + 0.2D + random.nextFloat();
+		double z = (double) pos.getZ() + random.nextFloat();
+		double xSpeed = (double) random.nextFloat() * -0.9D * (double) random.nextFloat();
+		double zSpeed = (double) random.nextFloat() * -0.9D * (double) random.nextFloat();
+		level.addParticle(UGParticleTypes.SHIMMER.get(), x, y, z, xSpeed, 0.0D, zSpeed);
 	}
 }
