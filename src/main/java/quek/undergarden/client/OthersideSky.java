@@ -127,22 +127,22 @@ public class OthersideSky {
 		RenderSystem.depthMask(true);
 	}
 
-	public static void renderClouds(int cloudY, ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
+	public static void renderClouds(int cloudY, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
 		RenderSystem.disableCull();
 		RenderSystem.enableBlend();
 		RenderSystem.enableDepthTest();
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 		RenderSystem.depthMask(true);
-		double d1 = (((float)ticks + partialTick) * 0.03F);
-		double d2 = (camX + d1) / 12.0D;
+		double d1 = (((float)ticks + partialTick) * 0.09F);
+		double d2 = camX / 12.0D;
 		double d3 = (cloudY - (float)camY + 0.33F);
-		double d4 = camZ / 12.0D + (double)0.33F;
+		double d4 = (camZ + d1) / 12.0D + (double)0.33F;
 		d2 -= (Mth.floor(d2 / 2048.0D) * 2048);
 		d4 -= (Mth.floor(d4 / 2048.0D) * 2048);
 		float f3 = (float)(d2 - (double)Mth.floor(d2));
 		float f4 = (float)(d3 / 4.0D - (double)Mth.floor(d3 / 4.0D)) * 4.0F;
 		float f5 = (float)(d4 - (double)Mth.floor(d4));
-		Vec3 cloudColor = level.getCloudColor(partialTick);
+		Vec3 cloudColor = new Vec3(0.69D, 0.59, 0.58D);
 		int i = (int)Math.floor(d2);
 		int j = (int)Math.floor(d3 / 4.0D);
 		int k = (int)Math.floor(d4);
