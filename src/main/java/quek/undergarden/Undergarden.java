@@ -108,6 +108,7 @@ public class Undergarden {
 		generator.addProvider(event.includeServer(), new UGBiomeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));
+		generator.addProvider(event.includeServer(), new UGDataMaps(output, lookupProvider));
 
 		generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
 				Component.literal("Undergarden resources"),

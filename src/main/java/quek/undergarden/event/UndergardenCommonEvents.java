@@ -99,39 +99,6 @@ public class UndergardenCommonEvents {
 			PotionBrewing.addMix(Potions.AWKWARD, UGItems.DROOPFRUIT.get(), UGPotions.GLOWING.get());
 			PotionBrewing.addMix(UGPotions.GLOWING.get(), Items.REDSTONE, UGPotions.LONG_GLOWING.get());
 
-			ComposterBlock.add(0.1F, UGItems.DROOPFRUIT.get());
-			ComposterBlock.add(0.1F, UGItems.UNDERBEANS.get());
-			ComposterBlock.add(0.2F, UGItems.BLISTERBERRY.get());
-			ComposterBlock.add(0.2F, UGItems.ROTTEN_BLISTERBERRY.get());
-			ComposterBlock.add(0.2F, UGItems.BLOOD_GLOBULE.get());
-			ComposterBlock.add(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
-			ComposterBlock.add(0.3F, UGItems.GLITTERKELP.get());
-			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
-			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
-			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_LEAVES.get());
-			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_SAPLING.get());
-			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_SAPLING.get());
-			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_SAPLING.get());
-			ComposterBlock.add(0.3F, UGBlocks.DEEPTURF.get());
-			ComposterBlock.add(0.3F, UGBlocks.SHIMMERWEED.get());
-			ComposterBlock.add(0.5F, UGBlocks.TALL_DEEPTURF.get());
-			ComposterBlock.add(0.5F, UGItems.DITCHBULB.get());
-			ComposterBlock.add(0.5F, UGBlocks.TALL_SHIMMERWEED.get());
-			ComposterBlock.add(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
-			ComposterBlock.add(0.65F, UGBlocks.VEIL_MUSHROOM.get());
-			ComposterBlock.add(0.65F, UGBlocks.INK_MUSHROOM.get());
-			ComposterBlock.add(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
-			ComposterBlock.add(0.65F, UGBlocks.GLOOMGOURD.get());
-			ComposterBlock.add(0.65F, UGBlocks.CARVED_GLOOMGOURD.get());
-			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_STEM.get());
-			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_STEM.get());
-			ComposterBlock.add(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get());
-			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_STEM.get());
-
 			FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
 
 			pot.addPlant(UGBlocks.SMOGSTEM_SAPLING.getId(), UGBlocks.POTTED_SMOGSTEM_SAPLING);
