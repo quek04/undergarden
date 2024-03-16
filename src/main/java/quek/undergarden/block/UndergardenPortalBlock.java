@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -25,10 +26,9 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.level.BlockEvent;
-import quek.undergarden.capability.IUndergardenPortal;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import quek.undergarden.attachment.UndergardenPortalAttachment;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.UGTeleporter;
 
@@ -73,7 +73,7 @@ public class UndergardenPortalBlock extends Block {
 	}
 
 	public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, UndergardenPortalBlock.UGPortalShape size) {
-		return MinecraftForge.EVENT_BUS.post(new BlockEvent.PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
+		return NeoForge.EVENT_BUS.post(new BlockEvent.PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
 	}
 
 	@Nullable
@@ -105,7 +105,7 @@ public class UndergardenPortalBlock extends Block {
 					entity.portalEntrancePos = pos.immutable();
 				}
 
-				LazyOptional<IUndergardenPortal> portalCapability = entity.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY);
+				/*LazyOptional<IUndergardenPortal> portalCapability = entity.getCapability(UGAttachments.UNDERGARDEN_PORTAL_CAPABILITY);
 
 				if (portalCapability.isPresent()) {
 					portalCapability.ifPresent(consumer -> {
@@ -116,6 +116,16 @@ public class UndergardenPortalBlock extends Block {
 							consumer.setPortalTimer(0);
 						}
 					});
+				} else this.handleUndergardenPortal(entity);*/
+
+				if (entity instanceof Player player) {
+					UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
+					portal.setInPortal(true);
+					int waitTime = portal.getPortalTimer();
+					if (waitTime >= entity.getPortalWaitTime()) {
+						portal.handleUndergardenPortal(player);
+						portal.setPortalTimer(0);
+					}
 				} else this.handleUndergardenPortal(entity);
 			}
 		}

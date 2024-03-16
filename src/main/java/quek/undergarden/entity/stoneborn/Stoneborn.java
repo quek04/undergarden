@@ -270,7 +270,7 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 		this.ambientSoundTime = -this.getAmbientSoundInterval();
 		this.onStonebornTrade(offer);
 		if (this.customer instanceof ServerPlayer) {
-			UGCriteria.STONEBORN_TRADE.test((ServerPlayer) this.customer, this, offer.getResult());
+			UGCriteria.STONEBORN_TRADE.get().test((ServerPlayer) this.customer, this, offer.getResult());
 		}
 	}
 

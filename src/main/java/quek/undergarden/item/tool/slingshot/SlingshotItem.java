@@ -116,7 +116,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
 						level.addFreshEntity(slingshotProjectile);
 						level.playSound(null, player.getX(), player.getY(), player.getZ(), AMMO_REGISTRY.get(projectileStack.getItem()).getFiringSound(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-						UGCriteria.SLINGSHOT_FIRE.trigger((ServerPlayer) player, stack, projectileStack);
+						UGCriteria.SLINGSHOT_FIRE.get().trigger((ServerPlayer) player, stack, projectileStack);
 					}
 					AMMO_REGISTRY.get(projectileStack.getItem()).addAdditionalFiringEffects(level, player);
 

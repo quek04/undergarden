@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.data.DataGenerator;
@@ -35,11 +36,16 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import quek.undergarden.capability.IUndergardenPortal;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.entity.projectile.Blisterbomb;
@@ -67,26 +73,27 @@ public class Undergarden {
 		NeoForge.EVENT_BUS.addListener(this::portalTick);
 
 		DeferredRegister<?>[] registers = {
-				UGBlockEntities.BLOCK_ENTITIES,
-				UGBlocks.BLOCKS,
-				UGCarvers.CARVERS,
-				UGEffects.EFFECTS,
-				UGEnchantments.ENCHANTMENTS,
-				UGEntityTypes.ENTITIES,
-				UGFeatures.FEATURES,
-				UGFluids.FLUIDS,
-				UGFoliagePlacers.FOLIAGE_PLACERS,
-				UGItems.ITEMS,
-				UGParticleTypes.PARTICLES,
-				UGPointOfInterests.POI,
-				UGPotions.POTIONS,
-				UGSoundEvents.SOUNDS,
-				UGStructureProcessors.PROCESSORS,
-				UGStructures.STRUCTURES,
-				UGCreativeModeTabs.TABS,
-				UGTreeDecoratorTypes.TREE_DECORATORS,
-				UGTrunkPlacerTypes.TRUNK_PLACERS,
-				UGFluids.TYPES
+			UGBlockEntities.BLOCK_ENTITIES,
+			UGBlocks.BLOCKS,
+			UGCarvers.CARVERS,
+			UGCreativeModeTabs.TABS,
+			UGCriteria.CRITERIA,
+			UGEffects.EFFECTS,
+			UGEnchantments.ENCHANTMENTS,
+			UGEntityTypes.ENTITIES,
+			UGFeatures.FEATURES,
+			UGFluids.FLUIDS,
+			UGFluids.TYPES,
+			UGFoliagePlacers.FOLIAGE_PLACERS,
+			UGItems.ITEMS,
+			UGParticleTypes.PARTICLES,
+			UGPointOfInterests.POI,
+			UGPotions.POTIONS,
+			UGSoundEvents.SOUNDS,
+			UGStructureProcessors.PROCESSORS,
+			UGStructures.STRUCTURES,
+			UGTreeDecoratorTypes.TREE_DECORATORS,
+			UGTrunkPlacerTypes.TRUNK_PLACERS
 		};
 
 		for (DeferredRegister<?> register : registers) {
@@ -99,16 +106,15 @@ public class Undergarden {
 
 	public void setup(FMLCommonSetupEvent event) {
 		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				ForgeMod.WATER_TYPE.get(),
+				NeoForgeMod.WATER_TYPE.value(),
 				fluidState -> UGBlocks.DEPTHROCK.get().defaultBlockState()
 		));
 		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
-				ForgeMod.LAVA_TYPE.get(),
+			NeoForgeMod.LAVA_TYPE.value(),
 				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
 			UGPacketHandler.init();
-			UGCriteria.register();
 			UGCauldronInteractions.register();
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
@@ -116,8 +122,8 @@ public class Undergarden {
 
 				public ItemStack execute(BlockSource source, ItemStack stack) {
 					BucketItem bucketitem = (BucketItem) stack.getItem();
-					BlockPos blockpos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
-					Level world = source.getLevel();
+					BlockPos blockpos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
+					Level world = source.level().getLevel();
 					if (bucketitem.emptyContents(null, world, blockpos, null)) {
 						bucketitem.checkExtraContent(null, world, stack, blockpos);
 						return new ItemStack(Items.BUCKET);
@@ -163,8 +169,8 @@ public class Undergarden {
 			DispenserBlock.registerBehavior(UGBlocks.BOOMGOURD.get(), new DefaultDispenseItemBehavior() {
 
 				protected ItemStack execute(BlockSource source, ItemStack stack) {
-					Level level = source.getLevel();
-					BlockPos blockpos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
+					Level level = source.level().getLevel();
+					BlockPos blockpos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
 					Boomgourd gourd = new Boomgourd(level, (double) blockpos.getX() + 0.5D, blockpos.getY(), (double) blockpos.getZ() + 0.5D, null);
 					level.addFreshEntity(gourd);
 					level.playSound(null, gourd.getX(), gourd.getY(), gourd.getZ(), UGSoundEvents.BOOMGOURD_PRIMED.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -397,7 +403,7 @@ public class Undergarden {
 	public void portalTick(LivingEvent.LivingTickEvent event) {
 		LivingEntity entity = event.getEntity();
 		if (entity instanceof Player player) {
-			player.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(IUndergardenPortal::handleUndergardenPortal);
+			player.getData(UGAttachments.UNDERGARDEN_PORTAL).handleUndergardenPortal(player);
 		}
 	}
 }

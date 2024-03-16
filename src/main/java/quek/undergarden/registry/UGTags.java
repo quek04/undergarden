@@ -7,7 +7,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.versions.forge.ForgeVersion;
 import quek.undergarden.Undergarden;
 
 public class UGTags {
@@ -54,7 +53,7 @@ public class UGTags {
 		}
 
 		private static TagKey<Item> forgeTag(String name) {
-			return ItemTags.create(new ResourceLocation(ForgeVersion.MOD_ID, name));
+			return ItemTags.create(new ResourceLocation("forge", name));
 		}
 	}
 
@@ -102,7 +101,7 @@ public class UGTags {
 		}
 
 		private static TagKey<Block> forgeTag(String name) {
-			return BlockTags.create(new ResourceLocation(ForgeVersion.MOD_ID, name));
+			return BlockTags.create(new ResourceLocation("forge", name));
 		}
 	}
 

@@ -3,6 +3,7 @@ package quek.undergarden.world;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,8 +22,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.util.ITeleporter;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.util.ITeleporter;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.UndergardenPortalBlock;
 import quek.undergarden.registry.UGBlocks;
@@ -37,7 +37,7 @@ import java.util.function.Function;
 public class UGTeleporter implements ITeleporter {
 
 	protected final ServerLevel level;
-	private final BlockState frame = !ForgeRegistries.BLOCKS.containsKey(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())) ? Blocks.STONE_BRICKS.defaultBlockState() : ForgeRegistries.BLOCKS.getValue(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())).defaultBlockState();
+	private final BlockState frame = !BuiltInRegistries.BLOCK.containsKey(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())) ? Blocks.STONE_BRICKS.defaultBlockState() : BuiltInRegistries.BLOCK.get(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())).defaultBlockState();
 
 	public UGTeleporter(ServerLevel level) {
 		this.level = level;

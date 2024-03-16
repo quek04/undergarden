@@ -32,15 +32,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.*;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.gui.overlay.ExtendedGui;
+import net.neoforged.neoforge.client.gui.overlay.VanillaGuiOverlay;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
-import quek.undergarden.capability.IUndergardenPortal;
+import quek.undergarden.attachment.UndergardenPortalAttachment;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
@@ -190,14 +190,14 @@ public class UndergardenClient {
 
 	@SubscribeEvent
 	public static void registerOverlays(RegisterGuiOverlaysEvent event) {
-		event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "virulence_hearts", (gui, guiGraphics, partialTicks, width, height) -> {
+		event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), new ResourceLocation(Undergarden.MODID, "virulence_hearts"), (gui, guiGraphics, partialTicks, width, height) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.VIRULENCE.get()) && gui.shouldDrawSurvivalElements()) {
 				renderVirulenceHearts(width, height, guiGraphics, gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiOverlay.ARMOR_LEVEL.id(), "brittleness_armor", (gui, guiGraphics, partialTicks, width, height) -> {
+		event.registerAbove(VanillaGuiOverlay.ARMOR_LEVEL.id(), new ResourceLocation(Undergarden.MODID, "brittleness_armor"), (gui, guiGraphics, partialTicks, width, height) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.BRITTLENESS.get()) && gui.shouldDrawSurvivalElements()) {
@@ -206,20 +206,23 @@ public class UndergardenClient {
 		});
 		//render XP bar since we cancel the jump bar
 		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		event.registerAbove(VanillaGuiOverlay.EXPERIENCE_BAR.id(), "dweller_xp_bar", (gui, guiGraphics, partialTicks, width, height) -> {
+		event.registerAbove(VanillaGuiOverlay.EXPERIENCE_BAR.id(), new ResourceLocation(Undergarden.MODID, "dweller_xp_bar"), (gui, guiGraphics, partialTicks, width, height) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
 				gui.renderExperienceBar(guiGraphics, width / 2 - 91);
 			}
 		});
-		event.registerAboveAll("undergarden_portal_overlay", (gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
+		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
 
+			/*if (player != null) {
+				player.getCapability(UGAttachments.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(consumer -> renderPortalOverlay(guiGraphics, minecraft, window, consumer, partialTick));
+			}*/
 			if (player != null) {
-				player.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(consumer -> renderPortalOverlay(guiGraphics, minecraft, window, consumer, partialTick));
+				renderPortalOverlay(guiGraphics, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), partialTick);
 			}
 		});
 	}
@@ -250,7 +253,7 @@ public class UndergardenClient {
 		}
 	}
 
-	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, ForgeGui gui, Player player) {
+	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, ExtendedGui gui, Player player) {
 		int x = width / 2 - 91;
 		int y = height - 49;
 
@@ -267,7 +270,7 @@ public class UndergardenClient {
 		}
 	}
 
-	private static void renderVirulenceHearts(int width, int height, GuiGraphics graphics, ForgeGui gui, Player player) {
+	private static void renderVirulenceHearts(int width, int height, GuiGraphics graphics, ExtendedGui gui, Player player) {
 		int health = Mth.ceil(player.getHealth());
 		boolean highlight = gui.healthBlinkTime > (long) gui.getGuiTicks() && (gui.healthBlinkTime - (long) gui.getGuiTicks()) / 3L % 2L == 1L;
 
@@ -309,7 +312,7 @@ public class UndergardenClient {
 		renderHearts(graphics, gui, player, x, y, rowHeight, regen, healthMax, health, healthLast, absorb, highlight);
 	}
 
-	private static void renderHearts(GuiGraphics graphics, ForgeGui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
+	private static void renderHearts(GuiGraphics graphics, ExtendedGui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
 		Gui.HeartType heartType = Gui.HeartType.forPlayer(player);
 		int hardcoreOffset = 9 * (player.level().getLevelData().isHardcore() ? 5 : 0);
 		int healthAmount = Mth.ceil((double) healthMax / 2.0D);
@@ -356,7 +359,7 @@ public class UndergardenClient {
 		graphics.blit(VIRULENCE_HEARTS, x, y, type.getX(halfHeart, blinking), offset, 9, 9);
 	}
 
-	private static void renderPortalOverlay(GuiGraphics guiGraphics, Minecraft minecraft, Window window, IUndergardenPortal portal, float partialTicks) {
+	private static void renderPortalOverlay(GuiGraphics guiGraphics, Minecraft minecraft, Window window, UndergardenPortalAttachment portal, float partialTicks) {
 		PoseStack poseStack = guiGraphics.pose();
 		float alpha = portal.getPrevPortalAnimTime() + (portal.getPortalAnimTime() - portal.getPrevPortalAnimTime()) * partialTicks;
 		if (alpha > 0.0F) {

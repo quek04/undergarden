@@ -10,6 +10,8 @@ logoFile="logo.png"
 logoBlur=false
 authors="quek"
 description='''Deep underground, a forgotten land awaits.'''
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
 [[dependencies.undergarden]]
     modId="forge"
     mandatory=true
