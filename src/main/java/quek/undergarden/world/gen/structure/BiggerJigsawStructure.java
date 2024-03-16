@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.EmptyBlockGetter;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,15 +27,15 @@ import java.util.Optional;
 
 public class BiggerJigsawStructure extends Structure {
 	public static final Codec<BiggerJigsawStructure> CODEC = RecordCodecBuilder.<BiggerJigsawStructure>mapCodec(instance -> instance.group(
-					settingsCodec(instance),
-					StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter((structure) -> structure.startPool),
-					ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter((structure) -> structure.startJigsawName),
-					Codec.intRange(0, 100).fieldOf("size").forGetter((structure) -> structure.maxDepth),
-					HeightProvider.CODEC.fieldOf("start_height").forGetter((structure) -> structure.startHeight),
-					Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter((structure) -> structure.projectStartToHeightmap),
-					Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter((structure) -> structure.maxDistanceFromCenter),
+			settingsCodec(instance),
+			StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter((structure) -> structure.startPool),
+			ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter((structure) -> structure.startJigsawName),
+			Codec.intRange(0, 100).fieldOf("size").forGetter((structure) -> structure.maxDepth),
+			HeightProvider.CODEC.fieldOf("start_height").forGetter((structure) -> structure.startHeight),
+			Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter((structure) -> structure.projectStartToHeightmap),
+			Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter((structure) -> structure.maxDistanceFromCenter),
 			Codec.list(PoolAliasBinding.CODEC).optionalFieldOf("pool_aliases", List.of()).forGetter(p_307187_ -> p_307187_.poolAliases)
-			).apply(instance, BiggerJigsawStructure::new)).codec();
+	).apply(instance, BiggerJigsawStructure::new)).codec();
 
 	private final Holder<StructureTemplatePool> startPool;
 	private final Optional<ResourceLocation> startJigsawName;

@@ -275,6 +275,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.UTHERIUM_SHOVEL, "Utherium Shovel");
 		addItem(UGItems.UTHERIUM_HOE, "Utherium Hoe");
 
+		addItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE, "Smithing Template");
 		add("upgrade.undergarden.forgotten_upgrade", "Forgotten Tool Upgrade");
 		add("item.undergarden.smithing_template.forgotten_upgrade.additions_slot_description", "Add Forgotten Ingot");
 		add("item.undergarden.smithing_template.forgotten_upgrade.applies_to", "Cloggrum Tools");

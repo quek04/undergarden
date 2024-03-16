@@ -27,7 +27,8 @@ public class SlingshotFireTrigger extends SimpleCriterionTrigger<SlingshotFireTr
 		this.trigger(shooter, instance -> instance.matches(slingshot, ammo));
 	}
 
-	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> slingshot, Optional<ItemPredicate> ammo) implements SimpleInstance {
+	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> slingshot,
+								  Optional<ItemPredicate> ammo) implements SimpleInstance {
 		public static final Codec<SlingshotFireTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 						ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(SlingshotFireTrigger.TriggerInstance::player),
 						ExtraCodecs.strictOptionalField(ItemPredicate.CODEC, "slingshot").forGetter(SlingshotFireTrigger.TriggerInstance::slingshot),

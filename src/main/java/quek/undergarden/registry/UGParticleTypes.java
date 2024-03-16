@@ -1,20 +1,13 @@
 package quek.undergarden.registry;
 
-import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.core.particles.ParticleGroup;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
-import quek.undergarden.client.particle.*;
 
-@Mod.EventBusSubscriber(modid = Undergarden.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGParticleTypes {
 
 	public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(Registries.PARTICLE_TYPE, Undergarden.MODID);
@@ -42,27 +35,4 @@ public class UGParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_VIRULENT = PARTICLES.register("landing_virulent", () -> new SimpleParticleType(false));
 
 	public static final ParticleGroup SHIMMER_GROUP = new ParticleGroup(1000);
-
-	@SubscribeEvent
-	public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-		event.registerSpriteSet(SHARD.get(), ShardParticle.Provider::new);
-		event.registerSpriteSet(SHARD_BEAM.get(), ShardParticle.BeamProvider::new);
-		event.registerSpriteSet(GRONGLE_SPORE.get(), GrongleSporeParticle.Provider::new);
-		event.registerSpriteSet(UNDERGARDEN_PORTAL.get(), UndergardenPortalParticle.Provider::new);
-		event.registerSpriteSet(GLOOMPER_FART.get(), SmokeParticle.Provider::new);
-		event.registerSpriteSet(SHIMMER.get(), ShimmerParticle.Provider::new);
-		event.registerSpriteSet(SMOG.get(), SmogParticle.Provider::new);
-		event.registerSpriteSet(UTHERIUM_CRIT.get(), UtheriumCritParticle.Provider::new);
-		event.registerSpriteSet(SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
-
-		event.registerSprite(DRIPPING_BLOOD.get(), UGDripParticles::createBloodHangParticle);
-		event.registerSprite(FALLING_BLOOD.get(), UGDripParticles::createBloodFallParticle);
-		event.registerSprite(LANDING_BLOOD.get(), UGDripParticles::createBloodLandParticle);
-		event.registerSprite(DRIPPING_INK.get(), UGDripParticles::createInkHangParticle);
-		event.registerSprite(FALLING_INK.get(), UGDripParticles::createInkFallParticle);
-		event.registerSprite(LANDING_INK.get(), UGDripParticles::createInkLandParticle);
-		event.registerSprite(DRIPPING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentHangParticle);
-		event.registerSprite(FALLING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentFallParticle);
-		event.registerSprite(LANDING_VIRULENT.get(), UGDripParticles::createVirulentLandParticle);
-	}
 }

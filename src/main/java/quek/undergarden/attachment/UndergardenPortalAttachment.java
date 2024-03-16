@@ -7,52 +7,34 @@ import quek.undergarden.client.UndergardenClient;
 
 public class UndergardenPortalAttachment {
 
-	//private final Player player;
-
 	public boolean isInsidePortal = false;
 	public int portalTimer = 0;
 	public float portalAnimTime = 0;
 	public float prevPortalAnimTime = 0;
 
-	public UndergardenPortalAttachment() {
-		//this.player = player;
-	}
-
-
-	/*public Player getPlayer() {
-		return this.player;
-	}*/
-
-
 	public void setInPortal(boolean inPortal) {
 		this.isInsidePortal = inPortal;
 	}
-
 
 	public boolean isInsidePortal() {
 		return this.isInsidePortal;
 	}
 
-
 	public void setPortalTimer(int timer) {
 		this.portalTimer = timer;
 	}
-
 
 	public int getPortalTimer() {
 		return this.portalTimer;
 	}
 
-
 	public float getPortalAnimTime() {
 		return this.portalAnimTime;
 	}
 
-
 	public float getPrevPortalAnimTime() {
 		return this.prevPortalAnimTime;
 	}
-
 
 	public void handleUndergardenPortal(Player player) {
 		if (player.level().isClientSide()) {

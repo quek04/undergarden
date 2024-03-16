@@ -1,4 +1,4 @@
-package quek.undergarden.item.tool;
+package quek.undergarden.event;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -7,12 +7,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.network.PacketDistributor;
 import quek.undergarden.Undergarden;
 import quek.undergarden.effect.ChillyEffect;
@@ -22,11 +22,17 @@ import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGParticleTypes;
 import quek.undergarden.registry.UGTags;
 
-@Mod.EventBusSubscriber(modid = Undergarden.MODID)
-public class UGToolEvents {
+public class UndergardenToolEvents {
 
-	@SubscribeEvent
-	public static void forgottenAttackEvent(LivingHurtEvent event) {
+	protected static void setupToolEvents(IEventBus bus) {
+		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::forgottenAttackEvent);
+		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::forgottenDigEvent);
+		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::utheriumAttackEvent);
+		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::froststeelAttackEvent);
+		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::froststeelTickEvent);
+	}
+
+	private static void forgottenAttackEvent(LivingHurtEvent event) {
 		Entity source = event.getSource().getEntity();
 		float damage = event.getAmount();
 
@@ -39,8 +45,7 @@ public class UGToolEvents {
 		}
 	}
 
-	@SubscribeEvent
-	public static void forgottenDigEvent(PlayerEvent.BreakSpeed event) {
+	private static void forgottenDigEvent(PlayerEvent.BreakSpeed event) {
 		Player player = event.getEntity();
 		BlockState state = event.getState();
 
@@ -51,8 +56,7 @@ public class UGToolEvents {
 		}
 	}
 
-	@SubscribeEvent
-	public static void utheriumAttackEvent(LivingHurtEvent event) {
+	private static void utheriumAttackEvent(LivingHurtEvent event) {
 		Entity source = event.getSource().getEntity();
 		float damage = event.getAmount();
 
@@ -68,8 +72,7 @@ public class UGToolEvents {
 		}
 	}
 
-	@SubscribeEvent
-	public static void froststeelAttackEvent(LivingHurtEvent event) {
+	private static void froststeelAttackEvent(LivingHurtEvent event) {
 		Entity source = event.getSource().getEntity();
 		if (source instanceof Player player) {
 			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_SWORD.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_AXE.get())) {
@@ -81,8 +84,7 @@ public class UGToolEvents {
 		}
 	}
 
-	@SubscribeEvent
-	public static void froststeelTickEvent(LivingEvent.LivingTickEvent event) {
+	private static void froststeelTickEvent(LivingEvent.LivingTickEvent event) {
 		LivingEntity living = event.getEntity();
 		if (living.tickCount % 5 == 0 && living.level().isClientSide() && living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(ChillyEffect.MOVEMENT_SPEED_MODIFIER_UUID) != null) {
 			for (int i = 0; i < 5; i++) {

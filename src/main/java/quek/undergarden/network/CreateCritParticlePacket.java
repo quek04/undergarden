@@ -11,7 +11,8 @@ import net.minecraft.world.entity.Entity;
 import net.neoforged.neoforge.network.handling.PlayPayloadContext;
 import quek.undergarden.Undergarden;
 
-public record CreateCritParticlePacket(int entityID, int duration, ParticleType<?> particle) implements CustomPacketPayload {
+public record CreateCritParticlePacket(int entityID, int duration,
+									   ParticleType<?> particle) implements CustomPacketPayload {
 
 	public static final ResourceLocation ID = new ResourceLocation(Undergarden.MODID, "create_crit_particle");
 

@@ -7,7 +7,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.entity.animal.Scintling;
 import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGEffects;
 
 public class GooeyEffect extends MobEffect {
 

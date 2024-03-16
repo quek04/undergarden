@@ -1,0 +1,449 @@
+package quek.undergarden.event;
+
+import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
+import net.minecraft.core.dispenser.BlockSource;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
+import net.minecraft.core.dispenser.DispenseItemBehavior;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.AbstractFish;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+import net.neoforged.neoforge.event.entity.living.*;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
+import quek.undergarden.entity.Boomgourd;
+import quek.undergarden.entity.Forgotten;
+import quek.undergarden.entity.Minion;
+import quek.undergarden.entity.animal.*;
+import quek.undergarden.entity.animal.dweller.Dweller;
+import quek.undergarden.entity.boss.ForgottenGuardian;
+import quek.undergarden.entity.cavern.CavernMonster;
+import quek.undergarden.entity.cavern.Muncher;
+import quek.undergarden.entity.cavern.Nargoyle;
+import quek.undergarden.entity.cavern.Sploogie;
+import quek.undergarden.entity.projectile.Blisterbomb;
+import quek.undergarden.entity.projectile.slingshot.*;
+import quek.undergarden.entity.rotspawn.Rotbeast;
+import quek.undergarden.entity.rotspawn.Rotling;
+import quek.undergarden.entity.rotspawn.RotspawnMonster;
+import quek.undergarden.entity.rotspawn.Rotwalker;
+import quek.undergarden.entity.stoneborn.Stoneborn;
+import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
+import quek.undergarden.item.tool.slingshot.SlingshotItem;
+import quek.undergarden.registry.*;
+
+public class UndergardenCommonEvents {
+
+	public static void initCommonEvents(IEventBus bus) {
+		UndergardenToolEvents.setupToolEvents(bus);
+		bus.addListener(UndergardenCommonEvents::setup);
+		bus.addListener(UndergardenCommonEvents::registerEntityAttributes);
+		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
+
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::cancelPlayerFallDamageOnDweller);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::lookedAtEndermanWithGloomgourd);
+	}
+
+	private static void setup(FMLCommonSetupEvent event) {
+		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+				NeoForgeMod.WATER_TYPE.value(),
+				fluidState -> UGBlocks.DEPTHROCK.get().defaultBlockState()
+		));
+		FluidInteractionRegistry.addInteraction(UGFluids.VIRULENT_MIX_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
+				NeoForgeMod.LAVA_TYPE.value(),
+				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
+		));
+		event.enqueueWork(() -> {
+			UGCauldronInteractions.register();
+
+			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
+				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
+
+				public ItemStack execute(BlockSource source, ItemStack stack) {
+					BucketItem bucketitem = (BucketItem) stack.getItem();
+					BlockPos blockpos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
+					Level world = source.level().getLevel();
+					if (bucketitem.emptyContents(null, world, blockpos, null)) {
+						bucketitem.checkExtraContent(null, world, stack, blockpos);
+						return new ItemStack(Items.BUCKET);
+					} else {
+						return this.defaultBehavior.dispense(source, stack);
+					}
+				}
+			};
+
+			DispenserBlock.registerBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
+			DispenserBlock.registerBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
+
+			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new DepthrockPebble(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
+				}
+			});
+
+			DispenserBlock.registerBehavior(UGItems.GOO_BALL.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new GooBall(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
+				}
+			});
+
+			DispenserBlock.registerBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new RottenBlisterberry(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
+				}
+			});
+
+			DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new Blisterbomb(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
+				}
+			});
+
+			DispenserBlock.registerBehavior(UGBlocks.GRONGLET.get(), new AbstractProjectileDispenseBehavior() {
+				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
+					return Util.make(new Gronglet(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
+				}
+			});
+
+			DispenserBlock.registerBehavior(UGBlocks.BOOMGOURD.get(), new DefaultDispenseItemBehavior() {
+
+				protected ItemStack execute(BlockSource source, ItemStack stack) {
+					Level level = source.level().getLevel();
+					BlockPos blockpos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
+					Boomgourd gourd = new Boomgourd(level, (double) blockpos.getX() + 0.5D, blockpos.getY(), (double) blockpos.getZ() + 0.5D, null);
+					level.addFreshEntity(gourd);
+					level.playSound(null, gourd.getX(), gourd.getY(), gourd.getZ(), UGSoundEvents.BOOMGOURD_PRIMED.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+					level.gameEvent(null, GameEvent.ENTITY_PLACE, blockpos);
+					stack.shrink(1);
+					return stack;
+				}
+			});
+
+			PotionBrewing.addMix(Potions.AWKWARD, UGItems.BLOOD_GLOBULE.get(), UGPotions.BRITTLENESS.get());
+			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.REDSTONE, UGPotions.LONG_BRITTLENESS.get());
+			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.GLOWSTONE_DUST, UGPotions.STRONG_BRITTLENESS.get());
+
+			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.VEIL_MUSHROOM.get().asItem(), UGPotions.FEATHERWEIGHT.get());
+			PotionBrewing.addMix(UGPotions.FEATHERWEIGHT.get(), Items.REDSTONE, UGPotions.LONG_FEATHERWEIGHT.get());
+			PotionBrewing.addMix(UGPotions.FEATHERWEIGHT.get(), Items.GLOWSTONE_DUST, UGPotions.STRONG_FEATHERWEIGHT.get());
+
+			PotionBrewing.addMix(Potions.AWKWARD, UGBlocks.GLOOMGOURD.get().asItem(), UGPotions.VIRULENT_RESISTANCE.get());
+			PotionBrewing.addMix(UGPotions.VIRULENT_RESISTANCE.get(), Items.REDSTONE, UGPotions.LONG_VIRULENT_RESISTANCE.get());
+
+			PotionBrewing.addMix(Potions.AWKWARD, UGItems.DROOPFRUIT.get(), UGPotions.GLOWING.get());
+			PotionBrewing.addMix(UGPotions.GLOWING.get(), Items.REDSTONE, UGPotions.LONG_GLOWING.get());
+
+			ComposterBlock.add(0.1F, UGItems.DROOPFRUIT.get());
+			ComposterBlock.add(0.1F, UGItems.UNDERBEANS.get());
+			ComposterBlock.add(0.2F, UGItems.BLISTERBERRY.get());
+			ComposterBlock.add(0.2F, UGItems.ROTTEN_BLISTERBERRY.get());
+			ComposterBlock.add(0.2F, UGItems.BLOOD_GLOBULE.get());
+			ComposterBlock.add(0.3F, UGItems.GLOOMGOURD_SEEDS.get());
+			ComposterBlock.add(0.3F, UGItems.GLITTERKELP.get());
+			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_LEAVES.get());
+			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_LEAVES.get());
+			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_LEAVES.get());
+			ComposterBlock.add(0.3F, UGBlocks.SMOGSTEM_SAPLING.get());
+			ComposterBlock.add(0.3F, UGBlocks.WIGGLEWOOD_SAPLING.get());
+			ComposterBlock.add(0.3F, UGBlocks.GRONGLE_SAPLING.get());
+			ComposterBlock.add(0.3F, UGBlocks.DEEPTURF.get());
+			ComposterBlock.add(0.3F, UGBlocks.SHIMMERWEED.get());
+			ComposterBlock.add(0.5F, UGBlocks.TALL_DEEPTURF.get());
+			ComposterBlock.add(0.5F, UGItems.DITCHBULB.get());
+			ComposterBlock.add(0.5F, UGBlocks.TALL_SHIMMERWEED.get());
+			ComposterBlock.add(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
+			ComposterBlock.add(0.65F, UGBlocks.VEIL_MUSHROOM.get());
+			ComposterBlock.add(0.65F, UGBlocks.INK_MUSHROOM.get());
+			ComposterBlock.add(0.65F, UGBlocks.INDIGO_MUSHROOM.get());
+			ComposterBlock.add(0.65F, UGBlocks.GLOOMGOURD.get());
+			ComposterBlock.add(0.65F, UGBlocks.CARVED_GLOOMGOURD.get());
+			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.INDIGO_MUSHROOM_STEM.get());
+			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.VEIL_MUSHROOM_STEM.get());
+			ComposterBlock.add(0.85F, UGBlocks.INK_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get());
+			ComposterBlock.add(0.85F, UGBlocks.BLOOD_MUSHROOM_STEM.get());
+
+			FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
+
+			pot.addPlant(UGBlocks.SMOGSTEM_SAPLING.getId(), UGBlocks.POTTED_SMOGSTEM_SAPLING);
+			pot.addPlant(UGBlocks.WIGGLEWOOD_SAPLING.getId(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING);
+			pot.addPlant(UGBlocks.SHIMMERWEED.getId(), UGBlocks.POTTED_SHIMMERWEED);
+			pot.addPlant(UGBlocks.INDIGO_MUSHROOM.getId(), UGBlocks.POTTED_INDIGO_MUSHROOM);
+			pot.addPlant(UGBlocks.VEIL_MUSHROOM.getId(), UGBlocks.POTTED_VEIL_MUSHROOM);
+			pot.addPlant(UGBlocks.INK_MUSHROOM.getId(), UGBlocks.POTTED_INK_MUSHROOM);
+			pot.addPlant(UGBlocks.BLOOD_MUSHROOM.getId(), UGBlocks.POTTED_BLOOD_MUSHROOM);
+			pot.addPlant(UGBlocks.GRONGLE_SAPLING.getId(), UGBlocks.POTTED_GRONGLE_SAPLING);
+			pot.addPlant(UGBlocks.AMOROUS_BRISTLE.getId(), UGBlocks.POTTED_AMOROUS_BRISTLE);
+			pot.addPlant(UGBlocks.MISERABELL.getId(), UGBlocks.POTTED_MISERABELL);
+			pot.addPlant(UGBlocks.BUTTERBUNCH.getId(), UGBlocks.POTTED_BUTTERBUNCH);
+
+			WoodType.register(UGWoodStuff.SMOGSTEM_WOOD_TYPE);
+			WoodType.register(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
+			WoodType.register(UGWoodStuff.GRONGLE_WOOD_TYPE);
+
+			SlingshotItem.registerAmmo(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new DepthrockPebble(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new RottenBlisterberry(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGItems.GOO_BALL.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new GooBall(level, shooter);
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGBlocks.GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new Gronglet(shooter, level);
+				}
+
+				@Override
+				public SoundEvent getFiringSound() {
+					return UGSoundEvents.GRONGLET_SHOOT.get();
+				}
+			});
+
+			FireBlock fire = (FireBlock) Blocks.FIRE;
+			//planks
+			fire.setFlammable(UGBlocks.SMOGSTEM_PLANKS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_PLANKS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_PLANKS.get(), 5, 20);
+			//slabs
+			fire.setFlammable(UGBlocks.SMOGSTEM_SLAB.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_SLAB.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_SLAB.get(), 5, 20);
+			//fence gates
+			fire.setFlammable(UGBlocks.SMOGSTEM_FENCE_GATE.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_FENCE_GATE.get(), 5, 20);
+			//fences
+			fire.setFlammable(UGBlocks.SMOGSTEM_FENCE.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_FENCE.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_FENCE.get(), 5, 20);
+			//stairs
+			fire.setFlammable(UGBlocks.SMOGSTEM_STAIRS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_STAIRS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.GRONGLE_STAIRS.get(), 5, 20);
+			//logs
+			fire.setFlammable(UGBlocks.SMOGSTEM_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.GRONGLE_LOG.get(), 5, 5);
+			//stripped logs
+			fire.setFlammable(UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.STRIPPED_GRONGLE_LOG.get(), 5, 5);
+			//woods
+			fire.setFlammable(UGBlocks.SMOGSTEM_WOOD.get(), 5, 5);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_WOOD.get(), 5, 5);
+			fire.setFlammable(UGBlocks.GRONGLE_WOOD.get(), 5, 5);
+			//stripped woods
+			fire.setFlammable(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get(), 5, 5);
+			fire.setFlammable(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get(), 5, 5);
+			fire.setFlammable(UGBlocks.STRIPPED_GRONGLE_WOOD.get(), 5, 5);
+			//leaves
+			fire.setFlammable(UGBlocks.SMOGSTEM_LEAVES.get(), 30, 60);
+			fire.setFlammable(UGBlocks.WIGGLEWOOD_LEAVES.get(), 30, 60);
+			fire.setFlammable(UGBlocks.GRONGLE_LEAVES.get(), 30, 60);
+			fire.setFlammable(UGBlocks.HANGING_GRONGLE_LEAVES.get(), 30, 60);
+			//plants
+			fire.setFlammable(UGBlocks.DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.ASHEN_DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.FROZEN_DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.SHIMMERWEED.get(), 60, 100);
+			fire.setFlammable(UGBlocks.TALL_DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.TALL_SHIMMERWEED.get(), 60, 100);
+			fire.setFlammable(UGBlocks.UNDERBEAN_BUSH.get(), 60, 100);
+			fire.setFlammable(UGBlocks.BLISTERBERRY_BUSH.get(), 60, 100);
+			fire.setFlammable(UGBlocks.ASHEN_DEEPTURF.get(), 60, 100);
+			fire.setFlammable(UGBlocks.DITCHBULB_PLANT.get(), 60, 100);
+			fire.setFlammable(UGBlocks.DROOPVINE.get(), 15, 60);
+			fire.setFlammable(UGBlocks.DROOPVINE_PLANT.get(), 15, 60);
+			fire.setFlammable(UGBlocks.AMOROUS_BRISTLE.get(), 60, 100);
+			fire.setFlammable(UGBlocks.MISERABELL.get(), 60, 100);
+			fire.setFlammable(UGBlocks.BUTTERBUNCH.get(), 60, 100);
+			//other
+			fire.setFlammable(UGBlocks.MOGMOSS_RUG.get(), 60, 20);
+			fire.setFlammable(UGBlocks.BLUE_MOGMOSS_RUG.get(), 60, 20);
+			fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
+			fire.setFlammable(UGBlocks.GRONGLET.get(), 100, 100);
+		});
+	}
+
+	private static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+		event.register(UGEntityTypes.GWIBLING.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Gwibling::canGwiblingSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.DWELLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.ROTLING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.ROTWALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.ROTBEAST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.BRUTE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.SCINTLING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Scintling::canScintlingSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.GLOOMPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.STONEBORN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Stoneborn::canStonebornSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.NARGOYLE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.MUNCHER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.SPLOOGIE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.GWIB.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Gwib::canGwibSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.MOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.SMOG_MOG.get(), SpawnPlacements.Type.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SmogMog::checkSmogMogSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.FORGOTTEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+	}
+
+	private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+		event.put(UGEntityTypes.ROTLING.get(), Rotling.registerAttributes().build());
+		event.put(UGEntityTypes.ROTWALKER.get(), Rotwalker.registerAttributes().build());
+		event.put(UGEntityTypes.ROTBEAST.get(), Rotbeast.registerAttributes().build());
+		event.put(UGEntityTypes.DWELLER.get(), Dweller.registerAttributes().build());
+		event.put(UGEntityTypes.GWIBLING.get(), AbstractFish.createAttributes().build());
+		event.put(UGEntityTypes.BRUTE.get(), Brute.registerAttributes().build());
+		event.put(UGEntityTypes.SCINTLING.get(), Scintling.registerAttributes().build());
+		event.put(UGEntityTypes.GLOOMPER.get(), Gloomper.registerAttributes().build());
+		event.put(UGEntityTypes.STONEBORN.get(), Stoneborn.registerAttributes().build());
+		event.put(UGEntityTypes.NARGOYLE.get(), Nargoyle.registerAttributes().build());
+		event.put(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardian.registerAttributes().build());
+		event.put(UGEntityTypes.MUNCHER.get(), Muncher.registerAttributes().build());
+		event.put(UGEntityTypes.SPLOOGIE.get(), Sploogie.registerAttributes().build());
+		event.put(UGEntityTypes.MINION.get(), Minion.registerAttributes().build());
+		event.put(UGEntityTypes.GWIB.get(), Gwib.registerAttributes().build());
+		event.put(UGEntityTypes.MOG.get(), Mog.registerAttributes().build());
+		event.put(UGEntityTypes.SMOG_MOG.get(), SmogMog.registerAttributes().build());
+		event.put(UGEntityTypes.FORGOTTEN.get(), Forgotten.createAttributes().build());
+	}
+
+	private static void tickPortalLogic(LivingEvent.LivingTickEvent event) {
+		LivingEntity entity = event.getEntity();
+		if (entity instanceof Player player) {
+			player.getData(UGAttachments.UNDERGARDEN_PORTAL).handleUndergardenPortal(player);
+		}
+	}
+
+	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {
+		ToolAction action = event.getToolAction();
+		BlockState state = event.getState();
+		UseOnContext context = event.getContext();
+		if (!event.isSimulated()) {
+			if (action == ToolActions.AXE_STRIP) {
+				if (state.is(UGBlocks.SMOGSTEM_LOG.get())) {
+					event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().withPropertiesOf(state));
+				}
+				if (state.is(UGBlocks.SMOGSTEM_WOOD.get())) {
+					event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().withPropertiesOf(state));
+				}
+				if (state.is(UGBlocks.WIGGLEWOOD_LOG.get())) {
+					event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().withPropertiesOf(state));
+				}
+				if (state.is(UGBlocks.WIGGLEWOOD_WOOD.get())) {
+					event.setFinalState(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().withPropertiesOf(state));
+				}
+				if (state.is(UGBlocks.GRONGLE_LOG.get())) {
+					event.setFinalState(UGBlocks.STRIPPED_GRONGLE_LOG.get().withPropertiesOf(state));
+				}
+				if (state.is(UGBlocks.GRONGLE_WOOD.get())) {
+					event.setFinalState(UGBlocks.STRIPPED_GRONGLE_WOOD.get().withPropertiesOf(state));
+				}
+			}
+			if (action == ToolActions.HOE_TILL && (context.getClickedFace() != Direction.DOWN && context.getLevel().getBlockState(context.getClickedPos().above()).isAir())) {
+				if (state.is(UGBlocks.DEEPTURF_BLOCK.get()) || state.is(UGBlocks.DEEPSOIL.get()) || state.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) || state.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get())) {
+					event.setFinalState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
+				}
+				if (state.is(UGBlocks.COARSE_DEEPSOIL.get())) {
+					event.setFinalState(UGBlocks.DEEPSOIL.get().defaultBlockState());
+				}
+			}
+		}
+	}
+
+	private static void applyBrittleness(LivingDamageEvent event) {
+		LivingEntity entity = event.getEntity();
+		DamageSource source = event.getSource();
+		float damage = event.getAmount();
+
+		if (entity.hasEffect(UGEffects.BRITTLENESS.get()) && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+			int amplifier = (entity.getEffect(UGEffects.BRITTLENESS.get()).getAmplifier() + 1) + (entity.getArmorValue() / 4) * 2;
+
+			event.setAmount(damage + amplifier);
+		}
+	}
+
+	private static void applyFeatherweight(LivingKnockBackEvent event) {
+		LivingEntity entity = event.getEntity();
+
+		if (entity.hasEffect(UGEffects.FEATHERWEIGHT.get())) {
+			int amplifier = (entity.getEffect(UGEffects.FEATHERWEIGHT.get()).getAmplifier() + 2);
+
+			event.setStrength(event.getStrength() * amplifier);
+		}
+	}
+
+	private static void cancelPlayerFallDamageOnDweller(LivingAttackEvent event) {
+		if (event.getEntity() instanceof Player player && player.getVehicle() instanceof Dweller && event.getSource().is(DamageTypeTags.IS_FALL)) {
+			event.setCanceled(true);
+		}
+	}
+
+	private static void lookedAtEndermanWithGloomgourd(EnderManAngerEvent event) {
+		if (!event.isCanceled() && !event.getPlayer().isCreative() && isPlayerLookingAtEnderman(event.getPlayer(), event.getEntity()) && !event.getEntity().isAngryAt(event.getPlayer()) && event.getPlayer().getItemBySlot(EquipmentSlot.HEAD).is(UGBlocks.CARVED_GLOOMGOURD.get().asItem())) {
+			event.getEntity().level().getEntitiesOfClass(EnderMan.class, event.getEntity().getBoundingBox().inflate(64.0F), enderMan -> enderMan.hasLineOfSight(event.getPlayer())).forEach(enderMan -> enderMan.setTarget(event.getPlayer()));
+		}
+	}
+
+	private static boolean isPlayerLookingAtEnderman(Player player, EnderMan enderMan) {
+		Vec3 vec3 = player.getViewVector(1.0F).normalize();
+		Vec3 vec31 = new Vec3(enderMan.getX() - player.getX(), enderMan.getEyeY() - player.getEyeY(), enderMan.getZ() - player.getZ());
+		double d0 = vec31.length();
+		vec31 = vec31.normalize();
+		double d1 = vec3.dot(vec31);
+		return d1 > 1.0D - 0.025D / d0 && player.hasLineOfSight(enderMan);
+	}
+}

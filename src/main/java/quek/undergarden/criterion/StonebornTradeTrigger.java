@@ -28,7 +28,8 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
 		this.trigger(player, instance -> instance.matches(lootcontext, stack));
 	}
 
-	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> stoneborn, Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
+	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> stoneborn,
+								  Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
 		public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(p_311449_ -> p_311449_.group(
 						ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(TriggerInstance::player),
 						ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "stoneborn").forGetter(TriggerInstance::stoneborn),

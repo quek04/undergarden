@@ -3,15 +3,6 @@ package quek.undergarden.registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.animal.AbstractFish;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
@@ -19,7 +10,6 @@ import quek.undergarden.entity.*;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.entity.boss.ForgottenGuardian;
-import quek.undergarden.entity.cavern.CavernMonster;
 import quek.undergarden.entity.cavern.Muncher;
 import quek.undergarden.entity.cavern.Nargoyle;
 import quek.undergarden.entity.cavern.Sploogie;
@@ -31,11 +21,9 @@ import quek.undergarden.entity.projectile.slingshot.Gronglet;
 import quek.undergarden.entity.projectile.slingshot.RottenBlisterberry;
 import quek.undergarden.entity.rotspawn.Rotbeast;
 import quek.undergarden.entity.rotspawn.Rotling;
-import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.entity.rotspawn.Rotwalker;
 import quek.undergarden.entity.stoneborn.Stoneborn;
 
-@Mod.EventBusSubscriber(modid = Undergarden.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UGEntityTypes {
 
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Undergarden.MODID);
@@ -72,46 +60,4 @@ public class UGEntityTypes {
 
 	//bosses
 	public static final DeferredHolder<EntityType<?>, EntityType<ForgottenGuardian>> FORGOTTEN_GUARDIAN = ENTITIES.register("forgotten_guardian", () -> EntityType.Builder.of(ForgottenGuardian::new, MobCategory.MONSTER).sized(1.0F, 3.8F).build("forgotten_guardian"));
-
-	@SubscribeEvent
-	public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-		event.register(GWIBLING.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Gwibling::canGwiblingSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(DWELLER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(ROTLING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(ROTWALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(ROTBEAST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(BRUTE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(SCINTLING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Scintling::canScintlingSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(GLOOMPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(STONEBORN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Stoneborn::canStonebornSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(NARGOYLE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(MUNCHER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(SPLOOGIE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(GWIB.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Gwib::canGwibSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(MOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(SMOG_MOG.get(), SpawnPlacements.Type.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SmogMog::checkSmogMogSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(FORGOTTEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-	}
-
-	@SubscribeEvent
-	public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-		event.put(ROTLING.get(), Rotling.registerAttributes().build());
-		event.put(ROTWALKER.get(), Rotwalker.registerAttributes().build());
-		event.put(ROTBEAST.get(), Rotbeast.registerAttributes().build());
-		event.put(DWELLER.get(), Dweller.registerAttributes().build());
-		event.put(GWIBLING.get(), AbstractFish.createAttributes().build());
-		event.put(BRUTE.get(), Brute.registerAttributes().build());
-		event.put(SCINTLING.get(), Scintling.registerAttributes().build());
-		event.put(GLOOMPER.get(), Gloomper.registerAttributes().build());
-		event.put(STONEBORN.get(), Stoneborn.registerAttributes().build());
-		event.put(NARGOYLE.get(), Nargoyle.registerAttributes().build());
-		event.put(FORGOTTEN_GUARDIAN.get(), ForgottenGuardian.registerAttributes().build());
-		event.put(MUNCHER.get(), Muncher.registerAttributes().build());
-		event.put(SPLOOGIE.get(), Sploogie.registerAttributes().build());
-		event.put(MINION.get(), Minion.registerAttributes().build());
-		event.put(GWIB.get(), Gwib.registerAttributes().build());
-		event.put(MOG.get(), Mog.registerAttributes().build());
-		event.put(SMOG_MOG.get(), SmogMog.registerAttributes().build());
-		event.put(FORGOTTEN.get(), Forgotten.createAttributes().build());
-	}
 }

@@ -1,11 +1,8 @@
 package quek.undergarden.registry;
 
 import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-
-import java.util.Map;
 
 public interface UGCauldronInteractions extends CauldronInteraction {
 
