@@ -1,15 +1,8 @@
 package quek.undergarden.event;
 
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
-import net.minecraft.core.dispenser.BlockSource;
-import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -20,18 +13,17 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
@@ -45,7 +37,6 @@ import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
-import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.entity.Forgotten;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
@@ -55,7 +46,6 @@ import quek.undergarden.entity.cavern.CavernMonster;
 import quek.undergarden.entity.cavern.Muncher;
 import quek.undergarden.entity.cavern.Nargoyle;
 import quek.undergarden.entity.cavern.Sploogie;
-import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.slingshot.*;
 import quek.undergarden.entity.rotspawn.Rotbeast;
 import quek.undergarden.entity.rotspawn.Rotling;
@@ -93,69 +83,7 @@ public class UndergardenCommonEvents {
 		));
 		event.enqueueWork(() -> {
 			UGCauldronInteractions.register();
-
-			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
-				private final DefaultDispenseItemBehavior defaultBehavior = new DefaultDispenseItemBehavior();
-
-				public ItemStack execute(BlockSource source, ItemStack stack) {
-					BucketItem bucketitem = (BucketItem) stack.getItem();
-					BlockPos blockpos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
-					Level world = source.level().getLevel();
-					if (bucketitem.emptyContents(null, world, blockpos, null)) {
-						bucketitem.checkExtraContent(null, world, stack, blockpos);
-						return new ItemStack(Items.BUCKET);
-					} else {
-						return this.defaultBehavior.dispense(source, stack);
-					}
-				}
-			};
-
-			DispenserBlock.registerBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
-			DispenserBlock.registerBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
-
-			DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-					return Util.make(new DepthrockPebble(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-				}
-			});
-
-			DispenserBlock.registerBehavior(UGItems.GOO_BALL.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-					return Util.make(new GooBall(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-				}
-			});
-
-			DispenserBlock.registerBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-					return Util.make(new RottenBlisterberry(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-				}
-			});
-
-			DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-					return Util.make(new Blisterbomb(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-				}
-			});
-
-			DispenserBlock.registerBehavior(UGBlocks.GRONGLET.get(), new AbstractProjectileDispenseBehavior() {
-				protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-					return Util.make(new Gronglet(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-				}
-			});
-
-			DispenserBlock.registerBehavior(UGBlocks.BOOMGOURD.get(), new DefaultDispenseItemBehavior() {
-
-				protected ItemStack execute(BlockSource source, ItemStack stack) {
-					Level level = source.level().getLevel();
-					BlockPos blockpos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
-					Boomgourd gourd = new Boomgourd(level, (double) blockpos.getX() + 0.5D, blockpos.getY(), (double) blockpos.getZ() + 0.5D, null);
-					level.addFreshEntity(gourd);
-					level.playSound(null, gourd.getX(), gourd.getY(), gourd.getZ(), UGSoundEvents.BOOMGOURD_PRIMED.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-					level.gameEvent(null, GameEvent.ENTITY_PLACE, blockpos);
-					stack.shrink(1);
-					return stack;
-				}
-			});
+			UGDispenserBehaviors.register();
 
 			PotionBrewing.addMix(Potions.AWKWARD, UGItems.BLOOD_GLOBULE.get(), UGPotions.BRITTLENESS.get());
 			PotionBrewing.addMix(UGPotions.BRITTLENESS.get(), Items.REDSTONE, UGPotions.LONG_BRITTLENESS.get());
