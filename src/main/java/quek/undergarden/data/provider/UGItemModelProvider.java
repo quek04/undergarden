@@ -1,13 +1,13 @@
 package quek.undergarden.data.provider;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 
 import java.util.function.Supplier;
@@ -19,7 +19,7 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 	}
 
 	private String blockName(Supplier<? extends Block> block) {
-		return ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+		return BuiltInRegistries.BLOCK.getKey(block.get()).getPath();
 	}
 
 	private ResourceLocation texture(String name) {
@@ -56,32 +56,32 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 	}
 
 	public void normalItem(Supplier<? extends Item> item) {
-		withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/generated"))
-				.texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
+		withExistingParent(BuiltInRegistries.ITEM.getKey(item.get()).getPath(), mcLoc("item/generated"))
+				.texture("layer0", modLoc("item/" + BuiltInRegistries.ITEM.getKey(item.get()).getPath()));
 	}
 
 	public void normalItemSpecifiedTexture(Supplier<? extends Item> item, String name) {
-		withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/generated"))
+		withExistingParent(BuiltInRegistries.ITEM.getKey(item.get()).getPath(), mcLoc("item/generated"))
 				.texture("layer0", modLoc("item/" + name));
 	}
 
 	public void torchItem(Supplier<? extends Block> item) {
-		withExistingParent(ForgeRegistries.BLOCKS.getKey(item.get()).getPath(), mcLoc("item/generated"))
-				.texture("layer0", modLoc("block/" + ForgeRegistries.BLOCKS.getKey(item.get()).getPath()));
+		withExistingParent(BuiltInRegistries.BLOCK.getKey(item.get()).getPath(), mcLoc("item/generated"))
+				.texture("layer0", modLoc("block/" + BuiltInRegistries.BLOCK.getKey(item.get()).getPath()));
 	}
 
 	public void toolItem(Supplier<? extends Item> item) {
-		withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld"))
-				.texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
+		withExistingParent(BuiltInRegistries.ITEM.getKey(item.get()).getPath(), mcLoc("item/handheld"))
+				.texture("layer0", modLoc("item/" + BuiltInRegistries.ITEM.getKey(item.get()).getPath()));
 	}
 
 	public void rodItem(Supplier<? extends Item> item) {
-		withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/handheld_rod"))
-				.texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item.get()).getPath()));
+		withExistingParent(BuiltInRegistries.ITEM.getKey(item.get()).getPath(), mcLoc("item/handheld_rod"))
+				.texture("layer0", modLoc("item/" + BuiltInRegistries.ITEM.getKey(item.get()).getPath()));
 	}
 
 	public void egg(Supplier<? extends Item> item) {
-		withExistingParent(ForgeRegistries.ITEMS.getKey(item.get()).getPath(), mcLoc("item/template_spawn_egg"));
+		withExistingParent(BuiltInRegistries.ITEM.getKey(item.get()).getPath(), mcLoc("item/template_spawn_egg"));
 	}
 
 	public void sign(Supplier<? extends SignBlock> sign) {
@@ -90,14 +90,14 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 	}
 
 	public ItemModelBuilder wall(Supplier<? extends WallBlock> wall, Supplier<? extends Block> fullBlock) {
-		return wallInventory(ForgeRegistries.BLOCKS.getKey(wall.get()).getPath(), texture(blockName(fullBlock)));
+		return wallInventory(BuiltInRegistries.BLOCK.getKey(wall.get()).getPath(), texture(blockName(fullBlock)));
 	}
 
 	public ItemModelBuilder button(Supplier<? extends ButtonBlock> button, Supplier<? extends Block> fullBlock) {
-		return buttonInventory(ForgeRegistries.BLOCKS.getKey(button.get()).getPath(), texture(blockName(fullBlock)));
+		return buttonInventory(BuiltInRegistries.BLOCK.getKey(button.get()).getPath(), texture(blockName(fullBlock)));
 	}
 
 	public void trapdoor(Supplier<? extends TrapDoorBlock> trapdoor) {
-		withExistingParent(ForgeRegistries.BLOCKS.getKey(trapdoor.get()).getPath(), new ResourceLocation(Undergarden.MODID, "block/" + blockName(trapdoor) + "_bottom"));
+		withExistingParent(BuiltInRegistries.BLOCK.getKey(trapdoor.get()).getPath(), new ResourceLocation(Undergarden.MODID, "block/" + blockName(trapdoor) + "_bottom"));
 	}
 }

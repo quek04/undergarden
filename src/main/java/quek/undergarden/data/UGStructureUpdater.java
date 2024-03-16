@@ -8,6 +8,7 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtAccounter;
 import net.minecraft.nbt.NbtIo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.MultiPackResourceManager;
@@ -15,7 +16,7 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.util.datafix.DataFixers;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 
 import javax.annotation.Nonnull;
@@ -59,7 +60,7 @@ public class UGStructureUpdater implements DataProvider {
 	}
 
 	private void process(ResourceLocation loc, Resource resource, CachedOutput cache) throws IOException {
-		CompoundTag inputNBT = NbtIo.readCompressed(resource.open());
+		CompoundTag inputNBT = NbtIo.readCompressed(resource.open(), NbtAccounter.unlimitedHeap());
 		CompoundTag converted = updateNBT(inputNBT);
 		if (!converted.equals(inputNBT)) {
 			Class<? extends DataFixer> fixerClass = DataFixers.getDataFixer().getClass();

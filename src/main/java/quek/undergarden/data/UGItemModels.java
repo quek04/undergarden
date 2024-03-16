@@ -1,8 +1,8 @@
 package quek.undergarden.data;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.data.provider.UGItemModelProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -305,7 +305,7 @@ public class UGItemModels extends UGItemModelProvider {
 		trapdoor(UGBlocks.GRONGLE_TRAPDOOR);
 
 		blockFlatWithBlockTexture(UGBlocks.TALL_DEEPTURF, "tall_deepturf_top");
-		withExistingParent(ForgeRegistries.BLOCKS.getKey(UGBlocks.TALL_SHIMMERWEED.get()).getPath(), mcLoc("item/generated"))
+		withExistingParent(BuiltInRegistries.BLOCK.getKey(UGBlocks.TALL_SHIMMERWEED.get()).getPath(), mcLoc("item/generated"))
 				.texture("layer0", modLoc("block/tall_shimmerweed_top"))
 				.texture("layer1", modLoc("block/tall_shimmerweed_bulb"))
 				.renderType("translucent");

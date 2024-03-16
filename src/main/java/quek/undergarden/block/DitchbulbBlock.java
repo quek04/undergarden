@@ -28,7 +28,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 import quek.undergarden.registry.UGItems;
 
 public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
@@ -51,9 +51,9 @@ public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		super.tick(state, level, pos, random);
 		int age = state.getValue(AGE);
-		if (random.nextInt(10) == 0 && age != 1 && ForgeHooks.onCropsGrowPre(level, pos, state, true)) {
+		if (random.nextInt(10) == 0 && age != 1 && CommonHooks.onCropsGrowPre(level, pos, state, true)) {
 			level.setBlock(pos, state.setValue(AGE, 1), 2);
-			ForgeHooks.onCropsGrowPost(level, pos, state);
+			CommonHooks.onCropsGrowPost(level, pos, state);
 		}
 	}
 

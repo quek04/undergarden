@@ -3,7 +3,7 @@ package quek.undergarden.data;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGFluids;
 import quek.undergarden.registry.UGTags;

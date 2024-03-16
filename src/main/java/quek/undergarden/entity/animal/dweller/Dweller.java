@@ -29,10 +29,10 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.event.entity.living.LivingAttackEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
@@ -314,7 +314,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		this.setDeltaMovement(vec3.x(), d1, vec3.z());
 		this.setIsJumping(true);
 		this.hasImpulse = true;
-		ForgeHooks.onLivingJump(this);
+		CommonHooks.onLivingJump(this);
 		if (moveHorizontally) {
 			float f = Mth.sin(this.getYRot() * ((float) Math.PI / 180F));
 			float f1 = Mth.cos(this.getYRot() * ((float) Math.PI / 180F));

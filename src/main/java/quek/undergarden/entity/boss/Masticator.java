@@ -97,7 +97,7 @@ public class Masticator extends Monster {
 			double speed = this.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
 			this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(Mth.lerp(0.1D, speed, d0));
 
-			if (this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
+			if (this.horizontalCollision && net.neoforged.neoforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
 				boolean flag = false;
 				AABB axisalignedbb = this.getBoundingBox().inflate(0.2D);
 

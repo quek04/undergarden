@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.IForgeShearable;
+import net.neoforged.neoforge.common.IForgeShearable;
 import quek.undergarden.registry.UGBlocks;
 
 public class TallDeepturfBlock extends BushBlock implements BonemealableBlock, IForgeShearable {

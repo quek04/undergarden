@@ -50,9 +50,9 @@ public class UnderbeanBushBlock extends BushBlock implements BonemealableBlock {
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		super.tick(state, level, pos, random);
 		int i = state.getValue(AGE);
-		if (i < 3 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
+		if (i < 3 && net.neoforged.neoforge.common.CommonHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
 			level.setBlock(pos, state.setValue(AGE, i + 1), 2);
-			net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+			net.neoforged.neoforge.common.CommonHooks.onCropsGrowPost(level, pos, state);
 		}
 	}
 

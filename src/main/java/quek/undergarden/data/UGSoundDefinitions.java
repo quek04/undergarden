@@ -1,8 +1,8 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.SoundDefinitionsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGSoundEvents;
 
