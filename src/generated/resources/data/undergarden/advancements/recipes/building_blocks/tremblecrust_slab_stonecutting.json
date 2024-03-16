@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:tremblecrust",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:tremblecrust"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:tremblecrust_slab_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

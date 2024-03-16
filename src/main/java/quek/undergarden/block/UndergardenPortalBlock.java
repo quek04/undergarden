@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherPortalBlock;
@@ -24,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.portal.PortalShape;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.NeoForge;
@@ -64,7 +66,7 @@ public class UndergardenPortalBlock extends Block {
 
 	public boolean trySpawnPortal(LevelAccessor level, BlockPos pos) {
 		UndergardenPortalBlock.UGPortalShape size = this.isPortal(level, pos);
-		if (size != null && !onTrySpawnPortal(level, pos, size)) {
+		if (size != null && !this.isPortalSpawnCanceled(level, pos, size)) {
 			size.createPortalBlocks();
 			return true;
 		} else {
@@ -72,8 +74,8 @@ public class UndergardenPortalBlock extends Block {
 		}
 	}
 
-	public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, UndergardenPortalBlock.UGPortalShape size) {
-		return NeoForge.EVENT_BUS.post(new BlockEvent.PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
+	public boolean isPortalSpawnCanceled(LevelAccessor world, BlockPos pos, UndergardenPortalBlock.UGPortalShape size) {
+		return NeoForge.EVENT_BUS.post(new BlockEvent.PortalSpawnEvent(world, pos, world.getBlockState(pos), size)).isCanceled();
 	}
 
 	@Nullable
@@ -174,25 +176,23 @@ public class UndergardenPortalBlock extends Block {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
 		return ItemStack.EMPTY;
 	}
 
 	@Override
 	public BlockState rotate(BlockState state, Rotation rot) {
 		switch (rot) {
-			case COUNTERCLOCKWISE_90:
-			case CLOCKWISE_90:
-				switch (state.getValue(AXIS)) {
-					case Z:
-						return state.setValue(AXIS, Direction.Axis.X);
-					case X:
-						return state.setValue(AXIS, Direction.Axis.Z);
-					default:
-						return state;
-				}
-			default:
+			case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> {
+				return switch (state.getValue(AXIS)) {
+					case Z -> state.setValue(AXIS, Direction.Axis.X);
+					case X -> state.setValue(AXIS, Direction.Axis.Z);
+					default -> state;
+				};
+			}
+			default -> {
 				return state;
+			}
 		}
 	}
 

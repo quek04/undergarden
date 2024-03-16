@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UGCreativeModeTabs {
 
-	private static final List<DeferredItem<Item>> DONT_INCLUDE = List.of(UGItems.GLOOMPER_SECRET_DISC, UGItems.MASTICATOR_SCALES, UGItems.MASTICATED_CHESTPLATE);
+	private static final List<DeferredItem<Item>> DONT_INCLUDE = List.of(UGItems.GLOOMPER_SECRET_DISC);
 
 	public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Undergarden.MODID);
 

@@ -479,15 +479,6 @@ public class UGLootTables extends LootTableProvider {
 
 			this.add(UGEntityTypes.FORGOTTEN.get(), LootTable.lootTable());
 
-//            this.add(UGEntityTypes.MASTICATOR.get(), LootTable.lootTable()
-//                    .withPool(LootPool.lootPool()
-//                            .setRolls(ConstantValue.exactly(1))
-//                            .add(LootItem.lootTableItem(UGItems.MASTICATOR_SCALES.get())
-//                                    .when(LootItemKilledByPlayerCondition.killedByPlayer())
-//                                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F)))
-//                            )
-//                    )
-//            );
 			this.add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.lootTable()
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1))

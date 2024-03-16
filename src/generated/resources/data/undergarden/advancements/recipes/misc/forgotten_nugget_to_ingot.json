@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_forgotten_nugget",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_forgotten_nugget"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:forgotten_nugget_to_ingot"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -33,6 +34,7 @@ import quek.undergarden.registry.UGTags;
 
 public class BlisterberryBushBlock extends BushBlock implements BonemealableBlock {
 
+	public static final MapCodec<BlisterberryBushBlock> CODEC = simpleCodec(BlisterberryBushBlock::new);
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 	protected static final VoxelShape BABY_SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 8.0D, 12.0D);
 	protected static final VoxelShape NORMAL_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 15.0D, 15.0D);
@@ -40,6 +42,11 @@ public class BlisterberryBushBlock extends BushBlock implements BonemealableBloc
 	public BlisterberryBushBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
+	}
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
 	}
 
 	@Override
@@ -102,7 +109,7 @@ public class BlisterberryBushBlock extends BushBlock implements BonemealableBloc
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
 		return state.getValue(AGE) < 3;
 	}
 

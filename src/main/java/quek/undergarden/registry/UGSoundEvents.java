@@ -133,12 +133,6 @@ public class UGSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> SPLOOGIE_DEATH = register("entity.sploogie.death");
 	public static final DeferredHolder<SoundEvent, SoundEvent> SPLOOGIE_SPIT = register("entity.sploogie.spit");
 
-	public static final DeferredHolder<SoundEvent, SoundEvent> MASTICATOR_AMBIENT = register("entity.masticator.ambient");
-	public static final DeferredHolder<SoundEvent, SoundEvent> MASTICATOR_HURT = register("entity.masticator.hurt");
-	public static final DeferredHolder<SoundEvent, SoundEvent> MASTICATOR_DEATH = register("entity.masticator.death");
-	public static final DeferredHolder<SoundEvent, SoundEvent> MASTICATOR_EAT = register("entity.masticator.eat");
-	public static final DeferredHolder<SoundEvent, SoundEvent> MASTICATOR_STEP = register("entity.masticator.step");
-
 	public static final DeferredHolder<SoundEvent, SoundEvent> GWIB_HURT = register("entity.gwib.hurt");
 	public static final DeferredHolder<SoundEvent, SoundEvent> GWIB_DEATH = register("entity.gwib.death");
 	public static final DeferredHolder<SoundEvent, SoundEvent> GWIB_FLOP = register("entity.gwib.flop");

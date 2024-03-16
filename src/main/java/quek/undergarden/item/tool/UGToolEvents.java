@@ -1,5 +1,6 @@
 package quek.undergarden.item.tool;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,11 +14,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.network.PacketDistributor;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.effect.ChillyEffect;
 import quek.undergarden.network.CreateCritParticlePacket;
-import quek.undergarden.network.UGPacketHandler;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGParticleTypes;
@@ -33,7 +32,7 @@ public class UGToolEvents {
 
 		if (source instanceof Player player) {
 			if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SWORD.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
-				if (ForgeRegistries.ENTITY_TYPES.getKey(event.getEntity().getType()).getNamespace().equals(Undergarden.MODID) && !event.getEntity().getType().is(Tags.EntityTypes.BOSSES)) {
+				if (BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()).getNamespace().equals(Undergarden.MODID) && !event.getEntity().getType().is(Tags.EntityTypes.BOSSES)) {
 					event.setAmount(damage * 1.5F);
 				}
 			}
@@ -46,7 +45,7 @@ public class UGToolEvents {
 		BlockState state = event.getState();
 
 		if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SHOVEL.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_HOE.get()) {
-			if (state != null && ForgeRegistries.BLOCKS.getKey(state.getBlock()).getNamespace().equals(Undergarden.MODID)) {
+			if (state != null && BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace().equals(Undergarden.MODID)) {
 				event.setNewSpeed(event.getOriginalSpeed() * 1.5F);
 			}
 		}
@@ -62,7 +61,7 @@ public class UGToolEvents {
 				if (event.getEntity().getType().is(UGTags.Entities.ROTSPAWN)) {
 					event.setAmount(damage * 1.5F);
 					if (!event.getEntity().level().isClientSide()) {
-						UGPacketHandler.CHANNEL.send(PacketDistributor.ALL.noArg(), new CreateCritParticlePacket(event.getEntity().getId(), 2, UGParticleTypes.UTHERIUM_CRIT.get()));
+						PacketDistributor.TRACKING_ENTITY.with(event.getEntity()).send(new CreateCritParticlePacket(event.getEntity().getId(), 2, UGParticleTypes.UTHERIUM_CRIT.get()));
 					}
 				}
 			}

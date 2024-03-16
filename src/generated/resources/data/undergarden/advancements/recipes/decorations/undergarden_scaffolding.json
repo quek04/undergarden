@@ -32,15 +32,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_stick",
-      "has_twistytwig",
-      "has_the_recipe"
+      "has_twistytwig"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:undergarden_scaffolding"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

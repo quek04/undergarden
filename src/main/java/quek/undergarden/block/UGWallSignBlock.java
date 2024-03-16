@@ -9,8 +9,8 @@ import quek.undergarden.registry.UGBlockEntities;
 
 public class UGWallSignBlock extends WallSignBlock {
 
-	public UGWallSignBlock(Properties properties, WoodType woodType) {
-		super(properties, woodType);
+	public UGWallSignBlock(WoodType type, Properties properties) {
+		super(type, properties);
 	}
 
 	@Override

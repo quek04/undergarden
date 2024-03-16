@@ -12,7 +12,7 @@ import quek.undergarden.effect.ChillyEffect;
 @Mixin(LivingEntityRenderer.class)
 public class LivingEntityRendererMixin<T extends LivingEntity> {
 
-	@Inject(method = "isShaking", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "isShaking", at = @At("HEAD"), cancellable = true, remap = false)
 	public void undergarden$shakeWhileChilly(T entity, CallbackInfoReturnable<Boolean> cir) {
 		if (entity.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(ChillyEffect.MOVEMENT_SPEED_MODIFIER_UUID) != null) {
 			cir.setReturnValue(true);

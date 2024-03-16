@@ -20,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_TagKey[minecraft:item / undergarden:cloggrum_items]",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_TagKey[minecraft:item / undergarden:cloggrum_items]"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blast_cloggrum_item"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -32,15 +32,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_ditchbulb_paste",
-      "has_stick",
-      "has_the_recipe"
+      "has_stick"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:torch_ditchbulb_paste"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

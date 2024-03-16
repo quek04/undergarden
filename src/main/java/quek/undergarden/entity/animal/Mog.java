@@ -22,7 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.neoforged.neoforge.common.IForgeShearable;
+import net.neoforged.neoforge.common.IShearable;
 import net.neoforged.neoforge.fluids.FluidType;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Mog extends Animal implements IForgeShearable {
+public class Mog extends Animal implements IShearable {
 
 	private static final EntityDataAccessor<Boolean> HAS_MOSS = SynchedEntityData.defineId(Mog.class, EntityDataSerializers.BOOLEAN);
 	private int timeWithoutMoss;

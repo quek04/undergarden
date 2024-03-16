@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:underbeans",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:underbeans"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smelt_underbeans"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

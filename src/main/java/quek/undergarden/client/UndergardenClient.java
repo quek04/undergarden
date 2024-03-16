@@ -49,8 +49,21 @@ import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.registry.*;
 
+import java.util.List;
+
 @Mod.EventBusSubscriber(modid = Undergarden.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UndergardenClient {
+
+	private static final List<ResourceLocation> HEARTS = List.of(
+			new ResourceLocation("virulence_hearts/normal"),
+			new ResourceLocation("virulence_hearts/normal_blinking"),
+			new ResourceLocation("virulence_hearts/half"),
+			new ResourceLocation("virulence_hearts/half_blinking"),
+			new ResourceLocation("virulence_hearts/hardcore"),
+			new ResourceLocation("virulence_hearts/hardcore_blinking"),
+			new ResourceLocation("virulence_hearts/hardcore_half"),
+			new ResourceLocation("virulence_hearts/hardcore_half_blinking")
+	);
 
 	private static final ResourceLocation VIRULENCE_HEARTS = new ResourceLocation(Undergarden.MODID, "textures/gui/virulence_hearts.png");
 	private static final ResourceLocation BRITTLENESS_ARMOR = new ResourceLocation(Undergarden.MODID, "textures/gui/brittleness_armor.png");
@@ -90,7 +103,6 @@ public class UndergardenClient {
 		event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
 		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRender::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRender::new);
-		//event.registerEntityRenderer(UGEntityTypes.MASTICATOR.get(), MasticatorRender::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
 	}
 
@@ -123,7 +135,6 @@ public class UndergardenClient {
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
-		//event.registerLayerDefinition(UGModelLayers.MASTICATOR, MasticatorModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
 	}
 
@@ -314,7 +325,7 @@ public class UndergardenClient {
 
 	private static void renderHearts(GuiGraphics graphics, ExtendedGui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
 		Gui.HeartType heartType = Gui.HeartType.forPlayer(player);
-		int hardcoreOffset = 9 * (player.level().getLevelData().isHardcore() ? 5 : 0);
+		boolean hardcore = player.level().getLevelData().isHardcore();
 		int healthAmount = Mth.ceil((double) healthMax / 2.0D);
 		int absorptionAmount = Mth.ceil((double) absorb / 2.0D);
 		int l = healthAmount * 2;
@@ -332,31 +343,49 @@ public class UndergardenClient {
 				newY -= 2;
 			}
 
-			renderHeart(graphics, Gui.HeartType.CONTAINER, newX, newY, hardcoreOffset, highlight, false);
+			renderHeartBG(graphics, newX, newY, hardcore, highlight);
 			int j2 = i1 * 2;
 			boolean flag = i1 >= healthAmount;
 			if (flag) {
 				int k2 = j2 - l;
 				if (k2 < absorb) {
-					boolean flag1 = k2 + 1 == absorb;
-					renderHeart(graphics, heartType == Gui.HeartType.WITHERED ? heartType : Gui.HeartType.ABSORBING, newX, newY, hardcoreOffset, false, flag1);
+					boolean half = k2 + 1 == absorb;
+					renderVirulenceHeart(graphics, newX, newY, hardcore, false, half);
 				}
 			}
 
 			if (highlight && j2 < healthLast) {
-				boolean flag2 = j2 + 1 == healthLast;
-				renderHeart(graphics, heartType, newX, newY, hardcoreOffset, true, flag2);
+				boolean half = j2 + 1 == healthLast;
+				renderVirulenceHeart(graphics, newX, newY, hardcore, true, half);
 			}
 
 			if (j2 < health) {
-				boolean flag3 = j2 + 1 == health;
-				renderHeart(graphics, heartType, newX, newY, hardcoreOffset, false, flag3);
+				boolean half = j2 + 1 == health;
+				renderVirulenceHeart(graphics, newX, newY, hardcore, false, half);
 			}
 		}
 	}
 
-	private static void renderHeart(GuiGraphics graphics, Gui.HeartType type, int x, int y, int offset, boolean blinking, boolean halfHeart) {
-		graphics.blit(VIRULENCE_HEARTS, x, y, type.getX(halfHeart, blinking), offset, 9, 9);
+	private static void renderHeartBG(GuiGraphics graphics, int x, int y, boolean hardcore, boolean blinking) {
+		graphics.blitSprite(Gui.HeartType.CONTAINER.getSprite(hardcore, false, blinking), x, y, 9, 9);
+	}
+
+	private static void renderVirulenceHeart(GuiGraphics graphics, int x, int y, boolean hardcore, boolean blinking, boolean halfHeart) {
+		graphics.blitSprite(getVirulentHeartSprite(hardcore, halfHeart, blinking), x, y, 9, 9);
+	}
+
+	private static ResourceLocation getVirulentHeartSprite(boolean hardcore, boolean half, boolean blinking) {
+		if (!hardcore) {
+			if (half) {
+				return blinking ? HEARTS.get(3) : HEARTS.get(2);
+			} else {
+				return blinking ? HEARTS.get(1) : HEARTS.get(0);
+			}
+		} else if (half) {
+			return blinking ? HEARTS.get(7) : HEARTS.get(6);
+		} else {
+			return blinking ? HEARTS.get(5) : HEARTS.get(4);
+		}
 	}
 
 	private static void renderPortalOverlay(GuiGraphics guiGraphics, Minecraft minecraft, Window window, UndergardenPortalAttachment portal, float partialTicks) {

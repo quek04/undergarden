@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:shiverstone_cloggrum_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:shiverstone_cloggrum_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smelt_shiverstone_cloggrum_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

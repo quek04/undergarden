@@ -1,5 +1,6 @@
-// 1.20.1	2024-02-14T21:17:05.6698779	Undergarden Entity Type Tags
+// 1.20.4	2024-03-16T14:03:25.9366057	Undergarden Entity Type Tags
 d9a7c6d8c29ace1cf686be5f4ec1aedaaeedf725 data/forge/tags/entity_types/bosses.json
+9cd10f169450bab6ad98c90dcff8fc028c91d509 data/minecraft/tags/entity_types/can_breathe_under_water.json
 1384ad7158709624105a815c89f486aae7c481a4 data/minecraft/tags/entity_types/dismounts_underwater.json
 044ec6baf770075dc184db54f0c5b4f46cfbf791 data/minecraft/tags/entity_types/fall_damage_immune.json
 d9a7c6d8c29ace1cf686be5f4ec1aedaaeedf725 data/minecraft/tags/entity_types/freeze_immune_entity_types.json

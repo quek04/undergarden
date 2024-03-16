@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_indigo_mushroom",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_indigo_mushroom"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:indigo_stew"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

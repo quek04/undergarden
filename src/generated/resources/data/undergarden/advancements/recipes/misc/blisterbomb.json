@@ -34,15 +34,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_twistytwig",
-      "has_blisterberry",
-      "has_the_recipe"
+      "has_blisterberry"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blisterbomb"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

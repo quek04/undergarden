@@ -15,7 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.network.NetworkHooks;
 
 public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 
@@ -88,10 +87,5 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 
 	protected ParticleOptions makeParticle() {
 		return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(this.getDefaultItem()));
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

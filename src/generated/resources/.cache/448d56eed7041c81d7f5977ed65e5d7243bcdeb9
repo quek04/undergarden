@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-22T19:38:41.3216859	Undergarden Item Models
+// 1.20.4	2024-03-16T14:03:25.9576367	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -143,8 +143,6 @@ f4f2da27e0af25333d7ff5e033141d2bc9ca1890 assets/undergarden/models/item/ink_mush
 a2179db39d2ecc39a868deeaa392d52b222ad634 assets/undergarden/models/item/ink_mushroom_cap.json
 a90a80946a0dba62be141e6dc4879bafe3c73191 assets/undergarden/models/item/ink_mushroom_stem.json
 6db9447f4dec1a97ed06076c2552bf9dfb8c01d1 assets/undergarden/models/item/loose_tremblecrust.json
-d364dc28b6f1e63ebb27aeae15fe822e87c85c87 assets/undergarden/models/item/masticated_chestplate.json
-a06d61903192a22b9601a82e8b0d3e2aeec86505 assets/undergarden/models/item/masticator_scales.json
 c3ff50d54fbdaf6cec277ade85918ff7075e2d23 assets/undergarden/models/item/miserabell.json
 2ee6873febae8f6c34e20895b2c59f258100ae3d assets/undergarden/models/item/mogmoss.json
 107d0c9ced12b3dacc090e61b41f0dd87112ee21 assets/undergarden/models/item/mogmoss_rug.json

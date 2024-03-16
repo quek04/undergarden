@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_goo_ball",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_goo_ball"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:sticky_piston_from_goo_ball"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

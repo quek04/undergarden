@@ -1,8 +1,8 @@
-// 1.20.1	2024-02-11T21:37:07.6409618	Undergarden Item Tags
+// 1.20.4	2024-03-16T14:03:25.9401242	Undergarden Item Tags
 9b86bbc17df24411b53ea716b5b6b343f35d5caa data/forge/tags/items/armors/boots.json
-af8f07accb2d83fca68d1c3b0e34b65fb0d627c2 data/forge/tags/items/armors/chestplates.json
-190c6df9b3c9fce666bd129e9f9cc22ab09fa9ee data/forge/tags/items/armors/helmets.json
-b88ca5598b53a7cd0bea0bbd641d84b061e92198 data/forge/tags/items/armors/leggings.json
+a5a1f0e7ebef2d5fc7dcda32659b374e961d8902 data/forge/tags/items/armors/chestplates.json
+e282811049e5f333a4c93eedc7f5d09b35dbc043 data/forge/tags/items/armors/helmets.json
+fb170df46118e10c285c41399bd3020004554573 data/forge/tags/items/armors/leggings.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/forge/tags/items/bones.json
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/forge/tags/items/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/items/fences/wooden.json
@@ -77,7 +77,7 @@ fa11011fbce2a046e0fdf04141b67ea097623b38 data/minecraft/tags/items/small_flowers
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/minecraft/tags/items/stone_tool_materials.json
 f8741fc12c99d7e2f904a1ce55c7aa5ffbd1f333 data/minecraft/tags/items/swords.json
 53c0ae22e904f0c1c23a8c39220e7af80724624d data/minecraft/tags/items/tall_flowers.json
-05c31e1d37ef61d752e02c182eccf4d5422febd4 data/minecraft/tags/items/trimmable_armor.json
+d9f00e5094cf7e9283e1651906318d8d8309d139 data/minecraft/tags/items/trimmable_armor.json
 8c08daec4cb74d7ceb504552c74bb474623e6b3d data/minecraft/tags/items/trim_materials.json
 a1a496be627d7abffcd62e040dfbcf8e84582068 data/minecraft/tags/items/villager_plantable_seeds.json
 861fa30f04e9613f058632d72865922de26172f1 data/minecraft/tags/items/walls.json

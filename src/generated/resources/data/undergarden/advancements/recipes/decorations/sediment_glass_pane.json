@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_sediment_glass",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_sediment_glass"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:sediment_glass_pane"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

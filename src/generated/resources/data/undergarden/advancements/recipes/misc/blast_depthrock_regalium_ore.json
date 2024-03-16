@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:depthrock_regalium_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:depthrock_regalium_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blast_depthrock_regalium_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

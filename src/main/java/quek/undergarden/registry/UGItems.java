@@ -14,7 +14,6 @@ import quek.undergarden.item.CatalystItem;
 import quek.undergarden.item.DitchbulbPasteItem;
 import quek.undergarden.item.ForgottenSmithingTemplateItem;
 import quek.undergarden.item.armor.AncientArmorItem;
-import quek.undergarden.item.armor.MasticatedChestplateItem;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
 import quek.undergarden.item.tool.slingshot.DepthrockPebbleItem;
@@ -60,10 +59,6 @@ public class UGItems {
 	public static final DeferredItem<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> MOGMOSS = ITEMS.register("mogmoss", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> BLUE_MOGMOSS = ITEMS.register("blue_mogmoss", () -> new Item(new Item.Properties()));
-
-	//boss loot
-	public static final DeferredItem<Item> MASTICATOR_SCALES = ITEMS.register("masticator_scales", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
-	public static final DeferredItem<Item> MASTICATED_CHESTPLATE = ITEMS.register("masticated_chestplate", () -> new MasticatedChestplateItem(UGArmorMaterials.MASTICATED));
 
 	//tools
 	public static final DeferredItem<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleaxeItem(UGItemTiers.CLOGGRUM, 7, -3.4F));
@@ -171,6 +166,5 @@ public class UGItems {
 	public static final DeferredItem<DeferredSpawnEggItem> SMOG_MOG_SPAWN_EGG = ITEMS.register("smog_mog_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.SMOG_MOG, 3227179, 3444366, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_SPAWN_EGG = ITEMS.register("forgotten_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN, 5393733, 9502615, new Item.Properties()));
 
-	//public static final DeferredItem<DeferredSpawnEggItem> MASTICATOR_SPAWN_EGG = ITEMS.register("masticator_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MASTICATOR, 2366466, 15881511, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));
 }

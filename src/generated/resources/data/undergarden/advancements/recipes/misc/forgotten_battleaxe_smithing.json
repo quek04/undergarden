@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:forgotten_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:forgotten_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:forgotten_battleaxe_smithing"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

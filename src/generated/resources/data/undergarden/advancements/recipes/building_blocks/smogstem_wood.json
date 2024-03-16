@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_smogstem_log",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_smogstem_log"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smogstem_wood"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

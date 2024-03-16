@@ -40,17 +40,14 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.forgotten_tools.desc"
     },
     "frame": "challenge",
-    "hidden": false,
     "icon": {
       "item": "undergarden:forgotten_pickaxe",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.forgotten_tools.title"
     }

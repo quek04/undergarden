@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_ink_mushroom",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_ink_mushroom"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:inky_stew"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

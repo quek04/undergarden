@@ -259,17 +259,14 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.all_undergarden_biomes.desc"
     },
     "frame": "challenge",
-    "hidden": false,
     "icon": {
       "item": "undergarden:cloggrum_boots",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.all_undergarden_biomes.title"
     }

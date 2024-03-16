@@ -12,6 +12,7 @@ import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import quek.undergarden.entity.stoneborn.Stoneborn;
+import quek.undergarden.registry.UGCriteria;
 
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
 		);
 
 		public static Criterion<?> tradeWithStoneborn() {
-			return new TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty());
+			return UGCriteria.STONEBORN_TRADE.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
 		}
 
 		public boolean matches(LootContext context, ItemStack stack) {

@@ -16,7 +16,6 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.stack_of_gloomgourds.desc"
     },
@@ -25,7 +24,6 @@
     "icon": {
       "item": "undergarden:gloomgourd"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.stack_of_gloomgourds.title"
     }

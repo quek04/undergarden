@@ -392,8 +392,6 @@ public class UGRecipes extends UGRecipeProvider {
 		makeHoe(UGItems.FROSTSTEEL_HOE, UGItems.FROSTSTEEL_INGOT).save(consumer);
 		makeHoe(UGItems.UTHERIUM_HOE, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 
-		makeChestplate(UGItems.MASTICATED_CHESTPLATE, UGItems.MASTICATOR_SCALES).save(consumer);
-
 		makeHelmet(UGItems.CLOGGRUM_HELMET, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeChestplate(UGItems.CLOGGRUM_CHESTPLATE, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeLeggings(UGItems.CLOGGRUM_LEGGINGS, UGItems.CLOGGRUM_INGOT).save(consumer);

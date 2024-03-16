@@ -34,15 +34,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_underbeans",
-      "has_mogmoss",
-      "has_the_recipe"
+      "has_mogmoss"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:slop_bowl"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

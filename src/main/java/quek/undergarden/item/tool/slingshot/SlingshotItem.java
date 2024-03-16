@@ -17,7 +17,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.MinecraftForge;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 import net.neoforged.neoforge.event.entity.player.ArrowNockEvent;
 import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
@@ -153,14 +153,14 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
 	public static InteractionResultHolder<ItemStack> onArrowNock(ItemStack stack, Level level, Player player, InteractionHand hand, boolean hasAmmo) {
 		ArrowNockEvent event = new ArrowNockEvent(player, stack, hand, level, hasAmmo);
-		if (MinecraftForge.EVENT_BUS.post(event))
+		if (NeoForge.EVENT_BUS.post(event).isCanceled())
 			return new InteractionResultHolder<>(InteractionResult.FAIL, stack);
 		return event.getAction();
 	}
 
 	public static int onArrowLoose(ItemStack stack, Level level, Player player, int charge, boolean hasAmmo) {
 		ArrowLooseEvent event = new ArrowLooseEvent(player, stack, level, charge, hasAmmo);
-		if (MinecraftForge.EVENT_BUS.post(event))
+		if (NeoForge.EVENT_BUS.post(event).isCanceled())
 			return -1;
 		return event.getCharge();
 	}

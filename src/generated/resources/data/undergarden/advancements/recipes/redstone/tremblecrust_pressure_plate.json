@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_tremblecrust",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_tremblecrust"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:tremblecrust_pressure_plate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

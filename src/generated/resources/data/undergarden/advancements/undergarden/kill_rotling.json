@@ -17,16 +17,12 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.kill_rotling.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "undergarden:utheric_shard"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.kill_rotling.title"
     }

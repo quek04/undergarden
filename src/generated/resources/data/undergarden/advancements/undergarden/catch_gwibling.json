@@ -15,16 +15,12 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.catch_gwibling.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "undergarden:gwibling_bucket"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.catch_gwibling.title"
     }

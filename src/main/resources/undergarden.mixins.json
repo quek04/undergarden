@@ -2,16 +2,15 @@
   "required": true,
   "package": "quek.undergarden.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "undergarden.refmap.json",
+  "injectors": {
+    "defaultRequire": 1
+  },
   "client": [
     "LivingEntityRendererMixin"
   ],
   "mixins": [
     "BubbleColumnBlockMixin",
-    "CauldronBlockMixin",
-    "PointedDripstoneMixin",
     "StructureProcessorAccessor",
     "StructureTemplateMixin"
-  ],
-  "minVersion": "0.8"
+  ]
 }

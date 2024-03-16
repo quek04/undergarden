@@ -71,7 +71,6 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<Forgotten>> FORGOTTEN = ENTITIES.register("forgotten", () -> EntityType.Builder.of(Forgotten::new, MobCategory.MONSTER).sized(0.7F, 2.2F).build("forgotten"));
 
 	//bosses
-	//public static final DeferredHolder<EntityType<Masticator>> MASTICATOR = ENTITIES.register("masticator", () -> EntityType.Builder.of(Masticator::new, MobCategory.MONSTER).sized(2.5F, 4).build("masticator"));
 	public static final DeferredHolder<EntityType<?>, EntityType<ForgottenGuardian>> FORGOTTEN_GUARDIAN = ENTITIES.register("forgotten_guardian", () -> EntityType.Builder.of(ForgottenGuardian::new, MobCategory.MONSTER).sized(1.0F, 3.8F).build("forgotten_guardian"));
 
 	@SubscribeEvent
@@ -105,7 +104,6 @@ public class UGEntityTypes {
 		event.put(SCINTLING.get(), Scintling.registerAttributes().build());
 		event.put(GLOOMPER.get(), Gloomper.registerAttributes().build());
 		event.put(STONEBORN.get(), Stoneborn.registerAttributes().build());
-		//event.put(MASTICATOR.get(), Masticator.registerAttributes().build());
 		event.put(NARGOYLE.get(), Nargoyle.registerAttributes().build());
 		event.put(FORGOTTEN_GUARDIAN.get(), ForgottenGuardian.registerAttributes().build());
 		event.put(MUNCHER.get(), Muncher.registerAttributes().build());

@@ -34,15 +34,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_deepsoil",
-      "has_pebble",
-      "has_the_recipe"
+      "has_pebble"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:coarse_deepsoil"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

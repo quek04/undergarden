@@ -20,6 +20,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -32,6 +33,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
@@ -45,6 +47,8 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
+import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.data.*;
 import quek.undergarden.entity.Boomgourd;
@@ -52,27 +56,30 @@ import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.slingshot.*;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
-import quek.undergarden.network.UGPacketHandler;
+import quek.undergarden.network.CreateCritParticlePacket;
 import quek.undergarden.registry.*;
 
-import java.util.Arrays;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Mod(Undergarden.MODID)
 public class Undergarden {
 
 	public static final String MODID = "undergarden";
 
-	public Undergarden(IEventBus bus) {
+	public Undergarden(IEventBus bus, Dist dist) {
+
+		if (dist.isClient()) {
+			bus.addListener(this::clientSetup);
+		}
 
 		bus.addListener(this::setup);
-		bus.addListener(this::clientSetup);
 		bus.addListener(this::gatherData);
+		bus.addListener(this::registerPackets);
 		NeoForge.EVENT_BUS.addListener(this::portalTick);
 
 		DeferredRegister<?>[] registers = {
+			UGAttachments.ATTACHMENTS,
 			UGBlockEntities.BLOCK_ENTITIES,
 			UGBlocks.BLOCKS,
 			UGCarvers.CARVERS,
@@ -114,7 +121,6 @@ public class Undergarden {
 				fluidState -> fluidState.isSource() ? Blocks.OBSIDIAN.defaultBlockState() : UGBlocks.SHIVERSTONE.get().defaultBlockState()
 		));
 		event.enqueueWork(() -> {
-			UGPacketHandler.init();
 			UGCauldronInteractions.register();
 
 			DispenseItemBehavior bucketBehavior = new DefaultDispenseItemBehavior() {
@@ -344,6 +350,11 @@ public class Undergarden {
 		});
 	}
 
+	public void registerPackets(RegisterPayloadHandlerEvent event) {
+		IPayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
+		registrar.play(CreateCritParticlePacket.ID, CreateCritParticlePacket::new, payload -> payload.client(CreateCritParticlePacket::handle));
+	}
+
 	public void clientSetup(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
 			Sheets.addWoodType(UGWoodStuff.SMOGSTEM_WOOD_TYPE);
@@ -395,8 +406,8 @@ public class Undergarden {
 
 		generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
 				Component.literal("Undergarden resources"),
-				DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES),
-				Arrays.stream(PackType.values()).collect(Collectors.toMap(Function.identity(), DetectedVersion.BUILT_IN::getPackVersion)))));
+				DetectedVersion.BUILT_IN.getPackVersion(PackType.SERVER_DATA),
+				Optional.of(new InclusiveRange<>(0, Integer.MAX_VALUE)))));
 
 	}
 

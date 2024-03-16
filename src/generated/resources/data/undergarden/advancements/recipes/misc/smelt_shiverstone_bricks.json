@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:shiverstone_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:shiverstone_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smelt_shiverstone_bricks"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

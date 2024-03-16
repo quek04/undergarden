@@ -3,7 +3,7 @@ plugins {
 	id 'eclipse'
 	id 'idea'
 	id 'maven-publish'
-	id 'net.neoforged.gradle.userdev' version '7.0.97'
+	id 'net.neoforged.gradle.userdev' version '7.0+'
 }
 
 def secrets = new Properties()
@@ -23,10 +23,6 @@ if (secretsFile.exists()) {
     }
 }
 
-repositories {
-	mavenLocal()
-}
-
 version = project.undergarden_version
 group = 'quek.undergarden'
 base {
@@ -35,41 +31,32 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
+compileJava.options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation" << "-Werror"
 
 runs {
-    // https://ldtteam.jfrog.io/ui/native/parchmentmc-public/org/parchmentmc/data
-    //mappings channel: mapping_channel, version: mapping_version
-    //copyIdeResources = true
-    //accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	configureEach {
 		workingDirectory project.file('run')
 		systemProperty 'forge.logging.console.level', 'debug'
-		systemProperty 'fml.earlyprogresswindow', 'false'
-		systemProperty 'mixin.env.disableRefMap', 'true'
 
 		modSource project.sourceSets.main
 	}
 
 	client {
-		//taskName "Minecraft_Client_${project.minecraft_version}"
-		systemProperty 'forge.enabledGameTestNamespaces', mod_id
+		systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
 		programArguments.addAll '--username', secrets.getProperty("username")?: 'Dev', secrets.getProperty("uuid") ? '--uuid' : '', secrets.getProperty("uuid")?: ''
 	}
 
 	server {
-		//taskName "Minecraft_Server_${project.minecraft_version}"
-		systemProperty 'forge.enabledGameTestNamespaces', mod_id
+		systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
 		programArgument '--nogui'
 	}
 
 	gameTestServer {
-		//taskName "Minecraft_GameTestServer_${project.minecraft_version}"
-		systemProperty 'forge.enabledGameTestNamespaces', mod_id
+		systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
 	}
 
 	data {
-		//taskName "Minecraft_Data_${project.minecraft_version}"
-		programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+		programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
 	}
 }
 
@@ -104,28 +91,6 @@ dependencies {
     implementation "curse.maven:jade-324717:${project.jade_version}"
     //implementation "curse.maven:just-enough-effect-descriptions-jeed-532286:${project.jeed_version}"
     implementation "curse.maven:better-advancements-272515:${project.better_advancements_version}"
-
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-}
-
-/*mixin {
-    add sourceSets.main, "undergarden.refmap.json"
-    config 'undergarden.mixins.json'
-}*/
-
-tasks.withType(ProcessResources).configureEach {
-	var replaceProperties = [
-		minecraft_version   : minecraft_version, minecraft_version_range: "[1.20,1.21)",
-		neo_version         : neo_version, neo_version_range: "[20,)",
-		loader_version_range: "[20,)",
-		mod_id              : mod_id, mod_name: 'The Undergarden', mod_license: 'MIT', mod_version: undergarden_version,
-		mod_authors         : 'quek', mod_description: 'Deep underground, a forgotten land awaits.',
-	]
-	inputs.properties replaceProperties
-
-	filesMatching(['META-INF/mods.toml']) {
-		expand replaceProperties + [project: project]
-	}
 }
 
 publishing {
@@ -143,4 +108,11 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
+}
+
+idea {
+	module {
+		downloadJavadoc = true
+		downloadSources = true
+	}
 }

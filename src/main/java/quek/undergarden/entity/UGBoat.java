@@ -11,7 +11,6 @@ import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.network.NetworkHooks;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
@@ -66,11 +65,6 @@ public class UGBoat extends Boat {
 		if (compound.contains("Type", 8)) {
 			this.setUGBoatType(UGBoat.Type.getTypeFromString(compound.getString("Type")));
 		}
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	public enum Type {
