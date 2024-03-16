@@ -55,18 +55,19 @@ import java.util.List;
 public class UndergardenClient {
 
 	private static final List<ResourceLocation> HEARTS = List.of(
-			new ResourceLocation("virulence_hearts/normal"),
-			new ResourceLocation("virulence_hearts/normal_blinking"),
-			new ResourceLocation("virulence_hearts/half"),
-			new ResourceLocation("virulence_hearts/half_blinking"),
-			new ResourceLocation("virulence_hearts/hardcore"),
-			new ResourceLocation("virulence_hearts/hardcore_blinking"),
-			new ResourceLocation("virulence_hearts/hardcore_half"),
-			new ResourceLocation("virulence_hearts/hardcore_half_blinking")
+			new ResourceLocation(Undergarden.MODID, "virulence_hearts/normal"),
+			new ResourceLocation(Undergarden.MODID, "virulence_hearts/normal_blinking"),
+			new ResourceLocation(Undergarden.MODID, "virulence_hearts/half"),
+			new ResourceLocation(Undergarden.MODID, "virulence_hearts/half_blinking"),
+			new ResourceLocation(Undergarden.MODID, "virulence_hearts/hardcore"),
+			new ResourceLocation(Undergarden.MODID, "virulence_hearts/hardcore_blinking"),
+			new ResourceLocation(Undergarden.MODID, "virulence_hearts/hardcore_half"),
+			new ResourceLocation(Undergarden.MODID, "virulence_hearts/hardcore_half_blinking")
 	);
 
-	private static final ResourceLocation VIRULENCE_HEARTS = new ResourceLocation(Undergarden.MODID, "textures/gui/virulence_hearts.png");
-	private static final ResourceLocation BRITTLENESS_ARMOR = new ResourceLocation(Undergarden.MODID, "textures/gui/brittleness_armor.png");
+	private static final ResourceLocation BRITTLENESS_ARMOR_EMPTY = new ResourceLocation(Undergarden.MODID, "brittleness_armor/empty");
+	private static final ResourceLocation BRITTLENESS_ARMOR_HALF = new ResourceLocation(Undergarden.MODID, "brittleness_armor/half");
+	private static final ResourceLocation BRITTLENESS_ARMOR_FULL = new ResourceLocation(Undergarden.MODID, "brittleness_armor/full");
 
 	@SubscribeEvent
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -271,11 +272,11 @@ public class UndergardenClient {
 		int level = player.getArmorValue();
 		for (int i = 1; level > 0 && i < 20; i += 2) {
 			if (i < level) {
-				graphics.blit(BRITTLENESS_ARMOR, x, y, 34, 9, 9, 9);
+				graphics.blitSprite(BRITTLENESS_ARMOR_FULL, x, y, 9, 9);
 			} else if (i == level) {
-				graphics.blit(BRITTLENESS_ARMOR, x, y, 25, 9, 9, 9);
+				graphics.blitSprite(BRITTLENESS_ARMOR_HALF, x, y, 9, 9);
 			} else {
-				graphics.blit(BRITTLENESS_ARMOR, x, y, 16, 9, 9, 9);
+				graphics.blitSprite(BRITTLENESS_ARMOR_EMPTY, x, y, 9, 9);
 			}
 			x += 8;
 		}
