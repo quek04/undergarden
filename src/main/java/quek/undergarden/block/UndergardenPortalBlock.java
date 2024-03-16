@@ -126,14 +126,15 @@ public class UndergardenPortalBlock extends Block {
 					int waitTime = portal.getPortalTimer();
 					if (waitTime >= entity.getPortalWaitTime()) {
 						portal.handleUndergardenPortal(player);
+						this.transportEntity(player);
 						portal.setPortalTimer(0);
 					}
-				} else this.handleUndergardenPortal(entity);
+				} else this.transportEntity(entity);
 			}
 		}
 	}
 
-	private void handleUndergardenPortal(Entity entity) {
+	private void transportEntity(Entity entity) {
 		MinecraftServer server = entity.level().getServer();
 		ResourceKey<Level> destination = entity.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
 		if (server != null) {
