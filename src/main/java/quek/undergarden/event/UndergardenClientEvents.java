@@ -5,6 +5,7 @@ import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.gui.Gui;
@@ -14,6 +15,7 @@ import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BiomeColors;
@@ -40,9 +42,11 @@ import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.gui.overlay.ExtendedGui;
 import net.neoforged.neoforge.client.gui.overlay.VanillaGuiOverlay;
 import net.neoforged.neoforge.common.NeoForge;
+import org.joml.Matrix4f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.attachment.UndergardenPortalAttachment;
+import quek.undergarden.client.OthersideSky;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
@@ -251,6 +255,30 @@ public class UndergardenClientEvents {
 			@Override
 			public boolean isFoggyAt(int x, int y) {
 				return false;
+			}
+		});
+		event.register(UGDimensions.OTHERSIDE_LEVEL.location(), new DimensionSpecialEffects(192.0F, false, DimensionSpecialEffects.SkyType.NONE, true, false) {
+			@Override
+			public Vec3 getBrightnessDependentFogColor(Vec3 fogColor, float brightness) {
+				return fogColor;
+			}
+
+			@Override
+			public boolean isFoggyAt(int x, int y) {
+				return false;
+			}
+
+			@Override
+			public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
+				OthersideSky.renderSky(level, partialTick, poseStack, camera, projectionMatrix, setupFog);
+				return true;
+			}
+
+			@Override
+			public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
+				OthersideSky.renderClouds(192, ticks, partialTick, poseStack, camX, camY, camZ, projectionMatrix);
+				OthersideSky.renderClouds(8, ticks, partialTick, poseStack, camX, camY, camZ, projectionMatrix);
+				return true;
 			}
 		});
 	}
