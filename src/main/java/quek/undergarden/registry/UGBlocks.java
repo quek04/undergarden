@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.registries.RegistryObject;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -75,7 +74,7 @@ public class UGBlocks {
 	public static final DeferredBlock<PressurePlateBlock> SHIVERSTONE_PRESSURE_PLATE = register("shiverstone_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).noCollission()));
 
 	//dreadrock
-	public static final RegistryObject<Block> DREADROCK = register("dreadrock", () -> new DreadrockBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_GREEN).strength(3.0F, 12.0F).sound(UGSoundTypes.DREADROCK).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DREADROCK = register("dreadrock", () -> new DreadrockBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_GREEN).strength(3.0F, 12.0F).sound(UGSoundTypes.DREADROCK).requiresCorrectToolForDrops()));
 
 	//tremblecrust
 	public static final DeferredBlock<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.DEEPSLATE).strength(6F, 24F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
@@ -107,7 +106,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> DEPTHROCK_UTHERIUM_ORE = register("depthrock_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_UTHERIUM_ORE = register("shiverstone_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> TREMBLECRUST_UTHERIUM_ORE = register("tremblecrust_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()).strength(7.0F, 24.0F).requiresCorrectToolForDrops()));
-	public static final DeferredBlock<Block> DREADROCK_UTHERIUM_ORE = register("dreadrock_utherium_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+	public static final DeferredBlock<Block> DREADROCK_UTHERIUM_ORE = register("dreadrock_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> DEPTHROCK_REGALIUM_ORE = register("depthrock_regalium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_REGALIUM_ORE = register("shiverstone_regalium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 

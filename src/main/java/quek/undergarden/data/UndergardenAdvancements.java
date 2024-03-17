@@ -5,7 +5,6 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
-import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
@@ -20,6 +19,7 @@ import quek.undergarden.criterion.StonebornTradeTrigger;
 import quek.undergarden.registry.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 public class UndergardenAdvancements implements AdvancementProvider.AdvancementGenerator {
@@ -442,7 +442,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
-			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(UGBiomes.DEPTHS)))
+			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.DEPTHS)))
 			.save(consumer, "undergarden:undergarden/enter_depths");
 
 		AdvancementHolder forgotten_tools = Advancement.Builder.advancement()

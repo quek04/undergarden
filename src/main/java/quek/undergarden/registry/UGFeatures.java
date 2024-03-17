@@ -2,7 +2,6 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -24,6 +23,6 @@ public class UGFeatures {
 			"ice_pillar", () -> new IcePillarFeature(NoneFeatureConfiguration.CODEC));
 	public static final DeferredHolder<Feature<?>, Feature<DeltaFeatureConfiguration>> DELTA = FEATURES.register(
 			"delta", () -> new UGDeltaFeature(DeltaFeatureConfiguration.CODEC));
-	public static final RegistryObject<Feature<UtheriumCrystalConfiguration>> UTHERIUM_GROWTH = FEATURES.register(
+	public static final DeferredHolder<Feature<?>, Feature<UtheriumCrystalConfiguration>> UTHERIUM_GROWTH = FEATURES.register(
 		"utherium_growth", () -> new UtheriumCrystalFeature(UtheriumCrystalConfiguration.CODEC));
 }

@@ -4,7 +4,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.registries.RegistryObject;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -46,9 +45,9 @@ public class UGItems {
 	public static final DeferredItem<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
 
-	public static final RegistryObject<Item> RAW_ROGDORIUM = ITEMS.register("raw_rogdorium", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
-	public static final RegistryObject<Item> ROGDORIUM_INGOT = ITEMS.register("rogdorium_ingot", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
-	public static final RegistryObject<Item> ROGDORIUM_NUGGET = ITEMS.register("rogdorium_nugget", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
+	public static final DeferredItem<Item> RAW_ROGDORIUM = ITEMS.register("raw_rogdorium", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
+	public static final DeferredItem<Item> ROGDORIUM_INGOT = ITEMS.register("rogdorium_ingot", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
+	public static final DeferredItem<Item> ROGDORIUM_NUGGET = ITEMS.register("rogdorium_nugget", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
 
 	public static final DeferredItem<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties()));
