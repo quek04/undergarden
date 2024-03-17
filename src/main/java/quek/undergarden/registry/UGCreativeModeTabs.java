@@ -4,19 +4,20 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 
 import java.util.List;
 
 public class UGCreativeModeTabs {
 
-	private static final List<RegistryObject<Item>> DONT_INCLUDE = List.of(UGItems.GLOOMPER_SECRET_DISC, UGItems.MASTICATOR_SCALES, UGItems.MASTICATED_CHESTPLATE);
+	private static final List<DeferredItem<Item>> DONT_INCLUDE = List.of(UGItems.GLOOMPER_SECRET_DISC);
 
 	public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Undergarden.MODID);
 
-	public static final RegistryObject<CreativeModeTab> TAB = TABS.register("undergarden_group", () -> CreativeModeTab.builder()
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = TABS.register("undergarden_group", () -> CreativeModeTab.builder()
 			.withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
 			.title(Component.translatable("itemGroup.undergarden_group"))
 			.icon(() -> new ItemStack(UGBlocks.DEEPTURF_BLOCK.get()))

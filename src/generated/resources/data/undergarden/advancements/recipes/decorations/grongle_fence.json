@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_grongle_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_grongle_planks"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:grongle_fence"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

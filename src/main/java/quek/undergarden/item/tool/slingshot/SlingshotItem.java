@@ -17,9 +17,9 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.ArrowLooseEvent;
-import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
+import net.neoforged.neoforge.event.entity.player.ArrowNockEvent;
 import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
 import quek.undergarden.registry.UGCriteria;
 import quek.undergarden.registry.UGEnchantments;
@@ -116,7 +116,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
 						level.addFreshEntity(slingshotProjectile);
 						level.playSound(null, player.getX(), player.getY(), player.getZ(), AMMO_REGISTRY.get(projectileStack.getItem()).getFiringSound(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-						UGCriteria.SLINGSHOT_FIRE.trigger((ServerPlayer) player, stack, projectileStack);
+						UGCriteria.SLINGSHOT_FIRE.get().trigger((ServerPlayer) player, stack, projectileStack);
 					}
 					AMMO_REGISTRY.get(projectileStack.getItem()).addAdditionalFiringEffects(level, player);
 
@@ -153,14 +153,14 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
 	public static InteractionResultHolder<ItemStack> onArrowNock(ItemStack stack, Level level, Player player, InteractionHand hand, boolean hasAmmo) {
 		ArrowNockEvent event = new ArrowNockEvent(player, stack, hand, level, hasAmmo);
-		if (MinecraftForge.EVENT_BUS.post(event))
+		if (NeoForge.EVENT_BUS.post(event).isCanceled())
 			return new InteractionResultHolder<>(InteractionResult.FAIL, stack);
 		return event.getAction();
 	}
 
 	public static int onArrowLoose(ItemStack stack, Level level, Player player, int charge, boolean hasAmmo) {
 		ArrowLooseEvent event = new ArrowLooseEvent(player, stack, level, charge, hasAmmo);
-		if (MinecraftForge.EVENT_BUS.post(event))
+		if (NeoForge.EVENT_BUS.post(event).isCanceled())
 			return -1;
 		return event.getCharge();
 	}

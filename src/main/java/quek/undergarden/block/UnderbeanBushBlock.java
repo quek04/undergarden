@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -21,12 +22,14 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGItems;
 
 public class UnderbeanBushBlock extends BushBlock implements BonemealableBlock {
 
+	public static final MapCodec<UnderbeanBushBlock> CODEC = simpleCodec(UnderbeanBushBlock::new);
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 	protected static final VoxelShape BABY_SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
 	protected static final VoxelShape NORMAL_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
@@ -37,12 +40,17 @@ public class UnderbeanBushBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
+	}
+
+	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return state.getValue(AGE) == 0 ? BABY_SHAPE : NORMAL_SHAPE;
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
 		return new ItemStack(UGItems.UNDERBEANS.get());
 	}
 
@@ -50,9 +58,9 @@ public class UnderbeanBushBlock extends BushBlock implements BonemealableBlock {
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		super.tick(state, level, pos, random);
 		int i = state.getValue(AGE);
-		if (i < 3 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
+		if (i < 3 && net.neoforged.neoforge.common.CommonHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
 			level.setBlock(pos, state.setValue(AGE, i + 1), 2);
-			net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+			net.neoforged.neoforge.common.CommonHooks.onCropsGrowPost(level, pos, state);
 		}
 	}
 
@@ -79,7 +87,7 @@ public class UnderbeanBushBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
 		return state.getValue(AGE) < 3;
 	}
 

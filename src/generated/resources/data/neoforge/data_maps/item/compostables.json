@@ -1,0 +1,121 @@
+{
+  "values": {
+    "undergarden:amorous_bristle": {
+      "chance": 0.65
+    },
+    "undergarden:blisterberry": {
+      "chance": 0.3
+    },
+    "undergarden:blood_globule": {
+      "chance": 0.5
+    },
+    "undergarden:blood_mushroom_cap": {
+      "chance": 0.85
+    },
+    "undergarden:blood_mushroom_stem": {
+      "chance": 0.65
+    },
+    "undergarden:butterbunch": {
+      "chance": 0.65
+    },
+    "undergarden:carved_gloomgourd": {
+      "chance": 0.65
+    },
+    "undergarden:deepturf": {
+      "chance": 0.3
+    },
+    "undergarden:ditchbulb": {
+      "chance": 0.3
+    },
+    "undergarden:ditchbulb_paste": {
+      "chance": 0.3
+    },
+    "undergarden:droopvine_item": {
+      "chance": 0.3
+    },
+    "undergarden:engorged_blood_mushroom_cap": {
+      "chance": 0.85
+    },
+    "undergarden:glitterkelp": {
+      "chance": 0.3
+    },
+    "undergarden:gloomgourd": {
+      "chance": 0.65
+    },
+    "undergarden:gloomgourd_pie": {
+      "chance": 1.0
+    },
+    "undergarden:gloomgourd_seeds": {
+      "chance": 0.3
+    },
+    "undergarden:grongle_leaves": {
+      "chance": 0.3
+    },
+    "undergarden:grongle_sapling": {
+      "chance": 0.3
+    },
+    "undergarden:hanging_grongle_leaves": {
+      "chance": 0.5
+    },
+    "undergarden:indigo_mushroom": {
+      "chance": 0.65
+    },
+    "undergarden:indigo_mushroom_cap": {
+      "chance": 0.85
+    },
+    "undergarden:indigo_mushroom_stem": {
+      "chance": 0.65
+    },
+    "undergarden:ink_mushroom": {
+      "chance": 0.65
+    },
+    "undergarden:ink_mushroom_cap": {
+      "chance": 0.85
+    },
+    "undergarden:miserabell": {
+      "chance": 0.65
+    },
+    "undergarden:mushroom_veil": {
+      "chance": 0.5
+    },
+    "undergarden:rotten_blisterberry": {
+      "chance": 0.3
+    },
+    "undergarden:seeping_ink": {
+      "chance": 0.5
+    },
+    "undergarden:shimmerweed": {
+      "chance": 0.3
+    },
+    "undergarden:smogstem_leaves": {
+      "chance": 0.3
+    },
+    "undergarden:smogstem_sapling": {
+      "chance": 0.3
+    },
+    "undergarden:tall_deepturf": {
+      "chance": 0.5
+    },
+    "undergarden:tall_shimmerweed": {
+      "chance": 0.5
+    },
+    "undergarden:underbeans": {
+      "chance": 0.3
+    },
+    "undergarden:veil_mushroom": {
+      "chance": 0.65
+    },
+    "undergarden:veil_mushroom_cap": {
+      "chance": 0.85
+    },
+    "undergarden:veil_mushroom_stem": {
+      "chance": 0.65
+    },
+    "undergarden:wigglewood_leaves": {
+      "chance": 0.3
+    },
+    "undergarden:wigglewood_sapling": {
+      "chance": 0.3
+    }
+  }
+}

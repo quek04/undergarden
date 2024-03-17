@@ -27,11 +27,6 @@ public class DitchbulbPasteItem extends Item {
 	}
 
 	@Override
-	public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
-		return 800;
-	}
-
-	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		Level level = context.getLevel();
 		BlockPos pos = context.getClickedPos();

@@ -20,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_log",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_log"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:grongle_planks"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

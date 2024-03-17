@@ -26,11 +26,11 @@ public class UGTrimMaterials {
 	}
 
 	public static void bootstrap(BootstapContext<TrimMaterial> context) {
-		register(context, CLOGGRUM, UGItems.CLOGGRUM_INGOT.getHolder().get(), Style.EMPTY.withColor(9863528), 0.2F);
-		register(context, FROSTSTEEL, UGItems.FROSTSTEEL_INGOT.getHolder().get(), Style.EMPTY.withColor(9484768), 0.9F);
-		register(context, UTHERIUM, UGItems.UTHERIUM_CRYSTAL.getHolder().get(), Style.EMPTY.withColor(14440522), 0.4F);
-		register(context, REGALIUM, UGItems.REGALIUM_CRYSTAL.getHolder().get(), Style.EMPTY.withColor(16570493), 0.6F);
-		register(context, FORGOTTEN, UGItems.FORGOTTEN_INGOT.getHolder().get(), Style.EMPTY.withColor(4769934), 0.7F);
+		register(context, CLOGGRUM, UGItems.CLOGGRUM_INGOT, Style.EMPTY.withColor(9863528), 0.2F);
+		register(context, FROSTSTEEL, UGItems.FROSTSTEEL_INGOT, Style.EMPTY.withColor(9484768), 0.9F);
+		register(context, UTHERIUM, UGItems.UTHERIUM_CRYSTAL, Style.EMPTY.withColor(14440522), 0.4F);
+		register(context, REGALIUM, UGItems.REGALIUM_CRYSTAL, Style.EMPTY.withColor(16570493), 0.6F);
+		register(context, FORGOTTEN, UGItems.FORGOTTEN_INGOT, Style.EMPTY.withColor(4769934), 0.7F);
 	}
 
 	private static void register(BootstapContext<TrimMaterial> context, ResourceKey<TrimMaterial> trimKey, Holder<Item> trimItem, Style color, float itemModelIndex) {

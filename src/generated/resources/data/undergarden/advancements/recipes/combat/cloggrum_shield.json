@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_scales",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_scales"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:cloggrum_shield"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

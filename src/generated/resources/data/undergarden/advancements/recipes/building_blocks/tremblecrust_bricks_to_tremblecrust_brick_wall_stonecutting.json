@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:tremblecrust_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:tremblecrust_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:tremblecrust_bricks_to_tremblecrust_brick_wall_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

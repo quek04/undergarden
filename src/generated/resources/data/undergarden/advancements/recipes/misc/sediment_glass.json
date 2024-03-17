@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:sediment",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:sediment"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:sediment_glass"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

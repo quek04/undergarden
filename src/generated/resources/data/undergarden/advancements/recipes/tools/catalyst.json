@@ -46,16 +46,15 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_gold",
       "has_iron",
-      "has_diamond",
-      "has_the_recipe"
+      "has_diamond"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:catalyst"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

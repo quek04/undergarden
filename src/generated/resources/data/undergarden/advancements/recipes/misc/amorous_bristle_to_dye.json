@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_amorous_bristle",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_amorous_bristle"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:amorous_bristle_to_dye"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

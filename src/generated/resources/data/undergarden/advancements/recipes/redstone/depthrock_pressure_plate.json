@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_depthrock",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_depthrock"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:depthrock_pressure_plate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

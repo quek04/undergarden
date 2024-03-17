@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_shard"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:shard_to_crystal"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -14,16 +14,12 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.plant_gloomgourd.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "undergarden:gloomgourd_seeds"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.plant_gloomgourd.title"
     }

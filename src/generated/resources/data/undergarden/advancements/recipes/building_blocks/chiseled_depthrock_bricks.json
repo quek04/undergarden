@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_depthrock_brick_slab",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_depthrock_brick_slab"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:chiseled_depthrock_bricks"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

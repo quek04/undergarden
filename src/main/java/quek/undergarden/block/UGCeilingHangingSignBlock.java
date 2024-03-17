@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import quek.undergarden.block.entity.UndergardenHangingSignBlockEntity;
 
 public class UGCeilingHangingSignBlock extends CeilingHangingSignBlock {
-	public UGCeilingHangingSignBlock(Properties properties, WoodType type) {
-		super(properties, type);
+	public UGCeilingHangingSignBlock(WoodType type, Properties properties) {
+		super(type, properties);
 	}
 
 	@Override

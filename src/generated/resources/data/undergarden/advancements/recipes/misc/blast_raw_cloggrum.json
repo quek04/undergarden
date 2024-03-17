@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:raw_cloggrum",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:raw_cloggrum"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blast_raw_cloggrum"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_wigglewood_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_wigglewood_planks"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:twistytwig"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

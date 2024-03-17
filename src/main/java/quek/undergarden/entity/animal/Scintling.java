@@ -18,7 +18,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.*;
 
@@ -67,7 +67,7 @@ public class Scintling extends Animal {
 	public void aiStep() {
 		super.aiStep();
 
-		if (!ForgeEventFactory.getMobGriefingEvent(this.level(), this) || this.isBaby()) {
+		if (!EventHooks.getMobGriefingEvent(this.level(), this) || this.isBaby()) {
 			return;
 		}
 

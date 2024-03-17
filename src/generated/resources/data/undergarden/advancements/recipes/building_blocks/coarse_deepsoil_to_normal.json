@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_coarse_deepsoil",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_coarse_deepsoil"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:coarse_deepsoil_to_normal"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

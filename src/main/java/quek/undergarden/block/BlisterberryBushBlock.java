@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -21,10 +22,11 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 import quek.undergarden.registry.UGDamageSources;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
@@ -32,6 +34,7 @@ import quek.undergarden.registry.UGTags;
 
 public class BlisterberryBushBlock extends BushBlock implements BonemealableBlock {
 
+	public static final MapCodec<BlisterberryBushBlock> CODEC = simpleCodec(BlisterberryBushBlock::new);
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 	protected static final VoxelShape BABY_SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 8.0D, 12.0D);
 	protected static final VoxelShape NORMAL_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 15.0D, 15.0D);
@@ -42,12 +45,17 @@ public class BlisterberryBushBlock extends BushBlock implements BonemealableBloc
 	}
 
 	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
+	}
+
+	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return state.getValue(AGE) == 0 ? BABY_SHAPE : NORMAL_SHAPE;
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
 		return new ItemStack(UGItems.BLISTERBERRY.get());
 	}
 
@@ -55,9 +63,9 @@ public class BlisterberryBushBlock extends BushBlock implements BonemealableBloc
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		super.tick(state, level, pos, random);
 		int i = state.getValue(AGE);
-		if (i < 3 && ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
+		if (i < 3 && CommonHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
 			level.setBlock(pos, state.setValue(AGE, i + 1), 2);
-			ForgeHooks.onCropsGrowPost(level, pos, state);
+			CommonHooks.onCropsGrowPost(level, pos, state);
 		}
 
 	}
@@ -101,7 +109,7 @@ public class BlisterberryBushBlock extends BushBlock implements BonemealableBloc
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
 		return state.getValue(AGE) < 3;
 	}
 

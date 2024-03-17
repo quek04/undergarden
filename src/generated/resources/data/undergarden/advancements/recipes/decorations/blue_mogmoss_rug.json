@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_blue_mogmoss",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_blue_mogmoss"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blue_mogmoss_rug"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_miserabell",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_miserabell"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:miserabell_to_dye"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

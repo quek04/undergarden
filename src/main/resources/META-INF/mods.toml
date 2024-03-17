@@ -1,24 +1,31 @@
-modLoader="javafml"
-loaderVersion="[47,)"
-issueTrackerURL="https://github.com/quek04/The-Undergarden/issues"
-license="MIT"
+modLoader = "javafml"
+loaderVersion = "[1,)"
+issueTrackerURL = "https://github.com/quek04/The-Undergarden/issues"
+license = "MIT"
+
 [[mods]]
-modId="undergarden"
-version="${file.jarVersion}"
-displayName="The Undergarden"
-logoFile="logo.png"
-logoBlur=false
-authors="quek"
-description='''Deep underground, a forgotten land awaits.'''
+modId = "undergarden"
+version = "${file.jarVersion}"
+displayName = "The Undergarden"
+logoFile = "logo.png"
+logoBlur = false
+authors = "quek"
+description = '''Deep underground, a forgotten land awaits.'''
+itemIcon="undergarden:deepturf_block"
+
 [[dependencies.undergarden]]
-    modId="forge"
-    mandatory=true
-    versionRange="[47,)"
-    ordering="NONE"
-    side="BOTH"
+	modId = "neoforge"
+	type = "required"
+	versionRange = "[20.4.167,)"
+	ordering = "NONE"
+	side = "BOTH"
+
 [[dependencies.undergarden]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.20,1.21)"
-    ordering="NONE"
-    side="BOTH"
+	modId = "minecraft"
+	type = "required"
+	versionRange = "[1.20.4]"
+	ordering = "NONE"
+	side = "BOTH"
+
+[[mixins]]
+	config = "undergarden.mixins.json"

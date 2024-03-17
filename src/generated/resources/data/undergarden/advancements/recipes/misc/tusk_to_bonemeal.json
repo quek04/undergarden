@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_tusk",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_tusk"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:tusk_to_bonemeal"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

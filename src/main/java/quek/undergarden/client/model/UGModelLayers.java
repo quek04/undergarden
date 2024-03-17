@@ -18,7 +18,6 @@ public class UGModelLayers {
 	public static final ModelLayerLocation GLOOMPER = register("gloomper");
 	public static final ModelLayerLocation GWIBLING = register("gwibling");
 	public static final ModelLayerLocation GWIB = register("gwib");
-	public static final ModelLayerLocation MASTICATOR = register("masticator");
 	public static final ModelLayerLocation MINION = register("minion");
 	public static final ModelLayerLocation MOG = register("mog");
 	public static final ModelLayerLocation SMOG_MOG = register("smog_mog");

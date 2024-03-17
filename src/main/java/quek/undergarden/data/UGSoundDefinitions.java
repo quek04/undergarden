@@ -1,8 +1,8 @@
 package quek.undergarden.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.SoundDefinitionsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGSoundEvents;
 
@@ -591,33 +591,6 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("undergarden:entity/sploogie_spit_2"),
 				sound("undergarden:entity/sploogie_spit_3")
 		).subtitle("subtitles.entity.sploogie.spit"));
-
-		this.add(UGSoundEvents.MASTICATOR_AMBIENT, definition().with(
-				sound("undergarden:entity/masticator_ambient_1"),
-				sound("undergarden:entity/masticator_ambient_2"),
-				sound("undergarden:entity/masticator_ambient_3"),
-				sound("undergarden:entity/masticator_ambient_4")
-		).subtitle("subtitles.entity.masticator.ambient"));
-		this.add(UGSoundEvents.MASTICATOR_HURT, definition().with(
-				sound("undergarden:entity/masticator_hurt_1"),
-				sound("undergarden:entity/masticator_hurt_2"),
-				sound("undergarden:entity/masticator_hurt_3")
-		).subtitle("subtitles.entity.masticator.hurt"));
-		this.add(UGSoundEvents.MASTICATOR_DEATH, definition().with(
-				sound("undergarden:entity/masticator_death")
-		).subtitle("subtitles.entity.masticator.death"));
-		this.add(UGSoundEvents.MASTICATOR_EAT, definition().with(
-				sound("undergarden:entity/masticator_eat_1"),
-				sound("undergarden:entity/masticator_eat_2"),
-				sound("undergarden:entity/masticator_eat_3")
-		).subtitle("subtitles.entity.masticator.eat"));
-		this.add(UGSoundEvents.MASTICATOR_STEP, definition().with(
-				sound("minecraft:mob/ravager/step1").pitch(0.5F),
-				sound("minecraft:mob/ravager/step2").pitch(0.5F),
-				sound("minecraft:mob/ravager/step3").pitch(0.5F),
-				sound("minecraft:mob/ravager/step4").pitch(0.5F),
-				sound("minecraft:mob/ravager/step5").pitch(0.5F)
-		).subtitle("subtitles.block.generic.footsteps"));
 
 		this.add(UGSoundEvents.GWIB_HURT, definition().with(
 				sound("minecraft:entity/fish/hurt1"),

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_shiverstone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_shiverstone"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:shiverstone_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

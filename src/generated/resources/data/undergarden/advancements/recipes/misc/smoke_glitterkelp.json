@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:glitterkelp",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:glitterkelp"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smoke_glitterkelp"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

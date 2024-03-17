@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gloomgourd",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gloomgourd"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:gloomgourd_seeds"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

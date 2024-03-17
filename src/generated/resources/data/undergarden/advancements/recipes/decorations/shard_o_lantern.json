@@ -34,15 +34,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_carved_gourd",
-      "has_shard_torch",
-      "has_the_recipe"
+      "has_shard_torch"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:shard_o_lantern"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

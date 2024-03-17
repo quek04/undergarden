@@ -18,7 +18,7 @@ import quek.undergarden.registry.UGTags;
 public class ShardTorchBlock extends TorchBlock {
 
 	public ShardTorchBlock(Properties properties) {
-		super(properties, ParticleTypes.FLAME);
+		super(ParticleTypes.FLAME, properties);
 	}
 
 	@Override

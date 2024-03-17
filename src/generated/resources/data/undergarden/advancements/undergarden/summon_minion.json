@@ -17,16 +17,13 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.summon_minion.desc"
     },
     "frame": "goal",
-    "hidden": false,
     "icon": {
       "item": "undergarden:carved_gloomgourd"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.summon_minion.title"
     }

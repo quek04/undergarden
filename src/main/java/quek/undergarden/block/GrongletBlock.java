@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -31,6 +32,7 @@ import javax.annotation.Nullable;
 
 public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
 
+	public static final MapCodec<GrongletBlock> CODEC = simpleCodec(GrongletBlock::new);
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
 	private static final VoxelShape UP_SHAPE = Block.box(0.0F, 0.0F, 0.0F, 16.0F, 4.0F, 16.0F);
@@ -43,6 +45,11 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
 	public GrongletBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
+	}
+
+	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return CODEC;
 	}
 
 	@Override

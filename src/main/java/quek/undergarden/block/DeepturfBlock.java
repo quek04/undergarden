@@ -16,7 +16,7 @@ public class DeepturfBlock extends SpreadingSnowyDeepsoilBlock implements Boneme
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
 		return level.getBlockState(pos.above()).isAir();
 	}
 

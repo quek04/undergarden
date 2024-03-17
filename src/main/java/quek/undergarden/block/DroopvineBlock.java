@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -8,7 +9,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -16,17 +16,24 @@ import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 
+	public static final MapCodec<DroopvineBlock> CODEC = simpleCodec(DroopvineBlock::new);
 	protected static final VoxelShape SHAPE = Block.box(4.0D, 5.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
 	public DroopvineBlock(Properties properties) {
 		super(properties, Direction.DOWN, SHAPE, false, 0.1D);
 		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(GLOWY, false));
+	}
+
+	@Override
+	protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
+		return CODEC;
 	}
 
 	@Override
@@ -55,7 +62,7 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
 		return new ItemStack(UGItems.DROOPFRUIT.get());
 	}
 
@@ -71,7 +78,7 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
 		return !state.getValue(GLOWY);
 	}
 

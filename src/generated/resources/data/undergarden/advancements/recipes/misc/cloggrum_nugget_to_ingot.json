@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cloggrum_nugget",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cloggrum_nugget"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:cloggrum_nugget_to_ingot"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

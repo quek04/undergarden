@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_stripped_smogstem_log",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_stripped_smogstem_log"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smogstem_hanging_sign"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:polished_depthrock",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:polished_depthrock"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:polished_depthrock_to_polished_depthrock_stairs_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

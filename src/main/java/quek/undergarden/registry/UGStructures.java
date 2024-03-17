@@ -25,8 +25,8 @@ import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.BiggerJigsawStructure;
 import quek.undergarden.world.gen.structure.processor.NoWaterloggingProcessor;
@@ -39,7 +39,7 @@ public class UGStructures {
 
 	public static final DeferredRegister<StructureType<?>> STRUCTURES = DeferredRegister.create(Registries.STRUCTURE_TYPE, Undergarden.MODID);
 
-	public static final RegistryObject<StructureType<BiggerJigsawStructure>> BIGGER_JIGSAW = STRUCTURES.register("bigger_jigsaw", () -> () -> BiggerJigsawStructure.CODEC);
+	public static final DeferredHolder<StructureType<?>, StructureType<BiggerJigsawStructure>> BIGGER_JIGSAW = STRUCTURES.register("bigger_jigsaw", () -> () -> BiggerJigsawStructure.CODEC);
 
 	public static final ResourceKey<Structure> CATACOMBS = ResourceKey.create(Registries.STRUCTURE, new ResourceLocation(Undergarden.MODID, "catacombs"));
 	public static final ResourceKey<StructureSet> CATACOMBS_SET = ResourceKey.create(Registries.STRUCTURE_SET, new ResourceLocation(Undergarden.MODID, "catacombs"));
@@ -64,8 +64,8 @@ public class UGStructures {
 		HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 		HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
-		context.register(CATACOMBS, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS), Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1)))), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(CATACOMBS_START), Optional.empty(), 25, ConstantHeight.of(VerticalAnchor.aboveBottom(112)), Optional.empty(), 116));
-		context.register(FORGOTTEN_VESTIGE, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE), Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(FORGOTTEN_VESTIGE_POOL), Optional.empty(), 5, UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.TOP), Optional.empty(), 10));
+		context.register(CATACOMBS, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS), Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1)))), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(CATACOMBS_START), Optional.empty(), 25, ConstantHeight.of(VerticalAnchor.aboveBottom(112)), Optional.empty(), 116, List.of()));
+		context.register(FORGOTTEN_VESTIGE, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE), Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(FORGOTTEN_VESTIGE_POOL), Optional.empty(), 5, UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.TOP), Optional.empty(), 10, List.of()));
 	}
 
 	public static void bootstrapSets(BootstapContext<StructureSet> context) {
