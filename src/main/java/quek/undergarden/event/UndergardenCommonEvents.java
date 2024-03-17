@@ -59,7 +59,7 @@ import quek.undergarden.registry.*;
 public class UndergardenCommonEvents {
 
 	public static void initCommonEvents(IEventBus bus) {
-		UndergardenToolEvents.setupToolEvents(bus);
+		UndergardenToolEvents.setupToolEvents();
 		bus.addListener(UndergardenCommonEvents::setup);
 		bus.addListener(UndergardenCommonEvents::registerEntityAttributes);
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);

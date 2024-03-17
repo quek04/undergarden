@@ -7,7 +7,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
@@ -24,7 +23,7 @@ import quek.undergarden.registry.UGTags;
 
 public class UndergardenToolEvents {
 
-	protected static void setupToolEvents(IEventBus bus) {
+	protected static void setupToolEvents() {
 		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::forgottenAttackEvent);
 		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::forgottenDigEvent);
 		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::utheriumAttackEvent);
