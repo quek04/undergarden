@@ -11,6 +11,7 @@ logoFile = "logo.png"
 logoBlur = false
 authors = "quek"
 description = '''Deep underground, a forgotten land awaits.'''
+itemIcon="undergarden:deepturf_block"
 
 [[dependencies.undergarden]]
 	modId = "neoforge"
