@@ -93,6 +93,20 @@ dependencies {
     implementation "curse.maven:better-advancements-272515:${project.better_advancements_version}"
 }
 
+tasks.named('jar', Jar).configure {
+	manifest {
+		attributes([
+				"Specification-Title"     : "undergarden",
+				"Specification-Vendor"    : "quek",
+				"Specification-Version"   : "1",
+				"Implementation-Title"    : project.name,
+				"Implementation-Version"  : project.jar.archiveVersion,
+				"Implementation-Vendor"   : "quek",
+				"Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+		])
+	}
+}
+
 publishing {
 	publications {
 		register('mavenJava', MavenPublication) {
