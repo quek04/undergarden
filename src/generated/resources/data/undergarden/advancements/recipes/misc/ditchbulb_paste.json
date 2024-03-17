@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_ditchbulb",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_ditchbulb"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:ditchbulb_paste"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

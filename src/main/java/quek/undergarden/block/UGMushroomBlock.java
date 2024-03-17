@@ -17,8 +17,8 @@ public class UGMushroomBlock extends MushroomBlock {
 
 	protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
-	public UGMushroomBlock(BlockBehaviour.Properties properties, ResourceKey<ConfiguredFeature<?, ?>> giantMushroom) {
-		super(properties, giantMushroom);
+	public UGMushroomBlock(ResourceKey<ConfiguredFeature<?, ?>> giantMushroom, BlockBehaviour.Properties properties) {
+		super(giantMushroom, properties);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
@@ -12,8 +13,15 @@ import quek.undergarden.registry.UGBlocks;
 
 public class SpreadingSnowyDeepsoilBlock extends SpreadingSnowyDirtBlock {
 
+	public static final MapCodec<SpreadingSnowyDeepsoilBlock> CODEC = simpleCodec(SpreadingSnowyDeepsoilBlock::new);
+
 	public SpreadingSnowyDeepsoilBlock(Properties properties) {
 		super(properties);
+	}
+
+	@Override
+	protected MapCodec<? extends SpreadingSnowyDirtBlock> codec() {
+		return CODEC;
 	}
 
 	private static boolean canPropagate(BlockState state, LevelReader level, BlockPos pos) {

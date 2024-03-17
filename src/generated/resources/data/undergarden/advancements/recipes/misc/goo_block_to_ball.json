@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_goo_block",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_goo_block"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:goo_block_to_ball"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

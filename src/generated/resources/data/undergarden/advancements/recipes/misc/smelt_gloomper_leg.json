@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:raw_gloomper_leg",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:raw_gloomper_leg"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smelt_gloomper_leg"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

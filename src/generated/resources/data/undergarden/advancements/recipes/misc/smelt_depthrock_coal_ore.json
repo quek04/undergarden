@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:depthrock_coal_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:depthrock_coal_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smelt_depthrock_coal_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

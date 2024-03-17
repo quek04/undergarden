@@ -15,7 +15,7 @@ public class DreadrockBlock extends Block {
     @Override
     public float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
         float destroySpeed = state.getDestroySpeed(level, pos);
-        int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 30 : 100;
+        int i = net.neoforged.neoforge.common.CommonHooks.isCorrectToolForDrops(state, player) ? 30 : 100;
         if (destroySpeed == -1.0F) {
             return 0.0F;
         } else if (!(player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get())) {

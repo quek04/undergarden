@@ -16,7 +16,7 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import quek.undergarden.Undergarden;
 
 public class UGBiomes {
@@ -507,16 +507,16 @@ public class UGBiomes {
 				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBEAST.get(), 100, 1, 2));
 	}
 
-	private static BiomeSpecialEffects.Builder addMusicAndAmbience(BiomeSpecialEffects.Builder builder, RegistryObject<SoundEvent> ambient, RegistryObject<SoundEvent> addition) {
+	private static BiomeSpecialEffects.Builder addMusicAndAmbience(BiomeSpecialEffects.Builder builder, DeferredHolder<SoundEvent, SoundEvent> ambient, DeferredHolder<SoundEvent, SoundEvent> addition) {
 		return addMusicAndAmbience(builder, UGSoundEvents.MOOD, ambient, addition, 0.00555D);
 	}
 
-	private static BiomeSpecialEffects.Builder addMusicAndAmbience(BiomeSpecialEffects.Builder builder, RegistryObject<SoundEvent> mood, RegistryObject<SoundEvent> ambient, RegistryObject<SoundEvent> addition, double additionInterval) {
+	private static BiomeSpecialEffects.Builder addMusicAndAmbience(BiomeSpecialEffects.Builder builder, DeferredHolder<SoundEvent, SoundEvent> mood, DeferredHolder<SoundEvent, SoundEvent> ambient, DeferredHolder<SoundEvent, SoundEvent> addition, double additionInterval) {
 		return builder
-				.ambientAdditionsSound(new AmbientAdditionsSettings(addition.getHolder().get(), additionInterval))
-				.ambientMoodSound(new AmbientMoodSettings(mood.getHolder().get(), 6000, 8, 2))
-				.ambientLoopSound(ambient.getHolder().get())
-				.backgroundMusic(new Music(UGSoundEvents.UNDERGARDEN_MUSIC.getHolder().get(), 12000, 24000, true));
+				.ambientAdditionsSound(new AmbientAdditionsSettings(addition, additionInterval))
+				.ambientMoodSound(new AmbientMoodSettings(mood, 6000, 8, 2))
+				.ambientLoopSound(ambient)
+				.backgroundMusic(new Music(UGSoundEvents.UNDERGARDEN_MUSIC, 12000, 24000, true));
 	}
 
 	private static BiomeSpecialEffects.Builder generateColors(BiomeSpecialEffects.Builder builder, int skyFog, int grass) {

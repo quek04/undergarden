@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:catalyst",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:catalyst"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blast_catalyst"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

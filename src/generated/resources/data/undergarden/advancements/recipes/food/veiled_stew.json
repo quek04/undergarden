@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_veil_mushroom",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_veil_mushroom"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:veiled_stew"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

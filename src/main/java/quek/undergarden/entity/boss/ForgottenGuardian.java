@@ -30,6 +30,7 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.fluids.FluidType;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class ForgottenGuardian extends Monster {
@@ -104,7 +105,7 @@ public class ForgottenGuardian extends Monster {
 			--this.attackTimer;
 		}
 		if (this.isAggressive()) {
-			if (this.horizontalCollision && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), this)) {
+			if (this.horizontalCollision && net.neoforged.neoforge.event.EventHooks.getMobGriefingEvent(this.level(), this)) {
 				AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
@@ -157,8 +158,8 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	public boolean canBreatheUnderwater() {
-		return true;
+	public boolean canDrownInFluidType(FluidType type) {
+		return false;
 	}
 
 	@Override
@@ -167,7 +168,7 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	public boolean isPushedByFluid() {
+	public boolean isPushedByFluid(FluidType type) {
 		return false;
 	}
 

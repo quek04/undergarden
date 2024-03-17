@@ -15,17 +15,14 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.forgotten_battleaxe.desc"
     },
     "frame": "challenge",
-    "hidden": false,
     "icon": {
       "item": "undergarden:forgotten_battleaxe",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.forgotten_battleaxe.title"
     }

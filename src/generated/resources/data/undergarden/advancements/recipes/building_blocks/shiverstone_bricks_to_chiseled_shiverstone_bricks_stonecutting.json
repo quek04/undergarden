@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:shiverstone_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:shiverstone_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:shiverstone_bricks_to_chiseled_shiverstone_bricks_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

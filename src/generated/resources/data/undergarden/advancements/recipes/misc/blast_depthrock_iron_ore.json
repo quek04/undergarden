@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:depthrock_iron_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:depthrock_iron_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blast_depthrock_iron_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

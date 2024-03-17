@@ -9,7 +9,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -29,11 +28,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import quek.undergarden.Undergarden;
+import net.neoforged.neoforge.common.CommonHooks;
 import quek.undergarden.entity.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
@@ -42,7 +37,6 @@ import quek.undergarden.registry.UGSoundEvents;
 import javax.annotation.Nullable;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = Undergarden.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Dweller extends Animal implements ItemSteerable, Saddleable, PlayerRideableJumping {
 
 	private static final EntityDataAccessor<Boolean> SADDLE = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.BOOLEAN);
@@ -217,13 +211,6 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		return super.calculateFallDamage(distance, multiplier) - 10;
 	}
 
-	@SubscribeEvent
-	public static void cancelPlayerFallDamage(LivingAttackEvent event) {
-		if (event.getEntity() instanceof Player player && player.getVehicle() instanceof Dweller && event.getSource().is(DamageTypeTags.IS_FALL)) {
-			event.setCanceled(true);
-		}
-	}
-
 	private boolean canBeControlledBy(Entity entity) {
 		if (this.isSaddled() && entity instanceof Player player) {
 			return player.getMainHandItem().is(UGItems.UNDERBEAN_STICK.get()) || player.getOffhandItem().is(UGItems.UNDERBEAN_STICK.get());
@@ -274,7 +261,8 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	public void positionRider(Entity passenger, Entity.MoveFunction callback) {
 		float ySin = Mth.sin(this.yBodyRot * ((float) Math.PI / 180F));
 		float yCos = Mth.cos(this.yBodyRot * ((float) Math.PI / 180F));
-		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), this.getY() + this.getPassengersRidingOffset() + passenger.getMyRidingOffset() - 0.1F, this.getZ() - (double) (0.5F * yCos));
+		Vec3 vec3 = this.getPassengerRidingPosition(passenger);
+		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), vec3.y() + passenger.getMyRidingOffset(this), this.getZ() - (double) (0.5F * yCos));
 	}
 
 	public boolean isJumping() {
@@ -314,7 +302,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		this.setDeltaMovement(vec3.x(), d1, vec3.z());
 		this.setIsJumping(true);
 		this.hasImpulse = true;
-		ForgeHooks.onLivingJump(this);
+		CommonHooks.onLivingJump(this);
 		if (moveHorizontally) {
 			float f = Mth.sin(this.getYRot() * ((float) Math.PI / 180F));
 			float f1 = Mth.cos(this.getYRot() * ((float) Math.PI / 180F));

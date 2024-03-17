@@ -34,6 +34,7 @@ import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.FluidType;
 import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
 import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
 import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
@@ -92,8 +93,8 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 	}
 
 	@Override
-	public boolean canBreatheUnderwater() {
-		return true;
+	public boolean canDrownInFluidType(FluidType type) {
+		return false;
 	}
 
 	@Override
@@ -269,8 +270,8 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 		offer.increaseUses();
 		this.ambientSoundTime = -this.getAmbientSoundInterval();
 		this.onStonebornTrade(offer);
-		if (this.customer instanceof ServerPlayer) {
-			UGCriteria.STONEBORN_TRADE.test((ServerPlayer) this.customer, this, offer.getResult());
+		if (this.customer instanceof ServerPlayer player) {
+			UGCriteria.STONEBORN_TRADE.get().trigger(player, this, offer.getResult());
 		}
 	}
 

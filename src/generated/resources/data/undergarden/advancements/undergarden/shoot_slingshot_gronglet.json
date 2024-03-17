@@ -18,16 +18,12 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.shoot_slingshot_gronglet.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "undergarden:gronglet"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.shoot_slingshot_gronglet.title"
     }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:depthrock_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:depthrock_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:depthrock_bricks_to_depthrock_brick_wall_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

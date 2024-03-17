@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -17,19 +18,26 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class UGFlowerBlock extends BushBlock implements BonemealableBlock {
 
+	public static final MapCodec<UGFlowerBlock> CODEC = simpleCodec(UGFlowerBlock::new);
 	protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
 
 	public UGFlowerBlock(Properties properties) {
 		super(properties);
 	}
 
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
+	}
+
+	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		Vec3 vec3 = state.getOffset(level, pos);
 		return SHAPE.move(vec3.x(), vec3.y(), vec3.z());
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean client) {
+	public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
 		return true;
 	}
 

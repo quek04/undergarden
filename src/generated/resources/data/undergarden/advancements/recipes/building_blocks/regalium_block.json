@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_regalium_crystal",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_regalium_crystal"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:regalium_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

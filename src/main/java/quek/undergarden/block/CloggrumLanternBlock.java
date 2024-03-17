@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -26,6 +27,7 @@ import javax.annotation.Nullable;
 
 public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
+	public static final MapCodec<CloggrumLanternBlock> CODEC = simpleCodec(CloggrumLanternBlock::new);
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	private static final VoxelShape FLOOR_SHAPE = Shapes.or(Block.box(7, 0, 7, 9, 3, 9), Block.box(4, 3, 4, 12, 13, 12));
@@ -38,6 +40,11 @@ public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock
 	public CloggrumLanternBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.getStateDefinition().any().setValue(FACE, AttachFace.FLOOR).setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
+	}
+
+	@Override
+	protected MapCodec<? extends FaceAttachedHorizontalDirectionalBlock> codec() {
+		return CODEC;
 	}
 
 	@Override

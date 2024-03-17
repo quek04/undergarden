@@ -2,21 +2,16 @@
   "parent": "undergarden:undergarden/enter_undergarden",
   "criteria": {
     "trade_with_stoneborn": {
-      "conditions": {},
       "trigger": "undergarden:stoneborn_trade"
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.stoneborn_trade.desc"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "undergarden:regalium_crystal"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.stoneborn_trade.title"
     }

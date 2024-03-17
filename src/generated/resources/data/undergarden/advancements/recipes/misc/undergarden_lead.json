@@ -34,15 +34,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_twistytwig",
-      "has_goo_ball",
-      "has_the_recipe"
+      "has_goo_ball"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:undergarden_lead"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

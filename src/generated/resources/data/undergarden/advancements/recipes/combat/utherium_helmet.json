@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_utherium_crystal",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_utherium_crystal"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:utherium_helmet"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

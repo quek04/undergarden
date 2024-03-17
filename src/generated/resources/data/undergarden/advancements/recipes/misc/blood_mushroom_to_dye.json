@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_blood_mushroom",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_blood_mushroom"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blood_mushroom_to_dye"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

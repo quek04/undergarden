@@ -10,16 +10,14 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AttachedStemBlock;
-import net.minecraft.world.level.block.StemBlock;
-import net.minecraft.world.level.block.StemGrownBlock;
+import net.minecraft.world.level.block.PumpkinBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.ToolActions;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
-public class GloomgourdBlock extends StemGrownBlock {
+public class GloomgourdBlock extends PumpkinBlock {
 
 	public GloomgourdBlock(Properties properties) {
 		super(properties);
@@ -44,15 +42,5 @@ public class GloomgourdBlock extends StemGrownBlock {
 		} else {
 			return super.use(state, level, pos, player, handIn, hit);
 		}
-	}
-
-	@Override
-	public StemBlock getStem() {
-		return UGBlocks.GLOOMGOURD_STEM.get();
-	}
-
-	@Override
-	public AttachedStemBlock getAttachedStem() {
-		return UGBlocks.GLOOMGOURD_STEM_ATTACHED.get();
 	}
 }

@@ -18,7 +18,7 @@ public class VirulenceEffect extends MobEffect {
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int duration, int amplifier) {
+	public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
 		int j = 50 >> amplifier;
 		if (j > 0) {
 			return duration % j == 0;

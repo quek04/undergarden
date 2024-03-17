@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:shiverstone_froststeel_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:shiverstone_froststeel_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blast_shiverstone_froststeel_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

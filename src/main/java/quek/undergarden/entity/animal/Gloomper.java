@@ -83,11 +83,6 @@ public class Gloomper extends Animal {
 	}
 
 	@Override
-	public boolean canBreatheUnderwater() {
-		return true;
-	}
-
-	@Override
 	public boolean isFood(ItemStack stack) {
 		return Ingredient.of(UGBlocks.GLOOMGOURD.get()).test(stack);
 	}

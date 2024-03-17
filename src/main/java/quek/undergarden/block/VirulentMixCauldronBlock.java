@@ -1,5 +1,6 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -7,8 +8,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.AbstractCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
@@ -18,8 +19,15 @@ import quek.undergarden.registry.UGTags;
 
 public class VirulentMixCauldronBlock extends AbstractCauldronBlock {
 
+	public static final MapCodec<VirulentMixCauldronBlock> CODEC = simpleCodec(VirulentMixCauldronBlock::new);
+
 	public VirulentMixCauldronBlock(Properties properties) {
 		super(properties, UGCauldronInteractions.VIRULENT_MIX);
+	}
+
+	@Override
+	protected MapCodec<? extends AbstractCauldronBlock> codec() {
+		return CODEC;
 	}
 
 	@Override
@@ -48,7 +56,7 @@ public class VirulentMixCauldronBlock extends AbstractCauldronBlock {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter getter, BlockPos pos, Player player) {
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
 		return new ItemStack(Items.CAULDRON);
 	}
 }

@@ -7,8 +7,8 @@ import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGTags;
@@ -35,7 +35,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES).add(UGBlocks.SHIVERSTONE.get());
 		tag(UGTags.Blocks.DREADROCK_ORE_REPLACEABLES).add(UGBlocks.DREADROCK.get());
 		tag(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES).add(UGBlocks.TREMBLECRUST.get(), UGBlocks.LOOSE_TREMBLECRUST.get());
-		tag(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES).addTags(UGTags.Blocks.BASE_STONE_UNDERGARDEN, BlockTags.DIRT, UGTags.Blocks.ORES_CLOGGRUM, UGTags.Blocks.ORES_FROSTSTEEL, UGTags.Blocks.ORES_UTHERIUM, UGTags.Blocks.ORES_REGALIUM).add(UGBlocks.SEDIMENT.get());
+		tag(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES).addTag(UGTags.Blocks.BASE_STONE_UNDERGARDEN).addTag(BlockTags.DIRT).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM).add(UGBlocks.SEDIMENT.get());
 		tag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.INK_MUSHROOM.get(), UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.VEIL_MUSHROOM.get(), UGBlocks.BLOOD_MUSHROOM.get());
 		tag(UGTags.Blocks.PORTAL_FRAME_BLOCKS).add(Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS, Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_TILES, Blocks.POLISHED_DEEPSLATE, Blocks.REINFORCED_DEEPSLATE, UGBlocks.DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_TILES.get(), UGBlocks.POLISHED_DEPTHROCK.get(), UGBlocks.SHIVERSTONE_BRICKS.get());
 		tag(UGTags.Blocks.SMOGSTEM_LOGS).add(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
@@ -125,10 +125,10 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(BlockTags.MAINTAINS_FARMLAND).add(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
 
 		//forge
-		tag(Tags.Blocks.ORES).addTags(UGTags.Blocks.ORES_CLOGGRUM, UGTags.Blocks.ORES_FROSTSTEEL, UGTags.Blocks.ORES_ROGDORIUM, UGTags.Blocks.ORES_UTHERIUM, UGTags.Blocks.ORES_REGALIUM);
-		tag(Tags.Blocks.ORE_RATES_SINGULAR).addTags(UGTags.Blocks.ORES_CLOGGRUM, UGTags.Blocks.ORES_FROSTSTEEL, UGTags.Blocks.ORES_ROGDORIUM, UGTags.Blocks.ORES_UTHERIUM, UGTags.Blocks.ORES_REGALIUM);
+		tag(Tags.Blocks.ORES).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_ROGDORIUM).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM);
+		tag(Tags.Blocks.ORE_RATES_SINGULAR).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_ROGDORIUM).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM);
 		tag(Tags.Blocks.ORE_RATES_SPARSE).add(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get(), UGBlocks.DEPTHROCK_GOLD_ORE.get());
-		tag(Tags.Blocks.STORAGE_BLOCKS).addTags(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM, UGTags.Blocks.STORAGE_BLOCKS_FROSTSTEEL, UGTags.Blocks.STORAGE_BLOCKS_ROGDORIUM, UGTags.Blocks.STORAGE_BLOCKS_UTHERIUM, UGTags.Blocks.STORAGE_BLOCKS_REGALIUM, UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM, UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL, UGTags.Blocks.STORAGE_BLOCKS_FORGOTTEN_METAL);
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_FROSTSTEEL).addTag(UGTags.Blocks.STORAGE_BLOCKS_ROGDORIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_UTHERIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_REGALIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL).addTag(UGTags.Blocks.STORAGE_BLOCKS_FORGOTTEN_METAL);
 		tag(Tags.Blocks.COBBLESTONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get(), UGBlocks.DREADROCK.get());
 		tag(Tags.Blocks.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get());
 		tag(Tags.Blocks.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get(), UGBlocks.WIGGLEWOOD_FENCE.get(), UGBlocks.GRONGLE_FENCE.get());

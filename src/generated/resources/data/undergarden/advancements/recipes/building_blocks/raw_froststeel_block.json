@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_raw_froststeel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_raw_froststeel"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:raw_froststeel_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

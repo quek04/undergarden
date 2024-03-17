@@ -1,63 +1,51 @@
 package quek.undergarden.criterion;
 
-import com.google.gson.JsonObject;
-import net.minecraft.advancements.critereon.*;
-import net.minecraft.resources.ResourceLocation;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.ContextAwarePredicate;
+import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
-import quek.undergarden.Undergarden;
 import quek.undergarden.entity.stoneborn.Stoneborn;
+import quek.undergarden.registry.UGCriteria;
+
+import java.util.Optional;
 
 public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTradeTrigger.TriggerInstance> {
 
-	private static final ResourceLocation ID = new ResourceLocation(Undergarden.MODID, "stoneborn_trade");
-
 	@Override
-	public ResourceLocation getId() {
-		return ID;
+	public Codec<TriggerInstance> codec() {
+		return StonebornTradeTrigger.TriggerInstance.CODEC;
 	}
 
-	@Override
-	public TriggerInstance createInstance(JsonObject json, ContextAwarePredicate entityPredicate, DeserializationContext conditionsParser) {
-		ContextAwarePredicate entitypredicate$andpredicate = EntityPredicate.fromJson(json, "stoneborn", conditionsParser);
-		ItemPredicate itempredicate = ItemPredicate.fromJson(json.get("item"));
-		return new TriggerInstance(entityPredicate, entitypredicate$andpredicate, itempredicate);
-	}
-
-	public void test(ServerPlayer player, Stoneborn stoneborn, ItemStack stack) {
+	public void trigger(ServerPlayer player, Stoneborn stoneborn, ItemStack stack) {
 		LootContext lootcontext = EntityPredicate.createContext(player, stoneborn);
-		this.trigger(player, (instance) -> instance.test(lootcontext, stack));
+		this.trigger(player, instance -> instance.matches(lootcontext, stack));
 	}
 
-	public static class TriggerInstance extends AbstractCriterionTriggerInstance {
-		private final ContextAwarePredicate stoneborn;
-		private final ItemPredicate item;
+	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> stoneborn,
+								  Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
+		public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(p_311449_ -> p_311449_.group(
+						ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(TriggerInstance::player),
+						ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "stoneborn").forGetter(TriggerInstance::stoneborn),
+						ExtraCodecs.strictOptionalField(ItemPredicate.CODEC, "item").forGetter(TriggerInstance::item))
+				.apply(p_311449_, TriggerInstance::new)
+		);
 
-		public TriggerInstance(ContextAwarePredicate player, ContextAwarePredicate stoneborn, ItemPredicate stack) {
-			super(StonebornTradeTrigger.ID, player);
-			this.stoneborn = stoneborn;
-			this.item = stack;
+		public static Criterion<?> tradeWithStoneborn() {
+			return UGCriteria.STONEBORN_TRADE.get().createCriterion(new TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
 		}
 
-		public static TriggerInstance tradeWithStoneborn() {
-			return new TriggerInstance(ContextAwarePredicate.ANY, ContextAwarePredicate.ANY, ItemPredicate.ANY);
-		}
-
-		public boolean test(LootContext context, ItemStack stack) {
-			if (!this.stoneborn.matches(context)) {
+		public boolean matches(LootContext context, ItemStack stack) {
+			if (this.stoneborn().isPresent() && !this.stoneborn().get().matches(context)) {
 				return false;
-			} else {
-				return this.item.matches(stack);
 			}
-		}
-
-		@Override
-		public JsonObject serializeToJson(SerializationContext conditions) {
-			JsonObject jsonobject = super.serializeToJson(conditions);
-			jsonobject.add("item", this.item.serializeToJson());
-			jsonobject.add("stoneborn", this.stoneborn.toJson(conditions));
-			return jsonobject;
+			return this.item().isEmpty() || this.item().get().matches(stack);
 		}
 	}
 }

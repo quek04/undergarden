@@ -8,10 +8,12 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherPortalBlock;
@@ -23,12 +25,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.portal.PortalShape;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.level.BlockEvent;
-import quek.undergarden.capability.IUndergardenPortal;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import quek.undergarden.attachment.UndergardenPortalAttachment;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.UGTeleporter;
 
@@ -64,7 +66,7 @@ public class UndergardenPortalBlock extends Block {
 
 	public boolean trySpawnPortal(LevelAccessor level, BlockPos pos) {
 		UndergardenPortalBlock.UGPortalShape size = this.isPortal(level, pos);
-		if (size != null && !onTrySpawnPortal(level, pos, size)) {
+		if (size != null && !this.isPortalSpawnCanceled(level, pos, size)) {
 			size.createPortalBlocks();
 			return true;
 		} else {
@@ -72,8 +74,8 @@ public class UndergardenPortalBlock extends Block {
 		}
 	}
 
-	public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, UndergardenPortalBlock.UGPortalShape size) {
-		return MinecraftForge.EVENT_BUS.post(new BlockEvent.PortalSpawnEvent(world, pos, world.getBlockState(pos), size));
+	public boolean isPortalSpawnCanceled(LevelAccessor world, BlockPos pos, UndergardenPortalBlock.UGPortalShape size) {
+		return NeoForge.EVENT_BUS.post(new BlockEvent.PortalSpawnEvent(world, pos, world.getBlockState(pos), size)).isCanceled();
 	}
 
 	@Nullable
@@ -105,7 +107,7 @@ public class UndergardenPortalBlock extends Block {
 					entity.portalEntrancePos = pos.immutable();
 				}
 
-				LazyOptional<IUndergardenPortal> portalCapability = entity.getCapability(UndergardenCapabilities.UNDERGARDEN_PORTAL_CAPABILITY);
+				/*LazyOptional<IUndergardenPortal> portalCapability = entity.getCapability(UGAttachments.UNDERGARDEN_PORTAL_CAPABILITY);
 
 				if (portalCapability.isPresent()) {
 					portalCapability.ifPresent(consumer -> {
@@ -116,12 +118,23 @@ public class UndergardenPortalBlock extends Block {
 							consumer.setPortalTimer(0);
 						}
 					});
-				} else this.handleUndergardenPortal(entity);
+				} else this.handleUndergardenPortal(entity);*/
+
+				if (entity instanceof Player player) {
+					UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
+					portal.setInPortal(true);
+					int waitTime = portal.getPortalTimer();
+					if (waitTime >= entity.getPortalWaitTime()) {
+						portal.handleUndergardenPortal(player);
+						this.transportEntity(player);
+						portal.setPortalTimer(0);
+					}
+				} else this.transportEntity(entity);
 			}
 		}
 	}
 
-	private void handleUndergardenPortal(Entity entity) {
+	private void transportEntity(Entity entity) {
 		MinecraftServer server = entity.level().getServer();
 		ResourceKey<Level> destination = entity.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
 		if (server != null) {
@@ -164,25 +177,23 @@ public class UndergardenPortalBlock extends Block {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
 		return ItemStack.EMPTY;
 	}
 
 	@Override
 	public BlockState rotate(BlockState state, Rotation rot) {
 		switch (rot) {
-			case COUNTERCLOCKWISE_90:
-			case CLOCKWISE_90:
-				switch (state.getValue(AXIS)) {
-					case Z:
-						return state.setValue(AXIS, Direction.Axis.X);
-					case X:
-						return state.setValue(AXIS, Direction.Axis.Z);
-					default:
-						return state;
-				}
-			default:
+			case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> {
+				return switch (state.getValue(AXIS)) {
+					case Z -> state.setValue(AXIS, Direction.Axis.X);
+					case X -> state.setValue(AXIS, Direction.Axis.Z);
+					default -> state;
+				};
+			}
+			default -> {
 				return state;
+			}
 		}
 	}
 

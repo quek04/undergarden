@@ -2,22 +2,20 @@ package quek.undergarden.data;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.Undergarden;
 import quek.undergarden.data.provider.UGRecipeProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
-
-import java.util.function.Consumer;
 
 public class UGRecipes extends UGRecipeProvider {
 
@@ -26,7 +24,7 @@ public class UGRecipes extends UGRecipeProvider {
 	}
 
 	@Override
-	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+	protected void buildRecipes(RecipeOutput consumer) {
 		makePlanks(UGBlocks.SMOGSTEM_PLANKS, UGTags.Items.SMOGSTEM_LOGS).save(consumer);
 		makePlanks(UGBlocks.WIGGLEWOOD_PLANKS, UGTags.Items.WIGGLEWOOD_LOGS).save(consumer);
 		makePlanks(UGBlocks.GRONGLE_PLANKS, UGTags.Items.GRONGLE_LOGS).save(consumer);
@@ -399,8 +397,6 @@ public class UGRecipes extends UGRecipeProvider {
 		makeHoe(UGItems.CLOGGRUM_HOE, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeHoe(UGItems.FROSTSTEEL_HOE, UGItems.FROSTSTEEL_INGOT).save(consumer);
 		makeHoe(UGItems.UTHERIUM_HOE, UGItems.UTHERIUM_CRYSTAL).save(consumer);
-
-		makeChestplate(UGItems.MASTICATED_CHESTPLATE, UGItems.MASTICATOR_SCALES).save(consumer);
 
 		makeHelmet(UGItems.CLOGGRUM_HELMET, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeChestplate(UGItems.CLOGGRUM_CHESTPLATE, UGItems.CLOGGRUM_INGOT).save(consumer);

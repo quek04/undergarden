@@ -265,9 +265,6 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.BLISTERBOMB, "Blisterbomb");
 		addItem(UGItems.UNDERBEAN_STICK, "Underbean on a Stick");
 
-		addItem(UGItems.MASTICATOR_SCALES, "Masticator Scales");
-		addItem(UGItems.MASTICATED_CHESTPLATE, "Masticated Chestplate");
-
 		addItem(UGItems.CLOGGRUM_BATTLEAXE, "Cloggrum Battleaxe");
 		addItem(UGItems.CLOGGRUM_SWORD, "Cloggrum Sword");
 		addItem(UGItems.CLOGGRUM_PICKAXE, "Cloggrum Pickaxe");
@@ -288,6 +285,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.UTHERIUM_SHOVEL, "Utherium Shovel");
 		addItem(UGItems.UTHERIUM_HOE, "Utherium Hoe");
 
+		addItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE, "Smithing Template");
 		add("upgrade.undergarden.forgotten_upgrade", "Forgotten Tool Upgrade");
 		add("item.undergarden.smithing_template.forgotten_upgrade.additions_slot_description", "Add Forgotten Ingot");
 		add("item.undergarden.smithing_template.forgotten_upgrade.applies_to", "Cloggrum Tools");
@@ -367,7 +365,6 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
 		addItem(UGItems.SMOG_MOG_SPAWN_EGG, "S'Mog Spawn Egg");
 		addItem(UGItems.FORGOTTEN_SPAWN_EGG, "Forgotten Spawn Egg");
-		//addItem(UGItems.MASTICATOR_SPAWN_EGG, "Masticator Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
@@ -416,7 +413,6 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
 		addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
 
-		//addEntityType(UGEntityTypes.MASTICATOR, "Masticator");
 		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 
 		add("itemGroup.undergarden_group", "The Undergarden");
@@ -634,11 +630,6 @@ public class UGLang extends UGLangProvider {
 		addSubtitle("entity", "sploogie.hurt", "Sploogie hurts");
 		addSubtitle("entity", "sploogie.death", "Sploogie dies");
 		addSubtitle("entity", "sploogie.spit", "Sploogie spits");
-
-		addSubtitle("entity", "masticator.ambient", "Masticator roars");
-		addSubtitle("entity", "masticator.hurt", "Masticator hurts");
-		addSubtitle("entity", "masticator.death", "Masticator dies");
-		addSubtitle("entity", "masticator.eat", "Masticator eats");
 
 		addSubtitle("entity", "gwib.hurt", "Gwib hurts");
 		addSubtitle("entity", "gwib.death", "Gwib dies");

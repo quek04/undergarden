@@ -1,7 +1,6 @@
 {
   "criteria": {
     "tick": {
-      "conditions": {},
       "trigger": "minecraft:tick"
     }
   },
@@ -11,8 +10,6 @@
     "description": {
       "text": ""
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "undergarden:deepturf_block"
     },

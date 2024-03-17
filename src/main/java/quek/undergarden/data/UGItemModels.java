@@ -1,8 +1,8 @@
 package quek.undergarden.data;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.data.provider.UGItemModelProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -172,8 +172,6 @@ public class UGItemModels extends UGItemModelProvider {
 		toolItem(UGItems.CLOGGRUM_AXE);
 		toolItem(UGItems.CLOGGRUM_SHOVEL);
 		toolItem(UGItems.CLOGGRUM_HOE);
-		normalItem(UGItems.MASTICATOR_SCALES);
-		normalItem(UGItems.MASTICATED_CHESTPLATE);
 		normalItem(UGItems.CLOGGRUM_HELMET);
 		normalItem(UGItems.CLOGGRUM_CHESTPLATE);
 		normalItem(UGItems.CLOGGRUM_LEGGINGS);
@@ -287,7 +285,6 @@ public class UGItemModels extends UGItemModelProvider {
 		egg(UGItems.MOG_SPAWN_EGG);
 		egg(UGItems.SMOG_MOG_SPAWN_EGG);
 		egg(UGItems.FORGOTTEN_SPAWN_EGG);
-		//egg(UGItems.MASTICATOR_SPAWN_EGG);
 		egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
 
 		sign(UGBlocks.SMOGSTEM_SIGN);
@@ -314,7 +311,7 @@ public class UGItemModels extends UGItemModelProvider {
 		trapdoor(UGBlocks.GRONGLE_TRAPDOOR);
 
 		blockFlatWithBlockTexture(UGBlocks.TALL_DEEPTURF, "tall_deepturf_top");
-		withExistingParent(ForgeRegistries.BLOCKS.getKey(UGBlocks.TALL_SHIMMERWEED.get()).getPath(), mcLoc("item/generated"))
+		withExistingParent(BuiltInRegistries.BLOCK.getKey(UGBlocks.TALL_SHIMMERWEED.get()).getPath(), mcLoc("item/generated"))
 				.texture("layer0", modLoc("block/tall_shimmerweed_top"))
 				.texture("layer1", modLoc("block/tall_shimmerweed_bulb"))
 				.renderType("translucent");

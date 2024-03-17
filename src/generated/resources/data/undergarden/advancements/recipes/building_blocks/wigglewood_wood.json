@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_wigglewood_log",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_wigglewood_log"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:wigglewood_wood"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

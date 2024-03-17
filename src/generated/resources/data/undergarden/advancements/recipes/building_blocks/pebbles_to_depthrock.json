@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_depthrock_pebble",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_depthrock_pebble"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:pebbles_to_depthrock"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

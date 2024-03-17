@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_forgotten_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_forgotten_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:forgotten_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -17,16 +17,13 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancement.undergarden.kill_scintling.desc"
     },
-    "frame": "task",
     "hidden": true,
     "icon": {
       "item": "undergarden:goo_ball"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancement.undergarden.kill_scintling.title"
     }

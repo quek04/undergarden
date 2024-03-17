@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_froststeel_nugget",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_froststeel_nugget"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:froststeel_nugget_to_ingot"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

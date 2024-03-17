@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:raw_dweller_meat",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:raw_dweller_meat"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smelt_dweller_meat"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
