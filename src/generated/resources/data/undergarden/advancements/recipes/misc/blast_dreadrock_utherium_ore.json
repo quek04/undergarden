@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:dreadrock_utherium_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:dreadrock_utherium_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:blast_dreadrock_utherium_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

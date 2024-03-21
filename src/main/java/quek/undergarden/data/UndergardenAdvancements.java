@@ -23,7 +23,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class UndergardenAdvancements implements AdvancementProvider.AdvancementGenerator {
-	private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.FROSTY_SMOGSTEM_FOREST, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.DEPTHS);
+	private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.FROSTY_SMOGSTEM_FOREST, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.DEPTHS, UGBiomes.INFECTED_DEPTHS);
 
 	@SuppressWarnings("unused")
 	@Override
@@ -430,21 +430,6 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				.addCriterion("has_forgotten_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.FORGOTTEN_INGOT.get()))
 				.save(consumer, "undergarden:undergarden/forgotten_ingot");
 
-		AdvancementHolder enter_depths = Advancement.Builder.advancement()
-			.parent(forgotten_ingot)
-			.display(
-				UGBlocks.DREADROCK.get(),
-				Component.translatable("advancement.undergarden.enter_depths.title"),
-				Component.translatable("advancement.undergarden.enter_depths.desc"),
-				null,
-				AdvancementType.GOAL,
-				true,
-				true,
-				false
-			)
-			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.DEPTHS)))
-			.save(consumer, "undergarden:undergarden/enter_depths");
-
 		AdvancementHolder forgotten_tools = Advancement.Builder.advancement()
 				.parent(forgotten_ingot)
 				.display(
@@ -504,6 +489,23 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				)
 				.addCriterion("has_disc", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.GLOOMPER_SECRET_DISC.get()))
 				.save(consumer, "undergarden:undergarden/gloomper_secret_disc");
+
+		AdvancementHolder enter_depths = Advancement.Builder.advancement()
+			.parent(enter_undergarden)
+			.display(
+				UGBlocks.DREADROCK.get(),
+				Component.translatable("advancement.undergarden.enter_depths.title"),
+				Component.translatable("advancement.undergarden.enter_depths.desc"),
+				null,
+				AdvancementType.GOAL,
+				true,
+				true,
+				false
+			)
+			.requirements(AdvancementRequirements.Strategy.OR)
+			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.DEPTHS)))
+			.addCriterion("has_entered_infected_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.INFECTED_DEPTHS)))
+			.save(consumer, "undergarden:undergarden/enter_depths");
 	}
 
 	protected static Advancement.Builder addBiomes(Advancement.Builder builder, List<ResourceKey<Biome>> biomes) {

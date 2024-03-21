@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_undergarden:dreadrock_rogdorium_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_undergarden:dreadrock_rogdorium_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:smelt_dreadrock_rogdorium_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

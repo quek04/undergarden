@@ -7,9 +7,7 @@
   "display": {
     "announce_to_chat": false,
     "background": "undergarden:textures/block/depthrock_bricks.png",
-    "description": {
-      "text": ""
-    },
+    "description": "",
     "icon": {
       "item": "undergarden:deepturf_block"
     },

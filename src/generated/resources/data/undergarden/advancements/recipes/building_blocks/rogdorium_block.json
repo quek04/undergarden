@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_rogdorium_ingot",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_rogdorium_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
       "undergarden:rogdorium_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

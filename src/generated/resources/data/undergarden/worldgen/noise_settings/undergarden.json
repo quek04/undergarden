@@ -77,10 +77,10 @@
                         "argument2": {
                           "type": "minecraft:old_blended_noise",
                           "smear_scale_multiplier": 8.0,
-                          "xz_factor": 0.1,
-                          "xz_scale": 10.0,
-                          "y_factor": 10.0,
-                          "y_scale": 0.1
+                          "xz_factor": 50.0,
+                          "xz_scale": 0.5,
+                          "y_factor": 50.0,
+                          "y_scale": 0.5
                         }
                       }
                     }

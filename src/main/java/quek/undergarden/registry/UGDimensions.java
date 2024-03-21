@@ -113,7 +113,7 @@ public class UGDimensions {
 																						DensityFunctions.yClampedGradient(-54, -64, 1.0D, 0.0D),
 																						DensityFunctions.add(
 																								DensityFunctions.constant(-0.5F),
-																								BlendedNoise.createUnseeded(10.0D, 0.1D, 0.1D, 10.0D, 8.0D)
+																								BlendedNoise.createUnseeded(0.5D, 0.5D, 50.0D, 50.0D, 8.0D)
 																						)
 																				)
 																		)
