@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-21T14:45:25.5655045	Advancements
+// 1.20.4	2024-03-22T14:33:23.6216879	Advancements
 f291343b013e729f4b7d865582ba34ebf3744773 data/undergarden/advancements/undergarden/all_ore_blocks.json
 c52e4b22db67aea0b393ca5a9d56e8c3c2c8319c data/undergarden/advancements/undergarden/all_undergarden_biomes.json
 102e1eee5a736f396576b0161c003326143a5cb3 data/undergarden/advancements/undergarden/catacombs.json
@@ -6,6 +6,7 @@ b86e0118fd59236b5328143f38a58752396cc587 data/undergarden/advancements/undergard
 07a9fcd6fdbc6fff31d5726a98ed4270cdd797ba data/undergarden/advancements/undergarden/catch_gwibling.json
 07a2a2a90788e15e2b04d6bb1a2cd64a8f842b74 data/undergarden/advancements/undergarden/cloggrum_armor.json
 0b281e953c3ca549baae1b8847c0d9d7d7a6e010 data/undergarden/advancements/undergarden/cloggrum_battleaxe.json
+d6c30d6a743f4d0074fbb13cdf32f0234406a992 data/undergarden/advancements/undergarden/contract_utheric_infection.json
 3e3ccc9a33193d2d64b46d643e58c5a8d70e1b46 data/undergarden/advancements/undergarden/enter_depths.json
 2ed09bf5f5f77dc8e461a198220fe837177fa039 data/undergarden/advancements/undergarden/enter_undergarden.json
 68ef65ce5f64f583d5e6735a694ab30e02059ef1 data/undergarden/advancements/undergarden/forgotten_battleaxe.json

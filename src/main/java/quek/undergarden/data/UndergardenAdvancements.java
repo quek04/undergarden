@@ -16,6 +16,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.criterion.SlingshotFireTrigger;
 import quek.undergarden.criterion.StonebornTradeTrigger;
+import quek.undergarden.criterion.UthericInfectionTrigger;
 import quek.undergarden.registry.*;
 
 import java.util.List;
@@ -506,6 +507,21 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.DEPTHS)))
 			.addCriterion("has_entered_infected_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.INFECTED_DEPTHS)))
 			.save(consumer, "undergarden:undergarden/enter_depths");
+
+		AdvancementHolder contract_utheric_infection = Advancement.Builder.advancement()
+			.parent(enter_depths)
+			.display(
+				UGItems.UTHERIUM_CRYSTAL.get(),
+				Component.translatable("advancement.undergarden.contract_utheric_infection.title"),
+				Component.translatable("advancement.undergarden.contract_utheric_infection.desc"),
+				null,
+				AdvancementType.TASK,
+				true,
+				true,
+				false
+			)
+			.addCriterion("has_contracted_utheric_infection", UthericInfectionTrigger.TriggerInstance.hasInfectionLevel(MinMaxBounds.Ints.atLeast(1)))
+			.save(consumer, "undergarden:undergarden/contract_utheric_infection");
 	}
 
 	protected static Advancement.Builder addBiomes(Advancement.Builder builder, List<ResourceKey<Biome>> biomes) {

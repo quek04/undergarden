@@ -2,6 +2,7 @@ package quek.undergarden.event;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -272,6 +273,9 @@ public class UndergardenCommonEvents {
 		//Logger.getLogger("infection").info("Entity: " + entity.getType() + "\nInfection Level: " + entity.getData(UGAttachments.UTHERIC_INFECTION.get()));
 		AttachmentType<Integer> infection = UGAttachments.UTHERIC_INFECTION.get();
 		boolean isInInfectedBiome = entity.level().getBiome(entity.blockPosition()).is(UGTags.Biomes.TICKS_UTHERIC_INFECTION);
+		if (entity instanceof ServerPlayer player && player.getData(infection) > 0) {
+			UGCriteria.UTHERIC_INFECTION.get().trigger(player, 1);
+		}
 		if (entity.tickCount % 20 == 0) {
 			if (entity.getData(infection) >= 20) {
 				entity.hurt(entity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);

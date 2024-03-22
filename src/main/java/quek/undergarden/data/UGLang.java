@@ -515,9 +515,6 @@ public class UGLang extends UGLangProvider {
 		addAdvTitle("forgotten_ingot", "What Now Is");
 		addAdvDesc("forgotten_ingot", "Forge a Forgotten Ingot from a Forgotten Guardian's nuggets.");
 
-		addAdvTitle("enter_depths", "Into the Depths");
-		addAdvDesc("enter_depths", "Break through the Dreadrock barrier at the bottom of the Undergarden and enter the Depths...");
-
 		addAdvTitle("forgotten_tools", "Forgotten Arsenal");
 		addAdvDesc("forgotten_tools", "Use Forgotten Ingots to upgrade Cloggrum tools and make all 6 Forgotten tools.");
 
@@ -538,6 +535,12 @@ public class UGLang extends UGLangProvider {
 
 		addAdvTitle("forgotten_battleaxe", "Axe of Legends");
 		addAdvDesc("forgotten_battleaxe", "Upgrade a Cloggrum Battle Axe with a Forgotten Ingot.");
+
+		addAdvTitle("enter_depths", "Into the Depths");
+		addAdvDesc("enter_depths", "Break through the Dreadrock barrier at the bottom of the Undergarden and enter the Depths...");
+
+		addAdvTitle("contract_utheric_infection", "The Plague Upon the Land");
+		addAdvDesc("contract_utheric_infection", "Contract the Utheric Infection. Don't let it get out of control!");
 
 		//addAdvTitle("otherside_root", "The Otherside");
 		//addAdvDesc("otherside_root", "Enter the realm of madness.");
