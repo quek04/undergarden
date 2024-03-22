@@ -662,8 +662,8 @@ public class UGLang extends UGLangProvider {
 		addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
 		addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");
 		addDeath("shard_torch.player", "%1$s was killed by a Shard Torch's magic whilst trying to escape %2$s");
-		addDeath("utheric_infection", "%1$s succumbed to the Utheric infection");
-		addDeath("utheric_infection.player", "%1$s succumbed to the Utheric infection whilst trying to escape %2$s");
+		addDeath("utheric_infection", "%1$s succumbed to the Utheric Infection");
+		addDeath("utheric_infection.player", "%1$s succumbed to the Utheric Infection whilst trying to escape %2$s");
 
 		addConfig("return_portal_frame_block_id", "Return Portal Frame Block ID");
 
