@@ -19,6 +19,7 @@ public class UGDamageSources {
 	public static final ResourceKey<DamageType> GOO_BALL = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "goo_ball"));
 	public static final ResourceKey<DamageType> BLISTERBERRY_BUSH = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "blisterberry_bush"));
 	public static final ResourceKey<DamageType> SHARD_TORCH = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "shard_torch"));
+	public static final ResourceKey<DamageType> UTHERIC_INFECTION = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "utheric_infection"));
 
 	public static DamageSource getShardTorchDamage(Level level, @NotNull Vec3 position) {
 		return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(SHARD_TORCH), position);
@@ -29,5 +30,6 @@ public class UGDamageSources {
 		context.register(GOO_BALL, new DamageType("arrow", 0.1F));
 		context.register(BLISTERBERRY_BUSH, new DamageType("blisterberry_bush", 0.1F, DamageEffects.POKING));
 		context.register(SHARD_TORCH, new DamageType("shard_torch", DamageScaling.ALWAYS, 0.1F));
+		context.register(UTHERIC_INFECTION, new DamageType("utheric_infection", DamageScaling.ALWAYS, 0.0F));
 	}
 }

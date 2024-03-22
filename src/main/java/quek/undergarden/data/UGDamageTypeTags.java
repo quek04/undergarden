@@ -20,8 +20,8 @@ public class UGDamageTypeTags extends TagsProvider<DamageType> {
 
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
-		this.tag(DamageTypeTags.BYPASSES_ARMOR).add(UGDamageSources.SHARD_TORCH);
-		this.tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(UGDamageSources.SHARD_TORCH);
+		this.tag(DamageTypeTags.BYPASSES_ARMOR).add(UGDamageSources.SHARD_TORCH, UGDamageSources.UTHERIC_INFECTION);
+		this.tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(UGDamageSources.SHARD_TORCH, UGDamageSources.UTHERIC_INFECTION);
 		this.tag(DamageTypeTags.WITCH_RESISTANT_TO).add(UGDamageSources.SHARD_TORCH);
 	}
 }

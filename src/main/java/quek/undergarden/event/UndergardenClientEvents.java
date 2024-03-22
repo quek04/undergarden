@@ -71,6 +71,10 @@ public class UndergardenClientEvents {
 	private static final ResourceLocation BRITTLENESS_ARMOR_HALF = new ResourceLocation(Undergarden.MODID, "brittleness_armor/half");
 	private static final ResourceLocation BRITTLENESS_ARMOR_FULL = new ResourceLocation(Undergarden.MODID, "brittleness_armor/full");
 
+	private static final ResourceLocation UTHERIC_INFECTION_EMPTY = new ResourceLocation(Undergarden.MODID, "utheric_infection/empty");
+	private static final ResourceLocation UTHERIC_INFECTION_HALF = new ResourceLocation(Undergarden.MODID, "utheric_infection/half");
+	private static final ResourceLocation UTHERIC_INFECTION_FULL = new ResourceLocation(Undergarden.MODID, "utheric_infection/full");
+
 	public static void initClientEvents(IEventBus bus) {
 		bus.addListener(UndergardenClientEvents::clientSetup);
 		bus.addListener(UndergardenClientEvents::registerEntityRenderers);
@@ -291,6 +295,13 @@ public class UndergardenClientEvents {
 				renderPortalOverlay(guiGraphics, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), partialTick);
 			}
 		});
+		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "utheric_infection_bar"), ((gui, guiGraphics, partialTick, width, height) -> {
+			Minecraft minecraft = Minecraft.getInstance();
+			LocalPlayer player = minecraft.player;
+			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0 && gui.shouldDrawSurvivalElements()) {
+				renderUthericInfectionBar(width, height, guiGraphics, gui, player);
+			}
+		}));
 	}
 
 	private static void undergardenFog(ViewportEvent.RenderFog event) {
@@ -316,6 +327,28 @@ public class UndergardenClientEvents {
 		if (event.getOverlay().id() == VanillaGuiOverlay.JUMP_BAR.id()) {
 			if (Minecraft.getInstance().player.getVehicle() instanceof Dweller) {
 				event.setCanceled(true);
+			}
+		}
+	}
+
+	private static void renderUthericInfectionBar(int width, int height, GuiGraphics graphics, ExtendedGui gui, Player player) {
+		int left = width / 2 + 91;
+		int y = height - gui.rightHeight;
+		gui.rightHeight += 10;
+
+		int infectionLevel = player.getData(UGAttachments.UTHERIC_INFECTION);
+		for (int i = 0; i < 10; i++) {
+			int idx = i * 2 + 1;
+			int x = left - i * 8 - 9;
+			if (infectionLevel >= 16) {
+				y = y + (gui.random.nextInt(1));
+			}
+            if (idx < infectionLevel) {
+				graphics.blitSprite(UTHERIC_INFECTION_FULL, x, y, 9, 9);
+			} else if (idx == infectionLevel) {
+				graphics.blitSprite(UTHERIC_INFECTION_HALF, x, y, 9, 9);
+			} else {
+				graphics.blitSprite(UTHERIC_INFECTION_EMPTY, x, y, 9, 9);
 			}
 		}
 	}

@@ -28,6 +28,7 @@ import quek.undergarden.data.*;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.network.CreateCritParticlePacket;
+import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
@@ -87,6 +88,7 @@ public class Undergarden {
 	public void registerPackets(RegisterPayloadHandlerEvent event) {
 		IPayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
 		registrar.play(CreateCritParticlePacket.ID, CreateCritParticlePacket::new, payload -> payload.client(CreateCritParticlePacket::handle));
+		registrar.play(UthericInfectionPacket.ID, UthericInfectionPacket::new, payload -> payload.client(UthericInfectionPacket::handle));
 	}
 
 	public void gatherData(GatherDataEvent event) {

@@ -28,6 +28,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.ToolAction;
@@ -37,6 +38,7 @@ import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
+import net.neoforged.neoforge.network.PacketDistributor;
 import quek.undergarden.entity.Forgotten;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
@@ -54,6 +56,7 @@ import quek.undergarden.entity.rotspawn.Rotwalker;
 import quek.undergarden.entity.stoneborn.Stoneborn;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
+import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.*;
 
 public class UndergardenCommonEvents {
@@ -65,6 +68,7 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickUthericInfection);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
@@ -260,6 +264,23 @@ public class UndergardenCommonEvents {
 		LivingEntity entity = event.getEntity();
 		if (entity instanceof Player player) {
 			player.getData(UGAttachments.UNDERGARDEN_PORTAL).handleUndergardenPortal(player);
+		}
+	}
+
+	private static void tickUthericInfection(LivingEvent.LivingTickEvent event) {
+		LivingEntity entity = event.getEntity();
+		//Logger.getLogger("infection").info("Entity: " + entity.getType() + "\nInfection Level: " + entity.getData(UGAttachments.UTHERIC_INFECTION.get()));
+		AttachmentType<Integer> infection = UGAttachments.UTHERIC_INFECTION.get();
+		if (entity.tickCount % 20 == 0) {
+			if (entity.getData(infection) >= 20) {
+				entity.hurt(entity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
+			}
+		}
+		if (entity.tickCount % 400 == 0) {
+			entity.setData(infection, entity.getData(infection) - 1);
+		}
+		if (!event.getEntity().level().isClientSide()) {
+			PacketDistributor.TRACKING_ENTITY_AND_SELF.with(entity).send(new UthericInfectionPacket(entity.getId(), entity.getData(infection)));
 		}
 	}
 

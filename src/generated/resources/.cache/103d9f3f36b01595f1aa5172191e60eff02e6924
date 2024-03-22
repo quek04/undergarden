@@ -1,8 +1,9 @@
-// 1.20.4	2024-03-21T14:59:02.1608713	Registries
+// 1.20.4	2024-03-21T16:17:45.4270505	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
 c0569bb60eae60387e4744ad37bb4ef0db3e7f3f data/undergarden/damage_type/shard_torch.json
+0a40469b3ac3890a90263eaf47b1f36232e25315 data/undergarden/damage_type/utheric_infection.json
 c8159c314c7c3c5de4642d4dbb4e7790e1249eb4 data/undergarden/dimension/undergarden.json
 ab9569ee07d11ad7e5e87ec4d2c55b5c1581a603 data/undergarden/dimension_type/undergarden.json
 ba55b1bc010adbbdab82b4d91bb3564b4dda83b8 data/undergarden/trim_material/cloggrum.json

@@ -142,7 +142,7 @@ public class UGBlocks {
 	public static final DeferredBlock<WoolCarpetBlock> MOGMOSS_RUG = register("mogmoss_rug", () -> new WoolCarpetBlock(DyeColor.LIME, BlockBehaviour.Properties.ofFullCopy(Blocks.GREEN_CARPET)));
 	public static final DeferredBlock<WoolCarpetBlock> BLUE_MOGMOSS_RUG = register("blue_mogmoss_rug", () -> new WoolCarpetBlock(DyeColor.BLUE, BlockBehaviour.Properties.ofFullCopy(Blocks.BLUE_CARPET)));
 	public static final DeferredBlock<Block> CLOGGRUM_LANTERN = register("cloggrum_lantern", () -> new CloggrumLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).pushReaction(PushReaction.DESTROY)));
-	public static final DeferredBlock<Block> UTHERIUM_GROWTH = register("utherium_growth", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).mapColor(MapColor.COLOR_RED).lightLevel((state) -> 15)));
+	public static final DeferredBlock<Block> UTHERIUM_GROWTH = register("utherium_growth", () -> new UtheriumGrowthBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).mapColor(MapColor.COLOR_RED).lightLevel((state) -> 15)));
 
 	//plants
 	public static final DeferredBlock<Block> AMOROUS_BRISTLE = register("amorous_bristle", () -> new UGFlowerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY)));
