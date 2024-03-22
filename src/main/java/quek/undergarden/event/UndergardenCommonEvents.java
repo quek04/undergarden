@@ -271,13 +271,17 @@ public class UndergardenCommonEvents {
 		LivingEntity entity = event.getEntity();
 		//Logger.getLogger("infection").info("Entity: " + entity.getType() + "\nInfection Level: " + entity.getData(UGAttachments.UTHERIC_INFECTION.get()));
 		AttachmentType<Integer> infection = UGAttachments.UTHERIC_INFECTION.get();
+		boolean isInInfectedBiome = entity.level().getBiome(entity.blockPosition()).is(UGTags.Biomes.TICKS_UTHERIC_INFECTION);
 		if (entity.tickCount % 20 == 0) {
 			if (entity.getData(infection) >= 20) {
 				entity.hurt(entity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
 			}
 		}
-		if (entity.tickCount % 400 == 0) {
+		if (!isInInfectedBiome && entity.getData(infection) > 0 && entity.tickCount % 400 == 0) {
 			entity.setData(infection, entity.getData(infection) - 1);
+		}
+		if (isInInfectedBiome && entity.tickCount % 1200 == 0) {
+			entity.setData(infection, entity.getData(infection) + 1);
 		}
 		if (!event.getEntity().level().isClientSide()) {
 			PacketDistributor.TRACKING_ENTITY_AND_SELF.with(entity).send(new UthericInfectionPacket(entity.getId(), entity.getData(infection)));

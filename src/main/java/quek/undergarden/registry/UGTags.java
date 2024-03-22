@@ -144,6 +144,8 @@ public class UGTags {
 
 		public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
 
+		public static final TagKey<Biome> TICKS_UTHERIC_INFECTION = tag("ticks_utheric_infection");
+
 		public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
 		public static final TagKey<Biome> HAS_FORGOTTEN_VESTIGE = tag("has_structure/forgotten_vestige");
 
