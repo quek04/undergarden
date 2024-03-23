@@ -288,9 +288,6 @@ public class UndergardenClientEvents {
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
 
-			/*if (player != null) {
-				player.getCapability(UGAttachments.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(consumer -> renderPortalOverlay(guiGraphics, minecraft, window, consumer, partialTick));
-			}*/
 			if (player != null) {
 				renderPortalOverlay(guiGraphics, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), partialTick);
 			}
@@ -333,15 +330,16 @@ public class UndergardenClientEvents {
 
 	private static void renderUthericInfectionBar(int width, int height, GuiGraphics graphics, ExtendedGui gui, Player player) {
 		int left = width / 2 + 91;
-		int y = height - gui.rightHeight;
+		int top = height - gui.rightHeight;
 		gui.rightHeight += 10;
 
 		int infectionLevel = player.getData(UGAttachments.UTHERIC_INFECTION);
 		for (int i = 0; i < 10; i++) {
 			int idx = i * 2 + 1;
 			int x = left - i * 8 - 9;
+			int y = top;
 			if (infectionLevel >= 16) {
-				y = y + (gui.random.nextInt(1));
+				y += gui.random.nextInt(2);
 			}
             if (idx < infectionLevel) {
 				graphics.blitSprite(UTHERIC_INFECTION_FULL, x, y, 9, 9);
