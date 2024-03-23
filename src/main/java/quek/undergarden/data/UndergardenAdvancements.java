@@ -520,7 +520,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
-			.addCriterion("has_contracted_utheric_infection", UthericInfectionTrigger.TriggerInstance.hasInfectionLevel(MinMaxBounds.Ints.atLeast(1)))
+			.addCriterion("has_contracted_utheric_infection", UthericInfectionTrigger.TriggerInstance.isInfected())
 			.save(consumer, "undergarden:undergarden/contract_utheric_infection");
 	}
 

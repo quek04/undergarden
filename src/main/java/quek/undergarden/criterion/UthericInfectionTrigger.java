@@ -23,19 +23,27 @@ public class UthericInfectionTrigger extends SimpleCriterionTrigger<UthericInfec
 		this.trigger(player, triggerInstance -> triggerInstance.matches(infectionLevel));
 	}
 
-	public record TriggerInstance(Optional<ContextAwarePredicate> player, MinMaxBounds.Ints infectionLevel) implements SimpleCriterionTrigger.SimpleInstance {
+	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<MinMaxBounds.Ints> infectionLevel) implements SimpleCriterionTrigger.SimpleInstance {
 		public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 			ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(TriggerInstance::player),
-				ExtraCodecs.strictOptionalField(MinMaxBounds.Ints.CODEC, "infectionLevel", MinMaxBounds.Ints.between(0, 20)).forGetter(TriggerInstance::infectionLevel))
+				ExtraCodecs.strictOptionalField(MinMaxBounds.Ints.CODEC, "infectionLevel").forGetter(TriggerInstance::infectionLevel))
 			.apply(instance, TriggerInstance::new)
 		);
 
+		public static Criterion<?> isInfected() {
+			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), Optional.of(MinMaxBounds.Ints.atLeast(1))));
+		}
+
+		public static Criterion<?> hasInfectionLevel(int infectionLevel) {
+			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), Optional.of(MinMaxBounds.Ints.exactly(infectionLevel))));
+		}
+
 		public static Criterion<?> hasInfectionLevel(MinMaxBounds.Ints infectionLevel) {
-			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), infectionLevel));
+			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), Optional.of(infectionLevel)));
 		}
 
 		public boolean matches(int infectionLevel) {
-			return this.infectionLevel.matches(infectionLevel);
+			return this.infectionLevel.isEmpty() || this.infectionLevel.get().matches(infectionLevel);
 		}
 	}
 }

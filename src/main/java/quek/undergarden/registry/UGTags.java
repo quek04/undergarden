@@ -72,6 +72,7 @@ public class UGTags {
 		public static final TagKey<Block> TREMBLECRUST_ORE_REPLACEABLES = tag("tremblecrust_ore_replaceables");
 		public static final TagKey<Block> UNDERGARDEN_CARVER_REPLACEABLES = tag("undergarden_carver_replaceables");
 		public static final TagKey<Block> MUSHROOMS = tag("mushrooms");
+		public static final TagKey<Block> UTHERIC_INFECTION_BLOCKS = tag("utheric_infection_blocks");
 		public static final TagKey<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
 		public static final TagKey<Block> SMOGSTEM_LOGS = tag("smogstem_logs");
 		public static final TagKey<Block> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
@@ -125,6 +126,7 @@ public class UGTags {
 		public static final TagKey<EntityType<?>> IMMUNE_TO_VIRULENT_MIX = tag("immune_to_virulent_mix");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_SCINTLING_GOO = tag("immune_to_scintling_goo");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_BLISTERBERRY_BUSH = tag("immune_to_blisterberry_bush");
+		public static final TagKey<EntityType<?>> IMMUNE_TO_INFECTION = tag("immune_to_utheric_infection");
 
 		private static TagKey<EntityType<?>> tag(String name) {
 			return EntityTypeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());

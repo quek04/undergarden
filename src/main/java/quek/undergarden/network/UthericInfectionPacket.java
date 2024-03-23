@@ -5,6 +5,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.network.handling.PlayPayloadContext;
 import quek.undergarden.Undergarden;
@@ -28,12 +29,20 @@ public record UthericInfectionPacket(int entityID, int infectionLevel) implement
 		return ID;
 	}
 
+	@SuppressWarnings("Convert2Lambda")
 	public static void handle(UthericInfectionPacket message, PlayPayloadContext context) {
-		context.workHandler().execute(() -> {
-			Entity entity = Minecraft.getInstance().level.getEntity(message.entityID());
-			if (entity instanceof Player player) {
-				player.setData(UGAttachments.UTHERIC_INFECTION.get(), message.infectionLevel());
-			}
-		});
+		//ensure this is only done on clients as this uses client only code
+		//the level is not yet set in the payload context when a player logs in, so we need to fall back to the clientlevel instead
+		if (context.flow().isClientbound()) {
+			context.workHandler().execute(new Runnable() {
+				@Override
+				public void run() {
+					Entity entity = context.level().orElse(Minecraft.getInstance().level).getEntity(message.entityID);
+					if (entity instanceof LivingEntity living) {
+						living.setData(UGAttachments.UTHERIC_INFECTION.get(), message.infectionLevel());
+					}
+				}
+			});
+		}
 	}
 }

@@ -5,6 +5,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,7 +31,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.ToolAction;
@@ -37,6 +38,7 @@ import net.neoforged.neoforge.common.ToolActions;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.event.entity.living.*;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -70,6 +72,8 @@ public class UndergardenCommonEvents {
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickUthericInfection);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::syncUthericInfectionOnLogin);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::syncUthericInfectionOnDimensionChange);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
@@ -270,26 +274,64 @@ public class UndergardenCommonEvents {
 
 	private static void tickUthericInfection(LivingEvent.LivingTickEvent event) {
 		LivingEntity entity = event.getEntity();
-		//Logger.getLogger("infection").info("Entity: " + entity.getType() + "\nInfection Level: " + entity.getData(UGAttachments.UTHERIC_INFECTION.get()));
-		AttachmentType<Integer> infection = UGAttachments.UTHERIC_INFECTION.get();
-		boolean isInInfectedBiome = entity.level().getBiome(entity.blockPosition()).is(UGTags.Biomes.TICKS_UTHERIC_INFECTION);
-		if (entity instanceof ServerPlayer player && player.getData(infection) > 0) {
-			UGCriteria.UTHERIC_INFECTION.get().trigger(player, 1);
-		}
-		if (entity.tickCount % 20 == 0) {
-			if (entity.getData(infection) >= 20) {
+		if (entity.tickCount % 20 == 0 && !entity.level().isClientSide() && !entity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
+			int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
+			//Logger.getLogger("infection").info("Entity: " + entity.getType() + "\nInfection Level: " + data);
+			if (data >= 20) {
 				entity.hurt(entity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
+			} else {
+				if (entity.level().getBiome(entity.blockPosition()).is(UGTags.Biomes.TICKS_UTHERIC_INFECTION) && entity.tickCount % 400 == 0) {
+					entity.setData(UGAttachments.UTHERIC_INFECTION, data + 1);
+				} else {
+					if (entity.tickCount % 100 == 0) {
+						int blocks = countInfectedBlocksNearby(entity.level(), entity.blockPosition(), entity.getRandom());
+						if (blocks > 0) {
+							entity.setData(UGAttachments.UTHERIC_INFECTION, data + Mth.clamp(Mth.ceil(Mth.sqrt(blocks / 2.0F) + 1), 1, 5));
+						} else if (entity.tickCount % 400 == 0) {
+							entity.setData(UGAttachments.UTHERIC_INFECTION, data - 1);
+						}
+					}
+				}
+				sendSyncPacket(entity);
+			}
+			if (entity instanceof ServerPlayer player) {
+				UGCriteria.UTHERIC_INFECTION.get().trigger(player, entity.getData(UGAttachments.UTHERIC_INFECTION));
 			}
 		}
-		if (!isInInfectedBiome && entity.getData(infection) > 0 && entity.tickCount % 400 == 0) {
-			entity.setData(infection, entity.getData(infection) - 1);
+	}
+
+	private static int countInfectedBlocksNearby(Level level, BlockPos playerPos, RandomSource random) {
+		int infected = 0;
+		for (int i = 0; i <= 20; i++) {
+			BlockPos checkBlock = getRandomBlockNearby(random, playerPos, 5);
+			if (level.getBlockState(checkBlock).is(UGTags.Blocks.UTHERIC_INFECTION_BLOCKS)) {
+				infected++;
+			}
 		}
-		if (isInInfectedBiome && entity.tickCount % 1200 == 0) {
-			entity.setData(infection, entity.getData(infection) + 1);
-		}
+		return infected;
+	}
+
+	private static BlockPos getRandomBlockNearby(RandomSource random, BlockPos pos, int range) {
+		int dx = random.nextInt(range * 2 + 1) - range;
+		int dy = random.nextInt(range * 2 + 1) - range;
+		int dz = random.nextInt(range * 2 + 1) - range;
+		return pos.offset(dx, dy, dz);
+	}
+
+	private static void syncUthericInfectionOnLogin(PlayerEvent.PlayerLoggedInEvent event) {
 		if (!event.getEntity().level().isClientSide()) {
-			PacketDistributor.TRACKING_ENTITY_AND_SELF.with(entity).send(new UthericInfectionPacket(entity.getId(), entity.getData(infection)));
+			sendSyncPacket(event.getEntity());
 		}
+	}
+
+	private static void syncUthericInfectionOnDimensionChange(PlayerEvent.PlayerChangedDimensionEvent event) {
+		if (!event.getEntity().level().isClientSide()) {
+			sendSyncPacket(event.getEntity());
+		}
+	}
+
+	private static void sendSyncPacket(LivingEntity infected) {
+		PacketDistributor.TRACKING_ENTITY_AND_SELF.with(infected).send(new UthericInfectionPacket(infected.getId(), infected.getData(UGAttachments.UTHERIC_INFECTION)));
 	}
 
 	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {

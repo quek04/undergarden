@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-21T15:23:56.9349333	Undergarden Block Tags
+// 1.20.4	2024-03-22T17:59:16.51815	Undergarden Block Tags
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -106,4 +106,5 @@ d06d1c2dfb74f0c3d13fd37e1e5b8a7d5d1e588b data/undergarden/tags/blocks/portal_fra
 7088ff8bd12ffe365a41d902eb729711e7430d00 data/undergarden/tags/blocks/smog_mog_spawnable_on.json
 817f355c76e8ad6e17a570f60cb4a0aa5154af28 data/undergarden/tags/blocks/tremblecrust_ore_replaceables.json
 18ef7966deaaa72070b26735c15e4a73c7d061c2 data/undergarden/tags/blocks/undergarden_carver_replaceables.json
+7bf36adcd8ca2f238a6b7aa1c3864ed02b4df3bd data/undergarden/tags/blocks/utheric_infection_blocks.json
 3bd166cb38f35e0d1854fe644fe122c02e4f9e22 data/undergarden/tags/blocks/wigglewood_logs.json
