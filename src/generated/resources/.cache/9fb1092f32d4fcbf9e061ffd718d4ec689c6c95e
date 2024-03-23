@@ -1,4 +1,5 @@
-// 1.20.4	2024-03-21T14:45:25.5524921	Recipes
+// 1.20.4	2024-03-23T13:33:23.1612735	Recipes
+81d025ee1347dc11ecc3779bc9c3f81bc89e91b5 data/undergarden/advancements/recipes/building_blocks/ancient_root_planks.json
 531d83c89317a674eabfba48e9f8ea071ffd10f4 data/undergarden/advancements/recipes/building_blocks/boomgourd.json
 bc72eb313f0f6dfa5e3f574300e07edc412ebfac data/undergarden/advancements/recipes/building_blocks/chiseled_depthrock_bricks.json
 29a02c85593af20d7c5a7fe43f1ec5ba3b7f764c data/undergarden/advancements/recipes/building_blocks/chiseled_depthrock_bricks_stonecutting.json
@@ -300,6 +301,7 @@ bfc28c6d02a8ff74102641190c147d2a9aed995c data/undergarden/advancements/recipes/t
 4a1996319bcc7e0da4cdc4efedb61e3e3325326b data/undergarden/advancements/recipes/transportation/wigglewood_boat.json
 0ce0f7ea42272b514f9db230844c5c7dd5db64e1 data/undergarden/advancements/recipes/transportation/wigglewood_chest_boat.json
 1ad5b1ce2bb0354b6de7b6877b011a33c6237822 data/undergarden/recipes/amorous_bristle_to_dye.json
+315bf32603e4668b252686f4165ca033c7a6ccbe data/undergarden/recipes/ancient_root_planks.json
 1fafcd0d80e89738ebafa743c5137fd9e94e049a data/undergarden/recipes/blast_catalyst.json
 1a204d7ccfc2742382808e8c47d4b1fa2147b038 data/undergarden/recipes/blast_cloggrum_item.json
 deedba3d2d4fea65d143fb5b96bf4f7757b03f7f data/undergarden/recipes/blast_depthrock_cloggrum_ore.json

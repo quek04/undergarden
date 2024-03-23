@@ -1,8 +1,10 @@
-// 1.20.4	2024-03-21T14:45:25.5625026	Undergarden Item Models
+// 1.20.4	2024-03-23T13:33:23.1672795	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
 a29055b6815873d969710f2b8111f9e5cb512f18 assets/undergarden/models/item/ancient_leggings.json
+3cd71c87a6bccad0589e7ff86f9728a3a186b681 assets/undergarden/models/item/ancient_root.json
+4102b418983cc4464b0c79054e069ca956f7da9b assets/undergarden/models/item/ancient_root_planks.json
 7d6dd9762adf4d3008086f8e2ef2ba7ce6abea63 assets/undergarden/models/item/ashen_deepturf.json
 b5b61724c908205f06def46a336e8604175bcb5c assets/undergarden/models/item/ashen_deepturf_block.json
 8badee57abd7354d80bbf6f6ff7ea5981701e87d assets/undergarden/models/item/blisterberry.json

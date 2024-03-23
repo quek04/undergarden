@@ -36,6 +36,13 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_log", has(logIn));
 	}
 
+	public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, Supplier<? extends Block> logIn) {
+		return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, plankOut.get(), 4)
+			.requires(logIn.get())
+			.group("planks")
+			.unlockedBy("has_log", has(logIn.get()));
+	}
+
 	public ShapedRecipeBuilder makeDoor(Supplier<? extends Block> doorOut, Supplier<? extends Block> plankIn) {
 		return ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, doorOut.get(), 3)
 				.pattern("PP")

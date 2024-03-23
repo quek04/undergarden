@@ -288,6 +288,8 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.RAW_ROGDORIUM_BLOCK);
 			dropSelf(UGBlocks.UTHERIUM_GROWTH);
 			ore(UGBlocks.DREADROCK_UTHERIUM_ORE, UGItems.UTHERIUM_CRYSTAL);
+			dropSelf(UGBlocks.ANCIENT_ROOT);
+			dropSelf(UGBlocks.ANCIENT_ROOT_PLANKS);
 		}
 
 		@Override

@@ -77,7 +77,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(UGTags.Blocks.TREMBLECRUST_ORES).add(UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get());
 
 		//vanilla
-		tag(BlockTags.PLANKS).add(UGBlocks.SMOGSTEM_PLANKS.get(), UGBlocks.WIGGLEWOOD_PLANKS.get(), UGBlocks.GRONGLE_PLANKS.get());
+		tag(BlockTags.PLANKS).add(UGBlocks.SMOGSTEM_PLANKS.get(), UGBlocks.WIGGLEWOOD_PLANKS.get(), UGBlocks.GRONGLE_PLANKS.get(), UGBlocks.ANCIENT_ROOT_PLANKS.get());
 		tag(BlockTags.WOODEN_BUTTONS).add(UGBlocks.SMOGSTEM_BUTTON.get(), UGBlocks.WIGGLEWOOD_BUTTON.get(), UGBlocks.GRONGLE_BUTTON.get());
 		tag(BlockTags.BUTTONS).add(UGBlocks.DEPTHROCK_BUTTON.get(), UGBlocks.SHIVERSTONE_BUTTON.get(), UGBlocks.SMOGSTEM_BUTTON.get(), UGBlocks.WIGGLEWOOD_BUTTON.get(), UGBlocks.GRONGLE_BUTTON.get());
 		tag(BlockTags.WOODEN_DOORS).add(UGBlocks.SMOGSTEM_DOOR.get(), UGBlocks.WIGGLEWOOD_DOOR.get(), UGBlocks.GRONGLE_DOOR.get());
@@ -85,8 +85,8 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(BlockTags.WOODEN_SLABS).add(UGBlocks.SMOGSTEM_SLAB.get(), UGBlocks.WIGGLEWOOD_SLAB.get(), UGBlocks.GRONGLE_SLAB.get());
 		tag(BlockTags.WOODEN_FENCES).add(UGBlocks.SMOGSTEM_FENCE.get(), UGBlocks.WIGGLEWOOD_FENCE.get(), UGBlocks.GRONGLE_FENCE.get());
 		tag(BlockTags.SAPLINGS).add(UGBlocks.SMOGSTEM_SAPLING.get(), UGBlocks.WIGGLEWOOD_SAPLING.get(), UGBlocks.GRONGLE_SAPLING.get());
-		tag(BlockTags.LOGS_THAT_BURN).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_LOGS);
-		tag(BlockTags.LOGS).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_LOGS);
+		tag(BlockTags.LOGS_THAT_BURN).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_LOGS).add(UGBlocks.ANCIENT_ROOT.get());
+		tag(BlockTags.LOGS).addTag(UGTags.Blocks.SMOGSTEM_LOGS).addTag(UGTags.Blocks.WIGGLEWOOD_LOGS).addTag(UGTags.Blocks.GRONGLE_LOGS).add(UGBlocks.ANCIENT_ROOT.get());
 		tag(BlockTags.SMALL_FLOWERS).add(UGBlocks.SHIMMERWEED.get(), UGBlocks.AMOROUS_BRISTLE.get(), UGBlocks.MISERABELL.get(), UGBlocks.BUTTERBUNCH.get());
 		tag(BlockTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get());
 		tag(BlockTags.ENDERMAN_HOLDABLE).addTag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.GLOOMGOURD.get(), UGBlocks.CARVED_GLOOMGOURD.get());
@@ -289,7 +289,9 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 				UGBlocks.GRONGLE_BUTTON.get(),
 				UGBlocks.GRONGLE_PRESSURE_PLATE.get(),
 				UGBlocks.GRONGLE_SIGN.get(),
-				UGBlocks.GRONGLE_WALL_SIGN.get()
+				UGBlocks.GRONGLE_WALL_SIGN.get(),
+				UGBlocks.ANCIENT_ROOT.get(),
+				UGBlocks.ANCIENT_ROOT_PLANKS.get()
 		);
 		tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
 				UGBlocks.DEEPTURF_BLOCK.get(),

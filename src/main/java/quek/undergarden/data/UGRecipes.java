@@ -28,6 +28,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makePlanks(UGBlocks.SMOGSTEM_PLANKS, UGTags.Items.SMOGSTEM_LOGS).save(consumer);
 		makePlanks(UGBlocks.WIGGLEWOOD_PLANKS, UGTags.Items.WIGGLEWOOD_LOGS).save(consumer);
 		makePlanks(UGBlocks.GRONGLE_PLANKS, UGTags.Items.GRONGLE_LOGS).save(consumer);
+		makePlanks(UGBlocks.ANCIENT_ROOT_PLANKS, UGBlocks.ANCIENT_ROOT).save(consumer);
 
 		makeBricks(UGBlocks.POLISHED_DEPTHROCK, UGBlocks.DEPTHROCK).save(consumer);
 		makeBricks(UGBlocks.DEPTHROCK_BRICKS, UGBlocks.POLISHED_DEPTHROCK).save(consumer);

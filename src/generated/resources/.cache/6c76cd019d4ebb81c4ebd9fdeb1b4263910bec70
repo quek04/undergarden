@@ -1,5 +1,7 @@
-// 1.20.4	2024-03-21T14:45:25.547488	Undergarden Block States
+// 1.20.4	2024-03-23T13:33:23.1572706	Undergarden Block States
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
+f80efe8d72f896f3fb26b4c28f312ad9ec9ae967 assets/undergarden/blockstates/ancient_root.json
+7e93e965dccb626b08e7fdecca57c27bba7f4731 assets/undergarden/blockstates/ancient_root_planks.json
 3caa35193766b684dc360e477e5208fb99d055f6 assets/undergarden/blockstates/ashen_deepturf.json
 6919d06515a0a18838e81bb21207cad377dbaa31 assets/undergarden/blockstates/ashen_deepturf_block.json
 00d3b235bb054a6351f9c7cd53b92deee69fc877 assets/undergarden/blockstates/blisterberry_bush.json
@@ -173,6 +175,8 @@ ec71af9ce89c58ece4bbb72f0c4e19d7d48c6a57 assets/undergarden/blockstates/wigglewo
 5098244ea05278ba74b4c34138193e8862538053 assets/undergarden/blockstates/wigglewood_wall_sign.json
 32ffc2891efaa18c202e4c3bd64b98188e99926d assets/undergarden/blockstates/wigglewood_wood.json
 d40f0cefd07fe14af68f7a4fd84941146cc8613f assets/undergarden/models/block/amorous_bristle.json
+065a9998f3e1f77046c725c232447f08d9b3cecb assets/undergarden/models/block/ancient_root.json
+c1d7b7ac774cb6f5da7b2becce4a32c37432fa29 assets/undergarden/models/block/ancient_root_planks.json
 bd0608dcc3de44af295e04242bc8606cb456267e assets/undergarden/models/block/ashen_deepturf.json
 f244edc0cd4d556cd0d1858c97580fb44dd5b746 assets/undergarden/models/block/ashen_deepturf_block.json
 956768e05d9e4a5b9541e401b85bf75f60ffc944 assets/undergarden/models/block/blisterberry_bush_0.json

@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-22T17:59:16.51815	Undergarden Block Tags
+// 1.20.4	2024-03-23T13:33:23.1562694	Undergarden Block Tags
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/forge/tags/blocks/cobblestone.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/forge/tags/blocks/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/forge/tags/blocks/fence_gates/wooden.json
@@ -60,10 +60,10 @@ c680f46111d02a81749eac8cfb3d8447c9970b19 data/minecraft/tags/blocks/enderman_hol
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/blocks/impermeable.json
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/minecraft/tags/blocks/iron_ores.json
 497779cef1ba178c2d1e96ca25b75892c32f086f data/minecraft/tags/blocks/leaves.json
-9479ebbe396f89b63bb5a43f52770666961999c9 data/minecraft/tags/blocks/logs.json
-9479ebbe396f89b63bb5a43f52770666961999c9 data/minecraft/tags/blocks/logs_that_burn.json
+f86068e471d2ec5489dee3c5e674d6983e09c4c9 data/minecraft/tags/blocks/logs.json
+f86068e471d2ec5489dee3c5e674d6983e09c4c9 data/minecraft/tags/blocks/logs_that_burn.json
 0d90808086e3aad6dc31200f215524957736650a data/minecraft/tags/blocks/maintains_farmland.json
-fafff32dd87177c6b6ffab623faf9add1e2b449a data/minecraft/tags/blocks/mineable/axe.json
+a0bb3d4df814026e67a80ab765a471e87552e624 data/minecraft/tags/blocks/mineable/axe.json
 78905c3a496e4d94c24d07af3e585bf14688d33b data/minecraft/tags/blocks/mineable/hoe.json
 1ed68ac42363f15aa30c414c1049c6fdd2c1b059 data/minecraft/tags/blocks/mineable/pickaxe.json
 69d2571d2d15a8aefb59f5d5ba8c0d1952690da0 data/minecraft/tags/blocks/mineable/shovel.json
@@ -71,7 +71,7 @@ fafff32dd87177c6b6ffab623faf9add1e2b449a data/minecraft/tags/blocks/mineable/axe
 d9d7618c3b761eb6be22a82adc7cb33b8bf129a7 data/minecraft/tags/blocks/needs_iron_tool.json
 e23b33feabca15116fe540dfbb0dd952f858707f data/minecraft/tags/blocks/needs_stone_tool.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/parrots_spawnable_on.json
-16752e9a5fb12810a84ee5a478bf8ad6c003bf88 data/minecraft/tags/blocks/planks.json
+b86f56bdea209ef921825a95161b4dd24b6e4a4d data/minecraft/tags/blocks/planks.json
 cc6b720461c0097154af4fe2b091ae4d2e3f9f25 data/minecraft/tags/blocks/portals.json
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/blocks/rabbits_spawnable_on.json
 5c5d4b975bb42e5a720ba4f466281426ef3057e2 data/minecraft/tags/blocks/saplings.json

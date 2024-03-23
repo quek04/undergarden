@@ -220,8 +220,10 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
 		addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
 		addBlock(UGBlocks.GRONGLE_HANGING_SIGN, "Grongle Hanging Sign");
-
 		addBlock(UGBlocks.GRONGLET, "Gronglet");
+
+		addBlock(UGBlocks.ANCIENT_ROOT, "Ancient Root");
+		addBlock(UGBlocks.ANCIENT_ROOT_PLANKS, "Ancient Root Planks");
 
 		addBlock(UGBlocks.VIRULENT_MIX, "Virulent Mix");
 

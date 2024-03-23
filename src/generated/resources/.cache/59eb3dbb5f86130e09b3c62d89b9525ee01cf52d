@@ -1,5 +1,7 @@
-// 1.20.4	2024-03-21T14:45:25.5424833	Loot Tables
+// 1.20.4	2024-03-23T13:33:23.154268	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
+b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_tables/blocks/ancient_root.json
+2fb80b6f39dd77328139b331f1332fa3d52980f7 data/undergarden/loot_tables/blocks/ancient_root_planks.json
 2645cf89fe60362fa8217dc5825683e04755a423 data/undergarden/loot_tables/blocks/ashen_deepturf.json
 151c2f71107612bce2811d7825f88937bff932f0 data/undergarden/loot_tables/blocks/ashen_deepturf_block.json
 3c67d176f5e706db5188d9a037ed54b5d7c644ca data/undergarden/loot_tables/blocks/blisterberry_bush.json
