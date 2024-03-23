@@ -74,6 +74,7 @@ public class UndergardenClientEvents {
 	private static final ResourceLocation UTHERIC_INFECTION_EMPTY = new ResourceLocation(Undergarden.MODID, "utheric_infection/empty");
 	private static final ResourceLocation UTHERIC_INFECTION_HALF = new ResourceLocation(Undergarden.MODID, "utheric_infection/half");
 	private static final ResourceLocation UTHERIC_INFECTION_FULL = new ResourceLocation(Undergarden.MODID, "utheric_infection/full");
+	private static final ResourceLocation UTHERIC_INFECTION_FULL_LETHAL = new ResourceLocation(Undergarden.MODID, "utheric_infection/full_lethal");
 
 	public static void initClientEvents(IEventBus bus) {
 		bus.addListener(UndergardenClientEvents::clientSetup);
@@ -342,7 +343,7 @@ public class UndergardenClientEvents {
 				y += gui.random.nextInt(2);
 			}
             if (idx < infectionLevel) {
-				graphics.blitSprite(UTHERIC_INFECTION_FULL, x, y, 9, 9);
+				graphics.blitSprite(infectionLevel >= 20 ? UTHERIC_INFECTION_FULL_LETHAL : UTHERIC_INFECTION_FULL, x, y, 9, 9);
 			} else if (idx == infectionLevel) {
 				graphics.blitSprite(UTHERIC_INFECTION_HALF, x, y, 9, 9);
 			} else {
