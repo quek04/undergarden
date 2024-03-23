@@ -50,7 +50,11 @@ public class Undergarden {
 		UndergardenCommonEvents.initCommonEvents(bus);
 		bus.addListener(this::gatherData);
 		bus.addListener(this::registerPackets);
-		bus.addListener((Consumer<RegisterEvent>) event -> Registry.register(BuiltInRegistries.CHUNK_GENERATOR, new ResourceLocation(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC));
+		bus.addListener((Consumer<RegisterEvent>) event -> {
+			if (event.getRegistry() == BuiltInRegistries.CHUNK_GENERATOR) {
+				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, new ResourceLocation(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC);
+			}
+		});
 
 		DeferredRegister<?>[] registers = {
 				UGAttachments.ATTACHMENTS,
