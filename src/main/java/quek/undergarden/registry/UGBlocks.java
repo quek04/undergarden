@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
@@ -25,6 +26,7 @@ import quek.undergarden.block.*;
 import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.item.tool.slingshot.GrongletItem;
+import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.world.gen.tree.UGTreeGrowers;
 
 import java.util.Objects;
@@ -354,8 +356,11 @@ public class UGBlocks {
 					public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotID, boolean isSelected) {
 						int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
 						if (entity instanceof Player player) {
-							if (player.tickCount % 100 == 0 && data < 20) {
-								player.setData(UGAttachments.UTHERIC_INFECTION.get(), data + (stack.getCount() / 4));
+							if (!level.isClientSide()) {
+								if (player.tickCount % 100 == 0 && data < 20) {
+									player.setData(UGAttachments.UTHERIC_INFECTION.get(), data + (stack.getCount() / 4));
+									PacketDistributor.TRACKING_ENTITY_AND_SELF.with(player).send(new UthericInfectionPacket(player.getId(), player.getData(UGAttachments.UTHERIC_INFECTION)));
+								}
 							}
 						}
 					}
