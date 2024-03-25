@@ -426,6 +426,7 @@ public class UGLang extends UGLangProvider {
 		addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
 		addEffect(UGEffects.VIRULENCE, "Virulence");
 		addEffect(UGEffects.CHILLY, "Chilly");
+		addEffect(UGEffects.PURITY, "Purity");
 
 		//JEED compat
 		add("effect.undergarden.gooey.description", "Scintling Goo will constantly be placed under victim's feet.");
@@ -434,6 +435,7 @@ public class UGLang extends UGLangProvider {
 		add("effect.undergarden.virulent_resistance.description", "Grants immunity to Virulence.");
 		add("effect.undergarden.virulence.description", "Similar to poison, but does more damage at a slower rate. Damage is suppressed by Virulent Resistance.");
 		add("effect.undergarden.chilly.description", "Slows the victim down and causes them to visually shake.");
+		add("effect.undergarden.purity.description", "Reduces the amount of Utheric Infection an entity has per second. Amount removed scales with potion level.");
 
 		addPotion(UGPotions.BRITTLENESS, "Brittleness");
 		addPotion(UGPotions.FEATHERWEIGHT, "Featherweight");

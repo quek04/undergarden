@@ -292,6 +292,8 @@
   "effect.undergarden.featherweight.description": "When damaged, victim will receive increased knockback. Amount of knockback scales with potion level.",
   "effect.undergarden.gooey": "Gooey",
   "effect.undergarden.gooey.description": "Scintling Goo will constantly be placed under victim's feet.",
+  "effect.undergarden.purity": "Purity",
+  "effect.undergarden.purity.description": "Reduces the amount of Utheric Infection an entity has per second. Amount removed scales with potion level.",
   "effect.undergarden.virulence": "Virulence",
   "effect.undergarden.virulence.description": "Similar to poison, but does more damage at a slower rate. Damage is suppressed by Virulent Resistance.",
   "effect.undergarden.virulent_resistance": "Virulent Resistance",
