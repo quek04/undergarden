@@ -355,12 +355,10 @@ public class UGBlocks {
 					@Override
 					public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotID, boolean isSelected) {
 						int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
-						if (entity instanceof Player player) {
-							if (!level.isClientSide()) {
-								if (player.tickCount % 100 == 0 && data < 20) {
-									player.setData(UGAttachments.UTHERIC_INFECTION.get(), data + (stack.getCount() / 4));
-									PacketDistributor.TRACKING_ENTITY_AND_SELF.with(player).send(new UthericInfectionPacket(player.getId(), player.getData(UGAttachments.UTHERIC_INFECTION)));
-								}
+						if (entity instanceof Player player && !level.isClientSide()) {
+							if (player.tickCount % 100 == 0 && data < 20) {
+								player.setData(UGAttachments.UTHERIC_INFECTION.get(), data + stack.getCount());
+								PacketDistributor.TRACKING_ENTITY_AND_SELF.with(player).send(new UthericInfectionPacket(player.getId(), player.getData(UGAttachments.UTHERIC_INFECTION)));
 							}
 						}
 					}

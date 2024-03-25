@@ -278,7 +278,6 @@ public class UndergardenCommonEvents {
 		LivingEntity entity = event.getEntity();
 		if (entity.tickCount % 20 == 0 && !entity.level().isClientSide() && !entity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
 			int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
-			//Logger.getLogger("infection").info("Entity: " + entity.getType() + "\nInfection Level: " + data);
 			if (data >= 20) {
 				entity.hurt(entity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
 			} else {
@@ -289,7 +288,7 @@ public class UndergardenCommonEvents {
 						int blocks = countInfectedBlocksNearby(entity.level(), entity.blockPosition(), entity.getRandom());
 						if (blocks > 0) {
 							entity.setData(UGAttachments.UTHERIC_INFECTION, data + Mth.clamp(Mth.ceil(Mth.sqrt(blocks / 2.0F) + 1), 1, 5));
-						} else if (entity.tickCount % 400 == 0) {
+						} else if (entity.tickCount % 400 == 0 && data > 0) {
 							entity.setData(UGAttachments.UTHERIC_INFECTION, data - 1);
 						}
 					}
@@ -298,6 +297,7 @@ public class UndergardenCommonEvents {
 			}
 			if (entity instanceof ServerPlayer player) {
 				UGCriteria.UTHERIC_INFECTION.get().trigger(player, entity.getData(UGAttachments.UTHERIC_INFECTION));
+				//Logger.getLogger("infection").info("Entity: " + entity.getType() + "\nInfection Level: " + data);
 			}
 		}
 	}

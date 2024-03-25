@@ -17,5 +17,6 @@ public class UGEffects {
 	public static final DeferredHolder<MobEffect, MobEffect> VIRULENT_RESISTANCE = EFFECTS.register("virulent_resistance", VirulentResistanceEffect::new);
 	public static final DeferredHolder<MobEffect, MobEffect> VIRULENCE = EFFECTS.register("virulence", VirulenceEffect::new);
 	public static final DeferredHolder<MobEffect, MobEffect> CHILLY = EFFECTS.register("chilly", ChillyEffect::new);
+	public static final DeferredHolder<MobEffect, MobEffect> PURITY = EFFECTS.register("purity", PurityEffect::new);
 
 }
