@@ -7,7 +7,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -345,6 +348,18 @@ public class UGBlocks {
 				return new HangingSignItem(WIGGLEWOOD_HANGING_SIGN.get(), WIGGLEWOOD_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (Objects.requireNonNull(block.get()) == GRONGLE_HANGING_SIGN.get()) {
 				return new HangingSignItem(GRONGLE_HANGING_SIGN.get(), GRONGLE_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
+			} else if (Objects.requireNonNull(block.get()) == UTHERIUM_GROWTH.get()) {
+				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties()) {
+					@Override
+					public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotID, boolean isSelected) {
+						int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
+						if (entity instanceof Player player) {
+							if (player.tickCount % 100 == 0 && data < 20) {
+								player.setData(UGAttachments.UTHERIC_INFECTION.get(), data + (stack.getCount() / 4));
+							}
+						}
+					}
+				};
 			} else {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			}
