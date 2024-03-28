@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.RotlingModel;
-import quek.undergarden.entity.rotspawn.Rotling;
+import quek.undergarden.entity.monster.rotspawn.Rotling;
 
 public class RotlingEyesLayer<T extends Rotling, M extends RotlingModel<T>> extends EyesLayer<T, M> {
 

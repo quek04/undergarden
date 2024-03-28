@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.SploogieModel;
 import quek.undergarden.client.model.UGModelLayers;
-import quek.undergarden.entity.cavern.Sploogie;
+import quek.undergarden.entity.monster.cavern.Sploogie;
 
 public class SploogieRender extends MobRenderer<Sploogie, SploogieModel<Sploogie>> {
 

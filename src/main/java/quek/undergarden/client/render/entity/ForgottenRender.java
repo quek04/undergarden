@@ -9,7 +9,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.ForgottenEyesLayer;
-import quek.undergarden.entity.Forgotten;
+import quek.undergarden.entity.monster.Forgotten;
 
 public class ForgottenRender extends HumanoidMobRenderer<Forgotten, ForgottenModel<Forgotten>> {
 

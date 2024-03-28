@@ -30,6 +30,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation SPLOOGIE = register("sploogie");
 	public static final ModelLayerLocation STONEBORN = register("stoneborn");
 	public static final ModelLayerLocation GRONGLET = register("gronglet");
+	public static final ModelLayerLocation DENIZEN = register("denizen");
 
 	private static ModelLayerLocation register(String name) {
 		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), "main");

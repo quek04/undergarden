@@ -379,6 +379,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
 		addItem(UGItems.SMOG_MOG_SPAWN_EGG, "S'Mog Spawn Egg");
 		addItem(UGItems.FORGOTTEN_SPAWN_EGG, "Forgotten Spawn Egg");
+		addItem(UGItems.DENIZEN_SPAWN_EGG, "Denizen Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
@@ -427,6 +428,7 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.MOG, "Mog");
 		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
 		addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
+		addEntityType(UGEntityTypes.DENIZEN, "Denizen");
 
 		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 

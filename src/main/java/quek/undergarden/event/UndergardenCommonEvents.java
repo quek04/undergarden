@@ -42,21 +42,22 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.network.PacketDistributor;
-import quek.undergarden.entity.Forgotten;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
-import quek.undergarden.entity.boss.ForgottenGuardian;
-import quek.undergarden.entity.cavern.CavernMonster;
-import quek.undergarden.entity.cavern.Muncher;
-import quek.undergarden.entity.cavern.Nargoyle;
-import quek.undergarden.entity.cavern.Sploogie;
+import quek.undergarden.entity.monster.Denizen;
+import quek.undergarden.entity.monster.Forgotten;
+import quek.undergarden.entity.monster.boss.ForgottenGuardian;
+import quek.undergarden.entity.monster.cavern.CavernMonster;
+import quek.undergarden.entity.monster.cavern.Muncher;
+import quek.undergarden.entity.monster.cavern.Nargoyle;
+import quek.undergarden.entity.monster.cavern.Sploogie;
+import quek.undergarden.entity.monster.rotspawn.Rotbeast;
+import quek.undergarden.entity.monster.rotspawn.Rotling;
+import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
+import quek.undergarden.entity.monster.rotspawn.Rotwalker;
+import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.slingshot.*;
-import quek.undergarden.entity.rotspawn.Rotbeast;
-import quek.undergarden.entity.rotspawn.Rotling;
-import quek.undergarden.entity.rotspawn.RotspawnMonster;
-import quek.undergarden.entity.rotspawn.Rotwalker;
-import quek.undergarden.entity.stoneborn.Stoneborn;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
 import quek.undergarden.network.UthericInfectionPacket;
@@ -244,6 +245,7 @@ public class UndergardenCommonEvents {
 		event.register(UGEntityTypes.MOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.SMOG_MOG.get(), SpawnPlacements.Type.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SmogMog::checkSmogMogSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.FORGOTTEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.DENIZEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 	}
 
 	private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
@@ -264,7 +266,8 @@ public class UndergardenCommonEvents {
 		event.put(UGEntityTypes.GWIB.get(), Gwib.registerAttributes().build());
 		event.put(UGEntityTypes.MOG.get(), Mog.registerAttributes().build());
 		event.put(UGEntityTypes.SMOG_MOG.get(), SmogMog.registerAttributes().build());
-		event.put(UGEntityTypes.FORGOTTEN.get(), Forgotten.createAttributes().build());
+		event.put(UGEntityTypes.FORGOTTEN.get(), Forgotten.registerAttributes().build());
+		event.put(UGEntityTypes.DENIZEN.get(), Denizen.registerAttributes().build());
 	}
 
 	private static void tickPortalLogic(LivingEvent.LivingTickEvent event) {

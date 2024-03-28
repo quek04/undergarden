@@ -29,7 +29,8 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
-import quek.undergarden.entity.rotspawn.RotspawnMonster;
+import org.joml.Vector3f;
+import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
@@ -263,6 +264,11 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		float yCos = Mth.cos(this.yBodyRot * ((float) Math.PI / 180F));
 		Vec3 vec3 = this.getPassengerRidingPosition(passenger);
 		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), vec3.y() + passenger.getMyRidingOffset(this), this.getZ() - (double) (0.5F * yCos));
+	}
+
+	@Override
+	protected Vector3f getPassengerAttachmentPoint(Entity pEntity, EntityDimensions pDimensions, float pScale) {
+		return new Vector3f(0.0F, 1.5F, 0.0F);
 	}
 
 	public boolean isJumping() {

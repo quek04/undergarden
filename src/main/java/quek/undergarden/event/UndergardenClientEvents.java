@@ -146,6 +146,7 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
 		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRender::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRender::new);
+		event.registerEntityRenderer(UGEntityTypes.DENIZEN.get(), DenizenRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
 	}
 
@@ -175,6 +176,7 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.MOG, MogModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.SMOG_MOG, SmogMogModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.DENIZEN, DenizenModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);

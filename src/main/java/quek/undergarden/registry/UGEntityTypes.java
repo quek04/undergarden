@@ -6,23 +6,28 @@ import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.*;
+import quek.undergarden.entity.Boomgourd;
+import quek.undergarden.entity.Minion;
+import quek.undergarden.entity.UGBoat;
+import quek.undergarden.entity.UGChestBoat;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
-import quek.undergarden.entity.boss.ForgottenGuardian;
-import quek.undergarden.entity.cavern.Muncher;
-import quek.undergarden.entity.cavern.Nargoyle;
-import quek.undergarden.entity.cavern.Sploogie;
+import quek.undergarden.entity.monster.Denizen;
+import quek.undergarden.entity.monster.Forgotten;
+import quek.undergarden.entity.monster.boss.ForgottenGuardian;
+import quek.undergarden.entity.monster.cavern.Muncher;
+import quek.undergarden.entity.monster.cavern.Nargoyle;
+import quek.undergarden.entity.monster.cavern.Sploogie;
+import quek.undergarden.entity.monster.rotspawn.Rotbeast;
+import quek.undergarden.entity.monster.rotspawn.Rotling;
+import quek.undergarden.entity.monster.rotspawn.Rotwalker;
+import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.MinionProjectile;
 import quek.undergarden.entity.projectile.slingshot.DepthrockPebble;
 import quek.undergarden.entity.projectile.slingshot.GooBall;
 import quek.undergarden.entity.projectile.slingshot.Gronglet;
 import quek.undergarden.entity.projectile.slingshot.RottenBlisterberry;
-import quek.undergarden.entity.rotspawn.Rotbeast;
-import quek.undergarden.entity.rotspawn.Rotling;
-import quek.undergarden.entity.rotspawn.Rotwalker;
-import quek.undergarden.entity.stoneborn.Stoneborn;
 
 public class UGEntityTypes {
 
@@ -57,6 +62,7 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<Mog>> MOG = ENTITIES.register("mog", () -> EntityType.Builder.of(Mog::new, MobCategory.CREATURE).sized(1.0F, 1.0F).build("mog"));
 	public static final DeferredHolder<EntityType<?>, EntityType<SmogMog>> SMOG_MOG = ENTITIES.register("smog_mog", () -> EntityType.Builder.of(SmogMog::new, MobCategory.CREATURE).sized(0.75F, 1.8F).build("smog_mog"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Forgotten>> FORGOTTEN = ENTITIES.register("forgotten", () -> EntityType.Builder.of(Forgotten::new, MobCategory.MONSTER).sized(0.7F, 2.2F).build("forgotten"));
+	public static final DeferredHolder<EntityType<?>, EntityType<Denizen>> DENIZEN = ENTITIES.register("denizen", () -> EntityType.Builder.of(Denizen::new, MobCategory.MONSTER).sized(0.7F, 2.0F).build("denizen"));
 
 	//bosses
 	public static final DeferredHolder<EntityType<?>, EntityType<ForgottenGuardian>> FORGOTTEN_GUARDIAN = ENTITIES.register("forgotten_guardian", () -> EntityType.Builder.of(ForgottenGuardian::new, MobCategory.MONSTER).sized(1.0F, 3.8F).build("forgotten_guardian"));
