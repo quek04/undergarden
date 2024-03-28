@@ -1,9 +1,11 @@
 package quek.undergarden.client.model;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.world.entity.HumanoidArm;
 import quek.undergarden.entity.monster.Denizen;
 
 public class DenizenModel<T extends Denizen> extends FixedHumanoidModel<T> {
@@ -32,5 +34,17 @@ public class DenizenModel<T extends Denizen> extends FixedHumanoidModel<T> {
 		PartDefinition rightLeg = partdefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(48, 36).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 13.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, 11.0F, 2.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
+	}
+
+	@Override
+	public void translateToHand(HumanoidArm side, PoseStack poseStack) {
+		float xOffset = side == HumanoidArm.RIGHT ? -1.25F : 1.25F;
+		float yOffset = 2.0F;
+		ModelPart modelpart = this.getArm(side);
+		modelpart.x += xOffset;
+		modelpart.y += yOffset;
+		modelpart.translateAndRotate(poseStack);
+		modelpart.x -= xOffset;
+		modelpart.y -= yOffset;
 	}
 }
