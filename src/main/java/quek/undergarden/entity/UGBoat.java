@@ -40,6 +40,7 @@ public class UGBoat extends Boat {
 			case SMOGSTEM -> UGItems.SMOGSTEM_BOAT.get();
 			case WIGGLEWOOD -> UGItems.WIGGLEWOOD_BOAT.get();
 			case GRONGLE -> UGItems.GRONGLE_BOAT.get();
+			case ANCIENT_ROOT -> UGItems.ANCIENT_ROOT_BOAT.get();
 		};
 	}
 
@@ -68,7 +69,8 @@ public class UGBoat extends Boat {
 	public enum Type {
 		SMOGSTEM(UGBlocks.SMOGSTEM_PLANKS.get(), "smogstem"),
 		WIGGLEWOOD(UGBlocks.WIGGLEWOOD_PLANKS.get(), "wigglewood"),
-		GRONGLE(UGBlocks.GRONGLE_PLANKS.get(), "grongle");
+		GRONGLE(UGBlocks.GRONGLE_PLANKS.get(), "grongle"),
+		ANCIENT_ROOT(UGBlocks.ANCIENT_ROOT_PLANKS.get(), "ancient_root");
 
 		private final String name;
 		private final Block block;

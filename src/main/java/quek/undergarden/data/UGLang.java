@@ -224,6 +224,16 @@ public class UGLang extends UGLangProvider {
 
 		addBlock(UGBlocks.ANCIENT_ROOT, "Ancient Root");
 		addBlock(UGBlocks.ANCIENT_ROOT_PLANKS, "Ancient Root Planks");
+		addBlock(UGBlocks.ANCIENT_ROOT_STAIRS, "Ancient Root Stairs");
+		addBlock(UGBlocks.ANCIENT_ROOT_SLAB, "Ancient Root Slab");
+		addBlock(UGBlocks.ANCIENT_ROOT_FENCE, "Ancient Root Fence");
+		addBlock(UGBlocks.ANCIENT_ROOT_FENCE_GATE, "Ancient Root Fence Gate");
+		addBlock(UGBlocks.ANCIENT_ROOT_DOOR, "Ancient Root Door");
+		addBlock(UGBlocks.ANCIENT_ROOT_TRAPDOOR, "Ancient Root Trapdoor");
+		addBlock(UGBlocks.ANCIENT_ROOT_BUTTON, "Ancient Root Button");
+		addBlock(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE, "Ancient Root Pressure Plate");
+		addBlock(UGBlocks.ANCIENT_ROOT_SIGN, "Ancient Root Sign");
+		addBlock(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, "Ancient Root Hanging Sign");
 
 		addBlock(UGBlocks.VIRULENT_MIX, "Virulent Mix");
 
@@ -307,6 +317,8 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.WIGGLEWOOD_CHEST_BOAT, "Wigglewood Boat with Chest");
 		addItem(UGItems.GRONGLE_BOAT, "Grongle Boat");
 		addItem(UGItems.GRONGLE_CHEST_BOAT, "Grongle Boat with Chest");
+		addItem(UGItems.ANCIENT_ROOT_BOAT, "Ancient Root Boat");
+		addItem(UGItems.ANCIENT_ROOT_CHEST_BOAT, "Ancient Root Boat with Chest");
 
 		addItem(UGItems.SLINGSHOT, "Slingshot");
 

@@ -141,6 +141,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		stairs(UGBlocks.TREMBLECRUST_BRICK_STAIRS, UGBlocks.TREMBLECRUST_BRICKS);
 		stairs(UGBlocks.CLOGGRUM_TILE_STAIRS, UGBlocks.CLOGGRUM_TILES);
 		stairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES);
+		stairs(UGBlocks.ANCIENT_ROOT_STAIRS, UGBlocks.ANCIENT_ROOT_PLANKS);
 
 		slab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK);
 		slab(UGBlocks.POLISHED_DEPTHROCK_SLAB, UGBlocks.POLISHED_DEPTHROCK);
@@ -154,6 +155,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		slab(UGBlocks.TREMBLECRUST_BRICK_SLAB, UGBlocks.TREMBLECRUST_BRICKS);
 		slab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES);
 		slab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES);
+		slab(UGBlocks.ANCIENT_ROOT_SLAB, UGBlocks.ANCIENT_ROOT_PLANKS);
 
 		wall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK);
 		wall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK);
@@ -166,18 +168,22 @@ public class UGBlockStates extends UGBlockstateProvider {
 		fence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS);
 		fence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS);
 		fence(UGBlocks.GRONGLE_FENCE, UGBlocks.GRONGLE_PLANKS);
+		fence(UGBlocks.ANCIENT_ROOT_FENCE, UGBlocks.ANCIENT_ROOT_PLANKS);
 
 		fenceGate(UGBlocks.SMOGSTEM_FENCE_GATE, UGBlocks.SMOGSTEM_PLANKS);
 		fenceGate(UGBlocks.WIGGLEWOOD_FENCE_GATE, UGBlocks.WIGGLEWOOD_PLANKS);
 		fenceGate(UGBlocks.GRONGLE_FENCE_GATE, UGBlocks.GRONGLE_PLANKS);
+		fenceGate(UGBlocks.ANCIENT_ROOT_FENCE_GATE, UGBlocks.ANCIENT_ROOT_PLANKS);
 
 		door(UGBlocks.SMOGSTEM_DOOR, "smogstem");
 		door(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood");
 		door(UGBlocks.GRONGLE_DOOR, "grongle");
+		door(UGBlocks.ANCIENT_ROOT_DOOR, "ancient_root");
 
 		trapdoor(UGBlocks.SMOGSTEM_TRAPDOOR, "smogstem");
 		trapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR, "wigglewood");
 		trapdoor(UGBlocks.GRONGLE_TRAPDOOR, "grongle");
+		trapdoor(UGBlocks.ANCIENT_ROOT_TRAPDOOR, "ancient_root");
 
 		button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
 		button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
@@ -185,6 +191,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
 		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
 		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
+		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
 
 		pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK);
 		pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE);
@@ -192,14 +199,17 @@ public class UGBlockStates extends UGBlockstateProvider {
 		pressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS);
 		pressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS);
 		pressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS);
+		pressurePlate(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE, UGBlocks.ANCIENT_ROOT_PLANKS);
 
 		sign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_WALL_SIGN, "smogstem_planks");
 		sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN, "wigglewood_planks");
 		sign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_WALL_SIGN, "grongle_planks");
+		sign(UGBlocks.ANCIENT_ROOT_SIGN, UGBlocks.ANCIENT_ROOT_WALL_SIGN, "ancient_root_planks");
 
 		hangingSign(UGBlocks.SMOGSTEM_HANGING_SIGN, UGBlocks.SMOGSTEM_WALL_HANGING_SIGN, "stripped_smogstem_log_side");
 		hangingSign(UGBlocks.WIGGLEWOOD_HANGING_SIGN, UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN, "stripped_wigglewood_log_side");
 		hangingSign(UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.GRONGLE_WALL_HANGING_SIGN, "stripped_grongle_log_side");
+		hangingSign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, "ancient_root");
 
 		ModelFile ashen_deepturf = models().cubeBottomTop(name(UGBlocks.ASHEN_DEEPTURF_BLOCK), texture("ashen_deepturf_block_side"), texture("deepsoil"), texture("ashen_deepturf_block_top"));
 		simpleBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), ConfiguredModel.builder()

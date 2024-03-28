@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "undergarden:block/ancient_root_slab"
+    },
+    "type=double": {
+      "model": "undergarden:block/ancient_root_planks"
+    },
+    "type=top": {
+      "model": "undergarden:block/ancient_root_slab_top"
+    }
+  }
+}

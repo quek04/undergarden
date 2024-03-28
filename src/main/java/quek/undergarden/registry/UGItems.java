@@ -105,6 +105,8 @@ public class UGItems {
 	public static final DeferredItem<Item> WIGGLEWOOD_CHEST_BOAT = ITEMS.register("wigglewood_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.WIGGLEWOOD, new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> GRONGLE_BOAT = ITEMS.register("grongle_boat", () -> new UGBoatItem(false, UGBoat.Type.GRONGLE, new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> GRONGLE_CHEST_BOAT = ITEMS.register("grongle_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.GRONGLE, new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> ANCIENT_ROOT_BOAT = ITEMS.register("ancient_root_boat", () -> new UGBoatItem(false, UGBoat.Type.ANCIENT_ROOT, new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> ANCIENT_ROOT_CHEST_BOAT = ITEMS.register("ancient_root_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.ANCIENT_ROOT, new Item.Properties().stacksTo(1)));
 
 	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new UGBucketItem(UGFluids.VIRULENT_MIX_SOURCE, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 

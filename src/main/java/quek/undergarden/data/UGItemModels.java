@@ -270,6 +270,13 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
 		block(UGBlocks.ANCIENT_ROOT);
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
+		block(UGBlocks.ANCIENT_ROOT_STAIRS);
+		block(UGBlocks.ANCIENT_ROOT_SLAB);
+		itemFence(UGBlocks.ANCIENT_ROOT_FENCE, "ancient_root_planks");
+		block(UGBlocks.ANCIENT_ROOT_FENCE_GATE);
+		block(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE);
+		normalItem(UGItems.ANCIENT_ROOT_BOAT);
+		normalItem(UGItems.ANCIENT_ROOT_CHEST_BOAT);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
@@ -292,10 +299,12 @@ public class UGItemModels extends UGItemModelProvider {
 		sign(UGBlocks.SMOGSTEM_SIGN);
 		sign(UGBlocks.WIGGLEWOOD_SIGN);
 		sign(UGBlocks.GRONGLE_SIGN);
+		sign(UGBlocks.ANCIENT_ROOT_SIGN);
 
 		sign(UGBlocks.SMOGSTEM_HANGING_SIGN);
 		sign(UGBlocks.WIGGLEWOOD_HANGING_SIGN);
 		sign(UGBlocks.GRONGLE_HANGING_SIGN);
+		sign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
 
 		button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
 		button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
@@ -303,14 +312,17 @@ public class UGItemModels extends UGItemModelProvider {
 		button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
 		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
 		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
+		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
 
 		blockFlatWithItemTexture(UGBlocks.SMOGSTEM_DOOR, "smogstem_door");
 		blockFlatWithItemTexture(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood_door");
 		blockFlatWithItemTexture(UGBlocks.GRONGLE_DOOR, "grongle_door");
+		blockFlatWithItemTexture(UGBlocks.ANCIENT_ROOT_DOOR, "ancient_root_door");
 
 		trapdoor(UGBlocks.SMOGSTEM_TRAPDOOR);
 		trapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR);
 		trapdoor(UGBlocks.GRONGLE_TRAPDOOR);
+		trapdoor(UGBlocks.ANCIENT_ROOT_TRAPDOOR);
 
 		blockFlatWithBlockTexture(UGBlocks.TALL_DEEPTURF, "tall_deepturf_top");
 		withExistingParent(BuiltInRegistries.BLOCK.getKey(UGBlocks.TALL_SHIMMERWEED.get()).getPath(), mcLoc("item/generated"))

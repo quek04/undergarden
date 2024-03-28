@@ -290,6 +290,18 @@ public class UGLootTables extends LootTableProvider {
 			ore(UGBlocks.DREADROCK_UTHERIUM_ORE, UGItems.UTHERIUM_CRYSTAL);
 			dropSelf(UGBlocks.ANCIENT_ROOT);
 			dropSelf(UGBlocks.ANCIENT_ROOT_PLANKS);
+			dropSelf(UGBlocks.ANCIENT_ROOT_STAIRS);
+			slab(UGBlocks.ANCIENT_ROOT_SLAB);
+			dropSelf(UGBlocks.ANCIENT_ROOT_FENCE);
+			dropSelf(UGBlocks.ANCIENT_ROOT_FENCE_GATE);
+			this.add(UGBlocks.ANCIENT_ROOT_DOOR.get(), (block) -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+			dropSelf(UGBlocks.ANCIENT_ROOT_TRAPDOOR);
+			dropSelf(UGBlocks.ANCIENT_ROOT_BUTTON);
+			dropSelf(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE);
+			dropSelf(UGBlocks.ANCIENT_ROOT_SIGN);
+			dropOther(UGBlocks.ANCIENT_ROOT_WALL_SIGN, UGBlocks.ANCIENT_ROOT_SIGN);
+			dropSelf(UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
+			dropOther(UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
 		}
 
 		@Override
