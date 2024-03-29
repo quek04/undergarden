@@ -51,6 +51,14 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 	}
 
 	@Override
+	public EntityDimensions getDimensions(Pose pose) {
+		return switch (this.getVariant()) {
+			case SHORT -> super.getDimensions(pose);
+			case TALL -> new EntityDimensions(0.7F, 3.5F, false);
+		};
+	}
+
+	@Override
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		tag.putString("Type", this.getVariant().getSerializedName());
@@ -66,6 +74,14 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.getEntityData().define(TYPE_ID, 0);
+	}
+
+	@Override
+	public void onSyncedDataUpdated(EntityDataAccessor<?> accessor) {
+		if (TYPE_ID.equals(accessor)) {
+			this.refreshDimensions();
+		}
+		super.onSyncedDataUpdated(accessor);
 	}
 
 	@Override
