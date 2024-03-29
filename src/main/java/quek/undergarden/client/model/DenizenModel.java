@@ -39,12 +39,8 @@ public class DenizenModel<T extends Denizen> extends FixedHumanoidModel<T> {
 	@Override
 	public void translateToHand(HumanoidArm side, PoseStack poseStack) {
 		float xOffset = side == HumanoidArm.RIGHT ? -1.25F : 1.25F;
-		float yOffset = 2.0F;
-		ModelPart modelpart = this.getArm(side);
-		modelpart.x += xOffset;
-		modelpart.y += yOffset;
-		modelpart.translateAndRotate(poseStack);
-		modelpart.x -= xOffset;
-		modelpart.y -= yOffset;
+		float yOffset = 3.0F;
+		this.getArm(side).translateAndRotate(poseStack);
+		poseStack.translate(xOffset / 16, yOffset / 16, 0.0F);
 	}
 }
