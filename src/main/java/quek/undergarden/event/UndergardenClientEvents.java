@@ -11,6 +11,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -21,6 +22,7 @@ import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -28,6 +30,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -48,11 +52,13 @@ import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
+import quek.undergarden.client.render.layer.UthericInfectionLayer;
 import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.registry.*;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UndergardenClientEvents {
 
@@ -80,6 +86,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::clientSetup);
 		bus.addListener(UndergardenClientEvents::registerEntityRenderers);
 		bus.addListener(UndergardenClientEvents::registerEntityLayerDefinitions);
+		bus.addListener(UndergardenClientEvents::addEntityLayers);
 		bus.addListener(UndergardenClientEvents::registerParticleFactories);
 		bus.addListener(UndergardenClientEvents::registerBlockColors);
 		bus.addListener(UndergardenClientEvents::registerItemColors);
@@ -181,6 +188,24 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
+	}
+
+	private static void addEntityLayers(EntityRenderersEvent.AddLayers event) {
+		for (EntityType<?> entity : event.getEntityTypes()) {
+			var renderer = event.getRenderer(entity);
+			if (renderer instanceof LivingEntityRenderer<?,?> livingEntityRenderer) {
+				addLayer(livingEntityRenderer);
+			}
+		}
+
+		event.getSkins().forEach(renderer -> {
+			LivingEntityRenderer<Player, EntityModel<Player>> skin = event.getSkin(renderer);
+			addLayer(Objects.requireNonNull(skin));
+		});
+	}
+
+	private static <T extends LivingEntity, M extends EntityModel<T>> void addLayer(LivingEntityRenderer<T, M> renderer) {
+		renderer.addLayer(new UthericInfectionLayer<>(renderer));
 	}
 
 	private static void registerParticleFactories(RegisterParticleProvidersEvent event) {
