@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-27T23:56:07.0174055	Loot Tables
+// 1.20.4	2024-03-30T00:13:21.3176416	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_tables/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_tables/blocks/ancient_root_button.json
@@ -218,7 +218,7 @@ e18a1662c0587515a5f7ca3bcef69cdd871fc29d data/undergarden/loot_tables/blocks/wig
 de3654c36b0de167199d4298e3fa561b070be348 data/undergarden/loot_tables/blocks/wigglewood_wood.json
 d2b50f3bc2c7522dc3e46f0902c71324e43b5a80 data/undergarden/loot_tables/chests/catacombs.json
 db6385448bb2bd7d8c71d07699ad3e07910074f7 data/undergarden/loot_tables/entities/brute.json
-54fe18947f9d1ceba4f50b64abf22b0852123c5a data/undergarden/loot_tables/entities/denizen.json
+9ed4b981b0241984429746d27ca8e7c02bd2b42f data/undergarden/loot_tables/entities/denizen.json
 39fbdb50f1f0b85ffd82fa4a8c5d31bc12c24372 data/undergarden/loot_tables/entities/dweller.json
 d8a35c3794d4473e308b5036d29543631efd520e data/undergarden/loot_tables/entities/forgotten.json
 93fdb346d38cad8b2fea41f5fb815163ef8ce80f data/undergarden/loot_tables/entities/forgotten_guardian.json

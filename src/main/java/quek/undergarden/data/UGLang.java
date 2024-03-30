@@ -345,6 +345,8 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.ANCIENT_CHESTPLATE, "Ancient Chestplate");
 		addItem(UGItems.ANCIENT_LEGGINGS, "Ancient Leggings");
 
+		addItem(UGItems.DENIZEN_MASK, "Mysterious Mask");
+
 		addItem(UGItems.DROOPFRUIT, "Droopfruit");
 		addItem(UGItems.UNDERBEANS, "Underbeans");
 		addItem(UGItems.ROASTED_UNDERBEANS, "Roasted Underbeans");

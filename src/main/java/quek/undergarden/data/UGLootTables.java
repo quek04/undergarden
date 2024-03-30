@@ -499,7 +499,14 @@ public class UGLootTables extends LootTableProvider {
 
 			this.add(UGEntityTypes.FORGOTTEN.get(), LootTable.lootTable());
 
-			this.add(UGEntityTypes.DENIZEN.get(), LootTable.lootTable());
+			this.add(UGEntityTypes.DENIZEN.get(), LootTable.lootTable()
+					.withPool(LootPool.lootPool()
+							.setRolls(ConstantValue.exactly(1.0F))
+							.add(LootItem.lootTableItem(UGItems.DENIZEN_MASK.get()))
+							.when(LootItemKilledByPlayerCondition.killedByPlayer())
+							.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.5F, 0.01F))
+				)
+			);
 
 			this.add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.lootTable()
 					.withPool(LootPool.lootPool()

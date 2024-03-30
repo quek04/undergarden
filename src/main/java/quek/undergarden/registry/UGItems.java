@@ -9,10 +9,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoat;
-import quek.undergarden.item.BlisterbombItem;
-import quek.undergarden.item.CatalystItem;
-import quek.undergarden.item.DitchbulbPasteItem;
-import quek.undergarden.item.ForgottenSmithingTemplateItem;
+import quek.undergarden.item.*;
 import quek.undergarden.item.armor.AncientArmorItem;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
@@ -131,6 +128,8 @@ public class UGItems {
 	public static final DeferredItem<Item> ANCIENT_HELMET = ITEMS.register("ancient_helmet", () -> new AncientArmorItem(ArmorItem.Type.HELMET));
 	public static final DeferredItem<Item> ANCIENT_CHESTPLATE = ITEMS.register("ancient_chestplate", () -> new AncientArmorItem(ArmorItem.Type.CHESTPLATE));
 	public static final DeferredItem<Item> ANCIENT_LEGGINGS = ITEMS.register("ancient_leggings", () -> new AncientArmorItem(ArmorItem.Type.LEGGINGS));
+
+	public static final DeferredItem<Item> DENIZEN_MASK = ITEMS.register("denizen_mask", () -> new DenizenMaskItem(new Item.Properties().stacksTo(1)));
 
 	//foods/plants
 	public static final DeferredItem<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new ItemNameBlockItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));

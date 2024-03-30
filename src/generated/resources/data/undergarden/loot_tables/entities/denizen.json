@@ -1,4 +1,26 @@
 {
   "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        },
+        {
+          "chance": 0.5,
+          "condition": "minecraft:random_chance_with_looting",
+          "looting_multiplier": 0.01
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "undergarden:denizen_mask"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
   "random_sequence": "undergarden:entities/denizen"
 }

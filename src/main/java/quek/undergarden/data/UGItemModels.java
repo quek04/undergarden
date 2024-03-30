@@ -277,6 +277,7 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE);
 		normalItem(UGItems.ANCIENT_ROOT_BOAT);
 		normalItem(UGItems.ANCIENT_ROOT_CHEST_BOAT);
+		normalItem(UGItems.DENIZEN_MASK);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
