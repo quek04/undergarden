@@ -453,7 +453,7 @@ public class UGBiomes {
 				.downfall(0.0F)
 				.temperature(0.8F)
 				.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 0, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-						.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+						.ambientParticle(new AmbientParticleSettings(ParticleTypes.MYCELIUM, 0.025F))
 						.build())
 				.build());
 
@@ -467,7 +467,7 @@ public class UGBiomes {
 			.downfall(0.0F)
 			.temperature(0.8F)
 			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 3276800, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+				.ambientParticle(new AmbientParticleSettings(ParticleTypes.MYCELIUM, 0.025F))
 				.build())
 			.build());
 	}

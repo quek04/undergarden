@@ -26,7 +26,7 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:white_ash"
+        "type": "minecraft:mycelium"
       },
       "probability": 0.025
     },
