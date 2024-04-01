@@ -269,6 +269,7 @@ public class UGBlocks {
 
 	//ancient root
 	public static final DeferredBlock<Block> ANCIENT_ROOT = register("ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+	public static final DeferredBlock<Block> DENIZEN_TOTEM = register("denizen_totem", () -> new DenizenTotemBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).strength(4.0F).lightLevel((state) -> state.getValue(DenizenTotemBlock.ACTIVE) ? 15 : 0)));
 	public static final DeferredBlock<Block> ANCIENT_ROOT_PLANKS = register("ancient_root_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
 	public static final DeferredBlock<StairBlock> ANCIENT_ROOT_STAIRS = register("ancient_root_stairs", () -> new StairBlock(() -> ANCIENT_ROOT_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> ANCIENT_ROOT_SLAB = register("ancient_root_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT_PLANKS.get())));

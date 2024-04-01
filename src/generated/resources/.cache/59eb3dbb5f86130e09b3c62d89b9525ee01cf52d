@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-30T00:13:21.3176416	Loot Tables
+// 1.20.4	2024-03-31T13:25:34.7312108	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_tables/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_tables/blocks/ancient_root_button.json
@@ -41,6 +41,7 @@ e9ef36466cffa68e0db1a29b639c37b8f88e6ded data/undergarden/loot_tables/blocks/dee
 31998c301e9c95be74c336749385746b8d0d180c data/undergarden/loot_tables/blocks/deepsoil_farmland.json
 209960585514ac5b558931a103425e9386e6d21a data/undergarden/loot_tables/blocks/deepturf.json
 ef76d279d632f5bd5b85bcbf0ea8d532ef2ce8fd data/undergarden/loot_tables/blocks/deepturf_block.json
+f47eb9b77d3273037b2472af51169a4d3b2e47b4 data/undergarden/loot_tables/blocks/denizen_totem.json
 3cbc81e74c7d97e0b8862980b0e26de962e1b8fc data/undergarden/loot_tables/blocks/depthrock.json
 44b71e886b4ce3fe8502ac9c7ffaab29edb2e86e data/undergarden/loot_tables/blocks/depthrock_bed.json
 7be5b174943acf5541a9ce39803581f07adf1303 data/undergarden/loot_tables/blocks/depthrock_bricks.json

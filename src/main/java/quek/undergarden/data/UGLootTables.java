@@ -302,6 +302,7 @@ public class UGLootTables extends LootTableProvider {
 			dropOther(UGBlocks.ANCIENT_ROOT_WALL_SIGN, UGBlocks.ANCIENT_ROOT_SIGN);
 			dropSelf(UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
 			dropOther(UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
+			dropSelf(UGBlocks.DENIZEN_TOTEM);
 		}
 
 		@Override

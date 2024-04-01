@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-27T21:45:50.3557955	Undergarden Block States
+// 1.20.4	2024-03-31T13:38:38.0507149	Undergarden Block States
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
 f80efe8d72f896f3fb26b4c28f312ad9ec9ae967 assets/undergarden/blockstates/ancient_root.json
 59e8649180610b11f7a560c77883ec13cef7bda3 assets/undergarden/blockstates/ancient_root_button.json
@@ -38,6 +38,7 @@ b581f4fc6baf5a8073e80802b33a72059778886c assets/undergarden/blockstates/cracked_
 abb3807c8b4946e646f3a667e179f450427a462c assets/undergarden/blockstates/deepsoil.json
 2402f3356c579f40ddb379bc8a8fc4486ec29ef5 assets/undergarden/blockstates/deepturf.json
 39421e59cabcf8a5f3ae4e1c34d968f7b426b662 assets/undergarden/blockstates/deepturf_block.json
+2c49c5cfa3f27d2b78a08a3f61b2721e1edd3fd9 assets/undergarden/blockstates/denizen_totem.json
 f65fcd9c9dbb3e2593472e992fd5f92a4611813f assets/undergarden/blockstates/depthrock.json
 c15e589c2a5989e94ca35c2545e64ba730036b4a assets/undergarden/blockstates/depthrock_bricks.json
 c3b50875b5951afa52f6d0f8a80a441ccd1ec399 assets/undergarden/blockstates/depthrock_brick_slab.json
@@ -247,6 +248,8 @@ b7d5706ad55eb4223b0a8517d290b5dc2d869b6d assets/undergarden/models/block/cracked
 e889eb10f285000866235ad1b5a180276dae9b04 assets/undergarden/models/block/deepsoil.json
 05f8790d3f860bbe21a649946a5c00bdcfbe6f9a assets/undergarden/models/block/deepturf.json
 a55640d123347fb5e7506b1116d42fefaaa57dab assets/undergarden/models/block/deepturf_block_snowy.json
+16ed9c303cabfea1d94b9f9602756bfeb7acd0b7 assets/undergarden/models/block/denizen_totem.json
+03b30d3107a3bff0f22f2740e5093f9c5f8f0516 assets/undergarden/models/block/denizen_totem_active.json
 0e9eb981000db03d2532d56bbfe9c241265b854b assets/undergarden/models/block/depthrock.json
 3976efb33df9a84f53b12dbe505d0a7cee2a34c9 assets/undergarden/models/block/depthrock_bricks.json
 ca21e12f38d8b2afce5aacf6d4aee7f7f330c216 assets/undergarden/models/block/depthrock_brick_slab.json

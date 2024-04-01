@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "undergarden:block/ancient_root",
+    "side": "undergarden:block/denizen_totem_active"
+  }
+}

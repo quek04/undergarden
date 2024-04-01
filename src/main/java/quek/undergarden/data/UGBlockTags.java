@@ -291,6 +291,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 				UGBlocks.GRONGLE_SIGN.get(),
 				UGBlocks.GRONGLE_WALL_SIGN.get(),
 				UGBlocks.ANCIENT_ROOT.get(),
+				UGBlocks.DENIZEN_TOTEM.get(),
 				UGBlocks.ANCIENT_ROOT_PLANKS.get(),
 				UGBlocks.ANCIENT_ROOT_STAIRS.get(),
 				UGBlocks.ANCIENT_ROOT_SLAB.get(),

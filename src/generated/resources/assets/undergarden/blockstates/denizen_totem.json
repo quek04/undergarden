@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "undergarden:block/denizen_totem"
+    },
+    "active=true": {
+      "model": "undergarden:block/denizen_totem_active"
+    }
+  }
+}

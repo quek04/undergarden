@@ -11,6 +11,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DeepturfBlock;
+import quek.undergarden.block.DenizenTotemBlock;
 import quek.undergarden.block.HangingGrongleLeavesBlock;
 import quek.undergarden.data.provider.UGBlockstateProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -128,6 +129,12 @@ public class UGBlockStates extends UGBlockstateProvider {
 		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
 		block(UGBlocks.ANCIENT_ROOT);
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
+		getVariantBuilder(UGBlocks.DENIZEN_TOTEM.get())
+			.partialState().with(DenizenTotemBlock.ACTIVE, true)
+			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM) + "_active", new ResourceLocation(Undergarden.MODID, "block/denizen_totem_active"), new ResourceLocation(Undergarden.MODID, "block/ancient_root"))).addModel()
+			.partialState().with(DenizenTotemBlock.ACTIVE, false)
+			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM), new ResourceLocation(Undergarden.MODID, "block/denizen_totem_inactive"), new ResourceLocation(Undergarden.MODID, "block/ancient_root"))).addModel()
+		;
 
 		stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
 		stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);
