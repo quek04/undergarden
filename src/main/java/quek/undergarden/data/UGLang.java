@@ -563,6 +563,9 @@ public class UGLang extends UGLangProvider {
 		addAdvTitle("contract_utheric_infection", "The Plague Upon the Land");
 		addAdvDesc("contract_utheric_infection", "Contract the Utheric Infection. Don't let it get out of control!");
 
+		addAdvTitle("cure_utheric_infection", "A Much Needed Antidote");
+		addAdvDesc("cure_utheric_infection", "Find a way to hold back the Utheric Infection.");
+
 		//addAdvTitle("otherside_root", "The Otherside");
 		//addAdvDesc("otherside_root", "Enter the realm of madness.");
 

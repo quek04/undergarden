@@ -522,6 +522,21 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			)
 			.addCriterion("has_contracted_utheric_infection", UthericInfectionTrigger.TriggerInstance.isInfected())
 			.save(consumer, "undergarden:undergarden/contract_utheric_infection");
+
+		AdvancementHolder cure_utheric_infection = Advancement.Builder.advancement()
+			.parent(contract_utheric_infection)
+			.display(
+				UGBlocks.DENIZEN_TOTEM.get(),
+				Component.translatable("advancement.undergarden.cure_utheric_infection.title"),
+				Component.translatable("advancement.undergarden.cure_utheric_infection.desc"),
+				null,
+				AdvancementType.TASK,
+				true,
+				true,
+				false
+			)
+			.addCriterion("has_purity_effect", EffectsChangedTrigger.TriggerInstance.hasEffects(MobEffectsPredicate.Builder.effects().and(UGEffects.PURITY.get())))
+			.save(consumer, "undergarden:undergarden/cure_utheric_infection");
 	}
 
 	protected static Advancement.Builder addBiomes(Advancement.Builder builder, List<ResourceKey<Biome>> biomes) {
