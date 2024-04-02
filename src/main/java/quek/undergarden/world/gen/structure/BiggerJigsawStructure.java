@@ -62,12 +62,12 @@ public class BiggerJigsawStructure extends Structure {
 		random.setLargeFeatureSeed(context.seed(), context.chunkPos().x, context.chunkPos().z);
 		int x = context.chunkPos().getMinBlockX() + random.nextInt(16);
 		int z = context.chunkPos().getMinBlockZ() + random.nextInt(16);
-		int seaLevel = context.chunkGenerator().getSeaLevel();
+		int minY = context.chunkGenerator().getMinY();
 		int y = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
 		NoiseColumn column = context.chunkGenerator().getBaseColumn(x, z, context.heightAccessor(), context.randomState());
 		BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos(x, y, z);
 
-		while (y > seaLevel) {
+		while (y > minY) {
 			BlockState state = column.getBlock(y);
 			--y;
 			BlockState state1 = column.getBlock(y);
@@ -76,7 +76,7 @@ public class BiggerJigsawStructure extends Structure {
 			}
 		}
 
-		if (y <= seaLevel) {
+		if (y <= minY) {
 			return Optional.empty();
 		} else {
 			BlockPos pos = new BlockPos(x, y, z);

@@ -1,8 +1,9 @@
-// 1.20.4	2024-03-22T13:14:48.4355128	Undergarden Biome Tags
+// 1.20.4	2024-04-01T23:02:59.5491602	Undergarden Biome Tags
 bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_patrol_spawns.json
 bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_wandering_trader_spawns.json
 bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_zombie_sieges.json
 cdd58a6b569185a3932aa09d9470ae6b5788f0ca data/undergarden/tags/worldgen/biome/has_structure/catacombs.json
+edd81508dcb761ee42f96d6b2fe25ece77f13b43 data/undergarden/tags/worldgen/biome/has_structure/denizen_camp.json
 1b1ba425899be0ef167ba43f730368e963bbec03 data/undergarden/tags/worldgen/biome/has_structure/forgotten_vestige.json
 d38daf7325243305272912f6c8830e537c342242 data/undergarden/tags/worldgen/biome/is_undergarden.json
 90ab7f7f630009ec6ca18b5be367d933cdceff69 data/undergarden/tags/worldgen/biome/ticks_utheric_infection.json

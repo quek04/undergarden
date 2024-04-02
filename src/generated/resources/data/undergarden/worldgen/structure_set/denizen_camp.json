@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 27630047,
+    "separation": 12,
+    "spacing": 24
+  },
+  "structures": [
+    {
+      "structure": "undergarden:denizen_camp",
+      "weight": 1
+    }
+  ]
+}

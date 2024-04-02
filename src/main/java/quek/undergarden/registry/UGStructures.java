@@ -41,6 +41,7 @@ public class UGStructures {
 
 	public static final DeferredHolder<StructureType<?>, StructureType<BiggerJigsawStructure>> BIGGER_JIGSAW = STRUCTURES.register("bigger_jigsaw", () -> () -> BiggerJigsawStructure.CODEC);
 
+	//catacombs
 	public static final ResourceKey<Structure> CATACOMBS = ResourceKey.create(Registries.STRUCTURE, new ResourceLocation(Undergarden.MODID, "catacombs"));
 	public static final ResourceKey<StructureSet> CATACOMBS_SET = ResourceKey.create(Registries.STRUCTURE_SET, new ResourceLocation(Undergarden.MODID, "catacombs"));
 
@@ -52,12 +53,22 @@ public class UGStructures {
 
 	public static final ResourceKey<StructureProcessorList> CATACOMBS_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, new ResourceLocation(Undergarden.MODID, "catacombs_degradation"));
 
+	//forgotten vestige
 	public static final ResourceKey<Structure> FORGOTTEN_VESTIGE = ResourceKey.create(Registries.STRUCTURE, new ResourceLocation(Undergarden.MODID, "forgotten_vestige"));
 	public static final ResourceKey<StructureSet> FORGOTTEN_VESTIGE_SET = ResourceKey.create(Registries.STRUCTURE_SET, new ResourceLocation(Undergarden.MODID, "forgotten_vestige"));
 
 	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "forgotten_vestige"));
 
 	public static final ResourceKey<StructureProcessorList> FORGOTTEN_VESTIGE_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, new ResourceLocation(Undergarden.MODID, "forgotten_vestige_degradation"));
+
+	//denizen camps
+	public static final ResourceKey<Structure> DENIZEN_CAMP = ResourceKey.create(Registries.STRUCTURE, new ResourceLocation(Undergarden.MODID, "denizen_camp"));
+	public static final ResourceKey<StructureSet> DENIZEN_CAMP_SET = ResourceKey.create(Registries.STRUCTURE_SET, new ResourceLocation(Undergarden.MODID, "denizen_camp"));
+
+	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_TOTEM_CIRCLE_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "denizen_camp/totem_circle_pool"));
+	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_TOTEM_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "denizen_camp/totem_pool"));
+	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_ROAD_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "denizen_camp/road_pool"));
+	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_HANGOUT_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout_pool"));
 
 
 	public static void bootstrapStructures(BootstapContext<Structure> context) {
@@ -66,12 +77,14 @@ public class UGStructures {
 
 		context.register(CATACOMBS, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS), Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1)))), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(CATACOMBS_START), Optional.empty(), 25, ConstantHeight.of(VerticalAnchor.aboveBottom(112)), Optional.empty(), 116, List.of()));
 		context.register(FORGOTTEN_VESTIGE, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE), Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(FORGOTTEN_VESTIGE_POOL), Optional.empty(), 5, UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.TOP), Optional.empty(), 10, List.of()));
+		context.register(DENIZEN_CAMP, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_DENIZEN_CAMP), Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 1, 1)))), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(DENIZEN_CAMP_TOTEM_CIRCLE_POOL), Optional.empty(), 5, UniformHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)), Optional.empty(), 25, List.of()));
 	}
 
 	public static void bootstrapSets(BootstapContext<StructureSet> context) {
 		HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
 		context.register(CATACOMBS_SET, new StructureSet(structures.getOrThrow(CATACOMBS), new RandomSpreadStructurePlacement(24, 12, RandomSpreadType.LINEAR, 276320045)));
 		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 6, 3, RandomSpreadType.LINEAR)));
+		context.register(DENIZEN_CAMP_SET, new StructureSet(structures.getOrThrow(DENIZEN_CAMP), new RandomSpreadStructurePlacement(24, 12, RandomSpreadType.LINEAR, 27630047)));
 	}
 
 	public static void bootstrapPools(BootstapContext<StructureTemplatePool> context) {
@@ -137,6 +150,29 @@ public class UGStructures {
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_4").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_5").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_6").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1)
+		), StructureTemplatePool.Projection.RIGID));
+
+		context.register(DENIZEN_CAMP_TOTEM_CIRCLE_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/totem_circle/circle_1").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/totem_circle/circle_2").toString()), 1)
+		), StructureTemplatePool.Projection.RIGID));
+		context.register(DENIZEN_CAMP_TOTEM_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/totem/totem_1").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/totem/totem_2").toString()), 1)
+		), StructureTemplatePool.Projection.RIGID));
+		context.register(DENIZEN_CAMP_ROAD_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_straight_1").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_straight_2").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_straight_3").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_straight_4").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_turn_1").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_turn_2").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_turn_3").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_turn_4").toString()), 1)
+		), StructureTemplatePool.Projection.RIGID));
+		context.register(DENIZEN_CAMP_HANGOUT_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout/campfire_1").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout/campfire_2").toString()), 1)
 		), StructureTemplatePool.Projection.RIGID));
 	}
 
