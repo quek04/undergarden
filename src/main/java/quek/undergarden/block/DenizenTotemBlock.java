@@ -1,24 +1,24 @@
 package quek.undergarden.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import quek.undergarden.registry.UGEffects;
-import quek.undergarden.registry.UGParticleTypes;
+import org.jetbrains.annotations.Nullable;
+import quek.undergarden.block.entity.DenizenTotemBlockEntity;
+import quek.undergarden.registry.UGBlockEntities;
 
-import java.util.List;
-
-public class DenizenTotemBlock extends Block {
+public class DenizenTotemBlock extends BaseEntityBlock implements EntityBlock {
+	public static final MapCodec<DenizenTotemBlock> CODEC = simpleCodec(DenizenTotemBlock::new);
 	public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 	public DenizenTotemBlock(Properties properties) {
 		super(properties);
@@ -26,11 +26,33 @@ public class DenizenTotemBlock extends Block {
 	}
 
 	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return CODEC;
+	}
+
+	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(ACTIVE);
 	}
 
+	@Nullable
 	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return UGBlockEntities.DENIZEN_TOTEM.get().create(pos, state);
+	}
+
+	@Nullable
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
+		return createTickerHelper(blockEntity, UGBlockEntities.DENIZEN_TOTEM.get(), DenizenTotemBlockEntity::tick);
+	}
+
+	@Override
+	public RenderShape getRenderShape(BlockState pState) {
+		return RenderShape.MODEL;
+	}
+
+	/*@Override
 	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
 		level.scheduleTick(pos, this, 20);
 	}
@@ -50,16 +72,5 @@ public class DenizenTotemBlock extends Block {
 		} else level.setBlockAndUpdate(pos, state.setValue(ACTIVE, false));
 
 		level.scheduleTick(pos, this, 20);
-	}
-
-	public static void drawParticlesTo(ServerLevel level, Vec3 totemPos, Entity highlight) {
-		int particles = (int) Math.min(12, Math.round(totemPos.distanceToSqr(highlight.position())));
-		for (int i = 0; i < particles; i++) {
-			double trailFactor = i / (particles - 1.0D);
-			double x = totemPos.x() + (highlight.position().x() - totemPos.x()) * trailFactor + level.getRandom().nextFloat() * 0.25D;
-			double y = totemPos.y() + (highlight.position().y() - totemPos.y()) * trailFactor + level.getRandom().nextFloat() * 0.25D;
-			double z = totemPos.z() + (highlight.position().z() - totemPos.z()) * trailFactor + level.getRandom().nextFloat() * 0.25D;
-			level.sendParticles(UGParticleTypes.ROGDORIUM_SPARKLE.get(), x, y, z, 1, 0, 0, 0, 0);
-		}
-	}
+	}*/
 }
