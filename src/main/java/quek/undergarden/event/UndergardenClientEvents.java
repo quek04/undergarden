@@ -337,7 +337,7 @@ public class UndergardenClientEvents {
 			if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && event.getCamera().getFluidInCamera() == FogType.NONE && event.getType() == FogType.NONE) {
 				if (player.level().getBiome(player.getOnPos()).is(UGBiomes.DEPTHS) || player.level().getBiome(player.getOnPos()).is(UGBiomes.INFECTED_DEPTHS)) {
 					event.setNearPlaneDistance(-30.0F);
-					event.setFarPlaneDistance(50.0F);
+					event.setFarPlaneDistance(100.0F);
 					event.setFogShape(FogShape.SPHERE);
 					event.setCanceled(true);
 				} else {

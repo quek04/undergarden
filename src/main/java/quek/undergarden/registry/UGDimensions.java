@@ -235,7 +235,7 @@ public class UGDimensions {
 						SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
 						SurfaceRules.sequence(
 							SurfaceRules.ifTrue(
-								SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 0.5D),
+								SurfaceRules.noiseCondition(noises.getOrThrow(Noises.POWDER_SNOW).key(), 0.45D, 0.58D),
 								SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
 							),
 							SurfaceRules.ifTrue(

@@ -75,9 +75,50 @@ public class UGStructures {
 		HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 		HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
-		context.register(CATACOMBS, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS), Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1)))), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(CATACOMBS_START), Optional.empty(), 25, ConstantHeight.of(VerticalAnchor.aboveBottom(112)), Optional.empty(), 116, List.of()));
-		context.register(FORGOTTEN_VESTIGE, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE), Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(FORGOTTEN_VESTIGE_POOL), Optional.empty(), 5, UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.TOP), Optional.empty(), 10, List.of()));
-		context.register(DENIZEN_CAMP, new BiggerJigsawStructure(new Structure.StructureSettings(biomes.getOrThrow(UGTags.Biomes.HAS_DENIZEN_CAMP), Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 1, 1)))), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN), pools.getOrThrow(DENIZEN_CAMP_TOTEM_CIRCLE_POOL), Optional.empty(), 5, UniformHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)), Optional.empty(), 25, List.of()));
+		context.register(CATACOMBS, new BiggerJigsawStructure(
+			new Structure.StructureSettings(
+				biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS),
+				Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1)))),
+				GenerationStep.Decoration.SURFACE_STRUCTURES,
+				TerrainAdjustment.BEARD_THIN
+			),
+			pools.getOrThrow(CATACOMBS_START),
+			Optional.empty(),
+			25,
+			ConstantHeight.of(VerticalAnchor.aboveBottom(112)),
+			Optional.empty(),
+			116,
+			List.of()
+		));
+		context.register(FORGOTTEN_VESTIGE, new BiggerJigsawStructure(
+			new Structure.StructureSettings(
+				biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE),
+				Map.of(),
+				GenerationStep.Decoration.SURFACE_STRUCTURES,
+				TerrainAdjustment.BEARD_THIN
+			),
+			pools.getOrThrow(FORGOTTEN_VESTIGE_POOL),
+			Optional.empty(),
+			5,
+			UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.TOP),
+			Optional.empty(),
+			10,
+			List.of()
+		));
+		context.register(DENIZEN_CAMP, new BiggerJigsawStructure(
+			new Structure.StructureSettings(
+				biomes.getOrThrow(UGTags.Biomes.HAS_DENIZEN_CAMP),
+				Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 1, 1)))),
+				GenerationStep.Decoration.SURFACE_STRUCTURES,
+				TerrainAdjustment.BEARD_THIN),
+			pools.getOrThrow(DENIZEN_CAMP_TOTEM_CIRCLE_POOL),
+			Optional.empty(),
+			5,
+			UniformHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)),
+			Optional.empty(),
+			25,
+			List.of()
+		));
 	}
 
 	public static void bootstrapSets(BootstapContext<StructureSet> context) {
@@ -96,9 +137,6 @@ public class UGStructures {
 				Pair.of(StructurePoolElement.single("minecraft:empty"), 2),
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest").toString()), 2),
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_forgotten").toString()), 1)
-				/*Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_nargoyle").toString()), 1),
-				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_rotling").toString()), 1),
-				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/chest_rotwalker").toString()), 1)*/
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(CATACOMBS_INTERIOR, new StructureTemplatePool(emptyPool, ImmutableList.of(
 				Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "catacombs/interior1").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
@@ -161,6 +199,8 @@ public class UGStructures {
 			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/totem/totem_2").toString()), 1)
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(DENIZEN_CAMP_ROAD_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/totem_circle/circle_1").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/totem_circle/circle_2").toString()), 1),
 			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_straight_1").toString()), 1),
 			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_straight_2").toString()), 1),
 			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/road/road_straight_3").toString()), 1),
@@ -172,7 +212,10 @@ public class UGStructures {
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(DENIZEN_CAMP_HANGOUT_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
 			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout/campfire_1").toString()), 1),
-			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout/campfire_2").toString()), 1)
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout/campfire_2").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout/campfire_3").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout/campfire_4").toString()), 1),
+			Pair.of(StructurePoolElement.single(new ResourceLocation(Undergarden.MODID, "denizen_camp/hangout/campfire_5").toString()), 1)
 		), StructureTemplatePool.Projection.RIGID));
 	}
 
