@@ -27,7 +27,7 @@ public class DenizenTotemBlockEntity extends BlockEntity {
 			level.setBlockAndUpdate(pos, state.setValue(DenizenTotemBlock.ACTIVE, true));
 			entityList.forEach(entity -> {
 				if (!entity.hasEffect(UGEffects.PURITY.get())) {
-					entity.addEffect(new MobEffectInstance(UGEffects.PURITY.get(), 200, 0));
+					entity.addEffect(new MobEffectInstance(UGEffects.PURITY.get(), 200, 0, true, true));
 					drawParticlesTo(level, pos.getCenter(), entity);
 				}
 

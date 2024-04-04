@@ -51,26 +51,4 @@ public class DenizenTotemBlock extends BaseEntityBlock implements EntityBlock {
 	public RenderShape getRenderShape(BlockState pState) {
 		return RenderShape.MODEL;
 	}
-
-	/*@Override
-	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
-		level.scheduleTick(pos, this, 20);
-	}
-
-	@Override
-	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		List<LivingEntity> entityList = level.getEntitiesOfClass(LivingEntity.class, new AABB(pos).inflate(5.0D));
-		if (!entityList.isEmpty()) {
-			level.setBlockAndUpdate(pos, state.setValue(ACTIVE, true));
-			entityList.forEach(entity -> {
-				if (!entity.hasEffect(UGEffects.PURITY.get())) {
-					entity.addEffect(new MobEffectInstance(UGEffects.PURITY.get(), 200, 0));
-					drawParticlesTo(level, pos.getCenter(), entity);
-				}
-
-			});
-		} else level.setBlockAndUpdate(pos, state.setValue(ACTIVE, false));
-
-		level.scheduleTick(pos, this, 20);
-	}*/
 }
