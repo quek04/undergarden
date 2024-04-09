@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_rogdorium_nugget": {
+    "has_rogdorium_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:rogdorium_nugget"
+              "undergarden:rogdorium_block"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "undergarden:rogdorium_nugget_to_ingot"
+        "recipe": "undergarden:rogdorium_block_to_crystal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_rogdorium_nugget"
+      "has_rogdorium_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "undergarden:rogdorium_nugget_to_ingot"
+      "undergarden:rogdorium_block_to_crystal"
     ]
   }
 }

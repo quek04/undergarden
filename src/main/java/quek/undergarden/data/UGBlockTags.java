@@ -49,20 +49,19 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		//undergarden forge
 		tag(UGTags.Blocks.ORES_CLOGGRUM).add(UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get());
 		tag(UGTags.Blocks.ORES_FROSTSTEEL).add(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get());
-		tag(UGTags.Blocks.ORES_ROGDORIUM).add(UGBlocks.DREADROCK_ROGDORIUM_ORE.get());
 		tag(UGTags.Blocks.ORES_UTHERIUM).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get());
 		tag(UGTags.Blocks.ORES_REGALIUM).add(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get());
+		tag(UGTags.Blocks.ORES_ROGDORIUM).add(UGBlocks.DREADROCK_ROGDORIUM_ORE.get());
 
 		tag(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM).add(UGBlocks.CLOGGRUM_BLOCK.get());
 		tag(UGTags.Blocks.STORAGE_BLOCKS_FROSTSTEEL).add(UGBlocks.FROSTSTEEL_BLOCK.get());
-		tag(UGTags.Blocks.STORAGE_BLOCKS_ROGDORIUM).add(UGBlocks.ROGDORIUM_BLOCK.get());
 		tag(UGTags.Blocks.STORAGE_BLOCKS_UTHERIUM).add(UGBlocks.UTHERIUM_BLOCK.get());
 		tag(UGTags.Blocks.STORAGE_BLOCKS_REGALIUM).add(UGBlocks.REGALIUM_BLOCK.get());
+		tag(UGTags.Blocks.STORAGE_BLOCKS_ROGDORIUM).add(UGBlocks.ROGDORIUM_BLOCK.get());
 		tag(UGTags.Blocks.STORAGE_BLOCKS_FORGOTTEN_METAL).add(UGBlocks.FORGOTTEN_BLOCK.get());
 
 		tag(UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM).add(UGBlocks.RAW_CLOGGRUM_BLOCK.get());
 		tag(UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL).add(UGBlocks.RAW_FROSTSTEEL_BLOCK.get());
-		tag(UGTags.Blocks.STORAGE_BLOCKS_RAW_ROGDORIUM).add(UGBlocks.RAW_ROGDORIUM_BLOCK.get());
 
 		tag(UGTags.Blocks.DEPTHROCK_GROUND).add(UGBlocks.DEPTHROCK.get());
 		tag(UGTags.Blocks.DEPTHROCK_ORES).add(UGBlocks.DEPTHROCK_COAL_ORE.get(), UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.DEPTHROCK_GOLD_ORE.get(), UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.DEPTHROCK_REGALIUM_ORE.get());
@@ -126,10 +125,10 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(BlockTags.MAINTAINS_FARMLAND).add(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
 
 		//forge
-		tag(Tags.Blocks.ORES).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_ROGDORIUM).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM);
-		tag(Tags.Blocks.ORE_RATES_SINGULAR).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_ROGDORIUM).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM);
+		tag(Tags.Blocks.ORES).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM).addTag(UGTags.Blocks.ORES_ROGDORIUM);
+		tag(Tags.Blocks.ORE_RATES_SINGULAR).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM).addTag(UGTags.Blocks.ORES_ROGDORIUM);
 		tag(Tags.Blocks.ORE_RATES_SPARSE).add(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get(), UGBlocks.DEPTHROCK_GOLD_ORE.get());
-		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_FROSTSTEEL).addTag(UGTags.Blocks.STORAGE_BLOCKS_ROGDORIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_UTHERIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_REGALIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_ROGDORIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_FORGOTTEN_METAL);
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_FROSTSTEEL).addTag(UGTags.Blocks.STORAGE_BLOCKS_UTHERIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_REGALIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_ROGDORIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL).addTag(UGTags.Blocks.STORAGE_BLOCKS_FORGOTTEN_METAL);
 		tag(Tags.Blocks.COBBLESTONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get(), UGBlocks.DREADROCK.get());
 		tag(Tags.Blocks.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get(), UGBlocks.ANCIENT_ROOT_FENCE_GATE.get());
 		tag(Tags.Blocks.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get(), UGBlocks.WIGGLEWOOD_FENCE.get(), UGBlocks.GRONGLE_FENCE.get(), UGBlocks.ANCIENT_ROOT_FENCE.get());
@@ -211,12 +210,11 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 				UGBlocks.DREADROCK_ROGDORIUM_ORE.get(),
 				UGBlocks.RAW_CLOGGRUM_BLOCK.get(),
 				UGBlocks.RAW_FROSTSTEEL_BLOCK.get(),
-				UGBlocks.RAW_ROGDORIUM_BLOCK.get(),
 				UGBlocks.CLOGGRUM_BLOCK.get(),
 				UGBlocks.FROSTSTEEL_BLOCK.get(),
-				UGBlocks.RAW_ROGDORIUM_BLOCK.get(),
 				UGBlocks.UTHERIUM_BLOCK.get(),
 				UGBlocks.REGALIUM_BLOCK.get(),
+				UGBlocks.ROGDORIUM_BLOCK.get(),
 				UGBlocks.FORGOTTEN_BLOCK.get(),
 				UGBlocks.SMOG_VENT.get(),
 				UGBlocks.CLOGGRUM_BARS.get(),

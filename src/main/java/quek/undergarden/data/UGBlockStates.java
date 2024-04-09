@@ -124,7 +124,6 @@ public class UGBlockStates extends UGBlockstateProvider {
 		);
 		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
 		block(UGBlocks.ROGDORIUM_BLOCK);
-		block(UGBlocks.RAW_ROGDORIUM_BLOCK);
 		block(UGBlocks.UTHERIUM_GROWTH);
 		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
 		block(UGBlocks.ANCIENT_ROOT);

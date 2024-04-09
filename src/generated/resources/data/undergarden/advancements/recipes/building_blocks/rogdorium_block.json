@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_rogdorium_ingot": {
+    "has_rogdorium_crystal": {
       "conditions": {
         "items": [
           {
             "items": [
-              "undergarden:rogdorium_ingot"
+              "undergarden:rogdorium_crystal"
             ]
           }
         ]
@@ -23,7 +23,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_rogdorium_ingot"
+      "has_rogdorium_crystal"
     ]
   ],
   "rewards": {

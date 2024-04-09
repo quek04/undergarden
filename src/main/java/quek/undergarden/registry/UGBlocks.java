@@ -107,23 +107,22 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> DEPTHROCK_CLOGGRUM_ORE = register("depthrock_cloggrum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_CLOGGRUM_ORE = register("shiverstone_cloggrum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_FROSTSTEEL_ORE = register("shiverstone_froststeel_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
-	public static final DeferredBlock<Block> DREADROCK_ROGDORIUM_ORE = register("dreadrock_rogdorium_ore", () -> new DreadrockBlock(BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> DEPTHROCK_UTHERIUM_ORE = register("depthrock_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_UTHERIUM_ORE = register("shiverstone_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> TREMBLECRUST_UTHERIUM_ORE = register("tremblecrust_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()).strength(7.0F, 24.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> DREADROCK_UTHERIUM_ORE = register("dreadrock_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> DEPTHROCK_REGALIUM_ORE = register("depthrock_regalium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_REGALIUM_ORE = register("shiverstone_regalium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DREADROCK_ROGDORIUM_ORE = register("dreadrock_rogdorium_ore", () -> new DreadrockOreBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 
 	//storage blocks
 	public static final DeferredBlock<Block> RAW_CLOGGRUM_BLOCK = register("raw_cloggrum_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
 	public static final DeferredBlock<Block> RAW_FROSTSTEEL_BLOCK = register("raw_froststeel_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_STEM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
-	public static final DeferredBlock<Block> RAW_ROGDORIUM_BLOCK = register("raw_rogdorium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
 	public static final DeferredBlock<Block> CLOGGRUM_BLOCK = register("cloggrum_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 	public static final DeferredBlock<Block> FROSTSTEEL_BLOCK = register("froststeel_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_STEM).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> ROGDORIUM_BLOCK = register("rogdorium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 	public static final DeferredBlock<Block> UTHERIUM_BLOCK = register("utherium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 	public static final DeferredBlock<Block> REGALIUM_BLOCK = register("regalium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
+	public static final DeferredBlock<Block> ROGDORIUM_BLOCK = register("rogdorium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 	public static final DeferredBlock<Block> FORGOTTEN_BLOCK = register("forgotten_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).requiresCorrectToolForDrops().strength(50.0F, 1200.0F).sound(SoundType.NETHERITE_BLOCK)));
 
 	//normal blocks
@@ -323,7 +322,7 @@ public class UGBlocks {
 				return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN);
 			} else if (Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DEPTHROCK_REGALIUM_ORE.get() || Objects.requireNonNull(block.get()) == SHIVERSTONE_REGALIUM_ORE.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(Rarity.UNCOMMON));
-			} else if (Objects.requireNonNull(block.get()) == ROGDORIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == RAW_ROGDORIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DREADROCK_ROGDORIUM_ORE.get()) {
+			} else if (Objects.requireNonNull(block.get()) == ROGDORIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DREADROCK_ROGDORIUM_ORE.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.ROGDORIUM));
 			} else if (Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.FORGOTTEN));

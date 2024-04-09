@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "undergarden:rogdorium_ingot"
+      "item": "undergarden:rogdorium_block"
     }
   ],
   "result": {
     "count": 9,
-    "item": "undergarden:rogdorium_nugget"
+    "item": "undergarden:rogdorium_crystal"
   }
 }

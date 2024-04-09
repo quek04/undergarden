@@ -42,14 +42,12 @@ public class UGItems {
 	public static final DeferredItem<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
 
-	public static final DeferredItem<Item> RAW_ROGDORIUM = ITEMS.register("raw_rogdorium", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
-	public static final DeferredItem<Item> ROGDORIUM_INGOT = ITEMS.register("rogdorium_ingot", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
-	public static final DeferredItem<Item> ROGDORIUM_NUGGET = ITEMS.register("rogdorium_nugget", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
-
 	public static final DeferredItem<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties()));
 
 	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+
+	public static final DeferredItem<Item> ROGDORIUM_CRYSTAL = ITEMS.register("rogdorium_crystal", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
 
 	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
 	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
