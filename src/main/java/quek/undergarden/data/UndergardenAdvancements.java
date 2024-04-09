@@ -210,13 +210,16 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				.addCriterion("has_raw_froststeel", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.RAW_FROSTSTEEL.get()))
 				.addCriterion("has_utherium", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.UTHERIUM_CRYSTAL.get()))
 				.addCriterion("has_regalium_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.REGALIUM_CRYSTAL.get()))
+				.addCriterion("has_rogdorium_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.ROGDORIUM_CRYSTAL.asItem()))
 				.addCriterion("has_depthrock_cloggrum", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get()))
 				.addCriterion("has_shiverstone_cloggrum", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get()))
 				.addCriterion("has_shiverstone_froststeel", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get()))
 				.addCriterion("has_depthrock_utherium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get()))
 				.addCriterion("has_shiverstone_utherium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get()))
+				.addCriterion("has_dreadrock_utherium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DREADROCK_UTHERIUM_ORE.get()))
 				.addCriterion("has_depthrock_regalium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DEPTHROCK_REGALIUM_ORE.get()))
 				.addCriterion("has_shiverstone_regalium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.SHIVERSTONE_REGALIUM_ORE.get()))
+				.addCriterion("has_dreadrock_rogdorium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DREADROCK_ROGDORIUM_ORE.get()))
 				.save(consumer, "undergarden:undergarden/mine_ore");
 
 		AdvancementHolder all_ore_blocks = Advancement.Builder.advancement()
@@ -526,7 +529,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 		AdvancementHolder cure_utheric_infection = Advancement.Builder.advancement()
 			.parent(contract_utheric_infection)
 			.display(
-				UGBlocks.DENIZEN_TOTEM.get(),
+				UGItems.ROGDORIUM_CRYSTAL.get(),
 				Component.translatable("advancement.undergarden.cure_utheric_infection.title"),
 				Component.translatable("advancement.undergarden.cure_utheric_infection.desc"),
 				null,

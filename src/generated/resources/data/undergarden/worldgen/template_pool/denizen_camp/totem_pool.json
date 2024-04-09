@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "undergarden:denizen_camp/totem/totem_1",
+        "location": "minecraft:empty",
         "processors": {
           "processors": []
         },
@@ -14,10 +14,17 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/totem/totem_1",
+        "processors": "undergarden:denizen_camp_wood_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
         "location": "undergarden:denizen_camp/totem/totem_2",
-        "processors": {
-          "processors": []
-        },
+        "processors": "undergarden:denizen_camp_wood_processor",
         "projection": "rigid"
       },
       "weight": 1

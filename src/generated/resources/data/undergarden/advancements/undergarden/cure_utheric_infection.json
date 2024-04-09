@@ -15,7 +15,7 @@
       "translate": "advancement.undergarden.cure_utheric_infection.desc"
     },
     "icon": {
-      "item": "undergarden:denizen_totem"
+      "item": "undergarden:rogdorium_crystal"
     },
     "title": {
       "translate": "advancement.undergarden.cure_utheric_infection.title"
