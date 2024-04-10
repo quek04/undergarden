@@ -141,6 +141,7 @@ public class UGTags {
 	public static class Biomes {
 
 		public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
+		public static final TagKey<Biome> IS_OTHERSIDE = tag("is_otherside");
 
 		public static final TagKey<Biome> TICKS_UTHERIC_INFECTION = tag("ticks_utheric_infection");
 

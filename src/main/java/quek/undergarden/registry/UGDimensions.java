@@ -299,10 +299,10 @@ public class UGDimensions {
 				DensityFunctions.zero(), //lava
 				DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.TEMPERATURE)), //temperature
 				DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.VEGETATION)), //vegetation
-				DensityFunctions.zero(), //continents
-				DensityFunctions.zero(), //erosion
-				DensityFunctions.zero(), //depth
-				DensityFunctions.zero(), //ridges
+				NoiseRouterData.getFunction(functions, NoiseRouterData.CONTINENTS), //continents
+				NoiseRouterData.getFunction(functions, NoiseRouterData.EROSION), //erosion
+				NoiseRouterData.getFunction(functions, NoiseRouterData.DEPTH), //depth
+				NoiseRouterData.getFunction(functions, NoiseRouterData.RIDGES), //ridges
 				DensityFunctions.zero(), //initial density
 				DensityFunctions.mul(
 					DensityFunctions.constant(0.64D),
@@ -310,19 +310,28 @@ public class UGDimensions {
 						DensityFunctions.blendDensity(
 							DensityFunctions.add(
 								DensityFunctions.constant(-0.234375),
-								DensityFunctions.mul(
-									DensityFunctions.yClampedGradient(4, 32, 0.0D, 1.0D),
-									DensityFunctions.add(
-										DensityFunctions.constant(0.234375),
+								DensityFunctions.max(
+									DensityFunctions.mul(
+										DensityFunctions.yClampedGradient(4, 32, 0.0D, 1.0D),
 										DensityFunctions.add(
-											DensityFunctions.constant(-23.4375),
-											DensityFunctions.mul(
-												DensityFunctions.yClampedGradient(64, 440, 1.0D, 0.0D),
-												DensityFunctions.add(
-													DensityFunctions.constant(23.4375),
-													BlendedNoise.createUnseeded(0.25D, 0.25D, 80, 160, 4)
+											DensityFunctions.constant(0.234375),
+											DensityFunctions.add(
+												DensityFunctions.constant(-23.4375),
+												DensityFunctions.mul(
+													DensityFunctions.yClampedGradient(64, 440, 1.0D, 0.0D),
+													DensityFunctions.add(
+														DensityFunctions.constant(23.4375),
+														BlendedNoise.createUnseeded(0.25D, 0.25D, 80, 160, 4)
+													)
 												)
 											)
+										)
+									),
+									DensityFunctions.mul(
+										DensityFunctions.yClampedGradient(4, 32, 0.0D, 1.0D),
+										DensityFunctions.mul(
+											DensityFunctions.yClampedGradient(64, 256, 1.0D, 0.0D),
+											DensityFunctions.noise(noises.getOrThrow(Noises.EROSION), 2.0D, 1.0D)
 										)
 									)
 								)
@@ -334,7 +343,18 @@ public class UGDimensions {
 				DensityFunctions.zero(), //vein ridged
 				DensityFunctions.zero() //vein gap
 			),
-			SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState()),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(
+					SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0),
+					SurfaceRules.ifTrue(
+						SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(72), 0)),
+						SurfaceRules.ifTrue(
+							SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
+							SurfaceRules.state(Blocks.DIRT.defaultBlockState())
+						)
+					)
+				)
+			),
 			List.of(),
 			-64,
 			false,

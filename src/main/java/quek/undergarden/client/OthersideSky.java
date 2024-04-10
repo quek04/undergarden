@@ -1,5 +1,6 @@
 package quek.undergarden.client;
 
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
@@ -70,7 +71,7 @@ public class OthersideSky {
 		poseStack.pushPose();
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		poseStack.mulPose(Axis.XN.rotationDegrees(90.0F));
-		//poseStack.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F));
+		poseStack.mulPose(Axis.YN.rotationDegrees((float) (Blaze3D.getTime())));
 
 		Matrix4f matrix4f1 = poseStack.last().pose();
 		float size = 200.0F;
