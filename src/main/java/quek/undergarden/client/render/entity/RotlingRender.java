@@ -7,7 +7,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.RotlingModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.RotlingEyesLayer;
-import quek.undergarden.entity.rotspawn.Rotling;
+import quek.undergarden.entity.monster.rotspawn.Rotling;
 
 public class RotlingRender extends MobRenderer<Rotling, RotlingModel<Rotling>> {
 

@@ -9,10 +9,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.UGBoat;
-import quek.undergarden.item.BlisterbombItem;
-import quek.undergarden.item.CatalystItem;
-import quek.undergarden.item.DitchbulbPasteItem;
-import quek.undergarden.item.ForgottenSmithingTemplateItem;
+import quek.undergarden.item.*;
 import quek.undergarden.item.armor.AncientArmorItem;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
@@ -45,14 +42,12 @@ public class UGItems {
 	public static final DeferredItem<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
 
-	public static final DeferredItem<Item> RAW_ROGDORIUM = ITEMS.register("raw_rogdorium", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
-	public static final DeferredItem<Item> ROGDORIUM_INGOT = ITEMS.register("rogdorium_ingot", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
-	public static final DeferredItem<Item> ROGDORIUM_NUGGET = ITEMS.register("rogdorium_nugget", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
-
 	public static final DeferredItem<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties()));
 
 	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+
+	public static final DeferredItem<Item> ROGDORIUM_CRYSTAL = ITEMS.register("rogdorium_crystal", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
 
 	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
 	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
@@ -105,6 +100,8 @@ public class UGItems {
 	public static final DeferredItem<Item> WIGGLEWOOD_CHEST_BOAT = ITEMS.register("wigglewood_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.WIGGLEWOOD, new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> GRONGLE_BOAT = ITEMS.register("grongle_boat", () -> new UGBoatItem(false, UGBoat.Type.GRONGLE, new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> GRONGLE_CHEST_BOAT = ITEMS.register("grongle_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.GRONGLE, new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> ANCIENT_ROOT_BOAT = ITEMS.register("ancient_root_boat", () -> new UGBoatItem(false, UGBoat.Type.ANCIENT_ROOT, new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> ANCIENT_ROOT_CHEST_BOAT = ITEMS.register("ancient_root_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.ANCIENT_ROOT, new Item.Properties().stacksTo(1)));
 
 	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new UGBucketItem(UGFluids.VIRULENT_MIX_SOURCE, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
@@ -129,6 +126,8 @@ public class UGItems {
 	public static final DeferredItem<Item> ANCIENT_HELMET = ITEMS.register("ancient_helmet", () -> new AncientArmorItem(ArmorItem.Type.HELMET));
 	public static final DeferredItem<Item> ANCIENT_CHESTPLATE = ITEMS.register("ancient_chestplate", () -> new AncientArmorItem(ArmorItem.Type.CHESTPLATE));
 	public static final DeferredItem<Item> ANCIENT_LEGGINGS = ITEMS.register("ancient_leggings", () -> new AncientArmorItem(ArmorItem.Type.LEGGINGS));
+
+	public static final DeferredItem<Item> DENIZEN_MASK = ITEMS.register("denizen_mask", () -> new DenizenMaskItem(new Item.Properties().stacksTo(1)));
 
 	//foods/plants
 	public static final DeferredItem<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new ItemNameBlockItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));
@@ -170,6 +169,6 @@ public class UGItems {
 	public static final DeferredItem<DeferredSpawnEggItem> MOG_SPAWN_EGG = ITEMS.register("mog_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MOG, 3227179, 6393396, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> SMOG_MOG_SPAWN_EGG = ITEMS.register("smog_mog_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.SMOG_MOG, 3227179, 3444366, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_SPAWN_EGG = ITEMS.register("forgotten_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN, 5393733, 9502615, new Item.Properties()));
-
+	public static final DeferredItem<DeferredSpawnEggItem> DENIZEN_SPAWN_EGG = ITEMS.register("denizen_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DENIZEN, 9797222, 13026490, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));
 }

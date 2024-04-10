@@ -11,7 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
-import quek.undergarden.entity.stoneborn.Stoneborn;
+import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.registry.UGCriteria;
 
 import java.util.Optional;

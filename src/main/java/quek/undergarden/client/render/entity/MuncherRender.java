@@ -7,7 +7,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MuncherModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MuncherEyesLayer;
-import quek.undergarden.entity.cavern.Muncher;
+import quek.undergarden.entity.monster.cavern.Muncher;
 
 public class MuncherRender extends MobRenderer<Muncher, MuncherModel<Muncher>> {
 

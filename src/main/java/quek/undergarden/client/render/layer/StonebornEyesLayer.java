@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.StonebornModel;
-import quek.undergarden.entity.stoneborn.Stoneborn;
+import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 
 public class StonebornEyesLayer<T extends Stoneborn, M extends StonebornModel<T>> extends EyesLayer<T, M> {
 

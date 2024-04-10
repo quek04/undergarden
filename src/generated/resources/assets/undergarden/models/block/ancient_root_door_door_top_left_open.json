@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "undergarden:block/ancient_root_door_bottom",
+    "top": "undergarden:block/ancient_root_door_top"
+  }
+}

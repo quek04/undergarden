@@ -28,6 +28,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makePlanks(UGBlocks.SMOGSTEM_PLANKS, UGTags.Items.SMOGSTEM_LOGS).save(consumer);
 		makePlanks(UGBlocks.WIGGLEWOOD_PLANKS, UGTags.Items.WIGGLEWOOD_LOGS).save(consumer);
 		makePlanks(UGBlocks.GRONGLE_PLANKS, UGTags.Items.GRONGLE_LOGS).save(consumer);
+		makePlanks(UGBlocks.ANCIENT_ROOT_PLANKS, UGBlocks.ANCIENT_ROOT).save(consumer);
 
 		makeBricks(UGBlocks.POLISHED_DEPTHROCK, UGBlocks.DEPTHROCK).save(consumer);
 		makeBricks(UGBlocks.DEPTHROCK_BRICKS, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
@@ -49,18 +50,22 @@ public class UGRecipes extends UGRecipeProvider {
 		makeBoat(UGItems.SMOGSTEM_BOAT, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeBoat(UGItems.WIGGLEWOOD_BOAT, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeBoat(UGItems.GRONGLE_BOAT, UGBlocks.GRONGLE_PLANKS).save(consumer);
+		makeBoat(UGItems.ANCIENT_ROOT_BOAT, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 
 		makeChestBoat(UGItems.SMOGSTEM_CHEST_BOAT, UGItems.SMOGSTEM_BOAT).save(consumer);
 		makeChestBoat(UGItems.WIGGLEWOOD_CHEST_BOAT, UGItems.WIGGLEWOOD_BOAT).save(consumer);
 		makeChestBoat(UGItems.GRONGLE_CHEST_BOAT, UGItems.GRONGLE_BOAT).save(consumer);
+		makeChestBoat(UGItems.ANCIENT_ROOT_CHEST_BOAT, UGItems.ANCIENT_ROOT_BOAT).save(consumer);
 
 		makeSign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeSign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeSign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_PLANKS).save(consumer);
+		makeSign(UGBlocks.ANCIENT_ROOT_SIGN, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 
 		makeHangingSign(UGBlocks.SMOGSTEM_HANGING_SIGN, UGBlocks.STRIPPED_SMOGSTEM_LOG).save(consumer);
 		makeHangingSign(UGBlocks.WIGGLEWOOD_HANGING_SIGN, UGBlocks.STRIPPED_WIGGLEWOOD_LOG).save(consumer);
 		makeHangingSign(UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.STRIPPED_GRONGLE_LOG).save(consumer);
+		makeHangingSign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, UGBlocks.ANCIENT_ROOT).save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, Blocks.STICKY_PISTON)
 				.pattern("G")
@@ -345,38 +350,34 @@ public class UGRecipes extends UGRecipeProvider {
 
 		makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(consumer);
-		makeIngotToBlock(UGBlocks.ROGDORIUM_BLOCK, UGItems.ROGDORIUM_INGOT).save(consumer);
 		makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_CRYSTAL).save(consumer);
 		makeIngotToBlock(UGBlocks.REGALIUM_BLOCK, UGItems.REGALIUM_CRYSTAL).save(consumer);
+		makeIngotToBlock(UGBlocks.ROGDORIUM_BLOCK, UGItems.ROGDORIUM_CRYSTAL).save(consumer);
 		makeIngotToBlock(UGBlocks.FORGOTTEN_BLOCK, UGItems.FORGOTTEN_INGOT).save(consumer);
 		makeIngotToBlock(UGBlocks.DEPTHROCK, UGItems.DEPTHROCK_PEBBLE).save(consumer, name("pebbles_to_depthrock"));
 		makeIngotToBlock(UGBlocks.GOO_BLOCK, UGItems.GOO_BALL).save(consumer);
 
 		makeBlockToIngot(UGItems.CLOGGRUM_INGOT, UGBlocks.CLOGGRUM_BLOCK).save(consumer, name("cloggrum_block_to_ingot"));
 		makeBlockToIngot(UGItems.FROSTSTEEL_INGOT, UGBlocks.FROSTSTEEL_BLOCK).save(consumer, name("froststeel_block_to_ingot"));
-		makeBlockToIngot(UGItems.ROGDORIUM_INGOT, UGBlocks.ROGDORIUM_BLOCK).save(consumer, name("rogdorium_block_to_ingot"));
 		makeBlockToIngot(UGItems.UTHERIUM_CRYSTAL, UGBlocks.UTHERIUM_BLOCK).save(consumer, name("utherium_block_to_crystal"));
 		makeBlockToIngot(UGItems.REGALIUM_CRYSTAL, UGBlocks.REGALIUM_BLOCK).save(consumer, name("regalium_block_to_crystal"));
+		makeBlockToIngot(UGItems.ROGDORIUM_CRYSTAL, UGBlocks.ROGDORIUM_BLOCK).save(consumer, name("rogdorium_block_to_crystal"));
 		makeBlockToIngot(UGItems.FORGOTTEN_INGOT, UGBlocks.FORGOTTEN_BLOCK).save(consumer, name("forgotten_block_to_ingot"));
 		makeBlockToIngot(UGItems.GOO_BALL, UGBlocks.GOO_BLOCK).save(consumer, name("goo_block_to_ball"));
 
 		makeIngotToNugget(UGItems.CLOGGRUM_NUGGET, UGItems.CLOGGRUM_INGOT).save(consumer, name("cloggrum_ingot_to_nugget"));
 		makeIngotToNugget(UGItems.FROSTSTEEL_NUGGET, UGItems.FROSTSTEEL_INGOT).save(consumer, name("froststeel_ingot_to_nugget"));
-		makeIngotToNugget(UGItems.ROGDORIUM_NUGGET, UGItems.ROGDORIUM_INGOT).save(consumer, name("rogdorium_ingot_to_nugget"));
 		makeIngotToNugget(UGItems.FORGOTTEN_NUGGET, UGItems.FORGOTTEN_INGOT).save(consumer, name("forgotten_ingot_to_nugget"));
 
 		makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).save(consumer, name("cloggrum_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).save(consumer, name("froststeel_nugget_to_ingot"));
-		makeNuggetToIngot(UGItems.ROGDORIUM_INGOT, UGItems.ROGDORIUM_NUGGET).save(consumer, name("rogdorium_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_nugget_to_ingot"));
 
 		makeIngotToBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, UGItems.RAW_CLOGGRUM).save(consumer);
 		makeIngotToBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, UGItems.RAW_FROSTSTEEL).save(consumer);
-		makeIngotToBlock(UGBlocks.RAW_ROGDORIUM_BLOCK, UGItems.RAW_ROGDORIUM).save(consumer);
 
 		makeBlockToIngot(UGItems.RAW_CLOGGRUM, UGBlocks.RAW_CLOGGRUM_BLOCK).save(consumer, name("raw_cloggrum_from_block"));
 		makeBlockToIngot(UGItems.RAW_FROSTSTEEL, UGBlocks.RAW_FROSTSTEEL_BLOCK).save(consumer, name("raw_froststeel_from_block"));
-		makeBlockToIngot(UGItems.RAW_ROGDORIUM, UGBlocks.RAW_ROGDORIUM_BLOCK).save(consumer, name("raw_rogdorium_from_block"));
 
 		makeSword(UGItems.CLOGGRUM_SWORD, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeSword(UGItems.FROSTSTEEL_SWORD, UGItems.FROSTSTEEL_INGOT).save(consumer);
@@ -425,6 +426,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeStairs(UGBlocks.CLOGGRUM_TILE_STAIRS, UGBlocks.CLOGGRUM_TILES).save(consumer);
 		makeStairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES).save(consumer);
 		makeStairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
+		makeStairs(UGBlocks.ANCIENT_ROOT_STAIRS, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 
 		makeSlab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK).save(consumer);
 		makeSlab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -438,6 +440,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeSlab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES).save(consumer);
 		makeSlab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES).save(consumer);
 		makeSlab(UGBlocks.POLISHED_DEPTHROCK_SLAB, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
+		makeSlab(UGBlocks.ANCIENT_ROOT_SLAB, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 
 		makeWall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK).save(consumer);
 		makeWall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -450,22 +453,27 @@ public class UGRecipes extends UGRecipeProvider {
 		makeFence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeFence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeFence(UGBlocks.GRONGLE_FENCE, UGBlocks.GRONGLE_PLANKS).save(consumer);
+		makeFence(UGBlocks.ANCIENT_ROOT_FENCE, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 
 		makeFenceGate(UGBlocks.SMOGSTEM_FENCE_GATE, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeFenceGate(UGBlocks.WIGGLEWOOD_FENCE_GATE, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeFenceGate(UGBlocks.GRONGLE_FENCE_GATE, UGBlocks.GRONGLE_PLANKS).save(consumer);
+		makeFenceGate(UGBlocks.ANCIENT_ROOT_FENCE_GATE, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 
 		makeDoor(UGBlocks.SMOGSTEM_DOOR, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeDoor(UGBlocks.WIGGLEWOOD_DOOR, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeDoor(UGBlocks.GRONGLE_DOOR, UGBlocks.GRONGLE_PLANKS).save(consumer);
+		makeDoor(UGBlocks.ANCIENT_ROOT_DOOR, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 
 		makeTrapdoor(UGBlocks.SMOGSTEM_TRAPDOOR, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeTrapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeTrapdoor(UGBlocks.GRONGLE_TRAPDOOR, UGBlocks.GRONGLE_PLANKS).save(consumer);
+		makeTrapdoor(UGBlocks.ANCIENT_ROOT_TRAPDOOR, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 
 		makeButton(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeButton(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makeButton(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS).save(consumer);
+		makeButton(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 		makeButton(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK).save(consumer);
 		makeButton(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE).save(consumer);
 		makeButton(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST).save(consumer);
@@ -473,6 +481,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makePressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makePressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
 		makePressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS).save(consumer);
+		makePressurePlate(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
 		makePressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK).save(consumer);
 		makePressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE).save(consumer);
 		makePressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, UGBlocks.TREMBLECRUST).save(consumer);
@@ -530,9 +539,9 @@ public class UGRecipes extends UGRecipeProvider {
 		ore(Items.DIAMOND, ImmutableList.of(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get()), 1.0F, "diamond", consumer);
 		ore(UGItems.CLOGGRUM_INGOT.get(), ImmutableList.of(UGItems.RAW_CLOGGRUM.get(), UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get()), 0.7F, "undergarden:cloggrum_ingot", consumer);
 		ore(UGItems.FROSTSTEEL_INGOT.get(), ImmutableList.of(UGItems.RAW_FROSTSTEEL.get(), UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get()), 0.7F, "undergarden:froststeel_ingot", consumer);
-		ore(UGItems.ROGDORIUM_INGOT.get(), ImmutableList.of(UGItems.RAW_ROGDORIUM.get(), UGBlocks.DREADROCK_ROGDORIUM_ORE.get()), 0.7F, "undergarden:rogdorium_ingot", consumer);
 		ore(UGItems.UTHERIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get()), 1.0F, "undergarden:utherium", consumer);
 		ore(UGItems.REGALIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get()), 1.0F, "undergarden:regalium_crystal", consumer);
+		ore(UGItems.ROGDORIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DREADROCK_ROGDORIUM_ORE.get()), 0.7F, "undergarden:rogdorium_crystal", consumer);
 
 		smeltingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(consumer, name("smelt_cloggrum_item"));
 		blastingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(consumer, name("blast_cloggrum_item"));

@@ -88,6 +88,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> SMOG_VENT = create("smog_vent");
 	public static final ResourceKey<PlacedFeature> ICE_PILLAR = create("ice_pillar");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH = create("utherium_growth");
+	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
 
 	public static ResourceKey<PlacedFeature> create(String name) {
 		return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(Undergarden.MODID, name));
@@ -162,6 +163,7 @@ public class UGPlacedFeatures {
 		context.register(SMOG_VENT, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOG_VENT), tree(8)));
 		context.register(ICE_PILLAR, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ICE_PILLAR), patch(50)));
 		context.register(UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH), patch(100)));
+		context.register(UTHERIUM_GROWTH_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH_EXTRA), patch(200)));
 	}
 
 	private static List<PlacementModifier> tree(int count) {

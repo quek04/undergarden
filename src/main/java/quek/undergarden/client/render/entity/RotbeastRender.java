@@ -9,7 +9,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.RotbeastModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.RotbeastEyesLayer;
-import quek.undergarden.entity.rotspawn.Rotbeast;
+import quek.undergarden.entity.monster.rotspawn.Rotbeast;
 
 public class RotbeastRender extends MobRenderer<Rotbeast, RotbeastModel<Rotbeast>> {
 

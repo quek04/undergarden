@@ -103,6 +103,7 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 			case SMOGSTEM -> UGItems.SMOGSTEM_CHEST_BOAT.get();
 			case WIGGLEWOOD -> UGItems.WIGGLEWOOD_CHEST_BOAT.get();
 			case GRONGLE -> UGItems.GRONGLE_CHEST_BOAT.get();
+			case ANCIENT_ROOT -> UGItems.ANCIENT_ROOT_CHEST_BOAT.get();
 		};
 	}
 

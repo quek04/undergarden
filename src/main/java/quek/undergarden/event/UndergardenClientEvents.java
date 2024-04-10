@@ -12,6 +12,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -23,6 +24,7 @@ import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -30,6 +32,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -52,11 +56,13 @@ import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
+import quek.undergarden.client.render.layer.UthericInfectionLayer;
 import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.registry.*;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UndergardenClientEvents {
 
@@ -75,10 +81,16 @@ public class UndergardenClientEvents {
 	private static final ResourceLocation BRITTLENESS_ARMOR_HALF = new ResourceLocation(Undergarden.MODID, "brittleness_armor/half");
 	private static final ResourceLocation BRITTLENESS_ARMOR_FULL = new ResourceLocation(Undergarden.MODID, "brittleness_armor/full");
 
+	private static final ResourceLocation UTHERIC_INFECTION_EMPTY = new ResourceLocation(Undergarden.MODID, "utheric_infection/empty");
+	private static final ResourceLocation UTHERIC_INFECTION_HALF = new ResourceLocation(Undergarden.MODID, "utheric_infection/half");
+	private static final ResourceLocation UTHERIC_INFECTION_FULL = new ResourceLocation(Undergarden.MODID, "utheric_infection/full");
+	private static final ResourceLocation UTHERIC_INFECTION_FULL_LETHAL = new ResourceLocation(Undergarden.MODID, "utheric_infection/full_lethal");
+
 	public static void initClientEvents(IEventBus bus) {
 		bus.addListener(UndergardenClientEvents::clientSetup);
 		bus.addListener(UndergardenClientEvents::registerEntityRenderers);
 		bus.addListener(UndergardenClientEvents::registerEntityLayerDefinitions);
+		bus.addListener(UndergardenClientEvents::addEntityLayers);
 		bus.addListener(UndergardenClientEvents::registerParticleFactories);
 		bus.addListener(UndergardenClientEvents::registerBlockColors);
 		bus.addListener(UndergardenClientEvents::registerItemColors);
@@ -145,6 +157,7 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
 		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRender::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRender::new);
+		event.registerEntityRenderer(UGEntityTypes.DENIZEN.get(), DenizenRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
 	}
 
@@ -174,9 +187,29 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.MOG, MogModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.SMOG_MOG, SmogMogModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.DENIZEN, DenizenModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.DENIZEN_2, Denizen2Model::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
+	}
+
+	private static void addEntityLayers(EntityRenderersEvent.AddLayers event) {
+		for (EntityType<?> entity : event.getEntityTypes()) {
+			var renderer = event.getRenderer(entity);
+			if (renderer instanceof LivingEntityRenderer<?,?> livingEntityRenderer) {
+				addLayer(livingEntityRenderer);
+			}
+		}
+
+		event.getSkins().forEach(renderer -> {
+			LivingEntityRenderer<Player, EntityModel<Player>> skin = event.getSkin(renderer);
+			addLayer(Objects.requireNonNull(skin));
+		});
+	}
+
+	private static <T extends LivingEntity, M extends EntityModel<T>> void addLayer(LivingEntityRenderer<T, M> renderer) {
+		renderer.addLayer(new UthericInfectionLayer<>(renderer));
 	}
 
 	private static void registerParticleFactories(RegisterParticleProvidersEvent event) {
@@ -189,6 +222,7 @@ public class UndergardenClientEvents {
 		event.registerSpriteSet(UGParticleTypes.SMOG.get(), SmogParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.UTHERIUM_CRIT.get(), UtheriumCritParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
+		event.registerSpriteSet(UGParticleTypes.ROGDORIUM_SPARKLE.get(), ShimmerParticle.Provider::new);
 
 		event.registerSprite(UGParticleTypes.DRIPPING_BLOOD.get(), UGDripParticles::createBloodHangParticle);
 		event.registerSprite(UGParticleTypes.FALLING_BLOOD.get(), UGDripParticles::createBloodFallParticle);
@@ -312,22 +346,26 @@ public class UndergardenClientEvents {
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
 
-			/*if (player != null) {
-				player.getCapability(UGAttachments.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(consumer -> renderPortalOverlay(guiGraphics, minecraft, window, consumer, partialTick));
-			}*/
 			if (player != null) {
 				renderPortalOverlay(guiGraphics, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), partialTick);
 			}
 		});
+		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "utheric_infection_bar"), ((gui, guiGraphics, partialTick, width, height) -> {
+			Minecraft minecraft = Minecraft.getInstance();
+			LocalPlayer player = minecraft.player;
+			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0 && gui.shouldDrawSurvivalElements()) {
+				renderUthericInfectionBar(width, height, guiGraphics, gui, player);
+			}
+		}));
 	}
 
 	private static void undergardenFog(ViewportEvent.RenderFog event) {
 		if (UndergardenConfig.Client.toggle_undergarden_fog.get()) {
 			LocalPlayer player = Minecraft.getInstance().player;
 			if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && event.getCamera().getFluidInCamera() == FogType.NONE && event.getType() == FogType.NONE) {
-				if (player.level().getBiome(player.getOnPos()).is(UGBiomes.DEPTHS)) {
+				if (player.level().getBiome(player.getOnPos()).is(UGBiomes.DEPTHS) || player.level().getBiome(player.getOnPos()).is(UGBiomes.INFECTED_DEPTHS)) {
 					event.setNearPlaneDistance(-30.0F);
-					event.setFarPlaneDistance(50.0F);
+					event.setFarPlaneDistance(100.0F);
 					event.setFogShape(FogShape.SPHERE);
 					event.setCanceled(true);
 				} else {
@@ -344,6 +382,29 @@ public class UndergardenClientEvents {
 		if (event.getOverlay().id() == VanillaGuiOverlay.JUMP_BAR.id()) {
 			if (Minecraft.getInstance().player.getVehicle() instanceof Dweller) {
 				event.setCanceled(true);
+			}
+		}
+	}
+
+	private static void renderUthericInfectionBar(int width, int height, GuiGraphics graphics, ExtendedGui gui, Player player) {
+		int left = width / 2 + 91;
+		int top = height - gui.rightHeight;
+		gui.rightHeight += 10;
+
+		int infectionLevel = player.getData(UGAttachments.UTHERIC_INFECTION);
+		for (int i = 0; i < 10; i++) {
+			int idx = i * 2 + 1;
+			int x = left - i * 8 - 9;
+			int y = top;
+			if (infectionLevel >= 16) {
+				y += gui.random.nextInt(2);
+			}
+            if (idx < infectionLevel) {
+				graphics.blitSprite(infectionLevel >= 20 ? UTHERIC_INFECTION_FULL_LETHAL : UTHERIC_INFECTION_FULL, x, y, 9, 9);
+			} else if (idx == infectionLevel) {
+				graphics.blitSprite(UTHERIC_INFECTION_HALF, x, y, 9, 9);
+			} else {
+				graphics.blitSprite(UTHERIC_INFECTION_EMPTY, x, y, 9, 9);
 			}
 		}
 	}

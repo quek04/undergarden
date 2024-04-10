@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "undergarden:block/ancient_root_planks"
+  }
+}

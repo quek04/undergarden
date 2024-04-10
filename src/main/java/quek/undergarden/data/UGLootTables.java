@@ -283,11 +283,25 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.BUTTERBUNCH);
 			dropOther(UGBlocks.VIRULENT_MIX_CAULDRON, Items.CAULDRON);
 			this.add(UGBlocks.MUSHROOM_VEIL.get(), BlockLootSubProvider::createShearsOnlyDrop);
-			ore(UGBlocks.DREADROCK_ROGDORIUM_ORE, UGItems.RAW_ROGDORIUM);
+			ore(UGBlocks.DREADROCK_ROGDORIUM_ORE, UGItems.ROGDORIUM_CRYSTAL);
 			dropSelf(UGBlocks.ROGDORIUM_BLOCK);
-			dropSelf(UGBlocks.RAW_ROGDORIUM_BLOCK);
 			dropSelf(UGBlocks.UTHERIUM_GROWTH);
 			ore(UGBlocks.DREADROCK_UTHERIUM_ORE, UGItems.UTHERIUM_CRYSTAL);
+			dropSelf(UGBlocks.ANCIENT_ROOT);
+			dropSelf(UGBlocks.ANCIENT_ROOT_PLANKS);
+			dropSelf(UGBlocks.ANCIENT_ROOT_STAIRS);
+			slab(UGBlocks.ANCIENT_ROOT_SLAB);
+			dropSelf(UGBlocks.ANCIENT_ROOT_FENCE);
+			dropSelf(UGBlocks.ANCIENT_ROOT_FENCE_GATE);
+			this.add(UGBlocks.ANCIENT_ROOT_DOOR.get(), (block) -> createSinglePropConditionTable(block, DoorBlock.HALF, DoubleBlockHalf.LOWER));
+			dropSelf(UGBlocks.ANCIENT_ROOT_TRAPDOOR);
+			dropSelf(UGBlocks.ANCIENT_ROOT_BUTTON);
+			dropSelf(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE);
+			dropSelf(UGBlocks.ANCIENT_ROOT_SIGN);
+			dropOther(UGBlocks.ANCIENT_ROOT_WALL_SIGN, UGBlocks.ANCIENT_ROOT_SIGN);
+			dropSelf(UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
+			dropOther(UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
+			dropSelf(UGBlocks.DENIZEN_TOTEM);
 		}
 
 		@Override
@@ -485,6 +499,15 @@ public class UGLootTables extends LootTableProvider {
 
 			this.add(UGEntityTypes.FORGOTTEN.get(), LootTable.lootTable());
 
+			this.add(UGEntityTypes.DENIZEN.get(), LootTable.lootTable()
+					.withPool(LootPool.lootPool()
+							.setRolls(ConstantValue.exactly(1.0F))
+							.add(LootItem.lootTableItem(UGItems.DENIZEN_MASK.get()))
+							.when(LootItemKilledByPlayerCondition.killedByPlayer())
+							.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.5F, 0.01F))
+				)
+			);
+
 			this.add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), LootTable.lootTable()
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1))
@@ -507,27 +530,36 @@ public class UGLootTables extends LootTableProvider {
 		@Override
 		public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
 			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/catacombs"), LootTable.lootTable()
-					.withPool(LootPool.lootPool()
-							.setRolls(UniformGenerator.between(2.0F, 5.0F))
-							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
-							.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
-							.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
-							.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
-							.add(LootItem.lootTableItem(UGItems.SLOP_BOWL.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F)))))
-					.withPool(LootPool.lootPool()
-							.setRolls(ConstantValue.exactly(1.0F))
-							.add(EmptyLootItem.emptyItem().setWeight(2))
-							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
-							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
-							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(25.0F, 30.0F)).allowTreasure()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F))))
-							.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(25.0F, 30.0F)).allowTreasure()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F)))))
-					.withPool(LootPool.lootPool()
-							.setRolls(ConstantValue.exactly(1.0F))
-							.add(EmptyLootItem.emptyItem().setWeight(8))
-							.add(LootItem.lootTableItem(UGItems.MAMMOTH_DISC.get()).setWeight(4))
-							.add(LootItem.lootTableItem(UGItems.RELICT_DISC.get()).setWeight(4))
-							.add(LootItem.lootTableItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()).setWeight(3))
-							.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1)))
+				.withPool(LootPool.lootPool()
+					.setRolls(UniformGenerator.between(2.0F, 5.0F))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+					.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+					.add(LootItem.lootTableItem(UGItems.SLOP_BOWL.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F)))))
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1.0F))
+					.add(EmptyLootItem.emptyItem().setWeight(2))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(25.0F, 30.0F)).allowTreasure()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(25.0F, 30.0F)).allowTreasure()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F)))))
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1.0F))
+					.add(EmptyLootItem.emptyItem().setWeight(8))
+					.add(LootItem.lootTableItem(UGItems.MAMMOTH_DISC.get()).setWeight(4))
+					.add(LootItem.lootTableItem(UGItems.RELICT_DISC.get()).setWeight(4))
+					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()).setWeight(3))
+					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1)))
+			);
+			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/denizen_camp"), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(UniformGenerator.between(1.0F, 4.0F))
+					.add(EmptyLootItem.emptyItem().setWeight(5))
+					.add(LootItem.lootTableItem(UGItems.ROGDORIUM_CRYSTAL.get()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
+					.add(LootItem.lootTableItem(UGBlocks.DENIZEN_TOTEM.asItem()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+					.add(LootItem.lootTableItem(Items.STICK).setWeight(15).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+				)
 			);
 		}
 	}

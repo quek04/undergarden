@@ -85,12 +85,11 @@ public class UGLang extends UGLangProvider {
 
 		addBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, "Block of Raw Cloggrum");
 		addBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, "Block of Raw Froststeel");
-		addBlock(UGBlocks.RAW_ROGDORIUM_BLOCK, "Block of Raw Rogdorium");
 		addBlock(UGBlocks.CLOGGRUM_BLOCK, "Block of Cloggrum");
 		addBlock(UGBlocks.FROSTSTEEL_BLOCK, "Block of Froststeel");
-		addBlock(UGBlocks.ROGDORIUM_BLOCK, "Block of Rogdorium");
 		addBlock(UGBlocks.UTHERIUM_BLOCK, "Block of Utherium");
 		addBlock(UGBlocks.REGALIUM_BLOCK, "Block of Regalium");
+		addBlock(UGBlocks.ROGDORIUM_BLOCK, "Block of Rogdorium");
 		addBlock(UGBlocks.FORGOTTEN_BLOCK, "Block of Forgotten Metal");
 
 		addBlock(UGBlocks.DEEPTURF_BLOCK, "Deepturf Block");
@@ -114,6 +113,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.BLUE_MOGMOSS_RUG, "Blue Mogmoss Rug");
 		addBlock(UGBlocks.CLOGGRUM_LANTERN, "Cloggrum Lantern");
 		addBlock(UGBlocks.UTHERIUM_GROWTH, "Utherium Growth");
+		addBlock(UGBlocks.DENIZEN_TOTEM, "Mysterious Totem");
 
 		addBlock(UGBlocks.AMOROUS_BRISTLE, "Amorous Bristle");
 		addBlock(UGBlocks.MISERABELL, "Miserabell");
@@ -220,8 +220,20 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.GRONGLE_PRESSURE_PLATE, "Grongle Pressure Plate");
 		addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
 		addBlock(UGBlocks.GRONGLE_HANGING_SIGN, "Grongle Hanging Sign");
-
 		addBlock(UGBlocks.GRONGLET, "Gronglet");
+
+		addBlock(UGBlocks.ANCIENT_ROOT, "Ancient Root");
+		addBlock(UGBlocks.ANCIENT_ROOT_PLANKS, "Ancient Root Planks");
+		addBlock(UGBlocks.ANCIENT_ROOT_STAIRS, "Ancient Root Stairs");
+		addBlock(UGBlocks.ANCIENT_ROOT_SLAB, "Ancient Root Slab");
+		addBlock(UGBlocks.ANCIENT_ROOT_FENCE, "Ancient Root Fence");
+		addBlock(UGBlocks.ANCIENT_ROOT_FENCE_GATE, "Ancient Root Fence Gate");
+		addBlock(UGBlocks.ANCIENT_ROOT_DOOR, "Ancient Root Door");
+		addBlock(UGBlocks.ANCIENT_ROOT_TRAPDOOR, "Ancient Root Trapdoor");
+		addBlock(UGBlocks.ANCIENT_ROOT_BUTTON, "Ancient Root Button");
+		addBlock(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE, "Ancient Root Pressure Plate");
+		addBlock(UGBlocks.ANCIENT_ROOT_SIGN, "Ancient Root Sign");
+		addBlock(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, "Ancient Root Hanging Sign");
 
 		addBlock(UGBlocks.VIRULENT_MIX, "Virulent Mix");
 
@@ -246,12 +258,10 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.RAW_FROSTSTEEL, "Raw Froststeel");
 		addItem(UGItems.FROSTSTEEL_INGOT, "Froststeel Ingot");
 		addItem(UGItems.FROSTSTEEL_NUGGET, "Froststeel Nugget");
-		addItem(UGItems.RAW_ROGDORIUM, "Raw Rogdorium");
-		addItem(UGItems.ROGDORIUM_INGOT, "Rogdorium Ingot");
-		addItem(UGItems.ROGDORIUM_NUGGET, "Rogdorium Nugget");
 		addItem(UGItems.UTHERIC_SHARD, "Utheric Shard");
 		addItem(UGItems.UTHERIUM_CRYSTAL, "Utherium Crystal");
 		addItem(UGItems.REGALIUM_CRYSTAL, "Regalium Crystal");
+		addItem(UGItems.ROGDORIUM_CRYSTAL, "Rogdorium Crystal");
 		addItem(UGItems.FORGOTTEN_INGOT, "Forgotten Ingot");
 		addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
 		addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");
@@ -305,6 +315,8 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.WIGGLEWOOD_CHEST_BOAT, "Wigglewood Boat with Chest");
 		addItem(UGItems.GRONGLE_BOAT, "Grongle Boat");
 		addItem(UGItems.GRONGLE_CHEST_BOAT, "Grongle Boat with Chest");
+		addItem(UGItems.ANCIENT_ROOT_BOAT, "Ancient Root Boat");
+		addItem(UGItems.ANCIENT_ROOT_CHEST_BOAT, "Ancient Root Boat with Chest");
 
 		addItem(UGItems.SLINGSHOT, "Slingshot");
 
@@ -330,6 +342,8 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.ANCIENT_HELMET, "Ancient Helmet");
 		addItem(UGItems.ANCIENT_CHESTPLATE, "Ancient Chestplate");
 		addItem(UGItems.ANCIENT_LEGGINGS, "Ancient Leggings");
+
+		addItem(UGItems.DENIZEN_MASK, "Mysterious Mask");
 
 		addItem(UGItems.DROOPFRUIT, "Droopfruit");
 		addItem(UGItems.UNDERBEANS, "Underbeans");
@@ -365,6 +379,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
 		addItem(UGItems.SMOG_MOG_SPAWN_EGG, "S'Mog Spawn Egg");
 		addItem(UGItems.FORGOTTEN_SPAWN_EGG, "Forgotten Spawn Egg");
+		addItem(UGItems.DENIZEN_SPAWN_EGG, "Denizen Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
@@ -384,6 +399,7 @@ public class UGLang extends UGLangProvider {
 		addBiome(UGBiomes.VEIL_MUSHROOM_BOG, "Veil Mushroom Bog");
 		addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 		addBiome(UGBiomes.DEPTHS, "Depths");
+		addBiome(UGBiomes.INFECTED_DEPTHS, "Infected Depths");
 
 		addEntityType(UGEntityTypes.BOAT, "Boat");
 		addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");
@@ -412,6 +428,7 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.MOG, "Mog");
 		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
 		addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
+		addEntityType(UGEntityTypes.DENIZEN, "Denizen");
 
 		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 
@@ -423,6 +440,7 @@ public class UGLang extends UGLangProvider {
 		addEffect(UGEffects.VIRULENT_RESISTANCE, "Virulent Resistance");
 		addEffect(UGEffects.VIRULENCE, "Virulence");
 		addEffect(UGEffects.CHILLY, "Chilly");
+		addEffect(UGEffects.PURITY, "Purity");
 
 		//JEED compat
 		add("effect.undergarden.gooey.description", "Scintling Goo will constantly be placed under victim's feet.");
@@ -431,6 +449,7 @@ public class UGLang extends UGLangProvider {
 		add("effect.undergarden.virulent_resistance.description", "Grants immunity to Virulence.");
 		add("effect.undergarden.virulence.description", "Similar to poison, but does more damage at a slower rate. Damage is suppressed by Virulent Resistance.");
 		add("effect.undergarden.chilly.description", "Slows the victim down and causes them to visually shake.");
+		add("effect.undergarden.purity.description", "Reduces the amount of Utheric Infection an entity has per second. Amount removed scales with potion level.");
 
 		addPotion(UGPotions.BRITTLENESS, "Brittleness");
 		addPotion(UGPotions.FEATHERWEIGHT, "Featherweight");
@@ -514,9 +533,6 @@ public class UGLang extends UGLangProvider {
 		addAdvTitle("forgotten_ingot", "What Now Is");
 		addAdvDesc("forgotten_ingot", "Forge a Forgotten Ingot from a Forgotten Guardian's nuggets.");
 
-		addAdvTitle("enter_depths", "Into the Depths");
-		addAdvDesc("enter_depths", "Break through the Dreadrock barrier at the bottom of the Undergarden and enter the Depths...");
-
 		addAdvTitle("forgotten_tools", "Forgotten Arsenal");
 		addAdvDesc("forgotten_tools", "Use Forgotten Ingots to upgrade Cloggrum tools and make all 6 Forgotten tools.");
 
@@ -537,6 +553,15 @@ public class UGLang extends UGLangProvider {
 
 		addAdvTitle("forgotten_battleaxe", "Axe of Legends");
 		addAdvDesc("forgotten_battleaxe", "Upgrade a Cloggrum Battle Axe with a Forgotten Ingot.");
+
+		addAdvTitle("enter_depths", "Into the Depths");
+		addAdvDesc("enter_depths", "Break through the Dreadrock barrier at the bottom of the Undergarden and enter the Depths...");
+
+		addAdvTitle("contract_utheric_infection", "The Plague Upon the Land");
+		addAdvDesc("contract_utheric_infection", "Contract the Utheric Infection. Don't let it get out of control!");
+
+		addAdvTitle("cure_utheric_infection", "A Much Needed Antidote");
+		addAdvDesc("cure_utheric_infection", "Find a way to hold back the Utheric Infection.");
 
 		//addAdvTitle("otherside_root", "The Otherside");
 		//addAdvDesc("otherside_root", "Enter the realm of madness.");
@@ -658,6 +683,8 @@ public class UGLang extends UGLangProvider {
 		addDeath("blisterberry_bush.player", "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s");
 		addDeath("shard_torch", "%1$s was killed by a Shard Torch's magic");
 		addDeath("shard_torch.player", "%1$s was killed by a Shard Torch's magic whilst trying to escape %2$s");
+		addDeath("utheric_infection", "%1$s succumbed to the Utheric Infection");
+		addDeath("utheric_infection.player", "%1$s succumbed to the Utheric Infection whilst trying to escape %2$s");
 
 		addConfig("return_portal_frame_block_id", "Return Portal Frame Block ID");
 

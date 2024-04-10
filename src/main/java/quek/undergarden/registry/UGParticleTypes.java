@@ -21,6 +21,7 @@ public class UGParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SMOG = PARTICLES.register("smog", () -> new SimpleParticleType(true));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> UTHERIUM_CRIT = PARTICLES.register("utherium_crit", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SNOWFLAKE = PARTICLES.register("snowflake", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ROGDORIUM_SPARKLE = PARTICLES.register("rogdorium_sparkle", () -> new SimpleParticleType(false));
 
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_BLOOD = PARTICLES.register("dripping_blood", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_BLOOD = PARTICLES.register("falling_blood", () -> new SimpleParticleType(false));

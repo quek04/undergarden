@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.NargoyleModel;
 import quek.undergarden.client.model.UGModelLayers;
-import quek.undergarden.entity.cavern.Nargoyle;
+import quek.undergarden.entity.monster.cavern.Nargoyle;
 
 public class NargoyleRender extends MobRenderer<Nargoyle, NargoyleModel<Nargoyle>> {
 

@@ -59,6 +59,19 @@
     "undergarden:grongle_button",
     "undergarden:grongle_pressure_plate",
     "undergarden:grongle_sign",
-    "undergarden:grongle_wall_sign"
+    "undergarden:grongle_wall_sign",
+    "undergarden:ancient_root",
+    "undergarden:denizen_totem",
+    "undergarden:ancient_root_planks",
+    "undergarden:ancient_root_stairs",
+    "undergarden:ancient_root_slab",
+    "undergarden:ancient_root_fence",
+    "undergarden:ancient_root_fence_gate",
+    "undergarden:ancient_root_door",
+    "undergarden:ancient_root_trapdoor",
+    "undergarden:ancient_root_button",
+    "undergarden:ancient_root_pressure_plate",
+    "undergarden:ancient_root_sign",
+    "undergarden:ancient_root_wall_sign"
   ]
 }

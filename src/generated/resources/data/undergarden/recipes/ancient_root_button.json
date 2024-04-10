@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "undergarden:ancient_root_planks"
+    }
+  ],
+  "result": {
+    "item": "undergarden:ancient_root_button"
+  }
+}

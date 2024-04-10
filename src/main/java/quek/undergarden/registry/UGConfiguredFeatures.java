@@ -124,6 +124,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMOG_VENT = create("smog_vent");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_PILLAR = create("ice_pillar");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH = create("utherium_growth");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Undergarden.MODID, name));
@@ -198,6 +199,10 @@ public class UGConfiguredFeatures {
 		new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(2, 5)),
 				new LargeDripstoneConfiguration(50, UniformInt.of(3, 16), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
 				0.4F)));
+		context.register(UTHERIUM_GROWTH_EXTRA, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH.get(), new UtheriumCrystalConfiguration(
+			new ColumnFeatureConfiguration(UniformInt.of(1, 3), UniformInt.of(2, 10)),
+			new LargeDripstoneConfiguration(50, UniformInt.of(3, 16), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
+			0.8F)));
 	}
 
 	private static RandomPatchConfiguration patch(Block block, int tries) {

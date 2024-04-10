@@ -28,6 +28,7 @@ import quek.undergarden.data.*;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.network.CreateCritParticlePacket;
+import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
@@ -49,7 +50,11 @@ public class Undergarden {
 		UndergardenCommonEvents.initCommonEvents(bus);
 		bus.addListener(this::gatherData);
 		bus.addListener(this::registerPackets);
-		bus.addListener((Consumer<RegisterEvent>) event -> Registry.register(BuiltInRegistries.CHUNK_GENERATOR, new ResourceLocation(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC));
+		bus.addListener((Consumer<RegisterEvent>) event -> {
+			if (event.getRegistry() == BuiltInRegistries.CHUNK_GENERATOR) {
+				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, new ResourceLocation(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC);
+			}
+		});
 
 		DeferredRegister<?>[] registers = {
 				UGAttachments.ATTACHMENTS,
@@ -87,6 +92,7 @@ public class Undergarden {
 	public void registerPackets(RegisterPayloadHandlerEvent event) {
 		IPayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
 		registrar.play(CreateCritParticlePacket.ID, CreateCritParticlePacket::new, payload -> payload.client(CreateCritParticlePacket::handle));
+		registrar.play(UthericInfectionPacket.ID, UthericInfectionPacket::new, payload -> payload.client(UthericInfectionPacket::handle));
 	}
 
 	public void gatherData(GatherDataEvent event) {

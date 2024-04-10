@@ -16,6 +16,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.criterion.SlingshotFireTrigger;
 import quek.undergarden.criterion.StonebornTradeTrigger;
+import quek.undergarden.criterion.UthericInfectionTrigger;
 import quek.undergarden.registry.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class UndergardenAdvancements implements AdvancementProvider.AdvancementGenerator {
-	private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.FROSTY_SMOGSTEM_FOREST, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.DEPTHS);
+	private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.FROSTY_SMOGSTEM_FOREST, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.DEPTHS, UGBiomes.INFECTED_DEPTHS);
 
 	@SuppressWarnings("unused")
 	@Override
@@ -209,13 +210,16 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				.addCriterion("has_raw_froststeel", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.RAW_FROSTSTEEL.get()))
 				.addCriterion("has_utherium", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.UTHERIUM_CRYSTAL.get()))
 				.addCriterion("has_regalium_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.REGALIUM_CRYSTAL.get()))
+				.addCriterion("has_rogdorium_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.ROGDORIUM_CRYSTAL.asItem()))
 				.addCriterion("has_depthrock_cloggrum", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get()))
 				.addCriterion("has_shiverstone_cloggrum", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get()))
 				.addCriterion("has_shiverstone_froststeel", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get()))
 				.addCriterion("has_depthrock_utherium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get()))
 				.addCriterion("has_shiverstone_utherium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get()))
+				.addCriterion("has_dreadrock_utherium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DREADROCK_UTHERIUM_ORE.get()))
 				.addCriterion("has_depthrock_regalium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DEPTHROCK_REGALIUM_ORE.get()))
 				.addCriterion("has_shiverstone_regalium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.SHIVERSTONE_REGALIUM_ORE.get()))
+				.addCriterion("has_dreadrock_rogdorium", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.DREADROCK_ROGDORIUM_ORE.get()))
 				.save(consumer, "undergarden:undergarden/mine_ore");
 
 		AdvancementHolder all_ore_blocks = Advancement.Builder.advancement()
@@ -430,21 +434,6 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				.addCriterion("has_forgotten_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.FORGOTTEN_INGOT.get()))
 				.save(consumer, "undergarden:undergarden/forgotten_ingot");
 
-		AdvancementHolder enter_depths = Advancement.Builder.advancement()
-			.parent(forgotten_ingot)
-			.display(
-				UGBlocks.DREADROCK.get(),
-				Component.translatable("advancement.undergarden.enter_depths.title"),
-				Component.translatable("advancement.undergarden.enter_depths.desc"),
-				null,
-				AdvancementType.GOAL,
-				true,
-				true,
-				false
-			)
-			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.DEPTHS)))
-			.save(consumer, "undergarden:undergarden/enter_depths");
-
 		AdvancementHolder forgotten_tools = Advancement.Builder.advancement()
 				.parent(forgotten_ingot)
 				.display(
@@ -504,6 +493,53 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				)
 				.addCriterion("has_disc", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.GLOOMPER_SECRET_DISC.get()))
 				.save(consumer, "undergarden:undergarden/gloomper_secret_disc");
+
+		AdvancementHolder enter_depths = Advancement.Builder.advancement()
+			.parent(enter_undergarden)
+			.display(
+				UGBlocks.DREADROCK.get(),
+				Component.translatable("advancement.undergarden.enter_depths.title"),
+				Component.translatable("advancement.undergarden.enter_depths.desc"),
+				null,
+				AdvancementType.GOAL,
+				true,
+				true,
+				false
+			)
+			.requirements(AdvancementRequirements.Strategy.OR)
+			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.DEPTHS)))
+			.addCriterion("has_entered_infected_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.INFECTED_DEPTHS)))
+			.save(consumer, "undergarden:undergarden/enter_depths");
+
+		AdvancementHolder contract_utheric_infection = Advancement.Builder.advancement()
+			.parent(enter_depths)
+			.display(
+				UGItems.UTHERIUM_CRYSTAL.get(),
+				Component.translatable("advancement.undergarden.contract_utheric_infection.title"),
+				Component.translatable("advancement.undergarden.contract_utheric_infection.desc"),
+				null,
+				AdvancementType.TASK,
+				true,
+				true,
+				false
+			)
+			.addCriterion("has_contracted_utheric_infection", UthericInfectionTrigger.TriggerInstance.isInfected())
+			.save(consumer, "undergarden:undergarden/contract_utheric_infection");
+
+		AdvancementHolder cure_utheric_infection = Advancement.Builder.advancement()
+			.parent(contract_utheric_infection)
+			.display(
+				UGItems.ROGDORIUM_CRYSTAL.get(),
+				Component.translatable("advancement.undergarden.cure_utheric_infection.title"),
+				Component.translatable("advancement.undergarden.cure_utheric_infection.desc"),
+				null,
+				AdvancementType.TASK,
+				true,
+				true,
+				false
+			)
+			.addCriterion("has_purity_effect", EffectsChangedTrigger.TriggerInstance.hasEffects(MobEffectsPredicate.Builder.effects().and(UGEffects.PURITY.get())))
+			.save(consumer, "undergarden:undergarden/cure_utheric_infection");
 	}
 
 	protected static Advancement.Builder addBiomes(Advancement.Builder builder, List<ResourceKey<Biome>> biomes) {

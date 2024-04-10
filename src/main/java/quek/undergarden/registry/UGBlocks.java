@@ -7,7 +7,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -15,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
@@ -22,6 +26,7 @@ import quek.undergarden.block.*;
 import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.item.tool.slingshot.GrongletItem;
+import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.world.gen.tree.UGTreeGrowers;
 
 import java.util.Objects;
@@ -102,23 +107,22 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> DEPTHROCK_CLOGGRUM_ORE = register("depthrock_cloggrum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_CLOGGRUM_ORE = register("shiverstone_cloggrum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_FROSTSTEEL_ORE = register("shiverstone_froststeel_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
-	public static final DeferredBlock<Block> DREADROCK_ROGDORIUM_ORE = register("dreadrock_rogdorium_ore", () -> new DreadrockBlock(BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> DEPTHROCK_UTHERIUM_ORE = register("depthrock_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_UTHERIUM_ORE = register("shiverstone_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> TREMBLECRUST_UTHERIUM_ORE = register("tremblecrust_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()).strength(7.0F, 24.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> DREADROCK_UTHERIUM_ORE = register("dreadrock_utherium_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> DEPTHROCK_REGALIUM_ORE = register("depthrock_regalium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> SHIVERSTONE_REGALIUM_ORE = register("shiverstone_regalium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DREADROCK_ROGDORIUM_ORE = register("dreadrock_rogdorium_ore", () -> new DreadrockOreBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).strength(4.5F, 12.0F).requiresCorrectToolForDrops()));
 
 	//storage blocks
 	public static final DeferredBlock<Block> RAW_CLOGGRUM_BLOCK = register("raw_cloggrum_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
 	public static final DeferredBlock<Block> RAW_FROSTSTEEL_BLOCK = register("raw_froststeel_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_STEM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
-	public static final DeferredBlock<Block> RAW_ROGDORIUM_BLOCK = register("raw_rogdorium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
 	public static final DeferredBlock<Block> CLOGGRUM_BLOCK = register("cloggrum_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 	public static final DeferredBlock<Block> FROSTSTEEL_BLOCK = register("froststeel_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_STEM).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
-	public static final DeferredBlock<Block> ROGDORIUM_BLOCK = register("rogdorium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 	public static final DeferredBlock<Block> UTHERIUM_BLOCK = register("utherium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 	public static final DeferredBlock<Block> REGALIUM_BLOCK = register("regalium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
+	public static final DeferredBlock<Block> ROGDORIUM_BLOCK = register("rogdorium_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 	public static final DeferredBlock<Block> FORGOTTEN_BLOCK = register("forgotten_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).requiresCorrectToolForDrops().strength(50.0F, 1200.0F).sound(SoundType.NETHERITE_BLOCK)));
 
 	//normal blocks
@@ -262,6 +266,25 @@ public class UGBlocks {
 
 	public static final DeferredBlock<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
 
+	//ancient root
+	public static final DeferredBlock<Block> ANCIENT_ROOT = register("ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+	public static final DeferredBlock<Block> DENIZEN_TOTEM = register("denizen_totem", () -> new DenizenTotemBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).strength(4.0F).lightLevel((state) -> state.getValue(DenizenTotemBlock.ACTIVE) ? 15 : 0)));
+	public static final DeferredBlock<Block> ANCIENT_ROOT_PLANKS = register("ancient_root_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+	public static final DeferredBlock<StairBlock> ANCIENT_ROOT_STAIRS = register("ancient_root_stairs", () -> new StairBlock(() -> ANCIENT_ROOT_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT_PLANKS.get())));
+	public static final DeferredBlock<SlabBlock> ANCIENT_ROOT_SLAB = register("ancient_root_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT_PLANKS.get())));
+	public static final DeferredBlock<FenceBlock> ANCIENT_ROOT_FENCE = register("ancient_root_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
+	public static final DeferredBlock<FenceGateBlock> ANCIENT_ROOT_FENCE_GATE = register("ancient_root_fence_gate", () -> new FenceGateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
+	public static final DeferredBlock<DoorBlock> ANCIENT_ROOT_DOOR = register("ancient_root_door", () -> new DoorBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR)));
+	public static final DeferredBlock<TrapDoorBlock> ANCIENT_ROOT_TRAPDOOR = register("ancient_root_trapdoor", () -> new TrapDoorBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR)));
+	public static final DeferredBlock<ButtonBlock> ANCIENT_ROOT_BUTTON = register("ancient_root_button", () -> new ButtonBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+	public static final DeferredBlock<PressurePlateBlock> ANCIENT_ROOT_PRESSURE_PLATE = register("ancient_root_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
+
+	public static final DeferredBlock<StandingSignBlock> ANCIENT_ROOT_SIGN = register("ancient_root_sign", () -> new UGStandingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SIGN)));
+	public static final DeferredBlock<WallSignBlock> ANCIENT_ROOT_WALL_SIGN = BLOCKS.register("ancient_root_wall_sign", () -> new UGWallSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_WALL_SIGN)));
+	public static final DeferredBlock<CeilingHangingSignBlock> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_HANGING_SIGN)));
+	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = BLOCKS.register("ancient_root_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_WALL_HANGING_SIGN)));
+
+
 	//flower pots
 	public static final DeferredBlock<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = BLOCKS.register("potted_smogstem_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)));
 	public static final DeferredBlock<FlowerPotBlock> POTTED_WIGGLEWOOD_SAPLING = BLOCKS.register("potted_wigglewood_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, WIGGLEWOOD_SAPLING, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)));
@@ -299,7 +322,7 @@ public class UGBlocks {
 				return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN);
 			} else if (Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DEPTHROCK_REGALIUM_ORE.get() || Objects.requireNonNull(block.get()) == SHIVERSTONE_REGALIUM_ORE.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(Rarity.UNCOMMON));
-			} else if (Objects.requireNonNull(block.get()) == ROGDORIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == RAW_ROGDORIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DREADROCK_ROGDORIUM_ORE.get()) {
+			} else if (Objects.requireNonNull(block.get()) == ROGDORIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DREADROCK_ROGDORIUM_ORE.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.ROGDORIUM));
 			} else if (Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.FORGOTTEN));
@@ -335,12 +358,29 @@ public class UGBlocks {
 				return new SignItem(new Item.Properties().stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
 			} else if (Objects.requireNonNull(block.get()) == GRONGLE_SIGN.get()) {
 				return new SignItem(new Item.Properties().stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
+			} else if (Objects.requireNonNull(block.get()) == ANCIENT_ROOT_SIGN.get()) {
+				return new SignItem(new Item.Properties().stacksTo(16), ANCIENT_ROOT_SIGN.get(), ANCIENT_ROOT_WALL_SIGN.get());
 			} else if (Objects.requireNonNull(block.get()) == SMOGSTEM_HANGING_SIGN.get()) {
 				return new HangingSignItem(SMOGSTEM_HANGING_SIGN.get(), SMOGSTEM_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (Objects.requireNonNull(block.get()) == WIGGLEWOOD_HANGING_SIGN.get()) {
 				return new HangingSignItem(WIGGLEWOOD_HANGING_SIGN.get(), WIGGLEWOOD_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (Objects.requireNonNull(block.get()) == GRONGLE_HANGING_SIGN.get()) {
 				return new HangingSignItem(GRONGLE_HANGING_SIGN.get(), GRONGLE_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
+			} else if (Objects.requireNonNull(block.get()) == ANCIENT_ROOT_HANGING_SIGN.get()) {
+				return new HangingSignItem(ANCIENT_ROOT_HANGING_SIGN.get(), ANCIENT_ROOT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
+			} else if (Objects.requireNonNull(block.get()) == UTHERIUM_GROWTH.get()) {
+				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties()) {
+					@Override
+					public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotID, boolean isSelected) {
+						int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
+						if (entity instanceof Player player && !level.isClientSide()) {
+							if (player.tickCount % 100 == 0 && data < 20) {
+								player.setData(UGAttachments.UTHERIC_INFECTION.get(), data + stack.getCount());
+								PacketDistributor.TRACKING_ENTITY_AND_SELF.with(player).send(new UthericInfectionPacket(player.getId(), player.getData(UGAttachments.UTHERIC_INFECTION)));
+							}
+						}
+					}
+				};
 			} else {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			}

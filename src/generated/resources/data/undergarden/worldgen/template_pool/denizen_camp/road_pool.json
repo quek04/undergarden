@@ -1,0 +1,95 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/totem_circle/circle_1",
+        "processors": "undergarden:denizen_camp_wood_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/totem_circle/circle_2",
+        "processors": "undergarden:denizen_camp_wood_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/road/road_straight_1",
+        "processors": "undergarden:denizen_camp_road_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/road/road_straight_2",
+        "processors": "undergarden:denizen_camp_road_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/road/road_straight_3",
+        "processors": "undergarden:denizen_camp_road_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/road/road_straight_4",
+        "processors": "undergarden:denizen_camp_road_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/road/road_turn_1",
+        "processors": "undergarden:denizen_camp_road_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/road/road_turn_2",
+        "processors": "undergarden:denizen_camp_road_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/road/road_turn_3",
+        "processors": "undergarden:denizen_camp_road_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:denizen_camp/road/road_turn_4",
+        "processors": "undergarden:denizen_camp_road_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

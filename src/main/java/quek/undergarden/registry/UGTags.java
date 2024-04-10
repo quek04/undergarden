@@ -23,36 +23,33 @@ public class UGTags {
 
 		public static final TagKey<Item> RAW_MATERIALS_CLOGGRUM = forgeTag("raw_materials/cloggrum");
 		public static final TagKey<Item> RAW_MATERIALS_FROSTSTEEL = forgeTag("raw_materials/froststeel");
-		public static final TagKey<Item> RAW_MATERIALS_ROGDORIUM = forgeTag("raw_materials/rogdorium");
 
 		public static final TagKey<Item> INGOTS_CLOGGRUM = forgeTag("ingots/cloggrum");
 		public static final TagKey<Item> INGOTS_FROSTSTEEL = forgeTag("ingots/froststeel");
-		public static final TagKey<Item> INGOTS_ROGDORIUM = forgeTag("ingots/rogdorium");
-		public static final TagKey<Item> INGOTS_UTHERIUM = forgeTag("ingots/utherium");
-		public static final TagKey<Item> INGOTS_REGALIUM = forgeTag("ingots/regalium");
+		public static final TagKey<Item> GEMS_UTHERIUM = forgeTag("gems/utherium");
+		public static final TagKey<Item> GEMS_REGALIUM = forgeTag("gems/regalium");
+		public static final TagKey<Item> GEMS_ROGDORIUM = forgeTag("gems/rogdorium");
 		public static final TagKey<Item> INGOTS_FORGOTTEN_METAL = forgeTag("ingots/forgotten_metal");
 
 		public static final TagKey<Item> NUGGETS_CLOGGRUM = forgeTag("nuggets/cloggrum");
 		public static final TagKey<Item> NUGGETS_FROSTSTEEL = forgeTag("nuggets/froststeel");
-		public static final TagKey<Item> NUGGETS_ROGDORIUM = forgeTag("nuggets/rogdorium");
 		public static final TagKey<Item> NUGGETS_FORGOTTEN_METAL = forgeTag("nuggets/forgotten_metal");
 
 		public static final TagKey<Item> ORES_CLOGGRUM = forgeTag("ores/cloggrum");
 		public static final TagKey<Item> ORES_FROSTSTEEL = forgeTag("ores/froststeel");
-		public static final TagKey<Item> ORES_ROGDORIUM = forgeTag("ores/rogdorium");
 		public static final TagKey<Item> ORES_UTHERIUM = forgeTag("ores/utherium");
 		public static final TagKey<Item> ORES_REGALIUM = forgeTag("ores/regalium");
+		public static final TagKey<Item> ORES_ROGDORIUM = forgeTag("ores/rogdorium");
 
 		public static final TagKey<Item> STORAGE_BLOCKS_CLOGGRUM = forgeTag("storage_blocks/cloggrum");
 		public static final TagKey<Item> STORAGE_BLOCKS_FROSTSTEEL = forgeTag("storage_blocks/froststeel");
-		public static final TagKey<Item> STORAGE_BLOCKS_ROGDORIUM = forgeTag("storage_blocks/rogdorium");
 		public static final TagKey<Item> STORAGE_BLOCKS_UTHERIUM = forgeTag("storage_blocks/utherium");
 		public static final TagKey<Item> STORAGE_BLOCKS_REGALIUM = forgeTag("storage_blocks/regalium");
+		public static final TagKey<Item> STORAGE_BLOCKS_ROGDORIUM = forgeTag("storage_blocks/rogdorium");
 		public static final TagKey<Item> STORAGE_BLOCKS_FORGOTTEN_METAL = forgeTag("storage_blocks/forgotten_metal");
 
 		public static final TagKey<Item> STORAGE_BLOCKS_RAW_CLOGGRUM = forgeTag("storage_blocks/raw_cloggrum");
 		public static final TagKey<Item> STORAGE_BLOCKS_RAW_FROSTSTEEL = forgeTag("storage_blocks/raw_froststeel");
-		public static final TagKey<Item> STORAGE_BLOCKS_RAW_ROGDORIUM = forgeTag("storage_blocks/raw_rogdorium");
 
 		private static TagKey<Item> tag(String name) {
 			return ItemTags.create(new ResourceLocation(Undergarden.MODID, name));
@@ -72,6 +69,7 @@ public class UGTags {
 		public static final TagKey<Block> TREMBLECRUST_ORE_REPLACEABLES = tag("tremblecrust_ore_replaceables");
 		public static final TagKey<Block> UNDERGARDEN_CARVER_REPLACEABLES = tag("undergarden_carver_replaceables");
 		public static final TagKey<Block> MUSHROOMS = tag("mushrooms");
+		public static final TagKey<Block> UTHERIC_INFECTION_BLOCKS = tag("utheric_infection_blocks");
 		public static final TagKey<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
 		public static final TagKey<Block> SMOGSTEM_LOGS = tag("smogstem_logs");
 		public static final TagKey<Block> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
@@ -82,20 +80,19 @@ public class UGTags {
 
 		public static final TagKey<Block> ORES_CLOGGRUM = forgeTag("ores/cloggrum");
 		public static final TagKey<Block> ORES_FROSTSTEEL = forgeTag("ores/froststeel");
-		public static final TagKey<Block> ORES_ROGDORIUM = forgeTag("ores/rogdorium");
 		public static final TagKey<Block> ORES_UTHERIUM = forgeTag("ores/utherium");
 		public static final TagKey<Block> ORES_REGALIUM = forgeTag("ores/regalium");
+		public static final TagKey<Block> ORES_ROGDORIUM = forgeTag("ores/rogdorium");
 
 		public static final TagKey<Block> STORAGE_BLOCKS_CLOGGRUM = forgeTag("storage_blocks/cloggrum");
 		public static final TagKey<Block> STORAGE_BLOCKS_FROSTSTEEL = forgeTag("storage_blocks/froststeel");
-		public static final TagKey<Block> STORAGE_BLOCKS_ROGDORIUM = forgeTag("storage_blocks/rogdorium");
 		public static final TagKey<Block> STORAGE_BLOCKS_UTHERIUM = forgeTag("storage_blocks/utherium");
 		public static final TagKey<Block> STORAGE_BLOCKS_REGALIUM = forgeTag("storage_blocks/regalium");
+		public static final TagKey<Block> STORAGE_BLOCKS_ROGDORIUM = forgeTag("storage_blocks/rogdorium");
 		public static final TagKey<Block> STORAGE_BLOCKS_FORGOTTEN_METAL = forgeTag("storage_blocks/forgotten_metal");
 
 		public static final TagKey<Block> STORAGE_BLOCKS_RAW_CLOGGRUM = forgeTag("storage_blocks/raw_cloggrum");
 		public static final TagKey<Block> STORAGE_BLOCKS_RAW_FROSTSTEEL = forgeTag("storage_blocks/raw_froststeel");
-		public static final TagKey<Block> STORAGE_BLOCKS_RAW_ROGDORIUM = forgeTag("storage_blocks/raw_rogdorium");
 
 		public static final TagKey<Block> DEPTHROCK_GROUND = forgeTag("ore_bearing_ground/depthrock");
 		public static final TagKey<Block> DEPTHROCK_ORES = forgeTag("ores_in_ground/depthrock");
@@ -125,6 +122,7 @@ public class UGTags {
 		public static final TagKey<EntityType<?>> IMMUNE_TO_VIRULENT_MIX = tag("immune_to_virulent_mix");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_SCINTLING_GOO = tag("immune_to_scintling_goo");
 		public static final TagKey<EntityType<?>> IMMUNE_TO_BLISTERBERRY_BUSH = tag("immune_to_blisterberry_bush");
+		public static final TagKey<EntityType<?>> IMMUNE_TO_INFECTION = tag("immune_to_utheric_infection");
 
 		private static TagKey<EntityType<?>> tag(String name) {
 			return EntityTypeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());
@@ -144,8 +142,11 @@ public class UGTags {
 
 		public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
 
+		public static final TagKey<Biome> TICKS_UTHERIC_INFECTION = tag("ticks_utheric_infection");
+
 		public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
 		public static final TagKey<Biome> HAS_FORGOTTEN_VESTIGE = tag("has_structure/forgotten_vestige");
+		public static final TagKey<Biome> HAS_DENIZEN_CAMP = tag("has_structure/denizen_camp");
 
 		private static TagKey<Biome> tag(String name) {
 			return BiomeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());

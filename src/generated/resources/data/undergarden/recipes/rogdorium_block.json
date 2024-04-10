@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "undergarden:rogdorium_ingot"
+      "item": "undergarden:rogdorium_crystal"
     }
   },
   "pattern": [
@@ -13,6 +13,5 @@
   ],
   "result": {
     "item": "undergarden:rogdorium_block"
-  },
-  "show_notification": true
+  }
 }

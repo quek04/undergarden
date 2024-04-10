@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.criterion.SlingshotFireTrigger;
 import quek.undergarden.criterion.StonebornTradeTrigger;
+import quek.undergarden.criterion.UthericInfectionTrigger;
 
 public class UGCriteria {
 
@@ -14,4 +15,5 @@ public class UGCriteria {
 
 	public static final DeferredHolder<CriterionTrigger<?>, StonebornTradeTrigger> STONEBORN_TRADE = CRITERIA.register("stoneborn_trade", StonebornTradeTrigger::new);
 	public static final DeferredHolder<CriterionTrigger<?>, SlingshotFireTrigger> SLINGSHOT_FIRE = CRITERIA.register("slingshot_fire", SlingshotFireTrigger::new);
+	public static final DeferredHolder<CriterionTrigger<?>, UthericInfectionTrigger> UTHERIC_INFECTION = CRITERIA.register("utheric_infection", UthericInfectionTrigger::new);
 }

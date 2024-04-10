@@ -7,7 +7,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.StonebornModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.StonebornEyesLayer;
-import quek.undergarden.entity.stoneborn.Stoneborn;
+import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 
 public class StonebornRender extends MobRenderer<Stoneborn, StonebornModel<Stoneborn>> {
 

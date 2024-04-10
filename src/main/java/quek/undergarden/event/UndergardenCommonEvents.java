@@ -2,8 +2,11 @@ package quek.undergarden.event;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -35,25 +38,29 @@ import net.neoforged.neoforge.common.ToolActions;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.event.entity.living.*;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
-import quek.undergarden.entity.Forgotten;
+import net.neoforged.neoforge.network.PacketDistributor;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
-import quek.undergarden.entity.boss.ForgottenGuardian;
-import quek.undergarden.entity.cavern.CavernMonster;
-import quek.undergarden.entity.cavern.Muncher;
-import quek.undergarden.entity.cavern.Nargoyle;
-import quek.undergarden.entity.cavern.Sploogie;
+import quek.undergarden.entity.monster.Denizen;
+import quek.undergarden.entity.monster.Forgotten;
+import quek.undergarden.entity.monster.boss.ForgottenGuardian;
+import quek.undergarden.entity.monster.cavern.CavernMonster;
+import quek.undergarden.entity.monster.cavern.Muncher;
+import quek.undergarden.entity.monster.cavern.Nargoyle;
+import quek.undergarden.entity.monster.cavern.Sploogie;
+import quek.undergarden.entity.monster.rotspawn.Rotbeast;
+import quek.undergarden.entity.monster.rotspawn.Rotling;
+import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
+import quek.undergarden.entity.monster.rotspawn.Rotwalker;
+import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.slingshot.*;
-import quek.undergarden.entity.rotspawn.Rotbeast;
-import quek.undergarden.entity.rotspawn.Rotling;
-import quek.undergarden.entity.rotspawn.RotspawnMonster;
-import quek.undergarden.entity.rotspawn.Rotwalker;
-import quek.undergarden.entity.stoneborn.Stoneborn;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
+import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.*;
 
 public class UndergardenCommonEvents {
@@ -65,6 +72,9 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickUthericInfection);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::syncUthericInfectionOnLogin);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::syncUthericInfectionOnDimensionChange);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
@@ -155,6 +165,7 @@ public class UndergardenCommonEvents {
 			fire.setFlammable(UGBlocks.SMOGSTEM_PLANKS.get(), 5, 20);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_PLANKS.get(), 5, 20);
 			fire.setFlammable(UGBlocks.GRONGLE_PLANKS.get(), 5, 20);
+			fire.setFlammable(UGBlocks.ANCIENT_ROOT_PLANKS.get(), 5, 20);
 			//slabs
 			fire.setFlammable(UGBlocks.SMOGSTEM_SLAB.get(), 5, 20);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_SLAB.get(), 5, 20);
@@ -175,6 +186,7 @@ public class UndergardenCommonEvents {
 			fire.setFlammable(UGBlocks.SMOGSTEM_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.GRONGLE_LOG.get(), 5, 5);
+			fire.setFlammable(UGBlocks.ANCIENT_ROOT.get(), 5, 5);
 			//stripped logs
 			fire.setFlammable(UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), 5, 5);
@@ -233,6 +245,7 @@ public class UndergardenCommonEvents {
 		event.register(UGEntityTypes.MOG.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.SMOG_MOG.get(), SpawnPlacements.Type.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SmogMog::checkSmogMogSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.FORGOTTEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.DENIZEN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 	}
 
 	private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
@@ -253,7 +266,8 @@ public class UndergardenCommonEvents {
 		event.put(UGEntityTypes.GWIB.get(), Gwib.registerAttributes().build());
 		event.put(UGEntityTypes.MOG.get(), Mog.registerAttributes().build());
 		event.put(UGEntityTypes.SMOG_MOG.get(), SmogMog.registerAttributes().build());
-		event.put(UGEntityTypes.FORGOTTEN.get(), Forgotten.createAttributes().build());
+		event.put(UGEntityTypes.FORGOTTEN.get(), Forgotten.registerAttributes().build());
+		event.put(UGEntityTypes.DENIZEN.get(), Denizen.registerAttributes().build());
 	}
 
 	private static void tickPortalLogic(LivingEvent.LivingTickEvent event) {
@@ -261,6 +275,68 @@ public class UndergardenCommonEvents {
 		if (entity instanceof Player player) {
 			player.getData(UGAttachments.UNDERGARDEN_PORTAL).handleUndergardenPortal(player);
 		}
+	}
+
+	private static void tickUthericInfection(LivingEvent.LivingTickEvent event) {
+		LivingEntity entity = event.getEntity();
+		if (entity.tickCount % 20 == 0 && !entity.level().isClientSide() && !entity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
+			int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
+			if (data >= 20) {
+				entity.hurt(entity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
+			} else {
+				if (entity.level().getBiome(entity.blockPosition()).is(UGTags.Biomes.TICKS_UTHERIC_INFECTION) && entity.tickCount % 400 == 0) {
+					entity.setData(UGAttachments.UTHERIC_INFECTION, data + 1);
+				} else {
+					if (entity.tickCount % 100 == 0) {
+						int blocks = countInfectedBlocksNearby(entity.level(), entity.blockPosition(), entity.getRandom());
+						if (blocks > 0) {
+							entity.setData(UGAttachments.UTHERIC_INFECTION, data + Mth.clamp(Mth.ceil(Mth.sqrt(blocks / 2.0F) + 1), 1, 5));
+						} else if (entity.tickCount % 400 == 0 && data > 0) {
+							entity.setData(UGAttachments.UTHERIC_INFECTION, data - 1);
+						}
+					}
+				}
+				sendSyncPacket(entity);
+			}
+			if (entity instanceof ServerPlayer player) {
+				UGCriteria.UTHERIC_INFECTION.get().trigger(player, entity.getData(UGAttachments.UTHERIC_INFECTION));
+				//Logger.getLogger("infection").info("Entity: " + entity.getType() + "\nInfection Level: " + data);
+			}
+		}
+	}
+
+	private static int countInfectedBlocksNearby(Level level, BlockPos playerPos, RandomSource random) {
+		int infected = 0;
+		for (int i = 0; i <= 20; i++) {
+			BlockPos checkBlock = getRandomBlockNearby(random, playerPos, 5);
+			if (level.getBlockState(checkBlock).is(UGTags.Blocks.UTHERIC_INFECTION_BLOCKS)) {
+				infected++;
+			}
+		}
+		return infected;
+	}
+
+	private static BlockPos getRandomBlockNearby(RandomSource random, BlockPos pos, int range) {
+		int dx = random.nextInt(range * 2 + 1) - range;
+		int dy = random.nextInt(range * 2 + 1) - range;
+		int dz = random.nextInt(range * 2 + 1) - range;
+		return pos.offset(dx, dy, dz);
+	}
+
+	private static void syncUthericInfectionOnLogin(PlayerEvent.PlayerLoggedInEvent event) {
+		if (!event.getEntity().level().isClientSide()) {
+			sendSyncPacket(event.getEntity());
+		}
+	}
+
+	private static void syncUthericInfectionOnDimensionChange(PlayerEvent.PlayerChangedDimensionEvent event) {
+		if (!event.getEntity().level().isClientSide()) {
+			sendSyncPacket(event.getEntity());
+		}
+	}
+
+	private static void sendSyncPacket(LivingEntity infected) {
+		PacketDistributor.TRACKING_ENTITY_AND_SELF.with(infected).send(new UthericInfectionPacket(infected.getId(), infected.getData(UGAttachments.UTHERIC_INFECTION)));
 	}
 
 	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {

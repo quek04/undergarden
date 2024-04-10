@@ -35,7 +35,14 @@ public enum UGArmorMaterials implements ArmorMaterial {
 		map.put(ArmorItem.Type.LEGGINGS, 5);
 		map.put(ArmorItem.Type.CHESTPLATE, 6);
 		map.put(ArmorItem.Type.HELMET, 2);
-	}), 0, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.EMPTY);
+	}), 0, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.EMPTY),
+	DENIZEN_MASK("denizen_mask", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+		map.put(ArmorItem.Type.BOOTS, 0);
+		map.put(ArmorItem.Type.LEGGINGS, 0);
+		map.put(ArmorItem.Type.CHESTPLATE, 0);
+		map.put(ArmorItem.Type.HELMET, 0);
+	}), 0, SoundEvents.ARMOR_EQUIP_GENERIC, 0.0F, 0.0F, () -> Ingredient.EMPTY)
+	;
 
 	private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
 		map.put(ArmorItem.Type.BOOTS, 13);
