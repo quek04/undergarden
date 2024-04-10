@@ -474,7 +474,9 @@ public class UGBiomes {
 			.build());
 
 		context.register(HOWLING_PLAINS, new Biome.BiomeBuilder()
-				.generationSettings(new BiomeGenerationSettings.Builder(featureGetter, carverGetter).build())
+				.generationSettings(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)
+					.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
+					.build())
 				.mobSpawnSettings(addRotspawn(new MobSpawnSettings.Builder()).build())
 				.hasPrecipitation(false)
 				.downfall(0.0F)

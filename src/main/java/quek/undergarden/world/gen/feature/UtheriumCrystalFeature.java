@@ -27,7 +27,7 @@ import java.util.Optional;
 
 public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration> {
 
-	private static final ImmutableList<Block> CAN_PLACE_ON = ImmutableList.of(UGBlocks.DREADROCK.get(), UGBlocks.DREADROCK_ROGDORIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get(), UGBlocks.UTHERIUM_GROWTH.get(), UGBlocks.COARSE_DEEPSOIL.get());
+	private static final ImmutableList<Block> CAN_PLACE_ON = ImmutableList.of(UGBlocks.DREADROCK.get(), UGBlocks.DREADROCK_ROGDORIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get(), UGBlocks.UTHERIUM_GROWTH.get(), UGBlocks.COARSE_DEEPSOIL.get(), Blocks.DIRT, UGBlocks.TREMBLECRUST.get());
 
 	public UtheriumCrystalFeature(Codec<UtheriumCrystalConfiguration> codec) {
 		super(codec);

@@ -343,7 +343,7 @@ public class UGDimensions {
 				DensityFunctions.zero(), //vein ridged
 				DensityFunctions.zero() //vein gap
 			),
-			SurfaceRules.sequence(
+			/*SurfaceRules.sequence(
 				SurfaceRules.ifTrue(
 					SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0),
 					SurfaceRules.ifTrue(
@@ -354,7 +354,8 @@ public class UGDimensions {
 						)
 					)
 				)
-			),
+			),*/
+			SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState()),
 			List.of(),
 			-64,
 			false,

@@ -136,49 +136,9 @@
   "sea_level": -64,
   "spawn_target": [],
   "surface_rule": {
-    "type": "minecraft:sequence",
-    "sequence": [
-      {
-        "type": "minecraft:condition",
-        "if_true": {
-          "type": "minecraft:y_above",
-          "add_stone_depth": false,
-          "anchor": {
-            "absolute": 0
-          },
-          "surface_depth_multiplier": 0
-        },
-        "then_run": {
-          "type": "minecraft:condition",
-          "if_true": {
-            "type": "minecraft:not",
-            "invert": {
-              "type": "minecraft:y_above",
-              "add_stone_depth": false,
-              "anchor": {
-                "absolute": 72
-              },
-              "surface_depth_multiplier": 0
-            }
-          },
-          "then_run": {
-            "type": "minecraft:condition",
-            "if_true": {
-              "type": "minecraft:stone_depth",
-              "add_surface_depth": true,
-              "offset": 0,
-              "secondary_depth_range": 0,
-              "surface_type": "floor"
-            },
-            "then_run": {
-              "type": "minecraft:block",
-              "result_state": {
-                "Name": "minecraft:dirt"
-              }
-            }
-          }
-        }
-      }
-    ]
+    "type": "minecraft:block",
+    "result_state": {
+      "Name": "undergarden:tremblecrust"
+    }
   }
 }
