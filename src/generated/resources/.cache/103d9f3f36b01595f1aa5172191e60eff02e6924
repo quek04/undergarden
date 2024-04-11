@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-10T23:39:48.5343518	Registries
+// 1.20.4	2024-04-11T10:35:31.65537	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -23,7 +23,7 @@ d33591ec67bb6064931c4221b552acd2a6faee94 data/undergarden/worldgen/biome/forgott
 eef4047246029cda64161a51d2a12d44ba2e4417 data/undergarden/worldgen/biome/frostfields.json
 79957081461e5fc05ebdd13178f9bff81e772735 data/undergarden/worldgen/biome/frosty_smogstem_forest.json
 67b874c6db99f1f81c91f2cd6a664f6ccbd493a4 data/undergarden/worldgen/biome/gronglegrowth.json
-c7bc2640fe0231108907d23e084404a68a9bd9c8 data/undergarden/worldgen/biome/howling_plains.json
+046ec730f615e43610a73c984a7b0efbca564498 data/undergarden/worldgen/biome/howling_plains.json
 c4df97b40f689d2fabaaa5b668bc1e7dbbaad89d data/undergarden/worldgen/biome/icy_sea.json
 76b334488707e23739899d435b088bafa72bf5ca data/undergarden/worldgen/biome/indigo_mushroom_bog.json
 14953c95a6af2c019b5cf71cfeda97f15a7c5229 data/undergarden/worldgen/biome/infected_depths.json
@@ -32,6 +32,7 @@ f54d408e71c20f8fcf0babe0b741a1a02ed7603f data/undergarden/worldgen/biome/smogste
 8fac1f1507fef95906ab6cb617d8cd94a59971d9 data/undergarden/worldgen/biome/smog_spires.json
 669e99e62e2560880e851dceef1d8fe98038169d data/undergarden/worldgen/biome/veil_mushroom_bog.json
 9f861efec33c8eff4f8ed28a982b4e4e8bcf8abb data/undergarden/worldgen/biome/wigglewood_forest.json
+92408d8c34d8c4d837aeb285f3358950a799e4ec data/undergarden/worldgen/configured_carver/otherside_cave.json
 c52ceaa20f1d9fb00994f25dbda621721075cbae data/undergarden/worldgen/configured_carver/undergarden_cave.json
 316d650d067fd6b4f165fce00eb44265806ca0da data/undergarden/worldgen/configured_feature/amorous_bristle_patch.json
 3665db727b0f2f1e20896cf770a8cbd9cd7b0f80 data/undergarden/worldgen/configured_feature/ashen_deepturf_patch.json

@@ -19,6 +19,7 @@ import quek.undergarden.Undergarden;
 public class UGConfiguredCarvers {
 
 	public static final ResourceKey<ConfiguredWorldCarver<?>> UNDERGARDEN_CAVE = ResourceKey.create(Registries.CONFIGURED_CARVER, new ResourceLocation(Undergarden.MODID, "undergarden_cave"));
+	public static final ResourceKey<ConfiguredWorldCarver<?>> OTHERSIDE_CAVE = ResourceKey.create(Registries.CONFIGURED_CARVER, new ResourceLocation(Undergarden.MODID, "otherside_cave"));
 
 	public static void bootstrap(BootstapContext<ConfiguredWorldCarver<?>> context) {
 		HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
@@ -29,6 +30,18 @@ public class UGConfiguredCarvers {
 				ConstantFloat.of(0.5F), //y scale
 				VerticalAnchor.absolute(11), //liquid level
 				BuiltInRegistries.BLOCK.getOrCreateTag(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES), //replacable blocks
+				UniformFloat.of(0.7F, 1.4F), //horizontal radius multiplier
+				UniformFloat.of(0.8F, 1.3F), //vertical radius multiplier
+				UniformFloat.of(-1.0F, -0.4F) //floor level
+			)
+		));
+		context.register(OTHERSIDE_CAVE, UGCarvers.UNDERGARDEN_CAVE.get().configured(
+			new CaveCarverConfiguration(
+				0.5F,
+				UniformHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.TOP), //y
+				ConstantFloat.of(1.5F), //y scale
+				VerticalAnchor.absolute(-64), //liquid level
+				BuiltInRegistries.BLOCK.getOrCreateTag(UGTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES), //replacable blocks
 				UniformFloat.of(0.7F, 1.4F), //horizontal radius multiplier
 				UniformFloat.of(0.8F, 1.3F), //vertical radius multiplier
 				UniformFloat.of(-1.0F, -0.4F) //floor level

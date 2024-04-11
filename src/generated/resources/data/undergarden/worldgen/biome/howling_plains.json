@@ -1,5 +1,7 @@
 {
-  "carvers": {},
+  "carvers": {
+    "air": "undergarden:otherside_cave"
+  },
   "downfall": 0.0,
   "effects": {
     "fog_color": 12364199,

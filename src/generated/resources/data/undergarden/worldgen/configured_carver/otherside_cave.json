@@ -1,0 +1,41 @@
+{
+  "type": "undergarden:undergarden_cave",
+  "config": {
+    "floor_level": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_exclusive": -0.4,
+        "min_inclusive": -1.0
+      }
+    },
+    "horizontal_radius_multiplier": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_exclusive": 1.4,
+        "min_inclusive": 0.7
+      }
+    },
+    "lava_level": {
+      "absolute": -64
+    },
+    "probability": 0.5,
+    "replaceable": "#undergarden:otherside_carver_replaceables",
+    "vertical_radius_multiplier": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_exclusive": 1.3,
+        "min_inclusive": 0.8
+      }
+    },
+    "y": {
+      "type": "minecraft:uniform",
+      "max_inclusive": {
+        "below_top": 0
+      },
+      "min_inclusive": {
+        "above_bottom": 0
+      }
+    },
+    "yScale": 1.5
+  }
+}

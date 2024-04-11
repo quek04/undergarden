@@ -31,11 +31,13 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 	protected void addTags(HolderLookup.Provider provider) {
 		//undergarden
 		tag(UGTags.Blocks.BASE_STONE_UNDERGARDEN).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
+		tag(UGTags.Blocks.BASE_STONE_OTHERSIDE).add(UGBlocks.TREMBLECRUST.get(), UGBlocks.LOOSE_TREMBLECRUST.get());
 		tag(UGTags.Blocks.DEPTHROCK_ORE_REPLACEABLES).add(UGBlocks.DEPTHROCK.get());
 		tag(UGTags.Blocks.SHIVERSTONE_ORE_REPLACEABLES).add(UGBlocks.SHIVERSTONE.get());
 		tag(UGTags.Blocks.DREADROCK_ORE_REPLACEABLES).add(UGBlocks.DREADROCK.get());
 		tag(UGTags.Blocks.TREMBLECRUST_ORE_REPLACEABLES).add(UGBlocks.TREMBLECRUST.get(), UGBlocks.LOOSE_TREMBLECRUST.get());
 		tag(UGTags.Blocks.UNDERGARDEN_CARVER_REPLACEABLES).addTag(UGTags.Blocks.BASE_STONE_UNDERGARDEN).addTag(BlockTags.DIRT).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM).add(UGBlocks.SEDIMENT.get());
+		tag(UGTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES).addTag(UGTags.Blocks.BASE_STONE_OTHERSIDE);
 		tag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.INK_MUSHROOM.get(), UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.VEIL_MUSHROOM.get(), UGBlocks.BLOOD_MUSHROOM.get());
 		tag(UGTags.Blocks.UTHERIC_INFECTION_BLOCKS).add(UGBlocks.UTHERIUM_GROWTH.get());
 		tag(UGTags.Blocks.PORTAL_FRAME_BLOCKS).add(Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS, Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_TILES, Blocks.POLISHED_DEEPSLATE, Blocks.REINFORCED_DEEPSLATE, UGBlocks.DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_TILES.get(), UGBlocks.POLISHED_DEPTHROCK.get(), UGBlocks.SHIVERSTONE_BRICKS.get());
