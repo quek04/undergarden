@@ -9,7 +9,7 @@
     "grass_color": 5154490,
     "particle": {
       "options": {
-        "type": "minecraft:white_ash"
+        "type": "undergarden:otherside_ash"
       },
       "probability": 0.025
     },

@@ -482,7 +482,7 @@ public class UGBiomes {
 				.downfall(0.0F)
 				.temperature(0.8F)
 				.specialEffects(generateOthersideColors(new BiomeSpecialEffects.Builder(), 12364199, 5154490)
-					.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+					.ambientParticle(new AmbientParticleSettings(UGParticleTypes.OTHERSIDE_ASH.get(), 0.025F))
 					.build())
 			.build());
 	}

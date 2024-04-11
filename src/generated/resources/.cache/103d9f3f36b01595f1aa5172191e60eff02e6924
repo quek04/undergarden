@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-11T10:35:31.65537	Registries
+// 1.20.4	2024-04-11T11:08:26.6060171	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -23,7 +23,7 @@ d33591ec67bb6064931c4221b552acd2a6faee94 data/undergarden/worldgen/biome/forgott
 eef4047246029cda64161a51d2a12d44ba2e4417 data/undergarden/worldgen/biome/frostfields.json
 79957081461e5fc05ebdd13178f9bff81e772735 data/undergarden/worldgen/biome/frosty_smogstem_forest.json
 67b874c6db99f1f81c91f2cd6a664f6ccbd493a4 data/undergarden/worldgen/biome/gronglegrowth.json
-046ec730f615e43610a73c984a7b0efbca564498 data/undergarden/worldgen/biome/howling_plains.json
+454bf7150861c6af405e7bd86419f8f02866841c data/undergarden/worldgen/biome/howling_plains.json
 c4df97b40f689d2fabaaa5b668bc1e7dbbaad89d data/undergarden/worldgen/biome/icy_sea.json
 76b334488707e23739899d435b088bafa72bf5ca data/undergarden/worldgen/biome/indigo_mushroom_bog.json
 14953c95a6af2c019b5cf71cfeda97f15a7c5229 data/undergarden/worldgen/biome/infected_depths.json

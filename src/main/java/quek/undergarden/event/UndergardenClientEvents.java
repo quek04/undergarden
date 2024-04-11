@@ -21,6 +21,7 @@ import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
@@ -223,6 +224,7 @@ public class UndergardenClientEvents {
 		event.registerSpriteSet(UGParticleTypes.UTHERIUM_CRIT.get(), UtheriumCritParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.ROGDORIUM_SPARKLE.get(), ShimmerParticle.Provider::new);
+		event.registerSpriteSet(UGParticleTypes.OTHERSIDE_ASH.get(), OthersideAshParticle.Provider::new);
 
 		event.registerSprite(UGParticleTypes.DRIPPING_BLOOD.get(), UGDripParticles::createBloodHangParticle);
 		event.registerSprite(UGParticleTypes.FALLING_BLOOD.get(), UGDripParticles::createBloodFallParticle);
@@ -291,7 +293,7 @@ public class UndergardenClientEvents {
 				return false;
 			}
 		});
-		event.register(UGDimensions.OTHERSIDE_LEVEL.location(), new DimensionSpecialEffects(192.0F, false, DimensionSpecialEffects.SkyType.NONE, true, false) {
+		event.register(UGDimensions.OTHERSIDE_LEVEL.location(), new DimensionSpecialEffects(Float.NaN, false, DimensionSpecialEffects.SkyType.NONE, false, false) {
 			@Override
 			public Vec3 getBrightnessDependentFogColor(Vec3 fogColor, float brightness) {
 				return fogColor;
@@ -312,6 +314,11 @@ public class UndergardenClientEvents {
 			public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
 				OthersideSky.renderClouds(192, ticks, partialTick, poseStack, camX, camY, camZ, projectionMatrix);
 				OthersideSky.renderClouds(8, ticks, partialTick, poseStack, camX, camY, camZ, projectionMatrix);
+				return true;
+			}
+
+			@Override
+			public boolean renderSnowAndRain(ClientLevel level, int ticks, float partialTick, LightTexture lightTexture, double camX, double camY, double camZ) {
 				return true;
 			}
 		});
