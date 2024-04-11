@@ -68,7 +68,13 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 						return true;
 					}
 				} else {
-					return false;
+					LargeCrystal crystal = makeCrystal(blockpos, true, random, config.columnRadius.sample(random), config.stalagmiteBluntness, config.heightScale);
+
+					boolean flag = crystal.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(level);
+					if (flag) {
+						crystal.placeBlocks(level, random);
+					}
+					return true;
 				}
 			} else {
 				ColumnFeatureConfiguration config = baseConfig.clusterConfig();
