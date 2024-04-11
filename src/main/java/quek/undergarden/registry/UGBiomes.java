@@ -474,7 +474,7 @@ public class UGBiomes {
 			.build());
 
 		context.register(HOWLING_PLAINS, new Biome.BiomeBuilder()
-				.generationSettings(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)
+				.generationSettings(addOthersideOres(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
 					.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
 					.build())
 				.mobSpawnSettings(addRotspawn(new MobSpawnSettings.Builder()).build())
@@ -500,6 +500,11 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.CLOGGRUM_ORE)
 				.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.UTHERIUM_ORE)
 				.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.REGALIUM_ORE);
+	}
+
+	private static BiomeGenerationSettings.Builder addOthersideOres(BiomeGenerationSettings.Builder builder) {
+		return builder
+			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.UTHERIUM_ORE_OTHERSIDE);
 	}
 
 	private static BiomeGenerationSettings.Builder addShroomPatches(BiomeGenerationSettings.Builder builder) {
