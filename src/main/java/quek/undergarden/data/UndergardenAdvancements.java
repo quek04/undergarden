@@ -11,9 +11,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
+import quek.undergarden.criterion.DenizenCampfireDestroyedTrigger;
 import quek.undergarden.criterion.SlingshotFireTrigger;
 import quek.undergarden.criterion.StonebornTradeTrigger;
 import quek.undergarden.criterion.UthericInfectionTrigger;
@@ -540,6 +542,51 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			)
 			.addCriterion("has_purity_effect", EffectsChangedTrigger.TriggerInstance.hasEffects(MobEffectsPredicate.Builder.effects().and(UGEffects.PURITY.get())))
 			.save(consumer, "undergarden:undergarden/cure_utheric_infection");
+
+		AdvancementHolder enter_denizen_camp = Advancement.Builder.advancement()
+			.parent(enter_depths)
+			.display(
+				UGItems.DENIZEN_MASK.get(),
+				Component.translatable("advancement.undergarden.enter_denizen_camp.title"),
+				Component.translatable("advancement.undergarden.enter_denizen_camp.desc"),
+				null,
+				AdvancementType.TASK,
+				true,
+				true,
+				false
+			)
+			.addCriterion("has_entered_denizen_camp", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(UGStructures.DENIZEN_CAMP)))
+			.save(consumer, "undergarden:undergarden/enter_denizen_camp");
+
+		AdvancementHolder obtain_denizen_mask = Advancement.Builder.advancement()
+			.parent(enter_denizen_camp)
+			.display(
+				UGItems.DENIZEN_MASK.get(),
+				Component.translatable("advancement.undergarden.obtain_denizen_mask.title"),
+				Component.translatable("advancement.undergarden.obtain_denizen_mask.desc"),
+				null,
+				AdvancementType.GOAL,
+				true,
+				true,
+				false
+			)
+			.addCriterion("has_denizen_mask", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.DENIZEN_MASK.get()))
+			.save(consumer, "undergarden:undergarden/obtain_denizen_mask");
+
+		AdvancementHolder break_denizen_campfire = Advancement.Builder.advancement()
+			.parent(obtain_denizen_mask)
+			.display(
+				Blocks.CAMPFIRE,
+				Component.translatable("advancement.undergarden.break_denizen_campfire.title"),
+				Component.translatable("advancement.undergarden.break_denizen_campfire.desc"),
+				null,
+				AdvancementType.TASK,
+				true,
+				true,
+				true
+			)
+			.addCriterion("has_broken_denizen_campfire", DenizenCampfireDestroyedTrigger.TriggerInstance.destroyedCampfire(Blocks.CAMPFIRE))
+			.save(consumer, "undergarden:undergarden/break_denizen_campfire");
 	}
 
 	protected static Advancement.Builder addBiomes(Advancement.Builder builder, List<ResourceKey<Biome>> biomes) {

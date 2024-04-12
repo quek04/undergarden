@@ -25,7 +25,7 @@ public class UthericInfectionTrigger extends SimpleCriterionTrigger<UthericInfec
 
 	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<MinMaxBounds.Ints> infectionLevel) implements SimpleCriterionTrigger.SimpleInstance {
 		public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-			ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(TriggerInstance::player),
+				ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(TriggerInstance::player),
 				ExtraCodecs.strictOptionalField(MinMaxBounds.Ints.CODEC, "infectionLevel").forGetter(TriggerInstance::infectionLevel))
 			.apply(instance, TriggerInstance::new)
 		);

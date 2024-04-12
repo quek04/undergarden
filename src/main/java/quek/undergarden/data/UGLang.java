@@ -563,6 +563,15 @@ public class UGLang extends UGLangProvider {
 		addAdvTitle("cure_utheric_infection", "A Much Needed Antidote");
 		addAdvDesc("cure_utheric_infection", "Find a way to hold back the Utheric Infection.");
 
+		addAdvTitle("enter_denizen_camp", "Meeting the Locals");
+		addAdvDesc("enter_denizen_camp", "Find a Denizen Camp.");
+
+		addAdvTitle("obtain_denizen_mask", "One of Us");
+		addAdvDesc("obtain_denizen_mask", "Obtain a Mysterious Mask from a Denizen.");
+
+		addAdvTitle("break_denizen_campfire", "Party Pooper");
+		addAdvDesc("break_denizen_campfire", "Upset all of the Denizens around you by destroying their campfire.");
+
 		//addAdvTitle("otherside_root", "The Otherside");
 		//addAdvDesc("otherside_root", "Enter the realm of madness.");
 

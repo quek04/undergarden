@@ -428,6 +428,7 @@ public class UndergardenCommonEvents {
 			List<Denizen> nearbyDenizens = event.getLevel().getEntitiesOfClass(Denizen.class, new AABB(event.getPos()).inflate(4.0F));
 
 			if (!nearbyDenizens.isEmpty()) {
+				UGCriteria.DENIZEN_CAMPFIRE_DESTROYED.get().trigger((ServerPlayer) event.getPlayer(), event.getState());
 				for (Denizen denizen : nearbyDenizens) {
 					if (denizen.hasPose(Pose.SITTING)) {
 						denizen.setTarget(event.getPlayer());

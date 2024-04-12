@@ -1,0 +1,29 @@
+{
+  "parent": "undergarden:undergarden/obtain_denizen_mask",
+  "criteria": {
+    "has_broken_denizen_campfire": {
+      "conditions": {
+        "block": "minecraft:campfire"
+      },
+      "trigger": "undergarden:denizen_campfire_destroyed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.break_denizen_campfire.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:campfire"
+    },
+    "title": {
+      "translate": "advancement.undergarden.break_denizen_campfire.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_broken_denizen_campfire"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
