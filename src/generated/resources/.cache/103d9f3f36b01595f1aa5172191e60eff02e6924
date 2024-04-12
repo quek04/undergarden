@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-09T13:22:58.823361	Registries
+// 1.20.4	2024-04-11T22:57:42.0214881	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -148,7 +148,7 @@ ab35819db2ba427c865b236a5305c4d237672345 data/undergarden/worldgen/processor_lis
 86563afa4cb4c1144e9b5d11b74cf4af382bf078 data/undergarden/worldgen/structure/denizen_camp.json
 ad2f57fc9cc819318f54327e05abf31ad37c4bea data/undergarden/worldgen/structure/forgotten_vestige.json
 d56c93776ee147a59eb5a6fde19b2fab3ef2c84f data/undergarden/worldgen/structure_set/catacombs.json
-791bfa22beb28fc5abef2e78a75e25981c961882 data/undergarden/worldgen/structure_set/denizen_camp.json
+1bc744ee2159ade0199c4b742676fa2f3ed3c3c6 data/undergarden/worldgen/structure_set/denizen_camp.json
 a18d011f75183dfc630be3b5d6e364558bb258f9 data/undergarden/worldgen/structure_set/forgotten_vestige.json
 d0c24ff0d7a4d6d027ce7fa37504f5543909e2bc data/undergarden/worldgen/template_pool/catacombs/catacombs_entrance.json
 b3687472695daa6c8c3702ea85fc753e3850baf5 data/undergarden/worldgen/template_pool/catacombs/chest_pool.json
@@ -156,7 +156,7 @@ b3687472695daa6c8c3702ea85fc753e3850baf5 data/undergarden/worldgen/template_pool
 e926be6dfb7b08c81914967fda0ee9ddf280dc3d data/undergarden/worldgen/template_pool/catacombs/tunnel_pool.json
 acbce4b71d6674eea79ac8c37b8c83d98f4ab097 data/undergarden/worldgen/template_pool/catacombs/way_pool.json
 824795139ced649b68a7c8801350d3f4c4f5e105 data/undergarden/worldgen/template_pool/denizen_camp/hangout_pool.json
-87d949be148fb6f64d3fc2439b02ee16cb747752 data/undergarden/worldgen/template_pool/denizen_camp/road_pool.json
+8303ecd3676a312f88eb39c8bf6f8006ab2aed35 data/undergarden/worldgen/template_pool/denizen_camp/road_pool.json
 d626db2e0ad9623d8d7ee52e2578a8543fdfff7c data/undergarden/worldgen/template_pool/denizen_camp/totem_circle_pool.json
 f0ea9d767be9d6c125528d0ee00f9e835ee7ed3a data/undergarden/worldgen/template_pool/denizen_camp/totem_pool.json
 94680ef5148791ac88a08294cc4ed2ec018a2b68 data/undergarden/worldgen/template_pool/forgotten_vestige.json
