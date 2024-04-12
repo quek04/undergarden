@@ -12,7 +12,7 @@ import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.UGChestBoat;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
-import quek.undergarden.entity.monster.Denizen;
+import quek.undergarden.entity.monster.denizen.Denizen;
 import quek.undergarden.entity.monster.Forgotten;
 import quek.undergarden.entity.monster.boss.ForgottenGuardian;
 import quek.undergarden.entity.monster.cavern.Muncher;

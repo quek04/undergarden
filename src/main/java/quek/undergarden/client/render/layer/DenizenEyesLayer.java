@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.monster.Denizen;
+import quek.undergarden.entity.monster.denizen.Denizen;
 
 public class DenizenEyesLayer<T extends Denizen, M extends EntityModel<T>> extends RenderLayer<T, M> {
 	private static final RenderType DENIZEN_EYES = RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/denizen_eyes.png"));

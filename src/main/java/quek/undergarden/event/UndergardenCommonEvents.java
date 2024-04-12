@@ -10,6 +10,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Animal;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -45,13 +47,13 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
-import quek.undergarden.entity.monster.Denizen;
 import quek.undergarden.entity.monster.Forgotten;
 import quek.undergarden.entity.monster.boss.ForgottenGuardian;
 import quek.undergarden.entity.monster.cavern.CavernMonster;
 import quek.undergarden.entity.monster.cavern.Muncher;
 import quek.undergarden.entity.monster.cavern.Nargoyle;
 import quek.undergarden.entity.monster.cavern.Sploogie;
+import quek.undergarden.entity.monster.denizen.Denizen;
 import quek.undergarden.entity.monster.rotspawn.Rotbeast;
 import quek.undergarden.entity.monster.rotspawn.Rotling;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
@@ -62,6 +64,8 @@ import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
 import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.*;
+
+import java.util.List;
 
 public class UndergardenCommonEvents {
 
@@ -80,6 +84,7 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::cancelPlayerFallDamageOnDweller);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::lookedAtEndermanWithGloomgourd);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::angerDenizensWhenCampfireIsBroken);
 	}
 
 	private static void setup(FMLCommonSetupEvent event) {
@@ -416,5 +421,19 @@ public class UndergardenCommonEvents {
 		vec31 = vec31.normalize();
 		double d1 = vec3.dot(vec31);
 		return d1 > 1.0D - 0.025D / d0 && player.hasLineOfSight(enderMan);
+	}
+
+	public static void angerDenizensWhenCampfireIsBroken(BlockEvent.BreakEvent event) {
+		if (!event.getPlayer().isCreative() && UGPointOfInterests.DENIZEN_RESTING_BLOCKS.get().matchingStates().contains(event.getState())) {
+			List<Denizen> nearbyDenizens = event.getLevel().getEntitiesOfClass(Denizen.class, new AABB(event.getPos()).inflate(4.0F));
+
+			if (!nearbyDenizens.isEmpty()) {
+				for (Denizen denizen : nearbyDenizens) {
+					if (denizen.hasPose(Pose.SITTING)) {
+						denizen.setTarget(event.getPlayer());
+					}
+				}
+			}
+		}
 	}
 }

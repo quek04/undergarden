@@ -7,9 +7,10 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
 
 //copy of https://github.com/TeamTwilight/twilightforest/blob/1.20.x/src/main/java/twilightforest/client/model/entity/FixedHumanoidModel.java
-public class FixedHumanoidModel<T extends LivingEntity> extends HumanoidModel<T> {
+public abstract class FixedHumanoidModel<T extends LivingEntity> extends HumanoidModel<T> {
 	private final float armWidth;
 
 	public FixedHumanoidModel(ModelPart part, float armWidth) {
@@ -34,7 +35,7 @@ public class FixedHumanoidModel<T extends LivingEntity> extends HumanoidModel<T>
 		this.leftLeg.yRot = 0.0F;
 		this.rightLeg.zRot = 0.0F;
 		this.leftLeg.zRot = 0.0F;
-		if (this.riding) {
+		if (this.riding || entity.getPose() == Pose.SITTING) {
 			this.rightArm.xRot += (-(float)Math.PI / 5F);
 			this.leftArm.xRot += (-(float)Math.PI / 5F);
 			this.rightLeg.xRot = -1.4137167F;

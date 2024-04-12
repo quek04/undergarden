@@ -6,7 +6,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.HumanoidArm;
-import quek.undergarden.entity.monster.Denizen;
+import quek.undergarden.entity.monster.denizen.Denizen;
 
 public class DenizenModel<T extends Denizen> extends FixedHumanoidModel<T> {
 	public DenizenModel(ModelPart root) {

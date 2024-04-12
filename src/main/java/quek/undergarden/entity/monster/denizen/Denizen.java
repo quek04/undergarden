@@ -1,31 +1,54 @@
-package quek.undergarden.entity.monster;
+package quek.undergarden.entity.monster.denizen;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.DebugPackets;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.ByIdMap;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.ai.village.poi.PoiManager;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
+import quek.undergarden.registry.UGPointOfInterests;
 
+import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.IntFunction;
 
 public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 	private static final EntityDataAccessor<Integer> TYPE_ID = SynchedEntityData.defineId(Denizen.class, EntityDataSerializers.INT);
+
+	private static final EntityDimensions SHORT = EntityDimensions.scalable(0.7F, 2.0F);
+	private static final EntityDimensions SHORT_SITTING = EntityDimensions.scalable(0.7F, 1.5F);
+	private static final EntityDimensions TALL = EntityDimensions.scalable(0.7F, 3.5F);
+	private static final EntityDimensions TALL_SITTING = EntityDimensions.scalable(0.7F, 2.0F);
+
+	@Nullable
+	private LivingEntity stareTarget;
+	private DenizenChillByCampfireGoal campfireGoal;
+
 	public Denizen(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
 	}
@@ -33,12 +56,20 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 	@Override
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
-		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, false));
-		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.6D));
-		this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
-		this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+		this.goalSelector.addGoal(1, new DenizenStareAtPlayerGoal(this));
+		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
+		this.goalSelector.addGoal(3, new DenizenWanderGoal(this, 0.6D));
+
+		this.goalSelector.addGoal(4, this.campfireGoal = new DenizenChillByCampfireGoal(this));
+		this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Denizen.class, 8.0F) {
+			@Override
+			public boolean canUse() {
+				return Denizen.this.getStareTarget() == null && super.canUse();
+			}
+		});
+		this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(0, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
+		this.targetSelector.addGoal(1, new DenizenStareDownTargetGoal(this));
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {
@@ -56,8 +87,8 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 	@Override
 	public EntityDimensions getDimensions(Pose pose) {
 		return switch (this.getVariant()) {
-			case SHORT -> super.getDimensions(pose);
-			case TALL -> new EntityDimensions(0.7F, 3.5F, false);
+			case SHORT -> this.hasPose(Pose.SITTING) ? SHORT_SITTING : SHORT;
+			case TALL -> this.hasPose(Pose.SITTING) ? TALL_SITTING : TALL;
 		};
 	}
 
@@ -97,12 +128,38 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 		return Type.byId(this.entityData.get(TYPE_ID));
 	}
 
+	@Nullable
+	public LivingEntity getStareTarget() {
+		return this.stareTarget;
+	}
+
+	public void setStareTarget(@Nullable LivingEntity target) {
+		this.stareTarget = target;
+	}
+
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
 		if (random.nextBoolean()) {
 			if (random.nextBoolean()) {
 				this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
 			} else this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_AXE));
+		}
+	}
+
+	@Override
+	public boolean hurt(DamageSource source, float amount) {
+		boolean flag = super.hurt(source, amount);
+		if (flag && this.hasPose(Pose.SITTING)) {
+			this.setPose(Pose.STANDING);
+		}
+		return flag;
+	}
+
+	@Override
+	public void onRemovedFromWorld() {
+		super.onRemovedFromWorld();
+		if (this.level() instanceof ServerLevel) {
+			this.campfireGoal.stop();
 		}
 	}
 

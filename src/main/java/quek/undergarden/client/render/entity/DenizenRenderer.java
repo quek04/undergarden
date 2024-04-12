@@ -5,13 +5,14 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Pose;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.Denizen2Model;
 import quek.undergarden.client.model.DenizenModel;
 import quek.undergarden.client.model.FixedHumanoidModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.DenizenEyesLayer;
-import quek.undergarden.entity.monster.Denizen;
+import quek.undergarden.entity.monster.denizen.Denizen;
 
 public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidModel<Denizen>> {
 	private final FixedHumanoidModel<Denizen> shortModel = this.getModel();
@@ -38,5 +39,13 @@ public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidM
 			case TALL -> this.model = tallModel;
 		}
 		super.render(entity, yaw, partialTicks, poseStack, buffer, packedLight);
+	}
+
+	@Override
+	protected void setupRotations(Denizen denizen, PoseStack stack, float ageInTicks, float yRot, float partialTicks) {
+		super.setupRotations(denizen, stack, ageInTicks, yRot, partialTicks);
+		if (denizen.hasPose(Pose.SITTING)) {
+			stack.translate(0.0D, denizen.getVariant() == Denizen.Type.TALL ? -1.55F : -0.65F, 0.0D);
+		}
 	}
 }
