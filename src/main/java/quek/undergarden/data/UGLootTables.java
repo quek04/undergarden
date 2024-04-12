@@ -504,7 +504,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1.0F))
 							.add(LootItem.lootTableItem(UGItems.DENIZEN_MASK.get()))
 							.when(LootItemKilledByPlayerCondition.killedByPlayer())
-							.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.5F, 0.01F))
+							.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.05F, 0.01F))
 				)
 			);
 
