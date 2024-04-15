@@ -28,6 +28,7 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 	private static final EntityDataAccessor<Boolean> ENCHANTED_ID = SynchedEntityData.defineId(ThrownSpear.class, EntityDataSerializers.BOOLEAN);
 	private static final ItemStack DEFAULT_STACK = new ItemStack(UGItems.SPEAR.get());
 	private boolean dealtDamage;
+
 	public ThrownSpear(EntityType<? extends AbstractArrow> entity, Level level) {
 		super(entity, level, DEFAULT_STACK);
 	}
@@ -35,6 +36,7 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 	public ThrownSpear(Level level, LivingEntity shooter, ItemStack stack) {
 		super(UGEntityTypes.SPEAR.get(), shooter, level, stack);
 	}
+
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
