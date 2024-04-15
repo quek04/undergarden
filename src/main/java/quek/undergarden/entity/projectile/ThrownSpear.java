@@ -4,7 +4,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -91,17 +90,12 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 		}
 
 		this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01, -0.1, -0.01));
-		this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
+		this.playSound(SoundEvents.ARROW_HIT, 1.0F, 1.0F);
 	}
 
 	@Override
 	protected boolean tryPickup(Player player) {
 		return super.tryPickup(player) || this.isNoPhysics() && this.ownedBy(player) && player.getInventory().add(this.getPickupItem());
-	}
-
-	@Override
-	protected SoundEvent getDefaultHitGroundSoundEvent() {
-		return SoundEvents.TRIDENT_HIT_GROUND;
 	}
 
 	@Override

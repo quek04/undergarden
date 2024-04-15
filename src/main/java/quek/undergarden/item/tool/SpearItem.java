@@ -18,10 +18,16 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import quek.undergarden.entity.projectile.ThrownSpear;
 
+import java.util.UUID;
+
 public class SpearItem extends Item implements Vanishable {
+
 	private final Multimap<Attribute, AttributeModifier> defaultModifiers;
+	private static final UUID ENTITY_REACH_UUID = UUID.fromString("cfa9de08-8bcc-48f0-ad6d-87c5df22ccfe");
+
 	public SpearItem() {
 		super(new Properties()
 			.stacksTo(1)
@@ -31,6 +37,7 @@ public class SpearItem extends Item implements Vanishable {
 		ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
 		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 8.0, AttributeModifier.Operation.ADDITION));
 		builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -2.9F, AttributeModifier.Operation.ADDITION));
+		builder.put(NeoForgeMod.ENTITY_REACH.value(), new AttributeModifier(ENTITY_REACH_UUID, "Tool modifier", 2.0, AttributeModifier.Operation.ADDITION));
 		this.defaultModifiers = builder.build();
 	}
 
@@ -65,7 +72,7 @@ public class SpearItem extends Item implements Vanishable {
 					}
 
 					level.addFreshEntity(spear);
-					level.playSound(null, spear, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
+					level.playSound(null, spear, SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F);
 
 					if (!player.getAbilities().instabuild) {
 						player.getInventory().removeItem(stack);
