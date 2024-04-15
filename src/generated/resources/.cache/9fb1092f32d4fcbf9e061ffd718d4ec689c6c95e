@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-09T12:10:28.0019774	Recipes
+// 1.20.4	2024-04-15T01:07:27.272779	Recipes
 81d025ee1347dc11ecc3779bc9c3f81bc89e91b5 data/undergarden/advancements/recipes/building_blocks/ancient_root_planks.json
 abf2a026c114d560abfed895a9605f150af7e710 data/undergarden/advancements/recipes/building_blocks/ancient_root_slab.json
 0f4b09ea0e2c401f533d42f1a3e9be3536e0fe7a data/undergarden/advancements/recipes/building_blocks/ancient_root_stairs.json
@@ -118,6 +118,7 @@ a405331f3f6c2af71b6ed5bb2ec4d84a9463882d data/undergarden/advancements/recipes/c
 c880a31bbfd98b0f4cdf1a6bd724c05071e0e220 data/undergarden/advancements/recipes/combat/froststeel_leggings.json
 d08a31033da4cdbe9d166230174d2a14d7bdcb5f data/undergarden/advancements/recipes/combat/froststeel_sword.json
 c5beaa05248af083576038a47c34ab42012162c3 data/undergarden/advancements/recipes/combat/slingshot.json
+c471230c40ec74c31340ff4d4ea8c5811f6cb97f data/undergarden/advancements/recipes/combat/spear.json
 0cf5792769e7c8546d0a7dce8480d3a7c0b09775 data/undergarden/advancements/recipes/combat/utherium_boots.json
 f66d0b8534f0d5c98ae10aa3001200c70426889d data/undergarden/advancements/recipes/combat/utherium_chestplate.json
 ee86ff053fcebc3193a7ee13b8212c06795e2dcb data/undergarden/advancements/recipes/combat/utherium_helmet.json
@@ -553,6 +554,7 @@ ea37b41fc4921c275583858072d38a577203d7fd data/undergarden/recipes/smoke_glitterk
 63930fc4a390c5b62692c12230c00c0f40e11d1c data/undergarden/recipes/smoke_gloomper_leg.json
 03aa7947d43c3f71c55e61dbeee2088503d37629 data/undergarden/recipes/smoke_gwibling.json
 d24c4ecd6b400d24534dc172f1a58daf4a3116be data/undergarden/recipes/smoke_underbeans.json
+d3d95a93fe68d603c8969ae202a72f9146066b4c data/undergarden/recipes/spear.json
 2a1384cd1431032b78753ef0702561fa4fd080fc data/undergarden/recipes/sticky_piston_from_goo_ball.json
 f934a23980bf69d34337d03da9fdc345653e788c data/undergarden/recipes/stonecutter_from_depthrock.json
 8084ead2e1d8f7b93a0f4d06f0b1b801773c03c2 data/undergarden/recipes/stonecutter_from_shiverstone.json

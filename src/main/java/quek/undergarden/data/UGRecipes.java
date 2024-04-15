@@ -191,6 +191,15 @@ public class UGRecipes extends UGRecipeProvider {
 				.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
 				.save(consumer);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, UGItems.SPEAR.get())
+			.pattern("  R")
+			.pattern(" S ")
+			.pattern("S  ")
+			.define('R', UGItems.ROGDORIUM_CRYSTAL.get())
+			.define('S', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_rogdorium", has(UGTags.Items.GEMS_ROGDORIUM))
+			.save(consumer);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.BLISTERBOMB.get())
 				.pattern(" T ")
 				.pattern("BBB")
