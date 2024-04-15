@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-22T18:22:02.3971969	Undergarden Entity Type Tags
+// 1.20.4	2024-04-15T01:12:56.4075046	Undergarden Entity Type Tags
 d9a7c6d8c29ace1cf686be5f4ec1aedaaeedf725 data/forge/tags/entity_types/bosses.json
 9cd10f169450bab6ad98c90dcff8fc028c91d509 data/minecraft/tags/entity_types/can_breathe_under_water.json
 1384ad7158709624105a815c89f486aae7c481a4 data/minecraft/tags/entity_types/dismounts_underwater.json
@@ -9,6 +9,6 @@ bd09082d4b137024b328d33cec05ad5639130080 data/minecraft/tags/entity_types/powder
 82504d61ef59415f00c1684bc94ed787e0d98d0e data/undergarden/tags/entity_types/cavern_creature.json
 3f3204b47218088cf60c10144e5caf4bfd245b36 data/undergarden/tags/entity_types/immune_to_blisterberry_bush.json
 18023393335eb51d4812b9c642b593d569b7a5bb data/undergarden/tags/entity_types/immune_to_scintling_goo.json
-cdbf08bafee55c2877fc4b713ad5496f84eefbbb data/undergarden/tags/entity_types/immune_to_utheric_infection.json
+f697789fd73574bd8bec03039134a04a57bdb9d3 data/undergarden/tags/entity_types/immune_to_utheric_infection.json
 2579bcb42f589e5064497157945fdde698d9d3ca data/undergarden/tags/entity_types/immune_to_virulent_mix.json
 59ed5e86a01c0d7bf7e62d9da86639ea3c447f10 data/undergarden/tags/entity_types/rotspawn.json
