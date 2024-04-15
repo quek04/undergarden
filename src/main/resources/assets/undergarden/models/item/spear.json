@@ -1,0 +1,21 @@
+{
+    "parent":"neoforge:item/default",
+    "loader":"neoforge:separate_transforms",
+    "base": {
+        "parent": "undergarden:item/spear3d"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "item/generated",
+            "textures": {
+                "layer0": "undergarden:item/spear_inventory"
+            }
+        },
+        "ground": {
+            "parent": "item/generated",
+            "textures": {
+                "layer0": "undergarden:item/spear_inventory"
+            }
+        }
+    }
+}

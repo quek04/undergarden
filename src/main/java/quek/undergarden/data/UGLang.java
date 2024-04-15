@@ -274,6 +274,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
 		addItem(UGItems.BLISTERBOMB, "Blisterbomb");
 		addItem(UGItems.UNDERBEAN_STICK, "Underbean on a Stick");
+		addItem(UGItems.SPEAR, "Spear");
 
 		addItem(UGItems.CLOGGRUM_BATTLEAXE, "Cloggrum Battleaxe");
 		addItem(UGItems.CLOGGRUM_SWORD, "Cloggrum Sword");
@@ -409,6 +410,7 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
 		addEntityType(UGEntityTypes.BLISTERBOMB, "Blisterbomb");
 		addEntityType(UGEntityTypes.GRONGLET, "Gronglet");
+		addEntityType(UGEntityTypes.SPEAR, "Spear");
 		addEntityType(UGEntityTypes.MINION_PROJECTILE, "Minion Projectile");
 
 		addEntityType(UGEntityTypes.MINION, "Forgotten Minion");

@@ -12,18 +12,19 @@ import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.UGChestBoat;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
-import quek.undergarden.entity.monster.denizen.Denizen;
 import quek.undergarden.entity.monster.Forgotten;
 import quek.undergarden.entity.monster.boss.ForgottenGuardian;
 import quek.undergarden.entity.monster.cavern.Muncher;
 import quek.undergarden.entity.monster.cavern.Nargoyle;
 import quek.undergarden.entity.monster.cavern.Sploogie;
+import quek.undergarden.entity.monster.denizen.Denizen;
 import quek.undergarden.entity.monster.rotspawn.Rotbeast;
 import quek.undergarden.entity.monster.rotspawn.Rotling;
 import quek.undergarden.entity.monster.rotspawn.Rotwalker;
 import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.MinionProjectile;
+import quek.undergarden.entity.projectile.ThrownSpear;
 import quek.undergarden.entity.projectile.slingshot.DepthrockPebble;
 import quek.undergarden.entity.projectile.slingshot.GooBall;
 import quek.undergarden.entity.projectile.slingshot.Gronglet;
@@ -42,6 +43,7 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<RottenBlisterberry>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> EntityType.Builder.<RottenBlisterberry>of(RottenBlisterberry::new, MobCategory.MISC).sized(0.25F, 0.25F).build("rotten_blisterberry"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Blisterbomb>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> EntityType.Builder.<Blisterbomb>of(Blisterbomb::new, MobCategory.MISC).sized(0.5F, 0.5F).build("blisterbomb"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Gronglet>> GRONGLET = ENTITIES.register("gronglet", () -> EntityType.Builder.<Gronglet>of(Gronglet::new, MobCategory.MISC).sized(0.5F, 0.5F).build("gronglet"));
+	public static final DeferredHolder<EntityType<?>, EntityType<ThrownSpear>> SPEAR = ENTITIES.register("spear", () -> EntityType.Builder.<ThrownSpear>of(ThrownSpear::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("spear"));
 	public static final DeferredHolder<EntityType<?>, EntityType<MinionProjectile>> MINION_PROJECTILE = ENTITIES.register("minion_projectile", () -> EntityType.Builder.<MinionProjectile>of(MinionProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F).build("minion_projectile"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Minion>> MINION = ENTITIES.register("minion", () -> EntityType.Builder.of(Minion::new, MobCategory.MISC).sized(1.0F, 1.6F).build("minion"));
 

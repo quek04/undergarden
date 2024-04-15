@@ -134,6 +134,7 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.GRONGLET.get(), GrongletEntityRender::new);
+		event.registerEntityRenderer(UGEntityTypes.SPEAR.get(), ThrownSpearRender::new);
 		event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
 		//
 		event.registerEntityRenderer(UGEntityTypes.MINION.get(), MinionRender::new);
