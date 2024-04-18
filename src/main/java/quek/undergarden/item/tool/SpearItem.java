@@ -35,7 +35,7 @@ public class SpearItem extends Item implements Vanishable {
 			.rarity(Rarity.UNCOMMON)
 		);
 		ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 8.0, AttributeModifier.Operation.ADDITION));
+		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 6.0, AttributeModifier.Operation.ADDITION));
 		builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -2.9F, AttributeModifier.Operation.ADDITION));
 		builder.put(NeoForgeMod.ENTITY_REACH.value(), new AttributeModifier(ENTITY_REACH_UUID, "Tool modifier", 2.0, AttributeModifier.Operation.ADDITION));
 		this.defaultModifiers = builder.build();

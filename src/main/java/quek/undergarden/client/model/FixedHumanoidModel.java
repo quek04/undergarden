@@ -11,6 +11,7 @@ import net.minecraft.world.entity.Pose;
 
 //copy of https://github.com/TeamTwilight/twilightforest/blob/1.20.x/src/main/java/twilightforest/client/model/entity/FixedHumanoidModel.java
 public abstract class FixedHumanoidModel<T extends LivingEntity> extends HumanoidModel<T> {
+
 	private final float armWidth;
 
 	public FixedHumanoidModel(ModelPart part, float armWidth) {
@@ -48,17 +49,17 @@ public abstract class FixedHumanoidModel<T extends LivingEntity> extends Humanoi
 
 		this.rightArm.yRot = 0.0F;
 		this.leftArm.yRot = 0.0F;
-		boolean flag2 = entity.getMainArm() == HumanoidArm.RIGHT;
+		boolean rightHanded = entity.getMainArm() == HumanoidArm.RIGHT;
 		if (entity.isUsingItem()) {
-			boolean flag3 = entity.getUsedItemHand() == InteractionHand.MAIN_HAND;
-			if (flag3 == flag2) {
+			boolean usedHand = entity.getUsedItemHand() == InteractionHand.MAIN_HAND;
+			if (usedHand == rightHanded) {
 				this.poseRightArm(entity);
 			} else {
 				this.poseLeftArm(entity);
 			}
 		} else {
-			boolean flag4 = flag2 ? this.leftArmPose.isTwoHanded() : this.rightArmPose.isTwoHanded();
-			if (flag2 != flag4) {
+			boolean twoHanded = rightHanded ? this.leftArmPose.isTwoHanded() : this.rightArmPose.isTwoHanded();
+			if (rightHanded != twoHanded) {
 				this.poseLeftArm(entity);
 				this.poseRightArm(entity);
 			} else {

@@ -1,15 +1,11 @@
 package quek.undergarden.entity.monster.denizen;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.DebugPackets;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.ByIdMap;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
@@ -18,26 +14,24 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.Villager;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
-import quek.undergarden.registry.UGPointOfInterests;
+import quek.undergarden.entity.projectile.ThrownSpear;
+import quek.undergarden.registry.UGItems;
 
-import java.util.Optional;
-import java.util.function.BiPredicate;
 import java.util.function.IntFunction;
 
-public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
+public class Denizen extends Monster implements VariantHolder<Denizen.Type>, RangedAttackMob {
 	private static final EntityDataAccessor<Integer> TYPE_ID = SynchedEntityData.defineId(Denizen.class, EntityDataSerializers.INT);
 
 	private static final EntityDimensions SHORT = EntityDimensions.scalable(0.7F, 2.0F);
@@ -57,6 +51,7 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new DenizenStareAtPlayerGoal(this));
+		this.goalSelector.addGoal(2, new DenizenSpearAttackGoal(this, 1.0F, 40, 10.0F));
 		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(3, new DenizenWanderGoal(this, 0.6D));
 
@@ -141,8 +136,11 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
 		if (random.nextBoolean()) {
 			if (random.nextBoolean()) {
+				this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.SPEAR.get()));
+			} else if (random.nextBoolean()) {
 				this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
 			} else this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_AXE));
+
 		}
 	}
 
@@ -174,6 +172,18 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type> {
 		}
 		this.populateDefaultEquipmentSlots(level.getRandom(), difficulty);
 		return data;
+	}
+
+	@Override
+	public void performRangedAttack(LivingEntity pTarget, float pVelocity) {
+		ThrownSpear spear = new ThrownSpear(this.level(), this, new ItemStack(UGItems.SPEAR.get()));
+		double x = pTarget.getX() - this.getX();
+		double y = pTarget.getY(0.3333333333333333) - spear.getY();
+		double z = pTarget.getZ() - this.getZ();
+		double d3 = Math.sqrt(x * x + z * z);
+		spear.shoot(x, y + d3 * 0.2F, z, 1.6F, (float)(14 - this.level().getDifficulty().getId() * 4));
+		this.playSound(SoundEvents.ARROW_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+		this.level().addFreshEntity(spear);
 	}
 
 	public enum Type implements StringRepresentable {
