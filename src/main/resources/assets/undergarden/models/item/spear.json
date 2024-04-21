@@ -1,27 +1,35 @@
 {
-    "parent":"neoforge:item/default",
-    "loader":"neoforge:separate_transforms",
-    "base": {
-        "parent": "undergarden:item/spear3d"
+  "parent": "neoforge:item/default",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "undergarden:item/spear3d_throwing"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "undergarden:item/spear_inventory"
+      }
     },
-    "perspectives": {
-        "gui": {
-            "parent": "item/generated",
-            "textures": {
-                "layer0": "undergarden:item/spear_inventory"
-            }
-        },
-        "ground": {
-            "parent": "item/generated",
-            "textures": {
-                "layer0": "undergarden:item/spear_inventory"
-            }
-        },
-        "fixed": {
-            "parent": "item/generated",
-            "textures": {
-                "layer0": "undergarden:item/spear_inventory"
-            }
-        }
+    "ground": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "undergarden:item/spear_inventory"
+      }
+    },
+    "fixed": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "undergarden:item/spear_inventory"
+      }
     }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "throwing": 1
+      },
+      "model": "undergarden:item/spear3d_throwing"
+    }
+  ]
 }
