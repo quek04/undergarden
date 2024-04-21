@@ -211,6 +211,7 @@ public class UGLootTables extends LootTableProvider {
 			dropPottedContents(UGBlocks.POTTED_VEIL_MUSHROOM.get());
 			dropPottedContents(UGBlocks.POTTED_INK_MUSHROOM.get());
 			dropPottedContents(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
+			dropPottedContents(UGBlocks.POTTED_PUFF_MUSHROOM.get());
 			dropPottedContents(UGBlocks.POTTED_GRONGLE_SAPLING.get());
 			dropPottedContents(UGBlocks.POTTED_AMOROUS_BRISTLE.get());
 			dropPottedContents(UGBlocks.POTTED_MISERABELL.get());
@@ -302,6 +303,9 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
 			dropOther(UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
 			dropSelf(UGBlocks.DENIZEN_TOTEM);
+			dropSelf(UGBlocks.PUFF_MUSHROOM);
+			this.add(UGBlocks.PUFF_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.PUFF_MUSHROOM.get()));
+			dropAsSilk(UGBlocks.PUFF_MUSHROOM_STEM);
 		}
 
 		@Override

@@ -93,6 +93,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> VEIL_MUSHROOM_PATCH = create("veil_mushroom_patch");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> INK_MUSHROOM_PATCH = create("ink_mushroom_patch");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOD_MUSHROOM_PATCH = create("blood_mushroom_patch");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PUFF_MUSHROOM_PATCH = create("puff_mushroom_patch");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERBEAN_BUSH_PATCH = create("underbean_bush_patch");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> BLISTERBERRY_BUSH_PATCH = create("blisterberry_bush_patch");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMGOURD_PATCH = create("gloomgourd_patch");
@@ -115,6 +116,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> HUGE_VEIL_MUSHROOM = create("huge_veil_mushroom");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> HUGE_INK_MUSHROOM = create("huge_ink_mushroom");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> HUGE_BLOOD_MUSHROOM = create("huge_blood_mushroom");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> HUGE_PUFF_MUSHROOM = create("huge_puff_mushroom");
 
 	//rocks
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHROCK_ROCK = create("depthrock_rock");
@@ -165,6 +167,7 @@ public class UGConfiguredFeatures {
 		context.register(VEIL_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.VEIL_MUSHROOM.get(), 64)));
 		context.register(INK_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.INK_MUSHROOM.get(), 64)));
 		context.register(BLOOD_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.BLOOD_MUSHROOM.get(), 64)));
+		context.register(PUFF_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.PUFF_MUSHROOM.get(), 64)));
 		context.register(UNDERBEAN_BUSH_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.UNDERBEAN_BUSH.get().defaultBlockState().setValue(UnderbeanBushBlock.AGE, 3), 64, List.of(UGBlocks.DEEPTURF_BLOCK.get()))));
 		context.register(BLISTERBERRY_BUSH_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.BLISTERBERRY_BUSH.get().defaultBlockState().setValue(BlisterberryBushBlock.AGE, 3), 64, List.of(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()))));
 		context.register(GLOOMGOURD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.GLOOMGOURD.get(), 16, List.of(UGBlocks.DEEPTURF_BLOCK.get()))));
@@ -187,6 +190,7 @@ public class UGConfiguredFeatures {
 		context.register(HUGE_VEIL_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_STEM.get()), new StraightTrunkPlacer(9, 1, 1), BlockStateProvider.simple(UGBlocks.VEIL_MUSHROOM_CAP.get()), new VeilFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 1)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).build()));
 		context.register(HUGE_INK_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_STEM.get()), new SingleForkingTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.INK_MUSHROOM_CAP.get()), new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 2)).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new AttachedToLeavesDecorator(0.2F, 1, 0, BlockStateProvider.simple(UGBlocks.SEEPING_INK.get()), 1, List.of(Direction.DOWN)))).build()));
 		context.register(HUGE_BLOOD_MUSHROOM, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_STEM.get()), new DarkOakTrunkPlacer(6, 2, 2), BlockStateProvider.simple(UGBlocks.BLOOD_MUSHROOM_CAP.get()), new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())).dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).decorators(ImmutableList.of(new ReplaceLeafDecorator(0.2F, BlockStateProvider.simple(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())))).build()));
+		context.register(HUGE_PUFF_MUSHROOM, new ConfiguredFeature<>(Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.PUFF_MUSHROOM_CAP.get().defaultBlockState()), BlockStateProvider.simple(UGBlocks.PUFF_MUSHROOM_STEM.get().defaultBlockState()), 2)));
 
 		//rocks
 		context.register(DEPTHROCK_ROCK, new ConfiguredFeature<>(Feature.FOREST_ROCK, new BlockStateConfiguration(UGBlocks.DEPTHROCK.get().defaultBlockState())));

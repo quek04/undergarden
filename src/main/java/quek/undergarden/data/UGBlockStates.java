@@ -134,6 +134,9 @@ public class UGBlockStates extends UGBlockstateProvider {
 			.partialState().with(DenizenTotemBlock.ACTIVE, false)
 			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM), new ResourceLocation(Undergarden.MODID, "block/denizen_totem_inactive"), new ResourceLocation(Undergarden.MODID, "block/ancient_root"))).addModel()
 		;
+		crossBlock(UGBlocks.PUFF_MUSHROOM);
+		block(UGBlocks.PUFF_MUSHROOM_CAP);
+		block(UGBlocks.PUFF_MUSHROOM_STEM);
 
 		stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
 		stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);

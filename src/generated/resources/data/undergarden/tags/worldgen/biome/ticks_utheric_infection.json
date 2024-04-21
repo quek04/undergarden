@@ -1,6 +1,5 @@
 {
   "values": [
-    "undergarden:depths",
-    "undergarden:infected_depths"
+    "#undergarden:is_depths_biome"
   ]
 }

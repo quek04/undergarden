@@ -163,6 +163,11 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP, "Engorged Blood Mushroom Cap");
 		addBlock(UGBlocks.BLOOD_MUSHROOM_STEM, "Blood Mushroom Stem");
 
+		addBlock(UGBlocks.PUFF_MUSHROOM, "Puff Mushroom");
+		addBlock(UGBlocks.POTTED_PUFF_MUSHROOM, "Potted Puff Mushroom");
+		addBlock(UGBlocks.PUFF_MUSHROOM_CAP, "Puff Mushroom Cap");
+		addBlock(UGBlocks.PUFF_MUSHROOM_STEM, "Puff Mushroom Stem");
+
 		addBlock(UGBlocks.SMOGSTEM_SAPLING, "Smogstem Sapling");
 		addBlock(UGBlocks.POTTED_SMOGSTEM_SAPLING, "Potted Smogstem Sapling");
 		addBlock(UGBlocks.SMOGSTEM_LOG, "Smogstem Log");
@@ -401,6 +406,7 @@ public class UGLang extends UGLangProvider {
 		addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 		addBiome(UGBiomes.DEPTHS, "Depths");
 		addBiome(UGBiomes.INFECTED_DEPTHS, "Infected Depths");
+		addBiome(UGBiomes.PUFF_MUSHROOM_FOREST, "Puff Mushroom Forest");
 
 		addEntityType(UGEntityTypes.BOAT, "Boat");
 		addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");

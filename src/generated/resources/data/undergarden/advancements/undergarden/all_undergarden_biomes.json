@@ -225,6 +225,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "undergarden:puff_mushroom_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:puff_mushroom_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "undergarden:smog_spires": {
       "conditions": {
         "player": [
@@ -357,6 +373,9 @@
     ],
     [
       "undergarden:infected_depths"
+    ],
+    [
+      "undergarden:puff_mushroom_forest"
     ]
   ],
   "sends_telemetry_event": true

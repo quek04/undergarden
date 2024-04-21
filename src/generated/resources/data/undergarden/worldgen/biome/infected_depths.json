@@ -1,7 +1,5 @@
 {
-  "carvers": {
-    "air": "undergarden:undergarden_cave"
-  },
+  "carvers": {},
   "downfall": 0.0,
   "effects": {
     "additions_sound": {
@@ -44,17 +42,8 @@
     ],
     [],
     [
-      "undergarden:deepsoil_ore",
-      "undergarden:sediment_ore",
-      "undergarden:shiverstone_ore",
-      "undergarden:coal_ore",
-      "undergarden:iron_ore",
-      "undergarden:gold_ore",
-      "undergarden:diamond_ore",
-      "undergarden:cloggrum_ore",
-      "undergarden:utherium_ore",
-      "undergarden:regalium_ore",
-      "undergarden:rogdorium_ore"
+      "undergarden:rogdorium_ore",
+      "undergarden:utherium_ore"
     ]
   ],
   "has_precipitation": false,

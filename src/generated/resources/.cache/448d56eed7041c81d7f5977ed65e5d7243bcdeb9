@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-09T11:53:42.9737953	Undergarden Item Models
+// 1.20.4	2024-04-20T20:31:21.8595995	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -179,6 +179,9 @@ ec28c0bb32bdc0a66332f9663043c097da7057c3 assets/undergarden/models/item/music_di
 a107e247146e1facb042af47b21c694458c17b15 assets/undergarden/models/item/polished_depthrock_slab.json
 7cbcfcacfba54466e9a6819962fa05a87acc9498 assets/undergarden/models/item/polished_depthrock_stairs.json
 357363b297001708ff7181cf875b14ed3e3efa2a assets/undergarden/models/item/polished_depthrock_wall.json
+6fd8531de72c3f15573809290dfea7b5e1817228 assets/undergarden/models/item/puff_mushroom.json
+feaf499e77b6c7c117ab0da77b9420161e2f5a96 assets/undergarden/models/item/puff_mushroom_cap.json
+4f5c6b59c690d316373e284674e8f21ccde2be07 assets/undergarden/models/item/puff_mushroom_stem.json
 5b87bb229f1e57fd9d379bf937ef5664268c9aa4 assets/undergarden/models/item/raw_cloggrum.json
 85640d8e66500020bdba07b1caf3a542e044d4d0 assets/undergarden/models/item/raw_cloggrum_block.json
 1a9975f8b59784b02cb30f27613a38939afe8dd2 assets/undergarden/models/item/raw_dweller_meat.json

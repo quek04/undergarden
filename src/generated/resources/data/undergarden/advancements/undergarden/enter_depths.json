@@ -32,6 +32,22 @@
         ]
       },
       "trigger": "minecraft:location"
+    },
+    "has_entered_puff_mushroom_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "undergarden:puff_mushroom_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
     }
   },
   "display": {
@@ -49,7 +65,8 @@
   "requirements": [
     [
       "has_entered_depths",
-      "has_entered_infected_depths"
+      "has_entered_infected_depths",
+      "has_entered_puff_mushroom_forest"
     ]
   ],
   "sends_telemetry_event": true

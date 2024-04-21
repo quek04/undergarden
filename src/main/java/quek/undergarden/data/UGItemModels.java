@@ -276,6 +276,9 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.ANCIENT_ROOT_CHEST_BOAT);
 		normalItem(UGItems.DENIZEN_MASK);
 		block(UGBlocks.DENIZEN_TOTEM);
+		blockFlat(UGBlocks.PUFF_MUSHROOM);
+		block(UGBlocks.PUFF_MUSHROOM_CAP);
+		block(UGBlocks.PUFF_MUSHROOM_STEM);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);

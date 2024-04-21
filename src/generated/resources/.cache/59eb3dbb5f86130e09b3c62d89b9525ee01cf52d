@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-12T00:16:47.570713	Loot Tables
+// 1.20.4	2024-04-20T20:31:21.8485883	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_tables/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_tables/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_tables/blocks/ancient_root_button.json
@@ -122,10 +122,14 @@ cbce3308eb4bab3a0c3f552ccb28a4e746a8481d data/undergarden/loot_tables/blocks/pot
 2dc5e8ba3c2390c424ab940e94f9354d4d9ab635 data/undergarden/loot_tables/blocks/potted_indigo_mushroom.json
 9e4efd7d95238bb9a6bc80b9b6b7ca6eb2d07b14 data/undergarden/loot_tables/blocks/potted_ink_mushroom.json
 c7c2fb759dd10f3567a458b63dbc55fba4dce206 data/undergarden/loot_tables/blocks/potted_miserabell.json
+d5c8d690f9c1b45c8d7ff0eca81710c21a1657da data/undergarden/loot_tables/blocks/potted_puff_mushroom.json
 9a0d71c2f44f62d9c47121db1ddcfb07e6376bf8 data/undergarden/loot_tables/blocks/potted_shimmerweed.json
 bc9ab236336bf8e9ca97e7d90eebaef4d4218be1 data/undergarden/loot_tables/blocks/potted_smogstem_sapling.json
 13e0536f7ae30a191938059dc399532962b75c8b data/undergarden/loot_tables/blocks/potted_veil_mushroom.json
 47e4f26159d0ec208a89a1c68d782fc8d74e43fa data/undergarden/loot_tables/blocks/potted_wigglewood_sapling.json
+65e8299f6cb6da6dfb4a850e5c8711265b243d49 data/undergarden/loot_tables/blocks/puff_mushroom.json
+c0d6f3b8b590b0bdc81711e814b456e472fbc7d9 data/undergarden/loot_tables/blocks/puff_mushroom_cap.json
+c9e0aa02fe63ae03638de635a1c65be756634ab5 data/undergarden/loot_tables/blocks/puff_mushroom_stem.json
 a72558fb5fd0a88e9c77925c010f4729045a8b2d data/undergarden/loot_tables/blocks/raw_cloggrum_block.json
 c0eaaebc3f9675ed34376fb7d7e7f2e149ea98fe data/undergarden/loot_tables/blocks/raw_froststeel_block.json
 5b183e878a324cb8c335b169493853b61c6d5523 data/undergarden/loot_tables/blocks/regalium_block.json

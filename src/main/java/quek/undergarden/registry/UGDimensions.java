@@ -246,6 +246,14 @@ public class UGDimensions {
 						)
 					)
 				),
+				//make puff mushroom forest all coarse deepsoil
+				SurfaceRules.ifTrue(
+					SurfaceRules.isBiome(UGBiomes.PUFF_MUSHROOM_FOREST),
+					SurfaceRules.ifTrue(
+						SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
+						SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
+					)
+				),
 				//cover the ground in deepturf
 				SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR), SurfaceRules.ifTrue(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(0), 0), SurfaceRules.state(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState()))),
 				//add deepsoil underneath
