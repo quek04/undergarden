@@ -57,6 +57,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> INK_MUSHROOM_PATCH = create("ink_mushroom_patch");
 	public static final ResourceKey<PlacedFeature> BLOOD_MUSHROOM_PATCH = create("blood_mushroom_patch");
 	public static final ResourceKey<PlacedFeature> PUFF_MUSHROOM_PATCH = create("puff_mushroom_patch");
+	public static final ResourceKey<PlacedFeature> PUFF_MUSHROOM_PATCH_SPARSE = create("puff_mushroom_patch_sparse");
 	public static final ResourceKey<PlacedFeature> UNDERBEAN_BUSH_PATCH = create("underbean_bush_patch");
 	public static final ResourceKey<PlacedFeature> BLISTERBERRY_BUSH_PATCH = create("blisterberry_bush_patch");
 	public static final ResourceKey<PlacedFeature> GLOOMGOURD_PATCH = create("gloomgourd_patch");
@@ -134,7 +135,8 @@ public class UGPlacedFeatures {
 		context.register(VEIL_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.VEIL_MUSHROOM_PATCH), patch(1)));
 		context.register(INK_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.INK_MUSHROOM_PATCH), patch(1)));
 		context.register(BLOOD_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLOOD_MUSHROOM_PATCH), patch(1)));
-		context.register(PUFF_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM_PATCH), patch(1)));
+		context.register(PUFF_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM_PATCH), patch(10)));
+		context.register(PUFF_MUSHROOM_PATCH_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM_PATCH), patch(10)));
 		context.register(UNDERBEAN_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UNDERBEAN_BUSH_PATCH), patch(5)));
 		context.register(BLISTERBERRY_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLISTERBERRY_BUSH_PATCH), patch(5)));
 		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD_PATCH), patch(5)));

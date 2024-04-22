@@ -448,7 +448,7 @@ public class UGBiomes {
 			.generationSettings(addDepthsOres(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_PUFF_MUSHROOM_SPARSE)
-				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.PUFF_MUSHROOM_PATCH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.PUFF_MUSHROOM_PATCH_SPARSE)
 				.build())
 			.mobSpawnSettings(new MobSpawnSettings.Builder().build())
 			.hasPrecipitation(false)
@@ -575,7 +575,7 @@ public class UGBiomes {
 
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DEPTHS)),
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(INFECTED_DEPTHS)),
-			Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(PUFF_MUSHROOM_FOREST))
+			Pair.of(Climate.parameters(0.7F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(PUFF_MUSHROOM_FOREST))
 		)));
 	}
 }

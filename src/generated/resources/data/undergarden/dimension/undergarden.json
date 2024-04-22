@@ -247,7 +247,7 @@
             "erosion": 0.0,
             "humidity": 0.0,
             "offset": 0.0,
-            "temperature": 1.0,
+            "temperature": 0.7,
             "weirdness": 0.0
           }
         }
