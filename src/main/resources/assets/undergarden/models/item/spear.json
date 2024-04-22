@@ -2,7 +2,7 @@
   "parent": "neoforge:item/default",
   "loader": "neoforge:separate_transforms",
   "base": {
-    "parent": "undergarden:item/spear3d_throwing"
+    "parent": "undergarden:item/spear3d"
   },
   "perspectives": {
     "gui": {
