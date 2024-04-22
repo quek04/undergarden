@@ -208,20 +208,20 @@ public class UGBlocks {
 	public static final DeferredBlock<RotatedPillarBlock> SMOGSTEM_WOOD = register("smogstem_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_SMOGSTEM_WOOD = register("stripped_smogstem_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> SMOGSTEM_LEAVES = register("smogstem_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().ignitedByLava().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_CYAN).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn((state, level, pos, value) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)));
-	public static final DeferredBlock<Block> SMOGSTEM_PLANKS = register("smogstem_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS)));
+	public static final DeferredBlock<Block> SMOGSTEM_PLANKS = register("smogstem_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
 	public static final DeferredBlock<StairBlock> SMOGSTEM_STAIRS = register("smogstem_stairs", () -> new StairBlock(() -> SMOGSTEM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> SMOGSTEM_SLAB = register("smogstem_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
-	public static final DeferredBlock<FenceBlock> SMOGSTEM_FENCE = register("smogstem_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_FENCE)));
-	public static final DeferredBlock<FenceGateBlock> SMOGSTEM_FENCE_GATE = register("smogstem_fence_gate", () -> new FenceGateBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_FENCE_GATE)));
-	public static final DeferredBlock<DoorBlock> SMOGSTEM_DOOR = register("smogstem_door", () -> new DoorBlock(UGWoodStuff.SMOGSTEM_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_DOOR)));
-	public static final DeferredBlock<TrapDoorBlock> SMOGSTEM_TRAPDOOR = register("smogstem_trapdoor", () -> new TrapDoorBlock(UGWoodStuff.SMOGSTEM_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_TRAPDOOR)));
-	public static final DeferredBlock<ButtonBlock> SMOGSTEM_BUTTON = register("smogstem_button", () -> new ButtonBlock(UGWoodStuff.SMOGSTEM_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_BUTTON)));
-	public static final DeferredBlock<PressurePlateBlock> SMOGSTEM_PRESSURE_PLATE = register("smogstem_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.SMOGSTEM_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PRESSURE_PLATE)));
+	public static final DeferredBlock<FenceBlock> SMOGSTEM_FENCE = register("smogstem_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
+	public static final DeferredBlock<FenceGateBlock> SMOGSTEM_FENCE_GATE = register("smogstem_fence_gate", () -> new FenceGateBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
+	public static final DeferredBlock<DoorBlock> SMOGSTEM_DOOR = register("smogstem_door", () -> new DoorBlock(UGWoodStuff.SMOGSTEM_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR)));
+	public static final DeferredBlock<TrapDoorBlock> SMOGSTEM_TRAPDOOR = register("smogstem_trapdoor", () -> new TrapDoorBlock(UGWoodStuff.SMOGSTEM_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR)));
+	public static final DeferredBlock<ButtonBlock> SMOGSTEM_BUTTON = register("smogstem_button", () -> new ButtonBlock(UGWoodStuff.SMOGSTEM_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+	public static final DeferredBlock<PressurePlateBlock> SMOGSTEM_PRESSURE_PLATE = register("smogstem_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.SMOGSTEM_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
 
-	public static final DeferredBlock<StandingSignBlock> SMOGSTEM_SIGN = register("smogstem_sign", () -> new UGStandingSignBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_SIGN)));
-	public static final DeferredBlock<WallSignBlock> SMOGSTEM_WALL_SIGN = BLOCKS.register("smogstem_wall_sign", () -> new UGWallSignBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_WALL_SIGN)));
-	public static final DeferredBlock<CeilingHangingSignBlock> SMOGSTEM_HANGING_SIGN = register("smogstem_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_HANGING_SIGN)));
-	public static final DeferredBlock<WallHangingSignBlock> SMOGSTEM_WALL_HANGING_SIGN = BLOCKS.register("smogstem_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_WALL_HANGING_SIGN)));
+	public static final DeferredBlock<StandingSignBlock> SMOGSTEM_SIGN = register("smogstem_sign", () -> new UGStandingSignBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)));
+	public static final DeferredBlock<WallSignBlock> SMOGSTEM_WALL_SIGN = BLOCKS.register("smogstem_wall_sign", () -> new UGWallSignBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)));
+	public static final DeferredBlock<CeilingHangingSignBlock> SMOGSTEM_HANGING_SIGN = register("smogstem_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
+	public static final DeferredBlock<WallHangingSignBlock> SMOGSTEM_WALL_HANGING_SIGN = BLOCKS.register("smogstem_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
 	//wigglewood
 	public static final DeferredBlock<SaplingBlock> WIGGLEWOOD_SAPLING = register("wigglewood_sapling", () -> new UGSaplingBlock(UGTreeGrowers.WIGGLEWOOD));
@@ -230,20 +230,20 @@ public class UGBlocks {
 	public static final DeferredBlock<RotatedPillarBlock> WIGGLEWOOD_WOOD = register("wigglewood_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_BROWN).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WIGGLEWOOD_WOOD = register("stripped_wigglewood_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_BROWN).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> WIGGLEWOOD_LEAVES = register("wigglewood_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().ignitedByLava().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_PINK).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn((state, level, pos, value) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)));
-	public static final DeferredBlock<Block> WIGGLEWOOD_PLANKS = register("wigglewood_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_PLANKS)));
+	public static final DeferredBlock<Block> WIGGLEWOOD_PLANKS = register("wigglewood_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
 	public static final DeferredBlock<StairBlock> WIGGLEWOOD_STAIRS = register("wigglewood_stairs", () -> new StairBlock(() -> SMOGSTEM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> WIGGLEWOOD_SLAB = register("wigglewood_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(WIGGLEWOOD_PLANKS.get())));
-	public static final DeferredBlock<FenceBlock> WIGGLEWOOD_FENCE = register("wigglewood_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_FENCE)));
-	public static final DeferredBlock<FenceGateBlock> WIGGLEWOOD_FENCE_GATE = register("wigglewood_fence_gate", () -> new FenceGateBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_FENCE_GATE)));
-	public static final DeferredBlock<DoorBlock> WIGGLEWOOD_DOOR = register("wigglewood_door", () -> new DoorBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_DOOR)));
-	public static final DeferredBlock<TrapDoorBlock> WIGGLEWOOD_TRAPDOOR = register("wigglewood_trapdoor", () -> new TrapDoorBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_TRAPDOOR)));
-	public static final DeferredBlock<ButtonBlock> WIGGLEWOOD_BUTTON = register("wigglewood_button", () -> new ButtonBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_BUTTON)));
-	public static final DeferredBlock<PressurePlateBlock> WIGGLEWOOD_PRESSURE_PLATE = register("wigglewood_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_PRESSURE_PLATE)));
+	public static final DeferredBlock<FenceBlock> WIGGLEWOOD_FENCE = register("wigglewood_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
+	public static final DeferredBlock<FenceGateBlock> WIGGLEWOOD_FENCE_GATE = register("wigglewood_fence_gate", () -> new FenceGateBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
+	public static final DeferredBlock<DoorBlock> WIGGLEWOOD_DOOR = register("wigglewood_door", () -> new DoorBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR)));
+	public static final DeferredBlock<TrapDoorBlock> WIGGLEWOOD_TRAPDOOR = register("wigglewood_trapdoor", () -> new TrapDoorBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR)));
+	public static final DeferredBlock<ButtonBlock> WIGGLEWOOD_BUTTON = register("wigglewood_button", () -> new ButtonBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+	public static final DeferredBlock<PressurePlateBlock> WIGGLEWOOD_PRESSURE_PLATE = register("wigglewood_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
 
-	public static final DeferredBlock<StandingSignBlock> WIGGLEWOOD_SIGN = register("wigglewood_sign", () -> new UGStandingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SIGN)));
-	public static final DeferredBlock<WallSignBlock> WIGGLEWOOD_WALL_SIGN = BLOCKS.register("wigglewood_wall_sign", () -> new UGWallSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_WALL_SIGN)));
-	public static final DeferredBlock<CeilingHangingSignBlock> WIGGLEWOOD_HANGING_SIGN = register("wigglewood_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_HANGING_SIGN)));
-	public static final DeferredBlock<WallHangingSignBlock> WIGGLEWOOD_WALL_HANGING_SIGN = BLOCKS.register("wigglewood_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_WALL_HANGING_SIGN)));
+	public static final DeferredBlock<StandingSignBlock> WIGGLEWOOD_SIGN = register("wigglewood_sign", () -> new UGStandingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)));
+	public static final DeferredBlock<WallSignBlock> WIGGLEWOOD_WALL_SIGN = BLOCKS.register("wigglewood_wall_sign", () -> new UGWallSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)));
+	public static final DeferredBlock<CeilingHangingSignBlock> WIGGLEWOOD_HANGING_SIGN = register("wigglewood_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
+	public static final DeferredBlock<WallHangingSignBlock> WIGGLEWOOD_WALL_HANGING_SIGN = BLOCKS.register("wigglewood_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
 	//grongle
 	public static final DeferredBlock<Block> GRONGLE_SAPLING = register("grongle_sapling", () -> new UGSaplingBlock(UGTreeGrowers.GRONGLE));
@@ -283,10 +283,10 @@ public class UGBlocks {
 	public static final DeferredBlock<ButtonBlock> ANCIENT_ROOT_BUTTON = register("ancient_root_button", () -> new ButtonBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
 	public static final DeferredBlock<PressurePlateBlock> ANCIENT_ROOT_PRESSURE_PLATE = register("ancient_root_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
 
-	public static final DeferredBlock<StandingSignBlock> ANCIENT_ROOT_SIGN = register("ancient_root_sign", () -> new UGStandingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SIGN)));
-	public static final DeferredBlock<WallSignBlock> ANCIENT_ROOT_WALL_SIGN = BLOCKS.register("ancient_root_wall_sign", () -> new UGWallSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_WALL_SIGN)));
-	public static final DeferredBlock<CeilingHangingSignBlock> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_HANGING_SIGN)));
-	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = BLOCKS.register("ancient_root_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_WALL_HANGING_SIGN)));
+	public static final DeferredBlock<StandingSignBlock> ANCIENT_ROOT_SIGN = register("ancient_root_sign", () -> new UGStandingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)));
+	public static final DeferredBlock<WallSignBlock> ANCIENT_ROOT_WALL_SIGN = BLOCKS.register("ancient_root_wall_sign", () -> new UGWallSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)));
+	public static final DeferredBlock<CeilingHangingSignBlock> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
+	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = BLOCKS.register("ancient_root_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
 
 	//flower pots
