@@ -185,7 +185,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> VEIL_MUSHROOM = register("veil_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_VEIL_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).hasPostProcess((state, level, pos) -> true)));
 	public static final DeferredBlock<Block> VEIL_MUSHROOM_CAP = register("veil_mushroom_cap", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(0.2F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> VEIL_MUSHROOM_STEM = register("veil_mushroom_stem", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM)));
-	public static final DeferredBlock<Block> MUSHROOM_VEIL = register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLOW_LICHEN)));
+	public static final DeferredBlock<Block> MUSHROOM_VEIL = register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.VINE)));
 
 	public static final DeferredBlock<Block> INK_MUSHROOM = register("ink_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INK_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).hasPostProcess((state, level, pos) -> true)));
 	public static final DeferredBlock<Block> INK_MUSHROOM_CAP = register("ink_mushroom_cap", () -> new InkCapBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(0.2F).sound(SoundType.WOOD)));
