@@ -1,6 +1,8 @@
 {
   "values": [
     "#undergarden:rotspawn",
-    "undergarden:denizen"
+    "undergarden:denizen",
+    "undergarden:forgotten_guardian",
+    "undergarden:minion"
   ]
 }
