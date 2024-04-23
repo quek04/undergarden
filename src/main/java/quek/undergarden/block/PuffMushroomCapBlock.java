@@ -1,6 +1,8 @@
 package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
@@ -17,6 +19,13 @@ public class PuffMushroomCapBlock extends Block {
 
 	@Override
 	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+		RandomSource random = level.getRandom();
+		for (int i = 0; i < 10; i++) {
+			double x = pos.getX() + random.nextDouble();
+			double y = pos.getY() + 1.0D + random.nextDouble();
+			double z = pos.getZ() + random.nextDouble();
+			level.addParticle(ParticleTypes.WHITE_SMOKE, x, y, z, 0.0F, 0.1F, 0.0F);
+		}
 	}
 
 	@Override
