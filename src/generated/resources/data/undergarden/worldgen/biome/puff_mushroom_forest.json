@@ -8,8 +8,8 @@
     },
     "ambient_sound": "undergarden:ambient.abyss",
     "fog_color": 0,
-    "foliage_color": 7568503,
-    "grass_color": 7568503,
+    "foliage_color": 6312510,
+    "grass_color": 6312510,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -49,7 +49,8 @@
     [],
     [
       "undergarden:huge_puff_mushroom",
-      "undergarden:puff_mushroom_patch"
+      "undergarden:puff_mushroom_patch",
+      "undergarden:deepturf_patch"
     ]
   ],
   "has_precipitation": false,

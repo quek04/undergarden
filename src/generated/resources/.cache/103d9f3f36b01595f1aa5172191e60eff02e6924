@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-22T14:05:08.5248965	Registries
+// 1.20.4	2024-04-22T22:16:59.7030622	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -25,7 +25,7 @@ c4df97b40f689d2fabaaa5b668bc1e7dbbaad89d data/undergarden/worldgen/biome/icy_sea
 76b334488707e23739899d435b088bafa72bf5ca data/undergarden/worldgen/biome/indigo_mushroom_bog.json
 3882f178d3941d08faca48049490d24d3b5df6ae data/undergarden/worldgen/biome/infected_depths.json
 03ad38cb4c7139a2b4333726df6a7ec53982c555 data/undergarden/worldgen/biome/ink_mushroom_bog.json
-5ed6672c6c441f48a62c125c8e1a013406118f38 data/undergarden/worldgen/biome/puff_mushroom_forest.json
+78dda2e0ea4c0abae952e94da53fcefc747be693 data/undergarden/worldgen/biome/puff_mushroom_forest.json
 f54d408e71c20f8fcf0babe0b741a1a02ed7603f data/undergarden/worldgen/biome/smogstem_forest.json
 8fac1f1507fef95906ab6cb617d8cd94a59971d9 data/undergarden/worldgen/biome/smog_spires.json
 669e99e62e2560880e851dceef1d8fe98038169d data/undergarden/worldgen/biome/veil_mushroom_bog.json
@@ -97,7 +97,7 @@ b803d88c04b567f5b2d31a01d744412ca8d9cdc2 data/undergarden/worldgen/placed_featur
 24fdb8d5c96cf6c54bbda4a3534e560cb14e6934 data/undergarden/worldgen/placed_feature/cloggrum_ore.json
 783c5e308fe13a79ef0191e19e71a50ad891f0a2 data/undergarden/worldgen/placed_feature/coal_ore.json
 cf73dc247c2f5065d9be0bc959d7c752409e535a data/undergarden/worldgen/placed_feature/deepsoil_ore.json
-43d1001f30a1bfedfa8083fd66e5f95e051527d0 data/undergarden/worldgen/placed_feature/deepturf_patch.json
+ef0303d56f78de603dc6cad11546545e463dc59d data/undergarden/worldgen/placed_feature/deepturf_patch.json
 3a84ef87bfb55d52c398c9b5fcefab22033dd8e7 data/undergarden/worldgen/placed_feature/depthrock_pebble_patch.json
 1daebf61647af5085269c460c75251b88aa4ff96 data/undergarden/worldgen/placed_feature/depthrock_rock.json
 466be07b5ec97083e1fd6ea2e94882009eb84041 data/undergarden/worldgen/placed_feature/diamond_ore.json
