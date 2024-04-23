@@ -22,7 +22,7 @@ public class UthericInfectionLayer<T extends LivingEntity, M extends EntityModel
 	public void render(PoseStack stack, MultiBufferSource buffer, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
 		int infectionLevel = entity.getData(UGAttachments.UTHERIC_INFECTION.get());
 		if (infectionLevel > 0) {
-			VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(new ResourceLocation(Undergarden.MODID, "textures/block/utherium_growth.png")));
+			VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(new ResourceLocation(Undergarden.MODID, "textures/utheric_infection_overlay.png")));
 			this.getParentModel().renderToBuffer(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, infectionLevel / 40.0F);
 		}
 	}
