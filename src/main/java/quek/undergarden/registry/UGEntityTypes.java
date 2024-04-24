@@ -46,7 +46,7 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<Rotbeast>> ROTBEAST = ENTITIES.register("rotbeast", () -> EntityType.Builder.of(Rotbeast::new, MobCategory.MONSTER).sized(1.5F, 3.0F).build("rotbeast"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Dweller>> DWELLER = ENTITIES.register("dweller", () -> EntityType.Builder.of(Dweller::new, MobCategory.CREATURE).sized(1.2F, 1.8F).build("dweller"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Gwibling>> GWIBLING = ENTITIES.register("gwibling", () -> EntityType.Builder.of(Gwibling::new, MobCategory.WATER_AMBIENT).sized(.5F, .3F).build("gwibling"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Brute>> BRUTE = ENTITIES.register("brute", () -> EntityType.Builder.of(Brute::new, MobCategory.CREATURE).sized(1.0F, 2).build("brute"));
+	public static final DeferredHolder<EntityType<?>, EntityType<Brute>> BRUTE = ENTITIES.register("brute", () -> EntityType.Builder.of(Brute::new, MobCategory.CREATURE).sized(1.0F, 2).eyeHeight(1.9F).build("brute"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Scintling>> SCINTLING = ENTITIES.register("scintling", () -> EntityType.Builder.of(Scintling::new, MobCategory.AMBIENT).sized(1.0F, .5F).build("scintling"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Gloomper>> GLOOMPER = ENTITIES.register("gloomper", () -> EntityType.Builder.of(Gloomper::new, MobCategory.CREATURE).sized(0.99F, 0.99F).build("gloomper"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Stoneborn>> STONEBORN = ENTITIES.register("stoneborn", () -> EntityType.Builder.of(Stoneborn::new, MobCategory.MONSTER).sized(1.0F, 2.6F).build("stoneborn"));

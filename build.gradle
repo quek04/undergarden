@@ -29,7 +29,7 @@ base {
     archivesName = 'The_Undergarden-'+project.minecraft_version
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 compileJava.options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation" << "-Werror"
 
@@ -83,14 +83,14 @@ dependencies {
     implementation "net.neoforged:neoforge:${project.neo_version}"
 
 	// compile against the JEI API but do not include it at runtime
-	compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-	compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+	//compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+	//compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
 	// at runtime, use the full JEI jar for NeoForge
-	runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+	//runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
-    implementation "curse.maven:jade-324717:${project.jade_version}"
+    //implementation "curse.maven:jade-324717:${project.jade_version}"
     //implementation "curse.maven:just-enough-effect-descriptions-jeed-532286:${project.jeed_version}"
-    implementation "curse.maven:better-advancements-272515:${project.better_advancements_version}"
+    //implementation "curse.maven:better-advancements-272515:${project.better_advancements_version}"
 }
 
 tasks.named('jar', Jar).configure {

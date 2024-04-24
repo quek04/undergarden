@@ -116,7 +116,7 @@ public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock
 	}
 
 	@Override
-	public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+	protected boolean isPathfindable(BlockState state, PathComputationType type) {
 		return false;
 	}
 }
