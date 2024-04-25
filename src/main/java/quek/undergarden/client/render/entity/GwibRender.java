@@ -25,8 +25,8 @@ public class GwibRender extends MobRenderer<Gwib, GwibModel<Gwib>> {
 	}
 
 	@Override
-	protected void setupRotations(Gwib entity, PoseStack stack, float ageInTicks, float rotationYaw, float partialTicks) {
-		super.setupRotations(entity, stack, ageInTicks, rotationYaw, partialTicks);
+	protected void setupRotations(Gwib entity, PoseStack stack, float ageInTicks, float rotationYaw, float partialTicks, float scale) {
+		super.setupRotations(entity, stack, ageInTicks, rotationYaw, partialTicks, scale);
 		float f = 4.3F * Mth.sin(0.6F * ageInTicks);
 		stack.mulPose(Axis.YP.rotationDegrees(-f));
 	}

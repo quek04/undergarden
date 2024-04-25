@@ -5,7 +5,10 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
@@ -107,11 +110,6 @@ public class Gwib extends WaterAnimal implements Enemy {
 	@Override
 	protected boolean shouldDespawnInPeaceful() {
 		return true;
-	}
-
-	@Override
-	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
-		return 0.25F;
 	}
 
 	private boolean targetIsInWater(@Nullable LivingEntity target) {

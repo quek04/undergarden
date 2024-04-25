@@ -1,5 +1,6 @@
 package quek.undergarden.entity.animal;
 
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
@@ -40,7 +41,6 @@ public class Gloomper extends Animal {
 		this.jumpControl = new JumpHelperController(this);
 		this.moveControl = new Gloomper.MoveHelperController(this);
 		this.setMovementSpeed(0.0D);
-		this.setMaxUpStep(1.0F);
 	}
 
 	@Override
@@ -58,7 +58,8 @@ public class Gloomper extends Animal {
 	public static AttributeSupplier.Builder registerAttributes() {
 		return Animal.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 20.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.3D);
+				.add(Attributes.MOVEMENT_SPEED, 0.3D)
+				.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
 	@Override
@@ -256,7 +257,7 @@ public class Gloomper extends Animal {
 		cloud.setRadiusOnUse(-0.5F);
 		cloud.setWaitTime(10);
 		cloud.setRadiusPerTick(-cloud.getRadius() / (float) cloud.getDuration());
-		cloud.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 100, 0));
+		cloud.addEffect(new MobEffectInstance(UGEffects.VIRULENCE, 100, 0));
 
 		if (this.getRandom().nextInt(2) == 0) {
 			this.playSound(UGSoundEvents.GLOOMPER_FART.get(), 1.0F, 1.0F);
@@ -268,8 +269,8 @@ public class Gloomper extends Animal {
 
 	@Override
 	public boolean canBeAffected(MobEffectInstance effectInstance) {
-		MobEffect effect = effectInstance.getEffect();
-		if (effect == UGEffects.VIRULENCE.get()) {
+		Holder<MobEffect> effect = effectInstance.getEffect();
+		if (effect == UGEffects.VIRULENCE) {
 			return false;
 		} else return super.canBeAffected(effectInstance);
 	}

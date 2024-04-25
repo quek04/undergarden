@@ -3,8 +3,8 @@ package quek.undergarden.item.armor;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -24,8 +24,8 @@ import java.util.UUID;
 
 public class UndergardenArmorItem extends ArmorItem {
 
-	public UndergardenArmorItem(ArmorMaterial material, Type slot) {
-		super(material, slot, new Properties().stacksTo(1));
+	public UndergardenArmorItem(Holder<ArmorMaterial> armorMaterial, Type type, Properties properties) {
+		super(armorMaterial, type, properties);
 	}
 
 	@Override
@@ -52,14 +52,5 @@ public class UndergardenArmorItem extends ArmorItem {
 			);
 		}
 		return super.getDefaultAttributeModifiers(slot);
-	}
-
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String layer) {
-		if (slot == EquipmentSlot.LEGS) {
-			return "undergarden:textures/armor/" + this.material.getName() + "_layer_2.png";
-		} else {
-			return "undergarden:textures/armor/" + this.material.getName() + "_layer_1.png";
-		}
 	}
 }

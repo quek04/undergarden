@@ -35,7 +35,7 @@ public class GooLayerBlock extends Block {
 
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-		if (entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY.get()))
+		if (entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY))
 			return;
 		if (!entity.getType().is(UGTags.Entities.IMMUNE_TO_SCINTLING_GOO) && entity.onGround()) {
 			entity.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));

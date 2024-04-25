@@ -23,11 +23,10 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathFinder;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -40,7 +39,6 @@ public class ForgottenGuardian extends Monster {
 	public ForgottenGuardian(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
 		this.xpReward = 30;
-		this.setMaxUpStep(1.0F);
 	}
 
 	@Override
@@ -60,7 +58,8 @@ public class ForgottenGuardian extends Monster {
 				.add(Attributes.ATTACK_DAMAGE, 10.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 2.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.2D)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
+				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
+				.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
 	@Override
@@ -198,8 +197,13 @@ public class ForgottenGuardian extends Monster {
 		}
 
 		@Override
+		public PathType getPathType(Mob mob, BlockPos pos) {
+			return PathType.WALKABLE;
+		}
+
+		/*@Override
 		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, BlockPos pos, BlockPathTypes types) {
 			return BlockPathTypes.WALKABLE;
-		}
+		}*/
 	}
 }

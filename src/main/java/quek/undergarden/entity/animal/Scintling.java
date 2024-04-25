@@ -29,7 +29,6 @@ public class Scintling extends Animal {
 	public Scintling(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
 		this.xpReward = 0;
-		this.setMaxUpStep(1.0F);
 	}
 
 	@Override
@@ -46,7 +45,8 @@ public class Scintling extends Animal {
 	public static AttributeSupplier.Builder registerAttributes() {
 		return Animal.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 2.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.2D);
+				.add(Attributes.MOVEMENT_SPEED, 0.2D)
+				.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
 	public static boolean canScintlingSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {

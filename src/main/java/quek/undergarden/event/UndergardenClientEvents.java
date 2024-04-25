@@ -37,8 +37,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
-import net.neoforged.neoforge.client.gui.overlay.ExtendedGui;
-import net.neoforged.neoforge.client.gui.overlay.VanillaGuiOverlay;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
@@ -255,40 +254,37 @@ public class UndergardenClientEvents {
 		});
 	}
 
-	private static void registerOverlays(RegisterGuiOverlaysEvent event) {
-		event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), new ResourceLocation(Undergarden.MODID, "virulence_hearts"), (gui, guiGraphics, partialTicks, width, height) -> {
+	private static void registerOverlays(RegisterGuiLayersEvent event) {
+		event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH, new ResourceLocation(Undergarden.MODID, "virulence_hearts"), (gui, number) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
-			if (player != null && player.hasEffect(UGEffects.VIRULENCE.get()) && gui.shouldDrawSurvivalElements()) {
-				renderVirulenceHearts(width, height, guiGraphics, gui, player);
+			if (player != null && player.hasEffect(UGEffects.VIRULENCE) && minecraft.gameMode.canHurtPlayer()) {
+				renderVirulenceHearts(gui.guiWidth(), gui.guiHeight(), gui, gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiOverlay.ARMOR_LEVEL.id(), new ResourceLocation(Undergarden.MODID, "brittleness_armor"), (gui, guiGraphics, partialTicks, width, height) -> {
+		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, new ResourceLocation(Undergarden.MODID, "brittleness_armor"), (gui, number) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
-			if (player != null && player.hasEffect(UGEffects.BRITTLENESS.get()) && gui.shouldDrawSurvivalElements()) {
-				renderBrittlenessArmor(width, height, guiGraphics, gui, player);
+			if (player != null && player.hasEffect(UGEffects.BRITTLENESS) && minecraft.gameMode.canHurtPlayer()) {
+				renderBrittlenessArmor(gui.guiWidth(), gui.guiHeight(), gui, player);
 			}
 		});
 		//render XP bar since we cancel the jump bar
 		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		event.registerAbove(VanillaGuiOverlay.EXPERIENCE_BAR.id(), new ResourceLocation(Undergarden.MODID, "dweller_xp_bar"), (gui, guiGraphics, partialTicks, width, height) -> {
+		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, new ResourceLocation(Undergarden.MODID, "dweller_xp_bar"), (gui, n) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
 				gui.renderExperienceBar(guiGraphics, width / 2 - 91);
 			}
 		});
-		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
+		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, n) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
 
-			/*if (player != null) {
-				player.getCapability(UGAttachments.UNDERGARDEN_PORTAL_CAPABILITY).ifPresent(consumer -> renderPortalOverlay(guiGraphics, minecraft, window, consumer, partialTick));
-			}*/
 			if (player != null) {
-				renderPortalOverlay(guiGraphics, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), partialTick);
+				renderPortalOverlay(gui, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), minecraft.getPartialTick());
 			}
 		});
 	}
@@ -305,8 +301,8 @@ public class UndergardenClientEvents {
 		}
 	}
 
-	private static void dontRenderJumpBarForDweller(RenderGuiOverlayEvent.Pre event) {
-		if (event.getOverlay().id() == VanillaGuiOverlay.JUMP_BAR.id()) {
+	private static void dontRenderJumpBarForDweller(RenderGuiLayerEvent.Pre event) {
+		if (event.getLayer() == VanillaGuiLayers.JUMP_METER) {
 			if (Minecraft.getInstance().player.getVehicle() instanceof Dweller) {
 				event.setCanceled(true);
 			}
@@ -314,7 +310,7 @@ public class UndergardenClientEvents {
 	}
 
 
-	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, ExtendedGui gui, Player player) {
+	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, Player player) {
 		int x = width / 2 - 91;
 		int y = height - 49;
 
@@ -331,7 +327,7 @@ public class UndergardenClientEvents {
 		}
 	}
 
-	private static void renderVirulenceHearts(int width, int height, GuiGraphics graphics, ExtendedGui gui, Player player) {
+	private static void renderVirulenceHearts(int width, int height, GuiGraphics graphics, Gui gui, Player player) {
 		int health = Mth.ceil(player.getHealth());
 		boolean highlight = gui.healthBlinkTime > (long) gui.getGuiTicks() && (gui.healthBlinkTime - (long) gui.getGuiTicks()) / 3L % 2L == 1L;
 
@@ -373,7 +369,7 @@ public class UndergardenClientEvents {
 		renderHearts(graphics, gui, player, x, y, rowHeight, regen, healthMax, health, healthLast, absorb, highlight);
 	}
 
-	private static void renderHearts(GuiGraphics graphics, ExtendedGui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
+	private static void renderHearts(GuiGraphics graphics, Gui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
 		boolean hardcore = player.level().getLevelData().isHardcore();
 		int healthAmount = Mth.ceil((double) healthMax / 2.0D);
 		int absorptionAmount = Mth.ceil((double) absorb / 2.0D);

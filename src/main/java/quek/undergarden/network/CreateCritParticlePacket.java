@@ -3,37 +3,38 @@ package quek.undergarden.network;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.neoforged.neoforge.network.handling.PlayPayloadContext;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
 import quek.undergarden.Undergarden;
 
 public record CreateCritParticlePacket(int entityID, int duration,
 									   ParticleType<?> particle) implements CustomPacketPayload {
 
-	public static final ResourceLocation ID = new ResourceLocation(Undergarden.MODID, "create_crit_particle");
+	public static final Type<CreateCritParticlePacket> TYPE = new Type<>(new ResourceLocation(Undergarden.MODID, "create_crit_particle"));
+	public static final StreamCodec<RegistryFriendlyByteBuf, CreateCritParticlePacket> STREAM_CODEC = CustomPacketPayload.codec(CreateCritParticlePacket::write, CreateCritParticlePacket::new);
 
-	public CreateCritParticlePacket(FriendlyByteBuf buf) {
-		this(buf.readInt(), buf.readInt(), buf.readById(BuiltInRegistries.PARTICLE_TYPE));
+	public CreateCritParticlePacket(RegistryFriendlyByteBuf buf) {
+		this(buf.readInt(), buf.readInt(), (ParticleType<?>) ParticleTypes.STREAM_CODEC.decode(buf));
 	}
 
-	@Override
-	public void write(FriendlyByteBuf buf) {
+	public void write(RegistryFriendlyByteBuf buf) {
 		buf.writeInt(this.entityID());
 		buf.writeInt(this.duration());
-		buf.writeId(BuiltInRegistries.PARTICLE_TYPE, this.particle());
+		ParticleTypes.STREAM_CODEC.encode(buf, this::particle);
 	}
 
 	@Override
-	public ResourceLocation id() {
-		return ID;
+	public Type<? extends CustomPacketPayload> type() {
+		return TYPE;
 	}
 
-	public static void handle(CreateCritParticlePacket message, PlayPayloadContext ctx) {
-		ctx.workHandler().execute(() -> {
+	public static void handle(CreateCritParticlePacket message, IPayloadContext ctx) {
+		ctx.enqueueWork(() -> {
 			Entity entity = Minecraft.getInstance().level.getEntity(message.entityID());
 			if (entity != null) {
 				Minecraft.getInstance().particleEngine.createTrackingEmitter(entity, (ParticleOptions) message.particle(), message.duration());

@@ -3,10 +3,8 @@ package quek.undergarden.entity.cavern;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -69,10 +67,5 @@ public class Sploogie extends CavernMonster implements RangedAttackMob {
 		pebble.shoot(xDistance, yDistance + yMath * 0.1D, zDistance, 1.6F, 1.0F);
 		this.playSound(UGSoundEvents.SPLOOGIE_SPIT.get(), 1.0F, this.getVoicePitch());
 		this.level().addFreshEntity(pebble);
-	}
-
-	@Override
-	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
-		return 0.3F;
 	}
 }

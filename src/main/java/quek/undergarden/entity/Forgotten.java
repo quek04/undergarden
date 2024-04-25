@@ -1,7 +1,6 @@
 package quek.undergarden.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -108,8 +107,8 @@ public class Forgotten extends Monster {
 
 	@Nullable
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance difficulty, MobSpawnType type, @Nullable SpawnGroupData data, @Nullable CompoundTag tag) {
-		data = super.finalizeSpawn(accessor, difficulty, type, data, tag);
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance difficulty, MobSpawnType type, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(accessor, difficulty, type, data);
 		this.populateDefaultEquipmentSlots(accessor.getRandom(), difficulty);
 		this.populateDefaultEquipmentEnchantments(accessor.getRandom(), difficulty);
 		return data;

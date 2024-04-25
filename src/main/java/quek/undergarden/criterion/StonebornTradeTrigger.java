@@ -8,7 +8,6 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import quek.undergarden.entity.stoneborn.Stoneborn;
@@ -31,9 +30,9 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
 	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> stoneborn,
 								  Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
 		public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(p_311449_ -> p_311449_.group(
-						ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(TriggerInstance::player),
-						ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "stoneborn").forGetter(TriggerInstance::stoneborn),
-						ExtraCodecs.strictOptionalField(ItemPredicate.CODEC, "item").forGetter(TriggerInstance::item))
+						EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player),
+						EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("stoneborn").forGetter(TriggerInstance::stoneborn),
+						ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TriggerInstance::item))
 				.apply(p_311449_, TriggerInstance::new)
 		);
 
@@ -45,7 +44,7 @@ public class StonebornTradeTrigger extends SimpleCriterionTrigger<StonebornTrade
 			if (this.stoneborn().isPresent() && !this.stoneborn().get().matches(context)) {
 				return false;
 			}
-			return this.item().isEmpty() || this.item().get().matches(stack);
+			return this.item().isEmpty() || this.item().get().test(stack);
 		}
 	}
 }

@@ -38,7 +38,7 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<Blisterbomb>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> EntityType.Builder.<Blisterbomb>of(Blisterbomb::new, MobCategory.MISC).sized(0.5F, 0.5F).build("blisterbomb"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Gronglet>> GRONGLET = ENTITIES.register("gronglet", () -> EntityType.Builder.<Gronglet>of(Gronglet::new, MobCategory.MISC).sized(0.5F, 0.5F).build("gronglet"));
 	public static final DeferredHolder<EntityType<?>, EntityType<MinionProjectile>> MINION_PROJECTILE = ENTITIES.register("minion_projectile", () -> EntityType.Builder.<MinionProjectile>of(MinionProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F).build("minion_projectile"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Minion>> MINION = ENTITIES.register("minion", () -> EntityType.Builder.of(Minion::new, MobCategory.MISC).sized(1.0F, 1.6F).build("minion"));
+	public static final DeferredHolder<EntityType<?>, EntityType<Minion>> MINION = ENTITIES.register("minion", () -> EntityType.Builder.of(Minion::new, MobCategory.MISC).sized(1.0F, 1.6F).eyeHeight(1.0F).build("minion"));
 
 	//normal
 	public static final DeferredHolder<EntityType<?>, EntityType<Rotling>> ROTLING = ENTITIES.register("rotling", () -> EntityType.Builder.of(Rotling::new, MobCategory.MONSTER).sized(0.6F, 1.0F).build("rotling"));
@@ -52,9 +52,9 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<Stoneborn>> STONEBORN = ENTITIES.register("stoneborn", () -> EntityType.Builder.of(Stoneborn::new, MobCategory.MONSTER).sized(1.0F, 2.6F).build("stoneborn"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Nargoyle>> NARGOYLE = ENTITIES.register("nargoyle", () -> EntityType.Builder.of(Nargoyle::new, MobCategory.MONSTER).sized(1.0F, 1.5F).build("nargoyle"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Muncher>> MUNCHER = ENTITIES.register("muncher", () -> EntityType.Builder.of(Muncher::new, MobCategory.MONSTER).sized(0.8F, 0.8F).build("muncher"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Sploogie>> SPLOOGIE = ENTITIES.register("sploogie", () -> EntityType.Builder.of(Sploogie::new, MobCategory.MONSTER).sized(0.8F, 0.8F).build("sploogie"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Gwib>> GWIB = ENTITIES.register("gwib", () -> EntityType.Builder.of(Gwib::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.5F).build("gwib"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Mog>> MOG = ENTITIES.register("mog", () -> EntityType.Builder.of(Mog::new, MobCategory.CREATURE).sized(1.0F, 1.0F).build("mog"));
+	public static final DeferredHolder<EntityType<?>, EntityType<Sploogie>> SPLOOGIE = ENTITIES.register("sploogie", () -> EntityType.Builder.of(Sploogie::new, MobCategory.MONSTER).sized(0.8F, 0.8F).eyeHeight(0.3F).build("sploogie"));
+	public static final DeferredHolder<EntityType<?>, EntityType<Gwib>> GWIB = ENTITIES.register("gwib", () -> EntityType.Builder.of(Gwib::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.5F).eyeHeight(0.25F).build("gwib"));
+	public static final DeferredHolder<EntityType<?>, EntityType<Mog>> MOG = ENTITIES.register("mog", () -> EntityType.Builder.of(Mog::new, MobCategory.CREATURE).sized(1.0F, 1.0F).eyeHeight(0.2F).build("mog"));
 	public static final DeferredHolder<EntityType<?>, EntityType<SmogMog>> SMOG_MOG = ENTITIES.register("smog_mog", () -> EntityType.Builder.of(SmogMog::new, MobCategory.CREATURE).sized(0.75F, 1.8F).build("smog_mog"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Forgotten>> FORGOTTEN = ENTITIES.register("forgotten", () -> EntityType.Builder.of(Forgotten::new, MobCategory.MONSTER).sized(0.7F, 2.2F).build("forgotten"));
 

@@ -11,14 +11,14 @@ import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.util.InclusiveRange;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
-import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.data.*;
 import quek.undergarden.event.UndergardenClientEvents;
@@ -34,7 +34,7 @@ public class Undergarden {
 
 	public static final String MODID = "undergarden";
 
-	public Undergarden(IEventBus bus, Dist dist) {
+	public Undergarden(IEventBus bus, Dist dist, ModContainer container) {
 
 		if (dist.isClient()) {
 			UndergardenClientEvents.initClientEvents(bus);
@@ -73,13 +73,13 @@ public class Undergarden {
 			register.register(bus);
 		}
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, UndergardenConfig.COMMON_SPEC);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, UndergardenConfig.CLIENT_SPEC);
+		container.registerConfig(ModConfig.Type.COMMON, UndergardenConfig.COMMON_SPEC);
+		container.registerConfig(ModConfig.Type.CLIENT, UndergardenConfig.CLIENT_SPEC);
 	}
 
-	public void registerPackets(RegisterPayloadHandlerEvent event) {
-		IPayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
-		registrar.play(CreateCritParticlePacket.ID, CreateCritParticlePacket::new, payload -> payload.client(CreateCritParticlePacket::handle));
+	public void registerPackets(RegisterPayloadHandlersEvent event) {
+		PayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
+		registrar.playToClient(CreateCritParticlePacket.TYPE, CreateCritParticlePacket.STREAM_CODEC, CreateCritParticlePacket::handle);
 	}
 
 	public void gatherData(GatherDataEvent event) {
