@@ -7,10 +7,11 @@
       "item": "undergarden:grongle_boat"
     },
     {
-      "tag": "forge:chests/wooden"
+      "tag": "c:chests/wooden"
     }
   ],
   "result": {
-    "item": "undergarden:grongle_chest_boat"
+    "count": 1,
+    "id": "undergarden:grongle_chest_boat"
   }
 }

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:blue_mogmoss"
-            ]
+            "items": "undergarden:blue_mogmoss"
           }
         ]
       },

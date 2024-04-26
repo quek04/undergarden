@@ -1,6 +1,7 @@
 package quek.undergarden.data;
 
 import com.google.common.collect.ImmutableList;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -17,10 +18,12 @@ import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
 
+import java.util.concurrent.CompletableFuture;
+
 public class UGRecipes extends UGRecipeProvider {
 
-	public UGRecipes(PackOutput output) {
-		super(output);
+	public UGRecipes(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+		super(output, provider);
 	}
 
 	@Override

@@ -16,9 +16,7 @@
           "offsetY": 1,
           "predicate": {
             "block": {
-              "blocks": [
-                "undergarden:tall_deepturf"
-              ],
+              "blocks": "undergarden:tall_deepturf",
               "state": {
                 "half": "upper"
               }
@@ -33,9 +31,7 @@
             {
               "condition": "minecraft:match_tool",
               "predicate": {
-                "items": [
-                  "minecraft:shears"
-                ]
+                "items": "minecraft:shears"
               }
             }
           ],
@@ -66,9 +62,7 @@
           "offsetY": -1,
           "predicate": {
             "block": {
-              "blocks": [
-                "undergarden:tall_deepturf"
-              ],
+              "blocks": "undergarden:tall_deepturf",
               "state": {
                 "half": "lower"
               }
@@ -83,9 +77,7 @@
             {
               "condition": "minecraft:match_tool",
               "predicate": {
-                "items": [
-                  "minecraft:shears"
-                ]
+                "items": "minecraft:shears"
               }
             }
           ],

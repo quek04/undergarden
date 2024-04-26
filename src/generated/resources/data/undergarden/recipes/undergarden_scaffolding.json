@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "S": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "T": {
       "item": "undergarden:twistytwig"
@@ -16,6 +16,6 @@
   ],
   "result": {
     "count": 6,
-    "item": "minecraft:scaffolding"
+    "id": "minecraft:scaffolding"
   }
 }

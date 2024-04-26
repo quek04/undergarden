@@ -94,8 +94,8 @@ public class Undergarden {
 		generator.addProvider(event.includeClient(), new UGSoundDefinitions(output, helper));
 
 
-		generator.addProvider(event.includeServer(), new UGRecipes(output));
-		generator.addProvider(event.includeServer(), new UGLootTables(output));
+		generator.addProvider(event.includeServer(), new UGRecipes(output, provider));
+		generator.addProvider(event.includeServer(), new UGLootTables(output, provider));
 		UGBlockTags blockTags = new UGBlockTags(output, provider, helper);
 		generator.addProvider(event.includeServer(), blockTags);
 		generator.addProvider(event.includeServer(), new UGItemTags(output, provider, blockTags.contentsGetter(), helper));

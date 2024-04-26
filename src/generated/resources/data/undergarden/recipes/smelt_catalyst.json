@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:catalyst"
   },
-  "result": "minecraft:diamond"
+  "result": {
+    "count": 1,
+    "id": "minecraft:diamond"
+  }
 }

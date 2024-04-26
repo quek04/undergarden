@@ -1,14 +1,10 @@
 package quek.undergarden.registry;
 
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -16,11 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import quek.undergarden.entity.Boomgourd;
-import quek.undergarden.entity.projectile.Blisterbomb;
-import quek.undergarden.entity.projectile.slingshot.DepthrockPebble;
-import quek.undergarden.entity.projectile.slingshot.GooBall;
-import quek.undergarden.entity.projectile.slingshot.Gronglet;
-import quek.undergarden.entity.projectile.slingshot.RottenBlisterberry;
 
 public class UGDispenserBehaviors {
 
@@ -44,35 +35,15 @@ public class UGDispenserBehaviors {
 		DispenserBlock.registerBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
 		DispenserBlock.registerBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
 
-		DispenserBlock.registerBehavior(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractProjectileDispenseBehavior() {
-			protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-				return Util.make(new DepthrockPebble(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-			}
-		});
+		DispenserBlock.registerProjectileBehavior(UGItems.DEPTHROCK_PEBBLE);
 
-		DispenserBlock.registerBehavior(UGItems.GOO_BALL.get(), new AbstractProjectileDispenseBehavior() {
-			protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-				return Util.make(new GooBall(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-			}
-		});
+		DispenserBlock.registerProjectileBehavior(UGItems.GOO_BALL);
 
-		DispenserBlock.registerBehavior(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractProjectileDispenseBehavior() {
-			protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-				return Util.make(new RottenBlisterberry(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-			}
-		});
+		DispenserBlock.registerProjectileBehavior(UGItems.ROTTEN_BLISTERBERRY);
 
-		DispenserBlock.registerBehavior(UGItems.BLISTERBOMB.get(), new AbstractProjectileDispenseBehavior() {
-			protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-				return Util.make(new Blisterbomb(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-			}
-		});
+		DispenserBlock.registerProjectileBehavior(UGItems.BLISTERBOMB.get());
 
-		DispenserBlock.registerBehavior(UGBlocks.GRONGLET.get(), new AbstractProjectileDispenseBehavior() {
-			protected Projectile getProjectile(Level level, Position position, ItemStack stack) {
-				return Util.make(new Gronglet(level, position.x(), position.y(), position.z()), (entity) -> entity.setItem(stack));
-			}
-		});
+		DispenserBlock.registerProjectileBehavior(UGBlocks.GRONGLET.get());
 
 		DispenserBlock.registerBehavior(UGBlocks.BOOMGOURD.get(), new DefaultDispenseItemBehavior() {
 

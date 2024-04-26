@@ -6,5 +6,8 @@
   "ingredient": {
     "tag": "undergarden:froststeel_items"
   },
-  "result": "undergarden:froststeel_ingot"
+  "result": {
+    "count": 1,
+    "id": "undergarden:froststeel_ingot"
+  }
 }

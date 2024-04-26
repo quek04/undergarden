@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:rotten_blisterberry"
-            ]
+            "items": "undergarden:rotten_blisterberry"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:twistytwig"
-            ]
+            "items": "undergarden:twistytwig"
           }
         ]
       },

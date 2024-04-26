@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:shiverstone_cloggrum_ore"
-            ]
+            "items": "undergarden:shiverstone_cloggrum_ore"
           }
         ]
       },

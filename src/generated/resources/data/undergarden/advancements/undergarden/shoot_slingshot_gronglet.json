@@ -4,14 +4,10 @@
     "shoot_slingshot_gronglet": {
       "conditions": {
         "ammo": {
-          "items": [
-            "undergarden:gronglet"
-          ]
+          "items": "undergarden:gronglet"
         },
         "slingshot": {
-          "items": [
-            "undergarden:slingshot"
-          ]
+          "items": "undergarden:slingshot"
         }
       },
       "trigger": "undergarden:slingshot_fire"
@@ -22,7 +18,8 @@
       "translate": "advancement.undergarden.shoot_slingshot_gronglet.desc"
     },
     "icon": {
-      "item": "undergarden:gronglet"
+      "count": 1,
+      "id": "undergarden:gronglet"
     },
     "title": {
       "translate": "advancement.undergarden.shoot_slingshot_gronglet.title"

@@ -6,7 +6,7 @@
       "item": "undergarden:utherium_crystal"
     },
     "/": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -15,6 +15,7 @@
     " /"
   ],
   "result": {
-    "item": "undergarden:utherium_axe"
+    "count": 1,
+    "id": "undergarden:utherium_axe"
   }
 }

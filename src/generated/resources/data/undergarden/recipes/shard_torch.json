@@ -6,7 +6,7 @@
       "item": "undergarden:utheric_shard"
     },
     "S": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     }
   },
   "pattern": [
@@ -14,6 +14,7 @@
     "S"
   ],
   "result": {
-    "item": "undergarden:shard_torch"
+    "count": 1,
+    "id": "undergarden:shard_torch"
   }
 }

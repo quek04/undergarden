@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:miserabell"
-            ]
+            "items": "undergarden:miserabell"
           }
         ]
       },

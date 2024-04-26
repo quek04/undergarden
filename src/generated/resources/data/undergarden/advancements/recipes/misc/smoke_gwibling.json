@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:raw_gwibling"
-            ]
+            "items": "undergarden:raw_gwibling"
           }
         ]
       },

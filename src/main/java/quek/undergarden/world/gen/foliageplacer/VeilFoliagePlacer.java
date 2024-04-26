@@ -1,6 +1,6 @@
 package quek.undergarden.world.gen.foliageplacer;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,7 +19,7 @@ import quek.undergarden.registry.UGFoliagePlacers;
 
 public class VeilFoliagePlacer extends FoliagePlacer {
 
-	public static final Codec<VeilFoliagePlacer> CODEC = RecordCodecBuilder.create(instance -> foliagePlacerParts(instance).apply(instance, VeilFoliagePlacer::new));
+	public static final MapCodec<VeilFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance -> foliagePlacerParts(instance).apply(instance, VeilFoliagePlacer::new));
 
 	public VeilFoliagePlacer(IntProvider radius, IntProvider offset) {
 		super(radius, offset);

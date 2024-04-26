@@ -23,7 +23,8 @@
     },
     "frame": "challenge",
     "icon": {
-      "item": "undergarden:depthrock_pebble"
+      "count": 1,
+      "id": "undergarden:depthrock_pebble"
     },
     "title": {
       "translate": "advancement.undergarden.slingshot_20_damage.title"

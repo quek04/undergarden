@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:shiverstone_diamond_ore"
-            ]
+            "items": "undergarden:shiverstone_diamond_ore"
           }
         ]
       },

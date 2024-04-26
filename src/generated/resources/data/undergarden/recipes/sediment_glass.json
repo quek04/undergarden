@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:sediment"
   },
-  "result": "undergarden:sediment_glass"
+  "result": {
+    "count": 1,
+    "id": "undergarden:sediment_glass"
+  }
 }

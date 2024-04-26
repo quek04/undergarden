@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:froststeel_block"
-            ]
+            "items": "undergarden:froststeel_block"
           }
         ]
       },

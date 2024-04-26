@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:grongle_planks"
-            ]
+            "items": "undergarden:grongle_planks"
           }
         ]
       },

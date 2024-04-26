@@ -4,14 +4,10 @@
     "shoot_slingshot_rotten_blisterberry": {
       "conditions": {
         "ammo": {
-          "items": [
-            "undergarden:rotten_blisterberry"
-          ]
+          "items": "undergarden:rotten_blisterberry"
         },
         "slingshot": {
-          "items": [
-            "undergarden:slingshot"
-          ]
+          "items": "undergarden:slingshot"
         }
       },
       "trigger": "undergarden:slingshot_fire"
@@ -22,7 +18,8 @@
       "translate": "advancement.undergarden.shoot_slingshot_rotten_blisterberry.desc"
     },
     "icon": {
-      "item": "undergarden:rotten_blisterberry"
+      "count": 1,
+      "id": "undergarden:rotten_blisterberry"
     },
     "title": {
       "translate": "advancement.undergarden.shoot_slingshot_rotten_blisterberry.title"

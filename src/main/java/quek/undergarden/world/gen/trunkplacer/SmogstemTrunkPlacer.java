@@ -2,6 +2,7 @@ package quek.undergarden.world.gen.trunkplacer;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -22,7 +23,7 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
 
 	protected final int width;
 
-	public static final Codec<SmogstemTrunkPlacer> CODEC = RecordCodecBuilder.create(instance ->
+	public static final MapCodec<SmogstemTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(instance ->
 			instance.group(
 							Codec.intRange(0, 32).fieldOf("base_height").forGetter((placer) -> placer.baseHeight),
 							Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter((placer) -> placer.heightRandA),

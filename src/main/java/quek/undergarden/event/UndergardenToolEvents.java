@@ -64,7 +64,7 @@ public class UndergardenToolEvents {
 				if (event.getEntity().getType().is(UGTags.Entities.ROTSPAWN)) {
 					event.setAmount(damage * 1.5F);
 					if (!event.getEntity().level().isClientSide()) {
-						PacketDistributor.TRACKING_ENTITY.with(event.getEntity()).send(new CreateCritParticlePacket(event.getEntity().getId(), 2, UGParticleTypes.UTHERIUM_CRIT.get()));
+						PacketDistributor.sendToPlayersTrackingEntity(event.getEntity(), new CreateCritParticlePacket(event.getEntity().getId(), 2, UGParticleTypes.UTHERIUM_CRIT.get()));
 					}
 				}
 			}
@@ -75,10 +75,10 @@ public class UndergardenToolEvents {
 		Entity source = event.getSource().getEntity();
 		if (source instanceof Player player) {
 			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_SWORD.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_AXE.get())) {
-				event.getEntity().addEffect(new MobEffectInstance(UGEffects.CHILLY.get(), 600, 2, false, false));
+				event.getEntity().addEffect(new MobEffectInstance(UGEffects.CHILLY, 600, 2, false, false));
 			}
 			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_PICKAXE.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_SHOVEL.get())) {
-				event.getEntity().addEffect(new MobEffectInstance(UGEffects.CHILLY.get(), 600, 1, false, false));
+				event.getEntity().addEffect(new MobEffectInstance(UGEffects.CHILLY, 600, 1, false, false));
 			}
 		}
 	}

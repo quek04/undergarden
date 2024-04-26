@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:utherium_block"
-            ]
+            "items": "undergarden:utherium_block"
           }
         ]
       },

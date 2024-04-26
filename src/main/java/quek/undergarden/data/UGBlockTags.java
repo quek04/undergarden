@@ -40,7 +40,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(UGTags.Blocks.SMOGSTEM_LOGS).add(UGBlocks.SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), UGBlocks.SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
 		tag(UGTags.Blocks.WIGGLEWOOD_LOGS).add(UGBlocks.WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), UGBlocks.WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
 		tag(UGTags.Blocks.GRONGLE_LOGS).add(UGBlocks.GRONGLE_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get(), UGBlocks.GRONGLE_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
-		tag(UGTags.Blocks.MUNCHER_BREAKABLES).addTag(Tags.Blocks.STONE).addTag(BlockTags.BASE_STONE_OVERWORLD).addTag(BlockTags.BASE_STONE_NETHER).addTag(UGTags.Blocks.BASE_STONE_UNDERGARDEN);
+		tag(UGTags.Blocks.MUNCHER_BREAKABLES).addTag(Tags.Blocks.STONES).addTag(BlockTags.BASE_STONE_OVERWORLD).addTag(BlockTags.BASE_STONE_NETHER).addTag(UGTags.Blocks.BASE_STONE_UNDERGARDEN);
 		tag(UGTags.Blocks.SCINTLING_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
 		tag(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON).addTag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
 
@@ -122,21 +122,21 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(Tags.Blocks.ORE_RATES_SINGULAR).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM);
 		tag(Tags.Blocks.ORE_RATES_SPARSE).add(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get(), UGBlocks.DEPTHROCK_GOLD_ORE.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(UGTags.Blocks.STORAGE_BLOCKS_CLOGGRUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_FROSTSTEEL).addTag(UGTags.Blocks.STORAGE_BLOCKS_UTHERIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_REGALIUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_CLOGGRUM).addTag(UGTags.Blocks.STORAGE_BLOCKS_RAW_FROSTSTEEL).addTag(UGTags.Blocks.STORAGE_BLOCKS_FORGOTTEN_METAL);
-		tag(Tags.Blocks.COBBLESTONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get());
+		tag(Tags.Blocks.COBBLESTONES).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get());
 		tag(Tags.Blocks.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get(), UGBlocks.GRONGLE_FENCE_GATE.get());
 		tag(Tags.Blocks.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get(), UGBlocks.WIGGLEWOOD_FENCE.get(), UGBlocks.GRONGLE_FENCE.get());
 		tag(Tags.Blocks.ORES_COAL).add(UGBlocks.DEPTHROCK_COAL_ORE.get(), UGBlocks.SHIVERSTONE_COAL_ORE.get());
 		tag(Tags.Blocks.ORES_IRON).add(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get());
 		tag(Tags.Blocks.ORES_GOLD).add(UGBlocks.DEPTHROCK_GOLD_ORE.get());
 		tag(Tags.Blocks.ORES_DIAMOND).add(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get());
-		tag(Tags.Blocks.STONE).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get());
-		tag(Tags.Blocks.GLASS).add(UGBlocks.SEDIMENT_GLASS.get());
-		tag(Tags.Blocks.GLASS_COLORLESS).add(UGBlocks.SEDIMENT_GLASS.get());
-		tag(Tags.Blocks.GLASS_SILICA).add(UGBlocks.SEDIMENT_GLASS.get());
+		tag(Tags.Blocks.STONES).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get());
+		tag(Tags.Blocks.GLASS_BLOCKS).add(UGBlocks.SEDIMENT_GLASS.get());
+		tag(Tags.Blocks.GLASS_BLOCKS_COLORLESS).add(UGBlocks.SEDIMENT_GLASS.get());
+		//tag(Tags.Blocks.GLASS_SILICA).add(UGBlocks.SEDIMENT_GLASS.get());
 		tag(Tags.Blocks.GLASS_PANES).add(UGBlocks.SEDIMENT_GLASS_PANE.get());
 		tag(Tags.Blocks.GLASS_PANES_COLORLESS).add(UGBlocks.SEDIMENT_GLASS_PANE.get());
-		tag(Tags.Blocks.SAND).add(UGBlocks.SEDIMENT.get());
-		tag(Tags.Blocks.SAND_COLORLESS).add(UGBlocks.SEDIMENT.get());
+		tag(Tags.Blocks.SANDS).add(UGBlocks.SEDIMENT.get());
+		tag(Tags.Blocks.SANDS_COLORLESS).add(UGBlocks.SEDIMENT.get());
 
 		//huge mineables lists!
 		tag(BlockTags.MINEABLE_WITH_PICKAXE).add(

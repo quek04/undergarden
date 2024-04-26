@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "undergarden:depthrock"
   },
-  "result": "undergarden:polished_depthrock"
+  "result": {
+    "count": 1,
+    "id": "undergarden:polished_depthrock"
+  }
 }

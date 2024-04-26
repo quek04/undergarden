@@ -1,6 +1,6 @@
 package quek.undergarden.world.gen.structure.processor;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.ChunkPos;
@@ -16,7 +16,7 @@ import quek.undergarden.registry.UGStructureProcessors;
 
 public class NoWaterloggingProcessor extends StructureProcessor {
 
-	public static final Codec<NoWaterloggingProcessor> CODEC = Codec.unit(NoWaterloggingProcessor::new);
+	public static final MapCodec<NoWaterloggingProcessor> CODEC = MapCodec.unit(NoWaterloggingProcessor::new);
 
 	@Nullable
 	@Override

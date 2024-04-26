@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:regalium_block"
-            ]
+            "items": "undergarden:regalium_block"
           }
         ]
       },

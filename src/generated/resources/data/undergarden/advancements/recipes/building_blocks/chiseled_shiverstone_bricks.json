@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:shiverstone_brick_slab"
-            ]
+            "items": "undergarden:shiverstone_brick_slab"
           }
         ]
       },

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:smogstem_planks"
-            ]
+            "items": "undergarden:smogstem_planks"
           }
         ]
       },

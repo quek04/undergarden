@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:underbeans"
-            ]
+            "items": "undergarden:underbeans"
           }
         ]
       },
@@ -19,7 +17,8 @@
       "translate": "advancement.undergarden.underbeans.desc"
     },
     "icon": {
-      "item": "undergarden:underbeans"
+      "count": 1,
+      "id": "undergarden:underbeans"
     },
     "title": {
       "translate": "advancement.undergarden.underbeans.title"

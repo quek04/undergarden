@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:depthrock_cloggrum_ore"
-            ]
+            "items": "undergarden:depthrock_cloggrum_ore"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:depthrock_regalium_ore"
-            ]
+            "items": "undergarden:depthrock_regalium_ore"
           }
         ]
       },
@@ -29,9 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:depthrock_utherium_ore"
-            ]
+            "items": "undergarden:depthrock_utherium_ore"
           }
         ]
       },
@@ -41,9 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:raw_cloggrum"
-            ]
+            "items": "undergarden:raw_cloggrum"
           }
         ]
       },
@@ -53,9 +45,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:raw_froststeel"
-            ]
+            "items": "undergarden:raw_froststeel"
           }
         ]
       },
@@ -65,9 +55,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:regalium_crystal"
-            ]
+            "items": "undergarden:regalium_crystal"
           }
         ]
       },
@@ -77,9 +65,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:shiverstone_cloggrum_ore"
-            ]
+            "items": "undergarden:shiverstone_cloggrum_ore"
           }
         ]
       },
@@ -89,9 +75,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:shiverstone_froststeel_ore"
-            ]
+            "items": "undergarden:shiverstone_froststeel_ore"
           }
         ]
       },
@@ -101,9 +85,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:shiverstone_regalium_ore"
-            ]
+            "items": "undergarden:shiverstone_regalium_ore"
           }
         ]
       },
@@ -113,9 +95,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:shiverstone_utherium_ore"
-            ]
+            "items": "undergarden:shiverstone_utherium_ore"
           }
         ]
       },
@@ -125,9 +105,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:utherium_crystal"
-            ]
+            "items": "undergarden:utherium_crystal"
           }
         ]
       },
@@ -139,7 +117,8 @@
       "translate": "advancement.undergarden.mine_ore.desc"
     },
     "icon": {
-      "item": "undergarden:raw_cloggrum"
+      "count": 1,
+      "id": "undergarden:raw_cloggrum"
     },
     "title": {
       "translate": "advancement.undergarden.mine_ore.title"

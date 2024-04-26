@@ -7,7 +7,8 @@
     "item": "undergarden:cloggrum_sword"
   },
   "result": {
-    "item": "undergarden:forgotten_sword"
+    "count": 1,
+    "id": "undergarden:forgotten_sword"
   },
   "template": {
     "item": "undergarden:forgotten_upgrade_smithing_template"

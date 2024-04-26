@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "/": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "P": {
       "item": "undergarden:grongle_planks"
@@ -16,6 +16,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "undergarden:grongle_sign"
+    "id": "undergarden:grongle_sign"
   }
 }

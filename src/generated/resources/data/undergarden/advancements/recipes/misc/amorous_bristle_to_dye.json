@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:amorous_bristle"
-            ]
+            "items": "undergarden:amorous_bristle"
           }
         ]
       },

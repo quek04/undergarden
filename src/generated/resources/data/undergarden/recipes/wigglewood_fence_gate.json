@@ -3,7 +3,7 @@
   "category": "redstone",
   "key": {
     "/": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "M": {
       "item": "undergarden:wigglewood_planks"
@@ -14,6 +14,7 @@
     "/M/"
   ],
   "result": {
-    "item": "undergarden:wigglewood_fence_gate"
+    "count": 1,
+    "id": "undergarden:wigglewood_fence_gate"
   }
 }

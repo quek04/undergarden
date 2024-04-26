@@ -5,24 +5,16 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:cloggrum_helmet"
-            ]
+            "items": "undergarden:cloggrum_helmet"
           },
           {
-            "items": [
-              "undergarden:cloggrum_chestplate"
-            ]
+            "items": "undergarden:cloggrum_chestplate"
           },
           {
-            "items": [
-              "undergarden:cloggrum_leggings"
-            ]
+            "items": "undergarden:cloggrum_leggings"
           },
           {
-            "items": [
-              "undergarden:cloggrum_boots"
-            ]
+            "items": "undergarden:cloggrum_boots"
           }
         ]
       },
@@ -35,8 +27,8 @@
     },
     "frame": "goal",
     "icon": {
-      "item": "undergarden:cloggrum_chestplate",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "undergarden:cloggrum_chestplate"
     },
     "title": {
       "translate": "advancement.undergarden.cloggrum_armor.title"

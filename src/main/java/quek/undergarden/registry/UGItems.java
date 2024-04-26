@@ -1,6 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
@@ -24,7 +25,7 @@ public class UGItems {
 
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Undergarden.MODID);
 
-	public static final Rarity FORGOTTEN = Rarity.create("forgotten", ChatFormatting.GREEN);
+	public static final Rarity FORGOTTEN = Rarity.create("forgotten", new ResourceLocation(Undergarden.MODID, "forgotten"), ChatFormatting.GREEN);
 
 	//discs
 	public static final DeferredItem<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new RecordItem(0, UGSoundEvents.MAMMOTH_DISC, new Item.Properties().rarity(Rarity.RARE).stacksTo(1), 3860));
@@ -60,32 +61,32 @@ public class UGItems {
 	public static final DeferredItem<Item> BLUE_MOGMOSS = ITEMS.register("blue_mogmoss", () -> new Item(new Item.Properties()));
 
 	//tools
-	public static final DeferredItem<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleaxeItem(UGItemTiers.CLOGGRUM, 7, -3.4F));
-	public static final DeferredItem<Item> CLOGGRUM_SWORD = ITEMS.register("cloggrum_sword", () -> new UGSwordItem(UGItemTiers.CLOGGRUM, 3, -2.4F));
-	public static final DeferredItem<Item> CLOGGRUM_PICKAXE = ITEMS.register("cloggrum_pickaxe", () -> new UGPickaxeItem(UGItemTiers.CLOGGRUM, 1, -2.8F));
-	public static final DeferredItem<Item> CLOGGRUM_AXE = ITEMS.register("cloggrum_axe", () -> new UGAxeItem(UGItemTiers.CLOGGRUM, 5.0F, -3.1F));
-	public static final DeferredItem<Item> CLOGGRUM_SHOVEL = ITEMS.register("cloggrum_shovel", () -> new UGShovelItem(UGItemTiers.CLOGGRUM, 1.5F, -3.0F));
-	public static final DeferredItem<Item> CLOGGRUM_HOE = ITEMS.register("cloggrum_hoe", () -> new UGHoeItem(UGItemTiers.CLOGGRUM, -3, -1.0F));
+	public static final DeferredItem<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleaxeItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(BattleaxeItem.createAttributes(UGItemTiers.CLOGGRUM, 7, -3.4F))));
+	public static final DeferredItem<Item> CLOGGRUM_SWORD = ITEMS.register("cloggrum_sword", () -> new UGSwordItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.CLOGGRUM, 3, -2.4F))));
+	public static final DeferredItem<Item> CLOGGRUM_PICKAXE = ITEMS.register("cloggrum_pickaxe", () -> new UGPickaxeItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.CLOGGRUM, 1, -2.8F))));
+	public static final DeferredItem<Item> CLOGGRUM_AXE = ITEMS.register("cloggrum_axe", () -> new UGAxeItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.CLOGGRUM, 5.0F, -3.1F))));
+	public static final DeferredItem<Item> CLOGGRUM_SHOVEL = ITEMS.register("cloggrum_shovel", () -> new UGShovelItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.CLOGGRUM, 1.5F, -3.0F))));
+	public static final DeferredItem<Item> CLOGGRUM_HOE = ITEMS.register("cloggrum_hoe", () -> new UGHoeItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.CLOGGRUM, -3, -1.0F))));
 	public static final DeferredItem<Item> CLOGGRUM_SHIELD = ITEMS.register("cloggrum_shield", UGShieldItem::new);
 
-	public static final DeferredItem<Item> FROSTSTEEL_SWORD = ITEMS.register("froststeel_sword", () -> new UGSwordItem(UGItemTiers.FROSTSTEEL, 3, -2.4F));
-	public static final DeferredItem<Item> FROSTSTEEL_PICKAXE = ITEMS.register("froststeel_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FROSTSTEEL, 1, -2.8F));
-	public static final DeferredItem<Item> FROSTSTEEL_AXE = ITEMS.register("froststeel_axe", () -> new UGAxeItem(UGItemTiers.FROSTSTEEL, 6.0F, -3.0F));
-	public static final DeferredItem<Item> FROSTSTEEL_SHOVEL = ITEMS.register("froststeel_shovel", () -> new UGShovelItem(UGItemTiers.FROSTSTEEL, 1.5F, -3.0F));
-	public static final DeferredItem<Item> FROSTSTEEL_HOE = ITEMS.register("froststeel_hoe", () -> new UGHoeItem(UGItemTiers.FROSTSTEEL, -2, -0.5F));
+	public static final DeferredItem<Item> FROSTSTEEL_SWORD = ITEMS.register("froststeel_sword", () -> new UGSwordItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FROSTSTEEL, 3, -2.4F))));
+	public static final DeferredItem<Item> FROSTSTEEL_PICKAXE = ITEMS.register("froststeel_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.FROSTSTEEL, 1, -2.8F))));
+	public static final DeferredItem<Item> FROSTSTEEL_AXE = ITEMS.register("froststeel_axe", () -> new UGAxeItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.FROSTSTEEL, 6.0F, -3.0F))));
+	public static final DeferredItem<Item> FROSTSTEEL_SHOVEL = ITEMS.register("froststeel_shovel", () -> new UGShovelItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FROSTSTEEL, 1.5F, -3.0F))));
+	public static final DeferredItem<Item> FROSTSTEEL_HOE = ITEMS.register("froststeel_hoe", () -> new UGHoeItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FROSTSTEEL, -2, -0.5F))));
 
-	public static final DeferredItem<Item> UTHERIUM_SWORD = ITEMS.register("utherium_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM, 3, -2.4F));
-	public static final DeferredItem<Item> UTHERIUM_PICKAXE = ITEMS.register("utherium_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM, 1, -2.8F));
-	public static final DeferredItem<Item> UTHERIUM_AXE = ITEMS.register("utherium_axe", () -> new UGAxeItem(UGItemTiers.UTHERIUM, 5.0F, -3.0F));
-	public static final DeferredItem<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM, 1.5F, -3.0F));
-	public static final DeferredItem<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, -3, 0.0F));
+	public static final DeferredItem<Item> UTHERIUM_SWORD = ITEMS.register("utherium_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.UTHERIUM, 3, -2.4F))));
+	public static final DeferredItem<Item> UTHERIUM_PICKAXE = ITEMS.register("utherium_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.UTHERIUM, 1, -2.8F))));
+	public static final DeferredItem<Item> UTHERIUM_AXE = ITEMS.register("utherium_axe", () -> new UGAxeItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.UTHERIUM, 5.0F, -3.0F))));
+	public static final DeferredItem<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.UTHERIUM, 1.5F, -3.0F))));
+	public static final DeferredItem<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.UTHERIUM, -3, 0.0F))));
 
-	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleaxeItem(UGItemTiers.FORGOTTEN, 7, -3.4F));
-	public static final DeferredItem<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, 3, -2.4F));
-	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, 1, -2.8F));
-	public static final DeferredItem<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, 5.0F, -3.0F));
-	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN, 1.5F, -3.0F));
-	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, -3, 0.0F));
+	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(BattleaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 7, -3.4F)).rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FORGOTTEN, 3, -2.4F)).rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 1, -2.8F)).rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.FORGOTTEN, 5.0F, -3.0F)).rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FORGOTTEN, 1.5F, -3.0F)).rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FORGOTTEN, -3, 0.0F)).rarity(FORGOTTEN)));
 
 	//misc tools
 	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);

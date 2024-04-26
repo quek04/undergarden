@@ -4,14 +4,10 @@
     "shoot_slingshot_goo": {
       "conditions": {
         "ammo": {
-          "items": [
-            "undergarden:goo_ball"
-          ]
+          "items": "undergarden:goo_ball"
         },
         "slingshot": {
-          "items": [
-            "undergarden:slingshot"
-          ]
+          "items": "undergarden:slingshot"
         }
       },
       "trigger": "undergarden:slingshot_fire"
@@ -22,7 +18,8 @@
       "translate": "advancement.undergarden.shoot_slingshot_goo.desc"
     },
     "icon": {
-      "item": "undergarden:goo_ball"
+      "count": 1,
+      "id": "undergarden:goo_ball"
     },
     "title": {
       "translate": "advancement.undergarden.shoot_slingshot_goo.title"

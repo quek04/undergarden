@@ -6,5 +6,8 @@
   "ingredient": {
     "tag": "undergarden:cloggrum_items"
   },
-  "result": "undergarden:cloggrum_nugget"
+  "result": {
+    "count": 1,
+    "id": "undergarden:cloggrum_nugget"
+  }
 }

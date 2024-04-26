@@ -10,7 +10,8 @@
       "translate": "advancement.undergarden.stoneborn_trade.desc"
     },
     "icon": {
-      "item": "undergarden:regalium_crystal"
+      "count": 1,
+      "id": "undergarden:regalium_crystal"
     },
     "title": {
       "translate": "advancement.undergarden.stoneborn_trade.title"

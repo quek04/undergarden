@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:glitterkelp"
   },
-  "result": "minecraft:dried_kelp"
+  "result": {
+    "count": 1,
+    "id": "minecraft:dried_kelp"
+  }
 }

@@ -1,7 +1,7 @@
 package quek.undergarden.world.gen.trunkplacer;
 
 import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +20,7 @@ import java.util.function.BiConsumer;
 
 public class SingleForkingTrunkPlacer extends TrunkPlacer {
 
-	public static final Codec<SingleForkingTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) ->
+	public static final MapCodec<SingleForkingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) ->
 			trunkPlacerParts(instance).apply(instance, SingleForkingTrunkPlacer::new));
 
 	public SingleForkingTrunkPlacer(int baseHeight, int heightRandomA, int heightRandomB) {

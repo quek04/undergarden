@@ -259,7 +259,7 @@ public class UndergardenClientEvents {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.VIRULENCE) && minecraft.gameMode.canHurtPlayer()) {
-				renderVirulenceHearts(gui.guiWidth(), gui.guiHeight(), gui, gui, player);
+				renderVirulenceHearts(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
 			}
 		});
 		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, new ResourceLocation(Undergarden.MODID, "brittleness_armor"), (gui, number) -> {
@@ -271,11 +271,11 @@ public class UndergardenClientEvents {
 		});
 		//render XP bar since we cancel the jump bar
 		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, new ResourceLocation(Undergarden.MODID, "dweller_xp_bar"), (gui, n) -> {
+		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, new ResourceLocation(Undergarden.MODID, "dweller_xp_bar"), (gui, number) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
-				gui.renderExperienceBar(guiGraphics, width / 2 - 91);
+				minecraft.gui.renderExperienceBar(gui, gui.guiWidth() / 2 - 91);
 			}
 		});
 		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, n) -> {
