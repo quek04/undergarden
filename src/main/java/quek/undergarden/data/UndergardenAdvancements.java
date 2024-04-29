@@ -6,9 +6,9 @@ import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.*;
-import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.advancements.packs.VanillaAdventureAdvancements;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -34,7 +34,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				.display(
 						UGBlocks.DEEPTURF_BLOCK.get(),
 						Component.translatable("advancement.undergarden.root.title"),
-						Component.translatable(""),
+						Component.empty(),
 						new ResourceLocation(Undergarden.MODID, "textures/block/depthrock_bricks.png"),
 						AdvancementType.TASK,
 						false,
@@ -250,7 +250,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				.addCriterion("has_cloggrum_armor", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.CLOGGRUM_HELMET.get(), UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.CLOGGRUM_BOOTS.get()))
 				.save(consumer, "undergarden:undergarden/cloggrum_armor");
 
-		addBiomes(Advancement.Builder.advancement(), provider, UNDERGARDEN_BIOMES)
+		VanillaAdventureAdvancements.addBiomes(Advancement.Builder.advancement(), provider, UNDERGARDEN_BIOMES)
 				.parent(enter_undergarden)
 				.display(
 						UGItems.CLOGGRUM_BOOTS.get(),
@@ -491,18 +491,5 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				)
 				.addCriterion("has_disc", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.GLOOMPER_SECRET_DISC.get()))
 				.save(consumer, "undergarden:undergarden/gloomper_secret_disc");
-	}
-
-	protected static Advancement.Builder addBiomes(Advancement.Builder builder, HolderLookup.Provider provider, List<ResourceKey<Biome>> biomeList) {
-		HolderGetter<Biome> holdergetter = provider.lookupOrThrow(Registries.BIOME);
-
-		for (ResourceKey<Biome> resourcekey : biomeList) {
-			builder.addCriterion(
-				resourcekey.location().toString(),
-				PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(holdergetter.getOrThrow(resourcekey)))
-			);
-		}
-
-		return builder;
 	}
 }

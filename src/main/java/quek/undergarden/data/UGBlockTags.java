@@ -44,7 +44,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(UGTags.Blocks.SCINTLING_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
 		tag(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON).addTag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
 
-		//undergarden forge
+		//undergarden common
 		tag(UGTags.Blocks.ORES_CLOGGRUM).add(UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get());
 		tag(UGTags.Blocks.ORES_FROSTSTEEL).add(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get());
 		tag(UGTags.Blocks.ORES_UTHERIUM).add(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get());
@@ -117,7 +117,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(BlockTags.CAULDRONS).add(UGBlocks.VIRULENT_MIX_CAULDRON.get());
 		tag(BlockTags.MAINTAINS_FARMLAND).add(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
 
-		//forge
+		//common
 		tag(Tags.Blocks.ORES).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM);
 		tag(Tags.Blocks.ORE_RATES_SINGULAR).addTag(UGTags.Blocks.ORES_CLOGGRUM).addTag(UGTags.Blocks.ORES_FROSTSTEEL).addTag(UGTags.Blocks.ORES_UTHERIUM).addTag(UGTags.Blocks.ORES_REGALIUM);
 		tag(Tags.Blocks.ORE_RATES_SPARSE).add(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get(), UGBlocks.DEPTHROCK_GOLD_ORE.get());

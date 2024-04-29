@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:forgotten_ingot"
-            ]
+            "items": "undergarden:forgotten_ingot"
           }
         ]
       },
@@ -19,7 +17,8 @@
       "translate": "advancement.undergarden.forgotten_ingot.desc"
     },
     "icon": {
-      "item": "undergarden:forgotten_ingot"
+      "count": 1,
+      "id": "undergarden:forgotten_ingot"
     },
     "title": {
       "translate": "advancement.undergarden.forgotten_ingot.title"

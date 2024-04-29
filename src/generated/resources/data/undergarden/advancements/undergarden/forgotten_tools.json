@@ -5,34 +5,22 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:forgotten_battleaxe"
-            ]
+            "items": "undergarden:forgotten_battleaxe"
           },
           {
-            "items": [
-              "undergarden:forgotten_sword"
-            ]
+            "items": "undergarden:forgotten_sword"
           },
           {
-            "items": [
-              "undergarden:forgotten_pickaxe"
-            ]
+            "items": "undergarden:forgotten_pickaxe"
           },
           {
-            "items": [
-              "undergarden:forgotten_axe"
-            ]
+            "items": "undergarden:forgotten_axe"
           },
           {
-            "items": [
-              "undergarden:forgotten_shovel"
-            ]
+            "items": "undergarden:forgotten_shovel"
           },
           {
-            "items": [
-              "undergarden:forgotten_hoe"
-            ]
+            "items": "undergarden:forgotten_hoe"
           }
         ]
       },
@@ -45,8 +33,8 @@
     },
     "frame": "challenge",
     "icon": {
-      "item": "undergarden:forgotten_pickaxe",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "undergarden:forgotten_pickaxe"
     },
     "title": {
       "translate": "advancement.undergarden.forgotten_tools.title"

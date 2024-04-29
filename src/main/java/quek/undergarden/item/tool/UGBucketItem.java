@@ -11,11 +11,10 @@ import net.minecraft.world.level.material.Fluid;
 import quek.undergarden.registry.UGSoundEvents;
 
 import javax.annotation.Nullable;
-import java.util.function.Supplier;
 
 public class UGBucketItem extends BucketItem {
 
-	public UGBucketItem(Supplier<? extends Fluid> fluid, Properties properties) {
+	public UGBucketItem(Fluid fluid, Properties properties) {
 		super(fluid, properties);
 	}
 

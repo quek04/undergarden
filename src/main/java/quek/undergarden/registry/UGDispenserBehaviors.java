@@ -41,9 +41,9 @@ public class UGDispenserBehaviors {
 
 		DispenserBlock.registerProjectileBehavior(UGItems.ROTTEN_BLISTERBERRY);
 
-		DispenserBlock.registerProjectileBehavior(UGItems.BLISTERBOMB.get());
+		DispenserBlock.registerProjectileBehavior(UGItems.BLISTERBOMB);
 
-		DispenserBlock.registerProjectileBehavior(UGBlocks.GRONGLET.get());
+		DispenserBlock.registerProjectileBehavior(UGBlocks.GRONGLET);
 
 		DispenserBlock.registerBehavior(UGBlocks.BOOMGOURD.get(), new DefaultDispenseItemBehavior() {
 

@@ -22,7 +22,8 @@
     },
     "frame": "goal",
     "icon": {
-      "item": "undergarden:forgotten_block"
+      "count": 1,
+      "id": "undergarden:forgotten_block"
     },
     "title": {
       "translate": "advancement.undergarden.kill_forgotten_guardian.title"

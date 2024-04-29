@@ -45,10 +45,10 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> CRACKED_DEPTHROCK_BRICKS = register("cracked_depthrock_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get())));
 	public static final DeferredBlock<Block> CHISELED_DEPTHROCK_BRICKS = register("chiseled_depthrock_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get())));
 	public static final DeferredBlock<Block> DEPTHROCK_TILES = register("depthrock_tiles", () -> new Block(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get())));
-	public static final DeferredBlock<StairBlock> DEPTHROCK_STAIRS = register("depthrock_stairs", () -> new StairBlock(() -> DEPTHROCK.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get())));
-	public static final DeferredBlock<StairBlock> POLISHED_DEPTHROCK_STAIRS = register("polished_depthrock_stairs", () -> new StairBlock(() -> POLISHED_DEPTHROCK.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(POLISHED_DEPTHROCK.get())));
-	public static final DeferredBlock<StairBlock> DEPTHROCK_BRICK_STAIRS = register("depthrock_brick_stairs", () -> new StairBlock(() -> DEPTHROCK_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_BRICKS.get())));
-	public static final DeferredBlock<StairBlock> DEPTHROCK_TILE_STAIRS = register("depthrock_tile_stairs", () -> new StairBlock(() -> DEPTHROCK_TILES.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_TILES.get())));
+	public static final DeferredBlock<StairBlock> DEPTHROCK_STAIRS = register("depthrock_stairs", () -> new StairBlock(DEPTHROCK.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get())));
+	public static final DeferredBlock<StairBlock> POLISHED_DEPTHROCK_STAIRS = register("polished_depthrock_stairs", () -> new StairBlock(POLISHED_DEPTHROCK.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(POLISHED_DEPTHROCK.get())));
+	public static final DeferredBlock<StairBlock> DEPTHROCK_BRICK_STAIRS = register("depthrock_brick_stairs", () -> new StairBlock(DEPTHROCK_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_BRICKS.get())));
+	public static final DeferredBlock<StairBlock> DEPTHROCK_TILE_STAIRS = register("depthrock_tile_stairs", () -> new StairBlock(DEPTHROCK_TILES.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_TILES.get())));
 	public static final DeferredBlock<SlabBlock> DEPTHROCK_SLAB = register("depthrock_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get())));
 	public static final DeferredBlock<SlabBlock> POLISHED_DEPTHROCK_SLAB = register("polished_depthrock_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(POLISHED_DEPTHROCK.get())));
 	public static final DeferredBlock<SlabBlock> DEPTHROCK_BRICK_SLAB = register("depthrock_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_BRICKS.get())));
@@ -64,8 +64,8 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> SHIVERSTONE_BRICKS = register("shiverstone_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get())));
 	public static final DeferredBlock<Block> CRACKED_SHIVERSTONE_BRICKS = register("cracked_shiverstone_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get())));
 	public static final DeferredBlock<Block> CHISELED_SHIVERSTONE_BRICKS = register("chiseled_shiverstone_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get())));
-	public static final DeferredBlock<StairBlock> SHIVERSTONE_STAIRS = register("shiverstone_stairs", () -> new StairBlock(() -> SHIVERSTONE.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get())));
-	public static final DeferredBlock<StairBlock> SHIVERSTONE_BRICK_STAIRS = register("shiverstone_brick_stairs", () -> new StairBlock(() -> SHIVERSTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE_BRICKS.get())));
+	public static final DeferredBlock<StairBlock> SHIVERSTONE_STAIRS = register("shiverstone_stairs", () -> new StairBlock(SHIVERSTONE.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get())));
+	public static final DeferredBlock<StairBlock> SHIVERSTONE_BRICK_STAIRS = register("shiverstone_brick_stairs", () -> new StairBlock(SHIVERSTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE_BRICKS.get())));
 	public static final DeferredBlock<SlabBlock> SHIVERSTONE_SLAB = register("shiverstone_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get())));
 	public static final DeferredBlock<SlabBlock> SHIVERSTONE_BRICK_SLAB = register("shiverstone_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE_BRICKS.get())));
 	public static final DeferredBlock<WallBlock> SHIVERSTONE_WALL = register("shiverstone_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get())));
@@ -79,8 +79,8 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> TREMBLECRUST_BRICKS = register("tremblecrust_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> CRACKED_TREMBLECRUST_BRICKS = register("cracked_tremblecrust_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get())));
 	public static final DeferredBlock<Block> CHISELED_TREMBLECRUST_BRICKS = register("chiseled_tremblecrust_bricks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get())));
-	public static final DeferredBlock<StairBlock> TREMBLECRUST_STAIRS = register("tremblecrust_stairs", () -> new StairBlock(() -> TREMBLECRUST.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get())));
-	public static final DeferredBlock<StairBlock> TREMBLECRUST_BRICK_STAIRS = register("tremblecrust_brick_stairs", () -> new StairBlock(() -> TREMBLECRUST_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get())));
+	public static final DeferredBlock<StairBlock> TREMBLECRUST_STAIRS = register("tremblecrust_stairs", () -> new StairBlock(TREMBLECRUST.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get())));
+	public static final DeferredBlock<StairBlock> TREMBLECRUST_BRICK_STAIRS = register("tremblecrust_brick_stairs", () -> new StairBlock(TREMBLECRUST_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get())));
 	public static final DeferredBlock<SlabBlock> TREMBLECRUST_SLAB = register("tremblecrust_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get())));
 	public static final DeferredBlock<SlabBlock> TREMBLECRUST_BRICK_SLAB = register("tremblecrust_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get())));
 	public static final DeferredBlock<WallBlock> TREMBLECRUST_WALL = register("tremblecrust_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get())));
@@ -129,7 +129,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> SEDIMENT_GLASS_PANE = register("sediment_glass_pane", () -> new IronBarsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE)));
 	public static final DeferredBlock<Block> CLOGGRUM_BARS = register("cloggrum_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS)));
 	public static final DeferredBlock<Block> CLOGGRUM_TILES = register("cloggrum_tiles", () -> new Block(BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_BLOCK.get())));
-	public static final DeferredBlock<StairBlock> CLOGGRUM_TILE_STAIRS = register("cloggrum_tile_stairs", () -> new StairBlock(() -> CLOGGRUM_TILES.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_TILES.get())));
+	public static final DeferredBlock<StairBlock> CLOGGRUM_TILE_STAIRS = register("cloggrum_tile_stairs", () -> new StairBlock(CLOGGRUM_TILES.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_TILES.get())));
 	public static final DeferredBlock<SlabBlock> CLOGGRUM_TILE_SLAB = register("cloggrum_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(CLOGGRUM_TILES.get())));
 	public static final DeferredBlock<BedBlock> DEPTHROCK_BED = register("depthrock_bed", () -> new DepthrockBedBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get())));
 	public static final DeferredBlock<WoolCarpetBlock> MOGMOSS_RUG = register("mogmoss_rug", () -> new WoolCarpetBlock(DyeColor.LIME, BlockBehaviour.Properties.ofFullCopy(Blocks.GREEN_CARPET)));
@@ -193,7 +193,7 @@ public class UGBlocks {
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_SMOGSTEM_WOOD = register("stripped_smogstem_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> SMOGSTEM_LEAVES = register("smogstem_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().ignitedByLava().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_CYAN).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn((state, level, pos, value) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)));
 	public static final DeferredBlock<Block> SMOGSTEM_PLANKS = register("smogstem_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS)));
-	public static final DeferredBlock<StairBlock> SMOGSTEM_STAIRS = register("smogstem_stairs", () -> new StairBlock(() -> SMOGSTEM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
+	public static final DeferredBlock<StairBlock> SMOGSTEM_STAIRS = register("smogstem_stairs", () -> new StairBlock(SMOGSTEM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> SMOGSTEM_SLAB = register("smogstem_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
 	public static final DeferredBlock<FenceBlock> SMOGSTEM_FENCE = register("smogstem_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_FENCE)));
 	public static final DeferredBlock<FenceGateBlock> SMOGSTEM_FENCE_GATE = register("smogstem_fence_gate", () -> new FenceGateBlock(UGWoodStuff.SMOGSTEM_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_FENCE_GATE)));
@@ -215,7 +215,7 @@ public class UGBlocks {
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WIGGLEWOOD_WOOD = register("stripped_wigglewood_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_BROWN).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> WIGGLEWOOD_LEAVES = register("wigglewood_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().ignitedByLava().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_PINK).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn((state, level, pos, value) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)));
 	public static final DeferredBlock<Block> WIGGLEWOOD_PLANKS = register("wigglewood_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_PLANKS)));
-	public static final DeferredBlock<StairBlock> WIGGLEWOOD_STAIRS = register("wigglewood_stairs", () -> new StairBlock(() -> SMOGSTEM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
+	public static final DeferredBlock<StairBlock> WIGGLEWOOD_STAIRS = register("wigglewood_stairs", () -> new StairBlock(SMOGSTEM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> WIGGLEWOOD_SLAB = register("wigglewood_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(WIGGLEWOOD_PLANKS.get())));
 	public static final DeferredBlock<FenceBlock> WIGGLEWOOD_FENCE = register("wigglewood_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_FENCE)));
 	public static final DeferredBlock<FenceGateBlock> WIGGLEWOOD_FENCE_GATE = register("wigglewood_fence_gate", () -> new FenceGateBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_FENCE_GATE)));
@@ -238,7 +238,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> GRONGLE_LEAVES = register("grongle_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).sound(SoundType.AZALEA_LEAVES)));
 	public static final DeferredBlock<Block> HANGING_GRONGLE_LEAVES = register("hanging_grongle_leaves", () -> new HangingGrongleLeavesBlock(BlockBehaviour.Properties.ofFullCopy(GRONGLE_LEAVES.get()).noCollission().noOcclusion()));
 	public static final DeferredBlock<Block> GRONGLE_PLANKS = register("grongle_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
-	public static final DeferredBlock<StairBlock> GRONGLE_STAIRS = register("grongle_stairs", () -> new StairBlock(() -> GRONGLE_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(GRONGLE_PLANKS.get())));
+	public static final DeferredBlock<StairBlock> GRONGLE_STAIRS = register("grongle_stairs", () -> new StairBlock(GRONGLE_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(GRONGLE_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> GRONGLE_SLAB = register("grongle_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(GRONGLE_PLANKS.get())));
 	public static final DeferredBlock<FenceBlock> GRONGLE_FENCE = register("grongle_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
 	public static final DeferredBlock<FenceGateBlock> GRONGLE_FENCE_GATE = register("grongle_fence_gate", () -> new FenceGateBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
@@ -269,7 +269,7 @@ public class UGBlocks {
 
 	//fluids
 	public static final DeferredBlock<LiquidBlock> VIRULENT_MIX = BLOCKS.register("virulent_mix", () -> new VirulentMixBlock(
-			UGFluids.VIRULENT_MIX_SOURCE, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).replaceable().pushReaction(PushReaction.DESTROY).liquid()));
+			UGFluids.VIRULENT_MIX_SOURCE.get(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).replaceable().pushReaction(PushReaction.DESTROY).liquid()));
 
 	//cauldrons
 	public static final DeferredBlock<Block> VIRULENT_MIX_CAULDRON = BLOCKS.register("virulent_mix_cauldron", () -> new VirulentMixCauldronBlock(

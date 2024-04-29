@@ -22,7 +22,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "undergarden:goo_ball"
+      "count": 1,
+      "id": "undergarden:goo_ball"
     },
     "title": {
       "translate": "advancement.undergarden.kill_scintling.title"

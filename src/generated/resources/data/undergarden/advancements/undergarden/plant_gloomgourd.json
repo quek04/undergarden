@@ -18,7 +18,8 @@
       "translate": "advancement.undergarden.plant_gloomgourd.desc"
     },
     "icon": {
-      "item": "undergarden:gloomgourd_seeds"
+      "count": 1,
+      "id": "undergarden:gloomgourd_seeds"
     },
     "title": {
       "translate": "advancement.undergarden.plant_gloomgourd.title"

@@ -45,28 +45,29 @@ public class Undergarden {
 		bus.addListener(this::registerPackets);
 
 		DeferredRegister<?>[] registers = {
-				UGAttachments.ATTACHMENTS,
-				UGBlockEntities.BLOCK_ENTITIES,
-				UGBlocks.BLOCKS,
-				UGCarvers.CARVERS,
-				UGCreativeModeTabs.TABS,
-				UGCriteria.CRITERIA,
-				UGEffects.EFFECTS,
-				UGEnchantments.ENCHANTMENTS,
-				UGEntityTypes.ENTITIES,
-				UGFeatures.FEATURES,
-				UGFluids.FLUIDS,
-				UGFluids.TYPES,
-				UGFoliagePlacers.FOLIAGE_PLACERS,
-				UGItems.ITEMS,
-				UGParticleTypes.PARTICLES,
-				UGPointOfInterests.POI,
-				UGPotions.POTIONS,
-				UGSoundEvents.SOUNDS,
-				UGStructureProcessors.PROCESSORS,
-				UGStructures.STRUCTURES,
-				UGTreeDecoratorTypes.TREE_DECORATORS,
-				UGTrunkPlacerTypes.TRUNK_PLACERS
+			UGAttachments.ATTACHMENTS,
+			UGBlockEntities.BLOCK_ENTITIES,
+			UGBlocks.BLOCKS,
+			UGCarvers.CARVERS,
+			UGCreativeModeTabs.TABS,
+			UGCriteria.CRITERIA,
+			UGEffects.EFFECTS,
+			UGEnchantments.ENCHANTMENTS,
+			UGEntityTypes.ENTITIES,
+			UGFeatures.FEATURES,
+			UGFluids.FLUIDS,
+			UGFluids.TYPES,
+			UGFoliagePlacers.FOLIAGE_PLACERS,
+			UGItems.ITEMS,
+			UGParticleTypes.PARTICLES,
+			UGPointOfInterests.POI,
+			UGPotions.POTIONS,
+			UGSoundEvents.SOUNDS,
+			UGStructureProcessors.PROCESSORS,
+			UGStructures.STRUCTURES,
+			UGTreeDecoratorTypes.TREE_DECORATORS,
+			UGTrunkPlacerTypes.TRUNK_PLACERS,
+			UGArmorMaterials.ARMOR_MATERIALS
 		};
 
 		for (DeferredRegister<?> register : registers) {
@@ -93,18 +94,17 @@ public class Undergarden {
 		generator.addProvider(event.includeClient(), new UGLang(output));
 		generator.addProvider(event.includeClient(), new UGSoundDefinitions(output, helper));
 
-
+		DatapackBuiltinEntriesProvider datapackProvider = new UGRegistries(output, provider);
+		CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
+		generator.addProvider(event.includeServer(), datapackProvider);
 		generator.addProvider(event.includeServer(), new UGRecipes(output, provider));
 		generator.addProvider(event.includeServer(), new UGLootTables(output, provider));
 		UGBlockTags blockTags = new UGBlockTags(output, provider, helper);
 		generator.addProvider(event.includeServer(), blockTags);
 		generator.addProvider(event.includeServer(), new UGItemTags(output, provider, blockTags.contentsGetter(), helper));
 		generator.addProvider(event.includeServer(), new UGEntityTags(output, provider, helper));
-		generator.addProvider(event.includeServer(), new UGAdvancements(output, provider, helper));
+		generator.addProvider(event.includeServer(), new UGAdvancements(output, datapackProvider.getRegistryProvider(), helper));
 		generator.addProvider(event.includeServer(), new UGFluidTags(output, provider, helper));
-		DatapackBuiltinEntriesProvider datapackProvider = new UGRegistries(output, provider);
-		CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
-		generator.addProvider(event.includeServer(), datapackProvider);
 		generator.addProvider(event.includeServer(), new UGBiomeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));

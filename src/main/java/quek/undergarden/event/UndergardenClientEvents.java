@@ -198,7 +198,7 @@ public class UndergardenClientEvents {
 
 	private static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
 		event.register((state, tintGetter, pos, tint) ->
-						tintGetter != null && pos != null ? BiomeColors.getAverageGrassColor(tintGetter, pos) : FastColor.ARGB32.color(0, 91, 117, 91),
+						tintGetter != null && pos != null ? BiomeColors.getAverageGrassColor(tintGetter, pos) : FastColor.ARGB32.color(255, 91, 117, 91),
 				UGBlocks.DEEPTURF_BLOCK.get(),
 				UGBlocks.DEEPTURF.get(),
 				UGBlocks.SHIMMERWEED.get(),
@@ -211,7 +211,7 @@ public class UndergardenClientEvents {
 				UGBlocks.DROOPVINE_PLANT.get()
 		);
 
-		event.register((state, world, pos, tint) -> FastColor.ARGB32.color(0, 54, 45, 66),
+		event.register((state, world, pos, tint) -> FastColor.ARGB32.color(255, 54, 45, 66),
 				UGBlocks.GLOOMGOURD_STEM.get(),
 				UGBlocks.GLOOMGOURD_STEM_ATTACHED.get()
 		);
@@ -230,7 +230,7 @@ public class UndergardenClientEvents {
 
 		event.register((stack, tint) -> {
 					if (tint == 0) {
-						return FastColor.ARGB32.color(0, 91, 117, 91);
+						return FastColor.ARGB32.color(255, 91, 117, 91);
 					}
 					return -1;
 				},
@@ -278,7 +278,7 @@ public class UndergardenClientEvents {
 				minecraft.gui.renderExperienceBar(gui, gui.guiWidth() / 2 - 91);
 			}
 		});
-		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, n) -> {
+		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, number) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
@@ -446,9 +446,11 @@ public class UndergardenClientEvents {
 			poseStack.pushPose();
 			RenderSystem.disableDepthTest();
 			RenderSystem.depthMask(false);
+			RenderSystem.enableBlend();
 			guiGraphics.setColor(1.0F, 1.0F, 1.0F, alpha);
 			TextureAtlasSprite textureatlassprite = minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState());
 			guiGraphics.blit(0, 0, -90, window.getGuiScaledWidth(), window.getGuiScaledHeight(), textureatlassprite);
+			RenderSystem.disableBlend();
 			RenderSystem.depthMask(true);
 			RenderSystem.enableDepthTest();
 			guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);

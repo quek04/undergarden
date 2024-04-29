@@ -12,7 +12,6 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-import quek.undergarden.registry.UGArmorMaterials;
 import quek.undergarden.registry.UGItems;
 
 import java.util.List;
@@ -36,16 +35,14 @@ public class UndergardenArmorItem extends ArmorItem {
 		}
 	}
 
-	@Override
-	public ItemAttributeModifiers getDefaultAttributeModifiers() {
-		if (this.getMaterial() == UGArmorMaterials.FROSTSTEEL) {
-			UUID uuid = ARMOR_MODIFIER_UUID_PER_TYPE.get(this.getType());
-			return super.getDefaultAttributeModifiers().withModifierAdded(
-				Attributes.MOVEMENT_SPEED,
-				new AttributeModifier(uuid, "Froststeel slownness", -0.05F,
-					AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-				EquipmentSlotGroup.bySlot(this.getEquipmentSlot())
-			);
-		} else return super.getDefaultAttributeModifiers();
+	public static ItemAttributeModifiers createFroststeelAttributes(ArmorItem.Type type, int armor) {
+		UUID uuid = ARMOR_MODIFIER_UUID_PER_TYPE.get(type);
+		EquipmentSlotGroup group = EquipmentSlotGroup.bySlot(type.getSlot());
+		return ItemAttributeModifiers.builder()
+			.add(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", armor, AttributeModifier.Operation.ADD_VALUE), group)
+			.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor toughness", 4.0F, AttributeModifier.Operation.ADD_VALUE), group)
+			.add(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "Knockback Resistance", 0.05F, AttributeModifier.Operation.ADD_VALUE), group)
+			.add(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, "Froststeel slowness", -0.05F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group)
+			.build();
 	}
 }

@@ -14,11 +14,10 @@ import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
 import java.util.Optional;
-import java.util.function.Supplier;
 
 public class VirulentMixBlock extends LiquidBlock {
 
-	public VirulentMixBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
+	public VirulentMixBlock(FlowingFluid supplier, Properties properties) {
 		super(supplier, properties.noCollission().strength(100F).noLootTable().lightLevel((state) -> 10));
 	}
 

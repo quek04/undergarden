@@ -69,11 +69,12 @@ public class GooLayerBlock extends Block {
 	}
 
 	@Override
-	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		state.setValue(AGE, state.getValue(AGE) + 1);
 		if (!state.canSurvive(level, pos)) {
 			level.removeBlock(pos, false);
 		}
-		if (random.nextFloat() < 100F + (float) state.getValue(AGE) * 0.50F) {
+		if (state.getValue(AGE) == 15) {
 			level.removeBlock(pos, false);
 		}
 	}
