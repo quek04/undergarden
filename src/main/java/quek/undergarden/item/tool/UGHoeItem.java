@@ -19,7 +19,7 @@ public class UGHoeItem extends HoeItem {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
 		if (stack.getItem() == UGItems.FORGOTTEN_HOE.get()) {
-			tooltip.add(Component.translatable("tooltip.forgotten_tool").withStyle(ChatFormatting.GREEN));
+			tooltip.add(Component.translatable("tooltip.undergarden.forgotten_tool").withStyle(ChatFormatting.GREEN));
 		}
 	}
 }

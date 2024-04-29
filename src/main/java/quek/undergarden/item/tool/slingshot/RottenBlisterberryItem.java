@@ -23,7 +23,7 @@ public class RottenBlisterberryItem extends Item implements ProjectileItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
-		tooltipComponents.add(Component.translatable("tooltip.pebble").withStyle(ChatFormatting.GRAY));
+		tooltipComponents.add(Component.translatable("tooltip.undergarden.slingshot_ammo").withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override

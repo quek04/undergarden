@@ -31,7 +31,7 @@ public class UndergardenArmorItem extends ArmorItem {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
 		if (stack.getItem() == UGItems.CLOGGRUM_BOOTS.get()) {
-			tooltip.add(Component.translatable("tooltip.cloggrum_boots").withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("tooltip.undergarden.cloggrum_boots").withStyle(ChatFormatting.GRAY));
 		}
 	}
 

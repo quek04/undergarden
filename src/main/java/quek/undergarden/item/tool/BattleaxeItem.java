@@ -53,7 +53,7 @@ public class BattleaxeItem extends SwordItem {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
 		if (stack.getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
-			tooltip.add(Component.translatable("tooltip.forgotten_sword").withStyle(ChatFormatting.GREEN));
+			tooltip.add(Component.translatable("tooltip.undergarden.forgotten_weapon").withStyle(ChatFormatting.GREEN));
 		}
 	}
 

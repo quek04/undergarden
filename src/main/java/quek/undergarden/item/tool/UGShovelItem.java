@@ -19,10 +19,10 @@ public class UGShovelItem extends ShovelItem {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
 		if (stack.getItem() == UGItems.FROSTSTEEL_SHOVEL.get()) {
-			tooltip.add(Component.translatable("tooltip.froststeel_sword").withStyle(ChatFormatting.AQUA));
+			tooltip.add(Component.translatable("tooltip.undergarden.froststeel_weapon").withStyle(ChatFormatting.AQUA));
 		}
 		if (stack.getItem() == UGItems.FORGOTTEN_SHOVEL.get()) {
-			tooltip.add(Component.translatable("tooltip.forgotten_tool").withStyle(ChatFormatting.GREEN));
+			tooltip.add(Component.translatable("tooltip.undergarden.forgotten_tool").withStyle(ChatFormatting.GREEN));
 		}
 	}
 }

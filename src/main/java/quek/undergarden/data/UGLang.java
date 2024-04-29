@@ -527,12 +527,12 @@ public class UGLang extends UGLangProvider {
 		//addAdvTitle("otherside_root", "The Otherside");
 		//addAdvDesc("otherside_root", "Enter the realm of madness.");
 
-		add("tooltip.froststeel_sword", "Slows targets.");
-		add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
-		add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
-		add("tooltip.forgotten_sword", "Deals 1.5x damage to non-boss Undergarden mobs.");
-		add("tooltip.pebble", "Can be used as Slingshot ammo.");
-		add("tooltip.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
+		add("tooltip.undergarden.slingshot_ammo", "Can be used as Slingshot ammo.");
+		add("tooltip.undergarden.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
+		add("tooltip.undergarden.froststeel_weapon", "Slows targets.");
+		add("tooltip.undergarden.utherium_weapon", "Deals 1.5x damage to Rotspawn.");
+		add("tooltip.undergarden.forgotten_weapon", "Deals 1.5x damage to non-boss Undergarden mobs.");
+		add("tooltip.undergarden.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
 
 		addSubtitle("block", "undergarden_portal.ambient", "Undergarden Portal beckons");
 		addSubtitle("block", "undergarden_portal.activate", "Undergarden Portal activates");
