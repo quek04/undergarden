@@ -49,6 +49,7 @@ runs {
 	}
 
 	server {
+		workingDirectory project.file('run/server')
 		systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
 		programArgument '--nogui'
 	}

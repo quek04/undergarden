@@ -27,10 +27,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.level.pathfinder.PathfindingContext;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.fluids.FluidType;
 import quek.undergarden.registry.UGSoundEvents;
+
+import java.util.Set;
 
 public class ForgottenGuardian extends Monster {
 
@@ -197,13 +200,8 @@ public class ForgottenGuardian extends Monster {
 		}
 
 		@Override
-		public PathType getPathType(Mob mob, BlockPos pos) {
-			return PathType.WALKABLE;
+		public Set<PathType> getPathTypeWithinMobBB(PathfindingContext context, int width, int height, int depth) {
+			return Set.of(PathType.WALKABLE);
 		}
-
-		/*@Override
-		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, BlockPos pos, BlockPathTypes types) {
-			return BlockPathTypes.WALKABLE;
-		}*/
 	}
 }
