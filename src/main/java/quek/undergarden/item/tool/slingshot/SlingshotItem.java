@@ -44,6 +44,11 @@ public class SlingshotItem extends ProjectileWeaponItem {
 	}
 
 	@Override
+	public int getEnchantmentValue(ItemStack stack) {
+		return 1;
+	}
+
+	@Override
 	public int getMaxDamage(ItemStack stack) {
 		int longevity = stack.getEnchantmentLevel(UGEnchantments.LONGEVITY.get());
 		int durability = super.getMaxDamage(stack);

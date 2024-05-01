@@ -1,4 +1,4 @@
-// 1.20.6	2024-04-29T17:21:04.3575414	Undergarden Item Tags
+// 1.20.6	2024-04-30T22:35:16.3352855	Undergarden Item Tags
 9a80c4f0b8dd860c0f3158230031315d39247adf data/c/tags/items/armors.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/c/tags/items/bones.json
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/c/tags/items/cobblestones.json
@@ -88,6 +88,7 @@ fca6ad989a1440629e3d8acd762c227a9f592caf data/minecraft/tags/items/wooden_slabs.
 aafaf830e9ca896252ebc84c9ccc7e5bb2b0e5e8 data/minecraft/tags/items/wooden_trapdoors.json
 167c0dd12d5b92d32e097f8168ebc9247fb7f34e data/minecraft/tags/items/wool_carpets.json
 0efe9ba74d75fe82c231146821cefea8a5d83bc1 data/undergarden/tags/items/cloggrum_items.json
+ac7de33b232c8b9458af943bf080660a44a25c03 data/undergarden/tags/items/enchantable/slingshot.json
 5ef5cab2225820eae6b47b41a5a19b4523237199 data/undergarden/tags/items/froststeel_items.json
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/items/grongle_logs.json
 695146ab3553cf9d293d63b66b7e9c70c22f850c data/undergarden/tags/items/mushrooms.json
