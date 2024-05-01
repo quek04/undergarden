@@ -309,7 +309,6 @@ public class UndergardenClientEvents {
 		}
 	}
 
-
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, Player player) {
 		int x = width / 2 - 91;
 		int y = height - 49;
