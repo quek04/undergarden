@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:gloomgourd"
-            ]
+            "items": "undergarden:gloomgourd"
           }
         ]
       },

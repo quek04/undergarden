@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:depthrock_bricks"
-            ]
+            "items": "undergarden:depthrock_bricks"
           }
         ]
       },

@@ -6,9 +6,7 @@
         "items": [
           {
             "count": 64,
-            "items": [
-              "undergarden:gloomgourd"
-            ]
+            "items": "undergarden:gloomgourd"
           }
         ]
       },
@@ -22,7 +20,8 @@
     "frame": "goal",
     "hidden": true,
     "icon": {
-      "item": "undergarden:gloomgourd"
+      "count": 1,
+      "id": "undergarden:gloomgourd"
     },
     "title": {
       "translate": "advancement.undergarden.stack_of_gloomgourds.title"

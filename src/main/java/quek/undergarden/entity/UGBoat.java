@@ -49,9 +49,9 @@ public class UGBoat extends Boat {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.getEntityData().define(BOAT_TYPE, Type.SMOGSTEM.ordinal());
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(BOAT_TYPE, Type.SMOGSTEM.ordinal());
 	}
 
 	@Override

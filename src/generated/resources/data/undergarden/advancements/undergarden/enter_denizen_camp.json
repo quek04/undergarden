@@ -9,7 +9,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "undergarden:denizen_camp"
+                "structures": "undergarden:denizen_camp"
               }
             }
           }
@@ -23,8 +23,8 @@
       "translate": "advancement.undergarden.enter_denizen_camp.desc"
     },
     "icon": {
-      "item": "undergarden:denizen_mask",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "undergarden:denizen_mask"
     },
     "title": {
       "translate": "advancement.undergarden.enter_denizen_camp.title"

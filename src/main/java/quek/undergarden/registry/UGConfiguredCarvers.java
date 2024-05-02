@@ -3,7 +3,7 @@ package quek.undergarden.registry;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantFloat;
@@ -20,7 +20,7 @@ public class UGConfiguredCarvers {
 
 	public static final ResourceKey<ConfiguredWorldCarver<?>> UNDERGARDEN_CAVE = ResourceKey.create(Registries.CONFIGURED_CARVER, new ResourceLocation(Undergarden.MODID, "undergarden_cave"));
 
-	public static void bootstrap(BootstapContext<ConfiguredWorldCarver<?>> context) {
+	public static void bootstrap(BootstrapContext<ConfiguredWorldCarver<?>> context) {
 		HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
 		context.register(UNDERGARDEN_CAVE, UGCarvers.UNDERGARDEN_CAVE.get().configured(
 			new CaveCarverConfiguration(

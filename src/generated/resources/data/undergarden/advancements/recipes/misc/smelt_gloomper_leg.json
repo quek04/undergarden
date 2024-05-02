@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:raw_gloomper_leg"
-            ]
+            "items": "undergarden:raw_gloomper_leg"
           }
         ]
       },

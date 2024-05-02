@@ -4,7 +4,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
@@ -37,11 +39,6 @@ public class Minion extends AbstractGolem implements RangedAttackMob {
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Mob.class, 10, true, false, (entity) ->
 				!(entity.getType() == UGEntityTypes.STONEBORN.get()) && entity instanceof Enemy || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
 		);
-	}
-
-	@Override
-	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
-		return 1.0F;
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {

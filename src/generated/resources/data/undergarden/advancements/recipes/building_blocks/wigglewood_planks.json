@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "undergarden:wigglewood_logs"
+            "items": "#undergarden:wigglewood_logs"
           }
         ]
       },

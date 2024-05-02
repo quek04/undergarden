@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:raw_dweller_meat"
   },
-  "result": "undergarden:dweller_steak"
+  "result": {
+    "count": 1,
+    "id": "undergarden:dweller_steak"
+  }
 }

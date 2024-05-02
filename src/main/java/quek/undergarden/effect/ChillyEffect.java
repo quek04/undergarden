@@ -13,6 +13,6 @@ public class ChillyEffect extends MobEffect {
 
 	public ChillyEffect() {
 		super(MobEffectCategory.HARMFUL, 9154528);
-		this.addAttributeModifier(Attributes.MOVEMENT_SPEED, MOVEMENT_SPEED_MODIFIER_UUID.toString(), -0.15D, AttributeModifier.Operation.MULTIPLY_TOTAL);
+		this.addAttributeModifier(Attributes.MOVEMENT_SPEED, MOVEMENT_SPEED_MODIFIER_UUID.toString(), -0.15D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
 	}
 }

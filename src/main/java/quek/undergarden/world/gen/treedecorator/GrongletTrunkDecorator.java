@@ -1,6 +1,6 @@
 package quek.undergarden.world.gen.treedecorator;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -13,7 +13,7 @@ import quek.undergarden.registry.UGTreeDecoratorTypes;
 public class GrongletTrunkDecorator extends TreeDecorator {
 
 	public static final GrongletTrunkDecorator INSTANCE = new GrongletTrunkDecorator();
-	public static final Codec<GrongletTrunkDecorator> CODEC = Codec.unit(() -> INSTANCE);
+	public static final MapCodec<GrongletTrunkDecorator> CODEC = MapCodec.unit(() -> INSTANCE);
 
 	@Override
 	protected TreeDecoratorType<?> type() {

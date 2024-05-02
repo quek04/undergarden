@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:catalyst"
-            ]
+            "items": "undergarden:catalyst"
           }
         ]
       },
@@ -19,7 +17,8 @@
       "translate": "advancement.undergarden.catalyst.desc"
     },
     "icon": {
-      "item": "undergarden:catalyst"
+      "count": 1,
+      "id": "undergarden:catalyst"
     },
     "title": {
       "translate": "advancement.undergarden.catalyst.title"

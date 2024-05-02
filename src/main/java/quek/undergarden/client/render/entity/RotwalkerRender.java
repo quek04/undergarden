@@ -24,8 +24,8 @@ public class RotwalkerRender extends MobRenderer<Rotwalker, RotwalkerModel<Rotwa
 	}
 
 	@Override
-	public void setupRotations(Rotwalker entity, PoseStack stack, float ageInTicks, float rotationYaw, float partialTicks) {
-		super.setupRotations(entity, stack, ageInTicks, rotationYaw, partialTicks);
+	public void setupRotations(Rotwalker entity, PoseStack stack, float ageInTicks, float rotationYaw, float partialTicks, float scale) {
+		super.setupRotations(entity, stack, ageInTicks, rotationYaw, partialTicks, scale);
 		if (!((double) entity.walkAnimation.speed() < 0.01D)) {
 			float f1 = entity.walkAnimation.position() - entity.walkAnimation.speed() * (1.0F - partialTicks) + 6.0F;
 			float f2 = (Math.abs(f1 % 13.0F - 6.5F) - 3.25F) / 3.25F;

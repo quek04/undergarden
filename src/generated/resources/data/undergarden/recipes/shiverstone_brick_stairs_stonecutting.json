@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "undergarden:shiverstone"
   },
-  "result": "undergarden:shiverstone_brick_stairs"
+  "result": {
+    "count": 1,
+    "id": "undergarden:shiverstone_brick_stairs"
+  }
 }

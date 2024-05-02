@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:denizen_mask"
-            ]
+            "items": "undergarden:denizen_mask"
           }
         ]
       },
@@ -20,8 +18,8 @@
     },
     "frame": "goal",
     "icon": {
-      "item": "undergarden:denizen_mask",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "undergarden:denizen_mask"
     },
     "title": {
       "translate": "advancement.undergarden.obtain_denizen_mask.title"

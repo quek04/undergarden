@@ -63,11 +63,6 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 	}
 
 	@Override
-	public float getStepHeight() {
-		return 1.0F;
-	}
-
-	@Override
 	protected void registerGoals() {
 		this.goalSelector.addGoal(1, new StonebornTradeWithPlayerGoal(this));
 		this.goalSelector.addGoal(1, new StonebornLookAtCustomerGoal(this));
@@ -85,7 +80,8 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 				.add(Attributes.ARMOR, 10.0D)
 				.add(Attributes.ATTACK_DAMAGE, 10.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.3D)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
+				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
+				.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
 	public static boolean canStonebornSpawn(EntityType<? extends Monster> entity, LevelAccessor level, MobSpawnType mobSpawnType, BlockPos pos, RandomSource random) {

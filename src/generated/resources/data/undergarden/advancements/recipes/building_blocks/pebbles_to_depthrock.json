@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:depthrock_pebble"
-            ]
+            "items": "undergarden:depthrock_pebble"
           }
         ]
       },

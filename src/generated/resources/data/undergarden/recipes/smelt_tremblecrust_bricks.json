@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:tremblecrust_bricks"
   },
-  "result": "undergarden:cracked_tremblecrust_bricks"
+  "result": {
+    "count": 1,
+    "id": "undergarden:cracked_tremblecrust_bricks"
+  }
 }

@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:underbeans"
   },
-  "result": "undergarden:roasted_underbeans"
+  "result": {
+    "count": 1,
+    "id": "undergarden:roasted_underbeans"
+  }
 }

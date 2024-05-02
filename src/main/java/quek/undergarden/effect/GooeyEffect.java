@@ -15,13 +15,14 @@ public class GooeyEffect extends MobEffect {
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
+	public boolean applyEffectTick(LivingEntity entity, int amplifier) {
 		BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
 		BlockPos pos = BlockPos.containing(entity.getX(), entity.getY(), entity.getZ());
 
 		if (entity.level().isEmptyBlock(pos) && blockstate.canSurvive(entity.level(), pos) && !(entity instanceof Scintling)) {
 			entity.level().setBlockAndUpdate(pos, blockstate);
 		}
+		return true;
 	}
 
 	@Override

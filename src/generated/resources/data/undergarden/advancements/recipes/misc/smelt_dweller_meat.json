@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:raw_dweller_meat"
-            ]
+            "items": "undergarden:raw_dweller_meat"
           }
         ]
       },

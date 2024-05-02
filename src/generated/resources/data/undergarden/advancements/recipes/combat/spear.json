@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:gems/rogdorium"
+            "items": "#c:gems/rogdorium"
           }
         ]
       },

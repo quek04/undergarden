@@ -22,7 +22,8 @@
     },
     "frame": "goal",
     "icon": {
-      "item": "undergarden:carved_gloomgourd"
+      "count": 1,
+      "id": "undergarden:carved_gloomgourd"
     },
     "title": {
       "translate": "advancement.undergarden.summon_minion.title"

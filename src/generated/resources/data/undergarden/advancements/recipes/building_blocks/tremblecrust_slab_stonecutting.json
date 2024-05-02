@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:tremblecrust"
-            ]
+            "items": "undergarden:tremblecrust"
           }
         ]
       },

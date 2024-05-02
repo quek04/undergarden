@@ -1,18 +1,16 @@
 package quek.undergarden.item.enchantment;
 
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
 
 public class SelfSlingEnchantment extends Enchantment {
 
-	public SelfSlingEnchantment(Rarity rarity, EnchantmentCategory category, EquipmentSlot... slots) {
-		super(rarity, category, slots);
+	public SelfSlingEnchantment(EnchantmentDefinition definition) {
+		super(definition);
 	}
 
-	@Override
+	/*@Override
 	public int getMinCost(int level) {
 		return 20;
 	}
@@ -20,16 +18,11 @@ public class SelfSlingEnchantment extends Enchantment {
 	@Override
 	public int getMaxCost(int level) {
 		return 50;
-	}
+	}*/
 
 	@Override
 	public boolean canEnchant(ItemStack stack) {
 		return stack.getItem() instanceof SlingshotItem || super.canEnchant(stack);
-	}
-
-	@Override
-	public int getMaxLevel() {
-		return 1;
 	}
 
 	@Override

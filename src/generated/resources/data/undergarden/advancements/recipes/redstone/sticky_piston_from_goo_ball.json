@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:goo_ball"
-            ]
+            "items": "undergarden:goo_ball"
           }
         ]
       },

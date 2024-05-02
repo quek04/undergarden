@@ -1,5 +1,6 @@
 package quek.undergarden.data.provider;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -21,12 +22,13 @@ import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
 public abstract class UGRecipeProvider extends RecipeProvider {
 
-	public UGRecipeProvider(PackOutput output) {
-		super(output);
+	public UGRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+		super(output, provider);
 	}
 
 	public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, TagKey<Item> logIn) {

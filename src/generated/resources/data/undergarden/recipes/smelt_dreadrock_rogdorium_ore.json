@@ -7,5 +7,8 @@
   "ingredient": {
     "item": "undergarden:dreadrock_rogdorium_ore"
   },
-  "result": "undergarden:rogdorium_crystal"
+  "result": {
+    "count": 1,
+    "id": "undergarden:rogdorium_crystal"
+  }
 }

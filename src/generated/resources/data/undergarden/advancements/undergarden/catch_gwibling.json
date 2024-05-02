@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:gwibling_bucket"
-            ]
+            "items": "undergarden:gwibling_bucket"
           }
         ]
       },
@@ -19,7 +17,8 @@
       "translate": "advancement.undergarden.catch_gwibling.desc"
     },
     "icon": {
-      "item": "undergarden:gwibling_bucket"
+      "count": 1,
+      "id": "undergarden:gwibling_bucket"
     },
     "title": {
       "translate": "advancement.undergarden.catch_gwibling.title"

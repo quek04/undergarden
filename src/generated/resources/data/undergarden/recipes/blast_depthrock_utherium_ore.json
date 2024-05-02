@@ -7,5 +7,8 @@
   "ingredient": {
     "item": "undergarden:depthrock_utherium_ore"
   },
-  "result": "undergarden:utherium_crystal"
+  "result": {
+    "count": 1,
+    "id": "undergarden:utherium_crystal"
+  }
 }

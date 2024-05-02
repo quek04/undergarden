@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:utheric_shard"
-            ]
+            "items": "undergarden:utheric_shard"
           }
         ]
       },
@@ -17,7 +15,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:rods/wooden"
+            "items": "#c:rods/wooden"
           }
         ]
       },

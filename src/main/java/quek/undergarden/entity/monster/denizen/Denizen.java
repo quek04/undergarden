@@ -25,6 +25,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import quek.undergarden.entity.projectile.ThrownSpear;
 import quek.undergarden.registry.UGItems;
@@ -75,17 +76,25 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 	}
 
 	@Override
-	public float getMyRidingOffset(Entity entity) {
-		return -0.5F;
+	public Vec3 getVehicleAttachmentPoint(Entity entity) {
+		return new Vec3(0.0F, -0.5F, 0.0F);
 	}
 
 	@Override
-	public EntityDimensions getDimensions(Pose pose) {
+	protected EntityDimensions getDefaultDimensions(Pose pose) {
 		return switch (this.getVariant()) {
 			case SHORT -> this.hasPose(Pose.SITTING) ? SHORT_SITTING : SHORT;
 			case TALL -> this.hasPose(Pose.SITTING) ? TALL_SITTING : TALL;
 		};
 	}
+
+	/*@Override
+	public EntityDimensions getDimensions(Pose pose) {
+		return switch (this.getVariant()) {
+			case SHORT -> this.hasPose(Pose.SITTING) ? SHORT_SITTING : SHORT;
+			case TALL -> this.hasPose(Pose.SITTING) ? TALL_SITTING : TALL;
+		};
+	}*/
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag tag) {
@@ -100,9 +109,9 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.getEntityData().define(TYPE_ID, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(TYPE_ID, 0);
 	}
 
 	@Override
@@ -163,8 +172,8 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 
 	@Nullable
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData data, @Nullable CompoundTag tag) {
-		data = super.finalizeSpawn(level, difficulty, reason, data, tag);
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(level, difficulty, reason, data);
 		if (level.getRandom().nextBoolean()) {
 			this.setVariant(Type.TALL);
 		} else {

@@ -1,44 +1,46 @@
 package quek.undergarden.item.tool;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.*;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileItem;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import quek.undergarden.entity.projectile.ThrownSpear;
 
 import java.util.UUID;
 
-public class SpearItem extends Item implements Vanishable {
+public class SpearItem extends Item implements ProjectileItem {
 
-	private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 	private static final UUID ENTITY_REACH_UUID = UUID.fromString("cfa9de08-8bcc-48f0-ad6d-87c5df22ccfe");
 
-	public SpearItem() {
-		super(new Properties()
-			.stacksTo(1)
-			.durability(250)
-			.rarity(Rarity.UNCOMMON)
-		);
-		ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 6.0, AttributeModifier.Operation.ADDITION));
-		builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -2.9F, AttributeModifier.Operation.ADDITION));
-		builder.put(NeoForgeMod.ENTITY_REACH.value(), new AttributeModifier(ENTITY_REACH_UUID, "Tool modifier", 2.0, AttributeModifier.Operation.ADDITION));
-		this.defaultModifiers = builder.build();
+	public SpearItem(Properties properties) {
+		super(properties);
+	}
+
+	public static ItemAttributeModifiers createAttributes() {
+		return ItemAttributeModifiers.builder()
+			.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 6.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+			.add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -2.9F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+			.add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(ENTITY_REACH_UUID, "Tool modifier", 2.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+			.build();
 	}
 
 	@Override
@@ -62,7 +64,7 @@ public class SpearItem extends Item implements Vanishable {
 			int useTime = this.getUseDuration(stack) - timeLeft;
 			if (useTime >= 10) {
 				if (!level.isClientSide()) {
-					stack.hurtAndBreak(1, player, player1 -> player1.broadcastBreakEvent(player1.getUsedItemHand()));
+					stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
 
 					ThrownSpear spear = new ThrownSpear(level, player, stack);
 					spear.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.0F, 1.0F);
@@ -97,23 +99,18 @@ public class SpearItem extends Item implements Vanishable {
 
 	@Override
 	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-		stack.hurtAndBreak(1, attacker, entity -> entity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+		stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity livingEntity) {
 		if ((double)state.getDestroySpeed(level, pos) != 0.0) {
 			stack.hurtAndBreak(2, livingEntity, entity -> entity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
 		}
 
 		return true;
-	}
-
-	@Override
-	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
-		return slot == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getAttributeModifiers(slot, stack);
-	}
+	}*/
 
 	@Override
 	public int getEnchantmentValue(ItemStack stack) {
@@ -123,5 +120,12 @@ public class SpearItem extends Item implements Vanishable {
 	@Override
 	public boolean canPerformAction(ItemStack stack, net.neoforged.neoforge.common.ToolAction toolAction) {
 		return net.neoforged.neoforge.common.ToolActions.DEFAULT_TRIDENT_ACTIONS.contains(toolAction);
+	}
+
+	@Override
+	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
+		ThrownSpear spear = new ThrownSpear(level, pos.x(), pos.y(), pos.z(), stack);
+		spear.pickup = AbstractArrow.Pickup.ALLOWED;
+		return spear;
 	}
 }

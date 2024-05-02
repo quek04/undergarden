@@ -30,8 +30,8 @@ public class DenizenTotemBlockEntity extends BlockEntity {
 			List<LivingEntity> entityList = level.getEntitiesOfClass(LivingEntity.class, new AABB(pos).inflate(5.0D));
 			if (!entityList.isEmpty()) {
 				level.setBlockAndUpdate(pos, state.setValue(DenizenTotemBlock.ACTIVE, true));
-                entityList.stream().filter(entity -> !entity.hasEffect(UGEffects.PURITY.get())).forEach(entity -> {
-                    entity.addEffect(new MobEffectInstance(UGEffects.PURITY.get(), 200, 0, true, true));
+                entityList.stream().filter(entity -> !entity.hasEffect(UGEffects.PURITY)).forEach(entity -> {
+                    entity.addEffect(new MobEffectInstance(UGEffects.PURITY, 200, 0, true, true));
 					drawParticlesTo(level, pos.getCenter(), entity);
                 });
 			} else level.setBlockAndUpdate(pos, state.setValue(DenizenTotemBlock.ACTIVE, false));

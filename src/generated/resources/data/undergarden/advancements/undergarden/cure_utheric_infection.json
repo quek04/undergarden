@@ -15,7 +15,8 @@
       "translate": "advancement.undergarden.cure_utheric_infection.desc"
     },
     "icon": {
-      "item": "undergarden:rogdorium_crystal"
+      "count": 1,
+      "id": "undergarden:rogdorium_crystal"
     },
     "title": {
       "translate": "advancement.undergarden.cure_utheric_infection.title"

@@ -50,8 +50,8 @@
     },
     "frame": "challenge",
     "icon": {
-      "item": "undergarden:utherium_sword",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "undergarden:utherium_sword"
     },
     "title": {
       "translate": "advancement.undergarden.kill_all_rotspawn.title"

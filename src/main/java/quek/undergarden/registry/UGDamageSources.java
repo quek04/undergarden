@@ -1,7 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageEffects;
@@ -25,7 +25,7 @@ public class UGDamageSources {
 		return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(SHARD_TORCH), position);
 	}
 
-	public static void bootstrap(BootstapContext<DamageType> context) {
+	public static void bootstrap(BootstrapContext<DamageType> context) {
 		context.register(DEPTHROCK_PEBBLE, new DamageType("arrow", 0.1F));
 		context.register(GOO_BALL, new DamageType("arrow", 0.1F));
 		context.register(BLISTERBERRY_BUSH, new DamageType("blisterberry_bush", 0.1F, DamageEffects.POKING));

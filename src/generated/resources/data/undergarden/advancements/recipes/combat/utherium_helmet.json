@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:utherium_crystal"
-            ]
+            "items": "undergarden:utherium_crystal"
           }
         ]
       },

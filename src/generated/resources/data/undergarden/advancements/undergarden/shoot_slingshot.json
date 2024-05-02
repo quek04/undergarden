@@ -4,14 +4,10 @@
     "shoot_slingshot": {
       "conditions": {
         "ammo": {
-          "items": [
-            "undergarden:depthrock_pebble"
-          ]
+          "items": "undergarden:depthrock_pebble"
         },
         "slingshot": {
-          "items": [
-            "undergarden:slingshot"
-          ]
+          "items": "undergarden:slingshot"
         }
       },
       "trigger": "undergarden:slingshot_fire"
@@ -22,7 +18,8 @@
       "translate": "advancement.undergarden.shoot_slingshot.desc"
     },
     "icon": {
-      "item": "undergarden:depthrock_pebble"
+      "count": 1,
+      "id": "undergarden:depthrock_pebble"
     },
     "title": {
       "translate": "advancement.undergarden.shoot_slingshot.title"

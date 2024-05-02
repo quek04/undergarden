@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:stripped_wigglewood_log"
-            ]
+            "items": "undergarden:stripped_wigglewood_log"
           }
         ]
       },

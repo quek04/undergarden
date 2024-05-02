@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:raw_gloomper_leg"
   },
-  "result": "undergarden:gloomper_leg"
+  "result": {
+    "count": 1,
+    "id": "undergarden:gloomper_leg"
+  }
 }

@@ -14,7 +14,8 @@
     },
     "hidden": true,
     "icon": {
-      "item": "minecraft:campfire"
+      "count": 1,
+      "id": "minecraft:campfire"
     },
     "title": {
       "translate": "advancement.undergarden.break_denizen_campfire.title"

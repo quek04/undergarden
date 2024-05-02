@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:depthrock_bricks"
   },
-  "result": "undergarden:cracked_depthrock_bricks"
+  "result": {
+    "count": 1,
+    "id": "undergarden:cracked_depthrock_bricks"
+  }
 }

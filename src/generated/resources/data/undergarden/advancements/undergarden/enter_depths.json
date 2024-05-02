@@ -9,7 +9,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:depths"
+                "biomes": "undergarden:depths"
               }
             }
           }
@@ -25,7 +25,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:infected_depths"
+                "biomes": "undergarden:infected_depths"
               }
             }
           }
@@ -41,7 +41,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:puff_mushroom_forest"
+                "biomes": "undergarden:puff_mushroom_forest"
               }
             }
           }
@@ -56,7 +56,8 @@
     },
     "frame": "goal",
     "icon": {
-      "item": "undergarden:dreadrock"
+      "count": 1,
+      "id": "undergarden:dreadrock"
     },
     "title": {
       "translate": "advancement.undergarden.enter_depths.title"

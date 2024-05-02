@@ -7,10 +7,11 @@
       "item": "undergarden:ancient_root_boat"
     },
     {
-      "tag": "forge:chests/wooden"
+      "tag": "c:chests/wooden"
     }
   ],
   "result": {
-    "item": "undergarden:ancient_root_chest_boat"
+    "count": 1,
+    "id": "undergarden:ancient_root_chest_boat"
   }
 }

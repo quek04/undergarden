@@ -9,7 +9,6 @@ import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGCriteria;
@@ -28,8 +27,8 @@ public class DenizenCampfireDestroyedTrigger extends SimpleCriterionTrigger<Deni
 
 	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<Holder<Block>> block) implements SimpleInstance {
 		public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-				ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(TriggerInstance::player),
-				ExtraCodecs.strictOptionalField(BuiltInRegistries.BLOCK.holderByNameCodec(), "block").forGetter(TriggerInstance::block))
+				EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player),
+				BuiltInRegistries.BLOCK.holderByNameCodec().optionalFieldOf("block").forGetter(TriggerInstance::block))
 			.apply(instance, TriggerInstance::new)
 		);
 

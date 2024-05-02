@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "undergarden:raw_gwibling"
   },
-  "result": "undergarden:cooked_gwibling"
+  "result": {
+    "count": 1,
+    "id": "undergarden:cooked_gwibling"
+  }
 }

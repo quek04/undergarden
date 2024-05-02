@@ -13,6 +13,8 @@ public class UGTags {
 
 	public static class Items {
 
+		public static final TagKey<Item> SLINGSHOT_ENCHANTABLE = tag("enchantable/slingshot");
+
 		public static final TagKey<Item> MUSHROOMS = tag("mushrooms");
 		public static final TagKey<Item> CLOGGRUM_ITEMS = tag("cloggrum_items");
 		public static final TagKey<Item> FROSTSTEEL_ITEMS = tag("froststeel_items");
@@ -21,42 +23,42 @@ public class UGTags {
 		public static final TagKey<Item> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
 		public static final TagKey<Item> GRONGLE_LOGS = tag("grongle_logs");
 
-		public static final TagKey<Item> RAW_MATERIALS_CLOGGRUM = forgeTag("raw_materials/cloggrum");
-		public static final TagKey<Item> RAW_MATERIALS_FROSTSTEEL = forgeTag("raw_materials/froststeel");
+		public static final TagKey<Item> RAW_MATERIALS_CLOGGRUM = commonTag("raw_materials/cloggrum");
+		public static final TagKey<Item> RAW_MATERIALS_FROSTSTEEL = commonTag("raw_materials/froststeel");
 
-		public static final TagKey<Item> INGOTS_CLOGGRUM = forgeTag("ingots/cloggrum");
-		public static final TagKey<Item> INGOTS_FROSTSTEEL = forgeTag("ingots/froststeel");
-		public static final TagKey<Item> GEMS_UTHERIUM = forgeTag("gems/utherium");
-		public static final TagKey<Item> GEMS_REGALIUM = forgeTag("gems/regalium");
-		public static final TagKey<Item> GEMS_ROGDORIUM = forgeTag("gems/rogdorium");
-		public static final TagKey<Item> INGOTS_FORGOTTEN_METAL = forgeTag("ingots/forgotten_metal");
+		public static final TagKey<Item> INGOTS_CLOGGRUM = commonTag("ingots/cloggrum");
+		public static final TagKey<Item> INGOTS_FROSTSTEEL = commonTag("ingots/froststeel");
+		public static final TagKey<Item> GEMS_UTHERIUM = commonTag("gems/utherium");
+		public static final TagKey<Item> GEMS_REGALIUM = commonTag("gems/regalium");
+		public static final TagKey<Item> GEMS_ROGDORIUM = commonTag("gems/rogdorium");
+		public static final TagKey<Item> INGOTS_FORGOTTEN_METAL = commonTag("ingots/forgotten_metal");
 
-		public static final TagKey<Item> NUGGETS_CLOGGRUM = forgeTag("nuggets/cloggrum");
-		public static final TagKey<Item> NUGGETS_FROSTSTEEL = forgeTag("nuggets/froststeel");
-		public static final TagKey<Item> NUGGETS_FORGOTTEN_METAL = forgeTag("nuggets/forgotten_metal");
+		public static final TagKey<Item> NUGGETS_CLOGGRUM = commonTag("nuggets/cloggrum");
+		public static final TagKey<Item> NUGGETS_FROSTSTEEL = commonTag("nuggets/froststeel");
+		public static final TagKey<Item> NUGGETS_FORGOTTEN_METAL = commonTag("nuggets/forgotten_metal");
 
-		public static final TagKey<Item> ORES_CLOGGRUM = forgeTag("ores/cloggrum");
-		public static final TagKey<Item> ORES_FROSTSTEEL = forgeTag("ores/froststeel");
-		public static final TagKey<Item> ORES_UTHERIUM = forgeTag("ores/utherium");
-		public static final TagKey<Item> ORES_REGALIUM = forgeTag("ores/regalium");
-		public static final TagKey<Item> ORES_ROGDORIUM = forgeTag("ores/rogdorium");
+		public static final TagKey<Item> ORES_CLOGGRUM = commonTag("ores/cloggrum");
+		public static final TagKey<Item> ORES_FROSTSTEEL = commonTag("ores/froststeel");
+		public static final TagKey<Item> ORES_UTHERIUM = commonTag("ores/utherium");
+		public static final TagKey<Item> ORES_REGALIUM = commonTag("ores/regalium");
+		public static final TagKey<Item> ORES_ROGDORIUM = commonTag("ores/rogdorium");
 
-		public static final TagKey<Item> STORAGE_BLOCKS_CLOGGRUM = forgeTag("storage_blocks/cloggrum");
-		public static final TagKey<Item> STORAGE_BLOCKS_FROSTSTEEL = forgeTag("storage_blocks/froststeel");
-		public static final TagKey<Item> STORAGE_BLOCKS_UTHERIUM = forgeTag("storage_blocks/utherium");
-		public static final TagKey<Item> STORAGE_BLOCKS_REGALIUM = forgeTag("storage_blocks/regalium");
-		public static final TagKey<Item> STORAGE_BLOCKS_ROGDORIUM = forgeTag("storage_blocks/rogdorium");
-		public static final TagKey<Item> STORAGE_BLOCKS_FORGOTTEN_METAL = forgeTag("storage_blocks/forgotten_metal");
+		public static final TagKey<Item> STORAGE_BLOCKS_CLOGGRUM = commonTag("storage_blocks/cloggrum");
+		public static final TagKey<Item> STORAGE_BLOCKS_FROSTSTEEL = commonTag("storage_blocks/froststeel");
+		public static final TagKey<Item> STORAGE_BLOCKS_UTHERIUM = commonTag("storage_blocks/utherium");
+		public static final TagKey<Item> STORAGE_BLOCKS_REGALIUM = commonTag("storage_blocks/regalium");
+		public static final TagKey<Item> STORAGE_BLOCKS_ROGDORIUM = commonTag("storage_blocks/rogdorium");
+		public static final TagKey<Item> STORAGE_BLOCKS_FORGOTTEN_METAL = commonTag("storage_blocks/forgotten_metal");
 
-		public static final TagKey<Item> STORAGE_BLOCKS_RAW_CLOGGRUM = forgeTag("storage_blocks/raw_cloggrum");
-		public static final TagKey<Item> STORAGE_BLOCKS_RAW_FROSTSTEEL = forgeTag("storage_blocks/raw_froststeel");
+		public static final TagKey<Item> STORAGE_BLOCKS_RAW_CLOGGRUM = commonTag("storage_blocks/raw_cloggrum");
+		public static final TagKey<Item> STORAGE_BLOCKS_RAW_FROSTSTEEL = commonTag("storage_blocks/raw_froststeel");
 
 		private static TagKey<Item> tag(String name) {
 			return ItemTags.create(new ResourceLocation(Undergarden.MODID, name));
 		}
 
-		private static TagKey<Item> forgeTag(String name) {
-			return ItemTags.create(new ResourceLocation("forge", name));
+		private static TagKey<Item> commonTag(String name) {
+			return ItemTags.create(new ResourceLocation("c", name));
 		}
 	}
 
@@ -78,40 +80,40 @@ public class UGTags {
 		public static final TagKey<Block> SCINTLING_SPAWNABLE_ON = tag("scintling_spawnable_on");
 		public static final TagKey<Block> SMOG_MOG_SPAWNABLE_ON = tag("smog_mog_spawnable_on");
 
-		public static final TagKey<Block> ORES_CLOGGRUM = forgeTag("ores/cloggrum");
-		public static final TagKey<Block> ORES_FROSTSTEEL = forgeTag("ores/froststeel");
-		public static final TagKey<Block> ORES_UTHERIUM = forgeTag("ores/utherium");
-		public static final TagKey<Block> ORES_REGALIUM = forgeTag("ores/regalium");
-		public static final TagKey<Block> ORES_ROGDORIUM = forgeTag("ores/rogdorium");
+		public static final TagKey<Block> ORES_CLOGGRUM = commonTag("ores/cloggrum");
+		public static final TagKey<Block> ORES_FROSTSTEEL = commonTag("ores/froststeel");
+		public static final TagKey<Block> ORES_UTHERIUM = commonTag("ores/utherium");
+		public static final TagKey<Block> ORES_REGALIUM = commonTag("ores/regalium");
+		public static final TagKey<Block> ORES_ROGDORIUM = commonTag("ores/rogdorium");
 
-		public static final TagKey<Block> STORAGE_BLOCKS_CLOGGRUM = forgeTag("storage_blocks/cloggrum");
-		public static final TagKey<Block> STORAGE_BLOCKS_FROSTSTEEL = forgeTag("storage_blocks/froststeel");
-		public static final TagKey<Block> STORAGE_BLOCKS_UTHERIUM = forgeTag("storage_blocks/utherium");
-		public static final TagKey<Block> STORAGE_BLOCKS_REGALIUM = forgeTag("storage_blocks/regalium");
-		public static final TagKey<Block> STORAGE_BLOCKS_ROGDORIUM = forgeTag("storage_blocks/rogdorium");
-		public static final TagKey<Block> STORAGE_BLOCKS_FORGOTTEN_METAL = forgeTag("storage_blocks/forgotten_metal");
+		public static final TagKey<Block> STORAGE_BLOCKS_CLOGGRUM = commonTag("storage_blocks/cloggrum");
+		public static final TagKey<Block> STORAGE_BLOCKS_FROSTSTEEL = commonTag("storage_blocks/froststeel");
+		public static final TagKey<Block> STORAGE_BLOCKS_UTHERIUM = commonTag("storage_blocks/utherium");
+		public static final TagKey<Block> STORAGE_BLOCKS_REGALIUM = commonTag("storage_blocks/regalium");
+		public static final TagKey<Block> STORAGE_BLOCKS_ROGDORIUM = commonTag("storage_blocks/rogdorium");
+		public static final TagKey<Block> STORAGE_BLOCKS_FORGOTTEN_METAL = commonTag("storage_blocks/forgotten_metal");
 
-		public static final TagKey<Block> STORAGE_BLOCKS_RAW_CLOGGRUM = forgeTag("storage_blocks/raw_cloggrum");
-		public static final TagKey<Block> STORAGE_BLOCKS_RAW_FROSTSTEEL = forgeTag("storage_blocks/raw_froststeel");
+		public static final TagKey<Block> STORAGE_BLOCKS_RAW_CLOGGRUM = commonTag("storage_blocks/raw_cloggrum");
+		public static final TagKey<Block> STORAGE_BLOCKS_RAW_FROSTSTEEL = commonTag("storage_blocks/raw_froststeel");
 
-		public static final TagKey<Block> DEPTHROCK_GROUND = forgeTag("ore_bearing_ground/depthrock");
-		public static final TagKey<Block> DEPTHROCK_ORES = forgeTag("ores_in_ground/depthrock");
+		public static final TagKey<Block> DEPTHROCK_GROUND = commonTag("ore_bearing_ground/depthrock");
+		public static final TagKey<Block> DEPTHROCK_ORES = commonTag("ores_in_ground/depthrock");
 
-		public static final TagKey<Block> SHIVERSTONE_GROUND = forgeTag("ore_bearing_ground/shiverstone");
-		public static final TagKey<Block> SHIVERSTONE_ORES = forgeTag("ores_in_ground/shiverstone");
+		public static final TagKey<Block> SHIVERSTONE_GROUND = commonTag("ore_bearing_ground/shiverstone");
+		public static final TagKey<Block> SHIVERSTONE_ORES = commonTag("ores_in_ground/shiverstone");
 
-		public static final TagKey<Block> DREADROCK_GROUND = forgeTag("ore_bearing_ground/dreadrock");
-		public static final TagKey<Block> DREADROCK_ORES = forgeTag("ores_in_ground/dreadrock");
+		public static final TagKey<Block> DREADROCK_GROUND = commonTag("ore_bearing_ground/dreadrock");
+		public static final TagKey<Block> DREADROCK_ORES = commonTag("ores_in_ground/dreadrock");
 
-		public static final TagKey<Block> TREMBLECRUST_GROUND = forgeTag("ore_bearing_ground/tremblecrust");
-		public static final TagKey<Block> TREMBLECRUST_ORES = forgeTag("ores_in_ground/tremblecrust");
+		public static final TagKey<Block> TREMBLECRUST_GROUND = commonTag("ore_bearing_ground/tremblecrust");
+		public static final TagKey<Block> TREMBLECRUST_ORES = commonTag("ores_in_ground/tremblecrust");
 
 		private static TagKey<Block> tag(String name) {
 			return BlockTags.create(new ResourceLocation(Undergarden.MODID, name));
 		}
 
-		private static TagKey<Block> forgeTag(String name) {
-			return BlockTags.create(new ResourceLocation("forge", name));
+		private static TagKey<Block> commonTag(String name) {
+			return BlockTags.create(new ResourceLocation("c", name));
 		}
 	}
 

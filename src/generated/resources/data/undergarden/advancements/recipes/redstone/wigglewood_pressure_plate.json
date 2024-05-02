@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:wigglewood_planks"
-            ]
+            "items": "undergarden:wigglewood_planks"
           }
         ]
       },

@@ -1,6 +1,7 @@
 package quek.undergarden.world.gen.structure;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -26,7 +27,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class BiggerJigsawStructure extends Structure {
-	public static final Codec<BiggerJigsawStructure> CODEC = RecordCodecBuilder.<BiggerJigsawStructure>mapCodec(instance -> instance.group(
+	public static final MapCodec<BiggerJigsawStructure> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 			settingsCodec(instance),
 			StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter((structure) -> structure.startPool),
 			ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter((structure) -> structure.startJigsawName),
@@ -35,7 +36,7 @@ public class BiggerJigsawStructure extends Structure {
 			Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter((structure) -> structure.projectStartToHeightmap),
 			Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter((structure) -> structure.maxDistanceFromCenter),
 			Codec.list(PoolAliasBinding.CODEC).optionalFieldOf("pool_aliases", List.of()).forGetter(p_307187_ -> p_307187_.poolAliases)
-	).apply(instance, BiggerJigsawStructure::new)).codec();
+	).apply(instance, BiggerJigsawStructure::new));
 
 	private final Holder<StructureTemplatePool> startPool;
 	private final Optional<ResourceLocation> startJigsawName;

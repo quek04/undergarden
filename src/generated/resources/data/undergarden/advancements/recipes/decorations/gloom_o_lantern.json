@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:carved_gloomgourd"
-            ]
+            "items": "undergarden:carved_gloomgourd"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:torch"
-            ]
+            "items": "minecraft:torch"
           }
         ]
       },

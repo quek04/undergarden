@@ -3,7 +3,7 @@
   "category": "redstone",
   "key": {
     "/": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "M": {
       "item": "undergarden:ancient_root_planks"
@@ -14,6 +14,7 @@
     "/M/"
   ],
   "result": {
-    "item": "undergarden:ancient_root_fence_gate"
+    "count": 1,
+    "id": "undergarden:ancient_root_fence_gate"
   }
 }

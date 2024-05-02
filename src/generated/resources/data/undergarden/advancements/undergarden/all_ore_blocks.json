@@ -5,24 +5,16 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:cloggrum_block"
-            ]
+            "items": "undergarden:cloggrum_block"
           },
           {
-            "items": [
-              "undergarden:froststeel_block"
-            ]
+            "items": "undergarden:froststeel_block"
           },
           {
-            "items": [
-              "undergarden:utherium_block"
-            ]
+            "items": "undergarden:utherium_block"
           },
           {
-            "items": [
-              "undergarden:regalium_block"
-            ]
+            "items": "undergarden:regalium_block"
           }
         ]
       },
@@ -35,7 +27,8 @@
     },
     "frame": "challenge",
     "icon": {
-      "item": "undergarden:regalium_block"
+      "count": 1,
+      "id": "undergarden:regalium_block"
     },
     "title": {
       "translate": "advancement.undergarden.all_ore_blocks.title"

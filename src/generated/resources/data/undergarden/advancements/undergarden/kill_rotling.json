@@ -21,7 +21,8 @@
       "translate": "advancement.undergarden.kill_rotling.desc"
     },
     "icon": {
-      "item": "undergarden:utheric_shard"
+      "count": 1,
+      "id": "undergarden:utheric_shard"
     },
     "title": {
       "translate": "advancement.undergarden.kill_rotling.title"

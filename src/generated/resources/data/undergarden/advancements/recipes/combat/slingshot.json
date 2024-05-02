@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:rods/wooden"
+            "items": "#c:rods/wooden"
           }
         ]
       },
@@ -21,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:twistytwig"
-            ]
+            "items": "undergarden:twistytwig"
           }
         ]
       },

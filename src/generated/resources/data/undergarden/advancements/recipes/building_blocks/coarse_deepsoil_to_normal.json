@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:coarse_deepsoil"
-            ]
+            "items": "undergarden:coarse_deepsoil"
           }
         ]
       },

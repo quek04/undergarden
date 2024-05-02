@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:indigo_mushroom"
-            ]
+            "items": "undergarden:indigo_mushroom"
           }
         ]
       },

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "undergarden:utherium_items"
+            "items": "#undergarden:utherium_items"
           }
         ]
       },

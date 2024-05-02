@@ -9,7 +9,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:ancient_sea"
+                "biomes": "undergarden:ancient_sea"
               }
             }
           }
@@ -25,7 +25,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:barren_abyss"
+                "biomes": "undergarden:barren_abyss"
               }
             }
           }
@@ -41,7 +41,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:blood_mushroom_bog"
+                "biomes": "undergarden:blood_mushroom_bog"
               }
             }
           }
@@ -57,7 +57,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:dead_sea"
+                "biomes": "undergarden:dead_sea"
               }
             }
           }
@@ -73,7 +73,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:dense_forest"
+                "biomes": "undergarden:dense_forest"
               }
             }
           }
@@ -89,7 +89,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:depths"
+                "biomes": "undergarden:depths"
               }
             }
           }
@@ -105,7 +105,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:forgotten_field"
+                "biomes": "undergarden:forgotten_field"
               }
             }
           }
@@ -121,7 +121,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:frostfields"
+                "biomes": "undergarden:frostfields"
               }
             }
           }
@@ -137,7 +137,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:frosty_smogstem_forest"
+                "biomes": "undergarden:frosty_smogstem_forest"
               }
             }
           }
@@ -153,7 +153,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:gronglegrowth"
+                "biomes": "undergarden:gronglegrowth"
               }
             }
           }
@@ -169,7 +169,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:icy_sea"
+                "biomes": "undergarden:icy_sea"
               }
             }
           }
@@ -185,7 +185,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:indigo_mushroom_bog"
+                "biomes": "undergarden:indigo_mushroom_bog"
               }
             }
           }
@@ -201,7 +201,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:infected_depths"
+                "biomes": "undergarden:infected_depths"
               }
             }
           }
@@ -217,7 +217,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:ink_mushroom_bog"
+                "biomes": "undergarden:ink_mushroom_bog"
               }
             }
           }
@@ -233,7 +233,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:puff_mushroom_forest"
+                "biomes": "undergarden:puff_mushroom_forest"
               }
             }
           }
@@ -249,7 +249,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:smog_spires"
+                "biomes": "undergarden:smog_spires"
               }
             }
           }
@@ -265,7 +265,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:smogstem_forest"
+                "biomes": "undergarden:smogstem_forest"
               }
             }
           }
@@ -281,7 +281,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:veil_mushroom_bog"
+                "biomes": "undergarden:veil_mushroom_bog"
               }
             }
           }
@@ -297,7 +297,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "undergarden:wigglewood_forest"
+                "biomes": "undergarden:wigglewood_forest"
               }
             }
           }
@@ -312,8 +312,8 @@
     },
     "frame": "challenge",
     "icon": {
-      "item": "undergarden:cloggrum_boots",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "undergarden:cloggrum_boots"
     },
     "title": {
       "translate": "advancement.undergarden.all_undergarden_biomes.title"

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:sediment_glass"
-            ]
+            "items": "undergarden:sediment_glass"
           }
         ]
       },

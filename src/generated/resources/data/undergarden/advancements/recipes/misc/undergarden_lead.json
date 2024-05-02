@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:goo_ball"
-            ]
+            "items": "undergarden:goo_ball"
           }
         ]
       },
@@ -23,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:twistytwig"
-            ]
+            "items": "undergarden:twistytwig"
           }
         ]
       },

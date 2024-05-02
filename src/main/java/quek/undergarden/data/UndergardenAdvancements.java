@@ -7,6 +7,8 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.advancements.packs.VanillaAdventureAdvancements;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -254,7 +256,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				.addCriterion("has_cloggrum_armor", InventoryChangeTrigger.TriggerInstance.hasItems(UGItems.CLOGGRUM_HELMET.get(), UGItems.CLOGGRUM_CHESTPLATE.get(), UGItems.CLOGGRUM_LEGGINGS.get(), UGItems.CLOGGRUM_BOOTS.get()))
 				.save(consumer, "undergarden:undergarden/cloggrum_armor");
 
-		addBiomes(Advancement.Builder.advancement(), UNDERGARDEN_BIOMES)
+		VanillaAdventureAdvancements.addBiomes(Advancement.Builder.advancement(), provider, UNDERGARDEN_BIOMES)
 				.parent(enter_undergarden)
 				.display(
 						UGItems.CLOGGRUM_BOOTS.get(),
@@ -388,7 +390,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 						true,
 						false
 				)
-				.addCriterion("enter_catacombs", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(UGStructures.CATACOMBS)))
+				.addCriterion("enter_catacombs", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(provider.lookupOrThrow(Registries.STRUCTURE).getOrThrow(UGStructures.CATACOMBS))))
 				.save(consumer, "undergarden:undergarden/catacombs");
 
 		AdvancementHolder cloggrum_battleaxe = Advancement.Builder.advancement()
@@ -509,9 +511,9 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				false
 			)
 			.requirements(AdvancementRequirements.Strategy.OR)
-			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.DEPTHS)))
-			.addCriterion("has_entered_infected_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.INFECTED_DEPTHS)))
-			.addCriterion("has_entered_puff_mushroom_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(UGBiomes.PUFF_MUSHROOM_FOREST)))
+			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.DEPTHS))))
+			.addCriterion("has_entered_infected_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.INFECTED_DEPTHS))))
+			.addCriterion("has_entered_puff_mushroom_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.PUFF_MUSHROOM_FOREST))))
 			.save(consumer, "undergarden:undergarden/enter_depths");
 
 		AdvancementHolder contract_utheric_infection = Advancement.Builder.advancement()
@@ -541,7 +543,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
-			.addCriterion("has_purity_effect", EffectsChangedTrigger.TriggerInstance.hasEffects(MobEffectsPredicate.Builder.effects().and(UGEffects.PURITY.get())))
+			.addCriterion("has_purity_effect", EffectsChangedTrigger.TriggerInstance.hasEffects(MobEffectsPredicate.Builder.effects().and(UGEffects.PURITY)))
 			.save(consumer, "undergarden:undergarden/cure_utheric_infection");
 
 		AdvancementHolder enter_denizen_camp = Advancement.Builder.advancement()
@@ -556,7 +558,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
-			.addCriterion("has_entered_denizen_camp", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(UGStructures.DENIZEN_CAMP)))
+			.addCriterion("has_entered_denizen_camp", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(provider.lookupOrThrow(Registries.STRUCTURE).getOrThrow(UGStructures.DENIZEN_CAMP))))
 			.save(consumer, "undergarden:undergarden/enter_denizen_camp");
 
 		AdvancementHolder obtain_denizen_mask = Advancement.Builder.advancement()
@@ -588,13 +590,5 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			)
 			.addCriterion("has_broken_denizen_campfire", DenizenCampfireDestroyedTrigger.TriggerInstance.destroyedCampfire(Blocks.CAMPFIRE))
 			.save(consumer, "undergarden:undergarden/break_denizen_campfire");
-	}
-
-	protected static Advancement.Builder addBiomes(Advancement.Builder builder, List<ResourceKey<Biome>> biomes) {
-		for (ResourceKey<Biome> biome : biomes) {
-			builder.addCriterion(biome.location().toString(), PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biome)));
-		}
-
-		return builder;
 	}
 }

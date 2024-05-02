@@ -1,6 +1,7 @@
 package quek.undergarden.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -10,7 +11,7 @@ import quek.undergarden.registry.UGTreeDecoratorTypes;
 
 public class ReplaceLeafDecorator extends TreeDecorator {
 
-	public static final Codec<ReplaceLeafDecorator> CODEC = RecordCodecBuilder.create(
+	public static final MapCodec<ReplaceLeafDecorator> CODEC = RecordCodecBuilder.mapCodec(
 			instance -> instance.group(
 							Codec.floatRange(0.0F, 1.0F)
 									.fieldOf("probability")

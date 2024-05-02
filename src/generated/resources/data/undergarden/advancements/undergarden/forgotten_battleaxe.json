@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:forgotten_battleaxe"
-            ]
+            "items": "undergarden:forgotten_battleaxe"
           }
         ]
       },
@@ -20,8 +18,8 @@
     },
     "frame": "challenge",
     "icon": {
-      "item": "undergarden:forgotten_battleaxe",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "undergarden:forgotten_battleaxe"
     },
     "title": {
       "translate": "advancement.undergarden.forgotten_battleaxe.title"

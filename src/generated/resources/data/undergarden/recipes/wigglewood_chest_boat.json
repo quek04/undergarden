@@ -7,10 +7,11 @@
       "item": "undergarden:wigglewood_boat"
     },
     {
-      "tag": "forge:chests/wooden"
+      "tag": "c:chests/wooden"
     }
   ],
   "result": {
-    "item": "undergarden:wigglewood_chest_boat"
+    "count": 1,
+    "id": "undergarden:wigglewood_chest_boat"
   }
 }

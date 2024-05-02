@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:ancient_root_planks"
-            ]
+            "items": "undergarden:ancient_root_planks"
           }
         ]
       },

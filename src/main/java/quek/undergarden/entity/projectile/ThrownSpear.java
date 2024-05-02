@@ -5,7 +5,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -36,10 +35,14 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 		super(UGEntityTypes.SPEAR.get(), shooter, level, stack);
 	}
 
+	public ThrownSpear(Level level, double x, double y, double z, ItemStack stack) {
+		super(UGEntityTypes.SPEAR.get(), x, y, z, level, stack);
+	}
+
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(ENCHANTED_ID, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(ENCHANTED_ID, false);
 	}
 
 	@Override
@@ -65,7 +68,7 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 		Entity victim = result.getEntity();
 		float damage = 8.0F;
 		if (victim instanceof LivingEntity entity) {
-			damage += EnchantmentHelper.getDamageBonus(this.getPickupItemStackOrigin(), entity.getMobType());
+			damage += EnchantmentHelper.getDamageBonus(this.getPickupItemStackOrigin(), entity.getType());
 		}
 
 		Entity owner = this.getOwner();
@@ -84,10 +87,10 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 
 				this.doPostHurtEffects(entity);
 			}
-		} else if (victim.getType().is(EntityTypeTags.DEFLECTS_TRIDENTS)) {
+		} /*else if (victim.getType().is(EntityTypeTags.DEFLECTS_TRIDENTS)) {
 			this.deflect();
 			return;
-		}
+		}*/
 
 		this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01, -0.1, -0.01));
 		this.playSound(SoundEvents.ARROW_HIT, 1.0F, 1.0F);
@@ -136,6 +139,11 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 
 	@Override
 	public ItemStack getItem() {
+		return DEFAULT_STACK;
+	}
+
+	@Override
+	protected ItemStack getDefaultPickupItem() {
 		return DEFAULT_STACK;
 	}
 }

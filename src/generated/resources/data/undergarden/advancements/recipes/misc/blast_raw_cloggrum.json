@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:raw_cloggrum"
-            ]
+            "items": "undergarden:raw_cloggrum"
           }
         ]
       },

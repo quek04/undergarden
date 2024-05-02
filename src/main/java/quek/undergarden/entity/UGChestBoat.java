@@ -2,7 +2,7 @@ package quek.undergarden.entity;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -21,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.loot.LootTable;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
@@ -30,7 +31,7 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 
 	private NonNullList<ItemStack> itemStacks = NonNullList.withSize(27, ItemStack.EMPTY);
 	@Nullable
-	private ResourceLocation lootTable;
+	private ResourceKey<LootTable> lootTable;
 	private long lootTableSeed;
 
 	public UGChestBoat(EntityType<? extends UGBoat> type, Level level) {
@@ -58,13 +59,13 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 	@Override
 	protected void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
-		this.addChestVehicleSaveData(tag);
+		this.addChestVehicleSaveData(tag, this.registryAccess());
 	}
 
 	@Override
 	protected void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
-		this.readChestVehicleSaveData(tag);
+		this.readChestVehicleSaveData(tag, this.registryAccess());
 	}
 
 	@Override
@@ -168,12 +169,12 @@ public class UGChestBoat extends UGBoat implements HasCustomInventoryScreen, Con
 
 	@Nullable
 	@Override
-	public ResourceLocation getLootTable() {
+	public ResourceKey<LootTable> getLootTable() {
 		return this.lootTable;
 	}
 
 	@Override
-	public void setLootTable(@Nullable ResourceLocation lootTable) {
+	public void setLootTable(@Nullable ResourceKey<LootTable> lootTable) {
 		this.lootTable = lootTable;
 	}
 

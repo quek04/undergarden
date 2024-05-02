@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:blisterbomb"
-            ]
+            "items": "undergarden:blisterbomb"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:gloomgourd"
-            ]
+            "items": "undergarden:gloomgourd"
           }
         ]
       },

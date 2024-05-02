@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:rogdorium_block"
-            ]
+            "items": "undergarden:rogdorium_block"
           }
         ]
       },

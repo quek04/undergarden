@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:slingshot"
-            ]
+            "items": "undergarden:slingshot"
           }
         ]
       },
@@ -19,8 +17,8 @@
       "translate": "advancement.undergarden.slingshot.desc"
     },
     "icon": {
-      "item": "undergarden:slingshot",
-      "nbt": "{Damage:0}"
+      "count": 1,
+      "id": "undergarden:slingshot"
     },
     "title": {
       "translate": "advancement.undergarden.slingshot.title"

@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:dreadrock_utherium_ore"
-            ]
+            "items": "undergarden:dreadrock_utherium_ore"
           }
         ]
       },

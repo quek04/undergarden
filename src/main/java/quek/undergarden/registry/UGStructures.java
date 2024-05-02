@@ -6,7 +6,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Pools;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -73,7 +73,7 @@ public class UGStructures {
 	public static final ResourceKey<StructureProcessorList> DENIZEN_CAMP_ROAD_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, new ResourceLocation(Undergarden.MODID, "denizen_camp_road_processor"));
 	public static final ResourceKey<StructureProcessorList> DENIZEN_CAMP_WOOD_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, new ResourceLocation(Undergarden.MODID, "denizen_camp_wood_processor"));
 
-	public static void bootstrapStructures(BootstapContext<Structure> context) {
+	public static void bootstrapStructures(BootstrapContext<Structure> context) {
 		HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 		HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
@@ -124,14 +124,14 @@ public class UGStructures {
 		));
 	}
 
-	public static void bootstrapSets(BootstapContext<StructureSet> context) {
+	public static void bootstrapSets(BootstrapContext<StructureSet> context) {
 		HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
 		context.register(CATACOMBS_SET, new StructureSet(structures.getOrThrow(CATACOMBS), new RandomSpreadStructurePlacement(24, 12, RandomSpreadType.LINEAR, 276320045)));
 		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 6, 3, RandomSpreadType.LINEAR)));
 		context.register(DENIZEN_CAMP_SET, new StructureSet(structures.getOrThrow(DENIZEN_CAMP), new RandomSpreadStructurePlacement(12, 6, RandomSpreadType.LINEAR, 27630047)));
 	}
 
-	public static void bootstrapPools(BootstapContext<StructureTemplatePool> context) {
+	public static void bootstrapPools(BootstrapContext<StructureTemplatePool> context) {
 		Holder<StructureTemplatePool> emptyPool = context.lookup(Registries.TEMPLATE_POOL).getOrThrow(Pools.EMPTY);
 		HolderGetter<StructureProcessorList> processors = context.lookup(Registries.PROCESSOR_LIST);
 
@@ -226,7 +226,7 @@ public class UGStructures {
 		), StructureTemplatePool.Projection.RIGID));
 	}
 
-	public static void bootstrapProcessors(BootstapContext<StructureProcessorList> context) {
+	public static void bootstrapProcessors(BootstrapContext<StructureProcessorList> context) {
 		context.register(CATACOMBS_DEGRADATION, new StructureProcessorList(List.of(
 				new RuleProcessor(List.of(
 						new ProcessorRule(

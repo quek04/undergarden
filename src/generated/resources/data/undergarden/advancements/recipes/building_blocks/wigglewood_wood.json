@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "undergarden:wigglewood_log"
-            ]
+            "items": "undergarden:wigglewood_log"
           }
         ]
       },

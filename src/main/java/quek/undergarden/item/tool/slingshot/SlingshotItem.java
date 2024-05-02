@@ -12,6 +12,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ItemLike;
@@ -20,6 +21,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 import net.neoforged.neoforge.event.entity.player.ArrowNockEvent;
+import org.jetbrains.annotations.Nullable;
 import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
 import quek.undergarden.registry.UGCriteria;
 import quek.undergarden.registry.UGEnchantments;
@@ -42,8 +44,13 @@ public class SlingshotItem extends ProjectileWeaponItem {
 	}
 
 	@Override
+	public int getEnchantmentValue(ItemStack stack) {
+		return 1;
+	}
+
+	@Override
 	public int getMaxDamage(ItemStack stack) {
-		int longevity = EnchantmentHelper.getTagEnchantmentLevel(UGEnchantments.LONGEVITY.get(), stack);
+		int longevity = stack.getEnchantmentLevel(UGEnchantments.LONGEVITY.get());
 		int durability = super.getMaxDamage(stack);
 		if (longevity > 0) {
 			return durability * (longevity + 1);
@@ -70,6 +77,11 @@ public class SlingshotItem extends ProjectileWeaponItem {
 	}
 
 	@Override
+	protected void shootProjectile(LivingEntity entity, Projectile projectile, int x, float y, float z, float velocity, @Nullable LivingEntity target) {
+		projectile.shootFromRotation(entity, entity.getXRot(), entity.getYRot(), 0.0F, velocity * 2.0F, 1.0F);
+	}
+
+	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
 		if (entity instanceof Player player) {
 			boolean isCreative = player.getAbilities().instabuild;
@@ -89,7 +101,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 				Vec3 delta = player.getLookAngle();
 				player.push(delta.x * (velocity * 2), (delta.y * velocity) + (velocity / 2), delta.z * (velocity * 2));
 				if (!level.isClientSide) {
-					stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
+					stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
 					level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
 				}
 				player.awardStat(Stats.ITEM_USED.get(this));
@@ -107,7 +119,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
 						slingshotProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2.0F, 1.0F);
 
-						stack.hurtAndBreak(1, player, (player1) -> player.broadcastBreakEvent(player.getUsedItemHand()));
+						stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
 
 						int ricochet = EnchantmentHelper.getItemEnchantmentLevel(UGEnchantments.RICOCHET.get(), stack);
 						if (ricochet > 0) {

@@ -7,7 +7,8 @@
     "item": "undergarden:cloggrum_shovel"
   },
   "result": {
-    "item": "undergarden:forgotten_shovel"
+    "count": 1,
+    "id": "undergarden:forgotten_shovel"
   },
   "template": {
     "item": "undergarden:forgotten_upgrade_smithing_template"

@@ -7,7 +7,8 @@
     "item": "undergarden:cloggrum_hoe"
   },
   "result": {
-    "item": "undergarden:forgotten_hoe"
+    "count": 1,
+    "id": "undergarden:forgotten_hoe"
   },
   "template": {
     "item": "undergarden:forgotten_upgrade_smithing_template"

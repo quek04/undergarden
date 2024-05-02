@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "/": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "P": {
       "item": "undergarden:ancient_root_planks"
@@ -16,6 +16,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "undergarden:ancient_root_sign"
+    "id": "undergarden:ancient_root_sign"
   }
 }

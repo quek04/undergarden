@@ -11,10 +11,11 @@ public class VirulenceEffect extends MobEffect {
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		if (entity.getHealth() > 2.0F && !entity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) {
+	public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+		if (entity.getHealth() > 2.0F && !entity.hasEffect(UGEffects.VIRULENT_RESISTANCE)) {
 			entity.hurt(entity.damageSources().magic(), 2.0F);
 		}
+		return true;
 	}
 
 	@Override

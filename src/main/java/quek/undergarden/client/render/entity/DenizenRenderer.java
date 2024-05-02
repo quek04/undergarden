@@ -42,8 +42,8 @@ public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidM
 	}
 
 	@Override
-	protected void setupRotations(Denizen denizen, PoseStack stack, float ageInTicks, float yRot, float partialTicks) {
-		super.setupRotations(denizen, stack, ageInTicks, yRot, partialTicks);
+	protected void setupRotations(Denizen denizen, PoseStack stack, float ageInTicks, float yRot, float partialTicks, float scale) {
+		super.setupRotations(denizen, stack, ageInTicks, yRot, partialTicks, scale);
 		if (denizen.hasPose(Pose.SITTING)) {
 			stack.translate(0.0D, denizen.getVariant() == Denizen.Type.TALL ? -1.55F : -0.65F, 0.0D);
 		}

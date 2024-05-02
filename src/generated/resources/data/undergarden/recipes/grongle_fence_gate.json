@@ -3,7 +3,7 @@
   "category": "redstone",
   "key": {
     "/": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "M": {
       "item": "undergarden:grongle_planks"
@@ -14,6 +14,7 @@
     "/M/"
   ],
   "result": {
-    "item": "undergarden:grongle_fence_gate"
+    "count": 1,
+    "id": "undergarden:grongle_fence_gate"
   }
 }
