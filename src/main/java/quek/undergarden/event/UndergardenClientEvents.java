@@ -291,14 +291,14 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerOverlays(RegisterGuiLayersEvent event) {
-		event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH, new ResourceLocation(Undergarden.MODID, "virulence_hearts"), (gui, number) -> {
+		event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH, new ResourceLocation(Undergarden.MODID, "virulence_hearts"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.VIRULENCE) && minecraft.gameMode.canHurtPlayer()) {
 				renderVirulenceHearts(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, new ResourceLocation(Undergarden.MODID, "brittleness_armor"), (gui, number) -> {
+		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, new ResourceLocation(Undergarden.MODID, "brittleness_armor"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.BRITTLENESS) && minecraft.gameMode.canHurtPlayer()) {
@@ -307,29 +307,29 @@ public class UndergardenClientEvents {
 		});
 		//render XP bar since we cancel the jump bar
 		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, new ResourceLocation(Undergarden.MODID, "dweller_xp_bar"), (gui, number) -> {
+		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, new ResourceLocation(Undergarden.MODID, "dweller_xp_bar"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
 				minecraft.gui.renderExperienceBar(gui, gui.guiWidth() / 2 - 91);
 			}
 		});
-		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, number) -> {
+		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
 
 			if (player != null) {
-				renderPortalOverlay(gui, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), minecraft.getPartialTick());
+				renderPortalOverlay(gui, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), partialTick);
 			}
 		});
-		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "utheric_infection_bar"), ((gui, number) -> {
+		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "utheric_infection_bar"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0 && minecraft.gameMode.canHurtPlayer()) {
 				renderUthericInfectionBar(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
 			}
-		}));
+		});
 	}
 
 	private static void undergardenFog(ViewportEvent.RenderFog event) {
