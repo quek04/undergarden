@@ -1,5 +1,14 @@
 {
   "parent": "minecraft:item/generated",
+  "display": {
+    "head": {
+      "scale": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
   "textures": {
     "layer0": "undergarden:item/denizen_mask"
   }

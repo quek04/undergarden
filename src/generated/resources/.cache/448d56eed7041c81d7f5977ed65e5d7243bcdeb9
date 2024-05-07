@@ -1,4 +1,4 @@
-// 1.20.6	2024-05-02T00:16:19.3741772	Undergarden Item Models
+// 1.20.6	2024-05-06T19:05:27.4265025	Undergarden Item Models
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -63,7 +63,7 @@ d35aeb21febab1f730aa8a34f914e1a5cf87a6a4 assets/undergarden/models/item/deepsoil
 4af6f8c06a1e254e993032eb1efc6fadbb3970b5 assets/undergarden/models/item/deepsoil_farmland.json
 6b10a425dcedec1c7911ed7f335ed518b43eda57 assets/undergarden/models/item/deepturf.json
 ea46a83f3b29deed4510c1b418f00a04f4bf39cb assets/undergarden/models/item/deepturf_block.json
-5080aa3f6e927799c914c493116744fcdebf6985 assets/undergarden/models/item/denizen_mask.json
+a620b8357faae140952295f42cd3b299af8c04fa assets/undergarden/models/item/denizen_mask.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/denizen_spawn_egg.json
 cb2efc79e689f7efe1241c47e7b8b447f7bf9c55 assets/undergarden/models/item/denizen_totem.json
 cc7c3130e6af22a59cec089e580cda8fb081c04e assets/undergarden/models/item/depthrock.json

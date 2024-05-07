@@ -32,6 +32,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation GRONGLET = register("gronglet");
 	public static final ModelLayerLocation DENIZEN = register("denizen");
 	public static final ModelLayerLocation DENIZEN_2 = register("denizen_2");
+	public static final ModelLayerLocation DENIZEN_MASK = register("denizen_mask");
 
 	private static ModelLayerLocation register(String name) {
 		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), "main");

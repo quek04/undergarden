@@ -22,6 +22,8 @@ import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -51,6 +53,7 @@ import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
+import quek.undergarden.client.render.layer.DenizenMaskLayer;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
 import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.dweller.Dweller;
@@ -186,27 +189,37 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.DENIZEN, DenizenModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.DENIZEN_2, Denizen2Model::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.DENIZEN_MASK, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(1.0F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
 	}
 
 	private static void addEntityLayers(EntityRenderersEvent.AddLayers event) {
+		EntityRendererProvider.Context context = event.getContext();
 		for (EntityType<?> entity : event.getEntityTypes()) {
 			var renderer = event.getRenderer(entity);
 			if (renderer instanceof LivingEntityRenderer<?,?> livingEntityRenderer) {
-				addLayer(livingEntityRenderer);
+				addInfectionLayer(livingEntityRenderer);
+			}
+			if (renderer instanceof HumanoidMobRenderer<?,?> humanoidMobRenderer) {
+				addMaskLayer(humanoidMobRenderer, context);
 			}
 		}
 
 		event.getSkins().forEach(renderer -> {
-			LivingEntityRenderer<Player, EntityModel<Player>> skin = event.getSkin(renderer);
-			addLayer(Objects.requireNonNull(skin));
+			LivingEntityRenderer<Player, HumanoidModel<Player>> skin = event.getSkin(renderer);
+			addInfectionLayer(Objects.requireNonNull(skin));
+			addMaskLayer(Objects.requireNonNull(skin), context);
 		});
 	}
 
-	private static <T extends LivingEntity, M extends EntityModel<T>> void addLayer(LivingEntityRenderer<T, M> renderer) {
+	private static <T extends LivingEntity, M extends EntityModel<T>> void addInfectionLayer(LivingEntityRenderer<T, M> renderer) {
 		renderer.addLayer(new UthericInfectionLayer<>(renderer));
+	}
+
+	private static <T extends LivingEntity, M extends HumanoidModel<T>> void addMaskLayer(LivingEntityRenderer<T, M> renderer, EntityRendererProvider.Context context) {
+		renderer.addLayer(new DenizenMaskLayer<>(renderer, new HumanoidModel<>(context.bakeLayer(UGModelLayers.DENIZEN_MASK))));
 	}
 
 	private static void registerParticleFactories(RegisterParticleProvidersEvent event) {

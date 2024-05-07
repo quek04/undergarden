@@ -49,12 +49,4 @@ public class UGArmorMaterials {
 		map.put(ArmorItem.Type.HELMET, 2);
 		}), 0, SoundEvents.ARMOR_EQUIP_IRON, () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(new ResourceLocation(Undergarden.MODID, "ancient"))), 0.0F, 0.0F)
 	);
-
-	public static final DeferredHolder<ArmorMaterial, ArmorMaterial> DENIZEN_MASK = ARMOR_MATERIALS.register("denizen_mask", () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-			map.put(ArmorItem.Type.BOOTS, 0);
-			map.put(ArmorItem.Type.LEGGINGS, 0);
-			map.put(ArmorItem.Type.CHESTPLATE, 0);
-			map.put(ArmorItem.Type.HELMET, 0);
-		}), 0, SoundEvents.ARMOR_EQUIP_GENERIC, () -> Ingredient.EMPTY, List.of(new ArmorMaterial.Layer(new ResourceLocation(Undergarden.MODID, "denizen_mask"))), 0.0F, 0.0F)
-	);
 }
