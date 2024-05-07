@@ -1,10 +1,7 @@
 package quek.undergarden.attachment;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.world.entity.player.Player;
-import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.client.UndergardenClient;
 
 public class UndergardenPortalAttachment {
 
@@ -40,19 +37,7 @@ public class UndergardenPortalAttachment {
 	public void handleUndergardenPortal(Player player) {
 		if (player.level().isClientSide()) {
 			this.prevPortalAnimTime = this.portalAnimTime;
-			Minecraft minecraft = Minecraft.getInstance();
-			if (this.isInsidePortal) {
-				if (minecraft.screen != null && !minecraft.screen.isPauseScreen()) {
-					if (minecraft.screen instanceof AbstractContainerScreen) {
-						player.closeContainer();
-					}
-					minecraft.setScreen(null);
-				}
-
-				if (this.getPortalAnimTime() == 0.0F) {
-					minecraft.getSoundManager().play(SimpleSoundInstance.forLocalAmbience(UGSoundEvents.UNDERGARDEN_PORTAL_TRAVEL.get(), player.getRandom().nextFloat() * 0.4F + 0.8F, 0.25F));
-				}
-			}
+			UndergardenClient.doClientPortalStuff(player);
 		}
 
 		if (this.isInsidePortal()) {
