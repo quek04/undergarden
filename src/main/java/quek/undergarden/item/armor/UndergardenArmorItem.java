@@ -35,9 +35,10 @@ public class UndergardenArmorItem extends ArmorItem {
 		}
 	}
 
-	public static ItemAttributeModifiers createFroststeelAttributes(ArmorItem.Type type, int armor) {
+	public static ItemAttributeModifiers createFroststeelAttributes(ArmorItem.Type type, ArmorMaterial material) {
 		UUID uuid = ARMOR_MODIFIER_UUID_PER_TYPE.get(type);
 		EquipmentSlotGroup group = EquipmentSlotGroup.bySlot(type.getSlot());
+		int armor = material.getDefense(type);
 		return ItemAttributeModifiers.builder()
 			.add(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", armor, AttributeModifier.Operation.ADD_VALUE), group)
 			.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "Armor toughness", 4.0F, AttributeModifier.Operation.ADD_VALUE), group)
