@@ -61,9 +61,9 @@ public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		super.tick(state, level, pos, random);
 		int age = state.getValue(AGE);
-		if (random.nextInt(10) == 0 && age != 1 && CommonHooks.onCropsGrowPre(level, pos, state, true)) {
+		if (random.nextInt(10) == 0 && age != 1 && CommonHooks.canCropGrow(level, pos, state, true)) {
 			level.setBlock(pos, state.setValue(AGE, 1), 2);
-			CommonHooks.onCropsGrowPost(level, pos, state);
+			CommonHooks.fireCropGrowPost(level, pos, state);
 		}
 	}
 
