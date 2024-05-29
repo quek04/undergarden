@@ -16,7 +16,7 @@ itemIcon="undergarden:deepturf_block"
 [[dependencies.undergarden]]
 	modId = "neoforge"
 	type = "required"
-	versionRange = "[20.6.1-beta,)"
+	versionRange = "[20.6.78-beta,)"
 	ordering = "NONE"
 	side = "BOTH"
 

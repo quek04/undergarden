@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.enums.BubbleColumnDirection;
 import quek.undergarden.block.entity.SmogVentBlockEntity;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGEntityTypes;
@@ -66,5 +67,10 @@ public class SmogVentBlock extends Block implements EntityBlock {
 	@Override
 	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
 		level.scheduleTick(pos, this, 20);
+	}
+
+	@Override
+	public BubbleColumnDirection getBubbleColumnDirection(BlockState state) {
+		return BubbleColumnDirection.UPWARD;
 	}
 }

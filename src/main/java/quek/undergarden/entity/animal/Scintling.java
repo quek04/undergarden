@@ -67,7 +67,7 @@ public class Scintling extends Animal {
 	public void aiStep() {
 		super.aiStep();
 
-		if (!EventHooks.getMobGriefingEvent(this.level(), this) || this.isBaby()) {
+		if (!EventHooks.canEntityGrief(this.level(), this) || this.isBaby()) {
 			return;
 		}
 
