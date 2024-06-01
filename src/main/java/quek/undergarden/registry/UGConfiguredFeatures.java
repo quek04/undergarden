@@ -193,8 +193,8 @@ public class UGConfiguredFeatures {
 		context.register(HUGE_PUFF_MUSHROOM, new ConfiguredFeature<>(Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(BlockStateProvider.simple(UGBlocks.PUFF_MUSHROOM_CAP.get().defaultBlockState()), BlockStateProvider.simple(UGBlocks.PUFF_MUSHROOM_STEM.get().defaultBlockState()), 2)));
 
 		//rocks
-		context.register(DEPTHROCK_ROCK, new ConfiguredFeature<>(Feature.FOREST_ROCK, new BlockStateConfiguration(UGBlocks.DEPTHROCK.get().defaultBlockState())));
-		context.register(SHIVERSTONE_ROCK, new ConfiguredFeature<>(Feature.FOREST_ROCK, new BlockStateConfiguration(UGBlocks.SHIVERSTONE.get().defaultBlockState())));
+		context.register(DEPTHROCK_ROCK, new ConfiguredFeature<>(UGFeatures.BOULDER.get(), new BlockStateConfiguration(UGBlocks.DEPTHROCK.get().defaultBlockState())));
+		context.register(SHIVERSTONE_ROCK, new ConfiguredFeature<>(UGFeatures.BOULDER.get(), new BlockStateConfiguration(UGBlocks.SHIVERSTONE.get().defaultBlockState())));
 
 		//misc
 		context.register(SMOG_VENT, new ConfiguredFeature<>(UGFeatures.SMOG_VENT.get(), FeatureConfiguration.NONE));

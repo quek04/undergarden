@@ -290,7 +290,7 @@ public class UndergardenCommonEvents {
 		}
 	}
 
-	private static void tickUthericInfection(EntityTickEvent.Pre event) {
+	private static void tickUthericInfection(EntityTickEvent.Post event) {
 		Entity entity = event.getEntity();
 		if (entity instanceof LivingEntity livingEntity) {
 			if (livingEntity.tickCount % 20 == 0 && !livingEntity.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
@@ -351,7 +351,7 @@ public class UndergardenCommonEvents {
 	}
 
 	private static void sendSyncPacket(LivingEntity infected) {
-		PacketDistributor.sendToPlayersTrackingEntity(infected, new UthericInfectionPacket(infected.getId(), infected.getData(UGAttachments.UTHERIC_INFECTION)));
+		PacketDistributor.sendToPlayersTrackingEntityAndSelf(infected, new UthericInfectionPacket(infected.getId(), infected.getData(UGAttachments.UTHERIC_INFECTION)));
 	}
 
 	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {
