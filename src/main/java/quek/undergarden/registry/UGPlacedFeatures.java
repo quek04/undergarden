@@ -161,7 +161,7 @@ public class UGPlacedFeatures {
 		context.register(HUGE_INK_MUSHROOM, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_INK_MUSHROOM), tree(8)));
 		context.register(HUGE_BLOOD_MUSHROOM, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM), tree(8)));
 		context.register(HUGE_PUFF_MUSHROOM, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM), puffMushroom(8)));
-		context.register(HUGE_PUFF_MUSHROOM_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM), puffMushroom(1)));
+		context.register(HUGE_PUFF_MUSHROOM_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM), patch(10)));
 
 		//rocks
 		context.register(DEPTHROCK_ROCK, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEPTHROCK_ROCK), patch(5)));

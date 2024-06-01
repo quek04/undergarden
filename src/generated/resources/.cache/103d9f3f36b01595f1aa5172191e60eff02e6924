@@ -1,4 +1,4 @@
-// 1.20.6	2024-05-29T13:17:10.7296265	Registries
+// 1.20.6	2024-06-01T12:37:46.0390581	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -116,7 +116,7 @@ f79bfb18731c0455a1bfd1022a8311a2955551d5 data/undergarden/worldgen/placed_featur
 9eedb75161f7f892b38dc9251c4ecb3fd46f3d25 data/undergarden/worldgen/placed_feature/huge_indigo_mushroom_smogstem_forest.json
 f07e8555b5518e13e522d362e0bac717798fa2e0 data/undergarden/worldgen/placed_feature/huge_ink_mushroom.json
 0df2e123de4b0685af8ba91f6267402425f7335a data/undergarden/worldgen/placed_feature/huge_puff_mushroom.json
-6780939b5f5b1387261889d3ed497f2343cebc00 data/undergarden/worldgen/placed_feature/huge_puff_mushroom_sparse.json
+88ddde8bc221553d9f4fc013299ed0f1c81bdf17 data/undergarden/worldgen/placed_feature/huge_puff_mushroom_sparse.json
 5dfbc02593f2038a4facf303430f71d0a2d35b69 data/undergarden/worldgen/placed_feature/huge_veil_mushroom.json
 3194c9b73fe1981a54b9f0f1e3d4f7e89f1d3e38 data/undergarden/worldgen/placed_feature/ice_ore.json
 d62fc567c56e1e615cc2ae2e9928c65868b2e1fd data/undergarden/worldgen/placed_feature/ice_pillar.json
