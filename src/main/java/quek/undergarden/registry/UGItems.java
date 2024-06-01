@@ -48,7 +48,7 @@ public class UGItems {
 
 	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-	public static final DeferredItem<Item> ROGDORIUM_CRYSTAL = ITEMS.register("rogdorium_crystal", () -> new Item(new Item.Properties().rarity(ROGDORIUM)));
+	public static final DeferredItem<Item> ROGDORIUM_CRYSTAL = ITEMS.register("rogdorium_crystal", () -> new Item(new Item.Properties().rarity(ROGDORIUM).food(UGFoods.ROGDORIUM)));
 
 	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
 	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));

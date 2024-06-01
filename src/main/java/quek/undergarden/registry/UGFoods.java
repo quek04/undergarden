@@ -50,4 +50,5 @@ public class UGFoods {
 			.build();
 
 	public static final FoodProperties SLOP = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 200, 0, false, true), 1.0F).build();
+	public static final FoodProperties ROGDORIUM = new FoodProperties.Builder().nutrition(0).saturationModifier(0.0F).alwaysEdible().effect(() -> new MobEffectInstance(UGEffects.PURITY, 100, 0, false, true), 0.5F).build();
 }

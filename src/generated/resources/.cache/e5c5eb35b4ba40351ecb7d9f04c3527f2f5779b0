@@ -1,4 +1,4 @@
-// 1.20.6	2024-05-02T00:16:19.3771795	Advancements
+// 1.20.6	2024-06-01T12:59:42.0047307	Advancements
 46704040a3f796ba5d520ee8183e8de54d1a528f data/undergarden/advancements/undergarden/all_ore_blocks.json
 81fb37adea14956e9917fb5b4d9f02cc3e11824e data/undergarden/advancements/undergarden/all_undergarden_biomes.json
 2843ccc8b905b160790bda55516c164808a60344 data/undergarden/advancements/undergarden/break_denizen_campfire.json
@@ -9,7 +9,7 @@ a3cf8578142c1f13613ef182f67218bcd4870f05 data/undergarden/advancements/undergard
 b55d19b865a6b3bc921c82c648aa540dfd42269c data/undergarden/advancements/undergarden/cloggrum_battleaxe.json
 2a7f450e41a011ef3e958447b8acead05b27d76b data/undergarden/advancements/undergarden/contract_utheric_infection.json
 6942354ee13e344eb33be4ed015153be3866eaae data/undergarden/advancements/undergarden/cure_utheric_infection.json
-1b6d3535d4a5a0ea0bbf313253b50484c34d008f data/undergarden/advancements/undergarden/enter_denizen_camp.json
+49111187644bb2f9f2cd1d9c54eb7b225c1badce data/undergarden/advancements/undergarden/enter_denizen_camp.json
 c2da68fd264547af47d6ee053b66ff4af06dca53 data/undergarden/advancements/undergarden/enter_depths.json
 d1de9536717bd78d2543daf76cd0db5d78b1b22a data/undergarden/advancements/undergarden/enter_undergarden.json
 3458096bdfe7a8328bd44de6db6c5fae3b18537f data/undergarden/advancements/undergarden/forgotten_battleaxe.json

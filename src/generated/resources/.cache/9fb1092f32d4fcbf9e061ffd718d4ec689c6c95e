@@ -1,4 +1,4 @@
-// 1.20.6	2024-05-02T00:16:19.3701284	Recipes
+// 1.20.6	2024-06-01T12:59:41.9977235	Recipes
 912e5a9405a920f4caf922c5b5bbbe68096386fb data/undergarden/advancements/recipes/building_blocks/ancient_root_planks.json
 d558c5372c9b026a74bc8af216fce46d4018a50e data/undergarden/advancements/recipes/building_blocks/ancient_root_slab.json
 76a194998acb3c65e8ca6d21cad09660dfa5a245 data/undergarden/advancements/recipes/building_blocks/ancient_root_stairs.json
@@ -515,7 +515,7 @@ e913a5165583863b6f01e5fd2e7a29c830e5fa0f data/undergarden/recipes/smelt_depthroc
 7eb99a1f80fbdf2076c6ec74e1e0634fad7f69d6 data/undergarden/recipes/smelt_depthrock_iron_ore.json
 0c6b22e04742703e40ec264cb7d13ba783c72003 data/undergarden/recipes/smelt_depthrock_regalium_ore.json
 baaf40e649074a5e6642a2689532a139cddbc590 data/undergarden/recipes/smelt_depthrock_utherium_ore.json
-34b48f326593fc79f5795442675c059c14e60a8d data/undergarden/recipes/smelt_dreadrock_rogdorium_ore.json
+eff5055cc24a26b3f1ceff45b34bbee7a08072fa data/undergarden/recipes/smelt_dreadrock_rogdorium_ore.json
 b3553daf81f881962dab2b01386503f25690c105 data/undergarden/recipes/smelt_dreadrock_utherium_ore.json
 26264cf4a63c32b1fbad1bd060d622ebb9b47742 data/undergarden/recipes/smelt_dweller_meat.json
 ce44346c2719aec5fa0b14e57c0f7a255141fc00 data/undergarden/recipes/smelt_froststeel_item.json
