@@ -21,6 +21,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.world.gen.feature.config.UtheriumCrystalConfiguration;
 
 import javax.annotation.Nullable;
 import java.util.Optional;

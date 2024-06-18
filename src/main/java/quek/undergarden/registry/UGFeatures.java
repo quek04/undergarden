@@ -9,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.feature.*;
+import quek.undergarden.world.gen.feature.config.UtheriumCrystalConfiguration;
 
 public class UGFeatures {
 
@@ -27,4 +28,5 @@ public class UGFeatures {
 	public static final DeferredHolder<Feature<?>, Feature<UtheriumCrystalConfiguration>> UTHERIUM_GROWTH = FEATURES.register(
 		"utherium_growth", () -> new UtheriumCrystalFeature(UtheriumCrystalConfiguration.CODEC));
 	public static final DeferredHolder<Feature<?>, Feature<BlockStateConfiguration>> BOULDER = FEATURES.register("boulder", () -> new UGBlockBlobFeature(BlockStateConfiguration.CODEC));
+	public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> DEPTHS_HOLE = FEATURES.register("depths_hole", () -> new DepthsHoleFeature(NoneFeatureConfiguration.CODEC));
 }

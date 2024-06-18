@@ -1,4 +1,4 @@
-package quek.undergarden.world.gen.feature;
+package quek.undergarden.world.gen.feature.config;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

@@ -36,7 +36,9 @@
     "water_fog_color": 332810
   },
   "features": [
-    [],
+    [
+      "undergarden:depths_hole"
+    ],
     [],
     [],
     [],

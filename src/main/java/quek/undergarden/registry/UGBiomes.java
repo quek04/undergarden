@@ -72,6 +72,7 @@ public class UGBiomes {
 			.generationSettings(addOresAndCaves(addShroomPatches(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)))
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEPTHROCK_PEBBLE_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DITCHBULB_PATCH)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, UGPlacedFeatures.DEPTHS_HOLE)
 				.build())
 			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)

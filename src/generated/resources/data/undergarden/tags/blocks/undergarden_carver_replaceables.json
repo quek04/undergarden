@@ -1,6 +1,7 @@
 {
   "values": [
-    "#undergarden:base_stone_undergarden",
+    "#undergarden:depthrock_ore_replaceables",
+    "#undergarden:shiverstone_ore_replaceables",
     "#minecraft:dirt",
     "#c:ores/cloggrum",
     "#c:ores/froststeel",

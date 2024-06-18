@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -93,6 +94,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> ICE_PILLAR = create("ice_pillar");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH = create("utherium_growth");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
+	public static final ResourceKey<PlacedFeature> DEPTHS_HOLE = create("depths_hole");
 
 	public static ResourceKey<PlacedFeature> create(String name) {
 		return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(Undergarden.MODID, name));
@@ -101,7 +103,7 @@ public class UGPlacedFeatures {
 	public static void bootstrap(BootstrapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 		//ores
-		context.register(COAL_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.COAL_ORE), OrePlacements.commonOrePlacement(30, PlacementUtils.FULL_RANGE)));
+		context.register(COAL_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.COAL_ORE), OrePlacements.commonOrePlacement(30, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.top()))));
 		context.register(IRON_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.IRON_ORE), OrePlacements.commonOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.belowTop(64), VerticalAnchor.belowTop(-64)))));
 		context.register(GOLD_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GOLD_ORE), OrePlacements.commonOrePlacement(2, HeightRangePlacement.triangle(VerticalAnchor.belowTop(32), VerticalAnchor.belowTop(-32)))));
 		context.register(DIAMOND_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DIAMOND_ORE), OrePlacements.commonOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.belowTop(16), VerticalAnchor.belowTop(-16)))));
@@ -110,10 +112,10 @@ public class UGPlacedFeatures {
 		context.register(ROGDORIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ROGDORIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)))));
 		context.register(UTHERIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(32)))));
 		context.register(REGALIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.REGALIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(12)))));
-		context.register(SHIVERSTONE_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SHIVERSTONE_ORE), OrePlacements.commonOrePlacement(10, PlacementUtils.FULL_RANGE)));
-		context.register(DEEPSOIL_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEEPSOIL_ORE), OrePlacements.commonOrePlacement(10, PlacementUtils.FULL_RANGE)));
-		context.register(ICE_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ICE_ORE), OrePlacements.commonOrePlacement(20, PlacementUtils.FULL_RANGE)));
-		context.register(SEDIMENT_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SEDIMENT_ORE), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(32)))));
+		context.register(SHIVERSTONE_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SHIVERSTONE_ORE), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.top()))));
+		context.register(DEEPSOIL_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEEPSOIL_ORE), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.top()))));
+		context.register(ICE_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ICE_ORE), OrePlacements.commonOrePlacement(20, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.top()))));
+		context.register(SEDIMENT_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SEDIMENT_ORE), OrePlacements.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(32)))));
 
 		//deltas
 		context.register(BOG_DELTA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BOG_DELTA), List.of(CountOnEveryLayerPlacement.of(40), BiomeFilter.biome())));
@@ -172,6 +174,7 @@ public class UGPlacedFeatures {
 		context.register(ICE_PILLAR, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ICE_PILLAR), patch(50)));
 		context.register(UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH), patch(100)));
 		context.register(UTHERIUM_GROWTH_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH_EXTRA), patch(200)));
+		context.register(DEPTHS_HOLE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEPTHS_HOLE), patchWithFilter(2, BlockPredicate.anyOf(BlockPredicate.matchesTag(Direction.DOWN.getNormal(), UGTags.Blocks.BASE_STONE_UNDERGARDEN), BlockPredicate.matchesTag(Direction.DOWN.getNormal(), BlockTags.DIRT)))));
 	}
 
 	private static List<PlacementModifier> tree(int count) {
