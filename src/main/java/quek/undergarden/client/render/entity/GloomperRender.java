@@ -11,6 +11,8 @@ import quek.undergarden.entity.animal.Gloomper;
 
 public class GloomperRender extends MobRenderer<Gloomper, GloomperModel<Gloomper>> {
 
+	public static final ResourceLocation GLOOMPER = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/gloomper.png");
+
 	public GloomperRender(EntityRendererProvider.Context context) {
 		super(context, new GloomperModel<>(context.bakeLayer(UGModelLayers.GLOOMPER)), 1.0F);
 		this.addLayer(new GloomperEyesLayer<>(this));
@@ -18,6 +20,6 @@ public class GloomperRender extends MobRenderer<Gloomper, GloomperModel<Gloomper
 
 	@Override
 	public ResourceLocation getTextureLocation(Gloomper entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/gloomper.png");
+		return GLOOMPER;
 	}
 }

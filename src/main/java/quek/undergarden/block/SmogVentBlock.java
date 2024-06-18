@@ -32,7 +32,7 @@ public class SmogVentBlock extends Block implements EntityBlock {
 
 	@Override
 	public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-		if (entity.getType() != UGEntityTypes.SMOG_MOG.get() && !entity.fireImmune() && entity instanceof LivingEntity living && !EnchantmentHelper.hasFrostWalker(living)) {
+		if (entity.getType() != UGEntityTypes.SMOG_MOG.get() && !entity.fireImmune() && entity instanceof LivingEntity /*living && !EnchantmentHelper.hasFrostWalker(living)*/) {
 			entity.hurt(level.damageSources().hotFloor(), 1.0F);
 		}
 		super.stepOn(level, pos, state, entity);

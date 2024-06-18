@@ -111,7 +111,7 @@ public class Brute extends Animal implements NeutralMob {
 	}
 
 	@Override
-	public boolean canBeLeashed(Player player) {
+	public boolean canBeLeashed() {
 		return false;
 	}
 }

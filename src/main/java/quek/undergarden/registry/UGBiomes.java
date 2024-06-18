@@ -39,7 +39,7 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> WIGGLEWOOD_FOREST = create("wigglewood_forest");
 
 	private static ResourceKey<Biome> create(String name) {
-		return ResourceKey.create(Registries.BIOME, new ResourceLocation(Undergarden.MODID, name));
+		return ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 	}
 
 	public static void bootstrap(BootstrapContext<Biome> context) {

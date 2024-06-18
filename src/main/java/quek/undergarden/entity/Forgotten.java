@@ -87,7 +87,7 @@ public class Forgotten extends Monster {
 			this.setDropChance(EquipmentSlot.MAINHAND, 1.0F);
 		} else {
 			for (EquipmentSlot slot : EquipmentSlot.values()) {
-				if (slot.getType() == EquipmentSlot.Type.ARMOR && this.getItemBySlot(slot).isEmpty() && random.nextBoolean()) {
+				if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR && this.getItemBySlot(slot).isEmpty() && random.nextBoolean()) {
 					Item armor = switch (slot) {
 						case HEAD -> UGItems.ANCIENT_HELMET.get();
 						case CHEST -> UGItems.ANCIENT_CHESTPLATE.get();
@@ -110,7 +110,7 @@ public class Forgotten extends Monster {
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance difficulty, MobSpawnType type, @Nullable SpawnGroupData data) {
 		data = super.finalizeSpawn(accessor, difficulty, type, data);
 		this.populateDefaultEquipmentSlots(accessor.getRandom(), difficulty);
-		this.populateDefaultEquipmentEnchantments(accessor.getRandom(), difficulty);
+		this.populateDefaultEquipmentEnchantments(accessor, accessor.getRandom(), difficulty);
 		return data;
 	}
 

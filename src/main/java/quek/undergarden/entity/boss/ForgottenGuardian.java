@@ -86,7 +86,7 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	public boolean canChangeDimensions() {
+	public boolean canChangeDimensions(Level p_352904_, Level p_352909_) {
 		return false;
 	}
 
@@ -180,7 +180,7 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	public boolean canBeLeashed(Player player) {
+	public boolean canBeLeashed() {
 		return false;
 	}
 

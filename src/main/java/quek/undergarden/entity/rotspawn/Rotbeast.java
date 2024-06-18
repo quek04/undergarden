@@ -67,7 +67,6 @@ public class Rotbeast extends RotspawnMonster {
 		boolean flag = entity.hurt(this.damageSources().mobAttack(this), f1);
 		if (flag) {
 			entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
-			this.doEnchantDamageEffects(this, entity);
 		}
 
 		this.playSound(UGSoundEvents.ROTBEAST_ATTACK.get(), 1.0F, 1.0F);

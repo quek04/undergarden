@@ -14,6 +14,8 @@ import quek.undergarden.entity.animal.Gwibling;
 
 public class GwiblingRender extends MobRenderer<Gwibling, GwiblingModel<Gwibling>> {
 
+	private static final ResourceLocation GWIBLING = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/gwibling.png");
+
 	public GwiblingRender(EntityRendererProvider.Context context) {
 		super(context, new GwiblingModel<>(context.bakeLayer(UGModelLayers.GWIBLING)), 0.3F);
 		this.addLayer(new GwiblingEyesLayer<>(this));
@@ -21,7 +23,7 @@ public class GwiblingRender extends MobRenderer<Gwibling, GwiblingModel<Gwibling
 
 	@Override
 	public ResourceLocation getTextureLocation(Gwibling entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/gwibling.png");
+		return GWIBLING;
 	}
 
 	@Override

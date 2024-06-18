@@ -52,7 +52,7 @@ public class Undergarden {
 			UGCreativeModeTabs.TABS,
 			UGCriteria.CRITERIA,
 			UGEffects.EFFECTS,
-			UGEnchantments.ENCHANTMENTS,
+			//UGEnchantments.ENCHANTMENTS,
 			UGEntityTypes.ENTITIES,
 			UGFeatures.FEATURES,
 			UGFluids.FLUIDS,
@@ -109,6 +109,7 @@ public class Undergarden {
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));
 		generator.addProvider(event.includeServer(), new UGDataMaps(output, lookupProvider));
+		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, provider, helper));
 
 		generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
 				Component.literal("Undergarden resources"),

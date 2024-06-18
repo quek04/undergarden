@@ -19,10 +19,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.util.ITeleporter;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.UndergardenPortalBlock;
 import quek.undergarden.registry.UGBlocks;
@@ -32,7 +30,6 @@ import quek.undergarden.registry.UGPointOfInterests;
 import javax.annotation.Nullable;
 import java.util.Comparator;
 import java.util.Optional;
-import java.util.function.Function;
 
 public class UGTeleporter implements ITeleporter {
 
