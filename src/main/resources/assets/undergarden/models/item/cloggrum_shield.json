@@ -67,7 +67,7 @@
 	"overrides": [
 		{
 			"predicate": {
-				"blocking": 1
+				"undergarden:blocking": 1
 			},
 			"model": "undergarden:item/cloggrum_shield_blocking"
 		}
