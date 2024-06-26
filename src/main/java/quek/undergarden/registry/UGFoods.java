@@ -3,6 +3,7 @@ package quek.undergarden.registry;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Items;
 
 public class UGFoods {
 
@@ -20,34 +21,9 @@ public class UGFoods {
 	public static final FoodProperties COOKED_GWIBLING = new FoodProperties.Builder().nutrition(5).saturationModifier(0.6F).build();
 	public static final FoodProperties DROOPFRUIT = new FoodProperties.Builder().nutrition(1).saturationModifier(1).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 600, 0, false, true), 1.0F).build();
 	public static final FoodProperties BLOOD_GLOBULE = new FoodProperties.Builder().nutrition(0).saturationModifier(0.0F).effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 20, 3, false, true), 1.0F).alwaysEdible().build();
-	public static final FoodProperties BLOODY = new FoodProperties.Builder()
-			.nutrition(4)
-			.saturationModifier(0.4F)
-			.effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 0, false, true), 1.0F)
-			.effect(() -> new MobEffectInstance(UGEffects.BRITTLENESS, 600, 0, false, true), 1.0F)
-			.alwaysEdible()
-			.build();
-	public static final FoodProperties INKY = new FoodProperties.Builder()
-			.nutrition(4)
-			.saturationModifier(0.4F)
-			.effect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 600, 0, false, true), 1.0F)
-			.effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 0, false, true), 1.0F)
-			.alwaysEdible()
-			.build();
-	public static final FoodProperties INDIGO = new FoodProperties.Builder()
-			.nutrition(4)
-			.saturationModifier(0.4F)
-			.effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 600, 0, false, true), 1.0F)
-			.effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 0, false, true), 1.0F)
-			.alwaysEdible()
-			.build();
-	public static final FoodProperties VEILED = new FoodProperties.Builder()
-			.nutrition(4)
-			.saturationModifier(0.4F)
-			.effect(() -> new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0, false, true), 1.0F)
-			.effect(() -> new MobEffectInstance(UGEffects.FEATHERWEIGHT, 600, 0, false, true), 1.0F)
-			.alwaysEdible()
-			.build();
-
-	public static final FoodProperties SLOP = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 200, 0, false, true), 1.0F).build();
+	public static final FoodProperties BLOODY_STEW = new FoodProperties.Builder().nutrition(4).saturationModifier(0.4F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 0, false, true), 1.0F).effect(() -> new MobEffectInstance(UGEffects.BRITTLENESS, 600, 0, false, true), 1.0F).alwaysEdible().usingConvertsTo(Items.BOWL).build();
+	public static final FoodProperties INKY_STEW = new FoodProperties.Builder().nutrition(4).saturationModifier(0.4F).effect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 600, 0, false, true), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 0, false, true), 1.0F).alwaysEdible().usingConvertsTo(Items.BOWL).build();
+	public static final FoodProperties INDIGO_STEW = new FoodProperties.Builder().nutrition(4).saturationModifier(0.4F).effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 600, 0, false, true), 1.0F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 0, false, true), 1.0F).alwaysEdible().usingConvertsTo(Items.BOWL).build();
+	public static final FoodProperties VEILED_STEW = new FoodProperties.Builder().nutrition(4).saturationModifier(0.4F).effect(() -> new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0, false, true), 1.0F).effect(() -> new MobEffectInstance(UGEffects.FEATHERWEIGHT, 600, 0, false, true), 1.0F).alwaysEdible().usingConvertsTo(Items.BOWL).build();
+	public static final FoodProperties SLOP_BOWL = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6F).effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 200, 0, false, true), 1.0F).usingConvertsTo(Items.BOWL).build();
 }

@@ -1,11 +1,14 @@
 package quek.undergarden;
 
+import com.mojang.logging.LogUtils;
 import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.util.InclusiveRange;
@@ -20,6 +23,9 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
+import org.slf4j.Logger;
+import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
@@ -33,6 +39,7 @@ import java.util.concurrent.CompletableFuture;
 public class Undergarden {
 
 	public static final String MODID = "undergarden";
+	public static final Logger LOGGER = LogUtils.getLogger();
 
 	public Undergarden(IEventBus bus, Dist dist, ModContainer container) {
 
@@ -109,12 +116,20 @@ public class Undergarden {
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));
 		generator.addProvider(event.includeServer(), new UGDataMaps(output, lookupProvider));
-		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, provider, helper));
+		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, datapackProvider.getRegistryProvider(), helper));
 
 		generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
 				Component.literal("Undergarden resources"),
 				DetectedVersion.BUILT_IN.getPackVersion(PackType.SERVER_DATA),
 				Optional.of(new InclusiveRange<>(0, Integer.MAX_VALUE)))));
 
+	}
+
+	public static RegistryAccess registryAccessStatic() {
+		final MinecraftServer currentServer = ServerLifecycleHooks.getCurrentServer();
+		if(currentServer != null)
+			return currentServer.registryAccess();
+		else
+			return UndergardenClient.registryAccess();
 	}
 }

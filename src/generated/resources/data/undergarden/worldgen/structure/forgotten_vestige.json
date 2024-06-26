@@ -1,6 +1,7 @@
 {
   "type": "undergarden:bigger_jigsaw",
   "biomes": "#undergarden:has_structure/forgotten_vestige",
+  "liquid_settings": "ignore_waterlogging",
   "max_distance_from_center": 10,
   "size": 5,
   "spawn_overrides": {},

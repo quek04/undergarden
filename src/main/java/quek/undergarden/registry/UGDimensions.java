@@ -32,7 +32,7 @@ public class UGDimensions {
 	public static final ResourceKey<LevelStem> UNDERGARDEN_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, name("undergarden"));
 
 	private static ResourceLocation name(String name) {
-		return new ResourceLocation(Undergarden.MODID, name);
+		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name);
 	}
 
 	public static void bootstrapType(BootstrapContext<DimensionType> context) {

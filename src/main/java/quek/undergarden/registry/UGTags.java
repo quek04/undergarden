@@ -2,7 +2,9 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.*;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -118,7 +120,7 @@ public class UGTags {
 		public static final TagKey<EntityType<?>> IMMUNE_TO_BLISTERBERRY_BUSH = tag("immune_to_blisterberry_bush");
 
 		private static TagKey<EntityType<?>> tag(String name) {
-			return EntityTypeTags.create(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name).toString());
+			return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 		}
 	}
 
@@ -127,7 +129,7 @@ public class UGTags {
 		public static final TagKey<Fluid> VIRULENT = tag("virulent");
 
 		private static TagKey<Fluid> tag(String name) {
-			return FluidTags.create(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
+			return TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 		}
 	}
 
@@ -139,7 +141,7 @@ public class UGTags {
 		public static final TagKey<Biome> HAS_FORGOTTEN_VESTIGE = tag("has_structure/forgotten_vestige");
 
 		private static TagKey<Biome> tag(String name) {
-			return BiomeTags.create(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name).toString());
+			return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 		}
 	}
 

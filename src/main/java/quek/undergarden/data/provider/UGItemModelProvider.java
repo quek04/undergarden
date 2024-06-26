@@ -98,6 +98,6 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 	}
 
 	public void trapdoor(Supplier<? extends TrapDoorBlock> trapdoor) {
-		withExistingParent(BuiltInRegistries.BLOCK.getKey(trapdoor.get()).getPath(), new ResourceLocation(Undergarden.MODID, "block/" + blockName(trapdoor) + "_bottom"));
+		withExistingParent(BuiltInRegistries.BLOCK.getKey(trapdoor.get()).getPath(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/" + blockName(trapdoor) + "_bottom"));
 	}
 }

@@ -159,6 +159,6 @@ public class UGSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> FORGOTTEN_STEP = register("entity.forgotten.step");
 
 	private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
-		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Undergarden.MODID, name)));
+		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name)));
 	}
 }

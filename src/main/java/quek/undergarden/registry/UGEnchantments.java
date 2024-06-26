@@ -71,6 +71,7 @@ public class UGEnchantments {
 				EquipmentSlotGroup.MAINHAND
 			)
 		).exclusiveWith(enchantments.getOrThrow(UGTags.Enchantments.SLINGSHOT_EXCLUSIVE)).build(RICOCHET.location()));
+
 		context.register(LONGEVITY, Enchantment.enchantment(
 			Enchantment.definition(
 				items.getOrThrow(UGTags.Items.SLINGSHOT_ENCHANTABLE),
@@ -82,6 +83,7 @@ public class UGEnchantments {
 				EquipmentSlotGroup.MAINHAND
 			)
 		).build(LONGEVITY.location()));
+
 		context.register(SELF_SLING, Enchantment.enchantment(
 			Enchantment.definition(
 				items.getOrThrow(UGTags.Items.SLINGSHOT_ENCHANTABLE),

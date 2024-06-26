@@ -88,7 +88,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> ICE_PILLAR = create("ice_pillar");
 
 	public static ResourceKey<PlacedFeature> create(String name) {
-		return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(Undergarden.MODID, name));
+		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 	}
 
 	public static void bootstrap(BootstrapContext<PlacedFeature> context) {

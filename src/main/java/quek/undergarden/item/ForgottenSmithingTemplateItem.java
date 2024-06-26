@@ -16,13 +16,13 @@ public class ForgottenSmithingTemplateItem extends SmithingTemplateItem {
 	private static final Component FORGOTTEN_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable("item.undergarden.smithing_template.forgotten_upgrade.base_slot_description");
 	private static final Component FORGOTTEN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable("item.undergarden.smithing_template.forgotten_upgrade.additions_slot_description");
 
-	private static final ResourceLocation EMPTY_SLOT_HOE = new ResourceLocation("item/empty_slot_hoe");
-	private static final ResourceLocation EMPTY_SLOT_AXE = new ResourceLocation("item/empty_slot_axe");
-	private static final ResourceLocation EMPTY_SLOT_SWORD = new ResourceLocation("item/empty_slot_sword");
-	private static final ResourceLocation EMPTY_SLOT_SHOVEL = new ResourceLocation("item/empty_slot_shovel");
-	private static final ResourceLocation EMPTY_SLOT_PICKAXE = new ResourceLocation("item/empty_slot_pickaxe");
-	private static final ResourceLocation EMPTY_SLOT_BATTLEAXE = new ResourceLocation(Undergarden.MODID, "item/empty_slot_battleaxe");
-	private static final ResourceLocation EMPTY_SLOT_INGOT = new ResourceLocation("item/empty_slot_ingot");
+	private static final ResourceLocation EMPTY_SLOT_HOE = ResourceLocation.withDefaultNamespace("item/empty_slot_hoe");
+	private static final ResourceLocation EMPTY_SLOT_AXE = ResourceLocation.withDefaultNamespace("item/empty_slot_axe");
+	private static final ResourceLocation EMPTY_SLOT_SWORD = ResourceLocation.withDefaultNamespace("item/empty_slot_sword");
+	private static final ResourceLocation EMPTY_SLOT_SHOVEL = ResourceLocation.withDefaultNamespace("item/empty_slot_shovel");
+	private static final ResourceLocation EMPTY_SLOT_PICKAXE = ResourceLocation.withDefaultNamespace("item/empty_slot_pickaxe");
+	private static final ResourceLocation EMPTY_SLOT_BATTLEAXE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "item/empty_slot_battleaxe");
+	private static final ResourceLocation EMPTY_SLOT_INGOT = ResourceLocation.withDefaultNamespace("item/empty_slot_ingot");
 
 	public ForgottenSmithingTemplateItem() {
 		super(FORGOTTEN_UPGRADE_APPLIES_TO, FORGOTTEN_UPGRADE_INGREDIENTS, FORGOTTEN_UPGRADE, FORGOTTEN_UPGRADE_BASE_SLOT_DESCRIPTION, FORGOTTEN_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createForgottenUpgradeIconList(), List.of(EMPTY_SLOT_INGOT));

@@ -27,7 +27,8 @@ public class UGRegistries extends DatapackBuiltinEntriesProvider {
 		.add(Registries.TEMPLATE_POOL, UGStructures::bootstrapPools)
 		.add(Registries.DAMAGE_TYPE, UGDamageSources::bootstrap)
 		.add(Registries.TRIM_MATERIAL, UGTrimMaterials::bootstrap)
-		.add(Registries.ENCHANTMENT, UGEnchantments::bootstrap);
+		.add(Registries.ENCHANTMENT, UGEnchantments::bootstrap)
+		.add(Registries.JUKEBOX_SONG, UGJukeboxSongs::bootstrap);
 
 	public UGRegistries(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
 		super(output, future, BUILDER, Set.of("minecraft", Undergarden.MODID));

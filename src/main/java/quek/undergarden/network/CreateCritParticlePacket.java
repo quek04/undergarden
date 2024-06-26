@@ -14,7 +14,7 @@ import quek.undergarden.Undergarden;
 public record CreateCritParticlePacket(int entityID, int duration,
 									   ParticleOptions particle) implements CustomPacketPayload {
 
-	public static final Type<CreateCritParticlePacket> TYPE = new Type<>(new ResourceLocation(Undergarden.MODID, "create_crit_particle"));
+	public static final Type<CreateCritParticlePacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "create_crit_particle"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, CreateCritParticlePacket> STREAM_CODEC = CustomPacketPayload.codec(CreateCritParticlePacket::write, CreateCritParticlePacket::new);
 
 	public CreateCritParticlePacket(RegistryFriendlyByteBuf buf) {

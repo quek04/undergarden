@@ -1,7 +1,5 @@
 package quek.undergarden.registry;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
@@ -25,17 +23,18 @@ public class UGItems {
 
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Undergarden.MODID);
 
-	public static final Rarity FORGOTTEN = Rarity.create("forgotten", new ResourceLocation(Undergarden.MODID, "forgotten"), ChatFormatting.GREEN);
+	public static final Rarity FORGOTTEN = Rarity.valueOf("UNDERGARDEN_FORGOTTEN");
 
 	//discs
-	public static final DeferredItem<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new RecordItem(0, UGSoundEvents.MAMMOTH_DISC, new Item.Properties().rarity(Rarity.RARE).stacksTo(1), 3860));
-	public static final DeferredItem<Item> LIMAX_MAXIMUS_DISC = ITEMS.register("music_disc_limax_maximus", () -> new RecordItem(1, UGSoundEvents.LIMAX_MAXIMUS_DISC, new Item.Properties().rarity(Rarity.RARE).stacksTo(1), 3220));
-	public static final DeferredItem<Item> RELICT_DISC = ITEMS.register("music_disc_relict", () -> new RecordItem(2, UGSoundEvents.RELICT_DISC, new Item.Properties().rarity(Rarity.RARE).stacksTo(1), 3740));
-	public static final DeferredItem<Item> GLOOMPER_ANTHEM_DISC = ITEMS.register("music_disc_gloomper_anthem", () -> new RecordItem(3, UGSoundEvents.GLOOMPER_ANTHEM_DISC, new Item.Properties().rarity(Rarity.RARE).stacksTo(1), 4080));
-	public static final DeferredItem<Item> GLOOMPER_SECRET_DISC = ITEMS.register("music_disc_gloomper_secret", () -> new RecordItem(15, UGSoundEvents.GLOOMPER_SECRET_DISC, new Item.Properties().rarity(Rarity.EPIC).stacksTo(1), 3180));
-	public static final DeferredItem<Item> FORGOTTEN_UPGRADE_TEMPLATE = ITEMS.register("forgotten_upgrade_smithing_template", ForgottenSmithingTemplateItem::new);
+	public static final DeferredItem<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.MAMMOTH)));
+	public static final DeferredItem<Item> LIMAX_MAXIMUS_DISC = ITEMS.register("music_disc_limax_maximus", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.LIMAX_MAXIMUS)));
+	public static final DeferredItem<Item> RELICT_DISC = ITEMS.register("music_disc_relict", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.RELICT)));
+	public static final DeferredItem<Item> GLOOMPER_ANTHEM_DISC = ITEMS.register("music_disc_gloomper_anthem", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.GLOOMPER_ANTHEM)));
+	public static final DeferredItem<Item> GLOOMPER_SECRET_DISC = ITEMS.register("music_disc_gloomper_secret", () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.GLOOMPER_SECRET)));
 
 	//crafting materials
+	public static final DeferredItem<Item> FORGOTTEN_UPGRADE_TEMPLATE = ITEMS.register("forgotten_upgrade_smithing_template", ForgottenSmithingTemplateItem::new);
+
 	public static final DeferredItem<Item> RAW_CLOGGRUM = ITEMS.register("raw_cloggrum", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> CLOGGRUM_INGOT = ITEMS.register("cloggrum_ingot", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> CLOGGRUM_NUGGET = ITEMS.register("cloggrum_nugget", () -> new Item(new Item.Properties()));
@@ -142,11 +141,11 @@ public class UGItems {
 	public static final DeferredItem<Item> GLITTERKELP = ITEMS.register("glitterkelp", () -> new BlockItem(UGBlocks.GLITTERKELP.get(), new Item.Properties()));
 	public static final DeferredItem<Item> GLOOMGOURD_SEEDS = ITEMS.register("gloomgourd_seeds", () -> new ItemNameBlockItem(UGBlocks.GLOOMGOURD_STEM.get(), new Item.Properties()));
 	public static final DeferredItem<Item> BLOOD_GLOBULE = ITEMS.register("blood_globule", () -> new Item(new Item.Properties().food(UGFoods.BLOOD_GLOBULE)));
-	public static final DeferredItem<Item> BLOODY_STEW = ITEMS.register("bloody_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.BLOODY).stacksTo(1)));
-	public static final DeferredItem<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.INKY).stacksTo(1)));
-	public static final DeferredItem<Item> INDIGO_STEW = ITEMS.register("indigo_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.INDIGO).stacksTo(1)));
-	public static final DeferredItem<Item> VEILED_STEW = ITEMS.register("veiled_stew", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.VEILED).stacksTo(1)));
-	public static final DeferredItem<Item> SLOP_BOWL = ITEMS.register("slop_bowl", () -> new BowlFoodItem(new Item.Properties().food(UGFoods.SLOP).stacksTo(1)));
+	public static final DeferredItem<Item> BLOODY_STEW = ITEMS.register("bloody_stew", () -> new Item(new Item.Properties().food(UGFoods.BLOODY_STEW).stacksTo(1)));
+	public static final DeferredItem<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new Item(new Item.Properties().food(UGFoods.INKY_STEW).stacksTo(1)));
+	public static final DeferredItem<Item> INDIGO_STEW = ITEMS.register("indigo_stew", () -> new Item(new Item.Properties().food(UGFoods.INDIGO_STEW).stacksTo(1)));
+	public static final DeferredItem<Item> VEILED_STEW = ITEMS.register("veiled_stew", () -> new Item(new Item.Properties().food(UGFoods.VEILED_STEW).stacksTo(1)));
+	public static final DeferredItem<Item> SLOP_BOWL = ITEMS.register("slop_bowl", () -> new Item(new Item.Properties().food(UGFoods.SLOP_BOWL).stacksTo(1)));
 
 	//spawn eggs
 	public static final DeferredItem<DeferredSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DWELLER, 4804417, 16776960, new Item.Properties()));

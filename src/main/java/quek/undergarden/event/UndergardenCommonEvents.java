@@ -37,8 +37,7 @@ import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
-import net.neoforged.neoforge.event.entity.living.LivingAttackEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
@@ -310,7 +309,7 @@ public class UndergardenCommonEvents {
 		}
 	}
 
-	private static void applyBrittleness(LivingDamageEvent event) {
+	private static void applyBrittleness(LivingIncomingDamageEvent event) {
 		LivingEntity entity = event.getEntity();
 		DamageSource source = event.getSource();
 		float damage = event.getAmount();
@@ -332,7 +331,7 @@ public class UndergardenCommonEvents {
 		}
 	}
 
-	private static void cancelPlayerFallDamageOnDweller(LivingAttackEvent event) {
+	private static void cancelPlayerFallDamageOnDweller(LivingIncomingDamageEvent event) {
 		if (event.getEntity() instanceof Player player && player.getVehicle() instanceof Dweller && event.getSource().is(DamageTypeTags.IS_FALL)) {
 			event.setCanceled(true);
 		}

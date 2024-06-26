@@ -15,10 +15,14 @@ import quek.undergarden.Undergarden;
 
 public class UGDamageSources {
 
-	public static final ResourceKey<DamageType> DEPTHROCK_PEBBLE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "depthrock_pebble"));
-	public static final ResourceKey<DamageType> GOO_BALL = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "goo_ball"));
-	public static final ResourceKey<DamageType> BLISTERBERRY_BUSH = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "blisterberry_bush"));
-	public static final ResourceKey<DamageType> SHARD_TORCH = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(Undergarden.MODID, "shard_torch"));
+	public static final ResourceKey<DamageType> DEPTHROCK_PEBBLE = create("depthrock_pebble");
+	public static final ResourceKey<DamageType> GOO_BALL = create("goo_ball");
+	public static final ResourceKey<DamageType> BLISTERBERRY_BUSH = create("blisterberry_bush");
+	public static final ResourceKey<DamageType> SHARD_TORCH = create("shard_torch");
+
+	public static ResourceKey<DamageType> create(String name) {
+		return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
+	}
 
 	public static DamageSource getShardTorchDamage(Level level, @NotNull Vec3 position) {
 		return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(SHARD_TORCH), position);

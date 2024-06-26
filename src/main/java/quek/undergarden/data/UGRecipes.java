@@ -608,6 +608,6 @@ public class UGRecipes extends UGRecipeProvider {
 	}
 
 	private ResourceLocation name(String name) {
-		return new ResourceLocation(Undergarden.MODID, name);
+		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name);
 	}
 }

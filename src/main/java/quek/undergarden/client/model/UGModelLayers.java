@@ -32,10 +32,10 @@ public class UGModelLayers {
 	public static final ModelLayerLocation GRONGLET = register("gronglet");
 
 	private static ModelLayerLocation register(String name) {
-		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), "main");
+		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), "main");
 	}
 
 	private static ModelLayerLocation register(String name, String layerName) {
-		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), layerName);
+		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), layerName);
 	}
 }
