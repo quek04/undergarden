@@ -221,15 +221,15 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.VIRULENT_MIX_CAULDRON, "Virulent Mix Cauldron");
 
 		addItem(UGItems.MAMMOTH_DISC, "Music Disc");
-		add(UGItems.MAMMOTH_DISC.get().getDescriptionId() + ".desc", "Screem - Mammoth");
+		addJukeboxSong(UGJukeboxSongs.MAMMOTH, "Screem - Mammoth");
 		addItem(UGItems.LIMAX_MAXIMUS_DISC, "Music Disc");
-		add(UGItems.LIMAX_MAXIMUS_DISC.get().getDescriptionId() + ".desc", "Screem - Limax Maximus");
+		addJukeboxSong(UGJukeboxSongs.LIMAX_MAXIMUS, "Screem - Limax Maximus");
 		addItem(UGItems.RELICT_DISC, "Music Disc");
-		add(UGItems.RELICT_DISC.get().getDescriptionId() + ".desc", "Screem - Relict");
+		addJukeboxSong(UGJukeboxSongs.RELICT, "Screem - Relict");
 		addItem(UGItems.GLOOMPER_ANTHEM_DISC, "Music Disc");
-		add(UGItems.GLOOMPER_ANTHEM_DISC.get().getDescriptionId() + ".desc", "Screem - Gloomper Anthem");
+		addJukeboxSong(UGJukeboxSongs.GLOOMPER_ANTHEM, "Screem - Gloomper Anthem");
 		addItem(UGItems.GLOOMPER_SECRET_DISC, "Music Disc");
-		add(UGItems.GLOOMPER_SECRET_DISC.get().getDescriptionId() + ".desc", "An AI was given an image of a Gloomper and made this song");
+		addJukeboxSong(UGJukeboxSongs.GLOOMPER_SECRET, "An AI was given an image of a Gloomper and made this song");
 		addItem(UGItems.CATALYST, "Catalyst");
 		addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
 		addItem(UGItems.TWISTYTWIG, "Twistytwig");

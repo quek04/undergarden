@@ -7,6 +7,7 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.JukeboxSong;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
@@ -69,6 +70,10 @@ public abstract class UGLangProvider extends LanguageProvider {
 
 	protected void addEnchantment(ResourceKey<Enchantment> enchantment, String name) {
 		add("enchantment.undergarden." + enchantment.location().getPath(), name);
+	}
+
+	protected void addJukeboxSong(ResourceKey<JukeboxSong> song, String name) {
+		add("jukebox_song.undergarden." + song.location().getPath(), name);
 	}
 
 	@Override
