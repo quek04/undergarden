@@ -66,30 +66,26 @@ runs {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven {
-        name 'Jared\'s Maven' // JEI
-        url 'https://maven.blamejared.com/'
-    }
-    maven {
-        name 'Curseforge Maven' // Jade
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-    maven {
-        url "https://modmaven.dev/"
-    }
+	maven {
+		// location of the maven that hosts JEI files since January 2023
+		name = "Jared's maven"
+		url = "https://maven.blamejared.com/"
+	}
+	maven {
+		// location of a maven mirror for JEI files, as a fallback
+		name = "ModMaven"
+		url = "https://modmaven.dev"
+	}
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${project.neo_version}"
 
 	// compile against the JEI API but do not include it at runtime
-	//compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-	//compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+	compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+	compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
 	// at runtime, use the full JEI jar for NeoForge
-	//runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+	runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
     //implementation "curse.maven:jade-324717:${project.jade_version}"
     //implementation "curse.maven:just-enough-effect-descriptions-jeed-532286:${project.jeed_version}"
