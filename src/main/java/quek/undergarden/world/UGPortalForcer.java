@@ -7,7 +7,9 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.level.block.Blocks;
@@ -16,7 +18,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.portal.DimensionTransition;
+import net.neoforged.neoforge.network.PacketDistributor;
 import quek.undergarden.UndergardenConfig;
+import quek.undergarden.network.UndergardenPortalSoundPacket;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGPointOfInterests;
 
@@ -29,8 +34,16 @@ public class UGPortalForcer {
 	protected final ServerLevel level;
 	private final BlockState frame = !BuiltInRegistries.BLOCK.containsKey(Objects.requireNonNull(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get()))) ? Blocks.STONE_BRICKS.defaultBlockState() : BuiltInRegistries.BLOCK.get(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())).defaultBlockState();
 
+	public static final DimensionTransition.PostDimensionTransition PLAY_PORTAL_SOUND = UGPortalForcer::playPortalSound;
+
 	public UGPortalForcer(ServerLevel pLevel) {
 		this.level = pLevel;
+	}
+
+	private static void playPortalSound(Entity entity) {
+		if (entity instanceof ServerPlayer player) {
+			PacketDistributor.sendToPlayer(player, new UndergardenPortalSoundPacket());
+		}
 	}
 
 	public Optional<BlockPos> findClosestPortalPosition(BlockPos exitPos, boolean isUndergarden, WorldBorder worldBorder) {

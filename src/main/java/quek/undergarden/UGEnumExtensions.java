@@ -7,6 +7,7 @@ import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 
 import java.util.function.UnaryOperator;
 
+@SuppressWarnings("unused")
 public class UGEnumExtensions {
 	public static final EnumProxy<Rarity> FORGOTTEN = new EnumProxy<>(
 		Rarity.class, -1, "undergarden:forgotten", (UnaryOperator<Style>) style -> style.withColor(ChatFormatting.GREEN)

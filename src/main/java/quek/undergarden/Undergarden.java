@@ -30,6 +30,7 @@ import quek.undergarden.data.*;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.network.CreateCritParticlePacket;
+import quek.undergarden.network.UndergardenPortalSoundPacket;
 import quek.undergarden.registry.*;
 
 import java.util.Optional;
@@ -59,7 +60,6 @@ public class Undergarden {
 			UGCreativeModeTabs.TABS,
 			UGCriteria.CRITERIA,
 			UGEffects.EFFECTS,
-			//UGEnchantments.ENCHANTMENTS,
 			UGEntityTypes.ENTITIES,
 			UGFeatures.FEATURES,
 			UGFluids.FLUIDS,
@@ -87,6 +87,7 @@ public class Undergarden {
 	public void registerPackets(RegisterPayloadHandlersEvent event) {
 		PayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
 		registrar.playToClient(CreateCritParticlePacket.TYPE, CreateCritParticlePacket.STREAM_CODEC, CreateCritParticlePacket::handle);
+		registrar.playToClient(UndergardenPortalSoundPacket.TYPE, UndergardenPortalSoundPacket.STREAM_CODEC, UndergardenPortalSoundPacket::handle);
 	}
 
 	public void gatherData(GatherDataEvent event) {

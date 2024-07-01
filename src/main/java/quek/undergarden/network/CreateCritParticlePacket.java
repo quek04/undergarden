@@ -32,11 +32,11 @@ public record CreateCritParticlePacket(int entityID, int duration,
 		return TYPE;
 	}
 
-	public static void handle(CreateCritParticlePacket message, IPayloadContext ctx) {
-		ctx.enqueueWork(() -> {
-			Entity entity = Minecraft.getInstance().level.getEntity(message.entityID());
+	public static void handle(CreateCritParticlePacket packet, IPayloadContext context) {
+		context.enqueueWork(() -> {
+			Entity entity = Minecraft.getInstance().level.getEntity(packet.entityID());
 			if (entity != null) {
-				Minecraft.getInstance().particleEngine.createTrackingEmitter(entity, message.particle(), message.duration());
+				Minecraft.getInstance().particleEngine.createTrackingEmitter(entity, packet.particle(), packet.duration());
 			}
 		});
 	}

@@ -30,6 +30,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import quek.undergarden.Undergarden;
+import quek.undergarden.attachment.UndergardenPortalAttachment;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.UGPortalForcer;
 
@@ -99,39 +100,27 @@ public class UndergardenPortalBlock extends Block implements Portal {
 
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-		/*if (entity.canChangeDimensions()) {
-			if (entity.isOnPortalCooldown()) {
-				entity.setPortalCooldown();
-			} else {
-				if (!entity.level().isClientSide() && !pos.equals(entity.portalEntrancePos)) {
-					entity.portalEntrancePos = pos.immutable();
-				}
-
-				if (entity instanceof Player player) {
-					UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
-					portal.setInPortal(true);
-					int waitTime = portal.getPortalTimer();
-					if (waitTime >= entity.getPortalWaitTime()) {
-						portal.handleUndergardenPortal(player);
-						this.transportEntity(player);
-						portal.setPortalTimer(0);
-					}
-				} else this.transportEntity(entity);
-			}
-		}*/
 		if (entity.canUsePortal(false)) {
 			entity.setAsInsidePortal(this, pos);
+			if (entity instanceof Player player) {
+				UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
+				portal.setInPortal(true);
+				int waitTime = portal.getPortalTimer();
+				if (waitTime >= this.getLevelPortalTransitionTime(level, player)) {
+					portal.handleUndergardenPortal(player);
+					portal.setPortalTimer(0);
+				}
+			}
 		}
 	}
 
 	@Override
 	public int getPortalTransitionTime(ServerLevel level, Entity entity) {
-		return entity instanceof Player player ? Math.max(1, level.getGameRules().getInt(player.getAbilities().invulnerable ? GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY : GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)) : 0;
+		return getLevelPortalTransitionTime(level, entity);
 	}
 
-	@Override
-	public Transition getLocalTransition() {
-		return Transition.NONE;
+	private int getLevelPortalTransitionTime(Level level, Entity entity) {
+		return entity instanceof Player player ? Math.max(1, level.getGameRules().getInt(player.getAbilities().invulnerable ? GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY : GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)) : 0;
 	}
 
 	@org.jetbrains.annotations.Nullable
@@ -167,7 +156,7 @@ public class UndergardenPortalBlock extends Block implements Portal {
 				21,
 				p_351970_ -> level.getBlockState(p_351970_) == blockstate
 			);
-			dimensiontransition$postdimensiontransition = DimensionTransition.PLAY_PORTAL_SOUND.then(p_351967_ -> p_351967_.placePortalTicket(blockpos));
+			dimensiontransition$postdimensiontransition = UGPortalForcer.PLAY_PORTAL_SOUND.then(p_351967_ -> p_351967_.placePortalTicket(blockpos));
 		} else {
 			Direction.Axis direction$axis = entity.level().getBlockState(pos).getOptionalValue(AXIS).orElse(Direction.Axis.X);
 			Optional<BlockUtil.FoundRectangle> optional1 = portalForcer.createPortal(exitPos, direction$axis);
@@ -177,7 +166,7 @@ public class UndergardenPortalBlock extends Block implements Portal {
 			}
 
 			blockutil$foundrectangle = optional1.get();
-			dimensiontransition$postdimensiontransition = DimensionTransition.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET);
+			dimensiontransition$postdimensiontransition = UGPortalForcer.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET);
 		}
 
 		return getDimensionTransitionFromExit(entity, pos, blockutil$foundrectangle, level, dimensiontransition$postdimensiontransition);
