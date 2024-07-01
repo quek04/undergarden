@@ -22,11 +22,6 @@ public class UGItemTags extends ItemTagsProvider {
 	}
 
 	@Override
-	public String getName() {
-		return "Undergarden Item Tags";
-	}
-
-	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		//undergarden
 		tag(UGTags.Items.SLINGSHOT_ENCHANTABLE).add(UGItems.SLINGSHOT.get());

@@ -21,11 +21,6 @@ public class UGEntityTags extends EntityTypeTagsProvider {
 	}
 
 	@Override
-	public String getName() {
-		return "Undergarden Entity Type Tags";
-	}
-
-	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		//undergarden
 		tag(UGTags.Entities.ROTSPAWN).add(UGEntityTypes.ROTLING.get(), UGEntityTypes.ROTWALKER.get(), UGEntityTypes.ROTBEAST.get());

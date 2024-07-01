@@ -14,11 +14,6 @@ public class UGItemModels extends UGItemModelProvider {
 	}
 
 	@Override
-	public String getName() {
-		return "Undergarden Item Models";
-	}
-
-	@Override
 	protected void registerModels() {
 		block(UGBlocks.DEPTHROCK);
 		block(UGBlocks.DEPTHROCK_COAL_ORE);

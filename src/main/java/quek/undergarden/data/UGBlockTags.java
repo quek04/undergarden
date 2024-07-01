@@ -23,11 +23,6 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 	}
 
 	@Override
-	public String getName() {
-		return "Undergarden Block Tags";
-	}
-
-	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		//undergarden
 		tag(UGTags.Blocks.BASE_STONE_UNDERGARDEN).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());

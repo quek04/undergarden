@@ -22,11 +22,6 @@ public class UGBlockStates extends UGBlockstateProvider {
 	}
 
 	@Override
-	public String getName() {
-		return "Undergarden Block States";
-	}
-
-	@Override
 	protected void registerStatesAndModels() {
 		torchBlock(UGBlocks.SHARD_TORCH, UGBlocks.SHARD_WALL_TORCH);
 		block(UGBlocks.DEPTHROCK);
