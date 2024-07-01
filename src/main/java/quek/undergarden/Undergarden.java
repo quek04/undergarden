@@ -70,7 +70,6 @@ public class Undergarden {
 			UGPointOfInterests.POI,
 			UGPotions.POTIONS,
 			UGSoundEvents.SOUNDS,
-			UGStructureProcessors.PROCESSORS,
 			UGStructures.STRUCTURES,
 			UGTreeDecoratorTypes.TREE_DECORATORS,
 			UGTrunkPlacerTypes.TRUNK_PLACERS,
