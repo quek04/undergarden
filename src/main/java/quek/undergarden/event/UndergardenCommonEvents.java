@@ -29,10 +29,10 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
-import net.neoforged.neoforge.common.ToolAction;
-import net.neoforged.neoforge.common.ToolActions;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
@@ -274,11 +274,11 @@ public class UndergardenCommonEvents {
 	}
 
 	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {
-		ToolAction action = event.getToolAction();
+		ItemAbility action = event.getItemAbility();
 		BlockState state = event.getState();
 		UseOnContext context = event.getContext();
 		if (!event.isSimulated()) {
-			if (action == ToolActions.AXE_STRIP) {
+			if (action == ItemAbilities.AXE_STRIP) {
 				if (state.is(UGBlocks.SMOGSTEM_LOG.get())) {
 					event.setFinalState(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().withPropertiesOf(state));
 				}
@@ -298,7 +298,7 @@ public class UndergardenCommonEvents {
 					event.setFinalState(UGBlocks.STRIPPED_GRONGLE_WOOD.get().withPropertiesOf(state));
 				}
 			}
-			if (action == ToolActions.HOE_TILL && (context.getClickedFace() != Direction.DOWN && context.getLevel().getBlockState(context.getClickedPos().above()).isAir())) {
+			if (action == ItemAbilities.HOE_TILL && (context.getClickedFace() != Direction.DOWN && context.getLevel().getBlockState(context.getClickedPos().above()).isAir())) {
 				if (state.is(UGBlocks.DEEPTURF_BLOCK.get()) || state.is(UGBlocks.DEEPSOIL.get()) || state.is(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()) || state.is(UGBlocks.FROZEN_DEEPTURF_BLOCK.get())) {
 					event.setFinalState(UGBlocks.DEEPSOIL_FARMLAND.get().defaultBlockState());
 				}

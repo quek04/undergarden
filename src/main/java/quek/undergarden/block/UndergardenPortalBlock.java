@@ -90,11 +90,11 @@ public class UndergardenPortalBlock extends Block implements Portal {
 	}
 
 	@Override
-	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
 		Direction.Axis direction$axis = facing.getAxis();
-		Direction.Axis direction$axis1 = stateIn.getValue(AXIS);
+		Direction.Axis direction$axis1 = state.getValue(AXIS);
 		boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-		return !flag && facingState.getBlock() != this && !(new UGPortalShape(level, currentPos, direction$axis1)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, level, currentPos, facingPos);
+		return !flag && facingState.getBlock() != this && !(new UGPortalShape(level, currentPos, direction$axis1)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
 	}
 
 	@Override
@@ -131,7 +131,7 @@ public class UndergardenPortalBlock extends Block implements Portal {
 
 	@Override
 	public Transition getLocalTransition() {
-		return Transition.CONFUSION;
+		return Transition.NONE;
 	}
 
 	@org.jetbrains.annotations.Nullable
@@ -183,40 +183,40 @@ public class UndergardenPortalBlock extends Block implements Portal {
 		return getDimensionTransitionFromExit(entity, pos, blockutil$foundrectangle, level, dimensiontransition$postdimensiontransition);
 	}
 
-	private static DimensionTransition getDimensionTransitionFromExit(Entity pEntity, BlockPos pPos, BlockUtil.FoundRectangle pRectangle, ServerLevel pLevel, DimensionTransition.PostDimensionTransition pPostDimensionTransition) {
-		BlockState blockstate = pEntity.level().getBlockState(pPos);
+	private static DimensionTransition getDimensionTransitionFromExit(Entity entity, BlockPos pos, BlockUtil.FoundRectangle rectangle, ServerLevel level, DimensionTransition.PostDimensionTransition postDimensionTransition) {
+		BlockState blockstate = entity.level().getBlockState(pos);
 		Direction.Axis direction$axis;
 		Vec3 vec3;
 		if (blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
 			direction$axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
 			BlockUtil.FoundRectangle blockutil$foundrectangle = BlockUtil.getLargestRectangleAround(
-				pPos, direction$axis, 21, Direction.Axis.Y, 21, p_351016_ -> pEntity.level().getBlockState(p_351016_) == blockstate
+				pos, direction$axis, 21, Direction.Axis.Y, 21, p_351016_ -> entity.level().getBlockState(p_351016_) == blockstate
 			);
-			vec3 = pEntity.getRelativePortalPosition(direction$axis, blockutil$foundrectangle);
+			vec3 = entity.getRelativePortalPosition(direction$axis, blockutil$foundrectangle);
 		} else {
 			direction$axis = Direction.Axis.X;
 			vec3 = new Vec3(0.5, 0.0, 0.0);
 		}
 
-		return createDimensionTransition(pLevel, pRectangle, direction$axis, vec3, pEntity, pEntity.getDeltaMovement(), pEntity.getYRot(), pEntity.getXRot(), pPostDimensionTransition);
+		return createDimensionTransition(level, rectangle, direction$axis, vec3, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), postDimensionTransition);
 	}
 
-	private static DimensionTransition createDimensionTransition(ServerLevel pLevel, BlockUtil.FoundRectangle pRectangle, Direction.Axis pAxis, Vec3 pOffset, Entity pEntity, Vec3 pSpeed, float pYRot, float pXRot, DimensionTransition.PostDimensionTransition pPostDimensionTransition) {
-		BlockPos blockpos = pRectangle.minCorner;
-		BlockState blockstate = pLevel.getBlockState(blockpos);
+	private static DimensionTransition createDimensionTransition(ServerLevel level, BlockUtil.FoundRectangle rectangle, Direction.Axis axis, Vec3 offset, Entity entity, Vec3 speed, float yRot, float xRot, DimensionTransition.PostDimensionTransition postDimensionTransition) {
+		BlockPos blockpos = rectangle.minCorner;
+		BlockState blockstate = level.getBlockState(blockpos);
 		Direction.Axis direction$axis = blockstate.getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS).orElse(Direction.Axis.X);
-		double d0 = pRectangle.axis1Size;
-		double d1 = pRectangle.axis2Size;
-		EntityDimensions entitydimensions = pEntity.getDimensions(pEntity.getPose());
-		int i = pAxis == direction$axis ? 0 : 90;
-		Vec3 vec3 = pAxis == direction$axis ? pSpeed : new Vec3(pSpeed.z, pSpeed.y, -pSpeed.x);
-		double d2 = (double)entitydimensions.width() / 2.0 + (d0 - (double)entitydimensions.width()) * pOffset.x();
-		double d3 = (d1 - (double)entitydimensions.height()) * pOffset.y();
-		double d4 = 0.5 + pOffset.z();
+		double d0 = rectangle.axis1Size;
+		double d1 = rectangle.axis2Size;
+		EntityDimensions entitydimensions = entity.getDimensions(entity.getPose());
+		int i = axis == direction$axis ? 0 : 90;
+		Vec3 vec3 = axis == direction$axis ? speed : new Vec3(speed.z, speed.y, -speed.x);
+		double d2 = (double)entitydimensions.width() / 2.0 + (d0 - (double)entitydimensions.width()) * offset.x();
+		double d3 = (d1 - (double)entitydimensions.height()) * offset.y();
+		double d4 = 0.5 + offset.z();
 		boolean flag = direction$axis == Direction.Axis.X;
 		Vec3 vec31 = new Vec3((double)blockpos.getX() + (flag ? d2 : d4), (double)blockpos.getY() + d3, (double)blockpos.getZ() + (flag ? d4 : d2));
-		Vec3 vec32 = UGPortalShape.findCollisionFreePosition(vec31, pLevel, pEntity, entitydimensions);
-		return new DimensionTransition(pLevel, vec32, vec3, pYRot + (float)i, pXRot, pPostDimensionTransition);
+		Vec3 vec32 = UGPortalShape.findCollisionFreePosition(vec31, level, entity, entitydimensions);
+		return new DimensionTransition(level, vec32, vec3, yRot + (float)i, xRot, postDimensionTransition);
 	}
 
 	@Override

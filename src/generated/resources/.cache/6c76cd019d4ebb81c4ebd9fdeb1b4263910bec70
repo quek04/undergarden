@@ -1,4 +1,4 @@
-// 1.21	2024-06-26T02:25:27.4256233	Undergarden Block States
+// 1.21	2024-07-01T10:36:55.5012639	Undergarden Block States
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
 3caa35193766b684dc360e477e5208fb99d055f6 assets/undergarden/blockstates/ashen_deepturf.json
 6919d06515a0a18838e81bb21207cad377dbaa31 assets/undergarden/blockstates/ashen_deepturf_block.json
@@ -53,7 +53,7 @@ e8564500c28ebfb2cb725e782e1956f22d49d5ae assets/undergarden/blockstates/glitterk
 4e682ef4cf5bd6c96c3c8deea8e054ccc15611c2 assets/undergarden/blockstates/glitterkelp_plant.json
 6741cee1130fbf1177991e9dfbb07bf863a03b5c assets/undergarden/blockstates/gloomgourd.json
 9539a57b36cecadcff7dfe3075650659b63c7e9a assets/undergarden/blockstates/gloomgourd_stem.json
-0d9b1737ea5b1915507215861a60b2d29e2b20cd assets/undergarden/blockstates/gloomgourd_stem_attached.json
+a4225f095682138e9aac584a73f00344a839460f assets/undergarden/blockstates/gloomgourd_stem_attached.json
 b3a3a308b7b2e9d06f735e0cd47c23c8962faefe assets/undergarden/blockstates/gloom_o_lantern.json
 a5f216fd39d9a25aa57ca3ae0f455b2ad37c01b8 assets/undergarden/blockstates/goo_block.json
 535aea2cf2ca19e8a671e37d95cce6cd17696743 assets/undergarden/blockstates/grongle_button.json

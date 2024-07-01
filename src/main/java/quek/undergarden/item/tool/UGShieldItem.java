@@ -5,8 +5,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.neoforged.neoforge.common.ToolAction;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import quek.undergarden.registry.UGItems;
 
 public class UGShieldItem extends ShieldItem {
@@ -20,8 +20,8 @@ public class UGShieldItem extends ShieldItem {
 	}
 
 	@Override
-	public boolean canPerformAction(ItemStack stack, ToolAction action) {
-		return action == ToolActions.SHIELD_BLOCK;
+	public boolean canPerformAction(ItemStack stack, ItemAbility action) {
+		return action == ItemAbilities.SHIELD_BLOCK;
 	}
 
 	@Override

@@ -235,7 +235,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 				ConfiguredModel.builder()
 						.modelFile(models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM) + "_stage" + state.getValue(StemBlock.AGE), mcLoc("block/stem_growth" + state.getValue(StemBlock.AGE))).texture("stem", mcLoc("block/melon_stem")).renderType("cutout"))
 						.build());
-		horizontalBlock(UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(), models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM_ATTACHED), mcLoc("stem_fruit")).texture("stem", mcLoc("block/melon_stem")).texture("upperstem", mcLoc("block/attached_melon_stem")).renderType("cutout"));
+		horizontalBlock(UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(), models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM_ATTACHED), mcLoc("stem_fruit")).texture("stem", mcLoc("block/melon_stem")).texture("upperstem", mcLoc("block/attached_melon_stem")).renderType("cutout"), 270);
 
 		simpleBlock(UGBlocks.GOO_BLOCK.get(), models().cubeBottomTop(name(UGBlocks.GOO_BLOCK), texture("goo_block_side"), texture("goo_block_bottom"), texture("goo_block_top")));
 

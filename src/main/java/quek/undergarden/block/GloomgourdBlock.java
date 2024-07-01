@@ -29,7 +29,7 @@ public class GloomgourdBlock extends PumpkinBlock {
 
 	@Override
 	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		if (!stack.canPerformAction(net.neoforged.neoforge.common.ToolActions.SHEARS_CARVE)) {
+		if (!stack.canPerformAction(net.neoforged.neoforge.common.ItemAbilities.SHEARS_CARVE)) {
 			return super.useItemOn(stack, state, level, pos, player, hand, result);
 		} else if (level.isClientSide) {
 			return ItemInteractionResult.sidedSuccess(true);
