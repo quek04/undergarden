@@ -83,6 +83,7 @@ public class UndergardenClientEvents {
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
+		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
 	}
 
 	private static void clientSetup(FMLClientSetupEvent event) {
@@ -308,6 +309,12 @@ public class UndergardenClientEvents {
 				event.setCanceled(true);
 			}
 		}
+	}
+
+	private static void undergardenPortalFOV(ComputeFovModifierEvent event) {
+		Player player = event.getPlayer();
+		UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
+		event.setNewFovModifier(event.getFovModifier() - portal.getPortalAnimTime());
 	}
 
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, Player player) {
