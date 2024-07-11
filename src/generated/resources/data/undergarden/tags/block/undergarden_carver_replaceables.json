@@ -6,6 +6,7 @@
     "#c:ores/froststeel",
     "#c:ores/utherium",
     "#c:ores/regalium",
-    "undergarden:sediment"
+    "undergarden:sediment",
+    "minecraft:powder_snow"
   ]
 }
