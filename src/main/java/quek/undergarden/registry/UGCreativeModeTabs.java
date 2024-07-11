@@ -25,7 +25,7 @@ public class UGCreativeModeTabs {
 				parameters.holders().lookup(Registries.ENCHANTMENT).ifPresent(enchantmentRegistryLookup -> {
 					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.RICOCHET), 3)));
 					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.LONGEVITY), 3)));
-					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.LONGEVITY), 1)));
+					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.SELF_SLING), 1)));
 				});
 				UGItems.ITEMS.getEntries().forEach(item -> {
 					if (!DONT_INCLUDE.contains(item) && !item.getKey().location().getPath().contains("tremblecrust")) {
