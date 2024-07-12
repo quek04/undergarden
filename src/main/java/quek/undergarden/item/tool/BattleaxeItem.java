@@ -1,7 +1,9 @@
 package quek.undergarden.item.tool;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -12,14 +14,14 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGItems;
 
 import java.util.List;
-import java.util.UUID;
 
 public class BattleaxeItem extends SwordItem {
 
-	private static final UUID ATTACK_KNOCKBACK_UUID = UUID.fromString("20D3EB3F-226F-4325-873E-9B0932E4E5C6");
+	private static final ResourceLocation ATTACK_KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "attack_knockback");
 
 	public BattleaxeItem(Tier tier, Properties properties) {
 		super(tier, properties);
@@ -29,22 +31,17 @@ public class BattleaxeItem extends SwordItem {
 		return ItemAttributeModifiers.builder()
 			.add(
 				Attributes.ATTACK_DAMAGE,
-				new AttributeModifier(
-					BASE_ATTACK_DAMAGE_UUID,
-					"Weapon modifier",
-					(float)damage + tier.getAttackDamageBonus(),
-					AttributeModifier.Operation.ADD_VALUE
-				),
+				new AttributeModifier(BASE_ATTACK_DAMAGE_ID, (float) damage + tier.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
 				EquipmentSlotGroup.MAINHAND
 			)
 			.add(
 				Attributes.ATTACK_SPEED,
-				new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", speed, AttributeModifier.Operation.ADD_VALUE),
+				new AttributeModifier(BASE_ATTACK_SPEED_ID, speed, AttributeModifier.Operation.ADD_VALUE),
 				EquipmentSlotGroup.MAINHAND
 			)
 			.add(
 				Attributes.ATTACK_KNOCKBACK,
-				new AttributeModifier(ATTACK_KNOCKBACK_UUID, "Weapon modifier", 4.0F, AttributeModifier.Operation.ADD_VALUE),
+				new AttributeModifier(ATTACK_KNOCKBACK_ID, 4.0F, AttributeModifier.Operation.ADD_VALUE),
 				EquipmentSlotGroup.MAINHAND
 			)
 			.build();
@@ -57,8 +54,13 @@ public class BattleaxeItem extends SwordItem {
 		}
 	}
 
-	@Override
+	/*@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		return enchantment.canEnchant(stack) && enchantment != Enchantments.KNOCKBACK;
+	}*/
+
+	@Override
+	public boolean isPrimaryItemFor(ItemStack stack, Holder<Enchantment> enchantment) {
+		return !enchantment.is(Enchantments.KNOCKBACK);
 	}
 }

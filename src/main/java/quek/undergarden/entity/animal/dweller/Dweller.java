@@ -176,7 +176,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	}
 
 	@Override
-	public void equipSaddle(@Nullable SoundSource source) {
+	public void equipSaddle(ItemStack stack, @org.jetbrains.annotations.Nullable SoundSource source) {
 		this.steering.setSaddle(true);
 		if (source != null) {
 			this.level().playSound(null, this, SoundEvents.PIG_SADDLE, source, 0.5F, 1.0F);

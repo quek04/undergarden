@@ -1,9 +1,13 @@
 package quek.undergarden.registry;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.*;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
@@ -54,11 +58,11 @@ public class UGTags {
 		public static final TagKey<Item> STORAGE_BLOCKS_RAW_FROSTSTEEL = commonTag("storage_blocks/raw_froststeel");
 
 		private static TagKey<Item> tag(String name) {
-			return ItemTags.create(new ResourceLocation(Undergarden.MODID, name));
+			return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 		}
 
 		private static TagKey<Item> commonTag(String name) {
-			return ItemTags.create(new ResourceLocation("c", name));
+			return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
 		}
 	}
 
@@ -109,11 +113,11 @@ public class UGTags {
 		public static final TagKey<Block> TREMBLECRUST_ORES = commonTag("ores_in_ground/tremblecrust");
 
 		private static TagKey<Block> tag(String name) {
-			return BlockTags.create(new ResourceLocation(Undergarden.MODID, name));
+			return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 		}
 
 		private static TagKey<Block> commonTag(String name) {
-			return BlockTags.create(new ResourceLocation("c", name));
+			return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
 		}
 	}
 
@@ -127,7 +131,7 @@ public class UGTags {
 		public static final TagKey<EntityType<?>> IMMUNE_TO_INFECTION = tag("immune_to_utheric_infection");
 
 		private static TagKey<EntityType<?>> tag(String name) {
-			return EntityTypeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());
+			return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 		}
 	}
 
@@ -136,7 +140,7 @@ public class UGTags {
 		public static final TagKey<Fluid> VIRULENT = tag("virulent");
 
 		private static TagKey<Fluid> tag(String name) {
-			return FluidTags.create(new ResourceLocation(Undergarden.MODID, name));
+			return TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 		}
 	}
 
@@ -152,7 +156,16 @@ public class UGTags {
 		public static final TagKey<Biome> HAS_DENIZEN_CAMP = tag("has_structure/denizen_camp");
 
 		private static TagKey<Biome> tag(String name) {
-			return BiomeTags.create(new ResourceLocation(Undergarden.MODID, name).toString());
+			return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
+		}
+	}
+
+	public class Enchantments {
+
+		public static final TagKey<Enchantment> SLINGSHOT_EXCLUSIVE = tag("exclusive_set/slingshot");
+
+		private static TagKey<Enchantment> tag(String name) {
+			return TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 		}
 	}
 }

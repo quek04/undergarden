@@ -10,12 +10,14 @@ import quek.undergarden.entity.animal.SmogMog;
 
 public class SmogMogEyesLayer<E extends SmogMog, M extends SmogMogModel<E>> extends EyesLayer<E, M> {
 
+	private static final RenderType SMOG_MOG_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/smog_mog_eyes.png"));
+
 	public SmogMogEyesLayer(RenderLayerParent<E, M> parent) {
 		super(parent);
 	}
 
 	@Override
 	public RenderType renderType() {
-		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/smog_mog_eyes.png"));
+		return SMOG_MOG_EYES;
 	}
 }

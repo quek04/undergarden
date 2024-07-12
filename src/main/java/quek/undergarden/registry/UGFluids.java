@@ -46,17 +46,17 @@ public class UGFluids {
 					consumer.accept(new IClientFluidTypeExtensions() {
 						@Override
 						public ResourceLocation getStillTexture() {
-							return new ResourceLocation(Undergarden.MODID, "fluid/virulent_mix_still");
+							return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_still");
 						}
 
 						@Override
 						public ResourceLocation getFlowingTexture() {
-							return new ResourceLocation(Undergarden.MODID, "fluid/virulent_mix_flow");
+							return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_flow");
 						}
 
 						@Override
 						public ResourceLocation getOverlayTexture() {
-							return new ResourceLocation(Undergarden.MODID, "fluid/virulent_mix_flow");
+							return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_flow");
 						}
 
 						@Override

@@ -35,10 +35,10 @@ public class UGModelLayers {
 	public static final ModelLayerLocation DENIZEN_MASK = register("denizen_mask");
 
 	private static ModelLayerLocation register(String name) {
-		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), "main");
+		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), "main");
 	}
 
 	private static ModelLayerLocation register(String name, String layerName) {
-		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), layerName);
+		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), layerName);
 	}
 }

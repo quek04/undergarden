@@ -130,7 +130,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHS_HOLE = create("depths_hole");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Undergarden.MODID, name));
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 	}
 
 	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {

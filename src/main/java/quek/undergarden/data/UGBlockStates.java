@@ -23,11 +23,6 @@ public class UGBlockStates extends UGBlockstateProvider {
 	}
 
 	@Override
-	public String getName() {
-		return "Undergarden Block States";
-	}
-
-	@Override
 	protected void registerStatesAndModels() {
 		block(UGBlocks.DREADROCK);
 		torchBlock(UGBlocks.SHARD_TORCH, UGBlocks.SHARD_WALL_TORCH);
@@ -118,8 +113,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		getVariantBuilder(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get()).forAllStates(state ->
 				ConfiguredModel.builder()
 						.modelFile(cubeAll(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())).nextModel()
-						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_2", new ResourceLocation(Undergarden.MODID, "block/engorged_blood_mushroom_cap_2"))).nextModel()
-						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", new ResourceLocation(Undergarden.MODID, "block/engorged_blood_mushroom_cap_3")))
+						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_2", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/engorged_blood_mushroom_cap_2"))).nextModel()
+						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/engorged_blood_mushroom_cap_3")))
 						.build()
 		);
 		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
@@ -130,10 +125,9 @@ public class UGBlockStates extends UGBlockstateProvider {
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
 		getVariantBuilder(UGBlocks.DENIZEN_TOTEM.get())
 			.partialState().with(DenizenTotemBlock.ACTIVE, true)
-			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM) + "_active", new ResourceLocation(Undergarden.MODID, "block/denizen_totem_active"), new ResourceLocation(Undergarden.MODID, "block/ancient_root"))).addModel()
+			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM) + "_active", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_active"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"))).addModel()
 			.partialState().with(DenizenTotemBlock.ACTIVE, false)
-			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM), new ResourceLocation(Undergarden.MODID, "block/denizen_totem_inactive"), new ResourceLocation(Undergarden.MODID, "block/ancient_root"))).addModel()
-		;
+			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_inactive"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"))).addModel();
 		crossBlock(UGBlocks.PUFF_MUSHROOM);
 		block(UGBlocks.PUFF_MUSHROOM_CAP);
 		block(UGBlocks.PUFF_MUSHROOM_STEM);
@@ -236,7 +230,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		horizontalBlock(UGBlocks.CARVED_GLOOMGOURD.get(), models().orientable(name(UGBlocks.CARVED_GLOOMGOURD), texture("gloomgourd_side"), texture("carved_gloomgourd"), texture("gloomgourd_top")));
 
 		tintedCrossBlock(UGBlocks.DEEPTURF);
-		ModelFile deepturf = models().getExistingFile(new ResourceLocation(Undergarden.MODID, "block/deepturf_block"));
+		ModelFile deepturf = models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/deepturf_block"));
 		ModelFile deepturf_snow = models().cubeBottomTop(name(UGBlocks.DEEPTURF_BLOCK) + "_snowy", texture("frozen_deepturf_block_side"), texture("deepsoil"), mcLoc("block/snow"));
 		getVariantBuilder(UGBlocks.DEEPTURF_BLOCK.get()).forAllStates(state -> {
 			if (state.getValue(DeepturfBlock.SNOWY)) {
@@ -262,7 +256,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 				ConfiguredModel.builder()
 						.modelFile(models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM) + "_stage" + state.getValue(StemBlock.AGE), mcLoc("block/stem_growth" + state.getValue(StemBlock.AGE))).texture("stem", mcLoc("block/melon_stem")).renderType("cutout"))
 						.build());
-		horizontalBlock(UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(), models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM_ATTACHED), mcLoc("stem_fruit")).texture("stem", mcLoc("block/melon_stem")).texture("upperstem", mcLoc("block/attached_melon_stem")).renderType("cutout"));
+		horizontalBlock(UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(), models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM_ATTACHED), mcLoc("stem_fruit")).texture("stem", mcLoc("block/melon_stem")).texture("upperstem", mcLoc("block/attached_melon_stem")).renderType("cutout"), 270);
 
 		simpleBlock(UGBlocks.GOO_BLOCK.get(), models().cubeBottomTop(name(UGBlocks.GOO_BLOCK), texture("goo_block_side"), texture("goo_block_bottom"), texture("goo_block_top")));
 

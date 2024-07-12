@@ -12,6 +12,7 @@ logoBlur = false
 authors = "quek"
 description = '''Deep underground, a forgotten land awaits.'''
 itemIcon="undergarden:deepturf_block"
+enumExtensions="META-INF/enumextensions.json"
 
 [[dependencies.undergarden]]
 	modId = "neoforge"
@@ -23,7 +24,7 @@ itemIcon="undergarden:deepturf_block"
 [[dependencies.undergarden]]
 	modId = "minecraft"
 	type = "required"
-	versionRange = "[1.20.6]"
+	versionRange = "[1.21]"
 	ordering = "NONE"
 	side = "BOTH"
 

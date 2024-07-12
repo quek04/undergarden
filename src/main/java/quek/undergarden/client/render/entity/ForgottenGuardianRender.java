@@ -13,6 +13,8 @@ import quek.undergarden.entity.monster.boss.ForgottenGuardian;
 
 public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardian, ForgottenGuardianModel<ForgottenGuardian>> {
 
+	private static final ResourceLocation FORGOTTEN_GUARDIAN = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/forgotten_guardian.png");
+
 	public ForgottenGuardianRender(EntityRendererProvider.Context context) {
 		super(context, new ForgottenGuardianModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_GUARDIAN)), 0.6F);
 		this.addLayer(new ForgottenGuardianEyesLayer<>(this));
@@ -20,7 +22,7 @@ public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardian, Forg
 
 	@Override
 	public ResourceLocation getTextureLocation(ForgottenGuardian entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten_guardian.png");
+		return FORGOTTEN_GUARDIAN;
 	}
 
 	@Override

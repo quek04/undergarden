@@ -10,12 +10,14 @@ import quek.undergarden.entity.animal.dweller.Dweller;
 
 public class DwellerEyesLayer<T extends Dweller, M extends DwellerModel<T>> extends EyesLayer<T, M> {
 
+	private final static RenderType DWELLER_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/dweller_eyes.png"));
+
 	public DwellerEyesLayer(RenderLayerParent<T, M> parent) {
 		super(parent);
 	}
 
 	@Override
 	public RenderType renderType() {
-		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/dweller_eyes.png"));
+		return DWELLER_EYES;
 	}
 }

@@ -11,6 +11,8 @@ import quek.undergarden.entity.animal.Brute;
 
 public class BruteRender extends MobRenderer<Brute, BruteModel<Brute>> {
 
+	private static final ResourceLocation BRUTE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/brute.png");
+
 	public BruteRender(EntityRendererProvider.Context context) {
 		super(context, new BruteModel<>(context.bakeLayer(UGModelLayers.BRUTE)), 0.7F);
 		this.addLayer(new BruteEyesLayer<>(this));
@@ -18,6 +20,6 @@ public class BruteRender extends MobRenderer<Brute, BruteModel<Brute>> {
 
 	@Override
 	public ResourceLocation getTextureLocation(Brute entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/brute.png");
+		return BRUTE;
 	}
 }

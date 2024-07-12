@@ -14,7 +14,7 @@ import quek.undergarden.Undergarden;
 public record CreateCritParticlePacket(int entityID, int duration,
 									   ParticleOptions particle) implements CustomPacketPayload {
 
-	public static final Type<CreateCritParticlePacket> TYPE = new Type<>(new ResourceLocation(Undergarden.MODID, "create_crit_particle"));
+	public static final Type<CreateCritParticlePacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "create_crit_particle"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, CreateCritParticlePacket> STREAM_CODEC = CustomPacketPayload.codec(CreateCritParticlePacket::write, CreateCritParticlePacket::new);
 
 	public CreateCritParticlePacket(RegistryFriendlyByteBuf buf) {
@@ -32,11 +32,11 @@ public record CreateCritParticlePacket(int entityID, int duration,
 		return TYPE;
 	}
 
-	public static void handle(CreateCritParticlePacket message, IPayloadContext ctx) {
-		ctx.enqueueWork(() -> {
-			Entity entity = Minecraft.getInstance().level.getEntity(message.entityID());
+	public static void handle(CreateCritParticlePacket packet, IPayloadContext context) {
+		context.enqueueWork(() -> {
+			Entity entity = Minecraft.getInstance().level.getEntity(packet.entityID());
 			if (entity != null) {
-				Minecraft.getInstance().particleEngine.createTrackingEmitter(entity, message.particle(), message.duration());
+				Minecraft.getInstance().particleEngine.createTrackingEmitter(entity, packet.particle(), packet.duration());
 			}
 		});
 	}

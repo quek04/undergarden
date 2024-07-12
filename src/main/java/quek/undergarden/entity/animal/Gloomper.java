@@ -106,7 +106,7 @@ public class Gloomper extends Animal {
 	}
 
 	@Override
-	protected void jumpFromGround() {
+	public void jumpFromGround() {
 		super.jumpFromGround();
 		double d0 = this.getMoveControl().getSpeedModifier();
 		if (d0 > 0.0D) {

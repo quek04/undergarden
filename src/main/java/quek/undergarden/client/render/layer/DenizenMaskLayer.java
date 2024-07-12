@@ -17,7 +17,7 @@ import quek.undergarden.registry.UGItems;
 
 public class DenizenMaskLayer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Undergarden.MODID, "textures/models/armor/denizen_mask.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/models/armor/denizen_mask.png");
 	private final A model;
 
 	public DenizenMaskLayer(RenderLayerParent<T, M> renderer, A model) {
@@ -31,7 +31,8 @@ public class DenizenMaskLayer<T extends LivingEntity, M extends HumanoidModel<T>
 		if (itemStack.getItem() == UGItems.DENIZEN_MASK.get()) {
 			VertexConsumer consumer = buffer.getBuffer(RenderType.armorCutoutNoCull(TEXTURE));
 			this.getParentModel().copyPropertiesTo(model);
-			model.renderToBuffer(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+			model.renderToBuffer(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY);
+			//model.renderToBuffer(stack, consumer, 1, 1, 1);
 		}
 	}
 }

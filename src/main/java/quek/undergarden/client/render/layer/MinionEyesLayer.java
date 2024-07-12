@@ -10,12 +10,14 @@ import quek.undergarden.entity.Minion;
 
 public class MinionEyesLayer<T extends Minion, M extends MinionModel<T>> extends EyesLayer<T, M> {
 
+	private static final RenderType MINION_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/minion_eye.png"));
+
 	public MinionEyesLayer(RenderLayerParent<T, M> parent) {
 		super(parent);
 	}
 
 	@Override
 	public RenderType renderType() {
-		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/minion_eye.png"));
+		return MINION_EYES;
 	}
 }

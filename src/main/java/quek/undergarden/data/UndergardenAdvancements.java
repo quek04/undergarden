@@ -38,7 +38,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 						UGBlocks.DEEPTURF_BLOCK.get(),
 						Component.translatable("advancement.undergarden.root.title"),
 						Component.empty(),
-						new ResourceLocation(Undergarden.MODID, "textures/block/depthrock_bricks.png"),
+						ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/depthrock_bricks.png"),
 						AdvancementType.TASK,
 						false,
 						false,

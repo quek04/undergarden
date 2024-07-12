@@ -13,6 +13,8 @@ import quek.undergarden.entity.monster.Forgotten;
 
 public class ForgottenRender extends HumanoidMobRenderer<Forgotten, ForgottenModel<Forgotten>> {
 
+	private static final ResourceLocation FORGOTTEN = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/forgotten.png");
+
 	public ForgottenRender(EntityRendererProvider.Context context) {
 		super(context, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN)), 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_INNER_ARMOR)), new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_OUTER_ARMOR)), context.getModelManager()));
@@ -21,7 +23,7 @@ public class ForgottenRender extends HumanoidMobRenderer<Forgotten, ForgottenMod
 
 	@Override
 	public ResourceLocation getTextureLocation(Forgotten entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/forgotten.png");
+		return FORGOTTEN;
 	}
 
 	@Override

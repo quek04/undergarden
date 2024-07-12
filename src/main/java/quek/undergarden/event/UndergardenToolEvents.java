@@ -1,6 +1,7 @@
 package quek.undergarden.event;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,12 +10,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import quek.undergarden.Undergarden;
-import quek.undergarden.effect.ChillyEffect;
 import quek.undergarden.network.CreateCritParticlePacket;
 import quek.undergarden.registry.UGEffects;
 import quek.undergarden.registry.UGItems;
@@ -31,7 +31,7 @@ public class UndergardenToolEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenToolEvents::froststeelTickEvent);
 	}
 
-	private static void forgottenAttackEvent(LivingHurtEvent event) {
+	private static void forgottenAttackEvent(LivingIncomingDamageEvent event) {
 		Entity source = event.getSource().getEntity();
 		float damage = event.getAmount();
 
@@ -55,7 +55,7 @@ public class UndergardenToolEvents {
 		}
 	}
 
-	private static void utheriumAttackEvent(LivingHurtEvent event) {
+	private static void utheriumAttackEvent(LivingIncomingDamageEvent event) {
 		Entity source = event.getSource().getEntity();
 		float damage = event.getAmount();
 
@@ -71,7 +71,7 @@ public class UndergardenToolEvents {
 		}
 	}
 
-	private static void froststeelAttackEvent(LivingHurtEvent event) {
+	private static void froststeelAttackEvent(LivingIncomingDamageEvent event) {
 		Entity source = event.getSource().getEntity();
 		if (source instanceof Player player) {
 			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_SWORD.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_AXE.get())) {
@@ -86,7 +86,7 @@ public class UndergardenToolEvents {
 	private static void froststeelTickEvent(EntityTickEvent.Pre event) {
 		Entity entity = event.getEntity();
 		if (entity instanceof LivingEntity living) {
-			if (living.tickCount % 5 == 0 && living.level().isClientSide() && living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(ChillyEffect.MOVEMENT_SPEED_MODIFIER_UUID) != null) {
+			if (living.tickCount % 5 == 0 && living.level().isClientSide() && living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "effect.chilly_slowness")) != null) {
 				for (int i = 0; i < 5; i++) {
 					double d0 = living.getRandom().nextFloat() * 2.0F - 1.0F;
 					double d1 = living.getRandom().nextFloat() * 2.0F - 1.0F;

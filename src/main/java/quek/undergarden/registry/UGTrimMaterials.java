@@ -15,14 +15,14 @@ import quek.undergarden.Undergarden;
 import java.util.Map;
 
 public class UGTrimMaterials {
-	public static final ResourceKey<TrimMaterial> CLOGGRUM = registerKey("cloggrum");
-	public static final ResourceKey<TrimMaterial> FROSTSTEEL = registerKey("froststeel");
-	public static final ResourceKey<TrimMaterial> UTHERIUM = registerKey("utherium");
-	public static final ResourceKey<TrimMaterial> REGALIUM = registerKey("regalium");
-	public static final ResourceKey<TrimMaterial> FORGOTTEN = registerKey("forgotten");
+	public static final ResourceKey<TrimMaterial> CLOGGRUM = create("cloggrum");
+	public static final ResourceKey<TrimMaterial> FROSTSTEEL = create("froststeel");
+	public static final ResourceKey<TrimMaterial> UTHERIUM = create("utherium");
+	public static final ResourceKey<TrimMaterial> REGALIUM = create("regalium");
+	public static final ResourceKey<TrimMaterial> FORGOTTEN = create("forgotten");
 
-	private static ResourceKey<TrimMaterial> registerKey(String name) {
-		return ResourceKey.create(Registries.TRIM_MATERIAL, new ResourceLocation(Undergarden.MODID, name));
+	private static ResourceKey<TrimMaterial> create(String name) {
+		return ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 	}
 
 	public static void bootstrap(BootstrapContext<TrimMaterial> context) {

@@ -27,8 +27,8 @@ public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidM
 	@Override
 	public ResourceLocation getTextureLocation(Denizen entity) {
 		return switch (entity.getVariant()) {
-			case SHORT -> new ResourceLocation(Undergarden.MODID, "textures/entity/denizen.png");
-			case TALL -> new ResourceLocation(Undergarden.MODID, "textures/entity/denizen2.png");
+			case SHORT -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/denizen.png");
+			case TALL -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/denizen2.png");
 		};
 	}
 

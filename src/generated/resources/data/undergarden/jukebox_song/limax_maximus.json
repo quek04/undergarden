@@ -1,0 +1,8 @@
+{
+  "comparator_output": 1,
+  "description": {
+    "translate": "jukebox_song.undergarden.limax_maximus"
+  },
+  "length_in_seconds": 161.0,
+  "sound_event": "undergarden:music.disc.limax_maximus"
+}

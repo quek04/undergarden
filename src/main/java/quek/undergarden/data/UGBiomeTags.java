@@ -45,9 +45,4 @@ public class UGBiomeTags extends BiomeTagsProvider {
         tag(Tags.Biomes.IS_SWAMP).add(UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG);
         tag(Tags.Biomes.IS_WASTELAND).add(UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA);*/
 	}
-
-	@Override
-	public String getName() {
-		return "Undergarden Biome Tags";
-	}
 }

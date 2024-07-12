@@ -1,14 +1,17 @@
 package quek.undergarden;
 
+import com.mojang.logging.LogUtils;
 import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.util.InclusiveRange;
@@ -24,10 +27,14 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.RegisterEvent;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
+import org.slf4j.Logger;
+import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.data.*;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.network.CreateCritParticlePacket;
+import quek.undergarden.network.UndergardenPortalSoundPacket;
 import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.*;
 import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
@@ -40,6 +47,7 @@ import java.util.function.Consumer;
 public class Undergarden {
 
 	public static final String MODID = "undergarden";
+	public static final Logger LOGGER = LogUtils.getLogger();
 
 	public Undergarden(IEventBus bus, Dist dist, ModContainer container) {
 
@@ -52,7 +60,7 @@ public class Undergarden {
 		bus.addListener(this::registerPackets);
 		bus.addListener((Consumer<RegisterEvent>) event -> {
 			if (event.getRegistry() == BuiltInRegistries.CHUNK_GENERATOR) {
-				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, new ResourceLocation(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC);
+				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, ResourceLocation.fromNamespaceAndPath(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC);
 			}
 		});
 
@@ -64,7 +72,6 @@ public class Undergarden {
 			UGCreativeModeTabs.TABS,
 			UGCriteria.CRITERIA,
 			UGEffects.EFFECTS,
-			UGEnchantments.ENCHANTMENTS,
 			UGEntityTypes.ENTITIES,
 			UGFeatures.FEATURES,
 			UGFluids.FLUIDS,
@@ -75,7 +82,6 @@ public class Undergarden {
 			UGPointOfInterests.POI,
 			UGPotions.POTIONS,
 			UGSoundEvents.SOUNDS,
-			UGStructureProcessors.PROCESSORS,
 			UGStructures.STRUCTURES,
 			UGTreeDecoratorTypes.TREE_DECORATORS,
 			UGTrunkPlacerTypes.TRUNK_PLACERS,
@@ -93,6 +99,7 @@ public class Undergarden {
 	public void registerPackets(RegisterPayloadHandlersEvent event) {
 		PayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
 		registrar.playToClient(CreateCritParticlePacket.TYPE, CreateCritParticlePacket.STREAM_CODEC, CreateCritParticlePacket::handle);
+		registrar.playToClient(UndergardenPortalSoundPacket.TYPE, UndergardenPortalSoundPacket.STREAM_CODEC, UndergardenPortalSoundPacket::handle);
 		registrar.playToClient(UthericInfectionPacket.TYPE, UthericInfectionPacket.STREAM_CODEC, UthericInfectionPacket::handle);
 	}
 
@@ -122,11 +129,20 @@ public class Undergarden {
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));
 		generator.addProvider(event.includeServer(), new UGDataMaps(output, lookupProvider));
+		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, datapackProvider.getRegistryProvider(), helper));
 
 		generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
 				Component.literal("Undergarden resources"),
 				DetectedVersion.BUILT_IN.getPackVersion(PackType.SERVER_DATA),
 				Optional.of(new InclusiveRange<>(0, Integer.MAX_VALUE)))));
 
+	}
+
+	public static RegistryAccess registryAccessStatic() {
+		final MinecraftServer currentServer = ServerLifecycleHooks.getCurrentServer();
+		if(currentServer != null)
+			return currentServer.registryAccess();
+		else
+			return UndergardenClient.registryAccess();
 	}
 }

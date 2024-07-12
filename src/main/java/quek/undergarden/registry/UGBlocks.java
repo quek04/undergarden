@@ -166,8 +166,8 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> GLOOM_O_LANTERN = register("gloom_o_lantern", () -> new CarvedGloomgourdBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).pushReaction(PushReaction.DESTROY).strength(1.0F).sound(SoundType.WOOD).lightLevel((state) -> 15)));
 	public static final DeferredBlock<Block> SHARD_O_LANTERN = register("shard_o_lantern", () -> new CarvedGloomgourdShardBlock(BlockBehaviour.Properties.ofFullCopy(GLOOM_O_LANTERN.get()).lightLevel((state) -> 6)));
 	public static final DeferredBlock<Block> BOOMGOURD = register("boomgourd", () -> new BoomgourdBlock(BlockBehaviour.Properties.of().ignitedByLava().mapColor(MapColor.COLOR_PURPLE).strength(1.0F).sound(SoundType.WOOD)));
-	public static final ResourceKey<Block> GLOOMGOURD_STEM_KEY = ResourceKey.create(Registries.BLOCK, new ResourceLocation(Undergarden.MODID, "gloomgourd_stem"));
-	public static final ResourceKey<Block> ATTACHED_GLOOMGOURD_STEM_KEY = ResourceKey.create(Registries.BLOCK, new ResourceLocation(Undergarden.MODID, "gloomgourd_stem_attached"));
+	public static final ResourceKey<Block> GLOOMGOURD_STEM_KEY = ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "gloomgourd_stem"));
+	public static final ResourceKey<Block> ATTACHED_GLOOMGOURD_STEM_KEY = ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "gloomgourd_stem_attached"));
 	public static final DeferredBlock<AttachedStemBlock> GLOOMGOURD_STEM_ATTACHED = BLOCKS.register("gloomgourd_stem_attached", () -> new AttachedStemBlock(GLOOMGOURD_STEM_KEY, UGBlocks.GLOOMGOURD.getKey(), UGItems.GLOOMGOURD_SEEDS.getKey(), BlockBehaviour.Properties.ofFullCopy(Blocks.ATTACHED_MELON_STEM)));
 	public static final DeferredBlock<StemBlock> GLOOMGOURD_STEM = BLOCKS.register("gloomgourd_stem", () -> new StemBlock(GLOOMGOURD.getKey(), ATTACHED_GLOOMGOURD_STEM_KEY, UGItems.GLOOMGOURD_SEEDS.getKey(), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON_STEM)));
 

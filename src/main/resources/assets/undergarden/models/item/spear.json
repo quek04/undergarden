@@ -27,7 +27,7 @@
   "overrides": [
     {
       "predicate": {
-        "throwing": 1
+        "undergarden:throwing": 1
       },
       "model": "undergarden:item/spear3d_throwing"
     }

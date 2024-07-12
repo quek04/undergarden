@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "UNDERGARDEN_FORGOTTEN",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "FORGOTTEN"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "UNDERGARDEN_ROGDORIUM",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "ROGDORIUM"
+      }
+    }
+  ]
+}

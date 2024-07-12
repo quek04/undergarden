@@ -163,12 +163,14 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 	}
 
 	@Override
-	public void onRemovedFromWorld() {
-		super.onRemovedFromWorld();
+	public void onRemovedFromLevel() {
+		super.onRemovedFromLevel();
 		if (this.level() instanceof ServerLevel) {
 			this.campfireGoal.stop();
 		}
 	}
+
+
 
 	@Nullable
 	@Override

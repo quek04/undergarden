@@ -3,6 +3,7 @@ package quek.undergarden.item.tool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -23,13 +24,14 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.projectile.ThrownSpear;
-
-import java.util.UUID;
 
 public class SpearItem extends Item implements ProjectileItem {
 
-	private static final UUID ENTITY_REACH_UUID = UUID.fromString("cfa9de08-8bcc-48f0-ad6d-87c5df22ccfe");
+	private static final ResourceLocation ENTITY_REACH_UUID = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "spear_entity_reach");
 
 	public SpearItem(Properties properties) {
 		super(properties);
@@ -37,9 +39,9 @@ public class SpearItem extends Item implements ProjectileItem {
 
 	public static ItemAttributeModifiers createAttributes() {
 		return ItemAttributeModifiers.builder()
-			.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 6.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-			.add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -2.9F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-			.add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(ENTITY_REACH_UUID, "Tool modifier", 2.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+			.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 6.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+			.add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -2.9F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+			.add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(ENTITY_REACH_UUID, 2.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
 			.build();
 	}
 
@@ -54,14 +56,14 @@ public class SpearItem extends Item implements ProjectileItem {
 	}
 
 	@Override
-	public int getUseDuration(ItemStack stack) {
+	public int getUseDuration(ItemStack stack, LivingEntity entity) {
 		return 72000;
 	}
 
 	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
 		if (entity instanceof Player player) {
-			int useTime = this.getUseDuration(stack) - timeLeft;
+			int useTime = this.getUseDuration(stack, entity) - timeLeft;
 			if (useTime >= 10) {
 				if (!level.isClientSide()) {
 					stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(entity.getUsedItemHand()));
@@ -118,8 +120,8 @@ public class SpearItem extends Item implements ProjectileItem {
 	}
 
 	@Override
-	public boolean canPerformAction(ItemStack stack, net.neoforged.neoforge.common.ToolAction toolAction) {
-		return net.neoforged.neoforge.common.ToolActions.DEFAULT_TRIDENT_ACTIONS.contains(toolAction);
+	public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+		return ItemAbilities.DEFAULT_TRIDENT_ACTIONS.contains(itemAbility);
 	}
 
 	@Override

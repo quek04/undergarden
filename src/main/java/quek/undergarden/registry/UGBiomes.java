@@ -42,7 +42,7 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> PUFF_MUSHROOM_FOREST = create("puff_mushroom_forest");
 
 	private static ResourceKey<Biome> create(String name) {
-		return ResourceKey.create(Registries.BIOME, new ResourceLocation(Undergarden.MODID, name));
+		return ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
 	}
 
 	public static void bootstrap(BootstrapContext<Biome> context) {

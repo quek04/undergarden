@@ -12,14 +12,17 @@ import quek.undergarden.entity.animal.dweller.Dweller;
 
 public class DwellerRender extends MobRenderer<Dweller, DwellerModel<Dweller>> {
 
+	private static final ResourceLocation DWELLER = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/dweller.png");
+	private static final ResourceLocation DWELLER_SADDLE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/dweller_saddle.png");
+
 	public DwellerRender(EntityRendererProvider.Context context) {
 		super(context, new DwellerModel<>(context.bakeLayer(UGModelLayers.DWELLER)), 0.7F);
 		this.addLayer(new DwellerEyesLayer<>(this));
-		this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(context.bakeLayer(UGModelLayers.DWELLER_SADDLE)), new ResourceLocation(Undergarden.MODID, "textures/entity/dweller_saddle.png")));
+		this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(context.bakeLayer(UGModelLayers.DWELLER_SADDLE)), DWELLER_SADDLE));
 	}
 
 	@Override
 	public ResourceLocation getTextureLocation(Dweller entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/dweller.png");
+		return DWELLER;
 	}
 }

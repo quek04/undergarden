@@ -31,7 +31,6 @@ import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -150,20 +149,19 @@ public class Mog extends Animal implements IShearable {
 	}
 
 	@Override
-	public boolean isShearable(@Nonnull ItemStack item, Level world, BlockPos pos) {
+	public boolean isShearable(@org.jetbrains.annotations.Nullable Player player, ItemStack item, Level level, BlockPos pos) {
 		return this.hasMoss() && this.isAlive() && !this.isBaby();
 	}
 
-	@Nonnull
 	@Override
-	public List<ItemStack> onSheared(@Nullable Player player, @Nonnull ItemStack stack, Level level, BlockPos pos, int fortune) {
+	public List<ItemStack> onSheared(@org.jetbrains.annotations.Nullable Player player, ItemStack item, Level level, BlockPos pos) {
 		level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
 		if (!level.isClientSide()) {
 			this.setMoss(false);
 			int mossAmount = 1 + this.getRandom().nextInt(2);
-			if (fortune > 0) {
+			/*if (fortune > 0) {
 				mossAmount += this.getRandom().nextInt(fortune);
-			}
+			}*/
 
 			List<ItemStack> items = new ArrayList<>();
 			for (int i = 0; i < mossAmount; i++) {

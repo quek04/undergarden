@@ -13,7 +13,7 @@ import quek.undergarden.registry.UGAttachments;
 
 public record UthericInfectionPacket(int entityID, int infectionLevel) implements CustomPacketPayload {
 
-	public static final Type<UthericInfectionPacket> TYPE = new Type<>(new ResourceLocation(Undergarden.MODID, "utheric_infection"));
+	public static final Type<UthericInfectionPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection"));
 	public static final StreamCodec<FriendlyByteBuf, UthericInfectionPacket> STREAM_CODEC = CustomPacketPayload.codec(UthericInfectionPacket::write, UthericInfectionPacket::new);
 
 	public UthericInfectionPacket(FriendlyByteBuf buf) {

@@ -310,7 +310,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	private void oreSmeltingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, RecipeOutput consumer) {
 		for (ItemLike ingredient : ingredients) {
-			smeltingRecipe(result, ingredient, xp, 1).group(group).save(consumer, new ResourceLocation(Undergarden.MODID, "smelt_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
+			smeltingRecipe(result, ingredient, xp, 1).group(group).save(consumer, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "smelt_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
 		}
 	}
 
@@ -334,7 +334,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	private void oreBlastingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, RecipeOutput consumer) {
 		for (ItemLike ingredient : ingredients) {
-			blastingRecipe(result, ingredient, xp, 1).group(group).save(consumer, new ResourceLocation(Undergarden.MODID, "blast_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
+			blastingRecipe(result, ingredient, xp, 1).group(group).save(consumer, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "blast_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
 		}
 	}
 

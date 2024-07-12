@@ -10,12 +10,14 @@ import quek.undergarden.entity.monster.rotspawn.Rotwalker;
 
 public class RotwalkerEyesLayer<T extends Rotwalker, M extends RotwalkerModel<T>> extends EyesLayer<T, M> {
 
+	private static final RenderType ROTWALKER_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/rotwalker_eyes.png"));
+
 	public RotwalkerEyesLayer(RenderLayerParent<T, M> parent) {
 		super(parent);
 	}
 
 	@Override
 	public RenderType renderType() {
-		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/rotwalker_eyes.png"));
+		return ROTWALKER_EYES;
 	}
 }

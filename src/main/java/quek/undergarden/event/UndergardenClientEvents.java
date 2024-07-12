@@ -28,6 +28,7 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
@@ -65,24 +66,24 @@ import java.util.Objects;
 public class UndergardenClientEvents {
 
 	private static final List<ResourceLocation> HEARTS = List.of(
-			new ResourceLocation(Undergarden.MODID, "virulence_hearts/normal"),
-			new ResourceLocation(Undergarden.MODID, "virulence_hearts/normal_blinking"),
-			new ResourceLocation(Undergarden.MODID, "virulence_hearts/half"),
-			new ResourceLocation(Undergarden.MODID, "virulence_hearts/half_blinking"),
-			new ResourceLocation(Undergarden.MODID, "virulence_hearts/hardcore"),
-			new ResourceLocation(Undergarden.MODID, "virulence_hearts/hardcore_blinking"),
-			new ResourceLocation(Undergarden.MODID, "virulence_hearts/hardcore_half"),
-			new ResourceLocation(Undergarden.MODID, "virulence_hearts/hardcore_half_blinking")
+			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/normal"),
+			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/normal_blinking"),
+			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/half"),
+			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/half_blinking"),
+			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore"),
+			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_blinking"),
+			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_half"),
+			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_half_blinking")
 	);
 
-	private static final ResourceLocation BRITTLENESS_ARMOR_EMPTY = new ResourceLocation(Undergarden.MODID, "brittleness_armor/empty");
-	private static final ResourceLocation BRITTLENESS_ARMOR_HALF = new ResourceLocation(Undergarden.MODID, "brittleness_armor/half");
-	private static final ResourceLocation BRITTLENESS_ARMOR_FULL = new ResourceLocation(Undergarden.MODID, "brittleness_armor/full");
+	private static final ResourceLocation BRITTLENESS_ARMOR_EMPTY = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor/empty");
+	private static final ResourceLocation BRITTLENESS_ARMOR_HALF = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor/half");
+	private static final ResourceLocation BRITTLENESS_ARMOR_FULL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor/full");
 
-	private static final ResourceLocation UTHERIC_INFECTION_EMPTY = new ResourceLocation(Undergarden.MODID, "utheric_infection/empty");
-	private static final ResourceLocation UTHERIC_INFECTION_HALF = new ResourceLocation(Undergarden.MODID, "utheric_infection/half");
-	private static final ResourceLocation UTHERIC_INFECTION_FULL = new ResourceLocation(Undergarden.MODID, "utheric_infection/full");
-	private static final ResourceLocation UTHERIC_INFECTION_FULL_LETHAL = new ResourceLocation(Undergarden.MODID, "utheric_infection/full_lethal");
+	private static final ResourceLocation UTHERIC_INFECTION_EMPTY = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/empty");
+	private static final ResourceLocation UTHERIC_INFECTION_HALF = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/half");
+	private static final ResourceLocation UTHERIC_INFECTION_FULL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/full");
+	private static final ResourceLocation UTHERIC_INFECTION_FULL_LETHAL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/full_lethal");
 
 	public static void initClientEvents(IEventBus bus) {
 		bus.addListener(UndergardenClientEvents::clientSetup);
@@ -97,6 +98,7 @@ public class UndergardenClientEvents {
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
+		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
 	}
 
 	private static void clientSetup(FMLClientSetupEvent event) {
@@ -105,20 +107,20 @@ public class UndergardenClientEvents {
 			Sheets.addWoodType(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.GRONGLE_WOOD_TYPE);
 
-			ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pull"), (stack, world, entity, seed) -> {
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pull"), (stack, level, entity, seed) -> {
 				if (entity == null) {
 					return 0.0F;
 				} else {
-					return entity.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
+					return entity.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F;
 				}
 			});
-			ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("self_sling"), (stack, level, entity, seed) -> entity != null && stack.getEnchantmentLevel(UGEnchantments.SELF_SLING.get()) > 0 ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), new ResourceLocation("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), new ResourceLocation("blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SPEAR.get(), new ResourceLocation("throwing"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "self_sling"), (stack, level, entity, seed) -> entity != null && stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.SELF_SLING)) > 0 ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SPEAR.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "throwing"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 		});
 	}
 
@@ -304,14 +306,14 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerOverlays(RegisterGuiLayersEvent event) {
-		event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH, new ResourceLocation(Undergarden.MODID, "virulence_hearts"), (gui, partialTick) -> {
+		event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts"), (gui, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.VIRULENCE) && minecraft.gameMode.canHurtPlayer()) {
 				renderVirulenceHearts(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, new ResourceLocation(Undergarden.MODID, "brittleness_armor"), (gui, partialTick) -> {
+		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor"), (gui, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.BRITTLENESS) && minecraft.gameMode.canHurtPlayer()) {
@@ -320,23 +322,23 @@ public class UndergardenClientEvents {
 		});
 		//render XP bar since we cancel the jump bar
 		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, new ResourceLocation(Undergarden.MODID, "dweller_xp_bar"), (gui, partialTick) -> {
+		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "dweller_xp_bar"), (gui, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
 				minecraft.gui.renderExperienceBar(gui, gui.guiWidth() / 2 - 91);
 			}
 		});
-		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "undergarden_portal_overlay"), (gui, partialTick) -> {
+		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "undergarden_portal_overlay"), (gui, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
 
 			if (player != null) {
-				renderPortalOverlay(gui, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), partialTick);
+				renderPortalOverlay(gui, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), deltaTracker.getGameTimeDeltaPartialTick(true));
 			}
 		});
-		event.registerAboveAll(new ResourceLocation(Undergarden.MODID, "utheric_infection_bar"), (gui, partialTick) -> {
+		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_bar"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0 && minecraft.gameMode.canHurtPlayer()) {
@@ -365,11 +367,17 @@ public class UndergardenClientEvents {
 	}
 
 	private static void dontRenderJumpBarForDweller(RenderGuiLayerEvent.Pre event) {
-		if (event.getLayer() == VanillaGuiLayers.JUMP_METER) {
+		if (event.getName() == VanillaGuiLayers.JUMP_METER) {
 			if (Minecraft.getInstance().player.getVehicle() instanceof Dweller) {
 				event.setCanceled(true);
 			}
 		}
+	}
+
+	private static void undergardenPortalFOV(ComputeFovModifierEvent event) {
+		Player player = event.getPlayer();
+		UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
+		event.setNewFovModifier(event.getFovModifier() - portal.getPortalAnimTime());
 	}
 
 	private static void renderUthericInfectionBar(int width, int height, GuiGraphics graphics, Gui gui, Player player) {

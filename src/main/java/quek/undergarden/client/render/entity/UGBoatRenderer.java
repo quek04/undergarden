@@ -30,11 +30,11 @@ public class UGBoatRenderer extends EntityRenderer<UGBoat> {
 	public UGBoatRenderer(EntityRendererProvider.Context context, boolean chest) {
 		super(context);
 		this.shadowRadius = 0.8F;
-		this.boatResources = Stream.of(UGBoat.Type.values()).collect(ImmutableMap.toImmutableMap((type) -> type, (type) -> Pair.of(new ResourceLocation(Undergarden.MODID, getTextureLocation(type, chest)), this.createBoatModel(context, type, chest))));
+		this.boatResources = Stream.of(UGBoat.Type.values()).collect(ImmutableMap.toImmutableMap((type) -> type, (type) -> Pair.of(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, getTextureLocation(type, chest)), this.createBoatModel(context, type, chest))));
 	}
 
 	private static ModelLayerLocation createLocation(String path, String model) {
-		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, path), model);
+		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, path), model);
 	}
 
 	public static ModelLayerLocation createBoatModelName(UGBoat.Type pType) {
@@ -82,7 +82,7 @@ public class UGBoatRenderer extends EntityRenderer<UGBoat> {
 		stack.mulPose(Axis.YP.rotationDegrees(90.0F));
 		boat.setupAnim(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F);
 		VertexConsumer vertexconsumer = bufferSource.getBuffer(boat.renderType(texture));
-		boat.renderToBuffer(stack, vertexconsumer, light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+		boat.renderToBuffer(stack, vertexconsumer, light, OverlayTexture.NO_OVERLAY);
 		if (!entity.isUnderWater()) {
 			VertexConsumer vertexconsumer1 = bufferSource.getBuffer(RenderType.waterMask());
 			boat.waterPatch().render(stack, vertexconsumer1, light, OverlayTexture.NO_OVERLAY);

@@ -14,6 +14,8 @@ import quek.undergarden.entity.animal.Gwib;
 
 public class GwibRender extends MobRenderer<Gwib, GwibModel<Gwib>> {
 
+	public static final ResourceLocation GWIB = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/gwib.png");
+
 	public GwibRender(EntityRendererProvider.Context context) {
 		super(context, new GwibModel<>(context.bakeLayer(UGModelLayers.GWIB)), 0.5F);
 		this.addLayer(new GwibEyesLayer<>(this));
@@ -21,7 +23,7 @@ public class GwibRender extends MobRenderer<Gwib, GwibModel<Gwib>> {
 
 	@Override
 	public ResourceLocation getTextureLocation(Gwib entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/gwib.png");
+		return GWIB;
 	}
 
 	@Override

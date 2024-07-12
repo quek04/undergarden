@@ -1,10 +1,7 @@
 package quek.undergarden.item;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -35,7 +32,7 @@ public class CarvedGloomgourdItem extends BlockItem {
 		consumer.accept(new IClientItemExtensions() {
 			@Override
 			public void renderHelmetOverlay(ItemStack stack, Player player, int width, int height, float partialTicks) {
-				ResourceLocation overlay = new ResourceLocation(Undergarden.MODID, "textures/gloomgourd_overlay.png");
+				ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gloomgourd_overlay.png");
 				RenderSystem.disableDepthTest();
 				RenderSystem.depthMask(false);
 				RenderSystem.defaultBlendFunc();
@@ -43,16 +40,15 @@ public class CarvedGloomgourdItem extends BlockItem {
 				RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 				RenderSystem.setShaderTexture(0, overlay);
 				Minecraft.getInstance().getTextureManager().bindForSetup(overlay);
-				Tesselator tessellator = Tesselator.getInstance();
-				BufferBuilder bufferbuilder = tessellator.getBuilder();
-				bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-				final double scaledWidth = Minecraft.getInstance().getWindow().getGuiScaledWidth();
-				final double scaledHeight = Minecraft.getInstance().getWindow().getGuiScaledHeight();
-				bufferbuilder.vertex(0.0D, scaledHeight, -90.0D).uv(0.0F, 1.0F).endVertex();
-				bufferbuilder.vertex(scaledWidth, scaledHeight, -90.0D).uv(1.0F, 1.0F).endVertex();
-				bufferbuilder.vertex(scaledWidth, 0.0D, -90.0D).uv(1.0F, 0.0F).endVertex();
-				bufferbuilder.vertex(0.0D, 0.0D, -90.0D).uv(0.0F, 0.0F).endVertex();
-				tessellator.end();
+				Tesselator tesselator = Tesselator.getInstance();
+				BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+				final float scaledWidth = Minecraft.getInstance().getWindow().getGuiScaledWidth();
+				final float scaledHeight = Minecraft.getInstance().getWindow().getGuiScaledHeight();
+				bufferbuilder.addVertex(0.0F, scaledHeight, -90.0F).setUv(0.0F, 1.0F);
+				bufferbuilder.addVertex(scaledWidth, scaledHeight, -90.0F).setUv(1.0F, 1.0F);
+				bufferbuilder.addVertex(scaledWidth, 0.0F, -90.0F).setUv(1.0F, 0.0F);
+				bufferbuilder.addVertex(0.0F, 0.0F, -90.0F).setUv(0.0F, 0.0F);
+				BufferUploader.drawWithShader(bufferbuilder.buildOrThrow());
 				RenderSystem.depthMask(true);
 				RenderSystem.enableDepthTest();
 				RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);

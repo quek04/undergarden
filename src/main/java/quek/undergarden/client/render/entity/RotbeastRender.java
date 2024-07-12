@@ -13,6 +13,8 @@ import quek.undergarden.entity.monster.rotspawn.Rotbeast;
 
 public class RotbeastRender extends MobRenderer<Rotbeast, RotbeastModel<Rotbeast>> {
 
+	private static final ResourceLocation ROTBEAST = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/rotbeast.png");
+
 	public RotbeastRender(EntityRendererProvider.Context context) {
 		super(context, new RotbeastModel<>(context.bakeLayer(UGModelLayers.ROTBEAST)), 0.6F);
 		this.addLayer(new RotbeastEyesLayer<>(this));
@@ -20,7 +22,7 @@ public class RotbeastRender extends MobRenderer<Rotbeast, RotbeastModel<Rotbeast
 
 	@Override
 	public ResourceLocation getTextureLocation(Rotbeast entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/rotbeast.png");
+		return ROTBEAST;
 	}
 
 	@Override

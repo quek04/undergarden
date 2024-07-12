@@ -13,6 +13,8 @@ import quek.undergarden.entity.monster.rotspawn.Rotwalker;
 
 public class RotwalkerRender extends MobRenderer<Rotwalker, RotwalkerModel<Rotwalker>> {
 
+	private static final ResourceLocation ROTWALKER = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/rotwalker.png");
+
 	public RotwalkerRender(EntityRendererProvider.Context context) {
 		super(context, new RotwalkerModel<>(context.bakeLayer(UGModelLayers.ROTWALKER)), 0.6F);
 		this.addLayer(new RotwalkerEyesLayer<>(this));
@@ -20,7 +22,7 @@ public class RotwalkerRender extends MobRenderer<Rotwalker, RotwalkerModel<Rotwa
 
 	@Override
 	public ResourceLocation getTextureLocation(Rotwalker entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/rotwalker.png");
+		return ROTWALKER;
 	}
 
 	@Override

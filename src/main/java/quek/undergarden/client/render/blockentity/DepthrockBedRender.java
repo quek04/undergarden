@@ -73,7 +73,7 @@ public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlock
 		stack.translate(0.5D, 0.5D, 0.5D);
 		stack.mulPose(Axis.ZP.rotationDegrees(180.0F + direction.toYRot()));
 		stack.translate(-0.5D, -0.5D, -0.5D);
-		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entitySolid(new ResourceLocation(Undergarden.MODID, "textures/block/depthrock_bed.png")));
+		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entitySolid(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/depthrock_bed.png")));
 		bedPart.render(stack, vertexConsumer, light, overlay);
 		stack.popPose();
 	}

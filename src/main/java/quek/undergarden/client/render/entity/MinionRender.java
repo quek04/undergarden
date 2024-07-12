@@ -11,6 +11,8 @@ import quek.undergarden.entity.Minion;
 
 public class MinionRender extends MobRenderer<Minion, MinionModel<Minion>> {
 
+	private static final ResourceLocation MINION = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/minion.png");
+
 	public MinionRender(EntityRendererProvider.Context context) {
 		super(context, new MinionModel<>(context.bakeLayer(UGModelLayers.MINION)), 0.5F);
 		this.addLayer(new MinionEyesLayer<>(this));
@@ -18,6 +20,6 @@ public class MinionRender extends MobRenderer<Minion, MinionModel<Minion>> {
 
 	@Override
 	public ResourceLocation getTextureLocation(Minion entity) {
-		return new ResourceLocation(Undergarden.MODID, "textures/entity/minion.png");
+		return MINION;
 	}
 }
