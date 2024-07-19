@@ -240,9 +240,13 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ANCIENT_ROOT_SIGN, "Ancient Root Sign");
 		addBlock(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, "Ancient Root Hanging Sign");
 
+		addBlock(UGBlocks.INFUSER, "Infuser");
+
 		addBlock(UGBlocks.VIRULENT_MIX, "Virulent Mix");
 
 		addBlock(UGBlocks.VIRULENT_MIX_CAULDRON, "Virulent Mix Cauldron");
+
+		addContainer("infuser", "Infuser");
 
 		addItem(UGItems.MAMMOTH_DISC, "Music Disc");
 		addJukeboxSong(UGJukeboxSongs.MAMMOTH, "Screem - Mammoth");

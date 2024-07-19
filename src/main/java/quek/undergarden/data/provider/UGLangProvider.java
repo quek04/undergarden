@@ -76,6 +76,10 @@ public abstract class UGLangProvider extends LanguageProvider {
 		add("jukebox_song.undergarden." + song.location().getPath(), name);
 	}
 
+	protected void addContainer(String containerName, String name) {
+		add("container.undergarden." + containerName, name);
+	}
+
 	@Override
 	public CompletableFuture<?> run(CachedOutput cache) {
 		//generate normal lang file
