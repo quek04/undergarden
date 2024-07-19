@@ -1,4 +1,5 @@
-// 1.21	2024-07-12T13:07:15.0672732	Tags for minecraft:damage_type mod id undergarden
+// 1.21	2024-07-19T15:42:59.1248593	Tags for minecraft:damage_type mod id undergarden
 db0e6db5fcd0389160a4eb91b181cfb63af61ce0 data/minecraft/tags/damage_type/bypasses_armor.json
 db0e6db5fcd0389160a4eb91b181cfb63af61ce0 data/minecraft/tags/damage_type/bypasses_enchantments.json
+168a0abce65aa0c47de43eb24f91f0a1c58c1d91 data/minecraft/tags/damage_type/no_knockback.json
 4f1da88416d7132eb33d4fc2d0a924caf577cc79 data/minecraft/tags/damage_type/witch_resistant_to.json
