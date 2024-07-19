@@ -22,13 +22,13 @@ import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import quek.undergarden.inventory.InfuserMenu;
+import quek.undergarden.recipe.InfuserRecipeInput;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGItems;
@@ -74,7 +74,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	};
 
 	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-	private final RecipeManager.CachedCheck<SingleRecipeInput, InfusingRecipe> quickCheck;
+	private final RecipeManager.CachedCheck<InfuserRecipeInput, InfusingRecipe> quickCheck;
 
 	public InfuserBlockEntity(BlockPos pos, BlockState blockState) {
 		super(UGBlockEntities.INFUSER.get(), pos, blockState);
@@ -201,7 +201,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 		boolean utheriumFuelFull = !utheriumFuel.isEmpty();
 		boolean rogdoriumFuelFull = !rogdoriumFuel.isEmpty();
 
-		RecipeHolder<InfusingRecipe> recipe = blockEntity.quickCheck.getRecipeFor(new SingleRecipeInput(input), level).orElse(null);
+		RecipeHolder<InfusingRecipe> recipe = blockEntity.quickCheck.getRecipeFor(new InfuserRecipeInput(input, !utheriumFuel.isEmpty()), level).orElse(null);
 		int i = blockEntity.getMaxStackSize();
 
 		if (inputFull) {
@@ -237,7 +237,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 
 	private boolean canInfuse(RegistryAccess registryAccess, @javax.annotation.Nullable RecipeHolder<InfusingRecipe> recipe, NonNullList<ItemStack> inventory, int maxStackSize, InfuserBlockEntity infuser) {
 		if (!inventory.get(0).isEmpty() && recipe != null) {
-			ItemStack result = recipe.value().assemble(new SingleRecipeInput(infuser.getItem(0)), registryAccess);
+			ItemStack result = recipe.value().assemble(new InfuserRecipeInput(infuser.getItem(0), !inventory.get(1).isEmpty()), registryAccess);
 
 			if (inventory.get(1).isEmpty() && recipe.value().isUtheriumFuel()) {
 				return false;
@@ -267,7 +267,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	private boolean infuse(RegistryAccess registryAccess, @javax.annotation.Nullable RecipeHolder<InfusingRecipe> recipe, NonNullList<ItemStack> inventory, int maxStackSize, InfuserBlockEntity infuser) {
 		if (recipe != null && canInfuse(registryAccess, recipe, inventory, maxStackSize, infuser)) {
 			ItemStack input = inventory.get(0);
-			ItemStack result = recipe.value().assemble(new SingleRecipeInput(this.getItem(0)), registryAccess);
+			ItemStack result = recipe.value().assemble(new InfuserRecipeInput(this.getItem(0), !inventory.get(1).isEmpty()), registryAccess);
 			ItemStack output = inventory.get(3);
 			if (output.isEmpty()) {
 				inventory.set(3, result.copy());
@@ -283,7 +283,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	}
 
 	private static int getTotalInfusingTime(Level level, InfuserBlockEntity blockEntity) {
-		SingleRecipeInput singlerecipeinput = new SingleRecipeInput(blockEntity.getItem(0));
+		InfuserRecipeInput singlerecipeinput = new InfuserRecipeInput(blockEntity.getItem(0), !blockEntity.getItem(1).isEmpty());
 		return blockEntity.quickCheck.getRecipeFor(singlerecipeinput, level).map(p_300840_ -> p_300840_.value().getInfusingTime()).orElse(200);
 	}
 

@@ -10,18 +10,18 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import quek.undergarden.inventory.slot.InfuserResultSlot;
 import quek.undergarden.inventory.slot.InfuserRogdoriumFuelSlot;
 import quek.undergarden.inventory.slot.InfuserUtheriumFuelSlot;
+import quek.undergarden.recipe.InfuserRecipeInput;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGMenuTypes;
 import quek.undergarden.registry.UGRecipeBookTypes;
 import quek.undergarden.registry.UGRecipeTypes;
 import quek.undergarden.registry.UGTags;
 
-public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecipe> {
+public class InfuserMenu extends RecipeBookMenu<InfuserRecipeInput, InfusingRecipe> {
 
 	private final Container container;
 	private final ContainerData data;
@@ -90,7 +90,7 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 	}
 
 	protected boolean canInfuse(ItemStack stack) {
-		return this.level.getRecipeManager().getRecipeFor(this.recipeType, new SingleRecipeInput(stack), this.level).isPresent();
+		return this.level.getRecipeManager().getRecipeFor(this.recipeType, new InfuserRecipeInput(stack, isUtheriumFuel(stack)), this.level).isPresent();
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 
 	@Override
 	public boolean recipeMatches(RecipeHolder<InfusingRecipe> recipe) {
-		return recipe.value().matches(new SingleRecipeInput(this.container.getItem(0)), this.level);
+		return recipe.value().matches(new InfuserRecipeInput(this.container.getItem(0), recipe.value().isUtheriumFuel()), this.level);
 	}
 
 	@Override

@@ -7,13 +7,16 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGRecipeSerializers;
 import quek.undergarden.registry.UGRecipeTypes;
 
-public class InfusingRecipe implements Recipe<SingleRecipeInput> {
+public class InfusingRecipe implements Recipe<InfuserRecipeInput> {
 
 	protected final InfusingBookCategory category;
 	protected final String group;
@@ -55,12 +58,12 @@ public class InfusingRecipe implements Recipe<SingleRecipeInput> {
 	}
 
 	@Override
-	public boolean matches(SingleRecipeInput input, Level level) {
-		return this.ingredient.test(input.item());
+	public boolean matches(InfuserRecipeInput input, Level level) {
+		return this.ingredient.test(input.item()) && this.utheriumFuel == input.isUtheriumFuel();
 	}
 
 	@Override
-	public ItemStack assemble(SingleRecipeInput input, HolderLookup.Provider registries) {
+	public ItemStack assemble(InfuserRecipeInput input, HolderLookup.Provider registries) {
 		return this.result.copy();
 	}
 
