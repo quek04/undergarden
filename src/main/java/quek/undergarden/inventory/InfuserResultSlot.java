@@ -45,8 +45,8 @@ public class InfuserResultSlot extends Slot {
 	@Override
 	protected void checkTakeAchievements(ItemStack stack) {
 		stack.onCraftedBy(this.player.level(), this.player, this.removeCount);
-		if (this.player instanceof ServerPlayer player && this.container instanceof InfuserBlockEntity infuser) {
-			//TODO reward abstractfurnaceblockentity.awardUsedRecipesAndPopExperience(serverplayer);
+		if (this.player instanceof ServerPlayer serverPlayer && this.container instanceof InfuserBlockEntity infuser) {
+			infuser.awardUsedRecipesAndPopExperience(serverPlayer);
 		}
 		this.removeCount = 0;
 

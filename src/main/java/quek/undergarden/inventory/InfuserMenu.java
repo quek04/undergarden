@@ -26,14 +26,14 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 	private final RecipeType<InfusingRecipe> recipeType;
 
 	public InfuserMenu(int containerId, Inventory playerInventory) {
-		this(containerId, playerInventory, new SimpleContainer(4), new SimpleContainerData(4));
+		this(containerId, playerInventory, new SimpleContainer(4), new SimpleContainerData(2));
 	}
 
 	public InfuserMenu(int containerId, Inventory playerInventory, Container container, ContainerData data) {
 		super(UGMenuTypes.INFUSER.get(), containerId);
 		this.recipeType = UGRecipeTypes.INFUSING.get();
 		checkContainerSize(container, 4);
-		checkContainerDataCount(data, 4);
+		checkContainerDataCount(data, 2);
 		this.container = container;
 		this.data = data;
 		this.level = playerInventory.player.level();
@@ -105,7 +105,7 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 	}
 
 	@Override
-	public boolean recipeMatches(RecipeHolder recipe) {
+	public boolean recipeMatches(RecipeHolder<InfusingRecipe> recipe) {
 		return recipe.value().matches(new SingleRecipeInput(this.container.getItem(0)), this.level);
 	}
 
@@ -144,49 +144,49 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(index);
 		if (slot.hasItem()) {
-			ItemStack slotItem = slot.getItem();
-			itemstack = slotItem.copy();
+			ItemStack itemstack1 = slot.getItem();
+			itemstack = itemstack1.copy();
 			if (index == 3) {
-				if (!this.moveItemStackTo(slotItem, 3, 39, true)) {
+				if (!this.moveItemStackTo(itemstack1, 4, 40, true)) {
 					return ItemStack.EMPTY;
 				}
 
-				slot.onQuickCraft(slotItem, itemstack);
-			} else if (index != 1 && index != 2) {
-				if (this.canInfuse(slotItem)) {
-					if (!this.moveItemStackTo(slotItem, 0, 1, false)) {
+				slot.onQuickCraft(itemstack1, itemstack);
+			} else if (index != 1 && index != 0 && index != 2) {
+				if (this.canInfuse(itemstack1)) {
+					if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
 						return ItemStack.EMPTY;
 					}
-				} else if (this.isUtheriumFuel(slotItem) && !this.isRogdoriumFuelFull()) {
-					if (!this.moveItemStackTo(slotItem, 1, 2, false)) {
+				} else if (this.isUtheriumFuel(itemstack1)) {
+					if (!this.moveItemStackTo(itemstack1, 1, 2, false)) {
 						return ItemStack.EMPTY;
 					}
-				} else if (this.isRogdoriumFuel(slotItem) && !this.isUtheriumFuelFull()) {
-					if (!this.moveItemStackTo(slotItem, 2, 3, false)) {
+				} else if (this.isRogdoriumFuel(itemstack1)) {
+					if (!this.moveItemStackTo(itemstack1, 2, 3, false)) {
 						return ItemStack.EMPTY;
 					}
-				} else if (index >= 4 && index < 30) {
-					if (!this.moveItemStackTo(slotItem, 30, 40, false)) {
+				} else if (index >= 4 && index < 31) {
+					if (!this.moveItemStackTo(itemstack1, 31, 40, false)) {
 						return ItemStack.EMPTY;
 					}
-				} else if (index >= 30 && index < 40 && !this.moveItemStackTo(slotItem, 4, 40, false)) {
+				} else if (index >= 31 && index < 40 && !this.moveItemStackTo(itemstack1, 4, 31, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else if (!this.moveItemStackTo(slotItem, 4, 40, false)) {
+			} else if (!this.moveItemStackTo(itemstack1, 4, 40, false)) {
 				return ItemStack.EMPTY;
 			}
 
-			if (slotItem.isEmpty()) {
+			if (itemstack1.isEmpty()) {
 				slot.setByPlayer(ItemStack.EMPTY);
 			} else {
 				slot.setChanged();
 			}
 
-			if (slotItem.getCount() == itemstack.getCount()) {
+			if (itemstack1.getCount() == itemstack.getCount()) {
 				return ItemStack.EMPTY;
 			}
 
-			slot.onTake(player, slotItem);
+			slot.onTake(player, itemstack1);
 		}
 
 		return itemstack;

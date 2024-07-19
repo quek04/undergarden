@@ -1,13 +1,18 @@
 package quek.undergarden.block.entity;
 
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -21,12 +26,15 @@ import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import quek.undergarden.inventory.InfuserMenu;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGRecipeTypes;
+
+import java.util.List;
 
 public class InfuserBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
 
@@ -61,7 +69,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 
 		@Override
 		public int getCount() {
-			return 4;
+			return 2;
 		}
 	};
 
@@ -277,5 +285,41 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	private static int getTotalInfusingTime(Level level, InfuserBlockEntity blockEntity) {
 		SingleRecipeInput singlerecipeinput = new SingleRecipeInput(blockEntity.getItem(0));
 		return blockEntity.quickCheck.getRecipeFor(singlerecipeinput, level).map(p_300840_ -> p_300840_.value().getInfusingTime()).orElse(200);
+	}
+
+	public void awardUsedRecipesAndPopExperience(ServerPlayer player) {
+		List<RecipeHolder<?>> list = this.getRecipesToAwardAndPopExperience(player.serverLevel(), player.position());
+		player.awardRecipes(list);
+
+		for (RecipeHolder<?> recipeholder : list) {
+			if (recipeholder != null) {
+				player.triggerRecipeCrafted(recipeholder, this.items);
+			}
+		}
+
+		this.recipesUsed.clear();
+	}
+
+	public List<RecipeHolder<?>> getRecipesToAwardAndPopExperience(ServerLevel level, Vec3 popVec) {
+		List<RecipeHolder<?>> list = Lists.newArrayList();
+
+		for (Object2IntMap.Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
+			level.getRecipeManager().byKey(entry.getKey()).ifPresent(recipeHolder -> {
+				list.add(recipeHolder);
+				createExperience(level, popVec, entry.getIntValue(), ((InfusingRecipe)recipeHolder.value()).getExperience());
+			});
+		}
+
+		return list;
+	}
+
+	private static void createExperience(ServerLevel level, Vec3 popVec, int recipeIndex, float experience) {
+		int i = Mth.floor((float)recipeIndex * experience);
+		float f = Mth.frac((float)recipeIndex * experience);
+		if (f != 0.0F && Math.random() < (double)f) {
+			i++;
+		}
+
+		ExperienceOrb.award(level, popVec, i);
 	}
 }

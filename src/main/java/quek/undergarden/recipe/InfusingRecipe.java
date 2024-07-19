@@ -45,6 +45,10 @@ public class InfusingRecipe implements Recipe<SingleRecipeInput> {
 		return utheriumFuel;
 	}
 
+	public float getExperience() {
+		return experience;
+	}
+
 	@Override
 	public ItemStack getToastSymbol() {
 		return new ItemStack(UGBlocks.INFUSER);
