@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "undergarden:dreadrock"
+    },
+    "R": {
+      "tag": "c:gems/rogdorium"
+    },
+    "U": {
+      "tag": "c:gems/utherium"
+    }
+  },
+  "pattern": [
+    "UDR",
+    "D D",
+    "D D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:infuser"
+  }
+}

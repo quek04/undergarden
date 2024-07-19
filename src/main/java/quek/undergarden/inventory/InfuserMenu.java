@@ -16,10 +16,10 @@ import quek.undergarden.inventory.slot.InfuserResultSlot;
 import quek.undergarden.inventory.slot.InfuserRogdoriumFuelSlot;
 import quek.undergarden.inventory.slot.InfuserUtheriumFuelSlot;
 import quek.undergarden.recipe.InfusingRecipe;
-import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGMenuTypes;
 import quek.undergarden.registry.UGRecipeBookTypes;
 import quek.undergarden.registry.UGRecipeTypes;
+import quek.undergarden.registry.UGTags;
 
 public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecipe> {
 
@@ -60,7 +60,7 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 	}
 
 	public boolean isUtheriumFuel(ItemStack stack) {
-		return stack.is(UGItems.UTHERIUM_CRYSTAL);
+		return stack.is(UGTags.Items.GEMS_UTHERIUM);
 	}
 
 	public boolean isUtheriumFuelFull() {
@@ -68,7 +68,7 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 	}
 
 	public boolean isRogdoriumFuel(ItemStack stack) {
-		return stack.is(UGItems.ROGDORIUM_CRYSTAL);
+		return stack.is(UGTags.Items.GEMS_ROGDORIUM);
 	}
 
 	public boolean isRogdoriumFuelFull() {

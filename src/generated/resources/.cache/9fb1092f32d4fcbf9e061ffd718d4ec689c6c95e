@@ -1,4 +1,4 @@
-// 1.21	2024-07-18T21:24:41.7669614	Recipes
+// 1.21	2024-07-19T12:56:48.3326397	Recipes
 912e5a9405a920f4caf922c5b5bbbe68096386fb data/undergarden/advancement/recipes/building_blocks/ancient_root_planks.json
 d558c5372c9b026a74bc8af216fce46d4018a50e data/undergarden/advancement/recipes/building_blocks/ancient_root_slab.json
 76a194998acb3c65e8ca6d21cad09660dfa5a245 data/undergarden/advancement/recipes/building_blocks/ancient_root_stairs.json
@@ -137,6 +137,7 @@ b24946860807479103d342de67f82d031b94a5c3 data/undergarden/advancement/recipes/de
 4839beb6d49ba6d5bba5429c481287cec66fd1c2 data/undergarden/advancement/recipes/decorations/grongle_fence.json
 720a021ff9c19d408e67e20a6c6a8e8998377334 data/undergarden/advancement/recipes/decorations/grongle_hanging_sign.json
 1e6421394089f57f4bdb5f30b211a0222dc03212 data/undergarden/advancement/recipes/decorations/grongle_sign.json
+e58438cf044d42de9ce162b5d54ec3872f6407b9 data/undergarden/advancement/recipes/decorations/infuser.json
 71a5f6b0fbfa0061780bca0c50ff61804979a941 data/undergarden/advancement/recipes/decorations/mogmoss_rug.json
 4f280a202d237996908491835cd716f37ba00ed0 data/undergarden/advancement/recipes/decorations/polished_depthrock_wall.json
 05d59cf18484c7c55da137901f0abc1b304e8029 data/undergarden/advancement/recipes/decorations/sediment_glass_pane.json
@@ -457,6 +458,7 @@ ccefeee456aa7d52d3cb97dbf1b5f4e0b8f5615a data/undergarden/recipe/grongle_trapdoo
 06780048f41fd1e72ec28786be8d98b9cac2aa7f data/undergarden/recipe/grongle_wood.json
 2b4c1b4894cec71fb7e86f33d6a15a5ae5c9e1c4 data/undergarden/recipe/indigo_mushroom_to_dye.json
 d8b23407d2ae42660c0950d02e9de25d79ffcf36 data/undergarden/recipe/indigo_stew.json
+ef4a7ae4ab4f18ff4e8722ca31e66000867bda43 data/undergarden/recipe/infuser.json
 168106b49280998b91b4bac808d7ce3dcefe1ac8 data/undergarden/recipe/inky_stew.json
 347b281c120f62070d3829c3f9948e60cad10fc0 data/undergarden/recipe/ink_mushroom_to_dye.json
 cf33fdf2bf9b490ca734769d5d03033b23d22b05 data/undergarden/recipe/miserabell_to_dye.json
