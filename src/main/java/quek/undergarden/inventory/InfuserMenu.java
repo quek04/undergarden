@@ -160,11 +160,11 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 					if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
 						return ItemStack.EMPTY;
 					}
-				} else if (this.isUtheriumFuel(itemstack1)) {
+				} else if (this.isUtheriumFuel(itemstack1) && this.slots.get(2).getItem().isEmpty()) {
 					if (!this.moveItemStackTo(itemstack1, 1, 2, false)) {
 						return ItemStack.EMPTY;
 					}
-				} else if (this.isRogdoriumFuel(itemstack1)) {
+				} else if (this.isRogdoriumFuel(itemstack1) && this.slots.get(1).getItem().isEmpty()) {
 					if (!this.moveItemStackTo(itemstack1, 2, 3, false)) {
 						return ItemStack.EMPTY;
 					}
