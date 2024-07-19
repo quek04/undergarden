@@ -132,8 +132,8 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
 		return switch (index) {
 			case 0 -> true;
-			case 1 -> itemStack.is(UGItems.UTHERIUM_CRYSTAL);
-			case 2 -> itemStack.is(UGItems.ROGDORIUM_CRYSTAL);
+			case 1 -> this.items.get(2).isEmpty() && itemStack.is(UGItems.UTHERIUM_CRYSTAL);
+			case 2 -> this.items.get(1).isEmpty() && itemStack.is(UGItems.ROGDORIUM_CRYSTAL);
 			default -> false;
 		};
 	}
