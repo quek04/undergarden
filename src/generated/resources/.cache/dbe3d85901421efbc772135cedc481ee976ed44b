@@ -1,4 +1,4 @@
-// 1.21	2024-07-12T13:07:15.0587623	Item Models: undergarden
+// 1.21	2024-07-19T11:53:06.9736001	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -158,6 +158,7 @@ fe76cb7d1ba3949d7315f8ea247b8c87c17a5cce assets/undergarden/models/item/gwibling
 190f67d32c22ae8dffdfa2b2d934306c119b7d74 assets/undergarden/models/item/indigo_mushroom_cap.json
 086e3799fd75dbd68d6aeeeea1cb7c42ee25b8b7 assets/undergarden/models/item/indigo_mushroom_stem.json
 318c1e38d65880668eac8e05bdbe8235b484d145 assets/undergarden/models/item/indigo_stew.json
+02922520d7f6ab1625bbb9272a6f08a6a45a0a31 assets/undergarden/models/item/infuser.json
 6f6327da20b0af0063274b0b3ce76ac9241dcd35 assets/undergarden/models/item/inky_stew.json
 f4f2da27e0af25333d7ff5e033141d2bc9ca1890 assets/undergarden/models/item/ink_mushroom.json
 a2179db39d2ecc39a868deeaa392d52b222ad634 assets/undergarden/models/item/ink_mushroom_cap.json

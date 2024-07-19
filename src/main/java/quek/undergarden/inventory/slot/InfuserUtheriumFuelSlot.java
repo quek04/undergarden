@@ -1,8 +1,9 @@
-package quek.undergarden.inventory;
+package quek.undergarden.inventory.slot;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import quek.undergarden.inventory.InfuserMenu;
 
 public class InfuserUtheriumFuelSlot extends Slot {
 

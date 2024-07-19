@@ -277,6 +277,7 @@ public class UGItemModels extends UGItemModelProvider {
 		blockFlat(UGBlocks.PUFF_MUSHROOM);
 		block(UGBlocks.PUFF_MUSHROOM_CAP);
 		block(UGBlocks.PUFF_MUSHROOM_STEM);
+		block(UGBlocks.INFUSER);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);

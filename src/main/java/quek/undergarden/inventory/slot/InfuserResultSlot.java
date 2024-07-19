@@ -1,4 +1,4 @@
-package quek.undergarden.inventory;
+package quek.undergarden.inventory.slot;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
