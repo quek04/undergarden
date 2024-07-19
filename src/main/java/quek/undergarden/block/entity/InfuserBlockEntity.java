@@ -27,6 +27,8 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import quek.undergarden.block.InfuserBlock;
+import quek.undergarden.block.InfuserState;
 import quek.undergarden.inventory.InfuserMenu;
 import quek.undergarden.recipe.InfuserRecipeInput;
 import quek.undergarden.recipe.InfusingRecipe;
@@ -191,6 +193,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, InfuserBlockEntity blockEntity) {
 		boolean changed = false;
+		boolean isInfusing = blockEntity.infusingProgress > 0;
 		//Undergarden.LOGGER.debug("time {}", blockEntity.infusingProgress);
 		//Undergarden.LOGGER.debug("totalTime {}", blockEntity.infusingTotalTime);
 
@@ -201,7 +204,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 		boolean utheriumFuelFull = !utheriumFuel.isEmpty();
 		boolean rogdoriumFuelFull = !rogdoriumFuel.isEmpty();
 
-		RecipeHolder<InfusingRecipe> recipe = blockEntity.quickCheck.getRecipeFor(new InfuserRecipeInput(input, !utheriumFuel.isEmpty()), level).orElse(null);
+		RecipeHolder<InfusingRecipe> recipe = blockEntity.quickCheck.getRecipeFor(new InfuserRecipeInput(input, utheriumFuelFull), level).orElse(null);
 		int i = blockEntity.getMaxStackSize();
 
 		if (inputFull) {
@@ -228,6 +231,12 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 			}
 		} else if (blockEntity.infusingProgress > 0) {
 			blockEntity.infusingProgress = Mth.clamp(blockEntity.infusingProgress - 2, 0, blockEntity.infusingTotalTime);
+		}
+
+		if (isInfusing != blockEntity.infusingProgress > 0) {
+			changed = true;
+			state = state.setValue(InfuserBlock.STATE, !utheriumFuelFull && !rogdoriumFuelFull ? InfuserState.INACTIVE : (utheriumFuelFull ? InfuserState.INFUSING_UTHERIUM : InfuserState.INFUSING_ROGDORIUM));
+			level.setBlock(pos, state, 3);
 		}
 
 		if (changed) {
