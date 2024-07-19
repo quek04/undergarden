@@ -288,6 +288,8 @@ public class UGBlocks {
 	public static final DeferredBlock<CeilingHangingSignBlock> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
 	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = BLOCKS.register("ancient_root_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
+	//functional
+	public static final DeferredBlock<Block> INFUSER = register("infuser", () -> new InfuserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
 	//flower pots
 	public static final DeferredBlock<FlowerPotBlock> POTTED_SMOGSTEM_SAPLING = BLOCKS.register("potted_smogstem_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SMOGSTEM_SAPLING, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)));

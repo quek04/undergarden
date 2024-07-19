@@ -1,4 +1,4 @@
-// 1.21	2024-07-12T13:07:15.0512329	Loot Tables
+// 1.21	2024-07-17T12:08:17.9358659	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_table/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_table/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_table/blocks/ancient_root_button.json
@@ -105,6 +105,7 @@ ca44e662a2a265979d703328d6d97f528a535191 data/undergarden/loot_table/blocks/hang
 42be8666e71e5a9a074454461ff0cbd09b81aa1d data/undergarden/loot_table/blocks/indigo_mushroom.json
 f6324c9ca7872853899f4de66f046733e033ad46 data/undergarden/loot_table/blocks/indigo_mushroom_cap.json
 cbd36b3360cb4d9161b3887fdd55cdb2f754b563 data/undergarden/loot_table/blocks/indigo_mushroom_stem.json
+897a3fde9d8f7d107035355698ed7ea3e8aed68f data/undergarden/loot_table/blocks/infuser.json
 59be27b00d2ba0dae79cbab4c5abc555eac00fe9 data/undergarden/loot_table/blocks/ink_mushroom.json
 3d00a3e564e3241098fe191f5d1754f9aa9c86d8 data/undergarden/loot_table/blocks/ink_mushroom_cap.json
 503d56ad0754549a358ad2b458013f5c3268c261 data/undergarden/loot_table/blocks/ink_mushroom_stem.json

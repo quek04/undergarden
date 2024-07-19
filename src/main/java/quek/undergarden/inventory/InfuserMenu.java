@@ -1,0 +1,199 @@
+package quek.undergarden.inventory;
+
+import net.minecraft.util.Mth;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.inventory.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.level.Level;
+import quek.undergarden.recipe.InfusingRecipe;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGMenuTypes;
+import quek.undergarden.registry.UGRecipeBookTypes;
+import quek.undergarden.registry.UGRecipeTypes;
+
+public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecipe> {
+
+	private final Container container;
+	private final ContainerData data;
+	protected final Level level;
+	private final RecipeType<InfusingRecipe> recipeType;
+
+	public InfuserMenu(int containerId, Inventory playerInventory) {
+		this(containerId, playerInventory, new SimpleContainer(4), new SimpleContainerData(4));
+	}
+
+	public InfuserMenu(int containerId, Inventory playerInventory, Container container, ContainerData data) {
+		super(UGMenuTypes.INFUSER.get(), containerId);
+		this.recipeType = UGRecipeTypes.INFUSING.get();
+		checkContainerSize(container, 4);
+		checkContainerDataCount(data, 4);
+		this.container = container;
+		this.data = data;
+		this.level = playerInventory.player.level();
+
+		this.addSlot(new Slot(container, 0, 80, 17));
+		this.addSlot(new InfuserUtheriumFuelSlot(this, container, 1, 26, 53));
+		this.addSlot(new InfuserRogdoriumFuelSlot(this, container, 2, 134, 53));
+		this.addSlot(new InfuserResultSlot(playerInventory.player, container, 3, 80, 52));
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 9; j++) {
+				this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+			}
+		}
+
+		for (int k = 0; k < 9; k++) {
+			this.addSlot(new Slot(playerInventory, k, 8 + k * 18, 142));
+		}
+
+		this.addDataSlots(data);
+	}
+
+	public boolean isUtheriumFuel(ItemStack stack) {
+		return stack.is(UGItems.UTHERIUM_CRYSTAL);
+	}
+
+	public boolean isUtheriumFuelFull() {
+		return !this.container.getItem(1).isEmpty();
+	}
+
+	public boolean isRogdoriumFuel(ItemStack stack) {
+		return stack.is(UGItems.ROGDORIUM_CRYSTAL);
+	}
+
+	public boolean isRogdoriumFuelFull() {
+		return !this.container.getItem(2).isEmpty();
+	}
+
+	public float getInfusingProgress() {
+		int infusingProgress = this.getInfusingProgressInt();
+		int infusingTotalTime = this.getInfusingTotalTimeInt();
+		return infusingProgress != 0 && infusingTotalTime != 0 ? Mth.clamp((float) infusingProgress / (float) infusingTotalTime, 0.0F, 1.0F) : 0.0F;
+	}
+
+	public int getInfusingProgressInt() {
+		return this.data.get(0);
+	}
+
+	public int getInfusingTotalTimeInt() {
+		return this.data.get(1);
+	}
+
+	protected boolean canInfuse(ItemStack stack) {
+		return this.level.getRecipeManager().getRecipeFor(this.recipeType, new SingleRecipeInput(stack), this.level).isPresent();
+	}
+
+	@Override
+	public void fillCraftSlotsStackedContents(StackedContents itemHelper) {
+		if (this.container instanceof StackedContentsCompatible) {
+			((StackedContentsCompatible)this.container).fillStackedContents(itemHelper);
+		}
+	}
+
+	@Override
+	public void clearCraftingContent() {
+		this.getSlot(0).set(ItemStack.EMPTY);
+		this.getSlot(1).set(ItemStack.EMPTY);
+		this.getSlot(2).set(ItemStack.EMPTY);
+	}
+
+	@Override
+	public boolean recipeMatches(RecipeHolder recipe) {
+		return recipe.value().matches(new SingleRecipeInput(this.container.getItem(0)), this.level);
+	}
+
+	@Override
+	public int getResultSlotIndex() {
+		return 3;
+	}
+
+	@Override
+	public int getGridWidth() {
+		return 1;
+	}
+
+	@Override
+	public int getGridHeight() {
+		return 1;
+	}
+
+	@Override
+	public int getSize() {
+		return 4;
+	}
+
+	@Override
+	public RecipeBookType getRecipeBookType() {
+		return UGRecipeBookTypes.INFUSER;
+	}
+
+	@Override
+	public boolean shouldMoveToInventory(int slotIndex) {
+		return slotIndex != 1; //TODO figure out which index to use
+	}
+
+	@Override
+	public ItemStack quickMoveStack(Player player, int index) {
+		ItemStack itemstack = ItemStack.EMPTY;
+		Slot slot = this.slots.get(index);
+		if (slot.hasItem()) {
+			ItemStack slotItem = slot.getItem();
+			itemstack = slotItem.copy();
+			if (index == 3) {
+				if (!this.moveItemStackTo(slotItem, 3, 39, true)) {
+					return ItemStack.EMPTY;
+				}
+
+				slot.onQuickCraft(slotItem, itemstack);
+			} else if (index != 1 && index != 2) {
+				if (this.canInfuse(slotItem)) {
+					if (!this.moveItemStackTo(slotItem, 0, 1, false)) {
+						return ItemStack.EMPTY;
+					}
+				} else if (this.isUtheriumFuel(slotItem) && !this.isRogdoriumFuelFull()) {
+					if (!this.moveItemStackTo(slotItem, 1, 2, false)) {
+						return ItemStack.EMPTY;
+					}
+				} else if (this.isRogdoriumFuel(slotItem) && !this.isUtheriumFuelFull()) {
+					if (!this.moveItemStackTo(slotItem, 2, 3, false)) {
+						return ItemStack.EMPTY;
+					}
+				} else if (index >= 4 && index < 30) {
+					if (!this.moveItemStackTo(slotItem, 30, 40, false)) {
+						return ItemStack.EMPTY;
+					}
+				} else if (index >= 30 && index < 40 && !this.moveItemStackTo(slotItem, 4, 40, false)) {
+					return ItemStack.EMPTY;
+				}
+			} else if (!this.moveItemStackTo(slotItem, 4, 40, false)) {
+				return ItemStack.EMPTY;
+			}
+
+			if (slotItem.isEmpty()) {
+				slot.setByPlayer(ItemStack.EMPTY);
+			} else {
+				slot.setChanged();
+			}
+
+			if (slotItem.getCount() == itemstack.getCount()) {
+				return ItemStack.EMPTY;
+			}
+
+			slot.onTake(player, slotItem);
+		}
+
+		return itemstack;
+	}
+
+	@Override
+	public boolean stillValid(Player player) {
+		return this.container.stillValid(player);
+	}
+}

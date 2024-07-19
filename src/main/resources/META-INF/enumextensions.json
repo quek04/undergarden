@@ -17,6 +17,33 @@
         "class": "quek/undergarden/UGEnumExtensions",
         "field": "ROGDORIUM"
       }
+    },
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "UNDERGARDEN_INFUSER",
+      "constructor": "()V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "INFUSER"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "UNDERGARDEN_INFUSER_SEARCH",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "INFUSER_SEARCH"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "UNDERGARDEN_INFUSER_MISC",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "INFUSER_MISC"
+      }
     }
   ]
 }

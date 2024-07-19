@@ -85,7 +85,10 @@ public class Undergarden {
 			UGStructures.STRUCTURES,
 			UGTreeDecoratorTypes.TREE_DECORATORS,
 			UGTrunkPlacerTypes.TRUNK_PLACERS,
-			UGArmorMaterials.ARMOR_MATERIALS
+			UGArmorMaterials.ARMOR_MATERIALS,
+			UGMenuTypes.MENU_TYPES,
+			UGRecipeSerializers.RECIPE_SERIALIZERS,
+			UGRecipeTypes.RECIPE_TYPES
 		};
 
 		for (DeferredRegister<?> register : registers) {

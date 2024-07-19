@@ -1,5 +1,6 @@
 package quek.undergarden.event;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -49,6 +50,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.attachment.UndergardenPortalAttachment;
+import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
@@ -91,6 +93,8 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerEntityLayerDefinitions);
 		bus.addListener(UndergardenClientEvents::addEntityLayers);
 		bus.addListener(UndergardenClientEvents::registerParticleFactories);
+		bus.addListener(UndergardenClientEvents::registerMenuScreens);
+		bus.addListener(UndergardenClientEvents::registerRecipeBookCategories);
 		bus.addListener(UndergardenClientEvents::registerBlockColors);
 		bus.addListener(UndergardenClientEvents::registerItemColors);
 		bus.addListener(UndergardenClientEvents::registerOverlays);
@@ -245,6 +249,16 @@ public class UndergardenClientEvents {
 		event.registerSprite(UGParticleTypes.DRIPPING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentHangParticle);
 		event.registerSprite(UGParticleTypes.FALLING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentFallParticle);
 		event.registerSprite(UGParticleTypes.LANDING_VIRULENT.get(), UGDripParticles::createVirulentLandParticle);
+	}
+
+	private static void registerMenuScreens(RegisterMenuScreensEvent event) {
+		event.register(UGMenuTypes.INFUSER.get(), InfuserScreen::new);
+	}
+
+	private static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
+		event.registerBookCategories(UGRecipeBookTypes.INFUSER, ImmutableList.of(UGRecipeBookCategories.INFUSER_SEARCH, UGRecipeBookCategories.INFUSER_MISC));
+		event.registerAggregateCategory(UGRecipeBookCategories.INFUSER_SEARCH, ImmutableList.of(UGRecipeBookCategories.INFUSER_MISC));
+		event.registerRecipeCategoryFinder(UGRecipeTypes.INFUSING.get(), recipeHolder -> UGRecipeBookCategories.INFUSER_MISC);
 	}
 
 	private static void registerBlockColors(RegisterColorHandlersEvent.Block event) {

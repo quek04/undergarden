@@ -39,4 +39,5 @@ public class UGBlockEntities {
 			BlockEntityType.Builder.of(DepthrockBedBlockEntity::new, UGBlocks.DEPTHROCK_BED.get()).build(null));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GrongletBlockEntity>> GRONGLET = BLOCK_ENTITIES.register("gronglet", () -> BlockEntityType.Builder.of(GrongletBlockEntity::new, UGBlocks.GRONGLET.get()).build(null));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DenizenTotemBlockEntity>> DENIZEN_TOTEM = BLOCK_ENTITIES.register("denizen_totem", () -> BlockEntityType.Builder.of(DenizenTotemBlockEntity::new, UGBlocks.DENIZEN_TOTEM.get()).build(null));
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<InfuserBlockEntity>> INFUSER = BLOCK_ENTITIES.register("infuser", () -> BlockEntityType.Builder.of(InfuserBlockEntity::new, UGBlocks.INFUSER.get()).build(null));
 }

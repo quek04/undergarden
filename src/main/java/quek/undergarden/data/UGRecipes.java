@@ -630,6 +630,10 @@ public class UGRecipes extends UGRecipeProvider {
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_SLAB.get(), 2).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_slab_stonecutting"));
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_STAIRS.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_stairs_stonecutting"));
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_WALL.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_wall_stonecutting"));
+
+		infusingRecipe(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, false, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
+		infusingRecipe(UGBlocks.UTHERIUM_BLOCK, UGBlocks.GRONGLET, true, 1.0F, 200).save(consumer, name("test"));
+		infusingRecipe(UGBlocks.ROGDORIUM_BLOCK, UGBlocks.GRONGLET, false, 1.0F, 200).save(consumer, name("test2"));
 	}
 
 	private ResourceLocation name(String name) {

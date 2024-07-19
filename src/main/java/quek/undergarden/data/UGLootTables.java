@@ -314,6 +314,7 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.PUFF_MUSHROOM);
 			this.add(UGBlocks.PUFF_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.PUFF_MUSHROOM.get()));
 			dropAsSilk(UGBlocks.PUFF_MUSHROOM_STEM);
+			dropSelf(UGBlocks.INFUSER);
 		}
 
 		@Override

@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.CeilingHangingSignBlock;
 import net.minecraft.world.level.block.SignBlock;
 import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.Undergarden;
+import quek.undergarden.data.builder.InfusingRecipeBuilder;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
@@ -443,5 +444,9 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public SingleItemRecipeBuilder tremblecrustBricksStonecutting(ItemLike result, int resultAmount) {
 		return stonecutting(UGBlocks.TREMBLECRUST_BRICKS, result, resultAmount);
+	}
+
+	public InfusingRecipeBuilder infusingRecipe(ItemLike result, ItemLike ingredient, boolean utheriumFuel, float experience, int infusingTime) {
+		return InfusingRecipeBuilder.infusing(Ingredient.of(ingredient), RecipeCategory.MISC, new ItemStack(result), experience, infusingTime, utheriumFuel).unlockedBy("has_item", has(ingredient));
 	}
 }
