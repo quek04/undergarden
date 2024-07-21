@@ -302,6 +302,7 @@
   "block.undergarden.wigglewood_trapdoor": "Wigglewood Trapdoor",
   "block.undergarden.wigglewood_wood": "Wigglewood.. Wood",
   "config.undergarden.return_portal_frame_block_id": "Return Portal Frame Block ID",
+  "config.undergarden.toggle_undergarden_fog": "Toggle Undergarden Fog",
   "container.undergarden.infuser": "Infuser",
   "death.attack.blisterberry_bush": "%1$s was poked by a Blisterberry Bush",
   "death.attack.blisterberry_bush.player": "%1$s was poked by a Blisterberry Bush whilst trying to escape %2$s",

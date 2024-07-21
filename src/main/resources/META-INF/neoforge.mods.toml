@@ -17,7 +17,7 @@ enumExtensions="META-INF/enumextensions.json"
 [[dependencies.undergarden]]
 	modId = "neoforge"
 	type = "required"
-	versionRange = "[20.6.78-beta,)"
+	versionRange = "[20.6.113-beta,)"
 	ordering = "NONE"
 	side = "BOTH"
 

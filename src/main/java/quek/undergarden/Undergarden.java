@@ -20,6 +20,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -53,6 +55,7 @@ public class Undergarden {
 
 		if (dist.isClient()) {
 			UndergardenClientEvents.initClientEvents(bus);
+			container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 		}
 
 		UndergardenCommonEvents.initCommonEvents(bus);

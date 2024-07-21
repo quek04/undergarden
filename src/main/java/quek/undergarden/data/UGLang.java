@@ -708,6 +708,7 @@ public class UGLang extends UGLangProvider {
 		addDeath("utheric_infection.player", "%1$s succumbed to the Utheric Infection whilst trying to escape %2$s");
 
 		addConfig("return_portal_frame_block_id", "Return Portal Frame Block ID");
+		addConfig("toggle_undergarden_fog", "Toggle Undergarden Fog");
 
 		add("trim_material.undergarden.cloggrum", "Cloggrum material");
 		add("trim_material.undergarden.froststeel", "Froststeel material");
