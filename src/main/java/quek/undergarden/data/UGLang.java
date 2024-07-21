@@ -584,6 +584,9 @@ public class UGLang extends UGLangProvider {
 		addAdvTitle("break_denizen_campfire", "Party Pooper");
 		addAdvDesc("break_denizen_campfire", "Upset all of the Denizens around you by destroying their campfire.");
 
+		addAdvTitle("craft_infuser", "I <3 Infusing");
+		addAdvDesc("craft_infuser", "Create the Infuser.");
+
 		//addAdvTitle("otherside_root", "The Otherside");
 		//addAdvDesc("otherside_root", "Enter the realm of madness.");
 

@@ -590,5 +590,20 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			)
 			.addCriterion("has_broken_denizen_campfire", DenizenCampfireDestroyedTrigger.TriggerInstance.destroyedCampfire(Blocks.CAMPFIRE))
 			.save(consumer, "undergarden:undergarden/break_denizen_campfire");
+
+		AdvancementHolder craft_infuser = Advancement.Builder.advancement()
+			.parent(enter_depths)
+			.display(
+				UGBlocks.INFUSER.get(),
+				Component.translatable("advancement.undergarden.craft_infuser.title"),
+				Component.translatable("advancement.undergarden.craft_infuser.desc"),
+				null,
+				AdvancementType.GOAL,
+				true,
+				true,
+				false
+			)
+			.addCriterion("has_infuser", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.INFUSER.get()))
+			.save(consumer, "undergarden:undergarden/craft_infuser");
 	}
 }
