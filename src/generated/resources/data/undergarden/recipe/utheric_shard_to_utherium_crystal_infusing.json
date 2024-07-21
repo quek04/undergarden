@@ -4,11 +4,11 @@
   "experience": 1.0,
   "infusingTime": 200,
   "ingredient": {
-    "item": "undergarden:gronglet"
+    "item": "undergarden:utheric_shard"
   },
   "result": {
     "count": 1,
-    "id": "undergarden:utherium_block"
+    "id": "undergarden:utherium_crystal"
   },
-  "utheriumFuel": true
+  "utheriumFuel": false
 }

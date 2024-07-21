@@ -304,14 +304,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.unlockedBy("has_butterbunch", has(UGBlocks.BUTTERBUNCH.get()))
 			.save(consumer, name("butterbunch_to_dye"));
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.UTHERIUM_CRYSTAL.get())
-			.pattern("SSS")
-			.pattern("SSS")
-			.pattern("SSS")
-			.define('S', UGItems.UTHERIC_SHARD.get())
-			.unlockedBy("has_shard", has(UGItems.UTHERIC_SHARD.get()))
-			.save(consumer, name("shard_to_crystal"));
-
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.LEAD, 2)
 			.pattern("TT ")
 			.pattern("TG ")
@@ -642,8 +634,7 @@ public class UGRecipes extends UGRecipeProvider {
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_WALL.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_wall_stonecutting"));
 
 		infusingRecipe(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, false, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
-		infusingRecipe(UGBlocks.UTHERIUM_BLOCK, UGBlocks.GRONGLET, true, 1.0F, 200).save(consumer, name("test"));
-		infusingRecipe(UGBlocks.ROGDORIUM_BLOCK, UGBlocks.GRONGLET, false, 1.0F, 200).save(consumer, name("test2"));
+		infusingRecipe(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_SHARD, false, 1.0F, 200).save(consumer, name("utheric_shard_to_utherium_crystal_infusing"));
 	}
 
 	private ResourceLocation name(String name) {
