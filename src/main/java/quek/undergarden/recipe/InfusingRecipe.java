@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
@@ -85,6 +86,13 @@ public class InfusingRecipe implements Recipe<InfuserRecipeInput> {
 	@Override
 	public RecipeType<?> getType() {
 		return UGRecipeTypes.INFUSING.get();
+	}
+
+	@Override
+	public NonNullList<Ingredient> getIngredients() {
+		NonNullList<Ingredient> list = NonNullList.create();
+		list.add(this.ingredient);
+		return list;
 	}
 
 	public static class Serializer implements RecipeSerializer<InfusingRecipe> {

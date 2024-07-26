@@ -718,5 +718,9 @@ public class UGLang extends UGLangProvider {
 		add("trim_material.undergarden.regalium", "Regalium material");
 		add("trim_material.undergarden.utherium", "Utherium material");
 		add("trim_material.undergarden.forgotten", "Forgotten material");
+
+		add("gui.undergarden.jei.category.infuser", "Infusing");
+		add("gui.undergarden.jei.category.infusing.experience", "%s XP");
+		add("gui.undergarden.jei.category.infusing.time.seconds", "%ss");
 	}
 }
