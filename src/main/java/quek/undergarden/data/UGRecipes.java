@@ -38,6 +38,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeBricks(UGBlocks.SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE).save(consumer);
 		makeBricks(UGBlocks.TREMBLECRUST_BRICKS, UGBlocks.TREMBLECRUST).save(consumer);
 		makeBricks(UGBlocks.DEPTHROCK_TILES, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
+		makeBricks(UGBlocks.DREADROCK_BRICKS, UGBlocks.DREADROCK).save(consumer);
 
 		makeChiseledBricks(UGBlocks.CHISELED_DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK_BRICK_SLAB).save(consumer);
 		makeChiseledBricks(UGBlocks.CHISELED_SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE_BRICK_SLAB).save(consumer);
@@ -431,6 +432,8 @@ public class UGRecipes extends UGRecipeProvider {
 		makeStairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES).save(consumer);
 		makeStairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
 		makeStairs(UGBlocks.ANCIENT_ROOT_STAIRS, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
+		makeStairs(UGBlocks.DREADROCK_STAIRS, UGBlocks.DREADROCK).save(consumer);
+		makeStairs(UGBlocks.DREADROCK_BRICK_STAIRS, UGBlocks.DREADROCK_BRICKS).save(consumer);
 
 		makeSlab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK).save(consumer);
 		makeSlab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -445,6 +448,8 @@ public class UGRecipes extends UGRecipeProvider {
 		makeSlab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES).save(consumer);
 		makeSlab(UGBlocks.POLISHED_DEPTHROCK_SLAB, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
 		makeSlab(UGBlocks.ANCIENT_ROOT_SLAB, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
+		makeSlab(UGBlocks.DREADROCK_SLAB, UGBlocks.DREADROCK).save(consumer);
+		makeSlab(UGBlocks.DREADROCK_BRICK_SLAB, UGBlocks.DREADROCK_BRICKS).save(consumer);
 
 		makeWall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK).save(consumer);
 		makeWall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -453,6 +458,8 @@ public class UGRecipes extends UGRecipeProvider {
 		makeWall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST).save(consumer);
 		makeWall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS).save(consumer);
 		makeWall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
+		makeWall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK).save(consumer);
+		makeWall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS).save(consumer);
 
 		makeFence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeFence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
@@ -481,6 +488,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeButton(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK).save(consumer);
 		makeButton(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE).save(consumer);
 		makeButton(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST).save(consumer);
+		makeButton(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK).save(consumer);
 
 		makePressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makePressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
@@ -489,6 +497,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makePressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK).save(consumer);
 		makePressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE).save(consumer);
 		makePressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, UGBlocks.TREMBLECRUST).save(consumer);
+		makePressurePlate(UGBlocks.DREADROCK_PRESSURE_PLATE, UGBlocks.DREADROCK).save(consumer);
 
 		makeStew(UGItems.BLOODY_STEW, UGBlocks.BLOOD_MUSHROOM).save(consumer);
 		makeStew(UGItems.INKY_STEW, UGBlocks.INK_MUSHROOM).save(consumer);
@@ -633,8 +642,19 @@ public class UGRecipes extends UGRecipeProvider {
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_STAIRS.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_stairs_stonecutting"));
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_WALL.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_wall_stonecutting"));
 
-		infusingRecipe(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, false, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
-		infusingRecipe(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_SHARD, false, 1.0F, 200).save(consumer, name("utheric_shard_to_utherium_crystal_infusing"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_BRICK_SLAB.get(), 2).save(consumer, name("dreadrock_brick_slab_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_BRICK_STAIRS.get()).save(consumer, name("dreadrock_brick_stairs_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_BRICK_WALL.get()).save(consumer, name("dreadrock_brick_wall_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_BRICKS.get()).save(consumer, name("dreadrock_bricks_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_SLAB.get(), 2).save(consumer, name("dreadrock_slab_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_STAIRS.get()).save(consumer, name("dreadrock_stairs_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_WALL.get()).save(consumer, name("dreadrock_wall_stonecutting"));
+		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_SLAB.get(), 2).save(consumer, name("dreadrock_bricks_to_dreadrock_brick_slab_stonecutting"));
+		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_STAIRS.get()).save(consumer, name("dreadrock_to_dreadrock_stairs_stonecutting"));
+		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_WALL.get()).save(consumer, name("dreadrock_bricks_to_dreadrock_brick_wall_stonecutting"));
+
+		infusing(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, false, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
+		infusing(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_SHARD, false, 1.0F, 200).save(consumer, name("utheric_shard_to_utherium_crystal_infusing"));
 	}
 
 	private ResourceLocation name(String name) {

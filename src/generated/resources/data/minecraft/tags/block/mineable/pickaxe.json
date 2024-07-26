@@ -78,6 +78,15 @@
     "undergarden:cloggrum_lantern",
     "undergarden:virulent_mix_cauldron",
     "undergarden:utherium_growth",
-    "undergarden:dreadrock_utherium_ore"
+    "undergarden:dreadrock_utherium_ore",
+    "undergarden:dreadrock_bricks",
+    "undergarden:dreadrock_slab",
+    "undergarden:dreadrock_brick_slab",
+    "undergarden:dreadrock_stairs",
+    "undergarden:dreadrock_brick_stairs",
+    "undergarden:dreadrock_wall",
+    "undergarden:dreadrock_brick_wall",
+    "undergarden:dreadrock_button",
+    "undergarden:dreadrock_pressure_plate"
   ]
 }

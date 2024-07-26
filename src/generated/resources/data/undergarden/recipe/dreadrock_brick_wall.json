@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "item": "undergarden:dreadrock_bricks"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "MMM"
+  ],
+  "result": {
+    "count": 6,
+    "id": "undergarden:dreadrock_brick_wall"
+  }
+}

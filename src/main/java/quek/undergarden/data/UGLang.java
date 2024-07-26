@@ -50,6 +50,15 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, "Shiverstone Pressure Plate");
 
 		addBlock(UGBlocks.DREADROCK, "Dreadrock");
+		addBlock(UGBlocks.DREADROCK_BRICKS, "Dreadrock Bricks");
+		addBlock(UGBlocks.DREADROCK_STAIRS, "Dreadrock Stairs");
+		addBlock(UGBlocks.DREADROCK_BRICK_STAIRS, "Dreadrock Brick Stairs");
+		addBlock(UGBlocks.DREADROCK_SLAB, "Dreadrock Slab");
+		addBlock(UGBlocks.DREADROCK_BRICK_SLAB, "Dreadrock Brick Slab");
+		addBlock(UGBlocks.DREADROCK_WALL, "Dreadrock Wall");
+		addBlock(UGBlocks.DREADROCK_BRICK_WALL, "Dreadrock Brick Wall");
+		addBlock(UGBlocks.DREADROCK_BUTTON, "Dreadrock Button");
+		addBlock(UGBlocks.DREADROCK_PRESSURE_PLATE, "Dreadrock Pressure Plate");
 
 		addBlock(UGBlocks.TREMBLECRUST, "Tremblecrust");
 		addBlock(UGBlocks.LOOSE_TREMBLECRUST, "Loose Tremblecrust");

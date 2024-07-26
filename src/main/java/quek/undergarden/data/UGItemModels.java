@@ -278,6 +278,14 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.PUFF_MUSHROOM_CAP);
 		block(UGBlocks.PUFF_MUSHROOM_STEM);
 		block(UGBlocks.INFUSER);
+		block(UGBlocks.DREADROCK_BRICKS);
+		block(UGBlocks.DREADROCK_STAIRS);
+		block(UGBlocks.DREADROCK_BRICK_STAIRS);
+		block(UGBlocks.DREADROCK_SLAB);
+		block(UGBlocks.DREADROCK_BRICK_SLAB);
+		wall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK);
+		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
+		block(UGBlocks.DREADROCK_PRESSURE_PLATE);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
@@ -315,6 +323,7 @@ public class UGItemModels extends UGItemModelProvider {
 		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
 		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
 		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
+		button(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK);
 
 		blockFlatWithItemTexture(UGBlocks.SMOGSTEM_DOOR, "smogstem_door");
 		blockFlatWithItemTexture(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood_door");

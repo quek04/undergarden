@@ -446,7 +446,23 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 		return stonecutting(UGBlocks.TREMBLECRUST_BRICKS, result, resultAmount);
 	}
 
-	public InfusingRecipeBuilder infusingRecipe(ItemLike result, ItemLike ingredient, boolean utheriumFuel, float experience, int infusingTime) {
+	public SingleItemRecipeBuilder dreadrockStonecutting(ItemLike result) {
+		return stonecutting(UGBlocks.DREADROCK, result);
+	}
+
+	public SingleItemRecipeBuilder dreadrockStonecutting(ItemLike result, int resultAmount) {
+		return stonecutting(UGBlocks.DREADROCK, result, resultAmount);
+	}
+
+	public SingleItemRecipeBuilder dreadrockBricksStonecutting(ItemLike result) {
+		return stonecutting(UGBlocks.DREADROCK_BRICKS, result);
+	}
+
+	public SingleItemRecipeBuilder dreadrockBricksStonecutting(ItemLike result, int resultAmount) {
+		return stonecutting(UGBlocks.DREADROCK_BRICKS, result, resultAmount);
+	}
+
+	public InfusingRecipeBuilder infusing(ItemLike result, ItemLike ingredient, boolean utheriumFuel, float experience, int infusingTime) {
 		return InfusingRecipeBuilder.infusing(Ingredient.of(ingredient), RecipeCategory.MISC, new ItemStack(result), experience, infusingTime, utheriumFuel).unlockedBy("has_item", has(ingredient));
 	}
 }

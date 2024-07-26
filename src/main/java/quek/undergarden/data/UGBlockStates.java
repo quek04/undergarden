@@ -131,6 +131,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		crossBlock(UGBlocks.PUFF_MUSHROOM);
 		block(UGBlocks.PUFF_MUSHROOM_CAP);
 		block(UGBlocks.PUFF_MUSHROOM_STEM);
+		block(UGBlocks.DREADROCK_BRICKS);
 
 		stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
 		stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);
@@ -145,6 +146,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		stairs(UGBlocks.CLOGGRUM_TILE_STAIRS, UGBlocks.CLOGGRUM_TILES);
 		stairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES);
 		stairs(UGBlocks.ANCIENT_ROOT_STAIRS, UGBlocks.ANCIENT_ROOT_PLANKS);
+		stairs(UGBlocks.DREADROCK_STAIRS, UGBlocks.DREADROCK);
+		stairs(UGBlocks.DREADROCK_BRICK_STAIRS, UGBlocks.DREADROCK_BRICKS);
 
 		slab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK);
 		slab(UGBlocks.POLISHED_DEPTHROCK_SLAB, UGBlocks.POLISHED_DEPTHROCK);
@@ -159,6 +162,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		slab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES);
 		slab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES);
 		slab(UGBlocks.ANCIENT_ROOT_SLAB, UGBlocks.ANCIENT_ROOT_PLANKS);
+		slab(UGBlocks.DREADROCK_SLAB, UGBlocks.DREADROCK);
+		slab(UGBlocks.DREADROCK_BRICK_SLAB, UGBlocks.DREADROCK_BRICKS);
 
 		wall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK);
 		wall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK);
@@ -167,6 +172,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		wall(UGBlocks.SHIVERSTONE_BRICK_WALL, UGBlocks.SHIVERSTONE_BRICKS);
 		wall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST);
 		wall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS);
+		wall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK);
+		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
 
 		fence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS);
 		fence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS);
@@ -195,6 +202,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
 		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
 		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
+		button(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK);
 
 		pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK);
 		pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE);
@@ -203,6 +211,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		pressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS);
 		pressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS);
 		pressurePlate(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE, UGBlocks.ANCIENT_ROOT_PLANKS);
+		pressurePlate(UGBlocks.DREADROCK_PRESSURE_PLATE, UGBlocks.DREADROCK);
 
 		sign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_WALL_SIGN, "smogstem_planks");
 		sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN, "wigglewood_planks");

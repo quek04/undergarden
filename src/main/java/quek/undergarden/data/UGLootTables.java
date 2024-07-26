@@ -315,6 +315,15 @@ public class UGLootTables extends LootTableProvider {
 			this.add(UGBlocks.PUFF_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.PUFF_MUSHROOM.get()));
 			dropAsSilk(UGBlocks.PUFF_MUSHROOM_STEM);
 			this.add(UGBlocks.INFUSER.get(), this::createNameableBlockEntityTable);
+			dropSelf(UGBlocks.DREADROCK_BRICKS);
+			slab(UGBlocks.DREADROCK_SLAB);
+			slab(UGBlocks.DREADROCK_BRICK_SLAB);
+			dropSelf(UGBlocks.DREADROCK_STAIRS);
+			dropSelf(UGBlocks.DREADROCK_BRICK_STAIRS);
+			dropSelf(UGBlocks.DREADROCK_WALL);
+			dropSelf(UGBlocks.DREADROCK_BRICK_WALL);
+			dropSelf(UGBlocks.DREADROCK_BUTTON);
+			dropSelf(UGBlocks.DREADROCK_PRESSURE_PLATE);
 		}
 
 		@Override
