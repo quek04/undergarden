@@ -42,8 +42,8 @@ public class InfusingRecipeBuilder implements RecipeBuilder {
 		this.utheriumFuel = utheriumFuel;
 	}
 
-	public static InfusingRecipeBuilder infusing(Ingredient ingredient, RecipeCategory category, ItemStack result, float experience, int infusingTime, boolean utheriumFuel) {
-		return new InfusingRecipeBuilder(category, InfusingBookCategory.MISC, result, ingredient, experience, infusingTime, utheriumFuel);
+	public static InfusingRecipeBuilder infusing(Ingredient ingredient, RecipeCategory category, InfusingBookCategory bookCategory, ItemStack result, float experience, int infusingTime, boolean utheriumFuel) {
+		return new InfusingRecipeBuilder(category, bookCategory, result, ingredient, experience, infusingTime, utheriumFuel);
 	}
 
 	@Override

@@ -33,7 +33,25 @@
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
         "class": "quek/undergarden/UGEnumExtensions",
-        "field": "INFUSER_SEARCH"
+        "field": "INFUSER_SEARCH_CATEGORY"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "UNDERGARDEN_INFUSER_PURIFYING",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "INFUSER_PURIFYING_CATEGORY"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "UNDERGARDEN_INFUSER_CORRUPTING",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "INFUSER_CORRUPTING_CATEGORY"
       }
     },
     {
@@ -42,7 +60,7 @@
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
         "class": "quek/undergarden/UGEnumExtensions",
-        "field": "INFUSER_MISC"
+        "field": "INFUSER_MISC_CATEGORY"
       }
     }
   ]

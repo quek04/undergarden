@@ -60,6 +60,8 @@ import quek.undergarden.client.render.layer.DenizenMaskLayer;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
 import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.dweller.Dweller;
+import quek.undergarden.recipe.InfusingBookCategory;
+import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.*;
 
 import java.util.List;
@@ -256,9 +258,18 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
-		event.registerBookCategories(UGRecipeBookTypes.INFUSER, ImmutableList.of(UGRecipeBookCategories.INFUSER_SEARCH, UGRecipeBookCategories.INFUSER_MISC));
-		event.registerAggregateCategory(UGRecipeBookCategories.INFUSER_SEARCH, ImmutableList.of(UGRecipeBookCategories.INFUSER_MISC));
-		event.registerRecipeCategoryFinder(UGRecipeTypes.INFUSING.get(), recipeHolder -> UGRecipeBookCategories.INFUSER_MISC);
+		event.registerBookCategories(UGRecipeBookTypes.INFUSER, ImmutableList.of(UGRecipeBookCategories.INFUSER_SEARCH, UGRecipeBookCategories.INFUSER_PURIFYING, UGRecipeBookCategories.INFUSER_CORRUPTING, UGRecipeBookCategories.INFUSER_MISC));
+		event.registerAggregateCategory(UGRecipeBookCategories.INFUSER_SEARCH, ImmutableList.of(UGRecipeBookCategories.INFUSER_PURIFYING, UGRecipeBookCategories.INFUSER_CORRUPTING, UGRecipeBookCategories.INFUSER_MISC));
+		event.registerRecipeCategoryFinder(UGRecipeTypes.INFUSING.get(), recipe -> {
+			if (recipe.value() instanceof InfusingRecipe infusingRecipe) {
+				if (infusingRecipe.getCategory() == InfusingBookCategory.PURIFYING) {
+					return UGRecipeBookCategories.INFUSER_PURIFYING;
+				} else if (infusingRecipe.getCategory() == InfusingBookCategory.CORRUPTING) {
+					return UGRecipeBookCategories.INFUSER_CORRUPTING;
+				}
+			}
+			return UGRecipeBookCategories.INFUSER_MISC;
+		});
 	}
 
 	private static void registerBlockColors(RegisterColorHandlersEvent.Block event) {

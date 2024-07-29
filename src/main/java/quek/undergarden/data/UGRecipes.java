@@ -653,8 +653,8 @@ public class UGRecipes extends UGRecipeProvider {
 		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_STAIRS.get()).save(consumer, name("dreadrock_to_dreadrock_stairs_stonecutting"));
 		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_WALL.get()).save(consumer, name("dreadrock_bricks_to_dreadrock_brick_wall_stonecutting"));
 
-		infusing(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, false, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
-		infusing(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_SHARD, false, 1.0F, 200).save(consumer, name("utheric_shard_to_utherium_crystal_infusing"));
+		infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
+		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_SHARD, 1.0F, 200).save(consumer, name("utheric_shard_to_utherium_crystal_infusing"));
 	}
 
 	private ResourceLocation name(String name) {
