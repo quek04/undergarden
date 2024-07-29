@@ -23,6 +23,7 @@ public class UGItems {
 
 	public static final Rarity ROGDORIUM = Rarity.valueOf("UNDERGARDEN_ROGDORIUM");
 	public static final Rarity FORGOTTEN = Rarity.valueOf("UNDERGARDEN_FORGOTTEN");
+	public static final Rarity UTHERIUM = Rarity.valueOf("UNDERGARDEN_UTHERIUM");
 
 	//discs
 	public static final DeferredItem<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.MAMMOTH)));
@@ -91,6 +92,7 @@ public class UGItems {
 
 	//misc tools
 	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
+	public static final DeferredItem<Item> CORRUPT_CATALYST = ITEMS.register("corrupt_catalyst", () -> new Item(new Item.Properties().rarity(UTHERIUM)));
 	public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
 	public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () -> new SpearItem(new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).rarity(Rarity.UNCOMMON)));
 	public static final DeferredItem<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);

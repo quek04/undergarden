@@ -23,6 +23,9 @@ public class UGEnumExtensions {
 	public static final EnumProxy<Rarity> ROGDORIUM = new EnumProxy<>(
 		Rarity.class, -1, "undergarden:rogdorium", (UnaryOperator<Style>) style -> style.withColor(ChatFormatting.AQUA)
 	);
+	public static final EnumProxy<Rarity> UTHERIUM = new EnumProxy<>(
+		Rarity.class, -1, "undergarden:utherium", (UnaryOperator<Style>) style -> style.withColor(ChatFormatting.RED)
+	);
 
 	public static final EnumProxy<RecipeBookType> INFUSER = new EnumProxy<>(RecipeBookType.class);
 

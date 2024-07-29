@@ -268,6 +268,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.GLOOMPER_SECRET_DISC, "Music Disc");
 		addJukeboxSong(UGJukeboxSongs.GLOOMPER_SECRET, "An AI was given an image of a Gloomper and made this song");
 		addItem(UGItems.CATALYST, "Catalyst");
+		addItem(UGItems.CORRUPT_CATALYST, "Corrupt Catalyst");
 		addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
 		addItem(UGItems.TWISTYTWIG, "Twistytwig");
 		addItem(UGItems.RAW_CLOGGRUM, "Raw Cloggrum");

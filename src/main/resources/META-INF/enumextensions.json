@@ -19,6 +19,15 @@
       }
     },
     {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "UNDERGARDEN_UTHERIUM",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "UTHERIUM"
+      }
+    },
+    {
       "enum": "net/minecraft/world/inventory/RecipeBookType",
       "name": "UNDERGARDEN_INFUSER",
       "constructor": "()V",

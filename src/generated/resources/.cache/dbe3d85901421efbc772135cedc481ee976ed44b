@@ -1,4 +1,4 @@
-// 1.21	2024-07-28T20:38:35.4189765	Item Models: undergarden
+// 1.21	2024-07-28T21:05:11.1134777	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -56,6 +56,7 @@ aec337dc72fcb368914ce04c266b2fac55ae9fc9 assets/undergarden/models/item/cloggrum
 ce6a58368e3d020e397123ddeb9abd19db5ed2a7 assets/undergarden/models/item/cloggrum_tile_stairs.json
 cb41d73d78a1122b3c2c2324edec75267e3563d0 assets/undergarden/models/item/coarse_deepsoil.json
 08a929a2239e7f66eb0fc4c55251ef31e3d3995b assets/undergarden/models/item/cooked_gwibling.json
+1bb9417b1d9137c922654bc07fb129b23b58aff6 assets/undergarden/models/item/corrupt_catalyst.json
 e4a51f53846af5b98dbace974ca138319f020522 assets/undergarden/models/item/cracked_depthrock_bricks.json
 95e11abaa33eb71871be72b5e1e263a1b0b196ca assets/undergarden/models/item/cracked_shiverstone_bricks.json
 7a497ad1fb7755a0ebc63bb981538f993a903379 assets/undergarden/models/item/cracked_tremblecrust_bricks.json

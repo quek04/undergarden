@@ -287,6 +287,7 @@ public class UGItemModels extends UGItemModelProvider {
 		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
 		block(UGBlocks.DREADROCK_PRESSURE_PLATE);
 		normalItem(UGItems.UTHERIC_CLUSTER);
+		normalItem(UGItems.CORRUPT_CATALYST);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);

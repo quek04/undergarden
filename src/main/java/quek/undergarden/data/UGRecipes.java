@@ -656,6 +656,8 @@ public class UGRecipes extends UGRecipeProvider {
 
 		infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
 		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_CLUSTER, 1.0F, 200).save(consumer, name("utheric_cluster_to_utherium_crystal_infusing"));
+
+		infusingCorrupting(UGItems.CORRUPT_CATALYST, UGItems.CATALYST, 10.0F, 600).save(consumer, name("corrupt_catalyst_infusing"));
 	}
 
 	private ResourceLocation name(String name) {
