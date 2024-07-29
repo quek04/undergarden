@@ -9,6 +9,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;
@@ -46,30 +47,34 @@ public class InfuserRecipeBookComponent extends RecipeBookComponent {
 	public void setupGhostRecipe(RecipeHolder<?> recipe, List<Slot> slots) {
 		ItemStack itemstack = recipe.value().getResultItem(this.minecraft.level.registryAccess());
 		this.ghostRecipe.setRecipe(recipe);
-		this.ghostRecipe.addIngredient(Ingredient.of(itemstack), slots.get(2).x, slots.get(2).y);
-		NonNullList<Ingredient> nonnulllist = recipe.value().getIngredients();
+		this.ghostRecipe.addIngredient(Ingredient.of(itemstack), slots.get(3).x, slots.get(3).y);
+		NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
+		InfusingRecipe infusingRecipe = (InfusingRecipe)recipe.value();
 
-		Slot utheriumSlot = slots.get(1);
-		if (utheriumSlot.getItem().isEmpty()) {
-			if (this.utheriumFuels == null) {
-				this.utheriumFuels = Ingredient.of(new ItemStack(UGItems.UTHERIUM_CRYSTAL.get()));
+		Slot slot;
+		if (infusingRecipe.isUtheriumFuel()) {
+			slot = slots.get(1);
+			if (slot.getItem().isEmpty()) {
+				if (this.utheriumFuels == null) {
+					this.utheriumFuels = Ingredient.of(new ItemStack(UGItems.UTHERIUM_CRYSTAL.get()));
+				}
+
+				this.ghostRecipe.addIngredient(this.utheriumFuels, slot.x, slot.y);
 			}
+		} else {
+			slot = slots.get(2);
+			if (slot.getItem().isEmpty()) {
+				if (this.rogdoriumFuels == null) {
+					this.rogdoriumFuels = Ingredient.of(new ItemStack(UGItems.ROGDORIUM_CRYSTAL.get()));
+				}
 
-			this.ghostRecipe.addIngredient(this.utheriumFuels, utheriumSlot.x, utheriumSlot.y);
+				this.ghostRecipe.addIngredient(this.rogdoriumFuels, slot.x, slot.y);
+			}
 		}
 
-		Slot rogdoriumSlot = slots.get(2);
-		if (rogdoriumSlot.getItem().isEmpty()) {
-			if (this.rogdoriumFuels == null) {
-				this.rogdoriumFuels = Ingredient.of(new ItemStack(UGItems.UTHERIUM_CRYSTAL.get()));
-			}
+		Iterator<Ingredient> iterator = ingredients.iterator();
 
-			this.ghostRecipe.addIngredient(this.rogdoriumFuels, rogdoriumSlot.x, rogdoriumSlot.y);
-		}
-
-		Iterator<Ingredient> iterator = nonnulllist.iterator();
-
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 3; i++) {
 			if (!iterator.hasNext()) {
 				return;
 			}
