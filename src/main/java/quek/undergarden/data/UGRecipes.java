@@ -377,6 +377,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).save(consumer, name("cloggrum_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).save(consumer, name("froststeel_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_nugget_to_ingot"));
+		makeNuggetToIngot(UGItems.UTHERIC_CLUSTER, UGItems.UTHERIC_SHARD).save(consumer);
 
 		makeIngotToBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, UGItems.RAW_CLOGGRUM).save(consumer);
 		makeIngotToBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, UGItems.RAW_FROSTSTEEL).save(consumer);
@@ -654,7 +655,7 @@ public class UGRecipes extends UGRecipeProvider {
 		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_WALL.get()).save(consumer, name("dreadrock_bricks_to_dreadrock_brick_wall_stonecutting"));
 
 		infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
-		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_SHARD, 1.0F, 200).save(consumer, name("utheric_shard_to_utherium_crystal_infusing"));
+		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_CLUSTER, 1.0F, 200).save(consumer, name("utheric_cluster_to_utherium_crystal_infusing"));
 	}
 
 	private ResourceLocation name(String name) {

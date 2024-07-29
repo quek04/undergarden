@@ -1,4 +1,4 @@
-// 1.21	2024-07-26T01:25:00.2964245	Item Models: undergarden
+// 1.21	2024-07-28T20:38:35.4189765	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -276,6 +276,7 @@ f7ffd4748dd7e0d91d82c70abd30ae05654bda6a assets/undergarden/models/item/tremblec
 27d9b39b5cc1480194b00ae4448f1d64688a9ec5 assets/undergarden/models/item/twistytwig.json
 44aaa65e7523f83d5012c53f61fc821cc2e85834 assets/undergarden/models/item/underbeans.json
 2ab0d58479263dd92c154f9dbcf26ac082cb61a8 assets/undergarden/models/item/underbean_on_a_stick.json
+a5650b687be11d673288a114549c34875e748421 assets/undergarden/models/item/utheric_cluster.json
 a801b15a72734a0610f1c4b32e4ecdbc67e784b3 assets/undergarden/models/item/utheric_shard.json
 b7201358dcd42374bef3d4be5a523e9b0a5402c2 assets/undergarden/models/item/utherium_axe.json
 9df0b5403b4c04b5b92e2d0d6c407f600479dd80 assets/undergarden/models/item/utherium_block.json

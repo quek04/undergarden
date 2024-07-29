@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:utheric_cluster"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_utheric_shard": {
       "conditions": {
         "items": [
           {
@@ -10,23 +16,17 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "undergarden:utheric_shard_to_utherium_crystal_infusing"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_utheric_shard"
     ]
   ],
   "rewards": {
     "recipes": [
-      "undergarden:utheric_shard_to_utherium_crystal_infusing"
+      "undergarden:utheric_cluster"
     ]
   }
 }

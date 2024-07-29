@@ -43,6 +43,7 @@ public class UGItems {
 	public static final DeferredItem<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
 
 	public static final DeferredItem<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties()));
+	public static final DeferredItem<Item> UTHERIC_CLUSTER = ITEMS.register("utheric_cluster", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties()));
 
 	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));

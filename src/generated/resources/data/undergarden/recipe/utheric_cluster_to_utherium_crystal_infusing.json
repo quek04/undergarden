@@ -4,7 +4,7 @@
   "experience": 1.0,
   "infusingTime": 200,
   "ingredient": {
-    "item": "undergarden:utheric_shard"
+    "item": "undergarden:utheric_cluster"
   },
   "result": {
     "count": 1,
