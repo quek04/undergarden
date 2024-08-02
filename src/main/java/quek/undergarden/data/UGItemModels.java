@@ -294,6 +294,7 @@ public class UGItemModels extends UGItemModelProvider {
 		egg(UGItems.ROTLING_SPAWN_EGG);
 		egg(UGItems.ROTWALKER_SPAWN_EGG);
 		egg(UGItems.ROTBEAST_SPAWN_EGG);
+		egg(UGItems.ROTBELCHER_SPAWN_EGG);
 		egg(UGItems.BRUTE_SPAWN_EGG);
 		egg(UGItems.SCINTLING_SPAWN_EGG);
 		egg(UGItems.GLOOMPER_SPAWN_EGG);

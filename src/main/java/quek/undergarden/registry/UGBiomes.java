@@ -452,7 +452,8 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_PUFF_MUSHROOM_SPARSE)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.PUFF_MUSHROOM_PATCH_SPARSE)
 				.build())
-			.mobSpawnSettings(new MobSpawnSettings.Builder().build())
+			.mobSpawnSettings(addDepthsRotspawn(new MobSpawnSettings.Builder())
+				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
@@ -465,7 +466,8 @@ public class UGBiomes {
 			.generationSettings(addDepthsOres(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
 				.build())
-			.mobSpawnSettings(new MobSpawnSettings.Builder().build())
+			.mobSpawnSettings(addDepthsRotspawn(new MobSpawnSettings.Builder())
+				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
@@ -481,7 +483,8 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.PUFF_MUSHROOM_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEEPTURF_PATCH)
 				.build())
-			.mobSpawnSettings(new MobSpawnSettings.Builder().build())
+			.mobSpawnSettings(addDepthsRotspawn(new MobSpawnSettings.Builder())
+				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
@@ -531,6 +534,13 @@ public class UGBiomes {
 		return builder
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTLING.get(), 100, 2, 4))
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTWALKER.get(), 100, 4, 4))
+			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBEAST.get(), 100, 1, 2));
+	}
+
+	private static MobSpawnSettings.Builder addDepthsRotspawn(MobSpawnSettings.Builder builder) {
+		return builder
+			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTLING.get(), 100, 2, 4))
+			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBELCHER.get(), 100, 4, 4))
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBEAST.get(), 100, 1, 2));
 	}
 

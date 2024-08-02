@@ -162,6 +162,7 @@ public class UGItems {
 	public static final DeferredItem<DeferredSpawnEggItem> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTLING, 5590327, 10500660, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> ROTWALKER_SPAWN_EGG = ITEMS.register("rotwalker_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTWALKER, 5590327, 10500660, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> ROTBEAST_SPAWN_EGG = ITEMS.register("rotbeast_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTBEAST, 5590327, 10500660, new Item.Properties()));
+	public static final DeferredItem<DeferredSpawnEggItem> ROTBELCHER_SPAWN_EGG = ITEMS.register("rotbelcher_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTBELCHER, 5590327, 10500660, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> BRUTE_SPAWN_EGG = ITEMS.register("brute_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.BRUTE, 7035982, 4012083, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> SCINTLING_SPAWN_EGG = ITEMS.register("scintling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.SCINTLING, 8556655, 6314558, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> GLOOMPER_SPAWN_EGG = ITEMS.register("gloomper_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GLOOMPER, 4138045, 6579581, new Item.Properties()));

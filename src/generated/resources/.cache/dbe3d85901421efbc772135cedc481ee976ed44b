@@ -1,4 +1,4 @@
-// 1.21	2024-07-28T21:05:11.1134777	Item Models: undergarden
+// 1.21	2024-08-01T22:11:14.0764962	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -206,6 +206,7 @@ aa8ed02244470d559527fb64cf5d04367ca1c2b4 assets/undergarden/models/item/regalium
 0e429282157df54a316847af90941c56c1ab07d5 assets/undergarden/models/item/rogdorium_block.json
 7f0268af970ac87578ef927c8a964651890cecec assets/undergarden/models/item/rogdorium_crystal.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotbeast_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotbelcher_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotling_spawn_egg.json
 40141e2ab72043141ce8fa10ca8320b5ed7c75fa assets/undergarden/models/item/rotten_blisterberry.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotwalker_spawn_egg.json

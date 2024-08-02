@@ -17,8 +17,10 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import quek.undergarden.registry.UGAttachments;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGTags;
 
 public class RotbelcherProjectile extends AbstractHurtingProjectile {
 
@@ -39,6 +41,13 @@ public class RotbelcherProjectile extends AbstractHurtingProjectile {
 			LivingEntity livingShooter = shooter instanceof LivingEntity ? (LivingEntity) shooter : null;
 			DamageSource damageSource = this.damageSources().spit(this, livingShooter);
 			if (victim.hurt(damageSource, 5.0F)) {
+				if (victim instanceof LivingEntity livingEntity) {
+					if (!livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
+						int data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
+						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + 1);
+					}
+				}
+
 				EnchantmentHelper.doPostAttackEffects(level, victim, damageSource);
 			}
 		}

@@ -389,6 +389,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.ROTLING_SPAWN_EGG, "Rotling Spawn Egg");
 		addItem(UGItems.ROTWALKER_SPAWN_EGG, "Rotwalker Spawn Egg");
 		addItem(UGItems.ROTBEAST_SPAWN_EGG, "Rotbeast Spawn Egg");
+		addItem(UGItems.ROTBELCHER_SPAWN_EGG, "Rotbelcher Spawn Egg");
 		addItem(UGItems.BRUTE_SPAWN_EGG, "Brute Spawn Egg");
 		addItem(UGItems.SCINTLING_SPAWN_EGG, "Scintling Spawn Egg");
 		addItem(UGItems.GLOOMPER_SPAWN_EGG, "Gloomper Spawn Egg");

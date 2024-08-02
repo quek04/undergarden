@@ -53,7 +53,26 @@
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "undergarden:rotling",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotbelcher",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotbeast",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 100
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

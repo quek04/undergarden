@@ -36,11 +36,7 @@ public class Rotbelcher extends RotspawnMonster {
 		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.25D, false) {
 			@Override
 			public boolean canUse() {
-				if (this.mob.getTarget() != null && this.mob.getTarget().distanceToSqr(this.mob) > 20.0D) {
-					return false;
-				} else {
-					return super.canUse();
-				}
+				return this.mob.getTarget() != null && this.mob.getTarget().distanceToSqr(this.mob) < 20.0D && super.canUse();
 			}
 		});
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.6D));
