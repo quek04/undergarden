@@ -10,11 +10,11 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.ItemDisplayContext;
 import quek.undergarden.entity.projectile.slingshot.Gronglet;
 
-public class GrongletEntityRender extends ThrownItemRenderer<Gronglet> {
+public class GrongletEntityRenderer extends ThrownItemRenderer<Gronglet> {
 
 	private final ItemRenderer itemRenderer;
 
-	public GrongletEntityRender(EntityRendererProvider.Context context) {
+	public GrongletEntityRenderer(EntityRendererProvider.Context context) {
 		super(context, 0.0F, true);
 		this.itemRenderer = context.getItemRenderer();
 	}

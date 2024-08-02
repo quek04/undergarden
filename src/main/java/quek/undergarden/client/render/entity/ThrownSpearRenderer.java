@@ -11,11 +11,11 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import quek.undergarden.entity.projectile.ThrownSpear;
 
-public class ThrownSpearRender extends ThrownItemRenderer<ThrownSpear> {
+public class ThrownSpearRenderer extends ThrownItemRenderer<ThrownSpear> {
 
 	private final ItemRenderer itemRenderer;
 
-	public ThrownSpearRender(EntityRendererProvider.Context context) {
+	public ThrownSpearRenderer(EntityRendererProvider.Context context) {
 		super(context);
 		this.itemRenderer = context.getItemRenderer();
 	}

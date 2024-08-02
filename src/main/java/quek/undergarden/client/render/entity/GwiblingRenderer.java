@@ -12,11 +12,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.GwiblingEyesLayer;
 import quek.undergarden.entity.animal.Gwibling;
 
-public class GwiblingRender extends MobRenderer<Gwibling, GwiblingModel<Gwibling>> {
+public class GwiblingRenderer extends MobRenderer<Gwibling, GwiblingModel<Gwibling>> {
 
 	private static final ResourceLocation GWIBLING = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/gwibling.png");
 
-	public GwiblingRender(EntityRendererProvider.Context context) {
+	public GwiblingRenderer(EntityRendererProvider.Context context) {
 		super(context, new GwiblingModel<>(context.bakeLayer(UGModelLayers.GWIBLING)), 0.3F);
 		this.addLayer(new GwiblingEyesLayer<>(this));
 	}

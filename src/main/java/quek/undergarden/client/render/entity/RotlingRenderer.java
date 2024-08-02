@@ -9,11 +9,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.RotlingEyesLayer;
 import quek.undergarden.entity.monster.rotspawn.Rotling;
 
-public class RotlingRender extends MobRenderer<Rotling, RotlingModel<Rotling>> {
+public class RotlingRenderer extends MobRenderer<Rotling, RotlingModel<Rotling>> {
 
 	private static final ResourceLocation ROTLING = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/rotling.png");
 
-	public RotlingRender(EntityRendererProvider.Context context) {
+	public RotlingRenderer(EntityRendererProvider.Context context) {
 		super(context, new RotlingModel<>(context.bakeLayer(UGModelLayers.ROTLING)), 0.6F);
 		this.addLayer(new RotlingEyesLayer<>(this));
 	}

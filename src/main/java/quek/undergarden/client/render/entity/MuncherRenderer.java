@@ -9,11 +9,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MuncherEyesLayer;
 import quek.undergarden.entity.monster.cavern.Muncher;
 
-public class MuncherRender extends MobRenderer<Muncher, MuncherModel<Muncher>> {
+public class MuncherRenderer extends MobRenderer<Muncher, MuncherModel<Muncher>> {
 
 	private static final ResourceLocation MUNCHER = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/muncher.png");
 
-	public MuncherRender(EntityRendererProvider.Context context) {
+	public MuncherRenderer(EntityRendererProvider.Context context) {
 		super(context, new MuncherModel<>(context.bakeLayer(UGModelLayers.MUNCHER)), 0.5F);
 		this.addLayer(new MuncherEyesLayer<>(this));
 	}

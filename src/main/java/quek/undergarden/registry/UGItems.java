@@ -92,7 +92,7 @@ public class UGItems {
 
 	//misc tools
 	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
-	public static final DeferredItem<Item> CORRUPT_CATALYST = ITEMS.register("corrupt_catalyst", () -> new Item(new Item.Properties().rarity(UTHERIUM)));
+	public static final DeferredItem<Item> CORRUPT_CATALYST = ITEMS.register("corrupt_catalyst", () -> new Item(new Item.Properties().stacksTo(1).rarity(UTHERIUM)));
 	public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
 	public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () -> new SpearItem(new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).rarity(Rarity.UNCOMMON)));
 	public static final DeferredItem<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);

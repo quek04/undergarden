@@ -9,11 +9,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.StonebornEyesLayer;
 import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 
-public class StonebornRender extends MobRenderer<Stoneborn, StonebornModel<Stoneborn>> {
+public class StonebornRenderer extends MobRenderer<Stoneborn, StonebornModel<Stoneborn>> {
 
 	private static final ResourceLocation STONEBORN = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/stoneborn.png");
 
-	public StonebornRender(EntityRendererProvider.Context context) {
+	public StonebornRenderer(EntityRendererProvider.Context context) {
 		super(context, new StonebornModel<>(context.bakeLayer(UGModelLayers.STONEBORN)), 0.6F);
 		this.addLayer(new StonebornEyesLayer<>(this));
 	}

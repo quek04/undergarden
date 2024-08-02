@@ -11,11 +11,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.ForgottenEyesLayer;
 import quek.undergarden.entity.monster.Forgotten;
 
-public class ForgottenRender extends HumanoidMobRenderer<Forgotten, ForgottenModel<Forgotten>> {
+public class ForgottenRenderer extends HumanoidMobRenderer<Forgotten, ForgottenModel<Forgotten>> {
 
 	private static final ResourceLocation FORGOTTEN = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/forgotten.png");
 
-	public ForgottenRender(EntityRendererProvider.Context context) {
+	public ForgottenRenderer(EntityRendererProvider.Context context) {
 		super(context, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN)), 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_INNER_ARMOR)), new ForgottenModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_OUTER_ARMOR)), context.getModelManager()));
 		this.addLayer(new ForgottenEyesLayer<>(this));

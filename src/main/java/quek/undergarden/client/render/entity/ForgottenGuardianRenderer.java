@@ -11,11 +11,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.ForgottenGuardianEyesLayer;
 import quek.undergarden.entity.monster.boss.ForgottenGuardian;
 
-public class ForgottenGuardianRender extends MobRenderer<ForgottenGuardian, ForgottenGuardianModel<ForgottenGuardian>> {
+public class ForgottenGuardianRenderer extends MobRenderer<ForgottenGuardian, ForgottenGuardianModel<ForgottenGuardian>> {
 
 	private static final ResourceLocation FORGOTTEN_GUARDIAN = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/forgotten_guardian.png");
 
-	public ForgottenGuardianRender(EntityRendererProvider.Context context) {
+	public ForgottenGuardianRenderer(EntityRendererProvider.Context context) {
 		super(context, new ForgottenGuardianModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_GUARDIAN)), 0.6F);
 		this.addLayer(new ForgottenGuardianEyesLayer<>(this));
 	}

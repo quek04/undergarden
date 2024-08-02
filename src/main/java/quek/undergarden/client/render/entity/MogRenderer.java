@@ -9,12 +9,12 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MogEyesLayer;
 import quek.undergarden.entity.animal.Mog;
 
-public class MogRender extends MobRenderer<Mog, MogModel<Mog>> {
+public class MogRenderer extends MobRenderer<Mog, MogModel<Mog>> {
 
 	private static final ResourceLocation MOG = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/mog.png");
 	private static final ResourceLocation MOG_NAKED = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/mog_naked.png");
 
-	public MogRender(EntityRendererProvider.Context context) {
+	public MogRenderer(EntityRendererProvider.Context context) {
 		super(context, new MogModel<>(context.bakeLayer(UGModelLayers.MOG)), 0.5F);
 		this.addLayer(new MogEyesLayer<>(this));
 	}

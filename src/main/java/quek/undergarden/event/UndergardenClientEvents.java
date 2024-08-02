@@ -23,10 +23,7 @@ import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.registries.Registries;
@@ -138,35 +135,37 @@ public class UndergardenClientEvents {
 		//
 		event.registerEntityRenderer(UGEntityTypes.BOAT.get(), (context) -> new UGBoatRenderer(context, false));
 		event.registerEntityRenderer(UGEntityTypes.CHEST_BOAT.get(), (context) -> new UGBoatRenderer(context, true));
-		event.registerEntityRenderer(UGEntityTypes.BOOMGOURD.get(), BoomgourdRender::new);
+		event.registerEntityRenderer(UGEntityTypes.BOOMGOURD.get(), BoomgourdRenderer::new);
 		//
 		event.registerEntityRenderer(UGEntityTypes.DEPTHROCK_PEBBLE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.GOO_BALL.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
-		event.registerEntityRenderer(UGEntityTypes.GRONGLET.get(), GrongletEntityRender::new);
-		event.registerEntityRenderer(UGEntityTypes.SPEAR.get(), ThrownSpearRender::new);
+		event.registerEntityRenderer(UGEntityTypes.GRONGLET.get(), GrongletEntityRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.SPEAR.get(), ThrownSpearRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ROTBELCHER_PROJECTILE.get(), NoopRenderer::new);
 		//
-		event.registerEntityRenderer(UGEntityTypes.MINION.get(), MinionRender::new);
-		event.registerEntityRenderer(UGEntityTypes.ROTLING.get(), RotlingRender::new);
-		event.registerEntityRenderer(UGEntityTypes.ROTWALKER.get(), RotwalkerRender::new);
-		event.registerEntityRenderer(UGEntityTypes.ROTBEAST.get(), RotbeastRender::new);
-		event.registerEntityRenderer(UGEntityTypes.DWELLER.get(), DwellerRender::new);
-		event.registerEntityRenderer(UGEntityTypes.GWIBLING.get(), GwiblingRender::new);
-		event.registerEntityRenderer(UGEntityTypes.BRUTE.get(), BruteRender::new);
-		event.registerEntityRenderer(UGEntityTypes.SCINTLING.get(), ScintlingRender::new);
-		event.registerEntityRenderer(UGEntityTypes.GLOOMPER.get(), GloomperRender::new);
-		event.registerEntityRenderer(UGEntityTypes.STONEBORN.get(), StonebornRender::new);
-		event.registerEntityRenderer(UGEntityTypes.NARGOYLE.get(), NargoyleRender::new);
-		event.registerEntityRenderer(UGEntityTypes.MUNCHER.get(), MuncherRender::new);
-		event.registerEntityRenderer(UGEntityTypes.SPLOOGIE.get(), SploogieRender::new);
-		event.registerEntityRenderer(UGEntityTypes.GWIB.get(), GwibRender::new);
-		event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRender::new);
-		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRender::new);
-		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRender::new);
+		event.registerEntityRenderer(UGEntityTypes.MINION.get(), MinionRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ROTLING.get(), RotlingRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ROTWALKER.get(), RotwalkerRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ROTBEAST.get(), RotbeastRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ROTBELCHER.get(), RotbelcherRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.DWELLER.get(), DwellerRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.GWIBLING.get(), GwiblingRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.BRUTE.get(), BruteRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.SCINTLING.get(), ScintlingRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.GLOOMPER.get(), GloomperRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.STONEBORN.get(), StonebornRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.NARGOYLE.get(), NargoyleRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.MUNCHER.get(), MuncherRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.SPLOOGIE.get(), SploogieRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.GWIB.get(), GwibRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.MOG.get(), MogRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.DENIZEN.get(), DenizenRenderer::new);
-		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRender::new);
+		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRenderer::new);
 	}
 
 	private static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -201,6 +200,7 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.ROTBELCHER, RotbelcherModel::createBodyLayer);
 	}
 
 	private static void addEntityLayers(EntityRenderersEvent.AddLayers event) {

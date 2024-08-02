@@ -13,11 +13,11 @@ import net.minecraft.world.inventory.InventoryMenu;
 import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.registry.UGBlocks;
 
-public class BoomgourdRender extends EntityRenderer<Boomgourd> {
+public class BoomgourdRenderer extends EntityRenderer<Boomgourd> {
 
 	private final BlockRenderDispatcher blockRenderer;
 
-	public BoomgourdRender(EntityRendererProvider.Context context) {
+	public BoomgourdRenderer(EntityRendererProvider.Context context) {
 		super(context);
 		this.blockRenderer = context.getBlockRenderDispatcher();
 	}

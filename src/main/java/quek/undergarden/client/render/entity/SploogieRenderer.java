@@ -8,11 +8,11 @@ import quek.undergarden.client.model.SploogieModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.entity.monster.cavern.Sploogie;
 
-public class SploogieRender extends MobRenderer<Sploogie, SploogieModel<Sploogie>> {
+public class SploogieRenderer extends MobRenderer<Sploogie, SploogieModel<Sploogie>> {
 
 	private static final ResourceLocation SPLOOGIE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/sploogie.png");
 
-	public SploogieRender(EntityRendererProvider.Context context) {
+	public SploogieRenderer(EntityRendererProvider.Context context) {
 		super(context, new SploogieModel<>(context.bakeLayer(UGModelLayers.SPLOOGIE)), 0.5F);
 	}
 

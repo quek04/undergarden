@@ -15,6 +15,20 @@
       },
       "trigger": "minecraft:player_killed_entity"
     },
+    "kill_rotbelcher": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:rotbelcher"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
     "kill_rotling": {
       "conditions": {
         "entity": [
@@ -66,6 +80,9 @@
     ],
     [
       "kill_rotbeast"
+    ],
+    [
+      "kill_rotbelcher"
     ]
   ],
   "sends_telemetry_event": true

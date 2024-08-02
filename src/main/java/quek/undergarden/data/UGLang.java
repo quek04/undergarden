@@ -433,6 +433,7 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.GRONGLET, "Gronglet");
 		addEntityType(UGEntityTypes.SPEAR, "Spear");
 		addEntityType(UGEntityTypes.MINION_PROJECTILE, "Minion Projectile");
+		addEntityType(UGEntityTypes.ROTBELCHER_PROJECTILE, "Rotbelcher Projectile");
 
 		addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
 		addEntityType(UGEntityTypes.DWELLER, "Dweller");
@@ -440,6 +441,7 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.ROTLING, "Rotling");
 		addEntityType(UGEntityTypes.ROTWALKER, "Rotwalker");
 		addEntityType(UGEntityTypes.ROTBEAST, "Rotbeast");
+		addEntityType(UGEntityTypes.ROTBELCHER, "Rotbelcher");
 		addEntityType(UGEntityTypes.BRUTE, "Brute");
 		addEntityType(UGEntityTypes.SCINTLING, "Scintling");
 		addEntityType(UGEntityTypes.GLOOMPER, "Gloomper");

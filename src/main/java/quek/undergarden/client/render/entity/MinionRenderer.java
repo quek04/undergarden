@@ -9,11 +9,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.MinionEyesLayer;
 import quek.undergarden.entity.Minion;
 
-public class MinionRender extends MobRenderer<Minion, MinionModel<Minion>> {
+public class MinionRenderer extends MobRenderer<Minion, MinionModel<Minion>> {
 
 	private static final ResourceLocation MINION = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/minion.png");
 
-	public MinionRender(EntityRendererProvider.Context context) {
+	public MinionRenderer(EntityRendererProvider.Context context) {
 		super(context, new MinionModel<>(context.bakeLayer(UGModelLayers.MINION)), 0.5F);
 		this.addLayer(new MinionEyesLayer<>(this));
 	}

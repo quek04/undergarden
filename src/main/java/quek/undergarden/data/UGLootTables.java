@@ -387,6 +387,16 @@ public class UGLootTables extends LootTableProvider {
 							)
 					)
 			);
+			this.add(UGEntityTypes.ROTBELCHER.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1))
+					.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get())
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 6.0F)))
+						.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+					)
+				)
+			);
 			this.add(UGEntityTypes.DWELLER.get(), LootTable.lootTable()
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1))

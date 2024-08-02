@@ -55,10 +55,7 @@ import quek.undergarden.entity.monster.cavern.Muncher;
 import quek.undergarden.entity.monster.cavern.Nargoyle;
 import quek.undergarden.entity.monster.cavern.Sploogie;
 import quek.undergarden.entity.monster.denizen.Denizen;
-import quek.undergarden.entity.monster.rotspawn.Rotbeast;
-import quek.undergarden.entity.monster.rotspawn.Rotling;
-import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
-import quek.undergarden.entity.monster.rotspawn.Rotwalker;
+import quek.undergarden.entity.monster.rotspawn.*;
 import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.slingshot.*;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
@@ -240,12 +237,14 @@ public class UndergardenCommonEvents {
 		event.register(UGEntityTypes.SMOG_MOG.get(), SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SmogMog::checkSmogMogSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.FORGOTTEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.DENIZEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.ROTBELCHER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 	}
 
 	private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
 		event.put(UGEntityTypes.ROTLING.get(), Rotling.registerAttributes().build());
 		event.put(UGEntityTypes.ROTWALKER.get(), Rotwalker.registerAttributes().build());
 		event.put(UGEntityTypes.ROTBEAST.get(), Rotbeast.registerAttributes().build());
+		event.put(UGEntityTypes.ROTBELCHER.get(), Rotbelcher.registerAttributes().build());
 		event.put(UGEntityTypes.DWELLER.get(), Dweller.registerAttributes().build());
 		event.put(UGEntityTypes.GWIBLING.get(), AbstractFish.createAttributes().build());
 		event.put(UGEntityTypes.BRUTE.get(), Brute.registerAttributes().build());

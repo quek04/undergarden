@@ -11,11 +11,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.RotbeastEyesLayer;
 import quek.undergarden.entity.monster.rotspawn.Rotbeast;
 
-public class RotbeastRender extends MobRenderer<Rotbeast, RotbeastModel<Rotbeast>> {
+public class RotbeastRenderer extends MobRenderer<Rotbeast, RotbeastModel<Rotbeast>> {
 
 	private static final ResourceLocation ROTBEAST = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/rotbeast.png");
 
-	public RotbeastRender(EntityRendererProvider.Context context) {
+	public RotbeastRenderer(EntityRendererProvider.Context context) {
 		super(context, new RotbeastModel<>(context.bakeLayer(UGModelLayers.ROTBEAST)), 0.6F);
 		this.addLayer(new RotbeastEyesLayer<>(this));
 	}

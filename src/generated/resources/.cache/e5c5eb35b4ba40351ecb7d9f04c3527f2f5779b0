@@ -1,5 +1,5 @@
-// 1.21	2024-07-21T00:36:00.2517951	Advancements
-46704040a3f796ba5d520ee8183e8de54d1a528f data/undergarden/advancement/undergarden/all_ore_blocks.json
+// 1.21	2024-08-01T21:54:21.1979469	Advancements
+57f1fcd1e615734122b7725a3aceacefaef31c1b data/undergarden/advancement/undergarden/all_ore_blocks.json
 81fb37adea14956e9917fb5b4d9f02cc3e11824e data/undergarden/advancement/undergarden/all_undergarden_biomes.json
 2843ccc8b905b160790bda55516c164808a60344 data/undergarden/advancement/undergarden/break_denizen_campfire.json
 3e53abe5b0ccb600c9592e79473386b56f213c5d data/undergarden/advancement/undergarden/catacombs.json
@@ -17,7 +17,7 @@ d1de9536717bd78d2543daf76cd0db5d78b1b22a data/undergarden/advancement/undergarde
 0a1bf1e08dd0cd892682bd4569a68a6d2e1a9c14 data/undergarden/advancement/undergarden/forgotten_ingot.json
 13f78004ffd25822806276722dbac8b0349968bb data/undergarden/advancement/undergarden/forgotten_tools.json
 f6c84610d3eb1e5a1aa156234a408b8e1617f174 data/undergarden/advancement/undergarden/gloomper_secret_disc.json
-7adc3eb4ad1838927058bc65e3698ef954c701ec data/undergarden/advancement/undergarden/kill_all_rotspawn.json
+81d0162c0fead2bf4426d1c5c9a02fe11dd498d2 data/undergarden/advancement/undergarden/kill_all_rotspawn.json
 90c4a4563f1e7b8584d4e0effff0599ee35161b2 data/undergarden/advancement/undergarden/kill_forgotten_guardian.json
 26f8ae72b622e698e95e2d51e16772ec2918fa59 data/undergarden/advancement/undergarden/kill_rotling.json
 c0d4860c18354eb2065d6b3602ad02b8ccf615f5 data/undergarden/advancement/undergarden/kill_scintling.json

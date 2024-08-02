@@ -1,4 +1,4 @@
-// 1.21	2024-07-26T01:22:44.8868398	Loot Tables
+// 1.21	2024-08-01T21:54:21.1837288	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_table/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_table/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_table/blocks/ancient_root_button.json
@@ -244,6 +244,7 @@ be494b30e6f42c21602cbbdd626fcc9285deef0d data/undergarden/loot_table/entities/mo
 207068cadcdd84fbf0fda1f164e3e0be01041e8c data/undergarden/loot_table/entities/muncher.json
 385c6d574b7ad40e537ed4ef599da98427681db2 data/undergarden/loot_table/entities/nargoyle.json
 5d4e7722e6046f9eabebed8805a1a4c90c5c2b61 data/undergarden/loot_table/entities/rotbeast.json
+8ca9d88251a6b2bcfa9b9dcc54221077f8121eaa data/undergarden/loot_table/entities/rotbelcher.json
 1a61ecdde536b31b44f8d81931d3762014170e48 data/undergarden/loot_table/entities/rotling.json
 5a9fa56f294a0abe5654a2040ed3dc8d376156a5 data/undergarden/loot_table/entities/rotwalker.json
 03bc7fab88ac990e9a7ca1e102c668f3191eaaa1 data/undergarden/loot_table/entities/scintling.json
