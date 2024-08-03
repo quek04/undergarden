@@ -232,7 +232,7 @@
           "parameters": {
             "continentalness": 0.0,
             "depth": -2.0,
-            "erosion": 0.7,
+            "erosion": 1.0,
             "humidity": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
@@ -247,7 +247,7 @@
             "erosion": 0.0,
             "humidity": 0.0,
             "offset": 0.0,
-            "temperature": 0.7,
+            "temperature": 1.0,
             "weirdness": 0.0
           }
         }

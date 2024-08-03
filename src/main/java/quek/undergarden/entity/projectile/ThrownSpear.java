@@ -146,4 +146,9 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 	protected ItemStack getDefaultPickupItem() {
 		return DEFAULT_STACK;
 	}
+
+	@Override
+	public ItemStack getWeaponItem() {
+		return this.getPickupItemStackOrigin();
+	}
 }

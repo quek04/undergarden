@@ -1,10 +1,10 @@
-// 1.21	2024-08-01T21:58:28.8283988	Registries
+// 1.21	2024-08-02T12:15:52.7749015	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
 c0569bb60eae60387e4744ad37bb4ef0db3e7f3f data/undergarden/damage_type/shard_torch.json
 03085effd952a8b02e71123720dc396942c66e96 data/undergarden/damage_type/utheric_infection.json
-8d011710501fa9a687c6cf3cfcfa9f30bda179f6 data/undergarden/dimension/undergarden.json
+3d18082dc9bfb6cbe38bea233ebe07f9eeee2197 data/undergarden/dimension/undergarden.json
 e1ea46224f63f6776463b83fa52db1b324627f84 data/undergarden/dimension_type/undergarden.json
 55e842f17df1dcd9ddc6b77c8a80704f596338fa data/undergarden/enchantment/longevity.json
 671b3bdc37ab7d3def2a9fa2acabb7207d8ffe31 data/undergarden/enchantment/ricochet.json
