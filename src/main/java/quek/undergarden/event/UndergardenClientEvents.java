@@ -5,6 +5,7 @@ import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.gui.Gui;
@@ -14,11 +15,10 @@ import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.DimensionSpecialEffects;
-import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -38,8 +38,13 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
+import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.attachment.UndergardenPortalAttachment;
@@ -47,6 +52,7 @@ import quek.undergarden.client.model.*;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
+import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.dweller.Dweller;
@@ -80,6 +86,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerItemColors);
 		bus.addListener(UndergardenClientEvents::registerOverlays);
 		bus.addListener(UndergardenClientEvents::registerDimensionSpecialEffects);
+		bus.addListener(UndergardenClientEvents::registerClientExtensions);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
@@ -257,44 +264,49 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerOverlays(RegisterGuiLayersEvent event) {
-		event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts"), (gui, deltaTracker) -> {
+		event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.VIRULENCE) && minecraft.gameMode.canHurtPlayer()) {
-				renderVirulenceHearts(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
+				renderVirulenceHearts(guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics, minecraft.gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor"), (gui, deltaTracker) -> {
+		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.BRITTLENESS) && minecraft.gameMode.canHurtPlayer()) {
-				renderBrittlenessArmor(gui.guiWidth(), gui.guiHeight(), gui, player);
+				renderBrittlenessArmor(guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics, player);
 			}
 		});
 		//render XP bar since we cancel the jump bar
 		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "dweller_xp_bar"), (gui, deltaTracker) -> {
+		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "dweller_xp_bar"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
-				minecraft.gui.renderExperienceBar(gui, gui.guiWidth() / 2 - 91);
+				minecraft.gui.renderExperienceBar(guiGraphics, guiGraphics.guiWidth() / 2 - 91);
 			}
 		});
-		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "undergarden_portal_overlay"), (gui, deltaTracker) -> {
+		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "undergarden_portal_overlay"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
 
 			if (player != null) {
-				renderPortalOverlay(gui, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), deltaTracker.getGameTimeDeltaPartialTick(true));
+				renderPortalOverlay(guiGraphics, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), deltaTracker.getGameTimeDeltaPartialTick(true));
 			}
+		});
+		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "carved_gloomgourd_overlay"), (guiGraphics, deltaTracker) -> {
+			Minecraft minecraft = Minecraft.getInstance();
+			ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gloomgourd_overlay.png");
+			minecraft.gui.renderTextureOverlay(guiGraphics, overlay, 1.0F);
 		});
 	}
 
 	private static void undergardenFog(ViewportEvent.RenderFog event) {
 		if (UndergardenConfig.Client.toggle_undergarden_fog.get()) {
 			LocalPlayer player = Minecraft.getInstance().player;
-			if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && event.getCamera().getFluidInCamera() == FogType.NONE && event.getType() == FogType.NONE) {
+			if (player != null && player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && event.getCamera().getFluidInCamera() == FogType.NONE && event.getType() == FogType.NONE && !player.isEyeInFluidType(UGFluids.VIRULENT_MIX_TYPE.get())) {
 				event.setNearPlaneDistance(-30.0F);
 				event.setFarPlaneDistance(225.0F);
 				event.setFogShape(FogShape.SPHERE);
@@ -315,6 +327,42 @@ public class UndergardenClientEvents {
 		Player player = event.getPlayer();
 		UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
 		event.setNewFovModifier(event.getFovModifier() - portal.getPortalAnimTime());
+	}
+
+	private static void registerClientExtensions(RegisterClientExtensionsEvent event) {
+		event.registerItem(new IClientItemExtensions() {
+			@Override
+			public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+				return new UndergardenBEWLR();
+			}
+		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.GRONGLET.asItem());
+		event.registerFluidType(new IClientFluidTypeExtensions() {
+			@Override
+			public ResourceLocation getStillTexture() {
+				return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_still");
+			}
+
+			@Override
+			public ResourceLocation getFlowingTexture() {
+				return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_flow");
+			}
+
+			@Override
+			public ResourceLocation getOverlayTexture() {
+				return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_flow");
+			}
+
+			@Override
+			public @NotNull Vector3f modifyFogColor(Camera camera, float partialTicks, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
+				return new Vector3f(57 / 255F, 25 / 255F, 80 / 255F);
+			}
+
+			@Override
+			public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance, float partialTicks, float nearDistance, float farDistance, FogShape shape) {
+				RenderSystem.setShaderFogStart(0.0F);
+				RenderSystem.setShaderFogEnd(3.0F);
+			}
+		}, UGFluids.VIRULENT_MIX_TYPE.get());
 	}
 
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, Player player) {

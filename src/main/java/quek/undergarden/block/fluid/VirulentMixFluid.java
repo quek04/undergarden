@@ -18,7 +18,7 @@ public abstract class VirulentMixFluid extends BaseFlowingFluid {
 
 	@Override
 	protected void animateTick(Level level, BlockPos pos, FluidState state, RandomSource random) {
-		if (random.nextInt(200) == 0) {
+		if (random.nextInt(300) == 0) {
 			level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), UGSoundEvents.VIRULENT_BUBBLE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
 		}
 		if (!state.isSource() && random.nextInt(64) == 0) {

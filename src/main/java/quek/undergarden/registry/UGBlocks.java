@@ -1,6 +1,5 @@
 package quek.undergarden.registry;
 
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -14,18 +13,15 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
-import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.item.tool.slingshot.GrongletItem;
 import quek.undergarden.world.gen.tree.UGTreeGrowers;
 
 import java.util.Objects;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -294,29 +290,9 @@ public class UGBlocks {
 			} else if (Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.FORGOTTEN));
 			} else if (Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
-				return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().stacksTo(1)) {
-					@Override
-					public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-						consumer.accept(new IClientItemExtensions() {
-							@Override
-							public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-								return new UndergardenBEWLR();
-							}
-						});
-					}
-				};
+				return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().stacksTo(1));
 			} else if (Objects.requireNonNull(block.get()) == GRONGLET.get()) {
-				return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties()) {
-					@Override
-					public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-						consumer.accept(new IClientItemExtensions() {
-							@Override
-							public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-								return new UndergardenBEWLR();
-							}
-						});
-					}
-				};
+				return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
 				return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {
