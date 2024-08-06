@@ -271,35 +271,35 @@ public class UGStructures {
 		), StructureTemplatePool.Projection.RIGID));
 
 		context.register(DENIZEN_CAMP_TOTEM_CIRCLE_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/totem_circle/circle_1").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/totem_circle/circle_2").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
+			Pair.of(StructurePoolElement.single(name("denizen_camp/totem_circle/circle_1"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/totem_circle/circle_2"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(DENIZEN_CAMP_TOTEM_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
 			Pair.of(StructurePoolElement.single("minecraft:empty"), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/totem/totem_1").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/totem/totem_2").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
+			Pair.of(StructurePoolElement.single(name("denizen_camp/totem/totem_1"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/totem/totem_2"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(DENIZEN_CAMP_ROAD_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/totem_circle/circle_1").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/totem_circle/circle_2").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road/road_straight_1").toString(), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road/road_straight_2").toString(), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road/road_straight_3").toString(), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road/road_straight_4").toString(), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road/road_turn_1").toString(), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road/road_turn_2").toString(), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road/road_turn_3").toString(), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road/road_turn_4").toString(), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3)
+			Pair.of(StructurePoolElement.single(name("denizen_camp/totem_circle/circle_1"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/totem_circle/circle_2"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/road/road_straight_1"), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/road/road_straight_2"), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/road/road_straight_3"), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/road/road_straight_4"), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/road/road_turn_1"), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/road/road_turn_2"), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/road/road_turn_3"), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/road/road_turn_4"), processors.getOrThrow(DENIZEN_CAMP_ROAD_PROCESSOR)), 3)
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(DENIZEN_CAMP_HANGOUT_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout/campfire_1").toString()), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout/campfire_2").toString()), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout/campfire_3").toString()), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout/campfire_4").toString()), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout/campfire_5").toString()), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout/storage_1").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout/storage_2").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout/storage_3").toString(), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/campfire_1")), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/campfire_2")), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/campfire_3")), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/campfire_4")), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/campfire_5")), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_1"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_2"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_3"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
 		), StructureTemplatePool.Projection.RIGID));
 	}
 
