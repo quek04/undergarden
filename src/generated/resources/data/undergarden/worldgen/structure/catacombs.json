@@ -3,14 +3,14 @@
   "biomes": "#undergarden:has_structure/catacombs",
   "liquid_settings": "ignore_waterlogging",
   "max_distance_from_center": 116,
-  "size": 25,
+  "size": 15,
   "spawn_overrides": {
     "monster": {
       "bounding_box": "piece",
       "spawns": [
         {
           "type": "undergarden:forgotten",
-          "maxCount": 1,
+          "maxCount": 4,
           "minCount": 1,
           "weight": 1
         }
@@ -21,6 +21,5 @@
     "above_bottom": 112
   },
   "start_pool": "undergarden:catacombs/catacombs_entrance",
-  "step": "surface_structures",
-  "terrain_adaptation": "beard_thin"
+  "step": "surface_structures"
 }

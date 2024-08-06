@@ -46,9 +46,11 @@ public class UGStructures {
 	public static final ResourceKey<StructureSet> CATACOMBS_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs"));
 
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_START = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/catacombs_entrance"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_STAIR = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/stair_pool"));
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_CHEST = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/chest_pool"));
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_INTERIOR = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/interior_pool"));
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_TUNNEL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel_pool"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_TUNNEL_FALLBACK = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel_fallback_pool"));
 	public static final ResourceKey<StructureTemplatePool> CATACOMBS_WAY = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/way_pool"));
 
 	public static final ResourceKey<StructureProcessorList> CATACOMBS_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs_degradation"));
@@ -80,12 +82,17 @@ public class UGStructures {
 		context.register(CATACOMBS, new BiggerJigsawStructure(
 			new Structure.StructureSettings(
 				biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS),
-				Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1)))),
+				Map.of(
+					MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(
+						new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 4)
+					))
+				),
 				GenerationStep.Decoration.SURFACE_STRUCTURES,
-				TerrainAdjustment.BEARD_THIN),
+				TerrainAdjustment.NONE
+			),
 			pools.getOrThrow(CATACOMBS_START),
 			Optional.empty(),
-			25,
+			15,
 			ConstantHeight.of(VerticalAnchor.aboveBottom(48)),
 			Optional.empty(),
 			116,
@@ -98,7 +105,8 @@ public class UGStructures {
 				biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE),
 				Map.of(),
 				GenerationStep.Decoration.UNDERGROUND_STRUCTURES,
-				TerrainAdjustment.BEARD_THIN),
+				TerrainAdjustment.BEARD_THIN
+			),
 			pools.getOrThrow(FORGOTTEN_VESTIGE_POOL),
 			Optional.empty(),
 			5,
@@ -139,62 +147,127 @@ public class UGStructures {
 		Holder<StructureTemplatePool> emptyPool = context.lookup(Registries.TEMPLATE_POOL).getOrThrow(Pools.EMPTY);
 		HolderGetter<StructureProcessorList> processors = context.lookup(Registries.PROCESSOR_LIST);
 
-		context.register(CATACOMBS_START, new StructureTemplatePool(emptyPool, ImmutableList.of(Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/entrance").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1)), StructureTemplatePool.Projection.RIGID));
+		context.register(CATACOMBS_START, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("catacombs/entrance1"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/entrance2"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/entrance3"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/entrance4"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/entrance5"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1)
+		), StructureTemplatePool.Projection.RIGID));
+		context.register(CATACOMBS_STAIR, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("catacombs/stair"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1)
+		), StructureTemplatePool.Projection.RIGID));
 		context.register(CATACOMBS_CHEST, new StructureTemplatePool(emptyPool, ImmutableList.of(
-				Pair.of(StructurePoolElement.single("minecraft:empty"), 2),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/chest").toString()), 2),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/chest_forgotten").toString()), 1)
+			Pair.of(StructurePoolElement.single("minecraft:empty"), 2),
+			Pair.of(StructurePoolElement.single(name("catacombs/chest")), 2),
+			Pair.of(StructurePoolElement.single(name("catacombs/chest_forgotten")), 1)
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(CATACOMBS_INTERIOR, new StructureTemplatePool(emptyPool, ImmutableList.of(
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/interior1").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/interior2").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/interior3").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/interior4").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100)
+			//Pair.of(StructurePoolElement.single(name("catacombs/interior1"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/interior2"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/interior3"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			//Pair.of(StructurePoolElement.single(name("catacombs/interior4"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/interior4_new"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/interior_altar"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/interior_grass"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/interior_jail"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/interior_morgue"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1)
 		), StructureTemplatePool.Projection.RIGID));
-		context.register(CATACOMBS_TUNNEL, new StructureTemplatePool(emptyPool, ImmutableList.of(
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/way_pool").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel1").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel2").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel3").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 50),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel4").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 50),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel5").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel6").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel7").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 50),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/room1").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 50),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/room2").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/room3").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel_guardian").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 25)
+		context.register(CATACOMBS_TUNNEL, new StructureTemplatePool(context.lookup(Registries.TEMPLATE_POOL).getOrThrow(CATACOMBS_TUNNEL_FALLBACK), ImmutableList.of(
+			//Pair.of(StructurePoolElement.single(name("catacombs/way_pool"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel1"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel2"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			//Pair.of(StructurePoolElement.single(name("catacombs/tunnel3"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel3_new"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel4"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel5"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel6"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel7"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_altar"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_altar2"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_altar_shiverstone"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_bend_altar"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_bend_candle_grass"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_bend_dirt"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_bend_grass_bars"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_bend_water"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_candle"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_candle_dirt"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_chiseled"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_cloggrum"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_dirt"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_grass"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_grass_dirt"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_grass_pillars"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_hidden"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_morgue1"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_morgue2"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_rock"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/altar"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/altar_pool"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+
+			Pair.of(StructurePoolElement.single(name("catacombs/room1"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/room2"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/room3"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/room4"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/room5"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+
+			Pair.of(StructurePoolElement.single(name("catacombs/3way_candle"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/3way_candle_grass"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/3way_chiseled"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/3way_cloggrum"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/3way_dirt"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/3way_morgue"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/big3way_intersection"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/big3way_intersection_grass"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/big_bend_morgue"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+
+			Pair.of(StructurePoolElement.single(name("catacombs/4way_arches"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/4way_arches2"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/4way_arches3"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/4way_cross"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/4way_smog_vent"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+
+			Pair.of(StructurePoolElement.single(name("catacombs/intersection_altar"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/intersection_dirt"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/intersection_grass_pillars"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_guardian"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1)
+		), StructureTemplatePool.Projection.RIGID));
+		context.register(CATACOMBS_TUNNEL_FALLBACK, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("catacombs/tunnel_dead_end"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1)
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(CATACOMBS_WAY, new StructureTemplatePool(emptyPool, ImmutableList.of(
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/entrance").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/4way").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 25),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/3way").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 50),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/2way").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 75),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/1way").toString(), processors.getOrThrow(CATACOMBS_DEGRADATION)), 100)
+			//Pair.of(StructurePoolElement.singlename("catacombs/entrance"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/4way"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/3way"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/2way"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("catacombs/1way"), processors.getOrThrow(CATACOMBS_DEGRADATION)), 1)
 		), StructureTemplatePool.Projection.RIGID));
 
 		context.register(FORGOTTEN_VESTIGE_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/arch_1").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/arch_2").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/arch_3").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/arch_4").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/arch_5").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/arch_6").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/face_1").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/face_2").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/face_3").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/house_1").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/house_2").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/house_3").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/house_4").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/house_5").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/depthrock/house_6").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_1").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_2").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_3").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_4").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_5").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
-				Pair.of(StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/shiverstone/arch_6").toString(), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1)
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_1"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_2"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_3"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_4"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_5"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_6"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/face_1"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/face_2"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/face_3"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/house_1"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/house_2"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/house_3"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/house_4"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/house_5"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/house_6"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_1"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_2"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_3"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_4"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_5"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_6"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1)
 		), StructureTemplatePool.Projection.RIGID));
 
 		context.register(DENIZEN_CAMP_TOTEM_CIRCLE_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
@@ -232,33 +305,33 @@ public class UGStructures {
 
 	public static void bootstrapProcessors(BootstrapContext<StructureProcessorList> context) {
 		context.register(CATACOMBS_DEGRADATION, new StructureProcessorList(List.of(
-				new RuleProcessor(List.of(
-						new ProcessorRule(
-								new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.5F),
-								AlwaysTrueTest.INSTANCE,
-								UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState()
-						)
-				))
+			new RuleProcessor(List.of(
+				new ProcessorRule(
+					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.5F),
+					AlwaysTrueTest.INSTANCE,
+					UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState()
+				)
+			))
 		)));
 
 		context.register(FORGOTTEN_VESTIGE_DEGRADATION, new StructureProcessorList(List.of(
-				new RuleProcessor(List.of(
-						new ProcessorRule(
-								new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.25F),
-								AlwaysTrueTest.INSTANCE,
-								UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState()
-						),
-						new ProcessorRule(
-								new RandomBlockMatchTest(UGBlocks.SHIVERSTONE_BRICKS.get(), 0.25F),
-								AlwaysTrueTest.INSTANCE,
-								UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get().defaultBlockState()
-						),
-						new ProcessorRule(
-								new RandomBlockMatchTest(UGBlocks.CLOGGRUM_BLOCK.get(), 0.5F),
-								AlwaysTrueTest.INSTANCE,
-								UGBlocks.RAW_CLOGGRUM_BLOCK.get().defaultBlockState()
-						)
-				))
+			new RuleProcessor(List.of(
+				new ProcessorRule(
+					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.25F),
+					AlwaysTrueTest.INSTANCE,
+					UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState()
+				),
+				new ProcessorRule(
+					new RandomBlockMatchTest(UGBlocks.SHIVERSTONE_BRICKS.get(), 0.25F),
+					AlwaysTrueTest.INSTANCE,
+					UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get().defaultBlockState()
+				),
+				new ProcessorRule(
+					new RandomBlockMatchTest(UGBlocks.CLOGGRUM_BLOCK.get(), 0.5F),
+					AlwaysTrueTest.INSTANCE,
+					UGBlocks.RAW_CLOGGRUM_BLOCK.get().defaultBlockState()
+				)
+			))
 		)));
 
 		context.register(DENIZEN_CAMP_ROAD_PROCESSOR, new StructureProcessorList(List.of(
@@ -284,5 +357,9 @@ public class UGStructures {
 				)
 			))
 		)));
+	}
+
+	private static String name(String name) {
+		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name).toString();
 	}
 }
