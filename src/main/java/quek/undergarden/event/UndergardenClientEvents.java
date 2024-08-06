@@ -299,7 +299,10 @@ public class UndergardenClientEvents {
 		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "carved_gloomgourd_overlay"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gloomgourd_overlay.png");
-			minecraft.gui.renderTextureOverlay(guiGraphics, overlay, 1.0F);
+			LocalPlayer player = minecraft.player;
+			if (player != null && player.getInventory().getArmor(3).is(UGBlocks.CARVED_GLOOMGOURD.asItem())) {
+				minecraft.gui.renderTextureOverlay(guiGraphics, overlay, 1.0F);
+			}
 		});
 	}
 
