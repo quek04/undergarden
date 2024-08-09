@@ -82,10 +82,10 @@ dependencies {
     implementation "net.neoforged:neoforge:${project.neo_version}"
 
 	// compile against the JEI API but do not include it at runtime
-	compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-	compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+	compileOnly("mezz.jei:jei-1.21-common-api:${jei_version}")
+	compileOnly("mezz.jei:jei-1.21-neoforge-api:${jei_version}")
 	// at runtime, use the full JEI jar for NeoForge
-	runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+	runtimeOnly("mezz.jei:jei-1.21-neoforge:${jei_version}")
 
     //implementation "curse.maven:jade-324717:${project.jade_version}"
     //implementation "curse.maven:just-enough-effect-descriptions-jeed-532286:${project.jeed_version}"
