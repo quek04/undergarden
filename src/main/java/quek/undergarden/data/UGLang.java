@@ -374,8 +374,6 @@ public class UGLang extends UGLangProvider {
 		addBiome(UGBiomes.VEIL_MUSHROOM_BOG, "Veil Mushroom Bog");
 		addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 
-		addEntityType(UGEntityTypes.BOAT, "Boat");
-		addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");
 		addEntityType(UGEntityTypes.BOOMGOURD, "Boomgourd");
 		addEntityType(UGEntityTypes.DEPTHROCK_PEBBLE, "Depthrock Pebble");
 		addEntityType(UGEntityTypes.GOO_BALL, "Goo Ball");

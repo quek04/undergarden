@@ -10,8 +10,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -19,8 +17,6 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -54,7 +50,6 @@ import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.client.render.entity.*;
-import quek.undergarden.entity.UGBoat;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.registry.*;
 
@@ -117,12 +112,8 @@ public class UndergardenClientEvents {
 
 	private static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
-		event.registerBlockEntityRenderer(UGBlockEntities.UNDERGARDEN_SIGN.get(), SignRenderer::new);
-		event.registerBlockEntityRenderer(UGBlockEntities.UNDERGARDEN_HANGING_SIGN.get(), HangingSignRenderer::new);
 		event.registerBlockEntityRenderer(UGBlockEntities.GRONGLET.get(), GrongletRender::new);
 		//
-		event.registerEntityRenderer(UGEntityTypes.BOAT.get(), (context) -> new UGBoatRenderer(context, false));
-		event.registerEntityRenderer(UGEntityTypes.CHEST_BOAT.get(), (context) -> new UGBoatRenderer(context, true));
 		event.registerEntityRenderer(UGEntityTypes.BOOMGOURD.get(), BoomgourdRender::new);
 		//
 		event.registerEntityRenderer(UGEntityTypes.DEPTHROCK_PEBBLE.get(), ThrownItemRenderer::new);
@@ -156,10 +147,6 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_HEAD, DepthrockBedRender::createHeadLayer);
 		event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_FOOT, DepthrockBedRender::createFootLayer);
 		event.registerLayerDefinition(UGModelLayers.GRONGLET, GrongletRender::createBodyLayer);
-		for (UGBoat.Type boatType : UGBoat.Type.values()) {
-			event.registerLayerDefinition(UGBoatRenderer.createBoatModelName(boatType), BoatModel::createBodyModel);
-			event.registerLayerDefinition(UGBoatRenderer.createChestBoatModelName(boatType), ChestBoatModel::createBodyModel);
-		}
 		event.registerLayerDefinition(UGModelLayers.MINION, MinionModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.ROTLING, RotlingModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.ROTWALKER, RotwalkerModel::createBodyLayer);

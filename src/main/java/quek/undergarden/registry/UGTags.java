@@ -145,7 +145,7 @@ public class UGTags {
 		}
 	}
 
-	public class Enchantments {
+	public static class Enchantments {
 
 		public static final TagKey<Enchantment> SLINGSHOT_EXCLUSIVE = tag("exclusive_set/slingshot");
 

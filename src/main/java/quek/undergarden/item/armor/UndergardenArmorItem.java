@@ -25,12 +25,12 @@ public class UndergardenArmorItem extends ArmorItem {
 
 	@Override
 	public boolean canWalkOnPowderedSnow(ItemStack stack, LivingEntity wearer) {
-		return stack.getItem().asItem() == UGItems.FROSTSTEEL_BOOTS.get();
+		return stack.is(UGItems.FROSTSTEEL_BOOTS.get());
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-		if (stack.getItem() == UGItems.CLOGGRUM_BOOTS.get()) {
+		if (stack.is(UGItems.CLOGGRUM_BOOTS.get())) {
 			tooltip.add(Component.translatable("tooltip.undergarden.cloggrum_boots").withStyle(ChatFormatting.GRAY));
 		}
 	}

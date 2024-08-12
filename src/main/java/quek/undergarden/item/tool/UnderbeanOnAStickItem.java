@@ -4,6 +4,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ItemSteerable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -22,20 +23,12 @@ public class UnderbeanOnAStickItem extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
-		if (!level.isClientSide) {
-			Entity entity = player.getVehicle();
-			if (player.isPassenger() && entity instanceof ItemSteerable && entity.getType() == UGEntityTypes.DWELLER.get()) {
-				ItemSteerable steerable = (ItemSteerable) entity;
-				if (steerable.boost()) {
-					stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
-					if (stack.isEmpty()) {
-						ItemStack stick = new ItemStack(Items.STICK);
-						//stick.setTag(stack.getTag());
-						return InteractionResultHolder.success(stick);
-					}
-
-					return InteractionResultHolder.success(stack);
-				}
+		if (!level.isClientSide()) {
+			Entity entity = player.getControlledVehicle();
+			if (player.isPassenger() && entity instanceof ItemSteerable itemsteerable && entity.getType() == UGEntityTypes.DWELLER.get() && itemsteerable.boost()) {
+				EquipmentSlot equipmentslot = LivingEntity.getSlotForHand(hand);
+				ItemStack itemstack1 = stack.hurtAndConvertOnBreak(1, Items.STICK, player, equipmentslot);
+				return InteractionResultHolder.success(itemstack1);
 			}
 
 			player.awardStat(Stats.ITEM_USED.get(this));
