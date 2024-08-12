@@ -40,7 +40,7 @@ public class InfusingRecipeCategory implements IRecipeCategory<InfusingRecipe> {
 	}
 
 	@Override
-	public RecipeType getRecipeType() {
+	public RecipeType<InfusingRecipe> getRecipeType() {
 		return RECIPE_TYPE;
 	}
 

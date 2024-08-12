@@ -48,13 +48,9 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.Forgotten;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
@@ -105,18 +101,21 @@ public class UndergardenCommonEvents {
 		PayloadRegistrar registrar = event.registrar(Undergarden.MODID).versioned("1.0.0").optional();
 		registrar.playToClient(CreateCritParticlePacket.TYPE, CreateCritParticlePacket.STREAM_CODEC, CreateCritParticlePacket::handle);
 		registrar.playToClient(UndergardenPortalSoundPacket.TYPE, UndergardenPortalSoundPacket.STREAM_CODEC, (payload, context) -> UndergardenPortalSoundPacket.handle(context));
+		registrar.playToClient(UthericInfectionPacket.TYPE, UthericInfectionPacket.STREAM_CODEC, UthericInfectionPacket::handle);
 	}
 
 	private static void registerBETypes(BlockEntityTypeAddBlocksEvent event) {
 		event.modify(BlockEntityType.SIGN,
 			UGBlocks.SMOGSTEM_SIGN.get(), UGBlocks.SMOGSTEM_WALL_SIGN.get(),
 			UGBlocks.WIGGLEWOOD_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_SIGN.get(),
-			UGBlocks.GRONGLE_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get());
+			UGBlocks.GRONGLE_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get(),
+			UGBlocks.ANCIENT_ROOT_SIGN.get(), UGBlocks.ANCIENT_ROOT_WALL_SIGN.get());
 
 		event.modify(BlockEntityType.HANGING_SIGN,
 			UGBlocks.SMOGSTEM_HANGING_SIGN.get(), UGBlocks.SMOGSTEM_WALL_HANGING_SIGN.get(),
 			UGBlocks.WIGGLEWOOD_HANGING_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN.get(),
-			UGBlocks.GRONGLE_HANGING_SIGN.get(), UGBlocks.GRONGLE_WALL_HANGING_SIGN.get());
+			UGBlocks.GRONGLE_HANGING_SIGN.get(), UGBlocks.GRONGLE_WALL_HANGING_SIGN.get(),
+			UGBlocks.ANCIENT_ROOT_HANGING_SIGN.get(), UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN.get());
 	}
 
 	private static void setup(FMLCommonSetupEvent event) {

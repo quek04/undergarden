@@ -8,8 +8,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.entity.Minion;
-import quek.undergarden.entity.UGBoat;
-import quek.undergarden.entity.UGChestBoat;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.entity.monster.Forgotten;

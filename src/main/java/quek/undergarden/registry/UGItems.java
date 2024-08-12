@@ -9,10 +9,7 @@ import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
-import quek.undergarden.item.BlisterbombItem;
-import quek.undergarden.item.CatalystItem;
-import quek.undergarden.item.DitchbulbPasteItem;
-import quek.undergarden.item.ForgottenSmithingTemplateItem;
+import quek.undergarden.item.*;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
 import quek.undergarden.item.tool.slingshot.DepthrockPebbleItem;
@@ -107,6 +104,8 @@ public class UGItems {
 	public static final DeferredItem<Item> WIGGLEWOOD_CHEST_BOAT = ITEMS.register("wigglewood_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_WIGGLEWOOD"), new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> GRONGLE_BOAT = ITEMS.register("grongle_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_GRONGLE"), new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> GRONGLE_CHEST_BOAT = ITEMS.register("grongle_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_GRONGLE"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> ANCIENT_ROOT_BOAT = ITEMS.register("ancient_root_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_ANCIENT_ROOT"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> ANCIENT_ROOT_CHEST_BOAT = ITEMS.register("ancient_root_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_ANCIENT_ROOT"), new Item.Properties().stacksTo(1)));
 
 	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 

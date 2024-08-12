@@ -98,4 +98,17 @@ public class UGEnumExtensions {
 			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
 		});
 	}
+
+	public static Object ANCIENT_ROOT_BOAT(int idx, Class<?> type) {
+		if (idx == 5)
+			return false;
+		return type.cast(switch (idx) {
+			case 0 -> UGBlocks.ANCIENT_ROOT_PLANKS;
+			case 1 -> "undergarden:ancient_root";
+			case 2 -> UGItems.ANCIENT_ROOT_BOAT;
+			case 3 -> UGItems.ANCIENT_ROOT_CHEST_BOAT;
+			case 4 -> (Supplier<Item>) () -> Items.STICK;
+			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
+		});
+	}
 }

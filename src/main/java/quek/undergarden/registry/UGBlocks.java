@@ -290,10 +290,10 @@ public class UGBlocks {
 	public static final DeferredBlock<ButtonBlock> ANCIENT_ROOT_BUTTON = register("ancient_root_button", () -> new ButtonBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
 	public static final DeferredBlock<PressurePlateBlock> ANCIENT_ROOT_PRESSURE_PLATE = register("ancient_root_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
 
-	public static final DeferredBlock<StandingSignBlock> ANCIENT_ROOT_SIGN = register("ancient_root_sign", () -> new UGStandingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)));
-	public static final DeferredBlock<WallSignBlock> ANCIENT_ROOT_WALL_SIGN = BLOCKS.register("ancient_root_wall_sign", () -> new UGWallSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)));
-	public static final DeferredBlock<CeilingHangingSignBlock> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", () -> new UGCeilingHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
-	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = BLOCKS.register("ancient_root_wall_hanging_sign", () -> new UGWallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
+	public static final DeferredBlock<StandingSignBlock> ANCIENT_ROOT_SIGN = register("ancient_root_sign", () -> new StandingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)));
+	public static final DeferredBlock<WallSignBlock> ANCIENT_ROOT_WALL_SIGN = BLOCKS.register("ancient_root_wall_sign", () -> new WallSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)));
+	public static final DeferredBlock<CeilingHangingSignBlock> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", () -> new CeilingHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
+	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = BLOCKS.register("ancient_root_wall_hanging_sign", () -> new WallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
 	//functional
 	public static final DeferredBlock<Block> INFUSER = register("infuser", () -> new InfuserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(UGSoundTypes.DREADROCK).noOcclusion().lightLevel((state) -> state.getValue(InfuserBlock.STATE) != InfuserState.INACTIVE ? 10 : 0)));

@@ -10,39 +10,12 @@
       }
     },
     {
-      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
-      "name": "UNDERGARDEN_WIGGLEWOOD",
-      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
-      "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
-        "method": "WIGGLEWOOD_BOAT"
-      }
-    },
-    {
-      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
-      "name": "UNDERGARDEN_SMOGSTEM",
-      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
-      "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
-        "method": "SMOGSTEM_BOAT"
-      }
-    },
-    {
-      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
-      "name": "UNDERGARDEN_GRONGLE",
-      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
-      "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
-        "method": "GRONGLE_BOAT"
-      }
-    },
-    {
       "enum": "net/minecraft/world/item/Rarity",
       "name": "UNDERGARDEN_ROGDORIUM",
       "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
       "parameters": {
         "class": "quek/undergarden/UGEnumExtensions",
-        "field": "ROGDORIUM"
+        "method": "ROGDORIUM"
       }
     },
     {
@@ -51,7 +24,7 @@
       "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
       "parameters": {
         "class": "quek/undergarden/UGEnumExtensions",
-        "field": "UTHERIUM"
+        "method": "UTHERIUM"
       }
     },
     {
@@ -97,6 +70,42 @@
       "parameters": {
         "class": "quek/undergarden/UGEnumExtensions",
         "field": "INFUSER_MISC_CATEGORY"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "UNDERGARDEN_WIGGLEWOOD",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "method": "WIGGLEWOOD_BOAT"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "UNDERGARDEN_SMOGSTEM",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "method": "SMOGSTEM_BOAT"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "UNDERGARDEN_GRONGLE",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "method": "GRONGLE_BOAT"
+      }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "UNDERGARDEN_ANCIENT_ROOT",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "method": "ANCIENT_ROOT_BOAT"
       }
     }
   ]
