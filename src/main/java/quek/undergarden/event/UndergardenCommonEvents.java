@@ -23,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -34,6 +35,7 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -45,6 +47,14 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import quek.undergarden.Undergarden;
+import quek.undergarden.entity.Forgotten;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
@@ -61,6 +71,8 @@ import quek.undergarden.entity.projectile.slingshot.*;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
 import quek.undergarden.network.UthericInfectionPacket;
+import quek.undergarden.network.CreateCritParticlePacket;
+import quek.undergarden.network.UndergardenPortalSoundPacket;
 import quek.undergarden.registry.*;
 
 import java.util.List;
@@ -69,6 +81,8 @@ public class UndergardenCommonEvents {
 
 	public static void initCommonEvents(IEventBus bus) {
 		UndergardenToolEvents.setupToolEvents();
+		bus.addListener(UndergardenCommonEvents::registerPackets);
+		bus.addListener(UndergardenCommonEvents::registerBETypes);
 		bus.addListener(UndergardenCommonEvents::setup);
 		bus.addListener(UndergardenCommonEvents::registerEntityAttributes);
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
@@ -84,6 +98,25 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::lookedAtEndermanWithGloomgourd);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerPotionRecipes);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::angerDenizensWhenCampfireIsBroken);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::ignoreEffects);
+	}
+
+	private static void registerPackets(RegisterPayloadHandlersEvent event) {
+		PayloadRegistrar registrar = event.registrar(Undergarden.MODID).versioned("1.0.0").optional();
+		registrar.playToClient(CreateCritParticlePacket.TYPE, CreateCritParticlePacket.STREAM_CODEC, CreateCritParticlePacket::handle);
+		registrar.playToClient(UndergardenPortalSoundPacket.TYPE, UndergardenPortalSoundPacket.STREAM_CODEC, (payload, context) -> UndergardenPortalSoundPacket.handle(context));
+	}
+
+	private static void registerBETypes(BlockEntityTypeAddBlocksEvent event) {
+		event.modify(BlockEntityType.SIGN,
+			UGBlocks.SMOGSTEM_SIGN.get(), UGBlocks.SMOGSTEM_WALL_SIGN.get(),
+			UGBlocks.WIGGLEWOOD_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_SIGN.get(),
+			UGBlocks.GRONGLE_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get());
+
+		event.modify(BlockEntityType.HANGING_SIGN,
+			UGBlocks.SMOGSTEM_HANGING_SIGN.get(), UGBlocks.SMOGSTEM_WALL_HANGING_SIGN.get(),
+			UGBlocks.WIGGLEWOOD_HANGING_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN.get(),
+			UGBlocks.GRONGLE_HANGING_SIGN.get(), UGBlocks.GRONGLE_WALL_HANGING_SIGN.get());
 	}
 
 	private static void setup(FMLCommonSetupEvent event) {
@@ -385,6 +418,14 @@ public class UndergardenCommonEvents {
 				if (state.is(UGBlocks.COARSE_DEEPSOIL.get())) {
 					event.setFinalState(UGBlocks.DEEPSOIL.get().defaultBlockState());
 				}
+			}
+		}
+	}
+
+	private static void ignoreEffects(MobEffectEvent.Applicable event) {
+		if (event.getEffectInstance() != null) {
+			if (event.getEffectInstance().is(UGEffects.GOOEY) && event.getEntity().getType().is(UGTags.Entities.IMMUNE_TO_GOOEY_EFFECT)) {
+				event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
 			}
 		}
 	}

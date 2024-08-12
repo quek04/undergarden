@@ -37,8 +37,6 @@ public class UGEntityTypes {
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Undergarden.MODID);
 
 	//misc
-	public static final DeferredHolder<EntityType<?>, EntityType<UGBoat>> BOAT = ENTITIES.register("boat", () -> EntityType.Builder.<UGBoat>of(UGBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("boat"));
-	public static final DeferredHolder<EntityType<?>, EntityType<UGChestBoat>> CHEST_BOAT = ENTITIES.register("chest_boat", () -> EntityType.Builder.<UGChestBoat>of(UGChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).clientTrackingRange(10).build("chest_boat"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Boomgourd>> BOOMGOURD = ENTITIES.register("boomgourd", () -> EntityType.Builder.<Boomgourd>of(Boomgourd::new, MobCategory.MISC).fireImmune().sized(1.0F, 1.0F).clientTrackingRange(10).updateInterval(10).build("boomgourd"));
 	public static final DeferredHolder<EntityType<?>, EntityType<DepthrockPebble>> DEPTHROCK_PEBBLE = ENTITIES.register("depthrock_pebble", () -> EntityType.Builder.<DepthrockPebble>of(DepthrockPebble::new, MobCategory.MISC).sized(0.25F, 0.25F).build("depthrock_pebble"));
 	public static final DeferredHolder<EntityType<?>, EntityType<GooBall>> GOO_BALL = ENTITIES.register("goo_ball", () -> EntityType.Builder.<GooBall>of(GooBall::new, MobCategory.MISC).sized(0.25F, 0.25F).build("goo_ball"));

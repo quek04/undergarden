@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[1,)"
+loaderVersion = "[4,)"
 issueTrackerURL = "https://github.com/quek04/The-Undergarden/issues"
 license = "MIT"
 
@@ -17,7 +17,7 @@ enumExtensions="META-INF/enumextensions.json"
 [[dependencies.undergarden]]
 	modId = "neoforge"
 	type = "required"
-	versionRange = "[20.6.143,)"
+	versionRange = "[21.1.4,)"
 	ordering = "NONE"
 	side = "BOTH"
 

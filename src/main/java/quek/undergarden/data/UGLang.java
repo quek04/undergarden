@@ -424,8 +424,6 @@ public class UGLang extends UGLangProvider {
 		addBiome(UGBiomes.INFECTED_DEPTHS, "Infected Depths");
 		addBiome(UGBiomes.PUFF_MUSHROOM_FOREST, "Puff Mushroom Forest");
 
-		addEntityType(UGEntityTypes.BOAT, "Boat");
-		addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");
 		addEntityType(UGEntityTypes.BOOMGOURD, "Boomgourd");
 		addEntityType(UGEntityTypes.DEPTHROCK_PEBBLE, "Depthrock Pebble");
 		addEntityType(UGEntityTypes.GOO_BALL, "Goo Ball");

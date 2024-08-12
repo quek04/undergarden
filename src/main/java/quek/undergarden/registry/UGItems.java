@@ -2,14 +2,17 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.UGBoat;
-import quek.undergarden.item.*;
+import quek.undergarden.item.BlisterbombItem;
+import quek.undergarden.item.CatalystItem;
+import quek.undergarden.item.DitchbulbPasteItem;
+import quek.undergarden.item.ForgottenSmithingTemplateItem;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
 import quek.undergarden.item.tool.slingshot.DepthrockPebbleItem;
@@ -98,16 +101,14 @@ public class UGItems {
 	public static final DeferredItem<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
 	public static final DeferredItem<Item> UNDERBEAN_STICK = ITEMS.register("underbean_on_a_stick", () -> new UnderbeanOnAStickItem(new Item.Properties().stacksTo(1).durability(100)));
 
-	public static final DeferredItem<Item> SMOGSTEM_BOAT = ITEMS.register("smogstem_boat", () -> new UGBoatItem(false, UGBoat.Type.SMOGSTEM, new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> SMOGSTEM_CHEST_BOAT = ITEMS.register("smogstem_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.SMOGSTEM, new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> WIGGLEWOOD_BOAT = ITEMS.register("wigglewood_boat", () -> new UGBoatItem(false, UGBoat.Type.WIGGLEWOOD, new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> WIGGLEWOOD_CHEST_BOAT = ITEMS.register("wigglewood_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.WIGGLEWOOD, new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> GRONGLE_BOAT = ITEMS.register("grongle_boat", () -> new UGBoatItem(false, UGBoat.Type.GRONGLE, new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> GRONGLE_CHEST_BOAT = ITEMS.register("grongle_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.GRONGLE, new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> ANCIENT_ROOT_BOAT = ITEMS.register("ancient_root_boat", () -> new UGBoatItem(false, UGBoat.Type.ANCIENT_ROOT, new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> ANCIENT_ROOT_CHEST_BOAT = ITEMS.register("ancient_root_chest_boat", () -> new UGBoatItem(true, UGBoat.Type.ANCIENT_ROOT, new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> SMOGSTEM_BOAT = ITEMS.register("smogstem_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_SMOGSTEM"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> SMOGSTEM_CHEST_BOAT = ITEMS.register("smogstem_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_SMOGSTEM"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> WIGGLEWOOD_BOAT = ITEMS.register("wigglewood_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_WIGGLEWOOD"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> WIGGLEWOOD_CHEST_BOAT = ITEMS.register("wigglewood_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_WIGGLEWOOD"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> GRONGLE_BOAT = ITEMS.register("grongle_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_GRONGLE"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> GRONGLE_CHEST_BOAT = ITEMS.register("grongle_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_GRONGLE"), new Item.Properties().stacksTo(1)));
 
-	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new UGBucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
 	public static final DeferredItem<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new MobBucketItem(UGEntityTypes.GWIBLING.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
 

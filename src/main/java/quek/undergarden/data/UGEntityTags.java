@@ -29,6 +29,7 @@ public class UGEntityTags extends EntityTypeTagsProvider {
 		tag(UGTags.Entities.IMMUNE_TO_SCINTLING_GOO).add(UGEntityTypes.SCINTLING.get(), UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.DWELLER.get(), EntityType.WARDEN);
 		tag(UGTags.Entities.IMMUNE_TO_BLISTERBERRY_BUSH).add(UGEntityTypes.SCINTLING.get(), UGEntityTypes.SMOG_MOG.get());
 		tag(UGTags.Entities.IMMUNE_TO_INFECTION).addTag(UGTags.Entities.ROTSPAWN).add(UGEntityTypes.DENIZEN.get(), UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.MINION.get());
+		tag(UGTags.Entities.IMMUNE_TO_GOOEY_EFFECT).add(UGEntityTypes.SCINTLING.get());
 
 		//forge
 		tag(Tags.EntityTypes.BOSSES).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get());

@@ -31,6 +31,9 @@ public class UGParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_INK = PARTICLES.register("falling_ink", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_INK = PARTICLES.register("landing_ink", () -> new SimpleParticleType(false));
 
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_GOO = PARTICLES.register("falling_goo", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_GOO = PARTICLES.register("landing_goo", () -> new SimpleParticleType(false));
+
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_VIRULENT = PARTICLES.register("dripping_virulent", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_VIRULENT = PARTICLES.register("falling_virulent", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_VIRULENT = PARTICLES.register("landing_virulent", () -> new SimpleParticleType(false));

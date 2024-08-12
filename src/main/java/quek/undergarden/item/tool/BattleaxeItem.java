@@ -49,18 +49,13 @@ public class BattleaxeItem extends SwordItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-		if (stack.getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
+		if (stack.is(UGItems.FORGOTTEN_BATTLEAXE.get())) {
 			tooltip.add(Component.translatable("tooltip.undergarden.forgotten_weapon").withStyle(ChatFormatting.GREEN));
 		}
 	}
 
-	/*@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return enchantment.canEnchant(stack) && enchantment != Enchantments.KNOCKBACK;
-	}*/
-
 	@Override
-	public boolean isPrimaryItemFor(ItemStack stack, Holder<Enchantment> enchantment) {
-		return !enchantment.is(Enchantments.KNOCKBACK);
+	public boolean supportsEnchantment(ItemStack stack, Holder<Enchantment> enchantment) {
+		return !enchantment.is(Enchantments.KNOCKBACK) && super.supportsEnchantment(stack, enchantment);
 	}
 }
