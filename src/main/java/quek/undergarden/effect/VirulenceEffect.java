@@ -6,8 +6,9 @@ import net.minecraft.world.entity.LivingEntity;
 import quek.undergarden.registry.UGEffects;
 
 public class VirulenceEffect extends MobEffect {
-	public VirulenceEffect() {
-		super(MobEffectCategory.HARMFUL, 3550530);
+
+	public VirulenceEffect(MobEffectCategory category, int color) {
+		super(category, color);
 	}
 
 	@Override

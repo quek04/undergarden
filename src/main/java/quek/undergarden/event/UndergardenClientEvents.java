@@ -187,6 +187,8 @@ public class UndergardenClientEvents {
 		event.registerSprite(UGParticleTypes.DRIPPING_INK.get(), UGDripParticles::createInkHangParticle);
 		event.registerSprite(UGParticleTypes.FALLING_INK.get(), UGDripParticles::createInkFallParticle);
 		event.registerSprite(UGParticleTypes.LANDING_INK.get(), UGDripParticles::createInkLandParticle);
+		event.registerSprite(UGParticleTypes.FALLING_GOO.get(), UGDripParticles::createGooFallParticle);
+		event.registerSprite(UGParticleTypes.LANDING_GOO.get(), UGDripParticles::createGooLandParticle);
 		event.registerSprite(UGParticleTypes.DRIPPING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentHangParticle);
 		event.registerSprite(UGParticleTypes.FALLING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentFallParticle);
 		event.registerSprite(UGParticleTypes.LANDING_VIRULENT.get(), UGDripParticles::createVirulentLandParticle);

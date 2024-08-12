@@ -9,27 +9,18 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.UndergardenClient;
 
-public record UndergardenPortalSoundPacket() implements CustomPacketPayload {
+public class UndergardenPortalSoundPacket implements CustomPacketPayload {
 
+	public static final UndergardenPortalSoundPacket INSTANCE = new UndergardenPortalSoundPacket();
 	public static final Type<UndergardenPortalSoundPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "portal_sound"));
-	public static final StreamCodec<RegistryFriendlyByteBuf, UndergardenPortalSoundPacket> STREAM_CODEC = CustomPacketPayload.codec(UndergardenPortalSoundPacket::write, UndergardenPortalSoundPacket::new);
-
-	public UndergardenPortalSoundPacket(RegistryFriendlyByteBuf buf) {
-		this();
-	}
-
-	public void write(RegistryFriendlyByteBuf buf) {
-
-	}
+	public static final StreamCodec<RegistryFriendlyByteBuf, UndergardenPortalSoundPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
 
 	@Override
 	public Type<? extends CustomPacketPayload> type() {
 		return TYPE;
 	}
 
-	public static void handle(UndergardenPortalSoundPacket packet, IPayloadContext context) {
-		if (Minecraft.getInstance().player != null && Minecraft.getInstance().level != null) {
-			context.enqueueWork(UndergardenClient::playPortalSound);
-		}
+	public static void handle(IPayloadContext context) {
+		context.enqueueWork(UndergardenClient::playPortalSound);
 	}
 }

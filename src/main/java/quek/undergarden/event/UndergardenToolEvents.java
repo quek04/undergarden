@@ -86,7 +86,7 @@ public class UndergardenToolEvents {
 	private static void froststeelTickEvent(EntityTickEvent.Pre event) {
 		Entity entity = event.getEntity();
 		if (entity instanceof LivingEntity living) {
-			if (living.tickCount % 5 == 0 && living.level().isClientSide() && living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "effect.chilly_slowness")) != null) {
+			if (living.tickCount % 5 == 0 && living.level().isClientSide() && living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(UGEffects.CHILLY_MODIFIER) != null) {
 				for (int i = 0; i < 5; i++) {
 					double d0 = living.getRandom().nextFloat() * 2.0F - 1.0F;
 					double d1 = living.getRandom().nextFloat() * 2.0F - 1.0F;

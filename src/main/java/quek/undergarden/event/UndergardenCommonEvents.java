@@ -41,6 +41,7 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
@@ -85,12 +86,13 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::cancelPlayerFallDamageOnDweller);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::lookedAtEndermanWithGloomgourd);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerPotionRecipes);
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::ignoreEffects);
 	}
 
 	private static void registerPackets(RegisterPayloadHandlersEvent event) {
 		PayloadRegistrar registrar = event.registrar(Undergarden.MODID).versioned("1.0.0").optional();
 		registrar.playToClient(CreateCritParticlePacket.TYPE, CreateCritParticlePacket.STREAM_CODEC, CreateCritParticlePacket::handle);
-		registrar.playToClient(UndergardenPortalSoundPacket.TYPE, UndergardenPortalSoundPacket.STREAM_CODEC, UndergardenPortalSoundPacket::handle);
+		registrar.playToClient(UndergardenPortalSoundPacket.TYPE, UndergardenPortalSoundPacket.STREAM_CODEC, (payload, context) -> UndergardenPortalSoundPacket.handle(context));
 	}
 
 	private static void registerBETypes(BlockEntityTypeAddBlocksEvent event) {
@@ -333,6 +335,14 @@ public class UndergardenCommonEvents {
 				if (state.is(UGBlocks.COARSE_DEEPSOIL.get())) {
 					event.setFinalState(UGBlocks.DEEPSOIL.get().defaultBlockState());
 				}
+			}
+		}
+	}
+
+	private static void ignoreEffects(MobEffectEvent.Applicable event) {
+		if (event.getEffectInstance() != null) {
+			if (event.getEffectInstance().is(UGEffects.GOOEY) && event.getEntity().getType().is(UGTags.Entities.IMMUNE_TO_GOOEY_EFFECT)) {
+				event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
 			}
 		}
 	}

@@ -37,7 +37,7 @@ public class UndergardenPortalForcer {
 
 	private static void playPortalSound(Entity entity) {
 		if (entity instanceof ServerPlayer player) {
-			PacketDistributor.sendToPlayer(player, new UndergardenPortalSoundPacket());
+			PacketDistributor.sendToPlayer(player, UndergardenPortalSoundPacket.INSTANCE);
 		}
 	}
 
