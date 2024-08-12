@@ -40,7 +40,7 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 		BlockPos blockpos = context.origin();
 		UtheriumCrystalConfiguration baseConfig = context.config();
 		RandomSource random = context.random();
-		if (!canPlaceAt(level, blockpos.mutable())) {
+		if (!this.canPlaceAt(level, blockpos.mutable(), baseConfig.ceilingCrystals())) {
 			return false;
 		} else {
 			if (random.nextFloat() < baseConfig.crystalChance()) {
@@ -69,7 +69,7 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 						return true;
 					}
 				} else {
-					LargeCrystal crystal = makeCrystal(blockpos, true, random, config.columnRadius.sample(random), config.stalagmiteBluntness, config.heightScale);
+					LargeCrystal crystal = makeCrystal(blockpos, baseConfig.ceilingCrystals(), random, config.columnRadius.sample(random), config.stalagmiteBluntness, config.heightScale);
 
 					boolean flag = crystal.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(level);
 					if (flag) {
@@ -88,7 +88,7 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 				for (BlockPos blockpos1 : BlockPos.randomBetweenClosed(random, l, blockpos.getX() - k, blockpos.getY(), blockpos.getZ() - k, blockpos.getX() + k, blockpos.getY(), blockpos.getZ() + k)) {
 					int i1 = heightSample - blockpos1.distManhattan(blockpos);
 					if (i1 >= 0) {
-						flag1 |= this.placeColumn(level, blockpos1, i1, config.reach().sample(random));
+						flag1 |= this.placeColumn(level, blockpos1, i1, config.reach().sample(random), baseConfig.ceilingCrystals());
 					}
 				}
 
@@ -101,26 +101,26 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 		return new LargeCrystal(rootPos, up, radius, bluntness.sample(random), scale.sample(random));
 	}
 
-	private boolean placeColumn(LevelAccessor accessor, BlockPos pos, int distance, int reach) {
+	private boolean placeColumn(LevelAccessor accessor, BlockPos pos, int distance, int reach, boolean ceiling) {
 		boolean flag = false;
 
 		for (BlockPos blockpos : BlockPos.betweenClosed(pos.getX() - reach, pos.getY(), pos.getZ() - reach, pos.getX() + reach, pos.getY(), pos.getZ() + reach)) {
 			int i = blockpos.distManhattan(pos);
-			BlockPos blockpos1 = isAir(accessor, blockpos) ? findSurface(accessor, blockpos.mutable(), i) : findAir(accessor, blockpos.mutable(), i);
+			BlockPos blockpos1 = isAir(accessor, blockpos) ? findSurface(accessor, blockpos.mutable(), i, ceiling) : findAir(accessor, blockpos.mutable(), i);
 			if (blockpos1 != null) {
 				int j = distance - i / 2;
 
 				for (BlockPos.MutableBlockPos mutable = blockpos1.mutable(); j >= 0; --j) {
 					if (isAir(accessor, mutable)) {
 						this.setBlock(accessor, mutable, UGBlocks.UTHERIUM_GROWTH.get().defaultBlockState());
-						mutable.move(Direction.UP);
+						mutable.move(ceiling ? Direction.DOWN : Direction.UP);
 						flag = true;
 					} else {
 						if (!accessor.getBlockState(mutable).is(UGBlocks.UTHERIUM_GROWTH.get())) {
 							break;
 						}
 
-						mutable.move(Direction.UP);
+						mutable.move(ceiling ? Direction.DOWN : Direction.UP);
 					}
 				}
 			}
@@ -130,10 +130,10 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 	}
 
 	@Nullable
-	private static BlockPos findSurface(LevelAccessor accessor, BlockPos.MutableBlockPos pos, int distance) {
+	private BlockPos findSurface(LevelAccessor accessor, BlockPos.MutableBlockPos pos, int distance, boolean ceiling) {
 		while (pos.getY() > accessor.getMinBuildHeight() + 1 && distance > 0) {
 			--distance;
-			if (canPlaceAt(accessor, pos)) {
+			if (this.canPlaceAt(accessor, pos, ceiling)) {
 				return pos;
 			}
 
@@ -143,12 +143,12 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 		return null;
 	}
 
-	private static boolean canPlaceAt(LevelAccessor accessor, BlockPos.MutableBlockPos pos) {
+	private boolean canPlaceAt(LevelAccessor accessor, BlockPos.MutableBlockPos pos, boolean ceiling) {
 		if (!isAir(accessor, pos)) {
 			return false;
 		} else {
-			BlockState blockstate = accessor.getBlockState(pos.move(Direction.DOWN));
-			pos.move(Direction.UP);
+			BlockState blockstate = accessor.getBlockState(pos.move(ceiling ? Direction.UP : Direction.DOWN));
+			pos.move(ceiling ? Direction.DOWN : Direction.UP);
 			return !blockstate.isAir() && CAN_PLACE_ON.contains(blockstate.getBlock());
 		}
 	}
@@ -217,7 +217,7 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 		}
 
 		private int getHeightAtRadius(float radius) {
-			return (int) DripstoneUtils.getDripstoneHeight((double) radius, (double) this.radius, this.scale, this.bluntness);
+			return (int) DripstoneUtils.getDripstoneHeight(radius, this.radius, this.scale, this.bluntness);
 		}
 
 		void placeBlocks(WorldGenLevel level, RandomSource random) {
@@ -239,7 +239,7 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 								if (level.getBlockState(pos).isAir()) {
 									flag = true;
 									level.setBlock(pos, UGBlocks.UTHERIUM_GROWTH.get().defaultBlockState(), 2);
-								} else if (flag && level.getBlockState(pos).is(BlockTags.BASE_STONE_OVERWORLD)) {
+								} else if (flag && level.getBlockState(pos).is(UGBlocks.DREADROCK)) {
 									break;
 								}
 

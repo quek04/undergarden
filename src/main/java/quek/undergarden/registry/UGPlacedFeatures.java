@@ -93,6 +93,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> SMOG_VENT = create("smog_vent");
 	public static final ResourceKey<PlacedFeature> ICE_PILLAR = create("ice_pillar");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH = create("utherium_growth");
+	public static final ResourceKey<PlacedFeature> CEILING_UTHERIUM_GROWTH = create("ceiling_utherium_growth");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
 	public static final ResourceKey<PlacedFeature> DEPTHS_HOLE = create("depths_hole");
 
@@ -172,8 +173,9 @@ public class UGPlacedFeatures {
 		//misc
 		context.register(SMOG_VENT, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOG_VENT), tree(8)));
 		context.register(ICE_PILLAR, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ICE_PILLAR), patch(50)));
-		context.register(UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH), patch(100)));
-		context.register(UTHERIUM_GROWTH_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH_EXTRA), patch(200)));
+		context.register(UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH), crystal(50)));
+		context.register(CEILING_UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.CEILING_UTHERIUM_GROWTH), crystal(50)));
+		context.register(UTHERIUM_GROWTH_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH_EXTRA), crystal(100)));
 		context.register(DEPTHS_HOLE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEPTHS_HOLE), patchWithFilter(2, BlockPredicate.anyOf(BlockPredicate.matchesTag(Direction.DOWN.getNormal(), UGTags.Blocks.BASE_STONE_UNDERGARDEN), BlockPredicate.matchesTag(Direction.DOWN.getNormal(), BlockTags.DIRT)))));
 	}
 
@@ -186,6 +188,10 @@ public class UGPlacedFeatures {
 	}
 
 	private static List<PlacementModifier> patch(int count) {
+		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
+	}
+
+	private static List<PlacementModifier> crystal(int count) {
 		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
 	}
 

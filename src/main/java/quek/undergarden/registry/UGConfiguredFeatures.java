@@ -126,6 +126,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMOG_VENT = create("smog_vent");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_PILLAR = create("ice_pillar");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH = create("utherium_growth");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> CEILING_UTHERIUM_GROWTH = create("ceiling_utherium_growth");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHS_HOLE = create("depths_hole");
 
@@ -202,12 +203,16 @@ public class UGConfiguredFeatures {
 		context.register(ICE_PILLAR, new ConfiguredFeature<>(UGFeatures.ICE_PILLAR.get(), FeatureConfiguration.NONE));
 		context.register(UTHERIUM_GROWTH, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH.get(), new UtheriumCrystalConfiguration(
 		new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(2, 5)),
-				new LargeDripstoneConfiguration(50, UniformInt.of(3, 16), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
-				0.4F)));
+				new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
+				0.4F, false)));
+		context.register(CEILING_UTHERIUM_GROWTH, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH.get(), new UtheriumCrystalConfiguration(
+				new ColumnFeatureConfiguration(UniformInt.of(1, 2), UniformInt.of(2, 5)),
+				new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
+				0.4F, true)));
 		context.register(UTHERIUM_GROWTH_EXTRA, new ConfiguredFeature<>(UGFeatures.UTHERIUM_GROWTH.get(), new UtheriumCrystalConfiguration(
 			new ColumnFeatureConfiguration(UniformInt.of(1, 3), UniformInt.of(2, 10)),
-			new LargeDripstoneConfiguration(50, UniformInt.of(3, 16), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
-			0.8F)));
+			new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
+			0.8F, false)));
 		context.register(DEPTHS_HOLE, new ConfiguredFeature<>(UGFeatures.DEPTHS_HOLE.get(), FeatureConfiguration.NONE));
 	}
 

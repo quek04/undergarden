@@ -1,6 +1,7 @@
 {
   "type": "undergarden:utherium_growth",
   "config": {
+    "ceiling_crystals": true,
     "cluster": {
       "height": {
         "type": "minecraft:uniform",

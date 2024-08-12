@@ -6,10 +6,11 @@ import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureCo
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration;
 
-public record UtheriumCrystalConfiguration(ColumnFeatureConfiguration clusterConfig, LargeDripstoneConfiguration crystalConfig, float crystalChance) implements FeatureConfiguration {
+public record UtheriumCrystalConfiguration(ColumnFeatureConfiguration clusterConfig, LargeDripstoneConfiguration crystalConfig, float crystalChance, boolean ceilingCrystals) implements FeatureConfiguration {
 	public static final Codec<UtheriumCrystalConfiguration> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 			ColumnFeatureConfiguration.CODEC.fieldOf("cluster").forGetter(UtheriumCrystalConfiguration::clusterConfig),
 			LargeDripstoneConfiguration.CODEC.fieldOf("crystal").forGetter(UtheriumCrystalConfiguration::crystalConfig),
-			Codec.floatRange(0.0F, 1.0F).fieldOf("crystal_chance").forGetter(UtheriumCrystalConfiguration::crystalChance)
+			Codec.floatRange(0.0F, 1.0F).fieldOf("crystal_chance").forGetter(UtheriumCrystalConfiguration::crystalChance),
+			Codec.BOOL.optionalFieldOf("ceiling_crystals", false).forGetter(UtheriumCrystalConfiguration::ceilingCrystals)
 	).apply(instance, UtheriumCrystalConfiguration::new));
 }
