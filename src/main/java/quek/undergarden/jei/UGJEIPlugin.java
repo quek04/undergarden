@@ -2,6 +2,7 @@ package quek.undergarden.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import quek.undergarden.Undergarden;
+import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
 import quek.undergarden.jei.category.InfusingRecipeCategory;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGRecipeTypes;
@@ -39,5 +41,11 @@ public class UGJEIPlugin implements IModPlugin {
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 		registration.addRecipeCatalyst(new ItemStack(UGBlocks.INFUSER), InfusingRecipeCategory.RECIPE_TYPE);
+	}
+
+	@Override
+	public void registerGuiHandlers(IGuiHandlerRegistration registration) {
+		registration.addRecipeClickArea(InfuserScreen.class, 32, 17, 41, 30, InfusingRecipeCategory.RECIPE_TYPE);
+		registration.addRecipeClickArea(InfuserScreen.class, 103, 17, 41, 30, InfusingRecipeCategory.RECIPE_TYPE);
 	}
 }
