@@ -44,7 +44,6 @@ public class Undergarden {
 		bus.addListener(this::gatherData);
 
 		DeferredRegister<?>[] registers = {
-			UGAttachments.ATTACHMENTS,
 			UGBlockEntities.BLOCK_ENTITIES,
 			UGBlocks.BLOCKS,
 			UGCarvers.CARVERS,

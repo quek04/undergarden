@@ -3,7 +3,6 @@ package quek.undergarden.event;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.Util;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -43,7 +42,7 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
-import quek.undergarden.attachment.UndergardenPortalAttachment;
+import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
@@ -282,7 +281,7 @@ public class UndergardenClientEvents {
 			LocalPlayer player = minecraft.player;
 
 			if (player != null) {
-				renderPortalOverlay(guiGraphics, minecraft, window, player.getData(UGAttachments.UNDERGARDEN_PORTAL), deltaTracker.getGameTimeDeltaPartialTick(true));
+				renderPortalOverlay(guiGraphics, minecraft, window, deltaTracker.getGameTimeDeltaPartialTick(true));
 			}
 		});
 		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "carved_gloomgourd_overlay"), (guiGraphics, deltaTracker) -> {
@@ -316,9 +315,9 @@ public class UndergardenClientEvents {
 	}
 
 	private static void undergardenPortalFOV(ComputeFovModifierEvent event) {
-		Player player = event.getPlayer();
-		UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
-		event.setNewFovModifier(event.getFovModifier() - portal.getPortalAnimTime());
+		if (UndergardenPortalVisuals.getPortalAnimTime() > 0.0F) {
+			event.setNewFovModifier(event.getFovModifier() - UndergardenPortalVisuals.getPortalAnimTime());
+		}
 	}
 
 	private static void registerClientExtensions(RegisterClientExtensionsEvent event) {
@@ -480,9 +479,8 @@ public class UndergardenClientEvents {
 		}
 	}
 
-	private static void renderPortalOverlay(GuiGraphics guiGraphics, Minecraft minecraft, Window window, UndergardenPortalAttachment portal, float partialTicks) {
-		PoseStack poseStack = guiGraphics.pose();
-		float alpha = portal.getPrevPortalAnimTime() + (portal.getPortalAnimTime() - portal.getPrevPortalAnimTime()) * partialTicks;
+	private static void renderPortalOverlay(GuiGraphics graphics, Minecraft minecraft, Window window, float partialTicks) {
+		float alpha = Mth.lerp(partialTicks, UndergardenPortalVisuals.getPrevPortalAnimTime(), UndergardenPortalVisuals.getPortalAnimTime());
 		if (alpha > 0.0F) {
 			if (alpha < 1.0F) {
 				alpha = alpha * alpha;
@@ -490,18 +488,16 @@ public class UndergardenClientEvents {
 				alpha = alpha * 0.8F + 0.2F;
 			}
 
-			poseStack.pushPose();
 			RenderSystem.disableDepthTest();
 			RenderSystem.depthMask(false);
 			RenderSystem.enableBlend();
-			guiGraphics.setColor(1.0F, 1.0F, 1.0F, alpha);
+			graphics.setColor(1.0F, 1.0F, 1.0F, alpha);
 			TextureAtlasSprite textureatlassprite = minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState());
-			guiGraphics.blit(0, 0, -90, window.getGuiScaledWidth(), window.getGuiScaledHeight(), textureatlassprite);
+			graphics.blit(0, 0, -90, window.getGuiScaledWidth(), window.getGuiScaledHeight(), textureatlassprite);
 			RenderSystem.disableBlend();
 			RenderSystem.depthMask(true);
 			RenderSystem.enableDepthTest();
-			guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-			poseStack.popPose();
+			graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
 		}
 	}
 }

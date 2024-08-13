@@ -5,7 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -42,12 +41,14 @@ import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import quek.undergarden.Undergarden;
+import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.entity.Forgotten;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
@@ -296,10 +297,9 @@ public class UndergardenCommonEvents {
 		builder.addMix(UGPotions.GLOWING, Items.REDSTONE, UGPotions.LONG_GLOWING);
 	}
 
-	private static void tickPortalLogic(EntityTickEvent.Pre event) {
-		Entity entity = event.getEntity();
-		if (entity instanceof Player player) {
-			player.getData(UGAttachments.UNDERGARDEN_PORTAL).handleUndergardenPortal(player);
+	private static void tickPortalLogic(PlayerTickEvent.Pre event) {
+		if (event.getEntity().level().isClientSide()) {
+			UndergardenPortalVisuals.handlePortalVisuals(event.getEntity());
 		}
 	}
 
