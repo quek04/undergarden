@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-12T15:39:38.7778492	Tags for minecraft:block mod id undergarden
+// 1.21.1	2024-08-13T12:23:52.8054751	Tags for minecraft:block mod id undergarden
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/block/cobblestones.json
 3430489c73ccf7c6a97b8405ff097796daf6e4ba data/c/tags/block/fences/wooden.json
 8c4e326a74b8c8e3a8dd62875f1f8f81e697c7a6 data/c/tags/block/fence_gates/wooden.json
@@ -97,7 +97,7 @@ cbc9652a42caf8f045b4a2303a296da3185f69ab data/undergarden/tags/block/dreadrock_o
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/block/grongle_logs.json
 e2d38adfea4f277c6bb672666b18b50303495e49 data/undergarden/tags/block/muncher_breakables.json
 50592f606917d305b917a1f8a263abb8d9ec6be5 data/undergarden/tags/block/mushrooms.json
-d06d1c2dfb74f0c3d13fd37e1e5b8a7d5d1e588b data/undergarden/tags/block/portal_frame_blocks.json
+c5f61fcebe6ab7bb1b5d1c6a196e5ac41cfa2102 data/undergarden/tags/block/portal_frame_blocks.json
 623ab7217e9af30498af2fbdea52aceeae67771f data/undergarden/tags/block/scintling_spawnable_on.json
 53dadb11482fdd04c73848240ea721d1176b5286 data/undergarden/tags/block/shiverstone_ore_replaceables.json
 1cc17ab498d59a9bdc36071e12595df0cdeab3e7 data/undergarden/tags/block/smogstem_logs.json
