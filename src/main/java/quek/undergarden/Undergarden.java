@@ -55,7 +55,6 @@ public class Undergarden {
 		});
 
 		DeferredRegister<?>[] registers = {
-			UGAttachments.ATTACHMENTS,
 			UGBlockEntities.BLOCK_ENTITIES,
 			UGBlocks.BLOCKS,
 			UGCarvers.CARVERS,

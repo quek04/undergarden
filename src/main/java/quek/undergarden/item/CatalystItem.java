@@ -25,36 +25,23 @@ public class CatalystItem extends Item {
 
 	public CatalystItem() {
 		super(new Properties()
-				.stacksTo(1)
-				.rarity(Rarity.RARE)
+			.stacksTo(1)
+			.rarity(Rarity.RARE)
 		);
 	}
 
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
-		if (context.getPlayer() != null) {
-			if (context.getPlayer().level().dimension() == UGDimensions.UNDERGARDEN_LEVEL || context.getPlayer().level().dimension() == Level.OVERWORLD) {
-				for (Direction direction : Direction.Plane.VERTICAL) {
-					BlockPos framePos = context.getClickedPos().relative(direction);
-					if (this.tryCreatePortal(context.getLevel(), framePos)) {
-						context.getLevel().playSound(context.getPlayer(), framePos, UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-						return InteractionResult.CONSUME;
-					} else return InteractionResult.FAIL;
-				}
+		if (context.getLevel().dimension() == Level.OVERWORLD || context.getLevel().dimension() == UGDimensions.UNDERGARDEN_LEVEL) {
+			BlockPos framePos = context.getClickedPos().relative(context.getClickedFace());
+			Optional<UndergardenPortalShape> optional = findPortalShape(context.getLevel(), framePos, shape -> shape.isValid() && shape.getPortalBlocks() == 0, Direction.Axis.X);
+			if (optional.isPresent()) {
+				optional.get().createPortalBlocks();
+				context.getLevel().playSound(context.getPlayer(), context.getClickedPos(), UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+				return InteractionResult.sidedSuccess(context.getLevel().isClientSide());
 			}
 		}
 		return InteractionResult.FAIL;
-	}
-
-	private boolean tryCreatePortal(Level level, BlockPos pos) {
-		if (level.dimension() == Level.OVERWORLD || level.dimension() == UGDimensions.UNDERGARDEN_LEVEL) {
-			Optional<UndergardenPortalShape> optional = findPortalShape(level, pos, shape -> shape.isValid() && shape.getPortalBlocks() == 0, Direction.Axis.X);
-			if (optional.isPresent()) {
-				optional.get().createPortalBlocks();
-				return true;
-			}
-		}
-		return false;
 	}
 
 	public static Optional<UndergardenPortalShape> findPortalShape(LevelAccessor accessor, BlockPos pos, Predicate<UndergardenPortalShape> shape, Direction.Axis axis) {

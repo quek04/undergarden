@@ -44,15 +44,14 @@ public class UndergardenPortalShape {
 	@Nullable
 	private BlockPos calculateBottomLeft(BlockPos pos) {
 		int i = Math.max(this.level.getMinBuildHeight(), pos.getY() - MAX_HEIGHT);
-		BlockPos.MutableBlockPos mutable = pos.mutable();
 
-		do {
-			mutable.move(Direction.DOWN);
-		} while (mutable.getY() > i && isEmpty(this.level.getBlockState(mutable)));
+		while (pos.getY() > i && isEmpty(this.level.getBlockState(pos.below()))) {
+			pos = pos.below();
+		}
 
 		Direction direction = this.rightDir.getOpposite();
-		int j = this.getDistanceUntilEdgeAboveFrame(mutable.immutable(), direction) - 1;
-		return j < 0 ? null : mutable.immutable().relative(direction, j);
+		int j = this.getDistanceUntilEdgeAboveFrame(pos, direction) - 1;
+		return j < 0 ? null : pos.relative(direction, j);
 	}
 
 	private int calculateWidth() {

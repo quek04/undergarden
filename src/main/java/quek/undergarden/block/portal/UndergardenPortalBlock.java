@@ -25,7 +25,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import quek.undergarden.Undergarden;
-import quek.undergarden.attachment.UndergardenPortalAttachment;
 import quek.undergarden.registry.*;
 
 import java.util.Optional;
@@ -65,15 +64,6 @@ public class UndergardenPortalBlock extends Block implements Portal {
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 		if (entity.canUsePortal(false)) {
 			entity.setAsInsidePortal(this, pos);
-			if (entity instanceof Player player) {
-				UndergardenPortalAttachment portal = player.getData(UGAttachments.UNDERGARDEN_PORTAL);
-				portal.setInPortal(true);
-				int waitTime = portal.getPortalTimer();
-				if (waitTime >= this.getTransitionTime(level, player)) {
-					portal.handleUndergardenPortal(player);
-					portal.setPortalTimer(0);
-				}
-			}
 		}
 	}
 
