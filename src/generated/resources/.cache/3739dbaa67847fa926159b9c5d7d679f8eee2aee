@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-12T12:07:42.0260272	Tags for minecraft:item mod id undergarden
+// 1.21.1	2024-08-13T21:24:37.1000294	Tags for minecraft:item mod id undergarden
 9a80c4f0b8dd860c0f3158230031315d39247adf data/c/tags/item/armors.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/c/tags/item/bones.json
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/c/tags/item/cobblestones.json
@@ -34,7 +34,7 @@ a499256240329e35507ca6cd4c880d0a1746cad4 data/c/tags/item/raw_materials/frostste
 a8875da36804ee7aa34e82ce3fda06e61ac6b429 data/c/tags/item/sands.json
 a8875da36804ee7aa34e82ce3fda06e61ac6b429 data/c/tags/item/sands/colorless.json
 a1a496be627d7abffcd62e040dfbcf8e84582068 data/c/tags/item/seeds.json
-5cd06892b0ebeb4ca24bf00bf8ffaf4f6ae4b1c0 data/c/tags/item/slimeballs.json
+5cd06892b0ebeb4ca24bf00bf8ffaf4f6ae4b1c0 data/c/tags/item/slime_balls.json
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/c/tags/item/stones.json
 78db0dbd74371f9401874587e0bdd93780302285 data/c/tags/item/storage_blocks.json
 b0d52e6b3906ec7fd9849cec019a4ed84f70ba01 data/c/tags/item/storage_blocks/cloggrum.json
@@ -50,17 +50,21 @@ c20555ec5f1be2597700944531daac51da863c5b data/minecraft/tags/item/axes.json
 8c08daec4cb74d7ceb504552c74bb474623e6b3d data/minecraft/tags/item/beacon_payment_items.json
 571f6c52db76e7be76a61070ebe78e606bac244e data/minecraft/tags/item/boats.json
 a87a49ce98c8d86d8b65fd56423bffd073a37722 data/minecraft/tags/item/buttons.json
+a5a1f0e7ebef2d5fc7dcda32659b374e961d8902 data/minecraft/tags/item/chest_armor.json
 8ce94b49484d72c5395b752651f3d49513dbc75c data/minecraft/tags/item/chest_boats.json
 0d42b6d280281c95f545b1f531eaa606226ce75d data/minecraft/tags/item/cluster_max_harvestables.json
 ab5d5379958d5f6e16350bdef7131e2ed1a3e599 data/minecraft/tags/item/coals.json
 62c40ea267632e8e82f52a31fe05cb49de3176a0 data/minecraft/tags/item/coal_ores.json
 2a9940ae63110d339b9dc8547f89e0dc4d24307e data/minecraft/tags/item/diamond_ores.json
 59b2233a0fa2348978a5257b17dbcbc10ca25d4c data/minecraft/tags/item/fishes.json
+9b86bbc17df24411b53ea716b5b6b343f35d5caa data/minecraft/tags/item/foot_armor.json
 1ff4fda258af9af2b26506246439633b3440f264 data/minecraft/tags/item/gold_ores.json
 64bc82b817a493262e7f2242e3a89c44ff9b8c3d data/minecraft/tags/item/hanging_signs.json
+e282811049e5f333a4c93eedc7f5d09b35dbc043 data/minecraft/tags/item/head_armor.json
 8fb4b3f3cc997c22a634002b26f4507d3aba1852 data/minecraft/tags/item/hoes.json
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/minecraft/tags/item/iron_ores.json
 497779cef1ba178c2d1e96ca25b75892c32f086f data/minecraft/tags/item/leaves.json
+fb170df46118e10c285c41399bd3020004554573 data/minecraft/tags/item/leg_armor.json
 9479ebbe396f89b63bb5a43f52770666961999c9 data/minecraft/tags/item/logs.json
 9479ebbe396f89b63bb5a43f52770666961999c9 data/minecraft/tags/item/logs_that_burn.json
 0d42b6d280281c95f545b1f531eaa606226ce75d data/minecraft/tags/item/pickaxes.json
