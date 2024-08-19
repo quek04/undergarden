@@ -71,7 +71,7 @@ public class Rotbelcher extends RotspawnMonster {
 
 	@Override
 	public boolean doHurtTarget(Entity entity) {
-		this.level().broadcastEntityEvent(this, (byte)4);
+		this.level().broadcastEntityEvent(this, (byte) 4);
 		return super.doHurtTarget(entity);
 	}
 
@@ -80,7 +80,7 @@ public class Rotbelcher extends RotspawnMonster {
 		if (id == 4) {
 			this.attackAnimation.start(this.tickCount);
 		}
-		if (id == 69) {
+		if (id == 5) {
 			this.shootAnimation.start(this.tickCount);
 		}
 	}
@@ -138,7 +138,7 @@ public class Rotbelcher extends RotspawnMonster {
 						RotbelcherProjectile projectile = new RotbelcherProjectile(level, this.rotbelcher, shootVector.normalize());
 						projectile.setPos(this.rotbelcher.getX() + vec3.x, this.rotbelcher.getY(0.5D) + 0.5D, projectile.getZ() + vec3.z);
 						level.addFreshEntity(projectile);
-						level.broadcastEntityEvent(this.rotbelcher, (byte) 69);
+						level.broadcastEntityEvent(this.rotbelcher, (byte) 5);
 						this.chargeTime = -8;
 					}
 				} else if (this.chargeTime > 0) {

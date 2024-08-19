@@ -1,5 +1,7 @@
 {
-  "carvers": {},
+  "carvers": {
+    "air": "undergarden:undergarden_depths_cave"
+  },
   "downfall": 0.0,
   "effects": {
     "additions_sound": {
@@ -65,6 +67,12 @@
         "type": "undergarden:rotling",
         "maxCount": 4,
         "minCount": 2,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotwalker",
+        "maxCount": 4,
+        "minCount": 4,
         "weight": 100
       },
       {

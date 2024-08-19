@@ -57,7 +57,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DROOPVINE_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLITTERKELP_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIB.get(), 10, 1, 1))
 				.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIBLING.get(), 5, 3, 6))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
@@ -74,7 +74,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DITCHBULB_PATCH)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, UGPlacedFeatures.DEPTHS_HOLE)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addDangerousRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.SMOG_MOG.get(), 100, 2, 4))
 				.build())
@@ -97,7 +97,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLOOMGOURD_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_BLOOD_MUSHROOM)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
 				.build())
 			.hasPrecipitation(false)
@@ -113,7 +113,7 @@ public class UGBiomes {
 			.generationSettings(addOresAndCaves(addShroomPatches(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)))
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DITCHBULB_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addDangerousRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
 				.build())
 			.hasPrecipitation(false)
@@ -143,7 +143,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.MISERABELL_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.BUTTERBUNCH_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
@@ -173,7 +173,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DROOPVINE_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLOOMGOURD_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
@@ -200,7 +200,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.TALL_SHIMMERWEED_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.FROZEN_DEEPTURF_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder())).build())
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder())).build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.14F)
@@ -222,7 +222,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.SMOGSTEM_TREE)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.WIDE_SMOGSTEM_TREE)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder())).build())
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder())).build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.14F)
@@ -250,7 +250,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.AMOROUS_BRISTLE_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.BUTTERBUNCH_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
@@ -278,7 +278,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLITTERKELP_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.FROZEN_DEEPTURF_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIB.get(), 10, 1, 1))
 				.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIBLING.get(), 5, 3, 6))
 				.build())
@@ -301,7 +301,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_INDIGO_MUSHROOM)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.SMOGSTEM_BUSH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
 				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 8, 8))
@@ -323,7 +323,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLOOMGOURD_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_INK_MUSHROOM)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
 				.build())
@@ -343,7 +343,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.ASHEN_DEEPTURF_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.BLISTERBERRY_BUSH_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addDangerousRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 100, 8, 8))
 				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.SMOG_MOG.get(), 100, 2, 4))
@@ -373,7 +373,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.AMOROUS_BRISTLE_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.MISERABELL_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
@@ -401,7 +401,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLOOMGOURD_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_VEIL_MUSHROOM)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 8, 8))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
@@ -429,7 +429,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.MISERABELL_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.BUTTERBUNCH_PATCH)
 				.build())
-			.mobSpawnSettings(addRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
+			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
 				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
 				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
@@ -447,13 +447,13 @@ public class UGBiomes {
 			.build());
 
 		context.register(DEPTHS, new Biome.BiomeBuilder()
-			.generationSettings(addDepthsOres(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+			.generationSettings(addDepthsOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_PUFF_MUSHROOM_SPARSE)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.PUFF_MUSHROOM_PATCH_SPARSE)
 				.build())
-			.mobSpawnSettings(addDepthsRotspawn(new MobSpawnSettings.Builder())
+			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
@@ -464,11 +464,11 @@ public class UGBiomes {
 			.build());
 
 		context.register(INFECTED_DEPTHS, new Biome.BiomeBuilder()
-			.generationSettings(addDepthsOres(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+			.generationSettings(addDepthsOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
 				.build())
-			.mobSpawnSettings(addDepthsRotspawn(new MobSpawnSettings.Builder())
+			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
@@ -479,14 +479,14 @@ public class UGBiomes {
 			.build());
 
 		context.register(PUFF_MUSHROOM_FOREST, new Biome.BiomeBuilder()
-			.generationSettings(addDepthsOres(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+			.generationSettings(addDepthsOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_PUFF_MUSHROOM)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.PUFF_MUSHROOM_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEEPTURF_PATCH)
 				.build())
-			.mobSpawnSettings(addDepthsRotspawn(new MobSpawnSettings.Builder())
+			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
@@ -512,8 +512,9 @@ public class UGBiomes {
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.REGALIUM_ORE);
 	}
 
-	private static BiomeGenerationSettings.Builder addDepthsOres(BiomeGenerationSettings.Builder builder) {
+	private static BiomeGenerationSettings.Builder addDepthsOresAndCaves(BiomeGenerationSettings.Builder builder) {
 		return builder
+			.addCarver(GenerationStep.Carving.AIR, UGConfiguredCarvers.UNDERGARDEN_DEPTHS_CAVE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.ROGDORIUM_ORE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.UTHERIUM_ORE);
 	}
@@ -533,16 +534,17 @@ public class UGBiomes {
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.SPLOOGIE.get(), 50, 1, 1));
 	}
 
-	private static MobSpawnSettings.Builder addRotspawn(MobSpawnSettings.Builder builder) {
+	private static MobSpawnSettings.Builder addNormalRotspawn(MobSpawnSettings.Builder builder) {
 		return builder
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTLING.get(), 100, 2, 4))
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTWALKER.get(), 100, 4, 4))
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBEAST.get(), 100, 1, 2));
+			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBELCHER.get(), 100, 4, 4));
 	}
 
-	private static MobSpawnSettings.Builder addDepthsRotspawn(MobSpawnSettings.Builder builder) {
+	private static MobSpawnSettings.Builder addDangerousRotspawn(MobSpawnSettings.Builder builder) {
 		return builder
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTLING.get(), 100, 2, 4))
+			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTWALKER.get(), 100, 4, 4))
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBELCHER.get(), 100, 4, 4))
 			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBEAST.get(), 100, 1, 2));
 	}
