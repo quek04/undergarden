@@ -58,7 +58,6 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> INK_MUSHROOM_PATCH = create("ink_mushroom_patch");
 	public static final ResourceKey<PlacedFeature> BLOOD_MUSHROOM_PATCH = create("blood_mushroom_patch");
 	public static final ResourceKey<PlacedFeature> PUFF_MUSHROOM_PATCH = create("puff_mushroom_patch");
-	public static final ResourceKey<PlacedFeature> PUFF_MUSHROOM_PATCH_SPARSE = create("puff_mushroom_patch_sparse");
 	public static final ResourceKey<PlacedFeature> UNDERBEAN_BUSH_PATCH = create("underbean_bush_patch");
 	public static final ResourceKey<PlacedFeature> BLISTERBERRY_BUSH_PATCH = create("blisterberry_bush_patch");
 	public static final ResourceKey<PlacedFeature> GLOOMGOURD_PATCH = create("gloomgourd_patch");
@@ -139,7 +138,6 @@ public class UGPlacedFeatures {
 		context.register(INK_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.INK_MUSHROOM_PATCH), patch(1)));
 		context.register(BLOOD_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLOOD_MUSHROOM_PATCH), patch(1)));
 		context.register(PUFF_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM_PATCH), patch(10)));
-		context.register(PUFF_MUSHROOM_PATCH_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM_PATCH), patch(10)));
 		context.register(UNDERBEAN_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UNDERBEAN_BUSH_PATCH), patch(5)));
 		context.register(BLISTERBERRY_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLISTERBERRY_BUSH_PATCH), patch(5)));
 		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD_PATCH), patch(5)));
@@ -164,7 +162,7 @@ public class UGPlacedFeatures {
 		context.register(HUGE_INK_MUSHROOM, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_INK_MUSHROOM), tree(8)));
 		context.register(HUGE_BLOOD_MUSHROOM, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM), tree(8)));
 		context.register(HUGE_PUFF_MUSHROOM, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM), puffMushroom(8)));
-		context.register(HUGE_PUFF_MUSHROOM_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM), patch(10)));
+		context.register(HUGE_PUFF_MUSHROOM_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM), List.of(CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.PUFF_MUSHROOM.get().defaultBlockState(), BlockPos.ZERO)))));
 
 		//rocks
 		context.register(DEPTHROCK_ROCK, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEPTHROCK_ROCK), patch(1)));
