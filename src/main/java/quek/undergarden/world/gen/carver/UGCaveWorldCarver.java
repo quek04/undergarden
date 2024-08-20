@@ -124,7 +124,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 		if (pos.getY() >= 0 && pos.getY() <= config.lavaLevel.resolveY(context)) {
 			return UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock();
 		} else if (pos.getY() == -1 || pos.getY() == -2) {
-			return random.nextInt(2) == 0 ? CAVE_AIR : UGBlocks.DREADROCK.get().defaultBlockState();
+			return random.nextInt(2) == 0 ? UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock() : UGBlocks.DREADROCK.get().defaultBlockState();
 		} else if (pos.getY() == -3) {
 			return UGBlocks.DREADROCK.get().defaultBlockState();
 		} else if (pos.getY() <= -59) {

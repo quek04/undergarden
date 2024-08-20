@@ -47,7 +47,7 @@ public class UGBlockBlobFeature extends Feature<BlockStateConfiguration> {
 					}
 				}
 
-				//blockpos = blockpos.offset(-1 + randomsource.nextInt(2), -randomsource.nextInt(2), -1 + randomsource.nextInt(2));
+				pos = pos.offset(-1 + random.nextInt(2), -random.nextInt(2), -1 + random.nextInt(2));
 			}
 
 			return true;
