@@ -4,7 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
-import quek.undergarden.client.UndergardenClient;
+import net.minecraft.world.level.block.Portal;
+import quek.undergarden.registry.UGBlocks;
 
 public class UndergardenPortalVisuals {
 
@@ -25,7 +26,7 @@ public class UndergardenPortalVisuals {
 			prevPortalAnimTime = portalAnimTime;
 			Minecraft minecraft = Minecraft.getInstance();
 
-			if (player.portalProcess != null && player.portalProcess.isInsidePortalThisTick()) {
+			if (player.portalProcess != null && player.portalProcess.isSamePortal((Portal) UGBlocks.UNDERGARDEN_PORTAL.get()) && player.portalProcess.isInsidePortalThisTick()) {
 				if (minecraft.screen != null && !minecraft.screen.isPauseScreen()) {
 					if (minecraft.screen instanceof AbstractContainerScreen) {
 						player.closeContainer();
