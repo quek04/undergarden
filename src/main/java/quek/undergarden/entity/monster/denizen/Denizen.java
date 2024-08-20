@@ -170,8 +170,6 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 		}
 	}
 
-
-
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData data) {

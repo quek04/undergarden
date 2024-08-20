@@ -22,6 +22,7 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGFluids;
 
+import java.util.Random;
 import java.util.function.Function;
 
 public class UGCaveWorldCarver extends CaveWorldCarver {
@@ -48,7 +49,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 			int k = Math.max(Mth.floor(x - horizontalRadius) - minX - 1, 0);
 			int l = Math.min(Mth.floor(x + horizontalRadius) - minX, 15);
 			int i1 = Math.max(Mth.floor(y - verticalRadius) - 1, context.getMinGenY() + 1);
-			int k1 = Math.min(Mth.floor(y + verticalRadius) + 1, context.getMinGenY() + context.getGenDepth() - 1);
+			int k1 = Math.min(Mth.floor(y + verticalRadius) + 1, context.getMinGenY() + context.getGenDepth() - 7);
 			int l1 = Math.max(Mth.floor(z - horizontalRadius) - minZ - 1, 0);
 			int i2 = Math.min(Mth.floor(z + horizontalRadius) - minZ, 15);
 			if (this.hasDisallowedLiquid(chunk, k, l, i1, k1, l1, i2)) {
@@ -119,9 +120,14 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 	}
 
 	private BlockState getCarveState(CarvingContext context, CaveCarverConfiguration config, BlockPos pos) {
+		Random random = new Random();
 		if (pos.getY() >= 0 && pos.getY() <= config.lavaLevel.resolveY(context)) {
 			return UGFluids.VIRULENT_MIX_SOURCE.get().defaultFluidState().createLegacyBlock();
-		} else if (pos.getY() <= 0 && pos.getY() <= config.lavaLevel.resolveY(context)) {
+		} else if (pos.getY() == -1 || pos.getY() == -2) {
+			return random.nextInt(2) == 0 ? CAVE_AIR : UGBlocks.DREADROCK.get().defaultBlockState();
+		} else if (pos.getY() == -3) {
+			return UGBlocks.DREADROCK.get().defaultBlockState();
+		} else if (pos.getY() <= -59) {
 			return Fluids.LAVA.defaultFluidState().createLegacyBlock();
 		} else {
 			return CAVE_AIR;

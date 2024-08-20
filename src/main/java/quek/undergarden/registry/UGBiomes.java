@@ -514,7 +514,7 @@ public class UGBiomes {
 
 	private static BiomeGenerationSettings.Builder addDepthsOresAndCaves(BiomeGenerationSettings.Builder builder) {
 		return builder
-			.addCarver(GenerationStep.Carving.AIR, UGConfiguredCarvers.UNDERGARDEN_DEPTHS_CAVE)
+			.addCarver(GenerationStep.Carving.AIR, UGConfiguredCarvers.UNDERGARDEN_CAVE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.ROGDORIUM_ORE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.UTHERIUM_ORE);
 	}

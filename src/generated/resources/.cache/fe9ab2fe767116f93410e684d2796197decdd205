@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-14T17:02:22.4304085	Tags for minecraft:block mod id undergarden
+// 1.21.1	2024-08-20T01:40:43.4083537	Tags for minecraft:block mod id undergarden
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/block/cobblestones.json
 3430489c73ccf7c6a97b8405ff097796daf6e4ba data/c/tags/block/fences/wooden.json
 8c4e326a74b8c8e3a8dd62875f1f8f81e697c7a6 data/c/tags/block/fence_gates/wooden.json
@@ -103,7 +103,6 @@ c5f61fcebe6ab7bb1b5d1c6a196e5ac41cfa2102 data/undergarden/tags/block/portal_fram
 1cc17ab498d59a9bdc36071e12595df0cdeab3e7 data/undergarden/tags/block/smogstem_logs.json
 7088ff8bd12ffe365a41d902eb729711e7430d00 data/undergarden/tags/block/smog_mog_spawnable_on.json
 817f355c76e8ad6e17a570f60cb4a0aa5154af28 data/undergarden/tags/block/tremblecrust_ore_replaceables.json
-1ce6d585061706f0271968467cd115fb403977a7 data/undergarden/tags/block/undergarden_carver_replaceables.json
-14448460c95d5aee22b5f01cafdbde445a55a64f data/undergarden/tags/block/undergarden_depths_carver_replaceables.json
+ab91d4ce0e100abc9368c7e7a5188def421fa520 data/undergarden/tags/block/undergarden_carver_replaceables.json
 7bf36adcd8ca2f238a6b7aa1c3864ed02b4df3bd data/undergarden/tags/block/utheric_infection_blocks.json
 3bd166cb38f35e0d1854fe644fe122c02e4f9e22 data/undergarden/tags/block/wigglewood_logs.json
