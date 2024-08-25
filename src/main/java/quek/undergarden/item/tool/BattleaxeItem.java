@@ -59,6 +59,6 @@ public class BattleaxeItem extends SwordItem {
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return enchantment.canEnchant(stack) && enchantment != Enchantments.KNOCKBACK;
+		return enchantment != Enchantments.KNOCKBACK && super.canApplyAtEnchantingTable(stack, enchantment);
 	}
 }
