@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-12T15:00:09.7874813	Tags for minecraft:entity_type mod id undergarden
+// 1.21.1	2024-08-25T15:14:32.3542775	Tags for minecraft:entity_type mod id undergarden
 d9a7c6d8c29ace1cf686be5f4ec1aedaaeedf725 data/c/tags/entity_type/bosses.json
 9cd10f169450bab6ad98c90dcff8fc028c91d509 data/minecraft/tags/entity_type/can_breathe_under_water.json
 1384ad7158709624105a815c89f486aae7c481a4 data/minecraft/tags/entity_type/dismounts_underwater.json
@@ -6,6 +6,7 @@ d9a7c6d8c29ace1cf686be5f4ec1aedaaeedf725 data/c/tags/entity_type/bosses.json
 d9a7c6d8c29ace1cf686be5f4ec1aedaaeedf725 data/minecraft/tags/entity_type/freeze_immune_entity_types.json
 b210e12c149f69eec2dc5b34d39fe0ebddac387a data/minecraft/tags/entity_type/impact_projectiles.json
 bd09082d4b137024b328d33cec05ad5639130080 data/minecraft/tags/entity_type/powder_snow_walkable_mobs.json
+6b009c14066bc0bd44e38f362c46b004449a245c data/minecraft/tags/entity_type/undead.json
 82504d61ef59415f00c1684bc94ed787e0d98d0e data/undergarden/tags/entity_type/cavern_creature.json
 3f3204b47218088cf60c10144e5caf4bfd245b36 data/undergarden/tags/entity_type/immune_to_blisterberry_bush.json
 24ac22830788dfaea2b2db85d56abe34e1fd8cc7 data/undergarden/tags/entity_type/immune_to_gooey_effect.json

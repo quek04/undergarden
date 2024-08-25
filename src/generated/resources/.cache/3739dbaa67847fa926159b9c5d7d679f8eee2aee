@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-13T21:24:37.1000294	Tags for minecraft:item mod id undergarden
+// 1.21.1	2024-08-25T15:14:32.349918	Tags for minecraft:item mod id undergarden
 9a80c4f0b8dd860c0f3158230031315d39247adf data/c/tags/item/armors.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/c/tags/item/bones.json
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/c/tags/item/cobblestones.json
@@ -77,7 +77,6 @@ fa11011fbce2a046e0fdf04141b67ea097623b38 data/minecraft/tags/item/small_flowers.
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/minecraft/tags/item/stone_tool_materials.json
 f8741fc12c99d7e2f904a1ce55c7aa5ffbd1f333 data/minecraft/tags/item/swords.json
 53c0ae22e904f0c1c23a8c39220e7af80724624d data/minecraft/tags/item/tall_flowers.json
-d9f00e5094cf7e9283e1651906318d8d8309d139 data/minecraft/tags/item/trimmable_armor.json
 8c08daec4cb74d7ceb504552c74bb474623e6b3d data/minecraft/tags/item/trim_materials.json
 a1a496be627d7abffcd62e040dfbcf8e84582068 data/minecraft/tags/item/villager_plantable_seeds.json
 861fa30f04e9613f058632d72865922de26172f1 data/minecraft/tags/item/walls.json
