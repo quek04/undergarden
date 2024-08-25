@@ -35,6 +35,15 @@
         "class": "quek/undergarden/UGEnumExtensions",
         "method": "GRONGLE_BOAT"
       }
+    },
+    {
+      "enum": "net/minecraft/client/gui/Gui$HeartType",
+      "name": "UNDERGARDEN_VIRULENT",
+      "constructor": "(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "method": "VIRULENT_HEARTS"
+      }
     }
   ]
 }

@@ -63,4 +63,18 @@ public class UGEnumExtensions {
 			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
 		});
 	}
+
+	public static Object VIRULENT_HEARTS(int idx, Class<?> type) {
+		return type.cast(switch (idx) {
+			case 0 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/normal");
+			case 1 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/normal_blinking");
+			case 2 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/half");
+			case 3 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/half_blinking");
+			case 4 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore");
+			case 5 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_blinking");
+			case 6 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_half");
+			case 7 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_half_blinking");
+			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
+		});
+	}
 }
