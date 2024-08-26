@@ -42,6 +42,7 @@ import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.PlayerHeartTypeEvent;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 import quek.undergarden.Undergarden;
@@ -65,17 +66,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class UndergardenClientEvents {
-
-	private static final List<ResourceLocation> HEARTS = List.of(
-			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/normal"),
-			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/normal_blinking"),
-			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/half"),
-			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/half_blinking"),
-			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore"),
-			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_blinking"),
-			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_half"),
-			ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_half_blinking")
-	);
 
 	private static final ResourceLocation BRITTLENESS_ARMOR_EMPTY = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor/empty");
 	private static final ResourceLocation BRITTLENESS_ARMOR_HALF = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor/half");
@@ -103,6 +93,7 @@ public class UndergardenClientEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
+		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::renderVirulentHearts);
 	}
 
 	private static void clientSetup(FMLClientSetupEvent event) {
@@ -325,14 +316,13 @@ public class UndergardenClientEvents {
 		});
 	}
 
+	private static void renderVirulentHearts(PlayerHeartTypeEvent event) {
+		if (event.getEntity().hasEffect(UGEffects.VIRULENCE)) {
+			event.setType(Gui.HeartType.valueOf("UNDERGARDEN_VIRULENT"));
+		}
+	}
+
 	private static void registerOverlays(RegisterGuiLayersEvent event) {
-		event.registerAbove(VanillaGuiLayers.PLAYER_HEALTH, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts"), (guiGraphics, deltaTracker) -> {
-			Minecraft minecraft = Minecraft.getInstance();
-			LocalPlayer player = minecraft.player;
-			if (player != null && player.hasEffect(UGEffects.VIRULENCE) && minecraft.gameMode.canHurtPlayer()) {
-				renderVirulenceHearts(guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics, minecraft.gui, player);
-			}
-		});
 		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
@@ -482,112 +472,6 @@ public class UndergardenClientEvents {
 				graphics.blitSprite(BRITTLENESS_ARMOR_EMPTY, x, y, 9, 9);
 			}
 			x += 8;
-		}
-	}
-
-	private static void renderVirulenceHearts(int width, int height, GuiGraphics graphics, Gui gui, Player player) {
-		int health = Mth.ceil(player.getHealth());
-		boolean highlight = gui.healthBlinkTime > (long) gui.getGuiTicks() && (gui.healthBlinkTime - (long) gui.getGuiTicks()) / 3L % 2L == 1L;
-
-		if (health < gui.lastHealth && player.invulnerableTime > 0) {
-			gui.lastHealthTime = Util.getMillis();
-			gui.healthBlinkTime = gui.getGuiTicks() + 20;
-		} else if (health > gui.lastHealth && player.invulnerableTime > 0) {
-			gui.lastHealthTime = Util.getMillis();
-			gui.healthBlinkTime = gui.getGuiTicks() + 10;
-		}
-
-		if (Util.getMillis() - gui.lastHealthTime > 1000L) {
-			gui.lastHealth = health;
-			gui.displayHealth = health;
-			gui.lastHealthTime = Util.getMillis();
-		}
-
-		gui.lastHealth = health;
-		int healthLast = gui.displayHealth;
-
-		AttributeInstance attrMaxHealth = player.getAttribute(Attributes.MAX_HEALTH);
-		float healthMax = Math.max((float) attrMaxHealth.getValue(), Math.max(healthLast, health));
-		int absorb = Mth.ceil(player.getAbsorptionAmount());
-
-		int healthRows = Mth.ceil((healthMax + absorb) / 2.0F / 10.0F);
-		int rowHeight = Math.max(10 - (healthRows - 2), 3);
-
-		//do NOT cast this to long
-		gui.random.setSeed(gui.getGuiTicks() * 312871);
-
-		int x = width / 2 - 91;
-		int y = height - 39;
-
-		int regen = -1;
-		if (player.hasEffect(MobEffects.REGENERATION)) {
-			regen = gui.getGuiTicks() % Mth.ceil(healthMax + 5.0F);
-		}
-
-		renderHearts(graphics, gui, player, x, y, rowHeight, regen, healthMax, health, healthLast, absorb, highlight);
-	}
-
-	private static void renderHearts(GuiGraphics graphics, Gui gui, Player player, int x, int y, int height, int regen, float healthMax, int health, int healthLast, int absorb, boolean highlight) {
-		boolean hardcore = player.level().getLevelData().isHardcore();
-		int healthAmount = Mth.ceil((double) healthMax / 2.0D);
-		int absorptionAmount = Mth.ceil((double) absorb / 2.0D);
-		int l = healthAmount * 2;
-
-		for (int i1 = healthAmount + absorptionAmount - 1; i1 >= 0; --i1) {
-			int j1 = i1 / 10;
-			int k1 = i1 % 10;
-			int newX = x + k1 * 8;
-			int newY = y - j1 * height;
-			if (health + absorb <= 4) {
-				newY += gui.random.nextInt(2);
-			}
-
-			if (i1 < healthAmount && i1 == regen) {
-				newY -= 2;
-			}
-
-			renderHeartBG(graphics, newX, newY, hardcore, highlight);
-			int j2 = i1 * 2;
-			boolean flag = i1 >= healthAmount;
-			if (flag) {
-				int k2 = j2 - l;
-				if (k2 < absorb) {
-					boolean half = k2 + 1 == absorb;
-					renderVirulenceHeart(graphics, newX, newY, hardcore, false, half);
-				}
-			}
-
-			if (highlight && j2 < healthLast) {
-				boolean half = j2 + 1 == healthLast;
-				renderVirulenceHeart(graphics, newX, newY, hardcore, true, half);
-			}
-
-			if (j2 < health) {
-				boolean half = j2 + 1 == health;
-				renderVirulenceHeart(graphics, newX, newY, hardcore, false, half);
-			}
-		}
-	}
-
-	private static void renderHeartBG(GuiGraphics graphics, int x, int y, boolean hardcore, boolean blinking) {
-		graphics.blitSprite(Gui.HeartType.CONTAINER.getSprite(hardcore, false, blinking), x, y, 9, 9);
-	}
-
-	private static void renderVirulenceHeart(GuiGraphics graphics, int x, int y, boolean hardcore, boolean blinking, boolean halfHeart) {
-		graphics.blitSprite(getVirulentHeartSprite(hardcore, halfHeart, blinking), x, y, 9, 9);
-	}
-
-	private static ResourceLocation getVirulentHeartSprite(boolean hardcore, boolean half, boolean blinking) {
-		if (!hardcore) {
-			if (half) {
-				return blinking ? HEARTS.get(3) : HEARTS.get(2);
-			} else {
-				return blinking ? HEARTS.get(1) : HEARTS.get(0);
-			}
-		} else if (half) {
-			return blinking ? HEARTS.get(7) : HEARTS.get(6);
-		} else {
-			return blinking ? HEARTS.get(5) : HEARTS.get(4);
 		}
 	}
 
