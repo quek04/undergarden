@@ -1,4 +1,4 @@
-package quek.undergarden.jei.category;
+package quek.undergarden.compat.jei.category;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -23,7 +23,7 @@ import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
-public class InfusingRecipeCategory implements IRecipeCategory<InfusingRecipe> {
+public class InfusingJEIRecipeCategory implements IRecipeCategory<InfusingRecipe> {
 
 	private static final ResourceLocation INFUSER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gui/container/infuser/infuser.png");
 	private static final ResourceLocation SLOT_BLOCKED = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "container/infuser/slot_blocked");
@@ -33,7 +33,7 @@ public class InfusingRecipeCategory implements IRecipeCategory<InfusingRecipe> {
 	private final IDrawable icon;
 	private final Component localizedName;
 
-	public InfusingRecipeCategory(IGuiHelper guiHelper) {
+	public InfusingJEIRecipeCategory(IGuiHelper guiHelper) {
 		this.background = guiHelper.createDrawable(INFUSER_TEXTURE, 25, 16, 126, 57);
 		this.icon = guiHelper.createDrawableItemStack(new ItemStack(UGBlocks.INFUSER));
 		this.localizedName = Component.translatable("gui.undergarden.jei.category.infuser");

@@ -1,4 +1,4 @@
-package quek.undergarden.jei;
+package quek.undergarden.compat.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
-import quek.undergarden.jei.category.InfusingRecipeCategory;
+import quek.undergarden.compat.jei.category.InfusingJEIRecipeCategory;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGRecipeTypes;
 
@@ -29,23 +29,23 @@ public class UGJEIPlugin implements IModPlugin {
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registration) {
-		registration.addRecipeCategories(new InfusingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new InfusingJEIRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 	}
 
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
 		RecipeManager recipeManager = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
-		registration.addRecipes(InfusingRecipeCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(UGRecipeTypes.INFUSING.get()).stream().map(RecipeHolder::value).toList());
+		registration.addRecipes(InfusingJEIRecipeCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(UGRecipeTypes.INFUSING.get()).stream().map(RecipeHolder::value).toList());
 	}
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(new ItemStack(UGBlocks.INFUSER), InfusingRecipeCategory.RECIPE_TYPE);
+		registration.addRecipeCatalyst(new ItemStack(UGBlocks.INFUSER), InfusingJEIRecipeCategory.RECIPE_TYPE);
 	}
 
 	@Override
 	public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-		registration.addRecipeClickArea(InfuserScreen.class, 32, 17, 41, 30, InfusingRecipeCategory.RECIPE_TYPE);
-		registration.addRecipeClickArea(InfuserScreen.class, 103, 17, 41, 30, InfusingRecipeCategory.RECIPE_TYPE);
+		registration.addRecipeClickArea(InfuserScreen.class, 32, 17, 41, 30, InfusingJEIRecipeCategory.RECIPE_TYPE);
+		registration.addRecipeClickArea(InfuserScreen.class, 103, 17, 41, 30, InfusingJEIRecipeCategory.RECIPE_TYPE);
 	}
 }
