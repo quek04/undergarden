@@ -138,5 +138,14 @@ public class UGItemTags extends ItemTagsProvider {
 			UGItems.UTHERIUM_HELMET.get(), UGItems.UTHERIUM_CHESTPLATE.get(), UGItems.UTHERIUM_LEGGINGS.get(), UGItems.UTHERIUM_BOOTS.get(),
 			UGItems.ANCIENT_HELMET.get(), UGItems.ANCIENT_CHESTPLATE.get(), UGItems.ANCIENT_LEGGINGS.get()
 		);
+		tag(Tags.Items.FOODS).add(UGItems.DROOPFRUIT.get(), UGItems.UNDERBEANS.get(), UGItems.ROASTED_UNDERBEANS.get(), UGItems.BLISTERBERRY.get(), UGItems.ROTTEN_BLISTERBERRY.get(), UGItems.GOO_BALL.get(), UGItems.GLOOMGOURD_PIE.get(), UGItems.RAW_DWELLER_MEAT.get(), UGItems.DWELLER_STEAK.get(), UGItems.RAW_GWIBLING.get(), UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GLOOMPER_LEG.get(), UGItems.GLOOMPER_LEG.get(), UGItems.BLOOD_GLOBULE.get(), UGItems.BLOODY_STEW.get(), UGItems.INKY_STEW.get(), UGItems.INDIGO_STEW.get(), UGItems.VEILED_STEW.get(), UGItems.SLOP_BOWL.get());
+		tag(Tags.Items.FOODS_FRUIT).add(UGItems.DROOPFRUIT.get());
+		tag(Tags.Items.FOODS_VEGETABLE).add(UGItems.UNDERBEANS.get(), UGItems.ROASTED_UNDERBEANS.get());
+		tag(Tags.Items.FOODS_BERRY).add(UGItems.BLISTERBERRY.value(), UGItems.ROTTEN_BLISTERBERRY.get());
+		tag(Tags.Items.FOODS_RAW_MEAT).add(UGItems.RAW_DWELLER_MEAT.get(), UGItems.RAW_GLOOMPER_LEG.get());
+		tag(Tags.Items.FOODS_COOKED_MEAT).add(UGItems.DWELLER_STEAK.get(), UGItems.GLOOMPER_LEG.get());
+		tag(Tags.Items.FOODS_RAW_FISH).add(UGItems.RAW_GWIBLING.get());
+		tag(Tags.Items.FOODS_COOKED_FISH).add(UGItems.COOKED_GWIBLING.get());
+		tag(Tags.Items.FOODS_SOUP).add(UGItems.BLOODY_STEW.get(), UGItems.INKY_STEW.get(), UGItems.INDIGO_STEW.get(), UGItems.VEILED_STEW.get(), UGItems.SLOP_BOWL.get());
 	}
 }

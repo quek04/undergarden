@@ -1,9 +1,18 @@
-// 1.21.1	2024-08-25T15:14:32.349918	Tags for minecraft:item mod id undergarden
+// 1.21.1	2024-09-02T16:43:19.5356139	Tags for minecraft:item mod id undergarden
 9a80c4f0b8dd860c0f3158230031315d39247adf data/c/tags/item/armors.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/c/tags/item/bones.json
 3cc6756bdd112f7d879becff6fe72e2e016b96c4 data/c/tags/item/cobblestones.json
 775b87a1fd080fe05a593ddfb26fea841c67250c data/c/tags/item/fences/wooden.json
 7e98b74a1d5779c14c69c5b0916849db33a721f0 data/c/tags/item/fence_gates/wooden.json
+672d8de57d19428da8b5193a3e148936eb0b3066 data/c/tags/item/foods.json
+db4cb7a7fa305e6b96aaeae63f5fb9f3cdb6b2d0 data/c/tags/item/foods/berry.json
+cf6cd3a7743e0e3802cba5bd8c3fc47e22444465 data/c/tags/item/foods/cooked_fish.json
+e4f2648d72ef592c191f18e02a568d7d6ce7acb3 data/c/tags/item/foods/cooked_meat.json
+89059cc5cc2478af2a5b883b635bbfb717d8929e data/c/tags/item/foods/fruit.json
+56b5f7af40d52310eaa3834c5cfa11ab96d8dfdc data/c/tags/item/foods/raw_fish.json
+ad360c9545ed128ef2a9c4cd25e24a94382839a4 data/c/tags/item/foods/raw_meat.json
+62c61e9e467ee07652e2b53793c5c0e3ab2a8ded data/c/tags/item/foods/soup.json
+800be579a26497c84cb37f40061f166cfb367505 data/c/tags/item/foods/vegetable.json
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/c/tags/item/glass_blocks.json
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/c/tags/item/glass_blocks/colorless.json
 35e33f58ef9fa9a58d3a6f9263f433985c0ef7fe data/c/tags/item/glass_panes.json
