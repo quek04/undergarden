@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.Util;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
@@ -48,6 +47,7 @@ import org.joml.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
+import quek.undergarden.client.gui.screen.UndergardenReceivingLevelScreen;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.particle.*;
@@ -89,6 +89,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerOverlays);
 		bus.addListener(UndergardenClientEvents::registerDimensionSpecialEffects);
 		bus.addListener(UndergardenClientEvents::registerClientExtensions);
+		bus.addListener(UndergardenClientEvents::registerDimensionTransitionScreens);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
@@ -456,6 +457,11 @@ public class UndergardenClientEvents {
 				RenderSystem.setShaderFogEnd(3.0F);
 			}
 		}, UGFluids.VIRULENT_MIX_TYPE.get());
+	}
+
+	private static void registerDimensionTransitionScreens(RegisterDimensionTransitionScreenEvent event) {
+		event.registerIncomingEffect(UGDimensions.UNDERGARDEN_LEVEL, UndergardenReceivingLevelScreen::new);
+		event.registerOutgoingEffect(UGDimensions.UNDERGARDEN_LEVEL, UndergardenReceivingLevelScreen::new);
 	}
 
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, Player player) {
