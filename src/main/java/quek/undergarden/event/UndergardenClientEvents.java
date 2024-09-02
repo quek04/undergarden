@@ -3,7 +3,6 @@ package quek.undergarden.event;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.Util;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
@@ -23,9 +22,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.material.FogType;
@@ -44,6 +40,7 @@ import org.joml.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
+import quek.undergarden.client.gui.screen.UndergardenReceivingLevelScreen;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
@@ -52,8 +49,6 @@ import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.registry.*;
-
-import java.util.List;
 
 public class UndergardenClientEvents {
 
@@ -71,6 +66,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerOverlays);
 		bus.addListener(UndergardenClientEvents::registerDimensionSpecialEffects);
 		bus.addListener(UndergardenClientEvents::registerClientExtensions);
+		bus.addListener(UndergardenClientEvents::registerDimensionTransitionScreens);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
@@ -344,6 +340,11 @@ public class UndergardenClientEvents {
 				RenderSystem.setShaderFogEnd(3.0F);
 			}
 		}, UGFluids.VIRULENT_MIX_TYPE.get());
+	}
+
+	private static void registerDimensionTransitionScreens(RegisterDimensionTransitionScreenEvent event) {
+		event.registerIncomingEffect(UGDimensions.UNDERGARDEN_LEVEL, UndergardenReceivingLevelScreen::new);
+		event.registerOutgoingEffect(UGDimensions.UNDERGARDEN_LEVEL, UndergardenReceivingLevelScreen::new);
 	}
 
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, Player player) {
