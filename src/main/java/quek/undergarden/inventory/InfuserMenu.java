@@ -60,7 +60,7 @@ public class InfuserMenu extends RecipeBookMenu<InfuserRecipeInput, InfusingReci
 	}
 
 	public boolean isUtheriumFuel(ItemStack stack) {
-		return stack.is(UGTags.Items.GEMS_UTHERIUM);
+		return stack.is(UGTags.Items.INFUSER_UTHERIUM_FUELS);
 	}
 
 	public boolean isUtheriumFuelFull() {
@@ -68,7 +68,7 @@ public class InfuserMenu extends RecipeBookMenu<InfuserRecipeInput, InfusingReci
 	}
 
 	public boolean isRogdoriumFuel(ItemStack stack) {
-		return stack.is(UGTags.Items.GEMS_ROGDORIUM);
+		return stack.is(UGTags.Items.INFUSER_ROGDORIUM_FUELS);
 	}
 
 	public boolean isRogdoriumFuelFull() {
@@ -90,7 +90,13 @@ public class InfuserMenu extends RecipeBookMenu<InfuserRecipeInput, InfusingReci
 	}
 
 	protected boolean canInfuse(ItemStack stack) {
-		return this.level.getRecipeManager().getRecipeFor(this.recipeType, new InfuserRecipeInput(stack, isUtheriumFuel(stack)), this.level).isPresent();
+		if (this.isUtheriumFuelFull()) {
+			return this.level.getRecipeManager().getRecipeFor(this.recipeType, new InfuserRecipeInput(stack, true), this.level).isPresent();
+		}
+		if (this.isRogdoriumFuelFull()) {
+			return this.level.getRecipeManager().getRecipeFor(this.recipeType, new InfuserRecipeInput(stack, false), this.level).isPresent();
+		}
+		return false;
 	}
 
 	@Override

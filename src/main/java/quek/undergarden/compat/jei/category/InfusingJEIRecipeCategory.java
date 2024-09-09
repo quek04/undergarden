@@ -26,7 +26,7 @@ import quek.undergarden.registry.UGItems;
 public class InfusingJEIRecipeCategory implements IRecipeCategory<InfusingRecipe> {
 
 	private static final ResourceLocation INFUSER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gui/container/infuser/infuser.png");
-	private static final ResourceLocation SLOT_BLOCKED = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "container/infuser/slot_blocked");
+	private static final ResourceLocation SLOT_BLOCKED = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gui/container/infuser/slot_blocked.png");
 	public static final RecipeType<InfusingRecipe> RECIPE_TYPE = RecipeType.create(Undergarden.MODID, "infusing", InfusingRecipe.class);
 
 	private final IDrawable background;

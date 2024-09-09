@@ -26,6 +26,8 @@ public class UGTags {
 		public static final TagKey<Item> SMOGSTEM_LOGS = tag("smogstem_logs");
 		public static final TagKey<Item> WIGGLEWOOD_LOGS = tag("wigglewood_logs");
 		public static final TagKey<Item> GRONGLE_LOGS = tag("grongle_logs");
+		public static final TagKey<Item> INFUSER_UTHERIUM_FUELS = tag("infuser_utherium_fuels");
+		public static final TagKey<Item> INFUSER_ROGDORIUM_FUELS = tag("infuser_rogdorium_fuels");
 
 		public static final TagKey<Item> RAW_MATERIALS_CLOGGRUM = commonTag("raw_materials/cloggrum");
 		public static final TagKey<Item> RAW_MATERIALS_FROSTSTEEL = commonTag("raw_materials/froststeel");

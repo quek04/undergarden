@@ -33,8 +33,8 @@ import quek.undergarden.inventory.InfuserMenu;
 import quek.undergarden.recipe.InfuserRecipeInput;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGBlockEntities;
-import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGRecipeTypes;
+import quek.undergarden.registry.UGTags;
 
 import java.util.List;
 
@@ -134,8 +134,8 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
 		return switch (index) {
 			case 0 -> true;
-			case 1 -> this.items.get(2).isEmpty() && itemStack.is(UGItems.UTHERIUM_CRYSTAL);
-			case 2 -> this.items.get(1).isEmpty() && itemStack.is(UGItems.ROGDORIUM_CRYSTAL);
+			case 1 -> this.items.get(2).isEmpty() && itemStack.is(UGTags.Items.INFUSER_UTHERIUM_FUELS);
+			case 2 -> this.items.get(1).isEmpty() && itemStack.is(UGTags.Items.INFUSER_ROGDORIUM_FUELS);
 			default -> false;
 		};
 	}
@@ -194,8 +194,6 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	public static void serverTick(Level level, BlockPos pos, BlockState state, InfuserBlockEntity blockEntity) {
 		boolean changed = false;
 		boolean isInfusing = blockEntity.infusingProgress > 0;
-		//Undergarden.LOGGER.debug("time {}", blockEntity.infusingProgress);
-		//Undergarden.LOGGER.debug("totalTime {}", blockEntity.infusingTotalTime);
 
 		ItemStack utheriumFuel = blockEntity.items.get(1);
 		ItemStack rogdoriumFuel = blockEntity.items.get(2);
@@ -246,7 +244,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 
 	private boolean canInfuse(RegistryAccess registryAccess, @javax.annotation.Nullable RecipeHolder<InfusingRecipe> recipe, NonNullList<ItemStack> inventory, int maxStackSize, InfuserBlockEntity infuser) {
 		if (!inventory.get(0).isEmpty() && recipe != null) {
-			ItemStack result = recipe.value().assemble(new InfuserRecipeInput(infuser.getItem(0), !inventory.get(1).isEmpty()), registryAccess);
+			ItemStack result = recipe.value().assemble(new InfuserRecipeInput(infuser.getItem(0), recipe.value().isUtheriumFuel()), registryAccess);
 
 			if (inventory.get(1).isEmpty() && recipe.value().isUtheriumFuel()) {
 				return false;
@@ -276,7 +274,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	private boolean infuse(RegistryAccess registryAccess, @javax.annotation.Nullable RecipeHolder<InfusingRecipe> recipe, NonNullList<ItemStack> inventory, int maxStackSize, InfuserBlockEntity infuser) {
 		if (recipe != null && canInfuse(registryAccess, recipe, inventory, maxStackSize, infuser)) {
 			ItemStack input = inventory.get(0);
-			ItemStack result = recipe.value().assemble(new InfuserRecipeInput(this.getItem(0), !inventory.get(1).isEmpty()), registryAccess);
+			ItemStack result = recipe.value().assemble(new InfuserRecipeInput(this.getItem(0), recipe.value().isUtheriumFuel()), registryAccess);
 			ItemStack output = inventory.get(3);
 			if (output.isEmpty()) {
 				inventory.set(3, result.copy());
@@ -292,8 +290,8 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	}
 
 	private static int getTotalInfusingTime(Level level, InfuserBlockEntity blockEntity) {
-		InfuserRecipeInput singlerecipeinput = new InfuserRecipeInput(blockEntity.getItem(0), !blockEntity.getItem(1).isEmpty());
-		return blockEntity.quickCheck.getRecipeFor(singlerecipeinput, level).map(p_300840_ -> p_300840_.value().getInfusingTime()).orElse(200);
+		InfuserRecipeInput recipeInput = new InfuserRecipeInput(blockEntity.getItem(0), !blockEntity.getItem(1).isEmpty());
+		return blockEntity.quickCheck.getRecipeFor(recipeInput, level).map(infusingRecipe -> infusingRecipe.value().getInfusingTime()).orElse(200);
 	}
 
 	public void awardUsedRecipesAndPopExperience(ServerPlayer player) {

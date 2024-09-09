@@ -32,6 +32,8 @@ public class UGItemTags extends ItemTagsProvider {
 		copy(UGTags.Blocks.SMOGSTEM_LOGS, UGTags.Items.SMOGSTEM_LOGS);
 		copy(UGTags.Blocks.WIGGLEWOOD_LOGS, UGTags.Items.WIGGLEWOOD_LOGS);
 		copy(UGTags.Blocks.GRONGLE_LOGS, UGTags.Items.GRONGLE_LOGS);
+		tag(UGTags.Items.INFUSER_UTHERIUM_FUELS).add(UGItems.UTHERIUM_CRYSTAL.get());
+		tag(UGTags.Items.INFUSER_ROGDORIUM_FUELS).add(UGItems.ROGDORIUM_CRYSTAL.get());
 
 		//undergarden forge
 		tag(UGTags.Items.RAW_MATERIALS_CLOGGRUM).add(UGItems.RAW_CLOGGRUM.get());
