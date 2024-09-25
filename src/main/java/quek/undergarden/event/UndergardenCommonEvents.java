@@ -256,6 +256,7 @@ public class UndergardenCommonEvents {
 	private static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
 		event.register(UGEntityTypes.GWIBLING.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Gwibling::canGwiblingSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.DWELLER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.GREATER_DWELLER.get(), SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GreaterDweller::checkGreaterDwellerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.ROTLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.ROTWALKER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.ROTBEAST.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
@@ -281,6 +282,7 @@ public class UndergardenCommonEvents {
 		event.put(UGEntityTypes.ROTBEAST.get(), Rotbeast.registerAttributes().build());
 		event.put(UGEntityTypes.ROTBELCHER.get(), Rotbelcher.registerAttributes().build());
 		event.put(UGEntityTypes.DWELLER.get(), Dweller.registerAttributes().build());
+		event.put(UGEntityTypes.GREATER_DWELLER.get(), GreaterDweller.registerAttributes().build());
 		event.put(UGEntityTypes.GWIBLING.get(), AbstractFish.createAttributes().build());
 		event.put(UGEntityTypes.BRUTE.get(), Brute.registerAttributes().build());
 		event.put(UGEntityTypes.SCINTLING.get(), Scintling.registerAttributes().build());

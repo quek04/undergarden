@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-20T01:40:43.4083537	Tags for minecraft:block mod id undergarden
+// 1.21.1	2024-09-23T17:13:13.1641054	Tags for minecraft:block mod id undergarden
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/block/cobblestones.json
 3430489c73ccf7c6a97b8405ff097796daf6e4ba data/c/tags/block/fences/wooden.json
 8c4e326a74b8c8e3a8dd62875f1f8f81e697c7a6 data/c/tags/block/fence_gates/wooden.json
@@ -94,6 +94,7 @@ b40928c0a0a4fb3795dbad37e9e7d804667b70ed data/minecraft/tags/block/wall_signs.js
 53f1b7a4cd25c233a4d5d2b70f36266c5dc7dead data/undergarden/tags/block/base_stone_undergarden.json
 2edb0616f83e57e7d98c4ab93226cc8008e68de5 data/undergarden/tags/block/depthrock_ore_replaceables.json
 cbc9652a42caf8f045b4a2303a296da3185f69ab data/undergarden/tags/block/dreadrock_ore_replaceables.json
+ecf3d2ba2cbcfab1dd19bc4bcb329edf6090865c data/undergarden/tags/block/greater_dweller_spawnable_on.json
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/block/grongle_logs.json
 e2d38adfea4f277c6bb672666b18b50303495e49 data/undergarden/tags/block/muncher_breakables.json
 50592f606917d305b917a1f8a263abb8d9ec6be5 data/undergarden/tags/block/mushrooms.json

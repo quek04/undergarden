@@ -1,10 +1,10 @@
-// 1.21.1	2024-08-25T22:48:14.5461527	Registries
+// 1.21.1	2024-09-24T18:57:20.0137314	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
 c0569bb60eae60387e4744ad37bb4ef0db3e7f3f data/undergarden/damage_type/shard_torch.json
 03085effd952a8b02e71123720dc396942c66e96 data/undergarden/damage_type/utheric_infection.json
-3d18082dc9bfb6cbe38bea233ebe07f9eeee2197 data/undergarden/dimension/undergarden.json
+238034332fc8d8f9afa7c5831506918599080ba4 data/undergarden/dimension/undergarden.json
 e1ea46224f63f6776463b83fa52db1b324627f84 data/undergarden/dimension_type/undergarden.json
 55e842f17df1dcd9ddc6b77c8a80704f596338fa data/undergarden/enchantment/longevity.json
 671b3bdc37ab7d3def2a9fa2acabb7207d8ffe31 data/undergarden/enchantment/ricochet.json
@@ -24,7 +24,7 @@ cad98cc8077e2362fc6afbec009f2996f88f58c2 data/undergarden/worldgen/biome/barren_
 827d57036a6fddbbe9cf62137c7c2aab96b7808e data/undergarden/worldgen/biome/blood_mushroom_bog.json
 e46bb1004120b3a93377b4efedb8a881f4b00939 data/undergarden/worldgen/biome/dead_sea.json
 5abfbeed984e404aa625a7bfdd33d13dabb27615 data/undergarden/worldgen/biome/dense_forest.json
-8319b34fd3dd95dc0c33d87c977fd677a1bf6ce9 data/undergarden/worldgen/biome/depths.json
+0b53122dc52586b9f20209c738a66a6ac31e97f8 data/undergarden/worldgen/biome/depths.json
 2965793b96556738e90112ab02d65ed6ecf99346 data/undergarden/worldgen/biome/forgotten_field.json
 979ceca01b74c273d8b49b37c3327d102cbe40e3 data/undergarden/worldgen/biome/frostfields.json
 5da595fd8c7cb2a72fd485b7d8e31394e4eaced5 data/undergarden/worldgen/biome/frosty_smogstem_forest.json
@@ -33,7 +33,7 @@ e46bb1004120b3a93377b4efedb8a881f4b00939 data/undergarden/worldgen/biome/dead_se
 ba6c45610a76813e933bec6c15172c410f37e5db data/undergarden/worldgen/biome/indigo_mushroom_bog.json
 e5080ef9925312fad462c02e295ae11b3dedb2a7 data/undergarden/worldgen/biome/infected_depths.json
 b1d27d992138dcd917f51ab65b75caf6087e70a0 data/undergarden/worldgen/biome/ink_mushroom_bog.json
-00a6d68c40428643544f44995095ab33fed038a5 data/undergarden/worldgen/biome/puff_mushroom_forest.json
+81154ebbff76e76f8ee7d338d3a63f98504ab5dd data/undergarden/worldgen/biome/puff_mushroom_forest.json
 75bbb0e7ef3ac38698e8f3dae7fb8cb4baa8b85a data/undergarden/worldgen/biome/smogstem_forest.json
 539e3ad435b423a15e2f37db11143b0b35e495f2 data/undergarden/worldgen/biome/smog_spires.json
 9d897fd6e6e067dde8eb76e4533ace58f70b30c7 data/undergarden/worldgen/biome/veil_mushroom_bog.json

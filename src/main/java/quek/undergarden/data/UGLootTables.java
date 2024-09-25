@@ -413,6 +413,22 @@ public class UGLootTables extends LootTableProvider {
 									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))
 					)
 			);
+			this.add(UGEntityTypes.GREATER_DWELLER.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1))
+					.add(LootItem.lootTableItem(Items.LEATHER)
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 4.0F)))
+						.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+					)
+				)
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1))
+					.add(LootItem.lootTableItem(UGItems.RAW_DWELLER_MEAT.get())
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F)))
+						.apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
+						.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))
+				)
+			);
 			this.add(UGEntityTypes.GWIBLING.get(), LootTable.lootTable()
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1))
@@ -588,7 +604,8 @@ public class UGLootTables extends LootTableProvider {
 					.add(EmptyLootItem.emptyItem().setWeight(5))
 					.add(LootItem.lootTableItem(UGItems.ROGDORIUM_CRYSTAL.get()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
 					.add(LootItem.lootTableItem(UGBlocks.DENIZEN_TOTEM.asItem()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
-					.add(LootItem.lootTableItem(Items.STICK).setWeight(15).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+					.add(LootItem.lootTableItem(Items.STICK).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+					.add(LootItem.lootTableItem(UGItems.RAW_DWELLER_MEAT).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
 				)
 			);
 		}

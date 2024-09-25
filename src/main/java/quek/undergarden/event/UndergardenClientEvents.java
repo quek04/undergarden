@@ -24,11 +24,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.material.FogType;
@@ -62,7 +59,6 @@ import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.*;
 
-import java.util.List;
 import java.util.Objects;
 
 public class UndergardenClientEvents {
@@ -141,6 +137,7 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.ROTBEAST.get(), RotbeastRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTBELCHER.get(), RotbelcherRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.DWELLER.get(), DwellerRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.GREATER_DWELLER.get(), GreaterDwellerRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.GWIBLING.get(), GwiblingRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.BRUTE.get(), BruteRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.SCINTLING.get(), ScintlingRenderer::new);
@@ -167,6 +164,7 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.ROTBEAST, RotbeastModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.DWELLER, () -> DwellerModel.createBodyLayer(0.0F));
 		event.registerLayerDefinition(UGModelLayers.DWELLER_SADDLE, () -> DwellerModel.createBodyLayer(0.5F));
+		event.registerLayerDefinition(UGModelLayers.GREATER_DWELLER, GreaterDwellerModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.GWIBLING, GwiblingModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.BRUTE, BruteModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.SCINTLING, ScintlingModel::createBodyLayer);

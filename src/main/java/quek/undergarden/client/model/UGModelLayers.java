@@ -11,6 +11,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation BRUTE = register("brute");
 	public static final ModelLayerLocation DWELLER = register("dweller");
 	public static final ModelLayerLocation DWELLER_SADDLE = register("dweller", "saddle");
+	public static final ModelLayerLocation GREATER_DWELLER = register("greater_dweller");
 	public static final ModelLayerLocation FORGOTTEN_GUARDIAN = register("forgotten_guardian");
 	public static final ModelLayerLocation FORGOTTEN = register("forgotten");
 	public static final ModelLayerLocation FORGOTTEN_INNER_ARMOR = register("forgotten", "inner_armor");

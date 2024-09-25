@@ -385,6 +385,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.SLOP_BOWL, "Slop Bowl");
 
 		addItem(UGItems.DWELLER_SPAWN_EGG, "Dweller Spawn Egg");
+		addItem(UGItems.GREATER_DWELLER_SPAWN_EGG, "Greater Dweller Spawn Egg");
 		addItem(UGItems.GWIBLING_SPAWN_EGG, "Gwibling Spawn Egg");
 		addItem(UGItems.ROTLING_SPAWN_EGG, "Rotling Spawn Egg");
 		addItem(UGItems.ROTWALKER_SPAWN_EGG, "Rotwalker Spawn Egg");
@@ -436,6 +437,7 @@ public class UGLang extends UGLangProvider {
 
 		addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
 		addEntityType(UGEntityTypes.DWELLER, "Dweller");
+		addEntityType(UGEntityTypes.GREATER_DWELLER, "Greater Dweller");
 		addEntityType(UGEntityTypes.GWIBLING, "Gwibling");
 		addEntityType(UGEntityTypes.ROTLING, "Rotling");
 		addEntityType(UGEntityTypes.ROTWALKER, "Rotwalker");
@@ -636,6 +638,10 @@ public class UGLang extends UGLangProvider {
 		addSubtitle("entity", "dweller.death", "Dweller dies");
 		addSubtitle("entity", "dweller.remove_saddle", "Saddle removed");
 		addSubtitle("entity", "dweller.jump", "Dweller jumps");
+
+		addSubtitle("entity", "greater_dweller.ambient", "Greater Dweller grumbles");
+		addSubtitle("entity", "greater_dweller.hurt", "Greater Dweller hurts");
+		addSubtitle("entity", "greater_dweller.death", "Greater Dweller dies");
 
 		addSubtitle("entity", "rotwalker.ambient", "Rotwalker groans");
 		addSubtitle("entity", "rotwalker.hurt", "Rotwalker hurts");

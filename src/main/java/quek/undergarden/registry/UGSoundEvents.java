@@ -73,6 +73,10 @@ public class UGSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> DWELLER_STEP = register("entity.dweller.step");
 	public static final DeferredHolder<SoundEvent, SoundEvent> DWELLER_SADDLE_REMOVE = register("entity.dweller.saddle_remove");
 
+	public static final DeferredHolder<SoundEvent, SoundEvent> GREATER_DWELLER_AMBIENT = register("entity.greater_dweller.ambient");
+	public static final DeferredHolder<SoundEvent, SoundEvent> GREATER_DWELLER_HURT = register("entity.greater_dweller.hurt");
+	public static final DeferredHolder<SoundEvent, SoundEvent> GREATER_DWELLER_DEATH = register("entity.greater_dweller.death");
+
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTLING_AMBIENT = register("entity.rotling.ambient");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTLING_HURT = register("entity.rotling.hurt");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTLING_DEATH = register("entity.rotling.death");

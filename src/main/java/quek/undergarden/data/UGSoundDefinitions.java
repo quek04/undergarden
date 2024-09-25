@@ -365,6 +365,20 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:item/bundle/drop_contents3").pitch(0.95F)
 		).subtitle("subtitles.entity.dweller.remove_saddle"));
 
+		this.add(UGSoundEvents.GREATER_DWELLER_AMBIENT, definition().with(
+			sound("undergarden:entity/dweller_ambient_1").pitch(0.5F),
+			sound("undergarden:entity/dweller_ambient_2").pitch(0.5F),
+			sound("undergarden:entity/dweller_ambient_3").pitch(0.5F)
+		).subtitle("subtitles.entity.greater_dweller.ambient"));
+		this.add(UGSoundEvents.GREATER_DWELLER_HURT, definition().with(
+			sound("undergarden:entity/dweller_hurt_1").pitch(0.5F),
+			sound("undergarden:entity/dweller_hurt_2").pitch(0.5F),
+			sound("undergarden:entity/dweller_hurt_3").pitch(0.5F)
+		).subtitle("subtitles.entity.greater_dweller.hurt"));
+		this.add(UGSoundEvents.GREATER_DWELLER_DEATH, definition().with(
+			sound("undergarden:entity/dweller_death").pitch(0.5F)
+		).subtitle("subtitles.entity.greater_dweller.death"));
+
 		this.add(UGSoundEvents.ROTLING_AMBIENT, definition().with(
 				sound("undergarden:entity/rotling_ambient_1"),
 				sound("undergarden:entity/rotling_ambient_2"),

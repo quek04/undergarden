@@ -61,7 +61,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, this.panicGoal = new PanicGoal(this, 2.5D));
 		this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.UNDERBEANS.get(), UGItems.UNDERBEAN_STICK.get()), false));
-		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
+		this.goalSelector.addGoal(0, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, this.avoidGoal = new DwellerAvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 2.0D, 2.5D));
 		this.goalSelector.addGoal(2, new DwellerJumpGoal(this));

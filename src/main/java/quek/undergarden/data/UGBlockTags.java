@@ -40,6 +40,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(UGTags.Blocks.MUNCHER_BREAKABLES).addTag(Tags.Blocks.STONES).addTag(BlockTags.BASE_STONE_OVERWORLD).addTag(BlockTags.BASE_STONE_NETHER).addTag(UGTags.Blocks.BASE_STONE_UNDERGARDEN);
 		tag(UGTags.Blocks.SCINTLING_SPAWNABLE_ON).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get());
 		tag(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON).addTag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get());
+		tag(UGTags.Blocks.GREATER_DWELLER_SPAWNABLE_ON).addTag(BlockTags.ANIMALS_SPAWNABLE_ON).add(UGBlocks.DREADROCK.get(), UGBlocks.COARSE_DEEPSOIL.get());
 
 		//undergarden common
 		tag(UGTags.Blocks.ORES_CLOGGRUM).add(UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get());

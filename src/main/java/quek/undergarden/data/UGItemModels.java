@@ -290,6 +290,7 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.CORRUPT_CATALYST);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
+		egg(UGItems.GREATER_DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
 		egg(UGItems.ROTLING_SPAWN_EGG);
 		egg(UGItems.ROTWALKER_SPAWN_EGG);

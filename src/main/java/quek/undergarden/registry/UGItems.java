@@ -158,6 +158,7 @@ public class UGItems {
 
 	//spawn eggs
 	public static final DeferredItem<DeferredSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DWELLER, 4804417, 16776960, new Item.Properties()));
+	public static final DeferredItem<DeferredSpawnEggItem> GREATER_DWELLER_SPAWN_EGG = ITEMS.register("greater_dweller_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GREATER_DWELLER, 4804417, 16776960, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> GWIBLING_SPAWN_EGG = ITEMS.register("gwibling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GWIBLING, 10064737, 15845330, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTLING, 5590327, 10500660, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> ROTWALKER_SPAWN_EGG = ITEMS.register("rotwalker_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTWALKER, 5590327, 10500660, new Item.Properties()));

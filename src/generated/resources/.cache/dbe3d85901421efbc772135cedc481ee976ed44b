@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-12T15:39:38.7653305	Item Models: undergarden
+// 1.21.1	2024-09-23T17:06:25.6448962	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -143,6 +143,7 @@ b605f3f9e6ee53fca464ae71c48e5c00c65ffee7 assets/undergarden/models/item/gloomgou
 8a18af7e1298cfd3af7853102c84cdb8b485c199 assets/undergarden/models/item/goo.json
 0ee8289a22a6daae09720fa392fddab51d7cc7a9 assets/undergarden/models/item/goo_ball.json
 b80ec223a13883a4e0b5b97561008785aeddb652 assets/undergarden/models/item/goo_block.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/greater_dweller_spawn_egg.json
 a9a369bb3bee179423e37bca38c92068eea2229e assets/undergarden/models/item/grongle_boat.json
 7548bc5a091c3cc179d2be54770c24bb1c1de807 assets/undergarden/models/item/grongle_button.json
 07b8d7aa0570c86a8e3dc9fbc75267be8b8be084 assets/undergarden/models/item/grongle_chest_boat.json

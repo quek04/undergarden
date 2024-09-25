@@ -86,6 +86,7 @@ public class UGTags {
 		public static final TagKey<Block> MUNCHER_BREAKABLES = tag("muncher_breakables");
 		public static final TagKey<Block> SCINTLING_SPAWNABLE_ON = tag("scintling_spawnable_on");
 		public static final TagKey<Block> SMOG_MOG_SPAWNABLE_ON = tag("smog_mog_spawnable_on");
+		public static final TagKey<Block> GREATER_DWELLER_SPAWNABLE_ON = tag("greater_dweller_spawnable_on");
 
 		public static final TagKey<Block> ORES_CLOGGRUM = commonTag("ores/cloggrum");
 		public static final TagKey<Block> ORES_FROSTSTEEL = commonTag("ores/froststeel");
