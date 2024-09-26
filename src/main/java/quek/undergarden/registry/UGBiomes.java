@@ -455,7 +455,7 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.creatureGenerationProbability(0.9999999F)
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 100, 2, 4))
+				.addSpawn(MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY"), new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 100, 2, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
@@ -490,7 +490,7 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.creatureGenerationProbability(0.9999999F)
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 100, 2, 4))
+				.addSpawn(MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY"), new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 100, 2, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
@@ -622,7 +622,7 @@ public class UGBiomes {
 
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DEPTHS)),
 			Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.7F, 1.0F), Climate.Parameter.point(-2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(INFECTED_DEPTHS)),
-			Pair.of(Climate.parameters(Climate.Parameter.span(0.0F, 1.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(-2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(PUFF_MUSHROOM_FOREST))
+			Pair.of(Climate.parameters(Climate.Parameter.span(0.5F, 1.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(-2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(PUFF_MUSHROOM_FOREST))
 		)));
 	}
 }

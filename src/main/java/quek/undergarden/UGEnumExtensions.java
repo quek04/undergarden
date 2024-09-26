@@ -3,15 +3,16 @@ package quek.undergarden;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.network.chat.Style;
-import net.minecraft.world.inventory.RecipeBookType;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
 import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
+
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -125,4 +126,8 @@ public class UGEnumExtensions {
 			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
 		});
 	}
+
+	public static final EnumProxy<MobCategory> STUPID_MOB_CATEGORY = new EnumProxy<>(
+		MobCategory.class, "undergarden:stupid", 50, true, true, 128
+	);
 }

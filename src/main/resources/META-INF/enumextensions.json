@@ -116,6 +116,15 @@
         "class": "quek/undergarden/UGEnumExtensions",
         "method": "VIRULENT_HEARTS"
       }
+    },
+    {
+      "enum": "net/minecraft/world/entity/MobCategory",
+      "name": "UNDERGARDEN_STUPID_MOB_CATEGORY",
+      "constructor": "(Ljava/lang/String;IZZI)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "STUPID_MOB_CATEGORY"
+      }
     }
   ]
 }

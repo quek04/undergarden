@@ -62,14 +62,7 @@
   "spawners": {
     "ambient": [],
     "axolotls": [],
-    "creature": [
-      {
-        "type": "undergarden:greater_dweller",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 100
-      }
-    ],
+    "creature": [],
     "misc": [],
     "monster": [
       {
@@ -94,6 +87,14 @@
         "type": "undergarden:rotbeast",
         "maxCount": 2,
         "minCount": 1,
+        "weight": 100
+      }
+    ],
+    "undergarden:stupid": [
+      {
+        "type": "undergarden:greater_dweller",
+        "maxCount": 4,
+        "minCount": 2,
         "weight": 100
       }
     ],

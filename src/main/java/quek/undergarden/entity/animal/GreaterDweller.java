@@ -70,14 +70,19 @@ public class GreaterDweller extends Animal implements NeutralMob {
 		return level.getBlockState(pos.below()).is(UGTags.Blocks.GREATER_DWELLER_SPAWNABLE_ON);
 	}
 
-	@Override
+	/*@Override
 	public boolean checkSpawnRules(LevelAccessor accessor, MobSpawnType type) {
 		return true;
 	}
 
 	@Override
 	public boolean checkSpawnObstruction(LevelReader level) {
-		return true;
+		return level.isUnobstructed(this);
+	}*/
+
+	@Override
+	public float getWalkTargetValue(BlockPos pos, LevelReader level) {
+		return level.getBlockState(pos.below()).is(UGTags.Blocks.GREATER_DWELLER_SPAWNABLE_ON) ? 10.0F : level.getPathfindingCostFromLightLevels(pos);
 	}
 
 	@Override
