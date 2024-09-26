@@ -79,9 +79,11 @@ public class Rotbelcher extends RotspawnMonster {
 	public void handleEntityEvent(byte id) {
 		if (id == 4) {
 			this.attackAnimation.start(this.tickCount);
+			this.shootAnimation.stop();
 		}
 		if (id == 5) {
 			this.shootAnimation.start(this.tickCount);
+			this.attackAnimation.stop();
 		}
 	}
 
@@ -129,6 +131,7 @@ public class Rotbelcher extends RotspawnMonster {
 					this.chargeTime++;
 					this.rotbelcher.getLookControl().setLookAt(target, 30.0F, 30.0F);
 					if (this.chargeTime == 40) {
+						level.broadcastEntityEvent(this.rotbelcher, (byte) 5);
 						Vec3 vec3 = this.rotbelcher.getViewVector(1.0F);
 						double x = target.getX() - (this.rotbelcher.getX() + vec3.x);
 						double y = target.getY(0.5D) - (0.5D + this.rotbelcher.getY(0.5D));
@@ -138,7 +141,6 @@ public class Rotbelcher extends RotspawnMonster {
 						RotbelcherProjectile projectile = new RotbelcherProjectile(level, this.rotbelcher, shootVector.normalize());
 						projectile.setPos(this.rotbelcher.getX() + vec3.x, this.rotbelcher.getY(0.5D) + 0.5D, projectile.getZ() + vec3.z);
 						level.addFreshEntity(projectile);
-						level.broadcastEntityEvent(this.rotbelcher, (byte) 5);
 						this.chargeTime = -8;
 					}
 				} else if (this.chargeTime > 0) {

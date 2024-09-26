@@ -14,6 +14,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
@@ -30,13 +31,13 @@ public class SmogMog extends Mog {
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
 	}
 
-	@Override
-	public boolean checkSpawnRules(LevelAccessor accessor, MobSpawnType type) {
-		return true;
-	}
-
 	public static boolean checkSmogMogSpawnRules(EntityType<? extends Animal> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
 		return level.getBlockState(pos.below()).is(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON);
+	}
+
+	@Override
+	public float getWalkTargetValue(BlockPos pos, LevelReader level) {
+		return level.getBlockState(pos.below()).is(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON) ? 10.0F : level.getPathfindingCostFromLightLevels(pos);
 	}
 
 	@Override

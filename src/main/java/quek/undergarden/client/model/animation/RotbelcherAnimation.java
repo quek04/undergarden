@@ -40,24 +40,24 @@ public class RotbelcherAnimation {
 		))
 		.build();
 
-	public static final AnimationDefinition ATTACK = AnimationDefinition.Builder.withLength(0.36F)
+	public static final AnimationDefinition ATTACK = AnimationDefinition.Builder.withLength(0.33333F)
 		.addAnimation("torso", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.12F, KeyframeAnimations.degreeVec(-12.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.24F, KeyframeAnimations.degreeVec(5.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.36F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.0417F, KeyframeAnimations.degreeVec(-22.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.2083F, KeyframeAnimations.degreeVec(22.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.3333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 		))
 		.addAnimation("rightArm", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.12F, KeyframeAnimations.degreeVec(52.5F, 0.0F, 24.1736F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.24F, KeyframeAnimations.degreeVec(-39.025F, -9.5766F, -11.5995F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.36F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.0417F, KeyframeAnimations.degreeVec(-120.36119F, 40.78947F, -20.94102F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.1667F, KeyframeAnimations.degreeVec(-90.0F, -45.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.3333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 		))
 		.addAnimation("leftArm", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.12F, KeyframeAnimations.degreeVec(52.5F, 0.0F, -24.1736F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.24F, KeyframeAnimations.degreeVec(-39.025F, 9.5765F, 11.5994F), AnimationChannel.Interpolations.LINEAR),
-			new Keyframe(0.36F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+			new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.0417F, KeyframeAnimations.degreeVec(-120.36119F, -40.78947F, 20.94102F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.1667F, KeyframeAnimations.degreeVec(-61.1632F, 42.85882F, 11.52421F), AnimationChannel.Interpolations.CATMULLROM),
+			new Keyframe(0.3333F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.CATMULLROM)
 		))
 		.build();
 }
