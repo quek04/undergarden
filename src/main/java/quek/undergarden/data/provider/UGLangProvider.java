@@ -7,10 +7,13 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.JukeboxSong;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import quek.undergarden.Undergarden;
 
@@ -78,6 +81,18 @@ public abstract class UGLangProvider extends LanguageProvider {
 
 	protected void addContainer(String containerName, String name) {
 		add("container.undergarden." + containerName, name);
+	}
+
+	protected void addEmiItemTag(TagKey<Item> tag, String name) {
+		add("tag.item.undergarden." + tag.location().getPath().replace('/', '.'), name);
+	}
+
+	protected void addEmiCommonItemTag(TagKey<Item> tag, String name) {
+		add("tag.item.c." + tag.location().getPath().replace('/', '.'), name);
+	}
+
+	protected void addEmiFluidTag(TagKey<Fluid> tag, String name) {
+		add("tag.fluid.undergarden." + tag.location().getPath().replace('/', '.'), name);
 	}
 
 	@Override

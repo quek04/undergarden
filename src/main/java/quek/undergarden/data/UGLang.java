@@ -745,5 +745,51 @@ public class UGLang extends UGLangProvider {
 		add("gui.undergarden.jei.category.infuser", "Infusing");
 		add("gui.undergarden.jei.category.infusing.experience", "%s XP");
 		add("gui.undergarden.jei.category.infusing.time.seconds", "%ss");
+
+		add("emi.category.undergarden.infusing", "Infusing");
+
+		addEmiItemTag(UGTags.Items.SLINGSHOT_ENCHANTABLE, "Slingshot Enchantables");
+
+		addEmiItemTag(UGTags.Items.MUSHROOMS, "Undergarden Mushrooms");
+		addEmiItemTag(UGTags.Items.CLOGGRUM_ITEMS, "Cloggrum Items");
+		addEmiItemTag(UGTags.Items.FROSTSTEEL_ITEMS, "Froststeel Items");
+		addEmiItemTag(UGTags.Items.UTHERIUM_ITEMS, "Utherium Items");
+		addEmiItemTag(UGTags.Items.SMOGSTEM_LOGS, "Smogstem Logs");
+		addEmiItemTag(UGTags.Items.WIGGLEWOOD_LOGS, "Wigglewood Logs");
+		addEmiItemTag(UGTags.Items.GRONGLE_LOGS, "Grongle Logs");
+		addEmiItemTag(UGTags.Items.INFUSER_UTHERIUM_FUELS, "Infuser Utherium Fuels");
+		addEmiItemTag(UGTags.Items.INFUSER_ROGDORIUM_FUELS, "Infuser Rogdorium Fuels");
+
+		addEmiCommonItemTag(UGTags.Items.RAW_MATERIALS_CLOGGRUM, "Raw Cloggrum Materials");
+		addEmiCommonItemTag(UGTags.Items.RAW_MATERIALS_FROSTSTEEL, "Raw Froststeel Materials");
+
+		addEmiCommonItemTag(UGTags.Items.INGOTS_CLOGGRUM, "Cloggrum Ingots");
+		addEmiCommonItemTag(UGTags.Items.INGOTS_FROSTSTEEL, "Froststeel Ingots");
+		addEmiCommonItemTag(UGTags.Items.GEMS_UTHERIUM, "Utherium Gems");
+		addEmiCommonItemTag(UGTags.Items.GEMS_REGALIUM, "Regalium Gems");
+		addEmiCommonItemTag(UGTags.Items.GEMS_ROGDORIUM, "Rogdorium Gems");
+		addEmiCommonItemTag(UGTags.Items.INGOTS_FORGOTTEN_METAL, "Forgotten Ingots");
+
+		addEmiCommonItemTag(UGTags.Items.NUGGETS_CLOGGRUM, "Cloggrum Nuggets");
+		addEmiCommonItemTag(UGTags.Items.NUGGETS_FROSTSTEEL, "Froststeel Nuggets");
+		addEmiCommonItemTag(UGTags.Items.NUGGETS_FORGOTTEN_METAL, "Forgotten Nuggets");
+
+		addEmiCommonItemTag(UGTags.Items.ORES_CLOGGRUM, "Cloggrum Ores");
+		addEmiCommonItemTag(UGTags.Items.ORES_FROSTSTEEL, "Froststeel Ores");
+		addEmiCommonItemTag(UGTags.Items.ORES_UTHERIUM, "Utherium Ores");
+		addEmiCommonItemTag(UGTags.Items.ORES_REGALIUM, "Regalium Ores");
+		addEmiCommonItemTag(UGTags.Items.ORES_ROGDORIUM, "Rogdorium Ores");
+
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_CLOGGRUM, "Cloggrum Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_FROSTSTEEL, "Froststeel Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_UTHERIUM, "Utherium Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_REGALIUM, "Regalium Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_ROGDORIUM, "Rogdorium Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_FORGOTTEN_METAL, "Forgotten Storage Blocks");
+
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_RAW_CLOGGRUM, "Raw Cloggrum Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL, "Raw Froststeel Storage Blocks");
+
+		addEmiFluidTag(UGTags.Fluids.VIRULENT, "Virulent Mix");
 	}
 }

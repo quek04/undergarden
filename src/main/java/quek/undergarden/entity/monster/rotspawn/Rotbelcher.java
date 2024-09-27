@@ -45,8 +45,7 @@ public class Rotbelcher extends RotspawnMonster {
 			}
 		});
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.6D));
-		this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
-		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+		this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new RotspawnTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Stoneborn.class, true));
 		this.targetSelector.addGoal(3, new RotspawnTargetGoal<>(this, Animal.class, true, (target) -> !(target instanceof Mog)));
