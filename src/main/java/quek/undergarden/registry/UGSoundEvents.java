@@ -87,6 +87,12 @@ public class UGSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTWALKER_DEATH = register("entity.rotwalker.death");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTWALKER_STEP = register("entity.rotwalker.step");
 
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_AMBIENT = register("entity.rotbelcher.ambient");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_HURT = register("entity.rotbelcher.hurt");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_DEATH = register("entity.rotbelcher.death");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_STEP = register("entity.rotbelcher.step");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_SHOOT = register("entity.rotbelcher.shoot");
+
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBEAST_AMBIENT = register("entity.rotbeast.ambient");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBEAST_HURT = register("entity.rotbeast.hurt");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBEAST_DEATH = register("entity.rotbeast.death");

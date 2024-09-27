@@ -647,6 +647,11 @@ public class UGLang extends UGLangProvider {
 		addSubtitle("entity", "rotwalker.hurt", "Rotwalker hurts");
 		addSubtitle("entity", "rotwalker.death", "Rotwalker dies");
 
+		addSubtitle("entity", "rotbelcher.ambient", "Rotbelcher groans");
+		addSubtitle("entity", "rotbelcher.hurt", "Rotbelcher hurts");
+		addSubtitle("entity", "rotbelcher.death", "Rotbelcher dies");
+		addSubtitle("entity", "rotbelcher.shoot", "Rotbelcher belches");
+
 		addSubtitle("entity", "rotbeast.ambient", "Rotbeast groans");
 		addSubtitle("entity", "rotbeast.hurt", "Rotbeast hurts");
 		addSubtitle("entity", "rotbeast.death", "Rotbeast dies");

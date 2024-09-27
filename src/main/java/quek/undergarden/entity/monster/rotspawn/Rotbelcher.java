@@ -1,8 +1,11 @@
 package quek.undergarden.entity.monster.rotspawn;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -14,10 +17,12 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import quek.undergarden.entity.animal.Mog;
 import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.RotbelcherProjectile;
+import quek.undergarden.registry.UGSoundEvents;
 
 public class Rotbelcher extends RotspawnMonster {
 
@@ -36,7 +41,7 @@ public class Rotbelcher extends RotspawnMonster {
 		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.25D, false) {
 			@Override
 			public boolean canUse() {
-				return this.mob.getTarget() != null && this.mob.getTarget().distanceToSqr(this.mob) < 20.0D && super.canUse();
+				return this.mob.getTarget() != null && this.mob.getTarget().distanceToSqr(this.mob) < 40.0D && super.canUse();
 			}
 		});
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.6D));
@@ -53,6 +58,26 @@ public class Rotbelcher extends RotspawnMonster {
 			.add(Attributes.ARMOR, 3.0D)
 			.add(Attributes.ATTACK_DAMAGE, 5.0D)
 			.add(Attributes.MOVEMENT_SPEED, 0.23D);
+	}
+
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return UGSoundEvents.ROTBELCHER_AMBIENT.get();
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return UGSoundEvents.ROTBELCHER_HURT.get();
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return UGSoundEvents.ROTBELCHER_DEATH.get();
+	}
+
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState state) {
+		this.playSound(UGSoundEvents.ROTBELCHER_STEP.get(), 0.15F, 1.0F);
 	}
 
 	@Override
@@ -121,7 +146,7 @@ public class Rotbelcher extends RotspawnMonster {
 			LivingEntity target = this.rotbelcher.getTarget();
 			if (target != null) {
 				double distanceToTarget = target.distanceToSqr(this.rotbelcher);
-				if (!(distanceToTarget > 20.0D)) {
+				if (!(distanceToTarget > 40.0D)) {
 					this.rotbelcher.getNavigation().stop();
 				} else {
 					this.rotbelcher.getNavigation().moveTo(target, 1.2F);
@@ -132,6 +157,8 @@ public class Rotbelcher extends RotspawnMonster {
 					this.rotbelcher.getLookControl().setLookAt(target, 30.0F, 30.0F);
 					if (this.chargeTime == 40) {
 						level.broadcastEntityEvent(this.rotbelcher, (byte) 5);
+						this.rotbelcher.playSound(UGSoundEvents.ROTBELCHER_SHOOT.get(), 1.0F, this.rotbelcher.getVoicePitch());
+
 						Vec3 vec3 = this.rotbelcher.getViewVector(1.0F);
 						double x = target.getX() - (this.rotbelcher.getX() + vec3.x);
 						double y = target.getY(0.5D) - (0.5D + this.rotbelcher.getY(0.5D));
