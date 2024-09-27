@@ -160,7 +160,7 @@ public class GreaterDweller extends Animal implements NeutralMob {
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
-		return UGEntityTypes.DWELLER.get().create(this.level());
+		return UGEntityTypes.GREATER_DWELLER.get().create(this.level());
 	}
 
 	@Override
