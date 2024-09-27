@@ -154,7 +154,7 @@ public class UGConfiguredFeatures {
 		context.register(FROZEN_DEEPTURF_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.FROZEN_DEEPTURF.get(), 64)));
 		context.register(SHIMMERWEED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.SHIMMERWEED.get(), 32)));
 		context.register(DEPTHROCK_PEBBLE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, pebble(UGBlocks.DEPTHROCK_PEBBLES.get(), List.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.SEDIMENT.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
-		context.register(DITCHBULB_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DITCHBULB_PLANT.get().defaultBlockState().setValue(DitchbulbBlock.AGE, 1), 16, List.of(UGBlocks.DEPTHROCK.get()))));
+		context.register(DITCHBULB_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DITCHBULB_PLANT.get().defaultBlockState().setValue(DitchbulbBlock.AGE, 1), 16, List.of(UGBlocks.DEPTHROCK.get(), UGBlocks.DREADROCK.get()))));
 		context.register(TALL_DEEPTURF_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.TALL_DEEPTURF.get(), 32)));
 		context.register(TALL_SHIMMERWEED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.TALL_SHIMMERWEED.get(), 32)));
 		context.register(INDIGO_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.INDIGO_MUSHROOM.get(), 64)));
