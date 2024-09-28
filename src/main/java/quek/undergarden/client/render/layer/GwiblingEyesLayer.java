@@ -10,12 +10,14 @@ import quek.undergarden.entity.animal.Gwibling;
 
 public class GwiblingEyesLayer<T extends Gwibling, M extends GwiblingModel<T>> extends EyesLayer<T, M> {
 
+	private static final RenderType GWIBLING_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/gwibling_eyes.png"));
+
 	public GwiblingEyesLayer(RenderLayerParent<T, M> parent) {
 		super(parent);
 	}
 
 	@Override
 	public RenderType renderType() {
-		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/gwibling_eyes.png"));
+		return GWIBLING_EYES;
 	}
 }

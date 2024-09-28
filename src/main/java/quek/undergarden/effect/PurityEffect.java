@@ -13,14 +13,15 @@ public class PurityEffect extends MobEffect {
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
+	public boolean applyEffectTick(LivingEntity entity, int amplifier) {
 		if (entity.tickCount % 20 == 0 && !entity.level().isClientSide()) {
 			int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
 			if (data > 0) {
 				entity.setData(UGAttachments.UTHERIC_INFECTION.get(), data - (amplifier + 1));
-				PacketDistributor.TRACKING_ENTITY_AND_SELF.with(entity).send(new UthericInfectionPacket(entity.getId(), entity.getData(UGAttachments.UTHERIC_INFECTION)));
+				PacketDistributor.sendToPlayersTrackingEntity(entity, new UthericInfectionPacket(entity.getId(), entity.getData(UGAttachments.UTHERIC_INFECTION)));
 			}
 		}
+		return true;
 	}
 
 	@Override

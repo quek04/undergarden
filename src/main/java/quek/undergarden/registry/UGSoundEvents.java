@@ -73,6 +73,10 @@ public class UGSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> DWELLER_STEP = register("entity.dweller.step");
 	public static final DeferredHolder<SoundEvent, SoundEvent> DWELLER_SADDLE_REMOVE = register("entity.dweller.saddle_remove");
 
+	public static final DeferredHolder<SoundEvent, SoundEvent> GREATER_DWELLER_AMBIENT = register("entity.greater_dweller.ambient");
+	public static final DeferredHolder<SoundEvent, SoundEvent> GREATER_DWELLER_HURT = register("entity.greater_dweller.hurt");
+	public static final DeferredHolder<SoundEvent, SoundEvent> GREATER_DWELLER_DEATH = register("entity.greater_dweller.death");
+
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTLING_AMBIENT = register("entity.rotling.ambient");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTLING_HURT = register("entity.rotling.hurt");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTLING_DEATH = register("entity.rotling.death");
@@ -82,6 +86,12 @@ public class UGSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTWALKER_HURT = register("entity.rotwalker.hurt");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTWALKER_DEATH = register("entity.rotwalker.death");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTWALKER_STEP = register("entity.rotwalker.step");
+
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_AMBIENT = register("entity.rotbelcher.ambient");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_HURT = register("entity.rotbelcher.hurt");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_DEATH = register("entity.rotbelcher.death");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_STEP = register("entity.rotbelcher.step");
+	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBELCHER_SHOOT = register("entity.rotbelcher.shoot");
 
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBEAST_AMBIENT = register("entity.rotbeast.ambient");
 	public static final DeferredHolder<SoundEvent, SoundEvent> ROTBEAST_HURT = register("entity.rotbeast.hurt");
@@ -159,6 +169,6 @@ public class UGSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> FORGOTTEN_STEP = register("entity.forgotten.step");
 
 	private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
-		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Undergarden.MODID, name)));
+		return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name)));
 	}
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "undergarden:polished_depthrock"
+    }
+  },
+  "pattern": [
+    "MMM"
+  ],
+  "result": {
+    "count": 6,
+    "id": "undergarden:polished_depthrock_slab"
+  }
+}

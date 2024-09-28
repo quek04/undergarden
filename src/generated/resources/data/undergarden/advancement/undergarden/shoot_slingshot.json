@@ -1,0 +1,34 @@
+{
+  "parent": "undergarden:undergarden/slingshot",
+  "criteria": {
+    "shoot_slingshot": {
+      "conditions": {
+        "ammo": {
+          "items": "undergarden:depthrock_pebble"
+        },
+        "slingshot": {
+          "items": "undergarden:slingshot"
+        }
+      },
+      "trigger": "undergarden:slingshot_fire"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.shoot_slingshot.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "undergarden:depthrock_pebble"
+    },
+    "title": {
+      "translate": "advancement.undergarden.shoot_slingshot.title"
+    }
+  },
+  "requirements": [
+    [
+      "shoot_slingshot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -24,7 +24,10 @@
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:matching_blocks",
-        "blocks": "undergarden:depthrock",
+        "blocks": [
+          "undergarden:depthrock",
+          "undergarden:dreadrock"
+        ],
         "offset": [
           0,
           -1,

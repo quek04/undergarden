@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "undergarden:cloggrum_ingot"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "CCC"
+  ],
+  "result": {
+    "count": 16,
+    "id": "undergarden:cloggrum_bars"
+  }
+}

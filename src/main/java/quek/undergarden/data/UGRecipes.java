@@ -1,6 +1,7 @@
 package quek.undergarden.data;
 
 import com.google.common.collect.ImmutableList;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -17,10 +18,12 @@ import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
 
+import java.util.concurrent.CompletableFuture;
+
 public class UGRecipes extends UGRecipeProvider {
 
-	public UGRecipes(PackOutput output) {
-		super(output);
+	public UGRecipes(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+		super(output, provider);
 	}
 
 	@Override
@@ -35,6 +38,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeBricks(UGBlocks.SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE).save(consumer);
 		makeBricks(UGBlocks.TREMBLECRUST_BRICKS, UGBlocks.TREMBLECRUST).save(consumer);
 		makeBricks(UGBlocks.DEPTHROCK_TILES, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
+		makeBricks(UGBlocks.DREADROCK_BRICKS, UGBlocks.DREADROCK).save(consumer);
 
 		makeChiseledBricks(UGBlocks.CHISELED_DEPTHROCK_BRICKS, UGBlocks.DEPTHROCK_BRICK_SLAB).save(consumer);
 		makeChiseledBricks(UGBlocks.CHISELED_SHIVERSTONE_BRICKS, UGBlocks.SHIVERSTONE_BRICK_SLAB).save(consumer);
@@ -68,285 +72,286 @@ public class UGRecipes extends UGRecipeProvider {
 		makeHangingSign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, UGBlocks.ANCIENT_ROOT).save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, Blocks.STICKY_PISTON)
-				.pattern("G")
-				.pattern("P")
-				.define('G', UGItems.GOO_BALL.get())
-				.define('P', Blocks.PISTON)
-				.unlockedBy("has_goo_ball", has(UGItems.GOO_BALL.get()))
-				.save(consumer, name("sticky_piston_from_goo_ball"));
+			.pattern("G")
+			.pattern("P")
+			.define('G', UGItems.GOO_BALL.get())
+			.define('P', Blocks.PISTON)
+			.unlockedBy("has_goo_ball", has(UGItems.GOO_BALL.get()))
+			.save(consumer, name("sticky_piston_from_goo_ball"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.STONECUTTER)
-				.pattern(" I ")
-				.pattern("SSS")
-				.define('I', Items.IRON_INGOT)
-				.define('S', UGBlocks.DEPTHROCK.get())
-				.unlockedBy("has_depthrock", has(UGBlocks.DEPTHROCK.get()))
-				.save(consumer, name("stonecutter_from_depthrock"));
+			.pattern(" I ")
+			.pattern("SSS")
+			.define('I', Items.IRON_INGOT)
+			.define('S', UGBlocks.DEPTHROCK.get())
+			.unlockedBy("has_depthrock", has(UGBlocks.DEPTHROCK.get()))
+			.save(consumer, name("stonecutter_from_depthrock"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.STONECUTTER)
-				.pattern(" I ")
-				.pattern("SSS")
-				.define('I', Items.IRON_INGOT)
-				.define('S', UGBlocks.SHIVERSTONE.get())
-				.unlockedBy("has_shiverstone", has(UGBlocks.SHIVERSTONE.get()))
-				.save(consumer, name("stonecutter_from_shiverstone"));
+			.pattern(" I ")
+			.pattern("SSS")
+			.define('I', Items.IRON_INGOT)
+			.define('S', UGBlocks.SHIVERSTONE.get())
+			.unlockedBy("has_shiverstone", has(UGBlocks.SHIVERSTONE.get()))
+			.save(consumer, name("stonecutter_from_shiverstone"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.STONECUTTER)
-				.pattern(" I ")
-				.pattern("SSS")
-				.define('I', Items.IRON_INGOT)
-				.define('S', UGBlocks.TREMBLECRUST.get())
-				.unlockedBy("has_tremblecrust", has(UGBlocks.TREMBLECRUST.get()))
-				.save(consumer, name("stonecutter_from_tremblecrust"));
+			.pattern(" I ")
+			.pattern("SSS")
+			.define('I', Items.IRON_INGOT)
+			.define('S', UGBlocks.TREMBLECRUST.get())
+			.unlockedBy("has_tremblecrust", has(UGBlocks.TREMBLECRUST.get()))
+			.save(consumer, name("stonecutter_from_tremblecrust"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, UGItems.UNDERBEAN_STICK.get())
-				.requires(Items.STICK)
-				.requires(UGItems.UNDERBEANS.get())
-				.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
-				.save(consumer);
+			.requires(Items.STICK)
+			.requires(UGItems.UNDERBEANS.get())
+			.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.MOGMOSS_RUG.get(), 3)
-				.pattern("MM")
-				.define('M', UGItems.MOGMOSS.get())
-				.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
-				.save(consumer);
+			.pattern("MM")
+			.define('M', UGItems.MOGMOSS.get())
+			.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.BLUE_MOGMOSS_RUG.get(), 3)
-				.pattern("MM")
-				.define('M', UGItems.BLUE_MOGMOSS.get())
-				.unlockedBy("has_blue_mogmoss", has(UGItems.BLUE_MOGMOSS.get()))
-				.save(consumer);
+			.pattern("MM")
+			.define('M', UGItems.BLUE_MOGMOSS.get())
+			.unlockedBy("has_blue_mogmoss", has(UGItems.BLUE_MOGMOSS.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.DEPTHROCK_BED.get())
-				.pattern("MMM")
-				.pattern("DDD")
-				.define('M', UGItems.MOGMOSS.get())
-				.define('D', UGBlocks.DEPTHROCK.get())
-				.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
-				.save(consumer);
+			.pattern("MMM")
+			.pattern("DDD")
+			.define('M', UGItems.MOGMOSS.get())
+			.define('D', UGBlocks.DEPTHROCK.get())
+			.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.TWISTYTWIG.get(), 4)
-				.pattern("P ")
-				.pattern(" P")
-				.define('P', UGBlocks.WIGGLEWOOD_PLANKS.get())
-				.unlockedBy("has_wigglewood_planks", has(UGBlocks.WIGGLEWOOD_PLANKS.get()))
-				.save(consumer);
+			.pattern("P ")
+			.pattern(" P")
+			.define('P', UGBlocks.WIGGLEWOOD_PLANKS.get())
+			.unlockedBy("has_wigglewood_planks", has(UGBlocks.WIGGLEWOOD_PLANKS.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.SCAFFOLDING, 6)
-				.pattern("STS")
-				.pattern("S S")
-				.pattern("S S")
-				.define('S', Tags.Items.RODS_WOODEN)
-				.define('T', UGItems.TWISTYTWIG.get())
-				.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-				.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
-				.save(consumer, name("undergarden_scaffolding"));
+			.pattern("STS")
+			.pattern("S S")
+			.pattern("S S")
+			.define('S', Tags.Items.RODS_WOODEN)
+			.define('T', UGItems.TWISTYTWIG.get())
+			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
+			.save(consumer, name("undergarden_scaffolding"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.GLOOM_O_LANTERN.get())
-				.pattern("G")
-				.pattern("T")
-				.define('G', UGBlocks.CARVED_GLOOMGOURD.get())
-				.define('T', Items.TORCH)
-				.unlockedBy("has_carved_gourd", has(UGBlocks.CARVED_GLOOMGOURD.get()))
-				.unlockedBy("has_torch", has(Items.TORCH))
-				.save(consumer);
+			.pattern("G")
+			.pattern("T")
+			.define('G', UGBlocks.CARVED_GLOOMGOURD.get())
+			.define('T', Items.TORCH)
+			.unlockedBy("has_carved_gourd", has(UGBlocks.CARVED_GLOOMGOURD.get()))
+			.unlockedBy("has_torch", has(Items.TORCH))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.SHARD_O_LANTERN.get())
-				.pattern("G")
-				.pattern("T")
-				.define('G', UGBlocks.CARVED_GLOOMGOURD.get())
-				.define('T', UGBlocks.SHARD_TORCH.get())
-				.unlockedBy("has_carved_gourd", has(UGBlocks.CARVED_GLOOMGOURD.get()))
-				.unlockedBy("has_shard_torch", has(UGBlocks.SHARD_TORCH.get()))
-				.save(consumer);
+			.pattern("G")
+			.pattern("T")
+			.define('G', UGBlocks.CARVED_GLOOMGOURD.get())
+			.define('T', UGBlocks.SHARD_TORCH.get())
+			.unlockedBy("has_carved_gourd", has(UGBlocks.CARVED_GLOOMGOURD.get()))
+			.unlockedBy("has_shard_torch", has(UGBlocks.SHARD_TORCH.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.CLOGGRUM_BARS.get(), 16)
-				.pattern("CCC")
-				.pattern("CCC")
-				.define('C', UGItems.CLOGGRUM_INGOT.get())
-				.unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
-				.save(consumer);
+			.pattern("CCC")
+			.pattern("CCC")
+			.define('C', UGItems.CLOGGRUM_INGOT.get())
+			.unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, UGBlocks.COARSE_DEEPSOIL.get(), 4)
-				.pattern("DP")
-				.pattern("PD")
-				.define('D', UGBlocks.DEEPSOIL.get())
-				.define('P', UGItems.DEPTHROCK_PEBBLE.get())
-				.unlockedBy("has_deepsoil", has(UGBlocks.DEEPSOIL.get()))
-				.unlockedBy("has_pebble", has(UGItems.DEPTHROCK_PEBBLE.get()))
-				.save(consumer);
+			.pattern("DP")
+			.pattern("PD")
+			.define('D', UGBlocks.DEEPSOIL.get())
+			.define('P', UGItems.DEPTHROCK_PEBBLE.get())
+			.unlockedBy("has_deepsoil", has(UGBlocks.DEEPSOIL.get()))
+			.unlockedBy("has_pebble", has(UGItems.DEPTHROCK_PEBBLE.get()))
+			.save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, UGBlocks.DEEPSOIL.get())
-				.requires(UGBlocks.COARSE_DEEPSOIL.get())
-				.unlockedBy("has_coarse_deepsoil", has(UGBlocks.COARSE_DEEPSOIL.get()))
-				.save(consumer, name("coarse_deepsoil_to_normal"));
+			.requires(UGBlocks.COARSE_DEEPSOIL.get())
+			.unlockedBy("has_coarse_deepsoil", has(UGBlocks.COARSE_DEEPSOIL.get()))
+			.save(consumer, name("coarse_deepsoil_to_normal"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, UGItems.SLINGSHOT.get())
-				.pattern("STS")
-				.pattern("SSS")
-				.pattern(" S ")
-				.define('S', Tags.Items.RODS_WOODEN)
-				.define('T', UGItems.TWISTYTWIG.get())
-				.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-				.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
-				.save(consumer);
+			.pattern("STS")
+			.pattern("SSS")
+			.pattern(" S ")
+			.define('S', Tags.Items.RODS_WOODEN)
+			.define('T', UGItems.TWISTYTWIG.get())
+			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
+			.save(consumer);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, UGItems.SPEAR.get())
+			.pattern("  R")
+			.pattern(" S ")
+			.pattern("S  ")
+			.define('R', UGItems.ROGDORIUM_CRYSTAL.get())
+			.define('S', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_rogdorium", has(UGTags.Items.GEMS_ROGDORIUM))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.BLISTERBOMB.get())
-				.pattern(" T ")
-				.pattern("BBB")
-				.pattern("BBB")
-				.define('T', UGItems.TWISTYTWIG.get())
-				.define('B', UGItems.ROTTEN_BLISTERBERRY.get())
-				.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
-				.unlockedBy("has_blisterberry", has(UGItems.ROTTEN_BLISTERBERRY.get()))
-				.save(consumer);
+			.pattern(" T ")
+			.pattern("BBB")
+			.pattern("BBB")
+			.define('T', UGItems.TWISTYTWIG.get())
+			.define('B', UGItems.ROTTEN_BLISTERBERRY.get())
+			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
+			.unlockedBy("has_blisterberry", has(UGItems.ROTTEN_BLISTERBERRY.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, UGItems.CLOGGRUM_SHIELD.get())
-				.pattern("CSC")
-				.pattern("CCC")
-				.pattern(" C ")
-				.define('S', ItemTags.PLANKS)
-				.define('C', UGItems.CLOGGRUM_INGOT.get())
-				.unlockedBy("has_scales", has(UGItems.CLOGGRUM_INGOT.get()))
-				.save(consumer);
+			.pattern("CSC")
+			.pattern("CCC")
+			.pattern(" C ")
+			.define('S', ItemTags.PLANKS)
+			.define('C', UGItems.CLOGGRUM_INGOT.get())
+			.unlockedBy("has_scales", has(UGItems.CLOGGRUM_INGOT.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.SHARD_TORCH.get(), 1)
-				.pattern("C")
-				.pattern("S")
-				.define('C', UGItems.UTHERIC_SHARD.get())
-				.define('S', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_shard", has(UGItems.UTHERIC_SHARD.get()))
-				.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-				.save(consumer);
+			.pattern("C")
+			.pattern("S")
+			.define('C', UGItems.UTHERIC_SHARD.get())
+			.define('S', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_shard", has(UGItems.UTHERIC_SHARD.get()))
+			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.TORCH, 2)
-				.pattern("D")
-				.pattern("S")
-				.define('D', UGItems.DITCHBULB_PASTE.get())
-				.define('S', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_ditchbulb_paste", has(UGItems.DITCHBULB_PASTE.get()))
-				.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-				.save(consumer, name("torch_ditchbulb_paste"));
+			.pattern("D")
+			.pattern("S")
+			.define('D', UGItems.DITCHBULB_PASTE.get())
+			.define('S', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_ditchbulb_paste", has(UGItems.DITCHBULB_PASTE.get()))
+			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+			.save(consumer, name("torch_ditchbulb_paste"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, UGItems.CATALYST.get())
-				.pattern("GIG")
-				.pattern("IDI")
-				.pattern("GIG")
-				.define('G', Items.GOLD_INGOT)
-				.define('I', Items.IRON_INGOT)
-				.define('D', Items.DIAMOND)
-				.unlockedBy("has_gold", has(Items.GOLD_INGOT))
-				.unlockedBy("has_iron", has(Items.IRON_INGOT))
-				.unlockedBy("has_diamond", has(Items.DIAMOND))
-				.save(consumer);
+			.pattern("GIG")
+			.pattern("IDI")
+			.pattern("GIG")
+			.define('G', Items.GOLD_INGOT)
+			.define('I', Items.IRON_INGOT)
+			.define('D', Items.DIAMOND)
+			.unlockedBy("has_gold", has(Items.GOLD_INGOT))
+			.unlockedBy("has_iron", has(Items.IRON_INGOT))
+			.unlockedBy("has_diamond", has(Items.DIAMOND))
+			.save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.GLOOMGOURD_PIE.get())
-				.requires(UGTags.Items.MUSHROOMS)
-				.requires(UGBlocks.GLOOMGOURD.get())
-				.requires(UGItems.GLITTERKELP.get())
-				.unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
-				.save(consumer);
+			.requires(UGTags.Items.MUSHROOMS)
+			.requires(UGBlocks.GLOOMGOURD.get())
+			.requires(UGItems.GLITTERKELP.get())
+			.unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
+			.save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, UGItems.GLOOMGOURD_SEEDS.get(), 4)
-				.requires(UGBlocks.GLOOMGOURD.get())
-				.unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
-				.save(consumer);
+			.requires(UGBlocks.GLOOMGOURD.get())
+			.unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
+			.save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 4)
-				.requires(UGItems.BRUTE_TUSK.get())
-				.unlockedBy("has_tusk", has(UGItems.BRUTE_TUSK.get()))
-				.save(consumer, name("tusk_to_bonemeal"));
+			.requires(UGItems.BRUTE_TUSK.get())
+			.unlockedBy("has_tusk", has(UGItems.BRUTE_TUSK.get()))
+			.save(consumer, name("tusk_to_bonemeal"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.RED_DYE)
-				.requires(UGBlocks.BLOOD_MUSHROOM.get())
-				.unlockedBy("has_blood_mushroom", has(UGBlocks.BLOOD_MUSHROOM.get()))
-				.save(consumer, name("blood_mushroom_to_dye"));
+			.requires(UGBlocks.BLOOD_MUSHROOM.get())
+			.unlockedBy("has_blood_mushroom", has(UGBlocks.BLOOD_MUSHROOM.get()))
+			.save(consumer, name("blood_mushroom_to_dye"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BLACK_DYE)
-				.requires(UGBlocks.INK_MUSHROOM.get())
-				.unlockedBy("has_ink_mushroom", has(UGBlocks.INK_MUSHROOM.get()))
-				.save(consumer, name("ink_mushroom_to_dye"));
+			.requires(UGBlocks.INK_MUSHROOM.get())
+			.unlockedBy("has_ink_mushroom", has(UGBlocks.INK_MUSHROOM.get()))
+			.save(consumer, name("ink_mushroom_to_dye"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BLUE_DYE)
-				.requires(UGBlocks.INDIGO_MUSHROOM.get())
-				.unlockedBy("has_indigo_mushroom", has(UGBlocks.INDIGO_MUSHROOM.get()))
-				.save(consumer, name("indigo_mushroom_to_dye"));
+			.requires(UGBlocks.INDIGO_MUSHROOM.get())
+			.unlockedBy("has_indigo_mushroom", has(UGBlocks.INDIGO_MUSHROOM.get()))
+			.save(consumer, name("indigo_mushroom_to_dye"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.WHITE_DYE)
-				.requires(UGBlocks.VEIL_MUSHROOM.get())
-				.unlockedBy("has_veil_mushroom", has(UGBlocks.VEIL_MUSHROOM.get()))
-				.save(consumer, name("veil_mushroom_to_dye"));
+			.requires(UGBlocks.VEIL_MUSHROOM.get())
+			.unlockedBy("has_veil_mushroom", has(UGBlocks.VEIL_MUSHROOM.get()))
+			.save(consumer, name("veil_mushroom_to_dye"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PINK_DYE)
-				.requires(UGBlocks.AMOROUS_BRISTLE.get())
-				.unlockedBy("has_amorous_bristle", has(UGBlocks.AMOROUS_BRISTLE.get()))
-				.save(consumer, name("amorous_bristle_to_dye"));
+			.requires(UGBlocks.AMOROUS_BRISTLE.get())
+			.unlockedBy("has_amorous_bristle", has(UGBlocks.AMOROUS_BRISTLE.get()))
+			.save(consumer, name("amorous_bristle_to_dye"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LIGHT_BLUE_DYE)
-				.requires(UGBlocks.MISERABELL.get())
-				.unlockedBy("has_miserabell", has(UGBlocks.MISERABELL.get()))
-				.save(consumer, name("miserabell_to_dye"));
+			.requires(UGBlocks.MISERABELL.get())
+			.unlockedBy("has_miserabell", has(UGBlocks.MISERABELL.get()))
+			.save(consumer, name("miserabell_to_dye"));
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.YELLOW_DYE)
-				.requires(UGBlocks.BUTTERBUNCH.get())
-				.unlockedBy("has_butterbunch", has(UGBlocks.BUTTERBUNCH.get()))
-				.save(consumer, name("butterbunch_to_dye"));
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.UTHERIUM_CRYSTAL.get())
-				.pattern("SSS")
-				.pattern("SSS")
-				.pattern("SSS")
-				.define('S', UGItems.UTHERIC_SHARD.get())
-				.unlockedBy("has_shard", has(UGItems.UTHERIC_SHARD.get()))
-				.save(consumer, name("shard_to_crystal"));
+			.requires(UGBlocks.BUTTERBUNCH.get())
+			.unlockedBy("has_butterbunch", has(UGBlocks.BUTTERBUNCH.get()))
+			.save(consumer, name("butterbunch_to_dye"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.LEAD, 2)
-				.pattern("TT ")
-				.pattern("TG ")
-				.pattern("  T")
-				.define('T', UGItems.TWISTYTWIG.get())
-				.define('G', UGItems.GOO_BALL.get())
-				.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
-				.unlockedBy("has_goo_ball", has(UGItems.GOO_BALL.get()))
-				.save(consumer, name("undergarden_lead"));
+			.pattern("TT ")
+			.pattern("TG ")
+			.pattern("  T")
+			.define('T', UGItems.TWISTYTWIG.get())
+			.define('G', UGItems.GOO_BALL.get())
+			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
+			.unlockedBy("has_goo_ball", has(UGItems.GOO_BALL.get()))
+			.save(consumer, name("undergarden_lead"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.SEDIMENT_GLASS_PANE.get(), 16)
-				.pattern("GGG")
-				.pattern("GGG")
-				.define('G', UGBlocks.SEDIMENT_GLASS.get())
-				.unlockedBy("has_sediment_glass", has(UGBlocks.SEDIMENT_GLASS.get()))
-				.save(consumer);
+			.pattern("GGG")
+			.pattern("GGG")
+			.define('G', UGBlocks.SEDIMENT_GLASS.get())
+			.unlockedBy("has_sediment_glass", has(UGBlocks.SEDIMENT_GLASS.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, UGBlocks.CLOGGRUM_TILES.get(), 4)
-				.pattern("CC")
-				.pattern("CC")
-				.define('C', UGItems.CLOGGRUM_INGOT.get())
-				.unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
-				.save(consumer);
+			.pattern("CC")
+			.pattern("CC")
+			.define('C', UGItems.CLOGGRUM_INGOT.get())
+			.unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.CLOGGRUM_LANTERN.get())
-				.pattern("NNN")
-				.pattern("NTN")
-				.pattern("NNN")
-				.define('N', UGItems.CLOGGRUM_NUGGET.get())
-				.define('T', Items.TORCH)
-				.unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
-				.save(consumer);
+			.pattern("NNN")
+			.pattern("NTN")
+			.pattern("NNN")
+			.define('N', UGItems.CLOGGRUM_NUGGET.get())
+			.define('T', Items.TORCH)
+			.unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
+			.save(consumer);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, UGBlocks.BOOMGOURD.get())
-				.pattern("BBB")
-				.pattern("BGB")
-				.pattern("BBB")
-				.define('B', UGItems.BLISTERBOMB.get())
-				.define('G', UGBlocks.GLOOMGOURD.get())
-				.unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
-				.unlockedBy("has_blisterbomb", has(UGItems.BLISTERBOMB.get()))
-				.save(consumer);
+			.pattern("BBB")
+			.pattern("BGB")
+			.pattern("BBB")
+			.define('B', UGItems.BLISTERBOMB.get())
+			.define('G', UGBlocks.GLOOMGOURD.get())
+			.unlockedBy("has_gloomgourd", has(UGBlocks.GLOOMGOURD.get()))
+			.unlockedBy("has_blisterbomb", has(UGItems.BLISTERBOMB.get()))
+			.save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, UGItems.DITCHBULB_PASTE.get())
-				.requires(UGItems.DITCHBULB.get())
-				.unlockedBy("has_ditchbulb", has(UGItems.DITCHBULB.get()))
-				.save(consumer);
+			.requires(UGItems.DITCHBULB.get())
+			.unlockedBy("has_ditchbulb", has(UGItems.DITCHBULB.get()))
+			.save(consumer);
 
 		makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(consumer);
 		makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(consumer);
@@ -372,6 +377,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).save(consumer, name("cloggrum_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).save(consumer, name("froststeel_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(consumer, name("forgotten_nugget_to_ingot"));
+		makeNuggetToIngot(UGItems.UTHERIC_CLUSTER, UGItems.UTHERIC_SHARD).save(consumer);
 
 		makeIngotToBlock(UGBlocks.RAW_CLOGGRUM_BLOCK, UGItems.RAW_CLOGGRUM).save(consumer);
 		makeIngotToBlock(UGBlocks.RAW_FROSTSTEEL_BLOCK, UGItems.RAW_FROSTSTEEL).save(consumer);
@@ -427,6 +433,8 @@ public class UGRecipes extends UGRecipeProvider {
 		makeStairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES).save(consumer);
 		makeStairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
 		makeStairs(UGBlocks.ANCIENT_ROOT_STAIRS, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
+		makeStairs(UGBlocks.DREADROCK_STAIRS, UGBlocks.DREADROCK).save(consumer);
+		makeStairs(UGBlocks.DREADROCK_BRICK_STAIRS, UGBlocks.DREADROCK_BRICKS).save(consumer);
 
 		makeSlab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK).save(consumer);
 		makeSlab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -441,6 +449,8 @@ public class UGRecipes extends UGRecipeProvider {
 		makeSlab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES).save(consumer);
 		makeSlab(UGBlocks.POLISHED_DEPTHROCK_SLAB, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
 		makeSlab(UGBlocks.ANCIENT_ROOT_SLAB, UGBlocks.ANCIENT_ROOT_PLANKS).save(consumer);
+		makeSlab(UGBlocks.DREADROCK_SLAB, UGBlocks.DREADROCK).save(consumer);
+		makeSlab(UGBlocks.DREADROCK_BRICK_SLAB, UGBlocks.DREADROCK_BRICKS).save(consumer);
 
 		makeWall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK).save(consumer);
 		makeWall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS).save(consumer);
@@ -449,6 +459,8 @@ public class UGRecipes extends UGRecipeProvider {
 		makeWall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST).save(consumer);
 		makeWall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS).save(consumer);
 		makeWall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK).save(consumer);
+		makeWall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK).save(consumer);
+		makeWall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS).save(consumer);
 
 		makeFence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makeFence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
@@ -477,6 +489,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeButton(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK).save(consumer);
 		makeButton(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE).save(consumer);
 		makeButton(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST).save(consumer);
+		makeButton(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK).save(consumer);
 
 		makePressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS).save(consumer);
 		makePressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS).save(consumer);
@@ -485,6 +498,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makePressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK).save(consumer);
 		makePressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE).save(consumer);
 		makePressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, UGBlocks.TREMBLECRUST).save(consumer);
+		makePressurePlate(UGBlocks.DREADROCK_PRESSURE_PLATE, UGBlocks.DREADROCK).save(consumer);
 
 		makeStew(UGItems.BLOODY_STEW, UGBlocks.BLOOD_MUSHROOM).save(consumer);
 		makeStew(UGItems.INKY_STEW, UGBlocks.INK_MUSHROOM).save(consumer);
@@ -492,30 +506,40 @@ public class UGRecipes extends UGRecipeProvider {
 		makeStew(UGItems.VEILED_STEW, UGBlocks.VEIL_MUSHROOM).save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.SLOP_BOWL.get())
-				.requires(Items.BOWL)
-				.requires(UGItems.UNDERBEANS.get(), 2)
-				.requires(UGItems.MOGMOSS.get(), 2)
-				.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
-				.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
-				.save(consumer);
+			.requires(Items.BOWL)
+			.requires(UGItems.UNDERBEANS.get(), 2)
+			.requires(UGItems.MOGMOSS.get(), 2)
+			.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
+			.unlockedBy("has_mogmoss", has(UGItems.MOGMOSS.get()))
+			.save(consumer);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.SLOP_BOWL.get())
-				.requires(Items.BOWL)
-				.requires(UGItems.UNDERBEANS.get(), 2)
-				.requires(UGItems.BLUE_MOGMOSS.get(), 2)
-				.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
-				.unlockedBy("has_blue_mogmoss", has(UGItems.BLUE_MOGMOSS.get()))
-				.save(consumer, name("slop_bowl_blue_moss"));
+			.requires(Items.BOWL)
+			.requires(UGItems.UNDERBEANS.get(), 2)
+			.requires(UGItems.BLUE_MOGMOSS.get(), 2)
+			.unlockedBy("has_underbeans", has(UGItems.UNDERBEANS.get()))
+			.unlockedBy("has_blue_mogmoss", has(UGItems.BLUE_MOGMOSS.get()))
+			.save(consumer, name("slop_bowl_blue_moss"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get(), 2)
-				.pattern("DTD")
-				.pattern("DRD")
-				.pattern("DDD")
-				.define('D', Tags.Items.GEMS_DIAMOND)
-				.define('R', UGBlocks.DEPTHROCK.get())
-				.define('T', UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get())
-				.unlockedBy("has_template", has(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()))
-				.save(consumer);
+			.pattern("DTD")
+			.pattern("DRD")
+			.pattern("DDD")
+			.define('D', Tags.Items.GEMS_DIAMOND)
+			.define('R', UGBlocks.DEPTHROCK.get())
+			.define('T', UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get())
+			.unlockedBy("has_template", has(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()))
+			.save(consumer);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.INFUSER.get())
+			.pattern("UDR")
+			.pattern("D D")
+			.pattern("D D")
+			.define('D', UGBlocks.DREADROCK.get())
+			.define('R', UGTags.Items.GEMS_ROGDORIUM)
+			.define('U', UGTags.Items.GEMS_UTHERIUM)
+			.unlockedBy("has_dreadrock", has(UGBlocks.DREADROCK.get()))
+			.save(consumer);
 
 		smithingForgotten(UGItems.CLOGGRUM_SWORD, UGItems.FORGOTTEN_SWORD).save(consumer, name("forgotten_sword_smithing"));
 		smithingForgotten(UGItems.CLOGGRUM_PICKAXE, UGItems.FORGOTTEN_PICKAXE).save(consumer, name("forgotten_pickaxe_smithing"));
@@ -618,9 +642,25 @@ public class UGRecipes extends UGRecipeProvider {
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_SLAB.get(), 2).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_slab_stonecutting"));
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_STAIRS.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_stairs_stonecutting"));
 		tremblecrustBricksStonecutting(UGBlocks.TREMBLECRUST_BRICK_WALL.get()).save(consumer, name("tremblecrust_bricks_to_tremblecrust_brick_wall_stonecutting"));
+
+		dreadrockStonecutting(UGBlocks.DREADROCK_BRICK_SLAB.get(), 2).save(consumer, name("dreadrock_brick_slab_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_BRICK_STAIRS.get()).save(consumer, name("dreadrock_brick_stairs_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_BRICK_WALL.get()).save(consumer, name("dreadrock_brick_wall_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_BRICKS.get()).save(consumer, name("dreadrock_bricks_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_SLAB.get(), 2).save(consumer, name("dreadrock_slab_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_STAIRS.get()).save(consumer, name("dreadrock_stairs_stonecutting"));
+		dreadrockStonecutting(UGBlocks.DREADROCK_WALL.get()).save(consumer, name("dreadrock_wall_stonecutting"));
+		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_SLAB.get(), 2).save(consumer, name("dreadrock_bricks_to_dreadrock_brick_slab_stonecutting"));
+		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_STAIRS.get()).save(consumer, name("dreadrock_to_dreadrock_stairs_stonecutting"));
+		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_WALL.get()).save(consumer, name("dreadrock_bricks_to_dreadrock_brick_wall_stonecutting"));
+
+		infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(consumer, name("denizen_totem_infusing"));
+		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_CLUSTER, 1.0F, 200).save(consumer, name("utheric_cluster_to_utherium_crystal_infusing"));
+
+		infusingCorrupting(UGItems.CORRUPT_CATALYST, UGItems.CATALYST, 10.0F, 600).save(consumer, name("corrupt_catalyst_infusing"));
 	}
 
 	private ResourceLocation name(String name) {
-		return new ResourceLocation(Undergarden.MODID, name);
+		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name);
 	}
 }

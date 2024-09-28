@@ -1,0 +1,20 @@
+{
+  "anvil_cost": 1,
+  "description": {
+    "translate": "enchantment.undergarden.longevity"
+  },
+  "max_cost": {
+    "base": 20,
+    "per_level_above_first": 10
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#undergarden:enchantable/slingshot",
+  "weight": 10
+}

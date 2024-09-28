@@ -17,17 +17,21 @@ import quek.undergarden.registry.UGParticleTypes;
 import java.util.List;
 
 public class DenizenTotemBlockEntity extends BlockEntity {
+
+	private int ticker;
+
 	public DenizenTotemBlockEntity(BlockPos pos, BlockState state) {
 		super(UGBlockEntities.DENIZEN_TOTEM.get(), pos, state);
 	}
 
 	public static void tick(Level level, BlockPos pos, BlockState state, DenizenTotemBlockEntity blockEntity) {
-		if (level.getGameTime() % 20 == 0) {
+		blockEntity.ticker++;
+		if (blockEntity.ticker % 20 == 0) {
 			List<LivingEntity> entityList = level.getEntitiesOfClass(LivingEntity.class, new AABB(pos).inflate(5.0D));
 			if (!entityList.isEmpty()) {
 				level.setBlockAndUpdate(pos, state.setValue(DenizenTotemBlock.ACTIVE, true));
-                entityList.stream().filter(entity -> !entity.hasEffect(UGEffects.PURITY.get())).forEach(entity -> {
-                    entity.addEffect(new MobEffectInstance(UGEffects.PURITY.get(), 200, 0, true, true));
+                entityList.stream().filter(entity -> !entity.hasEffect(UGEffects.PURITY)).forEach(entity -> {
+                    entity.addEffect(new MobEffectInstance(UGEffects.PURITY, 200, 0, true, true));
 					drawParticlesTo(level, pos.getCenter(), entity);
                 });
 			} else level.setBlockAndUpdate(pos, state.setValue(DenizenTotemBlock.ACTIVE, false));

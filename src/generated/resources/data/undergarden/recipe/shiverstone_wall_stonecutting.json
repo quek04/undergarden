@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "undergarden:shiverstone"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:shiverstone_wall"
+  }
+}

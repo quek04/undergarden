@@ -7,9 +7,11 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
 
 //copy of https://github.com/TeamTwilight/twilightforest/blob/1.20.x/src/main/java/twilightforest/client/model/entity/FixedHumanoidModel.java
-public class FixedHumanoidModel<T extends LivingEntity> extends HumanoidModel<T> {
+public abstract class FixedHumanoidModel<T extends LivingEntity> extends HumanoidModel<T> {
+
 	private final float armWidth;
 
 	public FixedHumanoidModel(ModelPart part, float armWidth) {
@@ -34,7 +36,7 @@ public class FixedHumanoidModel<T extends LivingEntity> extends HumanoidModel<T>
 		this.leftLeg.yRot = 0.0F;
 		this.rightLeg.zRot = 0.0F;
 		this.leftLeg.zRot = 0.0F;
-		if (this.riding) {
+		if (this.riding || entity.getPose() == Pose.SITTING) {
 			this.rightArm.xRot += (-(float)Math.PI / 5F);
 			this.leftArm.xRot += (-(float)Math.PI / 5F);
 			this.rightLeg.xRot = -1.4137167F;
@@ -47,17 +49,17 @@ public class FixedHumanoidModel<T extends LivingEntity> extends HumanoidModel<T>
 
 		this.rightArm.yRot = 0.0F;
 		this.leftArm.yRot = 0.0F;
-		boolean flag2 = entity.getMainArm() == HumanoidArm.RIGHT;
+		boolean rightHanded = entity.getMainArm() == HumanoidArm.RIGHT;
 		if (entity.isUsingItem()) {
-			boolean flag3 = entity.getUsedItemHand() == InteractionHand.MAIN_HAND;
-			if (flag3 == flag2) {
+			boolean usedHand = entity.getUsedItemHand() == InteractionHand.MAIN_HAND;
+			if (usedHand == rightHanded) {
 				this.poseRightArm(entity);
 			} else {
 				this.poseLeftArm(entity);
 			}
 		} else {
-			boolean flag4 = flag2 ? this.leftArmPose.isTwoHanded() : this.rightArmPose.isTwoHanded();
-			if (flag2 != flag4) {
+			boolean twoHanded = rightHanded ? this.leftArmPose.isTwoHanded() : this.rightArmPose.isTwoHanded();
+			if (rightHanded != twoHanded) {
 				this.poseLeftArm(entity);
 				this.poseRightArm(entity);
 			} else {

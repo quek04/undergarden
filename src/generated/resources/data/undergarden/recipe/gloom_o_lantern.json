@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "undergarden:carved_gloomgourd"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "pattern": [
+    "G",
+    "T"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:gloom_o_lantern"
+  }
+}

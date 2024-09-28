@@ -9,8 +9,5 @@
     "LivingEntityRendererMixin"
   ],
   "mixins": [
-    "BubbleColumnBlockMixin",
-    "StructureProcessorAccessor",
-    "StructureTemplateMixin"
   ]
 }

@@ -1,0 +1,33 @@
+{
+  "parent": "undergarden:undergarden/enter_undergarden",
+  "criteria": {
+    "has_slingshot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:slingshot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.slingshot.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "undergarden:slingshot"
+    },
+    "title": {
+      "translate": "advancement.undergarden.slingshot.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_slingshot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

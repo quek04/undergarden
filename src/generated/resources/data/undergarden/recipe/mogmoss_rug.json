@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "item": "undergarden:mogmoss"
+    }
+  },
+  "pattern": [
+    "MM"
+  ],
+  "result": {
+    "count": 3,
+    "id": "undergarden:mogmoss_rug"
+  }
+}

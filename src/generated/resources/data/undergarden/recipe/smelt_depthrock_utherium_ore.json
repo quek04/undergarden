@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "undergarden:utherium",
+  "ingredient": {
+    "item": "undergarden:depthrock_utherium_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:utherium_crystal"
+  }
+}

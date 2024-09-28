@@ -2,6 +2,7 @@ package quek.undergarden.data;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.data.provider.UGItemModelProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -11,11 +12,6 @@ public class UGItemModels extends UGItemModelProvider {
 
 	public UGItemModels(PackOutput output, ExistingFileHelper fileHelper) {
 		super(output, fileHelper);
-	}
-
-	@Override
-	public String getName() {
-		return "Undergarden Item Models";
 	}
 
 	@Override
@@ -274,14 +270,32 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE);
 		normalItem(UGItems.ANCIENT_ROOT_BOAT);
 		normalItem(UGItems.ANCIENT_ROOT_CHEST_BOAT);
-		normalItem(UGItems.DENIZEN_MASK);
+		withExistingParent(BuiltInRegistries.ITEM.getKey(UGItems.DENIZEN_MASK.get()).getPath(), mcLoc("item/generated"))
+			.texture("layer0", modLoc("item/denizen_mask"))
+			.transforms().transform(ItemDisplayContext.HEAD).scale(0.0F);
 		block(UGBlocks.DENIZEN_TOTEM);
+		blockFlat(UGBlocks.PUFF_MUSHROOM);
+		block(UGBlocks.PUFF_MUSHROOM_CAP);
+		block(UGBlocks.PUFF_MUSHROOM_STEM);
+		block(UGBlocks.INFUSER);
+		block(UGBlocks.DREADROCK_BRICKS);
+		block(UGBlocks.DREADROCK_STAIRS);
+		block(UGBlocks.DREADROCK_BRICK_STAIRS);
+		block(UGBlocks.DREADROCK_SLAB);
+		block(UGBlocks.DREADROCK_BRICK_SLAB);
+		wall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK);
+		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
+		block(UGBlocks.DREADROCK_PRESSURE_PLATE);
+		normalItem(UGItems.UTHERIC_CLUSTER);
+		normalItem(UGItems.CORRUPT_CATALYST);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
+		egg(UGItems.GREATER_DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
 		egg(UGItems.ROTLING_SPAWN_EGG);
 		egg(UGItems.ROTWALKER_SPAWN_EGG);
 		egg(UGItems.ROTBEAST_SPAWN_EGG);
+		egg(UGItems.ROTBELCHER_SPAWN_EGG);
 		egg(UGItems.BRUTE_SPAWN_EGG);
 		egg(UGItems.SCINTLING_SPAWN_EGG);
 		egg(UGItems.GLOOMPER_SPAWN_EGG);
@@ -313,6 +327,7 @@ public class UGItemModels extends UGItemModelProvider {
 		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
 		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
 		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
+		button(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK);
 
 		blockFlatWithItemTexture(UGBlocks.SMOGSTEM_DOOR, "smogstem_door");
 		blockFlatWithItemTexture(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood_door");

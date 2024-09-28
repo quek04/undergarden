@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "undergarden:catacombs/way_pool",
+        "location": "undergarden:catacombs/tunnel1",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
@@ -12,29 +12,20 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "undergarden:catacombs/tunnel1",
-        "processors": "undergarden:catacombs_degradation",
-        "projection": "rigid"
-      },
-      "weight": 100
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
         "location": "undergarden:catacombs/tunnel2",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 100
+      "weight": 1
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "undergarden:catacombs/tunnel3",
+        "location": "undergarden:catacombs/tunnel3_new",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 1
     },
     {
       "element": {
@@ -43,7 +34,7 @@
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 1
     },
     {
       "element": {
@@ -52,7 +43,7 @@
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 100
+      "weight": 1
     },
     {
       "element": {
@@ -61,7 +52,7 @@
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 100
+      "weight": 1
     },
     {
       "element": {
@@ -70,7 +61,205 @@
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_altar",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_altar2",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_altar_shiverstone",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_bend_altar",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_bend_candle_grass",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_bend_dirt",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_bend_grass_bars",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_bend_water",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_candle",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_candle_dirt",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_chiseled",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_cloggrum",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_dirt",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_grass",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_grass_dirt",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_grass_pillars",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_hidden",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_morgue1",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_morgue2",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/tunnel_rock",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/altar",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/altar_pool",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
     },
     {
       "element": {
@@ -79,7 +268,7 @@
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 1
     },
     {
       "element": {
@@ -88,7 +277,7 @@
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 100
+      "weight": 1
     },
     {
       "element": {
@@ -97,7 +286,178 @@
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 100
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/room4",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/room5",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/3way_candle",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/3way_candle_grass",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/3way_chiseled",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/3way_cloggrum",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/3way_dirt",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/3way_morgue",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/big3way_intersection",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/big3way_intersection_grass",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/big_bend_morgue",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/4way_arches",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/4way_arches2",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/4way_arches3",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/4way_cross",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/4way_smog_vent",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/intersection_altar",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/intersection_dirt",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/intersection_grass_pillars",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
     },
     {
       "element": {
@@ -106,8 +466,8 @@
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },
-      "weight": 25
+      "weight": 1
     }
   ],
-  "fallback": "minecraft:empty"
+  "fallback": "undergarden:catacombs/tunnel_fallback_pool"
 }

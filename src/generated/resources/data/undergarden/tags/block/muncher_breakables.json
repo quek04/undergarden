@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#c:stones",
+    "#minecraft:base_stone_overworld",
+    "#minecraft:base_stone_nether",
+    "#undergarden:base_stone_undergarden"
+  ]
+}

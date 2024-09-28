@@ -1,0 +1,34 @@
+{
+  "parent": "undergarden:undergarden/catacombs",
+  "criteria": {
+    "has_cloggrum_battleaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:cloggrum_battleaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.cloggrum_battleaxe.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "undergarden:cloggrum_battleaxe"
+    },
+    "title": {
+      "translate": "advancement.undergarden.cloggrum_battleaxe.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cloggrum_battleaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

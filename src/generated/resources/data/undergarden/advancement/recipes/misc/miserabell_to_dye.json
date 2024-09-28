@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_miserabell": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:miserabell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:miserabell_to_dye"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_miserabell"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:miserabell_to_dye"
+    ]
+  }
+}

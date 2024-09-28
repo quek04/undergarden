@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ink_mushroom": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:ink_mushroom"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:ink_mushroom_to_dye"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ink_mushroom"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:ink_mushroom_to_dye"
+    ]
+  }
+}

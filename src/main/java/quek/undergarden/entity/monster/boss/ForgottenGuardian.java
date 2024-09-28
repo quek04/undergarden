@@ -23,15 +23,17 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathFinder;
+import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.level.pathfinder.PathfindingContext;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.fluids.FluidType;
 import quek.undergarden.registry.UGSoundEvents;
+
+import java.util.Set;
 
 public class ForgottenGuardian extends Monster {
 
@@ -40,7 +42,6 @@ public class ForgottenGuardian extends Monster {
 	public ForgottenGuardian(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
 		this.xpReward = 30;
-		this.setMaxUpStep(1.0F);
 	}
 
 	@Override
@@ -60,7 +61,8 @@ public class ForgottenGuardian extends Monster {
 				.add(Attributes.ATTACK_DAMAGE, 10.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 2.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.2D)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
+				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
+				.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
 	@Override
@@ -84,7 +86,7 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	public boolean canChangeDimensions() {
+	public boolean canChangeDimensions(Level p_352904_, Level p_352909_) {
 		return false;
 	}
 
@@ -105,7 +107,7 @@ public class ForgottenGuardian extends Monster {
 			--this.attackTimer;
 		}
 		if (this.isAggressive()) {
-			if (this.horizontalCollision && net.neoforged.neoforge.event.EventHooks.getMobGriefingEvent(this.level(), this)) {
+			if (this.horizontalCollision && net.neoforged.neoforge.event.EventHooks.canEntityGrief(this.level(), this)) {
 				AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
@@ -178,7 +180,7 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	public boolean canBeLeashed(Player player) {
+	public boolean canBeLeashed() {
 		return false;
 	}
 
@@ -198,8 +200,8 @@ public class ForgottenGuardian extends Monster {
 		}
 
 		@Override
-		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, BlockPos pos, BlockPathTypes types) {
-			return BlockPathTypes.WALKABLE;
+		public Set<PathType> getPathTypeWithinMobBB(PathfindingContext context, int width, int height, int depth) {
+			return Set.of(PathType.WALKABLE);
 		}
 	}
 }

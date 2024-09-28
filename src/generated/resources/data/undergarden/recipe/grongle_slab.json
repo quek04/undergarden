@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "undergarden:grongle_planks"
+    }
+  },
+  "pattern": [
+    "MMM"
+  ],
+  "result": {
+    "count": 6,
+    "id": "undergarden:grongle_slab"
+  }
+}

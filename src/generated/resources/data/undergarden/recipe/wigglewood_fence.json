@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "/": {
+      "tag": "c:rods/wooden"
+    },
+    "M": {
+      "item": "undergarden:wigglewood_planks"
+    }
+  },
+  "pattern": [
+    "M/M",
+    "M/M"
+  ],
+  "result": {
+    "count": 6,
+    "id": "undergarden:wigglewood_fence"
+  }
+}

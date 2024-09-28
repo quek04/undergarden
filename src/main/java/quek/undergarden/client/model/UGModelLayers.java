@@ -11,6 +11,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation BRUTE = register("brute");
 	public static final ModelLayerLocation DWELLER = register("dweller");
 	public static final ModelLayerLocation DWELLER_SADDLE = register("dweller", "saddle");
+	public static final ModelLayerLocation GREATER_DWELLER = register("greater_dweller");
 	public static final ModelLayerLocation FORGOTTEN_GUARDIAN = register("forgotten_guardian");
 	public static final ModelLayerLocation FORGOTTEN = register("forgotten");
 	public static final ModelLayerLocation FORGOTTEN_INNER_ARMOR = register("forgotten", "inner_armor");
@@ -32,12 +33,14 @@ public class UGModelLayers {
 	public static final ModelLayerLocation GRONGLET = register("gronglet");
 	public static final ModelLayerLocation DENIZEN = register("denizen");
 	public static final ModelLayerLocation DENIZEN_2 = register("denizen_2");
+	public static final ModelLayerLocation DENIZEN_MASK = register("denizen_mask");
+	public static final ModelLayerLocation ROTBELCHER = register("rotbelcher");
 
 	private static ModelLayerLocation register(String name) {
-		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), "main");
+		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), "main");
 	}
 
 	private static ModelLayerLocation register(String name, String layerName) {
-		return new ModelLayerLocation(new ResourceLocation(Undergarden.MODID, name), layerName);
+		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), layerName);
 	}
 }

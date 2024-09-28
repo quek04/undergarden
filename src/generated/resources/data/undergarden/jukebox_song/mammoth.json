@@ -1,0 +1,8 @@
+{
+  "comparator_output": 0,
+  "description": {
+    "translate": "jukebox_song.undergarden.mammoth"
+  },
+  "length_in_seconds": 193.0,
+  "sound_event": "undergarden:music.disc.mammoth"
+}

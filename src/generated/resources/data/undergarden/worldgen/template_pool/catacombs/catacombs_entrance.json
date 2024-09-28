@@ -3,7 +3,43 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "undergarden:catacombs/entrance",
+        "location": "undergarden:catacombs/entrance1",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/entrance2",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/entrance3",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/entrance4",
+        "processors": "undergarden:catacombs_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:catacombs/entrance5",
         "processors": "undergarden:catacombs_degradation",
         "projection": "rigid"
       },

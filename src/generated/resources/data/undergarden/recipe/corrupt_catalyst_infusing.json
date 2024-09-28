@@ -1,0 +1,14 @@
+{
+  "type": "undergarden:infusing",
+  "category": "corrupting",
+  "experience": 10.0,
+  "infusingTime": 600,
+  "ingredient": {
+    "item": "undergarden:catalyst"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:corrupt_catalyst"
+  },
+  "utheriumFuel": true
+}

@@ -10,12 +10,14 @@ import quek.undergarden.entity.animal.Mog;
 
 public class MogEyesLayer<E extends Mog, M extends MogModel<E>> extends EyesLayer<E, M> {
 
+	private static final RenderType MOG_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/mog_eyes.png"));
+
 	public MogEyesLayer(RenderLayerParent<E, M> parent) {
 		super(parent);
 	}
 
 	@Override
 	public RenderType renderType() {
-		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/mog_eyes.png"));
+		return MOG_EYES;
 	}
 }

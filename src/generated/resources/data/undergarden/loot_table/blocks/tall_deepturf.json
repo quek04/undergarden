@@ -1,0 +1,98 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "undergarden:tall_deepturf",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "condition": "minecraft:location_check",
+          "offsetY": 1,
+          "predicate": {
+            "block": {
+              "blocks": "undergarden:tall_deepturf",
+              "state": {
+                "half": "upper"
+              }
+            }
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:match_tool",
+              "predicate": {
+                "items": "minecraft:shears"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "undergarden:deepturf"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "undergarden:tall_deepturf",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "half": "upper"
+          }
+        },
+        {
+          "condition": "minecraft:location_check",
+          "offsetY": -1,
+          "predicate": {
+            "block": {
+              "blocks": "undergarden:tall_deepturf",
+              "state": {
+                "half": "lower"
+              }
+            }
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:match_tool",
+              "predicate": {
+                "items": "minecraft:shears"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "undergarden:deepturf"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "undergarden:blocks/tall_deepturf"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "undergarden:tremblecrust"
+    }
+  },
+  "pattern": [
+    "MM",
+    "MM"
+  ],
+  "result": {
+    "count": 4,
+    "id": "undergarden:tremblecrust_bricks"
+  }
+}

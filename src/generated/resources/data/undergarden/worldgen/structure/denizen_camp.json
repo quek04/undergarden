@@ -1,6 +1,7 @@
 {
   "type": "undergarden:bigger_jigsaw",
   "biomes": "#undergarden:has_structure/denizen_camp",
+  "liquid_settings": "ignore_waterlogging",
   "max_distance_from_center": 25,
   "size": 5,
   "spawn_overrides": {

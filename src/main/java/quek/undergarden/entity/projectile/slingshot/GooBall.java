@@ -52,7 +52,7 @@ public class GooBall extends SlingshotProjectile {
 				livingEntity.heal(2);
 			} else {
 				livingEntity.hurt(this.damageSources().source(UGDamageSources.DEPTHROCK_PEBBLE, this, this.getOwner()), 0.0F);
-				livingEntity.addEffect(new MobEffectInstance(UGEffects.GOOEY.get(), 100, 0, false, true));
+				livingEntity.addEffect(new MobEffectInstance(UGEffects.GOOEY, 100, 0, false, true));
 			}
 		}
 		this.playSound(SoundEvents.SLIME_BLOCK_BREAK, 1, 1);

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "B": {
+      "item": "undergarden:smogstem_planks"
+    }
+  },
+  "pattern": [
+    "BB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:smogstem_pressure_plate"
+  }
+}

@@ -5,7 +5,10 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -108,12 +111,7 @@ public class Brute extends Animal implements NeutralMob {
 	}
 
 	@Override
-	public boolean canBeLeashed(Player player) {
+	public boolean canBeLeashed() {
 		return false;
-	}
-
-	@Override
-	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
-		return 1.9F;
 	}
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "undergarden:utheric_shard"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "C",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:shard_torch"
+  }
+}

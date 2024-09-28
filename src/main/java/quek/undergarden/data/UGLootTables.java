@@ -6,16 +6,21 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.BedBlock;
@@ -24,7 +29,9 @@ import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.storage.loot.*;
+import net.minecraft.world.level.storage.loot.IntRange;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
@@ -42,8 +49,8 @@ import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -55,35 +62,36 @@ public class UGLootTables extends LootTableProvider {
 	private static final Set<Item> IMMUNE_TO_EXPLOSIONS = Stream.of(net.minecraft.world.level.block.Blocks.DRAGON_EGG, net.minecraft.world.level.block.Blocks.BEACON, net.minecraft.world.level.block.Blocks.CONDUIT, net.minecraft.world.level.block.Blocks.SKELETON_SKULL, net.minecraft.world.level.block.Blocks.WITHER_SKELETON_SKULL, net.minecraft.world.level.block.Blocks.PLAYER_HEAD, net.minecraft.world.level.block.Blocks.ZOMBIE_HEAD, net.minecraft.world.level.block.Blocks.CREEPER_HEAD, net.minecraft.world.level.block.Blocks.DRAGON_HEAD, net.minecraft.world.level.block.Blocks.SHULKER_BOX, net.minecraft.world.level.block.Blocks.BLACK_SHULKER_BOX, net.minecraft.world.level.block.Blocks.BLUE_SHULKER_BOX, net.minecraft.world.level.block.Blocks.BROWN_SHULKER_BOX, net.minecraft.world.level.block.Blocks.CYAN_SHULKER_BOX, net.minecraft.world.level.block.Blocks.GRAY_SHULKER_BOX, net.minecraft.world.level.block.Blocks.GREEN_SHULKER_BOX, net.minecraft.world.level.block.Blocks.LIGHT_BLUE_SHULKER_BOX, net.minecraft.world.level.block.Blocks.LIGHT_GRAY_SHULKER_BOX, net.minecraft.world.level.block.Blocks.LIME_SHULKER_BOX, net.minecraft.world.level.block.Blocks.MAGENTA_SHULKER_BOX, net.minecraft.world.level.block.Blocks.ORANGE_SHULKER_BOX, net.minecraft.world.level.block.Blocks.PINK_SHULKER_BOX, net.minecraft.world.level.block.Blocks.PURPLE_SHULKER_BOX, net.minecraft.world.level.block.Blocks.RED_SHULKER_BOX, net.minecraft.world.level.block.Blocks.WHITE_SHULKER_BOX, net.minecraft.world.level.block.Blocks.YELLOW_SHULKER_BOX).map(ItemLike::asItem).collect(ImmutableSet.toImmutableSet());
 	private static final float[] DEFAULT_SAPLING_DROP_RATES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
 
-	public UGLootTables(PackOutput output) {
+	public UGLootTables(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
 		super(output, Set.of(), List.of(
 				new SubProviderEntry(Blocks::new, LootContextParamSets.BLOCK),
 				new SubProviderEntry(Chests::new, LootContextParamSets.CHEST),
-				new SubProviderEntry(Entities::new, LootContextParamSets.ENTITY)));
-	}
-
-	@Override
-	protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {
+				new SubProviderEntry(Entities::new, LootContextParamSets.ENTITY)), provider);
 	}
 
 	public static class Blocks extends UGBlockLootTableProvider {
 
+		protected Blocks(HolderLookup.Provider provider) {
+			super(provider);
+		}
+
 		@Override
 		protected void generate() {
+			HolderLookup.RegistryLookup<Enchantment> registryLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 			dropSelf(UGBlocks.DREADROCK);
 			dropSelf(UGBlocks.DEPTHROCK);
 			dropSelf(UGBlocks.DEEPSOIL);
 			dropWithSilk(UGBlocks.DEEPSOIL_FARMLAND, UGBlocks.DEEPSOIL);
 			this.add(UGBlocks.UNDERBEAN_BUSH.get(), LootTable.lootTable()
-					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.UNDERBEAN_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UnderbeanBushBlock.AGE, 3))).add(LootItem.lootTableItem(UGItems.UNDERBEANS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.UNDERBEAN_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UnderbeanBushBlock.AGE, 2))).add(LootItem.lootTableItem(UGItems.UNDERBEANS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
+					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.UNDERBEAN_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UnderbeanBushBlock.AGE, 3))).add(LootItem.lootTableItem(UGItems.UNDERBEANS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE))))
+					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.UNDERBEAN_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(UnderbeanBushBlock.AGE, 2))).add(LootItem.lootTableItem(UGItems.UNDERBEANS.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE)))));
 			this.add(UGBlocks.BLISTERBERRY_BUSH.get(), LootTable.lootTable()
-					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 3))).add(LootItem.lootTableItem(UGItems.BLISTERBERRY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 2))).add(LootItem.lootTableItem(UGItems.BLISTERBERRY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 3))).add(LootItem.lootTableItem(UGItems.ROTTEN_BLISTERBERRY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 2))).add(LootItem.lootTableItem(UGItems.ROTTEN_BLISTERBERRY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))));
+					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 3))).add(LootItem.lootTableItem(UGItems.BLISTERBERRY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE))))
+					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 2))).add(LootItem.lootTableItem(UGItems.BLISTERBERRY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE))))
+					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 3))).add(LootItem.lootTableItem(UGItems.ROTTEN_BLISTERBERRY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE))))
+					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.BLISTERBERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlisterberryBushBlock.AGE, 2))).add(LootItem.lootTableItem(UGItems.ROTTEN_BLISTERBERRY.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))).apply(ApplyBonusCount.addUniformBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE)))));
 			this.add(UGBlocks.DITCHBULB_PLANT.get(), LootTable.lootTable()
-					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.DITCHBULB_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DitchbulbBlock.AGE, 1))).add(LootItem.lootTableItem(UGItems.DITCHBULB.get())).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+					.withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(UGBlocks.DITCHBULB_PLANT.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DitchbulbBlock.AGE, 1))).add(LootItem.lootTableItem(UGItems.DITCHBULB.get())).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(ApplyBonusCount.addUniformBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE))))
 			);
 			dropWithSilk(UGBlocks.DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
 			this.add(UGBlocks.TALL_DEEPTURF.get(), (block) -> tallGrassDrop(block, UGBlocks.DEEPTURF.get()));
@@ -98,7 +106,7 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.SMOGSTEM_SAPLING);
 			this.add(UGBlocks.SMOGSTEM_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.SMOGSTEM_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
 			dropSelf(UGBlocks.WIGGLEWOOD_SAPLING);
-			this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> createSilkTouchOrShearsDispatchTable(leaves, applyExplosionCondition(leaves, LootItem.lootTableItem(UGBlocks.WIGGLEWOOD_SAPLING.get())).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, DEFAULT_SAPLING_DROP_RATES))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(applyExplosionDecay(leaves, LootItem.lootTableItem(UGItems.TWISTYTWIG.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F)))));
+			this.add(UGBlocks.WIGGLEWOOD_LEAVES.get(), (leaves) -> createSilkTouchOrShearsDispatchTable(leaves, applyExplosionCondition(leaves, LootItem.lootTableItem(UGBlocks.WIGGLEWOOD_SAPLING.get())).when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), DEFAULT_SAPLING_DROP_RATES))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(this.doesNotHaveShearsOrSilkTouch()).add(applyExplosionDecay(leaves, LootItem.lootTableItem(UGItems.TWISTYTWIG.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))).when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), 0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F)))));
 			this.add(UGBlocks.GRONGLE_LEAVES.get(), (leaves) -> createLeavesDrops(leaves, UGBlocks.GRONGLE_SAPLING.get(), DEFAULT_SAPLING_DROP_RATES));
 			dropSelf(UGBlocks.INDIGO_MUSHROOM);
 			dropSelf(UGBlocks.VEIL_MUSHROOM);
@@ -187,7 +195,7 @@ public class UGLootTables extends LootTableProvider {
 			this.add(UGBlocks.BLOOD_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.BLOOD_MUSHROOM.get()));
 			this.add(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), (block -> LootTable.lootTable()
 							.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-									.add(LootItem.lootTableItem(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get()).when(HAS_SILK_TOUCH)
+									.add(LootItem.lootTableItem(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get()).when(this.hasSilkTouch())
 											.otherwise(applyExplosionDecay(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), LootItem.lootTableItem(UGItems.BLOOD_GLOBULE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F)))))
 											.append(applyExplosionDecay(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), LootItem.lootTableItem(UGBlocks.BLOOD_MUSHROOM.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(-6.0F, 2.0F))).apply(LimitCount.limitCount(IntRange.lowerBound(0))))))
 							)
@@ -211,6 +219,7 @@ public class UGLootTables extends LootTableProvider {
 			dropPottedContents(UGBlocks.POTTED_VEIL_MUSHROOM.get());
 			dropPottedContents(UGBlocks.POTTED_INK_MUSHROOM.get());
 			dropPottedContents(UGBlocks.POTTED_BLOOD_MUSHROOM.get());
+			dropPottedContents(UGBlocks.POTTED_PUFF_MUSHROOM.get());
 			dropPottedContents(UGBlocks.POTTED_GRONGLE_SAPLING.get());
 			dropPottedContents(UGBlocks.POTTED_AMOROUS_BRISTLE.get());
 			dropPottedContents(UGBlocks.POTTED_MISERABELL.get());
@@ -302,6 +311,19 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
 			dropOther(UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
 			dropSelf(UGBlocks.DENIZEN_TOTEM);
+			dropSelf(UGBlocks.PUFF_MUSHROOM);
+			this.add(UGBlocks.PUFF_MUSHROOM_CAP.get(), (mushroom) -> createMushroomBlockDrop(mushroom, UGBlocks.PUFF_MUSHROOM.get()));
+			dropAsSilk(UGBlocks.PUFF_MUSHROOM_STEM);
+			this.add(UGBlocks.INFUSER.get(), this::createNameableBlockEntityTable);
+			dropSelf(UGBlocks.DREADROCK_BRICKS);
+			slab(UGBlocks.DREADROCK_SLAB);
+			slab(UGBlocks.DREADROCK_BRICK_SLAB);
+			dropSelf(UGBlocks.DREADROCK_STAIRS);
+			dropSelf(UGBlocks.DREADROCK_BRICK_STAIRS);
+			dropSelf(UGBlocks.DREADROCK_WALL);
+			dropSelf(UGBlocks.DREADROCK_BRICK_WALL);
+			dropSelf(UGBlocks.DREADROCK_BUTTON);
+			dropSelf(UGBlocks.DREADROCK_PRESSURE_PLATE);
 		}
 
 		@Override
@@ -329,8 +351,8 @@ public class UGLootTables extends LootTableProvider {
 
 	public static class Entities extends EntityLootSubProvider {
 
-		public Entities() {
-			super(FeatureFlags.REGISTRY.allFlags());
+		public Entities(HolderLookup.Provider provider) {
+			super(FeatureFlags.REGISTRY.allFlags(), provider);
 		}
 
 		@Override
@@ -340,7 +362,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
 									.when(LootItemKilledByPlayerCondition.killedByPlayer())
 							)
 					)
@@ -350,7 +372,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
 									.when(LootItemKilledByPlayerCondition.killedByPlayer())
 							)
 					)
@@ -360,33 +382,58 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 8.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
 									.when(LootItemKilledByPlayerCondition.killedByPlayer())
 							)
 					)
+			);
+			this.add(UGEntityTypes.ROTBELCHER.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1))
+					.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD.get())
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 6.0F)))
+						.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+						.when(LootItemKilledByPlayerCondition.killedByPlayer())
+					)
+				)
 			);
 			this.add(UGEntityTypes.DWELLER.get(), LootTable.lootTable()
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(Items.LEATHER)
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
 							)
 					)
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.RAW_DWELLER_MEAT.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
-									.apply(SmeltItemFunction.smelted().when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))
+									.apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))
 					)
+			);
+			this.add(UGEntityTypes.GREATER_DWELLER.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1))
+					.add(LootItem.lootTableItem(Items.LEATHER)
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 4.0F)))
+						.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+					)
+				)
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1))
+					.add(LootItem.lootTableItem(UGItems.RAW_DWELLER_MEAT.get())
+						.apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F)))
+						.apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
+						.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F))))
+				)
 			);
 			this.add(UGEntityTypes.GWIBLING.get(), LootTable.lootTable()
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.RAW_GWIBLING.get())
-									.apply(SmeltItemFunction.smelted()
-											.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE))))
+								.apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot())))
 							.when(LootItemKilledByPlayerCondition.killedByPlayer())
 					)
 					.withPool(LootPool.lootPool()
@@ -400,7 +447,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.BRUTE_TUSK.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
 							)
 					)
 			);
@@ -409,7 +456,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.GOO_BALL.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 2.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 2.0F)))
 							)
 					)
 			);
@@ -418,16 +465,15 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(Items.LEATHER)
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
 							)
 					)
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.RAW_GLOOMPER_LEG.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-									.apply(SmeltItemFunction.smelted()
-											.when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, ENTITY_ON_FIRE)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+									.apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
 							)
 					)
 			);
@@ -436,7 +482,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 6.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(1.0F, 2.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(1.0F, 2.0F)))
 							)
 					)
 			);
@@ -460,7 +506,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 6.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(1.0F, 2.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(1.0F, 2.0F)))
 							)
 					)
 			);
@@ -470,7 +516,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 6.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(1.0F, 2.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(1.0F, 2.0F)))
 							)
 					)
 					.withPool(LootPool.lootPool()
@@ -486,7 +532,7 @@ public class UGLootTables extends LootTableProvider {
 							.setRolls(ConstantValue.exactly(1))
 							.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())
 									.apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 6.0F)))
-									.apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(1.0F, 2.0F)))
+									.apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(1.0F, 2.0F)))
 							)
 					)
 					.withPool(LootPool.lootPool()
@@ -503,8 +549,8 @@ public class UGLootTables extends LootTableProvider {
 					.withPool(LootPool.lootPool()
 							.setRolls(ConstantValue.exactly(1.0F))
 							.add(LootItem.lootTableItem(UGItems.DENIZEN_MASK.get()))
-							.when(LootItemKilledByPlayerCondition.killedByPlayer())
-							.when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.5F, 0.01F))
+								.when(LootItemKilledByPlayerCondition.killedByPlayer())
+								.when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries, 0.05F, 0.01F))
 				)
 			);
 
@@ -525,11 +571,11 @@ public class UGLootTables extends LootTableProvider {
 		}
 	}
 
-	public static class Chests implements LootTableSubProvider {
+	public record Chests(HolderLookup.Provider registries) implements LootTableSubProvider {
 
 		@Override
-		public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
-			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/catacombs"), LootTable.lootTable()
+		public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
+			consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/catacombs")), LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 					.setRolls(UniformGenerator.between(2.0F, 5.0F))
 					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
@@ -540,10 +586,10 @@ public class UGLootTables extends LootTableProvider {
 				.withPool(LootPool.lootPool()
 					.setRolls(ConstantValue.exactly(1.0F))
 					.add(EmptyLootItem.emptyItem().setWeight(2))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(25.0F, 30.0F)).allowTreasure()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F))))
-					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(25.0F, 30.0F)).allowTreasure()).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F)))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(registries, UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(registries,UniformGenerator.between(15.0F, 20.0F))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6F, 0.9F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SWORD.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(registries, UniformGenerator.between(25.0F, 30.0F)).fromOptions(registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(EnchantmentTags.TREASURE))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_AXE.get()).setWeight(10).apply(EnchantWithLevelsFunction.enchantWithLevels(registries, UniformGenerator.between(25.0F, 30.0F)).fromOptions(registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(EnchantmentTags.TREASURE))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2F, 0.5F)))))
 				.withPool(LootPool.lootPool()
 					.setRolls(ConstantValue.exactly(1.0F))
 					.add(EmptyLootItem.emptyItem().setWeight(8))
@@ -552,13 +598,14 @@ public class UGLootTables extends LootTableProvider {
 					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()).setWeight(3))
 					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1)))
 			);
-			consumer.accept(new ResourceLocation(Undergarden.MODID, "chests/denizen_camp"), LootTable.lootTable()
+			consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/denizen_camp")), LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 					.setRolls(UniformGenerator.between(1.0F, 4.0F))
 					.add(EmptyLootItem.emptyItem().setWeight(5))
 					.add(LootItem.lootTableItem(UGItems.ROGDORIUM_CRYSTAL.get()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
 					.add(LootItem.lootTableItem(UGBlocks.DENIZEN_TOTEM.asItem()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
-					.add(LootItem.lootTableItem(Items.STICK).setWeight(15).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+					.add(LootItem.lootTableItem(Items.STICK).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+					.add(LootItem.lootTableItem(UGItems.RAW_DWELLER_MEAT).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
 				)
 			);
 		}

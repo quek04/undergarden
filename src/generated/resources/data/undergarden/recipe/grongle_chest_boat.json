@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chest_boat",
+  "ingredients": [
+    {
+      "item": "undergarden:grongle_boat"
+    },
+    {
+      "tag": "c:chests/wooden"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:grongle_chest_boat"
+  }
+}

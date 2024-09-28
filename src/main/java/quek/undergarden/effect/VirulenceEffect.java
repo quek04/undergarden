@@ -6,15 +6,17 @@ import net.minecraft.world.entity.LivingEntity;
 import quek.undergarden.registry.UGEffects;
 
 public class VirulenceEffect extends MobEffect {
-	public VirulenceEffect() {
-		super(MobEffectCategory.HARMFUL, 3550530);
+
+	public VirulenceEffect(MobEffectCategory category, int color) {
+		super(category, color);
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		if (entity.getHealth() > 2.0F && !entity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get())) {
+	public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+		if (entity.getHealth() > 2.0F && !entity.hasEffect(UGEffects.VIRULENT_RESISTANCE)) {
 			entity.hurt(entity.damageSources().magic(), 2.0F);
 		}
+		return true;
 	}
 
 	@Override

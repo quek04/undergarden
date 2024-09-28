@@ -8,7 +8,6 @@ import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import quek.undergarden.registry.UGCriteria;
@@ -30,9 +29,9 @@ public class SlingshotFireTrigger extends SimpleCriterionTrigger<SlingshotFireTr
 	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> slingshot,
 								  Optional<ItemPredicate> ammo) implements SimpleInstance {
 		public static final Codec<SlingshotFireTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-						ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(SlingshotFireTrigger.TriggerInstance::player),
-						ExtraCodecs.strictOptionalField(ItemPredicate.CODEC, "slingshot").forGetter(SlingshotFireTrigger.TriggerInstance::slingshot),
-						ExtraCodecs.strictOptionalField(ItemPredicate.CODEC, "ammo").forGetter(SlingshotFireTrigger.TriggerInstance::ammo))
+						EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(SlingshotFireTrigger.TriggerInstance::player),
+						ItemPredicate.CODEC.optionalFieldOf("slingshot").forGetter(SlingshotFireTrigger.TriggerInstance::slingshot),
+						ItemPredicate.CODEC.optionalFieldOf("ammo").forGetter(SlingshotFireTrigger.TriggerInstance::ammo))
 				.apply(instance, SlingshotFireTrigger.TriggerInstance::new));
 
 		public static Criterion<?> shotItem(ItemLike slingshot, ItemLike ammo) {
@@ -44,8 +43,8 @@ public class SlingshotFireTrigger extends SimpleCriterionTrigger<SlingshotFireTr
 		}
 
 		public boolean matches(ItemStack slingshot, ItemStack ammo) {
-			if (this.slingshot.isPresent() && !this.slingshot.get().matches(slingshot)) return false;
-			return this.ammo.isEmpty() || this.ammo.get().matches(ammo);
+			if (this.slingshot.isPresent() && !this.slingshot.get().test(slingshot)) return false;
+			return this.ammo.isEmpty() || this.ammo.get().test(ammo);
 		}
 	}
 }

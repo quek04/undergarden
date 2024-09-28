@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "undergarden:cloggrum_ingot"
+    },
+    "S": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "CSC",
+    "CCC",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:cloggrum_shield"
+  }
+}

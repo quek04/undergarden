@@ -1,7 +1,5 @@
 {
   "values": [
-    "undergarden:depths",
-    "undergarden:infected_depths",
-    "undergarden:howling_plains"
+    "#undergarden:is_depths_biome"
   ]
 }

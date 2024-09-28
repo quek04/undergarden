@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:blast_shiverstone_coal_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_undergarden:shiverstone_coal_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:shiverstone_coal_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_undergarden:shiverstone_coal_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:blast_shiverstone_coal_ore"
+    ]
+  }
+}

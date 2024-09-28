@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_froststeel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:raw_froststeel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:raw_froststeel_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_froststeel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:raw_froststeel_block"
+    ]
+  }
+}

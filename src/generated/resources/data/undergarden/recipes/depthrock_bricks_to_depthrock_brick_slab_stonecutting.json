@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "undergarden:depthrock_bricks"
-  },
-  "result": "undergarden:depthrock_brick_slab"
-}

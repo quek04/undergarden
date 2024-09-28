@@ -1,0 +1,34 @@
+{
+  "parent": "undergarden:undergarden/enter_denizen_camp",
+  "criteria": {
+    "has_denizen_mask": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:denizen_mask"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.obtain_denizen_mask.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "undergarden:denizen_mask"
+    },
+    "title": {
+      "translate": "advancement.undergarden.obtain_denizen_mask.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_denizen_mask"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

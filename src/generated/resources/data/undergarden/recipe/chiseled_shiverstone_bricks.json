@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "undergarden:shiverstone_brick_slab"
+    }
+  },
+  "pattern": [
+    "M",
+    "M"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:chiseled_shiverstone_bricks"
+  }
+}

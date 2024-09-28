@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "undergarden:stripped_grongle_log"
+    },
+    "|": {
+      "item": "minecraft:chain"
+    }
+  },
+  "pattern": [
+    "| |",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "undergarden:grongle_hanging_sign"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "undergarden:infusing",
+  "category": "purifying",
+  "experience": 1.0,
+  "infusingTime": 200,
+  "ingredient": {
+    "item": "undergarden:ancient_root"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:denizen_totem"
+  },
+  "utheriumFuel": false
+}

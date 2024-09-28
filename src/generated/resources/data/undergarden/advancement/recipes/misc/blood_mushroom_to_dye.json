@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blood_mushroom": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:blood_mushroom"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:blood_mushroom_to_dye"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blood_mushroom"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:blood_mushroom_to_dye"
+    ]
+  }
+}

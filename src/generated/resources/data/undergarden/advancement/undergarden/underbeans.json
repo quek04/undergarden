@@ -1,0 +1,33 @@
+{
+  "parent": "undergarden:undergarden/enter_undergarden",
+  "criteria": {
+    "has_underbeans": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:underbeans"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.underbeans.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "undergarden:underbeans"
+    },
+    "title": {
+      "translate": "advancement.undergarden.underbeans.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_underbeans"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "undergarden:regalium_crystal",
+  "ingredient": {
+    "item": "undergarden:shiverstone_regalium_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:regalium_crystal"
+  }
+}

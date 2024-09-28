@@ -1,6 +1,6 @@
 package quek.undergarden.world.gen.treedecorator;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.DoublePlantBlock;
@@ -13,7 +13,7 @@ import quek.undergarden.registry.UGTreeDecoratorTypes;
 public class GrongleLeafDecorator extends TreeDecorator {
 
 	public static final GrongleLeafDecorator INSTANCE = new GrongleLeafDecorator();
-	public static final Codec<GrongleLeafDecorator> CODEC = Codec.unit(() -> INSTANCE);
+	public static final MapCodec<GrongleLeafDecorator> CODEC = MapCodec.unit(() -> INSTANCE);
 
 	@Override
 	protected TreeDecoratorType<?> type() {

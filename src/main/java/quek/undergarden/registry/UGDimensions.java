@@ -2,7 +2,7 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -41,10 +41,10 @@ public class UGDimensions {
 	public static final ResourceKey<LevelStem> OTHERSIDE_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, name("otherside"));
 
 	private static ResourceLocation name(String name) {
-		return new ResourceLocation(Undergarden.MODID, name);
+		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name);
 	}
 
-	public static void bootstrapType(BootstapContext<DimensionType> context) {
+	public static void bootstrapType(BootstrapContext<DimensionType> context) {
 		context.register(UNDERGARDEN_DIM_TYPE, new DimensionType(
 			OptionalLong.of(18000L), //fixed time
 			false, //skylight
@@ -79,7 +79,7 @@ public class UGDimensions {
 			new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)));
 	}
 
-	public static void bootstrapStem(BootstapContext<LevelStem> context) {
+	public static void bootstrapStem(BootstrapContext<LevelStem> context) {
 		HolderGetter<Biome> biomeRegistry = context.lookup(Registries.BIOME);
 		HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
 		HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
@@ -89,7 +89,7 @@ public class UGDimensions {
 			new NoiseBasedChunkGenerator(UGBiomes.buildOthersideBiomeSource(biomeRegistry), noiseGenSettings.getOrThrow(OTHERSIDE_NOISE_GEN))));
 	}
 
-	public static void bootstrapNoise(BootstapContext<NoiseGeneratorSettings> context) {
+	public static void bootstrapNoise(BootstrapContext<NoiseGeneratorSettings> context) {
 		HolderGetter<DensityFunction> functions = context.lookup(Registries.DENSITY_FUNCTION);
 		HolderGetter<NormalNoise.NoiseParameters> noises = context.lookup(Registries.NOISE);
 		DensityFunction xShift = NoiseRouterData.getFunction(functions, NoiseRouterData.SHIFT_X);
@@ -270,6 +270,14 @@ public class UGDimensions {
 							),
 							SurfaceRules.state(UGBlocks.DREADROCK.get().defaultBlockState())
 						)
+					)
+				),
+				//make puff mushroom forest all coarse deepsoil
+				SurfaceRules.ifTrue(
+					SurfaceRules.isBiome(UGBiomes.PUFF_MUSHROOM_FOREST),
+					SurfaceRules.ifTrue(
+						SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
+						SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
 					)
 				),
 				//cover the ground in deepturf

@@ -50,6 +50,15 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, "Shiverstone Pressure Plate");
 
 		addBlock(UGBlocks.DREADROCK, "Dreadrock");
+		addBlock(UGBlocks.DREADROCK_BRICKS, "Dreadrock Bricks");
+		addBlock(UGBlocks.DREADROCK_STAIRS, "Dreadrock Stairs");
+		addBlock(UGBlocks.DREADROCK_BRICK_STAIRS, "Dreadrock Brick Stairs");
+		addBlock(UGBlocks.DREADROCK_SLAB, "Dreadrock Slab");
+		addBlock(UGBlocks.DREADROCK_BRICK_SLAB, "Dreadrock Brick Slab");
+		addBlock(UGBlocks.DREADROCK_WALL, "Dreadrock Wall");
+		addBlock(UGBlocks.DREADROCK_BRICK_WALL, "Dreadrock Brick Wall");
+		addBlock(UGBlocks.DREADROCK_BUTTON, "Dreadrock Button");
+		addBlock(UGBlocks.DREADROCK_PRESSURE_PLATE, "Dreadrock Pressure Plate");
 
 		addBlock(UGBlocks.TREMBLECRUST, "Tremblecrust");
 		addBlock(UGBlocks.LOOSE_TREMBLECRUST, "Loose Tremblecrust");
@@ -163,6 +172,11 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP, "Engorged Blood Mushroom Cap");
 		addBlock(UGBlocks.BLOOD_MUSHROOM_STEM, "Blood Mushroom Stem");
 
+		addBlock(UGBlocks.PUFF_MUSHROOM, "Puff Mushroom");
+		addBlock(UGBlocks.POTTED_PUFF_MUSHROOM, "Potted Puff Mushroom");
+		addBlock(UGBlocks.PUFF_MUSHROOM_CAP, "Puff Mushroom Cap");
+		addBlock(UGBlocks.PUFF_MUSHROOM_STEM, "Puff Mushroom Stem");
+
 		addBlock(UGBlocks.SMOGSTEM_SAPLING, "Smogstem Sapling");
 		addBlock(UGBlocks.POTTED_SMOGSTEM_SAPLING, "Potted Smogstem Sapling");
 		addBlock(UGBlocks.SMOGSTEM_LOG, "Smogstem Log");
@@ -235,21 +249,26 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ANCIENT_ROOT_SIGN, "Ancient Root Sign");
 		addBlock(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, "Ancient Root Hanging Sign");
 
+		addBlock(UGBlocks.INFUSER, "Infuser");
+
 		addBlock(UGBlocks.VIRULENT_MIX, "Virulent Mix");
 
 		addBlock(UGBlocks.VIRULENT_MIX_CAULDRON, "Virulent Mix Cauldron");
 
+		addContainer("infuser", "Infuser");
+
 		addItem(UGItems.MAMMOTH_DISC, "Music Disc");
-		add(UGItems.MAMMOTH_DISC.get().getDescriptionId() + ".desc", "Screem - Mammoth");
+		addJukeboxSong(UGJukeboxSongs.MAMMOTH, "Screem - Mammoth");
 		addItem(UGItems.LIMAX_MAXIMUS_DISC, "Music Disc");
-		add(UGItems.LIMAX_MAXIMUS_DISC.get().getDescriptionId() + ".desc", "Screem - Limax Maximus");
+		addJukeboxSong(UGJukeboxSongs.LIMAX_MAXIMUS, "Screem - Limax Maximus");
 		addItem(UGItems.RELICT_DISC, "Music Disc");
-		add(UGItems.RELICT_DISC.get().getDescriptionId() + ".desc", "Screem - Relict");
+		addJukeboxSong(UGJukeboxSongs.RELICT, "Screem - Relict");
 		addItem(UGItems.GLOOMPER_ANTHEM_DISC, "Music Disc");
-		add(UGItems.GLOOMPER_ANTHEM_DISC.get().getDescriptionId() + ".desc", "Screem - Gloomper Anthem");
+		addJukeboxSong(UGJukeboxSongs.GLOOMPER_ANTHEM, "Screem - Gloomper Anthem");
 		addItem(UGItems.GLOOMPER_SECRET_DISC, "Music Disc");
-		add(UGItems.GLOOMPER_SECRET_DISC.get().getDescriptionId() + ".desc", "An AI was given an image of a Gloomper and made this song");
+		addJukeboxSong(UGJukeboxSongs.GLOOMPER_SECRET, "An AI was given an image of a Gloomper and made this song");
 		addItem(UGItems.CATALYST, "Catalyst");
+		addItem(UGItems.CORRUPT_CATALYST, "Corrupt Catalyst");
 		addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
 		addItem(UGItems.TWISTYTWIG, "Twistytwig");
 		addItem(UGItems.RAW_CLOGGRUM, "Raw Cloggrum");
@@ -259,6 +278,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.FROSTSTEEL_INGOT, "Froststeel Ingot");
 		addItem(UGItems.FROSTSTEEL_NUGGET, "Froststeel Nugget");
 		addItem(UGItems.UTHERIC_SHARD, "Utheric Shard");
+		addItem(UGItems.UTHERIC_CLUSTER, "Utheric Cluster");
 		addItem(UGItems.UTHERIUM_CRYSTAL, "Utherium Crystal");
 		addItem(UGItems.REGALIUM_CRYSTAL, "Regalium Crystal");
 		addItem(UGItems.ROGDORIUM_CRYSTAL, "Rogdorium Crystal");
@@ -274,6 +294,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
 		addItem(UGItems.BLISTERBOMB, "Blisterbomb");
 		addItem(UGItems.UNDERBEAN_STICK, "Underbean on a Stick");
+		addItem(UGItems.SPEAR, "Spear");
 
 		addItem(UGItems.CLOGGRUM_BATTLEAXE, "Cloggrum Battleaxe");
 		addItem(UGItems.CLOGGRUM_SWORD, "Cloggrum Sword");
@@ -364,10 +385,12 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.SLOP_BOWL, "Slop Bowl");
 
 		addItem(UGItems.DWELLER_SPAWN_EGG, "Dweller Spawn Egg");
+		addItem(UGItems.GREATER_DWELLER_SPAWN_EGG, "Greater Dweller Spawn Egg");
 		addItem(UGItems.GWIBLING_SPAWN_EGG, "Gwibling Spawn Egg");
 		addItem(UGItems.ROTLING_SPAWN_EGG, "Rotling Spawn Egg");
 		addItem(UGItems.ROTWALKER_SPAWN_EGG, "Rotwalker Spawn Egg");
 		addItem(UGItems.ROTBEAST_SPAWN_EGG, "Rotbeast Spawn Egg");
+		addItem(UGItems.ROTBELCHER_SPAWN_EGG, "Rotbelcher Spawn Egg");
 		addItem(UGItems.BRUTE_SPAWN_EGG, "Brute Spawn Egg");
 		addItem(UGItems.SCINTLING_SPAWN_EGG, "Scintling Spawn Egg");
 		addItem(UGItems.GLOOMPER_SPAWN_EGG, "Gloomper Spawn Egg");
@@ -400,23 +423,26 @@ public class UGLang extends UGLangProvider {
 		addBiome(UGBiomes.WIGGLEWOOD_FOREST, "Wigglewood Forest");
 		addBiome(UGBiomes.DEPTHS, "Depths");
 		addBiome(UGBiomes.INFECTED_DEPTHS, "Infected Depths");
+		addBiome(UGBiomes.PUFF_MUSHROOM_FOREST, "Puff Mushroom Forest");
 
-		addEntityType(UGEntityTypes.BOAT, "Boat");
-		addEntityType(UGEntityTypes.CHEST_BOAT, "Boat with Chest");
 		addEntityType(UGEntityTypes.BOOMGOURD, "Boomgourd");
 		addEntityType(UGEntityTypes.DEPTHROCK_PEBBLE, "Depthrock Pebble");
 		addEntityType(UGEntityTypes.GOO_BALL, "Goo Ball");
 		addEntityType(UGEntityTypes.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
 		addEntityType(UGEntityTypes.BLISTERBOMB, "Blisterbomb");
 		addEntityType(UGEntityTypes.GRONGLET, "Gronglet");
+		addEntityType(UGEntityTypes.SPEAR, "Spear");
 		addEntityType(UGEntityTypes.MINION_PROJECTILE, "Minion Projectile");
+		addEntityType(UGEntityTypes.ROTBELCHER_PROJECTILE, "Rotbelcher Projectile");
 
 		addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
 		addEntityType(UGEntityTypes.DWELLER, "Dweller");
+		addEntityType(UGEntityTypes.GREATER_DWELLER, "Greater Dweller");
 		addEntityType(UGEntityTypes.GWIBLING, "Gwibling");
 		addEntityType(UGEntityTypes.ROTLING, "Rotling");
 		addEntityType(UGEntityTypes.ROTWALKER, "Rotwalker");
 		addEntityType(UGEntityTypes.ROTBEAST, "Rotbeast");
+		addEntityType(UGEntityTypes.ROTBELCHER, "Rotbelcher");
 		addEntityType(UGEntityTypes.BRUTE, "Brute");
 		addEntityType(UGEntityTypes.SCINTLING, "Scintling");
 		addEntityType(UGEntityTypes.GLOOMPER, "Gloomper");
@@ -563,15 +589,27 @@ public class UGLang extends UGLangProvider {
 		addAdvTitle("cure_utheric_infection", "A Much Needed Antidote");
 		addAdvDesc("cure_utheric_infection", "Find a way to hold back the Utheric Infection.");
 
+		addAdvTitle("enter_denizen_camp", "Meeting the Locals");
+		addAdvDesc("enter_denizen_camp", "Find a Denizen Camp.");
+
+		addAdvTitle("obtain_denizen_mask", "One of Us");
+		addAdvDesc("obtain_denizen_mask", "Obtain a Mysterious Mask from a Denizen.");
+
+		addAdvTitle("break_denizen_campfire", "Party Pooper");
+		addAdvDesc("break_denizen_campfire", "Upset all of the Denizens around you by destroying their campfire.");
+
+		addAdvTitle("craft_infuser", "I <3 Infusing");
+		addAdvDesc("craft_infuser", "Create the Infuser.");
+
 		//addAdvTitle("otherside_root", "The Otherside");
 		//addAdvDesc("otherside_root", "Enter the realm of madness.");
 
-		add("tooltip.froststeel_sword", "Slows targets.");
-		add("tooltip.utheric_sword", "Deals 1.5x damage to Rotspawn.");
-		add("tooltip.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
-		add("tooltip.forgotten_sword", "Deals 1.5x damage to non-boss Undergarden mobs.");
-		add("tooltip.pebble", "Can be used as Slingshot ammo.");
-		add("tooltip.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
+		add("tooltip.undergarden.slingshot_ammo", "Can be used as Slingshot ammo.");
+		add("tooltip.undergarden.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
+		add("tooltip.undergarden.froststeel_weapon", "Slows targets.");
+		add("tooltip.undergarden.utherium_weapon", "Deals 1.5x damage to Rotspawn.");
+		add("tooltip.undergarden.forgotten_weapon", "Deals 1.5x damage to non-boss Undergarden mobs.");
+		add("tooltip.undergarden.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
 
 		addSubtitle("block", "undergarden_portal.ambient", "Undergarden Portal beckons");
 		addSubtitle("block", "undergarden_portal.activate", "Undergarden Portal activates");
@@ -601,9 +639,18 @@ public class UGLang extends UGLangProvider {
 		addSubtitle("entity", "dweller.remove_saddle", "Saddle removed");
 		addSubtitle("entity", "dweller.jump", "Dweller jumps");
 
+		addSubtitle("entity", "greater_dweller.ambient", "Greater Dweller grumbles");
+		addSubtitle("entity", "greater_dweller.hurt", "Greater Dweller hurts");
+		addSubtitle("entity", "greater_dweller.death", "Greater Dweller dies");
+
 		addSubtitle("entity", "rotwalker.ambient", "Rotwalker groans");
 		addSubtitle("entity", "rotwalker.hurt", "Rotwalker hurts");
 		addSubtitle("entity", "rotwalker.death", "Rotwalker dies");
+
+		addSubtitle("entity", "rotbelcher.ambient", "Rotbelcher groans");
+		addSubtitle("entity", "rotbelcher.hurt", "Rotbelcher hurts");
+		addSubtitle("entity", "rotbelcher.death", "Rotbelcher dies");
+		addSubtitle("entity", "rotbelcher.shoot", "Rotbelcher belches");
 
 		addSubtitle("entity", "rotbeast.ambient", "Rotbeast groans");
 		addSubtitle("entity", "rotbeast.hurt", "Rotbeast hurts");
@@ -687,11 +734,62 @@ public class UGLang extends UGLangProvider {
 		addDeath("utheric_infection.player", "%1$s succumbed to the Utheric Infection whilst trying to escape %2$s");
 
 		addConfig("return_portal_frame_block_id", "Return Portal Frame Block ID");
+		addConfig("toggle_undergarden_fog", "Toggle Undergarden Fog");
 
 		add("trim_material.undergarden.cloggrum", "Cloggrum material");
 		add("trim_material.undergarden.froststeel", "Froststeel material");
 		add("trim_material.undergarden.regalium", "Regalium material");
 		add("trim_material.undergarden.utherium", "Utherium material");
 		add("trim_material.undergarden.forgotten", "Forgotten material");
+
+		add("gui.undergarden.jei.category.infuser", "Infusing");
+		add("gui.undergarden.jei.category.infusing.experience", "%s XP");
+		add("gui.undergarden.jei.category.infusing.time.seconds", "%ss");
+
+		add("emi.category.undergarden.infusing", "Infusing");
+
+		addEmiItemTag(UGTags.Items.SLINGSHOT_ENCHANTABLE, "Slingshot Enchantables");
+
+		addEmiItemTag(UGTags.Items.MUSHROOMS, "Undergarden Mushrooms");
+		addEmiItemTag(UGTags.Items.CLOGGRUM_ITEMS, "Cloggrum Items");
+		addEmiItemTag(UGTags.Items.FROSTSTEEL_ITEMS, "Froststeel Items");
+		addEmiItemTag(UGTags.Items.UTHERIUM_ITEMS, "Utherium Items");
+		addEmiItemTag(UGTags.Items.SMOGSTEM_LOGS, "Smogstem Logs");
+		addEmiItemTag(UGTags.Items.WIGGLEWOOD_LOGS, "Wigglewood Logs");
+		addEmiItemTag(UGTags.Items.GRONGLE_LOGS, "Grongle Logs");
+		addEmiItemTag(UGTags.Items.INFUSER_UTHERIUM_FUELS, "Infuser Utherium Fuels");
+		addEmiItemTag(UGTags.Items.INFUSER_ROGDORIUM_FUELS, "Infuser Rogdorium Fuels");
+
+		addEmiCommonItemTag(UGTags.Items.RAW_MATERIALS_CLOGGRUM, "Raw Cloggrum Materials");
+		addEmiCommonItemTag(UGTags.Items.RAW_MATERIALS_FROSTSTEEL, "Raw Froststeel Materials");
+
+		addEmiCommonItemTag(UGTags.Items.INGOTS_CLOGGRUM, "Cloggrum Ingots");
+		addEmiCommonItemTag(UGTags.Items.INGOTS_FROSTSTEEL, "Froststeel Ingots");
+		addEmiCommonItemTag(UGTags.Items.GEMS_UTHERIUM, "Utherium Gems");
+		addEmiCommonItemTag(UGTags.Items.GEMS_REGALIUM, "Regalium Gems");
+		addEmiCommonItemTag(UGTags.Items.GEMS_ROGDORIUM, "Rogdorium Gems");
+		addEmiCommonItemTag(UGTags.Items.INGOTS_FORGOTTEN_METAL, "Forgotten Ingots");
+
+		addEmiCommonItemTag(UGTags.Items.NUGGETS_CLOGGRUM, "Cloggrum Nuggets");
+		addEmiCommonItemTag(UGTags.Items.NUGGETS_FROSTSTEEL, "Froststeel Nuggets");
+		addEmiCommonItemTag(UGTags.Items.NUGGETS_FORGOTTEN_METAL, "Forgotten Nuggets");
+
+		addEmiCommonItemTag(UGTags.Items.ORES_CLOGGRUM, "Cloggrum Ores");
+		addEmiCommonItemTag(UGTags.Items.ORES_FROSTSTEEL, "Froststeel Ores");
+		addEmiCommonItemTag(UGTags.Items.ORES_UTHERIUM, "Utherium Ores");
+		addEmiCommonItemTag(UGTags.Items.ORES_REGALIUM, "Regalium Ores");
+		addEmiCommonItemTag(UGTags.Items.ORES_ROGDORIUM, "Rogdorium Ores");
+
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_CLOGGRUM, "Cloggrum Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_FROSTSTEEL, "Froststeel Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_UTHERIUM, "Utherium Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_REGALIUM, "Regalium Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_ROGDORIUM, "Rogdorium Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_FORGOTTEN_METAL, "Forgotten Storage Blocks");
+
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_RAW_CLOGGRUM, "Raw Cloggrum Storage Blocks");
+		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL, "Raw Froststeel Storage Blocks");
+
+		addEmiFluidTag(UGTags.Fluids.VIRULENT, "Virulent Mix");
 	}
 }

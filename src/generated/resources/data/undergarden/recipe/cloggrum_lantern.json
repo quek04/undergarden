@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "undergarden:cloggrum_nugget"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NTN",
+    "NNN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:cloggrum_lantern"
+  }
+}

@@ -5,12 +5,16 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
-import quek.undergarden.entity.monster.Denizen;
+import net.minecraft.world.item.ItemStack;
+import quek.undergarden.entity.monster.denizen.Denizen;
+import quek.undergarden.registry.UGItems;
 
 public class DenizenModel<T extends Denizen> extends FixedHumanoidModel<T> {
+
 	public DenizenModel(ModelPart root) {
-		super(root, 4.0F);
+		super(root, 6.0F);
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -42,5 +46,21 @@ public class DenizenModel<T extends Denizen> extends FixedHumanoidModel<T> {
 		float yOffset = 3.0F;
 		this.getArm(side).translateAndRotate(poseStack);
 		poseStack.translate(xOffset / 16, yOffset / 16, 0.0F);
+	}
+
+	@Override
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick) {
+		this.rightArmPose = HumanoidModel.ArmPose.EMPTY;
+		this.leftArmPose = HumanoidModel.ArmPose.EMPTY;
+		ItemStack itemstack = entity.getItemInHand(InteractionHand.MAIN_HAND);
+		if (itemstack.is(UGItems.SPEAR) && entity.isAggressive()) {
+			if (entity.getMainArm() == HumanoidArm.RIGHT) {
+				this.rightArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
+			} else {
+				this.leftArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
+			}
+		}
+
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
 	}
 }

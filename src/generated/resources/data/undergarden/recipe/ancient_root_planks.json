@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "undergarden:ancient_root"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "undergarden:ancient_root_planks"
+  }
+}

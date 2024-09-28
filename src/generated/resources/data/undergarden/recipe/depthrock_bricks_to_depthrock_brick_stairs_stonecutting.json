@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "undergarden:depthrock_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:depthrock_brick_stairs"
+  }
+}

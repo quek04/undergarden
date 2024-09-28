@@ -25,7 +25,7 @@
         "processors": "undergarden:denizen_camp_road_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     },
     {
       "element": {
@@ -34,7 +34,7 @@
         "processors": "undergarden:denizen_camp_road_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     },
     {
       "element": {
@@ -43,7 +43,7 @@
         "processors": "undergarden:denizen_camp_road_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     },
     {
       "element": {
@@ -52,7 +52,7 @@
         "processors": "undergarden:denizen_camp_road_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     },
     {
       "element": {
@@ -61,7 +61,7 @@
         "processors": "undergarden:denizen_camp_road_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     },
     {
       "element": {
@@ -70,7 +70,7 @@
         "processors": "undergarden:denizen_camp_road_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     },
     {
       "element": {
@@ -79,7 +79,7 @@
         "processors": "undergarden:denizen_camp_road_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     },
     {
       "element": {
@@ -88,7 +88,7 @@
         "processors": "undergarden:denizen_camp_road_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     }
   ],
   "fallback": "minecraft:empty"

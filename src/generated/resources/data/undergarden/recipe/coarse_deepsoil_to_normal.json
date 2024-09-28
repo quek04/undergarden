@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "undergarden:coarse_deepsoil"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:deepsoil"
+  }
+}

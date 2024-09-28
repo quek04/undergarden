@@ -18,11 +18,6 @@ public class UGFluidTags extends FluidTagsProvider {
 	}
 
 	@Override
-	public String getName() {
-		return "Undergarden Fluid Tags";
-	}
-
-	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		tag(UGTags.Fluids.VIRULENT).add(UGFluids.VIRULENT_MIX_SOURCE.get(), UGFluids.VIRULENT_MIX_FLOWING.get());
 	}

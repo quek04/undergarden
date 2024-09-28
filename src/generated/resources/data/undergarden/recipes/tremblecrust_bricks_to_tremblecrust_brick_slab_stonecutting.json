@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "undergarden:tremblecrust_bricks"
-  },
-  "result": "undergarden:tremblecrust_brick_slab"
-}

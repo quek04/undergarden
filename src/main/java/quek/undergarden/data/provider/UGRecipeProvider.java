@@ -1,5 +1,6 @@
 package quek.undergarden.data.provider;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -17,16 +18,19 @@ import net.minecraft.world.level.block.CeilingHangingSignBlock;
 import net.minecraft.world.level.block.SignBlock;
 import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.Undergarden;
+import quek.undergarden.data.builder.InfusingRecipeBuilder;
+import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
 public abstract class UGRecipeProvider extends RecipeProvider {
 
-	public UGRecipeProvider(PackOutput output) {
-		super(output);
+	public UGRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+		super(output, provider);
 	}
 
 	public ShapelessRecipeBuilder makePlanks(Supplier<? extends Block> plankOut, TagKey<Item> logIn) {
@@ -308,7 +312,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	private void oreSmeltingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, RecipeOutput consumer) {
 		for (ItemLike ingredient : ingredients) {
-			smeltingRecipe(result, ingredient, xp, 1).group(group).save(consumer, new ResourceLocation(Undergarden.MODID, "smelt_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
+			smeltingRecipe(result, ingredient, xp, 1).group(group).save(consumer, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "smelt_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
 		}
 	}
 
@@ -332,7 +336,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	private void oreBlastingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, RecipeOutput consumer) {
 		for (ItemLike ingredient : ingredients) {
-			blastingRecipe(result, ingredient, xp, 1).group(group).save(consumer, new ResourceLocation(Undergarden.MODID, "blast_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
+			blastingRecipe(result, ingredient, xp, 1).group(group).save(consumer, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "blast_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
 		}
 	}
 
@@ -441,5 +445,37 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public SingleItemRecipeBuilder tremblecrustBricksStonecutting(ItemLike result, int resultAmount) {
 		return stonecutting(UGBlocks.TREMBLECRUST_BRICKS, result, resultAmount);
+	}
+
+	public SingleItemRecipeBuilder dreadrockStonecutting(ItemLike result) {
+		return stonecutting(UGBlocks.DREADROCK, result);
+	}
+
+	public SingleItemRecipeBuilder dreadrockStonecutting(ItemLike result, int resultAmount) {
+		return stonecutting(UGBlocks.DREADROCK, result, resultAmount);
+	}
+
+	public SingleItemRecipeBuilder dreadrockBricksStonecutting(ItemLike result) {
+		return stonecutting(UGBlocks.DREADROCK_BRICKS, result);
+	}
+
+	public SingleItemRecipeBuilder dreadrockBricksStonecutting(ItemLike result, int resultAmount) {
+		return stonecutting(UGBlocks.DREADROCK_BRICKS, result, resultAmount);
+	}
+
+	public InfusingRecipeBuilder infusing(ItemLike result, ItemLike ingredient, InfusingBookCategory bookCategory, boolean utheriumFuel, float experience, int infusingTime) {
+		return InfusingRecipeBuilder.infusing(Ingredient.of(ingredient), RecipeCategory.MISC, bookCategory, new ItemStack(result), experience, infusingTime, utheriumFuel).unlockedBy("has_item", has(ingredient));
+	}
+
+	public InfusingRecipeBuilder infusingMisc(ItemLike result, ItemLike ingredient, boolean utheriumFuel, float experience, int infusingTime) {
+		return infusing(result, ingredient, InfusingBookCategory.MISC, utheriumFuel, experience, infusingTime);
+	}
+
+	public InfusingRecipeBuilder infusingPurifying(ItemLike result, ItemLike ingredient, float experience, int infusingTime) {
+		return infusing(result, ingredient, InfusingBookCategory.PURIFYING, false, experience, infusingTime);
+	}
+
+	public InfusingRecipeBuilder infusingCorrupting(ItemLike result, ItemLike ingredient, float experience, int infusingTime) {
+		return infusing(result, ingredient, InfusingBookCategory.CORRUPTING, true, experience, infusingTime);
 	}
 }

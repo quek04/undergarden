@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_wigglewood_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:stripped_wigglewood_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:wigglewood_hanging_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stripped_wigglewood_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:wigglewood_hanging_sign"
+    ]
+  }
+}

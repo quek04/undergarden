@@ -5,13 +5,16 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import quek.undergarden.registry.*;
 
 import javax.annotation.Nullable;
@@ -28,13 +31,13 @@ public class SmogMog extends Mog {
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
 	}
 
-	@Override
-	public boolean checkSpawnRules(LevelAccessor accessor, MobSpawnType type) {
-		return true;
-	}
-
 	public static boolean checkSmogMogSpawnRules(EntityType<? extends Animal> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
 		return level.getBlockState(pos.below()).is(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON);
+	}
+
+	@Override
+	public float getWalkTargetValue(BlockPos pos, LevelReader level) {
+		return level.getBlockState(pos.below()).is(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON) ? 10.0F : level.getPathfindingCostFromLightLevels(pos);
 	}
 
 	@Override
@@ -56,11 +59,6 @@ public class SmogMog extends Mog {
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
 		return UGEntityTypes.SMOG_MOG.get().create(level);
-	}
-
-	@Override
-	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
-		return 0.4F;
 	}
 
 	@Override

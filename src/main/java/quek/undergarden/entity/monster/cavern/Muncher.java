@@ -65,7 +65,7 @@ public class Muncher extends CavernMonster {
 		super.aiStep();
 
 		if (this.isAggressive()) {
-			if (this.horizontalCollision || this.verticalCollision && EventHooks.getMobGriefingEvent(this.level(), this)) {
+			if (this.horizontalCollision || this.verticalCollision && EventHooks.canEntityGrief(this.level(), this)) {
 				AABB axisalignedbb = this.getBoundingBox();
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {

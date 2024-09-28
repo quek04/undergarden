@@ -1,0 +1,89 @@
+{
+  "parent": "undergarden:undergarden/kill_rotling",
+  "criteria": {
+    "kill_rotbeast": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:rotbeast"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "kill_rotbelcher": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:rotbelcher"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "kill_rotling": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:rotling"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "kill_rotwalker": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:rotwalker"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.kill_all_rotspawn.desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "undergarden:utherium_sword"
+    },
+    "title": {
+      "translate": "advancement.undergarden.kill_all_rotspawn.title"
+    }
+  },
+  "requirements": [
+    [
+      "kill_rotling"
+    ],
+    [
+      "kill_rotwalker"
+    ],
+    [
+      "kill_rotbeast"
+    ],
+    [
+      "kill_rotbelcher"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

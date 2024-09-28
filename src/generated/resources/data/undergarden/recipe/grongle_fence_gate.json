@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "/": {
+      "tag": "c:rods/wooden"
+    },
+    "M": {
+      "item": "undergarden:grongle_planks"
+    }
+  },
+  "pattern": [
+    "/M/",
+    "/M/"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:grongle_fence_gate"
+  }
+}

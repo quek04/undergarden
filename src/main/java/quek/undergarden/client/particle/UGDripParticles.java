@@ -64,6 +64,19 @@ public class UGDripParticles extends DripParticle {
 		return dripparticle;
 	}
 
+	public static TextureSheetParticle createGooFallParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		DripParticle dripparticle = new DripParticle.FallAndLandParticle(level, x, y, z, Fluids.EMPTY, UGParticleTypes.LANDING_GOO.get());
+		dripparticle.gravity = 0.01F;
+		dripparticle.setColor(0.482F, 0.447F, 0.329F);
+		return dripparticle;
+	}
+
+	public static TextureSheetParticle createGooLandParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		DripParticle dripparticle = new DripParticle.DripLandParticle(level, x, y, z, Fluids.EMPTY);
+		dripparticle.setLifetime((int) (32.0D / (Math.random() * 0.8D + 0.2D)));
+		dripparticle.setColor(0.482F, 0.447F, 0.329F);
+		return dripparticle;
+	}
 
 	public static TextureSheetParticle createDripstoneVirulentHangParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 		DripParticle dripparticle = new DripParticle.DripHangParticle(level, x, y, z, UGFluids.VIRULENT_MIX_SOURCE.get(), UGParticleTypes.FALLING_VIRULENT.get());

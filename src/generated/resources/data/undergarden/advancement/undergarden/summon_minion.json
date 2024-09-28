@@ -1,0 +1,38 @@
+{
+  "parent": "undergarden:undergarden/forgotten_ingot",
+  "criteria": {
+    "summoned_minion": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "undergarden:minion"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:summoned_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.summon_minion.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "undergarden:carved_gloomgourd"
+    },
+    "title": {
+      "translate": "advancement.undergarden.summon_minion.title"
+    }
+  },
+  "requirements": [
+    [
+      "summoned_minion"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

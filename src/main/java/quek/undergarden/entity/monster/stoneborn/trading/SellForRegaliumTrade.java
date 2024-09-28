@@ -5,6 +5,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import quek.undergarden.registry.UGItems;
 
@@ -31,6 +32,6 @@ public class SellForRegaliumTrade implements VillagerTrades.ItemListing {
 	@Nullable
 	@Override
 	public MerchantOffer getOffer(Entity entity, RandomSource random) {
-		return new MerchantOffer(new ItemStack(this.sell.getItem(), this.sellCount), new ItemStack(UGItems.REGALIUM_CRYSTAL.get(), this.regaliumCount), this.maxUses, 0, 0);
+		return new MerchantOffer(new ItemCost(this.sell.getItem(), this.sellCount), new ItemStack(UGItems.REGALIUM_CRYSTAL.get(), this.regaliumCount), this.maxUses, 0, 0);
 	}
 }

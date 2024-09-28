@@ -1,0 +1,49 @@
+{
+  "parent": "undergarden:undergarden/forgotten_ingot",
+  "criteria": {
+    "has_forgotten_tools": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:forgotten_battleaxe"
+          },
+          {
+            "items": "undergarden:forgotten_sword"
+          },
+          {
+            "items": "undergarden:forgotten_pickaxe"
+          },
+          {
+            "items": "undergarden:forgotten_axe"
+          },
+          {
+            "items": "undergarden:forgotten_shovel"
+          },
+          {
+            "items": "undergarden:forgotten_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.forgotten_tools.desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "undergarden:forgotten_pickaxe"
+    },
+    "title": {
+      "translate": "advancement.undergarden.forgotten_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_forgotten_tools"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

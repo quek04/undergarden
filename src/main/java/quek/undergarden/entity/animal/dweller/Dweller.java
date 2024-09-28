@@ -29,7 +29,6 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
-import org.joml.Vector3f;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
@@ -54,7 +53,6 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 
 	public Dweller(EntityType<? extends Dweller> type, Level level) {
 		super(type, level);
-		this.setMaxUpStep(1.0F);
 		this.wildJumpCooldown = 300 + this.getRandom().nextInt(500);
 	}
 
@@ -63,7 +61,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, this.panicGoal = new PanicGoal(this, 2.5D));
 		this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.UNDERBEANS.get(), UGItems.UNDERBEAN_STICK.get()), false));
-		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
+		this.goalSelector.addGoal(0, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, this.avoidGoal = new DwellerAvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 2.0D, 2.5D));
 		this.goalSelector.addGoal(2, new DwellerJumpGoal(this));
@@ -74,7 +72,8 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	public static AttributeSupplier.Builder registerAttributes() {
 		return Animal.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 15.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.2D);
+				.add(Attributes.MOVEMENT_SPEED, 0.2D)
+				.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
 	@Override
@@ -123,10 +122,10 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.getEntityData().define(SADDLE, false);
-		this.getEntityData().define(BOOST_TIME, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(SADDLE, false);
+		builder.define(BOOST_TIME, 0);
 	}
 
 	@Override
@@ -177,7 +176,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	}
 
 	@Override
-	public void equipSaddle(@Nullable SoundSource source) {
+	public void equipSaddle(ItemStack stack, @org.jetbrains.annotations.Nullable SoundSource source) {
 		this.steering.setSaddle(true);
 		if (source != null) {
 			this.level().playSound(null, this, SoundEvents.PIG_SADDLE, source, 0.5F, 1.0F);
@@ -231,7 +230,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		boolean flag1 = vec.y() != vec3.y();
 		boolean flag2 = vec.z() != vec3.z();
 		boolean flag3 = this.onGround() || flag1 && vec.y() < 0.0D;
-		float stepHeight = this.getStepHeight();
+		float stepHeight = (float) this.getAttribute(Attributes.STEP_HEIGHT).getValue();
 		if (stepHeight > 0.0F && flag3 && (flag || flag2)) {
 			Vec3 vec31 = collideBoundingBox(this, new Vec3(vec.x(), stepHeight, vec.z()), aabb, this.level(), list);
 			Vec3 vec32 = collideBoundingBox(this, new Vec3(0.0D, stepHeight, 0.0D), aabb.expandTowards(vec.x(), 0.0D, vec.z()), this.level(), list);
@@ -263,12 +262,12 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		float ySin = Mth.sin(this.yBodyRot * ((float) Math.PI / 180F));
 		float yCos = Mth.cos(this.yBodyRot * ((float) Math.PI / 180F));
 		Vec3 vec3 = this.getPassengerRidingPosition(passenger);
-		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), vec3.y() + passenger.getMyRidingOffset(this), this.getZ() - (double) (0.5F * yCos));
+		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), vec3.y() + passenger.getVehicleAttachmentPoint(this).y(), this.getZ() - (double) (0.5F * yCos));
 	}
 
 	@Override
-	protected Vector3f getPassengerAttachmentPoint(Entity pEntity, EntityDimensions pDimensions, float pScale) {
-		return new Vector3f(0.0F, 1.5F, 0.0F);
+	protected Vec3 getPassengerAttachmentPoint(Entity pEntity, EntityDimensions pDimensions, float pScale) {
+		return new Vec3(0.0F, 1.5F, 0.0F);
 	}
 
 	public boolean isJumping() {

@@ -14,20 +14,19 @@ import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
 import java.util.Optional;
-import java.util.function.Supplier;
 
 public class VirulentMixBlock extends LiquidBlock {
 
-	public VirulentMixBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
+	public VirulentMixBlock(FlowingFluid supplier, Properties properties) {
 		super(supplier, properties.noCollission().strength(100F).noLootTable().lightLevel((state) -> 10));
 	}
 
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 		if (entity.isAlive() && entity instanceof LivingEntity livingEntity) {
-			if (livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX) || livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE.get()))
+			if (livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_VIRULENT_MIX) || livingEntity.hasEffect(UGEffects.VIRULENT_RESISTANCE))
 				return;
-			livingEntity.addEffect(new MobEffectInstance(UGEffects.VIRULENCE.get(), 200, 0));
+			livingEntity.addEffect(new MobEffectInstance(UGEffects.VIRULENCE, 200, 0));
 		}
 	}
 

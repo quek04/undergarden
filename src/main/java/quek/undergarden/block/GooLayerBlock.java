@@ -13,9 +13,6 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -25,17 +22,15 @@ import quek.undergarden.registry.UGTags;
 
 public class GooLayerBlock extends Block {
 
-	public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
 	protected static final VoxelShape SHAPE = box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
 	public GooLayerBlock(Properties properties) {
 		super(properties);
-		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
 	}
 
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-		if (entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY.get()))
+		if (entity instanceof Player player && player.getInventory().armor.get(0).getItem() == UGItems.CLOGGRUM_BOOTS.get() && !player.hasEffect(UGEffects.GOOEY))
 			return;
 		if (!entity.getType().is(UGTags.Entities.IMMUNE_TO_SCINTLING_GOO) && entity.onGround()) {
 			entity.makeStuckInBlock(state, new Vec3(0.45D, 0.45D, 0.45D));
@@ -45,11 +40,6 @@ public class GooLayerBlock extends Block {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return SHAPE;
-	}
-
-	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(AGE);
 	}
 
 	@Override
@@ -69,11 +59,8 @@ public class GooLayerBlock extends Block {
 	}
 
 	@Override
-	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		if (!state.canSurvive(level, pos)) {
-			level.removeBlock(pos, false);
-		}
-		if (random.nextFloat() < 100F + (float) state.getValue(AGE) * 0.50F) {
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		if (random.nextFloat() < 100.0F) {
 			level.removeBlock(pos, false);
 		}
 	}

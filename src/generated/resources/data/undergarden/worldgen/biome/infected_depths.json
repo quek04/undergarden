@@ -40,21 +40,13 @@
     [],
     [],
     [
-      "undergarden:utherium_growth_extra"
+      "undergarden:utherium_growth_extra",
+      "undergarden:ceiling_utherium_growth"
     ],
     [],
     [
-      "undergarden:deepsoil_ore",
-      "undergarden:sediment_ore",
-      "undergarden:shiverstone_ore",
-      "undergarden:coal_ore",
-      "undergarden:iron_ore",
-      "undergarden:gold_ore",
-      "undergarden:diamond_ore",
-      "undergarden:cloggrum_ore",
-      "undergarden:utherium_ore",
-      "undergarden:regalium_ore",
-      "undergarden:rogdorium_ore"
+      "undergarden:rogdorium_ore",
+      "undergarden:utherium_ore"
     ]
   ],
   "has_precipitation": false,
@@ -64,7 +56,33 @@
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "undergarden:rotling",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotwalker",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotbelcher",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 100
+      },
+      {
+        "type": "undergarden:rotbeast",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 100
+      }
+    ],
+    "undergarden:stupid": [],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

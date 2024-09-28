@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "undergarden:forgotten_ingot"
+  },
+  "base": {
+    "item": "undergarden:cloggrum_pickaxe"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:forgotten_pickaxe"
+  },
+  "template": {
+    "item": "undergarden:forgotten_upgrade_smithing_template"
+  }
+}

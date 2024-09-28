@@ -10,6 +10,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -59,25 +61,32 @@ public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		super.tick(state, level, pos, random);
 		int age = state.getValue(AGE);
-		if (random.nextInt(10) == 0 && age != 1 && CommonHooks.onCropsGrowPre(level, pos, state, true)) {
+		if (random.nextInt(10) == 0 && age != 1 && CommonHooks.canCropGrow(level, pos, state, true)) {
 			level.setBlock(pos, state.setValue(AGE, 1), 2);
-			CommonHooks.onCropsGrowPost(level, pos, state);
+			CommonHooks.fireCropGrowPost(level, pos, state);
 		}
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		int age = state.getValue(AGE);
 		boolean maxAge = age == 1;
-		if (!maxAge && player.getItemInHand(hand).getItem() == Items.BONE_MEAL) {
-			return InteractionResult.PASS;
-		} else if (maxAge) {
-			popResource(level, pos, new ItemStack(UGItems.DITCHBULB.get(), 1));
-			level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
-			level.setBlock(pos, state.setValue(AGE, 0), 2);
-			return InteractionResult.SUCCESS;
+		return  !maxAge && stack.is(Items.BONE_MEAL) ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION : super.useItemOn(stack, state, level, pos, player, hand, result);
+	}
+
+	@Override
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result) {
+		int age = state.getValue(AGE);
+		boolean maxAge = age == 1;
+		if (maxAge) {
+			popResource(level, pos, new ItemStack(UGItems.DITCHBULB.get()));
+			level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.getRandom().nextFloat() * 0.4F);
+			BlockState newState = state.setValue(AGE, 0);
+			level.setBlock(pos, newState, 2);
+			level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
+			return InteractionResult.sidedSuccess(level.isClientSide);
 		} else {
-			return super.use(state, level, pos, player, hand, result);
+			return super.useWithoutItem(state, level, pos, player, result);
 		}
 	}
 

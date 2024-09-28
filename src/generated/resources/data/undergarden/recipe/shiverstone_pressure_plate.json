@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "B": {
+      "item": "undergarden:shiverstone"
+    }
+  },
+  "pattern": [
+    "BB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:shiverstone_pressure_plate"
+  }
+}

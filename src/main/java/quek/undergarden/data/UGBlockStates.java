@@ -23,11 +23,6 @@ public class UGBlockStates extends UGBlockstateProvider {
 	}
 
 	@Override
-	public String getName() {
-		return "Undergarden Block States";
-	}
-
-	@Override
 	protected void registerStatesAndModels() {
 		block(UGBlocks.DREADROCK);
 		torchBlock(UGBlocks.SHARD_TORCH, UGBlocks.SHARD_WALL_TORCH);
@@ -118,8 +113,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		getVariantBuilder(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get()).forAllStates(state ->
 				ConfiguredModel.builder()
 						.modelFile(cubeAll(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())).nextModel()
-						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_2", new ResourceLocation(Undergarden.MODID, "block/engorged_blood_mushroom_cap_2"))).nextModel()
-						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", new ResourceLocation(Undergarden.MODID, "block/engorged_blood_mushroom_cap_3")))
+						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_2", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/engorged_blood_mushroom_cap_2"))).nextModel()
+						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/engorged_blood_mushroom_cap_3")))
 						.build()
 		);
 		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
@@ -130,10 +125,13 @@ public class UGBlockStates extends UGBlockstateProvider {
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
 		getVariantBuilder(UGBlocks.DENIZEN_TOTEM.get())
 			.partialState().with(DenizenTotemBlock.ACTIVE, true)
-			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM) + "_active", new ResourceLocation(Undergarden.MODID, "block/denizen_totem_active"), new ResourceLocation(Undergarden.MODID, "block/ancient_root"))).addModel()
+			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM) + "_active", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_active"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"))).addModel()
 			.partialState().with(DenizenTotemBlock.ACTIVE, false)
-			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM), new ResourceLocation(Undergarden.MODID, "block/denizen_totem_inactive"), new ResourceLocation(Undergarden.MODID, "block/ancient_root"))).addModel()
-		;
+			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_inactive"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"))).addModel();
+		crossBlock(UGBlocks.PUFF_MUSHROOM);
+		block(UGBlocks.PUFF_MUSHROOM_CAP);
+		block(UGBlocks.PUFF_MUSHROOM_STEM);
+		block(UGBlocks.DREADROCK_BRICKS);
 
 		stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
 		stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);
@@ -148,6 +146,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		stairs(UGBlocks.CLOGGRUM_TILE_STAIRS, UGBlocks.CLOGGRUM_TILES);
 		stairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES);
 		stairs(UGBlocks.ANCIENT_ROOT_STAIRS, UGBlocks.ANCIENT_ROOT_PLANKS);
+		stairs(UGBlocks.DREADROCK_STAIRS, UGBlocks.DREADROCK);
+		stairs(UGBlocks.DREADROCK_BRICK_STAIRS, UGBlocks.DREADROCK_BRICKS);
 
 		slab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK);
 		slab(UGBlocks.POLISHED_DEPTHROCK_SLAB, UGBlocks.POLISHED_DEPTHROCK);
@@ -162,6 +162,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		slab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES);
 		slab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES);
 		slab(UGBlocks.ANCIENT_ROOT_SLAB, UGBlocks.ANCIENT_ROOT_PLANKS);
+		slab(UGBlocks.DREADROCK_SLAB, UGBlocks.DREADROCK);
+		slab(UGBlocks.DREADROCK_BRICK_SLAB, UGBlocks.DREADROCK_BRICKS);
 
 		wall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK);
 		wall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK);
@@ -170,6 +172,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		wall(UGBlocks.SHIVERSTONE_BRICK_WALL, UGBlocks.SHIVERSTONE_BRICKS);
 		wall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST);
 		wall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS);
+		wall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK);
+		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
 
 		fence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS);
 		fence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS);
@@ -198,6 +202,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
 		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
 		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
+		button(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK);
 
 		pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK);
 		pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE);
@@ -206,6 +211,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		pressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS);
 		pressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS);
 		pressurePlate(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE, UGBlocks.ANCIENT_ROOT_PLANKS);
+		pressurePlate(UGBlocks.DREADROCK_PRESSURE_PLATE, UGBlocks.DREADROCK);
 
 		sign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_WALL_SIGN, "smogstem_planks");
 		sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN, "wigglewood_planks");
@@ -233,7 +239,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		horizontalBlock(UGBlocks.CARVED_GLOOMGOURD.get(), models().orientable(name(UGBlocks.CARVED_GLOOMGOURD), texture("gloomgourd_side"), texture("carved_gloomgourd"), texture("gloomgourd_top")));
 
 		tintedCrossBlock(UGBlocks.DEEPTURF);
-		ModelFile deepturf = models().getExistingFile(new ResourceLocation(Undergarden.MODID, "block/deepturf_block"));
+		ModelFile deepturf = models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/deepturf_block"));
 		ModelFile deepturf_snow = models().cubeBottomTop(name(UGBlocks.DEEPTURF_BLOCK) + "_snowy", texture("frozen_deepturf_block_side"), texture("deepsoil"), mcLoc("block/snow"));
 		getVariantBuilder(UGBlocks.DEEPTURF_BLOCK.get()).forAllStates(state -> {
 			if (state.getValue(DeepturfBlock.SNOWY)) {
@@ -259,7 +265,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 				ConfiguredModel.builder()
 						.modelFile(models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM) + "_stage" + state.getValue(StemBlock.AGE), mcLoc("block/stem_growth" + state.getValue(StemBlock.AGE))).texture("stem", mcLoc("block/melon_stem")).renderType("cutout"))
 						.build());
-		horizontalBlock(UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(), models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM_ATTACHED), mcLoc("stem_fruit")).texture("stem", mcLoc("block/melon_stem")).texture("upperstem", mcLoc("block/attached_melon_stem")).renderType("cutout"));
+		horizontalBlock(UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(), models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM_ATTACHED), mcLoc("stem_fruit")).texture("stem", mcLoc("block/melon_stem")).texture("upperstem", mcLoc("block/attached_melon_stem")).renderType("cutout"), 270);
 
 		simpleBlock(UGBlocks.GOO_BLOCK.get(), models().cubeBottomTop(name(UGBlocks.GOO_BLOCK), texture("goo_block_side"), texture("goo_block_bottom"), texture("goo_block_top")));
 

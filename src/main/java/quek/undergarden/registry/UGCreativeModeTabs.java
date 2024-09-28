@@ -22,9 +22,11 @@ public class UGCreativeModeTabs {
 			.title(Component.translatable("itemGroup.undergarden_group"))
 			.icon(() -> new ItemStack(UGBlocks.DEEPTURF_BLOCK.get()))
 			.displayItems((parameters, output) -> {
-				output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(UGEnchantments.RICOCHET.get(), UGEnchantments.RICOCHET.get().getMaxLevel())));
-				output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(UGEnchantments.LONGEVITY.get(), UGEnchantments.LONGEVITY.get().getMaxLevel())));
-				output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(UGEnchantments.SELF_SLING.get(), UGEnchantments.SELF_SLING.get().getMaxLevel())));
+				parameters.holders().lookup(Registries.ENCHANTMENT).ifPresent(enchantmentRegistryLookup -> {
+					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.RICOCHET), 3)));
+					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.LONGEVITY), 3)));
+					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.SELF_SLING), 1)));
+				});
 				UGItems.ITEMS.getEntries().forEach(item -> {
 					if (!DONT_INCLUDE.contains(item) && !item.getKey().location().getPath().contains("tremblecrust")) {
 						output.accept(item.get());

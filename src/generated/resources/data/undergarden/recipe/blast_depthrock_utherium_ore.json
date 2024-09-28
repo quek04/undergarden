@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "undergarden:utherium",
+  "ingredient": {
+    "item": "undergarden:depthrock_utherium_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:utherium_crystal"
+  }
+}

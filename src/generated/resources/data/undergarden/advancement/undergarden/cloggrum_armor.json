@@ -1,0 +1,43 @@
+{
+  "parent": "undergarden:undergarden/mine_ore",
+  "criteria": {
+    "has_cloggrum_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:cloggrum_helmet"
+          },
+          {
+            "items": "undergarden:cloggrum_chestplate"
+          },
+          {
+            "items": "undergarden:cloggrum_leggings"
+          },
+          {
+            "items": "undergarden:cloggrum_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.cloggrum_armor.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "undergarden:cloggrum_chestplate"
+    },
+    "title": {
+      "translate": "advancement.undergarden.cloggrum_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cloggrum_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

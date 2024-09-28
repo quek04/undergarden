@@ -1,0 +1,14 @@
+{
+  "type": "undergarden:infusing",
+  "category": "purifying",
+  "experience": 1.0,
+  "infusingTime": 200,
+  "ingredient": {
+    "item": "undergarden:utheric_cluster"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:utherium_crystal"
+  },
+  "utheriumFuel": false
+}

@@ -10,12 +10,14 @@ import quek.undergarden.entity.monster.cavern.Muncher;
 
 public class MuncherEyesLayer<T extends Muncher, M extends MuncherModel<T>> extends EyesLayer<T, M> {
 
+	private static final RenderType MUNCHER_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/muncher_eyes.png"));
+
 	public MuncherEyesLayer(RenderLayerParent<T, M> parent) {
 		super(parent);
 	}
 
 	@Override
 	public RenderType renderType() {
-		return RenderType.eyes(new ResourceLocation(Undergarden.MODID, "textures/entity/muncher_eyes.png"));
+		return MUNCHER_EYES;
 	}
 }

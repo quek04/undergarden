@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:blast_dreadrock_utherium_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_undergarden:dreadrock_utherium_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:dreadrock_utherium_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_undergarden:dreadrock_utherium_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:blast_dreadrock_utherium_ore"
+    ]
+  }
+}

@@ -11,7 +11,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -28,7 +31,6 @@ import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,11 +43,6 @@ public class Mog extends Animal implements IShearable {
 
 	public Mog(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
-	}
-
-	@Override
-	public float getStepHeight() {
-		return 1.0F;
 	}
 
 	@Override
@@ -63,7 +60,8 @@ public class Mog extends Animal implements IShearable {
 		return Animal.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 20.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.1D)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
+				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
+				.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
 	@Override
@@ -125,11 +123,6 @@ public class Mog extends Animal implements IShearable {
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
-		return 0.2F;
-	}
-
-	@Override
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		tag.putBoolean("HasMoss", this.hasMoss());
@@ -144,32 +137,31 @@ public class Mog extends Animal implements IShearable {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.getEntityData().define(HAS_MOSS, true);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(HAS_MOSS, true);
 	}
 
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData data, @Nullable CompoundTag tag) {
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData data) {
 		this.setMoss(true);
-		return super.finalizeSpawn(level, difficulty, spawnType, data, tag);
+		return super.finalizeSpawn(level, difficulty, spawnType, data);
 	}
 
 	@Override
-	public boolean isShearable(@Nonnull ItemStack item, Level world, BlockPos pos) {
+	public boolean isShearable(@org.jetbrains.annotations.Nullable Player player, ItemStack item, Level level, BlockPos pos) {
 		return this.hasMoss() && this.isAlive() && !this.isBaby();
 	}
 
-	@Nonnull
 	@Override
-	public List<ItemStack> onSheared(@Nullable Player player, @Nonnull ItemStack stack, Level level, BlockPos pos, int fortune) {
+	public List<ItemStack> onSheared(@org.jetbrains.annotations.Nullable Player player, ItemStack item, Level level, BlockPos pos) {
 		level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
 		if (!level.isClientSide()) {
 			this.setMoss(false);
 			int mossAmount = 1 + this.getRandom().nextInt(2);
-			if (fortune > 0) {
+			/*if (fortune > 0) {
 				mossAmount += this.getRandom().nextInt(fortune);
-			}
+			}*/
 
 			List<ItemStack> items = new ArrayList<>();
 			for (int i = 0; i < mossAmount; i++) {

@@ -10,8 +10,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class UGAdvancements extends AdvancementProvider {
 
-	public UGAdvancements(PackOutput output, CompletableFuture<HolderLookup.Provider> future, ExistingFileHelper fileHelper) {
+	public UGAdvancements(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, ExistingFileHelper fileHelper) {
 		//TODO: new Otherside Advancements
-		super(output, future, fileHelper, List.of(new UndergardenAdvancements()));
+		super(output, provider, fileHelper, List.of(new UndergardenAdvancements()));
 	}
 }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "undergarden:indigo_mushroom"
+    },
+    {
+      "item": "undergarden:indigo_mushroom"
+    },
+    {
+      "item": "undergarden:indigo_mushroom"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:indigo_stew"
+  }
+}

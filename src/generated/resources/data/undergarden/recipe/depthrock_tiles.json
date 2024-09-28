@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "undergarden:depthrock_bricks"
+    }
+  },
+  "pattern": [
+    "MM",
+    "MM"
+  ],
+  "result": {
+    "count": 4,
+    "id": "undergarden:depthrock_tiles"
+  }
+}

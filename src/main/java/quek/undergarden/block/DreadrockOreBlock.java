@@ -16,7 +16,7 @@ public class DreadrockOreBlock extends DropExperienceBlock {
     @Override
     public float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
         float destroySpeed = state.getDestroySpeed(level, pos);
-        int i = net.neoforged.neoforge.common.CommonHooks.isCorrectToolForDrops(state, player) ? 30 : 100;
+		int i = net.neoforged.neoforge.event.EventHooks.doPlayerHarvestCheck(player, state, level, pos) ? 30 : 100;
         if (destroySpeed == -1.0F) {
             return 0.0F;
         } else if (!(player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get())) {

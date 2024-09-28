@@ -3,7 +3,7 @@ plugins {
 	id 'eclipse'
 	id 'idea'
 	id 'maven-publish'
-	id 'net.neoforged.gradle.userdev' version '7.0+'
+	id 'net.neoforged.moddev' version '1.0.1'
 }
 
 def secrets = new Properties()
@@ -23,73 +23,92 @@ if (secretsFile.exists()) {
     }
 }
 
+idea {
+	module {
+		downloadJavadoc = true
+		downloadSources = true
+	}
+}
+
 version = project.undergarden_version
 group = 'quek.undergarden'
 base {
     archivesName = 'The_Undergarden-'+project.minecraft_version
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
-compileJava.options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation" << "-Werror"
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+compileJava.options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-this-escape" << "-Werror"
 
-runs {
-	configureEach {
-		workingDirectory project.file('run')
-		systemProperty 'forge.logging.console.level', 'debug'
+neoForge {
+	version = project.neo_version
+	validateAccessTransformers = true
 
-		modSource project.sourceSets.main
+	runs {
+		configureEach {
+			gameDirectory = project.file('run')
+			systemProperty 'forge.logging.console.level', 'debug'
+			logLevel = org.slf4j.event.Level.DEBUG
+		}
+
+		client {
+			client()
+			systemProperty 'forge.enabledGameTestNamespaces', mod_id
+			programArguments.addAll '--username', secrets.getProperty("username") ?: 'Dev', secrets.getProperty("uuid") ? '--uuid' : '', secrets.getProperty("uuid") ?: ''
+		}
+
+		server {
+			server()
+			systemProperty 'forge.enabledGameTestNamespaces', mod_id
+			programArgument '--nogui'
+		}
+
+		data {
+			data()
+			programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+		}
 	}
 
-	client {
-		systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-		programArguments.addAll '--username', secrets.getProperty("username")?: 'Dev', secrets.getProperty("uuid") ? '--uuid' : '', secrets.getProperty("uuid")?: ''
-	}
-
-	server {
-		systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-		programArgument '--nogui'
-	}
-
-	gameTestServer {
-		systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-	}
-
-	data {
-		programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+	mods {
+		undergarden {
+			sourceSet this.sourceSets.main
+		}
 	}
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven {
-        name 'Jared\'s Maven' // JEI
-        url 'https://maven.blamejared.com/'
-    }
-    maven {
-        name 'Curseforge Maven' // Jade
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-    maven {
-        url "https://modmaven.dev/"
-    }
+	maven {
+		// location of the maven that hosts JEI files since January 2023
+		name = "Jared's maven"
+		url = "https://maven.blamejared.com/"
+	}
+	maven {
+		// location of a maven mirror for JEI files, as a fallback
+		name = "ModMaven"
+		url = "https://modmaven.dev"
+	}
+	maven {
+		name = "Curse Maven"
+		url "https://cursemaven.com"
+	}
+	maven {
+		name = "TerraformersMC"
+		url = "https://maven.terraformersmc.com/"
+	}
 }
 
 dependencies {
-    implementation "net.neoforged:neoforge:${project.neo_version}"
-
 	// compile against the JEI API but do not include it at runtime
-	compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-	compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+	compileOnly("mezz.jei:jei-1.21-common-api:${jei_version}")
+	compileOnly("mezz.jei:jei-1.21-neoforge-api:${jei_version}")
 	// at runtime, use the full JEI jar for NeoForge
-	runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+	//runtimeOnly("mezz.jei:jei-1.21-neoforge:${jei_version}")
 
-    implementation "curse.maven:jade-324717:${project.jade_version}"
-    //implementation "curse.maven:just-enough-effect-descriptions-jeed-532286:${project.jeed_version}"
+	compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
+	runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+
+	implementation "curse.maven:jade-324717:${project.jade_version}"
     implementation "curse.maven:better-advancements-272515:${project.better_advancements_version}"
 }
 
@@ -122,11 +141,4 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
-}
-
-idea {
-	module {
-		downloadJavadoc = true
-		downloadSources = true
-	}
 }

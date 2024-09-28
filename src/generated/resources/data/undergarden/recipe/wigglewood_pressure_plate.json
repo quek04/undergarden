@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "B": {
+      "item": "undergarden:wigglewood_planks"
+    }
+  },
+  "pattern": [
+    "BB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "undergarden:wigglewood_pressure_plate"
+  }
+}
