@@ -9,10 +9,7 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.CloudStatus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.FogRenderer;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
@@ -20,19 +17,22 @@ import org.joml.Matrix4f;
 import quek.undergarden.Undergarden;
 
 public class OthersideSky {
-	private static final ResourceLocation VORTEX_LOCATION = new ResourceLocation(Undergarden.MODID, "textures/environment/otherside_vortex.png");
-	private static final ResourceLocation CLOUDS_LOCATION = new ResourceLocation("textures/environment/clouds.png");
+	private static final ResourceLocation VORTEX_LOCATION = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/environment/otherside_vortex.png");
+	private static final ResourceLocation CLOUDS_LOCATION = ResourceLocation.withDefaultNamespace("textures/environment/clouds.png");
 	private static final Minecraft minecraft = Minecraft.getInstance();
 	private static final LevelRenderer levelRenderer = minecraft.levelRenderer;
-	public static void renderSky(ClientLevel level, float partialTick, PoseStack poseStack, Camera camera, Matrix4f projectionMatrix, Runnable setupFog) {
+	public static void renderSky(ClientLevel level, float partialTick, Camera camera, Matrix4f frustrumMatrix, Matrix4f projectionMatrix, Runnable setupFog) {
 		setupFog.run();
+
+		PoseStack poseStack = new PoseStack();
+		poseStack.mulPose(frustrumMatrix);
 
 		Vec3 vec3 = level.getSkyColor(camera.getPosition(), partialTick);
 		float f = (float) vec3.x;
 		float f1 = (float) vec3.y;
 		float f2 = (float) vec3.z;
 		FogRenderer.levelFogColor();
-		BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
+		Tesselator tesselator = Tesselator.getInstance();
 		RenderSystem.depthMask(false);
 		RenderSystem.setShaderColor(f, f1, f2, 1.0F);
 		ShaderInstance shaderinstance = RenderSystem.getShader();
@@ -77,12 +77,12 @@ public class OthersideSky {
 		float size = 200.0F;
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderTexture(0, VORTEX_LOCATION);
-		bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-		bufferbuilder.vertex(matrix4f1, -size, 100.0F, -size).uv(0.0F, 0.0F).endVertex();
-		bufferbuilder.vertex(matrix4f1, size, 100.0F, -size).uv(1.0F, 0.0F).endVertex();
-		bufferbuilder.vertex(matrix4f1, size, 100.0F, size).uv(1.0F, 1.0F).endVertex();
-		bufferbuilder.vertex(matrix4f1, -size, 100.0F, size).uv(0.0F, 1.0F).endVertex();
-		BufferUploader.drawWithShader(bufferbuilder.end());
+		BufferBuilder bufferBuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+		bufferBuilder.addVertex(matrix4f1, -size, 100.0F, -size).setUv(0.0F, 0.0F);
+		bufferBuilder.addVertex(matrix4f1, size, 100.0F, -size).setUv(1.0F, 0.0F);
+		bufferBuilder.addVertex(matrix4f1, size, 100.0F, size).setUv(1.0F, 1.0F);
+		bufferBuilder.addVertex(matrix4f1, -size, 100.0F, size).setUv(0.0F, 1.0F);
+		BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
 				/*size = 20.0F;
 				RenderSystem.setShaderTexture(0, MOON_LOCATION);
 				int k = level.getMoonPhase();
@@ -128,12 +128,12 @@ public class OthersideSky {
 		RenderSystem.depthMask(true);
 	}
 
-	public static void renderClouds(int cloudY, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
-		RenderSystem.disableCull();
-		RenderSystem.enableBlend();
-		RenderSystem.enableDepthTest();
-		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-		RenderSystem.depthMask(true);
+	public static void renderClouds(int cloudY, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f frustumMatrix, Matrix4f projectionMatrix) {
+		//RenderSystem.disableCull();
+		//RenderSystem.enableBlend();
+		//RenderSystem.enableDepthTest();
+		//RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+		//RenderSystem.depthMask(true);
 		double d1 = (((float)ticks + partialTick) * 0.09F);
 		double d2 = camX / 12.0D;
 		double d3 = (cloudY - (float)camY + 0.33F);
@@ -158,45 +158,40 @@ public class OthersideSky {
 
 		if (levelRenderer.generateClouds) {
 			levelRenderer.generateClouds = false;
-			BufferBuilder bufferbuilder = Tesselator.getInstance().getBuilder();
 			if (levelRenderer.cloudBuffer != null) {
 				levelRenderer.cloudBuffer.close();
 			}
 
 			levelRenderer.cloudBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-			BufferBuilder.RenderedBuffer buildClouds = levelRenderer.buildClouds(bufferbuilder, d2, d3, d4, cloudColor);
+			MeshData buildClouds = levelRenderer.buildClouds(Tesselator.getInstance(), d2, d3, d4, cloudColor);
 			levelRenderer.cloudBuffer.bind();
 			levelRenderer.cloudBuffer.upload(buildClouds);
 			VertexBuffer.unbind();
 		}
 
-		RenderSystem.setShader(GameRenderer::getPositionTexColorNormalShader);
-		RenderSystem.setShaderTexture(0, CLOUDS_LOCATION);
 		FogRenderer.levelFogColor();
 		poseStack.pushPose();
+		poseStack.mulPose(frustumMatrix);
 		poseStack.scale(12.0F, 1.0F, 12.0F);
 		poseStack.translate(-f3, f4, -f5);
 		if (levelRenderer.cloudBuffer != null) {
 			levelRenderer.cloudBuffer.bind();
 			int l = levelRenderer.prevCloudsType == CloudStatus.FANCY ? 0 : 1;
 
-			for(int i1 = l; i1 < 2; ++i1) {
-				if (i1 == 0) {
-					RenderSystem.colorMask(false, false, false, false);
-				} else {
-					RenderSystem.colorMask(true, true, true, true);
-				}
-
+			for (int i1 = l; i1 < 2; i1++) {
+				RenderType rendertype = i1 == 0 ? RenderType.cloudsDepthOnly() : RenderType.clouds();
+				rendertype.setupRenderState();
 				ShaderInstance shaderinstance = RenderSystem.getShader();
 				levelRenderer.cloudBuffer.drawWithShader(poseStack.last().pose(), projectionMatrix, shaderinstance);
+				rendertype.clearRenderState();
 			}
 
 			VertexBuffer.unbind();
 		}
 
 		poseStack.popPose();
-		RenderSystem.enableCull();
-		RenderSystem.disableBlend();
-		RenderSystem.defaultBlendFunc();
+		//RenderSystem.enableCull();
+		//RenderSystem.disableBlend();
+		//RenderSystem.defaultBlendFunc();
 	}
 }

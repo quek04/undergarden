@@ -39,7 +39,7 @@ public class UGConfiguredCarvers {
 				UniformHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.TOP), //y
 				ConstantFloat.of(1.5F), //y scale
 				VerticalAnchor.absolute(-64), //liquid level
-				BuiltInRegistries.BLOCK.getOrCreateTag(UGTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES), //replacable blocks
+				blocks.getOrThrow(UGTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES), //replacable blocks
 				UniformFloat.of(0.7F, 1.4F), //horizontal radius multiplier
 				UniformFloat.of(0.8F, 1.3F), //vertical radius multiplier
 				UniformFloat.of(-1.0F, -0.4F) //floor level

@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.Camera;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
@@ -19,14 +19,6 @@ import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.DimensionSpecialEffects;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.registries.Registries;
@@ -49,14 +41,14 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerHeartTypeEvent;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Vector3f;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
+import quek.undergarden.client.OthersideSky;
 import quek.undergarden.client.gui.screen.UndergardenReceivingLevelScreen;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
-import quek.undergarden.client.OthersideSky;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
@@ -337,15 +329,15 @@ public class UndergardenClientEvents {
 			}
 
 			@Override
-			public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
-				OthersideSky.renderSky(level, partialTick, poseStack, camera, projectionMatrix, setupFog);
+			public boolean renderSky(ClientLevel level, int ticks, float partialTick, Matrix4f modelViewMatrix, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
+				OthersideSky.renderSky(level, partialTick, camera, modelViewMatrix, projectionMatrix, setupFog);
 				return true;
 			}
 
 			@Override
-			public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
-				OthersideSky.renderClouds(192, ticks, partialTick, poseStack, camX, camY, camZ, projectionMatrix);
-				OthersideSky.renderClouds(8, ticks, partialTick, poseStack, camX, camY, camZ, projectionMatrix);
+			public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f modelViewMatrix, Matrix4f projectionMatrix) {
+				OthersideSky.renderClouds(192, ticks, partialTick, poseStack, camX, camY, camZ, modelViewMatrix, projectionMatrix);
+				OthersideSky.renderClouds(8, ticks, partialTick, poseStack, camX, camY, camZ, modelViewMatrix, projectionMatrix);
 				return true;
 			}
 

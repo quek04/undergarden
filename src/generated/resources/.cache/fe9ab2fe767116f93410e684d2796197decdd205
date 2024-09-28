@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-23T17:13:13.1641054	Tags for minecraft:block mod id undergarden
+// 1.21.1	2024-09-28T01:15:49.9795512	Tags for minecraft:block mod id undergarden
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/block/cobblestones.json
 3430489c73ccf7c6a97b8405ff097796daf6e4ba data/c/tags/block/fences/wooden.json
 8c4e326a74b8c8e3a8dd62875f1f8f81e697c7a6 data/c/tags/block/fence_gates/wooden.json
@@ -91,6 +91,7 @@ b40928c0a0a4fb3795dbad37e9e7d804667b70ed data/minecraft/tags/block/wall_signs.js
 4c7b7db538eea13258d68b6c2e6d6153dd62f115 data/minecraft/tags/block/wooden_stairs.json
 62cd0713bd429865db209b64d0f05c198189e0a2 data/minecraft/tags/block/wooden_trapdoors.json
 167c0dd12d5b92d32e097f8168ebc9247fb7f34e data/minecraft/tags/block/wool_carpets.json
+817f355c76e8ad6e17a570f60cb4a0aa5154af28 data/undergarden/tags/block/base_stone_otherside.json
 53f1b7a4cd25c233a4d5d2b70f36266c5dc7dead data/undergarden/tags/block/base_stone_undergarden.json
 2edb0616f83e57e7d98c4ab93226cc8008e68de5 data/undergarden/tags/block/depthrock_ore_replaceables.json
 cbc9652a42caf8f045b4a2303a296da3185f69ab data/undergarden/tags/block/dreadrock_ore_replaceables.json
@@ -98,6 +99,7 @@ ecf3d2ba2cbcfab1dd19bc4bcb329edf6090865c data/undergarden/tags/block/greater_dwe
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/block/grongle_logs.json
 e2d38adfea4f277c6bb672666b18b50303495e49 data/undergarden/tags/block/muncher_breakables.json
 50592f606917d305b917a1f8a263abb8d9ec6be5 data/undergarden/tags/block/mushrooms.json
+df44670b6f87e312ceb0a9d47919b7531d2cf87d data/undergarden/tags/block/otherside_carver_replaceables.json
 c5f61fcebe6ab7bb1b5d1c6a196e5ac41cfa2102 data/undergarden/tags/block/portal_frame_blocks.json
 623ab7217e9af30498af2fbdea52aceeae67771f data/undergarden/tags/block/scintling_spawnable_on.json
 53dadb11482fdd04c73848240ea721d1176b5286 data/undergarden/tags/block/shiverstone_ore_replaceables.json
