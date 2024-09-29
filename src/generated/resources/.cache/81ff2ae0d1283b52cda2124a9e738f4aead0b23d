@@ -1,10 +1,10 @@
-// 1.21.1	2024-09-28T01:15:49.9702008	Tags for minecraft:worldgen/biome mod id undergarden
-bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_patrol_spawns.json
-bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_wandering_trader_spawns.json
-bffe7c33d3f6a7486d47739b3235ef4c8851adc6 data/minecraft/tags/worldgen/biome/without_zombie_sieges.json
+// 1.21.1	2024-09-28T23:35:33.1773866	Tags for minecraft:worldgen/biome mod id undergarden
+91dd6e35e989ca00afc40ea56a18b3bdffcac824 data/minecraft/tags/worldgen/biome/without_patrol_spawns.json
+91dd6e35e989ca00afc40ea56a18b3bdffcac824 data/minecraft/tags/worldgen/biome/without_wandering_trader_spawns.json
+91dd6e35e989ca00afc40ea56a18b3bdffcac824 data/minecraft/tags/worldgen/biome/without_zombie_sieges.json
 cdd58a6b569185a3932aa09d9470ae6b5788f0ca data/undergarden/tags/worldgen/biome/has_structure/catacombs.json
 edd81508dcb761ee42f96d6b2fe25ece77f13b43 data/undergarden/tags/worldgen/biome/has_structure/denizen_camp.json
 1b1ba425899be0ef167ba43f730368e963bbec03 data/undergarden/tags/worldgen/biome/has_structure/forgotten_vestige.json
-358e892dadca8460ba1e1cc61418b7c1c1ae14cb data/undergarden/tags/worldgen/biome/is_otherside.json
+f50577925a7dd0322513f83f234649aaffa320fb data/undergarden/tags/worldgen/biome/is_otherside.json
 1c12d8dc95ef3d915ad024d937134ce8fe70a970 data/undergarden/tags/worldgen/biome/is_undergarden.json
-94cf77654213e2a5d47c1c424bd54563dcb35d74 data/undergarden/tags/worldgen/biome/ticks_utheric_infection.json
+20834fd86b7df70c5a104bd3bdc5b70fef564323 data/undergarden/tags/worldgen/biome/ticks_utheric_infection.json

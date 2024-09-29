@@ -6,11 +6,29 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "undergarden:howling_plains",
+          "biome": "undergarden:fields_of_sorrow",
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
-            "erosion": 0.0,
+            "erosion": [
+              0.0,
+              0.2
+            ],
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:howling_peaks",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": [
+              0.2,
+              1.0
+            ],
             "humidity": 0.0,
             "offset": 0.0,
             "temperature": 0.0,

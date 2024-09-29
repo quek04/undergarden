@@ -308,7 +308,7 @@ public class UGDimensions {
 				DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.TEMPERATURE)), //temperature
 				DensityFunctions.shiftedNoise2d(xShift, zShift, 0.25D, noises.getOrThrow(Noises.VEGETATION)), //vegetation
 				NoiseRouterData.getFunction(functions, NoiseRouterData.CONTINENTS), //continents
-				NoiseRouterData.getFunction(functions, NoiseRouterData.EROSION), //erosion
+				DensityFunctions.noise(noises.getOrThrow(Noises.EROSION), 2.0D, 1.0D), //erosion
 				NoiseRouterData.getFunction(functions, NoiseRouterData.DEPTH), //depth
 				NoiseRouterData.getFunction(functions, NoiseRouterData.RIDGES), //ridges
 				DensityFunctions.zero(), //initial density
@@ -363,7 +363,10 @@ public class UGDimensions {
 					)
 				)
 			),*/
-			SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState()),
+			SurfaceRules.sequence(
+				SurfaceRules.ifTrue(SurfaceRules.isBiome(UGBiomes.HOWLING_PEAKS), SurfaceRules.state(UGBlocks.FORGOTTEN_BLOCK.get().defaultBlockState())),
+				SurfaceRules.state(UGBlocks.TREMBLECRUST.get().defaultBlockState())
+			),
 			List.of(),
 			-64,
 			false,

@@ -1,8 +1,8 @@
 {
   "values": [
+    "#undergarden:is_otherside",
     "undergarden:depths",
     "undergarden:infected_depths",
-    "undergarden:puff_mushroom_forest",
-    "undergarden:howling_plains"
+    "undergarden:puff_mushroom_forest"
   ]
 }
