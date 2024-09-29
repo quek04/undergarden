@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -139,6 +138,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> DEEPSOIL = register("deepsoil", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
 	public static final DeferredBlock<Block> COARSE_DEEPSOIL = register("coarse_deepsoil", () -> new Block(BlockBehaviour.Properties.ofFullCopy(DEEPSOIL.get())));
 	public static final DeferredBlock<Block> DEEPSOIL_FARMLAND = register("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FARMLAND)));
+	public static final DeferredBlock<Block> DEAD_WISPYGRASS_BLOCK = register("dead_wispygrass_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get())));
 	public static final DeferredBlock<Block> GOO = register("goo", () -> new GooLayerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).replaceable().pushReaction(PushReaction.DESTROY).randomTicks().strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SNOW).isViewBlocking((state, getter, pos) -> false).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission()));
 	public static final DeferredBlock<Block> GOO_BLOCK = register("goo_block", () -> new GooBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion()));
 	public static final DeferredBlock<Block> SMOG_VENT = register("smog_vent", () -> new SmogVentBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).lightLevel((state) -> 10).isValidSpawn(((state, level, pos, entity) -> false))));
@@ -165,6 +165,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> ASHEN_DEEPTURF = register("ashen_deepturf", () -> new TallDeepturfVariantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)));
 	public static final DeferredBlock<Block> FROZEN_DEEPTURF = register("frozen_deepturf", () -> new TallDeepturfVariantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)));
 	public static final DeferredBlock<Block> TALL_DEEPTURF = register("tall_deepturf", () -> new DoublePlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS)));
+	public static final DeferredBlock<Block> DEAD_WISPYGRASS = register("dead_wispygrass", () -> new TallDeadWispygrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)));
 	public static final DeferredBlock<Block> SHIMMERWEED = register("shimmerweed", () -> new ShimmerweedBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).lightLevel((state) -> 12)));
 	public static final DeferredBlock<Block> TALL_SHIMMERWEED = register("tall_shimmerweed", () -> new TallShimmerweedBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS).lightLevel((state) -> 14)));
 	public static final DeferredBlock<Block> DITCHBULB_PLANT = BLOCKS.register("ditchbulb_plant", () -> new DitchbulbBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).randomTicks().lightLevel((state) -> state.getValue(DitchbulbBlock.AGE) == 1 ? 6 : 0)));

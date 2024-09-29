@@ -107,6 +107,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.DEEPSOIL, "Deepsoil");
 		addBlock(UGBlocks.COARSE_DEEPSOIL, "Coarse Deepsoil");
 		addBlock(UGBlocks.DEEPSOIL_FARMLAND, "Deepsoil Farmland");
+		addBlock(UGBlocks.DEAD_WISPYGRASS_BLOCK, "Dead Wispygrass Block");
 		addBlock(UGBlocks.GOO, "Scintling Goo");
 		addBlock(UGBlocks.GOO_BLOCK, "Scintling Goo Block");
 		addBlock(UGBlocks.SMOG_VENT, "Smog Vent");
@@ -133,6 +134,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ASHEN_DEEPTURF, "Ashen Deepturf");
 		addBlock(UGBlocks.FROZEN_DEEPTURF, "Frozen Deepturf");
 		addBlock(UGBlocks.TALL_DEEPTURF, "Tall Deepturf");
+		addBlock(UGBlocks.DEAD_WISPYGRASS, "Dead Wispygrass");
 		addBlock(UGBlocks.SHIMMERWEED, "Shimmerweed");
 		addBlock(UGBlocks.TALL_SHIMMERWEED, "Tall Shimmerweed");
 		addBlock(UGBlocks.POTTED_SHIMMERWEED, "Potted Shimmerweed");

@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-23T17:06:25.6448962	Item Models: undergarden
+// 1.21.1	2024-09-29T01:11:12.5600126	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -60,6 +60,8 @@ cb41d73d78a1122b3c2c2324edec75267e3563d0 assets/undergarden/models/item/coarse_d
 e4a51f53846af5b98dbace974ca138319f020522 assets/undergarden/models/item/cracked_depthrock_bricks.json
 95e11abaa33eb71871be72b5e1e263a1b0b196ca assets/undergarden/models/item/cracked_shiverstone_bricks.json
 7a497ad1fb7755a0ebc63bb981538f993a903379 assets/undergarden/models/item/cracked_tremblecrust_bricks.json
+29ca74d85510c60d40004c407cacd13dd356d79b assets/undergarden/models/item/dead_wispygrass.json
+ef1919ae7a826027e81daf51ae8b5abb8008b8f4 assets/undergarden/models/item/dead_wispygrass_block.json
 d35aeb21febab1f730aa8a34f914e1a5cf87a6a4 assets/undergarden/models/item/deepsoil.json
 4af6f8c06a1e254e993032eb1efc6fadbb3970b5 assets/undergarden/models/item/deepsoil_farmland.json
 6b10a425dcedec1c7911ed7f335ed518b43eda57 assets/undergarden/models/item/deepturf.json

@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-23T17:06:25.6373895	Loot Tables
+// 1.21.1	2024-09-29T01:11:12.5461861	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_table/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_table/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_table/blocks/ancient_root_button.json
@@ -37,6 +37,8 @@ ec9a483dfe2c29bf50dff6e25324d96fbe5ec6d4 data/undergarden/loot_table/blocks/clog
 e8b1661c0d5f54fbd7167bf2e53955830b31835a data/undergarden/loot_table/blocks/cracked_depthrock_bricks.json
 872176f6042f4ef75fe271c7dee34ef2e905bc15 data/undergarden/loot_table/blocks/cracked_shiverstone_bricks.json
 cc7a32a408fef58c81084adbd14896c2781a89c8 data/undergarden/loot_table/blocks/cracked_tremblecrust_bricks.json
+3141daa421bcfd74ee0d25f3e15bdeaa06b05c28 data/undergarden/loot_table/blocks/dead_wispygrass.json
+fa9df0a5c0a4721ec174d539f8e19698abc3fb58 data/undergarden/loot_table/blocks/dead_wispygrass_block.json
 e9ef36466cffa68e0db1a29b639c37b8f88e6ded data/undergarden/loot_table/blocks/deepsoil.json
 0301cd82f1b59ab682ff5317b8192362ee7f1721 data/undergarden/loot_table/blocks/deepsoil_farmland.json
 714c82e6820c1d7195bfb591c79ed4ab083b1be6 data/undergarden/loot_table/blocks/deepturf.json

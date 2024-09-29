@@ -324,6 +324,8 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.DREADROCK_BRICK_WALL);
 			dropSelf(UGBlocks.DREADROCK_BUTTON);
 			dropSelf(UGBlocks.DREADROCK_PRESSURE_PLATE);
+			dropWithSilk(UGBlocks.DEAD_WISPYGRASS_BLOCK, UGBlocks.TREMBLECRUST);
+			this.add(UGBlocks.DEAD_WISPYGRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
 		}
 
 		@Override

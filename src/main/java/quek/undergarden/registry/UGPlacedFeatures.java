@@ -65,6 +65,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> GLOOMGOURD_PATCH = create("gloomgourd_patch");
 	public static final ResourceKey<PlacedFeature> DROOPVINE_PATCH = create("droopvine_patch");
 	public static final ResourceKey<PlacedFeature> GLITTERKELP_PATCH = create("glitterkelp_patch");
+	public static final ResourceKey<PlacedFeature> DEAD_WISPYGRASS_PATCH = create("dead_wispygrass_patch");
 
 	//tree
 	public static final ResourceKey<PlacedFeature> SMOGSTEM_TREE = create("smogstem_tree");
@@ -147,6 +148,7 @@ public class UGPlacedFeatures {
 		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD_PATCH), patch(5)));
 		context.register(DROOPVINE_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DROOPVINE), patch(100)));
 		context.register(GLITTERKELP_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLITTERKELP), List.of(NoiseBasedCountPlacement.of(1000, 80.0D, 0.0D), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)), BiomeFilter.biome())));
+		context.register(DEAD_WISPYGRASS_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEAD_WISPYGRASS_PATCH), patchWithFilter(100, BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), UGBlocks.DEAD_WISPYGRASS_BLOCK.get()))));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), tree(8)));

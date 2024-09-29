@@ -288,6 +288,8 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.DREADROCK_PRESSURE_PLATE);
 		normalItem(UGItems.UTHERIC_CLUSTER);
 		normalItem(UGItems.CORRUPT_CATALYST);
+		block(UGBlocks.DEAD_WISPYGRASS_BLOCK);
+		blockFlat(UGBlocks.DEAD_WISPYGRASS);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
 		egg(UGItems.GREATER_DWELLER_SPAWN_EGG);

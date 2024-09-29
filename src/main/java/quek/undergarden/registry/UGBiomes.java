@@ -522,6 +522,7 @@ public class UGBiomes {
 			.generationSettings(addOthersideOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH_EXTRA)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEAD_WISPYGRASS_PATCH)
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder()).build())
 			.hasPrecipitation(false)

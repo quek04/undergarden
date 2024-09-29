@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-12T15:39:38.7527992	Block States: undergarden
+// 1.21.1	2024-09-29T01:11:12.5526944	Block States: undergarden
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
 f80efe8d72f896f3fb26b4c28f312ad9ec9ae967 assets/undergarden/blockstates/ancient_root.json
 59e8649180610b11f7a560c77883ec13cef7bda3 assets/undergarden/blockstates/ancient_root_button.json
@@ -35,6 +35,8 @@ a286c493c584d31d30055ba8f4a21b77c222f7c7 assets/undergarden/blockstates/cloggrum
 1379a10871e12d6a65dabfff55380e3453d01eff assets/undergarden/blockstates/cracked_depthrock_bricks.json
 6ccf486fa675ae506d13d9dac88162aa9074a6fc assets/undergarden/blockstates/cracked_shiverstone_bricks.json
 b581f4fc6baf5a8073e80802b33a72059778886c assets/undergarden/blockstates/cracked_tremblecrust_bricks.json
+4a1f8e43f5f0e6aca9b0cb302e1fe874b0c0f137 assets/undergarden/blockstates/dead_wispygrass.json
+b0bf7aaeaee4802e6fc8a5e9ce0e381ed20977ce assets/undergarden/blockstates/dead_wispygrass_block.json
 abb3807c8b4946e646f3a667e179f450427a462c assets/undergarden/blockstates/deepsoil.json
 2402f3356c579f40ddb379bc8a8fc4486ec29ef5 assets/undergarden/blockstates/deepturf.json
 39421e59cabcf8a5f3ae4e1c34d968f7b426b662 assets/undergarden/blockstates/deepturf_block.json
@@ -256,6 +258,8 @@ b131b6958b94706014a4dd8565f9ef14fe7c94da assets/undergarden/models/block/coarse_
 b7d5706ad55eb4223b0a8517d290b5dc2d869b6d assets/undergarden/models/block/cracked_depthrock_bricks.json
 18ab4784344707062d622281a98b2d87737c5557 assets/undergarden/models/block/cracked_shiverstone_bricks.json
 4b60d6cdc74764d528258256ca50741aa4478764 assets/undergarden/models/block/cracked_tremblecrust_bricks.json
+36d29070786bec64933df9f20efaeda650ab8979 assets/undergarden/models/block/dead_wispygrass.json
+af7ea6a41176f8eb05116521c3e57654904e7c59 assets/undergarden/models/block/dead_wispygrass_block.json
 e889eb10f285000866235ad1b5a180276dae9b04 assets/undergarden/models/block/deepsoil.json
 05f8790d3f860bbe21a649946a5c00bdcfbe6f9a assets/undergarden/models/block/deepturf.json
 a55640d123347fb5e7506b1116d42fefaaa57dab assets/undergarden/models/block/deepturf_block_snowy.json

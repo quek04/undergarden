@@ -273,5 +273,13 @@ public class UGBlockStates extends UGBlockstateProvider {
 			String name = name(UGBlocks.HANGING_GRONGLE_LEAVES) + (state.getValue(HangingGrongleLeavesBlock.HALF) == DoubleBlockHalf.UPPER ? "_top" : "");
 			return ConfiguredModel.builder().modelFile(models().cross(name, texture(name)).renderType("minecraft:cutout")).build();
 		});
+
+		ModelFile dead_wispygrass_block = models().cubeBottomTop(name(UGBlocks.DEAD_WISPYGRASS_BLOCK), texture("dead_wispygrass_block_side"), texture("tremblecrust"), texture("dead_wispygrass_block_top"));
+		simpleBlock(UGBlocks.DEAD_WISPYGRASS_BLOCK.get(), ConfiguredModel.builder()
+			.modelFile(dead_wispygrass_block)/*.nextModel()
+			.rotationY(270).modelFile(ashen_deepturf).nextModel()
+			.rotationY(180).modelFile(ashen_deepturf).nextModel()
+			.rotationY(90).modelFile(ashen_deepturf)*/.build());
+		crossBlock(UGBlocks.DEAD_WISPYGRASS);
 	}
 }

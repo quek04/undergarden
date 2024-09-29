@@ -1,5 +1,6 @@
 {
   "values": [
-    "#undergarden:base_stone_otherside"
+    "#undergarden:base_stone_otherside",
+    "undergarden:dead_wispygrass_block"
   ]
 }

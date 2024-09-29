@@ -18,7 +18,6 @@ import quek.undergarden.Undergarden;
 
 public class OthersideSky {
 	private static final ResourceLocation VORTEX_LOCATION = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/environment/otherside_vortex.png");
-	private static final ResourceLocation CLOUDS_LOCATION = ResourceLocation.withDefaultNamespace("textures/environment/clouds.png");
 	private static final Minecraft minecraft = Minecraft.getInstance();
 	private static final LevelRenderer levelRenderer = minecraft.levelRenderer;
 	public static void renderSky(ClientLevel level, float partialTick, Camera camera, Matrix4f frustrumMatrix, Matrix4f projectionMatrix, Runnable setupFog) {
@@ -129,11 +128,6 @@ public class OthersideSky {
 	}
 
 	public static void renderClouds(int cloudY, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f frustumMatrix, Matrix4f projectionMatrix) {
-		//RenderSystem.disableCull();
-		//RenderSystem.enableBlend();
-		//RenderSystem.enableDepthTest();
-		//RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-		//RenderSystem.depthMask(true);
 		double d1 = (((float)ticks + partialTick) * 0.09F);
 		double d2 = camX / 12.0D;
 		double d3 = (cloudY - (float)camY + 0.33F);
@@ -190,8 +184,5 @@ public class OthersideSky {
 		}
 
 		poseStack.popPose();
-		//RenderSystem.enableCull();
-		//RenderSystem.disableBlend();
-		//RenderSystem.defaultBlendFunc();
 	}
 }

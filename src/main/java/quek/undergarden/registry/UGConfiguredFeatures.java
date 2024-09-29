@@ -91,6 +91,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMGOURD_PATCH = create("gloomgourd_patch");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DROOPVINE = create("droopvine");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GLITTERKELP = create("glitterkelp");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_WISPYGRASS_PATCH = create("dead_wispygrass_patch");
 
 	//tree
 	public static final ResourceKey<ConfiguredFeature<?, ?>> SMOGSTEM_TREE = create("smogstem_tree");
@@ -167,6 +168,7 @@ public class UGConfiguredFeatures {
 		context.register(GLOOMGOURD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.GLOOMGOURD.get(), 16, List.of(UGBlocks.DEEPTURF_BLOCK.get()))));
 		context.register(DROOPVINE, new ConfiguredFeature<>(UGFeatures.DROOPVINE.get(), FeatureConfiguration.NONE));
 		context.register(GLITTERKELP, new ConfiguredFeature<>(UGFeatures.GLITTERKELP.get(), FeatureConfiguration.NONE));
+		context.register(DEAD_WISPYGRASS_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DEAD_WISPYGRASS.get(), 64)));
 
 		//tree
 		context.register(SMOGSTEM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(UGBlocks.SMOGSTEM_LOG.get()), new SmogstemTrunkPlacer(10, 2, 2, 1), BlockStateProvider.simple(UGBlocks.SMOGSTEM_LEAVES.get()), new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2), new TwoLayersFeatureSize(1, 1, 2)).ignoreVines().dirt(BlockStateProvider.simple(UGBlocks.DEEPSOIL.get())).build()));
