@@ -1,8 +1,6 @@
 {
   "values": [
     "#undergarden:is_otherside",
-    "undergarden:depths",
-    "undergarden:infected_depths",
-    "undergarden:puff_mushroom_forest"
+    "#undergarden:is_depths_biome"
   ]
 }
