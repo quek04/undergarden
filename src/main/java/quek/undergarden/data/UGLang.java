@@ -356,6 +356,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.SMOG_MOG_SPAWN_EGG, "S'Mog Spawn Egg");
 		addItem(UGItems.FORGOTTEN_SPAWN_EGG, "Forgotten Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
+		addItem(UGItems.MINION_SPAWN_EGG, "Forgotten Minion Spawn Egg");
 
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
 		addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
