@@ -261,8 +261,13 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	public void positionRider(Entity passenger, Entity.MoveFunction callback) {
 		float ySin = Mth.sin(this.yBodyRot * ((float) Math.PI / 180F));
 		float yCos = Mth.cos(this.yBodyRot * ((float) Math.PI / 180F));
-		Vec3 vec3 = this.getPassengerRidingPosition(passenger);
-		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), vec3.y() + passenger.getVehicleAttachmentPoint(this).y(), this.getZ() - (double) (0.5F * yCos));
+		Vec3 passengerPosition = this.getPassengerRidingPosition(passenger);
+		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), passengerPosition.y() + passenger.getVehicleAttachmentPoint(this).y(), this.getZ() - (double) (0.5F * yCos));
+	}
+
+	@Override
+	public Vec3 getPassengerRidingPosition(Entity entity) {
+		return this.position().add(0, 0.4, 0);
 	}
 
 	public boolean isJumping() {
