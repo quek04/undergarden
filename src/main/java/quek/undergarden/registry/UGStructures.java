@@ -121,7 +121,7 @@ public class UGStructures {
 			new Structure.StructureSettings(
 				biomes.getOrThrow(UGTags.Biomes.HAS_DENIZEN_CAMP),
 				Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 1, 1)))),
-				GenerationStep.Decoration.SURFACE_STRUCTURES,
+				GenerationStep.Decoration.UNDERGROUND_STRUCTURES,
 				TerrainAdjustment.BEARD_THIN
 			),
 			pools.getOrThrow(DENIZEN_CAMP_TOTEM_CIRCLE_POOL),

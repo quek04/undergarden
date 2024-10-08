@@ -27,6 +27,6 @@
     }
   },
   "start_pool": "undergarden:denizen_camp/totem_circle_pool",
-  "step": "surface_structures",
+  "step": "underground_structures",
   "terrain_adaptation": "beard_thin"
 }
