@@ -14,6 +14,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
@@ -36,6 +37,7 @@ import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -53,6 +55,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
+import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
@@ -84,6 +87,7 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::setup);
 		bus.addListener(UndergardenCommonEvents::registerEntityAttributes);
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
+		bus.addListener(UndergardenCommonEvents::modifyComponents);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickUthericInfection);
@@ -492,5 +496,11 @@ public class UndergardenCommonEvents {
 				}
 			}
 		}
+	}
+
+	public static void modifyComponents(ModifyDefaultComponentsEvent event) {
+		event.modifyMatching(item -> item instanceof ArmorItem, builder -> {
+			builder.set(UGDataComponents.ROGDORIUM_INFUSION.get(), RogdoriumInfusion.DEFAULT);
+		});
 	}
 }

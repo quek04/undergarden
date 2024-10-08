@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
@@ -20,14 +21,19 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
@@ -38,6 +44,7 @@ import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerHeartTypeEvent;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
@@ -54,11 +61,13 @@ import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.client.render.layer.DenizenMaskLayer;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
+import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.*;
 
+import java.util.List;
 import java.util.Objects;
 
 public class UndergardenClientEvents {
@@ -86,11 +95,13 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerDimensionSpecialEffects);
 		bus.addListener(UndergardenClientEvents::registerClientExtensions);
 		bus.addListener(UndergardenClientEvents::registerDimensionTransitionScreens);
+		bus.addListener(UndergardenClientEvents::registerItemDecorations);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::renderVirulentHearts);
+		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::addTooltips);
 	}
 
 	private static void clientSetup(FMLClientSetupEvent event) {
@@ -461,6 +472,37 @@ public class UndergardenClientEvents {
 	private static void registerDimensionTransitionScreens(RegisterDimensionTransitionScreenEvent event) {
 		event.registerIncomingEffect(UGDimensions.UNDERGARDEN_LEVEL, UndergardenReceivingLevelScreen::new);
 		event.registerOutgoingEffect(UGDimensions.UNDERGARDEN_LEVEL, UndergardenReceivingLevelScreen::new);
+	}
+
+	private static void registerItemDecorations(RegisterItemDecorationsEvent event) {
+		BuiltInRegistries.ITEM.stream().filter(item -> item instanceof ArmorItem).forEach(item -> event.register(item, ((guiGraphics, font, stack, xOffset, yOffset) -> {
+			int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
+			int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
+			if (infusionAmount > 0) {
+				int barWidth = Math.round(infusionAmount * 13.0F / infusionMax);
+				int x = xOffset + 2;
+				int y = yOffset + (stack.isBarVisible() ? 11 : 13);
+				guiGraphics.fill(RenderType.guiOverlay(), x, y, x + 13, y + 2, -16777216);
+				guiGraphics.fill(RenderType.guiOverlay(), x, y, x + (infusionAmount == infusionMax ? 13 : barWidth), y + 1, 8236977 | 0xFF000000);
+				return true;
+			}
+			return false;
+		})));
+	}
+
+	private static void addTooltips(ItemTooltipEvent event) {
+		TooltipFlag flags = event.getFlags();
+		List<Component> tooltip = event.getToolTip();
+		ItemStack stack = event.getItemStack();
+		if (flags.isAdvanced()) {
+			if (stack.getItem().components().has(UGDataComponents.ROGDORIUM_INFUSION.get())) {
+				int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
+				int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
+				if (infusionAmount > 0) {
+					tooltip.add(1, Component.translatable("item.undergarden.rogdorium_infusion").append(": " + infusionAmount + "/" + infusionMax).withStyle(ChatFormatting.AQUA));
+				}
+			}
+		}
 	}
 
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, Player player) {

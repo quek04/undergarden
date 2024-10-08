@@ -78,7 +78,8 @@ public class Undergarden {
 			UGArmorMaterials.ARMOR_MATERIALS,
 			UGMenuTypes.MENU_TYPES,
 			UGRecipeSerializers.RECIPE_SERIALIZERS,
-			UGRecipeTypes.RECIPE_TYPES
+			UGRecipeTypes.RECIPE_TYPES,
+			UGDataComponents.COMPONENTS,
 		};
 
 		for (DeferredRegister<?> register : registers) {
