@@ -403,6 +403,7 @@ public class UndergardenClientEvents {
 		gui.rightHeight += 10;
 
 		int infectionLevel = player.getData(UGAttachments.UTHERIC_INFECTION);
+		//graphics.drawString(Minecraft.getInstance().font, player.getData(UGAttachments.UTHERIC_INFECTION).toString(), left, top, 10500660);
 		for (int i = 0; i < 10; i++) {
 			int idx = i * 2 + 1;
 			int x = left - i * 8 - 9;

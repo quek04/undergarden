@@ -333,13 +333,17 @@ public class UndergardenCommonEvents {
 					livingEntity.hurt(livingEntity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
 				} else {
 					if (livingEntity.level().getBiome(livingEntity.blockPosition()).is(UGTags.Biomes.TICKS_UTHERIC_INFECTION) && livingEntity.tickCount % 400 == 0) {
+						// increase infection by 1 every 20 seconds in infected biome
 						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + 1);
 					} else {
 						if (livingEntity.tickCount % 100 == 0) {
+							// check nearby blocks every 5 seconds to see if infection blocks are nearby
 							int blocks = countInfectedBlocksNearby(livingEntity.level(), livingEntity.blockPosition(), livingEntity.getRandom());
 							if (blocks > 0) {
+								// increase infection by amount of infection blocks nearby
 								livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + Mth.clamp(Mth.ceil(Mth.sqrt(blocks / 2.0F) + 1), 1, 5));
 							} else if (livingEntity.tickCount % 400 == 0 && data > 0) {
+								// decrease infection by 1 every 20 seconds if infection is above 0
 								livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data - 1);
 							}
 						}
