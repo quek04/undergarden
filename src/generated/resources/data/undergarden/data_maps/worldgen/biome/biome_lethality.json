@@ -1,0 +1,13 @@
+{
+  "values": {
+    "undergarden:depths": {
+      "lethality": 0.01
+    },
+    "undergarden:infected_depths": {
+      "lethality": 0.025
+    },
+    "undergarden:puff_mushroom_forest": {
+      "lethality": 0.01
+    }
+  }
+}

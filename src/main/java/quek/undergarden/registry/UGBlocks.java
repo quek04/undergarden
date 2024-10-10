@@ -6,18 +6,13 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
@@ -25,7 +20,6 @@ import quek.undergarden.block.*;
 import quek.undergarden.block.portal.UndergardenPortalBlock;
 import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.item.tool.slingshot.GrongletItem;
-import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.world.gen.tree.UGTreeGrowers;
 
 import java.util.Objects;
@@ -362,7 +356,7 @@ public class UGBlocks {
 				return new HangingSignItem(GRONGLE_HANGING_SIGN.get(), GRONGLE_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (Objects.requireNonNull(block.get()) == ANCIENT_ROOT_HANGING_SIGN.get()) {
 				return new HangingSignItem(ANCIENT_ROOT_HANGING_SIGN.get(), ANCIENT_ROOT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
-			} else if (Objects.requireNonNull(block.get()) == UTHERIUM_GROWTH.get()) {
+			} /*else if (Objects.requireNonNull(block.get()) == UTHERIUM_GROWTH.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties()) {
 					@Override
 					public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotID, boolean isSelected) {
@@ -375,7 +369,7 @@ public class UGBlocks {
 						}
 					}
 				};
-			} else {
+			}*/ else {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			}
 		};

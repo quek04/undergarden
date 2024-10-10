@@ -369,7 +369,7 @@ public class UndergardenClientEvents {
 		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_bar"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
-			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0 && minecraft.gameMode.canHurtPlayer()) {
+			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0.0F && minecraft.gameMode.canHurtPlayer()) {
 				renderUthericInfectionBar(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
 			}
 		});
@@ -413,8 +413,8 @@ public class UndergardenClientEvents {
 		int top = height - gui.rightHeight;
 		gui.rightHeight += 10;
 
-		int infectionLevel = player.getData(UGAttachments.UTHERIC_INFECTION);
-		//graphics.drawString(Minecraft.getInstance().font, player.getData(UGAttachments.UTHERIC_INFECTION).toString(), left, top, 10500660);
+		int infectionLevel = Mth.ceil(player.getData(UGAttachments.UTHERIC_INFECTION));
+		graphics.drawString(Minecraft.getInstance().font, player.getData(UGAttachments.UTHERIC_INFECTION).toString(), left, top, 10500660);
 		for (int i = 0; i < 10; i++) {
 			int idx = i * 2 + 1;
 			int x = left - i * 8 - 9;

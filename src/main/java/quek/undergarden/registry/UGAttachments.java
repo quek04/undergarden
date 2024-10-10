@@ -11,5 +11,5 @@ public class UGAttachments {
 
 	public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Undergarden.MODID);
 
-	public static final DeferredHolder<AttachmentType<?>, AttachmentType<Integer>> UTHERIC_INFECTION = ATTACHMENTS.register("utheric_infection", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build());
+	public static final DeferredHolder<AttachmentType<?>, AttachmentType<Double>> UTHERIC_INFECTION = ATTACHMENTS.register("utheric_infection", () -> AttachmentType.builder(() -> 0.0D).serialize(Codec.DOUBLE).build());
 }

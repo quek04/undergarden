@@ -79,7 +79,7 @@ public class DenizenChillByCampfireGoal extends Goal {
 	@Override
 	public void tick() {
 		BlockPos blockpos = this.restingPos;
-		if (!blockpos.closerToCenterThan(this.denizen.position(), 2.0D)) {
+		if (blockpos != null && !blockpos.closerToCenterThan(this.denizen.position(), 2.0D)) {
 			if (this.denizen.hasPose(Pose.SITTING)) {
 				this.denizen.setPose(Pose.STANDING);
 			}

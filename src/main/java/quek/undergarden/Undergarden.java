@@ -114,7 +114,7 @@ public class Undergarden {
 		generator.addProvider(event.includeServer(), new UGBiomeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));
-		generator.addProvider(event.includeServer(), new UGDataMaps(output, lookupProvider));
+		generator.addProvider(event.includeServer(), new UGDataMapsProvider(output, lookupProvider));
 		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, lookupProvider, helper));
 	}
 

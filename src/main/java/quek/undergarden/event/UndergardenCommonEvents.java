@@ -5,10 +5,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -45,14 +46,12 @@ import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.component.RogdoriumInfusion;
@@ -82,17 +81,17 @@ public class UndergardenCommonEvents {
 
 	public static void initCommonEvents(IEventBus bus) {
 		UndergardenToolEvents.setupToolEvents();
+		UthericInfectionEvents.init();
 		bus.addListener(UndergardenCommonEvents::registerPackets);
 		bus.addListener(UndergardenCommonEvents::registerBETypes);
 		bus.addListener(UndergardenCommonEvents::setup);
 		bus.addListener(UndergardenCommonEvents::registerEntityAttributes);
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
 		bus.addListener(UndergardenCommonEvents::modifyComponents);
+		bus.addListener(UndergardenCommonEvents::registerDataMaps);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickUthericInfection);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::syncUthericInfectionOnLogin);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::syncUthericInfectionOnDimensionChange);
+		//NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickUthericInfection);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
@@ -328,74 +327,6 @@ public class UndergardenCommonEvents {
 		}
 	}
 
-	private static void tickUthericInfection(EntityTickEvent.Pre event) {
-		Entity entity = event.getEntity();
-		if (entity instanceof LivingEntity livingEntity) {
-			if (livingEntity.tickCount % 20 == 0 && !livingEntity.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
-				int data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
-				if (data >= 20) {
-					livingEntity.hurt(livingEntity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
-				} else {
-					if (livingEntity.level().getBiome(livingEntity.blockPosition()).is(UGTags.Biomes.TICKS_UTHERIC_INFECTION) && livingEntity.tickCount % 400 == 0) {
-						// increase infection by 1 every 20 seconds in infected biome
-						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + 1);
-					} else {
-						if (livingEntity.tickCount % 100 == 0) {
-							// check nearby blocks every 5 seconds to see if infection blocks are nearby
-							int blocks = countInfectedBlocksNearby(livingEntity.level(), livingEntity.blockPosition(), livingEntity.getRandom());
-							if (blocks > 0) {
-								// increase infection by amount of infection blocks nearby
-								livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + Mth.clamp(Mth.ceil(Mth.sqrt(blocks / 2.0F) + 1), 1, 5));
-							} else if (livingEntity.tickCount % 400 == 0 && data > 0) {
-								// decrease infection by 1 every 20 seconds if infection is above 0
-								livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data - 1);
-							}
-						}
-					}
-					sendSyncPacket(livingEntity);
-				}
-				if (livingEntity instanceof ServerPlayer player) {
-					UGCriteria.UTHERIC_INFECTION.get().trigger(player, livingEntity.getData(UGAttachments.UTHERIC_INFECTION));
-				}
-			}
-		}
-
-	}
-
-	private static int countInfectedBlocksNearby(Level level, BlockPos playerPos, RandomSource random) {
-		int infected = 0;
-		for (int i = 0; i <= 20; i++) {
-			BlockPos checkBlock = getRandomBlockNearby(random, playerPos, 5);
-			if (level.getBlockState(checkBlock).is(UGTags.Blocks.UTHERIC_INFECTION_BLOCKS)) {
-				infected++;
-			}
-		}
-		return infected;
-	}
-
-	private static BlockPos getRandomBlockNearby(RandomSource random, BlockPos pos, int range) {
-		int dx = random.nextInt(range * 2 + 1) - range;
-		int dy = random.nextInt(range * 2 + 1) - range;
-		int dz = random.nextInt(range * 2 + 1) - range;
-		return pos.offset(dx, dy, dz);
-	}
-
-	private static void syncUthericInfectionOnLogin(PlayerEvent.PlayerLoggedInEvent event) {
-		if (!event.getEntity().level().isClientSide()) {
-			sendSyncPacket(event.getEntity());
-		}
-	}
-
-	private static void syncUthericInfectionOnDimensionChange(PlayerEvent.PlayerChangedDimensionEvent event) {
-		if (!event.getEntity().level().isClientSide()) {
-			sendSyncPacket(event.getEntity());
-		}
-	}
-
-	private static void sendSyncPacket(LivingEntity infected) {
-		PacketDistributor.sendToPlayersTrackingEntityAndSelf(infected, new UthericInfectionPacket(infected.getId(), infected.getData(UGAttachments.UTHERIC_INFECTION)));
-	}
-
 	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {
 		ItemAbility action = event.getItemAbility();
 		BlockState state = event.getState();
@@ -502,5 +433,9 @@ public class UndergardenCommonEvents {
 		event.modifyMatching(item -> item instanceof ArmorItem, builder -> {
 			builder.set(UGDataComponents.ROGDORIUM_INFUSION.get(), RogdoriumInfusion.DEFAULT);
 		});
+	}
+
+	public static void registerDataMaps(RegisterDataMapTypesEvent event) {
+		event.register(UGDataMaps.BIOME_LETHALITY);
 	}
 }
