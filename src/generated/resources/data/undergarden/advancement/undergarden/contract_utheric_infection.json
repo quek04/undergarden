@@ -1,5 +1,5 @@
 {
-  "parent": "undergarden:undergarden/enter_depths",
+  "parent": "undergarden:undergarden/enter_undergarden",
   "criteria": {
     "has_contracted_utheric_infection": {
       "conditions": {

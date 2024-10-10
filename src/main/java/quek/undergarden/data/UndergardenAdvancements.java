@@ -518,7 +518,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			.save(consumer, "undergarden:undergarden/enter_depths");
 
 		AdvancementHolder contract_utheric_infection = Advancement.Builder.advancement()
-			.parent(enter_depths)
+			.parent(enter_undergarden)
 			.display(
 				UGItems.UTHERIUM_CRYSTAL.get(),
 				Component.translatable("advancement.undergarden.contract_utheric_infection.title"),
