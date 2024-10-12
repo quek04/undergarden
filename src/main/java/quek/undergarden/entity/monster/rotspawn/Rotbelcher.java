@@ -53,7 +53,7 @@ public class Rotbelcher extends RotspawnMonster {
 
 	public static AttributeSupplier.Builder registerAttributes() {
 		return createMobAttributes()
-			.add(Attributes.MAX_HEALTH, 40.0D)
+			.add(Attributes.MAX_HEALTH, 35.0D)
 			.add(Attributes.ARMOR, 3.0D)
 			.add(Attributes.ATTACK_DAMAGE, 5.0D)
 			.add(Attributes.MOVEMENT_SPEED, 0.23D);
