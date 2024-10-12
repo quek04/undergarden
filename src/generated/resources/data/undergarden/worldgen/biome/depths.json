@@ -88,6 +88,12 @@
         "maxCount": 2,
         "minCount": 1,
         "weight": 100
+      },
+      {
+        "type": "undergarden:denizen",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 50
       }
     ],
     "undergarden:stupid": [
