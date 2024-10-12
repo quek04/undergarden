@@ -611,6 +611,7 @@ public class UGLang extends UGLangProvider {
 		add("tooltip.undergarden.utherium_weapon", "Deals 1.5x damage to Rotspawn.");
 		add("tooltip.undergarden.forgotten_weapon", "Deals 1.5x damage to non-boss Undergarden mobs.");
 		add("tooltip.undergarden.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
+		add("tooltip.undergarden.rogdorium_infusion", "Rogdorium Infusion");
 
 		addSubtitle("block", "undergarden_portal.ambient", "Undergarden Portal beckons");
 		addSubtitle("block", "undergarden_portal.activate", "Undergarden Portal activates");
