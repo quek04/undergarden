@@ -32,6 +32,7 @@ public class Rotbelcher extends RotspawnMonster {
 
 	public Rotbelcher(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
+		this.setInfectionDamage(0.2D);
 	}
 
 	@Override

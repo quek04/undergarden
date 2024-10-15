@@ -18,6 +18,7 @@ public class Rotbeast extends RotspawnMonster {
 
 	public Rotbeast(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
+		this.setInfectionDamage(0.3D);
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {
@@ -70,7 +71,7 @@ public class Rotbeast extends RotspawnMonster {
 		}
 
 		this.playSound(UGSoundEvents.ROTBEAST_ATTACK.get(), 1.0F, 1.0F);
-		return flag;
+		return super.doHurtTarget(entity);
 	}
 
 	public void handleEntityEvent(byte id) {

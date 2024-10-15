@@ -15,6 +15,7 @@ public class Rotling extends RotspawnMonster {
 
 	public Rotling(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
+		this.setInfectionDamage(0.1D);
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {

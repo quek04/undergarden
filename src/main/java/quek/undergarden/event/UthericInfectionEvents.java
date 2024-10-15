@@ -17,12 +17,12 @@ import quek.undergarden.registry.*;
 public class UthericInfectionEvents {
 
 	protected static void init() {
-		NeoForge.EVENT_BUS.addListener(UthericInfectionEvents::tickWorldInfection);
+		NeoForge.EVENT_BUS.addListener(UthericInfectionEvents::tickUthericInfection);
 		NeoForge.EVENT_BUS.addListener(UthericInfectionEvents::syncUthericInfectionOnLogin);
 		NeoForge.EVENT_BUS.addListener(UthericInfectionEvents::syncUthericInfectionOnDimensionChange);
 	}
 
-	private static void tickWorldInfection(EntityTickEvent.Pre event) {
+	private static void tickUthericInfection(EntityTickEvent.Pre event) {
 		Entity entity = event.getEntity();
 		if (entity instanceof LivingEntity livingEntity) {
 			if (livingEntity.tickCount % 20 == 0 && !livingEntity.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
