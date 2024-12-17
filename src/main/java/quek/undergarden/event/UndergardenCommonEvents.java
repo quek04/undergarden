@@ -430,9 +430,7 @@ public class UndergardenCommonEvents {
 	}
 
 	public static void modifyComponents(ModifyDefaultComponentsEvent event) {
-		event.modifyMatching(item -> item instanceof ArmorItem, builder -> {
-			builder.set(UGDataComponents.ROGDORIUM_INFUSION.get(), RogdoriumInfusion.DEFAULT);
-		});
+		event.modifyMatching(item -> item instanceof ArmorItem, builder -> builder.set(UGDataComponents.ROGDORIUM_INFUSION.get(), RogdoriumInfusion.DEFAULT));
 	}
 
 	public static void registerDataMaps(RegisterDataMapTypesEvent event) {

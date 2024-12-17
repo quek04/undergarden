@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-12T15:39:38.7693291	Recipes
+// 1.21.1	2024-12-07T17:32:07.579839	Recipes
 912e5a9405a920f4caf922c5b5bbbe68096386fb data/undergarden/advancement/recipes/building_blocks/ancient_root_planks.json
 d558c5372c9b026a74bc8af216fce46d4018a50e data/undergarden/advancement/recipes/building_blocks/ancient_root_slab.json
 76a194998acb3c65e8ca6d21cad09660dfa5a245 data/undergarden/advancement/recipes/building_blocks/ancient_root_stairs.json
@@ -344,6 +344,7 @@ f7634b465c331fbb302e4c28387ae3889b9deef8 data/undergarden/recipe/ancient_root_si
 bd6f19517b0ec20791d1157d444dc40449c2c8ce data/undergarden/recipe/ancient_root_slab.json
 f059e2c0248bd60e6f2832a2b5a72bce545b8559 data/undergarden/recipe/ancient_root_stairs.json
 b8ef355c9428abf7a656a77a15197c7bf8dcc58f data/undergarden/recipe/ancient_root_trapdoor.json
+06a1bfa30eec6c90750c5d1685755c1e254ef733 data/undergarden/recipe/armor_infusing.json
 1e60bbf92fa55b6a270b4c1e8bcd2712bed40bdc data/undergarden/recipe/blast_catalyst.json
 434a5f407c9eb5ebd246efb0f2df88b9bb14aa91 data/undergarden/recipe/blast_cloggrum_item.json
 c87254b658353f5a83cda9570db07f3888c9148a data/undergarden/recipe/blast_depthrock_cloggrum_ore.json
