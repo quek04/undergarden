@@ -358,7 +358,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 			int infusionAmount = result.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
 			int infusionMax = result.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
 			int fuelAmount = fuel.getCount();
-			result.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount((fuelAmount * (infusionMax / fuel.getMaxStackSize())) + infusionAmount));
+			result.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(Mth.clamp((fuelAmount * (infusionMax / fuel.getMaxStackSize())) + infusionAmount, 0, infusionMax)));
 
 			if (output.isEmpty()) {
 				inventory.set(3, result.copy());
