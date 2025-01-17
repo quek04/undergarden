@@ -20,6 +20,8 @@ import quek.undergarden.block.*;
 import quek.undergarden.block.portal.UndergardenPortalBlock;
 import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.item.tool.slingshot.GrongletItem;
+import quek.undergarden.item.tool.slingshot.RogdoricGrongletItem;
+import quek.undergarden.item.tool.slingshot.UthericGrongletItem;
 import quek.undergarden.world.gen.tree.UGTreeGrowers;
 
 import java.util.Objects;
@@ -269,7 +271,9 @@ public class UGBlocks {
 	public static final DeferredBlock<CeilingHangingSignBlock> GRONGLE_HANGING_SIGN = register("grongle_hanging_sign", () -> new CeilingHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
 	public static final DeferredBlock<WallHangingSignBlock> GRONGLE_WALL_HANGING_SIGN = BLOCKS.register("grongle_wall_hanging_sign", () -> new WallHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
-	public static final DeferredBlock<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> UTHERIC_GRONGLET = register("utheric_gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> ROGDORIC_GRONGLET = register("rogdoric_gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
 
 	//ancient root
 	public static final DeferredBlock<Block> ANCIENT_ROOT = register("ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
@@ -338,6 +342,10 @@ public class UGBlocks {
 				return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().stacksTo(1));
 			} else if (Objects.requireNonNull(block.get()) == GRONGLET.get()) {
 				return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
+			} else if (Objects.requireNonNull(block.get()) == UTHERIC_GRONGLET.get()) {
+				return new UthericGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
+			} else if (Objects.requireNonNull(block.get()) == ROGDORIC_GRONGLET.get()) {
+				return new RogdoricGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
 				return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {

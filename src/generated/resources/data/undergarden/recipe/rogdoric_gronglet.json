@@ -1,0 +1,14 @@
+{
+  "type": "undergarden:infusing",
+  "category": "purifying",
+  "experience": 1.0,
+  "infusingTime": 200,
+  "ingredient": {
+    "item": "undergarden:gronglet"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:rogdoric_gronglet"
+  },
+  "utheriumFuel": false
+}

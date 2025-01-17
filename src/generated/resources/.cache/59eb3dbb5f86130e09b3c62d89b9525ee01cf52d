@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-06T00:12:23.4157246	Loot Tables
+// 1.21.1	2024-12-18T13:00:50.3904876	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_table/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_table/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_table/blocks/ancient_root_button.json
@@ -143,6 +143,7 @@ a33efd5d6e8f3485301544c6af3c7524ed9a989d data/undergarden/loot_table/blocks/puff
 a72558fb5fd0a88e9c77925c010f4729045a8b2d data/undergarden/loot_table/blocks/raw_cloggrum_block.json
 c0eaaebc3f9675ed34376fb7d7e7f2e149ea98fe data/undergarden/loot_table/blocks/raw_froststeel_block.json
 5b183e878a324cb8c335b169493853b61c6d5523 data/undergarden/loot_table/blocks/regalium_block.json
+5c336f43f21fc8c58406737d04bf8cd82396ef91 data/undergarden/loot_table/blocks/rogdoric_gronglet.json
 bb87018b3e82b9a5edc44f53b3b8c075df279495 data/undergarden/loot_table/blocks/rogdorium_block.json
 0aa650ef41619f90ef2bf1b2c5ed8ccf522d4a02 data/undergarden/loot_table/blocks/sediment.json
 44872b15283ea81969489ace8409cb5297822b8b data/undergarden/loot_table/blocks/sediment_glass.json
@@ -207,6 +208,7 @@ df68cf11988bc89db1c9c03de07502a9def84da6 data/undergarden/loot_table/blocks/trem
 a975bd727ed57eb5c384e019b4365f3d3d4733bb data/undergarden/loot_table/blocks/tremblecrust_utherium_ore.json
 d4337e8eae5292de1cced16d543451f5c19ebec4 data/undergarden/loot_table/blocks/tremblecrust_wall.json
 b3d158b4fc12d93364c0c0fddcf3ecf6470e926d data/undergarden/loot_table/blocks/underbean_bush.json
+ef6bd024f7ba276f28d9fdf6aaf98d2ff2ca7aac data/undergarden/loot_table/blocks/utheric_gronglet.json
 211539ce2de441a9b2b917dd6b0eb91282e446fa data/undergarden/loot_table/blocks/utherium_block.json
 fdec00834033c068c7da8ac38092a318b1cddeda data/undergarden/loot_table/blocks/utherium_growth.json
 7ad6888674019e33d832935e16dce8f18fb51c8d data/undergarden/loot_table/blocks/veil_mushroom.json

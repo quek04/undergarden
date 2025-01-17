@@ -7,23 +7,23 @@ import quek.undergarden.block.GrongletBlock;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 
-public class Gronglet extends AbstractGronglet {
+public class UthericGronglet extends AbstractGronglet {
 
-	public Gronglet(Level level, double x, double y, double z) {
-		super(UGEntityTypes.GRONGLET.get(), x, y, z, level);
+	public UthericGronglet(Level level, double x, double y, double z) {
+		super(UGEntityTypes.UTHERIC_GRONGLET.get(), x, y, z, level);
 	}
 
-	public Gronglet(LivingEntity shooter, Level level) {
-		super(UGEntityTypes.GRONGLET.get(), shooter, level);
+	public UthericGronglet(LivingEntity shooter, Level level) {
+		super(UGEntityTypes.UTHERIC_GRONGLET.get(), shooter, level);
 	}
 
-	public Gronglet(EntityType<Gronglet> type, Level level) {
+	public UthericGronglet(EntityType<UthericGronglet> type, Level level) {
 		super(type, level);
 		this.setDropItem(false);
 	}
 
 	@Override
 	protected GrongletBlock getGrongletBlock() {
-		return UGBlocks.GRONGLET.get();
+		return UGBlocks.UTHERIC_GRONGLET.get();
 	}
 }

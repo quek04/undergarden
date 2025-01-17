@@ -154,6 +154,7 @@ public class UndergardenCommonEvents {
 			WoodType.register(UGWoodStuff.SMOGSTEM_WOOD_TYPE);
 			WoodType.register(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
 			WoodType.register(UGWoodStuff.GRONGLE_WOOD_TYPE);
+			WoodType.register(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
 
 			SlingshotItem.registerAmmo(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
@@ -180,6 +181,30 @@ public class UndergardenCommonEvents {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
 					return new Gronglet(shooter, level);
+				}
+
+				@Override
+				public SoundEvent getFiringSound() {
+					return UGSoundEvents.GRONGLET_SHOOT.get();
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGBlocks.UTHERIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new UthericGronglet(shooter, level);
+				}
+
+				@Override
+				public SoundEvent getFiringSound() {
+					return UGSoundEvents.GRONGLET_SHOOT.get();
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGBlocks.ROGDORIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new RogdoricGronglet(shooter, level);
 				}
 
 				@Override
@@ -253,6 +278,8 @@ public class UndergardenCommonEvents {
 			fire.setFlammable(UGBlocks.BLUE_MOGMOSS_RUG.get(), 60, 20);
 			fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
 			fire.setFlammable(UGBlocks.GRONGLET.get(), 100, 100);
+			fire.setFlammable(UGBlocks.UTHERIC_GRONGLET.get(), 100, 100);
+			fire.setFlammable(UGBlocks.ROGDORIC_GRONGLET.get(), 100, 100);
 		});
 	}
 

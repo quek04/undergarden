@@ -273,6 +273,8 @@ public class UGLootTables extends LootTableProvider {
 			this.add(UGBlocks.DROOPVINE.get(), (UGBlockLootTableProvider::droopvine));
 			this.add(UGBlocks.DROOPVINE_PLANT.get(), (UGBlockLootTableProvider::droopvine));
 			dropSelf(UGBlocks.GRONGLET);
+			dropSelf(UGBlocks.UTHERIC_GRONGLET);
+			dropSelf(UGBlocks.ROGDORIC_GRONGLET);
 			dropSelf(UGBlocks.BOOMGOURD);
 			dropSelf(UGBlocks.POLISHED_DEPTHROCK);
 			dropSelf(UGBlocks.POLISHED_DEPTHROCK_STAIRS);

@@ -659,8 +659,10 @@ public class UGRecipes extends UGRecipeProvider {
 		ArmorInfusingRecipeBuilder.armorInfusing(ArmorInfusingRecipe::new).save(output, name("armor_infusing"));
 		infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(output, name("denizen_totem_infusing"));
 		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_CLUSTER, 1.0F, 200).save(output, name("utheric_cluster_to_utherium_crystal_infusing"));
+		infusingPurifying(UGBlocks.ROGDORIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(output);
 
 		infusingCorrupting(UGItems.CORRUPT_CATALYST, UGItems.CATALYST, 10.0F, 600).save(output, name("corrupt_catalyst_infusing"));
+		infusingCorrupting(UGBlocks.UTHERIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(output);
 	}
 
 	private ResourceLocation name(String name) {

@@ -235,6 +235,8 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
 		addBlock(UGBlocks.GRONGLE_HANGING_SIGN, "Grongle Hanging Sign");
 		addBlock(UGBlocks.GRONGLET, "Gronglet");
+		addBlock(UGBlocks.UTHERIC_GRONGLET, "Utheric Gronglet");
+		addBlock(UGBlocks.ROGDORIC_GRONGLET, "Rogdoric Gronglet");
 
 		addBlock(UGBlocks.ANCIENT_ROOT, "Ancient Root");
 		addBlock(UGBlocks.ANCIENT_ROOT_PLANKS, "Ancient Root Planks");
@@ -432,6 +434,8 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
 		addEntityType(UGEntityTypes.BLISTERBOMB, "Blisterbomb");
 		addEntityType(UGEntityTypes.GRONGLET, "Gronglet");
+		addEntityType(UGEntityTypes.UTHERIC_GRONGLET, "Utheric Gronglet");
+		addEntityType(UGEntityTypes.ROGDORIC_GRONGLET, "Rogdoric Gronglet");
 		addEntityType(UGEntityTypes.SPEAR, "Spear");
 		addEntityType(UGEntityTypes.MINION_PROJECTILE, "Minion Projectile");
 		addEntityType(UGEntityTypes.ROTBELCHER_PROJECTILE, "Rotbelcher Projectile");

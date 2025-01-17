@@ -110,6 +110,7 @@ public class UndergardenClientEvents {
 			Sheets.addWoodType(UGWoodStuff.SMOGSTEM_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.GRONGLE_WOOD_TYPE);
+			Sheets.addWoodType(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
 
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pull"), (stack, level, entity, seed) -> {
 				if (entity == null) {
@@ -121,6 +122,8 @@ public class UndergardenClientEvents {
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.UTHERIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "rogdoric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.ROGDORIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "self_sling"), (stack, level, entity, seed) -> entity != null && stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.SELF_SLING)) > 0 ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
@@ -139,6 +142,8 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.GRONGLET.get(), GrongletEntityRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.UTHERIC_GRONGLET.get(), UthericGrongletEntityRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ROGDORIC_GRONGLET.get(), RogdoricGrongletEntityRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.SPEAR.get(), ThrownSpearRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTBELCHER_PROJECTILE.get(), NoopRenderer::new);
@@ -457,14 +462,13 @@ public class UndergardenClientEvents {
 		}
 	}
 
-
 	private static void registerClientExtensions(RegisterClientExtensionsEvent event) {
 		event.registerItem(new IClientItemExtensions() {
 			@Override
 			public BlockEntityWithoutLevelRenderer getCustomRenderer() {
 				return new UndergardenBEWLR();
 			}
-		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.GRONGLET.asItem());
+		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.GRONGLET.asItem(), UGBlocks.UTHERIC_GRONGLET.asItem(), UGBlocks.ROGDORIC_GRONGLET.asItem());
 		event.registerFluidType(new IClientFluidTypeExtensions() {
 			@Override
 			public ResourceLocation getStillTexture() {

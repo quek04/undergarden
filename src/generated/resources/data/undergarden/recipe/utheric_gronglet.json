@@ -1,0 +1,14 @@
+{
+  "type": "undergarden:infusing",
+  "category": "corrupting",
+  "experience": 1.0,
+  "infusingTime": 200,
+  "ingredient": {
+    "item": "undergarden:gronglet"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:utheric_gronglet"
+  },
+  "utheriumFuel": true
+}
