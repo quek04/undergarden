@@ -565,7 +565,7 @@ public class UGRecipes extends UGRecipeProvider {
 		ore(Items.DIAMOND, ImmutableList.of(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get()), 1.0F, "diamond", output);
 		ore(UGItems.CLOGGRUM_INGOT.get(), ImmutableList.of(UGItems.RAW_CLOGGRUM.get(), UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get()), 0.7F, "undergarden:cloggrum_ingot", output);
 		ore(UGItems.FROSTSTEEL_INGOT.get(), ImmutableList.of(UGItems.RAW_FROSTSTEEL.get(), UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get()), 0.7F, "undergarden:froststeel_ingot", output);
-		ore(UGItems.UTHERIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get()), 1.0F, "undergarden:utherium", output);
+		ore(UGItems.UTHERIC_CLUSTER.get(), ImmutableList.of(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get()), 1.0F, "undergarden:utherium", output);
 		ore(UGItems.REGALIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get()), 1.0F, "undergarden:regalium_crystal", output);
 		ore(UGItems.ROGDORIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DREADROCK_ROGDORIUM_ORE.get()), 0.7F, "undergarden:rogdorium_crystal", output);
 
