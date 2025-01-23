@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-23T02:37:21.9289508	Registries
+// 1.21.1	2025-01-23T03:01:01.9393422	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -25,7 +25,7 @@ a3768d936d98e75f8e2d165444f9ea9777c38e4c data/undergarden/worldgen/biome/ancient
 3e0fb6a1fa501d1e0a758bbbeb202ea5a81a62d7 data/undergarden/worldgen/biome/dead_sea.json
 ffb7fb556d79d2070625e0d25d850a01bf808464 data/undergarden/worldgen/biome/dense_forest.json
 731ecf28edb08cedf4489eb73d2ab59e25b81a60 data/undergarden/worldgen/biome/depths.json
-485852678a3b4a1d8f292879dc2c46ac8f59af3e data/undergarden/worldgen/biome/forgotten_field.json
+06716da87b6a5c4b339338e99f23d6a9fa688e2c data/undergarden/worldgen/biome/forgotten_field.json
 c4360d753917762da27048be74f94b784d564c61 data/undergarden/worldgen/biome/frostfields.json
 d4ee17797dba188b913e4cacdb1efbed02a9de0f data/undergarden/worldgen/biome/frosty_smogstem_forest.json
 343fad9d72e43673747b492f107957502f479b01 data/undergarden/worldgen/biome/gronglegrowth.json
@@ -147,6 +147,7 @@ f8a4fbcde37a770b08254c50a7043bd6f44e96b5 data/undergarden/worldgen/placed_featur
 be15be6e630868221649be18ca7f34a7b053d6ac data/undergarden/worldgen/placed_feature/small_grongle_tree.json
 ac4d64d4cba3f8c172fe210000e148e973f79c89 data/undergarden/worldgen/placed_feature/smogstem_bush.json
 4ed0f342a10981663f15ec77ae12c929184f9aac data/undergarden/worldgen/placed_feature/smogstem_tree.json
+6e21cdb71864079203833fad05cdadcf7d016474 data/undergarden/worldgen/placed_feature/smogstem_tree_sparse.json
 0067b60cc8752092f28866e80ba58070f188cf1f data/undergarden/worldgen/placed_feature/smog_vent.json
 daab524ef54f37fe56a3a74036741c63a1d3d531 data/undergarden/worldgen/placed_feature/tall_deepturf_patch.json
 e731448969092ecac55adfd0a7f1caab3c8d804d data/undergarden/worldgen/placed_feature/tall_shimmerweed_patch.json
