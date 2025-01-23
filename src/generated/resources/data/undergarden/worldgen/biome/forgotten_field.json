@@ -71,7 +71,8 @@
       "undergarden:ditchbulb_patch",
       "undergarden:tall_shimmerweed_patch",
       "undergarden:droopvine_patch",
-      "undergarden:gloomgourd_patch"
+      "undergarden:gloomgourd_patch",
+      "undergarden:smogstem_tree_sparse"
     ]
   ],
   "has_precipitation": false,

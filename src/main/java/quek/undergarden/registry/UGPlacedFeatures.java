@@ -67,6 +67,7 @@ public class UGPlacedFeatures {
 
 	//tree
 	public static final ResourceKey<PlacedFeature> SMOGSTEM_TREE = create("smogstem_tree");
+	public static final ResourceKey<PlacedFeature> SMOGSTEM_TREE_SPARSE = create("smogstem_tree_sparse");
 	public static final ResourceKey<PlacedFeature> WIDE_SMOGSTEM_TREE = create("wide_smogstem_tree");
 	public static final ResourceKey<PlacedFeature> TALL_SMOGSTEM_TREE = create("tall_smogstem_tree");
 	public static final ResourceKey<PlacedFeature> SMOGSTEM_BUSH = create("smogstem_bush");
@@ -148,6 +149,7 @@ public class UGPlacedFeatures {
 
 		//tree
 		context.register(SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), tree(8)));
+		context.register(SMOGSTEM_TREE_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), List.of(CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.SMOGSTEM_SAPLING.get().defaultBlockState(), BlockPos.ZERO)))));
 		context.register(WIDE_SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.WIDE_SMOGSTEM_TREE), tree(2)));
 		context.register(TALL_SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TALL_SMOGSTEM_TREE), tree(4)));
 		context.register(SMOGSTEM_BUSH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_BUSH), tree(8)));

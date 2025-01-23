@@ -172,6 +172,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.TALL_SHIMMERWEED_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DROOPVINE_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLOOMGOURD_PATCH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.SMOGSTEM_TREE_SPARSE)
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
