@@ -201,7 +201,7 @@ public class UGRecipes extends UGRecipeProvider {
 			.pattern("  R")
 			.pattern(" S ")
 			.pattern("S  ")
-			.define('R', UGItems.ROGDORIUM_CRYSTAL.get())
+			.define('R', UGItems.ROGDORIUM.get())
 			.define('S', Tags.Items.RODS_WOODEN)
 			.unlockedBy("has_rogdorium", has(UGTags.Items.GEMS_ROGDORIUM))
 			.save(output);
@@ -359,7 +359,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(output);
 		makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_CRYSTAL).save(output);
 		makeIngotToBlock(UGBlocks.REGALIUM_BLOCK, UGItems.REGALIUM_CRYSTAL).save(output);
-		makeIngotToBlock(UGBlocks.ROGDORIUM_BLOCK, UGItems.ROGDORIUM_CRYSTAL).save(output);
+		makeIngotToBlock(UGBlocks.ROGDORIUM_BLOCK, UGItems.ROGDORIUM).save(output);
 		makeIngotToBlock(UGBlocks.FORGOTTEN_BLOCK, UGItems.FORGOTTEN_INGOT).save(output);
 		makeIngotToBlock(UGBlocks.DEPTHROCK, UGItems.DEPTHROCK_PEBBLE).save(output, name("pebbles_to_depthrock"));
 		makeIngotToBlock(UGBlocks.GOO_BLOCK, UGItems.GOO_BALL).save(output);
@@ -368,7 +368,7 @@ public class UGRecipes extends UGRecipeProvider {
 		makeBlockToIngot(UGItems.FROSTSTEEL_INGOT, UGBlocks.FROSTSTEEL_BLOCK).save(output, name("froststeel_block_to_ingot"));
 		makeBlockToIngot(UGItems.UTHERIUM_CRYSTAL, UGBlocks.UTHERIUM_BLOCK).save(output, name("utherium_block_to_crystal"));
 		makeBlockToIngot(UGItems.REGALIUM_CRYSTAL, UGBlocks.REGALIUM_BLOCK).save(output, name("regalium_block_to_crystal"));
-		makeBlockToIngot(UGItems.ROGDORIUM_CRYSTAL, UGBlocks.ROGDORIUM_BLOCK).save(output, name("rogdorium_block_to_crystal"));
+		makeBlockToIngot(UGItems.ROGDORIUM, UGBlocks.ROGDORIUM_BLOCK).save(output, name("rogdorium_block_to_crystal"));
 		makeBlockToIngot(UGItems.FORGOTTEN_INGOT, UGBlocks.FORGOTTEN_BLOCK).save(output, name("forgotten_block_to_ingot"));
 		makeBlockToIngot(UGItems.GOO_BALL, UGBlocks.GOO_BLOCK).save(output, name("goo_block_to_ball"));
 
@@ -567,7 +567,7 @@ public class UGRecipes extends UGRecipeProvider {
 		ore(UGItems.FROSTSTEEL_INGOT.get(), ImmutableList.of(UGItems.RAW_FROSTSTEEL.get(), UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get()), 0.7F, "undergarden:froststeel_ingot", output);
 		ore(UGItems.UTHERIC_CLUSTER.get(), ImmutableList.of(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), UGBlocks.DREADROCK_UTHERIUM_ORE.get()), 1.0F, "undergarden:utherium", output);
 		ore(UGItems.REGALIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), UGBlocks.SHIVERSTONE_REGALIUM_ORE.get()), 1.0F, "undergarden:regalium_crystal", output);
-		ore(UGItems.ROGDORIUM_CRYSTAL.get(), ImmutableList.of(UGBlocks.DREADROCK_ROGDORIUM_ORE.get()), 0.7F, "undergarden:rogdorium_crystal", output);
+		ore(UGItems.ROGDORIUM.get(), ImmutableList.of(UGBlocks.DREADROCK_ROGDORIUM_ORE.get()), 0.7F, "undergarden:rogdorium_crystal", output);
 
 		smeltingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(output, name("smelt_cloggrum_item"));
 		blastingRecipeTag(UGItems.CLOGGRUM_NUGGET.get(), UGTags.Items.CLOGGRUM_ITEMS, 0.1F).save(output, name("blast_cloggrum_item"));

@@ -21,7 +21,7 @@ public class UGItems {
 
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Undergarden.MODID);
 
-	public static final Rarity ROGDORIUM = Rarity.valueOf("UNDERGARDEN_ROGDORIUM");
+	public static final Rarity ROGDORIUM_RARITY = Rarity.valueOf("UNDERGARDEN_ROGDORIUM");
 	public static final Rarity FORGOTTEN = Rarity.valueOf("UNDERGARDEN_FORGOTTEN");
 	public static final Rarity UTHERIUM = Rarity.valueOf("UNDERGARDEN_UTHERIUM");
 
@@ -49,7 +49,7 @@ public class UGItems {
 
 	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-	public static final DeferredItem<Item> ROGDORIUM_CRYSTAL = ITEMS.register("rogdorium_crystal", () -> new Item(new Item.Properties().rarity(ROGDORIUM).food(UGFoods.ROGDORIUM)));
+	public static final DeferredItem<Item> ROGDORIUM = ITEMS.register("rogdorium", () -> new Item(new Item.Properties().rarity(ROGDORIUM_RARITY).food(UGFoods.ROGDORIUM)));
 
 	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
 	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));

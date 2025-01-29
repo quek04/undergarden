@@ -21,7 +21,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "undergarden:rogdorium_crystal",
+          "name": "undergarden:rogdorium",
           "weight": 10
         },
         {

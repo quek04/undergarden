@@ -25,7 +25,7 @@ public class UGEnumExtensions {
 		RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(Items.COMPASS))
 	);
 	public static final EnumProxy<RecipeBookCategories> INFUSER_PURIFYING_CATEGORY = new EnumProxy<>(
-		RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(UGItems.ROGDORIUM_CRYSTAL.get()))
+		RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(UGItems.ROGDORIUM.get()))
 	);
 	public static final EnumProxy<RecipeBookCategories> INFUSER_CORRUPTING_CATEGORY = new EnumProxy<>(
 		RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(UGItems.UTHERIUM_CRYSTAL.get()), new ItemStack(UGItems.UTHERIC_SHARD.get()))

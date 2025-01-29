@@ -65,7 +65,7 @@ public class InfuserRecipeBookComponent extends RecipeBookComponent {
 			slot = slots.get(2);
 			if (slot.getItem().isEmpty()) {
 				if (this.rogdoriumFuels == null) {
-					this.rogdoriumFuels = Ingredient.of(new ItemStack(UGItems.ROGDORIUM_CRYSTAL.get()));
+					this.rogdoriumFuels = Ingredient.of(new ItemStack(UGItems.ROGDORIUM.get()));
 				}
 
 				this.ghostRecipe.addIngredient(this.rogdoriumFuels, slot.x, slot.y);

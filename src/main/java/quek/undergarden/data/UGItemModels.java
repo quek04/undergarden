@@ -258,7 +258,7 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.ANCIENT_LEGGINGS);
 		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
 		block(UGBlocks.ROGDORIUM_BLOCK);
-		normalItem(UGItems.ROGDORIUM_CRYSTAL);
+		normalItem(UGItems.ROGDORIUM);
 		block(UGBlocks.UTHERIUM_GROWTH);
 		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
 		block(UGBlocks.ANCIENT_ROOT);

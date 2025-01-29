@@ -10,7 +10,7 @@ public record InfuserRecipeInput(ItemStack itemStack, boolean isUtheriumFuel) im
 	public ItemStack getItem(int index) {
 		return switch (index) {
 			case 0 -> this.itemStack;
-			case 1 -> this.isUtheriumFuel ? new ItemStack(UGItems.UTHERIUM_CRYSTAL.get()) : new ItemStack(UGItems.ROGDORIUM_CRYSTAL.get());
+			case 1 -> this.isUtheriumFuel ? new ItemStack(UGItems.UTHERIUM_CRYSTAL.get()) : new ItemStack(UGItems.ROGDORIUM.get());
 			default -> throw new IllegalArgumentException("Recipe does not contain slot " + index);
 		};
 	}

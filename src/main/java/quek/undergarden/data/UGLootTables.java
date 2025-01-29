@@ -285,7 +285,7 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.BUTTERBUNCH);
 			dropOther(UGBlocks.VIRULENT_MIX_CAULDRON, Items.CAULDRON);
 			this.add(UGBlocks.MUSHROOM_VEIL.get(), BlockLootSubProvider::createShearsOnlyDrop);
-			ore(UGBlocks.DREADROCK_ROGDORIUM_ORE, UGItems.ROGDORIUM_CRYSTAL);
+			ore(UGBlocks.DREADROCK_ROGDORIUM_ORE, UGItems.ROGDORIUM);
 			dropSelf(UGBlocks.ROGDORIUM_BLOCK);
 			dropSelf(UGBlocks.UTHERIUM_GROWTH);
 			ore(UGBlocks.DREADROCK_UTHERIUM_ORE, UGItems.UTHERIC_CLUSTER);
@@ -578,7 +578,7 @@ public class UGLootTables extends LootTableProvider {
 				.withPool(LootPool.lootPool()
 					.setRolls(UniformGenerator.between(1.0F, 4.0F))
 					.add(EmptyLootItem.emptyItem().setWeight(5))
-					.add(LootItem.lootTableItem(UGItems.ROGDORIUM_CRYSTAL.get()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
+					.add(LootItem.lootTableItem(UGItems.ROGDORIUM.get()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
 					.add(LootItem.lootTableItem(UGBlocks.DENIZEN_TOTEM.asItem()).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
 					.add(LootItem.lootTableItem(Items.STICK).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
 					.add(LootItem.lootTableItem(UGItems.RAW_DWELLER_MEAT).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))

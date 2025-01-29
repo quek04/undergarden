@@ -283,7 +283,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.UTHERIC_CLUSTER, "Utheric Cluster");
 		addItem(UGItems.UTHERIUM_CRYSTAL, "Utherium Crystal");
 		addItem(UGItems.REGALIUM_CRYSTAL, "Regalium Crystal");
-		addItem(UGItems.ROGDORIUM_CRYSTAL, "Rogdorium Crystal");
+		addItem(UGItems.ROGDORIUM, "Rogdorium");
 		addItem(UGItems.FORGOTTEN_INGOT, "Forgotten Ingot");
 		addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
 		addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");

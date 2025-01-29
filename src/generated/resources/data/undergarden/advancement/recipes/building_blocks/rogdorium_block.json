@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_rogdorium_crystal": {
+    "has_rogdorium": {
       "conditions": {
         "items": [
           {
-            "items": "undergarden:rogdorium_crystal"
+            "items": "undergarden:rogdorium"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_rogdorium_crystal"
+      "has_rogdorium"
     ]
   ],
   "rewards": {

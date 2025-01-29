@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-16T22:11:06.569144	Loot Tables
+// 1.21.1	2025-01-29T11:15:46.0656577	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_table/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_table/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_table/blocks/ancient_root_button.json
@@ -72,7 +72,7 @@ bab3583c43028592f07422db95a4d05bc2e1a32b data/undergarden/loot_table/blocks/dept
 d295e521280c965a6a8d413dcf7bad4af690e958 data/undergarden/loot_table/blocks/dreadrock_brick_wall.json
 4be76371e38ea112afb2af47783e09153d68ad70 data/undergarden/loot_table/blocks/dreadrock_button.json
 81b9a96303a9fb18de46033fb8b829b4acc4c64a data/undergarden/loot_table/blocks/dreadrock_pressure_plate.json
-43685c8fa28a254bd2faad01bd4dfc48dfb17f32 data/undergarden/loot_table/blocks/dreadrock_rogdorium_ore.json
+2dcac5c9ad3a6ba536ca045aa3cf4ae42e11ee2f data/undergarden/loot_table/blocks/dreadrock_rogdorium_ore.json
 9d3d3d3c5aef786cccb5d66ae7fa9bd315d1cbd0 data/undergarden/loot_table/blocks/dreadrock_slab.json
 66d52569bdad0af3b186f88ea7723e347c34fd1b data/undergarden/loot_table/blocks/dreadrock_stairs.json
 c976d66f8ebfbe16749d24232c3bf9a7b6005b49 data/undergarden/loot_table/blocks/dreadrock_utherium_ore.json
@@ -233,7 +233,7 @@ e18a1662c0587515a5f7ca3bcef69cdd871fc29d data/undergarden/loot_table/blocks/wigg
 754d0dd01e8e4c90e9a193e3389334dd17ea3279 data/undergarden/loot_table/blocks/wigglewood_wall_sign.json
 de3654c36b0de167199d4298e3fa561b070be348 data/undergarden/loot_table/blocks/wigglewood_wood.json
 556370142fd578dbc0f37e8ec8c49e780d970a84 data/undergarden/loot_table/chests/catacombs.json
-e6e58c71ec9ad271cbc08a145f1794c6f48a9ec8 data/undergarden/loot_table/chests/denizen_camp.json
+f74906ba30cf99577abc483137c5578e66591835 data/undergarden/loot_table/chests/denizen_camp.json
 d847b13d131f9202e0506783972b021814c3a756 data/undergarden/loot_table/entities/brute.json
 d95b8061b0e5a5704d1bea7830d273314080cfff data/undergarden/loot_table/entities/denizen.json
 9e8d669dd921033528db84e9d9ee55fe9dde4aa0 data/undergarden/loot_table/entities/dweller.json
