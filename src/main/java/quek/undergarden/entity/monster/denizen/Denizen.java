@@ -1,5 +1,7 @@
 package quek.undergarden.entity.monster.denizen;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -14,11 +16,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.item.ItemStack;
@@ -27,9 +27,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.projectile.ThrownSpear;
 import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGPointOfInterests;
 
+import java.util.Optional;
 import java.util.function.IntFunction;
 
 public class Denizen extends Monster implements VariantHolder<Denizen.Type>, RangedAttackMob {
@@ -42,7 +45,8 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 
 	@Nullable
 	private LivingEntity stareTarget;
-	private DenizenChillByCampfireGoal campfireGoal;
+	@Nullable
+	private BlockPos satAtCampfire;
 
 	public Denizen(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
@@ -56,7 +60,7 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(3, new DenizenWanderGoal(this, 0.6D));
 
-		this.goalSelector.addGoal(4, this.campfireGoal = new DenizenChillByCampfireGoal(this));
+		this.goalSelector.addGoal(4, new DenizenChillByCampfireGoal(this));
 		this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Denizen.class, 8.0F) {
 			@Override
 			public boolean canUse() {
@@ -166,8 +170,28 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 	public void onRemovedFromLevel() {
 		super.onRemovedFromLevel();
 		if (this.level() instanceof ServerLevel) {
-			this.campfireGoal.stop();
+			this.resetCampfireLogic();
 		}
+	}
+
+	public @Nullable BlockPos getCampfire() {
+		return this.satAtCampfire;
+	}
+
+	public void setCampfire(@Nullable BlockPos pos) {
+		this.satAtCampfire = pos;
+	}
+
+	public void resetCampfireLogic() {
+		if (this.satAtCampfire != null) {
+			Optional<Holder<PoiType>> maybeCampfire = ((ServerLevel)this.level()).getPoiManager().getType(this.satAtCampfire);
+			if (maybeCampfire.isPresent() && maybeCampfire.get().is(UGPointOfInterests.DENIZEN_RESTING_BLOCKS.getKey())) {
+				((ServerLevel)this.level()).getPoiManager().release(this.satAtCampfire);
+				Undergarden.LOGGER.debug("Denizen released campfire at {} (spots free: {})", this.satAtCampfire, ((ServerLevel) this.level()).getPoiManager().getFreeTickets(this.satAtCampfire));
+			}
+		}
+		this.setPose(Pose.STANDING);
+		this.satAtCampfire = null;
 	}
 
 	@Nullable

@@ -8,7 +8,10 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.Path;
+import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGPointOfInterests;
 
 import javax.annotation.Nullable;
@@ -24,7 +27,6 @@ public class DenizenChillByCampfireGoal extends Goal {
 	protected int nextStartTick;
 	protected int tryTicks;
 	private int maxStayTicks;
-	protected Optional<BlockPos> campfirePos = Optional.empty();
 	protected BlockPos restingPos = null;
 
 	public DenizenChillByCampfireGoal(Denizen denizen) {
@@ -33,7 +35,7 @@ public class DenizenChillByCampfireGoal extends Goal {
 
 	@Override
 	public boolean canUse() {
-		if (this.denizen.hasPose(Pose.SITTING) || this.denizen.getStareTarget() != null || this.denizen.getTarget() != null || this.campfirePos.isPresent() || this.restingPos != null) return false;
+		if (this.denizen.hasPose(Pose.SITTING) || this.denizen.getStareTarget() != null || this.denizen.getTarget() != null || this.denizen.getCampfire() != null || this.restingPos != null) return false;
 
 		if (this.nextStartTick > 0) {
 			--this.nextStartTick;
@@ -47,7 +49,7 @@ public class DenizenChillByCampfireGoal extends Goal {
 	@Override
 	public boolean canContinueToUse() {
 		if (this.denizen.getStareTarget() != null || this.denizen.getTarget() != null || this.denizen.hurtTime > 0) return false;
-		return this.tryTicks >= -this.maxStayTicks && this.tryTicks <= 1200 && (this.campfirePos.isPresent() && this.isValidCampfire((ServerLevel) this.denizen.level()));
+		return this.tryTicks >= -this.maxStayTicks && this.tryTicks <= 1200 && this.isValidCampfire((ServerLevel) this.denizen.level());
 	}
 
 	@Override
@@ -60,14 +62,7 @@ public class DenizenChillByCampfireGoal extends Goal {
 	@Override
 	public void stop() {
 		super.stop();
-		if (this.campfirePos.isPresent()) {
-			Optional<Holder<PoiType>> maybeCampfire = ((ServerLevel)this.denizen.level()).getPoiManager().getType(this.campfirePos.get());
-			if (maybeCampfire.isPresent() && maybeCampfire.get().is(UGPointOfInterests.DENIZEN_RESTING_BLOCKS.getKey())) {
-				((ServerLevel)this.denizen.level()).getPoiManager().release(this.campfirePos.get());
-			}
-		}
-		this.denizen.setPose(Pose.STANDING);
-		this.campfirePos = Optional.empty();
+		this.denizen.resetCampfireLogic();
 		this.restingPos = null;
 	}
 
@@ -102,12 +97,18 @@ public class DenizenChillByCampfireGoal extends Goal {
 		if (path != null && path.canReach()) {
 			BlockPos blockpos = path.getTarget();
 			if (level.getPoiManager().getType(blockpos).isPresent()) {
-				this.campfirePos = level.getPoiManager().take(holder -> holder.is(UGPointOfInterests.DENIZEN_RESTING_BLOCKS.getKey()), (typeHolder, pos) -> pos.equals(blockpos), blockpos, 1);
-				if (this.campfirePos.isPresent()) {
-					this.restingPos = this.campfirePos.get().offset(this.denizen.getRandom().nextIntBetweenInclusive(-2, 2), 0, this.denizen.getRandom().nextIntBetweenInclusive(-2, 2));
-					while (this.restingPos.equals(this.campfirePos.get())) {
-						this.restingPos = this.campfirePos.get().offset(this.denizen.getRandom().nextIntBetweenInclusive(-2, 2), 0, this.denizen.getRandom().nextIntBetweenInclusive(-2, 2));
-					}
+				this.denizen.setCampfire(level.getPoiManager().take(holder -> holder.is(UGPointOfInterests.DENIZEN_RESTING_BLOCKS.getKey()), (typeHolder, pos) -> pos.equals(blockpos), blockpos, 1).orElse(null));
+				if (this.denizen.getCampfire() != null) {
+					int tries = 0;
+					do {
+						BlockPos checkPos = this.denizen.getCampfire().offset(this.denizen.getRandom().nextIntBetweenInclusive(-2, 2), 0, this.denizen.getRandom().nextIntBetweenInclusive(-2, 2));
+						//check 10 positions for a slab. If we dont get one just sit on the floor I guess
+						BlockState state = level.getBlockState(checkPos);
+						if (tries >= 10 || state.getBlock() instanceof SlabBlock) {
+							this.restingPos = checkPos;
+						}
+						tries++;
+					} while (this.restingPos == null || this.restingPos.equals(this.denizen.getCampfire()));
 					return true;
 				}
 			}
@@ -134,7 +135,8 @@ public class DenizenChillByCampfireGoal extends Goal {
 	}
 
 	private boolean isValidCampfire(ServerLevel level) {
-		Optional<Holder<PoiType>> maybeCampfire = level.getPoiManager().getType(this.campfirePos.get());
+		if (this.denizen.getCampfire() == null) return false;
+		Optional<Holder<PoiType>> maybeCampfire = level.getPoiManager().getType(this.denizen.getCampfire());
 		return maybeCampfire.isPresent() && maybeCampfire.get().is(UGPointOfInterests.DENIZEN_RESTING_BLOCKS.getKey());
 	}
 }
