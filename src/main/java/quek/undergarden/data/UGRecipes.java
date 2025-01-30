@@ -587,13 +587,21 @@ public class UGRecipes extends UGRecipeProvider {
 
 		smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(output, name("smelt_gloomper_leg"));
 		smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(output, name("smoke_gloomper_leg"));
+		campfireRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(consumer, name("campfire_dweller_meat"));
 
 		smeltingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(output, name("smelt_glitterkelp"));
 		smokingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(output, name("smoke_glitterkelp"));
+		campfireRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), 0.35F).save(consumer, name("campfire_gwibling"));
 
 		smeltingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(output, name("smelt_underbeans"));
 		smokingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(output, name("smoke_underbeans"));
+		smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("smelt_gloomper_leg"));
+		smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("smoke_gloomper_leg"));
+		campfireRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("campfire_gloomper_leg"));
 
+		smeltingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(consumer, name("smelt_glitterkelp"));
+		smokingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(consumer, name("smoke_glitterkelp"));
+		campfireRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(consumer, name("campfire_glitterkelp"));
 		depthrockStonecutting(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).save(output, name("chiseled_depthrock_bricks_stonecutting"));
 		depthrockStonecutting(UGBlocks.DEPTHROCK_BRICK_SLAB.get(), 2).save(output, name("depthrock_brick_slab_stonecutting"));
 		depthrockStonecutting(UGBlocks.DEPTHROCK_BRICK_STAIRS.get()).save(output, name("depthrock_brick_stairs_stonecutting"));
@@ -620,6 +628,9 @@ public class UGRecipes extends UGRecipeProvider {
 		polishedDepthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_STAIRS.get()).save(output, name("polished_depthrock_to_polished_depthrock_stairs_stonecutting"));
 		polishedDepthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_WALL.get()).save(output, name("polished_depthrock_to_polished_depthrock_wall_stonecutting"));
 
+		smeltingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smelt_underbeans"));
+		smokingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smoke_underbeans"));
+		campfireRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("campfire_underbeans"));
 		shiverstoneStonecutting(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get()).save(output, name("chiseled_shiverstone_bricks_stonecutting"));
 		shiverstoneStonecutting(UGBlocks.SHIVERSTONE_BRICK_SLAB.get(), 2).save(output, name("shiverstone_brick_slab_stonecutting"));
 		shiverstoneStonecutting(UGBlocks.SHIVERSTONE_BRICK_STAIRS.get()).save(output, name("shiverstone_brick_stairs_stonecutting"));

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:campfire_dweller_meat"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_undergarden:raw_dweller_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:raw_dweller_meat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_undergarden:raw_dweller_meat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:campfire_dweller_meat"
+    ]
+  }
+}
