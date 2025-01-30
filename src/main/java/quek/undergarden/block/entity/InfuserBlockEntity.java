@@ -193,17 +193,11 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 		boolean recipeFound = false;
 		boolean isInfusing = blockEntity.infusingProgress > 0;
 
-		ItemStack utheriumFuel = blockEntity.items.get(1);
-		ItemStack rogdoriumFuel = blockEntity.items.get(2);
-		ItemStack input = blockEntity.items.get(0);
-		boolean inputFull = !input.isEmpty();
-		boolean utheriumFuelFull = !utheriumFuel.isEmpty();
-		boolean rogdoriumFuelFull = !rogdoriumFuel.isEmpty();
+		ItemStack input = blockEntity.items.getFirst();
 
-		List<RecipeHolder<InfusingRecipe>> recipes = level.getRecipeManager().getRecipesFor(UGRecipeTypes.INFUSING.get(), new SingleRecipeInput(input), level);
-		int i = blockEntity.getMaxStackSize();
-
-		if (inputFull) {
+		if (!input.isEmpty()) {
+			List<RecipeHolder<InfusingRecipe>> recipes = level.getRecipeManager().getRecipesFor(UGRecipeTypes.INFUSING.get(), new SingleRecipeInput(input), level);
+			int i = blockEntity.getMaxStackSize();
 			for (var recipe : recipes) {
 				if (blockEntity.canInfuse(level.registryAccess(), recipe, blockEntity.items, i)) {
 					recipeFound = true;
@@ -221,22 +215,35 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 				}
 			}
 
+			if (isInfusing != blockEntity.infusingProgress > 0) {
+				changed = true;
+			}
+
 			if (!recipeFound) {
 				blockEntity.infusingProgress = 0;
+				changed = true;
 			}
-		} else if (blockEntity.infusingProgress > 0) {
-			blockEntity.infusingProgress = Mth.clamp(blockEntity.infusingProgress - 2, 0, blockEntity.infusingTotalTime);
-		}
-
-		if (isInfusing != blockEntity.infusingProgress > 0) {
-			changed = true;
-			state = state.setValue(InfuserBlock.STATE, !utheriumFuelFull && !rogdoriumFuelFull ? InfuserState.INACTIVE : (utheriumFuelFull ? InfuserState.INFUSING_UTHERIUM : InfuserState.INFUSING_ROGDORIUM));
-			level.setBlock(pos, state, 3);
 		}
 
 		if (changed) {
 			setChanged(level, pos, state);
 		}
+	}
+
+	@Override
+	public void setChanged() {
+		if (this.level != null) {
+			var state = this.getBlockState().setValue(InfuserBlock.STATE, this.calculateState());
+			this.level.setBlock(this.getBlockPos(), state, 3);
+		}
+		super.setChanged();
+	}
+
+	private InfuserState calculateState() {
+		boolean utherium = !this.getItem(1).isEmpty();
+		boolean rogdorium = !this.getItem(2).isEmpty();
+
+		return !utherium && !rogdorium ? InfuserState.INACTIVE : (utherium ? InfuserState.INFUSING_UTHERIUM : InfuserState.INFUSING_ROGDORIUM);
 	}
 
 	private boolean canInfuse(RegistryAccess registryAccess, @Nullable RecipeHolder<InfusingRecipe> recipe, NonNullList<ItemStack> inventory, int maxStackSize) {
