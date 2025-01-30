@@ -797,5 +797,11 @@ public class UGLang extends UGLangProvider {
 		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL, "Raw Froststeel Storage Blocks");
 
 		addEmiFluidTag(UGTags.Fluids.VIRULENT, "Virulent Mix");
+
+		this.add("commands.undergarden.infection.success.single", "Set infection to %s on %s");
+		this.add("commands.undergarden.infection.success.multiple", "Set infection to %s on %s targets");
+		this.add("commands.undergarden.infection.cannot_infect", "%s is immune to infection");
+		this.add("commands.undergarden.infection.cannot_infect_multiple", "All targets are immune to infection");
+		this.add("commands.undergarden.infection.skipped", "%s targets were not affected as they are immune to infection");
 	}
 }

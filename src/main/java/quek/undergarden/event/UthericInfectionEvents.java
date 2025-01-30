@@ -27,6 +27,9 @@ public class UthericInfectionEvents {
 	private static void tickUthericInfection(EntityTickEvent.Pre event) {
 		Entity entity = event.getEntity();
 		if (entity instanceof LivingEntity livingEntity) {
+			if (livingEntity instanceof Player player && player.getAbilities().invulnerable) {
+				return;
+			}
 			if (livingEntity.tickCount % 20 == 0 && !livingEntity.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
 				double data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
 				if (data >= 20.0D) {
@@ -53,7 +56,7 @@ public class UthericInfectionEvents {
 					} else if (data < 0.0D) {
 						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, 0.0D);
 					}
-					sendSyncPacket(livingEntity);
+					sendInfectionSyncPacket(livingEntity);
 				}
 				if (livingEntity instanceof ServerPlayer player) {
 					UGCriteria.UTHERIC_INFECTION.get().trigger(player, livingEntity.getData(UGAttachments.UTHERIC_INFECTION));
@@ -85,7 +88,7 @@ public class UthericInfectionEvents {
 						double t = b / ((1 + a) * 0.18D);
 						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + t);
 
-						sendSyncPacket(livingEntity);
+						sendInfectionSyncPacket(livingEntity);
 					}
 				}
 			}
@@ -94,17 +97,17 @@ public class UthericInfectionEvents {
 
 	private static void syncUthericInfectionOnLogin(PlayerEvent.PlayerLoggedInEvent event) {
 		if (!event.getEntity().level().isClientSide()) {
-			sendSyncPacket(event.getEntity());
+			sendInfectionSyncPacket(event.getEntity());
 		}
 	}
 
 	private static void syncUthericInfectionOnDimensionChange(PlayerEvent.PlayerChangedDimensionEvent event) {
 		if (!event.getEntity().level().isClientSide()) {
-			sendSyncPacket(event.getEntity());
+			sendInfectionSyncPacket(event.getEntity());
 		}
 	}
 
-	protected static void sendSyncPacket(LivingEntity entity) {
+	public static void sendInfectionSyncPacket(Entity entity) {
 		PacketDistributor.sendToPlayersTrackingEntityAndSelf(entity, new UthericInfectionPacket(entity.getId(), entity.getData(UGAttachments.UTHERIC_INFECTION)));
 	}
 }

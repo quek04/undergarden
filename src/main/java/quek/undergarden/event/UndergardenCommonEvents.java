@@ -1,5 +1,8 @@
 package quek.undergarden.event;
 
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -39,6 +42,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -54,6 +58,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
+import quek.undergarden.command.InfectionCommand;
 import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
@@ -89,6 +94,7 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
 		bus.addListener(UndergardenCommonEvents::registerDataMaps);
 
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerCommands);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
@@ -457,5 +463,9 @@ public class UndergardenCommonEvents {
 	public static void registerDataMaps(RegisterDataMapTypesEvent event) {
 		event.register(UGDataMaps.BIOME_LETHALITY);
 		event.register(UGDataMaps.ENTITY_LETHALITY);
+	}
+
+	private static void registerCommands(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("undergarden").then(InfectionCommand.register()));
 	}
 }
