@@ -14,7 +14,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.Undergarden;
-import quek.undergarden.data.builder.ItemInfusingRecipeBuilder;
 import quek.undergarden.data.provider.UGRecipeProvider;
 import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.registry.UGBlocks;
@@ -581,27 +580,24 @@ public class UGRecipes extends UGRecipeProvider {
 
 		smeltingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(output, name("smelt_dweller_meat"));
 		smokingRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(output, name("smoke_dweller_meat"));
+		campfireRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(output, name("campfire_dweller_meat"));
 
 		smeltingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), 0.35F).save(output, name("smelt_gwibling"));
 		smokingRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), 0.35F).save(output, name("smoke_gwibling"));
+		campfireRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), 0.35F).save(output, name("campfire_gwibling"));
 
 		smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(output, name("smelt_gloomper_leg"));
 		smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(output, name("smoke_gloomper_leg"));
-		campfireRecipe(UGItems.DWELLER_STEAK.get(), UGItems.RAW_DWELLER_MEAT.get(), 0.35F).save(consumer, name("campfire_dweller_meat"));
+		campfireRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(output, name("campfire_gloomper_leg"));
 
 		smeltingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(output, name("smelt_glitterkelp"));
 		smokingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(output, name("smoke_glitterkelp"));
-		campfireRecipe(UGItems.COOKED_GWIBLING.get(), UGItems.RAW_GWIBLING.get(), 0.35F).save(consumer, name("campfire_gwibling"));
+		campfireRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(output, name("campfire_glitterkelp"));
 
 		smeltingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(output, name("smelt_underbeans"));
 		smokingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(output, name("smoke_underbeans"));
-		smeltingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("smelt_gloomper_leg"));
-		smokingRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("smoke_gloomper_leg"));
-		campfireRecipe(UGItems.GLOOMPER_LEG.get(), UGItems.RAW_GLOOMPER_LEG.get(), 0.35F).save(consumer, name("campfire_gloomper_leg"));
+		campfireRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(output, name("campfire_underbeans"));
 
-		smeltingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(consumer, name("smelt_glitterkelp"));
-		smokingRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(consumer, name("smoke_glitterkelp"));
-		campfireRecipe(Items.DRIED_KELP, UGItems.GLITTERKELP.get(), 0.1F).save(consumer, name("campfire_glitterkelp"));
 		depthrockStonecutting(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get()).save(output, name("chiseled_depthrock_bricks_stonecutting"));
 		depthrockStonecutting(UGBlocks.DEPTHROCK_BRICK_SLAB.get(), 2).save(output, name("depthrock_brick_slab_stonecutting"));
 		depthrockStonecutting(UGBlocks.DEPTHROCK_BRICK_STAIRS.get()).save(output, name("depthrock_brick_stairs_stonecutting"));
@@ -628,9 +624,6 @@ public class UGRecipes extends UGRecipeProvider {
 		polishedDepthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_STAIRS.get()).save(output, name("polished_depthrock_to_polished_depthrock_stairs_stonecutting"));
 		polishedDepthrockStonecutting(UGBlocks.POLISHED_DEPTHROCK_WALL.get()).save(output, name("polished_depthrock_to_polished_depthrock_wall_stonecutting"));
 
-		smeltingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smelt_underbeans"));
-		smokingRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("smoke_underbeans"));
-		campfireRecipe(UGItems.ROASTED_UNDERBEANS.get(), UGItems.UNDERBEANS.get(), 0.35F).save(consumer, name("campfire_underbeans"));
 		shiverstoneStonecutting(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get()).save(output, name("chiseled_shiverstone_bricks_stonecutting"));
 		shiverstoneStonecutting(UGBlocks.SHIVERSTONE_BRICK_SLAB.get(), 2).save(output, name("shiverstone_brick_slab_stonecutting"));
 		shiverstoneStonecutting(UGBlocks.SHIVERSTONE_BRICK_STAIRS.get()).save(output, name("shiverstone_brick_stairs_stonecutting"));
@@ -668,13 +661,13 @@ public class UGRecipes extends UGRecipeProvider {
 		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_STAIRS.get()).save(output, name("dreadrock_to_dreadrock_stairs_stonecutting"));
 		dreadrockBricksStonecutting(UGBlocks.DREADROCK_BRICK_WALL.get()).save(output, name("dreadrock_bricks_to_dreadrock_brick_wall_stonecutting"));
 
-		this.itemInfusing(Ingredient.of(Tags.Items.ARMORS), InfusingBookCategory.MISC, 0.0F, 200).save(output, name("armor_infusing"));
-		this.infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(output, name("denizen_totem_infusing"));
-		this.infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_CLUSTER, 1.0F, 200).save(output, name("utheric_cluster_to_utherium_crystal_infusing"));
-		this.infusingPurifying(UGBlocks.ROGDORIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(output);
+		itemInfusing(Ingredient.of(Tags.Items.ARMORS), InfusingBookCategory.MISC, 0.0F, 200).save(output, name("armor_infusing"));
+		infusingPurifying(UGBlocks.DENIZEN_TOTEM, UGBlocks.ANCIENT_ROOT, 1.0F, 200).save(output, name("denizen_totem_infusing"));
+		infusingPurifying(UGItems.UTHERIUM_CRYSTAL, UGItems.UTHERIC_CLUSTER, 1.0F, 200).save(output, name("utheric_cluster_to_utherium_crystal_infusing"));
+		infusingPurifying(UGBlocks.ROGDORIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(output);
 
-		this.infusingCorrupting(UGItems.CORRUPT_CATALYST, UGItems.CATALYST, 10.0F, 600).save(output, name("corrupt_catalyst_infusing"));
-		this.infusingCorrupting(UGBlocks.UTHERIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(output);
+		infusingCorrupting(UGItems.CORRUPT_CATALYST, UGItems.CATALYST, 10.0F, 600).save(output, name("corrupt_catalyst_infusing"));
+		infusingCorrupting(UGBlocks.UTHERIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(output);
 	}
 
 	private ResourceLocation name(String name) {
