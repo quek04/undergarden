@@ -10,18 +10,18 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import quek.undergarden.inventory.slot.InfuserResultSlot;
 import quek.undergarden.inventory.slot.InfuserRogdoriumFuelSlot;
 import quek.undergarden.inventory.slot.InfuserUtheriumFuelSlot;
-import quek.undergarden.recipe.InfuserRecipeInput;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGMenuTypes;
 import quek.undergarden.registry.UGRecipeBookTypes;
 import quek.undergarden.registry.UGRecipeTypes;
 import quek.undergarden.registry.UGTags;
 
-public class InfuserMenu extends RecipeBookMenu<InfuserRecipeInput, InfusingRecipe> {
+public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecipe> {
 
 	private final Container container;
 	private final ContainerData data;
@@ -90,13 +90,7 @@ public class InfuserMenu extends RecipeBookMenu<InfuserRecipeInput, InfusingReci
 	}
 
 	protected boolean canInfuse(ItemStack stack) {
-		if (this.isUtheriumFuelFull()) {
-			return this.level.getRecipeManager().getRecipeFor(this.recipeType, new InfuserRecipeInput(stack, true), this.level).isPresent();
-		}
-		if (this.isRogdoriumFuelFull()) {
-			return this.level.getRecipeManager().getRecipeFor(this.recipeType, new InfuserRecipeInput(stack, false), this.level).isPresent();
-		}
-		return false;
+		return this.level.getRecipeManager().getRecipeFor(this.recipeType, new SingleRecipeInput(stack), this.level).isPresent();
 	}
 
 	@Override
@@ -115,7 +109,7 @@ public class InfuserMenu extends RecipeBookMenu<InfuserRecipeInput, InfusingReci
 
 	@Override
 	public boolean recipeMatches(RecipeHolder<InfusingRecipe> recipe) {
-		return recipe.value().matches(new InfuserRecipeInput(this.container.getItem(0), recipe.value().isUtheriumFuel()), this.level);
+		return recipe.value().matches(new SingleRecipeInput(this.container.getItem(0)), this.level);
 	}
 
 	@Override
@@ -145,7 +139,7 @@ public class InfuserMenu extends RecipeBookMenu<InfuserRecipeInput, InfusingReci
 
 	@Override
 	public boolean shouldMoveToInventory(int slotIndex) {
-		return slotIndex != 1; //TODO figure out which index to use
+		return slotIndex != 1 && slotIndex != 2;
 	}
 
 	@Override

@@ -1,4 +1,6 @@
 {
-  "type": "undergarden:armor_infusing",
-  "category": "purifying"
+  "type": "undergarden:item_infusing",
+  "items": {
+    "tag": "c:armors"
+  }
 }

@@ -16,7 +16,6 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import quek.undergarden.Undergarden;
 import quek.undergarden.compat.emi.UGEmiPlugin;
 import quek.undergarden.recipe.InfusingRecipe;
-import quek.undergarden.registry.UGTags;
 
 public class UGEmiInfusingRecipe extends BasicEmiRecipe {
 
@@ -35,11 +34,7 @@ public class UGEmiInfusingRecipe extends BasicEmiRecipe {
 		NonNullList<Ingredient> recipeIngredients = recipe.value().getIngredients();
 		this.recipe = recipe.value();
 		this.inputs.add(EmiIngredient.of(recipeIngredients.getFirst()));
-		if (this.recipe.isUtheriumFuel()) {
-			this.inputs.add(EmiIngredient.of(UGTags.Items.INFUSER_UTHERIUM_FUELS));
-		} else {
-			this.inputs.add(EmiIngredient.of(UGTags.Items.INFUSER_ROGDORIUM_FUELS));
-		}
+		this.inputs.add(EmiIngredient.of(this.recipe.getRecipeSlotType().getValidItems()));
 		this.outputs.add(EmiStack.of(recipe.value().getResultItem(registryAccess)));
 	}
 
@@ -49,11 +44,8 @@ public class UGEmiInfusingRecipe extends BasicEmiRecipe {
 
 		widgets.addSlot(inputs.getFirst(), 54, 0).drawBack(false);
 
-		if (this.recipe.isUtheriumFuel()) {
-			widgets.addSlot(EmiIngredient.of(UGTags.Items.INFUSER_UTHERIUM_FUELS), 0, 36).drawBack(false);
-		} else {
-			widgets.addSlot(EmiIngredient.of(UGTags.Items.INFUSER_ROGDORIUM_FUELS), 108, 36).drawBack(false);
-		}
+		var slot = this.recipe.getRecipeSlotType();
+		widgets.addSlot(EmiIngredient.of(slot.getValidItems()), (slot.getSlotIndex() - 1) * 108, 36).drawBack(false);
 
 		widgets.addSlot(outputs.getFirst(), 50, 31).drawBack(false).large(true).recipeContext(this);
 
@@ -62,7 +54,7 @@ public class UGEmiInfusingRecipe extends BasicEmiRecipe {
 	}
 
 	protected void drawExperience(WidgetHolder widgets) {
-		float experience = recipe.getExperience();
+		float experience = this.recipe.infusingTime();
 		if (experience > 0) {
 			Component experienceString = Component.translatable("gui.undergarden.jei.category.infusing.experience", experience);
 			Minecraft minecraft = Minecraft.getInstance();
@@ -73,7 +65,7 @@ public class UGEmiInfusingRecipe extends BasicEmiRecipe {
 	}
 
 	protected void drawCookTime(WidgetHolder widgets) {
-		int infusingTime = recipe.getInfusingTime();
+		int infusingTime = this.recipe.infusingTime();
 		if (infusingTime > 0) {
 			int infusingTimeSeconds = infusingTime / 20;
 			Component timeString = Component.translatable("gui.undergarden.jei.category.infusing.time.seconds", infusingTimeSeconds);

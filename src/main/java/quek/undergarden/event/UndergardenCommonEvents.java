@@ -87,11 +87,9 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::setup);
 		bus.addListener(UndergardenCommonEvents::registerEntityAttributes);
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
-		bus.addListener(UndergardenCommonEvents::modifyComponents);
 		bus.addListener(UndergardenCommonEvents::registerDataMaps);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
-		//NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickUthericInfection);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
@@ -454,10 +452,6 @@ public class UndergardenCommonEvents {
 				}
 			}
 		}
-	}
-
-	public static void modifyComponents(ModifyDefaultComponentsEvent event) {
-		event.modifyMatching(item -> item instanceof ArmorItem, builder -> builder.set(UGDataComponents.ROGDORIUM_INFUSION.get(), RogdoriumInfusion.DEFAULT));
 	}
 
 	public static void registerDataMaps(RegisterDataMapTypesEvent event) {

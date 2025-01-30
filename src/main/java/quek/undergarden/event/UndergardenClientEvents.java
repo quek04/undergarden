@@ -264,9 +264,9 @@ public class UndergardenClientEvents {
 		event.registerAggregateCategory(UGRecipeBookCategories.INFUSER_SEARCH, ImmutableList.of(UGRecipeBookCategories.INFUSER_PURIFYING, UGRecipeBookCategories.INFUSER_CORRUPTING, UGRecipeBookCategories.INFUSER_MISC));
 		event.registerRecipeCategoryFinder(UGRecipeTypes.INFUSING.get(), recipe -> {
 			if (recipe.value() instanceof InfusingRecipe infusingRecipe) {
-				if (infusingRecipe.getCategory() == InfusingBookCategory.PURIFYING) {
+				if (infusingRecipe.category() == InfusingBookCategory.PURIFYING) {
 					return UGRecipeBookCategories.INFUSER_PURIFYING;
-				} else if (infusingRecipe.getCategory() == InfusingBookCategory.CORRUPTING) {
+				} else if (infusingRecipe.category() == InfusingBookCategory.CORRUPTING) {
 					return UGRecipeBookCategories.INFUSER_CORRUPTING;
 				}
 			}
@@ -504,7 +504,7 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerItemDecorations(RegisterItemDecorationsEvent event) {
-		BuiltInRegistries.ITEM.stream().filter(item -> item instanceof ArmorItem).forEach(item -> event.register(item, ((guiGraphics, font, stack, xOffset, yOffset) -> {
+		BuiltInRegistries.ITEM.forEach(item -> event.register(item, ((guiGraphics, font, stack, xOffset, yOffset) -> {
 			int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
 			int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
 			if (infusionAmount > 0) {
@@ -524,7 +524,7 @@ public class UndergardenClientEvents {
 		List<Component> tooltip = event.getToolTip();
 		ItemStack stack = event.getItemStack();
 		if (flags.isAdvanced()) {
-			if (stack.getItem().components().has(UGDataComponents.ROGDORIUM_INFUSION.get())) {
+			if (stack.has(UGDataComponents.ROGDORIUM_INFUSION.get())) {
 				int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
 				int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
 				if (infusionAmount > 0) {
