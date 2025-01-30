@@ -101,10 +101,10 @@ repositories {
 dependencies {
 	compileOnly("mezz.jei:jei-1.21.1-common-api:${jei_version}")
 	compileOnly("mezz.jei:jei-1.21.1-neoforge-api:${jei_version}")
-	runtimeOnly("mezz.jei:jei-1.21.1-neoforge:${jei_version}")
+	//runtimeOnly("mezz.jei:jei-1.21.1-neoforge:${jei_version}")
 
 	compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-	//runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+	runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 
 	implementation "curse.maven:jade-324717:${project.jade_version}"
     implementation "curse.maven:better-advancements-272515:${project.better_advancements_version}"

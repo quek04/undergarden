@@ -15,7 +15,11 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import quek.undergarden.Undergarden;
 import quek.undergarden.compat.emi.UGEmiPlugin;
+import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.recipe.InfusingRecipe;
+import quek.undergarden.registry.UGDataComponents;
+
+import java.util.Arrays;
 
 public class UGEmiInfusingRecipe extends BasicEmiRecipe {
 
@@ -33,7 +37,7 @@ public class UGEmiInfusingRecipe extends BasicEmiRecipe {
 		RegistryAccess registryAccess = level.registryAccess();
 		NonNullList<Ingredient> recipeIngredients = recipe.value().getIngredients();
 		this.recipe = recipe.value();
-		this.inputs.add(EmiIngredient.of(recipeIngredients.getFirst()));
+		this.inputs.add(EmiIngredient.of(Arrays.stream(recipeIngredients.getFirst().getItems()).map(EmiStack::of).toList()));
 		this.inputs.add(EmiIngredient.of(this.recipe.getRecipeSlotType().getValidItems()));
 		this.outputs.add(EmiStack.of(recipe.value().getResultItem(registryAccess)));
 	}
@@ -42,19 +46,26 @@ public class UGEmiInfusingRecipe extends BasicEmiRecipe {
 	public void addWidgets(WidgetHolder widgets) {
 		widgets.addTexture(INFUSER_TEXTURE, 0, 0, 126, 57, 25, 16);
 
-		widgets.addSlot(inputs.getFirst(), 54, 0).drawBack(false);
+		widgets.addSlot(this.inputs.getFirst(), 54, 0).drawBack(false);
 
 		var slot = this.recipe.getRecipeSlotType();
 		widgets.addSlot(EmiIngredient.of(slot.getValidItems()), (slot.getSlotIndex() - 1) * 108, 36).drawBack(false);
 
-		widgets.addSlot(outputs.getFirst(), 50, 31).drawBack(false).large(true).recipeContext(this);
-
-		drawExperience(widgets);
-		drawCookTime(widgets);
+		if (this.outputs.getFirst().isEmpty()) {
+			widgets.addSlot(EmiIngredient.of(this.inputs.getFirst().getEmiStacks().stream().map(stack -> {
+				var copy = stack.getItemStack().copy();
+				copy.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(56));
+				return EmiStack.of(copy);
+			}).toList()), 50, 31).drawBack(false).large(true).recipeContext(this);
+		} else {
+			widgets.addSlot(this.outputs.getFirst(), 50, 31).drawBack(false).large(true).recipeContext(this);
+		}
+		this.drawExperience(widgets);
+		this.drawCookTime(widgets);
 	}
 
 	protected void drawExperience(WidgetHolder widgets) {
-		float experience = this.recipe.infusingTime();
+		float experience = this.recipe.experience();
 		if (experience > 0) {
 			Component experienceString = Component.translatable("gui.undergarden.jei.category.infusing.experience", experience);
 			Minecraft minecraft = Minecraft.getInstance();

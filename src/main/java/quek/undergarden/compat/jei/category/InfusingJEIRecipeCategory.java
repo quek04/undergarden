@@ -93,10 +93,10 @@ public class InfusingJEIRecipeCategory implements IRecipeCategory<InfusingRecipe
 
 	@Override
 	public void draw(InfusingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-		guiGraphics.blit(INFUSER_TEXTURE, 0, 0, 25, 16, getWidth(), getHeight());
+		guiGraphics.blit(INFUSER_TEXTURE, 0, 0, 25, 16, this.getWidth(), this.getHeight());
 
-		drawExperience(recipe, guiGraphics);
-		drawCookTime(recipe, guiGraphics);
+		this.drawExperience(recipe, guiGraphics);
+		this.drawCookTime(recipe, guiGraphics);
 	}
 
 	protected void drawExperience(InfusingRecipe recipe, GuiGraphics guiGraphics) {
@@ -106,7 +106,7 @@ public class InfusingJEIRecipeCategory implements IRecipeCategory<InfusingRecipe
 			Minecraft minecraft = Minecraft.getInstance();
 			Font fontRenderer = minecraft.font;
 			int stringWidth = fontRenderer.width(experienceString);
-			guiGraphics.drawString(fontRenderer, experienceString, getWidth() - stringWidth, -1, 0xFF808080, false);
+			guiGraphics.drawString(fontRenderer, experienceString, this.getWidth() - stringWidth, -1, 0xFF808080, false);
 		}
 	}
 
@@ -118,7 +118,7 @@ public class InfusingJEIRecipeCategory implements IRecipeCategory<InfusingRecipe
 			Minecraft minecraft = Minecraft.getInstance();
 			Font fontRenderer = minecraft.font;
 			int stringWidth = fontRenderer.width(timeString);
-			guiGraphics.drawString(fontRenderer, timeString, (getWidth() - stringWidth) - 20, 45, 0xFF808080, false);
+			guiGraphics.drawString(fontRenderer, timeString, (this.getWidth() - stringWidth) - 20, 45, 0xFF808080, false);
 		}
 	}
 }
