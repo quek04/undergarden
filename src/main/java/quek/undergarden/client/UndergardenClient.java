@@ -3,7 +3,6 @@ package quek.undergarden.client;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 import quek.undergarden.registry.UGSoundEvents;
 
