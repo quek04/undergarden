@@ -4,6 +4,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.network.PacketDistributor;
+import quek.undergarden.event.UthericInfectionEvents;
 import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.UGAttachments;
 
@@ -18,7 +19,7 @@ public class PurityEffect extends MobEffect {
 			double data = entity.getData(UGAttachments.UTHERIC_INFECTION);
 			if (data > 0) {
 				entity.setData(UGAttachments.UTHERIC_INFECTION.get(), data - 1);
-				PacketDistributor.sendToPlayersTrackingEntity(entity, new UthericInfectionPacket(entity.getId(), entity.getData(UGAttachments.UTHERIC_INFECTION)));
+				UthericInfectionEvents.sendInfectionSyncPacket(entity);
 			}
 		}
 		return true;
