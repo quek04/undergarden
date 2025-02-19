@@ -36,7 +36,9 @@
     "water_fog_color": 332810
   },
   "features": [
-    [],
+    [
+      "undergarden:ancient_root"
+    ],
     [],
     [],
     [],
@@ -54,8 +56,7 @@
     [
       "undergarden:huge_puff_mushroom_sparse",
       "undergarden:puff_mushroom_patch",
-      "undergarden:ditchbulb_patch_sparse",
-      "undergarden:ancient_root"
+      "undergarden:ditchbulb_patch_sparse"
     ]
   ],
   "has_precipitation": false,

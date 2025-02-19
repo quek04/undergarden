@@ -10,8 +10,8 @@
     },
     "ambient_sound": "undergarden:ambient.abyss",
     "fog_color": 10408133,
-    "foliage_color": 7568503,
-    "grass_color": 7568503,
+    "foliage_color": 6312510,
+    "grass_color": 6312510,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -46,6 +46,12 @@
     [
       "undergarden:rogdorium_ore",
       "undergarden:utherium_ore"
+    ],
+    [],
+    [],
+    [
+      "undergarden:deepturf_patch",
+      "undergarden:smogstem_tree"
     ]
   ],
   "has_precipitation": false,

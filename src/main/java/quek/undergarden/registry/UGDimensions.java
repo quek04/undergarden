@@ -246,9 +246,9 @@ public class UGDimensions {
 						)
 					)
 				),
-				//make puff mushroom forest all coarse deepsoil
+				//make puff mushroom forest and rogdorium grove all coarse deepsoil
 				SurfaceRules.ifTrue(
-					SurfaceRules.isBiome(UGBiomes.PUFF_MUSHROOM_FOREST),
+					SurfaceRules.isBiome(UGBiomes.PUFF_MUSHROOM_FOREST, UGBiomes.ROGDORIUM_GROVE),
 					SurfaceRules.ifTrue(
 						SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
 						SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())

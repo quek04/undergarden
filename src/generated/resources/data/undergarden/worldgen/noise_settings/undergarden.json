@@ -573,7 +573,8 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "undergarden:puff_mushroom_forest"
+            "undergarden:puff_mushroom_forest",
+            "undergarden:rogdorium_grove"
           ]
         },
         "then_run": {
