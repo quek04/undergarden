@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-29T23:55:01.9490585	Tags for minecraft:item mod id undergarden
+// 1.21.1	2025-02-19T01:28:09.2496965	Tags for minecraft:item mod id undergarden
 a3d8e475ccb999d6ed5ab37305b8d99ef17c4278 data/c/tags/item/armors.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/c/tags/item/bones.json
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/item/cobblestones.json
@@ -79,8 +79,8 @@ e282811049e5f333a4c93eedc7f5d09b35dbc043 data/minecraft/tags/item/head_armor.jso
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/minecraft/tags/item/iron_ores.json
 497779cef1ba178c2d1e96ca25b75892c32f086f data/minecraft/tags/item/leaves.json
 fb170df46118e10c285c41399bd3020004554573 data/minecraft/tags/item/leg_armor.json
-f86068e471d2ec5489dee3c5e674d6983e09c4c9 data/minecraft/tags/item/logs.json
-f86068e471d2ec5489dee3c5e674d6983e09c4c9 data/minecraft/tags/item/logs_that_burn.json
+e9576b5a35ec92289409a082cdfc0843ede03cde data/minecraft/tags/item/logs.json
+e9576b5a35ec92289409a082cdfc0843ede03cde data/minecraft/tags/item/logs_that_burn.json
 0d42b6d280281c95f545b1f531eaa606226ce75d data/minecraft/tags/item/pickaxes.json
 b86f56bdea209ef921825a95161b4dd24b6e4a4d data/minecraft/tags/item/planks.json
 5c5d4b975bb42e5a720ba4f466281426ef3057e2 data/minecraft/tags/item/saplings.json

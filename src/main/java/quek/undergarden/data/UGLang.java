@@ -122,7 +122,6 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.BLUE_MOGMOSS_RUG, "Blue Mogmoss Rug");
 		addBlock(UGBlocks.CLOGGRUM_LANTERN, "Cloggrum Lantern");
 		addBlock(UGBlocks.UTHERIUM_GROWTH, "Utherium Growth");
-		addBlock(UGBlocks.DENIZEN_TOTEM, "Mysterious Totem");
 
 		addBlock(UGBlocks.AMOROUS_BRISTLE, "Amorous Bristle");
 		addBlock(UGBlocks.MISERABELL, "Miserabell");
@@ -239,6 +238,8 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.ROGDORIC_GRONGLET, "Rogdoric Gronglet");
 
 		addBlock(UGBlocks.ANCIENT_ROOT, "Ancient Root");
+		addBlock(UGBlocks.ROGDORIC_ANCIENT_ROOT, "Rogdoric Ancient Root");
+		addBlock(UGBlocks.DENIZEN_TOTEM, "Mysterious Totem");
 		addBlock(UGBlocks.ANCIENT_ROOT_PLANKS, "Ancient Root Planks");
 		addBlock(UGBlocks.ANCIENT_ROOT_STAIRS, "Ancient Root Stairs");
 		addBlock(UGBlocks.ANCIENT_ROOT_SLAB, "Ancient Root Slab");

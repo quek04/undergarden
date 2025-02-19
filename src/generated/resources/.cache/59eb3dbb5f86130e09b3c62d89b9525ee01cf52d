@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-29T12:15:33.4856888	Loot Tables
+// 1.21.1	2025-02-19T01:28:09.2537154	Loot Tables
 a98ef2d19021119538303713da16c2a2736f39ad data/undergarden/loot_table/blocks/amorous_bristle.json
 b9408907e248da254a1a191cd48b20aa1b75a78a data/undergarden/loot_table/blocks/ancient_root.json
 b23b1330c62b29f9d542c6bf14112a5c38da0c79 data/undergarden/loot_table/blocks/ancient_root_button.json
@@ -143,6 +143,7 @@ a33efd5d6e8f3485301544c6af3c7524ed9a989d data/undergarden/loot_table/blocks/puff
 a72558fb5fd0a88e9c77925c010f4729045a8b2d data/undergarden/loot_table/blocks/raw_cloggrum_block.json
 c0eaaebc3f9675ed34376fb7d7e7f2e149ea98fe data/undergarden/loot_table/blocks/raw_froststeel_block.json
 5b183e878a324cb8c335b169493853b61c6d5523 data/undergarden/loot_table/blocks/regalium_block.json
+c199638902da4b5bd814bb28f3ba0a5ab7475c5f data/undergarden/loot_table/blocks/rogdoric_ancient_root.json
 5c336f43f21fc8c58406737d04bf8cd82396ef91 data/undergarden/loot_table/blocks/rogdoric_gronglet.json
 bb87018b3e82b9a5edc44f53b3b8c075df279495 data/undergarden/loot_table/blocks/rogdorium_block.json
 0aa650ef41619f90ef2bf1b2c5ed8ccf522d4a02 data/undergarden/loot_table/blocks/sediment.json

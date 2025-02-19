@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-23T04:11:53.5545369	Block States: undergarden
+// 1.21.1	2025-02-19T01:28:09.2597214	Block States: undergarden
 5b125d1ca39a9e8515eb8c2902952f2815d2546a assets/undergarden/blockstates/amorous_bristle.json
 f80efe8d72f896f3fb26b4c28f312ad9ec9ae967 assets/undergarden/blockstates/ancient_root.json
 59e8649180610b11f7a560c77883ec13cef7bda3 assets/undergarden/blockstates/ancient_root_button.json
@@ -119,6 +119,7 @@ f9680da3c3a4b799cd0ed61c3963c90da1876a18 assets/undergarden/blockstates/puff_mus
 0c0e28866c4f7b1848f11a1071614cb28a710a7e assets/undergarden/blockstates/puff_mushroom_stem.json
 9b4fd0c9036542dbfd67a284d090942d2e19ea5f assets/undergarden/blockstates/raw_cloggrum_block.json
 df495e28d8a6ac3773dcd9ce2a357e2598298d78 assets/undergarden/blockstates/raw_froststeel_block.json
+58f6665932cdba41ab157f87bfcac3b880f5ee0b assets/undergarden/blockstates/rogdoric_ancient_root.json
 0e4a3f02f12ba2fde0ffc93186c4890bb21b14c9 assets/undergarden/blockstates/rogdorium_block.json
 a0fb424989049c0290cb6068b368160f5809730c assets/undergarden/blockstates/sediment.json
 bc547e4130c5a84fde6ffe8f7dab2ea8b435a003 assets/undergarden/blockstates/sediment_glass.json
@@ -401,6 +402,7 @@ a07e8faea195f5dfe5650a61fa8ac06acd941ce6 assets/undergarden/models/block/polishe
 8677034ae4a240bcd859a472acc46a9dd03cf443 assets/undergarden/models/block/puff_mushroom_stem.json
 c300a6b55aa19596a008e722edde5ffb3cca0a3f assets/undergarden/models/block/raw_cloggrum_block.json
 35d38772d407dbdefb8d22323457f57de9654b4d assets/undergarden/models/block/raw_froststeel_block.json
+269c7d4a1c195a57e9f7f3bd18fe6cbedc2055a9 assets/undergarden/models/block/rogdoric_ancient_root.json
 de51b1693299470040ba8e29c8660b45cc070052 assets/undergarden/models/block/rogdorium_block.json
 82bbbf97141ec9c5d8a89dcf7a0da648ae330916 assets/undergarden/models/block/sediment.json
 0e3f1b1bc2078992ea9717fc33ddb5e3584eac70 assets/undergarden/models/block/sediment_glass.json

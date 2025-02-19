@@ -262,6 +262,7 @@ public class UGItemModels extends UGItemModelProvider {
 		block(UGBlocks.UTHERIUM_GROWTH);
 		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
 		block(UGBlocks.ANCIENT_ROOT);
+		block(UGBlocks.ROGDORIC_ANCIENT_ROOT);
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
 		block(UGBlocks.ANCIENT_ROOT_STAIRS);
 		block(UGBlocks.ANCIENT_ROOT_SLAB);

@@ -54,7 +54,8 @@
     [
       "undergarden:huge_puff_mushroom_sparse",
       "undergarden:puff_mushroom_patch",
-      "undergarden:ditchbulb_patch_sparse"
+      "undergarden:ditchbulb_patch_sparse",
+      "undergarden:ancient_root"
     ]
   ],
   "has_precipitation": false,

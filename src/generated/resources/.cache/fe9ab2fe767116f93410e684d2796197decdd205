@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-23T17:13:13.1641054	Tags for minecraft:block mod id undergarden
+// 1.21.1	2025-02-19T01:28:09.2686736	Tags for minecraft:block mod id undergarden
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/block/cobblestones.json
 3430489c73ccf7c6a97b8405ff097796daf6e4ba data/c/tags/block/fences/wooden.json
 8c4e326a74b8c8e3a8dd62875f1f8f81e697c7a6 data/c/tags/block/fence_gates/wooden.json
@@ -58,10 +58,10 @@ cde3aa50670af77c10281cfcd9609068a219526e data/minecraft/tags/block/flower_pots.j
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/block/impermeable.json
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/minecraft/tags/block/iron_ores.json
 497779cef1ba178c2d1e96ca25b75892c32f086f data/minecraft/tags/block/leaves.json
-f86068e471d2ec5489dee3c5e674d6983e09c4c9 data/minecraft/tags/block/logs.json
-f86068e471d2ec5489dee3c5e674d6983e09c4c9 data/minecraft/tags/block/logs_that_burn.json
+e9576b5a35ec92289409a082cdfc0843ede03cde data/minecraft/tags/block/logs.json
+e9576b5a35ec92289409a082cdfc0843ede03cde data/minecraft/tags/block/logs_that_burn.json
 0d90808086e3aad6dc31200f215524957736650a data/minecraft/tags/block/maintains_farmland.json
-60b86b607b8cc98ffdaf45bf387a5f0e5864ba91 data/minecraft/tags/block/mineable/axe.json
+bab5826596b1ec78570167941e7d7c15c0293b00 data/minecraft/tags/block/mineable/axe.json
 78905c3a496e4d94c24d07af3e585bf14688d33b data/minecraft/tags/block/mineable/hoe.json
 7d375760e75136c514e8d6238188595cd103c009 data/minecraft/tags/block/mineable/pickaxe.json
 69d2571d2d15a8aefb59f5d5ba8c0d1952690da0 data/minecraft/tags/block/mineable/shovel.json
