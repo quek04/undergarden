@@ -285,6 +285,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.UTHERIUM_CRYSTAL, "Utherium Crystal");
 		addItem(UGItems.REGALIUM_CRYSTAL, "Regalium Crystal");
 		addItem(UGItems.ROGDORIUM, "Rogdorium");
+		addItem(UGItems.ROGDORIUM_NUGGET, "Rogdorium Nugget");
 		addItem(UGItems.FORGOTTEN_INGOT, "Forgotten Ingot");
 		addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
 		addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");
@@ -774,11 +775,12 @@ public class UGLang extends UGLangProvider {
 		addEmiCommonItemTag(UGTags.Items.INGOTS_FROSTSTEEL, "Froststeel Ingots");
 		addEmiCommonItemTag(UGTags.Items.GEMS_UTHERIUM, "Utherium Gems");
 		addEmiCommonItemTag(UGTags.Items.GEMS_REGALIUM, "Regalium Gems");
-		addEmiCommonItemTag(UGTags.Items.GEMS_ROGDORIUM, "Rogdorium Gems");
+		addEmiCommonItemTag(UGTags.Items.INGOTS_ROGDORIUM, "Rogdorium Ingots");
 		addEmiCommonItemTag(UGTags.Items.INGOTS_FORGOTTEN_METAL, "Forgotten Ingots");
 
 		addEmiCommonItemTag(UGTags.Items.NUGGETS_CLOGGRUM, "Cloggrum Nuggets");
 		addEmiCommonItemTag(UGTags.Items.NUGGETS_FROSTSTEEL, "Froststeel Nuggets");
+		addEmiCommonItemTag(UGTags.Items.NUGGETS_ROGDORIUM, "Rogdorium Nuggets");
 		addEmiCommonItemTag(UGTags.Items.NUGGETS_FORGOTTEN_METAL, "Forgotten Nuggets");
 
 		addEmiCommonItemTag(UGTags.Items.ORES_CLOGGRUM, "Cloggrum Ores");

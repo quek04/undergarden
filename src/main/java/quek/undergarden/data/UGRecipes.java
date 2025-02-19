@@ -203,7 +203,7 @@ public class UGRecipes extends UGRecipeProvider {
 			.pattern("S  ")
 			.define('R', UGItems.ROGDORIUM.get())
 			.define('S', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_rogdorium", has(UGTags.Items.GEMS_ROGDORIUM))
+			.unlockedBy("has_rogdorium", has(UGTags.Items.INGOTS_ROGDORIUM))
 			.save(output);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, UGItems.BLISTERBOMB.get())
@@ -374,10 +374,12 @@ public class UGRecipes extends UGRecipeProvider {
 
 		makeIngotToNugget(UGItems.CLOGGRUM_NUGGET, UGItems.CLOGGRUM_INGOT).save(output, name("cloggrum_ingot_to_nugget"));
 		makeIngotToNugget(UGItems.FROSTSTEEL_NUGGET, UGItems.FROSTSTEEL_INGOT).save(output, name("froststeel_ingot_to_nugget"));
+		makeIngotToNugget(UGItems.ROGDORIUM_NUGGET, UGItems.ROGDORIUM).save(output, name("rogdorium_to_nugget"));
 		makeIngotToNugget(UGItems.FORGOTTEN_NUGGET, UGItems.FORGOTTEN_INGOT).save(output, name("forgotten_ingot_to_nugget"));
 
 		makeNuggetToIngot(UGItems.CLOGGRUM_INGOT, UGItems.CLOGGRUM_NUGGET).save(output, name("cloggrum_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FROSTSTEEL_INGOT, UGItems.FROSTSTEEL_NUGGET).save(output, name("froststeel_nugget_to_ingot"));
+		makeNuggetToIngot(UGItems.ROGDORIUM, UGItems.ROGDORIUM_NUGGET).save(output, name("rogdorium_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.FORGOTTEN_INGOT, UGItems.FORGOTTEN_NUGGET).save(output, name("forgotten_nugget_to_ingot"));
 		makeNuggetToIngot(UGItems.UTHERIC_CLUSTER, UGItems.UTHERIC_SHARD).save(output);
 
@@ -538,7 +540,7 @@ public class UGRecipes extends UGRecipeProvider {
 			.pattern("D D")
 			.pattern("D D")
 			.define('D', UGBlocks.DREADROCK.get())
-			.define('R', UGTags.Items.GEMS_ROGDORIUM)
+			.define('R', UGTags.Items.INGOTS_ROGDORIUM)
 			.define('U', UGTags.Items.GEMS_UTHERIUM)
 			.unlockedBy("has_dreadrock", has(UGBlocks.DREADROCK.get()))
 			.save(output);

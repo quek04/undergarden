@@ -290,7 +290,7 @@ public class UGLootTables extends LootTableProvider {
 			dropSelf(UGBlocks.UTHERIUM_GROWTH);
 			ore(UGBlocks.DREADROCK_UTHERIUM_ORE, UGItems.UTHERIC_CLUSTER);
 			dropSelf(UGBlocks.ANCIENT_ROOT);
-			this.add(UGBlocks.ROGDORIC_ANCIENT_ROOT.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(UGItems.ROGDORIUM).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addOreBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE))))));
+			this.add(UGBlocks.ROGDORIC_ANCIENT_ROOT.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(UGItems.ROGDORIUM_NUGGET).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addOreBonusCount(registryLookup.getOrThrow(Enchantments.FORTUNE))))));
 			dropSelf(UGBlocks.ANCIENT_ROOT_PLANKS);
 			dropSelf(UGBlocks.ANCIENT_ROOT_STAIRS);
 			slab(UGBlocks.ANCIENT_ROOT_SLAB);

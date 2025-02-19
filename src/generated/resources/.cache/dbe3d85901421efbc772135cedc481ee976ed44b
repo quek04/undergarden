@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-19T01:28:09.265671	Item Models: undergarden
+// 1.21.1	2025-02-19T02:27:14.331846	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -208,6 +208,7 @@ aa8ed02244470d559527fb64cf5d04367ca1c2b4 assets/undergarden/models/item/regalium
 d34906faa275e698f33deb99518185d33265a325 assets/undergarden/models/item/rogdoric_ancient_root.json
 b43729a765335d29afb688d7c3fe9e87a1ef3e7f assets/undergarden/models/item/rogdorium.json
 0e429282157df54a316847af90941c56c1ab07d5 assets/undergarden/models/item/rogdorium_block.json
+574ae8e52118ddee2cd7f47bda828409e184d3a2 assets/undergarden/models/item/rogdorium_nugget.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotbeast_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotbelcher_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotling_spawn_egg.json

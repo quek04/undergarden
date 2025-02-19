@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-19T01:28:09.2496965	Tags for minecraft:item mod id undergarden
+// 1.21.1	2025-02-19T02:27:14.3175762	Tags for minecraft:item mod id undergarden
 a3d8e475ccb999d6ed5ab37305b8d99ef17c4278 data/c/tags/item/armors.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/c/tags/item/bones.json
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/item/cobblestones.json
@@ -13,9 +13,8 @@ e4f2648d72ef592c191f18e02a568d7d6ce7acb3 data/c/tags/item/foods/cooked_meat.json
 ad360c9545ed128ef2a9c4cd25e24a94382839a4 data/c/tags/item/foods/raw_meat.json
 62c61e9e467ee07652e2b53793c5c0e3ab2a8ded data/c/tags/item/foods/soup.json
 800be579a26497c84cb37f40061f166cfb367505 data/c/tags/item/foods/vegetable.json
-d34c7dacde587c29b976c219a2f543c388968600 data/c/tags/item/gems.json
+89dba31b2a645905610ed0accea179144fe23839 data/c/tags/item/gems.json
 3a979137e8bf5feda9cef02fbe6c413e20fc6314 data/c/tags/item/gems/regalium.json
-7f9fd08523988e6efca34dd96e7fa431aaf4d303 data/c/tags/item/gems/rogdorium.json
 74c7bd2831974a804ebdf0ca9232120f5b482988 data/c/tags/item/gems/utherium.json
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/c/tags/item/glass_blocks.json
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/c/tags/item/glass_blocks/colorless.json
@@ -25,12 +24,14 @@ bad58d012e76aabbd30db15906b541b6d206a5c1 data/c/tags/item/glass_blocks/colorless
 93823c42c0df6e9d72441bb162f49dc59049f8e8 data/c/tags/item/ingots/cloggrum.json
 7b886921b24448af71c190c5ea6d4b1ffa071566 data/c/tags/item/ingots/forgotten_metal.json
 88a4cf587acb6bec7bc2cba5e5ac1a66b8d70d94 data/c/tags/item/ingots/froststeel.json
+7f9fd08523988e6efca34dd96e7fa431aaf4d303 data/c/tags/item/ingots/rogdorium.json
 3fabf0f007d636dfa1860e105858b7066ed85dd4 data/c/tags/item/mushrooms.json
 a27ba544ecd7efd35bae2b2964c2ecb8795fe652 data/c/tags/item/music_discs.json
 bd2513bcec1fb79d0d217d4209833e9d59885cda data/c/tags/item/nuggets.json
 e45d48f10b5f88c8f293a49eed1457cacd96fcbd data/c/tags/item/nuggets/cloggrum.json
 c2cefd0a2e928f66b7ba644fc9edef72346f3c18 data/c/tags/item/nuggets/forgotten_metal.json
 2160ae2dc89346aa0c9f5e571d043d8309dfa776 data/c/tags/item/nuggets/froststeel.json
+1510dd68c3221d16ae1c8d7d48c88da0e3bce44e data/c/tags/item/nuggets/rogdorium.json
 98e5a42aed4fa03a19cb9842218a1a7416909993 data/c/tags/item/ores.json
 920d91b08adc319f5e21ad24bd5b404312ac3697 data/c/tags/item/ores/cloggrum.json
 62c40ea267632e8e82f52a31fe05cb49de3176a0 data/c/tags/item/ores/coal.json

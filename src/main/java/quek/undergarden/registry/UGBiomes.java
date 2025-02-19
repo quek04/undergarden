@@ -40,6 +40,7 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> DEPTHS = create("depths");
 	public static final ResourceKey<Biome> INFECTED_DEPTHS = create("infected_depths");
 	public static final ResourceKey<Biome> PUFF_MUSHROOM_FOREST = create("puff_mushroom_forest");
+	public static final ResourceKey<Biome> ROGDORIUM_GROVE = create("rogdorium_grove");
 
 	private static ResourceKey<Biome> create(String name) {
 		return ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
@@ -501,6 +502,20 @@ public class UGBiomes {
 			.downfall(0.0F)
 			.temperature(0.8F)
 			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 0, 6312510), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
+				.ambientParticle(new AmbientParticleSettings(ParticleTypes.MYCELIUM, 0.025F))
+				.build())
+			.build());
+
+		context.register(ROGDORIUM_GROVE, new Biome.BiomeBuilder()
+			.generationSettings(addDepthsOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, UGPlacedFeatures.ANCIENT_ROOT)
+				.build())
+			.mobSpawnSettings(new MobSpawnSettings.Builder()
+				.build())
+			.hasPrecipitation(false)
+			.downfall(0.0F)
+			.temperature(0.8F)
+			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 10408133, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
 				.ambientParticle(new AmbientParticleSettings(ParticleTypes.MYCELIUM, 0.025F))
 				.build())
 			.build());

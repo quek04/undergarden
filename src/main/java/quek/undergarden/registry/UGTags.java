@@ -36,11 +36,12 @@ public class UGTags {
 		public static final TagKey<Item> INGOTS_FROSTSTEEL = commonTag("ingots/froststeel");
 		public static final TagKey<Item> GEMS_UTHERIUM = commonTag("gems/utherium");
 		public static final TagKey<Item> GEMS_REGALIUM = commonTag("gems/regalium");
-		public static final TagKey<Item> GEMS_ROGDORIUM = commonTag("gems/rogdorium");
+		public static final TagKey<Item> INGOTS_ROGDORIUM = commonTag("ingots/rogdorium");
 		public static final TagKey<Item> INGOTS_FORGOTTEN_METAL = commonTag("ingots/forgotten_metal");
 
 		public static final TagKey<Item> NUGGETS_CLOGGRUM = commonTag("nuggets/cloggrum");
 		public static final TagKey<Item> NUGGETS_FROSTSTEEL = commonTag("nuggets/froststeel");
+		public static final TagKey<Item> NUGGETS_ROGDORIUM = commonTag("nuggets/rogdorium");
 		public static final TagKey<Item> NUGGETS_FORGOTTEN_METAL = commonTag("nuggets/forgotten_metal");
 
 		public static final TagKey<Item> ORES_CLOGGRUM = commonTag("ores/cloggrum");
