@@ -217,7 +217,6 @@ public class UndergardenCommonEvents {
 			fire.setFlammable(UGBlocks.SMOGSTEM_PLANKS.get(), 5, 20);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_PLANKS.get(), 5, 20);
 			fire.setFlammable(UGBlocks.GRONGLE_PLANKS.get(), 5, 20);
-			fire.setFlammable(UGBlocks.ANCIENT_ROOT_PLANKS.get(), 5, 20);
 			//slabs
 			fire.setFlammable(UGBlocks.SMOGSTEM_SLAB.get(), 5, 20);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_SLAB.get(), 5, 20);
@@ -238,8 +237,6 @@ public class UndergardenCommonEvents {
 			fire.setFlammable(UGBlocks.SMOGSTEM_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.GRONGLE_LOG.get(), 5, 5);
-			fire.setFlammable(UGBlocks.ANCIENT_ROOT.get(), 5, 5);
-			fire.setFlammable(UGBlocks.ROGDORIC_ANCIENT_ROOT.get(), 5, 5);
 			//stripped logs
 			fire.setFlammable(UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), 5, 5);

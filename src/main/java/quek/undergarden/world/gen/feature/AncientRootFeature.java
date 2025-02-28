@@ -8,17 +8,17 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.world.gen.feature.config.AncientRootConfiguration;
 
-public class AncientRootFeature extends Feature<NoneFeatureConfiguration> {
+public class AncientRootFeature extends Feature<AncientRootConfiguration> {
 
-	public AncientRootFeature(Codec<NoneFeatureConfiguration> codec) {
+	public AncientRootFeature(Codec<AncientRootConfiguration> codec) {
 		super(codec);
 	}
 
 	@Override
-	public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+	public boolean place(FeaturePlaceContext<AncientRootConfiguration> context) {
 		BlockPos pos = context.origin();
 		WorldGenLevel level = context.level();
 		RandomSource random = context.random();
@@ -31,26 +31,26 @@ public class AncientRootFeature extends Feature<NoneFeatureConfiguration> {
 					return true;
 				}
 
-				level.setBlock(posMutable, rootState(random), 2);
-				level.setBlock(posMutable2.setWithOffset(posMutable, Direction.NORTH), rootState(random), 2);
-				level.setBlock(posMutable2.setWithOffset(posMutable, Direction.SOUTH), rootState(random), 2);
-				level.setBlock(posMutable2.setWithOffset(posMutable, Direction.WEST), rootState(random), 2);
-				level.setBlock(posMutable2.setWithOffset(posMutable, Direction.EAST), rootState(random), 2);
+				level.setBlock(posMutable, rootState(random, context), 2);
+				level.setBlock(posMutable2.setWithOffset(posMutable, Direction.NORTH), rootState(random, context), 2);
+				level.setBlock(posMutable2.setWithOffset(posMutable, Direction.SOUTH), rootState(random, context), 2);
+				level.setBlock(posMutable2.setWithOffset(posMutable, Direction.WEST), rootState(random, context), 2);
+				level.setBlock(posMutable2.setWithOffset(posMutable, Direction.EAST), rootState(random, context), 2);
 				if (random.nextInt(3) == 0) {
 					posMutable.move(Direction.NORTH);
-					level.setBlock(posMutable2.setWithOffset(posMutable, Direction.NORTH), rootState(random), 2);
+					level.setBlock(posMutable2.setWithOffset(posMutable, Direction.NORTH), rootState(random, context), 2);
 				}
 				if (random.nextInt(3) == 0) {
 					posMutable.move(Direction.SOUTH);
-					level.setBlock(posMutable2.setWithOffset(posMutable, Direction.SOUTH), rootState(random), 2);
+					level.setBlock(posMutable2.setWithOffset(posMutable, Direction.SOUTH), rootState(random, context), 2);
 				}
 				if (random.nextInt(3) == 0) {
 					posMutable.move(Direction.WEST);
-					level.setBlock(posMutable2.setWithOffset(posMutable, Direction.WEST), rootState(random), 2);
+					level.setBlock(posMutable2.setWithOffset(posMutable, Direction.WEST), rootState(random, context), 2);
 				}
 				if (random.nextInt(3) == 0) {
 					posMutable.move(Direction.EAST);
-					level.setBlock(posMutable2.setWithOffset(posMutable, Direction.EAST), rootState(random), 2);
+					level.setBlock(posMutable2.setWithOffset(posMutable, Direction.EAST), rootState(random, context), 2);
 				}
 				posMutable.move(Direction.DOWN);
 			}
@@ -61,7 +61,7 @@ public class AncientRootFeature extends Feature<NoneFeatureConfiguration> {
 		}
 	}
 
-	private BlockState rootState(RandomSource random) {
-		return random.nextInt(10) == 0 ? UGBlocks.ROGDORIC_ANCIENT_ROOT.get().defaultBlockState() : UGBlocks.ANCIENT_ROOT.get().defaultBlockState();
+	private BlockState rootState(RandomSource random, FeaturePlaceContext<AncientRootConfiguration> context) {
+		return random.nextInt(context.config().rogdoricProbability()) == 0 ? UGBlocks.ROGDORIC_ANCIENT_ROOT.get().defaultBlockState() : UGBlocks.ANCIENT_ROOT.get().defaultBlockState();
 	}
 }

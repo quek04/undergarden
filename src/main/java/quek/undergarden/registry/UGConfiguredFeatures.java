@@ -30,6 +30,7 @@ import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DepthrockPebblesBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
+import quek.undergarden.world.gen.feature.config.AncientRootConfiguration;
 import quek.undergarden.world.gen.feature.config.UtheriumCrystalConfiguration;
 import quek.undergarden.world.gen.foliageplacer.VeilFoliagePlacer;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
@@ -122,6 +123,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHS_HOLE = create("depths_hole");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_ROOT = create("ancient_root");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_ROOT_EXTRA = create("ancient_root_extra");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
@@ -217,7 +219,8 @@ public class UGConfiguredFeatures {
 			new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
 			0.8F, false)));
 		context.register(DEPTHS_HOLE, new ConfiguredFeature<>(UGFeatures.DEPTHS_HOLE.get(), FeatureConfiguration.NONE));
-		context.register(ANCIENT_ROOT, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), FeatureConfiguration.NONE));
+		context.register(ANCIENT_ROOT, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(25)));
+		context.register(ANCIENT_ROOT_EXTRA, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(10)));
 	}
 
 	private static RandomPatchConfiguration patch(Block block, int tries) {

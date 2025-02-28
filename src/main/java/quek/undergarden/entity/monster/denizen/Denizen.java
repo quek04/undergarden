@@ -16,8 +16,12 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
@@ -28,6 +32,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import quek.undergarden.Undergarden;
+import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
 import quek.undergarden.entity.projectile.ThrownSpear;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGPointOfInterests;
@@ -70,6 +75,7 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 		this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(0, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(1, new DenizenStareDownTargetGoal(this));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, RotspawnMonster.class, false));
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {

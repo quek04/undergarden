@@ -10,8 +10,8 @@
     },
     "ambient_sound": "undergarden:ambient.abyss",
     "fog_color": 10408133,
-    "foliage_color": 6312510,
-    "grass_color": 6312510,
+    "foliage_color": 4479879,
+    "grass_color": 4479879,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -26,7 +26,7 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:mycelium"
+        "type": "undergarden:rogdorium_sparkle"
       },
       "probability": 0.025
     },
@@ -36,22 +36,25 @@
   },
   "features": [
     [
-      "undergarden:ancient_root"
+      "undergarden:ancient_root_extra"
     ],
     [],
     [],
     [],
-    [],
+    [
+      "undergarden:gronglegrowth_delta"
+    ],
     [],
     [
-      "undergarden:rogdorium_ore",
-      "undergarden:utherium_ore"
+      "undergarden:rogdorium_ore_extra"
     ],
     [],
     [],
     [
       "undergarden:deepturf_patch",
-      "undergarden:smogstem_tree"
+      "undergarden:miserabell_patch",
+      "undergarden:smogstem_tree_sparse",
+      "undergarden:smogstem_bush"
     ]
   ],
   "has_precipitation": false,
