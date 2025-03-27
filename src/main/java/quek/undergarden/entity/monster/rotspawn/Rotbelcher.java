@@ -20,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import quek.undergarden.entity.animal.Mog;
+import quek.undergarden.entity.monster.denizen.Denizen;
 import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.RotbelcherProjectile;
 import quek.undergarden.registry.UGSoundEvents;
@@ -49,6 +50,7 @@ public class Rotbelcher extends RotspawnMonster {
 		this.targetSelector.addGoal(1, new RotspawnTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Stoneborn.class, true));
 		this.targetSelector.addGoal(3, new RotspawnTargetGoal<>(this, Animal.class, true, (target) -> !(target instanceof Mog)));
+		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Denizen.class, true));
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {
