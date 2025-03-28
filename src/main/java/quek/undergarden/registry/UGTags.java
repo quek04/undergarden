@@ -77,7 +77,6 @@ public class UGTags {
 		public static final TagKey<Block> DREADROCK_ORE_REPLACEABLES = tag("dreadrock_ore_replaceables");
 		public static final TagKey<Block> TREMBLECRUST_ORE_REPLACEABLES = tag("tremblecrust_ore_replaceables");
 		public static final TagKey<Block> UNDERGARDEN_CARVER_REPLACEABLES = tag("undergarden_carver_replaceables");
-		public static final TagKey<Block> UNDERGARDEN_DEPTHS_CARVER_REPLACEABLES = tag("undergarden_depths_carver_replaceables");
 		public static final TagKey<Block> MUSHROOMS = tag("mushrooms");
 		public static final TagKey<Block> UTHERIC_INFECTION_BLOCKS = tag("utheric_infection_blocks");
 		public static final TagKey<Block> PORTAL_FRAME_BLOCKS = tag("portal_frame_blocks");
@@ -88,6 +87,9 @@ public class UGTags {
 		public static final TagKey<Block> SCINTLING_SPAWNABLE_ON = tag("scintling_spawnable_on");
 		public static final TagKey<Block> SMOG_MOG_SPAWNABLE_ON = tag("smog_mog_spawnable_on");
 		public static final TagKey<Block> GREATER_DWELLER_SPAWNABLE_ON = tag("greater_dweller_spawnable_on");
+
+		public static final TagKey<Block> NEEDS_FORGOTTEN_TOOL = tag("needs_forgotten_tool");
+		public static final TagKey<Block> INCORRECT_FOR_FORGOTTEN_TOOL = tag("incorrect_for_forgotten_tool");
 
 		public static final TagKey<Block> ORES_CLOGGRUM = commonTag("ores/cloggrum");
 		public static final TagKey<Block> ORES_FROSTSTEEL = commonTag("ores/froststeel");

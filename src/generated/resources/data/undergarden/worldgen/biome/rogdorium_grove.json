@@ -28,7 +28,7 @@
       "options": {
         "type": "undergarden:rogdorium_sparkle"
       },
-      "probability": 0.025
+      "probability": 0.01
     },
     "sky_color": 1186057,
     "water_color": 342306,

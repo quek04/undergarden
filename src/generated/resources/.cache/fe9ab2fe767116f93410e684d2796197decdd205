@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-19T01:28:09.2686736	Tags for minecraft:block mod id undergarden
+// 1.21.1	2025-03-28T14:34:09.8554011	Tags for minecraft:block mod id undergarden
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/block/cobblestones.json
 3430489c73ccf7c6a97b8405ff097796daf6e4ba data/c/tags/block/fences/wooden.json
 8c4e326a74b8c8e3a8dd62875f1f8f81e697c7a6 data/c/tags/block/fence_gates/wooden.json
@@ -56,6 +56,12 @@ cde3aa50670af77c10281cfcd9609068a219526e data/minecraft/tags/block/flower_pots.j
 6ab61c0bf2c60509afb3f877a2e7d5e5b1b93069 data/minecraft/tags/block/foxes_spawnable_on.json
 1ff4fda258af9af2b26506246439633b3440f264 data/minecraft/tags/block/gold_ores.json
 bad58d012e76aabbd30db15906b541b6d206a5c1 data/minecraft/tags/block/impermeable.json
+ead5b71025500ec85f61313d1a03ab1ada3f0643 data/minecraft/tags/block/incorrect_for_diamond_tool.json
+ead5b71025500ec85f61313d1a03ab1ada3f0643 data/minecraft/tags/block/incorrect_for_gold_tool.json
+ead5b71025500ec85f61313d1a03ab1ada3f0643 data/minecraft/tags/block/incorrect_for_iron_tool.json
+ead5b71025500ec85f61313d1a03ab1ada3f0643 data/minecraft/tags/block/incorrect_for_netherite_tool.json
+ead5b71025500ec85f61313d1a03ab1ada3f0643 data/minecraft/tags/block/incorrect_for_stone_tool.json
+ead5b71025500ec85f61313d1a03ab1ada3f0643 data/minecraft/tags/block/incorrect_for_wooden_tool.json
 831c7c506bd5c52e75a4eb1c32e70ebd280ffe65 data/minecraft/tags/block/iron_ores.json
 497779cef1ba178c2d1e96ca25b75892c32f086f data/minecraft/tags/block/leaves.json
 e9576b5a35ec92289409a082cdfc0843ede03cde data/minecraft/tags/block/logs.json
@@ -96,8 +102,10 @@ b40928c0a0a4fb3795dbad37e9e7d804667b70ed data/minecraft/tags/block/wall_signs.js
 cbc9652a42caf8f045b4a2303a296da3185f69ab data/undergarden/tags/block/dreadrock_ore_replaceables.json
 ecf3d2ba2cbcfab1dd19bc4bcb329edf6090865c data/undergarden/tags/block/greater_dweller_spawnable_on.json
 d4b2b0034de91d55fa6c8d8559c342b836b4c63e data/undergarden/tags/block/grongle_logs.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/undergarden/tags/block/incorrect_for_forgotten_tool.json
 e2d38adfea4f277c6bb672666b18b50303495e49 data/undergarden/tags/block/muncher_breakables.json
 50592f606917d305b917a1f8a263abb8d9ec6be5 data/undergarden/tags/block/mushrooms.json
+b526a85cb7b7d57d84cf9a5c1958146ad02cf62d data/undergarden/tags/block/needs_forgotten_tool.json
 c5f61fcebe6ab7bb1b5d1c6a196e5ac41cfa2102 data/undergarden/tags/block/portal_frame_blocks.json
 623ab7217e9af30498af2fbdea52aceeae67771f data/undergarden/tags/block/scintling_spawnable_on.json
 53dadb11482fdd04c73848240ea721d1176b5286 data/undergarden/tags/block/shiverstone_ore_replaceables.json

@@ -355,5 +355,26 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 			UGBlocks.UTHERIUM_BLOCK.get(),
 			UGBlocks.FORGOTTEN_BLOCK.get()
 		);
+		tag(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL).add(
+			UGBlocks.DREADROCK.get(),
+			UGBlocks.DREADROCK_BRICKS.get(),
+			UGBlocks.DREADROCK_STAIRS.get(),
+			UGBlocks.DREADROCK_BRICK_STAIRS.get(),
+			UGBlocks.DREADROCK_SLAB.get(),
+			UGBlocks.DREADROCK_BRICK_SLAB.get(),
+			UGBlocks.DREADROCK_WALL.get(),
+			UGBlocks.DREADROCK_BRICK_WALL.get(),
+			UGBlocks.DREADROCK_UTHERIUM_ORE.get(),
+			UGBlocks.DREADROCK_ROGDORIUM_ORE.get(),
+			UGBlocks.ROGDORIC_ANCIENT_ROOT.get()
+		);
+
+		tag(UGTags.Blocks.INCORRECT_FOR_FORGOTTEN_TOOL);
+		tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).addTag(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL);
+		tag(BlockTags.INCORRECT_FOR_STONE_TOOL).addTag(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL);
+		tag(BlockTags.INCORRECT_FOR_IRON_TOOL).addTag(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL);
+		tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).addTag(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL);
+		tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).addTag(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL);
+		tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).addTag(UGTags.Blocks.NEEDS_FORGOTTEN_TOOL);
 	}
 }

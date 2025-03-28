@@ -523,7 +523,7 @@ public class UGBiomes {
 			.downfall(0.0F)
 			.temperature(0.8F)
 			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 10408133, 4479879), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(UGParticleTypes.ROGDORIUM_SPARKLE.get(), 0.025F))
+				.ambientParticle(new AmbientParticleSettings(UGParticleTypes.ROGDORIUM_SPARKLE.get(), 0.01F))
 				.build())
 			.build());
 	}

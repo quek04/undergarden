@@ -277,7 +277,7 @@ public class UGBlocks {
 
 	//ancient root
 	public static final DeferredBlock<Block> ANCIENT_ROOT = register("ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).sound(UGSoundTypes.ANCIENT_ROOT)));
-	public static final DeferredBlock<Block> ROGDORIC_ANCIENT_ROOT = register("rogdoric_ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT.get()).strength(4.0F).lightLevel((state) -> 10)));
+	public static final DeferredBlock<Block> ROGDORIC_ANCIENT_ROOT = register("rogdoric_ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT.get()).strength(4.0F).lightLevel((state) -> 10).requiresCorrectToolForDrops()));
 	public static final DeferredBlock<Block> DENIZEN_TOTEM = register("denizen_totem", () -> new DenizenTotemBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).sound(UGSoundTypes.ANCIENT_ROOT).strength(4.0F).lightLevel((state) -> state.getValue(DenizenTotemBlock.ACTIVE) ? 15 : 0)));
 	public static final DeferredBlock<Block> ANCIENT_ROOT_PLANKS = register("ancient_root_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).sound(UGSoundTypes.ANCIENT_ROOT)));
 	public static final DeferredBlock<StairBlock> ANCIENT_ROOT_STAIRS = register("ancient_root_stairs", () -> new StairBlock(ANCIENT_ROOT_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT_PLANKS.get())));
