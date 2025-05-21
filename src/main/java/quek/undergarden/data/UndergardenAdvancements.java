@@ -515,6 +515,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.DEPTHS))))
 			.addCriterion("has_entered_infected_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.INFECTED_DEPTHS))))
 			.addCriterion("has_entered_puff_mushroom_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.PUFF_MUSHROOM_FOREST))))
+			.addCriterion("has_entered_rogdorium", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.ROGDORIUM_GROVE))))
 			.save(consumer, "undergarden:undergarden/enter_depths");
 
 		AdvancementHolder contract_utheric_infection = Advancement.Builder.advancement()
