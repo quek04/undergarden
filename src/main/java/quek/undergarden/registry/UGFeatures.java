@@ -29,6 +29,5 @@ public class UGFeatures {
 	public static final DeferredHolder<Feature<?>, Feature<UtheriumCrystalConfiguration>> UTHERIUM_GROWTH = FEATURES.register(
 		"utherium_growth", () -> new UtheriumCrystalFeature(UtheriumCrystalConfiguration.CODEC));
 	public static final DeferredHolder<Feature<?>, Feature<BlockStateConfiguration>> BOULDER = FEATURES.register("boulder", () -> new UGBlockBlobFeature(BlockStateConfiguration.CODEC));
-	public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> DEPTHS_HOLE = FEATURES.register("depths_hole", () -> new DepthsHoleFeature(NoneFeatureConfiguration.CODEC));
 	public static final DeferredHolder<Feature<?>, Feature<AncientRootConfiguration>> ANCIENT_ROOT = FEATURES.register("ancient_root", () -> new AncientRootFeature(AncientRootConfiguration.CODEC));
 }
