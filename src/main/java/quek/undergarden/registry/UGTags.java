@@ -161,6 +161,7 @@ public class UGTags {
 		public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
 		public static final TagKey<Biome> HAS_FORGOTTEN_VESTIGE = tag("has_structure/forgotten_vestige");
 		public static final TagKey<Biome> HAS_DENIZEN_CAMP = tag("has_structure/denizen_camp");
+		public static final TagKey<Biome> HAS_DEPLETED_MINE = tag("has_structure/depleted_mine");
 
 		private static TagKey<Biome> tag(String name) {
 			return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));

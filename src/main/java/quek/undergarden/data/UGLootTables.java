@@ -598,6 +598,14 @@ public class UGLootTables extends LootTableProvider {
 					.add(LootItem.lootTableItem(UGItems.DENIZEN_MASK).setWeight(3))
 				)
 			);
+			consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/depleted_mine")), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantValue.exactly(1.0F))
+					//.add(EmptyLootItem.emptyItem().setWeight(10))
+					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_PICKAXE).setWeight(2).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5F, 0.85F))))
+					.add(LootItem.lootTableItem(Items.TORCH).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+				)
+			);
 		}
 	}
 }
