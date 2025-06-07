@@ -9,7 +9,7 @@
         },
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
@@ -37,6 +37,61 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "undergarden:depleted_mine/clutter/dirt_mound_3",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/clutter/dreadrock_mound_1",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/clutter/dreadrock_mound_2",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/clutter/dreadrock_mound_3",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/clutter/logs_1",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/clutter/logs_2",
         "processors": {
           "processors": []
         },

@@ -20,7 +20,7 @@ public class UGDataMapsProvider extends DataMapProvider {
 	}
 
 	@Override
-	protected void gather() {
+	protected void gather(HolderLookup.Provider provider) {
 		var compostables = this.builder(NeoForgeDataMaps.COMPOSTABLES);
 		this.addCompostable(compostables, UGItems.DROOPFRUIT, 0.3F);
 		this.addCompostable(compostables, UGItems.UNDERBEANS, 0.3F);

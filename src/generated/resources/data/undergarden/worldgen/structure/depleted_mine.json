@@ -11,11 +11,11 @@
       "absolute": -31
     },
     "min_inclusive": {
-      "absolute": -61
+      "absolute": -54
     }
   },
   "start_pool": "undergarden:depleted_mine/walkway_pool",
-  "step": "underground_structures",
+  "step": "surface_structures",
   "terrain_adaptation": "encapsulate",
   "use_expansion_hack": false
 }

@@ -598,12 +598,21 @@ public class UGLootTables extends LootTableProvider {
 					.add(LootItem.lootTableItem(UGItems.DENIZEN_MASK).setWeight(3))
 				)
 			);
-			consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/depleted_mine")), LootTable.lootTable()
+			consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/depleted_mine/mound")), LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 					.setRolls(ConstantValue.exactly(1.0F))
-					//.add(EmptyLootItem.emptyItem().setWeight(10))
+					.add(EmptyLootItem.emptyItem().setWeight(10))
 					.add(LootItem.lootTableItem(UGItems.FORGOTTEN_PICKAXE).setWeight(2).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5F, 0.85F))))
+				)
+				.withPool(LootPool.lootPool()
+					.setRolls(UniformGenerator.between(2.0F, 3.0F))
 					.add(LootItem.lootTableItem(Items.TORCH).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+					.add(LootItem.lootTableItem(UGBlocks.SMOGSTEM_PLANKS).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 16.0F))))
+					.add(LootItem.lootTableItem(Items.COAL).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(UGItems.RAW_CLOGGRUM).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+					.add(LootItem.lootTableItem(UGItems.RAW_FROSTSTEEL).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+					.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
+					.add(LootItem.lootTableItem(UGItems.UTHERIC_CLUSTER).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
 				)
 			);
 		}

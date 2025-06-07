@@ -115,7 +115,7 @@ public class UGStructures {
 			new Structure.StructureSettings(
 				biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE),
 				Map.of(),
-				GenerationStep.Decoration.UNDERGROUND_STRUCTURES,
+				GenerationStep.Decoration.SURFACE_STRUCTURES,
 				TerrainAdjustment.BEARD_THIN
 			),
 			pools.getOrThrow(FORGOTTEN_VESTIGE_POOL),
@@ -147,13 +147,13 @@ public class UGStructures {
 		));
 		context.register(DEPLETED_MINE, new JigsawStructure(
 			new Structure.StructureSettings.Builder(biomes.getOrThrow(UGTags.Biomes.HAS_DEPLETED_MINE))
-				.generationStep(GenerationStep.Decoration.UNDERGROUND_STRUCTURES)
+				.generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
 				.terrainAdapation(TerrainAdjustment.ENCAPSULATE)
 				.build(),
 			pools.getOrThrow(DEPLETED_MINE_WALKWAY_POOL),
 			Optional.empty(),
 			10,
-			UniformHeight.of(VerticalAnchor.absolute(-61), VerticalAnchor.absolute(-31)),
+			UniformHeight.of(VerticalAnchor.absolute(-54), VerticalAnchor.absolute(-31)),
 			false,
 			Optional.empty(),
 			80,
@@ -168,7 +168,7 @@ public class UGStructures {
 		context.register(CATACOMBS_SET, new StructureSet(structures.getOrThrow(CATACOMBS), new RandomSpreadStructurePlacement(24, 12, RandomSpreadType.LINEAR, 276320045)));
 		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 6, 3, RandomSpreadType.LINEAR)));
 		context.register(DENIZEN_CAMP_SET, new StructureSet(structures.getOrThrow(DENIZEN_CAMP), new RandomSpreadStructurePlacement(12, 6, RandomSpreadType.LINEAR, 27630047)));
-		context.register(DEPLETED_MINE_SET, new StructureSet(structures.getOrThrow(DEPLETED_MINE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.LEGACY_TYPE_3, 0.004F, 27630050, Optional.empty(), 1, 0, RandomSpreadType.LINEAR)));
+		context.register(DEPLETED_MINE_SET, new StructureSet(structures.getOrThrow(DEPLETED_MINE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.LEGACY_TYPE_3, 0.004F, 50002673, Optional.empty(), 1, 0, RandomSpreadType.LINEAR)));
 	}
 
 	public static void bootstrapPools(BootstrapContext<StructureTemplatePool> context) {
@@ -337,14 +337,19 @@ public class UGStructures {
 			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/straight_1"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
 			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/straight_2"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
 			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/straight_3"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/turn_1"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/turn_2"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1)
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/turn_1"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 2),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/turn_2"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 2)
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(DEPLETED_MINE_CLUTTER_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
-			Pair.of(StructurePoolElement.single("minecraft:empty"), 2),
+			Pair.of(StructurePoolElement.single("minecraft:empty"), 3),
 			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_1")), 1),
 			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_2")), 1),
-			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_3")), 1)
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_3")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dreadrock_mound_1")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dreadrock_mound_2")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dreadrock_mound_3")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/logs_1")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/logs_2")), 1)
 		), StructureTemplatePool.Projection.RIGID));
 	}
 

@@ -61,7 +61,7 @@
         "processors": "undergarden:depleted_mine_lantern_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 2
     },
     {
       "element": {
@@ -70,7 +70,7 @@
         "processors": "undergarden:depleted_mine_lantern_processor",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 2
     }
   ],
   "fallback": "minecraft:empty"
