@@ -31,10 +31,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
@@ -521,16 +519,13 @@ public class UndergardenClientEvents {
 	}
 
 	private static void addTooltips(ItemTooltipEvent event) {
-		TooltipFlag flags = event.getFlags();
 		List<Component> tooltip = event.getToolTip();
 		ItemStack stack = event.getItemStack();
-		if (flags.isAdvanced()) {
-			if (stack.has(UGDataComponents.ROGDORIUM_INFUSION.get())) {
-				int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
-				int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
-				if (infusionAmount > 0) {
-					tooltip.add(1, Component.translatable("tooltip.undergarden.rogdorium_infusion").append(": " + infusionAmount + "/" + infusionMax).withStyle(ChatFormatting.AQUA));
-				}
+		if (stack.has(UGDataComponents.ROGDORIUM_INFUSION.get())) {
+			int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
+			int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
+			if (infusionAmount > 0) {
+				tooltip.add(1, Component.translatable("tooltip.undergarden.rogdorium_infusion").append(": " + infusionAmount + "/" + infusionMax).withStyle(ChatFormatting.AQUA));
 			}
 		}
 	}
