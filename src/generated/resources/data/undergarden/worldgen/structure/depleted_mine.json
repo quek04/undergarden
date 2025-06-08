@@ -1,6 +1,7 @@
 {
   "type": "minecraft:jigsaw",
   "biomes": "#undergarden:has_structure/depleted_mine",
+  "dimension_padding": 10,
   "liquid_settings": "ignore_waterlogging",
   "max_distance_from_center": 80,
   "size": 10,

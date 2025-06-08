@@ -158,7 +158,7 @@ public class UGStructures {
 			Optional.empty(),
 			80,
 			List.of(),
-			DimensionPadding.ZERO,
+			new DimensionPadding(10),
 			LiquidSettings.IGNORE_WATERLOGGING
 		));
 	}
@@ -342,6 +342,7 @@ public class UGStructures {
 		), StructureTemplatePool.Projection.RIGID));
 		context.register(DEPLETED_MINE_CLUTTER_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
 			Pair.of(StructurePoolElement.single("minecraft:empty"), 3),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/chest_1")), 1),
 			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_1")), 1),
 			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_2")), 1),
 			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_3")), 1),

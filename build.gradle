@@ -108,6 +108,8 @@ dependencies {
 
 	implementation "curse.maven:jade-324717:${project.jade_version}"
     implementation "curse.maven:better-advancements-272515:${project.better_advancements_version}"
+
+	runtimeOnly "curse.maven:worldedit-225608:5830452"
 }
 
 tasks.named('jar', Jar).configure {

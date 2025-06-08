@@ -615,6 +615,24 @@ public class UGLootTables extends LootTableProvider {
 					.add(LootItem.lootTableItem(UGItems.UTHERIC_CLUSTER).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
 				)
 			);
+			consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/depleted_mine/normal")), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(UniformGenerator.between(1.0F, 2.0F))
+					.add(EmptyLootItem.emptyItem().setWeight(7))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_PICKAXE).setWeight(5).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.25F, 0.95F))))
+					.add(LootItem.lootTableItem(UGItems.CLOGGRUM_SHOVEL).setWeight(5).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.25F, 0.95F))))
+				)
+				.withPool(LootPool.lootPool()
+					.setRolls(UniformGenerator.between(1.0F, 3.0F))
+					.add(LootItem.lootTableItem(UGItems.DWELLER_STEAK).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F))))
+					.add(LootItem.lootTableItem(Items.TORCH).setWeight(15).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(Items.STICK).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(UGBlocks.SMOGSTEM_PLANKS).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F))))
+					.add(LootItem.lootTableItem(Items.COAL).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 16.0F))))
+					.add(LootItem.lootTableItem(UGItems.RAW_CLOGGRUM).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+					.add(LootItem.lootTableItem(UGItems.RAW_FROSTSTEEL).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
+				)
+			);
 		}
 	}
 }
