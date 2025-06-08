@@ -1,6 +1,8 @@
 package quek.undergarden.entity.monster;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -22,10 +24,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import org.jetbrains.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGStructures;
 
 import java.util.Arrays;
 
@@ -78,7 +82,11 @@ public class Forgotten extends Monster {
 
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
-		if (random.nextInt(50) == 0) {
+		ServerLevel level = this.getServer().getLevel(this.level().dimension());
+		Structure structure = level.structureManager().registryAccess().registryOrThrow(Registries.STRUCTURE).get(UGStructures.DEPLETED_MINE);
+		if (structure != null && level.getLevel().structureManager().getStructureAt(this.getOnPos(), structure).isValid()) {
+			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.FORGOTTEN_PICKAXE.get()));
+		} else if (random.nextInt(50) == 0) {
 			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_BATTLEAXE.get()));
 			this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(UGItems.ANCIENT_HELMET.get()));
 			this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(UGItems.ANCIENT_CHESTPLATE.get()));

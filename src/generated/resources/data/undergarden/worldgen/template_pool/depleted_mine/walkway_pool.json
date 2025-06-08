@@ -30,6 +30,15 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/stair_2",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
         "location": "undergarden:depleted_mine/walkway/straight_1",
         "processors": "undergarden:depleted_mine_lantern_processor",
         "projection": "rigid"

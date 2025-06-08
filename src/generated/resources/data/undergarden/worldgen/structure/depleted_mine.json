@@ -5,7 +5,19 @@
   "liquid_settings": "ignore_waterlogging",
   "max_distance_from_center": 80,
   "size": 10,
-  "spawn_overrides": {},
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "undergarden:forgotten",
+          "maxCount": 1,
+          "minCount": 1,
+          "weight": 1
+        }
+      ]
+    }
+  },
   "start_height": {
     "type": "minecraft:uniform",
     "max_inclusive": {
