@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-19T02:27:14.3338475	Recipes
+// 1.21.1	2025-06-10T16:14:35.1486444	Recipes
 912e5a9405a920f4caf922c5b5bbbe68096386fb data/undergarden/advancement/recipes/building_blocks/ancient_root_planks.json
 d558c5372c9b026a74bc8af216fce46d4018a50e data/undergarden/advancement/recipes/building_blocks/ancient_root_slab.json
 76a194998acb3c65e8ca6d21cad09660dfa5a245 data/undergarden/advancement/recipes/building_blocks/ancient_root_stairs.json
@@ -187,7 +187,6 @@ e276adb70e4dce95f87299b6d4e9a2a853922582 data/undergarden/advancement/recipes/fo
 2117e2a561c8e0f91235083b4ebe3cd28249603e data/undergarden/advancement/recipes/food/slop_bowl.json
 8d2fd473ce1818d2d4e6c59f995925ca4f56a9fc data/undergarden/advancement/recipes/food/slop_bowl_blue_moss.json
 03aa952fd4dfe8ed6d754e427d45c521142a4497 data/undergarden/advancement/recipes/food/veiled_stew.json
-2e211263134dd9602b098fdadef211c45376139a data/undergarden/advancement/recipes/infusing/corrupting/corrupt_catalyst_infusing.json
 6b86b85bcadab65768a654104204c14f827fc006 data/undergarden/advancement/recipes/infusing/corrupting/utheric_gronglet.json
 e85dcd7cb467fba43c480472875e975b2555eecf data/undergarden/advancement/recipes/infusing/misc/armor_infusing.json
 08fd4398e590ccda8a3e778f85c29f807799e6a1 data/undergarden/advancement/recipes/infusing/purifying/denizen_totem_infusing.json
@@ -416,7 +415,6 @@ d2a1579f47c691d1aa97fc0800964c820c62f31b data/undergarden/recipe/cloggrum_tile_s
 ffbe1011b90c5eade2545189b42b9fd22769ea64 data/undergarden/recipe/cloggrum_tile_stairs.json
 fdc2404800fb7c199c460161a1ffaad4eb499d26 data/undergarden/recipe/coarse_deepsoil.json
 f465c88a7666e20b8c8849b7fa8c33e56a7d3686 data/undergarden/recipe/coarse_deepsoil_to_normal.json
-3fbe5bceee1e1cc1c9c2848085c42b05289ce9fc data/undergarden/recipe/corrupt_catalyst_infusing.json
 aa1e497ae3e48694a5258ea8aa8ffdd69a2134e4 data/undergarden/recipe/denizen_totem_infusing.json
 108cf75286012d40f053623de00b453e4a387bbf data/undergarden/recipe/depthrock_bed.json
 826906e04002fb67cb04d6729fa05bce23a058de data/undergarden/recipe/depthrock_bricks.json
