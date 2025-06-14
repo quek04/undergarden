@@ -6,7 +6,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.HumanoidArm;
-import quek.undergarden.entity.Forgotten;
+import quek.undergarden.entity.monster.Forgotten;
 
 public class ForgottenModel<T extends Forgotten> extends HumanoidModel<T> {
 

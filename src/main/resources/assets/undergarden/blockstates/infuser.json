@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "state=inactive": {
+      "model": "undergarden:block/infuser"
+    },
+    "state=infusing_utherium": {
+      "model": "undergarden:block/infuser_infusing_utherium"
+    },
+    "state=infusing_rogdorium": {
+      "model": "undergarden:block/infuser_infusing_rogdorium"
+    }
+  }
+}

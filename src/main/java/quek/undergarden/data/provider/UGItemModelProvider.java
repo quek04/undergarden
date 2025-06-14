@@ -5,7 +5,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
@@ -31,12 +30,12 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 				.texture("texture", ("block/" + name));
 	}
 
-	public ItemModelBuilder block(Supplier<? extends Block> block) {
-		return block(block, blockName(block));
+	public void block(Supplier<? extends Block> block) {
+		block(block, blockName(block));
 	}
 
-	public ItemModelBuilder block(Supplier<? extends Block> block, String name) {
-		return withExistingParent(blockName(block), modLoc("block/" + name));
+	public void block(Supplier<? extends Block> block, String name) {
+		withExistingParent(blockName(block), modLoc("block/" + name));
 	}
 
 	public void blockFlat(Supplier<? extends Block> block) {
@@ -89,12 +88,12 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 				.texture("layer0", modLoc("item/" + blockName(sign)));
 	}
 
-	public ItemModelBuilder wall(Supplier<? extends WallBlock> wall, Supplier<? extends Block> fullBlock) {
-		return wallInventory(BuiltInRegistries.BLOCK.getKey(wall.get()).getPath(), texture(blockName(fullBlock)));
+	public void wall(Supplier<? extends WallBlock> wall, Supplier<? extends Block> fullBlock) {
+		wallInventory(BuiltInRegistries.BLOCK.getKey(wall.get()).getPath(), texture(blockName(fullBlock)));
 	}
 
-	public ItemModelBuilder button(Supplier<? extends ButtonBlock> button, Supplier<? extends Block> fullBlock) {
-		return buttonInventory(BuiltInRegistries.BLOCK.getKey(button.get()).getPath(), texture(blockName(fullBlock)));
+	public void button(Supplier<? extends ButtonBlock> button, Supplier<? extends Block> fullBlock) {
+		buttonInventory(BuiltInRegistries.BLOCK.getKey(button.get()).getPath(), texture(blockName(fullBlock)));
 	}
 
 	public void trapdoor(Supplier<? extends TrapDoorBlock> trapdoor) {

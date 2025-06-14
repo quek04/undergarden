@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "undergarden:dreadrock"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:dreadrock_stairs"
+  }
+}

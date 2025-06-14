@@ -1,0 +1,34 @@
+{
+  "parent": "undergarden:undergarden/enter_depths",
+  "criteria": {
+    "has_infuser": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:infuser"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.craft_infuser.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "undergarden:infuser"
+    },
+    "title": {
+      "translate": "advancement.undergarden.craft_infuser.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_infuser"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

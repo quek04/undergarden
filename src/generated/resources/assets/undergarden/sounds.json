@@ -548,6 +548,49 @@
     ],
     "subtitle": "subtitles.entity.gloomper.hurt"
   },
+  "entity.greater_dweller.ambient": {
+    "sounds": [
+      {
+        "name": "undergarden:entity/dweller_ambient_1",
+        "pitch": 0.5
+      },
+      {
+        "name": "undergarden:entity/dweller_ambient_2",
+        "pitch": 0.5
+      },
+      {
+        "name": "undergarden:entity/dweller_ambient_3",
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.entity.greater_dweller.ambient"
+  },
+  "entity.greater_dweller.death": {
+    "sounds": [
+      {
+        "name": "undergarden:entity/dweller_death",
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.entity.greater_dweller.death"
+  },
+  "entity.greater_dweller.hurt": {
+    "sounds": [
+      {
+        "name": "undergarden:entity/dweller_hurt_1",
+        "pitch": 0.5
+      },
+      {
+        "name": "undergarden:entity/dweller_hurt_2",
+        "pitch": 0.5
+      },
+      {
+        "name": "undergarden:entity/dweller_hurt_3",
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.entity.greater_dweller.hurt"
+  },
   "entity.gwib.death": {
     "sounds": [
       "entity/fish/hurt1",
@@ -754,6 +797,59 @@
       "undergarden:entity/rotbeast_step_1",
       "undergarden:entity/rotbeast_step_2",
       "undergarden:entity/rotbeast_step_3"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.rotbelcher.ambient": {
+    "sounds": [
+      "undergarden:entity/rotwalker_ambient_1",
+      "undergarden:entity/rotwalker_ambient_2",
+      "undergarden:entity/rotwalker_ambient_3"
+    ],
+    "subtitle": "subtitles.entity.rotbelcher.ambient"
+  },
+  "entity.rotbelcher.death": {
+    "sounds": [
+      "undergarden:entity/rotwalker_death"
+    ],
+    "subtitle": "subtitles.entity.rotbelcher.death"
+  },
+  "entity.rotbelcher.hurt": {
+    "sounds": [
+      "undergarden:entity/rotwalker_hurt_1",
+      "undergarden:entity/rotwalker_hurt_2",
+      "undergarden:entity/rotwalker_hurt_3"
+    ],
+    "subtitle": "subtitles.entity.rotbelcher.hurt"
+  },
+  "entity.rotbelcher.shoot": {
+    "sounds": [
+      "undergarden:entity/rotbelcher_shoot"
+    ],
+    "subtitle": "subtitles.entity.rotbelcher.shoot"
+  },
+  "entity.rotbelcher.step": {
+    "sounds": [
+      {
+        "name": "mob/zombie/step1",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step2",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step3",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step4",
+        "pitch": 0.5
+      },
+      {
+        "name": "mob/zombie/step5",
+        "pitch": 0.5
+      }
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },

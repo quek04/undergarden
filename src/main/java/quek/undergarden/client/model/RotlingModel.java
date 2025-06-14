@@ -7,7 +7,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.rotspawn.Rotling;
+import quek.undergarden.entity.monster.rotspawn.Rotling;
 
 public class RotlingModel<T extends Rotling> extends ListModel<T> {
 

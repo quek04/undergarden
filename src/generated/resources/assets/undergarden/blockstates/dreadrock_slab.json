@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "undergarden:block/dreadrock_slab"
+    },
+    "type=double": {
+      "model": "undergarden:block/dreadrock"
+    },
+    "type=top": {
+      "model": "undergarden:block/dreadrock_slab_top"
+    }
+  }
+}

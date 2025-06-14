@@ -365,6 +365,20 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:item/bundle/drop_contents3").pitch(0.95F)
 		).subtitle("subtitles.entity.dweller.remove_saddle"));
 
+		this.add(UGSoundEvents.GREATER_DWELLER_AMBIENT, definition().with(
+			sound("undergarden:entity/dweller_ambient_1").pitch(0.5F),
+			sound("undergarden:entity/dweller_ambient_2").pitch(0.5F),
+			sound("undergarden:entity/dweller_ambient_3").pitch(0.5F)
+		).subtitle("subtitles.entity.greater_dweller.ambient"));
+		this.add(UGSoundEvents.GREATER_DWELLER_HURT, definition().with(
+			sound("undergarden:entity/dweller_hurt_1").pitch(0.5F),
+			sound("undergarden:entity/dweller_hurt_2").pitch(0.5F),
+			sound("undergarden:entity/dweller_hurt_3").pitch(0.5F)
+		).subtitle("subtitles.entity.greater_dweller.hurt"));
+		this.add(UGSoundEvents.GREATER_DWELLER_DEATH, definition().with(
+			sound("undergarden:entity/dweller_death").pitch(0.5F)
+		).subtitle("subtitles.entity.greater_dweller.death"));
+
 		this.add(UGSoundEvents.ROTLING_AMBIENT, definition().with(
 				sound("undergarden:entity/rotling_ambient_1"),
 				sound("undergarden:entity/rotling_ambient_2"),
@@ -405,6 +419,30 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:mob/zombie/step4").pitch(0.5F),
 				sound("minecraft:mob/zombie/step5").pitch(0.5F)
 		).subtitle("subtitles.block.generic.footsteps"));
+
+		this.add(UGSoundEvents.ROTBELCHER_AMBIENT, definition().with(
+			sound("undergarden:entity/rotwalker_ambient_1"),
+			sound("undergarden:entity/rotwalker_ambient_2"),
+			sound("undergarden:entity/rotwalker_ambient_3")
+		).subtitle("subtitles.entity.rotbelcher.ambient"));
+		this.add(UGSoundEvents.ROTBELCHER_HURT, definition().with(
+			sound("undergarden:entity/rotwalker_hurt_1"),
+			sound("undergarden:entity/rotwalker_hurt_2"),
+			sound("undergarden:entity/rotwalker_hurt_3")
+		).subtitle("subtitles.entity.rotbelcher.hurt"));
+		this.add(UGSoundEvents.ROTBELCHER_DEATH, definition().with(
+			sound("undergarden:entity/rotwalker_death")
+		).subtitle("subtitles.entity.rotbelcher.death"));
+		this.add(UGSoundEvents.ROTBELCHER_STEP, definition().with(
+			sound("minecraft:mob/zombie/step1").pitch(0.5F),
+			sound("minecraft:mob/zombie/step2").pitch(0.5F),
+			sound("minecraft:mob/zombie/step3").pitch(0.5F),
+			sound("minecraft:mob/zombie/step4").pitch(0.5F),
+			sound("minecraft:mob/zombie/step5").pitch(0.5F)
+		).subtitle("subtitles.block.generic.footsteps"));
+		this.add(UGSoundEvents.ROTBELCHER_SHOOT, definition().with(
+			sound("undergarden:entity/rotbelcher_shoot")
+		).subtitle("subtitles.entity.rotbelcher.shoot"));
 
 		this.add(UGSoundEvents.ROTBEAST_AMBIENT, definition().with(
 				sound("undergarden:entity/rotbeast_ambient_1"),

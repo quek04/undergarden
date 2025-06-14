@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "undergarden:block/ancient_root",
+    "side": "undergarden:block/denizen_totem_active",
+    "top": "undergarden:block/denizen_totem_top"
+  }
+}

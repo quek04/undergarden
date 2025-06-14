@@ -8,6 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
+import quek.undergarden.component.RogdoriumInfusion;
 
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class UGCreativeModeTabs {
 				UGItems.ITEMS.getEntries().forEach(item -> {
 					if (!DONT_INCLUDE.contains(item) && !item.getKey().location().getPath().contains("tremblecrust")) {
 						output.accept(item.get());
+					}
+					if (item.get() instanceof ArmorItem armorItem) {
+						ItemStack armorStack = new ItemStack(armorItem);
+						armorStack.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(RogdoriumInfusion.DEFAULT.infusionMax()));
+						output.accept(armorStack);
 					}
 				});
 			}).build());

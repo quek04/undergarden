@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dreadrock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "undergarden:dreadrock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:dreadrock_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dreadrock"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "undergarden:dreadrock_stairs"
+    ]
+  }
+}

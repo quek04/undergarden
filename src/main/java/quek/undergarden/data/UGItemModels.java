@@ -2,6 +2,7 @@ package quek.undergarden.data;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.data.provider.UGItemModelProvider;
 import quek.undergarden.registry.UGBlocks;
@@ -15,6 +16,7 @@ public class UGItemModels extends UGItemModelProvider {
 
 	@Override
 	protected void registerModels() {
+		block(UGBlocks.DREADROCK);
 		block(UGBlocks.DEPTHROCK);
 		block(UGBlocks.DEPTHROCK_COAL_ORE);
 		block(UGBlocks.DEPTHROCK_CLOGGRUM_ORE);
@@ -254,12 +256,48 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.ANCIENT_HELMET);
 		normalItem(UGItems.ANCIENT_CHESTPLATE);
 		normalItem(UGItems.ANCIENT_LEGGINGS);
+		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
+		block(UGBlocks.ROGDORIUM_BLOCK);
+		normalItem(UGItems.ROGDORIUM);
+		normalItem(UGItems.ROGDORIUM_NUGGET);
+		block(UGBlocks.UTHERIUM_GROWTH);
+		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
+		block(UGBlocks.ANCIENT_ROOT);
+		block(UGBlocks.ROGDORIC_ANCIENT_ROOT);
+		block(UGBlocks.ANCIENT_ROOT_PLANKS);
+		block(UGBlocks.ANCIENT_ROOT_STAIRS);
+		block(UGBlocks.ANCIENT_ROOT_SLAB);
+		itemFence(UGBlocks.ANCIENT_ROOT_FENCE, "ancient_root_planks");
+		block(UGBlocks.ANCIENT_ROOT_FENCE_GATE);
+		block(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE);
+		normalItem(UGItems.ANCIENT_ROOT_BOAT);
+		normalItem(UGItems.ANCIENT_ROOT_CHEST_BOAT);
+		withExistingParent(BuiltInRegistries.ITEM.getKey(UGItems.DENIZEN_MASK.get()).getPath(), mcLoc("item/generated"))
+			.texture("layer0", modLoc("item/denizen_mask"))
+			.transforms().transform(ItemDisplayContext.HEAD).scale(0.0F);
+		block(UGBlocks.DENIZEN_TOTEM);
+		blockFlat(UGBlocks.PUFF_MUSHROOM);
+		block(UGBlocks.PUFF_MUSHROOM_CAP);
+		block(UGBlocks.PUFF_MUSHROOM_STEM);
+		block(UGBlocks.INFUSER);
+		block(UGBlocks.DREADROCK_BRICKS);
+		block(UGBlocks.DREADROCK_STAIRS);
+		block(UGBlocks.DREADROCK_BRICK_STAIRS);
+		block(UGBlocks.DREADROCK_SLAB);
+		block(UGBlocks.DREADROCK_BRICK_SLAB);
+		wall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK);
+		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
+		block(UGBlocks.DREADROCK_PRESSURE_PLATE);
+		normalItem(UGItems.UTHERIC_CLUSTER);
+		//normalItem(UGItems.CORRUPT_CATALYST);
 
 		egg(UGItems.DWELLER_SPAWN_EGG);
+		egg(UGItems.GREATER_DWELLER_SPAWN_EGG);
 		egg(UGItems.GWIBLING_SPAWN_EGG);
 		egg(UGItems.ROTLING_SPAWN_EGG);
 		egg(UGItems.ROTWALKER_SPAWN_EGG);
 		egg(UGItems.ROTBEAST_SPAWN_EGG);
+		egg(UGItems.ROTBELCHER_SPAWN_EGG);
 		egg(UGItems.BRUTE_SPAWN_EGG);
 		egg(UGItems.SCINTLING_SPAWN_EGG);
 		egg(UGItems.GLOOMPER_SPAWN_EGG);
@@ -271,16 +309,19 @@ public class UGItemModels extends UGItemModelProvider {
 		egg(UGItems.MOG_SPAWN_EGG);
 		egg(UGItems.SMOG_MOG_SPAWN_EGG);
 		egg(UGItems.FORGOTTEN_SPAWN_EGG);
+		egg(UGItems.DENIZEN_SPAWN_EGG);
 		egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
 		egg(UGItems.MINION_SPAWN_EGG);
 
 		sign(UGBlocks.SMOGSTEM_SIGN);
 		sign(UGBlocks.WIGGLEWOOD_SIGN);
 		sign(UGBlocks.GRONGLE_SIGN);
+		sign(UGBlocks.ANCIENT_ROOT_SIGN);
 
 		sign(UGBlocks.SMOGSTEM_HANGING_SIGN);
 		sign(UGBlocks.WIGGLEWOOD_HANGING_SIGN);
 		sign(UGBlocks.GRONGLE_HANGING_SIGN);
+		sign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
 
 		button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
 		button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
@@ -288,14 +329,18 @@ public class UGItemModels extends UGItemModelProvider {
 		button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
 		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
 		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
+		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
+		button(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK);
 
 		blockFlatWithItemTexture(UGBlocks.SMOGSTEM_DOOR, "smogstem_door");
 		blockFlatWithItemTexture(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood_door");
 		blockFlatWithItemTexture(UGBlocks.GRONGLE_DOOR, "grongle_door");
+		blockFlatWithItemTexture(UGBlocks.ANCIENT_ROOT_DOOR, "ancient_root_door");
 
 		trapdoor(UGBlocks.SMOGSTEM_TRAPDOOR);
 		trapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR);
 		trapdoor(UGBlocks.GRONGLE_TRAPDOOR);
+		trapdoor(UGBlocks.ANCIENT_ROOT_TRAPDOOR);
 
 		blockFlatWithBlockTexture(UGBlocks.TALL_DEEPTURF, "tall_deepturf_top");
 		withExistingParent(BuiltInRegistries.BLOCK.getKey(UGBlocks.TALL_SHIMMERWEED.get()).getPath(), mcLoc("item/generated"))

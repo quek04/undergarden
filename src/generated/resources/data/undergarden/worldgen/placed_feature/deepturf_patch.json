@@ -24,7 +24,11 @@
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:matching_blocks",
-        "blocks": "undergarden:deepturf_block",
+        "blocks": [
+          "undergarden:deepturf_block",
+          "undergarden:deepsoil",
+          "undergarden:coarse_deepsoil"
+        ],
         "offset": [
           0,
           -1,

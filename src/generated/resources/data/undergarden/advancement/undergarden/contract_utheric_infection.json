@@ -1,0 +1,31 @@
+{
+  "parent": "undergarden:undergarden/enter_undergarden",
+  "criteria": {
+    "has_contracted_utheric_infection": {
+      "conditions": {
+        "infectionLevel": {
+          "min": 1.0
+        }
+      },
+      "trigger": "undergarden:utheric_infection"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.undergarden.contract_utheric_infection.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "undergarden:utherium_crystal"
+    },
+    "title": {
+      "translate": "advancement.undergarden.contract_utheric_infection.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_contracted_utheric_infection"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
