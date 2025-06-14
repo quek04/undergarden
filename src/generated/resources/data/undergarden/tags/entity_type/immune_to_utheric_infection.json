@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#undergarden:rotspawn",
+    "#minecraft:undead",
+    "undergarden:denizen",
+    "undergarden:forgotten",
+    "undergarden:forgotten_guardian",
+    "undergarden:minion",
+    "undergarden:greater_dweller"
+  ]
+}

@@ -1,5 +1,6 @@
 package quek.undergarden.registry;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.*;
@@ -8,10 +9,7 @@ import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
-import quek.undergarden.item.BlisterbombItem;
-import quek.undergarden.item.CatalystItem;
-import quek.undergarden.item.DitchbulbPasteItem;
-import quek.undergarden.item.ForgottenSmithingTemplateItem;
+import quek.undergarden.item.*;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.tool.*;
 import quek.undergarden.item.tool.slingshot.DepthrockPebbleItem;
@@ -23,7 +21,9 @@ public class UGItems {
 
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Undergarden.MODID);
 
-	public static final Rarity FORGOTTEN = Rarity.valueOf("UNDERGARDEN_FORGOTTEN");
+	public static final Rarity ROGDORIUM_RARITY = Rarity.valueOf("UNDERGARDEN_ROGDORIUM");
+	public static final Rarity FORGOTTEN_RARITY = Rarity.valueOf("UNDERGARDEN_FORGOTTEN");
+	public static final Rarity UTHERIUM_RARITY = Rarity.valueOf("UNDERGARDEN_UTHERIUM");
 
 	//discs
 	public static final DeferredItem<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.MAMMOTH)));
@@ -44,12 +44,16 @@ public class UGItems {
 	public static final DeferredItem<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
 
 	public static final DeferredItem<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties()));
+	public static final DeferredItem<Item> UTHERIC_CLUSTER = ITEMS.register("utheric_cluster", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties()));
 
 	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> ROGDORIUM = ITEMS.register("rogdorium", () -> new Item(new Item.Properties().rarity(ROGDORIUM_RARITY).food(UGFoods.ROGDORIUM)));
+	public static final DeferredItem<Item> ROGDORIUM_NUGGET = ITEMS.register("rogdorium_nugget", () -> new Item(new Item.Properties().rarity(ROGDORIUM_RARITY)));
+
+	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN_RARITY)));
 
 	public static final DeferredItem<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", () -> new DepthrockPebbleItem(UGBlocks.DEPTHROCK_PEBBLES.get(), new Item.Properties()));
 	public static final DeferredItem<Item> TWISTYTWIG = ITEMS.register("twistytwig", () -> new Item(new Item.Properties()));
@@ -81,15 +85,17 @@ public class UGItems {
 	public static final DeferredItem<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.UTHERIUM, -3, 0.0F))));
 
 	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(BattleaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 7, -3.4F)).rarity(Rarity.EPIC)));
-	public static final DeferredItem<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FORGOTTEN, 3, -2.4F)).rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 1, -2.8F)).rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.FORGOTTEN, 5.0F, -3.0F)).rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FORGOTTEN, 1.5F, -3.0F)).rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FORGOTTEN, -3, 0.0F)).rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FORGOTTEN, 3, -2.4F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 1, -2.8F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.FORGOTTEN, 5.0F, -3.0F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FORGOTTEN, 1.5F, -3.0F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FORGOTTEN, -3, 0.0F)).rarity(FORGOTTEN_RARITY)));
 
 	//misc tools
 	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
+	//public static final DeferredItem<Item> CORRUPT_CATALYST = ITEMS.register("corrupt_catalyst", () -> new Item(new Item.Properties().stacksTo(1).rarity(UTHERIUM_RARITY)));
 	public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
+	public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () -> new SpearItem(new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).rarity(Rarity.UNCOMMON)));
 	public static final DeferredItem<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
 	public static final DeferredItem<Item> UNDERBEAN_STICK = ITEMS.register("underbean_on_a_stick", () -> new UnderbeanOnAStickItem(new Item.Properties().stacksTo(1).durability(100)));
 
@@ -99,6 +105,8 @@ public class UGItems {
 	public static final DeferredItem<Item> WIGGLEWOOD_CHEST_BOAT = ITEMS.register("wigglewood_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_WIGGLEWOOD"), new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> GRONGLE_BOAT = ITEMS.register("grongle_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_GRONGLE"), new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> GRONGLE_CHEST_BOAT = ITEMS.register("grongle_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_GRONGLE"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> ANCIENT_ROOT_BOAT = ITEMS.register("ancient_root_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_ANCIENT_ROOT"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> ANCIENT_ROOT_CHEST_BOAT = ITEMS.register("ancient_root_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_ANCIENT_ROOT"), new Item.Properties().stacksTo(1)));
 
 	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
@@ -110,10 +118,10 @@ public class UGItems {
 	public static final DeferredItem<Item> CLOGGRUM_LEGGINGS = ITEMS.register("cloggrum_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(20))));
 	public static final DeferredItem<Item> CLOGGRUM_BOOTS = ITEMS.register("cloggrum_boots", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(20))));
 
-	public static final DeferredItem<Item> FROSTSTEEL_HELMET = ITEMS.register("froststeel_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.HELMET, 3))));
-	public static final DeferredItem<Item> FROSTSTEEL_CHESTPLATE = ITEMS.register("froststeel_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.CHESTPLATE, 7))));
-	public static final DeferredItem<Item> FROSTSTEEL_LEGGINGS = ITEMS.register("froststeel_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.LEGGINGS, 6))));
-	public static final DeferredItem<Item> FROSTSTEEL_BOOTS = ITEMS.register("froststeel_boots", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.BOOTS, 2))));
+	public static final DeferredItem<Item> FROSTSTEEL_HELMET = ITEMS.register("froststeel_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.HELMET, UGArmorMaterials.FROSTSTEEL.get()))));
+	public static final DeferredItem<Item> FROSTSTEEL_CHESTPLATE = ITEMS.register("froststeel_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.CHESTPLATE, UGArmorMaterials.FROSTSTEEL.get()))));
+	public static final DeferredItem<Item> FROSTSTEEL_LEGGINGS = ITEMS.register("froststeel_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.LEGGINGS, UGArmorMaterials.FROSTSTEEL.get()))));
+	public static final DeferredItem<Item> FROSTSTEEL_BOOTS = ITEMS.register("froststeel_boots", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.BOOTS, UGArmorMaterials.FROSTSTEEL.get()))));
 
 	public static final DeferredItem<Item> UTHERIUM_HELMET = ITEMS.register("utherium_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(30))));
 	public static final DeferredItem<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utherium_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
@@ -123,6 +131,8 @@ public class UGItems {
 	public static final DeferredItem<Item> ANCIENT_HELMET = ITEMS.register("ancient_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.ANCIENT, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(37))));
 	public static final DeferredItem<Item> ANCIENT_CHESTPLATE = ITEMS.register("ancient_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.ANCIENT, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
 	public static final DeferredItem<Item> ANCIENT_LEGGINGS = ITEMS.register("ancient_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.ANCIENT, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
+
+	public static final DeferredItem<Item> DENIZEN_MASK = ITEMS.register("denizen_mask", () -> new DenizenMaskItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
 	//foods/plants
 	public static final DeferredItem<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new ItemNameBlockItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));
@@ -149,10 +159,12 @@ public class UGItems {
 
 	//spawn eggs
 	public static final DeferredItem<DeferredSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DWELLER, 4804417, 16776960, new Item.Properties()));
+	public static final DeferredItem<DeferredSpawnEggItem> GREATER_DWELLER_SPAWN_EGG = ITEMS.register("greater_dweller_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GREATER_DWELLER, 4804417, 16776960, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> GWIBLING_SPAWN_EGG = ITEMS.register("gwibling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GWIBLING, 10064737, 15845330, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTLING, 5590327, 10500660, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> ROTWALKER_SPAWN_EGG = ITEMS.register("rotwalker_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTWALKER, 5590327, 10500660, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> ROTBEAST_SPAWN_EGG = ITEMS.register("rotbeast_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTBEAST, 5590327, 10500660, new Item.Properties()));
+	public static final DeferredItem<DeferredSpawnEggItem> ROTBELCHER_SPAWN_EGG = ITEMS.register("rotbelcher_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTBELCHER, 5590327, 10500660, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> BRUTE_SPAWN_EGG = ITEMS.register("brute_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.BRUTE, 7035982, 4012083, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> SCINTLING_SPAWN_EGG = ITEMS.register("scintling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.SCINTLING, 8556655, 6314558, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> GLOOMPER_SPAWN_EGG = ITEMS.register("gloomper_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GLOOMPER, 4138045, 6579581, new Item.Properties()));
@@ -164,7 +176,7 @@ public class UGItems {
 	public static final DeferredItem<DeferredSpawnEggItem> MOG_SPAWN_EGG = ITEMS.register("mog_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MOG, 3227179, 6393396, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> SMOG_MOG_SPAWN_EGG = ITEMS.register("smog_mog_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.SMOG_MOG, 3227179, 3444366, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_SPAWN_EGG = ITEMS.register("forgotten_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN, 5393733, 9502615, new Item.Properties()));
-
+	public static final DeferredItem<DeferredSpawnEggItem> DENIZEN_SPAWN_EGG = ITEMS.register("denizen_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DENIZEN, 9797222, 13026490, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> MINION_SPAWN_EGG = ITEMS.register("minion_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MINION, 8126397, 3170136, new Item.Properties()));
 }

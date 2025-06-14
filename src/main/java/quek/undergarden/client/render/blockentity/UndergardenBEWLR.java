@@ -10,7 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import quek.undergarden.block.GrongletBlock;
 import quek.undergarden.block.entity.DepthrockBedBlockEntity;
 import quek.undergarden.block.entity.GrongletBlockEntity;
 import quek.undergarden.registry.UGBlocks;
@@ -26,9 +25,13 @@ public class UndergardenBEWLR extends BlockEntityWithoutLevelRenderer {
 		Item item = stack.getItem();
 		if (item instanceof BlockItem) {
 			Block block = ((BlockItem) item).getBlock();
-			if (block instanceof GrongletBlock) {
+			if (block == UGBlocks.GRONGLET.get()) {
 				Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new GrongletBlockEntity(BlockPos.ZERO, UGBlocks.GRONGLET.get().defaultBlockState()), ms, buffer, light, overlay);
-			} else {
+			} else if (block == UGBlocks.UTHERIC_GRONGLET.get()) {
+				Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new GrongletBlockEntity(BlockPos.ZERO, UGBlocks.UTHERIC_GRONGLET.get().defaultBlockState()), ms, buffer, light, overlay);
+			} else if (block == UGBlocks.ROGDORIC_GRONGLET.get()) {
+				Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new GrongletBlockEntity(BlockPos.ZERO, UGBlocks.ROGDORIC_GRONGLET.get().defaultBlockState()), ms, buffer, light, overlay);
+			} else if (block == UGBlocks.DEPTHROCK_BED.get()) {
 				Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(new DepthrockBedBlockEntity(BlockPos.ZERO, UGBlocks.DEPTHROCK_BED.get().defaultBlockState()), ms, buffer, light, overlay);
 			}
 		}

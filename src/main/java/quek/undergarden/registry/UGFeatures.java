@@ -2,12 +2,15 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.feature.*;
+import quek.undergarden.world.gen.feature.config.AncientRootConfiguration;
+import quek.undergarden.world.gen.feature.config.UtheriumCrystalConfiguration;
 
 public class UGFeatures {
 
@@ -23,4 +26,8 @@ public class UGFeatures {
 			"ice_pillar", () -> new IcePillarFeature(NoneFeatureConfiguration.CODEC));
 	public static final DeferredHolder<Feature<?>, Feature<DeltaFeatureConfiguration>> DELTA = FEATURES.register(
 			"delta", () -> new UGDeltaFeature(DeltaFeatureConfiguration.CODEC));
+	public static final DeferredHolder<Feature<?>, Feature<UtheriumCrystalConfiguration>> UTHERIUM_GROWTH = FEATURES.register(
+		"utherium_growth", () -> new UtheriumCrystalFeature(UtheriumCrystalConfiguration.CODEC));
+	public static final DeferredHolder<Feature<?>, Feature<BlockStateConfiguration>> BOULDER = FEATURES.register("boulder", () -> new UGBlockBlobFeature(BlockStateConfiguration.CODEC));
+	public static final DeferredHolder<Feature<?>, Feature<AncientRootConfiguration>> ANCIENT_ROOT = FEATURES.register("ancient_root", () -> new AncientRootFeature(AncientRootConfiguration.CODEC));
 }

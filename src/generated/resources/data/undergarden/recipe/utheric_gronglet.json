@@ -1,0 +1,14 @@
+{
+  "type": "undergarden:infuser_conversion",
+  "category": "corrupting",
+  "experience": 1.0,
+  "infusing_time": 200,
+  "ingredient": {
+    "item": "undergarden:gronglet"
+  },
+  "result": {
+    "count": 1,
+    "id": "undergarden:utheric_gronglet"
+  },
+  "slot_type": "utherium"
+}

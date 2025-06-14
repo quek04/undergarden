@@ -19,6 +19,7 @@ public class UGDamageSources {
 	public static final ResourceKey<DamageType> GOO_BALL = create("goo_ball");
 	public static final ResourceKey<DamageType> BLISTERBERRY_BUSH = create("blisterberry_bush");
 	public static final ResourceKey<DamageType> SHARD_TORCH = create("shard_torch");
+	public static final ResourceKey<DamageType> UTHERIC_INFECTION = create("utheric_infection");
 
 	public static ResourceKey<DamageType> create(String name) {
 		return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
@@ -33,5 +34,6 @@ public class UGDamageSources {
 		context.register(GOO_BALL, new DamageType("arrow", 0.1F));
 		context.register(BLISTERBERRY_BUSH, new DamageType("blisterberry_bush", 0.1F, DamageEffects.POKING));
 		context.register(SHARD_TORCH, new DamageType("shard_torch", DamageScaling.ALWAYS, 0.1F));
+		context.register(UTHERIC_INFECTION, new DamageType("utheric_infection", DamageScaling.ALWAYS, 0.0F));
 	}
 }

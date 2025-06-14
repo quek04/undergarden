@@ -3,6 +3,8 @@
     "undergarden:depthrock_utherium_ore",
     "undergarden:shiverstone_utherium_ore",
     "undergarden:tremblecrust_utherium_ore",
-    "undergarden:utherium_block"
+    "undergarden:utherium_block",
+    "undergarden:utherium_growth",
+    "undergarden:dreadrock_utherium_ore"
   ]
 }

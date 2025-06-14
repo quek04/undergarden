@@ -16,6 +16,7 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.block.GrongletBlock;
 import quek.undergarden.block.entity.GrongletBlockEntity;
 import quek.undergarden.client.model.UGModelLayers;
+import quek.undergarden.registry.UGBlocks;
 
 public class GrongletRender implements BlockEntityRenderer<GrongletBlockEntity> {
 
@@ -93,10 +94,23 @@ public class GrongletRender implements BlockEntityRenderer<GrongletBlockEntity> 
 		stack.mulPose(Axis.ZP.rotationDegrees(180F));
 		int yaw = gronglet.yaw;
 		stack.mulPose(Axis.YP.rotationDegrees(yaw));
-		VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/gronglet.png")));
-		this.body.render(stack, consumer, light, overlay);
-		this.limbs.render(stack, consumer, light, overlay);
-		this.burs.render(stack, consumer, light, overlay);
+		VertexConsumer consumer;
+		if (gronglet.getBlockState().is(UGBlocks.GRONGLET)) {
+			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/gronglet.png")));
+			this.body.render(stack, consumer, light, overlay);
+			this.limbs.render(stack, consumer, light, overlay);
+			this.burs.render(stack, consumer, light, overlay);
+		} else if (gronglet.getBlockState().is(UGBlocks.UTHERIC_GRONGLET)) {
+			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/utheric_gronglet.png")));
+			this.body.render(stack, consumer, light, overlay);
+			this.limbs.render(stack, consumer, light, overlay);
+			this.burs.render(stack, consumer, light, overlay);
+		} else if (gronglet.getBlockState().is(UGBlocks.ROGDORIC_GRONGLET)) {
+			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/rogdoric_gronglet.png")));
+			this.body.render(stack, consumer, light, overlay);
+			this.limbs.render(stack, consumer, light, overlay);
+			this.burs.render(stack, consumer, light, overlay);
+		}
 		stack.popPose();
 	}
 }

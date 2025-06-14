@@ -2,9 +2,12 @@ package quek.undergarden;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -17,6 +20,7 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -25,8 +29,10 @@ import quek.undergarden.data.*;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.registry.*;
+import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 @Mod(Undergarden.MODID)
 public class Undergarden {
@@ -43,8 +49,14 @@ public class Undergarden {
 
 		UndergardenCommonEvents.initCommonEvents(bus);
 		bus.addListener(this::gatherData);
+		bus.addListener((Consumer<RegisterEvent>) event -> {
+			if (event.getRegistry() == BuiltInRegistries.CHUNK_GENERATOR) {
+				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, ResourceLocation.fromNamespaceAndPath(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC);
+			}
+		});
 
 		DeferredRegister<?>[] registers = {
+			UGAttachments.ATTACHMENTS,
 			UGBlockEntities.BLOCK_ENTITIES,
 			UGBlocks.BLOCKS,
 			UGCarvers.CARVERS,
@@ -64,7 +76,11 @@ public class Undergarden {
 			UGStructures.STRUCTURES,
 			UGTreeDecoratorTypes.TREE_DECORATORS,
 			UGTrunkPlacerTypes.TRUNK_PLACERS,
-			UGArmorMaterials.ARMOR_MATERIALS
+			UGArmorMaterials.ARMOR_MATERIALS,
+			UGMenuTypes.MENU_TYPES,
+			UGRecipeSerializers.RECIPE_SERIALIZERS,
+			UGRecipeTypes.RECIPE_TYPES,
+			UGDataComponents.COMPONENTS,
 		};
 
 		for (DeferredRegister<?> register : registers) {
@@ -99,7 +115,7 @@ public class Undergarden {
 		generator.addProvider(event.includeServer(), new UGBiomeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));
-		generator.addProvider(event.includeServer(), new UGDataMaps(output, lookupProvider));
+		generator.addProvider(event.includeServer(), new UGDataMapsProvider(output, lookupProvider));
 		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, lookupProvider, helper));
 	}
 

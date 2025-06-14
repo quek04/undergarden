@@ -71,7 +71,8 @@
       "undergarden:ditchbulb_patch",
       "undergarden:tall_shimmerweed_patch",
       "undergarden:droopvine_patch",
-      "undergarden:gloomgourd_patch"
+      "undergarden:gloomgourd_patch",
+      "undergarden:smogstem_tree_sparse"
     ]
   ],
   "has_precipitation": false,
@@ -145,9 +146,9 @@
         "weight": 100
       },
       {
-        "type": "undergarden:rotbeast",
-        "maxCount": 2,
-        "minCount": 1,
+        "type": "undergarden:rotbelcher",
+        "maxCount": 4,
+        "minCount": 4,
         "weight": 100
       },
       {
@@ -157,6 +158,7 @@
         "weight": 100
       }
     ],
+    "undergarden:stupid": [],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

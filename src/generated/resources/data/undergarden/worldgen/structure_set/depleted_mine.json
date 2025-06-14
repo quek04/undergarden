@@ -1,0 +1,16 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency": 0.004,
+    "frequency_reduction_method": "legacy_type_3",
+    "salt": 50002673,
+    "separation": 0,
+    "spacing": 1
+  },
+  "structures": [
+    {
+      "structure": "undergarden:depleted_mine",
+      "weight": 1
+    }
+  ]
+}

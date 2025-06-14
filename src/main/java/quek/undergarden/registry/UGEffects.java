@@ -2,7 +2,6 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -25,5 +24,5 @@ public class UGEffects {
 	public static final DeferredHolder<MobEffect, MobEffect> VIRULENT_RESISTANCE = EFFECTS.register("virulent_resistance", () -> new GenericMobEffect(MobEffectCategory.BENEFICIAL, 3550530));
 	public static final DeferredHolder<MobEffect, MobEffect> VIRULENCE = EFFECTS.register("virulence", () -> new VirulenceEffect(MobEffectCategory.HARMFUL, 3550530));
 	public static final DeferredHolder<MobEffect, MobEffect> CHILLY = EFFECTS.register("chilly", () -> new GenericMobEffect(MobEffectCategory.HARMFUL, 9154528).addAttributeModifier(Attributes.MOVEMENT_SPEED, CHILLY_MODIFIER, -0.15D, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-
+	public static final DeferredHolder<MobEffect, MobEffect> PURITY = EFFECTS.register("purity", PurityEffect::new);
 }
