@@ -49,7 +49,7 @@
       },
       "trigger": "minecraft:location"
     },
-    "has_entered_rogdorium": {
+    "has_entered_rogdorium_grove": {
       "conditions": {
         "player": [
           {
@@ -84,7 +84,7 @@
       "has_entered_depths",
       "has_entered_infected_depths",
       "has_entered_puff_mushroom_forest",
-      "has_entered_rogdorium"
+      "has_entered_rogdorium_grove"
     ]
   ],
   "sends_telemetry_event": true

@@ -28,7 +28,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class UndergardenAdvancements implements AdvancementProvider.AdvancementGenerator {
-	private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.FROSTY_SMOGSTEM_FOREST, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.DEPTHS, UGBiomes.INFECTED_DEPTHS, UGBiomes.PUFF_MUSHROOM_FOREST);
+	private static final List<ResourceKey<Biome>> UNDERGARDEN_BIOMES = ImmutableList.of(UGBiomes.ANCIENT_SEA, UGBiomes.BARREN_ABYSS, UGBiomes.DEAD_SEA, UGBiomes.DENSE_FOREST, UGBiomes.FORGOTTEN_FIELD, UGBiomes.FROSTFIELDS, UGBiomes.FROSTY_SMOGSTEM_FOREST, UGBiomes.GRONGLEGROWTH, UGBiomes.ICY_SEA, UGBiomes.BLOOD_MUSHROOM_BOG, UGBiomes.SMOG_SPIRES, UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.INDIGO_MUSHROOM_BOG, UGBiomes.INK_MUSHROOM_BOG, UGBiomes.VEIL_MUSHROOM_BOG, UGBiomes.DEPTHS, UGBiomes.INFECTED_DEPTHS, UGBiomes.PUFF_MUSHROOM_FOREST, UGBiomes.ROGDORIUM_GROVE);
 
 	@SuppressWarnings("unused")
 	@Override
@@ -515,7 +515,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			.addCriterion("has_entered_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.DEPTHS))))
 			.addCriterion("has_entered_infected_depths", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.INFECTED_DEPTHS))))
 			.addCriterion("has_entered_puff_mushroom_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.PUFF_MUSHROOM_FOREST))))
-			.addCriterion("has_entered_rogdorium", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.ROGDORIUM_GROVE))))
+			.addCriterion("has_entered_rogdorium_grove", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(provider.lookupOrThrow(Registries.BIOME).getOrThrow(UGBiomes.ROGDORIUM_GROVE))))
 			.save(consumer, "undergarden:undergarden/enter_depths");
 
 		AdvancementHolder contract_utheric_infection = Advancement.Builder.advancement()
