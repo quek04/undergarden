@@ -344,7 +344,8 @@ public class UGStructures {
 			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/campfire_5")), 1),
 			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_1"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
 			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_2"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_3"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_3"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/dweller_farm")), 1)
 		), StructureTemplatePool.Projection.RIGID));
 
 		context.register(DEPLETED_MINE_WALKWAY_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(

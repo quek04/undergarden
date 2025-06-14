@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-10T16:05:36.5379166	Registries
+// 1.21.1	2025-06-14T01:25:02.9193183	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -184,7 +184,7 @@ b3687472695daa6c8c3702ea85fc753e3850baf5 data/undergarden/worldgen/template_pool
 f608b16021abaeb71a4dee1b7ab7ef60b2ea772f data/undergarden/worldgen/template_pool/catacombs/tunnel_fallback_pool.json
 75512d0cc2994300e5b0c7052520ab7da114200a data/undergarden/worldgen/template_pool/catacombs/tunnel_pool.json
 6a7129cdd4084cc6942ae4968683e59dec5f062f data/undergarden/worldgen/template_pool/catacombs/way_pool.json
-824795139ced649b68a7c8801350d3f4c4f5e105 data/undergarden/worldgen/template_pool/denizen_camp/hangout_pool.json
+0e6d7043924437d009bee8cf7fab4ff6ce251ec4 data/undergarden/worldgen/template_pool/denizen_camp/hangout_pool.json
 8303ecd3676a312f88eb39c8bf6f8006ab2aed35 data/undergarden/worldgen/template_pool/denizen_camp/road_pool.json
 d626db2e0ad9623d8d7ee52e2578a8543fdfff7c data/undergarden/worldgen/template_pool/denizen_camp/totem_circle_pool.json
 f0ea9d767be9d6c125528d0ee00f9e835ee7ed3a data/undergarden/worldgen/template_pool/denizen_camp/totem_pool.json
