@@ -3,7 +3,7 @@ plugins {
 	id 'eclipse'
 	id 'idea'
 	id 'maven-publish'
-	id 'net.neoforged.moddev' version '1.0.1'
+	id 'net.neoforged.moddev' version '2.0.91'
 }
 
 def secrets = new Properties()

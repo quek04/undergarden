@@ -86,6 +86,7 @@ public class Forgotten extends Monster {
 		Structure structure = level.structureManager().registryAccess().registryOrThrow(Registries.STRUCTURE).get(UGStructures.DEPLETED_MINE);
 		if (structure != null && level.getLevel().structureManager().getStructureAt(this.getOnPos(), structure).isValid()) {
 			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.FORGOTTEN_PICKAXE.get()));
+			this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(UGItems.CLOGGRUM_CHESTPLATE.get()));
 		} else if (random.nextInt(50) == 0) {
 			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.CLOGGRUM_BATTLEAXE.get()));
 			this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(UGItems.ANCIENT_HELMET.get()));
