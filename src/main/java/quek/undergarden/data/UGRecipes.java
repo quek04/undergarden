@@ -541,7 +541,7 @@ public class UGRecipes extends UGRecipeProvider {
 			.pattern("D D")
 			.define('D', UGBlocks.DREADROCK.get())
 			.define('R', UGTags.Items.INGOTS_ROGDORIUM)
-			.define('U', UGTags.Items.GEMS_UTHERIUM)
+			.define('U', UGItems.UTHERIC_CLUSTER)
 			.unlockedBy("has_dreadrock", has(UGBlocks.DREADROCK.get()))
 			.save(output);
 
