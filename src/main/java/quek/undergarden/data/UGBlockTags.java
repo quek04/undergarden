@@ -230,7 +230,8 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 			UGBlocks.DREADROCK_WALL.get(),
 			UGBlocks.DREADROCK_BRICK_WALL.get(),
 			UGBlocks.DREADROCK_BUTTON.get(),
-			UGBlocks.DREADROCK_PRESSURE_PLATE.get()
+			UGBlocks.DREADROCK_PRESSURE_PLATE.get(),
+			UGBlocks.INFUSER.get()
 		);
 		tag(BlockTags.MINEABLE_WITH_AXE).add(
 			UGBlocks.GLOOMGOURD.get(),
@@ -306,7 +307,8 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 			UGBlocks.ANCIENT_ROOT_BUTTON.get(),
 			UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE.get(),
 			UGBlocks.ANCIENT_ROOT_SIGN.get(),
-			UGBlocks.ANCIENT_ROOT_WALL_SIGN.get()
+			UGBlocks.ANCIENT_ROOT_WALL_SIGN.get(),
+			UGBlocks.ROGDORIC_ANCIENT_ROOT.get()
 		);
 		tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
 			UGBlocks.DEEPTURF_BLOCK.get(),
