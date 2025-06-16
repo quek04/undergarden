@@ -43,10 +43,10 @@ import java.util.function.IntFunction;
 public class Denizen extends Monster implements VariantHolder<Denizen.Type>, RangedAttackMob {
 	private static final EntityDataAccessor<Integer> TYPE_ID = SynchedEntityData.defineId(Denizen.class, EntityDataSerializers.INT);
 
-	private static final EntityDimensions SHORT = EntityDimensions.scalable(0.7F, 2.0F);
-	private static final EntityDimensions SHORT_SITTING = EntityDimensions.scalable(0.7F, 1.5F);
-	private static final EntityDimensions TALL = EntityDimensions.scalable(0.7F, 3.5F);
-	private static final EntityDimensions TALL_SITTING = EntityDimensions.scalable(0.7F, 2.0F);
+	private static final EntityDimensions SHORT = EntityDimensions.scalable(0.85F, 1.9F).withEyeHeight(1.75F);
+	private static final EntityDimensions SHORT_SITTING = EntityDimensions.scalable(0.85F, 1.4F).withEyeHeight(1.2F);
+	private static final EntityDimensions TALL = EntityDimensions.scalable(0.85F, 3.3F).withEyeHeight(3.0F);
+	private static final EntityDimensions TALL_SITTING = EntityDimensions.scalable(0.85F, 1.8F).withEyeHeight(1.4F);
 
 	@Nullable
 	private LivingEntity stareTarget;
@@ -193,7 +193,7 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 			Optional<Holder<PoiType>> maybeCampfire = ((ServerLevel)this.level()).getPoiManager().getType(this.satAtCampfire);
 			if (maybeCampfire.isPresent() && maybeCampfire.get().is(UGPointOfInterests.DENIZEN_RESTING_BLOCKS.getKey())) {
 				((ServerLevel)this.level()).getPoiManager().release(this.satAtCampfire);
-				Undergarden.LOGGER.debug("Denizen released campfire at {} (spots free: {})", this.satAtCampfire, ((ServerLevel) this.level()).getPoiManager().getFreeTickets(this.satAtCampfire));
+				//Undergarden.LOGGER.debug("Denizen released campfire at {} (spots free: {})", this.satAtCampfire, ((ServerLevel) this.level()).getPoiManager().getFreeTickets(this.satAtCampfire));
 			}
 		}
 		this.setPose(Pose.STANDING);
