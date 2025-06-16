@@ -11,6 +11,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -23,6 +24,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import quek.undergarden.block.entity.InfuserBlockEntity;
 import quek.undergarden.registry.UGBlockEntities;
@@ -34,6 +38,15 @@ public class InfuserBlock extends BaseEntityBlock {
 
 	public static final EnumProperty<InfuserState> STATE = EnumProperty.create("state", InfuserState.class);
 
+	private static final VoxelShape SHAPE = Shapes.or(
+		Block.box(0.0D, 0.0D, 0.0D, 4.0D, 12.0D, 4.0D),
+		Block.box(0.0D, 0.0D, 12.0D, 4.0D, 12.0D, 16.0D),
+		Block.box(12.0D, 0.0D, 0.0D, 16.0D, 12.0D, 4.0D),
+		Block.box(12.0D, 0.0D, 12.0D, 16.0D, 12.0D, 16.0D),
+		Block.box(0.0D, 12.0D, 0.0D, 16.0D, 16.0D, 16.0D),
+		Block.box(2.0D, 8.0D, 3.0D, 14.0D, 16.0D, 13.0D)
+	);
+
 	public InfuserBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.getStateDefinition().any().setValue(STATE, InfuserState.INACTIVE));
@@ -42,6 +55,11 @@ public class InfuserBlock extends BaseEntityBlock {
 	@Override
 	protected MapCodec<? extends BaseEntityBlock> codec() {
 		return CODEC;
+	}
+
+	@Override
+	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		return SHAPE;
 	}
 
 	@Override
