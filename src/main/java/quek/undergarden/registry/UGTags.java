@@ -158,7 +158,6 @@ public class UGTags {
 
 		public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
 		public static final TagKey<Biome> IS_OTHERSIDE = tag("is_otherside");
-
 		public static final TagKey<Biome> IS_DEPTHS_BIOME = tag("is_depths_biome");
 
 		public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
