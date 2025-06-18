@@ -1,14 +1,16 @@
 package quek.undergarden.event;
 
+import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -36,6 +38,7 @@ import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -43,16 +46,15 @@ import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
+import quek.undergarden.command.InfectionCommand;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
@@ -79,16 +81,16 @@ public class UndergardenCommonEvents {
 
 	public static void initCommonEvents(IEventBus bus) {
 		UndergardenToolEvents.setupToolEvents();
+		UthericInfectionEvents.init();
 		bus.addListener(UndergardenCommonEvents::registerPackets);
 		bus.addListener(UndergardenCommonEvents::registerBETypes);
 		bus.addListener(UndergardenCommonEvents::setup);
 		bus.addListener(UndergardenCommonEvents::registerEntityAttributes);
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
+		bus.addListener(UndergardenCommonEvents::registerDataMaps);
 
+		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerCommands);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickUthericInfection);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::syncUthericInfectionOnLogin);
-		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::syncUthericInfectionOnDimensionChange);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::blockToolInteractions);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyBrittleness);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::applyFeatherweight);
@@ -151,6 +153,7 @@ public class UndergardenCommonEvents {
 			WoodType.register(UGWoodStuff.SMOGSTEM_WOOD_TYPE);
 			WoodType.register(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
 			WoodType.register(UGWoodStuff.GRONGLE_WOOD_TYPE);
+			WoodType.register(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
 
 			SlingshotItem.registerAmmo(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
@@ -185,12 +188,35 @@ public class UndergardenCommonEvents {
 				}
 			});
 
+			SlingshotItem.registerAmmo(UGBlocks.UTHERIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new UthericGronglet(shooter, level);
+				}
+
+				@Override
+				public SoundEvent getFiringSound() {
+					return UGSoundEvents.GRONGLET_SHOOT.get();
+				}
+			});
+
+			SlingshotItem.registerAmmo(UGBlocks.ROGDORIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
+				@Override
+				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
+					return new RogdoricGronglet(shooter, level);
+				}
+
+				@Override
+				public SoundEvent getFiringSound() {
+					return UGSoundEvents.GRONGLET_SHOOT.get();
+				}
+			});
+
 			FireBlock fire = (FireBlock) Blocks.FIRE;
 			//planks
 			fire.setFlammable(UGBlocks.SMOGSTEM_PLANKS.get(), 5, 20);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_PLANKS.get(), 5, 20);
 			fire.setFlammable(UGBlocks.GRONGLE_PLANKS.get(), 5, 20);
-			fire.setFlammable(UGBlocks.ANCIENT_ROOT_PLANKS.get(), 5, 20);
 			//slabs
 			fire.setFlammable(UGBlocks.SMOGSTEM_SLAB.get(), 5, 20);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_SLAB.get(), 5, 20);
@@ -211,7 +237,6 @@ public class UndergardenCommonEvents {
 			fire.setFlammable(UGBlocks.SMOGSTEM_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.WIGGLEWOOD_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.GRONGLE_LOG.get(), 5, 5);
-			fire.setFlammable(UGBlocks.ANCIENT_ROOT.get(), 5, 5);
 			//stripped logs
 			fire.setFlammable(UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), 5, 5);
 			fire.setFlammable(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), 5, 5);
@@ -250,6 +275,8 @@ public class UndergardenCommonEvents {
 			fire.setFlammable(UGBlocks.BLUE_MOGMOSS_RUG.get(), 60, 20);
 			fire.setFlammable(UGBlocks.BOOMGOURD.get(), 15, 100);
 			fire.setFlammable(UGBlocks.GRONGLET.get(), 100, 100);
+			fire.setFlammable(UGBlocks.UTHERIC_GRONGLET.get(), 100, 100);
+			fire.setFlammable(UGBlocks.ROGDORIC_GRONGLET.get(), 100, 100);
 		});
 	}
 
@@ -270,7 +297,7 @@ public class UndergardenCommonEvents {
 		event.register(UGEntityTypes.GWIB.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Gwib::canGwibSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.MOG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.SMOG_MOG.get(), SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SmogMog::checkSmogMogSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.FORGOTTEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.FORGOTTEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.DENIZEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.ROTBELCHER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
@@ -322,70 +349,6 @@ public class UndergardenCommonEvents {
 		if (event.getEntity().level().isClientSide()) {
 			UndergardenPortalVisuals.handlePortalVisuals(event.getEntity());
 		}
-	}
-
-	private static void tickUthericInfection(EntityTickEvent.Pre event) {
-		Entity entity = event.getEntity();
-		if (entity instanceof LivingEntity livingEntity) {
-			if (livingEntity.tickCount % 20 == 0 && !livingEntity.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
-				int data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
-				if (data >= 20) {
-					livingEntity.hurt(livingEntity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
-				} else {
-					if (livingEntity.level().getBiome(livingEntity.blockPosition()).is(UGTags.Biomes.TICKS_UTHERIC_INFECTION) && livingEntity.tickCount % 400 == 0) {
-						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + 1);
-					} else {
-						if (livingEntity.tickCount % 100 == 0) {
-							int blocks = countInfectedBlocksNearby(livingEntity.level(), livingEntity.blockPosition(), livingEntity.getRandom());
-							if (blocks > 0) {
-								livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + Mth.clamp(Mth.ceil(Mth.sqrt(blocks / 2.0F) + 1), 1, 5));
-							} else if (livingEntity.tickCount % 400 == 0 && data > 0) {
-								livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data - 1);
-							}
-						}
-					}
-					sendSyncPacket(livingEntity);
-				}
-				if (livingEntity instanceof ServerPlayer player) {
-					UGCriteria.UTHERIC_INFECTION.get().trigger(player, livingEntity.getData(UGAttachments.UTHERIC_INFECTION));
-				}
-			}
-		}
-
-	}
-
-	private static int countInfectedBlocksNearby(Level level, BlockPos playerPos, RandomSource random) {
-		int infected = 0;
-		for (int i = 0; i <= 20; i++) {
-			BlockPos checkBlock = getRandomBlockNearby(random, playerPos, 5);
-			if (level.getBlockState(checkBlock).is(UGTags.Blocks.UTHERIC_INFECTION_BLOCKS)) {
-				infected++;
-			}
-		}
-		return infected;
-	}
-
-	private static BlockPos getRandomBlockNearby(RandomSource random, BlockPos pos, int range) {
-		int dx = random.nextInt(range * 2 + 1) - range;
-		int dy = random.nextInt(range * 2 + 1) - range;
-		int dz = random.nextInt(range * 2 + 1) - range;
-		return pos.offset(dx, dy, dz);
-	}
-
-	private static void syncUthericInfectionOnLogin(PlayerEvent.PlayerLoggedInEvent event) {
-		if (!event.getEntity().level().isClientSide()) {
-			sendSyncPacket(event.getEntity());
-		}
-	}
-
-	private static void syncUthericInfectionOnDimensionChange(PlayerEvent.PlayerChangedDimensionEvent event) {
-		if (!event.getEntity().level().isClientSide()) {
-			sendSyncPacket(event.getEntity());
-		}
-	}
-
-	private static void sendSyncPacket(LivingEntity infected) {
-		PacketDistributor.sendToPlayersTrackingEntityAndSelf(infected, new UthericInfectionPacket(infected.getId(), infected.getData(UGAttachments.UTHERIC_INFECTION)));
 	}
 
 	private static void blockToolInteractions(BlockEvent.BlockToolModificationEvent event) {
@@ -488,5 +451,14 @@ public class UndergardenCommonEvents {
 				}
 			}
 		}
+	}
+
+	public static void registerDataMaps(RegisterDataMapTypesEvent event) {
+		event.register(UGDataMaps.BIOME_LETHALITY);
+		event.register(UGDataMaps.ENTITY_LETHALITY);
+	}
+
+	private static void registerCommands(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("undergarden").then(InfectionCommand.register()));
 	}
 }

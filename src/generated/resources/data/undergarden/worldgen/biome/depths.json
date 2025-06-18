@@ -36,7 +36,9 @@
     "water_fog_color": 332810
   },
   "features": [
-    [],
+    [
+      "undergarden:ancient_root"
+    ],
     [],
     [],
     [],
@@ -88,6 +90,12 @@
         "maxCount": 2,
         "minCount": 1,
         "weight": 100
+      },
+      {
+        "type": "undergarden:denizen",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 50
       }
     ],
     "undergarden:stupid": [

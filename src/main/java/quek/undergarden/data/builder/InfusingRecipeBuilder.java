@@ -6,44 +6,39 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.RecipeBuilder;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
+import quek.undergarden.recipe.InfuserConversionRecipe;
 import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.recipe.InfusingRecipe;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class InfusingRecipeBuilder implements RecipeBuilder {
-	private final RecipeCategory category;
 	private final InfusingBookCategory bookCategory;
 	private final ItemStack result;
 	private final Ingredient ingredient;
 	private final float experience;
 	private final int infusingTime;
-	private final boolean utheriumFuel;
+	private final InfusingRecipe.SlotType type;
 	private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
-	@Nullable
-	private String group;
 
-	public InfusingRecipeBuilder(RecipeCategory category, InfusingBookCategory bookCategory, ItemStack result, Ingredient ingredient, float experience, int infusingTime, boolean utheriumFuel) {
-		this.category = category;
+	public InfusingRecipeBuilder(InfusingBookCategory bookCategory, ItemStack result, Ingredient ingredient, float experience, int infusingTime, InfusingRecipe.SlotType type) {
 		this.bookCategory = bookCategory;
 		this.result = result;
 		this.ingredient = ingredient;
 		this.experience = experience;
 		this.infusingTime = infusingTime;
-		this.utheriumFuel = utheriumFuel;
+		this.type = type;
 	}
 
-	public static InfusingRecipeBuilder infusing(Ingredient ingredient, RecipeCategory category, InfusingBookCategory bookCategory, ItemStack result, float experience, int infusingTime, boolean utheriumFuel) {
-		return new InfusingRecipeBuilder(category, bookCategory, result, ingredient, experience, infusingTime, utheriumFuel);
+	public static InfusingRecipeBuilder infusing(Ingredient ingredient, InfusingBookCategory bookCategory, ItemStack result, float experience, int infusingTime, InfusingRecipe.SlotType type) {
+		return new InfusingRecipeBuilder(bookCategory, result, ingredient, experience, infusingTime, type);
 	}
 
 	@Override
@@ -54,7 +49,6 @@ public class InfusingRecipeBuilder implements RecipeBuilder {
 
 	@Override
 	public InfusingRecipeBuilder group(@Nullable String groupName) {
-		this.group = groupName;
 		return this;
 	}
 
@@ -66,10 +60,10 @@ public class InfusingRecipeBuilder implements RecipeBuilder {
 	@Override
 	public void save(RecipeOutput recipeOutput, ResourceLocation id) {
 		this.ensureValid(id);
-		Advancement.Builder builder= recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
+		Advancement.Builder builder = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
 		this.criteria.forEach(builder::addCriterion);
-		InfusingRecipe recipe = new InfusingRecipe(Objects.requireNonNullElse(this.group, ""), this.bookCategory, this.ingredient, this.result, this.experience, this.infusingTime, this.utheriumFuel);
-		recipeOutput.accept(id, recipe, builder.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")));
+		InfuserConversionRecipe recipe = new InfuserConversionRecipe(this.bookCategory, this.ingredient, this.result, this.infusingTime, this.experience, this.type);
+		recipeOutput.accept(id, recipe, builder.build(id.withPrefix("recipes/infusing/" + this.bookCategory.getSerializedName() + "/")));
 	}
 
 	private void ensureValid(ResourceLocation id) {

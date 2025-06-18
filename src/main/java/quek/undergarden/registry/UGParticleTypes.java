@@ -1,12 +1,17 @@
 package quek.undergarden.registry;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleGroup;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
+import quek.undergarden.client.particle.TotemBeamParticle;
 
 public class UGParticleTypes {
 
@@ -22,6 +27,18 @@ public class UGParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> UTHERIUM_CRIT = PARTICLES.register("utherium_crit", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SNOWFLAKE = PARTICLES.register("snowflake", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ROGDORIUM_SPARKLE = PARTICLES.register("rogdorium_sparkle", () -> new SimpleParticleType(false));
+	public static final DeferredHolder<ParticleType<?>, ParticleType<TotemBeamParticle.Options>> TOTEM_BEAM = PARTICLES.register("totem_beam", () -> new ParticleType<>(false) {
+
+		@Override
+		public MapCodec<TotemBeamParticle.Options> codec() {
+			return TotemBeamParticle.Options.CODEC;
+		}
+
+		@Override
+		public StreamCodec<? super RegistryFriendlyByteBuf, TotemBeamParticle.Options> streamCodec() {
+			return TotemBeamParticle.Options.STREAM_CODEC;
+		}
+	});
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> OTHERSIDE_ASH = PARTICLES.register("otherside_ash", () -> new SimpleParticleType(false));
 
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_BLOOD = PARTICLES.register("dripping_blood", () -> new SimpleParticleType(false));

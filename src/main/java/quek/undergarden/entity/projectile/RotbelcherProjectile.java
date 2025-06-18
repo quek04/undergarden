@@ -8,6 +8,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -17,9 +18,8 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGTags;
+import quek.undergarden.component.RogdoriumInfusion;
+import quek.undergarden.registry.*;
 
 public class RotbelcherProjectile extends AbstractHurtingProjectile {
 
@@ -41,6 +41,25 @@ public class RotbelcherProjectile extends AbstractHurtingProjectile {
 			DamageSource damageSource = this.damageSources().spit(this, livingShooter);
 			if (victim.hurt(damageSource, 5.0F)) {
 				EnchantmentHelper.doPostAttackEffects(level, victim, damageSource);
+				if (victim instanceof LivingEntity livingEntity) {
+					if (!this.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
+						double data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
+						double b = 0.2D;
+						int a = 0;
+						if (livingEntity instanceof Player player) {
+							for (int i = 0; i < 4; i++) {
+								ItemStack armor = player.getInventory().getArmor(i);
+								int infusionAmount = armor.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
+								if (infusionAmount > 0) {
+									armor.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(infusionAmount - 1));
+									a++;
+								}
+							}
+						}
+						double t = b / ((1 + a) * 0.18D);
+						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + t);
+					}
+				}
 			}
 		}
 	}

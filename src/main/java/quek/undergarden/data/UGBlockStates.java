@@ -122,12 +122,13 @@ public class UGBlockStates extends UGBlockstateProvider {
 		block(UGBlocks.UTHERIUM_GROWTH);
 		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
 		block(UGBlocks.ANCIENT_ROOT);
+		block(UGBlocks.ROGDORIC_ANCIENT_ROOT);
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
 		getVariantBuilder(UGBlocks.DENIZEN_TOTEM.get())
 			.partialState().with(DenizenTotemBlock.ACTIVE, true)
-			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM) + "_active", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_active"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"))).addModel()
+			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM) + "_active", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_active"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_top"))).addModel()
 			.partialState().with(DenizenTotemBlock.ACTIVE, false)
-			.modelForState().modelFile(models().cubeColumn(name(UGBlocks.DENIZEN_TOTEM), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_inactive"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"))).addModel();
+			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_inactive"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_top"))).addModel();
 		crossBlock(UGBlocks.PUFF_MUSHROOM);
 		block(UGBlocks.PUFF_MUSHROOM_CAP);
 		block(UGBlocks.PUFF_MUSHROOM_STEM);

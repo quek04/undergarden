@@ -1,0 +1,86 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/3way_1",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/4way_1",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/stair_1",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/stair_2",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/straight_1",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/straight_2",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/straight_3",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/turn_1",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:depleted_mine/walkway/turn_2",
+        "processors": "undergarden:depleted_mine_lantern_processor",
+        "projection": "rigid"
+      },
+      "weight": 2
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

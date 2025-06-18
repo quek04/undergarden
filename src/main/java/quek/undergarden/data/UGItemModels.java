@@ -258,10 +258,12 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.ANCIENT_LEGGINGS);
 		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
 		block(UGBlocks.ROGDORIUM_BLOCK);
-		normalItem(UGItems.ROGDORIUM_CRYSTAL);
+		normalItem(UGItems.ROGDORIUM);
+		normalItem(UGItems.ROGDORIUM_NUGGET);
 		block(UGBlocks.UTHERIUM_GROWTH);
 		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
 		block(UGBlocks.ANCIENT_ROOT);
+		block(UGBlocks.ROGDORIC_ANCIENT_ROOT);
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
 		block(UGBlocks.ANCIENT_ROOT_STAIRS);
 		block(UGBlocks.ANCIENT_ROOT_SLAB);
@@ -287,7 +289,7 @@ public class UGItemModels extends UGItemModelProvider {
 		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
 		block(UGBlocks.DREADROCK_PRESSURE_PLATE);
 		normalItem(UGItems.UTHERIC_CLUSTER);
-		normalItem(UGItems.CORRUPT_CATALYST);
+		//normalItem(UGItems.CORRUPT_CATALYST);
 		block(UGBlocks.DEAD_WISPYGRASS_BLOCK);
 		blockFlat(UGBlocks.DEAD_WISPYGRASS);
 
@@ -311,6 +313,7 @@ public class UGItemModels extends UGItemModelProvider {
 		egg(UGItems.FORGOTTEN_SPAWN_EGG);
 		egg(UGItems.DENIZEN_SPAWN_EGG);
 		egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
+		egg(UGItems.MINION_SPAWN_EGG);
 
 		sign(UGBlocks.SMOGSTEM_SIGN);
 		sign(UGBlocks.WIGGLEWOOD_SIGN);

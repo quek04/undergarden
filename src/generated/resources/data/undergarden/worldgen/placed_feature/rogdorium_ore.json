@@ -2,16 +2,12 @@
   "feature": "undergarden:rogdorium_ore",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 3
-    },
-    {
       "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
+        "type": "minecraft:trapezoid",
         "max_inclusive": {
           "absolute": 0
         },

@@ -21,9 +21,9 @@ public class UGItems {
 
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Undergarden.MODID);
 
-	public static final Rarity ROGDORIUM = Rarity.valueOf("UNDERGARDEN_ROGDORIUM");
-	public static final Rarity FORGOTTEN = Rarity.valueOf("UNDERGARDEN_FORGOTTEN");
-	public static final Rarity UTHERIUM = Rarity.valueOf("UNDERGARDEN_UTHERIUM");
+	public static final Rarity ROGDORIUM_RARITY = Rarity.valueOf("UNDERGARDEN_ROGDORIUM");
+	public static final Rarity FORGOTTEN_RARITY = Rarity.valueOf("UNDERGARDEN_FORGOTTEN");
+	public static final Rarity UTHERIUM_RARITY = Rarity.valueOf("UNDERGARDEN_UTHERIUM");
 
 	//discs
 	public static final DeferredItem<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.MAMMOTH)));
@@ -49,10 +49,11 @@ public class UGItems {
 
 	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-	public static final DeferredItem<Item> ROGDORIUM_CRYSTAL = ITEMS.register("rogdorium_crystal", () -> new Item(new Item.Properties().rarity(ROGDORIUM).food(UGFoods.ROGDORIUM)));
+	public static final DeferredItem<Item> ROGDORIUM = ITEMS.register("rogdorium", () -> new Item(new Item.Properties().rarity(ROGDORIUM_RARITY).food(UGFoods.ROGDORIUM)));
+	public static final DeferredItem<Item> ROGDORIUM_NUGGET = ITEMS.register("rogdorium_nugget", () -> new Item(new Item.Properties().rarity(ROGDORIUM_RARITY)));
 
-	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN_RARITY)));
 
 	public static final DeferredItem<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", () -> new DepthrockPebbleItem(UGBlocks.DEPTHROCK_PEBBLES.get(), new Item.Properties()));
 	public static final DeferredItem<Item> TWISTYTWIG = ITEMS.register("twistytwig", () -> new Item(new Item.Properties()));
@@ -84,15 +85,15 @@ public class UGItems {
 	public static final DeferredItem<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.UTHERIUM, -3, 0.0F))));
 
 	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(BattleaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 7, -3.4F)).rarity(Rarity.EPIC)));
-	public static final DeferredItem<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FORGOTTEN, 3, -2.4F)).rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 1, -2.8F)).rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.FORGOTTEN, 5.0F, -3.0F)).rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FORGOTTEN, 1.5F, -3.0F)).rarity(FORGOTTEN)));
-	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FORGOTTEN, -3, 0.0F)).rarity(FORGOTTEN)));
+	public static final DeferredItem<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FORGOTTEN, 3, -2.4F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 1, -2.8F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.FORGOTTEN, 5.0F, -3.0F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FORGOTTEN, 1.5F, -3.0F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FORGOTTEN, -3, 0.0F)).rarity(FORGOTTEN_RARITY)));
 
 	//misc tools
 	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
-	public static final DeferredItem<Item> CORRUPT_CATALYST = ITEMS.register("corrupt_catalyst", () -> new Item(new Item.Properties().stacksTo(1).rarity(UTHERIUM)));
+	//public static final DeferredItem<Item> CORRUPT_CATALYST = ITEMS.register("corrupt_catalyst", () -> new Item(new Item.Properties().stacksTo(1).rarity(UTHERIUM_RARITY)));
 	public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
 	public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () -> new SpearItem(new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).rarity(Rarity.UNCOMMON)));
 	public static final DeferredItem<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
@@ -177,4 +178,5 @@ public class UGItems {
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_SPAWN_EGG = ITEMS.register("forgotten_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN, 5393733, 9502615, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> DENIZEN_SPAWN_EGG = ITEMS.register("denizen_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DENIZEN, 9797222, 13026490, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));
+	public static final DeferredItem<DeferredSpawnEggItem> MINION_SPAWN_EGG = ITEMS.register("minion_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MINION, 8126397, 3170136, new Item.Properties()));
 }

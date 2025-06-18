@@ -18,30 +18,30 @@ public class UthericInfectionTrigger extends SimpleCriterionTrigger<UthericInfec
 		return TriggerInstance.CODEC;
 	}
 
-	public void trigger(ServerPlayer player, int infectionLevel) {
+	public void trigger(ServerPlayer player, double infectionLevel) {
 		this.trigger(player, triggerInstance -> triggerInstance.matches(infectionLevel));
 	}
 
-	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<MinMaxBounds.Ints> infectionLevel) implements SimpleCriterionTrigger.SimpleInstance {
+	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<MinMaxBounds.Doubles> infectionLevel) implements SimpleCriterionTrigger.SimpleInstance {
 		public static final Codec<TriggerInstance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 				EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TriggerInstance::player),
-				MinMaxBounds.Ints.CODEC.optionalFieldOf("infectionLevel").forGetter(TriggerInstance::infectionLevel))
+				MinMaxBounds.Doubles.CODEC.optionalFieldOf("infectionLevel").forGetter(TriggerInstance::infectionLevel))
 			.apply(instance, TriggerInstance::new)
 		);
 
 		public static Criterion<?> isInfected() {
-			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), Optional.of(MinMaxBounds.Ints.atLeast(1))));
+			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), Optional.of(MinMaxBounds.Doubles.atLeast(1))));
 		}
 
 		public static Criterion<?> hasInfectionLevel(int infectionLevel) {
-			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), Optional.of(MinMaxBounds.Ints.exactly(infectionLevel))));
+			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), Optional.of(MinMaxBounds.Doubles.exactly(infectionLevel))));
 		}
 
-		public static Criterion<?> hasInfectionLevel(MinMaxBounds.Ints infectionLevel) {
+		public static Criterion<?> hasInfectionLevel(MinMaxBounds.Doubles infectionLevel) {
 			return UGCriteria.UTHERIC_INFECTION.get().createCriterion(new UthericInfectionTrigger.TriggerInstance(Optional.empty(), Optional.of(infectionLevel)));
 		}
 
-		public boolean matches(int infectionLevel) {
+		public boolean matches(double infectionLevel) {
 			return this.infectionLevel.isEmpty() || this.infectionLevel.get().matches(infectionLevel);
 		}
 	}

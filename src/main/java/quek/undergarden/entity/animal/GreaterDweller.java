@@ -44,6 +44,15 @@ public class GreaterDweller extends Animal implements NeutralMob {
 	}
 
 	@Override
+	public boolean isAngryAt(LivingEntity target) {
+		if (!this.canAttack(target)) {
+			return false;
+		} else {
+			return target.getType() == EntityType.PLAYER && this.isAngryAtAllPlayers(target.level()) ? true : target.getUUID().equals(this.getPersistentAngerTarget()) || target.getUUID().toString().equals("57c0d7fd-935b-495d-b14f-a7dadd3605f9");
+		}
+	}
+
+	@Override
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(0, new BreedGoal(this, 1.0D));

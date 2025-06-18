@@ -6,17 +6,13 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
@@ -24,7 +20,8 @@ import quek.undergarden.block.*;
 import quek.undergarden.block.portal.UndergardenPortalBlock;
 import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.item.tool.slingshot.GrongletItem;
-import quek.undergarden.network.UthericInfectionPacket;
+import quek.undergarden.item.tool.slingshot.RogdoricGrongletItem;
+import quek.undergarden.item.tool.slingshot.UthericGrongletItem;
 import quek.undergarden.world.gen.tree.UGTreeGrowers;
 
 import java.util.Objects;
@@ -276,20 +273,23 @@ public class UGBlocks {
 	public static final DeferredBlock<CeilingHangingSignBlock> GRONGLE_HANGING_SIGN = register("grongle_hanging_sign", () -> new CeilingHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
 	public static final DeferredBlock<WallHangingSignBlock> GRONGLE_WALL_HANGING_SIGN = BLOCKS.register("grongle_wall_hanging_sign", () -> new WallHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
-	public static final DeferredBlock<Block> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> UTHERIC_GRONGLET = register("utheric_gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> ROGDORIC_GRONGLET = register("rogdoric_gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
 
 	//ancient root
-	public static final DeferredBlock<Block> ANCIENT_ROOT = register("ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
-	public static final DeferredBlock<Block> DENIZEN_TOTEM = register("denizen_totem", () -> new DenizenTotemBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).strength(4.0F).lightLevel((state) -> state.getValue(DenizenTotemBlock.ACTIVE) ? 15 : 0)));
-	public static final DeferredBlock<Block> ANCIENT_ROOT_PLANKS = register("ancient_root_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+	public static final DeferredBlock<Block> ANCIENT_ROOT = register("ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).sound(UGSoundTypes.ANCIENT_ROOT)));
+	public static final DeferredBlock<Block> ROGDORIC_ANCIENT_ROOT = register("rogdoric_ancient_root", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT.get()).strength(4.0F).lightLevel((state) -> 10).requiresCorrectToolForDrops()));
+	public static final DeferredBlock<Block> DENIZEN_TOTEM = register("denizen_totem", () -> new DenizenTotemBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).sound(UGSoundTypes.ANCIENT_ROOT).strength(4.0F).lightLevel((state) -> state.getValue(DenizenTotemBlock.ACTIVE) ? 15 : 0)));
+	public static final DeferredBlock<Block> ANCIENT_ROOT_PLANKS = register("ancient_root_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).sound(UGSoundTypes.ANCIENT_ROOT)));
 	public static final DeferredBlock<StairBlock> ANCIENT_ROOT_STAIRS = register("ancient_root_stairs", () -> new StairBlock(ANCIENT_ROOT_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> ANCIENT_ROOT_SLAB = register("ancient_root_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT_PLANKS.get())));
-	public static final DeferredBlock<FenceBlock> ANCIENT_ROOT_FENCE = register("ancient_root_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
-	public static final DeferredBlock<FenceGateBlock> ANCIENT_ROOT_FENCE_GATE = register("ancient_root_fence_gate", () -> new FenceGateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
-	public static final DeferredBlock<DoorBlock> ANCIENT_ROOT_DOOR = register("ancient_root_door", () -> new DoorBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR)));
-	public static final DeferredBlock<TrapDoorBlock> ANCIENT_ROOT_TRAPDOOR = register("ancient_root_trapdoor", () -> new TrapDoorBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR)));
-	public static final DeferredBlock<ButtonBlock> ANCIENT_ROOT_BUTTON = register("ancient_root_button", () -> new ButtonBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
-	public static final DeferredBlock<PressurePlateBlock> ANCIENT_ROOT_PRESSURE_PLATE = register("ancient_root_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
+	public static final DeferredBlock<FenceBlock> ANCIENT_ROOT_FENCE = register("ancient_root_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).sound(UGSoundTypes.ANCIENT_ROOT)));
+	public static final DeferredBlock<FenceGateBlock> ANCIENT_ROOT_FENCE_GATE = register("ancient_root_fence_gate", () -> new FenceGateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).sound(UGSoundTypes.ANCIENT_ROOT)));
+	public static final DeferredBlock<DoorBlock> ANCIENT_ROOT_DOOR = register("ancient_root_door", () -> new DoorBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR).sound(UGSoundTypes.ANCIENT_ROOT)));
+	public static final DeferredBlock<TrapDoorBlock> ANCIENT_ROOT_TRAPDOOR = register("ancient_root_trapdoor", () -> new TrapDoorBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR).sound(UGSoundTypes.ANCIENT_ROOT)));
+	public static final DeferredBlock<ButtonBlock> ANCIENT_ROOT_BUTTON = register("ancient_root_button", () -> new ButtonBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON).sound(UGSoundTypes.ANCIENT_ROOT)));
+	public static final DeferredBlock<PressurePlateBlock> ANCIENT_ROOT_PRESSURE_PLATE = register("ancient_root_pressure_plate", () -> new PressurePlateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).sound(UGSoundTypes.ANCIENT_ROOT)));
 
 	public static final DeferredBlock<StandingSignBlock> ANCIENT_ROOT_SIGN = register("ancient_root_sign", () -> new StandingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)));
 	public static final DeferredBlock<WallSignBlock> ANCIENT_ROOT_WALL_SIGN = BLOCKS.register("ancient_root_wall_sign", () -> new WallSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)));
@@ -338,13 +338,17 @@ public class UGBlocks {
 			} else if (Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DEPTHROCK_REGALIUM_ORE.get() || Objects.requireNonNull(block.get()) == SHIVERSTONE_REGALIUM_ORE.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(Rarity.UNCOMMON));
 			} else if (Objects.requireNonNull(block.get()) == ROGDORIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DREADROCK_ROGDORIUM_ORE.get()) {
-				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.ROGDORIUM));
+				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.ROGDORIUM_RARITY));
 			} else if (Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
-				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.FORGOTTEN));
+				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.FORGOTTEN_RARITY));
 			} else if (Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
 				return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().stacksTo(1));
 			} else if (Objects.requireNonNull(block.get()) == GRONGLET.get()) {
 				return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
+			} else if (Objects.requireNonNull(block.get()) == UTHERIC_GRONGLET.get()) {
+				return new UthericGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
+			} else if (Objects.requireNonNull(block.get()) == ROGDORIC_GRONGLET.get()) {
+				return new RogdoricGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
 				return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {
@@ -363,7 +367,7 @@ public class UGBlocks {
 				return new HangingSignItem(GRONGLE_HANGING_SIGN.get(), GRONGLE_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (Objects.requireNonNull(block.get()) == ANCIENT_ROOT_HANGING_SIGN.get()) {
 				return new HangingSignItem(ANCIENT_ROOT_HANGING_SIGN.get(), ANCIENT_ROOT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
-			} else if (Objects.requireNonNull(block.get()) == UTHERIUM_GROWTH.get()) {
+			} /*else if (Objects.requireNonNull(block.get()) == UTHERIUM_GROWTH.get()) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties()) {
 					@Override
 					public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotID, boolean isSelected) {
@@ -376,7 +380,7 @@ public class UGBlocks {
 						}
 					}
 				};
-			} else {
+			}*/ else {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			}
 		};

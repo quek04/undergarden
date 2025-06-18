@@ -41,7 +41,7 @@
       "name": "UNDERGARDEN_INFUSER_SEARCH",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
+        "class": "quek/undergarden/client/UndergardenClient",
         "field": "INFUSER_SEARCH_CATEGORY"
       }
     },
@@ -50,7 +50,7 @@
       "name": "UNDERGARDEN_INFUSER_PURIFYING",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
+        "class": "quek/undergarden/client/UndergardenClient",
         "field": "INFUSER_PURIFYING_CATEGORY"
       }
     },
@@ -59,7 +59,7 @@
       "name": "UNDERGARDEN_INFUSER_CORRUPTING",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
+        "class": "quek/undergarden/client/UndergardenClient",
         "field": "INFUSER_CORRUPTING_CATEGORY"
       }
     },
@@ -68,7 +68,7 @@
       "name": "UNDERGARDEN_INFUSER_MISC",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "quek/undergarden/UGEnumExtensions",
+        "class": "quek/undergarden/client/UndergardenClient",
         "field": "INFUSER_MISC_CATEGORY"
       }
     },

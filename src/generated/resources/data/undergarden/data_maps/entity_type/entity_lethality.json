@@ -1,0 +1,16 @@
+{
+  "values": {
+    "undergarden:rotbeast": {
+      "lethality": 0.3
+    },
+    "undergarden:rotbelcher": {
+      "lethality": 0.2
+    },
+    "undergarden:rotling": {
+      "lethality": 0.1
+    },
+    "undergarden:rotwalker": {
+      "lethality": 0.2
+    }
+  }
+}

@@ -30,6 +30,7 @@ import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DepthrockPebblesBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
+import quek.undergarden.world.gen.feature.config.AncientRootConfiguration;
 import quek.undergarden.world.gen.feature.config.UtheriumCrystalConfiguration;
 import quek.undergarden.world.gen.foliageplacer.VeilFoliagePlacer;
 import quek.undergarden.world.gen.treedecorator.GrongleLeafDecorator;
@@ -121,7 +122,8 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH = create("utherium_growth");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> CEILING_UTHERIUM_GROWTH = create("ceiling_utherium_growth");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHS_HOLE = create("depths_hole");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_ROOT = create("ancient_root");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_ROOT_EXTRA = create("ancient_root_extra");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
@@ -134,7 +136,7 @@ public class UGConfiguredFeatures {
 		context.register(DIAMOND_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_DIAMOND_ORE.get().defaultBlockState()), OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_DIAMOND_ORE.get().defaultBlockState())), 8, 0.5F)));
 		context.register(CLOGGRUM_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get().defaultBlockState()), OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get().defaultBlockState())), 9)));
 		context.register(FROSTSTEEL_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get().defaultBlockState())), 9)));
-		context.register(ROGDORIUM_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DREADROCK_ORE_REPLACEABLES, UGBlocks.DREADROCK_ROGDORIUM_ORE.get().defaultBlockState())), 9)));
+		context.register(ROGDORIUM_ORE, new ConfiguredFeature<>(Feature.SCATTERED_ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DREADROCK_ORE_REPLACEABLES, UGBlocks.DREADROCK_ROGDORIUM_ORE.get().defaultBlockState())), 9)));
 		context.register(UTHERIUM_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_UTHERIUM_ORE.get().defaultBlockState()), OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get().defaultBlockState()), OreConfiguration.target(TREMBLECRUST_ORE_REPLACEABLES, UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get().defaultBlockState()), OreConfiguration.target(DREADROCK_ORE_REPLACEABLES, UGBlocks.DREADROCK_UTHERIUM_ORE.get().defaultBlockState())), 8, 0.5F)));
 		context.register(REGALIUM_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(DEPTHROCK_ORE_REPLACEABLES, UGBlocks.DEPTHROCK_REGALIUM_ORE.get().defaultBlockState()), OreConfiguration.target(SHIVERSTONE_ORE_REPLACEABLES, UGBlocks.SHIVERSTONE_REGALIUM_ORE.get().defaultBlockState())), 4)));
 		context.register(SHIVERSTONE_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(BASE_STONE_UNDERGARDEN, UGBlocks.SHIVERSTONE.get().defaultBlockState(), 33)));
@@ -217,7 +219,8 @@ public class UGConfiguredFeatures {
 			new ColumnFeatureConfiguration(UniformInt.of(1, 3), UniformInt.of(2, 10)),
 			new LargeDripstoneConfiguration(50, UniformInt.of(3, 8), UniformFloat.of(0.4F, 2.0F), 0.2F, UniformFloat.of(0.4F, 0.9F), UniformFloat.of(0.4F, 0.7F), ConstantFloat.of(0.0F), 0, 0.0F),
 			0.8F, false)));
-		context.register(DEPTHS_HOLE, new ConfiguredFeature<>(UGFeatures.DEPTHS_HOLE.get(), FeatureConfiguration.NONE));
+		context.register(ANCIENT_ROOT, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(25)));
+		context.register(ANCIENT_ROOT_EXTRA, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(10)));
 	}
 
 	private static RandomPatchConfiguration patch(Block block, int tries) {

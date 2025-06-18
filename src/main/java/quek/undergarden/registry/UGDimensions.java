@@ -136,7 +136,7 @@ public class UGDimensions {
 										DensityFunctions.add(
 											DensityFunctions.constant(0.5D),
 											DensityFunctions.mul(
-												DensityFunctions.yClampedGradient(-50, -64, 1.0D, 0.0D),
+												DensityFunctions.yClampedGradient(-40, -64, 1.0D, 0.0D),
 												DensityFunctions.add(
 													DensityFunctions.constant(-0.5F),
 													BlendedNoise.createUnseeded(0.5D, 0.5D, 50.0D, 50.0D, 8.0D)
@@ -269,6 +269,27 @@ public class UGDimensions {
 								SurfaceRules.state(UGBlocks.DREADROCK.get().defaultBlockState())
 							),
 							SurfaceRules.state(UGBlocks.DREADROCK.get().defaultBlockState())
+						)
+					)
+				),
+				//mix deepturf into rogdorium grove
+				SurfaceRules.ifTrue(
+					SurfaceRules.isBiome(UGBiomes.ROGDORIUM_GROVE),
+					SurfaceRules.ifTrue(
+						SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
+						SurfaceRules.sequence(
+							SurfaceRules.ifTrue(
+								SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
+								SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
+							),
+							SurfaceRules.ifTrue(
+								SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),
+								SurfaceRules.state(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState())
+							),
+							SurfaceRules.ifTrue(
+								SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
+								SurfaceRules.state(UGBlocks.DEEPSOIL.get().defaultBlockState())
+							)
 						)
 					)
 				),

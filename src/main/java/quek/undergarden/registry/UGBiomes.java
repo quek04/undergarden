@@ -40,6 +40,7 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> DEPTHS = create("depths");
 	public static final ResourceKey<Biome> INFECTED_DEPTHS = create("infected_depths");
 	public static final ResourceKey<Biome> PUFF_MUSHROOM_FOREST = create("puff_mushroom_forest");
+	public static final ResourceKey<Biome> ROGDORIUM_GROVE = create("rogdorium_grove");
 
 	public static final ResourceKey<Biome> HOWLING_PEAKS = create("howling_peaks");
 	public static final ResourceKey<Biome> FIELDS_OF_SORROW = create("fields_of_sorrow");
@@ -75,7 +76,6 @@ public class UGBiomes {
 			.generationSettings(addOresAndCaves(addShroomPatches(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)))
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEPTHROCK_PEBBLE_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DITCHBULB_PATCH)
-				.addFeature(GenerationStep.Decoration.RAW_GENERATION, UGPlacedFeatures.DEPTHS_HOLE)
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
@@ -175,6 +175,7 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.TALL_SHIMMERWEED_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DROOPVINE_PATCH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLOOMGOURD_PATCH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.SMOGSTEM_TREE_SPARSE)
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
@@ -451,6 +452,7 @@ public class UGBiomes {
 
 		context.register(DEPTHS, new Biome.BiomeBuilder()
 			.generationSettings(addDepthsOresAndCaves(new BiomeGenerationSettings.Builder(featureGetter, carverGetter))
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, UGPlacedFeatures.ANCIENT_ROOT)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.CEILING_UTHERIUM_GROWTH)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_PUFF_MUSHROOM_SPARSE)
@@ -460,6 +462,7 @@ public class UGBiomes {
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.creatureGenerationProbability(0.9999999F)
 				.addSpawn(MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY"), new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 100, 2, 4))
+				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 50, 1, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
@@ -495,12 +498,34 @@ public class UGBiomes {
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.creatureGenerationProbability(0.9999999F)
 				.addSpawn(MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY"), new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 100, 2, 4))
+				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 50, 1, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
 			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 0, 6312510), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
 				.ambientParticle(new AmbientParticleSettings(ParticleTypes.MYCELIUM, 0.025F))
+				.build())
+			.build());
+
+		context.register(ROGDORIUM_GROVE, new Biome.BiomeBuilder()
+			.generationSettings(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)
+				.addCarver(GenerationStep.Carving.AIR, UGConfiguredCarvers.UNDERGARDEN_CAVE)
+				.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.ROGDORIUM_ORE_EXTRA)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, UGPlacedFeatures.ANCIENT_ROOT_EXTRA)
+				.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, UGPlacedFeatures.GRONGLEGROWTH_DELTA)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEEPTURF_PATCH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.MISERABELL_PATCH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.SMOGSTEM_TREE_SPARSE)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.SMOGSTEM_BUSH)
+				.build())
+			.mobSpawnSettings(new MobSpawnSettings.Builder()
+				.build())
+			.hasPrecipitation(false)
+			.downfall(0.0F)
+			.temperature(0.8F)
+			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 10408133, 4479879), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
+				.ambientParticle(new AmbientParticleSettings(UGParticleTypes.ROGDORIUM_SPARKLE.get(), 0.01F))
 				.build())
 			.build());
 
@@ -629,8 +654,8 @@ public class UGBiomes {
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(FORGOTTEN_FIELD)),
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
 
-			Pair.of(Climate.parameters(-1.0F, -0.4F, -0.9F, -0.7F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(FROSTFIELDS)),
-			Pair.of(Climate.parameters(-1.0F, -0.4F, -0.9F, -0.7F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ICY_SEA)),
+			Pair.of(Climate.parameters(-1.0F, -0.4F, 0.0F, -0.7F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(FROSTFIELDS)),
+			Pair.of(Climate.parameters(-1.0F, -0.4F, 0.0F, -0.7F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ICY_SEA)),
 
 			Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(SMOGSTEM_FOREST)),
 			Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
@@ -644,14 +669,14 @@ public class UGBiomes {
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.9F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(GRONGLEGROWTH)),
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.9F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
 
-			Pair.of(Climate.parameters(-1.0F, -0.4F, -0.9F, -0.7F, 0.0F, 0.5F, 0.0F), biomes.getOrThrow(FROSTY_SMOGSTEM_FOREST)),
-			Pair.of(Climate.parameters(-1.0F, -0.4F, -0.9F, -0.7F, -1.0F, 0.5F, 0.0F), biomes.getOrThrow(ICY_SEA)),
+			Pair.of(Climate.parameters(-1.0F, -0.4F, 0.0F, -0.7F, 0.0F, 0.5F, 0.0F), biomes.getOrThrow(FROSTY_SMOGSTEM_FOREST)),
+			Pair.of(Climate.parameters(-1.0F, -0.4F, 0.0F, -0.7F, -1.0F, 0.5F, 0.0F), biomes.getOrThrow(ICY_SEA)),
 
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(BARREN_ABYSS)),
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(DEAD_SEA)),
 
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(SMOG_SPIRES)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(DEAD_SEA)),
+			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.75F, 0.0F, 1.0F, 0.0F), biomes.getOrThrow(SMOG_SPIRES)),
+			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.75F, -1.0F, 1.0F, 0.0F), biomes.getOrThrow(DEAD_SEA)),
 
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F), biomes.getOrThrow(INK_MUSHROOM_BOG)),
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
@@ -671,7 +696,8 @@ public class UGBiomes {
 
 			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DEPTHS)),
 			Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.7F, 1.0F), Climate.Parameter.point(-2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(INFECTED_DEPTHS)),
-			Pair.of(Climate.parameters(Climate.Parameter.span(0.5F, 1.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(-2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(PUFF_MUSHROOM_FOREST))
+			Pair.of(Climate.parameters(1.5F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(PUFF_MUSHROOM_FOREST)),
+			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, -1.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(ROGDORIUM_GROVE))
 		)));
 	}
 

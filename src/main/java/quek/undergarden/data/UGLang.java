@@ -123,7 +123,6 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.BLUE_MOGMOSS_RUG, "Blue Mogmoss Rug");
 		addBlock(UGBlocks.CLOGGRUM_LANTERN, "Cloggrum Lantern");
 		addBlock(UGBlocks.UTHERIUM_GROWTH, "Utherium Growth");
-		addBlock(UGBlocks.DENIZEN_TOTEM, "Mysterious Totem");
 
 		addBlock(UGBlocks.AMOROUS_BRISTLE, "Amorous Bristle");
 		addBlock(UGBlocks.MISERABELL, "Miserabell");
@@ -237,8 +236,12 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.GRONGLE_SIGN, "Grongle Sign");
 		addBlock(UGBlocks.GRONGLE_HANGING_SIGN, "Grongle Hanging Sign");
 		addBlock(UGBlocks.GRONGLET, "Gronglet");
+		addBlock(UGBlocks.UTHERIC_GRONGLET, "Utheric Gronglet");
+		addBlock(UGBlocks.ROGDORIC_GRONGLET, "Rogdoric Gronglet");
 
 		addBlock(UGBlocks.ANCIENT_ROOT, "Ancient Root");
+		addBlock(UGBlocks.ROGDORIC_ANCIENT_ROOT, "Rogdoric Ancient Root");
+		addBlock(UGBlocks.DENIZEN_TOTEM, "Mysterious Totem");
 		addBlock(UGBlocks.ANCIENT_ROOT_PLANKS, "Ancient Root Planks");
 		addBlock(UGBlocks.ANCIENT_ROOT_STAIRS, "Ancient Root Stairs");
 		addBlock(UGBlocks.ANCIENT_ROOT_SLAB, "Ancient Root Slab");
@@ -270,7 +273,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.GLOOMPER_SECRET_DISC, "Music Disc");
 		addJukeboxSong(UGJukeboxSongs.GLOOMPER_SECRET, "An AI was given an image of a Gloomper and made this song");
 		addItem(UGItems.CATALYST, "Catalyst");
-		addItem(UGItems.CORRUPT_CATALYST, "Corrupt Catalyst");
+		//addItem(UGItems.CORRUPT_CATALYST, "Corrupt Catalyst");
 		addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
 		addItem(UGItems.TWISTYTWIG, "Twistytwig");
 		addItem(UGItems.RAW_CLOGGRUM, "Raw Cloggrum");
@@ -283,7 +286,8 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.UTHERIC_CLUSTER, "Utheric Cluster");
 		addItem(UGItems.UTHERIUM_CRYSTAL, "Utherium Crystal");
 		addItem(UGItems.REGALIUM_CRYSTAL, "Regalium Crystal");
-		addItem(UGItems.ROGDORIUM_CRYSTAL, "Rogdorium Crystal");
+		addItem(UGItems.ROGDORIUM, "Rogdorium");
+		addItem(UGItems.ROGDORIUM_NUGGET, "Rogdorium Nugget");
 		addItem(UGItems.FORGOTTEN_INGOT, "Forgotten Ingot");
 		addItem(UGItems.FORGOTTEN_NUGGET, "Forgotten Nugget");
 		addItem(UGItems.GLOOMGOURD_SEEDS, "Gloomgourd Seeds");
@@ -406,6 +410,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.FORGOTTEN_SPAWN_EGG, "Forgotten Spawn Egg");
 		addItem(UGItems.DENIZEN_SPAWN_EGG, "Denizen Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
+		addItem(UGItems.MINION_SPAWN_EGG, "Forgotten Minion Spawn Egg");
 
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
 		addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
@@ -433,6 +438,8 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
 		addEntityType(UGEntityTypes.BLISTERBOMB, "Blisterbomb");
 		addEntityType(UGEntityTypes.GRONGLET, "Gronglet");
+		addEntityType(UGEntityTypes.UTHERIC_GRONGLET, "Utheric Gronglet");
+		addEntityType(UGEntityTypes.ROGDORIC_GRONGLET, "Rogdoric Gronglet");
 		addEntityType(UGEntityTypes.SPEAR, "Spear");
 		addEntityType(UGEntityTypes.MINION_PROJECTILE, "Minion Projectile");
 		addEntityType(UGEntityTypes.ROTBELCHER_PROJECTILE, "Rotbelcher Projectile");
@@ -612,6 +619,7 @@ public class UGLang extends UGLangProvider {
 		add("tooltip.undergarden.utherium_weapon", "Deals 1.5x damage to Rotspawn.");
 		add("tooltip.undergarden.forgotten_weapon", "Deals 1.5x damage to non-boss Undergarden mobs.");
 		add("tooltip.undergarden.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
+		add("tooltip.undergarden.rogdorium_infusion", "Rogdorium Infusion");
 
 		addSubtitle("block", "undergarden_portal.ambient", "Undergarden Portal beckons");
 		addSubtitle("block", "undergarden_portal.activate", "Undergarden Portal activates");
@@ -769,11 +777,12 @@ public class UGLang extends UGLangProvider {
 		addEmiCommonItemTag(UGTags.Items.INGOTS_FROSTSTEEL, "Froststeel Ingots");
 		addEmiCommonItemTag(UGTags.Items.GEMS_UTHERIUM, "Utherium Gems");
 		addEmiCommonItemTag(UGTags.Items.GEMS_REGALIUM, "Regalium Gems");
-		addEmiCommonItemTag(UGTags.Items.GEMS_ROGDORIUM, "Rogdorium Gems");
+		addEmiCommonItemTag(UGTags.Items.INGOTS_ROGDORIUM, "Rogdorium Ingots");
 		addEmiCommonItemTag(UGTags.Items.INGOTS_FORGOTTEN_METAL, "Forgotten Ingots");
 
 		addEmiCommonItemTag(UGTags.Items.NUGGETS_CLOGGRUM, "Cloggrum Nuggets");
 		addEmiCommonItemTag(UGTags.Items.NUGGETS_FROSTSTEEL, "Froststeel Nuggets");
+		addEmiCommonItemTag(UGTags.Items.NUGGETS_ROGDORIUM, "Rogdorium Nuggets");
 		addEmiCommonItemTag(UGTags.Items.NUGGETS_FORGOTTEN_METAL, "Forgotten Nuggets");
 
 		addEmiCommonItemTag(UGTags.Items.ORES_CLOGGRUM, "Cloggrum Ores");
@@ -793,5 +802,11 @@ public class UGLang extends UGLangProvider {
 		addEmiCommonItemTag(UGTags.Items.STORAGE_BLOCKS_RAW_FROSTSTEEL, "Raw Froststeel Storage Blocks");
 
 		addEmiFluidTag(UGTags.Fluids.VIRULENT, "Virulent Mix");
+
+		this.add("commands.undergarden.infection.success.single", "Set infection to %s on %s");
+		this.add("commands.undergarden.infection.success.multiple", "Set infection to %s on %s targets");
+		this.add("commands.undergarden.infection.cannot_infect", "%s is immune to infection");
+		this.add("commands.undergarden.infection.cannot_infect_multiple", "All targets are immune to infection");
+		this.add("commands.undergarden.infection.skipped", "%s targets were not affected as they are immune to infection");
 	}
 }

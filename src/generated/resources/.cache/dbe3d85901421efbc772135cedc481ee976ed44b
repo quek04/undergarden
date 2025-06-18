@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-29T01:11:12.5600126	Item Models: undergarden
+// 1.21.1	2025-06-10T16:14:35.140957	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -56,12 +56,9 @@ aec337dc72fcb368914ce04c266b2fac55ae9fc9 assets/undergarden/models/item/cloggrum
 ce6a58368e3d020e397123ddeb9abd19db5ed2a7 assets/undergarden/models/item/cloggrum_tile_stairs.json
 cb41d73d78a1122b3c2c2324edec75267e3563d0 assets/undergarden/models/item/coarse_deepsoil.json
 08a929a2239e7f66eb0fc4c55251ef31e3d3995b assets/undergarden/models/item/cooked_gwibling.json
-1bb9417b1d9137c922654bc07fb129b23b58aff6 assets/undergarden/models/item/corrupt_catalyst.json
 e4a51f53846af5b98dbace974ca138319f020522 assets/undergarden/models/item/cracked_depthrock_bricks.json
 95e11abaa33eb71871be72b5e1e263a1b0b196ca assets/undergarden/models/item/cracked_shiverstone_bricks.json
 7a497ad1fb7755a0ebc63bb981538f993a903379 assets/undergarden/models/item/cracked_tremblecrust_bricks.json
-29ca74d85510c60d40004c407cacd13dd356d79b assets/undergarden/models/item/dead_wispygrass.json
-ef1919ae7a826027e81daf51ae8b5abb8008b8f4 assets/undergarden/models/item/dead_wispygrass_block.json
 d35aeb21febab1f730aa8a34f914e1a5cf87a6a4 assets/undergarden/models/item/deepsoil.json
 4af6f8c06a1e254e993032eb1efc6fadbb3970b5 assets/undergarden/models/item/deepsoil_farmland.json
 6b10a425dcedec1c7911ed7f335ed518b43eda57 assets/undergarden/models/item/deepturf.json
@@ -177,6 +174,7 @@ f4f2da27e0af25333d7ff5e033141d2bc9ca1890 assets/undergarden/models/item/ink_mush
 a2179db39d2ecc39a868deeaa392d52b222ad634 assets/undergarden/models/item/ink_mushroom_cap.json
 a90a80946a0dba62be141e6dc4879bafe3c73191 assets/undergarden/models/item/ink_mushroom_stem.json
 6db9447f4dec1a97ed06076c2552bf9dfb8c01d1 assets/undergarden/models/item/loose_tremblecrust.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/minion_spawn_egg.json
 c3ff50d54fbdaf6cec277ade85918ff7075e2d23 assets/undergarden/models/item/miserabell.json
 2ee6873febae8f6c34e20895b2c59f258100ae3d assets/undergarden/models/item/mogmoss.json
 107d0c9ced12b3dacc090e61b41f0dd87112ee21 assets/undergarden/models/item/mogmoss_rug.json
@@ -206,8 +204,10 @@ feaf499e77b6c7c117ab0da77b9420161e2f5a96 assets/undergarden/models/item/puff_mus
 a7aa476a9940178842b82d4fb1305474d5e832cd assets/undergarden/models/item/regalium_block.json
 aa8ed02244470d559527fb64cf5d04367ca1c2b4 assets/undergarden/models/item/regalium_crystal.json
 58973c1b8803dd7e6e9f1a7631979bb2b1f1281b assets/undergarden/models/item/roasted_underbeans.json
+d34906faa275e698f33deb99518185d33265a325 assets/undergarden/models/item/rogdoric_ancient_root.json
+b43729a765335d29afb688d7c3fe9e87a1ef3e7f assets/undergarden/models/item/rogdorium.json
 0e429282157df54a316847af90941c56c1ab07d5 assets/undergarden/models/item/rogdorium_block.json
-7f0268af970ac87578ef927c8a964651890cecec assets/undergarden/models/item/rogdorium_crystal.json
+574ae8e52118ddee2cd7f47bda828409e184d3a2 assets/undergarden/models/item/rogdorium_nugget.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotbeast_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotbelcher_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/undergarden/models/item/rotling_spawn_egg.json

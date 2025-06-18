@@ -6,10 +6,10 @@
       "item": "undergarden:dreadrock"
     },
     "R": {
-      "tag": "c:gems/rogdorium"
+      "tag": "c:ingots/rogdorium"
     },
     "U": {
-      "tag": "c:gems/utherium"
+      "item": "undergarden:utheric_cluster"
     }
   },
   "pattern": [

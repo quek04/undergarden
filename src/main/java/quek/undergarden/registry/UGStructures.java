@@ -14,6 +14,7 @@ import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement
 import net.minecraft.world.level.levelgen.structure.pools.DimensionPadding;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -75,21 +77,33 @@ public class UGStructures {
 	public static final ResourceKey<StructureProcessorList> DENIZEN_CAMP_ROAD_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp_road_processor"));
 	public static final ResourceKey<StructureProcessorList> DENIZEN_CAMP_WOOD_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp_wood_processor"));
 
+	//depleted mine
+	public static final ResourceKey<Structure> DEPLETED_MINE = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine"));
+	public static final ResourceKey<StructureSet> DEPLETED_MINE_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine"));
+
+	public static final ResourceKey<StructureTemplatePool> DEPLETED_MINE_WALKWAY_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine/walkway_pool"));
+	public static final ResourceKey<StructureTemplatePool> DEPLETED_MINE_CLUTTER_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine/clutter_pool"));
+
+	public static final ResourceKey<StructureProcessorList> DEPLETED_MINE_LANTERN_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine_lantern_processor"));
+
 	public static void bootstrapStructures(BootstrapContext<Structure> context) {
 		HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 		HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
 		context.register(CATACOMBS, new BiggerJigsawStructure(
-			new Structure.StructureSettings(
-				biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS),
-				Map.of(
-					MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(
-						new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 4)
-					))
-				),
-				GenerationStep.Decoration.SURFACE_STRUCTURES,
-				TerrainAdjustment.NONE
-			),
+			new Structure.StructureSettings.Builder(biomes.getOrThrow(UGTags.Biomes.HAS_CATACOMBS))
+				.spawnOverrides(
+					Map.of(
+						MobCategory.MONSTER,
+						new StructureSpawnOverride(
+							StructureSpawnOverride.BoundingBoxType.PIECE,
+							WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 4))
+						)
+					)
+				)
+				.generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+				.terrainAdapation(TerrainAdjustment.NONE)
+				.build(),
 			pools.getOrThrow(CATACOMBS_START),
 			Optional.empty(),
 			15,
@@ -101,12 +115,10 @@ public class UGStructures {
 			LiquidSettings.IGNORE_WATERLOGGING
 		));
 		context.register(FORGOTTEN_VESTIGE, new BiggerJigsawStructure(
-			new Structure.StructureSettings(
-				biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE),
-				Map.of(),
-				GenerationStep.Decoration.UNDERGROUND_STRUCTURES,
-				TerrainAdjustment.BEARD_THIN
-			),
+			new Structure.StructureSettings.Builder(biomes.getOrThrow(UGTags.Biomes.HAS_FORGOTTEN_VESTIGE))
+				.generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+				.terrainAdapation(TerrainAdjustment.BEARD_THIN)
+				.build(),
 			pools.getOrThrow(FORGOTTEN_VESTIGE_POOL),
 			Optional.empty(),
 			5,
@@ -118,12 +130,19 @@ public class UGStructures {
 			LiquidSettings.APPLY_WATERLOGGING
 		));
 		context.register(DENIZEN_CAMP, new BiggerJigsawStructure(
-			new Structure.StructureSettings(
-				biomes.getOrThrow(UGTags.Biomes.HAS_DENIZEN_CAMP),
-				Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 1, 1)))),
-				GenerationStep.Decoration.SURFACE_STRUCTURES,
-				TerrainAdjustment.BEARD_THIN
-			),
+			new Structure.StructureSettings.Builder(biomes.getOrThrow(UGTags.Biomes.HAS_DENIZEN_CAMP))
+				.spawnOverrides(
+					Map.of(
+						MobCategory.MONSTER,
+						new StructureSpawnOverride(
+							StructureSpawnOverride.BoundingBoxType.STRUCTURE,
+							WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 1, 1))
+						)
+					)
+				)
+				.generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+				.terrainAdapation(TerrainAdjustment.BEARD_THIN)
+				.build(),
 			pools.getOrThrow(DENIZEN_CAMP_TOTEM_CIRCLE_POOL),
 			Optional.empty(),
 			5,
@@ -134,6 +153,31 @@ public class UGStructures {
 			DimensionPadding.ZERO,
 			LiquidSettings.IGNORE_WATERLOGGING
 		));
+		context.register(DEPLETED_MINE, new JigsawStructure(
+			new Structure.StructureSettings.Builder(biomes.getOrThrow(UGTags.Biomes.HAS_DEPLETED_MINE))
+				.spawnOverrides(
+					Map.of(
+						MobCategory.MONSTER,
+						new StructureSpawnOverride(
+							StructureSpawnOverride.BoundingBoxType.PIECE,
+							WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1))
+						)
+					)
+				)
+				.generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+				.terrainAdapation(TerrainAdjustment.ENCAPSULATE)
+				.build(),
+			pools.getOrThrow(DEPLETED_MINE_WALKWAY_POOL),
+			Optional.empty(),
+			10,
+			UniformHeight.of(VerticalAnchor.absolute(-54), VerticalAnchor.absolute(-31)),
+			false,
+			Optional.empty(),
+			80,
+			List.of(),
+			new DimensionPadding(10),
+			LiquidSettings.IGNORE_WATERLOGGING
+		));
 	}
 
 	public static void bootstrapSets(BootstrapContext<StructureSet> context) {
@@ -141,6 +185,7 @@ public class UGStructures {
 		context.register(CATACOMBS_SET, new StructureSet(structures.getOrThrow(CATACOMBS), new RandomSpreadStructurePlacement(24, 12, RandomSpreadType.LINEAR, 276320045)));
 		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 6, 3, RandomSpreadType.LINEAR)));
 		context.register(DENIZEN_CAMP_SET, new StructureSet(structures.getOrThrow(DENIZEN_CAMP), new RandomSpreadStructurePlacement(12, 6, RandomSpreadType.LINEAR, 27630047)));
+		context.register(DEPLETED_MINE_SET, new StructureSet(structures.getOrThrow(DEPLETED_MINE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.LEGACY_TYPE_3, 0.004F, 50002673, Optional.empty(), 1, 0, RandomSpreadType.LINEAR)));
 	}
 
 	public static void bootstrapPools(BootstrapContext<StructureTemplatePool> context) {
@@ -299,7 +344,32 @@ public class UGStructures {
 			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/campfire_5")), 1),
 			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_1"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
 			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_2"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
-			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_3"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/storage_3"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("denizen_camp/hangout/dweller_farm")), 1)
+		), StructureTemplatePool.Projection.RIGID));
+
+		context.register(DEPLETED_MINE_WALKWAY_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/3way_1"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/4way_1"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/stair_1"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/stair_2"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/straight_1"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/straight_2"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/straight_3"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/turn_1"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 2),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/walkway/turn_2"), processors.getOrThrow(DEPLETED_MINE_LANTERN_PROCESSOR)), 2)
+		), StructureTemplatePool.Projection.RIGID));
+		context.register(DEPLETED_MINE_CLUTTER_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single("minecraft:empty"), 3),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/chest_1")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_1")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_2")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dirt_mound_3")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dreadrock_mound_1")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dreadrock_mound_2")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/dreadrock_mound_3")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/logs_1")), 1),
+			Pair.of(StructurePoolElement.single(name("depleted_mine/clutter/logs_2")), 1)
 		), StructureTemplatePool.Projection.RIGID));
 	}
 
@@ -354,6 +424,16 @@ public class UGStructures {
 					new RandomBlockMatchTest(UGBlocks.ANCIENT_ROOT.get(), 0.25F),
 					AlwaysTrueTest.INSTANCE,
 					UGBlocks.ANCIENT_ROOT_PLANKS.get().defaultBlockState()
+				)
+			))
+		)));
+
+		context.register(DEPLETED_MINE_LANTERN_PROCESSOR, new StructureProcessorList(List.of(
+			new RuleProcessor(List.of(
+				new ProcessorRule(
+					new RandomBlockMatchTest(UGBlocks.CLOGGRUM_LANTERN.get(), 0.75F),
+					AlwaysTrueTest.INSTANCE,
+					Blocks.AIR.defaultBlockState()
 				)
 			))
 		)));

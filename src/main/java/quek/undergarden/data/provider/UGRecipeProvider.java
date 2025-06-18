@@ -19,7 +19,9 @@ import net.minecraft.world.level.block.SignBlock;
 import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.Undergarden;
 import quek.undergarden.data.builder.InfusingRecipeBuilder;
+import quek.undergarden.data.builder.ItemInfusingRecipeBuilder;
 import quek.undergarden.recipe.InfusingBookCategory;
+import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
@@ -364,6 +366,16 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	}
 
+	public SimpleCookingRecipeBuilder campfireRecipe(ItemLike result, ItemLike ingredient, float exp) {
+		return campfireRecipe(result, ingredient, exp, 1);
+	}
+
+	public SimpleCookingRecipeBuilder campfireRecipe(ItemLike result, ItemLike ingredient, float exp, int count) {
+		return SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(new ItemStack(ingredient, count)), RecipeCategory.FOOD, result, exp, 600)
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
+
+	}
+
 	public SmithingTransformRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> templateItem, Supplier<Item> result) {
 		return SmithingTransformRecipeBuilder.smithing(Ingredient.of(templateItem.get()), Ingredient.of(input.get()), Ingredient.of(upgradeItem.get()), RecipeCategory.MISC, result.get())
 				.unlocks("has_" + BuiltInRegistries.ITEM.getKey(upgradeItem.get()), has(upgradeItem.get()));
@@ -463,19 +475,19 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 		return stonecutting(UGBlocks.DREADROCK_BRICKS, result, resultAmount);
 	}
 
-	public InfusingRecipeBuilder infusing(ItemLike result, ItemLike ingredient, InfusingBookCategory bookCategory, boolean utheriumFuel, float experience, int infusingTime) {
-		return InfusingRecipeBuilder.infusing(Ingredient.of(ingredient), RecipeCategory.MISC, bookCategory, new ItemStack(result), experience, infusingTime, utheriumFuel).unlockedBy("has_item", has(ingredient));
+	public ItemInfusingRecipeBuilder itemInfusing(Ingredient ingredient, InfusingBookCategory bookCategory, float experience, int infusingTime) {
+		return ItemInfusingRecipeBuilder.infusing(ingredient, bookCategory, experience, infusingTime);
 	}
 
-	public InfusingRecipeBuilder infusingMisc(ItemLike result, ItemLike ingredient, boolean utheriumFuel, float experience, int infusingTime) {
-		return infusing(result, ingredient, InfusingBookCategory.MISC, utheriumFuel, experience, infusingTime);
+	public InfusingRecipeBuilder infusing(ItemLike result, ItemLike ingredient, InfusingBookCategory bookCategory, InfusingRecipe.SlotType type, float experience, int infusingTime) {
+		return InfusingRecipeBuilder.infusing(Ingredient.of(ingredient), bookCategory, new ItemStack(result), experience, infusingTime, type).unlockedBy("has_item", has(ingredient));
 	}
 
 	public InfusingRecipeBuilder infusingPurifying(ItemLike result, ItemLike ingredient, float experience, int infusingTime) {
-		return infusing(result, ingredient, InfusingBookCategory.PURIFYING, false, experience, infusingTime);
+		return infusing(result, ingredient, InfusingBookCategory.PURIFYING, InfusingRecipe.SlotType.ROGDORIUM, experience, infusingTime);
 	}
 
 	public InfusingRecipeBuilder infusingCorrupting(ItemLike result, ItemLike ingredient, float experience, int infusingTime) {
-		return infusing(result, ingredient, InfusingBookCategory.CORRUPTING, true, experience, infusingTime);
+		return infusing(result, ingredient, InfusingBookCategory.CORRUPTING, InfusingRecipe.SlotType.UTHERIUM, experience, infusingTime);
 	}
 }

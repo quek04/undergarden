@@ -1,149 +1,73 @@
 package quek.undergarden.recipe;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.tags.TagKey;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGRecipeSerializers;
 import quek.undergarden.registry.UGRecipeTypes;
+import quek.undergarden.registry.UGTags;
 
-public class InfusingRecipe implements Recipe<InfuserRecipeInput> {
+import java.util.Locale;
 
-	protected final InfusingBookCategory category;
-	protected final String group;
-	protected final Ingredient ingredient;
-	protected final ItemStack result;
-	protected final float experience;
-	protected final int infusingTime;
-	protected final boolean utheriumFuel;
+public interface InfusingRecipe extends Recipe<SingleRecipeInput> {
 
-	public InfusingRecipe(String group, InfusingBookCategory category, Ingredient ingredient, ItemStack result, float experience, int infusingTime, boolean fuelType) {
-		this.category = category;
-		this.group = group;
-		this.ingredient = ingredient;
-		this.result = result;
-		this.experience = experience;
-		this.infusingTime = infusingTime;
-		this.utheriumFuel = fuelType;
-	}
+	SlotType getRecipeSlotType();
 
-	public InfusingBookCategory getCategory() {
-		return category;
-	}
+	float experience();
 
-	public int getInfusingTime() {
-		return infusingTime;
-	}
+	int infusingTime();
 
-	public boolean isUtheriumFuel() {
-		return utheriumFuel;
-	}
-
-	public float getExperience() {
-		return experience;
-	}
+	InfusingBookCategory category();
 
 	@Override
-	public ItemStack getToastSymbol() {
-		return new ItemStack(UGBlocks.INFUSER);
-	}
-
-	@Override
-	public boolean matches(InfuserRecipeInput input, Level level) {
-		return this.ingredient.test(input.item()) && this.utheriumFuel == input.isUtheriumFuel();
-	}
-
-	@Override
-	public ItemStack assemble(InfuserRecipeInput input, HolderLookup.Provider registries) {
-		return this.result.copy();
-	}
-
-	@Override
-	public boolean canCraftInDimensions(int width, int height) {
+	default boolean canCraftInDimensions(int width, int height) {
 		return true;
 	}
 
 	@Override
-	public ItemStack getResultItem(HolderLookup.Provider registries) {
-		return this.result;
+	default ItemStack getToastSymbol() {
+		return new ItemStack(UGBlocks.INFUSER);
 	}
 
 	@Override
-	public RecipeSerializer<?> getSerializer() {
-		return UGRecipeSerializers.INFUSING.get();
-	}
-
-	@Override
-	public RecipeType<?> getType() {
+	default RecipeType<?> getType() {
 		return UGRecipeTypes.INFUSING.get();
 	}
 
 	@Override
-	public NonNullList<Ingredient> getIngredients() {
-		NonNullList<Ingredient> list = NonNullList.create();
-		list.add(this.ingredient);
-		return list;
+	default boolean isSpecial() {
+		return true;
 	}
 
-	public static class Serializer implements RecipeSerializer<InfusingRecipe> {
+	enum SlotType implements StringRepresentable {
+		UTHERIUM(1, UGTags.Items.INFUSER_UTHERIUM_FUELS),
+		ROGDORIUM(2, UGTags.Items.INFUSER_ROGDORIUM_FUELS);
 
-		private final MapCodec<InfusingRecipe> codec;
-		private final StreamCodec<RegistryFriendlyByteBuf, InfusingRecipe> streamCodec;
+		public static final StringRepresentable.EnumCodec<SlotType> CODEC = StringRepresentable.fromEnum(SlotType::values);
 
-		public Serializer() {
-			this.codec = RecordCodecBuilder.mapCodec(
-				instance -> instance.group(
-					Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
-					InfusingBookCategory.CODEC.fieldOf("category").orElse(InfusingBookCategory.MISC).forGetter(recipe -> recipe.category),
-					Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(recipe -> recipe.ingredient),
-					ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-					Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(recipe -> recipe.experience),
-					Codec.INT.fieldOf("infusingTime").orElse(200).forGetter(recipe -> recipe.infusingTime),
-					Codec.BOOL.fieldOf("utheriumFuel").forGetter(recipe -> recipe.utheriumFuel)
-				).apply(instance, InfusingRecipe::new)
-			);
-			this.streamCodec = StreamCodec.of(this::toNetwork, this::fromNetwork);
+		private final int slotIndex;
+		private final TagKey<Item> validItems;
+
+		SlotType(int slotIndex, TagKey<Item> validItems) {
+			this.slotIndex = slotIndex;
+			this.validItems = validItems;
+		}
+
+		public int getSlotIndex() {
+			return this.slotIndex;
+		}
+
+		public TagKey<Item> getValidItems() {
+			return this.validItems;
 		}
 
 		@Override
-		public MapCodec<InfusingRecipe> codec() {
-			return this.codec;
-		}
-
-		@Override
-		public StreamCodec<RegistryFriendlyByteBuf, InfusingRecipe> streamCodec() {
-			return this.streamCodec;
-		}
-
-		private InfusingRecipe fromNetwork(RegistryFriendlyByteBuf buf) {
-			String group = buf.readUtf();
-			InfusingBookCategory category = buf.readEnum(InfusingBookCategory.class);
-			Ingredient ingredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
-			ItemStack result = ItemStack.STREAM_CODEC.decode(buf);
-			float experience = buf.readFloat();
-			int infusingTime = buf.readInt();
-			boolean utheriumFuel = buf.readBoolean();
-			return new InfusingRecipe(group, category, ingredient, result, experience, infusingTime, utheriumFuel);
-		}
-
-		private void toNetwork(RegistryFriendlyByteBuf buf, InfusingRecipe recipe) {
-			buf.writeUtf(recipe.group);
-			buf.writeEnum(recipe.category);
-			Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.ingredient);
-			ItemStack.STREAM_CODEC.encode(buf, recipe.result);
-			buf.writeFloat(recipe.experience);
-			buf.writeInt(recipe.infusingTime);
-			buf.writeBoolean(recipe.utheriumFuel);
+		public String getSerializedName() {
+			return this.name().toLowerCase(Locale.ROOT);
 		}
 	}
 }

@@ -1,9 +1,11 @@
 package quek.undergarden.event;
 
 import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.ChatFormatting;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -21,7 +23,9 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
@@ -29,6 +33,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
@@ -39,6 +44,7 @@ import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerHeartTypeEvent;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
@@ -57,11 +63,13 @@ import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.client.render.layer.DenizenMaskLayer;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
+import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.recipe.InfusingRecipe;
 import quek.undergarden.registry.*;
 
+import java.util.List;
 import java.util.Objects;
 
 public class UndergardenClientEvents {
@@ -89,11 +97,13 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerDimensionSpecialEffects);
 		bus.addListener(UndergardenClientEvents::registerClientExtensions);
 		bus.addListener(UndergardenClientEvents::registerDimensionTransitionScreens);
+		bus.addListener(UndergardenClientEvents::registerItemDecorations);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::renderVirulentHearts);
+		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::addTooltips);
 	}
 
 	private static void clientSetup(FMLClientSetupEvent event) {
@@ -101,6 +111,7 @@ public class UndergardenClientEvents {
 			Sheets.addWoodType(UGWoodStuff.SMOGSTEM_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.GRONGLE_WOOD_TYPE);
+			Sheets.addWoodType(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
 
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pull"), (stack, level, entity, seed) -> {
 				if (entity == null) {
@@ -112,6 +123,8 @@ public class UndergardenClientEvents {
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.UTHERIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "rogdoric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.ROGDORIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "self_sling"), (stack, level, entity, seed) -> entity != null && stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.SELF_SLING)) > 0 ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 			ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
@@ -130,6 +143,8 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.GRONGLET.get(), GrongletEntityRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.UTHERIC_GRONGLET.get(), UthericGrongletEntityRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ROGDORIC_GRONGLET.get(), RogdoricGrongletEntityRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.SPEAR.get(), ThrownSpearRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTBELCHER_PROJECTILE.get(), NoopRenderer::new);
@@ -227,6 +242,7 @@ public class UndergardenClientEvents {
 		event.registerSpriteSet(UGParticleTypes.UTHERIUM_CRIT.get(), UtheriumCritParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.ROGDORIUM_SPARKLE.get(), ShimmerParticle.Provider::new);
+		event.registerSpriteSet(UGParticleTypes.TOTEM_BEAM.get(), TotemBeamParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.OTHERSIDE_ASH.get(), OthersideAshParticle.Provider::new);
 
 		event.registerSprite(UGParticleTypes.DRIPPING_BLOOD.get(), UGDripParticles::createBloodHangParticle);
@@ -251,9 +267,9 @@ public class UndergardenClientEvents {
 		event.registerAggregateCategory(UGRecipeBookCategories.INFUSER_SEARCH, ImmutableList.of(UGRecipeBookCategories.INFUSER_PURIFYING, UGRecipeBookCategories.INFUSER_CORRUPTING, UGRecipeBookCategories.INFUSER_MISC));
 		event.registerRecipeCategoryFinder(UGRecipeTypes.INFUSING.get(), recipe -> {
 			if (recipe.value() instanceof InfusingRecipe infusingRecipe) {
-				if (infusingRecipe.getCategory() == InfusingBookCategory.PURIFYING) {
+				if (infusingRecipe.category() == InfusingBookCategory.PURIFYING) {
 					return UGRecipeBookCategories.INFUSER_PURIFYING;
-				} else if (infusingRecipe.getCategory() == InfusingBookCategory.CORRUPTING) {
+				} else if (infusingRecipe.category() == InfusingBookCategory.CORRUPTING) {
 					return UGRecipeBookCategories.INFUSER_CORRUPTING;
 				}
 			}
@@ -391,10 +407,32 @@ public class UndergardenClientEvents {
 		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_bar"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
-			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0 && minecraft.gameMode.canHurtPlayer()) {
+			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0.0F && minecraft.gameMode.canHurtPlayer()) {
 				renderUthericInfectionBar(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
 			}
 		});
+		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_vignette"), ((guiGraphics, deltaTracker) -> {
+			Minecraft minecraft = Minecraft.getInstance();
+			LocalPlayer player = minecraft.player;
+			ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
+			RenderSystem.disableDepthTest();
+			RenderSystem.depthMask(false);
+			RenderSystem.enableBlend();
+			RenderSystem.blendFuncSeparate(
+				GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+			);
+			if (player != null) {
+				double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / 20.0D;
+				vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
+				guiGraphics.setColor(0.0F, (float) vignetteBrightness, (float) vignetteBrightness, 1.0F);
+			}
+			guiGraphics.blit(overlay, 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
+			RenderSystem.depthMask(true);
+			RenderSystem.enableDepthTest();
+			guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+			RenderSystem.defaultBlendFunc();
+			RenderSystem.disableBlend();
+		}));
 	}
 
 	private static void undergardenFog(ViewportEvent.RenderFog event) {
@@ -435,7 +473,10 @@ public class UndergardenClientEvents {
 		int top = height - gui.rightHeight;
 		gui.rightHeight += 10;
 
-		int infectionLevel = player.getData(UGAttachments.UTHERIC_INFECTION);
+		int infectionLevel = Mth.ceil(player.getData(UGAttachments.UTHERIC_INFECTION));
+		if (UndergardenConfig.Client.toggle_utheric_infection_number_display.get()) {
+			graphics.drawString(Minecraft.getInstance().font, player.getData(UGAttachments.UTHERIC_INFECTION).toString(), left, top, 10500660);
+		}
 		for (int i = 0; i < 10; i++) {
 			int idx = i * 2 + 1;
 			int x = left - i * 8 - 9;
@@ -453,14 +494,13 @@ public class UndergardenClientEvents {
 		}
 	}
 
-
 	private static void registerClientExtensions(RegisterClientExtensionsEvent event) {
 		event.registerItem(new IClientItemExtensions() {
 			@Override
 			public BlockEntityWithoutLevelRenderer getCustomRenderer() {
 				return new UndergardenBEWLR();
 			}
-		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.GRONGLET.asItem());
+		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.GRONGLET.asItem(), UGBlocks.UTHERIC_GRONGLET.asItem(), UGBlocks.ROGDORIC_GRONGLET.asItem());
 		event.registerFluidType(new IClientFluidTypeExtensions() {
 			@Override
 			public ResourceLocation getStillTexture() {
@@ -493,6 +533,34 @@ public class UndergardenClientEvents {
 	private static void registerDimensionTransitionScreens(RegisterDimensionTransitionScreenEvent event) {
 		event.registerIncomingEffect(UGDimensions.UNDERGARDEN_LEVEL, UndergardenReceivingLevelScreen::new);
 		event.registerOutgoingEffect(UGDimensions.UNDERGARDEN_LEVEL, UndergardenReceivingLevelScreen::new);
+	}
+
+	private static void registerItemDecorations(RegisterItemDecorationsEvent event) {
+		BuiltInRegistries.ITEM.forEach(item -> event.register(item, ((guiGraphics, font, stack, xOffset, yOffset) -> {
+			int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
+			int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
+			if (infusionAmount > 0) {
+				int barWidth = Math.round(infusionAmount * 13.0F / infusionMax);
+				int x = xOffset + 2;
+				int y = yOffset + (stack.isBarVisible() ? 11 : 13);
+				guiGraphics.fill(RenderType.guiOverlay(), x, y, x + 13, y + 2, -16777216);
+				guiGraphics.fill(RenderType.guiOverlay(), x, y, x + (infusionAmount == infusionMax ? 13 : barWidth), y + 1, 8236977 | 0xFF000000);
+				return true;
+			}
+			return false;
+		})));
+	}
+
+	private static void addTooltips(ItemTooltipEvent event) {
+		List<Component> tooltip = event.getToolTip();
+		ItemStack stack = event.getItemStack();
+		if (stack.has(UGDataComponents.ROGDORIUM_INFUSION.get())) {
+			int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
+			int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
+			if (infusionAmount > 0) {
+				tooltip.add(1, Component.translatable("tooltip.undergarden.rogdorium_infusion").append(": " + infusionAmount + "/" + infusionMax).withStyle(ChatFormatting.AQUA));
+			}
+		}
 	}
 
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphics graphics, Player player) {

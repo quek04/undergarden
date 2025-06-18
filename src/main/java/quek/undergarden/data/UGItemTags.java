@@ -33,7 +33,7 @@ public class UGItemTags extends ItemTagsProvider {
 		copy(UGTags.Blocks.WIGGLEWOOD_LOGS, UGTags.Items.WIGGLEWOOD_LOGS);
 		copy(UGTags.Blocks.GRONGLE_LOGS, UGTags.Items.GRONGLE_LOGS);
 		tag(UGTags.Items.INFUSER_UTHERIUM_FUELS).add(UGItems.UTHERIUM_CRYSTAL.get());
-		tag(UGTags.Items.INFUSER_ROGDORIUM_FUELS).add(UGItems.ROGDORIUM_CRYSTAL.get());
+		tag(UGTags.Items.INFUSER_ROGDORIUM_FUELS).add(UGItems.ROGDORIUM.get());
 
 		//undergarden forge
 		tag(UGTags.Items.RAW_MATERIALS_CLOGGRUM).add(UGItems.RAW_CLOGGRUM.get());
@@ -43,11 +43,12 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(UGTags.Items.INGOTS_FROSTSTEEL).add(UGItems.FROSTSTEEL_INGOT.get());
 		tag(UGTags.Items.GEMS_UTHERIUM).add(UGItems.UTHERIUM_CRYSTAL.get());
 		tag(UGTags.Items.GEMS_REGALIUM).add(UGItems.REGALIUM_CRYSTAL.get());
-		tag(UGTags.Items.GEMS_ROGDORIUM).add(UGItems.ROGDORIUM_CRYSTAL.get());
+		tag(UGTags.Items.INGOTS_ROGDORIUM).add(UGItems.ROGDORIUM.get());
 		tag(UGTags.Items.INGOTS_FORGOTTEN_METAL).add(UGItems.FORGOTTEN_INGOT.get());
 
 		tag(UGTags.Items.NUGGETS_CLOGGRUM).add(UGItems.CLOGGRUM_NUGGET.get());
 		tag(UGTags.Items.NUGGETS_FROSTSTEEL).add(UGItems.FROSTSTEEL_NUGGET.get());
+		tag(UGTags.Items.NUGGETS_ROGDORIUM).add(UGItems.ROGDORIUM_NUGGET.get());
 		tag(UGTags.Items.NUGGETS_FORGOTTEN_METAL).add(UGItems.FORGOTTEN_NUGGET.get());
 
 		copy(UGTags.Blocks.ORES_CLOGGRUM, UGTags.Items.ORES_CLOGGRUM);
@@ -75,8 +76,8 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(ItemTags.WOODEN_SLABS).add(UGBlocks.SMOGSTEM_SLAB.get().asItem(), UGBlocks.WIGGLEWOOD_SLAB.get().asItem(), UGBlocks.GRONGLE_SLAB.get().asItem(), UGBlocks.ANCIENT_ROOT_SLAB.asItem());
 		tag(ItemTags.WOODEN_FENCES).add(UGBlocks.SMOGSTEM_FENCE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem(), UGBlocks.ANCIENT_ROOT_FENCE.asItem());
 		tag(ItemTags.SAPLINGS).add(UGBlocks.SMOGSTEM_SAPLING.get().asItem(), UGBlocks.WIGGLEWOOD_SAPLING.get().asItem(), UGBlocks.GRONGLE_SAPLING.get().asItem());
-		tag(ItemTags.LOGS_THAT_BURN).addTag(UGTags.Items.SMOGSTEM_LOGS).addTag(UGTags.Items.WIGGLEWOOD_LOGS).addTag(UGTags.Items.GRONGLE_LOGS).add(UGBlocks.ANCIENT_ROOT.asItem());
-		tag(ItemTags.LOGS).addTag(UGTags.Items.SMOGSTEM_LOGS).addTag(UGTags.Items.WIGGLEWOOD_LOGS).addTag(UGTags.Items.GRONGLE_LOGS).add(UGBlocks.ANCIENT_ROOT.asItem());
+		tag(ItemTags.LOGS_THAT_BURN).addTag(UGTags.Items.SMOGSTEM_LOGS).addTag(UGTags.Items.WIGGLEWOOD_LOGS).addTag(UGTags.Items.GRONGLE_LOGS).add(UGBlocks.ANCIENT_ROOT.asItem()).add(UGBlocks.ROGDORIC_ANCIENT_ROOT.asItem());
+		tag(ItemTags.LOGS).addTag(UGTags.Items.SMOGSTEM_LOGS).addTag(UGTags.Items.WIGGLEWOOD_LOGS).addTag(UGTags.Items.GRONGLE_LOGS).add(UGBlocks.ANCIENT_ROOT.asItem()).add(UGBlocks.ROGDORIC_ANCIENT_ROOT.asItem());
 		tag(ItemTags.SMALL_FLOWERS).add(UGBlocks.SHIMMERWEED.get().asItem(), UGBlocks.AMOROUS_BRISTLE.get().asItem(), UGBlocks.MISERABELL.get().asItem(), UGBlocks.BUTTERBUNCH.get().asItem());
 		tag(ItemTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get().asItem());
 		tag(ItemTags.WOODEN_PRESSURE_PLATES).add(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get().asItem(), UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get().asItem(), UGBlocks.GRONGLE_PRESSURE_PLATE.get().asItem(), UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE.asItem());
@@ -86,7 +87,7 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(ItemTags.SIGNS).add(UGBlocks.SMOGSTEM_SIGN.get().asItem(), UGBlocks.WIGGLEWOOD_SIGN.get().asItem(), UGBlocks.GRONGLE_SIGN.get().asItem(), UGBlocks.ANCIENT_ROOT_SIGN.asItem());
 		tag(ItemTags.HANGING_SIGNS).add(UGBlocks.SMOGSTEM_HANGING_SIGN.get().asItem(), UGBlocks.WIGGLEWOOD_HANGING_SIGN.get().asItem(), UGBlocks.GRONGLE_HANGING_SIGN.get().asItem(), UGBlocks.ANCIENT_ROOT_HANGING_SIGN.asItem());
 		tag(ItemTags.COALS).add(UGItems.DITCHBULB_PASTE.get());
-		tag(ItemTags.BEACON_PAYMENT_ITEMS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_CRYSTAL.get(), UGItems.REGALIUM_CRYSTAL.get(), UGItems.ROGDORIUM_CRYSTAL.get(), UGItems.FORGOTTEN_INGOT.get());
+		tag(ItemTags.BEACON_PAYMENT_ITEMS).add(UGItems.CLOGGRUM_INGOT.get(), UGItems.FROSTSTEEL_INGOT.get(), UGItems.UTHERIUM_CRYSTAL.get(), UGItems.REGALIUM_CRYSTAL.get(), UGItems.ROGDORIUM.get(), UGItems.FORGOTTEN_INGOT.get());
 		tag(ItemTags.STONE_TOOL_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem(), UGBlocks.DREADROCK.get().asItem());
 		tag(ItemTags.STONE_CRAFTING_MATERIALS).add(UGBlocks.DEPTHROCK.get().asItem(), UGBlocks.SHIVERSTONE.get().asItem(), UGBlocks.TREMBLECRUST.get().asItem(), UGBlocks.DREADROCK.get().asItem());
 		tag(ItemTags.FISHES).add(UGItems.RAW_GWIBLING.get(), UGItems.COOKED_GWIBLING.get());
@@ -115,7 +116,7 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(Tags.Items.SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
 		tag(Tags.Items.SLIME_BALLS).add(UGItems.GOO_BALL.get());
 		tag(Tags.Items.STRINGS).add(UGItems.TWISTYTWIG.get());
-		tag(Tags.Items.GEMS).addTag(UGTags.Items.GEMS_UTHERIUM).addTag(UGTags.Items.GEMS_REGALIUM).addTag(UGTags.Items.GEMS_ROGDORIUM);
+		tag(Tags.Items.GEMS).addTag(UGTags.Items.GEMS_UTHERIUM).addTag(UGTags.Items.GEMS_REGALIUM).addTag(UGTags.Items.INGOTS_ROGDORIUM);
 		tag(Tags.Items.INGOTS).addTag(UGTags.Items.INGOTS_CLOGGRUM).addTag(UGTags.Items.INGOTS_FROSTSTEEL).addTag(UGTags.Items.INGOTS_FORGOTTEN_METAL);
 		tag(Tags.Items.ORES).addTag(UGTags.Items.ORES_CLOGGRUM).addTag(UGTags.Items.ORES_FROSTSTEEL).addTag(UGTags.Items.ORES_UTHERIUM).addTag(UGTags.Items.ORES_REGALIUM).addTag(UGTags.Items.ORES_ROGDORIUM).add(UGBlocks.DEPTHROCK_COAL_ORE.get().asItem(), UGBlocks.SHIVERSTONE_COAL_ORE.get().asItem(), UGBlocks.DEPTHROCK_IRON_ORE.get().asItem(), UGBlocks.SHIVERSTONE_IRON_ORE.get().asItem(), UGBlocks.DEPTHROCK_GOLD_ORE.get().asItem(), UGBlocks.DEPTHROCK_DIAMOND_ORE.get().asItem(), UGBlocks.SHIVERSTONE_DIAMOND_ORE.get().asItem());
 		tag(Tags.Items.ORES_COAL).add(UGBlocks.DEPTHROCK_COAL_ORE.get().asItem(), UGBlocks.SHIVERSTONE_COAL_ORE.get().asItem());
@@ -154,5 +155,6 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(Tags.Items.FOODS_RAW_FISH).add(UGItems.RAW_GWIBLING.get());
 		tag(Tags.Items.FOODS_COOKED_FISH).add(UGItems.COOKED_GWIBLING.get());
 		tag(Tags.Items.FOODS_SOUP).add(UGItems.BLOODY_STEW.get(), UGItems.INKY_STEW.get(), UGItems.INDIGO_STEW.get(), UGItems.VEILED_STEW.get(), UGItems.SLOP_BOWL.get());
+		tag(Tags.Items.MUSIC_DISCS).add(UGItems.MAMMOTH_DISC.get(), UGItems.LIMAX_MAXIMUS_DISC.get(), UGItems.RELICT_DISC.get(), UGItems.GLOOMPER_ANTHEM_DISC.get(), UGItems.GLOOMPER_SECRET_DISC.get());
 	}
 }

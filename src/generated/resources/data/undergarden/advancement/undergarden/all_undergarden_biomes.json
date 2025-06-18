@@ -241,6 +241,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "undergarden:rogdorium_grove": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biomes": "undergarden:rogdorium_grove"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "undergarden:smog_spires": {
       "conditions": {
         "player": [
@@ -376,6 +392,9 @@
     ],
     [
       "undergarden:puff_mushroom_forest"
+    ],
+    [
+      "undergarden:rogdorium_grove"
     ]
   ],
   "sends_telemetry_event": true

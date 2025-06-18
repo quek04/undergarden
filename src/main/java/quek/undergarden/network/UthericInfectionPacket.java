@@ -11,18 +11,18 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGAttachments;
 
-public record UthericInfectionPacket(int entityID, int infectionLevel) implements CustomPacketPayload {
+public record UthericInfectionPacket(int entityID, double infectionLevel) implements CustomPacketPayload {
 
 	public static final Type<UthericInfectionPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection"));
 	public static final StreamCodec<FriendlyByteBuf, UthericInfectionPacket> STREAM_CODEC = CustomPacketPayload.codec(UthericInfectionPacket::write, UthericInfectionPacket::new);
 
 	public UthericInfectionPacket(FriendlyByteBuf buf) {
-		this(buf.readInt(), buf.readInt());
+		this(buf.readInt(), buf.readDouble());
 	}
 
 	public void write(FriendlyByteBuf buffer) {
 		buffer.writeInt(this.entityID());
-		buffer.writeInt(this.infectionLevel());
+		buffer.writeDouble(this.infectionLevel());
 	}
 
 	@Override

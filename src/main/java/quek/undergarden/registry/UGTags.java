@@ -36,11 +36,12 @@ public class UGTags {
 		public static final TagKey<Item> INGOTS_FROSTSTEEL = commonTag("ingots/froststeel");
 		public static final TagKey<Item> GEMS_UTHERIUM = commonTag("gems/utherium");
 		public static final TagKey<Item> GEMS_REGALIUM = commonTag("gems/regalium");
-		public static final TagKey<Item> GEMS_ROGDORIUM = commonTag("gems/rogdorium");
+		public static final TagKey<Item> INGOTS_ROGDORIUM = commonTag("ingots/rogdorium");
 		public static final TagKey<Item> INGOTS_FORGOTTEN_METAL = commonTag("ingots/forgotten_metal");
 
 		public static final TagKey<Item> NUGGETS_CLOGGRUM = commonTag("nuggets/cloggrum");
 		public static final TagKey<Item> NUGGETS_FROSTSTEEL = commonTag("nuggets/froststeel");
+		public static final TagKey<Item> NUGGETS_ROGDORIUM = commonTag("nuggets/rogdorium");
 		public static final TagKey<Item> NUGGETS_FORGOTTEN_METAL = commonTag("nuggets/forgotten_metal");
 
 		public static final TagKey<Item> ORES_CLOGGRUM = commonTag("ores/cloggrum");
@@ -77,7 +78,6 @@ public class UGTags {
 		public static final TagKey<Block> DREADROCK_ORE_REPLACEABLES = tag("dreadrock_ore_replaceables");
 		public static final TagKey<Block> TREMBLECRUST_ORE_REPLACEABLES = tag("tremblecrust_ore_replaceables");
 		public static final TagKey<Block> UNDERGARDEN_CARVER_REPLACEABLES = tag("undergarden_carver_replaceables");
-		public static final TagKey<Block> UNDERGARDEN_DEPTHS_CARVER_REPLACEABLES = tag("undergarden_depths_carver_replaceables");
 		public static final TagKey<Block> OTHERSIDE_CARVER_REPLACEABLES = tag("otherside_carver_replaceables");
 		public static final TagKey<Block> MUSHROOMS = tag("mushrooms");
 		public static final TagKey<Block> UTHERIC_INFECTION_BLOCKS = tag("utheric_infection_blocks");
@@ -89,6 +89,9 @@ public class UGTags {
 		public static final TagKey<Block> SCINTLING_SPAWNABLE_ON = tag("scintling_spawnable_on");
 		public static final TagKey<Block> SMOG_MOG_SPAWNABLE_ON = tag("smog_mog_spawnable_on");
 		public static final TagKey<Block> GREATER_DWELLER_SPAWNABLE_ON = tag("greater_dweller_spawnable_on");
+
+		public static final TagKey<Block> NEEDS_FORGOTTEN_TOOL = tag("needs_forgotten_tool");
+		public static final TagKey<Block> INCORRECT_FOR_FORGOTTEN_TOOL = tag("incorrect_for_forgotten_tool");
 
 		public static final TagKey<Block> ORES_CLOGGRUM = commonTag("ores/cloggrum");
 		public static final TagKey<Block> ORES_FROSTSTEEL = commonTag("ores/froststeel");
@@ -156,12 +159,12 @@ public class UGTags {
 		public static final TagKey<Biome> IS_UNDERGARDEN = tag("is_undergarden");
 		public static final TagKey<Biome> IS_OTHERSIDE = tag("is_otherside");
 
-		public static final TagKey<Biome> TICKS_UTHERIC_INFECTION = tag("ticks_utheric_infection");
 		public static final TagKey<Biome> IS_DEPTHS_BIOME = tag("is_depths_biome");
 
 		public static final TagKey<Biome> HAS_CATACOMBS = tag("has_structure/catacombs");
 		public static final TagKey<Biome> HAS_FORGOTTEN_VESTIGE = tag("has_structure/forgotten_vestige");
 		public static final TagKey<Biome> HAS_DENIZEN_CAMP = tag("has_structure/denizen_camp");
+		public static final TagKey<Biome> HAS_DEPLETED_MINE = tag("has_structure/depleted_mine");
 
 		private static TagKey<Biome> tag(String name) {
 			return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));

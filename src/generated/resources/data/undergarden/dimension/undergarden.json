@@ -32,7 +32,7 @@
         {
           "biome": "undergarden:frostfields",
           "parameters": {
-            "continentalness": -0.9,
+            "continentalness": 0.0,
             "depth": 0.0,
             "erosion": -0.7,
             "humidity": -0.4,
@@ -44,7 +44,7 @@
         {
           "biome": "undergarden:icy_sea",
           "parameters": {
-            "continentalness": -0.9,
+            "continentalness": 0.0,
             "depth": -1.0,
             "erosion": -0.7,
             "humidity": -0.4,
@@ -152,7 +152,7 @@
         {
           "biome": "undergarden:frosty_smogstem_forest",
           "parameters": {
-            "continentalness": -0.9,
+            "continentalness": 0.0,
             "depth": 0.0,
             "erosion": -0.7,
             "humidity": -0.4,
@@ -164,7 +164,7 @@
         {
           "biome": "undergarden:icy_sea",
           "parameters": {
-            "continentalness": -0.9,
+            "continentalness": 0.0,
             "depth": -1.0,
             "erosion": -0.7,
             "humidity": -0.4,
@@ -202,11 +202,11 @@
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
-            "erosion": 1.0,
+            "erosion": 0.75,
             "humidity": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "weirdness": 0.0
+            "weirdness": 1.0
           }
         },
         {
@@ -214,11 +214,11 @@
           "parameters": {
             "continentalness": 0.0,
             "depth": -1.0,
-            "erosion": 1.0,
+            "erosion": 0.75,
             "humidity": 0.0,
             "offset": 0.0,
             "temperature": 0.0,
-            "weirdness": 0.0
+            "weirdness": 1.0
           }
         },
         {
@@ -352,10 +352,19 @@
             "erosion": 0.0,
             "humidity": 0.0,
             "offset": 0.0,
-            "temperature": [
-              0.5,
-              1.0
-            ],
+            "temperature": 1.5,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "undergarden:rogdorium_grove",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": -2.0,
+            "erosion": -1.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.0,
             "weirdness": 0.0
           }
         }

@@ -81,11 +81,11 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_rogdorium_crystal": {
+    "has_rogdorium": {
       "conditions": {
         "items": [
           {
-            "items": "undergarden:rogdorium_crystal"
+            "items": "undergarden:rogdorium"
           }
         ]
       },
@@ -160,7 +160,7 @@
       "has_raw_froststeel",
       "has_utherium",
       "has_regalium_crystal",
-      "has_rogdorium_crystal",
+      "has_rogdorium",
       "has_depthrock_cloggrum",
       "has_shiverstone_cloggrum",
       "has_shiverstone_froststeel",

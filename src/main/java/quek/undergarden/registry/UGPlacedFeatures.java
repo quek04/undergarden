@@ -30,6 +30,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> CLOGGRUM_ORE = create("cloggrum_ore");
 	public static final ResourceKey<PlacedFeature> FROSTSTEEL_ORE = create("froststeel_ore");
 	public static final ResourceKey<PlacedFeature> ROGDORIUM_ORE = create("rogdorium_ore");
+	public static final ResourceKey<PlacedFeature> ROGDORIUM_ORE_EXTRA = create("rogdorium_ore_extra");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_ORE = create("utherium_ore");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_ORE_OTHERSIDE = create("utherium_ore_otherside");
 	public static final ResourceKey<PlacedFeature> REGALIUM_ORE = create("regalium_ore");
@@ -69,6 +70,7 @@ public class UGPlacedFeatures {
 
 	//tree
 	public static final ResourceKey<PlacedFeature> SMOGSTEM_TREE = create("smogstem_tree");
+	public static final ResourceKey<PlacedFeature> SMOGSTEM_TREE_SPARSE = create("smogstem_tree_sparse");
 	public static final ResourceKey<PlacedFeature> WIDE_SMOGSTEM_TREE = create("wide_smogstem_tree");
 	public static final ResourceKey<PlacedFeature> TALL_SMOGSTEM_TREE = create("tall_smogstem_tree");
 	public static final ResourceKey<PlacedFeature> SMOGSTEM_BUSH = create("smogstem_bush");
@@ -97,7 +99,8 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH = create("utherium_growth");
 	public static final ResourceKey<PlacedFeature> CEILING_UTHERIUM_GROWTH = create("ceiling_utherium_growth");
 	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
-	public static final ResourceKey<PlacedFeature> DEPTHS_HOLE = create("depths_hole");
+	public static final ResourceKey<PlacedFeature> ANCIENT_ROOT = create("ancient_root");
+	public static final ResourceKey<PlacedFeature> ANCIENT_ROOT_EXTRA = create("ancient_root_extra");
 
 	public static ResourceKey<PlacedFeature> create(String name) {
 		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
@@ -112,7 +115,8 @@ public class UGPlacedFeatures {
 		context.register(DIAMOND_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DIAMOND_ORE), OrePlacements.commonOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.belowTop(16), VerticalAnchor.belowTop(-16)))));
 		context.register(CLOGGRUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.CLOGGRUM_ORE), OrePlacements.commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128)))));
 		context.register(FROSTSTEEL_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.FROSTSTEEL_ORE), OrePlacements.commonOrePlacement(15, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128)))));
-		context.register(ROGDORIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ROGDORIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)))));
+		context.register(ROGDORIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ROGDORIUM_ORE), List.of(InSquarePlacement.spread(), HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)), BiomeFilter.biome())));
+		context.register(ROGDORIUM_ORE_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ROGDORIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)))));
 		context.register(UTHERIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(32)))));
 		context.register(UTHERIUM_ORE_OTHERSIDE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.BOTTOM, VerticalAnchor.TOP))));
 		context.register(REGALIUM_ORE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.REGALIUM_ORE), OrePlacements.commonOrePlacement(3, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(12)))));
@@ -152,6 +156,7 @@ public class UGPlacedFeatures {
 
 		//tree
 		context.register(SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), tree(8)));
+		context.register(SMOGSTEM_TREE_SPARSE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_TREE), List.of(CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(UGBlocks.SMOGSTEM_SAPLING.get().defaultBlockState(), BlockPos.ZERO)))));
 		context.register(WIDE_SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.WIDE_SMOGSTEM_TREE), tree(2)));
 		context.register(TALL_SMOGSTEM_TREE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.TALL_SMOGSTEM_TREE), tree(4)));
 		context.register(SMOGSTEM_BUSH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.SMOGSTEM_BUSH), tree(8)));
@@ -180,7 +185,8 @@ public class UGPlacedFeatures {
 		context.register(UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH), crystal(50)));
 		context.register(CEILING_UTHERIUM_GROWTH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.CEILING_UTHERIUM_GROWTH), crystal(50)));
 		context.register(UTHERIUM_GROWTH_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH_EXTRA), crystal(100)));
-		context.register(DEPTHS_HOLE, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DEPTHS_HOLE), patchWithFilter(2, BlockPredicate.anyOf(BlockPredicate.matchesTag(Direction.DOWN.getNormal(), UGTags.Blocks.BASE_STONE_UNDERGARDEN), BlockPredicate.matchesTag(Direction.DOWN.getNormal(), BlockTags.DIRT)))));
+		context.register(ANCIENT_ROOT, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ANCIENT_ROOT), patch(50)));
+		context.register(ANCIENT_ROOT_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ANCIENT_ROOT_EXTRA), patch(100)));
 	}
 
 	private static List<PlacementModifier> tree(int count) {

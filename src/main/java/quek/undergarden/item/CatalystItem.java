@@ -2,7 +2,6 @@ package quek.undergarden.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
@@ -10,11 +9,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.portal.PortalShape;
-import net.neoforged.neoforge.event.EventHooks;
-import quek.undergarden.block.portal.UndergardenPortalBlock;
 import quek.undergarden.block.portal.UndergardenPortalShape;
-import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGSoundEvents;
 

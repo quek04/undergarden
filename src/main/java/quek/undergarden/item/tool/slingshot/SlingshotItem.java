@@ -51,11 +51,14 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
 	@Override
 	public int getMaxDamage(ItemStack stack) {
-		int longevity = stack.getEnchantmentLevel(Undergarden.registryAccessStatic().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.LONGEVITY));
-		int durability = super.getMaxDamage(stack);
-		if (longevity > 0) {
-			return durability * (longevity + 1);
-		} else return durability;
+		if (Undergarden.registryAccessStatic() != null) {
+			int longevity = stack.getEnchantmentLevel(Undergarden.registryAccessStatic().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.LONGEVITY));
+			int durability = super.getMaxDamage(stack);
+			if (longevity > 0) {
+				return durability * (longevity + 1);
+			} else return durability;
+		}
+		return super.getMaxDamage(stack);
 	}
 
 	/**
