@@ -7,10 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -32,6 +29,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
@@ -55,6 +53,7 @@ import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.command.InfectionCommand;
+import quek.undergarden.compat.UGCreateCompat;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
@@ -99,6 +98,10 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerPotionRecipes);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::angerDenizensWhenCampfireIsBroken);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::ignoreEffects);
+
+		if (ModList.get().isLoaded("create")) {
+			UGCreateCompat.init(bus);
+		}
 	}
 
 	private static void registerPackets(RegisterPayloadHandlersEvent event) {
