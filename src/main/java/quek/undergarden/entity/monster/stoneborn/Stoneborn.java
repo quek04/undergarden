@@ -161,6 +161,11 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 		}
 	}
 
+	@Override
+	protected boolean shouldDespawnInPeaceful() {
+		return false;
+	}
+
 	public boolean inUndergarden() {
 		return this.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL;
 	}
