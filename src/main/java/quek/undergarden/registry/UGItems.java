@@ -135,7 +135,7 @@ public class UGItems {
 	public static final DeferredItem<Item> DENIZEN_MASK = ITEMS.register("denizen_mask", () -> new DenizenMaskItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
 	//foods/plants
-	public static final DeferredItem<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new ItemNameBlockItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));
+	public static final DeferredItem<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new DroopfruitItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));
 	public static final DeferredItem<Item> UNDERBEANS = ITEMS.register("underbeans", () -> new ItemNameBlockItem(UGBlocks.UNDERBEAN_BUSH.get(), new Item.Properties().food(UGFoods.UNDERBEANS)));
 	public static final DeferredItem<Item> ROASTED_UNDERBEANS = ITEMS.register("roasted_underbeans", () -> new Item(new Item.Properties().food(UGFoods.ROASTED_UNDERBEANS)));
 	public static final DeferredItem<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new ItemNameBlockItem(UGBlocks.BLISTERBERRY_BUSH.get(), new Item.Properties().food(UGFoods.BLISTERBERRY)));
