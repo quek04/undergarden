@@ -2,10 +2,8 @@ package quek.undergarden.compat.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -24,11 +22,6 @@ public class UGJEIPlugin implements IModPlugin {
 	@Override
 	public ResourceLocation getPluginUid() {
 		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "jei");
-	}
-
-	@Override
-	public void registerItemSubtypes(ISubtypeRegistration registration) {
-		BuiltInRegistries.ITEM.forEach(item -> registration.registerSubtypeInterpreter(VanillaTypes.ITEM_STACK, item, InfusionSubInterpreter.INSTANCE));
 	}
 
 	@Override
