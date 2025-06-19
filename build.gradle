@@ -96,6 +96,11 @@ repositories {
 		name = "TerraformersMC"
 		url = "https://maven.terraformersmc.com/"
 	}
+	maven {
+		name = "Create Maven"
+		url = "https://maven.createmod.net"
+	}
+
 }
 
 dependencies {
@@ -105,6 +110,10 @@ dependencies {
 
 	compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
 	runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+
+	compileOnly("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+	compileOnly("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}")
+	compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
 
 	implementation "curse.maven:jade-324717:${project.jade_version}"
     implementation "curse.maven:better-advancements-272515:${project.better_advancements_version}"
