@@ -21,8 +21,6 @@ import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
@@ -250,6 +248,13 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 		if (!inventory.get(0).isEmpty() && recipe != null) {
 			ItemStack result = recipe.value().assemble(new SingleRecipeInput(inventory.get(0)), registryAccess);
 
+			var component = result.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT);
+			int infusionAmount = component.infusionAmount();
+			int infusionMax = component.infusionMax();
+			if (infusionMax >= infusionAmount) {
+				return false;
+			}
+
 			if (inventory.get(recipe.value().getRecipeSlotType().getSlotIndex()).isEmpty()) {
 				return false;
 			}
@@ -284,8 +289,11 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 				int infusionAmount = component.infusionAmount();
 				int infusionMax = component.infusionMax();
 				int fuelAmount = fuel.getCount();
-				result.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(Mth.clamp((fuelAmount * (infusionMax / fuel.getMaxStackSize())) + infusionAmount, 0, infusionMax)));
-				fuel.shrink(fuelAmount);
+				if (infusionMax >= infusionAmount) {
+					return false;
+				}
+				result.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(Mth.clamp((fuelAmount * 600) + infusionAmount, 0, infusionMax)));
+				fuel.shrink(Mth.clamp(fuelAmount, 1, 6));
 			} else {
 				inventory.get(recipe.value().getRecipeSlotType().getSlotIndex()).shrink(1);
 			}
