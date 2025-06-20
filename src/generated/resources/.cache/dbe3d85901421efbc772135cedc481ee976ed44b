@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-20T10:53:31.104211006	Item Models: undergarden
+// 1.21.1	2025-06-20T12:42:15.106194085	Item Models: undergarden
 daa8a5081e4b4ae01fbe286ecfa63274124832f2 assets/undergarden/models/item/amorous_bristle.json
 a6b955b2c350ad05b6b4cd0cd1b2ff652fbce8da assets/undergarden/models/item/ancient_chestplate.json
 6e3c078c727ee5d39259819b3f1d5a82e37a4485 assets/undergarden/models/item/ancient_helmet.json
@@ -41,7 +41,7 @@ e64654e03156bfad5cbb574de034b2f76fae29f7 assets/undergarden/models/item/cloggrum
 e2cbc2e16cb3af1173df5c96611ca4f6ce990e57 assets/undergarden/models/item/cloggrum_bars.json
 9f857249e12d0144373f9e195c03afb9658cf5e0 assets/undergarden/models/item/cloggrum_block.json
 383b49b03c756372da196a692ee995bb6a4246e5 assets/undergarden/models/item/cloggrum_boots.json
-0e2019fee6e7b7bb7924c2b372ef898030dccc93 assets/undergarden/models/item/cloggrum_bucket.json
+8872a58aa7240555436d404f4ff8524ef946060e assets/undergarden/models/item/cloggrum_bucket.json
 d9d185d89fdb509c99602f816143e1ff34e23946 assets/undergarden/models/item/cloggrum_chestplate.json
 186cce41df2ebc0f85485d3635ec6b9d19c3b80c assets/undergarden/models/item/cloggrum_helmet.json
 1875f89d01d4a4b709bda35e6e6c4090b952f72f assets/undergarden/models/item/cloggrum_hoe.json

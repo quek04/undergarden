@@ -4,7 +4,6 @@
   "loader": "undergarden:cloggrum_bucket",
   "textures": {
     "base": "undergarden:item/cloggrum_bucket",
-    "fluid": "neoforge:item/mask/bucket_fluid_drip",
-    "lower_base": "undergarden:item/cloggrum_bucket_lower"
+    "fluid": "neoforge:item/mask/bucket_fluid_drip"
   }
 }

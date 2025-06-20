@@ -39,7 +39,7 @@ import java.util.function.Function;
 //copy of DynamicFluidContainerModel that allows for the addition of mob and solid block covers
 public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel> {
 	private static final Map<ResourceLocation, ResourceLocation> TEXTURE_MAP = Maps.newHashMap();
-	private static final Transformation DEPTH_OFFSET_TRANSFORM = new Transformation(new Vector3f(), new Quaternionf(), new Vector3f(1, 1, 1.002f), new Quaternionf());
+	private static final Transformation DEPTH_OFFSET_TRANSFORM = new Transformation(new Vector3f(), new Quaternionf(), new Vector3f(1.002F, 1.002F, 1.002F), new Quaternionf());
 
 	private final Fluid fluid;
 	@Nullable
@@ -78,17 +78,7 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 	@Override
 	public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides) {
 		Material particleLocation = context.hasMaterial("particle") ? context.getMaterial("particle") : null;
-
-		Material baseLocation = null;
-		if (this.isLower) {
-			if (context.hasMaterial("lower_base")) {
-				baseLocation = context.getMaterial("lower_base");
-			}
-		} else {
-			if (context.hasMaterial("base")) {
-				baseLocation = context.getMaterial("base");
-			}
-		}
+		Material baseLocation = context.hasMaterial("base") ? context.getMaterial("base") : null;
 
 		Material otherContentLocation = null;
 		Material fluidLocation = null;
@@ -119,11 +109,8 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 		if (particleSprite == null) particleSprite = fluidSprite;
 
 		// if the fluid is lighter than air, will manipulate the initial state to be rotated 180deg to turn it upside down
-		if (this.flipGas && this.fluid != Fluids.EMPTY && this.fluid.getFluidType().isLighterThanAir()) {
-			modelState = new SimpleModelState(
-				modelState.getRotation().compose(
-					new Transformation(null, new Quaternionf(0, 0, 1, 0), null, null)));
-		}
+		boolean flip = this.flipGas && this.fluid != Fluids.EMPTY && this.fluid.getFluidType().isLighterThanAir();
+		modelState = new SimpleModelState(modelState.getRotation().compose(new Transformation(null, flip ? new Quaternionf(0.0F, 0.0F, 1.0F, 0.0F) : null, null, null)));
 
 		// We need to disable GUI 3D and block lighting for this to render properly
 		var itemContext = StandaloneGeometryBakingContext.builder(context).withGui3d(false).withUseBlockLight(false).build(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "cloggrum_bucket"));
@@ -132,8 +119,11 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 		var normalRenderTypes = DynamicFluidContainerModel.getLayerRenderTypes(false);
 
 		if (baseSprite != null) {
+			//lower bucket by a pixel to prevent the need of a 2nd texture
+			Vector3f lowered = this.isLower ? new Vector3f(0.0F, -1.0F/16.0F, 0.0F) : null;
+			ModelState baseState = new SimpleModelState(modelState.getRotation().compose(new Transformation(lowered, null, null, null)));
 			var unbaked = UnbakedGeometryHelper.createUnbakedItemElements(0, baseSprite);
-			var quads = UnbakedGeometryHelper.bakeElements(unbaked, $ -> baseSprite, modelState);
+			var quads = UnbakedGeometryHelper.bakeElements(unbaked, $ -> baseSprite, baseState);
 			modelBuilder.addQuads(normalRenderTypes, quads);
 		}
 

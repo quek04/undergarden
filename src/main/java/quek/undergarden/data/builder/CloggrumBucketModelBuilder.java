@@ -32,6 +32,11 @@ public class CloggrumBucketModelBuilder<T extends ModelBuilder<T>> extends Custo
 		return this;
 	}
 
+	public CloggrumBucketModelBuilder<T> content(ResourceLocation content) {
+		this.content = content;
+		return this;
+	}
+
 	public CloggrumBucketModelBuilder<T> flipGas(boolean flip) {
 		this.flipGas = flip;
 		return this;
