@@ -329,56 +329,46 @@ public class UGBlocks {
 		return baseRegister(name, block, UGBlocks::registerBlockItem);
 	}
 
+	@SuppressWarnings("deprecation")
 	private static <T extends Block> Supplier<BlockItem> registerBlockItem(final DeferredBlock<T> block) {
 		return () -> {
-			if (Objects.requireNonNull(block.get()) == SHARD_TORCH.get()) {
-				return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN);
-			} else if (Objects.requireNonNull(block.get()) == REGALIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DEPTHROCK_REGALIUM_ORE.get() || Objects.requireNonNull(block.get()) == SHIVERSTONE_REGALIUM_ORE.get()) {
+			if (block.is(SHARD_TORCH)) {
+				return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties().rarity(UGItems.UTHERIUM_RARITY), Direction.DOWN);
+			} else if (block.is(REGALIUM_BLOCK) || block.is(DEPTHROCK_REGALIUM_ORE) || block.is(SHIVERSTONE_REGALIUM_ORE)) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(Rarity.UNCOMMON));
-			} else if (Objects.requireNonNull(block.get()) == ROGDORIUM_BLOCK.get() || Objects.requireNonNull(block.get()) == DREADROCK_ROGDORIUM_ORE.get()) {
+			} else if (block.is(ROGDORIUM_BLOCK) || block.is(DREADROCK_ROGDORIUM_ORE) || block.is(ROGDORIC_ANCIENT_ROOT)) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.ROGDORIUM_RARITY));
-			} else if (Objects.requireNonNull(block.get()) == FORGOTTEN_BLOCK.get()) {
+			} else if (block.is(FORGOTTEN_BLOCK)) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.FORGOTTEN_RARITY));
-			} else if (Objects.requireNonNull(block.get()) == DEPTHROCK_BED.get()) {
+			} else if (block.is(UTHERIUM_BLOCK) || block.is(UTHERIUM_GROWTH) || block.is(SHARD_O_LANTERN) || block.is(TREMBLECRUST_UTHERIUM_ORE) || block.is(DEPTHROCK_UTHERIUM_ORE) || block.is(SHIVERSTONE_UTHERIUM_ORE) || block.is(DREADROCK_UTHERIUM_ORE)) {
+				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.UTHERIUM_RARITY));
+			} else if (block.is(DEPTHROCK_BED)) {
 				return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().stacksTo(1));
-			} else if (Objects.requireNonNull(block.get()) == GRONGLET.get()) {
+			} else if (block.is(GRONGLET)) {
 				return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
-			} else if (Objects.requireNonNull(block.get()) == UTHERIC_GRONGLET.get()) {
-				return new UthericGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
-			} else if (Objects.requireNonNull(block.get()) == ROGDORIC_GRONGLET.get()) {
-				return new RogdoricGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
-			} else if (Objects.requireNonNull(block.get()) == CARVED_GLOOMGOURD.get()) {
+			} else if (block.is(UTHERIC_GRONGLET)) {
+				return new UthericGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.UTHERIUM_RARITY));
+			} else if (block.is(ROGDORIC_GRONGLET)) {
+				return new RogdoricGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.ROGDORIUM_RARITY));
+			} else if (block.is(CARVED_GLOOMGOURD)) {
 				return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties());
-			} else if (Objects.requireNonNull(block.get()) == SMOGSTEM_SIGN.get()) {
+			} else if (block.is(SMOGSTEM_SIGN)) {
 				return new SignItem(new Item.Properties().stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
-			} else if (Objects.requireNonNull(block.get()) == WIGGLEWOOD_SIGN.get()) {
+			} else if (block.is(WIGGLEWOOD_SIGN)) {
 				return new SignItem(new Item.Properties().stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
-			} else if (Objects.requireNonNull(block.get()) == GRONGLE_SIGN.get()) {
+			} else if (block.is(GRONGLE_SIGN)) {
 				return new SignItem(new Item.Properties().stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
-			} else if (Objects.requireNonNull(block.get()) == ANCIENT_ROOT_SIGN.get()) {
+			} else if (block.is(ANCIENT_ROOT_SIGN)) {
 				return new SignItem(new Item.Properties().stacksTo(16), ANCIENT_ROOT_SIGN.get(), ANCIENT_ROOT_WALL_SIGN.get());
-			} else if (Objects.requireNonNull(block.get()) == SMOGSTEM_HANGING_SIGN.get()) {
+			} else if (block.is(SMOGSTEM_HANGING_SIGN)) {
 				return new HangingSignItem(SMOGSTEM_HANGING_SIGN.get(), SMOGSTEM_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
-			} else if (Objects.requireNonNull(block.get()) == WIGGLEWOOD_HANGING_SIGN.get()) {
+			} else if (block.is(WIGGLEWOOD_HANGING_SIGN)) {
 				return new HangingSignItem(WIGGLEWOOD_HANGING_SIGN.get(), WIGGLEWOOD_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
-			} else if (Objects.requireNonNull(block.get()) == GRONGLE_HANGING_SIGN.get()) {
+			} else if (block.is(GRONGLE_HANGING_SIGN)) {
 				return new HangingSignItem(GRONGLE_HANGING_SIGN.get(), GRONGLE_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
-			} else if (Objects.requireNonNull(block.get()) == ANCIENT_ROOT_HANGING_SIGN.get()) {
+			} else if (block.is(ANCIENT_ROOT_HANGING_SIGN)) {
 				return new HangingSignItem(ANCIENT_ROOT_HANGING_SIGN.get(), ANCIENT_ROOT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
-			} /*else if (Objects.requireNonNull(block.get()) == UTHERIUM_GROWTH.get()) {
-				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties()) {
-					@Override
-					public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotID, boolean isSelected) {
-						int data = entity.getData(UGAttachments.UTHERIC_INFECTION);
-						if (entity instanceof Player player && !level.isClientSide()) {
-							if (player.tickCount % 100 == 0 && data < 20) {
-								player.setData(UGAttachments.UTHERIC_INFECTION.get(), data + stack.getCount());
-								PacketDistributor.sendToPlayersTrackingEntityAndSelf(player, new UthericInfectionPacket(player.getId(), player.getData(UGAttachments.UTHERIC_INFECTION)));
-							}
-						}
-					}
-				};
-			}*/ else {
+			} else {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			}
 		};

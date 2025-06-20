@@ -43,9 +43,9 @@ public class UGItems {
 	public static final DeferredItem<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
 
-	public static final DeferredItem<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> UTHERIC_CLUSTER = ITEMS.register("utheric_cluster", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties()));
+	public static final DeferredItem<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties().rarity(UTHERIUM_RARITY)));
+	public static final DeferredItem<Item> UTHERIC_CLUSTER = ITEMS.register("utheric_cluster", () -> new Item(new Item.Properties().rarity(UTHERIUM_RARITY)));
+	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties().rarity(UTHERIUM_RARITY)));
 
 	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
@@ -78,11 +78,11 @@ public class UGItems {
 	public static final DeferredItem<Item> FROSTSTEEL_SHOVEL = ITEMS.register("froststeel_shovel", () -> new UGShovelItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FROSTSTEEL, 1.5F, -3.0F))));
 	public static final DeferredItem<Item> FROSTSTEEL_HOE = ITEMS.register("froststeel_hoe", () -> new UGHoeItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FROSTSTEEL, -2, -0.5F))));
 
-	public static final DeferredItem<Item> UTHERIUM_SWORD = ITEMS.register("utherium_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.UTHERIUM, 3, -2.4F))));
-	public static final DeferredItem<Item> UTHERIUM_PICKAXE = ITEMS.register("utherium_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.UTHERIUM, 1, -2.8F))));
-	public static final DeferredItem<Item> UTHERIUM_AXE = ITEMS.register("utherium_axe", () -> new UGAxeItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.UTHERIUM, 5.0F, -3.0F))));
-	public static final DeferredItem<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.UTHERIUM, 1.5F, -3.0F))));
-	public static final DeferredItem<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.UTHERIUM, -3, 0.0F))));
+	public static final DeferredItem<Item> UTHERIUM_SWORD = ITEMS.register("utherium_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(SwordItem.createAttributes(UGItemTiers.UTHERIUM, 3, -2.4F))));
+	public static final DeferredItem<Item> UTHERIUM_PICKAXE = ITEMS.register("utherium_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(PickaxeItem.createAttributes(UGItemTiers.UTHERIUM, 1, -2.8F))));
+	public static final DeferredItem<Item> UTHERIUM_AXE = ITEMS.register("utherium_axe", () -> new UGAxeItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(AxeItem.createAttributes(UGItemTiers.UTHERIUM, 5.0F, -3.0F))));
+	public static final DeferredItem<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(ShovelItem.createAttributes(UGItemTiers.UTHERIUM, 1.5F, -3.0F))));
+	public static final DeferredItem<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(HoeItem.createAttributes(UGItemTiers.UTHERIUM, -3, 0.0F))));
 
 	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(BattleaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 7, -3.4F)).rarity(Rarity.EPIC)));
 	public static final DeferredItem<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FORGOTTEN, 3, -2.4F)).rarity(FORGOTTEN_RARITY)));
@@ -123,10 +123,10 @@ public class UGItems {
 	public static final DeferredItem<Item> FROSTSTEEL_LEGGINGS = ITEMS.register("froststeel_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.LEGGINGS, UGArmorMaterials.FROSTSTEEL.get()))));
 	public static final DeferredItem<Item> FROSTSTEEL_BOOTS = ITEMS.register("froststeel_boots", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.BOOTS, UGArmorMaterials.FROSTSTEEL.get()))));
 
-	public static final DeferredItem<Item> UTHERIUM_HELMET = ITEMS.register("utherium_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(30))));
-	public static final DeferredItem<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utherium_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
-	public static final DeferredItem<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(30))));
-	public static final DeferredItem<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(30))));
+	public static final DeferredItem<Item> UTHERIUM_HELMET = ITEMS.register("utherium_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.HELMET, new Item.Properties().rarity(UTHERIUM_RARITY).durability(ArmorItem.Type.HELMET.getDurability(30))));
+	public static final DeferredItem<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utherium_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(UTHERIUM_RARITY).durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
+	public static final DeferredItem<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(UTHERIUM_RARITY).durability(ArmorItem.Type.LEGGINGS.getDurability(30))));
+	public static final DeferredItem<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(UTHERIUM_RARITY).durability(ArmorItem.Type.BOOTS.getDurability(30))));
 
 	public static final DeferredItem<Item> ANCIENT_HELMET = ITEMS.register("ancient_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.ANCIENT, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(37))));
 	public static final DeferredItem<Item> ANCIENT_CHESTPLATE = ITEMS.register("ancient_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.ANCIENT, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
