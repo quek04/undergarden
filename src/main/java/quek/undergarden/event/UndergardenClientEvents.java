@@ -45,6 +45,7 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerHeartTypeEvent;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 import quek.undergarden.Undergarden;
@@ -53,6 +54,7 @@ import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.client.gui.screen.UndergardenReceivingLevelScreen;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
 import quek.undergarden.client.model.*;
+import quek.undergarden.client.model.item.CloggrumBucketModel;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.GrongletRender;
@@ -95,6 +97,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerClientExtensions);
 		bus.addListener(UndergardenClientEvents::registerDimensionTransitionScreens);
 		bus.addListener(UndergardenClientEvents::registerItemDecorations);
+		bus.addListener(UndergardenClientEvents::registerModelLoaders);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::dontRenderJumpBarForDweller);
@@ -258,6 +261,10 @@ public class UndergardenClientEvents {
 		event.register(UGMenuTypes.INFUSER.get(), InfuserScreen::new);
 	}
 
+	private static void registerModelLoaders(ModelEvent.RegisterGeometryLoaders event) {
+		event.register(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "cloggrum_bucket"), CloggrumBucketModel.Loader.INSTANCE);
+	}
+
 	private static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
 		event.registerBookCategories(UGRecipeBookTypes.INFUSER, ImmutableList.of(UGRecipeBookCategories.INFUSER_SEARCH, UGRecipeBookCategories.INFUSER_PURIFYING, UGRecipeBookCategories.INFUSER_CORRUPTING, UGRecipeBookCategories.INFUSER_MISC));
 		event.registerAggregateCategory(UGRecipeBookCategories.INFUSER_SEARCH, ImmutableList.of(UGRecipeBookCategories.INFUSER_PURIFYING, UGRecipeBookCategories.INFUSER_CORRUPTING, UGRecipeBookCategories.INFUSER_MISC));
@@ -315,6 +322,11 @@ public class UndergardenClientEvents {
 				UGBlocks.SHIMMERWEED.get(),
 				UGBlocks.TALL_SHIMMERWEED.get()
 		);
+
+		event.register((stack, tint) -> {
+			var fluid = stack.getOrDefault(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY).copy();
+			return tint == 1 ? IClientFluidTypeExtensions.of(fluid.getFluid()).getTintColor(fluid) : -1;
+		}, UGItems.CLOGGRUM_BUCKET);
 	}
 
 	private static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {

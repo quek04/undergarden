@@ -2,11 +2,9 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -15,9 +13,6 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.item.*;
 import quek.undergarden.item.armor.UndergardenArmorItem;
 import quek.undergarden.item.bucket.UGBucketItem;
-import quek.undergarden.item.bucket.UGMilkBucketItem;
-import quek.undergarden.item.bucket.UGMobBucketItem;
-import quek.undergarden.item.bucket.UGSolidBucketItem;
 import quek.undergarden.item.tool.*;
 import quek.undergarden.item.tool.slingshot.DepthrockPebbleItem;
 import quek.undergarden.item.tool.slingshot.GooBallItem;
@@ -118,19 +113,7 @@ public class UGItems {
 	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 	public static final DeferredItem<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new MobBucketItem(UGEntityTypes.GWIBLING.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
 
-	public static final DeferredItem<Item> CLOGGRUM_BUCKET = ITEMS.register("cloggrum_bucket", () -> new UGBucketItem(Fluids.EMPTY, new Item.Properties().stacksTo(16)));
-	public static final DeferredItem<Item> CLOGGRUM_VIRULENT_MIX_BUCKET = ITEMS.register("cloggrum_virulent_mix_bucket", () -> new UGBucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), new Item.Properties().stacksTo(1).craftRemainder(UGItems.CLOGGRUM_BUCKET.get())));
-	public static final DeferredItem<Item> CLOGGRUM_WATER_BUCKET = ITEMS.register("cloggrum_water_bucket", () -> new UGBucketItem(Fluids.WATER, new Item.Properties().stacksTo(1).craftRemainder(UGItems.CLOGGRUM_BUCKET.get())));
-	public static final DeferredItem<Item> CLOGGRUM_LAVA_BUCKET = ITEMS.register("cloggrum_lava_bucket", () -> new UGBucketItem(Fluids.LAVA, new Item.Properties().stacksTo(1).craftRemainder(UGItems.CLOGGRUM_BUCKET.get())));
-	public static final DeferredItem<Item> CLOGGRUM_POWDER_SNOW_BUCKET = ITEMS.register("cloggrum_powder_snow_bucket", () -> new UGSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> CLOGGRUM_MILK_BUCKET = ITEMS.register("cloggrum_milk_bucket", () -> new UGMilkBucketItem(new Item.Properties().stacksTo(1).craftRemainder(UGItems.CLOGGRUM_BUCKET.get())));
-	public static final DeferredItem<Item> CLOGGRUM_GWIBLING_BUCKET = ITEMS.register("cloggrum_gwibling_bucket", () -> new UGMobBucketItem(UGEntityTypes.GWIBLING.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-	public static final DeferredItem<Item> CLOGGRUM_PUFFERFISH_BUCKET = ITEMS.register("cloggrum_pufferfish_bucket", () -> new UGMobBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-	public static final DeferredItem<Item> CLOGGRUM_SALMON_BUCKET = ITEMS.register("cloggrum_salmon_bucket", () -> new UGMobBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-	public static final DeferredItem<Item> CLOGGRUM_COD_BUCKET = ITEMS.register("cloggrum_cod_bucket", () -> new UGMobBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-	public static final DeferredItem<Item> CLOGGRUM_TROPICAL_FISH_BUCKET = ITEMS.register("cloggrum_tropical_fish_bucket", () -> new UGMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-	public static final DeferredItem<Item> CLOGGRUM_AXOLOTL_BUCKET = ITEMS.register("cloggrum_axolotl_bucket", () -> new UGMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-	public static final DeferredItem<Item> CLOGGRUM_TADPOLE_BUCKET = ITEMS.register("cloggrum_tadpole_bucket", () -> new UGMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+	public static final DeferredItem<Item> CLOGGRUM_BUCKET = ITEMS.register("cloggrum_bucket", () -> new UGBucketItem(new Item.Properties().stacksTo(16)));
 
 	//armors
 	public static final DeferredItem<Item> CLOGGRUM_HELMET = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(20))));

@@ -2,8 +2,14 @@ package quek.undergarden.data;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
+import quek.undergarden.data.builder.CloggrumBucketModelBuilder;
 import quek.undergarden.data.provider.UGItemModelProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -347,5 +353,12 @@ public class UGItemModels extends UGItemModelProvider {
 				.texture("layer0", modLoc("block/tall_shimmerweed_top"))
 				.texture("layer1", modLoc("block/tall_shimmerweed_bulb"))
 				.renderType("translucent");
+
+		this.getBuilder(UGItems.CLOGGRUM_BUCKET.getId().toString())
+			.parent(new ModelFile.UncheckedModelFile("neoforge:item/default"))
+			.customLoader(CloggrumBucketModelBuilder::begin).fluid(Fluids.EMPTY).end()
+			.texture("base", modLoc("item/cloggrum_bucket"))
+			.texture("lower_base", modLoc("item/cloggrum_bucket_lower"))
+			.texture("fluid", ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/mask/bucket_fluid_drip"));
 	}
 }
