@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-19T02:27:14.3175762	Tags for minecraft:item mod id undergarden
+// 1.21.1	2025-06-20T22:18:51.9695279	Tags for minecraft:item mod id undergarden
 a3d8e475ccb999d6ed5ab37305b8d99ef17c4278 data/c/tags/item/armors.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/c/tags/item/bones.json
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/item/cobblestones.json
@@ -27,7 +27,7 @@ bad58d012e76aabbd30db15906b541b6d206a5c1 data/c/tags/item/glass_blocks/colorless
 7f9fd08523988e6efca34dd96e7fa431aaf4d303 data/c/tags/item/ingots/rogdorium.json
 3fabf0f007d636dfa1860e105858b7066ed85dd4 data/c/tags/item/mushrooms.json
 a27ba544ecd7efd35bae2b2964c2ecb8795fe652 data/c/tags/item/music_discs.json
-bd2513bcec1fb79d0d217d4209833e9d59885cda data/c/tags/item/nuggets.json
+96e16978b8308e3a997af678672a11122010b2dc data/c/tags/item/nuggets.json
 e45d48f10b5f88c8f293a49eed1457cacd96fcbd data/c/tags/item/nuggets/cloggrum.json
 c2cefd0a2e928f66b7ba644fc9edef72346f3c18 data/c/tags/item/nuggets/forgotten_metal.json
 2160ae2dc89346aa0c9f5e571d043d8309dfa776 data/c/tags/item/nuggets/froststeel.json
@@ -60,11 +60,13 @@ f6351c69c0c850e784a6001e86af48b79515252d data/c/tags/item/storage_blocks/frostst
 3bdef93231894b46bd36181f7f8698a941403928 data/c/tags/item/storage_blocks/rogdorium.json
 52b5ca18e5f7310e1c9836dfa8911171d203dd17 data/c/tags/item/storage_blocks/utherium.json
 9a8cc6c956febccfd19957093f57ae05f2a7b2d0 data/c/tags/item/strings.json
+c3fa81e587aa6efb720196639614c8c434f32601 data/c/tags/item/stripped_logs.json
+3f4c6c471fa12de2e1e932b9bdc5d888684fae2c data/c/tags/item/stripped_woods.json
 95614f7be0548fd714fe5df83aef6ba61df54614 data/c/tags/item/tools/shield.json
 c20555ec5f1be2597700944531daac51da863c5b data/minecraft/tags/item/axes.json
 61489e68ba75b0c12e64b85f4fea74c32655f6d1 data/minecraft/tags/item/beacon_payment_items.json
 ce8d2297dbd605b6ed8564044f895d643173563d data/minecraft/tags/item/boats.json
-a87a49ce98c8d86d8b65fd56423bffd073a37722 data/minecraft/tags/item/buttons.json
+493577bd92d310b4b667102bf6dbe3408b76984e data/minecraft/tags/item/buttons.json
 a5a1f0e7ebef2d5fc7dcda32659b374e961d8902 data/minecraft/tags/item/chest_armor.json
 a8ae1477f4d3df154b1203434e2527a1b35dfee7 data/minecraft/tags/item/chest_boats.json
 0d42b6d280281c95f545b1f531eaa606226ce75d data/minecraft/tags/item/cluster_max_harvestables.json
@@ -88,6 +90,7 @@ b86f56bdea209ef921825a95161b4dd24b6e4a4d data/minecraft/tags/item/planks.json
 ae68b39bd6519aabb8beaf43408ee4e9f8eed518 data/minecraft/tags/item/shovels.json
 29c0e831fdc8ba8ee32fada2ef3eda5d0a1a04f4 data/minecraft/tags/item/signs.json
 fa11011fbce2a046e0fdf04141b67ea097623b38 data/minecraft/tags/item/small_flowers.json
+1cf584adfca81a600c0cf972b5293ef3931ceee0 data/minecraft/tags/item/stone_buttons.json
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/minecraft/tags/item/stone_crafting_materials.json
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/minecraft/tags/item/stone_tool_materials.json
 f8741fc12c99d7e2f904a1ce55c7aa5ffbd1f333 data/minecraft/tags/item/swords.json

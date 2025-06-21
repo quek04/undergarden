@@ -74,7 +74,8 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		//vanilla
 		tag(BlockTags.PLANKS).add(UGBlocks.SMOGSTEM_PLANKS.get(), UGBlocks.WIGGLEWOOD_PLANKS.get(), UGBlocks.GRONGLE_PLANKS.get(), UGBlocks.ANCIENT_ROOT_PLANKS.get());
 		tag(BlockTags.WOODEN_BUTTONS).add(UGBlocks.SMOGSTEM_BUTTON.get(), UGBlocks.WIGGLEWOOD_BUTTON.get(), UGBlocks.GRONGLE_BUTTON.get(), UGBlocks.ANCIENT_ROOT_BUTTON.get());
-		tag(BlockTags.BUTTONS).add(UGBlocks.DEPTHROCK_BUTTON.get(), UGBlocks.SHIVERSTONE_BUTTON.get(), UGBlocks.SMOGSTEM_BUTTON.get(), UGBlocks.WIGGLEWOOD_BUTTON.get(), UGBlocks.GRONGLE_BUTTON.get(), UGBlocks.ANCIENT_ROOT_BUTTON.get(), UGBlocks.DREADROCK_BUTTON.get());
+		tag(BlockTags.STONE_BUTTONS).add(UGBlocks.DEPTHROCK_BUTTON.get(), UGBlocks.SHIVERSTONE_BUTTON.get(), UGBlocks.TREMBLECRUST_BUTTON.get(), UGBlocks.DREADROCK_BUTTON.get());
+		tag(BlockTags.BUTTONS).add(UGBlocks.SMOGSTEM_BUTTON.get(), UGBlocks.WIGGLEWOOD_BUTTON.get(), UGBlocks.GRONGLE_BUTTON.get(), UGBlocks.ANCIENT_ROOT_BUTTON.get(), UGBlocks.DEPTHROCK_BUTTON.get(), UGBlocks.SHIVERSTONE_BUTTON.get(), UGBlocks.TREMBLECRUST_BUTTON.get(), UGBlocks.DREADROCK_BUTTON.get());
 		tag(BlockTags.WOODEN_DOORS).add(UGBlocks.SMOGSTEM_DOOR.get(), UGBlocks.WIGGLEWOOD_DOOR.get(), UGBlocks.GRONGLE_DOOR.get(), UGBlocks.ANCIENT_ROOT_DOOR.get());
 		tag(BlockTags.WOODEN_STAIRS).add(UGBlocks.SMOGSTEM_STAIRS.get(), UGBlocks.WIGGLEWOOD_STAIRS.get(), UGBlocks.GRONGLE_STAIRS.get(), UGBlocks.ANCIENT_ROOT_STAIRS.get());
 		tag(BlockTags.WOODEN_SLABS).add(UGBlocks.SMOGSTEM_SLAB.get(), UGBlocks.WIGGLEWOOD_SLAB.get(), UGBlocks.GRONGLE_SLAB.get(), UGBlocks.ANCIENT_ROOT_SLAB.get());
@@ -86,7 +87,7 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(BlockTags.TALL_FLOWERS).add(UGBlocks.TALL_SHIMMERWEED.get());
 		tag(BlockTags.ENDERMAN_HOLDABLE).addTag(UGTags.Blocks.MUSHROOMS).add(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get(), UGBlocks.GLOOMGOURD.get(), UGBlocks.CARVED_GLOOMGOURD.get());
 		tag(BlockTags.WOODEN_PRESSURE_PLATES).add(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get(), UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get(), UGBlocks.GRONGLE_PRESSURE_PLATE.get(), UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE.get());
-		tag(BlockTags.STONE_PRESSURE_PLATES).add(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get(), UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get(), UGBlocks.DREADROCK_PRESSURE_PLATE.get());
+		tag(BlockTags.STONE_PRESSURE_PLATES).add(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get(), UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get(), UGBlocks.TREMBLECRUST_PRESSURE_PLATE.get(), UGBlocks.DREADROCK_PRESSURE_PLATE.get());
 		tag(BlockTags.WALLS).add(UGBlocks.DEPTHROCK_WALL.get(), UGBlocks.POLISHED_DEPTHROCK_WALL.get(), UGBlocks.DEPTHROCK_BRICK_WALL.get(), UGBlocks.SHIVERSTONE_WALL.get(), UGBlocks.SHIVERSTONE_BRICK_WALL.get(), UGBlocks.TREMBLECRUST_WALL.get(), UGBlocks.TREMBLECRUST_BRICK_WALL.get(), UGBlocks.DREADROCK_WALL.get(), UGBlocks.DREADROCK_BRICK_WALL.get());
 		tag(BlockTags.LEAVES).add(UGBlocks.SMOGSTEM_LEAVES.get(), UGBlocks.WIGGLEWOOD_LEAVES.get(), UGBlocks.GRONGLE_LEAVES.get());
 		tag(BlockTags.WOODEN_TRAPDOORS).add(UGBlocks.SMOGSTEM_TRAPDOOR.get(), UGBlocks.WIGGLEWOOD_TRAPDOOR.get(), UGBlocks.GRONGLE_TRAPDOOR.get(), UGBlocks.ANCIENT_ROOT_TRAPDOOR.get());
@@ -135,11 +136,12 @@ public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
 		tag(Tags.Blocks.STONES).add(UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.TREMBLECRUST.get(), UGBlocks.DREADROCK.get());
 		tag(Tags.Blocks.GLASS_BLOCKS).add(UGBlocks.SEDIMENT_GLASS.get());
 		tag(Tags.Blocks.GLASS_BLOCKS_COLORLESS).add(UGBlocks.SEDIMENT_GLASS.get());
-		//tag(Tags.Blocks.GLASS_SILICA).add(UGBlocks.SEDIMENT_GLASS.get());
 		tag(Tags.Blocks.GLASS_PANES).add(UGBlocks.SEDIMENT_GLASS_PANE.get());
 		tag(Tags.Blocks.GLASS_PANES_COLORLESS).add(UGBlocks.SEDIMENT_GLASS_PANE.get());
 		tag(Tags.Blocks.SANDS).add(UGBlocks.SEDIMENT.get());
 		tag(Tags.Blocks.SANDS_COLORLESS).add(UGBlocks.SEDIMENT.get());
+		tag(Tags.Blocks.STRIPPED_LOGS).add(UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get(), UGBlocks.STRIPPED_GRONGLE_LOG.get());
+		tag(Tags.Blocks.STRIPPED_WOODS).add(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get(), UGBlocks.STRIPPED_GRONGLE_WOOD.get());
 
 		//huge mineables lists!
 		tag(BlockTags.MINEABLE_WITH_PICKAXE).add(

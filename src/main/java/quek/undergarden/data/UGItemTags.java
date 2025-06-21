@@ -70,7 +70,8 @@ public class UGItemTags extends ItemTagsProvider {
 		//vanilla
 		tag(ItemTags.PLANKS).add(UGBlocks.SMOGSTEM_PLANKS.get().asItem(), UGBlocks.WIGGLEWOOD_PLANKS.get().asItem(), UGBlocks.GRONGLE_PLANKS.get().asItem(), UGBlocks.ANCIENT_ROOT_PLANKS.asItem());
 		tag(ItemTags.WOODEN_BUTTONS).add(UGBlocks.SMOGSTEM_BUTTON.get().asItem(), UGBlocks.WIGGLEWOOD_BUTTON.get().asItem(), UGBlocks.GRONGLE_BUTTON.get().asItem(), UGBlocks.ANCIENT_ROOT_BUTTON.asItem());
-		tag(ItemTags.BUTTONS).add(UGBlocks.DEPTHROCK_BUTTON.get().asItem(), UGBlocks.SHIVERSTONE_BUTTON.get().asItem());
+		tag(ItemTags.STONE_BUTTONS).add(UGBlocks.DEPTHROCK_BUTTON.get().asItem(), UGBlocks.SHIVERSTONE_BUTTON.get().asItem(), UGBlocks.TREMBLECRUST_BUTTON.get().asItem(), UGBlocks.DREADROCK_BUTTON.get().asItem());
+		tag(ItemTags.BUTTONS).add(UGBlocks.SMOGSTEM_BUTTON.get().asItem(), UGBlocks.WIGGLEWOOD_BUTTON.get().asItem(), UGBlocks.GRONGLE_BUTTON.get().asItem(), UGBlocks.ANCIENT_ROOT_BUTTON.get().asItem(), UGBlocks.DEPTHROCK_BUTTON.get().asItem(), UGBlocks.SHIVERSTONE_BUTTON.get().asItem(), UGBlocks.TREMBLECRUST_BUTTON.get().asItem(), UGBlocks.DREADROCK_BUTTON.get().asItem());
 		tag(ItemTags.WOODEN_DOORS).add(UGBlocks.SMOGSTEM_DOOR.get().asItem(), UGBlocks.WIGGLEWOOD_DOOR.get().asItem(), UGBlocks.GRONGLE_DOOR.get().asItem(), UGBlocks.ANCIENT_ROOT_DOOR.asItem());
 		tag(ItemTags.WOODEN_STAIRS).add(UGBlocks.SMOGSTEM_STAIRS.get().asItem(), UGBlocks.WIGGLEWOOD_STAIRS.get().asItem(), UGBlocks.GRONGLE_STAIRS.get().asItem(), UGBlocks.ANCIENT_ROOT_STAIRS.asItem());
 		tag(ItemTags.WOODEN_SLABS).add(UGBlocks.SMOGSTEM_SLAB.get().asItem(), UGBlocks.WIGGLEWOOD_SLAB.get().asItem(), UGBlocks.GRONGLE_SLAB.get().asItem(), UGBlocks.ANCIENT_ROOT_SLAB.asItem());
@@ -112,7 +113,7 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(Tags.Items.FENCE_GATES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE_GATE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE_GATE.get().asItem(), UGBlocks.GRONGLE_FENCE_GATE.get().asItem(), UGBlocks.ANCIENT_ROOT_FENCE_GATE.asItem());
 		tag(Tags.Items.FENCES_WOODEN).add(UGBlocks.SMOGSTEM_FENCE.get().asItem(), UGBlocks.WIGGLEWOOD_FENCE.get().asItem(), UGBlocks.GRONGLE_FENCE.get().asItem(), UGBlocks.ANCIENT_ROOT_FENCE.asItem());
 		tag(Tags.Items.MUSHROOMS).addTag(UGTags.Items.MUSHROOMS);
-		tag(Tags.Items.NUGGETS).addTag(UGTags.Items.NUGGETS_CLOGGRUM).addTag(UGTags.Items.NUGGETS_FROSTSTEEL).addTag(UGTags.Items.NUGGETS_FORGOTTEN_METAL);
+		tag(Tags.Items.NUGGETS).addTag(UGTags.Items.NUGGETS_CLOGGRUM).addTag(UGTags.Items.NUGGETS_FROSTSTEEL).addTag(UGTags.Items.NUGGETS_FORGOTTEN_METAL).addTag(UGTags.Items.NUGGETS_ROGDORIUM);
 		tag(Tags.Items.SEEDS).add(UGItems.GLOOMGOURD_SEEDS.get());
 		tag(Tags.Items.SLIME_BALLS).add(UGItems.GOO_BALL.get());
 		tag(Tags.Items.STRINGS).add(UGItems.TWISTYTWIG.get());
@@ -131,6 +132,8 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(Tags.Items.GLASS_PANES_COLORLESS).add(UGBlocks.SEDIMENT_GLASS_PANE.get().asItem());
 		tag(Tags.Items.SANDS).add(UGBlocks.SEDIMENT.get().asItem());
 		tag(Tags.Items.SANDS_COLORLESS).add(UGBlocks.SEDIMENT.get().asItem());
+		tag(Tags.Items.STRIPPED_LOGS).add(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().asItem(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().asItem(), UGBlocks.STRIPPED_GRONGLE_LOG.get().asItem());
+		tag(Tags.Items.STRIPPED_WOODS).add(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().asItem(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().asItem(), UGBlocks.STRIPPED_GRONGLE_WOOD.get().asItem());
 		tag(Tags.Items.RAW_MATERIALS).addTag(UGTags.Items.RAW_MATERIALS_CLOGGRUM).addTag(UGTags.Items.RAW_MATERIALS_FROSTSTEEL);
 		tag(ItemTags.SWORDS).add(UGItems.CLOGGRUM_SWORD.get(), UGItems.FROSTSTEEL_SWORD.get(), UGItems.UTHERIUM_SWORD.get(), UGItems.FORGOTTEN_SWORD.get());
 		tag(ItemTags.PICKAXES).add(UGItems.CLOGGRUM_PICKAXE.get(), UGItems.FROSTSTEEL_PICKAXE.get(), UGItems.UTHERIUM_PICKAXE.get(), UGItems.FORGOTTEN_PICKAXE.get());
