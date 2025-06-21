@@ -55,8 +55,8 @@ public class UGBlocks {
 	public static final DeferredBlock<WallBlock> DEPTHROCK_WALL = register("depthrock_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get())));
 	public static final DeferredBlock<WallBlock> POLISHED_DEPTHROCK_WALL = register("polished_depthrock_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(POLISHED_DEPTHROCK.get())));
 	public static final DeferredBlock<WallBlock> DEPTHROCK_BRICK_WALL = register("depthrock_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_BRICKS.get())));
-	public static final DeferredBlock<ButtonBlock> DEPTHROCK_BUTTON = register("depthrock_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).noCollission()));
-	public static final DeferredBlock<PressurePlateBlock> DEPTHROCK_PRESSURE_PLATE = register("depthrock_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).noCollission()));
+	public static final DeferredBlock<ButtonBlock> DEPTHROCK_BUTTON = register("depthrock_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON).sound(SoundType.BASALT)));
+	public static final DeferredBlock<PressurePlateBlock> DEPTHROCK_PRESSURE_PLATE = register("depthrock_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.BASALT)));
 
 	//shiverstone
 	public static final DeferredBlock<Block> SHIVERSTONE = register("shiverstone", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.GLOW_LICHEN).strength(3.5F, 12F).sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops().friction(0.98F)));
@@ -69,8 +69,8 @@ public class UGBlocks {
 	public static final DeferredBlock<SlabBlock> SHIVERSTONE_BRICK_SLAB = register("shiverstone_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE_BRICKS.get())));
 	public static final DeferredBlock<WallBlock> SHIVERSTONE_WALL = register("shiverstone_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get())));
 	public static final DeferredBlock<WallBlock> SHIVERSTONE_BRICK_WALL = register("shiverstone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE_BRICKS.get())));
-	public static final DeferredBlock<ButtonBlock> SHIVERSTONE_BUTTON = register("shiverstone_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).noCollission()));
-	public static final DeferredBlock<PressurePlateBlock> SHIVERSTONE_PRESSURE_PLATE = register("shiverstone_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(SHIVERSTONE.get()).noCollission()));
+	public static final DeferredBlock<ButtonBlock> SHIVERSTONE_BUTTON = register("shiverstone_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON).sound(SoundType.NETHER_BRICKS)));
+	public static final DeferredBlock<PressurePlateBlock> SHIVERSTONE_PRESSURE_PLATE = register("shiverstone_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.NETHER_BRICKS)));
 
 	//dreadrock
 	public static final DeferredBlock<Block> DREADROCK = register("dreadrock", () -> new DreadrockBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_GREEN).strength(3.0F, 12.0F).sound(UGSoundTypes.DREADROCK).requiresCorrectToolForDrops()));
@@ -81,8 +81,8 @@ public class UGBlocks {
 	public static final DeferredBlock<SlabBlock> DREADROCK_BRICK_SLAB = register("dreadrock_brick_slab", () -> new DreadrockSlabBlock(BlockBehaviour.Properties.ofFullCopy(DREADROCK_BRICKS.get())));
 	public static final DeferredBlock<WallBlock> DREADROCK_WALL = register("dreadrock_wall", () -> new DreadrockWallBlock(BlockBehaviour.Properties.ofFullCopy(DREADROCK.get())));
 	public static final DeferredBlock<WallBlock> DREADROCK_BRICK_WALL = register("dreadrock_brick_wall", () -> new DreadrockWallBlock(BlockBehaviour.Properties.ofFullCopy(DREADROCK_BRICKS.get())));
-	public static final DeferredBlock<ButtonBlock> DREADROCK_BUTTON = register("dreadrock_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).noCollission()));
-	public static final DeferredBlock<PressurePlateBlock> DREADROCK_PRESSURE_PLATE = register("dreadrock_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(DREADROCK.get()).noCollission()));
+	public static final DeferredBlock<ButtonBlock> DREADROCK_BUTTON = register("dreadrock_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON).sound(UGSoundTypes.DREADROCK)));
+	public static final DeferredBlock<PressurePlateBlock> DREADROCK_PRESSURE_PLATE = register("dreadrock_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE).sound(UGSoundTypes.DREADROCK)));
 
 	//tremblecrust
 	public static final DeferredBlock<Block> TREMBLECRUST = register("tremblecrust", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.DEEPSLATE).strength(6F, 24F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
@@ -96,8 +96,8 @@ public class UGBlocks {
 	public static final DeferredBlock<SlabBlock> TREMBLECRUST_BRICK_SLAB = register("tremblecrust_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get())));
 	public static final DeferredBlock<WallBlock> TREMBLECRUST_WALL = register("tremblecrust_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get())));
 	public static final DeferredBlock<WallBlock> TREMBLECRUST_BRICK_WALL = register("tremblecrust_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST_BRICKS.get())));
-	public static final DeferredBlock<ButtonBlock> TREMBLECRUST_BUTTON = register("tremblecrust_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()).noCollission()));
-	public static final DeferredBlock<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = register("tremblecrust_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(TREMBLECRUST.get()).noCollission()));
+	public static final DeferredBlock<ButtonBlock> TREMBLECRUST_BUTTON = register("tremblecrust_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON)));
+	public static final DeferredBlock<PressurePlateBlock> TREMBLECRUST_PRESSURE_PLATE = register("tremblecrust_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE)));
 
 	//ores
 	public static final DeferredBlock<Block> DEPTHROCK_COAL_ORE = register("depthrock_coal_ore", () -> new DropExperienceBlock(UniformInt.of(0, 2), BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).strength(3.0F, 6.0F).requiresCorrectToolForDrops()));
