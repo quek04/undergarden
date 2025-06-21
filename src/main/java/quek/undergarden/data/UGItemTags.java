@@ -135,7 +135,7 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(Tags.Items.STRIPPED_LOGS).add(UGBlocks.STRIPPED_SMOGSTEM_LOG.get().asItem(), UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get().asItem(), UGBlocks.STRIPPED_GRONGLE_LOG.get().asItem());
 		tag(Tags.Items.STRIPPED_WOODS).add(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get().asItem(), UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get().asItem(), UGBlocks.STRIPPED_GRONGLE_WOOD.get().asItem());
 		tag(Tags.Items.RAW_MATERIALS).addTag(UGTags.Items.RAW_MATERIALS_CLOGGRUM).addTag(UGTags.Items.RAW_MATERIALS_FROSTSTEEL);
-		tag(ItemTags.SWORDS).add(UGItems.CLOGGRUM_SWORD.get(), UGItems.FROSTSTEEL_SWORD.get(), UGItems.UTHERIUM_SWORD.get(), UGItems.FORGOTTEN_SWORD.get());
+		tag(ItemTags.SWORDS).add(UGItems.CLOGGRUM_SWORD.get(), UGItems.FROSTSTEEL_SWORD.get(), UGItems.UTHERIUM_SWORD.get(), UGItems.FORGOTTEN_SWORD.get(), UGItems.CLOGGRUM_BATTLEAXE.get(), UGItems.FORGOTTEN_BATTLEAXE.get());
 		tag(ItemTags.PICKAXES).add(UGItems.CLOGGRUM_PICKAXE.get(), UGItems.FROSTSTEEL_PICKAXE.get(), UGItems.UTHERIUM_PICKAXE.get(), UGItems.FORGOTTEN_PICKAXE.get());
 		tag(ItemTags.CLUSTER_MAX_HARVESTABLES).add(UGItems.CLOGGRUM_PICKAXE.get(), UGItems.FROSTSTEEL_PICKAXE.get(), UGItems.UTHERIUM_PICKAXE.get(), UGItems.FORGOTTEN_PICKAXE.get());
 		tag(ItemTags.AXES).add(UGItems.CLOGGRUM_AXE.get(), UGItems.FROSTSTEEL_AXE.get(), UGItems.UTHERIUM_AXE.get(), UGItems.FORGOTTEN_AXE.get());
