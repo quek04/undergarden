@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-14T01:25:02.9193183	Registries
+// 1.21.1	2025-06-21T14:44:48.7553239	Registries
 2158b0c4f2ca4dd72c5f1cc24777ed8b35be7953 data/undergarden/damage_type/blisterberry_bush.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/depthrock_pebble.json
 f95d8c725961dc45cc25a379727ee90899a62af2 data/undergarden/damage_type/goo_ball.json
@@ -166,7 +166,7 @@ d33ba217bace3a9bc3a5a4a52ebd75c2a0b8786b data/undergarden/worldgen/placed_featur
 e79924b5eeae891d3634ba2d8932ef8e82fa90c5 data/undergarden/worldgen/placed_feature/wigglewood_tree.json
 9aec56c0a8b01ec017fe84d4a6e387d6627d3e9e data/undergarden/worldgen/processor_list/catacombs_degradation.json
 ffe342753e251e07e7fe8d40958d92ac042f5cb9 data/undergarden/worldgen/processor_list/denizen_camp_road_processor.json
-166c03c8a0046bc9048919dbe87fac12b28de00a data/undergarden/worldgen/processor_list/denizen_camp_wood_processor.json
+574be398b4a98a1adf3566ae278a3aef9ba90249 data/undergarden/worldgen/processor_list/denizen_camp_wood_processor.json
 08fb268634cb3b20142e09b738f2792f3d6efc66 data/undergarden/worldgen/processor_list/depleted_mine_lantern_processor.json
 ab35819db2ba427c865b236a5305c4d237672345 data/undergarden/worldgen/processor_list/forgotten_vestige_degradation.json
 bdbcd4d42236bbbfd90f89c79a3f13ed260ae53d data/undergarden/worldgen/structure/catacombs.json

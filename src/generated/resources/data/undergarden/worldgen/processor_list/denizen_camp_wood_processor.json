@@ -13,7 +13,10 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "undergarden:ancient_root"
+            "Name": "undergarden:ancient_root",
+            "Properties": {
+              "axis": "y"
+            }
           }
         },
         {

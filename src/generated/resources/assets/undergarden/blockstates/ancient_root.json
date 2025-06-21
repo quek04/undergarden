@@ -1,7 +1,16 @@
 {
   "variants": {
-    "": {
+    "axis=x": {
+      "model": "undergarden:block/ancient_root_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
       "model": "undergarden:block/ancient_root"
+    },
+    "axis=z": {
+      "model": "undergarden:block/ancient_root_horizontal",
+      "x": 90
     }
   }
 }

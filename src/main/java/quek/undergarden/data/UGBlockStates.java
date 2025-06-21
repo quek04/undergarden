@@ -121,14 +121,14 @@ public class UGBlockStates extends UGBlockstateProvider {
 		block(UGBlocks.ROGDORIUM_BLOCK);
 		block(UGBlocks.UTHERIUM_GROWTH);
 		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
-		block(UGBlocks.ANCIENT_ROOT);
-		block(UGBlocks.ROGDORIC_ANCIENT_ROOT);
+		log(UGBlocks.ANCIENT_ROOT, "ancient_root");
+		axisBlock(UGBlocks.ROGDORIC_ANCIENT_ROOT.get(), texture("rogdoric_ancient_root_side"), texture("ancient_root_end"));
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
 		getVariantBuilder(UGBlocks.DENIZEN_TOTEM.get())
 			.partialState().with(DenizenTotemBlock.ACTIVE, true)
-			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM) + "_active", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_active"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_top"))).addModel()
+			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM) + "_active", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_active"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root_side"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_top"))).addModel()
 			.partialState().with(DenizenTotemBlock.ACTIVE, false)
-			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_inactive"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_top"))).addModel();
+			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_inactive"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root_side"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_top"))).addModel();
 		crossBlock(UGBlocks.PUFF_MUSHROOM);
 		block(UGBlocks.PUFF_MUSHROOM_CAP);
 		block(UGBlocks.PUFF_MUSHROOM_STEM);
@@ -222,7 +222,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		hangingSign(UGBlocks.SMOGSTEM_HANGING_SIGN, UGBlocks.SMOGSTEM_WALL_HANGING_SIGN, "stripped_smogstem_log_side");
 		hangingSign(UGBlocks.WIGGLEWOOD_HANGING_SIGN, UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN, "stripped_wigglewood_log_side");
 		hangingSign(UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.GRONGLE_WALL_HANGING_SIGN, "stripped_grongle_log_side");
-		hangingSign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, "ancient_root");
+		hangingSign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, "ancient_root_side");
 
 		ModelFile ashen_deepturf = models().cubeBottomTop(name(UGBlocks.ASHEN_DEEPTURF_BLOCK), texture("ashen_deepturf_block_side"), texture("deepsoil"), texture("ashen_deepturf_block_top"));
 		simpleBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), ConfiguredModel.builder()
