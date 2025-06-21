@@ -11,6 +11,28 @@
         }
       },
       "trigger": "undergarden:slingshot_fire"
+    },
+    "shoot_slingshot_rogdoric_gronglet": {
+      "conditions": {
+        "ammo": {
+          "items": "undergarden:rogdoric_gronglet"
+        },
+        "slingshot": {
+          "items": "undergarden:slingshot"
+        }
+      },
+      "trigger": "undergarden:slingshot_fire"
+    },
+    "shoot_slingshot_utheric_gronglet": {
+      "conditions": {
+        "ammo": {
+          "items": "undergarden:utheric_gronglet"
+        },
+        "slingshot": {
+          "items": "undergarden:slingshot"
+        }
+      },
+      "trigger": "undergarden:slingshot_fire"
     }
   },
   "display": {
@@ -27,7 +49,9 @@
   },
   "requirements": [
     [
-      "shoot_slingshot_gronglet"
+      "shoot_slingshot_gronglet",
+      "shoot_slingshot_rogdoric_gronglet",
+      "shoot_slingshot_utheric_gronglet"
     ]
   ],
   "sends_telemetry_event": true

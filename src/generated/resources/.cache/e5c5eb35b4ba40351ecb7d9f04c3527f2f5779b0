@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-13T23:52:26.0475318	Advancements
+// 1.21.1	2025-06-20T22:43:46.9406275	Advancements
 57f1fcd1e615734122b7725a3aceacefaef31c1b data/undergarden/advancement/undergarden/all_ore_blocks.json
 df960d07d2cadc77759c879bfa8116e5d38e1da0 data/undergarden/advancement/undergarden/all_undergarden_biomes.json
 2843ccc8b905b160790bda55516c164808a60344 data/undergarden/advancement/undergarden/break_denizen_campfire.json
@@ -28,7 +28,7 @@ c0d4860c18354eb2065d6b3602ad02b8ccf615f5 data/undergarden/advancement/undergarde
 8c8274003ed78495a7862efb8ce306b881db0fdc data/undergarden/advancement/undergarden/shard_torch.json
 97e4422c8961eb04ae40b7c4fae765ffac20137b data/undergarden/advancement/undergarden/shoot_slingshot.json
 ece63959836a158c09fa70d88190bb368c4398f6 data/undergarden/advancement/undergarden/shoot_slingshot_goo.json
-5ec5694558e10b80443d28b779a4e0c489f86661 data/undergarden/advancement/undergarden/shoot_slingshot_gronglet.json
+71d1f2417431d59a016407b41b59c93e7b71a9c1 data/undergarden/advancement/undergarden/shoot_slingshot_gronglet.json
 58faf51d834dccaa67f7ed019dcb98b0039bb1cc data/undergarden/advancement/undergarden/shoot_slingshot_rotten_blisterberry.json
 d35592e2aa97fb93b73785f10c310730ab915544 data/undergarden/advancement/undergarden/slingshot.json
 787277cf5acf37810f2269a7cd85c52b494b0add data/undergarden/advancement/undergarden/slingshot_20_damage.json

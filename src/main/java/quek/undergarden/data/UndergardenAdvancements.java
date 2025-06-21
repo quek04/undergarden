@@ -164,7 +164,10 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
+			.requirements(AdvancementRequirements.Strategy.OR)
 			.addCriterion("shoot_slingshot_gronglet", SlingshotFireTrigger.TriggerInstance.shotItem(UGBlocks.GRONGLET.get()))
+			.addCriterion("shoot_slingshot_rogdoric_gronglet", SlingshotFireTrigger.TriggerInstance.shotItem(UGBlocks.ROGDORIC_GRONGLET.get()))
+			.addCriterion("shoot_slingshot_utheric_gronglet", SlingshotFireTrigger.TriggerInstance.shotItem(UGBlocks.UTHERIC_GRONGLET.get()))
 			.save(consumer, "undergarden:undergarden/shoot_slingshot_gronglet");
 
 		AdvancementHolder underbeans = Advancement.Builder.advancement()
