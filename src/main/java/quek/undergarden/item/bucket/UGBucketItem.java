@@ -146,7 +146,7 @@ public class UGBucketItem extends Item {
 							CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer)player, resultStack);
 						}
 						var result = ItemUtils.createFilledResult(stack, player, workBucket);
-
+						player.setItemInHand(hand, result);
 						return InteractionResultHolder.sidedSuccess(result, level.isClientSide());
 					}
 				}
@@ -173,11 +173,10 @@ public class UGBucketItem extends Item {
 					//place block interaction
 					BlockState block = stack.get(UGDataComponents.STORED_BLOCK);
 					if (block != null) {
+						var workBucket = stack.copy();
 						InteractionResult interactionResult = block.getBlock().asItem().useOn(new UseOnContext(player, hand, blockHitResult));
 						if (interactionResult.consumesAction()) {
-							var workBucket = stack.copy();
-							workBucket.remove(UGDataComponents.STORED_BLOCK);
-							ItemUtils.createFilledResult(stack, player, workBucket);
+							if (!player.hasInfiniteMaterials()) workBucket.remove(UGDataComponents.STORED_BLOCK);
 							return InteractionResultHolder.sidedSuccess(workBucket, level.isClientSide());
 						}
 					}
