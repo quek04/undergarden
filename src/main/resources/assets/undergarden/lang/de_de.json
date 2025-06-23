@@ -668,5 +668,8 @@
     "tag.item.undergarden.smogstem_logs":"Smogstielstämme",
     "tag.item.undergarden.utherium_items":"Utheriumitems",
     "tag.item.undergarden.wigglewood_logs":"Wackelholzstämme",
-    "tooltip.undergarden.rogdorium_infusion":"Rogdoriuminfusion"
+    "tooltip.undergarden.rogdorium_infusion":"Rogdoriuminfusion",
+    "item.undergarden.cloggrum_bucket":"Cloggrumeimer",
+    "item.undergarden.cloggrum_bucket.block":"Cloggrum%seimer",
+    "item.undergarden.cloggrum_bucket.entity":"Cloggrum%seimer"
 }
