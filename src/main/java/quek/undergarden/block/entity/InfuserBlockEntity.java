@@ -251,7 +251,7 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 			var component = result.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT);
 			int infusionAmount = component.infusionAmount();
 			int infusionMax = component.infusionMax();
-			if (infusionMax >= infusionAmount) {
+			if (infusionMax <= infusionAmount) {
 				return false;
 			}
 
@@ -289,11 +289,11 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 				int infusionAmount = component.infusionAmount();
 				int infusionMax = component.infusionMax();
 				int fuelAmount = fuel.getCount();
-				if (infusionMax >= infusionAmount) {
+				if (infusionMax <= infusionAmount) {
 					return false;
 				}
 				result.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(Mth.clamp((fuelAmount * 600) + infusionAmount, 0, infusionMax)));
-				fuel.shrink(Mth.clamp(fuelAmount, 1, 6));
+				fuel.shrink(Mth.clamp(fuelAmount, 1, (infusionMax / 600)));
 			} else {
 				inventory.get(recipe.value().getRecipeSlotType().getSlotIndex()).shrink(1);
 			}
