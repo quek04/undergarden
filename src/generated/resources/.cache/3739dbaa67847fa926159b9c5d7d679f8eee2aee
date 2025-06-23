@@ -1,6 +1,7 @@
-// 1.21.1	2025-06-21T00:42:58.4203292	Tags for minecraft:item mod id undergarden
+// 1.21.1	2025-06-22T19:36:18.4455261	Tags for minecraft:item mod id undergarden
 a3d8e475ccb999d6ed5ab37305b8d99ef17c4278 data/c/tags/item/armors.json
 4d669c1b706cbcc4bf69d6aaa0251fd496615b20 data/c/tags/item/bones.json
+fe396f99b661d66d309424b4b6f2cbf534f6d24a data/c/tags/item/buckets.json
 47c96333acaddb4fd71dfd4fe41b88f7e08c6658 data/c/tags/item/cobblestones.json
 3430489c73ccf7c6a97b8405ff097796daf6e4ba data/c/tags/item/fences/wooden.json
 8c4e326a74b8c8e3a8dd62875f1f8f81e697c7a6 data/c/tags/item/fence_gates/wooden.json
