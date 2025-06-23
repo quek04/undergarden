@@ -1,9 +1,23 @@
 package quek.undergarden.registry;
 
+import net.minecraft.Util;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -39,4 +53,27 @@ public class UGCreativeModeTabs {
 					}
 				});
 			}).build());
+
+	public static void registerBuckets(BuildCreativeModeTabContentsEvent event) {
+		if (event.getTabKey() == TAB.getKey()) {
+			for (Item item : BuiltInRegistries.ITEM.stream().filter(item -> item instanceof MobBucketItem).toList().reversed()) {
+				EntityType<?> type = ((MobBucketItem)item).type;
+				FluidStack stack = new FluidStack(((MobBucketItem)item).content, FluidType.BUCKET_VOLUME);
+				ResourceLocation id = EntityType.getKey(type);
+				event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder()
+					.set(DataComponents.BUCKET_ENTITY_DATA, CustomData.of(Util.make(new CompoundTag(), tag -> tag.putString("id", id.toString()))))
+					.set(UGDataComponents.STORED_FLUID.get(), SimpleFluidContent.copyOf(stack)).build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+			}
+
+			for (Item item : BuiltInRegistries.ITEM.stream().filter(item -> item instanceof SolidBucketItem).toList().reversed()) {
+				Block block = ((SolidBucketItem)item).getBlock();
+				event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder().set(UGDataComponents.STORED_BLOCK.get(), block.defaultBlockState()).build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+			}
+
+			for (Fluid fluid : BuiltInRegistries.FLUID.stream().filter(fluid -> fluid.isSource(fluid.defaultFluidState())).toList().reversed()) {
+				FluidStack stack = new FluidStack(fluid, FluidType.BUCKET_VOLUME);
+				event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder().set(UGDataComponents.STORED_FLUID.get(), SimpleFluidContent.copyOf(stack)).build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+			}
+		}
+	}
 }

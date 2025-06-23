@@ -16,6 +16,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -41,7 +42,7 @@ public class Undergarden {
 	public static final Logger LOGGER = LogUtils.getLogger();
 
 	public Undergarden(IEventBus bus, Dist dist, ModContainer container) {
-
+		NeoForgeMod.enableMilkFluid();
 		if (dist.isClient()) {
 			UndergardenClientEvents.initClientEvents(bus);
 			container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);

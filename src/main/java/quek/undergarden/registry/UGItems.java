@@ -4,6 +4,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -11,6 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.item.*;
 import quek.undergarden.item.armor.UndergardenArmorItem;
+import quek.undergarden.item.bucket.UGBucketItem;
 import quek.undergarden.item.tool.*;
 import quek.undergarden.item.tool.slingshot.DepthrockPebbleItem;
 import quek.undergarden.item.tool.slingshot.GooBallItem;
@@ -109,8 +111,9 @@ public class UGItems {
 	public static final DeferredItem<Item> ANCIENT_ROOT_CHEST_BOAT = ITEMS.register("ancient_root_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_ANCIENT_ROOT"), new Item.Properties().stacksTo(1)));
 
 	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
+	public static final DeferredItem<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new MobBucketItem(UGEntityTypes.GWIBLING.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
 
-	public static final DeferredItem<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new MobBucketItem(UGEntityTypes.GWIBLING.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> CLOGGRUM_BUCKET = ITEMS.register("cloggrum_bucket", () -> new UGBucketItem(new Item.Properties().stacksTo(16)));
 
 	//armors
 	public static final DeferredItem<Item> CLOGGRUM_HELMET = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(20))));

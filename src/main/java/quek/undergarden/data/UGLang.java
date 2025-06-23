@@ -349,6 +349,10 @@ public class UGLang extends UGLangProvider {
 
 		addItem(UGItems.GWIBLING_BUCKET, "Bucket of Gwibling");
 
+		addItem(UGItems.CLOGGRUM_BUCKET, "Cloggrum Bucket");
+		add(UGItems.CLOGGRUM_BUCKET.get().getDescriptionId() + ".block", "Cloggrum %s Bucket");
+		add(UGItems.CLOGGRUM_BUCKET.get().getDescriptionId() + ".entity", "Cloggrum Bucket of %s");
+
 		addItem(UGItems.CLOGGRUM_HELMET, "Cloggrum Helmet");
 		addItem(UGItems.CLOGGRUM_CHESTPLATE, "Cloggrum Chestplate");
 		addItem(UGItems.CLOGGRUM_LEGGINGS, "Cloggrum Leggings");
