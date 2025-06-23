@@ -17,6 +17,8 @@ import quek.undergarden.registry.*;
 
 public class UthericInfectionEvents {
 
+	public static final double MAX_INFECTION = 20.0D;
+
 	protected static void init() {
 		NeoForge.EVENT_BUS.addListener(UthericInfectionEvents::tickUthericInfection);
 		NeoForge.EVENT_BUS.addListener(UthericInfectionEvents::onEntityHit);
@@ -32,7 +34,7 @@ public class UthericInfectionEvents {
 			}
 			if (livingEntity.tickCount % 20 == 0 && !livingEntity.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
 				double data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
-				if (data >= 20.0D) {
+				if (data >= MAX_INFECTION) {
 					livingEntity.hurt(livingEntity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
 				} else {
 					UthericInfectionLethality biomeLethality = livingEntity.level().getBiome(livingEntity.blockPosition()).getData(UGDataMaps.BIOME_LETHALITY);

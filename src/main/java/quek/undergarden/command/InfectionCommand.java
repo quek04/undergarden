@@ -26,7 +26,7 @@ public class InfectionCommand {
 			.requires(cs -> cs.hasPermission(Commands.LEVEL_ADMINS))
 			.then(Commands.argument("targets", EntityArgument.entities())
 				.then(Commands.literal("set")
-					.then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.0D, 20.0D))
+					.then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.0D, UthericInfectionEvents.MAX_INFECTION))
 						.executes(context -> applyInfection(context.getSource(), EntityArgument.getEntities(context, "targets"), DoubleArgumentType.getDouble(context, "amount"))))));
 	}
 

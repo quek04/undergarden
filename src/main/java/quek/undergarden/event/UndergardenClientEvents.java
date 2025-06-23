@@ -401,7 +401,7 @@ public class UndergardenClientEvents {
 				GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
 			);
 			if (player != null) {
-				double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / 20.0D;
+				double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / UthericInfectionEvents.MAX_INFECTION;
 				vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
 				guiGraphics.setColor(0.0F, (float) vignetteBrightness, (float) vignetteBrightness, 1.0F);
 			}
