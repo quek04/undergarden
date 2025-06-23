@@ -55,13 +55,11 @@ public class UGCreativeModeTabs {
 				});
 			}).build());
 
-	private static final List<EntityType<?>> usedEntities = new ArrayList<>();
-	private static final List<Block> usedBlocks = new ArrayList<>();
-
 	public static void registerBuckets(BuildCreativeModeTabContentsEvent event) {
 		if (event.getTabKey() == TAB.getKey()) {
-			usedEntities.clear();
-			usedBlocks.clear();
+			List<EntityType<?>> usedEntities = new ArrayList<>();
+			List<Block> usedBlocks = new ArrayList<>();
+
 			for (Item item : BuiltInRegistries.ITEM.stream().filter(item -> item instanceof MobBucketItem).toList().reversed()) {
 				EntityType<?> type = ((MobBucketItem) item).type;
 				if (!usedEntities.contains(type)) {
