@@ -670,6 +670,6 @@
     "tag.item.undergarden.wigglewood_logs":"Wackelholzstämme",
     "tooltip.undergarden.rogdorium_infusion":"Rogdoriuminfusion",
     "item.undergarden.cloggrum_bucket":"Cloggrumeimer",
-    "item.undergarden.cloggrum_bucket.block":"Cloggrum%seimer",
-    "item.undergarden.cloggrum_bucket.entity":"Cloggrum%seimer"
+    "item.undergarden.cloggrum_bucket.block":"Cloggrumeimer mit %s",
+    "item.undergarden.cloggrum_bucket.entity":"Cloggrumeimer mit %s"
 }
