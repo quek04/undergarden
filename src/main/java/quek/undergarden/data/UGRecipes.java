@@ -355,6 +355,13 @@ public class UGRecipes extends UGRecipeProvider {
 			.unlockedBy("has_ditchbulb", has(UGItems.DITCHBULB.get()))
 			.save(output);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, UGItems.CLOGGRUM_BUCKET.get())
+			.pattern("C C")
+			.pattern(" C ")
+			.define('C', UGTags.Items.INGOTS_CLOGGRUM)
+			.unlockedBy("has_cloggrum_ingot", has(UGItems.CLOGGRUM_INGOT.get()))
+			.save(output);
+
 		makeIngotToBlock(UGBlocks.CLOGGRUM_BLOCK, UGItems.CLOGGRUM_INGOT).save(output);
 		makeIngotToBlock(UGBlocks.FROSTSTEEL_BLOCK, UGItems.FROSTSTEEL_INGOT).save(output);
 		makeIngotToBlock(UGBlocks.UTHERIUM_BLOCK, UGItems.UTHERIUM_CRYSTAL).save(output);
