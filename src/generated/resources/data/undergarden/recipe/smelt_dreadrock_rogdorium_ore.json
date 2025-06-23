@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smelting",
-  "category": "food",
+  "category": "misc",
   "cookingtime": 200,
   "experience": 0.7,
   "group": "undergarden:rogdorium_crystal",

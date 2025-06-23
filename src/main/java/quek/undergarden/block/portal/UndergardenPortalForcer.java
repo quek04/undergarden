@@ -55,43 +55,42 @@ public class UndergardenPortalForcer {
 	public static Optional<BlockUtil.FoundRectangle> createPortal(ServerLevel level, BlockPos pos, Direction.Axis axis) {
 		Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
 		double d0 = -1.0;
-		BlockPos blockPos = null;
+		BlockPos portalPos = null;
 		double d1 = -1.0;
-		BlockPos blockPos1 = null;
+		BlockPos backupPortalPos = null;
 		WorldBorder worldBorder = level.getWorldBorder();
-		int minHeight = Math.min(level.getMaxBuildHeight(), level.getLogicalHeight()) - 1;
-		BlockPos.MutableBlockPos mutablePos = pos.mutable();
+		int maxHeight = level.getMaxBuildHeight() - 1;
+		BlockPos.MutableBlockPos framePos = pos.mutable();
 
-		for (BlockPos.MutableBlockPos mutablePos1 : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
-			int validStartHeight = Math.min(minHeight, level.getHeight(Heightmap.Types.MOTION_BLOCKING, mutablePos1.getX(), mutablePos1.getZ()));
-			if (worldBorder.isWithinBounds(mutablePos1) && worldBorder.isWithinBounds(mutablePos1.move(direction, 1))) {
-				mutablePos1.move(direction.getOpposite(), 1);
+		for (BlockPos.MutableBlockPos checkPos : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
+			if (worldBorder.isWithinBounds(checkPos) && worldBorder.isWithinBounds(checkPos.move(direction, 1))) {
+				checkPos.move(direction.getOpposite(), 1);
 
-				for (int y = validStartHeight; y >= 0; y--) {
-					mutablePos1.setY(y);
-					if (canPortalReplaceBlock(level, mutablePos1)) {
-						int i1 = y;
+				for (int checkY = maxHeight; checkY >= 0; checkY--) {
+					checkPos.setY(checkY);
+					if (canPortalReplaceBlock(level, checkPos)) {
+						int currentY = checkY;
 
-						while (y > level.getMinBuildHeight() && canPortalReplaceBlock(level, mutablePos1.move(Direction.DOWN))) {
-							y--;
+						while (checkY > 0 && canPortalReplaceBlock(level, checkPos.move(Direction.DOWN))) {
+							checkY--;
 						}
 
-						if (y + 4 <= minHeight) {
-							int j1 = i1 - y;
-							if (j1 <= 0 || j1 >= 3) {
-								mutablePos1.setY(y);
-								if (canHostFrame(level, mutablePos1, mutablePos, direction, 0)) {
-									double dist = pos.distSqr(mutablePos1);
-									if (canHostFrame(level, mutablePos1, mutablePos, direction, -1)
-										&& canHostFrame(level, mutablePos1, mutablePos, direction, 1)
+						if (checkY + 4 <= maxHeight) {
+							int portalGap = currentY - checkY;
+							if (portalGap <= 0 || portalGap >= 3) {
+								checkPos.setY(checkY);
+								if (canHostFrame(level, checkPos, framePos, direction, 0)) {
+									double dist = pos.distSqr(checkPos);
+									if (canHostFrame(level, checkPos, framePos, direction, -1)
+										&& canHostFrame(level, checkPos, framePos, direction, 1)
 										&& (d0 == -1.0 || d0 > dist)) {
 										d0 = dist;
-										blockPos = mutablePos1.immutable();
+										portalPos = checkPos.immutable();
 									}
 
 									if (d0 == -1.0 && (d1 == -1.0 || d1 > dist)) {
 										d1 = dist;
-										blockPos1 = mutablePos1.immutable();
+										backupPortalPos = checkPos.immutable();
 									}
 								}
 							}
@@ -102,53 +101,47 @@ public class UndergardenPortalForcer {
 		}
 
 		if (d0 == -1.0 && d1 != -1.0) {
-			blockPos = blockPos1;
+			portalPos = backupPortalPos;
 			d0 = d1;
 		}
 
 		if (d0 == -1.0) {
-			int k1 = Mth.clamp(pos.getY(), 32, 70);
-			int i2 = minHeight - 9;
-			if (i2 < k1) {
-				return Optional.empty();
-			}
-
-			blockPos = new BlockPos(pos.getX() - direction.getStepX() * 1, Mth.clamp(pos.getY(), k1, i2), pos.getZ() - direction.getStepZ() * 1).immutable();
-			blockPos = worldBorder.clampToBounds(blockPos);
+			portalPos = new BlockPos(pos.getX() - direction.getStepX(), Mth.clamp(pos.getY(), 70, maxHeight - 9), pos.getZ() - direction.getStepZ()).immutable();
+			portalPos = worldBorder.clampToBounds(portalPos);
 			Direction direction1 = direction.getClockWise();
 
 			for (int i3 = -1; i3 < 2; i3++) {
 				for (int j3 = 0; j3 < 2; j3++) {
 					for (int k3 = -1; k3 < 3; k3++) {
 						BlockState blockstate1 = k3 < 0 ? FRAME : Blocks.AIR.defaultBlockState();
-						mutablePos.setWithOffset(
-							blockPos, j3 * direction.getStepX() + i3 * direction1.getStepX(), k3, j3 * direction.getStepZ() + i3 * direction1.getStepZ()
+						framePos.setWithOffset(
+							portalPos, j3 * direction.getStepX() + i3 * direction1.getStepX(), k3, j3 * direction.getStepZ() + i3 * direction1.getStepZ()
 						);
-						level.setBlockAndUpdate(mutablePos, blockstate1);
+						level.setBlockAndUpdate(framePos, blockstate1);
 					}
 				}
 			}
 		}
 
-		for (int l1 = -1; l1 < 3; l1++) {
-			for (int j2 = -1; j2 < 4; j2++) {
-				if (l1 == -1 || l1 == 2 || j2 == -1 || j2 == 3) {
-					mutablePos.setWithOffset(blockPos, l1 * direction.getStepX(), j2, l1 * direction.getStepZ());
-					level.setBlock(mutablePos, FRAME, 3);
+		for (int frameX = -1; frameX < 3; frameX++) {
+			for (int frameY = -1; frameY < 4; frameY++) {
+				if (frameX == -1 || frameX == 2 || frameY == -1 || frameY == 3) {
+					framePos.setWithOffset(portalPos, frameX * direction.getStepX(), frameY, frameX * direction.getStepZ());
+					level.setBlock(framePos, FRAME, 3);
 				}
 			}
 		}
 
-		BlockState blockstate = UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState().setValue(NetherPortalBlock.AXIS, axis);
+		BlockState portal = UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState().setValue(NetherPortalBlock.AXIS, axis);
 
-		for (int k2 = 0; k2 < 2; k2++) {
-			for (int l2 = 0; l2 < 3; l2++) {
-				mutablePos.setWithOffset(blockPos, k2 * direction.getStepX(), l2, k2 * direction.getStepZ());
-				level.setBlock(mutablePos, blockstate, 18);
+		for (int portalX = 0; portalX < 2; portalX++) {
+			for (int portalY = 0; portalY < 3; portalY++) {
+				framePos.setWithOffset(portalPos, portalX * direction.getStepX(), portalY, portalX * direction.getStepZ());
+				level.setBlock(framePos, portal, 18);
 			}
 		}
 
-		return Optional.of(new BlockUtil.FoundRectangle(blockPos.immutable(), 2, 3));
+		return Optional.of(new BlockUtil.FoundRectangle(portalPos.immutable(), 2, 3));
 	}
 
 	private static boolean canPortalReplaceBlock(ServerLevel level, BlockPos.MutableBlockPos pos) {

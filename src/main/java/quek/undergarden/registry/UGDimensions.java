@@ -48,7 +48,7 @@ public class UGDimensions {
 			false, //respawn anchor works
 			-64, // Minimum Y Level
 			192, // Height + Min Y = Max Y
-			128, // Logical Height
+			192, // Logical Height
 			BlockTags.INFINIBURN_OVERWORLD, //infiniburn
 			name("undergarden"), // DimensionRenderInfo
 			0.1F, // ambient light
