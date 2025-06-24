@@ -41,6 +41,8 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 	private static final Map<ResourceLocation, ResourceLocation> TEXTURE_MAP = Maps.newHashMap();
 	private static final Transformation DEPTH_OFFSET_TRANSFORM = new Transformation(new Vector3f(), new Quaternionf(), new Vector3f(1.002F, 1.002F, 1.002F), new Quaternionf());
 
+	private static final Material FALLBACK_CONTENT = new Material(InventoryMenu.BLOCK_ATLAS, getContentTexture(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fallback")));
+
 	private final Fluid fluid;
 	@Nullable
 	private final ResourceLocation otherContent;
@@ -101,6 +103,9 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 		TextureAtlasSprite otherContentSprite = null;
 		if (otherContentLocation != null) {
 			otherContentSprite = spriteGetter.apply(otherContentLocation);
+			if (MissingTextureAtlasSprite.getLocation().equals(otherContentSprite.contents().name())) {
+				otherContentSprite = spriteGetter.apply(FALLBACK_CONTENT);
+			}
 		}
 		TextureAtlasSprite fluidSprite = this.fluid != Fluids.EMPTY ? spriteGetter.apply(ClientHooks.getBlockMaterial(IClientFluidTypeExtensions.of(this.fluid).getStillTexture())) : null;
 		TextureAtlasSprite particleSprite = particleLocation != null ? spriteGetter.apply(particleLocation) : null;
