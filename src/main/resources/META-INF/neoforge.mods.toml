@@ -7,12 +7,13 @@ license = "MIT"
 modId = "undergarden"
 version = "${file.jarVersion}"
 displayName = "The Undergarden"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/the-undergarden"
 logoFile = "logo.png"
 logoBlur = false
 authors = "quek"
-description = '''Deep underground, a forgotten land awaits.'''
-itemIcon="undergarden:deepturf_block"
-enumExtensions="META-INF/enumextensions.json"
+description = 'Deep underground, a forgotten land awaits.'
+itemIcon = "undergarden:deepturf_block"
+enumExtensions = "META-INF/enumextensions.json"
 
 [[dependencies.undergarden]]
 	modId = "neoforge"

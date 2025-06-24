@@ -1,3 +1,6 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 plugins {
 	id 'java-library'
 	id 'eclipse'
@@ -32,45 +35,87 @@ idea {
 
 version = project.undergarden_version
 group = 'quek.undergarden'
-base {
-    archivesName = 'The_Undergarden-'+project.minecraft_version
+
+java {
+	toolchain {
+		languageVersion.set(JavaLanguageVersion.of(21))
+	}
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-compileJava.options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-this-escape" << "-Werror"
+tasks.withType(JavaCompile).configureEach {
+	options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-this-escape" << "-Werror"
+	options.encoding = 'UTF-8'
+}
+
+base {
+	archivesName = 'The_Undergarden-'+project.minecraft_version
+}
+
+sourceSets {
+	data {
+		compileClasspath += main.compileClasspath + main.output
+
+		java {
+			srcDirs = ['src/main/java', 'src/data/java']
+		}
+		resources {
+			srcDirs = ['src/main/resources']
+		}
+	}
+}
+
+configurations {
+	dataImplementation.extendsFrom implementation
+}
 
 neoForge {
+	// we need the subprojects to evaluate first so that the sourceSets are properly constructed
+	evaluationDependsOnChildren()
+
 	version = project.neo_version
 	validateAccessTransformers = true
+
+	addModdingDependenciesTo sourceSets.data
+
+	mods {
+		"${project.mod_id}" {
+			it.sourceSet this.sourceSets.main
+		}
+
+		"${project.mod_id}-data" {
+			it.sourceSet this.sourceSets.main
+			it.sourceSet this.sourceSets.data
+		}
+	}
+
+	def mainMod = mods."${project.mod_id}"
+	def dataMod = mods."${project.mod_id}-data"
 
 	runs {
 		configureEach {
 			gameDirectory = project.file('run')
 			systemProperty 'forge.logging.console.level', 'debug'
 			logLevel = org.slf4j.event.Level.DEBUG
+			loadedMods = [mainMod]
 		}
 
 		client {
 			client()
-			systemProperty 'forge.enabledGameTestNamespaces', mod_id
+			systemProperty 'forge.enabledGameTestNamespaces', "${project.mod_id}"
 			programArguments.addAll '--username', secrets.getProperty("username") ?: 'Dev', secrets.getProperty("uuid") ? '--uuid' : '', secrets.getProperty("uuid") ?: ''
 		}
 
 		server {
 			server()
-			systemProperty 'forge.enabledGameTestNamespaces', mod_id
+			systemProperty 'forge.enabledGameTestNamespaces', "${project.mod_id}"
 			programArgument '--nogui'
 		}
 
 		data {
 			data()
-			programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
-		}
-	}
-
-	mods {
-		undergarden {
-			sourceSet this.sourceSets.main
+			programArguments.addAll '--mod', "${project.mod_id}", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+			sourceSet = this.sourceSets.data
+			loadedMods = [dataMod]
 		}
 	}
 }
@@ -122,10 +167,30 @@ dependencies {
 	runtimeOnly "curse.maven:worldedit-225608:5830452"
 }
 
+processResources {
+	def ver = project.version
+	filesMatching("META-INF/neoforge.mods.toml") {
+		expand([
+			'file': [
+				'jarVersion': ver
+			]
+		])
+	}
+	exclude ".cache"
+	def lazyTree = providers.provider {
+		fileTree(dir: getOutputs().getFiles().getAsPath(), includes: ["**/*.json", "**/*.mcmeta"])
+	}
+	doLast {
+		lazyTree.get().each {
+			File file -> file.setText(JsonOutput.toJson(new JsonSlurper().parse(file)))
+		}
+	}
+}
+
 tasks.named('jar', Jar).configure {
 	manifest {
 		attributes([
-				"Specification-Title"     : "undergarden",
+				"Specification-Title"     : "${project.mod_id}",
 				"Specification-Vendor"    : "quek",
 				"Specification-Version"   : "1",
 				"Implementation-Title"    : project.name,
@@ -147,6 +212,30 @@ publishing {
 			url "file://${project.projectDir}/repo"
 		}
 	}
+}
+
+tasks.register('sourceJar', Jar) {
+	dependsOn 'classes'
+	from sourceSets.main.allSource
+	archiveClassifier = 'sources'
+}
+
+tasks.register('dataClassesForPublishing', JavaCompile) {
+	dependsOn "dataClasses"
+	source = fileTree('src/data/java')
+	classpath = sourceSets.named('data').get().compileClasspath
+	destinationDirectory = layout.buildDirectory.dir("classes/java/dataForPublishing")
+}
+
+tasks.register('dataJar', Jar) {
+	dependsOn 'dataClassesForPublishing'
+	from layout.buildDirectory.dir("classes/java/dataForPublishing")
+	archiveClassifier = 'data'
+}
+
+tasks.register('dataSourceJar', Jar) {
+	from sourceSets.data.allSource
+	archiveClassifier = 'data-sources'
 }
 
 tasks.withType(JavaCompile).configureEach {

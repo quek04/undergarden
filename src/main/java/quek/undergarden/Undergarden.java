@@ -26,7 +26,6 @@ import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import quek.undergarden.client.UndergardenClient;
-import quek.undergarden.data.*;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.registry.*;
@@ -49,12 +48,6 @@ public class Undergarden {
 		}
 
 		UndergardenCommonEvents.initCommonEvents(bus);
-		bus.addListener(this::gatherData);
-		bus.addListener((Consumer<RegisterEvent>) event -> {
-			if (event.getRegistry() == BuiltInRegistries.CHUNK_GENERATOR) {
-				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, ResourceLocation.fromNamespaceAndPath(MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC);
-			}
-		});
 
 		DeferredRegister<?>[] registers = {
 			UGAttachments.ATTACHMENTS,
@@ -90,34 +83,6 @@ public class Undergarden {
 
 		container.registerConfig(ModConfig.Type.COMMON, UndergardenConfig.COMMON_SPEC);
 		container.registerConfig(ModConfig.Type.CLIENT, UndergardenConfig.CLIENT_SPEC);
-	}
-
-	public void gatherData(GatherDataEvent event) {
-		DataGenerator generator = event.getGenerator();
-		PackOutput output = generator.getPackOutput();
-		ExistingFileHelper helper = event.getExistingFileHelper();
-
-		generator.addProvider(event.includeClient(), new UGBlockStates(output, helper));
-		generator.addProvider(event.includeClient(), new UGItemModels(output, helper));
-		generator.addProvider(event.includeClient(), new UGLang(output));
-		generator.addProvider(event.includeClient(), new UGSoundDefinitions(output, helper));
-
-		DatapackBuiltinEntriesProvider datapackProvider = new UGRegistries(output, event.getLookupProvider());
-		CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
-		generator.addProvider(event.includeServer(), datapackProvider);
-		generator.addProvider(event.includeServer(), new UGRecipes(output, lookupProvider));
-		generator.addProvider(event.includeServer(), new UGLootTables(output, lookupProvider));
-		UGBlockTags blockTags = new UGBlockTags(output, lookupProvider, helper);
-		generator.addProvider(event.includeServer(), blockTags);
-		generator.addProvider(event.includeServer(), new UGItemTags(output, lookupProvider, blockTags.contentsGetter(), helper));
-		generator.addProvider(event.includeServer(), new UGEntityTags(output, lookupProvider, helper));
-		generator.addProvider(event.includeServer(), new UGAdvancements(output, datapackProvider.getRegistryProvider(), helper));
-		generator.addProvider(event.includeServer(), new UGFluidTags(output, lookupProvider, helper));
-		generator.addProvider(event.includeServer(), new UGBiomeTags(output, lookupProvider, helper));
-		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
-		generator.addProvider(event.includeServer(), new UGStructureUpdater("structures", output, helper));
-		generator.addProvider(event.includeServer(), new UGDataMapsProvider(output, lookupProvider));
-		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, lookupProvider, helper));
 	}
 
 	@Nullable

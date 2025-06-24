@@ -107,7 +107,7 @@ public class UGStructures {
 			pools.getOrThrow(CATACOMBS_START),
 			Optional.empty(),
 			15,
-			ConstantHeight.of(VerticalAnchor.aboveBottom(48)),
+			ConstantHeight.of(VerticalAnchor.aboveBottom(112)),
 			Optional.empty(),
 			116,
 			List.of(),

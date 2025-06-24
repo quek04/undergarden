@@ -3,6 +3,9 @@ package quek.undergarden.event;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
@@ -53,6 +56,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
@@ -77,8 +81,10 @@ import quek.undergarden.network.CreateCritParticlePacket;
 import quek.undergarden.network.UndergardenPortalSoundPacket;
 import quek.undergarden.network.UthericInfectionPacket;
 import quek.undergarden.registry.*;
+import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class UndergardenCommonEvents {
 
@@ -108,6 +114,12 @@ public class UndergardenCommonEvents {
 		if (ModList.get().isLoaded("create")) {
 			UGCreateCompat.init(bus);
 		}
+
+		bus.addListener((Consumer<RegisterEvent>) event -> {
+			if (event.getRegistry() == BuiltInRegistries.CHUNK_GENERATOR) {
+				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC);
+			}
+		});
 	}
 
 	private static void registerPackets(RegisterPayloadHandlersEvent event) {
