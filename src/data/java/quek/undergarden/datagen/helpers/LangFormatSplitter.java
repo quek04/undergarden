@@ -1,4 +1,4 @@
-package quek.undergarden.data.provider;
+package quek.undergarden.datagen.helpers;
 
 import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.Nullable;

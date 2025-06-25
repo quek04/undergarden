@@ -6,11 +6,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
-import quek.undergarden.data.builder.CloggrumBucketModelBuilder;
-import quek.undergarden.data.provider.UGItemModelProvider;
+import quek.undergarden.datagen.helpers.builder.CloggrumBucketModelBuilder;
+import quek.undergarden.datagen.helpers.UGItemModelProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 

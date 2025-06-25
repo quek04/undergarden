@@ -36,7 +36,7 @@ import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DepthrockPebblesBlock;
 import quek.undergarden.block.DitchbulbBlock;
 import quek.undergarden.block.UnderbeanBushBlock;
-import quek.undergarden.data.provider.UGBlockLootTableProvider;
+import quek.undergarden.datagen.helpers.UGBlockLootTableProvider;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;

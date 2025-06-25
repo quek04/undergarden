@@ -1,4 +1,4 @@
-package quek.undergarden.data.builder;
+package quek.undergarden.datagen.helpers.builder;
 
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;

@@ -14,7 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import quek.undergarden.Undergarden;
-import quek.undergarden.data.provider.UGRecipeProvider;
+import quek.undergarden.datagen.helpers.UGRecipeProvider;
 import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;

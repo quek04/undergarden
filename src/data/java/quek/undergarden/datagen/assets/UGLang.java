@@ -1,7 +1,7 @@
 package quek.undergarden.datagen.assets;
 
 import net.minecraft.data.PackOutput;
-import quek.undergarden.data.provider.UGLangProvider;
+import quek.undergarden.datagen.helpers.UGLangProvider;
 import quek.undergarden.registry.*;
 
 public class UGLang extends UGLangProvider {

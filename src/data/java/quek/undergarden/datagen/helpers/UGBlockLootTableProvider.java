@@ -1,4 +1,4 @@
-package quek.undergarden.data.provider;
+package quek.undergarden.datagen.helpers;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.advancements.critereon.BlockPredicate;

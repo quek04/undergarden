@@ -13,7 +13,7 @@ import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DeepturfBlock;
 import quek.undergarden.block.DenizenTotemBlock;
 import quek.undergarden.block.HangingGrongleLeavesBlock;
-import quek.undergarden.data.provider.UGBlockstateProvider;
+import quek.undergarden.datagen.helpers.UGBlockstateProvider;
 import quek.undergarden.registry.UGBlocks;
 
 public class UGBlockStates extends UGBlockstateProvider {

@@ -1,4 +1,4 @@
-package quek.undergarden.data.builder;
+package quek.undergarden.datagen.helpers.builder;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;

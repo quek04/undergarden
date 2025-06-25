@@ -1,4 +1,4 @@
-package quek.undergarden.data.provider;
+package quek.undergarden.datagen.helpers;
 
 import java.text.ChoiceFormat;
 import java.util.List;
