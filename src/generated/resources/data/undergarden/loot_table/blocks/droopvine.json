@@ -18,6 +18,11 @@
           "name": "undergarden:droopvine_item"
         }
       ],
+      "functions": [
+        {
+          "function": "minecraft:explosion_decay"
+        }
+      ],
       "rolls": 1.0
     }
   ],

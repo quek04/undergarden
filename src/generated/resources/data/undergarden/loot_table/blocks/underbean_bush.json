@@ -35,6 +35,9 @@
           "parameters": {
             "bonusMultiplier": 1
           }
+        },
+        {
+          "function": "minecraft:explosion_decay"
         }
       ],
       "rolls": 1.0
@@ -73,6 +76,9 @@
           "parameters": {
             "bonusMultiplier": 1
           }
+        },
+        {
+          "function": "minecraft:explosion_decay"
         }
       ],
       "rolls": 1.0

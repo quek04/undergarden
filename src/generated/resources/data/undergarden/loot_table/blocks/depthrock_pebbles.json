@@ -42,6 +42,11 @@
           "name": "undergarden:depthrock_pebble"
         }
       ],
+      "functions": [
+        {
+          "function": "minecraft:explosion_decay"
+        }
+      ],
       "rolls": 1.0
     }
   ],

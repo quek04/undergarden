@@ -42,9 +42,6 @@
                         "min": 2.0
                       },
                       "function": "minecraft:set_count"
-                    },
-                    {
-                      "function": "minecraft:explosion_decay"
                     }
                   ],
                   "name": "undergarden:blood_globule"
@@ -68,14 +65,16 @@
                   "limit": {
                     "min": 0.0
                   }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
                 }
               ],
               "name": "undergarden:blood_mushroom"
             }
           ]
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:explosion_decay"
         }
       ],
       "rolls": 1.0
