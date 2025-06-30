@@ -84,7 +84,7 @@ public class Forgotten extends Monster {
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
 		ServerLevel level = this.getServer().getLevel(this.level().dimension());
 		Structure structure = level.structureManager().registryAccess().registryOrThrow(Registries.STRUCTURE).get(UGStructures.DEPLETED_MINE);
-		if (structure != null && level.getLevel().structureManager().getStructureAt(this.getOnPos(), structure).isValid()) {
+		if (structure != null && level.getLevel().structureManager().getStructureAt(this.getOnPos(), structure).isValid() && this.getY() <= 0) {
 			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.FORGOTTEN_PICKAXE.get()));
 			this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(UGItems.CLOGGRUM_CHESTPLATE.get()));
 		} else if (random.nextInt(50) == 0) {
