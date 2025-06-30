@@ -9,7 +9,7 @@ public class UGFoods {
 
 	public static final FoodProperties UNDERBEANS = new FoodProperties.Builder().nutrition(3).saturationModifier(0.2F).fast().build();
 	public static final FoodProperties ROASTED_UNDERBEANS = new FoodProperties.Builder().nutrition(6).saturationModifier(0.4F).build();
-	public static final FoodProperties BLISTERBERRY = new FoodProperties.Builder().nutrition(6).saturationModifier(0.2F).build();
+	public static final FoodProperties BLISTERBERRY = new FoodProperties.Builder().nutrition(3).saturationModifier(0.2F).build();
 	public static final FoodProperties ROTTEN_BLISTERBERRY = new FoodProperties.Builder().nutrition(3).saturationModifier(0.1F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600, 0), 1.0F).build();
 	public static final FoodProperties GLOOMGOURD_PIE = new FoodProperties.Builder().nutrition(8).saturationModifier(0.5F).effect(() -> new MobEffectInstance(UGEffects.VIRULENT_RESISTANCE, 600, 0, false, true), 1.0F).build();
 	public static final FoodProperties RAW_DWELLER = new FoodProperties.Builder().nutrition(3).saturationModifier(0.5F).build();
