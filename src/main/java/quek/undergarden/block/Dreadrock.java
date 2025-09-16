@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
+import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGItems;
 
 public interface Dreadrock {
@@ -12,7 +13,7 @@ public interface Dreadrock {
 		int i = net.neoforged.neoforge.event.EventHooks.doPlayerHarvestCheck(player, state, level, pos) ? 30 : 100;
 		if (destroySpeed == -1.0F) {
 			return 0.0F;
-		} else if (!(player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get())) {
+		} else if (player.level().dimension() == UGDimensions.UNDERGARDEN_LEVEL && !(player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get())) {
 			return player.getDigSpeed(state, pos) / (destroySpeed * 64.0F) / (float)i;
 		} else {
 			return player.getDigSpeed(state, pos) / destroySpeed / (float)i;
