@@ -9,9 +9,9 @@
       "tick_chance": 0.00555
     },
     "ambient_sound": "undergarden:ambient.abyss",
-    "fog_color": 10408133,
-    "foliage_color": 4479879,
-    "grass_color": 4479879,
+    "fog_color": 4479879,
+    "foliage_color": 1784489,
+    "grass_color": 1784489,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -41,9 +41,7 @@
     [],
     [],
     [],
-    [
-      "undergarden:gronglegrowth_delta"
-    ],
+    [],
     [],
     [
       "undergarden:rogdorium_ore_extra"
@@ -52,6 +50,10 @@
     [],
     [
       "undergarden:deepturf_patch",
+      "undergarden:shimmerweed_patch",
+      "undergarden:tall_deepturf_patch",
+      "undergarden:tall_shimmerweed_patch",
+      "undergarden:droopvine_patch",
       "undergarden:miserabell_patch",
       "undergarden:smogstem_tree_sparse",
       "undergarden:smogstem_bush"

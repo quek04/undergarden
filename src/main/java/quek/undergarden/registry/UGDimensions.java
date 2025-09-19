@@ -249,21 +249,14 @@ public class UGDimensions {
 				//mix deepturf into rogdorium grove
 				SurfaceRules.ifTrue(
 					SurfaceRules.isBiome(UGBiomes.ROGDORIUM_GROVE),
-					SurfaceRules.ifTrue(
-						SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
-						SurfaceRules.sequence(
-							SurfaceRules.ifTrue(
-								SurfaceRules.noiseCondition(noises.getOrThrow(Noises.NETHER_STATE_SELECTOR).key(), 0.0D, 1.8D),
-								SurfaceRules.state(UGBlocks.COARSE_DEEPSOIL.get().defaultBlockState())
-							),
-							SurfaceRules.ifTrue(
-								SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),
-								SurfaceRules.state(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState())
-							),
-							SurfaceRules.ifTrue(
-								SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
-								SurfaceRules.state(UGBlocks.DEEPSOIL.get().defaultBlockState())
-							)
+					SurfaceRules.sequence(
+						SurfaceRules.ifTrue(
+							SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR),
+							SurfaceRules.state(UGBlocks.DEEPTURF_BLOCK.get().defaultBlockState())
+						),
+						SurfaceRules.ifTrue(
+							SurfaceRules.stoneDepthCheck(0, true, 0, CaveSurface.FLOOR),
+							SurfaceRules.state(UGBlocks.DEEPSOIL.get().defaultBlockState())
 						)
 					)
 				),
