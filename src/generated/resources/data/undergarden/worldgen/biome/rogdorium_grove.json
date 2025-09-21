@@ -26,7 +26,7 @@
     },
     "particle": {
       "options": {
-        "type": "undergarden:rogdorium_sparkle"
+        "type": "undergarden:rogdorium_wisp"
       },
       "probability": 0.01
     },

@@ -525,7 +525,7 @@ public class UGBiomes {
 			.downfall(0.0F)
 			.temperature(0.8F)
 			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 4479879, 1784489), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(UGParticleTypes.ROGDORIUM_SPARKLE.get(), 0.01F))
+				.ambientParticle(new AmbientParticleSettings(UGParticleTypes.ROGDORIUM_WISP.get(), 0.01F))
 				.build())
 			.build());
 	}

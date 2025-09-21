@@ -2,7 +2,6 @@ package quek.undergarden.registry;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleGroup;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -39,6 +38,7 @@ public class UGParticleTypes {
 			return TotemBeamParticle.Options.STREAM_CODEC;
 		}
 	});
+	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ROGDORIUM_WISP = PARTICLES.register("rogdorium_wisp", () -> new SimpleParticleType(false));
 
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_BLOOD = PARTICLES.register("dripping_blood", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_BLOOD = PARTICLES.register("falling_blood", () -> new SimpleParticleType(false));
