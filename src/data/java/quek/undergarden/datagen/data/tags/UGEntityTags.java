@@ -36,7 +36,7 @@ public class UGEntityTags extends EntityTypeTagsProvider {
 
 		//vanilla
 		tag(EntityTypeTags.IMPACT_PROJECTILES).add(UGEntityTypes.BLISTERBOMB.get(), UGEntityTypes.ROTTEN_BLISTERBERRY.get(), UGEntityTypes.GOO_BALL.get(), UGEntityTypes.DEPTHROCK_PEBBLE.get(), UGEntityTypes.MINION_PROJECTILE.get(), UGEntityTypes.ROTBELCHER_PROJECTILE.get());
-		tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).add(UGEntityTypes.SCINTLING.get(), UGEntityTypes.ROTLING.get(), UGEntityTypes.MUNCHER.get(), UGEntityTypes.SPLOOGIE.get(), UGEntityTypes.MOG.get(), UGEntityTypes.SMOG_MOG.get(), UGEntityTypes.FORGOTTEN_GUARDIAN.get());
+		tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).add(UGEntityTypes.SCINTLING.get(), UGEntityTypes.ROTLING.get(), UGEntityTypes.MUNCHER.get(), UGEntityTypes.SPLOOGIE.get(), UGEntityTypes.MOG.get(), UGEntityTypes.SMOG_MOG.get(), UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.BRUTE.get());
 		tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get());
 		tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.MINION.get());
 		tag(EntityTypeTags.DISMOUNTS_UNDERWATER).add(UGEntityTypes.DWELLER.get());
