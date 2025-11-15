@@ -7,9 +7,9 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.monster.stoneborn.Stoneborn;
+import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
 
-public class StonebornModel<T extends Stoneborn> extends ListModel<T> {
+public class StonebornModel<T extends StonebornVagrant> extends ListModel<T> {
 
 	private final ModelPart head;
 	private final ModelPart body;

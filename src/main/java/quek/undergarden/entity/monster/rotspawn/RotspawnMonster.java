@@ -23,7 +23,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import quek.undergarden.entity.animal.Mog;
 import quek.undergarden.entity.monster.denizen.Denizen;
-import quek.undergarden.entity.monster.stoneborn.Stoneborn;
+import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
 import quek.undergarden.registry.UGDamageSources;
 
 import java.util.Optional;
@@ -45,7 +45,7 @@ public class RotspawnMonster extends Monster {
 		this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(0, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(1, new RotspawnTargetGoal<>(this, Player.class, true));
-		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Stoneborn.class, true));
+		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, StonebornVagrant.class, true));
 		this.targetSelector.addGoal(3, new RotspawnTargetGoal<>(this, Animal.class, true, (target) -> !(target instanceof Mog)));
 		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Denizen.class, true));
 	}

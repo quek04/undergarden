@@ -20,7 +20,7 @@ import quek.undergarden.entity.monster.rotspawn.Rotbeast;
 import quek.undergarden.entity.monster.rotspawn.Rotbelcher;
 import quek.undergarden.entity.monster.rotspawn.Rotling;
 import quek.undergarden.entity.monster.rotspawn.Rotwalker;
-import quek.undergarden.entity.monster.stoneborn.Stoneborn;
+import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
 import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.MinionProjectile;
 import quek.undergarden.entity.projectile.RotbelcherProjectile;
@@ -56,7 +56,7 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<Brute>> BRUTE = ENTITIES.register("brute", () -> EntityType.Builder.of(Brute::new, MobCategory.CREATURE).sized(1.0F, 2).eyeHeight(1.9F).build("brute"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Scintling>> SCINTLING = ENTITIES.register("scintling", () -> EntityType.Builder.of(Scintling::new, MobCategory.AMBIENT).sized(1.0F, .5F).build("scintling"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Gloomper>> GLOOMPER = ENTITIES.register("gloomper", () -> EntityType.Builder.of(Gloomper::new, MobCategory.CREATURE).sized(0.99F, 0.99F).build("gloomper"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Stoneborn>> STONEBORN = ENTITIES.register("stoneborn", () -> EntityType.Builder.of(Stoneborn::new, MobCategory.MONSTER).sized(1.0F, 2.6F).build("stoneborn"));
+	public static final DeferredHolder<EntityType<?>, EntityType<StonebornVagrant>> STONEBORN = ENTITIES.register("stoneborn", () -> EntityType.Builder.of(StonebornVagrant::new, MobCategory.MONSTER).sized(1.0F, 2.6F).build("stoneborn"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Nargoyle>> NARGOYLE = ENTITIES.register("nargoyle", () -> EntityType.Builder.of(Nargoyle::new, MobCategory.MONSTER).sized(1.0F, 1.5F).build("nargoyle"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Muncher>> MUNCHER = ENTITIES.register("muncher", () -> EntityType.Builder.of(Muncher::new, MobCategory.MONSTER).sized(0.8F, 0.8F).build("muncher"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Sploogie>> SPLOOGIE = ENTITIES.register("sploogie", () -> EntityType.Builder.of(Sploogie::new, MobCategory.MONSTER).sized(0.8F, 0.8F).eyeHeight(0.3F).build("sploogie"));

@@ -2,13 +2,13 @@ package quek.undergarden.entity.monster.stoneborn.goals;
 
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.player.Player;
-import quek.undergarden.entity.monster.stoneborn.Stoneborn;
+import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
 
 public class StonebornLookAtCustomerGoal extends LookAtPlayerGoal {
 
-	private final Stoneborn stoneborn;
+	private final StonebornVagrant stoneborn;
 
-	public StonebornLookAtCustomerGoal(Stoneborn stoneborn) {
+	public StonebornLookAtCustomerGoal(StonebornVagrant stoneborn) {
 		super(stoneborn, Player.class, 8.0F);
 		this.stoneborn = stoneborn;
 	}

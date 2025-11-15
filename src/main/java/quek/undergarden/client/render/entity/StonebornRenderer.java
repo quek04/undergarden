@@ -8,9 +8,9 @@ import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.StonebornModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.BasicEyesLayer;
-import quek.undergarden.entity.monster.stoneborn.Stoneborn;
+import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
 
-public class StonebornRenderer extends MobRenderer<Stoneborn, StonebornModel<Stoneborn>> {
+public class StonebornRenderer extends MobRenderer<StonebornVagrant, StonebornModel<StonebornVagrant>> {
 
 	private static final ResourceLocation STONEBORN = Undergarden.prefix("textures/entity/stoneborn.png");
 	private static final RenderType STONEBORN_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/stoneborn_eyes.png"));
@@ -21,12 +21,12 @@ public class StonebornRenderer extends MobRenderer<Stoneborn, StonebornModel<Sto
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Stoneborn entity) {
+	public ResourceLocation getTextureLocation(StonebornVagrant entity) {
 		return STONEBORN;
 	}
 
 	@Override
-	protected boolean isShaking(Stoneborn stoneborn) {
+	protected boolean isShaking(StonebornVagrant stoneborn) {
 		return super.isShaking(stoneborn) || (!stoneborn.inUndergarden() && !stoneborn.isNoAi());
 	}
 }
