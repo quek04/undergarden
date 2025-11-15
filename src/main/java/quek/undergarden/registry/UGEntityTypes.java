@@ -65,6 +65,7 @@ public class UGEntityTypes {
 	public static final DeferredHolder<EntityType<?>, EntityType<SmogMog>> SMOG_MOG = ENTITIES.register("smog_mog", () -> EntityType.Builder.of(SmogMog::new, MobCategory.CREATURE).sized(0.75F, 1.8F).eyeHeight(0.4F).build("smog_mog"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Forgotten>> FORGOTTEN = ENTITIES.register("forgotten", () -> EntityType.Builder.of(Forgotten::new, MobCategory.MONSTER).sized(0.7F, 2.2F).build("forgotten"));
 	public static final DeferredHolder<EntityType<?>, EntityType<Denizen>> DENIZEN = ENTITIES.register("denizen", () -> EntityType.Builder.of(Denizen::new, MobCategory.MONSTER).sized(0.7F, 2.0F).build("denizen"));
+	public static final DeferredHolder<EntityType<?>, EntityType<MysteriousPot>> MYSTERIOUS_POT = ENTITIES.register("mysterious_pot", () -> EntityType.Builder.of(MysteriousPot::new, MobCategory.CREATURE).sized(0.8F, 1.0F).build("mysterious_pot"));
 
 	//bosses
 	public static final DeferredHolder<EntityType<?>, EntityType<ForgottenGuardian>> FORGOTTEN_GUARDIAN = ENTITIES.register("forgotten_guardian", () -> EntityType.Builder.of(ForgottenGuardian::new, MobCategory.MONSTER).sized(1.0F, 3.8F).build("forgotten_guardian"));

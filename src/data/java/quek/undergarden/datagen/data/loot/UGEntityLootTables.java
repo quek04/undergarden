@@ -236,6 +236,8 @@ public class UGEntityLootTables extends EntityLootSubProvider {
 				)
 			)
 		);
+
+		this.add(UGEntityTypes.MYSTERIOUS_POT.get(), LootTable.lootTable());
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import quek.undergarden.registry.UGAttachments;
 
 public class UthericInfectionLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
 
-	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
+	private static final ResourceLocation TEXTURE = Undergarden.prefix("textures/utheric_infection_overlay.png");
 
 	public UthericInfectionLayer(RenderLayerParent<T, M> renderer) {
 		super(renderer);

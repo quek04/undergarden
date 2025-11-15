@@ -182,4 +182,6 @@ public class UGItems {
 	public static final DeferredItem<DeferredSpawnEggItem> DENIZEN_SPAWN_EGG = ITEMS.register("denizen_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DENIZEN, 9797222, 13026490, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> MINION_SPAWN_EGG = ITEMS.register("minion_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MINION, 8126397, 3170136, new Item.Properties()));
+	//TODO remove
+	public static final DeferredItem<DeferredSpawnEggItem> MYSTERIOUS_POT_SPAWN_EGG = ITEMS.register("mysterious_pot_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MYSTERIOUS_POT, 3161387, 12648360, new Item.Properties()));
 }

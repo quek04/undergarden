@@ -1,12 +1,7 @@
 package quek.undergarden;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.neoforged.api.distmarker.Dist;
@@ -17,11 +12,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForgeMod;
-import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -29,10 +20,6 @@ import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.registry.*;
-import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
 @Mod(Undergarden.MODID)
 public class Undergarden {
@@ -83,6 +70,10 @@ public class Undergarden {
 
 		container.registerConfig(ModConfig.Type.COMMON, UndergardenConfig.COMMON_SPEC);
 		container.registerConfig(ModConfig.Type.CLIENT, UndergardenConfig.CLIENT_SPEC);
+	}
+
+	public static ResourceLocation prefix(String name) {
+		return ResourceLocation.fromNamespaceAndPath(MODID, name);
 	}
 
 	@Nullable
