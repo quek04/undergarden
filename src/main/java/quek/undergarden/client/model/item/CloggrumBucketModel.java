@@ -178,7 +178,12 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 			boolean flip = GsonHelper.getAsBoolean(jsonObject, "flip_gas", true);
 			boolean applyFluidLuminosity = GsonHelper.getAsBoolean(jsonObject, "apply_fluid_luminosity", true);
 
-			return new CloggrumBucketModel(fluid, ResourceLocation.tryParse(jsonObject.get("content").getAsString()), flip, applyFluidLuminosity, false);
+			ResourceLocation content = null;
+			if (jsonObject.has("content")) {
+				content = ResourceLocation.tryParse(jsonObject.get("content").getAsString());
+			}
+			
+			return new CloggrumBucketModel(fluid, content, flip, applyFluidLuminosity, false);
 		}
 	}
 
