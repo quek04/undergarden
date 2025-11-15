@@ -19,7 +19,6 @@ public class CloggrumBucketModelBuilder<T extends ModelBuilder<T>> extends Custo
 	private ResourceLocation fluid;
 	private ResourceLocation content;
 	private Boolean flipGas;
-	private Boolean applyTint;
 	private Boolean applyFluidLuminosity;
 
 	private CloggrumBucketModelBuilder(T parent, ExistingFileHelper existingFileHelper) {
@@ -42,11 +41,6 @@ public class CloggrumBucketModelBuilder<T extends ModelBuilder<T>> extends Custo
 		return this;
 	}
 
-	public CloggrumBucketModelBuilder<T> applyTint(boolean tint) {
-		this.applyTint = tint;
-		return this;
-	}
-
 	public CloggrumBucketModelBuilder<T> applyFluidLuminosity(boolean applyFluidLuminosity) {
 		this.applyFluidLuminosity = applyFluidLuminosity;
 		return this;
@@ -66,9 +60,6 @@ public class CloggrumBucketModelBuilder<T extends ModelBuilder<T>> extends Custo
 
 		if (this.flipGas != null)
 			json.addProperty("flip_gas", this.flipGas);
-
-		if (this.applyTint != null)
-			json.addProperty("apply_tint", this.applyTint);
 
 		if (this.applyFluidLuminosity != null)
 			json.addProperty("apply_fluid_luminosity", this.applyFluidLuminosity);

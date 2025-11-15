@@ -125,7 +125,7 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 
 		if (baseSprite != null) {
 			//lower bucket by a pixel to prevent the need of a 2nd texture
-			Vector3f lowered = this.isLower ? new Vector3f(0.0F, -1.0F/16.0F, 0.0F) : null;
+			Vector3f lowered = this.isLower ? new Vector3f(0.0F, -1.0F / 16.0F, 0.0F) : null;
 			ModelState baseState = new SimpleModelState(modelState.getRotation().compose(new Transformation(lowered, null, null, null)));
 			var unbaked = UnbakedGeometryHelper.createUnbakedItemElements(0, baseSprite);
 			var quads = UnbakedGeometryHelper.bakeElements(unbaked, $ -> baseSprite, baseState);
@@ -148,7 +148,8 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 
 				var emissive = this.applyFluidLuminosity && this.fluid.getFluidType().getLightLevel() > 0;
 				var renderTypes = DynamicFluidContainerModel.getLayerRenderTypes(emissive);
-				if (emissive) QuadTransformers.settingEmissivity(this.fluid.getFluidType().getLightLevel()).processInPlace(quads);
+				if (emissive)
+					QuadTransformers.settingEmissivity(this.fluid.getFluidType().getLightLevel()).processInPlace(quads);
 
 				modelBuilder.addQuads(renderTypes, quads);
 			}
@@ -162,7 +163,8 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 	public static final class Loader implements IGeometryLoader<CloggrumBucketModel> {
 		public static final CloggrumBucketModel.Loader INSTANCE = new CloggrumBucketModel.Loader();
 
-		private Loader() {}
+		private Loader() {
+		}
 
 		@Override
 		public CloggrumBucketModel read(JsonObject jsonObject, JsonDeserializationContext context) {
@@ -173,10 +175,10 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 
 			Fluid fluid = BuiltInRegistries.FLUID.get(fluidName);
 
-			boolean flip = GsonHelper.getAsBoolean(jsonObject, "flip_gas", false);
+			boolean flip = GsonHelper.getAsBoolean(jsonObject, "flip_gas", true);
 			boolean applyFluidLuminosity = GsonHelper.getAsBoolean(jsonObject, "apply_fluid_luminosity", true);
 
-			return new CloggrumBucketModel(fluid, null, flip, applyFluidLuminosity, false);
+			return new CloggrumBucketModel(fluid, ResourceLocation.tryParse(jsonObject.get("content").getAsString()), flip, applyFluidLuminosity, false);
 		}
 	}
 
@@ -188,8 +190,7 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 		private final IGeometryBakingContext owner;
 		private final CloggrumBucketModel parent;
 
-		private ContainedFluidOverrideHandler(ItemOverrides nested, ModelBaker baker, IGeometryBakingContext owner, CloggrumBucketModel parent)
-		{
+		private ContainedFluidOverrideHandler(ItemOverrides nested, ModelBaker baker, IGeometryBakingContext owner, CloggrumBucketModel parent) {
 			this.nested = nested;
 			this.baker = baker;
 			this.owner = owner;
@@ -198,8 +199,7 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 
 		@Nullable
 		@Override
-		public BakedModel resolve(BakedModel originalModel, ItemStack stack, @Nullable ClientLevel level, @Nullable LivingEntity entity, int number)
-		{
+		public BakedModel resolve(BakedModel originalModel, ItemStack stack, @Nullable ClientLevel level, @Nullable LivingEntity entity, int number) {
 			BakedModel overridden = this.nested.resolve(originalModel, stack, level, entity, number);
 			if (overridden != originalModel) return overridden;
 			if (stack.getItem() instanceof UGBucketItem) {

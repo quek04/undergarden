@@ -1,5 +1,7 @@
 {
   "parent": "neoforge:item/default",
+  "apply_fluid_luminosity": true,
+  "flip_gas": true,
   "fluid": "minecraft:empty",
   "loader": "undergarden:cloggrum_bucket",
   "textures": {

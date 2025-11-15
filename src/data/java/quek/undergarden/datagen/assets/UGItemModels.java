@@ -355,7 +355,7 @@ public class UGItemModels extends UGItemModelProvider {
 
 		this.getBuilder(UGItems.CLOGGRUM_BUCKET.getId().toString())
 			.parent(new ModelFile.UncheckedModelFile("neoforge:item/default"))
-			.customLoader(CloggrumBucketModelBuilder::begin).fluid(Fluids.EMPTY).end()
+			.customLoader(CloggrumBucketModelBuilder::begin).fluid(Fluids.EMPTY).flipGas(true).applyFluidLuminosity(true).end()
 			.texture("base", modLoc("item/cloggrum_bucket"))
 			.texture("fluid", ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/mask/bucket_fluid_drip"));
 	}
