@@ -1,21 +1,23 @@
 package quek.undergarden.client.render.entity;
 
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GreaterDwellerModel;
 import quek.undergarden.client.model.UGModelLayers;
-import quek.undergarden.client.render.layer.GreaterDwellerEyesLayer;
+import quek.undergarden.client.render.layer.BasicEyesLayer;
 import quek.undergarden.entity.animal.GreaterDweller;
 
 public class GreaterDwellerRenderer extends MobRenderer<GreaterDweller, GreaterDwellerModel<GreaterDweller>> {
 
-	private static final ResourceLocation GREATER_DWELLER = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/greater_dweller.png");
+	private static final ResourceLocation GREATER_DWELLER = Undergarden.prefix("textures/entity/greater_dweller.png");
+	private final static RenderType GREATER_DWELLER_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/greater_dweller_eyes.png"));
 
 	public GreaterDwellerRenderer(EntityRendererProvider.Context context) {
 		super(context, new GreaterDwellerModel<>(context.bakeLayer(UGModelLayers.GREATER_DWELLER)), 1.0F);
-		this.addLayer(new GreaterDwellerEyesLayer<>(this));
+		this.addLayer(new BasicEyesLayer<>(this, GREATER_DWELLER_EYES));
 	}
 
 	@Override

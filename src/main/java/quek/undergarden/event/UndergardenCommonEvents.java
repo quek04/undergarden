@@ -350,6 +350,7 @@ public class UndergardenCommonEvents {
 		event.put(UGEntityTypes.SMOG_MOG.get(), SmogMog.registerAttributes().build());
 		event.put(UGEntityTypes.FORGOTTEN.get(), Forgotten.registerAttributes().build());
 		event.put(UGEntityTypes.DENIZEN.get(), Denizen.registerAttributes().build());
+		event.put(UGEntityTypes.MYSTERIOUS_POT.get(), MysteriousPot.registerAttributes().build());
 	}
 
 	private static void registerPotionRecipes(RegisterBrewingRecipesEvent event) {

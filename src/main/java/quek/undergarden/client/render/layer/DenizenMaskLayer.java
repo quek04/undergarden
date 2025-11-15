@@ -17,7 +17,7 @@ import quek.undergarden.registry.UGItems;
 
 public class DenizenMaskLayer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
 
-	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/models/armor/denizen_mask.png");
+	private static final ResourceLocation TEXTURE = Undergarden.prefix("textures/models/armor/denizen_mask.png");
 	private final A model;
 
 	public DenizenMaskLayer(RenderLayerParent<T, M> renderer, A model) {

@@ -35,6 +35,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.DEPTHROCK_BRICK_WALL, "Depthrock Brick Wall");
 		addBlock(UGBlocks.DEPTHROCK_BUTTON, "Depthrock Button");
 		addBlock(UGBlocks.DEPTHROCK_PRESSURE_PLATE, "Depthrock Pressure Plate");
+		addBlock(UGBlocks.DEPTHROCK_POT, "Depthrock Pot");
 
 		addBlock(UGBlocks.SHIVERSTONE, "Shiverstone");
 		addBlock(UGBlocks.SHIVERSTONE_BRICKS, "Shiverstone Bricks");
@@ -413,6 +414,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.DENIZEN_SPAWN_EGG, "Denizen Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 		addItem(UGItems.MINION_SPAWN_EGG, "Forgotten Minion Spawn Egg");
+		addItem(UGItems.MYSTERIOUS_POT_SPAWN_EGG, "Mysterious Pot Spawn Egg");
 
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
 		addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
@@ -466,6 +468,7 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
 		addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
 		addEntityType(UGEntityTypes.DENIZEN, "Denizen");
+		addEntityType(UGEntityTypes.MYSTERIOUS_POT, "Mysterious Pot");
 
 		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 

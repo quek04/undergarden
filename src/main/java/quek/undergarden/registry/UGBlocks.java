@@ -57,6 +57,7 @@ public class UGBlocks {
 	public static final DeferredBlock<WallBlock> DEPTHROCK_BRICK_WALL = register("depthrock_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK_BRICKS.get())));
 	public static final DeferredBlock<ButtonBlock> DEPTHROCK_BUTTON = register("depthrock_button", () -> new ButtonBlock(BlockSetType.STONE, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON).sound(SoundType.BASALT)));
 	public static final DeferredBlock<PressurePlateBlock> DEPTHROCK_PRESSURE_PLATE = register("depthrock_pressure_plate", () -> new PressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.BASALT)));
+	public static final DeferredBlock<Block> DEPTHROCK_POT = register("depthrock_pot", () -> new DepthrockPotBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).sound(SoundType.DECORATED_POT_CRACKED).noOcclusion()));
 
 	//shiverstone
 	public static final DeferredBlock<Block> SHIVERSTONE = register("shiverstone", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.GLOW_LICHEN).strength(3.5F, 12F).sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops().friction(0.98F)));
