@@ -9,10 +9,7 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
-import quek.undergarden.block.BlisterberryBushBlock;
-import quek.undergarden.block.DeepturfBlock;
-import quek.undergarden.block.DenizenTotemBlock;
-import quek.undergarden.block.HangingGrongleLeavesBlock;
+import quek.undergarden.block.*;
 import quek.undergarden.datagen.helpers.UGBlockstateProvider;
 import quek.undergarden.registry.UGBlocks;
 
@@ -243,7 +240,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		ModelFile deepturf = models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/deepturf_block"));
 		ModelFile deepturf_snow = models().cubeBottomTop(name(UGBlocks.DEEPTURF_BLOCK) + "_snowy", texture("frozen_deepturf_block_side"), texture("deepsoil"), mcLoc("block/snow"));
 		getVariantBuilder(UGBlocks.DEEPTURF_BLOCK.get()).forAllStates(state -> {
-			if (state.getValue(DeepturfBlock.SNOWY)) {
+			if (state.getValue(SpreadingDeepturfBlock.SNOWY)) {
 				return ConfiguredModel.builder().modelFile(deepturf_snow).build();
 			} else {
 				return ConfiguredModel.builder()

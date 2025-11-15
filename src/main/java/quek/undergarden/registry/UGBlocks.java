@@ -129,9 +129,9 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> FORGOTTEN_BLOCK = register("forgotten_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).requiresCorrectToolForDrops().strength(50.0F, 1200.0F).sound(SoundType.NETHERITE_BLOCK)));
 
 	//normal blocks
-	public static final DeferredBlock<Block> DEEPTURF_BLOCK = register("deepturf_block", () -> new DeepturfBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
-	public static final DeferredBlock<Block> ASHEN_DEEPTURF_BLOCK = register("ashen_deepturf_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
-	public static final DeferredBlock<Block> FROZEN_DEEPTURF_BLOCK = register("frozen_deepturf_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
+	public static final DeferredBlock<Block> DEEPTURF_BLOCK = register("deepturf_block", () -> new SpreadingDeepturfBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
+	public static final DeferredBlock<Block> ASHEN_DEEPTURF_BLOCK = register("ashen_deepturf_block", () -> new BasicDeepturfBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
+	public static final DeferredBlock<Block> FROZEN_DEEPTURF_BLOCK = register("frozen_deepturf_block", () -> new BasicDeepturfBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).randomTicks().strength(0.6F).sound(SoundType.GRASS)));
 	public static final DeferredBlock<Block> DEEPSOIL = register("deepsoil", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
 	public static final DeferredBlock<Block> COARSE_DEEPSOIL = register("coarse_deepsoil", () -> new Block(BlockBehaviour.Properties.ofFullCopy(DEEPSOIL.get())));
 	public static final DeferredBlock<Block> DEEPSOIL_FARMLAND = register("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FARMLAND)));
