@@ -32,6 +32,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.BiggerJigsawStructure;
+import quek.undergarden.world.gen.structure.processor.ReplaceBlockWithEntityProcessor;
 
 import java.util.List;
 import java.util.Map;
@@ -183,7 +184,7 @@ public class UGStructures {
 	public static void bootstrapSets(BootstrapContext<StructureSet> context) {
 		HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
 		context.register(CATACOMBS_SET, new StructureSet(structures.getOrThrow(CATACOMBS), new RandomSpreadStructurePlacement(24, 12, RandomSpreadType.LINEAR, 276320045)));
-		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 6, 3, RandomSpreadType.LINEAR)));
+		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 3, 1, RandomSpreadType.LINEAR)));
 		context.register(DENIZEN_CAMP_SET, new StructureSet(structures.getOrThrow(DENIZEN_CAMP), new RandomSpreadStructurePlacement(12, 6, RandomSpreadType.LINEAR, 27630047)));
 		context.register(DEPLETED_MINE_SET, new StructureSet(structures.getOrThrow(DEPLETED_MINE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.LEGACY_TYPE_3, 0.004F, 50002673, Optional.empty(), 1, 0, RandomSpreadType.LINEAR)));
 	}
@@ -400,8 +401,14 @@ public class UGStructures {
 					new RandomBlockMatchTest(UGBlocks.CLOGGRUM_BLOCK.get(), 0.5F),
 					AlwaysTrueTest.INSTANCE,
 					UGBlocks.RAW_CLOGGRUM_BLOCK.get().defaultBlockState()
+				),
+				new ProcessorRule(
+					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_POT.get(), 0.50F),
+					AlwaysTrueTest.INSTANCE,
+					Blocks.AIR.defaultBlockState()
 				)
-			))
+			)),
+			new ReplaceBlockWithEntityProcessor(UGBlocks.DEPTHROCK_POT.get(), 0.25F, UGEntityTypes.MYSTERIOUS_POT.get())
 		)));
 
 		context.register(DENIZEN_CAMP_ROAD_PROCESSOR, new StructureProcessorList(List.of(
