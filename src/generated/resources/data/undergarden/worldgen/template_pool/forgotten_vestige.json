@@ -3,6 +3,33 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/aqueduct_1",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/aqueduct_2",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "undergarden:forgotten_vestige/depthrock/aqueduct_3",
+        "processors": "undergarden:forgotten_vestige_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
         "location": "undergarden:forgotten_vestige/depthrock/arch_1",
         "processors": "undergarden:forgotten_vestige_degradation",
         "projection": "rigid"
