@@ -32,7 +32,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.BiggerJigsawStructure;
-import quek.undergarden.world.gen.structure.processor.ReplaceBlockWithEntityProcessor;
 
 import java.util.List;
 import java.util.Map;
@@ -293,6 +292,9 @@ public class UGStructures {
 		), StructureTemplatePool.Projection.RIGID));
 
 		context.register(FORGOTTEN_VESTIGE_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/aqueduct_1"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/aqueduct_2"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/aqueduct_3"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_1"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_2"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_3"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
@@ -407,8 +409,8 @@ public class UGStructures {
 					AlwaysTrueTest.INSTANCE,
 					Blocks.AIR.defaultBlockState()
 				)
-			)),
-			new ReplaceBlockWithEntityProcessor(UGBlocks.DEPTHROCK_POT.get(), 0.25F, UGEntityTypes.MYSTERIOUS_POT.get())
+			))//,
+			//new ReplaceBlockWithEntityProcessor(UGBlocks.DEPTHROCK_POT.get(), 0.25F, UGEntityTypes.MYSTERIOUS_POT.get())
 		)));
 
 		context.register(DENIZEN_CAMP_ROAD_PROCESSOR, new StructureProcessorList(List.of(

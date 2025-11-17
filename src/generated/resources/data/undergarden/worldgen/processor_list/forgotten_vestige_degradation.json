@@ -56,12 +56,6 @@
           }
         }
       ]
-    },
-    {
-      "block": "undergarden:depthrock_pot",
-      "entity": "undergarden:mysterious_pot",
-      "probability": 0.25,
-      "processor_type": "undergarden:replace_block_with_entity"
     }
   ]
 }
