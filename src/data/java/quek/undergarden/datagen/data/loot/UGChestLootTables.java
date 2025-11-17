@@ -107,5 +107,16 @@ public record UGChestLootTables(HolderLookup.Provider registries) implements Loo
 				.add(LootItem.lootTableItem(UGItems.RAW_FROSTSTEEL).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
 			)
 		);
+		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pots/forgotten_vestige/house")), LootTable.lootTable()
+			.withPool(LootPool.lootPool()
+				.setRolls(ConstantValue.exactly(1.0F))
+				.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE).setWeight(100).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 8.0F))))
+				.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET).setWeight(50).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
+				.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET).setWeight(50).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
+				.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL).setWeight(25).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
+				.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD).setWeight(25).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
+				.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+			)
+		);
 	}
 }
