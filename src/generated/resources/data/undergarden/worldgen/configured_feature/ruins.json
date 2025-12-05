@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:block_pile",
+  "config": {
+    "state_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "undergarden:depthrock_bricks"
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "undergarden:cracked_depthrock_bricks"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "undergarden:polished_depthrock"
+          },
+          "weight": 2
+        }
+      ]
+    }
+  }
+}
