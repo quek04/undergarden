@@ -166,6 +166,7 @@ public class UGBiomes {
 
 		context.register(FORGOTTEN_FIELD, new Biome.BiomeBuilder()
 			.generationSettings(addOresAndCaves(addShroomPatches(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)))
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, UGPlacedFeatures.RUINS)
 				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, UGPlacedFeatures.DEPTHROCK_ROCK)
 				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, UGPlacedFeatures.SHIVERSTONE_ROCK)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEEPTURF_PATCH)
