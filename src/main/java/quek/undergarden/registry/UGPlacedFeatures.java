@@ -99,6 +99,7 @@ public class UGPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
 	public static final ResourceKey<PlacedFeature> ANCIENT_ROOT = create("ancient_root");
 	public static final ResourceKey<PlacedFeature> ANCIENT_ROOT_EXTRA = create("ancient_root_extra");
+	public static final ResourceKey<PlacedFeature> RUINS = create("ruins");
 
 	public static ResourceKey<PlacedFeature> create(String name) {
 		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
@@ -183,6 +184,7 @@ public class UGPlacedFeatures {
 		context.register(UTHERIUM_GROWTH_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UTHERIUM_GROWTH_EXTRA), crystal(100)));
 		context.register(ANCIENT_ROOT, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ANCIENT_ROOT), patch(50)));
 		context.register(ANCIENT_ROOT_EXTRA, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.ANCIENT_ROOT_EXTRA), patch(100)));
+		context.register(RUINS, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.RUINS), patchWithFilter(100, BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.DEEPSOIL.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
 	}
 
 	private static List<PlacementModifier> tree(int count) {

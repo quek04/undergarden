@@ -21,6 +21,7 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -123,6 +124,7 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> UTHERIUM_GROWTH_EXTRA = create("utherium_growth_extra");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_ROOT = create("ancient_root");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_ROOT_EXTRA = create("ancient_root_extra");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> RUINS = create("ruins");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
 		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
@@ -219,6 +221,7 @@ public class UGConfiguredFeatures {
 			0.8F, false)));
 		context.register(ANCIENT_ROOT, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(25)));
 		context.register(ANCIENT_ROOT_EXTRA, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(10)));
+		context.register(RUINS, new ConfiguredFeature<>(Feature.BLOCK_PILE, new BlockPileConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(UGBlocks.DEPTHROCK_BRICKS.get().defaultBlockState(), 5).add(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState(), 2).add(UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState(), 2).build()))));
 	}
 
 	private static RandomPatchConfiguration patch(Block block, int tries) {
