@@ -34,7 +34,7 @@ public class MysteriousPot extends PathfinderMob {
 
 	public static AttributeSupplier.Builder registerAttributes() {
 		return Mob.createMobAttributes()
-			.add(Attributes.MAX_HEALTH, 20.0F)
+			.add(Attributes.MAX_HEALTH, 8.0F)
 			.add(Attributes.MOVEMENT_SPEED, 0.3F)
 			.add(Attributes.STEP_HEIGHT, 1.0F)
 			.add(Attributes.SAFE_FALL_DISTANCE, 5.0F)
