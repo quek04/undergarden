@@ -32,6 +32,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.BiggerJigsawStructure;
+import quek.undergarden.world.gen.structure.processor.ReplaceBlockWithEntityProcessor;
 
 import java.util.List;
 import java.util.Map;
@@ -377,8 +378,8 @@ public class UGStructures {
 	}
 
 	public static void bootstrapProcessors(BootstrapContext<StructureProcessorList> context) {
-		context.register(CATACOMBS_DEGRADATION, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(CATACOMBS_DEGRADATION, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.5F),
 					AlwaysTrueTest.INSTANCE,
@@ -387,8 +388,9 @@ public class UGStructures {
 			))
 		)));
 
-		context.register(FORGOTTEN_VESTIGE_DEGRADATION, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(FORGOTTEN_VESTIGE_DEGRADATION, new StructureProcessorList(ImmutableList.of(
+			new ReplaceBlockWithEntityProcessor(UGBlocks.DEPTHROCK_POT.get(), 1.0F, UGEntityTypes.MYSTERIOUS_POT.get()),
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.25F),
 					AlwaysTrueTest.INSTANCE,
@@ -409,12 +411,11 @@ public class UGStructures {
 					AlwaysTrueTest.INSTANCE,
 					Blocks.AIR.defaultBlockState()
 				)
-			))//,
-			//new ReplaceBlockWithEntityProcessor(UGBlocks.DEPTHROCK_POT.get(), 0.25F, UGEntityTypes.MYSTERIOUS_POT.get())
+			))
 		)));
 
-		context.register(DENIZEN_CAMP_ROAD_PROCESSOR, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(DENIZEN_CAMP_ROAD_PROCESSOR, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.COARSE_DEEPSOIL.get(), 0.25F),
 					AlwaysTrueTest.INSTANCE,
@@ -422,8 +423,8 @@ public class UGStructures {
 				)
 			))
 		)));
-		context.register(DENIZEN_CAMP_WOOD_PROCESSOR, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(DENIZEN_CAMP_WOOD_PROCESSOR, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.ANCIENT_ROOT_PLANKS.get(), 0.5F),
 					AlwaysTrueTest.INSTANCE,
@@ -437,8 +438,8 @@ public class UGStructures {
 			))
 		)));
 
-		context.register(DEPLETED_MINE_LANTERN_PROCESSOR, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(DEPLETED_MINE_LANTERN_PROCESSOR, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.CLOGGRUM_LANTERN.get(), 0.75F),
 					AlwaysTrueTest.INSTANCE,
