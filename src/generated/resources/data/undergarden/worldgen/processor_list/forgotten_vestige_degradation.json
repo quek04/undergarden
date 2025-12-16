@@ -1,6 +1,12 @@
 {
   "processors": [
     {
+      "block": "undergarden:depthrock_pot",
+      "entity": "undergarden:mysterious_pot",
+      "probability": 1.0,
+      "processor_type": "undergarden:replace_block_with_entity"
+    },
+    {
       "processor_type": "minecraft:rule",
       "rules": [
         {

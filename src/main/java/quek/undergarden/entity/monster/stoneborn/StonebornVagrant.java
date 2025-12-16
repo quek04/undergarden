@@ -88,7 +88,7 @@ public class StonebornVagrant extends AbstractStoneborn implements NeutralMob {
 	@Override
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
-		if (!itemstack.is(UGItems.STONEBORN_SPAWN_EGG) && this.isAlive() && !this.isTrading() && !this.isBaby() && this.inUndergarden()) {
+		if (!itemstack.is(UGItems.STONEBORN_SPAWN_EGG) && this.isAlive() && !this.isTrading() && !this.isBaby() && this.inUndergarden() && !this.isAggressive()) {
 //			if (hand == InteractionHand.MAIN_HAND) {
 //				player.awardStat(Stats.TALKED_TO_VILLAGER);
 //			}
@@ -131,5 +131,10 @@ public class StonebornVagrant extends AbstractStoneborn implements NeutralMob {
 	@Override
 	public void startPersistentAngerTimer() {
 		this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+	}
+
+	@Override
+	public boolean showProgressBar() {
+		return false;
 	}
 }

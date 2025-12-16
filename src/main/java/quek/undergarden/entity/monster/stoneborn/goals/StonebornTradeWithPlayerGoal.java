@@ -2,15 +2,15 @@ package quek.undergarden.entity.monster.stoneborn.goals;
 
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.player.Player;
-import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
+import quek.undergarden.entity.monster.stoneborn.AbstractStoneborn;
 
 import java.util.EnumSet;
 
 public class StonebornTradeWithPlayerGoal extends Goal {
 
-	private final StonebornVagrant stoneborn;
+	private final AbstractStoneborn stoneborn;
 
-	public StonebornTradeWithPlayerGoal(StonebornVagrant stoneborn) {
+	public StonebornTradeWithPlayerGoal(AbstractStoneborn stoneborn) {
 		this.stoneborn = stoneborn;
 		this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
 	}

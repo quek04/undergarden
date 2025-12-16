@@ -19,10 +19,10 @@ public class GlitterkelpFeature extends Feature<NoneFeatureConfiguration> {
 	}
 
 	@Override
-	public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-		WorldGenLevel level = pContext.level();
-		BlockPos pos = pContext.origin();
-		RandomSource random = pContext.random();
+	public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+		WorldGenLevel level = context.level();
+		BlockPos pos = context.origin();
+		RandomSource random = context.random();
 		int i = 0;
 		int oceanY = 32;
 		BlockPos blockpos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
