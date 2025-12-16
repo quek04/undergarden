@@ -2,23 +2,23 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "E": {
-      "item": "minecraft:ender_pearl"
+    "F": {
+      "item": "undergarden:forgotten_nugget"
     },
     "G": {
-      "item": "minecraft:gold_ingot"
+      "item": "minecraft:gold_nugget"
     },
     "I": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:iron_nugget"
     }
   },
   "pattern": [
     "GIG",
-    "IEI",
+    "IFI",
     "GIG"
   ],
   "result": {
     "count": 1,
-    "id": "undergarden:catalyst"
+    "id": "undergarden:weak_catalyst"
   }
 }

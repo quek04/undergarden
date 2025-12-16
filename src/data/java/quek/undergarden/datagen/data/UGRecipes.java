@@ -145,7 +145,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.define('S', Tags.Items.RODS_WOODEN)
 			.define('T', UGItems.TWISTYTWIG.get())
 			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
 			.save(output, name("undergarden_scaffolding"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.GLOOM_O_LANTERN.get())
@@ -154,7 +153,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.define('G', UGBlocks.CARVED_GLOOMGOURD.get())
 			.define('T', Items.TORCH)
 			.unlockedBy("has_carved_gourd", has(UGBlocks.CARVED_GLOOMGOURD.get()))
-			.unlockedBy("has_torch", has(Items.TORCH))
 			.save(output);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.SHARD_O_LANTERN.get())
@@ -163,7 +161,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.define('G', UGBlocks.CARVED_GLOOMGOURD.get())
 			.define('T', UGBlocks.SHARD_TORCH.get())
 			.unlockedBy("has_carved_gourd", has(UGBlocks.CARVED_GLOOMGOURD.get()))
-			.unlockedBy("has_shard_torch", has(UGBlocks.SHARD_TORCH.get()))
 			.save(output);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, UGBlocks.CLOGGRUM_BARS.get(), 16)
@@ -179,7 +176,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.define('D', UGBlocks.DEEPSOIL.get())
 			.define('P', UGItems.DEPTHROCK_PEBBLE.get())
 			.unlockedBy("has_deepsoil", has(UGBlocks.DEEPSOIL.get()))
-			.unlockedBy("has_pebble", has(UGItems.DEPTHROCK_PEBBLE.get()))
 			.save(output);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, UGBlocks.DEEPSOIL.get())
@@ -193,7 +189,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.pattern(" S ")
 			.define('S', Tags.Items.RODS_WOODEN)
 			.define('T', UGItems.TWISTYTWIG.get())
-			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
 			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
 			.save(output);
 
@@ -212,7 +207,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.pattern("BBB")
 			.define('T', UGItems.TWISTYTWIG.get())
 			.define('B', UGItems.ROTTEN_BLISTERBERRY.get())
-			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
 			.unlockedBy("has_blisterberry", has(UGItems.ROTTEN_BLISTERBERRY.get()))
 			.save(output);
 
@@ -231,7 +225,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.define('C', UGItems.UTHERIC_SHARD.get())
 			.define('S', Tags.Items.RODS_WOODEN)
 			.unlockedBy("has_shard", has(UGItems.UTHERIC_SHARD.get()))
-			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
 			.save(output);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.TORCH, 2)
@@ -240,19 +233,26 @@ public class UGRecipes extends UGRecipeProvider {
 			.define('D', UGItems.DITCHBULB_PASTE.get())
 			.define('S', Tags.Items.RODS_WOODEN)
 			.unlockedBy("has_ditchbulb_paste", has(UGItems.DITCHBULB_PASTE.get()))
-			.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
 			.save(output, name("torch_ditchbulb_paste"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, UGItems.CATALYST.get())
 			.pattern("GIG")
-			.pattern("IDI")
+			.pattern("IEI")
 			.pattern("GIG")
 			.define('G', Items.GOLD_INGOT)
 			.define('I', Items.IRON_INGOT)
-			.define('D', Items.DIAMOND)
-			.unlockedBy("has_gold", has(Items.GOLD_INGOT))
-			.unlockedBy("has_iron", has(Items.IRON_INGOT))
-			.unlockedBy("has_diamond", has(Items.DIAMOND))
+			.define('E', Items.ENDER_PEARL)
+			.unlockedBy("has_ender_pearl", has(Items.ENDER_PEARL))
+			.save(output);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, UGItems.WEAK_CATALYST.get())
+			.pattern("GIG")
+			.pattern("IFI")
+			.pattern("GIG")
+			.define('G', Items.GOLD_NUGGET)
+			.define('I', Items.IRON_NUGGET)
+			.define('F', UGItems.FORGOTTEN_NUGGET)
+			.unlockedBy("has_forgotten_nugget", has(UGItems.FORGOTTEN_NUGGET))
 			.save(output);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.GLOOMGOURD_PIE.get())
@@ -313,7 +313,6 @@ public class UGRecipes extends UGRecipeProvider {
 			.pattern("  T")
 			.define('T', UGItems.TWISTYTWIG.get())
 			.define('G', UGItems.GOO_BALL.get())
-			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
 			.unlockedBy("has_goo_ball", has(UGItems.GOO_BALL.get()))
 			.save(output, name("undergarden_lead"));
 
@@ -564,9 +563,6 @@ public class UGRecipes extends UGRecipeProvider {
 		smeltingRecipe(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get(), UGBlocks.TREMBLECRUST_BRICKS.get(), 0.1F).save(output, name("smelt_tremblecrust_bricks"));
 
 		smeltingRecipe(UGBlocks.SEDIMENT_GLASS.get(), UGBlocks.SEDIMENT.get(), 0.1F).save(output);
-
-		smeltingRecipe(Items.DIAMOND, UGItems.CATALYST.get(), 0.0F).save(output, name("smelt_catalyst"));
-		blastingRecipe(Items.DIAMOND, UGItems.CATALYST.get(), 0.0F).save(output, name("blast_catalyst"));
 
 		ore(Items.COAL, ImmutableList.of(UGBlocks.DEPTHROCK_COAL_ORE.get(), UGBlocks.SHIVERSTONE_COAL_ORE.get()), 0.1F, "coal", output);
 		ore(Items.IRON_INGOT, ImmutableList.of(UGBlocks.DEPTHROCK_IRON_ORE.get(), UGBlocks.SHIVERSTONE_IRON_ORE.get()), 0.7F, "iron_ingot", output);

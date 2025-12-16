@@ -94,7 +94,8 @@ public class UGItems {
 	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FORGOTTEN, -3, 0.0F)).rarity(FORGOTTEN_RARITY)));
 
 	//misc tools
-	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
+	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", () -> new CatalystItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+	public static final DeferredItem<Item> WEAK_CATALYST = ITEMS.register("weak_catalyst", () -> new WeakCatalystItem(new Item.Properties().durability(1).stacksTo(1).rarity(Rarity.RARE)));
 	//public static final DeferredItem<Item> CORRUPT_CATALYST = ITEMS.register("corrupt_catalyst", () -> new Item(new Item.Properties().stacksTo(1).rarity(UTHERIUM_RARITY)));
 	public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
 	public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () -> new SpearItem(new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).rarity(Rarity.UNCOMMON)));

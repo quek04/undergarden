@@ -1,16 +1,6 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stick": {
-      "conditions": {
-        "items": [
-          {
-            "items": "#c:rods/wooden"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "undergarden:slingshot"
@@ -31,7 +21,6 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_stick",
       "has_twistytwig"
     ]
   ],
