@@ -1,32 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "undergarden:smelt_catalyst"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_undergarden:catalyst": {
+    "has_forgotten_nugget": {
       "conditions": {
         "items": [
           {
-            "items": "undergarden:catalyst"
+            "items": "undergarden:forgotten_nugget"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:weak_catalyst"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_undergarden:catalyst"
+      "has_forgotten_nugget"
     ]
   ],
   "rewards": {
     "recipes": [
-      "undergarden:smelt_catalyst"
+      "undergarden:weak_catalyst"
     ]
   }
 }

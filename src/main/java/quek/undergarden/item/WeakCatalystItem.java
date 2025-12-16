@@ -4,20 +4,18 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import quek.undergarden.block.portal.UndergardenPortalShape;
 import quek.undergarden.registry.UGDimensions;
 import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Optional;
-import java.util.function.Predicate;
 
-public class CatalystItem extends Item {
+public class WeakCatalystItem extends CatalystItem {
 
-	public CatalystItem(Properties properties) {
+	public WeakCatalystItem(Properties properties) {
 		super(properties);
 	}
 
@@ -29,19 +27,12 @@ public class CatalystItem extends Item {
 			if (optional.isPresent()) {
 				optional.get().createPortalBlocks();
 				context.getLevel().playSound(context.getPlayer(), context.getClickedPos(), UGSoundEvents.UNDERGARDEN_PORTAL_ACTIVATE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+				if (context.getPlayer() != null && !context.getLevel().isClientSide) {
+					context.getItemInHand().hurtAndBreak(1, context.getPlayer(), LivingEntity.getSlotForHand(context.getPlayer().getUsedItemHand()));
+				}
 				return InteractionResult.sidedSuccess(context.getLevel().isClientSide());
 			}
 		}
 		return InteractionResult.FAIL;
-	}
-
-	public static Optional<UndergardenPortalShape> findPortalShape(LevelAccessor accessor, BlockPos pos, Predicate<UndergardenPortalShape> shape, Direction.Axis axis) {
-		Optional<UndergardenPortalShape> optional = Optional.of(new UndergardenPortalShape(accessor, pos, axis)).filter(shape);
-		if (optional.isPresent()) {
-			return optional;
-		} else {
-			Direction.Axis oppositeAxis = axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-			return Optional.of(new UndergardenPortalShape(accessor, pos, oppositeAxis)).filter(shape);
-		}
 	}
 }
