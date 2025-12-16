@@ -32,7 +32,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.structure.BiggerJigsawStructure;
-import quek.undergarden.world.gen.structure.processor.ReplaceBlockWithEntityProcessor;
 
 import java.util.List;
 import java.util.Map;
@@ -63,6 +62,7 @@ public class UGStructures {
 	public static final ResourceKey<StructureSet> FORGOTTEN_VESTIGE_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige"));
 
 	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige"));
+	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_HOUSE_POT_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/house_pot_pool"));
 
 	public static final ResourceKey<StructureProcessorList> FORGOTTEN_VESTIGE_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige_degradation"));
 
@@ -319,6 +319,12 @@ public class UGStructures {
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_6"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1)
 		), StructureTemplatePool.Projection.RIGID));
 
+		context.register(FORGOTTEN_VESTIGE_HOUSE_POT_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock_pot")), 2),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/mysterious_pot")), 1),
+			Pair.of(StructurePoolElement.single("minecraft:empty"), 3)
+		), StructureTemplatePool.Projection.RIGID));
+
 		context.register(DENIZEN_CAMP_TOTEM_CIRCLE_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
 			Pair.of(StructurePoolElement.single(name("denizen_camp/totem_circle/circle_1"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1),
 			Pair.of(StructurePoolElement.single(name("denizen_camp/totem_circle/circle_2"), processors.getOrThrow(DENIZEN_CAMP_WOOD_PROCESSOR)), 1)
@@ -389,7 +395,6 @@ public class UGStructures {
 		)));
 
 		context.register(FORGOTTEN_VESTIGE_DEGRADATION, new StructureProcessorList(ImmutableList.of(
-			new ReplaceBlockWithEntityProcessor(UGBlocks.DEPTHROCK_POT.get(), 1.0F, UGEntityTypes.MYSTERIOUS_POT.get()),
 			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.25F),
@@ -405,11 +410,6 @@ public class UGStructures {
 					new RandomBlockMatchTest(UGBlocks.CLOGGRUM_BLOCK.get(), 0.5F),
 					AlwaysTrueTest.INSTANCE,
 					UGBlocks.RAW_CLOGGRUM_BLOCK.get().defaultBlockState()
-				),
-				new ProcessorRule(
-					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_POT.get(), 0.50F),
-					AlwaysTrueTest.INSTANCE,
-					Blocks.AIR.defaultBlockState()
 				)
 			))
 		)));

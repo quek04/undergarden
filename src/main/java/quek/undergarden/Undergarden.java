@@ -61,8 +61,7 @@ public class Undergarden {
 			UGMenuTypes.MENU_TYPES,
 			UGRecipeSerializers.RECIPE_SERIALIZERS,
 			UGRecipeTypes.RECIPE_TYPES,
-			UGDataComponents.COMPONENTS,
-			UGStructureProcessors.STRUCTURE_PROCESSORS
+			UGDataComponents.COMPONENTS
 		};
 
 		for (DeferredRegister<?> register : registers) {
