@@ -210,16 +210,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "undergarden:music_disc_mammoth",
-          "weight": 4
-        },
-        {
-          "type": "minecraft:item",
-          "name": "undergarden:music_disc_relict",
-          "weight": 4
-        },
-        {
-          "type": "minecraft:item",
           "name": "undergarden:forgotten_upgrade_smithing_template",
           "weight": 3
         },
