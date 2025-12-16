@@ -16,23 +16,12 @@
         "recipe": "undergarden:gloom_o_lantern"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_torch": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:torch"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_carved_gourd",
-      "has_torch"
+      "has_carved_gourd"
     ]
   ],
   "rewards": {

@@ -11,16 +11,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_shard_torch": {
-      "conditions": {
-        "items": [
-          {
-            "items": "undergarden:shard_torch"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "undergarden:shard_o_lantern"
@@ -31,8 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_carved_gourd",
-      "has_shard_torch"
+      "has_carved_gourd"
     ]
   ],
   "rewards": {
