@@ -479,7 +479,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				Component.translatable("advancement.undergarden.summon_minion.title"),
 				Component.translatable("advancement.undergarden.summon_minion.desc"),
 				null,
-				AdvancementType.GOAL,
+				AdvancementType.TASK,
 				true,
 				true,
 				false
@@ -503,7 +503,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			.save(consumer, "undergarden:undergarden/gloomper_secret_disc");
 
 		AdvancementHolder enter_depths = Advancement.Builder.advancement()
-			.parent(enter_undergarden)
+			.parent(forgotten_ingot)
 			.display(
 				UGBlocks.DREADROCK.get(),
 				Component.translatable("advancement.undergarden.enter_depths.title"),
