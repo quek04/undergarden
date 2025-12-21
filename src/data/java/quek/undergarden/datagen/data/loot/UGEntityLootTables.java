@@ -239,10 +239,10 @@ public class UGEntityLootTables extends EntityLootSubProvider {
 
 		this.add(UGEntityTypes.MYSTERIOUS_POT.get(), LootTable.lootTable()
 			.withPool(LootPool.lootPool()
-				.setRolls(ConstantValue.exactly(1.0F))
+				.setRolls(UniformGenerator.between(1.0F, 3.0F))
 				.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET).setWeight(50).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
-				.add(LootItem.lootTableItem(Items.IRON_NUGGET).setWeight(50).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
-				.add(LootItem.lootTableItem(Items.GOLD_NUGGET).setWeight(50).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
+//				.add(LootItem.lootTableItem(Items.IRON_NUGGET).setWeight(50).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
+//				.add(LootItem.lootTableItem(Items.GOLD_NUGGET).setWeight(50).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
 				.add(LootItem.lootTableItem(UGItems.FROSTSTEEL_NUGGET).setWeight(50).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))))
 				.add(LootItem.lootTableItem(UGItems.REGALIUM_CRYSTAL).setWeight(25).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
 				.add(LootItem.lootTableItem(UGItems.UTHERIC_SHARD).setWeight(25).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
