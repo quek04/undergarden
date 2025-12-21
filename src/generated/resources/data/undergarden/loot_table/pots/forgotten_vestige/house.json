@@ -145,38 +145,6 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:iron_nugget",
-          "weight": 50
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 9.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:gold_nugget",
-          "weight": 50
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 9.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "undergarden:froststeel_nugget",
           "weight": 50
         },
@@ -225,7 +193,11 @@
           "weight": 5
         }
       ],
-      "rolls": 1.0
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 3.0,
+        "min": 1.0
+      }
     }
   ],
   "random_sequence": "undergarden:pots/forgotten_vestige/house"
