@@ -606,7 +606,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				Component.translatable("advancement.undergarden.craft_infuser.title"),
 				Component.translatable("advancement.undergarden.craft_infuser.desc"),
 				null,
-				AdvancementType.GOAL,
+				AdvancementType.TASK,
 				true,
 				true,
 				false
