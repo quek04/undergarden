@@ -548,7 +548,10 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
+			.requirements(AdvancementRequirements.Strategy.OR)
 			.addCriterion("has_purity_effect", EffectsChangedTrigger.TriggerInstance.hasEffects(MobEffectsPredicate.Builder.effects().and(UGEffects.PURITY)))
+			.addCriterion("has_eaten_rogdorium", ConsumeItemTrigger.TriggerInstance.usedItem(UGItems.ROGDORIUM))
+			.addCriterion("has_eaten_rogdorium_nugget", ConsumeItemTrigger.TriggerInstance.usedItem(UGItems.ROGDORIUM_NUGGET))
 			.save(consumer, "undergarden:undergarden/cure_utheric_infection");
 
 		AdvancementHolder enter_denizen_camp = Advancement.Builder.advancement()
