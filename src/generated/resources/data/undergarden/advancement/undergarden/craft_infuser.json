@@ -16,7 +16,6 @@
     "description": {
       "translate": "advancement.undergarden.craft_infuser.desc"
     },
-    "frame": "goal",
     "icon": {
       "count": 1,
       "id": "undergarden:infuser"
