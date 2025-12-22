@@ -147,7 +147,7 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.RELICT_DISC);
 		normalItem(UGItems.GLOOMPER_SECRET_DISC);
 		normalItem(UGItems.CATALYST);
-		normalItem(UGItems.WEAK_CATALYST);
+		normalItem(UGItems.CRUMBLING_CATALYST);
 		normalItem(UGItems.DEPTHROCK_PEBBLE);
 		normalItem(UGItems.TWISTYTWIG);
 		normalItem(UGItems.CLOGGRUM_INGOT);
