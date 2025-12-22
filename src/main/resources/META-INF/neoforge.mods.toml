@@ -18,7 +18,7 @@ enumExtensions = "META-INF/enumextensions.json"
 [[dependencies.undergarden]]
 	modId = "neoforge"
 	type = "required"
-	versionRange = "[21.1.33,)"
+	versionRange = "[21.1.181,)"
 	ordering = "NONE"
 	side = "BOTH"
 
