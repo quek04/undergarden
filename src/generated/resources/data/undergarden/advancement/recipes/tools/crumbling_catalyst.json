@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "undergarden:forgotten_nugget"
+            "items": "#c:nuggets/forgotten_metal"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "undergarden:weak_catalyst"
+        "recipe": "undergarden:crumbling_catalyst"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "undergarden:weak_catalyst"
+      "undergarden:crumbling_catalyst"
     ]
   }
 }

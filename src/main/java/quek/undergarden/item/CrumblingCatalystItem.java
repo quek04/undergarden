@@ -13,9 +13,9 @@ import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Optional;
 
-public class WeakCatalystItem extends CatalystItem {
+public class CrumblingCatalystItem extends CatalystItem {
 
-	public WeakCatalystItem(Properties properties) {
+	public CrumblingCatalystItem(Properties properties) {
 		super(properties);
 	}
 

@@ -236,23 +236,23 @@ public class UGRecipes extends UGRecipeProvider {
 			.save(output, name("torch_ditchbulb_paste"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, UGItems.CATALYST.get())
-			.pattern("GIG")
-			.pattern("IEI")
-			.pattern("GIG")
-			.define('G', Items.GOLD_INGOT)
-			.define('I', Items.IRON_INGOT)
-			.define('E', Items.ENDER_PEARL)
-			.unlockedBy("has_ender_pearl", has(Items.ENDER_PEARL))
+			.pattern("CSC")
+			.pattern("SES")
+			.pattern("CSC")
+			.define('C', Tags.Items.INGOTS_COPPER)
+			.define('S', Tags.Items.STONES)
+			.define('E', Tags.Items.ENDER_PEARLS)
+			.unlockedBy("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
 			.save(output);
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, UGItems.WEAK_CATALYST.get())
-			.pattern("GIG")
-			.pattern("IFI")
-			.pattern("GIG")
-			.define('G', Items.GOLD_NUGGET)
-			.define('I', Items.IRON_NUGGET)
-			.define('F', UGItems.FORGOTTEN_NUGGET)
-			.unlockedBy("has_forgotten_nugget", has(UGItems.FORGOTTEN_NUGGET))
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, UGItems.CRUMBLING_CATALYST.get())
+			.pattern("CDC")
+			.pattern("DFD")
+			.pattern("CDC")
+			.define('C', UGTags.Items.INGOTS_CLOGGRUM)
+			.define('D', UGBlocks.DEPTHROCK)
+			.define('F', UGTags.Items.NUGGETS_FORGOTTEN_METAL)
+			.unlockedBy("has_forgotten_nugget", has(UGTags.Items.NUGGETS_FORGOTTEN_METAL))
 			.save(output);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, UGItems.GLOOMGOURD_PIE.get())
