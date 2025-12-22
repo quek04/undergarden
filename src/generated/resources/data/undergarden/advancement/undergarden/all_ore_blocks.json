@@ -17,6 +17,9 @@
             "items": "undergarden:regalium_block"
           },
           {
+            "items": "undergarden:forgotten_block"
+          },
+          {
             "items": "undergarden:rogdorium_block"
           }
         ]

@@ -241,7 +241,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
-			.addCriterion("has_all_ore_blocks", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.ROGDORIUM_BLOCK.get()))
+			.addCriterion("has_all_ore_blocks", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.FORGOTTEN_BLOCK.get(), UGBlocks.ROGDORIUM_BLOCK.get()))
 			.save(consumer, "undergarden:undergarden/all_ore_blocks");
 
 		AdvancementHolder cloggrum_armor = Advancement.Builder.advancement()
