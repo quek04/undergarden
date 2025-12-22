@@ -9,14 +9,17 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import quek.undergarden.Undergarden;
-import quek.undergarden.datagen.assets.*;
+import quek.undergarden.datagen.assets.UGBlockStates;
+import quek.undergarden.datagen.assets.UGItemModels;
+import quek.undergarden.datagen.assets.UGLang;
+import quek.undergarden.datagen.assets.UGSoundDefinitions;
 import quek.undergarden.datagen.data.*;
 import quek.undergarden.datagen.data.loot.UGLootTables;
 import quek.undergarden.datagen.data.tags.*;
 
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = Undergarden.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Undergarden.MODID)
 public class UGDataGenerators {
 
 	@SubscribeEvent
