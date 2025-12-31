@@ -59,6 +59,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import quek.undergarden.Undergarden;
@@ -102,6 +103,7 @@ public class UndergardenCommonEvents {
 		bus.addListener(UndergardenCommonEvents::registerSpawnPlacements);
 		bus.addListener(UndergardenCommonEvents::registerDataMaps);
 		bus.addListener(UGCreativeModeTabs::registerBuckets);
+		bus.addListener(UndergardenCommonEvents::registerRegistries);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerCommands);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::tickPortalLogic);
@@ -489,5 +491,9 @@ public class UndergardenCommonEvents {
 
 	private static void registerCommands(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("undergarden").then(InfectionCommand.register()));
+	}
+
+	public static void registerRegistries(NewRegistryEvent event) {
+		event.register(UGRegistries.STONEBORN_JOB_REGISTRY);
 	}
 }
