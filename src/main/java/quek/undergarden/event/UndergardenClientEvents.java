@@ -398,6 +398,8 @@ public class UndergardenClientEvents {
 		});
 		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_vignette"), ((guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
+			if (minecraft.screen != null && minecraft.screen.isPauseScreen())
+				return;
 			LocalPlayer player = minecraft.player;
 			ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
 			RenderSystem.disableDepthTest();
