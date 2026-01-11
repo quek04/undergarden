@@ -2,6 +2,7 @@ package quek.undergarden.registry;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -18,6 +19,9 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import quek.undergarden.Undergarden;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UGBiomes {
 
@@ -611,54 +615,32 @@ public class UGBiomes {
 	}
 
 	public static BiomeSource buildBiomeSource(HolderGetter<Biome> biomes) {
-		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(ImmutableList.of(
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(FORGOTTEN_FIELD)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
+		List<Pair<Climate.ParameterPoint, Holder<Biome>>> params = new ArrayList<>();
 
-			Pair.of(Climate.parameters(-1.0F, -0.4F, 0.0F, -0.7F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(FROSTFIELDS)),
-			Pair.of(Climate.parameters(-1.0F, -0.4F, 0.0F, -0.7F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ICY_SEA)),
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.75F, 0.0F), FORGOTTEN_FIELD, ANCIENT_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, -0.5F, 0.75F, 0.0F, -0.7F, 0.0F), INK_MUSHROOM_BOG, ANCIENT_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, -0.2F, 0.85F, 0.0F, -0.65F, 0.0F), INDIGO_MUSHROOM_BOG, ANCIENT_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, -0.4F, 0.8F, 0.0F, -0.6F, 0.0F), VEIL_MUSHROOM_BOG, DEAD_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, -0.65F, 0.85F, 0.0F, -0.6F, 0.0F), BLOOD_MUSHROOM_BOG, DEAD_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.2F, 0.0F, -0.3F, -0.6F, 0.0F, 0.75F, 0.0F), GRONGLEGROWTH, ANCIENT_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(-0.2F), Climate.Parameter.point(-0.15F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(-1.0F, -0.8F), 0.0F), BARREN_ABYSS, DEAD_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(-0.2F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(-1.0F, -0.825F), 0.0F), SMOG_SPIRES, DEAD_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, -0.2F, 0.0F, 0.0F, 0.45F, 0.0F), WIGGLEWOOD_FOREST, ANCIENT_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, -0.15F, 0.0F, 0.0F, 0.45F, 0.0F), DENSE_FOREST, ANCIENT_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, 0.1F, 0.0F, 0.0F, 0.6F, 0.0F), SMOGSTEM_FOREST, ANCIENT_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, 0.4F, 0.0F, 0.0F, 0.85F, 0.0F), FROSTY_SMOGSTEM_FOREST, ICY_SEA);
+		createForBiomeAndSea(params, biomes, Climate.parameters(0.0F, 0.0F, 0.9F, 0.0F, 0.0F, 1.0F, 0.0F), FROSTFIELDS, ICY_SEA);
 
-			Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(SMOGSTEM_FOREST)),
-			Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
+		params.add(Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DEPTHS)));
+		params.add(Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.7F, 1.0F), Climate.Parameter.point(-2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(INFECTED_DEPTHS)));
+		params.add(Pair.of(Climate.parameters(1.5F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(PUFF_MUSHROOM_FOREST)));
+		params.add(Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, -1.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(ROGDORIUM_GROVE)));
 
-			Pair.of(Climate.parameters(0.0F, -0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(WIGGLEWOOD_FOREST)),
-			Pair.of(Climate.parameters(0.0F, -0.4F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
+		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(params));
+	}
 
-			Pair.of(Climate.parameters(1.0F, 0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(DENSE_FOREST)),
-			Pair.of(Climate.parameters(1.0F, 0.4F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
-
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.9F, 0.0F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(GRONGLEGROWTH)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.9F, 0.0F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
-
-			Pair.of(Climate.parameters(-1.0F, -0.4F, 0.0F, -0.7F, 0.0F, 0.5F, 0.0F), biomes.getOrThrow(FROSTY_SMOGSTEM_FOREST)),
-			Pair.of(Climate.parameters(-1.0F, -0.4F, 0.0F, -0.7F, -1.0F, 0.5F, 0.0F), biomes.getOrThrow(ICY_SEA)),
-
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F), biomes.getOrThrow(BARREN_ABYSS)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, -1.0F, 0.0F, 0.0F), biomes.getOrThrow(DEAD_SEA)),
-
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.75F, 0.0F, 1.0F, 0.0F), biomes.getOrThrow(SMOG_SPIRES)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.75F, -1.0F, 1.0F, 0.0F), biomes.getOrThrow(DEAD_SEA)),
-
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F), biomes.getOrThrow(INK_MUSHROOM_BOG)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
-
-			Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F), biomes.getOrThrow(INDIGO_MUSHROOM_BOG)),
-			Pair.of(Climate.parameters(1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
-
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F), biomes.getOrThrow(VEIL_MUSHROOM_BOG)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -1.0F, -1.0F, 0.0F), biomes.getOrThrow(DEAD_SEA)),
-
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, 0.0F, -1.0F, 0.0F), biomes.getOrThrow(BLOOD_MUSHROOM_BOG)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.7F, -1.0F, -1.0F, 0.0F), biomes.getOrThrow(DEAD_SEA)),
-
-			//Pair.of(Climate.parameters(Climate.Parameter.span(0.0F, 1.0F), Climate.Parameter.span(0.0F, 0.4F), Climate.Parameter.span(0.0F, 0.9F), Climate.Parameter.point(0.0F), Climate.Parameter.point(-1.0F), Climate.Parameter.span(-1.0F, 1.0F), 0.0F), biomes.getOrThrow(ANCIENT_SEA)),
-			//Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.7F, 1.0F), Climate.Parameter.point(-1.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(DEAD_SEA)),
-			//Pair.of(Climate.parameters(Climate.Parameter.point(-1.0F), Climate.Parameter.point(-0.4F), Climate.Parameter.point(-0.9F), Climate.Parameter.point(-0.7F), Climate.Parameter.point(-1.0F), Climate.Parameter.span(0.0F, 0.5F), 0.0F), biomes.getOrThrow(ICY_SEA)),
-
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(DEPTHS)),
-			Pair.of(Climate.parameters(Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.point(0.0F), Climate.Parameter.span(0.7F, 1.0F), Climate.Parameter.point(-2.0F), Climate.Parameter.point(0.0F), 0.0F), biomes.getOrThrow(INFECTED_DEPTHS)),
-			Pair.of(Climate.parameters(1.5F, 0.0F, 0.0F, 0.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(PUFF_MUSHROOM_FOREST)),
-			Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, -1.0F, -2.0F, 0.0F, 0.0F), biomes.getOrThrow(ROGDORIUM_GROVE))
-		)));
+	private static void createForBiomeAndSea(List<Pair<Climate.ParameterPoint, Holder<Biome>>> list, HolderGetter<Biome> biomes, Climate.ParameterPoint parameters, ResourceKey<Biome> mainBiome, ResourceKey<Biome> sea) {
+		list.add(Pair.of(parameters, biomes.getOrThrow(mainBiome)));
+		list.add(Pair.of(Climate.parameters(parameters.temperature(), parameters.humidity(), parameters.continentalness(), parameters.erosion(), Climate.Parameter.point(-1.0F), parameters.weirdness(), parameters.offset()), biomes.getOrThrow(sea)));
 	}
 }
