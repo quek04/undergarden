@@ -150,7 +150,7 @@ public class UGEntityLootTables extends EntityLootSubProvider {
 				)
 			)
 		);
-		this.add(UGEntityTypes.STONEBORN.get(), LootTable.lootTable()
+		this.add(UGEntityTypes.STONEBORN_VAGRANT.get(), LootTable.lootTable()
 			.withPool(LootPool.lootPool()
 				.setRolls(ConstantValue.exactly(1))
 				.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE.get())

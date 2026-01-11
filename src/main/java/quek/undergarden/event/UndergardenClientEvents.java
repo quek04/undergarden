@@ -162,7 +162,7 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.BRUTE.get(), BruteRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.SCINTLING.get(), ScintlingRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.GLOOMPER.get(), GloomperRenderer::new);
-		event.registerEntityRenderer(UGEntityTypes.STONEBORN.get(), StonebornRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.STONEBORN_VAGRANT.get(), StonebornVagrantRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.NARGOYLE.get(), NargoyleRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.MUNCHER.get(), MuncherRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.SPLOOGIE.get(), SploogieRenderer::new);
@@ -190,7 +190,7 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.BRUTE, BruteModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.SCINTLING, ScintlingModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.GLOOMPER, GloomperModel::createBodyLayer);
-		event.registerLayerDefinition(UGModelLayers.STONEBORN, StonebornModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.STONEBORN_VAGRANT, StonebornModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.NARGOYLE, NargoyleModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.MUNCHER, MuncherModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.SPLOOGIE, SploogieModel::createBodyLayer);

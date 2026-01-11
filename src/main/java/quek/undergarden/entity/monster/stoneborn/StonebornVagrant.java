@@ -88,7 +88,7 @@ public class StonebornVagrant extends AbstractStoneborn implements NeutralMob {
 	@Override
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
-		if (!itemstack.is(UGItems.STONEBORN_SPAWN_EGG) && this.isAlive() && !this.isTrading() && !this.isBaby() && this.inUndergarden() && !this.isAggressive()) {
+		if (!itemstack.is(UGItems.STONEBORN_VAGRANT_SPAWN_EGG) && this.isAlive() && !this.isTrading() && !this.isBaby() && this.inUndergarden() && !this.isAggressive()) {
 //			if (hand == InteractionHand.MAIN_HAND) {
 //				player.awardStat(Stats.TALKED_TO_VILLAGER);
 //			}

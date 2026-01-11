@@ -320,7 +320,7 @@ public class UndergardenCommonEvents {
 		event.register(UGEntityTypes.BRUTE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.SCINTLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Scintling::canScintlingSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.GLOOMPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.STONEBORN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, StonebornVagrant::canStonebornSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+		event.register(UGEntityTypes.STONEBORN_VAGRANT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, StonebornVagrant::canStonebornSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.NARGOYLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.MUNCHER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(UGEntityTypes.SPLOOGIE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
@@ -344,7 +344,7 @@ public class UndergardenCommonEvents {
 		event.put(UGEntityTypes.BRUTE.get(), Brute.registerAttributes().build());
 		event.put(UGEntityTypes.SCINTLING.get(), Scintling.registerAttributes().build());
 		event.put(UGEntityTypes.GLOOMPER.get(), Gloomper.registerAttributes().build());
-		event.put(UGEntityTypes.STONEBORN.get(), StonebornVagrant.registerAttributes().build());
+		event.put(UGEntityTypes.STONEBORN_VAGRANT.get(), StonebornVagrant.registerAttributes().build());
 		event.put(UGEntityTypes.NARGOYLE.get(), Nargoyle.registerAttributes().build());
 		event.put(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardian.registerAttributes().build());
 		event.put(UGEntityTypes.MUNCHER.get(), Muncher.registerAttributes().build());

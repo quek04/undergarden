@@ -403,7 +403,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.BRUTE_SPAWN_EGG, "Brute Spawn Egg");
 		addItem(UGItems.SCINTLING_SPAWN_EGG, "Scintling Spawn Egg");
 		addItem(UGItems.GLOOMPER_SPAWN_EGG, "Gloomper Spawn Egg");
-		addItem(UGItems.STONEBORN_SPAWN_EGG, "Stoneborn Spawn Egg");
+		addItem(UGItems.STONEBORN_VAGRANT_SPAWN_EGG, "Stoneborn Vagrant Spawn Egg");
 		addItem(UGItems.NARGOYLE_SPAWN_EGG, "Nargoyle Spawn Egg");
 		addItem(UGItems.MUNCHER_SPAWN_EGG, "Muncher Spawn Egg");
 		addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
@@ -459,7 +459,7 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.BRUTE, "Brute");
 		addEntityType(UGEntityTypes.SCINTLING, "Scintling");
 		addEntityType(UGEntityTypes.GLOOMPER, "Gloomper");
-		addEntityType(UGEntityTypes.STONEBORN, "Stoneborn");
+		addEntityType(UGEntityTypes.STONEBORN_VAGRANT, "Stoneborn Vagrant");
 		addEntityType(UGEntityTypes.NARGOYLE, "Nargoyle");
 		addEntityType(UGEntityTypes.MUNCHER, "Muncher");
 		addEntityType(UGEntityTypes.SPLOOGIE, "Sploogie");

@@ -30,7 +30,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation ROTWALKER = register("rotwalker");
 	public static final ModelLayerLocation SCINTLING = register("scintling");
 	public static final ModelLayerLocation SPLOOGIE = register("sploogie");
-	public static final ModelLayerLocation STONEBORN = register("stoneborn");
+	public static final ModelLayerLocation STONEBORN_VAGRANT = register("stoneborn");
 	public static final ModelLayerLocation GRONGLET = register("gronglet");
 	public static final ModelLayerLocation DENIZEN = register("denizen");
 	public static final ModelLayerLocation DENIZEN_2 = register("denizen_2");

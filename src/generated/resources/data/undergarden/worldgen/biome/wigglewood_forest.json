@@ -153,7 +153,7 @@
         "weight": 100
       },
       {
-        "type": "undergarden:stoneborn",
+        "type": "undergarden:stoneborn_vagrant",
         "maxCount": 3,
         "minCount": 1,
         "weight": 100
