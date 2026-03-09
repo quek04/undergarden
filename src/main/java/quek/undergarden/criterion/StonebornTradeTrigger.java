@@ -10,7 +10,7 @@ import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
-import quek.undergarden.entity.monster.stoneborn.AbstractStoneborn;
+import quek.undergarden.entity.stoneborn.AbstractStoneborn;
 import quek.undergarden.registry.UGCriteria;
 
 import java.util.Optional;

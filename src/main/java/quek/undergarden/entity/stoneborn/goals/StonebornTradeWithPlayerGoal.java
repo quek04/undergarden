@@ -1,8 +1,8 @@
-package quek.undergarden.entity.monster.stoneborn.goals;
+package quek.undergarden.entity.stoneborn.goals;
 
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.player.Player;
-import quek.undergarden.entity.monster.stoneborn.AbstractStoneborn;
+import quek.undergarden.entity.stoneborn.AbstractStoneborn;
 
 import java.util.EnumSet;
 

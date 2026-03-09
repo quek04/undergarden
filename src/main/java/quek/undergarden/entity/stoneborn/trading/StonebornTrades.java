@@ -1,4 +1,4 @@
-package quek.undergarden.entity.monster.stoneborn.trading;
+package quek.undergarden.entity.stoneborn.trading;
 
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;

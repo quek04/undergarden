@@ -1,4 +1,4 @@
-package quek.undergarden.entity.monster.stoneborn;
+package quek.undergarden.entity.stoneborn;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -24,9 +24,9 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import quek.undergarden.entity.monster.stoneborn.goals.StonebornLookAtCustomerGoal;
-import quek.undergarden.entity.monster.stoneborn.goals.StonebornTradeWithPlayerGoal;
-import quek.undergarden.entity.monster.stoneborn.trading.StonebornTrades;
+import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
+import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
+import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
 import quek.undergarden.registry.UGItems;
 
 import javax.annotation.Nullable;

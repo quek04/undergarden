@@ -21,8 +21,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import quek.undergarden.entity.animal.Mog;
 import quek.undergarden.entity.monster.denizen.Denizen;
-import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
 import quek.undergarden.entity.projectile.RotbelcherProjectile;
+import quek.undergarden.entity.stoneborn.StonebornVagrant;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class Rotbelcher extends RotspawnMonster {

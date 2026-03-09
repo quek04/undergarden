@@ -1,5 +1,9 @@
-package quek.undergarden.entity.monster.stoneborn;
+package quek.undergarden.entity.stoneborn;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
@@ -18,12 +22,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
-import quek.undergarden.entity.monster.stoneborn.goals.StonebornLookAtCustomerGoal;
-import quek.undergarden.entity.monster.stoneborn.goals.StonebornTradeWithPlayerGoal;
-import quek.undergarden.entity.monster.stoneborn.trading.StonebornTrades;
+import quek.undergarden.Undergarden;
+import quek.undergarden.entity.stoneborn.goals.StonebornLookAtCustomerGoal;
+import quek.undergarden.entity.stoneborn.goals.StonebornTradeWithPlayerGoal;
+import quek.undergarden.entity.stoneborn.trading.StonebornTrades;
+import quek.undergarden.registry.StonebornJobs;
+import quek.undergarden.registry.UGEntityDataSerializers;
 import quek.undergarden.registry.UGItems;
 
-public class StonebornSettler extends AbstractStoneborn {
+public class StonebornSettler extends AbstractStoneborn implements StonebornDataHolder {
+	private static final EntityDataAccessor<StonebornData> STONEBORN_DATA = SynchedEntityData.defineId(StonebornSettler.class, UGEntityDataSerializers.STONEBORN_DATA.get());
+	private int stonebornXp;
 
 	public StonebornSettler(EntityType<? extends Monster> entityType, Level level) {
 		super(entityType, level);
@@ -52,11 +61,69 @@ public class StonebornSettler extends AbstractStoneborn {
 	}
 
 	@Override
+	public StonebornData getStonebornData() {
+		return this.entityData.get(STONEBORN_DATA);
+	}
+
+	@Override
+	public void setStonebornData(StonebornData data) {
+		StonebornData stonebornData = this.getStonebornData();
+		if (stonebornData.getJob() != data.getJob()) {
+			this.offers = null;
+		}
+		this.entityData.set(STONEBORN_DATA, data);
+	}
+
+	@Override
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(STONEBORN_DATA, new StonebornData(StonebornJobs.NONE.get(), 1));
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound) {
+		super.addAdditionalSaveData(compound);
+		StonebornData.CODEC
+			.encodeStart(NbtOps.INSTANCE, this.getStonebornData())
+			.resultOrPartial(Undergarden.LOGGER::error)
+			.ifPresent(tag -> compound.put("StonebornData", tag));
+		compound.putInt("Xp", this.stonebornXp);
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+		if (compound.contains("StonebornData")) {
+			StonebornData.CODEC
+				.parse(NbtOps.INSTANCE, compound.get("StonebornData"))
+				.resultOrPartial(Undergarden.LOGGER::error)
+				.ifPresent(data -> this.entityData.set(STONEBORN_DATA, data));
+		}
+
+		if (compound.contains("Xp")) {
+			this.stonebornXp = compound.getInt("Xp");
+		}
+	}
+
+	@Override
 	protected void rewardTradeXp(MerchantOffer offer) {
+		int i = 3 + this.random.nextInt(4);
+		this.stonebornXp = this.stonebornXp + offer.getXp();
+		//this.lastTradedPlayer = this.getTradingPlayer();
+		if (this.shouldIncreaseLevel()) {
+//			this.updateMerchantTimer = 40;
+//			this.increaseProfessionLevelOnUpdate = true;
+			i += 5;
+		}
+
 		if (offer.shouldRewardExp()) {
-			int i = 3 + this.random.nextInt(4);
 			this.level().addFreshEntity(new ExperienceOrb(this.level(), this.getX(), this.getY() + 0.5, this.getZ(), i));
 		}
+	}
+
+	private boolean shouldIncreaseLevel() {
+		int level = this.getStonebornData().getLevel();
+		return StonebornData.canLevelUp(level) && this.stonebornXp >= StonebornData.getMaxXpPerLevel(level);
 	}
 
 	@Override

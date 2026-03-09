@@ -1,4 +1,4 @@
-package quek.undergarden.entity.monster.stoneborn;
+package quek.undergarden.entity.stoneborn;
 
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;

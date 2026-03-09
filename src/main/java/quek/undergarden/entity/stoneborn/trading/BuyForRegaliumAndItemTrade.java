@@ -1,4 +1,4 @@
-package quek.undergarden.entity.monster.stoneborn.trading;
+package quek.undergarden.entity.stoneborn.trading;
 
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;

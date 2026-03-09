@@ -23,7 +23,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import quek.undergarden.entity.animal.Mog;
 import quek.undergarden.entity.monster.denizen.Denizen;
-import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
+import quek.undergarden.entity.stoneborn.StonebornVagrant;
 import quek.undergarden.registry.UGDamageSources;
 
 import java.util.Optional;

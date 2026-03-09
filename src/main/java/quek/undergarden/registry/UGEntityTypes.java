@@ -20,12 +20,12 @@ import quek.undergarden.entity.monster.rotspawn.Rotbeast;
 import quek.undergarden.entity.monster.rotspawn.Rotbelcher;
 import quek.undergarden.entity.monster.rotspawn.Rotling;
 import quek.undergarden.entity.monster.rotspawn.Rotwalker;
-import quek.undergarden.entity.monster.stoneborn.StonebornVagrant;
 import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.MinionProjectile;
 import quek.undergarden.entity.projectile.RotbelcherProjectile;
 import quek.undergarden.entity.projectile.ThrownSpear;
 import quek.undergarden.entity.projectile.slingshot.*;
+import quek.undergarden.entity.stoneborn.StonebornVagrant;
 
 public class UGEntityTypes {
 
