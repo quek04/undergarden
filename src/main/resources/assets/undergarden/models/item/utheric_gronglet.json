@@ -1,6 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"parent": "builtin/entity",
+  "textures": {
+    "particle": "minecraft:block/nether_wart_block"
+  },
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [50, 0, 0],

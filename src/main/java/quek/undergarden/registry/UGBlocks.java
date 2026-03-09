@@ -346,11 +346,11 @@ public class UGBlocks {
 			} else if (block.is(DEPTHROCK_BED)) {
 				return new BedItem(Objects.requireNonNull(block.get()), new Item.Properties().stacksTo(1));
 			} else if (block.is(GRONGLET)) {
-				return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties());
+				return new GrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().food(UGFoods.GRONGLET));
 			} else if (block.is(UTHERIC_GRONGLET)) {
-				return new UthericGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.UTHERIUM_RARITY));
+				return new UthericGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().food(UGFoods.GRONGLET).rarity(UGItems.UTHERIUM_RARITY));
 			} else if (block.is(ROGDORIC_GRONGLET)) {
-				return new RogdoricGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(UGItems.ROGDORIUM_RARITY));
+				return new RogdoricGrongletItem(Objects.requireNonNull(block.get()), new Item.Properties().food(UGFoods.GRONGLET).rarity(UGItems.ROGDORIUM_RARITY));
 			} else if (block.is(CARVED_GLOOMGOURD)) {
 				return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (block.is(SMOGSTEM_SIGN)) {
