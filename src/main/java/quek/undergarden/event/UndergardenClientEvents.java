@@ -397,26 +397,28 @@ public class UndergardenClientEvents {
 			}
 		});
 		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_vignette"), ((guiGraphics, deltaTracker) -> {
-			Minecraft minecraft = Minecraft.getInstance();
-			LocalPlayer player = minecraft.player;
-			ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
-			RenderSystem.disableDepthTest();
-			RenderSystem.depthMask(false);
-			RenderSystem.enableBlend();
-			RenderSystem.blendFuncSeparate(
-				GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-			);
-			if (player != null) {
-				double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / UthericInfectionEvents.MAX_INFECTION;
-				vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
-				guiGraphics.setColor(0.0F, (float) vignetteBrightness, (float) vignetteBrightness, 1.0F);
+			if (UndergardenConfig.Client.toggle_utheric_infection_overlay.get()) {
+				Minecraft minecraft = Minecraft.getInstance();
+				LocalPlayer player = minecraft.player;
+				ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
+				RenderSystem.disableDepthTest();
+				RenderSystem.depthMask(false);
+				RenderSystem.enableBlend();
+				RenderSystem.blendFuncSeparate(
+					GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+				);
+				if (player != null) {
+					double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / UthericInfectionEvents.MAX_INFECTION;
+					vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
+					guiGraphics.setColor(0.0F, (float) vignetteBrightness, (float) vignetteBrightness, 1.0F);
+				}
+				guiGraphics.blit(overlay, 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
+				RenderSystem.depthMask(true);
+				RenderSystem.enableDepthTest();
+				guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+				RenderSystem.defaultBlendFunc();
+				RenderSystem.disableBlend();
 			}
-			guiGraphics.blit(overlay, 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
-			RenderSystem.depthMask(true);
-			RenderSystem.enableDepthTest();
-			guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-			RenderSystem.defaultBlendFunc();
-			RenderSystem.disableBlend();
 		}));
 	}
 

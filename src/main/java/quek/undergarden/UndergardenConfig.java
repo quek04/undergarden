@@ -13,8 +13,8 @@ public class UndergardenConfig {
 		public Common(ModConfigSpec.Builder builder) {
 			return_portal_frame_block_id = builder
 				.comment("""
-					Determines what block the game will generate Undergarden return portals out of
-					Use the block tag undergarden:portal_frame_blocks to determine what blocks portals can be built with
+					Determines what block the game will generate Undergarden return portals out of.
+					Use the block tag undergarden:portal_frame_blocks to determine what blocks portals can be built with.
 					If value entered here is not a valid block it will default to generating minecraft:stone_bricks""")
 				.translation("config.undergarden.return_portal_frame_block_id")
 				.define("Return Portal Frame Block ID", BuiltInRegistries.BLOCK.getKey(Blocks.STONE_BRICKS).toString());
@@ -26,6 +26,7 @@ public class UndergardenConfig {
 
 		public static ModConfigSpec.ConfigValue<Boolean> toggle_undergarden_fog;
 		public static ModConfigSpec.ConfigValue<Boolean> toggle_utheric_infection_number_display;
+		public static ModConfigSpec.ConfigValue<Boolean> toggle_utheric_infection_overlay;
 
 		public Client(ModConfigSpec.Builder builder) {
 			toggle_undergarden_fog = builder
@@ -38,6 +39,11 @@ public class UndergardenConfig {
 					Displays the numerical value of the player's Utheric Infection value.""")
 				.translation("config.undergarden.toggle_utheric_infection_number_display")
 				.define("Toggle Utheric Infection Number Display", false);
+			toggle_utheric_infection_overlay = builder
+				.comment("""
+					Toggles the screen overlay that appears when the player has Utheric Infection.""")
+				.translation("config.undergarden.toggle_utheric_infection_overlay")
+				.define("Toggle Utheric Infection Overlay", true);
 			builder.build();
 		}
 	}

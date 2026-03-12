@@ -323,6 +323,8 @@
   "commands.undergarden.infection.success.single": "%2$s uo %1$s oʇ uoᴉʇɔǝɟuᴉ ʇǝS",
   "config.undergarden.return_portal_frame_block_id": "ᗡI ʞɔoꞁᗺ ǝɯɐɹℲ ꞁɐʇɹoԀ uɹnʇǝᴚ",
   "config.undergarden.toggle_undergarden_fog": "ᵷoℲ uǝpɹɐᵷɹǝpu∩ ǝꞁᵷᵷo⟘",
+  "config.undergarden.toggle_utheric_infection_number_display": "ʎɐꞁdsᴉᗡ ɹǝqɯnN uoᴉʇɔǝɟuI ɔᴉɹǝɥʇ∩ ǝꞁᵷᵷo⟘",
+  "config.undergarden.toggle_utheric_infection_overlay": "ʎɐꞁɹǝʌO uoᴉʇɔǝɟuI ɔᴉɹǝɥʇ∩ ǝꞁᵷᵷo⟘",
   "container.undergarden.infuser": "ɹǝsnɟuI",
   "death.attack.blisterberry_bush": "ɥsnᗺ ʎɹɹǝqɹǝʇsᴉꞁᗺ ɐ ʎq pǝʞod sɐʍ %s",
   "death.attack.blisterberry_bush.player": "%2$s ǝdɐɔsǝ oʇ ᵷuᴉʎɹʇ ʇsꞁᴉɥʍ ɥsnᗺ ʎɹɹǝqɹǝʇsᴉꞁᗺ ɐ ʎq pǝʞod sɐʍ %1$s",

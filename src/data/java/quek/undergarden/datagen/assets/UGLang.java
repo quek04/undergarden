@@ -615,9 +615,6 @@ public class UGLang extends UGLangProvider {
 		addAdvTitle("craft_infuser", "I <3 Infusing");
 		addAdvDesc("craft_infuser", "Create the Infuser.");
 
-		//addAdvTitle("otherside_root", "The Otherside");
-		//addAdvDesc("otherside_root", "Enter the realm of madness.");
-
 		add("tooltip.undergarden.slingshot_ammo", "Can be used as Slingshot ammo.");
 		add("tooltip.undergarden.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
 		add("tooltip.undergarden.froststeel_weapon", "Slows targets.");
@@ -750,6 +747,8 @@ public class UGLang extends UGLangProvider {
 
 		addConfig("return_portal_frame_block_id", "Return Portal Frame Block ID");
 		addConfig("toggle_undergarden_fog", "Toggle Undergarden Fog");
+		addConfig("toggle_utheric_infection_number_display", "Toggle Utheric Infection Number Display");
+		addConfig("toggle_utheric_infection_overlay", "Toggle Utheric Infection Overlay");
 
 		add("trim_material.undergarden.cloggrum", "Cloggrum material");
 		add("trim_material.undergarden.froststeel", "Froststeel material");
