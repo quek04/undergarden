@@ -10,7 +10,6 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-import quek.undergarden.Undergarden;
 import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.datamap.UthericInfectionLethality;
 import quek.undergarden.network.UthericInfectionPacket;
@@ -41,7 +40,6 @@ public class UthericInfectionEvents {
 					livingEntity.setData(UGAttachments.PREVIOUS_UTHERIC_INFECTION_DAMAGE.get(), previousDamage += baseDamage);
 					float amount = baseDamage * previousDamage;
 					livingEntity.hurt(livingEntity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), amount);
-					Undergarden.LOGGER.debug("damage: {}", amount);
 				} else {
 					UthericInfectionLethality biomeLethality = livingEntity.level().getBiome(livingEntity.blockPosition()).getData(UGDataMaps.BIOME_LETHALITY);
 					float b = biomeLethality == null ? 0.0F : biomeLethality.lethality();
