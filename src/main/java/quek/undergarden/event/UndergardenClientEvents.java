@@ -18,14 +18,15 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -74,14 +75,14 @@ import java.util.Objects;
 
 public class UndergardenClientEvents {
 
-	private static final ResourceLocation BRITTLENESS_ARMOR_EMPTY = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor/empty");
-	private static final ResourceLocation BRITTLENESS_ARMOR_HALF = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor/half");
-	private static final ResourceLocation BRITTLENESS_ARMOR_FULL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor/full");
+	private static final Identifier BRITTLENESS_ARMOR_EMPTY = Undergarden.prefix("brittleness_armor/empty");
+	private static final Identifier BRITTLENESS_ARMOR_HALF = Undergarden.prefix("brittleness_armor/half");
+	private static final Identifier BRITTLENESS_ARMOR_FULL = Undergarden.prefix("brittleness_armor/full");
 
-	private static final ResourceLocation UTHERIC_INFECTION_EMPTY = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/empty");
-	private static final ResourceLocation UTHERIC_INFECTION_HALF = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/half");
-	private static final ResourceLocation UTHERIC_INFECTION_FULL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/full");
-	private static final ResourceLocation UTHERIC_INFECTION_FULL_LETHAL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection/full_lethal");
+	private static final Identifier UTHERIC_INFECTION_EMPTY = Undergarden.prefix("utheric_infection/empty");
+	private static final Identifier UTHERIC_INFECTION_HALF = Undergarden.prefix("utheric_infection/half");
+	private static final Identifier UTHERIC_INFECTION_FULL = Undergarden.prefix("utheric_infection/full");
+	private static final Identifier UTHERIC_INFECTION_FULL_LETHAL = Undergarden.prefix("utheric_infection/full_lethal");
 
 	public static void initClientEvents(IEventBus bus) {
 		bus.addListener(UndergardenClientEvents::clientSetup);
@@ -114,22 +115,22 @@ public class UndergardenClientEvents {
 			Sheets.addWoodType(UGWoodStuff.GRONGLE_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
 
-			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pull"), (stack, level, entity, seed) -> {
+			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("pull"), (stack, level, entity, seed) -> {
 				if (entity == null) {
 					return 0.0F;
 				} else {
 					return entity.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F;
 				}
 			});
-			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.UTHERIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "rogdoric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.ROGDORIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "self_sling"), (stack, level, entity, seed) -> entity != null && stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.SELF_SLING)) > 0 ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SLINGSHOT.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-			ItemProperties.register(UGItems.SPEAR.get(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "throwing"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("utheric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.UTHERIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("rogdoric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.ROGDORIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("self_sling"), (stack, level, entity, seed) -> entity != null && stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.SELF_SLING)) > 0 ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), Undergarden.prefix("blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+			ItemProperties.register(UGItems.SPEAR.get(), Undergarden.prefix("throwing"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 		});
 	}
 
@@ -268,7 +269,7 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerModelLoaders(ModelEvent.RegisterGeometryLoaders event) {
-		event.register(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "cloggrum_bucket"), CloggrumBucketModel.Loader.INSTANCE);
+		event.register(Undergarden.prefix("cloggrum_bucket"), CloggrumBucketModel.Loader.INSTANCE);
 	}
 
 	private static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
@@ -356,7 +357,7 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerOverlays(RegisterGuiLayersEvent event) {
-		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "brittleness_armor"), (guiGraphics, deltaTracker) -> {
+		event.registerAbove(VanillaGuiLayers.ARMOR_LEVEL, Undergarden.prefix("brittleness_armor"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.hasEffect(UGEffects.BRITTLENESS) && minecraft.gameMode.canHurtPlayer()) {
@@ -365,14 +366,14 @@ public class UndergardenClientEvents {
 		});
 		//render XP bar since we cancel the jump bar
 		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "dweller_xp_bar"), (guiGraphics, deltaTracker) -> {
+		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, Undergarden.prefix("dweller_xp_bar"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
 				minecraft.gui.renderExperienceBar(guiGraphics, guiGraphics.guiWidth() / 2 - 91);
 			}
 		});
-		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "undergarden_portal_overlay"), (guiGraphics, deltaTracker) -> {
+		event.registerAboveAll(Undergarden.prefix("undergarden_portal_overlay"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
@@ -381,26 +382,26 @@ public class UndergardenClientEvents {
 				renderPortalOverlay(guiGraphics, minecraft, window, deltaTracker.getGameTimeDeltaPartialTick(true));
 			}
 		});
-		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "carved_gloomgourd_overlay"), (guiGraphics, deltaTracker) -> {
+		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, Undergarden.prefix("carved_gloomgourd_overlay"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
-			ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gloomgourd_overlay.png");
+			Identifier overlay = Undergarden.prefix("textures/gloomgourd_overlay.png");
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getInventory().getArmor(3).is(UGBlocks.CARVED_GLOOMGOURD.asItem())) {
 				minecraft.gui.renderTextureOverlay(guiGraphics, overlay, 1.0F);
 			}
 		});
-		event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_bar"), (gui, partialTick) -> {
+		event.registerAboveAll(Undergarden.prefix("utheric_infection_bar"), (gui, partialTick) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			if (player != null && player.getData(UGAttachments.UTHERIC_INFECTION.get()) > 0.0F && minecraft.gameMode.canHurtPlayer()) {
 				renderUthericInfectionBar(gui.guiWidth(), gui.guiHeight(), gui, minecraft.gui, player);
 			}
 		});
-		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_vignette"), ((guiGraphics, deltaTracker) -> {
+		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, Undergarden.prefix("utheric_infection_vignette"), ((guiGraphics, deltaTracker) -> {
 			if (UndergardenConfig.Client.toggle_utheric_infection_overlay.get()) {
 				Minecraft minecraft = Minecraft.getInstance();
 				LocalPlayer player = minecraft.player;
-				ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
+				Identifier overlay = Undergarden.prefix("textures/utheric_infection_overlay.png");
 				RenderSystem.disableDepthTest();
 				RenderSystem.depthMask(false);
 				RenderSystem.enableBlend();
@@ -490,18 +491,18 @@ public class UndergardenClientEvents {
 		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.DEPTHROCK_POT.asItem(), UGBlocks.GRONGLET.asItem(), UGBlocks.UTHERIC_GRONGLET.asItem(), UGBlocks.ROGDORIC_GRONGLET.asItem());
 		event.registerFluidType(new IClientFluidTypeExtensions() {
 			@Override
-			public ResourceLocation getStillTexture() {
-				return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_still");
+			public Identifier getStillTexture() {
+				return Undergarden.prefix("fluid/virulent_mix_still");
 			}
 
 			@Override
-			public ResourceLocation getFlowingTexture() {
-				return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_flow");
+			public Identifier getFlowingTexture() {
+				return Undergarden.prefix("fluid/virulent_mix_flow");
 			}
 
 			@Override
-			public ResourceLocation getOverlayTexture() {
-				return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fluid/virulent_mix_flow");
+			public Identifier getOverlayTexture() {
+				return Undergarden.prefix("fluid/virulent_mix_flow");
 			}
 
 			@Override

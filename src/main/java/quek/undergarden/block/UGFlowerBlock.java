@@ -10,13 +10,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class UGFlowerBlock extends BushBlock implements BonemealableBlock {
+public class UGFlowerBlock extends VegetationBlock implements BonemealableBlock {
 
 	public static final MapCodec<UGFlowerBlock> CODEC = simpleCodec(UGFlowerBlock::new);
 	protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
@@ -26,13 +26,13 @@ public class UGFlowerBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	protected MapCodec<? extends BushBlock> codec() {
+	protected MapCodec<? extends VegetationBlock> codec() {
 		return CODEC;
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		Vec3 vec3 = state.getOffset(level, pos);
+		Vec3 vec3 = state.getOffset(pos);
 		return SHAPE.move(vec3.x(), vec3.y(), vec3.z());
 	}
 

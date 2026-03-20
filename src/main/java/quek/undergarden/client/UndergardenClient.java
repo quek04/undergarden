@@ -7,7 +7,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.fml.common.asm.enumextension.EnumProxy;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;

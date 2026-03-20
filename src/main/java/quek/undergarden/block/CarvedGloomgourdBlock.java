@@ -3,10 +3,9 @@ package quek.undergarden.block;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,11 +13,10 @@ import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.world.level.block.state.pattern.BlockPattern;
 import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.Minion;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGEntityTypes;
-
-import javax.annotation.Nullable;
 
 public class CarvedGloomgourdBlock extends CarvedPumpkinBlock {
 
@@ -62,25 +60,18 @@ public class CarvedGloomgourdBlock extends CarvedPumpkinBlock {
 	private void trySpawnMinion(Level level, BlockPos pos) {
 		BlockPattern.BlockPatternMatch minionPattern = this.getMinionPattern().find(level, pos);
 		if (minionPattern != null) {
-			for (int i = 0; i < this.getMinionPattern().getHeight(); ++i) {
-				BlockInWorld cachedblockinfo = minionPattern.getBlock(0, i, 0);
-				level.setBlock(cachedblockinfo.getPos(), Blocks.AIR.defaultBlockState(), 2);
-				level.levelEvent(2001, cachedblockinfo.getPos(), Block.getId(cachedblockinfo.getState()));
-			}
+			clearPatternBlocks(level, minionPattern);
 
-			Minion minionEntity = UGEntityTypes.MINION.get().create(level);
+			Minion minionEntity = UGEntityTypes.MINION.get().create(level, EntitySpawnReason.TRIGGERED);
 			BlockPos blockpos1 = minionPattern.getBlock(0, 2, 0).getPos();
-			minionEntity.moveTo((double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 1.0D, (double) blockpos1.getZ() + 0.5D, 0.0F, 0.0F);
+			minionEntity.snapTo((double) blockpos1.getX() + 0.5D, (double) blockpos1.getY() + 1.0D, (double) blockpos1.getZ() + 0.5D, 0.0F, 0.0F);
 			level.addFreshEntity(minionEntity);
 
 			for (ServerPlayer serverplayerentity : level.getEntitiesOfClass(ServerPlayer.class, minionEntity.getBoundingBox().inflate(5.0D))) {
 				CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayerentity, minionEntity);
 			}
 
-			for (int l = 0; l < this.getMinionPattern().getHeight(); ++l) {
-				BlockInWorld cachedblockinfo3 = minionPattern.getBlock(0, l, 0);
-				level.blockUpdated(cachedblockinfo3.getPos(), Blocks.AIR);
-			}
+			updatePatternBlocks(level, minionPattern);
 		}
 	}
 }

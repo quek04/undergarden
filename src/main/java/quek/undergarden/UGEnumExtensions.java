@@ -2,7 +2,7 @@ package quek.undergarden;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Item;
@@ -99,14 +99,14 @@ public class UGEnumExtensions {
 
 	public static Object VIRULENT_HEARTS(int idx, Class<?> type) {
 		return type.cast(switch (idx) {
-			case 0 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/normal");
-			case 1 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/normal_blinking");
-			case 2 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/half");
-			case 3 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/half_blinking");
-			case 4 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore");
-			case 5 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_blinking");
-			case 6 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_half");
-			case 7 -> ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "virulence_hearts/hardcore_half_blinking");
+			case 0 -> Undergarden.prefix("virulence_hearts/normal");
+			case 1 -> Undergarden.prefix("virulence_hearts/normal_blinking");
+			case 2 -> Undergarden.prefix("virulence_hearts/half");
+			case 3 -> Undergarden.prefix("virulence_hearts/half_blinking");
+			case 4 -> Undergarden.prefix("virulence_hearts/hardcore");
+			case 5 -> Undergarden.prefix("virulence_hearts/hardcore_blinking");
+			case 6 -> Undergarden.prefix("virulence_hearts/hardcore_half");
+			case 7 -> Undergarden.prefix("virulence_hearts/hardcore_half_blinking");
 			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
 		});
 	}

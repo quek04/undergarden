@@ -18,7 +18,7 @@ public class PuffMushroomCapBlock extends Block {
 	}
 
 	@Override
-	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, double fallDistance) {
 		RandomSource random = level.getRandom();
 		for (int i = 0; i < 10; i++) {
 			double x = pos.getX() + random.nextDouble();
@@ -29,9 +29,9 @@ public class PuffMushroomCapBlock extends Block {
 	}
 
 	@Override
-	public void updateEntityAfterFallOn(BlockGetter level, Entity entity) {
+	public void updateEntityMovementAfterFallOn(BlockGetter level, Entity entity) {
 		if (entity.isSuppressingBounce()) {
-			super.updateEntityAfterFallOn(level, entity);
+			super.updateEntityMovementAfterFallOn(level, entity);
 		} else {
 			this.bounceUp(entity);
 		}

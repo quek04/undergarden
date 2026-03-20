@@ -2,7 +2,7 @@ package quek.undergarden.datagen.helpers;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -19,7 +19,7 @@ public abstract class UGBlockstateProvider extends BlockStateProvider {
 		super(output, Undergarden.MODID, helper);
 	}
 
-	protected ResourceLocation texture(String name) {
+	protected Identifier texture(String name) {
 		return modLoc("block/" + name);
 	}
 

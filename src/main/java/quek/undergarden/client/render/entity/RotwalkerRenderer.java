@@ -5,7 +5,7 @@ import com.mojang.math.Axis;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.RotwalkerModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -14,7 +14,7 @@ import quek.undergarden.entity.monster.rotspawn.Rotwalker;
 
 public class RotwalkerRenderer extends MobRenderer<Rotwalker, RotwalkerModel<Rotwalker>> {
 
-	private static final ResourceLocation ROTWALKER = Undergarden.prefix("textures/entity/rotwalker.png");
+	private static final Identifier ROTWALKER = Undergarden.prefix("textures/entity/rotwalker.png");
 	private static final RenderType ROTWALKER_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/rotwalker_eyes.png"));
 
 	public RotwalkerRenderer(EntityRendererProvider.Context context) {
@@ -23,7 +23,7 @@ public class RotwalkerRenderer extends MobRenderer<Rotwalker, RotwalkerModel<Rot
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Rotwalker entity) {
+	public Identifier getTextureLocation(Rotwalker entity) {
 		return ROTWALKER;
 	}
 

@@ -1,7 +1,7 @@
 package quek.undergarden.client.model;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 
 public class UGModelLayers {
@@ -39,10 +39,10 @@ public class UGModelLayers {
 	public static final ModelLayerLocation POT = register("pot");
 
 	private static ModelLayerLocation register(String name) {
-		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), "main");
+		return new ModelLayerLocation(Undergarden.prefix(name), "main");
 	}
 
 	private static ModelLayerLocation register(String name, String layerName) {
-		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), layerName);
+		return new ModelLayerLocation(Undergarden.prefix(name), layerName);
 	}
 }

@@ -3,8 +3,8 @@ package quek.undergarden.registry;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -16,7 +16,7 @@ public class UGEnchantments {
 	public static final ResourceKey<Enchantment> SELF_SLING = create("self_sling");
 
 	private static ResourceKey<Enchantment> create(String name) {
-		return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
+		return ResourceKey.create(Registries.ENCHANTMENT, Undergarden.prefix(name));
 	}
 
 	public static void bootstrap(BootstrapContext<Enchantment> context) {

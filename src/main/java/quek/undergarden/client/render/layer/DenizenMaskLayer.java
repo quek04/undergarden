@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +17,7 @@ import quek.undergarden.registry.UGItems;
 
 public class DenizenMaskLayer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
 
-	private static final ResourceLocation TEXTURE = Undergarden.prefix("textures/models/armor/denizen_mask.png");
+	private static final Identifier TEXTURE = Undergarden.prefix("textures/models/armor/denizen_mask.png");
 	private final A model;
 
 	public DenizenMaskLayer(RenderLayerParent<T, M> renderer, A model) {

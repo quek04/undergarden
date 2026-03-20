@@ -15,9 +15,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.*;
-
-import javax.annotation.Nullable;
 
 public class SmogMog extends Mog {
 	public SmogMog(EntityType<? extends Animal> type, Level level) {

@@ -7,7 +7,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -675,7 +675,7 @@ public class UGRecipes extends UGRecipeProvider {
 		infusingCorrupting(UGBlocks.UTHERIC_GRONGLET, UGBlocks.GRONGLET, 1.0F, 200).save(output);
 	}
 
-	private ResourceLocation name(String name) {
-		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name);
+	private Identifier name(String name) {
+		return Undergarden.prefix(name);
 	}
 }

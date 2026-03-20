@@ -3,8 +3,8 @@ package quek.undergarden.registry;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.Level;
@@ -32,8 +32,8 @@ public class UGDimensions {
 
 	public static final ResourceKey<LevelStem> UNDERGARDEN_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, name("undergarden"));
 
-	private static ResourceLocation name(String name) {
-		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name);
+	private static Identifier name(String name) {
+		return Undergarden.prefix(name);
 	}
 
 	public static void bootstrapType(BootstrapContext<DimensionType> context) {

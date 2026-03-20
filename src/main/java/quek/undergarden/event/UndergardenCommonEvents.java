@@ -5,12 +5,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -117,7 +120,7 @@ public class UndergardenCommonEvents {
 
 		bus.addListener((Consumer<RegisterEvent>) event -> {
 			if (event.getRegistry() == BuiltInRegistries.CHUNK_GENERATOR) {
-				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "noise"), UGNoiseBasedChunkGenerator.CODEC);
+				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, Undergarden.prefix("noise"), UGNoiseBasedChunkGenerator.CODEC);
 			}
 		});
 	}

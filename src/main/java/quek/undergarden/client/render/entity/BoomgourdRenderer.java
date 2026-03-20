@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.TntMinecartRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.InventoryMenu;
 import quek.undergarden.entity.Boomgourd;
@@ -44,7 +44,7 @@ public class BoomgourdRenderer extends EntityRenderer<Boomgourd> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Boomgourd entity) {
+	public Identifier getTextureLocation(Boomgourd entity) {
 		return InventoryMenu.BLOCK_ATLAS;
 	}
 }

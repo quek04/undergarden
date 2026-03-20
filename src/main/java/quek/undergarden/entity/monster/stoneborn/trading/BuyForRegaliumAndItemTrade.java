@@ -7,9 +7,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGItems;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 
 public class BuyForRegaliumAndItemTrade implements VillagerTrades.ItemListing {

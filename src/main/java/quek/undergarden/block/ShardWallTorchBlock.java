@@ -39,8 +39,8 @@ public class ShardWallTorchBlock extends WallTorchBlock {
 	@Override
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		level.getEntitiesOfClass(LivingEntity.class, new AABB(pos).inflate(4.0D),
-				entity -> entity.getType().is(UGTags.Entities.ROTSPAWN)).forEach(entity -> {
-			if (entity.hurt(UGDamageSources.getShardTorchDamage(level, pos.getCenter()), 4)) {
+				entity -> entity.is(UGTags.Entities.ROTSPAWN)).forEach(entity -> {
+			if (entity.hurtServer(level, UGDamageSources.getShardTorchDamage(level, pos.getCenter()), 4)) {
 				ShardTorchBlock.drawParticlesTo(level, pos.getCenter(), entity);
 			}
 		});

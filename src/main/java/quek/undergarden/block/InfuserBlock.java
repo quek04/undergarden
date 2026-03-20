@@ -2,6 +2,7 @@ package quek.undergarden.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -23,11 +24,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.block.entity.InfuserBlockEntity;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGParticleTypes;
@@ -79,15 +79,10 @@ public class InfuserBlock extends BaseEntityBlock {
 		return UGBlockEntities.INFUSER.get().create(pos, state);
 	}
 
-	@Override
-	protected RenderShape getRenderShape(BlockState state) {
-		return RenderShape.MODEL;
-	}
-
 	@Nullable
 	@Override
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-		return level.isClientSide ? null : createTickerHelper(blockEntityType, UGBlockEntities.INFUSER.get(), InfuserBlockEntity::serverTick);
+		return level instanceof ServerLevel serverLevel ? createTickerHelper(blockEntityType, UGBlockEntities.INFUSER.get(), (level1, pos, state1, entity) -> InfuserBlockEntity.serverTick(serverLevel, pos, state1, entity)) : null;
 	}
 
 	@Override
@@ -107,7 +102,7 @@ public class InfuserBlock extends BaseEntityBlock {
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-		if (level.isClientSide) {
+		if (level.isClientSide()) {
 			return InteractionResult.SUCCESS;
 		} else {
 			this.openContainer(level, pos, player);
@@ -124,21 +119,8 @@ public class InfuserBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-		if (!state.is(newState.getBlock())) {
-			BlockEntity blockEntity = level.getBlockEntity(pos);
-			if (blockEntity instanceof InfuserBlockEntity) {
-				if (level instanceof ServerLevel) {
-					Containers.dropContents(level, pos, (InfuserBlockEntity)blockEntity);
-					((InfuserBlockEntity)blockEntity).getRecipesToAwardAndPopExperience((ServerLevel)level, Vec3.atCenterOf(pos));
-				}
-
-				super.onRemove(state, level, pos, newState, isMoving);
-				level.updateNeighbourForOutputSignal(pos, this);
-			} else {
-				super.onRemove(state, level, pos, newState, isMoving);
-			}
-		}
+	protected void affectNeighborsAfterRemoval(BlockState state, ServerLevel level, BlockPos pos, boolean movedByPiston) {
+		Containers.updateNeighboursAfterDestroy(state, level, pos);
 	}
 
 	@Override
@@ -147,7 +129,7 @@ public class InfuserBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
+	protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos, Direction direction) {
 		return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
 	}
 }

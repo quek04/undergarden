@@ -3,7 +3,7 @@ package quek.undergarden.client.render.entity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MogModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -12,8 +12,8 @@ import quek.undergarden.entity.animal.Mog;
 
 public class MogRenderer extends MobRenderer<Mog, MogModel<Mog>> {
 
-	private static final ResourceLocation MOG = Undergarden.prefix("textures/entity/mog.png");
-	private static final ResourceLocation MOG_NAKED = Undergarden.prefix("textures/entity/mog_naked.png");
+	private static final Identifier MOG = Undergarden.prefix("textures/entity/mog.png");
+	private static final Identifier MOG_NAKED = Undergarden.prefix("textures/entity/mog_naked.png");
 	private static final RenderType MOG_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/mog_eyes.png"));
 
 	public MogRenderer(EntityRendererProvider.Context context) {
@@ -22,7 +22,7 @@ public class MogRenderer extends MobRenderer<Mog, MogModel<Mog>> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Mog entity) {
+	public Identifier getTextureLocation(Mog entity) {
 		return entity.hasMoss() ? MOG : MOG_NAKED;
 	}
 }

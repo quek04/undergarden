@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.MysteriousPotModel;
@@ -19,7 +19,7 @@ import quek.undergarden.entity.animal.MysteriousPot;
 
 public class MysteriousPotRenderer extends MobRenderer<MysteriousPot, MysteriousPotModel> {
 
-	private static final ResourceLocation MYSTERIOUS_POT = Undergarden.prefix("textures/entity/potguy.png");
+	private static final Identifier MYSTERIOUS_POT = Undergarden.prefix("textures/entity/potguy.png");
 	private static final RenderType MYSTERIOUS_POT_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/potguy_eyes.png"));
 
 	private final PotModel inactiveModel;
@@ -49,7 +49,7 @@ public class MysteriousPotRenderer extends MobRenderer<MysteriousPot, Mysterious
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(MysteriousPot entity) {
+	public Identifier getTextureLocation(MysteriousPot entity) {
 		return MYSTERIOUS_POT;
 	}
 }

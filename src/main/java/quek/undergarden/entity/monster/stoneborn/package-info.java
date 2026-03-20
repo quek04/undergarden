@@ -2,6 +2,4 @@
 @ParametersAreNonnullByDefault
 package quek.undergarden.entity.monster.stoneborn;
 
-import net.minecraft.MethodsReturnNonnullByDefault;
-
 import javax.annotation.ParametersAreNonnullByDefault;

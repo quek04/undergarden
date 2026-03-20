@@ -2,8 +2,8 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.damagesource.DamageScaling;
 import net.minecraft.world.damagesource.DamageSource;
@@ -22,7 +22,7 @@ public class UGDamageSources {
 	public static final ResourceKey<DamageType> UTHERIC_INFECTION = create("utheric_infection");
 
 	public static ResourceKey<DamageType> create(String name) {
-		return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
+		return ResourceKey.create(Registries.DAMAGE_TYPE, Undergarden.prefix(name));
 	}
 
 	public static DamageSource getShardTorchDamage(Level level, @NotNull Vec3 position) {

@@ -1,7 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -10,11 +10,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
-import quek.undergarden.effect.*;
+import quek.undergarden.effect.GenericMobEffect;
+import quek.undergarden.effect.GooeyEffect;
+import quek.undergarden.effect.PurityEffect;
+import quek.undergarden.effect.VirulenceEffect;
 
 public class UGEffects {
 
-	public static final ResourceLocation CHILLY_MODIFIER = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "effect.chilly_slowness");
+	public static final Identifier CHILLY_MODIFIER = Undergarden.prefix("effect.chilly_slowness");
 
 	public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, Undergarden.MODID);
 

@@ -3,7 +3,7 @@ package quek.undergarden.client.render.entity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.SmogMogModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -12,8 +12,8 @@ import quek.undergarden.entity.animal.SmogMog;
 
 public class SmogMogRenderer extends MobRenderer<SmogMog, SmogMogModel<SmogMog>> {
 
-	private static final ResourceLocation SMOG_MOG = Undergarden.prefix("textures/entity/smog_mog.png");
-	private static final ResourceLocation SMOG_MOG_NAKED = Undergarden.prefix("textures/entity/smog_mog_naked.png");
+	private static final Identifier SMOG_MOG = Undergarden.prefix("textures/entity/smog_mog.png");
+	private static final Identifier SMOG_MOG_NAKED = Undergarden.prefix("textures/entity/smog_mog_naked.png");
 	private static final RenderType SMOG_MOG_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/smog_mog_eyes.png"));
 
 	public SmogMogRenderer(EntityRendererProvider.Context context) {
@@ -22,7 +22,7 @@ public class SmogMogRenderer extends MobRenderer<SmogMog, SmogMogModel<SmogMog>>
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(SmogMog entity) {
+	public Identifier getTextureLocation(SmogMog entity) {
 		return entity.hasMoss() ? SMOG_MOG : SMOG_MOG_NAKED;
 	}
 }

@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import quek.undergarden.registry.UGParticleTypes;
 
 public class TallShimmerweedBlock extends DoublePlantBlock {
+
 	public TallShimmerweedBlock(Properties properties) {
 		super(properties);
 	}

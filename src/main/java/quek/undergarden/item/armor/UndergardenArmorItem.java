@@ -3,7 +3,7 @@ package quek.undergarden.item.armor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -36,7 +36,7 @@ public class UndergardenArmorItem extends ArmorItem {
 	}
 
 	public static ItemAttributeModifiers createFroststeelAttributes(ArmorItem.Type type, ArmorMaterial material) {
-		ResourceLocation armorLocation = ResourceLocation.withDefaultNamespace("armor." + type.getName());
+		Identifier armorLocation = Identifier.withDefaultNamespace("armor." + type.getName());
 		EquipmentSlotGroup group = EquipmentSlotGroup.bySlot(type.getSlot());
 		int armor = material.getDefense(type);
 		return ItemAttributeModifiers.builder()

@@ -6,7 +6,7 @@ plugins {
 	id 'eclipse'
 	id 'idea'
 	id 'maven-publish'
-	id 'net.neoforged.moddev' version '2.0.91'
+	id 'net.neoforged.moddev' version '2.0.140'
 }
 
 def secrets = new Properties()
@@ -36,11 +36,7 @@ idea {
 version = project.undergarden_version
 group = 'quek.undergarden'
 
-java {
-	toolchain {
-		languageVersion.set(JavaLanguageVersion.of(21))
-	}
-}
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 tasks.withType(JavaCompile).configureEach {
 	options.compilerArgs << "-Xlint:all,-classfile,-processing,-deprecation,-this-escape" << "-Werror"
@@ -93,26 +89,31 @@ neoForge {
 
 	runs {
 		configureEach {
-			gameDirectory = project.file('run')
-			systemProperty 'forge.logging.console.level', 'debug'
 			logLevel = org.slf4j.event.Level.DEBUG
 			loadedMods = [mainMod]
 		}
 
 		client {
 			client()
-			systemProperty 'forge.enabledGameTestNamespaces', "${project.mod_id}"
-			programArguments.addAll '--username', secrets.getProperty("username") ?: 'Dev', secrets.getProperty("uuid") ? '--uuid' : '', secrets.getProperty("uuid") ?: ''
+			systemProperty 'neoforge.enabledGameTestNamespaces', "${project.mod_id}"
+			if (secrets.getProperty("uuid")) {
+				programArguments.addAll(
+					'--username', secrets.getProperty("username"),
+					'--uuid', secrets.getProperty("uuid"),
+					'--accessToken', "",
+					'--xuid', ""
+				)
+			}
 		}
 
 		server {
 			server()
-			systemProperty 'forge.enabledGameTestNamespaces', "${project.mod_id}"
+			systemProperty 'neoforge.enabledGameTestNamespaces', "${project.mod_id}"
 			programArgument '--nogui'
 		}
 
 		data {
-			data()
+			clientData()
 			programArguments.addAll '--mod', "${project.mod_id}", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
 			sourceSet = this.sourceSets.data
 			loadedMods = [dataMod]
@@ -149,22 +150,22 @@ repositories {
 }
 
 dependencies {
-	compileOnly("mezz.jei:jei-1.21.1-common-api:${jei_version}")
-	compileOnly("mezz.jei:jei-1.21.1-neoforge-api:${jei_version}")
-	//runtimeOnly("mezz.jei:jei-1.21.1-neoforge:${jei_version}")
-
-	compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-	runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
-
-	compileOnly("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
-	compileOnly("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}")
-	compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
-
-	implementation "curse.maven:jade-324717:${project.jade_version}"
-	runtimeOnly "curse.maven:better-advancements-272515:${project.better_advancements_version}"
-	runtimeOnly "curse.maven:spark-361579:6225208"
-
-	runtimeOnly "curse.maven:worldedit-225608:5830452"
+//	compileOnly("mezz.jei:jei-1.21.1-common-api:${jei_version}")
+//	compileOnly("mezz.jei:jei-1.21.1-neoforge-api:${jei_version}")
+//	//runtimeOnly("mezz.jei:jei-1.21.1-neoforge:${jei_version}")
+//
+//	compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
+//	runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+//
+//	compileOnly("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+//	compileOnly("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}")
+//	compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
+//
+//	implementation "curse.maven:jade-324717:${project.jade_version}"
+//	runtimeOnly "curse.maven:better-advancements-272515:${project.better_advancements_version}"
+//	runtimeOnly "curse.maven:spark-361579:6225208"
+//
+//	runtimeOnly "curse.maven:worldedit-225608:5830452"
 }
 
 processResources {
@@ -199,45 +200,4 @@ tasks.named('jar', Jar).configure {
 				"Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
 		])
 	}
-}
-
-publishing {
-	publications {
-		register('mavenJava', MavenPublication) {
-			from components.java
-		}
-	}
-	repositories {
-		maven {
-			url "file://${project.projectDir}/repo"
-		}
-	}
-}
-
-tasks.register('sourceJar', Jar) {
-	dependsOn 'classes'
-	from sourceSets.main.allSource
-	archiveClassifier = 'sources'
-}
-
-tasks.register('dataClassesForPublishing', JavaCompile) {
-	dependsOn "dataClasses"
-	source = fileTree('src/data/java')
-	classpath = sourceSets.named('data').get().compileClasspath
-	destinationDirectory = layout.buildDirectory.dir("classes/java/dataForPublishing")
-}
-
-tasks.register('dataJar', Jar) {
-	dependsOn 'dataClassesForPublishing'
-	from layout.buildDirectory.dir("classes/java/dataForPublishing")
-	archiveClassifier = 'data'
-}
-
-tasks.register('dataSourceJar', Jar) {
-	from sourceSets.data.allSource
-	archiveClassifier = 'data-sources'
-}
-
-tasks.withType(JavaCompile).configureEach {
-	options.encoding = 'UTF-8'
 }

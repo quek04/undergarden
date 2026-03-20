@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -14,7 +14,7 @@ import quek.undergarden.entity.monster.Forgotten;
 
 public class ForgottenRenderer extends HumanoidMobRenderer<Forgotten, ForgottenModel<Forgotten>> {
 
-	private static final ResourceLocation FORGOTTEN = Undergarden.prefix("textures/entity/forgotten.png");
+	private static final Identifier FORGOTTEN = Undergarden.prefix("textures/entity/forgotten.png");
 	private static final RenderType FORGOTTEN_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/forgotten_eyes.png"));
 
 	public ForgottenRenderer(EntityRendererProvider.Context context) {
@@ -24,7 +24,7 @@ public class ForgottenRenderer extends HumanoidMobRenderer<Forgotten, ForgottenM
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Forgotten entity) {
+	public Identifier getTextureLocation(Forgotten entity) {
 		return FORGOTTEN;
 	}
 

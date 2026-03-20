@@ -7,7 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
@@ -64,7 +64,7 @@ public class UGCreativeModeTabs {
 				EntityType<?> type = ((MobBucketItem) item).type;
 				if (!usedEntities.contains(type)) {
 					FluidStack stack = new FluidStack(((MobBucketItem) item).content, FluidType.BUCKET_VOLUME);
-					ResourceLocation id = EntityType.getKey(type);
+					Identifier id = EntityType.getKey(type);
 					event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder()
 						.set(DataComponents.BUCKET_ENTITY_DATA, CustomData.of(Util.make(new CompoundTag(), tag -> tag.putString("id", id.toString()))))
 						.set(UGDataComponents.STORED_FLUID.get(), SimpleFluidContent.copyOf(stack)).build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

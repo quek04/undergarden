@@ -3,7 +3,7 @@ package quek.undergarden.item.tool;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class BattleaxeItem extends SwordItem {
 
-	private static final ResourceLocation ATTACK_KNOCKBACK_ID = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "attack_knockback");
+	private static final Identifier ATTACK_KNOCKBACK_ID = Undergarden.prefix("attack_knockback");
 
 	public BattleaxeItem(Tier tier, Properties properties) {
 		super(tier, properties);

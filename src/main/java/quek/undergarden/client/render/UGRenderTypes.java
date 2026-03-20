@@ -4,13 +4,13 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.function.Function;
 
 public class UGRenderTypes extends RenderType {
 
-	private static final Function<ResourceLocation, RenderType> ENTITY_DECAL_TRANSLUCENT = Util.memoize((texture) ->
+	private static final Function<Identifier, RenderType> ENTITY_DECAL_TRANSLUCENT = Util.memoize((texture) ->
 		create(
 			"undergarden:entity_decal_translucent",
 			DefaultVertexFormat.NEW_ENTITY,
@@ -29,7 +29,7 @@ public class UGRenderTypes extends RenderType {
 		super(name, format, mode, bufferSize, affectsCrumbling, sortOnUpload, setupState, clearState);
 	}
 
-	public static RenderType entityDecalTranslucent(ResourceLocation tex) {
+	public static RenderType entityDecalTranslucent(Identifier tex) {
 		return ENTITY_DECAL_TRANSLUCENT.apply(tex);
 	}
 }

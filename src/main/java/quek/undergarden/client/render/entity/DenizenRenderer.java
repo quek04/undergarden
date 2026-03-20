@@ -2,10 +2,9 @@ package quek.undergarden.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Pose;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.Denizen2Model;
@@ -19,8 +18,8 @@ public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidM
 	private final FixedHumanoidModel<Denizen> shortModel = this.getModel();
 	private final FixedHumanoidModel<Denizen> tallModel;
 
-	private static final ResourceLocation DENIZEN = Undergarden.prefix("textures/entity/denizen.png");
-	private static final ResourceLocation DENIZEN2 = Undergarden.prefix("textures/entity/denizen2.png");
+	private static final Identifier DENIZEN = Undergarden.prefix("textures/entity/denizen.png");
+	private static final Identifier DENIZEN2 = Undergarden.prefix("textures/entity/denizen2.png");
 
 	public DenizenRenderer(EntityRendererProvider.Context context) {
 		super(context, new DenizenModel<>(context.bakeLayer(UGModelLayers.DENIZEN)), 0.5F);
@@ -29,7 +28,7 @@ public class DenizenRenderer extends HumanoidMobRenderer<Denizen, FixedHumanoidM
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Denizen entity) {
+	public Identifier getTextureLocation(Denizen entity) {
 		return switch (entity.getVariant()) {
 			case SHORT -> DENIZEN;
 			case TALL -> DENIZEN2;

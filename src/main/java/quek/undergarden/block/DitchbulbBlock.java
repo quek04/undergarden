@@ -10,32 +10,30 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
 import quek.undergarden.registry.UGItems;
 
-public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
+public class DitchbulbBlock extends VegetationBlock implements BonemealableBlock {
 
 	public static final MapCodec<DitchbulbBlock> CODEC = simpleCodec(DitchbulbBlock::new);
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
@@ -44,16 +42,16 @@ public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 
 	public DitchbulbBlock(Properties properties) {
 		super(properties);
-		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
+		this.registerDefaultState(this.getStateDefinition().any().setValue(AGE, 0));
 	}
 
 	@Override
-	protected MapCodec<? extends BushBlock> codec() {
+	protected MapCodec<? extends VegetationBlock> codec() {
 		return CODEC;
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
 		return new ItemStack(UGItems.DITCHBULB.get());
 	}
 
@@ -73,10 +71,10 @@ public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+	protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		int age = state.getValue(AGE);
 		boolean maxAge = age == 1;
-		return  !maxAge && stack.is(Items.BONE_MEAL) ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION : super.useItemOn(stack, state, level, pos, player, hand, result);
+		return  !maxAge && stack.is(Items.BONE_MEAL) ? InteractionResult.PASS : super.useItemOn(stack, state, level, pos, player, hand, result);
 	}
 
 	@Override
@@ -89,7 +87,7 @@ public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 			BlockState newState = state.setValue(AGE, 0);
 			level.setBlock(pos, newState, 2);
 			level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
-			return InteractionResult.sidedSuccess(level.isClientSide);
+			return InteractionResult.SUCCESS;
 		} else {
 			return super.useWithoutItem(state, level, pos, player, result);
 		}
@@ -106,13 +104,13 @@ public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-		return facing == Direction.DOWN && !this.canSurvive(state, level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+	protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbor, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+		return directionToNeighbor == Direction.DOWN && !this.canSurvive(state, level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, level, ticks, pos, directionToNeighbor, neighborPos, neighborState, random);
 	}
 
 	@Override
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-		Vec3 offset = state.getOffset(level, pos);
+		Vec3 offset = state.getOffset(pos);
 		double x = (double) pos.getX() + 0.5D + offset.x();
 		double y = (double) pos.getY() + 0.8D + offset.y();
 		double z = (double) pos.getZ() + 0.5D + offset.z();
@@ -123,7 +121,7 @@ public class DitchbulbBlock extends BushBlock implements BonemealableBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		Vec3 offset = state.getOffset(level, pos);
+		Vec3 offset = state.getOffset(pos);
 		return SHAPE.move(offset.x(), offset.y(), offset.z());
 	}
 

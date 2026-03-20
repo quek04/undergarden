@@ -7,7 +7,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BubbleColumnBlock;
@@ -17,11 +18,10 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.enums.BubbleColumnDirection;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.block.entity.SmogVentBlockEntity;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGEntityTypes;
-
-import javax.annotation.Nullable;
 
 public class SmogVentBlock extends Block implements EntityBlock {
 
@@ -31,8 +31,8 @@ public class SmogVentBlock extends Block implements EntityBlock {
 
 	@Override
 	public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-		if (entity.getType() != UGEntityTypes.SMOG_MOG.get() && !entity.fireImmune() && entity instanceof LivingEntity /*living && !EnchantmentHelper.hasFrostWalker(living)*/) {
-			entity.hurt(level.damageSources().hotFloor(), 1.0F);
+		if (entity.getType() != UGEntityTypes.SMOG_MOG.get() && !entity.fireImmune() && entity instanceof LivingEntity && level instanceof ServerLevel serverLevel) {
+			entity.hurtServer(serverLevel, level.damageSources().hotFloor(), 1.0F);
 		}
 		super.stepOn(level, pos, state, entity);
 	}
@@ -51,16 +51,16 @@ public class SmogVentBlock extends Block implements EntityBlock {
 
 	@Override
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		BubbleColumnBlock.updateColumn(level, pos.above(), state);
+		BubbleColumnBlock.updateColumn(this, level, pos.above(), state);
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-		if (facing == Direction.UP && facingState.is(Blocks.WATER)) {
-			level.scheduleTick(currentPos, this, 20);
+	protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbor, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+		if (directionToNeighbor == Direction.UP && state.is(Blocks.WATER)) {
+			ticks.scheduleTick(pos, this, 20);
 		}
 
-		return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+		return super.updateShape(state, level, ticks, pos, directionToNeighbor, neighborPos, neighborState, random);
 	}
 
 	@Override

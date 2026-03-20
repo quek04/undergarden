@@ -5,7 +5,7 @@ import com.mojang.math.Axis;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.RotbelcherModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -14,7 +14,7 @@ import quek.undergarden.entity.monster.rotspawn.Rotbelcher;
 
 public class RotbelcherRenderer extends MobRenderer<Rotbelcher, RotbelcherModel<Rotbelcher>> {
 
-	private static final ResourceLocation ROTBELCHER = Undergarden.prefix("textures/entity/rotbelcher.png");
+	private static final Identifier ROTBELCHER = Undergarden.prefix("textures/entity/rotbelcher.png");
 	private static final RenderType ROTBELCHER_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/rotbelcher_eyes.png"));
 
 	public RotbelcherRenderer(EntityRendererProvider.Context context) {
@@ -23,7 +23,7 @@ public class RotbelcherRenderer extends MobRenderer<Rotbelcher, RotbelcherModel<
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Rotbelcher entity) {
+	public Identifier getTextureLocation(Rotbelcher entity) {
 		return ROTBELCHER;
 	}
 

@@ -18,14 +18,14 @@ enumExtensions = "META-INF/enumextensions.json"
 [[dependencies.undergarden]]
 	modId = "neoforge"
 	type = "required"
-	versionRange = "[21.1.181,)"
+	versionRange = "[26.1.0.0-alpha.1+snapshot-1,)"
 	ordering = "NONE"
 	side = "BOTH"
 
 [[dependencies.undergarden]]
 	modId = "minecraft"
 	type = "required"
-	versionRange = "[1.21]"
+	versionRange = "[26.1-snapshot,)"
 	ordering = "NONE"
 	side = "BOTH"
 

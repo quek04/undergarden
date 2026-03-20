@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.SaddleLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.DwellerModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -13,8 +13,8 @@ import quek.undergarden.entity.animal.dweller.Dweller;
 
 public class DwellerRenderer extends MobRenderer<Dweller, DwellerModel<Dweller>> {
 
-	private static final ResourceLocation DWELLER = Undergarden.prefix("textures/entity/dweller.png");
-	private static final ResourceLocation DWELLER_SADDLE = Undergarden.prefix("textures/entity/dweller_saddle.png");
+	private static final Identifier DWELLER = Undergarden.prefix("textures/entity/dweller.png");
+	private static final Identifier DWELLER_SADDLE = Undergarden.prefix("textures/entity/dweller_saddle.png");
 	private final static RenderType DWELLER_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/dweller_eyes.png"));
 
 	public DwellerRenderer(EntityRendererProvider.Context context) {
@@ -24,7 +24,7 @@ public class DwellerRenderer extends MobRenderer<Dweller, DwellerModel<Dweller>>
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Dweller entity) {
+	public Identifier getTextureLocation(Dweller entity) {
 		return DWELLER;
 	}
 }

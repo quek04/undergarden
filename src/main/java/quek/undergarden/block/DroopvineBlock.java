@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -27,7 +26,7 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 
 	public DroopvineBlock(Properties properties) {
 		super(properties, Direction.DOWN, SHAPE, false, 0.1D);
-		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(GLOWY, false));
+		this.registerDefaultState(this.getStateDefinition().any().setValue(AGE, 0).setValue(GLOWY, false));
 	}
 
 	@Override
@@ -61,7 +60,7 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
 		return new ItemStack(UGItems.DROOPFRUIT.get());
 	}
 

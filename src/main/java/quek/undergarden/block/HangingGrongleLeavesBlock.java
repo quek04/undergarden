@@ -3,13 +3,14 @@ package quek.undergarden.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
@@ -18,8 +19,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class HangingGrongleLeavesBlock extends DoublePlantBlock {
 
@@ -32,7 +32,7 @@ public class HangingGrongleLeavesBlock extends DoublePlantBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		Vec3 offset = state.getOffset(level, pos);
+		Vec3 offset = state.getOffset(pos);
 		return state.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_SHAPE.move(offset.x, offset.y, offset.z) : UPPER_SHAPE.move(offset.x, offset.y, offset.z);
 	}
 
@@ -42,10 +42,10 @@ public class HangingGrongleLeavesBlock extends DoublePlantBlock {
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+	protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbor, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
 		DoubleBlockHalf half = state.getValue(HALF);
-		if (facing.getAxis() != Direction.Axis.Y || half == DoubleBlockHalf.LOWER != (facing == Direction.DOWN) || facingState.is(this) && facingState.getValue(HALF) != half) {
-			return half == DoubleBlockHalf.LOWER && facing == Direction.UP && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : state;
+		if (directionToNeighbor.getAxis() != Direction.Axis.Y || half == DoubleBlockHalf.LOWER != (directionToNeighbor == Direction.DOWN) || neighborState.is(this) && neighborState.getValue(HALF) != half) {
+			return half == DoubleBlockHalf.LOWER && directionToNeighbor == Direction.UP && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : state;
 		} else {
 			return Blocks.AIR.defaultBlockState();
 		}
@@ -60,7 +60,7 @@ public class HangingGrongleLeavesBlock extends DoublePlantBlock {
 	}
 
 	@Override
-	public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack pStack) {
+	public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack pStack) {
 		BlockPos downPos = pos.below();
 		level.setBlock(downPos, copyWaterloggedFrom(level, downPos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)), 3);
 	}

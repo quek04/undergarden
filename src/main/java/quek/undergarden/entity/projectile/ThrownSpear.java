@@ -18,10 +18,9 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
-
-import javax.annotation.Nullable;
 
 public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 	private static final EntityDataAccessor<Boolean> ENCHANTED_ID = SynchedEntityData.defineId(ThrownSpear.class, EntityDataSerializers.BOOLEAN);

@@ -1,7 +1,7 @@
 package quek.undergarden.datagen.assets;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -110,8 +110,8 @@ public class UGBlockStates extends UGBlockstateProvider {
 		getVariantBuilder(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get()).forAllStates(state ->
 				ConfiguredModel.builder()
 						.modelFile(cubeAll(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())).nextModel()
-						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_2", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/engorged_blood_mushroom_cap_2"))).nextModel()
-						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/engorged_blood_mushroom_cap_3")))
+						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_2", Undergarden.prefix("block/engorged_blood_mushroom_cap_2"))).nextModel()
+						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", Undergarden.prefix("block/engorged_blood_mushroom_cap_3")))
 						.build()
 		);
 		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
@@ -123,9 +123,9 @@ public class UGBlockStates extends UGBlockstateProvider {
 		block(UGBlocks.ANCIENT_ROOT_PLANKS);
 		getVariantBuilder(UGBlocks.DENIZEN_TOTEM.get())
 			.partialState().with(DenizenTotemBlock.ACTIVE, true)
-			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM) + "_active", ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_active"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root_side"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_top"))).addModel()
+			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM) + "_active", Undergarden.prefix("block/denizen_totem_active"), Undergarden.prefix("block/ancient_root_side"), Undergarden.prefix("block/denizen_totem_top"))).addModel()
 			.partialState().with(DenizenTotemBlock.ACTIVE, false)
-			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_inactive"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/ancient_root_side"), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/denizen_totem_top"))).addModel();
+			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM), Undergarden.prefix("block/denizen_totem_inactive"), Undergarden.prefix("block/ancient_root_side"), Undergarden.prefix("block/denizen_totem_top"))).addModel();
 		crossBlock(UGBlocks.PUFF_MUSHROOM);
 		block(UGBlocks.PUFF_MUSHROOM_CAP);
 		block(UGBlocks.PUFF_MUSHROOM_STEM);
@@ -237,7 +237,7 @@ public class UGBlockStates extends UGBlockstateProvider {
 		horizontalBlock(UGBlocks.CARVED_GLOOMGOURD.get(), models().orientable(name(UGBlocks.CARVED_GLOOMGOURD), texture("gloomgourd_side"), texture("carved_gloomgourd"), texture("gloomgourd_top")));
 
 		tintedCrossBlock(UGBlocks.DEEPTURF);
-		ModelFile deepturf = models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/deepturf_block"));
+		ModelFile deepturf = models().getExistingFile(Undergarden.prefix("block/deepturf_block"));
 		ModelFile deepturf_snow = models().cubeBottomTop(name(UGBlocks.DEEPTURF_BLOCK) + "_snowy", texture("frozen_deepturf_block_side"), texture("deepsoil"), mcLoc("block/snow"));
 		getVariantBuilder(UGBlocks.DEEPTURF_BLOCK.get()).forAllStates(state -> {
 			if (state.getValue(SpreadingDeepturfBlock.SNOWY)) {

@@ -1,12 +1,14 @@
 package quek.undergarden.block.entity;
 
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.minecraft.core.*;
-import net.minecraft.nbt.CompoundTag;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
@@ -14,19 +16,23 @@ import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.block.InfuserBlock;
 import quek.undergarden.block.InfuserState;
 import quek.undergarden.component.RogdoriumInfusion;
@@ -38,6 +44,7 @@ import quek.undergarden.registry.UGRecipeTypes;
 import quek.undergarden.registry.UGTags;
 
 import java.util.List;
+import java.util.Map;
 
 public class InfuserBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
 
@@ -72,155 +79,60 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 		}
 	};
 
-	private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
+	private static final Codec<Map<ResourceKey<Recipe<?>>, Integer>> RECIPES_USED_CODEC = Codec.unboundedMap(Recipe.KEY_CODEC, Codec.INT);
+	private final Reference2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Reference2IntOpenHashMap<>();
+	private final RecipeManager.CachedCheck<SingleRecipeInput, InfusingRecipe> quickCheck = RecipeManager.createCheck(UGRecipeTypes.INFUSING.get());
 
 	public InfuserBlockEntity(BlockPos pos, BlockState blockState) {
 		super(UGBlockEntities.INFUSER.get(), pos, blockState);
 	}
 
 	@Override
-	protected Component getDefaultName() {
-		return Component.translatable("container.undergarden.infuser");
-	}
-
-	@Override
-	protected NonNullList<ItemStack> getItems() {
-		return this.items;
-	}
-
-	@Override
-	protected void setItems(NonNullList<ItemStack> items) {
-		this.items = items;
-	}
-
-	@Override
-	public void setItem(int index, ItemStack stack) {
-		ItemStack itemstack = this.items.get(index);
-		boolean flag = !stack.isEmpty() && ItemStack.isSameItemSameComponents(itemstack, stack);
-		this.items.set(index, stack);
-		stack.limitSize(this.getMaxStackSize(stack));
-		if (index == 0 && !flag) {
-			this.infusingTotalTime = getTotalInfusingTime(this.level, this);
-			this.infusingProgress = 0;
-			this.setChanged();
-		}
-	}
-
-	@Override
-	protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-		return new InfuserMenu(containerId, inventory, this, this.containerData);
-	}
-
-	@Override
-	public int getContainerSize() {
-		return this.items.size();
-	}
-
-	@Override
-	public int[] getSlotsForFace(Direction side) {
-		if (side == Direction.DOWN) {
-			return SLOTS_FOR_DOWN;
-		} else {
-			return side == Direction.UP ? SLOTS_FOR_UP : SLOTS_FOR_SIDES;
-		}
-	}
-
-	@Override
-	public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
-		return switch (index) {
-			case 0 -> true;
-			case 1 -> this.items.get(2).isEmpty() && itemStack.is(UGTags.Items.INFUSER_UTHERIUM_FUELS);
-			case 2 -> this.items.get(1).isEmpty() && itemStack.is(UGTags.Items.INFUSER_ROGDORIUM_FUELS);
-			default -> false;
-		};
-	}
-
-	@Override
-	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-		return direction == Direction.DOWN && index == 3;
-	}
-
-	@Override
-	public void setRecipeUsed(@Nullable RecipeHolder<?> recipe) {
-		if (recipe != null) {
-			ResourceLocation resourcelocation = recipe.id();
-			this.recipesUsed.addTo(resourcelocation, 1);
-		}
-	}
-
-	@Nullable
-	@Override
-	public RecipeHolder<?> getRecipeUsed() {
-		return null;
-	}
-
-	@Override
-	public void fillStackedContents(StackedContents contents) {
-		for (ItemStack stack : this.items) {
-			contents.accountStack(stack);
-		}
-	}
-
-	@Override
-	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.loadAdditional(tag, registries);
+	protected void loadAdditional(ValueInput input) {
+		super.loadAdditional(input);
 		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ContainerHelper.loadAllItems(tag, this.items, registries);
-		this.infusingProgress = tag.getInt("InfusingTime");
-		this.infusingTotalTime = tag.getInt("InfusingTimeTotal");
-		CompoundTag compoundtag = tag.getCompound("RecipesUsed");
-
-		for (String s : compoundtag.getAllKeys()) {
-			this.recipesUsed.put(ResourceLocation.parse(s), compoundtag.getInt(s));
-		}
+		ContainerHelper.loadAllItems(input, this.items);
+		this.infusingProgress = input.getIntOr("InfusingTime", 0);
+		this.infusingTotalTime = input.getIntOr("InfusingTimeTotal", 0);
+		this.recipesUsed.clear();
+		this.recipesUsed.putAll(input.read("RecipesUsed", RECIPES_USED_CODEC).orElse(Map.of()));
 	}
 
 	@Override
-	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.saveAdditional(tag, registries);
-		tag.putInt("InfusingTime", this.infusingProgress);
-		tag.putInt("InfusingTimeTotal", this.infusingTotalTime);
-		ContainerHelper.saveAllItems(tag, this.items, registries);
-		CompoundTag compoundtag = new CompoundTag();
-		this.recipesUsed.forEach((p_187449_, p_187450_) -> compoundtag.putInt(p_187449_.toString(), p_187450_));
-		tag.put("RecipesUsed", compoundtag);
+	protected void saveAdditional(ValueOutput output) {
+		super.saveAdditional(output);
+		output.putInt("InfusingTime", this.infusingProgress);
+		output.putInt("InfusingTimeTotal", this.infusingTotalTime);
+		ContainerHelper.saveAllItems(output, this.items);
+		output.store("RecipesUsed", RECIPES_USED_CODEC, this.recipesUsed);
 	}
 
-	public static void serverTick(Level level, BlockPos pos, BlockState state, InfuserBlockEntity blockEntity) {
+	public static void serverTick(ServerLevel level, BlockPos pos, BlockState state, InfuserBlockEntity entity) {
 		boolean changed = false;
-		boolean recipeFound = false;
-		boolean isInfusing = blockEntity.infusingProgress > 0;
+		boolean isInfusing = entity.infusingProgress > 0;
 
-		ItemStack input = blockEntity.items.getFirst();
-
-		if (!input.isEmpty()) {
-			List<RecipeHolder<InfusingRecipe>> recipes = level.getRecipeManager().getRecipesFor(UGRecipeTypes.INFUSING.get(), new SingleRecipeInput(input), level);
-			int i = blockEntity.getMaxStackSize();
-			for (var recipe : recipes) {
-				if (blockEntity.canInfuse(level.registryAccess(), recipe, blockEntity.items, i)) {
-					recipeFound = true;
-					blockEntity.infusingProgress++;
-					if (blockEntity.infusingProgress == blockEntity.infusingTotalTime) {
-						blockEntity.infusingProgress = 0;
-						blockEntity.infusingTotalTime = getTotalInfusingTime(level, blockEntity);
-						if (blockEntity.infuse(level.registryAccess(), recipe, blockEntity.items, i)) {
-							blockEntity.setRecipeUsed(recipe);
-						}
-
+		if (!entity.items.isEmpty()) {
+			ItemStack ingredient = entity.getItem(0);
+			ItemStack fuel = entity.getItem(2);
+			SingleRecipeInput input = new SingleRecipeInput(ingredient);
+			RecipeHolder<InfusingRecipe> recipe = entity.quickCheck.getRecipeFor(input, level).orElse(null);
+			if (recipe != null) {
+				ItemStack result = recipe.value().assemble(input);
+				if (!result.isEmpty() && entity.canInfuse(entity.getMaxStackSize(), result)) {
+					entity.infusingProgress++;
+					if (entity.infusingProgress == entity.infusingTotalTime) {
+						entity.infusingProgress = 0;
+						entity.infusingTotalTime = getTotalInfusingTime(level, entity);
+						entity.infuse(ingredient, fuel, result, recipe.value().getRecipeSlotType());
+						entity.setRecipeUsed(recipe);
 						changed = true;
 					}
-					break;
 				}
 			}
+		}
 
-			if (isInfusing != blockEntity.infusingProgress > 0) {
-				changed = true;
-			}
-
-			if (!recipeFound) {
-				blockEntity.infusingProgress = 0;
-				changed = true;
-			}
+		if (isInfusing != entity.infusingProgress > 0) {
+			changed = true;
 		}
 
 		if (changed) {
@@ -244,80 +156,134 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 		return !utherium && !rogdorium ? InfuserState.INACTIVE : (utherium ? InfuserState.INFUSING_UTHERIUM : InfuserState.INFUSING_ROGDORIUM);
 	}
 
-	private boolean canInfuse(RegistryAccess registryAccess, @Nullable RecipeHolder<InfusingRecipe> recipe, NonNullList<ItemStack> inventory, int maxStackSize) {
-		if (!inventory.get(0).isEmpty() && recipe != null) {
-			ItemStack result = recipe.value().assemble(new SingleRecipeInput(inventory.get(0)), registryAccess);
+	private boolean canInfuse(int maxStackSize, ItemStack result) {
+		ItemStack resultItemStack = this.getItem(3);
+		if (resultItemStack.isEmpty()) {
+			return true;
+		} else if (!ItemStack.isSameItemSameComponents(resultItemStack, result)) {
+			return false;
+		} else {
+			int resultCount = resultItemStack.getCount() + result.count();
+			int maxResultCount = Math.min(maxStackSize, result.getMaxStackSize());
+			return resultCount <= maxResultCount;
+		}
+	}
 
+	private void infuse(ItemStack input, ItemStack rogdoriumSlot, ItemStack result, InfusingRecipe.SlotType type) {
+		ItemStack resultItemStack = this.getItem(3);
+
+		if (ItemStack.isSameItem(input, result)) {
 			var component = result.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT);
 			int infusionAmount = component.infusionAmount();
 			int infusionMax = component.infusionMax();
+			int fuelAmount = rogdoriumSlot.getCount();
 			if (infusionMax <= infusionAmount) {
-				return false;
+				return;
 			}
-
-			if (inventory.get(recipe.value().getRecipeSlotType().getSlotIndex()).isEmpty()) {
-				return false;
-			}
-
-			if (result.isEmpty()) {
-				return false;
-			} else {
-				ItemStack resultSlot = inventory.get(3);
-				if (resultSlot.isEmpty()) {
-					return true;
-				} else if (!ItemStack.isSameItem(resultSlot, result)) {
-					return false;
-				} else {
-					// Neo fix: make furnace respect stack sizes in furnace recipes
-					return resultSlot.getCount() + result.getCount() <= maxStackSize && resultSlot.getCount() + result.getCount() <= resultSlot.getMaxStackSize() || resultSlot.getCount() + result.getCount() <= result.getMaxStackSize(); // Neo fix: make furnace respect stack sizes in furnace recipes
-				}
-			}
+			result.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(Mth.clamp((fuelAmount * 600) + infusionAmount, 0, infusionMax)));
+			rogdoriumSlot.shrink(Mth.clamp(fuelAmount, 1, (infusionMax / 600)));
 		} else {
-			return false;
+			this.getItem(type.getSlotIndex()).shrink(1);
+		}
+
+		if (resultItemStack.isEmpty()) {
+			this.setItem(3, result.copy());
+		} else {
+			resultItemStack.grow(result.getCount());
 		}
 	}
 
-	private boolean infuse(RegistryAccess registryAccess, @Nullable RecipeHolder<InfusingRecipe> recipe, NonNullList<ItemStack> inventory, int maxStackSize) {
-		if (recipe != null && this.canInfuse(registryAccess, recipe, inventory, maxStackSize)) {
-			ItemStack input = inventory.get(0);
-			ItemStack result = recipe.value().assemble(new SingleRecipeInput(input), registryAccess);
-			ItemStack output = inventory.get(3);
-			ItemStack fuel = inventory.get(2);
+	@Override
+	protected Component getDefaultName() {
+		return Component.translatable("container.undergarden.infuser");
+	}
 
-			if (ItemStack.isSameItem(input, result)) {
-				var component = result.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT);
-				int infusionAmount = component.infusionAmount();
-				int infusionMax = component.infusionMax();
-				int fuelAmount = fuel.getCount();
-				if (infusionMax <= infusionAmount) {
-					return false;
-				}
-				result.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(Mth.clamp((fuelAmount * 600) + infusionAmount, 0, infusionMax)));
-				fuel.shrink(Mth.clamp(fuelAmount, 1, (infusionMax / 600)));
-			} else {
-				inventory.get(recipe.value().getRecipeSlotType().getSlotIndex()).shrink(1);
-			}
+	@Override
+	protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+		return new InfuserMenu(containerId, inventory, this, this.containerData);
+	}
 
-			if (output.isEmpty()) {
-				inventory.set(3, result.copy());
-			} else if (output.is(result.getItem())) {
-				output.grow(result.getCount());
-			}
+	private static int getTotalInfusingTime(ServerLevel level, InfuserBlockEntity entity) {
+		SingleRecipeInput input = new SingleRecipeInput(entity.getItem(0));
+		return entity.quickCheck.getRecipeFor(input, level).map(recipeHolder -> recipeHolder.value().infusingTime()).orElse(200);
+	}
 
-			input.shrink(1);
-			return true;
+	@Override
+	public int[] getSlotsForFace(Direction side) {
+		if (side == Direction.DOWN) {
+			return SLOTS_FOR_DOWN;
 		} else {
-			return false;
+			return side == Direction.UP ? SLOTS_FOR_UP : SLOTS_FOR_SIDES;
 		}
 	}
 
-	private static int getTotalInfusingTime(Level level, InfuserBlockEntity blockEntity) {
-		SingleRecipeInput recipeInput = new SingleRecipeInput(blockEntity.getItem(0));
-		return level.getRecipeManager().getRecipeFor(UGRecipeTypes.INFUSING.get(), recipeInput, level).map(infusingRecipe -> infusingRecipe.value().infusingTime()).orElse(200);
+	@Override
+	public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
+		return switch (index) {
+			case 0 -> true;
+			case 1 -> this.getItem(2).isEmpty() && itemStack.is(UGTags.Items.INFUSER_UTHERIUM_FUELS);
+			case 2 -> this.getItem(1).isEmpty() && itemStack.is(UGTags.Items.INFUSER_ROGDORIUM_FUELS);
+			default -> false;
+		};
+	}
+
+	@Override
+	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
+		return direction == Direction.DOWN && index == 3;
+	}
+
+	@Override
+	public int getContainerSize() {
+		return this.items.size();
+	}
+
+	@Override
+	protected NonNullList<ItemStack> getItems() {
+		return this.items;
+	}
+
+	@Override
+	protected void setItems(NonNullList<ItemStack> items) {
+		this.items = items;
+	}
+
+	@Override
+	public void setItem(int slot, ItemStack itemStack) {
+		setItem(slot, itemStack, false);
+	}
+
+	@Override
+	public void setItem(int slot, ItemStack itemStack, boolean insideTransaction) {
+		ItemStack oldStack = this.items.get(slot);
+		boolean same = !itemStack.isEmpty() && ItemStack.isSameItemSameComponents(oldStack, itemStack);
+		this.items.set(slot, itemStack);
+		itemStack.limitSize(this.getMaxStackSize(itemStack));
+		if (slot == 0 && !same && this.level instanceof ServerLevel serverLevel && !insideTransaction) {
+			this.infusingTotalTime = getTotalInfusingTime(serverLevel, this);
+			this.infusingProgress = 0;
+			this.setChanged();
+		}
+	}
+
+	@Override
+	public void setRecipeUsed(@Nullable RecipeHolder<?> recipeUsed) {
+		if (recipeUsed != null) {
+			ResourceKey<Recipe<?>> id = recipeUsed.id();
+			this.recipesUsed.addTo(id, 1);
+		}
+	}
+
+	@Override
+	public @Nullable RecipeHolder<?> getRecipeUsed() {
+		return null;
+	}
+
+	@Override
+	public void awardUsedRecipes(Player player, List<ItemStack> itemStacks) {
 	}
 
 	public void awardUsedRecipesAndPopExperience(ServerPlayer player) {
-		List<RecipeHolder<?>> list = this.getRecipesToAwardAndPopExperience(player.serverLevel(), player.position());
+		List<RecipeHolder<?>> list = this.getRecipesToAwardAndPopExperience(player.level(), player.position());
 		player.awardRecipes(list);
 
 		for (RecipeHolder<?> recipeholder : list) {
@@ -325,19 +291,16 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 				player.triggerRecipeCrafted(recipeholder, this.items);
 			}
 		}
-
 		this.recipesUsed.clear();
 	}
 
 	public List<RecipeHolder<?>> getRecipesToAwardAndPopExperience(ServerLevel level, Vec3 popVec) {
 		List<RecipeHolder<?>> list = Lists.newArrayList();
 
-		for (Object2IntMap.Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
-			level.getRecipeManager().byKey(entry.getKey()).ifPresent(recipeHolder -> {
-				if (recipeHolder.value() == UGRecipeTypes.INFUSING) {
-					list.add(recipeHolder);
-					createExperience(level, popVec, entry.getIntValue(), ((InfusingRecipe)recipeHolder.value()).experience());
-				}
+		for (Reference2IntMap.Entry<ResourceKey<Recipe<?>>> entry : this.recipesUsed.reference2IntEntrySet()) {
+			level.recipeAccess().byKey(entry.getKey()).ifPresent(recipeHolder -> {
+				list.add(recipeHolder);
+				createExperience(level, popVec, entry.getIntValue(), ((InfusingRecipe) recipeHolder.value()).experience());
 			});
 		}
 
@@ -345,12 +308,27 @@ public class InfuserBlockEntity extends BaseContainerBlockEntity implements Worl
 	}
 
 	private static void createExperience(ServerLevel level, Vec3 popVec, int recipeIndex, float experience) {
-		int i = Mth.floor((float)recipeIndex * experience);
-		float f = Mth.frac((float)recipeIndex * experience);
-		if (f != 0.0F && Math.random() < (double)f) {
+		int i = Mth.floor((float) recipeIndex * experience);
+		float f = Mth.frac((float) recipeIndex * experience);
+		if (f != 0.0F && Math.random() < (double) f) {
 			i++;
 		}
 
 		ExperienceOrb.award(level, popVec, i);
+	}
+
+	@Override
+	public void fillStackedContents(StackedItemContents contents) {
+		for (ItemStack itemStack : this.items) {
+			contents.accountStack(itemStack);
+		}
+	}
+
+	@Override
+	public void preRemoveSideEffects(BlockPos pos, BlockState state) {
+		super.preRemoveSideEffects(pos, state);
+		if (this.level instanceof ServerLevel serverLevel) {
+			this.getRecipesToAwardAndPopExperience(serverLevel, Vec3.atCenterOf(pos));
+		}
 	}
 }

@@ -1,11 +1,11 @@
 package quek.undergarden.compat.jade;
 
 import com.google.common.collect.Lists;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.animal.MysteriousPot;
 import quek.undergarden.registry.UGBlocks;
@@ -23,7 +23,7 @@ public class UndergardenJadeCompat implements IWailaPlugin {
 	public void registerClient(IWailaClientRegistration registration) {
 		registration.addRayTraceCallback(this::createOverrides);
 
-		HarvestToolProvider.registerHandler(new ForgottenToolHandler(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten"), Lists.transform(List.of(UGItems.FORGOTTEN_PICKAXE.get(), UGItems.FORGOTTEN_AXE.get(), UGItems.FORGOTTEN_SHOVEL.get(), UGItems.FORGOTTEN_HOE.get()), Item::getDefaultInstance)));
+		HarvestToolProvider.registerHandler(new ForgottenToolHandler(Undergarden.prefix("forgotten"), Lists.transform(List.of(UGItems.FORGOTTEN_PICKAXE.get(), UGItems.FORGOTTEN_AXE.get(), UGItems.FORGOTTEN_SHOVEL.get(), UGItems.FORGOTTEN_HOE.get()), Item::getDefaultInstance)));
 	}
 
 	private @Nullable Accessor<?> createOverrides(HitResult hitResult, @Nullable Accessor<?> accessor, @Nullable Accessor<?> originalAccessor) {

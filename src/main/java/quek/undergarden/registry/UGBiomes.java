@@ -1,6 +1,5 @@
 package quek.undergarden.registry;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -8,8 +7,8 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.MobCategory;
@@ -47,7 +46,7 @@ public class UGBiomes {
 	public static final ResourceKey<Biome> ROGDORIUM_GROVE = create("rogdorium_grove");
 
 	private static ResourceKey<Biome> create(String name) {
-		return ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name));
+		return ResourceKey.create(Registries.BIOME, Undergarden.prefix(name));
 	}
 
 	public static void bootstrap(BootstrapContext<Biome> context) {

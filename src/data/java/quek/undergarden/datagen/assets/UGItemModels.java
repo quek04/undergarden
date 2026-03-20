@@ -2,7 +2,7 @@ package quek.undergarden.datagen.assets;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -359,6 +359,6 @@ public class UGItemModels extends UGItemModelProvider {
 			.parent(new ModelFile.UncheckedModelFile("neoforge:item/default"))
 			.customLoader(CloggrumBucketModelBuilder::begin).fluid(Fluids.EMPTY).flipGas(true).applyFluidLuminosity(true).end()
 			.texture("base", modLoc("item/cloggrum_bucket"))
-			.texture("fluid", ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/mask/bucket_fluid_drip"));
+			.texture("fluid", Identifier.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/mask/bucket_fluid_drip"));
 	}
 }

@@ -24,10 +24,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.*;
-
-import javax.annotation.Nullable;
 
 public class Gloomper extends Animal {
 

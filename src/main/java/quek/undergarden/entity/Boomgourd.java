@@ -5,10 +5,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.registry.UGEntityTypes;
-
-import javax.annotation.Nullable;
 
 public class Boomgourd extends PrimedTnt {
 

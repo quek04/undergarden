@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.LivingEntity;
 import quek.undergarden.Undergarden;
@@ -16,7 +16,7 @@ import quek.undergarden.registry.UGAttachments;
 
 public class UthericInfectionLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
 
-	private static final ResourceLocation TEXTURE = Undergarden.prefix("textures/utheric_infection_overlay.png");
+	private static final Identifier TEXTURE = Undergarden.prefix("textures/utheric_infection_overlay.png");
 
 	public UthericInfectionLayer(RenderLayerParent<T, M> renderer) {
 		super(renderer);

@@ -2,7 +2,7 @@ package quek.undergarden;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.event.UndergardenClientEvents;
@@ -72,8 +72,8 @@ public class Undergarden {
 		container.registerConfig(ModConfig.Type.CLIENT, UndergardenConfig.CLIENT_SPEC);
 	}
 
-	public static ResourceLocation prefix(String name) {
-		return ResourceLocation.fromNamespaceAndPath(MODID, name);
+	public static Identifier prefix(String name) {
+		return Identifier.fromNamespaceAndPath(MODID, name);
 	}
 
 	@Nullable

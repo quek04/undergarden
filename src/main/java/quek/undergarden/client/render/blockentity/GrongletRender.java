@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.GrongletBlock;
 import quek.undergarden.block.entity.GrongletBlockEntity;
@@ -96,17 +96,17 @@ public class GrongletRender implements BlockEntityRenderer<GrongletBlockEntity> 
 		stack.mulPose(Axis.YP.rotationDegrees(yaw));
 		VertexConsumer consumer;
 		if (gronglet.getBlockState().is(UGBlocks.GRONGLET)) {
-			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/gronglet.png")));
+			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(Undergarden.prefix("textures/block/gronglet.png")));
 			this.body.render(stack, consumer, light, overlay);
 			this.limbs.render(stack, consumer, light, overlay);
 			this.burs.render(stack, consumer, light, overlay);
 		} else if (gronglet.getBlockState().is(UGBlocks.UTHERIC_GRONGLET)) {
-			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/utheric_gronglet.png")));
+			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(Undergarden.prefix("textures/block/utheric_gronglet.png")));
 			this.body.render(stack, consumer, light, overlay);
 			this.limbs.render(stack, consumer, light, overlay);
 			this.burs.render(stack, consumer, light, overlay);
 		} else if (gronglet.getBlockState().is(UGBlocks.ROGDORIC_GRONGLET)) {
-			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/rogdoric_gronglet.png")));
+			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(Undergarden.prefix("textures/block/rogdoric_gronglet.png")));
 			this.body.render(stack, consumer, light, overlay);
 			this.limbs.render(stack, consumer, light, overlay);
 			this.burs.render(stack, consumer, light, overlay);

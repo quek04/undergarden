@@ -15,7 +15,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import quek.undergarden.Undergarden;
@@ -29,7 +29,7 @@ import java.util.Arrays;
 
 public class InfusingJEIRecipeCategory implements IRecipeCategory<InfusingRecipe> {
 
-	private static final ResourceLocation INFUSER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gui/container/infuser/infuser.png");
+	private static final Identifier INFUSER_TEXTURE = Undergarden.prefix("textures/gui/container/infuser/infuser.png");
 	public static final RecipeType<InfusingRecipe> RECIPE_TYPE = RecipeType.create(Undergarden.MODID, "infusing", InfuserConversionRecipe.class);
 
 	private final IDrawable icon;

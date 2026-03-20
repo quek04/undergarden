@@ -4,7 +4,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -26,7 +26,7 @@ public record UGChestLootTables(HolderLookup.Provider registries) implements Loo
 
 	@Override
 	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
-		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/catacombs")), LootTable.lootTable()
+		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, Undergarden.prefix("chests/catacombs")), LootTable.lootTable()
 			.withPool(LootPool.lootPool()
 				.setRolls(UniformGenerator.between(2.0F, 5.0F))
 				.add(LootItem.lootTableItem(UGItems.CLOGGRUM_NUGGET.get()).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
@@ -49,7 +49,7 @@ public record UGChestLootTables(HolderLookup.Provider registries) implements Loo
 				.add(LootItem.lootTableItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get()).setWeight(3))
 				.add(LootItem.lootTableItem(UGItems.FORGOTTEN_NUGGET.get()).setWeight(1)))
 		);
-		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/denizen_camp")), LootTable.lootTable()
+		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, Undergarden.prefix("chests/denizen_camp")), LootTable.lootTable()
 			.withPool(LootPool.lootPool()
 				.setRolls(UniformGenerator.between(2.0F, 4.0F))
 				.add(EmptyLootItem.emptyItem().setWeight(5))
@@ -72,7 +72,7 @@ public record UGChestLootTables(HolderLookup.Provider registries) implements Loo
 				.add(LootItem.lootTableItem(UGItems.DENIZEN_MASK).setWeight(3))
 			)
 		);
-		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/depleted_mine/mound")), LootTable.lootTable()
+		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, Undergarden.prefix("chests/depleted_mine/mound")), LootTable.lootTable()
 			.withPool(LootPool.lootPool()
 				.setRolls(ConstantValue.exactly(1.0F))
 				.add(EmptyLootItem.emptyItem().setWeight(10))
@@ -89,7 +89,7 @@ public record UGChestLootTables(HolderLookup.Provider registries) implements Loo
 				.add(LootItem.lootTableItem(UGItems.UTHERIC_CLUSTER).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
 			)
 		);
-		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "chests/depleted_mine/normal")), LootTable.lootTable()
+		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, Undergarden.prefix("chests/depleted_mine/normal")), LootTable.lootTable()
 			.withPool(LootPool.lootPool()
 				.setRolls(UniformGenerator.between(1.0F, 2.0F))
 				.add(EmptyLootItem.emptyItem().setWeight(7))
@@ -107,7 +107,7 @@ public record UGChestLootTables(HolderLookup.Provider registries) implements Loo
 				.add(LootItem.lootTableItem(UGItems.RAW_FROSTSTEEL).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
 			)
 		);
-		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "pots/forgotten_vestige/house")), LootTable.lootTable()
+		consumer.accept(ResourceKey.create(Registries.LOOT_TABLE, Undergarden.prefix("pots/forgotten_vestige/house")), LootTable.lootTable()
 			.withPool(LootPool.lootPool()
 				.setRolls(UniformGenerator.between(1.0F, 3.0F))
 				.add(LootItem.lootTableItem(UGItems.DEPTHROCK_PEBBLE).setWeight(100).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 9.0F))))

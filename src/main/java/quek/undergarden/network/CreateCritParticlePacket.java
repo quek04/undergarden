@@ -6,14 +6,14 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import quek.undergarden.Undergarden;
 
 public record CreateCritParticlePacket(int entityID, int duration, ParticleOptions particle) implements CustomPacketPayload {
 
-	public static final Type<CreateCritParticlePacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "create_crit_particle"));
+	public static final Type<CreateCritParticlePacket> TYPE = new Type<>(Undergarden.prefix("create_crit_particle"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, CreateCritParticlePacket> STREAM_CODEC = CustomPacketPayload.codec(CreateCritParticlePacket::write, CreateCritParticlePacket::new);
 
 	public CreateCritParticlePacket(RegistryFriendlyByteBuf buf) {

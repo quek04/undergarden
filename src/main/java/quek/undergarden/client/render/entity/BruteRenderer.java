@@ -3,7 +3,7 @@ package quek.undergarden.client.render.entity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.BruteModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -12,7 +12,7 @@ import quek.undergarden.entity.animal.Brute;
 
 public class BruteRenderer extends MobRenderer<Brute, BruteModel<Brute>> {
 
-	private static final ResourceLocation BRUTE = Undergarden.prefix("textures/entity/brute.png");
+	private static final Identifier BRUTE = Undergarden.prefix("textures/entity/brute.png");
 	private static final RenderType BRUTE_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/brute_eyes.png"));
 
 	public BruteRenderer(EntityRendererProvider.Context context) {
@@ -21,7 +21,7 @@ public class BruteRenderer extends MobRenderer<Brute, BruteModel<Brute>> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Brute entity) {
+	public Identifier getTextureLocation(Brute entity) {
 		return BRUTE;
 	}
 }

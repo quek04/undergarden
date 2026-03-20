@@ -8,8 +8,8 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Pools;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -44,48 +44,48 @@ public class UGStructures {
 	public static final DeferredHolder<StructureType<?>, StructureType<BiggerJigsawStructure>> BIGGER_JIGSAW = STRUCTURES.register("bigger_jigsaw", () -> () -> BiggerJigsawStructure.CODEC);
 
 	//catacombs
-	public static final ResourceKey<Structure> CATACOMBS = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs"));
-	public static final ResourceKey<StructureSet> CATACOMBS_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs"));
+	public static final ResourceKey<Structure> CATACOMBS = ResourceKey.create(Registries.STRUCTURE, Undergarden.prefix("catacombs"));
+	public static final ResourceKey<StructureSet> CATACOMBS_SET = ResourceKey.create(Registries.STRUCTURE_SET, Undergarden.prefix("catacombs"));
 
-	public static final ResourceKey<StructureTemplatePool> CATACOMBS_START = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/catacombs_entrance"));
-	public static final ResourceKey<StructureTemplatePool> CATACOMBS_STAIR = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/stair_pool"));
-	public static final ResourceKey<StructureTemplatePool> CATACOMBS_CHEST = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/chest_pool"));
-	public static final ResourceKey<StructureTemplatePool> CATACOMBS_INTERIOR = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/interior_pool"));
-	public static final ResourceKey<StructureTemplatePool> CATACOMBS_TUNNEL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel_pool"));
-	public static final ResourceKey<StructureTemplatePool> CATACOMBS_TUNNEL_FALLBACK = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/tunnel_fallback_pool"));
-	public static final ResourceKey<StructureTemplatePool> CATACOMBS_WAY = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs/way_pool"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_START = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("catacombs/catacombs_entrance"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_STAIR = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("catacombs/stair_pool"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_CHEST = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("catacombs/chest_pool"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_INTERIOR = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("catacombs/interior_pool"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_TUNNEL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("catacombs/tunnel_pool"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_TUNNEL_FALLBACK = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("catacombs/tunnel_fallback_pool"));
+	public static final ResourceKey<StructureTemplatePool> CATACOMBS_WAY = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("catacombs/way_pool"));
 
-	public static final ResourceKey<StructureProcessorList> CATACOMBS_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "catacombs_degradation"));
+	public static final ResourceKey<StructureProcessorList> CATACOMBS_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, Undergarden.prefix("catacombs_degradation"));
 
 	//forgotten vestige
-	public static final ResourceKey<Structure> FORGOTTEN_VESTIGE = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige"));
-	public static final ResourceKey<StructureSet> FORGOTTEN_VESTIGE_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige"));
+	public static final ResourceKey<Structure> FORGOTTEN_VESTIGE = ResourceKey.create(Registries.STRUCTURE, Undergarden.prefix("forgotten_vestige"));
+	public static final ResourceKey<StructureSet> FORGOTTEN_VESTIGE_SET = ResourceKey.create(Registries.STRUCTURE_SET, Undergarden.prefix("forgotten_vestige"));
 
-	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige"));
-	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_HOUSE_POT_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/house_pot_pool"));
+	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("forgotten_vestige"));
+	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_HOUSE_POT_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("forgotten_vestige/house_pot_pool"));
 
-	public static final ResourceKey<StructureProcessorList> FORGOTTEN_VESTIGE_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige_degradation"));
+	public static final ResourceKey<StructureProcessorList> FORGOTTEN_VESTIGE_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, Undergarden.prefix("forgotten_vestige_degradation"));
 
 	//denizen camps
-	public static final ResourceKey<Structure> DENIZEN_CAMP = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp"));
-	public static final ResourceKey<StructureSet> DENIZEN_CAMP_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp"));
+	public static final ResourceKey<Structure> DENIZEN_CAMP = ResourceKey.create(Registries.STRUCTURE, Undergarden.prefix("denizen_camp"));
+	public static final ResourceKey<StructureSet> DENIZEN_CAMP_SET = ResourceKey.create(Registries.STRUCTURE_SET, Undergarden.prefix("denizen_camp"));
 
-	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_TOTEM_CIRCLE_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/totem_circle_pool"));
-	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_TOTEM_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/totem_pool"));
-	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_ROAD_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/road_pool"));
-	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_HANGOUT_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp/hangout_pool"));
+	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_TOTEM_CIRCLE_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("denizen_camp/totem_circle_pool"));
+	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_TOTEM_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("denizen_camp/totem_pool"));
+	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_ROAD_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("denizen_camp/road_pool"));
+	public static final ResourceKey<StructureTemplatePool> DENIZEN_CAMP_HANGOUT_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("denizen_camp/hangout_pool"));
 
-	public static final ResourceKey<StructureProcessorList> DENIZEN_CAMP_ROAD_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp_road_processor"));
-	public static final ResourceKey<StructureProcessorList> DENIZEN_CAMP_WOOD_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "denizen_camp_wood_processor"));
+	public static final ResourceKey<StructureProcessorList> DENIZEN_CAMP_ROAD_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, Undergarden.prefix("denizen_camp_road_processor"));
+	public static final ResourceKey<StructureProcessorList> DENIZEN_CAMP_WOOD_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, Undergarden.prefix("denizen_camp_wood_processor"));
 
 	//depleted mine
-	public static final ResourceKey<Structure> DEPLETED_MINE = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine"));
-	public static final ResourceKey<StructureSet> DEPLETED_MINE_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine"));
+	public static final ResourceKey<Structure> DEPLETED_MINE = ResourceKey.create(Registries.STRUCTURE, Undergarden.prefix("depleted_mine"));
+	public static final ResourceKey<StructureSet> DEPLETED_MINE_SET = ResourceKey.create(Registries.STRUCTURE_SET, Undergarden.prefix("depleted_mine"));
 
-	public static final ResourceKey<StructureTemplatePool> DEPLETED_MINE_WALKWAY_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine/walkway_pool"));
-	public static final ResourceKey<StructureTemplatePool> DEPLETED_MINE_CLUTTER_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine/clutter_pool"));
+	public static final ResourceKey<StructureTemplatePool> DEPLETED_MINE_WALKWAY_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("depleted_mine/walkway_pool"));
+	public static final ResourceKey<StructureTemplatePool> DEPLETED_MINE_CLUTTER_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, Undergarden.prefix("depleted_mine/clutter_pool"));
 
-	public static final ResourceKey<StructureProcessorList> DEPLETED_MINE_LANTERN_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "depleted_mine_lantern_processor"));
+	public static final ResourceKey<StructureProcessorList> DEPLETED_MINE_LANTERN_PROCESSOR = ResourceKey.create(Registries.PROCESSOR_LIST, Undergarden.prefix("depleted_mine_lantern_processor"));
 
 	public static void bootstrapStructures(BootstrapContext<Structure> context) {
 		HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -450,6 +450,6 @@ public class UGStructures {
 	}
 
 	private static String name(String name) {
-		return ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name).toString();
+		return Undergarden.prefix(name).toString();
 	}
 }

@@ -3,10 +3,11 @@ package quek.undergarden.block;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
@@ -22,8 +23,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import javax.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
@@ -55,26 +55,14 @@ public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		switch (getConnectedDirection(state)) {
-			default -> {
-				return CEILING_SHAPE;
-			}
-			case UP -> {
-				return FLOOR_SHAPE;
-			}
-			case NORTH -> {
-				return NORTH_WALL_SHAPE;
-			}
-			case EAST -> {
-				return EAST_WALL_SHAPE;
-			}
-			case SOUTH -> {
-				return SOUTH_WALL_SHAPE;
-			}
-			case WEST -> {
-				return WEST_WALL_SHAPE;
-			}
-		}
+		return switch (getConnectedDirection(state)) {
+			case UP -> FLOOR_SHAPE;
+			case NORTH -> NORTH_WALL_SHAPE;
+			case EAST -> EAST_WALL_SHAPE;
+			case SOUTH -> SOUTH_WALL_SHAPE;
+			case WEST -> WEST_WALL_SHAPE;
+			default -> CEILING_SHAPE;
+		};
 	}
 
 	@Override
@@ -102,12 +90,12 @@ public class CloggrumLanternBlock extends FaceAttachedHorizontalDirectionalBlock
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
+	protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbor, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
 		if (state.getValue(WATERLOGGED)) {
-			level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+			ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 		}
 
-		return getConnectedDirection(state).getOpposite() == facing && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, pos, facingPos);
+		return getConnectedDirection(state).getOpposite() == directionToNeighbor && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, level, ticks, pos, directionToNeighbor, neighborPos, neighborState, random);
 	}
 
 	@Override

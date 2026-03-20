@@ -6,7 +6,9 @@ import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.SimpleAnimatedParticle;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
+
+;
 
 public class RogdoriumWispParticle extends SimpleAnimatedParticle {
 

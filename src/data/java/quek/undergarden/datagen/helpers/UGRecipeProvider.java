@@ -4,7 +4,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -314,7 +314,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	private void oreSmeltingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, RecipeOutput consumer) {
 		for (ItemLike ingredient : ingredients) {
-			smeltingRecipe(result, ingredient, xp, 1).group(group).save(consumer, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "smelt_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
+			smeltingRecipe(result, ingredient, xp, 1).group(group).save(consumer, Undergarden.prefix("smelt_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
 		}
 	}
 
@@ -338,7 +338,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	private void oreBlastingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, RecipeOutput consumer) {
 		for (ItemLike ingredient : ingredients) {
-			blastingRecipe(result, ingredient, xp, 1).group(group).save(consumer, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "blast_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
+			blastingRecipe(result, ingredient, xp, 1).group(group).save(consumer, Undergarden.prefix("blast_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()).getPath()));
 		}
 	}
 

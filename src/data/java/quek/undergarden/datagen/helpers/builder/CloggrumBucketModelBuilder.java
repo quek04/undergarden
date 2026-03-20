@@ -3,7 +3,7 @@ package quek.undergarden.datagen.helpers.builder;
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.client.model.generators.CustomLoaderBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelBuilder;
@@ -16,13 +16,13 @@ public class CloggrumBucketModelBuilder<T extends ModelBuilder<T>> extends Custo
 		return new CloggrumBucketModelBuilder<>(parent, existingFileHelper);
 	}
 
-	private ResourceLocation fluid;
-	private ResourceLocation content;
+	private Identifier fluid;
+	private Identifier content;
 	private Boolean flipGas;
 	private Boolean applyFluidLuminosity;
 
 	private CloggrumBucketModelBuilder(T parent, ExistingFileHelper existingFileHelper) {
-		super(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "cloggrum_bucket"), parent, existingFileHelper, false);
+		super(Undergarden.prefix("cloggrum_bucket"), parent, existingFileHelper, false);
 	}
 
 	public CloggrumBucketModelBuilder<T> fluid(Fluid fluid) {
@@ -31,7 +31,7 @@ public class CloggrumBucketModelBuilder<T extends ModelBuilder<T>> extends Custo
 		return this;
 	}
 
-	public CloggrumBucketModelBuilder<T> content(ResourceLocation content) {
+	public CloggrumBucketModelBuilder<T> content(Identifier content) {
 		this.content = content;
 		return this;
 	}

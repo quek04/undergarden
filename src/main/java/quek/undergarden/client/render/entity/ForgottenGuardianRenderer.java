@@ -5,7 +5,7 @@ import com.mojang.math.Axis;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenGuardianModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -14,7 +14,7 @@ import quek.undergarden.entity.monster.boss.ForgottenGuardian;
 
 public class ForgottenGuardianRenderer extends MobRenderer<ForgottenGuardian, ForgottenGuardianModel<ForgottenGuardian>> {
 
-	private static final ResourceLocation FORGOTTEN_GUARDIAN = Undergarden.prefix("textures/entity/forgotten_guardian.png");
+	private static final Identifier FORGOTTEN_GUARDIAN = Undergarden.prefix("textures/entity/forgotten_guardian.png");
 	private static final RenderType FORGOTTEN_GUARDIAN_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/forgotten_guardian_eyes.png"));
 
 	public ForgottenGuardianRenderer(EntityRendererProvider.Context context) {
@@ -23,7 +23,7 @@ public class ForgottenGuardianRenderer extends MobRenderer<ForgottenGuardian, Fo
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ForgottenGuardian entity) {
+	public Identifier getTextureLocation(ForgottenGuardian entity) {
 		return FORGOTTEN_GUARDIAN;
 	}
 

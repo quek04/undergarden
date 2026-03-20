@@ -15,7 +15,6 @@ import quek.undergarden.block.DenizenTotemBlock;
 import quek.undergarden.client.particle.TotemBeamParticle;
 import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGEffects;
-import quek.undergarden.registry.UGParticleTypes;
 
 import java.util.List;
 

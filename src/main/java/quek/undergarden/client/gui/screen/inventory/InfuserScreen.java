@@ -6,7 +6,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.gui.screens.recipebook.RecipeUpdateListener;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
@@ -17,11 +17,11 @@ import quek.undergarden.inventory.InfuserMenu;
 
 public class InfuserScreen extends AbstractContainerScreen<InfuserMenu> implements RecipeUpdateListener {
 
-	private static final ResourceLocation INFUSER_TEXTURE = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/gui/container/infuser/infuser.png");
-	private static final ResourceLocation SLOT_BLOCKED = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "container/infuser/slot_blocked");
-	private static final ResourceLocation PROGRESS_BAR_VERTICAL = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "container/infuser/progress_bar_vertical");
-	private static final ResourceLocation PROGRESS_BAR_RIGHT = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "container/infuser/progress_bar_right");
-	private static final ResourceLocation PROGRESS_BAR_LEFT = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "container/infuser/progress_bar_left");
+	private static final Identifier INFUSER_TEXTURE = Undergarden.prefix("textures/gui/container/infuser/infuser.png");
+	private static final Identifier SLOT_BLOCKED = Undergarden.prefix("container/infuser/slot_blocked");
+	private static final Identifier PROGRESS_BAR_VERTICAL = Undergarden.prefix("container/infuser/progress_bar_vertical");
+	private static final Identifier PROGRESS_BAR_RIGHT = Undergarden.prefix("container/infuser/progress_bar_right");
+	private static final Identifier PROGRESS_BAR_LEFT = Undergarden.prefix("container/infuser/progress_bar_left");
 
 	public final InfuserRecipeBookComponent recipeBookComponent;
 	private boolean widthTooNarrow;

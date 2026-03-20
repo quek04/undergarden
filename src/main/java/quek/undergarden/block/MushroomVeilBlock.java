@@ -2,15 +2,18 @@ package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import org.jspecify.annotations.Nullable;
 
 public class MushroomVeilBlock extends VineBlock {
 
@@ -29,21 +32,23 @@ public class MushroomVeilBlock extends VineBlock {
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-		BlockState updatedState = this.getUpdatedState(state, level, currentPos);
-		boolean end = !level.getBlockState(currentPos.below()).is(this);
+	protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbor, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+		BlockState updatedState = this.getUpdatedState(state, level, pos);
+		boolean end = !level.getBlockState(pos.below()).is(this);
 		return !this.hasFaces(updatedState) ? Blocks.AIR.defaultBlockState() : updatedState.setValue(END, end);
 	}
 
+	@Nullable
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		Level level = context.getLevel();
 		BlockPos clickedPos = context.getClickedPos();
-		if (!(super.getStateForPlacement(context) == null)) {
+		BlockState result = super.getStateForPlacement(context);
+		if (result != null) {
 			boolean end = !level.getBlockState(clickedPos.below()).is(this);
-			return super.getStateForPlacement(context).setValue(END, end);
+			return result.setValue(END, end);
 		}
-		return super.getStateForPlacement(context);
+		return null;
 	}
 
 	@Override

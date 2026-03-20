@@ -3,7 +3,7 @@ package quek.undergarden.client.render.entity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GreaterDwellerModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -12,7 +12,7 @@ import quek.undergarden.entity.animal.GreaterDweller;
 
 public class GreaterDwellerRenderer extends MobRenderer<GreaterDweller, GreaterDwellerModel<GreaterDweller>> {
 
-	private static final ResourceLocation GREATER_DWELLER = Undergarden.prefix("textures/entity/greater_dweller.png");
+	private static final Identifier GREATER_DWELLER = Undergarden.prefix("textures/entity/greater_dweller.png");
 	private final static RenderType GREATER_DWELLER_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/greater_dweller_eyes.png"));
 
 	public GreaterDwellerRenderer(EntityRendererProvider.Context context) {
@@ -21,7 +21,7 @@ public class GreaterDwellerRenderer extends MobRenderer<GreaterDweller, GreaterD
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GreaterDweller entity) {
+	public Identifier getTextureLocation(GreaterDweller entity) {
 		return GREATER_DWELLER;
 	}
 }

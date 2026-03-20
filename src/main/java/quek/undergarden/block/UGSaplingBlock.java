@@ -16,17 +16,16 @@ public class UGSaplingBlock extends SaplingBlock {
 		super(tree, Properties.of()
 				.mapColor(MapColor.PLANT)
 				.pushReaction(PushReaction.DESTROY)
-				.strength(0F)
+				.instabreak()
 				.randomTicks()
 				.sound(SoundType.GRASS)
 				.noOcclusion()
-				.noCollission()
+				.noCollision()
 		);
 	}
 
 	@Override
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		super.randomTick(state, level, pos, random);
 		if (!level.isAreaLoaded(pos, 1))
 			return;
 		//remove light check so our trees grow in any light level

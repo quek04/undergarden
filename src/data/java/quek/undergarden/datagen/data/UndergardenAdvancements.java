@@ -11,7 +11,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.packs.VanillaAdventureAdvancements;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
@@ -38,7 +38,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				UGBlocks.DEEPTURF_BLOCK.get(),
 				Component.translatable("advancement.undergarden.root.title"),
 				Component.empty(),
-				ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/block/depthrock_bricks.png"),
+				Undergarden.prefix("textures/block/depthrock_bricks.png"),
 				AdvancementType.TASK,
 				false,
 				false,

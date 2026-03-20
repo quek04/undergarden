@@ -2,12 +2,17 @@ package quek.undergarden.block.portal;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGTags;
+
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class UndergardenPortalShape {
 	private static final int MIN_WIDTH = 1;
@@ -15,64 +20,85 @@ public class UndergardenPortalShape {
 	private static final int MIN_HEIGHT = 2;
 	public static final int MAX_HEIGHT = 21;
 	private static final BlockBehaviour.StatePredicate FRAME = (state, getter, pos) -> state.is(UGTags.Blocks.PORTAL_FRAME_BLOCKS);
-	private final LevelAccessor level;
 	private final Direction.Axis axis;
 	private final Direction rightDir;
-	private int numPortalBlocks;
-	private BlockPos bottomLeft;
-	private int height;
+	private final int numPortalBlocks;
+	private final BlockPos bottomLeft;
+	private final int height;
 	private final int width;
 
-	public UndergardenPortalShape(LevelAccessor level, BlockPos bottomLeftPos, Direction.Axis axis) {
-		this.level = level;
+	public UndergardenPortalShape(Direction.Axis axis, int portalBlockCount, Direction rightDir, BlockPos bottomLeft, int width, int height) {
 		this.axis = axis;
-		this.rightDir = axis == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
-		this.bottomLeft = this.calculateBottomLeft(bottomLeftPos);
-		if (this.bottomLeft == null) {
-			this.bottomLeft = bottomLeftPos;
-			this.width = 1;
-			this.height = 1;
+		this.numPortalBlocks = portalBlockCount;
+		this.rightDir = rightDir;
+		this.bottomLeft = bottomLeft;
+		this.width = width;
+		this.height = height;
+	}
+
+	public static Optional<UndergardenPortalShape> findEmptyPortalShape(LevelAccessor level, BlockPos pos, Direction.Axis preferredAxis) {
+		return findPortalShape(level, pos, shape -> shape.isValid() && shape.numPortalBlocks == 0, preferredAxis);
+	}
+
+	public static Optional<UndergardenPortalShape> findPortalShape(LevelAccessor level, BlockPos pos, Predicate<UndergardenPortalShape> isValid, Direction.Axis preferredAxis) {
+		Optional<UndergardenPortalShape> firstAxis = Optional.of(findAnyShape(level, pos, preferredAxis)).filter(isValid);
+		if (firstAxis.isPresent()) {
+			return firstAxis;
 		} else {
-			this.width = this.calculateWidth();
-			if (this.width > 0) {
-				this.height = this.calculateHeight();
+			Direction.Axis otherAxis = preferredAxis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
+			return Optional.of(findAnyShape(level, pos, otherAxis)).filter(isValid);
+		}
+	}
+
+	public static UndergardenPortalShape findAnyShape(BlockGetter level, BlockPos pos, Direction.Axis axis) {
+		Direction rightDir = axis == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
+		BlockPos bottomLeft = calculateBottomLeft(level, rightDir, pos);
+		if (bottomLeft == null) {
+			return new UndergardenPortalShape(axis, 0, rightDir, pos, 0, 0);
+		} else {
+			int width = calculateWidth(level, bottomLeft, rightDir);
+			if (width == 0) {
+				return new UndergardenPortalShape(axis, 0, rightDir, bottomLeft, 0, 0);
+			} else {
+				MutableInt portalBlockCountOutput = new MutableInt();
+				int height = calculateHeight(level, bottomLeft, rightDir, width, portalBlockCountOutput);
+				return new UndergardenPortalShape(axis, portalBlockCountOutput.intValue(), rightDir, bottomLeft, width, height);
 			}
 		}
 	}
 
-	@Nullable
-	private BlockPos calculateBottomLeft(BlockPos pos) {
-		int i = Math.max(this.level.getMinBuildHeight(), pos.getY() - MAX_HEIGHT);
+	private static @Nullable BlockPos calculateBottomLeft(BlockGetter level, Direction rightDir, BlockPos pos) {
+		int minY = Math.max(level.getMinY(), pos.getY() - 21);
 
-		while (pos.getY() > i && isEmpty(this.level.getBlockState(pos.below()))) {
+		while (pos.getY() > minY && isEmpty(level.getBlockState(pos.below()))) {
 			pos = pos.below();
 		}
 
-		Direction direction = this.rightDir.getOpposite();
-		int j = this.getDistanceUntilEdgeAboveFrame(pos, direction) - 1;
-		return j < 0 ? null : pos.relative(direction, j);
+		Direction leftDir = rightDir.getOpposite();
+		int edge = getDistanceUntilEdgeAboveFrame(level, pos, leftDir) - 1;
+		return edge < 0 ? null : pos.relative(leftDir, edge);
 	}
 
-	private int calculateWidth() {
-		int i = this.getDistanceUntilEdgeAboveFrame(this.bottomLeft, this.rightDir);
-		return i >= MIN_WIDTH && i <= MAX_WIDTH ? i : 0;
+	private static int calculateWidth(BlockGetter level, BlockPos bottomLeft, Direction rightDir) {
+		int width = getDistanceUntilEdgeAboveFrame(level, bottomLeft, rightDir);
+		return width >= MIN_WIDTH && width <= MAX_WIDTH ? width : 0;
 	}
 
-	private int getDistanceUntilEdgeAboveFrame(BlockPos pos, Direction direction) {
-		BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+	private static int getDistanceUntilEdgeAboveFrame(BlockGetter level, BlockPos pos, Direction direction) {
+		BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
 
-		for (int i = 0; i <= MAX_WIDTH; ++i) {
-			mutablePos.set(pos).move(direction, i);
-			BlockState blockstate = this.level.getBlockState(mutablePos);
-			if (!isEmpty(blockstate)) {
-				if (FRAME.test(blockstate, this.level, mutablePos)) {
-					return i;
+		for (int width = 0; width <= MAX_WIDTH; width++) {
+			blockPos.set(pos).move(direction, width);
+			BlockState blockState = level.getBlockState(blockPos);
+			if (!isEmpty(blockState)) {
+				if (FRAME.test(blockState, level, blockPos)) {
+					return width;
 				}
 				break;
 			}
 
-			BlockState blockstate1 = this.level.getBlockState(mutablePos.move(Direction.DOWN));
-			if (!FRAME.test(blockstate1, this.level, mutablePos)) {
+			BlockState belowState = level.getBlockState(blockPos.move(Direction.DOWN));
+			if (!FRAME.test(belowState, level, blockPos)) {
 				break;
 			}
 		}
@@ -80,16 +106,16 @@ public class UndergardenPortalShape {
 		return 0;
 	}
 
-	private int calculateHeight() {
-		BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-		int i = this.getDistanceUntilTop(mutablePos);
-		return i >= MIN_HEIGHT && i <= MAX_HEIGHT && this.hasTopFrame(mutablePos, i) ? i : 0;
+	private static int calculateHeight(BlockGetter level, BlockPos bottomLeft, Direction rightDir, int width, MutableInt portalBlockCount) {
+		BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+		int height = getDistanceUntilTop(level, bottomLeft, rightDir, pos, width, portalBlockCount);
+		return height >= MIN_HEIGHT && height <= MAX_HEIGHT && hasTopFrame(level, bottomLeft, rightDir, pos, width, height) ? height : 0;
 	}
 
-	private boolean hasTopFrame(BlockPos.MutableBlockPos pos, int height) {
-		for (int i = 0; i < this.width; ++i) {
-			BlockPos.MutableBlockPos mutablePos = pos.set(this.bottomLeft).move(Direction.UP, height).move(this.rightDir, i);
-			if (!FRAME.test(this.level.getBlockState(mutablePos), this.level, mutablePos)) {
+	private static boolean hasTopFrame(BlockGetter level, BlockPos bottomLeft, Direction rightDir, BlockPos.MutableBlockPos pos, int width, int height) {
+		for (int i = 0; i < width; i++) {
+			BlockPos.MutableBlockPos framePos = pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, i);
+			if (!FRAME.test(level.getBlockState(framePos), level, framePos)) {
 				return false;
 			}
 		}
@@ -97,27 +123,29 @@ public class UndergardenPortalShape {
 		return true;
 	}
 
-	private int getDistanceUntilTop(BlockPos.MutableBlockPos pos) {
-		for (int i = 0; i < MAX_HEIGHT; ++i) {
-			pos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, -1);
-			if (!FRAME.test(this.level.getBlockState(pos), this.level, pos)) {
-				return i;
+	private static int getDistanceUntilTop(
+		BlockGetter level, BlockPos bottomLeft, Direction rightDir, BlockPos.MutableBlockPos pos, int width, MutableInt portalBlockCount
+	) {
+		for (int height = 0; height < MAX_HEIGHT; height++) {
+			pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, -1);
+			if (!FRAME.test(level.getBlockState(pos), level, pos)) {
+				return height;
 			}
 
-			pos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, this.width);
-			if (!FRAME.test(this.level.getBlockState(pos), this.level, pos)) {
-				return i;
+			pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, width);
+			if (!FRAME.test(level.getBlockState(pos), level, pos)) {
+				return height;
 			}
 
-			for (int j = 0; j < this.width; ++j) {
-				pos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, j);
-				BlockState blockstate = this.level.getBlockState(pos);
-				if (!isEmpty(blockstate)) {
-					return i;
+			for (int i = 0; i < width; i++) {
+				pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, i);
+				BlockState state = level.getBlockState(pos);
+				if (!isEmpty(state)) {
+					return height;
 				}
 
-				if (blockstate.is(UGBlocks.UNDERGARDEN_PORTAL.get())) {
-					++this.numPortalBlocks;
+				if (state.is(UGBlocks.UNDERGARDEN_PORTAL)) {
+					portalBlockCount.increment();
 				}
 			}
 		}
@@ -126,20 +154,17 @@ public class UndergardenPortalShape {
 	}
 
 	private static boolean isEmpty(BlockState state) {
-		return state.isAir() || state.is(UGBlocks.UNDERGARDEN_PORTAL.get());
+		return state.isAir() || state.is(UGBlocks.UNDERGARDEN_PORTAL);
 	}
 
 	public boolean isValid() {
-		return this.bottomLeft != null && this.width >= MIN_WIDTH && this.width <= MAX_WIDTH && this.height >= MIN_HEIGHT && this.height <= MAX_HEIGHT;
+		return this.width >= MIN_WIDTH && this.width <= MAX_WIDTH && this.height >= MIN_HEIGHT && this.height <= MAX_HEIGHT;
 	}
 
-	public int getPortalBlocks() {
-		return this.numPortalBlocks;
-	}
-
-	public void createPortalBlocks() {
-		BlockState blockstate = UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState().setValue(UndergardenPortalBlock.AXIS, this.axis);
-		BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1)).forEach(pos -> this.level.setBlock(pos, blockstate, 18));
+	public void createPortalBlocks(LevelAccessor level) {
+		BlockState portalState = UGBlocks.UNDERGARDEN_PORTAL.get().defaultBlockState().setValue(UndergardenPortalBlock.AXIS, this.axis);
+		BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1))
+			.forEach(pos -> level.setBlock(pos, portalState, 18));
 	}
 
 	public boolean isComplete() {

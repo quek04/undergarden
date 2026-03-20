@@ -2,7 +2,7 @@ package quek.undergarden.compat.jade;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Tool;
@@ -14,7 +14,7 @@ import snownee.jade.addon.harvest.SimpleToolHandler;
 import java.util.List;
 
 public class ForgottenToolHandler extends SimpleToolHandler {
-	protected ForgottenToolHandler(ResourceLocation uid, List<ItemStack> tools) {
+	protected ForgottenToolHandler(Identifier uid, List<ItemStack> tools) {
 		super(uid, tools, true);
 	}
 

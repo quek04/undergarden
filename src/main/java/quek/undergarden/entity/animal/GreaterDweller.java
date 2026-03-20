@@ -23,7 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
@@ -194,14 +194,14 @@ public class GreaterDweller extends Animal implements NeutralMob {
 		this.angerTime = time;
 	}
 
-	@javax.annotation.Nullable
+	@org.jspecify.annotations.Nullable
 	@Override
 	public UUID getPersistentAngerTarget() {
 		return this.targetUuid;
 	}
 
 	@Override
-	public void setPersistentAngerTarget(@javax.annotation.Nullable UUID target) {
+	public void setPersistentAngerTarget(@org.jspecify.annotations.Nullable UUID target) {
 		this.targetUuid = target;
 	}
 

@@ -4,24 +4,24 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.recipe.InfusingRecipe;
 
-import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
 public class InfuserRecipeBookComponent extends RecipeBookComponent {
 
 	private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(
-		ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_enabled"),
-		ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_disabled"),
-		ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_enabled_highlighted"),
-		ResourceLocation.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
+		Identifier.withDefaultNamespace("recipe_book/furnace_filter_enabled"),
+		Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled"),
+		Identifier.withDefaultNamespace("recipe_book/furnace_filter_enabled_highlighted"),
+		Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
 	);
 	private static final Component FILTER_NAME = Component.translatable("gui.undergarden.recipebook.toggleRecipes.infusable");
 

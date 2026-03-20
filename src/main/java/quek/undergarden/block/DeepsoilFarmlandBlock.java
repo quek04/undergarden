@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.TriState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -12,22 +13,20 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.FarmlandBlock;
 import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.FarmlandWaterManager;
-import net.neoforged.neoforge.common.util.TriState;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGBlocks;
 
-import javax.annotation.Nullable;
-
-public class DeepsoilFarmlandBlock extends FarmBlock {
+public class DeepsoilFarmlandBlock extends FarmlandBlock {
 
 	public DeepsoilFarmlandBlock(Properties properties) {
 		super(properties);
-		this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, 0));
+		this.registerDefaultState(this.getStateDefinition().any().setValue(MOISTURE, 0));
 	}
 
 	@Override
@@ -83,11 +82,11 @@ public class DeepsoilFarmlandBlock extends FarmBlock {
 	}
 
 	@Override
-	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDamage) {
-		if (!level.isClientSide() && CommonHooks.onFarmlandTrample(level, pos, UGBlocks.DEEPSOIL.get().defaultBlockState(), fallDamage, entity)) {
+	public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, double fallDistance) {
+		if (level instanceof ServerLevel serverLevel && CommonHooks.onFarmlandTrample(serverLevel, pos, UGBlocks.DEEPSOIL.get().defaultBlockState(), fallDistance, entity)) {
 			turnToDeepsoil(entity, state, level, pos);
 		}
 
-		entity.causeFallDamage(fallDamage, 1.0F, level.damageSources().fall());
+		entity.causeFallDamage(fallDistance, 1.0F, level.damageSources().fall());
 	}
 }

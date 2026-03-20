@@ -1,16 +1,20 @@
 package quek.undergarden.block.portal;
 
-import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.BlockUtil;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.*;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -18,14 +22,16 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.portal.DimensionTransition;
-import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGDimensions;
+import quek.undergarden.registry.UGParticleTypes;
+import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Optional;
 
@@ -39,7 +45,7 @@ public class UndergardenPortalBlock extends Block implements Portal {
 		super(Properties.of()
 			.pushReaction(PushReaction.BLOCK)
 			.strength(-1.0F)
-			.noCollission()
+			.noCollision()
 			.lightLevel((state) -> 10)
 			.sound(SoundType.GLASS)
 			.noLootTable()
@@ -53,15 +59,15 @@ public class UndergardenPortalBlock extends Block implements Portal {
 	}
 
 	@Override
-	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-		Direction.Axis direction$axis = facing.getAxis();
-		Direction.Axis direction$axis1 = state.getValue(AXIS);
-		boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
-		return !flag && facingState.getBlock() != this && !new UndergardenPortalShape(level, currentPos, direction$axis1).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+	protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbor, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+		Direction.Axis updateAxis = directionToNeighbor.getAxis();
+		Direction.Axis axis = state.getValue(AXIS);
+		boolean wrongAxis = axis != updateAxis && updateAxis.isHorizontal();
+		return !wrongAxis && neighborState.getBlock() != this && !UndergardenPortalShape.findAnyShape(level, pos, axis).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(state, level, ticks, pos, directionToNeighbor, neighborPos, neighborState, random);
 	}
 
 	@Override
-	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+	protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise) {
 		if (entity.canUsePortal(false)) {
 			entity.setAsInsidePortal(this, pos);
 		}
@@ -94,7 +100,7 @@ public class UndergardenPortalBlock extends Block implements Portal {
 	}
 
 	@Override
-	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
 		return ItemStack.EMPTY;
 	}
 
@@ -121,22 +127,17 @@ public class UndergardenPortalBlock extends Block implements Portal {
 
 	@Override
 	public int getPortalTransitionTime(ServerLevel level, Entity entity) {
-		return this.getTransitionTime(level, entity);
-	}
-
-	public int getTransitionTime(Level level, Entity entity) {
-		return entity instanceof Player player ? Math.max(1,
+		return entity instanceof Player player ? Math.max(0,
 			level.getGameRules()
-				.getInt(player.getAbilities().invulnerable
-					? GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY
-					: GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY
+				.get(player.getAbilities().invulnerable
+					? GameRules.PLAYERS_NETHER_PORTAL_CREATIVE_DELAY
+					: GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY
 				)
 		) : 0;
 	}
 
-	@Nullable
 	@Override
-	public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
+	public @Nullable TeleportTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
 		ResourceKey<Level> resourcekey = level.dimension() == UGDimensions.UNDERGARDEN_LEVEL ? Level.OVERWORLD : UGDimensions.UNDERGARDEN_LEVEL;
 		ServerLevel destination = level.getServer().getLevel(resourcekey);
 		if (destination == null) {
@@ -151,10 +152,10 @@ public class UndergardenPortalBlock extends Block implements Portal {
 	}
 
 	@Nullable
-	private DimensionTransition getExitPortal(ServerLevel level, Entity entity, BlockPos pos, BlockPos exitPos, boolean isUndergarden, WorldBorder worldBorder) {
+	private TeleportTransition getExitPortal(ServerLevel level, Entity entity, BlockPos pos, BlockPos exitPos, boolean isUndergarden, WorldBorder worldBorder) {
 		Optional<BlockPos> potentialPortalSpot = UndergardenPortalForcer.findClosestPortalPosition(level, exitPos, isUndergarden, worldBorder);
 		BlockUtil.FoundRectangle rect;
-		DimensionTransition.PostDimensionTransition post;
+		TeleportTransition.PostTeleportTransition post;
 		if (potentialPortalSpot.isPresent()) {
 			BlockPos blockpos = potentialPortalSpot.get();
 			BlockState blockstate = level.getBlockState(blockpos);
@@ -176,7 +177,7 @@ public class UndergardenPortalBlock extends Block implements Portal {
 			}
 
 			rect = createdPortal.get();
-			post = UndergardenPortalForcer.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET);
+			post = UndergardenPortalForcer.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET);
 		}
 
 		return NetherPortalBlock.getDimensionTransitionFromExit(entity, pos, rect, level, post);

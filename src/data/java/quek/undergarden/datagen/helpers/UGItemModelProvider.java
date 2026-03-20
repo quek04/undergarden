@@ -2,7 +2,7 @@ package quek.undergarden.datagen.helpers;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -21,7 +21,7 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 		return BuiltInRegistries.BLOCK.getKey(block.get()).getPath();
 	}
 
-	private ResourceLocation texture(String name) {
+	private Identifier texture(String name) {
 		return modLoc("block/" + name);
 	}
 
@@ -97,6 +97,6 @@ public abstract class UGItemModelProvider extends ItemModelProvider {
 	}
 
 	public void trapdoor(Supplier<? extends TrapDoorBlock> trapdoor) {
-		withExistingParent(BuiltInRegistries.BLOCK.getKey(trapdoor.get()).getPath(), ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "block/" + blockName(trapdoor) + "_bottom"));
+		withExistingParent(BuiltInRegistries.BLOCK.getKey(trapdoor.get()).getPath(), Undergarden.prefix("block/" + blockName(trapdoor) + "_bottom"));
 	}
 }

@@ -8,10 +8,10 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.*;
+import net.minecraft.client.resources.model.ModelBaker;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.inventory.InventoryMenu;
@@ -26,9 +26,9 @@ import net.neoforged.neoforge.client.model.QuadTransformers;
 import net.neoforged.neoforge.client.model.SimpleModelState;
 import net.neoforged.neoforge.client.model.geometry.*;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
-import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
 import quek.undergarden.item.bucket.UGBucketItem;
 import quek.undergarden.registry.UGDataComponents;
@@ -38,19 +38,19 @@ import java.util.function.Function;
 
 //copy of DynamicFluidContainerModel that allows for the addition of mob and solid block covers
 public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel> {
-	private static final Map<ResourceLocation, ResourceLocation> TEXTURE_MAP = Maps.newHashMap();
+	private static final Map<Identifier, Identifier> TEXTURE_MAP = Maps.newHashMap();
 	private static final Transformation DEPTH_OFFSET_TRANSFORM = new Transformation(new Vector3f(), new Quaternionf(), new Vector3f(1.002F, 1.002F, 1.002F), new Quaternionf());
 
-	private static final Material FALLBACK_CONTENT = new Material(InventoryMenu.BLOCK_ATLAS, getContentTexture(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "fallback")));
+	private static final Material FALLBACK_CONTENT = new Material(InventoryMenu.BLOCK_ATLAS, getContentTexture(Undergarden.prefix("fallback")));
 
 	private final Fluid fluid;
 	@Nullable
-	private final ResourceLocation otherContent;
+	private final Identifier otherContent;
 	private final boolean flipGas;
 	private final boolean applyFluidLuminosity;
 	private final boolean isLower;
 
-	private CloggrumBucketModel(Fluid fluid, @Nullable ResourceLocation otherContent, boolean flipGas, boolean applyFluidLuminosity, boolean isLower) {
+	private CloggrumBucketModel(Fluid fluid, @Nullable Identifier otherContent, boolean flipGas, boolean applyFluidLuminosity, boolean isLower) {
 		this.fluid = fluid;
 		this.otherContent = otherContent;
 		this.flipGas = flipGas;
@@ -62,13 +62,13 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 		return new CloggrumBucketModel(newFluid, this.otherContent, this.flipGas, this.applyFluidLuminosity, this.isLower);
 	}
 
-	public CloggrumBucketModel withOtherContent(ResourceLocation otherContent, boolean isLower) {
+	public CloggrumBucketModel withOtherContent(Identifier otherContent, boolean isLower) {
 		return new CloggrumBucketModel(Fluids.EMPTY, otherContent, this.flipGas, this.applyFluidLuminosity, isLower);
 	}
 
 	//textures are fetched from the item/bucket_content folder as other mods use this directory thanks to BucketLib
-	public static ResourceLocation getContentTexture(ResourceLocation otherContentLocation) {
-		ResourceLocation texture = TEXTURE_MAP.get(otherContentLocation);
+	public static Identifier getContentTexture(Identifier otherContentLocation) {
+		Identifier texture = TEXTURE_MAP.get(otherContentLocation);
 		if (texture == null) {
 			String textureLocation = String.format("item/bucket_content/%s", otherContentLocation.getPath());
 			texture = otherContentLocation.withPath(textureLocation);
@@ -118,7 +118,7 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 		modelState = new SimpleModelState(modelState.getRotation().compose(new Transformation(null, flip ? new Quaternionf(0.0F, 0.0F, 1.0F, 0.0F) : null, null, null)));
 
 		// We need to disable GUI 3D and block lighting for this to render properly
-		var itemContext = StandaloneGeometryBakingContext.builder(context).withGui3d(false).withUseBlockLight(false).build(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "cloggrum_bucket"));
+		var itemContext = StandaloneGeometryBakingContext.builder(context).withGui3d(false).withUseBlockLight(false).build(Undergarden.prefix("cloggrum_bucket"));
 		var modelBuilder = CompositeModel.Baked.builder(itemContext, particleSprite, new ContainedFluidOverrideHandler(overrides, baker, itemContext, this), context.getTransforms());
 
 		var normalRenderTypes = DynamicFluidContainerModel.getLayerRenderTypes(false);
@@ -171,25 +171,25 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 			if (!jsonObject.has("fluid"))
 				throw new RuntimeException("Bucket model requires 'fluid' value.");
 
-			ResourceLocation fluidName = ResourceLocation.parse(jsonObject.get("fluid").getAsString());
+			Identifier fluidName = Identifier.parse(jsonObject.get("fluid").getAsString());
 
 			Fluid fluid = BuiltInRegistries.FLUID.get(fluidName);
 
 			boolean flip = GsonHelper.getAsBoolean(jsonObject, "flip_gas", true);
 			boolean applyFluidLuminosity = GsonHelper.getAsBoolean(jsonObject, "apply_fluid_luminosity", true);
 
-			ResourceLocation content = null;
+			Identifier content = null;
 			if (jsonObject.has("content")) {
-				content = ResourceLocation.tryParse(jsonObject.get("content").getAsString());
+				content = Identifier.tryParse(jsonObject.get("content").getAsString());
 			}
-			
+
 			return new CloggrumBucketModel(fluid, content, flip, applyFluidLuminosity, false);
 		}
 	}
 
 	private static final class ContainedFluidOverrideHandler extends ItemOverrides {
 
-		private final Map<ResourceLocation, BakedModel> cache = Maps.newHashMap(); // contains all the baked models since they'll never change
+		private final Map<Identifier, BakedModel> cache = Maps.newHashMap(); // contains all the baked models since they'll never change
 		private final ItemOverrides nested;
 		private final ModelBaker baker;
 		private final IGeometryBakingContext owner;
@@ -209,10 +209,10 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 			if (overridden != originalModel) return overridden;
 			if (stack.getItem() instanceof UGBucketItem) {
 				boolean containsEntityType = false;
-				ResourceLocation content = null;
+				Identifier content = null;
 				if (stack.get(DataComponents.BUCKET_ENTITY_DATA) != null) {
-					ResourceLocation id = ResourceLocation.parse(stack.get(DataComponents.BUCKET_ENTITY_DATA).copyTag().getString("id"));
-					content = ResourceLocation.fromNamespaceAndPath(id.getNamespace(), id.getPath());
+					Identifier id = Identifier.parse(stack.get(DataComponents.BUCKET_ENTITY_DATA).copyTag().getString("id"));
+					content = Identifier.fromNamespaceAndPath(id.getNamespace(), id.getPath());
 					containsEntityType = true;
 				} else {
 					if (stack.get(UGDataComponents.STORED_BLOCK) != null) {
@@ -222,7 +222,7 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 				SimpleFluidContent fluid = null;
 				if (content == null) {
 					fluid = stack.getOrDefault(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY);
-					ResourceLocation location = BuiltInRegistries.FLUID.getKey(fluid.getFluid());
+					Identifier location = BuiltInRegistries.FLUID.getKey(fluid.getFluid());
 					content = (location != BuiltInRegistries.FLUID.getDefaultKey()) ? location : null;
 				}
 				BakedModel bakedModel = this.cache.get(content);

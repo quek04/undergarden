@@ -19,10 +19,10 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.world.gen.feature.config.UtheriumCrystalConfiguration;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 
 public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration> {

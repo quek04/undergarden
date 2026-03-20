@@ -1,11 +1,10 @@
 package quek.undergarden.block.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
@@ -14,11 +13,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.SeededContainerLoot;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.level.storage.loot.LootTable;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGBlockEntities;
+
+;
 
 public class DepthrockPotBlockEntity extends BlockEntity implements RandomizableContainer {
 
@@ -32,19 +34,19 @@ public class DepthrockPotBlockEntity extends BlockEntity implements Randomizable
 	}
 
 	@Override
-	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.saveAdditional(tag, registries);
-		if (!this.trySaveLootTable(tag)) {
-			ContainerHelper.saveAllItems(tag, this.items, registries);
+	protected void saveAdditional(ValueOutput output) {
+		super.saveAdditional(output);
+		if (!this.trySaveLootTable(output)) {
+			ContainerHelper.saveAllItems(output, this.items);
 		}
 	}
 
 	@Override
-	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.loadAdditional(tag, registries);
+	protected void loadAdditional(ValueInput input) {
+		super.loadAdditional(input);
 		this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		if (!this.tryLoadLootTable(tag)) {
-			ContainerHelper.loadAllItems(tag, this.items, registries);
+		if (!this.tryLoadLootTable(input)) {
+			ContainerHelper.loadAllItems(input, this.items);
 		}
 	}
 
@@ -127,9 +129,9 @@ public class DepthrockPotBlockEntity extends BlockEntity implements Randomizable
 	}
 
 	@Override
-	protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
-		super.applyImplicitComponents(componentInput);
-		SeededContainerLoot seededcontainerloot = componentInput.get(DataComponents.CONTAINER_LOOT);
+	protected void applyImplicitComponents(DataComponentGetter components) {
+		super.applyImplicitComponents(components);
+		SeededContainerLoot seededcontainerloot = components.get(DataComponents.CONTAINER_LOOT);
 		if (seededcontainerloot != null) {
 			this.lootTable = seededcontainerloot.lootTable();
 			this.lootTableSeed = seededcontainerloot.seed();
@@ -145,9 +147,9 @@ public class DepthrockPotBlockEntity extends BlockEntity implements Randomizable
 	}
 
 	@Override
-	public void removeComponentsFromTag(CompoundTag tag) {
-		super.removeComponentsFromTag(tag);
-		tag.remove("LootTable");
-		tag.remove("LootTableSeed");
+	public void removeComponentsFromTag(ValueOutput output) {
+		super.removeComponentsFromTag(output);
+		output.discard(LOOT_TABLE_TAG);
+		output.discard(LOOT_TABLE_SEED_TAG);
 	}
 }

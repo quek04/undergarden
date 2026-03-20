@@ -3,7 +3,7 @@ package quek.undergarden.item.tool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -31,7 +31,7 @@ import quek.undergarden.entity.projectile.ThrownSpear;
 
 public class SpearItem extends Item implements ProjectileItem {
 
-	private static final ResourceLocation ENTITY_REACH_UUID = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "spear_entity_reach");
+	private static final Identifier ENTITY_REACH_UUID = Undergarden.prefix("spear_entity_reach");
 
 	public SpearItem(Properties properties) {
 		super(properties);

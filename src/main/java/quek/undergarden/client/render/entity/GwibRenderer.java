@@ -5,7 +5,7 @@ import com.mojang.math.Axis;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.GwibModel;
@@ -15,7 +15,7 @@ import quek.undergarden.entity.animal.Gwib;
 
 public class GwibRenderer extends MobRenderer<Gwib, GwibModel<Gwib>> {
 
-	public static final ResourceLocation GWIB = Undergarden.prefix("textures/entity/gwib.png");
+	public static final Identifier GWIB = Undergarden.prefix("textures/entity/gwib.png");
 	private static final RenderType GWIB_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/gwib_eyes.png"));
 
 	public GwibRenderer(EntityRendererProvider.Context context) {
@@ -24,7 +24,7 @@ public class GwibRenderer extends MobRenderer<Gwib, GwibModel<Gwib>> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Gwib entity) {
+	public Identifier getTextureLocation(Gwib entity) {
 		return GWIB;
 	}
 

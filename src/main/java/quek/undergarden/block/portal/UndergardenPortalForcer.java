@@ -1,13 +1,13 @@
 package quek.undergarden.block.portal;
 
-import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.BlockUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
@@ -17,8 +17,7 @@ import net.minecraft.world.level.block.NetherPortalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.portal.DimensionTransition;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.neoforged.neoforge.network.PacketDistributor;
 import quek.undergarden.UndergardenConfig;
 import quek.undergarden.network.UndergardenPortalSoundPacket;
@@ -31,9 +30,9 @@ import java.util.Optional;
 
 public class UndergardenPortalForcer {
 
-	private static final BlockState FRAME = !BuiltInRegistries.BLOCK.containsKey(Objects.requireNonNull(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get()))) ? Blocks.STONE_BRICKS.defaultBlockState() : BuiltInRegistries.BLOCK.get(ResourceLocation.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())).defaultBlockState();
+	private static final BlockState FRAME = !BuiltInRegistries.BLOCK.containsKey(Objects.requireNonNull(Identifier.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get()))) ? Blocks.STONE_BRICKS.defaultBlockState() : BuiltInRegistries.BLOCK.getValue(Identifier.tryParse(UndergardenConfig.Common.return_portal_frame_block_id.get())).defaultBlockState();
 
-	public static final DimensionTransition.PostDimensionTransition PLAY_PORTAL_SOUND = UndergardenPortalForcer::playPortalSound;
+	public static final TeleportTransition.PostTeleportTransition PLAY_PORTAL_SOUND = UndergardenPortalForcer::playPortalSound;
 
 	private static void playPortalSound(Entity entity) {
 		if (entity instanceof ServerPlayer player) {
@@ -59,7 +58,7 @@ public class UndergardenPortalForcer {
 		double d1 = -1.0;
 		BlockPos backupPortalPos = null;
 		WorldBorder worldBorder = level.getWorldBorder();
-		int maxHeight = level.getMaxBuildHeight() - 1;
+		int maxHeight = level.getMaxY() - 1;
 		BlockPos.MutableBlockPos framePos = pos.mutable();
 
 		for (BlockPos.MutableBlockPos checkPos : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {

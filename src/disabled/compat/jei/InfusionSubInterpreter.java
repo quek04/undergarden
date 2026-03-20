@@ -3,7 +3,7 @@ package quek.undergarden.compat.jei;
 import mezz.jei.api.ingredients.subtypes.ISubtypeInterpreter;
 import mezz.jei.api.ingredients.subtypes.UidContext;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;;
 import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.registry.UGDataComponents;
 

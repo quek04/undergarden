@@ -2,6 +2,7 @@ package quek.undergarden.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -24,8 +25,8 @@ public class GooBlock extends Block {
 	}
 
 	@Override
-	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+	protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise) {
 		entity.makeStuckInBlock(state, new Vec3(2.0D, 0.0D, 2.0D));
-		super.entityInside(state, level, pos, entity);
+		super.entityInside(state, level, pos, entity, effectApplier, isPrecise);
 	}
 }

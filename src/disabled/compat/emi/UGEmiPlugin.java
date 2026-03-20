@@ -5,7 +5,7 @@ import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import quek.undergarden.Undergarden;
@@ -17,7 +17,7 @@ import quek.undergarden.registry.UGRecipeTypes;
 @EmiEntrypoint
 public class UGEmiPlugin implements EmiPlugin {
 
-	public static final EmiRecipeCategory INFUSING_CATEGORY = new EmiRecipeCategory(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "infusing"), EmiStack.of(UGBlocks.INFUSER));
+	public static final EmiRecipeCategory INFUSING_CATEGORY = new EmiRecipeCategory(Undergarden.prefix("infusing"), EmiStack.of(UGBlocks.INFUSER));
 
 	@Override
 	public void register(EmiRegistry registry) {

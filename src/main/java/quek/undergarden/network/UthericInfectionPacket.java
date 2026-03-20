@@ -3,7 +3,7 @@ package quek.undergarden.network;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -13,7 +13,7 @@ import quek.undergarden.registry.UGAttachments;
 
 public record UthericInfectionPacket(int entityID, double infectionLevel, float previousInfectionDamage) implements CustomPacketPayload {
 
-	public static final Type<UthericInfectionPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection"));
+	public static final Type<UthericInfectionPacket> TYPE = new Type<>(Undergarden.prefix("utheric_infection"));
 	public static final StreamCodec<FriendlyByteBuf, UthericInfectionPacket> STREAM_CODEC = CustomPacketPayload.codec(UthericInfectionPacket::write, UthericInfectionPacket::new);
 
 	public UthericInfectionPacket(FriendlyByteBuf buf) {
