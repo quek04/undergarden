@@ -2,8 +2,8 @@ package quek.undergarden.registry;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.*;
@@ -17,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
+import quek.undergarden.block.GrongletBlock;
 import quek.undergarden.block.portal.UndergardenPortalBlock;
 import quek.undergarden.item.CarvedGloomgourdItem;
 import quek.undergarden.item.tool.slingshot.GrongletItem;
@@ -136,7 +137,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> DEEPSOIL = register("deepsoil", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
 	public static final DeferredBlock<Block> COARSE_DEEPSOIL = register("coarse_deepsoil", () -> new Block(BlockBehaviour.Properties.ofFullCopy(DEEPSOIL.get())));
 	public static final DeferredBlock<Block> DEEPSOIL_FARMLAND = register("deepsoil_farmland", () -> new DeepsoilFarmlandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FARMLAND)));
-	public static final DeferredBlock<Block> GOO = register("goo", () -> new GooLayerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).replaceable().pushReaction(PushReaction.DESTROY).randomTicks().strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SNOW).isViewBlocking((state, getter, pos) -> false).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollission()));
+	public static final DeferredBlock<Block> GOO = register("goo", () -> new GooLayerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).replaceable().pushReaction(PushReaction.DESTROY).randomTicks().strength(0.1F).requiresCorrectToolForDrops().sound(SoundType.SNOW).isViewBlocking((state, getter, pos) -> false).sound(SoundType.SLIME_BLOCK).noOcclusion().noCollision()));
 	public static final DeferredBlock<Block> GOO_BLOCK = register("goo_block", () -> new GooBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion()));
 	public static final DeferredBlock<Block> SMOG_VENT = register("smog_vent", () -> new SmogVentBlock(BlockBehaviour.Properties.ofFullCopy(DEPTHROCK.get()).lightLevel((state) -> 10).isValidSpawn(((state, level, pos, entity) -> false))));
 	public static final DeferredBlock<Block> SEDIMENT = register("sediment", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.SNARE).mapColor(MapColor.DEEPSLATE).strength(0.5F).sound(SoundType.SAND)));
@@ -172,36 +173,36 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> BOOMGOURD = register("boomgourd", () -> new BoomgourdBlock(BlockBehaviour.Properties.of().ignitedByLava().mapColor(MapColor.COLOR_PURPLE).strength(1.0F).sound(SoundType.WOOD)));
 	public static final ResourceKey<Block> GLOOMGOURD_STEM_KEY = ResourceKey.create(Registries.BLOCK, Undergarden.prefix("gloomgourd_stem"));
 	public static final ResourceKey<Block> ATTACHED_GLOOMGOURD_STEM_KEY = ResourceKey.create(Registries.BLOCK, Undergarden.prefix("gloomgourd_stem_attached"));
-	public static final DeferredBlock<AttachedStemBlock> GLOOMGOURD_STEM_ATTACHED = BLOCKS.register("gloomgourd_stem_attached", () -> new AttachedStemBlock(GLOOMGOURD_STEM_KEY, UGBlocks.GLOOMGOURD.getKey(), UGItems.GLOOMGOURD_SEEDS.getKey(), BlockBehaviour.Properties.ofFullCopy(Blocks.ATTACHED_MELON_STEM)));
-	public static final DeferredBlock<StemBlock> GLOOMGOURD_STEM = BLOCKS.register("gloomgourd_stem", () -> new StemBlock(GLOOMGOURD.getKey(), ATTACHED_GLOOMGOURD_STEM_KEY, UGItems.GLOOMGOURD_SEEDS.getKey(), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON_STEM)));
+	public static final DeferredBlock<AttachedStemBlock> GLOOMGOURD_STEM_ATTACHED = BLOCKS.register("gloomgourd_stem_attached", () -> new AttachedStemBlock(GLOOMGOURD_STEM_KEY, UGBlocks.GLOOMGOURD.getKey(), UGItems.GLOOMGOURD_SEEDS.getKey(), BlockTags.SUPPORTS_STEM_CROPS, BlockBehaviour.Properties.ofFullCopy(Blocks.ATTACHED_MELON_STEM)));
+	public static final DeferredBlock<StemBlock> GLOOMGOURD_STEM = BLOCKS.register("gloomgourd_stem", () -> new StemBlock(GLOOMGOURD.getKey(), ATTACHED_GLOOMGOURD_STEM_KEY, UGItems.GLOOMGOURD_SEEDS.getKey(), BlockTags.SUPPORTS_STEM_CROPS, BlockTags.SUPPORTS_STEM_FRUIT, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON_STEM)));
 
-	public static final DeferredBlock<Block> DEPTHROCK_PEBBLES = BLOCKS.register("depthrock_pebbles", () -> new DepthrockPebblesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).instabreak().pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT).noOcclusion().noCollission()));
+	public static final DeferredBlock<Block> DEPTHROCK_PEBBLES = BLOCKS.register("depthrock_pebbles", () -> new DepthrockPebblesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).instabreak().pushReaction(PushReaction.DESTROY).sound(SoundType.BASALT).noOcclusion().noCollision()));
 	public static final DeferredBlock<GlitterkelpBlock> GLITTERKELP = BLOCKS.register("glitterkelp", () -> new GlitterkelpBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.KELP).lightLevel((state) -> 10)));
 	public static final DeferredBlock<GlitterkelpPlantBlock> GLITTERKELP_PLANT = BLOCKS.register("glitterkelp_plant", () -> new GlitterkelpPlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.KELP_PLANT).lightLevel((state) -> 10)));
 	public static final DeferredBlock<DroopvineBlock> DROOPVINE = BLOCKS.register("droopvine", () -> new DroopvineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAVE_VINES).strength(0.1F).lightLevel(Droopvine.light())));
 	public static final DeferredBlock<DroopvinePlantBlock> DROOPVINE_PLANT = BLOCKS.register("droopvine_plant", () -> new DroopvinePlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAVE_VINES_PLANT).strength(0.1F).lightLevel(Droopvine.light())));
 
 	//mushroom
-	public static final DeferredBlock<Block> INDIGO_MUSHROOM = register("indigo_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).hasPostProcess((state, level, pos) -> true)));
+	public static final DeferredBlock<Block> INDIGO_MUSHROOM = register("indigo_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INDIGO_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos)));
 	public static final DeferredBlock<Block> INDIGO_MUSHROOM_CAP = register("indigo_mushroom_cap", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(0.2F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> INDIGO_MUSHROOM_STEM = register("indigo_mushroom_stem", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(0.2F).sound(SoundType.WOOD)));
 
-	public static final DeferredBlock<Block> VEIL_MUSHROOM = register("veil_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_VEIL_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).hasPostProcess((state, level, pos) -> true)));
+	public static final DeferredBlock<Block> VEIL_MUSHROOM = register("veil_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_VEIL_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos)));
 	public static final DeferredBlock<Block> VEIL_MUSHROOM_CAP = register("veil_mushroom_cap", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(0.2F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> VEIL_MUSHROOM_STEM = register("veil_mushroom_stem", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM)));
 	public static final DeferredBlock<Block> MUSHROOM_VEIL = register("mushroom_veil", () -> new MushroomVeilBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.VINE)));
 
-	public static final DeferredBlock<Block> INK_MUSHROOM = register("ink_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INK_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).hasPostProcess((state, level, pos) -> true)));
+	public static final DeferredBlock<Block> INK_MUSHROOM = register("ink_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_INK_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos)));
 	public static final DeferredBlock<Block> INK_MUSHROOM_CAP = register("ink_mushroom_cap", () -> new InkCapBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(0.2F).sound(SoundType.WOOD)));
-	public static final DeferredBlock<Block> SEEPING_INK = register("seeping_ink", () -> new SeepingInkBlock(BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noOcclusion().noCollission()));
+	public static final DeferredBlock<Block> SEEPING_INK = register("seeping_ink", () -> new SeepingInkBlock(BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noOcclusion().noCollision()));
 	public static final DeferredBlock<Block> INK_MUSHROOM_STEM = register("ink_mushroom_stem", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM)));
 
-	public static final DeferredBlock<Block> BLOOD_MUSHROOM = register("blood_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).hasPostProcess((state, level, pos) -> true)));
+	public static final DeferredBlock<Block> BLOOD_MUSHROOM = register("blood_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_BLOOD_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos)));
 	public static final DeferredBlock<Block> BLOOD_MUSHROOM_CAP = register("blood_mushroom_cap", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).strength(0.2F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> ENGORGED_BLOOD_MUSHROOM_CAP = register("engorged_blood_mushroom_cap", () -> new EngorgedCapBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK)));
 	public static final DeferredBlock<Block> BLOOD_MUSHROOM_STEM = register("blood_mushroom_stem", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM)));
 
-	public static final DeferredBlock<Block> PUFF_MUSHROOM = register("puff_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).hasPostProcess((state, level, pos) -> true)));
+	public static final DeferredBlock<Block> PUFF_MUSHROOM = register("puff_mushroom", () -> new UGMushroomBlock(UGConfiguredFeatures.HUGE_PUFF_MUSHROOM, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).postProcess((state, level, pos) -> pos)));
 	public static final DeferredBlock<Block> PUFF_MUSHROOM_CAP = register("puff_mushroom_cap", () -> new PuffMushroomCapBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.2F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<Block> PUFF_MUSHROOM_STEM = register("puff_mushroom_stem", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM)));
 
@@ -211,7 +212,7 @@ public class UGBlocks {
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_SMOGSTEM_LOG = register("stripped_smogstem_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<RotatedPillarBlock> SMOGSTEM_WOOD = register("smogstem_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_SMOGSTEM_WOOD = register("stripped_smogstem_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD)));
-	public static final DeferredBlock<Block> SMOGSTEM_LEAVES = register("smogstem_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().ignitedByLava().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_CYAN).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn((state, level, pos, value) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)));
+	public static final DeferredBlock<Block> SMOGSTEM_LEAVES = register("smogstem_leaves", () -> new TintedParticleLeavesBlock(0.01F, BlockBehaviour.Properties.of().ignitedByLava().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_CYAN).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn((state, level, pos, value) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)));
 	public static final DeferredBlock<Block> SMOGSTEM_PLANKS = register("smogstem_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
 	public static final DeferredBlock<StairBlock> SMOGSTEM_STAIRS = register("smogstem_stairs", () -> new StairBlock(SMOGSTEM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> SMOGSTEM_SLAB = register("smogstem_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SMOGSTEM_PLANKS.get())));
@@ -233,7 +234,7 @@ public class UGBlocks {
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WIGGLEWOOD_LOG = register("stripped_wigglewood_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_BROWN).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<RotatedPillarBlock> WIGGLEWOOD_WOOD = register("wigglewood_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_BROWN).strength(2.0F).sound(SoundType.WOOD)));
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WIGGLEWOOD_WOOD = register("stripped_wigglewood_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.TERRACOTTA_BROWN).strength(2.0F).sound(SoundType.WOOD)));
-	public static final DeferredBlock<Block> WIGGLEWOOD_LEAVES = register("wigglewood_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().ignitedByLava().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_PINK).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn((state, level, pos, value) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)));
+	public static final DeferredBlock<Block> WIGGLEWOOD_LEAVES = register("wigglewood_leaves", () -> new TintedParticleLeavesBlock(0.01F, BlockBehaviour.Properties.of().ignitedByLava().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_PINK).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().isValidSpawn((state, level, pos, value) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)));
 	public static final DeferredBlock<Block> WIGGLEWOOD_PLANKS = register("wigglewood_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
 	public static final DeferredBlock<StairBlock> WIGGLEWOOD_STAIRS = register("wigglewood_stairs", () -> new StairBlock(WIGGLEWOOD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(WIGGLEWOOD_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> WIGGLEWOOD_SLAB = register("wigglewood_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(WIGGLEWOOD_PLANKS.get())));
@@ -255,8 +256,8 @@ public class UGBlocks {
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_GRONGLE_LOG = register("stripped_grongle_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
 	public static final DeferredBlock<RotatedPillarBlock> GRONGLE_WOOD = register("grongle_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
 	public static final DeferredBlock<RotatedPillarBlock> STRIPPED_GRONGLE_WOOD = register("stripped_grongle_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
-	public static final DeferredBlock<Block> GRONGLE_LEAVES = register("grongle_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).sound(SoundType.AZALEA_LEAVES)));
-	public static final DeferredBlock<Block> HANGING_GRONGLE_LEAVES = register("hanging_grongle_leaves", () -> new HangingGrongleLeavesBlock(BlockBehaviour.Properties.ofFullCopy(GRONGLE_LEAVES.get()).noCollission().noOcclusion()));
+	public static final DeferredBlock<Block> GRONGLE_LEAVES = register("grongle_leaves", () -> new TintedParticleLeavesBlock(0.01F, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).sound(SoundType.AZALEA_LEAVES)));
+	public static final DeferredBlock<Block> HANGING_GRONGLE_LEAVES = register("hanging_grongle_leaves", () -> new HangingGrongleLeavesBlock(BlockBehaviour.Properties.ofFullCopy(GRONGLE_LEAVES.get()).noCollision().noOcclusion()));
 	public static final DeferredBlock<Block> GRONGLE_PLANKS = register("grongle_planks", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
 	public static final DeferredBlock<StairBlock> GRONGLE_STAIRS = register("grongle_stairs", () -> new StairBlock(GRONGLE_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(GRONGLE_PLANKS.get())));
 	public static final DeferredBlock<SlabBlock> GRONGLE_SLAB = register("grongle_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(GRONGLE_PLANKS.get())));
@@ -272,9 +273,9 @@ public class UGBlocks {
 	public static final DeferredBlock<CeilingHangingSignBlock> GRONGLE_HANGING_SIGN = register("grongle_hanging_sign", () -> new CeilingHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)));
 	public static final DeferredBlock<WallHangingSignBlock> GRONGLE_WALL_HANGING_SIGN = BLOCKS.register("grongle_wall_hanging_sign", () -> new WallHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
-	public static final DeferredBlock<GrongletBlock> GRONGLET = register("gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
-	public static final DeferredBlock<GrongletBlock> UTHERIC_GRONGLET = register("utheric_gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
-	public static final DeferredBlock<GrongletBlock> ROGDORIC_GRONGLET = register("rogdoric_gronglet", () -> new GrongletBlock(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollission().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> GRONGLET = register("gronglet", () -> new GrongletBlock(Undergarden.prefix("gronglet/gronglet"), BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollision().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> UTHERIC_GRONGLET = register("utheric_gronglet", () -> new GrongletBlock(Undergarden.prefix("gronglet/utheric_gronglet"), BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollision().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
+	public static final DeferredBlock<GrongletBlock> ROGDORIC_GRONGLET = register("rogdoric_gronglet", () -> new GrongletBlock(Undergarden.prefix("gronglet/rogdoric_gronglet"), BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollision().strength(0.0F).sound(UGSoundTypes.GRONGLET)));
 
 	//ancient root
 	public static final DeferredBlock<RotatedPillarBlock> ANCIENT_ROOT = register("ancient_root", () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
@@ -334,7 +335,7 @@ public class UGBlocks {
 	private static <T extends Block> Supplier<BlockItem> registerBlockItem(final DeferredBlock<T> block) {
 		return () -> {
 			if (block.is(SHARD_TORCH)) {
-				return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), new Item.Properties().rarity(UGItems.UTHERIUM_RARITY), Direction.DOWN);
+				return new StandingAndWallBlockItem(SHARD_TORCH.get(), SHARD_WALL_TORCH.get(), Direction.DOWN, new Item.Properties().rarity(UGItems.UTHERIUM_RARITY));
 			} else if (block.is(REGALIUM_BLOCK) || block.is(DEPTHROCK_REGALIUM_ORE) || block.is(SHIVERSTONE_REGALIUM_ORE)) {
 				return new BlockItem(Objects.requireNonNull(block.get()), new Item.Properties().rarity(Rarity.UNCOMMON));
 			} else if (block.is(ROGDORIUM_BLOCK) || block.is(DREADROCK_ROGDORIUM_ORE) || block.is(ROGDORIC_ANCIENT_ROOT)) {
@@ -354,13 +355,13 @@ public class UGBlocks {
 			} else if (block.is(CARVED_GLOOMGOURD)) {
 				return new CarvedGloomgourdItem(Objects.requireNonNull(block.get()), new Item.Properties());
 			} else if (block.is(SMOGSTEM_SIGN)) {
-				return new SignItem(new Item.Properties().stacksTo(16), SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get());
+				return new SignItem(SMOGSTEM_SIGN.get(), SMOGSTEM_WALL_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (block.is(WIGGLEWOOD_SIGN)) {
-				return new SignItem(new Item.Properties().stacksTo(16), WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get());
+				return new SignItem(WIGGLEWOOD_SIGN.get(), WIGGLEWOOD_WALL_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (block.is(GRONGLE_SIGN)) {
-				return new SignItem(new Item.Properties().stacksTo(16), GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get());
+				return new SignItem(GRONGLE_SIGN.get(), GRONGLE_WALL_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (block.is(ANCIENT_ROOT_SIGN)) {
-				return new SignItem(new Item.Properties().stacksTo(16), ANCIENT_ROOT_SIGN.get(), ANCIENT_ROOT_WALL_SIGN.get());
+				return new SignItem(ANCIENT_ROOT_SIGN.get(), ANCIENT_ROOT_WALL_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (block.is(SMOGSTEM_HANGING_SIGN)) {
 				return new HangingSignItem(SMOGSTEM_HANGING_SIGN.get(), SMOGSTEM_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
 			} else if (block.is(WIGGLEWOOD_HANGING_SIGN)) {

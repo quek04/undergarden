@@ -1,7 +1,9 @@
 package quek.undergarden.registry;
 
 import com.mojang.serialization.MapCodec;
+import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.core.particles.ParticleGroup;
+import net.minecraft.core.particles.ParticleLimit;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -55,5 +57,5 @@ public class UGParticleTypes {
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_VIRULENT = PARTICLES.register("falling_virulent", () -> new SimpleParticleType(false));
 	public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_VIRULENT = PARTICLES.register("landing_virulent", () -> new SimpleParticleType(false));
 
-	public static final ParticleGroup SHIMMER_GROUP = new ParticleGroup(1000);
+	public static final ParticleLimit SHIMMER_GROUP = new ParticleLimit(1000);
 }

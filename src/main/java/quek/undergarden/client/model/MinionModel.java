@@ -1,25 +1,22 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableList;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.Minion;
 
-public class MinionModel<T extends Minion> extends ListModel<T> {
+public class MinionModel extends EntityModel<LivingEntityRenderState> {
 
-	private final ModelPart shell;
-	private final ModelPart body;
 	private final ModelPart backRightLeg;
 	private final ModelPart backLeftLeg;
 	private final ModelPart frontLeftLeg;
 	private final ModelPart frontRightLeg;
 
 	public MinionModel(ModelPart root) {
-		this.shell = root.getChild("shell");
-		this.body = root.getChild("body");
+		super(root);
+		ModelPart body = root.getChild("body");
 		this.backRightLeg = body.getChild("backRightLeg");
 		this.backLeftLeg = body.getChild("backLeftLeg");
 		this.frontLeftLeg = body.getChild("frontLeftLeg");
@@ -48,16 +45,12 @@ public class MinionModel<T extends Minion> extends ListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.frontLeftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.frontRightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+	public void setupAnim(LivingEntityRenderState state) {
+		super.setupAnim(state);
+		this.frontLeftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
+		this.frontRightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
 
-		this.backLeftLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-		this.backRightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableList.of(this.shell, this.body);
+		this.backLeftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
+		this.backRightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
 	}
 }

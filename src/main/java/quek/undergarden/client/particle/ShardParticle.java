@@ -1,19 +1,24 @@
 package quek.undergarden.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.RisingParticle;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.Mth;
+import net.minecraft.util.LightCoordsUtil;
+import net.minecraft.util.RandomSource;
 
 public class ShardParticle extends RisingParticle {
 
-	private ShardParticle(ClientLevel level, double x, double y, double z, double motionX, double motionY, double motionZ) {
-		super(level, x, y, z, motionX, motionY, motionZ);
+	private ShardParticle(ClientLevel level, double x, double y, double z, double motionX, double motionY, double motionZ, TextureAtlasSprite sprite) {
+		super(level, x, y, z, motionX, motionY, motionZ, sprite);
 	}
 
 	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+	protected Layer getLayer() {
+		return Layer.OPAQUE;
 	}
 
 	public void move(double x, double y, double z) {
@@ -21,23 +26,15 @@ public class ShardParticle extends RisingParticle {
 		this.setLocationFromBoundingbox();
 	}
 
+	@Override
 	public float getQuadSize(float scaleFactor) {
-		float lvt_2_1_ = ((float) this.age + scaleFactor) / (float) this.lifetime;
-		return this.quadSize * (1.0F - lvt_2_1_ * lvt_2_1_ * 0.5F);
+		float scale = ((float) this.age + scaleFactor) / (float) this.lifetime;
+		return this.quadSize * (1.0F - scale * scale * 0.5F);
 	}
 
-	public int getLightColor(float partialTicks) {
-		float lvt_2_1_ = ((float) this.age + partialTicks) / (float) this.lifetime;
-		lvt_2_1_ = Mth.clamp(lvt_2_1_, 0.0F, 1.0F);
-		int lightColor = super.getLightColor(partialTicks);
-		int lvt_4_1_ = lightColor & 255;
-		int lvt_5_1_ = lightColor >> 16 & 255;
-		lvt_4_1_ += (int) (lvt_2_1_ * 15.0F * 16.0F);
-		if (lvt_4_1_ > 240) {
-			lvt_4_1_ = 240;
-		}
-
-		return lvt_4_1_ | lvt_5_1_ << 16;
+	@Override
+	protected int getLightCoords(float partialTicks) {
+		return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(partialTicks), (this.age + partialTicks) / this.lifetime);
 	}
 
 	public static class Provider implements ParticleProvider<SimpleParticleType> {
@@ -47,10 +44,9 @@ public class ShardParticle extends RisingParticle {
 			this.spriteSet = spriteSet;
 		}
 
-		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			ShardParticle shard = new ShardParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
-			shard.pickSprite(this.spriteSet);
-			return shard;
+		@Override
+		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+			return new ShardParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet.get(random));
 		}
 	}
 
@@ -61,10 +57,10 @@ public class ShardParticle extends RisingParticle {
 			this.spriteSet = spriteSet;
 		}
 
-		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			ShardParticle shard = new ShardParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
+		@Override
+		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+			ShardParticle shard = new ShardParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet.get(random));
 			shard.lifetime = 5;
-			shard.pickSprite(this.spriteSet);
 			return shard;
 		}
 	}

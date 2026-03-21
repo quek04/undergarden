@@ -1,30 +1,51 @@
 package quek.undergarden.client.render.entity;
 
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.layers.SaddleLayer;
+import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.EquipmentSlot;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.DwellerModel;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.BasicEyesLayer;
+import quek.undergarden.client.state.entity.DwellerRenderState;
 import quek.undergarden.entity.animal.dweller.Dweller;
 
-public class DwellerRenderer extends MobRenderer<Dweller, DwellerModel<Dweller>> {
+public class DwellerRenderer extends MobRenderer<Dweller, DwellerRenderState, DwellerModel> {
 
 	private static final Identifier DWELLER = Undergarden.prefix("textures/entity/dweller.png");
 	private static final Identifier DWELLER_SADDLE = Undergarden.prefix("textures/entity/dweller_saddle.png");
-	private final static RenderType DWELLER_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/dweller_eyes.png"));
+	private final static RenderType DWELLER_EYES = RenderTypes.eyes(Undergarden.prefix("textures/entity/dweller_eyes.png"));
 
 	public DwellerRenderer(EntityRendererProvider.Context context) {
-		super(context, new DwellerModel<>(context.bakeLayer(UGModelLayers.DWELLER)), 0.7F);
+		super(context, new DwellerModel(context.bakeLayer(UGModelLayers.DWELLER)), 0.7F);
 		this.addLayer(new BasicEyesLayer<>(this, DWELLER_EYES));
-		this.addLayer(new SaddleLayer<>(this, new DwellerModel<>(context.bakeLayer(UGModelLayers.DWELLER_SADDLE)), DWELLER_SADDLE));
+		this.addLayer(new SimpleEquipmentLayer<>(
+			this,
+			context.getEquipmentRenderer(),
+			EquipmentClientInfo.LayerType.PIG_SADDLE,
+			state -> state.saddle,
+			new DwellerModel(context.bakeLayer(UGModelLayers.DWELLER_SADDLE)),
+			null));
 	}
 
 	@Override
-	public Identifier getTextureLocation(Dweller entity) {
+	public DwellerRenderState createRenderState() {
+		return new DwellerRenderState();
+	}
+
+	@Override
+	public void extractRenderState(Dweller entity, DwellerRenderState state, float partialTicks) {
+		super.extractRenderState(entity, state, partialTicks);
+		state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
+	}
+
+	@Override
+	public Identifier getTextureLocation(DwellerRenderState state) {
 		return DWELLER;
 	}
 }

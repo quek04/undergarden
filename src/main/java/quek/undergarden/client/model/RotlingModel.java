@@ -1,17 +1,15 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.monster.rotspawn.Rotling;
+import quek.undergarden.client.state.entity.RotlingRenderState;
 
-public class RotlingModel<T extends Rotling> extends ListModel<T> {
+public class RotlingModel extends EntityModel<RotlingRenderState> {
 
-	private final ModelPart body;
 	private final ModelPart head;
 	private final ModelPart rightLeg;
 	private final ModelPart leftLeg;
@@ -19,7 +17,8 @@ public class RotlingModel<T extends Rotling> extends ListModel<T> {
 	private final ModelPart leftArm;
 
 	public RotlingModel(ModelPart root) {
-		this.body = root.getChild("body");
+		super(root);
+		ModelPart body = root.getChild("body");
 		this.head = body.getChild("head");
 		this.rightLeg = body.getChild("rightLeg");
 		this.leftLeg = body.getChild("leftLeg");
@@ -48,21 +47,17 @@ public class RotlingModel<T extends Rotling> extends ListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.xRot = entity.isAggressive() ? -0.5235F : -0.1745F;
+	public void setupAnim(RotlingRenderState state) {
+		super.setupAnim(state);
+		this.head.xRot = state.aggressive ? -0.5235F : -0.1745F;
 
-		this.leftArm.xRot = entity.isAggressive() ? -1.5F : Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-		this.rightArm.xRot = entity.isAggressive() ? -1.5F : Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftArm.xRot = state.aggressive ? -1.5F : Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
+		this.rightArm.xRot = state.aggressive ? -1.5F : Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
 		this.rightArm.zRot = 0.4363F;
 		this.leftArm.zRot = -0.4363F;
-		AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
+		AnimationUtils.bobArms(this.rightArm, this.leftArm, state.ageInTicks);
 
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableList.of(body);
+		this.leftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
+		this.rightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
 	}
 }

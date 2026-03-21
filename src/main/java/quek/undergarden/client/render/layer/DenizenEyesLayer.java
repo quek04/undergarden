@@ -1,31 +1,30 @@
 package quek.undergarden.client.render.layer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.monster.denizen.Denizen;
+import quek.undergarden.client.state.entity.DenizenRenderState;
 
-public class DenizenEyesLayer<T extends Denizen, M extends EntityModel<T>> extends RenderLayer<T, M> {
-	private static final RenderType DENIZEN_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/denizen_eyes.png"));
-	private static final RenderType DENIZEN2_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/denizen2_eyes.png"));;
+public class DenizenEyesLayer<S extends DenizenRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
+	private static final RenderType DENIZEN_EYES = RenderTypes.eyes(Undergarden.prefix("textures/entity/denizen_eyes.png"));
+	private static final RenderType DENIZEN2_EYES = RenderTypes.eyes(Undergarden.prefix("textures/entity/denizen2_eyes.png"));
 
-	public DenizenEyesLayer(RenderLayerParent<T, M> parent) {
+	public DenizenEyesLayer(RenderLayerParent<S, M> parent) {
 		super(parent);
 	}
 
 	@Override
-	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-		VertexConsumer consumer = buffer.getBuffer(switch (entity.getVariant()) {
+	public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, S state, float yRot, float xRot) {
+		RenderType type = switch (state.variant) {
 			case SHORT -> DENIZEN_EYES;
 			case TALL -> DENIZEN2_EYES;
-		});
-		this.getParentModel().renderToBuffer(poseStack, consumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
+		};
+		submitNodeCollector.order(1).submitModel(this.getParentModel(), state, poseStack, type, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
 	}
 }

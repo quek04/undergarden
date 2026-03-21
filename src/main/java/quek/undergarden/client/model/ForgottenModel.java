@@ -5,10 +5,10 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.world.entity.HumanoidArm;
-import quek.undergarden.entity.monster.Forgotten;
 
-public class ForgottenModel<T extends Forgotten> extends HumanoidModel<T> {
+public class ForgottenModel extends HumanoidModel<HumanoidRenderState> {
 
 	public ForgottenModel(ModelPart part) {
 		super(part);
@@ -25,25 +25,11 @@ public class ForgottenModel<T extends Forgotten> extends HumanoidModel<T> {
 	}
 
 	@Override
-	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick) {
-		this.rightArmPose = HumanoidModel.ArmPose.EMPTY;
-		this.leftArmPose = HumanoidModel.ArmPose.EMPTY;
-		if (!entity.getMainHandItem().isEmpty()) {
-			if (entity.getMainArm() == HumanoidArm.RIGHT) {
-				this.rightArmPose = ArmPose.ITEM;
-			} else {
-				this.leftArmPose = ArmPose.ITEM;
-			}
-		}
-		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
-	}
-
-	@Override
-	public void translateToHand(HumanoidArm side, PoseStack poseStack) {
-		float offset = side == HumanoidArm.RIGHT ? 1.0F : -1.0F;
-		ModelPart modelpart = this.getArm(side);
+	public void translateToHand(HumanoidRenderState state, HumanoidArm arm, PoseStack stack) {
+		float offset = arm == HumanoidArm.RIGHT ? 1.0F : -1.0F;
+		ModelPart modelpart = this.getArm(arm);
 		modelpart.x += offset;
-		modelpart.translateAndRotate(poseStack);
+		modelpart.translateAndRotate(stack);
 		modelpart.x -= offset;
 	}
 }

@@ -1,23 +1,22 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableList;
-import net.minecraft.client.model.AgeableListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.dweller.Dweller;
+import quek.undergarden.client.state.entity.DwellerRenderState;
 
-public class DwellerModel<T extends Dweller> extends AgeableListModel<T> {
+public class DwellerModel extends EntityModel<DwellerRenderState> {
 
-	private final ModelPart torso;
 	private final ModelPart mane;
 	private final ModelPart head;
 	private final ModelPart rightLeg;
 	private final ModelPart leftLeg;
 
 	public DwellerModel(ModelPart root) {
-		this.torso = root.getChild("torso");
+		super(root);
+		ModelPart torso = root.getChild("torso");
 		this.mane = torso.getChild("mane");
 		this.head = root.getChild("head");
 		this.rightLeg = root.getChild("rightLeg");
@@ -53,28 +52,13 @@ public class DwellerModel<T extends Dweller> extends AgeableListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.xRot = -1.3963F + headPitch * ((float) Math.PI / 180F);
+	public void setupAnim(DwellerRenderState state) {
+		super.setupAnim(state);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.xRot = -1.3963F + state.xRot * Mth.DEG_TO_RAD;
 
-		this.leftLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F) * 0.66F * limbSwingAmount;
-
-		this.rightLeg.xRot = -0.6109F + Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 0.66F * limbSwingAmount;
-	}
-
-	@Override
-	protected Iterable<ModelPart> headParts() {
-		return ImmutableList.of();
-	}
-
-	@Override
-	protected Iterable<ModelPart> bodyParts() {
-		return ImmutableList.of(this.head, this.torso, this.rightLeg, this.leftLeg);
-	}
-
-	@Override
-	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTicks) {
-		this.mane.visible = !entity.isSaddled();
-		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTicks);
+		this.leftLeg.xRot = -0.6109F + Mth.cos(state.walkAnimationPos * 0.6662F) * 0.66F * state.walkAnimationSpeed;
+		this.rightLeg.xRot = -0.6109F + Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 0.66F * state.walkAnimationSpeed;
+		this.mane.visible = !state.saddle.isEmpty();
 	}
 }

@@ -1,38 +1,32 @@
 package quek.undergarden.client.render.layer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGItems;
 
-public class DenizenMaskLayer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
+@Deprecated
+public class DenizenMaskLayer<S extends HumanoidRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
 
 	private static final Identifier TEXTURE = Undergarden.prefix("textures/models/armor/denizen_mask.png");
-	private final A model;
 
-	public DenizenMaskLayer(RenderLayerParent<T, M> renderer, A model) {
+	public DenizenMaskLayer(RenderLayerParent<S, M> renderer) {
 		super(renderer);
-		this.model = model;
 	}
 
 	@Override
-	public void render(PoseStack stack, MultiBufferSource buffer, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-		ItemStack itemStack = entity.getItemBySlot(EquipmentSlot.HEAD);
-		if (itemStack.getItem() == UGItems.DENIZEN_MASK.get()) {
-			VertexConsumer consumer = buffer.getBuffer(RenderType.armorCutoutNoCull(TEXTURE));
-			this.getParentModel().copyPropertiesTo(model);
-			model.renderToBuffer(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY);
-			//model.renderToBuffer(stack, consumer, 1, 1, 1);
+	public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, S state, float yRot, float xRot) {
+		ItemStack itemStack = state.headEquipment;
+		if (itemStack.is(UGItems.DENIZEN_MASK)) {
+			submitNodeCollector.order(1).submitModel(this.getParentModel(), state, poseStack, RenderTypes.armorCutoutNoCull(TEXTURE), lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
 		}
 	}
 }

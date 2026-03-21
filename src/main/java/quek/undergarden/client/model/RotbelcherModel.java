@@ -1,49 +1,48 @@
 package quek.undergarden.client.model;
 
+import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 import quek.undergarden.client.model.animation.RotbelcherAnimation;
-import quek.undergarden.entity.monster.rotspawn.Rotbelcher;
+import quek.undergarden.client.state.entity.RotbelcherRenderState;
 
-public class RotbelcherModel<T extends Rotbelcher> extends HierarchicalModel<T> {
+public class RotbelcherModel extends EntityModel<RotbelcherRenderState> {
 
-	private final ModelPart root;
 	private final ModelPart rightLeg;
 	private final ModelPart leftLeg;
-	private final ModelPart torso;
-	private final ModelPart gut;
 	private final ModelPart rightArm;
 	private final ModelPart leftArm;
 	private final ModelPart head;
-	private final ModelPart jaw;
+
+	private final KeyframeAnimation attackAnimation;
+	private final KeyframeAnimation shootAnimation;
 
 	public RotbelcherModel(ModelPart root) {
-		this.root = root.getChild("root");
-		this.rightLeg = this.root.getChild("rightLeg");
-		this.leftLeg = this.root.getChild("leftLeg");
-		this.torso = this.root.getChild("torso");
-		this.gut = this.torso.getChild("gut");
-		this.rightArm = this.torso.getChild("rightArm");
-		this.leftArm = this.torso.getChild("leftArm");
-		this.head = this.torso.getChild("head");
-		this.jaw = this.head.getChild("jaw");
+		super(root);
+		this.rightLeg = root.getChild("rightLeg");
+		this.leftLeg = root.getChild("leftLeg");
+		ModelPart torso = root.getChild("torso");
+		this.rightArm = torso.getChild("rightArm");
+		this.leftArm = torso.getChild("leftArm");
+		this.head = torso.getChild("head");
+
+		this.attackAnimation = RotbelcherAnimation.ATTACK.bake(root);
+		this.shootAnimation = RotbelcherAnimation.SHOOT.bake(root);
 	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.ZERO);
+		PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(42, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 20.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 4.0F, 0.0F));
 
-		PartDefinition rightLeg = root.addOrReplaceChild("rightLeg", CubeListBuilder.create().texOffs(42, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 20.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 4.0F, 0.0F));
+		PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(42, 0).mirror().addBox(0.0F, 0.0F, -1.0F, 2.0F, 20.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(2.0F, 4.0F, 0.0F));
 
-		PartDefinition leftLeg = root.addOrReplaceChild("leftLeg", CubeListBuilder.create().texOffs(42, 0).mirror().addBox(0.0F, 0.0F, -1.0F, 2.0F, 20.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(2.0F, 4.0F, 0.0F));
-
-		PartDefinition torso = root.addOrReplaceChild("torso", CubeListBuilder.create(), PartPose.offset(0.0F, 4.0F, 1.0F));
+		PartDefinition torso = partdefinition.addOrReplaceChild("torso", CubeListBuilder.create(), PartPose.offset(0.0F, 4.0F, 1.0F));
 
 		PartDefinition cube_r1 = torso.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(0, 27).addBox(-5.0F, -14.0F, -2.0F, 10.0F, 16.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -2.0F, -1.0F, 0.1309F, 0.0F, 0.0F));
 
@@ -65,29 +64,24 @@ public class RotbelcherModel<T extends Rotbelcher> extends HierarchicalModel<T> 
 	}
 
 	@Override
-	public void setupAnim(Rotbelcher entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
+	public void setupAnim(RotbelcherRenderState state) {
+		super.setupAnim(state);
 
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.xRot = 0.0873F + headPitch * ((float) Math.PI / 180F);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.xRot = 0.0873F + state.xRot * Mth.DEG_TO_RAD;
 
-		if (!entity.isCharging()) {
-			this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F;
-			this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
+		if (!state.isCharging) {
+			this.rightArm.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 2.0F * state.walkAnimationSpeed * 0.5F;
+			this.leftArm.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 2.0F * state.walkAnimationSpeed * 0.5F;
 			this.rightArm.zRot = 0.0F;
 			this.leftArm.zRot = 0.0F;
-			AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
+			AnimationUtils.bobArms(this.rightArm, this.leftArm, state.ageInTicks);
 		}
 
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.leftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
+		this.rightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
 
-		this.animate(entity.attackAnimation, RotbelcherAnimation.ATTACK, ageInTicks);
-		this.animate(entity.shootAnimation, RotbelcherAnimation.SHOOT, ageInTicks);
-	}
-
-	@Override
-	public ModelPart root() {
-		return this.root;
+		this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
+		this.shootAnimation.apply(state.shootAnimationState, state.ageInTicks);
 	}
 }

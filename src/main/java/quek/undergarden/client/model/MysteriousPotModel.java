@@ -1,6 +1,6 @@
 package quek.undergarden.client.model;
 
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
@@ -8,21 +8,21 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.MysteriousPot;
+import quek.undergarden.client.state.entity.MysteriousPotRenderState;
 
-public class MysteriousPotModel extends HierarchicalModel<MysteriousPot> {
-	private final ModelPart root;
-	private final ModelPart front_right_leg;
-	private final ModelPart front_left_leg;
-	private final ModelPart back_right_leg;
-	private final ModelPart back_left_leg;
+public class MysteriousPotModel extends EntityModel<MysteriousPotRenderState> {
+
+	private final ModelPart frontRightLeg;
+	private final ModelPart frontLeftLeg;
+	private final ModelPart backRightLeg;
+	private final ModelPart backLeftLeg;
 
 	public MysteriousPotModel(ModelPart root) {
-		this.root = root;
-		this.front_right_leg = root.getChild("front_right_leg");
-		this.front_left_leg = root.getChild("front_left_leg");
-		this.back_right_leg = root.getChild("back_right_leg");
-		this.back_left_leg = root.getChild("back_left_leg");
+		super(root);
+		this.frontRightLeg = root.getChild("front_right_leg");
+		this.frontLeftLeg = root.getChild("front_left_leg");
+		this.backRightLeg = root.getChild("back_right_leg");
+		this.backLeftLeg = root.getChild("back_left_leg");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -60,16 +60,11 @@ public class MysteriousPotModel extends HierarchicalModel<MysteriousPot> {
 	}
 
 	@Override
-	public ModelPart root() {
-		return this.root;
-	}
-
-	@Override
-	public void setupAnim(MysteriousPot entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
-		this.front_right_leg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / 3;
-		this.front_left_leg.xRot = Mth.cos(limbSwing * 0.6662F + Mth.PI) * 1.4F * limbSwingAmount / 3;
-		this.back_right_leg.xRot = Mth.cos(limbSwing * 0.6662F + Mth.PI) * 1.4F * limbSwingAmount / 3;
-		this.back_left_leg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / 3;
+	public void setupAnim(MysteriousPotRenderState state) {
+		super.setupAnim(state);
+		this.frontRightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed / 3;
+		this.frontLeftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed / 3;
+		this.backRightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed / 3;
+		this.backLeftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed / 3;
 	}
 }

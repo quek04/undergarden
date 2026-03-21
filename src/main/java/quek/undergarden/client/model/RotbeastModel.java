@@ -1,28 +1,26 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.monster.rotspawn.Rotbeast;
+import quek.undergarden.client.state.entity.RotbeastRenderState;
 
-public class RotbeastModel<T extends Rotbeast> extends ListModel<T> {
+public class RotbeastModel extends EntityModel<RotbeastRenderState> {
 
 	private final ModelPart head;
 	private final ModelPart jaw;
-	private final ModelPart torso;
 	private final ModelPart rightLeg;
 	private final ModelPart leftLeg;
 	private final ModelPart rightArm;
 	private final ModelPart leftArm;
 
 	public RotbeastModel(ModelPart root) {
+		super(root);
 		this.head = root.getChild("head");
-		this.jaw = head.getChild("jaw");
-		this.torso = root.getChild("torso");
+		this.jaw = this.head.getChild("jaw");
 		this.rightLeg = root.getChild("rightLeg");
 		this.leftLeg = root.getChild("leftLeg");
 		this.rightArm = root.getChild("rightArm");
@@ -56,34 +54,27 @@ public class RotbeastModel<T extends Rotbeast> extends ListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.xRot = headPitch * ((float) Math.PI / 180F);
+	public void setupAnim(RotbeastRenderState state) {
+		super.setupAnim(state);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.xRot = state.xRot * Mth.DEG_TO_RAD;
 
 		this.rightArm.zRot = 0.0F;
 		this.leftArm.zRot = 0.0F;
-		AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
+		AnimationUtils.bobArms(this.rightArm, this.leftArm, state.ageInTicks);
 
-		this.jaw.xRot = entity.isAggressive() ? 0.3491F : 0.0F;
+		this.jaw.xRot = state.aggressive ? 0.3491F : 0.0F;
 
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-	}
+		this.leftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
+		this.rightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
 
-	@Override
-	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTicks) {
-		int attackTimer = entity.getAttackTimer();
+		float attackTimer = state.attackTimer;
 		if (attackTimer > 0) {
-			this.rightArm.xRot = -2.0F + 1.5F * Mth.triangleWave((float) attackTimer - partialTicks, 10.0F);
-			this.leftArm.xRot = -2.0F + 1.5F * Mth.triangleWave((float) attackTimer - partialTicks, 10.0F);
+			this.rightArm.xRot = -2.0F + 1.5F * Mth.triangleWave(attackTimer, 10.0F);
+			this.leftArm.xRot = -2.0F + 1.5F * Mth.triangleWave(attackTimer, 10.0F);
 		} else {
-			this.rightArm.xRot = (-0.2F + 1.5F * Mth.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
-			this.leftArm.xRot = (-0.2F - 1.5F * Mth.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
+			this.rightArm.xRot = (-0.2F + 1.5F * Mth.triangleWave(state.walkAnimationPos, 13.0F)) * state.walkAnimationSpeed;
+			this.leftArm.xRot = (-0.2F - 1.5F * Mth.triangleWave(state.walkAnimationPos, 13.0F)) * state.walkAnimationSpeed;
 		}
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(this.head, this.torso, this.rightLeg, this.leftLeg, this.rightArm, this.leftArm);
 	}
 }

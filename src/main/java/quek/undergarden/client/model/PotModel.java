@@ -1,7 +1,5 @@
 package quek.undergarden.client.model;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -9,14 +7,13 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.util.Unit;
 
-public class PotModel extends Model {
-	private final ModelPart root;
+public class PotModel extends Model<Unit> {
 
 	public PotModel(ModelPart root) {
-		super(RenderType::entitySolid);
-		this.root = root;
+		super(root, RenderTypes::entitySolid);
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -29,10 +26,5 @@ public class PotModel extends Model {
 			PartPose.offset(4.0F, 24.0F, -4.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack stack, VertexConsumer consumer, int light, int overlay, int color) {
-		this.root.render(stack, consumer, light, overlay, color);
 	}
 }

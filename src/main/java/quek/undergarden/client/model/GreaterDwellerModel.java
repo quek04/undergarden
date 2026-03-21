@@ -1,27 +1,21 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableList;
-import net.minecraft.client.model.AgeableListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.GreaterDweller;
+import quek.undergarden.client.state.entity.GreaterDwellerRenderState;
 
-public class GreaterDwellerModel<T extends GreaterDweller> extends AgeableListModel<T> {
+public class GreaterDwellerModel extends EntityModel<GreaterDwellerRenderState> {
 
 	private final ModelPart head;
-	private final ModelPart trunk;
-	private final ModelPart torso;
-	private final ModelPart tail;
 	private final ModelPart leftLeg;
 	private final ModelPart rightLeg;
 
 	public GreaterDwellerModel(ModelPart root) {
+		super(root);
 		this.head = root.getChild("head");
-		this.trunk = head.getChild("trunk");
-		this.torso = root.getChild("torso");
-		this.tail = torso.getChild("tail");
 		this.leftLeg = root.getChild("leftLeg");
 		this.rightLeg = root.getChild("rightLeg");
 	}
@@ -66,33 +60,17 @@ public class GreaterDwellerModel<T extends GreaterDweller> extends AgeableListMo
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		int attackTimer = entity.getAttackTimer();
-		if (attackTimer == 0) {
-			this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-			this.head.xRot = 0.1745F + headPitch * ((float) Math.PI / 180F);
+	public void setupAnim(GreaterDwellerRenderState state) {
+		super.setupAnim(state);
+		float attackTimer = state.attackTimer;
+		if (attackTimer <= 0) {
+			this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+			this.head.xRot = 0.1745F + state.xRot * Mth.DEG_TO_RAD;
+		} else {
+			this.head.xRot = 1.5F * Mth.triangleWave(attackTimer, 10.0F);
 		}
 
-		this.leftLeg.xRot = -0.2618F + Mth.cos(limbSwing * 0.6662F) * 0.66F * limbSwingAmount;
-
-		this.rightLeg.xRot = -0.2618F + Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 0.66F * limbSwingAmount;
-	}
-
-	@Override
-	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick) {
-		int attackTimer = entity.getAttackTimer();
-		if (attackTimer > 0) {
-			this.head.xRot = 1.5F * Mth.triangleWave((float) attackTimer - partialTick, 10.0F);
-		}
-	}
-
-	@Override
-	protected Iterable<ModelPart> headParts() {
-		return ImmutableList.of();
-	}
-
-	@Override
-	protected Iterable<ModelPart> bodyParts() {
-		return ImmutableList.of(this.head, this.torso, this.rightLeg, this.leftLeg);
+		this.leftLeg.xRot = -0.2618F + Mth.cos(state.walkAnimationPos * 0.6662F) * 0.66F * state.walkAnimationSpeed;
+		this.rightLeg.xRot = -0.2618F + Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 0.66F * state.walkAnimationSpeed;
 	}
 }

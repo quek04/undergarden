@@ -1,26 +1,24 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableSet;
 import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.monster.rotspawn.Rotwalker;
 
-public class RotwalkerModel<T extends Rotwalker> extends ListModel<T> {
+public class RotwalkerModel extends EntityModel<LivingEntityRenderState> {
 
 	private final ModelPart head;
-	private final ModelPart body;
 	private final ModelPart leftArm;
 	private final ModelPart rightArm;
 	private final ModelPart leftLeg;
 	private final ModelPart rightLeg;
 
 	public RotwalkerModel(ModelPart root) {
+		super(root);
 		this.head = root.getChild("head");
-		this.body = root.getChild("body");
 		this.leftArm = root.getChild("leftArm");
 		this.rightArm = root.getChild("rightArm");
 		this.leftLeg = root.getChild("leftLeg");
@@ -53,22 +51,18 @@ public class RotwalkerModel<T extends Rotwalker> extends ListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.xRot = 0.0873F + headPitch * ((float) Math.PI / 180F);
+	public void setupAnim(LivingEntityRenderState state) {
+		super.setupAnim(state);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.xRot = 0.0873F + state.xRot * Mth.DEG_TO_RAD;
 
-		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F;
-		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
+		this.rightArm.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 2.0F * state.walkAnimationSpeed * 0.5F;
+		this.leftArm.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 2.0F * state.walkAnimationSpeed * 0.5F;
 		this.rightArm.zRot = 0.0F;
 		this.leftArm.zRot = 0.0F;
-		AnimationUtils.bobArms(this.rightArm, this.leftArm, ageInTicks);
+		AnimationUtils.bobArms(this.rightArm, this.leftArm, state.ageInTicks);
 
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(head, body, leftArm, rightArm, leftLeg, rightLeg);
+		this.leftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
+		this.rightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
 	}
 }

@@ -259,8 +259,8 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 
 	@Override
 	public void positionRider(Entity passenger, Entity.MoveFunction callback) {
-		float ySin = Mth.sin(this.yBodyRot * ((float) Math.PI / 180F));
-		float yCos = Mth.cos(this.yBodyRot * ((float) Math.PI / 180F));
+		float ySin = Mth.sin(this.yBodyRot * Mth.DEG_TO_RAD);
+		float yCos = Mth.cos(this.yBodyRot * Mth.DEG_TO_RAD);
 		Vec3 passengerPosition = this.getPassengerRidingPosition(passenger);
 		callback.accept(passenger, this.getX() + (double) (0.5F * ySin), passengerPosition.y() + passenger.getVehicleAttachmentPoint(this).y(), this.getZ() - (double) (0.5F * yCos));
 	}
@@ -314,8 +314,8 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		this.hasImpulse = true;
 		CommonHooks.onLivingJump(this);
 		if (moveHorizontally) {
-			float f = Mth.sin(this.getYRot() * ((float) Math.PI / 180F));
-			float f1 = Mth.cos(this.getYRot() * ((float) Math.PI / 180F));
+			float f = Mth.sin(this.getYRot() * Mth.DEG_TO_RAD);
+			float f1 = Mth.cos(this.getYRot() * Mth.DEG_TO_RAD);
 			this.setDeltaMovement(this.getDeltaMovement().add(-0.4F * f, 0.0D, 0.4F * f1));
 		}
 	}

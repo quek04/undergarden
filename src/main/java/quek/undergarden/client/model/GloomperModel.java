@@ -1,27 +1,19 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableSet;
-import net.minecraft.client.model.AgeableListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.Gloomper;
+import quek.undergarden.client.state.entity.GloomperRenderState;
 
-public class GloomperModel<T extends Gloomper> extends AgeableListModel<T> {
+public class GloomperModel extends EntityModel<GloomperRenderState> {
 
-	private final ModelPart body;
-	private final ModelPart head;
-	private final ModelPart jaw;
 	private final ModelPart arms;
 	private final ModelPart feet;
 
-	private float jumpRotation;
-
 	public GloomperModel(ModelPart root) {
-		this.body = root.getChild("body");
-		this.head = root.getChild("head");
-		this.jaw = head.getChild("jaw");
+		super(root);
 		this.arms = root.getChild("arms");
 		this.feet = root.getChild("feet");
 	}
@@ -51,27 +43,11 @@ public class GloomperModel<T extends Gloomper> extends AgeableListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		float age = ageInTicks - (float) entity.tickCount;
-		this.jumpRotation = Mth.sin(entity.getJumpCompletion(age) * (float) Math.PI);
+	public void setupAnim(GloomperRenderState state) {
+		super.setupAnim(state);
+		float jumpRotation = Mth.sin(state.jumpCompletion * Mth.PI);
 
-		this.arms.xRot = (this.jumpRotation * -40.0F - 11.0F) * ((float) Math.PI / 180F);
-		this.feet.xRot = this.jumpRotation * 50.0F * ((float) Math.PI / 180F);
-	}
-
-	@Override
-	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTicks) {
-		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTicks);
-		this.jumpRotation = Mth.sin(entity.getJumpCompletion(partialTicks) * (float) Math.PI);
-	}
-
-	@Override
-	protected Iterable<ModelPart> headParts() {
-		return ImmutableSet.of();
-	}
-
-	@Override
-	protected Iterable<ModelPart> bodyParts() {
-		return ImmutableSet.of(this.body, this.head, this.arms, this.feet);
+		this.arms.xRot = (jumpRotation * -40.0F - 11.0F) * Mth.DEG_TO_RAD;
+		this.feet.xRot = jumpRotation * 50.0F * Mth.DEG_TO_RAD;
 	}
 }

@@ -1,7 +1,6 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableList;
-import net.minecraft.client.model.AgeableListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
@@ -9,9 +8,9 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
+import quek.undergarden.client.state.entity.MogRenderState;
 
-public class SmogMogModel<E extends Entity> extends AgeableListModel<E> {
+public class SmogMogModel extends EntityModel<MogRenderState> {
 
 	private final ModelPart body;
 	private final ModelPart head;
@@ -21,6 +20,7 @@ public class SmogMogModel<E extends Entity> extends AgeableListModel<E> {
 	private final ModelPart backLegRight;
 
 	public SmogMogModel(ModelPart root) {
+		super(root);
 		this.body = root.getChild("body");
 		this.head = root.getChild("head");
 		this.frontLegLeft = root.getChild("left_front_leg");
@@ -51,25 +51,16 @@ public class SmogMogModel<E extends Entity> extends AgeableListModel<E> {
 	}
 
 	@Override
-	protected Iterable<ModelPart> headParts() {
-		return ImmutableList.of();
-	}
+	public void setupAnim(MogRenderState state) {
+		super.setupAnim(state);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.xRot = state.xRot * Mth.DEG_TO_RAD;
 
-	@Override
-	protected Iterable<ModelPart> bodyParts() {
-		return ImmutableList.of(this.head, this.body, this.frontLegLeft, this.frontLegRight, this.backLegLeft, this.backLegRight);
-	}
+		this.body.zRot = 0.1F * Mth.sin(state.walkAnimationPos * 2.0F) * 4.0F * state.walkAnimationSpeed;
 
-	@Override
-	public void setupAnim(E entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.xRot = headPitch * ((float) Math.PI / 180F);
-
-		this.body.zRot = 0.1F * Mth.sin(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
-
-		this.frontLegLeft.xRot = Mth.cos(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
-		this.frontLegRight.xRot = Mth.cos(limbSwing * 2.0F + (float) Math.PI) * 4.0F * limbSwingAmount;
-		this.backLegLeft.xRot = Mth.cos(limbSwing * 2.0F + (float) Math.PI) * 4.0F * limbSwingAmount;
-		this.backLegRight.xRot = Mth.cos(limbSwing * 2.0F) * 4.0F * limbSwingAmount;
+		this.frontLegLeft.xRot = Mth.cos(state.walkAnimationPos * 2.0F) * 4.0F * state.walkAnimationSpeed;
+		this.frontLegRight.xRot = Mth.cos(state.walkAnimationPos * 2.0F + Mth.PI) * 4.0F * state.walkAnimationSpeed;
+		this.backLegLeft.xRot = Mth.cos(state.walkAnimationPos * 2.0F + Mth.PI) * 4.0F * state.walkAnimationSpeed;
+		this.backLegRight.xRot = Mth.cos(state.walkAnimationPos * 2.0F) * 4.0F * state.walkAnimationSpeed;
 	}
 }

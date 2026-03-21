@@ -1,116 +1,61 @@
 package quek.undergarden.client.render.blockentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.sprite.SpriteGetter;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
-import quek.undergarden.Undergarden;
+import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.block.GrongletBlock;
 import quek.undergarden.block.entity.GrongletBlockEntity;
+import quek.undergarden.client.model.GrongletModel;
 import quek.undergarden.client.model.UGModelLayers;
-import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.client.state.block.GrongletRenderState;
 
-public class GrongletRender implements BlockEntityRenderer<GrongletBlockEntity> {
+public class GrongletRender implements BlockEntityRenderer<GrongletBlockEntity, GrongletRenderState> {
 
-	private final ModelPart burs;
-	private final ModelPart limbs;
-	private final ModelPart body;
+	private final SpriteGetter sprites;
+	private final GrongletModel model;
 
 	public GrongletRender(BlockEntityRendererProvider.Context context) {
-		ModelPart gronglet = context.bakeLayer(UGModelLayers.GRONGLET);
-		this.burs = gronglet.getChild("burs");
-		this.limbs = gronglet.getChild("limbs");
-		this.body = gronglet.getChild("body");
-	}
-
-	public static LayerDefinition createBodyLayer() {
-		MeshDefinition meshdefinition = new MeshDefinition();
-		PartDefinition partdefinition = meshdefinition.getRoot();
-
-		PartDefinition burs = partdefinition.addOrReplaceChild("burs", CubeListBuilder.create(), PartPose.offset(4.0F, 24.0F, -6.0F));
-
-		PartDefinition top_burs = burs.addOrReplaceChild("top_burs", CubeListBuilder.create(), PartPose.offset(-4.0F, 0.0F, 6.0F));
-
-		top_burs.addOrReplaceChild("lastbur", CubeListBuilder.create().texOffs(24, 22).addBox(-4.0F, -2.0F, 0.0F, 8.0F, 2.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.0F, 4.0F));
-
-		top_burs.addOrReplaceChild("middlebur", CubeListBuilder.create().texOffs(24, 20).addBox(-4.0F, -2.0F, 0.0F, 8.0F, 2.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.0F, 0.0F));
-
-		top_burs.addOrReplaceChild("firstbur", CubeListBuilder.create().texOffs(24, 24).addBox(-4.0F, -2.0F, 0.0F, 8.0F, 2.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.0F, -4.0F));
-
-		PartDefinition side_burs = burs.addOrReplaceChild("side_burs", CubeListBuilder.create(), PartPose.offset(-4.0F, -2.0F, 6.0F));
-
-		side_burs.addOrReplaceChild("rightbur", CubeListBuilder.create().texOffs(8, 16).addBox(-2.0F, 0.0F, -6.0F, 2.0F, 0.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, -0.0F, 0.0F));
-
-		side_burs.addOrReplaceChild("leftbur", CubeListBuilder.create().texOffs(16, 0).addBox(0.0F, 0.0F, -6.0F, 2.0F, 0.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(4.0F, -0.0F, 0.0F));
-
-		PartDefinition edge_burs = burs.addOrReplaceChild("edge_burs", CubeListBuilder.create(), PartPose.offset(-4.0F, 0.0F, 6.0F));
-
-		edge_burs.addOrReplaceChild("leftedgebur", CubeListBuilder.create().texOffs(4, 16).addBox(0.0F, 0.0F, -6.0F, 2.0F, 0.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(4.0F, -4.0F, 0.0F, 0.0F, 0.0F, -0.7854F));
-
-		edge_burs.addOrReplaceChild("rightedgebur", CubeListBuilder.create().texOffs(0, 16).addBox(-2.0F, 0.0F, -6.0F, 2.0F, 0.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-4.0F, -4.0F, 0.0F, 0.0F, 0.0F, 0.7854F));
-
-		PartDefinition limbs = partdefinition.addOrReplaceChild("limbs", CubeListBuilder.create(), PartPose.offset(0.0F, 23.99F, 0.0F));
-
-		limbs.addOrReplaceChild("legs", CubeListBuilder.create().texOffs(22, 16).addBox(-4.0F, 0.0F, 0.0F, 8.0F, 0.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -0.0F, 6.0F));
-
-		limbs.addOrReplaceChild("arms", CubeListBuilder.create().texOffs(22, 18).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 0.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -0.0F, -6.0F));
-
-		partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -6.0F, 8.0F, 4.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
-
-		return LayerDefinition.create(meshdefinition, 64, 64);
+		this.sprites = context.sprites();
+		this.model = new GrongletModel(context.bakeLayer(UGModelLayers.GRONGLET));
 	}
 
 	@Override
-	public void render(GrongletBlockEntity gronglet, float partialTicks, PoseStack stack, MultiBufferSource bufferSource, int light, int overlay) {
-		Direction direction = gronglet.getBlockState().getValue(GrongletBlock.FACING);
+	public GrongletRenderState createRenderState() {
+		return new GrongletRenderState();
+	}
+
+	@Override
+	public void extractRenderState(GrongletBlockEntity entity, GrongletRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
+		BlockEntityRenderer.super.extractRenderState(entity, state, partialTicks, cameraPosition, breakProgress);
+		state.facing = entity.getBlockState().getValue(GrongletBlock.FACING);
+		Identifier blockName = BuiltInRegistries.BLOCK.getKey(entity.getBlockState().getBlock());
+		state.texture = Sheets.BLOCK_ENTITIES_MAPPER.apply(blockName.withPrefix("gronglet/"));
+		state.yaw = entity.yaw;
+	}
+
+	@Override
+	public void submit(GrongletRenderState state, PoseStack stack, SubmitNodeCollector collector, CameraRenderState camera) {
+		Direction direction = state.facing;
+
 		stack.pushPose();
-		if (direction == Direction.UP) {
-			stack.translate(0.5D, 1.5D, 0.5D);
-		}
-		if (direction == Direction.DOWN) {
-			stack.translate(0.5D, -0.5D, 0.5D);
-		}
-		if (direction == Direction.SOUTH) {
-			stack.translate(0.5D, 0.5D, 1.5D);
-		}
-		if (direction == Direction.NORTH) {
-			stack.translate(0.5D, 0.5D, -0.5D);
-		}
-		if (direction == Direction.EAST) {
-			stack.translate(1.5F, 0.5F, 0.5F);
-		}
-		if (direction == Direction.WEST) {
-			stack.translate(-0.5F, 0.5F, 0.5F);
-		}
+		stack.translate(0.5D + direction.getStepX(), 0.5D + direction.getStepY(), 0.5D + direction.getStepZ());
 		stack.mulPose(direction.getRotation());
 		stack.mulPose(Axis.ZP.rotationDegrees(180F));
-		int yaw = gronglet.yaw;
+		int yaw = state.yaw;
 		stack.mulPose(Axis.YP.rotationDegrees(yaw));
-		VertexConsumer consumer;
-		if (gronglet.getBlockState().is(UGBlocks.GRONGLET)) {
-			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(Undergarden.prefix("textures/block/gronglet.png")));
-			this.body.render(stack, consumer, light, overlay);
-			this.limbs.render(stack, consumer, light, overlay);
-			this.burs.render(stack, consumer, light, overlay);
-		} else if (gronglet.getBlockState().is(UGBlocks.UTHERIC_GRONGLET)) {
-			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(Undergarden.prefix("textures/block/utheric_gronglet.png")));
-			this.body.render(stack, consumer, light, overlay);
-			this.limbs.render(stack, consumer, light, overlay);
-			this.burs.render(stack, consumer, light, overlay);
-		} else if (gronglet.getBlockState().is(UGBlocks.ROGDORIC_GRONGLET)) {
-			consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(Undergarden.prefix("textures/block/rogdoric_gronglet.png")));
-			this.body.render(stack, consumer, light, overlay);
-			this.limbs.render(stack, consumer, light, overlay);
-			this.burs.render(stack, consumer, light, overlay);
-		}
+		collector.submitModel(this.model, state, stack, state.lightCoords, OverlayTexture.NO_OVERLAY, -1, state.texture, this.sprites, 0, state.breakProgress);
 		stack.popPose();
 	}
 }

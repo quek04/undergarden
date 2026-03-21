@@ -14,16 +14,15 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import quek.undergarden.registry.UGParticleTypes;
 
 public class TotemBeamParticle extends SimpleAnimatedParticle {
 
 	private final Vec3 target;
 
-	public TotemBeamParticle(ClientLevel level, SpriteSet sprites, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, Vec3 target) {
+	public TotemBeamParticle(ClientLevel level, SpriteSet sprites, double x, double y, double z, Vec3 target) {
 		super(level, x, y, z, sprites, 0.0F);
 		this.quadSize = 0.15F;
 		this.target = target;
@@ -48,7 +47,6 @@ public class TotemBeamParticle extends SimpleAnimatedParticle {
 		this.setSpriteFromAge(this.sprites);
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	public static class Provider implements ParticleProvider<Options> {
 		private final SpriteSet sprite;
 
@@ -57,8 +55,8 @@ public class TotemBeamParticle extends SimpleAnimatedParticle {
 		}
 
 		@Override
-		public Particle createParticle(Options options, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			TotemBeamParticle particle = new TotemBeamParticle(level, this.sprite, x, y, z, xSpeed, ySpeed, zSpeed, options.target());
+		public Particle createParticle(Options options, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+			TotemBeamParticle particle = new TotemBeamParticle(level, this.sprite, x, y, z, options.target());
 			particle.setLifetime(options.duration());
 			return particle;
 		}

@@ -14,10 +14,7 @@ import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -26,10 +23,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.block.entity.GrongletBlockEntity;
-import quek.undergarden.registry.UGBlockEntities;
 import quek.undergarden.registry.UGSoundEvents;
 
-public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
+public class GrongletBlock extends BaseEntityBlock {
 
 	public static final MapCodec<GrongletBlock> CODEC = simpleCodec(GrongletBlock::new);
 	public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
@@ -96,13 +92,16 @@ public class GrongletBlock extends BaseEntityBlock implements EntityBlock {
 	@Nullable
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return UGBlockEntities.GRONGLET.get().create(pos, state);
+		return new GrongletBlockEntity(pos, state);
 	}
 
-	@Nullable
 	@Override
-	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
-		return createTickerHelper(blockEntity, UGBlockEntities.GRONGLET.get(), GrongletBlockEntity::tick);
+	protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+		if (level.isClientSide() && level.getBlockEntity(pos) instanceof GrongletBlockEntity gronglet) {
+			gronglet.yaw = level.getRandom().nextInt(360);
+		}
+
+		super.onPlace(state, level, pos, oldState, movedByPiston);
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package quek.undergarden.client.model;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.Identifier;
+import net.minecraft.client.renderer.entity.ArmorModelSet;
 import quek.undergarden.Undergarden;
 
 public class UGModelLayers {
@@ -14,8 +14,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation GREATER_DWELLER = register("greater_dweller");
 	public static final ModelLayerLocation FORGOTTEN_GUARDIAN = register("forgotten_guardian");
 	public static final ModelLayerLocation FORGOTTEN = register("forgotten");
-	public static final ModelLayerLocation FORGOTTEN_INNER_ARMOR = register("forgotten", "inner_armor");
-	public static final ModelLayerLocation FORGOTTEN_OUTER_ARMOR = register("forgotten", "outer_armor");
+	public static final ArmorModelSet<ModelLayerLocation> FORGOTTEN_ARMOR = registerArmorSet("forgotten");
 	public static final ModelLayerLocation GLOOMPER = register("gloomper");
 	public static final ModelLayerLocation GWIBLING = register("gwibling");
 	public static final ModelLayerLocation GWIB = register("gwib");
@@ -44,5 +43,9 @@ public class UGModelLayers {
 
 	private static ModelLayerLocation register(String name, String layerName) {
 		return new ModelLayerLocation(Undergarden.prefix(name), layerName);
+	}
+
+	private static ArmorModelSet<ModelLayerLocation> registerArmorSet(String modelId) {
+		return new ArmorModelSet<>(register(modelId, "helmet"), register(modelId, "chestplate"), register(modelId, "leggings"), register(modelId, "boots"));
 	}
 }

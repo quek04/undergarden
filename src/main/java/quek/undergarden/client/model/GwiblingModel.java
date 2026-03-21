@@ -1,21 +1,21 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableSet;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.Gwibling;
 
-public class GwiblingModel<T extends Gwibling> extends ListModel<T> {
+public class GwiblingModel extends EntityModel<LivingEntityRenderState> {
 
 	private final ModelPart body;
 	private final ModelPart tail;
 
 	public GwiblingModel(ModelPart root) {
+		super(root);
 		this.body = root.getChild("body");
-		this.tail = body.getChild("tail");
+		this.tail = this.body.getChild("tail");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -35,19 +35,15 @@ public class GwiblingModel<T extends Gwibling> extends ListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.body.xRot = headPitch * ((float) Math.PI / 180F);
-		this.body.yRot = netHeadYaw * ((float) Math.PI / 180F);
+	public void setupAnim(LivingEntityRenderState state) {
+		super.setupAnim(state);
+		this.body.xRot = state.xRot * Mth.DEG_TO_RAD;
+		this.body.yRot = state.yRot * Mth.DEG_TO_RAD;
 		float f = 1.0F;
-		if (!entity.isInWater()) {
+		if (!state.isInWater) {
 			f = 1.5F;
 		}
 
-		this.tail.yRot = -f * 0.45F * Mth.sin(0.6F * ageInTicks);
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(this.body);
+		this.tail.yRot = -f * 0.45F * Mth.sin(0.6F * state.ageInTicks);
 	}
 }

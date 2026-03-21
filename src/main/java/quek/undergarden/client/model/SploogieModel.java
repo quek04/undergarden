@@ -1,14 +1,13 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableList;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.monster.cavern.Sploogie;
 
-public class SploogieModel<T extends Sploogie> extends ListModel<T> {
+public class SploogieModel extends EntityModel<LivingEntityRenderState> {
 
 	private final ModelPart head;
 	private final ModelPart bodySegment1;
@@ -16,6 +15,7 @@ public class SploogieModel<T extends Sploogie> extends ListModel<T> {
 	private final ModelPart bodySegment3;
 
 	public SploogieModel(ModelPart root) {
+		super(root);
 		this.head = root.getChild("head");
 		this.bodySegment1 = root.getChild("bodySegment1");
 		this.bodySegment2 = root.getChild("bodySegment2");
@@ -50,23 +50,19 @@ public class SploogieModel<T extends Sploogie> extends ListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.xRot = headPitch * ((float) Math.PI / 180F);
+	public void setupAnim(LivingEntityRenderState state) {
+		super.setupAnim(state);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.xRot = state.xRot * Mth.DEG_TO_RAD;
 
-		this.head.x = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + limbSwingAmount);
+		this.head.x = Mth.cos(state.walkAnimationPos * 0.9F + 2 * 0.15F * Mth.PI) * Mth.PI * 0.05F * (1 + state.walkAnimationSpeed);
 
-		this.bodySegment1.yRot = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + limbSwingAmount);
-		this.bodySegment2.yRot = Mth.cos(limbSwing * 0.9F + 1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(1 - 2) + limbSwingAmount);
-		this.bodySegment3.yRot = Mth.cos(limbSwing * 0.9F + 0 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(-2) + limbSwingAmount);
+		this.bodySegment1.yRot = Mth.cos(state.walkAnimationPos * 0.9F + 2 * 0.15F * Mth.PI) * Mth.PI * 0.05F * (1 + state.walkAnimationSpeed);
+		this.bodySegment2.yRot = Mth.cos(state.walkAnimationPos * 0.9F + 1 * 0.15F * Mth.PI) * Mth.PI * 0.05F * (1 + Math.abs(1 - 2) + state.walkAnimationSpeed);
+		this.bodySegment3.yRot = Mth.cos(state.walkAnimationPos * 0.9F + 0 * 0.15F * Mth.PI) * Mth.PI * 0.05F * (1 + Math.abs(-2) + state.walkAnimationSpeed);
 
-		this.bodySegment1.x = Mth.cos(limbSwing * 0.9F + 2 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + limbSwingAmount);
-		this.bodySegment2.x = Mth.cos(limbSwing * 0.9F + 1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(1 - 2) + limbSwingAmount);
-		this.bodySegment3.x = Mth.cos(limbSwing * 0.9F + 0 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(-2) + limbSwingAmount);
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableList.of(this.head, this.bodySegment1, this.bodySegment2, this.bodySegment3);
+		this.bodySegment1.x = Mth.cos(state.walkAnimationPos * 0.9F + 2 * 0.15F * Mth.PI) * Mth.PI * 0.05F * (1 + state.walkAnimationSpeed);
+		this.bodySegment2.x = Mth.cos(state.walkAnimationPos * 0.9F + 1 * 0.15F * Mth.PI) * Mth.PI * 0.05F * (1 + Math.abs(1 - 2) + state.walkAnimationSpeed);
+		this.bodySegment3.x = Mth.cos(state.walkAnimationPos * 0.9F + 0 * 0.15F * Mth.PI) * Mth.PI * 0.05F * (1 + Math.abs(-2) + state.walkAnimationSpeed);
 	}
 }

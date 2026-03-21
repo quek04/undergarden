@@ -3,17 +3,16 @@ package quek.undergarden.client.particle;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
-import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
-import org.jspecify.annotations.Nullable;
+import net.minecraft.util.RandomSource;
 
-;
+public class SmogParticle extends SingleQuadParticle {
 
-public class SmogParticle extends TextureSheetParticle {
-
-	private SmogParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
-		super(pLevel, pX, pY, pZ);
+	private SmogParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, TextureAtlasSprite sprite) {
+		super(pLevel, pX, pY, pZ, sprite);
 		this.scale(3.0F);
 		this.setSize(0.25F, 0.25F);
 		this.lifetime = this.random.nextInt(50) + 80;
@@ -43,8 +42,8 @@ public class SmogParticle extends TextureSheetParticle {
 	}
 
 	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+	protected Layer getLayer() {
+		return Layer.TRANSLUCENT;
 	}
 
 	public static class Provider implements ParticleProvider<SimpleParticleType> {
@@ -55,11 +54,9 @@ public class SmogParticle extends TextureSheetParticle {
 			this.sprites = sprites;
 		}
 
-		@Nullable
 		@Override
-		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			SmogParticle smogParticle = new SmogParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
-			smogParticle.pickSprite(this.sprites);
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+			SmogParticle smogParticle = new SmogParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.sprites.get(random));
 			smogParticle.setColor(0.2F, 0.2F, 0.2F);
 			smogParticle.setAlpha(0.9F);
 			return smogParticle;

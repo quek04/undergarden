@@ -1,41 +1,64 @@
 package quek.undergarden.client.render.blockentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import net.minecraft.client.model.geom.ModelPart;
+import com.mojang.math.Transformation;
+import net.minecraft.client.model.Model;
+import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BrightnessCombiner;
+import net.minecraft.client.renderer.blockentity.state.BedRenderState;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.special.SpecialModelRenderer;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.sprite.SpriteGetter;
+import net.minecraft.client.resources.model.sprite.SpriteId;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.util.Unit;
+import net.minecraft.util.Util;
 import net.minecraft.world.level.block.DoubleBlockCombiner;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BedPart;
-import quek.undergarden.Undergarden;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Matrix4f;
+import org.joml.Vector3fc;
+import org.jspecify.annotations.Nullable;
+import quek.undergarden.block.DepthrockBedBlock;
 import quek.undergarden.block.entity.DepthrockBedBlockEntity;
 import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.registry.UGBlockEntities;
 
-public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlockEntity> {
+import java.util.Map;
+import java.util.function.Consumer;
 
-	private final ModelPart headPiece;
-	private final ModelPart footPiece;
+public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlockEntity, BedRenderState> {
+
+	private static final Map<Direction, Transformation> TRANSFORMATIONS = Util.makeEnumMap(Direction.class, DepthrockBedRender::createModelTransform);
+	private final SpriteGetter sprites;
+	private final Model.Simple headModel;
+	private final Model.Simple footModel;
 
 	public DepthrockBedRender(BlockEntityRendererProvider.Context context) {
-		this.headPiece = context.bakeLayer(UGModelLayers.DEPTHROCK_BED_HEAD);
-		this.footPiece = context.bakeLayer(UGModelLayers.DEPTHROCK_BED_FOOT);
+		this(context.sprites(), context.entityModelSet());
+	}
+
+	public DepthrockBedRender(SpecialModelRenderer.BakingContext context) {
+		this(context.sprites(), context.entityModelSet());
+	}
+
+	public DepthrockBedRender(SpriteGetter sprites, EntityModelSet set) {
+		this.sprites = sprites;
+		this.headModel = new Model.Simple(set.bakeLayer(UGModelLayers.DEPTHROCK_BED_HEAD), RenderTypes::entitySolid);
+		this.footModel = new Model.Simple(set.bakeLayer(UGModelLayers.DEPTHROCK_BED_FOOT), RenderTypes::entitySolid);
 	}
 
 	public static LayerDefinition createHeadLayer() {
@@ -53,28 +76,66 @@ public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlock
 	}
 
 	@Override
-	public void render(DepthrockBedBlockEntity bed, float partialTicks, PoseStack stack, MultiBufferSource buffer, int light, int overlay) {
-		Level level = bed.getLevel();
-		if (level != null) {
-			BlockState blockstate = bed.getBlockState();
-			DoubleBlockCombiner.NeighborCombineResult<? extends DepthrockBedBlockEntity> neighborCombineResult = DoubleBlockCombiner.combineWithNeigbour(UGBlockEntities.DEPTHROCK_BED.get(), BedBlock::getBlockType, BedBlock::getConnectedDirection, ChestBlock.FACING, blockstate, level, bed.getBlockPos(), (levelAccessor, pos) -> false);
-			int i = neighborCombineResult.<Int2IntFunction>apply(new BrightnessCombiner<>()).get(light);
-			this.renderPiece(stack, buffer, blockstate.getValue(BedBlock.PART) == BedPart.HEAD ? this.headPiece : this.footPiece, blockstate.getValue(BedBlock.FACING), i, overlay, false);
-		} else {
-			this.renderPiece(stack, buffer, this.headPiece, Direction.SOUTH, light, overlay, false);
-			this.renderPiece(stack, buffer, this.footPiece, Direction.SOUTH, light, overlay, true);
+	public BedRenderState createRenderState() {
+		return new BedRenderState();
+	}
+
+	@Override
+	public void extractRenderState(DepthrockBedBlockEntity blockEntity, BedRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
+		BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
+		state.facing = blockEntity.getBlockState().getValue(DepthrockBedBlock.FACING);
+		state.part = blockEntity.getBlockState().getValue(DepthrockBedBlock.PART);
+		if (blockEntity.getLevel() != null) {
+			DoubleBlockCombiner.NeighborCombineResult<? extends DepthrockBedBlockEntity> combineResult = DoubleBlockCombiner.combineWithNeigbour(
+				UGBlockEntities.DEPTHROCK_BED.get(),
+				DepthrockBedBlock::getBlockType,
+				DepthrockBedBlock::getConnectedDirection,
+				DepthrockBedBlock.FACING,
+				blockEntity.getBlockState(),
+				blockEntity.getLevel(),
+				blockEntity.getBlockPos(),
+				(_, _) -> false
+			);
+			state.lightCoords = combineResult.apply(new BrightnessCombiner<>()).get(state.lightCoords);
 		}
 	}
 
-	private void renderPiece(PoseStack stack, MultiBufferSource multiBufferSource, ModelPart bedPart, Direction direction, int light, int overlay, boolean isBedFoot) {
-		stack.pushPose();
-		stack.translate(0.0D, 0.5625D, isBedFoot ? -1.0D : 0.0D);
-		stack.mulPose(Axis.XP.rotationDegrees(90.0F));
-		stack.translate(0.5D, 0.5D, 0.5D);
-		stack.mulPose(Axis.ZP.rotationDegrees(180.0F + direction.toYRot()));
-		stack.translate(-0.5D, -0.5D, -0.5D);
-		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(RenderType.entitySolid(Undergarden.prefix("textures/block/depthrock_bed.png")));
-		bedPart.render(stack, vertexConsumer, light, overlay);
-		stack.popPose();
+	@Override
+	public void submit(BedRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+		SpriteId sprite = Sheets.getBedSprite(state.color);
+		poseStack.pushPose();
+		poseStack.mulPose(modelTransform(state.facing));
+		this.submitPiece(state.part, sprite, poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.breakProgress, 0);
+		poseStack.popPose();
+	}
+
+	public void submitPiece(BedPart part, SpriteId sprite, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, int overlayCoords, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress, int outlineColor) {
+		Model.Simple model = this.getPieceModel(part);
+		submitNodeCollector.submitModel(model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, sprite, this.sprites, outlineColor, breakProgress);
+	}
+
+	private Model.Simple getPieceModel(BedPart part) {
+		return switch (part) {
+			case HEAD -> this.headModel;
+			case FOOT -> this.footModel;
+		};
+	}
+
+	private static Transformation createModelTransform(Direction direction) {
+		return new Transformation(
+			new Matrix4f()
+				.translation(0.0F, 0.5625F, 0.0F)
+				.rotate(Axis.XP.rotationDegrees(90.0F))
+				.rotateAround(Axis.ZP.rotationDegrees(180.0F + direction.toYRot()), 0.5F, 0.5F, 0.5F)
+		);
+	}
+
+	public static Transformation modelTransform(Direction direction) {
+		return TRANSFORMATIONS.get(direction);
+	}
+
+	public void getExtents(BedPart part, Consumer<Vector3fc> output) {
+		PoseStack poseStack = new PoseStack();
+		this.getPieceModel(part).root().getExtentsForGui(poseStack, output);
 	}
 }

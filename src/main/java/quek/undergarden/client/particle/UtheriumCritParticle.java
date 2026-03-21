@@ -3,17 +3,19 @@ package quek.undergarden.client.particle;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
-import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.RandomSource;
 
-public class UtheriumCritParticle extends TextureSheetParticle {
+public class UtheriumCritParticle extends SingleQuadParticle {
 
 	private float rotSpeed;
 	private final float spinAcceleration;
 
-	protected UtheriumCritParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-		super(level, x, y, z, xSpeed, ySpeed, zSpeed);
+	protected UtheriumCritParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, TextureAtlasSprite sprite) {
+		super(level, x, y, z, xSpeed, ySpeed, zSpeed, sprite);
 		this.friction = 1.0F;
 		this.xd *= 0.1F;
 		this.yd *= 0.1F;
@@ -49,8 +51,8 @@ public class UtheriumCritParticle extends TextureSheetParticle {
 	}
 
 	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+	protected Layer getLayer() {
+		return Layer.OPAQUE;
 	}
 
 	public static class Provider implements ParticleProvider<SimpleParticleType> {
@@ -60,11 +62,11 @@ public class UtheriumCritParticle extends TextureSheetParticle {
 			this.spriteSet = spriteSet;
 		}
 
-		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			UtheriumCritParticle crit = new UtheriumCritParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
+		@Override
+		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+			UtheriumCritParticle crit = new UtheriumCritParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet.get(random));
 			crit.lifetime = 40;
 			crit.gravity = 0.025F;
-			crit.pickSprite(this.spriteSet);
 			return crit;
 		}
 	}

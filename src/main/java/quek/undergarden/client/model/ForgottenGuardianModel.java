@@ -1,27 +1,24 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableSet;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.monster.boss.ForgottenGuardian;
+import quek.undergarden.client.state.entity.ForgottenGuardianRenderState;
 
-public class ForgottenGuardianModel<T extends ForgottenGuardian> extends ListModel<T> {
+public class ForgottenGuardianModel extends HumanoidModel<ForgottenGuardianRenderState> {
 
 	private final ModelPart head;
-	private final ModelPart body;
-	//private final ModelPart torso;
 	private final ModelPart leftArm;
 	private final ModelPart rightArm;
 	private final ModelPart leftLeg;
 	private final ModelPart rightLeg;
 
 	public ForgottenGuardianModel(ModelPart root) {
-		this.body = root.getChild("body");
+		super(root);
+		ModelPart body = root.getChild("body");
 		this.head = body.getChild("head");
-		//this.torso = body.getChild("torso");
 		this.leftArm = body.getChild("leftArm");
 		this.rightArm = body.getChild("rightArm");
 		this.leftLeg = root.getChild("leftLeg");
@@ -61,27 +58,20 @@ public class ForgottenGuardianModel<T extends ForgottenGuardian> extends ListMod
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.xRot = headPitch * ((float) Math.PI / 180F);
-		this.leftLeg.xRot = -1.5F * Mth.triangleWave(limbSwing, 13.0F) * limbSwingAmount;
-		this.rightLeg.xRot = 1.5F * Mth.triangleWave(limbSwing, 13.0F) * limbSwingAmount;
-	}
+	public void setupAnim(ForgottenGuardianRenderState state) {
+		super.setupAnim(state);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.xRot = state.xRot * Mth.DEG_TO_RAD;
+		this.leftLeg.xRot = -1.5F * Mth.triangleWave(state.walkAnimationPos, 13.0F) * state.walkAnimationSpeed;
+		this.rightLeg.xRot = 1.5F * Mth.triangleWave(state.walkAnimationPos, 13.0F) * state.walkAnimationSpeed;
 
-	@Override
-	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTicks) {
-		int attackTimer = entity.getAttackTimer();
+		float attackTimer = state.attackTimer;
 		if (attackTimer > 0) {
-			this.rightArm.xRot = -2.0F + 1.5F * Mth.triangleWave((float) attackTimer - partialTicks, 10.0F);
-			this.leftArm.xRot = -2.0F + 1.5F * Mth.triangleWave((float) attackTimer - partialTicks, 10.0F);
+			this.rightArm.xRot = -2.0F + 1.5F * Mth.triangleWave(attackTimer, 10.0F);
+			this.leftArm.xRot = -2.0F + 1.5F * Mth.triangleWave(attackTimer, 10.0F);
 		} else {
-			this.rightArm.xRot = (-0.2F + 1.5F * Mth.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
-			this.leftArm.xRot = (-0.2F - 1.5F * Mth.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
+			this.rightArm.xRot = (-0.2F + 1.5F * Mth.triangleWave(state.walkAnimationPos, 13.0F)) * state.walkAnimationSpeed;
+			this.leftArm.xRot = (-0.2F - 1.5F * Mth.triangleWave(state.walkAnimationPos, 13.0F)) * state.walkAnimationSpeed;
 		}
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(this.body, this.leftLeg, this.rightLeg);
 	}
 }

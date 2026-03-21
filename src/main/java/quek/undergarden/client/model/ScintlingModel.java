@@ -1,14 +1,13 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableList;
-import net.minecraft.client.model.AgeableListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.animal.Scintling;
 
-public class ScintlingModel<T extends Scintling> extends AgeableListModel<T> {
+public class ScintlingModel extends EntityModel<LivingEntityRenderState> {
 
 	private final ModelPart head;
 	private final ModelPart leftStalk;
@@ -17,6 +16,7 @@ public class ScintlingModel<T extends Scintling> extends AgeableListModel<T> {
 	private final ModelPart tail;
 
 	public ScintlingModel(ModelPart root) {
+		super(root);
 		this.head = root.getChild("head");
 		this.leftStalk = head.getChild("leftStalk");
 		this.rightStalk = head.getChild("rightStalk");
@@ -43,27 +43,18 @@ public class ScintlingModel<T extends Scintling> extends AgeableListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.xRot = headPitch * ((float) Math.PI / 180F);
+	public void setupAnim(LivingEntityRenderState state) {
+		super.setupAnim(state);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.xRot = state.xRot * Mth.DEG_TO_RAD;
 
-		this.torso.yRot = Mth.cos(limbSwing * 0.5F + (float) Math.PI) * 0.5F * limbSwingAmount;
+		this.torso.yRot = Mth.cos(state.walkAnimationPos * 0.5F + Mth.PI) * 0.5F * state.walkAnimationSpeed;
 
-		this.tail.yRot = Mth.cos(limbSwing * 0.5F) * 0.5F * limbSwingAmount;
+		this.tail.yRot = Mth.cos(state.walkAnimationPos * 0.5F) * 0.5F * state.walkAnimationSpeed;
 
-		float wiggle = Mth.sin((entity.tickCount) * 0.3F) * 0.3F;
+		float wiggle = Mth.sin((state.ageInTicks) * 0.3F) * 0.3F;
 
 		this.leftStalk.xRot = wiggle;
 		this.rightStalk.xRot = -wiggle;
-	}
-
-	@Override
-	protected Iterable<ModelPart> headParts() {
-		return ImmutableList.of();
-	}
-
-	@Override
-	protected Iterable<ModelPart> bodyParts() {
-		return ImmutableList.of(this.head, this.torso, this.tail);
 	}
 }

@@ -1,31 +1,28 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableSet;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.monster.cavern.Nargoyle;
+import quek.undergarden.client.state.entity.NargoyleRenderState;
 
-public class NargoyleModel<T extends Nargoyle> extends ListModel<T> {
+public class NargoyleModel extends EntityModel<NargoyleRenderState> {
 
-	private final ModelPart body;
-	private final ModelPart upperBody;
-	private final ModelPart lowerBody;
 	private final ModelPart head;
 	private final ModelPart arms;
 	private final ModelPart legs;
 	private final ModelPart jaw;
 
 	public NargoyleModel(ModelPart root) {
-		this.body = root.getChild("body");
-		this.upperBody = body.getChild("upperbody");
-		this.lowerBody = body.getChild("lowerbody");
+		super(root);
+		ModelPart body = root.getChild("body");
+		ModelPart upperBody = body.getChild("upperbody");
+		ModelPart lowerBody = body.getChild("lowerbody");
 		this.head = upperBody.getChild("head");
 		this.arms = upperBody.getChild("arms");
 		this.legs = lowerBody.getChild("legs");
-		this.jaw = head.getChild("jaw");
+		this.jaw = this.head.getChild("jaw");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -75,24 +72,20 @@ public class NargoyleModel<T extends Nargoyle> extends ListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-		this.head.zRot = headPitch * ((float) Math.PI / 180F);
-		this.head.xRot = 0.4363F + headPitch * ((float) Math.PI / 180F);
+	public void setupAnim(NargoyleRenderState state) {
+		super.setupAnim(state);
+		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+		this.head.zRot = state.xRot * Mth.DEG_TO_RAD;
+		this.head.xRot = 0.4363F + state.xRot * Mth.DEG_TO_RAD;
 
-		this.arms.xRot = 1.5708F + Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.arms.xRot = 1.5708F + Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
 
-		this.legs.xRot = -1.7017F + -(Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount);
+		this.legs.xRot = -1.7017F - (Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed);
 
-		if (entity.isAggressive()) {
+		if (state.aggressive) {
 			this.jaw.xRot = 0.3491F;
 		} else {
 			this.jaw.xRot = 0.0F;
 		}
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(body);
 	}
 }

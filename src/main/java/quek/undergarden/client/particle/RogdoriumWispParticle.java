@@ -6,9 +6,7 @@ import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.SimpleAnimatedParticle;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
-import org.jspecify.annotations.Nullable;
-
-;
+import net.minecraft.util.RandomSource;
 
 public class RogdoriumWispParticle extends SimpleAnimatedParticle {
 
@@ -30,7 +28,7 @@ public class RogdoriumWispParticle extends SimpleAnimatedParticle {
 		}
 
 		@Override
-		public @Nullable Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
 			return new RogdoriumWispParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, sprites);
 		}
 	}

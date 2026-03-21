@@ -1,33 +1,31 @@
 package quek.undergarden.client.render.layer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.FastColor;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.util.ARGB;
 import quek.undergarden.Undergarden;
-import quek.undergarden.client.render.UGRenderTypes;
-import quek.undergarden.registry.UGAttachments;
+import quek.undergarden.client.UndergardenClient;
 
-public class UthericInfectionLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
+public class UthericInfectionLayer<S extends LivingEntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
 
 	private static final Identifier TEXTURE = Undergarden.prefix("textures/utheric_infection_overlay.png");
 
-	public UthericInfectionLayer(RenderLayerParent<T, M> renderer) {
+	public UthericInfectionLayer(RenderLayerParent<S, M> renderer) {
 		super(renderer);
 	}
 
 	@Override
-	public void render(PoseStack stack, MultiBufferSource buffer, int packedLight, T entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-		double infectionLevel = entity.getData(UGAttachments.UTHERIC_INFECTION.get());
-		if (infectionLevel > 0) {
-			VertexConsumer consumer = buffer.getBuffer(UGRenderTypes.entityDecalTranslucent(TEXTURE));
-			this.getParentModel().renderToBuffer(stack, consumer, packedLight, OverlayTexture.NO_OVERLAY, FastColor.ARGB32.color((int) (infectionLevel * 2) + 128, 255, 255, 255));
+	public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, S state, float yRot, float xRot) {
+		Double infectionLevel = state.getRenderData(UndergardenClient.UTHERIUM_INFECTION);
+		if (infectionLevel != null && infectionLevel > 0) {
+			submitNodeCollector.order(1).submitModel(this.getParentModel(), state, poseStack, RenderTypes.entityTranslucent(TEXTURE), state.lightCoords, OverlayTexture.NO_OVERLAY, ARGB.color((int) (infectionLevel * 2) + 128, 255, 255, 255), null, state.outlineColor, null);
 		}
 	}
 }

@@ -1,6 +1,12 @@
 package quek.undergarden.recipe;
 
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.chat.ChatTypeDecoration;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.ByIdMap;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -12,6 +18,7 @@ import quek.undergarden.registry.UGRecipeTypes;
 import quek.undergarden.registry.UGTags;
 
 import java.util.Locale;
+import java.util.function.IntFunction;
 
 public interface InfusingRecipe extends Recipe<SingleRecipeInput> {
 
@@ -22,11 +29,6 @@ public interface InfusingRecipe extends Recipe<SingleRecipeInput> {
 	int infusingTime();
 
 	InfusingBookCategory category();
-
-	@Override
-	default boolean canCraftInDimensions(int width, int height) {
-		return true;
-	}
 
 	@Override
 	default ItemStack getToastSymbol() {
@@ -47,7 +49,9 @@ public interface InfusingRecipe extends Recipe<SingleRecipeInput> {
 		UTHERIUM(1, UGTags.Items.INFUSER_UTHERIUM_FUELS),
 		ROGDORIUM(2, UGTags.Items.INFUSER_ROGDORIUM_FUELS);
 
-		public static final StringRepresentable.EnumCodec<SlotType> CODEC = StringRepresentable.fromEnum(SlotType::values);
+		private static final IntFunction<SlotType> BY_ID = ByIdMap.continuous(Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
+		public static final Codec<SlotType> CODEC = StringRepresentable.fromEnum(SlotType::values);
+		public static final StreamCodec<ByteBuf, SlotType> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
 
 		private final int slotIndex;
 		private final TagKey<Item> validItems;

@@ -1,69 +1,79 @@
 package quek.undergarden.client.model.item;
 
 import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
 import com.mojang.math.Transformation;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.block.model.ItemOverrides;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.block.FluidModel;
+import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
+import net.minecraft.client.renderer.block.dispatch.ModelState;
+import net.minecraft.client.renderer.item.*;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.resources.model.ModelBaker;
+import net.minecraft.client.resources.model.ModelDebugName;
+import net.minecraft.client.resources.model.cuboid.ItemModelGenerator;
+import net.minecraft.client.resources.model.cuboid.ItemTransforms;
+import net.minecraft.client.resources.model.geometry.BakedQuad;
+import net.minecraft.client.resources.model.geometry.QuadCollection;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.client.resources.model.sprite.MaterialBaker;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.entity.ItemOwner;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.neoforged.neoforge.client.ClientHooks;
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.neoforged.neoforge.client.model.CompositeModel;
-import net.neoforged.neoforge.client.model.DynamicFluidContainerModel;
-import net.neoforged.neoforge.client.model.QuadTransformers;
-import net.neoforged.neoforge.client.model.SimpleModelState;
-import net.neoforged.neoforge.client.model.geometry.*;
+import net.neoforged.neoforge.client.NeoForgeRenderTypes;
+import net.neoforged.neoforge.client.color.item.FluidContentsTint;
+import net.neoforged.neoforge.client.model.ComposedModelState;
+import net.neoforged.neoforge.client.model.ExtraFaceData;
+import net.neoforged.neoforge.client.model.UnbakedElementsHelper;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
+import org.joml.Matrix4fc;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
-import quek.undergarden.item.bucket.UGBucketItem;
 import quek.undergarden.registry.UGDataComponents;
 
-import java.util.Map;
-import java.util.function.Function;
+import java.util.*;
+import java.util.function.UnaryOperator;
 
 //copy of DynamicFluidContainerModel that allows for the addition of mob and solid block covers
-public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel> {
+public class CloggrumBucketModel implements ItemModel {
 	private static final Map<Identifier, Identifier> TEXTURE_MAP = Maps.newHashMap();
 	private static final Transformation DEPTH_OFFSET_TRANSFORM = new Transformation(new Vector3f(), new Quaternionf(), new Vector3f(1.002F, 1.002F, 1.002F), new Quaternionf());
+	private static final ModelDebugName DEBUG_NAME = () -> "CloggrumBucketModel";
 
-	private static final Material FALLBACK_CONTENT = new Material(InventoryMenu.BLOCK_ATLAS, getContentTexture(Undergarden.prefix("fallback")));
+	private static final Material FALLBACK_CONTENT = new Material(getContentTexture(Undergarden.prefix("fallback")));
 
-	private final Fluid fluid;
-	@Nullable
-	private final Identifier otherContent;
-	private final boolean flipGas;
-	private final boolean applyFluidLuminosity;
-	private final boolean isLower;
+	private static final RenderType RENDER_TYPE_CUTOUT_UNLIT_BLOCK = NeoForgeRenderTypes.getItemCutoutUnlit(TextureAtlas.LOCATION_BLOCKS);
+	private static final RenderType RENDER_TYPE_CUTOUT_UNLIT_ITEM = NeoForgeRenderTypes.getItemCutoutUnlit(TextureAtlas.LOCATION_ITEMS);
+	private static final RenderType RENDER_TYPE_TRANSLUCENT_UNLIT_BLOCK = NeoForgeRenderTypes.getItemTranslucentUnlit(TextureAtlas.LOCATION_BLOCKS);
+	private static final RenderType RENDER_TYPE_TRANSLUCENT_UNLIT_ITEM = NeoForgeRenderTypes.getItemTranslucentUnlit(TextureAtlas.LOCATION_ITEMS);
 
-	private CloggrumBucketModel(Fluid fluid, @Nullable Identifier otherContent, boolean flipGas, boolean applyFluidLuminosity, boolean isLower) {
-		this.fluid = fluid;
-		this.otherContent = otherContent;
-		this.flipGas = flipGas;
-		this.applyFluidLuminosity = applyFluidLuminosity;
-		this.isLower = isLower;
-	}
+	private final Unbaked unbakedModel;
+	private final BakingContext bakingContext;
+	private final Matrix4fc transformation;
+	private final ItemTransforms itemTransforms;
+	private final Map<Identifier, ItemModel> cache = new IdentityHashMap<>(); // contains all the baked models since they'll never change
 
-	public CloggrumBucketModel withFluid(Fluid newFluid) {
-		return new CloggrumBucketModel(newFluid, this.otherContent, this.flipGas, this.applyFluidLuminosity, this.isLower);
-	}
-
-	public CloggrumBucketModel withOtherContent(Identifier otherContent, boolean isLower) {
-		return new CloggrumBucketModel(Fluids.EMPTY, otherContent, this.flipGas, this.applyFluidLuminosity, isLower);
+	private CloggrumBucketModel(Unbaked unbakedModel, BakingContext bakingContext, Matrix4fc transformation) {
+		this.unbakedModel = unbakedModel;
+		this.bakingContext = bakingContext;
+		this.transformation = transformation;
+		// Source ItemTransforms from the base item model
+		var baseItemModel = bakingContext.blockModelBaker().getModel(Identifier.withDefaultNamespace("item/generated"));
+		this.itemTransforms = baseItemModel.getTopTransforms();
 	}
 
 	//textures are fetched from the item/bucket_content folder as other mods use this directory thanks to BucketLib
@@ -77,163 +87,156 @@ public class CloggrumBucketModel implements IUnbakedGeometry<CloggrumBucketModel
 		return texture;
 	}
 
-	@Override
-	public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides) {
-		Material particleLocation = context.hasMaterial("particle") ? context.getMaterial("particle") : null;
-		Material baseLocation = context.hasMaterial("base") ? context.getMaterial("base") : null;
+	public ItemModel bake(Fluid fluid, @Nullable Identifier content, boolean isLower) {
+		ModelBaker baker = this.bakingContext.blockModelBaker();
+		MaterialBaker materials = baker.materials();
+		FluidModel fluidModel = Minecraft.getInstance()
+			.getModelManager()
+			.getFluidStateModelSet()
+			.get(fluid.defaultFluidState());
 
-		Material otherContentLocation = null;
-		Material fluidLocation = null;
-		Material fluidMaskLocation = null;
-		if (this.otherContent != null) {
-			otherContentLocation = new Material(InventoryMenu.BLOCK_ATLAS, getContentTexture(this.otherContent));
-		}
-		if (this.fluid != Fluids.EMPTY) {
-			fluidLocation = new Material(InventoryMenu.BLOCK_ATLAS, getContentTexture(BuiltInRegistries.FLUID.getKey(this.fluid)));
-			if (context.hasMaterial("fluid")) {
-				fluidMaskLocation = context.getMaterial("fluid");
-			}
+		Material particleLocation = this.unbakedModel.textures.particle.orElse(null);
+		Material baseLocation = this.unbakedModel.textures.base.orElse(null);
+		Material fluidMaskLocation = this.unbakedModel.textures.fluid.orElse(null);
+		Material otherContentLocation = content != null ? new Material(getContentTexture(content)) : null;
+
+		Material.Baked baseSprite = baseLocation != null ? materials.get(baseLocation, DEBUG_NAME) : null;
+		Material.Baked fluidSprite = fluid != Fluids.EMPTY ? fluidModel.stillMaterial() : null;
+		Material.Baked otherContentSprite = otherContentLocation != null ? materials.get(otherContentLocation, DEBUG_NAME) : null;
+
+		Material.Baked particleSprite = particleLocation != null ? materials.get(particleLocation, DEBUG_NAME) : null;
+
+		if (otherContentSprite == null && fluidSprite != null && !MissingTextureAtlasSprite.getLocation().equals(fluidSprite.sprite().contents().name())) {
+			otherContentSprite = fluidSprite;
 		}
 
-		if (otherContentLocation == null && fluidLocation != null && !MissingTextureAtlasSprite.getLocation().equals(spriteGetter.apply(fluidLocation).contents().name())) {
-			otherContentLocation = fluidLocation;
+		if (otherContentSprite != null && MissingTextureAtlasSprite.getLocation().equals(otherContentSprite.sprite().contents().name())) {
+			otherContentSprite = materials.get(this.unbakedModel.textures().defaultContent().orElse(FALLBACK_CONTENT), DEBUG_NAME);
 		}
 
-		TextureAtlasSprite baseSprite = baseLocation != null ? spriteGetter.apply(baseLocation) : null;
-		TextureAtlasSprite otherContentSprite = null;
-		if (otherContentLocation != null) {
-			otherContentSprite = spriteGetter.apply(otherContentLocation);
-			if (MissingTextureAtlasSprite.getLocation().equals(otherContentSprite.contents().name())) {
-				otherContentSprite = spriteGetter.apply(FALLBACK_CONTENT);
-			}
-		}
-		TextureAtlasSprite fluidSprite = this.fluid != Fluids.EMPTY ? spriteGetter.apply(ClientHooks.getBlockMaterial(IClientFluidTypeExtensions.of(this.fluid).getStillTexture())) : null;
-		TextureAtlasSprite particleSprite = particleLocation != null ? spriteGetter.apply(particleLocation) : null;
 		if (particleSprite == null) particleSprite = baseSprite;
 		if (particleSprite == null) particleSprite = otherContentSprite;
 		if (particleSprite == null) particleSprite = fluidSprite;
 
 		// if the fluid is lighter than air, will manipulate the initial state to be rotated 180deg to turn it upside down
-		boolean flip = this.flipGas && this.fluid != Fluids.EMPTY && this.fluid.getFluidType().isLighterThanAir();
-		modelState = new SimpleModelState(modelState.getRotation().compose(new Transformation(null, flip ? new Quaternionf(0.0F, 0.0F, 1.0F, 0.0F) : null, null, null)));
+		ModelState state = BlockModelRotation.IDENTITY;
+		if (this.unbakedModel.flipGas && fluid != Fluids.EMPTY && fluid.getFluidType().isLighterThanAir()) {
+			state = new ComposedModelState(state, new Transformation(null, new Quaternionf(0, 0, 1, 0), null, null));
+		}
 
-		// We need to disable GUI 3D and block lighting for this to render properly
-		var itemContext = StandaloneGeometryBakingContext.builder(context).withGui3d(false).withUseBlockLight(false).build(Undergarden.prefix("cloggrum_bucket"));
-		var modelBuilder = CompositeModel.Baked.builder(itemContext, particleSprite, new ContainedFluidOverrideHandler(overrides, baker, itemContext, this), context.getTransforms());
+		List<ItemModel> subModels = new ArrayList<>();
+		ModelRenderProperties renderProperties = new ModelRenderProperties(false, particleSprite, this.itemTransforms);
 
-		var normalRenderTypes = DynamicFluidContainerModel.getLayerRenderTypes(false);
-
-		if (baseSprite != null) {
+		if (baseLocation != null) {
 			//lower bucket by a pixel to prevent the need of a 2nd texture
-			Vector3f lowered = this.isLower ? new Vector3f(0.0F, -1.0F / 16.0F, 0.0F) : null;
-			ModelState baseState = new SimpleModelState(modelState.getRotation().compose(new Transformation(lowered, null, null, null)));
-			var unbaked = UnbakedGeometryHelper.createUnbakedItemElements(0, baseSprite);
-			var quads = UnbakedGeometryHelper.bakeElements(unbaked, $ -> baseSprite, baseState);
-			modelBuilder.addQuads(normalRenderTypes, quads);
+			Vector3f lowered = isLower ? new Vector3f(0.0F, -1.0F / 16.0F, 0.0F) : null;
+			ModelState baseState = new ComposedModelState(state, new Transformation(lowered, null, null, null));
+			QuadCollection quads = baker.compute(new ItemModelGenerator.ItemLayerKey(baseSprite, baseState, 0));
+			subModels.add(new CuboidItemModelWrapper(List.of(), quads, renderProperties, this.transformation));
 		}
 
 		if (otherContentSprite != null) {
-			var transformedState = new SimpleModelState(modelState.getRotation().compose(DEPTH_OFFSET_TRANSFORM), modelState.isUvLocked());
-			var unbaked = UnbakedGeometryHelper.createUnbakedItemElements(2, otherContentSprite);
-			TextureAtlasSprite finalOtherContentSprite = otherContentSprite;
-			var quads = UnbakedGeometryHelper.bakeElements(unbaked, $ -> finalOtherContentSprite, transformedState);
-			modelBuilder.addQuads(normalRenderTypes, quads);
+			ModelState transformedState = new ComposedModelState(state, DEPTH_OFFSET_TRANSFORM);
+			QuadCollection quads = baker.compute(new ItemModelGenerator.ItemLayerKey(otherContentSprite, transformedState, 0));
+			subModels.add(new CuboidItemModelWrapper(List.of(), quads, renderProperties, this.transformation));
 		} else if (fluidMaskLocation != null && fluidSprite != null) {
-			TextureAtlasSprite templateSprite = spriteGetter.apply(fluidMaskLocation);
-			if (templateSprite != null) {
-				// build liquid layer (inside)
-				var transformedState = new SimpleModelState(modelState.getRotation().compose(DEPTH_OFFSET_TRANSFORM), modelState.isUvLocked());
-				var unbaked = UnbakedGeometryHelper.createUnbakedItemMaskElements(1, templateSprite); // Use template as mask
-				var quads = UnbakedGeometryHelper.bakeElements(unbaked, $ -> fluidSprite, transformedState); // Bake with fluid texture
+			Material.Baked templateSprite = materials.get(fluidMaskLocation, DEBUG_NAME);
+			// Fluid layer
+			ModelState transformedState = new ComposedModelState(state, DEPTH_OFFSET_TRANSFORM);
+			boolean emissive = this.unbakedModel.applyFluidLuminosity && fluid.getFluidType().getLightLevel() > 0;
+			UnaryOperator<BakedQuad.MaterialInfo> materialModifier = emissive ? CloggrumBucketModel::setMaxEmissivity : UnaryOperator.identity();
+			QuadCollection quads = UnbakedElementsHelper.bakeItemMaskQuads(baker, 0, templateSprite, fluidSprite, transformedState, ExtraFaceData.DEFAULT, materialModifier); // Use template as mask
 
-				var emissive = this.applyFluidLuminosity && this.fluid.getFluidType().getLightLevel() > 0;
-				var renderTypes = DynamicFluidContainerModel.getLayerRenderTypes(emissive);
-				if (emissive)
-					QuadTransformers.settingEmissivity(this.fluid.getFluidType().getLightLevel()).processInPlace(quads);
-
-				modelBuilder.addQuads(renderTypes, quads);
-			}
+			subModels.add(new CuboidItemModelWrapper(List.of(FluidContentsTint.INSTANCE), quads, renderProperties, this.transformation));
 		}
 
-		modelBuilder.setParticle(particleSprite);
-
-		return modelBuilder.build();
+		return new CompositeModel(subModels);
 	}
 
-	public static final class Loader implements IGeometryLoader<CloggrumBucketModel> {
-		public static final CloggrumBucketModel.Loader INSTANCE = new CloggrumBucketModel.Loader();
+	@Override
+	public void update(ItemStackRenderState state, ItemStack stack, ItemModelResolver resolver, ItemDisplayContext context, @Nullable ClientLevel level, @Nullable ItemOwner owner, int seed) {
+		boolean containsEntityType = false;
+		Identifier content = null;
+		if (stack.get(DataComponents.BUCKET_ENTITY_DATA) != null) {
+			Identifier id = Identifier.tryParse(stack.get(DataComponents.BUCKET_ENTITY_DATA).copyTag().getStringOr("id", ""));
+			if (id != null) {
+				content = Identifier.fromNamespaceAndPath(id.getNamespace(), id.getPath());
+				containsEntityType = true;
+			}
+		} else if (stack.get(UGDataComponents.STORED_BLOCK) != null) {
+			content = BuiltInRegistries.BLOCK.getKey(stack.get(UGDataComponents.STORED_BLOCK).getBlock());
+		}
+		SimpleFluidContent fluid = null;
+		if (content == null) {
+			fluid = stack.getOrDefault(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY);
+			Identifier location = BuiltInRegistries.FLUID.getKey(fluid.getFluid());
+			content = (location != BuiltInRegistries.FLUID.getDefaultKey()) ? location : null;
+		}
+		ItemModel bakedModel = this.cache.get(content);
+		if (bakedModel == null && content != null) {
+			if (fluid == null) {
+				bakedModel = this.bake(Fluids.EMPTY, content, containsEntityType);
+			} else {
+				bakedModel = this.bake(fluid.getFluid(), null, false);
+			}
+			this.cache.put(content, bakedModel);
+		}
+		bakedModel.update(state, stack, resolver, context, level, owner, seed);
+	}
 
-		private Loader() {
+	private static BakedQuad.MaterialInfo setMaxEmissivity(BakedQuad.MaterialInfo materialInfo) {
+		RenderType itemRenderType;
+		if (materialInfo.itemRenderType() == Sheets.cutoutBlockItemSheet()) {
+			itemRenderType = RENDER_TYPE_CUTOUT_UNLIT_BLOCK;
+		} else if (materialInfo.itemRenderType() == Sheets.cutoutItemSheet()) {
+			itemRenderType = RENDER_TYPE_CUTOUT_UNLIT_ITEM;
+		} else if (materialInfo.itemRenderType() == Sheets.translucentBlockItemSheet()) {
+			itemRenderType = RENDER_TYPE_TRANSLUCENT_UNLIT_BLOCK;
+		} else if (materialInfo.itemRenderType() == Sheets.translucentItemSheet()) {
+			itemRenderType = RENDER_TYPE_TRANSLUCENT_UNLIT_ITEM;
+		} else {
+			itemRenderType = materialInfo.itemRenderType();
+		}
+		return new BakedQuad.MaterialInfo(
+			materialInfo.sprite(),
+			materialInfo.layer(),
+			itemRenderType,
+			materialInfo.tintIndex(),
+			materialInfo.shade(),
+			Level.MAX_BRIGHTNESS,
+			materialInfo.ambientOcclusion());
+	}
+
+	public record Textures(Optional<Material> particle, Optional<Material> base, Optional<Material> fluid, Optional<Material> defaultContent) {
+		public static final Codec<Textures> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+			Material.CODEC.optionalFieldOf("particle").forGetter(Textures::particle),
+			Material.CODEC.optionalFieldOf("base").forGetter(Textures::base),
+			Material.CODEC.optionalFieldOf("fluid").forGetter(Textures::fluid),
+			Material.CODEC.optionalFieldOf("default_content").forGetter(Textures::defaultContent)
+		).apply(instance, Textures::new));
+	}
+
+	public record Unbaked(Textures textures, Fluid fluid, boolean flipGas, boolean applyFluidLuminosity) implements ItemModel.Unbaked {
+		public static final MapCodec<Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+			Textures.CODEC.fieldOf("textures").forGetter(Unbaked::textures),
+			BuiltInRegistries.FLUID.byNameCodec().fieldOf("fluid").forGetter(Unbaked::fluid),
+			Codec.BOOL.optionalFieldOf("flip_gas", true).forGetter(Unbaked::flipGas),
+			Codec.BOOL.optionalFieldOf("apply_fluid_luminosity", true).forGetter(Unbaked::applyFluidLuminosity)
+		).apply(instance, Unbaked::new));
+
+		@Override
+		public MapCodec<? extends ItemModel.Unbaked> type() {
+			return MAP_CODEC;
 		}
 
 		@Override
-		public CloggrumBucketModel read(JsonObject jsonObject, JsonDeserializationContext context) {
-			if (!jsonObject.has("fluid"))
-				throw new RuntimeException("Bucket model requires 'fluid' value.");
-
-			Identifier fluidName = Identifier.parse(jsonObject.get("fluid").getAsString());
-
-			Fluid fluid = BuiltInRegistries.FLUID.get(fluidName);
-
-			boolean flip = GsonHelper.getAsBoolean(jsonObject, "flip_gas", true);
-			boolean applyFluidLuminosity = GsonHelper.getAsBoolean(jsonObject, "apply_fluid_luminosity", true);
-
-			Identifier content = null;
-			if (jsonObject.has("content")) {
-				content = Identifier.tryParse(jsonObject.get("content").getAsString());
-			}
-
-			return new CloggrumBucketModel(fluid, content, flip, applyFluidLuminosity, false);
-		}
-	}
-
-	private static final class ContainedFluidOverrideHandler extends ItemOverrides {
-
-		private final Map<Identifier, BakedModel> cache = Maps.newHashMap(); // contains all the baked models since they'll never change
-		private final ItemOverrides nested;
-		private final ModelBaker baker;
-		private final IGeometryBakingContext owner;
-		private final CloggrumBucketModel parent;
-
-		private ContainedFluidOverrideHandler(ItemOverrides nested, ModelBaker baker, IGeometryBakingContext owner, CloggrumBucketModel parent) {
-			this.nested = nested;
-			this.baker = baker;
-			this.owner = owner;
-			this.parent = parent;
+		public ItemModel bake(BakingContext context, Matrix4fc transformation) {
+			return new CloggrumBucketModel(this, context, transformation);
 		}
 
-		@Nullable
 		@Override
-		public BakedModel resolve(BakedModel originalModel, ItemStack stack, @Nullable ClientLevel level, @Nullable LivingEntity entity, int number) {
-			BakedModel overridden = this.nested.resolve(originalModel, stack, level, entity, number);
-			if (overridden != originalModel) return overridden;
-			if (stack.getItem() instanceof UGBucketItem) {
-				boolean containsEntityType = false;
-				Identifier content = null;
-				if (stack.get(DataComponents.BUCKET_ENTITY_DATA) != null) {
-					Identifier id = Identifier.parse(stack.get(DataComponents.BUCKET_ENTITY_DATA).copyTag().getString("id"));
-					content = Identifier.fromNamespaceAndPath(id.getNamespace(), id.getPath());
-					containsEntityType = true;
-				} else {
-					if (stack.get(UGDataComponents.STORED_BLOCK) != null) {
-						content = BuiltInRegistries.BLOCK.getKey(stack.get(UGDataComponents.STORED_BLOCK).getBlock());
-					}
-				}
-				SimpleFluidContent fluid = null;
-				if (content == null) {
-					fluid = stack.getOrDefault(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY);
-					Identifier location = BuiltInRegistries.FLUID.getKey(fluid.getFluid());
-					content = (location != BuiltInRegistries.FLUID.getDefaultKey()) ? location : null;
-				}
-				BakedModel bakedModel = this.cache.get(content);
-				if (bakedModel == null && content != null) {
-					CloggrumBucketModel unbaked = (fluid == null) ? this.parent.withOtherContent(content, containsEntityType) : this.parent.withFluid(fluid.getFluid());
-					bakedModel = unbaked.bake(this.owner, this.baker, Material::sprite, BlockModelRotation.X0_Y0, this);
-					this.cache.put(content, bakedModel);
-				}
-				return bakedModel;
-			}
-			return originalModel;
+		public void resolveDependencies(Resolver resolver) {
+			//No dependencies
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package quek.undergarden.entity;
 
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,7 +19,7 @@ public class Boomgourd extends PrimedTnt {
 	public Boomgourd(Level level, double x, double y, double z, @Nullable LivingEntity igniterEntity) {
 		this(UGEntityTypes.BOOMGOURD.get(), level);
 		this.setPos(x, y, z);
-		double d0 = level.getRandom().nextDouble() * (double) ((float) Math.PI * 2F);
+		double d0 = level.getRandom().nextDouble() * Mth.TWO_PI;
 		this.setDeltaMovement(-Math.sin(d0) * 0.02D, 0.2F, -Math.cos(d0) * 0.02D);
 		this.setFuse(80);
 		this.xo = x;

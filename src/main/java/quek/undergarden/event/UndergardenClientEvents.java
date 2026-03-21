@@ -13,8 +13,11 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.LayerDefinitions;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.SmokeParticle;
 import net.minecraft.client.player.LocalPlayer;
@@ -60,7 +63,6 @@ import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
 import quek.undergarden.client.render.blockentity.DepthrockPotRenderer;
 import quek.undergarden.client.render.blockentity.GrongletRender;
-import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.client.render.entity.*;
 import quek.undergarden.client.render.layer.DenizenMaskLayer;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
@@ -146,8 +148,8 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.GRONGLET.get(), GrongletEntityRenderer::new);
-		event.registerEntityRenderer(UGEntityTypes.UTHERIC_GRONGLET.get(), UthericGrongletEntityRenderer::new);
-		event.registerEntityRenderer(UGEntityTypes.ROGDORIC_GRONGLET.get(), RogdoricGrongletEntityRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.UTHERIC_GRONGLET.get(), GrongletEntityRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.ROGDORIC_GRONGLET.get(), GrongletEntityRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.SPEAR.get(), ThrownSpearRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTBELCHER_PROJECTILE.get(), NoopRenderer::new);
@@ -200,14 +202,22 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.SMOG_MOG, SmogMogModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN, ForgottenModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.DENIZEN, DenizenModel::createBodyLayer);
-		event.registerLayerDefinition(UGModelLayers.DENIZEN_2, Denizen2Model::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.DENIZEN_2, DenizenModel::createTallBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.DENIZEN_MASK, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(1.0F), 0.0F), 64, 32));
-		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_INNER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.1F), 0.0F), 64, 32));
-		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.ROTBELCHER, RotbelcherModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.LIVING_POT, MysteriousPotModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.POT, PotModel::createBodyLayer);
+
+		ArmorModelSet<MeshDefinition> humanoidArmor = HumanoidModel.createArmorMeshSet(LayerDefinitions.INNER_ARMOR_DEFORMATION, LayerDefinitions.OUTER_ARMOR_DEFORMATION);
+		registerArmorModelSet(event, UGModelLayers.FORGOTTEN_ARMOR, humanoidArmor);
+	}
+
+	private static void registerArmorModelSet(EntityRenderersEvent.RegisterLayerDefinitions event, ArmorModelSet<ModelLayerLocation> set, ArmorModelSet<MeshDefinition> target) {
+		event.registerLayerDefinition(set.head(), () -> LayerDefinition.create(target.head(), 64, 32));
+		event.registerLayerDefinition(set.chest(), () -> LayerDefinition.create(target.chest(), 64, 32));
+		event.registerLayerDefinition(set.legs(), () -> LayerDefinition.create(target.legs(), 64, 32));
+		event.registerLayerDefinition(set.feet(), () -> LayerDefinition.create(target.feet(), 64, 32));
 	}
 
 	private static void addEntityLayers(EntityRenderersEvent.AddLayers event) {
@@ -234,7 +244,7 @@ public class UndergardenClientEvents {
 	}
 
 	private static <T extends LivingEntity, M extends HumanoidModel<T>> void addMaskLayer(LivingEntityRenderer<T, M> renderer, EntityRendererProvider.Context context) {
-		renderer.addLayer(new DenizenMaskLayer<>(renderer, new HumanoidModel<>(context.bakeLayer(UGModelLayers.DENIZEN_MASK))));
+		renderer.addLayer(new DenizenMaskLayer<>(renderer));
 	}
 
 	private static void registerParticleFactories(RegisterParticleProvidersEvent event) {
@@ -251,17 +261,17 @@ public class UndergardenClientEvents {
 		event.registerSpriteSet(UGParticleTypes.TOTEM_BEAM.get(), TotemBeamParticle.Provider::new);
 		event.registerSpriteSet(UGParticleTypes.ROGDORIUM_WISP.get(), RogdoriumWispParticle.Provider::new);
 
-		event.registerSprite(UGParticleTypes.DRIPPING_BLOOD.get(), UGDripParticles::createBloodHangParticle);
-		event.registerSprite(UGParticleTypes.FALLING_BLOOD.get(), UGDripParticles::createBloodFallParticle);
-		event.registerSprite(UGParticleTypes.LANDING_BLOOD.get(), UGDripParticles::createBloodLandParticle);
-		event.registerSprite(UGParticleTypes.DRIPPING_INK.get(), UGDripParticles::createInkHangParticle);
-		event.registerSprite(UGParticleTypes.FALLING_INK.get(), UGDripParticles::createInkFallParticle);
-		event.registerSprite(UGParticleTypes.LANDING_INK.get(), UGDripParticles::createInkLandParticle);
-		event.registerSprite(UGParticleTypes.FALLING_GOO.get(), UGDripParticles::createGooFallParticle);
-		event.registerSprite(UGParticleTypes.LANDING_GOO.get(), UGDripParticles::createGooLandParticle);
-		event.registerSprite(UGParticleTypes.DRIPPING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentHangParticle);
-		event.registerSprite(UGParticleTypes.FALLING_VIRULENT.get(), UGDripParticles::createDripstoneVirulentFallParticle);
-		event.registerSprite(UGParticleTypes.LANDING_VIRULENT.get(), UGDripParticles::createVirulentLandParticle);
+		event.registerSpriteSet(UGParticleTypes.DRIPPING_BLOOD.get(), UGDripParticles.BloodHangProvider::new);
+		event.registerSpriteSet(UGParticleTypes.FALLING_BLOOD.get(), UGDripParticles.BloodFallProvider::new);
+		event.registerSpriteSet(UGParticleTypes.LANDING_BLOOD.get(), UGDripParticles.BloodLandProvider::new);
+		event.registerSpriteSet(UGParticleTypes.DRIPPING_INK.get(), UGDripParticles.InkHangProvider::new);
+		event.registerSpriteSet(UGParticleTypes.FALLING_INK.get(), UGDripParticles.InkFallProvider::new);
+		event.registerSpriteSet(UGParticleTypes.LANDING_INK.get(), UGDripParticles.InkLandProvider::new);
+		event.registerSpriteSet(UGParticleTypes.FALLING_GOO.get(), UGDripParticles.GooFallProvider::new);
+		event.registerSpriteSet(UGParticleTypes.LANDING_GOO.get(), UGDripParticles.GooLandProvider::new);
+		event.registerSpriteSet(UGParticleTypes.DRIPPING_VIRULENT.get(), UGDripParticles.DripstoneVirulentHangProvider::new);
+		event.registerSpriteSet(UGParticleTypes.FALLING_VIRULENT.get(), UGDripParticles.DripstoneVirulentFallProvider::new);
+		event.registerSpriteSet(UGParticleTypes.LANDING_VIRULENT.get(), UGDripParticles.DripstoneVirulentLandProvider::new);
 	}
 
 	private static void registerMenuScreens(RegisterMenuScreensEvent event) {

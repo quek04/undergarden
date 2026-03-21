@@ -3,18 +3,20 @@ package quek.undergarden.client.particle;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
-import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 
-public class SnowflakeParticle extends TextureSheetParticle {
+public class SnowflakeParticle extends SingleQuadParticle {
 
 	private float rotSpeed;
 	private final float spinAcceleration;
 
-	protected SnowflakeParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-		super(level, x, y, z, xSpeed, ySpeed, zSpeed);
+	protected SnowflakeParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, TextureAtlasSprite sprite) {
+		super(level, x, y, z, xSpeed, ySpeed, zSpeed, sprite);
 		this.friction = 1.0F;
 		this.xd += xSpeed * 0.05D;
 		this.zd += zSpeed * 0.05D;
@@ -56,8 +58,8 @@ public class SnowflakeParticle extends TextureSheetParticle {
 	}
 
 	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+	protected Layer getLayer() {
+		return Layer.OPAQUE;
 	}
 
 	public static class Provider implements ParticleProvider<SimpleParticleType> {
@@ -67,10 +69,9 @@ public class SnowflakeParticle extends TextureSheetParticle {
 			this.spriteSet = spriteSet;
 		}
 
-		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			SnowflakeParticle snow = new SnowflakeParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
-			snow.pickSprite(this.spriteSet);
-			return snow;
+		@Override
+		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
+			return new SnowflakeParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet.get(random));
 		}
 	}
 }

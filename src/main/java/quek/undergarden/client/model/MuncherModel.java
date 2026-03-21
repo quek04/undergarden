@@ -1,16 +1,14 @@
 package quek.undergarden.client.model;
 
-import com.google.common.collect.ImmutableSet;
-import net.minecraft.client.model.ListModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import quek.undergarden.entity.monster.cavern.Muncher;
 
-public class MuncherModel<T extends Muncher> extends ListModel<T> {
+public class MuncherModel extends EntityModel<LivingEntityRenderState> {
 
-	private final ModelPart lowerJaw;
 	private final ModelPart upperJaw;
 	private final ModelPart leftLeg;
 	private final ModelPart rightLeg;
@@ -18,7 +16,7 @@ public class MuncherModel<T extends Muncher> extends ListModel<T> {
 	private final ModelPart rightArm;
 
 	public MuncherModel(ModelPart root) {
-		this.lowerJaw = root.getChild("lowerJaw");
+		super(root);
 		this.upperJaw = root.getChild("upperJaw");
 		this.leftLeg = root.getChild("leftLeg");
 		this.rightLeg = root.getChild("rightLeg");
@@ -48,18 +46,14 @@ public class MuncherModel<T extends Muncher> extends ListModel<T> {
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.upperJaw.xRot = (Mth.sin((entity.tickCount) * 0.5F) * 0.9F) * 0.3F;
+	public void setupAnim(LivingEntityRenderState state) {
+		super.setupAnim(state);
+		this.upperJaw.xRot = (Mth.sin((state.ageInTicks) * 0.5F) * 0.9F) * 0.3F;
 
-		this.leftArm.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-		this.rightArm.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftArm.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
+		this.rightArm.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
 
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-	}
-
-	@Override
-	public Iterable<ModelPart> parts() {
-		return ImmutableSet.of(this.lowerJaw, this.upperJaw, this.leftLeg, this.rightLeg, this.leftArm, this.rightArm);
+		this.leftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
+		this.rightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 1.4F * state.walkAnimationSpeed;
 	}
 }
