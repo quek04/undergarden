@@ -1,14 +1,15 @@
 package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -48,7 +49,7 @@ public class Scintling extends Animal {
 				.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
-	public static boolean canScintlingSpawn(EntityType<? extends Animal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+	public static boolean canScintlingSpawn(EntityType<? extends Animal> type, LevelAccessor level, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
 		return level.getBlockState(pos.below()).is(UGTags.Blocks.SCINTLING_SPAWNABLE_ON);
 	}
 
@@ -66,32 +67,49 @@ public class Scintling extends Animal {
 	public void aiStep() {
 		super.aiStep();
 
-		if (!EventHooks.canEntityGrief(this.level(), this) || this.isBaby()) {
-			return;
-		}
-
-		BlockState goo = UGBlocks.GOO.get().defaultBlockState();
-
-		for (int l = 0; l < 4; ++l) {
-			int x = Mth.floor(this.getX() + (double) ((float) (l % 2 * 2 - 1) * 0.25F));
-			int y = Mth.floor(this.getY());
-			int z = Mth.floor(this.getZ() + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
-			BlockPos blockpos = new BlockPos(x, y, z);
-			if (this.level().isEmptyBlock(blockpos) && goo.canSurvive(this.level(), blockpos)) {
-				this.level().setBlockAndUpdate(blockpos, goo);
+		if (this.level() instanceof ServerLevel serverLevel) {
+			if (this.isBaby() || !EventHooks.canEntityGrief(serverLevel, this)) {
+				return;
 			}
+
+			BlockState goo = UGBlocks.GOO.get().defaultBlockState();
+
+			for (int l = 0; l < 4; ++l) {
+				int x = Mth.floor(this.getX() + (double) ((float) (l % 2 * 2 - 1) * 0.25F));
+				int y = Mth.floor(this.getY());
+				int z = Mth.floor(this.getZ() + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
+				BlockPos blockpos = new BlockPos(x, y, z);
+				if (this.level().isEmptyBlock(blockpos) && goo.canSurvive(this.level(), blockpos)) {
+					this.level().setBlockAndUpdate(blockpos, goo);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void handleEntityEvent(byte id) {
+		if (id == 45) {
+			for (int i = 0; i < 7; i++) {
+				double xa = this.getRandom().nextGaussian() * 0.01;
+				double ya = this.getRandom().nextGaussian() * 0.01;
+				double za = this.getRandom().nextGaussian() * 0.01;
+				this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.2, this.getRandomZ(1.0), xa, ya, za);
+			}
+		} else {
+			super.handleEntityEvent(id);
 		}
 	}
 
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return UGEntityTypes.SCINTLING.get().create(this.level());
+		return UGEntityTypes.SCINTLING.get().create(this.level(), EntitySpawnReason.BREEDING);
 	}
 
+	//TODO unhardcode
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return Ingredient.of(UGItems.BLISTERBERRY.get()).test(stack);
+		return stack.is(UGItems.BLISTERBERRY);
 	}
 
 	@Override

@@ -7,12 +7,12 @@ import quek.undergarden.registry.UGItems;
 
 public class DenizenStareDownTargetGoal extends NearestAttackableTargetGoal<Player> {
 	public DenizenStareDownTargetGoal(Denizen denizen) {
-		super(denizen, Player.class, true, entity -> !entity.getItemBySlot(EquipmentSlot.HEAD).is(UGItems.DENIZEN_MASK) || denizen.getTarget() == entity);
+		super(denizen, Player.class, true, (entity, level) -> !entity.getItemBySlot(EquipmentSlot.HEAD).is(UGItems.DENIZEN_MASK) || denizen.getTarget() == entity);
 	}
 
 	@Override
 	protected void findTarget() {
-		Player nearestPlayer = this.mob.level().getNearestPlayer(this.targetConditions, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
+		Player nearestPlayer = getServerLevel(this.mob).getNearestPlayer(this.targetConditions, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
 		if (nearestPlayer != null) {
 			if (this.mob.distanceTo(nearestPlayer) <= this.getFollowDistance() / 2 || this.mob.getTarget() == nearestPlayer) {
 				this.target = nearestPlayer;

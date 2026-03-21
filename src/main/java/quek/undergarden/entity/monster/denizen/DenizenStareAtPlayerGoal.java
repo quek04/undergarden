@@ -19,7 +19,7 @@ public class DenizenStareAtPlayerGoal extends LookAtPlayerGoal {
 			}
 
 			if (this.lookAtType == Player.class) {
-				this.lookAt = this.mob.level().getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
+				this.lookAt = getServerLevel(this.mob).getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
 			}
 
 			if (this.lookAt != null && this.lookAt == ((Denizen)this.mob).getStareTarget()) {

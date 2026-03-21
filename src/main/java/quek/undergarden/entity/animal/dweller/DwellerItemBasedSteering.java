@@ -1,6 +1,5 @@
 package quek.undergarden.entity.animal.dweller;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.RandomSource;
@@ -8,14 +7,12 @@ import net.minecraft.util.RandomSource;
 public class DwellerItemBasedSteering {
 	private final SynchedEntityData entityData;
 	private final EntityDataAccessor<Integer> boostTimeAccessor;
-	private final EntityDataAccessor<Boolean> hasSaddleAccessor;
 	public boolean boosting;
 	public int boostTime;
 
-	public DwellerItemBasedSteering(SynchedEntityData data, EntityDataAccessor<Integer> boostTimeAccessor, EntityDataAccessor<Boolean> hasSaddleAccessor) {
+	public DwellerItemBasedSteering(SynchedEntityData data, EntityDataAccessor<Integer> boostTimeAccessor) {
 		this.entityData = data;
 		this.boostTimeAccessor = boostTimeAccessor;
-		this.hasSaddleAccessor = hasSaddleAccessor;
 	}
 
 	public void onSynced() {
@@ -49,21 +46,5 @@ public class DwellerItemBasedSteering {
 
 	public int boostTimeTotal() {
 		return this.entityData.get(this.boostTimeAccessor);
-	}
-
-	public void addAdditionalSaveData(CompoundTag tag) {
-		tag.putBoolean("Saddle", this.hasSaddle());
-	}
-
-	public void readAdditionalSaveData(CompoundTag tag) {
-		this.setSaddle(tag.getBoolean("Saddle"));
-	}
-
-	public void setSaddle(boolean saddle) {
-		this.entityData.set(this.hasSaddleAccessor, saddle);
-	}
-
-	public boolean hasSaddle() {
-		return this.entityData.get(this.hasSaddleAccessor);
 	}
 }

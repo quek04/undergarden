@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -40,11 +41,11 @@ public class GrongletItem extends BlockItem implements ProjectileItem {
 
 	@Override
 	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
-		return new Gronglet(level, pos.x(), pos.y(), pos.z());
+		return new Gronglet(level, pos.x(), pos.y(), pos.z(), stack);
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+	public InteractionResult use(Level level, Player player, InteractionHand usedHand) {
 		if (!level.isClientSide()) {
 			RandomSource random = level.getRandom();
 			level.playSound(null, player.getOnPos(), UGSoundEvents.GRONGLET_BURN.get(), SoundSource.BLOCKS, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);

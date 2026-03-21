@@ -26,6 +26,7 @@ public class DenizenChillByCampfireGoal extends Goal {
 	protected int nextStartTick;
 	protected int tryTicks;
 	private int maxStayTicks;
+	@Nullable
 	protected BlockPos restingPos = null;
 
 	public DenizenChillByCampfireGoal(Denizen denizen) {
@@ -61,7 +62,7 @@ public class DenizenChillByCampfireGoal extends Goal {
 	@Override
 	public void stop() {
 		super.stop();
-		this.denizen.resetCampfireLogic();
+		this.denizen.resetCampfireLogic(getServerLevel(this.denizen));
 		this.restingPos = null;
 	}
 

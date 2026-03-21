@@ -2,9 +2,10 @@ package quek.undergarden.entity.projectile;
 
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -21,7 +22,7 @@ public class MinionProjectile extends ThrowableItemProjectile {
 	}
 
 	public MinionProjectile(Level level, LivingEntity shooter) {
-		super(UGEntityTypes.MINION_PROJECTILE.get(), shooter, level);
+		super(UGEntityTypes.MINION_PROJECTILE.get(), shooter, level, new ItemStack(UGItems.FORGOTTEN_NUGGET.get()));
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class MinionProjectile extends ThrowableItemProjectile {
 	public void handleEntityEvent(byte id) {
 		if (id == 3) {
 			for (int i = 0; i < 8; ++i) {
-				this.level().addParticle(new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(this.getDefaultItem())), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(new ItemParticleOption(ParticleTypes.ITEM, this.getItem().getItem()), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}
@@ -49,9 +50,9 @@ public class MinionProjectile extends ThrowableItemProjectile {
 
 	@Override
 	protected void onHitEntity(EntityHitResult result) {
-		if (result.getEntity() instanceof LivingEntity living) {
+		if (result.getEntity() instanceof LivingEntity living && this.level() instanceof ServerLevel level) {
 			if (!(living instanceof Minion)) {
-				living.hurt(this.damageSources().thrown(this, this.getOwner()), 10.0F);
+				living.hurtServer(level, this.damageSources().thrown(this, this.getOwner()), 10.0F);
 			}
 		}
 	}

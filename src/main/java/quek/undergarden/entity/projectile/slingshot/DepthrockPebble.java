@@ -6,6 +6,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import quek.undergarden.registry.UGDamageSources;
@@ -20,12 +21,12 @@ public class DepthrockPebble extends SlingshotProjectile {
 		super(type, level);
 	}
 
-	public DepthrockPebble(Level level, double x, double y, double z) {
-		super(UGEntityTypes.DEPTHROCK_PEBBLE.get(), x, y, z, level);
+	public DepthrockPebble(Level level, double x, double y, double z, ItemStack stack) {
+		super(UGEntityTypes.DEPTHROCK_PEBBLE.get(), x, y, z, level, stack);
 	}
 
-	public DepthrockPebble(Level level, LivingEntity shooter) {
-		super(UGEntityTypes.DEPTHROCK_PEBBLE.get(), shooter, level);
+	public DepthrockPebble(Level level, LivingEntity shooter, ItemStack stack) {
+		super(UGEntityTypes.DEPTHROCK_PEBBLE.get(), shooter, level, stack);
 		this.setDropItem(true);
 	}
 

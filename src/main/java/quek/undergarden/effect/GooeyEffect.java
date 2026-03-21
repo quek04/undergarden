@@ -2,6 +2,7 @@ package quek.undergarden.effect;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,7 +18,7 @@ public class GooeyEffect extends MobEffect {
 	}
 
 	@Override
-	public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+	public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier) {
 		BlockState blockstate = UGBlocks.GOO.get().defaultBlockState();
 		BlockPos pos = entity.blockPosition();
 

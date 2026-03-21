@@ -1,6 +1,5 @@
 package quek.undergarden.entity.projectile;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -16,6 +15,8 @@ import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
@@ -76,7 +77,7 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 		}
 
 		this.dealtDamage = true;
-		if (victim.hurt(damagesource, damage)) {
+		if (victim.hurtOrSimulate(damagesource, damage)) {
 			if (victim.getType() == EntityType.ENDERMAN) {
 				return;
 			}
@@ -108,15 +109,15 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag tag) {
-		super.readAdditionalSaveData(tag);
-		this.dealtDamage = tag.getBoolean("DealtDamage");
+	protected void readAdditionalSaveData(ValueInput input) {
+		super.readAdditionalSaveData(input);
+		this.dealtDamage = input.getBooleanOr("dealt_damage", false);
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag tag) {
-		super.addAdditionalSaveData(tag);
-		tag.putBoolean("DealtDamage", this.dealtDamage);
+	protected void addAdditionalSaveData(ValueOutput output) {
+		super.addAdditionalSaveData(output);
+		output.putBoolean("dealt_damage", this.dealtDamage);
 	}
 
 	@Override

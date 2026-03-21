@@ -1,12 +1,12 @@
 package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -23,6 +23,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
@@ -30,13 +32,11 @@ import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGTags;
 
-import java.util.UUID;
-
 public class GreaterDweller extends Animal implements NeutralMob {
 
-	private static final UniformInt ANGER_TIME_RANGE = TimeUtil.rangeOfSeconds(20, 39);
-	private int angerTime;
-	private UUID targetUuid;
+	private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
+	private long persistentAngerEndTime;
+	private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
 	private int attackTimer;
 
 	public GreaterDweller(EntityType<? extends GreaterDweller> entityType, Level level) {
@@ -44,12 +44,21 @@ public class GreaterDweller extends Animal implements NeutralMob {
 	}
 
 	@Override
-	public boolean isAngryAt(LivingEntity target) {
-		if (!this.canAttack(target)) {
+	public boolean isAngryAt(LivingEntity entity, ServerLevel level) {
+		if (entity.getUUID().toString().equals("57c0d7fd-935b-495d-b14f-a7dadd3605f9")) {
+			return true;
+		} else if (!this.canAttack(entity)) {
 			return false;
+		} else if (isValidPlayerTarget(entity) && this.isAngryAtAllPlayers(level)) {
+			return true;
 		} else {
-			return target.getType() == EntityType.PLAYER && this.isAngryAtAllPlayers(target.level()) ? true : target.getUUID().equals(this.getPersistentAngerTarget()) || target.getUUID().toString().equals("57c0d7fd-935b-495d-b14f-a7dadd3605f9");
+			EntityReference<LivingEntity> persistentAngerTarget = this.getPersistentAngerTarget();
+			return persistentAngerTarget != null && persistentAngerTarget.matches(entity);
 		}
+	}
+
+	private static boolean isValidPlayerTarget(LivingEntity target) {
+		return target instanceof Player player && !player.isCreative() && !player.isSpectator() && player.level().getDifficulty() != Difficulty.PEACEFUL;
 	}
 
 	@Override
@@ -75,19 +84,9 @@ public class GreaterDweller extends Animal implements NeutralMob {
 			.add(Attributes.ATTACK_DAMAGE, 10.0D);
 	}
 
-	public static boolean checkGreaterDwellerSpawnRules(EntityType<? extends Animal> animal, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {;
+	public static boolean checkGreaterDwellerSpawnRules(EntityType<? extends Animal> animal, LevelAccessor level, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
 		return level.getBlockState(pos.below()).is(UGTags.Blocks.GREATER_DWELLER_SPAWNABLE_ON);
 	}
-
-	/*@Override
-	public boolean checkSpawnRules(LevelAccessor accessor, MobSpawnType type) {
-		return true;
-	}
-
-	@Override
-	public boolean checkSpawnObstruction(LevelReader level) {
-		return level.isUnobstructed(this);
-	}*/
 
 	@Override
 	public float getWalkTargetValue(BlockPos pos, LevelReader level) {
@@ -124,28 +123,16 @@ public class GreaterDweller extends Animal implements NeutralMob {
 	}
 
 	@Override
-	protected void customServerAiStep() {
-		this.updatePersistentAnger((ServerLevel)this.level(), true);
-
-		if (this.isAngry()) {
-			this.lastHurtByPlayerTime = this.tickCount;
-		}
-		super.customServerAiStep();
+	protected void customServerAiStep(ServerLevel level) {
+		this.updatePersistentAnger(level, true);
+		super.customServerAiStep(level);
 	}
 
 	@Override
-	public void setTarget(@Nullable LivingEntity target) {
-		if (target instanceof Player) {
-			this.setLastHurtByPlayer((Player)target);
-		}
-		super.setTarget(target);
-	}
-
-	@Override
-	public boolean doHurtTarget(Entity entity) {
+	public boolean doHurtTarget(ServerLevel level, Entity entity) {
 		this.attackTimer = 10;
-		this.level().broadcastEntityEvent(this, (byte) 4);
-		return super.doHurtTarget(entity);
+		level.broadcastEntityEvent(this, (byte) 4);
+		return super.doHurtTarget(level, entity);
 	}
 
 	@Override
@@ -169,44 +156,43 @@ public class GreaterDweller extends Animal implements NeutralMob {
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
-		return UGEntityTypes.GREATER_DWELLER.get().create(this.level());
+		return UGEntityTypes.GREATER_DWELLER.get().create(this.level(), EntitySpawnReason.BREEDING);
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
-		super.addAdditionalSaveData(compound);
-		this.addPersistentAngerSaveData(compound);
+	protected void addAdditionalSaveData(ValueOutput output) {
+		super.addAdditionalSaveData(output);
+		this.addPersistentAngerSaveData(output);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
-		super.readAdditionalSaveData(compound);
-		this.readPersistentAngerSaveData(this.level(), compound);
+	protected void readAdditionalSaveData(ValueInput input) {
+		super.readAdditionalSaveData(input);
+		this.readPersistentAngerSaveData(this.level(), input);
 	}
 
 	@Override
-	public int getRemainingPersistentAngerTime() {
-		return this.angerTime;
+	public long getPersistentAngerEndTime() {
+		return this.persistentAngerEndTime;
 	}
 
 	@Override
-	public void setRemainingPersistentAngerTime(int time) {
-		this.angerTime = time;
-	}
-
-	@org.jspecify.annotations.Nullable
-	@Override
-	public UUID getPersistentAngerTarget() {
-		return this.targetUuid;
+	public void setPersistentAngerEndTime(long time) {
+		this.persistentAngerEndTime = time;
 	}
 
 	@Override
-	public void setPersistentAngerTarget(@org.jspecify.annotations.Nullable UUID target) {
-		this.targetUuid = target;
+	public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
+		return this.persistentAngerTarget;
+	}
+
+	@Override
+	public void setPersistentAngerTarget(@Nullable EntityReference<LivingEntity> target) {
+		this.persistentAngerTarget = target;
 	}
 
 	@Override
 	public void startPersistentAngerTimer() {
-		this.setRemainingPersistentAngerTime(ANGER_TIME_RANGE.sample(this.random));
+		this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
 	}
 }

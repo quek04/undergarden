@@ -23,7 +23,7 @@ public class InfectionCommand {
 
 	public static LiteralArgumentBuilder<CommandSourceStack> register() {
 		return Commands.literal("infection")
-			.requires(cs -> cs.hasPermission(Commands.LEVEL_ADMINS))
+			.requires(cs -> Commands.LEVEL_ADMINS.check(cs.permissions()))
 			.then(Commands.argument("targets", EntityArgument.entities())
 				.then(Commands.literal("set")
 					.then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.0D, UthericInfectionEvents.MAX_INFECTION))
@@ -33,7 +33,7 @@ public class InfectionCommand {
 	private static int applyInfection(CommandSourceStack source, Collection<? extends Entity> targets, double amount) throws CommandSyntaxException {
 		int skipped = 0;
 		for (Entity entity : targets) {
-			if (entity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
+			if (entity.is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
 				skipped++;
 				continue;
 			}

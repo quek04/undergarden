@@ -1,7 +1,6 @@
 package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -12,8 +11,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -25,6 +24,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.common.IShearable;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jspecify.annotations.Nullable;
@@ -79,11 +80,6 @@ public class Mog extends Animal implements IShearable {
 		return UGSoundEvents.MOG_DEATH.get();
 	}
 
-	/*@Override
-	public boolean canBreatheUnderwater() {
-		return true;
-	}*/
-
 	@Override
 	public boolean canDrownInFluidType(FluidType type) {
 		return false;
@@ -92,9 +88,10 @@ public class Mog extends Animal implements IShearable {
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return UGEntityTypes.MOG.get().create(level);
+		return UGEntityTypes.MOG.get().create(level, EntitySpawnReason.BREEDING);
 	}
 
+	//TODO unhardcode
 	@Override
 	public boolean isFood(ItemStack stack) {
 		return Ingredient.of(UGItems.DEPTHROCK_PEBBLE.get()).test(stack);
@@ -123,17 +120,17 @@ public class Mog extends Animal implements IShearable {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag tag) {
-		super.addAdditionalSaveData(tag);
-		tag.putBoolean("HasMoss", this.hasMoss());
-		this.timeWithoutMoss = tag.getInt("TimeWithoutMoss");
+	protected void addAdditionalSaveData(ValueOutput output) {
+		super.addAdditionalSaveData(output);
+		output.putBoolean("has_moss", this.hasMoss());
+		output.putInt("time_without_moss", this.timeWithoutMoss);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag tag) {
-		super.readAdditionalSaveData(tag);
-		this.setMoss(tag.getBoolean("HasMoss"));
-		tag.putInt("TimeWithoutMoss", this.timeWithoutMoss);
+	protected void readAdditionalSaveData(ValueInput input) {
+		super.readAdditionalSaveData(input);
+		this.setMoss(input.getBooleanOr("has_moss", true));
+		this.timeWithoutMoss = input.getIntOr("time_without_moss", 0);
 	}
 
 	@Override
@@ -142,10 +139,11 @@ public class Mog extends Animal implements IShearable {
 		builder.define(HAS_MOSS, true);
 	}
 
+	@Nullable
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData data) {
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason reason, @Nullable SpawnGroupData data) {
 		this.setMoss(true);
-		return super.finalizeSpawn(level, difficulty, spawnType, data);
+		return super.finalizeSpawn(level, difficulty, reason, data);
 	}
 
 	@Override
@@ -153,15 +151,13 @@ public class Mog extends Animal implements IShearable {
 		return this.hasMoss() && this.isAlive() && !this.isBaby();
 	}
 
+	//TODO unhardcode
 	@Override
 	public List<ItemStack> onSheared(@Nullable Player player, ItemStack item, Level level, BlockPos pos) {
 		level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
 		if (!level.isClientSide()) {
 			this.setMoss(false);
 			int mossAmount = 1 + this.getRandom().nextInt(2);
-			/*if (fortune > 0) {
-				mossAmount += this.getRandom().nextInt(fortune);
-			}*/
 
 			List<ItemStack> items = new ArrayList<>();
 			for (int i = 0; i < mossAmount; i++) {

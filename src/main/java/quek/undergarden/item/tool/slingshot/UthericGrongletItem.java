@@ -18,7 +18,7 @@ public class UthericGrongletItem extends GrongletItem {
 
 	@Override
 	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
-		return new UthericGronglet(level, pos.x(), pos.y(), pos.z());
+		return new UthericGronglet(level, pos.x(), pos.y(), pos.z(), stack);
 	}
 
 	@Override

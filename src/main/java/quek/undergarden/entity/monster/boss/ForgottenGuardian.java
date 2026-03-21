@@ -1,8 +1,10 @@
 package quek.undergarden.entity.monster.boss;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -22,6 +24,7 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileDeflection;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathFinder;
@@ -29,6 +32,7 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.PathfindingContext;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.fluids.FluidType;
 import quek.undergarden.registry.UGSoundEvents;
 
@@ -36,6 +40,10 @@ import java.util.Set;
 
 public class ForgottenGuardian extends Monster {
 
+	private static final ProjectileDeflection PROJECTILE_DEFLECTION = (projectile, entity, random) -> {
+		entity.level().playSound(null, entity, UGSoundEvents.FORGOTTEN_GUARDIAN_DEFLECT.get(), entity.getSoundSource(), 1.0F, 1.0F);
+		ProjectileDeflection.REVERSE.deflect(projectile, entity, random);
+	};
 	private int attackTimer;
 
 	public ForgottenGuardian(EntityType<? extends Monster> type, Level level) {
@@ -90,13 +98,14 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	public boolean canChangeDimensions(Level p_352904_, Level p_352909_) {
+	public boolean canUsePortal(boolean ignorePassenger) {
 		return false;
 	}
 
 	@Override
 	public void checkDespawn() {
-		if (this.level().getDifficulty() == Difficulty.PEACEFUL && this.shouldDespawnInPeaceful()) {
+		if (EventHooks.checkMobDespawn(this)) return;
+		if (this.level().getDifficulty() == Difficulty.PEACEFUL && !this.getType().isAllowedInPeaceful()) {
 			this.discard();
 		} else {
 			this.noActionTime = 0;
@@ -110,8 +119,8 @@ public class ForgottenGuardian extends Monster {
 		if (this.attackTimer > 0) {
 			--this.attackTimer;
 		}
-		if (this.isAggressive()) {
-			if (this.horizontalCollision && net.neoforged.neoforge.event.EventHooks.canEntityGrief(this.level(), this)) {
+		if (this.isAggressive() && this.level() instanceof ServerLevel serverLevel) {
+			if (this.horizontalCollision && EventHooks.canEntityGrief(serverLevel, this)) {
 				AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
@@ -125,29 +134,25 @@ public class ForgottenGuardian extends Monster {
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entity) {
+	public boolean doHurtTarget(ServerLevel level, Entity entity) {
 		this.attackTimer = 10;
 		this.level().broadcastEntityEvent(this, (byte) 4);
 		this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
-		return super.doHurtTarget(entity);
+		return super.doHurtTarget(level, entity);
 	}
 
 	@Override
-	protected void blockedByShield(LivingEntity entity) {
-		double x = entity.getX() - this.getX();
-		double z = entity.getZ() - this.getZ();
+	protected void blockedByItem(LivingEntity defender) {
+		double x = defender.getX() - this.getX();
+		double z = defender.getZ() - this.getZ();
 		double modifier = Math.max(x * x + z * z, 0.001D);
-		entity.push((x / modifier) * 2, 0.2F, (z / modifier) * 2);
-		entity.hurtMarked = true;
+		defender.push((x / modifier) * 2, 0.2F, (z / modifier) * 2);
+		defender.hurtMarked = true;
 	}
 
 	@Override
-	public boolean hurt(DamageSource source, float amount) {
-		Entity entity = source.getDirectEntity();
-		if (entity instanceof Projectile) {
-			this.playSound(UGSoundEvents.FORGOTTEN_GUARDIAN_DEFLECT.get(), 1.0F, 1.0F);
-			return false;
-		} else return super.hurt(source, amount);
+	public ProjectileDeflection deflection(Projectile projectile) {
+		return this.is(EntityTypeTags.DEFLECTS_PROJECTILES) ? PROJECTILE_DEFLECTION : ProjectileDeflection.NONE;
 	}
 
 	@Override
@@ -193,6 +198,7 @@ public class ForgottenGuardian extends Monster {
 			super(entity, level);
 		}
 
+		@Override
 		protected PathFinder createPathFinder(int range) {
 			this.nodeEvaluator = new ForgottenGuardian.Evaluator();
 			return new PathFinder(this.nodeEvaluator, range);

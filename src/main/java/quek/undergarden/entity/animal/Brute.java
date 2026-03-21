@@ -5,10 +5,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -24,13 +21,11 @@ import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
-import java.util.UUID;
-
 public class Brute extends Animal implements NeutralMob {
 
-	private static final UniformInt ANGER_TIME_RANGE = TimeUtil.rangeOfSeconds(20, 39);
-	private int angerTime;
-	private UUID targetUuid;
+	private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
+	private long persistentAngerEndTime;
+	private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
 
 	public Brute(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
@@ -74,40 +69,40 @@ public class Brute extends Animal implements NeutralMob {
 	}
 
 	@Override
-	public int getRemainingPersistentAngerTime() {
-		return this.angerTime;
+	public long getPersistentAngerEndTime() {
+		return this.persistentAngerEndTime;
 	}
 
 	@Override
-	public void setRemainingPersistentAngerTime(int time) {
-		this.angerTime = time;
-	}
-
-	@Nullable
-	@Override
-	public UUID getPersistentAngerTarget() {
-		return this.targetUuid;
+	public void setPersistentAngerEndTime(long time) {
+		this.persistentAngerEndTime = time;
 	}
 
 	@Override
-	public void setPersistentAngerTarget(@Nullable UUID target) {
-		this.targetUuid = target;
+	public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
+		return this.persistentAngerTarget;
+	}
+
+	@Override
+	public void setPersistentAngerTarget(@Nullable EntityReference<LivingEntity> target) {
+		this.persistentAngerTarget = target;
 	}
 
 	@Override
 	public void startPersistentAngerTimer() {
-		this.setRemainingPersistentAngerTime(ANGER_TIME_RANGE.sample(this.random));
+		this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
 	}
 
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob entity) {
-		return UGEntityTypes.BRUTE.get().create(level);
+		return UGEntityTypes.BRUTE.get().create(level, EntitySpawnReason.BREEDING);
 	}
 
+	//TODO unhardcode
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return Ingredient.of(UGItems.DROOPFRUIT.get()).test(stack);
+		return stack.is(UGItems.DROOPFRUIT);
 	}
 
 	@Override

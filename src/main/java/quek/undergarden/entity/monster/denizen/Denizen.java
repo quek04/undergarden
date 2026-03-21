@@ -2,7 +2,6 @@ package quek.undergarden.entity.monster.denizen;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -29,6 +28,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
@@ -39,7 +40,7 @@ import quek.undergarden.registry.UGPointOfInterests;
 import java.util.Optional;
 import java.util.function.IntFunction;
 
-public class Denizen extends Monster implements VariantHolder<Denizen.Type>, RangedAttackMob {
+public class Denizen extends Monster implements RangedAttackMob {
 	private static final EntityDataAccessor<Integer> TYPE_ID = SynchedEntityData.defineId(Denizen.class, EntityDataSerializers.INT);
 
 	private static final EntityDimensions SHORT = EntityDimensions.scalable(0.85F, 1.9F).withEyeHeight(1.75F);
@@ -97,24 +98,16 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 		};
 	}
 
-	/*@Override
-	public EntityDimensions getDimensions(Pose pose) {
-		return switch (this.getVariant()) {
-			case SHORT -> this.hasPose(Pose.SITTING) ? SHORT_SITTING : SHORT;
-			case TALL -> this.hasPose(Pose.SITTING) ? TALL_SITTING : TALL;
-		};
-	}*/
-
 	@Override
-	public void addAdditionalSaveData(CompoundTag tag) {
-		super.addAdditionalSaveData(tag);
-		tag.putString("Type", this.getVariant().getSerializedName());
+	protected void addAdditionalSaveData(ValueOutput output) {
+		super.addAdditionalSaveData(output);
+		output.putString("type", this.getVariant().getSerializedName());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag tag) {
-		super.readAdditionalSaveData(tag);
-		this.setVariant(Type.byName(tag.getString("Type")));
+	protected void readAdditionalSaveData(ValueInput input) {
+		super.readAdditionalSaveData(input);
+		this.setVariant(Type.byName(input.getStringOr("type", Type.SHORT.getSerializedName())));
 	}
 
 	@Override
@@ -131,12 +124,10 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 		super.onSyncedDataUpdated(accessor);
 	}
 
-	@Override
 	public void setVariant(Type variant) {
 		this.getEntityData().set(TYPE_ID, variant.getId());
 	}
 
-	@Override
 	public Type getVariant() {
 		return Type.byId(this.entityData.get(TYPE_ID));
 	}
@@ -163,8 +154,8 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 	}
 
 	@Override
-	public boolean hurt(DamageSource source, float amount) {
-		boolean flag = super.hurt(source, amount);
+	public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
+		boolean flag = super.hurtServer(level, source, amount);
 		if (flag && this.hasPose(Pose.SITTING)) {
 			this.setPose(Pose.STANDING);
 		}
@@ -174,8 +165,8 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 	@Override
 	public void onRemovedFromLevel() {
 		super.onRemovedFromLevel();
-		if (this.level() instanceof ServerLevel) {
-			this.resetCampfireLogic();
+		if (this.level() instanceof ServerLevel level) {
+			this.resetCampfireLogic(level);
 		}
 	}
 
@@ -187,11 +178,11 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 		this.satAtCampfire = pos;
 	}
 
-	public void resetCampfireLogic() {
+	public void resetCampfireLogic(ServerLevel level) {
 		if (this.satAtCampfire != null) {
-			Optional<Holder<PoiType>> maybeCampfire = ((ServerLevel)this.level()).getPoiManager().getType(this.satAtCampfire);
+			Optional<Holder<PoiType>> maybeCampfire = level.getPoiManager().getType(this.satAtCampfire);
 			if (maybeCampfire.isPresent() && maybeCampfire.get().is(UGPointOfInterests.DENIZEN_RESTING_BLOCKS.getKey())) {
-				((ServerLevel)this.level()).getPoiManager().release(this.satAtCampfire);
+				level.getPoiManager().release(this.satAtCampfire);
 				//Undergarden.LOGGER.debug("Denizen released campfire at {} (spots free: {})", this.satAtCampfire, ((ServerLevel) this.level()).getPoiManager().getFreeTickets(this.satAtCampfire));
 			}
 		}
@@ -201,7 +192,7 @@ public class Denizen extends Monster implements VariantHolder<Denizen.Type>, Ran
 
 	@Nullable
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData data) {
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason reason, @Nullable SpawnGroupData data) {
 		data = super.finalizeSpawn(level, difficulty, reason, data);
 		if (level.getRandom().nextBoolean()) {
 			this.setVariant(Type.TALL);

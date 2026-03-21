@@ -9,7 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
+import net.minecraft.world.entity.projectile.hurtingprojectile.AbstractHurtingProjectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -39,10 +39,10 @@ public class RotbelcherProjectile extends AbstractHurtingProjectile {
 			Entity shooter = this.getOwner();
 			LivingEntity livingShooter = shooter instanceof LivingEntity ? (LivingEntity) shooter : null;
 			DamageSource damageSource = this.damageSources().spit(this, livingShooter);
-			if (victim.hurt(damageSource, 5.0F)) {
+			if (victim.hurtServer(level, damageSource, 5.0F)) {
 				EnchantmentHelper.doPostAttackEffects(level, victim, damageSource);
 				if (victim instanceof LivingEntity livingEntity) {
-					if (!this.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
+					if (!this.level().isClientSide() && !livingEntity.is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
 						double data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
 						double b = 0.2D;
 						int a = 0;
@@ -72,7 +72,7 @@ public class RotbelcherProjectile extends AbstractHurtingProjectile {
 	@Override
 	protected void onHit(HitResult result) {
 		super.onHit(result);
-		if (!this.level().isClientSide) {
+		if (!this.level().isClientSide()) {
 			this.discard();
 		}
 	}
@@ -85,16 +85,11 @@ public class RotbelcherProjectile extends AbstractHurtingProjectile {
 	@Nullable
 	@Override
 	protected ParticleOptions getTrailParticle() {
-		return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(UGItems.UTHERIUM_CRYSTAL.get()));
-	}
-
-	@Override
-	public boolean canCollideWith(Entity entity) {
-		return !(entity.getType().is(UGTags.Entities.ROTSPAWN)) && super.canCollideWith(entity);
+		return new ItemParticleOption(ParticleTypes.ITEM, UGItems.UTHERIUM_CRYSTAL.get());
 	}
 
 	@Override
 	protected boolean canHitEntity(Entity target) {
-		return !(target.getType().is(UGTags.Entities.ROTSPAWN)) && super.canHitEntity(target);
+		return !(target.is(UGTags.Entities.ROTSPAWN)) && super.canHitEntity(target);
 	}
 }

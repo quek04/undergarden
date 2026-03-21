@@ -5,9 +5,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -19,7 +19,7 @@ import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.animal.fish.WaterAnimal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -52,7 +52,7 @@ public class Gwib extends WaterAnimal implements Enemy {
 				.add(Attributes.ATTACK_DAMAGE, 4.0D);
 	}
 
-	public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+	public static boolean canGwibSpawn(EntityType<? extends WaterAnimal> type, LevelAccessor level, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
 		return !(level.getDifficulty() == Difficulty.PEACEFUL) && random.nextInt(10) == 0 && level.getBlockState(pos).is(Blocks.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
 	}
 
@@ -86,7 +86,7 @@ public class Gwib extends WaterAnimal implements Enemy {
 		if (!this.isInWater() && this.onGround() && this.verticalCollision) {
 			this.setDeltaMovement(this.getDeltaMovement().add((this.getRandom().nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
 			this.setOnGround(false);
-			this.hasImpulse = true;
+			this.needsSync = true;
 			this.playSound(UGSoundEvents.GWIB_FLOP.get(), 1.0F, this.getVoicePitch());
 		}
 
@@ -105,11 +105,6 @@ public class Gwib extends WaterAnimal implements Enemy {
 		} else {
 			super.travel(travelVector);
 		}
-	}
-
-	@Override
-	protected boolean shouldDespawnInPeaceful() {
-		return true;
 	}
 
 	private boolean targetIsInWater(@Nullable LivingEntity target) {

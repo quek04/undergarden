@@ -1,4 +1,4 @@
 @NullMarked
-package quek.undergarden.entity.monster.denizen;
+package quek.undergarden.datamap;
 
 import org.jspecify.annotations.NullMarked;

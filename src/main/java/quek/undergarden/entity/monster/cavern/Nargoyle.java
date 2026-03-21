@@ -1,5 +1,6 @@
 package quek.undergarden.entity.monster.cavern;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.EnumSet;
@@ -55,13 +57,17 @@ public class Nargoyle extends CavernMonster {
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entity) {
-		this.playSound(UGSoundEvents.NARGOYLE_ATTACK.get(), 1.0F, 1.0F);
-		return super.doHurtTarget(entity);
+	public boolean doHurtTarget(ServerLevel level, Entity entity) {
+		boolean ret = super.doHurtTarget(level, entity);
+		if (ret) {
+			this.playSound(UGSoundEvents.NARGOYLE_ATTACK.get(), 1.0F, 1.0F);
+		}
+		return ret;
 	}
 
 	public static class LeapAtTargetGoal extends Goal {
 		private final Mob leaper;
+		@Nullable
 		private LivingEntity leapTarget;
 		private final float leapMotionY;
 

@@ -1,14 +1,12 @@
 package quek.undergarden.entity.animal.dweller;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.Holder;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,10 +18,12 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -37,11 +37,10 @@ import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.List;
 
-public class Dweller extends Animal implements ItemSteerable, Saddleable, PlayerRideableJumping {
+public class Dweller extends Animal implements ItemSteerable, PlayerRideableJumping {
 
-	private static final EntityDataAccessor<Boolean> SADDLE = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> BOOST_TIME = SynchedEntityData.defineId(Dweller.class, EntityDataSerializers.INT);
-	private final DwellerItemBasedSteering steering = new DwellerItemBasedSteering(this.getEntityData(), BOOST_TIME, SADDLE);
+	private final DwellerItemBasedSteering steering = new DwellerItemBasedSteering(this.getEntityData(), BOOST_TIME);
 	private float playerJumpPendingScale;
 	private boolean isJumping;
 	private int wildJumpCooldown;
@@ -99,7 +98,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return UGEntityTypes.DWELLER.get().create(this.level());
+		return UGEntityTypes.DWELLER.get().create(this.level(), EntitySpawnReason.BREEDING);
 	}
 
 	@Override
@@ -108,23 +107,20 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag tag) {
-		super.addAdditionalSaveData(tag);
-		this.steering.addAdditionalSaveData(tag);
-		tag.putInt("JumpCooldown", this.getWildJumpCooldown());
+	protected void addAdditionalSaveData(ValueOutput output) {
+		super.addAdditionalSaveData(output);
+		output.putInt("jump_cooldown", this.getWildJumpCooldown());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag tag) {
-		super.readAdditionalSaveData(tag);
-		this.steering.readAdditionalSaveData(tag);
-		this.setWildJumpCooldown(tag.getInt("JumpCooldown"));
+	protected void readAdditionalSaveData(ValueInput input) {
+		super.readAdditionalSaveData(input);
+		this.setWildJumpCooldown(input.getIntOr("jump_cooldown", 300 + this.getRandom().nextInt(500)));
 	}
 
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
-		builder.define(SADDLE, false);
 		builder.define(BOOST_TIME, 0);
 	}
 
@@ -152,40 +148,39 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 				player.startRiding(this);
 			}
 
-			return InteractionResult.sidedSuccess(this.level().isClientSide());
+			return InteractionResult.SUCCESS;
 		} else {
-			if (this.isSaddled() && player.isSecondaryUseActive() && player.getItemInHand(hand).isEmpty()) {
-				this.spawnAtLocation(Items.SADDLE);
+			if (this.isSaddled() && player.isSecondaryUseActive() && player.getItemInHand(hand).isEmpty() && this.level() instanceof ServerLevel sl) {
+				this.spawnAtLocation(sl, this.getItemBySlot(EquipmentSlot.SADDLE));
+				this.setItemSlot(EquipmentSlot.SADDLE, ItemStack.EMPTY);
 				this.playSound(UGSoundEvents.DWELLER_SADDLE_REMOVE.get());
-				this.steering.setSaddle(false);
-				return InteractionResult.sidedSuccess(this.level().isClientSide());
+				return InteractionResult.SUCCESS;
 			}
-			InteractionResult result = super.mobInteract(player, hand);
-			if (!result.consumesAction()) {
-				ItemStack itemstack = player.getItemInHand(hand);
-				return itemstack.is(Items.SADDLE) ? itemstack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
+			InteractionResult interactionResult = super.mobInteract(player, hand);
+			if (!interactionResult.consumesAction()) {
+				ItemStack itemStack = player.getItemInHand(hand);
+				return this.isEquippableInSlot(itemStack, EquipmentSlot.SADDLE)
+					? itemStack.interactLivingEntity(player, this, hand)
+					: InteractionResult.PASS;
 			} else {
-				return result;
+				return interactionResult;
 			}
 		}
 	}
 
 	@Override
-	public boolean isSaddleable() {
-		return this.isAlive() && !this.isBaby();
+	public boolean canUseSlot(EquipmentSlot slot) {
+		return slot != EquipmentSlot.SADDLE ? super.canUseSlot(slot) : this.isAlive() && !this.isBaby();
 	}
 
 	@Override
-	public void equipSaddle(ItemStack stack, @Nullable SoundSource source) {
-		this.steering.setSaddle(true);
-		if (source != null) {
-			this.level().playSound(null, this, SoundEvents.PIG_SADDLE, source, 0.5F, 1.0F);
-		}
+	protected boolean canDispenserEquipIntoSlot(EquipmentSlot slot) {
+		return slot == EquipmentSlot.SADDLE || super.canDispenserEquipIntoSlot(slot);
 	}
 
 	@Override
-	public boolean isSaddled() {
-		return this.steering.hasSaddle();
+	protected Holder<SoundEvent> getEquipSound(EquipmentSlot slot, ItemStack stack, Equippable equippable) {
+		return slot == EquipmentSlot.SADDLE ? UGSoundEvents.DWELLER_SADDLE : super.getEquipSound(slot, stack, equippable);
 	}
 
 	@Override
@@ -193,33 +188,24 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		return this.steering.boost(this.getRandom());
 	}
 
-
 	@Override
 	protected float getRiddenSpeed(Player player) {
 		return (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED) * this.steering.boostFactor();
 	}
 
-	@Nullable
 	@Override
-	public LivingEntity getControllingPassenger() {
-		Entity entity = this.getFirstPassenger();
-		return entity != null && this.canBeControlledBy(entity) && entity instanceof LivingEntity living ? living : null;
+	public @Nullable LivingEntity getControllingPassenger() {
+		return this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(UGItems.UNDERBEAN_STICK.get())
+			? player
+			: super.getControllingPassenger();
 	}
 
 	@Override
-	protected int calculateFallDamage(float distance, float multiplier) {
-		return super.calculateFallDamage(distance, multiplier) - 10;
+	protected int calculateFallDamage(double fallDistance, float damageModifier) {
+		return super.calculateFallDamage(fallDistance, damageModifier) - 10;
 	}
 
-	private boolean canBeControlledBy(Entity entity) {
-		if (this.isSaddled() && entity instanceof Player player) {
-			return player.getMainHandItem().is(UGItems.UNDERBEAN_STICK.get()) || player.getOffhandItem().is(UGItems.UNDERBEAN_STICK.get());
-		} else {
-			return false;
-		}
-	}
-
-	//[VanillaCopy] of Entity.collide, but change the collision box to encapsulate the player if being ridden to prevent them from sufficating in walls.
+	//[VanillaCopy] of Entity.collide, but change the collision box to encapsulate the player if being ridden to prevent them from suffocating in walls.
 	//honestly, vanilla should do this too
 	@Override
 	public Vec3 collide(Vec3 vec) {
@@ -247,14 +233,6 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		}
 
 		return vec3;
-	}
-
-	@Override
-	protected void dropEquipment() {
-		super.dropEquipment();
-		if (this.isSaddled()) {
-			this.spawnAtLocation(Items.SADDLE);
-		}
 	}
 
 	@Override
@@ -290,7 +268,7 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 		Vec2 vec2 = this.getRiddenRotation(player);
 		this.setRot(vec2.y, vec2.x);
 		this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
-		if (this.isControlledByLocalInstance()) {
+		if (this.isLocalInstanceAuthoritative()) {
 			if (this.onGround()) {
 				this.setIsJumping(false);
 				if (this.playerJumpPendingScale > 0.0F && !this.isJumping()) {
@@ -306,12 +284,11 @@ public class Dweller extends Animal implements ItemSteerable, Saddleable, Player
 	}
 
 	public void jump(boolean moveHorizontally) {
-		double d0 = this.getBlockJumpFactor();
-		double d1 = d0 + (double) this.getJumpBoostPower();
+		double impulse = this.getJumpPower(1.0F);
 		Vec3 vec3 = this.getDeltaMovement();
-		this.setDeltaMovement(vec3.x(), d1, vec3.z());
+		this.setDeltaMovement(vec3.x(), impulse, vec3.z());
 		this.setIsJumping(true);
-		this.hasImpulse = true;
+		this.needsSync = true;
 		CommonHooks.onLivingJump(this);
 		if (moveHorizontally) {
 			float f = Mth.sin(this.getYRot() * Mth.DEG_TO_RAD);

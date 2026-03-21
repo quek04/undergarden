@@ -1,19 +1,21 @@
 package quek.undergarden.entity.monster.rotspawn;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
@@ -27,7 +29,6 @@ import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.registry.UGDamageSources;
 
 import java.util.Optional;
-import java.util.function.Predicate;
 
 public class RotspawnMonster extends Monster {
 
@@ -46,7 +47,7 @@ public class RotspawnMonster extends Monster {
 		this.targetSelector.addGoal(0, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(1, new RotspawnTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Stoneborn.class, true));
-		this.targetSelector.addGoal(3, new RotspawnTargetGoal<>(this, Animal.class, true, (target) -> !(target instanceof Mog)));
+		this.targetSelector.addGoal(3, new RotspawnTargetGoal<>(this, Animal.class, true, (target, level) -> !(target instanceof Mog)));
 		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Denizen.class, true));
 	}
 
@@ -64,8 +65,8 @@ public class RotspawnMonster extends Monster {
 	}
 
 	@Override
-	public boolean hurt(DamageSource source, float amount) {
-		boolean flag = super.hurt(source, amount);
+	public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
+		boolean flag = super.hurtServer(level, source, amount);
 		if (source.is(UGDamageSources.SHARD_TORCH) && flag) {
 			if (source.getSourcePosition() == null)
 				throw new IllegalArgumentException("Please pass a Vec3 into the DamageSource when calling SHARD_TORCH, otherwise Rotspawn will not flee them.\nYou can use UGDamageSources.getShardTorchDamage to do this easily.");
@@ -88,7 +89,7 @@ public class RotspawnMonster extends Monster {
 		}
 	}
 
-	public static boolean canRotspawnSpawn(EntityType<? extends Monster> type, ServerLevelAccessor level, MobSpawnType reason, BlockPos pos, RandomSource random) {
+	public static boolean canRotspawnSpawn(EntityType<? extends Monster> type, ServerLevelAccessor level, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
 		return random.nextInt(10) == 0 && checkMonsterSpawnRules(type, level, reason, pos, random);
 	}
 
@@ -98,7 +99,7 @@ public class RotspawnMonster extends Monster {
 			super(mob, targetClass, mustSee);
 		}
 
-		public RotspawnTargetGoal(Mob mob, Class<T> targetClass, boolean mustSee, Predicate<LivingEntity> predicate) {
+		public RotspawnTargetGoal(Mob mob, Class<T> targetClass, boolean mustSee, TargetingConditions.Selector predicate) {
 			super(mob, targetClass, mustSee, predicate);
 		}
 

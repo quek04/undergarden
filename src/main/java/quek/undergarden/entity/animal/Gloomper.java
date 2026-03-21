@@ -1,16 +1,15 @@
 package quek.undergarden.entity.animal;
 
-import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AreaEffectCloud;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -79,12 +78,13 @@ public class Gloomper extends Animal {
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return UGEntityTypes.GLOOMPER.get().create(this.level());
+		return UGEntityTypes.GLOOMPER.get().create(level, EntitySpawnReason.BREEDING);
 	}
 
+	//TODO unhardcode
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return Ingredient.of(UGBlocks.GLOOMGOURD.get()).test(stack);
+		return stack.is(UGBlocks.GLOOMGOURD.asItem());
 	}
 
 	@Override
@@ -146,7 +146,7 @@ public class Gloomper extends Animal {
 	}
 
 	@Override
-	public void customServerAiStep() {
+	public void customServerAiStep(ServerLevel level) {
 		if (this.currentMoveTypeDuration > 0) {
 			--this.currentMoveTypeDuration;
 		}
@@ -236,22 +236,20 @@ public class Gloomper extends Animal {
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		if (stack.is(UGItems.GLOOMPER_ANTHEM_DISC.get()) && this.isAlive()) {
-			if (!this.level().isClientSide()) {
-				this.spawnAtLocation(UGItems.GLOOMPER_SECRET_DISC.get());
-				this.kill();
+			if (this.level() instanceof ServerLevel serverLevel) {
+				this.spawnAtLocation(serverLevel, UGItems.GLOOMPER_SECRET_DISC.get());
+				this.kill(serverLevel);
 			}
-			if (!player.getAbilities().instabuild) {
-				stack.shrink(1);
-			}
-			return InteractionResult.sidedSuccess(this.level().isClientSide());
+			stack.consume(1, player);
+			return InteractionResult.SUCCESS;
 		} else return super.mobInteract(player, hand);
 	}
 
 	@Override
-	public boolean hurt(DamageSource source, float amount) {
+	public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
 		AreaEffectCloud cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
 
-		cloud.setParticle(UGParticleTypes.GLOOMPER_FART.get());
+		cloud.setCustomParticle(UGParticleTypes.GLOOMPER_FART.get());
 		cloud.setRadius(3.0F);
 		cloud.setRadiusOnUse(-0.5F);
 		cloud.setWaitTime(10);
@@ -263,13 +261,12 @@ public class Gloomper extends Animal {
 			this.level().addFreshEntity(cloud);
 		}
 
-		return super.hurt(source, amount);
+		return super.hurtServer(level, source, amount);
 	}
 
 	@Override
 	public boolean canBeAffected(MobEffectInstance effectInstance) {
-		Holder<MobEffect> effect = effectInstance.getEffect();
-		if (effect == UGEffects.VIRULENCE) {
+		if (effectInstance.getEffect().is(UGEffects.VIRULENCE)) {
 			return false;
 		} else return super.canBeAffected(effectInstance);
 	}

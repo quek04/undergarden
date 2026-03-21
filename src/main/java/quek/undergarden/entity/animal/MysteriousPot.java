@@ -1,9 +1,9 @@
 package quek.undergarden.entity.animal;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
@@ -16,6 +16,9 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 
@@ -44,7 +47,7 @@ public class MysteriousPot extends PathfinderMob {
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, Player.class, entity -> true, 16.0F, 1.25F, 1.75F, EntitySelector.NO_SPECTATORS::test));
+		this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, Player.class, entity -> true, 16.0F, 1.25F, 1.75F, EntitySelector.NO_SPECTATORS));
 		this.goalSelector.addGoal(1, new HideAgainGoal(this));
 	}
 
@@ -63,7 +66,7 @@ public class MysteriousPot extends PathfinderMob {
 	}
 
 	@Override
-	public boolean canBeCollidedWith() {
+	public boolean canBeCollidedWith(@Nullable Entity other) {
 		return !this.isActive();
 	}
 
@@ -98,15 +101,15 @@ public class MysteriousPot extends PathfinderMob {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
-		super.addAdditionalSaveData(compound);
-		compound.putBoolean("active", this.isActive());
+	protected void addAdditionalSaveData(ValueOutput output) {
+		super.addAdditionalSaveData(output);
+		output.putBoolean("active", this.isActive());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
-		super.readAdditionalSaveData(compound);
-		this.setActive(compound.getBoolean("active"));
+	protected void readAdditionalSaveData(ValueInput input) {
+		super.readAdditionalSaveData(input);
+		this.setActive(input.getBooleanOr("active", false));
 	}
 
 	public boolean isActive() {
@@ -123,7 +126,7 @@ public class MysteriousPot extends PathfinderMob {
 	}
 
 	@Override
-	public boolean hurt(DamageSource source, float amount) {
+	public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
 		if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
 			if (!this.isActive() && amount > 0) {
 				float yRot = this.getNearestViewDirection().toYRot();
@@ -143,7 +146,7 @@ public class MysteriousPot extends PathfinderMob {
 			}
 		}
 		if (source.getWeaponItem() != null && source.getWeaponItem().is(ItemTags.BREAKS_DECORATED_POTS)) amount *= 2;
-		return super.hurt(source, amount);
+		return super.hurtServer(level, source, amount);
 	}
 
 	static class HideAgainGoal extends Goal {
@@ -157,7 +160,7 @@ public class MysteriousPot extends PathfinderMob {
 		@Override
 		public boolean canUse() {
 			if (this.pot.hideCooldown <= 0 && this.pot.isActive() && this.pot.getNavigation().isDone()) {
-				List<Player> nearPlayers = this.pot.level().getNearbyPlayers(TargetingConditions.forCombat(), this.pot, this.pot.getBoundingBox().inflate(16.0D, 16.0D, 16.0D));
+				List<Player> nearPlayers = getServerLevel(this.pot).getNearbyPlayers(TargetingConditions.forCombat(), this.pot, this.pot.getBoundingBox().inflate(16.0D, 16.0D, 16.0D));
 				if (nearPlayers.isEmpty()) return true;
 				for (Player player : nearPlayers) {
 					if (this.pot.hasLineOfSight(player)) {
@@ -176,7 +179,7 @@ public class MysteriousPot extends PathfinderMob {
 
 		@Override
 		public void start() {
-			this.pot.moveTo(this.pot.blockPosition(), 0.0F, 0.0F);
+			this.pot.snapTo(this.pot.blockPosition(), 0.0F, 0.0F);
 			this.pot.setActive(false);
 		}
 	}

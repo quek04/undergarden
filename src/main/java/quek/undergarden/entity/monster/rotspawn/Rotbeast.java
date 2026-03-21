@@ -1,13 +1,16 @@
 package quek.undergarden.entity.monster.rotspawn;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import quek.undergarden.registry.UGSoundEvents;
@@ -59,18 +62,22 @@ public class Rotbeast extends RotspawnMonster {
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entity) {
+	public boolean doHurtTarget(ServerLevel level, Entity entity) {
 		this.attackTimer = 10;
 		this.level().broadcastEntityEvent(this, (byte) 4);
-		float f = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-		float f1 = (int) f > 0 ? f / 2.0F + (float) this.getRandom().nextInt((int) f) : f;
-		boolean flag = entity.hurt(this.damageSources().mobAttack(this), f1);
-		if (flag) {
-			entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, 0.4F, 0.0D));
+		float attackDamage = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+		float damage = (int) attackDamage > 0 ? attackDamage / 2.0F + (float) this.getRandom().nextInt((int) attackDamage) : attackDamage;
+		DamageSource damageSource = this.damageSources().mobAttack(this);
+		boolean hurt = entity.hurtServer(level, damageSource, damage);
+		if (hurt) {
+			double knockbackResistance = entity instanceof LivingEntity livingEntity ? livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE) : 0.0;
+			double scale = Math.max(0.0D, 1.0D - knockbackResistance);
+			entity.setDeltaMovement(entity.getDeltaMovement().add(0.0, 0.4F * scale, 0.0));
+			EnchantmentHelper.doPostAttackEffects(level, entity, damageSource);
 		}
 
 		this.playSound(UGSoundEvents.ROTBEAST_ATTACK.get(), 1.0F, 1.0F);
-		return super.doHurtTarget(entity);
+		return hurt;
 	}
 
 	public void handleEntityEvent(byte id) {

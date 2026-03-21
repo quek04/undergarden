@@ -1,6 +1,7 @@
 package quek.undergarden.entity.monster.cavern;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
@@ -64,8 +65,8 @@ public class Muncher extends CavernMonster {
 	public void aiStep() {
 		super.aiStep();
 
-		if (this.isAggressive()) {
-			if (this.horizontalCollision || this.verticalCollision && EventHooks.canEntityGrief(this.level(), this)) {
+		if (this.isAggressive() && this.level() instanceof ServerLevel serverLevel) {
+			if (this.horizontalCollision || this.verticalCollision && EventHooks.canEntityGrief(serverLevel, this)) {
 				AABB axisalignedbb = this.getBoundingBox();
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {

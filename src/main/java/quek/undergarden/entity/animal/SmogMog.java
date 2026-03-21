@@ -6,8 +6,8 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
@@ -30,7 +30,7 @@ public class SmogMog extends Mog {
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
 	}
 
-	public static boolean checkSmogMogSpawnRules(EntityType<? extends Animal> entity, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+	public static boolean checkSmogMogSpawnRules(EntityType<? extends Animal> entity, LevelAccessor level, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
 		return level.getBlockState(pos.below()).is(UGTags.Blocks.SMOG_MOG_SPAWNABLE_ON);
 	}
 
@@ -57,7 +57,7 @@ public class SmogMog extends Mog {
 	@Nullable
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-		return UGEntityTypes.SMOG_MOG.get().create(level);
+		return UGEntityTypes.SMOG_MOG.get().create(level, EntitySpawnReason.BREEDING);
 	}
 
 	@Override

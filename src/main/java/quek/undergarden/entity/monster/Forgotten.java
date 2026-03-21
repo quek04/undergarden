@@ -1,16 +1,13 @@
 package quek.undergarden.entity.monster;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -31,13 +28,13 @@ import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 import quek.undergarden.registry.UGStructures;
 
-import java.util.Arrays;
-
 public class Forgotten extends Monster {
 
 	public Forgotten(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
-		Arrays.fill(this.armorDropChances, 0.03F);
+		for (EquipmentSlot slot : EquipmentSlotGroup.ARMOR) {
+			this.setDropChance(slot, 0.03F);
+		}
 	}
 
 	@Override
@@ -82,9 +79,9 @@ public class Forgotten extends Monster {
 
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
-		ServerLevel level = this.getServer().getLevel(this.level().dimension());
-		Structure structure = level.structureManager().registryAccess().registryOrThrow(Registries.STRUCTURE).get(UGStructures.DEPLETED_MINE);
-		if (structure != null && level.getLevel().structureManager().getStructureAt(this.getOnPos(), structure).isValid() && this.getY() <= 0) {
+		ServerLevel level = (ServerLevel) this.level();
+		Holder<Structure> structure = level.structureManager().registryAccess().holderOrThrow(UGStructures.DEPLETED_MINE);
+		if (structure.isBound() && level.getLevel().structureManager().getStructureAt(this.getOnPos(), structure.value()).isValid() && this.getY() <= 0) {
 			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.FORGOTTEN_PICKAXE.get()));
 			this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(UGItems.CLOGGRUM_CHESTPLATE.get()));
 		} else if (random.nextInt(50) == 0) {
@@ -115,8 +112,8 @@ public class Forgotten extends Monster {
 
 	@Nullable
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance difficulty, MobSpawnType type, @Nullable SpawnGroupData data) {
-		data = super.finalizeSpawn(accessor, difficulty, type, data);
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance difficulty, EntitySpawnReason reason, @Nullable SpawnGroupData data) {
+		data = super.finalizeSpawn(accessor, difficulty, reason, data);
 		this.populateDefaultEquipmentSlots(accessor.getRandom(), difficulty);
 		this.populateDefaultEquipmentEnchantments(accessor, accessor.getRandom(), difficulty);
 		return data;

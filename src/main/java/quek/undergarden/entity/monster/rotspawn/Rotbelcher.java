@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
@@ -28,8 +29,8 @@ import quek.undergarden.registry.UGSoundEvents;
 public class Rotbelcher extends RotspawnMonster {
 
 	private static final EntityDataAccessor<Boolean> IS_CHARGING = SynchedEntityData.defineId(Rotbelcher.class, EntityDataSerializers.BOOLEAN);
-	public AnimationState shootAnimation = new AnimationState();
-	public AnimationState attackAnimation = new AnimationState();
+	public final AnimationState shootAnimation = new AnimationState();
+	public final AnimationState attackAnimation = new AnimationState();
 
 	public Rotbelcher(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
@@ -49,7 +50,7 @@ public class Rotbelcher extends RotspawnMonster {
 		this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new RotspawnTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Stoneborn.class, true));
-		this.targetSelector.addGoal(3, new RotspawnTargetGoal<>(this, Animal.class, true, (target) -> !(target instanceof Mog)));
+		this.targetSelector.addGoal(3, new RotspawnTargetGoal<>(this, Animal.class, true, (target, level) -> !(target instanceof Mog)));
 		this.targetSelector.addGoal(2, new RotspawnTargetGoal<>(this, Denizen.class, true));
 	}
 
@@ -96,9 +97,12 @@ public class Rotbelcher extends RotspawnMonster {
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entity) {
-		this.level().broadcastEntityEvent(this, (byte) 4);
-		return super.doHurtTarget(entity);
+	public boolean doHurtTarget(ServerLevel level, Entity entity) {
+		boolean ret = super.doHurtTarget(level, entity);
+		if (ret) {
+			this.level().broadcastEntityEvent(this, (byte) 4);
+		}
+		return ret;
 	}
 
 	@Override

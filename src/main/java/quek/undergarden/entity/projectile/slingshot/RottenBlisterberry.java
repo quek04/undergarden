@@ -3,6 +3,7 @@ package quek.undergarden.entity.projectile.slingshot;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -16,12 +17,12 @@ public class RottenBlisterberry extends SlingshotProjectile {
 		this.setDropItem(false);
 	}
 
-	public RottenBlisterberry(Level level, LivingEntity shooter) {
-		super(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), shooter, level);
+	public RottenBlisterberry(Level level, LivingEntity shooter, ItemStack stack) {
+		super(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), shooter, level, stack);
 	}
 
-	public RottenBlisterberry(Level level, double x, double y, double z) {
-		super(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), x, y, z, level);
+	public RottenBlisterberry(Level level, double x, double y, double z, ItemStack stack) {
+		super(UGEntityTypes.ROTTEN_BLISTERBERRY.get(), x, y, z, level, stack);
 	}
 
 	@Override

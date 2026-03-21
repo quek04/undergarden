@@ -4,6 +4,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -25,12 +26,12 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 		super(type, level);
 	}
 
-	public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, double x, double y, double z, Level level) {
-		super(type, x, y, z, level);
+	public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, double x, double y, double z, Level level, ItemStack stack) {
+		super(type, x, y, z, level, stack);
 	}
 
-	public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, LivingEntity shooter, Level level) {
-		super(type, shooter, level);
+	public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, LivingEntity shooter, Level level, ItemStack stack) {
+		super(type, shooter, level, stack);
 	}
 
 	@Override
@@ -40,7 +41,7 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 		LivingEntity shooter = (LivingEntity) this.getOwner();
 		if (!blockstate.getCollisionShape(this.level(), result.getBlockPos()).isEmpty()) {
 			this.playStepSound(result.getBlockPos(), blockstate);
-			if (!this.level().isClientSide()) {
+			if (this.level() instanceof ServerLevel serverLevel) {
 				this.level().broadcastEntityEvent(this, (byte) 3);
 				if (this.ricochet) {
 					Vec3 delta = this.getDeltaMovement();
@@ -55,18 +56,18 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 					}
 					this.ricochetTimes--;
 					if (this.ricochetTimes == 0) {
-						if (!(shooter instanceof Player player) || player.getAbilities().instabuild) {
+						if (!(shooter instanceof Player player) || player.isCreative()) {
 							//don't drop anything
 						} else if (this.dropItem) {
-							this.spawnAtLocation(new ItemStack(getDefaultItem()));
+							this.spawnAtLocation(serverLevel, this.getItem());
 						}
 						this.discard();
 					}
 				} else {
-					if (!(shooter instanceof Player) || ((Player) shooter).getAbilities().instabuild) {
+					if (!(shooter instanceof Player) || ((Player) shooter).isCreative()) {
 						//don't drop anything
 					} else if (this.dropItem) {
-						this.spawnAtLocation(new ItemStack(getDefaultItem()));
+						this.spawnAtLocation(serverLevel, this.getItem());
 					}
 					this.discard();
 				}
@@ -84,6 +85,6 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 	}
 
 	protected ParticleOptions makeParticle() {
-		return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(this.getDefaultItem()));
+		return new ItemParticleOption(ParticleTypes.ITEM, this.getItem().getItem());
 	}
 }

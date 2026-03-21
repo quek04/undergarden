@@ -1,11 +1,13 @@
 package quek.undergarden.entity.projectile.slingshot;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import quek.undergarden.entity.animal.Scintling;
@@ -21,12 +23,12 @@ public class GooBall extends SlingshotProjectile {
 		this.setDropItem(true);
 	}
 
-	public GooBall(Level level, LivingEntity shooter) {
-		super(UGEntityTypes.GOO_BALL.get(), shooter, level);
+	public GooBall(Level level, LivingEntity shooter, ItemStack stack) {
+		super(UGEntityTypes.GOO_BALL.get(), shooter, level, stack);
 	}
 
-	public GooBall(Level level, double x, double y, double z) {
-		super(UGEntityTypes.GOO_BALL.get(), x, y, z, level);
+	public GooBall(Level level, double x, double y, double z, ItemStack stack) {
+		super(UGEntityTypes.GOO_BALL.get(), x, y, z, level, stack);
 	}
 
 	@Override
@@ -47,17 +49,17 @@ public class GooBall extends SlingshotProjectile {
 	protected void onHitEntity(EntityHitResult result) {
 		super.onHitEntity(result);
 		Entity entity = result.getEntity();
-		if (entity instanceof LivingEntity livingEntity) {
-			if (livingEntity instanceof Scintling) {
-				livingEntity.heal(2);
-			} else {
-				livingEntity.hurt(this.damageSources().source(UGDamageSources.DEPTHROCK_PEBBLE, this, this.getOwner()), 0.0F);
-				livingEntity.addEffect(new MobEffectInstance(UGEffects.GOOEY, 100, 0, false, true));
+		if (this.level() instanceof ServerLevel serverLevel) {
+			if (entity instanceof LivingEntity livingEntity) {
+				if (livingEntity instanceof Scintling) {
+					livingEntity.heal(2);
+					serverLevel.broadcastEntityEvent(livingEntity, (byte) 45);
+				} else {
+					livingEntity.hurtServer(serverLevel, this.damageSources().source(UGDamageSources.DEPTHROCK_PEBBLE, this, this.getOwner()), 0.0F);
+					livingEntity.addEffect(new MobEffectInstance(UGEffects.GOOEY, 100, 0, false, true));
+				}
 			}
-		}
-		this.playSound(SoundEvents.SLIME_BLOCK_BREAK, 1, 1);
-
-		if (!this.level().isClientSide) {
+			this.playSound(SoundEvents.SLIME_BLOCK_BREAK, 1, 1);
 			this.level().broadcastEntityEvent(this, (byte) 3);
 			this.discard();
 		}

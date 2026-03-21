@@ -184,28 +184,28 @@ public class UndergardenCommonEvents {
 			SlingshotItem.registerAmmo(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new DepthrockPebble(level, shooter);
+					return new DepthrockPebble(level, shooter, stack);
 				}
 			});
 
 			SlingshotItem.registerAmmo(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new RottenBlisterberry(level, shooter);
+					return new RottenBlisterberry(level, shooter, stack);
 				}
 			});
 
 			SlingshotItem.registerAmmo(UGItems.GOO_BALL.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new GooBall(level, shooter);
+					return new GooBall(level, shooter, stack);
 				}
 			});
 
 			SlingshotItem.registerAmmo(UGBlocks.GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new Gronglet(shooter, level);
+					return new Gronglet(shooter, level, stack);
 				}
 
 				@Override
@@ -217,7 +217,7 @@ public class UndergardenCommonEvents {
 			SlingshotItem.registerAmmo(UGBlocks.UTHERIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new UthericGronglet(shooter, level);
+					return new UthericGronglet(shooter, level, stack);
 				}
 
 				@Override
@@ -229,7 +229,7 @@ public class UndergardenCommonEvents {
 			SlingshotItem.registerAmmo(UGBlocks.ROGDORIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new RogdoricGronglet(shooter, level);
+					return new RogdoricGronglet(shooter, level, stack);
 				}
 
 				@Override
