@@ -5,7 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -18,11 +17,8 @@ import java.util.function.Predicate;
 
 public class CatalystItem extends Item {
 
-	public CatalystItem() {
-		super(new Properties()
-			.stacksTo(1)
-			.rarity(Rarity.RARE)
-		);
+	public CatalystItem(Properties properties) {
+		super(properties);
 	}
 
 	@Override

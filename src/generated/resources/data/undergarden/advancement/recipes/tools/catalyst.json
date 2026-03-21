@@ -1,31 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_diamond": {
+    "has_ender_pearl": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:diamond"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_gold": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:gold_ingot"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_iron": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:iron_ingot"
+            "items": "#c:ender_pearls"
           }
         ]
       },
@@ -41,9 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_gold",
-      "has_iron",
-      "has_diamond"
+      "has_ender_pearl"
     ]
   ],
   "rewards": {

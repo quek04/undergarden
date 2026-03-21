@@ -11,18 +11,19 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGAttachments;
 
-public record UthericInfectionPacket(int entityID, double infectionLevel) implements CustomPacketPayload {
+public record UthericInfectionPacket(int entityID, double infectionLevel, float previousInfectionDamage) implements CustomPacketPayload {
 
 	public static final Type<UthericInfectionPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection"));
 	public static final StreamCodec<FriendlyByteBuf, UthericInfectionPacket> STREAM_CODEC = CustomPacketPayload.codec(UthericInfectionPacket::write, UthericInfectionPacket::new);
 
 	public UthericInfectionPacket(FriendlyByteBuf buf) {
-		this(buf.readInt(), buf.readDouble());
+		this(buf.readInt(), buf.readDouble(), buf.readFloat());
 	}
 
 	public void write(FriendlyByteBuf buffer) {
 		buffer.writeInt(this.entityID());
 		buffer.writeDouble(this.infectionLevel());
+		buffer.writeFloat(this.previousInfectionDamage());
 	}
 
 	@Override
@@ -42,6 +43,7 @@ public record UthericInfectionPacket(int entityID, double infectionLevel) implem
 					Entity entity = level.getEntity(message.entityID());
 					if (entity instanceof LivingEntity living) {
 						living.setData(UGAttachments.UTHERIC_INFECTION.get(), message.infectionLevel());
+						living.setData(UGAttachments.PREVIOUS_UTHERIC_INFECTION_DAMAGE.get(), message.previousInfectionDamage());
 					}
 				}
 			});

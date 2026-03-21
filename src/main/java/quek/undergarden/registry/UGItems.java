@@ -94,8 +94,8 @@ public class UGItems {
 	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FORGOTTEN, -3, 0.0F)).rarity(FORGOTTEN_RARITY)));
 
 	//misc tools
-	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", CatalystItem::new);
-	//public static final DeferredItem<Item> CORRUPT_CATALYST = ITEMS.register("corrupt_catalyst", () -> new Item(new Item.Properties().stacksTo(1).rarity(UTHERIUM_RARITY)));
+	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", () -> new CatalystItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+	public static final DeferredItem<Item> CRUMBLING_CATALYST = ITEMS.register("crumbling_catalyst", () -> new CrumblingCatalystItem(new Item.Properties().durability(1).stacksTo(1).rarity(Rarity.RARE)));
 	public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
 	public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () -> new SpearItem(new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).rarity(Rarity.UNCOMMON)));
 	public static final DeferredItem<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
@@ -182,4 +182,6 @@ public class UGItems {
 	public static final DeferredItem<DeferredSpawnEggItem> DENIZEN_SPAWN_EGG = ITEMS.register("denizen_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DENIZEN, 9797222, 13026490, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));
 	public static final DeferredItem<DeferredSpawnEggItem> MINION_SPAWN_EGG = ITEMS.register("minion_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MINION, 8126397, 3170136, new Item.Properties()));
+	//TODO remove
+	public static final DeferredItem<DeferredSpawnEggItem> MYSTERIOUS_POT_SPAWN_EGG = ITEMS.register("mysterious_pot_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MYSTERIOUS_POT, 3161387, 12648360, new Item.Properties()));
 }

@@ -1,5 +1,5 @@
 {
-  "parent": "undergarden:undergarden/enter_undergarden",
+  "parent": "undergarden:undergarden/forgotten_ingot",
   "criteria": {
     "has_entered_depths": {
       "conditions": {

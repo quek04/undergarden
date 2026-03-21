@@ -2,20 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "D": {
-      "item": "minecraft:diamond"
+    "C": {
+      "tag": "c:ingots/copper"
     },
-    "G": {
-      "item": "minecraft:gold_ingot"
+    "E": {
+      "tag": "c:ender_pearls"
     },
-    "I": {
-      "item": "minecraft:iron_ingot"
+    "S": {
+      "tag": "c:stones"
     }
   },
   "pattern": [
-    "GIG",
-    "IDI",
-    "GIG"
+    "CSC",
+    "SES",
+    "CSC"
   ],
   "result": {
     "count": 1,

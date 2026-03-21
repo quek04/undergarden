@@ -57,6 +57,7 @@ import quek.undergarden.client.model.*;
 import quek.undergarden.client.model.item.CloggrumBucketModel;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRender;
+import quek.undergarden.client.render.blockentity.DepthrockPotRenderer;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.blockentity.UndergardenBEWLR;
 import quek.undergarden.client.render.entity.*;
@@ -134,6 +135,7 @@ public class UndergardenClientEvents {
 
 	private static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
+		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_POT.get(), DepthrockPotRenderer::new);
 		event.registerBlockEntityRenderer(UGBlockEntities.GRONGLET.get(), GrongletRender::new);
 		//
 		event.registerEntityRenderer(UGEntityTypes.BOOMGOURD.get(), BoomgourdRenderer::new);
@@ -169,6 +171,7 @@ public class UndergardenClientEvents {
 		event.registerEntityRenderer(UGEntityTypes.SMOG_MOG.get(), SmogMogRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN.get(), ForgottenRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.DENIZEN.get(), DenizenRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.MYSTERIOUS_POT.get(), MysteriousPotRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardianRenderer::new);
 	}
 
@@ -202,6 +205,8 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_OUTER_ARMOR, () -> LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
 		event.registerLayerDefinition(UGModelLayers.FORGOTTEN_GUARDIAN, ForgottenGuardianModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.ROTBELCHER, RotbelcherModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.LIVING_POT, MysteriousPotModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.POT, PotModel::createBodyLayer);
 	}
 
 	private static void addEntityLayers(EntityRenderersEvent.AddLayers event) {
@@ -392,26 +397,28 @@ public class UndergardenClientEvents {
 			}
 		});
 		event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "utheric_infection_vignette"), ((guiGraphics, deltaTracker) -> {
-			Minecraft minecraft = Minecraft.getInstance();
-			LocalPlayer player = minecraft.player;
-			ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
-			RenderSystem.disableDepthTest();
-			RenderSystem.depthMask(false);
-			RenderSystem.enableBlend();
-			RenderSystem.blendFuncSeparate(
-				GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-			);
-			if (player != null) {
-				double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / UthericInfectionEvents.MAX_INFECTION;
-				vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
-				guiGraphics.setColor(0.0F, (float) vignetteBrightness, (float) vignetteBrightness, 1.0F);
+			if (UndergardenConfig.Client.toggle_utheric_infection_overlay.get()) {
+				Minecraft minecraft = Minecraft.getInstance();
+				LocalPlayer player = minecraft.player;
+				ResourceLocation overlay = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/utheric_infection_overlay.png");
+				RenderSystem.disableDepthTest();
+				RenderSystem.depthMask(false);
+				RenderSystem.enableBlend();
+				RenderSystem.blendFuncSeparate(
+					GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+				);
+				if (player != null) {
+					double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / UthericInfectionEvents.MAX_INFECTION;
+					vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
+					guiGraphics.setColor(0.0F, (float) vignetteBrightness, (float) vignetteBrightness, 1.0F);
+				}
+				guiGraphics.blit(overlay, 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
+				RenderSystem.depthMask(true);
+				RenderSystem.enableDepthTest();
+				guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+				RenderSystem.defaultBlendFunc();
+				RenderSystem.disableBlend();
 			}
-			guiGraphics.blit(overlay, 0, 0, -90, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight());
-			RenderSystem.depthMask(true);
-			RenderSystem.enableDepthTest();
-			guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-			RenderSystem.defaultBlendFunc();
-			RenderSystem.disableBlend();
 		}));
 	}
 
@@ -480,7 +487,7 @@ public class UndergardenClientEvents {
 			public BlockEntityWithoutLevelRenderer getCustomRenderer() {
 				return new UndergardenBEWLR();
 			}
-		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.GRONGLET.asItem(), UGBlocks.UTHERIC_GRONGLET.asItem(), UGBlocks.ROGDORIC_GRONGLET.asItem());
+		}, UGBlocks.DEPTHROCK_BED.asItem(), UGBlocks.DEPTHROCK_POT.asItem(), UGBlocks.GRONGLET.asItem(), UGBlocks.UTHERIC_GRONGLET.asItem(), UGBlocks.ROGDORIC_GRONGLET.asItem());
 		event.registerFluidType(new IClientFluidTypeExtensions() {
 			@Override
 			public ResourceLocation getStillTexture() {

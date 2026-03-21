@@ -19,6 +19,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation GLOOMPER = register("gloomper");
 	public static final ModelLayerLocation GWIBLING = register("gwibling");
 	public static final ModelLayerLocation GWIB = register("gwib");
+	public static final ModelLayerLocation LIVING_POT = register("living_pot");
 	public static final ModelLayerLocation MINION = register("minion");
 	public static final ModelLayerLocation MOG = register("mog");
 	public static final ModelLayerLocation SMOG_MOG = register("smog_mog");
@@ -35,6 +36,7 @@ public class UGModelLayers {
 	public static final ModelLayerLocation DENIZEN_2 = register("denizen_2");
 	public static final ModelLayerLocation DENIZEN_MASK = register("denizen_mask");
 	public static final ModelLayerLocation ROTBELCHER = register("rotbelcher");
+	public static final ModelLayerLocation POT = register("pot");
 
 	private static ModelLayerLocation register(String name) {
 		return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, name), "main");

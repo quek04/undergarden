@@ -24,5 +24,6 @@ public class UGDamageTypeTags extends TagsProvider<DamageType> {
 		this.tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(UGDamageSources.SHARD_TORCH, UGDamageSources.UTHERIC_INFECTION);
 		this.tag(DamageTypeTags.WITCH_RESISTANT_TO).add(UGDamageSources.SHARD_TORCH);
 		this.tag(DamageTypeTags.NO_KNOCKBACK).add(UGDamageSources.UTHERIC_INFECTION);
+		this.tag(DamageTypeTags.BYPASSES_RESISTANCE).add(UGDamageSources.UTHERIC_INFECTION);
 	}
 }

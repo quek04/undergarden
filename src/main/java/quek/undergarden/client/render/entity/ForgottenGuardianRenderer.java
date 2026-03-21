@@ -2,22 +2,24 @@ package quek.undergarden.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenGuardianModel;
 import quek.undergarden.client.model.UGModelLayers;
-import quek.undergarden.client.render.layer.ForgottenGuardianEyesLayer;
+import quek.undergarden.client.render.layer.BasicEyesLayer;
 import quek.undergarden.entity.monster.boss.ForgottenGuardian;
 
 public class ForgottenGuardianRenderer extends MobRenderer<ForgottenGuardian, ForgottenGuardianModel<ForgottenGuardian>> {
 
-	private static final ResourceLocation FORGOTTEN_GUARDIAN = ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "textures/entity/forgotten_guardian.png");
+	private static final ResourceLocation FORGOTTEN_GUARDIAN = Undergarden.prefix("textures/entity/forgotten_guardian.png");
+	private static final RenderType FORGOTTEN_GUARDIAN_EYES = RenderType.eyes(Undergarden.prefix("textures/entity/forgotten_guardian_eyes.png"));
 
 	public ForgottenGuardianRenderer(EntityRendererProvider.Context context) {
 		super(context, new ForgottenGuardianModel<>(context.bakeLayer(UGModelLayers.FORGOTTEN_GUARDIAN)), 0.6F);
-		this.addLayer(new ForgottenGuardianEyesLayer<>(this));
+		this.addLayer(new BasicEyesLayer<>(this, FORGOTTEN_GUARDIAN_EYES));
 	}
 
 	@Override

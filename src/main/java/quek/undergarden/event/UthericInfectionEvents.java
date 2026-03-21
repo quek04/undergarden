@@ -35,7 +35,11 @@ public class UthericInfectionEvents {
 			if (livingEntity.tickCount % 20 == 0 && !livingEntity.level().isClientSide() && !livingEntity.getType().is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
 				double data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
 				if (data >= MAX_INFECTION) {
-					livingEntity.hurt(livingEntity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), 2.0F);
+					float baseDamage = 2.0F;
+					float previousDamage = livingEntity.getData(UGAttachments.PREVIOUS_UTHERIC_INFECTION_DAMAGE);
+					livingEntity.setData(UGAttachments.PREVIOUS_UTHERIC_INFECTION_DAMAGE.get(), previousDamage += baseDamage);
+					float amount = baseDamage * previousDamage;
+					livingEntity.hurt(livingEntity.damageSources().source(UGDamageSources.UTHERIC_INFECTION), amount);
 				} else {
 					UthericInfectionLethality biomeLethality = livingEntity.level().getBiome(livingEntity.blockPosition()).getData(UGDataMaps.BIOME_LETHALITY);
 					float b = biomeLethality == null ? 0.0F : biomeLethality.lethality();
@@ -110,6 +114,10 @@ public class UthericInfectionEvents {
 	}
 
 	public static void sendInfectionSyncPacket(Entity entity) {
-		PacketDistributor.sendToPlayersTrackingEntityAndSelf(entity, new UthericInfectionPacket(entity.getId(), entity.getData(UGAttachments.UTHERIC_INFECTION)));
+		PacketDistributor.sendToPlayersTrackingEntityAndSelf(entity, new UthericInfectionPacket(
+			entity.getId(),
+			entity.getData(UGAttachments.UTHERIC_INFECTION),
+			entity.getData(UGAttachments.PREVIOUS_UTHERIC_INFECTION_DAMAGE)
+		));
 	}
 }

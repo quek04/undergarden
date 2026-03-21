@@ -35,6 +35,7 @@ public class UGLang extends UGLangProvider {
 		addBlock(UGBlocks.DEPTHROCK_BRICK_WALL, "Depthrock Brick Wall");
 		addBlock(UGBlocks.DEPTHROCK_BUTTON, "Depthrock Button");
 		addBlock(UGBlocks.DEPTHROCK_PRESSURE_PLATE, "Depthrock Pressure Plate");
+		addBlock(UGBlocks.DEPTHROCK_POT, "Depthrock Pot");
 
 		addBlock(UGBlocks.SHIVERSTONE, "Shiverstone");
 		addBlock(UGBlocks.SHIVERSTONE_BRICKS, "Shiverstone Bricks");
@@ -271,7 +272,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.GLOOMPER_SECRET_DISC, "Music Disc");
 		addJukeboxSong(UGJukeboxSongs.GLOOMPER_SECRET, "An AI was given an image of a Gloomper and made this song");
 		addItem(UGItems.CATALYST, "Catalyst");
-		//addItem(UGItems.CORRUPT_CATALYST, "Corrupt Catalyst");
+		addItem(UGItems.CRUMBLING_CATALYST, "Crumbling Catalyst");
 		addItem(UGItems.DEPTHROCK_PEBBLE, "Depthrock Pebble");
 		addItem(UGItems.TWISTYTWIG, "Twistytwig");
 		addItem(UGItems.RAW_CLOGGRUM, "Raw Cloggrum");
@@ -413,6 +414,7 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.DENIZEN_SPAWN_EGG, "Denizen Spawn Egg");
 		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
 		addItem(UGItems.MINION_SPAWN_EGG, "Forgotten Minion Spawn Egg");
+		addItem(UGItems.MYSTERIOUS_POT_SPAWN_EGG, "Mysterious Pot Spawn Egg");
 
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
 		addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
@@ -466,6 +468,7 @@ public class UGLang extends UGLangProvider {
 		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
 		addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
 		addEntityType(UGEntityTypes.DENIZEN, "Denizen");
+		addEntityType(UGEntityTypes.MYSTERIOUS_POT, "Mysterious Pot");
 
 		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 
@@ -612,9 +615,6 @@ public class UGLang extends UGLangProvider {
 		addAdvTitle("craft_infuser", "I <3 Infusing");
 		addAdvDesc("craft_infuser", "Create the Infuser.");
 
-		//addAdvTitle("otherside_root", "The Otherside");
-		//addAdvDesc("otherside_root", "Enter the realm of madness.");
-
 		add("tooltip.undergarden.slingshot_ammo", "Can be used as Slingshot ammo.");
 		add("tooltip.undergarden.cloggrum_boots", "Scintling Goo doesn't slow you down when worn.");
 		add("tooltip.undergarden.froststeel_weapon", "Slows targets.");
@@ -747,6 +747,8 @@ public class UGLang extends UGLangProvider {
 
 		addConfig("return_portal_frame_block_id", "Return Portal Frame Block ID");
 		addConfig("toggle_undergarden_fog", "Toggle Undergarden Fog");
+		addConfig("toggle_utheric_infection_number_display", "Toggle Utheric Infection Number Display");
+		addConfig("toggle_utheric_infection_overlay", "Toggle Utheric Infection Overlay");
 
 		add("trim_material.undergarden.cloggrum", "Cloggrum material");
 		add("trim_material.undergarden.froststeel", "Froststeel material");

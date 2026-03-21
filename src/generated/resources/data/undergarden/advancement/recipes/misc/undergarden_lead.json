@@ -16,22 +16,11 @@
         "recipe": "undergarden:undergarden_lead"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_twistytwig": {
-      "conditions": {
-        "items": [
-          {
-            "items": "undergarden:twistytwig"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_twistytwig",
       "has_goo_ball"
     ]
   ],

@@ -241,7 +241,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
-			.addCriterion("has_all_ore_blocks", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.ROGDORIUM_BLOCK.get()))
+			.addCriterion("has_all_ore_blocks", InventoryChangeTrigger.TriggerInstance.hasItems(UGBlocks.CLOGGRUM_BLOCK.get(), UGBlocks.FROSTSTEEL_BLOCK.get(), UGBlocks.UTHERIUM_BLOCK.get(), UGBlocks.REGALIUM_BLOCK.get(), UGBlocks.FORGOTTEN_BLOCK.get(), UGBlocks.ROGDORIUM_BLOCK.get()))
 			.save(consumer, "undergarden:undergarden/all_ore_blocks");
 
 		AdvancementHolder cloggrum_armor = Advancement.Builder.advancement()
@@ -479,7 +479,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				Component.translatable("advancement.undergarden.summon_minion.title"),
 				Component.translatable("advancement.undergarden.summon_minion.desc"),
 				null,
-				AdvancementType.GOAL,
+				AdvancementType.TASK,
 				true,
 				true,
 				false
@@ -503,7 +503,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 			.save(consumer, "undergarden:undergarden/gloomper_secret_disc");
 
 		AdvancementHolder enter_depths = Advancement.Builder.advancement()
-			.parent(enter_undergarden)
+			.parent(forgotten_ingot)
 			.display(
 				UGBlocks.DREADROCK.get(),
 				Component.translatable("advancement.undergarden.enter_depths.title"),
@@ -548,7 +548,10 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				true,
 				false
 			)
+			.requirements(AdvancementRequirements.Strategy.OR)
 			.addCriterion("has_purity_effect", EffectsChangedTrigger.TriggerInstance.hasEffects(MobEffectsPredicate.Builder.effects().and(UGEffects.PURITY)))
+			.addCriterion("has_eaten_rogdorium", ConsumeItemTrigger.TriggerInstance.usedItem(UGItems.ROGDORIUM))
+			.addCriterion("has_eaten_rogdorium_nugget", ConsumeItemTrigger.TriggerInstance.usedItem(UGItems.ROGDORIUM_NUGGET))
 			.save(consumer, "undergarden:undergarden/cure_utheric_infection");
 
 		AdvancementHolder enter_denizen_camp = Advancement.Builder.advancement()
@@ -603,7 +606,7 @@ public class UndergardenAdvancements implements AdvancementProvider.AdvancementG
 				Component.translatable("advancement.undergarden.craft_infuser.title"),
 				Component.translatable("advancement.undergarden.craft_infuser.desc"),
 				null,
-				AdvancementType.GOAL,
+				AdvancementType.TASK,
 				true,
 				true,
 				false

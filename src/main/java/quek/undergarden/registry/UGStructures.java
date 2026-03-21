@@ -62,6 +62,7 @@ public class UGStructures {
 	public static final ResourceKey<StructureSet> FORGOTTEN_VESTIGE_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige"));
 
 	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige"));
+	public static final ResourceKey<StructureTemplatePool> FORGOTTEN_VESTIGE_HOUSE_POT_POOL = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige/house_pot_pool"));
 
 	public static final ResourceKey<StructureProcessorList> FORGOTTEN_VESTIGE_DEGRADATION = ResourceKey.create(Registries.PROCESSOR_LIST, ResourceLocation.fromNamespaceAndPath(Undergarden.MODID, "forgotten_vestige_degradation"));
 
@@ -183,7 +184,7 @@ public class UGStructures {
 	public static void bootstrapSets(BootstrapContext<StructureSet> context) {
 		HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
 		context.register(CATACOMBS_SET, new StructureSet(structures.getOrThrow(CATACOMBS), new RandomSpreadStructurePlacement(24, 12, RandomSpreadType.LINEAR, 276320045)));
-		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 6, 3, RandomSpreadType.LINEAR)));
+		context.register(FORGOTTEN_VESTIGE_SET, new StructureSet(structures.getOrThrow(FORGOTTEN_VESTIGE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.85F, 276320046, Optional.empty(), 3, 1, RandomSpreadType.LINEAR)));
 		context.register(DENIZEN_CAMP_SET, new StructureSet(structures.getOrThrow(DENIZEN_CAMP), new RandomSpreadStructurePlacement(12, 6, RandomSpreadType.LINEAR, 27630047)));
 		context.register(DEPLETED_MINE_SET, new StructureSet(structures.getOrThrow(DEPLETED_MINE), new RandomSpreadStructurePlacement(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.LEGACY_TYPE_3, 0.004F, 50002673, Optional.empty(), 1, 0, RandomSpreadType.LINEAR)));
 	}
@@ -292,6 +293,9 @@ public class UGStructures {
 		), StructureTemplatePool.Projection.RIGID));
 
 		context.register(FORGOTTEN_VESTIGE_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/aqueduct_1"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/aqueduct_2"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/aqueduct_3"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_1"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_2"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock/arch_3"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
@@ -313,6 +317,12 @@ public class UGStructures {
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_4"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_5"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1),
 			Pair.of(StructurePoolElement.single(name("forgotten_vestige/shiverstone/arch_6"), processors.getOrThrow(FORGOTTEN_VESTIGE_DEGRADATION)), 1)
+		), StructureTemplatePool.Projection.RIGID));
+
+		context.register(FORGOTTEN_VESTIGE_HOUSE_POT_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/depthrock_pot")), 2),
+			Pair.of(StructurePoolElement.single(name("forgotten_vestige/mysterious_pot")), 1),
+			Pair.of(StructurePoolElement.single("minecraft:empty"), 3)
 		), StructureTemplatePool.Projection.RIGID));
 
 		context.register(DENIZEN_CAMP_TOTEM_CIRCLE_POOL, new StructureTemplatePool(emptyPool, ImmutableList.of(
@@ -374,8 +384,8 @@ public class UGStructures {
 	}
 
 	public static void bootstrapProcessors(BootstrapContext<StructureProcessorList> context) {
-		context.register(CATACOMBS_DEGRADATION, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(CATACOMBS_DEGRADATION, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.5F),
 					AlwaysTrueTest.INSTANCE,
@@ -384,8 +394,8 @@ public class UGStructures {
 			))
 		)));
 
-		context.register(FORGOTTEN_VESTIGE_DEGRADATION, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(FORGOTTEN_VESTIGE_DEGRADATION, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.DEPTHROCK_BRICKS.get(), 0.25F),
 					AlwaysTrueTest.INSTANCE,
@@ -404,8 +414,8 @@ public class UGStructures {
 			))
 		)));
 
-		context.register(DENIZEN_CAMP_ROAD_PROCESSOR, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(DENIZEN_CAMP_ROAD_PROCESSOR, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.COARSE_DEEPSOIL.get(), 0.25F),
 					AlwaysTrueTest.INSTANCE,
@@ -413,8 +423,8 @@ public class UGStructures {
 				)
 			))
 		)));
-		context.register(DENIZEN_CAMP_WOOD_PROCESSOR, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(DENIZEN_CAMP_WOOD_PROCESSOR, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.ANCIENT_ROOT_PLANKS.get(), 0.5F),
 					AlwaysTrueTest.INSTANCE,
@@ -428,8 +438,8 @@ public class UGStructures {
 			))
 		)));
 
-		context.register(DEPLETED_MINE_LANTERN_PROCESSOR, new StructureProcessorList(List.of(
-			new RuleProcessor(List.of(
+		context.register(DEPLETED_MINE_LANTERN_PROCESSOR, new StructureProcessorList(ImmutableList.of(
+			new RuleProcessor(ImmutableList.of(
 				new ProcessorRule(
 					new RandomBlockMatchTest(UGBlocks.CLOGGRUM_LANTERN.get(), 0.75F),
 					AlwaysTrueTest.INSTANCE,

@@ -8,8 +8,8 @@ import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
-import quek.undergarden.datagen.helpers.builder.CloggrumBucketModelBuilder;
 import quek.undergarden.datagen.helpers.UGItemModelProvider;
+import quek.undergarden.datagen.helpers.builder.CloggrumBucketModelBuilder;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
@@ -147,6 +147,7 @@ public class UGItemModels extends UGItemModelProvider {
 		normalItem(UGItems.RELICT_DISC);
 		normalItem(UGItems.GLOOMPER_SECRET_DISC);
 		normalItem(UGItems.CATALYST);
+		normalItem(UGItems.CRUMBLING_CATALYST);
 		normalItem(UGItems.DEPTHROCK_PEBBLE);
 		normalItem(UGItems.TWISTYTWIG);
 		normalItem(UGItems.CLOGGRUM_INGOT);
@@ -317,6 +318,7 @@ public class UGItemModels extends UGItemModelProvider {
 		egg(UGItems.DENIZEN_SPAWN_EGG);
 		egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
 		egg(UGItems.MINION_SPAWN_EGG);
+		egg(UGItems.MYSTERIOUS_POT_SPAWN_EGG);
 
 		sign(UGBlocks.SMOGSTEM_SIGN);
 		sign(UGBlocks.WIGGLEWOOD_SIGN);
