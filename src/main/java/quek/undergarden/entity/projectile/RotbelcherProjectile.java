@@ -5,9 +5,8 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.hurtingprojectile.AbstractHurtingProjectile;
 import net.minecraft.world.item.ItemStack;
@@ -43,12 +42,12 @@ public class RotbelcherProjectile extends AbstractHurtingProjectile {
 				EnchantmentHelper.doPostAttackEffects(level, victim, damageSource);
 				if (victim instanceof LivingEntity livingEntity) {
 					if (!this.level().isClientSide() && !livingEntity.is(UGTags.Entities.IMMUNE_TO_INFECTION)) {
-						double data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
-						double b = 0.2D;
+						float data = livingEntity.getData(UGAttachments.UTHERIC_INFECTION);
+						float b = 0.2F;
 						int a = 0;
 						if (livingEntity instanceof Player player) {
-							for (int i = 0; i < 4; i++) {
-								ItemStack armor = player.getInventory().getArmor(i);
+							for (EquipmentSlot slot : EquipmentSlotGroup.ARMOR) {
+								ItemStack armor = player.getInventory().getItem(slot.getIndex(Inventory.INVENTORY_SIZE));
 								int infusionAmount = armor.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
 								if (infusionAmount > 0) {
 									armor.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(infusionAmount - 1));
@@ -56,7 +55,7 @@ public class RotbelcherProjectile extends AbstractHurtingProjectile {
 								}
 							}
 						}
-						double t = b / ((1 + a) * 0.18D);
+						float t = b / ((1 + a) * 0.18F);
 						livingEntity.setData(UGAttachments.UTHERIC_INFECTION, data + t);
 					}
 				}

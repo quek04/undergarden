@@ -26,7 +26,7 @@ public class UGDamageSources {
 	}
 
 	public static DamageSource getShardTorchDamage(Level level, @NotNull Vec3 position) {
-		return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(SHARD_TORCH), position);
+		return new DamageSource(level.registryAccess().getOrThrow(SHARD_TORCH), position);
 	}
 
 	public static void bootstrap(BootstrapContext<DamageType> context) {

@@ -10,7 +10,8 @@ import quek.undergarden.registry.UGSoundEvents;
 
 public class UndergardenClient {
 
-	public static final ContextKey<Double> UTHERIUM_INFECTION = new ContextKey<>(Undergarden.prefix("utherium_infection"));
+	public static final ContextKey<Float> UTHERIUM_INFECTION = new ContextKey<>(Undergarden.prefix("utherium_infection"));
+	public static final ContextKey<Boolean> CHILLY = new ContextKey<>(Undergarden.prefix("chilly"));
 
 	public static void playPortalSound() {
 		Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forLocalAmbience(UGSoundEvents.UNDERGARDEN_PORTAL_TRAVEL.get(), 1.0F, 1.0F));

@@ -16,6 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -41,15 +42,8 @@ public class UndergardenPortalBlock extends Block implements Portal {
 	protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
 	protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
 
-	public UndergardenPortalBlock() {
-		super(Properties.of()
-			.pushReaction(PushReaction.BLOCK)
-			.strength(-1.0F)
-			.noCollision()
-			.lightLevel((state) -> 10)
-			.sound(SoundType.GLASS)
-			.noLootTable()
-		);
+	public UndergardenPortalBlock(BlockBehaviour.Properties properties) {
+		super(properties);
 		this.registerDefaultState(this.getStateDefinition().any().setValue(AXIS, Direction.Axis.X));
 	}
 

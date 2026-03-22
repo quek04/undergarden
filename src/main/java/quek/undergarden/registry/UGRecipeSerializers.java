@@ -12,6 +12,6 @@ public class UGRecipeSerializers {
 
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, Undergarden.MODID);
 
-	public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<InfuserConversionRecipe>> INFUSER_CONVERSION = RECIPE_SERIALIZERS.register("infuser_conversion", InfuserConversionRecipe.Serializer::new);
-	public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<ItemInfusingRecipe>> ITEM_INFUSING = RECIPE_SERIALIZERS.register("item_infusing", ItemInfusingRecipe.Serializer::new);
+	public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<InfuserConversionRecipe>> INFUSER_CONVERSION = RECIPE_SERIALIZERS.register("infuser_conversion", () -> InfuserConversionRecipe.SERIALIZER);
+	public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<ItemInfusingRecipe>> ITEM_INFUSING = RECIPE_SERIALIZERS.register("item_infusing", () -> ItemInfusingRecipe.SERIALIZER);
 }

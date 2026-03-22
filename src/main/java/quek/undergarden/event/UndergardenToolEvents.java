@@ -35,8 +35,8 @@ public class UndergardenToolEvents {
 		float damage = event.getAmount();
 
 		if (source instanceof Player player) {
-			if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SWORD.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_BATTLEAXE.get()) {
-				if (BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()).getNamespace().equals(Undergarden.MODID) && !event.getEntity().getType().is(Tags.EntityTypes.BOSSES)) {
+			if (player.getMainHandItem().is(UGItems.FORGOTTEN_SWORD) || player.getMainHandItem().is(UGItems.FORGOTTEN_AXE) || player.getMainHandItem().is(UGItems.FORGOTTEN_BATTLEAXE)) {
+				if (BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()).getNamespace().equals(Undergarden.MODID) && !event.getEntity().is(Tags.EntityTypes.BOSSES)) {
 					event.setAmount(damage * 1.5F);
 				}
 			}
@@ -47,8 +47,8 @@ public class UndergardenToolEvents {
 		Player player = event.getEntity();
 		BlockState state = event.getState();
 
-		if (player.getMainHandItem().getItem() == UGItems.FORGOTTEN_PICKAXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_AXE.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_SHOVEL.get() || player.getMainHandItem().getItem() == UGItems.FORGOTTEN_HOE.get()) {
-			if (state != null && BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace().equals(Undergarden.MODID)) {
+		if (player.getMainHandItem().is(UGItems.FORGOTTEN_PICKAXE) || player.getMainHandItem().is(UGItems.FORGOTTEN_AXE) || player.getMainHandItem().is(UGItems.FORGOTTEN_SHOVEL) || player.getMainHandItem().is(UGItems.FORGOTTEN_HOE)) {
+			if (BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace().equals(Undergarden.MODID)) {
 				event.setNewSpeed(event.getOriginalSpeed() * 1.5F);
 			}
 		}
@@ -60,7 +60,7 @@ public class UndergardenToolEvents {
 
 		if (source instanceof Player player) {
 			if (player.getMainHandItem().is(UGItems.UTHERIUM_SWORD.get()) || player.getMainHandItem().is(UGItems.UTHERIUM_AXE.get())) {
-				if (event.getEntity().getType().is(UGTags.Entities.ROTSPAWN)) {
+				if (event.getEntity().is(UGTags.Entities.ROTSPAWN)) {
 					event.setAmount(damage * 1.5F);
 					if (!event.getEntity().level().isClientSide()) {
 						PacketDistributor.sendToPlayersTrackingEntity(event.getEntity(), new CreateCritParticlePacket(event.getEntity().getId(), 2, UGParticleTypes.UTHERIUM_CRIT.get()));
@@ -94,7 +94,7 @@ public class UndergardenToolEvents {
 						double d3 = living.getX(d0 / 2.0D);
 						double d4 = living.getY(0.75D + d1 / 4.0D);
 						double d5 = living.getZ(d2 / 2.0D);
-						living.level().addParticle(UGParticleTypes.SNOWFLAKE.get(), false, d3, d4, d5, d0, d1 + 0.2D, d2);
+						living.level().addParticle(UGParticleTypes.SNOWFLAKE.get(), d3, d4, d5, d0, d1 + 0.2D, d2);
 					}
 				}
 			}

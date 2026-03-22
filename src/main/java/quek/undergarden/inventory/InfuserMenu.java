@@ -1,32 +1,33 @@
 package quek.undergarden.inventory;
 
+import net.minecraft.recipebook.ServerPlaceRecipe;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import quek.undergarden.inventory.slot.InfuserResultSlot;
 import quek.undergarden.inventory.slot.InfuserRogdoriumFuelSlot;
 import quek.undergarden.inventory.slot.InfuserUtheriumFuelSlot;
 import quek.undergarden.recipe.InfusingRecipe;
-import quek.undergarden.registry.UGMenuTypes;
-import quek.undergarden.registry.UGRecipeBookTypes;
-import quek.undergarden.registry.UGRecipeTypes;
-import quek.undergarden.registry.UGTags;
+import quek.undergarden.registry.*;
 
-public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecipe> {
+import java.util.List;
+import java.util.Objects;
+
+public class InfuserMenu extends RecipeBookMenu {
 
 	private final Container container;
 	private final ContainerData data;
 	protected final Level level;
-	private final RecipeType<InfusingRecipe> recipeType;
+	private final RecipePropertySet acceptedInputs;
 
 	public InfuserMenu(int containerId, Inventory playerInventory) {
 		this(containerId, playerInventory, new SimpleContainer(4), new SimpleContainerData(2));
@@ -34,12 +35,12 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 
 	public InfuserMenu(int containerId, Inventory playerInventory, Container container, ContainerData data) {
 		super(UGMenuTypes.INFUSER.get(), containerId);
-		this.recipeType = UGRecipeTypes.INFUSING.get();
 		checkContainerSize(container, 4);
 		checkContainerDataCount(data, 2);
 		this.container = container;
 		this.data = data;
 		this.level = playerInventory.player.level();
+		this.acceptedInputs = this.level.recipeAccess().propertySet(UGRecipePropertySets.INFUSING);
 
 		this.addSlot(new Slot(container, 0, 80, 17));
 		this.addSlot(new InfuserUtheriumFuelSlot(this, container, 1, 26, 53));
@@ -90,56 +91,42 @@ public class InfuserMenu extends RecipeBookMenu<SingleRecipeInput, InfusingRecip
 	}
 
 	protected boolean canInfuse(ItemStack stack) {
-		return this.level.getRecipeManager().getRecipeFor(this.recipeType, new SingleRecipeInput(stack), this.level).isPresent();
+		return this.acceptedInputs.test(stack);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public PostPlaceAction handlePlacement(boolean useMaxItems, boolean allowDroppingItemsToClear, RecipeHolder<?> recipe, ServerLevel level, Inventory inventory) {
+		final List<Slot> slotsToClear = List.of(this.getSlot(0), this.getSlot(3));
+		return ServerPlaceRecipe.placeRecipe(new ServerPlaceRecipe.CraftingMenuAccess<>() {
+
+			@Override
+			public void fillCraftSlotsStackedContents(StackedItemContents stackedContents) {
+				InfuserMenu.this.fillCraftSlotsStackedContents(stackedContents);
+			}
+
+			@Override
+			public void clearCraftingContent() {
+				slotsToClear.forEach(s -> s.set(ItemStack.EMPTY));
+			}
+
+			@Override
+			public boolean recipeMatches(RecipeHolder<InfusingRecipe> recipe) {
+				return recipe.value().matches(new SingleRecipeInput(InfuserMenu.this.container.getItem(0)), level);
+			}
+		}, 1, 1, List.of(this.getSlot(0)), slotsToClear, inventory, (RecipeHolder<InfusingRecipe>)recipe, useMaxItems, allowDroppingItemsToClear);
 	}
 
 	@Override
-	public void fillCraftSlotsStackedContents(StackedContents itemHelper) {
+	public void fillCraftSlotsStackedContents(StackedItemContents contents) {
 		if (this.container instanceof StackedContentsCompatible) {
-			((StackedContentsCompatible)this.container).fillStackedContents(itemHelper);
+			((StackedContentsCompatible)this.container).fillStackedContents(contents);
 		}
-	}
-
-	@Override
-	public void clearCraftingContent() {
-		this.getSlot(0).set(ItemStack.EMPTY);
-		this.getSlot(1).set(ItemStack.EMPTY);
-		this.getSlot(2).set(ItemStack.EMPTY);
-	}
-
-	@Override
-	public boolean recipeMatches(RecipeHolder<InfusingRecipe> recipe) {
-		return recipe.value().matches(new SingleRecipeInput(this.container.getItem(0)), this.level);
-	}
-
-	@Override
-	public int getResultSlotIndex() {
-		return 3;
-	}
-
-	@Override
-	public int getGridWidth() {
-		return 1;
-	}
-
-	@Override
-	public int getGridHeight() {
-		return 1;
-	}
-
-	@Override
-	public int getSize() {
-		return 4;
 	}
 
 	@Override
 	public RecipeBookType getRecipeBookType() {
 		return UGRecipeBookTypes.INFUSER;
-	}
-
-	@Override
-	public boolean shouldMoveToInventory(int slotIndex) {
-		return slotIndex != 1 && slotIndex != 2;
 	}
 
 	@Override

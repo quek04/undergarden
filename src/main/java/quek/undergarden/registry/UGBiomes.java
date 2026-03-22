@@ -7,22 +7,25 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.attribute.*;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import quek.undergarden.Undergarden;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.BiFunction;
 
 public class UGBiomes {
+
+	public static final BiFunction<Holder<SoundEvent>, Holder<SoundEvent>, AmbientSounds> DEFAULT_AMBIENCE = (ambience, addition) -> new AmbientSounds(Optional.of(ambience), Optional.of(new AmbientMoodSettings(UGSoundEvents.MOOD, 6000, 8, 2)), List.of(new AmbientAdditionsSettings(addition, 0.00555D)));
+	public static final BiFunction<Holder<SoundEvent>, Holder<SoundEvent>, AmbientSounds> FROST_AMBIENCE = (ambience, addition) -> new AmbientSounds(Optional.of(ambience), Optional.of(new AmbientMoodSettings(UGSoundEvents.FROST_MOOD, 6000, 8, 2)), List.of(new AmbientAdditionsSettings(addition, 0.002775D)));
 
 	public static final ResourceKey<Biome> ANCIENT_SEA = create("ancient_sea");
 	public static final ResourceKey<Biome> BARREN_ABYSS = create("barren_abyss");
@@ -62,14 +65,18 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.GLITTERKELP_PATCH)
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
-				.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIB.get(), 10, 1, 1))
-				.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIBLING.get(), 5, 3, 6))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
+				.addSpawn(MobCategory.WATER_CREATURE, 10, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIB.get(), 1, 1))
+				.addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIBLING.get(), 3, 6))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1186057, 4477507), UGSoundEvents.SEA_AMBIENCE, UGSoundEvents.SEA_AMBIENT_ADDITION).build())
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.SEA_AMBIENCE, UGSoundEvents.SEA_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1186057)
+				.build())
+			.specialEffects(generateColors(4477507))
 			.build());
 
 		context.register(BARREN_ABYSS, new Biome.BiomeBuilder()
@@ -79,15 +86,17 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.SMOG_MOG.get(), 100, 2, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.SMOG_MOG.get(), 2, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.2F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.118093334F))
-				.build()
-			)
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 2565927)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.ASH, 0.118093334F)))
+				.build())
+			.specialEffects(generateColors(7568503))
 			.build());
 
 		context.register(BLOOD_MUSHROOM_BOG, new Biome.BiomeBuilder()
@@ -101,15 +110,17 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.HUGE_BLOOD_MUSHROOM)
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1248522, 6180396), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.118093334F))
-				.build()
-			)
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1248522)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.ASH, 0.118093334F)))
+				.build())
+			.specialEffects(generateColors(6180396))
 			.build());
 
 		context.register(DEAD_SEA, new Biome.BiomeBuilder()
@@ -117,12 +128,16 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DITCHBULB_PATCH)
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION).build())
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1248522)
+				.build())
+			.specialEffects(generateColors(7568503))
 			.build());
 
 		context.register(DENSE_FOREST, new Biome.BiomeBuilder()
@@ -148,19 +163,22 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 100, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 1, 3))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 4, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1186057, 4224322), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.DENSE_FOREST_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.DENSE_FOREST_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1186057)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.025F)))
 				.build())
+			.specialEffects(generateColors(4224322))
 			.build());
 
 		context.register(FORGOTTEN_FIELD, new Biome.BiomeBuilder()
@@ -180,19 +198,22 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 100, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 1, 3))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 4, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1186057, 5993819), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.FIELDS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.FIELDS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1186057)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.025F)))
 				.build())
+			.specialEffects(generateColors(5993819))
 			.build());
 
 		context.register(FROSTFIELDS, new Biome.BiomeBuilder()
@@ -207,15 +228,18 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 100, 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 4, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.14F)
 			.temperatureAdjustment(Biome.TemperatureModifier.FROZEN)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 14609908), UGSoundEvents.FROST_MOOD, UGSoundEvents.FROST_AMBIENCE, UGSoundEvents.FROSTFIELDS_AMBIENT_ADDITION, 0.002775D)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.118093334F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, FROST_AMBIENCE.apply(UGSoundEvents.FROST_AMBIENCE, UGSoundEvents.FROSTFIELDS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 2565927)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.118093334F)))
 				.build())
+			.specialEffects(generateColors(14609908))
 			.build());
 
 		context.register(FROSTY_SMOGSTEM_FOREST, new Biome.BiomeBuilder()
@@ -232,15 +256,18 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 100, 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 4, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.14F)
 			.temperatureAdjustment(Biome.TemperatureModifier.FROZEN)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 14609908), UGSoundEvents.FROST_MOOD, UGSoundEvents.FROST_AMBIENCE, UGSoundEvents.SMOGSTEM_FOREST_AMBIENT_ADDITION, 0.002775D)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.118093334F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, FROST_AMBIENCE.apply(UGSoundEvents.FROST_AMBIENCE, UGSoundEvents.SMOGSTEM_FOREST_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 2565927)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.118093334F)))
 				.build())
+			.specialEffects(generateColors(14609908))
 			.build());
 
 		context.register(GRONGLEGROWTH, new Biome.BiomeBuilder()
@@ -263,19 +290,22 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 100, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 1, 3))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 4, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1186057, 4103962), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.GRONGLEGROWTH_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(UGParticleTypes.GRONGLE_SPORE.get(), 0.05F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, FROST_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.GRONGLEGROWTH_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1186057)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(UGParticleTypes.GRONGLE_SPORE.get(), 0.05F)))
 				.build())
+			.specialEffects(generateColors(4103962))
 			.build());
 
 		context.register(ICY_SEA, new Biome.BiomeBuilder()
@@ -290,14 +320,18 @@ public class UGBiomes {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.FROZEN_DEEPTURF_PATCH)
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
-				.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIB.get(), 10, 1, 1))
-				.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIBLING.get(), 5, 3, 6))
+				.addSpawn(MobCategory.WATER_CREATURE, 10, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIB.get(), 1, 1))
+				.addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.GWIBLING.get(), 3, 6))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.14F)
 			.temperatureAdjustment(Biome.TemperatureModifier.FROZEN)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 14609908), UGSoundEvents.FROST_MOOD, UGSoundEvents.SEA_AMBIENCE, UGSoundEvents.FROSTFIELDS_AMBIENT_ADDITION, 0.002775D).build())
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, FROST_AMBIENCE.apply(UGSoundEvents.SEA_AMBIENCE, UGSoundEvents.FROSTFIELDS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 2565927)
+				.build())
+			.specialEffects(generateColors(14609908))
 			.build());
 
 		context.register(INDIGO_MUSHROOM_BOG, new Biome.BiomeBuilder()
@@ -314,15 +348,18 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 8, 8))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 8, 8))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2432083, 4212845), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.05F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 2432083)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.05F)))
 				.build())
+			.specialEffects(generateColors(4212845))
 			.build());
 
 		context.register(INK_MUSHROOM_BOG, new Biome.BiomeBuilder()
@@ -336,14 +373,17 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1640729, 4075847), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.05F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1640729)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.05F)))
 				.build())
+			.specialEffects(generateColors(4075847))
 			.build());
 
 		context.register(SMOG_SPIRES, new Biome.BiomeBuilder()
@@ -356,16 +396,19 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 100, 8, 8))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.SMOG_MOG.get(), 100, 2, 4))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 8, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.SMOG_MOG.get(), 2, 4))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(2.0F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 2565927, 7568503), UGSoundEvents.SPIRES_AMBIENCE, UGSoundEvents.SPIRES_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.118093334F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.SPIRES_AMBIENCE, UGSoundEvents.SPIRES_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 2565927)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.ASH, 0.118093334F)))
 				.build())
+			.specialEffects(generateColors(7568503))
 			.build());
 
 		context.register(SMOGSTEM_FOREST, new Biome.BiomeBuilder()
@@ -386,19 +429,22 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 100, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 1, 3))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 4, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 595225, 5928296), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.SMOGSTEM_FOREST_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.SMOGSTEM_FOREST_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 595225)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.025F)))
 				.build())
+			.specialEffects(generateColors(5928296))
 			.build());
 
 		context.register(VEIL_MUSHROOM_BOG, new Biome.BiomeBuilder()
@@ -414,15 +460,18 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 8, 8))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 8, 8))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1643784, 7696730), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.05F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.BOG_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1643784)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.05F)))
 				.build())
+			.specialEffects(generateColors(7696730))
 			.build());
 
 		context.register(WIGGLEWOOD_FOREST, new Biome.BiomeBuilder()
@@ -442,19 +491,22 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addNormalRotspawn(addCaveMobs(new MobSpawnSettings.Builder()))
 				.creatureGenerationProbability(0.5F)
-				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 100, 1, 3))
-				.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 5, 4, 8))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 100, 4, 4))
-				.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 100, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.STONEBORN.get(), 1, 3))
+				.addSpawn(MobCategory.AMBIENT, 5, new MobSpawnSettings.SpawnerData(UGEntityTypes.SCINTLING.get(), 4, 8))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GLOOMPER.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.BRUTE.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.MOG.get(), 4, 4))
+				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.DWELLER.get(), 4, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 1643784, 7304538), UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.WIGGLEWOOD_FOREST_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.025F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.WIGGLEWOOD_FOREST_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 1643784)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.025F)))
 				.build())
+			.specialEffects(generateColors(7304538))
 			.build());
 
 		context.register(DEPTHS, new Biome.BiomeBuilder()
@@ -468,15 +520,18 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.creatureGenerationProbability(0.9999999F)
-				.addSpawn(MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY"), new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 100, 2, 4))
-				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 50, 1, 4))
+				.addSpawn(MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY"), 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 2, 4))
+				.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 0, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.MYCELIUM, 0.025F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 0)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.MYCELIUM, 0.025F)))
 				.build())
+			.specialEffects(generateColors(7568503))
 			.build());
 
 		context.register(INFECTED_DEPTHS, new Biome.BiomeBuilder()
@@ -489,9 +544,12 @@ public class UGBiomes {
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 3276800, 7568503), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.MYCELIUM, 0.025F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 3276800)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.MYCELIUM, 0.025F)))
 				.build())
+			.specialEffects(generateColors(7568503))
 			.build());
 
 		context.register(PUFF_MUSHROOM_FOREST, new Biome.BiomeBuilder()
@@ -504,20 +562,23 @@ public class UGBiomes {
 				.build())
 			.mobSpawnSettings(addDangerousRotspawn(new MobSpawnSettings.Builder())
 				.creatureGenerationProbability(0.9999999F)
-				.addSpawn(MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY"), new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 100, 2, 4))
-				.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 50, 1, 4))
+				.addSpawn(MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY"), 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.GREATER_DWELLER.get(), 2, 4))
+				.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 4))
 				.build())
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 0, 6312510), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(ParticleTypes.MYCELIUM, 0.025F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 0)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.MYCELIUM, 0.025F)))
 				.build())
+			.specialEffects(generateColors(6312510))
 			.build());
 
 		context.register(ROGDORIUM_GROVE, new Biome.BiomeBuilder()
 			.generationSettings(new BiomeGenerationSettings.Builder(featureGetter, carverGetter)
-				.addCarver(GenerationStep.Carving.AIR, UGConfiguredCarvers.UNDERGARDEN_CAVE)
+				.addCarver(UGConfiguredCarvers.UNDERGARDEN_CAVE)
 				.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.ROGDORIUM_ORE_EXTRA)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, UGPlacedFeatures.ANCIENT_ROOT_EXTRA)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, UGPlacedFeatures.DEEPTURF_PATCH)
@@ -534,15 +595,18 @@ public class UGBiomes {
 			.hasPrecipitation(false)
 			.downfall(0.0F)
 			.temperature(0.8F)
-			.specialEffects(addMusicAndAmbience(generateColors(new BiomeSpecialEffects.Builder(), 4479879, 1784489), UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION)
-				.ambientParticle(new AmbientParticleSettings(UGParticleTypes.ROGDORIUM_WISP.get(), 0.01F))
+			.putAttributes(EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, DEFAULT_AMBIENCE.apply(UGSoundEvents.ABYSS_AMBIENCE, UGSoundEvents.ABYSS_AMBIENT_ADDITION))
+				.set(EnvironmentAttributes.FOG_COLOR, 4479879)
+				.set(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(UGParticleTypes.ROGDORIUM_WISP.get(), 0.01F)))
 				.build())
+			.specialEffects(generateColors(1784489))
 			.build());
 	}
 
 	private static BiomeGenerationSettings.Builder addOresAndCaves(BiomeGenerationSettings.Builder builder) {
 		return builder
-			.addCarver(GenerationStep.Carving.AIR, UGConfiguredCarvers.UNDERGARDEN_CAVE)
+			.addCarver(UGConfiguredCarvers.UNDERGARDEN_CAVE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.DEEPSOIL_ORE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.SEDIMENT_ORE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.SHIVERSTONE_ORE)
@@ -557,7 +621,7 @@ public class UGBiomes {
 
 	private static BiomeGenerationSettings.Builder addDepthsOresAndCaves(BiomeGenerationSettings.Builder builder) {
 		return builder
-			.addCarver(GenerationStep.Carving.AIR, UGConfiguredCarvers.UNDERGARDEN_CAVE)
+			.addCarver(UGConfiguredCarvers.UNDERGARDEN_CAVE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.ROGDORIUM_ORE)
 			.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UGPlacedFeatures.UTHERIUM_ORE);
 	}
@@ -572,46 +636,28 @@ public class UGBiomes {
 
 	private static MobSpawnSettings.Builder addCaveMobs(MobSpawnSettings.Builder builder) {
 		return builder
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.NARGOYLE.get(), 50, 1, 1))
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.MUNCHER.get(), 50, 1, 1))
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.SPLOOGIE.get(), 50, 1, 1));
+			.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(UGEntityTypes.NARGOYLE.get(), 1, 1))
+			.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(UGEntityTypes.MUNCHER.get(), 1, 1))
+			.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(UGEntityTypes.SPLOOGIE.get(), 1, 1));
 	}
 
 	private static MobSpawnSettings.Builder addNormalRotspawn(MobSpawnSettings.Builder builder) {
 		return builder
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTLING.get(), 100, 2, 4))
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTWALKER.get(), 100, 4, 4))
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBELCHER.get(), 100, 4, 4));
+			.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTLING.get(), 2, 4))
+			.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTWALKER.get(), 4, 4))
+			.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBELCHER.get(), 4, 4));
 	}
 
 	private static MobSpawnSettings.Builder addDangerousRotspawn(MobSpawnSettings.Builder builder) {
 		return builder
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTLING.get(), 100, 2, 4))
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTWALKER.get(), 100, 4, 4))
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBELCHER.get(), 100, 4, 4))
-			.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBEAST.get(), 100, 1, 2));
+			.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTLING.get(), 2, 4))
+			.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTWALKER.get(), 4, 4))
+			.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBELCHER.get(), 4, 4))
+			.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(UGEntityTypes.ROTBEAST.get(), 1, 2));
 	}
 
-	private static BiomeSpecialEffects.Builder addMusicAndAmbience(BiomeSpecialEffects.Builder builder, DeferredHolder<SoundEvent, SoundEvent> ambient, DeferredHolder<SoundEvent, SoundEvent> addition) {
-		return addMusicAndAmbience(builder, UGSoundEvents.MOOD, ambient, addition, 0.00555D);
-	}
-
-	private static BiomeSpecialEffects.Builder addMusicAndAmbience(BiomeSpecialEffects.Builder builder, DeferredHolder<SoundEvent, SoundEvent> mood, DeferredHolder<SoundEvent, SoundEvent> ambient, DeferredHolder<SoundEvent, SoundEvent> addition, double additionInterval) {
-		return builder
-			.ambientAdditionsSound(new AmbientAdditionsSettings(addition, additionInterval))
-			.ambientMoodSound(new AmbientMoodSettings(mood, 6000, 8, 2))
-			.ambientLoopSound(ambient)
-			.backgroundMusic(new Music(UGSoundEvents.UNDERGARDEN_MUSIC, 12000, 24000, true));
-	}
-
-	private static BiomeSpecialEffects.Builder generateColors(BiomeSpecialEffects.Builder builder, int skyFog, int grass) {
-		return builder
-			.skyColor(1186057)
-			.fogColor(skyFog)
-			.waterColor(342306)
-			.waterFogColor(332810)
-			.grassColorOverride(grass)
-			.foliageColorOverride(grass);
+	private static BiomeSpecialEffects generateColors(int grass) {
+		return new BiomeSpecialEffects.Builder().waterColor(342306).grassColorOverride(grass).foliageColorOverride(grass).build();
 	}
 
 	public static BiomeSource buildBiomeSource(HolderGetter<Biome> biomes) {

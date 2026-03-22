@@ -9,6 +9,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -42,8 +43,7 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
 	}
 
 	@Override
-	public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, RandomSource random, int freeTreeHeight, BlockPos pos, TreeConfiguration config) {
-		BlockGetter blockGetter = (BlockGetter) level;
+	public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel level, BiConsumer<BlockPos, BlockState> blockSetter, RandomSource random, int freeTreeHeight, BlockPos pos, TreeConfiguration config) {
 		int treeBaseHeight = config.trunkPlacer.getTreeHeight(random);
 		int width = this.width;
 
@@ -57,13 +57,13 @@ public class SmogstemTrunkPlacer extends TrunkPlacer {
 				for (int j1 = -l; j1 <= l; ++j1) {
 					float f2 = (float) Mth.abs(j1) - 0.25F;
 					if ((i1 == 0 && j1 == 0 || !(f1 * f1 + f2 * f2 > thiccness * thiccness)) && (i1 != -l && i1 != l && j1 != -l && j1 != l || !(random.nextFloat() > 0.75F))) {
-						BlockState blockstate = blockGetter.getBlockState(pos.offset(i1, y, j1));
+						BlockState blockstate = level.getBlockState(pos.offset(i1, y, j1));
 						if (blockstate.isAir()) {
 							placeLog(level, blockSetter, random, pos.offset(i1, y, j1), config);
 						}
 
 						if (y != 0 && l > 1) {
-							blockstate = blockGetter.getBlockState(pos.offset(i1, -y, j1));
+							blockstate = level.getBlockState(pos.offset(i1, -y, j1));
 							if (blockstate.isAir()) {
 								placeLog(level, blockSetter, random, pos.offset(i1, y, j1), config);
 							}

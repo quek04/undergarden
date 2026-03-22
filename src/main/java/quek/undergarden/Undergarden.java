@@ -44,7 +44,7 @@ public class Undergarden {
 			UGCreativeModeTabs.TABS,
 			UGCriteria.CRITERIA,
 			UGEffects.EFFECTS,
-			UGEntityTypes.ENTITIES,
+			UGEntityTypes.ENTITY_TYPES,
 			UGFeatures.FEATURES,
 			UGFluids.FLUIDS,
 			UGFluids.TYPES,
@@ -57,14 +57,14 @@ public class Undergarden {
 			UGStructures.STRUCTURES,
 			UGTreeDecoratorTypes.TREE_DECORATORS,
 			UGTrunkPlacerTypes.TRUNK_PLACERS,
-			UGArmorMaterials.ARMOR_MATERIALS,
 			UGMenuTypes.MENU_TYPES,
 			UGRecipeSerializers.RECIPE_SERIALIZERS,
 			UGRecipeTypes.RECIPE_TYPES,
 			UGDataComponents.COMPONENTS,
 			UGRecipeDisplays.RECIPE_DISPLAYS,
 			UGSlotDisplays.SLOTS,
-			UGRecipeBookCategories.RECIPE_BOOK_CATEGORIES
+			UGRecipeBookCategories.RECIPE_BOOK_CATEGORIES,
+			UGConsumeEffects.CONSUME_EFFECTS
 		};
 
 		for (DeferredRegister<?> register : registers) {

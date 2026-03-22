@@ -2,15 +2,12 @@ package quek.undergarden.item.tool.slingshot;
 
 import it.unimi.dsi.fastutil.objects.AbstractObject2ObjectFunction;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.Util;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -36,23 +33,14 @@ public class SlingshotItem extends ProjectileWeaponItem {
 
 	private static final Map<Item, AbstractSlingshotAmmoBehavior> AMMO_REGISTRY = Util.make(new Object2ObjectOpenHashMap<>(), AbstractObject2ObjectFunction::defaultReturnValue);
 
-	public SlingshotItem() {
-		super(new Properties()
-				.stacksTo(1)
-				.durability(192)
-				.rarity(Rarity.UNCOMMON)
-		);
-	}
-
-	@Override
-	public int getEnchantmentValue(ItemStack stack) {
-		return 1;
+	public SlingshotItem(Item.Properties properties) {
+		super(properties);
 	}
 
 	@Override
 	public int getMaxDamage(ItemStack stack) {
 		if (Undergarden.registryAccessStatic() != null) {
-			int longevity = stack.getEnchantmentLevel(Undergarden.registryAccessStatic().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.LONGEVITY));
+			int longevity = stack.getEnchantmentLevel(Undergarden.registryAccessStatic().getOrThrow(UGEnchantments.LONGEVITY));
 			int durability = super.getMaxDamage(stack);
 			if (longevity > 0) {
 				return durability * (longevity + 1);
@@ -86,26 +74,26 @@ public class SlingshotItem extends ProjectileWeaponItem {
 	}
 
 	@Override
-	public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
+	public boolean releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
 		if (entity instanceof Player player) {
 			boolean isCreative = player.getAbilities().instabuild;
 			ItemStack projectileStack = player.getProjectile(stack);
-			boolean selfSling = stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.SELF_SLING)) > 0;
+			boolean selfSling = stack.getEnchantmentLevel(level.registryAccess().getOrThrow(UGEnchantments.SELF_SLING)) > 0;
 
 			int useTime = getUseDuration(stack, player) - timeLeft;
 			useTime = onArrowLoose(stack, level, player, useTime, !projectileStack.isEmpty() || isCreative || selfSling);
-			if (useTime < 0) return;
+			if (useTime < 0) return isCreative;
 
 			float velocity = getProjectileVelocity(useTime);
 
 			if (selfSling) {
 				if (!player.onGround()) {
-					return;
+					return isCreative;
 				}
 				Vec3 delta = player.getLookAngle();
 				player.push(delta.x * (velocity * 2), (delta.y * velocity) + (velocity / 2), delta.z * (velocity * 2));
-				if (!level.isClientSide) {
-					stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+				if (!level.isClientSide()) {
+					stack.hurtAndBreak(1, player, player.getUsedItemHand());
 					level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_SHOOT.get(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
 				}
 				player.awardStat(Stats.ITEM_USED.get(this));
@@ -118,14 +106,14 @@ public class SlingshotItem extends ProjectileWeaponItem {
 				}
 
 				if (!((double) velocity < 0.1D)) {
-					if (!level.isClientSide) {
+					if (!level.isClientSide()) {
 						SlingshotProjectile slingshotProjectile = AMMO_REGISTRY.get(projectileStack.getItem()).getProjectile(level, entity.blockPosition(), player, projectileStack);
 
 						slingshotProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2.0F, 1.0F);
 
-						stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+						stack.hurtAndBreak(1, player, player.getUsedItemHand());
 
-						int ricochet = stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.RICOCHET));
+						int ricochet = stack.getEnchantmentLevel(level.registryAccess().getOrThrow(UGEnchantments.RICOCHET));
 						if (ricochet > 0) {
 							slingshotProjectile.setRicochetTimes(ricochet + 1);
 						}
@@ -144,33 +132,35 @@ public class SlingshotItem extends ProjectileWeaponItem {
 					}
 
 					player.awardStat(Stats.ITEM_USED.get(this));
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+	public InteractionResult use(Level level, Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		boolean hasAmmo = !player.getProjectile(stack).isEmpty();
-		boolean selfSling = stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.SELF_SLING)) > 0;
+		boolean selfSling = stack.getEnchantmentLevel(level.registryAccess().getOrThrow(UGEnchantments.SELF_SLING)) > 0;
 
-		InteractionResultHolder<ItemStack> ret = onArrowNock(stack, level, player, hand, hasAmmo);
+		InteractionResult ret = onArrowNock(stack, level, player, hand, hasAmmo);
 		if (ret != null) return ret;
 
-		if (!player.getAbilities().instabuild && !hasAmmo && !selfSling) {
-			return InteractionResultHolder.fail(stack);
+		if (!player.hasInfiniteMaterials() && !hasAmmo && !selfSling) {
+			return InteractionResult.FAIL;
 		} else {
 			player.startUsingItem(hand);
 			level.playSound(null, player.getX(), player.getY(), player.getZ(), UGSoundEvents.SLINGSHOT_DRAW.get(), SoundSource.PLAYERS, 0.5F, 1.0F);
-			return InteractionResultHolder.consume(stack);
+			return InteractionResult.CONSUME;
 		}
 	}
 
-	public static InteractionResultHolder<ItemStack> onArrowNock(ItemStack stack, Level level, Player player, InteractionHand hand, boolean hasAmmo) {
+	public static InteractionResult onArrowNock(ItemStack stack, Level level, Player player, InteractionHand hand, boolean hasAmmo) {
 		ArrowNockEvent event = new ArrowNockEvent(player, stack, hand, level, hasAmmo);
 		if (NeoForge.EVENT_BUS.post(event).isCanceled())
-			return new InteractionResultHolder<>(InteractionResult.FAIL, stack);
+			return InteractionResult.FAIL;
 		return event.getAction();
 	}
 
@@ -197,12 +187,7 @@ public class SlingshotItem extends ProjectileWeaponItem {
 	}
 
 	@Override
-	public UseAnim getUseAnimation(ItemStack stack) {
-		return UseAnim.BOW;
-	}
-
-	@Override
-	public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-		return repair.is(ItemTags.PLANKS);
+	public ItemUseAnimation getUseAnimation(ItemStack stack) {
+		return ItemUseAnimation.BOW;
 	}
 }

@@ -23,7 +23,7 @@ public class UthericInfectionLayer<S extends LivingEntityRenderState, M extends 
 
 	@Override
 	public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, S state, float yRot, float xRot) {
-		Double infectionLevel = state.getRenderData(UndergardenClient.UTHERIUM_INFECTION);
+		Float infectionLevel = state.getRenderData(UndergardenClient.UTHERIUM_INFECTION);
 		if (infectionLevel != null && infectionLevel > 0) {
 			submitNodeCollector.order(1).submitModel(this.getParentModel(), state, poseStack, RenderTypes.entityTranslucent(TEXTURE), state.lightCoords, OverlayTexture.NO_OVERLAY, ARGB.color((int) (infectionLevel * 2) + 128, 255, 255, 255), null, state.outlineColor, null);
 		}

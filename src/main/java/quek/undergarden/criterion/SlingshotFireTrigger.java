@@ -7,7 +7,9 @@ import net.minecraft.advancements.criterion.ContextAwarePredicate;
 import net.minecraft.advancements.criterion.EntityPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.SimpleCriterionTrigger;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import quek.undergarden.registry.UGCriteria;
@@ -34,12 +36,12 @@ public class SlingshotFireTrigger extends SimpleCriterionTrigger<SlingshotFireTr
 						ItemPredicate.CODEC.optionalFieldOf("ammo").forGetter(SlingshotFireTrigger.TriggerInstance::ammo))
 				.apply(instance, SlingshotFireTrigger.TriggerInstance::new));
 
-		public static Criterion<?> shotItem(ItemLike slingshot, ItemLike ammo) {
-			return UGCriteria.SLINGSHOT_FIRE.get().createCriterion(new SlingshotFireTrigger.TriggerInstance(Optional.empty(), Optional.of(ItemPredicate.Builder.item().of(slingshot).build()), Optional.of(ItemPredicate.Builder.item().of(ammo).build())));
+		public static Criterion<?> shotItem(HolderGetter<Item> items, ItemLike slingshot, ItemLike ammo) {
+			return UGCriteria.SLINGSHOT_FIRE.get().createCriterion(new SlingshotFireTrigger.TriggerInstance(Optional.empty(), Optional.of(ItemPredicate.Builder.item().of(items, slingshot).build()), Optional.of(ItemPredicate.Builder.item().of(items, ammo).build())));
 		}
 
-		public static Criterion<?> shotItem(ItemLike ammo) {
-			return shotItem(UGItems.SLINGSHOT.get(), ammo);
+		public static Criterion<?> shotItem(HolderGetter<Item> items, ItemLike ammo) {
+			return shotItem(items, UGItems.SLINGSHOT.get(), ammo);
 		}
 
 		public boolean matches(ItemStack slingshot, ItemStack ammo) {

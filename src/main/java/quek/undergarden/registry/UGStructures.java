@@ -8,9 +8,8 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Pools;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.WeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -98,7 +97,7 @@ public class UGStructures {
 						MobCategory.MONSTER,
 						new StructureSpawnOverride(
 							StructureSpawnOverride.BoundingBoxType.PIECE,
-							WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 4))
+							WeightedList.of(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 4))
 						)
 					)
 				)
@@ -110,7 +109,7 @@ public class UGStructures {
 			15,
 			ConstantHeight.of(VerticalAnchor.aboveBottom(112)),
 			Optional.empty(),
-			116,
+			new JigsawStructure.MaxDistance(116),
 			List.of(),
 			DimensionPadding.ZERO,
 			LiquidSettings.IGNORE_WATERLOGGING
@@ -125,7 +124,7 @@ public class UGStructures {
 			5,
 			UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.TOP),
 			Optional.empty(),
-			10,
+			new JigsawStructure.MaxDistance(10),
 			List.of(),
 			DimensionPadding.ZERO,
 			LiquidSettings.APPLY_WATERLOGGING
@@ -137,7 +136,7 @@ public class UGStructures {
 						MobCategory.MONSTER,
 						new StructureSpawnOverride(
 							StructureSpawnOverride.BoundingBoxType.STRUCTURE,
-							WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 1, 1))
+							WeightedList.of(new MobSpawnSettings.SpawnerData(UGEntityTypes.DENIZEN.get(), 1, 1))
 						)
 					)
 				)
@@ -149,7 +148,7 @@ public class UGStructures {
 			5,
 			UniformHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(0)),
 			Optional.empty(),
-			25,
+			new JigsawStructure.MaxDistance(25),
 			List.of(),
 			DimensionPadding.ZERO,
 			LiquidSettings.IGNORE_WATERLOGGING
@@ -161,7 +160,7 @@ public class UGStructures {
 						MobCategory.MONSTER,
 						new StructureSpawnOverride(
 							StructureSpawnOverride.BoundingBoxType.PIECE,
-							WeightedRandomList.create(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1, 1))
+							WeightedList.of(new MobSpawnSettings.SpawnerData(UGEntityTypes.FORGOTTEN.get(), 1, 1))
 						)
 					)
 				)
@@ -174,7 +173,7 @@ public class UGStructures {
 			UniformHeight.of(VerticalAnchor.absolute(-54), VerticalAnchor.absolute(-31)),
 			false,
 			Optional.empty(),
-			80,
+			new JigsawStructure.MaxDistance(80),
 			List.of(),
 			new DimensionPadding(10),
 			LiquidSettings.IGNORE_WATERLOGGING

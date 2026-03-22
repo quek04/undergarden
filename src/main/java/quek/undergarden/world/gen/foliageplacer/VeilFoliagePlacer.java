@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -31,7 +32,7 @@ public class VeilFoliagePlacer extends FoliagePlacer {
 	}
 
 	@Override
-	protected void createFoliage(LevelSimulatedReader level, FoliageSetter blockSetter, RandomSource random, TreeConfiguration config, int maxFreeTreeHeight, FoliageAttachment attachment, int height, int radius, int offset) {
+	protected void createFoliage(WorldGenLevel level, FoliageSetter blockSetter, RandomSource random, TreeConfiguration config, int treeHeight, FoliageAttachment attachment, int foliageHeight, int radius, int offset) {
 		tryPlaceLeaf(level, blockSetter, random, config, attachment.pos());
 		circle(-1, radius - 2, false, level, blockSetter, random, config, attachment.pos());
 		circle(-2, radius - 2, false, level, blockSetter, random, config, attachment.pos());
@@ -39,7 +40,7 @@ public class VeilFoliagePlacer extends FoliagePlacer {
 		circle(-4, radius, true, level, blockSetter, random, config, attachment.pos());
 	}
 
-	private void circle(final int centerY, final int radius, boolean veil, LevelSimulatedReader level, FoliageSetter blockSetter, RandomSource random, TreeConfiguration config, BlockPos pos) {
+	private void circle(final int centerY, final int radius, boolean veil, WorldGenLevel level, FoliageSetter blockSetter, RandomSource random, TreeConfiguration config, BlockPos pos) {
 		int d = (5 - radius * 4) / 4;
 		int x = 0;
 		int z = radius;

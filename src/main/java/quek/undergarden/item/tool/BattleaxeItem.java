@@ -1,42 +1,47 @@
 package quek.undergarden.item.tool;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import quek.undergarden.Undergarden;
-import quek.undergarden.registry.UGItems;
 
-import java.util.List;
-
-public class BattleaxeItem extends SwordItem {
+public class BattleaxeItem extends Item {
 
 	private static final Identifier ATTACK_KNOCKBACK_ID = Undergarden.prefix("attack_knockback");
 
-	public BattleaxeItem(Tier tier, Properties properties) {
-		super(tier, properties);
+	public BattleaxeItem(Item.Properties properties) {
+		super(properties);
 	}
 
-	public static ItemAttributeModifiers createAttributes(Tier tier, int damage, float speed) {
+	public static Item.Properties createBattleaxeProperties(ToolMaterial material, float attackDamageBaseline, float attackSpeedBaseline, Item.Properties properties)  {
+		return properties
+			.durability(material.durability())
+			.repairable(material.repairItems())
+			.enchantable(material.enchantmentValue())
+			.attributes(createAttributes(material, attackDamageBaseline, attackSpeedBaseline))
+			.component(DataComponents.WEAPON, new Weapon(1));
+	}
+
+	public static ItemAttributeModifiers createAttributes(ToolMaterial material, float attackDamageBaseline, float attackSpeedBaseline) {
 		return ItemAttributeModifiers.builder()
 			.add(
 				Attributes.ATTACK_DAMAGE,
-				new AttributeModifier(BASE_ATTACK_DAMAGE_ID, (float) damage + tier.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
+				new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, attackDamageBaseline + material.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
 				EquipmentSlotGroup.MAINHAND
 			)
 			.add(
 				Attributes.ATTACK_SPEED,
-				new AttributeModifier(BASE_ATTACK_SPEED_ID, speed, AttributeModifier.Operation.ADD_VALUE),
+				new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, attackSpeedBaseline, AttributeModifier.Operation.ADD_VALUE),
 				EquipmentSlotGroup.MAINHAND
 			)
 			.add(
@@ -45,13 +50,6 @@ public class BattleaxeItem extends SwordItem {
 				EquipmentSlotGroup.MAINHAND
 			)
 			.build();
-	}
-
-	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-		if (stack.is(UGItems.FORGOTTEN_BATTLEAXE.get())) {
-			tooltip.add(Component.translatable("tooltip.undergarden.forgotten_weapon").withStyle(ChatFormatting.GREEN));
-		}
 	}
 
 	@Override

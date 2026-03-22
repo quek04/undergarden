@@ -42,7 +42,7 @@ public class ReplaceLeafDecorator extends TreeDecorator {
 
 		context.leaves().forEach(pos -> {
 			if (random.nextFloat() < this.probability) {
-				context.setBlock(pos, blockProvider.getState(random, pos));
+				context.setBlock(pos, blockProvider.getState(context.level(), random, pos));
 			}
 		});
 	}

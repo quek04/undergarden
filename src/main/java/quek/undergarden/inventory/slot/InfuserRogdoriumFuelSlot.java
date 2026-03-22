@@ -1,18 +1,15 @@
 package quek.undergarden.inventory.slot;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.Container;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
 import quek.undergarden.inventory.InfuserMenu;
 
 public class InfuserRogdoriumFuelSlot extends Slot {
 
-	private static final Identifier ICON = Undergarden.prefix("item/rogdorium_slot");
+	private static final Identifier ICON = Undergarden.prefix("container/slot/rogdorium");
 	private final InfuserMenu menu;
 
 	public InfuserRogdoriumFuelSlot(InfuserMenu menu, Container container, int slot, int x, int y) {
@@ -26,8 +23,8 @@ public class InfuserRogdoriumFuelSlot extends Slot {
 	}
 
 	@Override
-	public @Nullable Pair<Identifier, Identifier> getNoItemIcon() {
-		return Pair.of(InventoryMenu.BLOCK_ATLAS, ICON);
+	public Identifier getNoItemIcon() {
+		return ICON;
 	}
 
 	@Override

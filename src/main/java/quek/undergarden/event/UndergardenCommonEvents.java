@@ -5,18 +5,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.animal.AbstractFish;
-import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -32,7 +27,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -54,28 +48,18 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
+import net.neoforged.neoforge.transfer.fluid.ItemAccessFluidHandler;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.command.InfectionCommand;
-import quek.undergarden.compat.UGCreateCompat;
-import quek.undergarden.entity.Minion;
 import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
-import quek.undergarden.entity.monster.Forgotten;
-import quek.undergarden.entity.monster.boss.ForgottenGuardian;
-import quek.undergarden.entity.monster.cavern.CavernMonster;
-import quek.undergarden.entity.monster.cavern.Muncher;
-import quek.undergarden.entity.monster.cavern.Nargoyle;
-import quek.undergarden.entity.monster.cavern.Sploogie;
 import quek.undergarden.entity.monster.denizen.Denizen;
 import quek.undergarden.entity.monster.rotspawn.*;
-import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.slingshot.*;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
@@ -131,7 +115,7 @@ public class UndergardenCommonEvents {
 	}
 
 	private static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerItem(Capabilities.FluidHandler.ITEM, (object, context) -> new FluidHandlerItemStack(UGDataComponents.STORED_FLUID, object, FluidType.BUCKET_VOLUME), UGItems.CLOGGRUM_BUCKET);
+		event.registerItem(Capabilities.Fluid.ITEM, (object, context) -> new ItemAccessFluidHandler(context, UGDataComponents.STORED_FLUID.get(), FluidType.BUCKET_VOLUME), UGItems.CLOGGRUM_BUCKET);
 	}
 
 	private static void registerBETypes(BlockEntityTypeAddBlocksEvent event) {
@@ -160,6 +144,7 @@ public class UndergardenCommonEvents {
 		event.enqueueWork(() -> {
 			UGCauldronInteractions.register();
 			UGDispenserBehaviors.register();
+			UGRecipePropertySets.registerPropertySets();
 
 			FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
 
@@ -217,7 +202,7 @@ public class UndergardenCommonEvents {
 			SlingshotItem.registerAmmo(UGBlocks.UTHERIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new UthericGronglet(shooter, level, stack);
+					return new Gronglet(shooter, level, stack);
 				}
 
 				@Override
@@ -229,7 +214,7 @@ public class UndergardenCommonEvents {
 			SlingshotItem.registerAmmo(UGBlocks.ROGDORIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
 				@Override
 				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new RogdoricGronglet(shooter, level, stack);
+					return new Gronglet(shooter, level, stack);
 				}
 
 				@Override
@@ -306,53 +291,16 @@ public class UndergardenCommonEvents {
 		});
 	}
 
-	private static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
-		event.register(UGEntityTypes.GWIBLING.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Gwibling::canGwiblingSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.DWELLER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.GREATER_DWELLER.get(), SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GreaterDweller::checkGreaterDwellerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.ROTLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.ROTWALKER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.ROTBEAST.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.BRUTE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.SCINTLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Scintling::canScintlingSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.GLOOMPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.STONEBORN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Stoneborn::canStonebornSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.NARGOYLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.MUNCHER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.SPLOOGIE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CavernMonster::canCreatureSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.GWIB.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Gwib::canGwibSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.MOG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.SMOG_MOG.get(), SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SmogMog::checkSmogMogSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.FORGOTTEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.DENIZEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.ROTBELCHER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, RotspawnMonster::canRotspawnSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-		event.register(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+	@SuppressWarnings("unchecked") //entities added this way will always extend LivingEntity
+	private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+		UGEntityTypes.ATTRIBUTES.forEach((type, builder) -> event.put((EntityType<? extends LivingEntity>) type.value(), builder.get().build()));
 	}
 
-	private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-		event.put(UGEntityTypes.ROTLING.get(), Rotling.registerAttributes().build());
-		event.put(UGEntityTypes.ROTWALKER.get(), Rotwalker.registerAttributes().build());
-		event.put(UGEntityTypes.ROTBEAST.get(), Rotbeast.registerAttributes().build());
-		event.put(UGEntityTypes.ROTBELCHER.get(), Rotbelcher.registerAttributes().build());
-		event.put(UGEntityTypes.DWELLER.get(), Dweller.registerAttributes().build());
-		event.put(UGEntityTypes.GREATER_DWELLER.get(), GreaterDweller.registerAttributes().build());
-		event.put(UGEntityTypes.GWIBLING.get(), AbstractFish.createAttributes().build());
-		event.put(UGEntityTypes.BRUTE.get(), Brute.registerAttributes().build());
-		event.put(UGEntityTypes.SCINTLING.get(), Scintling.registerAttributes().build());
-		event.put(UGEntityTypes.GLOOMPER.get(), Gloomper.registerAttributes().build());
-		event.put(UGEntityTypes.STONEBORN.get(), Stoneborn.registerAttributes().build());
-		event.put(UGEntityTypes.NARGOYLE.get(), Nargoyle.registerAttributes().build());
-		event.put(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), ForgottenGuardian.registerAttributes().build());
-		event.put(UGEntityTypes.MUNCHER.get(), Muncher.registerAttributes().build());
-		event.put(UGEntityTypes.SPLOOGIE.get(), Sploogie.registerAttributes().build());
-		event.put(UGEntityTypes.MINION.get(), Minion.registerAttributes().build());
-		event.put(UGEntityTypes.GWIB.get(), Gwib.registerAttributes().build());
-		event.put(UGEntityTypes.MOG.get(), Mog.registerAttributes().build());
-		event.put(UGEntityTypes.SMOG_MOG.get(), SmogMog.registerAttributes().build());
-		event.put(UGEntityTypes.FORGOTTEN.get(), Forgotten.registerAttributes().build());
-		event.put(UGEntityTypes.DENIZEN.get(), Denizen.registerAttributes().build());
-		event.put(UGEntityTypes.MYSTERIOUS_POT.get(), MysteriousPot.registerAttributes().build());
+	@SuppressWarnings("unchecked") //PAIN
+	private static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+		UGEntityTypes.SPAWN_PREDICATES.forEach((type, predicate) -> event.register((EntityType<Entity>) type.value(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (SpawnPlacements.SpawnPredicate<Entity>) predicate, RegisterSpawnPlacementsEvent.Operation.REPLACE));
 	}
+
 
 	private static void registerPotionRecipes(RegisterBrewingRecipesEvent event) {
 		PotionBrewing.Builder builder = event.getBuilder();
@@ -416,7 +364,7 @@ public class UndergardenCommonEvents {
 
 	private static void ignoreEffects(MobEffectEvent.Applicable event) {
 		if (event.getEffectInstance() != null) {
-			if (event.getEffectInstance().is(UGEffects.GOOEY) && event.getEntity().getType().is(UGTags.Entities.IMMUNE_TO_GOOEY_EFFECT)) {
+			if (event.getEffectInstance().is(UGEffects.GOOEY) && event.getEntity().is(UGTags.Entities.IMMUNE_TO_GOOEY_EFFECT)) {
 				event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
 			}
 		}
@@ -451,18 +399,13 @@ public class UndergardenCommonEvents {
 	}
 
 	private static void lookedAtEndermanWithGloomgourd(EnderManAngerEvent event) {
-		if (!event.isCanceled() && !event.getPlayer().isCreative() && isPlayerLookingAtEnderman(event.getPlayer(), event.getEntity()) && !event.getEntity().isAngryAt(event.getPlayer()) && event.getPlayer().getItemBySlot(EquipmentSlot.HEAD).is(UGBlocks.CARVED_GLOOMGOURD.get().asItem())) {
-			event.getEntity().level().getEntitiesOfClass(EnderMan.class, event.getEntity().getBoundingBox().inflate(64.0F), enderMan -> enderMan.hasLineOfSight(event.getPlayer())).forEach(enderMan -> enderMan.setTarget(event.getPlayer()));
+		if (!event.isCanceled() && event.getEntity().level() instanceof ServerLevel level) {
+			EnderMan enderMan = event.getEntity();
+			Player player = event.getPlayer();
+			if (!player.isCreative() && player.getItemBySlot(EquipmentSlot.HEAD).is(UGBlocks.CARVED_GLOOMGOURD.asItem()) && !event.getEntity().isAngryAt(player, level) && enderMan.isLookingAtMe(player, 0.025, true, false, enderMan.getEyeY())) {
+				level.getEntitiesOfClass(EnderMan.class, event.getEntity().getBoundingBox().inflate(64.0F), checked -> checked.hasLineOfSight(event.getPlayer())).forEach(checked -> checked.setTarget(player));
+			}
 		}
-	}
-
-	private static boolean isPlayerLookingAtEnderman(Player player, EnderMan enderMan) {
-		Vec3 vec3 = player.getViewVector(1.0F).normalize();
-		Vec3 vec31 = new Vec3(enderMan.getX() - player.getX(), enderMan.getEyeY() - player.getEyeY(), enderMan.getZ() - player.getZ());
-		double d0 = vec31.length();
-		vec31 = vec31.normalize();
-		double d1 = vec3.dot(vec31);
-		return d1 > 1.0D - 0.025D / d0 && player.hasLineOfSight(enderMan);
 	}
 
 	public static void angerDenizensWhenCampfireIsBroken(BlockEvent.BreakEvent event) {

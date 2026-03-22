@@ -2,7 +2,6 @@ package quek.undergarden.recipe;
 
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.network.chat.ChatTypeDecoration;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.tags.TagKey;
@@ -10,10 +9,10 @@ import net.minecraft.util.ByIdMap;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.Level;
 import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGRecipeBookCategories;
 import quek.undergarden.registry.UGRecipeTypes;
 import quek.undergarden.registry.UGTags;
 
@@ -22,22 +21,33 @@ import java.util.function.IntFunction;
 
 public interface InfusingRecipe extends Recipe<SingleRecipeInput> {
 
+	Ingredient input();
+
+	InfusingBookCategory category();
+
 	SlotType getRecipeSlotType();
 
 	float experience();
 
 	int infusingTime();
 
-	InfusingBookCategory category();
-
 	@Override
-	default ItemStack getToastSymbol() {
-		return new ItemStack(UGBlocks.INFUSER);
+	default boolean matches(SingleRecipeInput input, Level level) {
+		return this.input().test(input.item());
 	}
 
 	@Override
-	default RecipeType<?> getType() {
+	default RecipeType<? extends Recipe<SingleRecipeInput>> getType() {
 		return UGRecipeTypes.INFUSING.get();
+	}
+
+	@Override
+	default RecipeBookCategory recipeBookCategory() {
+		return switch (this.category()) {
+			case CORRUPTING -> UGRecipeBookCategories.INFUSER_CORRUPTING.get();
+			case PURIFYING -> UGRecipeBookCategories.INFUSER_PURIFYING.get();
+			case MISC -> UGRecipeBookCategories.INFUSER_MISC.get();
+		};
 	}
 
 	@Override

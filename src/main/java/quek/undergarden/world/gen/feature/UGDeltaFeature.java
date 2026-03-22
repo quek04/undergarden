@@ -81,7 +81,7 @@ public class UGDeltaFeature extends DeltaFeature {
 
 	private static boolean isClear(LevelAccessor level, BlockPos pos, DeltaFeatureConfiguration config) {
 		BlockState state = level.getBlockState(pos);
-		if (state.is(config.contents().getBlock()) || CANNOT_REPLACE.contains(state.getBlock()) || !state.isSolidRender(level, pos)) {
+		if (state.is(config.contents().getBlock()) || CANNOT_REPLACE.contains(state.getBlock()) || !state.isSolidRender()) {
 			return false;
 		} else {
 			for (Direction direction : DIRECTIONS) {

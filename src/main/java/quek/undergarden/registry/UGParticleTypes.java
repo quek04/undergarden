@@ -1,8 +1,6 @@
 package quek.undergarden.registry;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.client.particle.ParticleRenderType;
-import net.minecraft.core.particles.ParticleGroup;
 import net.minecraft.core.particles.ParticleLimit;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;

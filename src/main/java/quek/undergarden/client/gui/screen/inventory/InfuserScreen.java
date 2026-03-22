@@ -21,7 +21,7 @@ public class InfuserScreen extends AbstractRecipeBookScreen<InfuserMenu> {
 	private static final Identifier PROGRESS_BAR_LEFT = Undergarden.prefix("container/infuser/progress_bar_left");
 
 	public InfuserScreen(InfuserMenu menu, Inventory playerInventory, Component title) {
-		super(menu, new InfuserRecipeBookComponent(), playerInventory, title);
+		super(menu, new InfuserRecipeBookComponent(menu), playerInventory, title);
 	}
 
 	@Override

@@ -33,7 +33,7 @@ public class UGEnchantments {
 				1,
 				EquipmentSlotGroup.MAINHAND
 			)
-		).exclusiveWith(enchantments.getOrThrow(UGTags.Enchantments.SLINGSHOT_EXCLUSIVE)).build(RICOCHET.location()));
+		).exclusiveWith(enchantments.getOrThrow(UGTags.Enchantments.SLINGSHOT_EXCLUSIVE)).build(RICOCHET.identifier()));
 
 		context.register(LONGEVITY, Enchantment.enchantment(
 			Enchantment.definition(
@@ -45,7 +45,7 @@ public class UGEnchantments {
 				1,
 				EquipmentSlotGroup.MAINHAND
 			)
-		).build(LONGEVITY.location()));
+		).build(LONGEVITY.identifier()));
 
 		context.register(SELF_SLING, Enchantment.enchantment(
 			Enchantment.definition(
@@ -57,6 +57,6 @@ public class UGEnchantments {
 				1,
 				EquipmentSlotGroup.MAINHAND
 			)
-		).exclusiveWith(enchantments.getOrThrow(UGTags.Enchantments.SLINGSHOT_EXCLUSIVE)).build(SELF_SLING.location()));
+		).exclusiveWith(enchantments.getOrThrow(UGTags.Enchantments.SLINGSHOT_EXCLUSIVE)).build(SELF_SLING.identifier()));
 	}
 }

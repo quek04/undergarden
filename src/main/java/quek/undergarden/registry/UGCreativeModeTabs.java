@@ -1,6 +1,5 @@
 package quek.undergarden.registry;
 
-import net.minecraft.Util;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -8,9 +7,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.Util;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
@@ -39,16 +40,16 @@ public class UGCreativeModeTabs {
 			.icon(() -> new ItemStack(UGBlocks.DEEPTURF_BLOCK.get()))
 			.displayItems((parameters, output) -> {
 				parameters.holders().lookup(Registries.ENCHANTMENT).ifPresent(enchantmentRegistryLookup -> {
-					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.RICOCHET), 3)));
-					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.LONGEVITY), 3)));
-					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.SELF_SLING), 1)));
+					output.accept(EnchantmentHelper.createBook(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.RICOCHET), 3)));
+					output.accept(EnchantmentHelper.createBook(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.LONGEVITY), 3)));
+					output.accept(EnchantmentHelper.createBook(new EnchantmentInstance(enchantmentRegistryLookup.getOrThrow(UGEnchantments.SELF_SLING), 1)));
 				});
 				UGItems.ITEMS.getEntries().forEach(item -> {
-					if (!DONT_INCLUDE.contains(item) && !item.getKey().location().getPath().contains("tremblecrust")) {
+					if (!DONT_INCLUDE.contains(item) && !item.getKey().identifier().getPath().contains("tremblecrust")) {
 						output.accept(item.get());
 					}
-					if (item.get() instanceof ArmorItem armorItem) {
-						ItemStack armorStack = new ItemStack(armorItem);
+					if (item.components().has(DataComponents.EQUIPPABLE) && item.components().get(DataComponents.EQUIPPABLE).assetId().isPresent()) {
+						ItemStack armorStack = new ItemStack(item);
 						armorStack.set(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.setInfusionAmount(RogdoriumInfusion.DEFAULT.infusionMax()));
 						output.accept(armorStack);
 					}

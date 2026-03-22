@@ -16,8 +16,10 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import quek.undergarden.entity.projectile.slingshot.DepthrockPebble;
+import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class Sploogie extends CavernMonster implements RangedAttackMob {
@@ -59,7 +61,7 @@ public class Sploogie extends CavernMonster implements RangedAttackMob {
 
 	@Override
 	public void performRangedAttack(LivingEntity target, float distanceFactor) {
-		DepthrockPebble pebble = new DepthrockPebble(this.level(), this);
+		DepthrockPebble pebble = new DepthrockPebble(this.level(), this, new ItemStack(UGItems.DEPTHROCK_PEBBLE.get()));
 		double xDistance = target.getX() - this.getX();
 		double yDistance = target.getY(0.3333333333333333D) - pebble.getY();
 		double zDistance = target.getZ() - this.getZ();

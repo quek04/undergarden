@@ -30,6 +30,16 @@ public class UGTags {
 		public static final TagKey<Item> INFUSER_ROGDORIUM_FUELS = tag("infuser_rogdorium_fuels");
 		public static final TagKey<Item> ACCELERATED_DREADROCK_BREAKING = tag("accelerated_dreadrock_breaking");
 
+		public static final TagKey<Item> CLOGGRUM_TOOL_MATERIALS = tag("cloggrum_tool_materials");
+		public static final TagKey<Item> FROSTSTEEL_TOOL_MATERIALS = tag("froststeel_tool_materials");
+		public static final TagKey<Item> UTHERIC_TOOL_MATERIALS = tag("utheric_tool_materials");
+		public static final TagKey<Item> FORGOTTEN_TOOL_MATERIALS = tag("forgotten_tool_materials");
+
+		public static final TagKey<Item> REPAIRS_CLOGGRUM_ARMOR = tag("repairs_cloggrum_armor");
+		public static final TagKey<Item> REPAIRS_FROSTSTEEL_ARMOR = tag("repairs_froststeel_armor");
+		public static final TagKey<Item> REPAIRS_UTHERIC_ARMOR = tag("repairs_utheric_armor");
+		public static final TagKey<Item> REPAIRS_ANCIENT_ARMOR = tag("repairs_ancient_armor");
+
 		public static final TagKey<Item> RAW_MATERIALS_CLOGGRUM = commonTag("raw_materials/cloggrum");
 		public static final TagKey<Item> RAW_MATERIALS_FROSTSTEEL = commonTag("raw_materials/froststeel");
 

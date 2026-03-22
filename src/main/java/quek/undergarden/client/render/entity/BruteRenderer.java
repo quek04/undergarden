@@ -23,6 +23,11 @@ public class BruteRenderer extends MobRenderer<Brute, LivingEntityRenderState, B
 	}
 
 	@Override
+	public LivingEntityRenderState createRenderState() {
+		return new LivingEntityRenderState();
+	}
+
+	@Override
 	public Identifier getTextureLocation(LivingEntityRenderState state) {
 		return BRUTE;
 	}

@@ -36,8 +36,8 @@ public class Minion extends AbstractGolem implements RangedAttackMob {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.5D, 20, 10.0F));
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Mob.class, 10, true, false, (entity) ->
-				!(entity.getType() == UGEntityTypes.STONEBORN.get()) && entity instanceof Enemy || entity.getType().is(UGTags.Entities.ROTSPAWN) || entity.getType().is(UGTags.Entities.CAVERN_CREATURE))
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Mob.class, 10, true, false, (entity, level) ->
+				!(entity.getType() == UGEntityTypes.STONEBORN.get()) && entity instanceof Enemy || entity.is(UGTags.Entities.ROTSPAWN) || entity.is(UGTags.Entities.CAVERN_CREATURE))
 		);
 	}
 
@@ -79,11 +79,9 @@ public class Minion extends AbstractGolem implements RangedAttackMob {
 				return InteractionResult.PASS;
 			} else {
 				this.playSound(UGSoundEvents.MINION_REPAIR.get(), 1.0F, 2.0F);
-				if (!player.getAbilities().instabuild) {
-					itemstack.shrink(1);
-				}
+				itemstack.consume(1, player);
 
-				return InteractionResult.sidedSuccess(this.level().isClientSide());
+				return InteractionResult.SUCCESS;
 			}
 		}
 	}

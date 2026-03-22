@@ -4,15 +4,21 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.recipebook.GhostSlots;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
+import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.context.ContextMap;
 import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeBookCategories;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import quek.undergarden.inventory.InfuserMenu;
 import quek.undergarden.recipe.display.CatalystSlotDisplay;
 import quek.undergarden.recipe.display.InfusingRecipeDisplay;
+import quek.undergarden.registry.UGBlocks;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGRecipeBookCategories;
 
 import java.util.List;
 
@@ -25,9 +31,14 @@ public class InfuserRecipeBookComponent extends RecipeBookComponent<InfuserMenu>
 		Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
 	);
 	private static final Component FILTER_NAME = Component.translatable("gui.undergarden.recipebook.toggleRecipes.infusable");
+	private static final List<RecipeBookComponent.TabInfo> TABS = List.of(
+		new RecipeBookComponent.TabInfo(UGItems.UTHERIUM_CRYSTAL.get(), UGRecipeBookCategories.INFUSER_CORRUPTING.get()),
+		new RecipeBookComponent.TabInfo(UGItems.ROGDORIUM.get(), UGRecipeBookCategories.INFUSER_PURIFYING.get()),
+		new RecipeBookComponent.TabInfo(UGBlocks.GRONGLET.asItem(), UGRecipeBookCategories.INFUSER_MISC.get())
+	);
 
 	public InfuserRecipeBookComponent(InfuserMenu menu) {
-		super(menu, List.of());
+		super(menu, TABS);
 	}
 
 	@Override

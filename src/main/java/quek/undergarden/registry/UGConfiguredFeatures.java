@@ -5,10 +5,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -72,25 +70,25 @@ public class UGConfiguredFeatures {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GRONGLEGROWTH_DELTA = create("gronglegrowth_delta");
 
 	//vegetation
-	public static final ResourceKey<ConfiguredFeature<?, ?>> AMOROUS_BRISTLE_PATCH = create("amorous_bristle_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> MISERABELL_PATCH = create("miserabell_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> BUTTERBUNCH_PATCH = create("butterbunch_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DEEPTURF_PATCH = create("deepturf_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_DEEPTURF_PATCH = create("ashen_deepturf_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_DEEPTURF_PATCH = create("frozen_deepturf_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> SHIMMERWEED_PATCH = create("shimmerweed_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHROCK_PEBBLE_PATCH = create("depthrock_pebble_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> DITCHBULB_PATCH = create("ditchbulb_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_DEEPTURF_PATCH = create("tall_deepturf_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_SHIMMERWEED_PATCH = create("tall_shimmerweed_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> INDIGO_MUSHROOM_PATCH = create("indigo_mushroom_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> VEIL_MUSHROOM_PATCH = create("veil_mushroom_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> INK_MUSHROOM_PATCH = create("ink_mushroom_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOD_MUSHROOM_PATCH = create("blood_mushroom_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> PUFF_MUSHROOM_PATCH = create("puff_mushroom_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERBEAN_BUSH_PATCH = create("underbean_bush_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> BLISTERBERRY_BUSH_PATCH = create("blisterberry_bush_patch");
-	public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMGOURD_PATCH = create("gloomgourd_patch");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> AMOROUS_BRISTLE = create("amorous_bristle");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> MISERABELL = create("miserabell");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> BUTTERBUNCH = create("butterbunch");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DEEPTURF = create("deepturf");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_DEEPTURF = create("ashen_deepturf");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_DEEPTURF = create("frozen_deepturf");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> SHIMMERWEED = create("shimmerweed");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DEPTHROCK_PEBBLE = create("depthrock_pebble");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> DITCHBULB = create("ditchbulb");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_DEEPTURF = create("tall_deepturf");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_SHIMMERWEED = create("tall_shimmerweed");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> INDIGO_MUSHROOM = create("indigo_mushroom");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> VEIL_MUSHROOM = create("veil_mushroom");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> INK_MUSHROOM = create("ink_mushroom");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOD_MUSHROOM = create("blood_mushroom");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PUFF_MUSHROOM = create("puff_mushroom");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERBEAN_BUSH = create("underbean_bush");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> BLISTERBERRY_BUSH = create("blisterberry_bush");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMGOURD = create("gloomgourd");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> DROOPVINE = create("droopvine");
 	public static final ResourceKey<ConfiguredFeature<?, ?>> GLITTERKELP = create("glitterkelp");
 
@@ -150,25 +148,25 @@ public class UGConfiguredFeatures {
 		context.register(GRONGLEGROWTH_DELTA, new ConfiguredFeature<>(UGFeatures.DELTA.get(), new DeltaFeatureConfiguration(Blocks.WATER.defaultBlockState(), UGBlocks.SEDIMENT.get().defaultBlockState(), UniformInt.of(3, 4), UniformInt.of(2, 4))));
 
 		//vegetation
-		context.register(AMOROUS_BRISTLE_PATCH, new ConfiguredFeature<>(Feature.FLOWER, patch(UGBlocks.AMOROUS_BRISTLE.get(), 64)));
-		context.register(MISERABELL_PATCH, new ConfiguredFeature<>(Feature.FLOWER, patch(UGBlocks.MISERABELL.get(), 64)));
-		context.register(BUTTERBUNCH_PATCH, new ConfiguredFeature<>(Feature.FLOWER, patch(UGBlocks.BUTTERBUNCH.get(), 64)));
-		context.register(DEEPTURF_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DEEPTURF.get(), 64)));
-		context.register(ASHEN_DEEPTURF_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.ASHEN_DEEPTURF.get(), 64)));
-		context.register(FROZEN_DEEPTURF_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.FROZEN_DEEPTURF.get(), 64)));
-		context.register(SHIMMERWEED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.SHIMMERWEED.get(), 32)));
-		context.register(DEPTHROCK_PEBBLE_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, pebble(UGBlocks.DEPTHROCK_PEBBLES.get(), List.of(UGBlocks.DEEPTURF_BLOCK.get(), UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), UGBlocks.DEPTHROCK.get(), UGBlocks.SHIVERSTONE.get(), UGBlocks.SEDIMENT.get(), UGBlocks.COARSE_DEEPSOIL.get()))));
-		context.register(DITCHBULB_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.DITCHBULB_PLANT.get().defaultBlockState().setValue(DitchbulbBlock.AGE, 1), 16, List.of(UGBlocks.DEPTHROCK.get(), UGBlocks.DREADROCK.get()))));
-		context.register(TALL_DEEPTURF_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.TALL_DEEPTURF.get(), 32)));
-		context.register(TALL_SHIMMERWEED_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.TALL_SHIMMERWEED.get(), 32)));
-		context.register(INDIGO_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.INDIGO_MUSHROOM.get(), 64)));
-		context.register(VEIL_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.VEIL_MUSHROOM.get(), 64)));
-		context.register(INK_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.INK_MUSHROOM.get(), 64)));
-		context.register(BLOOD_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.BLOOD_MUSHROOM.get(), 64)));
-		context.register(PUFF_MUSHROOM_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.PUFF_MUSHROOM.get(), 64)));
-		context.register(UNDERBEAN_BUSH_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.UNDERBEAN_BUSH.get().defaultBlockState().setValue(UnderbeanBushBlock.AGE, 3), 64, List.of(UGBlocks.DEEPTURF_BLOCK.get()))));
-		context.register(BLISTERBERRY_BUSH_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.BLISTERBERRY_BUSH.get().defaultBlockState().setValue(BlisterberryBushBlock.AGE, 3), 64, List.of(UGBlocks.ASHEN_DEEPTURF_BLOCK.get()))));
-		context.register(GLOOMGOURD_PATCH, new ConfiguredFeature<>(Feature.RANDOM_PATCH, patch(UGBlocks.GLOOMGOURD.get(), 16, List.of(UGBlocks.DEEPTURF_BLOCK.get()))));
+		context.register(AMOROUS_BRISTLE, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.AMOROUS_BRISTLE.get())));
+		context.register(MISERABELL, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.MISERABELL.get())));
+		context.register(BUTTERBUNCH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.BUTTERBUNCH.get())));
+		context.register(DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.DEEPTURF.get())));
+		context.register(ASHEN_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.ASHEN_DEEPTURF.get())));
+		context.register(FROZEN_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.FROZEN_DEEPTURF.get())));
+		context.register(SHIMMERWEED, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.SHIMMERWEED.get())));
+		context.register(DEPTHROCK_PEBBLE, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, pebble(UGBlocks.DEPTHROCK_PEBBLES.get())));
+		context.register(DITCHBULB, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.DITCHBULB_PLANT.get().defaultBlockState().setValue(DitchbulbBlock.AGE, 1))));
+		context.register(TALL_DEEPTURF, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.TALL_DEEPTURF.get())));
+		context.register(TALL_SHIMMERWEED, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.TALL_SHIMMERWEED.get())));
+		context.register(INDIGO_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.INDIGO_MUSHROOM.get())));
+		context.register(VEIL_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.VEIL_MUSHROOM.get())));
+		context.register(INK_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.INK_MUSHROOM.get())));
+		context.register(BLOOD_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.BLOOD_MUSHROOM.get())));
+		context.register(PUFF_MUSHROOM, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.PUFF_MUSHROOM.get())));
+		context.register(UNDERBEAN_BUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.UNDERBEAN_BUSH.get().defaultBlockState().setValue(UnderbeanBushBlock.AGE, 3))));
+		context.register(BLISTERBERRY_BUSH, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.BLISTERBERRY_BUSH.get().defaultBlockState().setValue(BlisterberryBushBlock.AGE, 3))));
+		context.register(GLOOMGOURD, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, flower(UGBlocks.GLOOMGOURD.get())));
 		context.register(DROOPVINE, new ConfiguredFeature<>(UGFeatures.DROOPVINE.get(), FeatureConfiguration.NONE));
 		context.register(GLITTERKELP, new ConfiguredFeature<>(UGFeatures.GLITTERKELP.get(), FeatureConfiguration.NONE));
 
@@ -193,7 +191,7 @@ public class UGConfiguredFeatures {
 			2,
 			2,
 			new WeightedListInt(
-				SimpleWeightedRandomList.<IntProvider>builder().add(ConstantInt.of(1), 1).add(ConstantInt.of(2), 1).add(ConstantInt.of(3), 1).build()
+				WeightedList.<IntProvider>builder().add(ConstantInt.of(1), 1).add(ConstantInt.of(2), 1).add(ConstantInt.of(3), 1).build()
 			),
 			UniformInt.of(2, 4),
 			UniformInt.of(-4, -3),
@@ -221,22 +219,18 @@ public class UGConfiguredFeatures {
 			0.8F, false)));
 		context.register(ANCIENT_ROOT, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(25)));
 		context.register(ANCIENT_ROOT_EXTRA, new ConfiguredFeature<>(UGFeatures.ANCIENT_ROOT.get(), new AncientRootConfiguration(10)));
-		context.register(RUINS, new ConfiguredFeature<>(Feature.BLOCK_PILE, new BlockPileConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(UGBlocks.DEPTHROCK_BRICKS.get().defaultBlockState(), 5).add(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState(), 2).add(UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState(), 2).build()))));
+		context.register(RUINS, new ConfiguredFeature<>(Feature.BLOCK_PILE, new BlockPileConfiguration(new WeightedStateProvider(WeightedList.<BlockState>builder().add(UGBlocks.DEPTHROCK_BRICKS.get().defaultBlockState(), 5).add(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get().defaultBlockState(), 2).add(UGBlocks.POLISHED_DEPTHROCK.get().defaultBlockState(), 2).build()))));
 	}
 
-	private static RandomPatchConfiguration patch(Block block, int tries) {
-		return FeatureUtils.simpleRandomPatchConfiguration(tries, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(block))));
+	private static SimpleBlockConfiguration flower(Block block) {
+		return new SimpleBlockConfiguration(BlockStateProvider.simple(block));
 	}
 
-	private static RandomPatchConfiguration patch(Block block, int tries, List<Block> whitelist) {
-		return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(block)), whitelist, tries);
+	private static SimpleBlockConfiguration flower(BlockState block) {
+		return new SimpleBlockConfiguration(BlockStateProvider.simple(block));
 	}
 
-	private static RandomPatchConfiguration pebble(Block block, List<Block> whitelist) {
-		return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new RandomizedIntStateProvider(BlockStateProvider.simple(block), DepthrockPebblesBlock.PEBBLES, UniformInt.of(1, 2))), whitelist, 32);
-	}
-
-	private static RandomPatchConfiguration patch(BlockState block, int tries, List<Block> whitelist) {
-		return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(block)), whitelist, tries);
+	private static SimpleBlockConfiguration pebble(Block block) {
+		return new SimpleBlockConfiguration(new RandomizedIntStateProvider(BlockStateProvider.simple(block), DepthrockPebblesBlock.PEBBLES, UniformInt.of(1, 2)));
 	}
 }

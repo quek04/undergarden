@@ -8,9 +8,9 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.state.ThrownItemRenderState;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import quek.undergarden.entity.projectile.slingshot.AbstractGronglet;
+import quek.undergarden.entity.projectile.slingshot.Gronglet;
 
-public class GrongletEntityRenderer<T extends AbstractGronglet> extends ThrownItemRenderer<T> {
+public class GrongletEntityRenderer<T extends Gronglet> extends ThrownItemRenderer<T> {
 
 	public GrongletEntityRenderer(EntityRendererProvider.Context context) {
 		super(context, 3.0F, true);

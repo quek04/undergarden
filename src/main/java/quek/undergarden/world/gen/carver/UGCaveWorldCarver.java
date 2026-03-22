@@ -99,7 +99,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
 			return false;
 		} else {
 			BlockState carveState = this.getCarveState(context, config, pos);
-            chunk.setBlockState(pos, carveState, false);
+            chunk.setBlockState(pos, carveState);
             if (aquifer.shouldScheduleFluidUpdate() && !carveState.getFluidState().isEmpty()) {
                 chunk.markPosForPostprocessing(pos);
             }
@@ -108,7 +108,7 @@ public class UGCaveWorldCarver extends CaveWorldCarver {
                 checkPos.setWithOffset(pos, Direction.DOWN);
                 if (chunk.getBlockState(checkPos).is(UGBlocks.DEEPSOIL.get())) {
                     context.topMaterial(biomeAccessor, chunk, checkPos, !carveState.getFluidState().isEmpty()).ifPresent((state) -> {
-                        chunk.setBlockState(checkPos, state, false);
+                        chunk.setBlockState(checkPos, state);
                         if (!state.getFluidState().isEmpty()) {
                             chunk.markPosForPostprocessing(checkPos);
                         }

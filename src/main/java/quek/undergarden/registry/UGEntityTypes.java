@@ -1,10 +1,21 @@
 package quek.undergarden.registry;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.vehicle.boat.Boat;
+import net.minecraft.world.entity.vehicle.boat.ChestBoat;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.Boomgourd;
 import quek.undergarden.entity.Minion;
@@ -12,14 +23,12 @@ import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.entity.monster.Forgotten;
 import quek.undergarden.entity.monster.boss.ForgottenGuardian;
+import quek.undergarden.entity.monster.cavern.CavernMonster;
 import quek.undergarden.entity.monster.cavern.Muncher;
 import quek.undergarden.entity.monster.cavern.Nargoyle;
 import quek.undergarden.entity.monster.cavern.Sploogie;
 import quek.undergarden.entity.monster.denizen.Denizen;
-import quek.undergarden.entity.monster.rotspawn.Rotbeast;
-import quek.undergarden.entity.monster.rotspawn.Rotbelcher;
-import quek.undergarden.entity.monster.rotspawn.Rotling;
-import quek.undergarden.entity.monster.rotspawn.Rotwalker;
+import quek.undergarden.entity.monster.rotspawn.*;
 import quek.undergarden.entity.monster.stoneborn.Stoneborn;
 import quek.undergarden.entity.projectile.Blisterbomb;
 import quek.undergarden.entity.projectile.MinionProjectile;
@@ -27,46 +36,97 @@ import quek.undergarden.entity.projectile.RotbelcherProjectile;
 import quek.undergarden.entity.projectile.ThrownSpear;
 import quek.undergarden.entity.projectile.slingshot.*;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
 public class UGEntityTypes {
 
-	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Undergarden.MODID);
+	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, Undergarden.MODID);
+	public static final DeferredRegister<Item> SPAWN_EGGS = DeferredRegister.create(Registries.ITEM, Undergarden.MODID);
+	public static final Map<Holder<EntityType<?>>, Supplier<AttributeSupplier.Builder>> ATTRIBUTES = new HashMap<>();
+	public static final Map<Holder<EntityType<?>>, SpawnPlacements.SpawnPredicate<?>> SPAWN_PREDICATES = new HashMap<>();
 
 	//misc
-	public static final DeferredHolder<EntityType<?>, EntityType<Boomgourd>> BOOMGOURD = ENTITIES.register("boomgourd", () -> EntityType.Builder.<Boomgourd>of(Boomgourd::new, MobCategory.MISC).fireImmune().sized(1.0F, 1.0F).clientTrackingRange(10).updateInterval(10).build("boomgourd"));
-	public static final DeferredHolder<EntityType<?>, EntityType<DepthrockPebble>> DEPTHROCK_PEBBLE = ENTITIES.register("depthrock_pebble", () -> EntityType.Builder.<DepthrockPebble>of(DepthrockPebble::new, MobCategory.MISC).sized(0.25F, 0.25F).build("depthrock_pebble"));
-	public static final DeferredHolder<EntityType<?>, EntityType<GooBall>> GOO_BALL = ENTITIES.register("goo_ball", () -> EntityType.Builder.<GooBall>of(GooBall::new, MobCategory.MISC).sized(0.25F, 0.25F).build("goo_ball"));
-	public static final DeferredHolder<EntityType<?>, EntityType<RottenBlisterberry>> ROTTEN_BLISTERBERRY = ENTITIES.register("rotten_blisterberry", () -> EntityType.Builder.<RottenBlisterberry>of(RottenBlisterberry::new, MobCategory.MISC).sized(0.25F, 0.25F).build("rotten_blisterberry"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Blisterbomb>> BLISTERBOMB = ENTITIES.register("blisterbomb", () -> EntityType.Builder.<Blisterbomb>of(Blisterbomb::new, MobCategory.MISC).sized(0.5F, 0.5F).build("blisterbomb"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Gronglet>> GRONGLET = ENTITIES.register("gronglet", () -> EntityType.Builder.<Gronglet>of(Gronglet::new, MobCategory.MISC).sized(0.5F, 0.5F).build("gronglet"));
-	public static final DeferredHolder<EntityType<?>, EntityType<UthericGronglet>> UTHERIC_GRONGLET = ENTITIES.register("utheric_gronglet", () -> EntityType.Builder.<UthericGronglet>of(UthericGronglet::new, MobCategory.MISC).sized(0.5F, 0.5F).build("utheric_gronglet"));
-	public static final DeferredHolder<EntityType<?>, EntityType<RogdoricGronglet>> ROGDORIC_GRONGLET = ENTITIES.register("rogdoric_gronglet", () -> EntityType.Builder.<RogdoricGronglet>of(RogdoricGronglet::new, MobCategory.MISC).sized(0.5F, 0.5F).build("rogdoric_gronglet"));
-	public static final DeferredHolder<EntityType<?>, EntityType<ThrownSpear>> SPEAR = ENTITIES.register("spear", () -> EntityType.Builder.<ThrownSpear>of(ThrownSpear::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("spear"));
-	public static final DeferredHolder<EntityType<?>, EntityType<MinionProjectile>> MINION_PROJECTILE = ENTITIES.register("minion_projectile", () -> EntityType.Builder.<MinionProjectile>of(MinionProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F).build("minion_projectile"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Minion>> MINION = ENTITIES.register("minion", () -> EntityType.Builder.of(Minion::new, MobCategory.MISC).sized(1.0F, 1.6F).eyeHeight(1.0F).build("minion"));
-	public static final DeferredHolder<EntityType<?>, EntityType<RotbelcherProjectile>> ROTBELCHER_PROJECTILE = ENTITIES.register("rotbelcher_projectile", () -> EntityType.Builder.<RotbelcherProjectile>of(RotbelcherProjectile::new, MobCategory.MISC).sized(0.5F, 0.5F).build("rotbelcher_projectile"));
+	public static final DeferredHolder<EntityType<?>, EntityType<Boomgourd>> BOOMGOURD = registerMisc("boomgourd", EntityType.Builder.<Boomgourd>of(Boomgourd::new, MobCategory.MISC).fireImmune().sized(1.0F, 1.0F).clientTrackingRange(10).updateInterval(10));
+	public static final DeferredHolder<EntityType<?>, EntityType<DepthrockPebble>> DEPTHROCK_PEBBLE = registerMisc("depthrock_pebble", EntityType.Builder.<DepthrockPebble>of(DepthrockPebble::new, MobCategory.MISC).sized(0.25F, 0.25F));
+	public static final DeferredHolder<EntityType<?>, EntityType<GooBall>> GOO_BALL = registerMisc("goo_ball", EntityType.Builder.<GooBall>of(GooBall::new, MobCategory.MISC).sized(0.25F, 0.25F));
+	public static final DeferredHolder<EntityType<?>, EntityType<RottenBlisterberry>> ROTTEN_BLISTERBERRY = registerMisc("rotten_blisterberry", EntityType.Builder.<RottenBlisterberry>of(RottenBlisterberry::new, MobCategory.MISC).sized(0.25F, 0.25F));
+	public static final DeferredHolder<EntityType<?>, EntityType<Blisterbomb>> BLISTERBOMB = registerMisc("blisterbomb", EntityType.Builder.<Blisterbomb>of(Blisterbomb::new, MobCategory.MISC).sized(0.5F, 0.5F));
+	public static final DeferredHolder<EntityType<?>, EntityType<Gronglet>> GRONGLET = registerMisc("gronglet", EntityType.Builder.<Gronglet>of(Gronglet::new, MobCategory.MISC).sized(0.5F, 0.5F));
+	public static final DeferredHolder<EntityType<?>, EntityType<ThrownSpear>> SPEAR = registerMisc("spear", EntityType.Builder.<ThrownSpear>of(ThrownSpear::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
+	public static final DeferredHolder<EntityType<?>, EntityType<MinionProjectile>> MINION_PROJECTILE = registerMisc("minion_projectile", EntityType.Builder.<MinionProjectile>of(MinionProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F));
+	public static final DeferredHolder<EntityType<?>, EntityType<Minion>> MINION = registerMisc("minion", EntityType.Builder.of(Minion::new, MobCategory.MISC).sized(1.0F, 1.6F).eyeHeight(1.0F));
+	public static final DeferredHolder<EntityType<?>, EntityType<RotbelcherProjectile>> ROTBELCHER_PROJECTILE = registerMisc("rotbelcher_projectile", EntityType.Builder.<RotbelcherProjectile>of(RotbelcherProjectile::new, MobCategory.MISC).sized(0.5F, 0.5F));
+
+	//boats
+	public static final DeferredHolder<EntityType<?>, EntityType<Boat>> WIGGLEWOOD_BOAT = registerMisc("wigglewood_boat", EntityType.Builder.of(boatFactory(UGItems.WIGGLEWOOD_BOAT), MobCategory.MISC).sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+	public static final DeferredHolder<EntityType<?>, EntityType<ChestBoat>> WIGGLEWOOD_CHEST_BOAT = registerMisc("wigglewood_chest_boat", EntityType.Builder.of(chestBoatFactory(UGItems.WIGGLEWOOD_CHEST_BOAT), MobCategory.MISC).sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+	public static final DeferredHolder<EntityType<?>, EntityType<Boat>> SMOGSTEM_BOAT = registerMisc("smogstem_boat", EntityType.Builder.of(boatFactory(UGItems.SMOGSTEM_BOAT), MobCategory.MISC).sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+	public static final DeferredHolder<EntityType<?>, EntityType<ChestBoat>> SMOGSTEM_CHEST_BOAT = registerMisc("smogstem_chest_boat", EntityType.Builder.of(chestBoatFactory(UGItems.SMOGSTEM_CHEST_BOAT), MobCategory.MISC).sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+	public static final DeferredHolder<EntityType<?>, EntityType<Boat>> GRONGLE_BOAT = registerMisc("grongle_boat", EntityType.Builder.of(boatFactory(UGItems.GRONGLE_BOAT), MobCategory.MISC).sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+	public static final DeferredHolder<EntityType<?>, EntityType<ChestBoat>> GRONGLE_CHEST_BOAT = registerMisc("grongle_chest_boat", EntityType.Builder.of(chestBoatFactory(UGItems.GRONGLE_CHEST_BOAT), MobCategory.MISC).sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+	public static final DeferredHolder<EntityType<?>, EntityType<Boat>> ANCIENT_ROOT_BOAT = registerMisc("ancient_root_boat", EntityType.Builder.of(boatFactory(UGItems.ANCIENT_ROOT_BOAT), MobCategory.MISC).sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
+	public static final DeferredHolder<EntityType<?>, EntityType<ChestBoat>> ANCIENT_ROOT_CHEST_BOAT = registerMisc("ancient_root_chest_boat", EntityType.Builder.of(chestBoatFactory(UGItems.ANCIENT_ROOT_CHEST_BOAT), MobCategory.MISC).sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10));
 
 	//normal
-	public static final DeferredHolder<EntityType<?>, EntityType<Rotling>> ROTLING = ENTITIES.register("rotling", () -> EntityType.Builder.of(Rotling::new, MobCategory.MONSTER).sized(0.6F, 1.0F).build("rotling"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Rotwalker>> ROTWALKER = ENTITIES.register("rotwalker", () -> EntityType.Builder.of(Rotwalker::new, MobCategory.MONSTER).sized(0.8F, 2.5F).build("rotwalker"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Rotbeast>> ROTBEAST = ENTITIES.register("rotbeast", () -> EntityType.Builder.of(Rotbeast::new, MobCategory.MONSTER).sized(1.5F, 3.0F).build("rotbeast"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Rotbelcher>> ROTBELCHER = ENTITIES.register("rotbelcher", () -> EntityType.Builder.of(Rotbelcher::new, MobCategory.MONSTER).sized(0.8F, 2.5F).build("rotbelcher"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Dweller>> DWELLER = ENTITIES.register("dweller", () -> EntityType.Builder.of(Dweller::new, MobCategory.CREATURE).sized(1.2F, 1.8F).build("dweller"));
-	public static final DeferredHolder<EntityType<?>, EntityType<GreaterDweller>> GREATER_DWELLER = ENTITIES.register("greater_dweller", () -> EntityType.Builder.of(GreaterDweller::new, MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY")).sized(2.0F, 3.0F).eyeHeight(2.1F).build("greater_dweller"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Gwibling>> GWIBLING = ENTITIES.register("gwibling", () -> EntityType.Builder.of(Gwibling::new, MobCategory.WATER_AMBIENT).sized(.5F, .3F).build("gwibling"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Brute>> BRUTE = ENTITIES.register("brute", () -> EntityType.Builder.of(Brute::new, MobCategory.CREATURE).sized(1.0F, 2).eyeHeight(1.9F).build("brute"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Scintling>> SCINTLING = ENTITIES.register("scintling", () -> EntityType.Builder.of(Scintling::new, MobCategory.AMBIENT).sized(1.0F, .5F).build("scintling"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Gloomper>> GLOOMPER = ENTITIES.register("gloomper", () -> EntityType.Builder.of(Gloomper::new, MobCategory.CREATURE).sized(0.99F, 0.99F).build("gloomper"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Stoneborn>> STONEBORN = ENTITIES.register("stoneborn", () -> EntityType.Builder.of(Stoneborn::new, MobCategory.MONSTER).sized(1.0F, 2.6F).build("stoneborn"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Nargoyle>> NARGOYLE = ENTITIES.register("nargoyle", () -> EntityType.Builder.of(Nargoyle::new, MobCategory.MONSTER).sized(1.0F, 1.5F).build("nargoyle"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Muncher>> MUNCHER = ENTITIES.register("muncher", () -> EntityType.Builder.of(Muncher::new, MobCategory.MONSTER).sized(0.8F, 0.8F).build("muncher"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Sploogie>> SPLOOGIE = ENTITIES.register("sploogie", () -> EntityType.Builder.of(Sploogie::new, MobCategory.MONSTER).sized(0.8F, 0.8F).eyeHeight(0.3F).build("sploogie"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Gwib>> GWIB = ENTITIES.register("gwib", () -> EntityType.Builder.of(Gwib::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.5F).eyeHeight(0.25F).build("gwib"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Mog>> MOG = ENTITIES.register("mog", () -> EntityType.Builder.of(Mog::new, MobCategory.CREATURE).sized(1.0F, 1.0F).eyeHeight(0.2F).build("mog"));
-	public static final DeferredHolder<EntityType<?>, EntityType<SmogMog>> SMOG_MOG = ENTITIES.register("smog_mog", () -> EntityType.Builder.of(SmogMog::new, MobCategory.CREATURE).sized(0.75F, 1.8F).eyeHeight(0.4F).build("smog_mog"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Forgotten>> FORGOTTEN = ENTITIES.register("forgotten", () -> EntityType.Builder.of(Forgotten::new, MobCategory.MONSTER).sized(0.7F, 2.2F).build("forgotten"));
-	public static final DeferredHolder<EntityType<?>, EntityType<Denizen>> DENIZEN = ENTITIES.register("denizen", () -> EntityType.Builder.of(Denizen::new, MobCategory.MONSTER).sized(0.7F, 2.0F).build("denizen"));
-	public static final DeferredHolder<EntityType<?>, EntityType<MysteriousPot>> MYSTERIOUS_POT = ENTITIES.register("mysterious_pot", () -> EntityType.Builder.of(MysteriousPot::new, MobCategory.CREATURE).sized(0.8F, 1.0F).build("mysterious_pot"));
+	public static final DeferredHolder<EntityType<?>, EntityType<Rotling>> ROTLING = registerWithEgg("rotling", EntityType.Builder.of(Rotling::new, MobCategory.MONSTER).sized(0.6F, 1.0F), Rotling::registerAttributes, RotspawnMonster::canRotspawnSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Rotwalker>> ROTWALKER = registerWithEgg("rotwalker", EntityType.Builder.of(Rotwalker::new, MobCategory.MONSTER).sized(0.8F, 2.5F), Rotwalker::registerAttributes, RotspawnMonster::canRotspawnSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Rotbeast>> ROTBEAST = registerWithEgg("rotbeast", EntityType.Builder.of(Rotbeast::new, MobCategory.MONSTER).sized(1.5F, 3.0F), Rotbeast::registerAttributes, RotspawnMonster::canRotspawnSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Rotbelcher>> ROTBELCHER = registerWithEgg("rotbelcher", EntityType.Builder.of(Rotbelcher::new, MobCategory.MONSTER).sized(0.8F, 2.5F), Rotbelcher::registerAttributes, RotspawnMonster::canRotspawnSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Dweller>> DWELLER = registerWithEgg("dweller", EntityType.Builder.of(Dweller::new, MobCategory.CREATURE).sized(1.2F, 1.8F), Dweller::registerAttributes, Animal::checkAnimalSpawnRules);
+	public static final DeferredHolder<EntityType<?>, EntityType<GreaterDweller>> GREATER_DWELLER = registerWithEgg("greater_dweller", EntityType.Builder.of(GreaterDweller::new, MobCategory.valueOf("UNDERGARDEN_STUPID_MOB_CATEGORY")).sized(2.0F, 3.0F).eyeHeight(2.1F), GreaterDweller::registerAttributes, GreaterDweller::checkGreaterDwellerSpawnRules);
+	public static final DeferredHolder<EntityType<?>, EntityType<Gwibling>> GWIBLING = registerWithEgg("gwibling", EntityType.Builder.of(Gwibling::new, MobCategory.WATER_AMBIENT).sized(.5F, .3F), Gwibling::createAttributes, Gwibling::canGwiblingSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Brute>> BRUTE = registerWithEgg("brute", EntityType.Builder.of(Brute::new, MobCategory.CREATURE).sized(1.0F, 2).eyeHeight(1.9F), Brute::registerAttributes, Animal::checkAnimalSpawnRules);
+	public static final DeferredHolder<EntityType<?>, EntityType<Scintling>> SCINTLING = registerWithEgg("scintling", EntityType.Builder.of(Scintling::new, MobCategory.AMBIENT).sized(1.0F, 0.5F), Scintling::registerAttributes, Scintling::canScintlingSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Gloomper>> GLOOMPER = registerWithEgg("gloomper", EntityType.Builder.of(Gloomper::new, MobCategory.CREATURE).sized(0.99F, 0.99F), Gloomper::registerAttributes, Animal::checkAnimalSpawnRules);
+	public static final DeferredHolder<EntityType<?>, EntityType<Stoneborn>> STONEBORN = registerWithEgg("stoneborn", EntityType.Builder.of(Stoneborn::new, MobCategory.MONSTER).sized(1.0F, 2.6F), Stoneborn::registerAttributes, Stoneborn::canStonebornSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Nargoyle>> NARGOYLE = registerWithEgg("nargoyle", EntityType.Builder.of(Nargoyle::new, MobCategory.MONSTER).sized(1.0F, 1.5F), Nargoyle::registerAttributes, CavernMonster::canCreatureSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Muncher>> MUNCHER = registerWithEgg("muncher", EntityType.Builder.of(Muncher::new, MobCategory.MONSTER).sized(0.8F, 0.8F), Muncher::registerAttributes, CavernMonster::canCreatureSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Sploogie>> SPLOOGIE = registerWithEgg("sploogie", EntityType.Builder.of(Sploogie::new, MobCategory.MONSTER).sized(0.8F, 0.8F).eyeHeight(0.3F), Sploogie::registerAttributes, CavernMonster::canCreatureSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Gwib>> GWIB = registerWithEgg("gwib", EntityType.Builder.of(Gwib::new, MobCategory.WATER_CREATURE).sized(1.0F, 0.5F).eyeHeight(0.25F), Gwib::registerAttributes, Gwib::canGwibSpawn);
+	public static final DeferredHolder<EntityType<?>, EntityType<Mog>> MOG = registerWithEgg("mog", EntityType.Builder.of(Mog::new, MobCategory.CREATURE).sized(1.0F, 1.0F).eyeHeight(0.2F), Mog::registerAttributes, Animal::checkAnimalSpawnRules);
+	public static final DeferredHolder<EntityType<?>, EntityType<SmogMog>> SMOG_MOG = registerWithEgg("smog_mog", EntityType.Builder.of(SmogMog::new, MobCategory.CREATURE).sized(0.75F, 1.8F).eyeHeight(0.4F), SmogMog::registerAttributes, SmogMog::checkSmogMogSpawnRules);
+	public static final DeferredHolder<EntityType<?>, EntityType<Forgotten>> FORGOTTEN = registerWithEgg("forgotten", EntityType.Builder.of(Forgotten::new, MobCategory.MONSTER).sized(0.7F, 2.2F), Forgotten::registerAttributes, Monster::checkAnyLightMonsterSpawnRules);
+	public static final DeferredHolder<EntityType<?>, EntityType<Denizen>> DENIZEN = registerWithEgg("denizen", EntityType.Builder.of(Denizen::new, MobCategory.MONSTER).sized(0.7F, 2.0F), Denizen::registerAttributes, Monster::checkAnyLightMonsterSpawnRules);
+	public static final DeferredHolder<EntityType<?>, EntityType<MysteriousPot>> MYSTERIOUS_POT = registerWithAttributes("mysterious_pot", EntityType.Builder.of(MysteriousPot::new, MobCategory.CREATURE).sized(0.8F, 1.0F), MysteriousPot::registerAttributes);
 
 	//bosses
-	public static final DeferredHolder<EntityType<?>, EntityType<ForgottenGuardian>> FORGOTTEN_GUARDIAN = ENTITIES.register("forgotten_guardian", () -> EntityType.Builder.of(ForgottenGuardian::new, MobCategory.MONSTER).sized(1.0F, 3.8F).build("forgotten_guardian"));
+	public static final DeferredHolder<EntityType<?>, EntityType<ForgottenGuardian>> FORGOTTEN_GUARDIAN = registerWithEgg("forgotten_guardian", EntityType.Builder.of(ForgottenGuardian::new, MobCategory.MONSTER).sized(1.0F, 3.8F), ForgottenGuardian::registerAttributes, Monster::checkMonsterSpawnRules);
+
+	private static EntityType.EntityFactory<Boat> boatFactory(Supplier<Item> boatItem) {
+		return (entityType, level) -> new Boat(entityType, level, boatItem);
+	}
+
+	private static EntityType.EntityFactory<ChestBoat> chestBoatFactory(Supplier<Item> dropItem) {
+		return (entityType, level) -> new ChestBoat(entityType, level, dropItem);
+	}
+
+	public static <E extends Entity> DeferredHolder<EntityType<?>, EntityType<E>> registerMisc(String name, EntityType.Builder<E> builder) {
+		return ENTITY_TYPES.register(name, () -> builder.noLootTable().build(createIDFor(name)));
+	}
+
+	public static <E extends LivingEntity> DeferredHolder<EntityType<?>, EntityType<E>> registerWithAttributes(String name, EntityType.Builder<E> builder, Supplier<AttributeSupplier.Builder> attributes) {
+		DeferredHolder<EntityType<?>, EntityType<E>> ret = ENTITY_TYPES.register(name, () -> builder.build(createIDFor(name)));
+		ATTRIBUTES.put(ret, attributes);
+		return ret;
+	}
+
+	public static <E extends LivingEntity> DeferredHolder<EntityType<?>, EntityType<E>> registerWithPlacement(String name, EntityType.Builder<E> builder, Supplier<AttributeSupplier.Builder> attributes, SpawnPlacements.@Nullable SpawnPredicate<E> predicate) {
+		DeferredHolder<EntityType<?>, EntityType<E>> ret = registerWithAttributes(name, builder, attributes);
+		if (predicate != null) {
+			SPAWN_PREDICATES.put(ret, predicate);
+		}
+		return ret;
+	}
+
+	public static <E extends Mob> DeferredHolder<EntityType<?>, EntityType<E>> registerWithEgg(String name, EntityType.Builder<E> builder, Supplier<AttributeSupplier.Builder> attributes, SpawnPlacements.@Nullable SpawnPredicate<E> predicate) {
+		DeferredHolder<EntityType<?>, EntityType<E>> ret = registerWithPlacement(name, builder, attributes, predicate);
+		SPAWN_EGGS.register(name + "_spawn_egg", () -> new SpawnEggItem(new Item.Properties().spawnEgg(ret.get()).setId(ResourceKey.create(Registries.ITEM, Undergarden.prefix(name + "_spawn_egg")))));
+		return ret;
+	}
+
+	private static ResourceKey<EntityType<?>> createIDFor(String name) {
+		return ResourceKey.create(Registries.ENTITY_TYPE, Undergarden.prefix(name));
+	}
 }

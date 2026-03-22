@@ -3,79 +3,58 @@ package quek.undergarden.recipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.crafting.*;
 import quek.undergarden.registry.UGRecipeSerializers;
 
-public record InfuserConversionRecipe(InfusingBookCategory category, Ingredient ingredient, ItemStack result, int infusingTime, float experience, SlotType slotType) implements InfusingRecipe {
+public class InfuserConversionRecipe extends SimpleInfusingRecipe {
 
-	@Override
-	public boolean matches(SingleRecipeInput input, Level level) {
-		return this.ingredient().test(input.item());
+	private static final MapCodec<InfuserConversionRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+			CommonInfo.MAP_CODEC.forGetter(recipe -> recipe.commonInfo),
+			InfusingBookCategory.CODEC.optionalFieldOf("category", InfusingBookCategory.MISC).forGetter(SimpleInfusingRecipe::category),
+			Ingredient.CODEC.fieldOf("input").forGetter(SimpleInfusingRecipe::input),
+			ItemStack.CODEC.fieldOf("result").forGetter(o -> o.result),
+			Codec.INT.optionalFieldOf("infusing_time", 200).forGetter(SimpleInfusingRecipe::infusingTime),
+			Codec.FLOAT.optionalFieldOf("experience", 0.0F).forGetter(SimpleInfusingRecipe::experience),
+			SlotType.CODEC.fieldOf("slot_type").forGetter(recipe -> recipe.slotType))
+		.apply(instance, InfuserConversionRecipe::new));
+
+	private static final StreamCodec<RegistryFriendlyByteBuf, InfuserConversionRecipe> STREAM_CODEC = StreamCodec.composite(
+		CommonInfo.STREAM_CODEC, o -> o.commonInfo,
+		ByteBufCodecs.fromCodec(InfusingBookCategory.CODEC), SimpleInfusingRecipe::category,
+		Ingredient.CONTENTS_STREAM_CODEC, SimpleInfusingRecipe::input,
+		ItemStack.STREAM_CODEC, o -> o.result,
+		ByteBufCodecs.INT, SimpleInfusingRecipe::infusingTime,
+		ByteBufCodecs.FLOAT, SimpleInfusingRecipe::experience,
+		SlotType.STREAM_CODEC, o -> o.slotType,
+		InfuserConversionRecipe::new
+	);
+	public static final RecipeSerializer<InfuserConversionRecipe> SERIALIZER = new RecipeSerializer<>(CODEC, STREAM_CODEC);
+
+	private final ItemStack result;
+	private final SlotType slotType;
+
+	public InfuserConversionRecipe(Recipe.CommonInfo commonInfo, InfusingBookCategory category, Ingredient ingredient, ItemStack result, int infusingTime, float experience, SlotType slotType) {
+		super(commonInfo, category, ingredient, infusingTime, experience);
+		this.result = result;
+		this.slotType = slotType;
 	}
 
 	@Override
-	public ItemStack assemble(SingleRecipeInput input, HolderLookup.Provider registries) {
-		return this.result().copy();
+	public ItemStack assemble(SingleRecipeInput input) {
+		return this.result.copy();
 	}
 
 	@Override
-	public ItemStack getResultItem(HolderLookup.Provider registries) {
-		return this.result();
-	}
-
-	@Override
-	public RecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<? extends SimpleInfusingRecipe> getSerializer() {
 		return UGRecipeSerializers.INFUSER_CONVERSION.get();
 	}
 
 	@Override
-	public NonNullList<Ingredient> getIngredients() {
-		return NonNullList.of(Ingredient.EMPTY, this.ingredient());
-	}
-
-	@Override
 	public SlotType getRecipeSlotType() {
-		return this.slotType();
-	}
-
-	public static class Serializer implements RecipeSerializer<InfuserConversionRecipe> {
-
-		private static final MapCodec<InfuserConversionRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-				InfusingBookCategory.CODEC.fieldOf("category").orElse(InfusingBookCategory.MISC).forGetter(recipe -> recipe.category),
-				Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(recipe -> recipe.ingredient),
-				ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-				Codec.INT.fieldOf("infusing_time").orElse(200).forGetter(recipe -> recipe.infusingTime),
-				Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(recipe -> recipe.experience),
-				SlotType.CODEC.fieldOf("slot_type").forGetter(recipe -> recipe.slotType))
-			.apply(instance, InfuserConversionRecipe::new));
-
-		private static final StreamCodec<RegistryFriendlyByteBuf, InfuserConversionRecipe> STREAM_CODEC = StreamCodec.composite(
-			ByteBufCodecs.fromCodec(InfusingBookCategory.CODEC), InfuserConversionRecipe::category,
-			Ingredient.CONTENTS_STREAM_CODEC, InfuserConversionRecipe::ingredient,
-			ItemStack.STREAM_CODEC, InfuserConversionRecipe::result,
-			ByteBufCodecs.INT, InfuserConversionRecipe::infusingTime,
-			ByteBufCodecs.FLOAT, InfuserConversionRecipe::experience,
-			ByteBufCodecs.fromCodec(SlotType.CODEC), InfuserConversionRecipe::slotType,
-			InfuserConversionRecipe::new
-		);
-
-		@Override
-		public MapCodec<InfuserConversionRecipe> codec() {
-			return CODEC;
-		}
-
-		@Override
-		public StreamCodec<RegistryFriendlyByteBuf, InfuserConversionRecipe> streamCodec() {
-			return STREAM_CODEC;
-		}
+		return this.slotType;
 	}
 }

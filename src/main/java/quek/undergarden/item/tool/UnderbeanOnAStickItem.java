@@ -2,37 +2,40 @@ package quek.undergarden.item.tool;
 
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ItemSteerable;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import quek.undergarden.registry.UGEntityTypes;
 
-public class UnderbeanOnAStickItem extends Item {
+public class UnderbeanOnAStickItem<T extends Entity & ItemSteerable> extends Item {
 
-	public UnderbeanOnAStickItem(Properties properties) {
+	private final EntityType<T> canInteractWith;
+	private final int consumeItemDamage;
+
+	public UnderbeanOnAStickItem(EntityType<T> canInteractWith, int consumeItemDamage, Item.Properties properties) {
 		super(properties);
+		this.canInteractWith = canInteractWith;
+		this.consumeItemDamage = consumeItemDamage;
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-		ItemStack stack = player.getItemInHand(hand);
-		if (!level.isClientSide()) {
-			Entity entity = player.getControlledVehicle();
-			if (player.isPassenger() && entity instanceof ItemSteerable itemsteerable && entity.getType() == UGEntityTypes.DWELLER.get() && itemsteerable.boost()) {
-				EquipmentSlot equipmentslot = LivingEntity.getSlotForHand(hand);
-				ItemStack itemstack1 = stack.hurtAndConvertOnBreak(1, Items.STICK, player, equipmentslot);
-				return InteractionResultHolder.success(itemstack1);
+	public InteractionResult use(Level level, Player player, InteractionHand hand) {
+		ItemStack itemStack = player.getItemInHand(hand);
+		if (level.isClientSide()) {
+			return InteractionResult.PASS;
+		} else {
+			Entity vehicle = player.getControlledVehicle();
+			if (player.isPassenger() && vehicle instanceof ItemSteerable steerable && vehicle.is(this.canInteractWith) && steerable.boost()) {
+				EquipmentSlot slot = hand.asEquipmentSlot();
+				ItemStack result = itemStack.hurtAndConvertOnBreak(this.consumeItemDamage, Items.STICK, player, slot);
+				return InteractionResult.SUCCESS_SERVER.heldItemTransformedTo(result);
+			} else {
+				player.awardStat(Stats.ITEM_USED.get(this));
+				return InteractionResult.PASS;
 			}
-
-			player.awardStat(Stats.ITEM_USED.get(this));
 		}
-		return InteractionResultHolder.pass(stack);
 	}
 }

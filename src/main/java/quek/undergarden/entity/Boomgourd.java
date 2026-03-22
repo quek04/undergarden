@@ -19,7 +19,7 @@ public class Boomgourd extends PrimedTnt {
 		super(entity, level);
 	}
 
-	public Boomgourd(Level level, double x, double y, double z, @Nullable EntityReference<LivingEntity> igniterEntity) {
+	public Boomgourd(Level level, double x, double y, double z, @Nullable LivingEntity igniterEntity) {
 		this(UGEntityTypes.BOOMGOURD.get(), level);
 		this.setPos(x, y, z);
 		double d0 = level.getRandom().nextDouble() * Mth.TWO_PI;
@@ -28,7 +28,7 @@ public class Boomgourd extends PrimedTnt {
 		this.xo = x;
 		this.yo = y;
 		this.zo = z;
-		this.owner = igniterEntity;
+		this.owner = EntityReference.of(igniterEntity);
 	}
 
 	@Override

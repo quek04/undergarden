@@ -2,6 +2,7 @@ package quek.undergarden.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
@@ -26,11 +27,11 @@ public class InfectionCommand {
 			.requires(cs -> Commands.LEVEL_ADMINS.check(cs.permissions()))
 			.then(Commands.argument("targets", EntityArgument.entities())
 				.then(Commands.literal("set")
-					.then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.0D, UthericInfectionEvents.MAX_INFECTION))
-						.executes(context -> applyInfection(context.getSource(), EntityArgument.getEntities(context, "targets"), DoubleArgumentType.getDouble(context, "amount"))))));
+					.then(Commands.argument("amount", FloatArgumentType.floatArg(0.0F, UthericInfectionEvents.MAX_INFECTION))
+						.executes(context -> applyInfection(context.getSource(), EntityArgument.getEntities(context, "targets"), FloatArgumentType.getFloat(context, "amount"))))));
 	}
 
-	private static int applyInfection(CommandSourceStack source, Collection<? extends Entity> targets, double amount) throws CommandSyntaxException {
+	private static int applyInfection(CommandSourceStack source, Collection<? extends Entity> targets, float amount) throws CommandSyntaxException {
 		int skipped = 0;
 		for (Entity entity : targets) {
 			if (entity.is(UGTags.Entities.IMMUNE_TO_INFECTION)) {

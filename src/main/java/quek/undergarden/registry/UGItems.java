@@ -1,23 +1,38 @@
 package quek.undergarden.registry;
 
+import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.BlocksAttacks;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.Weapon;
+import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.material.Fluids;
-import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.item.*;
-import quek.undergarden.item.armor.UndergardenArmorItem;
+import quek.undergarden.item.armor.CloggrumBootsItem;
+import quek.undergarden.item.armor.FroststeelBootsItem;
 import quek.undergarden.item.bucket.UGBucketItem;
 import quek.undergarden.item.tool.*;
-import quek.undergarden.item.tool.slingshot.DepthrockPebbleItem;
-import quek.undergarden.item.tool.slingshot.GooBallItem;
-import quek.undergarden.item.tool.slingshot.RottenBlisterberryItem;
-import quek.undergarden.item.tool.slingshot.SlingshotItem;
+import quek.undergarden.item.tool.slingshot.*;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class UGItems {
 
@@ -28,160 +43,181 @@ public class UGItems {
 	public static final Rarity UTHERIUM_RARITY = Rarity.valueOf("UNDERGARDEN_UTHERIUM");
 
 	//discs
-	public static final DeferredItem<Item> MAMMOTH_DISC = ITEMS.register("music_disc_mammoth", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.MAMMOTH)));
-	public static final DeferredItem<Item> LIMAX_MAXIMUS_DISC = ITEMS.register("music_disc_limax_maximus", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.LIMAX_MAXIMUS)));
-	public static final DeferredItem<Item> RELICT_DISC = ITEMS.register("music_disc_relict", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.RELICT)));
-	public static final DeferredItem<Item> GLOOMPER_ANTHEM_DISC = ITEMS.register("music_disc_gloomper_anthem", () -> new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.GLOOMPER_ANTHEM)));
-	public static final DeferredItem<Item> GLOOMPER_SECRET_DISC = ITEMS.register("music_disc_gloomper_secret", () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.GLOOMPER_SECRET)));
+	public static final DeferredItem<Item> MAMMOTH_DISC = register("music_disc_mammoth", Item::new, () -> new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.MAMMOTH));
+	public static final DeferredItem<Item> LIMAX_MAXIMUS_DISC = register("music_disc_limax_maximus", Item::new, () -> new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.LIMAX_MAXIMUS));
+	public static final DeferredItem<Item> RELICT_DISC = register("music_disc_relict", Item::new, () -> new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.RELICT));
+	public static final DeferredItem<Item> GLOOMPER_ANTHEM_DISC = register("music_disc_gloomper_anthem", Item::new, () -> new Item.Properties().rarity(Rarity.RARE).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.GLOOMPER_ANTHEM));
+	public static final DeferredItem<Item> GLOOMPER_SECRET_DISC = register("music_disc_gloomper_secret", Item::new, () -> new Item.Properties().rarity(Rarity.EPIC).stacksTo(1).jukeboxPlayable(UGJukeboxSongs.GLOOMPER_SECRET));
 
 	//crafting materials
-	public static final DeferredItem<Item> FORGOTTEN_UPGRADE_TEMPLATE = ITEMS.register("forgotten_upgrade_smithing_template", ForgottenSmithingTemplateItem::new);
+	public static final DeferredItem<Item> FORGOTTEN_UPGRADE_TEMPLATE = register("forgotten_upgrade_smithing_template", ForgottenSmithingTemplateItem::new, Item.Properties::new);
 
-	public static final DeferredItem<Item> RAW_CLOGGRUM = ITEMS.register("raw_cloggrum", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> CLOGGRUM_INGOT = ITEMS.register("cloggrum_ingot", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> CLOGGRUM_NUGGET = ITEMS.register("cloggrum_nugget", () -> new Item(new Item.Properties()));
+	public static final DeferredItem<Item> RAW_CLOGGRUM = register("raw_cloggrum", Item::new, Item.Properties::new);
+	public static final DeferredItem<Item> CLOGGRUM_INGOT = register("cloggrum_ingot", Item::new, Item.Properties::new);
+	public static final DeferredItem<Item> CLOGGRUM_NUGGET = register("cloggrum_nugget", Item::new, Item.Properties::new);
 
-	public static final DeferredItem<Item> RAW_FROSTSTEEL = ITEMS.register("raw_froststeel", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> FROSTSTEEL_INGOT = ITEMS.register("froststeel_ingot", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> FROSTSTEEL_NUGGET = ITEMS.register("froststeel_nugget", () -> new Item(new Item.Properties()));
+	public static final DeferredItem<Item> RAW_FROSTSTEEL = register("raw_froststeel", Item::new, Item.Properties::new);
+	public static final DeferredItem<Item> FROSTSTEEL_INGOT = register("froststeel_ingot", Item::new, Item.Properties::new);
+	public static final DeferredItem<Item> FROSTSTEEL_NUGGET = register("froststeel_nugget", Item::new, Item.Properties::new);
 
-	public static final DeferredItem<Item> UTHERIC_SHARD = ITEMS.register("utheric_shard", () -> new Item(new Item.Properties().rarity(UTHERIUM_RARITY)));
-	public static final DeferredItem<Item> UTHERIC_CLUSTER = ITEMS.register("utheric_cluster", () -> new Item(new Item.Properties().rarity(UTHERIUM_RARITY)));
-	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = ITEMS.register("utherium_crystal", () -> new Item(new Item.Properties().rarity(UTHERIUM_RARITY)));
+	public static final DeferredItem<Item> UTHERIC_SHARD = register("utheric_shard", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY));
+	public static final DeferredItem<Item> UTHERIC_CLUSTER = register("utheric_cluster", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY));
+	public static final DeferredItem<Item> UTHERIUM_CRYSTAL = register("utherium_crystal", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY));
 
-	public static final DeferredItem<Item> REGALIUM_CRYSTAL = ITEMS.register("regalium_crystal", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+	public static final DeferredItem<Item> REGALIUM_CRYSTAL = register("regalium_crystal", Item::new, () -> new Item.Properties().rarity(Rarity.UNCOMMON));
 
-	public static final DeferredItem<Item> ROGDORIUM = ITEMS.register("rogdorium", () -> new RogdoriumItem(1.0F, new Item.Properties().rarity(ROGDORIUM_RARITY)));
-	public static final DeferredItem<Item> ROGDORIUM_NUGGET = ITEMS.register("rogdorium_nugget", () -> new RogdoriumItem(0.1F, new Item.Properties().rarity(ROGDORIUM_RARITY)));
+	public static final DeferredItem<Item> ROGDORIUM = register("rogdorium", (properties) -> new HoverTextItem("tooltip.undergarden.soothes_infection", properties), () -> new Item.Properties().rarity(ROGDORIUM_RARITY).component(DataComponents.CONSUMABLE, UGConsumables.ROGDORIUM));
+	public static final DeferredItem<Item> ROGDORIUM_NUGGET = register("rogdorium_nugget", (properties) -> new HoverTextItem("tooltip.undergarden.soothes_infection", properties), () -> new Item.Properties().rarity(ROGDORIUM_RARITY).component(DataComponents.CONSUMABLE, UGConsumables.ROGDORIUM_NUGGET));
 
-	public static final DeferredItem<Item> FORGOTTEN_INGOT = ITEMS.register("forgotten_ingot", () -> new Item(new Item.Properties().rarity(FORGOTTEN_RARITY)));
-	public static final DeferredItem<Item> FORGOTTEN_NUGGET = ITEMS.register("forgotten_nugget", () -> new Item(new Item.Properties().rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_INGOT = register("forgotten_ingot", Item::new, () -> new Item.Properties().rarity(FORGOTTEN_RARITY));
+	public static final DeferredItem<Item> FORGOTTEN_NUGGET = register("forgotten_nugget", Item::new, () -> new Item.Properties().rarity(FORGOTTEN_RARITY));
 
-	public static final DeferredItem<Item> DEPTHROCK_PEBBLE = ITEMS.register("depthrock_pebble", () -> new DepthrockPebbleItem(UGBlocks.DEPTHROCK_PEBBLES.get(), new Item.Properties()));
-	public static final DeferredItem<Item> TWISTYTWIG = ITEMS.register("twistytwig", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> DITCHBULB = ITEMS.register("ditchbulb", () -> new ItemNameBlockItem(UGBlocks.DITCHBULB_PLANT.get(), new Item.Properties()));
-	public static final DeferredItem<Item> DITCHBULB_PASTE = ITEMS.register("ditchbulb_paste", DitchbulbPasteItem::new);
-	public static final DeferredItem<Item> BRUTE_TUSK = ITEMS.register("brute_tusk", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> MOGMOSS = ITEMS.register("mogmoss", () -> new Item(new Item.Properties()));
-	public static final DeferredItem<Item> BLUE_MOGMOSS = ITEMS.register("blue_mogmoss", () -> new Item(new Item.Properties()));
+	public static final DeferredItem<Item> DEPTHROCK_PEBBLE = register("depthrock_pebble", (properties) -> new DepthrockPebbleItem(UGBlocks.DEPTHROCK_PEBBLES.get(), properties), Item.Properties::new);
+	public static final DeferredItem<Item> TWISTYTWIG = register("twistytwig", Item::new, Item.Properties::new);
+	public static final DeferredItem<Item> DITCHBULB = register("ditchbulb", (properties) -> new BlockItem(UGBlocks.DITCHBULB_PLANT.get(), properties), Item.Properties::new);
+	public static final DeferredItem<Item> DITCHBULB_PASTE = register("ditchbulb_paste", DitchbulbPasteItem::new, Item.Properties::new);
+	public static final DeferredItem<Item> BRUTE_TUSK = register("brute_tusk", Item::new, Item.Properties::new);
+	public static final DeferredItem<Item> MOGMOSS = register("mogmoss", Item::new, Item.Properties::new);
+	public static final DeferredItem<Item> BLUE_MOGMOSS = register("blue_mogmoss", Item::new, Item.Properties::new);
 
 	//tools
-	public static final DeferredItem<Item> CLOGGRUM_BATTLEAXE = ITEMS.register("cloggrum_battleaxe", () -> new BattleaxeItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(BattleaxeItem.createAttributes(UGItemTiers.CLOGGRUM, 7, -3.4F)).rarity(Rarity.EPIC)));
-	public static final DeferredItem<Item> CLOGGRUM_SWORD = ITEMS.register("cloggrum_sword", () -> new UGSwordItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.CLOGGRUM, 3, -2.4F))));
-	public static final DeferredItem<Item> CLOGGRUM_PICKAXE = ITEMS.register("cloggrum_pickaxe", () -> new UGPickaxeItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.CLOGGRUM, 1, -2.8F))));
-	public static final DeferredItem<Item> CLOGGRUM_AXE = ITEMS.register("cloggrum_axe", () -> new UGAxeItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.CLOGGRUM, 5.0F, -3.1F))));
-	public static final DeferredItem<Item> CLOGGRUM_SHOVEL = ITEMS.register("cloggrum_shovel", () -> new UGShovelItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.CLOGGRUM, 1.5F, -3.0F))));
-	public static final DeferredItem<Item> CLOGGRUM_HOE = ITEMS.register("cloggrum_hoe", () -> new UGHoeItem(UGItemTiers.CLOGGRUM, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.CLOGGRUM, -3, -1.0F))));
-	public static final DeferredItem<Item> CLOGGRUM_SHIELD = ITEMS.register("cloggrum_shield", UGShieldItem::new);
+	public static final DeferredItem<Item> CLOGGRUM_BATTLEAXE = register("cloggrum_battleaxe", BattleaxeItem::new, () -> BattleaxeItem.createBattleaxeProperties(UGItemTiers.CLOGGRUM, 7, -3.4F, new Item.Properties().rarity(Rarity.EPIC)));
+	public static final DeferredItem<Item> CLOGGRUM_SWORD = register("cloggrum_sword", Item::new, () -> new Item.Properties().sword(UGItemTiers.CLOGGRUM, 3, -2.4F));
+	public static final DeferredItem<Item> CLOGGRUM_PICKAXE = register("cloggrum_pickaxe", Item::new, () -> new Item.Properties().pickaxe(UGItemTiers.CLOGGRUM, 1, -2.8F));
+	public static final DeferredItem<Item> CLOGGRUM_AXE = register("cloggrum_axe", Item::new, () -> new Item.Properties().axe(UGItemTiers.CLOGGRUM, 5.0F, -3.1F));
+	public static final DeferredItem<Item> CLOGGRUM_SHOVEL = register("cloggrum_shovel", Item::new, () -> new Item.Properties().shovel(UGItemTiers.CLOGGRUM, 1.5F, -3.0F));
+	public static final DeferredItem<Item> CLOGGRUM_HOE = register("cloggrum_hoe", Item::new, () -> new Item.Properties().hoe(UGItemTiers.CLOGGRUM, -3, -1.0F));
+	public static final DeferredItem<Item> CLOGGRUM_SHIELD = register("cloggrum_shield", ShieldItem::new, () -> new Item.Properties()
+		.durability(672)
+		.component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
+		.repairable(UGTags.Items.CLOGGRUM_TOOL_MATERIALS)
+		.equippableUnswappable(EquipmentSlot.OFFHAND)
+		.delayedComponent(
+			DataComponents.BLOCKS_ATTACKS,
+			context -> new BlocksAttacks(
+				0.25F,
+				1.0F,
+				List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)),
+				new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
+				Optional.of(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)),
+				Optional.of(SoundEvents.SHIELD_BLOCK),
+				Optional.of(SoundEvents.SHIELD_BREAK)
+			)
+		)
+		.component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK));
 
-	public static final DeferredItem<Item> FROSTSTEEL_SWORD = ITEMS.register("froststeel_sword", () -> new UGSwordItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FROSTSTEEL, 3, -2.4F))));
-	public static final DeferredItem<Item> FROSTSTEEL_PICKAXE = ITEMS.register("froststeel_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.FROSTSTEEL, 1, -2.8F))));
-	public static final DeferredItem<Item> FROSTSTEEL_AXE = ITEMS.register("froststeel_axe", () -> new UGAxeItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.FROSTSTEEL, 6.0F, -3.0F))));
-	public static final DeferredItem<Item> FROSTSTEEL_SHOVEL = ITEMS.register("froststeel_shovel", () -> new UGShovelItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FROSTSTEEL, 1.5F, -3.0F))));
-	public static final DeferredItem<Item> FROSTSTEEL_HOE = ITEMS.register("froststeel_hoe", () -> new UGHoeItem(UGItemTiers.FROSTSTEEL, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FROSTSTEEL, -2, -0.5F))));
+	public static final DeferredItem<Item> FROSTSTEEL_SWORD = register("froststeel_sword", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().sword(UGItemTiers.FROSTSTEEL, 3, -2.4F));
+	public static final DeferredItem<Item> FROSTSTEEL_PICKAXE = register("froststeel_pickaxe", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().pickaxe(UGItemTiers.FROSTSTEEL, 1, -2.8F));
+	public static final DeferredItem<Item> FROSTSTEEL_AXE = register("froststeel_axe", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().axe(UGItemTiers.FROSTSTEEL, 6.0F, -3.0F));
+	public static final DeferredItem<Item> FROSTSTEEL_SHOVEL = register("froststeel_shovel", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().shovel(UGItemTiers.FROSTSTEEL, 1.5F, -3.0F));
+	public static final DeferredItem<Item> FROSTSTEEL_HOE = register("froststeel_hoe", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().hoe(UGItemTiers.FROSTSTEEL, -2, -0.5F));
 
-	public static final DeferredItem<Item> UTHERIUM_SWORD = ITEMS.register("utherium_sword", () -> new UGSwordItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(SwordItem.createAttributes(UGItemTiers.UTHERIUM, 3, -2.4F))));
-	public static final DeferredItem<Item> UTHERIUM_PICKAXE = ITEMS.register("utherium_pickaxe", () -> new UGPickaxeItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(PickaxeItem.createAttributes(UGItemTiers.UTHERIUM, 1, -2.8F))));
-	public static final DeferredItem<Item> UTHERIUM_AXE = ITEMS.register("utherium_axe", () -> new UGAxeItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(AxeItem.createAttributes(UGItemTiers.UTHERIUM, 5.0F, -3.0F))));
-	public static final DeferredItem<Item> UTHERIUM_SHOVEL = ITEMS.register("utherium_shovel", () -> new UGShovelItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(ShovelItem.createAttributes(UGItemTiers.UTHERIUM, 1.5F, -3.0F))));
-	public static final DeferredItem<Item> UTHERIUM_HOE = ITEMS.register("utherium_hoe", () -> new UGHoeItem(UGItemTiers.UTHERIUM, new Item.Properties().rarity(UTHERIUM_RARITY).attributes(HoeItem.createAttributes(UGItemTiers.UTHERIUM, -3, 0.0F))));
+	public static final DeferredItem<Item> UTHERIUM_SWORD = register("utherium_sword", (properties) -> new HoverTextItem(HoverTextItem.UTHERIUM_WEAPON, properties), () -> new Item.Properties().rarity(UTHERIUM_RARITY).sword(UGItemTiers.UTHERIUM, 3, -2.4F));
+	public static final DeferredItem<Item> UTHERIUM_PICKAXE = register("utherium_pickaxe", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY).pickaxe(UGItemTiers.UTHERIUM, 1, -2.8F));
+	public static final DeferredItem<Item> UTHERIUM_AXE = register("utherium_axe", (properties) -> new HoverTextItem(HoverTextItem.UTHERIUM_WEAPON, properties), () -> new Item.Properties().rarity(UTHERIUM_RARITY).axe(UGItemTiers.UTHERIUM, 5.0F, -3.0F));
+	public static final DeferredItem<Item> UTHERIUM_SHOVEL = register("utherium_shovel", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY).shovel(UGItemTiers.UTHERIUM, 1.5F, -3.0F));
+	public static final DeferredItem<Item> UTHERIUM_HOE = register("utherium_hoe", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY).hoe(UGItemTiers.UTHERIUM, -3, 0.0F));
 
-	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = ITEMS.register("forgotten_battleaxe", () -> new BattleaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(BattleaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 7, -3.4F)).rarity(Rarity.EPIC)));
-	public static final DeferredItem<Item> FORGOTTEN_SWORD = ITEMS.register("forgotten_sword", () -> new UGSwordItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(SwordItem.createAttributes(UGItemTiers.FORGOTTEN, 3, -2.4F)).rarity(FORGOTTEN_RARITY)));
-	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = ITEMS.register("forgotten_pickaxe", () -> new UGPickaxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(PickaxeItem.createAttributes(UGItemTiers.FORGOTTEN, 1, -2.8F)).rarity(FORGOTTEN_RARITY)));
-	public static final DeferredItem<Item> FORGOTTEN_AXE = ITEMS.register("forgotten_axe", () -> new UGAxeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(AxeItem.createAttributes(UGItemTiers.FORGOTTEN, 5.0F, -3.0F)).rarity(FORGOTTEN_RARITY)));
-	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = ITEMS.register("forgotten_shovel", () -> new UGShovelItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(ShovelItem.createAttributes(UGItemTiers.FORGOTTEN, 1.5F, -3.0F)).rarity(FORGOTTEN_RARITY)));
-	public static final DeferredItem<Item> FORGOTTEN_HOE = ITEMS.register("forgotten_hoe", () -> new UGHoeItem(UGItemTiers.FORGOTTEN, new Item.Properties().attributes(HoeItem.createAttributes(UGItemTiers.FORGOTTEN, -3, 0.0F)).rarity(FORGOTTEN_RARITY)));
+	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = register("forgotten_battleaxe", ForgottenBattleaxeItem::new, () -> BattleaxeItem.createBattleaxeProperties(UGItemTiers.FORGOTTEN, 7, -3.4F, new Item.Properties().rarity(Rarity.EPIC)));
+	public static final DeferredItem<Item> FORGOTTEN_SWORD = register("forgotten_sword", (properties) -> new HoverTextItem(HoverTextItem.FORGOTTEN_WEAPON, properties), () -> new Item.Properties().sword(UGItemTiers.FORGOTTEN, 3, -2.4F).rarity(FORGOTTEN_RARITY));
+	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = register("forgotten_pickaxe", (properties) -> new HoverTextItem(HoverTextItem.FORGOTTEN_TOOL, properties), () -> new Item.Properties().pickaxe(UGItemTiers.FORGOTTEN, 1, -2.8F).rarity(FORGOTTEN_RARITY));
+	public static final DeferredItem<Item> FORGOTTEN_AXE = register("forgotten_axe", (properties) -> new HoverTextItem(List.of(HoverTextItem.FORGOTTEN_WEAPON, HoverTextItem.FORGOTTEN_TOOL), properties), () -> new Item.Properties().axe(UGItemTiers.FORGOTTEN, 5.0F, -3.0F).rarity(FORGOTTEN_RARITY));
+	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = register("forgotten_shovel", (properties) -> new HoverTextItem(HoverTextItem.FORGOTTEN_TOOL, properties), () -> new Item.Properties().shovel(UGItemTiers.FORGOTTEN, 1.5F, -3.0F).rarity(FORGOTTEN_RARITY));
+	public static final DeferredItem<Item> FORGOTTEN_HOE = register("forgotten_hoe", (properties) -> new HoverTextItem(HoverTextItem.FORGOTTEN_TOOL, properties), () -> new Item.Properties().hoe(UGItemTiers.FORGOTTEN, -3, 0.0F).rarity(FORGOTTEN_RARITY));
 
 	//misc tools
-	public static final DeferredItem<Item> CATALYST = ITEMS.register("catalyst", () -> new CatalystItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-	public static final DeferredItem<Item> CRUMBLING_CATALYST = ITEMS.register("crumbling_catalyst", () -> new CrumblingCatalystItem(new Item.Properties().durability(1).stacksTo(1).rarity(Rarity.RARE)));
-	public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot", SlingshotItem::new);
-	public static final DeferredItem<Item> SPEAR = ITEMS.register("spear", () -> new SpearItem(new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).rarity(Rarity.UNCOMMON)));
-	public static final DeferredItem<Item> BLISTERBOMB = ITEMS.register("blisterbomb", BlisterbombItem::new);
-	public static final DeferredItem<Item> UNDERBEAN_STICK = ITEMS.register("underbean_on_a_stick", () -> new UnderbeanOnAStickItem(new Item.Properties().stacksTo(1).durability(100)));
+	public static final DeferredItem<Item> CATALYST = register("catalyst", CatalystItem::new, () -> new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
+	public static final DeferredItem<Item> CRUMBLING_CATALYST = register("crumbling_catalyst", CrumblingCatalystItem::new, () -> new Item.Properties().durability(1).stacksTo(1).rarity(Rarity.RARE));
+	public static final DeferredItem<Item> SLINGSHOT = register("slingshot", SlingshotItem::new, () -> new Item.Properties().durability(192).enchantable(1).repairable(ItemTags.PLANKS).rarity(Rarity.UNCOMMON));
+	public static final DeferredItem<Item> SPEAR = register("spear", SpearItem::new, () -> new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).enchantable(1).component(DataComponents.WEAPON, new Weapon(1)).rarity(Rarity.UNCOMMON));
+	public static final DeferredItem<Item> BLISTERBOMB = register("blisterbomb", BlisterbombItem::new, () -> new Item.Properties().stacksTo(8));
+	public static final DeferredItem<Item> UNDERBEAN_STICK = register("underbean_on_a_stick", (properties) -> new UnderbeanOnAStickItem<>(UGEntityTypes.DWELLER.get(), 1, properties), () -> new Item.Properties().stacksTo(1).durability(100));
 
-	public static final DeferredItem<Item> SMOGSTEM_BOAT = ITEMS.register("smogstem_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_SMOGSTEM"), new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> SMOGSTEM_CHEST_BOAT = ITEMS.register("smogstem_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_SMOGSTEM"), new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> WIGGLEWOOD_BOAT = ITEMS.register("wigglewood_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_WIGGLEWOOD"), new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> WIGGLEWOOD_CHEST_BOAT = ITEMS.register("wigglewood_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_WIGGLEWOOD"), new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> GRONGLE_BOAT = ITEMS.register("grongle_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_GRONGLE"), new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> GRONGLE_CHEST_BOAT = ITEMS.register("grongle_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_GRONGLE"), new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> ANCIENT_ROOT_BOAT = ITEMS.register("ancient_root_boat", () -> new BoatItem(false, Boat.Type.valueOf("UNDERGARDEN_ANCIENT_ROOT"), new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> ANCIENT_ROOT_CHEST_BOAT = ITEMS.register("ancient_root_chest_boat", () -> new BoatItem(true, Boat.Type.valueOf("UNDERGARDEN_ANCIENT_ROOT"), new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> SMOGSTEM_BOAT = register("smogstem_boat", (properties) -> new BoatItem(UGEntityTypes.SMOGSTEM_BOAT.get(), properties), () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<Item> SMOGSTEM_CHEST_BOAT = register("smogstem_chest_boat", (properties) -> new BoatItem(UGEntityTypes.SMOGSTEM_CHEST_BOAT.get(), properties), () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<Item> WIGGLEWOOD_BOAT = register("wigglewood_boat", (properties) -> new BoatItem(UGEntityTypes.WIGGLEWOOD_BOAT.get(), properties), () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<Item> WIGGLEWOOD_CHEST_BOAT = register("wigglewood_chest_boat", (properties) -> new BoatItem(UGEntityTypes.WIGGLEWOOD_CHEST_BOAT.get(), properties), () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<Item> GRONGLE_BOAT = register("grongle_boat", (properties) -> new BoatItem(UGEntityTypes.GRONGLE_BOAT.get(), properties), () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<Item> GRONGLE_CHEST_BOAT = register("grongle_chest_boat", (properties) -> new BoatItem(UGEntityTypes.GRONGLE_CHEST_BOAT.get(), properties), () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<Item> ANCIENT_ROOT_BOAT = register("ancient_root_boat", (properties) -> new BoatItem(UGEntityTypes.ANCIENT_ROOT_BOAT.get(), properties), () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<Item> ANCIENT_ROOT_CHEST_BOAT = register("ancient_root_chest_boat", (properties) -> new BoatItem(UGEntityTypes.ANCIENT_ROOT_CHEST_BOAT.get(), properties), () -> new Item.Properties().stacksTo(1));
 
-	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = ITEMS.register("virulent_mix_bucket", () -> new BucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
-	public static final DeferredItem<Item> GWIBLING_BUCKET = ITEMS.register("gwibling_bucket", () -> new MobBucketItem(UGEntityTypes.GWIBLING.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = register("virulent_mix_bucket", (properties) -> new BucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), properties), () -> new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET));
+	public static final DeferredItem<Item> GWIBLING_BUCKET = register("gwibling_bucket", (properties) -> new MobBucketItem(UGEntityTypes.GWIBLING.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, properties), () -> new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY));
 
-	public static final DeferredItem<Item> CLOGGRUM_BUCKET = ITEMS.register("cloggrum_bucket", () -> new UGBucketItem(new Item.Properties().stacksTo(16)));
+	public static final DeferredItem<Item> CLOGGRUM_BUCKET = register("cloggrum_bucket", UGBucketItem::new, () -> new Item.Properties().stacksTo(16));
 
 	//armors
-	public static final DeferredItem<Item> CLOGGRUM_HELMET = ITEMS.register("cloggrum_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(20))));
-	public static final DeferredItem<Item> CLOGGRUM_CHESTPLATE = ITEMS.register("cloggrum_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(20))));
-	public static final DeferredItem<Item> CLOGGRUM_LEGGINGS = ITEMS.register("cloggrum_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(20))));
-	public static final DeferredItem<Item> CLOGGRUM_BOOTS = ITEMS.register("cloggrum_boots", () -> new UndergardenArmorItem(UGArmorMaterials.CLOGGRUM, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(20))));
+	public static final DeferredItem<Item> CLOGGRUM_HELMET = register("cloggrum_helmet", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.CLOGGRUM, ArmorType.HELMET));
+	public static final DeferredItem<Item> CLOGGRUM_CHESTPLATE = register("cloggrum_chestplate", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.CLOGGRUM, ArmorType.CHESTPLATE));
+	public static final DeferredItem<Item> CLOGGRUM_LEGGINGS = register("cloggrum_leggings", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.CLOGGRUM, ArmorType.LEGGINGS));
+	public static final DeferredItem<Item> CLOGGRUM_BOOTS = register("cloggrum_boots", CloggrumBootsItem::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.CLOGGRUM, ArmorType.BOOTS));
 
-	public static final DeferredItem<Item> FROSTSTEEL_HELMET = ITEMS.register("froststeel_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.HELMET, UGArmorMaterials.FROSTSTEEL.get()))));
-	public static final DeferredItem<Item> FROSTSTEEL_CHESTPLATE = ITEMS.register("froststeel_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.CHESTPLATE, UGArmorMaterials.FROSTSTEEL.get()))));
-	public static final DeferredItem<Item> FROSTSTEEL_LEGGINGS = ITEMS.register("froststeel_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.LEGGINGS, UGArmorMaterials.FROSTSTEEL.get()))));
-	public static final DeferredItem<Item> FROSTSTEEL_BOOTS = ITEMS.register("froststeel_boots", () -> new UndergardenArmorItem(UGArmorMaterials.FROSTSTEEL, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(25)).attributes(UndergardenArmorItem.createFroststeelAttributes(ArmorItem.Type.BOOTS, UGArmorMaterials.FROSTSTEEL.get()))));
+	public static final DeferredItem<Item> FROSTSTEEL_HELMET = register("froststeel_helmet", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.FROSTSTEEL, ArmorType.HELMET).attributes(FroststeelBootsItem.createFrosteelAttributes(ArmorType.HELMET)));
+	public static final DeferredItem<Item> FROSTSTEEL_CHESTPLATE = register("froststeel_chestplate", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.FROSTSTEEL, ArmorType.CHESTPLATE).attributes(FroststeelBootsItem.createFrosteelAttributes(ArmorType.CHESTPLATE)));
+	public static final DeferredItem<Item> FROSTSTEEL_LEGGINGS = register("froststeel_leggings", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.FROSTSTEEL, ArmorType.LEGGINGS).attributes(FroststeelBootsItem.createFrosteelAttributes(ArmorType.LEGGINGS)));
+	public static final DeferredItem<Item> FROSTSTEEL_BOOTS = register("froststeel_boots", FroststeelBootsItem::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.FROSTSTEEL, ArmorType.BOOTS).attributes(FroststeelBootsItem.createFrosteelAttributes(ArmorType.BOOTS)));
 
-	public static final DeferredItem<Item> UTHERIUM_HELMET = ITEMS.register("utherium_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.HELMET, new Item.Properties().rarity(UTHERIUM_RARITY).durability(ArmorItem.Type.HELMET.getDurability(30))));
-	public static final DeferredItem<Item> UTHERIUM_CHESTPLATE = ITEMS.register("utherium_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(UTHERIUM_RARITY).durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
-	public static final DeferredItem<Item> UTHERIUM_LEGGINGS = ITEMS.register("utherium_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(UTHERIUM_RARITY).durability(ArmorItem.Type.LEGGINGS.getDurability(30))));
-	public static final DeferredItem<Item> UTHERIUM_BOOTS = ITEMS.register("utherium_boots", () -> new UndergardenArmorItem(UGArmorMaterials.UTHERIUM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(UTHERIUM_RARITY).durability(ArmorItem.Type.BOOTS.getDurability(30))));
+	public static final DeferredItem<Item> UTHERIUM_HELMET = register("utherium_helmet", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.UTHERIUM, ArmorType.HELMET).rarity(UTHERIUM_RARITY));
+	public static final DeferredItem<Item> UTHERIUM_CHESTPLATE = register("utherium_chestplate", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.UTHERIUM, ArmorType.CHESTPLATE).rarity(UTHERIUM_RARITY));
+	public static final DeferredItem<Item> UTHERIUM_LEGGINGS = register("utherium_leggings", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.UTHERIUM, ArmorType.LEGGINGS).rarity(UTHERIUM_RARITY));
+	public static final DeferredItem<Item> UTHERIUM_BOOTS = register("utherium_boots", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.UTHERIUM, ArmorType.BOOTS).rarity(UTHERIUM_RARITY));
 
-	public static final DeferredItem<Item> ANCIENT_HELMET = ITEMS.register("ancient_helmet", () -> new UndergardenArmorItem(UGArmorMaterials.ANCIENT, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(37))));
-	public static final DeferredItem<Item> ANCIENT_CHESTPLATE = ITEMS.register("ancient_chestplate", () -> new UndergardenArmorItem(UGArmorMaterials.ANCIENT, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
-	public static final DeferredItem<Item> ANCIENT_LEGGINGS = ITEMS.register("ancient_leggings", () -> new UndergardenArmorItem(UGArmorMaterials.ANCIENT, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
+	public static final DeferredItem<Item> ANCIENT_HELMET = register("ancient_helmet", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.ANCIENT, ArmorType.HELMET));
+	public static final DeferredItem<Item> ANCIENT_CHESTPLATE = register("ancient_chestplate", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.ANCIENT, ArmorType.CHESTPLATE));
+	public static final DeferredItem<Item> ANCIENT_LEGGINGS = register("ancient_leggings", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.ANCIENT, ArmorType.LEGGINGS));
 
-	public static final DeferredItem<Item> DENIZEN_MASK = ITEMS.register("denizen_mask", () -> new DenizenMaskItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+	public static final DeferredItem<Item> DENIZEN_MASK = register("denizen_mask", Item::new, () -> new Item.Properties()
+		.stacksTo(1)
+		.rarity(Rarity.UNCOMMON)
+		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setAsset(UGEquipmentAssets.DENIZEN_MASK).build()));
 
 	//foods/plants
-	public static final DeferredItem<Item> DROOPFRUIT = ITEMS.register("droopvine_item", () -> new DroopfruitItem(UGBlocks.DROOPVINE.get(), new Item.Properties().food(UGFoods.DROOPFRUIT)));
-	public static final DeferredItem<Item> UNDERBEANS = ITEMS.register("underbeans", () -> new ItemNameBlockItem(UGBlocks.UNDERBEAN_BUSH.get(), new Item.Properties().food(UGFoods.UNDERBEANS)));
-	public static final DeferredItem<Item> ROASTED_UNDERBEANS = ITEMS.register("roasted_underbeans", () -> new Item(new Item.Properties().food(UGFoods.ROASTED_UNDERBEANS)));
-	public static final DeferredItem<Item> BLISTERBERRY = ITEMS.register("blisterberry", () -> new ItemNameBlockItem(UGBlocks.BLISTERBERRY_BUSH.get(), new Item.Properties().food(UGFoods.BLISTERBERRY)));
-	public static final DeferredItem<Item> ROTTEN_BLISTERBERRY = ITEMS.register("rotten_blisterberry", () -> new RottenBlisterberryItem(new Item.Properties().food(UGFoods.ROTTEN_BLISTERBERRY)));
-	public static final DeferredItem<Item> GOO_BALL = ITEMS.register("goo_ball", () -> new GooBallItem(new Item.Properties().food(UGFoods.GOO_BALL)));
-	public static final DeferredItem<Item> GLOOMGOURD_PIE = ITEMS.register("gloomgourd_pie", () -> new Item(new Item.Properties().food(UGFoods.GLOOMGOURD_PIE)));
-	public static final DeferredItem<Item> RAW_DWELLER_MEAT = ITEMS.register("raw_dweller_meat", () -> new Item(new Item.Properties().food(UGFoods.RAW_DWELLER)));
-	public static final DeferredItem<Item> DWELLER_STEAK = ITEMS.register("dweller_steak", () -> new Item(new Item.Properties().food(UGFoods.COOKED_DWELLER)));
-	public static final DeferredItem<Item> RAW_GWIBLING = ITEMS.register("raw_gwibling", () -> new Item(new Item.Properties().food(UGFoods.RAW_GWIBLING)));
-	public static final DeferredItem<Item> COOKED_GWIBLING = ITEMS.register("cooked_gwibling", () -> new Item(new Item.Properties().food(UGFoods.COOKED_GWIBLING)));
-	public static final DeferredItem<Item> RAW_GLOOMPER_LEG = ITEMS.register("raw_gloomper_leg", () -> new Item(new Item.Properties().food(UGFoods.RAW_GLOOMPER_LEG)));
-	public static final DeferredItem<Item> GLOOMPER_LEG = ITEMS.register("gloomper_leg", () -> new Item(new Item.Properties().food(UGFoods.GLOOMPER_LEG)));
-	public static final DeferredItem<Item> GLITTERKELP = ITEMS.register("glitterkelp", () -> new BlockItem(UGBlocks.GLITTERKELP.get(), new Item.Properties()));
-	public static final DeferredItem<Item> GLOOMGOURD_SEEDS = ITEMS.register("gloomgourd_seeds", () -> new ItemNameBlockItem(UGBlocks.GLOOMGOURD_STEM.get(), new Item.Properties()));
-	public static final DeferredItem<Item> BLOOD_GLOBULE = ITEMS.register("blood_globule", () -> new Item(new Item.Properties().food(UGFoods.BLOOD_GLOBULE)));
-	public static final DeferredItem<Item> BLOODY_STEW = ITEMS.register("bloody_stew", () -> new Item(new Item.Properties().food(UGFoods.BLOODY_STEW).stacksTo(1)));
-	public static final DeferredItem<Item> INKY_STEW = ITEMS.register("inky_stew", () -> new Item(new Item.Properties().food(UGFoods.INKY_STEW).stacksTo(1)));
-	public static final DeferredItem<Item> INDIGO_STEW = ITEMS.register("indigo_stew", () -> new Item(new Item.Properties().food(UGFoods.INDIGO_STEW).stacksTo(1)));
-	public static final DeferredItem<Item> VEILED_STEW = ITEMS.register("veiled_stew", () -> new Item(new Item.Properties().food(UGFoods.VEILED_STEW).stacksTo(1)));
-	public static final DeferredItem<Item> SLOP_BOWL = ITEMS.register("slop_bowl", () -> new Item(new Item.Properties().food(UGFoods.SLOP_BOWL).stacksTo(1)));
+	public static final DeferredItem<Item> DROOPFRUIT = register("droopvine_item", (properties) -> new DroopfruitItem(UGBlocks.DROOPVINE.get(), properties), () -> new Item.Properties().food(UGFoods.DROOPFRUIT, UGConsumables.MOB_EFFECT_CONSUMABLE.apply(new MobEffectInstance(MobEffects.GLOWING, 600))));
+	public static final DeferredItem<Item> UNDERBEANS = register("underbeans", (properties) -> new BlockItem(UGBlocks.UNDERBEAN_BUSH.get(), properties), () -> new Item.Properties().food(UGFoods.UNDERBEANS, UGConsumables.UNDERBEANS));
+	public static final DeferredItem<Item> ROASTED_UNDERBEANS = register("roasted_underbeans", Item::new, () -> new Item.Properties().food(UGFoods.ROASTED_UNDERBEANS));
+	public static final DeferredItem<Item> BLISTERBERRY = register("blisterberry", (properties) -> new BlockItem(UGBlocks.BLISTERBERRY_BUSH.get(), properties), () -> new Item.Properties().food(UGFoods.BLISTERBERRY));
+	public static final DeferredItem<Item> ROTTEN_BLISTERBERRY = register("rotten_blisterberry", RottenBlisterberryItem::new, () -> new Item.Properties().food(UGFoods.ROTTEN_BLISTERBERRY, UGConsumables.MOB_EFFECT_CONSUMABLE.apply(new MobEffectInstance(MobEffects.HUNGER, 600))));
+	public static final DeferredItem<Item> GOO_BALL = register("goo_ball", GooBallItem::new, () -> new Item.Properties().food(UGFoods.GOO_BALL, UGConsumables.MOB_EFFECT_CONSUMABLE.apply(new MobEffectInstance(UGEffects.GOOEY, 600))));
+	public static final DeferredItem<Item> GLOOMGOURD_PIE = register("gloomgourd_pie", Item::new, () -> new Item.Properties().food(UGFoods.GLOOMGOURD_PIE, UGConsumables.MOB_EFFECT_CONSUMABLE.apply(new MobEffectInstance(UGEffects.VIRULENT_RESISTANCE, 600))));
+	public static final DeferredItem<Item> RAW_DWELLER_MEAT = register("raw_dweller_meat", Item::new, () -> new Item.Properties().food(UGFoods.RAW_DWELLER));
+	public static final DeferredItem<Item> DWELLER_STEAK = register("dweller_steak", Item::new, () -> new Item.Properties().food(UGFoods.COOKED_DWELLER));
+	public static final DeferredItem<Item> RAW_GWIBLING = register("raw_gwibling", Item::new, () -> new Item.Properties().food(UGFoods.RAW_GWIBLING));
+	public static final DeferredItem<Item> COOKED_GWIBLING = register("cooked_gwibling", Item::new, () -> new Item.Properties().food(UGFoods.COOKED_GWIBLING));
+	public static final DeferredItem<Item> RAW_GLOOMPER_LEG = register("raw_gloomper_leg", Item::new, () -> new Item.Properties().food(UGFoods.RAW_GLOOMPER_LEG));
+	public static final DeferredItem<Item> GLOOMPER_LEG = register("gloomper_leg", Item::new, () -> new Item.Properties().food(UGFoods.GLOOMPER_LEG, UGConsumables.MOB_EFFECT_CONSUMABLE.apply(new MobEffectInstance(MobEffects.JUMP_BOOST, 600))));
+	public static final DeferredItem<Item> GLITTERKELP = register("glitterkelp", (properties) -> new BlockItem(UGBlocks.GLITTERKELP.get(), properties), Item.Properties::new);
+	public static final DeferredItem<Item> GLOOMGOURD_SEEDS = register("gloomgourd_seeds", (properties) -> new BlockItem(UGBlocks.GLOOMGOURD_STEM.get(), properties), Item.Properties::new);
+	public static final DeferredItem<Item> BLOOD_GLOBULE = register("blood_globule", Item::new, () -> new Item.Properties().food(UGFoods.BLOOD_GLOBULE, UGConsumables.MOB_EFFECT_CONSUMABLE.apply(new MobEffectInstance(MobEffects.REGENERATION, 20, 3))));
+	public static final DeferredItem<Item> BLOODY_STEW = register("bloody_stew", Item::new, () -> new Item.Properties().food(UGFoods.BLOODY_STEW, UGConsumables.STEW_CONSUMABLE.apply(new MobEffectInstance(MobEffects.STRENGTH, 600), new MobEffectInstance(UGEffects.BRITTLENESS, 600))).stacksTo(1).usingConvertsTo(Items.BOWL));
+	public static final DeferredItem<Item> INKY_STEW = register("inky_stew", Item::new, () -> new Item.Properties().food(UGFoods.INKY_STEW, UGConsumables.STEW_CONSUMABLE.apply(new MobEffectInstance(MobEffects.BLINDNESS, 600), new MobEffectInstance(MobEffects.RESISTANCE, 600))).stacksTo(1).usingConvertsTo(Items.BOWL));
+	public static final DeferredItem<Item> INDIGO_STEW = register("indigo_stew", Item::new, () -> new Item.Properties().food(UGFoods.INDIGO_STEW, UGConsumables.STEW_CONSUMABLE.apply(new MobEffectInstance(MobEffects.NIGHT_VISION, 600), new MobEffectInstance(MobEffects.SLOWNESS, 600))).stacksTo(1).usingConvertsTo(Items.BOWL));
+	public static final DeferredItem<Item> VEILED_STEW = register("veiled_stew", Item::new, () -> new Item.Properties().food(UGFoods.VEILED_STEW, UGConsumables.STEW_CONSUMABLE.apply(new MobEffectInstance(MobEffects.SLOW_FALLING, 600), new MobEffectInstance(UGEffects.FEATHERWEIGHT, 600))).stacksTo(1).usingConvertsTo(Items.BOWL));
+	public static final DeferredItem<Item> SLOP_BOWL = register("slop_bowl", Item::new, () -> new Item.Properties().food(UGFoods.SLOP_BOWL, UGConsumables.MOB_EFFECT_CONSUMABLE.apply(new MobEffectInstance(MobEffects.NAUSEA, 200))).stacksTo(1).usingConvertsTo(Items.BOWL));
 
-	//spawn eggs
-	public static final DeferredItem<DeferredSpawnEggItem> DWELLER_SPAWN_EGG = ITEMS.register("dweller_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DWELLER, 4804417, 16776960, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> GREATER_DWELLER_SPAWN_EGG = ITEMS.register("greater_dweller_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GREATER_DWELLER, 4804417, 16776960, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> GWIBLING_SPAWN_EGG = ITEMS.register("gwibling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GWIBLING, 10064737, 15845330, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> ROTLING_SPAWN_EGG = ITEMS.register("rotling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTLING, 5590327, 10500660, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> ROTWALKER_SPAWN_EGG = ITEMS.register("rotwalker_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTWALKER, 5590327, 10500660, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> ROTBEAST_SPAWN_EGG = ITEMS.register("rotbeast_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTBEAST, 5590327, 10500660, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> ROTBELCHER_SPAWN_EGG = ITEMS.register("rotbelcher_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.ROTBELCHER, 5590327, 10500660, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> BRUTE_SPAWN_EGG = ITEMS.register("brute_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.BRUTE, 7035982, 4012083, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> SCINTLING_SPAWN_EGG = ITEMS.register("scintling_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.SCINTLING, 8556655, 6314558, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> GLOOMPER_SPAWN_EGG = ITEMS.register("gloomper_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GLOOMPER, 4138045, 6579581, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> STONEBORN_SPAWN_EGG = ITEMS.register("stoneborn_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.STONEBORN, 3227179, 9502615, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> NARGOYLE_SPAWN_EGG = ITEMS.register("nargoyle_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.NARGOYLE, 3747634, 15508905, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> MUNCHER_SPAWN_EGG = ITEMS.register("muncher_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MUNCHER, 2366466, 15881511, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> SPLOOGIE_SPAWN_EGG = ITEMS.register("sploogie_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.SPLOOGIE, 10585715, 4559071, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> GWIB_SPAWN_EGG = ITEMS.register("gwib_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.GWIB, 10064737, 4203803, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> MOG_SPAWN_EGG = ITEMS.register("mog_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MOG, 3227179, 6393396, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> SMOG_MOG_SPAWN_EGG = ITEMS.register("smog_mog_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.SMOG_MOG, 3227179, 3444366, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_SPAWN_EGG = ITEMS.register("forgotten_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN, 5393733, 9502615, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> DENIZEN_SPAWN_EGG = ITEMS.register("denizen_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.DENIZEN, 9797222, 13026490, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> FORGOTTEN_GUARDIAN_SPAWN_EGG = ITEMS.register("forgotten_guardian_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.FORGOTTEN_GUARDIAN, 8126397, 3170136, new Item.Properties()));
-	public static final DeferredItem<DeferredSpawnEggItem> MINION_SPAWN_EGG = ITEMS.register("minion_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MINION, 8126397, 3170136, new Item.Properties()));
-	//TODO remove
-	public static final DeferredItem<DeferredSpawnEggItem> MYSTERIOUS_POT_SPAWN_EGG = ITEMS.register("mysterious_pot_spawn_egg", () -> new DeferredSpawnEggItem(UGEntityTypes.MYSTERIOUS_POT, 3161387, 12648360, new Item.Properties()));
+	//blocks
+	private static final Equippable grongEquip = Equippable.builder(EquipmentSlot.HEAD)
+		.setEquipSound(UGSoundEvents.GRONGLET_AMBIENT)
+		.setSwappable(false)
+		.setDispensable(false)
+		.setEquipOnInteract(false)
+		.build();
+	public static final DeferredItem<Item> GRONGLET = register("gronglet", properties -> new GrongletItem(UGBlocks.GRONGLET.get(), properties), () -> new Item.Properties().food(UGFoods.GRONGLET, UGConsumables.GRONGLET).component(DataComponents.EQUIPPABLE, grongEquip));
+	public static final DeferredItem<Item> ROGDORIC_GRONGLET = register("rogdoric_gronglet", properties -> new GrongletItem(UGBlocks.ROGDORIC_GRONGLET.get(), properties), () -> new Item.Properties().food(UGFoods.GRONGLET, UGConsumables.ROGDORIC_GRONGLET).component(DataComponents.EQUIPPABLE, grongEquip));
+	public static final DeferredItem<Item> UTHERIC_GRONGLET = register("utheric_gronglet", properties -> new GrongletItem(UGBlocks.UTHERIC_GRONGLET.get(), properties), () -> new Item.Properties().food(UGFoods.GRONGLET, UGConsumables.UTHERIC_GRONGLET).component(DataComponents.EQUIPPABLE, grongEquip));
+
+	public static final DeferredItem<Item> SHARD_TORCH = register("shard_torch", properties -> new StandingAndWallBlockItem(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get(), Direction.DOWN, properties), () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> DEPTHROCK_BED = register("depthrock_bed", properties -> new BedItem(UGBlocks.DEPTHROCK_BED.get(), properties), () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<Item> WIGGLEWOOD_SIGN = register("wigglewood_sign", properties -> new SignItem(UGBlocks.WIGGLEWOOD_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_SIGN.get(), properties), () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> SMOGSTEM_SIGN = register("smogstem_sign", properties -> new SignItem(UGBlocks.SMOGSTEM_SIGN.get(), UGBlocks.SMOGSTEM_WALL_SIGN.get(), properties), () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> GRONGLE_SIGN = register("grongle_sign", properties -> new SignItem(UGBlocks.GRONGLE_SIGN.get(), UGBlocks.GRONGLE_WALL_SIGN.get(), properties), () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> ANCIENT_ROOT_SIGN = register("ancient_root_sign", properties -> new SignItem(UGBlocks.ANCIENT_ROOT_SIGN.get(), UGBlocks.ANCIENT_ROOT_WALL_SIGN.get(), properties), () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> WIGGLEWOOD_HANGING_SIGN = register("wigglewood_hanging_sign", properties -> new SignItem(UGBlocks.WIGGLEWOOD_HANGING_SIGN.get(), UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN.get(), properties), () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> SMOGSTEM_HANGING_SIGN = register("smogstem_hanging_sign", properties -> new SignItem(UGBlocks.SMOGSTEM_HANGING_SIGN.get(), UGBlocks.SMOGSTEM_WALL_HANGING_SIGN.get(), properties), () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> GRONGLE_HANGING_SIGN = register("grongle_hanging_sign", properties -> new SignItem(UGBlocks.GRONGLE_HANGING_SIGN.get(), UGBlocks.GRONGLE_WALL_HANGING_SIGN.get(), properties), () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", properties -> new SignItem(UGBlocks.ANCIENT_ROOT_HANGING_SIGN.get(), UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN.get(), properties), () -> new Item.Properties().stacksTo(16));
+
+	public static <T extends Item> DeferredItem<T> register(String name, Function<Item.Properties, T> item, Supplier<Item.Properties> properties) {
+		return ITEMS.register(name, () -> item.apply(properties.get().setId(ResourceKey.create(Registries.ITEM, Undergarden.prefix(name)))));
+	}
 }

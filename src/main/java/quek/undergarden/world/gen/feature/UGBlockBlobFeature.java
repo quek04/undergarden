@@ -2,6 +2,7 @@ package quek.undergarden.world.gen.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,16 +24,16 @@ public class UGBlockBlobFeature extends Feature<BlockStateConfiguration> {
 		RandomSource random = context.random();
 
 		BlockStateConfiguration blockstateconfiguration;
-		for (blockstateconfiguration = context.config(); pos.getY() > level.getMinBuildHeight() + 6; pos = pos.below()) {
+		for (blockstateconfiguration = context.config(); pos.getY() > level.getMinY() + 6; pos = pos.below()) {
 			if (!level.isEmptyBlock(pos.below())) {
 				BlockState blockstate = level.getBlockState(pos.below());
-				if (isDirt(blockstate) || blockstate.is(UGTags.Blocks.BASE_STONE_UNDERGARDEN)) {
+				if (blockstate.is(BlockTags.DIRT) || blockstate.is(UGTags.Blocks.BASE_STONE_UNDERGARDEN)) {
 					break;
 				}
 			}
 		}
 
-		if (pos.getY() <= level.getMinBuildHeight() + 6 || pos.getY() >= 110) {
+		if (pos.getY() <= level.getMinY() + 6 || pos.getY() >= 110) {
 			return false;
 		} else {
 			for (int l = 0; l < 3; l++) {

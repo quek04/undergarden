@@ -1,12 +1,17 @@
 package quek.undergarden.registry;
 
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.Music;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TimelineTags;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.attribute.*;
+import net.minecraft.world.level.CardinalLighting;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
@@ -16,43 +21,58 @@ import net.minecraft.world.level.levelgen.*;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import net.minecraft.world.timeline.Timeline;
+import net.minecraft.world.timeline.Timelines;
 import quek.undergarden.Undergarden;
 import quek.undergarden.world.gen.UGNoiseBasedChunkGenerator;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalLong;
 
 public class UGDimensions {
 
-	public static final ResourceKey<Level> UNDERGARDEN_LEVEL = ResourceKey.create(Registries.DIMENSION, name("undergarden"));
-
-	public static final ResourceKey<NoiseGeneratorSettings> UNDERGARDEN_NOISE_GEN = ResourceKey.create(Registries.NOISE_SETTINGS, name("undergarden"));
-
-	public static final ResourceKey<DimensionType> UNDERGARDEN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, name("undergarden"));
-
-	public static final ResourceKey<LevelStem> UNDERGARDEN_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, name("undergarden"));
-
-	private static Identifier name(String name) {
-		return Undergarden.prefix(name);
-	}
+	public static final ResourceKey<Level> UNDERGARDEN_LEVEL = ResourceKey.create(Registries.DIMENSION, Undergarden.prefix("undergarden"));
+	public static final ResourceKey<NoiseGeneratorSettings> UNDERGARDEN_NOISE_GEN = ResourceKey.create(Registries.NOISE_SETTINGS, Undergarden.prefix("undergarden"));
+	public static final ResourceKey<DimensionType> UNDERGARDEN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, Undergarden.prefix("undergarden"));
+	public static final ResourceKey<LevelStem> UNDERGARDEN_LEVEL_STEM = ResourceKey.create(Registries.LEVEL_STEM, Undergarden.prefix("undergarden"));
 
 	public static void bootstrapType(BootstrapContext<DimensionType> context) {
+		HolderGetter<Timeline> timelines = context.lookup(Registries.TIMELINE);
 		context.register(UNDERGARDEN_DIM_TYPE, new DimensionType(
-			OptionalLong.of(18000L), //fixed time
+			true, //fixed time
 			false, //skylight
 			true, //ceiling
-			false, //ultrawarm
-			true, //natural
+			false, //dragon fight
 			4.0D, //coordinate scale
-			true, //bed works
-			false, //respawn anchor works
 			-64, // Minimum Y Level
 			192, // Height + Min Y = Max Y
 			192, // Logical Height
 			BlockTags.INFINIBURN_OVERWORLD, //infiniburn
-			name("undergarden"), // DimensionRenderInfo
 			0.1F, // ambient light
-			new DimensionType.MonsterSettings(true, false, UniformInt.of(0, 7), 0)));
+			new DimensionType.MonsterSettings(UniformInt.of(0, 7), 0),
+			DimensionType.Skybox.NONE,
+			CardinalLighting.Type.NETHER,
+			EnvironmentAttributeMap.builder()
+				.set(EnvironmentAttributes.FOG_START_DISTANCE, -30.0F)
+				.set(EnvironmentAttributes.FOG_END_DISTANCE, 225.0F)
+				.set(EnvironmentAttributes.SKY_LIGHT_COLOR, Timelines.NIGHT_SKY_LIGHT_COLOR)
+				.set(EnvironmentAttributes.SKY_LIGHT_LEVEL, 4.0F)
+				.set(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0.0F)
+				.set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, -13621215)
+				.set(EnvironmentAttributes.DEFAULT_DRIPSTONE_PARTICLE, UGParticleTypes.DRIPPING_VIRULENT.get())
+				.set(EnvironmentAttributes.BED_RULE, new BedRule(BedRule.Rule.NEVER, BedRule.Rule.ALWAYS, false, Optional.empty()))
+				.set(EnvironmentAttributes.PIGLINS_ZOMBIFY, false)
+				.set(EnvironmentAttributes.CAN_PILLAGER_PATROL_SPAWN, false)
+				.set(EnvironmentAttributes.CAN_START_RAID, false)
+				.set(EnvironmentAttributes.CREAKING_ACTIVE, true)
+				.set(EnvironmentAttributes.SKY_COLOR, 1186057)
+				.set(EnvironmentAttributes.WATER_FOG_COLOR, 332810)
+				.set(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(new Music(UGSoundEvents.UNDERGARDEN_MUSIC, 12000, 24000, true)))
+				.set(EnvironmentAttributes.AMBIENT_SOUNDS, UGBiomes.DEFAULT_AMBIENCE.apply(UGSoundEvents.UNDERGARDEN_AMBIENCE, UGSoundEvents.FIELDS_AMBIENT_ADDITION))
+				.build(),
+			timelines.getOrThrow(UGTags.Timelines.IN_UNDERGARDEN),
+			Optional.empty()));
 	}
 
 	public static void bootstrapStem(BootstrapContext<LevelStem> context) {

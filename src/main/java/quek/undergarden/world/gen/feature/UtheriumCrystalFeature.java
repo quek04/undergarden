@@ -50,8 +50,8 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 						return false;
 					} else {
 						int i = (int) ((float) range.height() * config.maxColumnRadiusToCaveHeightRatio);
-						int j = Mth.clamp(i, config.columnRadius.getMinValue(), config.columnRadius.getMaxValue());
-						int k = Mth.randomBetweenInclusive(random, config.columnRadius.getMinValue(), j);
+						int j = Mth.clamp(i, config.columnRadius.minInclusive(), config.columnRadius.maxInclusive());
+						int k = Mth.randomBetweenInclusive(random, config.columnRadius.minInclusive(), j);
 						LargeCrystal crystal = makeCrystal(blockpos.atY(range.ceiling() - 1), false, random, k, config.stalactiteBluntness, config.heightScale);
 						LargeCrystal crystal1 = makeCrystal(blockpos.atY(range.floor() + 1), true, random, k, config.stalagmiteBluntness, config.heightScale);
 
@@ -130,7 +130,7 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 
 	@Nullable
 	private BlockPos findSurface(LevelAccessor accessor, BlockPos.MutableBlockPos pos, int distance, boolean ceiling) {
-		while (pos.getY() > accessor.getMinBuildHeight() + 1 && distance > 0) {
+		while (pos.getY() > accessor.getMinY() + 1 && distance > 0) {
 			--distance;
 			if (this.canPlaceAt(accessor, pos, ceiling)) {
 				return pos;
@@ -154,7 +154,7 @@ public class UtheriumCrystalFeature extends Feature<UtheriumCrystalConfiguration
 
 	@Nullable
 	private static BlockPos findAir(LevelAccessor accessor, BlockPos.MutableBlockPos pos, int distance) {
-		while (pos.getY() < accessor.getMaxBuildHeight() && distance > 0) {
+		while (pos.getY() < accessor.getMaxY() && distance > 0) {
 			--distance;
 			BlockState blockstate = accessor.getBlockState(pos);
 			if (!CAN_PLACE_ON.contains(blockstate.getBlock())) {
