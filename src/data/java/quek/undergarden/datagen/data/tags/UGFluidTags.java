@@ -3,18 +3,16 @@ package quek.undergarden.datagen.data.tags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGFluids;
 import quek.undergarden.registry.UGTags;
 
-import org.jspecify.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class UGFluidTags extends FluidTagsProvider {
 
-	public UGFluidTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future, @Nullable ExistingFileHelper existingFileHelper) {
-		super(output, future, Undergarden.MODID, existingFileHelper);
+	public UGFluidTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
+		super(output, future, Undergarden.MODID);
 	}
 
 	@Override

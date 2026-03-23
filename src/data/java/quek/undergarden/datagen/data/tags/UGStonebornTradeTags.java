@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 public class UGStonebornTradeTags extends KeyTagProvider<StonebornTrade> {
 
 	public UGStonebornTradeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
-		super(output, UGRegistries.STONEBORN_TRADE, future, Undergarden.MODID);
+		super(output, UGRegistries.Keys.STONEBORN_TRADE, future, Undergarden.MODID);
 	}
 
 	@Override

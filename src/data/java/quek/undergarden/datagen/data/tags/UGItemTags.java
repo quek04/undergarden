@@ -3,22 +3,19 @@ package quek.undergarden.datagen.data.tags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
 
-import org.jspecify.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class UGItemTags extends ItemTagsProvider {
 
-	public UGItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future, CompletableFuture<TagLookup<Block>> provider, @Nullable ExistingFileHelper existingFileHelper) {
-		super(output, future, provider, Undergarden.MODID, existingFileHelper);
+	public UGItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
+		super(output, future, Undergarden.MODID);
 	}
 
 	@Override

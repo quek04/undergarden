@@ -3,19 +3,18 @@ package quek.undergarden.datagen.data.tags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.data.tags.KeyTagProvider;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageType;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGDamageSources;
 
 import java.util.concurrent.CompletableFuture;
 
-public class UGDamageTypeTags extends TagsProvider<DamageType> {
+public class UGDamageTypeTags extends KeyTagProvider<DamageType> {
 
-	public UGDamageTypeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future, ExistingFileHelper helper) {
-		super(output, Registries.DAMAGE_TYPE, future, Undergarden.MODID, helper);
+	public UGDamageTypeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
+		super(output, Registries.DAMAGE_TYPE, future, Undergarden.MODID);
 	}
 
 	@Override

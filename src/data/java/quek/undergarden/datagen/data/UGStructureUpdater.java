@@ -11,18 +11,15 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtAccounter;
 import net.minecraft.nbt.NbtIo;
 import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.MultiPackResourceManager;
 import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.util.datafix.DataFixers;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 
-import javax.annotation.Nonnull;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
@@ -33,22 +30,16 @@ import java.util.concurrent.CompletableFuture;
 public class UGStructureUpdater implements DataProvider {
 	private final String basePath;
 	private final PackOutput output;
-	private final MultiPackResourceManager resources;
+	private final ResourceManager resources;
 
-	public UGStructureUpdater(String basePath, PackOutput output, ExistingFileHelper helper) {
+	public UGStructureUpdater(String basePath, PackOutput output, ResourceManager manager) {
 		this.basePath = basePath;
 		this.output = output;
-		try {
-			Field serverData = ExistingFileHelper.class.getDeclaredField("serverData");
-			serverData.setAccessible(true);
-			this.resources = (MultiPackResourceManager) serverData.get(helper);
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-			throw new RuntimeException(e);
-		}
+		this.resources = manager;
 	}
 
 	@Override
-	public CompletableFuture<?> run(@Nonnull CachedOutput cache) {
+	public CompletableFuture<?> run(CachedOutput cache) {
 		try {
 			for (var entry : this.resources.listResources(this.basePath, $ -> true).entrySet())
 				if (entry.getKey().getNamespace().equals(Undergarden.MODID))
@@ -80,14 +71,13 @@ public class UGStructureUpdater implements DataProvider {
 
 	private static CompoundTag updateNBT(CompoundTag nbt) {
 		final CompoundTag updatedNBT = DataFixTypes.STRUCTURE.updateToCurrentVersion(
-				DataFixers.getDataFixer(), nbt, nbt.getInt("DataVersion")
+				DataFixers.getDataFixer(), nbt, nbt.getIntOr("DataVersion", -1)
 		);
 		StructureTemplate template = new StructureTemplate();
-		template.load(BuiltInRegistries.BLOCK.asLookup(), updatedNBT);
+		template.load(BuiltInRegistries.BLOCK, updatedNBT);
 		return template.save(new CompoundTag());
 	}
 
-	@Nonnull
 	@Override
 	public String getName() {
 		return "Update structure files in " + this.basePath;

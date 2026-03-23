@@ -4,8 +4,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.tags.BiomeTags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import org.jspecify.annotations.Nullable;;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBiomes;
 import quek.undergarden.registry.UGTags;
@@ -14,8 +12,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class UGBiomeTags extends BiomeTagsProvider {
 
-	public UGBiomeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future, @Nullable ExistingFileHelper existingFileHelper) {
-		super(output, future, Undergarden.MODID, existingFileHelper);
+	public UGBiomeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
+		super(output, future, Undergarden.MODID);
 	}
 
 	@Override
@@ -30,7 +28,6 @@ public class UGBiomeTags extends BiomeTagsProvider {
 
 		//vanilla
 		tag(BiomeTags.WITHOUT_ZOMBIE_SIEGES).addTag(UGTags.Biomes.IS_UNDERGARDEN);
-		tag(BiomeTags.WITHOUT_PATROL_SPAWNS).addTag(UGTags.Biomes.IS_UNDERGARDEN);
 		tag(BiomeTags.WITHOUT_WANDERING_TRADER_SPAWNS).addTag(UGTags.Biomes.IS_UNDERGARDEN);
         /*tag(BiomeTags.IS_FOREST).add(UGBiomes.SMOGSTEM_FOREST, UGBiomes.WIGGLEWOOD_FOREST, UGBiomes.DENSE_FOREST, UGBiomes.GRONGLEGROWTH);
 

@@ -1,7 +1,7 @@
 package quek.undergarden.datagen.helpers;
 
 import com.google.common.collect.ImmutableList;
-import org.jspecify.annotations.Nullable;;
+import org.jspecify.annotations.Nullable;
 
 import java.text.ChoiceFormat;
 import java.text.DecimalFormat;

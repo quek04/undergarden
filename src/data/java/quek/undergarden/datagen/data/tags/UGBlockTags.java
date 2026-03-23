@@ -1,25 +1,21 @@
 package quek.undergarden.datagen.data.tags;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGTags;
 
-import org.jspecify.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class UGBlockTags extends IntrinsicHolderTagsProvider<Block> {
+public class UGBlockTags extends BlockTagsProvider {
 
-	public UGBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future, @Nullable ExistingFileHelper existingFileHelper) {
-		super(output, Registries.BLOCK, future, block -> block.builtInRegistryHolder().key(), Undergarden.MODID, existingFileHelper);
+	public UGBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
+		super(output, future, Undergarden.MODID);
 	}
 
 	@Override

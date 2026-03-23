@@ -6,18 +6,16 @@ import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGTags;
 
-import org.jspecify.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class UGEntityTags extends EntityTypeTagsProvider {
 
-	public UGEntityTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future, @Nullable ExistingFileHelper existingFileHelper) {
-		super(output, future, Undergarden.MODID, existingFileHelper);
+	public UGEntityTags(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
+		super(output, future, Undergarden.MODID);
 	}
 
 	@Override
@@ -35,7 +33,7 @@ public class UGEntityTags extends EntityTypeTagsProvider {
 		tag(Tags.EntityTypes.BOSSES).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get());
 
 		//vanilla
-		tag(EntityTypeTags.IMPACT_PROJECTILES).add(UGEntityTypes.BLISTERBOMB.get(), UGEntityTypes.ROTTEN_BLISTERBERRY.get(), UGEntityTypes.GOO_BALL.get(), UGEntityTypes.DEPTHROCK_PEBBLE.get(), UGEntityTypes.MINION_PROJECTILE.get(), UGEntityTypes.ROTBELCHER_PROJECTILE.get());
+		tag(EntityTypeTags.IMPACT_PROJECTILES).add(UGEntityTypes.BLISTERBOMB.get(), UGEntityTypes.SLINGSHOT_PROJECTILE.get(), UGEntityTypes.MINION_PROJECTILE.get(), UGEntityTypes.ROTBELCHER_PROJECTILE.get());
 		tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).add(UGEntityTypes.SCINTLING.get(), UGEntityTypes.ROTLING.get(), UGEntityTypes.MUNCHER.get(), UGEntityTypes.SPLOOGIE.get(), UGEntityTypes.MOG.get(), UGEntityTypes.SMOG_MOG.get(), UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.BRUTE.get());
 		tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get());
 		tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get(), UGEntityTypes.MINION.get());
