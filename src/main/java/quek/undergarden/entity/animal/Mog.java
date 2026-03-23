@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,21 +19,18 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.neoforged.neoforge.common.IShearable;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jspecify.annotations.Nullable;
-import quek.undergarden.registry.UGEntityTypes;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
-import quek.undergarden.registry.UGTags;
+import quek.undergarden.registry.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,10 +58,10 @@ public class Mog extends Animal implements IShearable {
 
 	public static AttributeSupplier.Builder registerAttributes() {
 		return Animal.createMobAttributes()
-				.add(Attributes.MAX_HEALTH, 20.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.1D)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
-				.add(Attributes.STEP_HEIGHT, 1.0D);
+			.add(Attributes.MAX_HEALTH, 20.0D)
+			.add(Attributes.MOVEMENT_SPEED, 0.1D)
+			.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)
+			.add(Attributes.STEP_HEIGHT, 1.0D);
 	}
 
 	@Override
@@ -151,24 +149,29 @@ public class Mog extends Animal implements IShearable {
 		return this.hasMoss() && this.isAlive() && !this.isBaby();
 	}
 
-	//TODO unhardcode
 	@Override
 	public List<ItemStack> onSheared(@Nullable Player player, ItemStack item, Level level, BlockPos pos) {
+		List<ItemStack> drops = new ArrayList<>();
 		level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
-		if (!level.isClientSide()) {
+		if (level instanceof ServerLevel serverLevel) {
+			this.dropFromShearingLootTable(serverLevel, this.getShearTable(), item, (l, drop) -> {
+				drops.add(drop);
+				for (int i = 0; i < drop.getCount(); i++) {
+					ItemEntity entity = this.spawnAtLocation(l, drop.copyWithCount(1), 1.0F);
+					if (entity != null) {
+						entity.setDeltaMovement(entity.getDeltaMovement().add(
+							(this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.1F,
+							this.getRandom().nextFloat() * 0.05F,
+							(this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.1F));
+					}
+				}
+			});
 			this.setMoss(false);
-			int mossAmount = 1 + this.getRandom().nextInt(2);
-
-			List<ItemStack> items = new ArrayList<>();
-			for (int i = 0; i < mossAmount; i++) {
-				items.add(new ItemStack(this.getMossItem()));
-			}
-			return items;
 		}
-		return Collections.emptyList();
+		return Collections.unmodifiableList(drops);
 	}
 
-	public Item getMossItem() {
-		return UGItems.MOGMOSS.get();
+	public ResourceKey<LootTable> getShearTable() {
+		return UGBuiltinLootTables.SHEAR_MOG;
 	}
 }

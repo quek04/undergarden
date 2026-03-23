@@ -1,6 +1,7 @@
 package quek.undergarden.entity.animal;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -11,10 +12,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.storage.loot.LootTable;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.*;
 
@@ -73,8 +74,7 @@ public class SmogMog extends Mog {
 		super.aiStep();
 	}
 
-	@Override
-	public Item getMossItem() {
-		return UGItems.BLUE_MOGMOSS.get();
+	public ResourceKey<LootTable> getShearTable() {
+		return UGBuiltinLootTables.SHEAR_SMOG_MOG;
 	}
 }

@@ -16,6 +16,7 @@ public class UGLootTables extends LootTableProvider {
 			new SubProviderEntry(UGBlockInteractLootTables::new, LootContextParamSets.BLOCK_INTERACT),
 			new SubProviderEntry(UGBlockLootTables::new, LootContextParamSets.BLOCK),
 			new SubProviderEntry(UGChestLootTables::new, LootContextParamSets.CHEST),
-			new SubProviderEntry(UGEntityLootTables::new, LootContextParamSets.ENTITY)), provider);
+			new SubProviderEntry(UGEntityLootTables::new, LootContextParamSets.ENTITY),
+			new SubProviderEntry(UGShearingLootTables::new, LootContextParamSets.SHEARING)), provider);
 	}
 }

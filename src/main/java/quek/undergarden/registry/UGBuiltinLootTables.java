@@ -16,6 +16,9 @@ public class UGBuiltinLootTables {
 	public static final ResourceKey<LootTable> CARVE_GLOOMGOURD = register("carve/gloomgourd");
 	public static final ResourceKey<LootTable> HARVEST_UNDERBEANS = register("harvest/underbeans");
 
+	public static final ResourceKey<LootTable> SHEAR_MOG = register("shearing/mog");
+	public static final ResourceKey<LootTable> SHEAR_SMOG_MOG = register("shearing/smog_mog");
+
 	private static ResourceKey<LootTable> register(String id) {
 		return register(ResourceKey.create(Registries.LOOT_TABLE, Undergarden.prefix(id)));
 	}
