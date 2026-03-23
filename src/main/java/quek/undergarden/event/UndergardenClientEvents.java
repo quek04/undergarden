@@ -90,7 +90,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::clientSetup);
 		bus.addListener(UndergardenClientEvents::registerEntityRenderers);
 		bus.addListener(UndergardenClientEvents::registerEntityLayerDefinitions);
-		bus.addListener(UndergardenClientEvents::addEntityLayers);
+		bus.addListener(EntityRenderersEvent.AddLayers.class, UndergardenClientEvents::addEntityLayers);
 		bus.addListener(UndergardenClientEvents::registerParticleFactories);
 		bus.addListener(UndergardenClientEvents::registerMenuScreens);
 		bus.addListener(UndergardenClientEvents::registerBlockColors);
@@ -212,30 +212,25 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(set.feet(), () -> LayerDefinition.create(target.feet(), 64, 32));
 	}
 
-	private static void addEntityLayers(EntityRenderersEvent.AddLayers event) {
+	@SuppressWarnings("unchecked")
+	private static <T extends LivingEntity, S extends LivingEntityRenderState, M extends EntityModel<S>> void addEntityLayers(EntityRenderersEvent.AddLayers event) {
 		for (EntityType<?> entity : event.getEntityTypes()) {
 			var renderer = event.getRenderer(entity);
 			if (renderer instanceof LivingEntityRenderer<?,?,?> livingEntityRenderer) {
-				addInfectionLayer(livingEntityRenderer);
-			}
-			if (renderer instanceof HumanoidMobRenderer<?,?,?> humanoidMobRenderer) {
-				addMaskLayer(humanoidMobRenderer);
+				addInfectionLayer((LivingEntityRenderer<T, S, M>)livingEntityRenderer);
 			}
 		}
 
 		event.getSkins().forEach(renderer -> {
 			LivingEntityRenderer<AbstractClientPlayer, AvatarRenderState, PlayerModel> skin = event.getPlayerRenderer(renderer);
-			addInfectionLayer(skin);
-			addMaskLayer(skin);
+			if (skin != null) {
+				addInfectionLayer(skin);
+			}
 		});
 	}
 
 	private static <T extends LivingEntity, S extends LivingEntityRenderState, M extends EntityModel<S>> void addInfectionLayer(LivingEntityRenderer<T, S, M> renderer) {
 		renderer.addLayer(new UthericInfectionLayer<>(renderer));
-	}
-
-	private static <T extends LivingEntity, S extends HumanoidRenderState, M extends EntityModel<S>> void addMaskLayer(LivingEntityRenderer<T, S, M> renderer) {
-		renderer.addLayer(new DenizenMaskLayer<>(renderer));
 	}
 
 	private static void registerParticleFactories(RegisterParticleProvidersEvent event) {

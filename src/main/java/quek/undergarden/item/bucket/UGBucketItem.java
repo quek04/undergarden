@@ -21,10 +21,8 @@ import net.minecraft.world.entity.animal.cow.Cow;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.consume_effects.ClearAllStatusEffectsConsumeEffect;
-import net.minecraft.world.item.consume_effects.RemoveStatusEffectsConsumeEffect;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ClipContext;
@@ -45,16 +43,15 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.access.ItemAccess;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.transfer.fluid.FluidUtil;
+import net.neoforged.neoforge.transfer.item.ItemUtil;
 import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
-import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGDataComponents;
 
@@ -328,9 +325,18 @@ public class UGBucketItem extends Item {
 			var targetPos = pos.relative(trace.getDirection());
 
 			if (player.mayUseItemAt(targetPos, trace.getDirection().getOpposite(), stack)) {
-				var result = FluidUtil.tryPlaceFluid((ResourceHandler<FluidResource>) null, player, level, hand, targetPos);
+				var container = VanillaContainerWrapper.of(new SimpleContainer(stack) {
+					// Override to avoid clamping oversized stacks to their max stack size, just in case.
+					@Override
+					public void setItem(int slot, ItemStack stack, boolean performSideEffects) {
+						getItems().set(slot, stack);
+					}
+				});
+				var itemAccess = ItemAccess.forHandlerIndex(container, 0);
+				var resourceHandler = itemAccess.getCapability(Capabilities.Fluid.ITEM);
+				var result = FluidUtil.tryPlaceFluid(resourceHandler, player, level, hand, targetPos);
 				if (!result.isEmpty()) {
-					ItemStack emptyStack = ItemUtils.createFilledResult(stack, player, result.getResult());
+					ItemStack emptyStack = ItemUtils.createFilledResult(stack, player, ItemUtil.getStack(container, 0));
 					if (player instanceof ServerPlayer sp) {
 						CriteriaTriggers.PLACED_BLOCK.trigger(sp, targetPos, stack);
 					}
@@ -357,10 +363,19 @@ public class UGBucketItem extends Item {
 		if (level.mayInteract(player, pos)) {
 			var direction = trace.getDirection();
 			if (player.mayUseItemAt(pos, direction, stack)) {
-				var result = FluidUtil.tryPickupFluid(null, player, level, pos, direction);
+				var container = VanillaContainerWrapper.of(new SimpleContainer(stack) {
+					// Override to avoid clamping oversized stacks to their max stack size, just in case.
+					@Override
+					public void setItem(int slot, ItemStack stack, boolean performSideEffects) {
+						getItems().set(slot, stack);
+					}
+				});
+				var itemAccess = ItemAccess.forHandlerIndex(container, 0);
+				var resourceHandler = itemAccess.getCapability(Capabilities.Fluid.ITEM);
+				var result = FluidUtil.tryPickupFluid(resourceHandler, player, level, pos, direction);
 
 				if (!result.isEmpty()) {
-					ItemStack filledStack = ItemUtils.createFilledResult(stack, player, result.getResult());
+					ItemStack filledStack = ItemUtils.createFilledResult(stack, player, ItemUtil.getStack(container, 0));
 					if (!level.isClientSide()) {
 						CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, stack);
 					}
@@ -391,7 +406,7 @@ public class UGBucketItem extends Item {
 
 	public static Optional<EntityType<?>> getBucketedEntity(ItemStack bucket) {
 		if (bucket.get(DataComponents.BUCKET_ENTITY_DATA) != null) {
-			return EntityType.byString(bucket.get(DataComponents.BUCKET_ENTITY_DATA).copyTag().getString("id"));
+			return EntityType.byString(bucket.get(DataComponents.BUCKET_ENTITY_DATA).copyTag().getStringOr("id", ""));
 		}
 		return Optional.empty();
 	}

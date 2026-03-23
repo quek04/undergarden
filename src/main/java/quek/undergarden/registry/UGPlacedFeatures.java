@@ -192,7 +192,7 @@ public class UGPlacedFeatures {
 	}
 
 	private static List<PlacementModifier> puffMushroom(int count) {
-		return List.of(CountOnEveryLayerPlacement.of(count), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(), BlockTags.MUSHROOM_GROW_BLOCK)));
+		return List.of(CountOnEveryLayerPlacement.of(count), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(), UGTags.Blocks.PUFFSHROOM_CAN_PLACE_ON)));
 	}
 
 	private static List<PlacementModifier> patch(int count) {

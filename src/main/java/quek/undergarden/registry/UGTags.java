@@ -109,6 +109,8 @@ public class UGTags {
 		public static final TagKey<Block> SMOG_MOG_SPAWNABLE_ON = tag("smog_mog_spawnable_on");
 		public static final TagKey<Block> GREATER_DWELLER_SPAWNABLE_ON = tag("greater_dweller_spawnable_on");
 
+		public static final TagKey<Block> PUFFSHROOM_CAN_PLACE_ON = tag("puffshroom_can_place_on");
+
 		public static final TagKey<Block> NEEDS_FORGOTTEN_TOOL = tag("needs_forgotten_tool");
 		public static final TagKey<Block> INCORRECT_FOR_FORGOTTEN_TOOL = tag("incorrect_for_forgotten_tool");
 
