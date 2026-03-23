@@ -9,10 +9,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import quek.undergarden.Undergarden;
-import quek.undergarden.datagen.assets.UGBlockStates;
-import quek.undergarden.datagen.assets.UGItemModels;
-import quek.undergarden.datagen.assets.UGLang;
-import quek.undergarden.datagen.assets.UGSoundDefinitions;
+import quek.undergarden.datagen.assets.*;
 import quek.undergarden.datagen.data.*;
 import quek.undergarden.datagen.data.loot.UGLootTables;
 import quek.undergarden.datagen.data.tags.*;
@@ -29,7 +26,9 @@ public class UGDataGenerators {
 
 		generator.addProvider(true, new UGBlockStates(output));
 		generator.addProvider(true, new UGItemModels(output));
+		generator.addProvider(true, new UGEquipmentAssetProvider(output));
 		generator.addProvider(true, new UGLang(output));
+		generator.addProvider(true, new UGParticleDescriptions(output));
 		generator.addProvider(true, new UGSoundDefinitions(output));
 
 		DatapackBuiltinEntriesProvider datapackProvider = new UGRegistryProvider(output, event.getLookupProvider());

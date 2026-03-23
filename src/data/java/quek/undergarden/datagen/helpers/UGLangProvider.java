@@ -2,12 +2,13 @@ package quek.undergarden.datagen.helpers;
 
 import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonObject;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Holder;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.JukeboxSong;
 import net.minecraft.world.item.alchemy.Potion;
@@ -15,13 +16,13 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import quek.undergarden.Undergarden;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 
 public abstract class UGLangProvider extends LanguageProvider {
 
@@ -48,23 +49,29 @@ public abstract class UGLangProvider extends LanguageProvider {
 		add("advancement.undergarden." + advancementTitle + ".desc", name);
 	}
 
+	public void addEntityAndEgg(DeferredHolder<EntityType<?>, ? extends EntityType<?>> entity, String name) {
+		this.addEntityType(entity, name);
+		this.add("item.undergarden." + entity.getId().getPath() + "_spawn_egg", name + " Spawn Egg");
+	}
+
 	protected void addSubtitle(String category, String subtitleName, String name) {
 		add("subtitles." + category + "." + subtitleName, name);
 	}
 
-	protected void addBiome(ResourceKey<Biome> biomeKey, String name) {
-		add("biome.undergarden." + biomeKey.location().getPath(), name);
+	public void addBiome(ResourceKey<Biome> biomeKey, String name) {
+		add("biome.undergarden." + biomeKey.identifier().getPath(), name);
 	}
 
 	protected void addDeath(String deathName, String name) {
 		add("death.attack." + deathName, name);
 	}
 
-	protected void addPotion(Supplier<? extends Potion> potion, String name) {
-		add("item.minecraft.potion.effect." + BuiltInRegistries.POTION.getKey(potion.get()).getPath(), "Potion of " + name);
-		add("item.minecraft.splash_potion.effect." + BuiltInRegistries.POTION.getKey(potion.get()).getPath(), "Splash Potion of " + name);
-		add("item.minecraft.lingering_potion.effect." + BuiltInRegistries.POTION.getKey(potion.get()).getPath(), "Lingering Potion of " + name);
-		add("item.minecraft.tipped_arrow.effect." + BuiltInRegistries.POTION.getKey(potion.get()).getPath(), "Arrow of " + name);
+	protected void addPotion(Holder<Potion> potion, String name) {
+		String potionKey = potion.getKey().identifier().getPath();
+		add("item.minecraft.potion.effect." + potionKey, "Potion of " + name);
+		add("item.minecraft.splash_potion.effect." + potionKey, "Splash Potion of " + name);
+		add("item.minecraft.lingering_potion.effect." + potionKey, "Lingering Potion of " + name);
+		add("item.minecraft.tipped_arrow.effect." + potionKey, "Arrow of " + name);
 	}
 
 	protected void addConfig(String configName, String name) {
@@ -72,11 +79,11 @@ public abstract class UGLangProvider extends LanguageProvider {
 	}
 
 	protected void addEnchantment(ResourceKey<Enchantment> enchantment, String name) {
-		add("enchantment.undergarden." + enchantment.location().getPath(), name);
+		add("enchantment.undergarden." + enchantment.identifier().getPath(), name);
 	}
 
 	protected void addJukeboxSong(ResourceKey<JukeboxSong> song, String name) {
-		add("jukebox_song.undergarden." + song.location().getPath(), name);
+		add("jukebox_song.undergarden." + song.identifier().getPath(), name);
 	}
 
 	protected void addContainer(String containerName, String name) {

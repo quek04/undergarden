@@ -1,15 +1,14 @@
 package quek.undergarden.datagen.assets;
 
 import net.minecraft.data.PackOutput;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGSoundEvents;
 
 public class UGSoundDefinitions extends SoundDefinitionsProvider {
 
-	public UGSoundDefinitions(PackOutput output, ExistingFileHelper helper) {
-		super(output, Undergarden.MODID, helper);
+	public UGSoundDefinitions(PackOutput output) {
+		super(output, Undergarden.MODID);
 	}
 
 	@Override

@@ -393,29 +393,6 @@ public class UGLang extends UGLangProvider {
 		addItem(UGItems.VEILED_STEW, "Veiled Stew");
 		addItem(UGItems.SLOP_BOWL, "Slop Bowl");
 
-		addItem(UGItems.DWELLER_SPAWN_EGG, "Dweller Spawn Egg");
-		addItem(UGItems.GREATER_DWELLER_SPAWN_EGG, "Greater Dweller Spawn Egg");
-		addItem(UGItems.GWIBLING_SPAWN_EGG, "Gwibling Spawn Egg");
-		addItem(UGItems.ROTLING_SPAWN_EGG, "Rotling Spawn Egg");
-		addItem(UGItems.ROTWALKER_SPAWN_EGG, "Rotwalker Spawn Egg");
-		addItem(UGItems.ROTBEAST_SPAWN_EGG, "Rotbeast Spawn Egg");
-		addItem(UGItems.ROTBELCHER_SPAWN_EGG, "Rotbelcher Spawn Egg");
-		addItem(UGItems.BRUTE_SPAWN_EGG, "Brute Spawn Egg");
-		addItem(UGItems.SCINTLING_SPAWN_EGG, "Scintling Spawn Egg");
-		addItem(UGItems.GLOOMPER_SPAWN_EGG, "Gloomper Spawn Egg");
-		addItem(UGItems.STONEBORN_SPAWN_EGG, "Stoneborn Spawn Egg");
-		addItem(UGItems.NARGOYLE_SPAWN_EGG, "Nargoyle Spawn Egg");
-		addItem(UGItems.MUNCHER_SPAWN_EGG, "Muncher Spawn Egg");
-		addItem(UGItems.SPLOOGIE_SPAWN_EGG, "Sploogie Spawn Egg");
-		addItem(UGItems.GWIB_SPAWN_EGG, "Gwib Spawn Egg");
-		addItem(UGItems.MOG_SPAWN_EGG, "Mog Spawn Egg");
-		addItem(UGItems.SMOG_MOG_SPAWN_EGG, "S'Mog Spawn Egg");
-		addItem(UGItems.FORGOTTEN_SPAWN_EGG, "Forgotten Spawn Egg");
-		addItem(UGItems.DENIZEN_SPAWN_EGG, "Denizen Spawn Egg");
-		addItem(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG, "Forgotten Guardian Spawn Egg");
-		addItem(UGItems.MINION_SPAWN_EGG, "Forgotten Minion Spawn Egg");
-		addItem(UGItems.MYSTERIOUS_POT_SPAWN_EGG, "Mysterious Pot Spawn Egg");
-
 		addBiome(UGBiomes.ANCIENT_SEA, "Ancient Sea");
 		addBiome(UGBiomes.BARREN_ABYSS, "Barren Abyss");
 		addBiome(UGBiomes.BLOOD_MUSHROOM_BOG, "Blood Mushroom Bog");
@@ -437,40 +414,35 @@ public class UGLang extends UGLangProvider {
 		addBiome(UGBiomes.PUFF_MUSHROOM_FOREST, "Puff Mushroom Forest");
 
 		addEntityType(UGEntityTypes.BOOMGOURD, "Boomgourd");
-		addEntityType(UGEntityTypes.DEPTHROCK_PEBBLE, "Depthrock Pebble");
-		addEntityType(UGEntityTypes.GOO_BALL, "Goo Ball");
-		addEntityType(UGEntityTypes.ROTTEN_BLISTERBERRY, "Rotten Blisterberry");
+		addEntityType(UGEntityTypes.SLINGSHOT_PROJECTILE, "Slingshot Projectile");
 		addEntityType(UGEntityTypes.BLISTERBOMB, "Blisterbomb");
-		addEntityType(UGEntityTypes.GRONGLET, "Gronglet");
-		addEntityType(UGEntityTypes.UTHERIC_GRONGLET, "Utheric Gronglet");
-		addEntityType(UGEntityTypes.ROGDORIC_GRONGLET, "Rogdoric Gronglet");
 		addEntityType(UGEntityTypes.SPEAR, "Spear");
 		addEntityType(UGEntityTypes.MINION_PROJECTILE, "Minion Projectile");
 		addEntityType(UGEntityTypes.ROTBELCHER_PROJECTILE, "Rotbelcher Projectile");
 
-		addEntityType(UGEntityTypes.MINION, "Forgotten Minion");
-		addEntityType(UGEntityTypes.DWELLER, "Dweller");
-		addEntityType(UGEntityTypes.GREATER_DWELLER, "Greater Dweller");
-		addEntityType(UGEntityTypes.GWIBLING, "Gwibling");
-		addEntityType(UGEntityTypes.ROTLING, "Rotling");
-		addEntityType(UGEntityTypes.ROTWALKER, "Rotwalker");
-		addEntityType(UGEntityTypes.ROTBEAST, "Rotbeast");
-		addEntityType(UGEntityTypes.ROTBELCHER, "Rotbelcher");
-		addEntityType(UGEntityTypes.BRUTE, "Brute");
-		addEntityType(UGEntityTypes.SCINTLING, "Scintling");
-		addEntityType(UGEntityTypes.GLOOMPER, "Gloomper");
-		addEntityType(UGEntityTypes.STONEBORN, "Stoneborn");
-		addEntityType(UGEntityTypes.NARGOYLE, "Nargoyle");
-		addEntityType(UGEntityTypes.MUNCHER, "Muncher");
-		addEntityType(UGEntityTypes.SPLOOGIE, "Sploogie");
-		addEntityType(UGEntityTypes.GWIB, "Gwib");
-		addEntityType(UGEntityTypes.MOG, "Mog");
-		addEntityType(UGEntityTypes.SMOG_MOG, "S'Mog");
-		addEntityType(UGEntityTypes.FORGOTTEN, "Forgotten");
-		addEntityType(UGEntityTypes.DENIZEN, "Denizen");
+		addEntityAndEgg(UGEntityTypes.MINION, "Forgotten Minion");
+		addEntityAndEgg(UGEntityTypes.DWELLER, "Dweller");
+		addEntityAndEgg(UGEntityTypes.GREATER_DWELLER, "Greater Dweller");
+		addEntityAndEgg(UGEntityTypes.GWIBLING, "Gwibling");
+		addEntityAndEgg(UGEntityTypes.ROTLING, "Rotling");
+		addEntityAndEgg(UGEntityTypes.ROTWALKER, "Rotwalker");
+		addEntityAndEgg(UGEntityTypes.ROTBEAST, "Rotbeast");
+		addEntityAndEgg(UGEntityTypes.ROTBELCHER, "Rotbelcher");
+		addEntityAndEgg(UGEntityTypes.BRUTE, "Brute");
+		addEntityAndEgg(UGEntityTypes.SCINTLING, "Scintling");
+		addEntityAndEgg(UGEntityTypes.GLOOMPER, "Gloomper");
+		addEntityAndEgg(UGEntityTypes.STONEBORN, "Stoneborn");
+		addEntityAndEgg(UGEntityTypes.NARGOYLE, "Nargoyle");
+		addEntityAndEgg(UGEntityTypes.MUNCHER, "Muncher");
+		addEntityAndEgg(UGEntityTypes.SPLOOGIE, "Sploogie");
+		addEntityAndEgg(UGEntityTypes.GWIB, "Gwib");
+		addEntityAndEgg(UGEntityTypes.MOG, "Mog");
+		addEntityAndEgg(UGEntityTypes.SMOG_MOG, "S'Mog");
+		addEntityAndEgg(UGEntityTypes.FORGOTTEN, "Forgotten");
+		addEntityAndEgg(UGEntityTypes.DENIZEN, "Denizen");
 		addEntityType(UGEntityTypes.MYSTERIOUS_POT, "Mysterious Pot");
 
-		addEntityType(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
+		addEntityAndEgg(UGEntityTypes.FORGOTTEN_GUARDIAN, "Forgotten Guardian");
 
 		add("itemGroup.undergarden_group", "The Undergarden");
 
@@ -622,6 +594,7 @@ public class UGLang extends UGLangProvider {
 		add("tooltip.undergarden.forgotten_weapon", "Deals 1.5x damage to non-boss Undergarden mobs.");
 		add("tooltip.undergarden.forgotten_tool", "Mines Undergarden blocks 1.5x as fast.");
 		add("tooltip.undergarden.rogdorium_infusion", "Rogdorium Infusion");
+		add("tooltip.undergarden.soothes_infection", "Soothes Utheric Infection on consumption");
 
 		addSubtitle("block", "undergarden_portal.ambient", "Undergarden Portal beckons");
 		addSubtitle("block", "undergarden_portal.activate", "Undergarden Portal activates");
@@ -755,6 +728,7 @@ public class UGLang extends UGLangProvider {
 		add("trim_material.undergarden.regalium", "Regalium material");
 		add("trim_material.undergarden.utherium", "Utherium material");
 		add("trim_material.undergarden.forgotten", "Forgotten material");
+		add("trim_material.undergarden.rogdorium", "Rogdorium material");
 
 		add("gui.undergarden.jei.category.infuser", "Infusing");
 		add("gui.undergarden.jei.category.infusing.experience", "%s XP");
