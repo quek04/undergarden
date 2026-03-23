@@ -32,6 +32,7 @@ import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGTags;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,7 +51,7 @@ public class Mog extends Animal implements IShearable {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new PanicGoal(this, 1.5D));
 		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(2, new TemptGoal(this, 1.1D, Ingredient.of(UGItems.DEPTHROCK_PEBBLE.get()), false));
+		this.goalSelector.addGoal(2, new TemptGoal(this, 1.1D, stack -> stack.is(UGTags.Items.MOG_FOOD), false));
 		this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
@@ -91,10 +92,9 @@ public class Mog extends Animal implements IShearable {
 		return UGEntityTypes.MOG.get().create(level, EntitySpawnReason.BREEDING);
 	}
 
-	//TODO unhardcode
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return Ingredient.of(UGItems.DEPTHROCK_PEBBLE.get()).test(stack);
+		return stack.is(UGTags.Items.MOG_FOOD);
 	}
 
 	@Override

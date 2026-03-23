@@ -42,6 +42,13 @@ public class UGTags {
 		public static final TagKey<Item> REPAIRS_UTHERIC_ARMOR = tag("repairs_utheric_armor");
 		public static final TagKey<Item> REPAIRS_ANCIENT_ARMOR = tag("repairs_ancient_armor");
 
+		public static final TagKey<Item> BRUTE_FOOD = tag("brute_food");
+		public static final TagKey<Item> DWELLER_FOOD = tag("dweller_food");
+		public static final TagKey<Item> DWELLER_TEMPT_ITEMS = tag("dweller_tempt_items");
+		public static final TagKey<Item> GLOOMPER_FOOD = tag("gloomper_food");
+		public static final TagKey<Item> MOG_FOOD = tag("mog_food");
+		public static final TagKey<Item> SCINTLING_FOOD = tag("scintling_food");
+
 		public static final TagKey<Item> RAW_MATERIALS_CLOGGRUM = commonTag("raw_materials/cloggrum");
 		public static final TagKey<Item> RAW_MATERIALS_FROSTSTEEL = commonTag("raw_materials/froststeel");
 

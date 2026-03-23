@@ -47,7 +47,7 @@ public class Gloomper extends Animal {
 		this.goalSelector.addGoal(1, new PanicGoal(this, 2.5D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 2.0F, 2.5F));
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(UGBlocks.GLOOMGOURD.get()), false));
+		this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, stack -> stack.is(UGTags.Items.GLOOMPER_FOOD), false));
 		this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
 		this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
@@ -81,10 +81,9 @@ public class Gloomper extends Animal {
 		return UGEntityTypes.GLOOMPER.get().create(level, EntitySpawnReason.BREEDING);
 	}
 
-	//TODO unhardcode
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return stack.is(UGBlocks.GLOOMGOURD.asItem());
+		return stack.is(UGTags.Items.GLOOMPER_FOOD);
 	}
 
 	@Override

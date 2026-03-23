@@ -20,6 +20,7 @@ import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGTags;
 
 public class Brute extends Animal implements NeutralMob {
 
@@ -35,7 +36,7 @@ public class Brute extends Animal implements NeutralMob {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 2.0F, false));
-		this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, Ingredient.of(UGItems.DROOPFRUIT.get()), false));
+		this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, stack -> stack.is(UGTags.Items.BRUTE_FOOD), false));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.25D));
 		this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -99,10 +100,9 @@ public class Brute extends Animal implements NeutralMob {
 		return UGEntityTypes.BRUTE.get().create(level, EntitySpawnReason.BREEDING);
 	}
 
-	//TODO unhardcode
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return stack.is(UGItems.DROOPFRUIT);
+		return stack.is(UGTags.Items.BRUTE_FOOD);
 	}
 
 	@Override

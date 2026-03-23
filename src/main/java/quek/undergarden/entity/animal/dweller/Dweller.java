@@ -34,6 +34,7 @@ import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.UGTags;
 
 import java.util.List;
 
@@ -59,7 +60,7 @@ public class Dweller extends Animal implements ItemSteerable, PlayerRideableJump
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, this.panicGoal = new PanicGoal(this, 2.5D));
-		this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.UNDERBEANS.get(), UGItems.UNDERBEAN_STICK.get()), false));
+		this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, stack -> stack.is(UGTags.Items.DWELLER_TEMPT_ITEMS), false));
 		this.goalSelector.addGoal(0, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, this.avoidGoal = new DwellerAvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 2.0D, 2.5D));
@@ -103,7 +104,7 @@ public class Dweller extends Animal implements ItemSteerable, PlayerRideableJump
 
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return Ingredient.of(UGItems.UNDERBEANS.get()).test(stack);
+		return stack.is(UGTags.Items.DWELLER_FOOD);
 	}
 
 	@Override

@@ -2,11 +2,11 @@ package quek.undergarden.datagen.data.tags;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
@@ -35,6 +35,23 @@ public class UGItemTags extends ItemTagsProvider {
 		tag(UGTags.Items.INFUSER_UTHERIUM_FUELS).add(UGItems.UTHERIUM_CRYSTAL.get());
 		tag(UGTags.Items.INFUSER_ROGDORIUM_FUELS).add(UGItems.ROGDORIUM.get());
 		tag(UGTags.Items.ACCELERATED_DREADROCK_BREAKING).add(UGItems.FORGOTTEN_PICKAXE.get());
+
+		tag(UGTags.Items.CLOGGRUM_TOOL_MATERIALS).addTag(UGTags.Items.INGOTS_CLOGGRUM);
+		tag(UGTags.Items.FROSTSTEEL_TOOL_MATERIALS).addTag(UGTags.Items.INGOTS_FROSTSTEEL);
+		tag(UGTags.Items.UTHERIC_TOOL_MATERIALS).addTag(UGTags.Items.GEMS_UTHERIUM);
+		tag(UGTags.Items.FORGOTTEN_TOOL_MATERIALS).addTag(UGTags.Items.INGOTS_FORGOTTEN_METAL);
+
+		tag(UGTags.Items.REPAIRS_CLOGGRUM_ARMOR).addTag(UGTags.Items.INGOTS_CLOGGRUM);
+		tag(UGTags.Items.REPAIRS_FROSTSTEEL_ARMOR).addTag(UGTags.Items.INGOTS_FROSTSTEEL);
+		tag(UGTags.Items.REPAIRS_UTHERIC_ARMOR).addTag(UGTags.Items.GEMS_UTHERIUM);
+		tag(UGTags.Items.REPAIRS_ANCIENT_ARMOR);
+
+		tag(UGTags.Items.BRUTE_FOOD).add(UGItems.DROOPFRUIT.get());
+		tag(UGTags.Items.DWELLER_FOOD).add(UGItems.UNDERBEANS.get());
+		tag(UGTags.Items.DWELLER_TEMPT_ITEMS).addTag(UGTags.Items.DWELLER_FOOD).add(UGItems.UNDERBEAN_STICK.get());
+		tag(UGTags.Items.GLOOMPER_FOOD).add(UGBlocks.GLOOMGOURD.asItem());
+		tag(UGTags.Items.MOG_FOOD).add(UGItems.DEPTHROCK_PEBBLE.get());
+		tag(UGTags.Items.SCINTLING_FOOD).add(UGItems.BLISTERBERRY.get());
 
 		//undergarden forge
 		tag(UGTags.Items.RAW_MATERIALS_CLOGGRUM).add(UGItems.RAW_CLOGGRUM.get());

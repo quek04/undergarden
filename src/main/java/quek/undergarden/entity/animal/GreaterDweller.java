@@ -67,7 +67,7 @@ public class GreaterDweller extends Animal implements NeutralMob {
 		this.goalSelector.addGoal(0, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5F, true));
 		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 1.5F, 1.5F));
-		this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, Ingredient.of(UGItems.UNDERBEANS.get()), false));
+		this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, stack -> stack.is(UGTags.Items.DWELLER_FOOD), false));
 		this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.25D));
 		this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -150,7 +150,7 @@ public class GreaterDweller extends Animal implements NeutralMob {
 
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return Ingredient.of(UGItems.UNDERBEANS.get()).test(stack);
+		return stack.is(UGTags.Items.DWELLER_FOOD);
 	}
 
 	@Nullable

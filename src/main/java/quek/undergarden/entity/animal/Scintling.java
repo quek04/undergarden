@@ -35,7 +35,7 @@ public class Scintling extends Animal {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, RotspawnMonster.class, 12.0F, 1.2D, 1.4D));
-		this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, Ingredient.of(UGItems.BLISTERBERRY.get()), false));
+		this.goalSelector.addGoal(1, new TemptGoal(this, 1.5D, stack -> stack.is(UGTags.Items.SCINTLING_FOOD), false));
 		this.goalSelector.addGoal(1, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new FollowParentGoal(this, 1.25D));
 		this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -106,10 +106,9 @@ public class Scintling extends Animal {
 		return UGEntityTypes.SCINTLING.get().create(this.level(), EntitySpawnReason.BREEDING);
 	}
 
-	//TODO unhardcode
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return stack.is(UGItems.BLISTERBERRY);
+		return stack.is(UGTags.Items.SCINTLING_FOOD);
 	}
 
 	@Override
