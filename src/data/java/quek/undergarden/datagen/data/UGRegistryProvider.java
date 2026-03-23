@@ -5,13 +5,16 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import quek.undergarden.UGRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.registry.*;
+import quek.undergarden.registry.custom.UGStonebornTradeSets;
+import quek.undergarden.registry.custom.UGStonebornTrades;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class UGRegistries extends DatapackBuiltinEntriesProvider {
+public class UGRegistryProvider extends DatapackBuiltinEntriesProvider {
 
 	public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
 		.add(Registries.BIOME, UGBiomes::bootstrap)
@@ -28,9 +31,11 @@ public class UGRegistries extends DatapackBuiltinEntriesProvider {
 		.add(Registries.DAMAGE_TYPE, UGDamageSources::bootstrap)
 		.add(Registries.TRIM_MATERIAL, UGTrimMaterials::bootstrap)
 		.add(Registries.ENCHANTMENT, UGEnchantments::bootstrap)
-		.add(Registries.JUKEBOX_SONG, UGJukeboxSongs::bootstrap);
+		.add(Registries.JUKEBOX_SONG, UGJukeboxSongs::bootstrap)
+		.add(UGRegistries.STONEBORN_TRADE, UGStonebornTrades::bootstrap)
+		.add(UGRegistries.STONEBORN_TRADE_SET, UGStonebornTradeSets::bootstrap);
 
-	public UGRegistries(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
+	public UGRegistryProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
 		super(output, future, BUILDER, Set.of("minecraft", Undergarden.MODID));
 	}
 }

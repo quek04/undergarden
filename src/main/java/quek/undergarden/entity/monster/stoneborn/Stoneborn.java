@@ -1,10 +1,16 @@
 package quek.undergarden.entity.monster.stoneborn;
 
+import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
+import net.minecraft.util.Unit;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
@@ -33,14 +39,25 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jspecify.annotations.Nullable;
+import quek.undergarden.UGRegistries;
+import quek.undergarden.Undergarden;
 import quek.undergarden.entity.monster.stoneborn.goals.StonebornLookAtCustomerGoal;
 import quek.undergarden.entity.monster.stoneborn.goals.StonebornTradeWithPlayerGoal;
+import quek.undergarden.entity.monster.stoneborn.trading.StonebornTrade;
+import quek.undergarden.entity.monster.stoneborn.trading.StonebornTradeSet;
 import quek.undergarden.registry.UGCriteria;
 import quek.undergarden.registry.UGDimensions;
-import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.custom.UGStonebornTradeSets;
+
+import java.util.List;
+import java.util.Optional;
 
 public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 
@@ -208,10 +225,72 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 		return this.customer;
 	}
 
-	//TODO
 	@Override
 	public MerchantOffers getOffers() {
-		return null;
+		if (this.level() instanceof ServerLevel serverLevel) {
+			if (this.offers == null) {
+				this.offers = new MerchantOffers();
+				this.addOffersFromTradeSet(serverLevel, this.getOffers(), UGStonebornTradeSets.VEGABOND);
+			}
+
+			return this.offers;
+		} else {
+			throw new IllegalStateException("Cannot load Stoneborn trades on the client");
+		}
+	}
+
+	protected void addOffersFromTradeSet(ServerLevel level, MerchantOffers offers, ResourceKey<StonebornTradeSet> resourceKey) {
+		Optional<StonebornTradeSet> tradeSetOpt = this.registryAccess().lookupOrThrow(UGRegistries.STONEBORN_TRADE_SET).getOptional(resourceKey);
+		if (tradeSetOpt.isEmpty()) {
+			Undergarden.LOGGER.debug("Missing expected trade set {}", resourceKey);
+		} else {
+			StonebornTradeSet tradeSet = tradeSetOpt.get();
+			LootContext lootContext = new LootContext.Builder(
+				new LootParams.Builder(level)
+					.withParameter(LootContextParams.ORIGIN, this.position())
+					.withParameter(LootContextParams.THIS_ENTITY, this)
+					.withParameter(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED, Unit.INSTANCE)
+					.create(LootContextParamSets.VILLAGER_TRADE)
+			)
+				.create(tradeSet.randomSequence());
+			int numberOfOffers = tradeSet.calculateNumberOfTrades(lootContext);
+			if (tradeSet.allowDuplicates()) {
+				addOffersFromItemListings(lootContext, offers, tradeSet.trades(), numberOfOffers);
+			} else {
+				addOffersFromItemListingsWithoutDuplicates(lootContext, offers, tradeSet.trades(), numberOfOffers);
+			}
+		}
+	}
+
+	private static void addOffersFromItemListings(LootContext lootContext, MerchantOffers merchantOffers, HolderSet<StonebornTrade> potentialOffers, int numberOfOffers) {
+		int offersFound = 0;
+
+		while (offersFound < numberOfOffers) {
+			Optional<Holder<StonebornTrade>> trade = potentialOffers.getRandomElement(lootContext.getRandom());
+			if (trade.isEmpty()) {
+				break;
+			}
+
+			MerchantOffer offer = trade.get().value().getOffer(lootContext);
+			if (offer != null) {
+				merchantOffers.add(offer);
+				offersFound++;
+			}
+		}
+	}
+
+	private static void addOffersFromItemListingsWithoutDuplicates(LootContext lootContext, MerchantOffers merchantOffers, HolderSet<StonebornTrade> potentialOffers, int numberOfOffers) {
+		List<Holder<StonebornTrade>> leftoverOffers = Lists.newArrayList(potentialOffers);
+		int offersFound = 0;
+
+		while (offersFound < numberOfOffers && !leftoverOffers.isEmpty()) {
+			Holder<StonebornTrade> trade = leftoverOffers.remove(lootContext.getRandom().nextInt(leftoverOffers.size()));
+			MerchantOffer offer = trade.value().getOffer(lootContext);
+			if (offer != null) {
+				merchantOffers.add(offer);
+				offersFound++;
+			}
+		}
 	}
 
 	public boolean hasCustomer() {

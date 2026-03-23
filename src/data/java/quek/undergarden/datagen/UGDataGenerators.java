@@ -33,7 +33,7 @@ public class UGDataGenerators {
 		generator.addProvider(event.includeClient(), new UGLang(output));
 		generator.addProvider(event.includeClient(), new UGSoundDefinitions(output, helper));
 
-		DatapackBuiltinEntriesProvider datapackProvider = new UGRegistries(output, event.getLookupProvider());
+		DatapackBuiltinEntriesProvider datapackProvider = new UGRegistryProvider(output, event.getLookupProvider());
 		CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
 		generator.addProvider(event.includeServer(), datapackProvider);
 
@@ -52,5 +52,6 @@ public class UGDataGenerators {
 		generator.addProvider(event.includeServer(), new UGBiomeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, lookupProvider, helper));
+		generator.addProvider(event.includeClient(), new UGStonebornTradeTags(output, lookupProvider));
 	}
 }

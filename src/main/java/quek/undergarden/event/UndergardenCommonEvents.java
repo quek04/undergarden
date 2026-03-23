@@ -50,9 +50,11 @@ import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import net.neoforged.neoforge.transfer.fluid.ItemAccessFluidHandler;
+import quek.undergarden.UGRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.command.InfectionCommand;
@@ -60,6 +62,8 @@ import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.entity.monster.denizen.Denizen;
 import quek.undergarden.entity.monster.rotspawn.*;
+import quek.undergarden.entity.monster.stoneborn.trading.StonebornTrade;
+import quek.undergarden.entity.monster.stoneborn.trading.StonebornTradeSet;
 import quek.undergarden.entity.projectile.slingshot.*;
 import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
 import quek.undergarden.item.tool.slingshot.SlingshotItem;
@@ -104,6 +108,10 @@ public class UndergardenCommonEvents {
 			if (event.getRegistry() == BuiltInRegistries.CHUNK_GENERATOR) {
 				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, Undergarden.prefix("noise"), UGNoiseBasedChunkGenerator.CODEC);
 			}
+		});
+		bus.addListener(DataPackRegistryEvent.NewRegistry.class, event -> {
+			event.dataPackRegistry(UGRegistries.STONEBORN_TRADE, StonebornTrade.CODEC, StonebornTrade.CODEC);
+			event.dataPackRegistry(UGRegistries.STONEBORN_TRADE_SET, StonebornTradeSet.CODEC, StonebornTradeSet.CODEC);
 		});
 	}
 
