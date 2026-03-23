@@ -53,5 +53,6 @@ public class UGDataGenerators {
 		generator.addProvider(event.includeServer(), new UGDamageTypeTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeClient(), new UGEnchantmentTags(output, lookupProvider, helper));
 		generator.addProvider(event.includeClient(), new UGStonebornTradeTags(output, lookupProvider));
+		generator.addProvider(event.includeClient(), new UGTimelineTags(output, lookupProvider));
 	}
 }

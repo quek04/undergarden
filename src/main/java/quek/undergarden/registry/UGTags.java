@@ -11,6 +11,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.timeline.Timeline;
 import quek.undergarden.UGRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.monster.stoneborn.trading.StonebornTrade;
@@ -197,11 +198,20 @@ public class UGTags {
 		}
 	}
 
+	public static class Timelines {
+
+		public static final TagKey<Timeline> IN_UNDERGARDEN = tag("in_undergarden");
+
+		private static TagKey<Timeline> tag(String name) {
+			return TagKey.create(Registries.TIMELINE, Undergarden.prefix(name));
+		}
+	}
+
 	public static class StonebornTrades {
 		public static final TagKey<StonebornTrade> VEGABOND_TRADES = tag("vegabond");
 
 		private static TagKey<StonebornTrade> tag(String name) {
-			return TagKey.create(UGRegistries.STONEBORN_TRADE, Undergarden.prefix(name));
+			return TagKey.create(UGRegistries.Keys.STONEBORN_TRADE, Undergarden.prefix(name));
 		}
 	}
 }

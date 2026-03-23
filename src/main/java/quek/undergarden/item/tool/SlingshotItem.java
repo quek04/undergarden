@@ -1,18 +1,14 @@
-package quek.undergarden.item.tool.slingshot;
+package quek.undergarden.item.tool;
 
-import it.unimi.dsi.fastutil.objects.AbstractObject2ObjectFunction;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.Util;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
@@ -21,17 +17,11 @@ import net.neoforged.neoforge.event.entity.player.ArrowNockEvent;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
 import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
-import quek.undergarden.registry.UGCriteria;
-import quek.undergarden.registry.UGEnchantments;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGSoundEvents;
+import quek.undergarden.registry.*;
 
-import java.util.Map;
 import java.util.function.Predicate;
 
 public class SlingshotItem extends ProjectileWeaponItem {
-
-	private static final Map<Item, AbstractSlingshotAmmoBehavior> AMMO_REGISTRY = Util.make(new Object2ObjectOpenHashMap<>(), AbstractObject2ObjectFunction::defaultReturnValue);
 
 	public SlingshotItem(Item.Properties properties) {
 		super(properties);
@@ -49,18 +39,9 @@ public class SlingshotItem extends ProjectileWeaponItem {
 		return super.getMaxDamage(stack);
 	}
 
-	/**
-	 * Register your own ammo to use in the slingshot! <br>
-	 * In FMLCommonSetupEvent.enqueueWork, call this method and supply it with an item and an ammo behavior. <br>
-	 * Use {@link AbstractSlingshotAmmoBehavior} as a base for the ammo behavior and customize it however you want!
-	 */
-	public static void registerAmmo(ItemLike item, AbstractSlingshotAmmoBehavior behavior) {
-		AMMO_REGISTRY.put(item.asItem(), behavior);
-	}
-
 	@Override
 	public Predicate<ItemStack> getAllSupportedProjectiles() {
-		return (stack) -> AMMO_REGISTRY.containsKey(stack.getItem());
+		return (stack) -> stack.has(UGDataComponents.SLINGSHOT_AMMO);
 	}
 
 	@Override
@@ -100,14 +81,9 @@ public class SlingshotItem extends ProjectileWeaponItem {
 			}
 
 			if (!projectileStack.isEmpty() && !selfSling) {
-				//correct the projectile stack in creative. player.getProjectile defaults it to an arrow in creative, but slingshots don't shoot arrows!
-				if (projectileStack.is(Items.ARROW)) {
-					projectileStack = new ItemStack(UGItems.DEPTHROCK_PEBBLE.get());
-				}
-
 				if (!((double) velocity < 0.1D)) {
 					if (!level.isClientSide()) {
-						SlingshotProjectile slingshotProjectile = AMMO_REGISTRY.get(projectileStack.getItem()).getProjectile(level, entity.blockPosition(), player, projectileStack);
+						SlingshotProjectile slingshotProjectile = new SlingshotProjectile(player, level, projectileStack);
 
 						slingshotProjectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity * 2.0F, 1.0F);
 
@@ -119,10 +95,9 @@ public class SlingshotItem extends ProjectileWeaponItem {
 						}
 
 						level.addFreshEntity(slingshotProjectile);
-						level.playSound(null, player.getX(), player.getY(), player.getZ(), AMMO_REGISTRY.get(projectileStack.getItem()).getFiringSound(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+						level.playSound(null, player.getX(), player.getY(), player.getZ(), projectileStack.get(UGDataComponents.SLINGSHOT_AMMO).shootSound(), SoundSource.PLAYERS, 0.5F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
 						UGCriteria.SLINGSHOT_FIRE.get().trigger((ServerPlayer) player, stack, projectileStack);
 					}
-					AMMO_REGISTRY.get(projectileStack.getItem()).addAdditionalFiringEffects(level, player);
 
 					if (!isCreative) {
 						projectileStack.shrink(1);
@@ -189,5 +164,10 @@ public class SlingshotItem extends ProjectileWeaponItem {
 	@Override
 	public ItemUseAnimation getUseAnimation(ItemStack stack) {
 		return ItemUseAnimation.BOW;
+	}
+
+	@Override
+	public ItemStack getDefaultCreativeAmmo(@Nullable Player player, ItemStack projectileWeaponItem) {
+		return new ItemStack(UGItems.DEPTHROCK_PEBBLE.get());
 	}
 }

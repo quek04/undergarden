@@ -11,7 +11,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.vehicle.boat.Boat;
 import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -49,11 +48,8 @@ public class UGEntityTypes {
 
 	//misc
 	public static final DeferredHolder<EntityType<?>, EntityType<Boomgourd>> BOOMGOURD = registerMisc("boomgourd", EntityType.Builder.<Boomgourd>of(Boomgourd::new, MobCategory.MISC).fireImmune().sized(1.0F, 1.0F).clientTrackingRange(10).updateInterval(10));
-	public static final DeferredHolder<EntityType<?>, EntityType<DepthrockPebble>> DEPTHROCK_PEBBLE = registerMisc("depthrock_pebble", EntityType.Builder.<DepthrockPebble>of(DepthrockPebble::new, MobCategory.MISC).sized(0.25F, 0.25F));
-	public static final DeferredHolder<EntityType<?>, EntityType<GooBall>> GOO_BALL = registerMisc("goo_ball", EntityType.Builder.<GooBall>of(GooBall::new, MobCategory.MISC).sized(0.25F, 0.25F));
-	public static final DeferredHolder<EntityType<?>, EntityType<RottenBlisterberry>> ROTTEN_BLISTERBERRY = registerMisc("rotten_blisterberry", EntityType.Builder.<RottenBlisterberry>of(RottenBlisterberry::new, MobCategory.MISC).sized(0.25F, 0.25F));
+	public static final DeferredHolder<EntityType<?>, EntityType<SlingshotProjectile>> SLINGSHOT_PROJECTILE = registerMisc("slingshot_projectile", EntityType.Builder.<SlingshotProjectile>of(SlingshotProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F));
 	public static final DeferredHolder<EntityType<?>, EntityType<Blisterbomb>> BLISTERBOMB = registerMisc("blisterbomb", EntityType.Builder.<Blisterbomb>of(Blisterbomb::new, MobCategory.MISC).sized(0.5F, 0.5F));
-	public static final DeferredHolder<EntityType<?>, EntityType<Gronglet>> GRONGLET = registerMisc("gronglet", EntityType.Builder.<Gronglet>of(Gronglet::new, MobCategory.MISC).sized(0.5F, 0.5F));
 	public static final DeferredHolder<EntityType<?>, EntityType<ThrownSpear>> SPEAR = registerMisc("spear", EntityType.Builder.<ThrownSpear>of(ThrownSpear::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
 	public static final DeferredHolder<EntityType<?>, EntityType<MinionProjectile>> MINION_PROJECTILE = registerMisc("minion_projectile", EntityType.Builder.<MinionProjectile>of(MinionProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F));
 	public static final DeferredHolder<EntityType<?>, EntityType<Minion>> MINION = registerMisc("minion", EntityType.Builder.of(Minion::new, MobCategory.MISC).sized(1.0F, 1.6F).eyeHeight(1.0F));

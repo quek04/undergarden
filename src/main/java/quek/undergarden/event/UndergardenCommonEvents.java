@@ -58,15 +58,12 @@ import quek.undergarden.UGRegistries;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.command.InfectionCommand;
-import quek.undergarden.entity.animal.*;
 import quek.undergarden.entity.animal.dweller.Dweller;
 import quek.undergarden.entity.monster.denizen.Denizen;
-import quek.undergarden.entity.monster.rotspawn.*;
 import quek.undergarden.entity.monster.stoneborn.trading.StonebornTrade;
 import quek.undergarden.entity.monster.stoneborn.trading.StonebornTradeSet;
 import quek.undergarden.entity.projectile.slingshot.*;
-import quek.undergarden.item.tool.slingshot.AbstractSlingshotAmmoBehavior;
-import quek.undergarden.item.tool.slingshot.SlingshotItem;
+import quek.undergarden.item.tool.SlingshotItem;
 import quek.undergarden.network.CreateCritParticlePacket;
 import quek.undergarden.network.UndergardenPortalSoundPacket;
 import quek.undergarden.network.UthericInfectionPacket;
@@ -110,8 +107,8 @@ public class UndergardenCommonEvents {
 			}
 		});
 		bus.addListener(DataPackRegistryEvent.NewRegistry.class, event -> {
-			event.dataPackRegistry(UGRegistries.STONEBORN_TRADE, StonebornTrade.CODEC, StonebornTrade.CODEC);
-			event.dataPackRegistry(UGRegistries.STONEBORN_TRADE_SET, StonebornTradeSet.CODEC, StonebornTradeSet.CODEC);
+			event.dataPackRegistry(UGRegistries.Keys.STONEBORN_TRADE, StonebornTrade.CODEC, StonebornTrade.CODEC);
+			event.dataPackRegistry(UGRegistries.Keys.STONEBORN_TRADE_SET, StonebornTradeSet.CODEC, StonebornTradeSet.CODEC);
 		});
 	}
 
@@ -173,63 +170,6 @@ public class UndergardenCommonEvents {
 			WoodType.register(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
 			WoodType.register(UGWoodStuff.GRONGLE_WOOD_TYPE);
 			WoodType.register(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
-
-			SlingshotItem.registerAmmo(UGItems.DEPTHROCK_PEBBLE.get(), new AbstractSlingshotAmmoBehavior() {
-				@Override
-				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new DepthrockPebble(level, shooter, stack);
-				}
-			});
-
-			SlingshotItem.registerAmmo(UGItems.ROTTEN_BLISTERBERRY.get(), new AbstractSlingshotAmmoBehavior() {
-				@Override
-				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new RottenBlisterberry(level, shooter, stack);
-				}
-			});
-
-			SlingshotItem.registerAmmo(UGItems.GOO_BALL.get(), new AbstractSlingshotAmmoBehavior() {
-				@Override
-				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new GooBall(level, shooter, stack);
-				}
-			});
-
-			SlingshotItem.registerAmmo(UGBlocks.GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
-				@Override
-				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new Gronglet(shooter, level, stack);
-				}
-
-				@Override
-				public SoundEvent getFiringSound() {
-					return UGSoundEvents.GRONGLET_SHOOT.get();
-				}
-			});
-
-			SlingshotItem.registerAmmo(UGBlocks.UTHERIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
-				@Override
-				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new Gronglet(shooter, level, stack);
-				}
-
-				@Override
-				public SoundEvent getFiringSound() {
-					return UGSoundEvents.GRONGLET_SHOOT.get();
-				}
-			});
-
-			SlingshotItem.registerAmmo(UGBlocks.ROGDORIC_GRONGLET.get(), new AbstractSlingshotAmmoBehavior() {
-				@Override
-				public SlingshotProjectile getProjectile(Level level, BlockPos pos, Player shooter, ItemStack stack) {
-					return new Gronglet(shooter, level, stack);
-				}
-
-				@Override
-				public SoundEvent getFiringSound() {
-					return UGSoundEvents.GRONGLET_SHOOT.get();
-				}
-			});
 
 			FireBlock fire = (FireBlock) Blocks.FIRE;
 			//planks

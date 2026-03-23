@@ -20,6 +20,7 @@ import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.event.UndergardenClientEvents;
 import quek.undergarden.event.UndergardenCommonEvents;
 import quek.undergarden.registry.*;
+import quek.undergarden.registry.custom.UGHitEffects;
 
 @Mod(Undergarden.MODID)
 public class Undergarden {
@@ -64,7 +65,8 @@ public class Undergarden {
 			UGRecipeDisplays.RECIPE_DISPLAYS,
 			UGSlotDisplays.SLOTS,
 			UGRecipeBookCategories.RECIPE_BOOK_CATEGORIES,
-			UGConsumeEffects.CONSUME_EFFECTS
+			UGConsumeEffects.CONSUME_EFFECTS,
+			UGHitEffects.HIT_EFFECTS
 		};
 
 		for (DeferredRegister<?> register : registers) {

@@ -26,7 +26,7 @@ public class UGStonebornTrades {
 	public static final ResourceKey<StonebornTrade> VEGABOND_UTHERIUM = resourceKey("vegabond/utherium");
 
 	public static ResourceKey<StonebornTrade> resourceKey(String path) {
-		return ResourceKey.create(UGRegistries.STONEBORN_TRADE, Undergarden.prefix(path));
+		return ResourceKey.create(UGRegistries.Keys.STONEBORN_TRADE, Undergarden.prefix(path));
 	}
 
 	public static void bootstrap(BootstrapContext<StonebornTrade> context) {

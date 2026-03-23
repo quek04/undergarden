@@ -240,7 +240,7 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 	}
 
 	protected void addOffersFromTradeSet(ServerLevel level, MerchantOffers offers, ResourceKey<StonebornTradeSet> resourceKey) {
-		Optional<StonebornTradeSet> tradeSetOpt = this.registryAccess().lookupOrThrow(UGRegistries.STONEBORN_TRADE_SET).getOptional(resourceKey);
+		Optional<StonebornTradeSet> tradeSetOpt = this.registryAccess().lookupOrThrow(UGRegistries.Keys.STONEBORN_TRADE_SET).getOptional(resourceKey);
 		if (tradeSetOpt.isEmpty()) {
 			Undergarden.LOGGER.debug("Missing expected trade set {}", resourceKey);
 		} else {

@@ -1,5 +1,6 @@
 package quek.undergarden.entity.projectile.slingshot;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -9,40 +10,53 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import quek.undergarden.entity.projectile.slingshot.effect.HitEffect;
+import quek.undergarden.registry.UGDataComponents;
+import quek.undergarden.registry.UGEntityTypes;
+import quek.undergarden.registry.UGItems;
 
-public abstract class SlingshotProjectile extends ThrowableItemProjectile {
+public final class SlingshotProjectile extends ThrowableItemProjectile {
 
-	protected boolean ricochet;
-	protected int ricochetTimes = 0;
-
-	private boolean dropItem;
+	private boolean ricochet;
+	private int ricochetTimes = 0;
+	private int airTime = 1;
 
 	public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, Level level) {
 		super(type, level);
 	}
 
-	public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, double x, double y, double z, Level level, ItemStack stack) {
-		super(type, x, y, z, level, stack);
+	public SlingshotProjectile(LivingEntity shooter, Level level, ItemStack stack) {
+		super(UGEntityTypes.SLINGSHOT_PROJECTILE.get(), shooter, level, stack);
 	}
 
-	public SlingshotProjectile(EntityType<? extends ThrowableItemProjectile> type, LivingEntity shooter, Level level, ItemStack stack) {
-		super(type, shooter, level, stack);
+	@Override
+	protected Item getDefaultItem() {
+		return UGItems.DEPTHROCK_PEBBLE.get();
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+		if (this.level().getGameTime() % 5 == 0) {
+			this.airTime++;
+		}
 	}
 
 	@Override
 	protected void onHitBlock(BlockHitResult result) {
 		super.onHitBlock(result);
 		BlockState blockstate = this.level().getBlockState(result.getBlockPos());
-		LivingEntity shooter = (LivingEntity) this.getOwner();
 		if (!blockstate.getCollisionShape(this.level(), result.getBlockPos()).isEmpty()) {
 			this.playStepSound(result.getBlockPos(), blockstate);
 			if (this.level() instanceof ServerLevel serverLevel) {
-				this.level().broadcastEntityEvent(this, (byte) 3);
 				if (this.ricochet) {
 					Vec3 delta = this.getDeltaMovement();
 					Direction direction = result.getDirection();
@@ -56,23 +70,50 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 					}
 					this.ricochetTimes--;
 					if (this.ricochetTimes == 0) {
-						if (!(shooter instanceof Player player) || player.isCreative()) {
-							//don't drop anything
-						} else if (this.dropItem) {
-							this.spawnAtLocation(serverLevel, this.getItem());
-						}
-						this.discard();
+						this.finishHit(serverLevel, result);
 					}
 				} else {
-					if (!(shooter instanceof Player) || ((Player) shooter).isCreative()) {
-						//don't drop anything
-					} else if (this.dropItem) {
-						this.spawnAtLocation(serverLevel, this.getItem());
-					}
-					this.discard();
+					this.finishHit(serverLevel, result);
 				}
 			}
 		}
+	}
+
+	@Override
+	protected void onHitEntity(EntityHitResult result) {
+		if (this.level() instanceof ServerLevel serverLevel) {
+			this.finishHit(serverLevel, result);
+		}
+	}
+
+	private void finishHit(ServerLevel level, HitResult result) {
+		boolean finishedHit = false;
+		if (this.getItem().has(UGDataComponents.SLINGSHOT_AMMO)) {
+			var ammo = this.getItem().get(UGDataComponents.SLINGSHOT_AMMO);
+			for (HitEffect effect : ammo.hitEffects()) {
+				if (effect.apply(level, this.getItem(), this, result)) {
+					finishedHit = true;
+					break;
+				}
+			}
+
+			if (finishedHit) {
+				ammo.hitSound().ifPresent(event -> this.playSound(event.value()));
+				level.broadcastEntityEvent(this, (byte) 3);
+
+				if (this.getOwner() instanceof Player player && !player.isCreative() && ammo.dropAsItem()) {
+					this.spawnAtLocation(level, this.getItem());
+				}
+				this.discard();
+			}
+		} else {
+			//how did we get here
+			this.discard();
+		}
+	}
+
+	public int getAirTime() {
+		return this.airTime;
 	}
 
 	public void setRicochetTimes(int times) {
@@ -80,11 +121,17 @@ public abstract class SlingshotProjectile extends ThrowableItemProjectile {
 		this.ricochetTimes = times;
 	}
 
-	protected void setDropItem(boolean dropItem) {
-		this.dropItem = dropItem;
+	@Override
+	public void handleEntityEvent(byte id) {
+		if (id == 3) {
+			var ammo = this.getItem().get(UGDataComponents.SLINGSHOT_AMMO);
+			for (int i = 0; i < ammo.breakParticleCount().sample(this.getRandom()); ++i) {
+				this.level().addParticle(this.makeParticle(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+			}
+		}
 	}
 
-	protected ParticleOptions makeParticle() {
+	private ParticleOptions makeParticle() {
 		return new ItemParticleOption(ParticleTypes.ITEM, this.getItem().getItem());
 	}
 }

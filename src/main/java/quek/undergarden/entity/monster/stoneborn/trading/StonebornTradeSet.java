@@ -16,7 +16,7 @@ public record StonebornTradeSet(HolderSet<StonebornTrade> trades, NumberProvider
 
 	public static final Codec<StonebornTradeSet> CODEC = RecordCodecBuilder.create(
 		i -> i.group(
-			RegistryCodecs.homogeneousList(UGRegistries.STONEBORN_TRADE).fieldOf("trades").forGetter(StonebornTradeSet::trades),
+			RegistryCodecs.homogeneousList(UGRegistries.Keys.STONEBORN_TRADE).fieldOf("trades").forGetter(StonebornTradeSet::trades),
 			NumberProviders.CODEC.fieldOf("amount").forGetter(StonebornTradeSet::amount),
 			Codec.BOOL.optionalFieldOf("allow_duplicates", false).forGetter(StonebornTradeSet::allowDuplicates),
 			Identifier.CODEC.optionalFieldOf("random_sequence").forGetter(StonebornTradeSet::randomSequence)
