@@ -147,7 +147,7 @@ public class UGPlacedFeatures {
 		context.register(PUFF_MUSHROOM_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.PUFF_MUSHROOM), patch(10)));
 		context.register(UNDERBEAN_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.UNDERBEAN_BUSH), patch(5)));
 		context.register(BLISTERBERRY_BUSH_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.BLISTERBERRY_BUSH), patch(5)));
-		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD), patch(5)));
+		context.register(GLOOMGOURD_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLOOMGOURD), patchWithFilter(5, BlockPredicate.hasSturdyFace(Direction.DOWN.getUnitVec3i(), Direction.UP))));
 		context.register(DROOPVINE_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.DROOPVINE), patch(100)));
 		context.register(GLITTERKELP_PATCH, new PlacedFeature(features.getOrThrow(UGConfiguredFeatures.GLITTERKELP), List.of(NoiseBasedCountPlacement.of(1000, 80.0D, 0.0D), InSquarePlacement.spread(), HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(31)), BiomeFilter.biome())));
 
@@ -196,7 +196,7 @@ public class UGPlacedFeatures {
 	}
 
 	private static List<PlacementModifier> patch(int count) {
-		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
+		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
 	}
 
 	private static List<PlacementModifier> crystal(int count) {
@@ -204,14 +204,14 @@ public class UGPlacedFeatures {
 	}
 
 	private static List<PlacementModifier> patchWithFilter(int count, BlockPredicate filter) {
-		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(filter), BiomeFilter.biome());
+		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter)), BiomeFilter.biome());
 	}
 
 	private static List<PlacementModifier> noise(int noiseToCountRatio, double factor, double offset) {
-		return List.of(NoiseBasedCountPlacement.of(noiseToCountRatio, factor, offset), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
+		return List.of(NoiseBasedCountPlacement.of(noiseToCountRatio, factor, offset), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
 	}
 
 	private static List<PlacementModifier> noiseWithFilter(int noiseToCountRatio, double factor, double offset, BlockPredicate filter) {
-		return List.of(NoiseBasedCountPlacement.of(noiseToCountRatio, factor, offset), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(filter), BiomeFilter.biome());
+		return List.of(NoiseBasedCountPlacement.of(noiseToCountRatio, factor, offset), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter)), BiomeFilter.biome());
 	}
 }
