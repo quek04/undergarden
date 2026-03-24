@@ -38,7 +38,7 @@ public class UndergardenAdvancements implements AdvancementSubProvider {
 				UGBlocks.DEEPTURF_BLOCK,
 				Component.translatable("advancement.undergarden.root.title"),
 				Component.empty(),
-				Undergarden.prefix("textures/block/depthrock_bricks.png"),
+				Undergarden.prefix("block/depthrock_bricks"),
 				AdvancementType.TASK,
 				false,
 				false,
