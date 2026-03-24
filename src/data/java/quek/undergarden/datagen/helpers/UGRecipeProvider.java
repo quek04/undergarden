@@ -184,7 +184,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 			.pattern("/")
 			.define('#', materialIn.get())
 			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_stick", this.has(Items.STICK));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makePickaxe(HolderGetter<Item> getter, Supplier<? extends Item> pickaxeOut, Supplier<? extends Item> materialIn) {
@@ -194,7 +194,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 			.pattern(" / ")
 			.define('#', materialIn.get())
 			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_stick", this.has(Items.STICK));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeAxe(HolderGetter<Item> getter, Supplier<? extends Item> axeOut, Supplier<? extends Item> materialIn) {
@@ -204,7 +204,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 			.pattern(" /")
 			.define('#', materialIn.get())
 			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_stick", this.has(Items.STICK));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeShovel(HolderGetter<Item> getter, Supplier<? extends Item> shovelOut, Supplier<? extends Item> materialIn) {
@@ -214,7 +214,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 			.pattern("/")
 			.define('#', materialIn.get())
 			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_stick", this.has(Items.STICK));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeHoe(HolderGetter<Item> getter, Supplier<? extends Item> hoeOut, Supplier<? extends Item> materialIn) {
@@ -224,7 +224,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 			.pattern(" /")
 			.define('#', materialIn.get())
 			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_stick", this.has(Items.STICK));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeSpear(HolderGetter<Item> getter, Supplier<? extends Item> spearOut, Supplier<? extends Item> materialIn) {
@@ -234,7 +234,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 			.pattern("/  ")
 			.define('X', materialIn.get())
 			.define('/', Tags.Items.RODS_WOODEN)
-			.unlockedBy("has_stick", this.has(Items.STICK));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeHelmet(HolderGetter<Item> getter, Supplier<? extends Item> helmetOut, Supplier<? extends Item> materialIn) {
