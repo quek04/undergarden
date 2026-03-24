@@ -1,7 +1,7 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "undergarden:item/forgotten_battleaxe"
+		"layer0": "undergarden:item/forgotten_battleaxe_held"
 	},
 	"display": {
 		"thirdperson_righthand": {

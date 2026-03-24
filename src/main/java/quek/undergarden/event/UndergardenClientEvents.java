@@ -70,9 +70,7 @@ import quek.undergarden.client.render.blockentity.DepthrockBedRenderer;
 import quek.undergarden.client.render.blockentity.DepthrockPotRenderer;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
-import quek.undergarden.client.render.item.DepthrockBedSpecialRenderer;
-import quek.undergarden.client.render.item.DepthrockPotSpecialRenderer;
-import quek.undergarden.client.render.item.GrongletSpecialRenderer;
+import quek.undergarden.client.render.item.*;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
 import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.registry.*;
@@ -206,6 +204,8 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.ROTBELCHER, RotbelcherModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.LIVING_POT, MysteriousPotModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.POT, PotModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.CLOGGRUM_SHIELD, CloggrumShieldModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.SPEAR, SpearModel::createBodyLayer);
 
 		ArmorModelSet<MeshDefinition> humanoidArmor = HumanoidModel.createArmorMeshSet(LayerDefinitions.INNER_ARMOR_DEFORMATION, LayerDefinitions.OUTER_ARMOR_DEFORMATION);
 		registerArmorModelSet(event, UGModelLayers.FORGOTTEN_ARMOR, humanoidArmor);
@@ -291,6 +291,8 @@ public class UndergardenClientEvents {
 		event.register(Undergarden.prefix("gronglet"), GrongletSpecialRenderer.Unbaked.MAP_CODEC);
 		event.register(Undergarden.prefix("depthrock_bed"), DepthrockBedSpecialRenderer.Unbaked.MAP_CODEC);
 		event.register(Undergarden.prefix("depthrock_pot"), DepthrockPotSpecialRenderer.Unbaked.MAP_CODEC);
+		event.register(Undergarden.prefix("cloggrum_shield"), CloggrumShieldSpecialRenderer.Unbaked.MAP_CODEC);
+		event.register(Undergarden.prefix("spear"), SpearSpecialRenderer.Unbaked.MAP_CODEC);
 	}
 
 	private static void registerBlockColors(RegisterColorHandlersEvent.BlockTintSources event) {

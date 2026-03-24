@@ -1,0 +1,62 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "undergarden:item/spear"
+        },
+        "when": [
+          "gui",
+          "ground",
+          "fixed",
+          "on_shelf"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:condition",
+      "on_false": {
+        "type": "minecraft:special",
+        "base": "undergarden:item/spear_in_hand",
+        "model": {
+          "type": "undergarden:spear"
+        }
+      },
+      "on_true": {
+        "type": "minecraft:special",
+        "base": "undergarden:item/spear_throwing",
+        "model": {
+          "type": "undergarden:spear"
+        }
+      },
+      "property": "minecraft:using_item",
+      "transformation": {
+        "left_rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "right_rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          -1.0,
+          -1.0
+        ],
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "property": "minecraft:display_context"
+  }
+}

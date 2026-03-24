@@ -1,118 +1,48 @@
 {
-	"credit": "Made with Blockbench",
-	"texture_size": [64, 64],
-	"textures": {
-		"0": "undergarden:item/cloggrum_shield",
-		"particle": "undergarden:item/cloggrum_shield"
-	},
-	"elements": [
-		{
-			"name": "front center",
-			"from": [2, 9, 2],
-			"to": [14, 28, 4],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 18.5, 3]},
-			"faces": {
-				"north": {"uv": [4, 5, 7, 9.75], "texture": "#0"},
-				"east": {"uv": [7.5, 5, 7, 9.75], "texture": "#0"},
-				"south": {"uv": [7.5, 5, 10.5, 9.75], "texture": "#0"},
-				"west": {"uv": [7, 5, 7.5, 9.75], "texture": "#0"},
-				"up": {"uv": [2.5, 0.5, 0.5, 0], "texture": "#0"},
-				"down": {"uv": [4.5, 0, 2.5, 0.5], "texture": "#0"}
-			}
-		},
-		{
-			"name": "bottom",
-			"from": [1.99, 1.19615, 2.42638],
-			"to": [14.01, 9.21615, 4.44638],
-			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 8.00615, 2.73638]},
-			"faces": {
-				"north": {"uv": [4, 9.75, 7, 11.75], "texture": "#0"},
-				"east": {"uv": [7, 9.75, 7.5, 11.75], "texture": "#0"},
-				"south": {"uv": [7.5, 9.75, 10.5, 11.75], "texture": "#0"},
-				"west": {"uv": [7, 9.75, 7.5, 11.75], "texture": "#0"},
-				"up": {"uv": [10.5, 12.75, 7.5, 12.25], "texture": "#0"},
-				"down": {"uv": [10.5, 11.75, 7.5, 12.25], "texture": "#0"}
-			}
-		},
-		{
-			"name": "top",
-			"from": [1.99, 27.79907, 2.34985],
-			"to": [14.01, 31.81907, 4.36985],
-			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 28.80907, 2.65985]},
-			"faces": {
-				"north": {"uv": [4, 4, 7, 5], "texture": "#0"},
-				"east": {"uv": [7, 4, 7.5, 5], "texture": "#0"},
-				"south": {"uv": [7.5, 4, 10.5, 5], "texture": "#0"},
-				"west": {"uv": [7.5, 2.5, 8, 3.5], "texture": "#0"},
-				"up": {"uv": [10.5, 4, 7.5, 3.5], "texture": "#0"},
-				"down": {"uv": [7, 2, 4, 2.5], "texture": "#0"}
-			}
-		},
-		{
-			"name": "handle",
-			"from": [7, 15, 4],
-			"to": [9, 21, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [15, 26, 12]},
-			"faces": {
-				"north": {"uv": [7, 2.5, 7.5, 4], "texture": "#0"},
-				"east": {"uv": [5.5, 2.5, 4, 4], "texture": "#0"},
-				"south": {"uv": [5.5, 2.5, 6, 4], "texture": "#0"},
-				"west": {"uv": [4, 2.5, 5.5, 4], "texture": "#0"},
-				"up": {"uv": [6.5, 4, 6, 2.5], "texture": "#0"},
-				"down": {"uv": [7, 2.5, 6.5, 4], "texture": "#0"}
-			}
-		}
-	],
 	"gui_light": "front",
-	"overrides": [
-		{
-			"predicate": {
-				"undergarden:blocking": 1
-			},
-			"model": "undergarden:item/cloggrum_shield_blocking"
-		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"rotation": [0, -90, 0],
-			"translation": [-1, -12, 3]
-		},
-		"thirdperson_lefthand": {
-			"rotation": [0, -90, 0],
-			"translation": [-1, -12, 3]
-		},
-		"firstperson_righthand": {
-			"rotation": [0, 0, -5],
-			"translation": [6, -25, -1],
-			"scale": [1.25, 1.25, 1.25]
-		},
-		"firstperson_lefthand": {
-			"rotation": [0, 0, -5],
-			"translation": [6, -25, -1],
-			"scale": [1.25, 1.25, 1.25]
-		},
-		"ground": {
-			"scale": [0.25, 0.25, 0.25]
-		},
-		"gui": {
-			"rotation": [15, 140, -5],
-			"translation": [0, -4, 0],
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"head": {
-			"rotation": [90, 0, 0],
-			"translation": [0, 2.25, -9.25]
-		},
-		"fixed": {
-			"translation": [0, -4, 0],
-			"scale": [0.5, 0.5, 0.5]
-		}
-	},
-	"groups": [
-		{
-			"name": "shield",
-			"origin": [16, 22, 9],
-			"children": [0, 1, 2, 3]
-		}
-	]
+  "textures": {
+    "particle": "undergarden:block/raw_cloggrum_block"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ 0, 90, 0 ],
+      "translation": [ 8, 13, -4 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 0, 90, 0 ],
+      "translation": [ 8, 13, 12 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "firstperson_righthand": {
+      "rotation": [ 0, 180, 5 ],
+      "translation": [ -8, 10, -10 ],
+      "scale": [ 1.25, 1.25, 1.25 ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [ 0, 180, 5 ],
+      "translation": [ 12, 8.25, -10 ],
+      "scale": [ 1.25, 1.25, 1.25 ]
+    },
+    "gui": {
+      "rotation": [ 15, -25, -5 ],
+      "translation": [ 2, 6, 0 ],
+      "scale": [ 0.475, 0.475, 0.475 ]
+    },
+    "fixed": {
+      "rotation": [ 0, 180, 0 ],
+      "translation": [ -4.5, 9, -5 ],
+      "scale":[ 0.55, 0.55, 0.55 ]
+    },
+    "on_shelf": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 11, 16.5, 8.7 ],
+      "scale": [ 1.4, 1.4, 1.4 ]
+    },
+    "ground": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 2, 4, 2 ],
+      "scale":[ 0.25, 0.25, 0.25 ]
+    }
+  }
 }

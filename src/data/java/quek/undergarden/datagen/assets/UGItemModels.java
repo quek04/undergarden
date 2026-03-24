@@ -5,7 +5,10 @@ import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
+import net.minecraft.client.renderer.item.properties.conditional.IsUsingItem;
 import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
+import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
+import net.minecraft.client.renderer.special.TridentSpecialRenderer;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -16,6 +19,8 @@ import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import quek.undergarden.client.render.item.CloggrumShieldSpecialRenderer;
+import quek.undergarden.client.render.item.SpearSpecialRenderer;
 import quek.undergarden.registry.UGEquipmentAssets;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGMaterialAssetGroups;
@@ -81,6 +86,7 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateFlatItem(UGItems.ROTTEN_BLISTERBERRY.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.BLISTERBOMB.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.DROOPFRUIT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateBattleaxe(UGItems.CLOGGRUM_BATTLEAXE.get());
 		this.generateFlatItem(UGItems.CLOGGRUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.CLOGGRUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.CLOGGRUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -109,6 +115,7 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateFlatItem(UGItems.UTHERIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.UTHERIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
+		this.generateBattleaxe(UGItems.FORGOTTEN_BATTLEAXE.get());
 		this.generateFlatItem(UGItems.FORGOTTEN_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.FORGOTTEN_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 		this.generateFlatItem(UGItems.FORGOTTEN_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -157,12 +164,28 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateSpear(UGItems.UTHERIUM_SPEAR.get());
 		this.generateSpear(UGItems.FORGOTTEN_SPEAR.get());
 
+		ItemModel.Unbaked flatSpearModel = ItemModelUtils.plainModel(this.createFlatItemModel(UGItems.SPEAR.get(), ModelTemplates.FLAT_ITEM));
+		ItemModel.Unbaked inHandNormalModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.SPEAR.get(), "_in_hand"), new SpearSpecialRenderer.Unbaked());
+		ItemModel.Unbaked inHandThrowingModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.SPEAR.get(), "_throwing"), new SpearSpecialRenderer.Unbaked());
+		ItemModel.Unbaked inHandModel = ItemModelUtils.conditional(TridentSpecialRenderer.DEFAULT_TRANSFORMATION, ItemModelUtils.isUsingItem(), inHandThrowingModel, inHandNormalModel);
+		this.itemModelOutput.accept(UGItems.SPEAR.get(), createFlatModelDispatch(flatSpearModel, inHandModel));
+
+		ItemModel.Unbaked normalShield = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.CLOGGRUM_SHIELD.get()), new CloggrumShieldSpecialRenderer.Unbaked());
+		ItemModel.Unbaked blockingShield = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.CLOGGRUM_SHIELD.get(), "_blocking"), new CloggrumShieldSpecialRenderer.Unbaked());
+		this.itemModelOutput.accept(UGItems.CLOGGRUM_SHIELD.get(), ItemModelUtils.conditional(ShieldSpecialRenderer.DEFAULT_TRANSFORMATION, ItemModelUtils.isUsingItem(), blockingShield, normalShield));
+
 		//TODO
 //		this.getBuilder(UGItems.CLOGGRUM_BUCKET.getId().toString())
 //			.parent(new ModelFile.UncheckedModelFile("neoforge:item/default"))
 //			.customLoader(CloggrumBucketModelBuilder::begin).fluid(Fluids.EMPTY).flipGas(true).applyFluidLuminosity(true).end()
 //			.texture("base", modLoc("item/cloggrum_bucket"))
 //			.texture("fluid", Identifier.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/mask/bucket_fluid_drip"));
+	}
+
+	public void generateBattleaxe(Item item) {
+		ItemModel.Unbaked flatModel = ItemModelUtils.plainModel(this.createFlatItemModel(item, ModelTemplates.FLAT_ITEM));
+		ItemModel.Unbaked inHandModel = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(item, "_in_hand"));
+		this.itemModelOutput.accept(item, createFlatModelDispatch(flatModel, inHandModel));
 	}
 
 	public void generateExpandedTrimmableItem(Item armor, ResourceKey<EquipmentAsset> equipmentAssetId, Identifier slotTrimPrefix) {

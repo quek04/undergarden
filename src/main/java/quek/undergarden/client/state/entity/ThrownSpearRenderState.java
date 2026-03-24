@@ -6,4 +6,5 @@ public class ThrownSpearRenderState extends ThrownItemRenderState {
 
 	public float yRot;
 	public float xRot;
+	public boolean isFoil;
 }

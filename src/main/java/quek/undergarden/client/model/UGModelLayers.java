@@ -36,6 +36,8 @@ public class UGModelLayers {
 	public static final ModelLayerLocation DENIZEN_MASK = register("denizen_mask");
 	public static final ModelLayerLocation ROTBELCHER = register("rotbelcher");
 	public static final ModelLayerLocation POT = register("pot");
+	public static final ModelLayerLocation CLOGGRUM_SHIELD = register("cloggrum_shield");
+	public static final ModelLayerLocation SPEAR = register("spear");
 
 	private static ModelLayerLocation register(String name) {
 		return new ModelLayerLocation(Undergarden.prefix(name), "main");
