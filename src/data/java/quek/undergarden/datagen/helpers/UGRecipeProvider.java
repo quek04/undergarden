@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
@@ -40,9 +39,9 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public ShapelessRecipeBuilder makePlanks(HolderGetter<Item> getter, Supplier<? extends Block> plankOut, TagKey<Item> logIn) {
 		return ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.BUILDING_BLOCKS, plankOut.get(), 4)
-				.requires(logIn)
-				.group("planks")
-				.unlockedBy("has_log", has(logIn));
+			.requires(logIn)
+			.group("planks")
+			.unlockedBy("has_log", has(logIn));
 	}
 
 	public ShapelessRecipeBuilder makePlanks(HolderGetter<Item> getter, Supplier<? extends Block> plankOut, Supplier<? extends Block> logIn) {
@@ -54,256 +53,266 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public ShapedRecipeBuilder makeDoor(HolderGetter<Item> getter, Supplier<? extends Block> doorOut, Supplier<? extends Block> plankIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.REDSTONE, doorOut.get(), 3)
-				.pattern("PP")
-				.pattern("PP")
-				.pattern("PP")
-				.define('P', plankIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(plankIn.get()).getPath(), has(plankIn.get()));
+			.pattern("PP")
+			.pattern("PP")
+			.pattern("PP")
+			.define('P', plankIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(plankIn.get()).getPath(), has(plankIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeTrapdoor(HolderGetter<Item> getter, Supplier<? extends Block> trapdoorOut, Supplier<? extends Block> plankIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.REDSTONE, trapdoorOut.get(), 2)
-				.pattern("PPP")
-				.pattern("PPP")
-				.define('P', plankIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(plankIn.get()).getPath(), has(plankIn.get()));
+			.pattern("PPP")
+			.pattern("PPP")
+			.define('P', plankIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(plankIn.get()).getPath(), has(plankIn.get()));
 	}
 
 	public ShapelessRecipeBuilder makeButton(HolderGetter<Item> getter, Supplier<? extends Block> buttonOut, Supplier<? extends Block> blockIn) {
 		return ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.REDSTONE, buttonOut.get())
-				.requires(blockIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.requires(blockIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makePressurePlate(HolderGetter<Item> getter, Supplier<? extends Block> pressurePlateOut, Supplier<? extends Block> blockIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.REDSTONE, pressurePlateOut.get())
-				.pattern("BB")
-				.define('B', blockIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.pattern("BB")
+			.define('B', blockIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeStairs(HolderGetter<Item> getter, Supplier<? extends Block> stairsOut, Supplier<? extends Block> blockIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, stairsOut.get(), 4)
-				.pattern("M  ")
-				.pattern("MM ")
-				.pattern("MMM")
-				.define('M', blockIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.pattern("M  ")
+			.pattern("MM ")
+			.pattern("MMM")
+			.define('M', blockIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeSlab(HolderGetter<Item> getter, Supplier<? extends Block> slabOut, Supplier<? extends Block> blockIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, slabOut.get(), 6)
-				.pattern("MMM")
-				.define('M', blockIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.pattern("MMM")
+			.define('M', blockIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeWall(HolderGetter<Item> getter, Supplier<? extends Block> wallOut, Supplier<? extends Block> blockIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, wallOut.get(), 6)
-				.pattern("MMM")
-				.pattern("MMM")
-				.define('M', blockIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.pattern("MMM")
+			.pattern("MMM")
+			.define('M', blockIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeFence(HolderGetter<Item> getter, Supplier<? extends Block> fenceOut, Supplier<? extends Block> blockIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, fenceOut.get(), 6)
-				.pattern("M/M")
-				.pattern("M/M")
-				.define('M', blockIn.get())
-				.define('/', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.pattern("M/M")
+			.pattern("M/M")
+			.define('M', blockIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeFenceGate(HolderGetter<Item> getter, Supplier<? extends Block> fenceGateOut, Supplier<? extends Block> blockIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.REDSTONE, fenceGateOut.get())
-				.pattern("/M/")
-				.pattern("/M/")
-				.define('M', blockIn.get())
-				.define('/', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.pattern("/M/")
+			.pattern("/M/")
+			.define('M', blockIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeBricks(HolderGetter<Item> getter, Supplier<? extends Block> bricksOut, Supplier<? extends Block> blockIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, bricksOut.get(), 4)
-				.pattern("MM")
-				.pattern("MM")
-				.define('M', blockIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.pattern("MM")
+			.pattern("MM")
+			.define('M', blockIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeChiseledBricks(HolderGetter<Item> getter, Supplier<? extends Block> bricksOut, Supplier<? extends Block> blockIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, bricksOut.get())
-				.pattern("M")
-				.pattern("M")
-				.define('M', blockIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.pattern("M")
+			.pattern("M")
+			.define('M', blockIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeWood(HolderGetter<Item> getter, Supplier<? extends Block> woodOut, Supplier<? extends Block> logIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, woodOut.get(), 3)
-				.pattern("MM")
-				.pattern("MM")
-				.define('M', logIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(logIn.get()).getPath(), has(logIn.get()));
+			.pattern("MM")
+			.pattern("MM")
+			.define('M', logIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(logIn.get()).getPath(), has(logIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeIngotToBlock(HolderGetter<Item> getter, Supplier<? extends Block> blockOut, Supplier<? extends Item> ingotIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.BUILDING_BLOCKS, blockOut.get())
-				.pattern("###")
-				.pattern("###")
-				.pattern("###")
-				.define('#', ingotIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingotIn.get()).getPath(), has(ingotIn.get()));
+			.pattern("###")
+			.pattern("###")
+			.pattern("###")
+			.define('#', ingotIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingotIn.get()).getPath(), has(ingotIn.get()));
 	}
 
 	public ShapelessRecipeBuilder makeBlockToIngot(HolderGetter<Item> getter, Supplier<? extends Item> ingotOut, Supplier<? extends Block> blockIn) {
 		return ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.MISC, ingotOut.get(), 9)
-				.requires(blockIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
+			.requires(blockIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn.get()).getPath(), has(blockIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeNuggetToIngot(HolderGetter<Item> getter, Supplier<? extends Item> ingotOut, Supplier<? extends Item> nuggetIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.MISC, ingotOut.get(), 1)
-				.pattern("NNN")
-				.pattern("NNN")
-				.pattern("NNN")
-				.define('N', nuggetIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(nuggetIn.get()).getPath(), has(nuggetIn.get()));
+			.pattern("NNN")
+			.pattern("NNN")
+			.pattern("NNN")
+			.define('N', nuggetIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(nuggetIn.get()).getPath(), has(nuggetIn.get()));
 	}
 
 	public ShapelessRecipeBuilder makeIngotToNugget(HolderGetter<Item> getter, Supplier<? extends Item> nuggetOut, Supplier<? extends Item> ingotIn) {
 		return ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.MISC, nuggetOut.get(), 9)
-				.requires(ingotIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingotIn.get()).getPath(), has(ingotIn.get()));
+			.requires(ingotIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingotIn.get()).getPath(), has(ingotIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeSword(HolderGetter<Item> getter, Supplier<? extends Item> swordOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.COMBAT, swordOut.get())
-				.pattern("#")
-				.pattern("#")
-				.pattern("/")
-				.define('#', materialIn.get())
-				.define('/', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("#")
+			.pattern("#")
+			.pattern("/")
+			.define('#', materialIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_stick", this.has(Items.STICK));
 	}
 
 	public ShapedRecipeBuilder makePickaxe(HolderGetter<Item> getter, Supplier<? extends Item> pickaxeOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.TOOLS, pickaxeOut.get())
-				.pattern("###")
-				.pattern(" / ")
-				.pattern(" / ")
-				.define('#', materialIn.get())
-				.define('/', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("###")
+			.pattern(" / ")
+			.pattern(" / ")
+			.define('#', materialIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_stick", this.has(Items.STICK));
 	}
 
 	public ShapedRecipeBuilder makeAxe(HolderGetter<Item> getter, Supplier<? extends Item> axeOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.TOOLS, axeOut.get())
-				.pattern("##")
-				.pattern("#/")
-				.pattern(" /")
-				.define('#', materialIn.get())
-				.define('/', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("##")
+			.pattern("#/")
+			.pattern(" /")
+			.define('#', materialIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_stick", this.has(Items.STICK));
 	}
 
 	public ShapedRecipeBuilder makeShovel(HolderGetter<Item> getter, Supplier<? extends Item> shovelOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.TOOLS, shovelOut.get())
-				.pattern("#")
-				.pattern("/")
-				.pattern("/")
-				.define('#', materialIn.get())
-				.define('/', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("#")
+			.pattern("/")
+			.pattern("/")
+			.define('#', materialIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_stick", this.has(Items.STICK));
 	}
 
 	public ShapedRecipeBuilder makeHoe(HolderGetter<Item> getter, Supplier<? extends Item> hoeOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.TOOLS, hoeOut.get())
-				.pattern("##")
-				.pattern(" /")
-				.pattern(" /")
-				.define('#', materialIn.get())
-				.define('/', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("##")
+			.pattern(" /")
+			.pattern(" /")
+			.define('#', materialIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_stick", this.has(Items.STICK));
+	}
+
+	public ShapedRecipeBuilder makeSpear(HolderGetter<Item> getter, Supplier<? extends Item> spearOut, Supplier<? extends Item> materialIn) {
+		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.COMBAT, spearOut.get())
+			.pattern("  X")
+			.pattern(" / ")
+			.pattern("/  ")
+			.define('X', materialIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_stick", this.has(Items.STICK));
 	}
 
 	public ShapedRecipeBuilder makeHelmet(HolderGetter<Item> getter, Supplier<? extends Item> helmetOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.COMBAT, helmetOut.get())
-				.pattern("MMM")
-				.pattern("M M")
-				.define('M', materialIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("MMM")
+			.pattern("M M")
+			.define('M', materialIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeChestplate(HolderGetter<Item> getter, Supplier<? extends Item> helmetOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.COMBAT, helmetOut.get())
-				.pattern("M M")
-				.pattern("MMM")
-				.pattern("MMM")
-				.define('M', materialIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("M M")
+			.pattern("MMM")
+			.pattern("MMM")
+			.define('M', materialIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeLeggings(HolderGetter<Item> getter, Supplier<? extends Item> helmetOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.COMBAT, helmetOut.get())
-				.pattern("MMM")
-				.pattern("M M")
-				.pattern("M M")
-				.define('M', materialIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("MMM")
+			.pattern("M M")
+			.pattern("M M")
+			.define('M', materialIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeBoots(HolderGetter<Item> getter, Supplier<? extends Item> helmetOut, Supplier<? extends Item> materialIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.COMBAT, helmetOut.get())
-				.pattern("M M")
-				.pattern("M M")
-				.define('M', materialIn.get())
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
+			.pattern("M M")
+			.pattern("M M")
+			.define('M', materialIn.get())
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(materialIn.get()).getPath(), has(materialIn.get()));
 	}
 
 	public ShapelessRecipeBuilder makeStew(HolderGetter<Item> getter, Supplier<? extends Item> stewOut, Supplier<? extends Block> mushroomIn) {
 		return ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.FOOD, stewOut.get())
-				.requires(Items.BOWL)
-				.requires(mushroomIn.get(), 3)
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(mushroomIn.get()).getPath(), has(mushroomIn.get()));
+			.requires(Items.BOWL)
+			.requires(mushroomIn.get(), 3)
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(mushroomIn.get()).getPath(), has(mushroomIn.get()));
 	}
 
 	public ShapedRecipeBuilder makeBoat(HolderGetter<Item> getter, Supplier<? extends Item> boatOut, Supplier<? extends Block> planksIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.TRANSPORTATION, boatOut.get())
-				.pattern("P P")
-				.pattern("PPP")
-				.define('P', planksIn.get())
-				.group("boat")
-				.unlockedBy("in_water", insideOf(Blocks.WATER));
+			.pattern("P P")
+			.pattern("PPP")
+			.define('P', planksIn.get())
+			.group("boat")
+			.unlockedBy("in_water", insideOf(Blocks.WATER));
 	}
 
 	public ShapelessRecipeBuilder makeChestBoat(HolderGetter<Item> getter, Supplier<? extends Item> chestBoatOut, Supplier<? extends Item> boatIn) {
 		return ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.TRANSPORTATION, chestBoatOut.get())
-				.requires(boatIn.get())
-				.requires(Tags.Items.CHESTS_WOODEN)
-				.group("chest_boat")
-				.unlockedBy("has_boat", has(ItemTags.BOATS));
+			.requires(boatIn.get())
+			.requires(Tags.Items.CHESTS_WOODEN)
+			.group("chest_boat")
+			.unlockedBy("has_boat", has(ItemTags.BOATS));
 	}
 
 	public ShapedRecipeBuilder makeSign(HolderGetter<Item> getter, Supplier<? extends SignBlock> signOut, Supplier<? extends Block> planksIn) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, signOut.get(), 3)
-				.pattern("PPP")
-				.pattern("PPP")
-				.pattern(" / ")
-				.define('P', planksIn.get())
-				.define('/', Tags.Items.RODS_WOODEN)
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(planksIn.get()).getPath(), has(planksIn.get()));
+			.pattern("PPP")
+			.pattern("PPP")
+			.pattern(" / ")
+			.define('P', planksIn.get())
+			.define('/', Tags.Items.RODS_WOODEN)
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(planksIn.get()).getPath(), has(planksIn.get()));
 	}
 
 	protected ShapedRecipeBuilder makeHangingSign(HolderGetter<Item> getter, Supplier<? extends CeilingHangingSignBlock> result, Supplier<? extends Block> log) {
 		return ShapedRecipeBuilder.shaped(getter, RecipeCategory.DECORATIONS, result.get(), 6)
-				.pattern("| |")
-				.pattern("###")
-				.pattern("###")
-				.define('#', log.get())
-				.define('|', Items.IRON_CHAIN)
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(log.get()).getPath(), has(log.get()));
+			.pattern("| |")
+			.pattern("###")
+			.pattern("###")
+			.define('#', log.get())
+			.define('|', Items.IRON_CHAIN)
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(log.get()).getPath(), has(log.get()));
 	}
 
 	public void ore(ItemLike result, List<ItemLike> ingredients, float xp, String group, RecipeOutput consumer) {
@@ -319,12 +328,12 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public SimpleCookingRecipeBuilder smeltingRecipe(ItemLike result, ItemLike ingredient, CookingBookCategory category, float exp) {
 		return SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.MISC, category, result, exp, 200)
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
 	}
 
 	public SimpleCookingRecipeBuilder smeltingRecipeTag(HolderGetter<Item> getter, ItemLike result, TagKey<Item> ingredient, CookingBookCategory category, float exp) {
 		return SimpleCookingRecipeBuilder.smelting(Ingredient.of(getter.getOrThrow(ingredient)), RecipeCategory.MISC, category, result, exp, 200)
-				.unlockedBy("has_" + ingredient, has(ingredient));
+			.unlockedBy("has_" + ingredient, has(ingredient));
 	}
 
 	private void oreBlastingRecipe(ItemLike result, List<ItemLike> ingredients, float xp, String group, RecipeOutput consumer) {
@@ -335,17 +344,17 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public SimpleCookingRecipeBuilder blastingRecipe(ItemLike result, ItemLike ingredient, CookingBookCategory category, float exp) {
 		return SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), RecipeCategory.MISC, category, result, exp, 100)
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
 	}
 
 	public SimpleCookingRecipeBuilder blastingRecipeTag(HolderGetter<Item> getter, ItemLike result, TagKey<Item> ingredient, CookingBookCategory category, float exp) {
 		return SimpleCookingRecipeBuilder.blasting(Ingredient.of(getter.getOrThrow(ingredient)), RecipeCategory.MISC, category, result, exp, 100)
-				.unlockedBy("has_" + ingredient, has(ingredient));
+			.unlockedBy("has_" + ingredient, has(ingredient));
 	}
 
 	public SimpleCookingRecipeBuilder smokingRecipe(ItemLike result, ItemLike ingredient, float exp) {
 		return SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), RecipeCategory.MISC, result, exp, 100)
-				.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
+			.unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(ingredient.asItem()), has(ingredient));
 
 	}
 
@@ -357,7 +366,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public SmithingTransformRecipeBuilder smithingRecipe(Supplier<Item> input, Supplier<Item> upgradeItem, Supplier<Item> templateItem, Supplier<Item> result) {
 		return SmithingTransformRecipeBuilder.smithing(Ingredient.of(templateItem.get()), Ingredient.of(input.get()), Ingredient.of(upgradeItem.get()), RecipeCategory.MISC, result.get())
-				.unlocks("has_" + BuiltInRegistries.ITEM.getKey(upgradeItem.get()), has(upgradeItem.get()));
+			.unlocks("has_" + BuiltInRegistries.ITEM.getKey(upgradeItem.get()), has(upgradeItem.get()));
 	}
 
 	public SmithingTransformRecipeBuilder smithingForgotten(Supplier<Item> input, Supplier<Item> result) {
@@ -370,7 +379,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 
 	public SingleItemRecipeBuilder stonecutting(Supplier<Block> input, ItemLike result, int resultAmount) {
 		return SingleItemRecipeBuilder.stonecutting(Ingredient.of(input.get()), RecipeCategory.BUILDING_BLOCKS, result, resultAmount)
-				.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(input.get()), has(input.get()));
+			.unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(input.get()), has(input.get()));
 	}
 
 	public SingleItemRecipeBuilder depthrockStonecutting(ItemLike result) {

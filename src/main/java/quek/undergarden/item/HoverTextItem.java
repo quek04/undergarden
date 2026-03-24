@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 
 public class HoverTextItem extends Item {
 
-	public static final Component FROSTEEL_WEAPON = Component.translatable("tooltip.undergarden.froststeel_weapon").withStyle(ChatFormatting.AQUA);
+	public static final Component FROSTSTEEL_WEAPON = Component.translatable("tooltip.undergarden.froststeel_weapon").withStyle(ChatFormatting.AQUA);
 	public static final Component UTHERIUM_WEAPON = Component.translatable("tooltip.undergarden.utherium_weapon").withStyle(ChatFormatting.RED);
 	public static final Component FORGOTTEN_WEAPON = Component.translatable("tooltip.undergarden.forgotten_weapon").withStyle(ChatFormatting.GREEN);
 	public static final Component FORGOTTEN_TOOL = Component.translatable("tooltip.undergarden.forgotten_tool").withStyle(ChatFormatting.GREEN);

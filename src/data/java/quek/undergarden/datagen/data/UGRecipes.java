@@ -415,6 +415,11 @@ public class UGRecipes extends UGRecipeProvider {
 		makeHoe(getter, UGItems.FROSTSTEEL_HOE, UGItems.FROSTSTEEL_INGOT).save(this.output);
 		makeHoe(getter, UGItems.UTHERIUM_HOE, UGItems.UTHERIUM_CRYSTAL).save(this.output);
 
+		makeSpear(getter, UGItems.CLOGGRUM_SPEAR, UGItems.CLOGGRUM_INGOT).save(this.output);
+		makeSpear(getter, UGItems.FROSTSTEEL_SPEAR, UGItems.FROSTSTEEL_INGOT).save(this.output);
+		makeSpear(getter, UGItems.UTHERIUM_SPEAR, UGItems.UTHERIUM_CRYSTAL).save(this.output);
+		makeSpear(getter, UGItems.FORGOTTEN_SPEAR, UGItems.FORGOTTEN_INGOT).save(this.output);
+
 		makeHelmet(getter, UGItems.CLOGGRUM_HELMET, UGItems.CLOGGRUM_INGOT).save(this.output);
 		makeChestplate(getter, UGItems.CLOGGRUM_CHESTPLATE, UGItems.CLOGGRUM_INGOT).save(this.output);
 		makeLeggings(getter, UGItems.CLOGGRUM_LEGGINGS, UGItems.CLOGGRUM_INGOT).save(this.output);

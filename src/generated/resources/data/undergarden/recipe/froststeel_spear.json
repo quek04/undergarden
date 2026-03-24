@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "/": "#c:rods/wooden",
+    "X": "undergarden:froststeel_ingot"
+  },
+  "pattern": [
+    "  X",
+    " / ",
+    "/  "
+  ],
+  "result": {
+    "id": "undergarden:froststeel_spear"
+  }
+}

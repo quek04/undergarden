@@ -16,7 +16,6 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
-import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -106,11 +105,11 @@ public class UGItems {
 		)
 		.component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK));
 
-	public static final DeferredItem<Item> FROSTSTEEL_SWORD = register("froststeel_sword", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().sword(UGItemTiers.FROSTSTEEL, 3, -2.4F));
-	public static final DeferredItem<Item> FROSTSTEEL_PICKAXE = register("froststeel_pickaxe", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().pickaxe(UGItemTiers.FROSTSTEEL, 1, -2.8F));
-	public static final DeferredItem<Item> FROSTSTEEL_AXE = register("froststeel_axe", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().axe(UGItemTiers.FROSTSTEEL, 6.0F, -3.0F));
-	public static final DeferredItem<Item> FROSTSTEEL_SHOVEL = register("froststeel_shovel", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().shovel(UGItemTiers.FROSTSTEEL, 1.5F, -3.0F));
-	public static final DeferredItem<Item> FROSTSTEEL_HOE = register("froststeel_hoe", (properties) -> new HoverTextItem(HoverTextItem.FROSTEEL_WEAPON, properties), () -> new Item.Properties().hoe(UGItemTiers.FROSTSTEEL, -2, -0.5F));
+	public static final DeferredItem<Item> FROSTSTEEL_SWORD = register("froststeel_sword", (properties) -> new HoverTextItem(HoverTextItem.FROSTSTEEL_WEAPON, properties), () -> new Item.Properties().sword(UGItemTiers.FROSTSTEEL, 3, -2.4F));
+	public static final DeferredItem<Item> FROSTSTEEL_PICKAXE = register("froststeel_pickaxe", (properties) -> new HoverTextItem(HoverTextItem.FROSTSTEEL_WEAPON, properties), () -> new Item.Properties().pickaxe(UGItemTiers.FROSTSTEEL, 1, -2.8F));
+	public static final DeferredItem<Item> FROSTSTEEL_AXE = register("froststeel_axe", (properties) -> new HoverTextItem(HoverTextItem.FROSTSTEEL_WEAPON, properties), () -> new Item.Properties().axe(UGItemTiers.FROSTSTEEL, 6.0F, -3.0F));
+	public static final DeferredItem<Item> FROSTSTEEL_SHOVEL = register("froststeel_shovel", (properties) -> new HoverTextItem(HoverTextItem.FROSTSTEEL_WEAPON, properties), () -> new Item.Properties().shovel(UGItemTiers.FROSTSTEEL, 1.5F, -3.0F));
+	public static final DeferredItem<Item> FROSTSTEEL_HOE = register("froststeel_hoe", (properties) -> new HoverTextItem(HoverTextItem.FROSTSTEEL_WEAPON, properties), () -> new Item.Properties().hoe(UGItemTiers.FROSTSTEEL, -2, -0.5F));
 
 	public static final DeferredItem<Item> UTHERIUM_SWORD = register("utherium_sword", (properties) -> new HoverTextItem(HoverTextItem.UTHERIUM_WEAPON, properties), () -> new Item.Properties().rarity(UTHERIUM_RARITY).sword(UGItemTiers.UTHERIUM, 3, -2.4F));
 	public static final DeferredItem<Item> UTHERIUM_PICKAXE = register("utherium_pickaxe", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY).pickaxe(UGItemTiers.UTHERIUM, 1, -2.8F));
@@ -124,6 +123,12 @@ public class UGItems {
 	public static final DeferredItem<Item> FORGOTTEN_AXE = register("forgotten_axe", (properties) -> new HoverTextItem(List.of(HoverTextItem.FORGOTTEN_WEAPON, HoverTextItem.FORGOTTEN_TOOL), properties), () -> new Item.Properties().axe(UGItemTiers.FORGOTTEN, 5.0F, -3.0F).rarity(FORGOTTEN_RARITY));
 	public static final DeferredItem<Item> FORGOTTEN_SHOVEL = register("forgotten_shovel", (properties) -> new HoverTextItem(HoverTextItem.FORGOTTEN_TOOL, properties), () -> new Item.Properties().shovel(UGItemTiers.FORGOTTEN, 1.5F, -3.0F).rarity(FORGOTTEN_RARITY));
 	public static final DeferredItem<Item> FORGOTTEN_HOE = register("forgotten_hoe", (properties) -> new HoverTextItem(HoverTextItem.FORGOTTEN_TOOL, properties), () -> new Item.Properties().hoe(UGItemTiers.FORGOTTEN, -3, 0.0F).rarity(FORGOTTEN_RARITY));
+
+	//TODO maybe tweak spear values?
+	public static final DeferredItem<Item> CLOGGRUM_SPEAR = register("cloggrum_spear", Item::new, () -> new Item.Properties().spear(UGItemTiers.CLOGGRUM, 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F));
+	public static final DeferredItem<Item> FROSTSTEEL_SPEAR = register("froststeel_spear", (properties -> new HoverTextItem(HoverTextItem.FROSTSTEEL_WEAPON, properties)), () -> new Item.Properties().spear(UGItemTiers.FROSTSTEEL, 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F));
+	public static final DeferredItem<Item> UTHERIUM_SPEAR = register("utherium_spear", (properties -> new HoverTextItem(HoverTextItem.UTHERIUM_WEAPON, properties)), () -> new Item.Properties().spear(UGItemTiers.UTHERIUM, 1.05F, 1.075F, 0.5F, 3.0F, 10.0F, 6.5F, 5.1F, 10.0F, 4.6F).rarity(UTHERIUM_RARITY));
+	public static final DeferredItem<Item> FORGOTTEN_SPEAR = register("forgotten_spear", (properties -> new HoverTextItem(HoverTextItem.FORGOTTEN_WEAPON, properties)), () -> new Item.Properties().spear(UGItemTiers.FORGOTTEN, 1.15F, 1.2F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F).rarity(FORGOTTEN_RARITY));
 
 	//misc tools
 	public static final DeferredItem<Item> CATALYST = register("catalyst", CatalystItem::new, () -> new Item.Properties().stacksTo(1).rarity(Rarity.RARE));

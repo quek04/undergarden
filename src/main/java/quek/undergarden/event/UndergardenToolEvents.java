@@ -35,7 +35,7 @@ public class UndergardenToolEvents {
 		float damage = event.getAmount();
 
 		if (source instanceof Player player) {
-			if (player.getMainHandItem().is(UGItems.FORGOTTEN_SWORD) || player.getMainHandItem().is(UGItems.FORGOTTEN_AXE) || player.getMainHandItem().is(UGItems.FORGOTTEN_BATTLEAXE)) {
+			if (player.getMainHandItem().is(UGItems.FORGOTTEN_SWORD) || player.getMainHandItem().is(UGItems.FORGOTTEN_AXE) || player.getMainHandItem().is(UGItems.FORGOTTEN_BATTLEAXE) || player.getMainHandItem().is(UGItems.FORGOTTEN_SPEAR)) {
 				if (BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()).getNamespace().equals(Undergarden.MODID) && !event.getEntity().is(Tags.EntityTypes.BOSSES)) {
 					event.setAmount(damage * 1.5F);
 				}
@@ -59,7 +59,7 @@ public class UndergardenToolEvents {
 		float damage = event.getAmount();
 
 		if (source instanceof Player player) {
-			if (player.getMainHandItem().is(UGItems.UTHERIUM_SWORD.get()) || player.getMainHandItem().is(UGItems.UTHERIUM_AXE.get())) {
+			if (player.getMainHandItem().is(UGItems.UTHERIUM_SWORD.get()) || player.getMainHandItem().is(UGItems.UTHERIUM_AXE.get()) || player.getMainHandItem().is(UGItems.UTHERIUM_SPEAR)) {
 				if (event.getEntity().is(UGTags.Entities.ROTSPAWN)) {
 					event.setAmount(damage * 1.5F);
 					if (!event.getEntity().level().isClientSide()) {
@@ -73,7 +73,7 @@ public class UndergardenToolEvents {
 	private static void froststeelAttackEvent(LivingIncomingDamageEvent event) {
 		Entity source = event.getSource().getEntity();
 		if (source instanceof Player player) {
-			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_SWORD.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_AXE.get())) {
+			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_SWORD.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_AXE.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_SPEAR)) {
 				event.getEntity().addEffect(new MobEffectInstance(UGEffects.CHILLY, 600, 2, false, false));
 			}
 			if (player.getMainHandItem().is(UGItems.FROSTSTEEL_PICKAXE.get()) || player.getMainHandItem().is(UGItems.FROSTSTEEL_SHOVEL.get())) {

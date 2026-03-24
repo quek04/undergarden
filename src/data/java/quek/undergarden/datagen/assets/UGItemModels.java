@@ -16,7 +16,10 @@ import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import quek.undergarden.registry.*;
+import quek.undergarden.registry.UGEquipmentAssets;
+import quek.undergarden.registry.UGItems;
+import quek.undergarden.registry.UGMaterialAssetGroups;
+import quek.undergarden.registry.UGTrimMaterials;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -149,6 +152,10 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateFlatItem(UGItems.ROGDORIUM_NUGGET.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.DENIZEN_MASK.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.UTHERIC_CLUSTER.get(), ModelTemplates.FLAT_ITEM);
+		this.generateSpear(UGItems.CLOGGRUM_SPEAR.get());
+		this.generateSpear(UGItems.FROSTSTEEL_SPEAR.get());
+		this.generateSpear(UGItems.UTHERIUM_SPEAR.get());
+		this.generateSpear(UGItems.FORGOTTEN_SPEAR.get());
 
 		//TODO
 //		this.getBuilder(UGItems.CLOGGRUM_BUCKET.getId().toString())

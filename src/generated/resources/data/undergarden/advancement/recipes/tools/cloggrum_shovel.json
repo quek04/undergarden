@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cloggrum_ingot": {
+    "has_stick": {
       "conditions": {
         "items": [
           {
-            "items": "undergarden:cloggrum_ingot"
+            "items": "minecraft:stick"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cloggrum_ingot"
+      "has_stick"
     ]
   ],
   "rewards": {
