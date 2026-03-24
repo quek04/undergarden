@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "N": {
-      "item": "undergarden:rogdorium_nugget"
-    }
+    "N": "undergarden:rogdorium_nugget"
   },
   "pattern": [
     "NNN",
@@ -12,7 +10,6 @@
     "NNN"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:rogdorium"
   }
 }

@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "undergarden:depthrock_tiles"
-  },
+  "ingredient": "undergarden:depthrock_tiles",
   "result": {
     "count": 2,
     "id": "undergarden:depthrock_tile_slab"

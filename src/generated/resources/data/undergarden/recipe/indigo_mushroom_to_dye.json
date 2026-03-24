@@ -2,12 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:indigo_mushroom"
-    }
+    "undergarden:indigo_mushroom"
   ],
   "result": {
-    "count": 1,
     "id": "minecraft:blue_dye"
   }
 }

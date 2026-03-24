@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "undergarden:block/stripped_wigglewood_wood_horizontal",
+      "model": "undergarden:block/stripped_wigglewood_wood",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "undergarden:block/stripped_wigglewood_wood"
     },
     "axis=z": {
-      "model": "undergarden:block/stripped_wigglewood_wood_horizontal",
+      "model": "undergarden:block/stripped_wigglewood_wood",
       "x": 90
     }
   }

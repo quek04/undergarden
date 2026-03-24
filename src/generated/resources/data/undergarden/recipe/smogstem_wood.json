@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "undergarden:smogstem_log"
-    }
+    "M": "undergarden:smogstem_log"
   },
   "pattern": [
     "MM",

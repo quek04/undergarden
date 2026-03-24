@@ -2,24 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:bowl"
-    },
-    {
-      "item": "undergarden:underbeans"
-    },
-    {
-      "item": "undergarden:underbeans"
-    },
-    {
-      "item": "undergarden:blue_mogmoss"
-    },
-    {
-      "item": "undergarden:blue_mogmoss"
-    }
+    "minecraft:bowl",
+    "undergarden:underbeans",
+    "undergarden:underbeans",
+    "undergarden:blue_mogmoss",
+    "undergarden:blue_mogmoss"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:slop_bowl"
   }
 }

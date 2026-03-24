@@ -1,14 +1,11 @@
 {
   "type": "minecraft:smelting",
-  "category": "misc",
+  "category": "blocks",
   "cookingtime": 200,
   "experience": 1.0,
   "group": "undergarden:utherium",
-  "ingredient": {
-    "item": "undergarden:shiverstone_utherium_ore"
-  },
+  "ingredient": "undergarden:shiverstone_utherium_ore",
   "result": {
-    "count": 1,
     "id": "undergarden:utheric_cluster"
   }
 }

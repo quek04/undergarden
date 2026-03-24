@@ -21,7 +21,6 @@
       "translate": "advancement.undergarden.summon_minion.desc"
     },
     "icon": {
-      "count": 1,
       "id": "undergarden:carved_gloomgourd"
     },
     "title": {

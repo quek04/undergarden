@@ -2,15 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "B": {
-      "item": "undergarden:tremblecrust"
-    }
+    "B": "undergarden:tremblecrust"
   },
   "pattern": [
     "BB"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:tremblecrust_pressure_plate"
   }
 }

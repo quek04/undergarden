@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "D": {
-      "item": "undergarden:ditchbulb_paste"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "D": "undergarden:ditchbulb_paste",
+    "S": "#c:rods/wooden"
   },
   "pattern": [
     "D",

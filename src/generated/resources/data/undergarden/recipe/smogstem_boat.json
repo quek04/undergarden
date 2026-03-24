@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "P": {
-      "item": "undergarden:smogstem_planks"
-    }
+    "P": "undergarden:smogstem_planks"
   },
   "pattern": [
     "P P",
     "PPP"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:smogstem_boat"
   }
 }

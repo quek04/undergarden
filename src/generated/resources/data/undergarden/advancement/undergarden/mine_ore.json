@@ -147,7 +147,6 @@
       "translate": "advancement.undergarden.mine_ore.desc"
     },
     "icon": {
-      "count": 1,
       "id": "undergarden:raw_cloggrum"
     },
     "title": {

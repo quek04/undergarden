@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/door_top_left",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "bottom": "undergarden:block/smogstem_door_bottom",
-    "top": "undergarden:block/smogstem_door_top"
-  }
-}

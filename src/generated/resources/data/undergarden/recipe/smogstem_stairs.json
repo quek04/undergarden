@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "undergarden:smogstem_planks"
-    }
+    "M": "undergarden:smogstem_planks"
   },
   "pattern": [
     "M  ",

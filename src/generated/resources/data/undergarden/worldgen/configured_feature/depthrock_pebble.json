@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:randomized_int_state_provider",
+      "property": "pebbles",
+      "source": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "undergarden:depthrock_pebbles",
+          "Properties": {
+            "pebbles": "1"
+          }
+        }
+      },
+      "values": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 2,
+        "min_inclusive": 1
+      }
+    }
+  }
+}

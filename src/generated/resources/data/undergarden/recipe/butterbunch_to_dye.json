@@ -2,12 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:butterbunch"
-    }
+    "undergarden:butterbunch"
   ],
   "result": {
-    "count": 1,
     "id": "minecraft:yellow_dye"
   }
 }

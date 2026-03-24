@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:regalium_block"
-    }
+    "undergarden:regalium_block"
   ],
   "result": {
     "count": 9,

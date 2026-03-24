@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "undergarden:smogstem_logs"
-    }
+    "#undergarden:smogstem_logs"
   ],
   "result": {
     "count": 4,

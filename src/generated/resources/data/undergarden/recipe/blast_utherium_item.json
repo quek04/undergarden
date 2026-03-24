@@ -3,11 +3,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": {
-    "tag": "undergarden:utherium_items"
-  },
+  "ingredient": "#undergarden:utherium_items",
   "result": {
-    "count": 1,
     "id": "undergarden:utherium_crystal"
   }
 }

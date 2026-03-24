@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "undergarden:block/ancient_root_end",
-    "side": "undergarden:block/ancient_root_side"
+    "end": "undergarden:block/ancient_root_top",
+    "side": "undergarden:block/ancient_root"
   }
 }

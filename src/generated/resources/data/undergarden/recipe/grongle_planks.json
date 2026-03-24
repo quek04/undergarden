@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "undergarden:grongle_logs"
-    }
+    "#undergarden:grongle_logs"
   ],
   "result": {
     "count": 4,

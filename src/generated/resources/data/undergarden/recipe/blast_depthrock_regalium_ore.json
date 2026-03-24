@@ -1,14 +1,11 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
+  "category": "blocks",
   "cookingtime": 100,
   "experience": 1.0,
   "group": "undergarden:regalium_crystal",
-  "ingredient": {
-    "item": "undergarden:depthrock_regalium_ore"
-  },
+  "ingredient": "undergarden:depthrock_regalium_ore",
   "result": {
-    "count": 1,
     "id": "undergarden:regalium_crystal"
   }
 }

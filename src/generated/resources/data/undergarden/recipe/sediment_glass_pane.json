@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "G": {
-      "item": "undergarden:sediment_glass"
-    }
+    "G": "undergarden:sediment_glass"
   },
   "pattern": [
     "GGG",

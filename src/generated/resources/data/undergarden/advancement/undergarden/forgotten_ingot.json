@@ -17,7 +17,6 @@
       "translate": "advancement.undergarden.forgotten_ingot.desc"
     },
     "icon": {
-      "count": 1,
       "id": "undergarden:forgotten_ingot"
     },
     "title": {

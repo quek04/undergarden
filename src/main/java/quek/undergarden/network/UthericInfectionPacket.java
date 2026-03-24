@@ -22,7 +22,7 @@ public record UthericInfectionPacket(int entityID, float infectionLevel, float p
 
 	public void write(FriendlyByteBuf buffer) {
 		buffer.writeInt(this.entityID());
-		buffer.writeDouble(this.infectionLevel());
+		buffer.writeFloat(this.infectionLevel());
 		buffer.writeFloat(this.previousInfectionDamage());
 	}
 

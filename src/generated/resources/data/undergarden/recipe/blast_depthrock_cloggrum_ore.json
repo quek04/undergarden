@@ -1,14 +1,11 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
+  "category": "blocks",
   "cookingtime": 100,
   "experience": 0.7,
   "group": "undergarden:cloggrum_ingot",
-  "ingredient": {
-    "item": "undergarden:depthrock_cloggrum_ore"
-  },
+  "ingredient": "undergarden:depthrock_cloggrum_ore",
   "result": {
-    "count": 1,
     "id": "undergarden:cloggrum_ingot"
   }
 }

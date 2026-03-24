@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "count": 4,
+    "id": "undergarden:shard_torch"
+  },
+  "max_uses": 10.0,
+  "wants": {
+    "id": "undergarden:regalium_crystal"
+  },
+  "xp": 0.0
+}

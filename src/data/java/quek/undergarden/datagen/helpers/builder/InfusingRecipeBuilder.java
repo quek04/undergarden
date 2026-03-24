@@ -9,6 +9,7 @@ import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import org.jspecify.annotations.Nullable;
@@ -19,18 +20,16 @@ import quek.undergarden.recipe.InfusingRecipe;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-;
-
 public class InfusingRecipeBuilder implements RecipeBuilder {
 	private final InfusingBookCategory bookCategory;
-	private final ItemStack result;
+	private final ItemStackTemplate result;
 	private final Ingredient ingredient;
 	private final float experience;
 	private final int infusingTime;
 	private final InfusingRecipe.SlotType type;
 	private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 
-	public InfusingRecipeBuilder(InfusingBookCategory bookCategory, ItemStack result, Ingredient ingredient, float experience, int infusingTime, InfusingRecipe.SlotType type) {
+	public InfusingRecipeBuilder(InfusingBookCategory bookCategory, ItemStackTemplate result, Ingredient ingredient, float experience, int infusingTime, InfusingRecipe.SlotType type) {
 		this.bookCategory = bookCategory;
 		this.result = result;
 		this.ingredient = ingredient;
@@ -39,7 +38,7 @@ public class InfusingRecipeBuilder implements RecipeBuilder {
 		this.type = type;
 	}
 
-	public static InfusingRecipeBuilder infusing(Ingredient ingredient, InfusingBookCategory bookCategory, ItemStack result, float experience, int infusingTime, InfusingRecipe.SlotType type) {
+	public static InfusingRecipeBuilder infusing(Ingredient ingredient, InfusingBookCategory bookCategory, ItemStackTemplate result, float experience, int infusingTime, InfusingRecipe.SlotType type) {
 		return new InfusingRecipeBuilder(bookCategory, result, ingredient, experience, infusingTime, type);
 	}
 

@@ -23,7 +23,6 @@
       "translate": "advancement.undergarden.enter_denizen_camp.desc"
     },
     "icon": {
-      "count": 1,
       "id": "undergarden:spear"
     },
     "title": {

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "D": {
-      "tag": "c:gems/diamond"
-    },
-    "R": {
-      "item": "undergarden:depthrock"
-    },
-    "T": {
-      "item": "undergarden:forgotten_upgrade_smithing_template"
-    }
+    "D": "#c:gems/diamond",
+    "R": "undergarden:depthrock",
+    "T": "undergarden:forgotten_upgrade_smithing_template"
   },
   "pattern": [
     "DTD",

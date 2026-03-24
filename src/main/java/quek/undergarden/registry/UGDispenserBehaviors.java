@@ -35,16 +35,6 @@ public class UGDispenserBehaviors {
 		DispenserBlock.registerBehavior(UGItems.VIRULENT_MIX_BUCKET.get(), bucketBehavior);
 		DispenserBlock.registerBehavior(UGItems.GWIBLING_BUCKET.get(), bucketBehavior);
 
-		DispenserBlock.registerProjectileBehavior(UGItems.DEPTHROCK_PEBBLE);
-
-		DispenserBlock.registerProjectileBehavior(UGItems.GOO_BALL);
-
-		DispenserBlock.registerProjectileBehavior(UGItems.ROTTEN_BLISTERBERRY);
-
-		DispenserBlock.registerProjectileBehavior(UGItems.BLISTERBOMB);
-
-		DispenserBlock.registerProjectileBehavior(UGBlocks.GRONGLET);
-
 		DispenserBlock.registerBehavior(UGBlocks.BOOMGOURD.get(), new DefaultDispenseItemBehavior() {
 
 			protected ItemStack execute(BlockSource source, ItemStack stack) {

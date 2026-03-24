@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "undergarden:shiverstone_bricks"
-    }
+    "M": "undergarden:shiverstone_bricks"
   },
   "pattern": [
     "M  ",

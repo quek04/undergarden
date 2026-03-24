@@ -2,15 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:stick"
-    },
-    {
-      "item": "undergarden:underbeans"
-    }
+    "minecraft:stick",
+    "undergarden:underbeans"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:underbean_on_a_stick"
   }
 }

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "/": {
-      "tag": "c:rods/wooden"
-    },
-    "M": {
-      "item": "undergarden:ancient_root_planks"
-    }
+    "/": "#c:rods/wooden",
+    "M": "undergarden:ancient_root_planks"
   },
   "pattern": [
     "M/M",

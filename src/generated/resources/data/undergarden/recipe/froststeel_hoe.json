@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "undergarden:froststeel_ingot"
-    },
-    "/": {
-      "tag": "c:rods/wooden"
-    }
+    "#": "undergarden:froststeel_ingot",
+    "/": "#c:rods/wooden"
   },
   "pattern": [
     "##",
@@ -15,7 +11,6 @@
     " /"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:froststeel_hoe"
   }
 }

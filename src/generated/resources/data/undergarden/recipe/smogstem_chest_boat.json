@@ -3,15 +3,10 @@
   "category": "misc",
   "group": "chest_boat",
   "ingredients": [
-    {
-      "item": "undergarden:smogstem_boat"
-    },
-    {
-      "tag": "c:chests/wooden"
-    }
+    "undergarden:smogstem_boat",
+    "#c:chests/wooden"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:smogstem_chest_boat"
   }
 }

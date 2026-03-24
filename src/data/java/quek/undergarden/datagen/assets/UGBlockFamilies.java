@@ -92,7 +92,6 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.DEPTHROCK_BRICK_SLAB.get())
 		.chiseled(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get())
 		.cracked(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get())
-		.tiles(UGBlocks.DEPTHROCK_TILES.get())
 		.getFamily();
 
 	public static final BlockFamily DEPTHROCK_TILES = familyBuilder(UGBlocks.DEPTHROCK_TILES.get())

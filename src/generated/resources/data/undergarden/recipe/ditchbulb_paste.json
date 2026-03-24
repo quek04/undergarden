@@ -2,12 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:ditchbulb"
-    }
+    "undergarden:ditchbulb"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:ditchbulb_paste"
   }
 }

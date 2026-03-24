@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "id": "undergarden:music_disc_limax_maximus"
+  },
+  "max_uses": 1.0,
+  "wants": {
+    "count": 32.0,
+    "id": "undergarden:regalium_crystal"
+  },
+  "xp": 0.0
+}

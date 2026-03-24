@@ -3,11 +3,8 @@
   "category": "food",
   "cookingtime": 100,
   "experience": 0.35,
-  "ingredient": {
-    "item": "undergarden:underbeans"
-  },
+  "ingredient": "undergarden:underbeans",
   "result": {
-    "count": 1,
     "id": "undergarden:roasted_underbeans"
   }
 }

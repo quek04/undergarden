@@ -2,12 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:miserabell"
-    }
+    "undergarden:miserabell"
   ],
   "result": {
-    "count": 1,
     "id": "minecraft:light_blue_dye"
   }
 }

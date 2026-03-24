@@ -10,6 +10,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -457,7 +458,7 @@ public abstract class UGRecipeProvider extends RecipeProvider {
 	}
 
 	public InfusingRecipeBuilder infusing(ItemLike result, ItemLike ingredient, InfusingBookCategory bookCategory, InfusingRecipe.SlotType type, float experience, int infusingTime) {
-		return InfusingRecipeBuilder.infusing(Ingredient.of(ingredient), bookCategory, new ItemStack(result), experience, infusingTime, type).unlockedBy("has_item", has(ingredient));
+		return InfusingRecipeBuilder.infusing(Ingredient.of(ingredient), bookCategory, new ItemStackTemplate(result.asItem()), experience, infusingTime, type).unlockedBy("has_item", has(ingredient));
 	}
 
 	public InfusingRecipeBuilder infusingPurifying(ItemLike result, ItemLike ingredient, float experience, int infusingTime) {

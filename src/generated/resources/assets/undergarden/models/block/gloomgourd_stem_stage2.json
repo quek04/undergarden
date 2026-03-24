@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:block/stem_growth2",
-  "render_type": "minecraft:cutout",
   "textures": {
-    "stem": "minecraft:block/melon_stem"
+    "stem": "undergarden:block/gloomgourd_stem"
   }
 }

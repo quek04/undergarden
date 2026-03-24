@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "undergarden:cloggrum"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "undergarden:cloggrum"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "undergarden:cloggrum"
+      }
+    ]
+  }
+}

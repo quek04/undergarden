@@ -2,12 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "undergarden:wigglewood_planks"
-    }
+    "undergarden:wigglewood_planks"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:wigglewood_button"
   }
 }

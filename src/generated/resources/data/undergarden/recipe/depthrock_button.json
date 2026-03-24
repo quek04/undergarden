@@ -2,12 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "undergarden:depthrock"
-    }
+    "undergarden:depthrock"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:depthrock_button"
   }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "undergarden:block/grongle_wood_horizontal",
+      "model": "undergarden:block/grongle_wood",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "undergarden:block/grongle_wood"
     },
     "axis=z": {
-      "model": "undergarden:block/grongle_wood_horizontal",
+      "model": "undergarden:block/grongle_wood",
       "x": 90
     }
   }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:forgotten_ingot"
-    }
+    "undergarden:forgotten_ingot"
   ],
   "result": {
     "count": 9,

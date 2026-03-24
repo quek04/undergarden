@@ -1,14 +1,11 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
+  "category": "blocks",
   "cookingtime": 100,
   "experience": 0.1,
   "group": "coal",
-  "ingredient": {
-    "item": "undergarden:shiverstone_coal_ore"
-  },
+  "ingredient": "undergarden:shiverstone_coal_ore",
   "result": {
-    "count": 1,
     "id": "minecraft:coal"
   }
 }

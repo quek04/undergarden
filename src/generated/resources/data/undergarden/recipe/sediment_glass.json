@@ -3,11 +3,8 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "undergarden:sediment"
-  },
+  "ingredient": "undergarden:sediment",
   "result": {
-    "count": 1,
     "id": "undergarden:sediment_glass"
   }
 }

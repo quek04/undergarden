@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "P": {
-      "item": "undergarden:ancient_root_planks"
-    }
+    "P": "undergarden:ancient_root_planks"
   },
   "pattern": [
     "P P",
     "PPP"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:ancient_root_boat"
   }
 }

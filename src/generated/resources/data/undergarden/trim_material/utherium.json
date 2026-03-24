@@ -3,7 +3,5 @@
   "description": {
     "color": "#DC584A",
     "translate": "trim_material.undergarden.utherium"
-  },
-  "ingredient": "undergarden:utherium_crystal",
-  "item_model_index": 0.4
+  }
 }

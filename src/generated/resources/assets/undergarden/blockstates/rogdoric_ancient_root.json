@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "undergarden:block/rogdoric_ancient_root_horizontal",
+      "model": "undergarden:block/rogdoric_ancient_root",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "undergarden:block/rogdoric_ancient_root"
     },
     "axis=z": {
-      "model": "undergarden:block/rogdoric_ancient_root_horizontal",
+      "model": "undergarden:block/rogdoric_ancient_root",
       "x": 90
     }
   }

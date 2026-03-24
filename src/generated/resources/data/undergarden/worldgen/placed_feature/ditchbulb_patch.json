@@ -1,5 +1,5 @@
 {
-  "feature": "undergarden:ditchbulb_patch",
+  "feature": "undergarden:ditchbulb",
   "placement": [
     {
       "type": "minecraft:count",

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "G": {
-      "item": "undergarden:goo_ball"
-    },
-    "T": {
-      "item": "undergarden:twistytwig"
-    }
+    "G": "undergarden:goo_ball",
+    "T": "undergarden:twistytwig"
   },
   "pattern": [
     "TT ",

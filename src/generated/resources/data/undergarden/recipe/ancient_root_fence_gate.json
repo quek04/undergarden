@@ -2,19 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "/": {
-      "tag": "c:rods/wooden"
-    },
-    "M": {
-      "item": "undergarden:ancient_root_planks"
-    }
+    "/": "#c:rods/wooden",
+    "M": "undergarden:ancient_root_planks"
   },
   "pattern": [
     "/M/",
     "/M/"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:ancient_root_fence_gate"
   }
 }

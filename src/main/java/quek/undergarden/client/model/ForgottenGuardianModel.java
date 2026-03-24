@@ -1,13 +1,13 @@
 package quek.undergarden.client.model;
 
-import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 import quek.undergarden.client.state.entity.ForgottenGuardianRenderState;
 
-public class ForgottenGuardianModel extends HumanoidModel<ForgottenGuardianRenderState> {
+public class ForgottenGuardianModel extends EntityModel<ForgottenGuardianRenderState> {
 
 	private final ModelPart head;
 	private final ModelPart leftArm;

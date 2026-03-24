@@ -3,11 +3,8 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "tag": "undergarden:froststeel_items"
-  },
+  "ingredient": "#undergarden:froststeel_items",
   "result": {
-    "count": 1,
     "id": "undergarden:froststeel_ingot"
   }
 }

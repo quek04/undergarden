@@ -1,0 +1,12 @@
+{
+  "gives": {
+    "count": 8,
+    "id": "undergarden:blisterbomb"
+  },
+  "max_uses": 24.0,
+  "wants": {
+    "count": 16.0,
+    "id": "undergarden:regalium_crystal"
+  },
+  "xp": 0.0
+}

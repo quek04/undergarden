@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "item": "undergarden:ancient_root"
-    }
+    "undergarden:ancient_root"
   ],
   "result": {
     "count": 4,

@@ -3,7 +3,5 @@
   "description": {
     "color": "#968168",
     "translate": "trim_material.undergarden.cloggrum"
-  },
-  "ingredient": "undergarden:cloggrum_ingot",
-  "item_model_index": 0.2
+  }
 }

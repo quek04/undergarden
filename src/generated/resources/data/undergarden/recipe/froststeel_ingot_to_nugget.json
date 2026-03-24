@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:froststeel_ingot"
-    }
+    "undergarden:froststeel_ingot"
   ],
   "result": {
     "count": 9,

@@ -1,14 +1,11 @@
 {
   "type": "minecraft:smelting",
-  "category": "misc",
+  "category": "blocks",
   "cookingtime": 200,
   "experience": 1.0,
   "group": "diamond",
-  "ingredient": {
-    "item": "undergarden:shiverstone_diamond_ore"
-  },
+  "ingredient": "undergarden:shiverstone_diamond_ore",
   "result": {
-    "count": 1,
     "id": "minecraft:diamond"
   }
 }

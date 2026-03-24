@@ -2,19 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "/": {
-      "tag": "c:rods/wooden"
-    },
-    "M": {
-      "item": "undergarden:smogstem_planks"
-    }
+    "/": "#c:rods/wooden",
+    "M": "undergarden:smogstem_planks"
   },
   "pattern": [
     "/M/",
     "/M/"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:smogstem_fence_gate"
   }
 }

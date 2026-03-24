@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:utherium_block"
-    }
+    "undergarden:utherium_block"
   ],
   "result": {
     "count": 9,

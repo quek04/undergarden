@@ -17,7 +17,7 @@
           -1,
           0
         ],
-        "tag": "minecraft:mushroom_grow_block"
+        "tag": "undergarden:puffshroom_can_place_on"
       }
     }
   ]

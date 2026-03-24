@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "undergarden:cloggrum_block"
-    }
+    "undergarden:cloggrum_block"
   ],
   "result": {
     "count": 9,

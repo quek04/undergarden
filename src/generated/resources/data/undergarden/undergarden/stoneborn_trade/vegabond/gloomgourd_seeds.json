@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "count": 6,
+    "id": "undergarden:gloomgourd_seeds"
+  },
+  "max_uses": 6.0,
+  "wants": {
+    "id": "undergarden:regalium_crystal"
+  },
+  "xp": 0.0
+}

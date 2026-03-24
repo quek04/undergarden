@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "undergarden:cloggrum_tiles"
-    }
+    "M": "undergarden:cloggrum_tiles"
   },
   "pattern": [
     "MMM"

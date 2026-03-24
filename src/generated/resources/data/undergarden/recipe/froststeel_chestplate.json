@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "M": {
-      "item": "undergarden:froststeel_ingot"
-    }
+    "M": "undergarden:froststeel_ingot"
   },
   "pattern": [
     "M M",
@@ -12,7 +10,6 @@
     "MMM"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:froststeel_chestplate"
   }
 }

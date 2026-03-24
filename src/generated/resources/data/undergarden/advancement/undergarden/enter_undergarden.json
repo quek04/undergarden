@@ -13,7 +13,6 @@
       "translate": "advancement.undergarden.enter_undergarden.desc"
     },
     "icon": {
-      "count": 1,
       "id": "undergarden:deepturf_block"
     },
     "title": {

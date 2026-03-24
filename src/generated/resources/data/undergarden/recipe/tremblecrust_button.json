@@ -2,12 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "undergarden:tremblecrust"
-    }
+    "undergarden:tremblecrust"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:tremblecrust_button"
   }
 }

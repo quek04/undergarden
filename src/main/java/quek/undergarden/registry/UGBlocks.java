@@ -34,7 +34,7 @@ public class UGBlocks {
 
 	public static final DeferredBlock<Block> UNDERGARDEN_PORTAL = register("undergarden_portal", UndergardenPortalBlock::new, () -> BlockBehaviour.Properties.of().pushReaction(PushReaction.BLOCK).strength(-1.0F).noCollision().lightLevel((state) -> 10).sound(SoundType.GLASS).noLootTable());
 
-	public static final DeferredBlock<Block> SHARD_TORCH = registerWithItem("shard_torch", ShardTorchBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH).lightLevel((state) -> 6));
+	public static final DeferredBlock<Block> SHARD_TORCH = register("shard_torch", ShardTorchBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH).lightLevel((state) -> 6));
 	public static final DeferredBlock<Block> SHARD_WALL_TORCH = register("shard_wall_torch", ShardWallTorchBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WALL_TORCH).lightLevel((state) -> 6));
 
 	//depthrock
@@ -166,7 +166,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> TALL_SHIMMERWEED = registerWithItem("tall_shimmerweed", TallShimmerweedBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS).lightLevel((state) -> 14));
 	public static final DeferredBlock<Block> DITCHBULB_PLANT = register("ditchbulb_plant", DitchbulbBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).randomTicks().lightLevel((state) -> state.getValue(DitchbulbBlock.AGE) == 1 ? 6 : 0));
 	public static final DeferredBlock<Block> GLOOMGOURD = registerWithItem("gloomgourd", GloomgourdBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).pushReaction(PushReaction.DESTROY).strength(1.0F).sound(SoundType.WOOD));
-	public static final DeferredBlock<Block> CARVED_GLOOMGOURD = registerWithItem("carved_gloomgourd", CarvedGloomgourdBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).pushReaction(PushReaction.DESTROY).strength(1.0F).sound(SoundType.WOOD), () -> Waypoint.addHideAttribute(new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Undergarden.prefix("gloomgourd_overlay")).build())));
+	public static final DeferredBlock<Block> CARVED_GLOOMGOURD = registerWithItem("carved_gloomgourd", CarvedGloomgourdBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).pushReaction(PushReaction.DESTROY).strength(1.0F).sound(SoundType.WOOD), () -> Waypoint.addHideAttribute(new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Undergarden.prefix("misc/gloomgourd_overlay")).build())));
 	public static final DeferredBlock<Block> GLOOM_O_LANTERN = registerWithItem("gloom_o_lantern", CarvedGloomgourdBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).pushReaction(PushReaction.DESTROY).strength(1.0F).sound(SoundType.WOOD).lightLevel((state) -> 15));
 	public static final DeferredBlock<Block> SHARD_O_LANTERN = registerWithItem("shard_o_lantern", CarvedGloomgourdShardBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(GLOOM_O_LANTERN.get()).lightLevel((state) -> 6), () -> new Item.Properties().rarity(UGItems.UTHERIUM_RARITY));
 	public static final DeferredBlock<Block> BOOMGOURD = registerWithItem("boomgourd", BoomgourdBlock::new, () -> BlockBehaviour.Properties.of().ignitedByLava().mapColor(MapColor.COLOR_PURPLE).strength(1.0F).sound(SoundType.WOOD));

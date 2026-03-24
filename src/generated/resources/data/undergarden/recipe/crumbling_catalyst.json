@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "C": {
-      "tag": "c:ingots/cloggrum"
-    },
-    "D": {
-      "item": "undergarden:depthrock"
-    },
-    "F": {
-      "tag": "c:nuggets/forgotten_metal"
-    }
+    "C": "#c:ingots/cloggrum",
+    "D": "undergarden:depthrock",
+    "F": "#c:nuggets/forgotten_metal"
   },
   "pattern": [
     "CDC",
@@ -18,7 +12,6 @@
     "CDC"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:crumbling_catalyst"
   }
 }

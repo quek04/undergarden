@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "undergarden:wigglewood_planks"
-    }
+    "M": "undergarden:wigglewood_planks"
   },
   "pattern": [
     "M  ",

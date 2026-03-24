@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "undergarden:ancient_root"
-    },
-    "|": {
-      "item": "minecraft:chain"
-    }
+    "#": "undergarden:ancient_root",
+    "|": "minecraft:iron_chain"
   },
   "pattern": [
     "| |",

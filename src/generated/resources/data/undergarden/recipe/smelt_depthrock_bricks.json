@@ -3,11 +3,8 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "undergarden:depthrock_bricks"
-  },
+  "ingredient": "undergarden:depthrock_bricks",
   "result": {
-    "count": 1,
     "id": "undergarden:cracked_depthrock_bricks"
   }
 }

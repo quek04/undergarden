@@ -2,12 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "undergarden:shiverstone"
-    }
+    "undergarden:shiverstone"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:shiverstone_button"
   }
 }

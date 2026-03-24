@@ -2,21 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:bowl"
-    },
-    {
-      "item": "undergarden:ink_mushroom"
-    },
-    {
-      "item": "undergarden:ink_mushroom"
-    },
-    {
-      "item": "undergarden:ink_mushroom"
-    }
+    "minecraft:bowl",
+    "undergarden:ink_mushroom",
+    "undergarden:ink_mushroom",
+    "undergarden:ink_mushroom"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:inky_stew"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "count": 12,
+    "id": "undergarden:regalium_crystal"
+  },
+  "max_uses": 5.0,
+  "wants": {
+    "id": "minecraft:diamond"
+  },
+  "xp": 0.0
+}

@@ -36,6 +36,7 @@ import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -51,6 +52,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
+import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import net.neoforged.neoforge.transfer.fluid.ItemAccessFluidHandler;
@@ -96,6 +98,7 @@ public class UndergardenCommonEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::registerPotionRecipes);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::angerDenizensWhenCampfireIsBroken);
 		NeoForge.EVENT_BUS.addListener(UndergardenCommonEvents::ignoreEffects);
+		NeoForge.EVENT_BUS.addListener(OnDatapackSyncEvent.class, event -> event.sendRecipes(UGRecipeTypes.INFUSING.get()));
 
 //		if (ModList.get().isLoaded("create")) {
 //			UGCreateCompat.init(bus);
@@ -106,6 +109,7 @@ public class UndergardenCommonEvents {
 				Registry.register(BuiltInRegistries.CHUNK_GENERATOR, Undergarden.prefix("noise"), UGNoiseBasedChunkGenerator.CODEC);
 			}
 		});
+		bus.addListener(NewRegistryEvent.class, event -> event.register(UGRegistries.HIT_EFFECT_TYPE));
 		bus.addListener(DataPackRegistryEvent.NewRegistry.class, event -> {
 			event.dataPackRegistry(UGRegistries.Keys.STONEBORN_TRADE, StonebornTrade.CODEC, StonebornTrade.CODEC);
 			event.dataPackRegistry(UGRegistries.Keys.STONEBORN_TRADE_SET, StonebornTradeSet.CODEC, StonebornTradeSet.CODEC);

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "M": {
-      "item": "undergarden:mogmoss"
-    }
+    "M": "undergarden:mogmoss"
   },
   "pattern": [
     "MM"

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "undergarden:cloggrum_ingot"
-    }
+    "#": "undergarden:cloggrum_ingot"
   },
   "pattern": [
     "###",
@@ -12,7 +10,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:cloggrum_block"
   }
 }

@@ -1,38 +1,34 @@
 {
-  "carvers": {
-    "air": "undergarden:undergarden_cave"
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "additions": {
+        "sound": "undergarden:ambient.abyss_addition",
+        "tick_chance": 0.00555
+      },
+      "loop": "undergarden:ambient.abyss",
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "undergarden:ambient.mood",
+        "tick_delay": 6000
+      }
+    },
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "undergarden:rogdorium_wisp"
+        },
+        "probability": 0.01
+      }
+    ],
+    "minecraft:visual/fog_color": "#445b87"
   },
+  "carvers": "undergarden:undergarden_cave",
   "downfall": 0.0,
   "effects": {
-    "additions_sound": {
-      "sound": "undergarden:ambient.abyss_addition",
-      "tick_chance": 0.00555
-    },
-    "ambient_sound": "undergarden:ambient.abyss",
-    "fog_color": 4479879,
-    "foliage_color": 1784489,
-    "grass_color": 1784489,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "undergarden:ambient.mood",
-      "tick_delay": 6000
-    },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": true,
-      "sound": "undergarden:music.undergarden"
-    },
-    "particle": {
-      "options": {
-        "type": "undergarden:rogdorium_wisp"
-      },
-      "probability": 0.01
-    },
-    "sky_color": 1186057,
-    "water_color": 342306,
-    "water_fog_color": 332810
+    "foliage_color": "#1b3aa9",
+    "grass_color": "#1b3aa9",
+    "water_color": "#053922"
   },
   "features": [
     [

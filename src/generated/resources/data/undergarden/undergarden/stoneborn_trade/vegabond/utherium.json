@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "count": 48,
+    "id": "undergarden:regalium_crystal"
+  },
+  "max_uses": 1.0,
+  "wants": {
+    "id": "undergarden:utherium_block"
+  },
+  "xp": 0.0
+}

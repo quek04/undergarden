@@ -6,7 +6,7 @@
         "damage": {
           "type": {
             "direct_entity": {
-              "type": "undergarden:depthrock_pebble"
+              "type": "undergarden:slingshot_projectile"
             }
           },
           "dealt": {
@@ -23,7 +23,6 @@
     },
     "frame": "challenge",
     "icon": {
-      "count": 1,
       "id": "undergarden:depthrock_pebble"
     },
     "title": {

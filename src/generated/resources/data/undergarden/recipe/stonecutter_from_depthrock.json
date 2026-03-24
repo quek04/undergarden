@@ -2,19 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "I": {
-      "item": "minecraft:iron_ingot"
-    },
-    "S": {
-      "item": "undergarden:depthrock"
-    }
+    "I": "minecraft:iron_ingot",
+    "S": "undergarden:depthrock"
   },
   "pattern": [
     " I ",
     "SSS"
   ],
   "result": {
-    "count": 1,
     "id": "minecraft:stonecutter"
   }
 }

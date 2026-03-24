@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "undergarden:dreadrock_bricks"
-    }
+    "M": "undergarden:dreadrock_bricks"
   },
   "pattern": [
     "MMM"

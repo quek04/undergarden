@@ -1,11 +1,52 @@
 {
   "ambient_light": 0.1,
-  "bed_works": true,
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "additions": {
+        "sound": "undergarden:ambient.fields_addition",
+        "tick_chance": 0.00555
+      },
+      "loop": "undergarden:ambient.undergarden",
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "undergarden:ambient.mood",
+        "tick_delay": 6000
+      }
+    },
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "replace_current_music": true,
+        "sound": "undergarden:music.undergarden"
+      }
+    },
+    "minecraft:gameplay/bed_rule": {
+      "can_set_spawn": "always",
+      "can_sleep": "never"
+    },
+    "minecraft:gameplay/can_pillager_patrol_spawn": false,
+    "minecraft:gameplay/can_start_raid": false,
+    "minecraft:gameplay/creaking_active": true,
+    "minecraft:gameplay/piglins_zombify": false,
+    "minecraft:gameplay/sky_light_level": 4.0,
+    "minecraft:visual/ambient_light_color": "#302821",
+    "minecraft:visual/default_dripstone_particle": {
+      "type": "undergarden:dripping_virulent"
+    },
+    "minecraft:visual/fog_end_distance": 225.0,
+    "minecraft:visual/fog_start_distance": -30.0,
+    "minecraft:visual/sky_color": "#121909",
+    "minecraft:visual/sky_light_color": "#7a7aff",
+    "minecraft:visual/sky_light_factor": 0.0,
+    "minecraft:visual/water_fog_color": "#05140a"
+  },
+  "cardinal_light": "nether",
   "coordinate_scale": 4.0,
-  "effects": "undergarden:undergarden",
-  "fixed_time": 18000,
   "has_ceiling": true,
-  "has_raids": false,
+  "has_ender_dragon_fight": false,
+  "has_fixed_time": true,
   "has_skylight": false,
   "height": 192,
   "infiniburn": "#minecraft:infiniburn_overworld",
@@ -17,8 +58,6 @@
     "max_inclusive": 7,
     "min_inclusive": 0
   },
-  "natural": true,
-  "piglin_safe": true,
-  "respawn_anchor_works": false,
-  "ultrawarm": false
+  "skybox": "none",
+  "timelines": "#undergarden:in_undergarden"
 }

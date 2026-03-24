@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "N": {
-      "item": "undergarden:utheric_shard"
-    }
+    "N": "undergarden:utheric_shard"
   },
   "pattern": [
     "NNN",
@@ -12,7 +10,6 @@
     "NNN"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:utheric_cluster"
   }
 }

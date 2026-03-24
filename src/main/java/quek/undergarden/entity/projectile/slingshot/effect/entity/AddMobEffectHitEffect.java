@@ -21,22 +21,18 @@ import quek.undergarden.entity.projectile.slingshot.SlingshotProjectile;
 import quek.undergarden.entity.projectile.slingshot.effect.HitEffect;
 import quek.undergarden.registry.custom.UGHitEffects;
 
-public record AddMobEffectHitEffect(MobEffectInstance instance, HolderSet<EntityType<?>> immuneEntities) implements HitEffect {
+public record AddMobEffectHitEffect(MobEffectInstance instance, TagKey<EntityType<?>> immuneEntities) implements HitEffect {
 
 	public static final MapCodec<AddMobEffectHitEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 		MobEffectInstance.CODEC.fieldOf("effect").forGetter(AddMobEffectHitEffect::instance),
-		RegistryCodecs.homogeneousList(Registries.ENTITY_TYPE).fieldOf("immune_entities").forGetter(AddMobEffectHitEffect::immuneEntities)
+		TagKey.codec(Registries.ENTITY_TYPE).fieldOf("immune_entities").forGetter(AddMobEffectHitEffect::immuneEntities)
 	).apply(instance, AddMobEffectHitEffect::new));
 
 	public static final StreamCodec<RegistryFriendlyByteBuf, AddMobEffectHitEffect> STREAM_CODEC = StreamCodec.composite(
 		MobEffectInstance.STREAM_CODEC, AddMobEffectHitEffect::instance,
-		ByteBufCodecs.holderSet(Registries.ENTITY_TYPE), AddMobEffectHitEffect::immuneEntities,
+		TagKey.streamCodec(Registries.ENTITY_TYPE), AddMobEffectHitEffect::immuneEntities,
 		AddMobEffectHitEffect::new
 	);
-
-	public AddMobEffectHitEffect(MobEffectInstance instance, TagKey<EntityType<?>> immuneEntities) {
-		this(instance, BuiltInRegistries.ENTITY_TYPE.getOrThrow(immuneEntities));
-	}
 
 	@Override
 	public Type<? extends HitEffect> getType() {
@@ -46,7 +42,7 @@ public record AddMobEffectHitEffect(MobEffectInstance instance, HolderSet<Entity
 	@Override
 	public boolean apply(ServerLevel level, ItemStack ammoStack, SlingshotProjectile projectile, HitResult result) {
 		if (result instanceof EntityHitResult entityResult && entityResult.getEntity() instanceof LivingEntity living) {
-			if (!this.immuneEntities().contains(living.typeHolder())) {
+			if (!living.is(this.immuneEntities())) {
 				living.addEffect(this.instance());
 				return true;
 			}

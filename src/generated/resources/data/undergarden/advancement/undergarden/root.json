@@ -9,7 +9,6 @@
     "background": "undergarden:textures/block/depthrock_bricks.png",
     "description": "",
     "icon": {
-      "count": 1,
       "id": "undergarden:deepturf_block"
     },
     "show_toast": false,

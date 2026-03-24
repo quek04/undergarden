@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "undergarden:blisterbomb"
-    },
-    "G": {
-      "item": "undergarden:gloomgourd"
-    }
+    "B": "undergarden:blisterbomb",
+    "G": "undergarden:gloomgourd"
   },
   "pattern": [
     "BBB",
@@ -15,7 +11,6 @@
     "BBB"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:boomgourd"
   }
 }

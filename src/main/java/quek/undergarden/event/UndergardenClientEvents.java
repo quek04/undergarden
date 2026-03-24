@@ -354,7 +354,6 @@ public class UndergardenClientEvents {
 //		});
 		event.registerAboveAll(Undergarden.prefix("undergarden_portal_overlay"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
-			Window window = minecraft.getWindow();
 			LocalPlayer player = minecraft.player;
 
 			if (player != null) {
@@ -372,12 +371,12 @@ public class UndergardenClientEvents {
 			if (UndergardenConfig.Client.toggle_utheric_infection_overlay.get()) {
 				Minecraft minecraft = Minecraft.getInstance();
 				LocalPlayer player = minecraft.player;
-				Identifier overlay = Undergarden.prefix("textures/utheric_infection_overlay.png");
+				Identifier overlay = Undergarden.prefix("textures/misc/utheric_infection_overlay.png");
 				int color = ARGB.white(0.0F);
 				if (player != null) {
 					double vignetteBrightness = player.getData(UGAttachments.UTHERIC_INFECTION.get()) / UthericInfectionEvents.MAX_INFECTION;
 					vignetteBrightness = Mth.clamp(vignetteBrightness, 0.0F, 1.0F);
-					color = ARGB.colorFromFloat(1.0F, (float) vignetteBrightness, (float) vignetteBrightness, 1.0F);
+					color = ARGB.colorFromFloat((float) vignetteBrightness, (float) vignetteBrightness, 1.0F, 1.0F);
 				}
 				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, overlay, 0, 0, 0.0F, 0.0F, guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight(), color);
 			}

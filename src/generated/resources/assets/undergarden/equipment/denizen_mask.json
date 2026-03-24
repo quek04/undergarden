@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "undergarden:denizen_mask"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "undergarden:denizen_mask"
+      }
+    ]
+  }
+}

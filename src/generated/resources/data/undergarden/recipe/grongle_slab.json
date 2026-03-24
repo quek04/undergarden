@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "undergarden:grongle_planks"
-    }
+    "M": "undergarden:grongle_planks"
   },
   "pattern": [
     "MMM"

@@ -1,5 +1,5 @@
 {
-  "feature": "undergarden:shimmerweed_patch",
+  "feature": "undergarden:shimmerweed",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

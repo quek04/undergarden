@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "undergarden:stripped_wigglewood_log"
-    }
+    "M": "undergarden:stripped_wigglewood_log"
   },
   "pattern": [
     "MM",

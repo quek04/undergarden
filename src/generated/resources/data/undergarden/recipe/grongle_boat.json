@@ -3,16 +3,13 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "P": {
-      "item": "undergarden:grongle_planks"
-    }
+    "P": "undergarden:grongle_planks"
   },
   "pattern": [
     "P P",
     "PPP"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:grongle_boat"
   }
 }

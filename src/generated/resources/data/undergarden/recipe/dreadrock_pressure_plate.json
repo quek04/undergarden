@@ -2,15 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "B": {
-      "item": "undergarden:dreadrock"
-    }
+    "B": "undergarden:dreadrock"
   },
   "pattern": [
     "BB"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:dreadrock_pressure_plate"
   }
 }

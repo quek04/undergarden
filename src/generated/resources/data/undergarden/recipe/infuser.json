@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "D": {
-      "item": "undergarden:dreadrock"
-    },
-    "R": {
-      "tag": "c:ingots/rogdorium"
-    },
-    "U": {
-      "item": "undergarden:utheric_cluster"
-    }
+    "D": "undergarden:dreadrock",
+    "R": "#c:ingots/rogdorium",
+    "U": "undergarden:utheric_cluster"
   },
   "pattern": [
     "UDR",
@@ -18,7 +12,6 @@
     "D D"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:infuser"
   }
 }

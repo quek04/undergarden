@@ -17,7 +17,6 @@
       "translate": "advancement.undergarden.catch_gwibling.desc"
     },
     "icon": {
-      "count": 1,
       "id": "undergarden:gwibling_bucket"
     },
     "title": {

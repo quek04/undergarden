@@ -72,10 +72,8 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateFlatItem(UGItems.FORGOTTEN_INGOT.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.FORGOTTEN_NUGGET.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.DITCHBULB.get(), ModelTemplates.FLAT_ITEM);
-		this.generateFlatItem(UGItems.GLOOMGOURD_SEEDS.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.BRUTE_TUSK.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.MOGMOSS.get(), ModelTemplates.FLAT_ITEM);
-		this.generateFlatItem(UGItems.GLITTERKELP.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.GOO_BALL.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.ROTTEN_BLISTERBERRY.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.BLISTERBOMB.get(), ModelTemplates.FLAT_ITEM);
@@ -119,6 +117,8 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateFlatItem(UGItems.WIGGLEWOOD_CHEST_BOAT.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.GRONGLE_BOAT.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.GRONGLE_CHEST_BOAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.ANCIENT_ROOT_BOAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.ANCIENT_ROOT_CHEST_BOAT.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.VIRULENT_MIX_BUCKET.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.GWIBLING_BUCKET.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.UNDERBEANS.get(), ModelTemplates.FLAT_ITEM);

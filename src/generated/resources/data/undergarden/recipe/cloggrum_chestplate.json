@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "M": {
-      "item": "undergarden:cloggrum_ingot"
-    }
+    "M": "undergarden:cloggrum_ingot"
   },
   "pattern": [
     "M M",
@@ -12,7 +10,6 @@
     "MMM"
   ],
   "result": {
-    "count": 1,
     "id": "undergarden:cloggrum_chestplate"
   }
 }
