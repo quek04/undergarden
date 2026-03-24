@@ -32,8 +32,8 @@ public class UGRegistryProvider extends DatapackBuiltinEntriesProvider {
 		.add(Registries.TRIM_MATERIAL, UGTrimMaterials::bootstrap)
 		.add(Registries.ENCHANTMENT, UGEnchantments::bootstrap)
 		.add(Registries.JUKEBOX_SONG, UGJukeboxSongs::bootstrap)
-		.add(UGRegistries.STONEBORN_TRADE, UGStonebornTrades::bootstrap)
-		.add(UGRegistries.STONEBORN_TRADE_SET, UGStonebornTradeSets::bootstrap);
+		.add(UGRegistries.Keys.STONEBORN_TRADE, UGStonebornTrades::bootstrap)
+		.add(UGRegistries.Keys.STONEBORN_TRADE_SET, UGStonebornTradeSets::bootstrap);
 
 	public UGRegistryProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> future) {
 		super(output, future, BUILDER, Set.of("minecraft", Undergarden.MODID));

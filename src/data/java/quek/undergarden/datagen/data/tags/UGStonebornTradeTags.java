@@ -17,6 +17,7 @@ public class UGStonebornTradeTags extends KeyTagProvider<StonebornTrade> {
 		super(output, UGRegistries.Keys.STONEBORN_TRADE, future, Undergarden.MODID);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		this.tag(UGTags.StonebornTrades.VEGABOND_TRADES).add(

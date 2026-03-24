@@ -17,6 +17,7 @@ public class UGDamageTypeTags extends KeyTagProvider<DamageType> {
 		super(output, Registries.DAMAGE_TYPE, future, Undergarden.MODID);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		this.tag(DamageTypeTags.BYPASSES_ARMOR).add(UGDamageSources.SHARD_TORCH, UGDamageSources.UTHERIC_INFECTION);

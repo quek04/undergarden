@@ -255,6 +255,6 @@ public class UGEntityLootTables extends EntityLootSubProvider {
 
 	@Override
 	protected Stream<EntityType<?>> getKnownEntityTypes() {
-		return UGEntityTypes.ENTITIES.getEntries().stream().map(Supplier::get);
+		return UGEntityTypes.ENTITY_TYPES.getEntries().stream().map(Supplier::get);
 	}
 }

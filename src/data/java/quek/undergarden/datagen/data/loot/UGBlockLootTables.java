@@ -1,6 +1,6 @@
 package quek.undergarden.datagen.data.loot;
 
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -66,9 +66,9 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropWithSilk(UGBlocks.DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
 		this.add(UGBlocks.TALL_DEEPTURF.get(), (block) -> this.createDoublePlantShearsDrop(UGBlocks.DEEPTURF.get()));
 		this.add(UGBlocks.TALL_SHIMMERWEED.get(), (block) -> this.createDoublePlantShearsDrop(UGBlocks.SHIMMERWEED.get()));
-		this.add(UGBlocks.DEEPTURF.get(), UGBlockLootTables::createShearsOnlyDrop);
-		this.add(UGBlocks.SHIMMERWEED.get(), UGBlockLootTables::createShearsOnlyDrop);
-		this.add(UGBlocks.ASHEN_DEEPTURF.get(), UGBlockLootTables::createShearsOnlyDrop);
+		this.add(UGBlocks.DEEPTURF.get(), this::createShearsOnlyDrop);
+		this.add(UGBlocks.SHIMMERWEED.get(), this::createShearsOnlyDrop);
+		this.add(UGBlocks.ASHEN_DEEPTURF.get(), this::createShearsOnlyDrop);
 		this.dropSelf(UGBlocks.SMOGSTEM_PLANKS);
 		this.dropSelf(UGBlocks.WIGGLEWOOD_PLANKS);
 		this.dropSelf(UGBlocks.SMOGSTEM_LOG);
@@ -175,7 +175,7 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropAsSilk(UGBlocks.VEIL_MUSHROOM_STEM);
 		this.mushroom(UGBlocks.INK_MUSHROOM_CAP, UGBlocks.INK_MUSHROOM);
 		this.dropAsSilk(UGBlocks.INK_MUSHROOM_STEM);
-		this.add(UGBlocks.SEEPING_INK.get(), UGBlockLootTables::createShearsOnlyDrop);
+		this.add(UGBlocks.SEEPING_INK.get(), this::createShearsOnlyDrop);
 		this.dropSelf(UGBlocks.FORGOTTEN_BLOCK);
 		this.dropSelf(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
 		this.dropSelf(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
@@ -192,7 +192,7 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropPottedContents(UGBlocks.POTTED_MISERABELL.get());
 		this.dropPottedContents(UGBlocks.POTTED_BUTTERBUNCH.get());
 		this.dropWithSilk(UGBlocks.FROZEN_DEEPTURF_BLOCK, UGBlocks.DEEPSOIL);
-		this.add(UGBlocks.FROZEN_DEEPTURF.get(), UGBlockLootTables::createShearsOnlyDrop);
+		this.add(UGBlocks.FROZEN_DEEPTURF.get(), this::createShearsOnlyDrop);
 		this.dropSelf(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
 		this.dropSelf(UGBlocks.TREMBLECRUST_STAIRS);
 		this.dropSelf(UGBlocks.TREMBLECRUST_BRICK_STAIRS);
@@ -245,7 +245,7 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.RAW_CLOGGRUM_BLOCK);
 		this.dropSelf(UGBlocks.RAW_FROSTSTEEL_BLOCK);
 		this.dropSelf(UGBlocks.CLOGGRUM_LANTERN);
-		this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), UGBlockLootTables::createShearsOnlyDrop);
+		this.add(UGBlocks.HANGING_GRONGLE_LEAVES.get(), this::createShearsOnlyDrop);
 		this.add(UGBlocks.DROOPVINE.get(), this::droopvine);
 		this.add(UGBlocks.DROOPVINE_PLANT.get(), this::droopvine);
 		this.dropSelf(UGBlocks.GRONGLET);
@@ -260,7 +260,7 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(UGBlocks.MISERABELL);
 		this.dropSelf(UGBlocks.BUTTERBUNCH);
 		this.dropOther(UGBlocks.VIRULENT_MIX_CAULDRON, Items.CAULDRON);
-		this.add(UGBlocks.MUSHROOM_VEIL.get(), UGBlockLootTables::createShearsOnlyDrop);
+		this.add(UGBlocks.MUSHROOM_VEIL.get(), this::createShearsOnlyDrop);
 		this.ore(UGBlocks.DREADROCK_ROGDORIUM_ORE, UGItems.ROGDORIUM);
 		this.dropSelf(UGBlocks.ROGDORIUM_BLOCK);
 		this.dropSelf(UGBlocks.UTHERIUM_GROWTH);
@@ -359,7 +359,7 @@ public class UGBlockLootTables extends BlockLootSubProvider {
 		return createSelfDropDispatchTable(block, HAS_SHEARS.or(this.hasSilkTouch()), builder);
 	}
 
-	protected static LootTable.Builder createShearsOnlyDrop(ItemLike item) {
+	protected LootTable.Builder createShearsOnlyDrop(ItemLike item) {
 		return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_SHEARS).add(LootItem.lootTableItem(item)));
 	}
 

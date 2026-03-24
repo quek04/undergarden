@@ -17,4 +17,9 @@ public class UGRecipeRunner extends RecipeProvider.Runner {
 	protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput output) {
 		return new UGRecipes(output, provider);
 	}
+
+	@Override
+	public String getName() {
+		return "Undergarden Recipes";
+	}
 }
