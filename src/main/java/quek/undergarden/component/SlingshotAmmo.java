@@ -3,6 +3,7 @@ package quek.undergarden.component;
 import com.google.common.base.Preconditions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -51,7 +52,7 @@ public record SlingshotAmmo(List<Identifier> chargeTextures, boolean dropAsItem,
 
 	@Override
 	public void addToTooltip(Item.TooltipContext context, Consumer<Component> consumer, TooltipFlag flag, DataComponentGetter components) {
-		consumer.accept(Component.translatable("tooltip.undergarden.slingshot_ammo"));
+		consumer.accept(Component.translatable("tooltip.undergarden.slingshot_ammo").withStyle(ChatFormatting.GRAY));
 	}
 
 	public static Builder builder() {

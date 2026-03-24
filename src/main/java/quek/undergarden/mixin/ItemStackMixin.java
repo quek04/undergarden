@@ -27,5 +27,6 @@ public abstract class ItemStackMixin {
 	@Inject(method = "addDetailsToTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item;appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Lnet/minecraft/world/item/component/TooltipDisplay;Ljava/util/function/Consumer;Lnet/minecraft/world/item/TooltipFlag;)V", shift = At.Shift.AFTER), remap = false)
 	public void addCustomComponents(Item.TooltipContext context, TooltipDisplay display, @Nullable Player player, TooltipFlag tooltipFlag, Consumer<Component> builder, CallbackInfo ci) {
 		this.addToTooltip(UGDataComponents.SLINGSHOT_AMMO.get(), context, display, builder, tooltipFlag);
+		this.addToTooltip(UGDataComponents.ROGDORIUM_INFUSION.get(), context, display, builder, tooltipFlag);
 	}
 }

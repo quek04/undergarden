@@ -1,7 +1,6 @@
 package quek.undergarden.event;
 
 import com.google.common.reflect.TypeToken;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockTintSource;
@@ -26,19 +25,19 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.BuiltInBlockModels;
 import net.minecraft.client.renderer.block.FluidModel;
-import net.minecraft.client.renderer.block.model.SpecialBlockModelWrapper;
 import net.minecraft.client.renderer.blockentity.BedRenderer;
-import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.entity.ArmorModelSet;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.NoopRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.fog.FogData;
 import net.minecraft.client.renderer.fog.environment.FogEnvironment;
-import net.minecraft.client.renderer.special.BedSpecialRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
@@ -46,8 +45,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FogType;
 import net.neoforged.bus.api.IEventBus;
@@ -58,7 +55,6 @@ import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsE
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.client.renderstate.RegisterRenderStateModifiersEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import org.joml.Vector4f;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
@@ -82,7 +78,6 @@ import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.registry.*;
 
 import java.util.List;
-import java.util.Optional;
 
 public class UndergardenClientEvents {
 
@@ -115,7 +110,6 @@ public class UndergardenClientEvents {
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::renderVirulentHearts);
-		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::addTooltips);
 	}
 
 	private static void clientSetup(FMLClientSetupEvent event) {
@@ -507,18 +501,6 @@ public class UndergardenClientEvents {
 			}
 			return false;
 		})));
-	}
-
-	private static void addTooltips(ItemTooltipEvent event) {
-		List<Component> tooltip = event.getToolTip();
-		ItemStack stack = event.getItemStack();
-		if (stack.has(UGDataComponents.ROGDORIUM_INFUSION.get())) {
-			int infusionAmount = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionAmount();
-			int infusionMax = stack.getOrDefault(UGDataComponents.ROGDORIUM_INFUSION, RogdoriumInfusion.DEFAULT).infusionMax();
-			if (infusionAmount > 0) {
-				tooltip.add(1, Component.translatable("tooltip.undergarden.rogdorium_infusion").append(": " + infusionAmount + "/" + infusionMax).withStyle(ChatFormatting.AQUA));
-			}
-		}
 	}
 
 	private static void renderBrittlenessArmor(int width, int height, GuiGraphicsExtractor graphics, Player player) {
