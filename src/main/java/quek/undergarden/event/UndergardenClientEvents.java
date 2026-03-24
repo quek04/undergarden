@@ -25,6 +25,7 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
@@ -32,6 +33,7 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.fog.FogData;
 import net.minecraft.client.renderer.fog.environment.FogEnvironment;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -99,6 +101,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerDimensionTransitionScreens);
 		bus.addListener(UndergardenClientEvents::registerItemDecorations);
 		bus.addListener(UndergardenClientEvents::registerCustomRenderData);
+		bus.addListener(UndergardenClientEvents::registerFluidModels);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
@@ -262,6 +265,15 @@ public class UndergardenClientEvents {
 
 	private static void registerMenuScreens(RegisterMenuScreensEvent event) {
 		event.register(UGMenuTypes.INFUSER.get(), InfuserScreen::new);
+	}
+
+	private static void registerFluidModels(RegisterFluidModelsEvent event) {
+		FluidModel.Unbaked virulentModel = new FluidModel.Unbaked(
+			new Material(Undergarden.prefix("fluid/virulent_mix_still")),
+			new Material(Undergarden.prefix("fluid/virulent_mix_flow")),
+			null, null);
+		event.register(virulentModel, UGFluids.VIRULENT_MIX_SOURCE.get());
+		event.register(virulentModel, UGFluids.VIRULENT_MIX_FLOWING.get());
 	}
 
 	private static void registerBlockColors(RegisterColorHandlersEvent.BlockTintSources event) {

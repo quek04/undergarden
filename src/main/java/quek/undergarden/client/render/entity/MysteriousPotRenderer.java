@@ -27,13 +27,11 @@ public class MysteriousPotRenderer extends MobRenderer<MysteriousPot, Mysterious
 	private static final Identifier MYSTERIOUS_POT = Undergarden.prefix("textures/entity/potguy.png");
 	private static final RenderType MYSTERIOUS_POT_EYES = RenderTypes.eyes(Undergarden.prefix("textures/entity/potguy_eyes.png"));
 
-	private final SpriteGetter sprites;
 	private final PotModel inactiveModel;
 
 	public MysteriousPotRenderer(EntityRendererProvider.Context context) {
 		super(context, new MysteriousPotModel(context.bakeLayer(UGModelLayers.LIVING_POT)), 0.3F);
 		this.addLayer(new BasicEyesLayer<>(this, MYSTERIOUS_POT_EYES, state -> state.active));
-		this.sprites = context.getSprites();
 		this.inactiveModel = new PotModel(context.bakeLayer(UGModelLayers.POT));
 	}
 
@@ -60,7 +58,7 @@ public class MysteriousPotRenderer extends MobRenderer<MysteriousPot, Mysterious
 			float f6 = 1.0F - wiggle;
 			stack.rotateAround(Axis.YP.rotation(f5 * f6), 0.5F, 0.0F, 0.5F);
 			stack.translate(0.5F, -1.501F, 0.5F);
-			collector.submitModel(this.inactiveModel, Unit.INSTANCE, stack, state.lightCoords, OverlayTexture.NO_OVERLAY, -1, DepthrockPotRenderer.TEXTURE, this.sprites, 0, null);
+			collector.submitModel(this.inactiveModel, Unit.INSTANCE, stack, RenderTypes.entitySolid(DepthrockPotRenderer.TEXTURE), state.lightCoords, OverlayTexture.NO_OVERLAY, -1, null, 0, null);
 			stack.popPose();
 		} else {
 			super.submit(state, stack, collector, camera);

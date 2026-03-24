@@ -23,7 +23,7 @@ public class CatalystItem extends Item {
 	public InteractionResult useOn(UseOnContext context) {
 		Level level = context.getLevel();
 		if (level.dimension() == Level.OVERWORLD || level.dimension() == UGDimensions.UNDERGARDEN_LEVEL) {
-			BlockPos pos = context.getClickedPos();
+			BlockPos pos = context.getClickedPos().relative(context.getClickedFace());
 			Optional<UndergardenPortalShape> optionalShape = UndergardenPortalShape.findEmptyPortalShape(level, pos, Direction.Axis.X);
 			if (optionalShape.isPresent()) {
 				optionalShape.get().createPortalBlocks(level);

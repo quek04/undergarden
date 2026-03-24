@@ -43,7 +43,7 @@ public class Scintling extends Animal {
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {
-		return Animal.createMobAttributes()
+		return Animal.createAnimalAttributes()
 				.add(Attributes.MAX_HEALTH, 2.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.2D)
 				.add(Attributes.STEP_HEIGHT, 1.0D);

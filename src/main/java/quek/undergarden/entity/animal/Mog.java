@@ -57,7 +57,7 @@ public class Mog extends Animal implements IShearable {
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {
-		return Animal.createMobAttributes()
+		return Animal.createAnimalAttributes()
 			.add(Attributes.MAX_HEALTH, 20.0D)
 			.add(Attributes.MOVEMENT_SPEED, 0.1D)
 			.add(Attributes.KNOCKBACK_RESISTANCE, 0.9D)

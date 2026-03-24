@@ -78,7 +78,7 @@ public class GreaterDweller extends Animal implements NeutralMob {
 	}
 
 	public static AttributeSupplier.Builder registerAttributes() {
-		return Animal.createMobAttributes()
+		return Animal.createAnimalAttributes()
 			.add(Attributes.MAX_HEALTH, 100.0D)
 			.add(Attributes.MOVEMENT_SPEED, 0.2D)
 			.add(Attributes.ATTACK_DAMAGE, 10.0D);
