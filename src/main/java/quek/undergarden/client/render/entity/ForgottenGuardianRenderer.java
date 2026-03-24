@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.Difficulty;
 import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.ForgottenGuardianModel;
 import quek.undergarden.client.model.UGModelLayers;
@@ -21,7 +22,7 @@ public class ForgottenGuardianRenderer extends MobRenderer<ForgottenGuardian, Fo
 
 	public ForgottenGuardianRenderer(EntityRendererProvider.Context context) {
 		super(context, new ForgottenGuardianModel(context.bakeLayer(UGModelLayers.FORGOTTEN_GUARDIAN)), 0.6F);
-		this.addLayer(new BasicEyesLayer<>(this, FORGOTTEN_GUARDIAN_EYES));
+		this.addLayer(new BasicEyesLayer<>(this, FORGOTTEN_GUARDIAN_EYES, state -> state.isActive));
 	}
 
 	@Override
@@ -33,6 +34,7 @@ public class ForgottenGuardianRenderer extends MobRenderer<ForgottenGuardian, Fo
 	public void extractRenderState(ForgottenGuardian entity, ForgottenGuardianRenderState state, float partialTicks) {
 		super.extractRenderState(entity, state, partialTicks);
 		state.attackTimer = entity.getAttackTimer() > 0.0F ? entity.getAttackTimer() - partialTicks : 0.0F;
+		state.isActive = entity.level().getDifficulty() != Difficulty.PEACEFUL;
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -34,6 +36,7 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.fluids.FluidType;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGSoundEvents;
 
 import java.util.Set;
@@ -49,6 +52,7 @@ public class ForgottenGuardian extends Monster {
 	public ForgottenGuardian(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
 		this.xpReward = 30;
+		this.lookControl = new GuardianLookControl(this);
 	}
 
 	@Override
@@ -70,6 +74,13 @@ public class ForgottenGuardian extends Monster {
 				.add(Attributes.MOVEMENT_SPEED, 0.2D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
 				.add(Attributes.STEP_HEIGHT, 1.0D);
+	}
+
+	@Override
+	public void playAmbientSound() {
+		if (!this.isImmobile()) {
+			super.playAmbientSound();
+		}
 	}
 
 	@Override
@@ -105,11 +116,7 @@ public class ForgottenGuardian extends Monster {
 	@Override
 	public void checkDespawn() {
 		if (EventHooks.checkMobDespawn(this)) return;
-		if (this.level().getDifficulty() == Difficulty.PEACEFUL && !this.getType().isAllowedInPeaceful()) {
-			this.discard();
-		} else {
-			this.noActionTime = 0;
-		}
+		this.noActionTime = 0;
 	}
 
 	@Override
@@ -119,8 +126,13 @@ public class ForgottenGuardian extends Monster {
 		if (this.attackTimer > 0) {
 			--this.attackTimer;
 		}
-		if (this.isAggressive() && this.level() instanceof ServerLevel serverLevel) {
-			if (this.horizontalCollision && EventHooks.canEntityGrief(serverLevel, this)) {
+	}
+
+	@Override
+	protected void customServerAiStep(ServerLevel level) {
+		super.customServerAiStep(level);
+		if (this.isAggressive() && level.getDifficulty() != Difficulty.PEACEFUL) {
+			if (this.horizontalCollision && EventHooks.canEntityGrief(level, this)) {
 				AABB axisalignedbb = this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D);
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(axisalignedbb.minX), Mth.floor(axisalignedbb.minY), Mth.floor(axisalignedbb.minZ), Mth.floor(axisalignedbb.maxX), Mth.floor(axisalignedbb.maxY), Mth.floor(axisalignedbb.maxZ))) {
@@ -131,6 +143,17 @@ public class ForgottenGuardian extends Monster {
 				}
 			}
 		}
+	}
+
+	@Override
+	protected boolean isImmobile() {
+		return this.level().getDifficulty() != Difficulty.PEACEFUL && super.isImmobile();
+	}
+
+	@Override
+	public boolean hurtServer(ServerLevel level, DamageSource source, float damage) {
+		if (level.getDifficulty() == Difficulty.PEACEFUL && !source.isCreativePlayer() && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
+		return super.hurtServer(level, source, damage);
 	}
 
 	@Override
@@ -212,6 +235,20 @@ public class ForgottenGuardian extends Monster {
 		@Override
 		public Set<PathType> getPathTypeWithinMobBB(PathfindingContext context, int width, int height, int depth) {
 			return Set.of(PathType.WALKABLE);
+		}
+	}
+
+	static class GuardianLookControl extends LookControl {
+
+		public GuardianLookControl(Mob mob) {
+			super(mob);
+		}
+
+		@Override
+		public void setLookAt(double x, double y, double z, float yMaxRotSpeed, float xMaxRotAngle) {
+			if (this.mob.level().getDifficulty() != Difficulty.PEACEFUL) {
+				super.setLookAt(x, y, z, yMaxRotSpeed, xMaxRotAngle);
+			}
 		}
 	}
 }

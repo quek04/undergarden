@@ -40,5 +40,6 @@ public class UGEntityTags extends EntityTypeTagsProvider {
 		tag(EntityTypeTags.DISMOUNTS_UNDERWATER).add(UGEntityTypes.DWELLER.get());
 		tag(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(UGEntityTypes.GLOOMPER.get());
 		tag(EntityTypeTags.UNDEAD).add(UGEntityTypes.FORGOTTEN.get()).addTag(UGTags.Entities.ROTSPAWN);
+		tag(EntityTypeTags.DEFLECTS_PROJECTILES).add(UGEntityTypes.FORGOTTEN_GUARDIAN.get());
 	}
 }

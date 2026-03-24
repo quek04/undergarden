@@ -60,8 +60,12 @@ public class ForgottenGuardianModel extends EntityModel<ForgottenGuardianRenderS
 	@Override
 	public void setupAnim(ForgottenGuardianRenderState state) {
 		super.setupAnim(state);
-		this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
-		this.head.xRot = state.xRot * Mth.DEG_TO_RAD;
+		if (state.isActive) {
+			this.head.yRot = state.yRot * Mth.DEG_TO_RAD;
+			this.head.xRot = state.xRot * Mth.DEG_TO_RAD;
+		} else {
+			this.head.xRot = (float) Math.toRadians(30.0D);
+		}
 		this.leftLeg.xRot = -1.5F * Mth.triangleWave(state.walkAnimationPos, 13.0F) * state.walkAnimationSpeed;
 		this.rightLeg.xRot = 1.5F * Mth.triangleWave(state.walkAnimationPos, 13.0F) * state.walkAnimationSpeed;
 
