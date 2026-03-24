@@ -1,275 +1,225 @@
 package quek.undergarden.datagen.assets;
 
-import net.minecraft.data.PackOutput;
+import net.minecraft.client.color.item.ItemTintSource;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelOutput;
+import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
+import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.block.dispatch.Variant;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.random.Weighted;
+import net.minecraft.util.random.WeightedList;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import quek.undergarden.Undergarden;
-import quek.undergarden.block.*;
-import quek.undergarden.datagen.helpers.UGBlockstateProvider;
+import quek.undergarden.block.BlisterberryBushBlock;
+import quek.undergarden.block.DenizenTotemBlock;
+import quek.undergarden.block.HangingGrongleLeavesBlock;
+import quek.undergarden.block.SpreadingDeepturfBlock;
 import quek.undergarden.registry.UGBlocks;
 
-public class UGBlockStates extends UGBlockstateProvider {
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-	public UGBlockStates(PackOutput output, ExistingFileHelper fileHelper) {
-		super(output, fileHelper);
+public class UGBlockStates extends BlockModelGenerators {
+
+	public UGBlockStates(Consumer<BlockModelDefinitionGenerator> stateOutput, ItemModelOutput itemOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
+		super(stateOutput, itemOutput, modelOutput);
 	}
 
 	@Override
-	protected void registerStatesAndModels() {
-		block(UGBlocks.DREADROCK);
-		torchBlock(UGBlocks.SHARD_TORCH, UGBlocks.SHARD_WALL_TORCH);
-		block(UGBlocks.DEPTHROCK);
-		block(UGBlocks.DEEPSOIL);
-		crossBlock(UGBlocks.ASHEN_DEEPTURF);
-		block(UGBlocks.DEPTHROCK_COAL_ORE);
-		block(UGBlocks.DEPTHROCK_CLOGGRUM_ORE);
-		block(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE);
-		block(UGBlocks.DEPTHROCK_UTHERIUM_ORE);
-		log(UGBlocks.SMOGSTEM_LOG, "smogstem_log");
-		axisBlock(UGBlocks.SMOGSTEM_WOOD.get(), texture("smogstem_log_side"), texture("smogstem_log_side"));
-		crossBlock(UGBlocks.SMOGSTEM_SAPLING);
-		log(UGBlocks.WIGGLEWOOD_LOG, "wigglewood_log");
-		axisBlock(UGBlocks.WIGGLEWOOD_WOOD.get(), texture("wigglewood_log_side"), texture("wigglewood_log_side"));
-		crossBlock(UGBlocks.WIGGLEWOOD_SAPLING);
-		block(UGBlocks.SMOGSTEM_PLANKS);
-		block(UGBlocks.WIGGLEWOOD_PLANKS);
-		block(UGBlocks.SMOGSTEM_LEAVES);
-		block(UGBlocks.WIGGLEWOOD_LEAVES);
-		crossBlock(UGBlocks.INDIGO_MUSHROOM);
-		crossBlock(UGBlocks.VEIL_MUSHROOM);
-		crossBlock(UGBlocks.INK_MUSHROOM);
-		crossBlock(UGBlocks.BLOOD_MUSHROOM);
-		block(UGBlocks.DEPTHROCK_BRICKS);
-		block(UGBlocks.CRACKED_DEPTHROCK_BRICKS);
-		crossBlock(UGBlocks.GLITTERKELP);
-		crossBlock(UGBlocks.GLITTERKELP_PLANT);
-		block(UGBlocks.SHIVERSTONE);
-		block(UGBlocks.SHIVERSTONE_BRICKS);
-		block(UGBlocks.DEPTHROCK_REGALIUM_ORE);
-		block(UGBlocks.TREMBLECRUST);
-		block(UGBlocks.TREMBLECRUST_BRICKS);
-		block(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
-		block(UGBlocks.TREMBLECRUST_UTHERIUM_ORE);
-		block(UGBlocks.LOOSE_TREMBLECRUST);
-		block(UGBlocks.DEPTHROCK_IRON_ORE);
-		block(UGBlocks.DEPTHROCK_GOLD_ORE);
-		block(UGBlocks.DEPTHROCK_DIAMOND_ORE);
-		block(UGBlocks.COARSE_DEEPSOIL);
-		crossBlock(UGBlocks.GRONGLE_SAPLING);
-		block(UGBlocks.GRONGLE_LEAVES);
-		log(UGBlocks.GRONGLE_LOG, "grongle_log");
-		axisBlock(UGBlocks.GRONGLE_WOOD.get(), texture("grongle_log_side"), texture("grongle_log_side"));
-		block(UGBlocks.GRONGLE_PLANKS);
-		log(UGBlocks.STRIPPED_SMOGSTEM_LOG, "stripped_smogstem_log");
-		log(UGBlocks.STRIPPED_WIGGLEWOOD_LOG, "stripped_wigglewood_log");
-		log(UGBlocks.STRIPPED_GRONGLE_LOG, "stripped_grongle_log");
-		axisBlock(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get(), texture("stripped_smogstem_log_side"), texture("stripped_smogstem_log_side"));
-		axisBlock(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get(), texture("stripped_wigglewood_log_side"), texture("stripped_wigglewood_log_side"));
-		axisBlock(UGBlocks.STRIPPED_GRONGLE_WOOD.get(), texture("stripped_grongle_log_side"), texture("stripped_grongle_log_side"));
-		block(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
-		crossBlock(UGBlocks.SEEPING_INK);
-		block(UGBlocks.FORGOTTEN_BLOCK);
-		block(UGBlocks.CLOGGRUM_BLOCK);
-		block(UGBlocks.FROSTSTEEL_BLOCK);
-		block(UGBlocks.UTHERIUM_BLOCK);
-		block(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
-		block(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
-		crossBlock(UGBlocks.FROZEN_DEEPTURF);
-		block(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
-		block(UGBlocks.SEDIMENT);
-		blockTranslucent(UGBlocks.SEDIMENT_GLASS);
-		block(UGBlocks.CLOGGRUM_TILES);
-		block(UGBlocks.DEPTHROCK_TILES);
-		carpet(UGBlocks.MOGMOSS_RUG);
-		carpet(UGBlocks.BLUE_MOGMOSS_RUG);
-		block(UGBlocks.SHIVERSTONE_COAL_ORE);
-		block(UGBlocks.SHIVERSTONE_IRON_ORE);
-		block(UGBlocks.SHIVERSTONE_DIAMOND_ORE);
-		block(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE);
-		block(UGBlocks.SHIVERSTONE_UTHERIUM_ORE);
-		block(UGBlocks.SHIVERSTONE_REGALIUM_ORE);
-		block(UGBlocks.RAW_CLOGGRUM_BLOCK);
-		block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
-		block(UGBlocks.POLISHED_DEPTHROCK);
-		crossBlock(UGBlocks.AMOROUS_BRISTLE);
-		crossBlock(UGBlocks.MISERABELL);
-		crossBlock(UGBlocks.BUTTERBUNCH);
-		block(UGBlocks.INDIGO_MUSHROOM_CAP);
-		block(UGBlocks.INDIGO_MUSHROOM_STEM);
-		block(UGBlocks.VEIL_MUSHROOM_CAP);
-		block(UGBlocks.VEIL_MUSHROOM_STEM);
-		block(UGBlocks.INK_MUSHROOM_CAP);
-		simpleBlock(UGBlocks.INK_MUSHROOM_STEM.get(), models().cubeAll(name(UGBlocks.INK_MUSHROOM_STEM), blockTexture(Blocks.MUSHROOM_STEM)));
-		block(UGBlocks.BLOOD_MUSHROOM_CAP);
-		block(UGBlocks.BLOOD_MUSHROOM_STEM);
-		getVariantBuilder(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get()).forAllStates(state ->
-				ConfiguredModel.builder()
-						.modelFile(cubeAll(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get())).nextModel()
-						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_2", Undergarden.prefix("block/engorged_blood_mushroom_cap_2"))).nextModel()
-						.modelFile(models().cubeAll(name(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP) + "_3", Undergarden.prefix("block/engorged_blood_mushroom_cap_3")))
-						.build()
-		);
-		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
-		block(UGBlocks.ROGDORIUM_BLOCK);
-		block(UGBlocks.UTHERIUM_GROWTH);
-		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
-		log(UGBlocks.ANCIENT_ROOT, "ancient_root");
-		axisBlock(UGBlocks.ROGDORIC_ANCIENT_ROOT.get(), texture("rogdoric_ancient_root_side"), texture("ancient_root_end"));
-		block(UGBlocks.ANCIENT_ROOT_PLANKS);
-		getVariantBuilder(UGBlocks.DENIZEN_TOTEM.get())
-			.partialState().with(DenizenTotemBlock.ACTIVE, true)
-			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM) + "_active", Undergarden.prefix("block/denizen_totem_active"), Undergarden.prefix("block/ancient_root_side"), Undergarden.prefix("block/denizen_totem_top"))).addModel()
-			.partialState().with(DenizenTotemBlock.ACTIVE, false)
-			.modelForState().modelFile(models().cubeBottomTop(name(UGBlocks.DENIZEN_TOTEM), Undergarden.prefix("block/denizen_totem_inactive"), Undergarden.prefix("block/ancient_root_side"), Undergarden.prefix("block/denizen_totem_top"))).addModel();
-		crossBlock(UGBlocks.PUFF_MUSHROOM);
-		block(UGBlocks.PUFF_MUSHROOM_CAP);
-		block(UGBlocks.PUFF_MUSHROOM_STEM);
-		block(UGBlocks.DREADROCK_BRICKS);
+	public void run() {
+		UGBlockFamilies.getAllFamilies()
+			.filter(BlockFamily::shouldGenerateModel)
+			.forEach(blockFamily -> this.family(blockFamily.getBaseBlock()).generateFor(blockFamily));
 
-		stairs(UGBlocks.DEPTHROCK_STAIRS, UGBlocks.DEPTHROCK);
-		stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS, UGBlocks.POLISHED_DEPTHROCK);
-		stairs(UGBlocks.DEPTHROCK_BRICK_STAIRS, UGBlocks.DEPTHROCK_BRICKS);
-		stairs(UGBlocks.SMOGSTEM_STAIRS, UGBlocks.SMOGSTEM_PLANKS);
-		stairs(UGBlocks.WIGGLEWOOD_STAIRS, UGBlocks.WIGGLEWOOD_PLANKS);
-		stairs(UGBlocks.SHIVERSTONE_STAIRS, UGBlocks.SHIVERSTONE);
-		stairs(UGBlocks.SHIVERSTONE_BRICK_STAIRS, UGBlocks.SHIVERSTONE_BRICKS);
-		stairs(UGBlocks.GRONGLE_STAIRS, UGBlocks.GRONGLE_PLANKS);
-		stairs(UGBlocks.TREMBLECRUST_STAIRS, UGBlocks.TREMBLECRUST);
-		stairs(UGBlocks.TREMBLECRUST_BRICK_STAIRS, UGBlocks.TREMBLECRUST_BRICKS);
-		stairs(UGBlocks.CLOGGRUM_TILE_STAIRS, UGBlocks.CLOGGRUM_TILES);
-		stairs(UGBlocks.DEPTHROCK_TILE_STAIRS, UGBlocks.DEPTHROCK_TILES);
-		stairs(UGBlocks.ANCIENT_ROOT_STAIRS, UGBlocks.ANCIENT_ROOT_PLANKS);
-		stairs(UGBlocks.DREADROCK_STAIRS, UGBlocks.DREADROCK);
-		stairs(UGBlocks.DREADROCK_BRICK_STAIRS, UGBlocks.DREADROCK_BRICKS);
+		this.wrapBlockItem(UGBlocks.DREADROCK.get(), this::createTrivialCube);
+		this.createNormalTorch(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get());
+		this.wrapBlockItem(UGBlocks.DEPTHROCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DEEPSOIL.get(), this::createTrivialCube);
+		this.createCrossBlockWithDefaultItem(UGBlocks.ASHEN_DEEPTURF.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_COAL_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_CLOGGRUM_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_UTHERIUM_ORE.get(), this::createTrivialCube);
+		this.woodProvider(UGBlocks.SMOGSTEM_LOG.get()).logWithHorizontal(UGBlocks.SMOGSTEM_LOG.get()).wood(UGBlocks.SMOGSTEM_WOOD.get());
+		this.woodProvider(UGBlocks.STRIPPED_SMOGSTEM_LOG.get()).logWithHorizontal(UGBlocks.STRIPPED_SMOGSTEM_LOG.get()).wood(UGBlocks.STRIPPED_SMOGSTEM_WOOD.get());
+		this.createPlantWithDefaultItem(UGBlocks.SMOGSTEM_SAPLING.get(), UGBlocks.POTTED_SMOGSTEM_SAPLING.get(), PlantType.NOT_TINTED);
+		this.woodProvider(UGBlocks.WIGGLEWOOD_LOG.get()).logWithHorizontal(UGBlocks.WIGGLEWOOD_LOG.get()).wood(UGBlocks.WIGGLEWOOD_WOOD.get());
+		this.woodProvider(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get()).logWithHorizontal(UGBlocks.STRIPPED_WIGGLEWOOD_LOG.get()).wood(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD.get());
+		this.createPlantWithDefaultItem(UGBlocks.WIGGLEWOOD_SAPLING.get(), UGBlocks.POTTED_WIGGLEWOOD_SAPLING.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.SMOGSTEM_PLANKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.WIGGLEWOOD_PLANKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SMOGSTEM_LEAVES.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.WIGGLEWOOD_LEAVES.get(), this::createTrivialCube);
+		this.createPlantWithDefaultItem(UGBlocks.INDIGO_MUSHROOM.get(), UGBlocks.POTTED_INDIGO_MUSHROOM.get(), PlantType.NOT_TINTED);
+		this.createPlantWithDefaultItem(UGBlocks.VEIL_MUSHROOM.get(), UGBlocks.POTTED_VEIL_MUSHROOM.get(), PlantType.NOT_TINTED);
+		this.createPlantWithDefaultItem(UGBlocks.INK_MUSHROOM.get(), UGBlocks.POTTED_INK_MUSHROOM.get(), PlantType.NOT_TINTED);
+		this.createPlantWithDefaultItem(UGBlocks.BLOOD_MUSHROOM.get(), UGBlocks.POTTED_BLOOD_MUSHROOM.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_BRICKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), this::createTrivialCube);
+		this.createCrossBlockWithDefaultItem(UGBlocks.GLITTERKELP.get(), PlantType.NOT_TINTED);
+		this.createCrossBlock(UGBlocks.GLITTERKELP_PLANT.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE_BRICKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_REGALIUM_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.TREMBLECRUST.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.TREMBLECRUST_BRICKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.TREMBLECRUST_UTHERIUM_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.LOOSE_TREMBLECRUST.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_IRON_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_GOLD_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_DIAMOND_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.COARSE_DEEPSOIL.get(), this::createTrivialCube);
+		this.woodProvider(UGBlocks.GRONGLE_LOG.get()).logWithHorizontal(UGBlocks.GRONGLE_LOG.get()).wood(UGBlocks.GRONGLE_WOOD.get());
+		this.woodProvider(UGBlocks.STRIPPED_GRONGLE_LOG.get()).logWithHorizontal(UGBlocks.STRIPPED_GRONGLE_LOG.get()).wood(UGBlocks.STRIPPED_GRONGLE_WOOD.get());
+		this.createPlantWithDefaultItem(UGBlocks.GRONGLE_SAPLING.get(), UGBlocks.POTTED_GRONGLE_SAPLING.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.GRONGLE_LEAVES.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.GRONGLE_PLANKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), this::createTrivialCube);
+		this.createCrossBlockWithDefaultItem(UGBlocks.SEEPING_INK.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.FORGOTTEN_BLOCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.CLOGGRUM_BLOCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.FROSTSTEEL_BLOCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.UTHERIUM_BLOCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.CHISELED_TREMBLECRUST_BRICKS.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SEDIMENT.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SEDIMENT_GLASS.get(), this::createTrivialCube);
+		this.createCrossBlockWithDefaultItem(UGBlocks.FROZEN_DEEPTURF.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.CLOGGRUM_TILES.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DEPTHROCK_TILES.get(), this::createTrivialCube);
+		this.createCarpet(UGBlocks.MOGMOSS_RUG.get());
+		this.createCarpet(UGBlocks.BLUE_MOGMOSS_RUG.get());
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE_COAL_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE_IRON_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE_DIAMOND_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE_UTHERIUM_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.SHIVERSTONE_REGALIUM_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.RAW_CLOGGRUM_BLOCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.RAW_FROSTSTEEL_BLOCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.POLISHED_DEPTHROCK.get(), this::createTrivialCube);
+		this.createPlantWithDefaultItem(UGBlocks.AMOROUS_BRISTLE.get(), UGBlocks.POTTED_AMOROUS_BRISTLE.get(), PlantType.NOT_TINTED);
+		this.createPlantWithDefaultItem(UGBlocks.MISERABELL.get(), UGBlocks.POTTED_MISERABELL.get(), PlantType.NOT_TINTED);
+		this.createPlantWithDefaultItem(UGBlocks.BUTTERBUNCH.get(), UGBlocks.POTTED_BUTTERBUNCH.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.INDIGO_MUSHROOM_CAP.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.INDIGO_MUSHROOM_STEM.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.VEIL_MUSHROOM_CAP.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.VEIL_MUSHROOM_STEM.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.INK_MUSHROOM_CAP.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.INK_MUSHROOM_STEM.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.BLOOD_MUSHROOM_CAP.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.BLOOD_MUSHROOM_STEM.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, new MultiVariant(
+			WeightedList.of(IntStream.range(1, 3)
+				.mapToObj(i -> new Weighted<>(plainModel(TexturedModel.CUBE.createWithSuffix(block, i == 1 ? "" : String.valueOf(i), this.modelOutput)), 1))
+				.collect(Collectors.toList())
+			)))));
+		this.wrapBlockItem(UGBlocks.DREADROCK_ROGDORIUM_ORE.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.ROGDORIUM_BLOCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.UTHERIUM_GROWTH.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DREADROCK_UTHERIUM_ORE.get(), this::createTrivialCube);
+		this.woodProvider(UGBlocks.ANCIENT_ROOT.get()).logWithHorizontal(UGBlocks.ANCIENT_ROOT.get());
+		this.woodProvider(UGBlocks.ROGDORIC_ANCIENT_ROOT.get()).logWithHorizontal(UGBlocks.ROGDORIC_ANCIENT_ROOT.get());
+		this.wrapBlockItem(UGBlocks.ANCIENT_ROOT_PLANKS.get(), this::createTrivialCube);
 
-		slab(UGBlocks.DEPTHROCK_SLAB, UGBlocks.DEPTHROCK);
-		slab(UGBlocks.POLISHED_DEPTHROCK_SLAB, UGBlocks.POLISHED_DEPTHROCK);
-		slab(UGBlocks.DEPTHROCK_BRICK_SLAB, UGBlocks.DEPTHROCK_BRICKS);
-		slab(UGBlocks.SMOGSTEM_SLAB, UGBlocks.SMOGSTEM_PLANKS);
-		slab(UGBlocks.WIGGLEWOOD_SLAB, UGBlocks.WIGGLEWOOD_PLANKS);
-		slab(UGBlocks.SHIVERSTONE_SLAB, UGBlocks.SHIVERSTONE);
-		slab(UGBlocks.SHIVERSTONE_BRICK_SLAB, UGBlocks.SHIVERSTONE_BRICKS);
-		slab(UGBlocks.GRONGLE_SLAB, UGBlocks.GRONGLE_PLANKS);
-		slab(UGBlocks.TREMBLECRUST_SLAB, UGBlocks.TREMBLECRUST);
-		slab(UGBlocks.TREMBLECRUST_BRICK_SLAB, UGBlocks.TREMBLECRUST_BRICKS);
-		slab(UGBlocks.CLOGGRUM_TILE_SLAB, UGBlocks.CLOGGRUM_TILES);
-		slab(UGBlocks.DEPTHROCK_TILE_SLAB, UGBlocks.DEPTHROCK_TILES);
-		slab(UGBlocks.ANCIENT_ROOT_SLAB, UGBlocks.ANCIENT_ROOT_PLANKS);
-		slab(UGBlocks.DREADROCK_SLAB, UGBlocks.DREADROCK);
-		slab(UGBlocks.DREADROCK_BRICK_SLAB, UGBlocks.DREADROCK_BRICKS);
+		var denizenTotemTexture = TextureMapping.cubeBottomTop(UGBlocks.DENIZEN_TOTEM.get()).copyAndUpdate(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.ANCIENT_ROOT.get(), "_end"));
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.DENIZEN_TOTEM.get()).with(createBooleanModelDispatch(DenizenTotemBlock.ACTIVE,
+			plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(UGBlocks.DENIZEN_TOTEM.get(), "_active", denizenTotemTexture.copyAndUpdate(TextureSlot.SIDE, TextureMapping.getBlockTexture(UGBlocks.DENIZEN_TOTEM.get(), "_side_active")), this.modelOutput)),
+			plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.create(UGBlocks.DENIZEN_TOTEM.get(), denizenTotemTexture, this.modelOutput))
+		)));
+		this.createCrossBlockWithDefaultItem(UGBlocks.PUFF_MUSHROOM.get(), PlantType.NOT_TINTED);
+		this.wrapBlockItem(UGBlocks.PUFF_MUSHROOM_CAP.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.PUFF_MUSHROOM_STEM.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.DREADROCK_BRICKS.get(), this::createTrivialCube);
 
-		wall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK);
-		wall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK);
-		wall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS);
-		wall(UGBlocks.SHIVERSTONE_WALL, UGBlocks.SHIVERSTONE);
-		wall(UGBlocks.SHIVERSTONE_BRICK_WALL, UGBlocks.SHIVERSTONE_BRICKS);
-		wall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST);
-		wall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS);
-		wall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK);
-		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
+		this.blockStateOutput.accept(createSimpleBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), createRandomRotatedModel(plainModel(TexturedModel.CUBE_TOP_BOTTOM
+			.get(UGBlocks.ASHEN_DEEPTURF_BLOCK.get())
+			.updateTextures(m -> m.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.DEEPSOIL.get())))
+			.create(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), this.modelOutput)))));
 
-		fence(UGBlocks.SMOGSTEM_FENCE, UGBlocks.SMOGSTEM_PLANKS);
-		fence(UGBlocks.WIGGLEWOOD_FENCE, UGBlocks.WIGGLEWOOD_PLANKS);
-		fence(UGBlocks.GRONGLE_FENCE, UGBlocks.GRONGLE_PLANKS);
-		fence(UGBlocks.ANCIENT_ROOT_FENCE, UGBlocks.ANCIENT_ROOT_PLANKS);
 
-		fenceGate(UGBlocks.SMOGSTEM_FENCE_GATE, UGBlocks.SMOGSTEM_PLANKS);
-		fenceGate(UGBlocks.WIGGLEWOOD_FENCE_GATE, UGBlocks.WIGGLEWOOD_PLANKS);
-		fenceGate(UGBlocks.GRONGLE_FENCE_GATE, UGBlocks.GRONGLE_PLANKS);
-		fenceGate(UGBlocks.ANCIENT_ROOT_FENCE_GATE, UGBlocks.ANCIENT_ROOT_PLANKS);
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.BLISTERBERRY_BUSH.get()).with(
+			PropertyDispatch.initial(BlisterberryBushBlock.AGE).generate(age ->
+				plainVariant(this.createSuffixedVariant(UGBlocks.BLISTERBERRY_BUSH.get(), "_stage" + age, ModelTemplates.CROSS, TextureMapping::cross)))));
 
-		door(UGBlocks.SMOGSTEM_DOOR, "smogstem");
-		door(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood");
-		door(UGBlocks.GRONGLE_DOOR, "grongle");
-		door(UGBlocks.ANCIENT_ROOT_DOOR, "ancient_root");
+		this.simpleBlockBuilder(UGBlocks.BOOMGOURD.get(), ModelTemplates.CUBE_BOTTOM_TOP, block -> TextureMapping.cubeBottomTop(block).copyAndUpdate(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.GLOOMGOURD.get(), "_top")));
+		this.createPumpkinVariant(UGBlocks.CARVED_GLOOMGOURD.get(), TextureMapping.column(UGBlocks.GLOOMGOURD.get()));
+		this.createPumpkinVariant(UGBlocks.GLOOM_O_LANTERN.get(), TextureMapping.column(UGBlocks.GLOOMGOURD.get()));
+		this.createPumpkinVariant(UGBlocks.SHARD_O_LANTERN.get(), TextureMapping.column(UGBlocks.GLOOMGOURD.get()));
+		this.createStems(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
 
-		trapdoor(UGBlocks.SMOGSTEM_TRAPDOOR, "smogstem");
-		trapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR, "wigglewood");
-		trapdoor(UGBlocks.GRONGLE_TRAPDOOR, "grongle");
-		trapdoor(UGBlocks.ANCIENT_ROOT_TRAPDOOR, "ancient_root");
+		this.createCrossBlockWithDefaultItem(UGBlocks.DEEPTURF.get(), PlantType.TINTED);
 
-		button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
-		button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
-		button(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST);
-		button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
-		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
-		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
-		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
-		button(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK);
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.DEEPTURF_BLOCK.get()).with(
+			createBooleanModelDispatch(SpreadingDeepturfBlock.SNOWY,
+				plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(UGBlocks.DEEPTURF_BLOCK.get(), "_snowy", new TextureMapping()
+					.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), "_side"))
+					.put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.SNOW))
+					.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.DEEPSOIL.get())), this.modelOutput)),
+				createRandomRotatedModel(plainModel(TexturedModel.CUBE_TOP_BOTTOM
+					.get(UGBlocks.DEEPTURF_BLOCK.get())
+					.updateTextures(m -> m.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.DEEPSOIL.get())))
+					.create(UGBlocks.DEEPTURF_BLOCK.get(), this.modelOutput))))));
 
-		pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE, UGBlocks.DEPTHROCK);
-		pressurePlate(UGBlocks.SHIVERSTONE_PRESSURE_PLATE, UGBlocks.SHIVERSTONE);
-		pressurePlate(UGBlocks.TREMBLECRUST_PRESSURE_PLATE, UGBlocks.TREMBLECRUST);
-		pressurePlate(UGBlocks.SMOGSTEM_PRESSURE_PLATE, UGBlocks.SMOGSTEM_PLANKS);
-		pressurePlate(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE, UGBlocks.WIGGLEWOOD_PLANKS);
-		pressurePlate(UGBlocks.GRONGLE_PRESSURE_PLATE, UGBlocks.GRONGLE_PLANKS);
-		pressurePlate(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE, UGBlocks.ANCIENT_ROOT_PLANKS);
-		pressurePlate(UGBlocks.DREADROCK_PRESSURE_PLATE, UGBlocks.DREADROCK);
+		this.blockStateOutput.accept(createSimpleBlock(UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), createRandomRotatedModel(plainModel(TexturedModel.CUBE_TOP_BOTTOM
+			.get(UGBlocks.FROZEN_DEEPTURF_BLOCK.get())
+			.updateTextures(m -> m.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.DEEPSOIL.get())))
+			.create(UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), this.modelOutput)))));
 
-		sign(UGBlocks.SMOGSTEM_SIGN, UGBlocks.SMOGSTEM_WALL_SIGN, "smogstem_planks");
-		sign(UGBlocks.WIGGLEWOOD_SIGN, UGBlocks.WIGGLEWOOD_WALL_SIGN, "wigglewood_planks");
-		sign(UGBlocks.GRONGLE_SIGN, UGBlocks.GRONGLE_WALL_SIGN, "grongle_planks");
-		sign(UGBlocks.ANCIENT_ROOT_SIGN, UGBlocks.ANCIENT_ROOT_WALL_SIGN, "ancient_root_planks");
+		this.simpleBlockBuilder(UGBlocks.GOO_BLOCK.get(), ModelTemplates.CUBE_BOTTOM_TOP, TextureMapping::cubeBottomTop);
 
-		hangingSign(UGBlocks.SMOGSTEM_HANGING_SIGN, UGBlocks.SMOGSTEM_WALL_HANGING_SIGN, "stripped_smogstem_log_side");
-		hangingSign(UGBlocks.WIGGLEWOOD_HANGING_SIGN, UGBlocks.WIGGLEWOOD_WALL_HANGING_SIGN, "stripped_wigglewood_log_side");
-		hangingSign(UGBlocks.GRONGLE_HANGING_SIGN, UGBlocks.GRONGLE_WALL_HANGING_SIGN, "stripped_grongle_log_side");
-		hangingSign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN, UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN, "ancient_root_side");
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.HANGING_GRONGLE_LEAVES.get())
+			.with(PropertyDispatch.initial(HangingGrongleLeavesBlock.HALF)
+				.select(DoubleBlockHalf.LOWER, plainVariant(PlantType.NOT_TINTED.getCross().create(UGBlocks.HANGING_GRONGLE_LEAVES.get(), TextureMapping.cross(UGBlocks.HANGING_GRONGLE_LEAVES.get()), this.modelOutput)))
+				.select(DoubleBlockHalf.UPPER, plainVariant(PlantType.NOT_TINTED.getCross().createWithSuffix(UGBlocks.HANGING_GRONGLE_LEAVES.get(), "_top", TextureMapping.cross(TextureMapping.getBlockTexture(UGBlocks.HANGING_GRONGLE_LEAVES.get(), "_top")), this.modelOutput)))));
+	}
 
-		ModelFile ashen_deepturf = models().cubeBottomTop(name(UGBlocks.ASHEN_DEEPTURF_BLOCK), texture("ashen_deepturf_block_side"), texture("deepsoil"), texture("ashen_deepturf_block_top"));
-		simpleBlock(UGBlocks.ASHEN_DEEPTURF_BLOCK.get(), ConfiguredModel.builder()
-				.modelFile(ashen_deepturf).nextModel()
-				.rotationY(270).modelFile(ashen_deepturf).nextModel()
-				.rotationY(180).modelFile(ashen_deepturf).nextModel()
-				.rotationY(90).modelFile(ashen_deepturf).build());
+	public void wrapBlockItem(Block block, Consumer<Block> blockRegistry) {
+		blockRegistry.accept(block);
+		this.generateBlockItem(block);
+	}
 
-		getVariantBuilder(UGBlocks.BLISTERBERRY_BUSH.get()).forAllStates(state ->
-				ConfiguredModel.builder()
-						.modelFile(models().cross(name(UGBlocks.BLISTERBERRY_BUSH) + "_" + state.getValue(BlisterberryBushBlock.AGE), texture(name(UGBlocks.BLISTERBERRY_BUSH) + "_" + state.getValue(BlisterberryBushBlock.AGE))).renderType("cutout"))
-						.build());
+	public void wrapTintedBlockItem(Block block, ItemTintSource tint, Consumer<Block> blockRegistry) {
+		blockRegistry.accept(block);
+		this.generateTintedBlockItem(block, tint);
+	}
 
-		simpleBlock(UGBlocks.BOOMGOURD.get(), models().cubeBottomTop(name(UGBlocks.BOOMGOURD), texture("boomgourd_side"), texture("boomgourd_top"), texture("boomgourd_top")));
-		horizontalBlock(UGBlocks.CARVED_GLOOMGOURD.get(), models().orientable(name(UGBlocks.CARVED_GLOOMGOURD), texture("gloomgourd_side"), texture("carved_gloomgourd"), texture("gloomgourd_top")));
+	public void generateBlockItem(Block block) {
+		this.registerSimpleItemModel(block, BuiltInRegistries.BLOCK.getKey(block).withPrefix("block/"));
+	}
 
-		tintedCrossBlock(UGBlocks.DEEPTURF);
-		ModelFile deepturf = models().getExistingFile(Undergarden.prefix("block/deepturf_block"));
-		ModelFile deepturf_snow = models().cubeBottomTop(name(UGBlocks.DEEPTURF_BLOCK) + "_snowy", texture("frozen_deepturf_block_side"), texture("deepsoil"), mcLoc("block/snow"));
-		getVariantBuilder(UGBlocks.DEEPTURF_BLOCK.get()).forAllStates(state -> {
-			if (state.getValue(SpreadingDeepturfBlock.SNOWY)) {
-				return ConfiguredModel.builder().modelFile(deepturf_snow).build();
-			} else {
-				return ConfiguredModel.builder()
-						.modelFile(deepturf).nextModel()
-						.rotationY(270).modelFile(deepturf).nextModel()
-						.rotationY(180).modelFile(deepturf).nextModel()
-						.rotationY(90).modelFile(deepturf).build();
-			}
-		});
-		ModelFile frozen_deepturf = models().cubeBottomTop(name(UGBlocks.FROZEN_DEEPTURF_BLOCK), texture("frozen_deepturf_block_side"), texture("deepsoil"), texture("frozen_deepturf_block_top"));
-		simpleBlock(UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), ConfiguredModel.builder()
-				.modelFile(frozen_deepturf).nextModel()
-				.rotationY(270).modelFile(frozen_deepturf).nextModel()
-				.rotationY(180).modelFile(frozen_deepturf).nextModel()
-				.rotationY(90).modelFile(frozen_deepturf).build());
+	public void generateTintedBlockItem(Block block, ItemTintSource tint) {
+		this.registerSimpleTintedItemModel(block, BuiltInRegistries.BLOCK.getKey(block).withPrefix("block/"), tint);
+	}
 
-		horizontalBlock(UGBlocks.GLOOM_O_LANTERN.get(), models().orientable(name(UGBlocks.GLOOM_O_LANTERN), texture("gloomgourd_side"), texture("gloom_o_lantern"), texture("gloomgourd_top")));
-		simpleBlock(UGBlocks.GLOOMGOURD.get(), models().cubeColumn(name(UGBlocks.GLOOMGOURD), texture("gloomgourd_side"), texture("gloomgourd_top")));
-		getVariantBuilder(UGBlocks.GLOOMGOURD_STEM.get()).forAllStates(state ->
-				ConfiguredModel.builder()
-						.modelFile(models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM) + "_stage" + state.getValue(StemBlock.AGE), mcLoc("block/stem_growth" + state.getValue(StemBlock.AGE))).texture("stem", mcLoc("block/melon_stem")).renderType("cutout"))
-						.build());
-		horizontalBlock(UGBlocks.GLOOMGOURD_STEM_ATTACHED.get(), models().withExistingParent(name(UGBlocks.GLOOMGOURD_STEM_ATTACHED), mcLoc("stem_fruit")).texture("stem", mcLoc("block/melon_stem")).texture("upperstem", mcLoc("block/attached_melon_stem")).renderType("cutout"), 270);
+	public <B extends Block> void generateSpecialModel(B block, Block particleBlock, Function<B, ItemModel.Unbaked> itemModel) {
+		this.createParticleOnlyBlock(block, particleBlock);
+		this.itemModelOutput.accept(block.asItem(), itemModel.apply(block));
+	}
 
-		simpleBlock(UGBlocks.GOO_BLOCK.get(), models().cubeBottomTop(name(UGBlocks.GOO_BLOCK), texture("goo_block_side"), texture("goo_block_bottom"), texture("goo_block_top")));
+	private void createCarpet(Block carpet) {
+		MultiVariant model = plainVariant(TexturedModel.CARPET.get(carpet).create(carpet, this.modelOutput));
+		this.blockStateOutput.accept(createSimpleBlock(carpet, model));
+	}
 
-		getVariantBuilder(UGBlocks.HANGING_GRONGLE_LEAVES.get()).forAllStates(state -> {
-			String name = name(UGBlocks.HANGING_GRONGLE_LEAVES) + (state.getValue(HangingGrongleLeavesBlock.HALF) == DoubleBlockHalf.UPPER ? "_top" : "");
-			return ConfiguredModel.builder().modelFile(models().cross(name, texture(name)).renderType("minecraft:cutout")).build();
-		});
+	public void simpleBlockBuilder(Block block, ModelTemplate template, Function<Block, TextureMapping> mapping) {
+		this.blockStateOutput.accept(createSimpleBlock(block, plainVariant(template.create(block, mapping.apply(block), this.modelOutput))));
+	}
+
+	public MultiVariant createRandomRotatedModel(Variant model) {
+		return variants(model, model.with(X_ROT_90), model.with(X_ROT_180), model.with(X_ROT_270));
 	}
 }

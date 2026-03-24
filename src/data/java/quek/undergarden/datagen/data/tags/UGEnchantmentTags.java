@@ -16,6 +16,7 @@ public class UGEnchantmentTags extends EnchantmentTagsProvider {
 		super(packOutput, provider, Undergarden.MODID);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		this.tag(EnchantmentTags.NON_TREASURE).add(UGEnchantments.SELF_SLING, UGEnchantments.RICOCHET, UGEnchantments.RICOCHET);

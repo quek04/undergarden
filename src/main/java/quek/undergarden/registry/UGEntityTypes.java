@@ -42,7 +42,6 @@ import java.util.function.Supplier;
 public class UGEntityTypes {
 
 	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, Undergarden.MODID);
-	public static final DeferredRegister<Item> SPAWN_EGGS = DeferredRegister.create(Registries.ITEM, Undergarden.MODID);
 	public static final Map<Holder<EntityType<?>>, Supplier<AttributeSupplier.Builder>> ATTRIBUTES = new HashMap<>();
 	public static final Map<Holder<EntityType<?>>, SpawnPlacements.SpawnPredicate<?>> SPAWN_PREDICATES = new HashMap<>();
 
@@ -118,7 +117,7 @@ public class UGEntityTypes {
 
 	public static <E extends Mob> DeferredHolder<EntityType<?>, EntityType<E>> registerWithEgg(String name, EntityType.Builder<E> builder, Supplier<AttributeSupplier.Builder> attributes, SpawnPlacements.@Nullable SpawnPredicate<E> predicate) {
 		DeferredHolder<EntityType<?>, EntityType<E>> ret = registerWithPlacement(name, builder, attributes, predicate);
-		SPAWN_EGGS.register(name + "_spawn_egg", () -> new SpawnEggItem(new Item.Properties().spawnEgg(ret.get()).setId(ResourceKey.create(Registries.ITEM, Undergarden.prefix(name + "_spawn_egg")))));
+		UGItems.register(name + "_spawn_egg", SpawnEggItem::new, () -> new Item.Properties().spawnEgg(ret.get()));
 		return ret;
 	}
 

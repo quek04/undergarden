@@ -6,11 +6,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.KeyTagProvider;
 import net.minecraft.tags.TimelineTags;
 import net.minecraft.world.timeline.Timeline;
-import quek.undergarden.UGRegistries;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.monster.stoneborn.trading.StonebornTrade;
 import quek.undergarden.registry.UGTags;
-import quek.undergarden.registry.custom.UGStonebornTrades;
 
 import java.util.concurrent.CompletableFuture;
 

@@ -4,16 +4,15 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jspecify.annotations.Nullable;;
-import quek.undergarden.recipe.ItemInfusingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.recipe.InfusingBookCategory;
+import quek.undergarden.recipe.ItemInfusingRecipe;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -48,15 +47,15 @@ public class ItemInfusingRecipeBuilder implements RecipeBuilder {
 	}
 
 	@Override
-	public Item getResult() {
-		return Items.AIR;
+	public ResourceKey<Recipe<?>> defaultId() {
+		return RecipeBuilder.getDefaultRecipeId(this.ingredient.getValues().get(0).value().getDefaultInstance());
 	}
 
 	@Override
-	public void save(RecipeOutput recipeOutput, Identifier id) {
-		Advancement.Builder builder = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
+	public void save(RecipeOutput output, ResourceKey<Recipe<?>> location) {
+		Advancement.Builder builder = output.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(location)).rewards(AdvancementRewards.Builder.recipe(location)).requirements(AdvancementRequirements.Strategy.OR);
 		this.criteria.forEach(builder::addCriterion);
-		ItemInfusingRecipe recipe = new ItemInfusingRecipe(this.bookCategory, this.ingredient, this.infusingTime, this.experience);
-		recipeOutput.accept(id, recipe, builder.build(id.withPrefix("recipes/infusing/" + this.bookCategory.getSerializedName() + "/")));
+		ItemInfusingRecipe recipe = new ItemInfusingRecipe(RecipeBuilder.createCraftingCommonInfo(false), this.bookCategory, this.ingredient, this.infusingTime, this.experience);
+		output.accept(location, recipe, builder.build(location.identifier().withPrefix("recipes/infusing/" + this.bookCategory.getSerializedName() + "/")));
 	}
 }

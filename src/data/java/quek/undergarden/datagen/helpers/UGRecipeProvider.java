@@ -4,9 +4,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -31,7 +29,6 @@ import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
 public abstract class UGRecipeProvider extends RecipeProvider {

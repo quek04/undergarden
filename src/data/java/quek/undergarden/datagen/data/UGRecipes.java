@@ -4,29 +4,22 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import quek.undergarden.Undergarden;
 import quek.undergarden.datagen.helpers.UGRecipeProvider;
 import quek.undergarden.recipe.InfusingBookCategory;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGTags;
-
-import java.util.concurrent.CompletableFuture;
 
 public class UGRecipes extends UGRecipeProvider {
 

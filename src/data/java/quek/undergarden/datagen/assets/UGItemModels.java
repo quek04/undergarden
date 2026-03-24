@@ -1,364 +1,179 @@
 package quek.undergarden.datagen.assets;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.PackOutput;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.ItemModelOutput;
+import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.SelectItemModel;
+import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.level.material.Fluids;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
-import quek.undergarden.datagen.helpers.UGItemModelProvider;
-import quek.undergarden.datagen.helpers.builder.CloggrumBucketModelBuilder;
-import quek.undergarden.registry.UGBlocks;
-import quek.undergarden.registry.UGItems;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
+import net.minecraft.world.item.equipment.trim.TrimMaterial;
+import net.minecraft.world.item.equipment.trim.TrimMaterials;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import quek.undergarden.registry.*;
 
-public class UGItemModels extends UGItemModelProvider {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-	public UGItemModels(PackOutput output, ExistingFileHelper fileHelper) {
-		super(output, fileHelper);
+public class UGItemModels extends ItemModelGenerators {
+
+	private static final List<TrimMaterialData> EX_TRIM_MATERIAL_MODELS = List.of(
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.QUARTZ, TrimMaterials.QUARTZ),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.IRON, TrimMaterials.IRON),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.NETHERITE, TrimMaterials.NETHERITE),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.REDSTONE, TrimMaterials.REDSTONE),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.COPPER, TrimMaterials.COPPER),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.GOLD, TrimMaterials.GOLD),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.EMERALD, TrimMaterials.EMERALD),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.DIAMOND, TrimMaterials.DIAMOND),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.LAPIS, TrimMaterials.LAPIS),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.AMETHYST, TrimMaterials.AMETHYST),
+		new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.RESIN, TrimMaterials.RESIN),
+		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.CLOGGRUM, UGTrimMaterials.CLOGGRUM),
+		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.FROSTSTEEL, UGTrimMaterials.FROSTSTEEL),
+		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.UTHERIUM, UGTrimMaterials.UTHERIUM),
+		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.REGALIUM, UGTrimMaterials.REGALIUM),
+		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.FORGOTTEN, UGTrimMaterials.FORGOTTEN),
+		new ItemModelGenerators.TrimMaterialData(UGMaterialAssetGroups.ROGDORIUM, UGTrimMaterials.ROGDORIUM));
+
+	public UGItemModels(ItemModelOutput output, BiConsumer<Identifier, ModelInstance> modelOutput) {
+		super(output, modelOutput);
 	}
 
 	@Override
-	protected void registerModels() {
-		block(UGBlocks.DREADROCK);
-		block(UGBlocks.DEPTHROCK);
-		block(UGBlocks.DEPTHROCK_COAL_ORE);
-		block(UGBlocks.DEPTHROCK_CLOGGRUM_ORE);
-		block(UGBlocks.SHIVERSTONE_FROSTSTEEL_ORE);
-		block(UGBlocks.DEPTHROCK_UTHERIUM_ORE);
-		block(UGBlocks.DEEPTURF_BLOCK);
-		block(UGBlocks.DEEPSOIL_FARMLAND);
-		block(UGBlocks.DEEPSOIL);
-		blockFlat(UGBlocks.SMOGSTEM_SAPLING);
-		block(UGBlocks.SMOGSTEM_LOG);
-		block(UGBlocks.SMOGSTEM_LEAVES);
-		blockFlat(UGBlocks.WIGGLEWOOD_SAPLING);
-		block(UGBlocks.WIGGLEWOOD_LOG);
-		block(UGBlocks.WIGGLEWOOD_LEAVES);
-		block(UGBlocks.SMOGSTEM_PLANKS);
-		block(UGBlocks.WIGGLEWOOD_PLANKS);
-		block(UGBlocks.DEPTHROCK_BRICKS);
-		block(UGBlocks.CRACKED_DEPTHROCK_BRICKS);
-		blockFlat(UGBlocks.DEEPTURF);
-		blockFlat(UGBlocks.DITCHBULB_PLANT);
-		blockFlat(UGBlocks.INDIGO_MUSHROOM);
-		blockFlat(UGBlocks.VEIL_MUSHROOM);
-		blockFlat(UGBlocks.INK_MUSHROOM);
-		blockFlat(UGBlocks.BLOOD_MUSHROOM);
-		block(UGBlocks.GLOOMGOURD);
-		block(UGBlocks.CARVED_GLOOMGOURD);
-		block(UGBlocks.DEPTHROCK_PEBBLES);
-		block(UGBlocks.GLOOM_O_LANTERN);
-		block(UGBlocks.SHARD_O_LANTERN);
-		block(UGBlocks.CLOGGRUM_BLOCK);
-		block(UGBlocks.FROSTSTEEL_BLOCK);
-		block(UGBlocks.UTHERIUM_BLOCK);
-		block(UGBlocks.DEPTHROCK_STAIRS);
-		block(UGBlocks.DEPTHROCK_BRICK_STAIRS);
-		block(UGBlocks.SMOGSTEM_STAIRS);
-		block(UGBlocks.WIGGLEWOOD_STAIRS);
-		block(UGBlocks.DEPTHROCK_SLAB);
-		block(UGBlocks.DEPTHROCK_BRICK_SLAB);
-		block(UGBlocks.SMOGSTEM_SLAB);
-		block(UGBlocks.WIGGLEWOOD_SLAB);
-		itemFence(UGBlocks.SMOGSTEM_FENCE, "smogstem_planks");
-		itemFence(UGBlocks.WIGGLEWOOD_FENCE, "wigglewood_planks");
-		blockFlat(UGBlocks.CLOGGRUM_BARS);
-		block(UGBlocks.SHIVERSTONE);
-		block(UGBlocks.GOO);
-		block(UGBlocks.SMOG_VENT);
-		blockFlat(UGBlocks.ASHEN_DEEPTURF);
-		block(UGBlocks.ASHEN_DEEPTURF_BLOCK);
-		block(UGBlocks.DEPTHROCK_REGALIUM_ORE);
-		block(UGBlocks.SHIVERSTONE_BRICKS);
-		block(UGBlocks.SHIVERSTONE_STAIRS);
-		block(UGBlocks.SHIVERSTONE_BRICK_STAIRS);
-		block(UGBlocks.SHIVERSTONE_SLAB);
-		block(UGBlocks.SHIVERSTONE_BRICK_SLAB);
-		block(UGBlocks.REGALIUM_BLOCK);
-		block(UGBlocks.TREMBLECRUST);
-		block(UGBlocks.TREMBLECRUST_BRICKS);
-		block(UGBlocks.CRACKED_TREMBLECRUST_BRICKS);
-		block(UGBlocks.TREMBLECRUST_UTHERIUM_ORE);
-		block(UGBlocks.SMOGSTEM_WOOD);
-		block(UGBlocks.WIGGLEWOOD_WOOD);
-		block(UGBlocks.LOOSE_TREMBLECRUST);
-		block(UGBlocks.DEPTHROCK_IRON_ORE);
-		block(UGBlocks.DEPTHROCK_GOLD_ORE);
-		block(UGBlocks.DEPTHROCK_DIAMOND_ORE);
-		block(UGBlocks.SMOGSTEM_FENCE_GATE);
-		block(UGBlocks.WIGGLEWOOD_FENCE_GATE);
-		wall(UGBlocks.DEPTHROCK_WALL, UGBlocks.DEPTHROCK);
-		wall(UGBlocks.POLISHED_DEPTHROCK_WALL, UGBlocks.POLISHED_DEPTHROCK);
-		wall(UGBlocks.DEPTHROCK_BRICK_WALL, UGBlocks.DEPTHROCK_BRICKS);
-		wall(UGBlocks.SHIVERSTONE_WALL, UGBlocks.SHIVERSTONE);
-		wall(UGBlocks.SHIVERSTONE_BRICK_WALL, UGBlocks.SHIVERSTONE_BRICKS);
-		wall(UGBlocks.TREMBLECRUST_WALL, UGBlocks.TREMBLECRUST);
-		wall(UGBlocks.TREMBLECRUST_BRICK_WALL, UGBlocks.TREMBLECRUST_BRICKS);
-		block(UGBlocks.COARSE_DEEPSOIL);
-		block(UGBlocks.SMOGSTEM_PRESSURE_PLATE);
-		block(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE);
-		block(UGBlocks.DEPTHROCK_PRESSURE_PLATE);
-		block(UGBlocks.SHIVERSTONE_PRESSURE_PLATE);
-		blockFlat(UGBlocks.GRONGLE_SAPLING);
-		block(UGBlocks.GRONGLE_LOG);
-		block(UGBlocks.GRONGLE_LEAVES);
-		block(UGBlocks.GRONGLE_WOOD);
-		block(UGBlocks.GRONGLE_SLAB);
-		itemFence(UGBlocks.GRONGLE_FENCE, "grongle_planks");
-		block(UGBlocks.GRONGLE_PLANKS);
-		block(UGBlocks.GRONGLE_FENCE_GATE);
-		block(UGBlocks.GRONGLE_STAIRS);
-		block(UGBlocks.GRONGLE_PRESSURE_PLATE);
-		block(UGBlocks.STRIPPED_SMOGSTEM_LOG);
-		block(UGBlocks.STRIPPED_WIGGLEWOOD_LOG);
-		block(UGBlocks.STRIPPED_GRONGLE_LOG);
-		block(UGBlocks.STRIPPED_SMOGSTEM_WOOD);
-		block(UGBlocks.STRIPPED_WIGGLEWOOD_WOOD);
-		block(UGBlocks.STRIPPED_GRONGLE_WOOD);
-		block(UGBlocks.CRACKED_SHIVERSTONE_BRICKS);
-		block(UGBlocks.FORGOTTEN_BLOCK);
-		block(UGBlocks.CHISELED_DEPTHROCK_BRICKS);
-		block(UGBlocks.CHISELED_SHIVERSTONE_BRICKS);
-		block(UGBlocks.FROZEN_DEEPTURF_BLOCK);
-		blockFlat(UGBlocks.FROZEN_DEEPTURF);
-		block(UGBlocks.CHISELED_TREMBLECRUST_BRICKS);
-		block(UGBlocks.TREMBLECRUST_STAIRS);
-		block(UGBlocks.TREMBLECRUST_BRICK_STAIRS);
-		block(UGBlocks.TREMBLECRUST_SLAB);
-		block(UGBlocks.TREMBLECRUST_BRICK_SLAB);
-		block(UGBlocks.TREMBLECRUST_PRESSURE_PLATE);
-		block(UGBlocks.GOO_BLOCK);
-		block(UGBlocks.SEDIMENT);
-		block(UGBlocks.SEDIMENT_GLASS);
-		blockFlatWithBlockTexture(UGBlocks.SEDIMENT_GLASS_PANE, "sediment_glass");
-		block(UGBlocks.CLOGGRUM_TILES);
-		block(UGBlocks.CLOGGRUM_TILE_STAIRS);
-		block(UGBlocks.CLOGGRUM_TILE_SLAB);
-		block(UGBlocks.DEPTHROCK_TILES);
-		block(UGBlocks.DEPTHROCK_TILE_STAIRS);
-		block(UGBlocks.DEPTHROCK_TILE_SLAB);
-		block(UGBlocks.MOGMOSS_RUG);
-		block(UGBlocks.BLUE_MOGMOSS_RUG);
-		normalItem(UGItems.MAMMOTH_DISC);
-		normalItem(UGItems.LIMAX_MAXIMUS_DISC);
-		normalItem(UGItems.GLOOMPER_ANTHEM_DISC);
-		normalItem(UGItems.RELICT_DISC);
-		normalItem(UGItems.GLOOMPER_SECRET_DISC);
-		normalItem(UGItems.CATALYST);
-		normalItem(UGItems.CRUMBLING_CATALYST);
-		normalItem(UGItems.DEPTHROCK_PEBBLE);
-		normalItem(UGItems.TWISTYTWIG);
-		normalItem(UGItems.CLOGGRUM_INGOT);
-		normalItem(UGItems.CLOGGRUM_NUGGET);
-		normalItem(UGItems.FROSTSTEEL_INGOT);
-		normalItem(UGItems.FROSTSTEEL_NUGGET);
-		normalItem(UGItems.UTHERIC_SHARD);
-		normalItem(UGItems.UTHERIUM_CRYSTAL);
-		normalItem(UGItems.REGALIUM_CRYSTAL);
-		normalItem(UGItems.FORGOTTEN_INGOT);
-		normalItem(UGItems.FORGOTTEN_NUGGET);
-		torchItem(UGBlocks.SHARD_TORCH);
-		normalItem(UGItems.DITCHBULB);
-		normalItem(UGItems.GLOOMGOURD_SEEDS);
-		normalItem(UGItems.BRUTE_TUSK);
-		normalItem(UGItems.MOGMOSS);
-		normalItem(UGItems.GLITTERKELP);
-		normalItem(UGItems.GOO_BALL);
-		normalItem(UGItems.ROTTEN_BLISTERBERRY);
-		normalItem(UGItems.BLISTERBOMB);
-		normalItem(UGItems.DROOPFRUIT);
-		toolItem(UGItems.CLOGGRUM_SWORD);
-		toolItem(UGItems.CLOGGRUM_PICKAXE);
-		toolItem(UGItems.CLOGGRUM_AXE);
-		toolItem(UGItems.CLOGGRUM_SHOVEL);
-		toolItem(UGItems.CLOGGRUM_HOE);
-		normalItem(UGItems.CLOGGRUM_HELMET);
-		normalItem(UGItems.CLOGGRUM_CHESTPLATE);
-		normalItem(UGItems.CLOGGRUM_LEGGINGS);
-		normalItem(UGItems.CLOGGRUM_BOOTS);
-		normalItem(UGItems.FROSTSTEEL_HELMET);
-		normalItem(UGItems.FROSTSTEEL_CHESTPLATE);
-		normalItem(UGItems.FROSTSTEEL_LEGGINGS);
-		normalItem(UGItems.FROSTSTEEL_BOOTS);
-		normalItem(UGItems.UTHERIUM_HELMET);
-		normalItem(UGItems.UTHERIUM_CHESTPLATE);
-		normalItem(UGItems.UTHERIUM_LEGGINGS);
-		normalItem(UGItems.UTHERIUM_BOOTS);
-		toolItem(UGItems.FROSTSTEEL_SWORD);
-		toolItem(UGItems.FROSTSTEEL_PICKAXE);
-		toolItem(UGItems.FROSTSTEEL_AXE);
-		toolItem(UGItems.FROSTSTEEL_SHOVEL);
-		toolItem(UGItems.FROSTSTEEL_HOE);
-		toolItem(UGItems.UTHERIUM_SWORD);
-		toolItem(UGItems.UTHERIUM_PICKAXE);
-		toolItem(UGItems.UTHERIUM_AXE);
-		toolItem(UGItems.UTHERIUM_SHOVEL);
-		toolItem(UGItems.UTHERIUM_HOE);
-		normalItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE);
-		toolItem(UGItems.FORGOTTEN_SWORD);
-		toolItem(UGItems.FORGOTTEN_PICKAXE);
-		toolItem(UGItems.FORGOTTEN_AXE);
-		toolItem(UGItems.FORGOTTEN_SHOVEL);
-		toolItem(UGItems.FORGOTTEN_HOE);
-		normalItem(UGItems.SMOGSTEM_BOAT);
-		normalItem(UGItems.SMOGSTEM_CHEST_BOAT);
-		normalItem(UGItems.WIGGLEWOOD_BOAT);
-		normalItem(UGItems.WIGGLEWOOD_CHEST_BOAT);
-		normalItem(UGItems.GRONGLE_BOAT);
-		normalItem(UGItems.GRONGLE_CHEST_BOAT);
-		normalItem(UGItems.VIRULENT_MIX_BUCKET);
-		normalItem(UGItems.GWIBLING_BUCKET);
-		normalItem(UGItems.UNDERBEANS);
-		normalItem(UGItems.ROASTED_UNDERBEANS);
-		normalItem(UGItems.BLISTERBERRY);
-		normalItem(UGItems.GLOOMGOURD_PIE);
-		normalItem(UGItems.RAW_DWELLER_MEAT);
-		normalItem(UGItems.DWELLER_STEAK);
-		normalItem(UGItems.RAW_GWIBLING);
-		normalItem(UGItems.COOKED_GWIBLING);
-		normalItem(UGItems.RAW_GLOOMPER_LEG);
-		normalItem(UGItems.GLOOMPER_LEG);
-		normalItem(UGItems.BLOODY_STEW);
-		normalItem(UGItems.INDIGO_STEW);
-		normalItem(UGItems.INKY_STEW);
-		normalItem(UGItems.VEILED_STEW);
-		rodItem(UGItems.UNDERBEAN_STICK);
-		normalItem(UGItems.RAW_CLOGGRUM);
-		normalItem(UGItems.RAW_FROSTSTEEL);
-		block(UGBlocks.SHIVERSTONE_COAL_ORE);
-		block(UGBlocks.SHIVERSTONE_IRON_ORE);
-		block(UGBlocks.SHIVERSTONE_DIAMOND_ORE);
-		block(UGBlocks.SHIVERSTONE_CLOGGRUM_ORE);
-		block(UGBlocks.SHIVERSTONE_UTHERIUM_ORE);
-		block(UGBlocks.SHIVERSTONE_REGALIUM_ORE);
-		block(UGBlocks.RAW_CLOGGRUM_BLOCK);
-		block(UGBlocks.RAW_FROSTSTEEL_BLOCK);
-		blockFlatWithItemTexture(UGBlocks.CLOGGRUM_LANTERN, "cloggrum_lantern_item");
-		blockFlat(UGBlocks.HANGING_GRONGLE_LEAVES);
-		block(UGBlocks.BOOMGOURD);
-		block(UGBlocks.POLISHED_DEPTHROCK);
-		block(UGBlocks.POLISHED_DEPTHROCK_SLAB);
-		block(UGBlocks.POLISHED_DEPTHROCK_STAIRS);
-		normalItem(UGItems.DITCHBULB_PASTE);
-		blockFlat(UGBlocks.AMOROUS_BRISTLE);
-		blockFlat(UGBlocks.MISERABELL);
-		blockFlat(UGBlocks.BUTTERBUNCH);
-		block(UGBlocks.INDIGO_MUSHROOM_CAP);
-		block(UGBlocks.INDIGO_MUSHROOM_STEM);
-		block(UGBlocks.VEIL_MUSHROOM_CAP);
-		block(UGBlocks.VEIL_MUSHROOM_STEM);
-		blockFlat(UGBlocks.MUSHROOM_VEIL);
-		block(UGBlocks.INK_MUSHROOM_CAP);
-		blockFlat(UGBlocks.SEEPING_INK);
-		block(UGBlocks.INK_MUSHROOM_STEM);
-		block(UGBlocks.BLOOD_MUSHROOM_CAP);
-		block(UGBlocks.BLOOD_MUSHROOM_STEM);
-		normalItem(UGItems.BLOOD_GLOBULE);
-		block(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP);
-		normalItem(UGItems.BLUE_MOGMOSS);
-		normalItem(UGItems.SLOP_BOWL);
-		normalItem(UGItems.ANCIENT_HELMET);
-		normalItem(UGItems.ANCIENT_CHESTPLATE);
-		normalItem(UGItems.ANCIENT_LEGGINGS);
-		block(UGBlocks.DREADROCK_ROGDORIUM_ORE);
-		block(UGBlocks.ROGDORIUM_BLOCK);
-		normalItem(UGItems.ROGDORIUM);
-		normalItem(UGItems.ROGDORIUM_NUGGET);
-		block(UGBlocks.UTHERIUM_GROWTH);
-		block(UGBlocks.DREADROCK_UTHERIUM_ORE);
-		block(UGBlocks.ANCIENT_ROOT);
-		block(UGBlocks.ROGDORIC_ANCIENT_ROOT);
-		block(UGBlocks.ANCIENT_ROOT_PLANKS);
-		block(UGBlocks.ANCIENT_ROOT_STAIRS);
-		block(UGBlocks.ANCIENT_ROOT_SLAB);
-		itemFence(UGBlocks.ANCIENT_ROOT_FENCE, "ancient_root_planks");
-		block(UGBlocks.ANCIENT_ROOT_FENCE_GATE);
-		block(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE);
-		normalItem(UGItems.ANCIENT_ROOT_BOAT);
-		normalItem(UGItems.ANCIENT_ROOT_CHEST_BOAT);
-		withExistingParent(BuiltInRegistries.ITEM.getKey(UGItems.DENIZEN_MASK.get()).getPath(), mcLoc("item/generated"))
-			.texture("layer0", modLoc("item/denizen_mask"))
-			.transforms().transform(ItemDisplayContext.HEAD).scale(0.0F);
-		block(UGBlocks.DENIZEN_TOTEM);
-		blockFlat(UGBlocks.PUFF_MUSHROOM);
-		block(UGBlocks.PUFF_MUSHROOM_CAP);
-		block(UGBlocks.PUFF_MUSHROOM_STEM);
-		block(UGBlocks.INFUSER);
-		block(UGBlocks.DREADROCK_BRICKS);
-		block(UGBlocks.DREADROCK_STAIRS);
-		block(UGBlocks.DREADROCK_BRICK_STAIRS);
-		block(UGBlocks.DREADROCK_SLAB);
-		block(UGBlocks.DREADROCK_BRICK_SLAB);
-		wall(UGBlocks.DREADROCK_WALL, UGBlocks.DREADROCK);
-		wall(UGBlocks.DREADROCK_BRICK_WALL, UGBlocks.DREADROCK_BRICKS);
-		block(UGBlocks.DREADROCK_PRESSURE_PLATE);
-		normalItem(UGItems.UTHERIC_CLUSTER);
-		//normalItem(UGItems.CORRUPT_CATALYST);
+	public void run() {
+		for (DeferredHolder<Item, ? extends Item> egg : UGItems.ITEMS.getEntries().stream().filter(holder -> holder.get() instanceof SpawnEggItem).toList()) {
+			this.generateFlatItem(egg.get(), ModelTemplates.FLAT_ITEM);
+		}
 
-		egg(UGItems.DWELLER_SPAWN_EGG);
-		egg(UGItems.GREATER_DWELLER_SPAWN_EGG);
-		egg(UGItems.GWIBLING_SPAWN_EGG);
-		egg(UGItems.ROTLING_SPAWN_EGG);
-		egg(UGItems.ROTWALKER_SPAWN_EGG);
-		egg(UGItems.ROTBEAST_SPAWN_EGG);
-		egg(UGItems.ROTBELCHER_SPAWN_EGG);
-		egg(UGItems.BRUTE_SPAWN_EGG);
-		egg(UGItems.SCINTLING_SPAWN_EGG);
-		egg(UGItems.GLOOMPER_SPAWN_EGG);
-		egg(UGItems.STONEBORN_SPAWN_EGG);
-		egg(UGItems.NARGOYLE_SPAWN_EGG);
-		egg(UGItems.MUNCHER_SPAWN_EGG);
-		egg(UGItems.SPLOOGIE_SPAWN_EGG);
-		egg(UGItems.GWIB_SPAWN_EGG);
-		egg(UGItems.MOG_SPAWN_EGG);
-		egg(UGItems.SMOG_MOG_SPAWN_EGG);
-		egg(UGItems.FORGOTTEN_SPAWN_EGG);
-		egg(UGItems.DENIZEN_SPAWN_EGG);
-		egg(UGItems.FORGOTTEN_GUARDIAN_SPAWN_EGG);
-		egg(UGItems.MINION_SPAWN_EGG);
-		egg(UGItems.MYSTERIOUS_POT_SPAWN_EGG);
+		this.generateFlatItem(UGItems.MAMMOTH_DISC.get(), ModelTemplates.MUSIC_DISC);
+		this.generateFlatItem(UGItems.LIMAX_MAXIMUS_DISC.get(), ModelTemplates.MUSIC_DISC);
+		this.generateFlatItem(UGItems.GLOOMPER_ANTHEM_DISC.get(), ModelTemplates.MUSIC_DISC);
+		this.generateFlatItem(UGItems.RELICT_DISC.get(), ModelTemplates.MUSIC_DISC);
+		this.generateFlatItem(UGItems.GLOOMPER_SECRET_DISC.get(), ModelTemplates.MUSIC_DISC);
+		this.generateFlatItem(UGItems.CATALYST.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.CRUMBLING_CATALYST.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.DEPTHROCK_PEBBLE.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.TWISTYTWIG.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.CLOGGRUM_INGOT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.CLOGGRUM_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.FROSTSTEEL_INGOT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.FROSTSTEEL_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.UTHERIC_SHARD.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.UTHERIUM_CRYSTAL.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.REGALIUM_CRYSTAL.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.FORGOTTEN_INGOT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.FORGOTTEN_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.DITCHBULB.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.GLOOMGOURD_SEEDS.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.BRUTE_TUSK.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.MOGMOSS.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.GLITTERKELP.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.GOO_BALL.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.ROTTEN_BLISTERBERRY.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.BLISTERBOMB.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.DROOPFRUIT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.CLOGGRUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.CLOGGRUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.CLOGGRUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.CLOGGRUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.CLOGGRUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateExpandedTrimmableItem(UGItems.CLOGGRUM_HELMET.get(), UGEquipmentAssets.CLOGGRUM, ItemModelGenerators.TRIM_PREFIX_HELMET);
+		this.generateExpandedTrimmableItem(UGItems.CLOGGRUM_CHESTPLATE.get(), UGEquipmentAssets.CLOGGRUM, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
+		this.generateExpandedTrimmableItem(UGItems.CLOGGRUM_LEGGINGS.get(), UGEquipmentAssets.CLOGGRUM, ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
+		this.generateExpandedTrimmableItem(UGItems.CLOGGRUM_BOOTS.get(), UGEquipmentAssets.CLOGGRUM, ItemModelGenerators.TRIM_PREFIX_BOOTS);
+		this.generateExpandedTrimmableItem(UGItems.FROSTSTEEL_HELMET.get(), UGEquipmentAssets.FROSTSTEEL, ItemModelGenerators.TRIM_PREFIX_HELMET);
+		this.generateExpandedTrimmableItem(UGItems.FROSTSTEEL_CHESTPLATE.get(), UGEquipmentAssets.FROSTSTEEL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
+		this.generateExpandedTrimmableItem(UGItems.FROSTSTEEL_LEGGINGS.get(), UGEquipmentAssets.FROSTSTEEL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
+		this.generateExpandedTrimmableItem(UGItems.FROSTSTEEL_BOOTS.get(), UGEquipmentAssets.FROSTSTEEL, ItemModelGenerators.TRIM_PREFIX_BOOTS);
+		this.generateExpandedTrimmableItem(UGItems.UTHERIUM_HELMET.get(), UGEquipmentAssets.UTHERIUM, ItemModelGenerators.TRIM_PREFIX_HELMET);
+		this.generateExpandedTrimmableItem(UGItems.UTHERIUM_CHESTPLATE.get(), UGEquipmentAssets.UTHERIUM, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
+		this.generateExpandedTrimmableItem(UGItems.UTHERIUM_LEGGINGS.get(), UGEquipmentAssets.UTHERIUM, ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
+		this.generateExpandedTrimmableItem(UGItems.UTHERIUM_BOOTS.get(), UGEquipmentAssets.UTHERIUM, ItemModelGenerators.TRIM_PREFIX_BOOTS);
+		this.generateFlatItem(UGItems.FROSTSTEEL_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FROSTSTEEL_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FROSTSTEEL_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FROSTSTEEL_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FROSTSTEEL_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.UTHERIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.UTHERIUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.UTHERIUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.UTHERIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.UTHERIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FORGOTTEN_UPGRADE_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.FORGOTTEN_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FORGOTTEN_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FORGOTTEN_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FORGOTTEN_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.FORGOTTEN_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+		this.generateFlatItem(UGItems.SMOGSTEM_BOAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.SMOGSTEM_CHEST_BOAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.WIGGLEWOOD_BOAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.WIGGLEWOOD_CHEST_BOAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.GRONGLE_BOAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.GRONGLE_CHEST_BOAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.VIRULENT_MIX_BUCKET.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.GWIBLING_BUCKET.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.UNDERBEANS.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.ROASTED_UNDERBEANS.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.BLISTERBERRY.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.GLOOMGOURD_PIE.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.RAW_DWELLER_MEAT.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.DWELLER_STEAK.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.RAW_GWIBLING.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.COOKED_GWIBLING.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.RAW_GLOOMPER_LEG.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.GLOOMPER_LEG.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.BLOODY_STEW.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.INDIGO_STEW.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.INKY_STEW.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.VEILED_STEW.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.UNDERBEAN_STICK.get(), ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+		this.generateFlatItem(UGItems.RAW_CLOGGRUM.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.RAW_FROSTSTEEL.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.DITCHBULB_PASTE.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.BLOOD_GLOBULE.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.BLUE_MOGMOSS.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.SLOP_BOWL.get(), ModelTemplates.FLAT_ITEM);
+		this.generateExpandedTrimmableItem(UGItems.ANCIENT_HELMET.get(), UGEquipmentAssets.ANCIENT, ItemModelGenerators.TRIM_PREFIX_HELMET);
+		this.generateExpandedTrimmableItem(UGItems.ANCIENT_CHESTPLATE.get(), UGEquipmentAssets.ANCIENT, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE);
+		this.generateExpandedTrimmableItem(UGItems.ANCIENT_LEGGINGS.get(), UGEquipmentAssets.ANCIENT, ItemModelGenerators.TRIM_PREFIX_LEGGINGS);
+		this.generateFlatItem(UGItems.ROGDORIUM.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.ROGDORIUM_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.DENIZEN_MASK.get(), ModelTemplates.FLAT_ITEM);
+		this.generateFlatItem(UGItems.UTHERIC_CLUSTER.get(), ModelTemplates.FLAT_ITEM);
 
-		sign(UGBlocks.SMOGSTEM_SIGN);
-		sign(UGBlocks.WIGGLEWOOD_SIGN);
-		sign(UGBlocks.GRONGLE_SIGN);
-		sign(UGBlocks.ANCIENT_ROOT_SIGN);
+		//TODO
+//		this.getBuilder(UGItems.CLOGGRUM_BUCKET.getId().toString())
+//			.parent(new ModelFile.UncheckedModelFile("neoforge:item/default"))
+//			.customLoader(CloggrumBucketModelBuilder::begin).fluid(Fluids.EMPTY).flipGas(true).applyFluidLuminosity(true).end()
+//			.texture("base", modLoc("item/cloggrum_bucket"))
+//			.texture("fluid", Identifier.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/mask/bucket_fluid_drip"));
+	}
 
-		sign(UGBlocks.SMOGSTEM_HANGING_SIGN);
-		sign(UGBlocks.WIGGLEWOOD_HANGING_SIGN);
-		sign(UGBlocks.GRONGLE_HANGING_SIGN);
-		sign(UGBlocks.ANCIENT_ROOT_HANGING_SIGN);
+	public void generateExpandedTrimmableItem(Item armor, ResourceKey<EquipmentAsset> equipmentAssetId, Identifier slotTrimPrefix) {
+		Identifier modelLocation = ModelLocationUtils.getModelLocation(armor);
+		Material itemTexture = TextureMapping.getItemTexture(armor);
+		List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> cases = new ArrayList<>(EX_TRIM_MATERIAL_MODELS.size());
 
-		button(UGBlocks.DEPTHROCK_BUTTON, UGBlocks.DEPTHROCK);
-		button(UGBlocks.SHIVERSTONE_BUTTON, UGBlocks.SHIVERSTONE);
-		button(UGBlocks.TREMBLECRUST_BUTTON, UGBlocks.TREMBLECRUST);
-		button(UGBlocks.SMOGSTEM_BUTTON, UGBlocks.SMOGSTEM_PLANKS);
-		button(UGBlocks.WIGGLEWOOD_BUTTON, UGBlocks.WIGGLEWOOD_PLANKS);
-		button(UGBlocks.GRONGLE_BUTTON, UGBlocks.GRONGLE_PLANKS);
-		button(UGBlocks.ANCIENT_ROOT_BUTTON, UGBlocks.ANCIENT_ROOT_PLANKS);
-		button(UGBlocks.DREADROCK_BUTTON, UGBlocks.DREADROCK);
+		for (ItemModelGenerators.TrimMaterialData material : TRIM_MATERIAL_MODELS) {
+			Identifier trimModelLocation = modelLocation.withSuffix("_" + material.assets().base().suffix() + "_trim");
+			Material trimOverlayTexture = new Material(slotTrimPrefix.withSuffix("_" + material.assets().assetId(equipmentAssetId).suffix()));
+			ItemModel.Unbaked trimModel= ItemModelUtils.plainModel(trimModelLocation);
+			this.generateLayeredItem(trimModelLocation, itemTexture, trimOverlayTexture);
 
-		blockFlatWithItemTexture(UGBlocks.SMOGSTEM_DOOR, "smogstem_door");
-		blockFlatWithItemTexture(UGBlocks.WIGGLEWOOD_DOOR, "wigglewood_door");
-		blockFlatWithItemTexture(UGBlocks.GRONGLE_DOOR, "grongle_door");
-		blockFlatWithItemTexture(UGBlocks.ANCIENT_ROOT_DOOR, "ancient_root_door");
+			cases.add(ItemModelUtils.when(material.materialKey(), trimModel));
+		}
 
-		trapdoor(UGBlocks.SMOGSTEM_TRAPDOOR);
-		trapdoor(UGBlocks.WIGGLEWOOD_TRAPDOOR);
-		trapdoor(UGBlocks.GRONGLE_TRAPDOOR);
-		trapdoor(UGBlocks.ANCIENT_ROOT_TRAPDOOR);
-
-		blockFlatWithBlockTexture(UGBlocks.TALL_DEEPTURF, "tall_deepturf_top");
-		withExistingParent(BuiltInRegistries.BLOCK.getKey(UGBlocks.TALL_SHIMMERWEED.get()).getPath(), mcLoc("item/generated"))
-				.texture("layer0", modLoc("block/tall_shimmerweed_top"))
-				.texture("layer1", modLoc("block/tall_shimmerweed_bulb"))
-				.renderType("translucent");
-
-		this.getBuilder(UGItems.CLOGGRUM_BUCKET.getId().toString())
-			.parent(new ModelFile.UncheckedModelFile("neoforge:item/default"))
-			.customLoader(CloggrumBucketModelBuilder::begin).fluid(Fluids.EMPTY).flipGas(true).applyFluidLuminosity(true).end()
-			.texture("base", modLoc("item/cloggrum_bucket"))
-			.texture("fluid", Identifier.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/mask/bucket_fluid_drip"));
+		ItemModel.Unbaked untrimmedModel = ItemModelUtils.plainModel(modelLocation);
+		ModelTemplates.FLAT_ITEM.create(modelLocation, TextureMapping.layer0(itemTexture), this.modelOutput);
+		this.itemModelOutput.accept(armor, ItemModelUtils.select(new TrimMaterialProperty(), untrimmedModel, cases));
 	}
 }

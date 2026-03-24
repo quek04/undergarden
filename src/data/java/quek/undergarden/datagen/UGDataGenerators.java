@@ -24,10 +24,9 @@ public class UGDataGenerators {
 		DataGenerator generator = event.getGenerator();
 		PackOutput output = generator.getPackOutput();
 
-		generator.addProvider(true, new UGBlockStates(output));
-		generator.addProvider(true, new UGItemModels(output));
 		generator.addProvider(true, new UGEquipmentAssetProvider(output));
 		generator.addProvider(true, new UGLang(output));
+		generator.addProvider(true, new UGModels(output));
 		generator.addProvider(true, new UGParticleDescriptions(output));
 		generator.addProvider(true, new UGSoundDefinitions(output));
 

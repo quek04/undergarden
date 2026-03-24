@@ -16,6 +16,7 @@ public class UGBiomeTags extends BiomeTagsProvider {
 		super(output, future, Undergarden.MODID);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		//undergarden
