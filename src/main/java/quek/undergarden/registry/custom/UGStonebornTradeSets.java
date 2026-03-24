@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class UGStonebornTradeSets {
 
-	public static final ResourceKey<StonebornTradeSet> VEGABOND = resourceKey("vegabond");
+	public static final ResourceKey<StonebornTradeSet> VAGABOND = resourceKey("vagabond");
 
 	public static ResourceKey<StonebornTradeSet> resourceKey(String path) {
 		return ResourceKey.create(UGRegistries.Keys.STONEBORN_TRADE_SET, Undergarden.prefix(path));
@@ -20,6 +20,6 @@ public class UGStonebornTradeSets {
 
 	public static void bootstrap(BootstrapContext<StonebornTradeSet> context) {
 		var lookup = context.lookup(UGRegistries.Keys.STONEBORN_TRADE);
-		context.register(VEGABOND, new StonebornTradeSet(lookup.getOrThrow(UGTags.StonebornTrades.VEGABOND_TRADES), ConstantValue.exactly(4.0F), false, Optional.empty()));
+		context.register(VAGABOND, new StonebornTradeSet(lookup.getOrThrow(UGTags.StonebornTrades.VAGABOND_TRADES), ConstantValue.exactly(4.0F), false, Optional.empty()));
 	}
 }

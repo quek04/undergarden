@@ -230,7 +230,7 @@ public class Stoneborn extends Monster implements NeutralMob, Npc, Merchant {
 		if (this.level() instanceof ServerLevel serverLevel) {
 			if (this.offers == null) {
 				this.offers = new MerchantOffers();
-				this.addOffersFromTradeSet(serverLevel, this.getOffers(), UGStonebornTradeSets.VEGABOND);
+				this.addOffersFromTradeSet(serverLevel, this.getOffers(), UGStonebornTradeSets.VAGABOND);
 			}
 
 			return this.offers;

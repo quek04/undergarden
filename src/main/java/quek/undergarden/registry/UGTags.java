@@ -210,7 +210,7 @@ public class UGTags {
 	}
 
 	public static class StonebornTrades {
-		public static final TagKey<StonebornTrade> VEGABOND_TRADES = tag("vegabond");
+		public static final TagKey<StonebornTrade> VAGABOND_TRADES = tag("vagabond");
 
 		private static TagKey<StonebornTrade> tag(String name) {
 			return TagKey.create(UGRegistries.Keys.STONEBORN_TRADE, Undergarden.prefix(name));

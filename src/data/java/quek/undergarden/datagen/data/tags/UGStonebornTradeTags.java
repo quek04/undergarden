@@ -20,18 +20,18 @@ public class UGStonebornTradeTags extends KeyTagProvider<StonebornTrade> {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
-		this.tag(UGTags.StonebornTrades.VEGABOND_TRADES).add(
-			UGStonebornTrades.VEGABOND_LIMAX,
-			UGStonebornTrades.VEGABOND_ANTHEM,
-			UGStonebornTrades.VEGABOND_MAMMOTH,
-			UGStonebornTrades.VEGABOND_RELICT,
-			UGStonebornTrades.VEGABOND_BLISTERBOMB,
-			UGStonebornTrades.VEGABOND_SHARD_TORCH,
-			UGStonebornTrades.VEGABOND_SEEDS,
-			UGStonebornTrades.VEGABOND_DIAMOND,
-			UGStonebornTrades.VEGABOND_IRON,
-			UGStonebornTrades.VEGABOND_GOLD,
-			UGStonebornTrades.VEGABOND_UTHERIUM
+		this.tag(UGTags.StonebornTrades.VAGABOND_TRADES).add(
+			UGStonebornTrades.VAGABOND_LIMAX,
+			UGStonebornTrades.VAGABOND_ANTHEM,
+			UGStonebornTrades.VAGABOND_MAMMOTH,
+			UGStonebornTrades.VAGABOND_RELICT,
+			UGStonebornTrades.VAGABOND_BLISTERBOMB,
+			UGStonebornTrades.VAGABOND_SHARD_TORCH,
+			UGStonebornTrades.VAGABOND_SEEDS,
+			UGStonebornTrades.VAGABOND_DIAMOND,
+			UGStonebornTrades.VAGABOND_IRON,
+			UGStonebornTrades.VAGABOND_GOLD,
+			UGStonebornTrades.VAGABOND_UTHERIUM
 		);
 	}
 }
