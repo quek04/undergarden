@@ -148,10 +148,7 @@ public class UGBlockStates extends BlockModelGenerators {
 					.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), "_side"))
 					.put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.SNOW))
 					.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.DEEPSOIL.get())), this.modelOutput)),
-				createRandomRotatedModel(plainModel(TexturedModel.CUBE_TOP_BOTTOM
-					.get(block)
-					.updateTextures(m -> m.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.DEEPSOIL.get())))
-					.create(block, this.modelOutput)))))));
+				createRandomRotatedModel(plainModel(ModelLocationUtils.getModelLocation(block)))))));
 
 		this.wrapBlockItem(UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, createRandomRotatedModel(plainModel(TexturedModel.CUBE_TOP_BOTTOM
 			.get(block)
