@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "undergarden:item/depthrock_pot",
+    "model": {
+      "type": "undergarden:depthrock_pot"
+    }
+  }
+}

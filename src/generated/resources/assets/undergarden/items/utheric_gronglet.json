@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "undergarden:item/gronglet",
+    "model": {
+      "type": "undergarden:gronglet",
+      "texture": "undergarden:textures/entity/gronglet/utheric_gronglet.png"
+    }
+  }
+}

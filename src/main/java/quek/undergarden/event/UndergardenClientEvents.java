@@ -1,7 +1,6 @@
 package quek.undergarden.event;
 
 import com.google.common.reflect.TypeToken;
-import com.mojang.blaze3d.platform.Window;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -25,13 +24,16 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.client.renderer.block.BuiltInBlockModels;
 import net.minecraft.client.renderer.block.FluidModel;
+import net.minecraft.client.renderer.block.model.SpecialBlockModelWrapper;
+import net.minecraft.client.renderer.blockentity.BedRenderer;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.fog.FogData;
 import net.minecraft.client.renderer.fog.environment.FogEnvironment;
+import net.minecraft.client.renderer.special.BedSpecialRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.BlockPos;
@@ -45,6 +47,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FogType;
 import net.neoforged.bus.api.IEventBus;
@@ -60,22 +63,26 @@ import org.joml.Vector4f;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
 import quek.undergarden.UndergardenConfig;
+import quek.undergarden.block.DepthrockBedBlock;
 import quek.undergarden.block.portal.UndergardenPortalVisuals;
 import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.client.gui.screen.UndergardenReceivingLevelScreen;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.particle.*;
-import quek.undergarden.client.render.blockentity.DepthrockBedRender;
+import quek.undergarden.client.render.blockentity.DepthrockBedRenderer;
 import quek.undergarden.client.render.blockentity.DepthrockPotRenderer;
 import quek.undergarden.client.render.blockentity.GrongletRender;
 import quek.undergarden.client.render.entity.*;
-import quek.undergarden.client.render.layer.DenizenMaskLayer;
+import quek.undergarden.client.render.item.DepthrockBedSpecialRenderer;
+import quek.undergarden.client.render.item.DepthrockPotSpecialRenderer;
+import quek.undergarden.client.render.item.GrongletSpecialRenderer;
 import quek.undergarden.client.render.layer.UthericInfectionLayer;
 import quek.undergarden.component.RogdoriumInfusion;
 import quek.undergarden.registry.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UndergardenClientEvents {
 
@@ -102,6 +109,8 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerItemDecorations);
 		bus.addListener(UndergardenClientEvents::registerCustomRenderData);
 		bus.addListener(UndergardenClientEvents::registerFluidModels);
+		bus.addListener(UndergardenClientEvents::registerSpecialBlockModels);
+		bus.addListener(UndergardenClientEvents::registerSpecialModels);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenPortalFOV);
@@ -137,7 +146,7 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRender::new);
+		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_BED.get(), DepthrockBedRenderer::new);
 		event.registerBlockEntityRenderer(UGBlockEntities.DEPTHROCK_POT.get(), DepthrockPotRenderer::new);
 		event.registerBlockEntityRenderer(UGBlockEntities.GRONGLET.get(), GrongletRender::new);
 		//
@@ -174,8 +183,8 @@ public class UndergardenClientEvents {
 	}
 
 	private static void registerEntityLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_HEAD, DepthrockBedRender::createHeadLayer);
-		event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_FOOT, DepthrockBedRender::createFootLayer);
+		event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_HEAD, DepthrockBedRenderer::createHeadLayer);
+		event.registerLayerDefinition(UGModelLayers.DEPTHROCK_BED_FOOT, DepthrockBedRenderer::createFootLayer);
 		event.registerLayerDefinition(UGModelLayers.GRONGLET, GrongletModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.MINION, MinionModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.ROTLING, RotlingModel::createBodyLayer);
@@ -274,6 +283,20 @@ public class UndergardenClientEvents {
 			null, null);
 		event.register(virulentModel, UGFluids.VIRULENT_MIX_SOURCE.get());
 		event.register(virulentModel, UGFluids.VIRULENT_MIX_FLOWING.get());
+	}
+
+	private static void registerSpecialBlockModels(RegisterBlockModelsEvent event) {
+		event.register(BuiltInBlockModels.special(new GrongletSpecialRenderer.Unbaked(Undergarden.prefix("textures/entity/gronglet/gronglet.png"))), UGBlocks.GRONGLET.get());
+		event.register(BuiltInBlockModels.special(new GrongletSpecialRenderer.Unbaked(Undergarden.prefix("textures/entity/gronglet/utheric_gronglet.png"))), UGBlocks.UTHERIC_GRONGLET.get());
+		event.register(BuiltInBlockModels.special(new GrongletSpecialRenderer.Unbaked(Undergarden.prefix("textures/entity/gronglet/rogdoric_gronglet.png"))), UGBlocks.ROGDORIC_GRONGLET.get());
+		event.register(BuiltInBlockModels.special(new DepthrockPotSpecialRenderer.Unbaked()), UGBlocks.DEPTHROCK_POT.get());
+		event.register(BuiltInBlockModels.specialModelWithPropertyDispatch(DepthrockBedBlock.FACING, DepthrockBedBlock.PART, (facing, part) -> BuiltInBlockModels.special(new DepthrockBedSpecialRenderer.Unbaked(part), BedRenderer.modelTransform(facing))), UGBlocks.DEPTHROCK_BED.get());
+	}
+
+	private static void registerSpecialModels(RegisterSpecialModelRendererEvent event) {
+		event.register(Undergarden.prefix("gronglet"), GrongletSpecialRenderer.Unbaked.MAP_CODEC);
+		event.register(Undergarden.prefix("depthrock_bed"), DepthrockBedSpecialRenderer.Unbaked.MAP_CODEC);
+		event.register(Undergarden.prefix("depthrock_pot"), DepthrockPotSpecialRenderer.Unbaked.MAP_CODEC);
 	}
 
 	private static void registerBlockColors(RegisterColorHandlersEvent.BlockTintSources event) {

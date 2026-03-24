@@ -5,9 +5,10 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.util.Unit;
 import quek.undergarden.client.state.block.GrongletRenderState;
 
-public class GrongletModel extends Model<GrongletRenderState> {
+public class GrongletModel extends Model<Unit> {
 
 	public GrongletModel(ModelPart root) {
 		super(root, RenderTypes::entityCutout);

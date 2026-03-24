@@ -32,6 +32,7 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
 import org.joml.Vector3fc;
 import org.jspecify.annotations.Nullable;
+import quek.undergarden.Undergarden;
 import quek.undergarden.block.DepthrockBedBlock;
 import quek.undergarden.block.entity.DepthrockBedBlockEntity;
 import quek.undergarden.client.model.UGModelLayers;
@@ -40,22 +41,22 @@ import quek.undergarden.registry.UGBlockEntities;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlockEntity, BedRenderState> {
+public class DepthrockBedRenderer implements BlockEntityRenderer<DepthrockBedBlockEntity, BedRenderState> {
 
-	private static final Map<Direction, Transformation> TRANSFORMATIONS = Util.makeEnumMap(Direction.class, DepthrockBedRender::createModelTransform);
+	private static final Map<Direction, Transformation> TRANSFORMATIONS = Util.makeEnumMap(Direction.class, DepthrockBedRenderer::createModelTransform);
 	private final SpriteGetter sprites;
 	private final Model.Simple headModel;
 	private final Model.Simple footModel;
 
-	public DepthrockBedRender(BlockEntityRendererProvider.Context context) {
+	public DepthrockBedRenderer(BlockEntityRendererProvider.Context context) {
 		this(context.sprites(), context.entityModelSet());
 	}
 
-	public DepthrockBedRender(SpecialModelRenderer.BakingContext context) {
+	public DepthrockBedRenderer(SpecialModelRenderer.BakingContext context) {
 		this(context.sprites(), context.entityModelSet());
 	}
 
-	public DepthrockBedRender(SpriteGetter sprites, EntityModelSet set) {
+	public DepthrockBedRenderer(SpriteGetter sprites, EntityModelSet set) {
 		this.sprites = sprites;
 		this.headModel = new Model.Simple(set.bakeLayer(UGModelLayers.DEPTHROCK_BED_HEAD), RenderTypes::entitySolid);
 		this.footModel = new Model.Simple(set.bakeLayer(UGModelLayers.DEPTHROCK_BED_FOOT), RenderTypes::entitySolid);
@@ -102,7 +103,7 @@ public class DepthrockBedRender implements BlockEntityRenderer<DepthrockBedBlock
 
 	@Override
 	public void submit(BedRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
-		SpriteId sprite = Sheets.getBedSprite(state.color);
+		SpriteId sprite = Sheets.BED_MAPPER.apply(Undergarden.prefix("depthrock"));
 		poseStack.pushPose();
 		poseStack.mulPose(modelTransform(state.facing));
 		this.submitPiece(state.part, sprite, poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.breakProgress, 0);

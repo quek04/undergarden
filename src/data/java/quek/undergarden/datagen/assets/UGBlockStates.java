@@ -1,5 +1,6 @@
 package quek.undergarden.datagen.assets;
 
+import com.mojang.math.Transformation;
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
@@ -9,20 +10,30 @@ import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
+import net.minecraft.client.renderer.blockentity.BedRenderer;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.random.Weighted;
 import net.minecraft.util.random.WeightedList;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import org.joml.Vector3f;
+import quek.undergarden.Undergarden;
 import quek.undergarden.block.BlisterberryBushBlock;
 import quek.undergarden.block.DenizenTotemBlock;
 import quek.undergarden.block.HangingGrongleLeavesBlock;
 import quek.undergarden.block.SpreadingDeepturfBlock;
+import quek.undergarden.client.render.item.DepthrockBedSpecialRenderer;
+import quek.undergarden.client.render.item.DepthrockPotSpecialRenderer;
+import quek.undergarden.client.render.item.GrongletSpecialRenderer;
 import quek.undergarden.registry.UGBlocks;
 import quek.undergarden.registry.UGItems;
 
@@ -81,10 +92,10 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.wrapBlockItem(UGBlocks.CLOGGRUM_BLOCK.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.FROSTSTEEL_BLOCK.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.UTHERIUM_BLOCK.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.REGALIUM_BLOCK.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN));
 		this.wrapBlockItem(UGBlocks.SEDIMENT.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.SEDIMENT_GLASS.get(), this::createTrivialCube);
 		this.createCrossBlockWithDefaultItem(UGBlocks.FROZEN_DEEPTURF.get(), PlantType.NOT_TINTED);
-		this.wrapBlockItem(UGBlocks.CLOGGRUM_TILES.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.MOGMOSS_RUG.get(), this::createCarpet);
 		this.wrapBlockItem(UGBlocks.BLUE_MOGMOSS_RUG.get(), this::createCarpet);
 		this.wrapBlockItem(UGBlocks.SHIVERSTONE_COAL_ORE.get(), this::createTrivialCube);
@@ -113,14 +124,14 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.wrapBlockItem(UGBlocks.UTHERIUM_GROWTH.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.DREADROCK_UTHERIUM_ORE.get(), this::createTrivialCube);
 		this.woodProvider(UGBlocks.ANCIENT_ROOT.get()).logWithHorizontal(UGBlocks.ANCIENT_ROOT.get());
-		this.wrapBlockItem(UGBlocks.ROGDORIC_ANCIENT_ROOT.get(), block -> this.createAxisAlignedPillarBlock(block, TexturedModel.COLUMN.updateTexture(mapping -> mapping.copyAndUpdate(TextureSlot.TOP, TextureMapping.getBlockTexture(UGBlocks.ANCIENT_ROOT.get(), "_top")))));
+		this.wrapBlockItem(UGBlocks.ROGDORIC_ANCIENT_ROOT.get(), block -> this.createAxisAlignedPillarBlock(block, TexturedModel.COLUMN_ALT.updateTexture(mapping -> mapping.put(TextureSlot.END, TextureMapping.getBlockTexture(UGBlocks.ANCIENT_ROOT.get(), "_top")))));
 
-		var denizenTotemTexture = TextureMapping.cubeBottomTop(UGBlocks.DENIZEN_TOTEM.get()).copyAndUpdate(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.ANCIENT_ROOT.get(), "_end"));
+		var denizenTotemTexture = TextureMapping.cubeBottomTop(UGBlocks.DENIZEN_TOTEM.get()).copyAndUpdate(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.ANCIENT_ROOT.get(), "_top"));
 		this.wrapBlockItem(UGBlocks.DENIZEN_TOTEM.get(), block -> this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(createBooleanModelDispatch(DenizenTotemBlock.ACTIVE,
 			plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(block, "_active", denizenTotemTexture.copyAndUpdate(TextureSlot.SIDE, TextureMapping.getBlockTexture(block, "_side_active")), this.modelOutput)),
 			plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.create(block, denizenTotemTexture, this.modelOutput))
 		))));
-		this.createCrossBlockWithDefaultItem(UGBlocks.PUFF_MUSHROOM.get(), PlantType.NOT_TINTED);
+		this.createPlantWithDefaultItem(UGBlocks.PUFF_MUSHROOM.get(), UGBlocks.POTTED_PUFF_MUSHROOM.get(), PlantType.NOT_TINTED);
 		this.wrapBlockItem(UGBlocks.PUFF_MUSHROOM_CAP.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.PUFF_MUSHROOM_STEM.get(), this::createTrivialCube);
 
@@ -167,6 +178,18 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.createHangingSign(UGBlocks.STRIPPED_SMOGSTEM_LOG.get(), UGBlocks.SMOGSTEM_HANGING_SIGN.get(), UGBlocks.SMOGSTEM_WALL_HANGING_SIGN.get());
 		this.createHangingSign(UGBlocks.STRIPPED_GRONGLE_LOG.get(), UGBlocks.GRONGLE_HANGING_SIGN.get(), UGBlocks.GRONGLE_WALL_HANGING_SIGN.get());
 		this.createHangingSign(UGBlocks.ANCIENT_ROOT.get(), UGBlocks.ANCIENT_ROOT_HANGING_SIGN.get(), UGBlocks.ANCIENT_ROOT_WALL_HANGING_SIGN.get());
+
+		Identifier baseModel = ModelTemplates.BED_INVENTORY.create(ModelLocationUtils.getModelLocation(UGItems.DEPTHROCK_BED.get()), TextureMapping.particle(UGBlocks.DEPTHROCK.get()), this.modelOutput);
+		Transformation headTransformation = BedRenderer.modelTransform(Direction.SOUTH);
+		ItemModel.Unbaked headPart = ItemModelUtils.specialModel(baseModel, headTransformation, new DepthrockBedSpecialRenderer.Unbaked(BedPart.HEAD));
+		Transformation footTransformation = new Transformation(new Vector3f(0.0F, 0.0F, -1.0F), null, null, null).compose(headTransformation);
+		ItemModel.Unbaked footPart = ItemModelUtils.specialModel(baseModel, footTransformation, new DepthrockBedSpecialRenderer.Unbaked(BedPart.FOOT));
+		this.generateSpecialModel(UGBlocks.DEPTHROCK_BED, UGBlocks.DEPTHROCK, baseModel, id -> ItemModelUtils.composite(headPart, footPart));
+		this.generateSpecialModel(UGBlocks.DEPTHROCK_POT, UGBlocks.DEPTHROCK, Undergarden.prefix("item/depthrock_pot"), id -> ItemModelUtils.specialModel(id, new DepthrockPotSpecialRenderer.Unbaked()));
+
+		this.generateGronglet(UGBlocks.GRONGLET);
+		this.generateGronglet(UGBlocks.UTHERIC_GRONGLET);
+		this.generateGronglet(UGBlocks.ROGDORIC_GRONGLET);
 	}
 
 	public void wrapBlockItem(Block block, Consumer<Block> blockRegistry) {
@@ -187,9 +210,14 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.registerSimpleTintedItemModel(block, BuiltInRegistries.BLOCK.getKey(block).withPrefix("block/"), tint);
 	}
 
-	public <B extends Block> void generateSpecialModel(B block, Block particleBlock, Function<B, ItemModel.Unbaked> itemModel) {
-		this.createParticleOnlyBlock(block, particleBlock);
-		this.itemModelOutput.accept(block.asItem(), itemModel.apply(block));
+	public void generateGronglet(Holder<Block> gronglet) {
+		this.generateSpecialModel(gronglet, Blocks.NETHER_WART_BLOCK.builtInRegistryHolder(), Undergarden.prefix("item/gronglet"), id -> ItemModelUtils.specialModel(id, new GrongletSpecialRenderer.Unbaked(Undergarden.prefix("textures/entity/gronglet/"+ gronglet.getKey().identifier().getPath() +".png"))));
+	}
+
+	public <B extends Holder<Block>> void generateSpecialModel(B block, Holder<Block> particleBlock, Identifier parent, Function<Identifier, ItemModel.Unbaked> itemModel) {
+		this.createParticleOnlyBlock(block.value(), particleBlock.value());
+		Item item = block.value().asItem();
+		this.itemModelOutput.accept(item, itemModel.apply(parent));
 	}
 
 	private void createCarpet(Block carpet) {

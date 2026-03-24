@@ -2,9 +2,9 @@ package quek.undergarden.datagen.assets;
 
 import com.google.common.collect.Maps;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGBlocks;
 
@@ -78,12 +78,14 @@ public class UGBlockFamilies {
 		.polished(UGBlocks.POLISHED_DEPTHROCK.get())
 		.pressurePlate(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get())
 		.button(UGBlocks.DEPTHROCK_BUTTON.get())
+		.polished(UGBlocks.POLISHED_DEPTHROCK.get())
 		.getFamily();
 
 	public static final BlockFamily POLISHED_DEPTHROCK = familyBuilder(UGBlocks.POLISHED_DEPTHROCK.get())
 		.wall(UGBlocks.POLISHED_DEPTHROCK_WALL.get())
 		.stairs(UGBlocks.POLISHED_DEPTHROCK_STAIRS.get())
 		.slab(UGBlocks.POLISHED_DEPTHROCK_SLAB.get())
+		.bricks(UGBlocks.DEPTHROCK_BRICKS.get())
 		.getFamily();
 
 	public static final BlockFamily DEPTHROCK_BRICKS = familyBuilder(UGBlocks.DEPTHROCK_BRICKS.get())
@@ -92,6 +94,7 @@ public class UGBlockFamilies {
 		.slab(UGBlocks.DEPTHROCK_BRICK_SLAB.get())
 		.chiseled(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get())
 		.cracked(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get())
+		.tiles(UGBlocks.DEPTHROCK_TILES.get())
 		.getFamily();
 
 	public static final BlockFamily DEPTHROCK_TILES = familyBuilder(UGBlocks.DEPTHROCK_TILES.get())
@@ -145,8 +148,14 @@ public class UGBlockFamilies {
 		.cracked(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get())
 		.getFamily();
 
+	public static final BlockFamily CLOGGRUM_TILES = familyBuilder(UGBlocks.CLOGGRUM_TILES.get())
+		.stairs(UGBlocks.CLOGGRUM_TILE_STAIRS.get())
+		.slab(UGBlocks.CLOGGRUM_TILE_SLAB.get())
+		.getFamily();
+
 	private static BlockFamily.Builder familyBuilder(Block base) {
 		BlockFamily.Builder builder = new BlockFamily.Builder(base);
+		BlockFamilies.MAP.put(base, builder.getFamily());
 		BlockFamily blockFamily = MAP.put(base, builder.getFamily());
 		if (blockFamily != null) {
 			throw new IllegalStateException("Duplicate family definition for " + BuiltInRegistries.BLOCK.getKey(base));
