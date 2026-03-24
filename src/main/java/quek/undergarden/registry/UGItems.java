@@ -7,13 +7,15 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.BlocksAttacks;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.item.component.Weapon;
+import net.minecraft.world.item.component.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
@@ -134,7 +136,31 @@ public class UGItems {
 	public static final DeferredItem<Item> CATALYST = register("catalyst", CatalystItem::new, () -> new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
 	public static final DeferredItem<Item> CRUMBLING_CATALYST = register("crumbling_catalyst", CrumblingCatalystItem::new, () -> new Item.Properties().durability(1).stacksTo(1).rarity(Rarity.RARE));
 	public static final DeferredItem<Item> SLINGSHOT = register("slingshot", SlingshotItem::new, () -> new Item.Properties().durability(192).enchantable(1).repairable(ItemTags.PLANKS).rarity(Rarity.UNCOMMON));
-	public static final DeferredItem<Item> JAVELIN = register("javelin", JavelinItem::new, () -> new Item.Properties().attributes(JavelinItem.createAttributes()).rarity(Rarity.UNCOMMON).stacksTo(16));
+	public static final DeferredItem<Item> JAVELIN = register("javelin", JavelinItem::new, () -> new Item.Properties()
+		.delayedHolderComponent(DataComponents.DAMAGE_TYPE, DamageTypes.SPEAR)
+		.component(DataComponents.PIERCING_WEAPON, new PiercingWeapon(true, false, Optional.of(SoundEvents.SPEAR_ATTACK), Optional.of(SoundEvents.SPEAR_HIT)))
+		.component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 4.5F, 2.0F, 6.5F, 0.125F, 0.5F))
+		.component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)
+		.component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.STAB, 20))
+		.component(DataComponents.USE_EFFECTS, new UseEffects(false, false, 0.2F))
+		.component(DataComponents.WEAPON, new Weapon(1))
+		.attributes(
+			ItemAttributeModifiers.builder()
+				.add(
+					Attributes.ATTACK_DAMAGE,
+					new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 3.0F, AttributeModifier.Operation.ADD_VALUE),
+					EquipmentSlotGroup.MAINHAND
+				)
+				.add(
+					Attributes.ATTACK_SPEED,
+					new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, -3.0F, AttributeModifier.Operation.ADD_VALUE),
+					EquipmentSlotGroup.MAINHAND
+				)
+				.build()
+		)
+		.rarity(Rarity.UNCOMMON)
+		.stacksTo(16)
+	);
 	public static final DeferredItem<Item> BLISTERBOMB = register("blisterbomb", BlisterbombItem::new, () -> new Item.Properties().stacksTo(8));
 	public static final DeferredItem<Item> UNDERBEAN_STICK = register("underbean_on_a_stick", (properties) -> new UnderbeanOnAStickItem<>(UGEntityTypes.DWELLER.get(), 1, properties), () -> new Item.Properties().stacksTo(1).durability(100));
 
