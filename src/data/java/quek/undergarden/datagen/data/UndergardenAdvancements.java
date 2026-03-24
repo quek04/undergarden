@@ -558,7 +558,7 @@ public class UndergardenAdvancements implements AdvancementSubProvider {
 		AdvancementHolder enter_denizen_camp = Advancement.Builder.advancement()
 			.parent(enter_depths)
 			.display(
-				UGItems.SPEAR,
+				UGItems.JAVELIN,
 				Component.translatable("advancement.undergarden.enter_denizen_camp.title"),
 				Component.translatable("advancement.undergarden.enter_denizen_camp.desc"),
 				null,

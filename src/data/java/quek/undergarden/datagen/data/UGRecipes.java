@@ -192,7 +192,7 @@ public class UGRecipes extends UGRecipeProvider {
 			.unlockedBy("has_twistytwig", has(UGItems.TWISTYTWIG.get()))
 			.save(this.output);
 
-		ShapedRecipeBuilder.shaped(getter, RecipeCategory.COMBAT, UGItems.SPEAR.get())
+		ShapedRecipeBuilder.shaped(getter, RecipeCategory.COMBAT, UGItems.JAVELIN.get(), 4)
 			.pattern("  R")
 			.pattern(" S ")
 			.pattern("S  ")

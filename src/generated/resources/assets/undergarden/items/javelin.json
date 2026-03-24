@@ -5,7 +5,7 @@
       {
         "model": {
           "type": "minecraft:model",
-          "model": "undergarden:item/spear"
+          "model": "undergarden:item/javelin"
         },
         "when": [
           "gui",
@@ -19,16 +19,16 @@
       "type": "minecraft:condition",
       "on_false": {
         "type": "minecraft:special",
-        "base": "undergarden:item/spear_in_hand",
+        "base": "undergarden:item/javelin_in_hand",
         "model": {
-          "type": "undergarden:spear"
+          "type": "undergarden:javelin"
         }
       },
       "on_true": {
         "type": "minecraft:special",
-        "base": "undergarden:item/spear_throwing",
+        "base": "undergarden:item/javelin_throwing",
         "model": {
-          "type": "undergarden:spear"
+          "type": "undergarden:javelin"
         }
       },
       "property": "minecraft:using_item",

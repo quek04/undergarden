@@ -1,8 +1,5 @@
 package quek.undergarden.entity.projectile;
 
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -23,29 +20,20 @@ import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGEntityTypes;
 import quek.undergarden.registry.UGItems;
 
-public class ThrownSpear extends AbstractArrow implements ItemSupplier {
-	private static final EntityDataAccessor<Boolean> ENCHANTED_ID = SynchedEntityData.defineId(ThrownSpear.class, EntityDataSerializers.BOOLEAN);
-	private static final ItemStack DEFAULT_STACK = new ItemStack(UGItems.SPEAR.get());
+public class ThrownJavelin extends AbstractArrow {
+
 	private boolean dealtDamage;
 
-	public ThrownSpear(EntityType<? extends ThrownSpear> entityType, Level level) {
+	public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level) {
 		super(entityType, level);
 	}
 
-	public ThrownSpear(Level level, LivingEntity shooter, ItemStack pickupItemStack) {
-		super(UGEntityTypes.SPEAR.get(), shooter, level, pickupItemStack, null);
-		this.entityData.set(ENCHANTED_ID, pickupItemStack.hasFoil());
+	public ThrownJavelin(Level level, LivingEntity shooter, ItemStack pickupItemStack) {
+		super(UGEntityTypes.JAVELIN.get(), shooter, level, pickupItemStack, null);
 	}
 
-	public ThrownSpear(Level level, double x, double y, double z, ItemStack pickupItemStack) {
-		super(UGEntityTypes.SPEAR.get(), x, y, z, level, pickupItemStack, pickupItemStack);
-		this.entityData.set(ENCHANTED_ID, pickupItemStack.hasFoil());
-	}
-
-	@Override
-	protected void defineSynchedData(SynchedEntityData.Builder builder) {
-		super.defineSynchedData(builder);
-		builder.define(ENCHANTED_ID, false);
+	public ThrownJavelin(Level level, double x, double y, double z, ItemStack pickupItemStack) {
+		super(UGEntityTypes.JAVELIN.get(), x, y, z, level, pickupItemStack, pickupItemStack);
 	}
 
 	@Override
@@ -54,10 +42,6 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 			this.dealtDamage = true;
 		}
 		super.tick();
-	}
-
-	public boolean isFoil() {
-		return this.entityData.get(ENCHANTED_ID);
 	}
 
 	@Nullable
@@ -138,13 +122,8 @@ public class ThrownSpear extends AbstractArrow implements ItemSupplier {
 	}
 
 	@Override
-	public ItemStack getItem() {
-		return DEFAULT_STACK;
-	}
-
-	@Override
 	protected ItemStack getDefaultPickupItem() {
-		return DEFAULT_STACK;
+		return new ItemStack(UGItems.JAVELIN.get());
 	}
 
 	@Override

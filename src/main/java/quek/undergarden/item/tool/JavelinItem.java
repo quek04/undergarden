@@ -22,13 +22,13 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import quek.undergarden.Undergarden;
-import quek.undergarden.entity.projectile.ThrownSpear;
+import quek.undergarden.entity.projectile.ThrownJavelin;
 
-public class SpearItem extends Item implements ProjectileItem {
+public class JavelinItem extends Item implements ProjectileItem {
 
-	private static final Identifier ENTITY_REACH_UUID = Undergarden.prefix("spear_entity_reach");
+	private static final Identifier ENTITY_REACH_UUID = Undergarden.prefix("javelin_entity_reach");
 
-	public SpearItem(Properties properties) {
+	public JavelinItem(Properties properties) {
 		super(properties);
 	}
 
@@ -54,23 +54,18 @@ public class SpearItem extends Item implements ProjectileItem {
 	public boolean releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
 		if (entity instanceof Player player) {
 			int useTime = this.getUseDuration(stack, entity) - timeLeft;
-			if (useTime >= 10) {
+			if (useTime >= 8) {
 				if (!level.isClientSide()) {
-					stack.hurtAndBreak(1, player, entity.getUsedItemHand());
-
-					ThrownSpear spear = new ThrownSpear(level, player, stack);
-					spear.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.0F, 1.0F);
+					ItemStack useStack = stack.consumeAndReturn(1, player);
+					ThrownJavelin javelin = new ThrownJavelin(level, player, useStack);
+					javelin.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.0F, 1.0F);
 
 					if (player.hasInfiniteMaterials()) {
-						spear.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+						javelin.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
 					}
 
-					level.addFreshEntity(spear);
-					level.playSound(null, spear, SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F);
-
-					if (!player.hasInfiniteMaterials()) {
-						player.getInventory().removeItem(stack);
-					}
+					level.addFreshEntity(javelin);
+					level.playSound(null, javelin, SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F);
 				}
 
 				player.awardStat(Stats.ITEM_USED.get(this));
@@ -81,18 +76,8 @@ public class SpearItem extends Item implements ProjectileItem {
 
 	@Override
 	public InteractionResult use(Level level, Player player, InteractionHand hand) {
-		ItemStack stack = player.getItemInHand(hand);
-		if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
-			return InteractionResult.FAIL;
-		} else {
-			player.startUsingItem(hand);
-			return InteractionResult.CONSUME;
-		}
-	}
-
-	@Override
-	public void hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-		stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
+		player.startUsingItem(hand);
+		return InteractionResult.CONSUME;
 	}
 
 	@Override
@@ -102,8 +87,8 @@ public class SpearItem extends Item implements ProjectileItem {
 
 	@Override
 	public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
-		ThrownSpear spear = new ThrownSpear(level, pos.x(), pos.y(), pos.z(), stack);
-		spear.pickup = AbstractArrow.Pickup.ALLOWED;
-		return spear;
+		ThrownJavelin javelin = new ThrownJavelin(level, pos.x(), pos.y(), pos.z(), stack);
+		javelin.pickup = AbstractArrow.Pickup.ALLOWED;
+		return javelin;
 	}
 }

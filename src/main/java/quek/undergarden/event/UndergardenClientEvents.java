@@ -116,24 +116,6 @@ public class UndergardenClientEvents {
 			Sheets.addWoodType(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.GRONGLE_WOOD_TYPE);
 			Sheets.addWoodType(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE);
-
-			//TODO
-//			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("pull"), (stack, level, entity, seed) -> {
-//				if (entity == null) {
-//					return 0.0F;
-//				} else {
-//					return entity.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F;
-//				}
-//			});
-//			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("rotten_blisterberry"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.ROTTEN_BLISTERBERRY.get()) ? 1.0F : 0.0F);
-//			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("goo_ball"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGItems.GOO_BALL.get()) ? 1.0F : 0.0F);
-//			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.GRONGLET.get().asItem()) ? 1.0F : 0.0F);
-//			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("utheric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.UTHERIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
-//			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("rogdoric_gronglet"), (stack, level, entity, seed) -> entity != null && entity.getProjectile(stack).is(UGBlocks.ROGDORIC_GRONGLET.get().asItem()) ? 1.0F : 0.0F);
-//			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("self_sling"), (stack, level, entity, seed) -> entity != null && stack.getEnchantmentLevel(level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolderOrThrow(UGEnchantments.SELF_SLING)) > 0 ? 1.0F : 0.0F);
-//			ItemProperties.register(UGItems.SLINGSHOT.get(), Undergarden.prefix("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-//			ItemProperties.register(UGItems.CLOGGRUM_SHIELD.get(), Undergarden.prefix("blocking"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-//			ItemProperties.register(UGItems.SPEAR.get(), Undergarden.prefix("throwing"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 		});
 	}
 
@@ -146,7 +128,7 @@ public class UndergardenClientEvents {
 		//
 		event.registerEntityRenderer(UGEntityTypes.BLISTERBOMB.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.SLINGSHOT_PROJECTILE.get(), SlingshotProjectileRenderer::new);
-		event.registerEntityRenderer(UGEntityTypes.SPEAR.get(), ThrownSpearRenderer::new);
+		event.registerEntityRenderer(UGEntityTypes.JAVELIN.get(), ThrownJavelinRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.MINION_PROJECTILE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(UGEntityTypes.ROTBELCHER_PROJECTILE.get(), NoopRenderer::new);
 		//
@@ -205,7 +187,7 @@ public class UndergardenClientEvents {
 		event.registerLayerDefinition(UGModelLayers.LIVING_POT, MysteriousPotModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.POT, PotModel::createBodyLayer);
 		event.registerLayerDefinition(UGModelLayers.CLOGGRUM_SHIELD, CloggrumShieldModel::createBodyLayer);
-		event.registerLayerDefinition(UGModelLayers.SPEAR, SpearModel::createBodyLayer);
+		event.registerLayerDefinition(UGModelLayers.JAVELIN, JavelinModel::createBodyLayer);
 
 		ArmorModelSet<MeshDefinition> humanoidArmor = HumanoidModel.createArmorMeshSet(LayerDefinitions.INNER_ARMOR_DEFORMATION, LayerDefinitions.OUTER_ARMOR_DEFORMATION);
 		registerArmorModelSet(event, UGModelLayers.FORGOTTEN_ARMOR, humanoidArmor);
@@ -292,7 +274,7 @@ public class UndergardenClientEvents {
 		event.register(Undergarden.prefix("depthrock_bed"), DepthrockBedSpecialRenderer.Unbaked.MAP_CODEC);
 		event.register(Undergarden.prefix("depthrock_pot"), DepthrockPotSpecialRenderer.Unbaked.MAP_CODEC);
 		event.register(Undergarden.prefix("cloggrum_shield"), CloggrumShieldSpecialRenderer.Unbaked.MAP_CODEC);
-		event.register(Undergarden.prefix("spear"), SpearSpecialRenderer.Unbaked.MAP_CODEC);
+		event.register(Undergarden.prefix("javelin"), JavelinSpecialRenderer.Unbaked.MAP_CODEC);
 	}
 
 	private static void registerBlockColors(RegisterColorHandlersEvent.BlockTintSources event) {

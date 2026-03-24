@@ -33,7 +33,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.entity.monster.rotspawn.RotspawnMonster;
-import quek.undergarden.entity.projectile.ThrownSpear;
+import quek.undergarden.entity.projectile.ThrownJavelin;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGPointOfInterests;
 
@@ -61,7 +61,7 @@ public class Denizen extends Monster implements RangedAttackMob {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(1, new DenizenStareAtPlayerGoal(this));
-		this.goalSelector.addGoal(2, new DenizenSpearAttackGoal(this, 1.0F, 40, 10.0F));
+		this.goalSelector.addGoal(2, new DenizenJavelinAttackGoal(this, 1.0F, 40, 10.0F));
 		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(3, new DenizenWanderGoal(this, 0.6D));
 
@@ -145,7 +145,7 @@ public class Denizen extends Monster implements RangedAttackMob {
 	protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
 		if (random.nextBoolean()) {
 			if (random.nextBoolean()) {
-				this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.SPEAR.get()));
+				this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(UGItems.JAVELIN.get()));
 			} else if (random.nextBoolean()) {
 				this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_SWORD));
 			} else this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_AXE));
@@ -205,14 +205,14 @@ public class Denizen extends Monster implements RangedAttackMob {
 
 	@Override
 	public void performRangedAttack(LivingEntity pTarget, float pVelocity) {
-		ThrownSpear spear = new ThrownSpear(this.level(), this, new ItemStack(UGItems.SPEAR.get()));
+		ThrownJavelin javelin = new ThrownJavelin(this.level(), this, new ItemStack(UGItems.JAVELIN.get()));
 		double x = pTarget.getX() - this.getX();
-		double y = pTarget.getY(0.3333333333333333) - spear.getY();
+		double y = pTarget.getY(0.3333333333333333) - javelin.getY();
 		double z = pTarget.getZ() - this.getZ();
 		double d3 = Math.sqrt(x * x + z * z);
-		spear.shoot(x, y + d3 * 0.2F, z, 1.6F, (float)(14 - this.level().getDifficulty().getId() * 4));
+		javelin.shoot(x, y + d3 * 0.2F, z, 1.6F, (float)(14 - this.level().getDifficulty().getId() * 4));
 		this.playSound(SoundEvents.ARROW_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-		this.level().addFreshEntity(spear);
+		this.level().addFreshEntity(javelin);
 	}
 
 	public enum Type implements StringRepresentable {

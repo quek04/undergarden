@@ -5,7 +5,6 @@ import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
-import net.minecraft.client.renderer.item.properties.conditional.IsUsingItem;
 import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
 import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
 import net.minecraft.client.renderer.special.TridentSpecialRenderer;
@@ -20,7 +19,7 @@ import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import quek.undergarden.client.render.item.CloggrumShieldSpecialRenderer;
-import quek.undergarden.client.render.item.SpearSpecialRenderer;
+import quek.undergarden.client.render.item.JavelinSpecialRenderer;
 import quek.undergarden.registry.UGEquipmentAssets;
 import quek.undergarden.registry.UGItems;
 import quek.undergarden.registry.UGMaterialAssetGroups;
@@ -164,11 +163,11 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateSpear(UGItems.UTHERIUM_SPEAR.get());
 		this.generateSpear(UGItems.FORGOTTEN_SPEAR.get());
 
-		ItemModel.Unbaked flatSpearModel = ItemModelUtils.plainModel(this.createFlatItemModel(UGItems.SPEAR.get(), ModelTemplates.FLAT_ITEM));
-		ItemModel.Unbaked inHandNormalModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.SPEAR.get(), "_in_hand"), new SpearSpecialRenderer.Unbaked());
-		ItemModel.Unbaked inHandThrowingModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.SPEAR.get(), "_throwing"), new SpearSpecialRenderer.Unbaked());
+		ItemModel.Unbaked flatJavelinModel = ItemModelUtils.plainModel(this.createFlatItemModel(UGItems.JAVELIN.get(), ModelTemplates.FLAT_ITEM));
+		ItemModel.Unbaked inHandNormalModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.JAVELIN.get(), "_in_hand"), new JavelinSpecialRenderer.Unbaked());
+		ItemModel.Unbaked inHandThrowingModel = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.JAVELIN.get(), "_throwing"), new JavelinSpecialRenderer.Unbaked());
 		ItemModel.Unbaked inHandModel = ItemModelUtils.conditional(TridentSpecialRenderer.DEFAULT_TRANSFORMATION, ItemModelUtils.isUsingItem(), inHandThrowingModel, inHandNormalModel);
-		this.itemModelOutput.accept(UGItems.SPEAR.get(), createFlatModelDispatch(flatSpearModel, inHandModel));
+		this.itemModelOutput.accept(UGItems.JAVELIN.get(), createFlatModelDispatch(flatJavelinModel, inHandModel));
 
 		ItemModel.Unbaked normalShield = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.CLOGGRUM_SHIELD.get()), new CloggrumShieldSpecialRenderer.Unbaked());
 		ItemModel.Unbaked blockingShield = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.CLOGGRUM_SHIELD.get(), "_blocking"), new CloggrumShieldSpecialRenderer.Unbaked());

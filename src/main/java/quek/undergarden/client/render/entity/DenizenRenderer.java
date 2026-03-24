@@ -55,7 +55,7 @@ public class DenizenRenderer extends MobRenderer<Denizen, DenizenRenderState, De
 
 	protected HumanoidModel.ArmPose getArmPose(Denizen entity, HumanoidArm arm) {
 		ItemStack stack = entity.getItemHeldByArm(arm);
-		if (stack.is(UGItems.SPEAR) && entity.isAggressive()) {
+		if (stack.is(UGItems.JAVELIN) && entity.isAggressive()) {
 			return HumanoidModel.ArmPose.THROW_TRIDENT;
 		}
 

@@ -5,17 +5,17 @@ import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import quek.undergarden.registry.UGItems;
 
-public class DenizenSpearAttackGoal extends RangedAttackGoal {
+public class DenizenJavelinAttackGoal extends RangedAttackGoal {
 	private final Denizen denizen;
 
-	public DenizenSpearAttackGoal(RangedAttackMob rangedAttackMob, double speedModifier, int attackInterval, float attackRadius) {
+	public DenizenJavelinAttackGoal(RangedAttackMob rangedAttackMob, double speedModifier, int attackInterval, float attackRadius) {
 		super(rangedAttackMob, speedModifier, attackInterval, attackRadius);
 		this.denizen = (Denizen) rangedAttackMob;
 	}
 
 	@Override
 	public boolean canUse() {
-		return super.canUse() && this.denizen.getMainHandItem().is(UGItems.SPEAR);
+		return super.canUse() && this.denizen.getMainHandItem().is(UGItems.JAVELIN);
 	}
 
 	@Override

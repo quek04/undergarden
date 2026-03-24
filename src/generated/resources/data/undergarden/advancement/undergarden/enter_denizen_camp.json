@@ -23,7 +23,7 @@
       "translate": "advancement.undergarden.enter_denizen_camp.desc"
     },
     "icon": {
-      "id": "undergarden:spear"
+      "id": "undergarden:javelin"
     },
     "title": {
       "translate": "advancement.undergarden.enter_denizen_camp.title"

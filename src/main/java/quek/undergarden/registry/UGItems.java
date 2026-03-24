@@ -134,7 +134,7 @@ public class UGItems {
 	public static final DeferredItem<Item> CATALYST = register("catalyst", CatalystItem::new, () -> new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
 	public static final DeferredItem<Item> CRUMBLING_CATALYST = register("crumbling_catalyst", CrumblingCatalystItem::new, () -> new Item.Properties().durability(1).stacksTo(1).rarity(Rarity.RARE));
 	public static final DeferredItem<Item> SLINGSHOT = register("slingshot", SlingshotItem::new, () -> new Item.Properties().durability(192).enchantable(1).repairable(ItemTags.PLANKS).rarity(Rarity.UNCOMMON));
-	public static final DeferredItem<Item> SPEAR = register("spear", SpearItem::new, () -> new Item.Properties().attributes(SpearItem.createAttributes()).component(DataComponents.TOOL, TridentItem.createToolProperties()).durability(250).enchantable(1).component(DataComponents.WEAPON, new Weapon(1)).rarity(Rarity.UNCOMMON));
+	public static final DeferredItem<Item> JAVELIN = register("javelin", JavelinItem::new, () -> new Item.Properties().attributes(JavelinItem.createAttributes()).rarity(Rarity.UNCOMMON).stacksTo(16));
 	public static final DeferredItem<Item> BLISTERBOMB = register("blisterbomb", BlisterbombItem::new, () -> new Item.Properties().stacksTo(8));
 	public static final DeferredItem<Item> UNDERBEAN_STICK = register("underbean_on_a_stick", (properties) -> new UnderbeanOnAStickItem<>(UGEntityTypes.DWELLER.get(), 1, properties), () -> new Item.Properties().stacksTo(1).durability(100));
 
