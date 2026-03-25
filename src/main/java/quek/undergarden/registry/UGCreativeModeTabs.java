@@ -10,11 +10,14 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -83,7 +86,12 @@ public class UGCreativeModeTabs {
 
 			for (Fluid fluid : BuiltInRegistries.FLUID.stream().filter(fluid -> fluid.isSource(fluid.defaultFluidState())).toList().reversed()) {
 				FluidStack stack = new FluidStack(fluid, FluidType.BUCKET_VOLUME);
-				event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, DataComponentPatch.builder().set(UGDataComponents.STORED_FLUID.get(), SimpleFluidContent.copyOf(stack)).build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+				DataComponentPatch.Builder builder =  DataComponentPatch.builder();
+				builder.set(UGDataComponents.STORED_FLUID.get(), SimpleFluidContent.copyOf(stack));
+				if (stack.is(NeoForgeMod.MILK)) {
+					builder.set(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET);
+				}
+				event.insertAfter(UGItems.CLOGGRUM_BUCKET.toStack(), new ItemStack(UGItems.CLOGGRUM_BUCKET, 1, builder.build()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 			}
 		}
 	}

@@ -11,7 +11,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
@@ -22,7 +21,6 @@ import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.item.consume_effects.ClearAllStatusEffectsConsumeEffect;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ClipContext;
@@ -49,15 +47,12 @@ import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.access.ItemAccess;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.transfer.fluid.FluidUtil;
-import net.neoforged.neoforge.transfer.item.ItemUtil;
-import net.neoforged.neoforge.transfer.item.VanillaContainerWrapper;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jspecify.annotations.Nullable;
 import quek.undergarden.registry.UGDataComponents;
 
 import java.util.Optional;
 
-//TODO GRAHHHHHHHH what the fuck is this new transfer API
 public class UGBucketItem extends Item {
 
 	public UGBucketItem(Properties properties) {
@@ -67,26 +62,20 @@ public class UGBucketItem extends Item {
 
 	@Override
 	public @Nullable ItemStackTemplate getCraftingRemainder(ItemInstance instance) {
-		var copy = new ItemStack(this);
+		var copy = new ItemStack(instance.typeHolder());
 		copy.applyComponents(instance.typeHolder().components());
 
-		var container = VanillaContainerWrapper.of(new SimpleContainer(copy) {
-			// Override to avoid clamping oversized stacks to their max stack size, just in case.
-			@Override
-			public void setItem(int slot, ItemStack stack, boolean performSideEffects) {
-				getItems().set(slot, stack);
-			}
-		});
-		var itemAccess = ItemAccess.forHandlerIndex(container, 0);
-		var resourceHandler = itemAccess.getCapability(Capabilities.Fluid.ITEM);
-		if (resourceHandler != null) {
+		var itemAccess = ItemAccess.forStack(copy);
+		var handler = itemAccess.oneByOne().getCapability(Capabilities.Fluid.ITEM);
+		if (handler != null && !handler.getResource(0).isEmpty()) {
 			try (var tx = Transaction.openRoot()) {
-				resourceHandler.extract(resourceHandler.getResource(0), FluidType.BUCKET_VOLUME, tx);
+				handler.extract(handler.getResource(0), FluidType.BUCKET_VOLUME, tx);
 				tx.commit();
+				return ItemStackTemplate.fromNonEmptyStack(copy);
 			}
 		}
 
-		return ItemStackTemplate.fromNonEmptyStack(copy);
+		return null;
 	}
 
 	@Override
@@ -101,16 +90,6 @@ public class UGBucketItem extends Item {
 			return Component.translatable(this.getDescriptionId() + ".block", Component.translatable(stack.get(UGDataComponents.STORED_BLOCK).getBlock().getDescriptionId()));
 		}
 		return super.getName(stack);
-	}
-
-	@Override
-	public ItemUseAnimation getUseAnimation(ItemStack stack) {
-		return isMilkBucket(stack) ? ItemUseAnimation.DRINK : ItemUseAnimation.NONE;
-	}
-
-	@Override
-	public int getUseDuration(ItemStack stack, LivingEntity entity) {
-		return isMilkBucket(stack) ? 32 : 0;
 	}
 
 	@Override
@@ -137,7 +116,7 @@ public class UGBucketItem extends Item {
 			BlockPos relativeBlockPos = hitBlockPos.relative(hitDirection);
 			if (isEmpty) {
 				//pickup fluid interaction
-				InteractionResult pickup = this.tryPickupFluid(stack, level, player);
+				InteractionResult pickup = this.tryPickupFluid(level, player, hand);
 				if (pickup.consumesAction()) {
 					return pickup;
 				}
@@ -155,7 +134,7 @@ public class UGBucketItem extends Item {
 							workBucket.set(UGDataComponents.STORED_BLOCK, hitBlockState);
 						}
 						if (!level.isClientSide()) {
-							CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer)player, resultStack);
+							CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, resultStack);
 						}
 						var result = ItemUtils.createFilledResult(stack, player, workBucket);
 						return InteractionResult.SUCCESS.heldItemTransformedTo(result);
@@ -166,11 +145,10 @@ public class UGBucketItem extends Item {
 				//place fluid interaction
 				if (hasFluid(stack)) {
 					InteractionResult place = this.tryPlaceFluid(stack, level, player, hand);
-					if (place instanceof InteractionResult.Success success && success.heldItemTransformedTo() != null) {
+					if (place.consumesAction()) {
 						//place entity if exists
-						if (getBucketedEntity(success.heldItemTransformedTo()).isPresent()) {
-							ItemStack emptyBucket = this.spawnEntityFromBucket(player, level, success.heldItemTransformedTo(), relativeBlockPos, !player.hasInfiniteMaterials());
-							ItemUtils.createFilledResult(stack, player, emptyBucket);
+						if (getBucketedEntity(stack).isPresent()) {
+							ItemStack emptyBucket = this.spawnEntityFromBucket(player, level, stack, relativeBlockPos, !player.hasInfiniteMaterials());
 							return InteractionResult.SUCCESS.heldItemTransformedTo(emptyBucket);
 						}
 						return place;
@@ -193,10 +171,27 @@ public class UGBucketItem extends Item {
 				}
 			}
 		}
-		if (isMilkBucket(stack)) {
-			return ItemUtils.startUsingInstantly(level, player, hand);
+		return super.use(level, player, hand);
+	}
+
+	@Override
+	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+		ItemStack returnedStack = super.finishUsingItem(stack.copy(), level, entity);
+
+		//instead of shrinking the stack after use, drain the fluid
+		if (returnedStack.isEmpty() && entity instanceof Player player && !player.hasInfiniteMaterials()) {
+			var resourceHandler = createHandler(player, player.getUsedItemHand());
+			if (resourceHandler != null) {
+				try (var tx = Transaction.openRoot()) {
+					resourceHandler.extract(resourceHandler.getResource(0), FluidType.BUCKET_VOLUME, tx);
+					tx.commit();
+					stack.remove(DataComponents.CONSUMABLE);
+					return stack;
+				}
+			}
 		}
-		return InteractionResult.PASS;
+
+		return returnedStack;
 	}
 
 	public ItemStack spawnEntityFromBucket(@Nullable Player player, Level level, ItemStack stack, BlockPos pos, boolean removeTag) {
@@ -227,24 +222,16 @@ public class UGBucketItem extends Item {
 
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
-		var container = VanillaContainerWrapper.of(new SimpleContainer(stack) {
-			// Override to avoid clamping oversized stacks to their max stack size, just in case.
-			@Override
-			public void setItem(int slot, ItemStack stack, boolean performSideEffects) {
-				getItems().set(slot, stack);
-			}
-		});
-		var itemAccess = ItemAccess.forHandlerIndex(container, 0);
-		var resourceHandler = itemAccess.getCapability(Capabilities.Fluid.ITEM);
+		var handler = createHandler(player, hand);
 		try (var tx = Transaction.openRoot()) {
 			if (entity instanceof Cow cow && !cow.isBaby()) {
-				if (resourceHandler != null && resourceHandler.insert(FluidResource.of(NeoForgeMod.MILK.get()), FluidType.BUCKET_VOLUME, tx) > 0) {
+				if (handler != null && handler.insert(FluidResource.of(NeoForgeMod.MILK.get()), FluidType.BUCKET_VOLUME, tx) > 0) {
 					tx.commit();
 					player.playSound(SoundEvents.COW_MILK);
 					return InteractionResult.SUCCESS;
 				}
 			} else if (entity instanceof Goat goat && !goat.isBaby()) {
-				if (resourceHandler != null && resourceHandler.insert(FluidResource.of(NeoForgeMod.MILK.get()), FluidType.BUCKET_VOLUME, tx) > 0) {
+				if (handler != null && handler.insert(FluidResource.of(NeoForgeMod.MILK.get()), FluidType.BUCKET_VOLUME, tx) > 0) {
 					tx.commit();
 					player.playSound(goat.isScreamingGoat() ? SoundEvents.GOAT_SCREAMING_MILK : SoundEvents.GOAT_MILK);
 					return InteractionResult.SUCCESS;
@@ -256,60 +243,25 @@ public class UGBucketItem extends Item {
 				if (bucketStack.getItem() instanceof BucketItem bucket) {
 					Fluid containedFluid = bucket.content;
 					if (stack.getOrDefault(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY).is(containedFluid)) {
-						entity.playSound(bucketable.getPickupSound());
+						entity.playSound(bucketable.getPickupSound(), 1.0F, 1.0F);
 						bucketable.saveToBucketTag(workBucket);
 						String id = entity.getEncodeId();
 						if (id != null) {
 							CustomData.update(DataComponents.BUCKET_ENTITY_DATA, workBucket, tag -> tag.putString("id", id));
 						}
-						Level level = entity.level();
-						if (!level.isClientSide()) {
-							CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, bucketStack);
+						player.setItemInHand(hand, workBucket);
+						if (player instanceof ServerPlayer sp) {
+							CriteriaTriggers.FILLED_BUCKET.trigger(sp, bucketStack);
 						}
 
 						entity.discard();
-						return InteractionResult.SUCCESS.heldItemTransformedTo(workBucket);
+						return InteractionResult.SUCCESS;
 					}
 				}
 			}
 
 			return InteractionResult.PASS;
 		}
-	}
-
-	// [VanillaCopy] of MilkBucketItem#finishUsingItem
-	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-		if (entity instanceof ServerPlayer player) {
-			CriteriaTriggers.CONSUME_ITEM.trigger(player, stack);
-			player.awardStat(Stats.ITEM_USED.get(this));
-		}
-
-		if (!level.isClientSide()) {
-			var removeEffects = new ClearAllStatusEffectsConsumeEffect();
-			removeEffects.apply(level, stack, entity);
-		}
-
-		if (entity instanceof Player player && !player.hasInfiniteMaterials()) {
-			//instead of shrinking the stack, drain the fluid
-			var container = VanillaContainerWrapper.of(new SimpleContainer(stack) {
-				// Override to avoid clamping oversized stacks to their max stack size, just in case.
-				@Override
-				public void setItem(int slot, ItemStack stack, boolean performSideEffects) {
-					getItems().set(slot, stack);
-				}
-			});
-			var itemAccess = ItemAccess.forHandlerIndex(container, 0);
-			var resourceHandler = itemAccess.getCapability(Capabilities.Fluid.ITEM);
-			try (var tx = Transaction.openRoot()) {
-				if (resourceHandler != null) {
-					resourceHandler.extract(resourceHandler.getResource(0), FluidType.BUCKET_VOLUME, tx);
-					tx.commit();
-				}
-			}
-		}
-
-		return stack;
 	}
 
 	private InteractionResult tryPlaceFluid(ItemStack stack, Level level, Player player, InteractionHand hand) {
@@ -325,25 +277,14 @@ public class UGBucketItem extends Item {
 			var targetPos = pos.relative(trace.getDirection());
 
 			if (player.mayUseItemAt(targetPos, trace.getDirection().getOpposite(), stack)) {
-				var container = VanillaContainerWrapper.of(new SimpleContainer(stack) {
-					// Override to avoid clamping oversized stacks to their max stack size, just in case.
-					@Override
-					public void setItem(int slot, ItemStack stack, boolean performSideEffects) {
-						getItems().set(slot, stack);
-					}
-				});
-				var itemAccess = ItemAccess.forHandlerIndex(container, 0);
-				var resourceHandler = itemAccess.getCapability(Capabilities.Fluid.ITEM);
-				var result = FluidUtil.tryPlaceFluid(resourceHandler, player, level, hand, targetPos);
+				var result = FluidUtil.tryPlaceFluid(createHandler(player, hand), player, level, hand, targetPos);
 				if (!result.isEmpty()) {
-					ItemStack emptyStack = ItemUtils.createFilledResult(stack, player, ItemUtil.getStack(container, 0));
 					if (player instanceof ServerPlayer sp) {
 						CriteriaTriggers.PLACED_BLOCK.trigger(sp, targetPos, stack);
 					}
 
 					player.awardStat(Stats.ITEM_USED.get(this));
-
-					return InteractionResult.SUCCESS.heldItemTransformedTo(emptyStack);
+					return InteractionResult.SUCCESS;
 				}
 			}
 		}
@@ -351,7 +292,8 @@ public class UGBucketItem extends Item {
 		return InteractionResult.FAIL;
 	}
 
-	private InteractionResult tryPickupFluid(ItemStack stack, Level level, Player player) {
+	private InteractionResult tryPickupFluid(Level level, Player player, InteractionHand hand) {
+		ItemStack stack = player.getItemInHand(hand);
 		if (!isBucketEmpty(stack))
 			return InteractionResult.PASS;
 
@@ -363,24 +305,13 @@ public class UGBucketItem extends Item {
 		if (level.mayInteract(player, pos)) {
 			var direction = trace.getDirection();
 			if (player.mayUseItemAt(pos, direction, stack)) {
-				var container = VanillaContainerWrapper.of(new SimpleContainer(stack) {
-					// Override to avoid clamping oversized stacks to their max stack size, just in case.
-					@Override
-					public void setItem(int slot, ItemStack stack, boolean performSideEffects) {
-						getItems().set(slot, stack);
-					}
-				});
-				var itemAccess = ItemAccess.forHandlerIndex(container, 0);
-				var resourceHandler = itemAccess.getCapability(Capabilities.Fluid.ITEM);
-				var result = FluidUtil.tryPickupFluid(resourceHandler, player, level, pos, direction);
+				var result = FluidUtil.tryPickupFluid(createHandler(player, hand), player, level, pos, direction);
 
 				if (!result.isEmpty()) {
-					ItemStack filledStack = ItemUtils.createFilledResult(stack, player, ItemUtil.getStack(container, 0));
 					if (!level.isClientSide()) {
 						CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, stack);
 					}
-
-					return InteractionResult.SUCCESS.heldItemTransformedTo(filledStack);
+					return InteractionResult.SUCCESS;
 				}
 			}
 		}
@@ -388,8 +319,10 @@ public class UGBucketItem extends Item {
 		return InteractionResult.FAIL;
 	}
 
-	private static boolean isMilkBucket(ItemStack stack) {
-		return stack.getOrDefault(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY).is(NeoForgeMod.MILK.get());
+	@Nullable
+	private static ResourceHandler<FluidResource> createHandler(Player player, InteractionHand hand) {
+		ItemAccess access = ItemAccess.forPlayerInteraction(player, hand);
+		return access.oneByOne().getCapability(Capabilities.Fluid.ITEM);
 	}
 
 	public static boolean isBucketEmpty(ItemStack bucket) {
@@ -405,8 +338,8 @@ public class UGBucketItem extends Item {
 	}
 
 	public static Optional<EntityType<?>> getBucketedEntity(ItemStack bucket) {
-		if (bucket.get(DataComponents.BUCKET_ENTITY_DATA) != null) {
-			return EntityType.byString(bucket.get(DataComponents.BUCKET_ENTITY_DATA).copyTag().getStringOr("id", ""));
+		if (bucket.has(DataComponents.BUCKET_ENTITY_DATA)) {
+			return EntityType.byString(bucket.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY).copyTag().getStringOr("id", ""));
 		}
 		return Optional.empty();
 	}

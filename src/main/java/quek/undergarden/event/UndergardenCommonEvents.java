@@ -65,6 +65,7 @@ import quek.undergarden.entity.monster.denizen.Denizen;
 import quek.undergarden.entity.monster.stoneborn.trading.StonebornTrade;
 import quek.undergarden.entity.monster.stoneborn.trading.StonebornTradeSet;
 import quek.undergarden.entity.projectile.slingshot.*;
+import quek.undergarden.item.bucket.ItemAccessBucketHandler;
 import quek.undergarden.item.tool.SlingshotItem;
 import quek.undergarden.network.CreateCritParticlePacket;
 import quek.undergarden.network.UndergardenPortalSoundPacket;
@@ -124,7 +125,7 @@ public class UndergardenCommonEvents {
 	}
 
 	private static void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerItem(Capabilities.Fluid.ITEM, (object, context) -> new ItemAccessFluidHandler(context, UGDataComponents.STORED_FLUID.get(), FluidType.BUCKET_VOLUME), UGItems.CLOGGRUM_BUCKET);
+		event.registerItem(Capabilities.Fluid.ITEM, (object, context) -> new ItemAccessBucketHandler(context, UGDataComponents.STORED_FLUID.get(), FluidType.BUCKET_VOLUME), UGItems.CLOGGRUM_BUCKET);
 	}
 
 	private static void registerBETypes(BlockEntityTypeAddBlocksEvent event) {

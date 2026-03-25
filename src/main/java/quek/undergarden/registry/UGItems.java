@@ -20,6 +20,7 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
@@ -176,7 +177,7 @@ public class UGItems {
 	public static final DeferredItem<Item> VIRULENT_MIX_BUCKET = register("virulent_mix_bucket", (properties) -> new BucketItem(UGFluids.VIRULENT_MIX_SOURCE.get(), properties), () -> new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET));
 	public static final DeferredItem<Item> GWIBLING_BUCKET = register("gwibling_bucket", (properties) -> new MobBucketItem(UGEntityTypes.GWIBLING.get(), Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, properties), () -> new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY));
 
-	public static final DeferredItem<Item> CLOGGRUM_BUCKET = register("cloggrum_bucket", UGBucketItem::new, () -> new Item.Properties().stacksTo(16));
+	public static final DeferredItem<Item> CLOGGRUM_BUCKET = register("cloggrum_bucket", UGBucketItem::new, () -> new Item.Properties().component(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY).stacksTo(16));
 
 	//armors
 	public static final DeferredItem<Item> CLOGGRUM_HELMET = register("cloggrum_helmet", Item::new, () -> new Item.Properties().humanoidArmor(UGArmorMaterials.CLOGGRUM, ArmorType.HELMET));
