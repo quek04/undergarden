@@ -66,6 +66,7 @@ import quek.undergarden.client.gui.screen.UndergardenReceivingLevelScreen;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
 import quek.undergarden.client.model.*;
 import quek.undergarden.client.model.item.CloggrumBucketModel;
+import quek.undergarden.client.model.item.PullingSlingshotModel;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRenderer;
 import quek.undergarden.client.render.blockentity.DepthrockPotRenderer;
@@ -273,6 +274,7 @@ public class UndergardenClientEvents {
 
 	private static void registerSpecialItemModels(RegisterItemModelsEvent event) {
 		event.register(Undergarden.prefix("cloggrum_bucket"), CloggrumBucketModel.Unbaked.MAP_CODEC);
+		event.register(Undergarden.prefix("pulling_slingshot"), PullingSlingshotModel.Unbaked.MAP_CODEC);
 	}
 
 	private static void registerSpecialModels(RegisterSpecialModelRendererEvent event) {

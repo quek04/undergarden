@@ -23,7 +23,7 @@ import java.util.function.Function;
 public class UGSlingshotAmmoSettings {
 
 	public static final SlingshotAmmo BLISTERBERRY = SlingshotAmmo.builder()
-		.setSlingshotChargeTextures(Undergarden.prefix("slingshot_pulling_blisterberry"))
+		.setSlingshotChargeTextures(Undergarden.prefix("item/slingshot_pulling_blisterberry"))
 		.addHitEffect(new ExplodeHitEffect(1.5F, false, Level.ExplosionInteraction.NONE))
 		.build();
 
@@ -34,7 +34,7 @@ public class UGSlingshotAmmoSettings {
 		.build();
 
 	public static final SlingshotAmmo GOO_BALL = SlingshotAmmo.builder()
-		.setSlingshotChargeTextures(Undergarden.prefix("slingshot_pulling_gooball"))
+		.setSlingshotChargeTextures(Undergarden.prefix("item/slingshot_pulling_gooball"))
 		.setBreakParticleCount(ConstantInt.of(8))
 		.setHitSound(SoundEvents.SLIME_BLOCK_BREAK)
 		.addHitEffect(new PlaceBlockHitEffect(UGBlocks.GOO.get().defaultBlockState()))
@@ -43,7 +43,7 @@ public class UGSlingshotAmmoSettings {
 		.build();
 
 	public static final Function<String, SlingshotAmmo> GRONGLET = pref -> SlingshotAmmo.builder()
-		.setSlingshotChargeTextures(Undergarden.prefix("slingshot_pulling_" + pref + "gronglet"))
+		.setSlingshotChargeTextures(Undergarden.prefix("item/slingshot_pulling_" + pref + "gronglet"))
 		.dropAsItem()
 		.setShootSound(UGSoundEvents.GRONGLET_SHOOT)
 		.setHitSound(UGSoundEvents.GRONGLET_PLACE)

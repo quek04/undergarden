@@ -5,6 +5,7 @@ import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
+import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
 import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
 import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
 import net.minecraft.client.renderer.special.TridentSpecialRenderer;
@@ -19,7 +20,9 @@ import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import quek.undergarden.Undergarden;
 import quek.undergarden.client.model.item.CloggrumBucketModel;
+import quek.undergarden.client.model.item.PullingSlingshotModel;
 import quek.undergarden.client.render.item.CloggrumShieldSpecialRenderer;
 import quek.undergarden.client.render.item.JavelinSpecialRenderer;
 import quek.undergarden.registry.*;
@@ -179,6 +182,13 @@ public class UGItemModels extends ItemModelGenerators {
 				Optional.of(new Material(Identifier.fromNamespaceAndPath("neoforge", "item/mask/bucket_fluid_drip"))),
 				Optional.empty()
 			), Fluids.EMPTY, true, true));
+
+		this.itemModelOutput.accept(UGItems.SLINGSHOT.get(), ItemModelUtils.conditional(ItemModelUtils.isUsingItem(), ItemModelUtils.rangeSelect(
+			new UseDuration(false),
+			0.05F, new PullingSlingshotModel.Unbaked(new Material(Undergarden.prefix("item/slingshot_pulling_0")), 0),
+			ItemModelUtils.override(new PullingSlingshotModel.Unbaked(new Material(Undergarden.prefix("item/slingshot_pulling_1")), 1), 0.65F),
+			ItemModelUtils.override(new PullingSlingshotModel.Unbaked(new Material(Undergarden.prefix("item/slingshot_pulling_2")), 2), 0.9F)
+		), ItemModelUtils.plainModel(this.createFlatItemModel(UGItems.SLINGSHOT.get(), ModelTemplates.FLAT_ITEM))));
 	}
 
 	public void generateBattleaxe(Item item) {

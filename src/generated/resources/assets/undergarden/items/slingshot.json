@@ -1,0 +1,38 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "undergarden:item/slingshot"
+    },
+    "on_true": {
+      "type": "minecraft:range_dispatch",
+      "entries": [
+        {
+          "model": {
+            "type": "undergarden:pulling_slingshot",
+            "default_texture": "undergarden:item/slingshot_pulling_1",
+            "index": 1
+          },
+          "threshold": 0.65
+        },
+        {
+          "model": {
+            "type": "undergarden:pulling_slingshot",
+            "default_texture": "undergarden:item/slingshot_pulling_2",
+            "index": 2
+          },
+          "threshold": 0.9
+        }
+      ],
+      "fallback": {
+        "type": "undergarden:pulling_slingshot",
+        "default_texture": "undergarden:item/slingshot_pulling_0",
+        "index": 0
+      },
+      "property": "minecraft:use_duration",
+      "scale": 0.05
+    },
+    "property": "minecraft:using_item"
+  }
+}

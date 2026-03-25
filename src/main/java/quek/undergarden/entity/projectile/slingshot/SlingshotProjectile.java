@@ -104,12 +104,9 @@ public final class SlingshotProjectile extends ThrowableItemProjectile {
 				if (this.getOwner() instanceof Player player && !player.isCreative() && ammo.dropAsItem()) {
 					this.spawnAtLocation(level, this.getItem());
 				}
-				this.discard();
 			}
-		} else {
-			//how did we get here
-			this.discard();
 		}
+		this.discard();
 	}
 
 	public int getAirTime() {
