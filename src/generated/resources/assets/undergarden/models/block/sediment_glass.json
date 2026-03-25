@@ -1,6 +1,9 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "undergarden:block/sediment_glass"
+    "all": {
+      "force_translucent": true,
+      "sprite": "undergarden:block/sediment_glass"
+    }
   }
 }

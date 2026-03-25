@@ -1,7 +1,7 @@
 {
   "gui_light": "front",
   "textures": {
-    "particle": "undergarden:item/spear"
+    "particle": "undergarden:item/javelin"
   },
   "display": {
     "thirdperson_righthand": {

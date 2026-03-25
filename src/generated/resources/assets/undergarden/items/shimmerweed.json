@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "undergarden:item/shimmerweed",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -10783397
+      }
+    ]
+  }
+}

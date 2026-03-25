@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/stem_fruit",
   "textures": {
-    "stem": "undergarden:block/gloomgourd_stem",
-    "upperstem": "undergarden:block/gloomgourd_stem_attached"
+    "stem": "minecraft:block/melon_stem",
+    "upperstem": "minecraft:block/attached_melon_stem"
   }
 }

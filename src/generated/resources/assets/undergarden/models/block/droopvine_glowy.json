@@ -1,0 +1,7 @@
+{
+  "parent": "undergarden:block/tinted_cross_emissive",
+  "textures": {
+    "cross": "undergarden:block/droopvine",
+    "cross_emissive": "undergarden:block/droopvine_emissive"
+  }
+}

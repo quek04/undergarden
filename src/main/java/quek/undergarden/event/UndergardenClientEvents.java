@@ -254,8 +254,8 @@ public class UndergardenClientEvents {
 
 	private static void registerFluidModels(RegisterFluidModelsEvent event) {
 		FluidModel.Unbaked virulentModel = new FluidModel.Unbaked(
-			new Material(Undergarden.prefix("fluid/virulent_mix_still")),
-			new Material(Undergarden.prefix("fluid/virulent_mix_flow")),
+			new Material(Undergarden.prefix("block/virulent_mix_still")),
+			new Material(Undergarden.prefix("block/virulent_mix_flow")),
 			null, null);
 		event.register(virulentModel, UGFluids.VIRULENT_MIX_SOURCE.get());
 		event.register(virulentModel, UGFluids.VIRULENT_MIX_FLOWING.get());
@@ -281,7 +281,7 @@ public class UndergardenClientEvents {
 		event.register(List.of(new BlockTintSource() {
 			@Override
 			public int color(BlockState state) {
-				return ARGB.color(255, 91, 117, 91);
+				return -10783397;
 			}
 
 			@Override
@@ -448,7 +448,7 @@ public class UndergardenClientEvents {
 
 			@Override
 			public Identifier getRenderOverlayTexture(Minecraft mc) {
-				return Undergarden.prefix("fluid/virulent_mix_flow");
+				return Undergarden.prefix("block/virulent_mix_flow");
 			}
 
 			@Override

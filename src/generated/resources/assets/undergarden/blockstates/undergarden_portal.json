@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "undergarden:block/undergarden_portal_ns"
+    },
+    "axis=z": {
+      "model": "undergarden:block/undergarden_portal_ew"
+    }
+  }
+}

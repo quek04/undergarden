@@ -1,6 +1,5 @@
 {
   "ambientocclusion": false,
-  "render_type": "minecraft:cutout",
   "textures": {
     "particle": "undergarden:block/mushroom_veil",
     "veil": "undergarden:block/mushroom_veil"

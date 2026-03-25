@@ -1,8 +1,0 @@
-{
-  "parent": "undergarden:block/cross_emissive",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "undergarden:block/droopvine_plant",
-    "overlay": "undergarden:block/droopvine_plant_glowy"
-  }
-}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "pebbles=1": {
+      "model": "undergarden:block/depthrock_pebble"
+    },
+    "pebbles=2": {
+      "model": "undergarden:block/depthrock_pebbles"
+    }
+  }
+}

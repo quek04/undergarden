@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_bars_side",
+  "textures": {
+    "bars": "undergarden:block/cloggrum_bars",
+    "edge": "undergarden:block/cloggrum_bars"
+  }
+}

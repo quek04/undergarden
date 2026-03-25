@@ -78,7 +78,6 @@ public class UGItemModels extends ItemModelGenerators {
 		this.generateFlatItem(UGItems.REGALIUM_CRYSTAL.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.FORGOTTEN_INGOT.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.FORGOTTEN_NUGGET.get(), ModelTemplates.FLAT_ITEM);
-		this.generateFlatItem(UGItems.DITCHBULB.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.BRUTE_TUSK.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.MOGMOSS.get(), ModelTemplates.FLAT_ITEM);
 		this.generateFlatItem(UGItems.GOO_BALL.get(), ModelTemplates.FLAT_ITEM);

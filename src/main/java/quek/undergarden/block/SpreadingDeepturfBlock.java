@@ -20,7 +20,7 @@ public class SpreadingDeepturfBlock extends SpreadingSnowyBlock implements Bonem
 	public static final MapCodec<SpreadingDeepturfBlock> CODEC = simpleCodec(SpreadingDeepturfBlock::new);
 
 	public SpreadingDeepturfBlock(Properties properties) {
-		super(properties, UGBlocks.DEEPTURF.getKey());
+		super(properties, UGBlocks.DEEPSOIL.getKey());
 	}
 
 	@Override

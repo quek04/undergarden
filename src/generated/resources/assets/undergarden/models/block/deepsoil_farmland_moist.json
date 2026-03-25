@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "undergarden:block/deepsoil",
+    "top": "undergarden:block/deepsoil_farmland_moist"
+  }
+}

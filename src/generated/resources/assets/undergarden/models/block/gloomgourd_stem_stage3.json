@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/stem_growth3",
   "textures": {
-    "stem": "undergarden:block/gloomgourd_stem"
+    "stem": "minecraft:block/melon_stem"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "undergarden:block/tinted_cross_emissive",
+  "textures": {
+    "cross": "undergarden:block/ditchbulb_plant_ungrown",
+    "cross_emissive": "undergarden:block/ditchbulb_plant_ungrown_emissive"
+  }
+}

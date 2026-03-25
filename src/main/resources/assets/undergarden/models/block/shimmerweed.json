@@ -1,8 +1,0 @@
-{
-  "parent": "undergarden:block/cross_emissive",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "undergarden:block/shimmerweed",
-    "overlay": "undergarden:block/shimmerweed_bulb"
-  }
-}

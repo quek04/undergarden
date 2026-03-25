@@ -1,0 +1,7 @@
+{
+  "parent": "undergarden:block/flower_pot_tinted_cross_emissive",
+  "textures": {
+    "cross_emissive": "undergarden:block/shimmerweed_emissive",
+    "plant": "undergarden:block/shimmerweed"
+  }
+}

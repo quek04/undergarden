@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "undergarden:block/depthrock",
+    "side": "undergarden:block/smog_vent_side",
+    "top": "undergarden:block/smog_vent_top"
+  }
+}

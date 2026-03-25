@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "undergarden:block/ditchbulb_plant_ungrown"
+    },
+    "age=1": {
+      "model": "undergarden:block/ditchbulb_plant"
+    }
+  }
+}

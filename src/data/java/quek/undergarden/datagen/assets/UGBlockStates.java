@@ -23,14 +23,14 @@ import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BedPart;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import org.joml.Vector3f;
+import org.jspecify.annotations.Nullable;
 import quek.undergarden.Undergarden;
-import quek.undergarden.block.BlisterberryBushBlock;
-import quek.undergarden.block.DenizenTotemBlock;
-import quek.undergarden.block.HangingGrongleLeavesBlock;
-import quek.undergarden.block.SpreadingDeepturfBlock;
+import quek.undergarden.block.*;
 import quek.undergarden.client.render.item.DepthrockBedSpecialRenderer;
 import quek.undergarden.client.render.item.DepthrockPotSpecialRenderer;
 import quek.undergarden.client.render.item.GrongletSpecialRenderer;
@@ -54,6 +54,47 @@ public class UGBlockStates extends BlockModelGenerators {
 		UGBlockFamilies.getAllFamilies()
 			.filter(BlockFamily::shouldGenerateModel)
 			.forEach(blockFamily -> this.family(blockFamily.getBaseBlock()).generateFor(blockFamily));
+		this.generateBlockItem(UGBlocks.DEPTHROCK.get());
+		this.generateBlockItem(UGBlocks.POLISHED_DEPTHROCK.get());
+		this.generateBlockItem(UGBlocks.DEPTHROCK_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CHISELED_DEPTHROCK_BRICKS.get());
+		this.generateBlockItem(UGBlocks.DEPTHROCK_TILES.get());
+		this.generateBlockItem(UGBlocks.DEPTHROCK_PRESSURE_PLATE.get());
+
+		this.generateBlockItem(UGBlocks.SHIVERSTONE.get());
+		this.generateBlockItem(UGBlocks.SHIVERSTONE_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CHISELED_SHIVERSTONE_BRICKS.get());
+		this.generateBlockItem(UGBlocks.SHIVERSTONE_PRESSURE_PLATE.get());
+
+		this.generateBlockItem(UGBlocks.TREMBLECRUST.get());
+		this.generateBlockItem(UGBlocks.TREMBLECRUST_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CRACKED_TREMBLECRUST_BRICKS.get());
+		this.generateBlockItem(UGBlocks.CHISELED_TREMBLECRUST_BRICKS.get());
+		this.generateBlockItem(UGBlocks.TREMBLECRUST_PRESSURE_PLATE.get());
+
+		this.generateBlockItem(UGBlocks.DREADROCK.get());
+		this.generateBlockItem(UGBlocks.DREADROCK_BRICKS.get());
+		this.generateBlockItem(UGBlocks.DREADROCK_PRESSURE_PLATE.get());
+
+		this.generateBlockItem(UGBlocks.CLOGGRUM_TILES.get());
+
+		this.generateBlockItem(UGBlocks.SMOGSTEM_PLANKS.get());
+		this.generateBlockItem(UGBlocks.SMOGSTEM_FENCE_GATE.get());
+		this.generateBlockItem(UGBlocks.SMOGSTEM_PRESSURE_PLATE.get());
+
+		this.generateBlockItem(UGBlocks.WIGGLEWOOD_PLANKS.get());
+		this.generateBlockItem(UGBlocks.WIGGLEWOOD_FENCE_GATE.get());
+		this.generateBlockItem(UGBlocks.WIGGLEWOOD_PRESSURE_PLATE.get());
+
+		this.generateBlockItem(UGBlocks.GRONGLE_PLANKS.get());
+		this.generateBlockItem(UGBlocks.GRONGLE_FENCE_GATE.get());
+		this.generateBlockItem(UGBlocks.GRONGLE_PRESSURE_PLATE.get());
+
+		this.generateBlockItem(UGBlocks.ANCIENT_ROOT_PLANKS.get());
+		this.generateBlockItem(UGBlocks.ANCIENT_ROOT_FENCE_GATE.get());
+		this.generateBlockItem(UGBlocks.ANCIENT_ROOT_PRESSURE_PLATE.get());
 
 		this.createNormalTorch(UGBlocks.SHARD_TORCH.get(), UGBlocks.SHARD_WALL_TORCH.get());
 		this.wrapBlockItem(UGBlocks.DEEPSOIL.get(), this::createTrivialCube);
@@ -94,7 +135,8 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.wrapBlockItem(UGBlocks.UTHERIUM_BLOCK.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.REGALIUM_BLOCK.get(), block -> this.createTrivialBlock(block, TexturedModel.COLUMN));
 		this.wrapBlockItem(UGBlocks.SEDIMENT.get(), this::createTrivialCube);
-		this.wrapBlockItem(UGBlocks.SEDIMENT_GLASS.get(), this::createTrivialCube);
+		this.createGlassBlocks(UGBlocks.SEDIMENT_GLASS.get(), UGBlocks.SEDIMENT_GLASS_PANE.get());
+		this.generateBlockItem(UGBlocks.SEDIMENT_GLASS.get());
 		this.createCrossBlockWithDefaultItem(UGBlocks.FROZEN_DEEPTURF.get(), PlantType.NOT_TINTED);
 		this.wrapBlockItem(UGBlocks.MOGMOSS_RUG.get(), this::createCarpet);
 		this.wrapBlockItem(UGBlocks.BLUE_MOGMOSS_RUG.get(), this::createCarpet);
@@ -114,7 +156,7 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.wrapBlockItem(UGBlocks.VEIL_MUSHROOM_CAP.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.VEIL_MUSHROOM_STEM.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.INK_MUSHROOM_CAP.get(), this::createTrivialCube);
-		this.wrapBlockItem(UGBlocks.INK_MUSHROOM_STEM.get(), this::createTrivialCube);
+		this.wrapBlockItem(UGBlocks.INK_MUSHROOM_STEM.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, variant(plainModel(ModelTemplates.CUBE_ALL.create(block, TextureMapping.cube(TextureMapping.getBlockTexture(Blocks.MUSHROOM_STEM)), this.modelOutput))))));
 		this.wrapBlockItem(UGBlocks.BLOOD_MUSHROOM_CAP.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.BLOOD_MUSHROOM_STEM.get(), this::createTrivialCube);
 		this.wrapBlockItem(UGBlocks.ENGORGED_BLOOD_MUSHROOM_CAP.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, new MultiVariant(WeightedList.of(IntStream.range(1, 4)
@@ -149,11 +191,11 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.wrapBlockItem(UGBlocks.CARVED_GLOOMGOURD.get(), block -> this.createPumpkinVariant(block, TextureMapping.column(UGBlocks.GLOOMGOURD.get())));
 		this.wrapBlockItem(UGBlocks.GLOOM_O_LANTERN.get(), block -> this.createPumpkinVariant(block, TextureMapping.column(UGBlocks.GLOOMGOURD.get())));
 		this.wrapBlockItem(UGBlocks.SHARD_O_LANTERN.get(), block -> this.createPumpkinVariant(block, TextureMapping.column(UGBlocks.GLOOMGOURD.get())));
-		this.createStems(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
+		this.createGloomgourdStems(UGBlocks.GLOOMGOURD_STEM.get(), UGBlocks.GLOOMGOURD_STEM_ATTACHED.get());
 
 		this.createCrossBlockWithDefaultItem(UGBlocks.DEEPTURF.get(), PlantType.TINTED);
 
-		this.wrapTintedBlockItem(UGBlocks.DEEPTURF_BLOCK.get(), ItemModelUtils.constantTint(ARGB.color(255, 91, 117, 91)), block -> this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(
+		this.wrapTintedBlockItem(UGBlocks.DEEPTURF_BLOCK.get(), ItemModelUtils.constantTint(-10783397), block -> this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(
 			createBooleanModelDispatch(SpreadingDeepturfBlock.SNOWY,
 				plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(block, "_snowy", new TextureMapping()
 					.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(UGBlocks.FROZEN_DEEPTURF_BLOCK.get(), "_side"))
@@ -190,6 +232,70 @@ public class UGBlockStates extends BlockModelGenerators {
 		this.generateGronglet(UGBlocks.GRONGLET);
 		this.generateGronglet(UGBlocks.UTHERIC_GRONGLET);
 		this.generateGronglet(UGBlocks.ROGDORIC_GRONGLET);
+
+		this.createBarsAndItem(UGBlocks.CLOGGRUM_BARS.get());
+
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.UNDERGARDEN_PORTAL.get()).with(
+			PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_AXIS)
+				.select(Direction.Axis.X, plainVariant(ModelLocationUtils.getModelLocation(UGBlocks.UNDERGARDEN_PORTAL.get(), "_ns")))
+				.select(Direction.Axis.Z, plainVariant(ModelLocationUtils.getModelLocation(UGBlocks.UNDERGARDEN_PORTAL.get(), "_ew")))
+		));
+
+		this.wrapBlockItem(UGBlocks.DEEPSOIL_FARMLAND.get(), block -> this.generateFarmlandBlock(block, UGBlocks.DEEPSOIL.get()));
+		this.wrapBlockItem(UGBlocks.GOO.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, plainVariant(ModelLocationUtils.getModelLocation(block)))));
+		this.wrapBlockItem(UGBlocks.SMOG_VENT.get(), block -> this.blockStateOutput.accept(createSimpleBlock(block, plainVariant(ModelTemplates.CUBE_BOTTOM_TOP.create(block, TextureMapping.cubeBottomTop(block).put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(UGBlocks.DEPTHROCK.get())), this.modelOutput)))));
+
+		MultiVariant floorLantern = plainVariant(ModelLocationUtils.getModelLocation(UGBlocks.CLOGGRUM_LANTERN.get(), "_floor"));
+		MultiVariant wallLantern = plainVariant(ModelLocationUtils.getModelLocation(UGBlocks.CLOGGRUM_LANTERN.get(), "_wall"));
+		MultiVariant ceilingLantern = plainVariant(ModelLocationUtils.getModelLocation(UGBlocks.CLOGGRUM_LANTERN.get(), "_ceiling"));
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.CLOGGRUM_LANTERN.get())
+			.with(PropertyDispatch.initial(CloggrumLanternBlock.FACE, CloggrumLanternBlock.FACING)
+				.select(AttachFace.FLOOR, Direction.NORTH, floorLantern)
+				.select(AttachFace.FLOOR, Direction.EAST, floorLantern.with(Y_ROT_90))
+				.select(AttachFace.FLOOR, Direction.SOUTH, floorLantern.with(Y_ROT_180))
+				.select(AttachFace.FLOOR, Direction.WEST, floorLantern.with(Y_ROT_270))
+				.select(AttachFace.WALL, Direction.NORTH, wallLantern)
+				.select(AttachFace.WALL, Direction.EAST, wallLantern.with(Y_ROT_90))
+				.select(AttachFace.WALL, Direction.SOUTH, wallLantern.with(Y_ROT_180))
+				.select(AttachFace.WALL, Direction.WEST, wallLantern.with(Y_ROT_270))
+				.select(AttachFace.CEILING, Direction.NORTH, ceilingLantern)
+				.select(AttachFace.CEILING, Direction.EAST, ceilingLantern.with(Y_ROT_90))
+				.select(AttachFace.CEILING, Direction.SOUTH, ceilingLantern.with(Y_ROT_180))
+				.select(AttachFace.CEILING, Direction.WEST, ceilingLantern.with(Y_ROT_270))
+			));
+		this.registerSimpleFlatItemModel(UGBlocks.CLOGGRUM_LANTERN.asItem());
+
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.UNDERBEAN_BUSH.get()).with(
+			PropertyDispatch.initial(UnderbeanBushBlock.AGE).generate(age ->
+				plainVariant(this.createSuffixedVariant(UGBlocks.UNDERBEAN_BUSH.get(), "_stage" + age, ModelTemplates.CROSS, TextureMapping::cross)))));
+
+		this.createTintedDoublePlant(UGBlocks.TALL_DEEPTURF.get());
+		this.generateTintedEmissiveCross(UGBlocks.SHIMMERWEED.get(), UGBlocks.POTTED_SHIMMERWEED.get(), -10783397);
+		this.createDoublePlantWithBulb(UGBlocks.TALL_SHIMMERWEED.get(), -10783397);
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.DITCHBULB_PLANT.get())
+			.with(PropertyDispatch.initial(DitchbulbBlock.AGE)
+				.select(0, this.createTintedEmissiveCross(UGBlocks.DITCHBULB_PLANT.get(), "_ungrown", "_ungrown"))
+				.select(1, this.createTintedEmissiveCross(UGBlocks.DITCHBULB_PLANT.get(), "", ""))));
+		this.registerSimpleFlatItemModel(UGBlocks.DITCHBULB_PLANT.asItem());
+
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(UGBlocks.DEPTHROCK_PEBBLES.get())
+			.with(PropertyDispatch.initial(DepthrockPebblesBlock.PEBBLES)
+				.select(1, variant(plainModel(Undergarden.prefix("block/depthrock_pebble"))))
+				.select(2, variant(plainModel(ModelLocationUtils.getModelLocation(UGBlocks.DEPTHROCK_PEBBLES.get()))))));
+		this.createDroopfruitVines();
+
+		ModelTemplate infuser = ModelTemplates.create("undergarden:template_infuser", TextureSlot.TOP);
+		this.wrapBlockItem(UGBlocks.INFUSER.get(), block -> this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
+			.with(PropertyDispatch.initial(InfuserBlock.STATE)
+				.select(InfuserState.INACTIVE, variant(plainModel(infuser.create(block, new TextureMapping().put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")), this.modelOutput))))
+				.select(InfuserState.INFUSING_ROGDORIUM, variant(plainModel(infuser.createWithSuffix(block, "_rogdorium", new TextureMapping().put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top_rogdorium")), this.modelOutput))))
+				.select(InfuserState.INFUSING_UTHERIUM, variant(plainModel(infuser.createWithSuffix(block, "_utherium", new TextureMapping().put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top_utherium")), this.modelOutput)))))));
+
+		this.createParticleOnlyBlock(UGBlocks.VIRULENT_MIX.get());
+		this.blockStateOutput.accept(createSimpleBlock(UGBlocks.VIRULENT_MIX_CAULDRON.get(), plainVariant(
+			ModelTemplates.CAULDRON_FULL.create(UGBlocks.VIRULENT_MIX_CAULDRON.get(), TextureMapping.cauldron(TextureMapping.getBlockTexture(UGBlocks.VIRULENT_MIX.get(), "_still")), this.modelOutput))));
+
+		this.registerSimpleFlatItemModel(UGBlocks.MUSHROOM_VEIL.get(), "_end");
 	}
 
 	public void wrapBlockItem(Block block, Consumer<Block> blockRegistry) {
@@ -211,7 +317,7 @@ public class UGBlockStates extends BlockModelGenerators {
 	}
 
 	public void generateGronglet(Holder<Block> gronglet) {
-		this.generateSpecialModel(gronglet, Blocks.NETHER_WART_BLOCK.builtInRegistryHolder(), Undergarden.prefix("item/gronglet"), id -> ItemModelUtils.specialModel(id, new GrongletSpecialRenderer.Unbaked(Undergarden.prefix("textures/entity/gronglet/"+ gronglet.getKey().identifier().getPath() +".png"))));
+		this.generateSpecialModel(gronglet, Blocks.NETHER_WART_BLOCK.builtInRegistryHolder(), Undergarden.prefix("item/gronglet"), id -> ItemModelUtils.specialModel(id, new GrongletSpecialRenderer.Unbaked(Undergarden.prefix("textures/entity/gronglet/" + gronglet.getKey().identifier().getPath() + ".png"))));
 	}
 
 	public <B extends Holder<Block>> void generateSpecialModel(B block, Holder<Block> particleBlock, Identifier parent, Function<Identifier, ItemModel.Unbaked> itemModel) {
@@ -231,5 +337,72 @@ public class UGBlockStates extends BlockModelGenerators {
 
 	public MultiVariant createRandomRotatedModel(Variant model) {
 		return variants(model, model.with(Y_ROT_270), model.with(Y_ROT_180), model.with(Y_ROT_90));
+	}
+
+	private void generateFarmlandBlock(Block farmland, Block dirt) {
+		TextureMapping dryTextures = new TextureMapping()
+			.put(TextureSlot.DIRT, TextureMapping.getBlockTexture(dirt))
+			.put(TextureSlot.TOP, TextureMapping.getBlockTexture(farmland));
+		TextureMapping moistTextures = new TextureMapping()
+			.put(TextureSlot.DIRT, TextureMapping.getBlockTexture(dirt))
+			.put(TextureSlot.TOP, TextureMapping.getBlockTexture(farmland, "_moist"));
+		MultiVariant dryModel = plainVariant(ModelTemplates.FARMLAND.create(farmland, dryTextures, this.modelOutput));
+		MultiVariant moistModel = plainVariant(
+			ModelTemplates.FARMLAND.create(ModelLocationUtils.getModelLocation(farmland, "_moist"), moistTextures, this.modelOutput)
+		);
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(farmland).with(createEmptyOrFullDispatch(BlockStateProperties.MOISTURE, 7, moistModel, dryModel)));
+	}
+
+	private void generateTintedEmissiveCross(Block plant, Block potted, int color) {
+		this.blockStateOutput.accept(createSimpleBlock(plant, this.createTintedEmissiveCross(plant, "", "")));
+		this.blockStateOutput.accept(createSimpleBlock(potted, this.createPottedTintedEmissiveCross(plant, potted)));
+		this.registerSimpleTintedItemModel(plant, this.createFlatItemModelWithBlockTextureAndOverlay(plant.asItem(), plant, "_emissive"), ItemModelUtils.constantTint(color));
+	}
+
+	private MultiVariant createTintedEmissiveCross(Block plant, String suffix, String textureSuffix) {
+		ModelTemplate template = ModelTemplates.create("undergarden:tinted_cross_emissive", TextureSlot.CROSS, TextureSlot.CROSS_EMISSIVE);
+		return plainVariant(template.createWithSuffix(plant, suffix, crossEmissive(plant, textureSuffix), this.modelOutput));
+	}
+
+	private MultiVariant createPottedTintedEmissiveCross(Block plant, Block potted) {
+		ModelTemplate pottedTemplate = ModelTemplates.create("undergarden:flower_pot_tinted_cross_emissive", TextureSlot.PLANT, TextureSlot.CROSS_EMISSIVE);
+		return plainVariant(pottedTemplate.create(potted, TextureMapping.plantEmissive(plant), this.modelOutput));
+	}
+
+	public void createDoublePlantWithBulb(Block block, int tintColor) {
+		MultiVariant topModel = this.createTintedEmissiveCross(block, "_top", "_top");
+		MultiVariant bottomModel = plainVariant(this.createSuffixedVariant(block, "_bottom", PlantType.TINTED.getCross(), TextureMapping::cross));
+		this.createDoubleBlock(block, topModel, bottomModel);
+		this.registerSimpleTintedItemModel(block, ModelTemplates.TWO_LAYERED_ITEM.create(ModelLocationUtils.getModelLocation(block.asItem()), TextureMapping.layered(TextureMapping.getBlockTexture(block, "_top"), TextureMapping.getBlockTexture(block, "_top_emissive")), this.modelOutput), ItemModelUtils.constantTint(tintColor));
+	}
+
+	public void createDroopfruitVines() {
+		Block head = UGBlocks.DROOPVINE.get();
+		MultiVariant offHead = plainVariant(this.createSuffixedVariant(head, "", ModelTemplates.TINTED_CROSS, TextureMapping::cross));
+		MultiVariant onHead = this.createTintedEmissiveCross(head, "_glowy", "");
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(head).with(createBooleanModelDispatch(Droopvine.GLOWY, onHead, offHead)));
+		Block body = UGBlocks.DROOPVINE_PLANT.get();
+		MultiVariant offBody = plainVariant(this.createSuffixedVariant(body, "", ModelTemplates.TINTED_CROSS, TextureMapping::cross));
+		MultiVariant onBody = this.createTintedEmissiveCross(body, "_glowy", "");
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(body).with(createBooleanModelDispatch(Droopvine.GLOWY, onBody, offBody)));
+	}
+
+	public void createGloomgourdStems(Block growingStem, Block attachedStem) {
+		this.registerSimpleFlatItemModel(growingStem.asItem());
+		TextureMapping growingMapping = TextureMapping.stem(Blocks.MELON_STEM);
+		TextureMapping attachedMapping = TextureMapping.attachedStem(Blocks.MELON_STEM, Blocks.ATTACHED_MELON_STEM);
+		MultiVariant attachedStemModel = plainVariant(ModelTemplates.ATTACHED_STEM.create(attachedStem, attachedMapping, this.modelOutput));
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(attachedStem, attachedStemModel).with(
+			PropertyDispatch.modify(BlockStateProperties.HORIZONTAL_FACING)
+				.select(Direction.WEST, NOP)
+				.select(Direction.SOUTH, Y_ROT_270)
+				.select(Direction.NORTH, Y_ROT_90)
+				.select(Direction.EAST, Y_ROT_180)));
+		this.blockStateOutput.accept(MultiVariantGenerator.dispatch(growingStem).with(
+			PropertyDispatch.initial(BlockStateProperties.AGE_7).generate(i -> plainVariant(ModelTemplates.STEMS[i].create(growingStem, growingMapping, this.modelOutput)))));
+	}
+
+	public static TextureMapping crossEmissive(Block block, String suffix) {
+		return new TextureMapping().put(TextureSlot.CROSS, TextureMapping.getBlockTexture(block, suffix)).put(TextureSlot.CROSS_EMISSIVE, TextureMapping.getBlockTexture(block, suffix + "_emissive"));
 	}
 }

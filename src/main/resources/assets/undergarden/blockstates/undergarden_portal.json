@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "axis=z": { "model": "undergarden:block/undergarden_portal_ew" },
-        "axis=x": { "model": "undergarden:block/undergarden_portal_ns" }
-    }
-}

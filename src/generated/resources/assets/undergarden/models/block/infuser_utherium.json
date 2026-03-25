@@ -1,0 +1,6 @@
+{
+  "parent": "undergarden:block/template_infuser",
+  "textures": {
+    "top": "undergarden:block/infuser_top_utherium"
+  }
+}

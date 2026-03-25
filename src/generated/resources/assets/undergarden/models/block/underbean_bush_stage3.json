@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "undergarden:block/underbean_bush_stage3"
+  }
+}
