@@ -106,10 +106,6 @@ public class CloggrumBucketModel implements ItemModel {
 
 		Material.Baked particleSprite = particleLocation != null ? materials.get(particleLocation, DEBUG_NAME) : null;
 
-		if (otherContentSprite == null && fluidSprite != null && !MissingTextureAtlasSprite.getLocation().equals(fluidSprite.sprite().contents().name())) {
-			otherContentSprite = fluidSprite;
-		}
-
 		if (otherContentSprite != null && MissingTextureAtlasSprite.getLocation().equals(otherContentSprite.sprite().contents().name())) {
 			otherContentSprite = materials.get(this.unbakedModel.textures().defaultContent().orElse(FALLBACK_CONTENT), DEBUG_NAME);
 		}

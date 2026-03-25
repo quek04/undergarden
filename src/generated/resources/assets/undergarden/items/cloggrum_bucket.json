@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "undergarden:cloggrum_bucket",
+    "fluid": "minecraft:empty",
+    "textures": {
+      "base": "undergarden:item/cloggrum_bucket",
+      "fluid": "neoforge:item/mask/bucket_fluid_drip"
+    }
+  }
+}

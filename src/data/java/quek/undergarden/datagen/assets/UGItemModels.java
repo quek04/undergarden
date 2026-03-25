@@ -17,16 +17,16 @@ import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import quek.undergarden.client.model.item.CloggrumBucketModel;
 import quek.undergarden.client.render.item.CloggrumShieldSpecialRenderer;
 import quek.undergarden.client.render.item.JavelinSpecialRenderer;
-import quek.undergarden.registry.UGEquipmentAssets;
-import quek.undergarden.registry.UGItems;
-import quek.undergarden.registry.UGMaterialAssetGroups;
-import quek.undergarden.registry.UGTrimMaterials;
+import quek.undergarden.registry.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 public class UGItemModels extends ItemModelGenerators {
@@ -172,12 +172,13 @@ public class UGItemModels extends ItemModelGenerators {
 		ItemModel.Unbaked blockingShield = ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(UGItems.CLOGGRUM_SHIELD.get(), "_blocking"), new CloggrumShieldSpecialRenderer.Unbaked());
 		this.itemModelOutput.accept(UGItems.CLOGGRUM_SHIELD.get(), ItemModelUtils.conditional(ShieldSpecialRenderer.DEFAULT_TRANSFORMATION, ItemModelUtils.isUsingItem(), blockingShield, normalShield));
 
-		//TODO
-//		this.getBuilder(UGItems.CLOGGRUM_BUCKET.getId().toString())
-//			.parent(new ModelFile.UncheckedModelFile("neoforge:item/default"))
-//			.customLoader(CloggrumBucketModelBuilder::begin).fluid(Fluids.EMPTY).flipGas(true).applyFluidLuminosity(true).end()
-//			.texture("base", modLoc("item/cloggrum_bucket"))
-//			.texture("fluid", Identifier.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/mask/bucket_fluid_drip"));
+		this.itemModelOutput.accept(UGItems.CLOGGRUM_BUCKET.get(), new CloggrumBucketModel.Unbaked(
+			new CloggrumBucketModel.Textures(
+				Optional.empty(),
+				Optional.of(TextureMapping.getItemTexture(UGItems.CLOGGRUM_BUCKET.get())),
+				Optional.of(new Material(Identifier.fromNamespaceAndPath("neoforge", "item/mask/bucket_fluid_drip"))),
+				Optional.empty()
+			), Fluids.EMPTY, true, true));
 	}
 
 	public void generateBattleaxe(Item item) {
@@ -194,7 +195,7 @@ public class UGItemModels extends ItemModelGenerators {
 		for (ItemModelGenerators.TrimMaterialData material : TRIM_MATERIAL_MODELS) {
 			Identifier trimModelLocation = modelLocation.withSuffix("_" + material.assets().base().suffix() + "_trim");
 			Material trimOverlayTexture = new Material(slotTrimPrefix.withSuffix("_" + material.assets().assetId(equipmentAssetId).suffix()));
-			ItemModel.Unbaked trimModel= ItemModelUtils.plainModel(trimModelLocation);
+			ItemModel.Unbaked trimModel = ItemModelUtils.plainModel(trimModelLocation);
 			this.generateLayeredItem(trimModelLocation, itemTexture, trimOverlayTexture);
 
 			cases.add(ItemModelUtils.when(material.materialKey(), trimModel));

@@ -65,6 +65,7 @@ import quek.undergarden.client.UndergardenClient;
 import quek.undergarden.client.gui.screen.UndergardenReceivingLevelScreen;
 import quek.undergarden.client.gui.screen.inventory.InfuserScreen;
 import quek.undergarden.client.model.*;
+import quek.undergarden.client.model.item.CloggrumBucketModel;
 import quek.undergarden.client.particle.*;
 import quek.undergarden.client.render.blockentity.DepthrockBedRenderer;
 import quek.undergarden.client.render.blockentity.DepthrockPotRenderer;
@@ -103,6 +104,7 @@ public class UndergardenClientEvents {
 		bus.addListener(UndergardenClientEvents::registerCustomRenderData);
 		bus.addListener(UndergardenClientEvents::registerFluidModels);
 		bus.addListener(UndergardenClientEvents::registerSpecialBlockModels);
+		bus.addListener(UndergardenClientEvents::registerSpecialItemModels);
 		bus.addListener(UndergardenClientEvents::registerSpecialModels);
 
 		NeoForge.EVENT_BUS.addListener(UndergardenClientEvents::undergardenFog);
@@ -267,6 +269,10 @@ public class UndergardenClientEvents {
 		event.register(BuiltInBlockModels.special(new GrongletSpecialRenderer.Unbaked(Undergarden.prefix("textures/entity/gronglet/rogdoric_gronglet.png"))), UGBlocks.ROGDORIC_GRONGLET.get());
 		event.register(BuiltInBlockModels.special(new DepthrockPotSpecialRenderer.Unbaked()), UGBlocks.DEPTHROCK_POT.get());
 		event.register(BuiltInBlockModels.specialModelWithPropertyDispatch(DepthrockBedBlock.FACING, DepthrockBedBlock.PART, (facing, part) -> BuiltInBlockModels.special(new DepthrockBedSpecialRenderer.Unbaked(part), BedRenderer.modelTransform(facing))), UGBlocks.DEPTHROCK_BED.get());
+	}
+
+	private static void registerSpecialItemModels(RegisterItemModelsEvent event) {
+		event.register(Undergarden.prefix("cloggrum_bucket"), CloggrumBucketModel.Unbaked.MAP_CODEC);
 	}
 
 	private static void registerSpecialModels(RegisterSpecialModelRendererEvent event) {
