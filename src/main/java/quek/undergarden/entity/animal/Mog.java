@@ -154,18 +154,7 @@ public class Mog extends Animal implements IShearable {
 		List<ItemStack> drops = new ArrayList<>();
 		level.playSound(null, this, SoundEvents.SHEEP_SHEAR, player == null ? SoundSource.BLOCKS : SoundSource.PLAYERS, 1.0F, 1.0F);
 		if (level instanceof ServerLevel serverLevel) {
-			this.dropFromShearingLootTable(serverLevel, this.getShearTable(), item, (l, drop) -> {
-				drops.add(drop);
-				for (int i = 0; i < drop.getCount(); i++) {
-					ItemEntity entity = this.spawnAtLocation(l, drop.copyWithCount(1), 1.0F);
-					if (entity != null) {
-						entity.setDeltaMovement(entity.getDeltaMovement().add(
-							(this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.1F,
-							this.getRandom().nextFloat() * 0.05F,
-							(this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.1F));
-					}
-				}
-			});
+			this.dropFromShearingLootTable(serverLevel, this.getShearTable(), item, (l, drop) -> drops.add(drop));
 			this.setMoss(false);
 		}
 		return Collections.unmodifiableList(drops);
