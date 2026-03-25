@@ -369,7 +369,7 @@
   "item.undergarden.forgotten_shovel": "Pelle en Métal oubliée",
   "item.undergarden.forgotten_spawn_egg": "Oeuf d'apparition d'Oublié",
   "item.undergarden.forgotten_sword": "Épée en Métal oubliée",
-  "item.undergarden.forgotten_upgrade_smithing_template": "Modèle de forge",
+  "item.undergarden.forgotten_upgrade_smithing_template": "Amélioration en Métal oublié",
   "item.undergarden.froststeel_axe": "Hache en Givracier",
   "item.undergarden.froststeel_boots": "Bottes en Givracier",
   "item.undergarden.froststeel_chestplate": "Plastron en Givracier",
@@ -539,6 +539,5 @@
   "trim_material.undergarden.forgotten": "Matériau en Métal oublié",
   "trim_material.undergarden.froststeel": "Matériau en Givracier",
   "trim_material.undergarden.regalium": "Matériau en Régalium",
-  "trim_material.undergarden.utherium": "Matériau en Uthérium",
-  "upgrade.undergarden.forgotten_upgrade": "Amélioration en Métal oublié"
+  "trim_material.undergarden.utherium": "Matériau en Uthérium"
 }

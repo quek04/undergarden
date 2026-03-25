@@ -451,7 +451,7 @@
   "item.undergarden.forgotten_spawn_egg": "Forgotten Spawn Egg",
   "item.undergarden.forgotten_spear": "Forgotten Spear",
   "item.undergarden.forgotten_sword": "Forgotten Sword",
-  "item.undergarden.forgotten_upgrade_smithing_template": "Smithing Template",
+  "item.undergarden.forgotten_upgrade_smithing_template": "Forgotten Tool Upgrade",
   "item.undergarden.froststeel_axe": "Froststeel Axe",
   "item.undergarden.froststeel_boots": "Froststeel Boots",
   "item.undergarden.froststeel_chestplate": "Froststeel Chestplate",
@@ -676,6 +676,5 @@
   "trim_material.undergarden.froststeel": "Froststeel material",
   "trim_material.undergarden.regalium": "Regalium material",
   "trim_material.undergarden.rogdorium": "Rogdorium material",
-  "trim_material.undergarden.utherium": "Utherium material",
-  "upgrade.undergarden.forgotten_upgrade": "Forgotten Tool Upgrade"
+  "trim_material.undergarden.utherium": "Utherium material"
 }

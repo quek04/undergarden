@@ -462,7 +462,7 @@
   "item.undergarden.forgotten_shovel": "Pá Esquecida",
   "item.undergarden.forgotten_spawn_egg": "Ovo Gerador de Esquecido",
   "item.undergarden.forgotten_sword": "Espada Esquecida",
-  "item.undergarden.forgotten_upgrade_smithing_template": "Molde de Ferraria",
+  "item.undergarden.forgotten_upgrade_smithing_template": "Atualização de Ferramenta Esquecida",
   "item.undergarden.froststeel_axe": "Machado de Friaço",
   "item.undergarden.froststeel_boots": "Botas de Friaço",
   "item.undergarden.froststeel_chestplate": "Peitoral de Friaço",
@@ -689,6 +689,5 @@
   "trim_material.undergarden.forgotten": "Material Esquecido",
   "trim_material.undergarden.froststeel": "Material de Friaço",
   "trim_material.undergarden.regalium": "Material de Regálio",
-  "trim_material.undergarden.utherium": "Material de Utário",
-  "upgrade.undergarden.forgotten_upgrade": "Atualização de Ferramenta Esquecida"
+  "trim_material.undergarden.utherium": "Material de Utário"
 }

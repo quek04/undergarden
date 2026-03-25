@@ -13,9 +13,9 @@ import java.util.function.Function;
 public class UGConsumables {
 
 	public static final Consumable UNDERBEANS = Consumable.builder().consumeSeconds(0.8F).build();
-	public static final Consumable GRONGLET = Consumable.builder().sound(UGSoundEvents.GRONGLET_BURN).onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.WITHER, 1200, 9))).build();
-	public static final Consumable UTHERIC_GRONGLET = Consumable.builder().sound(UGSoundEvents.GRONGLET_BURN).onConsume(new ModifyUthericInfectionConsumeEffect(20.0F, false)).build();
-	public static final Consumable ROGDORIC_GRONGLET = Consumable.builder().sound(UGSoundEvents.GRONGLET_BURN).onConsume(new ModifyUthericInfectionConsumeEffect(0.0F, false)).build();
+	public static final Consumable GRONGLET = Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.WITHER, 1200, 9))).build();
+	public static final Consumable UTHERIC_GRONGLET = Consumable.builder().onConsume(new ModifyUthericInfectionConsumeEffect(20.0F, false)).build();
+	public static final Consumable ROGDORIC_GRONGLET = Consumable.builder().onConsume(new ModifyUthericInfectionConsumeEffect(0.0F, false)).build();
 	public static final Consumable ROGDORIUM_NUGGET = Consumable.builder().onConsume(new ModifyUthericInfectionConsumeEffect(-2.0F, true)).build();
 	public static final Consumable ROGDORIUM = Consumable.builder().onConsume(new ModifyUthericInfectionConsumeEffect(-20.0F, true)).build();
 

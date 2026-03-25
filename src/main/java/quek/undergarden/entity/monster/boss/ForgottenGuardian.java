@@ -78,7 +78,7 @@ public class ForgottenGuardian extends Monster {
 
 	@Override
 	public void playAmbientSound() {
-		if (!this.isImmobile()) {
+		if (this.level().getDifficulty() != Difficulty.PEACEFUL) {
 			super.playAmbientSound();
 		}
 	}

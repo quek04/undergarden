@@ -423,6 +423,7 @@
   "item.undergarden.scintling_spawn_egg": "Яйце виклику сцинтилії",
   "item.undergarden.slingshot": "Рогатка",
   "item.undergarden.slop_bowl": "Миска помиїв",
+  "item.undergarden.forgotten_upgrade_smithing_template": "Покращення забутих інструментів",
   "item.undergarden.smithing_template.forgotten_upgrade.additions_slot_description": "Розмістіть забутий злиток",
   "item.undergarden.smithing_template.forgotten_upgrade.applies_to": "Клоґрумові інструменти",
   "item.undergarden.smithing_template.forgotten_upgrade.base_slot_description": "Розмістіть клоґрумову зброю або інструмент",
@@ -545,6 +546,5 @@
   "trim_material.undergarden.forgotten": "Забутий матеріал",
   "trim_material.undergarden.froststeel": "Морозосталевий матеріал",
   "trim_material.undergarden.regalium": "Реґалієвий матеріал",
-  "trim_material.undergarden.utherium": "Утерієвий матеріал",
-  "upgrade.undergarden.forgotten_upgrade": "Покращення забутих інструментів"
+  "trim_material.undergarden.utherium": "Утерієвий матеріал"
 }

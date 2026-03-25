@@ -276,7 +276,7 @@ public class UGBlocks {
 
 	//ancient root
 	public static final DeferredBlock<RotatedPillarBlock> ANCIENT_ROOT = registerWithItem("ancient_root", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD));
-	public static final DeferredBlock<RotatedPillarBlock> ROGDORIC_ANCIENT_ROOT = registerWithItem("rogdoric_ancient_root", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT.get()).strength(4.0F).lightLevel((state) -> 10).requiresCorrectToolForDrops());
+	public static final DeferredBlock<RotatedPillarBlock> ROGDORIC_ANCIENT_ROOT = registerWithItem("rogdoric_ancient_root", RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT.get()).strength(4.0F).lightLevel((state) -> 10).requiresCorrectToolForDrops(), () -> new Item.Properties().rarity(UGItems.ROGDORIUM_RARITY));
 	public static final DeferredBlock<Block> DENIZEN_TOTEM = registerWithItem("denizen_totem", DenizenTotemBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).strength(4.0F).lightLevel((state) -> state.getValue(DenizenTotemBlock.ACTIVE) ? 15 : 0));
 	public static final DeferredBlock<Block> ANCIENT_ROOT_PLANKS = registerWithItem("ancient_root_planks", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
 	public static final DeferredBlock<StairBlock> ANCIENT_ROOT_STAIRS = registerWithItem("ancient_root_stairs", (properties) -> new StairBlock(ANCIENT_ROOT_PLANKS.get().defaultBlockState(), properties), () -> BlockBehaviour.Properties.ofFullCopy(ANCIENT_ROOT_PLANKS.get()));

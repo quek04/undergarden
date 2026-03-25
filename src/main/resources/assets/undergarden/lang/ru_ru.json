@@ -72,7 +72,7 @@
   "advancement.undergarden.summon_minion.title": "Постройка часового",
   "advancement.undergarden.underbeans.desc": "Найдите и соберите куст глубинных бобов",
   "advancement.undergarden.underbeans.title": "Великолепные бобы!",
-  
+
   "biome.undergarden.ancient_sea": "Древнее море",
   "biome.undergarden.barren_abyss": "Бесплодная бездна",
   "biome.undergarden.blood_mushroom_bog": "Топь кровавых грибов",
@@ -92,7 +92,7 @@
   "biome.undergarden.smogstem_forest": "Дымоствольный лес",
   "biome.undergarden.veil_mushroom_bog": "Топь вуальных грибов",
   "biome.undergarden.wigglewood_forest": "Вьющийся лес",
-  
+
   "block.undergarden.amorous_bristle": "Щетина Амура",
   "block.undergarden.ancient_root": "Древний корень",
   "block.undergarden.ancient_root_button": "Кнопка из древнего корня",
@@ -317,25 +317,25 @@
   "block.undergarden.wigglewood_stairs": "Ступеньки из вьющегося дерева",
   "block.undergarden.wigglewood_trapdoor": "Люк из вьющегося дерева",
   "block.undergarden.wigglewood_wood": "Вьющаяся древесина",
-  
+
   "commands.undergarden.infection.cannot_infect": "%s имеет иммунитет к заражению",
   "commands.undergarden.infection.cannot_infect_multiple": "Все цели имеют иммунитет к заражению",
   "commands.undergarden.infection.skipped": "%s существ были пропущены, так как у них был иммунитет к заражению",
   "commands.undergarden.infection.success.multiple": "Урстановлено заражение на %s для %s целей",
   "commands.undergarden.infection.success.single": "Урстановлено заражение на %s для %s",
-  
+
   "config.undergarden.return_portal_frame_block_id": "Возвращать ID блока рамки портала",
   "config.undergarden.toggle_undergarden_fog": "Переключить туман в подемном саду",
 
   "container.undergarden.infuser": "Наполнитель",
-  
+
   "death.attack.blisterberry_bush": "%1$s искололся до смерти в кустах пузырьковых ягод",
   "death.attack.blisterberry_bush.player": "%1$s искололся до смерти в кустах пузырьковых ягод, спасаясь от %2$s",
   "death.attack.shard_torch": "%1$s был убит магией утеритового факела",
   "death.attack.shard_torch.player": "%1$s был убит магией утеритового факела, спасаясь от %2$s",
   "death.attack.utheric_infection": "%1$s был захвачен утеритовой хворью",
   "death.attack.utheric_infection.player": "%1$s был захвачен утеритовой хворью, спасаясь от %2$s",
-  
+
   "effect.undergarden.brittleness": "Хрупкость",
   "effect.undergarden.brittleness.description": "Чем выше показатель брони жертвы, тем больше урона она получит. Количество получаемого урона увеличивается с увеличением уровня эффета",
   "effect.undergarden.chilly": "Обморожение",
@@ -352,14 +352,14 @@
   "effect.undergarden.virulent_resistance.description": "Дает иммунитет к яду (Не влияет на отравление)",
 
   "emi.category.undergarden.infusing": "Наполнение",
-  
+
   "enchantment.undergarden.longevity": "Долговечность",
   "enchantment.undergarden.longevity.desc": "Увеличивает максимальную прочность рогатки",
   "enchantment.undergarden.ricochet": "Рикошет",
   "enchantment.undergarden.ricochet.desc": "Снаряды, выпущенные из рогатки, отскакивают от поверхностей блоков",
   "enchantment.undergarden.self_sling": "Рывок",
   "enchantment.undergarden.self_sling.desc": "Вместо того, чтобы стрелять боеприпасами, рогатка стреляет вами. Требует, чтобы вы были на земле",
-  
+
   "entity.undergarden.blisterbomb": "Волдырная бомба",
   "entity.undergarden.boomgourd": "Тыквенная бомба",
   "entity.undergarden.brute": "Зверь",
@@ -396,7 +396,7 @@
   "gui.undergarden.jei.category.infuser": "Наполенеие",
   "gui.undergarden.jei.category.infusing.experience": "%s опыта",
   "gui.undergarden.jei.category.infusing.time.seconds": "%s секунд",
-  
+
   "item.minecraft.lingering_potion.effect.brittleness": "Туманное зелье хрупкости",
   "item.minecraft.lingering_potion.effect.featherweight": "Туманное зелье легкого веса",
   "item.minecraft.lingering_potion.effect.glowing": "Туманное зелье свеченья",
@@ -542,7 +542,7 @@
   "item.undergarden.virulent_mix_bucket": "Ведро с ядовитой смесью",
   "item.undergarden.wigglewood_boat": "Лодка из вьющегося дерева",
   "item.undergarden.wigglewood_chest_boat": "Грузовая лодка из вьющегося дерева",
-  
+
   "itemGroup.undergarden_group": "The Undergarden",
 
   "jukebox_song.undergarden.gloomper_anthem": "Screem - Gloomper Anthem",
@@ -550,7 +550,7 @@
   "jukebox_song.undergarden.limax_maximus": "Screem - Limax Maximus",
   "jukebox_song.undergarden.mammoth": "Screem - Mammoth",
   "jukebox_song.undergarden.relict": "Screem - Relict",
-  
+
   "subtitles.block.gronglet.ambient": "Гронгжук щебечет",
   "subtitles.block.gronglet.burn": "Гронгжук вопит",
   "subtitles.block.undergarden_portal.activate": "Активация портала",
@@ -675,7 +675,7 @@
   "tag.item.undergarden.smogstem_logs": "Дымоствольные брёвна",
   "tag.item.undergarden.utherium_items": "Утеритовые предметы",
   "tag.item.undergarden.wigglewood_logs": "Вьющиеся брёвна",
-  
+
   "tooltip.cloggrum_boots": "Сквернослизь не замедляет вас",
   "tooltip.forgotten_tool": "Добыча блоков Подземного сада в 1.5х раза быстрее",
   "tooltip.forgotten_sword": "Наносит в 1.5х раза больше урона всем монстрам Подземного сада, кроме боссов",
@@ -683,12 +683,10 @@
   "tooltip.undergarden.rogdorium_infusion": "Наполнено рогдорием",
   "tooltip.pebble": "Можно использовать в качестве боеприпасов для рогатки",
   "tooltip.utheric_sword": "Наносит в 1.5х урона гнилым монстрам",
-  
+
   "trim_material.undergarden.cloggrum": "Клоггрумовая",
   "trim_material.undergarden.forgotten": "Забвенная",
   "trim_material.undergarden.froststeel": "Морозостальная",
   "trim_material.undergarden.regalium": "Регалиевая",
-  "trim_material.undergarden.utherium": "Утеритовая",
-  
-  "upgrade.undergarden.forgotten_upgrade": "Кузнечный шаблон"
+  "trim_material.undergarden.utherium": "Утеритовая"
 }
