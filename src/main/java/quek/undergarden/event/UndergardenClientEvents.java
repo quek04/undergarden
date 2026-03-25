@@ -315,35 +315,6 @@ public class UndergardenClientEvents {
 		);
 	}
 
-	//TODO done via datagen now
-//	private static void registerItemColors(RegisterColorHandlersEvent.Item event) {
-//		BlockColors bColors = event.getBlockColors();
-//
-//		event.register((stack, tint) -> bColors.getColor(((BlockItem) stack.getItem()).getBlock().defaultBlockState(), null, null, 0),
-//				UGBlocks.DEEPTURF_BLOCK.get(),
-//				UGBlocks.DEEPTURF.get(),
-//				UGBlocks.SHIMMERWEED.get(),
-//				UGBlocks.TALL_SHIMMERWEED.get(),
-//				UGBlocks.TALL_DEEPTURF.get()
-//		);
-//
-//		event.register((stack, tint) -> {
-//					if (tint == 0) {
-//						return FastColor.ARGB32.color(255, 91, 117, 91);
-//					}
-//					return -1;
-//				},
-//
-//				UGBlocks.SHIMMERWEED.get(),
-//				UGBlocks.TALL_SHIMMERWEED.get()
-//		);
-//
-//		event.register((stack, tint) -> {
-//			var fluid = stack.getOrDefault(UGDataComponents.STORED_FLUID, SimpleFluidContent.EMPTY).copy();
-//			return tint == 1 ? IClientFluidTypeExtensions.of(fluid.getFluid()).getTintColor(fluid) : -1;
-//		}, UGItems.CLOGGRUM_BUCKET);
-//	}
-
 	private static void registerCustomRenderData(RegisterRenderStateModifiersEvent event) {
 		event.registerEntityModifier(new TypeToken<LivingEntityRenderer<?, ?, ?>>() {}, (living, state) -> state.setRenderData(UndergardenClient.UTHERIUM_INFECTION, living.getData(UGAttachments.UTHERIC_INFECTION)));
 		event.registerEntityModifier(new TypeToken<LivingEntityRenderer<?, ?, ?>>() {}, (living, state) -> state.setRenderData(UndergardenClient.CHILLY, living.getAttribute(Attributes.MOVEMENT_SPEED).hasModifier(UGEffects.CHILLY_MODIFIER)));
@@ -363,16 +334,6 @@ public class UndergardenClientEvents {
 				renderBrittlenessArmor(guiGraphics.guiWidth(), guiGraphics.guiHeight(), guiGraphics, player);
 			}
 		});
-		//render XP bar since we cancel the jump bar
-		//vanilla hardcodes the XP bar to not render when riding a jumping vehicle sadly
-		//TODO vanilla's system for the XP bar is actually kinda difficult to mess with now
-//		event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, Undergarden.prefix("dweller_xp_bar"), (guiGraphics, deltaTracker) -> {
-//			Minecraft minecraft = Minecraft.getInstance();
-//			LocalPlayer player = minecraft.player;
-//			if (player != null && player.getVehicle() instanceof Dweller dweller && dweller.canJump() && minecraft.gameMode.hasExperience()) {
-//				minecraft.gui.renderExperienceBar(guiGraphics, guiGraphics.guiWidth() / 2 - 91);
-//			}
-//		});
 		event.registerAboveAll(Undergarden.prefix("undergarden_portal_overlay"), (guiGraphics, deltaTracker) -> {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;

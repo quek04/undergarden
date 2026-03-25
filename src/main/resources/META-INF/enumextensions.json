@@ -53,6 +53,15 @@
         "class": "quek/undergarden/UGEnumExtensions",
         "field": "STUPID_MOB_CATEGORY"
       }
+    },
+    {
+      "enum": "net/minecraft/client/resources/model/EquipmentClientInfo$LayerType",
+      "name": "UNDERGARDEN_DWELLER_SADDLE",
+      "constructor": "(Ljava/lang/String;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "DWELLER_SADDLE"
+      }
     }
   ]
 }

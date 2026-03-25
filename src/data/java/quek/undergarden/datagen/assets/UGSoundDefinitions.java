@@ -358,6 +358,9 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:mob/cow/step3").pitch(0.5F),
 				sound("minecraft:mob/cow/step4").pitch(0.5F)
 		).subtitle("subtitles.block.generic.footsteps"));
+		this.add(UGSoundEvents.DWELLER_SADDLE, definition().with(
+			sound("minecraft:mob/horse/leather").volume(0.5F)
+		).subtitle("subtitles.entity.dweller.remove_saddle"));
 		this.add(UGSoundEvents.DWELLER_SADDLE_REMOVE, definition().with(
 				sound("minecraft:item/bundle/drop_contents1").pitch(0.95F),
 				sound("minecraft:item/bundle/drop_contents2").pitch(0.95F),
@@ -502,8 +505,8 @@ public class UGSoundDefinitions extends SoundDefinitionsProvider {
 				sound("minecraft:entity/fish/flop4").volume(0.3F)
 		).subtitle("subtitles.entity.gloomper.hop"));
 		this.add(UGSoundEvents.GLOOMPER_FART, definition().with(
-				sound("minecraft:entity/pufferfish/blow_up1").volume(0.45F),
-				sound("minecraft:entity/pufferfish/blow_up2").volume(0.45F)
+				sound("minecraft:mob/pufferfish/blow_up1").volume(0.45F),
+				sound("minecraft:mob/pufferfish/blow_up2").volume(0.45F)
 		).subtitle("subtitles.entity.gloomper.fart"));
 
 		this.add(UGSoundEvents.STONEBORN_STEP, definition().with(

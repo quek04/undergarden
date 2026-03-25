@@ -1,6 +1,7 @@
 package quek.undergarden.registry;
 
 import net.minecraft.client.resources.model.EquipmentClientInfo;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
@@ -26,5 +27,8 @@ public class UGEquipmentAssets {
 		consumer.accept(UTHERIUM, EquipmentClientInfo.builder().addHumanoidLayers(Undergarden.prefix("utherium"), false).build());
 		consumer.accept(ANCIENT, EquipmentClientInfo.builder().addHumanoidLayers(Undergarden.prefix("ancient"), false).build());
 		consumer.accept(DENIZEN_MASK, EquipmentClientInfo.builder().addMainHumanoidLayer(Undergarden.prefix("denizen_mask"), false).build());
+
+		EquipmentClientInfo.Layer saddleLayer = new EquipmentClientInfo.Layer(Undergarden.prefix("saddle"));
+		consumer.accept(EquipmentAssets.SADDLE, EquipmentClientInfo.builder().addLayers(EquipmentClientInfo.LayerType.valueOf("UNDERGARDEN_DWELLER_SADDLE"), saddleLayer).build());
 	}
 }

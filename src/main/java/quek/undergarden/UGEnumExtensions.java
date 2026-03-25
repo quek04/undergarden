@@ -1,6 +1,7 @@
 package quek.undergarden;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.MobCategory;
@@ -45,58 +46,6 @@ public class UGEnumExtensions {
 		});
 	}
 
-	public static Object WIGGLEWOOD_BOAT(int idx, Class<?> type) {
-		if (idx == 5)
-			return false;
-		return type.cast(switch (idx) {
-			case 0 -> UGBlocks.WIGGLEWOOD_PLANKS;
-			case 1 -> "undergarden:wigglewood";
-			case 2 -> UGItems.WIGGLEWOOD_BOAT;
-			case 3 -> UGItems.WIGGLEWOOD_CHEST_BOAT;
-			case 4 -> UGItems.TWISTYTWIG;
-			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
-		});
-	}
-
-	public static Object SMOGSTEM_BOAT(int idx, Class<?> type) {
-		if (idx == 5)
-			return false;
-		return type.cast(switch (idx) {
-			case 0 -> UGBlocks.SMOGSTEM_PLANKS;
-			case 1 -> "undergarden:smogstem";
-			case 2 -> UGItems.SMOGSTEM_BOAT;
-			case 3 -> UGItems.SMOGSTEM_CHEST_BOAT;
-			case 4 -> (Supplier<Item>) () -> Items.STICK;
-			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
-		});
-	}
-
-	public static Object GRONGLE_BOAT(int idx, Class<?> type) {
-		if (idx == 5)
-			return false;
-		return type.cast(switch (idx) {
-			case 0 -> UGBlocks.GRONGLE_PLANKS;
-			case 1 -> "undergarden:grongle";
-			case 2 -> UGItems.GRONGLE_BOAT;
-			case 3 -> UGItems.GRONGLE_CHEST_BOAT;
-			case 4 -> (Supplier<Item>) () -> Items.STICK;
-			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
-		});
-	}
-
-	public static Object ANCIENT_ROOT_BOAT(int idx, Class<?> type) {
-		if (idx == 5)
-			return false;
-		return type.cast(switch (idx) {
-			case 0 -> UGBlocks.ANCIENT_ROOT_PLANKS;
-			case 1 -> "undergarden:ancient_root";
-			case 2 -> UGItems.ANCIENT_ROOT_BOAT;
-			case 3 -> UGItems.ANCIENT_ROOT_CHEST_BOAT;
-			case 4 -> (Supplier<Item>) () -> Items.STICK;
-			default -> throw new IllegalArgumentException("Unexpected parameter index: " + idx);
-		});
-	}
-
 	public static Object VIRULENT_HEARTS(int idx, Class<?> type) {
 		return type.cast(switch (idx) {
 			case 0 -> Undergarden.prefix("virulence_hearts/normal");
@@ -114,4 +63,6 @@ public class UGEnumExtensions {
 	public static final EnumProxy<MobCategory> STUPID_MOB_CATEGORY = new EnumProxy<>(
 		MobCategory.class, "undergarden:stupid", 50, true, true, 128
 	);
+
+	public static final EnumProxy<EquipmentClientInfo.LayerType> DWELLER_SADDLE = new EnumProxy<>(EquipmentClientInfo.LayerType.class, "undergarden:dweller_saddle");
 }

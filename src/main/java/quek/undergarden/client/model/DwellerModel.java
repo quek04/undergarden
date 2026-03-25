@@ -59,6 +59,6 @@ public class DwellerModel extends EntityModel<DwellerRenderState> {
 
 		this.leftLeg.xRot = -0.6109F + Mth.cos(state.walkAnimationPos * 0.6662F) * 0.66F * state.walkAnimationSpeed;
 		this.rightLeg.xRot = -0.6109F + Mth.cos(state.walkAnimationPos * 0.6662F + Mth.PI) * 0.66F * state.walkAnimationSpeed;
-		this.mane.visible = !state.saddle.isEmpty();
+		this.mane.visible = state.saddle.isEmpty();
 	}
 }

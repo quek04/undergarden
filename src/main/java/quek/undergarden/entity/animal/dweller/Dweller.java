@@ -145,9 +145,7 @@ public class Dweller extends Animal implements ItemSteerable, PlayerRideableJump
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		boolean isFood = this.isFood(player.getItemInHand(hand));
 		if (!isFood && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
-			if (!this.level().isClientSide()) {
-				player.startRiding(this);
-			}
+			player.startRiding(this);
 
 			return InteractionResult.SUCCESS;
 		} else {
@@ -285,7 +283,8 @@ public class Dweller extends Animal implements ItemSteerable, PlayerRideableJump
 	}
 
 	public void jump(boolean moveHorizontally) {
-		double impulse = this.getJumpPower(1.0F);
+		double d0 = this.getBlockJumpFactor();
+		double impulse = d0 + (double) this.getJumpBoostPower();
 		Vec3 vec3 = this.getDeltaMovement();
 		this.setDeltaMovement(vec3.x(), impulse, vec3.z());
 		this.setIsJumping(true);

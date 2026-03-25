@@ -14,11 +14,11 @@ import quek.undergarden.client.model.UGModelLayers;
 import quek.undergarden.client.render.layer.BasicEyesLayer;
 import quek.undergarden.client.state.entity.DwellerRenderState;
 import quek.undergarden.entity.animal.dweller.Dweller;
+import quek.undergarden.registry.UGEquipmentAssets;
 
 public class DwellerRenderer extends MobRenderer<Dweller, DwellerRenderState, DwellerModel> {
 
 	private static final Identifier DWELLER = Undergarden.prefix("textures/entity/dweller.png");
-	private static final Identifier DWELLER_SADDLE = Undergarden.prefix("textures/entity/dweller_saddle.png");
 	private final static RenderType DWELLER_EYES = RenderTypes.eyes(Undergarden.prefix("textures/entity/dweller_eyes.png"));
 
 	public DwellerRenderer(EntityRendererProvider.Context context) {
@@ -27,7 +27,7 @@ public class DwellerRenderer extends MobRenderer<Dweller, DwellerRenderState, Dw
 		this.addLayer(new SimpleEquipmentLayer<>(
 			this,
 			context.getEquipmentRenderer(),
-			EquipmentClientInfo.LayerType.PIG_SADDLE,
+			EquipmentClientInfo.LayerType.valueOf("UNDERGARDEN_DWELLER_SADDLE"),
 			state -> state.saddle,
 			new DwellerModel(context.bakeLayer(UGModelLayers.DWELLER_SADDLE)),
 			null));

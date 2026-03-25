@@ -381,6 +381,15 @@
     ],
     "subtitle": "subtitles.entity.dweller.jump"
   },
+  "entity.dweller.saddle": {
+    "sounds": [
+      {
+        "name": "mob/horse/leather",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.entity.dweller.remove_saddle"
+  },
   "entity.dweller.saddle_remove": {
     "sounds": [
       {
@@ -510,11 +519,11 @@
   "entity.gloomper.fart": {
     "sounds": [
       {
-        "name": "entity/pufferfish/blow_up1",
+        "name": "mob/pufferfish/blow_up1",
         "volume": 0.45
       },
       {
-        "name": "entity/pufferfish/blow_up2",
+        "name": "mob/pufferfish/blow_up2",
         "volume": 0.45
       }
     ],
