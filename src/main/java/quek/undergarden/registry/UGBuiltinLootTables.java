@@ -14,6 +14,7 @@ public class UGBuiltinLootTables {
 	private static final Set<ResourceKey<LootTable>> BUILTIN_LOOT_TABLES = Sets.newHashSet();
 
 	public static final ResourceKey<LootTable> CARVE_GLOOMGOURD = register("carve/gloomgourd");
+	public static final ResourceKey<LootTable> HARVEST_DROOPVINE = register("harvest/droopvine");
 	public static final ResourceKey<LootTable> HARVEST_UNDERBEANS = register("harvest/underbeans");
 
 	public static final ResourceKey<LootTable> SHEAR_MOG = register("shearing/mog");

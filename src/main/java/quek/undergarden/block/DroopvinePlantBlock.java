@@ -52,7 +52,7 @@ public class DroopvinePlantBlock extends GrowingPlantBodyBlock implements Droopv
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result) {
-		return Droopvine.use(state, level, pos);
+		return Droopvine.use(player, state, level, pos);
 	}
 
 	@Override

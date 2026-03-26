@@ -66,7 +66,7 @@ public class DroopvineBlock extends GrowingPlantHeadBlock implements Droopvine {
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult result) {
-		return Droopvine.use(state, level, pos);
+		return Droopvine.use(player, state, level, pos);
 	}
 
 	@Override
