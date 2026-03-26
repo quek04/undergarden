@@ -62,6 +62,15 @@
         "class": "quek/undergarden/UGEnumExtensions",
         "field": "DWELLER_SADDLE"
       }
+    },
+    {
+      "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
+      "name": "UNDERGARDEN_BATTLEAXE_ARM_POSE",
+      "constructor": "(ZZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
+      "parameters": {
+        "class": "quek/undergarden/UGEnumExtensions",
+        "field": "BATTLEAXE_ARM_POSE"
+      }
     }
   ]
 }
