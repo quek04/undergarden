@@ -8,7 +8,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 import net.neoforged.neoforge.client.IArmPoseTransformer;
-import quek.undergarden.client.model.effects.BattleAxeAnimations;
+import quek.undergarden.client.model.animation.BattleaxeAnimation;
 
 import java.util.function.UnaryOperator;
 
@@ -63,5 +63,5 @@ public class UGEnumExtensions {
 
 	public static final EnumProxy<EquipmentClientInfo.LayerType> DWELLER_SADDLE = new EnumProxy<>(EquipmentClientInfo.LayerType.class, "undergarden:dweller_saddle");
 
-	public static final EnumProxy<HumanoidModel.ArmPose> BATTLEAXE_ARM_POSE = new EnumProxy<>(HumanoidModel.ArmPose.class, true, true, (IArmPoseTransformer) BattleAxeAnimations::thirdPersonAttackHand);
+	public static final EnumProxy<HumanoidModel.ArmPose> BATTLEAXE_ARM_POSE = new EnumProxy<>(HumanoidModel.ArmPose.class, true, true, (IArmPoseTransformer) BattleaxeAnimation::thirdPersonAttackHand);
 }

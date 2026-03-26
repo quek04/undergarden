@@ -1,4 +1,4 @@
-package quek.undergarden.client.model.effects;
+package quek.undergarden.client.model.animation;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -7,8 +7,7 @@ import net.minecraft.util.Ease;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
 
-public class BattleAxeAnimations {
-
+public class BattleaxeAnimation {
 
 	private static float progress(float time, float start, float end) {
 		return Mth.clamp(Mth.inverseLerp(time, start, end), 0.0F, 1.0F);
