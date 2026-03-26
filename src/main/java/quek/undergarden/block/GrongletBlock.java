@@ -89,19 +89,9 @@ public class GrongletBlock extends BaseEntityBlock {
 		}
 	}
 
-	@Nullable
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 		return new GrongletBlockEntity(pos, state);
-	}
-
-	@Override
-	protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
-		if (!level.isClientSide() && level.getBlockEntity(pos) instanceof GrongletBlockEntity gronglet) {
-			gronglet.setYaw(level.getRandom().nextInt(360));
-		}
-
-		super.onPlace(state, level, pos, oldState, movedByPiston);
 	}
 
 	@Override

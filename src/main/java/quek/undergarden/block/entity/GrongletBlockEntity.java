@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -13,10 +14,13 @@ import quek.undergarden.registry.UGBlockEntities;
 
 public class GrongletBlockEntity extends BlockEntity {
 
-	public int yaw;
+	public int yaw = -1;
 
 	public GrongletBlockEntity(BlockPos pos, BlockState state) {
 		super(UGBlockEntities.GRONGLET.get(), pos, state);
+		if (this.yaw == -1) {
+			this.yaw = (RandomSource.create().nextInt(360));
+		}
 	}
 
 	@Override
@@ -28,12 +32,7 @@ public class GrongletBlockEntity extends BlockEntity {
 	@Override
 	protected void loadAdditional(ValueInput input) {
 		super.loadAdditional(input);
-		this.yaw = input.getIntOr("yaw", 0);
-	}
-
-	public void setYaw(int yaw) {
-		this.yaw = yaw;
-		this.getLevel().sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 2);
+		this.yaw = input.getIntOr("yaw", -1);
 	}
 
 	@Override
