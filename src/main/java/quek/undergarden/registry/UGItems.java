@@ -83,7 +83,7 @@ public class UGItems {
 	public static final DeferredItem<Item> BLUE_MOGMOSS = register("blue_mogmoss", Item::new, Item.Properties::new);
 
 	//tools
-	public static final DeferredItem<Item> CLOGGRUM_BATTLEAXE = register("cloggrum_battleaxe", BattleaxeItem::new, () -> BattleaxeItem.createBattleaxeProperties(UGItemTiers.CLOGGRUM, 7, -3.4F, new Item.Properties().rarity(Rarity.EPIC).component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.WHACK, 12))));
+	public static final DeferredItem<Item> CLOGGRUM_BATTLEAXE = register("cloggrum_battleaxe", BattleaxeItem::new, () -> BattleaxeItem.createBattleaxeProperties(UGItemTiers.CLOGGRUM, 7, -3.4F, new Item.Properties().rarity(Rarity.EPIC).component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.WHACK, 12)).component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)));
 	public static final DeferredItem<Item> CLOGGRUM_SWORD = register("cloggrum_sword", Item::new, () -> new Item.Properties().sword(UGItemTiers.CLOGGRUM, 3, -2.4F));
 	public static final DeferredItem<Item> CLOGGRUM_PICKAXE = register("cloggrum_pickaxe", Item::new, () -> new Item.Properties().pickaxe(UGItemTiers.CLOGGRUM, 1, -2.8F));
 	public static final DeferredItem<Item> CLOGGRUM_AXE = register("cloggrum_axe", Item::new, () -> new Item.Properties().axe(UGItemTiers.CLOGGRUM, 5.0F, -3.1F));
@@ -120,7 +120,7 @@ public class UGItems {
 	public static final DeferredItem<Item> UTHERIUM_SHOVEL = register("utherium_shovel", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY).shovel(UGItemTiers.UTHERIUM, 1.5F, -3.0F));
 	public static final DeferredItem<Item> UTHERIUM_HOE = register("utherium_hoe", Item::new, () -> new Item.Properties().rarity(UTHERIUM_RARITY).hoe(UGItemTiers.UTHERIUM, -3, 0.0F));
 
-	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = register("forgotten_battleaxe", ForgottenBattleaxeItem::new, () -> BattleaxeItem.createBattleaxeProperties(UGItemTiers.FORGOTTEN, 7, -3.4F, new Item.Properties().rarity(Rarity.EPIC).component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.WHACK, 12))));
+	public static final DeferredItem<Item> FORGOTTEN_BATTLEAXE = register("forgotten_battleaxe", ForgottenBattleaxeItem::new, () -> BattleaxeItem.createBattleaxeProperties(UGItemTiers.FORGOTTEN, 7, -3.4F, new Item.Properties().rarity(Rarity.EPIC).component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.WHACK, 12)).component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)));
 	public static final DeferredItem<Item> FORGOTTEN_SWORD = register("forgotten_sword", (properties) -> new HoverTextItem(HoverTextItem.FORGOTTEN_WEAPON, properties), () -> new Item.Properties().sword(UGItemTiers.FORGOTTEN, 3, -2.4F).rarity(FORGOTTEN_RARITY));
 	public static final DeferredItem<Item> FORGOTTEN_PICKAXE = register("forgotten_pickaxe", (properties) -> new HoverTextItem(HoverTextItem.FORGOTTEN_TOOL, properties), () -> new Item.Properties().pickaxe(UGItemTiers.FORGOTTEN, 1, -2.8F).rarity(FORGOTTEN_RARITY));
 	public static final DeferredItem<Item> FORGOTTEN_AXE = register("forgotten_axe", (properties) -> new HoverTextItem(List.of(HoverTextItem.FORGOTTEN_WEAPON, HoverTextItem.FORGOTTEN_TOOL), properties), () -> new Item.Properties().axe(UGItemTiers.FORGOTTEN, 5.0F, -3.0F).rarity(FORGOTTEN_RARITY));
