@@ -2,14 +2,13 @@ package quek.undergarden;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.network.chat.Style;
-import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 import net.neoforged.neoforge.client.IArmPoseTransformer;
+import quek.undergarden.client.model.animation.BattleaxeAnimation;
 
 import java.util.function.UnaryOperator;
 
@@ -64,15 +63,5 @@ public class UGEnumExtensions {
 
 	public static final EnumProxy<EquipmentClientInfo.LayerType> DWELLER_SADDLE = new EnumProxy<>(EquipmentClientInfo.LayerType.class, "undergarden:dweller_saddle");
 
-	public static final EnumProxy<HumanoidModel.ArmPose> BATTLEAXE_ARM_POSE = new EnumProxy<>(HumanoidModel.ArmPose.class, true, true, (IArmPoseTransformer) (model, entity, arm) -> {
-		boolean holdingInRightArm = entity.mainArm == HumanoidArm.RIGHT;
-		ModelPart mainArm = holdingInRightArm ? model.rightArm : model.leftArm;
-		ModelPart otherArm = holdingInRightArm ? model.leftArm : model.rightArm;
-		mainArm.xRot = -1.3F;
-		mainArm.yRot = holdingInRightArm ? 0.3F : -0.3F;
-		mainArm.zRot = holdingInRightArm ? -1.0F : 1.0F;
-
-		otherArm.xRot = -0.5F;
-		otherArm.yRot = holdingInRightArm? 0.7F : -0.7F;
-	});
+	public static final EnumProxy<HumanoidModel.ArmPose> BATTLEAXE_ARM_POSE = new EnumProxy<>(HumanoidModel.ArmPose.class, true, true, (IArmPoseTransformer) BattleaxeAnimation::thirdPersonAttackHand);
 }
