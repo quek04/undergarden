@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
@@ -36,6 +37,7 @@ public class DenizenRenderer extends MobRenderer<Denizen, DenizenRenderState, De
 		this.shortModel = new DenizenModel(context.bakeLayer(UGModelLayers.DENIZEN));
 		this.tallModel = new DenizenModel(context.bakeLayer(UGModelLayers.DENIZEN_2));
 		this.addLayer(new DenizenEyesLayer<>(this));
+		this.addLayer(new ItemInHandLayer<>(this));
 	}
 
 	@Override
