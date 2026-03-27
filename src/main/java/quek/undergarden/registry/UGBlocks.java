@@ -4,13 +4,15 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -23,7 +25,6 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import quek.undergarden.Undergarden;
 import quek.undergarden.block.*;
-import quek.undergarden.block.GrongletBlock;
 import quek.undergarden.block.portal.UndergardenPortalBlock;
 import quek.undergarden.world.gen.tree.UGTreeGrowers;
 
@@ -37,7 +38,7 @@ public class UGBlocks {
 	public static final DeferredBlock<Block> UNDERGARDEN_PORTAL = register("undergarden_portal", UndergardenPortalBlock::new, () -> BlockBehaviour.Properties.of().pushReaction(PushReaction.BLOCK).strength(-1.0F).noCollision().lightLevel((state) -> 10).sound(SoundType.GLASS).noLootTable());
 
 	public static final DeferredBlock<Block> SHARD_TORCH = register("shard_torch", ShardTorchBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH).lightLevel((state) -> 6));
-	public static final DeferredBlock<Block> SHARD_WALL_TORCH = register("shard_wall_torch", ShardWallTorchBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WALL_TORCH).lightLevel((state) -> 6));
+	public static final DeferredBlock<Block> SHARD_WALL_TORCH = register("shard_wall_torch", ShardWallTorchBlock::new, () -> wallVariant(SHARD_TORCH.get(), true).noCollision().instabreak().sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY).lightLevel((state) -> 6));
 
 	//depthrock
 	public static final DeferredBlock<Block> DEPTHROCK = registerWithItem("depthrock", Block::new, () -> BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.TERRACOTTA_LIGHT_GREEN).strength(1.5F, 6.0F).sound(SoundType.BASALT).requiresCorrectToolForDrops());
@@ -245,9 +246,15 @@ public class UGBlocks {
 	public static final DeferredBlock<PressurePlateBlock> WIGGLEWOOD_PRESSURE_PLATE = registerWithItem("wigglewood_pressure_plate", (properties) -> new PressurePlateBlock(UGWoodStuff.WIGGLEWOOD_WOOD_SET, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE));
 
 	public static final DeferredBlock<StandingSignBlock> WIGGLEWOOD_SIGN = register("wigglewood_sign", (properties) -> new StandingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_SIGN));
-	public static final DeferredBlock<WallSignBlock> WIGGLEWOOD_WALL_SIGN = register("wigglewood_wall_sign", (properties) -> new WallSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_WALL_SIGN));
+	public static final DeferredBlock<WallSignBlock> WIGGLEWOOD_WALL_SIGN = register("wigglewood_wall_sign", (properties) -> new WallSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, properties), () -> wallVariant(WIGGLEWOOD_SIGN.get(), true)
+		.mapColor(MapColor.WOOD)
+		.forceSolidOn()
+		.instrument(NoteBlockInstrument.BASS)
+		.noCollision()
+		.strength(1.0F)
+		.ignitedByLava());
 	public static final DeferredBlock<CeilingHangingSignBlock> WIGGLEWOOD_HANGING_SIGN = register("wigglewood_hanging_sign", (properties) -> new CeilingHangingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_HANGING_SIGN));
-	public static final DeferredBlock<WallHangingSignBlock> WIGGLEWOOD_WALL_HANGING_SIGN = register("wigglewood_wall_hanging_sign", (properties) -> new WallHangingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_WALL_HANGING_SIGN));
+	public static final DeferredBlock<WallHangingSignBlock> WIGGLEWOOD_WALL_HANGING_SIGN = register("wigglewood_wall_hanging_sign", (properties) -> new WallHangingSignBlock(UGWoodStuff.WIGGLEWOOD_WOOD_TYPE, properties), () -> wallVariant(WIGGLEWOOD_HANGING_SIGN.get(), true).mapColor(WIGGLEWOOD_LOG.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F).ignitedByLava());
 
 	//grongle
 	public static final DeferredBlock<Block> GRONGLE_SAPLING = registerWithItem("grongle_sapling", (properties) -> new UGSaplingBlock(UGTreeGrowers.GRONGLE, properties), () -> BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).instabreak().randomTicks().sound(SoundType.GRASS).noOcclusion().noCollision());
@@ -268,9 +275,15 @@ public class UGBlocks {
 	public static final DeferredBlock<PressurePlateBlock> GRONGLE_PRESSURE_PLATE = registerWithItem("grongle_pressure_plate", (properties) -> new PressurePlateBlock(UGWoodStuff.GRONGLE_WOOD_SET, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE));
 
 	public static final DeferredBlock<StandingSignBlock> GRONGLE_SIGN = register("grongle_sign", (properties) -> new StandingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
-	public static final DeferredBlock<WallSignBlock> GRONGLE_WALL_SIGN = register("grongle_wall_sign", (properties) -> new WallSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN));
+	public static final DeferredBlock<WallSignBlock> GRONGLE_WALL_SIGN = register("grongle_wall_sign", (properties) -> new WallSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, properties), () -> wallVariant(GRONGLE_SIGN.get(), true)
+		.mapColor(MapColor.WOOD)
+		.forceSolidOn()
+		.instrument(NoteBlockInstrument.BASS)
+		.noCollision()
+		.strength(1.0F)
+		.ignitedByLava());
 	public static final DeferredBlock<CeilingHangingSignBlock> GRONGLE_HANGING_SIGN = register("grongle_hanging_sign", (properties) -> new CeilingHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
-	public static final DeferredBlock<WallHangingSignBlock> GRONGLE_WALL_HANGING_SIGN = register("grongle_wall_hanging_sign", (properties) -> new WallHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN));
+	public static final DeferredBlock<WallHangingSignBlock> GRONGLE_WALL_HANGING_SIGN = register("grongle_wall_hanging_sign", (properties) -> new WallHangingSignBlock(UGWoodStuff.GRONGLE_WOOD_TYPE, properties), () -> wallVariant(GRONGLE_HANGING_SIGN.get(), true).mapColor(GRONGLE_LOG.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F).ignitedByLava());
 
 	public static final DeferredBlock<GrongletBlock> GRONGLET = register("gronglet", GrongletBlock::new, () -> BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollision().strength(0.0F).sound(UGSoundTypes.GRONGLET));
 	public static final DeferredBlock<GrongletBlock> UTHERIC_GRONGLET = register("utheric_gronglet", GrongletBlock::new, () -> BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).noTerrainParticles().lightLevel((state) -> 12).noOcclusion().noCollision().strength(0.0F).sound(UGSoundTypes.GRONGLET));
@@ -291,9 +304,15 @@ public class UGBlocks {
 	public static final DeferredBlock<PressurePlateBlock> ANCIENT_ROOT_PRESSURE_PLATE = registerWithItem("ancient_root_pressure_plate", (properties) -> new PressurePlateBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_SET, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE));
 
 	public static final DeferredBlock<StandingSignBlock> ANCIENT_ROOT_SIGN = register("ancient_root_sign", (properties) -> new StandingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
-	public static final DeferredBlock<WallSignBlock> ANCIENT_ROOT_WALL_SIGN = register("ancient_root_wall_sign", (properties) -> new WallSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN));
+	public static final DeferredBlock<WallSignBlock> ANCIENT_ROOT_WALL_SIGN = register("ancient_root_wall_sign", (properties) -> new WallSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> wallVariant(ANCIENT_ROOT_SIGN.get(), true)
+		.mapColor(MapColor.WOOD)
+		.forceSolidOn()
+		.instrument(NoteBlockInstrument.BASS)
+		.noCollision()
+		.strength(1.0F)
+		.ignitedByLava());
 	public static final DeferredBlock<CeilingHangingSignBlock> ANCIENT_ROOT_HANGING_SIGN = register("ancient_root_hanging_sign", (properties) -> new CeilingHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
-	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = register("ancient_root_wall_hanging_sign", (properties) -> new WallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN));
+	public static final DeferredBlock<WallHangingSignBlock> ANCIENT_ROOT_WALL_HANGING_SIGN = register("ancient_root_wall_hanging_sign", (properties) -> new WallHangingSignBlock(UGWoodStuff.ANCIENT_ROOT_WOOD_TYPE, properties), () -> wallVariant(ANCIENT_ROOT_HANGING_SIGN.get(), true).mapColor(ANCIENT_ROOT.get().defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().strength(1.0F).ignitedByLava());
 
 	//functional
 	public static final DeferredBlock<Block> INFUSER = registerWithItem("infuser", InfuserBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(UGSoundTypes.DREADROCK).noOcclusion().lightLevel((state) -> state.getValue(InfuserBlock.STATE) != InfuserState.INACTIVE ? 10 : 0));
@@ -330,5 +349,14 @@ public class UGBlocks {
 		DeferredBlock<T> ret = register(name, block, properties);
 		UGItems.register(name, itemProps -> new BlockItem(ret.get(), itemProps.useBlockDescriptionPrefix()), itemProperties);
 		return ret;
+	}
+
+	private static BlockBehaviour.Properties wallVariant(Block standingBlock, boolean copyName) {
+		BlockBehaviour.Properties wallProperties = BlockBehaviour.Properties.of().overrideLootTable(standingBlock.getLootTable());
+		if (copyName) {
+			wallProperties = wallProperties.overrideDescription(standingBlock.getDescriptionId());
+		}
+
+		return wallProperties;
 	}
 }
