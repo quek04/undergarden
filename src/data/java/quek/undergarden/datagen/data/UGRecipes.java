@@ -418,7 +418,6 @@ public class UGRecipes extends UGRecipeProvider {
 		makeSpear(getter, UGItems.CLOGGRUM_SPEAR, UGItems.CLOGGRUM_INGOT).save(this.output);
 		makeSpear(getter, UGItems.FROSTSTEEL_SPEAR, UGItems.FROSTSTEEL_INGOT).save(this.output);
 		makeSpear(getter, UGItems.UTHERIUM_SPEAR, UGItems.UTHERIUM_CRYSTAL).save(this.output);
-		makeSpear(getter, UGItems.FORGOTTEN_SPEAR, UGItems.FORGOTTEN_INGOT).save(this.output);
 
 		makeHelmet(getter, UGItems.CLOGGRUM_HELMET, UGItems.CLOGGRUM_INGOT).save(this.output);
 		makeChestplate(getter, UGItems.CLOGGRUM_CHESTPLATE, UGItems.CLOGGRUM_INGOT).save(this.output);
@@ -562,6 +561,7 @@ public class UGRecipes extends UGRecipeProvider {
 		smithingForgotten(UGItems.CLOGGRUM_SHOVEL, UGItems.FORGOTTEN_SHOVEL).save(this.output, name("forgotten_shovel_smithing"));
 		smithingForgotten(UGItems.CLOGGRUM_HOE, UGItems.FORGOTTEN_HOE).save(this.output, name("forgotten_hoe_smithing"));
 		smithingForgotten(UGItems.CLOGGRUM_BATTLEAXE, UGItems.FORGOTTEN_BATTLEAXE).save(this.output, name("forgotten_battleaxe_smithing"));
+		smithingForgotten(UGItems.CLOGGRUM_SPEAR, UGItems.FORGOTTEN_SPEAR).save(this.output, name("forgotten_spear_smithing"));
 
 		smeltingRecipe(UGBlocks.CRACKED_DEPTHROCK_BRICKS.get(), UGBlocks.DEPTHROCK_BRICKS.get(), CookingBookCategory.BLOCKS, 0.1F).save(this.output, name("smelt_depthrock_bricks"));
 		smeltingRecipe(UGBlocks.CRACKED_SHIVERSTONE_BRICKS.get(), UGBlocks.SHIVERSTONE_BRICKS.get(), CookingBookCategory.BLOCKS, 0.1F).save(this.output, name("smelt_shiverstone_bricks"));

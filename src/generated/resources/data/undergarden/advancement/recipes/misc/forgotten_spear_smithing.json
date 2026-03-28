@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_forgotten_ingot": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "undergarden:forgotten_spear_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_undergarden:forgotten_ingot": {
       "conditions": {
         "items": [
           {
@@ -10,23 +16,17 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "undergarden:forgotten_spear"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_forgotten_ingot"
+      "has_undergarden:forgotten_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "undergarden:forgotten_spear"
+      "undergarden:forgotten_spear_smithing"
     ]
   }
 }

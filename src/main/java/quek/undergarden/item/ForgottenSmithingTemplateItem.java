@@ -22,6 +22,7 @@ public class ForgottenSmithingTemplateItem extends SmithingTemplateItem {
 	private static final Identifier EMPTY_SLOT_SHOVEL = Identifier.withDefaultNamespace("container/slot/shovel");
 	private static final Identifier EMPTY_SLOT_PICKAXE = Identifier.withDefaultNamespace("container/slot/pickaxe");
 	private static final Identifier EMPTY_SLOT_BATTLEAXE = Undergarden.prefix("container/slot/battleaxe");
+	private static final Identifier EMPTY_SLOT_SPEAR = Identifier.withDefaultNamespace("container/slot/spear");
 	private static final Identifier EMPTY_SLOT_INGOT = Identifier.withDefaultNamespace("container/slot/ingot");
 
 	public ForgottenSmithingTemplateItem(Item.Properties properties) {
@@ -29,6 +30,6 @@ public class ForgottenSmithingTemplateItem extends SmithingTemplateItem {
 	}
 
 	public static List<Identifier> createForgottenUpgradeIconList() {
-		return List.of(EMPTY_SLOT_SWORD, EMPTY_SLOT_PICKAXE, EMPTY_SLOT_AXE, EMPTY_SLOT_HOE, EMPTY_SLOT_SHOVEL, EMPTY_SLOT_BATTLEAXE);
+		return List.of(EMPTY_SLOT_SWORD, EMPTY_SLOT_PICKAXE, EMPTY_SLOT_AXE, EMPTY_SLOT_HOE, EMPTY_SLOT_SHOVEL, EMPTY_SLOT_BATTLEAXE, EMPTY_SLOT_SPEAR);
 	}
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "undergarden:forgotten_ingot",
+  "base": "undergarden:cloggrum_spear",
+  "result": {
+    "id": "undergarden:forgotten_spear"
+  },
+  "template": "undergarden:forgotten_upgrade_smithing_template"
+}

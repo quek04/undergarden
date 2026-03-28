@@ -25,3 +25,4 @@ logs
 run-data
 .noai
 .cache
+*.profileconfig.json
