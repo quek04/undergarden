@@ -7,9 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -188,30 +186,79 @@ public class UGPlacedFeatures {
 	}
 
 	private static List<PlacementModifier> tree(int count) {
-		return List.of(CountOnEveryLayerPlacement.of(count), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)));
+		return List.of(
+			CountOnEveryLayerPlacement.of(count),
+			BiomeFilter.biome(),
+			BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO))
+		);
 	}
 
 	private static List<PlacementModifier> puffMushroom(int count) {
-		return List.of(CountOnEveryLayerPlacement.of(count), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(), UGTags.Blocks.PUFFSHROOM_CAN_PLACE_ON)));
+		return List.of(
+			CountOnEveryLayerPlacement.of(count),
+			BiomeFilter.biome(),
+			BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(Direction.DOWN.getUnitVec3i(), UGTags.Blocks.PUFFSHROOM_CAN_PLACE_ON))
+		);
 	}
 
 	private static List<PlacementModifier> patch(int count) {
-		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
+		return List.of(
+			InSquarePlacement.spread(),
+			PlacementUtils.FULL_RANGE,
+			BiomeFilter.biome(),
+			CountPlacement.of(count),
+			RandomOffsetPlacement.ofTriangle(7, 3),
+			BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+		);
 	}
 
 	private static List<PlacementModifier> crystal(int count) {
-		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome());
+		return List.of(
+			InSquarePlacement.spread(),
+			PlacementUtils.FULL_RANGE,
+			BiomeFilter.biome(),
+			CountPlacement.of(count),
+			RandomOffsetPlacement.ofTriangle(7, 3)
+		);
 	}
 
 	private static List<PlacementModifier> patchWithFilter(int count, BlockPredicate filter) {
-		return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter)), BiomeFilter.biome());
+		return List.of(
+			NoiseThresholdCountPlacement.of(-0.8, 5, 10),
+			InSquarePlacement.spread(),
+			PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+			BiomeFilter.biome(),
+			CountPlacement.of(16),
+			RandomOffsetPlacement.ofTriangle(7, 3),
+			BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+//			InSquarePlacement.spread(),
+//			PlacementUtils.FULL_RANGE,
+//			BiomeFilter.biome(),
+//			CountPlacement.of(count),
+//			RandomOffsetPlacement.ofTriangle(7, 3),
+//			BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter))
+		);
 	}
 
-	private static List<PlacementModifier> noise(int noiseToCountRatio, double factor, double offset) {
-		return List.of(NoiseBasedCountPlacement.of(noiseToCountRatio, factor, offset), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE), BiomeFilter.biome());
+	private static List<PlacementModifier> noise(int noiseToCountRatio, double noiseFactor, double noiseOffset) {
+		return List.of(
+			InSquarePlacement.spread(),
+			PlacementUtils.FULL_RANGE,
+			BiomeFilter.biome(),
+			NoiseBasedCountPlacement.of(noiseToCountRatio, noiseFactor, noiseOffset),
+			RandomOffsetPlacement.ofTriangle(7, 3),
+			BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+		);
 	}
 
-	private static List<PlacementModifier> noiseWithFilter(int noiseToCountRatio, double factor, double offset, BlockPredicate filter) {
-		return List.of(NoiseBasedCountPlacement.of(noiseToCountRatio, factor, offset), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter)), BiomeFilter.biome());
+	private static List<PlacementModifier> noiseWithFilter(int noiseToCountRatio, double noiseFactor, double noiseOffset, BlockPredicate filter) {
+		return List.of(
+			InSquarePlacement.spread(),
+			PlacementUtils.FULL_RANGE,
+			BiomeFilter.biome(),
+			NoiseBasedCountPlacement.of(noiseToCountRatio, noiseFactor, noiseOffset),
+			RandomOffsetPlacement.ofTriangle(7, 3),
+			BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter))
+		);
 	}
 }

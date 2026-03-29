@@ -2,12 +2,6 @@
   "feature": "undergarden:depthrock_pebble",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_factor": 50.0,
-      "noise_offset": 0.0,
-      "noise_to_count_ratio": 200
-    },
-    {
       "type": "minecraft:in_square"
     },
     {
@@ -23,14 +17,35 @@
       }
     },
     {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_factor": 50.0,
+      "noise_offset": 0.0,
+      "noise_to_count_ratio": 200
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": {
+        "type": "minecraft:trapezoid",
+        "max": 7,
+        "min": -7,
+        "plateau": 0
+      },
+      "y_spread": {
+        "type": "minecraft:trapezoid",
+        "max": 3,
+        "min": -3,
+        "plateau": 0
+      }
+    },
+    {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:matching_block_tag",
         "tag": "minecraft:air"
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

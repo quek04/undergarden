@@ -2,47 +2,46 @@
   "feature": "undergarden:ashen_deepturf",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 100
+      "type": "minecraft:noise_threshold_count",
+      "above_noise": 10,
+      "below_noise": 5,
+      "noise_level": -0.8
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "max_inclusive": {
-          "below_top": 0
-        },
-        "min_inclusive": {
-          "above_bottom": 0
-        }
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:count",
+      "count": 16
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": {
+        "type": "minecraft:trapezoid",
+        "max": 7,
+        "min": -7,
+        "plateau": 0
+      },
+      "y_spread": {
+        "type": "minecraft:trapezoid",
+        "max": 3,
+        "min": -3,
+        "plateau": 0
       }
     },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:all_of",
-        "predicates": [
-          {
-            "type": "minecraft:matching_block_tag",
-            "tag": "minecraft:air"
-          },
-          {
-            "type": "minecraft:matching_blocks",
-            "blocks": "undergarden:ashen_deepturf_block",
-            "offset": [
-              0,
-              -1,
-              0
-            ]
-          }
-        ]
+        "type": "minecraft:matching_block_tag",
+        "tag": "minecraft:air"
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }
