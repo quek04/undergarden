@@ -19,7 +19,6 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
@@ -246,16 +245,15 @@ public class Gloomper extends Animal {
 
 	@Override
 	public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
-		AreaEffectCloud cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
-
-		cloud.setCustomParticle(UGParticleTypes.GLOOMPER_FART.get());
-		cloud.setRadius(3.0F);
-		cloud.setRadiusOnUse(-0.5F);
-		cloud.setWaitTime(10);
-		cloud.setRadiusPerTick(-cloud.getRadius() / (float) cloud.getDuration());
-		cloud.addEffect(new MobEffectInstance(UGEffects.VIRULENCE, 100, 0));
-
 		if (this.getRandom().nextInt(2) == 0) {
+			AreaEffectCloud cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
+
+			cloud.setCustomParticle(UGParticleTypes.GLOOMPER_FART.get());
+			cloud.setRadius(3.0F);
+			cloud.setDuration(600);
+			cloud.setRadiusPerTick(-(7.0F - cloud.getRadius()) / cloud.getDuration());
+			cloud.addEffect(new MobEffectInstance(UGEffects.VIRULENCE, 100, 0));
+
 			this.playSound(UGSoundEvents.GLOOMPER_FART.get(), 1.0F, 1.0F);
 			this.level().addFreshEntity(cloud);
 		}
