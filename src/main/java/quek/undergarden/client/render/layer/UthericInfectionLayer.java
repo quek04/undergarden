@@ -15,7 +15,7 @@ import quek.undergarden.client.UndergardenClient;
 
 public class UthericInfectionLayer<S extends LivingEntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
 
-	private static final Identifier TEXTURE = Undergarden.prefix("textures/utheric_infection_overlay.png");
+	private static final Identifier TEXTURE = Undergarden.prefix("textures/misc/utheric_infection_overlay.png");
 
 	public UthericInfectionLayer(RenderLayerParent<S, M> renderer) {
 		super(renderer);
