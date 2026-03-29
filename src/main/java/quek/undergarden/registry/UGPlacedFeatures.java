@@ -224,19 +224,12 @@ public class UGPlacedFeatures {
 
 	private static List<PlacementModifier> patchWithFilter(int count, BlockPredicate filter) {
 		return List.of(
-			NoiseThresholdCountPlacement.of(-0.8, 5, 10),
 			InSquarePlacement.spread(),
-			PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+			PlacementUtils.FULL_RANGE,
 			BiomeFilter.biome(),
-			CountPlacement.of(16),
+			CountPlacement.of(count),
 			RandomOffsetPlacement.ofTriangle(7, 3),
-			BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
-//			InSquarePlacement.spread(),
-//			PlacementUtils.FULL_RANGE,
-//			BiomeFilter.biome(),
-//			CountPlacement.of(count),
-//			RandomOffsetPlacement.ofTriangle(7, 3),
-//			BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter))
+			BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, filter))
 		);
 	}
 
